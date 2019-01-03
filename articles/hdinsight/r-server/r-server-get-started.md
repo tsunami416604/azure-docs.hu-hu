@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496457"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968808"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Az ML-szolgáltatások használatának első lépései az Azure HDInsightban
 
@@ -23,7 +23,7 @@ Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatá
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. További információk: [Ingyenes Microsoft Azure-próbafiók beszerzése](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **A Secure Shell (SSH) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtasson parancsokat szolgál. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -31,16 +31,16 @@ Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatá
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Kattintson az **Erőforrás létrehozása** > **Data + Analytics** > **HDInsight** elemre.
+2. Navigáljon a **+ erőforrás létrehozása** > **Analytics** > **HDInsight**.
 
 3. Az **Alapvető beállítások** képernyőn adja meg a következő információkat:
 
     * **Fürt neve**: A HDInsight-fürt neve.
     * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
-    * **Fürt bejelentkezési felhasználóneve** és **Fürt bejelentkezési jelszava**: A fürt HTTPS-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Ezek a hitelesítő adatok használatával például az Apache Ambari webes felhasználói felületen vagy REST API-szolgáltatások eléréséhez.
-    * **SSH-felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
-    * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
-    * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.
+    * **Fürt bejelentkezési felhasználóneve** és **fürt bejelentkezési jelszavának**: A bejelentkezés, a fürt HTTPS-kapcsolaton keresztüli elérésekor. Ezek a hitelesítő adatok használatával például az Apache Ambari webes felhasználói felületen vagy REST API-szolgáltatások eléréséhez.
+    * **Secure Shell (SSH-) felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
+    * **Erőforráscsoport**: Az erőforráscsoport, amelyben a fürt létre lesz hozva.
+    * **Hely**: Az Azure-régió, amelyben a fürt létre lesz hozva.
 
         ![Fürt alapvető adatai](./media/r-server-get-started/clustername.png)
 
@@ -52,7 +52,7 @@ Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatá
 
     * **Verzió**: ML Server 9.3 (HDI 3.6). Az ML Server 9.3 kibocsátási megjegyzései a [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) webhelyen érhetők el.
 
-    * **R Studio community edition for ML Server**: ez a böngészőalapú IDE alapértelmezés szerint telepítve van a határcsomópontra. Ha nem szeretné, hogy telepítve legyen, törölje a jelölőnégyzet jelölését. Ha úgy dönt, hogy telepíti, a fürt portálalkalmazás-paneljén találja az RStudio Server bejelentkezésének elérésére szolgáló URL-címet, miután a fürt létrejött.
+    * **Az R Studio community Edition kiadást a gépi tanulás Server**: Ez a böngésző alapú IDE az élcsomóponti operacionalizáláshoz alapértelmezés szerint telepítve van. Ha nem szeretné, hogy telepítve legyen, törölje a jelölőnégyzet jelölését. Ha úgy dönt, hogy telepíti, a fürt portálalkalmazás-paneljén találja az RStudio Server bejelentkezésének elérésére szolgáló URL-címet, miután a fürt létrejött.
 
         ![Fürt alapvető adatai](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -66,7 +66,7 @@ Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatá
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/r-server-get-started/clustersummary.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > A fürt létrehozása 20 percig is eltarthat.
 
 <a name="connect-to-rstudio-server"></a>
@@ -78,15 +78,16 @@ Ha úgy döntött, hogy telepíti az RStudio Server Community Edition kiadást a
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **2. lehetőség** – Nyissa meg az ML-szolgáltatási fürtöt az Azure Portalon, és a **Gyorshivatkozások** területen kattintson az **ML-szolgáltatás irányítópultjai** elemre.
-
-     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/r-server-get-started/dashboard-quick-links.png)
-
-    A **Fürt irányítópultjai** területen kattintson az **R Studio Server** elemre.
+* **2. lehetőség** – az Azure Portalon.
+A portálról:
+  1. Válassza ki **minden szolgáltatás** a bal oldali menüből.
+  2. A **ANALYTICS**válassza **HDInsight-fürtök**.
+  3. Válassza ki a fürt nevét, a **HDInsight-fürtök** lapot.
+  4. A **Machine Learning-szolgáltatások irányítópultok**válassza **R Studio server**. 
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > A használt módszertől függetlenül, az első bejelentkezéskor kétszer kell elvégeznie a hitelesítést.  Az első hitelesítési kérésnél adja meg a *fürt rendszergazdai felhasználói azonosítóját* és *jelszavát*. A második hitelesítési kérésnél adja meg az *SSH felhasználói azonosítót* és *jelszót*. A későbbi bejelentkezésekhez csak az SSH hitelesítő adatokra lesz szükség.
 
 A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kinéznie:
@@ -221,11 +222,11 @@ Az SDK és a PowerShell használatával automatizálható a HDInsight ML-szolgá
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan lehet ML-szolgáltatási fürtöt létrehozni az Azure HDInsightban, és megismerkedett az R-konzol SSH-munkamenetből történő használatának alapjaival. A következő cikkek az ML-szolgáltatások HDInsighton történő kezelésének és használatának egyéb módjait ismertetik:
+Ebben a cikkben megtanulta, hogyan hozhat létre új Machine Learning-szolgáltatások fürtöt az Azure HDInsight és az R-konzol SSH-munkamenetből történő használatának alapjaival. A következő cikkek az ML-szolgáltatások HDInsighton történő kezelésének és használatának egyéb módjait ismertetik:
 
 * [Feladatok beküldése az R Tools for Visual Studio használatával](r-server-submit-jobs-r-tools-vs.md)
 * [Az ML-szolgáltatások fürtjének kezelése a HDInsighton](r-server-hdinsight-manage.md)

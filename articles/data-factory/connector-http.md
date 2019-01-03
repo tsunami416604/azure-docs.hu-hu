@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 12/202018
 ms.author: jingwang
-ms.openlocfilehash: 1f3e9be3a0048c4bf2e87ac23cbdc76b1aaa649f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 61ac0eeeb177ffccbe10d4ab049d3541ac6aeb60
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166406"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810423"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával egy HTTP-végpontot
 
@@ -28,6 +28,12 @@ ms.locfileid: "49166406"
 
 Ez a cikk ismerteti az Azure Data Factory másolási tevékenység használatával adatokat másol egy HTTP-végpontot. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
 
+A HTTP-összekötő a különbséget a [REST közötti összekötő](connector-rest.md) és a [webes táblázat összekötő](connector-web-table.md) vannak:
+
+- **REST-összekötő** kifejezetten az adatok másolása a RESTful API-k; támogatása 
+- **HTTP-összekötő** általános adatokat lekérni bármilyen HTTP-végpontot, például fájl letöltéséhez. Mielőtt REST közötti összekötő elérhetővé válik, akkor fordulhat elő, a HTTP-összekötő használatával adatait átmásolhatja RESTful API-t, amely akkor támogatott, de kisebb működési összehasonlítva és REST közötti összekötő.
+- **Webes tábla összekötő** kivonatok tábla egy HTML-weblap tartalmat.
+
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Másolhat adatokat egy HTTP-forrás bármely támogatott fogadó adattárba. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -35,10 +41,8 @@ Másolhat adatokat egy HTTP-forrás bármely támogatott fogadó adattárba. Az 
 A HTTP-összekötő-használhatja:
 
 - A HTTP-adatokat lekérni egy HTTP-vagy Https-végpont **első** vagy **POST** módszereket.
-- Adatok beolvasása a következő hitelesítések egyikének használatával: **névtelen**, **alapszintű**, **kivonatoló**, **Windows**, vagy  **ClientCertificate**.
+- Adatok beolvasása a következő hitelesítések egyikének használatával: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**, vagy **ClientCertificate**.
 - A HTTP-válasz való másolása – elemezni a használatával, vagy [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
-
-Ez az összekötő közötti különbséget, és a [webes táblázat összekötő](connector-web-table.md) , hogy a webes táblázat összekötő kigyűjti a tábla tartalmát egy HTML-weblap.
 
 > [!TIP]
 > A Data Factoryban a HTTP-összekötő konfigurálása előtt tesztelése a HTTP-kérést, az adatok beolvasásáért, ismerje meg az API-specifikációnak, fejléc és a szervezet követelményeinek. Eszközök, mint például a Postman vagy egy webböngésző segítségével ellenőrzése.
@@ -171,7 +175,7 @@ Adatok másolása HTTP, állítsa be a **típus** tulajdonság, az adatkészlet 
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
 | RequestBody | A HTTP-kérelem törzsét. | Nem |
 | Formátum | Szeretné-e adatokat lekérni a HTTP-végpontot,-van nélkül elemzés azt, majd másolja az adatokat egy fájlalapú tárolón hagyja ki a **formátum** szakasz is a bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha meg szeretné elemezni a HTTP-válasz tartalma másolása során, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. A **formátum**állítsa be a **típus** tulajdonságát a következő értékek egyikét. További információkért lásd: [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format), [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format). |Nem |
-| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek: **Optimal** és **leggyorsabb**. |Nem |
+| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek:  **Optimális** és **leggyorsabb**. |Nem |
 
 > [!NOTE]
 > A támogatott HTTP-kérelem hasznos adatainak mérete körülbelül 500 KB-os. Ha a webes végpontra átadni kívánt adattartalom-méretkorlát nagyobb 500 KB-nál, fontolja meg az adattartalomban kisebb adattömbökben kötegelés.

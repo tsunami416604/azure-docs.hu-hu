@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f573cda9f06837bf44ee39a680b207af1ba0fe07
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313941"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973230"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Az Azure Machine Learning – gyakori kérdések
 
@@ -55,18 +55,17 @@ Az első két felhasználó társítva az Azure Machine Learning-kísérletezés
 
 **Kell fizetnem kíséreltek hogyan száma alapján?**
 
-Nem, a Kísérletezési szolgáltatás lehetővé teszi tetszőleges számú kísérlet elvégezhető van szüksége, és a díjat csak a felhasználók száma alapján. A kísérletezéshez felhasznált számítási erőforrásokért külön díjat számolunk fel. Azt javasoljuk, több kísérletet is elvégezni megtalálhatja a legjobban illeszkedő a modell a megoldáshoz.   
+Nem, a Kísérletezési szolgáltatás lehetővé teszi tetszőleges számú kísérlet elvégezhető van szüksége, és a díjat csak a felhasználók száma alapján. A kísérletezéshez felhasznált számítási erőforrásokért külön díjat számolunk fel. Azt javasoljuk, több kísérletet is elvégezni megtalálhatja a legjobban illeszkedő a modell a megoldáshoz.
 
 **Milyen számítási és tárolási erőforrások adott típusú használhatok?**
 
-A Kísérletezési szolgáltatás a kísérleteket helyi gépen (közvetlen vagy Docker-alapú), [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), és [HDInsight](https://azure.microsoft.com/services/hdinsight/). A szolgáltatás is hozzáfér egy [Azure Storage](https://azure.microsoft.com/services/storage/) tárfiókot futtatási kimenetek tárolásához, és kihasználhatják a egy [Visual Studio Team Service](https://azure.microsoft.com/services/visual-studio-team-services/) verziókövetés és a Git-storage-fiók. Vegye figyelembe, hogy akkor kell fizetnie egymástól függetlenül felhasznált számítási és tárolási erőforrásokért azok saját díjszabása alapján.  
-
+A Kísérletezési szolgáltatás a kísérleteket helyi gépen (közvetlen vagy Docker-alapú), [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), és [HDInsight](https://azure.microsoft.com/services/hdinsight/). A szolgáltatás is hozzáfér egy [Azure Storage](https://azure.microsoft.com/services/storage/) tárfiókot futtatási kimenetek tárolásához, és kihasználhatják a egy [Azure DevOps](https://azure.microsoft.com/services/devops/) verziókövetés és a Git-storage-fiók. Vegye figyelembe, hogy akkor kell fizetnie egymástól függetlenül felhasznált számítási és tárolási erőforrásokért azok saját díjszabása alapján.
 
 ## <a name="model-management"></a>Modellkezelés
 
 **Mi az Azure Machine Learning Modellkezelés?**
 
-Az Azure Machine Learning Modellkezelés egy felügyelt Azure-szolgáltatás, amely lehetővé teszi az adatok adatszakértők és a fejlesztő-operátor csapatok számára a különböző környezetekben történő megbízhatóan helyezhet üzembe prediktív modelleket. Git-tárházak és a Docker-tárolókat biztosít a ismételhetőség követheti nyomon és igazolhatja. Modellek megbízhatóan a felhőben, helyszíni vagy peremhálózati is telepíthető. Egyszer éles környezetben is kezelheti a modell teljesítményét, majd proaktív módon újratanítása, ha csökken a teljesítmény. Modellek helyi gépen való üzembe helyezése [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), a Spark futtatása [HDInsight](https://azure.microsoft.com/services/hdinsight/) vagy Kubernetes-vezényelt [az Azure Container Service](https://azure.microsoft.com/services/container-service/) fürtök.  
+Az Azure Machine Learning Modellkezelés egy felügyelt Azure-szolgáltatás, amely lehetővé teszi az adatok adatszakértők és a fejlesztő-operátor csapatok számára a különböző környezetekben történő megbízhatóan helyezhet üzembe prediktív modelleket. Git-tárházak és a Docker-tárolókat biztosít a ismételhetőség követheti nyomon és igazolhatja. Modellek megbízhatóan a felhőben, helyszíni vagy peremhálózati is telepíthető. Egyszer éles környezetben is kezelheti a modell teljesítményét, majd proaktív módon újratanítása, ha csökken a teljesítmény. Modellek helyi gépen való üzembe helyezése [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), a Spark futtatása [HDInsight](https://azure.microsoft.com/services/hdinsight/) vagy Kubernetes-vezényelt [az Azure Container Service](https://azure.microsoft.com/services/container-service/) fürtök.
 
 **Mi az "modell"?**
 
@@ -78,11 +77,11 @@ A modell a betanítási folyamat kimenete, ami a gépi tanulási algoritmus beta
  
 **Mit jelent a "központi telepítés?"**
 
-Modellkezelési modellek üzembe helyezése az Azure-beli tárolókba csomagolt webszolgáltatásként teszi lehetővé. Ezekhez a webszolgáltatásokhoz REST API-k használatával lehet meghívni. Minden webszolgáltatás egy egyetlen központi telepítési számít, és aktív üzemelő példányok száma vannak a szolgáltatáscsomag kvótáját használja. Az értékesítés-előrejelzési példát, ha telepít a legjobban teljesítő modellt használ, a terv értéke akkor növekszik, egy központi telepítési. Újratanítás és üzembe helyezése egy másik verziója, akkor már két üzemelő példánya. Ha azt állapítja meg, amely az újabb modell jobban, és törölje az eredeti, az üzemelő példányok száma eggyel csökken.  
+Modellkezelési modellek üzembe helyezése az Azure-beli tárolókba csomagolt webszolgáltatásként teszi lehetővé. Ezekhez a webszolgáltatásokhoz REST API-k használatával lehet meghívni. Minden webszolgáltatás egy egyetlen központi telepítési számít, és aktív üzemelő példányok száma vannak a szolgáltatáscsomag kvótáját használja. Az értékesítés-előrejelzési példát, ha telepít a legjobban teljesítő modellt használ, a terv értéke akkor növekszik, egy központi telepítési. Újratanítás és üzembe helyezése egy másik verziója, akkor már két üzemelő példánya. Ha azt állapítja meg, amely az újabb modell jobban, és törölje az eredeti, az üzemelő példányok száma eggyel csökken.
 
 **Az egyes számítási erőforrások üzemelő példányok érhetők el?** 
 
-Modellkezelési futtathatja az üzemelő példányok Docker-tárolókat a regisztrált [az Azure Container Service](https://azure.microsoft.com/services/container-service/), mint [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), vagy a helyi gépen. További üzembe helyezési célok hamarosan bekerül. Vegye figyelembe, hogy meg kell fizetnie egymástól függetlenül minden felhasznált számítási erőforrásokat, azok saját díjszabása alapján.     
+Modellkezelési futtathatja az üzemelő példányok Docker-tárolókat a regisztrált [az Azure Container Service](https://azure.microsoft.com/services/container-service/), mint [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), vagy a helyi gépen. További üzembe helyezési célok hamarosan bekerül. Vegye figyelembe, hogy meg kell fizetnie egymástól függetlenül minden felhasznált számítási erőforrásokat, azok saját díjszabása alapján.
 
 **Az Azure Machine Learning Modellkezelés használatával helyezhet üzembe modelleket modellkezeléssel nem a Kísérletezési szolgáltatással hoztam létre?**
 
@@ -108,15 +107,15 @@ Igen, ugyanannak a modellnek több verzióját is telepítheti. Modellkezelési 
 
 **Mi az az Azure Machine Learning Workbench?**
 
-Az Azure Machine Learning Workbench egy kiegészítő alkalmazást a hivatásos adatszakértők számára készült. Érhető el a Windows és Mac rendszerű, a Machine Learning Workbench biztosít áttekintése, kezelését és ellenőrzését gépi tanulási megoldások. A Machine Learning Workbench biztosít hozzáférést a Microsoft és a nyílt forráskódú fejlesztői Közösség is élvonalbeli mesterséges Intelligencia keretrendszerekre. A legnépszerűbb data science eszközkészletek, többek között a TensorFlow, a Microsoft Cognitive Toolkit, a Spark ML, a scikit bővítettük – ismerje meg, stb. Emellett tettük, például a Visual Studio Code-ot, a Jupyter notebookok és a PyCharm közkedvelt adatelemzési ide-integráció. A Machine Learning Workbench gyorsan minta megértésében, valamint az adatok előkészítéséhez, strukturált vagy strukturálatlan beépített előkészítési képességekkel rendelkezik. Az új adat-előkészítési eszközével, nevű [PROSE](https://microsoft.github.io/prose/), a Microsoft Research a legmodernebb technológiai épül.  
+Az Azure Machine Learning Workbench egy kiegészítő alkalmazást a hivatásos adatszakértők számára készült. Érhető el a Windows és Mac rendszerű, a Machine Learning Workbench biztosít áttekintése, kezelését és ellenőrzését gépi tanulási megoldások. A Machine Learning Workbench biztosít hozzáférést a Microsoft és a nyílt forráskódú fejlesztői Közösség is élvonalbeli mesterséges Intelligencia keretrendszerekre. A legnépszerűbb data science eszközkészletek, többek között a TensorFlow, a Microsoft Cognitive Toolkit, a Spark ML, a scikit bővítettük – ismerje meg, stb. Emellett tettük, például a Visual Studio Code-ot, a Jupyter notebookok és a PyCharm közkedvelt adatelemzési ide-integráció. A Machine Learning Workbench gyorsan minta megértésében, valamint az adatok előkészítéséhez, strukturált vagy strukturálatlan beépített előkészítési képességekkel rendelkezik. Az új adat-előkészítési eszközével, nevű [PROSE](https://microsoft.github.io/prose/), a Microsoft Research a legmodernebb technológiai épül.
 
 **A Workbench az integrált fejlesztői Környezetig?**
 
-Nem. A Machine Learning Workbench úgy tervezték, mint például a Jupyter Notebooks, a Visual Studio Code és a PyCharm népszerű Ide-k kiegészítése, de nem egy teljes funkcionalitású integrált fejlesztői környezet. A Machine Learning Workbench kínál néhány alapszintű szöveges képességek szerkesztését, de a hibakeresés, az intellisense és más gyakran használt IDE-funkciók nem támogatottak. Azt javasoljuk, hogy Ön kedvenc Fejlesztőkörnyezetét használhatja kód fejlesztéséhez, Szerkesztés és hibakeresés. Próbálja meg is Kezdésként [Visual Studio Code Tools for AI](https://www.visualstudio.com/downloads/ai-tools-vscode).
+Nem. A Machine Learning Workbench úgy tervezték, mint például a Jupyter Notebooks, a Visual Studio Code és a PyCharm népszerű Ide-k kiegészítése, de nem egy teljes funkcionalitású integrált fejlesztői környezet. A Machine Learning Workbench kínál néhány alapszintű szöveges képességek szerkesztését, de a hibakeresés, az intellisense és más gyakran használt IDE-funkciók nem támogatottak. Azt javasoljuk, hogy Ön kedvenc Fejlesztőkörnyezetét használhatja kód fejlesztéséhez, Szerkesztés és hibakeresés. Próbálja meg is Kezdésként [Visual Studio Code Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
 **Van-e az Azure Machine Learning Workbench használatával díját?**
 
-Nem. Az Azure Machine Learning Workbench ingyenes alkalmazás. amely korlátlan számú gépre letölthető, és korlátlan számú felhasználó használhatja. Az Azure Machine Learning Workbench csak kísérletezési fiókkal használható. .  
+Nem. Az Azure Machine Learning Workbench ingyenes alkalmazás. amely korlátlan számú gépre letölthető, és korlátlan számú felhasználó használhatja. Az Azure Machine Learning Workbench csak kísérletezési fiókkal használható.
 
 **Parancssori képességeket támogatja?**
 
@@ -138,7 +137,7 @@ Jupyter mellékelt a Workbench jelenlegi verziója elindítja a Python 3 kernel,
 **Melyik a fájlformátumokat jelenleg támogatja a Workbench adatbetöltés?**
 
 A Workbench adatelőkészítési eszközök jelenleg a következő formátumok Adatbetöltési támogatja: 
-- Tagolt fájlok, például a CSV, TSV, stb.  
+- Tagolt fájlok, például a CSV, TSV, stb.
 - Rögzített szélességű fájlok
 - Egyszerű szöveges fájlok
 - Excel (.xls/xlsx)
@@ -157,7 +156,7 @@ Nyilvános előzetes verzió a Workbench adatbetöltést támogatja:
 
 **Milyen típusú adatok konvertálása, előkészítési és átalakítások érhetők el?**
 
-A nyilvános előzetes verzióként a Workbench "Származtatott oszlop szerint példaként", "felosztási oszlop szerint például" "Szöveg csoportosulása", "Hiányzó értékek kezelni" és sok más támogatja.  Workbench is támogatja az adatok típusának átalakítása adatösszesítés (száma, átlag, eltérés, stb.) és az összetett illesztések. Támogatott képességek teljes listáját keresse fel a termék dokumentációját. 
+A nyilvános előzetes verzióként a Workbench "Származtatott oszlop szerint példaként", "felosztási oszlop szerint például" "Szöveg csoportosulása", "Hiányzó értékek kezelni" és sok más támogatja. Workbench is támogatja az adatok típusának átalakítása adatösszesítés (száma, átlag, eltérés, stb.) és az összetett illesztések. Támogatott képességek teljes listáját keresse fel a termék dokumentációját. 
 
 **Vannak-e bármilyen adatok méretkorlátozások kényszeríti az Azure Machine Learning Workbench, kísérletezés és Modellkezelés?**
 

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával MongoDB |} Microsoft Docs
-description: 'Útmutató: adatok másolása Mongo DB támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory használatával MongoDB |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a Mongo DB támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,58 +11,48 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e11c62f338a9e6ce74ce2e04a933b0458df784d0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054058"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807907"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-on-premises-mongodb-connector.md)
-> * [Aktuális verzió](connector-mongodb.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatokat másolni a MongoDB-adatbázist. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység adatokat másol egy MongoDB-adatbázis használata. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+>[!IMPORTANT]
+>Az ADF kiadását az új hatékonyabb natív MongoDB-támogatást nyújt a MongoDB-összekötővel. Ha az előző MongoDB-összekötő használata a megoldás, amely is támogatott, a-van a visszamenőleges kompatibilitás érdekében tekintse meg [MongoDB-összekötővel (örökölt)](connector-mongodb-legacy.md) cikk.
 
-Adatok bármely támogatott fogadó adattárolóhoz másolhatja MongoDB-adatbázist. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Pontosabban a MongoDB összekötő támogatja:
+Adatok bármely támogatott fogadó adattárba másolhatja a MongoDB-adatbázist. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-- MongoDB **2.4, 2.6, 3.0, 3.2-es, 3.4 és 3.6**.
-- Adatok másolása **alapvető** vagy **névtelen** hitelesítés.
+Pontosabban, a MongoDB-összekötővel támogat **legfeljebb 3.4-es verziók**.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adatok másolása a MongoDB-adatbázist, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk további részleteket. Integrációs futásidejű biztosít egy beépített MongoDB-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram MongoDB-adatok másolásakor kell.
+Adatokat másol egy MongoDB-adatbázis, amely nem érhető el nyilvánosan, akkor be kell állítania egy helyi Integration Runtime. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) további részleteket a cikkben.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások megadhatók a MongoDB-összekötőhöz használt tulajdonságokat.
+A következő szakaszok a tulajdonságok, amelyek meghatározzák az adott Data Factory-entitások MongoDB-összekötővel kapcsolatos adatokat.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-MongoDB kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
+Mongodb-hez társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type |A type tulajdonságot kell beállítani: **mongodb-Protokolltámogatással** |Igen |
-| kiszolgáló |Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a mongodb-Protokolltámogatással. |Igen |
-| port |A MongoDB-kiszolgálóhoz a kapcsolatok figyelésére használt TCP portot. |Nem (alapértelmezett érték 27017) |
-| databaseName |A MongoDB-adatbázist, amely az elérni kívánt nevét. |Igen |
-| authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető**, és **névtelen**. |Igen |
-| felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (Ha alapszintű hitelesítést használ). |
-| jelszó |A felhasználó jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen (Ha alapszintű hitelesítést használ). |
-| authSource |A MongoDB-adatbázist, amely a hitelesítő adatok kereséséhez használni kívánt nevét. |Nem. Az egyszerű hitelesítés alapértelmezés szerint a rendszer a rendszergazdai fiókot és a databaseName tulajdonsággal megadott adatbázis. |
-| enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
-| allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke hamis.  | Nem |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| type |A type tulajdonságot kell beállítani: **MongoDbV2** |Igen |
+| kapcsolati Sztringje |Adja meg például a MongoDB kapcsolati sztring `mongodb://[username:password@]host[:port][/[database][?options]]`. Tekintse meg [kapcsolati karakterláncot a MongoDB manuális](https://docs.mongodb.com/manual/reference/connection-string/) további részletekért. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| adatbázis | Az elérni kívánt adatbázis nevét. | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
 
@@ -70,16 +60,13 @@ MongoDB kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 {
     "name": "MongoDBLinkedService",
     "properties": {
-        "type": "MongoDb",
+        "type": "MongoDbV2",
         "typeProperties": {
-            "server": "<server name>",
-            "databaseName": "<database name>",
-            "authenticationType": "Basic",
-            "username": "<username>",
-            "password": {
+            "connectionString": {
                 "type": "SecureString",
-                "value": "<password>"
-            }
+                "value": "mongodb://[username:password@]host[:port][/[database][?options]]"
+            },
+            "database": "myDatabase"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -91,14 +78,12 @@ MongoDB kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a szakasz a MongoDB dataset által támogatott tulajdonságokról listáját tartalmazza.
-
-Adatok másolása a MongoDB, az adatkészlet típus tulajdonságának beállítása **MongoDbCollection**. A következő tulajdonságok támogatottak:
+Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). MongoDB-adatkészlet a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **MongoDbCollection** | Igen |
-| collectionName |A MongoDB-adatbázist a gyűjtemény nevét. |Igen |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **MongoDbV2Collection** | Igen |
+| collectionName |MongoDB-adatbázisban szereplő gyűjtemény neve. |Igen |
 
 **Példa**
 
@@ -106,7 +91,7 @@ Adatok másolása a MongoDB, az adatkészlet típus tulajdonságának beállít�
 {
      "name":  "MongoDbDataset",
     "properties": {
-        "type": "MongoDbCollection",
+        "type": "MongoDbV2Collection",
         "linkedServiceName": {
             "referenceName": "<MongoDB linked service name>",
             "type": "LinkedServiceReference"
@@ -120,16 +105,24 @@ Adatok másolása a MongoDB, az adatkészlet típus tulajdonságának beállít�
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a MongoDB forrás által támogatott tulajdonságok listáját tartalmazza.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a MongoDB-forráshoz által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="mongodb-as-source"></a>MongoDB forrásaként
+### <a name="mongodb-as-source"></a>Mongodb-hez mint forrás
 
-Adatok másolása a MongoDB, állítsa be a forrás típusa a másolási tevékenység **MongoDbSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **MongoDbSource** | Igen |
-| lekérdezés |Az egyéni SQL-92 lekérdezés segítségével adatokat olvasni. Például: Válasszon * from tábla. |Nem (Ha a "collectionName" adatkészlet paraméter van megadva) |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MongoDbV2Source** | Igen |
+| szűrő | Meghatározza a kijelölési szűrő lekérdezés operátorok használata. A gyűjteményben található dokumentumokat adja vissza, hagyja ki ezt a paramétert, vagy adja át egy üres dokumentumot ({}). | Nem |
+| cursorMethods.project | Itt adhatja meg a dokumentumokat a leképezés a mezők. Minden mező az egyező dokumentumok visszaadandó, hagyja ki ezt a paramétert. | Nem |
+| cursorMethods.sort | Meghatározza azt a sorrendet, amelyben a lekérdezés visszaadja az egyező dokumentumok. Tekintse meg [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
+| cursorMethods.limit | Meghatározza a kiszolgáló visszaadja dokumentumok maximális számát. Tekintse meg [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem | 
+| cursorMethods.skip | Megadja a számát, hagyja ki a dokumentumok és, ahol a MongoDB eredmények kezdődik. Tekintse meg [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
+| batchSize | Megadja a választ kapott a MongoDB-példányban minden kötegben visszaadandó dokumentumok számát. A legtöbb esetben a köteg méretének módosítása nem érinti a felhasználó vagy az alkalmazás. A cosmos DB-korlátok minden egyes köteg nem lehet hosszabb 40MB-nál, amely egyezik meg a dokumentumokat mérete batchSize számát, így csökkenti az értéket, ha a dokumentumok méretétől, nagy folyamatban. | Nem<br/>(az alapértelmezett érték **100**) |
+
+>[!TIP]
+>A BSON a dokumentum felhasználásához ADF támogatási **szigorú mód**. Ellenőrizze, hogy a szűrő lekérdezés helyett rendszerhéj mód szigorú módban van. További leírás található [MongoDB manuális](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Példa**
 
@@ -152,8 +145,14 @@ Adatok másolása a MongoDB, állítsa be a forrás típusa a másolási tevéke
         ],
         "typeProperties": {
             "source": {
-                "type": "MongoDbSource",
-                "query": "SELECT * FROM MyTable"
+                "type": "MongoDbV2Source",
+                "filter": "{datetimeData: {$gte: ISODate(\"2018-12-11T00:00:00.000Z\"),$lt: ISODate(\"2018-12-12T00:00:00.000Z\")}, _id: ObjectId(\"5acd7c3d0000000000000000\") }",
+                "cursorMethods": {
+                    "project": "{ _id : 1, name : 1, age: 1, datetimeData: 1 }",
+                    "sort": "{ age : 1 }",
+                    "skip": 3,
+                    "limit": 3
+                }
             },
             "sink": {
                 "type": "<sink type>"
@@ -163,83 +162,13 @@ Adatok másolása a MongoDB, állítsa be a forrás típusa a másolási tevéke
 ]
 ```
 
-> [!TIP]
-> Ha meg az SQL-lekérdezést, vegye figyelembe a dátum és idő formátumban. Például: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` vagy paraméter használata `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+## <a name="export-json-documents-as-is"></a>Exportálja a JSON-dokumentumok,-van
 
-## <a name="schema-by-data-factory"></a>Adat-előállító sémája
+A MongoDB-összekötő segítségével exportálhatja a JSON-dokumentumok,-különböző fájlalapú tárolók vagy az Azure Cosmos DB MongoDB-gyűjtemény származik. Az ilyen sémafüggetlen másolási eléréséhez hagyja ki a "struktúra" (más néven *séma*) szakaszban az adatkészlet és a séma hozzárendelése a másolási tevékenység.
 
-Az Azure Data Factory szolgáltatásnak kikövetkezteti a MongoDB-gyűjteményből séma használatával a **legújabb 100 dokumentumok** a gyűjteményben. A 100 dokumentumok teljes séma nem tartalmaznak, ha azokat az oszlopokat is figyelmen kívül hagyja a másolási művelet során.
+## <a name="schema-mapping"></a>Séma-hozzárendelés
 
-## <a name="data-type-mapping-for-mongodb"></a>Adattípus-leképezés mongodb-protokolltámogatással
-
-Amikor adatokat másol a MongoDB, a következő megfeleltetéseket szolgálnak a MongoDB adattípusok Azure Data Factory ideiglenes adattípusok. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
-
-| MongoDB-adattípus | Data factory ideiglenes adattípus |
-|:--- |:--- |
-| Bináris |Byte] |
-| Logikai |Logikai |
-| Dátum |DateTime |
-| NumberDouble |Dupla |
-| NumberInt |Int32 |
-| NumberLong |Int64 |
-| ObjectID |Sztring |
-| Sztring |Sztring |
-| UUID |GUID |
-| Objektum |Renormalized történő egybesimítására "_" beágyazott elválasztójelként oszlopok |
-
-> [!NOTE]
-> Virtuális táblák használata tömbök-támogatással kapcsolatos további tudnivalókért tekintse meg [támogatja az összetett típusok virtuális táblák használata](#support-for-complex-types-using-virtual-tables) szakasz.
->
-> Jelenleg a következő MongoDB-adattípusok nem támogatottak: DBPointer, JavaScript, Max percenkénti kulcs, reguláris kifejezés, szimbólum, Timestamp, meghatározatlan.
-
-## <a name="support-for-complex-types-using-virtual-tables"></a>Virtuális táblák használata összetett típusok támogatása
-
-Az Azure Data Factory beépített ODBC-illesztőprogram használatával csatlakozhat, és másolja az adatokat a MongoDB-adatbázisból. A dokumentumok között különböző típusú tömb, vagy objektumok például összetett típusok az illesztőprogram újra normalizálja adatok megfelelő virtuális táblákba. Pontosabban Ha a tábla tartalmaz ilyen oszlopok, az illesztőprogram állít elő, a következő virtuális táblák:
-
-* A **alaptábla**, amely tartalmazza a tényleges táblából, az összetett típusú oszlopok ugyanazokat az adatokat. Az alaptábla ugyanazt a nevet használja, amely valós táblázatként.
-* A **virtuális tábla** minden összetett típusú oszlophoz, amely kiterjeszti a beágyazott adatok. A virtuális táblák neve a valódi tábla, "_" elválasztó és a nevét, a tömb vagy objektum nevével.
-
-Virtuális táblák tekintse meg az adatok a valós táblázatban, az illesztőprogram, a nem normalizált adatok eléréséhez. A MongoDB-tömbök tartalmának lekérdezése, és a virtuális tábla érheti el.
-
-### <a name="example"></a>Példa
-
-Itt ExampleTable például minden cellában – számlákon objektumokból álló tömb egy oszlopot és egy oszlop formájú skaláris típusoknál – minősítések tömbje MongoDB tábla lesz.
-
-| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
-| --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", cikk: "toaster", az ár: "456" kedvezményes: "0,2"}, {invoice_id: "124" elem: "helyezzük", az ár: "1235" kedvezményes: "0,2"}] |Silver |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", cikk: "kombinált hűtőszekrények", az ár: "12543" kedvezménnyel: "0,0"}] |Arany |[1,2] |
-
-Az illesztőprogram az egyetlen tábla képviselő virtuális táblákat hoz létre. Az első virtuális táblát kell az alaptábla nevű "ExampleTable", a példában látható módon. Az alaptábla az eredeti tábla összes adatot tartalmaz, de az adatokat a tömbök kimaradt, és a virtuális táblázatokban ki van bontva.
-
-| _id | Ügyfél neve | Szolgáltatásszint |
-| --- | --- | --- |
-| 1111 |ABC |Silver |
-| 2222 |XYZ |Arany |
-
-Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek a példában az eredeti tömbök. Ezek a táblázatok tartalmazzák a következő:
-
-* Vissza az eredeti elsődleges kulcsként megadott oszlop (keresztül a _id. oszlop) eredeti tömb sorának megfelelő mutató hivatkozás
-* Utalhat, hogy az adatok az eredeti tömbön belüli pozíciója
-* A kibontott adatok belül a tömb egyes elemei
-
-**"ExampleTable_Invoices". tábla:**
-
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
-| --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |a toaster |456 |0.2 |
-| 1111 |1 |124 |Helyezzük |1235 |0.2 |
-| 2222 |0 |135 |kombinált hűtőszekrények |12543 |0.0 |
-
-**"ExampleTable_Ratings". tábla:**
-
-| _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
-| --- | --- | --- |
-| 1111 |0 |5 |
-| 1111 |1 |6 |
-| 2222 |0 |1 |
-| 2222 |1 |2 |
-
+Adatok másolása a MongoDB táblázatos fogadóba, tekintse meg [séma-hozzárendelés](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

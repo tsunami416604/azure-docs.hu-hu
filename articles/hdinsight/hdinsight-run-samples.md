@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408680"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745057"
 ---
-# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows-alapú HDInsight az Apache Hadoop MapReduce-minták futtatása
+# <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>A Windows-alapú HDInsight MapReduce-minták futtatása
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Minták biztosítunk, amelyek elindított futó MapReduce-feladatok az Apache Hadoop-fürtöket az Azure HDInsight használatával. Ezek a minták a HDInsight által felügyelt fürtöket, Ön által létrehozott minden egyes végrehajtott érhető el. Ezek a minták futtatása révén megismerkedhet a feladatok futtatásához a Hadoop-fürtök Azure PowerShell-parancsmagok használatával.
@@ -167,7 +167,7 @@ Ehhez a mintához megadott parancsfájl egy Hadoop-jar feladatot, és értéke l
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>10 GB-os Graysort
-Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy, amely az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 0.578 TB/perc (100 TB-os 173 percek) arány 2009 által fejlesztett használ. Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](http://sortbenchmark.org/) hely.
+Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy, amely az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 0.578 TB/perc (100 TB-os 173 percek) arány 2009 által fejlesztett használ. Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](https://sortbenchmark.org/) hely.
 
 Ebben a példában három különböző MapReduce-programok:
 
@@ -383,7 +383,7 @@ A pi estimator Java-kóddal, amely tartalmazza a teljesítményleképező és ny
 * "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
 *
-* http://www.apache.org/licenses/LICENSE-2.0
+* https://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
@@ -722,7 +722,7 @@ A kód a TeraSort MapReduce-programot a vizsgálatra ebben a szakaszban jelennek
     * "License"); you may not use this file except in compliance
     * with the License.  You may obtain a copy of the License at
     *
-    *     http://www.apache.org/licenses/LICENSE-2.0
+    *     https://www.apache.org/licenses/LICENSE-2.0
     *
     * Unless required by applicable law or agreed to in writing, software
     * distributed under the License is distributed on an "AS IS" BASIS,

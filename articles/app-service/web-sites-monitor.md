@@ -15,150 +15,135 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321579"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994946"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: Alkalmazások figyelése az Azure App Service-ben
-[App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714) a beépített monitorozási funkciókat biztosít a [az Azure portal](https://portal.azure.com).
-Az Azure Portalon lehetőség tekintse át **kvóták** és **metrikák** az alkalmazás, valamint az App Service-csomag, beállítása **riasztások** és még **méretezése**  metrikák alapján automatikusan.
+# <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése az Azure App Service-ben
+[Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített monitorozási funkciókat biztosít a webes, mobil háttérrendszerek, és az API-alkalmazások a [az Azure portal](https://portal.azure.com).
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Az Azure Portalon tekintheti át *kvóták* és *metrikák* egy alkalmazáshoz, tekintse át az App Service-csomagot, és automatikus beállítása *riasztások* és *méretezése* , amely a metrikák alapulnak.
 
-## <a name="understanding-quotas-and-metrics"></a>Understanding kvóták és metrikák
-### <a name="quotas"></a>Kvóták
-Az App Service-ben üzemeltetett alkalmazások vannak bizonyos *korlátok* az erőforrások használatához. A korlátok által meghatározott a **App Service-csomag** az alkalmazáshoz társított.
+## <a name="understand-quotas"></a>Kvóták ismertetése
+
+Az App Service-ben üzemeltetett alkalmazások is használhatják az erőforrásokat a bizonyos korlátozások vonatkoznak rájuk. A korlátok az alkalmazáshoz tartozó App Service-csomag határozza meg.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Az alkalmazás működik, ha egy **ingyenes** vagy **megosztott** tervezi, akkor korlátait az erőforrásokat, az alkalmazás által meghatározott **kvóták**.
+Ha az alkalmazás üzemel egy *ingyenes* vagy *megosztott* kvóták által meghatározott csomag, az erőforrásokat, az alkalmazás használhassa-korlátait.
 
-Az alkalmazás működik, ha egy **alapszintű**, **Standard** vagy **prémium** tervezi, majd az erőforrások használatához korlátait-beállításokat a **mérete**(Kicsi, közepes, nagy méretű) és **példányszám** (1, 2, 3,...), a **App Service-csomag**.
+Ha az alkalmazás üzemel egy *alapszintű*, *Standard*, vagy *prémium* csomag, az erőforrásokat, amelyekkel korlátait-beállításokat a *mérete* () Kis, közepes, nagy méretű) és *példányszám* (1, 2, 3, és így tovább), az App Service-csomag.
 
-**Kvóták** a **ingyenes** vagy **megosztott** -alkalmazásokat:
+Az ingyenes és közös alkalmazások kvóták a következők:
 
-* **CPU(Short)**
-  * Ehhez az alkalmazáshoz egy 5 perces intervallum engedélyezett CPU mennyisége. Ez a kvóta alaphelyzetbe állítja át 5 percenként.
-* **CPU(Day)**
-  * Ehhez az alkalmazáshoz egy nap alatt engedélyezett Processzor teljes összege. Ez a kvóta alaphelyzetbe állítja a 24 óránként éjfélkor (UTC).
-* **Memória**
-  * Teljes memóriamennyiség engedélyezett ehhez az alkalmazáshoz.
-* **Bandwidth**
-  * Teljes összege a kimenő sávszélesség engedélyezett ehhez az alkalmazáshoz egy nap alatt.
-    Ez a kvóta alaphelyzetbe állítja a 24 óránként éjfélkor (UTC).
-* **Filesystem**
-  * Engedélyezett tárterület teljes mérete.
+| Kvóta | Leírás |
+| --- | --- |
+| **Processzor (rövid)** | A Processzor egy 5 perces időszakban az alkalmazás engedélyezett mennyisége. Ez a kvóta alaphelyzetbe állítja át 5 percenként. |
+| **Processzor (nap)** | Az alkalmazás egy nap alatt engedélyezett Processzor teljes mennyisége. Ez a kvóta alaphelyzetbe állítja a 24 óránként éjfélkor (UTC). |
+| **Memória** | A teljes memóriamennyiséget engedélyezett ehhez az alkalmazáshoz. |
+| **Bandwidth** | A kimenő sávszélesség egy nap alatt az alkalmazás engedélyezett mennyisége. Ez a kvóta alaphelyzetbe állítja a 24 óránként éjfélkor (UTC). |
+| **Filesystem** | Az engedélyezett tárolási mennyisége. |
 
-A csak lévő üzemeltetett alkalmazások vonatkozó kvóta **alapszintű**, **Standard**, és **prémium** tervek van **fájlrendszer**.
+A csak a tárolt alkalmazások alkalmazandó kvóta *alapszintű*, *Standard*, és *prémium* tervek fájlrendszer.
 
-További információ a konkrét kvóták, korlátozások és a másik App Service Termékváltozatai elérhető funkciók itt található: [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md#app-service-limits)
+Az adott kvóták, korlátozások és a különféle App Service-termékváltozatok elérhető funkciók kapcsolatos további információkért lásd: [Azure-előfizetési szolgáltatási korlátok](../azure-subscription-service-limits.md#app-service-limits).
 
-#### <a name="quota-enforcement"></a>Kvóta kényszerítése
-Ha egy alkalmazás nagyobb, mint a **CPU (rövid)**, **CPU (nap)**, vagy **sávszélesség** kvóta majd az alkalmazás le van állítva, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban az összes bejövő kéréseket eredményez olyan **HTTP 403**.
-![][http403]
+### <a name="quota-enforcement"></a>Kvóta kényszerítése
 
-Ha az alkalmazás **memória** kvótát túllépi, akkor az alkalmazás újraindulna.
+Ha egy alkalmazás nagyobb, mint a *CPU (rövid)*, *CPU (nap)*, vagy *sávszélesség* kvótát, az alkalmazás le van állítva, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban minden bejövő kérelem HTTP 403-as hibát eredményez.
 
-Ha a **fájlrendszer** kvótát túllépi, akkor minden írási művelet sikertelen, amely tartalmazza a naplókba írási.
+![403-as hibaüzenet][http403]
 
-Kvóták növelhető vagy eltávolítja az alkalmazásból az App Service-csomag frissítése.
+Ha az alkalmazás a memóriakvóta eltelik, az alkalmazás újraindítása.
 
-### <a name="metrics"></a>Mérőszámok
-**Metrikák** az alkalmazást, vagy az App Service-csomag viselkedés kapcsolatos adatok megadása.
+A fájlrendszer kvóta túllépése esetén minden írási művelet meghiúsul. Az írási művelet hibák közé tartozik a naplókba írási.
 
-Az egy **alkalmazás**, a rendelkezésre álló metrikák:
+Növelheti vagy kvóták eltávolítása az alkalmazás az App Service-csomag frissítése.
 
-* **Átlagos válaszidő**
-  * Az átlagos idő milliszekundumban kiszolgálni a kérelmeket az alkalmazás.
-* **Átlagos memória-munkakészlet**
-  * Az átlagos MIB-adatbázisból az alkalmazás által használt memória mennyiségét.
-* **CPU-idő**
-  * Az alkalmazás által felhasznált másodpercek alatt CPU mérete. Ez a metrika kapcsolatos további információkért lásd: [Processzorhasználat idő vs CPU (%)](#cpu-time-vs-cpu-percentage)
-* **Az adatok**
-  * A MIB-alkalmazás által használt bejövő sávszélesség mennyiségét.
-* **Kimenő adatforgalom**
-  * A MIB-alkalmazás által használt kimenő sávszélesség mennyiségét.
-* **HTTP 2xx**
-  * HTTP-állapotkódot eredményez kérelmek száma > = 200-as, de < 300.
-* **HTTP 3xx**
-  * HTTP-állapotkódot eredményez kérelmek száma > = 300, de < 400.
-* **HTTP 401-es**
-  * HTTP 401-es állapotkódot eredményez kérelmek száma.
-* **A HTTP 403-as**
-  * A HTTP 403-as állapotkódot eredményez kérelmek száma.
-* **A HTTP 404-es**
-  * A HTTP 404 állapotkódot eredményez kérelmek száma.
-* **HTTP 406**
-  * HTTP 406 állapotkódot eredményez kérelmek száma.
-* **HTTP 4xx**
-  * HTTP-állapotkódot eredményez kérelmek száma > 400-as, de < 500 =.
-* **HTTP Kiszolgálóhibák**
-  * HTTP-állapotkódot eredményez kérelmek száma > = 500-as, de < 600.
-* **Memória-Munkakészlet**
-  * A MIB-alkalmazás által használt memória jelenlegi mérete.
-* **Kérelmek**
-  * Függetlenül az eredményül kapott HTTP-állapotkód: kérelmek teljes száma.
+## <a name="understand-metrics"></a>Metrikák ismertetése
 
-Az egy **App Service-csomag**, a rendelkezésre álló metrikák:
+Metrikák ismertetik az alkalmazás vagy az App Service-csomag viselkedését.
+
+Az alkalmazás a rendelkezésre álló metrikák a következők:
+
+| Metrika | Leírás |
+| --- | --- |
+| **Átlagos válaszidő** | Az átlagos idő ezredmásodpercben kiszolgálni a kérelmeket, az alkalmazás. |
+| **Átlagos memória-munkakészlet** | Az átlagos mebibytes (MiB) az alkalmazás által használt memória mennyisége. |
+| **CPU-idő** | Másodpercek alatt az alkalmazás által felhasznált CPU mennyisége. Ez a metrika kapcsolatos további információkért lásd: [idő vs CPU processzorhasználat](#cpu-time-vs-cpu-percentage). |
+| **Az adatok** | Az alkalmazást, a MiB által felhasznált bejövő sávszélesség mennyiségét. |
+| **Kimenő adatforgalom** | Az alkalmazást, a MiB használja fel a kimenő sávszélesség mennyiségét. |
+| **HTTP 2xx** | Egy HTTP-állapotkód: legalább 200-as, de < 300 eredményező kérések száma. |
+| **HTTP 3xx** | Eredményez olyan HTTP-állapotkód: legalább 300, de < 400 kérelmek száma. |
+| **HTTP 401-es** | HTTP 401-es állapotkódot eredményez kérelmek száma. |
+| **A HTTP 403-as** | A HTTP 403-as állapotkódot eredményez kérelmek száma. |
+| **A HTTP 404-es** | A HTTP 404 állapotkódot eredményez kérelmek száma. |
+| **HTTP 406** | HTTP 406 állapotkódot eredményez kérelmek száma. |
+| **HTTP 4xx** | Egy HTTP-állapotkód: legalább 400-as, de < 500 eredményező kérések száma. |
+| **HTTP Kiszolgálóhibák** | Egy HTTP-állapotkód: legalább 500-as, de < 600 eredményező kérések száma. |
+| **Memória-Munkakészlet** | Az aktuális MIB, az alkalmazás által használt memória mennyisége. |
+| **Kérelmek** | Függetlenül az eredményül kapott HTTP-állapotkód: kérelmek teljes száma. |
+
+App Service-csomag a rendelkezésre álló metrikák a következők:
 
 > [!NOTE]
-> App Service-csomag metrikái csak érhetők el a csomagok **alapszintű**, **Standard**, és **prémium** szinten.
-> 
+> App Service-csomag metrikái csak a csomagok érhetők *alapszintű*, *Standard*, és *prémium* szinten.
 > 
 
-* **Processzorhasználat (%)**
-  * Az átlagos CPU-használatának megjelenítése a csomag összes példányán.
-* **Memóriahasználat (%)**
-  * Az átlagos memóriafelhasználás a csomag összes példányán használt.
-* **Az adatok**
-  * A csomag összes példányán használt átlagos bejövő sávszélesség.
-* **Kimenő adatforgalom**
-  * Az átlag, a kimenő sávszélesség-használatot a csomag összes példányán.
-* **Lemezvárólista hossza**
-  * Átlagos olvasási és írási várólistára került kérelmeket tárolón. Egy magas várólista hossza arra utalhat, hogy egy alkalmazás, amely túlzott mértékű lemez i/o-miatt előfordulhat, hogy lehet lelassul.
-* **HTTP-várólista hossza**
-  * Az üzenetsor teljesítése előtt szeretném rendelkezett a HTTP-kérések átlagos száma. Egy nagy és egyre nagyobb HTTP-várólista hossza jele csomag nagy terhelés alatt.
+| Metrika | Leírás |
+| --- | --- |
+| **Processzorhasználat (%)** | Az átlagos CPU-használatának megjelenítése a csomag összes példányán. |
+| **Memóriahasználat (%)** | Az átlagos memóriafelhasználás a csomag összes példányán használt. |
+| **Az adatok** | A csomag összes példányán használt átlagos bejövő sávszélesség. |
+| **Kimenő adatforgalom** | Az átlag, a kimenő sávszélesség-használatot a csomag összes példányán. |
+| **Lemezvárólista hossza** | Átlagos olvasási és írási várólistára került kérelmeket tárolón. Egy magas várólista hossza arra utalhat, hogy egy alkalmazást, amely túlzott mértékű lemez i/o-miatt előfordulhat, hogy lehet lelassul. |
+| **HTTP-várólista hossza** | Az üzenetsor teljesítése előtt szeretném rendelkezett a HTTP-kérések átlagos száma. Egy nagy és egyre nagyobb HTTP-várólista hossza jele csomag nagy terhelés alatt. |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>Processzorhasználat idő vs CPU (%)
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
-Nincsenek két mérőszám, amely a CPU-használat tükrözik. **CPU-idő** és **Processzorhasználat (%)**
+Nincsenek két mérőszám, amely tükrözi a CPU-használat:
 
-**CPU-idő** lévő üzemeltetett alkalmazások hasznos **ingyenes** vagy **megosztott** tervek, mert azok kvóták egyike használja az alkalmazás CPU percben értendő.
+**CPU-idő**: Az alkalmazások hasznos üzemeltetett ingyenes vagy megosztott tervek, mert a kvóták egyike használja az alkalmazás CPU percben értendő.
 
-**Processzorhasználat (%)** lévő üzemeltetett alkalmazások hasznos **alapszintű**, **standard**, és **prémium** tervek, mert azok kiterjeszthető. Processzorhasználat (%) összes példányra vetítve az összesített használati jól jelzi.
+**Processzorhasználat (%)**: Akkor hasznos, mert azok kiterjeszthető az alapszintű, Standard és prémium csomagokban üzemeltetett alkalmazásokhoz. Processzorhasználat (%) összes példányra vetítve az összesített használati jól jelzi.
 
-## <a name="metrics-granularity-and-retention-policy"></a>Metrikák és a megőrzéshez
+## <a name="metrics-granularity-and-retention-policy"></a>Metrikák és a megőrzési házirend
 Egy alkalmazás és az app service-csomag metrikáinak naplózza, és a szolgáltatás a következő granularitással és adatmegőrzési szabályzatok szerint összesítve:
 
-* **Perc** granularitási metrikák megmaradnak a **30 óra**
-* **Óra** granularitási metrikák megmaradnak a **30 nap**
-* **Nap** granularitási metrikák megmaradnak a **30 nap**
+* **Perc** granularitási metrikák 30 óra megmaradnak.
+* **Óra** granularitási metrikák 30 napig megőrződnek.
+* **Nap** granularitási metrikák 30 napig megőrződnek.
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Kvóták és metrikák figyelése az Azure Portalon.
-Megtekintheti a különböző állapotának **kvóták** és **metrikák** hatással lenne az alkalmazás a [az Azure portal](https://portal.azure.com).
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Kvóták és az Azure Portalon metrikák figyelése
+A különböző kvóták és a egy alkalmazást érintő mérőszámokat állapotának áttekintéséhez keresse fel a [az Azure portal](https://portal.azure.com).
 
-![][quotas]
-**Kvóták** találja a beállítások >**kvóták**. A felhasználói felület lehetővé teszi, hogy tekintse át: (1) a kvóták nevét, (2) a átállítási időközt, (3) az aktuális korlát és (4) a jelenlegi érték.
+![Az Azure Portalon kvóták diagram][quotas]
 
-![][metrics]
-**Metrikák** elérhető közvetlenül az erőforrás-oldalon. Testre szabhatja a diagram: (1) **kattintson** , és (2) válassza a **diagram szerkesztése**.
-Itt módosíthatja a (3) **időtartomány**, (4) **diagramtípus**, és (5) **metrikák** megjelenítéséhez.  
+Kvóták megkereséséhez válassza ki a **beállítások** > **kvóták**. A diagramra megtekintheti: 
+1. A kvóta neve.
+1. A átállítási időközt.
+1. A jelenlegi korlátozását.
+1. Az aktuális érték.
 
-További információk a metrikákról itt: [Szolgáltatási metrikák figyelése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+![Az Azure Portalon metrikadiagram][metrics] metrikák közvetlenül elérheti a **erőforrás** lap. A diagram testreszabása: 
+1. Válassza ki a diagramon.
+1. Válassza ki **diagram szerkesztése**.
+1. Szerkessze a **időtartomány**.
+1. Szerkessze a **diagramtípus**.
+1. Szerkessze a megjeleníteni kívánt metrikák.  
+
+További információk a metrikákról, lásd: [Monitorozza a szolgáltatások mérőszámait](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Riasztások és az automatikus méretezés
-Egy alkalmazás vagy az App Service-csomagra metrikák riasztásokat is lehet csatolja. További tudnivalókért lásd: [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Egy alkalmazás vagy az App Service-csomag metrikáinak riasztásokat is lehet csatolja. További információ: [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Riasztások fogadása).
 
-Alapszintű, standard vagy prémium szintű App Service-csomagok támogatási üzemeltetett App Service-alkalmazások **automatikus skálázási**. Automatikus skálázási szabályokat, amelyek az App Service-csomag metrikái figyelése konfigurálását teszi lehetővé. Szabályok növelheti vagy csökkentheti a példányszám igény szerint a további erőforrások rendelkezésre bocsátása. Szabályok segítségével pénzt takaríthat meg, ha az alkalmazás fölösleges van kiépítve. Automatikus skálázás Itt többet tudhat meg: [A méretezési csoport hogyan](../monitoring-and-diagnostics/insights-how-to-scale.md) és itt [ajánlott eljárások az Azure Monitor automatikus skálázáshoz](../azure-monitor/platform/autoscale-best-practices.md)
+App Service-ben a Basic, Standard vagy prémium szintű App Service-ben csomagok támogatási automatikus skálázási üzemeltetett alkalmazások. Az Automatikus méretezéssel beállíthatja a szabályokat, amelyek az App Service-csomag metrikái figyelése. Szabályok növelheti vagy csökkentheti a példányok száma, ami lehetővé teszi további erőforrások, igény szerint. Szabályok segítségével pénzt takaríthat meg, ha az alkalmazás fölösleges van kiépítve. 
 
-> [!NOTE]
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
+Automatikus skálázási kapcsolatos további információkért lásd: [méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md) és [ajánlott eljárások az Azure Monitor automatikus skálázásához](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

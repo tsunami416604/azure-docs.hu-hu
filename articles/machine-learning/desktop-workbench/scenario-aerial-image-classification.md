@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9dd4ca4b4f156823aff3b8a475e06ea63f98be6c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260550"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975301"
 ---
 # <a name="aerial-image-classification"></a>Légifelvételek besorolása
 
@@ -174,7 +174,7 @@ Az ajánlott módszer hozhat létre HDInsight-fürtöt használ a HDInsight Spar
 
 1. A HDInsight Spark-fürt sablon a "template.json" fájlt a projekt "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" almappájában. Alapértelmezés szerint a sablon létrehoz egy Spark-fürt 40 feldolgozó csomópontokat. Ha módosítania kell ezt a számot, tetszőleges szövegszerkesztőben nyissa meg a sablon, és cserélje le a munkavégző csomópont száma tetszőleges "40" példányai.
     - Ha úgy dönt, a feldolgozó csomópontok száma kisebb, később jelentkezhetnek memóriahiány hibák. Memória típusú hibái elleni, előfordulhat, hogy a képzés és operacionalizálás parancsfájlok futtathatók a rendelkezésre álló adatok egy részét ez a dokumentum későbbi szakaszában leírtak szerint.
-2. Válasszon egy egyedi nevet és jelszót a HDInsight-fürt, és beírhatók a következő parancsot a felsoroltak közül: majd hozni a fürtöt a parancsok kiadásával:
+2. Válasszon egy egyedi nevet és jelszót a HDInsight-fürt, és beírhatók a következő parancsot a felsoroltak közül: A parancsok kiadása a fürt létrehozásához:
 
     ```
     set HDINSIGHT_CLUSTER_NAME=[HDInsight cluster name]
@@ -332,7 +332,7 @@ pip install matplotlib azure-storage==0.36.0 pillow scikit-learn azure-mgmt-batc
 
 ## <a name="data-acquisition-and-understanding"></a>Adatgyűjtés és adatértelmezés
 
-Ebben a forgatókönyvben a nyilvánosan elérhető légifelvételes képanyag adatait használja a [nemzeti mezőgazdaság képanyag Program](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) : 1-fogyasztásmérő. A Microsoft hozta létre, 224 képpontos x 224 képpontos PNG-fájlok, az eredeti NAIP adatok csonkolva és a föld használata címkéit alapján rendezett készleteket a [nemzeti föld lefedje adatbázis](https://www.mrlc.gov/nlcd2011.php). Egy képet "Developed" címkével ellátott teljes méretben jelenik meg:
+Ebben a forgatókönyvben a nyilvánosan elérhető légifelvételes képanyag adatait használja a [nemzeti mezőgazdaság képanyag Program](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) : 1-fogyasztásmérő. A Microsoft hozta létre, 224 képpontos x 224 képpontos PNG-fájlok, az eredeti NAIP adatok csonkolva és a föld használata címkéit alapján rendezett készleteket a [nemzeti föld lefedje adatbázis](https://www.mrlc.gov/data/references/national-land-cover-database-2011-nlcd2011). Egy képet "Developed" címkével ellátott teljes méretben jelenik meg:
 
 ![Fejlett föld minta csempe](media/scenario-aerial-image-classification/sample-tile-developed.png)
 

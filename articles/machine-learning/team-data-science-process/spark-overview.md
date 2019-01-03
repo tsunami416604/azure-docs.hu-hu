@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b61c66dbb152914fcacb9020deab0cc4b76a6bc0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9e22299a508810cabaa9361d764fd2a8e1ecdee8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139418"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975984"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az Azure HDInsight Spark használatával adatelemzés áttekintése
 
-Ez az alkalmazáscsomag témakörök használatára a HDInsight Spark például adatbetöltést, funkciófejlesztési, modellezés és a modell értékelése a közös adatok adatelemzési feladatokat mutatja be. Használt adatokat egy minta az 2013 NYC taxi utazást és diszkont adatkészlet. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes. A témakörök a modellek tárolása az Azure blob storage (WASB) és a pontszám, és a prediktív teljesítmény kiértékelése is megjelennek. Speciális témakörök ismertetik, hogyan lehet a modellek tanítása az kereszt-ellenőrzési és a hyper-paraméter kezdik. Ez a témakör áttekintést is hivatkozik a témakörök, amelyek bemutatják, hogyan állítható be a Spark-fürt a megadott forgatókönyvek a lépések elvégzéséhez szükséges. 
+Ez az alkalmazáscsomag témakörök használatára a HDInsight Spark például adatbetöltést, funkciófejlesztési, modellezés és a modell értékelése a közös adatok adatelemzési feladatokat mutatja be. Használt adatokat egy minta az 2013 NYC taxi utazást és diszkont adatkészlet. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes. A témakörök a modellek tárolása az Azure blob storage (WASB) és a pontszám, és a prediktív teljesítmény kiértékelése is megjelennek. Speciális témakörök ismertetik, hogyan lehet a modellek tanítása az kereszt-ellenőrzési és a hyper-paraméter kezdik. Ez a témakör áttekintést is hivatkozik a témakörök, amelyek bemutatják, hogyan állítható be a Spark-fürt a megadott forgatókönyvek a lépések elvégzéséhez szükséges.
 
 ## <a name="spark-and-mllib"></a>Spark- és MLlib
-[A Spark](http://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozás big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. [MLlib](http://spark.apache.org/mllib/) van Spark skálázható gépi tanulási kódtár, amely a algoritmikus adatmodellezési képességekkel az elosztott környezetekben. 
+[A Spark](http://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozás big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. [MLlib](http://spark.apache.org/mllib/) van Spark skálázható gépi tanulási kódtár, amely a algoritmikus adatmodellezési képességekkel az elosztott környezetekben.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) nyílt forráskódú Spark on Azure üzemeltetett ajánlat. Is támogatja a **Jupyter PySpark notebookok** futtatható Spark SQL interaktív lekérdezések átalakítása, szűréssel és az Azure Blobs (WASB) tárolt adatok vizualizációja a Spark-fürtön. PySpark a Python API Spark számára. A kódrészletek, amelyek a megoldásokat, és itt futtatása a Jupyter notebookok a Spark-fürtökön telepített adatok vizualizálásához megfelelő grafikon megjelenítése. Az alábbi témakörök a modellezési lépéseit, amely bemutatja, hogyan betanításához, kiértékelése, mentése és felhasználását a modell különböző típusú kódot tartalmaznak. 
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) nyílt forráskódú Spark on Azure üzemeltetett ajánlat. Is támogatja a **Jupyter PySpark notebookok** futtatható Spark SQL interaktív lekérdezések átalakítása, szűréssel és az Azure Blobs (WASB) tárolt adatok vizualizációja a Spark-fürtön. PySpark a Python API Spark számára. A kódrészletek, amelyek a megoldásokat, és itt futtatása a Jupyter notebookok a Spark-fürtökön telepített adatok vizualizálásához megfelelő grafikon megjelenítése. Az alábbi témakörök a modellezési lépéseit, amely bemutatja, hogyan betanításához, kiértékelése, mentése és felhasználását a modell különböző típusú kódot tartalmaznak.
 
-## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>A telepítő: Spark-fürtök és Jupyter-notebookok
+## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>A telepítő: A Spark-fürtök és a Jupyter notebookok
 Beállítási lépéseket és a kód-okat Ez az útmutató egy HDInsight Spark 1.6-os használatával. De Jupyter notebookok a HDInsight Spark 1.6-os és a Spark 2.0 fürtök biztosított. A jegyzetfüzetek és a rájuk mutató hivatkozást leírása tartalmazza a [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) az azokat tartalmazó GitHub-adattárban. Továbbá, a kód itt és a társított notebookok az általános és működnie kell bármelyik Spark-fürtön. Ha nem használja a HDInsight Spark, a fürt beállítása és lehet, hogy a felügyeleti lépések kissé eltérhetnek az itt látható. Az egyszerűség kedvéért az alábbiakban a Spark 1.6-os (a futtatható a pySpark kernel a Jupyter Notebook Server) és a Spark 2.0-s verzióját (kell futtatni a pySpark3 kernel a Jupyter Notebook Server) a Jupyter notebookok mutató hivatkozásokat:
 
 ### <a name="spark-16-notebooks"></a>A Spark 1.6-os notebookok
 Ezeket a notebookokat vannak a pySpark kernel Jupyter notebook Server futtatásához.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): információt nyújt az adatfeltárás, modellezés és kiértékelés a számos különböző algoritmus végrehajtásához.
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): a notebook #1 és a hiperparaméter finomhangolása és kereszt-ellenőrzés, modell fejlesztési témaköröket tartalmazza.
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): bemutatja, hogyan Python használata a HDInsight-fürtökön mentett modell üzembe helyezése.
+- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Információt nyújt az adatfeltárás, modellezés és kiértékelés a számos különböző algoritmus végrehajtásához.
+- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): A notebook #1 és a hiperparaméter finomhangolása és kereszt-ellenőrzés, modell fejlesztési témaköröket tartalmazza.
+- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): Bemutatja, hogyan Python használata a HDInsight-fürtökön mentett modell üzembe helyezése.
 
 ### <a name="spark-20-notebooks"></a>A Spark 2.0 notebookok
 Ezeket a notebookokat futtatásához a Jupyter notebook Server pySpark3 kernel vannak.
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés, végrehajtására és pontozás a Spark 2.0-fürtök használatával a NYC Taxi út és diszkont-adatkészlet leírt [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ez a jegyzetfüzet gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk jó kiindulási pont lehet. Részletesebb jegyzetfüzet a NYC i taxik adatait elemzi, lásd a következő notebook ebben a listában. Lásd az alábbi listát, hasonlítsa össze ezeket a notebookokat. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és a NYC Taxi utazást és a leírt diszkont adatkészlet pontozás [Itt ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és pontozás a jól ismert légitársaság időben indító használatával a 2011 és 2012 adatkészlet. Integráltuk az repülőtér időjárási adatok (például szélsebesség, hőmérséklet, tengerszint stb.) a légitársaság adatkészlet előtt modellezés, ezért ezek időjárási szolgáltatások is tartalmazza, a modellben.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés, végrehajtásához és a Spark 2.0 pontozási-fürtöket a NYC Taxi utazást és a leírt diszkont adatkészlet [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ez a jegyzetfüzet gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk jó kiindulási pont lehet. Részletesebb jegyzetfüzet a NYC i taxik adatait elemzi, lásd a következő notebook ebben a listában. Lásd az alábbi listát, hasonlítsa össze ezeket a notebookokat.
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és a NYC Taxi utazást és a leírt diszkont adatkészlet pontozás [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és pontozás a jól ismert légitársaság időben indító adatkészlet 2011 és 2012 használatával. Integráltuk az repülőtér időjárási adatok (például szélsebesség, hőmérséklet, tengerszint stb.) a légitársaság adatkészlet előtt modellezés, ezért ezek időjárási szolgáltatások is tartalmazza, a modellben.
 
 <!-- -->
 
@@ -52,27 +52,28 @@ Ezeket a notebookokat futtatásához a Jupyter notebook Server pySpark3 kernel v
 
 >- Légitársaság időben indító adatok: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
->- Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
-> 
-> 
+>- Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+>
+>
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet mutatja az adatfeltárás számos aspektusát, megjelenítési és gépi Tanulási modell egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb időt vesz igénybe a képzés: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kód adtunk meg a Spark 2.0-s. 
+A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet bizonyos szempontokból az adatfeltárás, a Vizualizáció és a gépi Tanulási modell betanítása egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb idő alatt látható: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk.
 
 <!-- -->
 
 A Spark 2.0-modell és a modell pontozása tárolófelhasználásának operacionalizálás, tekintse át a [Spark 1.6-os dokumentum-használat](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) példaként, amely tartalmazza a szükséges lépéseket. Ezzel a Spark 2.0-s, cserélje le a Python-kód fájlt a [ezt a fájlt](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
 
 ### <a name="prerequisites"></a>Előfeltételek
-A következő eljárások a Spark 1.6-os kapcsolódnak. A Spark 2.0-s verziójának használata a notebookok leírt, és korábban csatolva. 
 
-1.a Azure-előfizetéssel kell rendelkeznie. Ha Ön még nem rendelkezik egy, [lekérése az Azure ingyenes próbaverzió](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+A következő eljárások a Spark 1.6-os kapcsolódnak. A Spark 2.0-s verziójának használata a notebookok leírt, és korábban csatolva.
 
-2. van szüksége a Spark 1.6-os-fürt forgatókönyv végrehajtásához. Hozzon létre egyet, lásd: szereplő utasítások [első lépések: Apache Spark létrehozása az Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). A fürt típusát és verzióját van megadva a **fürt típusának kiválasztása** menü. 
+1. Rendelkeznie kell egy Azure-előfizetéssel. Ha Ön még nem rendelkezik egy, [lekérése az Azure ingyenes próbaverzió](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+
+2. Szüksége lesz egy Spark 1.6-os fürtöt az útmutató végrehajtásához. Hozzon létre egyet, lásd: szereplő utasítások [első lépések: Apache Spark létrehozása az Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). A fürt típusát és verzióját van megadva a **fürt típusának kiválasztása** menü.
 
 ![Fürt konfigurálása](./media/spark-overview/spark-cluster-on-portal.png)
 
@@ -80,14 +81,14 @@ A következő eljárások a Spark 1.6-os kapcsolódnak. A Spark 2.0-s verziójá
 
 > [!NOTE]
 > Ez a témakör bemutatja, hogyan használja a Python helyett a Scala egy teljes körű adatelemzési folyamat feladatok végrehajtásához, lásd: a [használata a Scala Spark on Azure Data Science](scala-walkthrough.md).
-> 
-> 
+>
+>
 
 <!-- -->
 
 > [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
-> 
-> 
+>
+>
 
 ## <a name="the-nyc-2013-taxi-data"></a>A NYC 2013-i taxik adatait
 A NYC Taxi útadatok körülbelül 20 GB tömörített vesszővel elválasztott értékeket (CSV) fájl (~ 48 GB tömörítetlen), minden egyes út 173 milliónál egyes utak és a vitel magában foglaló fizetni. Minden egyes út rekord tartalmazza, a kiválasztják és dropoff hely és idő, anonimizált feltörés (illesztőprogramok) jogosítvány száma, és medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
@@ -152,12 +153,12 @@ Keresse a ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** a Jupyter noteboo
 
 Válassza ki a PySpark néhány példa az előrecsomagolt notebookok a PySpark API-t használó tartalmazó könyvtár megtekintéséhez. A notebookok, amelyek tartalmazzák a mintakódokat, a Spark témakör Suite esetén érhető el [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-Feltöltheti közvetlenül a notebookok [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) , a Spark-fürtön lévő Jupyter notebook server. A Jupyter kezdőlapján kattintson a **feltöltése** gombra a képernyő jobb oldalán jelenjen meg. Ekkor megnyílik a Fájlkezelőben. Itt másolhatja a GitHub (nyers tartalom) URL-címét a jegyzetfüzetet, és kattintson **nyílt**. 
+Feltöltheti közvetlenül a notebookok [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) , a Spark-fürtön lévő Jupyter notebook server. A Jupyter kezdőlapján kattintson a **feltöltése** gombra a képernyő jobb oldalán jelenjen meg. Ekkor megnyílik a Fájlkezelőben. Itt másolhatja a GitHub (nyers tartalom) URL-címét a jegyzetfüzetet, és kattintson **nyílt**.
 
 A Jupyter fájl nevére, a fájlnév megjelenik egy **feltöltése** újra gombra. Kattintson a **feltöltése** gombra. Most már importált a notebookot. Ismételje meg ezeket a lépéseket az ebben a bemutatóban a notebookok feltöltése.
 
 > [!TIP]
-> A hivatkozások a böngészőben, és válassza a jobb gombbal **hivatkozás másolása** a github nyers tartalom URL-Címének lekéréséhez. A Jupyter feltöltése fájl explorer párbeszédpanelen is illessze be az URL-címet.
+> A hivatkozások a böngészőben, és válassza a jobb gombbal **hivatkozás másolása** a GitHub nyers tartalom URL-Címének lekéréséhez. A Jupyter feltöltése fájl explorer párbeszédpanelen is illessze be az URL-címet.
 > 
 > 
 
@@ -170,17 +171,17 @@ Most a következőket teheti:
 
 > [!TIP]
 > A PySpark kernel automatikusan elérhetővé (HiveQL) SQL-lekérdezések kimenetének. Használatával számos különböző típusú Vizualizációk (tábla, a kör, vonal, terület vagy sáv) közül választhatja meg vannak megadva a **típus** menü gombok a jegyzetfüzet:
-> 
-> 
+>
+>
 
 ![Logisztikai regressziós ROC-görbét az általános megközelítés](./media/spark-overview/pyspark-jupyter-autovisualization.png)
 
 ## <a name="whats-next"></a>A következő lépések
-Most, hogy a HDInsight Spark-fürt beállítása és a Jupyter notebookok feltöltése, készen áll a témakörök, amelyek megfelelnek a három PySpark notebookok keresztül. Ezek bemutatják, hogyan feltárhatja az adatait, majd hogyan hozhat létre és használhat fel modelleket. A speciális adatok feltárása és modellezés notebook bemutatja, hogyan közé tartozik a kereszt-ellenőrzés, abszolút, a hyper-paraméter és a modell értékelése. 
+Most, hogy a HDInsight Spark-fürt beállítása és a Jupyter notebookok feltöltése, készen áll a témakörök, amelyek megfelelnek a három PySpark notebookok keresztül. Ezek bemutatják, hogyan feltárhatja az adatait, majd hogyan hozhat létre és használhat fel modelleket. A speciális adatok feltárása és modellezés notebook bemutatja, hogyan közé tartozik a kereszt-ellenőrzés, abszolút, a hyper-paraméter és a modell értékelése.
 
-**Adatáttekintés és modellezés a Spark:** ismerje meg az adatkészlet, és hozzon létre, pontszám és a gépi tanulási modellek által feldolgozása révén kiértékelheti az [a Spark MLlib a bináris adatok besorolási és regressziós modellek létrehozása eszközkészlet](spark-data-exploration-modeling.md) témakör.
+**Adatáttekintés és modellezés a Spark segítségével:** Ismerje meg az adatkészlet, és hozzon létre, pontszám és a gépi tanulási modellek által feldolgozása révén kiértékelheti az [adatokat bináris besorolási és regressziós modelleket hozhat létre a Spark MLlib eszközkészlete](spark-data-exploration-modeling.md) témakör.
 
-**Használati modell:** az ebben a témakörben létre besorolási és regressziós modellek pontozása kezelésével kapcsolatos információkért lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
+**Modell-felhasználás:** Az ebben a témakörben létre besorolási és regressziós modellek pontozása kezelésével kapcsolatos információkért lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
 
-**Kereszt-ellenőrzési és a hiperparaméter kezdik**: lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek tanítása az kezdik kereszt-ellenőrzési és a hyper-paraméter
+**Kereszt-ellenőrzési és a hiperparaméter kezdik**: Lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek tanítása az kezdik kereszt-ellenőrzési és a hyper-paraméter
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 97352cdc89aabe312bf500901347acaf5238e871
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436993"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809879"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -219,7 +219,7 @@ Ez a parancsmag állítja a következő engedélyekkel:
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiók |Általános olvasási/írási |Leszármazott csoportobjektumokhoz| 
 |Engedélyezés |AD DS-összekötő fiók |Gyermek-objektum létrehozása/törlése |Ez az objektum és az összes leszármazott objektum| 
-|Engedélyezés |AD DS-összekötő fiók |Törlés/törlése objektumhoz és az összes hozzá tartozó gyermekek |Ez az objektum és az összes leszármazott objektum|
+|Engedélyezés |AD DS-összekötő fiók |Létrehozása/törlése objektumhoz és az összes hozzá tartozó gyermekek |Ez az objektum és az összes leszármazott objektum|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Hibrid Exchange-telepítés vonatkozó engedélyek 
 Az Exchange hibrid telepítés használata esetén az AD DS-összekötő fiókhoz tartozó engedélyek beállításához futtassa: 

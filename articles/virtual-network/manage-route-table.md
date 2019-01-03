@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 790d327be27dae0c963c37e6e55f1721bf571c80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7c3c4eea80eb0ceddc48d30fd51cf23524df5640
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222114"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540758"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy egy útvonaltábla törlése
 
@@ -48,7 +48,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 **Parancsok**
 
 - Az Azure CLI: [az network route-table létrehozása](/cli/azure/network/route-table/route#az_network_route_table_create)
-- PowerShell: [új AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)
+- PowerShell: [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)
 
 ## <a name="view-route-tables"></a>Útvonaltáblák megtekintése
 
@@ -64,7 +64,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 1. Írja be a keresőmezőbe, a portál tetején, *útválasztási táblázatok* kifejezést a keresőmezőbe. Amikor **útválasztási táblázatok** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki az útvonaltáblában a listában a részleteinek megtekintéséhez. A **beállítások**, megtekintheti a **útvonalak** az útvonaltáblában lévő és a **alhálózatok** az útvonaltábla társítva.
 3. Gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő információkat:
-    *   [Tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+    *   [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
     *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -147,7 +147,7 @@ Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-helyen és az el
 **Parancsok**
 
 - Az Azure CLI: [az network route-table route létrehozása](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
-- PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
+- PowerShell: [Új AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
 ## <a name="view-routes"></a>Útvonalak megtekintése
 

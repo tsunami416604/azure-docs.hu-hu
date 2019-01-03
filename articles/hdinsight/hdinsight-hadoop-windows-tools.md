@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: a522d436328a3aeb1ed365baa2ec1e3b9d3387ed
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4b6eb0aa7011226fda667370f3e854081b795ae6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385023"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744870"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>A HDInsight Windows PC-ről az Apache Hadoop-ökoszisztéma működik
 
@@ -26,9 +26,9 @@ Az Azure PowerShell-parancsfájl-kezelési környezet, amellyel szabályozhatja 
 
 A PowerShell használatával elvégezhető feladatok példái:
 
-* [PowerShell-lel fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [PowerShell-lel, az Apache Hive-lekérdezések futtatása](hadoop/apache-hadoop-use-hive-powershell.md)
-* [A PowerShell-fürtök kezelése](hdinsight-administer-use-powershell.md)
+* [PowerShell-lel fürtöket](hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
+* [PowerShell-lel, az Apache Hive-lekérdezések futtatása](hadoop/apache-hadoop-use-hive-powershell.md).
+* [A PowerShell-fürtök kezelése](hdinsight-administer-use-powershell.md).
 
 Kövesse a lépéseket [Azure Powershell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) a legújabb verzió beszerzéséhez. Ha rendelkezik olyan parancsprogramjai, amelyeket módosítani kell az új parancsmagokat használhatja az Azure Resource Manager, [fejlesztőeszközeinek Azure Resource Manager-alapú HDInsight-fürtök áttelepítése](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
@@ -54,11 +54,11 @@ A Visual Studio és a Data Lake Tools for Visual Studio elvégezhető feladatok 
 Használhatja a Visual Studio a .NET SDK használatával kezelheti a fürtöket és big data-alkalmazások fejlesztéséhez. A következő feladatokat is használhat más ide-ket, de példák láthatók a Visual Studióban.
 
 A Visual Studióban a .NET SDK-val elvégezhető feladatok példái:
-* [Fürtök létrehozása és használata a HDInsight .NET-keretrendszer-alkalmazás](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-* [A .NET SDK használatával, az Apache Hive-lekérdezések futtatása](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [Használat C# az Apache Hive- és Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Fürtök létrehozása és használata a HDInsight .NET-keretrendszer alkalmazás](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* [A .NET SDK használatával, az Apache Hive-lekérdezések futtatása](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+* [Használat C# felhasználó által definiált függvények az Apache Hive- és Apache hadoop streamelési Apache Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-> TIPP   
+> [!TIP]
 > .NET – megoldások a Windows-alapú HDInsight-fürtökkel rendszert használ, célszerű felfedeznie a Linux-alapú fürtök áttelepítést végezni. További információkért lásd: [át .NET megoldást kínál a Linux-alapú HDInsight Windows-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Az Intellij IDEA és a Spark-fürtök az Eclipse ide-vel
@@ -85,7 +85,7 @@ Ha olyan helyzet, amikor egy eszköz vagy technológia, amely csak akkor érhet�
 
 * **A Windows 10-es (bétaverzió) bash** Ez a témakör a Linux-alrendszer Windows. A bash lehetővé teszi, hogy közvetlenül, egy dedikált Linux rendszerhez – telepítés kezelése nélkül futtathat a Linux-segédeszközöket. [Telepítse és futtassa a Bash béta a Windows 10-es](https://msdn.microsoft.com/commandline/wsl/install_guide)
 * **A Windows docker** számos Linux-alapú eszközök hozzáférést biztosít, és közvetlenül a Windows is futtathatók. A Docker használatával például a Hive a Beeline-ügyfél futtatása közvetlenül a Windows. Is használhatja a Docker helyi Jupyter notebook futtatásához, és távolról csatlakozhat a Spark on HDInsight. [A Windows Docker használatának első lépései](https://docs.docker.com/docker-for-windows/)
-* **[MobaXTerm](http://mobaxterm.mobatek.net/)**  lehetővé teszi, hogy grafikusan keresse meg a fürt fájlrendszer egy SSH-kapcsolaton keresztül.
+* **[MobaXTerm](https://mobaxterm.mobatek.net/)**  lehetővé teszi, hogy grafikusan keresse meg a fürt fájlrendszer egy SSH-kapcsolaton keresztül.
 
 ## <a name="next-steps"></a>További lépések
 Ha most ismerkedik a Linux-alapú fürtökön működik, tekintse meg a következő cikkeket:

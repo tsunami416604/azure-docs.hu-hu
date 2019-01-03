@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 81fa7e34c2cacf1ee8613c080d55225ffc37cdfc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0b36ee9aa54f0d8dd3d246d6c5a96e767326d2d8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311082"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634677"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Bevezetés az Azure Search használatába Node.js-ben
 > [!div class="op_single_selector"]
@@ -25,12 +25,12 @@ ms.locfileid: "53311082"
 
 Ismerje meg, hogyan hozhat létre olyan egyéni Node.js-keresőalkalmazást, amely az Azure Search szolgáltatást használja a keresésekhez. Ez az oktatóanyag az [Azure Search szolgáltatás REST API](https://msdn.microsoft.com/library/dn798935.aspx)-ját használja ebben a gyakorlatban az objektumok és műveletek összeállításához.
 
-A kód fejlesztéséhez és teszteléséhez a [Node.js](https://Nodejs.org)-t, valamint Windows 8.1 rendszeren az NPM-et, a [Sublime Text 3](http://www.sublimetext.com/3)-at és a Windows PowerShellt használtuk.
+A kód fejlesztéséhez és teszteléséhez a [Node.js](https://Nodejs.org)-t, valamint Windows 8.1 rendszeren az NPM-et, a [Sublime Text 3](https://www.sublimetext.com/3)-at és a Windows PowerShellt használtuk.
 
 A minta futtatásához rendelkeznie kell egy Azure Search-szolgáltatással, amelyre az [Azure Portalon](https://portal.azure.com) regisztrálhat. A részletes utasításokat lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md).
 
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
-A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](http://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
+A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
 Ebben az alkalmazásban a **DataIndexer** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. A hitelesítő adatokat és az online adatforrás csatlakozási adatait a programkód tartalmazza. Nincs szükség további konfigurációra.
 

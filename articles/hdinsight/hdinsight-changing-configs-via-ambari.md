@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498669"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722923"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürt konfigurációjának optimalizálása
 
-HDInsight biztosít [Apache Hadoop](https://hadoop.apache.org/) nagyméretű adatfeldolgozás alkalmazások esetében. Kezelését, megfigyelését és ezek bonyolult, több csomópontos fürtök optimalizálása kihívást jelenthet. [Az Apache Ambari](http://ambari.apache.org/) egy webes felület, kezelni és megfigyelni a HDInsight Linux-fürtöket.  A Windows-fürtök esetén használja a [az Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight biztosít [Apache Hadoop](https://hadoop.apache.org/) nagyméretű adatfeldolgozás alkalmazások esetében. Kezelését, megfigyelését és ezek bonyolult, több csomópontos fürtök optimalizálása kihívást jelenthet. [Az Apache Ambari](https://ambari.apache.org/) egy webes felület, kezelni és megfigyelni a HDInsight Linux-fürtöket.  A Windows-fürtök esetén használja a [az Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 Az Ambari webes kezelőfelületen bevezetésért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
 
@@ -68,7 +68,7 @@ A következő szakaszok ismertetik a konfigurációs beállításokat az Apache 
 
 ### <a name="set-the-hive-execution-engine"></a>Állítsa be a Hive-végrehajtó motor
 
-Hive biztosít két végrehajtási motorok: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) és [Apache TEZ](https://tez.apache.org/). Tez gyorsabb, mint a MapReduce. HDInsight Linux-fürtöket Tez végrehajtómotor alapértelmezett rendelkezik. A végrehajtó motor módosítása:
+Hive biztosít két végrehajtási motorok: [Az Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) és [Apache TEZ](https://tez.apache.org/). Tez gyorsabb, mint a MapReduce. HDInsight Linux-fürtöket Tez végrehajtómotor alapértelmezett rendelkezik. A végrehajtó motor módosítása:
 
 1. A Hive **Configs** fülre, írja be a **végrehajtóprogramja** szót a Szűrő mezőbe.
 
@@ -82,8 +82,8 @@ Hive biztosít két végrehajtási motorok: [Apache Hadoop MapReduce](https://ha
 
 Hadoop próbál felosztása (*térkép*) több fájlt és a létrejövő folyamat az egyetlen fájl fájlok párhuzamosan. Leképező száma attól függ, hogy a megszakítások számát. Az alábbi két konfigurációs paramétereket meghajtó a Tez végrehajtómotor a megszakítások száma:
 
-* `tez.grouping.min-size`: Csoportosított valószínűségét, 16 MB-ot (16,777,216 bájt) alapértelmezett értékkel mérete alacsonyabb korlátot.
-* `tez.grouping.max-size`: A felső határ csoportosított valószínűségét, mérete 1 GB (1,073,741,824 bájt) alapértelmezett értékkel.
+* `tez.grouping.min-size`: Alsó határérték mérete csoportosított valószínűségét, 16 MB-ot (16,777,216 bájt) alapértelmezett értékkel.
+* `tez.grouping.max-size`: Felső korlát csoportosított valószínűségét, mérete 1 GB (1,073,741,824 bájt) alapértelmezett értékkel.
 
 Teljesítmény tapasztalatok, mint csökkentése mindkét javíthatja a késés, nagyobb átviteli sebességet növelheti ezeket a paramétereket.
 
@@ -189,7 +189,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     ![Hive exec compress köztes](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > A köztes fájlok tömörítése, válassza ki a tömörítési kodek költsége alacsonyabb CPU-még akkor is, ha a kodeket nem rendelkezik egy nagy tömörítési kimeneti.
 
 1. A köztes tömörítési kodeket, adja hozzá az egyéni tulajdonság `mapred.map.output.compression.codec` , a `hive-site.xml` vagy `mapred-site.xml` fájlt.
@@ -210,7 +210,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     Ez lesz fájltömörítés a köztes használó Snappy tömörítést. Miután hozzáadta a tulajdonság, az egyéni hive-hely ablaktáblán jelenik meg.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ezzel az eljárással módosítja a `$HADOOP_HOME/conf/hive-site.xml` fájlt.
 
 ### <a name="compress-final-output"></a>Végeredmény tömörítése
@@ -299,12 +299,12 @@ A Hive-végrehajtó motor optimalizálásához további javaslatok:
 
     ![Speciális pig-tulajdonságok](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
-> [!NOTE]
+> [!NOTE]  
 > A munkamenet-szintű beállításokat alaprekordban szereplők felülírásához a `pig.properties` fájlt.
 
 ### <a name="tune-execution-engine"></a>Végrehajtóprogramja hangolása
 
-Két végrehajtási motorok Pig-parancsfájlok végrehajtása érhetők el: a MapReduce és a tezben futtatja. Tez optimalizált motor, és jóval gyorsabb, mint a MapReduce.
+Pig-parancsfájlok végrehajtása két végrehajtási motorok érhetők el: A MapReduce és a tezben futtatja. Tez optimalizált motor, és jóval gyorsabb, mint a MapReduce.
 
 1. A végrehajtó motor módosítása a a **speciális pig-tulajdonságok** ablaktáblán keresse meg a tulajdonság `exectype`.
 
@@ -335,14 +335,14 @@ A következő memóriabeállításokat segítségével, a Pig-parancsfájl telje
 
 * `pig.cachedbag.memusage`: A tulajdonságcsomag számára lefoglalt memória mennyisége. A tulajdonságcsomag rekordok gyűjteménye. Egy rekord egy rendezett készlet mezőket, és az adatok az adott mező kitöltése. Ha az adatok egy tasakban meghaladja a lefoglalt memória, azt kiömlött lemezre. Az alapértelmezett érték: 0.2-es, amely a rendelkezésre álló memória 20 %-os. Ez a memória közösen használja az összes csomag egy alkalmazásban.
 
-* `pig.spill.size.threshold`: Biztosítékot nagyobb, mint a túlfolyó adatbázisméret küszöbértéke (bájtban) vannak kiömlött lemezre. Az alapértelmezett érték: 5 MB-ot.
+* `pig.spill.size.threshold`: Nagyobb, mint a túlfolyó adatbázisméret küszöbértéke (bájtban) csomagok vannak kiömlött lemezre. Az alapértelmezett érték: 5 MB-ot.
 
 
 ### <a name="compress-temporary-files"></a>Ideiglenes fájlok tömörítése
 
 A Pig ideiglenes fájlt létrehoz a feladat végrehajtása során. Az ideiglenes fájlok tömörítése eredményez, a teljesítmény nő, amikor lemezre fájlok írása és olvasása. A következő beállítások segítségével ideiglenes fájlok tömörítése.
 
-* `pig.tmpfilecompression`: Ha az értéke igaz, lehetővé teszi az ideiglenes fájlok tömörítési. Az alapértelmezett értéke FALSE (hamis).
+* `pig.tmpfilecompression`: TRUE érték esetén lehetővé teszi az ideiglenes fájlok tömörítési. Az alapértelmezett értéke FALSE (hamis).
 
 * `pig.tmpfilecompression.codec`: A tömörítési kodek az ideiglenes fájlok tömörítése használandó. A javasolt tömörítési kodek [LZO](https://www.oberhumer.com/opensource/lzo/) és alacsonyabb CPU-felhasználás Snappy.
 
@@ -395,9 +395,9 @@ A blokk-gyorsítótárához az olvasási gyorsítótár. Annak méretét szabál
 
 Az összes módosítások vannak tárolva a memóriapuffer nevű egy *kapott*. Ez növeli a teljes adatmennyiség egyetlen művelettel lemezre lehet írni, és azt a legutóbbi módosítások felgyorsítja a ezt követően a hozzáférés. A kapott méretét határozzák meg a következő két paramétert:
 
-* `hbase.regionserver.global.memstore.UpperLimit`: A maximális százalékos aránya a kombinált kapott használó régiókiszolgálón határozza meg.
+* `hbase.regionserver.global.memstore.UpperLimit`: Határozza meg a maximális százalékos aránya a régió kiszolgáló által kapott kombinált használható.
 
-* `hbase.regionserver.global.memstore.LowerLimit`: A minimális százalékos aránya a kombinált kapott használó régiókiszolgálón határozza meg.
+* `hbase.regionserver.global.memstore.LowerLimit`: Határozza meg a kapott kombinált használó régióbeli kiszolgálók minimális aránya.
 
 Véletlenszerű olvasást optimalizálására, csökkentheti a kapott alsó és felső határa.
 
@@ -408,7 +408,7 @@ A `hbase.client.scanner.caching` beállítás határozza meg, olvassa el a sorok
 
 ![A HBase lehívott sorok száma](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az érték nincs beállítva, például úgy, hogy a hívás a következő metódus a képolvasó közötti idő nagyobb, mint a képolvasó időtúllépése. Határozza meg a képolvasó időtúllépési időtartam a `hbase.regionserver.lease.period` tulajdonság.
 
 

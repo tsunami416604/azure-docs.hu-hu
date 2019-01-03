@@ -7,16 +7,16 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
-ms.component: activitylog
-ms.openlocfilehash: 9129ccdd66b07fc53fe46aa64317f7f064eb7e0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.component: logs
+ms.openlocfilehash: 64b92a758d3d5f713b58a5e310a897ac1f11024d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53389006"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714831"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
-A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./tutorial-dashboards.md) van megadva a cikk végén található.
+A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./tutorial-dashboards.md) van megadva a cikk végén található.
 
 ## <a name="administrative"></a>Adminisztratív
 A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlési és műveleti műveleteket hajtja végre a Resource Manageren keresztül. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket például a "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás használatával a Resource Manager által végrehajtott műveletek az egyes erőforrástípusok műveletként van modellezve. Ha a művelet típusa, Write, Delete vagy műveletet, a rekordokat a kezdő és a sikeres vagy sikertelen a művelet rögzítve lesznek a felügyeleti kategória. A felügyeleti kategória is módosítania kellene a szerepköralapú hozzáférés-vezérlés az előfizetéshez.
@@ -191,7 +191,7 @@ Ebben a kategóriában a service health az Azure-ban bekövetkezett események r
   }
 }
 ```
-Tekintse meg a [szolgáltatás állapotára vonatkozó értesítések](./../../monitoring-and-diagnostics/monitoring-service-notifications.md) dokumentációjában, a tulajdonságok értékeit ismertető cikket.
+Tekintse meg a [szolgáltatás állapotára vonatkozó értesítések](./../../azure-monitor/platform/service-notifications.md) dokumentációjában, a tulajdonságok értékeit ismertető cikket.
 
 ## <a name="resource-health"></a>Erőforrás állapota
 Ebben a kategóriában a az Azure-erőforrások előfordult resource health események a rekord tartalmazza. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Virtuális gép állapot nem érhető el értékre módosult." Közelmúltbeli állapotesemények hozhat létre négy egészségügyi állapotok egyike: Elérhető, nem érhető el, csökkentett teljesítményű vagy ismeretlen. Emellett a resource health-események csoportosíthatók, hogy a Platform vagy a felhasználó által kezdeményezett.
@@ -676,5 +676,5 @@ Az Azure-tevékenységnapló egy tárfiókhoz vagy az Event Hubs-névtér közve
 
 
 ## <a name="next-steps"></a>További lépések
-* [További információ a tevékenységnapló (korábbi nevén Auditnaplók)](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
-* [Az Event hubs Azure tevékenységnapló Stream](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
+* [További információ a tevékenységnapló (korábbi nevén Auditnaplók)](../../azure-monitor/platform/activity-logs-overview.md)
+* [Az Event hubs Azure tevékenységnapló Stream](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

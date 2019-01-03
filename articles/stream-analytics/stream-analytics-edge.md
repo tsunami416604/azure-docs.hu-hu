@@ -9,26 +9,26 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf290343634f9f9f836a87ab15f13cc1dac6f86f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141951"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994980"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
  
-Az Azure Stream Analytics (ASA) az IoT Edge-ben lehetővé teszi a fejlesztők számára, hogy IoT-eszközökre telepíti központilag közel valós idejű elemzési intelligenciát bárhol is tartózkodjanak, hogy azok oldhatja fel a teljes mértékben kihasználhatók a eszköz által létrehozott adatokat. Az Azure Stream Analytics közel valós idejű, a rugalmasság, a sávszélesség- és megfelelőségi hatékony felhasználása lett tervezve. A vállalatok mostantól közel az ipari műveletek ellenőrzési logika üzembe, és kiegészíti a felhőben végzett Big Data-elemzés.  
+Az Azure Stream Analytics (ASA) az IoT Edge-ben lehetővé teszi a fejlesztők számára, hogy IoT-eszközökre telepíti központilag közel valós idejű elemzési intelligenciát bárhol is tartózkodjanak, hogy azok oldhatja fel a teljes mértékben kihasználhatók a eszköz által létrehozott adatokat. Az Azure Stream Analytics kis késésre, rugalmasságra, a sávszélesség hatékony használatára és megfelelőségre lett tervezve. A vállalatok mostantól közel az ipari műveletek ellenőrzési logika üzembe, és kiegészíti a felhőben végzett Big Data-elemzés.  
 
 Az Azure Stream Analytics az IoT Edge-en belül futtatja a [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) keretrendszer. A feladat az ASA létrehozása után telepítheti és kezelheti az IoT Hub használatával.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 ![IoT Edge összeállítás áttekintő jellegű diagramja](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Közel valós idejű parancs és vezérlés**: például a biztonsági rendszerek gyártási válaszolnia kell a működési adatok ultramagas alacsony késleltetéssel. Az ASA az IoT Edge-ben az adatok közel valós időben, és adja ki a parancsokat, ha egy gép leállítása vagy riasztások aktiválása a rendellenességek észlelését, érzékelő elemezheti.
-*   **A felhővel való kapcsolat korlátozott**: alapvető kritikus rendszerek, például a távoli adatbányászati berendezések, csatlakoztatott hajó vagy offshore részletes elemzések kibontásáról, elemezheti és reagálni, hogy az adatok akkor is felhőkapcsolatra időszakos kell. Az ASA a streaming logika futtat függetlenül a hálózati kapcsolatot, és Ön kiválaszthatja, mit küld a felhő további feldolgozás vagy tárolás.
-* **Korlátozott sávszélesség**: hajtóművek által előállított adatok mennyisége, vagy lehet, hogy a csatlakoztatott autók rendkívül nagy méretűek, hogy kell-e előre feldolgozott, mielőtt elküldené a felhőben vagy szűrt adatok. ASA használatával szűrheti vagy összesítheti az adatokat, amelyek a felhőbe kell küldeni.
-* **Megfelelőségi**: a jogszabályoknak való megfelelőség helyileg anonimizált vagy összesített előtt a felhőbe küldött adatokra lehet szükség.
+* **Közel valós idejű parancs és vezérlés**: Például a biztonsági rendszerek gyártási válaszolnia kell a működési adatok ultramagas alacsony késleltetéssel. Az ASA az IoT Edge-ben az adatok közel valós időben, és adja ki a parancsokat, ha egy gép leállítása vagy riasztások aktiválása a rendellenességek észlelését, érzékelő elemezheti.
+*   **A felhővel való kapcsolat korlátozott**: Mission kritikus rendszerek, például a távoli adatbányászati berendezések, csatlakoztatott hajó vagy offshore részletes elemzések kibontásáról, elemezheti és reagálni, hogy az adatok akkor is felhőkapcsolatra időszakos kell. Az ASA a streaming logika futtat függetlenül a hálózati kapcsolatot, és Ön kiválaszthatja, mit küld a felhő további feldolgozás vagy tárolás.
+* **Korlátozott sávszélesség**: Hajtóművek által előállított adatok mennyisége, vagy lehet, hogy a csatlakoztatott autók rendkívül nagy méretűek, hogy kell-e előre feldolgozott, mielőtt elküldené a felhőben vagy szűrt adatok. ASA használatával szűrheti vagy összesítheti az adatokat, amelyek a felhőbe kell küldeni.
+* **Megfelelőségi**: A jogszabályoknak való megfelelőség helyileg anonimizált vagy összesített előtt a felhőbe küldött adatokra lehet szükség.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Az Azure Stream Analytics Edge-feladatok
 ### <a name="what-is-an-edge-job"></a>Mi az "él" feladatot?
@@ -144,7 +144,7 @@ Ebben a példában a következő útvonalakat határozza meg:
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Felhőalapú feladat képest az IoT Edge-feladatok aktuális korlátozások
 A cél, hogy a paritásos IoT Edge-feladatok és a felhőbeli feladatok között. A legtöbb SQL-lekérdezési nyelvi funkciók már használhatók.
 Azonban a következő funkciók még nem támogatottak az edge-feladatok:
-* Felhasználó által definiált függvények (UDF) a JavaScript. Az UDF érhetők el a [ C# IoT Edge-feladatok](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge-csharp-udf) (előzetes verzió).
+* Felhasználó által definiált függvények (UDF) a JavaScript. Az UDF érhetők el a [ C# IoT Edge-feladatok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (előzetes verzió).
 * Felhasználó által definiált összesítések (UDA).
 * Az Azure Machine Learning-függvények
 * Legfeljebb 14 összesítést használó egyetlen lépésben.
@@ -167,7 +167,7 @@ Az ASA (IoT Edge) futtatásához, eszközök, amelyek futtathatók kell [Azure I
 
 ASA és az Azure IoT Edge használata **Docker** tárolókat a hordozható megoldást kínál, amely több gazdagép operációs rendszert (Windows, Linux) futtat.
 
-Az IoT Edge-ben ASA vált elérhetővé, Windows és Linux-rendszerképeket, x86-64-vagy Azure Resource Manager-architektúrák. 
+Az IoT Edge-ben ASA vált elérhetővé, Windows és Linux-rendszerképeket, x86-64-vagy ARM (Advanced RISC gépek) architektúrák. 
 
 
 ### <a name="input-and-output"></a>Bemenet és kimenet

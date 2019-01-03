@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499150"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653730"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Az Apache Spark-feladatok optimalizálása
 
@@ -27,41 +27,41 @@ A következő szakaszok ismertetik a Spark-feladat közös optimalizálása és 
 Spark-1.x használt rdd-kként absztrakt adatokat, majd a Spark 2.x bevezetett adatkerettípusokat jelölhet, és adatkészletek. Vegye figyelembe a következő relatív érdemi:
 
 * **DataFrames**
-    * A legtöbb esetben a legjobb választás
-    * Optimalizálás katalizáló keresztül biztosít
-    * Egész szakaszból álló kódgenerálás
-    * Közvetlen memória-hozzáférés
-    * Alacsony többletterhelést okoz a szemétgyűjtési (GC)
-    * Nem, Fejlesztőbarát adatkészletek, mivel nem ellenőrzések fordításkor vagy tartományi objektum programozási
+    * A legtöbb esetben a legjobb választás.
+    * Optimalizálás katalizáló keresztül biztosít.
+    * Egész szakaszból álló kódgenerálás.
+    * Közvetlen memória-hozzáférés.
+    * Alacsony többletterhelést szemétgyűjtési (GC).
+    * Nem, Fejlesztőbarát adatkészletek, mivel nem ellenőrzések fordításkor vagy tartományi objektum programozási.
 * **Adatkészletek**
     * Megfelelő választás az összetett ETL-adatcsatornák, ahol a teljesítményre gyakorolt hatás fogadható el.
-    * Nem jó, ahol a teljesítményre gyakorolt jelentős lehet összesítésben
-    * Optimalizálás katalizáló keresztül biztosít
-    * Fejlesztőbarát azáltal, hogy tartományi objektum programozási és fordításkor ellenőrzése
-    * Hozzáadja a szerializálás/deszerializálás terhelés
-    * Globális Katalógus magas terhelés
-    * Megszakítja az egész szakaszból álló kódgenerálás
+    * Nem megfelelő összesítésben, ahol a teljesítményre gyakorolt jelentős lehet.
+    * Optimalizálás katalizáló keresztül biztosít.
+    * Fejlesztőbarát azáltal, hogy tartományi objektum programozási és fordításkor ellenőrzéseket.
+    * Hozzáadja a szerializálás/deszerializálás terhelést.
+    * Globális Katalógus magas terhelés.
+    * Egész szakaszból álló kódgenerálás működésképtelenné válik.
 * **RDDs**
-    * A Spark 2.x, nincs szüksége rdd-k, kivéve, ha egy új egyéni RDD létrehozásához szükséges
-    * Nincs lekérdezés optimalizálás katalizáló keresztül
-    * Nem egész szakaszból álló kódgenerálás
-    * Globális Katalógus magas terhelés
-    * Kell használnia a Spark 1.x örökölt API-k
+    * A Spark 2.x, nincs szüksége rdd-k, kivéve, ha egy új egyéni RDD létrehozásához szükséges.
+    * Nincs lekérdezés optimalizálása katalizáló keresztül.
+    * Nem egész szakaszból álló kódgenerálás.
+    * Globális Katalógus magas terhelés.
+    * Kell használnia a Spark 1.x örökölt API-k.
 
 ## <a name="use-optimal-data-format"></a>Optimális formátum használata
 
-A Spark számos formátumok, mint például a fürt megosztott kötetei szolgáltatás, json, xml, parquet, orc és avro támogat. Spark kiterjeszthető támogatja a külső adatforrásokkal - számos további formátumok további információt találhat [Spark-csomagok](https://spark-packages.org).
+A Spark számos formátumok, mint például a fürt megosztott kötetei szolgáltatás, json, xml, parquet, orc és avro támogat. Spark kiterjeszthető támogatja a külső adatforrásokkal - számos további formátumok további információt találhat [Apache Spark-csomagok](https://spark-packages.org).
 
 A legjobb teljesítmény formátuma a parquet eszközökben *snappy tömörítést*, az alapértelmezett Spark 2.x. Parquet oszlopos formátumban tárolja az adatokat, és optimalizálhatja a Sparkban.
 
 ## <a name="select-default-storage"></a>Válassza ki az alapértelmezett tároló
 
-Amikor létrehoz egy új Spark-fürtöt, lehetősége van, válassza ki az Azure Blob Storage vagy az Azure Data Lake Store a fürt alapértelmezett tárolóként. Mindkét lehetőség biztosítanak az előnye, hogy a hosszú távú tárolás átmeneti fürtökben, így az adatok nem automatikusan törlődnek a fürt törlésekor. Hozza létre újra egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
+Amikor létrehoz egy új Spark-fürtöt, lehetősége van az Azure Blob Storage vagy az Azure Data Lake Storage jelölje ki a fürt alapértelmezett tárolója. Mindkét lehetőség biztosítanak az előnye, hogy a hosszú távú tárolás átmeneti fürtökben, így az adatok nem automatikusan törlődnek a fürt törlésekor. Hozza létre újra egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
 
 | Store típusa | Fájlrendszer | Sebesség | Átmeneti | Használati példák |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Data Lake Store | **Adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage | **Adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
 | Helyi HDFS | **hdfs:**//url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata
@@ -73,7 +73,7 @@ A Spark biztosít a saját natív gyorsítótárazási mechanizmust, például a
     * Nem működik particionálás, amely Spark kiadások megváltozhatnak a jövőben.
 
 * Tárolási szint gyorsítótárazás (ajánlott)
-    * Segítségével valósítható meg [Alluxio](http://www.alluxio.org/).
+    * Segítségével valósítható meg [Alluxio](https://www.alluxio.org/).
     * A memóriában, és a gyorsítótárazás SSD használja.
 
 * Helyi HDFS (ajánlott)
@@ -119,9 +119,9 @@ Bucketing hasonló az adatparticionálás, de az egyes gyűjtők tartalmazhat eg
 
 Néhány speciális bucketing funkciói a következők:
 
-* Optimalizálás bucketing metaadat-információi alapján
-* Optimalizált összesítések
-* Optimalizált illesztések
+* Lekérdezés-optimalizálási bucketing metaadat-információi alapján.
+* Optimalizált összesítések.
+* Optimalizált illesztéseket.
 
 Particionálás és a egy időben bucketing is használhatja.
 
@@ -175,8 +175,8 @@ A végrehajtó konfigurációs meghatározásakor vegye figyelembe a Java szemé
     1. Csökkentheti a terhelés végrehajtóval közötti kommunikációt.
     2. Nagyobb fürtök közötti végrehajtóval (N2) megnyitott kapcsolatok számát csökkentheti (> 100 végrehajtóval).
     3. Növelje a memória-igényes feladatokhoz befogadásához. generace.
-    4. Választható lehetőség: Csökkenteni az-executor memória terhelést.
-    5. Választható lehetőség: Növelése kihasználtságát és a párhuzamosság oversubscribing Processzor.
+    4. Nem kötelező: Csökkentse az-executor Memóriaterhelést.
+    5. Nem kötelező: Oversubscribing CPU kihasználtságát és a párhuzamosság növelése.
 
 Mint az általános tapasztalatok végrehajtó méretének kiválasztásakor:
     
@@ -202,7 +202,7 @@ A lekérdezési teljesítmény kiugró adatokat vagy más teljesítménnyel kapc
 A futó feladatok rendszeresen a teljesítménnyel kapcsolatos problémák figyelése. Ha részletesebb elemzéseket kaphat az egyes problémák van szüksége, fontolja meg a következő teljesítmény profilkészítés eszközök egyikét:
 
 * [Intel-PAL eszköz](https://github.com/intel-hadoop/PAT) figyeli a Processzor, a storage és a hálózati sávszélesség felhasználásával.
-* [Oracle Java 8 Mission Control](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilt készít a Spark és a feladat-végrehajtó kód.
+* [Oracle Java 8 Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilt készít a Spark és a feladat-végrehajtó kód.
 
 A Spark 2.x lekérdezési teljesítmény kulcsa a volfrám motor, amellyel egész szakaszból álló kódgenerálás függ. Bizonyos esetekben egész szakaszból álló kódgenerálás van tiltva. Ha például egy nem változtatható típus használata (`string`) az összesítő kifejezésben `SortAggregate` jelenik meg, hanem `HashAggregate`. Ha például a jobb teljesítmény érdekében megpróbálkozhat a következőkkel, majd újra engedélyeznie generování kódu:
 

@@ -4,19 +4,19 @@ description: Ismerje meg az online migrálást az Azure Database MySQL-hez kész
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282876"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724139"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis PostgreSQL-hez
 
@@ -76,20 +76,20 @@ Ismert problémák és korlátozások online migrálást a PostgreSQL az Azure D
 
 ## <a name="datatype-limitations"></a>Adattípus-korlátozások
 
-- **Korlátozás**: Ha a forrás-adatbázis PostgreSQL-számbavételi datatype, az áttelepítés sikertelen lesz-e a folyamatos szinkronizálás során.
+- **Korlátozás**: Ha a forrás-adatbázis PostgreSQL-számbavételi datatype, az áttelepítés sikertelen lesz a folyamatos szinkronizálás során.
 
-    **Megkerülő megoldás**: módosítása ENUM datatype karakternek változó az Azure Database for postgresql-hez.
+    **Megkerülő megoldás**: Módosítsa a ENUM datatype karakternek változó az Azure Database for postgresql-hez.
 
-- **Korlátozás**: nincs elsődleges kulcs azokon a táblákon, ha a folyamatos szinkronizálás sikertelen lesz.
+- **Korlátozás**: Ha nincs elsődleges kulcs azokon a táblákon, a folyamatos szinkronizálás sikertelen lesz.
 
-    **Megkerülő megoldás**: beállítják ideiglenesen folytatja az áttelepítéshez a tábla elsődleges kulcsot. Adatok áttelepítés befejezése után eltávolíthatja az elsődleges kulcsot.
+    **Megkerülő megoldás**: Ideiglenesen állítsa be a folytatáshoz az áttelepítéshez a tábla elsődleges kulcsot. Adatok áttelepítés befejezése után eltávolíthatja az elsődleges kulcsot.
 
 ## <a name="lob-limitations"></a>LOB-korlátozások
 Nagyméretű objektum (LOB) oszlopok olyan oszlopot, amely nagy növelhető. A PostgreSQL LOB adattípus például XML, JSON, kép, szöveg stb.
 
-- **Korlátozás**: Ha a LOB-adattípusokat elsődleges kulcsként használja, a migrálás meghiúsul.
+- **Korlátozás**: Ha ÜZLETÁGI adattípusokat elsődleges kulcsként használja, az áttelepítés sikertelen lesz.
 
-    **Megkerülő megoldás**: csere elsődleges kulcs, amelyek nem LOB oszlop és más adattípusok.
+    **Megkerülő megoldás**: Cserélje le az elsődleges kulcs, amelyek nem LOB oszlop és más adattípusok.
 
 - **Korlátozás**: Ha nagyméretű objektum (LOB) oszlop hossza 32 KB-nál nagyobb, adatok lerövidítheti a cél. Ez a lekérdezés használatával LOB oszlop hossza ellenőrizheti:
 
@@ -97,11 +97,11 @@ Nagyméretű objektum (LOB) oszlopok olyan oszlopot, amely nagy növelhető. A P
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Megkerülő megoldás**: Ha LOB-objektum, amely 32 KB-nál nagyobb méretű, lépjen kapcsolatba a mérnöki csapathoz a következő címen [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
+    **Megkerülő megoldás**: Ha ÜZLETÁGI objektum, amely 32 KB-nál nagyobb méretű, lépjen kapcsolatba a mérnöki csapathoz a következő címen [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
 
-- **Korlátozás**: Ha nincsenek a LOB-oszlopok a tábla, és nincs elsődleges kulcs beállítva a táblához, adatok előfordulhat, hogy nem lesz áttelepítve ehhez a táblához.
+- **Korlátozás**: Ha nincsenek a LOB-oszlopok a tábla, és nincs elsődleges kulcs beállítva a táblához, adatok előfordulhat, hogy nem lesznek áttelepítve ehhez a táblához.
 
-    **Megkerülő megoldás**: beállítják ideiglenesen folytatja az áttelepítéshez a tábla elsődleges kulcsot. Adatok áttelepítés befejezése után eltávolíthatja az elsődleges kulcsot.
+    **Megkerülő megoldás**: Ideiglenesen állítsa be a folytatáshoz az áttelepítéshez a tábla elsődleges kulcsot. Adatok áttelepítés befejezése után eltávolíthatja az elsődleges kulcsot.
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 megkerülő megoldás
 PostgreSQL 10.x különböző módosítást hajt végre pg_xlog mappanevek, és ezért okozza az áttelepítése nem a várt módon fut. Ha a PostgreSQL migráláshoz 10.x, Azure database for PostgreSQL 10.3, hajtsa végre a következő parancsfájlt a forrás burkoló funkció körül pg_xlog függvények létrehozása PostgreSQL-adatbázishoz.

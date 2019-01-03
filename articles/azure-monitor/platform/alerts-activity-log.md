@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 5657cfb40e9017918f5842c573895872940b307a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273704"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579328"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -96,7 +96,7 @@ Kövesse az alábbi eljárást:
     Engedélyezi, tiltsa le, szerkesztése vagy egy szabály törlése. [További](#view-and-manage-activity-log-alert-rules-in-azure-portal) tevékenység szabály kezelésével kapcsolatban.
 
 
-Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken riasztási szabályok hozható létre a tevékenységnapló-, a rendszer és felfedezni vagy szűrheti az eseményeket a [tevékenységnapló az Azure Portalon](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra; majd lépésekkel 4 és újabb verziók esetében az oktatóanyag a fenti leírtak alapján.
+Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken riasztási szabályok hozható létre a tevékenységnapló-, a rendszer és felfedezni vagy szűrheti az eseményeket a [tevékenységnapló az Azure Portalon](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra; majd lépésekkel 4 és újabb verziók esetében az oktatóanyag a fenti leírtak alapján.
     
  ![ riasztás hozzáadása a tevékenységnaplóról](media/alerts-activity-log/add-activity-log.png)
     
@@ -223,4 +223,4 @@ A *sampleActivityLogAlert.parameters.json* fájl rendelkezik a riasztási szabá
 - [Tevékenységi naplóit a Webhook sémáról](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 - [A Tevékenységnaplók áttekintése](../../azure-monitor/platform/activity-log-alerts.md) 
 - Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).  
-- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../../azure-monitor/platform/service-notifications.md).

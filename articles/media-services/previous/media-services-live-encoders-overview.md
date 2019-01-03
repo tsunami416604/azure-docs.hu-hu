@@ -12,17 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 12/21/2018
 ms.author: juliako
-ms.openlocfilehash: b1166c34f1a0ce3f3e9be932eb6d7fb9d76389ec
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c0c7e2b8962cb757141b654c2956ed3ff5600c88
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665757"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787647"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Helyszíni kódolók konfigurálása, többszörös átviteli sebességű Streamek létrehozása az Azure Media Services használata esetén
 Ez a témakör felsorolja a helyszíni élő kódolók képesek segítségével az élő események rögzítése és a egy egyféle sávszélességű élő adatfolyamot AMS csatornákra (élő kódolás engedélyezve) küldése további feldolgozás céljából. A témakör hivatkozásokat is tartalmaz, amelyek bemutatják a felsorolt kódolók konfigurálása az oktatóanyagokat.
+
+> [!NOTE]
+> Streamelési RTMP-n keresztül, amikor ellenőrizze a tűzfallal és/vagy a proxy beállításait, győződjön meg arról, hogy 1935 és 1936 kimenő TCP-portok nyitva-e.
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live kódoló
 Információk konfigurálása a [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) a egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát lásd [konfigurálása FMLE](media-services-configure-fmle-live-encoder.md).
@@ -45,6 +48,7 @@ További információkért lásd: [Elemental Live](http://www.elementaltechnolog
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
+
 [Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a](media-services-manage-live-encoder-enabled-channels.md).
 

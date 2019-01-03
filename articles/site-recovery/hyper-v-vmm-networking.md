@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: rayne
-ms.openlocfilehash: 50ef6ff452713ec8a8023c5d5e3d58a4b91ea323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/27/2018
+ms.author: raynew
+ms.openlocfilehash: c93f80ba93e84c93ddf58b46b4bbcf98c53478d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849802"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794226"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Az IP-címkezelést a feladatátvételt követően csatlakozni egy másodlagos helyszíni helyre
 
@@ -23,8 +23,8 @@ Követően átadja a feladatokat a Hyper-V virtuális gépeket a System Center V
 
 A feladatátvételt követően a rendszer több módon kezelni a replika virtuális gépek IP-címzés: 
 
-- **Az azonos IP-cím megőrzése feladatátvétel után**: Ebben a forgatókönyvben a replikált virtuális gépen az elsődleges virtuális gép megegyező IP-címre. Ez leegyszerűsíti a kapcsolódó hálózati problémák feladatátvétel után, de néhány infrastruktúra munkát igényel.
-- **Egy másik IP-címet használja a feladatátvételt követően**: Ebben a forgatókönyvben a virtuális gép új IP-címet lekéri a feladatátvételt követően. 
+- **Az azonos IP-cím megőrzése feladatátvétel után**: Ebben a forgatókönyvben a replikált virtuális gép rendelkezik az elsődleges virtuális gép megegyező IP-címre. Ez leegyszerűsíti a kapcsolódó hálózati problémák feladatátvétel után, de néhány infrastruktúra munkát igényel.
+- **Egy másik IP-címet használja a feladatátvételt követően**: Ebben a forgatókönyvben a virtuális gép új IP-cím lekérése a feladatátvételt követően. 
  
 
 ## <a name="retain-the-ip-address"></a>Az IP-cím megőrzése

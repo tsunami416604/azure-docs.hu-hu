@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0555fa7de7ed85cf6d26f85b93f0010b2ab6fa53
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438863"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976970"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -35,7 +35,7 @@ Az új frissítések és funkciók esik, a következő kategóriákban:
 
     a.  [**Az Apache Spark 2.3 új funkciói**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Az Apache Kafka 1.0 új funkciói**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Az Apache Kafka 1.0 új funkciói**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***Frissítse az R Server 9.1 Machine Learning szolgáltatás 9.3*** – ezzel a kiadással adjuk az adatszakértők és a mérnökök a nyílt forráskódú, kiegészítve az algoritmikus innovációkat, és a könnyű operacionalizálás, az összes elérhető legjobb azok elsődleges nyelv, az Apache Spark sebessége. Ebben a kiadásban érhető el az R Server-támogatás hozzáadva a Python, R Server ML szolgáltatásokkal, a fürt névváltoztatás vezető képességeitől bontja ki. 
 
@@ -1300,9 +1300,9 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 
 |**Az Apache-összetevő**|**Az Apache JIRA**|**összegzés**|**Részletek**|
 |--|--|--|--|
-|**A Spark 2.3.** |**N/A** |**Az Apache Spark leírt módosításokat kibocsátási megjegyzései** |– Nincs "Elavult" dokumentum és a egy "Megváltozott működés," Útmutató https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Az SQL részére van egy másik részletes "áttelepítési" guide (a 2.2-es 2.3-as), http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**A Spark 2.3.** |**N/A** |**Az Apache Spark leírt módosításokat kibocsátási megjegyzései** |– Nincs "Elavult" dokumentum és a egy "Megváltozott működés," Útmutató https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Az SQL részére van egy másik részletes "áttelepítési" guide (a 2.2-es 2.3-as), https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-feladat sikeresen befejeződik, de egy HDFS lemezhiba teljes kvóta |**Forgatókönyv:** Futó **insert felülírása** mikor kvóta felhasználó futtatja a parancsot a kukában van beállítva.<br /><br />**Előző viselkedés:** A feladat sikeres volt, annak ellenére, hogy nem sikerül a Kukába helyezi át az adatokat. Az eredmény tévesen is tartalmazhat az egyes korábban a táblában található adatok.<br /><br />**Az új viselkedés:** Ha a lépés a kukában nem sikerül, a fájlok véglegesen törlődnek.|
-|**A Kafka 1.0**|**N/A**|**Az Apache Spark leírt módosításokat kibocsátási megjegyzései** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**A Kafka 1.0**|**N/A**|**Az Apache Spark leírt módosításokat kibocsátási megjegyzései** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive-/ Ranger** | |További ranger hive-házirendek szükséges BESZÚRÁSA FELÜLÍRÁSA |**Forgatókönyv:** További ranger hive-házirendek szükséges **BESZÚRÁSA FELÜLÍRÁSA**<br /><br />**Előző viselkedés:** Hive- **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések a megszokott módon sikeres legyen.<br /><br />**Az új viselkedés:** Hive- **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések váratlanul sikertelen a következő hibával HDP-2.6.x verziófrissítés utáni teendők:<br /><br />Hiba az utasítás fordítása közben: NEM SIKERÜLT: HiveAccessControlException engedély megtagadva: jdoe felhasználó nem rendelkezik írási jogosultság /tmp/\*(állapot 42000, kód = = 40000)<br /><br />Hive-tól HDP-2.6.0, **BESZÚRÁSA FELÜLÍRÁSA** lekérdezések megkövetelése a Ranger URI-házirendet, hogy az írási műveletek, még akkor is, ha a felhasználó nem rendelkezik írási jogosultság HDFS házirend megadásának módja.<br /><br />**Megkerülő megoldás/várt felhasználói művelet:**<br /><br />1. Hozzon létre egy új házirendet a Hive-adattár alatt.<br />2. A legördülő listában, tekintse meg az adatbázist válassza ki az URI-t.<br />3. Módosítsa az elérési utat (például: / tmp / *)<br />4. Adja hozzá a felhasználókat és csoportokat, és mentse.<br />5. Ismételje meg a Beszúrás lekérdezést.|
 |**HDFS**|**N/A** |HDFS támogatnia kell a több KMS URI azonosítók |**Előző viselkedés:** dfs.encryption.key.provider.uri tulajdonság a KMS-szolgáltató elérési útjáról konfigurálásához használt.<br /><br />**Az új viselkedés:** dfs.encryption.key.provider.uri konfigurálhatja a KMS-szolgáltató elérési útjáról hadoop.security.key.provider.path értéke most már elavult.|
 |**A Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|A beállítás letiltja a Feladatütemező |**Az érintett összetevő:** Zeppelin-kiszolgáló<br /><br />**Előző viselkedés:** A Zeppelin a korábbi kiadásokban nem volt lehetőség a scheduler letiltása.<br /><br />**Az új viselkedés:** Alapértelmezés szerint felhasználók többé nem látja a scheduler, mivel alapértelmezés szerint le van tiltva.<br /><br />**Megkerülő megoldás/várt felhasználói művelet:** A scheduler engedélyezni szeretné, ha szüksége lesz azeppelin.notebook.cron.enable az egyéni zeppelin webhelyen a true érték hozzáadása a Ambari Zeppelin beállításait.|
@@ -1409,6 +1409,10 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
             érték = \_.escape(val);//Line nem: 460
             
             Miután eltávolította a fenti sor, a Ranger felhasználói felület lehetővé teszi szabályzatok létrehozását szabályzatfeltételt, amely speciális karaktereket és a szabályzat-kiértékelés házirendje sikeres lesz.
+
+**HDInsight-integráció ADLS 2. generációs gyűjtések: ESP-fürtökkel könyvtárak és engedélyek probléma felhasználó**
+    1.  A felhasználók számára kezdőkönyvtárak nem első jönnek létre a fő csomópont 1. Megkerülő megoldás, hogy manuálisan hozza létre ezeket, és a megfelelő felhasználói UPN tulajdonjogai módosulnak.
+    2.  /Hdp vonatkozó engedélyek jelenleg nincs beállítva a 751. Ezt manuálisan kell beállítani egy.  chmod 751 /hdp b.  chmod – R 755/hdp/alkalmazások
 
 ## <a name="deprecation"></a>Elavulással kapcsolatos
 

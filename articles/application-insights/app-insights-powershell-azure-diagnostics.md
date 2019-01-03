@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: e8fafbe1c5fafd338009b1bdd8c5d838c3fac726
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 4b1ae3f3e256a87a78ac95b89b98d59c7924b7a7
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323286"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790996"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Az Application Insights beállítása a PowerShell segítségével Azure-webalkalmazáshoz
 A [Microsoft Azure](https://azure.com) [konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) az [Azure Application Insights ](app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
@@ -134,7 +134,7 @@ A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
 
 
 ## <a name="see-also"></a>Lásd még
-* [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](app-insights-cloudservices.md)
+* [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](../azure-monitor/app/cloudservices.md)
 * [Az Azure Diagnostics küldése az Application Insights-ba](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Riasztások konfigurálásának automatizálása](app-insights-powershell-alerts.md)
 

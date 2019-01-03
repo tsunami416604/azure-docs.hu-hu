@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 74d6748a4d595e330103497dcc97ac57e01db250
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1cfecca7d7b8a3f554466d95c666e2cbddbffde
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158618"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975678"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Engedélyezze a biztonságos LDAP (LDAPS-t) számára az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
@@ -51,7 +51,7 @@ Biztonságos LDAP engedélyezése, hajtsa végre az alábbi konfigurációs lép
 5. Alapértelmezés szerint le van tiltva az interneten keresztül a felügyelt tartomány secure LDAP-hozzáférését. Váltógomb **lehetővé teszik a secure LDAP-hozzáférését az interneten keresztül** való **engedélyezése**, ha szeretné.
 
     > [!WARNING]
-    > Ha engedélyezi a secure LDAP-hozzáférését az interneten keresztül, a tartomány téve a jelszó találgatásos támadásokkal szemben az interneten keresztül. Ezért ajánlott egy NSG-t a szükséges forrás IP-címtartományok való hozzáférés zárolása beállítását. Című témakör útmutatását [LDAPS-t a hozzáférést a felügyelt tartományhoz az interneten keresztül zároljuk](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
+    > Ha engedélyezi a secure LDAP-hozzáférését az interneten keresztül, a tartomány téve a jelszó találgatásos támadásokkal szemben az interneten keresztül. Ezért ajánlott egy NSG-t a szükséges forrás IP-címtartományok való hozzáférés zárolása beállítását. Című témakör útmutatását [LDAPS-t a hozzáférést a felügyelt tartományhoz az interneten keresztül zároljuk](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
 6. Kattintson a mappa ikont következő **. Secure LDAP-tanúsítványt a PFX-fájl**. A PFX-fájl elérési útját adja meg a tanúsítványt a felügyelt tartomány secure LDAP-hozzáférését.

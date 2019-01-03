@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 097eae37f170a8036ee46652450788faf77c3960
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b44903244147f556e620e9726f6e9884b12ac8a8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967129"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976528"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikák Stream: 1 másodperc késéssel diagnosztizálása & figyelése
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
-Az élő metrikák Stream segítségével a valós idejű, éles webes alkalmazások válnak küldetése mintavételi [Application Insights](app-insights-overview.md). Válassza ki, és szűrje a mérőszámokhoz és a teljesítményszámlálókhoz valós időben, anélkül, hogy a szolgáltatás megzavarását megtekintéshez. Vizsgálja meg a minta sikertelen kérések és kivételek hívásláncait. A [Profiler](app-insights-profiler.md), [pillanatkép-hibakereső](app-insights-snapshot-debugger.md), és [Teljesítménytesztelés](app-insights-monitor-web-app-availability.md#performance-tests), élő metrikák Stream nem invazív, és hatékony diagnosztikai eszközt biztosít az élő webes Ezen a webhelyen.
+Az élő metrikák Stream segítségével a valós idejű, éles webes alkalmazások válnak küldetése mintavételi [Application Insights](app-insights-overview.md). Válassza ki, és szűrje a mérőszámokhoz és a teljesítményszámlálókhoz valós időben, anélkül, hogy a szolgáltatás megzavarását megtekintéshez. Vizsgálja meg a minta sikertelen kérések és kivételek hívásláncait. A [Profiler](app-insights-profiler.md), [pillanatkép-hibakereső](app-insights-snapshot-debugger.md), és [Teljesítménytesztelés](../azure-monitor/app/monitor-web-app-availability.md#performance-tests), élő metrikák Stream nem invazív, és hatékony diagnosztikai eszközt biztosít az élő webes Ezen a webhelyen.
 
 Az élő Stream metrikák a következőket teheti:
 
@@ -38,7 +38,7 @@ Az élő Stream metrikák a következőket teheti:
 
 ## <a name="get-started"></a>Bevezetés
 
-1. Ha még nem [telepítve van az Application Insights](app-insights-asp-net.md) az ASP.NET-webalkalmazásban vagy [Windows server alkalmazás](app-insights-windows-services.md), most tegye meg. 
+1. Ha még nem [telepítve van az Application Insights](../azure-monitor/app/asp-net.md) az ASP.NET-webalkalmazásban vagy [Windows server alkalmazás](app-insights-windows-services.md), most tegye meg. 
 2. **A legújabb verzióra való frissítés** az Application Insights-csomag. A Visual Studióban kattintson jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**. Nyissa meg a **frissítések** lapon jelölje **előzetes verzió**, és válassza ki a Microsoft.ApplicationInsights.*-csomagokat.
 
     Helyezze ismét üzembe alkalmazását.
@@ -52,7 +52,7 @@ Az élő Stream metrikák a következőket teheti:
 
 ### <a name="no-data-check-your-server-firewall"></a>Nincs adat? Ellenőrizze a kiszolgáló tűzfalán
 
-Ellenőrizze a [kimenő portok az élő metrikák Stream](app-insights-ip-addresses.md#outgoing-ports) nyitva a tűzfalon a kiszolgálók. 
+Ellenőrizze a [kimenő portok az élő metrikák Stream](../azure-monitor/app/ip-addresses.md#outgoing-ports) nyitva a tűzfalon a kiszolgálók. 
 
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Élő metrikák Stream Miben különbözik a Metrikaböngésző és az Analytics?
@@ -60,10 +60,10 @@ Ellenőrizze a [kimenő portok az élő metrikák Stream](app-insights-ip-addres
 | |Élő stream | Metrikaböngésző és elemzés |
 |---|---|---|
 |Késés|Egy második belül megjelenített adatok|Összesítjük percben|
-|Nincsenek adatmegőrzési|Adatok továbbra is fennáll, míg a diagramra, és ezután a rendszer törli|[Az adatok 90 napig őrizzük meg](app-insights-data-retention-privacy.md#how-long-is-the-data-kept)|
+|Nincsenek adatmegőrzési|Adatok továbbra is fennáll, míg a diagramra, és ezután a rendszer törli|[Az adatok 90 napig őrizzük meg](../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Igény szerinti|Adatok streamelése közben, nyissa meg az élő mérőszámok|Adatokat küld, amikor az SDK telepítése és engedélyezése|
 |Ingyenes|Semmilyen díjat nem az élő Stream adatok|Státuszban [díjszabása](app-insights-pricing.md)
-|Mintavételezés|Az összes kijelölt mérőszámok és -számlálók továbbít. Hibák és a hívásláncokat mintát. TelemetryProcessors sem lépnek érvénybe.|Lehet, hogy eseményeket [mintavételezés](app-insights-api-filtering-sampling.md)|
+|Mintavételezés|Az összes kijelölt mérőszámok és -számlálók továbbít. Hibák és a hívásláncokat mintát. TelemetryProcessors sem lépnek érvénybe.|Lehet, hogy eseményeket [mintavételezés](../azure-monitor/app/api-filtering-sampling.md)|
 |Vezérlőcsatorna|Szűrő vezérlőelem jelekkel kell küldeni az SDK-t. Javasoljuk, hogy [biztonságos csatorna](#secure-channel).|Kommunikációs még csak egyirányú, a portálra|
 
 
@@ -75,7 +75,7 @@ Egyéni KPI élő tetszőleges szűrők alkalmazásával bármely Application In
 
 ![Egyéni kérés KPI](./media/app-insights-live-stream/live-stream-filteredMetric.png)
 
-Megfigyelheti, hogy egy másik, innen: darabszám értéket. A beállítások adatfolyam, amely lehet bármelyik az Application Insights telemetria-típustól függnek: kérelmek, függőségek, kivételek, nyomkövetéseket, eseményeket vagy metrikákat. Azok a saját [egyéni mérték](app-insights-api-custom-events-metrics.md#properties):
+Megfigyelheti, hogy egy másik, innen: darabszám értéket. A beállítások adatfolyam, amely lehet bármelyik az Application Insights telemetria-típustól függnek: kérelmek, függőségek, kivételek, nyomkövetéseket, eseményeket vagy metrikákat. Azok a saját [egyéni mérték](../azure-monitor/app/api-custom-events-metrics.md#properties):
 
 ![Érték beállításai](./media/app-insights-live-stream/live-stream-valueoptions.png)
 
@@ -83,7 +83,7 @@ Az Application Insights telemetriát, mellett is figyelheti bármely Windows-tel
 
 Összesítjük élő metrikák két pont: helyi minden kiszolgálón, majd a összes kiszolgáló között. Az alapértelmezett, vagy a megfelelő legördülő listákból egyéb lehetőségek kiválasztásával módosíthatja.
 
-## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Minta Telemetriai: Egyéni élő diagnosztikai események
+## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Minta telemetriai adatokat: Egyéni élő diagnosztikai események
 Alapértelmezés szerint az események élő adás sikertelen kérelmek és a függőségi hívások, kivételek, események és nyomkövetések mintákat mutat be. Kattintson a szűrő ikonjára kattintva ellenőrizheti a alkalmazott tetszőleges időpontban. 
 
 ![Alapértelmezett élő adás](./media/app-insights-live-stream/live-stream-eventsdefault.png)
@@ -188,7 +188,7 @@ Ha ismeri fel, és a csatlakoztatott kiszolgálókra megbízható, megpróbálha
 
 ## <a name="generating-a-performance-test-load"></a>Teljesítmény tesztelése terhelés generálása
 
-Ha azt szeretné, tekintse meg a terhelés megnövekedése hatását, használja a teljesítményteszt panel. Azt szimulálja egy egyidejű felhasználók száma érkező kérelmeket. Vagy "manuális tesztek" Futtatás (ping tesztek) egyetlen URL-címet, vagy futhat egy [többlépéses webes teljesítménytesztelési](app-insights-monitor-web-app-availability.md#multi-step-web-tests) feltöltött (a rendelkezésre állási teszt azonos módon).
+Ha azt szeretné, tekintse meg a terhelés megnövekedése hatását, használja a teljesítményteszt panel. Azt szimulálja egy egyidejű felhasználók száma érkező kérelmeket. Vagy "manuális tesztek" Futtatás (ping tesztek) egyetlen URL-címet, vagy futhat egy [többlépéses webes teljesítménytesztelési](../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) feltöltött (a rendelkezésre állási teszt azonos módon).
 
 > [!TIP]
 > Miután létrehozta a teljesítményteszt, nyissa meg a teszt- és az élő Stream panel külön windows. Megtekintheti a sorban álló teljesítményteszt indításakor, és tekintse meg az élő stream egyszerre.
@@ -197,12 +197,12 @@ Ha azt szeretné, tekintse meg a terhelés megnövekedése hatását, használja
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Nincs adat? Ha az alkalmazás egy védett hálózati: élő metrikák Stream használja egy másik IP-címek, mint más Application Insights telemetria. Győződjön meg arról, hogy [adott IP-címek](app-insights-ip-addresses.md) nyitva van a tűzfal.
+Nincs adat? Ha az alkalmazás egy védett hálózat: Élő metrikák Stream használja egy másik IP-címek, mint más Application Insights telemetria. Győződjön meg arról, hogy [adott IP-címek](../azure-monitor/app/ip-addresses.md) nyitva van a tűzfal.
 
 
 
 ## <a name="next-steps"></a>További lépések
 * [Az Application Insights figyelési használat](app-insights-usage-overview.md)
-* [Diagnosztikai keresés használata](app-insights-diagnostic-search.md)
+* [Diagnosztikai keresés használata](../azure-monitor/app/diagnostic-search.md)
 * [Profilkészítő](app-insights-profiler.md)
 * [Pillanatkép-hibakereső](app-insights-snapshot-debugger.md)

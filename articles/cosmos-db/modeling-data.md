@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0197c11673f49214dc2cea09b53290993a00c6b3
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166642"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744938"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL-adatbázisok dokumentumadatok modellezése
 
@@ -71,7 +71,7 @@ Most nézzük tekintse meg, hogyan tudjuk lenne modell ugyanazokat az adatokat a
         ] 
     }
 
-Most a fenti módszerével **denormalizált** személy where jegyezze fel azt **beágyazott** egyetlen JSON az a személy kapcsolattartási adatait és a címek, például a vonatkozó információkat a dokumentum.
+Most a fenti módszerével **denormalizált** személy where jegyezze fel azt **beágyazott** a személy kapcsolattartási adatait és a címek, például egy JSON-ba kapcsolatos összes információ a dokumentum.
 Ezenkívül mivel azt már nem korlátozódik a rögzített sémát kell, hogy a rugalmasságot, például kapcsolattartási adatait a különböző alakzatokra teljes mértékben kellene. 
 
 Az adatbázis teljes személy rekord lekérése mostantól egyetlen művelet egyetlen-gyűjteményeken, és egyetlen dokumentum olvasása. Frissíti egy személy rekordot, a kapcsolattartási adatait és a címek, egyben egy egyetlen dokumentum egyetlen írási művelet.
@@ -172,7 +172,7 @@ A JSON-kódrészletben igénybe vehet.
         ]
     }
 
-Ez egy személy tőzsdei portfólió utalhatnak. Azt választotta, a tőzsdei adatokat az egyes portfólió dokumentumok ágyazhat be. Olyan környezetben, ahol kapcsolódó adatok gyakran változnak például egy készletből, kereskedelmi alkalmazás, az adatok gyakran változnak beágyazás fogja azt jelenti, hogy folyamatosan frissítjük az egyes portfólió dokumentumok minden alkalommal, amikor egy készlet forog.
+Ez egy személy tőzsdei portfólió utalhatnak. Azt választotta, a tőzsdei információkat egyes portfólióban dokumentu ágyazhat be. Olyan környezetben, ahol kapcsolódó adatok gyakran változnak például egy készletből, kereskedelmi alkalmazás, az adatok gyakran változnak beágyazás fogja azt jelenti, hogy folyamatosan frissítjük az egyes portfólió dokumentumok minden alkalommal, amikor egy készlet forog.
 
 Készlet *zaza* egyetlen alkalommal több száz kerülhetnek nap és a felhasználók ezreit lehet *zaza* a saját portfólió. A fenti portfólió dokumentumok a sok ezer sokszor frissíteni szeretné van például egy adatmodellel minden nap, és a rendszer, amely nem jól méretezhető. 
 
@@ -259,7 +259,7 @@ Ha megnézzük az alábbi JSON-t a modellek közzétevők és könyveket.
     ...
     {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
 Ha a közzétevő / könyvek száma korlátozott növekedést kicsi, majd tárolja a könyv hivatkozás a közzétevő dokumentumon belüli akkor lehet hasznos. Azonban ha a közzétevő / könyvek száma korlátlan streameken működő, majd az adatmodell vezetne mutable, egyre növekvő tömbök, mint a fenti példa közzétevő dokumentumot. 
 
@@ -278,7 +278,7 @@ Váltás körül egy dolog modell, amely ugyanazokat az adatokat továbbra is je
     ...
     {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
 A fenti példában a korlátlan streameken működő gyűjtemény áthúzott azt a közzétevő dokumentumot. Ehelyett csak rá egy hivatkozást a közzétevő minden könyv dokumentum.
 
@@ -298,7 +298,7 @@ Előfordulhat, hogy ugyanarra a dologra dokumentumok használatával replikálja
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
     {"id": "b4", "name": "Learn about Azure Cosmos DB" }
-    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive into Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -319,7 +319,7 @@ Vegye figyelembe a következőket.
     {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
+    {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
 Most ha egy szerző voltam, azonnal tudom, melyik könyvek írásos engedélye szükséges, és ezzel szemben ha egy könyv betöltött dokumentum le kellett volna tudom azonosítóját a szerző(k) az. Ez menti a köztes-lekérdezést az illesztési tábla csökkenti az kiszolgálók száma kerekíteni lelassítja győződjön meg arról, hogy rendelkezik az alkalmazás. 
 
@@ -381,7 +381,7 @@ Arról Ha a szerző neve megváltozik, vagy frissíteni a fénykép szűrnek azt
 
 A példában a **összesítések előre kiszámított** értékek feldolgozási költséges menteni a egy olvasási művelet. A példában a szerző dokumentum beágyazott adatok némelyike a futásidőben számított adatokat. Jön létre minden alkalommal, amikor egy új könyv közzé van téve, egy könyv dokumentum **és** countOfBooks mező egy könyv azt jelzi, hogy létezik egy adott szerző száma alapján számított értékre van állítva. Az optimalizálás jó lenne a olvasási (nagy erőforrásigényű) rendszerek, hogy megengedhet számítások végrehajtandó írások olvasási optimalizálása érdekében.
 
-Modell előre számított mezők vannak lehetséges legyen, mivel az Azure Cosmos DB támogatja **többdokumentumos tranzakciókat**. NoSQL-tárolókat nem tranzakciók tegye a dokumentumok között, és ezért tanácsadójának tervezési döntéseket, például a "mindig beágyazásához mindent" Ez a korlátozás miatt. Az Azure Cosmos DB használhatja a kiszolgálóoldali eseményindítók és tárolt eljárások, amelyek könyvek beszúrási és frissítési szerzők minden ACID tranzakción belül. Most nem **rendelkezik** ágyazhat be egy dokumentum csak, győződjön meg, hogy az adatok konzisztensek maradnak minden a.
+Modell előre számított mezők vannak lehetséges legyen, mivel az Azure Cosmos DB támogatja **többdokumentumos tranzakciókat**. NoSQL-tárolókat nem tranzakciók tegye a dokumentumok között, és ezért tanácsadójának tervezési döntéseket, például a "mindig beágyazásához mindent" Ez a korlátozás miatt. Az Azure Cosmos DB használhatja a kiszolgálóoldali eseményindítók és tárolt eljárások, amelyek könyvek beszúrási és frissítési szerzők minden ACID tranzakción belül. Most nem **rendelkezik** ágyazhat be mindent az egy dokumentum csak arról, hogy az adatok konzisztensek maradnak.
 
 ## <a name="NextSteps"></a>Következő lépések
 Ez a cikk az a legnagyobb takeaways is tisztában lenni azzal, hogy a séma nélküli világában adatmodellezési olyan fontos, mint valaha. 

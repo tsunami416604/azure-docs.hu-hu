@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088051"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754050"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Ez a cikk ismerteti a 1809 csomag tartalmát. A csomag magában foglalja a fejlesztések, javításokat és ismert problémái az Azure Stack jelen verziójában. Ez a cikk egy hivatkozást is tartalmaz, így a frissítés letölthető. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat és a build (telepítés utáni) problémái vannak felosztva.
 
@@ -60,10 +60,10 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 - A következő felügyelt lemez problémák 1809 javított, és a 1808 is megoldott [Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
-   - Javítva lett a probléma a melyik csatlakoztatását SSD adatlemezeket a prémium szintű méretre, felügyelt lemezes virtuális gépek (DS, DSv2, Fs, Fs_V2) egy hiba miatt sikertelen volt: *nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: a kért művelet nem hajtható végre, mert Virtuálisgép-méret esetében nem támogatott a "Premium_LRS" fióktípust "Standard_DS/Ds_V2 és FS/Fs_v2)*. 
+   - A probléma javított melyik csatlakoztatását SSD adatlemezeket a prémium szintű méretre, felügyelt lemezes virtuális gépek (DS, DSv2, Fs, Fs_V2) egy hiba miatt sikertelen volt:  *Nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: A kért művelet nem hajtható végre, mert a Virtuálisgép-méret nem támogatott a "Premium_LRS" fióktípust "Standard_DS/Ds_V2 és FS/Fs_v2)*. 
    
-   - A felügyelt lemezes virtuális gép használatával történő létrehozásának **createOption**: **Attach** a következő hibaüzenettel meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú. További információ: "belső végrehajtási hiba történt."*
-   Hibakód: InternalExecutionError ErrorMessage: belső végrehajtási hiba történt.
+   - A felügyelt lemezes virtuális gép használatával történő létrehozásának **createOption**: **Csatolása** a következő hibaüzenettel meghiúsul: *Hosszú ideig futó művelet sikertelen volt a "Sikertelen" állapotú. További információ: "belső végrehajtási hiba történt."*
+   Hibakód: InternalExecutionError ErrorMessage: Belső végrehajtási hiba történt.
    
    Most már megoldódott a probléma.
 
@@ -221,16 +221,16 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
 
    #1 riasztás:
-   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
-   - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
-   - Leírás: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
+   - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+   - SÚLYOSSÁG: Figyelmeztetés
+   - ÖSSZETEVŐ: Vezérlő állapota
+   - LEÍRÁS: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
 
   Riasztási #2:
-   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
-   - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
-   - Leírás: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
+   - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+   - SÚLYOSSÁG: Figyelmeztetés
+   - ÖSSZETEVŐ: Vezérlő állapota
+   - LEÍRÁS: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
 
   Mindkét riasztás biztonságosan figyelmen kívül hagyható, és automatikusan fog bezárása idővel.  
 
@@ -238,10 +238,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- 2812138 | IS --> 
 - Láthatja, hogy a riasztást a **tárolási** összetevő, amely a következő részleteket:
 
-   - NAME: Storage szolgáltatás belső kommunikációs hiba  
-   - SÚLYOSSÁG: kritikus  
+   - NÉV: Storage szolgáltatás belső kommunikációs hiba  
+   - SÚLYOSSÁG: Kritikus  
    - ÖSSZETEVŐ: Storage  
-   - Leírás: A Storage szolgáltatás belső kommunikációs hiba történt, amikor kéréseket küld az alábbi csomópontok.  
+   - LEÍRÁS: Storage szolgáltatás belső kommunikációs hiba történt a kérés küldésekor az alábbi csomópontok.  
 
     A riasztás biztonságosan figyelmen kívül hagyható, de a riasztás lezárása manuálisan kell.
 
@@ -257,12 +257,12 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Amikor hoz létre egy új virtuális gép (VM) az Azure Stack portal használatával, és a Virtuálisgép-méret választja, a USD/hónap oszlop jelenik meg egy **nem érhető el** üzenet. Nem jelenik meg ebben az oszlopban; megjelenítés, a virtuális gép díjszabási oszlop nem támogatott az Azure Stackben.
 
 <!-- 2869209 – IS, ASDK --> 
-- Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha helyi elérési útját a lemezt használ, a parancsmag a következő hibával meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 
+- Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha a lemez a helyi elérési utat használ, a parancsmag futtatása sikertelen, a következő hibával: *Hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 
 
 <!--  2795678 – IS, ASDK --> 
 - Ha a portálon hozhat létre virtuális gépeket (VM) a prémium szintű virtuális gép méretét (DS, Ds_v2, FS, FSv2) használ, a virtuális gép létrejött, a standard szintű storage-fiókban. A standard szintű tárfiók-létrehozás nem befolyásolja, funkcionálisan IOPs, vagy számlázási. 
 
-   Biztonságosan figyelmen kívül hagyhatja a figyelmeztetést, amely szerint: *, olyan méretnél, amely támogatja a prémium szintű lemezek használatát egy standard lemez használatát választotta. Ez ronthatja az operációs rendszer teljesítményét, és nem ajánlott. Fontolja meg inkább a prémium szintű tárolást (SSD) használatát.*
+   Biztonságosan figyelmen kívül hagyhatja a figyelmeztetést, amely szerint: *Úgy döntött, a standard szintű lemezes használatához olyan méretnél, amely támogatja a prémium szintű lemezek használatát. Ez ronthatja az operációs rendszer teljesítményét, és nem ajánlott. Fontolja meg inkább a prémium szintű tárolást (SSD) használatát.*
 
 <!-- 2967447 - IS, ASDK --> 
 - A virtual machine scale set (VMSS) létrehozási folyamatának 7.2 CentOS-alapú üzembe helyezési lehetőséget biztosít. A rendszerképet az Azure Stacken nem érhető el, mert az üzemelő példány egy másik operációs rendszer válasszon vagy adjon meg egy másik CentOS lemezképet a marketplace-ről telepítené az üzemeltető által letöltött Azure Resource Manager sablonnal.  
@@ -287,12 +287,15 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    - Kvóták 1808 frissítés előtt létrehozott a Managed Disks kvóta jelennek meg 0 értéket a felügyeleti portálon, bár 2048 GiB le van foglalva. Növelheti vagy csökkentheti a tényleges igényeinek és az újonnan beállított értéket kvótaérték felülbírálja a 2048 GiB alapértelmezett.
    - Ha a kvóta értékének 0-ra frissít, egyenértékű, 2048 GiB alapértelmezett értékét. A probléma megoldásához állítsa a kvótaérték 1.
 
-<!-- TBD - IS ASDK --> Frissítse a 1809 alkalmazása után, a következő problémák léphetnek a felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezésekor:
+<!-- TBD - IS ASDK --> 
+- Frissítse a 1809 alkalmazása után, a következő problémák léphetnek a felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezésekor:
 
    - Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
       1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
       2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
    2. Egy több-bérlős környezet van beállítva, ha a virtuális gépek üzembe helyezéséhez egy adott előfizetéshez tartozó és a Vendég címtár egy belső hiba miatt meghiúsulhat. A hiba elhárításához kövesse az alábbi lépéseket a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
+
+- Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használjon Virtuálisgép-hozzáférés a Linux-bővítmény kiépítése után SSH-kulcsok megvalósításához, vagy jelszóalapú hitelesítés használatára.
 
 ### <a name="networking"></a>Hálózat  
 

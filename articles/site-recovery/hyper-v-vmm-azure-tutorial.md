@@ -1,20 +1,7 @@
 ---
-title: Állítsa be a helyszíni Hyper-V virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery VMM-felhőkben |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be a helyszíni Hyper-V virtuális gépek vészhelyreállítása az Azure Site Recovery szolgáltatással az Azure-bA System Center VMM-felhőkben.
-services: site-recovery
-author: rayne-wiselman
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: c4b5a200780761decfdd98289f7e7332244e5645
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846427"
----
+Cím: Állítsa be a helyszíni Hyper-V virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery VMM-felhőkben |} A Microsoft Docs description: Ismerje meg, hogyan állítható be a helyszíni Hyper-V virtuális gépek vészhelyreállítása az Azure Site Recovery szolgáltatással az Azure-bA System Center VMM-felhőkben.
+szolgáltatások: a site-recovery author: rayne-wiselman ms.service: a site-recovery ms.topic: fogalmi ms.date: 12/27 vagy 2018 ms.author: raynew ms.custom: MVC
+
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>A helyszíni Hyper-V virtuális gépek vészhelyreállítása beállítása a VMM-felhőkben az Azure-bA
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.

@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: c453998eea2a747b2cb608482f0ef9c1ee197ee0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185431"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606792"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>A távoli figyelési megoldásban SIM-adatok integrálása
 
 IoT-eszközök csatlakoztatása a felhőhöz, a SIM-kártya, amely lehetővé teszi, hogy bárhonnan küldeni a data-adatfolyamok használatával gyakran. Az Azure IoT távoli figyelési megoldás lehetővé teszi az IoT felügyelt csatlakozási adatok, így operátorok is nyomon követheti az adatokat az IoT-SIM által biztosított keresztül az eszköz állapotát.
 
-Távoli figyelés kívül a szolgáltatással való Telefónica IoT-kapcsolatot, biztosít, lehetővé teszi az IoT-kapcsolat Platform segítségével ügyfeleink szinkronizálása eszközüket SIM-kártya csatlakozási adatok megoldásaikat. Ez a megoldás támogatja a Githubon keresztül más IoT kapcsolatszolgáltatók kiterjeszthető [tárház](http://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
+Távoli figyelés kívül a szolgáltatással való Telefónica IoT-kapcsolatot, biztosít, lehetővé teszi az IoT-kapcsolat Platform segítségével ügyfeleink szinkronizálása eszközüket SIM-kártya csatlakozási adatok megoldásaikat. Ez a megoldás támogatja a Githubon keresztül más IoT kapcsolatszolgáltatók kiterjeszthető [tárház](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

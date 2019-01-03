@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12f9ed6d5b5d4c8dc7e5b0b68a0a394749cc72bd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967061"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714610"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások telepítése az Azure és az Azure Stackben
+# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ismerje meg, hogyan helyezhet üzembe egy alkalmazást az Azure és az Azure Stack egy hibrid folyamatos integráció/folyamatos teljesítés (CI/CD) folyamat használatával.
 
@@ -72,7 +72,7 @@ Ez az oktatóanyag feltételezi, hogy néhány alapvető ismeretek az Azure és 
 ### <a name="azure-requirements"></a>Azure-követelmények
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-* Hozzon létre egy [Web App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) az Azure-ban. Győződjön meg, vegye figyelembe a Web App URL-címének kell, hogy az oktatóanyag részében használni.
+* Hozzon létre egy [Web App](https://docs.microsoft.com/azure/app-service/overview) az Azure-ban. Győződjön meg, vegye figyelembe a Web App URL-címének kell, hogy az oktatóanyag részében használni.
 
 ### <a name="azure-stack-requirements"></a>Azure Stack-követelmények
 
@@ -166,7 +166,7 @@ A Szolgáltatásvégpontok konfigurálásának részeként az Azure DevOps-szolg
 
 ### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>A szolgáltatás egyszerű engedélyeket az Azure Stack-előfizetéshez erőforrásokat helyezhet üzembe
 
-Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, melyik szerepkör jelöli az ajánlott engedélyeket az alkalmazáshoz. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, melyik szerepkör jelöli az ajánlott engedélyeket az alkalmazáshoz. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: Beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy erőforrás. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Például egy alkalmazás az Olvasó szerepkörhöz, egy erőforráscsoport hozzáadása azt jelenti, hogy azt az erőforráscsoportot és a hozzá tartozó erőforrások olvashatja.
 
@@ -180,9 +180,7 @@ Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy
 
 3. Válassza ki a Visual Studio Enterprise **hozzáférés-vezérlés (IAM)**.
 
-    ![Hozzáférés-vezérlés (IAM)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
-
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
     ![Hozzáadás](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
@@ -350,7 +348,7 @@ CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja.
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Önálló webes alkalmazás üzembe helyezése az App Services létrehozása az mindkét felhőben
 
-1. Szerkesztés a **WebApplication.csproj** fájl: válassza ki **Runtimeidentifier** majd `win10-x64.` további információkért lásd: [önálló központi telepítés](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentáció.
+1. Szerkessze a **WebApplication.csproj** fájlt: Válassza ki **Runtimeidentifier** majd `win10-x64.` további információkért lásd: [önálló telepítés](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációját.
 
     ![Runtimeidentifier konfigurálása](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 

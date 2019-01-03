@@ -1,5 +1,5 @@
 ---
-title: 'IntelliJ-hez készült Azure-eszközkészlet: Spark-alkalmazások HDInsight-fürt létrehozása '
+title: 'Azure-eszközkészlet az IntelliJ-hez: Spark-alkalmazások HDInsight-fürt létrehozása '
 description: Spark Scalában írt alkalmazások fejlesztése az IntelliJ-hez készült Azure-eszközkészlet használatával, és küldheti el ezeket a HDInsight Spark-fürt.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: b2bf79d90c741e09c683e4520b05b31ba2fee1da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 621d41c5c9558b5cb17d2a1e5a03d68f8af0df19
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582768"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600641"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
@@ -26,7 +26,7 @@ Az IntelliJ beépülő modul az Azure-eszközkészlet használata fejlesztéséh
 
 A projekt létrehozásához tekintse meg a [Apache Spark alkalmazások létrehozása az IntelliJ-hez készült Azure-eszközkészlet](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) videó.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Használhatja ez a beépülő modul létrehozása és elküldése az alkalmazások csak a HDInsight Spark-fürt Linux rendszeren.
 > 
 
@@ -180,22 +180,22 @@ Miután létrehozta a Scala-alkalmazások, elküldheti a fürthöz.
 
     * Válasszon ki egy összetevőt az IntelliJ-projekt, vagy válasszon egyet a merevlemez-meghajtóról.
 
-    * **Fő osztálynév** mező: az alapértelmezett értéke a választott fájl a fő osztályt. A három pontra kattintva módosíthatja az osztály (**...** ) és a egy másik osztály kiválasztása.   
+    * **Fő osztálynév** mező: Az alapértelmezett értéke a választott fájl a fő osztályt. A három pontra kattintva módosíthatja az osztály (**...** ) és a egy másik osztály kiválasztása.   
 
-    * **Feladat konfigurációk** mező: az alapértelmezett értékek vannak beállítva, a fenti képen látható. Módosítsa az értéket, vagy adja hozzá az új kulcs-érték a a feladatok elküldéséhez. További információ: [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)
+    * **Feladat konfigurációk** mező:  Az alapértelmezett értékek vannak beállítva, a fenti képen látható. Módosítsa az értéket, vagy adja hozzá az új kulcs-érték a a feladatok elküldéséhez. További információk: [Az Apache Livy REST API-val](http://livy.incubator.apache.org./docs/latest/rest-api.html)
 
       ![A Spark küldésének párbeszédpanel box-konfigurációs jelentése](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
 
-    * **Parancssori argumentumok** mező: a hely a fő osztály a felosztás, szükség esetén argumentumok értékeket adhat meg.
+    * **Parancssori argumentumok** mező: A hely a fő osztályban szükség esetén a felosztás argumentumok értékeket adhat meg.
 
-    * **JAR-fájlok kivételével hivatkozott** és **hivatkozott fájlok** mezők: adhat meg az elérési utak a hivatkozott JAR-fájlok kivételével, és a fájlok, ha van ilyen. További információ: [Apache Spark-konfigurációja](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
+    * **JAR-fájlok kivételével hivatkozott** és **hivatkozott fájlok** mezők: Megadhatja az elérési utak a hivatkozott JAR-fájlok kivételével, és a fájlokat, ha van ilyen. További információk: [Az Apache Spark-konfigurációja](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
 
       ![A Spark küldésének párbeszédpanelen be jar-fájlok jelentése](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
 
-       > [!NOTE]
-       > A hivatkozott JARs és a hivatkozott fájlok feltöltését, tekintse meg: [erőforrások a fürt feltöltése](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
+       > [!NOTE]  
+       > A hivatkozott JARs és a hivatkozott fájlok feltöltését, tekintse meg: [A fürt erőforrások feltöltése](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
                          
-    * **Töltse fel az elérési út**: adhatja meg, a Jar- vagy a Scala Projekt erőforrások elküldése tárolási helyét. Három tárolási típust támogat: **Azure Blob**, **interaktív használata Spark-munkamenetre összetevők feltöltése**, és **használja a fürt alapértelmezett tárfiók**, és **ADLS Gen1**. Az alábbi képernyőfelvétel, amelyek az Azure Blob.
+    * **Töltse fel az elérési út**: A tárolási hely a Jar- vagy a Scala Projekt erőforrások küldésének adhatja meg. Támogatott három tárolási típusa van: **Az Azure Blob**, **interaktív használata Spark-munkamenetre összetevők feltöltése**, és **használja a fürt alapértelmezett tárfiók**, és **ADLS Gen1**. Az alábbi képernyőfelvétel, amelyek az Azure Blob.
 
         ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -310,7 +310,7 @@ Célszerű az Ön számára a parancsfájl eredménye forsee azzal, hogy a helyi
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Hiba történt a helyi Futtatás: *használja egy nagyobb. generace*
+### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Hiba történt a helyi futtatáskor: *Használjon egy nagyobb. generace*
 A Spark 1.6-os Ha egy 32 bites Java SDK-t használ a helyi futtatás során esetleg felmerülő hibák a következők:
 
     Exception in thread "main" java.lang.IllegalArgumentException: System memory 259522560 must be at least 4.718592E8. Please use a larger heap size.
@@ -347,21 +347,21 @@ Közvetlenül a Spark kimenetek megtekintése jelenleg nem támogatott.
 Ha javaslata vagy visszajelzés rendelkezik, vagy ha problémákat tapasztal, amikor ez a beépülő modul használata, e-mailt küldjön hdivstool@microsoft.com.
 
 ## <a name="seealso"></a>Következő lépések
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Bemutató
-* Létrehozás Scala project (videó): [létre Apache Spark Scala-alkalmazások](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Távoli hibakeresés (videó): [távolról a HDInsight-fürtön az Apache Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* (Videó) Scala-projekt létrehozása: [Az Apache Spark Scala-alkalmazások létrehozása](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Távoli hibakeresés (videó): [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások távolról a HDInsight-fürtön](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight-hőmérséklet building HVAC-adatok elemzése](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Létrehozása és alkalmazások futtatásához
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások VPN-en keresztül távolról](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)

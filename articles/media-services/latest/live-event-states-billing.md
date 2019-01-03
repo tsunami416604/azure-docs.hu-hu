@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: juliako
-ms.openlocfilehash: 1a49f62d7b5e21fe9d6483f71b729a9100aff1a3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 588aeede123848900fac6fab663dd1f6c6c169b6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585552"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719421"
 ---
 # <a name="liveevent-states-and-billing"></a>Videókhoz állapotok és számlázás
 
 Az Azure Media Services, a videókhoz megkezdődik, amint állapotában átkerül számlázási **futó**. Le szeretné állítani a számlázás a videókhoz, akkor állítsa le a videókhoz.
 
-Amikor **LiveEventEncodingType** a a [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents) standard (alapszintű), a Media Services automatikus leáll minden olyan videókhoz, amely továbbra is ki van állítva a **futó** állapot 12 óra Miután a bemeneti hírcsatorna elvész, és nincsenek nincs **LiveOutput**futó s. Azonban továbbra is díjköteles alkalommal volt a videókhoz a **futó** állapota.
+Amikor **LiveEventEncodingType** a a [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents) szabványt, a Media Services automatikus leáll minden olyan videókhoz, amely továbbra is ki van állítva a **futó** állapot 12 óra után a a bemeneti hírcsatorna elvész, és nincsenek nincs **LiveOutput**futó s. Azonban továbbra is díjköteles alkalommal volt a videókhoz a **futó** állapota.
 
 ## <a name="states"></a>Állapotok
 

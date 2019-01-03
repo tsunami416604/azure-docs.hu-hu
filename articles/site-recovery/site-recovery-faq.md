@@ -1,19 +1,19 @@
 ---
-title: 'Az Azure Site Recovery: Gyakori kérdések |} A Microsoft Docs'
+title: 'Azure Site Recovery: Gyakori kérdések |} A Microsoft Docs'
 description: Ez a cikk ismerteti a gyakori kérdések az Azure Site Recoveryvel kapcsolatos.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: ef914318174ee3ce738769fcae910c82b35b21b4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0c70d3b5166b0e3719aa621091920d2c91696bf1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998554"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973536"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk az Azure Site Recovery – gyakori kérdések tartalmazza. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -91,7 +91,7 @@ A virtuális gépek és fizikai kiszolgálók a helyszíni helyek – az átvite
 Az Azure Site Recovery replikálja az adatokat az Azure storage-fiókba, egy nyilvános végpontot keresztül. Replikáció a site-to-site VPN-kapcsolaton keresztül nem. Létrehozhat egy helyek közötti VPN-, az Azure-beli virtuális hálózathoz. Ez nem zavarja a Site Recovery replikációjára.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Az ExpressRoute használatával virtuális gépek replikálása az Azure-bA?
-Igen, [ExpressRoute is használható](concepts-expressroute-with-site-recovery.md) a helyszíni virtuális gépek replikálása az Azure-bA. Az Azure Site Recovery replikálja az adatokat egy Azure Storage-fiókot, egy nyilvános végpontot keresztül. Be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ExpressRoute használata a Site Recovery replikációjára. Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Miután a virtuális gépek feladatátadása megtörtént az Azure virtual Networkhöz elérheti azokat használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering) beállítása az Azure virtuális hálózattal. Replikáció nem támogatott a privát társviszony-létesítésen keresztül.
+Igen, [ExpressRoute is használható](concepts-expressroute-with-site-recovery.md) a helyszíni virtuális gépek replikálása az Azure-bA. Az Azure Site Recovery replikálja az adatokat egy Azure Storage-fiókot, egy nyilvános végpontot keresztül. Be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ExpressRoute használata a Site Recovery replikációjára. Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek-e a replikáció. Miután a virtuális gépek feladatátadása megtörtént az Azure virtual Networkhöz elérheti azokat használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering) beállítása az Azure virtuális hálózattal. Replikáció nem támogatott a privát társviszony-létesítésen keresztül.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Van valamilyen előfeltétele a virtuális gépek Azure-ba való replikációjának?
 [VMware virtuális gépek](vmware-physical-azure-support-matrix.md#replicated-machines) és [Hyper-V virtuális gépek](hyper-v-azure-support-matrix.md#replicated-vms) a replikálni kívánt Azure meg kell felelniük az Azure követelményeinek.
@@ -115,7 +115,7 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 Az LRS vagy GRS tárfiókra van szükség. Mi a GRS használatát javasoljuk, mivel ez akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében gondoskodik az adatok hibatűréséről. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. A Premium storage a VMware virtuális gépek, Hyper-V virtuális és fizikai kiszolgálók replikálásához, akkor támogatott, ha a Site Recovery üzembe helyezése az Azure Portalon.
 
 ### <a name="how-often-can-i-replicate-data"></a>Milyen gyakran replikálhatom az adatokat?
-* **A Hyper-V:** Hyper-V virtuális gépek (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc lehet replikálni. Ha SAN-replikálás beállítása replikációs szolgáltatása szinkron.
+* **A Hyper-V:** A Hyper-V virtuális gépek replikálhatók (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc. Ha SAN-replikálás beállítása replikációs szolgáltatása szinkron.
 * **Az Azure virtuális gépek, VMware és fizikai kiszolgálók:** A replikáció gyakoriságának ezeknél nincs jelentősége. A replikálás folyamatos történik.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kiterjesztheti a replikáció már létező helyreállítási helyről egy másik harmadlagos helyhez?

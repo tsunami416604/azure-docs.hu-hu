@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268716"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714300"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan teheti biztonságossá webalkalmazását (b
 Ez az útmutató követéséhez:
 
 - [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
-- [A webalkalmazás egy tartománynév hozzárendelése](app-service-web-tutorial-custom-domain.md) vagy [vásárlása és konfigurálása, az Azure-ban](custom-dns-web-site-buydomains-web-app.md)
+- [A webalkalmazás egy tartománynév hozzárendelése](app-service-web-tutorial-custom-domain.md) vagy [vásárlása és konfigurálása, az Azure-ban](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -91,7 +91,7 @@ Válassza ki **App Service-ellenőrzés**. Mivel a webalkalmazás már leképezv
 > Tartomány-ellenőrzési módszerek négy típusa támogatott: 
 > 
 > - **App Service-ben** – a legalkalmasabb lehetőség, amikor a tartomány már hozzá van rendelve egy App Service-alkalmazás ugyanabban az előfizetésben. Azt a tényt, hogy az App Service-alkalmazás már ellenőrizte a tartomány tulajdonjogának kihasználja.
-> - **Tartomány** -ellenőrzése egy [vásárolt az Azure App Service-tartomány](custom-dns-web-site-buydomains-web-app.md). Az Azure automatikusan hozzáadja az ellenőrzési txt típusú rekord, és elvégzi a folyamatot.
+> - **Tartomány** -ellenőrzése egy [vásárolt az Azure App Service-tartomány](manage-custom-dns-buy-domain.md). Az Azure automatikusan hozzáadja az ellenőrzési txt típusú rekord, és elvégzi a folyamatot.
 > - **Mail** – a tartományi rendszergazda e-mailt küld a tartomány ellenőrzéséhez. Útmutatás: Ha a beállítást választja.
 > - **Manuális** – ellenőrizze a tartományt vagy a HTML-lapok használatával (**Standard** tanúsítvány csak) vagy egy DNS txt típusú rekordot. Útmutatás: Ha a beállítást választja.
 

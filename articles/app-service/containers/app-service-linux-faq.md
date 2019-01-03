@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7fe9fd68e03fc36f5aac5d6c27c07896715af906
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261160"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719082"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -194,5 +194,5 @@ Is beküldi egy ötletét, a [Web Apps-visszajelzési fórumon](https://aka.ms/w
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az Linuxon futó Azure App Service?](app-service-linux-intro.md)
-- [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Folyamatos üzembe helyezés a Web App for containers szolgáltatásban](./app-service-linux-ci-cd.md)

@@ -1,7 +1,7 @@
 ---
 title: Ismertető a rendszerképek – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ismertető a képek a Computer Vision API használatával kapcsolatos fogalmakat.
+description: A Computer Vision API, a lemezkép leírása szolgáltatáshoz kapcsolódó fogalmak.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,22 +10,23 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 423d1be57bc800108a08a81b72587ca2711bbc3d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 5b920e4ce8df131b81a9ef6ce2d66c7082d8f5e4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342415"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583408"
 ---
-# <a name="describing-images"></a>Képek leírása
+# <a name="describe-images-with-human-readable-language"></a>Képek az emberek számára olvasható nyelv leírása
 
-Számítógépes Látástechnológiai algoritmus elemezheti a tartalmat a képet. Ez az elemzés egy "leírás" teljes mondatokban emberek számára olvasható nyelveként megjelenik a alapját képezi. A leírás összefoglalja, hogy mi az a képen található. Számítógépes Látástechnológiai algoritmus alapuló a vizuális jellemzőket azonosítja a kép különböző leírások létrehozásához. Leírás ki lesz értékelve, és a egy megbízhatósági pontszám jönnek létre. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza.
+Számítógépes Látástechnológiai algoritmus elemezheti a tartalmat a képet. Ez az elemzés képezi a kép ember által olvasható, teljes mondatokban megfogalmazott „leírásának” alapját. A leírás összegzi mindazt, ami a képen látható. Számítógépes Látástechnológiai algoritmus alapuló a vizuális jellemzőket azonosítja a kép különböző leírások létrehozásához. Leírás ki lesz értékelve, és a egy megbízhatósági pontszám jönnek létre. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza.
 
 ## <a name="image-description-example"></a>Kép leírását bemutató példa
 
 A következő JSON-választ mutatja be, milyen számítógépes Látástechnológiai ad vissza, ha a alapuló a vizuális jellemzőket példaképen leíró.
 
-![B & W épületek](./Images/bw_buildings.png)
+![Épületek Manhattan a kép fekete-fehér](./Images/bw_buildings.png)
 
 ```json
 {

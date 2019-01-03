@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f86107c5fcd4c0175d59689718dca15736aa3b17
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497361"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994714"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Győződjön meg arról, és az SAP HANA kibővített magas rendelkezésre állású telepítés SLES 12 SP3 hibaelhárítása 
 
@@ -173,7 +173,7 @@ A **corosync** csak akkor lehet helyes, a fürtben, beleértve a csomóponttöbb
 
 Tartalmának **corosync.conf** a vizsgálatot a rendszer egy példa.
 
-Az első szakasz **totem**leírtak szerint [telepítési fürt](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), 11. lépés. Az érték figyelmen kívül hagyhatja **mcastaddr**. Csak tartani a meglévő bejegyzést. A bejegyzéseket **token** és **konszenzus** kell állítani a következők szerint [a Microsoft Azure az SAP HANA-dokumentáció][sles-pacemaker-ha-guide].
+Az első szakasz **totem**leírtak szerint [telepítési fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), 11. lépés. Az érték figyelmen kívül hagyhatja **mcastaddr**. Csak tartani a meglévő bejegyzést. A bejegyzéseket **token** és **konszenzus** kell állítani a következők szerint [a Microsoft Azure az SAP HANA-dokumentáció][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -280,7 +280,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD eszköz
 
-Hogyan állítható be egy Azure-beli virtuális gépen egy SBD eszköz leírt [SBD szintaxiskiemeléshez](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
+Hogyan állítható be egy Azure-beli virtuális gépen egy SBD eszköz leírt [SBD szintaxiskiemeléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
 
 Ha a fürt minden csomópontján az ACL-bejegyzések először ellenőrizze a virtuális gép SBD kiszolgálón. Futtassa a következő parancsot a virtuális gép SBD kiszolgálón:
 
@@ -423,7 +423,7 @@ A cél virtuális gép oldalán **hso-hana-virtuálisgép-s2-2** ebben a példá
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Ellenőrizze, hogy a bejegyzések **/etc/sysconfig/sbd** felel meg a leírását [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítása](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Ellenőrizze, hogy az indítási beállítása **/etc/iscsi/iscsid.conf** automatikusra van állítva.
+Ellenőrizze, hogy a bejegyzések **/etc/sysconfig/sbd** felel meg a leírását [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Ellenőrizze, hogy az indítási beállítása **/etc/iscsi/iscsid.conf** automatikusra van állítva.
 
 A következő bejegyzések fontosak az **/etc/sysconfig/sbd**. Alkalmazkodjon a **azonosító** értékét, ha szükséges:
 
@@ -458,7 +458,7 @@ Tesztelés és a egy virtuális gép az újraindítás után az ellenőrzés sor
 5. A kezdeményező neve felett ügyeljen arra, hogy a **szolgáltatás indítása** értéke **amikor rendszerindítását**.
 6. Ha nem érhető el, majd beállíthatja azt a **amikor rendszerindítását** helyett **manuálisan**.
 7. Ezután váltson a felső lapon **csatlakoztatott tárolók**.
-8. Az a **csatlakoztatott tárolók** képernyőn megjelenik egy bejegyzés az SBD eszköz, például a minta: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
+8. Az a **csatlakoztatott tárolók** képernyőn egy bejegyzés az SBD eszköz példához hasonlóan kell megjelennie: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
 9. Ellenőrizze, hogy a **indítási** értéke **az rendszerindításkor**.
 10. Ha nem, válassza a **szerkesztése** módosítsa azt.
 11. A módosítások mentéséhez és a kilépéshez YaST2.

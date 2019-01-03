@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: f7d6f34c75069f91e06d58c960249d040b2bda8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 6e3ab097b08e3a15d012ccc644307bc8f4b281ab
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299198"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971682"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból egy SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -217,7 +217,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
     ![Folyamat lap](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
 
-### <a name="confugure-mapping"></a>Leképezés konfigurálása
+### <a name="configure-mapping"></a>-Leképezés konfigurálása
 
 Lépjen a **Leképezés** lapra a **Tulajdonságok** ablak alján, és válassza a **Sémák importálása** elemet. Figyelje meg, hogy a forrásfájl első és második oszlopa az SQL-adatbázis **FirstName** és **LastName** mezőjében képeződik le.
 

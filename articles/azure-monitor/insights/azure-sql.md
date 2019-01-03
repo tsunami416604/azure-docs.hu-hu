@@ -7,22 +7,22 @@ ms.subservice: performance
 ms.custom: ''
 ms.topic: conceptual
 author: danimir
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/26/2018
-ms.author: v-daljep
-ms.openlocfilehash: bf2cbdb57276fccd31af61f2df1b76eeba816e66
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 12/17/2018
+ms.openlocfilehash: f12aed12138b1b16fcce90401ea0d65bd083675f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341626"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546716"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
 ![Az Azure SQL Analytics szimbólum](./media/azure-sql/azure-sql-symbol.png)
 
-Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben és tekinthesse át egyetlen több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
+Az Azure SQL Analytics egy speciális felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben és tekinthesse át egyetlen több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
 
 A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Adatokat az összes az Azure SQL adatbázisok, rugalmas készletek és adatbázisok szerepelnek a felügyelt példányok egyetlen Log Analytics-munkaterületet a Log Analytics nézeteivel együtt az Azure diagnosztikai metrikák használ. A log Analytics segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
 

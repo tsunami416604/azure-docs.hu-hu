@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166132"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791071"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js használatával Beszélgetéstanuló modell létrehozása
 
@@ -112,14 +112,11 @@ A fenti útmutatást az általános üres bot elindult.  Oktatóanyag futtatás�
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
-  npm run demo-vrapp
   ```
 
 4. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével http://localhost:5050/home. 
 
-5. Kattintson a "Oktatóanyagokban importálása" (csak egyszer kell megtennie kell).  Ez körülbelül egy percet vesz igénybe, és másolja a Beszélgetéstanuló modellek minden kapcsolatos Beszélgetéstanuló fiókjába.
-
-6. Kattintson a bemutató modell a beszélgetés Learner felhasználói felületén, amely megfelel a bemutató-t elindította.
+5. Kattintson a "Oktatóanyagokban importálása", és válassza ki a demo modellt a beszélgetés Learner felhasználói felületén, amely megfelel a bemutató-t elindította.
 
 Forrásfájljainak a bemutatók szerepelnek `cl-bot-01/src/demos`
 
@@ -181,4 +178,4 @@ A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kóde
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [helló világ](./tutorials/1-hello-world.md)
+> [helló világ](./tutorials/01-hello-world.md)

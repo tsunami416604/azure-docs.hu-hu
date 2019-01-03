@@ -4,17 +4,17 @@ description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és ü
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96c261619a0e6930ea299b5e2a50050dca5471f8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 2295ed6d3d1b22d70f95d0c9ac4542b59c7ddc09
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554775"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972090"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors útmutató: Az első IoT Edge-modul az Azure Portalon, egy Windows-eszköz üzembe helyezése – előzetes verzió
 
@@ -192,13 +192,16 @@ iotedge list
 
    ![Három modul megtekintése az eszközön](./media/quickstart/iotedge-list-2.png)
 
-Tekintse meg a tempSensor modul által a felhőbe küldött üzeneteket.
+A hőmérséklet-érzékelő modulból a felhőbe küldött üzenetek megjelenítése.
 
 ```powershell
-iotedge logs tempSensor -f
+iotedge logs SimulatedTemperatureSensor -f
 ```
 
-  ![A modulból származó adatok megtekintése](./media/quickstart/iotedge-logs.png)
+   >[!TIP]
+   >IoT Edge-parancsok modulneveket kontextusban való megnevezésekor nagybetűk között.
+
+   ![A modulból származó adatok megtekintése](./media/quickstart/iotedge-logs.png)
 
 Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény). 
 
@@ -230,15 +233,18 @@ Távolítsa el az IoT Edge-futtatókörnyezetet. Ha az IoT Edge újratelepítés
 Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
 
    ```powershell
-   docker ps -a
+   docker -H npipe:////./pipe/iotedge_moby_engine ps -a
    ```
 
-Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. Ha más nevet adott neki, módosítsa a tempSensor tároló nevét.
+   >[!TIP]
+   >A **-H** (gazdagép) jelzőt a docker-parancsokat a mutasson a moby motor, amely az IoT Edge-futtatókörnyezettel együtt lett telepítve. Ugyanazon a gépen a docker és a moby használatakor, a gazdagép jelző lehetővé teszi, hogy adjon meg egy adott parancs használata a motor. Ha csak szeretné használni a moby, beállíthatja a **DOCKER_HOST** környezeti változót, hogy npipe:///./pipe/iotedge_moby_engine mutasson.
+
+Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. 
 
    ```powershell
-   docker rm -f tempSensor
-   docker rm -f edgeHub
-   docker rm -f edgeAgent
+   docker -H npipe:////./pipe/iotedge_moby_engine rm -f SimulatedTemperatureSensor
+   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeHub
+   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeAgent
    ```
    
 ## <a name="next-steps"></a>További lépések

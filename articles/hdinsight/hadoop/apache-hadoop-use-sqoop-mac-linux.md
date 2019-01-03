@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: 1b6a77e78d3385c9dfd4e43e0e4242c870eb8c57
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d7df1c65b8588b97a6beb0a4c2428b3c6430c3b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012555"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635697"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Hadoop on HDInsight és az SQL Database közötti adatok importálása és exportálása az Apache Sqoop használatával
 
@@ -23,10 +23,10 @@ ms.locfileid: "53012555"
 
 Ismerje meg, hogyan használhatja az Apache Sqoop importálása és exportálása az Azure HDInsight az Apache Hadoop-fürt és Azure SQL Database vagy a Microsoft SQL Server-adatbázis közötti. A lépéseket, a jelen dokumentum-használat a `sqoop` közvetlenül a Hadoop-fürt az átjárócsomóponthoz parancsot. Az SSH használatával csatlakozhat az átjárócsomóponthoz, és futtassa a parancsokat ebben a dokumentumban.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések Linux használó HDInsight-fürtök csak dolgozhat. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-> [!WARNING]
+> [!WARNING]  
 > Ez a dokumentum lépései azt feltételezik, hogy már létrehozott egy Azure SQL Database nevű `sqooptest`.
 >
 > A dokumentum létrehozása és lekérdezése az SQL Database egyik táblájába használt T-SQL-utasításokkal szolgál. Vannak, ezek az utasítások használható az SQL Database számos ügyfél. Azt javasoljuk, hogy a következő ügyfelekre:
@@ -37,7 +37,7 @@ Ismerje meg, hogyan használhatja az Apache Sqoop importálása és exportálás
 
 ## <a name="create-the-table-in-sql-database"></a>A tábla létrehozása az SQL Database-ben
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha a HDInsight-fürtöt használ, és az SQL-adatbázis létrehozása [létrehozása a fürt és az SQL database](hdinsight-use-sqoop.md), hagyja ki a jelen szakaszban ismertetett lépéseket. A lépések részeként létrehozott az adatbázis és tábla a [létrehozása a fürt és az SQL database](hdinsight-use-sqoop.md) dokumentumot.
 
 Egy SQL-ügyfél használatával kapcsolódhat a `sqooptest` az SQL Database-adatbázis. A következő T-SQL használatával hozzon létre egy táblát nevű `mobiledata`:
@@ -104,8 +104,8 @@ GO
 
     Az adatok a mezők tabulátorkarakter el egymástól, és a sorokat egy új sor karakter megszűnik.
 
-    > [!IMPORTANT]
-    > A `wasb:///` elérési út működik együtt az Azure Storage, az alapértelmezett fürttárolóhoz használó fürtök. Az Azure Data Lake Store használó fürtök esetén használjon `adl:///` helyette.
+    > [!IMPORTANT]  
+    > A `wasb:///` elérési út működik együtt az Azure Storage, az alapértelmezett fürttárolóhoz használó fürtök. Az Azure Data Lake Storage használó fürtök esetén használjon `adl:///` helyette.
 
 2. Az importálás befejezése után használja az új címtárban adatok listája a következő parancsot:
 
@@ -160,9 +160,9 @@ A Sqoop használatával adatok importálása és exportálása az SQL Serverből
 
 Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
 
-* [Az Oozie használata a HDInsight](../hdinsight-use-oozie.md): Oozie-munkafolyamatokkal használata Sqoop műveletét.
-* [HDInsight használatával repülőjáratok késési adatainak elemzése](../hdinsight-analyze-flight-delay-data.md): késleltetheti az adatok elemzéséhez, repülési Hive használata, és majd egy Azure SQL database-adatok exportálása a Sqoop.
-* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): keresse meg a HDInsight vagy az Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
+* [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie.md): Az Oozie-munkafolyamatokkal Sqoop műveletet használja.
+* [HDInsight használatával repülőjáratok késési adatainak elemzése](../hdinsight-analyze-flight-delay-data.md): Repülőjáratok késési adatainak elemzése az Apache Hive használatával, és a Sqoop használatával egy Azure SQL database-adatok exportálása.
+* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): Keresse meg a HDInsight vagy az Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
 
 [hdinsight-versions]:  ../hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 42ed050606dd242e43903ed980a5670b4aa6f3df
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 064c1b8100e165627d5227b9f24b87aefae2e769
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343173"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790758"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Az Azure Diagnostics bővítmény konfigurációs séma verziók és előzményei
 Ezt oldal indexek az Azure Diagnostics bővítmény séma verziója le szállítani, a Microsoft Azure SDK csomag részeként.  
@@ -175,7 +175,7 @@ Megadhatja a saját config tárfiókkulcs helyett SAS-jogkivonatát. SAS-token m
 Megjelent az EventHub irányíthatja.
 
 ### <a name="diagnostics-extension-15"></a>A diagnosztikai bővítmény 1.5-ös
-Hozzáadva az fogadóként elemet, és lehetővé teszi diagnosztikai adatok küldése [Application Insights](../../application-insights/app-insights-cloudservices.md) megkönnyíti a problémák diagnosztizálása az alkalmazás, valamint a rendszer és az infrastruktúra szint között.
+Hozzáadva az fogadóként elemet, és lehetővé teszi diagnosztikai adatok küldése [Application Insights](../../azure-monitor/app/cloudservices.md) megkönnyíti a problémák diagnosztizálása az alkalmazás, valamint a rendszer és az infrastruktúra szint között.
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>1.3-tól az Azure SDK 2.6-os és a diagnosztikai bővítmény
 A Visual Studio Felhőszolgáltatás-projektek a következő változások történtek. (Ezek a változások is vonatkoznak az Azure SDK újabb verziói.)

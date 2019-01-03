@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 3e71c4e31c6d57cb54a654e0e1c28dcb0fa82cda
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8ba188db87ffc0d428c7349c902cf60bec65d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875331"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788480"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Gyakori kérdések – Hyper-V – Azure-beli vészhelyreállításához
 
@@ -55,11 +55,11 @@ Igen, mindkét – az átvitel közbeni titkosítás és [titkosítás az Azure-
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Mire használhatom az Azure-bA Hyper-V-vel?
 
-- **Vész-helyreállítási**: teljes vész-helyreállítási beállíthat. Ebben a forgatókönyvben a helyszíni Hyper-V virtuális gépeket az Azure storage replikáció:
+- **Vész-helyreállítási**: Beállíthat teljes vészhelyreállítás. Ebben a forgatókönyvben a helyszíni Hyper-V virtuális gépeket az Azure storage replikáció:
     - Virtuális gépek az Azure-bA replikálhatja. A helyszíni infrastruktúra nem érhető el, ha átadja a feladatokat az Azure-bA.
     - Amikor feladatátvételt hajt végre, az Azure virtuális gépek jönnek létre a replikált adatok felhasználásával. Alkalmazások és számítási feladatok az Azure virtuális gépeken is elérheti.
     - Ha a helyszíni adatközpont újra elérhetővé válik, is átadja az Azure-ból a helyszíni helyre.
-- **Áttelepítési**: a Site Recovery segítségével a helyszíni Hyper-V virtuális gépek áttelepítése az Azure storage. Ezt követően átadja a feladatokat a helyszínről az Azure-bA. A feladatátvételt követően az alkalmazások és számítási feladatok rendelkezésre állnak és futó Azure virtuális gépeken.
+- **Áttelepítési**: A Site Recovery használatával a helyszíni Hyper-V virtuális gépek áttelepítése az Azure storage. Ezt követően átadja a feladatokat a helyszínről az Azure-bA. A feladatátvételt követően az alkalmazások és számítási feladatok rendelkezésre állnak és futó Azure virtuális gépeken.
 
 
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
@@ -198,7 +198,7 @@ Miután a helyszíni infrastruktúra újra működik, visszaadhatja a. Feladat-v
 1. Elindít egy tervezett feladatátvételt az Azure-ból a helyszíni hely használatával több különböző lehetőség közül választhat:
 
     - Állásidő minimálisra csökkentése érdekében: Ha ezt a beállítást használja a Site Recovery szinkronizálja az adatokat a feladatátvétel előtt. Azt ellenőrzi, hogy megváltozott az adatblokkokat, és letölti azokat a helyszíni helyre, miközben az Azure virtuális gép megőrzi fut, minimálisra csökkentik az állásidőt. Manuálisan adja meg, hogy a feladatátvételt kell elvégezni, amikor az Azure virtuális gép leállt, bármely végső változásokat másolja, és a feladatátvétel indítása.
-    - Teljes letöltés: ezt a lehetőséget az adatok szinkronizálása a feladatátvétel során. Ez a beállítás a teljes lemez tölti le. Ez azért gyorsabban nincs ellenőrzőösszegek számítása, de több állásidőt. Használja ezt a beállítást, ha futtatja, a replika Azure virtuális gépek egy kis ideig, vagy ha a helyszíni virtuális gép törölve lett.
+    - Teljes letöltés: Ez a beállítás az adatok szinkronizálása feladatátvétel során. Ez a beállítás a teljes lemez tölti le. Ez azért gyorsabban nincs ellenőrzőösszegek számítása, de több állásidőt. Használja ezt a beállítást, ha futtatja, a replika Azure virtuális gépek egy kis ideig, vagy ha a helyszíni virtuális gép törölve lett.
 
 2. Választhatja azt, hogy hajtja végre, vissza ugyanazon a virtuális Gépen vagy egy másik virtuális géphez. Megadhatja, hogy a Site Recovery a virtuális Gépet kell létrehoznia, ha még nem létezik.
 3. Miután a kezdeti szinkronizálás befejezését követően válassza ki a feladatátvétel végrehajtásához. Miután ez befejeződik, bejelentkezhetnek a helyszíni virtuális Gépre, és ellenőrizze, hogy minden a várt módon működik. Az Azure Portalon látható, hogy az Azure virtuális gépek lett leállítva.

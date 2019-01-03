@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 22dbe9b29059ff351cd1937f72f6dc742b24c690
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685514"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993892"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Az Azure Data Factoryban a PowerShell-lel megosztott saját üzemeltetésű integrációs modul létrehozása
 
@@ -33,7 +33,7 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megos
 
 - **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. 
 
-- **Azure PowerShell**. Kövesse a [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). PowerShell-parancsprogrammal hozzon létre egy saját üzemeltetésű integrációs modult, amelyek megoszthatók a többi adat-előállítók használhatja. 
+- **Azure PowerShell**. Kövesse a [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). PowerShell-parancsprogrammal hozzon létre egy saját üzemeltetésű integrációs modult, amelyek megoszthatók a többi adat-előállítók használhatja. 
 
 > [!NOTE]  
 > Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki az Önt érdeklő a régiók [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -75,7 +75,7 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy megos
     > [!NOTE]  
     > Ez a lépés nem kötelező. Ha már rendelkezik egy adat-előállítót, kihagyhatja ezt a lépést. 
 
-    Hozzon létre egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) használatával a [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) parancsot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` WestEurope a helyen: 
+    Hozzon létre egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) használatával a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) parancsot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` WestEurope a helyen: 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -192,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>További lépések
 
-- Felülvizsgálat [az Azure Data Factory integrációs modul fogalmak](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime).
+- Felülvizsgálat [az Azure Data Factory integrációs modul fogalmak](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 
-- Ismerje meg, hogyan [egy saját üzemeltetésű integrációs modul létrehozása az Azure Portalon](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).
+- Ismerje meg, hogyan [egy saját üzemeltetésű integrációs modul létrehozása az Azure Portalon](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824302"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976364"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -37,10 +37,10 @@ Az Azure különböző végpontok használ a KMS-aktiváláshoz függően a felh
 
 Ha megpróbálja aktiválni az Azure Windows virtuális Gépekhez, akkor megjelenik egy hibaüzenet üzenet a következő mintához hasonló:
 
-**Chyba: 0xC004F074 a szoftver LicensingService jelentette, hogy a számítógép nem lehet aktiválni. Érhető el. nem kulcs ManagementService (KMS). Tekintse át az alkalmazások eseménynaplójában, további információt.**
+**Hiba: a szoftver LicensingService jelentette, hogy a számítógép nem lehet aktiválni 0xC004F074. Érhető el. nem kulcs ManagementService (KMS). Tekintse át az alkalmazások eseménynaplójában, további információt.**
 
 ## <a name="cause"></a>Ok
-Általában az Azure virtuális gép aktiválási hibák lépnek fel, ha a Windows virtuális gép nincs konfigurálva a megfelelő KMS-ügyfél telepítési kulcsának használatával, vagy a Windows virtuális gépen az Azure a KMS szolgáltatást (kms.core.windows.net, port 1668) a kapcsolati probléma. 
+Általában az Azure virtuális gép aktiválási hibák lépnek fel, ha a Windows virtuális gép nincs konfigurálva a megfelelő KMS-ügyfél telepítési kulcsának használatával, vagy a Windows virtuális gépen az Azure a KMS szolgáltatást (a kms.core.windows.net, az 1688-as portot) a kapcsolati probléma. 
 
 ## <a name="solution"></a>Megoldás
 
@@ -86,7 +86,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    A parancs kell visszaadnia: kulcskezelő szolgáltatás gépnév sikeresen beállítva kms.core.windows.net:1688.
+    A parancs kell visszaadnia: Kulcskezelő szolgáltatás gépnév kms.core.windows.net:1688 való beállítása sikerült.
 
 4. Győződjön meg arról, hogy a KMS-kiszolgálóval való kapcsolat Psping használatával. Váltson arra a mappára, ahová kibontotta a Pstools.zip letöltése, és futtassa a következő:
   
@@ -94,7 +94,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
     \psping.exe kms.core.windows.net:1688
     ```
   
-  Az utolsó előtti másodperc sorban a kimenet, győződjön meg arról, hogy látja: küldött = 4, a fogadott = 4, elveszett = 0 (0 %-os adatveszteség).
+  Az utolsó előtti másodperc sorban a kimenet győződjön meg arról, hogy látja: Elküldött = 4, a fogadott = 4, elveszett = 0 (0 %-os adatveszteség).
 
   Ha elveszett nagyobb, mint 0 (nulla), a virtuális gép nem rendelkezik kapcsolattal a KMS-kiszolgálóra. Ebben a helyzetben a virtuális gép egy virtuális hálózaton van, és rendelkezik egy egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló el tudja kms.core.windows.net megoldásához. Vagy a DNS-kiszolgáló módosítsa, hogy kms.core.windows.net megoldásához.
 
@@ -126,5 +126,5 @@ Igen.
  
 Amikor a türelmi időszak lejárt, és a Windows még nincs aktiválva, Windows Server 2008 R2 és a Windows újabb verziói jelennek meg aktiválásával kapcsolatos további értesítések. Az asztali háttérkép fekete marad, és a Windows Update biztonsági és kritikus frissítések csak, de nem választható frissítések telepíti. Tekintse meg az értesítések szakasz alján a [licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lapot.   
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

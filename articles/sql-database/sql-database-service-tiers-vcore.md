@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 11/27/2018
-ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: de77dfc40306f014a10e1ab11f2581392d3c160b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437068"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993743"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -33,9 +33,9 @@ Virtuálismag-modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azur
 
 ## <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
-A Virtuálismag-modell általános célú és a kritikus fontosságú üzleti szolgáltatáscsomagban biztosítja. Szolgáltatásszintek számítási méretű, a magas rendelkezésre állás kialakítása, a hibák elszigetelését, a tárolási típust kínál számos és i/o-tartomány különbözteti meg. Az ügyfél külön-külön kell konfigurálnia a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez. Külön-külön konfigurálnia kell a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez. Az Azure Portalon nyissa meg a kiszolgáló (nem az adatbázis) > felügyelt biztonsági mentés > szabályzat konfigurálása > pont az idő visszaállítása konfiguráció > 7 – 35 nap.
+A Virtuálismag-modell három szolgáltatásszinten, általános célú, nagy kapacitású és kritikus fontosságú üzleti biztosít. Szolgáltatásszintek számos számítási méretű, magas rendelkezésre állás kialakítása, hibák elszigetelését, típusok és tárterület mérete és i/o-tartomány különbözteti meg. Külön-külön konfigurálnia kell a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez. Az Azure Portalon nyissa meg a kiszolgáló (nem az adatbázis) > felügyelt biztonsági mentés > szabályzat konfigurálása > pont az idő visszaállítása konfiguráció > 7 – 35 nap.
 
-Az alábbi táblázat segít a két szintek közötti különbségeket:
+Az alábbi táblázat segítséget nyújt a három réteg közötti különbségeket:
 
 ||**Általános célú**|**Üzletileg kritikus**|**Nagy kapacitású (előzetes verzió)**|
 |---|---|---|---|
@@ -63,7 +63,7 @@ Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyako
 
 ## <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjszabást kínál az SQL Database-adatbázishoz a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
+A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjszabást kínál az SQL Database-adatbázishoz a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
 
 ![díjszabás](./media/sql-database-service-tiers/pricing.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3131afb31fd08903bb349f86634d2b9e6449c59e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407932"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752656"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Az Application Insights rendszerteljesítmény-számlálók
 
@@ -42,7 +42,7 @@ A .NET-webalkalmazásokra vonatkozó gyűjtött aktuális alapértelmezett szám
          - ASP.NET Applications\\Requests In Application Queue
          - Processor(_Total)\\% Processor Time
 
-A legfontosabb diagramok egy helyen megtekintéséhez hozzon létre egy [irányítópult](app-insights-dashboards.md) és rögzíti őket hozzá.
+A legfontosabb diagramok egy helyen megtekintéséhez hozzon létre egy [irányítópult](../azure-monitor/app/app-insights-dashboards.md) és rögzíti őket hozzá.
 
 ## <a name="add-counters"></a>Számlálók hozzáadása
 
@@ -99,7 +99,7 @@ Vagy megteheti ugyanezt teszi az létrehozott egyéni metrikák:
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Teljesítményszámlálók az Analyticsben
-Itt megkeresheti, és a teljesítmény számláló jelentések megjelenítéséhez [Analytics](app-insights-analytics.md).
+Itt megkeresheti, és a teljesítmény számláló jelentések megjelenítéséhez [Analytics](../azure-monitor/app/analytics.md).
 
 A **performanceCounters** sémát tesz elérhetővé a `category`, `counter` nevét, és `instance` minden teljesítményszámláló neve.  A telemetria minden alkalmazáshoz csak az adott alkalmazáshoz számlálókat megjelenik. Például hogy milyen számlálók érhetők el: 
 
@@ -120,15 +120,15 @@ Egyéb telemetriai adatokat, például **performanceCounters** is rendelkezik eg
 
 * *Kivételek sebessége* rendszer teljesítményszámláló van. A CLR-beli összes a kezelt és nem kezelt kivétel lépett fel vannak, és a mintavételi időközben az összes elosztja az időköz hossza számít. Az Application Insights SDK ezt az eredményt gyűjt, és továbbítja őket a portálon.
 
-* *Kivételek* száma a mintavételi időközben a diagram a portál által fogadott TrackException jelentéseket. Csak a kezelt kivételek ahol hozott TrackException meghívja a kódban, és nem tartalmazza az összes benne [nem kezelt kivételeket](app-insights-asp-net-exceptions.md). 
+* *Kivételek* száma a mintavételi időközben a diagram a portál által fogadott TrackException jelentéseket. Csak a kezelt kivételek ahol hozott TrackException meghívja a kódban, és nem tartalmazza az összes benne [nem kezelt kivételeket](../azure-monitor/app/asp-net-exceptions.md). 
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Teljesítményszámlálók az ASP.Net Core-alkalmazások
 Teljesítményszámlálók használata támogatott, csak akkor, ha az alkalmazás a teljes .NET-keretrendszer van-e állítva. Nincs lehetőség a teljesítményszámlálók adatainak összegyűjtése a .net Core alkalmazásokat.
 
 ## <a name="alerts"></a>Riasztások
-Például más metrikák is [riasztások beállítása](app-insights-alerts.md) figyelmezteti, ha egy teljesítményszámláló kerül kívül megadott korlátot. Nyissa meg a riasztások panelen, és kattintson a riasztás hozzáadása.
+Például más metrikák is [riasztások beállítása](../azure-monitor/app/alerts.md) figyelmezteti, ha egy teljesítményszámláló kerül kívül megadott korlátot. Nyissa meg a riasztások panelen, és kattintson a riasztás hozzáadása.
 
 ## <a name="next"></a>Következő lépések
-* [Függőségi nyomkövetés](app-insights-asp-net-dependencies.md)
-* [Kivétel követése](app-insights-asp-net-exceptions.md)
+* [Függőségi nyomkövetés](../azure-monitor/app/asp-net-dependencies.md)
+* [Kivétel követése](../azure-monitor/app/asp-net-exceptions.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/19/2018
 ms.author: victorh
-ms.openlocfilehash: 9c0ccb7c5ccb3eced32ea5bcd9f1961c5ccd2110
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173843"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727148"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Adja meg az egyéni tartomány beállításait az Azure-szolgáltatások az Azure DNS használatával
 
@@ -116,7 +116,7 @@ A folyamat befejezése után futtassa **nslookup** ellenőrzése a névfeloldás
 
 Az App Service egyéni tartományok leképezését kapcsolatos további információkért látogasson el [meglévő egyéni DNS-név leképezése az Azure Web Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
 
-Ha egy egyéni tartományt van szüksége, látogasson el a [Azure Web Apps egy egyéni tartománynév vásárlása](../app-service/custom-dns-web-site-buydomains-web-app.md) további információ az App Service-tartományok.
+Ha egy egyéni tartományt van szüksége, látogasson el a [Azure Web Apps egy egyéni tartománynév vásárlása](../app-service/manage-custom-dns-buy-domain.md) további információ az App Service-tartományok.
 
 ## <a name="blob-storage"></a>Blob Storage
 

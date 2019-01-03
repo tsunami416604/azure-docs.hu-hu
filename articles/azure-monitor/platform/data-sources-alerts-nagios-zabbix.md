@@ -13,22 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 217f19b02ccd5561ee499388bb62d5a6639086ac
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cccc42cd925c123b52c0f2416599bb989ce44d8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436194"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713497"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Nagios-és Zabbix az Azure Monitor riasztások gyűjtése a Linuxhoz készült Log Analytics-ügynök 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-<<<<<<< Fő [Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezeket az eszközöket az Azure Monitor annak érdekében, hogy a napló adatokat más forrásból származó adatokkal elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
+
+[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezeket az eszközöket az Azure Monitor annak érdekében, hogy a napló adatokat más forrásból származó adatokkal elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
 
 > [!NOTE]
 > [Az Azure Monitor által létrehozott riasztásokat](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) tárolt külön-külön származó naplóadatokat, és nem érhető el a naplólekérdezések.
-=======
-[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](../../azure-monitor/platform/alerts-overview.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
->>>>>>> 98b6f1655e9ada6d4b6a408ada0f1e4c9ed727d2
+
  
 ## <a name="prerequisites"></a>Előfeltételek
 A Linuxhoz készült Log Analytics-ügynök verzióra Nagios gyűjtését riasztásai támogatja 4.2.x és Zabbix verzióra 2.x.

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 79921a3adc043dd84317b7613286ec5cdc460bde
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5f6ce470399540f6d8cf00d404d658cb3da345ad
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993754"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974511"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
-Ez a cikk bemutatja, hogyan automatizálhatja a létrehozása és frissítése [Application Insights](app-insights-overview.md) erőforrások automatikusan az Azure Resource Management használatával. Előfordulhat például, ekkor a buildelési folyamat részeként. Alapszintű Application Insights-erőforrás, valamint létrehozhat [rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md), állítsa be [riasztások](app-insights-alerts.md)állítsa be a [díjszabási séma](app-insights-pricing.md), és más Azure-erőforrások létrehozása .
+Ez a cikk bemutatja, hogyan automatizálhatja a létrehozása és frissítése [Application Insights](app-insights-overview.md) erőforrások automatikusan az Azure Resource Management használatával. Előfordulhat például, ekkor a buildelési folyamat részeként. Alapszintű Application Insights-erőforrás, valamint létrehozhat [rendelkezésre állási webes tesztek](../azure-monitor/app/monitor-web-app-availability.md), állítsa be [riasztások](../azure-monitor/app/alerts.md)állítsa be a [díjszabási séma](app-insights-pricing.md), és más Azure-erőforrások létrehozása .
 
 A kulcs létrehozásához ezeket az erőforrásokat: JSON-sablonokat [Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md). Legnépszerűbb, a művelet be nem: a meglévő erőforrások; JSON-definíciók letöltése egyes értékek nevét; például paraméterezése és futtassa a sablont, amikor szeretne létrehozni egy új erőforrást. Több erőforrás együtt is csomag, hozza létre őket mindezt egy lépjen – például egy alkalmazás-figyelő rendelkezésre állási tesztek, a riasztások és a tárhelyet a folyamatos exportálás. Nincsenek egyes parameterizations, amely itt elmagyarázzuk, néhány apró.
 

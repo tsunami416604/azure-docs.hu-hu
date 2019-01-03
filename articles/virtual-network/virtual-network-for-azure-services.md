@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 5b21ec36215dfde964b845a1ee28c02b562e1dd7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4e136d4a0a60838af7d2b1a111982b0c16b06dd2
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340674"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975151"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatások
 
 A szolgáltatás integrálása az Azure virtuális hálózat Azure-szolgáltatások lehetővé privát hozzáférést a virtuális gépek vagy a számítási erőforrások a virtuális hálózatban.
-Azure-szolgáltatások integrálva a virtuális hálózaton a következő beállításokkal: Közvetlenül üzembe helyezése egy virtuális hálózatban a szolgáltatás dedikált példányát. A szolgáltatások majd nem nyilvánosan elérhetők a virtuális hálózaton belül, és a helyszíni hálózatok.
-Egy virtuális hálózatot a szolgáltatás a szolgáltatásvégpontokon keresztül az kiterjesztésével. A Szolgáltatásvégpontok biztosítani, hogy a virtuális hálózat egyes szolgáltatások erőforrásait.
+Azure-szolgáltatások integrálva a virtuális hálózaton a következő beállításokkal:
+- Üzembe helyezése egy virtuális hálózatban a szolgáltatás dedikált példányát. A szolgáltatások majd nem nyilvánosan elérhetők a virtuális hálózaton belül, és a helyszíni hálózatok.
+- Kiterjeszti a virtuális hálózat a szolgáltatásba, a szolgáltatásvégpontokon keresztül. A Szolgáltatásvégpontok biztosítani, hogy a virtuális hálózat egyes szolgáltatások erőforrásait.
 
 Integráció több Azure-szolgáltatások a virtuális hálózathoz, legalább egy, a fenti minták kombinálhatók. Például a virtuális hálózat üzembe helyezése a HDInsight, és a egy tárfiókot, a HDInsight-alhálózatnak a szolgáltatásvégpontokon keresztül.
  

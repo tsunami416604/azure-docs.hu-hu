@@ -3,17 +3,17 @@ title: Válassza ki a tarifacsomagot az Azure Maps jobb |} A Microsoft Docs
 description: További tudnivalók az Azure Maps által kínált tarifacsomagok
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 028a227eefb319d19c9274082626a007bd9161de
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998384"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993960"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>A jobb oldalon, az Azure Maps-tarifacsomag kiválasztása
 
@@ -53,9 +53,8 @@ Lásd a táblázatot az **tarifacsomag ügyfelek célzott** jobban érti az S0 �
 
 | Tarifacsomag  |        Megcélzott felhasználók                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>Az S0 tarifacsomag ügyfelek esetében, akik kis és közepes méretű vállalkozások van. A tarifacsomag az Ön számára, ha nem várható, és az egyidejű felhasználók nagy mennyiségű és szolgáltatás igényeinek teljesíti-e a core API-k, amint az alábbi táblázat azt a földrajzi jobb legyen. Ez a szint általánosan elérhető és alkalmazható alkalmazások az összes éles környezetben a megvalósítási próbától fogalom fejlesztési fázisában és az alkalmazás éles és a központi telepítés tesztelése korai szakaszában.<p>|
+| S0            |    <p>Az S0 tarifacsomag ügyfelek esetében, akik kis és közepes méretű vállalkozások van. A tarifacsomag az Ön számára, ha nem várható, és az egyidejű felhasználók nagy mennyiségű és szolgáltatás igényeinek teljesíti-e a core API-k által a fenti táblázatban feltüntetett térinformatikai jobb legyen. Ez a szint általánosan elérhető és alkalmazható alkalmazások az összes éles környezetben a megvalósítási próbától fogalom fejlesztési fázisában és az alkalmazás éles és a központi telepítés tesztelése korai szakaszában.<p>|
 | S1            |    <p>Az S1 tarifacsomagot nagy méretű nagyvállalati, alapvető fontosságú alkalmazásokat, és az egyidejű felhasználók nagy mennyiségű támogatása ellenőrzést igénylő ügyfelek számára, vagy speciális térinformatikai szolgáltatások igényel.</p>|
-
 
 ## <a name="next-steps"></a>További lépések
 

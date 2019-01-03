@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7a7063b9177774c5207746283dc7cd25e3dd5793
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001802"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721886"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -62,7 +62,7 @@ public static SignalRConnectionInfo GetSignalRInfo(
 
 #### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/App-Service-Authentication-overview.MD).
+A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/Overview-Authentication-Authorization.MD).
 
 App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `UserId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
 
@@ -108,7 +108,7 @@ module.exports = function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/App-Service-Authentication-overview.MD).
+A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/Overview-Authentication-Authorization.MD).
 
 App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `userId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
 
@@ -249,7 +249,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**|| Meg kell `in`.|
 |**name**|| Kapcsolatobjektum-adatait a függvény kódját a használt változó neve. |
 |**HubName**|**HubName**| Ez az érték, amelynek jön létre a kapcsolati adatok SignalR-központon nevére kell állítani.|
-|**userId**|**Felhasználói azonosító**| Választható lehetőség: A felhasználói azonosító értékét jogcímet állítható be, a kulcs hozzáférési jogkivonatot. |
+|**userId**|**Felhasználói azonosító**| Nem kötelező: A felhasználói azonosító értékét kell beállítani a kulcs hozzáférési jogkivonatot az igényt. |
 |**connectionStringSetting**|**ConnectionStringSetting**| A SignalR Service kapcsolati karakterlánc (az alapértelmezett "AzureSignalRConnectionString") tartalmazó alkalmazásbeállítás neve |
 
 ### <a name="signalr"></a>SignalR

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 12/12/2018
-ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314397"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789907"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
@@ -135,9 +135,8 @@ Az alábbi cikkekben talál további WMI hibaelhárítási cikkek található.
 
 ## <a name="unsupported-operating-systems"></a>Nem támogatott operációs rendszerek
 
-Nem támogatott operációs rendszer egy másik Ennek leggyakoribb oka a hiba oka lehet. Győződjön meg arról, a sikeres telepítés a mobilitási szolgáltatást a támogatott operációs rendszer/Kernel verziója.
-
-Ha szeretné megtudni, melyik operációs rendszerek támogatottak az Azure Site Recovery, tekintse meg a [támogatási mátrix dokumentum](vmware-physical-azure-support-matrix.md#replicated-machines).
+Nem támogatott operációs rendszer egy másik Ennek leggyakoribb oka a hiba oka lehet. Győződjön meg arról, a sikeres telepítés a mobilitási szolgáltatást a támogatott operációs rendszer/Kernel verziója. Kerülje a privát javítás használatát.
+Az operációs rendszerek és az Azure Site Recovery által támogatott kernel-verzióknál listájának megtekintéséhez, tekintse meg a [támogatási mátrix dokumentum](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Rendszerindító és a rendszerpartíciók / kötetek nem ugyanazon a lemezen (ErrorID: 95309)
 
@@ -146,6 +145,10 @@ Mielőtt 9.20 verzió, rendszerindító és a rendszerpartíciók / eltérő lem
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Több lemezen található rendszerpartíció (ErrorID: 95313)
 
 9.20 verziónál korábbi verziókban a legfelső szintű partíción vagy köteten több lemezen meghatározott volt konfigurációja nem támogatott. A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ez a konfiguráció támogatott. A támogatási használja a legújabb verziót.
+
+## <a name="grub-uuid-failure-errorid-95320"></a>LÁRVAJÁRAT UUID-hiba (ErrorID: 95320)
+
+Ha a forrásgépen lévő GRUB eszköznév UUID helyett használja, akkor a mobilitási ügynök telepítése sikertelen lesz. Kapcsolatba rendszergazdai módosítások GRUB-fájlba.
 
 ## <a name="lvm-support-from-920-version"></a>LVM támogatási 9.20 verzióról
 

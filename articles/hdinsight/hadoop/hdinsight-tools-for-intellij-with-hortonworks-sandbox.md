@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017406"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635663"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan Apache Scala-alkalmazások fejlesztése, és tesztelje az al
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-- Hortonworks Data Platform (HDP) 2.4 a Hortonworks Sandbox fut a helyi számítógépen. HDP beállításával kapcsolatban lásd: [Ismerkedés a Hadoop-ökoszisztéma a virtuális gépen egy Hadoop-tesztkörnyezet](apache-hadoop-emulator-get-started.md). 
+- Hortonworks Data Platform (HDP) 2.4 a Hortonworks Sandbox fut a helyi számítógépen. HDP beállításával kapcsolatban lásd: [Ismerkedjen meg a Hadoop-tesztkörnyezet, a virtuális gépen az Apache Hadoop-ökoszisztéma](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
     > IntelliJ-hez készült HDInsight-eszközök csak a HDP 2.4 tesztelték. Első HDP 2.4, bontsa ki a **Hortonworks Sandbox archív** a a [hortonworks – tesztkörnyezet tölti le a hely](https://hortonworks.com/downloads/#sandbox).
 
@@ -44,7 +44,7 @@ A beépülő modulok telepítése:
   5. A telepítés végrehajtásához válassza **indítsa újra az IntelliJ IDEA**.
   6. Ismételje meg a 4. és 5 telepítéséhez **IntelliJ-hez készült Azure-eszközkészlet**. További információkért lásd: [IntelliJ-hez készült Azure eszközkészlet telepítése](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
 
-## <a name="create-a-spark-scala-application"></a>Spark Scala-alkalmazás létrehozása
+## <a name="create-an-apache-spark-scala-application"></a>Hozzon létre egy Apache Spark Scala-alkalmazások
 
 Ebben a szakaszban az IntelliJ IDEA használatával hoz létre egy mintaprojektet Scala. A következő szakaszban társítja az IntelliJ IDEA a Hortonworks Sandbox (emulátor) a projekt mentése előtt.
 
@@ -53,8 +53,8 @@ Ebben a szakaszban az IntelliJ IDEA használatával hoz létre egy mintaprojekte
    1. Válassza ki a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
    2. Az a **buildelőeszköze** listában válasszon a következő, a forgatókönyv alapján:
 
-    * **Maven**: A Scala project-létrehozási varázsló támogatása.
-    * **SBT**: A függőségek kezelése és a Scala-projekt létrehozásához.
+    * **Maven**: Scala project-létrehozási varázsló támogatás.
+    * **SBT**: A függőségek kezelése, és a Scala-projekt létrehozásához.
 
    ![A New project (Új projekt) párbeszédablak.](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
@@ -149,14 +149,14 @@ Az emulátor egy projekt elküldése:
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [HDInsight Tools használata az IntelliJ-hez készült Azure-eszközkészlet alkalmazásokat hozhat létre a Spark for HDInsight Spark Linux-fürt](../spark/apache-spark-intellij-tool-plugin.md).
+- Ismerje meg, hogyan [IntelliJ-hez készült Azure-eszközkészlet HDInsight Tools használatával hozzon létre egy HDInsight Spark Linux-fürt az Apache Spark-alkalmazások](../spark/apache-spark-intellij-tool-plugin.md).
 
-- A HDInsight Tools for intellij-vel kapcsolatos videót [Spark fejlesztési IntelliJ-hez készült HDInsight eszközök bevezetni](https://www.youtube.com/watch?v=YTZzYVgut6c).
+- A HDInsight Tools for intellij-vel kapcsolatos videót [Apache Spark fejlesztési IntelliJ-hez készült HDInsight eszközök bevezetni](https://www.youtube.com/watch?v=YTZzYVgut6c).
 
-- Ismerje meg, hogyan [távoli hibakeresés Spark-alkalmazások az Azure-eszközkészlet egy HDInsight-fürtön ssh-n keresztül az IntelliJ-hez](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+- Ismerje meg, hogyan [ssh-n keresztül az IntelliJ-hez egy HDInsight-fürtön az Azure-eszközkészlet az Apache Spark-alkalmazások távoli hibakeresése](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
-- Ismerje meg, hogyan [az IntelliJ-hez készült Azure-eszközkészlet HDInsight Tools használata Spark alkalmazások távolról a HDInsight Spark Linux-fürt](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
+- Ismerje meg, hogyan [az IntelliJ-hez készült Azure-eszközkészlet HDInsight Tools használata Apache Spark-alkalmazások távolról a HDInsight Spark Linux-fürt](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
 
-- Ismerje meg, hogyan [HDInsight-eszközök használata a Spark-alkalmazások létrehozása az Eclipse-hez készült Azure-eszközkészlet](../spark/apache-spark-eclipse-tool-plugin.md).
+- Ismerje meg, hogyan [HDInsight-eszközök használata az Apache Spark-alkalmazások létrehozása az Eclipse-hez készült Azure-eszközkészlet](../spark/apache-spark-eclipse-tool-plugin.md).
 
 - Eclipse-hez készült HDInsight-eszközökkel kapcsolatos egy videót, [HDInsight Tools használata Spark-alkalmazások létrehozása az Eclipse-hez](https://mix.office.com/watch/1rau2mopb6fha).

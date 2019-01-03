@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f382aab5a00030b922fb890e82110454e7f3839
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c0f4af863162d004b6a557f8c7a04e31ee66d9b7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384496"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713556"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Telepítse és Apache Solr használata Windows-alapú HDInsight-fürtökön
 
@@ -38,7 +38,7 @@ A minta parancsfájl a jelen témakörben használt egyedi konfigurációs Solr 
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions.md).
 
 ## <a name="what-is-solr"></a>Mi az a Solr?
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Az Apache Solr</a> egy vállalati keresési platform, amely lehetővé teszi az adatok hatékony teljes szöveges keresés. Míg a Hadoop tárolására és kezelésére, az adatok óriási mennyiségben, Apache Solr biztosít a keresési funkciókkal gyorsan az adatok lekéréséhez.
+<a href="https://lucene.apache.org/solr/features.html" target="_blank">Az Apache Solr</a> egy vállalati keresési platform, amely lehetővé teszi az adatok hatékony teljes szöveges keresés. Míg a Hadoop tárolására és kezelésére, az adatok óriási mennyiségben, Apache Solr biztosít a keresési funkciókkal gyorsan az adatok lekéréséhez.
 
 ## <a name="install-solr-using-portal"></a>Portallal Solr telepítése
 1. Indítsa el a fürt létrehozása a **egyéni létrehozás** paraméterrel, ahogyan a [Apache Hadoop-fürtök létrehozása a HDInsight](hdinsight-provision-clusters.md).
@@ -156,7 +156,7 @@ A Solr indexelő bizonyos adatok fájlokkal kell elindítani. Ezután használha
           </response>
       ```
       
-   2. A távoli munkamenet, lépjen a {SOLR_HOME}\{gyűjtemény} \data. A parancsfájlpéldát létrehozott fürt, ez legyen `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. Ezen a helyen kell megjelennie egy hasonló nevű létrehozott pillanatképmappa **pillanatkép.\*időbélyeg**\*.
+   2. A távoli munkamenet, lépjen a {SOLR_HOME}\{gyűjtemény} \data. A parancsfájlpéldát létrehozott fürt, ez legyen `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. Ezen a helyen kell megjelennie egy hasonló nevű létrehozott pillanatképmappa **pillanatkép.* időbélyeg x.
    
    3. Zip-mappába, és töltse fel az Azure Blob storage. A Hadoop parancssori paranccsal futtathatja keresse meg a pillanatkép-mappa helye a következő paranccsal:
 

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 98828589832d69ada11205e471314a153a566766
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080265"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975509"
 ---
-# <a name="configure-containers"></a>Tárolók konfigurálása
+# <a name="configure-language-understanding-docker-containers"></a>Language Understanding docker-tárolók konfigurálása 
 
 A Language Understanding (LUIS) tároló futtatási környezetet segítségével konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tároló-specifikus beállításokat is a bemeneti [csatlakoztatási beállítások](#mount-settings) és a számlázási beállításait. 
 
@@ -32,11 +32,11 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |--|--|--|
 |Igen|[ApiKey](#apikey-setting)|Számlázási adatok nyomon követésére szolgál.|
 |Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi, hogy [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetriai támogatása a tárolóba.|
-|Igen|[Számlázás](#billing-setting)|Adja meg a végpont URI-t, a _Language Understanding_ erőforrást az Azure-ban.|
+|Igen|[Számlázás](#billing-setting)|Adja meg a végpont a szolgáltatás-erőforrás URI-ját az Azure-ban.|
 |Igen|[Végfelhasználói licencszerződés](#eula-setting)| Azt jelzi, hogy Ön már elfogadta a licencet, a tároló.|
 |Nem|[Fluentd](#fluentd-settings)|Napló írási és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.|
 |Nem|[Logging](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
-|Igen|[Csatlakoztatja](#mount-settings)|Az adatok olvasását és írását [gazdaszámítógép](luis-container-howto.md#the-host-computer) tárolóba, és vissza a gazdaszámítógép-tárolóból.|
+|Igen|[Csatlakoztatja](#mount-settings)|Olvasási és írási adatok tárolót a gazdaszámítógép és a tároló található vissza gazdaszámítógéphez.|
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), és [ `Eula` ](#eula-setting) beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom azokat; egyéb a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](luis-container-howto.md#billing).
@@ -45,32 +45,25 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 
 A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Language Understanding_ megadott erőforrás a [ `Billing` ](#billing-setting) konfigurációs beállítás.
 
-Ez a beállítás két helyen található:
+Ez a beállítás a következő helyen található:
 
-* Az Azure portal: **Language Understanding** erőforrás-kezelés alatt **kulcsok**
-* A LUIS-portál: **kulcsokat és a végpont beállításait** lap. 
+* Az Azure Portalon: **Language Understanding** erőforrás-kezelés alatt **kulcsok**
+* A LUIS-portálon: **Kulcsok és végpontbeállítások** lapot. 
 
 Ne használja az alapszintű vagy a szerzői műveletekhez részben billentyűt. 
 
 ## <a name="applicationinsights-setting"></a>Applicationinsights – beállítás
 
-A `ApplicationInsights` beállítás lehetővé teszi, hogy [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetriai támogatása a tárolóba. Az Application Insights az a tároló részletes figyelését teszi lehetővé. Könnyedén figyelheti a tárolója elérhetőségéről, teljesítményéről és kihasználtságáról. Emellett egyszerűen azonosíthatja és diagnosztizálhatja a hibákat a tárolóban.
-
-A következő táblázat ismerteti a támogatott konfigurációs beállításait a `ApplicationInsights` szakaszban.
-
-|Szükséges| Name (Név) | Adattípus | Leírás |
-|--|------|-----------|-------------|
-|Nem| `InstrumentationKey` | Karakterlánc | A rendszerállapotkulcsot az Application Insights-példány melyik telemetriai adatokat a tároló küldi. További információkért lásd: [Application Insights az ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Példa:<br>`InstrumentationKey=123456789`|
-
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-setting"></a>Számlázás beállítása
 
 A `Billing` beállítás határozza meg a végpont URI-t, a _Language Understanding_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Language Understanding_ erőforrást az Azure-ban.
 
-Ez a beállítás két helyen található:
+Ez a beállítás a következő helyen található:
 
-* Az Azure portal: **Language Understanding** áttekintése, címkével `Endpoint`
-* A LUIS-portálon: **kulcsokat és a végpont beállítások** lap, a végpont URI részeként.
+* Az Azure Portalon: **Language Understanding** áttekintése, címkével `Endpoint`
+* A LUIS-portálon: **Kulcsok és végpontbeállítások** lap, a végpont URI részeként.
 
 |Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
@@ -78,51 +71,17 @@ Ez a beállítás két helyen található:
 
 ## <a name="eula-setting"></a>Licencfeltételek beállítása
 
-A `Eula` beállítás azt jelzi, hogy Ön már elfogadta a licencet, a tároló. Meg kell adnia egy értéket a konfigurációs beállítás, és az értékét állítsa `accept`.
-
-|Szükséges| Name (Név) | Adattípus | Leírás |
-|--|------|-----------|-------------|
-|Igen| `Eula` | Karakterlánc | Licencfeltételek elfogadásának<br><br>Példa:<br>`Eula=accept` |
-
-Cognitive Services-tárolók licence alapján [a szerződés](https://go.microsoft.com/fwlink/?linkid=2018657) az Azure használatát szabályozó. Ha nem rendelkezik egy meglévő, az Azure használatát szabályozó megállapodást, Ön elfogadja, hogy van-e az Azure használatát szabályozó megállapodást a [Microsoft Online előfizetői szerződés](https://go.microsoft.com/fwlink/?linkid=2018755), amely magában foglalja a [Online szolgáltatások használati feltételeit ](https://go.microsoft.com/fwlink/?linkid=2018760). Az előnézetben, is elfogadja a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://go.microsoft.com/fwlink/?linkid=2018815). A tároló használatával elfogadja ezeket a feltételeket.
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
 ## <a name="fluentd-settings"></a>Fluentd beállításai
 
-Fluentd egy nyílt forráskódú adatgyűjtő egyesített naplózási. A `Fluentd` beállítások kezelése, a tároló kapcsolati egy [Fluentd](https://www.fluentd.org) kiszolgáló. A LUIS-tároló tartalmazza a Fluentd naplózási szolgáltató, amely lehetővé teszi, hogy a tároló is naplóznak, és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.
 
-A következő táblázat ismerteti a támogatott konfigurációs beállításait a `Fluentd` szakaszban.
-
-| Name (Név) | Adattípus | Leírás |
-|------|-----------|-------------|
-| `Host` | Karakterlánc | Az IP-cím vagy a Fluentd kiszolgáló DNS-állomásneve. |
-| `Port` | Egész szám | A port, a Fluentd kiszolgáló.<br/> Az alapértelmezett érték: 24224. |
-| `HeartbeatMs` | Egész szám | A szívverési időköz ezredmásodpercben. Ha esemény forgalmat a rendszer elküldte, ez az időtartam lejárta előtt, szívverést küld a Fluentd kiszolgálóra. Az alapértelmezett érték: 60000 ezredmásodperc (1 perc). |
-| `SendBufferSize` | Egész szám | A hálózati pufferterületének, műveletek számára lefoglalt (bájt). Az alapértelmezett érték: 32768 bájtok (32 kilobájt). |
-| `TlsConnectionEstablishmentTimeoutMs` | Egész szám | Az időkorlát ezredmásodpercben, a Fluentd kiszolgálóval SSL/TLS kapcsolatot létesíteni. Az alapértelmezett érték: 10000 ezredmásodperc (10 másodperc).<br/> Ha `UseTLS` értéke hamis értékre, ezt az értéket figyelmen kívül hagyja. |
-| `UseTLS` | Logikai | Azt jelzi, hogy a tároló kell használnia az SSL/TLS a Fluentd kiszolgálóval való kommunikáció során. Az alapértelmezett értéke FALSE (hamis). |
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
 ## <a name="logging-settings"></a>Naplózási beállítások
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-A `Logging` beállítások kezelése a tároló az ASP.NET Core-naplózás támogatása. A tárolót használja az ASP.NET Core alkalmazás használhatja az ugyanazon konfigurációs beállításokat és értékeket. 
-
-A következő naplózási szolgáltatók támogatottak a LUIS-tároló:
-
-|Szolgáltató|Cél|
-|--|--|
-|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|Az ASP.NET Core `Console` naplózási szolgáltató. Az ASP.NET Core-konfigurációs beállításokat és a naplózás szolgáltatóhoz tartozó alapértelmezett értékeket támogatottak.|
-|[Hibakeresés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|Az ASP.NET Core `Debug` naplózási szolgáltató. Az ASP.NET Core-konfigurációs beállításokat és a naplózás szolgáltatóhoz tartozó alapértelmezett értékeket támogatottak.|
-|[Lemez](#disk-logging)|A JSON-naplózás szolgáltató. A naplózás szolgáltató naplóadatokat ír a kimeneti csatlakoztatási.|
-
-### <a name="disk-logging"></a>Lemez naplózása
-  
-A `Disk` naplózási szolgáltató támogatja-e a következő beállításokat:  
-
-| Name (Név) | Adattípus | Leírás |
-|------|-----------|-------------|
-| `Format` | Karakterlánc | A kimeneti formátum a rendszernapló fájljaiban.<br/> **Megjegyzés:** ezt az értéket kell beállítani `json` a naplózás szolgáltatónak. Ezt az értéket egy kimeneti csatlakoztatási közben hárítható el egy tároló megadása nélkül, ha hiba történik. |
-| `MaxFileSize` | Egész szám | A maximális méretét megabájtban (MB), a naplófájlok. Ha az aktuális naplófájl méretét megfelel-e vagy meghaladja ezt az értéket, egy új naplófájl indítja el a naplózás szolgáltató. Ha meg van adva a -1, a naplófájl méretét csak korlátozza a maximális méretet, ha bármely, a kimeneti csatlakoztatási. Az alapértelmezett érték az 1. |
-
-ASP.NET Core-naplózás támogatást konfigurálásával kapcsolatos további információkért lásd: [fájl konfigurációs beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
@@ -141,39 +100,16 @@ A következő táblázat ismerteti a támogatott beállítások.
 
 ## <a name="hierarchical-settings"></a>Hierarchikus beállításai
 
-A LUIS-tároló beállítások hierarchikusak, és az összes tárolót a [gazdaszámítógép](luis-container-howto.md#the-host-computer) egy megosztott hierarchia használatát.
+[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
 
-Adja meg a beállítások a következők egyikét használhatja:
-
-* [Környezeti változók](#environment-variable-settings)
-* [Parancssori argumentumok](#command-line-argument-settings)
-
-A környezeti változó értékeit felülbírálhatja parancssori argumentumok értékeit, amelyek viszont felülírják az alapértelmezett értékeit a tároló rendszerképét. Ha eltérő értékeket egy környezeti változó és a egy parancssori argumentum ugyanazon konfigurációs beállítás megadása esetén a környezeti változó értékét a példányosított tároló használják.
-
-|Sorrend|Helyének beállítása|
-|--|--|
-|1|Környezeti változó| 
-|2|Parancssor|
-|3|Tároló-lemezképet alapértelmezett érték|
-
-### <a name="environment-variable-settings"></a>Környezeti változók beállításai
-
-A környezeti változók használatának előnyei a következők:
-
-* Több beállítások konfigurálhatók.
-* Több tároló használhatja ugyanazokat a beállításokat.
-
-### <a name="command-line-argument-settings"></a>Parancssori argumentumok beállításai
-
-Parancssori argumentumok használatával előnye, hogy a tárolók használható különböző beállításokat.
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
 Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](luis-container-howto.md#stop-the-container) azt.
 
 
-* **Vonal-folytatási karakter**: A docker-parancsokat az alábbi szakaszokban található használja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
-* **Argument sorrend**: nem módosítsa az argumentumok sorrendje, ha tisztában van a docker-tárolókat.
+* **Vonal-folytatási karakter**: Az alábbi szakaszok a docker-parancsokat használhatja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
+* **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 
 Cserélje le a(z)_argument_name_} a saját értékeire:
 

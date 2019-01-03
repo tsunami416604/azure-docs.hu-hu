@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d4d730fe6c72b55a01f7c5f1f95cbd94ff145fba
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f8045153482cdd8b9a13c0a6f2ebdb26627d44e4
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873750"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811409"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -30,7 +30,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 ## <a name="networking"></a>Hálózat
 <a id="direct-connection"></a>
 
-1. **Csatlakozási házirend: közvetlen kapcsolat mód használata**
+1. **Csatlakozási házirend: Közvetlen kapcsolat mód használata**
 
     Hogyan ügyfél csatlakozik-e az Azure Cosmos DB következményeket vonhat fontos a teljesítmény, különösen a megfigyelt ügyféloldali késés szempontjából. Nincsenek elérhető ügyfél kapcsolódási szabályzat – a kapcsolat konfigurálásához két fő konfigurációs beállítások *mód* és a [kapcsolat *protokoll*](#connection-protocol).  A két rendelkezésre álló beállításokat a következők:
 
@@ -45,7 +45,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
     * TCP
     * HTTPS
 
-    Átjáró mód használatakor az Azure Cosmos DB használ-e a 443-as porton, és a MongoDB API 10250, 10255 és 10256 portokat használ. A georeplikáció és a Mongodb-példányban georeplikációs funkciókkal 10255/10256 portok leképezés nélkül egy alapértelmezett Mongodb-példányban 10250 port leképezések. Ha használ TCP közvetlen üzemmódban átjáró portokon kívül, gondoskodnia kell arról, a port 10000 és 20000 közötti nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitott, és próbálja meg használni, a TCP, hibaüzenet 503-as szolgáltatás nem érhető el. A következő táblázat különböző API-k és a portok felhasználói rendelkezésre álló csatlakozási módot mutatja az egyes API:
+    Átjáró mód használatakor a Cosmos DB 443-as porton és portokat használja, 10250, 10255 és 10256 mongodb-hez készült Azure Cosmos DB API használatakor. A georeplikáció és a MongoDB-példányban georeplikációs funkciókkal 10255/10256 portok leképezés nélkül egy alapértelmezett MongoDB-példányban 10250 port leképezések. Ha használ TCP közvetlen üzemmódban átjáró portokon kívül, gondoskodnia kell arról, a port 10000 és 20000 közötti nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitott, és próbálja meg használni, a TCP, hibaüzenet 503-as szolgáltatás nem érhető el. A következő táblázat különböző API-k és a portok felhasználói rendelkezésre álló csatlakozási módot mutatja az egyes API:
 
     |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
     |---------|---------|---------|---------|

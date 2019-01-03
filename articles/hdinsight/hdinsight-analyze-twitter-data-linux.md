@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 01d1ef428804838df4257a4c28dfcddbdd8f156b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a3687a4b8bb4e0d900ee96f52c40352db4e96df6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010994"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635561"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hive- és Apache Hadoop használatával Twitter-adatok elemzése
 
 Ismerje meg, hogyan használható [Apache Hive](https://hive.apache.org/) folyamat Twitter-adatok. Ez a legtöbb tweeteket egy bizonyos szót tartalmazó küldő Twitter-felhasználók listája.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések tesztelt, a HDInsight 3.6-ot.
 >
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScript Object Notation (JSON) dokumentumban REST API-n keresztül. [OAuth](http://oauth.net) az API-hitelesítés szükséges.
+Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScript Object Notation (JSON) dokumentumban REST API-n keresztül. [OAuth](https://oauth.net) az API-hitelesítés szükséges.
 
 ### <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -41,7 +41,7 @@ Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScri
    |:--- |:--- |
    | Name (Név) |MyHDInsightApp |
    | Leírás |MyHDInsightApp |
-   | Webhely |http://www.myhdinsightapp.com |
+   | Webhely |https://www.myhdinsightapp.com |
 
 4. Ellenőrizze **Igen, elfogadom**, és kattintson a **Twitter-alkalmazás létrehozása**.
 
@@ -59,7 +59,7 @@ Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScri
 
 A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket egy fájlt **tweets.txt**.
 
-> [!NOTE]
+> [!NOTE]  
 > Az alábbi lépéseket a HDInsight-fürtön történik, mivel a Python már telepítve van.
 
 1. Csatlakozzon SSH-val a HDInsight-fürthöz:
@@ -70,7 +70,7 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
 
     További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Telepítse az alábbi parancsokkal [Tweepy](http://www.tweepy.org/), [folyamatjelző](https://pypi.python.org/pypi/progressbar/2.2), és a többi szükséges csomagot:
+3. Telepítse az alábbi parancsokkal [Tweepy](https://www.tweepy.org/), [folyamatjelző](https://pypi.python.org/pypi/progressbar/2.2), és a többi szükséges csomagot:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -145,7 +145,7 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Cserélje le a helyőrző szöveg a következő elemek twitter-alkalmazás adatait:
     >
     > * `consumer_secret`
@@ -153,7 +153,7 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
     > * `access_token`
     > * `access_token_secret`
 
-    > [!TIP]
+    > [!TIP]  
     > A témakörök szűrő népszerű kulcsszavak nyomon követéséhez az utolsó sorban állítsa be. Népszerű kulcsszavakat, a parancsfájl futtatása során lehetővé teszi az adatok gyorsabb rögzítési.
 
 6. Használat **Ctrl + X**, majd **Y** szeretné menteni a fájlt.
@@ -166,7 +166,7 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
 
     Egy folyamatjelző jelenik meg. 100 %-a tweetek letöltöttként számolja.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Azt mutatja be, a folyamatjelző sáv kell hosszú ideig tart a vártnál, ha módosítania kell a szűrő Népszerű témakörök nyomon követéséhez. Ha a témakör a szűrő számos tweetekről, a szükséges 10000 tweeteket gyorsan kérheti le.
 
 ### <a name="upload-the-data"></a>Az adatok feltöltése
@@ -317,7 +317,7 @@ Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen táro
 
     A lekérdezés visszaad egy legfeljebb 10 szót tartalmazó tweeteket **Azure** az az üzenet szövege.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha módosította a szűrőt a `gettweets.py` parancsfájl, cserélje le **Azure** -egy szűrőt használt.
 
 ## <a name="next-steps"></a>További lépések
@@ -327,7 +327,7 @@ Megtanulhatta, hogyan alakíthatja az strukturálatlan JSON-adatkészlet egy str
 * [HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

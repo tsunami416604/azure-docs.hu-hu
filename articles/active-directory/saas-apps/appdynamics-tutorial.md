@@ -1,135 +1,133 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az AppDynamics |} A Microsoft Docs'
+title: 'Oktatóanyag: Az appdynamics segítségével az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az AppDynamics között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/13/2018
+ms.topic: tutorial
+ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e2620a40eb4998d8d5e97108208731d679e004d6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605827"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973026"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Oktatóanyag: Azure Active Directory-integráció az appdynamics segítségével
+# <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Oktatóanyag: Az appdynamics segítségével az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan AppDynamics integrálása az Azure Active Directory (Azure AD).
-
 AppDynamics integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá az AppDynamics Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett az AppDynamics (egyszeri bejelentkezés) az Azure AD-fiókjukat
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+* Szabályozhatja, ki férhet hozzá az AppDynamics Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve AppDynamics (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása az appdynamics segítségével, a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Az AppDynamics egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* AppDynamics egyszeri bejelentkezéses engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
-Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. AppDynamics hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja az AppDynamics **SP** által kezdeményezett egyszeri bejelentkezés
+
+* Támogatja az AppDynamics **igény szerinti** felhasználók átadása
 
 ## <a name="adding-appdynamics-from-the-gallery"></a>AppDynamics hozzáadása a katalógusból
+
 Az AppDynamics integrálása az Azure AD beállítása, hozzá kell AppDynamics a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **AppDynamics hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **AppDynamics**.
+4. A Keresés mezőbe írja be a **AppDynamics**válassza **AppDynamics** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/appdynamics-tutorial/tutorial_appdynamics_search.png)
+     ![Az eredmények listájában AppDynamics](common/search-new-app.png)
 
-5. Az eredmények panelen válassza ki a **AppDynamics**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/appdynamics-tutorial/tutorial_appdynamics_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az appdynamics segítségével egy "Britta Simon." nevű tesztelési felhasználó alapján
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben kell tudja, hogy mi a tartozó felhasználó, az AppDynamics egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó, az AppDynamics hivatkozás kapcsolata kell létrehozni.
-
-AppDynamics, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az appdynamics segítségével egy teszt nevű felhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó, az AppDynamics hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az appdynamics segítségével tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Az AppDynamics tesztfelhasználó létrehozása](#creating-an-appdynamics-test-user)**  – egy megfelelője a Britta Simon AppDynamics, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[AppDynamics egyszeri bejelentkezés konfigurálása](#configure-appdynamics-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre AppDynamics tesztfelhasználót](#create-appdynamics-test-user)**  – egy megfelelője a Britta Simon AppDynamics, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az AppDynamics alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Az appdynamics segítségével konfigurálja az Azure AD egyszeri bejelentkezés, hajtsa végre az alábbi lépéseket:**
+Az appdynamics segítségével konfigurálja az Azure AD egyszeri bejelentkezés, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **AppDynamics** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **AppDynamics** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_appdynamics_samlbase.png)
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-3. Az a **AppDynamics tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com/controller`
+    ![AppDynamics-tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`
+
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.saas.appdynamics.com/controller`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [AppDynamics ügyfél-támogatási csapatának](https://www.appdynamics.com/support/) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [AppDynamics ügyfél-támogatási csapatának](https://www.appdynamics.com/support/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_appdynamics_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-5. Kattintson a **mentése** gombra.
+6. Az a **AppDynamics beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_general_400.png)
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-6. Az a **AppDynamics konfigurációs** területén kattintson **konfigurálása AppDynamics** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címet, és a SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+    a. Bejelentkezési URL
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_appdynamics_configure.png)
+    b. Az Azure Ad-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-appdynamics-single-sign-on"></a>AppDynamics egyszeri bejelentkezés konfigurálása
 
 7. Egy másik böngészőablakban jelentkezzen be az AppDynamics vállalati hely rendszergazdaként.
 
@@ -147,103 +145,83 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Mint **hitelesítési szolgáltató**válassza **SAML**.
 
-    b. Az a **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
+    b. Az a **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
 
-    c. A a **kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezéses URL-cím** Azure Portalról másolt.
+    c. Az a **kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezési URL-címe** Azure Portalról másolt.
 
     d. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **tanúsítvány** szövegmező
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/appdynamics-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/appdynamics-tutorial/create_aaduser_02.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/appdynamics-tutorial/create_aaduser_03.png) 
-
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
-
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/appdynamics-tutorial/create_aaduser_04.png)
-
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="creating-an-appdynamics-test-user"></a>Az AppDynamics tesztfelhasználó létrehozása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával az AppDynamics Azure egyszeri bejelentkezés használatára.
+
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **AppDynamics**.
+
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+2. Az alkalmazások listáját, írja be, és válassza ki **AppDynamics**.
+
+    ![Az AppDynamics hivatkozásra az alkalmazások listáját](common/all-applications.png)
+
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-appdynamics-test-user"></a>AppDynamics tesztfelhasználó létrehozása
 
 Ez a szakasz célja az AppDynamics Britta Simon nevű felhasználó létrehozásához. AppDynamics támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Az AppDynamics elérésére, ha még nem létezik tett kísérlet során jön létre egy új felhasználót.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AppDynamics ügyfél-támogatási csapatának](https://www.appdynamics.com/support/).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AppDynamics ügyfél-támogatási csapatának](https://www.appdynamics.com/support/).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával az AppDynamics Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-![Felhasználó hozzárendelése][200]
-
-**Az AppDynamics Britta Simon rendeléséhez hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201]
-
-2. Az alkalmazások listájában jelölje ki a **AppDynamics**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/appdynamics-tutorial/tutorial_appdynamics_app.png)
-
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202]
-
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
-
-Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen az AppDynamics csempére kattint, akkor kell lekérése automatikusan bejelentkezett az AppDynamics alkalmazáshoz.
+Ha a hozzáférési panelen az AppDynamics csempére kattint, meg kell lehet automatikusan bejelentkezett, amelynek beállítása egyszeri bejelentkezés az AppDynamics. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/appdynamics-tutorial/tutorial_general_01.png
-[2]: ./media/appdynamics-tutorial/tutorial_general_02.png
-[3]: ./media/appdynamics-tutorial/tutorial_general_03.png
-[4]: ./media/appdynamics-tutorial/tutorial_general_04.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/appdynamics-tutorial/tutorial_general_100.png
-
-[200]: ./media/appdynamics-tutorial/tutorial_general_200.png
-[201]: ./media/appdynamics-tutorial/tutorial_general_201.png
-[202]: ./media/appdynamics-tutorial/tutorial_general_202.png
-[203]: ./media/appdynamics-tutorial/tutorial_general_203.png

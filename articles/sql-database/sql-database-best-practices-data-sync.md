@@ -9,21 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: ''
+ms.reviewer: douglasl
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: a7289ba5ab1f4e94adc099978591d69cac6ff786
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686619"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721597"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Az SQL Data Synchez ajánlott eljárások 
 
 Ez a cikk az Azure SQL Data Synchez ajánlott eljárásait ismerteti.
 
 Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync segítségével végzett adatszinkronizálást](sql-database-sync-data.md) ismertető cikket.
+
+> [!IMPORTANT]
+> Az Azure SQL Data Sync does **nem** támogatja az Azure SQL Database felügyelt példánya jelenleg.
 
 ## <a name="security-and-reliability"></a> Biztonság és megbízhatóság
 
@@ -196,7 +199,7 @@ Bizonyos esetekben a regisztrációjának törlése az adatbázis egy ügyfélü
 1. A szinkronizálási csoport egy SQL Database-példány és a egy helyszíni SQL Server-adatbázis, helyi ügynök 1 társított használatával lett létrehozva.
 2. Az azonos helyszíni adatbázis regisztrálva van a helyi ügynök 2 (Ez az ügynök nem áll semmilyen szinkronizálási csoport társítva).
 3. Regisztrációjának törlése a helyszíni adatbázis helyi ügynök 2 eltávolítja a nyomon követési és meta táblák szinkronizálása a helyszíni adatbázis csoportba tartozó.
-4. Szinkronizálási csoportban műveletek sikertelenek lesznek, hiba: "az aktuális művelet nem sikerült, mert az adatbázis nem kiépített szinkronizálási szolgáltatás, vagy nem rendelkezik engedélyekkel a szinkronizálási konfiguráció táblázatokhoz."
+4. Szinkronizálási csoport A művelet sikertelen, hiba: "Az aktuális művelet nem sikerült, mert az adatbázis nem kiépített szinkronizálási szolgáltatás, vagy nem rendelkezik engedélyekkel a szinkronizálási konfiguráció táblázatokhoz."
 
 #### <a name="solution"></a>Megoldás
 
@@ -221,7 +224,7 @@ Az SQL Data Sync szolgáltatással kapcsolatos további információkért lásd:
 
 -   Áttekintés – [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázis között az Azure SQL Data Sync szolgáltatással](sql-database-sync-data.md)
 -   Data Sync beállítása
-    - A portálban – [oktatóanyag: a helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálban – [oktatóanyag: A helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
         -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)

@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a3d27e7be97901c6757ca6991a7404f3b00f21e7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136647"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605568"
 ---
-# <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Tegye közzé az aktív, betanított alkalmazást egy átmeneti és éles végpontot
 
 Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot. 
 

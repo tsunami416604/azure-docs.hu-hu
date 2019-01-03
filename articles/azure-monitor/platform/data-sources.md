@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 1612c2d47f88b6d065e5307be5ff3c99d8f6d405
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0349e3f482923a236ea29332abfc3a9206828ba7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433440"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976885"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Az Azure monitorban adatok forrásai
 Ez a cikk ismerteti az Azure Monitor állapotát és teljesítményét az erőforrások és a rajtuk futó alkalmazások figyelése által gyűjtött adatok forrásai. Ezeket az erőforrásokat az Azure-ban, egy másik felhőben vagy helyszíni lehet.  Lásd: [Azure Monitor által gyűjtött adatok](data-collection.md) hogyan tárolja ezeket az adatokat, és hogyan tekintheti meg.
@@ -41,12 +41,12 @@ Telemetriával kapcsolatos, az egészségügyi és működését az Azure maga a
 ![Azure-előfizetés gyűjtemény](media/data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure Service Health
-[Az Azure Service Health](../../monitoring-and-diagnostics/monitoring-service-notifications.md) az Azure-szolgáltatások az előfizetésében, amelyet az alkalmazás és-erőforrások állapotával kapcsolatos információkat nyújt. A jelenlegi és várt kritikus problémákra, amelyek hatással lehetnek az alkalmazás értesítést riasztásokat is létrehozhat. Tárolja a Service Health-rekordokat a [Azure tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), így az Activity Log Explorer ezeket is megtekintheti, és másolja őket az Azure Monitor naplóira.
+[Az Azure Service Health](../../azure-monitor/platform/service-notifications.md) az Azure-szolgáltatások az előfizetésében, amelyet az alkalmazás és-erőforrások állapotával kapcsolatos információkat nyújt. A jelenlegi és várt kritikus problémákra, amelyek hatással lehetnek az alkalmazás értesítést riasztásokat is létrehozhat. Tárolja a Service Health-rekordokat a [Azure tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md), így az Activity Log Explorer ezeket is megtekintheti, és másolja őket az Azure Monitor naplóira.
 
 ### <a name="azure-activity-log"></a>Azure-tevékenységnapló
-A [Azure-tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) együtt az Azure-erőforrások konfigurációs módosításai a rekordok service health rekordokat tartalmaz. A tevékenységnapló érhető el az összes Azure-erőforrások és jelöli a _külső_ megtekintése. A megadott típusú rekordok a tevékenységnaplóban ismertetett [Azure-tevékenységnapló eseménysémája](../../azure-monitor/platform/activity-log-schema.md).
+A [Azure-tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md) együtt az Azure-erőforrások konfigurációs módosításai a rekordok service health rekordokat tartalmaz. A tevékenységnapló érhető el az összes Azure-erőforrások és jelöli a _külső_ megtekintése. A megadott típusú rekordok a tevékenységnaplóban ismertetett [Azure-tevékenységnapló eseménysémája](../../azure-monitor/platform/activity-log-schema.md).
 
-A tevékenységnapló egy bizonyos erőforrás esetén több erőforrást az Azure portal vagy a nézet naplóit a oldalán is megtekintheti a [Activity Log Explorer](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Ez különösen hasznos a naplóbejegyzéseket másolása az Azure Monitor egyesítheti a többi monitorozási adattal együtt. Is küldhet nekik segítségével más helyekre [az Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md).
+A tevékenységnapló egy bizonyos erőforrás esetén több erőforrást az Azure portal vagy a nézet naplóit a oldalán is megtekintheti a [Activity Log Explorer](../../azure-monitor/platform/activity-logs-overview.md). Ez különösen hasznos a naplóbejegyzéseket másolása az Azure Monitor egyesítheti a többi monitorozási adattal együtt. Is küldhet nekik segítségével más helyekre [az Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md).
 
 
 
@@ -61,9 +61,9 @@ A legtöbb Azure-szolgáltatásokat hoz létre [platform metrikák](data-collect
 
 
 ### <a name="resource-diagnostic-logs"></a>Erőforrás-diagnosztikai naplók
-Bár a tevékenységnapló egy Azure-erőforrások, erőforrásszintek simítása végrehajtott műveletek információt nyújt [diagnosztikai naplók](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) adja meg a műveletet az erőforrás magát betekintést.   A konfigurációs követelmények és ezek a naplók tartalmának [erőforrás típusa szerint változó](../../azure-monitor/platform/tutorial-dashboards.md).
+Bár a tevékenységnapló egy Azure-erőforrások, erőforrásszintek simítása végrehajtott műveletek információt nyújt [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) adja meg a műveletet az erőforrás magát betekintést.   A konfigurációs követelmények és ezek a naplók tartalmának [erőforrás típusa szerint változó](../../azure-monitor/platform/tutorial-dashboards.md).
 
-Diagnosztikai naplók nem közvetlenül tekintheti meg az Azure Portalon, de Ön is [küldje el azokat az Azure storage alacsony költségű](../../azure-monitor/platform/archive-diagnostic-logs.md) és exportálhatja őket [Eseményközpont](../../event-hubs/event-hubs-about.md) az átirányítás más szolgáltatások vagy [naplójába Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) elemzés céljából. Bizonyos erőforrások közvetlenül a Log Analytics írhat, míg mások írni egy storage-fiók mielőtt [importálja a Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
+Diagnosztikai naplók nem közvetlenül tekintheti meg az Azure Portalon, de Ön is [küldje el azokat az Azure storage alacsony költségű](../../azure-monitor/platform/archive-diagnostic-logs.md) és exportálhatja őket [Eseményközpont](../../event-hubs/event-hubs-about.md) az átirányítás más szolgáltatások vagy [naplójába Analytics](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) elemzés céljából. Bizonyos erőforrások közvetlenül a Log Analytics írhat, míg mások írni egy storage-fiók mielőtt [importálja a Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Figyelési megoldások
  [Figyelési megoldások](../insights/solutions.md) nyújt további betekintést a művelet egy adott szolgáltatás vagy alkalmazás az adatok gyűjtéséhez. Azok összegyűjtötte az adatokat az Azure Monitor naplóira hol lehet elemezni az [lekérdezési nyelvet](../log-query/log-query-overview.md) vagy [nézetek](view-designer.md) , amelyek általában bekerülnek a megoldás.
@@ -80,7 +80,7 @@ Az Azure Diagnostics bővítmény a naplók gyűjtésére a figyelés alapvető 
 Teljes körű figyelését és kezelését a Windows vagy Linux rendszerű virtuális gépek vagy fizikai számítógép kézbesíti a rendszer a Log Analytics-ügynökkel. A virtuális gépet futtathat az Azure, egy másik felhőalapú vagy helyszíni és az ügynök csatlakozik az Azure-ba közvetlenül vagy a System Center Operations Manager figyelése, és lehetővé teszi az adatgyűjtést [adatforrások](agent-data-sources.md) során konfigurálja vagy [figyelési megoldások](../insights/solutions.md) , amely a virtuális gépen futó alkalmazások további betekintést nyújtson.
 
 ### <a name="dependency-agent"></a>Függőségi ügynök
-[A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) igényel a függőségi ügynököt Windows és Linux rendszerű virtuális gépeken. Ez integrálható a Log Analytics-ügynök gyűjti a virtuális gép és a külső folyamat függőségek futó folyamatok felderített adatait. Azt tárolja ezeket az adatokat az Azure monitorban elérhetővé, és a felderített összekapcsolt összetevőket.  
+[A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) igényel a függőségi ügynököt Windows és Linux rendszerű virtuális gépeken. Ez a virtuális gép és a külső folyamat függőségek futó folyamatok detektált adatok gyűjtése a Log Analytics-ügynök integrálható. Azt tárolja ezeket az adatokat az Azure monitorban elérhetővé, és a felderített összekapcsolt összetevőket.  
 
 Az ügynökök és a felügyeleti követelményektől függően használandó közötti különbségekről további ismertetése: [figyelés ügynökök áttekintése](agents-overview.md).
 
@@ -93,13 +93,13 @@ Amellett, hogy az alkalmazás lehet írni a vendég operációs rendszer telemet
 ### <a name="application-data"></a>Alkalmazásadatok
 Amikor engedélyezi az Application Insights egy alkalmazás számára egy kialakítási csomag telepítése, gyűjti, metrikák és naplók a teljesítménnyel és az alkalmazás működésének kapcsolatos. Ez magában foglalja a lapmegtekintések alkalmazásokra irányuló kérések és kivételek kapcsolatos részletes információk. Az Application Insights összegyűjti az adatokat az Azure monitorban tárolja. Adatok elemzésére szolgáló kiterjedt eszközöket tartalmaz, de az eszközök, például a metrikaalapú analytics és a log analytics használatával más forrásokból származó adatokat is elemezheti.
 
-Is használhatja az Application Insights [hozzon létre egy egyéni metrika](../../application-insights/app-insights-api-custom-events-metrics.md).  Ez lehetővé teszi, hogy definiálja saját logika összeillesztésétől a numerikus értékek, és ezután tárolja ezt az értéket, amely a Metrikaböngésző érhető el, és használt más metrikákkal [automatikus skálázási](../../azure-monitor/platform/autoscale-custom-metric.md) és metrikákhoz kapcsolódó riasztások.
+Is használhatja az Application Insights [hozzon létre egy egyéni metrika](../../azure-monitor/app/api-custom-events-metrics.md).  Ez lehetővé teszi, hogy definiálja saját logika összeillesztésétől a numerikus értékek, és ezután tárolja ezt az értéket, amely a Metrikaböngésző érhető el, és használt más metrikákkal [automatikus skálázási](../../azure-monitor/platform/autoscale-custom-metric.md) és metrikákhoz kapcsolódó riasztások.
 
 ### <a name="dependencies"></a>Függőségek
-Annak érdekében, hogy egy alkalmazás különböző logikai műveletek monitorozására, kell [telemetriai adatok gyűjtése a több összetevőt](../../application-insights/app-insights-transaction-diagnostics.md). Az Application Insights támogatja [telemetriai korreláció elosztott](../../application-insights/application-insights-correlation.md) amely azonosítja a függőségeket, így elemezheti együtt összetevői között.
+Annak érdekében, hogy egy alkalmazás különböző logikai műveletek monitorozására, kell [telemetriai adatok gyűjtése a több összetevőt](../../application-insights/app-insights-transaction-diagnostics.md). Az Application Insights támogatja [telemetriai korreláció elosztott](../../azure-monitor/app/correlation.md) amely azonosítja a függőségeket, így elemezheti együtt összetevői között.
 
 ### <a name="availability-tests"></a>Rendelkezésre állási tesztek
-[Rendelkezésre állási tesztek](../../application-insights/app-insights-monitor-web-app-availability.md) az Application Insights lehetővé teszi, hogy ellenőrizze a rendelkezésre állásának és válaszkészségének az alkalmazás különböző helyekről, a nyilvános interneten. Hajtsa végre egy egyszerű ping teszt annak ellenőrzéséhez, hogy az alkalmazás aktív, vagy hozzon létre egy webes tesztet, amely a felhasználói forgatókönyv szimulálja a Visual Studio használatával.  Rendelkezésre állási tesztek nem igénylik bármilyen, az alkalmazás kialakítási.
+[Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) az Application Insights lehetővé teszi, hogy ellenőrizze a rendelkezésre állásának és válaszkészségének az alkalmazás különböző helyekről, a nyilvános interneten. Hajtsa végre egy egyszerű ping teszt annak ellenőrzéséhez, hogy az alkalmazás aktív, vagy hozzon létre egy webes tesztet, amely a felhasználói forgatókönyv szimulálja a Visual Studio használatával.  Rendelkezésre állási tesztek nem igénylik bármilyen, az alkalmazás kialakítási.
 
 ## <a name="custom-sources"></a>Egyéni források
 A standard csomagokhoz-alkalmazások, kívül szükség lehet egyéb telemetriai adatokból, hogy nem lehet összegyűjteni a más adatforrásokkal rendelkező erőforrások figyeléséhez. Ezekhez az erőforrásokhoz kell írnia az adatok egy Azure Monitor API-val.

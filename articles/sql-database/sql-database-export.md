@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 2d881b9dbc20dbbf95491d023b859a20815091d3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 804202149234a55de4f7f99b18dc40b8136463a3
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311201"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651045"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis exportálása BACPAC-fájlba
 
@@ -98,6 +98,7 @@ $exportStatus
 - Az Azure SQL database biztonsági másolatából hosszú távú megőrzésének helyett egy adatbázis archiválási célú exportálja, lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 - Az SQL Server-adatbázis egy BACPAC importálásával kapcsolatos további információkért lásd: [egy BACPCAC importálása az SQL Server-adatbázis](https://msdn.microsoft.com/library/hh710052.aspx).
-- SQL Server-adatbázis exportálása BACPAC kapcsolatos további információkért lásd: [egy adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) és [első adatbázis Migrálása](sql-database-migrate-your-sql-server-database.md).
+- SQL Server-adatbázis exportálása BACPAC kapcsolatos további információkért lásd: [egy adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+- Adatbázis áttelepítése a Data Migration Service használatával kapcsolatos további információkért lásd: [SQL Server Migrálása az Azure SQL Database-kapcsolat nélküli módban a DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md).
 - Ha exportálja az SQL Serverből, egy prelude áttelepítése az Azure SQL Database, [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
 - Megtudhatja, hogyan kezelésére és megosztására tárkulcsok és közös hozzáférésű jogosultságkódok biztonságosan, lásd: [Azure Storage biztonsági útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

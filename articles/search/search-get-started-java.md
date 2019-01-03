@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316969"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629901"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ A minta összeállításához és teszteléséhez a következő szoftvereket has
 * [Az Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
-A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](http://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
+A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
 Ebben az alkalmazásban a **SearchServlet.java** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
 
@@ -87,7 +87,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 ## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
 1. A **Project Explorer** (Projektböngésző) nézetben kattintson duplán a **config.properties** elemre, hogy szerkeszthesse a kiszolgáló nevét és az API-kulcsot tartalmazó konfigurációs beállításokat.
 2. Tekintse meg a jelen cikkben korábban ismertetett lépéseket, ahol a szolgáltatás URL-címét és API-kulcsát megtalálhatta az [Azure portálon](https://portal.azure.com), és az adott értékeket írja be **config.properties** fájlba.
-3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. Következő, a szolgáltatás nevét (az URL-cím első összetevője http://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
+3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. Következő, a szolgáltatás nevét (az URL-cím első összetevője https://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
    
     ![][5]
 
@@ -105,7 +105,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 7. Kattintson a **Befejezés** gombra.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
-10. Kattintson a **Tovább**gombra.
+10. Kattintson a **tovább**.
 11. A JRE Definition (JRE_definíció) ablakban, a JRE kezdőlapján kattintson a **Directory** (Könyvtár) elemre.
 12. Navigáljon a **Program Files** (Programfájlok)  > **Java** könyvtárra, és válassza ki a korábban telepített JDK-t. Fontos, hogy a JDK-t JRE-ként válassza ki.
 13. Az Installed JREs (Telepített JRE-k) panelen válassza ki a **JDK** elemet. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.

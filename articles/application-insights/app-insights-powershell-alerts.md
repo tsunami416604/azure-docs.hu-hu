@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: dda4e26de74dbd5579f2dd45ea47f42c904f028f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 74776a658c7a0002df40b1b3ccb572e9b9262540
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271725"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972925"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
-Automatizálhatja a konfigurációját [riasztások](app-insights-alerts.md) a [Application Insights](app-insights-overview.md).
+Automatizálhatja a konfigurációját [riasztások](../azure-monitor/app/alerts.md) a [Application Insights](app-insights-overview.md).
 
 Emellett akkor is [állítsa be a webhookok automatizálható a riasztás](../azure-monitor/platform/alerts-webhooks.md).
 
@@ -81,7 +81,7 @@ A GUID azonosító az előfizetés-azonosító (nem a kialakítási kulcsot az a
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>2. példa
-Az alkalmazástól, amelyben van [a trackmetric() függvény](app-insights-api-custom-events-metrics.md#trackmetric) jelentéséhez "salesPerHour." nevű metrika Küldjön egy e-mailt a munkatársainak, ha 100, alá csökken "salesPerHour" átlagolt 24 órán át.
+Az alkalmazástól, amelyben van [a trackmetric() függvény](../azure-monitor/app/api-custom-events-metrics.md#trackmetric) jelentéséhez "salesPerHour." nevű metrika Küldjön egy e-mailt a munkatársainak, ha 100, alá csökken "salesPerHour" átlagolt 24 órán át.
 
     Add-AzureRmMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -94,7 +94,7 @@ Az alkalmazástól, amelyben van [a trackmetric() függvény](app-insights-api-c
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-A metrika használata által jelentett ugyanaz a szabály használható a [mérési paraméter](app-insights-api-custom-events-metrics.md#properties) TrackEvent vagy trackPageView például egy másik nyomkövetési hívás.
+A metrika használata által jelentett ugyanaz a szabály használható a [mérési paraméter](../azure-monitor/app/api-custom-events-metrics.md#properties) TrackEvent vagy trackPageView például egy másik nyomkövetési hívás.
 
 ## <a name="metric-names"></a>Metrika neve
 | Metrika neve | Képernyő nevét | Leírás |
@@ -120,16 +120,16 @@ A metrika használata által jelentett ugyanaz a szabály használható a [mér�
 | `request.rate` |Kérelmek száma |Az alkalmazás másodpercenként küldött összes kérelem száma. |
 | `requestFailed.count` |Sikertelen kérelmek |HTTP-kérelmek száma, amelyek válaszkódot eredményezett > = 400 |
 | `view.count` |Lapmegtekintések |Egy weblap kéréseinek száma. Szintetikus forgalom ki van szűrve. |
-| {az egyéni metrika neve} |{A metrika neve} |A metrikaérték által jelentett [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) vagy a [követési hívás mérések paraméterében](app-insights-api-custom-events-metrics.md#properties). |
+| {az egyéni metrika neve} |{A metrika neve} |A metrikaérték által jelentett [TrackMetric](../azure-monitor/app/api-custom-events-metrics.md#trackmetric) vagy a [követési hívás mérések paraméterében](../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
 A metrikák különféle telemetriai modulok által küldött:
 
 | Metrika csoport | Adatgyűjtő modulja |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>megtekintés |[Böngésző JavaScript](app-insights-javascript.md) |
-| performanceCounter |[Teljesítmény](app-insights-configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Függőség](app-insights-configuration-with-applicationinsights-config.md) |
-| kérelem,<br/>requestFailed |[Kiszolgálói kérelem](app-insights-configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>megtekintés |[Böngésző JavaScript](../azure-monitor/app/javascript.md) |
+| performanceCounter |[Teljesítmény](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Függőség](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| kérelem,<br/>requestFailed |[Kiszolgálói kérelem](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhookok
 Is [automatizálható a riasztás](../azure-monitor/platform/alerts-webhooks.md). Riasztást hoz létre az Azure egy webcímet tetszőleges fogja hívni.

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313972"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973553"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -278,6 +278,14 @@ Ahhoz, hogy a gép replikációját, a kiépítési állapotot kell **sikeres**.
 
 Nyissa meg a "Szolgáltatások" konzolt, és győződjön meg, hogy a "COM + System Application" és "Kötet árnyékmásolata" nincsenek megadva "Letiltva" "Indítási típus".
   ![COM-hiba](./media/azure-to-azure-troubleshoot-errors/com-error.png)
+
+## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nem támogatott felügyelt lemez mérete (hibakód: 150172)
+
+
+**Hibakód:** | **Lehetséges okok** | **Javaslatok**
+--- | --- | ---
+150172<br></br>**Üzenet**: Nem sikerült engedélyezni a védelmet, az a virtuális gép, mert (DiskName) méretű (DiskSize), amely kisebb, mint a minimális támogatott mérete 10 GB-ot. | – A lemez kisebb, mint 1024 MB-os támogatott méretet| Győződjön meg arról, hogy a lemezméretek a támogatott tartományon belül, és próbálja megismételni a műveletet. 
+
 
 ## <a name="next-steps"></a>További lépések
 [Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)

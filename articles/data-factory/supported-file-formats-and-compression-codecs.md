@@ -9,24 +9,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3498deb85b84c9c47544be1d8c3709c9fc78ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100253"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974363"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
-*Ez a témakör az alábbi csatlakozók vonatkozik: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Az azure File Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), és [SFTP](connector-sftp.md).*
+*Ez a témakör az alábbi csatlakozók vonatkozik: [Az Amazon S3](connector-amazon-simple-storage-service.md), [az Azure Blob](connector-azure-blob-storage.md), [az Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [az Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [az Azure File Storage](connector-azure-file-storage.md), [Fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), és [SFTP](connector-sftp.md).*
 
 Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. Ha azt szeretné, hogy **elemezni, vagy hozzon létre egy adott formátumú fájlok**, az Azure Data Factory formátuma a következő fájltípusokat támogatja:
 
 * [Szöveges formátum](#text-format)
 * [JSON-formátumban](#json-format)
-* [Az Avro formátum](#avro-format)
-* [ORC formátum](#orc-format)
 * [Parquet formátum](#parquet-format)
+* [ORC formátum](#orc-format)
+* [Az Avro formátum](#avro-format)
 
 > [!TIP]
 > Ismerje meg, hogyan képezi le a másolási tevékenység a forrásadatokat a fogadó [séma hozzárendelése a másolási tevékenység](copy-activity-schema-and-type-mapping.md), beleértve a hogyan a metaadatokat meghatározott a fájlformátum beállításai alapján, és arról, hogy adja meg, mikor tippek a [adatkészlet `structure` ](concepts-datasets-linked-services.md#dataset-structure) szakaszban.
@@ -39,7 +39,7 @@ Ha szeretne egy szövegfájlba olvasni vagy írni egy szövegfájlba, állítsa 
 | --- | --- | --- | --- |
 | columnDelimiter |A fájlokban az oszlopok elválasztására használt karakter. Érdemes lehet nem létezik az adatokat a ritka nem nyomtatható karaktert használhatja. Adja meg például a "\u0001", indítsa el a fejléc (SOH) jelölő. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték a **vessző (,)**. <br/><br/>Egy Unicode karakterek használatához tekintse meg [Unicode-karaktereket](https://en.wikipedia.org/wiki/List_of_Unicode_characters) lekérése, a megfelelő kódot. |Nem |
 | rowDelimiter |A fájlokban a sorok elválasztására használt karakter. |Csak egy karakter használata engedélyezett. Az **alapértelmezett** érték olvasáskor a következő értékek bármelyike: **[„\r\n”, „\r”, „\n”]**, illetve **„\r\n”** írás esetén. |Nem |
-| escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: „Helló, világ”), megadhatja a „$” karakter feloldójelként, és a „Helló$, világ” sztringet használhatja a forrásban. |Nem |
+| escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Példa: vessző (', ') az oszlophatároló, de szeretné a vessző karakter a szövegben (például: "Helló, világ"), adja meg a "$" feloldójelként, és karakterlánc használata "Helló$, világ" a forrás. |Nem |
 | quoteChar |Egy sztringérték idézéséhez használt karakter. Ekkor az idézőjel-karakterek közötti oszlop- és sorhatárolókat a rendszer a sztringérték részeként kezeli. Ez a tulajdonság a bemeneti és a kimeneti adatkészleteken is alkalmazható.<br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: &lt;Helló, világ&gt;), megadhatja a " (angol dupla idézőjel) értéket idézőjel-karakterként, és a "Helló$, világ" sztringet használhatja a forrásban. |Nem |
 | nullValue |A null értéket jelölő egy vagy több karakter. |Egy vagy több karakter. Az **alapértelmezett** értékek az **„\N” és „NULL”** olvasás, illetve **„\N”** írás esetén. |Nem |
 | encodingName |A kódolási név megadására szolgál. |Egy érvényes kódolási név. Lásd az [Encoding.EncodingName tulajdonságot](https://msdn.microsoft.com/library/system.text.encoding.aspx). Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |Nem |
@@ -78,7 +78,7 @@ A következő JSON-definíciót egy adatkészletet, az egyes nem kötelező tula
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>A firstRowAsHeader és a skipLineCount használatára vonatkozó forgatókönyvek
 
-* Egy nem fájlalapú forrásból másol egy szöveges fájlba, és szeretne hozzáadni egy fejlécsort, amely tartalmazza a séma (például SQL-séma) metaadatait. Ebben a forgatókönyvben adja meg a `firstRowAsHeader` értékét igazként a kimeneti adatkészletben.
+* Egy nem fájlalapú forrásból másol egy szövegfájlba, és szeretne hozzáadni egy fejlécsort, amely tartalmazza a séma-metaadatok (például: SQL-séma). Ebben a forgatókönyvben adja meg a `firstRowAsHeader` értékét igazként a kimeneti adatkészletben.
 * Egy fejlécsort tartalmazó szöveges fájlból másol egy nem fájlalapú fogadóba, és el szeretné hagyni azt a sort. Adja meg a `firstRowAsHeader` értékét igazként a bemeneti adatkészletben.
 * Egy szöveges fájlból másol, és szeretne kihagyni néhány sort az elejéről, amelyek nem tartalmaznak adatokat vagy fejléc-információkat. Adja meg a `skipLineCount` értékét a kihagyni kívánt sorok számának jelzéséhez. Ha a fájl hátralévő része fejlécsort tartalmaz, a `firstRowAsHeader` is megadható. Ha a `skipLineCount` és a `firstRowAsHeader` is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból
 
@@ -91,9 +91,9 @@ Ha meg szeretné elemezni a JSON-fájlok vagy JSON formátumban szeretne adatoka
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
-| jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON-fájlokból másol adatokat. | Nem |
-| jsonPathDefinition | Megadja az egyes oszlopmegfeleltetések JSON-útvonalának kifejezését testre szabott oszlopnevekkel (kezdje kisbetűvel). Ez a tulajdonság csak akkor támogatott, ha JSON-fájlokból másol adatokat, és ki tud nyerni adatokat objektumokból vagy tömbökből. <br/><br/> A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `jsonNodeReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt. | Nem |
-| encodingName |A kódolási név megadására szolgál. Az érvényes kódolási nevekkel kapcsolatban lásd az [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonságot. Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |Nem |
+| jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor, ha másol adatokat támogatott **a** JSON-fájlokat. | Nem |
+| jsonPathDefinition | Megadja az egyes oszlopmegfeleltetések JSON-útvonalának kifejezését testre szabott oszlopnevekkel (kezdje kisbetűvel). Ez a tulajdonság csak akkor, ha másol adatokat támogatott **a** JSON-fájlokat, és tud nyerni adatokat objektumokból vagy tömbökből. <br/><br/> A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `jsonNodeReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt. | Nem |
+| encodingName |A kódolási név megadására szolgál. Érvényes kódolási nevekkel listájáért lásd: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonság. Például: windows-1250 vagy shift_jis. A **alapértelmezett** érték: **AZ UTF-8**. |Nem |
 | nestingSeparator |A beágyazási szinteket elválasztó karakter. Az alapértelmezett érték a „.” (pont). |Nem |
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták
@@ -189,9 +189,7 @@ Másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
 
 ### <a name="jsonformat-example"></a>A JsonFormat használatát bemutató példa
 
-**1. eset: Adatok másolása JSON-fájlokból**
-
-Tekintse meg a következő két mintát, ha JSON-fájlokból másol adatokat. Vegye figyelembe veendő általános pontokat:
+**1. eset: Az adatok másolása JSON-fájlok**
 
 **1. példa: adatok kigyűjtése objektumból és tömbből**
 
@@ -405,67 +403,6 @@ A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghat�
 }
 ```
 
-## <a name="avro-format"></a>Az AVRO formátum
-
-Ha elemezni szeretné a Avro-fájlokat, vagy Avro formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **AvroFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
-
-```json
-"format":
-{
-    "type": "AvroFormat",
-}
-```
-
-Az Avro formátum Hive-táblákban való használatával kapcsolatban lásd az [Apache Hive oktatóanyagát](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
-
-Vegye figyelembe a következő szempontokat:
-
-* [Összetett adattípusok](http://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, leképezések, egyesítések, és rögzített típusok).
-
-## <a name="orc-format"></a>ORC formátum
-
-Ha elemezni szeretné a ORC-fájlokat, vagy ORC formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **OrcFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
-
-```json
-"format":
-{
-    "type": "OrcFormat"
-}
-```
-
-> [!IMPORTANT]
-> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
-Vegye figyelembe a következő szempontokat:
-
-* Az összetett adattípusok nem támogatottak (STRUCT, MAP, LIST, UNION)
-* Az ORC-fájlok három, [tömörítéshez kapcsolódó beállítással](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) rendelkeznek: NONE, ZLIB, SNAPPY. A Data Factory a három tömörített formátum bármelyikében lévő ORC-fájlokból támogatja az adatok olvasását. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. Az ORC-fájlokba való írás esetén azonban a Data Factory a ZLIB tömörítést választja, amely az alapértelmezett az ORC-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
-
-### <a name="data-type-mapping-for-orc-files"></a>Adattípus-leképezés ORC-fájlokat
-
-| Data factory közbenső adattípus | ORC-típusok |
-|:--- |:--- |
-| Logikai | Logikai |
-| SByte | Bájt |
-| Bájt | Rövid |
-| Int16 | Rövid |
-| UInt16 | Int |
-| Int32 | Int |
-| UInt32 | Hosszú |
-| Int64 | Hosszú |
-| UInt64 | Karakterlánc |
-| Önálló | Lebegőpontos |
-| Dupla | Dupla |
-| tizedes tört | tizedes tört |
-| Karakterlánc | Karakterlánc |
-| DateTime | Időbélyeg |
-| DateTimeOffset | Időbélyeg |
-| Időtartam | Időbélyeg |
-| ByteArray | Bináris |
-| GUID | Karakterlánc |
-| CHAR | Char(1) |
-
 ## <a name="parquet-format"></a>Parquet formátum
 
 Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **ParquetFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
@@ -483,8 +420,9 @@ Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne ad
 
 Vegye figyelembe a következő szempontokat:
 
-* Az összetett adattípusok nem támogatottak (MAP, LIST)
-* A Parquet-fájlok a következő tömörítéshez kapcsolódó beállításokat használják: NONE, SNAPPY, GZIP és LZO. A Data Factory támogatja ezeket tömörített formátum bármelyikében a Parquet-fájlokba történő olvasáskor. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. A Parquet-fájlokba való írás esetén azonban a Data Factory a SNAPPY tömörítést választja, amely az alapértelmezett a Parquet-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
+* Összetett adattípusok nem támogatottak (MAP, LIST).
+* Az oszlop neve szóközt nem támogatott.
+* Parquet-fájlok a következő tömörítéshez kapcsolódó beállítással rendelkezik: NONE, SNAPPY, GZIP és LZO. Data Factory támogatja az ezek egyikét sem a Parquet-fájlok adatait kivéve LZO formátumok tömörített - tömörítési kodeket használ az adatok olvasásához a metaadatok olvasása. A Parquet-fájlokba való írás esetén azonban a Data Factory a SNAPPY tömörítést választja, amely az alapértelmezett a Parquet-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Adattípus-leképezés Parquet-fájlokat
 
@@ -510,6 +448,68 @@ Vegye figyelembe a következő szempontokat:
 | GUID | Bináris | Utf8 | Utf8 |
 | CHAR | Bináris | Utf8 | Utf8 |
 | CharArray | Nem támogatott | – | – |
+
+## <a name="orc-format"></a>ORC formátum
+
+Ha elemezni szeretné a ORC-fájlokat, vagy ORC formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **OrcFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
+
+```json
+"format":
+{
+    "type": "OrcFormat"
+}
+```
+
+> [!IMPORTANT]
+> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](https://go.microsoft.com/fwlink/?LinkId=808605).
+>
+
+Vegye figyelembe a következő szempontokat:
+
+* Összetett adattípusok nem támogatottak (STRUCT, MAP, LIST, UNION).
+* Az oszlop neve szóközt nem támogatott.
+* ORC fájl rendelkezik három [tömörítéshez kapcsolódó beállítással](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. A Data Factory a három tömörített formátum bármelyikében lévő ORC-fájlokból támogatja az adatok olvasását. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. Az ORC-fájlokba való írás esetén azonban a Data Factory a ZLIB tömörítést választja, amely az alapértelmezett az ORC-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
+
+### <a name="data-type-mapping-for-orc-files"></a>Adattípus-leképezés ORC-fájlokat
+
+| Data factory közbenső adattípus | ORC-típusok |
+|:--- |:--- |
+| Logikai | Logikai |
+| SByte | Bájt |
+| Bájt | Rövid |
+| Int16 | Rövid |
+| UInt16 | Int |
+| Int32 | Int |
+| UInt32 | Hosszú |
+| Int64 | Hosszú |
+| UInt64 | Karakterlánc |
+| Önálló | Lebegőpontos |
+| Dupla | Dupla |
+| tizedes tört | tizedes tört |
+| Karakterlánc | Karakterlánc |
+| DateTime | Időbélyeg |
+| DateTimeOffset | Időbélyeg |
+| Időtartam | Időbélyeg |
+| ByteArray | Bináris |
+| GUID | Karakterlánc |
+| CHAR | Char(1) |
+
+## <a name="avro-format"></a>Az AVRO formátum
+
+Ha elemezni szeretné a Avro-fájlokat, vagy Avro formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **AvroFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
+
+```json
+"format":
+{
+    "type": "AvroFormat",
+}
+```
+
+Az Avro formátum Hive-táblákban való használatával kapcsolatban lásd az [Apache Hive oktatóanyagát](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
+
+Vegye figyelembe a következő szempontokat:
+
+* [Összetett adattípusok](http://avro.apache.org/docs/current/spec.html#schema_complex) nem támogatottak (rekordok, enumerálások, tömbök, leképezések, egyesítések, és rögzített típusok).
 
 ## <a name="compression-support"></a>A tömörítés támogatása
 
@@ -551,8 +551,8 @@ A **tömörítési** szakaszban két tulajdonságokkal rendelkezik:
 * **Típus:** tömörítési kodeket, amely lehet **GZIP**, **Deflate**, **BZIP2**, vagy **ZipDeflate**.
 * **Szint:** a tömörítési arány, amely lehet **Optimal** vagy **leggyorsabb**.
 
-  * **Leggyorsabb:** a tömörítés művelet még akkor is, ha az eredményül kapott fájl nem optimális tömöríti a lehető leggyorsabban be kell.
-  * **Optimális**: A tömörítés művelet optimális, hogy tömöríteni kell, akkor is, ha a művelet végrehajtásához hosszabb ideig tart.
+  * **Leggyorsabb:** A tömörítés kell művelet minél gyorsabban, még akkor is, ha az eredményül kapott fájl nem optimális tömöríti.
+  * **Optimális**: A tömörítés művelet optimálisan tömöríteni kell, akkor is, ha a művelet végrehajtásához hosszabb ideig tart.
 
     További információkért lásd: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör.
 

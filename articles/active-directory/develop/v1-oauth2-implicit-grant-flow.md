@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 818801a7f36e82d0065f85b5cf9e36288ccbff32
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422031"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970390"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Az Azure Active Directory (AD) OAuth2 típusú implicit engedélyezés folyamat ismertetése
 
@@ -57,11 +57,11 @@ Az implicit engedélyezési folyamat frissítési biztonsági jogkivonat, főleg
 
 Azonban egy JavaScript-alkalmazását egy másik mechanizmussal rendelkezik a rendelkezésére a hozzáférési jogkivonatok megújítása ismételten a hitelesítő adatokat a felhasználó értesítése nélkül. Az alkalmazás egy rejtett IFRAME-keret segítségével végezhet el az új jogkivonat-kérelmeket az engedélyezési végponton, az Azure AD: mindaddig, amíg a böngésző még aktív munkamenet (olvasása: rendelkezik egy munkamenetcookie-t) ellen az Azure AD-tartományhoz, a hitelesítési kérelmet is sikeresen nem kell a felhasználói beavatkozás nélkül történik.
 
-Ezt a modellt biztosít a JavaScript-alkalmazás lehetővé teszi az egymástól függetlenül újítsa meg a jogkivonatot, és még beszerezni az újakat új API-hoz (feltéve, hogy a felhasználó korábban által jóváhagyott, számukra. Ezzel elkerülhető a hozzáadott nehezedő terheket, beszerzése, fenntartása és a egy nagy értékű összetevő, például a frissítési jogkivonatok védelme. Összetevő, amely lehetővé teszi a beavatkozás nélküli megújításához, az Azure ad-ben munkamenetcookie-t, az alkalmazás-en kívül kezeli. Ez a megközelítés egy másik előnye, a felhasználó is jelentkezzen ki az Azure AD használata az alkalmazások Azure AD-ben futó bármelyik böngésző lapon be van jelentkezve. Ez az Azure ad-ben munkameneti cookie törlését eredményezi, és a JavaScript-alkalmazás automatikusan megszűnik újítsa meg az aláírt meg felhasználó tokenek lehetővé teszi.
+Ezt a modellt biztosít a JavaScript-alkalmazását lehetővé teszi az egymástól függetlenül újítsa meg a jogkivonatot, és még beszerezni az újakat új API-hoz (feltéve, hogy a felhasználó korábban által jóváhagyott, számukra). Ezzel elkerülhető a hozzáadott nehezedő terheket, beszerzése, fenntartása és a egy nagy értékű összetevő, például a frissítési jogkivonatok védelme. Összetevő, amely lehetővé teszi a beavatkozás nélküli megújításához, az Azure ad-ben munkamenetcookie-t, az alkalmazás-en kívül kezeli. Ez a megközelítés egy másik előnye, a felhasználó is jelentkezzen ki az Azure AD használata az alkalmazások Azure AD-ben futó bármelyik böngésző lapon be van jelentkezve. Ez az Azure ad-ben munkameneti cookie törlését eredményezi, és a JavaScript-alkalmazás automatikusan megszűnik újítsa meg az aláírt meg felhasználó tokenek lehetővé teszi.
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Ideális választás az implicit engedélyezés az alkalmazásomhoz?
 
-Az implicit engedélyezés mutat be, mint a többi biztosít további kockázatok, és a kell odafigyelni területeken is szerepelnek. Ha például [való visszaélés a hozzáférési tokent az erőforrás tulajdonosa megszemélyesíteni az Implicit folyamat] [ OAuth2-Spec-Implicit-Misuse] és [OAuth 2.0-s fenyegetések modellezése és biztonsági megfontolások] [ OAuth2-Threat-Model-And-Security-Implications]). Azonban a magasabb kockázatú profil, nagymértékben oka, hogy az azt jelenti, hogy lehetővé teszik az alkalmazások, amelyek aktív programkód kiszolgálása az internetszolgáltatójuk által távoli erőforráshoz böngészőbe. Ha tervezi az SPA-architektúra nem háttér-összetevők vagy szándékoznak JavaScripttel egy webes API meghívása, a token beszerzéséhez az implicit folyamat használata ajánlott.
+Az implicit engedélyezés mutat be, mint a többi biztosít további kockázatok és a kell odafigyelni területeken is szerepelnek (például [való visszaélés a hozzáférési tokent az erőforrás tulajdonosa megszemélyesíteni az Implicit folyamat] [ OAuth2-Spec-Implicit-Misuse]és [OAuth 2.0-s fenyegetések modellezése és biztonsági megfontolások][OAuth2-Threat-Model-And-Security-Implications]). Azonban a magasabb kockázatú profil, nagymértékben oka, hogy az azt jelenti, hogy lehetővé teszik az alkalmazások, amelyek aktív programkód kiszolgálása az internetszolgáltatójuk által távoli erőforráshoz böngészőbe. Ha tervezi az SPA-architektúra nem háttér-összetevők vagy szándékoznak JavaScripttel egy webes API meghívása, a token beszerzéséhez az implicit folyamat használata ajánlott.
 
 Ha az alkalmazás egy natív ügyfél, az implicit folyamatot nem kiválóan alkalmas. Az Azure ad-ben munkamenetcookie-t egy natív ügyfél környezetében hiányában megfosztja, hosszú élettartamú munkamenetek fenntartását azt jelenti, hogy az alkalmazás. Ami azt jelenti, hogy az alkalmazás ismételten a felhasználóktól az új erőforrások hozzáférési tokenek beszerzése során.
 

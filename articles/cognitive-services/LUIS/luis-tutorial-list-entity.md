@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259239"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727182"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Egy lista entitás használatával növelheti az entitás észlelése 
 Ez az oktatóanyag bemutatja, hogy egy [entitás listában](luis-concept-entity-types.md) entitás észlelési növelése érdekében. Lista entitások nem kell címkével ellátott, mivel ezek a feltételek pontosan egyeznie kell.  
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ebben az oktatóanyagban kódja megtalálható a [LUIS-minták GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity). 
+Ebben az oktatóanyagban kódja megtalálható a [Azure-minták GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation alkalmazás használata
 Meghatározhatja az eszközök, például lámpa, szórakoztató rendszerek és a környezet azt szabályozza, például fűtés és hűtéssel HomeAutomation alkalmazás lehetőséget biztosít. Ezek a rendszerek rendelkeznie több különböző gyártó neveket, beceneveinek, Betűszavak és szleng kifejezéseket is tartalmazhat. 

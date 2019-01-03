@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1a053f92433b6091f0d77439399e8419a58df185
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 028d00f579e266c92b4a6d00d5ebb5b0ef7b1b60
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495143"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787543"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>HDInsight az Apache Hadoop-fürtök létrehozása Resource Manager-sablonok használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -31,8 +31,8 @@ A cikkben található útmutatások követéséhez lesz szüksége:
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 A Resource Manager-sablon megkönnyíti a következő resoruces az alkalmazás létrehozása az egyetlen, koordinált műveletben:
-* HDInsight-fürtök és a tőle függő erőforrások (például az alapértelmezett tárfiók)
-* Egyéb erőforrások (például az Azure SQL Database használatához [Apache Sqoop](http://sqoop.apache.org/))
+* HDInsight-fürtök és a tőle függő erőforrások (például az alapértelmezett tárfiók).
+* Egyéb erőforrások (például az Azure SQL Database használatához [Apache Sqoop](https://sqoop.apache.org/)).
 
 A sablon az erőforrásokat, amelyek szükségesek az alkalmazás határoz meg. Is adja meg az üzembe helyezéshez megadott paraméterek beviteli különböző környezetekhez tartozó értékeket. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll.
 
@@ -47,8 +47,8 @@ Resource Manager-sablonokkal kapcsolatos további információkért lásd a köv
 
 Resource Manager lehetővé teszi, hogy a Resource Manager-sablonok exportálása létező erőforrásokból, különböző eszközök használatával az előfizetésében. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
 
-- Az Azure portal: lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](../azure-resource-manager/resource-manager-export-template.md).
-- Az Azure PowerShell: Lásd: [exportálása az Azure Resource Manager-sablonok a PowerShell-lel](../azure-resource-manager/resource-manager-export-template-powershell.md).
+- Az Azure Portalon: Lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](../azure-resource-manager/resource-manager-export-template.md).
+- Azure PowerShell: Lásd: [exportálása az Azure Resource Manager-sablonok a PowerShell-lel](../azure-resource-manager/resource-manager-export-template-powershell.md).
 - Az Azure klasszikus parancssori felület: Lásd: [exportálása az Azure Resource Manager-sablonok az Azure klasszikus parancssori felület](../azure-resource-manager/resource-manager-export-template-cli.md).
 
 
@@ -74,14 +74,14 @@ Megismerkedhet a Visual studióval való erőforráscsoportok, lásd: [létrehoz
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben, hogyan hozhat létre HDInsight-fürtöt többféleképpen. További tudnivalókért tekintse meg a következő cikkeket:
 
 * További HDInsight kapcsolódó sablonok lásd [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * Az üzembe helyezni erőforrásokat, a .NET ügyféloldali kódtár használatával egy példa: [használatával a .NET-kódtárakkal és sablonokkal helyezheti üzembe az erőforrásokat](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Részletes példa egy alkalmazás központi telepítése, lásd: [rendelkezést kiszámítható módon az Azure mikroszolgáltatások üzembe helyezéséhez és](../app-service/app-service-deploy-complex-application-predictably.md).
+* Részletes példa egy alkalmazás központi telepítése, lásd: [rendelkezést kiszámítható módon az Azure mikroszolgáltatások üzembe helyezéséhez és](../app-service/deploy-complex-application-predictably.md).
 * Útmutató a megoldások különböző környezetekben történő telepítéséhez: [Fejlesztési és tesztelési környezetek a Microsoft Azure eszközben](../solution-dev-test-environments.md).
 * Az Azure Resource Manager-sablon szakaszok kapcsolatos további információkért lásd: [sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md).
 * Az Azure Resource Manager-sablon használható függvények listáját lásd: [sablonfüggvények](../azure-resource-manager/resource-group-template-functions.md).

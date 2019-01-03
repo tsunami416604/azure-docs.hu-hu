@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: d0180a32f2a4258cb728869e2cb9f2abd57cc545
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06430bf476c2e9f3af2102272fb54d201a3f1066
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845960"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790809"
 ---
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>A mobilitási szolgáltatás manuális telepítése a VMware virtuális gépek és fizikai kiszolgálókon
 
@@ -91,7 +91,7 @@ Használat | UnifiedAgent.exe/Role < MS|Fő Célkiszolgáló > /InstallLocation 
 Telepítési naplók | A % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 / Role | Kötelező telepítés paraméter. Meghatározza, hogy a mobilitási szolgáltatás (MS) vagy a fő célkiszolgálót (MT) kell telepíteni.
 /InstallLocation| Nem kötelező paraméter. Itt adhatja meg a mobilitási szolgáltatás telepítési helyét (bármely mappa).
-És platformok | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** Mware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
+És platformok | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** VMware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
 / Csendes| Választható. Megadja, hogy a telepítő futtatásához csendes módban.
 
 #### <a name="registration-settings"></a>Regisztrációs beállítások
@@ -129,7 +129,7 @@ Az ügynök konfigurációs naplók | A % ProgramData%\ASRSetupLogs\ASRUnifiedAg
 Használat | . / install -d <Install Location> - r < MS|Fő Célkiszolgáló > - v VmWare - q
 -r | Kötelező telepítés paraméter. Meghatározza, hogy a mobilitási szolgáltatás (MS) vagy a fő célkiszolgálót (MT) kell telepíteni.
 -d | Nem kötelező paraméter. Adja meg a mobilitási szolgáltatás telepítésének helye: /usr/local/ASR.
--v | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** Mware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
+-v | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** VMware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
 -q | Választható. Megadja, hogy a telepítő futtatásához csendes módban.
 
 #### <a name="registration-settings"></a>Regisztrációs beállítások

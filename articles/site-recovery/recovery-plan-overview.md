@@ -3,16 +3,17 @@ title: A vészhelyreállítás az Azure Site Recovery helyreállítási tervek h
 description: Ismerje meg a helyreállítási tervek használatával vész-helyreállítási az Azure Site Recovery szolgáltatással.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cb68b71eece998fa72fccc00de45f81e6d2d778c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848391"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975661"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -60,11 +61,11 @@ A Testreszabás érvényben, az itt ez történik, ha feladatátvételt végez a
 
 Helyreállítás nagy méretű alkalmazások összetett feladat lehet. Manuális lépések győződjön meg arról, a folyamat gyakran fordul elő hiba, és a feladatátvétel futtatása a személy nem is tud minden alkalmazás-jainak részleteivel kellene. A helyreállítási terv használatával írnak elő a sorrend, és automatizálhatja az egyes lépéseknél szükséges műveleteket a Azure-ban, vagy parancsfájlok feladatátvétel az Azure Automation-runbookok használatával. Nem lehet automatizálni feladatokhoz manuális műveleteket szünet beszúrhat helyreállítási tervekbe. Van néhány különböző típusú feladatok konfigurálhatja:
 
-* **Az Azure virtuális gépen a feladatátvételt követően a feladatok**: az Azure-ban használt feladatátvétele, amikor általában kell, hogy a virtuális gép a feladatátvételt követően csatlakozhatnak a műveletek végrehajtásához. Példa: 
+* **Az Azure virtuális gépen a feladatátvételt követően a feladatok**: Az Azure-ban használt feladatátvétele, amikor általában kell, hogy a virtuális gép a feladatátvételt követően csatlakozhatnak a műveletek végrehajtásához. Példa: 
     * Hozzon létre egy nyilvános IP-címet az Azure virtuális gépen.
     * A hálózati biztonsági csoport hozzárendelése az Azure virtuális gép hálózati adapteréhez.
     * Terheléselosztó hozzáadása egy rendelkezésre állási csoporthoz.
-* **A feladatátvételt követően a virtuális Gépen belül feladatok**: ezek a feladatok általában konfigurálja újra az alkalmazást a gépen futó, hogy a hiba továbbra is megfelelően működjenek az új környezetben. Példa:
+* **A feladatátvételt követően a virtuális Gépen belül feladatok**: Ezeket a feladatokat jellemzően az alkalmazás fut a gépen, konfigurálja újra a, hogy a hiba továbbra is megfelelően működjenek az új környezetben. Példa:
     * Módosítsa az adatbázis-kapcsolati karakterláncot a gépen.
     * A webalkalmazás-kiszolgáló konfigurációját vagy a szabályok módosítása
 

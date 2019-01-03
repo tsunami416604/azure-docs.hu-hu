@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: b667cfad6eb2a2a13e4b84dacaad0bcd3dfa91b9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017133"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794498"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Bevezetés a HDInsight egy Apache HBase-példájába
 
-Ismerje meg, hogyan hozhat létre egy [Apache HBase](http://hbase.apache.org/) HDInsight-fürt, hozzon létre HBase-táblákat és lekérdezéstáblákat [Apache Hive](https://hive.apache.org/).  A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview][hdinsight-hbase-overview] (A HDInsight HBase áttekintése).
+Ismerje meg, hogyan hozhat létre egy [Apache HBase](https://hbase.apache.org/) HDInsight-fürt, hozzon létre HBase-táblákat és lekérdezéstáblákat [Apache Hive](https://hive.apache.org/).  A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview][hdinsight-hbase-overview] (A HDInsight HBase áttekintése).
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -31,32 +31,32 @@ Az alábbi HBase-példa kipróbálásához a következőkkel kell rendelkeznie:
 * [curl](https://curl.haxx.se/download.html).
 
 ## <a name="create-apache-hbase-cluster"></a>Az Apache HBase-fürt létrehozása
-Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt és a függő Azure Storage-fiók létrehozására. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban). A 2. generációs Data Lake Storage használatáról [a fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt.
+Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt és a függő Azure Storage-fiók létrehozására. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban). A Data Lake Storage Gen2 használatával további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) között található.
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Az **Egyéni üzembe helyezés** panelen adja meg a következő értékeket:
    
-   * **Előfizetés**: Válassza ki a fürt létrehozásához használt Azure-előfizetést.
-   * **Erőforráscsoport**: hozzon létre egy Azure-erőforrás felügyeleti csoportot, vagy használjon egy meglévőt.
-   * **Location** (Hely): Adja meg az erőforráscsoport helyét. 
-   * **Fürt neve**: Adjon nevet a HBase-fürtnek.
-   * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
-   * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni.
+   * **Előfizetés**: Válassza ki az Azure-előfizetés, amely a fürt létrehozására szolgál.
+   * **Erőforráscsoport**: Hozzon létre egy Azure-erőforrás felügyeleti csoportot, vagy használjon egy meglévőt.
+   * **Hely**: Adja meg az erőforráscsoport helyét. 
+   * **ClusterName**: Adjon meg egy nevet a HBase-fürt.
+   * **Fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
+   * **SSH-felhasználónevet és jelszót**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni.
      
      Más paraméterek opcionálisak.  
      
      Minden egyes fürt az Azure Storage-fióktól függ. A fürtök törlése után az adatok megmaradnak a tárfiókban. A fürt alapértelmezett tárfiókneve a fürt neve a „store” kifejezéssel kiegészítve. A név szoftveresen kötött a sablonváltozók szakaszban.
 3. Válassza az **I agree to the terms and conditions stated above** (Elfogadom a fenti feltételeket) lehetőséget majd kattintson a **Purchase** (Vásárlás) gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
-> [!NOTE]
+> [!NOTE]  
 > A HBase-fürtök törlése után egy másik HBase-fürtöt hozhat létre ugyanazon alapértelmezett blobtárolóval. Az új fürt felveszi az eredeti fürtben létrehozott HBase-táblákat. Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
 > 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Táblák létrehozása és adatok beszúrása
-Ön SSH-val HBase-fürtökhöz csatlakozhat, és ezután [Apache HBase rendszerhéj](http://hbase.apache.org/0.94/book/shell.html) hozhat létre HBase-táblákat, helyezze be az adatokat, és adatokat kérdezhet le. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Ön SSH-val HBase-fürtökhöz csatlakozhat, és ezután [Apache HBase rendszerhéj](https://hbase.apache.org/0.94/book/shell.html) hozhat létre HBase-táblákat, helyezze be az adatokat, és adatokat kérdezhet le. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A legtöbbek számára az adatok táblázatos formátumban jelennek meg:
 
@@ -109,7 +109,7 @@ A HBase (megvalósítását [felhőalapú BigTable](https://cloud.google.com/big
 
 **Adatok kötegelt betöltése a névjegyek HBase-táblába**
 
-A HBase több módszert tartalmaz az adatok táblába töltéséhez.  További információ: [Bulk loading](http://hbase.apache.org/book.html#arch.bulk.load) (Kötegelt betöltés).
+A HBase több módszert tartalmaz az adatok táblába töltéséhez.  További információ: [Bulk loading](https://hbase.apache.org/book.html#arch.bulk.load) (Kötegelt betöltés).
 
 Egy minta adatfájl található a következő nyilvános blobtárolóban található: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Az adatfájl tartalma a következő:
 
@@ -126,9 +126,8 @@ Egy minta adatfájl található a következő nyilvános blobtárolóban találh
 
 Igény szerint létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjába. Az utasításokért lásd: [Upload data for HDInsight az Apache Hadoop-feladatok][hdinsight-upload-data].
 
-> [!NOTE]
+> [!NOTE]  
 > Ez az eljárás az utolsó eljárás során létrehozott Contacts HBase táblát használja.
-> 
 
 1. Az SSH-ból futtassa az alábbi parancsot, hogy az adatfájlt StoreFiles-fájllá alakítsa, és a Dimporttsv.bulk.output által meghatározott relatív elérési úton tárolja.  Ha a HBase rendszerhéjban van, a kilépés paranccsal lépjen ki.
 
@@ -208,8 +207,8 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
    
     A -d kapcsolóban megadott értékeket a base64 használatával kell kódolnia. A példában:
    
-   * MTAwMA==: 1000
-   * UGVyc29uYWw6TmFtZQ==: Personal:Name
+   * MTAwMA ==: 1000
+   * UGVyc29uYWw6TmFtZQ ==: Személyes: név
    * Sm9obiBEb2xl: John Dole
      
      A [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) lehetővé teszi több (kötegelt) érték beszúrását.
@@ -224,7 +223,7 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
 
 További információ a HBase REST-ről: [Apache HBase Reference Guide](https://hbase.apache.org/book.html#_rest) (Apache HBase referencia-útmutató).
 
-> [!NOTE]
+> [!NOTE]  
 > A HBase nem támogatja a Thriftet a HDInsightban.
 >
 > Amikor a Curl vagy más REST kommunikációt használ a WebHCattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája felhasználónevének és jelszavának megadásával. A fürtnevet a kérések a kiszolgálóhoz küldéséhez használt egységes erőforrás-azonosító (URI) részeként is használnia kell.
@@ -265,21 +264,21 @@ Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, Apache HBase-fürt létrehozása és a táblák létrehozásához és az adatok megtekintése az adott táblák a HBase rendszerhéjból. Azt is megtanulta, hogyan használhat Hive-lekérdezést a HBase-táblákban lévő adatokon, és hogyan használhatja a HBase C# REST API-kat egy HBase-tábla létrehozásához és adatok lekérdezéséhez a táblából.
 
 További tudnivalókért lásd:
 
-* [HDInsight HBase overview][hdinsight-hbase-overview]: az Apache HBase egy Apache, nyílt forráskódú nosql-alapú adatbázis az Apache hadoop, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatot .
+* [HDInsight HBase overview][hdinsight-hbase-overview]: Az Apache HBase egy Apache, nyílt forráskódú nosql-alapú adatbázis az Apache hadoop, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatot.
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
-[hbase-reference]: http://hbase.apache.org/book.html#importtsv
+[hbase-reference]: https://hbase.apache.org/book.html#importtsv
 [hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf
-[hbase-quick-start]: http://hbase.apache.org/book.html#quickstart
+[hbase-quick-start]: https://hbase.apache.org/book.html#quickstart
 
 
 

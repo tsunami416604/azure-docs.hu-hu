@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 5bea4c655e9a8970d8d0d946827cc3e46e7efa7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 87e6f2c956766011adef23ce9a8565625483a244
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255159"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635544"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -30,7 +30,7 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 | V4 kiadás | 4.0.1.0 | 2018. november 13. | Támogatott |
 | Szeptember. kumulatív frissítés | 3.3.0.0 | 2018. szeptember 24. | Támogatott |
 | Augusztus. kumulatív frissítés | 3.2.0.0 | 2018. augusztus 15. | Támogatott |
-| Általánosan elérhető | 3.1.0.0-s | 2018. július 19. | Támogatott |
+| Általános elérhetőség | 3.1.0.0-s | 2018. július 19. | Támogatott |
 | Június. kumulatív frissítés | 3.0.13.0 | 2018. június 29. | Ügynök verziója lejárt nem támogatott – 2018. október 1. |
 | 2 frissítése | 3.0.12.0 | 2018. május 22. | Ügynök verziója lejárt nem támogatott – 2018. október 1. |
 | Április. kumulatív frissítés | 2.3.0.0-s | 2018. május 8. | Ügynök verziója lejárt nem támogatott – 2018. október 1. |
@@ -65,7 +65,7 @@ Ebben a kiadásban megoldott problémák listája:
 A következő kiadási megjegyzések 4.0.1.0 az Azure File Sync ügynök verziója (kiadás dátuma: 2018. November 13.) vonatkoznak.
 
 ### <a name="evaluation-tool"></a>Kiértékelési eszközével
-Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ez az eszköz az AzureRM PowerShell-parancsmag, amely ellenőrzi, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió a potenciális problémákat. Telepítés és használat utasításokat: [Megoldásértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) az útmutató a tervezési szakaszban. 
+Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ezt az eszközt az Azure PowerShell-parancsmagot, amely ellenőrzi a potenciális problémákat, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió. Telepítés és használat utasításokat: [Megoldásértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) az útmutató a tervezési szakaszban. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Az ügynök telepítése és a kiszolgáló konfigurálása
 Telepítése és konfigurálása az Azure File Sync ügynök Windows Serverrel kapcsolatos további információkért lásd: [Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md) és [üzembe helyezése az Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -140,7 +140,7 @@ Ebben a kiadásban a következő javítás tartalmazza:
 A következő kiadási megjegyzések 3.1.0.0-s az Azure File Sync ügynök verziója (kiadás dátuma: 2018. július 19.) vonatkoznak.
 
 ### <a name="evaluation-tool"></a>Kiértékelési eszközével
-Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ez az eszköz az AzureRM PowerShell-parancsmag, amely ellenőrzi, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió a potenciális problémákat. Telepítés és használat utasításokat: [Megoldásértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) az útmutató a tervezési szakaszban. 
+Az Azure File Sync üzembe helyezése előtt, ki kell értékelni a rendszer az Azure File Sync értékelési eszközzel kompatibilis-e. Ezt az eszközt az Azure PowerShell-parancsmagot, amely ellenőrzi a potenciális problémákat, a fájlrendszert és adatkészlethez, például a nem támogatott karaktereket vagy nem támogatott operációsrendszer-verzió. Telepítés és használat utasításokat: [Megoldásértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool) az útmutató a tervezési szakaszban. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Az ügynök telepítése és a kiszolgáló konfigurálása
 Telepítése és konfigurálása az Azure File Sync ügynök Windows Serverrel kapcsolatos további információkért lásd: [Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md) és [üzembe helyezése az Azure File Sync](storage-sync-files-deployment-guide.md).

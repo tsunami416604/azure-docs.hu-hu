@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833941"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633010"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -27,11 +27,11 @@ Miután elvégezte a cikkben, kell egy regisztrációs és bejelentkezési tarta
 
 Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md). -Előfizetés, és jelentkezzen be helyi fiókot működő egyéni házirendet kell rendelkeznie.
 
-## <a name="page-ui-customization"></a>Oldal-UI testreszabása
+## <a name="page-ui-customization"></a>Oldal felhasználói felületének testreszabása
 
 A lap felhasználói felületének testreszabása szolgáltatással, testre szabhatja a megjelenését és működését minden olyan egyéni szabályzatot. Lehetősége van fenntartani az alkalmazása és az Azure AD B2C közötti márkabeli és vizuális egységességet is.
 
-Íme a működési elv: Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/). Először is a testre szabott HTML-tartalmat tartalmazó egyéni házirendekben a megadhatja egy URL-címet. Az Azure AD B2C egyesíti a felhasználói felület elemeit az URL-ről betöltött HTML-tartalommal, majd megjeleníti az oldalt az ügyfélnek.
+Itt látható, hogyan működik: Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/). Először is a testre szabott HTML-tartalmat tartalmazó egyéni házirendekben a megadhatja egy URL-címet. Az Azure AD B2C egyesíti a felhasználói felület elemeit az URL-ről betöltött HTML-tartalommal, majd megjeleníti az oldalt az ügyfélnek.
 
 ## <a name="create-your-html5-content"></a>A HTML5-alapú tartalom létrehozása
 
@@ -50,9 +50,6 @@ HTML címét a termék márkáját nevű tartalom létrehozása.
    </body>
    </html>
    ```
-
-   >[!NOTE]
-   >Biztonsági okokból JavaScript használata jelenleg le van tiltva a testreszabáshoz.
 
 2. Illessze be a másolt kódrészletet egy szövegszerkesztőben, és mentse a fájlt az *testreszabása ui.html*.
 
@@ -124,7 +121,7 @@ Konfigurálhatja a felhasználói felületének testreszabását, másolja a **C
 3. Nyissa meg a kiterjesztésű fájlt. Ha például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 4. Illessze be a teljes tartalmát a **ContentDefinitions** gyermekeként kimásolt elem a **BuildingBlocks** elemet. 
 5. Keresse meg a **ContentDefinition** tartalmazó `Id="api.signuporsignin"` XML-másolta.
-6. Módosítsa az értéket a **LoadUri** URL-címét a tárolóba feltöltött HTML-fájl. Például "https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+6. Módosítsa az értéket a **LoadUri** URL-címét a tárolóba feltöltött HTML-fájl. Például: https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html.
     
     Az egyéni házirendet a következőhöz hasonlóan kell kinéznie:
 

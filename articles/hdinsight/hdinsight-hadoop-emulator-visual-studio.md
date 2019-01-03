@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012759"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726629"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Azure Data Lake tools for Visual Studio és a hortonworks – tesztkörnyezet használata
 
@@ -60,13 +60,13 @@ Győződjön meg arról, hogy fut-e a hortonworks – tesztkörnyezet. Ezután k
 
     ![Frissítés gomb kiemelésével a párbeszédpanel képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > A frissítési folyamat által a Data Lake tools for Visual Studio várt a hortonworks – tesztkörnyezet konfigurációját módosíthatja az Ambari használ.
 
 6. Érvényesítés befejezése után, válassza ki a **Befejezés** konfigurálásának befejezéséhez.
     ![A Befejezés gomb kiemelésével a párbeszédpanel képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-     >[!NOTE]
+     >[!NOTE]  
      > A fejlesztési környezetet, és a virtuális gép számára lefoglalt memória sebességétől függően konfigurálása és érvényesítése a szolgáltatások több percet is igénybe vehet.
 
 Után az alábbi lépésekkel, most már rendelkezik egy **helyi HDInsight-fürt** a Server Explorerben bejegyzés alatt a **HDInsight** szakasz.
@@ -99,7 +99,7 @@ Hive használata a strukturált adatok egy SQL-szerű lekérdezési nyelvet (Hiv
 
     Miután a **feladat állapota** vált **kész**, egy irányított aciklikus Graph (DAG) jelenik meg. Ez az ábra ismerteti a végrehajtási útvonalát, amely a Tez volt határozza meg a Hive-lekérdezés feldolgozása során. Tez a alapértelmezett-végrehajtó motor a Hive a helyi fürtön.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Az Apache Tez egyben az alapértelmezett Linux-alapú HDInsight-fürtök használata esetén. Akkor sem a Windows-alapú HDInsight az alapértelmezett. A használatára, hozzá kell adnia a sor `set hive.execution.engine = tez;` elején található a Hive-lekérdezést.
 
     Használja a **Feladatkimenet** hivatkozásra a kimenet megtekintéséhez. Ebben az esetben fontos 823, a sample_08 tábla sorainak számát. A feladat diagnosztikai információ segítségével tekintheti a **Job Log** és **töltse le a YARN-naplók** hivatkozásokat.
@@ -110,7 +110,7 @@ Hive használata a strukturált adatok egy SQL-szerű lekérdezési nyelvet (Hiv
 
     Interaktív lekérdezést streameli a feldolgozás során generált kimeneti naplót a **hiveserver2-n keresztül kimeneti** ablak.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Az információ megegyezik, amely elérhető a **Job Log** hivatkozásra a feladat befejezése után.
 
     ![Képernyőkép a kimeneti naplót](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)

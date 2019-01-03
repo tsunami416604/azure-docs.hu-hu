@@ -10,20 +10,20 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 40b9685c56dd494e82c05bff9ed75f425a3006ff
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 39468a4a143d184fcc964ae88f82ad7254e4f3b0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886627"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741742"
 ---
 # <a name="examples-of-bing-insights-usage"></a>A Bing insights használati példák
 
-Ez a szakasz példákat, hogy a Bing lehet, hogy jelenik meg insights a Bing.com tartalmaz.
+A cikkben szereplő példákat arról, hogy a Bing hogyan lehet használni és képadatok megjelenítéséhez a Bing.com oldalon.
 
 ## <a name="pagesincluding-insight-example"></a>PagesIncluding insight-példa
 
-Az alábbiakban látható a Bing hogyan jeleníthet meg, amelyek közé tartozik a lemezkép. Példa egy hivatkozást jelenít meg az első weblapjára, és lehetővé teszi, hogy a felhasználó ki vagy csukhatja más weblapjait, amely tartalmazza a rendszerkép listáját.
+A következő megjelenik egy hivatkozás, az első weblapjára, és lehetővé teszi, hogy a felhasználó ki vagy csukhatja más weblapjait, amely tartalmazza a rendszerkép listáját.
 
 ![Többek között a bővített oldalak](./media/pages-including.PNG)
 
@@ -83,9 +83,7 @@ Nem alapértelmezett címkék között megtalálhatók a határolókeret, amely 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a JSON ezekben a példákban mögött, lásd: [insights alapértelmezett](default-insights-tag.md) és [JSON-válasz](overview.md#the-response).
-
-Gyorsan megkezdheti az első kérelmét, tekintse meg a rövid útmutató: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)
+Gyorsan megkezdheti az első kérelmét, tekintse meg a rövid útmutató: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

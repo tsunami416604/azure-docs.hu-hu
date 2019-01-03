@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961144"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542509"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -264,7 +264,7 @@ Minden kapcsolat kezdeményezése a saját vezérlő hivatkozás tudják kezdő 
 
 #### <a name="starting-a-transaction"></a>Tranzakció indítása
 
-Tranzakciós munka megkezdéséhez. a vezérlő be kell szereznie egy `txn-id` az koordinátortól. Ezt nem küld egy `declare` típusú üzenetet. Ha a nyilatkozat sikeres, a koordinátor fűzi hozzá a disposition eredményét, amely rendelkezik-e a hozzárendelt `txn-id`.
+Tranzakciós munka megkezdéséhez. a vezérlő be kell szereznie egy `txn-id` az koordinátortól. Ezt nem küld egy `declare` típusú üzenetet. Ha a nyilatkozat sikeres, a koordinátor fűzi hozzá a disposition serkenti az eredményt, a hozzárendelt hajtja `txn-id`.
 
 | Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
 | --- | --- | --- |
@@ -351,7 +351,7 @@ Az AMQP a SASL integrációs két hátrányai rendelkezik:
 * A kapcsolat hitelesítő adatait, és a jogkivonatok hatóköre. Az üzenetkezelő előfordulhat, hogy szeretne biztosítani egy entitásonkénti adatkivitelt; egyedi hozzáférés-vezérlés például lehetővé téve a tulajdonosi jogkivonatok küldése egy üzenetsorba, de nem várólista B. Az engedélyezési környezet, a kapcsolat rögzített, és már nem használhatja egyetlen kapcsolaton keresztül, és még a várólista A és b várólista a másik hozzáférési kódok használata
 * Hozzáférési jogkivonatok érvényesek általában csak korlátozott ideig. Az érvényességi a felhasználónak, hogy időnként visszanyerje a jogkivonatok, és lehetőséget biztosít a jogkivonat kibocsátója friss jogkivonat kiadása, a felhasználói hozzáférési engedélyek rendelkeznek megváltozásakor elutasítására. Az AMQP-kapcsolatok hosszú időn át maradhatnak. A SASL modell csak biztosít arra, hogy állítsa be a jogkivonatot kapcsolat időben, ami azt jelenti, hogy az üzenetkezelési infrastruktúra, akár rendelkezik az ügyfél leválasztása a jogkivonat lejár, vagy fogadja el a folyamatos kommunikáció az ügyfél kockázatát kell ki a hozzáférési jogosultságok előfordulhat, hogy visszavonták addig.
 
-Megvalósította a Service Bus AMQP CBS-specifikáció mind ezeket a hibákat, lehetővé teszi egy elegáns megkerülő megoldás: lehetővé teszi az ügyfél hozzáférési jogkivonatok rendelni az egyes csomópontokon, és a jogkivonatok frissíteni, mielőtt azok lejár, az üzenet a folyamat megszakítása nélkül.
+Az AMQP CBS-specifikáció, Service Bus által megvalósított ezeket a hibákat is lehetővé teszi egy elegáns megkerülő megoldás: Lehetővé teszi az ügyfél hozzáférési jogkivonatok rendelni az egyes csomópontokon, és a jogkivonatok frissíteni, mielőtt azok lejár, az üzenet a folyamat megszakítása nélkül.
 
 CBS határozza meg a virtuális felügyeleti csomópont, nevű *$cbs*, az üzenetkezelési infrastruktúra által. A felügyeleti csomópont bármely más csomópontok az üzenetküldési infrastruktúra nevében jogkivonatokat fogad.
 
@@ -374,7 +374,7 @@ A *neve* tulajdonság azonosítja az entitást, amellyel a token társítva kell
 | amqp:swt |Egyszerű webes jogkivonat (SWT) |Az AMQP-érték (karakterlánc) |Csak a támogatott AAD/ACS által kiállított SWT-jogkivonatok |
 | servicebus.Windows.NET:sastoken |Service Bus SAS-jogkivonat |Az AMQP-érték (karakterlánc) |- |
 
-Jogkivonatok ruháznak jogokat. A Service Bus három alapvető jogokat ismer: "Küldés" lehetővé teszi a "Figyelés" lehetővé teszi, hogy a fogadását, és "a felügyelet" lehetővé teszi, hogy adatműveletekkel entitások küldhet. Aad-ben és az ACS által kiadott explicit módon SWT-jogkivonatok jogcímként szerepeljenek ezeket a jogokat. Service Bus SAS-tokeneket tekintse meg a névtér vagy entitás konfigurált szabályokat, és ezek a szabályok úgy vannak konfigurálva, jogosultságokkal. A jogkivonat aláírása, hogy a szabályhoz társított kulccsal így lehetővé teszi a token express a megfelelő jogosultságokat. A jogkivonat egy entitást a társított *put-token* lehetővé teszi a csatlakoztatott ügyfél kommunikálhat az entitás / token jogok. Egy hivatkozás, amennyiben az ügyfél fogja elvégezni a a *küldő* a szerepkör megköveteli a "Küldés" megfelelő; véve a *fogadó* a szerepkör megköveteli a "figyelés" jobb.
+Jogkivonatok ruháznak jogokat. A Service Bus három alapvető jogokat ismer: "Küldés" küld, "Figyelés" lehetővé teszi, hogy fogad, lehetővé teszi, és "a felügyelet" lehetővé teszi a adatműveletekkel entitásokat. Aad-ben és az ACS által kiadott explicit módon SWT-jogkivonatok jogcímként szerepeljenek ezeket a jogokat. Service Bus SAS-tokeneket tekintse meg a névtér vagy entitás konfigurált szabályokat, és ezek a szabályok úgy vannak konfigurálva, jogosultságokkal. A jogkivonat aláírása, hogy a szabályhoz társított kulccsal így lehetővé teszi a token express a megfelelő jogosultságokat. A jogkivonat egy entitást a társított *put-token* lehetővé teszi a csatlakoztatott ügyfél kommunikálhat az entitás / token jogok. Egy hivatkozás, amennyiben az ügyfél fogja elvégezni a a *küldő* a szerepkör megköveteli a "Küldés" megfelelő; véve a *fogadó* a szerepkör megköveteli a "figyelés" jobb.
 
 A válaszüzenet rendelkezik a következő *alkalmazástulajdonságok* értékek
 
@@ -399,7 +399,7 @@ Az ügyfél ezt követően feladata a jogkivonat lejárati szerinti nyomon köve
 
 Ezzel a funkcióval, hozzon létre egy küldő és csatolást a `via-entity`. További információt közben a hivatkozás, létrehozására, az üzenetek/átvitelek erre a hivatkozásra a valódi cél átadott. A csatolás sikeres volt, ha erre a hivatkozásra küldött összes üzenet automatikusan továbbítja a *célentitás* keresztül *keresztül entitás*. 
 
-> Megjegyzés: A hitelesítés van az is végre kell hajtani *keresztül entitás* és *célentitás* a kapcsolat kialakítása előtt.
+> Megjegyzés: Hitelesítési rendelkezik mindkét végrehajtandó *keresztül entitás* és *célentitás* a kapcsolat kialakítása előtt.
 
 | Ügyfél | | Service Bus |
 | --- | --- | --- |

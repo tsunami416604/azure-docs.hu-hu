@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 76e3a219d440bab4c6e277887aabb1e01f5e1d9c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435446"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728346"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
@@ -32,7 +32,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 ### <a name="advantages"></a>Előnyök
 - Szoros integráció az Azure-bA. Vizualizációkat több Azure oldalt, például metrikák analytics, a log analytics és az Application Insights kitűzhetők az irányítópultokra.
 - Metrikák és naplók is támogatja.
-- Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](../azure-monitor/platform/metrics-charts.md), [Log Analytics-lekérdezések](../azure-monitor/log-query/log-query-overview.md), és [térképek](../application-insights/app-insights-app-map.md) és [rendelkezésre állási]()az Application Insightsban.
+- Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](../azure-monitor/platform/metrics-charts.md), [Log Analytics-lekérdezések](../azure-monitor/log-query/log-query-overview.md), és [térképek](../azure-monitor/app/app-map.md) és [rendelkezésre állási]()az Application Insightsban.
 - Saját vagy megosztott irányítópultok beállítása. Az Azure-ral integrálva [szerepköralapú hitelesítést (RBAC)](../role-based-access-control/overview.md).
 - Automatikus frissítés. Metrikák frissítési időtartomány, legalább öt perc alatt függ. Naplók frissítése, egy perc.
 - Paraméteres metrikák irányítópultok időbélyeg és egyéni paraméterekkel.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1b4ca22faf8ef01cab4b2e7231fea8ed49f0fcb3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 698806bdedd9994f2c9de53118cb42c9df1c36cd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494588"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724402"
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Halommemória-képek összegyűjtése a Blob storage a hibakereséshez és az Apache Hadoop-szolgáltatásokhoz elemzése
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
@@ -23,8 +23,8 @@ Halomürítések az alkalmazás memória, beleértve a változók értékeit, a 
 
 Halomürítések a különböző szolgáltatások gyűjteménye engedélyezni kell a szolgáltatások az egyes fürtökön. Ez a funkció alapértelmezés szerint a fürt számára ki lehet. Ezek halomürítések nagy, lehet, így célszerű a Blob storage-fiók figyelése, azok változtatásainak mentése után a gyűjtemény engedélyezve van.
 
-> [!IMPORTANT]
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Ebben a cikkben található információk csak a Windows-alapú HDInsight vonatkozik. A Linux-alapú HDInsight további információkért lásd: [engedélyezése halommemória-képek a Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+> [!IMPORTANT]  
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Ebben a cikkben található információk csak a Windows-alapú HDInsight vonatkozik. A Linux-alapú HDInsight további információkért lásd: [engedélyezése halommemória-képek a Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
 
 ## <a name="eligible-services-for-heap-dumps"></a>Halomürítések a jogosult szolgáltatások

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 4584104e9c9833b5f3f586581dd5a58f420fe0bd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 12f9f55544f46bc9c88cab7234f78ad7ee7de2d2
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165339"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790894"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -45,9 +45,9 @@ A rendszerállapot lehetővé teszi, hogy nyomon követése az összes hívásho
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) figyelési képességek, beleértve a automagical kérés és a függőségi nyomkövetés gazdag teljesítményt nyújt.
 
 A projekt típusától függően az Application Insights SDK telepítése:
-- [Az ASP.NET](../application-insights/app-insights-asp-net.md) -telepítése beta2 2.5-ös verzió vagy újabb
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) -verzió 2.2.0-beta2 telepítése vagy újabb verziója.
-Ezeket a hivatkozásokat az SDK telepítése, az erőforrások létrehozása és konfigurálása a SDK-t (ha szükséges) adja meg az adatokat. -ASP.NET alkalmazások, tekintse meg [Konzolalkalmazást az Azure Application Insights](../application-insights/application-insights-console.md) cikk.
+- [Az ASP.NET](../azure-monitor/app/asp-net.md) -telepítése beta2 2.5-ös verzió vagy újabb
+- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) -verzió 2.2.0-beta2 telepítése vagy újabb verziója.
+Ezeket a hivatkozásokat az SDK telepítése, az erőforrások létrehozása és konfigurálása a SDK-t (ha szükséges) adja meg az adatokat. -ASP.NET alkalmazások, tekintse meg [Konzolalkalmazást az Azure Application Insights](../azure-monitor/app/console.md) cikk.
 
 Ha [üzenetet kezelő minta](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) -üzenetek feldolgozása kész: automatikusan nyomon követi és egyéb telemetriát elemeket is vonatkozhatnak, és a szolgáltatás által végzett összes Service Bus-hívás. Ellenkező esetben tekintse meg az alábbi példa manuális üzenetfeldolgozás nyomon követésére.
 
@@ -83,7 +83,7 @@ async Task ProcessAsync(Message message)
 Ebben a példában `RequestTelemetry` feldolgozott üzenetek, egy időbélyeg, időtartama és (siker) eredményt kellene jelentett. A telemetriai korreláció tulajdonságait is tartalmaz.
 Beágyazott hívásláncokat és kivételeket jelentett üzenet feldolgozása közben is megjelölve őket képviselő "gyermekeként" korrelációs tulajdonságokkal a `RequestTelemetry`.
 
-Abban az esetben támogatott külső összetevők hívásokat hajt végre üzenet feldolgozása közben, ezeket is automatikusan nyomon követi és korrelált. Tekintse meg [Application Insights .NET SDK-val egyéni műveletek követése](../application-insights/application-insights-custom-operations-tracking.md) , manuális követési és összehasonlítás céljából.
+Abban az esetben támogatott külső összetevők hívásokat hajt végre üzenet feldolgozása közben, ezeket is automatikusan nyomon követi és korrelált. Tekintse meg [Application Insights .NET SDK-val egyéni műveletek követése](../azure-monitor/app/custom-operations-tracking.md) , manuális követési és összehasonlítás céljából.
 
 ### <a name="tracking-without-tracing-system"></a>Nyomkövetési rendszert nélkül nyomon követése
 Abban az esetben a nyomkövetési rendszer nem támogatja az automatikus Service Bus-hívások nyomon követése előfordulhat, hogy információra van szüksége, az ilyen támogatást egy nyomkövetési rendszert vagy az alkalmazás. Ez a szakasz ismerteti a Service Bus .NET-ügyfél által küldött diagnosztikai események.  
@@ -141,7 +141,7 @@ Ebben a példában a figyelő naplózza időtartama, eredmény, egyedi azonosít
 
 #### <a name="events"></a>Események
 
-Minden művelet esetén két események küldhetők: "Kezdődik" és "". Valószínűleg érdekli csak a "Stop" eseményeket. Akkor adja meg a művelet eredményét, valamint időpontja és időtartama indítható el, mert egy tevékenység tulajdonságai.
+Minden művelet esetén két események küldhetők: "Indítás" és "Stop". Valószínűleg érdekli csak a "Stop" eseményeket. Akkor adja meg a művelet eredményét, valamint időpontja és időtartama indítható el, mert egy tevékenység tulajdonságai.
 
 Eseménytartalom figyelő, amelynek keretein belül a művelet biztosítja, az API bejövő paraméterek replikálja, és a visszatérési érték. "Stop" eseménytartalom eseménytartalom "Indítás" tulajdonságainak rendelkezik, így a "Kezdő" esemény teljesen figyelmen kívül.
 
@@ -227,6 +227,6 @@ A több jelenléte `DiagnosticSource` -figyelője ugyanazt adatforrást, akkor i
 
 ## <a name="next-steps"></a>További lépések
 
-* [Application Insights Korelace](../application-insights/application-insights-correlation.md)
-* [Application Insights függőségek figyelése](../application-insights/app-insights-asp-net-dependencies.md) megtekintheti, ha a REST, SQL és más külső erőforrások okoznak lassulást.
-* [Application Insights .NET SDK-val egyéni műveletek követése](../application-insights/application-insights-custom-operations-tracking.md)
+* [Application Insights Korelace](../azure-monitor/app/correlation.md)
+* [Application Insights függőségek figyelése](../azure-monitor/app/asp-net-dependencies.md) megtekintheti, ha a REST, SQL és más külső erőforrások okoznak lassulást.
+* [Application Insights .NET SDK-val egyéni műveletek követése](../azure-monitor/app/custom-operations-tracking.md)

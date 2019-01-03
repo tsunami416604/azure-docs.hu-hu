@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: ca64c87a0211ae00218493fe7bfddcbbb81a032a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ac72de799ce7cd00e939e9b67f1ef5574ce3eed3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109439"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972566"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,7 +55,7 @@ Adatátalakítási tevékenység | Számítási környezet
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop Streaming](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) | Azure VM
+[Machine Learning-tevékenységek: Kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) | Azure VM
 [Tárolt eljárás](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse vagy SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Egyéni kód](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -97,13 +97,13 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 
 Címke | Leírás | Típus | Szükséges
 --- | ----------- | ---- | --------
-név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
-leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
+név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | Karakterlánc | Igen
+leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Karakterlánc | Nem
 tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
 
 ## <a name="activity-json"></a>Tevékenység JSON-fájlja
-A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A következő két fő tevékenységtípust különböztetjük meg: végrehajtási és vezérlési tevékenységek.
+A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek két fő típusa van: Végrehajtási és vezérlési tevékenységek.
 
 ### <a name="execution-activities"></a>Végrehajtási tevékenységek
 A végrehajtási tevékenységek közé az [adatáthelyezési](#data-movement-activities) és az [adatátalakítási tevékenységek](#data-transformation-activities) tartoznak. Ezek a következő felső szintű struktúrával rendelkeznek:
@@ -130,7 +130,7 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 
 Címke | Leírás | Szükséges
 --- | ----------- | ---------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
@@ -194,7 +194,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 
 Címke | Leírás | Szükséges
 --- | ----------- | --------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>Karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
@@ -203,16 +203,16 @@ dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást k
 ### <a name="activity-dependency"></a>Tevékenységfüggőség
 A tevékenységfüggőség azt határozza meg, hogy az egymást követő tevékenységek milyen függőségi viszonyban vannak a megelőző tevékenységekkel, meghatározva azt a feltételt, amelytől a következő feladat végrehajtása függ. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet.
 
-A különböző függőségi feltételek a következők: Sikeres, Sikertelen, Kihagyva, Befejezve.
+A különböző függőségi feltételek a következők: Sikeres, sikertelen, kihagyva, befejezve.
 
 Ha például egy folyamat A tevékenység -> B tevékenység formában valósul meg, a következő forgatókönyvek lehetségesek:
 
-- A B tevékenység **sikeres** függőségi feltétellel rendelkezik az A tevékenység esetében: a B tevékenység csak akkor fut le, ha az A tevékenység végállapota sikeres
-- A B tevékenység **sikertelen** függőségi feltétellel rendelkezik az A tevékenység esetében: a B tevékenység csak akkor fut le, ha az A tevékenység végállapota sikertelen
-- A B tevékenység **befejezve** függőségi feltétellel rendelkezik az A tevékenység esetében: a B tevékenység akkor fut le, ha az A tevékenység végállapota sikeres vagy sikertelen
-- A B tevékenység **kihagyva** függőségi feltétellel rendelkezik az A tevékenység esetében: a B tevékenység akkor fut le, ha az A tevékenység végállapota kihagyva. Kihagyva állapot következik be az X tevékenység -> Y tevékenység -> Z tevékenység forgatókönyvben, ahol minden egyes tevékenység csak akkor fut le, ha az előző tevékenység sikeresen lefutott. Ha az X tevékenység sikertelen, akkor az Y tevékenység „Kihagyva” állapotot vesz fel, mert azt a rendszer soha nem hajtja végre. Hasonlóképpen a Z tevékenység is „Kihagyva” állapotot vesz fel.
+- B tevékenység függőségi feltétellel rendelkezik az a tevékenység esetében **sikeres**: B tevékenység csak akkor fog futni, ha a tevékenység végállapota, sikeres volt
+- B tevékenység függőségi feltétellel rendelkezik az a tevékenység esetében **sikertelen**: B tevékenység csak akkor fog futni, ha a tevékenység végállapota, nem sikerült
+- B tevékenység függőségi feltétellel rendelkezik az a tevékenység esetében **befejeződött**: B tevékenység akkor fut, ha a tevékenység végállapota a sikeres vagy sikertelen
+- B tevékenység függőségi feltétellel rendelkezik az a tevékenység esetében **kihagyva**: B tevékenység-végrehajtás A tevékenység végállapota, ha kihagyja. Kihagyva állapot következik be az X tevékenység -> Y tevékenység -> Z tevékenység forgatókönyvben, ahol minden egyes tevékenység csak akkor fut le, ha az előző tevékenység sikeresen lefutott. Ha az X tevékenység sikertelen, akkor az Y tevékenység „Kihagyva” állapotot vesz fel, mert azt a rendszer soha nem hajtja végre. Hasonlóképpen a Z tevékenység is „Kihagyva” állapotot vesz fel.
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Példa: a 2. tevékenység az 1. tevékenység sikerességétől függ
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Példa: 2 tevékenység az a tevékenység 1. tevékenység sikerességétől függ
 
 ```json
 {

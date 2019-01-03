@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 99f706a3b24991e7f5a3473d40a568971b71a979
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: bece63c36bf0027524dea051e78d290c407ca349
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451986"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716089"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>PaaS web- és mobilalkalmazások az Azure App Service használatával biztonságossá tételének ajánlott eljárásait
 
-Ebben a cikkben bemutatjuk, gyűjteménye [Azure App Service](../app-service/app-service-web-overview.md) kapcsolódó ajánlott biztonsági eljárások a PaaS webes és mobilalkalmazások védelme. Ajánlott eljárások az funkciót az Azure-ral és a az ügyfelek, például a saját maga származik.
+Ebben a cikkben bemutatjuk, gyűjteménye [Azure App Service](../app-service/overview.md) kapcsolódó ajánlott biztonsági eljárások a PaaS webes és mobilalkalmazások védelme. Ajánlott eljárások az funkciót az Azure-ral és a az ügyfelek, például a saját maga származik.
 
 Az Azure App Service-platform--szolgáltatásként (PaaS) ajánlat, amely lehetővé teszi webes és mobilalkalmazásokat bármilyen platformra vagy eszközre létrehozását, és bárhol kapcsolódhatnak az adatokhoz, a felhőben vagy helyszíni. App Service-ben a webes és mobil funkciókkal, amelyeket a rendszer korábban külön-külön tartalmazott Azure-webhelyek és Azure Mobile Services tartalmazza. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként az App Service lehetőségek gazdag tárházaként segíti a lehetőségeket a webes, mobil és integrációs feladatokhoz.
 
 ## <a name="authenticate-through-azure-active-directory-ad"></a>Hitelesítés az Azure Active Directory (AD) révén
-App Service-ben az identitásszolgáltató az OAuth 2.0 szolgáltatást biztosít. OAuth 2.0 ügyfél fejlesztői egyszerűség művelet során gondoskodik a webalkalmazások, asztali alkalmazások és mobiltelefonon adott engedélyezési folyamatok tárgyalja. Az Azure AD OAuth 2.0 használja ahhoz, hogy engedélyezze a hozzáférést mobil- és webalkalmazásokat. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md).
+App Service-ben az identitásszolgáltató az OAuth 2.0 szolgáltatást biztosít. OAuth 2.0 ügyfél fejlesztői egyszerűség művelet során gondoskodik a webalkalmazások, asztali alkalmazások és mobiltelefonon adott engedélyezési folyamatok tárgyalja. Az Azure AD OAuth 2.0 használja ahhoz, hogy engedélyezze a hozzáférést mobil- és webalkalmazásokat. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>A szerepkör alapú hozzáférés korlátozása 
 Hozzáférés korlátozása elengedhetetlen, szervezetek által adatok elérésére vonatkozó biztonsági szabályzatok kikényszerítéséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy bizonyos hatókörben kell tudnia és a legalacsonyabb jogosultsági biztonsági alapelveket például. Felhasználók alkalmazásokhoz való hozzáférésének engedélyezésére vonatkozó további tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).

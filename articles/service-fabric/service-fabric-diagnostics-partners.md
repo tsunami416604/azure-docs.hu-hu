@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 43b7b2e7b4f4da4939e08a68bc2ac7ea0a2c2a6b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: f7bf5d521f4bcb5672ff1d710a08bed2e0872545
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49459028"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974403"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Az Azure Service Fabric-figyelés partnerek
 
@@ -27,7 +27,7 @@ Ez a cikk azt mutatja be, hogyan egy figyelheti a Service Fabric alkalmazások, 
 
 ## <a name="dynatrace"></a>Dynatrace-szel
 
-Az integráció a dynatrace-szel kínál számos, a box szolgáltatásait a Service Fabric-fürtök figyelése kívül. A dynatrace-szel OneAgent a VMSS-példányok telepítése lehetővé teszi, teljesítményszámlálók és a egy a Service Fabric üzembe helyezési topológiája az alkalmazás szintre. Dynatrace akkor is remek választás a helyszíni figyelése. Tekintse meg a felsorolt lehetőségek valamelyikét a [annoucement](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) és [utasításokat](https://www.dynatrace.com/support/help/cloud-platforms/azure/how-do-i-monitor-azure-service-fabric-applications/) engedélyezéséhez a dynatrace-szel a fürtön. 
+Az integráció a dynatrace-szel kínál számos, a box szolgáltatásait a Service Fabric-fürtök figyelése kívül. A dynatrace-szel OneAgent a VMSS-példányok telepítése lehetővé teszi, teljesítményszámlálók és a egy a Service Fabric üzembe helyezési topológiája az alkalmazás szintre. Dynatrace akkor is remek választás a helyszíni figyelése. Tekintse meg a felsorolt lehetőségek valamelyikét a [annoucement](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) és [utasításokat](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) engedélyezéséhez a dynatrace-szel a fürtön. 
 
 ## <a name="datadog"></a>Datadoggal
 
@@ -43,7 +43,7 @@ A New Relic, egy másik alkalmazásteljesítmény-felügyeleti eszköz, amely j�
 
 ## <a name="elk"></a>ELK 
 
-Az ELK stack gyűjteménye, nyílt forráskódú technológiák: az Elasticsearch, Logstash és Kibana. Ezek együttes használatával gyűjthet, tárolhatja és elemezheti a Service Fabric monitorozási és diagnosztikai adatokat. Rendelkezünk egy oktatóanyag, az ehhez a Service Fabric natív Java-alkalmazások [Itt](service-fabric-tutorial-java-elk.md). 
+Az ELK stack gyűjteménye, nyílt forráskódú technológiák: Az Elasticsearch, Logstash és Kibana. Ezek együttes használatával gyűjthet, tárolhatja és elemezheti a Service Fabric monitorozási és diagnosztikai adatokat. Rendelkezünk egy oktatóanyag, az ehhez a Service Fabric natív Java-alkalmazások [Itt](service-fabric-tutorial-java-elk.md). 
 
 
 ## <a name="next-steps"></a>További lépések

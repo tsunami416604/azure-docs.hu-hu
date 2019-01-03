@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 10dc25740eca43c7cbd39b8ec783084e048d2af2
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637601"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631434"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
@@ -34,12 +34,14 @@ Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blo
 
 ## <a name="upgrade-with-powershell"></a>Frissítés a PowerShell-lel
 
-Egy általános célú v2 fiókját a PowerShell segítségével egy általános célú v1 fiók frissítéséhez először frissítse PowerShell legújabb verzióját használja a **AzureRm.Storage** modul. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) ismertető cikket. 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Egy általános célú v2 fiókját a PowerShell segítségével egy általános célú v1 fiók frissítéséhez először frissítse PowerShell legújabb verzióját használja a **Az.Storage** modul. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket. 
 
 Ezután hívja meg a fiókot, és cserélje le az erőforráscsoport nevét és a storage-fiók frissítése a következő parancsot:
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
 
 ## <a name="upgrade-with-azure-cli"></a>Frissítés az Azure CLI-vel
@@ -56,7 +58,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 Általános célú v2 támogatja az összes Azure storage-szolgáltatások és adatok objektum, de az elérési szint csak a Blob storage-ban a blokkblobokhoz érhető el. Amikor frissít egy általános célú v2-tárfiók, megadhatja a hozzáférési szint a blob adatait. 
 
-Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költséghatékony tárolási megoldás a várható használati mintái alapján. A blokkblobok használatát támogatják a gyors Elérésűre, ritka elérésű vagy archív szinten tárolhatók. A hozzáférési rétegek további információkért lásd: [Azure Blob storage: gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költséghatékony tárolási megoldás a várható használati mintái alapján. A blokkblobok használatát támogatják a gyors Elérésűre, ritka elérésű vagy archív szinten tárolhatók. A hozzáférési rétegek további információkért lásd: [Azure Blob storage: A gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 Alapértelmezés szerint egy új storage-fiók jön létre a gyakran használt adatok tároláselérési rétegében és a egy általános célú v1 storage-fiók frissítése a gyakori elérésű hozzáférési szintre. Ha, a vizsgált milyen hozzáférési szint használata az adatok frissítése, fontolja meg a forgatókönyvnek. Egy általános célú v2 fiók való áttelepítés során két jellemző felhasználói forgatókönyv közül választhat:
 
@@ -69,17 +71,17 @@ Mindkét esetben az első érték tárolása, elérése és a egy általános c�
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 
-* **Tárolási költségek**: Az adattárolás díja a tárolt adatok mennyisége mellett a tárolási szinttől függ. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
+* **Tárolási költségek**: Tárolt adatok mennyisége mellett az adattárolás díja a tárolási réteg függvényében. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
 
-* **Adathozzáférési költségek**: az adathozzáférési költségek emelkednek, ha a szint ritkábban használt adatokat tárol. A ritka elérésű és az archív tárolási szint esetében gigabájtonkénti adathozzáférési díjat kell fizetni az adatolvasásokért.
+* **Adathozzáférési költségek**: Az adathozzáférési költségek emelkednek, ha a szint ritkábban. A ritka elérésű és az archív tárolási szint esetében gigabájtonkénti adathozzáférési díjat kell fizetni az adatolvasásokért.
 
-* **Tranzakciós költségek**: Minden szint esetében tranzakciónkénti díjat kell fizetni, ez emelkedik, ha a szint ritkábban használt adatokat tárol.
+* **Tranzakciós költségek**: A tranzakciónkénti díjat kell fizetni minden szint esetében, amely növeli, ha a szint ritkábban van.
 
-* **Georeplikációs adatátviteli költségek**: Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
+* **Georeplikációs adatátviteli költségek**: Ezt a díjat csak a georeplikációval konfigurált, beleértve a GRS és RA-GRS fiókok vonatkozik. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
 
-* **Kimenő adatátviteli költségek**: A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
+* **Kimenő adatátviteli költségek**: Kimenő adatforgalom (azaz az Azure-régióba adatok) sávszélesség-használat gigabájtonkénti történik, az általános célú tárfiókok esetében a számlázás számítunk fel.
 
-* **A tárolási szint módosítása**: a fiók tárolási szintjének a ritka elérésű szintről gyakori elérésűre váltása esetében felmerülő díj megegyezik a tárfiókban lévő összes adat beolvasásának költségével. A fiók tárolási szintjének gyakori elérésűről ritka elérésűre való váltása esetében felmerülő díj viszont az összes adat ritka elérésű szintre írásának költségével egyezik meg (csak a GPv2-fiókok esetében).
+* **A tárolási réteg módosítása**: A díj megegyezik a tárfiókban lévő összes adat ritka elérésű szintről a fiók tárolási szintjének módosítása tekintetében. A fiók tárolási szintjének gyakori elérésűről ritka elérésűre való váltása esetében felmerülő díj viszont az összes adat ritka elérésű szintre írásának költségével egyezik meg (csak a GPv2-fiókok esetében).
 
 > [!NOTE]
 > A tárfiókok árképzési modelljével kapcsolatos további információért lásd [az Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.

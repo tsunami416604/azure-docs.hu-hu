@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2f1a6016f7555cdf1955487da22fc9171c55a480
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5cc5e0e9bf1d05bde273d1c26c03165a38e02122
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811850"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976647"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -47,7 +47,7 @@ Koncentráljunk a ciklus visszajelzési szakaszára:
 ![Azonosítás-Osztályozás-Diagnózis](./media/detect-triage-diagnose/01-pipe1.png)
 
 ## <a name="detect-poor-availability"></a>Gyenge rendelkezésre állás észlelése
-Marcela Markova az OBS-csapat vezető fejlesztője, ő irányítja az online teljesítmény monitorozását. Több [rendelkezésre állási tesztet](../../application-insights/app-insights-monitor-web-app-availability.md) is beállít:
+Marcela Markova az OBS-csapat vezető fejlesztője, ő irányítja az online teljesítmény monitorozását. Több [rendelkezésre állási tesztet](../../azure-monitor/app/monitor-web-app-availability.md) is beállít:
 
 * Egy egyetlen URL-címre kiterjedő tesztet az alkalmazás fő kezdőlapjához (http://fabrikambank.com/onlinebanking/). Beállítja a 200-as HTTP-kód és az „Üdvözöljük!” szöveg feltételeit. Ha ez a teszt sikertelen, komoly hálózati vagy kiszolgálóhiba, esetleg üzembehelyezési probléma merült fel. (Vagy valaki módosította az Üdvözöljük! üzenetet az oldalon anélkül, hogy Marcelának erről szólt volna.)
 * Egy alaposabb többlépéses tesztet, amely bejelentkezik az oldalra, lekér egy aktuális fióklistát, és minden oldalon ellenőriz néhány kulcsfontosságú részletet. Ez a teszt ellenőrzi, hogy a fiókok adatbázisára mutató hivatkozás működik-e. Marcela egy fiktív ügyfél-azonosítót használ, amelyből tesztelési célokra fenntartanak néhányat.
@@ -228,8 +228,8 @@ Ez csapat tehát így használja az Application Insightsot az egyes hibák elhá
 Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Válassza ki a legmegfelelőbbet:
 
 * [ASP.NET-es webalkalmazás](../../azure-monitor/app/asp-net.md)
-* [Java-webalkalmazás](../../application-insights/app-insights-java-get-started.md)
+* [Java-webalkalmazás](../../azure-monitor/app/java-get-started.md)
 * [Node.js-webalkalmazás](../../application-insights/app-insights-nodejs.md)
-* Már üzembe helyezett, az [IIS](../../application-insights/app-insights-monitor-web-app-availability.md)-ben, [J2EE](../../application-insights/app-insights-java-live.md)-ben vagy [Azure](../../application-insights/app-insights-overview.md)-ban működő alkalmazások.
-* [Weblapok](../../application-insights/app-insights-javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
-* [Rendelkezésre állási tesztek](../../application-insights/app-insights-monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.
+* Már üzembe helyezett, az [IIS](../../azure-monitor/app/monitor-web-app-availability.md)-ben, [J2EE](../../azure-monitor/app/java-live.md)-ben vagy [Azure](../../application-insights/app-insights-overview.md)-ban működő alkalmazások.
+* [Weblapok](../../azure-monitor/app/javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
+* [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.

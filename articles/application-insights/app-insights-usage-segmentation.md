@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6a7f62d4018e5a8bd39cbf2bb2b1418137d93638
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 16795ce1fd53b9634dbc2ff7513d1c39752b8848
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720150"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974590"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése az Application insights szolgáltatásban
 
@@ -34,22 +34,22 @@ Ha még nem látható a felhasználók, munkamenetek és események paneleket az
 
 Három a használati paneleket a webes alkalmazás három perspektívából szeletelésére és feldarabolására használnak a telemetriai használni ugyanazzal a módszerrel. Szűréssel és az adatok felosztása, insights különböző lapjait és szolgáltatásait relatív használatát ismertető részletes elemzést.
 
-* **Felhasználó-eszköz**: hányan használják az alkalmazást és annak szolgáltatásait.  Felhasználók számítanak névtelen azonosítók tárolva a böngésző cookie-k használatával. A különböző böngészők vagy a gépek használata egyetlen személy szerint egynél több felhasználó beleszámítanak.
-* **Munkamenetek**: felhasználói tevékenység, hogy hány munkamenetben vette az egyes oldalak és az alkalmazás funkcióit. A munkamenet akkor számít, felhasználói inaktivitás fél óra múlva, vagy 24 órányi folyamatos, becsült használat után.
-* **Események eszközének**: milyen gyakran használt egyes oldalak és az alkalmazás funkcióit. Egy oldal nézet külön tranzakciónak minősül Ha egy böngészőben lap betöltésekor az alkalmazásból, amennyiben rendelkezik [kialakítva, hogy](app-insights-javascript.md). 
+* **Felhasználó-eszköz**: Hányan használják az alkalmazást és annak szolgáltatásait.  Felhasználók számítanak névtelen azonosítók tárolva a böngésző cookie-k használatával. A különböző böngészők vagy a gépek használata egyetlen személy szerint egynél több felhasználó beleszámítanak.
+* **Munkamenetek**: Felhasználói tevékenység, hogy hány munkamenetben vette az egyes oldalak és az alkalmazás funkcióit. A munkamenet akkor számít, felhasználói inaktivitás fél óra múlva, vagy 24 órányi folyamatos, becsült használat után.
+* **Események eszközének**: Milyen gyakran egyes oldalak és az alkalmazás funkcióit használja. Egy oldal nézet külön tranzakciónak minősül Ha egy böngészőben lap betöltésekor az alkalmazásból, amennyiben rendelkezik [kialakítva, hogy](../azure-monitor/app/javascript.md). 
 
-    Egyéni esemény több előfordulása hiba történik az alkalmazás, gyakran egy felhasználói beavatkozás, például egy gombra való kattintással vagy néhány tevékenység befejezése után a jelöli. Az alkalmazás szúr be kódot [egyéni események létrehozása](app-insights-api-custom-events-metrics.md#trackevent).
+    Egyéni esemény több előfordulása hiba történik az alkalmazás, gyakran egy felhasználói beavatkozás, például egy gombra való kattintással vagy néhány tevékenység befejezése után a jelöli. Az alkalmazás szúr be kódot [egyéni események létrehozása](../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Az egyes felhasználókat kérdezi le
 
 Ismerje meg a különböző felhasználói csoportokhoz a felhasználók eszköz tetején a lekérdezési beállítások módosításával:
 
-* Megjelenítés: Válassza ki egy elemzéséhez felhasználói kohorsz a következő.
-* Használja ki: válassza ki az egyéni események és Lapmegtekintések.
+* Megjelenítés: Válassza ki a elemzéséhez felhasználói kohorsz a következő.
+* Használja ki: Válassza ki az egyéni események és Lapmegtekintések.
 * Során: Válasszon időtartományt.
 * Szerint: Válassza ki a gyűjtőbe az adatokat, vagy egy bizonyos idő, vagy egy másik tulajdonságot, mint például a böngészőben vagy az városa módját.
 * Felosztási szempont: Válassza ki egy tulajdonságot amely split vagy szegmens az adatokat. 
-* Vegyen fel szűrőket: Korlátozza a lekérdezést, hogy bizonyos felhasználók, munkamenetek és események azok tulajdonságait, például a böngészőben vagy az városa alapján. 
+* Szűrők hozzáadása: A lekérdezést, hogy bizonyos felhasználók, munkamenetek és események azok tulajdonságait, például a böngészőben vagy az városa alapján korlátozza. 
  
 ## <a name="saving-and-sharing-reports"></a>És jelentések megosztása 
 A Mindenki más az Application Insights-erőforrást a megosztott jelentések szakasz hozzáféréssel rendelkező felhasználók jelentéseket, vagy a saját csak a saját jelentések szakaszban Ön, vagy megosztott mentheti.

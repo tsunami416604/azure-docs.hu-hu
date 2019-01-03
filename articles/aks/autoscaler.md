@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 0f376d6b1108b784af37b5e50dab9edba63e5f76
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0b2e49bb0e269c91ed6a1bf7294565a729082db3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713095"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975134"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Méretező fürt az Azure Kubernetes Service (AKS) – előzetes verzió
 
@@ -398,7 +398,7 @@ A fürt méretező állapotának lehetővé teszi, hogy a fürt méretező álla
     * Vertikális leskálázási csatlakozni kívánó egy csomópont megállapítása szerint a fürt automatikus méretező távolíthatja el a fürt képes kezelni a számítási feladatok befolyásolása nélkül. 
     * Megadott időpontok megjelenítése a vertikális leskálázási jelöltek utoljára ellenőrizve a fürt és az utolsó váltás ideje.
 
-Végül események, a másolatot bármilyen méret esetén lásd: vagy is események, sikertelen vagy sikeres, és időponthoz képest, a fürt méretező elvégző leskálázása.
+Végül alatt események, bármilyen méretben megtekintéséhez be vagy is események, sikertelen vagy sikeres, és időponthoz képest, a fürt méretező elvégző leskálázása.
 
 ## <a name="next-steps"></a>További lépések
 

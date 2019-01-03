@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 1c99b7a3eecdd7938b4813647afb9e48fb0173a0
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739277"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791047"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Kialakítási szempontok a méretezési csoportokhoz
 Ez a cikk ismerteti a Virtual Machine Scale Sets kapcsolatos kialakítási szempontok. Mik azok a Virtual Machine Scale Sets kapcsolatos információkért tekintse meg [virtuálisgép-méretezési csoportok – áttekintés](virtual-machine-scale-sets-overview.md).
@@ -71,7 +71,7 @@ Egy méretezési csoportot (más néven platformlemezkép) Piactéri lemezképet
 
 Egy méretezési csoportot konfigurált, a felhasználó által felügyelt storage-fiókok jelenleg legfeljebb 100 virtuális gép (és 5 tárfiókok használata javasolt a skála).
 
-Egy méretezési csoportot egy egyéni rendszerképet (egy Ön által készített) épülő rendelkezhet legfeljebb 300 virtuális gépet az Azure Managed disks használatával konfigurálásakor kapacitását. Ha a méretezési csoportban van konfigurálva, a felhasználó által felügyelt tárfiókokban, annak létre kell hoznia az összes operációs rendszer lemez VHD-k egy tárfiókon belül. Ennek eredményeképpen a maximális ajánlott épülő egyéni rendszerkép méretezési csoportban lévő virtuális gépek számát és felhasználó által felügyelt tárolási 20. Ha kikapcsolja a túlzott, 40 léphet.
+Egy méretezési csoportot egy egyéni rendszerképet (egy Ön által készített) épülő rendelkezhet legfeljebb 600 virtuális gépek az Azure Managed disks használatával konfigurálásakor kapacitását. Ha a méretezési csoportban van konfigurálva, a felhasználó által felügyelt tárfiókokban, annak létre kell hoznia az összes operációs rendszer lemez VHD-k egy tárfiókon belül. Ennek eredményeképpen a maximális ajánlott épülő egyéni rendszerkép méretezési csoportban lévő virtuális gépek számát és felhasználó által felügyelt tárolási 20. Ha kikapcsolja a túlzott, 40 léphet.
 
 További virtuális gépek esetében, mint hogy ezeket a korlátokat, üzembe kell helyeznie a több méretezési, ahogyan [ezzel a sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 

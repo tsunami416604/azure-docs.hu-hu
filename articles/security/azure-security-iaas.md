@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d4a2daf10fd864f13982f4d327868ad62d1309b3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321460"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540280"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -137,7 +137,7 @@ Erőforráshoz való visszaélés problémát jelenthetnek, ha a virtuális gép
 
 Javasoljuk, hogy használjon [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) , a resource health értékes információkhoz juthat. Azure Monitor-funkciók:
 
-- [Erőforrás diagnosztikai naplófájlok](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md): A Virtuálisgép-erőforrások figyeli, és azonosítja a potenciális problémákat, mely veszélyeztetheti a teljesítmény és rendelkezésre állás.
+- [Erőforrás diagnosztikai naplófájlok](../azure-monitor/platform/diagnostic-logs-overview.md): A Virtuálisgép-erőforrások figyeli, és azonosítja a potenciális problémákat, mely veszélyeztetheti a teljesítmény és rendelkezésre állás.
 - [Az Azure Diagnostics bővítmény](../azure-monitor/platform/diagnostics-extension-overview.md): Windows virtuális gépek monitorozási és diagnosztikai képességeket biztosít. Ezek a képességek engedélyezéséhez a kiterjesztéssel együtt részeként a [Azure Resource Manager-sablon](../virtual-machines/windows/extensions-diagnostics-template.md).
 
 Szervezetek számára, amelyek nem a virtuális gép teljesítményének figyelése nem tudja megállapítani, bizonyos változtatásokat a teljesítmény minták-e normál és rendellenes. Egy virtuális Gépet, amely értéke a szokásosnál több erőforrást egy külső erőforrás vagy a virtuális Gépen futó feltört folyamat a támadás utalhat.

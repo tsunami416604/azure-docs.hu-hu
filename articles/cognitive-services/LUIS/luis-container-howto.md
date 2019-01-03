@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: a6170d51e1a8756020b4f2caa733c388b2ce4060
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2542364db3a895c060c752beeb0cfabf75834f7d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013816"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970271"
 ---
-# <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
+# <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
 A Language Understanding (LUIS) tároló betölti a betanított vagy közzétett Language Understanding modell, azaz egy [LUIS-alkalmazásokon](https://www.luis.ai), egy docker-tárolóba, és hozzáférést biztosít a lekérdezés előrejelzéseket a tároló API-ból végpontok. Lekérdezés naplók összegyűjtése a tárolóból, és ezek biztonsági feltöltése az Azure Language Understanding modellre való az alkalmazás előrejelzési pontosság növeléséhez.
 
@@ -34,17 +34,17 @@ A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie:
 
 |Szükséges|Cél|
 |--|--|
-|Docker-motor| Ebben az előzetes verzióban, szüksége Docker-motor telepítve egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
+|Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
-|Language Understanding (LUIS) erőforrás és a társított alkalmazás |A tároló használatához rendelkeznie kell:<br><br>* A [ _Language Understanding_ Azure-erőforrás](luis-how-to-azure-subscription.md), valamint a kapcsolódó végponti kulcs és a végpont URI azonosítója (használja a számlázási végpontként).<br>* Egy betanított vagy a közzétett alkalmazás csomagolt egy csatlakoztatott bemenetként a tárolóhoz, az a társított alkalmazás azonosítóját.<br>* A szerzői műveletek kulcs az alkalmazáscsomag letöltéséhez, akkor használatos, ha ez az API-ból.<br><br>Ezek a követelmények parancssori argumentumok átadása a következő változók használhatók:<br><br>**{AUTHORING_KEY}** : Ezt a kulcsot használja az alkalmazáscsomag beszerzése az intelligens HANGFELISMERÉSI szolgáltatás a felhőben és a lekérdezés naplók feltöltése a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ez az azonosító segítségével válassza ki az alkalmazást. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Ezzel a kulccsal a tároló elindításához. A végpont kulcs két helyen találja. Az első az Azure Portalon a _Language Understanding_ erőforrás kulcsok listája. A végpont kulcs is érhető el a kulcsokat és a végpont a LUIS portál beállítások lapján. Ne használja a kezdő szintű kulcs.<br><br>**{BILLING_ENDPOINT}** : A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el. Példa: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>A [és végponti kulcs létrehozási](luis-boundaries.md#key-limits) Ha különböző célokat szolgálnak. Ne alkalmazza őket felcserélhető. |
+|Language Understanding (LUIS) erőforrás és a társított alkalmazás |A tároló használatához rendelkeznie kell:<br><br>* A [ _Language Understanding_ Azure-erőforrás](luis-how-to-azure-subscription.md), valamint a kapcsolódó végponti kulcs és a végpont URI azonosítója (használja a számlázási végpontként).<br>* Egy betanított vagy a közzétett alkalmazás csomagolt egy csatlakoztatott bemenetként a tárolóhoz, az a társított alkalmazás azonosítóját.<br>* A szerzői műveletek kulcs az alkalmazáscsomag letöltéséhez, akkor használatos, ha ez az API-ból.<br><br>Ezek a követelmények parancssori argumentumok átadása a következő változók használhatók:<br><br>**{AUTHORING_KEY}** : Ez a kulcs segítségével az alkalmazáscsomag beszerzése az intelligens HANGFELISMERÉSI szolgáltatás a felhőben és a lekérdezés naplók feltöltése a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ez az azonosító segítségével válassza ki az alkalmazást. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Ez a kulcs segítségével a tárolót. A végpont kulcs két helyen találja. Az első az Azure Portalon a _Language Understanding_ erőforrás kulcsok listája. A végpont kulcs is érhető el a kulcsokat és a végpont a LUIS portál beállítások lapján. Ne használja a kezdő szintű kulcs.<br><br>**{BILLING_ENDPOINT}** : A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el. Példa: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>A [és végponti kulcs létrehozási](luis-boundaries.md#key-limits) Ha különböző célokat szolgálnak. Ne alkalmazza őket felcserélhető. |
 
 ### <a name="the-host-computer"></a>A számítógép
 
 A **gazdagép** van a számítógépen, amelyen a docker-tárolót. A helyszíni vagy a docker-üzemeltetési szolgáltatás az Azure például egy számítógép lehet:
 
-* [Azure Kubernetes Service](/azure/aks/)
-* [Azure Container Instances](/azure/container-instances/)
-* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](/azure/azure-stack/). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+* [Azure Kubernetes Service](../../aks/index.yml)
+* [Azure Container Instances](../../container-instances/index.yml)
+* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](../../azure-stack/index.yml). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
@@ -113,7 +113,7 @@ A bemeneti csatlakoztatási könyvtár is tartalmaz a **éles**, **átmeneti**, 
 |Fájlok másolása folyamatban|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
 |Production|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**Fontos:** ne nevezze, alter, és a LUIS-csomag fájlok kibontása.
+>**Fontos:** Ne nevezze, alter, és a LUIS-csomag fájlok kibontása.
 
 ### <a name="packaging-prerequisites"></a>Csomagolási Előfeltételek
 

@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: e68099609e5a4a27dfae7956fa43634d38311a22
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 01781725e3224e2cab49a5e7cc7dcc33030ce9fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015772"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971552"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: az Azure Access Control Service át
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: Migrálás az Azure Access Control Service-ből
 
 A Microsoft Azure Access Control Service (ACS), az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 kivezetjük. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljes áttelepíteni meg egy másik hitelesítési mechanizmust. Ez a cikk ismerteti a javaslatok a jelenlegi ügyfelek tervezésekor kivezetjük a hozzáférés-vezérlés használatát. Ha hozzáférés-vezérlés jelenleg nem használja, akkor nem kell semmit sem.
 
@@ -113,9 +113,9 @@ Kövesse az ebben a szakaszban megtudhatja, hogy az alkalmazások, amelyek ACS h
 
 A következő hozzáférés-vezérlés összetevői kivezetése ütemezése:
 
-- **2017 november**: az Azure AD-rendszergazda a klasszikus Azure portál felületét [kivonják a forgalomból](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Ezen a ponton a hozzáférés-vezérlési névtér-felügyelet érhető el egy új, dedikált URL-címen: `https://manage.windowsazure.com?restoreClassic=true`. Használja az URL-cím megtekintheti a meglévő névterekhez, engedélyezése és letiltása a névterek, és törli a névtereket, ha úgy dönt, hogy.
-- **2018. április 2.**: az Azure klasszikus portál teljesen kivonják, ami azt jelenti, hozzáférés-vezérlési névtér-felügyelet már nem érhető el minden olyan URL-CÍMEN keresztül. Ezen a ponton nem letiltása vagy engedélyezése, törlése, vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlési felügyeleti portálon lesz a teljes működési és a következő helyen található `https://\<namespace\>.accesscontrol.windows.net`. Továbbra is szokott hozzáférés-vezérlés összes összetevőjét.
-- **2018. november 7**: hozzáférés-vezérlés összetevői véglegesen állítsa le. Ez magában foglalja a hozzáférés-vezérlési felügyeleti portálon, a felügyeleti szolgáltatás, STS és a jogkivonatok átalakítását szabályalapú motor. Ezen a ponton minden olyan hozzáférés-vezérlés küldött kérelmek (található \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepítette az összes meglévő alkalmazások és szolgáltatások más technológiák is a megadott idő előtti.
+- **2017 november**:  Az Azure AD-rendszergazda a klasszikus Azure portál felületét [kivonják a forgalomból](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Ezen a ponton a hozzáférés-vezérlési névtér-felügyelet érhető el egy új, dedikált URL-címen: `https://manage.windowsazure.com?restoreClassic=true`. Használja az URL-cím megtekintheti a meglévő névterekhez, engedélyezése és letiltása a névterek, és törli a névtereket, ha úgy dönt, hogy.
+- **2018. április 2.**: A klasszikus Azure portálon teljesen eltávolították, ami azt jelenti, hozzáférés-vezérlési névtér-felügyelet már nem érhető el minden olyan URL-CÍMEN keresztül. Ezen a ponton nem letiltása vagy engedélyezése, törlése, vagy a hozzáférés-vezérlés névterek számbavétele. Azonban a hozzáférés-vezérlési felügyeleti portálon lesz a teljes működési és a következő helyen található `https://\<namespace\>.accesscontrol.windows.net`. Továbbra is szokott hozzáférés-vezérlés összes összetevőjét.
+- **2018. november 7**: Véglegesen állítsa le az összes hozzáférés-vezérlés összetevői. Ez magában foglalja a hozzáférés-vezérlési felügyeleti portálon, a felügyeleti szolgáltatás, STS és a jogkivonatok átalakítását szabályalapú motor. Ezen a ponton minden olyan hozzáférés-vezérlés küldött kérelmek (található \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepítette az összes meglévő alkalmazások és szolgáltatások más technológiák is a megadott idő előtti.
 
 > [!NOTE]
 > Egy szabályzat letiltja a névterek, amely nem kérte token egy ideig. 2018. szeptember korai ennyi ideig jelenleg, 14 nap inaktivitás után, de ez 7 nap inaktivitás az elkövetkező hetektől csonkolva lesz. Ha rendelkezik, amely jelenleg nincs engedélyezve a hozzáférés-vezérlés névtereket, [töltse le és telepítse az ACS PowerShell](#download-and-install-acs-powershell) kívánja újból engedélyezni a namespace(s).
@@ -151,7 +151,7 @@ A SharePoint 2013-hoz, 2016-ban, és a SharePoint Online ügyfelek hosszú haszn
 
 | Szolgáltatás | Útmutatás |
 | ------- | -------- |
-| Az Azure AD-ből származó felhasználók hitelesítése | Korábban az Azure AD nem támogatja az SAML 1.1-es jogkivonatok SharePoint-hitelesítéshez szükséges, és az ACS lett megadva egy, hogy a SharePoint compatibile az Azure AD-jogkivonat közvetítői szerepet betöltő formázza. Mostantól [SharePoint közvetlenül csatlakozhat az Azure AD-bA az Azure AD-Alkalmazásgyűjtemény SharePoint helyszíni alkalmazás](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
+| Az Azure AD-ből származó felhasználók hitelesítése | Korábban az Azure AD nem támogatja az SAML 1.1-es jogkivonatok SharePoint-hitelesítéshez szükséges, és ACS SharePoint kompatibilis az Azure AD-token formátumok fényében, amelyek a köztes lett megadva. Mostantól [SharePoint közvetlenül csatlakozhat az Azure AD-bA az Azure AD-Alkalmazásgyűjtemény SharePoint helyszíni alkalmazás](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Alkalmazás-hitelesítés és a kiszolgálók közötti hitelesítés a helyszíni SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. | 
 | [A SharePoint-bővítmények (üzemeltetett szolgáltató és üzemeltetett SharePoint) alacsony megbízhatósági engedélyezése](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. |
 | [SharePoint cloud hybrid search](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Nincs hatással az ACS kivezetési; nem szükséges módosításokat. |
@@ -162,8 +162,8 @@ Webes alkalmazásokhoz, melyek hozzáférés-vezérlés használata felhasznál�
 
 - Szoros integrációt a Windows Identity Foundation (WIF).
 - Összevonás a Google, Facebook, Yahoo, Azure Active Directory és az AD FS-fiókok és a Microsoft-fiókok.
-- Az alábbi hitelesítési protokollokat támogatja: az OAuth 2.0 Draft 13, a WS-Trust és a Web Services Federation (WS-Federation).
-- A következő token formátumok támogatását: JSON webes jogkivonat (JWT), a SAML 1.1-es, a SAML 2.0 és az egyszerű webes jogkivonat (SWT).
+- A következő hitelesítési protokollok támogatása: OAuth 2.0-s Draft 13, a WS-Trust és a Web Services Federation (WS-összevonás).
+- A következő token formátumok támogatását: JSON webes jogkivonat (JWT), a SAML 1.1-es, a SAML 2.0 és az egyszerű webes (SWT) tokent.
 - A hitelesítőtartomány felfedezési, WIF, integrálva, amely lehetővé teszi a felhasználók számára milyen típusú fiókkal való bejelentkezéshez használják. Ez a webalkalmazás által futtatott, és teljes mértékben testreszabható.
 - Jogkivonat-átalakítást, amely lehetővé teszi, hogy a jogcímek, a hozzáférés-vezérlés, a webes alkalmazás által fogadott gazdag testreszabási többek között:
     - Identitás-szolgáltatóktól származó jogcímek továbbítása.

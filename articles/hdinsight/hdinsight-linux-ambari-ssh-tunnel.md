@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409523"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743866"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Az Apache Ambari webes felület, JobHistory, NameNode, az Apache Oozie és egyéb webes eléréséhez használja a SSH-bújtatással
 
@@ -47,7 +47,7 @@ Ha Parancsfájlműveletek segítségével testre szabhatja a fürt, szolgáltat�
 
 * Egy webes böngésző SOCKS5 proxy használatára konfigurálható.
 
-    > [!WARNING]
+    > [!WARNING]  
     > A beépített Windows Internetbeállítások SOCKS proxy-támogatás nem támogatja a SOCKS5, és nem működik a jelen dokumentumban leírt lépések. Az alábbi böngészők Windows proxybeállítások támaszkodnak, és jelenleg nem működik a jelen dokumentumban leírt lépések:
     >
     > * Microsoft Edge
@@ -78,7 +78,7 @@ Ha befejezte a parancsot, a helyi számítógépen 9876 portra küldött forgalm
 
 ## <a name="useputty"></a>Hozzon létre egy alagút a PuTTY használatával
 
-[A puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) grafikus SSH-ügyfelet a Windows rendszer. Ha nem ismeri a putty-t, tekintse meg a [dokumentáció PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Az alábbi lépések segítségével hozzon létre SSH-alagút a PuTTY használatával:
+[A puTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) grafikus SSH-ügyfelet a Windows rendszer. Ha nem ismeri a putty-t, tekintse meg a [dokumentáció PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Az alábbi lépések segítségével hozzon létre SSH-alagút a PuTTY használatával:
 
 ### <a name="create-or-load-a-session"></a>Nem tölthető be a munkamenet
 
@@ -120,7 +120,7 @@ Ha befejezte a parancsot, a helyi számítógépen 9876 portra küldött forgalm
    > [!NOTE]  
    > Kiválasztásával **távoli DNS** oldja fel a tartománynévrendszer (DNS) kéréseket a HDInsight-fürt használatával. Ez a beállítás megszünteti a DNS, a fürt fő csomópontjának használatával.
 
-2. Győződjön meg arról, hogy működik-e az alagutat a webhely felkeresésével [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). A visszaadott IP-cím egy használják a Microsoft Azure-adatközpontban kell lennie.
+2. Győződjön meg arról, hogy működik-e az alagutat a webhely felkeresésével [ https://www.whatismyip.com/ ](https://www.whatismyip.com/). A visszaadott IP-cím egy használják a Microsoft Azure-adatközpontban kell lennie.
 
 ## <a name="verify-with-ambari-web-ui"></a>Az Ambari webes felhasználói felületének ellenőrzéséhez
 

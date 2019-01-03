@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437197"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743000"
 ---
 # <a name="machine-learning-on-hdinsight"></a>A Machine learning, a HDInsight
 
-HDInsight lehetővé teszi, hogy a gépi tanulás big Data jellegű adatokat, és a nagy mennyiségű (több petabájtnyi vagy akár exabájtjain való elemzést) strukturált és strukturálatlan adatok egyaránt, az értékes információkat beszerzésének képessége és gyors ütemben adatokkal. Nincsenek számos machine learning-a HDInsight-beállításai:  Könnyen használható és MLlib, R, Apache Hive és a Microsoft Cognitive Toolkit.
+HDInsight lehetővé teszi, hogy a gépi tanulás big Data jellegű adatokat, és a nagy mennyiségű (több petabájtnyi vagy akár exabájtjain való elemzést) strukturált és strukturálatlan adatok egyaránt, az értékes információkat beszerzésének képessége és gyors ütemben adatokkal. Nincsenek számos machine learning-a HDInsight-beállításai:  Könnyen használható és az Apache Spark MLlib, R, Apache Hive és a Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>Könnyen használható és MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) , egy Azure-ban üzemeltetett ajánlat [Apache Spark](http://spark.apache.org/), egy egységesített, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszert támogató memórián belüli feldolgozást a big data-elemzés növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. Nincsenek két méretezhető machine learning-kódtárak együttese algoritmikus modellezési képességek életre az elosztott környezetekben: MLlib és könnyen használható. MLlib tartalmaz az eredeti API-ra épülő rdd-k. Könnyen használható csomag egy újabb, amelyek gépi Tanulási folyamatok megalkotásához DataFrames épülő magasabb szintű API-t biztosít. Könnyen használható még nem támogatja az a Funkciók, MLlib, de a Spark a standard szintű machine learning-könyvtárat, MLlib lecseréli.
+[HDInsight Spark](spark/apache-spark-overview.md) , egy Azure-ban üzemeltetett ajánlat [Apache Spark](https://spark.apache.org/), egy egységesített, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszert támogató memórián belüli feldolgozást a big data-elemzés növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. Nincsenek két méretezhető machine learning-kódtárak együttese algoritmikus modellezési képességek életre az elosztott környezetekben: MLlib és könnyen használható. MLlib tartalmaz az eredeti API-ra épülő rdd-k. Könnyen használható csomag egy újabb, amelyek gépi Tanulási folyamatok megalkotásához DataFrames épülő magasabb szintű API-t biztosít. Könnyen használható még nem támogatja az a Funkciók, MLlib, de a Spark a standard szintű machine learning-könyvtárat, MLlib lecseréli.
 
 A Microsoft Machine Learning library for Apache Spark van [MMLSpark](https://github.com/Azure/mmlspark). Ez a kódtár úgy tervezték, adja meg az adatszakértők hatékonyabbá a Spark, a Kísérletezési aránya növelése, és kihasználhatja a legmodernebb gépi tanulási technikák, beleértve a mély tanulás, nagy méretű adatkészleteken. MMLSpark biztosít egy könnyen használható az alacsony szintű API-k a felső szintű rétege létrehozását, skálázható gépi Tanulási modelleket, például az indexelő karakterláncok adatok coercing gép tanulási algoritmusok és összeállításával készíthet átjárókat funkció vektorok által várt elrendezés be. Az MMLSpark könyvtár egyszerűbbé teszi ezeket és más gyakori feladatok a PySpark modellek készítéséhez.
 

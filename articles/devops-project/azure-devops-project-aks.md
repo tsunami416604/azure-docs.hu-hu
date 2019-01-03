@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: ASP.NET Core-alkalmazások üzembe helyezése az Azure Kubernetes Service az Azure DevOps Projects segítségével'
+title: 'Oktatóanyag: Az ASP.NET Core-alkalmazások üzembe helyezése az Azure Kubernetes Service az Azure DevOps Projects segítségével'
 description: Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. A DevOps Projects telepítheti az ASP.NET Core-alkalmazás és az Azure Kubernetes Service (AKS) néhány gyors lépéssel.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2aa103b36f60a84aaafc47f03a6cf6d5b6b66160
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620642"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993783"
 ---
-# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Oktatóanyag: ASP.NET Core-alkalmazások üzembe helyezése az Azure Kubernetes Service az Azure DevOps Projects segítségével
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Oktatóanyag: Az ASP.NET Core-alkalmazások üzembe helyezése az Azure Kubernetes Service az Azure DevOps Projects segítségével
 
 Az Azure DevOps Projects megjelenít egy egyszerűsített felület, ahol a meglévő kódot és a Git-adattár, vagy válasszon egy mintaalkalmazást, hozzon létre egy folyamatos integrációs (CI) és a folyamatos továbbítás (CD) folyamatot az Azure-bA. 
 
@@ -191,4 +191,4 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 A Kubernetes-irányítópult használatával kapcsolatos további tudnivalókért lásd:
 
 > [!div class="nextstepaction"]
-> [A Kubernetes-irányítópult használata](https://docs.microsoft.com/en-us/azure/aks/kubernetes-dashboard)
+> [A Kubernetes-irányítópult használata](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)

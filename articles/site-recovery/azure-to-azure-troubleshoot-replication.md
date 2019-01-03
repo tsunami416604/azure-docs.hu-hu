@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9a32ac1ae71cb7bd89c4252157c3a5cd395b2694
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842339"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993331"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Azure – Azure virtuális gép folyamatban lévő replikáció hibáinak elhárítása
 
@@ -22,13 +22,13 @@ Ez a cikk az Azure Site Recoveryben replikálása és helyreállítása Azure-be
 
 ## <a name="recovery-points-not-getting-generated"></a>Nem első létrehozott helyreállítási pontok
 
-HIBAÜZENET: Nincs összeomlási elérhető alkalmazáskonzisztens helyreállítási pont a virtuális gép az elmúlt 60 perc.</br>
+HIBAÜZENET JELENIK MEG: Nincs összeomlási elérhető alkalmazáskonzisztens helyreállítási pont a virtuális gép az elmúlt 60 perc.</br>
 HIBA AZONOSÍTÓJA: 153007 </br>
 
 Az Azure Site Recovery folyamatosan a forrásrégióban replikálja az adatokat a vészhelyreállítási régióban, és 5 percenként összeomlás-konzisztens pontot hoz létre. Ha a Site Recovery nem tudja létrehozni a helyreállítási pontok 60 percig, majd a felhasználó értesítést. Az alábbiakban, amely ezt a hibát eredményezhet az okok:
 
-**1. ok: [magas adatváltozási sebessége a forrás virtuális gépen](#high-data-change-rate-on-the-source-virtal-machine)**    
-**2. ok: [hálózati kapcsolati hiba ](#Network-connectivity-issue)**
+**1. ok: [A forrás virtuális gépen nagy adatváltozási sebesség](#high-data-change-rate-on-the-source-virtal-machine)**    
+**2. ok: [Hálózati kapcsolati hiba ](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait
 
@@ -68,18 +68,18 @@ Található a módosult adatok aránya az érintett virtuális gép. Nyissa meg 
 
 Azokban az esetekben, például a fent egy alkalmanként adatokat hirtelen és adatváltozási sebessége meghaladja a 10 MB/s (a prémium szintű) és 2 MB/s (Standard) egy kis ideig, és tartalmaz, replikációs fog legérdekesebb részeit. Azonban ha a forgalom a támogatott korlátot túlmutató a legtöbbször, majd érdemes egyikét az alábbi beállítást, ha lehetséges:
 
-**1. lehetőség:** okozza a magas adatváltozási sebesség lemezének kizárása: </br>
+**1. lehetőség:** Zárja ki a lemezt, amely okozza a magas adatváltozási sebesség: </br>
 Jelenleg zárhatók ki a lemezt használó [Site Recovery Powershell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine)
 
-**2. lehetőség:** a katasztrófa utáni helyreállítás tárolási lemez szint módosítása: </br>
+**2. lehetőség:** A vész helyreállítási tárolási lemez szintjének módosítása: </br>
 Ez a beállítás csak akkor lehetséges, ha a lemez adatváltozásának kevesebb mint 10 MB/s. Lehetővé tegyük fel, hogy egy virtuális Gépet a P10 lemez egy nagyobb, mint a 8 MB/s, de kevesebb mint 10 MB/s adatváltozása esetén adódnak. Ha az ügyfél védelem során P30 lemez használható a céloldali tárolóra, majd a probléma megoldhatók.
 
 ### <a name="Network-connectivity-issue"></a>Hálózati kapcsolati hiba
 
 #### <a name="network-latency-to-cache-storage-account-"></a>Hálózati késés gyorsítótárfiókba:
  A Site Recovery a replikált adatokat küld a gyorsítótárfiókot, és a probléma akkor fordulhat elő, ha feltöltéséhez a virtuális gépről a gyorsítótárfiókba lassabb a 4 MB 3 mp. Ellenőrizze, hogy van-e bármilyen probléma késés használatával kapcsolatos [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) feltölteni az adatokat a virtuális gépről a gyorsítótárfiókba.<br>
-Ha nagy a késés, ellenőrizze, ha egy hálózati virtuális berendezések segítségével szabályozhatja a virtuális gépek kimenő hálózati forgalmát. A berendezés előfordulhat, hogy leszabályozza, ha a replikációs forgalmat az nva-n keresztül halad. Azt javasoljuk, hogy hoz létre egy hálózati végpontot a virtuális hálózat "Tároló" úgy, hogy a replikálás forgalma nem halad, az nva-n. Tekintse meg [hálózati virtuális berendezés konfigurációjának](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+Ha nagy a késés, ellenőrizze, ha egy hálózati virtuális berendezések segítségével szabályozhatja a virtuális gépek kimenő hálózati forgalmát. A berendezés előfordulhat, hogy leszabályozza, ha a replikációs forgalmat az nva-n keresztül halad. Azt javasoljuk, hogy hoz létre egy hálózati végpontot a virtuális hálózat "Tároló" úgy, hogy a replikálás forgalma nem halad, az nva-n. Tekintse meg [hálózati virtuális berendezés konfigurációjának](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
 
 #### <a name="network-connectivity"></a>Hálózati kapcsolat
 A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-címtartományok szükség a virtuális gépről. Ha a virtuális gép tűzfal mögött található, vagy használja a hálózati biztonsági csoport (NSG) szabályai kimenő kapcsolat szabályozásához, előfordulhat, hogy között ezek a problémák egyike.</br>
-Tekintse meg [kimenő kapcsolatok esetében a Site Recovery URL-címeinek](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) , győződjön meg arról, hogy minden URL-címek vannak csatlakoztatva 
+Tekintse meg [kimenő kapcsolatok esetében a Site Recovery URL-címeinek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) , győződjön meg arról, hogy minden URL-címek vannak csatlakoztatva 

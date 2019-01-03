@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 2ae11afe1ecbe500a4851aab6d56e612fbe79ee6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b7cde3a8990a51e95a8ce9ad85bca524d5669e0c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975129"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721121"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Az Azure Data Lake Storage Gen2 használata az Azure HDInsight az Apache Hadoop-keretrendszerrel
 
@@ -21,15 +21,15 @@ Az Azure Data Lake Storage (ADLS) Gen2 idő szükséges alapvető Hadoop kompati
 
 ## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 fő funkciói
 
-- Hadoop-kompatibilis hozzáférés: az Azure Data Lake Storage Gen2 lehetővé teszi, hogy kezelését, és ugyanúgy, mint az a Hadoop elosztott fájlrendszer (HDFS) adatok eléréséhez. A ABFS illesztőprogram összes Apache Hadoop-környezetekben, beleértve az Azure HDInsight és az Azure Databricks a Data Lake Storage Gen2 adataihoz hozzáférést érhető el.
+- Hadoop-kompatibilis hozzáférés: Az Azure Data Lake Storage Gen2 lehetővé teszi, hogy kezelését, és ugyanúgy, mint az a Hadoop elosztott fájlrendszer (HDFS) adatok eléréséhez. A ABFS illesztőprogram összes Apache Hadoop-környezetekben, beleértve az Azure HDInsight és az Azure Databricks a Data Lake Storage Gen2 adataihoz hozzáférést érhető el.
 
 - Felülbírálja a POSIX-engedélyek: A Data Lake Gen2 biztonsági modell támogatja az ACL-JEI és POSIX engedélyekkel együtt néhány további pontossággal megadott Data Lake Storage Gen2-re. Beállítások felügyeleti eszközöket és keretrendszereket, mint például az Apache Hive és az Apache Spark keresztül konfigurálhatók.
 
-- Költséghatékony: Data Lake Storage Gen2 kínál költséghatékony tárolási kapacitás és a tranzakciók. Szolgáltatások, például az Azure Blob storage életciklus alacsonyabb költségek segítségével módosításával díjszabása nem módosul, az adatok életciklusa továbbítanak.
+- Költséghatékony: Data Lake Storage Gen2 költséghatékony tárolási kapacitás és a tranzakciók érhetők el. Szolgáltatások, például az Azure Blob storage életciklus alacsonyabb költségek segítségével módosításával díjszabása nem módosul, az adatok életciklusa továbbítanak.
 
-- A Blob storage-eszközökkel, keretrendszerek és alkalmazások működik: Data Lake Storage Gen2 továbbra is az eszközöket, keretrendszerek és alkalmazások a Blob Storage jelenleg létező széles választékának működik.
+- A Blob storage-eszközökkel, keretrendszerek és alkalmazások működését: Data Lake Storage Gen2 továbbra is az eszközöket, keretrendszerek és alkalmazások a Blob Storage jelenleg létező széles választékának működik.
 
-- Optimalizált illesztőprogram: A ABFS illesztőprogram kifejezetten a big data-elemzés van optimalizálva. A megfelelő REST API-k az elosztott fájlrendszerbeli végpont végzetesnek dfs.core.windows.net.
+- Optimalizált illesztőprogram: A ABFS illesztőprogram kifejezetten a big data-elemzés optimalizáltuk. A megfelelő REST API-k az elosztott fájlrendszerbeli végpont végzetesnek dfs.core.windows.net.
 
 ## <a name="whats-new-about-azure-data-lake-storage-gen-2"></a>Az Azure Data Lake Storage általános 2 kapcsolatos újdonságok
 
@@ -45,7 +45,7 @@ Az Apache Hadoop-alkalmazások natív módon várhatóan adatokat olvasnak és �
 
 Korábban a Hadoop-fájlrendszer illesztőprogram lenne minden fájlrendszerműveletek átalakítása az Azure Storage REST API-hívásokat az ügyféloldalon, és ezután meghívja a REST API-t. Az ügyféloldali átalakítás, azonban több REST API eredményezett egy egyetlen fájlrendszer-műveletet, például egy fájl átnevezése szükségessé teszi. ABFS át lett helyezve a Hadoop-fájlrendszer logika némelyike az ügyfél oldaláról a kiszolgálóoldali és ADLS Gen2 API-val most Blob API-val párhuzamosan fut. Az áttelepítés javítja a teljesítményt, mert most Hadoop gyakori fájlrendszerműveletre hajtható végre egy REST API-hívással.
 
-További információkért lásd: [az Azure Blob fájlrendszer illesztőprogram (ABFS): egy dedikált Azure Storage-illesztőprogram hadoop](../storage/data-lake-storage/abfs-driver.md).
+További információkért lásd: [az Azure Blob fájlrendszer illesztőprogram (ABFS): Egy dedikált Azure Storage-illesztő az Apache Hadoop](../storage/data-lake-storage/abfs-driver.md).
 
 ### <a name="adls-gen-2-uri-scheme"></a>ADLS általános 2 URI-séma
 
@@ -68,7 +68,7 @@ abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapr
 abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
-> [!Note]
+> [!NOTE]  
 > A Fájlnév `hadoop-examples.jar` HDInsight 2.1-es és 1.6-os verziójának fürtökben. Ha HDInsight-on kívül fájljain végzett munka, legtöbb segédprogram nem ismeri fel a ABFS formázhatja, és ehelyett például az egy alapvető elérési út formátumot várhatóan `example/jars/hadoop-mapreduce-examples.jar`.
 
 További információkért lásd: [használata az Azure Data Lake Storage Gen2 URI](../storage/data-lake-storage/introduction-abfs-uri.md).

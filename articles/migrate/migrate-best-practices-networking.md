@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139744"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994963"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Ajánlott eljárásokat, és állítsa be a hálózati, számítási feladatok migrálása az Azure-bA
 
@@ -37,7 +37,7 @@ Az Azure virtuális hálózatok (Vnetek) kínál:
 
 Létezik néhány dolgot kell foglalkoznia, ha a virtuális hálózatok közötti topológia, beleértve az IP-cím elrendezése tervezési tárolóhelyek, hogyan valósíthat meg egy küllős hálózati szegmentálhatja a virtuális hálózatok alhálózatokra, állítsa be a DNS és az Azure rendelkezésre állási zónák megvalósítása.
 
-## <a name="best-practice-plan-ip-addressing"></a>Ajánlott eljárás: megtervezése IP-címkezelés
+## <a name="best-practice-plan-ip-addressing"></a>Ajánlott eljárás: IP-címzés tervezése
 
 Ha az áttelepítés részeként létrehozott virtuális hálózatok, fontos tervezze meg a virtuális hálózat IP-címtér.
 
@@ -53,7 +53,7 @@ Ha az áttelepítés részeként létrehozott virtuális hálózatok, fontos ter
 - [Ismerje meg](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) hálózati korlátozások.
 
 
-## <a name="best-practice-implement-a-hub-spoke-network-topology"></a>Ajánlott eljárás: egy küllős hálózati topológia implementálása
+## <a name="best-practice-implement-a-hub-spoke-network-topology"></a>Ajánlott eljárás: Küllős hálózati topológia implementálása
 
 Egy küllős hálózati topológia elkülöníti a számítási feladatok során például az identitás- és biztonsági szolgáltatások megosztása.
 - A hub egy Azure virtuális hálózat, amely központi kapcsolódási pontként viselkedik.
@@ -76,7 +76,7 @@ A következőket ajánljuk figyelmébe:
 - [Ismerje meg](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuális hálózatok közötti társviszony-létesítés.
 
 
-## <a name="best-practice-design-subnets"></a>Ajánlott eljárás: alhálózatok tervezése
+## <a name="best-practice-design-subnets"></a>Ajánlott eljárás: Tervezési alhálózatok
 
 Elkülönítéshez egy virtuális hálózaton, szegmentálása, egy vagy több alhálózatra, és lefoglalni a VNet-címterek minden alhálózat egy része.
 - Minden egyes virtuális hálózaton belüli több alhálózaton is létrehozhat.
@@ -101,7 +101,7 @@ DEV-DB-EUS2 | 10.245.24.0/23 | 507 | Adatbázis-beli virtuális gépek
 - [Ismerje meg, hogyan](https://docs.microsoft.com/azure/migrate/contoso-migration-infrastructure) egy fiktív vállalat (Contoso) a hálózati infrastruktúra előkészítve a migrálásra.
 
 
-## <a name="best-practice-set-up-a-dns-server"></a>Ajánlott eljárás: egy DNS-kiszolgáló beállítása
+## <a name="best-practice-set-up-a-dns-server"></a>Ajánlott eljárás: DNS-kiszolgáló beállítása
 
 Azure ad hozzá egy DNS-kiszolgáló alapértelmezés szerint, ha telepít egy virtuális hálózathoz. Ez lehetővé teszi, hogy gyorsan hozhat létre virtuális hálózatok és az erőforrások üzembe helyezése. Azonban a DNS-kiszolgáló csak szolgáltatást biztosítja az erőforrásokat, hogy a virtuális hálózaton. Ha azt szeretné, több virtuális hálózatok egymáshoz kapcsolásához, vagy egy helyszíni kiszolgálóhoz csatlakozni a virtuális hálózatok, szüksége további megoldási képességek. Ha például szüksége lehet az Active Directory DNS-nevek a virtuális hálózatok között. Ehhez az Azure-ban a saját egyéni DNS-kiszolgáló üzembe helyezése.
 
@@ -118,10 +118,10 @@ Azure ad hozzá egy DNS-kiszolgáló alapértelmezés szerint, ha telepít egy v
 
 **tudj meg többet:**
 - [Ismerje meg](https://docs.microsoft.com/azure/migrate/contoso-migration-infrastructure) névfeloldás saját DNS-kiszolgáló használata esetén.
-- [Ismerje meg](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions) DNS elnevezési szabályokat és korlátozásokat.
+- [Ismerje meg](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions) DNS elnevezési szabályokat és korlátozásokat.
 
 
-## <a name="best-practice-set-up-availability-zones"></a>Ajánlott eljárás: állítsa be a rendelkezésre állási zónák
+## <a name="best-practice-set-up-availability-zones"></a>Ajánlott eljárás: Állítsa be a rendelkezésre állási zónák
 
 A rendelkezésre állási zónák a magas rendelkezésre állású alkalmazások és adatok védelme az Adatközpont meghibásodása növelése.
 
@@ -134,8 +134,8 @@ A rendelkezésre állási zónák a magas rendelkezésre állású alkalmazások
     ![Rendelkezésre állási zónában](./media/migrate-best-practices-networking/availability-zone.png) *rendelkezésre állási zónában*
 
 - Tervezhet és magas rendelkezésre állás beépítése az áttelepítési architektúra számítási, tárolási, hálózati és adatforrások közös elhelyezése a zónán belül, és replikálja őket a más zónákban. Azure-szolgáltatások rendelkezésre állási zónákat támogató két kategóriába sorolhatók:
-    - A zónaszintű szolgáltatások: társítania egy erőforráshoz egy adott zónához. Példa virtuális gépek esetén a felügyelt lemezek, IP-címek).
-    - Zónaredundáns szolgáltatások: az erőforrás automatikus több zónában replikálja. Ha például zónaredundáns tárolás, az Azure SQL Database.
+    - A zónaszintű szolgáltatások: Egy adott zónához társítania egy erőforráshoz. Példa virtuális gépek esetén a felügyelt lemezek, IP-címek).
+    - Zónaredundáns szolgáltatások: Az erőforrás automatikus több zónában replikálja. Ha például zónaredundáns tárolás, az Azure SQL Database.
 - Telepíthet egy standard Azure elosztott terhelésű az internetkapcsolattal rendelkező számítási feladatok vagy alkalmazást, a zónaszintű hibatűrő képességének biztosítása érdekében.
 
     ![Terheléselosztó](./media/migrate-best-practices-networking/load-balancer.png) *Load balancer*
@@ -149,14 +149,14 @@ A rendelkezésre állási zónák a magas rendelkezésre állású alkalmazások
 
 A sikeres áttelepítéshez fontos helyszíni vállalati hálózat csatlakoztatása az Azure. Ez létrehoz egy folyamatosan elérhető kapcsolat, néven egy hibridfelhő-alapú hálózat, ahol szolgáltatások állnak rendelkezésre az Azure felhőalapú vállalati felhasználók számára. Az ilyen típusú hálózat létrehozása két lehetőség van:
 
-- **Helyek közötti VPN:** egy helyek közötti kapcsolat közötti a kompatibilis a helyszíni VPN-eszköz és az üzembe helyezett Azure VPN gateway a virtuális hálózat létrehozása. Minden jogosult a helyszíni erőforráshoz hozzáférhet a virtuális hálózatok. Helyek közötti kommunikáció egy titkosított csatornán keresztül továbbítódnak az interneten keresztül. 
-- **Az Azure ExpressRoute:** létrehozása az Azure ExpressRoute-kapcsolat a helyszíni hálózat és az Azure között egy ExpressRoute-partneren keresztül. Ez a kapcsolat nem nyilvános, és a forgalom nem halad az interneten keresztül.
+- **Helyek közötti VPN:** Egy hely – hely közötti kapcsolat létrehozása a kompatibilis a helyszíni VPN-eszköz és az üzembe helyezett Azure VPN gateway egy virtuális hálózaton. Minden jogosult a helyszíni erőforráshoz hozzáférhet a virtuális hálózatok. Helyek közötti kommunikáció egy titkosított csatornán keresztül továbbítódnak az interneten keresztül. 
+- **Az Azure ExpressRoute:** A helyszíni hálózat és az Azure között egy ExpressRoute-partneren keresztül az Azure ExpressRoute kapcsolat létrehozása. Ez a kapcsolat nem nyilvános, és a forgalom nem halad az interneten keresztül.
 
 **tudj meg többet:**
 
 - [További](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vpn) hibridfelhő-alapú hálózati kapcsolatban.
 
-## <a name="best-practice-implement-a-highly-available-site-to-site-vpn"></a>Ajánlott eljárás: egy magas rendelkezésre állású site-to-site VPN megvalósítása
+## <a name="best-practice-implement-a-highly-available-site-to-site-vpn"></a>Ajánlott eljárás: Egy magas rendelkezésre állású site-to-site VPN megvalósítása
 
 Site-to-site VPN implementálásához, állítsa be a VPN-átjáró, az Azure-ban.
 - VPN-átjáró egy adott típusú virtuális hálózati átjáró, amely egy Azure virtuális hálózat és a egy helyszíni hely közötti titkosított adatforgalmat továbbíthat a nyilvános interneten keresztül szolgál.
@@ -193,7 +193,7 @@ A site-to-site VPN beállításakor, tegye a következőket:
 - [További információ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview) BGP beállítása az Azure VPN-átjárókkal.
 
 
-### <a name="best-practice-configure-a-gateway-for-vpn-gateways"></a>Ajánlott eljárás: átjáróinak konfigurálása a VPN-átjárók
+### <a name="best-practice-configure-a-gateway-for-vpn-gateways"></a>Ajánlott eljárás: Az átjáró VPN-átjárók konfigurálása
 
 Az Azure-beli VPN-átjáró létrehozásakor meg kell használnia egy GatewaySubnet nevű speciális alhálózatra. Amikor létrehozza a alhálózati Megjegyzés az ajánlott eljárások:
 
@@ -205,7 +205,7 @@ Az Azure-beli VPN-átjáró létrehozásakor meg kell használnia egy GatewaySub
 **tudj meg többet:**
 - [Ezzel az eszközzel](https://gallery.technet.microsoft.com/scriptcenter/Address-prefix-calculator-a94b6eed) meghatározni az IP-címterületének.
 
-## <a name="best-practice-implement-azure-virtual-wan-for-branch-offices"></a>Ajánlott eljárás: megvalósítása az Azure virtuális WAN fiókirodák számára
+## <a name="best-practice-implement-azure-virtual-wan-for-branch-offices"></a>Ajánlott eljárás: Megvalósítása az Azure virtuális WAN fiókirodák számára
 
 Több VPN-kapcsolatok az Azure virtuális WAN egy olyan hálózati szolgáltatás, amely optimalizált és automatizált ág ágba irányuló kapcsolatot az Azure-on keresztül biztosítja.
 - A Virtual WAN segítségével ágeszközöket csatlakoztathat és konfigurálhat az Azure-ral való kommunikációra. Ez elvégezhető manuálisan, vagy egy virtuális WAN-partneren keresztül előnyben részesített szolgáltató eszközök használatával.
@@ -215,7 +215,7 @@ Több VPN-kapcsolatok az Azure virtuális WAN egy olyan hálózati szolgáltatá
 **További információ:**
 [ismertetése](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about) Azure virtuális WAN.
 
-### <a name="best-practice-implement-expressroute-for-mission-critical-connections"></a>Ajánlott eljárás: a működés szempontjából kritikus fontosságú kapcsolatokhoz megvalósítása az ExpressRoute
+### <a name="best-practice-implement-expressroute-for-mission-critical-connections"></a>Ajánlott eljárás: A működés szempontjából kritikus fontosságú kapcsolatokhoz ExpressRoute megvalósítása
 
 Az Azure ExpressRoute szolgáltatás használatával a helyszíni infrastruktúrát kiterjesztheti a Microsoft cloud Az Azure-beli virtuális adatközpont közötti privát kapcsolatok létrehozásával és a helyszíni hálózatokkal.
 - Az ExpressRoute-kapcsolatok lehetnek egy – bármely (IP VPN) hálózat, pontok közötti Ethernet-hálózaton keresztül, vagy egy kapcsolatszolgáltatón keresztül. Ezek nem a nyilvános interneten haladnak át.
@@ -280,7 +280,7 @@ Virtuális hálózatok biztonságossá tétele a felelősséget, és a Microsoft
 - [Áttekintés](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices) hálózati biztonság ajánlott eljárásait.
 - [Ismerje meg, hogyan](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#security) biztonságos hálózatok megtervezése.
 
-## <a name="best-practice-implement-an-azure-perimeter-network"></a>Ajánlott eljárás: egy Azure peremhálózat megvalósítása
+## <a name="best-practice-implement-an-azure-perimeter-network"></a>Ajánlott eljárás: Egy Azure peremhálózat megvalósítása
 
 Bár a Microsoft erősen fektet a felhőalapú infrastruktúra védelmét, ezenkívül védeni kell a felhőalapú szolgáltatások és -erőforráscsoportok. Egy többrétegű biztonsági megközelítés a legjobb védelmet biztosít. Fontos része annak a defense stratégia szegélyhálózaton helyezné érvényben.
 
@@ -301,7 +301,7 @@ Az alábbi ábra egy vállalati hálózaton, két biztonsági határokat egyetle
 - [Ismerje meg](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid) üzembe helyezése az Azure és a helyszíni adatközpont közötti szegélyhálózaton.
 
 
-## <a name="best-practice-filter-vnet-traffic-with-nsgs"></a>Ajánlott eljárás: szűrő virtuális hálózatok közötti forgalom NSG-k
+## <a name="best-practice-filter-vnet-traffic-with-nsgs"></a>Ajánlott eljárás: Az NSG-ket a virtuális hálózatok közötti forgalom szűrése
 
 Hálózati biztonsági csoportok (NSG) tartalmazhat több bejövő és kimenő biztonsági szabályt, amely a forgalmat az erőforrások szűréséhez. Szűrés forrás és cél IP-cím, port és protokoll szerint is lehet. 
 - NSG tartalmaz szabályokat, amelyek engedélyezik vagy megtagadják a bejövő hálózati forgalom (vagy a kimenő hálózati forgalom) számos különböző Azure-erőforrások. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
@@ -312,7 +312,7 @@ Hálózati biztonsági csoportok (NSG) tartalmazhat több bejövő és kimenő b
 - A meglévő kapcsolatok nem szakadnak meg, a biztonsági szabály, amely engedélyezve van a flow eltávolításakor. Adatforgalmi folyamatokat kapcsolatok le lesz állítva, és nincs adatforgalommal bármelyik irányba, legalább egy néhány perces megszakadnak.
 - NSG-k létrehozásakor, hozzon létre néhány lehetséges, hanem számos szükséges.
 
-### <a name="best-practice-secure-northsouth-and-eastwest-traffic"></a>Ajánlott eljárás: észak-dél és kelet-Nyugat forgalmának biztonságossá tétele
+### <a name="best-practice-secure-northsouth-and-eastwest-traffic"></a>Ajánlott eljárás: Észak-dél és kelet-Nyugat forgalmának biztonságossá tétele
 
 Virtuális hálózatok biztosításakor fontos fontolja meg a támadási vektorok.
 - Csak az alhálózati NSG-k segítségével egyszerűbbé teszi a környezetet, de csak titkosítja a forgalmat az alhálózatban. Ez az úgynevezett észak-dél-forgalmat.
@@ -336,11 +336,11 @@ Szolgáltatáscímkék a manuális tevékenység ki egy szabályt hozzárendelé
 
 **tudj meg többet:**
 
-- [További információ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview) NSG-ket.
+- [További információ](https://docs.microsoft.com/azure/virtual-network/security-overview) NSG-ket.
 - [Felülvizsgálat](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) a szolgáltatáscímkék NSG-ket.
 
 
-## <a name="best-practice-use-application-security-groups"></a>Ajánlott eljárás: az alkalmazásbiztonsági csoportok használata
+## <a name="best-practice-use-application-security-groups"></a>Ajánlott eljárás: Az alkalmazásbiztonsági csoportok használata
 
 Az alkalmazásbiztonsági csoportok lehetővé teszik az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot.
 
@@ -365,9 +365,9 @@ NIC4 | AsgDb
 
     **Szabály neve** | **Cél** | **Részletek**
     --- | --- | ---   
-    Allow-HTTP-Inbound-Internet | Engedélyezi az internetről érkező forgalmat a webkiszolgálóra. Az internetről bejövő forgalmat, nincs további szabály szükséges az AsgLogic vagy AsgDb alkalmazásbiztonsági csoportok szerint DenyAllInbound alapértelmezett biztonsági szabály nem. | Prioritás: 100<br/><br/> Forrás: internet<br/><br/> Forrásport: *<br/><br/> Cél: AsgWeb<br/><br/> Céloldali port: 80-as<br/><br/> Protokoll: TCP<br/><br/> Hozzáférés: engedélyezése.
-    Deny-Database-All | AllowVNetInBound alapértelmezett biztonsági szabály lehetővé teszi, hogy az azonos virtuális hálózatban található erőforrások közötti minden kommunikáció is, ez a szabály az összes erőforrást a forgalom megtagadásához szükséges. | Prioritás: 120<br/><br/> Forrás: *<br/><br/> Forrásport: *<br/><br/> Cél: AsgDb<br/><br/> Céloldali port: 1433-as<br/><br/> Protokoll: összes<br/><br/> Hozzáférés: elutasítás.
-    Allow-Database-BusinessLogic | A AsgLogic alkalmazásbiztonsági csoport forgalmat engedélyezni a AsgDb alkalmazásbiztonsági csoporthoz. Ez a szabály prioritását magasabb, mint a Megtagadás – adatbázis-minden szabály, és így a AsgLogic alkalmazásbiztonsági csoport a forgalom engedélyezve van, és minden forgalmat blokkol előtt, hogy a szabály feldolgozása. | Prioritás: 110<br/><br/> Forrás: AsgLogic<br/><br/> Forrásport: *<br/><br/> Cél: AsgDb<br/><br/> Céloldali port: 1433-as<br/><br/> Protokoll: TCP<br/><br/> Hozzáférés: engedélyezése.
+    Allow-HTTP-Inbound-Internet | Engedélyezi az internetről érkező forgalmat a webkiszolgálóra. Az internetről bejövő forgalmat, nincs további szabály szükséges az AsgLogic vagy AsgDb alkalmazásbiztonsági csoportok szerint DenyAllInbound alapértelmezett biztonsági szabály nem. | Prioritás: 100<br/><br/> Forrás: internet<br/><br/> Forrásport: *<br/><br/> Cél: AsgWeb<br/><br/> Céloldali port: 80<br/><br/> Protokoll: TCP<br/><br/> Hozzáférés: Lehetővé teszi.
+    Deny-Database-All | AllowVNetInBound alapértelmezett biztonsági szabály lehetővé teszi, hogy az azonos virtuális hálózatban található erőforrások közötti minden kommunikáció is, ez a szabály az összes erőforrást a forgalom megtagadásához szükséges. | Prioritás: 120<br/><br/> Forrás: *<br/><br/> Forrásport: *<br/><br/> Cél: AsgDb<br/><br/> Céloldali port: 1433<br/><br/> Protokoll: Összes<br/><br/> Hozzáférés: Megtagadási.
+    Allow-Database-BusinessLogic | A AsgLogic alkalmazásbiztonsági csoport forgalmat engedélyezni a AsgDb alkalmazásbiztonsági csoporthoz. Ez a szabály prioritását magasabb, mint a Megtagadás – adatbázis-minden szabály, és így a AsgLogic alkalmazásbiztonsági csoport a forgalom engedélyezve van, és minden forgalmat blokkol előtt, hogy a szabály feldolgozása. | Prioritás: 110<br/><br/> Forrás: AsgLogic<br/><br/> Forrásport: *<br/><br/> Cél: AsgDb<br/><br/> Céloldali port: 1433<br/><br/> Protokoll: TCP<br/><br/> Hozzáférés: Lehetővé teszi.
 
 - Az alkalmazásbiztonsági csoportokat forrásként vagy célként megadó szabályok csak az adott alkalmazásbiztonsági csoport tagságába tartozó hálózati adapterekre lesznek alkalmazva. Ha a hálózati adapter nem tagja az alkalmazásbiztonsági csoportnak, a szabály nem lesz az adapterre alkalmazva, még akkor sem, ha a hálózati biztonsági csoport az alhálózathoz van rendelve.
 
@@ -376,7 +376,7 @@ NIC4 | AsgDb
 - [Ismerje meg](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups) az alkalmazásbiztonsági csoportok.
 
 
-### <a name="best-practice-secure-access-to-paas-using-vnet-service-endpoints"></a>Ajánlott eljárás: biztonságos hozzáférés a virtuális hálózati Szolgáltatásvégpontok használatával PaaS
+### <a name="best-practice-secure-access-to-paas-using-vnet-service-endpoints"></a>Ajánlott eljárás: Biztonságos hozzáférés a virtuális hálózati Szolgáltatásvégpontok használatával PaaS
 
 Virtuális hálózati Szolgáltatásvégpontok a virtuális hálózat privát címterét és identitását az Azure-szolgáltatások kiterjesztésére egy közvetlen kapcsolaton keresztül.
 
@@ -392,7 +392,7 @@ Virtuális hálózati Szolgáltatásvégpontok a virtuális hálózat privát c�
 - [Ismerje meg](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) virtuális hálózati Szolgáltatásvégpontok.
 
 
-## <a name="best-practice-control-public-ip-addresses"></a>Ajánlott eljárás: szabályozhatja a nyilvános IP-címek
+## <a name="best-practice-control-public-ip-addresses"></a>Ajánlott eljárás: Vezérlő nyilvános IP-címek
 
 Nyilvános IP-címek az Azure-beli virtuális gépek, terheléselosztók, az application Gateway átjárók és VPN-átjárók társítható.
 
@@ -414,7 +414,7 @@ Nyilvános IP-címek az Azure-beli virtuális gépek, terheléselosztók, az app
 
 Az Azure platform biztonsági funkcióval rendelkezik, amelyeket könnyen használható, és adja meg a részletes ellenintézkedések közös hálózati támadásokkal szemben. Ezek közé tartozik az Azure-tűzfal, a webalkalmazási tűzfal és a Network Watcher.
 
-## <a name="best-practice-deploy-azure-firewall"></a>Ajánlott eljárás: Azure tűzfal üzembe helyezése
+## <a name="best-practice-deploy-azure-firewall"></a>Ajánlott eljárás: Az Azure tűzfal üzembe helyezése
 
 Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt a VNet-erőforrások. Egy teljes körűen állapot-nyilvántartó tűzfal--szolgáltatásként beépített magas rendelkezésre állás és a korlátlan felhőbeli méretezhetőséget.
 
@@ -435,7 +435,7 @@ Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szol
 - [Ismerje meg](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN címkék.
 
 
-## <a name="best-practice-deploy-azure-web-application-firewall-waf"></a>Ajánlott eljárás: Azure webalkalmazási tűzfal (WAF) üzembe helyezése
+## <a name="best-practice-deploy-azure-web-application-firewall-waf"></a>Ajánlott eljárás: Az Azure webalkalmazási tűzfal (WAF) üzembe helyezése
 
 Webalkalmazások egyre inkább ki rosszindulatú támadásoknak, amelyek gyakran ismert biztonsági rések kihasználására. Biztonsági rések közé tartozik az SQL-injektálásos támadásokról, és többhelyes parancsfájlok futtatására. Ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és megkövetelheti szigorúan betartandó, javítást és megfigyelést az alkalmazás topológiájának több rétegén. Központosított webalkalmazási tűzfal egyszerűbbé jóval egyszerűbb, és segít a fenyegetések vagy a behatolások elleni védelme app rendszergazdák. A web app tűzfal reagálhat a biztonsági fenyegetések gyorsabb, azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett, hogy egyes webalkalmazások biztonságossá tétele. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
@@ -452,7 +452,7 @@ Az Azure webalkalmazási tűzfal (WAF) az Azure application gateway egyik szolg�
 - [Felülvizsgálat](https://docs.microsoft.com/azure/application-gateway/application-gateway-waf-configuration) WAF korlátozások és kizárások.
 
 
-## <a name="best-practice-implement-azure-network-watcher"></a>Ajánlott eljárás: megvalósítása az Azure Network Watcher
+## <a name="best-practice-implement-azure-network-watcher"></a>Ajánlott eljárás: Megvalósítása az Azure Network Watcher
 
 Az Azure Network Watcher-erőforrások és a egy Azure virtuális hálózatok közötti kommunikáció monitorozása eszközöket biztosít. Például egy virtuális Gépet és a egy végpontot, például egy másik virtuális gép vagy teljes tartománynév, erőforrások megtekintése és a egy virtuális hálózat, erőforrás-kapcsolatok közötti kommunikáció monitorozása, vagy a hálózati forgalom problémák diagnosztizálásához.
 
@@ -480,7 +480,7 @@ Az Azure Network Watcher-erőforrások és a egy Azure virtuális hálózatok k�
 - Számos olyan szállítókra érhető el az nva-t a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/). 
  
 
-## <a name="best-practice-implement-firewalls-and-nvas-in-hub-networks"></a>Ajánlott eljárás: tűzfalak és az nva-k megvalósításához a hub hálózatokban
+## <a name="best-practice-implement-firewalls-and-nvas-in-hub-networks"></a>Ajánlott eljárás: A tűzfalak és az nva-k megvalósításához a hub hálózatokban
 
 Az agyban a szegélyhálózaton (az internet-hozzáférés) megfelelően kezelik egy Azure tűzfalon, a tűzfal farm, vagy a webalkalmazás-tűzfalak (alsóbb). Vegye figyelembe a következő összehasonlítást.
 

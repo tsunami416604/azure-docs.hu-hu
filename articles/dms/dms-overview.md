@@ -4,18 +4,18 @@ description: Az Azure Database Migration Service, amely zökkenőmentes migrál�
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
+manager: craigg
 ms.reviewer: douglasl
-ms.service: database-migration
+ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/12/2018
-ms.openlocfilehash: b3509917f0473795ec204c6672a630b2857ff37c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 12/19/2018
+ms.openlocfilehash: 68fb6497141d79dc721af7dfa5a8f69102c7e239
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343921"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722200"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Mi az az Azure Database Migration Service?
 Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure data platformokra minimális állásidővel (online áttelepítések).
@@ -24,7 +24,7 @@ Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatá
 Az Azure Database Migration Service integrálható a meglévő eszközök és szolgáltatások működésének néhány. Ügyfelek biztosít egy átfogó, magas rendelkezésre állású megoldás. A szolgáltatás által használt a [Data Migration Assistant](https://aka.ms/dma) , amely végigvezeti a szükséges áttelepítés előtt módosításokat javaslatokkal elemzéseket és jelentéseket létrehozni. Van arra, hogy minden szükséges szervizelés végrehajtása. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést. Indul el, és felejtse el a migrálási projektek, a biztonságot, tudván, hogy a folyamat kihasználja a Microsoft meghatározása szerint ajánlott eljárásokat.
 
 > [!NOTE]
-> Az Azure Database Migration Service egy online migrálás végrehajtásához használatához hozzon létre egy példányt (előzetes verzió) prémium tarifacsomag alapján.
+> Az Azure Database Migration Service online áttelepítése használatához hozzon létre egy példányt prémium tarifacsomagban alapján.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 Naprakész információk az Azure Database Migration Service regionális elérhetősége: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).

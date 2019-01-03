@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 378f4609efcc9e9f0652b9ec68f5374b1fe3626a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959648"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972804"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>A tanúsítvány-ujjlenyomat fürt módosítása köznapi név
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Egy tanúsítvány-ujjlenyomatok a tanúsítvány köznapi nevek használatával üzembe helyezett fürt közötti váltás révén jóval egyszerűbb tanúsítványkezelés. Ez a cikk ismerteti a tanúsítvány köznapi nevét használja a tanúsítvány-ujjlenyomat helyett a futó Service Fabric-fürt frissítése.
+
+>[!NOTE]
+> Ha két ujjlenyomat deklarálva a sablonban, két üzembe helyezés elvégzéséhez szüksége.  Az első üzembe helyezés előtt ebben a cikkben leírt lépések végrehajtásával végezhető el.  Az első üzembe helyezés beállítása az **ujjlenyomat** tulajdonság a sablonban használt tanúsítvány és eltávolítja a **thumbprintSecondary** tulajdonság.  A második központi telepítést kövesse a cikkben ismertetett lépések.
  
 ## <a name="get-a-certificate"></a>A tanúsítvány beszerzése
 Először kérje le a tanúsítványt egy [hitelesítésszolgáltatói (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevével kell lennie a fürt állomásneve.  Például "myclustername.southcentralus.cloudapp.azure.com."  

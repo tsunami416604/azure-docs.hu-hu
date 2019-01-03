@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/29/2018
-ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/18/2018
+ms.openlocfilehash: 2be5c8ddf6928d5529c2eb08a6d64bd64b8445de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864944"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631974"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
@@ -31,9 +31,9 @@ Tűzfal-szabályok konfiguráció után csatlakozhat az Azure [SQL Database](sql
 > Foglalkozó oktatóanyagért lásd: [biztonságossá tétele az Azure SQL Database](sql-database-security-tutorial.md). Ebben az oktatóanyagban nem vonatkozik a **Azure SQL Database felügyelt példányába**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Nem korlátozott rendszergazdai fiókok
-Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Ha azonosítani szeretné ezeket a rendszergazdai fiókokat az SQL-kiszolgáló esetében, nyissa meg az Azure Portalt, és lépjen az SQL-kiszolgáló tulajdonságaira.
+Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Ezeket a rendszergazdai fiókokat az SQL Server-azonosításához nyissa meg az Azure Portalon, és keresse meg az SQL server vagy SQL-adatbázis tulajdonságok lapján.
 
-![SQL Server-rendszergazdák](./media/sql-database-manage-logins/sql-admins.png)
+![SQL Server-rendszergazdák](media/sql-database-manage-logins/sql-admins.png)
 
 - **Kiszolgálói rendszergazda**   
 Azure SQL Server-kiszolgáló létrehozásakor ki kell jelölnie egy **kiszolgáló-rendszergazdai felhasználónevet**. Az SQL-kiszolgáló ekkor létrehozza a fiókot a master adatbázis egyik bejelentkezési neveként. Ez a fiók SQL Server-hitelesítéssel csatlakozik (felhasználónévvel és jelszóval). Ilyen fiókból csak egy létezhet.   
@@ -78,7 +78,7 @@ A korábban már tárgyalt kiszolgálószintű rendszergazdai szerepkörökön k
 Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. Adatbázis létrehozásához a felhasználónak SQL Server-bejelentkezésen alapuló felhasználónak kell lennie a master adatbázisban, vagy Azure Active Directory-felhasználón alapuló tartalmazottadatbázis-felhasználónak kell lennie.
 
 1. Egy rendszergazdai fiókkal csatlakozzon a master adatbázishoz.
-2. Nem kötelező lépés: Hozzon létre egy SQL Server-hitelesítési bejelentkezést a [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítással. Mintautasítás:
+2. Nem kötelező lépés: Hozzon létre egy SQL Server-hitelesítési bejelentkezést használ az [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítást. Mintautasítás:
    
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
@@ -184,7 +184,7 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 * A `CREATE USER` utasítás `FOR/FROM LOGIN` beállítással történő futtatásakor ez lehet a Transact-SQL kötegben szereplő egyetlen utasítás.
 * A `ALTER USER` utasítás `WITH LOGIN` beállítással történő futtatásakor ez lehet a Transact-SQL kötegben szereplő egyetlen utasítás.
 * A `CREATE/ALTER/DROP` utasítás használatához a felhasználónak `ALTER ANY USER` engedéllyel kell rendelkeznie az adatbázisban.
-* Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba akkor következik be, ha a felhasználó a tulajdonos számára nem látható. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
+* Ha az adatbázis-szerepkör tulajdonosa megpróbálja hozzáadni vagy eltávolítani egy másik felhasználót az adott adatbázis-szerepkörből, a következő hiba fordulhat elő: **Ebben az adatbázisban nem létezik a felhasználó vagy szerepkör (Name).** Ez a hiba akkor következik be, ha a felhasználó a tulajdonos számára nem látható. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
 
 ## <a name="next-steps"></a>További lépések

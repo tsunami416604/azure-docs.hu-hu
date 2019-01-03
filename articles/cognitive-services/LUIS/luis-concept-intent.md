@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f9f0c52c187b36416dbc77f280a8f6148cf1cbbc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138687"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971052"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>A LUIS-alkalmazás a leképezések kapcsolatos fogalmak
 
@@ -58,7 +58,7 @@ Hasonlóképpen intentioned [beszédmódok](luis-concept-utterance.md) felel meg
 [Előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md) rendelkezik leképezések a kimondott szöveg.  
 
 ## <a name="none-intent-is-fallback-for-app"></a>Nincs leképezés nem tartalék alkalmazás
-A **nincs** célja egy kevésbé vagy tartalék szándékot. A LUIS utterances, amelyek nem fontos alkalmazástartomány (tárgy területen), akik szolgál. A **nincs** szándékot 10 és 20 százalékát, az alkalmazás teljes megcímkézzen között kell rendelkeznie. Ne hagyja üresen a szándékot. 
+A **nincs** célja egy kevésbé vagy tartalék szándékot. A LUIS utterances, amelyek nem fontos alkalmazástartomány (tárgy területen), akik szolgál. A **nincs** szándékot 10 és 20 százalékát, az alkalmazás teljes megcímkézzen között kell rendelkeznie. Ne hagyja a nincs üres. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Nincs leképezés segít a beszélgetés iránya
 Amikor az utterance (kifejezés), a nincs összegyűjtése várható szándék és vissza a csevegőrobot, az adott előrejelzési a robot további kérdéseket tehet fel vagy adja meg a menüben a felhasználó számára érvényes választás a csevegőrobot a közvetlen. 

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 0603a60ea73d47dd6107ee80afc5c776ff8c83bc
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047111"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974675"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -22,10 +22,10 @@ ms.locfileid: "43047111"
 Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Data Lake Analytics-fiókokat, -adatforrásokat, -feladatokat és -felhasználókat egy, az Azure SDK for Node.js segítségével írt alkalmazás használatával. 
 
 Az alábbi verziók támogatottak:
-* **Node.js-verzió: 0.10.0-s vagy újabb**
-* **Fiókhoz tartozó REST API-verzió: 2015. 10. 01. előzetes verzió**
-* **Katalógushoz tartozó REST API-verzió: 2015. 10. 01. előzetes verzió**
-* **Feladathoz tartozó REST API-verzió: 2016. 03. 20. előzetes verzió**
+* **NODE.js-verzió: 0.10.0-s vagy újabb**
+* **Fiókhoz tartozó REST API-verzió: 2015-10-01-előzetes verzió**
+* **Katalógushoz tartozó REST API-verzió: 2015-10-01-előzetes verzió**
+* **Feladathoz tartozó REST API-verzió: 2016. 03. 20 – előzetes verzió**
 
 ## <a name="features"></a>Szolgáltatások
 * Fiókkezelés: létrehozás, lekérés, listázás, frissítés és törlés.
@@ -49,7 +49,7 @@ npm install azure-arm-datalake-analytics
 ## <a name="create-the-data-lake-analytics-client"></a>Data Lake Analytics-ügyfél létrehozása
 ```javascript
 var adlaManagement = require("azure-arm-datalake-analytics");
-var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
+var accountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
 var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azuredatalakeanalytics.net');
 var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
 ```

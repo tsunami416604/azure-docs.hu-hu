@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3d1821ccc3f3bc16bffd8a19d3014b5ea4876768
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261823"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715605"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service – ajánlott eljárások
 Ez a cikk összegzi az ajánlott eljárások a [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -39,7 +39,7 @@ Figyelési, illetve szolgáltatási javaslatok keresztül jelzett mikor láthatj
 ## <a name="CPUresources"></a>Ha használja a vártnál több CPU-alkalmazások
 Megfigyelheti, hogy az alkalmazás felhasználja a vártnál nagyobb CPU vagy élményt ismétlődő CPU adatforgalmi csúcsokhoz jelzett keresztül figyelési, illetve szolgáltatási javaslatok, fontolja meg vertikális vagy horizontális felskálázás az App Service-csomag. Ha az alkalmazást állapotalapú, vertikális felskálázása csak a lehetőség, míg ha az alkalmazás állapot nélküli, méretezési out történő további rugalmasságot és újabb skálázási lehetőségeit. 
 
-"Állapotalapú" és "állapot nélküli" alkalmazások kapcsolatos további részletekért tekintse meg ezt a videót: [A Microsoft Azure Web App egy méretezhető, teljes körű többrétegű alkalmazás tervezési](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service-ben skálázással és automatikus skálázást lehetőségekkel kapcsolatos további információkért lásd: [webalkalmazások méretezése az Azure App Service](web-sites-scale.md).  
+"Állapotalapú" és "állapot nélküli" alkalmazások kapcsolatos további részletekért tekintse meg ezt a videót: [Skálázható teljes körű Többrétegű alkalmazások tervezése az Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service-ben skálázással és automatikus skálázást lehetőségekkel kapcsolatos további információkért lásd: [webalkalmazások méretezése az Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Amikor szoftvercsatorna-erőforrásai kimerültek
 Egy skálázását kimenő TCP-kapcsolatok gyakori oka klienskódtárak, amelyek nem felelnek meg újból felhasználhatja a TCP-kapcsolatok, vagy egy magasabb szintű protokoll, például HTTP - életben tartási nem használatakor használatát. Tekintse át a kódtárakat, az App Service-csomagra konfigurálva, vagy azok érhetők el a kód a kimenő kapcsolatok hatékony használatának biztosítása érdekében az alkalmazások által hivatkozott dokumentációját. Az alábbi is a megfelelő létrehozása és a kiadás vagy karbantartási kapcsolatok kiszivárgását elkerülése érdekében könyvtár dokumentációja nyújt segítséget. Ilyen ügyfél kódtárak vizsgálat van folyamatban, amíg hatás mérsékelheti horizontális felskálázás több példányra.
@@ -68,7 +68,7 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ## <a name="appbackup"></a>Ha az alkalmazás biztonsági mentése sikertelen kezdődik
 A két leggyakoribb okait, miért van a biztonsági mentés hibája app: érvénytelen, és érvénytelen adatbázis-konfiguráció. Ezek a hibák általában akkor történik, ha vannak a tárolási és adatbázis-erőforrásokat, és hogyan hozzáférni ezekhez az erőforrásokhoz (például a hitelesítő adatok frissítése a biztonsági mentés beállításait a kijelölt adatbázis) változásainak. Biztonsági másolatokat jellemzően egy ütemezés szerint fut és hozzá kell férniük (az ad ki a biztonságimásolat-fájlok) tárolási és adatbázis (a másolás és a biztonsági mentés foglalandó olvasásakor). A sikertelen vagy ezek az erőforrások eléréséhez az eredmény alkalmazáskonzisztens biztonsági mentés sikertelen lenne. 
 
-Biztonsági mentési hibák esetén tekintse át a legutóbbi eredményeket, hogy milyen típusú hiba történik. A tároló-hozzáférési hiba tekintse át, és a biztonsági mentési konfigurációban használt tárolási beállításainak frissítése. Adatbázis-hozzáférési hibák tekintse át és Alkalmazásbeállítások; részeként a kapcsolatok karakterláncok frissítése Ezután folytassa a megfelelő tartalmazza a szükséges adatbázisokat a biztonsági mentési konfiguráció frissítése. Alkalmazás biztonsági mentések további információkért lásd: [biztonsági mentése az Azure App Service webalkalmazás](web-sites-backup.md).
+Biztonsági mentési hibák esetén tekintse át a legutóbbi eredményeket, hogy milyen típusú hiba történik. A tároló-hozzáférési hiba tekintse át, és a biztonsági mentési konfigurációban használt tárolási beállításainak frissítése. Adatbázis-hozzáférési hibák tekintse át és Alkalmazásbeállítások; részeként a kapcsolatok karakterláncok frissítése Ezután folytassa a megfelelő tartalmazza a szükséges adatbázisokat a biztonsági mentési konfiguráció frissítése. Alkalmazás biztonsági mentések további információkért lásd: [biztonsági mentése az Azure App Service webalkalmazás](manage-backup.md).
 
 ## <a name="nodejs"></a>Amikor új Node.js-alkalmazások vannak telepítve az Azure App Service-ben
 Node.js-alkalmazások az Azure App Service alapértelmezett konfigurációjának célja igény szerint a leggyakrabban használt alkalmazások igényeinek. Ha a Node.js-alkalmazás konfigurációja előnyös a teljesítmény javítása vagy a CPU/memória/hálózati erőforrások erőforrás-használat optimalizálása érdekében tekintse meg a személyre szabott hangolása [ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure-alkalmazás Szolgáltatás](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Ez a cikk az iisnode-beállításait, előfordulhat, hogy konfigurálnia kell a Node.js-alkalmazás, ez a témakör a különböző vagy az, hogy az alkalmazás lehetséges, hogy legyen elérhető, és bemutatja, hogyan kezelheti ezeket a problémákat ismerteti.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 55cb1eee1c0319f9b1037476da208de377e0c47b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185613"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971171"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -68,7 +68,7 @@ A Load Balancer az alábbi alapvető képességeket biztosítja a TCP- és UDP-a
 
 * **Porttovábbítás**
 
-    A Load Balancerrel létrehozhat egy bejövő NAT-szabályt egy adott előtérbeli IP-cím adott portjáról érkező forgalomnak egy, a virtuális hálózaton belüli adott háttérpéldány egy adott portjára való porttovábbításához. Ezt ugyanaz a kivonatalapú elosztást végzi el, mint a terheléselosztást. Ennek a funkciónak gyakori forgatókönyvei az Azure-beli virtuális hálózaton belüli önálló virtuálisgép-példányok felé indított RDP- vagy SSH-munkamenetek. Több belső végpontot is irányíthat a különböző portokhoz ugyanazon az előtérbeli IP-címen. Az előtérbeli IP-címekkel távolról is felügyelheti a virtuális gépeket az interneten keresztül anélkül, hogy további jump boxot kellene működtetnie.
+    A Load Balancerrel létrehozhat egy bejövő NAT-szabályt egy adott előtérbeli IP-cím adott portjáról érkező forgalomnak egy, a virtuális hálózaton belüli adott háttérpéldány egy adott portjára való porttovábbításához. Ezt ugyanaz a kivonatalapú elosztást végzi el, mint a terheléselosztást. Ennek a funkciónak gyakori forgatókönyvei az Azure-beli virtuális hálózaton belüli önálló virtuálisgép-példányok felé indított RDP- vagy SSH-munkamenetek. Több belső végpontot is irányíthat a különböző portokhoz ugyanazon az előtérbeli IP-címen. Az előtérbeli IP-címek segítségével távoli felügyeletéhez a virtuális gépek az interneten egy további jump boxon szükségessége nélkül.
 
 * **Alkalmazásfüggetlen és átlátható**
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c203334b0ea1b47aa1884155f477e34bd8f2e1db
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878332"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724759"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tétele
 Ez a cikk áttekintést tárolt adatokhoz való hozzáférés biztonságossá tétele [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -128,7 +128,7 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Egy Cosmos DB-engedély erőforráshoz társítva a Cosmos DB-felhasználó.  Minden felhasználó nulla vagy több Cosmos DB-engedélyeket is tartalmazhat.  Engedély erőforrás egy biztonsági jogkivonatot, amely a felhasználónak egy adott alkalmazás erőforrás elérésére tett kísérlet során hozzáférést biztosít.
 Nincsenek két elérhető hozzáférési szintek engedéllyel az erőforrás által biztosított:
 
-* All: A felhasználó teljes körű hozzáféréssel rendelkezik az erőforráson.
+* Az összes: A felhasználó teljes körű hozzáféréssel rendelkezik az erőforráson.
 * Olvasás: A felhasználó az erőforrás a tartalmát csak olvasható, de nem hajtható végre, írási, frissítési vagy törlési műveletek az erőforráson.
 
 > [!NOTE]
@@ -188,10 +188,10 @@ Azure Cosmos DB fiók olvasói hozzáférés hozzáadása a felhasználói fiók
 Az entitás már képes olvasni az Azure Cosmos DB erőforrásokat.
 
 ## <a name="delete-or-export-user-data"></a>Törölje vagy felhasználói adatok exportálása
-Az Azure Cosmos DB lehetővé teszi, keresését, válassza ki, módosítani és törölni az adatbázisban vagy gyűjtemények található személyes adatok. Azure Cosmos DB API-k megkeressék és töröljék a személyes adatok azonban biztosítja, hogy az a feladata, hogy az API-kkal és a személyes adatok törlésére szükséges logika definiálható. Minden egyes többmodelles API (SQL API-t, a MongoDB API-t, Gremlin API, Cassandra API, Table API) biztosít a különböző nyelvű SDK-k keresését, és törölje a személyes adatokat metódusokat tartalmaznak. Is engedélyezheti a [idő Élettartam (TTL)](time-to-live.md) funkció törli az adatokat automatikusan egy megadott időszak után járó minden további költség nélkül.
+Az Azure Cosmos DB lehetővé teszi, keresését, válassza ki, módosítani és törölni az adatbázisban vagy gyűjtemények található személyes adatok. Azure Cosmos DB API-k megkeressék és töröljék a személyes adatok azonban biztosítja, hogy az a feladata, hogy az API-kkal és a személyes adatok törlésére szükséges logika definiálható. Minden egyes többmodelles API (SQL, MongoDB, Gremlin, Cassandra, tábla) biztosít a különböző nyelvű SDK-k, amelyek tartalmazzák a metódusok és a személyes adatok törlése. Is engedélyezheti a [idő Élettartam (TTL)](time-to-live.md) funkció törli az adatokat automatikusan egy megadott időszak után járó minden további költség nélkül.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Cosmos DB-adatbázis biztonsági kapcsolatos további információkért lásd: [Cosmos DB: adatbázis-biztonság](database-security.md).
+* Cosmos DB-adatbázis biztonsági kapcsolatos további információkért lásd: [Cosmos DB: Adatbázis-biztonság](database-security.md).
 * Ismerje meg, hogyan hozhat létre Azure Cosmos DB engedélyezési jogkivonatok, lásd: [hozzáférés-vezérlés az Azure Cosmos DB-erőforrások](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

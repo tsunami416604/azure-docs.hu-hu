@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 8c347c9ab15b68325a9a7ebc645a3146f4b7a180
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 5086c0758e7c535b65c877917dc790dafa46f763
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754577"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994720"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -199,14 +199,14 @@ Remove-AzResourceGroup -Name $resourceGroup
 Az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name storage-quickstart-resource-group
 ```
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot hozott létre. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
+Ez a rövid útmutatóban létrehozott egy általános célú v2 standard szintű tárfiókot. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
@@ -221,6 +221,6 @@ Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Blobtárolók használata az Azure CLI segítségével](../blobs/storage-quickstart-blobs-cli.md)
+> [Az Azure CLI-vel blobok használata](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238624"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976596"
 ---
 # <a name="constituency-parsing"></a>Vevőkör-elemzés
 
 > [!IMPORTANT]
-> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
+> A Linguistic Analysis előzetes verzióját 2018. augusztus 9-én visszavontuk. A szövegek feldolgozásához és elemzéséhet az [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) javasoljuk használni.
 
 Vevőkör-elemzés (más néven "kifejezés helyett szerepel struktúra elemzése") az a célja, hogy az kifejezések a szövegben azonosíthatja.
 Ez akkor hasznos, ha az adatok kivonása szövegből.
@@ -61,7 +61,7 @@ A következő kifejezésekkel ellátva természetes ábrázolása egy fa, péld�
 ![Fa](./Images/tree.png)
 
 Ehhez a fához megjelölt "NP" az ágak főnév kifejezések.
-Nincsenek az számos ilyen kifejezések: *I*, *egy új hibrid automobile*, *Bluetooth*, és *egy új hibrid automobile Bluetooth*.
+Van néhány ilyen kifejezések: *E*, *egy új hibrid automobile*, *Bluetooth*, és *egy új hibrid automobile Bluetooth*.
 
 ## <a name="phrase-types"></a>A kifejezés típusa
 
@@ -97,4 +97,4 @@ Nincsenek az számos ilyen kifejezések: *I*, *egy új hibrid automobile*, *Blue
 
 ## <a name="specification"></a>Specifikáció
 
-Itt fák az S-kifejezések használata a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42).
+Itt fák az S-kifejezések használata a [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42).

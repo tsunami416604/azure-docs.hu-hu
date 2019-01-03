@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Tableau Server segítségével |} A Microsoft Docs'
+title: 'Oktatóanyag: A Tableau Server az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Tableau Server között.
 services: active-directory
 documentationCenter: na
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 84ea1d999a26ce0ce1d548da92549c6a718d5978
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850363"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789721"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory-integráció Tableau Server segítségével
+# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: A Tableau Server az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Tableau Server az Azure Active Directory (Azure AD).
 
@@ -86,13 +86,14 @@ Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a Tableau Se
 
 Az Azure AD egyszeri bejelentkezés Tableau Server segítségével tesztelése és konfigurálása, kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[A Tableau Server tesztfelhasználó létrehozása](#creating-a-tableau-server-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Tableau Server, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[A Tableau Server egyszeri bejelentkezés konfigurálása](#configure-tableau-server-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[A Tableau Server tesztfelhasználó létrehozása](#create-tableau-server-test-user)**  – egy megfelelője a Britta Simon Cisco rendszerére, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Tableau Server alkalmazás egyszeri bejelentkezés konfigurálása.
 
@@ -112,9 +113,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 4. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok & jogcímek** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
     
-    | Attribútum neve | Attribútum értéke |
-    | ---------------| --------------- |    
-    | felhasználónév | User.userPrincipalName |
+    | Attribútum neve | Attribútum értéke | Névtér |
+    | ---------------| --------------- | ----------- |   
+    | felhasználónév | User.userPrincipalName | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -151,33 +152,41 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 7. Az a **SAML-aláíró tanúsítvány** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **összevonási metaadatainak XML** , és mentse a tanúsítványfájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/tableauserver-tutorial/tutorial-tableauserver-certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/tableauserver-tutorial/tutorial-tableauserver-certificate.png)
 
-8. Egyszeri bejelentkezés az alkalmazáshoz konfigurált lekéréséhez kell bejelentkezést a Tableau Server bérlői rendszergazdaként az.
+### <a name="configure-tableau-server-single-sign-on"></a>A Tableau Server egyszeri bejelentkezés konfigurálása 
 
-9. Az a **Tableau Server konfigurációs** lapon, a következő lépésekkel:
-   
-    ![Egyszeri bejelentkezés konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-001.png)
+1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált lekéréséhez kell bejelentkezést a Tableau Server bérlői rendszergazdaként az.
 
-    a. A Tableau Server a konfigurációban, kattintson a **SAML** fülre. 
-  
-    b. A jelölőnégyzet bejelölésével **használható SAML egyszeri bejelentkezésre**.
-   
+2. Az a **konfigurációs** lapon jelölje be **felhasználói identitás és hozzáférés**, majd válassza ki a **hitelesítési** mód lapon.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+
+3. Az a **konfigurációs** lapon, a következő lépésekkel:
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+
+    a. A **hitelesítési módszer**, válassza ki a SAML.
+    
+    b. A jelölőnégyzet bejelölésével **SAML-hitelesítés engedélyezése a kiszolgáló**.
+
     c. A tableau Server visszatérési URL-cím – a Tableau Server felhasználók érik el, mint például az URL-cím http://tableau_server. Használatával http://localhost nem ajánlott. Egy URL-cím használatával záró perjellel (például http://tableau_server/) nem támogatott. Másolás **Tableau Server visszatérési URL-cím** , és illessze be az Azure AD **bejelentkezési URL-** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
-   
+
     d. SAML-entitás azonosítója – az entitás azonosítója egyedileg azonosítja az identitásszolgáltató a Tableau Server telepítése. Adhatja meg a Tableau Server URL-CÍMÉT újra itt, ha szeretné, de nem rendelkezik a Tableau Server URL-címét. Másolás **SAML Entitásazonosító** , és illessze be az Azure AD **azonosító** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
-     
-    e. Kattintson a **metaadatait tartalmazó fájl exportálása** és nyissa meg a szöveges szerkesztő alkalmazásban. Keresse meg a helyességi feltétel fogyasztói szolgáltatás URL-CÍMÉT a Http Post és Index 0, és másolja az URL-címet. Most illessze be az Azure AD **válasz URL-cím** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
-   
+
+    e. Kattintson a **XML metaadatait tartalmazó fájl letöltése** és nyissa meg a szöveges szerkesztő alkalmazásban. Keresse meg a helyességi feltétel fogyasztói szolgáltatás URL-CÍMÉT a Http Post és Index 0, és másolja az URL-címet. Most illessze be az Azure AD **válasz URL-cím** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
+
     f. Keresse meg az összevonási metaadatait tartalmazó fájl, az Azure-portálról letöltött, és ezután töltse fel a a **identitásszolgáltató SAML-metaadatfájl**.
-   
-    g. Kattintson a **OK** gomb a Tableau Server konfigurációs lapja.
-   
+
+    g. Írja be a nevét, az attribútumokat, amelyek az identitásszolgáltató használja, tartsa lenyomva a felhasználónevek, megjelenítendő nevek és e-mail-címek számára.
+
+    h. Kattintson a **Mentés** gombra.
+
     >[!NOTE] 
     >Töltse fel a Tableau Server SAML SSO-konfiguráció bármely olyan tanúsítványt kell ügyfél, és figyelmen beolvasni az egyszeri bejelentkezési folyamatban.
-    >Ha szüksége a SAML konfigurálása a Tableau Server segítségével, akkor tekintse meg a cikk [SAML konfigurálása](https://onlinehelp.tableau.com/current/server/en-us/config_saml.htm).
+    >Ha szüksége a SAML konfigurálása a Tableau Server segítségével, akkor tekintse meg a cikk [SAML konfigurálása](https://onlinehelp.tableau.com/v2018.2/server/en-us/saml_config_steps_tsm_ui.htm).
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -202,7 +211,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     d. Kattintson a **Létrehozás** gombra.
   
-### <a name="creating-a-tableau-server-test-user"></a>A Tableau Server tesztfelhasználó létrehozása
+### <a name="create-tableau-server-test-user"></a>A Tableau Server tesztfelhasználó létrehozása
 
 Ez a szakasz célja, a Tableau Server Britta Simon nevű felhasználó létrehozásához. A Tableau server az összes felhasználó kiépítése kell. 
 
@@ -211,7 +220,7 @@ A felhasználó felhasználóneve meg kell egyeznie az érték, amely az Azure a
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha szüksége a Tableau Server rendszergazdától a szervezetben.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon ad hozzáférést, a Tableau Server által használandó Azure egyszeri bejelentkezést.
 
@@ -235,7 +244,7 @@ Ebben a szakaszban engedélyezze Britta Simon ad hozzáférést, a Tableau Serve
 
 6. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

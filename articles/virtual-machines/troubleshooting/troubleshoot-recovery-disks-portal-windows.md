@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: c68febc7bd6aac0262c41cc8b33602f8496eb215
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436400"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809097"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Hibaelhárítás Windows virtuális gépek az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure portal használatával történő csatlakoztatásával
 Ha a Windows virtuális gép (VM) az Azure-ban egy indítási vagy hibát észlel, szükség lehet a hibaelhárítási lépések végrehajtásához a virtuális merevlemezen magát. Ilyenek például egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen lenne. Ez a cikk részletesen bemutatja a virtuális merevlemez csatlakoztatása egy másik Windows virtuális géphez, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép az Azure portal használatával.
@@ -133,7 +133,7 @@ Miután a hibák megoldódnak, válassza le a hibaelhárító virtuális géprő
     Várjon, amíg a virtuális gép rendelkezik az a folytatás előtt az adatlemez leválasztása sikeresen megtörtént.
 
 ## <a name="create-vm-from-original-hard-disk"></a>Virtuális gép létrehozása az eredeti merevlemezről
-Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet). A sablon egy meglévő virtuális hálózatban, a korábbi paranccsal a virtuális merevlemez URL-cím használatával helyez üzembe egy virtuális Gépet. Kattintson a **üzembe helyezés az Azure** gombra az alábbiak szerint:
+Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet). A sablon virtuális hálózatban a meglévő vagy új, a korábbi paranccsal a virtuális merevlemez URL-cím használatával helyez üzembe egy virtuális Gépet. Kattintson a **üzembe helyezés az Azure** gombra az alábbiak szerint:
 
 ![Virtuális gép üzembe helyezése a Githubról sablonból](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
 

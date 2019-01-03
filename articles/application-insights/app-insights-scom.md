@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: d7c3134c36707fcfa079968d19d93b73d7a5f5cc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e9ba42e33fb763256cd31c255ea42593146dfb7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724077"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969318"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Alkalmazásteljesítmény-figyelés az Application Insights az SCOM-hoz használatával
-Ha a System Center Operations Manager (SCOM) használatával felügyelheti kiszolgálóit, teljesítmény figyelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos problémák segítségével. [Azure Application Insights](app-insights-asp-net.md). Az Application Insights figyeli a bejövő kéréseket a webes alkalmazás, REST és SQL-hívások, kivételek és nyomkövetési naplók kimenő. Ez biztosítja, irányítópultokat mérőszám-diagramok és intelligens riasztások, valamint hatékony diagnosztikai keresés és elemző lekérdezések képest ezt a telemetriát. 
+Ha a System Center Operations Manager (SCOM) használatával felügyelheti kiszolgálóit, teljesítmény figyelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos problémák segítségével. [Azure Application Insights](../azure-monitor/app/asp-net.md). Az Application Insights figyeli a bejövő kéréseket a webes alkalmazás, REST és SQL-hívások, kivételek és nyomkövetési naplók kimenő. Ez biztosítja, irányítópultokat mérőszám-diagramok és intelligens riasztások, valamint hatékony diagnosztikai keresés és elemző lekérdezések képest ezt a telemetriát. 
 
 Application insights általi figyelés az SCOM felügyeleti csomagok használatával válthat.
 
@@ -35,7 +35,7 @@ Feltételezzük, hogy:
 * Alkalmazás-keretrendszer verziója a .NET 4.5-ös vagy újabb verzió.
 * Hozzáfér egy előfizetés [Microsoft Azure](https://azure.com) és bejelentkezhet a [az Azure portal](https://portal.azure.com). A szervezet egy előfizetéssel rendelkezhet, és adhatja hozzá a Microsoft-fiókjával.
 
-(A fejlesztői csapat felépíthet a [Application Insights SDK](app-insights-asp-net.md) a webalkalmazásba. A build-idő kialakítása egyéni telemetriát írásban nagyobb rugalmasságot biztosít. Azonban nem számít: az itt ismertetett, akár anélkül az SDK-t a beépített lépéseket követnie.)
+(A fejlesztői csapat felépíthet a [Application Insights SDK](../azure-monitor/app/asp-net.md) a webalkalmazásba. A build-idő kialakítása egyéni telemetriát írásban nagyobb rugalmasságot biztosít. Azonban nem számít: az itt ismertetett, akár anélkül az SDK-t a beépített lépéseket követnie.)
 
 ## <a name="one-time-install-application-insights-management-pack"></a>(Egy idő) Az Application Insights a felügyeleti csomag telepítése
 A gépen, amelyen az Operations Manager futtatni:
@@ -92,13 +92,13 @@ Talált az alkalmazás melyik példánya ellenőrizheti:
 ![A figyelés, nyissa meg az Application Insights](./media/app-insights-scom/100.png)
 
 ## <a name="view-telemetry-in-application-insights"></a>Az Application Insights telemetria megtekintése
-Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforrást az alkalmazáshoz. Ön [telemetriai ábrázoló diagramok megjelenítéséhez](app-insights-dashboards.md) az alkalmazásból. (Ha ez még nem látható a főoldalon még, kattintson az élő metrikák Stream.)
+Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforrást az alkalmazáshoz. Ön [telemetriai ábrázoló diagramok megjelenítéséhez](../azure-monitor/app/app-insights-dashboards.md) az alkalmazásból. (Ha ez még nem látható a főoldalon még, kattintson az élő metrikák Stream.)
 
 ## <a name="next-steps"></a>További lépések
-* [Állítsa be egy irányítópultot](app-insights-dashboards.md) összegyűjthetők a legfontosabb diagramok ezzel és más alkalmazások figyelését.
+* [Állítsa be egy irányítópultot](../azure-monitor/app/app-insights-dashboards.md) összegyűjthetők a legfontosabb diagramok ezzel és más alkalmazások figyelését.
 * [Ismerkedés a metrikákkal](app-insights-metrics-explorer.md)
-* [Riasztások beállítása](app-insights-alerts.md)
-* [Teljesítményproblémák diagnosztizálása](app-insights-detect-triage-diagnose.md)
-* [Nagy teljesítményű elemzési lekérdezések](app-insights-analytics.md)
-* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md)
+* [Riasztások beállítása](../azure-monitor/app/alerts.md)
+* [Teljesítményproblémák diagnosztizálása](../azure-monitor/app/detect-triage-diagnose.md)
+* [Nagy teljesítményű elemzési lekérdezések](../azure-monitor/app/analytics.md)
+* [Rendelkezésre állási webes tesztek](../azure-monitor/app/monitor-web-app-availability.md)
 

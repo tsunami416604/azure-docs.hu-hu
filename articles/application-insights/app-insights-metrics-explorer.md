@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8a8b1e29a6504c725e244efa1ae8c37a9a0d8420
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0d673ee9d316f14f95f6924929ad319eae13efcc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726270"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973315"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Az Application Insightsban a metrikák felfedezése
 A metrikák [Application Insights] [ start] mért értékek és az eseményszámok az alkalmazásból küldött telemetriai adatokat a rendszer. Ezek segítenek teljesítménybeli problémák észlelése, és tekintse meg az alkalmazás használatának trendjei. Standard mérőszámok széles skáláját, és a saját egyéni metrikákkal és eseményekkel is létrehozhat.
@@ -140,7 +140,7 @@ Szerint is szűrheti **szintetikus forgalom forrása**.
 ### <a name="to-add-properties-to-the-filter-list"></a>A lista tulajdonságok hozzáadása
 Szeretne saját egy kategóriához szűrőtelemetria? Például a felhasználók különböző kategóriákba feloszthatja talán, és szeretné szegmentálni az adatokat, ezen kategóriák szerinti csoportosításához.
 
-[Hozzon létre saját tulajdonságot](app-insights-api-custom-events-metrics.md#properties). Beállíthatja a egy [Telemetriainicializáló](app-insights-api-custom-events-metrics.md#defaults) , hogy az összes telemetriai adat - jelennek meg a normál telemetriai többek között küldött különböző SDK-modulok által.
+[Hozzon létre saját tulajdonságot](../azure-monitor/app/api-custom-events-metrics.md#properties). Beállíthatja a egy [Telemetriainicializáló](../azure-monitor/app/api-custom-events-metrics.md#defaults) , hogy az összes telemetriai adat - jelennek meg a normál telemetriai többek között küldött különböző SDK-modulok által.
 
 ## <a name="edit-the-chart-type"></a>A diagram típus szerkesztése
 Figyelje meg, hogy válthat a között rácsok és diagramjait:
@@ -176,13 +176,13 @@ Valamelyik metrika rendkívüli értékek az e-mailben értesítést kapjon, ria
 
 
 ## <a name="continuous-export"></a>Folyamatos exportálás
-Ha azt szeretné, hogy külsőleg feldolgozása folyamatosan exportált adatok, érdemes [a folyamatos exportálás](app-insights-export-telemetry.md).
+Ha azt szeretné, hogy külsőleg feldolgozása folyamatosan exportált adatok, érdemes [a folyamatos exportálás](../azure-monitor/app/export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
 Ha azt szeretné, hogy az adatok még mélyebb nézeteket, [exportálása a Power bi-bA](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Elemzés
-[Analytics](app-insights-analytics.md) sokoldalúbb módja a hatékony lekérdezési nyelv a telemetria elemzését. Használnia, ha szeretné egyesítése vagy számítási mérőszámok eredményei, vagy hajtsa végre a közelebbről megismerheti a legújabb az alkalmazás teljesítményének. 
+[Analytics](../azure-monitor/app/analytics.md) sokoldalúbb módja a hatékony lekérdezési nyelv a telemetria elemzését. Használnia, ha szeretné egyesítése vagy számítási mérőszámok eredményei, vagy hajtsa végre a közelebbről megismerheti a legújabb az alkalmazás teljesítményének. 
 
 Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvasásához az Analytics ikonra kattint.
 
@@ -193,7 +193,7 @@ Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvas
 
     Ha azt szeretné, a különböző szűrőivel beállíthatja a különböző diagramok különböző paneljein hozzon létre őket, mentse azokat, külön Kedvencek. Ha azt szeretné, is rögzítheti őket az irányítópulton, hogy tekintheti meg őket egymással párhuzamosan.
 * Ha olyan tulajdonságot, amely nincs meghatározva a metrikát a diagram csoportosítás, majd kell semmi a diagramra. Törölje a "Csoportosítás", vagy válasszon egy különböző csoportosítási tulajdonságot.
-* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](app-insights-monitor-performance-live-website-now.md), és [Azure Cloud Services](app-insights-overview.md). Nem Azure-webhelyekhez érhető el.
+* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../azure-monitor/app/monitor-performance-live-website-now.md), és [Azure Cloud Services](app-insights-overview.md). Nem Azure-webhelyekhez érhető el.
 
 ## <a name="video"></a>Videó
 
@@ -201,10 +201,10 @@ Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvas
 
 ## <a name="next-steps"></a>További lépések
 * [Az Application Insights figyelési használat](app-insights-usage-overview.md)
-* [Diagnosztikai keresés használata](app-insights-diagnostic-search.md)
+* [Diagnosztikai keresés használata](../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 
-[alerts]: app-insights-alerts.md
+[alerts]: ../azure-monitor/app/alerts.md
 [start]: app-insights-overview.md
-[track]: app-insights-api-custom-events-metrics.md
+[track]: ../azure-monitor/app/api-custom-events-metrics.md

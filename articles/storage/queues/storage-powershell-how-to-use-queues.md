@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: b89c2607a1b21b999e5f95224e4aefc97e321f14
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251355"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634422"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Az Azure Queue storage műveleteket az Azure PowerShell használatával
 
@@ -27,16 +27,18 @@ Az Azure Queue storage szolgáltatás üzeneteket, amelyek elérhetők bárhol a
 > * Üzenet törlése 
 > * Üzenetsor törlése
 
-Ebben az útmutatóban az Azure PowerShell modul 3.6-os vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ebben az útmutatóban az Azure PowerShell-modul Az 0,7 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 Nincsenek nem PowerShell-parancsmagok az adatsík sorra. Adatok végrehajtásához síkjával végzett műveletek például adjon meg egy üzenetet, olvassa el egy üzenetet, és üzenet törlése, szükség van a storage .NET ügyféloldali kódtár, az ki van téve a PowerShellben. Üzenet objektumot hoz létre, és ezután használja a parancsok, például az AddMessage műveletek végrehajtása az üzenetet. Ez a cikk bemutatja, hogyan valósítható meg.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>Helyek listájának lekérése
@@ -44,28 +46,28 @@ Connect-AzureRmAccount
 Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ebben a gyakorlatban fogja használni **eastus**. Ez a változó Store **hely** későbbi használatra.
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "eastus"
 ```
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. 
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot. 
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoport nevének Store későbbi használat céljából egy változóban. Ebben a példában egy erőforráscsoportot nevű *howtoqueuesrg* jön létre a *eastus* régióban.
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"
-New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
+New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Helyileg redundáns tárolás (LRS) használó általános célú standard szintű storage-fiók létrehozása [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). A tárfiók környezetét, amely meghatározza a használandó tárfiókot beolvasása. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
+Helyileg redundáns tárolás (LRS) használó általános célú standard szintű storage-fiók létrehozása [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). A tárfiók környezetét, amely meghatározza a használandó tárfiókot beolvasása. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
   -SkuName Standard_LRS
@@ -75,27 +77,27 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Az alábbi példában először kapcsolatot hoz létre az Azure Storage a tárfiók környezetét, amely tartalmazza a tárfiók nevét és a hozzáférési kulcs használatával. Ezután meghívja [New-AzureStorageQueue](/powershell/module/azure.storage/new-azurestoragequeue) parancsmaggal hozzon létre egy "queuename" nevű üzenetsor.
+Az alábbi példában először kapcsolatot hoz létre az Azure Storage a tárfiók környezetét, amely tartalmazza a tárfiók nevét és a hozzáférési kulcs használatával. Ezután meghívja [New-AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue) parancsmaggal hozzon létre egy "queuename" nevű üzenetsor.
 
 ```powershell
 $queueName = "howtoqueue"
-$queue = New-AzureStorageQueue –Name $queueName -Context $ctx
+$queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
 Információ az elnevezési konvenciók Azure Queue szolgáltatás: [elnevezési üzenetsorok és metaadatok](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
 ## <a name="retrieve-a-queue"></a>Egy üzenetsor beolvasása
 
-Lekérdezés és a egy konkrét várólistába vagy a Storage-fiókban lévő összes üzenetsor listájának lekéréséhez. Az alábbi példák bemutatják, hogyan kérheti le a storage-fiókban lévő összes üzenetsor, és a egy konkrét várólistába; mindkét parancsot használja a [Get-AzureStorageQueue](/powershell/module/azure.storage/get-azurestoragequeue) parancsmagot.
+Lekérdezés és a egy konkrét várólistába vagy a Storage-fiókban lévő összes üzenetsor listájának lekéréséhez. Az alábbi példák bemutatják, hogyan kérheti le a storage-fiókban lévő összes üzenetsor, és a egy konkrét várólistába; mindkét parancsot használja a [Get-AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue) parancsmagot.
 
 ```powershell
 # Retrieve a specific queue
-$queue = Get-AzureStorageQueue –Name $queueName –Context $ctx
+$queue = Get-AzStorageQueue –Name $queueName –Context $ctx
 # Show the properties of the queue
 $queue
 
 # Retrieve all queues and show their names
-Get-AzureStorageQueue -Context $ctx | select Name
+Get-AzStorageQueue -Context $ctx | select Name
 ```
 
 ## <a name="add-a-message-to-a-queue"></a>Adjon meg egy üzenetet egy üzenetsorba
@@ -157,11 +159,11 @@ $queue.CloudQueue.DeleteMessage($queueMessage)
 ```
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
-Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja meg a Remove-AzureStorageQueue parancsmagot. Az alábbi példa bemutatja, hogyan használja a Remove-AzureStorageQueue parancsmag gyakorlathoz használt az adott üzenetsor törlése.
+Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja meg a Remove-AzStorageQueue parancsmagot. Az alábbi példa bemutatja, hogyan használja a Remove-AzStorageQueue parancsmag gyakorlathoz használt az adott üzenetsor törlése.
 
 ```powershell
 # Delete the queue 
-Remove-AzureStorageQueue –Name $queueName –Context $ctx
+Remove-AzStorageQueue –Name $queueName –Context $ctx
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -169,7 +171,7 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 Távolítsa el az összes létrehozott ebben a gyakorlatban az eszközök, távolítsa el az erőforráscsoportot. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókot és magát az erőforráscsoportot.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -185,7 +187,7 @@ Az útmutató a cikkben megismerkedett a alapvető üzenetsor tárolók kezelés
 > * Üzenetsor törlése
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>A Microsoft Azure PowerShell tárolási parancsmagjainak
-* [Tárolási PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
+* [Tárolási PowerShell-parancsmagok](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

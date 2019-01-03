@@ -1,5 +1,5 @@
 ---
-title: Adatok kinyerése, a kognitív keresés természetes nyelvi mesterséges Intelligencia feldolgozása – Azure Search
+title: A kognitív keresés, az adatok kinyerése, a természetes nyelvi mesterséges Intelligencia folyamat – Azure Search
 description: Tartalom kinyerés, természetes nyelvi feldolgozási (NLP) és képfeldolgozó kereshető tartalom létrehozása az Azure Search szolgáltatásban az indexelés kognitív képességek és AI-algoritmusokat.
 manager: cgronlun
 author: HeidiSteen
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2bb32ccaeb5960fa69dcdc356523abc199fd5f4f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315606"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633793"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 

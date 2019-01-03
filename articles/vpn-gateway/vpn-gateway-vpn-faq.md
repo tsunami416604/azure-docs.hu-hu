@@ -5,16 +5,16 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 01/02/2019
 ms.author: yushwang
-ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a6390203ecc4ae672f968b19d83eafc8a552ec3a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037096"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994849"
 ---
-# <a name="vpn-gateway-faq"></a>VPN Gateway – Gyakori kérdések
+# <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 
 ## <a name="connecting"></a>Csatlakozás virtuális hálózatokhoz
 
@@ -29,6 +29,10 @@ Igen.
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>Csatlakozhatok több helyhez egyetlen virtuális hálózatból?
 
 A Windows PowerShell és az Azure REST API-k használatával kapcsolódhat több helyhez is. Lásd a gyakori kérdések [Többhelyes és virtuális hálózatok közötti kapcsolatok](#V2VMulti) című szakaszát.
+
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Nincs aktív-aktív VPN-átjáró beállításával kapcsolatos további költségek?
+
+Nem. 
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>Milyen lehetőségeim vannak a létesítmények közötti kapcsolódásra?
 

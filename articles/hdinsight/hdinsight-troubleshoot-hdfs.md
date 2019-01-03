@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d3ae15193b5e2d759825e60f880dea4355329837
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fca763d04cc8cbf22d1578b18d504ec3ce9656d9
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407051"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993025"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache Hadoop HDFS hibaelhárítása
 
@@ -23,7 +23,7 @@ A leggyakoribb problémák és azok megoldásait ismerje meg az Ambari az Apache
 
 ### <a name="issue"></a>Probléma
 
-A helyi HDFS eléréséhez a parancssor és az alkalmazás kódja helyett az Azure Blob storage vagy az Azure Data Lake Store a HDInsight-fürtben.   
+A helyi HDFS eléréséhez a parancssor és az alkalmazás kódja helyett az Azure Blob storage vagy az Azure Data Lake Storage a HDInsight-fürtben.   
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 

@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: e13afe26d06f5b5b2dcf7eddf00f9ee481312b2c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95079813cf3ade41d17393168116e4767ca26e99
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024258"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742779"
 ---
 # <a name="transforms-and-jobs"></a>Átalakítások és feladatok
  
-Az Azure Media Services v3 bevezeti a recept, kódolása és/vagy elemezheti videóit, nevű használni kívánt új sablonalapú munkafolyamat erőforrás [alakítja át az](https://docs.microsoft.com/rest/api/media/transforms). **Átalakítások** segítségével konfigurálhatja a gyakori feladatok és videók elemzése. Minden egyes **átalakítása** egy módszereivel, vagy egy munkafolyamatot a video- és audiotartalmak fájlok feldolgozása kapcsolatos feladatokat ismerteti. 
+Használat [alakítja át](https://docs.microsoft.com/rest/api/media/transforms) és videók elemzése gyakori feladatok konfigurálása. Minden egyes **átalakítása** egy módszereivel, vagy egy munkafolyamatot a video- és audiotartalmak fájlok feldolgozása kapcsolatos feladatokat ismerteti. 
 
-A **feladat** van az Azure Media Services tényleges kérelem a alkalmazni a **átalakítása** egy adott a bemeneti videó vagy hang tartalomhoz. A **feladat** információkat, például a bemeneti videó helyét, és a kimeneti helyét adja meg. Megadhatja, hogy a bemeneti videó használatával helye: HTTPs URL-címek, SAS URL-címeit, vagy [Media Services objektumai](https://docs.microsoft.com/rest/api/media/assets).  
+A [feladat](https://docs.microsoft.com/rest/api/media/jobs) van az Azure Media Services tényleges kérelem a alkalmazni a **átalakítása** egy adott a bemeneti videó vagy hang tartalomhoz. A **feladat** információkat, például a bemeneti videó helyét, és a kimeneti helyét adja meg. Megadhatja a helyét, a bemeneti videó használatával: HTTPS URL-címek, SAS URL-címeit, vagy [Media Services-eszközök](https://docs.microsoft.com/rest/api/media/assets).  
 
 ## <a name="typical-workflow"></a>Jellemző munkafolyamat
 

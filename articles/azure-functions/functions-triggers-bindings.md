@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: b071bfe83ba9ef653db2d6d1debad4e3dfa02580
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845926"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993815"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -119,29 +119,29 @@ function generateRandomId() {
 Egy osztálytár, a ugyanaz az eseményindító és a kötési információ &mdash; üzenetsor és a táblázat neve, a storage-fiókok esetében függvény bemeneti és kimeneti paramétereinek &mdash; helyett egy function.json fájlt attribútumok által biztosított. Például:
 
 ```csharp
- public static class QueueTriggerTableOutput
- {
-     [FunctionName("QueueTriggerTableOutput")]
-     [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
-     public static Person Run(
-         [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order, 
-         ILogger log)
-     {
-         return new Person() {
-                 PartitionKey = "Orders",
-                 RowKey = Guid.NewGuid().ToString(),
-                 Name = order["Name"].ToString(),
-                 MobileNumber = order["MobileNumber"].ToString() };
-     }
- }
+public static class QueueTriggerTableOutput
+{
+    [FunctionName("QueueTriggerTableOutput")]
+    [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
+    public static Person Run(
+        [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order,
+        ILogger log)
+    {
+        return new Person() {
+                PartitionKey = "Orders",
+                RowKey = Guid.NewGuid().ToString(),
+                Name = order["Name"].ToString(),
+                MobileNumber = order["MobileNumber"].ToString() };
+    }
+}
 
- public class Person
- {
-     public string PartitionKey { get; set; }
-     public string RowKey { get; set; }
-     public string Name { get; set; }
-     public string MobileNumber { get; set; }
- }
+public class Person
+{
+    public string PartitionKey { get; set; }
+    public string RowKey { get; set; }
+    public string Name { get; set; }
+    public string MobileNumber { get; set; }
+}
 ```
 
 ## <a name="supported-bindings"></a>Támogatott kötések
@@ -161,7 +161,7 @@ Az egyes fejlesztési környezetek kell explicit módon *regisztrálása* egy k�
 |Visual Studio 2017 használatával C# osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|
 |A Visual Studio Code C# osztálytár|–|[A .NET Core parancssori felület használata](#c-class-library-with-visual-studio-code)|
 
-A következő kötéstípusok kivételek, amelyek nem igényelnek explicit regisztrálása, mert automatikusan regisztrálva vannak az összes verziója és környezetek: HTTP és időzítőhöz.
+A következő kötéstípusok kivételek, amelyek nem igényelnek explicit regisztrálása, mert automatikusan regisztrálva vannak az összes verziója és környezetek: A HTTP és időzítőhöz.
 
 ### <a name="azure-portal-development"></a>Azure portal-fejlesztés
 
@@ -613,9 +613,10 @@ module.exports = function (context, info) {
 A tulajdonságokat a JSON-adattartalom néhány tulajdonságokkal rendelkező objektumok, ha azokat közvetlenül a pontjelöléssel hivatkozhat. Tegyük fel, hogy a JSON néz ki:
 
 ```json
-{"BlobName": {
-  "FileName":"HelloWorld",
-  "Extension":"txt"
+{
+  "BlobName": {
+    "FileName":"HelloWorld",
+    "Extension":"txt"
   }
 }
 ```

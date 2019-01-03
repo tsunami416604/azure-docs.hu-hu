@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d90a4272f843cc9f2b66aa202ddefe54e7b1a361
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317474"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632161"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -78,7 +78,7 @@ További információ a megosztott tároló eléréséhez aláírások című t�
 > [!NOTE]
 > Ha SAS-hitelesítő adatokat használja, szüksége lesz az adatforrás hitelesítő adatainak frissítése rendszeresen történik, hogy a lejárati idejük megújított jogosultságkódokkal. Ha lejár az SAS-hitelesítő adatokat, az indexelő hasonló hibaüzenettel meghiúsul `Credentials provided in the connection string are invalid or have expired.`.  
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
 Az index egy dokumentumot, az attribútumokat, adja meg a mezőket, és egyéb szerkezetek, amelyek formázhatja a keresési élmény.
 
 Hozzon létre egy kereshető indexet a következőképpen `content` tárolására blobok kinyert szöveget mező:   
@@ -334,7 +334,7 @@ Például a következő házirendet figyelembe veszi a blob metaadat-tulajdonsá
 
 Előfordulhat, hogy szeretné "összeállítás" dokumentumok az index több forrásból. Például érdemes egyesíteni a szöveget a blobok az egyéb Cosmos DB-ben tárolt metaadatok. Építse fel a dokumentumok keresése a több részből is használhatja a push API indexelő különböző indexelők együtt. 
 
-A funkció működéséhez az összes indexelőre és más összetevők kell egyeztetni a dokumentumkulcsot. Részletes útmutatót szeretne olvassa el a külső: [Dokumentumok egyesítése más adatokkal az Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+A funkció működéséhez az összes indexelőre és más összetevők kell egyeztetni a dokumentumkulcsot. Részletes útmutatót szeretne olvassa el a külső: [Dokumentumok egyesítése más adatokkal az Azure Search ](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Az indexelő egyszerű szöveg 

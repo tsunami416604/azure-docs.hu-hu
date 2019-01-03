@@ -2,8 +2,7 @@
 title: 'Oktatóanyag: Az Azure Functions futtatása Azure Stream Analytics-feladatokkal |} A Microsoft Docs'
 description: Ebben az oktatóanyagban megtanulhatja, hogy hogyan konfigurálhatja az Azure Functionst a Stream Analytics-feladatok kimeneti fogadójaként.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
@@ -11,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164160"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993008"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
@@ -152,7 +151,7 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 
 1. Nyissa meg a Stream Analytics-feladatot az Azure Portalon.  
 
-2. Keresse meg a függvényt, és válassza az **Áttekintés** > **Kimenetek** > **Hozzáadás** elemet. Új kimenet hozzáadásához válassza az **Azure-függvény** lehetőséget a fogadó beállításánál. Rendelkezésre áll az alábbi tulajdonságokkal rendelkező új Functions kimeneti adapter:  
+2. Keresse meg a függvényt, és válassza az **Áttekintés** > **Kimenetek** > **Hozzáadás** elemet. Új kimenet hozzáadásához válassza az **Azure-függvény** lehetőséget a fogadó beállításánál. A Functions kimeneti adapter a következő tulajdonságokkal rendelkezik:  
 
    |**Tulajdonság neve**|**Leírás**|
    |---|---|
@@ -160,7 +159,7 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
    |Importálási beállítás| A függvényt használhatja az aktuális előfizetésből, vagy megadhatja manuálisan a beállításokat, ha a függvény egy másik előfizetésben található. |
    |Függvényalkalmazás| A Functions-alkalmazás neve. |
    |Függvény| A függvény neve a Functions-alkalmazásban (a run.csx függvény neve).|
-   |Maximális kötegméret|A függvénybe küldött egyes kimeneti kötegek maximális méretének beállítására szolgál. Alapértelmezés szerint ez az érték 256 KB.|
+   |Maximális kötegméret|Az egyes kimeneti kötegek, amelyet a rendszer elküld a függvényt (bájt) maximális méretének beállítására. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB) értéke.|
    |Maximális kötegszám|A függvénybe küldött egyes kötegekben lévő események maximális számának megadására szolgál. Az alapértelmezett érték 100. Ez a tulajdonság nem kötelező.|
    |Kulcs|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
 

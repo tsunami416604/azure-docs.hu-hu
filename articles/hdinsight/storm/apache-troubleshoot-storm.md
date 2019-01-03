@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8b0f1cfe56923cbd8a5b1c517cfdc3b174088715
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086139"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632738"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache Storm hibaelhárítása
 
@@ -54,7 +54,7 @@ Lib mappájába rendelkezik a .jar fájlokat, amelyek tartalmazzák az exportál
 
 Futtassa a [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) parancsfájlt a ZooKeeper-csomópontok exportálhatja és importálhatja az adatokat. Frissítse a parancsfájlt a megfelelő Hortonworks Data Platform (HDP) verzióra. (Is dolgozunk a HDInsight általános így ezeket a parancsfájlokat. Az általános parancsfájlok futtatásához bármely olyan csomópontról módosítások nélkül a fürtön a felhasználó.)
 
-Az exportálási parancs egy Apache Hadoop elosztott fájlrendszer (HDFS) útvonal (az Azure Blob Storage vagy az Azure Data Lake Store áruházban) egy Ön által beállított helyen a metaadatokat ír.
+Az exportálási parancs egy Apache Hadoop elosztott fájlrendszer (HDFS) elérési út (az Azure Blob Storage vagy Azure Data Lake Storage) egy Ön által beállított helyen a metaadatokat ír.
 
 ### <a name="examples"></a>Példák
 
@@ -87,7 +87,7 @@ A Storm bináris az aktuális HDP verem /usr/hdp/current/storm-client találhat�
  
 Előfordulhat, hogy több bináris fájljait (például /usr/hdp/2.5.0.1233/storm) /usr/hdp a HDP verzióját. A /usr/hdp/current/storm-client mappa nem a legújabb verzióra a fürtön futó symlinked.
 
-További információkért lásd: [egy HDInsight-fürthöz SSH használatával csatlakozhat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Storm](http://storm.apache.org/).
+További információkért lásd: [egy HDInsight-fürthöz SSH használatával csatlakozhat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Apache Storm](https://storm.apache.org/).
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan állapítható meg a telepítési topológia a Storm-fürt?
 Először azonosítsa az összes telepített összetevőinek támogatásához a HDInsight Storm. A Storm-fürtök négy csomópont kategória áll:

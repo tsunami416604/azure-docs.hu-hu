@@ -4,14 +4,14 @@ description: Látható, hogy melyik Azure-erőforrástípus támogatja a címké
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/20/2018
+ms.date: 12/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 580955d3c6fd7a33c152e49e601d8078eb169a22
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: ef365cdf0a5df168c438abd0428e41200b07756c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409666"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753778"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resource-group-using-tags.md).
@@ -264,6 +264,7 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="insights"></a>Insights
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
+| actionGroups | Igen |
 | Összetevők | Igen | 
 | összetevő/lekérdezés | Nem | 
 | összetevő/a mérőszámok | Nem | 

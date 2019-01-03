@@ -4,19 +4,19 @@ description: Megismerheti, hogyan kell áttelepíteni a helyszíni SQL Serverrő
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 64d77a17241c44c9d450b9e7602222cdb89482b7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c4ccbe8a6f1e1923e83d2bdcbeb2d61429083aee
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247164"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724198"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>A helyszíni SQL Server migrálása az Azure SQL Database felügyelt példányába Azure PowerShell-lel
 Ebben a cikkben telepít át a **Adventureworks2012** adatbázis visszaállítása egy helyi példányára, az SQL Server 2005 vagy újabb egy Azure SQL Database felügyelt példánya a Microsoft Azure PowerShell használatával. Adatbázisok migrálhatók a helyszíni SQL Server-példány az Azure SQL Database felügyelt példányába történő használatával az `AzureRM.DataMigration` a Microsoft Azure PowerShell-modulja.
@@ -176,7 +176,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 ### <a name="select-logins"></a>Bejelentkezési adatok kiválasztása
-Hozzon létre bejelentkezések kell áttelepíteni az alábbi példában látható módon: vegye figyelembe, jelenleg csak az SQL-bejelentkezésekben áttelepítése DMS támogatja. 
+Hozzon létre bejelentkezések kell áttelepíteni az alábbi példában látható módon:  Vegye figyelembe, hogy jelenleg a DMS áttelepítése SQL-bejelentkezésekben csak támogatja. 
 
 ```powershell
 $selectedLogins = @("user1", "user2")

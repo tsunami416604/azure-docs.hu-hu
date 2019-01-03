@@ -1,6 +1,6 @@
 ---
-title: 'Azure Portal: SQL-adatbázis létrehozása | Microsoft Docs'
-description: SQL Database logikai kiszolgáló, kiszolgálószintű tűzfalszabályok és adatbázisok létrehozása és lekérdezése az Azure Portal használatával.
+title: Hozzon létre egy Azure SQL database, a portál használatával |} A Microsoft Docs
+description: Az Azure Portalon egy Azure SQL Database logikai kiszolgáló és adatbázis létrehozása és lekérdezése.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,131 +11,121 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 66ee4ac8fe946696d6760891a086a672fa9fc412
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/21/2018
+ms.openlocfilehash: b8ff482f2aec406ef4c1c545db7844a861317518
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914601"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994419"
 ---
-# <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Rövid útmutató: Azure SQL Database létrehozása az Azure Portalon
+# <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Database létrehozása az Azure Portalon
 
-Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL-adatbázist az Azure-ban a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) segítségével. Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben. Ez a rövid útmutató bemutatja, hogyan teheti meg az SQL Database-adatbázisok létrehozásának, majd lekérdezésének első lépéseit az Azure Portalon.
+Az Azure SQL Database egy *adatbázis--szolgáltatásként* , amely lehetővé teszi a felhőbeli magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet. Ez a rövid útmutató bemutatja, hogyan hoz létre, és a egy Azure SQL database, az Azure portal használatával majd lekérdezi a kezdéshez. 
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-  >[!NOTE]
-  >Ez az oktatóanyag a DTU-alapú vásárlási modellt használja, de a [vCore-alapú vásárlási modell](sql-database-service-tiers-vcore.md) szintén elérhető.
-
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Ebben a rövid útmutatóban minden lépéseiért jelentkezzen be a [az Azure portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
-Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers-dtu.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) jön létre.
+Az Azure SQL database egy meghatározott készletével rendelkezik [számítási és tárolási erőforrások](sql-database-service-tiers-dtu.md). Az adatbázis létrehozása egy [Azure SQL Database logikai kiszolgáló](sql-database-features.md) belül egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md).
 
-Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó SQL-adatbázis létrehozásához.
+Az AdventureWorksLT mintaadatokat tartalmazó SQL-adatbázis létrehozása:
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
+   
+1. Válassza ki **adatbázisok**, majd válassza ki **SQL Database**.
+   
+1. Az a **SQL Database** űrlapon adja meg a következő értékeket: 
+   
+   - **Adatbázis neve**: Típus *mySampleDatabase*.
+   - **Előfizetés**: Legördülő lista, és válassza ki a megfelelő előfizetés, ha nem jelenik meg.  
+   - **Erőforráscsoport**: Válassza ki **új létrehozása**, típus *myResourceGroup*, és válassza ki **OK**. 
+   - **Forrás kiválasztása**: Legördülő listára, és válassza ki **minta (AdventureWorksLT)**. 
+   
+   >[!IMPORTANT]
+   >Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatait ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók követheti. 
+   
+   ![Az Azure SQL Database adatbázis létrehozása](./media/sql-database-get-started-portal/create-database-1.png)
+   
+1. Válassza ki **kiszolgáló**, majd válassza ki **hozzon létre egy új kiszolgálót**. 
+   
+1. Az a **új kiszolgáló** űrlapon adja meg a következő értékeket: 
+   
+   - **Kiszolgálónév**: Típus *mysqlserver*.
+   - **Kiszolgáló-rendszergazdai bejelentkezés**: Típus *azureuser*. 
+   - **Jelszó**: Típus *Azure1234567*. 
+   - **Jelszó megerősítése**: Írja be újra a jelszót.
+   - **Hely**: Legördülő lista, és válassza ki az egyik érvényes helyen sem.  
+   
+   >[!IMPORTANT]
+   >Jegyezze meg vagy jegyezze fel a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, így bejelentkezhet a kiszolgáló és az adatbázisok ennél és a többi rövid útmutató. Ha elfelejti a bejelentkezéshez vagy a jelszavát, kérje le a bejelentkezési nevét, vagy alaphelyzetbe állíthatja a jelszót a a **az SQL server** lapot. Megnyitásához a **az SQL server** lapra, jelölje be a kiszolgáló nevét, az adatbázis **áttekintése** lap az adatbázis létrehozása után.
+   
+1. Válassza ki **kiválasztása**.
+   
+   ![Kiszolgáló létrehozása](./media/sql-database-get-started-portal/create-database-server.png)
+   
+1. Az a **SQL Database** kattintson képernyő **tarifacsomag**. Fedezze fel a dtu-k és az egyes szolgáltatásszinteken elérhető tárhely mennyiségét.
+   
+   >[!NOTE]
+   >Ebben a rövid útmutatóban használja a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md), de a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) is rendelkezésre áll.
+   
+   >[!NOTE]
+   >Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Egyesült Királyság északi régiója, USA nyugati középső RÉGIÓJA, Egyesült Királyság South2, kelet-Kína, közép-USDoDCentral, Németország, USDoDEast, USA-beli államigazgatás – délnyugati, Északkelet-US Gov Dél-India középső régiója, Németország, Észak-Kína és USA-beli államigazgatás – kelet. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   
+1. Ez a rövid útmutatóhoz válassza a **Standard** szolgáltatásszintet, és a csúszka segítségével válassza ki **10 Dtu (S0)** és **1** GB tárhelyet.
+   
+1. Kattintson az **Alkalmaz** gombra.  
+   
+   ![Díjszabás kiválasztása](./media/sql-database-get-started-portal/create-database-s1.png)
+   
+1. Az a **SQL Database** képernyő, válassza ki **létrehozás** üzembe helyezéséhez és az erőforráscsoport, kiszolgáló és adatbázis üzembe helyezése. 
+   
+   Üzembe helyezés eltarthat néhány percig. Választhat **értesítések** üzembe helyezési folyamat állapotának monitorozásához az eszköztáron.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** lehetőséget, majd az **Új** oldal **SQL Database** területén válassza a **Létrehozás** lehetőséget.
-
-   ![adatbázis létrehozása-1](./media/sql-database-get-started-portal/create-database-1.png)
-
-3. Töltse ki az SQL Database űrlapját a következő információkkal az előző képen látható módon:   
-
-   | Beállítás       | Ajánlott érték | Leírás |
-   | ------------ | ------------------ | ------------------------------------------------- |
-   | **Adatbázis neve** | mySampleDatabase | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
-   | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   | **Erőforráscsoport**  | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Forrás kiválasztása** | Minta (AdventureWorksLT) | Betölti az AdventureWorksLT sémát és adatokat az új adatbázisba. |
-
-   > [!IMPORTANT]
-   > Az űrlapon a mintaadatbázist kell kiválasztania, mivel a rövid útmutató hátralévő részében ezt használjuk majd.
-   >
-
-4. A **Server** (Kiszolgáló) területen kattintson a **Configure required settings** (Kötelező beállítások konfigurálása) elemre, majd töltse ki az SQL-kiszolgáló (logikai kiszolgáló) űrlapját a következő adatokkal a következő képen látható módon:   
-
-   | Beállítás       | Ajánlott érték | Leírás |
-   | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
-   | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább 8 karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
-   | **Előfizetés** | Az Ön előfizetése | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
-
-   > [!IMPORTANT]
-   > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
-   >  
-
-   ![adatbázis-kiszolgáló létrehozása](./media/sql-database-get-started-portal/create-database-server.png)
-
-5. Miután végzett az űrlappal, kattintson a **Kiválasztás** gombra.
-
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-szám és a tárterületméret megadásához. Fedezze fel a DTU-k és a tárterület mennyiségének az egyes szolgáltatásszinteken elérhető lehetséges beállításait.
-
-   > [!IMPORTANT]
-   > Az 1 TB-ot meghaladó Prémium szintű tárterület az összes régióban elérhető, kivéve a következőket: Egyesült Királyság északi régiója, USA nyugati középső régiója, Egyesült Királyság 2. déli régiója, Kelet-Kína, USA Védelmi Minisztériuma – Középső régió, Közép-Németország, USA Védelmi Minisztériuma – Keleti régió, USA-beli államigazgatás délnyugati régiója, USA-beli államigazgatás déli középső régiója, Északkelet-Németország, Észak-Kína és USA-beli államigazgatás keleti régiója. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
-7. Ehhez a rövid útmutatóhoz válassza a **Standard** szolgáltatásszintet, majd a csúszkával válassza ki a **10 DTU (S0)** egységet, illetve **1** GB tárhelyet.
-
-   ![adatbázis létrehozása-s1](./media/sql-database-get-started-portal/create-database-s1.png)
-
-8. A **Kiegészítő tárterület** beállítás használatához el kell fogadnia az előzetes verziójú szolgáltatás feltételeit.
-
-   > [!IMPORTANT]
-   > Az 1 TB-ot meghaladó Prémium szintű tárterület az összes régióban elérhető, kivéve a következőket: USA nyugati középső régiója, Kelet-Kína, US DoD – középső régió, US Gov Iowa, Közép-Németország, US DoD – keleti régió, US Gov délnyugati régió, Északkelet-Németország, Észak-Kína. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
-9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  
-
-10. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig.
-
-11. Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
-
-     ![értesítés](./media/sql-database-get-started-portal/notification.png)
+   ![Értesítés](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-sql-database"></a>Az SQL-adatbázis lekérdezése
 
-Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon található beépített lekérdezési eszközzel ellenőrizzük, hogy tud-e csatlakozni az adatbázishoz, és le tudja-e kérdezni az adatokat.
+Most, hogy létrehozott egy Azure SQL database, használja a beépített lekérdezési eszközzel az Azure Portalon kapcsolódni az adatbázishoz, és lekérdezheti az adatokat.
 
-1. Az adatbázishoz tartozó SQL Database oldalon kattintson a **Lekérdezésszerkesztő (előzetes verzió)** elemre a bal oldali menüben, majd kattintson a **Bejelentkezés** gombra.
-
-   ![bejelentkezés](./media/sql-database-get-started-portal/query-editor-login.png)
-
-2. Válassza az SQL Server-hitelesítést, adja meg a szükséges bejelentkezési adatokat, és kattintson az **OK** gombra a bejelentkezéshez.
-
-3. Miután hitelesítette magát a **kiszolgáló rendszergazdájaként**, írja be a következő lekérdezést a lekérdezésszerkesztő panelén.
-
+1. Az a **SQL Database** az adatbázisra, válassza a lap **Lekérdezésszerkesztő (előzetes verzió)** a bal oldali menüben. 
+   
+   ![Jelentkezzen be a Lekérdezésszerkesztő](./media/sql-database-get-started-portal/query-editor-login.png)
+   
+1. Írja be a bejelentkezési adatait, és válassza ki **OK**.
+   
+1. Adja meg a következő lekérdezést a **Lekérdezésszerkesztő** ablaktáblán.
+   
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
    FROM SalesLT.ProductCategory pc
    JOIN SalesLT.Product p
    ON pc.productcategoryid = p.productcategoryid;
    ```
+   
+1. Válassza ki **futtatása**, majd tekintse át a lekérdezési eredményeket az **eredmények** ablaktáblán.
 
-4. Kattintson a **Futtatás** gombra, majd tekintse át a lekérdezési eredményeket az **Eredmények** ablaktáblán.
-
-   ![lekérdezésszerkesztő: eredmények](./media/sql-database-get-started-portal/query-editor-results.png)
-
-5. Zárja be a **Lekérdezésszerkesztő** lapot, majd kattintson az **OK** gombra a nem mentett szerkesztések elvetéséhez.
+   ![Lekérdezésszerkesztő: eredmények](./media/sql-database-get-started-portal/query-editor-results.png)
+   
+1. Zárja be a **Lekérdezésszerkesztő** lapon, és válassza ki **OK** amikor a rendszer kéri, hogy a nem mentett szerkesztések elvetéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan milyen módokon csatlakozhat az adatbázishoz és végezhet róla lekérdezéseket. Ha azonban törölni szeretné a rövid útmutató során létrehozott erőforrásokat, végezze el a következő lépéseket.
+Tartsa meg az erőforráscsoport, az SQL server és SQL database, ha szeretne belépni [további lépések](#next-steps) , és megtudhatja, hogyan kapcsolódás és lekérdezés az adatbázis számos különböző módszer használatával. 
 
+Ha elkészült, használja ezeket az erőforrásokat, törölheti őket a következő:
 
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
+1. Az Azure Portal bal oldali menüből válassza ki a **erőforráscsoportok**, majd válassza ki **myResourceGroup**.
+1. Az erőforráscsoport lapján, válassza ki a **erőforráscsoport törlése**. 
+1. Típus *myResourceGroup* a mezőt, és válassza ki a **törlése**.
 
 ## <a name="next-steps"></a>További lépések
 
-- Most, hogy rendelkezik egy adatbázissal, létre kell hoznia egy kiszolgálószintű tűzfalszabályt a helyszíni eszközökből való csatlakozáshoz. Lásd: [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal-firewall.md)
-- Kiszolgálószintű tűzfalszabály létrehozása esetében [csatlakozhat és lekérdezhet](sql-database-connect-query.md) kedvenc eszközeinek vagy nyelveinek egyikét használva, beleértve a következőt:
+- Létre kell hoznia egy kiszolgálószintű tűzfalszabályt, amely az Azure SQL database csatlakozhat a helyszíni vagy távoli eszközök. További információkért lásd: [hozzon létre egy kiszolgálószintű tűzfalszabályt](sql-database-get-started-portal-firewall.md).
+- Miután létrehozott egy kiszolgálószintű tűzfalszabályt, [csatlakozásról és lekérdezésről](sql-database-connect-query.md) számos különböző eszközöket és nyelveket használ az adatbázis. 
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Adatbázisok az Azure CLI-vel való létrehozásáról lásd: [Azure CLI-minták](sql-database-cli-samples.md)
-- Adatbázisok az Azure PowerShell-lel való létrehozásáról lásd: [Azure PowerShell-minták](sql-database-powershell-samples.md)
+- Azure CLI használatával Azure SQL-adatbázisok létrehozásához lásd: [Azure CLI-minták](sql-database-cli-samples.md).
+- Azure PowerShell-lel az Azure SQL-adatbázisok létrehozásához lásd: [Azure PowerShell-minták](sql-database-powershell-samples.md).
