@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bb70bf56efac28029401b69ee4f87c2738c52e3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 28e21180fde50d19154830694cd4959795ae9d5c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721850"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789381"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő az Application insights szolgáltatással az Azure cloud services
 
 Ezek a szolgáltatások az Application Insights profiler is telepítheti:
-* [Azure Web Apps](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric-alkalmazások](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuális gépek](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler telepítve van a Windows Azure Diagnostics (WAD) bővítmény. Csak a profiler telepítéséhez, és a profilok küldése az Application Insights-erőforrásra WAD konfigurálásához kell.
 
 ## <a name="enable-profiler-for-your-azure-cloud-service"></a>Az Azure Cloud Service profiler engedélyezése
-1. Ellenőrizze, hogy Önnek használatával [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb.  Ellenőrizze, hogy elegendő a *ServiceConfiguration.\*. cscfg* fájlok egy `osFamily` érték "5" vagy újabb verzió.
-1. Adjon hozzá [felhőalapú szolgáltatás, Application Insights SDK](app-insights-cloudservices.md?toc=/azure/azure-monitor/toc.json).
+1. Ellenőrizze, hogy Önnek használatával [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb.  Ellenőrizze, hogy elegendő a *ServiceConfiguration.\*.cscfg* fájlok egy `osFamily` érték "5" vagy újabb verzió.
+1. Adjon hozzá [felhőalapú szolgáltatás, Application Insights SDK](../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 1. Az Application Insights kérések nyomon követése:
 
     ASP.Net webes szerepkörök esetében az Application Insights nyomon követheti a kérelmek automatikusan.
@@ -63,12 +63,12 @@ Application Insights Profiler telepítve van a Windows Azure Diagnostics (WAD) b
       </WadCfg>
       ```
 
-    >   **Megjegyzés:** Ha a *diagnostics.wadcfgx* fájlt is tartalmaz egy másik fogadó típusa `ApplicationInsights`, a következő kialakítási kulcs mindhárom egyeznie kell:  
+    >   **MEGJEGYZÉS:** Ha a *diagnostics.wadcfgx* fájlt is tartalmaz egy másik fogadó típusa `ApplicationInsights`, a következő kialakítási kulcs mindhárom egyeznie kell:  
     >  * Az alkalmazás által használt kulcs.  
     >  * A kulcs, amelyet a `ApplicationInsights` fogadó.  
     >  * A kulcs, amelyet a `ApplicationInsightsProfiler` fogadó.  
     >
-    > Az által használt tényleges kialakítási kulcs értéke annak a `ApplicationInsights` gyűjtése a *ServiceConfiguration.\*. cscfg* fájlokat.  
+    > Az által használt tényleges kialakítási kulcs értéke annak a `ApplicationInsights` gyűjtése a *ServiceConfiguration.\*.cscfg* fájlokat.  
     > A Visual Studio 15.5 Azure SDK-verzió, csak az alkalmazás által használt kialakítási kulcs után és a `ApplicationInsightsProfiler` fogadó kell egymással.
 1. Az új diagnosztikai konfigurációval a szolgáltatás üzembe helyezése és Application Insights Profiler lesz konfigurálva, a szolgáltatás futtatásához.
  

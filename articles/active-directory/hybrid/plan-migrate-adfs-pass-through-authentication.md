@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5361c8940c8c7dba5338a3f5a0ed18910f7e45a0
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: dcb2d1741a8e62bd317881d3f224d3358cad8778
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410329"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557206"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-ad"></a>Átmenő hitelesítés az Azure ad összevonási áttelepítésére
 A következő dokumentum útmutatást nyújt az átmenő hitelesítés AD FS áthelyezését.
@@ -243,7 +243,7 @@ Először rendelkezik bejelentkezési módszerének módosítása:
    6. Az a **készen áll a konfigurálás** képernyőn, ellenőrizze, hogy **Start szinkronizálási folyamat befejezése után a konfigurációs** jelölőnégyzet be van jelölve. Válassza ki **konfigurálása**.</br>
    ![kép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)</br>
    7. Nyissa meg a **Azure AD portálon**válassza **Azure Active Directory**, majd válassza ki **az Azure AD Connect**.
-   8. Ellenőrizze, hogy, amely **összevonási le van tiltva** közben **zökkenőmentes egyszeri bejelentkezési** és **Pass-alapos hitelesítési** vannak **engedélyezve**.</br>
+   8. Ellenőrizze, hogy **összevonási le van tiltva** közben **zökkenőmentes egyszeri bejelentkezési** és **Pass-alapos hitelesítési** vannak **engedélyezve**.</br>
    ![kép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)</br>
 
 Ezután további hitelesítési módszereket kell telepítenie. Nyissa meg a **az Azure portal**, keresse meg a **Azure Active Directory, az Azure AD Connect** kattintson **átmenő hitelesítés**.
@@ -324,7 +324,7 @@ Az átalakítás az Azure AD PowerShell modul használatával történik.
  ```
  
    3. Nyissa meg a **Azure AD portálon**válassza **Azure Active Directory**, majd válassza ki **az Azure AD Connect**.  
-   4. Miután az összevont tartományok szükséges formába átalakítani, ellenőrizze, hogy, amely **összevonási le van tiltva** közben **zökkenőmentes egyszeri bejelentkezést** és **átmenő hitelesítés** vannak **Engedélyezve**.</br>
+   4. Miután az összevont tartományok szükséges formába átalakítani, ellenőrizze, hogy **összevonási le van tiltva** közben **zökkenőmentes egyszeri bejelentkezést** és **átmenő hitelesítés**  **Engedélyezett**.</br>
    ![kép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)</br>
 
 ## <a name="testing-and-next-steps"></a>Tesztelés és a következő lépések

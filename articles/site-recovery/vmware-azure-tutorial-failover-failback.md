@@ -4,16 +4,17 @@ description: Megtudhatja, hogy végezheti el VMware virtuális gépek és fizika
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 517355a32fc7a549370aed2c7a8408c3a0887e13
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838021"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973169"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 
@@ -42,10 +43,10 @@ Ez az oktatóanyag egy sorozat ötödik része. Ez az oktatóanyag feltételezi,
 
 A feladatátvétel és a feladat-visszavétel négy fázisból áll:
 
-1. **Feladatátvétel az Azure-ba**: Gépek átvétele a helyszíni helyről az Azure-ba.
-2. **Azure-beli virtuális gépek ismételt védelme**: Az Azure-beli virtuális gépek ismételt védelme, hogy megkezdődhessen a visszareplikálás a helyszíni VMware virtuális gépekre. A helyszíni virtuális gép ki van kapcsolva az ismételt védelem alatt. Ez elősegíti az adatok konzisztenciáját a replikáció során.
-3. **Feladatátvétel a helyszínre**: Feladatátvétel futtatása az Azure-ból való feladat-visszavételhez.
-4. **Helyszíni virtuális gépek ismételt védelme**: Az adatok visszavétele után a visszavételben érintett helyszíni virtuális gépek ismételt védelme, hogy megkezdődhessen a replikálás az Azure-ba.
+1. **Az Azure-bA feladatátvételt**: Gépek átvétele a helyszíni helyről az Azure-bA.
+2. **Az Azure virtuális gépek ismételt védelme**: Az Azure virtuális gépek ismételt védelme, hogy megkezdődhessen a replikálás térjen vissza a helyszíni VMware virtuális gépeket. A helyszíni virtuális gép ki van kapcsolva az ismételt védelem alatt. Ez elősegíti az adatok konzisztenciáját a replikáció során.
+3. **Átadja a feladatokat a helyszíni**: Feladatátvételt végez, az Azure-ból sikertelen lesz.
+4. **Az ismételt védelem a helyszíni virtuális gépek**: Miután adatokat vissza nem sikerült, ismételt védelme a helyszíni virtuális gépek vissza az, hogy megkezdődhessen a replikálás az Azure-bA.
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
@@ -67,8 +68,8 @@ Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hog
 
 2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
    - **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
-   - **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gépet a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
-   - **Legutóbbi alkalmazáskonzisztens**: Ez a lehetőség a virtuális gépet a Site Recovery által feldolgozott legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át.
+   - **Legutóbb feldolgozott**: Ez a beállítás nem sikerül a virtuális Gépet a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
+   - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás nem sikerül a virtuális Gépet a Site Recovery által feldolgozott legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át.
    - **Egyéni**: Adjon meg egy helyreállítási pontot.
 
 3. Válassza a **Gép leállítása a feladatátvétel elkezdése előtt.** lehetőséget, ha azt szeretné, hogy a rendszer megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
