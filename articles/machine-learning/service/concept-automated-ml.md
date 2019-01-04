@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 12/04/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9e3297b2493ea12f9da50556e4fc9e72d625fd25
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436959"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583458"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -65,9 +65,10 @@ Kövesse ezt [minta notebook](https://github.com/Azure/MachineLearningNotebooks/
 ## <a name="next-steps"></a>További lépések
 
 Példák, és ismerje meg, hogyan hozhat létre automatizált Machine Learning használatával:
++ [Példák: A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez](samples-notebooks.md#automated-ml-setup)
 
 + [Oktatóanyag: Az Azure automatikus Machine Learning egy osztályozási modell automatikusan betanítása](tutorial-auto-train-models.md)
 
-+ [Automatikus képzési beállításainak konfigurálása](how-to-configure-auto-train.md)
++ [A távoli erőforrás automatikus képzési használata](how-to-auto-train-remote.md)
 
-+ [A távoli erőforrás automatikus képzési használata](how-to-auto-train-remote.md) 
++ [Automatikus képzési beállításainak konfigurálása](how-to-configure-auto-train.md)

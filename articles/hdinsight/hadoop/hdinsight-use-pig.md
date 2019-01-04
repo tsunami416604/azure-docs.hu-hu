@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 25a91c6217aac1b2278957c1ff0ed8b7a9b1f6ac
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3f4f99a37718fac3ae4baa14553290d63c7bce63
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166166"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653968"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel
 
@@ -29,10 +29,10 @@ Az Apache Pig az Apache Hadoop néven eljárási nyelv használatával programok
 | [.NET SDK a Hadoophoz](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux vagy Windows |Windows (egyelőre) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux vagy Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a id="why"></a>Miért érdemes a Pig használata
+## <a id="why"></a>Miért érdemes használni az Apache Pig
 
 A feldolgozó logika csak egy térképet, és csökkentse a függvény használatával megvalósítása a legnagyobb kihívás az adatok feldolgozási MapReduce a Hadoop használatával. Összetett feldolgozást, gyakran kell a feldolgozása felosztása több MapReduce művelet kapcsolt együtt, hogy a kívánt eredmények eléréséhez.
 
@@ -40,23 +40,23 @@ A Pig lehetővé teszi az adatok előállításához a kívánt kimeneti áthala
 
 A Pig Latin nyelv lehetővé teszi a nyers adatok bevitele, egy vagy több átalakítások, a kívánt kimeneti előállításához keresztül érkező adatfolyam ismertetik. A Pig Latin programok az általános mintát követik:
 
-* **Betöltés**: A fájlrendszer kezelhetők az adatok olvasása
+* **Betöltés**: Olvassa el az adatok kezelhetők a fájlrendszerből.
 
-* **Átalakítás**: Az adatok kezelése
+* **Átalakítás**: Módosíthatja az adatokat.
 
-* **Memóriakép és nem tárolnak**: A kimeneti adatoknak a képernyőre, vagy a feldolgozáshoz tárolja
+* **Memóriakép és nem tárolnak**: A kimeneti adatoknak a képernyőre, vagy a feldolgozáshoz tárolja.
 
 ### <a name="user-defined-functions"></a>Felhasználó által definiált függvények
 
 A Pig Latin is támogatja felhasználó által definiált függvények (UDF), amely lehetővé teszi, hogy a külső összetevők, amelyek logikákat implementálhat, amely a Pig Latin modell nehéz meghívása.
 
-A Pig Latin kapcsolatos további információkért lásd: [Pig Latin referencia manuális 1](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) és [Pig Latin referencia manuális 2](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
+A Pig Latin kapcsolatos további információkért lásd: [Pig Latin referencia manuális 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) és [Pig Latin referencia manuális 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
 UDF-EK használatával és a Pig együttes példát a következő dokumentumokban talál:
 
-* [A datafu és a Pig, a HDInsight együttes](apache-hadoop-use-pig-datafu-udf.md) -DataFu hasznos UDF-EK Apache által karbantartott gyűjteménye
-* [A Pig and Hive a HDInsight a Python használata](python-udf-hdinsight.md)
-* [A Hive és a Piggel a HDInsight használata a C#](apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Az Apache datafu és a HDInsight az Apache Pig együttes](apache-hadoop-use-pig-datafu-udf.md) -DataFu hasznos UDF-EK Apache által karbantartott gyűjteménye
+* [Az Apache Pig- és Apache Hive a HDInsight a Python használata](python-udf-hdinsight.md)
+* [Használat C# az Apache Hive és a HDInsight Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
 ## <a id="data"></a>Példa adatok
 
@@ -68,7 +68,7 @@ Minden napló a fájl tartalmaz egy sort, amely tartalmazza a mezők egy `[LOG L
 
 Az előző példában a naplózási szint: Hiba történt.
 
-> [!NOTE]
+> [!NOTE]  
 > A log4j fájl használatával is létrehozhat a [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) naplózása eszközt, és majd töltse fel ezt a fájlt a blobba. Lásd: [töltse fel az adatokat HDInsight](../hdinsight-upload-data.md) útmutatást. Az Azure storage-blobok használata a HDInsight kapcsolatos további információkért lásd: [az Azure Blob Storage a HDInsight](../hdinsight-hadoop-use-blob-storage.md).
 
 ## <a id="job"></a>Példa feladat
@@ -98,7 +98,7 @@ HDInsight Pig Latin-feladatok futtatásához számos módszer használatával. A
 | [.NET SDK a Hadoophoz](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux vagy Windows |Windows (egyelőre) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux vagy Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="pig-and-sql-server-integration-services"></a>A Pig és az SQL Server Integration Services
@@ -115,9 +115,9 @@ További információ az Azure Feature Pack for SSIS [Itt][ssispack].
 Most, hogy megtanulhatta, hogyan lehet a Pig használata a HDInsight, egyéb módon az Azure HDInsight használata az alábbi hivatkozások segítségével.
 
 * [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md)
-* [A Hive használata a HDInsightban][hdinsight-use-hive]
-* [A Sqoop használata a HDInsight](hdinsight-use-sqoop.md)
-* [Az Oozie használata a HDInsight](../hdinsight-use-oozie.md)
+* [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
+* [A HDInsight Apache Sqoop használata](hdinsight-use-sqoop.md)
+* [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie.md)
 * [HDInsight MapReduce-feladatok használata][hdinsight-use-mapreduce]
 
 [apachepig-home]: https://pig.apache.org/

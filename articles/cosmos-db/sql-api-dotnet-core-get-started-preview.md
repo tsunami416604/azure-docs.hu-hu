@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: f96082aaa174886c085ba67ee0f3e870e53136e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 917cf6ddf23fb9240aa6f2cef8add14c66d0cb06
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600760"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973170"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Konzolalkalmazás létrehozása .NET Core (a SDK verziója 3 előzetes verzió) az Azure Cosmos DB SQL API-fiókban lévő adatok kezelése
 
@@ -188,7 +188,7 @@ Gratulálunk! Sikeresen csatlakoztatta az Azure Cosmos DB-fiókot.
 
 ## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
 
-Egy adatbázis használatával hozható létre a [ **Createdatabaseasync** ](https://aka.ms/CosmosDotnetAPIDocs) vagy [ **Documentclient** ](https://aka.ms/CosmosDotnetAPIDocs) funkcióját a `Databases` osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója.
+Egy adatbázis használatával hozható létre a [ **Createdatabaseasync** ](https://aka.ms/CosmosDotnetAPIDocs) vagy [ **Documentclient** ](https://aka.ms/CosmosDotnetAPIDocs) funkcióját a **CosmosDatabases** osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója.
 
 1. Másolja és illessze be a **CreateDatabase** az alábbi metódust a **GetStartedDemoAsync** metódust. **CreateDatabase** létrehoz egy új adatbázist azonosítójú `FamilyDatabase` Ha ezt még nem létezik, a megadott azonosítójú a `databaseId` mező.
 
@@ -304,7 +304,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 > [!WARNING]
 > A metódus meghívása **CreateContainerIfNotExistsAsync** létrehoz egy új tárolót, amely következményeiről. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsync** ](https://aka.ms/CosmosDotnetAPIDocs) vagy [ **CreateContainerAsync** ](https://aka.ms/CosmosDotnetAPIDocs) működni a **Tárolók** osztály. Egy tároló elemek (amely az SQL API esetén JSON-dokumentumok) áll, és a kapcsolódó JavaScript kiszolgálóoldali alkalmazás logikáját, például a tárolt eljárások, felhasználó által definiált függvények és eseményindítók.
+Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsync** ](https://aka.ms/CosmosDotnetAPIDocs) vagy [ **CreateContainerAsync** ](https://aka.ms/CosmosDotnetAPIDocs) működni a **CosmosContainers** osztály. Egy tároló elemek (amely az SQL API esetén JSON-dokumentumok) áll, és a kapcsolódó JavaScript kiszolgálóoldali alkalmazás logikáját, például a tárolt eljárások, felhasználó által definiált függvények és eseményindítók.
 
 1. Másolja és illessze be a **CreateContainer** az alábbi metódust a **CreateDatabase** metódust. **CreateContainer** létrehoz egy új tárolót azonosító `FamilyContainer` Ha ezt még nem létezik, a megadott azonosítójú a `containerId` mező.
 
@@ -341,7 +341,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.
 
 ## <a id="CreateDoc"></a>6. lépés: Elemek hozzáadása a tárolóhoz
 
-Egy elem használatával hozható létre a [ **CreateItemAsync** ](https://aka.ms/CosmosDotnetAPIDocs) funkcióját a **elemek** osztály. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-tárolóba.
+Egy elem használatával hozható létre a [ **CreateItemAsync** ](https://aka.ms/CosmosDotnetAPIDocs) funkcióját a **CosmosItems** osztály. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-tárolóba.
 
 Először létre kell hozni egy **Család** osztályt, amely ebben a mintában az Azure Cosmos DB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva.
 

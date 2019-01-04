@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 585202203e0828848ea51cc5d0d548c6f1ac6cba
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 364c8d4c0ca9ac9a733ee98fd73b2dfd8497625f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724331"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791286"
 ---
-# <a name="create-an-azure-cosmos-db-for-mongodb-api-app-with-angular-and-cosmos-db"></a>Hozzon létre egy Azure Cosmos DB MongoDB API-alkalmazás az angular használatával és a Cosmos DB használatával
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md).
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Lehetővé teszi, hogy gyorsan hozzon létre és kérdezzen le dokumentum-, kulcs/érték és gráf típusú adatbázisokat, amelyek felhasználják az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Lehetővé teszi, hogy gyors létrehozása és lekérdezése, a dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek globális elosztási és horizontális skálázhatósági képességeket Cosmos DB középpontjában. 
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 

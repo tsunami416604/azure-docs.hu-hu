@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240409"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972379"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Az Azure-beli virtuális gépek különböző régiókban Always On rendelkezésre állási csoport konfigurálása
 
@@ -84,6 +84,7 @@ A replika létrehozásához egy távoli adatközpontban, tegye a következőket:
    - Csak a terheléselosztó az azonos régióban lévő virtuális gépek álló háttérkészlet tartalmazza.
    - TCP-port mintavételt adott IP-címet használja.
    - Terheléselosztási szabály adott, az SQL Server ugyanabban a régióban van.  
+   - Standard Load Balancer akkor lehet, ha a háttérkészletben lévő virtuális gépek nem részei egyetlen rendelkezésre állási csoportban vagy virtuálisgép-méretezési csoportot. További információkat a [áttekintése az Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 1. [Vegye fel a Feladatátvételi fürtszolgáltatást az új SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 

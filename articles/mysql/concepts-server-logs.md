@@ -1,20 +1,17 @@
 ---
 title: Az Azure Database for MySQL Server-naplók
 description: Az Azure Database-ben elérhető naplók a MySQL és a különböző naplózási szintek engedélyezésének paramétereket ismerteti.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/03/2018
-ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c9f8fc4bee370f287b40275b76fa98d2552d7600
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093782"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545073"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
 Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
@@ -42,12 +39,12 @@ Egyéb úgy módosíthatja a paraméterek a következők:
 - **long_query_time**: Ha a lekérdezés hosszabb időt vesz igénybe, mint a long_query_time (másodpercben), hogy a lekérdezés a rendszer naplózza. Az alapértelmezett érték 10 másodperc.
 - **log_slow_admin_statements**: Ha ON az utasításokban a slow_query_log írt felügyeleti utasítások, mint például a ALTER_TABLE és ANALYZE_TABLE tartalmazza.
 - **log_queries_not_using_indexes**: azt határozza meg, hogy lekérdezések, amelyek nem használnak az indexek a slow_query_log naplózza
-- **log_throttle_queries_not_using_indexes**: Ez a paraméter csak írható a lassú lekérdezések naplója nem index lekérdezések számát korlátozza. Ezt a paramétert akkor lép érvénybe, ha log_queries_not_using_indexes ON értékre van állítva.
+- **log_throttle_queries_not_using_indexes**: Ezt a paramétert csak írható a lassú lekérdezések naplója nem index lekérdezések számát korlátozza. Ezt a paramétert akkor lép érvénybe, ha log_queries_not_using_indexes ON értékre van állítva.
 
 Tekintse meg a MySQL [lassú lekérdezési napló dokumentáció](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) teljes leírását a lassú lekérdezések naplója paramétereket.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése után kiválaszthatja azokat a Log Analytics, az Event Hubs vagy Azure Storage kibocsátott. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: szakaszában az útmutató a [diagnosztikai naplók dokumentáció](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése után kiválaszthatja azokat a Log Analytics, az Event Hubs vagy Azure Storage kibocsátott. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: szakaszában az útmutató a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
 

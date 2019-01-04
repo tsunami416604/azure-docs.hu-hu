@@ -2,24 +2,27 @@
 title: Eszköz-sémát a távoli figyelési megoldás – Azure |} A Microsoft Docs
 description: Ez a cikk ismerteti, amely meghatározza a távoli figyelési megoldásban a szimulált eszköz JSON-sémájában.
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338855"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635527"
 ---
 # <a name="understand-the-device-model-schema"></a>Az eszközmodell sémájának megismerése
 
-A távoli figyelési megoldásban a szimulált eszközök segítségével tesztelheti működését. A távoli figyelési megoldás üzembe helyezésekor, a rendszer automatikusan biztosít a szimulált eszközök gyűjteménye. A meglévő szimulált eszközök testreszabása, vagy létrehozhatja a sajátját.
+A távoli figyelési megoldásban a szimulált eszközök segítségével tesztelheti működését. A távoli figyelési megoldás tartalmaz egy eszköz szimulálása szolgáltatást a szimulált eszközök futtatásához. A távoli figyelési megoldás üzembe helyezésekor, a rendszer automatikusan biztosít a szimulált eszközök gyűjteménye. A meglévő szimulált eszközök testreszabása, vagy létrehozhatja a sajátját.
 
 Ez a cikk ismerteti az eszközmodell sémájának, amely meghatározza az a funkciók és a egy szimulált eszköz. Az eszköz modellje egy JSON-fájlt tárolja.
+
+> [!NOTE]
+> Az eszközmodell sémájának csak a szimulált eszközök az eszköz szimulálása szolgáltatásban üzemeltetett szól. Ha szeretne létrehozni egy fizikai eszközt, tekintse meg [az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító](iot-accelerators-connecting-devices.md).
 
 A jelen cikkben kapcsolódó a következő cikkeket:
 

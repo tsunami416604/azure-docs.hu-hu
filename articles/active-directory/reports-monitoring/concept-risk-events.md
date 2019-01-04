@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625266"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652149"
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati eseményei
 
@@ -31,7 +31,9 @@ Nincsenek két helyen, ahol áttekintheti a jelentett kockázati események:
  - **Az Azure AD-jelentéskészítés** -kockázati események tartoznak az Azure AD biztonsági jelentések. További információkért lásd: a [felhasználókról szóló biztonsági jelentés](concept-user-at-risk.md) és a [kockázatos bejelentkezés biztonsági jelentés](concept-risky-sign-ins.md).
 
  - **Az Azure AD Identity Protection** -kockázati események is részei a jelentési képességeivel, [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-    
+
+Emellett használhatja a [Identity Protection kockázati események API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) programozott hozzáférést a Microsoft Graph használatával biztonsági észlelések eléréséhez. További információkért lásd: [Ismerkedés az Azure Active Directory Identity Protection és Microsoft Graph](../identity-protection/graph-get-started.md). 
+
 Jelenleg az Azure Active Directory észleli hat kockázati események típusai:
 
 - [Kiszivárogtatott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) 
@@ -125,11 +127,11 @@ A kockázati esemény súlyosságát az erőssége a jel, egy előjelző az iden
 
 Például: 
 
-* **Magas**: megbízható és a magas súlyossági szintű kockázati esemény. Ezek az események olyan erős mutatók, amelyek a felhasználói identitás biztonsága sérült, és minden érintett felhasználói fiókok azonnal szervizelni kell.
+* **Magas**: Magas megbízhatóság és magas súlyossági szintű kockázati esemény. Ezek az események olyan erős mutatók, amelyek a felhasználói identitás biztonsága sérült, és minden érintett felhasználói fiókok azonnal szervizelni kell.
 
-* **Közepes**: súlyos, de alacsonyabb megbízhatósági kockázati esemény, vagy fordítva. Ezek az események potenciálisan veszélyes, és minden érintett felhasználói fiókok szervizelni kell.
+* **Közepes**: Súlyos, de alacsonyabb megbízhatósági kockázati esemény, vagy fordítva. Ezek az események potenciálisan veszélyes, és minden érintett felhasználói fiókok szervizelni kell.
 
-* **Alacsony**: alacsony megbízhatósági és az alacsony súlyossági szintű kockázati esemény. Ez az esemény azonnali műveletet nem lehet szükség, de más kockázati események kombinálva rendelkezhetnek jelzi, hogy az identitás biztonsága sérült.
+* **Alacsony**: Alacsony megbízhatósági és az alacsony súlyossági szintű kockázati esemény. Ez az esemény azonnali műveletet nem lehet szükség, de más kockázati események kombinálva rendelkezhetnek jelzi, hogy az identitás biztonsága sérült.
 
 ![Kockázati szint](./media/concept-risk-events/01.png)
 

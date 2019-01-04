@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 308ab9d35e07c8376fb183c794fcad77a74a1df9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295563"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727802"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>A rendelés üzembe erőforrásokat az Azure Resource Manager-sablonok meghatározása
 Egy adott erőforráshoz lehet más erőforrások, amelyek már léteznie kell az erőforrás üzembe van helyezve. Például egy SQL server léteznie kell az SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot definiálhat egy erőforrást, mint a többi erőforrástól függ-e megjelölésével. A függőséget határoz meg a **dependsOn** elem, vagy a **referencia** függvény. 
@@ -145,16 +145,7 @@ Ez az elem vagy a dependsOn elem is használható függőségeinek megadása, de
 
 További tudnivalókért lásd: [függvényre](resource-group-template-functions-resource.md#reference).
 
-## <a name="recommendations-for-setting-dependencies"></a>Függőségek vonatkozó javaslatok
-
-Amikor eldönti, milyen függőségek beállítani, használja az alábbi irányelveket:
-
-* A lehető legkevesebb függőségek megadása
-* A gyermek-erőforrás beállítása a szülő erőforrástól függ-e.
-* Használja a **referencia** funkciót, és adja át az erőforrás nevét kell megosztani egy tulajdonság-erőforrások közötti implicit függőségek beállításához. Ne adja hozzá az explicit függ (**dependsOn**) Ha már definiált az implicit függ. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát. 
-* Beállíthat egy függőséget, ha egy erőforrás nem lehet **létrehozott** funkciót egy másik erőforráshoz nélkül. Függőség nem állít be, ha az üzembe helyezés után csak kezelheti az erőforrásokat.
-* Az eszközkorlátozásokkal függőségek cascade anélkül, hogy explicit módon állítja be őket. Például a virtuális gép virtuális hálózati adapter függ, és a virtuális hálózati adaptert egy virtuális hálózat és a nyilvános IP-címek függ. Ezért a virtuális gépet üzembe helyezett összes három erőforrást, de nincs explicit módon állítja be a virtuális gép összes három erőforrástól függ. Ez a megközelítés a függőségi sorrend tisztázza, és megkönnyíti a sablon később módosíthatja.
-* Ha telepítés előtt értéket lehet meghatározni, próbálja meg az erőforrás függőség nélküli telepítése. Például ha egy konfigurációs értéket kell egy másik erőforrás nevét, nincs szüksége lehet egy függőségi. Ez az útmutató mindig nem működik, mert egyes erőforrások ellenőrizze a többi erőforrás létezik-e. Ha hibaüzenetet kap, adjon hozzá egy függőséget. 
+## <a name="circular-dependencies"></a>Körkörös függőségi viszony
 
 Erőforrás-kezelő körkörös függőségi azonosítja a sablon érvényesítése során. Ha hibaüzenet jelenik meg, amely megállapítja, hogy létezik-e körkörös függőséget, értékelje ki a sablont, hogy függőségek nem szükségesek, és el kell távolítani. Ha eltávolítja a függőségek nem működik, elkerülheti a körkörös függőségi szerint bizonyos üzembe helyezési műveletek helyezi át az erőforrásokat, a rendszer körkörös függőséget után üzembe helyezett gyermekerőforrásait. Tegyük fel például, hogy két virtuális gépet telepít, de a tulajdonságai az egyes hivatkozni, a másik be kell. A következő sorrendben telepíthetők:
 
@@ -168,6 +159,7 @@ További információ a értékelése a telepítési sorrendet, és a függősé
 ## <a name="next-steps"></a>További lépések
 
 * Go-oktatóanyagot, tekintse meg [oktatóanyag: Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+* Javaslatok függőségek beállításakor, lásd: [gyakorlati tanácsok az Azure Resource Manager-sablon](template-best-practices.md).
 * Üzembe helyezés során függőségek hibaelhárítással kapcsolatos tudnivalókért lásd: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Az Azure Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
 * A sablonban rendelkezésre álló függvények listája: [sablonfüggvények](resource-group-template-functions.md).

@@ -13,12 +13,12 @@ ms.date: 01/25/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6bc18d73f66c1ede777d579b764127f034d9f0ca
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9b987ccd17f2060eea125a5d384446cec24fb68a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725726"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969165"
 ---
 # <a name="impact-analysis-with-application-insights"></a>A hatáselemzés az Application insights segítségével
 
@@ -35,7 +35,7 @@ De teljesítményelemzésben hatása a funkciók egy részét. Hiszen hatás tá
 ![Képernyőkép konverziós arányok böngészők](./media/app-insights-usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Az Application Insights-erőforrást kell tartalmaznia, Lapmegtekintések vagy egyéni események, a hatás eszközt használva. [Ismerje meg, hogyan állíthat be az alkalmazás gyűjtése az Application Insights JavaScript SDK automatikusan a lapmegtekintések](app-insights-javascript.md). Továbbá ne feledje, hogy meg vannak elemzése korrelációs, mivel a minta mérete számít.
+> Az Application Insights-erőforrást kell tartalmaznia, Lapmegtekintések vagy egyéni események, a hatás eszközt használva. [Ismerje meg, hogyan állíthat be az alkalmazás gyűjtése az Application Insights JavaScript SDK automatikusan a lapmegtekintések](../azure-monitor/app/javascript.md). Továbbá ne feledje, hogy meg vannak elemzése korrelációs, mivel a minta mérete számít.
 >
 >
 

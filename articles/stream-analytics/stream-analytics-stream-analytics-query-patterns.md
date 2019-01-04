@@ -3,25 +3,24 @@ title: Gyakori lekérdezési minták az Azure Stream Analytics szolgáltatásban
 description: Ez a cikk azt ismerteti, számos gyakori lekérdezési minták és a terveket, amelyeket az Azure Stream Analytics-feladatok lehetnek hasznosak.
 services: stream-analytics
 author: jseb225
-manager: kfile
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ffcf81ee8637c2ce01b3a7822d179609bd9dbfaa
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578891"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794532"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példák a Stream Analytics-használat gyakori minták lekérdezése
 
 ## <a name="introduction"></a>Bevezetés
 Lekérdezések az Azure Stream Analytics egy SQL-szerű lekérdezési nyelvet a van megadva. A nyelvi szerkezetek vannak dokumentálva az [Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx) útmutató. 
 
-A lekérdezés tervezési fejezhető ki egyszerű csatlakoztatott logikai egy bemeneti stream esemény adatok áthelyezése egy másik kimeneti adattárba. Vagy akkor teheti meg gazdag minta egyező és a historikus elemzés összesítések kiszámításához a TollApp példa különböző időtartományok keresztül. Csatlakozhat a streamelési események összevonása, és végezze el a statikus referenciaadatokra vonatkoznak az esemény értékek feldúsítani elleni keresések több bemenet adatait. Is adatokat tudjon írni több kimenetek.
+A lekérdezés tervezési fejezhető ki egyszerű csatlakoztatott logikai egy bemeneti stream esemény adatok áthelyezése egy másik kimeneti adattárba. Vagy akkor teheti meg gazdag minta egyező és a historikus elemzés összesítések kiszámításához a TollApp példa különböző időtartományok keresztül. Több bemenetből származó adatokat kapcsolhat össze streamelési események kombinálásához, és statikus referenciaadatok között kereshet az eseményértékek bővítéséhez. Is adatokat tudjon írni több kimenetek.
 
 Ez a cikk számos gyakori lekérdezési-minták található, a valós életből vett példák alapján megoldásait ismerteti. Folyamatban lévő és továbbra is az új mintákat folyamatosan frissül.
 
@@ -30,25 +29,26 @@ Az Azure Stream Analytics támogatja az események feldolgozását a fürt megos
 JSON és az Avro összetett típusok, például a beágyazott objektumok (rekord) vagy a tömb tartalmazhat. Ezek az összetett adattípusok használatához, tekintse meg a [JSON-elemzés és az AVRO-adatok](stream-analytics-parsing-json.md) cikk.
 
 
-## <a name="query-example-convert-data-types"></a>Példa: adattípus átalakítása
-**Leírás**: meghatározza azokat a tulajdonságokat a bemeneti streamben.
+## <a name="query-example-convert-data-types"></a>Lekérdezés. példa: Az adattípusok konvertálása
+**Leírás**: Meghatározza azokat a tulajdonságokat a bemeneti streamben.
 Például az autó súly beállításhalmazokkal bemeneti Stream érkezik, és alakítható át kell **INT** végrehajtásához **SUM** üzembe.
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time | Tömeg |
+| Fordítás | Time | Tömeg |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Kimeneti**:
 
-| Győződjön meg arról | Tömeg |
+| Fordítás | Tömeg |
 | --- | --- |
 | Honda |3000 |
 
 **Megoldás**:
 
+```SQL
     SELECT
         Make,
         SUM(CAST(Weight AS BIGINT)) AS Weight
@@ -57,16 +57,17 @@ Például az autó súly beállításhalmazokkal bemeneti Stream érkezik, és a
     GROUP BY
         Make,
         TumblingWindow(second, 10)
+```
 
-**MAGYARÁZAT**: használatát egy **CAST** utasításban a **súly** mezőben adja meg a jeho datovému typu. A támogatott adattípusok listájának megtekintéséhez [adattípusok (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+**MAGYARÁZAT**: Használja a **CAST** utasításban a **súly** mezőben adja meg a jeho datovému typu. A támogatott adattípusok listájának megtekintéséhez [adattípusok (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Példa: használata hasonló/nem szeretne egyező minta
-**Leírás**: Ellenőrizze, hogy egy mező értéke meg az esemény megfelel-e egy bizonyos minta.
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Lekérdezés. példa: Használat Like/Not szeretne egyező minta
+**Leírás**: Ellenőrizze, hogy az esemény egy mező értéke megegyezik-e egy bizonyos minta.
 Ellenőrizze például, hogy az eredményt adja vissza, amely a kezdődhet és végződhet 9 licenc lemezeket.
 
 **Bemeneti**:
 
-| Győződjön meg arról | LicensePlate | Time |
+| Fordítás | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -74,29 +75,31 @@ Ellenőrizze például, hogy az eredményt adja vissza, amely a kezdődhet és v
 
 **Kimeneti**:
 
-| Győződjön meg arról | LicensePlate | Time |
+| Fordítás | LicensePlate | Time |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
 
 **Megoldás**:
 
+```SQL
     SELECT
         *
     FROM
         Input TIMESTAMP BY Time
     WHERE
         LicensePlate LIKE 'A%9'
+```
 
-**MAGYARÁZAT**: használja a **PÉLDÁUL** utasítás ellenőrizheti a **LicensePlate** mező érték. Azt kell kezdődnie egy A, majd nulla vagy több karaktert bármely karakterlánccal rendelkezik, és majd végződhet egy 9. 
+**MAGYARÁZAT**: Használata a **PÉLDÁUL** utasítással ellenőrizze a **LicensePlate** mező érték. Azt kell kezdődnie egy A, majd nulla vagy több karaktert bármely karakterlánccal rendelkezik, és majd végződhet egy 9. 
 
-## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Példa: Adja meg a logika különböző esetek/érték (a CASE-utasítások)
+## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Lekérdezés. példa: Adja meg a logika különböző esetek/érték (a CASE-utasítások)
 **Leírás**: Adja meg a különböző számítási mező, egy adott feltétel alapján.
 Adjon meg például átadott karakterlánc leírását az hány autók győződjön meg arról, és egy különleges esetben az 1.
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time |
+| Fordítás | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -111,6 +114,7 @@ Adjon meg például átadott karakterlánc leírását az hány autók győződj
 
 **Megoldás**:
 
+```SQL
     SELECT
         CASE
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
@@ -122,16 +126,17 @@ Adjon meg például átadott karakterlánc leírását az hány autók győződj
     GROUP BY
         Make,
         TumblingWindow(second, 10)
+```
 
 **MAGYARÁZAT**: A **eset** kifejezés egyszerű kifejezések meghatározni az eredmény számára egy egy kifejezés hasonlítja össze. Ebben a példában a jármű-számot ad vissza egy másik karakterláncot leírást jármű-számot 1-től eltérő lehetővé teszi, mint 1 lehetővé teszi. 
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>Példa: több kimeneti adatok küldése
-**Leírás**: adatokat küldeni a kimenetet több célnak egyetlen feladat.
+## <a name="query-example-send-data-to-multiple-outputs"></a>Lekérdezés. példa: Több kimeneti adatok küldése
+**Leírás**: Adatokat küldeni a kimenetet több célnak egyetlen feladat.
 Például egy küszöbértéken alapuló riasztás adatok elemzése, és archiválja a blob storage-ba történő összes eseményt.
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time |
+| Fordítás | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -141,7 +146,7 @@ Például egy küszöbértéken alapuló riasztás adatok elemzése, és archiv�
 
 **Output1**:
 
-| Győződjön meg arról | Time |
+| Fordítás | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -151,12 +156,13 @@ Például egy küszöbértéken alapuló riasztás adatok elemzése, és archiv�
 
 **Output2**:
 
-| Győződjön meg arról | Time | Darabszám |
+| Fordítás | Time | Darabszám |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
 **Megoldás**:
 
+```SQL
     SELECT
         *
     INTO
@@ -177,6 +183,7 @@ Például egy küszöbértéken alapuló riasztás adatok elemzése, és archiv�
         TumblingWindow(second, 10)
     HAVING
         [Count] >= 3
+```
 
 **MAGYARÁZAT**: A **INTO** záradékban arra utasítja a Stream Analytics ezen utasítás az adatok írása a kimenetek közül melyik.
 Az első lekérdezés egy átmenő nevű kimenetre fogadott adatok **ArchiveOutput**.
@@ -185,6 +192,7 @@ A második lekérdezés nem néhány egyszerű összesítés és a szűrést, é
 Vegye figyelembe, hogy a közös táblakifejezésekben (amely) eredményeit is felhasználhatja (például **WITH** utasítások) több kimeneti utasításokban. Ezzel a beállítással adhat kevesebb olvasók számára a bemeneti forrás a további előnnyel rendelkezik.
 Példa: 
 
+```SQL
     WITH AllRedCars AS (
         SELECT
             *
@@ -195,14 +203,15 @@ Példa:
     )
     SELECT * INTO HondaOutput FROM AllRedCars WHERE Make = 'Honda'
     SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
+```
 
-## <a name="query-example-count-unique-values"></a>Példa: egyedi értékek száma
-**Leírás**: az adatfolyam egy időtartományon belül egyedi mező értékeinek számát.
+## <a name="query-example-count-unique-values"></a>Lekérdezés. példa: Egyedi értékek száma
+**Leírás**: Az adatfolyam egy időtartományon belül egyedi mező értékeinek számát.
 Például hogy hány egyedi lesz átadni a nem ingyenes érzékelőadatainak 2 másodperces ablakban autó?
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time |
+| Fordítás | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -219,38 +228,39 @@ Például hogy hány egyedi lesz átadni a nem ingyenes érzékelőadatainak 2 m
 
 **Megoldás:**
 
-````
+```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
      System.TIMESTAMP AS TIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
-````
+```
 
 
 **Magyarázat:**
 **COUNT (DISTINCT teszi)** eltérő értékeket számát adja vissza a **győződjön meg arról,** oszlop egy időtartományon belül.
 
-## <a name="query-example-determine-if-a-value-has-changed"></a>Példa: határozza meg, ha a egy értéke megváltozott-e.
-**Leírás**: nézze meg állapítsa meg, hogy a jelenlegi érték eltér az előző érték.
+## <a name="query-example-determine-if-a-value-has-changed"></a>Lekérdezés. példa: Határozza meg, ha a egy értéke megváltozott-e.
+**Leírás**: Tekintse meg a állapítsa meg, hogy a jelenlegi érték eltér az előző érték.
 Például az az előző autó a nem ingyenes útközben, az aktuális autó azonos tétele?
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time |
+| Fordítás | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Kimeneti**:
 
-| Győződjön meg arról | Time |
+| Fordítás | Time |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Megoldás**:
 
+```SQL
     SELECT
         Make,
         Time
@@ -258,15 +268,16 @@ Például az az előző autó a nem ingyenes útközben, az aktuális autó azon
         Input TIMESTAMP BY Time
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
+```
 
-**MAGYARÁZAT**: használata **LAG** és betekintés az adatfolyam-egy eseményhez vissza a **győződjön meg arról,** értéket. Ezután hasonlítsa össze, hogy a **győződjön meg arról,** érték az aktuális esemény, és a kimeneti esemény, ha ezek eltérnek.
+**MAGYARÁZAT**: Használat **LAG** és betekintés az adatfolyam-egy eseményhez vissza a **győződjön meg arról,** értéket. Ezután hasonlítsa össze, hogy a **győződjön meg arról,** érték az aktuális esemény, és a kimeneti esemény, ha ezek eltérnek.
 
-## <a name="query-example-find-the-first-event-in-a-window"></a>Példa: egy ablakban keresse meg az első esemény
-**Leírás**: az első autó található minden 10 perces időközt.
+## <a name="query-example-find-the-first-event-in-a-window"></a>Lekérdezés. példa: Keresse meg az első esemény ablakban
+**Leírás**: Az első autó talál minden 10 perces időközt.
 
 **Bemeneti**:
 
-| LicensePlate | Győződjön meg arról | Time |
+| LicensePlate | Fordítás | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Alátámaszt |2015-07-27T00:02:17.0000000Z |
@@ -278,13 +289,14 @@ Például az az előző autó a nem ingyenes útközben, az aktuális autó azon
 
 **Kimeneti**:
 
-| LicensePlate | Győződjön meg arról | Time |
+| LicensePlate | Fordítás | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
 
 **Megoldás**:
 
+```SQL
     SELECT 
         LicensePlate,
         Make,
@@ -293,10 +305,11 @@ Például az az előző autó a nem ingyenes útközben, az aktuális autó azon
         Input TIMESTAMP BY Time
     WHERE 
         IsFirst(minute, 10) = 1
+```
 
 Most hozzunk módosítsa a problémát, és keresse meg az első autó egy adott márka, minden 10 perces időközt.
 
-| LicensePlate | Győződjön meg arról | Time |
+| LicensePlate | Fordítás | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Alátámaszt |2015-07-27T00:02:17.0000000Z |
@@ -306,6 +319,7 @@ Most hozzunk módosítsa a problémát, és keresse meg az első autó egy adott
 
 **Megoldás**:
 
+```SQL
     SELECT 
         LicensePlate,
         Make,
@@ -314,13 +328,14 @@ Most hozzunk módosítsa a problémát, és keresse meg az első autó egy adott
         Input TIMESTAMP BY Time
     WHERE 
         IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
+```
 
-## <a name="query-example-find-the-last-event-in-a-window"></a>Példa: egy ablakban keresse meg az utolsó esemény
-**Leírás**: a legutóbbi autó található minden 10 perces időközt.
+## <a name="query-example-find-the-last-event-in-a-window"></a>Lekérdezés. példa: Keresse meg az utolsó esemény ablakban
+**Leírás**: Az utolsó autó talál minden 10 perces időközt.
 
 **Bemeneti**:
 
-| LicensePlate | Győződjön meg arról | Time |
+| LicensePlate | Fordítás | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Alátámaszt |2015-07-27T00:02:17.0000000Z |
@@ -332,13 +347,14 @@ Most hozzunk módosítsa a problémát, és keresse meg az első autó egy adott
 
 **Kimeneti**:
 
-| LicensePlate | Győződjön meg arról | Time |
+| LicensePlate | Fordítás | Time |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
 
 **Megoldás**:
 
+```SQL
     WITH LastInWindow AS
     (
         SELECT 
@@ -357,16 +373,17 @@ Most hozzunk módosítsa a problémát, és keresse meg az első autó egy adott
         INNER JOIN LastInWindow
         ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
         AND Input.Time = LastInWindow.LastEventTime
+```
 
-**MAGYARÁZAT**: még két lépésre van a lekérdezésben. Az elsőt a legújabb időbélyeg megkeresi a windows 10 perc. A második lépésben csatlakoztatja az eredeti adatfolyam az egyes ablakban az utolsó időbélyegek megfelelő események az első lekérdezés eredményeit. 
+**MAGYARÁZAT**: A lekérdezés két lépésből áll. Az elsőt a legújabb időbélyeg megkeresi a windows 10 perc. A második lépésben csatlakoztatja az eredeti adatfolyam az egyes ablakban az utolsó időbélyegek megfelelő események az első lekérdezés eredményeit. 
 
-## <a name="query-example-detect-the-absence-of-events"></a>A példában a lekérdezés: események hiányának észlelése
+## <a name="query-example-detect-the-absence-of-events"></a>Lekérdezés. példa: Események hiányának észlelése
 **Leírás**: Ellenőrizze, hogy a stream nem rendelkezik értékkel, amely megfelel egy bizonyos feltételnek.
 Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmentesen utazás az utolsó 90 másodpercen belül?
 
 **Bemeneti**:
 
-| Győződjön meg arról | LicensePlate | Time |
+| Fordítás | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -375,12 +392,13 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
 
 **Kimeneti**:
 
-| Győződjön meg arról | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Fordítás | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
 **Megoldás**:
 
+```SQL
     SELECT
         Make,
         Time,
@@ -391,18 +409,19 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
         Input TIMESTAMP BY Time
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
+```
 
-**MAGYARÁZAT**: használata **LAG** és betekintés az adatfolyam-egy eseményhez vissza a **győződjön meg arról,** értéket. Hasonlítsa össze, hogy a **győződjön meg arról,** az aktuális esemény az értéket, és ezután kimeneti az eseményt, ha azok, azonos. Is **LAG** az előző autó kapcsolatos adatok eléréséhez.
+**MAGYARÁZAT**: Használat **LAG** és betekintés az adatfolyam-egy eseményhez vissza a **győződjön meg arról,** értéket. Hasonlítsa össze, hogy a **győződjön meg arról,** az aktuális esemény az értéket, és ezután kimeneti az eseményt, ha azok, azonos. Is **LAG** az előző autó kapcsolatos adatok eléréséhez.
 
-## <a name="query-example-detect-the-duration-between-events"></a>A példában a lekérdezés: események közötti időtartamot fogja észlelése
-**Leírás**: keresse meg az adott esemény időtartama. Adja meg a webes kattintássorozat, például határozza meg, a szolgáltatás töltött időt.
+## <a name="query-example-detect-the-duration-between-events"></a>Lekérdezés. példa: Az események közötti időtartam észlelése
+**Leírás**: Keresse meg az adott esemény időtartama. Adja meg a webes kattintássorozat, például határozza meg, a szolgáltatás töltött időt.
 
 **Bemeneti**:  
 
 | Felhasználó | Szolgáltatás | Esemény | Time |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Vége |2015-01-01T00:00:08.0000000Z |
 
 **Kimeneti**:  
 
@@ -412,23 +431,23 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
 
 **Megoldás**:
 
-````
+```SQL
     SELECT
         [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
-````
+```
 
-**MAGYARÁZAT**: használja a **utolsó** funkció lekéréséhez az utolsó **idő** értéket, ha az esemény típusa **Start**. A **utolsó** függvény **PARTITION BY [felhasználó]** jelzi, hogy az eredmény számított egyedi felhasználónként. A lekérdezés tartalmaz egy 1 óra közötti maximális küszöbértéke **Start** és **leállítása** események, igény szerint konfigurálható, de **(korlát DURATION(hour, 1)**.
+**MAGYARÁZAT**: Használja a **utolsó** funkció lekéréséhez az utolsó **idő** értéket, ha az esemény típusa **Start**. A **utolsó** függvény **PARTITION BY [felhasználó]** jelzi, hogy az eredmény számított egyedi felhasználónként. A lekérdezés tartalmaz egy 1 óra közötti maximális küszöbértéke **Start** és **leállítása** események, igény szerint konfigurálható, de **(korlát DURATION(hour, 1)**.
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>Példa: egy feltétel időtartama észlelése
-**Leírás**: keresse meg a feltétel történt mennyi ideig ki.
+## <a name="query-example-detect-the-duration-of-a-condition"></a>Lekérdezés. példa: Egy feltétel időtartama észlelése
+**Leírás**: Keresse meg a feltétel történt mennyi ideig ki.
 Tegyük fel például, hogy hibát eredményezett a egy helytelen súly (fent 20 000 font) rendelkező összes autók, és ki kell számítani a bejelentett hiba időtartama.
 
 **Bemeneti**:
 
-| Győződjön meg arról | Time | Tömeg |
+| Fordítás | Time | Tömeg |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -447,7 +466,7 @@ Tegyük fel például, hogy hibát eredményezett a egy helytelen súly (fent 20
 
 **Megoldás**:
 
-````
+```SQL
     WITH SelectPreviousEvent AS
     (
     SELECT
@@ -464,17 +483,17 @@ Tegyük fel például, hogy hibát eredményezett a egy helytelen súly (fent 20
     WHERE
         [weight] < 20000
         AND previousWeight > 20000
-````
+```
 
-**MAGYARÁZAT**: használata **LAG** bemeneti stream megtekintése 24 órán keresztül, és keresse meg where példányok **StartFault** és **StopFault** a súlyozás szerint vannak ölel < 20000.
+**MAGYARÁZAT**: Használja **LAG** bemeneti stream megtekintése 24 órán keresztül, és keresse meg where példányok **StartFault** és **StopFault** a súly < 20000 által felölelt vannak.
 
-## <a name="query-example-fill-missing-values"></a>Példa: Adja meg a hiányzó értékek
-**Leírás**: események, amelyekből értékek hiányoznak a Stream készít rendszeres időközönként események adatfolyam.
+## <a name="query-example-fill-missing-values"></a>Lekérdezés. példa: Adja meg a hiányzó értékek
+**Leírás**: Az események, amelyekből értékek hiányoznak, az eredmény egy adatfolyam rendszeres időközönként események.
 Például hozzon létre egy eseményt 5 másodpercenként, amely a legutóbb észlelt adatpont jelentést.
 
 **Bemeneti**:
 
-| T | érték |
+| t | érték |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -500,19 +519,20 @@ Például hozzon létre egy eseményt 5 másodpercenként, amely a legutóbb és
 
 **Megoldás**:
 
+```SQL
     SELECT
         System.Timestamp AS windowEnd,
         TopOne() OVER (ORDER BY t DESC) AS lastEvent
     FROM
         input TIMESTAMP BY t
     GROUP BY HOPPINGWINDOW(second, 300, 5)
-
+```
 
 **MAGYARÁZAT**: Ez a lekérdezés 5 másodpercentként eseményeket hoz létre, és kiírja a korábban kapott utolsó esemény. A [Hopping ablak](https://msdn.microsoft.com/library/dn835041.aspx "Hopping ablak--az Azure Stream Analytics") időtartamát határozza meg, milyen vissza a lekérdezést úgy tűnik, keresse meg az utolsó esemény (ebben a példában 300 másodperc).
 
 
-## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Példa: korrelációját, ha ugyanazt a streamen belül két esemény típusa
-**Leírás**: riasztások igények hozható létre, amely egy bizonyos időtartományban történt több eseménytípus alapján.
+## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Lekérdezés. példa: Vesse össze az azonos streamen belül két esemény típusa
+**Leírás**: Néha riasztások kell létrehozni egy bizonyos időtartományban történt több eseménytípus alapján.
 Például egy IoT-forgatókönyvet az otthoni sütőben, a riasztást kell lennie jönnek létre, ha ventilátor hőmérséklet kevesebb, mint 40, és a teljesítmény az elmúlt 3 perc alatt kevesebb mint 10.
 
 **Bemeneti**:
@@ -546,7 +566,7 @@ Például egy IoT-forgatókönyvet az otthoni sütőben, a riasztást kell lenni
 
 **Megoldás**:
 
-````
+```SQL
 WITH max_power_during_last_3_mins AS (
     SELECT 
         System.TimeStamp AS windowTime,
@@ -580,16 +600,16 @@ WHERE
     t1.sensorName = 'temp'
     AND t1.value <= 40
     AND t2.maxPower > 10
-````
+```
 
-**MAGYARÁZAT**: az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) található minden eszközhöz a power érzékelő maximális értéke az elmúlt 3 perc alatt. A második lekérdezés az első lekérdezés a kiemelt értéket keresi a legújabb ablakban megfelelő az aktuális esemény csatlakozik. És ezt követően a megadott feltételek teljesülnek, egy riasztás akkor jön létre az eszköz.
+**MAGYARÁZAT**: Az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) található minden eszközhöz a power érzékelő maximális értéke az elmúlt 3 perc alatt. A második lekérdezés az első lekérdezés a kiemelt értéket keresi a legújabb ablakban megfelelő az aktuális esemény csatlakozik. És ezt követően a megadott feltételek teljesülnek, egy riasztás akkor jön létre az eszköz.
 
-## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Példa: független eszköz óra tevékenységdiagramon (részadatfolyamok) az események feldolgozása
-**Leírás**: esemény késői is érkezik, vagy közötti eseménykészítőkből eltérései miatti sorrendje, nem az óra partíciók és a hálózati késés közötti döntése. A következő példában az eszköz óra TollID 2 mögött TollID 1 eltelő 10 másodpercben, és az eszköz óra TollID 3 öt másodpercenként TollID 1 mögött. 
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Lekérdezés. példa: Független eszköz óra tevékenységdiagramon (részadatfolyamok) az események feldolgozása
+**Leírás**: Esemény késői is érkezik, vagy üzemen kívüli esemény gyártók között eltérései miatti, óra döntése partíciók vagy a hálózati késés között. A következő példában az eszköz óra TollID 2 mögött TollID 1 eltelő 10 másodpercben, és az eszköz óra TollID 3 öt másodpercenként TollID 1 mögött. 
 
 
 **Bemeneti**:
-| LicensePlate | Győződjön meg arról | Time | TollID |
+| LicensePlate | Fordítás | Time | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
 | YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
@@ -612,18 +632,62 @@ WHERE
 
 **Megoldás**:
 
-````
+```SQL
 SELECT
       TollId,
       COUNT(*) AS Count
 FROM input
       TIMESTAMP BY Time OVER TollId
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
-
-````
+```
 
 **MAGYARÁZAT**: A [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) záradék minden egyes eszköz ütemtervet külön részadatfolyamok megvizsgál. A kimeneti eseményekben a minden egyes TollID jönnek létre, azok számítja ki, ami azt jelenti, hogy az események minden egyes TollID helyett, mintha minden eszköz az azonos óra alatt átrendezésekor megállapodást sorrendben vannak.
 
+## <a name="query-example-remove-duplicate-events-in-a-window"></a>Lekérdezés. példa: Távolítsa el az ismétlődő események ablakban
+**Leírás**: Átlag kiszámítása egy adott időtartományban események például egy művelet végrehajtása, ha ismétlődő események szűri.
+
+**Bemeneti**:  
+
+| Eszközazonosító | Time | Attribútum | Érték |
+| --- | --- | --- | --- |
+| 1 |2018-07-27T00:00:01.0000000Z |Hőmérséklet |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |Hőmérséklet |50 |
+| 2 |2018-07-27T00:00:01.0000000Z |Hőmérséklet |40 |
+| 1 |2018-07-27T00:00:05.0000000Z |Hőmérséklet |60 |
+| 2 |2018-07-27T00:00:05.0000000Z |Hőmérséklet |50 |
+| 1 |2018-07-27T00:00:10.0000000Z |Hőmérséklet |100 |
+
+**Kimeneti**:  
+
+| AverageValue | Eszközazonosító |
+| --- | --- |
+| 70 | 1 |
+|45 | 2 |
+
+**Megoldás**:
+
+```SQL
+With Temp AS (
+    SELECT
+        COUNT(DISTINCT Time) AS CountTime,
+        Value,
+        DeviceId
+    FROM
+        Input TIMESTAMP BY Time
+    GROUP BY
+        Value,
+        DeviceId,
+        SYSTEM.TIMESTAMP
+)
+
+SELECT
+    AVG(Value) AS AverageValue, DeviceId
+INTO Output
+FROM Temp
+GROUP BY DeviceId,TumblingWindow(minute, 5)
+```
+
+**MAGYARÁZAT**: [COUNT (DISTINCT idő)](https://docs.microsoft.com/en-us/stream-analytics-query/count-azure-stream-analytics) egyedi érték számát adja vissza a Time oszlopban egy időtartományon belül. Ezután használhatja ezt a lépést kimenete az átlag kiszámításakor eszközönként ismétlődések elvetésével.
 
 ## <a name="get-help"></a>Segítségkérés
 További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).

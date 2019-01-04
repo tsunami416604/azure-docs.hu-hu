@@ -1,17 +1,17 @@
 ---
 title: Optimalizálása fejlesztéshez és teszteléshez az Azure Cosmos DB
-description: Ez a cikk bemutatja, hogyan Cosmos DB több lehetőséget kínál a fejlesztési és tesztelési a szolgáltatás ingyenes.
+description: Ez a cikk bemutatja, hogyan Azure Cosmos DB több lehetőséget kínál a fejlesztési és tesztelési a szolgáltatás ingyenes.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: e6ccf70a085950ebd6b520fa4991220981e4f018
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d3ed5c2c13e5a35bcc6cd0e03a6b553691785cdb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53264104"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548663"
 ---
 # <a name="optimizing-for-development-and-testing-in-azure-cosmos-db"></a>Optimalizálása fejlesztéshez és teszteléshez az Azure Cosmos DB
 
@@ -19,11 +19,11 @@ Ez a cikk az Azure Cosmos DB használata a fejlesztési és tesztelési ingyenes
 
 ## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Az Azure Cosmos DB emulator (helyileg letölthető verzió)
 
-[Az Azure Cosmos DB emulator](local-emulator.md) helyi letölthető verziót, amely az Azure Cosmos DB felhőszolgáltatásról utánozza van. Írhat, és tesztelje a kódot, amely az Azure Cosmos DB API-kat használja, akkor is, ha nincs hálózati kapcsolat van, és bármely költségek nélkül. Az Azure Cosmos DB emulatort fejlesztési célra szolgáló helyi környezetet biztosít kiváló minőségben a felhőszolgáltatáshoz. Fejlesztheti és tesztelheti alkalmazását helyileg, egy Azure-előfizetés létrehozása nélkül. Ha készen áll a felhőben üzembe helyezni, frissítse a kapcsolati karakterláncot a felhőben az Azure Cosmos DB végponthoz csatlakozik, nem módosított előfizetésekben van szükség. Emellett [állítsa be a Cosmos DB emulator rendelkező CI/CD folyamatot](tutorial-setup-ci-cd.md) készítése feladatot az Azure DevOps-tesztek futtatásához. Funkcionáló megkezdheti a [Cosmos DB emulator](local-emulator.md) cikk.
+[Az Azure Cosmos DB emulator](local-emulator.md) helyi letölthető verziót, amely az Azure Cosmos DB felhőszolgáltatásról utánozza van. Írhat, és tesztelje a kódot, amely az Azure Cosmos DB API-kat használja, akkor is, ha nincs hálózati kapcsolat van, és bármely költségek nélkül. Az Azure Cosmos DB emulatort fejlesztési célra szolgáló helyi környezetet biztosít kiváló minőségben a felhőszolgáltatáshoz. Fejlesztheti és tesztelheti alkalmazását helyileg, egy Azure-előfizetés létrehozása nélkül. Ha készen áll a felhőben üzembe helyezni, frissítse a kapcsolati karakterláncot a felhőben az Azure Cosmos DB végponthoz csatlakozik, nem módosított előfizetésekben van szükség. Emellett [állítsa be az Azure Cosmos DB emulator rendelkező CI/CD folyamatot](tutorial-setup-ci-cd.md) készítése feladatot az Azure DevOps-tesztek futtatásához. Funkcionáló megkezdheti a [Azure Cosmos DB emulator](local-emulator.md) cikk.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
 
-[Próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) díj környezetet biztosít, amely lehetővé teszi, hogy az adatbázis és gyűjtemény létrehozása, és kísérletezzen az Azure Cosmos DB a felhőben egy ingyenes. Nem Azure-hoz való regisztráció van, vagy fizetnie utánuk. A próbálja meg az Azure Cosmos DB-fiókok csak korlátozott ideig, jelenleg 30 napig érhetők el. Is megújítani őket, bármikor. Próbálja ki az Azure Cosmos DB fiókok segítségével egyszerűen kiértékelheti az Azure Cosmos DB, létrehozását és a egy alkalmazás tesztelése a gyors útmutatókat vagy oktatóanyagokat használatával. Hozzon létre egy bemutatót, vagy hajtsa végre a egységtesztelés szolgáltatásért nélkül. A Cosmos DB kipróbálása ingyenes fiókok, értékelheti a Cosmos DB prémium szintű lehetőségek ingyenesen, többek között a kulcsrakész globális terjesztés, SLA-k és a konzisztencia modellek. Legfeljebb 25 Azure Cosmos-tárolók és 10 000 RU/s átviteli hozhat létre egy adatbázist. Az Azure-fiók előfizetés vagy a hitelkártya használata nélkül futtathatja a mintaalkalmazást. A Cosmos DB kipróbálása ingyenes, akkor is-többrégiós Azure Cosmos fiók létrehozása és alkalmazás futtatása, mindössze néhány perc múlva. Első lépésként lásd [próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lapot.
+[Próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) díj környezetet biztosít, amely lehetővé teszi, hogy az adatbázis és gyűjtemény létrehozása, és kísérletezzen az Azure Cosmos DB a felhőben egy ingyenes. Nem Azure-hoz való regisztráció van, vagy fizetnie utánuk. A próbálja meg az Azure Cosmos DB-fiókok csak korlátozott ideig, jelenleg 30 napig érhetők el. Is megújítani őket, bármikor. Próbálja ki az Azure Cosmos DB fiókok segítségével egyszerűen kiértékelheti az Azure Cosmos DB, létrehozását és a egy alkalmazás tesztelése a gyors útmutatókat vagy oktatóanyagokat használatával. Hozzon létre egy bemutatót, vagy hajtsa végre a egységtesztelés szolgáltatásért nélkül. Az Azure Cosmos DB kipróbálása ingyenes fiókok, kiértékelheti az Azure Cosmos DB prémium szintű lehetőségek ingyenesen, többek között a kulcsrakész globális terjesztés, SLA-k és a konzisztencia modellek. Legfeljebb 25 Azure Cosmos-tárolók és 10 000 RU/s átviteli hozhat létre egy adatbázist. Az Azure-fiók előfizetés vagy a hitelkártya használata nélkül futtathatja a mintaalkalmazást. Az Azure Cosmos DB kipróbálása ingyenes, hozhat létre egy többrégiós Azure Cosmos-fiók és futtathat egy alkalmazást, mindössze néhány perc múlva. Első lépésként lásd [próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) lapot.
 
 ## <a name="azure-free-account"></a>Ingyenes Azure-fiók
 

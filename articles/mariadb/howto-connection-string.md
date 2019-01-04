@@ -3,17 +3,15 @@ title: Alkalmazások az Azure Database for MariaDB csatlakoztatása
 description: Ez a dokumentum a jelenleg támogatott kapcsolati karakterlánc, a csatlakozás az Azure Database for MariaDB, beleértve a (C#) ADO.NET, JDBC, Node.js, ODBC, PHP, Python és Ruby-alkalmazások listája.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 706bf395df98bd78fa36273a4948a11d4b59067d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967931"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536574"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Alkalmazások az Azure Database for MariaDB csatlakoztatása
 Ez a témakör felsorolja a kapcsolati karakterlánc típusú által támogatott Azure Database for MariaDB, sablonok és a példák együtt. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
@@ -64,7 +62,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati karakterlánc adatait lekérése az Azure Portalról
-Az a [az Azure portal](https://portal.azure.com), nyissa meg az Azure Database for MariaDB-kiszolgálót, és kattintson **kapcsolati karakterláncok** karakterlánc lekéréséhez a példány: ![a kapcsolati karakterláncok panel az Azure-ban portál](./media/howto-connection-strings/connection-strings-on-portal.png)
+Az a [az Azure portal](https://portal.azure.com), nyissa meg az Azure Database for MariaDB-kiszolgálót, és kattintson **kapcsolati karakterláncok** karakterlánc lekéréséhez a példány: ![A kapcsolati karakterlánc ablaktáblán az Azure Portalon](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 A karakterláncban biztosít például az illesztőprogram, a kiszolgáló és az egyéb adatbázis kapcsolódási paraméterek. Módosítsa a példákat a saját paramétereivel, például az adatbázis nevét, jelszó és így tovább. Ezután használhatja ezt a karakterláncot a kód és az alkalmazások csatlakozni a kiszolgálóhoz.
 

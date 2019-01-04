@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872846"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789211"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával az Apache Hadoop-fürtök létrehozása
 
@@ -24,10 +24,10 @@ Ismerje meg, hogyan hozhat létre egy HDInsight-fürtöt az Azure Resource Manag
 
 Az Azure REST API felügyeleti műveletek végrehajtása a szolgáltatások az Azure platformon, beleértve az új erőforrások, például a HDInsight-fürtök létrehozását teszi lehetővé.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-> [!NOTE]
+> [!NOTE]  
 > A lépéseket, a jelen dokumentum-használat a [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) segédprogram az Azure REST API folytatott kommunikációhoz.
 
 ## <a name="create-a-template"></a>Sablon létrehozása
@@ -211,7 +211,7 @@ A következő JSON-dokumentum a sablon és paraméterek fájlok egyesülés [ ht
 
 Ebben a példában a jelen dokumentumban leírt lépések használatban van. Cserélje le a példában *értékek* a a **paraméterek** szakasz azokra az értékekre a fürt számára.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A sablon a feldolgozó csomópontok (4) alapértelmezett száma egy HDInsight-fürtöt használ. Ha azt tervezi, hogy több mint 32 feldolgozó csomópontokat, majd jelöljön ki egy fő csomópont méretének legalább 8 maggal és 14 GB ram.
 >
 > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -222,7 +222,7 @@ Kövesse a leírt lépéseket [Azure CLI használatának első lépései](https:
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-> [!NOTE]
+> [!NOTE]  
 > Ezen lépések végrehajtása egy rövidített verzióját a *egyszerű szolgáltatás létrehozása a jelszó* szakaszában a [erőforrások eléréséhez egy szolgáltatásnév létrehozásához használható Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dokumentumot. Ezeket a lépéseket az Azure REST API-t hitelesítésre használt egyszerű szolgáltatás létrehozása.
 
 1. Egy parancssorból a következő paranccsal listázhatja az Azure-előfizetést.
@@ -241,7 +241,7 @@ Kövesse a leírt lépéseket [Azure CLI használatának első lépései](https:
 
     A tartozó értékeket cserélje le a `--display-name`, `--homepage`, és `--identifier-uris` a saját értékeire. Adjon meg egy jelszót az új Active Directory-bejegyzést.
 
-   > [!NOTE]
+   > [!NOTE]  
    > A `--home-page` és `--identifier-uris` értékek nem az interneten lévő üzemeltetett tényleges weblap hivatkoznia kell. Egyedi URI-k kell lenniük.
 
    Ez a parancs által visszaadott értéke a __Alkalmazásazonosító__ az új alkalmazás. Mentse ezt az értéket.
@@ -323,14 +323,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -d "{set your body string to the template and parameters}"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Ha mentette a sablont egy fájlba, a következő parancs helyett használhatja `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
 Ha a kérelem sikeres, 200 sorozat választ kap, és a válasz törzse tartalmazza a központi telepítési művelettel kapcsolatos adatokat tartalmazó JSON-dokumentumok.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az üzemelő példány elküldése megtörtént, de nem fejeződött be. Általában körülbelül 15., a központi telepítés befejezése több percet is igénybe vehet.
 
 ## <a name="check-the-status-of-a-deployment"></a>A központi telepítési állapotának ellenőrzése
@@ -347,7 +347,7 @@ Ez a parancs visszaadja a központi telepítési művelettel kapcsolatos adatoka
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -357,7 +357,7 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő segíts�
 
 * [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
 * [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
-* [Apache Hadoop MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Az Apache HBase-fürtök
 

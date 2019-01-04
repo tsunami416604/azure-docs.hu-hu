@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874555"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793512"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -39,31 +39,34 @@ Igen. Azonban [le kell állítania a védelmet](backup-azure-files.md#stop-prote
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Milyen földrajzi helyeken készíthetek biztonsági mentést Azure-fájlmegosztásaimról <br/>
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban és csak a következő helyeken érhető el: 
--   Kelet-Ausztrália (AE) 
+- Kelet-Ausztrália (AE) 
 - Délkelet-Ausztrália (ASE) 
 - Dél-Brazília (BRS)
 - Közép-Kanada (CNC)
--   Kelet-Kanada (CE)
--   USA középső régiója (CUS)
--   Kelet-Ázsia (EA)
--   USA keleti régiója (EUS)
--   USA 2. keleti régiója (EUS2)
+- Kelet-Kanada (CE)
+- USA középső régiója (CUS)
+- Kelet-Ázsia (EA)
+- USA keleti régiója (EUS)
+- USA 2. keleti régiója (EUS2)
 - Kelet-Japán (JPE)
 - Nyugat-Japán (JPW)
--   Közép-India (INC) 
+- Közép-India (INC) 
 - Dél-India (INS)
 - Korea középső régiója (KRC)
 - Korea déli régiója (KRS)
--   USA északi középső régiója (NCUS) 
--   Észak-Európa (NE) 
--   USA déli középső régiója (SCUS) 
--   Délkelet-Ázsia (SEA)
--   Egyesült Királyság déli régiója (UKS) 
--   Egyesült Királyság nyugati régiója (UKW) 
--   Nyugat-Európa (WE) 
--   USA nyugati régiója (WUS)
--   USA nyugati középső régiója (WCUS)
--   USA 2. nyugati régiója (WUS 2)
+- USA északi középső régiója (NCUS) 
+- Észak-Európa (NE) 
+- USA déli középső régiója (SCUS) 
+- Délkelet-Ázsia (SEA)
+- Egyesült Királyság déli régiója (UKS) 
+- Egyesült Királyság nyugati régiója (UKW) 
+- Nyugat-Európa (WE) 
+- USA nyugati régiója (WUS)
+- USA nyugati középső régiója (WCUS)
+- USA 2. nyugati régiója (WUS 2)
+- USA Arizona állam (UGA)
+- USA-beli államigazgatás – Texas (UGT)
+- USA-beli államigazgatás – Virginia (UGV)
 
 Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 

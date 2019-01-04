@@ -1,18 +1,17 @@
 ---
 title: Ajánlott eljárások Query Store az Azure Database for postgresql-hez
 description: Ez a cikk ismerteti a gyakorlati tanácsok a Query Store az Azure Database for PostgreSQL-hez.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 54a86a7ea1852efba0776451291820f4174a1f1f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0c962dc6d8aff63a3b7dd34133a40c7ff9feec4c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377581"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540741"
 ---
 # <a name="best-practices-for-query-store"></a>Ajánlott eljárások a Query Store
 
@@ -31,7 +30,7 @@ Lehetővé teszik a Query Store rögzíteni az adatokat, az Ön számára fontos
 |---|---|
 |_Az összes_  |A számítási feladatok alaposan tekintetében az összes lekérdezés és a végrehajtás gyakoriságát és más statisztikai elemzése. A számítási feladatok az új lekérdezések azonosítása. Észlelés, ha ad hoc lekérdezések segítségével lehetőségeket határozhat meg a felhasználó vagy az automatikus paraméterezés. _Az összes_ egy nagyobb erőforrás-használat költség is tartalmaz. |
 |_felső_  |A leggyakoribb lekérdezések – ezek az ügyfelek által kibocsátott figyelmet összpontosítanak.
-|_Egyik sem_ |Korábban már rögzített egy lekérdezési készlet, és ez alatt az időszak, amely a vizsgálni kívánt, és szeretné, hogy más lekérdezések vezethet be a felesleges kiküszöbölése. _Nincs_ egy megfelelő tesztelési és a teljesítménymérés környezetekben. _Nincs_ kell legyen óvatos, előfordulhat, hogy kihagyná nyomon követésére, és fontos új lekérdezések optimalizálása lehetőséget. Adott múltbeli idő Windows adatok nem állíthatók vissza. |
+|_Nincsenek_ |Korábban már rögzített egy lekérdezési készlet, és ez alatt az időszak, amely a vizsgálni kívánt, és szeretné, hogy más lekérdezések vezethet be a felesleges kiküszöbölése. _Nincs_ egy megfelelő tesztelési és a teljesítménymérés környezetekben. _Nincs_ kell legyen óvatos, előfordulhat, hogy kihagyná nyomon követésére, és fontos új lekérdezések optimalizálása lehetőséget. Adott múltbeli idő Windows adatok nem állíthatók vissza. |
 
 Query Store áruházbeli várakozási statistics is tartalmaz. Egy további rögzítési mód lekérdezés, amely szabályozza a várakozási statisztika: **pgms_wait_sampling.query_capture_mode** állítható _nincs_ vagy _összes_. 
 

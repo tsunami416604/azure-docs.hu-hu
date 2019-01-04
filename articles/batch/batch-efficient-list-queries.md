@@ -3,7 +3,7 @@ title: Hatékony listázó lekérdezések – Azure Batch tervezése |} A Micros
 description: Teljesítmény növeléséhez a szűrést a lekérdezéseket, ha a Batch-erőforrásokat, például a készletek, feladatok, tevékenységek információkat kér, és a számítási csomópontokon.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/26/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6bc31e8541797930583e41fb6efbb6473cd4b894
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: fc873f68be3e7aad67980ec2e8ee0b2e473777ec
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004455"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537901"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Hozzon létre hatékony lekérdezések Batch-erőforrások listája
 
@@ -106,9 +106,9 @@ Expand karakterlánc csökkenti az egyes információk beszerzéséhez szükség
 ## <a name="efficient-querying-in-batch-net"></a>Hatékony lekérdezése a Batch .NET-ben
 Belül a [Batch .NET] [ api_net] API-t, a [ODATADetailLevel] [ odata] osztály szűrő ellátására szolgál, válassza ki, és bontsa ki a karakterláncok listázása műveletek. A ODataDetailLevel osztály konstruktorában megadott, vagy közvetlenül a objektu nastavit három nyilvános karakterlánc-tulajdonságok rendelkezik. Ezután adja át a ODataDetailLevel objektum paraméterként a különféle műveletek például [ListPools][net_list_pools], [ListJobs][net_list_jobs], és [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: a visszaadott elemek száma.
+* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: A visszaadott elemek száma korlátozza.
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Adja meg az egyes elemek visszaadott tulajdonságértékek.
-* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: kérhető le adat minden eleme egy API hívása helyett különálló hívásokat az egyes elemekhez.
+* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: Minden elem egyetlen API hívással helyett minden elem külön hívások adatok beolvasására.
 
 A következő kódrészletet a Batch .NET API használatával kérdezi le hatékonyan az egy adott készletét készletek statisztikáit a Batch szolgáltatást. Ebben a forgatókönyvben a Batch-felhasználók számára a készletek tesztelési és éles környezetben is. A teszt címkészlet azonosítókat a "test" előtaggal van, és az éles készletet azonosítók "éles" előtagot kapnak. A kódtöredék *myBatchClient* megfelelően inicializálva példánya a [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) osztály.
 
@@ -147,8 +147,8 @@ List<CloudPool> testPools =
 A tulajdonságnevek a szűrőt, válassza ki, és bontsa ki a karakterláncok *kell* REST API-val megfelelőik, mind a nevét és eset tükrözik. Az alábbi táblázatokban a .NET és REST API-val igényló közötti leképezéseket.
 
 ### <a name="mappings-for-filter-strings"></a>Hozzárendelések szűrő-karakterlánc
-* **.NET-lista metódusokat**: a .NET API-módszer ebben az oszlopban levő fogad egy [ODATADetailLevel] [ odata] paraméterként objektum.
-* **REST-listára vonatkozó kérelmek**: Ebben az oszlopban levő kapcsolódó REST API-t minden lap tartalmaz egy táblát, amely megadja a tulajdonságok és műveletek engedélyezett *szűrő* karakterláncokat. Fogja használni, ezeket a tulajdonságnevek és műveletek amikor hozhat létre egy [ODATADetailLevel.FilterClause] [ odata_filter] karakterlánc.
+* **.NET-lista metódusokat**: A .NET API-módszer ebben az oszlopban levő fogad egy [ODATADetailLevel] [ odata] paraméterként objektum.
+* **REST-listára vonatkozó kérelmek**: Minden REST API oldal, ebben az oszlopban levő kapcsolódó tartalmaz egy táblázatot, amely megadja a tulajdonságok és műveletek engedélyezett *szűrő* karakterláncokat. Fogja használni, ezeket a tulajdonságnevek és műveletek amikor hozhat létre egy [ODATADetailLevel.FilterClause] [ odata_filter] karakterlánc.
 
 | .NET-metódusokat listája | REST-listára vonatkozó kérelmek |
 | --- | --- |
@@ -164,8 +164,8 @@ A tulajdonságnevek a szűrőt, válassza ki, és bontsa ki a karakterláncok *k
 | [PoolOperations.ListPools][net_list_pools] |[A készletekben található listában.][rest_list_pools] |
 
 ### <a name="mappings-for-select-strings"></a>Válassza ki a karakterláncok leképezéseit
-* **A Batch .NET-típusok**: a Batch .NET API-típusok.
-* **REST API-entitások**: Ebben az oszlopban minden oldal tartalmaz egy vagy több olyan táblát, amely a REST API-t a tulajdonságnevek a típus listából. Ezek a tulajdonságnevek hoz használt *kiválasztása* karakterláncokat. Ezek azonos tulajdonság nevét fogja használni, amikor hozhat létre egy [ODATADetailLevel.SelectClause] [ odata_select] karakterlánc.
+* **A Batch .NET-típusok**: A Batch .NET API-típusok.
+* **REST API-entitások**: Ebben az oszlopban minden lap tartalmaz egy vagy több olyan táblát, amely a REST API-t a tulajdonságnevek a típus listából. Ezek a tulajdonságnevek hoz használt *kiválasztása* karakterláncokat. Ezek azonos tulajdonság nevét fogja használni, amikor hozhat létre egy [ODATADetailLevel.SelectClause] [ odata_select] karakterlánc.
 
 | A Batch .NET-típusok | REST API-entitás |
 | --- | --- |
@@ -246,9 +246,9 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [Maximalizálhatja az Azure Batch számítási erőforrás-használat a párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md) egy másik cikk a Batch-alkalmazások teljesítményével kapcsolatos. Bizonyos típusú számítási feladatok párhuzamos végrehajtása profitálhatnának nagyobb –, de kevesebb – a számítási csomópontokon. Tekintse meg a [példaforgatókönyv](batch-parallel-node-tasks.md#example-scenario) ilyen esetben a részleteket a cikkben.
 
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [github_samples]: https://github.com/Azure/azure-batch-samples

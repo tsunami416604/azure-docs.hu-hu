@@ -1,22 +1,23 @@
 ---
-title: Az Azure Batch-feladatok futtatása – teljes körű-sablonokkal |} A Microsoft Docs
+title: Feladatok futtatása – teljes körű sablonok – Azure Batch használatával |} A Microsoft Docs
 description: Sablon fájlok és az Azure CLI Batch-készletek, feladatok és tevékenységek létrehozása
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 08/02/2018
-ms.author: danlep
-ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964292"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547677"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch parancssori felületi sablonjainak és fájlátviteli
 
@@ -37,7 +38,7 @@ Batch-sablonok létrehozása a kiszolgálón a [meglévő Batch támogatás az A
 
 Feladatok általában használni a bemeneti adatfájlt és a kimeneti adatok fájlokat. Storage-fiók van társítva, alapértelmezésben minden Batch-fiókkal. A fájlátvitel és onnan ezt a tárfiókot, a parancssori felületről, a nem kódolási és nem a tároló hitelesítő adatait.
 
-Ha például [ffmpeg](http://ffmpeg.org/) népszerű alkalmazás, amely feldolgozza a hang- és videofájlok. Az alábbiakban a lépéseket az Azure Batch parancssori ffmpeg átkódolása videó forrásfájljainak, a különböző meghívásához.
+Ha például [ffmpeg](https://ffmpeg.org/) népszerű alkalmazás, amely feldolgozza a hang- és videofájlok. Az alábbiakban a lépéseket az Azure Batch parancssori ffmpeg átkódolása videó forrásfájljainak, a különböző meghívásához.
 
 -   Hozzon létre egy készlet sablont. A sablont létrehozó felhasználónak tudja, hogyan hívhat meg az ffmpeg alkalmazás és a rájuk vonatkozó követelményekről; akkor adja meg a megfelelő operációs rendszer, a virtuális gép mérete, hogyan ffmpeg segítségével telepítve (az alkalmazáscsomag vagy egy Csomagkezelő, például használatával), és más tulajdonság értékek alkalmazáskészletet. Paraméterek jönnek létre, így a sablon használata esetén csak a készlet azonosítója és a virtuális gépek számának meg kell adni.
 

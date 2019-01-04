@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d34be70e3283869a28f036f0016a0d3f8f241a8a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5086c0758e7c535b65c877917dc790dafa46f763
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634847"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994720"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -26,11 +26,11 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre tárfiókokat az [Azure P
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Nincs.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ehhez a rövid útmutatóhoz az Azure PowerShell-modul Az 0,7 vagy újabb verziója. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
@@ -59,11 +59,11 @@ Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és a hitelesítéshez kövesse a képernyőn megjelenő utasításokat.
 
@@ -91,11 +91,11 @@ Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforr�
 
 Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. A rövid útmutató egy általános célú v2-tárfiókot hoz létre, de minden típusú tárfiókot hasonló módon hozhat létre.   
 
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Először hozzon létre egy új erőforráscsoportot a PowerShell a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
@@ -178,7 +178,7 @@ Az elérhető replikációs beállításokkal kapcsolatban további információ
 
 Ha törölni szeretné a jelen rövid útmutató által létrehozott erőforrásokat, akkor egyszerűen törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó tárfiók, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Erőforráscsoport eltávolítása az Azure Portallal:
 
@@ -186,7 +186,7 @@ Erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra (**...**).
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
@@ -199,21 +199,21 @@ Remove-AzResourceGroup -Name $resourceGroup
 Az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name storage-quickstart-resource-group
 ```
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot hozott létre. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
+Ez a rövid útmutatóban létrehozott egy általános célú v2 standard szintű tárfiókot. Ha szeretne megismerkedni a blobok tárfiókba történő felöltésével és onnan való letöltésével, folytassa a Blob Storage rövid útmutatójával.
 
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [Blobok használata az Azure Portal segítségével](../blobs/storage-quickstart-blobs-portal.md)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!div class="nextstepaction"]
 > [Blobok használata a PowerShell segítségével](../blobs/storage-quickstart-blobs-powershell.md)
@@ -221,6 +221,6 @@ Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Blobtárolók használata az Azure CLI segítségével](../blobs/storage-quickstart-blobs-cli.md)
+> [Az Azure CLI-vel blobok használata](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

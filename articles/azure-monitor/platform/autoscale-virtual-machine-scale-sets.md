@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: af20d84cbead84e3a9fa5b6ea93661814e42a851
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5ff6e29fc4d7607c44541c7947404a0bc0301207
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326206"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581488"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
@@ -242,7 +242,7 @@ Ezek a hivatkozások segítségével további információ az automatikus skál�
 
 [Az Azure automatikus méretezés ajánlott eljárásai](autoscale-best-practices.md)
 
-[Automatikus skálázás a PowerShell használatával kezelheti.](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings)
+[Automatikus skálázás a PowerShell használatával kezelheti.](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 
 [Automatikus skálázási parancssori felület használata kezelheti](cli-samples.md#autoscale)
 

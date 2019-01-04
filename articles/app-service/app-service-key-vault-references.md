@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 8add470048d3ead3f75ff85dd6f489d798af5e29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253442"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723144"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>A Key Vault hivatkozások használata az App Service és az Azure Functions (előzetes verzió)
 
@@ -32,7 +32,7 @@ Olvassa el a titkos kulcsok a Key Vaultból, kell rendelkeznie egy létrehozott 
 
 1. Key vault létrehozása a következő a [Key Vault rövid](../key-vault/quick-create-cli.md).
 
-1. Hozzon létre egy [alapértelmezett felügyelt identitás](app-service-managed-service-identity.md) az alkalmazáshoz.
+1. Hozzon létre egy [alapértelmezett felügyelt identitás](overview-managed-identity.md) az alkalmazáshoz.
 
    > [!NOTE] 
    > A Key Vault jelenleg csak a támogatási rendszer hozzárendelt felügyelt identitások hivatkozik. Felhasználó által hozzárendelt identitások nem használható.

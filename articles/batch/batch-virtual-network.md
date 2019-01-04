@@ -1,19 +1,20 @@
 ---
-title: Egy virtuális hálózatot az Azure Batch-készlet kiépítése |} A Microsoft Docs
+title: A virtuális hálózatban – Azure Batch-készlet kiépítése |} A Microsoft Docs
 description: Batch-készlet létrehozása az Azure-beli virtuális hálózathoz, úgy, hogy a számítási csomópontok biztonságosan kommunikálhat más virtuális gépeket a hálózatban, mint a fájlkiszolgáló.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: danlep
-ms.openlocfilehash: ef37d482e86e4ae05d3f14c78404dc395792b236
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 840c9f4115c13052c65e5975ed22aab7737ea2fe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091956"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543910"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton belül
 
@@ -37,7 +38,7 @@ Egy Azure Batch-készletben, hogy a számítási csomópontok kommunikálnak egy
 
 ## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Készlet létrehozása egy virtuális hálózatot a portálon
 
-Egyszer létrehozta a virtuális hálózathoz, és hozzárendelt egy alhálózathoz, hozhat létre egy Batch-készletet, hogy a virtuális hálózattal. Kövesse az alábbi lépéseket az Azure Portalon hoz létre egy készletet: 
+Egyszer létrehozta a virtuális hálózathoz, és hozzárendelt egy alhálózathoz, hozhat létre egy Batch-készletet, hogy a virtuális hálózattal. Kövesse az alábbi lépéseket az Azure Portalon hoz létre egy készletet: 
 
 1. Az Azure portálon lépjen Batch-fiókjára. Ez a fiók az erőforráscsoport, amely tartalmazza a használni kívánt virtuális hálózat azonos előfizetésben és régióban kell lennie. 
 2. Az a **beállítások** ablak bal oldalán válassza ki a **készletek** menüpontot.

@@ -1,51 +1,48 @@
 ---
-title: Adatbázis alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés
-description: Bemutatja, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor kialakítási szempontok
-services: mysql
+title: Az Azure Database for MySQL Database alkalmazás-fejlesztésének áttekintése
+description: Vezet be, hogy a fejlesztő kell követniük, csatlakozás az Azure Database for MySQL-hez való írásakor kialakításával kapcsolatos szempontok
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: b733468d41afacb616c95f0628e7bad6b0c837f0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 946f7011c51b7c6844e023d03e01e4c2043d2578
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264163"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544463"
 ---
-# <a name="application-development-overview-for-azure-database-for-mysql"></a>Alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés 
-A cikk ismerteti, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor tervezési szempontokat. 
+# <a name="application-development-overview-for-azure-database-for-mysql"></a>Alkalmazás-fejlesztésének áttekintése az Azure Database for MySQL-hez 
+Ez a cikk ismerteti a tervezési szempontoknak a fejlesztő kell követniük, csatlakozás az Azure Database for MySQL-hez való írásakor. 
 
 > [!TIP]
-> Az oktatóanyag bemutatja, hogyan hozzon létre egy kiszolgálót, hozzon létre egy kiszolgáló-alapú tűzfal, kiszolgáló tulajdonságainak megtekintése, adatbázist, és csatlakozzon és munkaterület és mysql.exe lekérdezése, lásd: [MySQL-adatbázis az első Azure-adatbázis megtervezése](tutorial-design-database-using-portal.md)
+> Bemutatja, hogyan hozzon létre egy kiszolgálót, kiszolgálóalapú tűzfalak létrehozásáról, kiszolgáló tulajdonságainak megtekintése, hozzon létre adatbázist, és a csatlakozás és lekérdezés a workbench és mysql.exe használatával foglalkozó oktatóanyagért lásd: [az első Azure Database for MySQL-adatbázis megtervezése](tutorial-design-database-using-portal.md)
 
 ## <a name="language-and-platform"></a>Nyelv és platform
-Különböző programozási nyelvekhez és platformokhoz érhetők el kódminták. A következő mintakódok hivatkozásait megtalálhatja: [MySQL Azure adatbázishoz való kapcsolódáshoz használt kapcsolódási függvénytárak](concepts-connection-libraries.md)
+Különböző programozási nyelvekhez és platformokhoz érhetők el kódminták. A kódmintákra mutató hivatkozások a következő helyen találhatók: [Csatlakozás az Azure Database for MySQL-hez használt csatlakozási kódtárak](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Eszközök
-Azure MySQL-adatbázis MySQL közösségi verzióját használja, MySQL munkaterület vagy MySQL segédprogramok mysql.exe, mint például az általános kezelőeszközöket kompatibilis [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql), stb. Az Azure portál, az Azure CLI és a REST API-k használatával is kommunikálni az adatbázis-szolgáltatás.
+Azure Database for MySQL-hez a MySQL közösségi telepített verzióját használja, kompatibilis a MySQL Workbench vagy MySQL segédprogramok mysql.exe, mint például az általános kezelőeszközöket [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql), és másokkal. Az Azure Portalon, az Azure CLI és REST API-k használatával is kezelheti az adatbázis-szolgáltatással.
 
 ## <a name="resource-limitations"></a>Erőforrás-korlátozások
-Azure MySQL-adatbázis két különböző mechanizmusok használatával kezeli a kiszolgáló számára elérhető erőforrások: 
-- Erőforrások irányítás.
-- A korlátozások érvényesítése.
+Azure Database for MySQL-kiszolgáló számára elérhető erőforrások két különböző mechanizmus használatával kezeli: 
+- Erőforrás-szabályozással.
+- Kényszerítési korlátját.
 
 ## <a name="security"></a>Biztonság
-Azure MySQL-adatbázis korlátozó hozzáférési, védelmet nyújtó adatok, konfigurálás felhasználók és szerepkörök és MySQL-adatbázis a figyelési tevékenységek forrásokat biztosít.
+Azure Database for MySQL korlátozó hozzáférési, adatok védelmére, konfigurálása felhasználók és szerepkörök és MySQL-adatbázis a figyelési tevékenységek forrásokat biztosít.
 
 ## <a name="authentication"></a>Hitelesítés
-Azure MySQL-adatbázis támogatja a kiszolgáló hitelesítése a felhasználók és bejelentkezések.
+Azure Database for MySQL server-hitelesítés, bejelentkezések és felhasználók támogatja.
 
 ## <a name="resiliency"></a>Rugalmasság
-Amikor egy átmeneti hiba akkor fordul elő, amikor kapcsolódni próbált MySQL-adatbázis, a kódot kell próbálja meg újra a hívást. Javasoljuk, hogy a az újrapróbálkozási logika leállás logika használjon, így azt nem ne terhelje tovább az SQL-adatbázis az újrapróbálkozás egyszerre több ügyfélnek.
+Egy MySQL-adatbázishoz való kapcsolódás során egy átmeneti hiba akkor fordul elő, amikor a kódnak újra kell próbálkoznia a hívással. Azt javasoljuk, hogy az újrapróbálkozási logika használja visszatartási logikai úgy, hogy az ne terhelje túl az SQL-adatbázis a több ügyfél egyidejű.
 
-- Kódminták: mintakódok, mely újrapróbálkozási logika, lásd: a következő nyelvű-példák: [MySQL Azure adatbázishoz való kapcsolódáshoz használt kapcsolódási függvénytárak](concepts-connection-libraries.md)
+- Kódminták: Kódmintákért az újrapróbálkozási logika, a nyelv, a választott mintákat: [Csatlakozás az Azure Database for MySQL-hez használt csatlakozási kódtárak](concepts-connection-libraries.md)
 
 ## <a name="managing-connections"></a>Kapcsolatok kezelése
-Adatbázis-kapcsolatok egy korlátozott erőforrás, a jobb teljesítmény érdekében a MySQL-adatbázis elérésekor kapcsolat ésszerű használata javasolt.
-- Kapcsolatkészletezést vagy állandó kapcsolat használatával érik el az adatbázist.
-- Rövid kapcsolat élettartamát használatával érik el az adatbázist. 
-- Használjon újrapróbálkozási logika az alkalmazásban való egyidejű kapcsolatok eredő hibák dolgozza fel a kapcsolódási kísérlet helyén elérte a megengedett. Az újrapróbálkozási logika be egy rövid ideig eltart, majd várjon véletlenszerű ideje előtt a további csatlakozási kísérletek.
+Adatbázis-kapcsolatok a korlátozott erőforrások, így jobb teljesítményt érhet el a MySQL-adatbázis elérésekor kapcsolatok késleltetésnél használatát javasoljuk.
+- Az adatbázis eléréséhez kapcsolatkészletezést vagy állandó kapcsolat használatával.
+- A kapcsolat rövid élettartamát az adatbázis eléréséhez. 
+- Használat újrapróbálkozási logikát az alkalmazásban, a csatlakozási kísérlet hibák származó egyidejű kapcsolatokat olvasásra folyamatos elérte a megengedett. Az újrapróbálkozási logika állítsa be egy kis ideig várakozni, és ezután Várjon, amíg egy véletlenszerű időpont előtt a kapcsolat további kísérleteket.

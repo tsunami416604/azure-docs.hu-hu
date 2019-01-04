@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53233edd17fa7097dde67bbce16b1ece668c721
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140030"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554860"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Az előzetes verzióját a Microsoft Azure Machine Learning Python ügyfélkönyvtárat engedélyezheti a helyi Python-környezetben az Azure Machine Learning-adatkészletek biztonságos hozzáférést, és lehetővé teszi a létrehozását és kezelését, az adatkészletek a munkaterületen.
 
 Ez a témakör nyújt útmutatást:
 
-* a Machine Learning Python ügyfélkönyvtárat telepítése 
+* a Machine Learning Python ügyfélkönyvtárat telepítése
 * eléréséhez, és töltse fel az adatkészletek, többek között a útmutatást találhat a helyi Python-környezetből az Azure Machine Learning adatkészletek hozzáférési beszerzése
 * a kísérletek köztes adatkészletek elérése
 * a Python ügyféloldali kódtár használatával adatkészletek számbavétele, hozzáfér, olvassa el a tartalmát egy adatkészletet, új adatkészleteket hoz létre és frissítheti a meglévő adatkészletek
@@ -49,7 +49,7 @@ Az Azure Machine Learning Python ügyfélkönyvtárat is telepíteni kell a tém
 
     pip install azureml
 
-Másik lehetőségként töltse le és telepítse a forrásokból származó [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
+Másik lehetőségként töltse le és telepítse a forrásokból származó [GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
 
     python setup.py install
 
@@ -74,11 +74,11 @@ Ha nincs beállítva az Ön szerepköréhez **tulajdonosa**, vagy lehet újból 
 
 Az engedélyezési jogkivonat beszerzéséhez a következők egyikét teheti:
 
-* Kérje meg a jogkivonat-tulajdonosától. Tulajdonosok saját hitelesítési jogkivonatok hozzáférhet a beállítások lapról a Studio-munkaterület. Válassza ki **beállítások** a bal oldali panelen, majd kattintson a **hitelesítési JOGKIVONATOK** megtekintéséhez az elsődleges és másodlagos jogkivonatokat.  Bár az elsődleges vagy másodlagos hitelesítési jogkivonatok kódrészlet is használható, javasoljuk, hogy a tulajdonosok csak megosztani a másodlagos hitelesítési jogkivonatokat.
+* Kérje meg a jogkivonat-tulajdonosától. Tulajdonosok saját hitelesítési jogkivonatok hozzáférhet a beállítások lapról a Studio-munkaterület. Válassza ki **beállítások** a bal oldali panelen, majd kattintson a **hitelesítési JOGKIVONATOK** megtekintéséhez az elsődleges és másodlagos jogkivonatokat. Bár az elsődleges vagy másodlagos hitelesítési jogkivonatok kódrészlet is használható, javasoljuk, hogy a tulajdonosok csak megosztani a másodlagos hitelesítési jogkivonatokat.
 
 ![Hitelesítési jogkivonatok](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Kérje meg a tulajdonosi szerepkörhöz, hogy támogatni.  Ehhez a munkaterülethez jelenlegi tulajdonosának kell először távolítsa el, a munkaterülethez, majd újból meghívni, azt tulajdonosai.
+* Kérje meg a tulajdonosi szerepkörhöz, hogy támogatni. Ehhez a munkaterülethez jelenlegi tulajdonosának kell először távolítsa el, a munkaterülethez, majd újból meghívni, azt tulajdonosai.
 
 Miután fejlesztők beszerezte a munkaterület-azonosítót és engedélyezési jogkivonat, azok érhetik el a munkaterületet, függetlenül azok szerepét a kódrészlet használatával.
 

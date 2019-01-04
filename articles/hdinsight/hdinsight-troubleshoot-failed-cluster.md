@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410278"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994368"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
 
@@ -23,7 +23,7 @@ Ha egy HDInsight-fürt vagy lassan fut, vagy hibakód miatt sikertelenül műkö
 Egy lassú vagy meghibásodott fürt diagnosztizálhatja, a környezetet, például a kapcsolódó Azure-szolgáltatások, fürtkonfiguráció és feladat-végrehajtási információt vonatkozó biztonságáért adatainak összegyűjtése. Egy hasznos diagnosztikai, hogy próbálja meg újra előállítani a hibás állapotú, egy másik fürtön.
 
 * 1. lépés: Gyűjtse össze a problémát
-* 2. lépés: A HDInsight-fürt környezet ellenőrzése 
+* 2. lépés: A HDInsight-fürt környezet ellenőrzése 
 * 3. lépés: A fürt állapotának megtekintéséhez
 * 4. lépés: Tekintse át a környezet verem és -verziók
 * 5. lépés: Vizsgálja meg a fürt naplófájlok
@@ -67,7 +67,7 @@ Az Azure klasszikus parancssori felület is használható:
 
 Egy másik lehetőség van a PowerShell használatával. További információkért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2. lépés: A HDInsight-fürt környezet ellenőrzése
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2. lépés: A HDInsight-fürt környezet ellenőrzése
 
 Egyes HDInsight-fürtök különböző Azure-szolgáltatások, valamint a nyílt forráskódú szoftverek, például az Apache Spark és Apache HBase támaszkodik. HDInsight-fürtök is meghívhatja a más Azure-szolgáltatásokkal, például az Azure-beli virtuális hálózatok.  Fürt hibát is okozhat, a fürtön futó szolgáltatások, vagy egy külső szolgáltatás által.  A fürt a fürt service konfiguráció módosítása is okozhatnak.
 
@@ -88,7 +88,7 @@ Szolgáltatás nézetek listájának megnyitásához válassza **Ambari-nézetek
 
 #### <a name="check-for-azure-service-outages"></a>Az Azure szolgáltatás-kimaradások keresése
 
-HDInsight számos Azure-szolgáltatások támaszkodik. Az Azure HDInsight, a tárolók adatainak és szkriptjeinek Azure Blob storage vagy Azure-DataLake Store, a virtuális kiszolgálók fut, és az indexek naplófájlok az Azure Table storage. Ezek a szolgáltatások megszakításmentes végrehajtása Habár ritkán fordul elő, akkor okozhat problémát a HDInsight. Ha nem várt lassulásokat vagy hibák a fürtön, ellenőrizze a [Azure állapotjelző irányítópultján](https://azure.microsoft.com/status/). Minden egyes szolgáltatás állapotának régió szerint jelenik meg. Ellenőrizze a fürt régió és is régióban a kapcsolódó szolgáltatások.
+HDInsight számos Azure-szolgáltatások támaszkodik. Az Azure HDInsight, a tárolók adatainak és szkriptjeinek Azure Blob storage vagy az Azure Data Lake Storage, a virtuális kiszolgálók fut, és az indexek naplófájlok az Azure Table storage. Ezek a szolgáltatások megszakításmentes végrehajtása Habár ritkán fordul elő, akkor okozhat problémát a HDInsight. Ha nem várt lassulásokat vagy hibák a fürtön, ellenőrizze a [Azure állapotjelző irányítópultján](https://azure.microsoft.com/status/). Minden egyes szolgáltatás állapotának régió szerint jelenik meg. Ellenőrizze a fürt régió és is régióban a kapcsolódó szolgáltatások.
 
 #### <a name="check-azure-service-usage-limits"></a>Azure-szolgáltatás használati felső korlát ellenőrzése
 

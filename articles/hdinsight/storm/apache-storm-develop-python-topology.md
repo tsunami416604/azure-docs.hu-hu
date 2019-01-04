@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 87d13f8b0df4d9a357218b34035993663dfda8b3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583635"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634592"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight Apache Storm-topológiák fejlesztése
 
-Ismerje meg, hogyan hozhat létre egy [Apache Storm](http://storm.apache.org/) topológiát használó Python-összetevők. Az Apache Storm több nyelvet is támogat, még akkor is lehetővé teszi egy topológiában számos nyelvből összetevőket kombinálja. A [fluxus](http://storm.apache.org/releases/current/flux.html) keretrendszer (a Storm 0.10.0-s ismertetése) lehetővé teszi, hogy könnyedén hozhat létre-et használó Python-összetevők.
+Ismerje meg, hogyan hozhat létre egy [Apache Storm](https://storm.apache.org/) topológiát használó Python-összetevők. Az Apache Storm több nyelvet is támogat, még akkor is lehetővé teszi egy topológiában számos nyelvből összetevőket kombinálja. A [fluxus](https://storm.apache.org/releases/current/flux.html) keretrendszer (a Storm 0.10.0-s ismertetése) lehetővé teszi, hogy könnyedén hozhat létre-et használó Python-összetevők.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban lévő információk teszteltünk, a HDInsight 3.6-alapú Storm segítségével. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Ez a projekt kódját mindig elérhető legyen [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
@@ -34,7 +34,7 @@ Ez a projekt kódját mindig elérhető legyen [ https://github.com/Azure-Sample
 
 * [Az Apache Maven 3](https://maven.apache.org/download.cgi)
 
-* (Nem kötelező) Egy helyi Storm-fejlesztési környezetre. A Storm helyi környezetben csak akkor van szükség, ha helyileg futtatja a topológia. További információkért lásd: [a fejlesztési környezet beállítása](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
+* (Nem kötelező) Egy helyi Storm-fejlesztési környezetre. A Storm helyi környezetben csak akkor van szükség, ha helyileg futtatja a topológia. További információkért lásd: [a fejlesztési környezet beállítása](https://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
 ## <a name="storm-multi-language-support"></a>A Storm nyelvek támogatása
 
@@ -92,8 +92,8 @@ A topológia helyi futtatását, használja a következő parancsot:
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
 ```
 
-> [!NOTE]
-> Ez a parancs a helyi Storm környezet szükséges. További információkért lásd: [a fejlesztési környezet beállítása](http://storm.apache.org/releases/current/Setting-up-development-environment.html)
+> [!NOTE]  
+> Ez a parancs a helyi Storm környezet szükséges. További információkért lásd: [a fejlesztési környezet beállítása](https://storm.apache.org/releases/current/Setting-up-development-environment.html)
 
 Miután a topológia elindul, bocsát ki a helyi konzol az alábbi szöveghez hasonló információt:
 
@@ -137,7 +137,7 @@ A topológia leállításához használja __Ctrl + C__.
 
 3. A Storm felhasználói felülete segítségével megtekintheti a topológia a fürtön. A Storm felhasználói felülete a következő helyen található https://mycluster.azurehdinsight.net/stormui. Cserélje le `mycluster` a fürt nevére.
 
-> [!NOTE]
+> [!NOTE]  
 > Megkezdése után a Storm-topológia fut, amíg leállt. A topológia leállítása, használja a következő módszerek egyikét:
 >
 > * A `storm kill TOPOLOGYNAME` parancsot a parancssorból
@@ -148,5 +148,5 @@ A topológia leállításához használja __Ctrl + C__.
 
 A Python használata a HDInsight egyéb módjaira vonatkozóan az alábbi dokumentumokban talál:
 
-* [Az Apache Hadoop MapReduce-feladatok streameléshez Python használata](../hadoop/apache-hadoop-streaming-python.md)
+* [Hogyan használható a Python MapReduce-feladatok streameléshez](../hadoop/apache-hadoop-streaming-python.md)
 * [Python felhasználói definiált függvények (UDF) az Apache Pig- és Apache Hive használata](../hadoop/python-udf-hdinsight.md)

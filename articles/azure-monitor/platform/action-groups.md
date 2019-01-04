@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 432f1a89979829bd43596d0d6a3ab7a2a3bfb996
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2b427669fe692704343d5a3c2096df92cffb8d76
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336482"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583990"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -98,7 +98,7 @@ Forrás IP-címtartományok
     - 13.106.38.148
     - 13.106.57.196
 
-A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./../../monitoring-and-diagnostics/monitoring-service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
+A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./../../azure-monitor/platform/service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
 
 
 ## <a name="next-steps"></a>További lépések ##

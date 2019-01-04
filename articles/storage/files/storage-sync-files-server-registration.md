@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1333c8cdb4493530e1e4803192b382720dbfa5ee
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918876"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634405"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Az Azure File Sync használatával regisztrált kiszolgálók kezelése
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
 A következő cikk azt ábrázolja, hogyan regisztrálja, és a Storage Sync Service a kiszolgáló kezeléséhez. Lásd: [üzembe helyezése az Azure File Sync](storage-sync-files-deployment-guide.md) üzembe helyezése az Azure File Sync-teljes körű tájékoztatást.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Regisztráció és a kiszolgáló regisztrációját az Társzinkronizálási szolgáltatás
 A kiszolgáló regisztrálása az Azure File Sync használatával hoz létre a Windows Server és Azure közötti megbízhatósági kapcsolat. Ez a kapcsolat majd létrehozásához használható *kiszolgálói végpontot* a kiszolgálón, amely képviseli az Azure-fájlmegosztások szinkronizálandó meghatározott mappákról (más néven egy *felhőbeli végpont*). 
@@ -33,10 +35,10 @@ A Társzinkronizálási szolgáltatás regisztrálja a kiszolgálót, elő kell 
     
     ![A Kiszolgálókezelő felhasználói felület az Internet Explorer – fokozott biztonsági beállításai vannak kiemelve](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Győződjön meg arról, hogy az AzureRM PowerShell-modul telepítve van-e a kiszolgálón. Ha a kiszolgáló egy feladatátvevő fürt tagja, a fürt minden csomópontján kell az AzureRM-modul. Az AzureRM-modul telepítésével kapcsolatos további részletek találhatók a [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Győződjön meg arról, hogy az Azure PowerShell-modul telepítve van-e a kiszolgálón. Ha a kiszolgáló egy feladatátvevő fürt tagja, a fürt minden csomópontján a Az modul lesz szükség. A Az modul telepítésével kapcsolatos további részletek találhatók a [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
     > [!Note]  
-    > A kiszolgáló regisztrálása vagy regisztrációjának törlése az AzureRM PowerShell-modul legújabb verziójának használatát javasoljuk. Ha az AzureRM-csomag korábban már telepítve van ezen a kiszolgálón (5.* pedig az ezen a kiszolgálón a PowerShell-verzió vagy újabb), használhatja a `Update-Module` parancsmagot, hogy ez a csomag frissítése. 
+    > A kiszolgáló regisztrálása vagy regisztrációjának törlése a Az PowerShell-modul legújabb verziójának használatát javasoljuk. Ha a Az package korábban már telepítve van ezen a kiszolgálón (5.* pedig az ezen a kiszolgálón a PowerShell-verzió vagy újabb), használhatja a `Update-Module` parancsmagot, hogy ez a csomag frissítése. 
 * Ha hálózati proxykiszolgálót a környezetében, a Proxybeállítások konfigurálása a kiszolgálón a szinkronizálási ügynök vehető igénybe.
     1. Határozza meg a proxykiszolgáló IP-cím és port számát
     2. Módosítsa a két fájlt:
@@ -61,7 +63,7 @@ A Társzinkronizálási szolgáltatás regisztrálja a kiszolgálót, elő kell 
 ### <a name="register-a-server-with-storage-sync-service"></a>Kiszolgáló regisztrálása a Társzinkronizálási szolgáltatás
 A kiszolgáló használhatók legyenek, mint egy *kiszolgálói végpont* a az Azure File Sync *szinkronizálási csoport*, regisztrálni kell az egy *Társzinkronizálási szolgáltatás*. A kiszolgáló csak regisztrálhatók egy Társzinkronizálási szolgáltatást egyszerre.
 
-#### <a name="install-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök telepítése
+#### <a name="install-the-azure-file-sync-agent"></a>Az Azure File Sync-ügynök telepítése
 1. [Töltse le az Azure File Sync ügynök](https://go.microsoft.com/fwlink/?linkid=858257).
 2. Indítsa el az Azure File Sync ügynök telepítőjét.
     
@@ -101,8 +103,8 @@ Kiszolgáló regisztrálása a PowerShell használatával is elvégezheti. Ez a 
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
-Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
-Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
+Login-AzStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
+Register-AzStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
 ```
 
 ### <a name="unregister-the-server-with-storage-sync-service"></a>A Storage Sync Service a kiszolgáló regisztrációjának törlése
@@ -135,15 +137,15 @@ Ez egy egyszerű PowerShell-parancsprogrammal is elvégezhető:
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Connect-AzureRmAccount
-Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
+$accountInfo = Connect-AzAccount
+Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
 
-Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
+Get-AzStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
     $SyncGroup = $_; 
-    Get-AzureRmStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
-        Remove-AzureRmStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
+    Get-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
+        Remove-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
     } 
 }
 ```

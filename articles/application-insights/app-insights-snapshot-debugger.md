@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: a92b54a80de645dda8ea0cc0259bd07f72330204
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a9e7cfdf9b63e511c3b59e840999024e849122aa
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136715"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808893"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 
-Ha egy kivétel lép fel, automatikusan gyűjtheti hibakereső pillanatképek az élő webalkalmazások. A pillanatkép abban a pillanatban a kivétel történt a Forráskód és a változók állapotát mutatja. A pillanatkép-hibakereső (előzetes verzió) a [Azure Application Insights](app-insights-overview.md) kivétel telemetriát a webalkalmazás figyeli. Ez adatokat gyűjt a pillanatképek a felső értesítő kivételek, hogy rendelkezik diagnosztizálhatja a problémákat, éles környezetben a szükséges információkat. Tartalmazza a [Snapshot collector NuGet-csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtési paramétereket lévő [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). A pillanatképek jelennek meg [kivételek](app-insights-asp-net-exceptions.md) az Application Insights portálon.
+Ha egy kivétel lép fel, automatikusan gyűjtheti hibakereső pillanatképek az élő webalkalmazások. A pillanatkép abban a pillanatban a kivétel történt a Forráskód és a változók állapotát mutatja. A pillanatkép-hibakereső (előzetes verzió) a [Azure Application Insights](app-insights-overview.md) kivétel telemetriát a webalkalmazás figyeli. Ez adatokat gyűjt a pillanatképek a felső értesítő kivételek, hogy rendelkezik diagnosztizálhatja a problémákat, éles környezetben a szükséges információkat. Tartalmazza a [Snapshot collector NuGet-csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtési paramétereket lévő [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek jelennek meg [kivételek](../azure-monitor/app/asp-net-exceptions.md) az Application Insights portálon.
 
 A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. A hatékonyabb hibakeresési környezetben a forráskóddal lekéréséhez nyissa meg a Visual Studio 2017 Enterprise pillanatképeket. A Visual Studióban is [állítsa be az interaktív módon pillanatfelvételeket Snappoints](https://aka.ms/snappoint) kivétel nélkül.
 
@@ -43,11 +43,11 @@ A következő környezetekben támogatottak:
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>Az ASP.NET-alkalmazások pillanatkép gyűjtésének konfigurálása
 
-1. [Az Application Insights engedélyezése a webalkalmazásokban](app-insights-asp-net.md), ha még nem tette azt.
+1. [Az Application Insights engedélyezése a webalkalmazásokban](../azure-monitor/app/asp-net.md), ha még nem tette azt.
 
 2. Tartalmazza a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
-3. Tekintse át az alapértelmezett beállításokat, a csomaghoz hozzáadott [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+3. Tekintse át az alapértelmezett beállításokat, a csomaghoz hozzáadott [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md):
 
     ```xml
     <TelemetryProcessors>
@@ -81,12 +81,12 @@ A következő környezetekben támogatottak:
     </TelemetryProcessors>
     ```
 
-4. A pillanatképek összegyűjtése csak az Application insights jelentett kivételek. Bizonyos esetekben (például a .NET-platformról a régebbi verzióiban), szüksége lehet [kivételek gyűjtésének konfigurálása](app-insights-asp-net-exceptions.md#exceptions) kivételek a portál pillanatképek megtekintéséhez.
+4. A pillanatképek összegyűjtése csak az Application insights jelentett kivételek. Bizonyos esetekben (például a .NET-platformról a régebbi verzióiban), szüksége lehet [kivételek gyűjtésének konfigurálása](../azure-monitor/app/asp-net-exceptions.md#exceptions) kivételek a portál pillanatképek megtekintéséhez.
 
 
 ### <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>Pillanatkép-gyűjtemény ASP.NET Core 2.0-alkalmazások konfigurálása
 
-1. [Az Application Insights engedélyezése az ASP.NET Core webes alkalmazásban](app-insights-asp-net-core.md), ha még nem tette azt.
+1. [Az Application Insights engedélyezése az ASP.NET Core webes alkalmazásban](../azure-monitor/app/asp-net-core.md), ha még nem tette azt.
 
     > [!NOTE]
     > Arról, hogy az alkalmazás hivatkozik 2.1.1 verzió vagy újabb verziójú, a Microsoft.ApplicationInsights.AspNetCore csomag lehet.
@@ -212,7 +212,7 @@ Előfizetés-tulajdonost kell rendelni a `Application Insights Snapshot Debugger
 
 ## <a name="debug-snapshots-in-the-application-insights-portal"></a>Az Application Insights portálon készült pillanatképek hibakeresése
 
-Ha egy adott kivétel vagy probléma azonosítója, érhető el egy pillanatkép- **hibakeresési pillanatfelvétel megnyitása** gomb jelenik meg a [kivétel](app-insights-asp-net-exceptions.md) az Application Insights portálon.
+Ha egy adott kivétel vagy probléma azonosítója, érhető el egy pillanatkép- **hibakeresési pillanatfelvétel megnyitása** gomb jelenik meg a [kivétel](../azure-monitor/app/asp-net-exceptions.md) az Application Insights portálon.
 
 ![Hibakeresési pillanatfelvétel megnyitása gombjára kivétel](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 
@@ -235,8 +235,8 @@ A letöltött pillanatképet tartalmaz szimbólum fájlokat, a webalkalmazás-ki
 
 ## <a name="how-snapshots-work"></a>A pillanatképek működése
 
-A pillanatképek adatgyűjtője van megvalósítva egy [Application Insights Telemetria processzor](app-insights-configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Az alkalmazás futtatásakor az alkalmazás telemetriai folyamat hozzáadódik a Snapshot Collector Telemetriai processzor.
-Minden alkalommal, amikor az alkalmazás hívások [TrackException](app-insights-asp-net-exceptions.md#exceptions), a pillanatképek adatgyűjtője kiszámítja a kivétel és a rtesítő metódus probléma azonosítója.
+A pillanatképek adatgyűjtője van megvalósítva egy [Application Insights Telemetria processzor](../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Az alkalmazás futtatásakor az alkalmazás telemetriai folyamat hozzáadódik a Snapshot Collector Telemetriai processzor.
+Minden alkalommal, amikor az alkalmazás hívások [TrackException](../azure-monitor/app/asp-net-exceptions.md#exceptions), a pillanatképek adatgyűjtője kiszámítja a kivétel és a rtesítő metódus probléma azonosítója.
 Minden alkalommal, amikor az alkalmazás meghívja a TrackException, a számláló értéke akkor nő, a megfelelő probléma azonosítóját. Ha a számláló elérte a `ThresholdForSnapshotting` érték, a probléma azonosítója bekerül a gyűjtési terv.
 
 A Snapshot Collector is figyeli a kivételek, mivel azokat már a való feliratkozással lépett fel a [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) esemény. Az esemény akkor következik be, ha a probléma azonosítója, a kivétel számított, és összehasonlítja a gyűjtési tervben probléma azonosítóját.
@@ -472,10 +472,10 @@ Ha továbbra sem látja, hogy a pillanatkép-Azonosítóval rendelkező kivétel
 
 ### <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy vagy tűzfal-szabályok szerkesztése
 
-Ha az alkalmazás csatlakozik az interneten keresztül proxy vagy tűzfal, szükség lehet ahhoz, hogy a pillanatkép-hibakereső szolgáltatással folytatott kommunikációhoz az alkalmazás a szabályok szerkesztése. Íme [IP-címek és a pillanatkép-hibakereső által használt portok listáját](app-insights-ip-addresses.md#snapshot-debugger).
+Ha az alkalmazás csatlakozik az interneten keresztül proxy vagy tűzfal, szükség lehet ahhoz, hogy a pillanatkép-hibakereső szolgáltatással folytatott kommunikációhoz az alkalmazás a szabályok szerkesztése. Íme [IP-címek és a pillanatkép-hibakereső által használt portok listáját](../azure-monitor/app/ip-addresses.md#snapshot-debugger).
 
 ## <a name="next-steps"></a>További lépések
 
 * [A kódban snappoints beállítása](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) beolvasni a pillanatképek kivétel nélkül.
-* [A webalkalmazások kivételeinek diagnosztizálása](app-insights-asp-net-exceptions.md) azt ismerteti, hogyan további kivételek láthatóvá az Application Insightsba.
+* [A webalkalmazások kivételeinek diagnosztizálása](../azure-monitor/app/asp-net-exceptions.md) azt ismerteti, hogyan további kivételek láthatóvá az Application Insightsba.
 * [Intelligens detektálás](app-insights-proactive-diagnostics.md) automatikusan felderíti a teljesítményanomáliákat.

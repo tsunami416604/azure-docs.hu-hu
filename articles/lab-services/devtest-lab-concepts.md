@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: ce0c51a3b97c57095a336128919c5e27f860905b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e35513d5a5a799b1f5e45cf9a5aa97c083e2087
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676470"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725201"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-fogalmak
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ Az alábbi lista a fő DevTest Labs-fogalmak és definíciókat tartalmazza:
 Labor a működő az erőforráscsoportokat erőforrások, például a virtuális gépek (VM), amely lehetővé teszi, hogy jobban korlátok és kvóták meghatározásával felügyelheti az erőforrásokat.
 
 ## <a name="virtual-machine"></a>Virtuális gép
-Egy Azure virtuális gép számos különböző típusú [igény szerinti, méretezhető számítási erőforrás](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm) Azure által kínált. Az Azure virtuális gépek a rugalmasságot biztosítanak a virtualization vásárolnia és karbantartania a fizikai hardveren futó, bár továbbra is biztosítani kell a virtuális gép által bizonyos műveletek végrehajtását, például a konfigurálását, javítását és a gépen futó szoftver telepítése nélkül azt.
+Egy Azure virtuális gép számos különböző típusú [igény szerinti, méretezhető számítási erőforrás](https://docs.microsoft.com/azure/app-service/overview-compare) Azure által kínált. Az Azure virtuális gépek a rugalmasságot biztosítanak a virtualization vásárolnia és karbantartania a fizikai hardveren futó, bár továbbra is biztosítani kell a virtuális gép által bizonyos műveletek végrehajtását, például a konfigurálását, javítását és a gépen futó szoftver telepítése nélkül azt.
 
 [Az Azure Windows virtual machines – áttekintés](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) nyújt információt arról, hogy mit kell szem előtt létrehozása egy virtuális Gépet, hogyan hoz létre, és hogyan kezelheti azt.
 

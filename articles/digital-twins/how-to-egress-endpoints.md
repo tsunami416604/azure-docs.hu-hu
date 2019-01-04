@@ -1,25 +1,71 @@
 ---
 title: Kimenő forgalom és az Azure digitális Twins végpontok |} A Microsoft Docs
-description: Végpontok létrehozása az Azure digitális Twins való
+description: Végpontok létrehozása az Azure digitális Twins vonatkozó útmutatónkat.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 12/31/2018
 ms.author: alinast
-ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636305"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994821"
 ---
 # <a name="egress-and-endpoints"></a>Kimenő forgalom és a végpontok
 
-Az Azure digitális Twins támogatja a fogalmat **végpontok**. Minden végpont a felhasználó Azure-előfizetésben egy üzenet vagy esemény közvetítő jelöli. Események és az üzenetek küldhetők az Azure Event Hubs, az Azure Event Grid és az Azure Service Bus-témaköröket.
+Az Azure digitális Twins *végpontok* képviselik a felhasználó Azure-előfizetésen belül egy üzenet vagy esemény közvetítő. Események és az üzenetek küldhetők az Azure Event Hubs, az Azure Event Grid és az Azure Service Bus-témaköröket.
 
-Események küldése a végpontok előre meghatározott útválasztási beállítások szerint. A felhasználó úgy adhat meg, melyik végponthoz a következő események bármelyike kell kapnia: 
+Események végpontok előre meghatározott útválasztási beállítások szerint legyenek irányítva. Felhasználók adja meg, amely *eseménytípusok* minden végpont jelenhet meg.
+
+Események kapcsolatos további információkért az Útválasztás és az eseménytípusok, tekintse meg [útválasztás események és az Azure digitális Twins üzenetek](./concepts-events-routing.md).
+
+## <a name="events"></a>Események
+
+IoT-objektumok (például az eszközök és érzékelők) eseményt küld az Azure üzenet- és esemény-közvetítők általi feldolgozáshoz. A következő által meghatározott események [Azure Event Grid-esemény sémaleírása](../event-grid/event-schema.md).
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "subject": "ExtendedPropertyKey",
+  "data": {
+    "SpacesToNotify": [
+      "3a16d146-ca39-49ee-b803-17a18a12ba36"
+    ],
+    "Id": "00000000-0000-0000-0000-000000000000",
+      "Type": "ExtendedPropertyKey",
+    "AccessType": "Create"
+  },
+  "eventType": "TopologyOperation",
+  "eventTime": "2018-04-17T17:41:54.9400177Z",
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
+}
+```
+
+| Attribútum | Típus | Leírás |
+| --- | --- | --- |
+| id | sztring | Az esemény egyedi azonosítója. |
+| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| adat | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
+| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+
+További információ az Event Grid-esemény séma:
+
+- Tekintse át a [Azure Event Grid-esemény sémaleírása](../event-grid/event-schema.md).
+- Olvassa el a [Azure EventGrid Node.js SDK EventGridEvent referencia](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+
+## <a name="event-types"></a>Eseménytípusok
+
+Azok az eseménytípusok az esemény jellege besorolását, és be vannak állítva a a **eventType** mező. Eseménytípusok érhető el az alábbi listában adja meg:
 
 - TopologyOperation
 - UdfCustom
@@ -27,15 +73,11 @@ Események küldése a végpontok előre meghatározott útválasztási beállí
 - SpaceChange
 - DeviceMessage
 
-Útválasztás események és eseménytípusok alapvető ismeretekkel, tekintse meg a [útválasztás események és az üzenetek](concepts-events-routing.md).
-
-## <a name="event-types-description"></a>Esemény típus leírása
-
-Az alábbi szakaszok az esemény formátumok minden az eseménytípusok ismerteti.
+Az egyes események az esemény formátumok az alábbi részekben ismertetett ismertetésére.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** metaadatgráf-módosítások vonatkozik. A **tulajdonos** tulajdonság határozza meg az érintett objektum típusa. A következő típusú objektumok is kiválthatják ezt az eseményt: 
+**TopologyOperation** metaadatgráf-módosítások vonatkozik. A **tulajdonos** tulajdonság határozza meg az érintett objektum típusa. A következő típusú objektumok is kiválthatják ezt az eseményt:
 
 - Eszköz
 - DeviceBlobMetadata
@@ -86,7 +128,7 @@ Az alábbi szakaszok az esemény formátumok minden az eseménytípusok ismertet
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** olyan felhasználó által definiált függvény (UDF) által küldött események. 
+**UdfCustom** olyan felhasználó által definiált függvény (UDF) által küldött események.
   
 > [!IMPORTANT]  
 > Ezt az eseményt az UDF magát az explicit módon kell elküldeni.
@@ -195,10 +237,19 @@ Használatával **DeviceMessage**, megadhat egy **EventHub** , amelyhez nyers te
 
 ## <a name="configure-endpoints"></a>Végpontok konfigurálása
 
-Felügyeleti végpontot a végpontok API-n keresztül történik. Az alábbi példák bemutatják, hogyan lehet a különböző támogatott végpontok konfigurálása. Az esemény típusú tömb külön figyelmet szentelnie szerint határozza meg a végpont útválasztás:
+Felügyeleti végpontot a végpontok API-n keresztül történik.
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+Az alábbi példák bemutatják, hogyan lehet a támogatott végpontok konfigurálása.
+
+>[!IMPORTANT]
+> Alapos figyelmet fordítani az **eventTypes** attribútum. Azt határozza meg, melyik esemény típusa a végpont által kezelt, és így döntse el, az útválasztást.
+
+Hitelesített HTTP POST-kérelmet ellen
 
 ```plaintext
-POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
+YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
 - A Service Bus eseménytípusok útvonal **SensorChange**, **SpaceChange**, és **TopologyOperation**:

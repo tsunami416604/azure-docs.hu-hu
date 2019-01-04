@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 43f1918e7c80fdc04b80583ce374cfb8127dd021
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: cced3d363f9eb7418d6f453eccb1bf1d7ac20ead
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602562"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972345"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>Oktatóanyag: Az Azure Key Vault használata az Azure Windows virtuális gép a Pythonban
 
@@ -137,7 +137,7 @@ Kövesse ezt [oktatóanyag](https://docs.microsoft.com/azure/virtual-machines/wi
 
 ## <a name="create-and-run-sample-python-app"></a>Létrehozása és futtatása a Python-mintaalkalmazás
 
-Az alábbiakban csupán egy példa fájlt neve "Sample.py". Használ [kérelmek](http://docs.python-requests.org/master/) szalagtár-hívások indítása HTTP GET.
+Az alábbiakban csupán egy példa fájlt neve "Sample.py". Használ [kérelmek](http://docs.python-requests.org/en/master/) szalagtár-hívások indítása HTTP GET.
 
 ## <a name="edit-samplepy"></a>Sample.py szerkesztése
 Sample.py nyílt létrehozása a fájl- és másolása után az alábbi kód

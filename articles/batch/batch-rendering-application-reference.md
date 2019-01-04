@@ -1,17 +1,17 @@
 ---
-title: Az Azure Batch renderelési alkalmazások használata
+title: Renderelési alkalmazások – Azure Batch használata
 description: Az Azure Batch renderelési alkalmazások használata
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 500246dc98618aead11ba539ce4485d25ac62941
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4c7fdbfcc34cdb6e10177d50bea707f1fa5f223e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034777"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534765"
 ---
 # <a name="rendering-applications"></a>Renderelő alkalmazásokkal
 

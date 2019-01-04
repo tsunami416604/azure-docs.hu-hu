@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 35929d820ac6f72b83d6c3f25547255ca3423fc8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138446"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713573"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Infrastruktúra biztonsági mentési szolgáltatás leírása
 
 ## <a name="azure-backup-infrastructure"></a>Az Azure biztonsági mentési infrastruktúrára
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Infrastruktúra-felügyeleti környezetet és az Azure Stack számos olyan szolgáltatás, a portál, az Azure Resource Manager alkotó áll. A megoldás az üzemeltető számára elérhetővé tett egyszerűsíteni a berendezés-szerű felügyelet teljes mértékben az Azure Stack összpontosít.
 
@@ -87,9 +87,16 @@ A követelmények a következők:
 
 Igény szerinti biztonsági mentést vezérlő infrastruktúra biztonsági másolatot adatokat. A javaslat, hogy készítsen biztonsági másolatot legalább két alkalommal napját és tarthatja a biztonsági mentések legfeljebb hét nap. 
 
+**1811 és azt követően**
 | Környezeti-skála | A biztonsági másolat méretének becsült teljesítményigényeken | Szükséges lemezterület mennyisége összesen |
 |-------------------|--------------------------|--------------------------------|
-| 4 – 16 csomópontok        | 10 GB                     | 140 GB                          |
+| 4 – 16 csomópontok        | 20 GB                    | 280 GB                        |
+| ASDK              | 10 GB                    | 140 GB                        |
+
+**Előre-1811**
+| Környezeti-skála | A biztonsági másolat méretének becsült teljesítményigényeken | Szükséges lemezterület mennyisége összesen |
+|-------------------|--------------------------|--------------------------------|
+| 4 – 16 csomópontok, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 | Tárolási hely                                                                 | Részletek                                                                                                                                                                                 |
@@ -109,7 +116,7 @@ Ezek a korlátok megfontolnia tervezése, telepítése és üzemeltetése a Micr
 | Korlátazonosító                                                 | Korlát        | Megjegyzések                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Biztonsági mentés típusa                                                      | Csak teljes    | Infrastruktúra biztonsági mentést vezérlő csak a teljes biztonsági mentést támogatja. Nem támogatja a növekményes biztonsági mentéseket.                                          |
-| Ütemezett biztonsági mentések                                                | Csak kézzel  | Biztonsági mentés vezérlő jelenleg csak támogatja az igény szerinti biztonsági mentéseket                                                                                 |
+| Ütemezett biztonsági mentések                                                | Ütemezett és manuális  | Biztonsági mentés vezérlő támogatja az ütemezett és igény szerinti biztonsági mentéseket                                                                                 |
 | Maximális párhuzamos biztonsági mentési feladatok                                   | 1            | Biztonsági mentés vezérlő példányonként csak egy aktív biztonsági mentési feladat támogatott.                                                                  |
 | Hálózati kapcsoló konfigurálására                                     | Nincs a hatókörben | Rendszergazda készítsen biztonsági másolatot az OEM-eszközök használata a hálózati kapcsoló konfigurálására. Tekintse meg az Azure Stack minden OEM gyártója által biztosított dokumentációt. |
 | Hardver életciklus gazdagép                                          | Nincs a hatókörben | Rendszergazda hardver életciklus gazdagépre OEM eszközök használatával kell készíteni. Tekintse meg az Azure Stack minden OEM gyártója által biztosított dokumentációt.      |

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622874"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971375"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -227,11 +227,11 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Engedélyezés|Szabályzat frissítése|
 |Engedélyezés|Felhasználói attribútum frissítése|
 |Engedélyezés|CPIM titkosított kulcs feltöltése|
-|Engedélyezés|Felhasználói hitelesítés: az API le van tiltva a bérlő funkciókészletéhez|
-|Engedélyezés|Felhasználói hitelesítés: A felhasználó bérlői rendszergazdaként kap hozzáférést|
-|Engedélyezés|Felhasználói hitelesítés: Felhasználó hitelesített felhasználóként kapott hozzáférési jogokat|
+|Engedélyezés|Felhasználó engedélyezése: API le van tiltva a bérlő funkciókészletéhez|
+|Engedélyezés|Felhasználó engedélyezése: Felhasználó hozzáférést "Bérlői rendszergazdaként"|
+|Engedélyezés|Felhasználó engedélyezése: Felhasználó kapott hitelesített felhasználók hozzáférési jogosultságok|
 |Engedélyezés|B2C funkció engedélyezésének ellenőrzése|
-|Engedélyezés|Ellenőrizze, hogy a funkció engedélyezve van-e|
+|Engedélyezés|Győződjön meg arról, hogy engedélyezve van-e a szolgáltatás|
 |Engedélyezés|Program létrehozása|
 |Engedélyezés|Program törlése|
 |Engedélyezés|Programvezérlő csatolása|
@@ -255,7 +255,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Címtárkezelés|tenantDomains lekérése|
 |Kulcs|Lekérdezi a bérlő típusát|
 |Kulcs|B2C funkció engedélyezésének ellenőrzése|
-|Kulcs|Ellenőrizze, hogy a funkció engedélyezve van-e|
+|Kulcs|Győződjön meg arról, hogy engedélyezve van-e a szolgáltatás|
 |Kulcs|Partner hozzáadása vállalathoz|
 |Kulcs|Nem ellenőrzött tartomány hozzáadása|
 |Kulcs|Ellenőrzött tartomány hozzáadása|
@@ -515,10 +515,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Csoportkezelés|Kérelem-jóváhagyási kérelem felülvizsgálata|
 |Csoportkezelés|Hozzáférési felülvizsgálat frissítése|
 |Csoportkezelés|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Csoportkezelés|Hozzáférési felülvizsgálat ismétlődésszám-beállításának frissítése|
-|Csoportkezelés|Hozzáférési felülvizsgálat napokban megadott ismétlődési időtartamának frissítése|
-|Felhasználókezelés|Hozzáférési felülvizsgálat ismétlődési befejezéstípusának frissítése|
-|Felhasználókezelés|Hozzáférési felülvizsgálat ismétlődéstípus-beállításának frissítése|
+|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
+|Csoportkezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
+|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
+|Felhasználókezelés|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
 
 
 

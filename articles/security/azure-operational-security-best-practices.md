@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: ae6eeb2506eb82160c68e15e17eeb95c1e2ec046
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853616"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725320"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure Operational Security – ajánlott eljárások
 Az Azure operational security hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök az Azure-ban. Az Azure operational security olyan keretrendszer, amely magában foglalja a Microsoft, egyedi képességek vizsgálatából épül, többek között a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl), a [Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) programot, és a kiberbiztonsági fenyegetések világának.
@@ -55,39 +55,39 @@ Az ügyfelek hozhat létre az Azure-ban egy végpontok közötti hálózati egye
 
 Az alábbiakban ajánlott eljárások a hálózati figyelési és a rendelkezésre álló eszközöket.
 
-**Ajánlott eljárás**: távoli hálózatok automatikus figyelése csomagrögzítéssel.  
-**Részletes**: figyelése és a hálózati problémák diagnosztizálása a Network Watcher használatával, a virtuális gépek való bejelentkezés nélkül. Az eseményindító [csomagrögzítés](../network-watcher/network-watcher-alert-triggered-packet-capture.md) a riasztások beállítása és csomagszinten teljesítményének valós idejű adatokhoz való hozzáférésre. Ha problémát észlel, a jobb diagnosztizálás érdekében részletes vizsgálatot végezhet.
+**Ajánlott eljárás**: Távoli hálózatok automatikus figyelése csomagrögzítéssel.  
+**Részletes**: Figyelheti, és a hálózati problémák diagnosztizálása a Network Watcher használatával, a virtuális gépek való bejelentkezés nélkül. Az eseményindító [csomagrögzítés](../network-watcher/network-watcher-alert-triggered-packet-capture.md) a riasztások beállítása és csomagszinten teljesítményének valós idejű adatokhoz való hozzáférésre. Ha problémát észlel, a jobb diagnosztizálás érdekében részletes vizsgálatot végezhet.
 
-**Ajánlott eljárás**: betekintést nyerhet a hálózati forgalomról Folyamatnaplók használatával.  
-**Részletes**: részletesebben Felderíthetőek a hálózati forgalmi minták használatával [hálózati biztonsági csoport folyamatnaplóit](../network-watcher/network-watcher-nsg-flow-logging-overview.md). Forgalmi naplók található információk megkönnyítik a megfelelés, a naplózás és a hálózati biztonsági profil figyelési adatok gyűjtéséhez.
+**Ajánlott eljárás**: Információszerzés a hálózati forgalomról Folyamatnaplók használatával.  
+**Részletes**: Részletesebben felderíthetőek a hálózati forgalmi minták használatával [hálózati biztonsági csoport folyamatnaplóit](../network-watcher/network-watcher-nsg-flow-logging-overview.md). Forgalmi naplók található információk megkönnyítik a megfelelés, a naplózás és a hálózati biztonsági profil figyelési adatok gyűjtéséhez.
 
-**Ajánlott eljárás**: diagnosztizálhatja a VPN-kapcsolati hibák.  
-**Részletes**: használja a Network Watcher való [a leggyakrabban használt VPN-átjáró és a kapcsolódási problémák diagnosztizálása](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Nem csak a probléma azonosításához, de is használhatja a részletes naplók további vizsgálat céljából.
+**Ajánlott eljárás**: VPN-kapcsolati hibák diagnosztizálása.  
+**Részletes**: A Network Watcher használatát [a leggyakrabban használt VPN-átjáró és a kapcsolódási problémák diagnosztizálása](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md). Nem csak a probléma azonosításához, de is használhatja a részletes naplók további vizsgálat céljából.
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>A telepítés biztonságának bevált DevOps-eszközök használatával
 Az alábbi fejlesztési és üzemeltetési eljárások használatával győződjön meg arról, hogy a vállalati és a csapatok hatékonyabbá.
 
-**Ajánlott eljárás**: a build és a szolgáltatások üzembe helyezésének automatizálása.  
-**Részletes**: [infrastruktúra mint kód](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) technikák készlete, és gyakorlatokat, amelyek az informatikai szakembereknek nyújtanak segítséget távolítsa el a napi build terhe és moduláris infrastruktúra felügyeletét. Lehetővé teszi az informatikai szakemberek hozhat létre és kezelhet modern kiszolgáló környezetükben úgy, hogy hogyan hozhat létre és alkalmazáskód karbantartását hasonlít.
+**Ajánlott eljárás**: A build és a szolgáltatások üzembe helyezésének automatizálása.  
+**Részletes**: [Infrastruktúra mint kód](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) technikák készlete, és gyakorlatokat, amelyek az informatikai szakembereknek nyújtanak segítséget távolítsa el a napi build terhe és moduláris infrastruktúra felügyeletét. Lehetővé teszi az informatikai szakemberek hozhat létre és kezelhet modern kiszolgáló környezetükben úgy, hogy hogyan hozhat létre és alkalmazáskód karbantartását hasonlít.
 
 Használhat [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) az alkalmazásait egy deklaratív sablon használatával helyezze üzembe. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont újra és újra telepíteni az alkalmazást, az alkalmazás életciklusának minden szakaszában használhatja.
 
-**Ajánlott eljárás**: automatikusan hozhat létre és üzembe helyezése az Azure web Apps és a felhőszolgáltatásokra.  
-**Részletes**: használhatja az Azure-folyamatok [automatikus létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) Azure-webalkalmazások vagy felhőszolgáltatások. Az Azure a folyamatok automatikusan telepíti a bináris fájlok ezután egy Azure-ban minden kód bejelentkezés után. A csomag buildelési folyamat megegyezik a csomag parancsot a Visual Studióban, és a közzétételi lépéseket egyenértékűek a Közzététel parancsot a Visual Studióban.
+**Ajánlott eljárás**: Automatikusan létrehozhat és üzembe helyezése az Azure web Apps, vagy felhőszolgáltatások.  
+**Részletes**: Használhatja az Azure-folyamatok [automatikus létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) Azure-webalkalmazások vagy felhőszolgáltatások. Az Azure a folyamatok automatikusan telepíti a bináris fájlok ezután egy Azure-ban minden kód bejelentkezés után. A csomag buildelési folyamat megegyezik a csomag parancsot a Visual Studióban, és a közzétételi lépéseket egyenértékűek a Közzététel parancsot a Visual Studióban.
 
-**Ajánlott eljárás**: használja a folyamatos üzembe helyezés.  
-**Részletes**: [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) több lépésből álló üzembe helyezésének automatizálása, és a kibocsátási folyamat kezeléséhez egy megoldás. Gyors, könnyen és gyakran felszabadítása felügyelt folyamatos üzembe helyezés folyamatokat hozhat létre. Az Azure-folyamatok a kibocsátási folyamat automatizálható, és képes jóváhagyási munkafolyamatokat előre. Helyszíni üzembe helyezése és kiterjesztése a felhőbe, és szükség szerint testre szabhatja.
+**Ajánlott eljárás**: Folyamatos üzembe helyezés használja.  
+**Részletes**: [Az Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) több lépésből álló üzembe helyezésének automatizálása, és a kibocsátási folyamat kezeléséhez egy megoldás. Gyors, könnyen és gyakran felszabadítása felügyelt folyamatos üzembe helyezés folyamatokat hozhat létre. Az Azure-folyamatok a kibocsátási folyamat automatizálható, és képes jóváhagyási munkafolyamatokat előre. Helyszíni üzembe helyezése és kiterjesztése a felhőbe, és szükség szerint testre szabhatja.
 
 **Ajánlott eljárás**: Ellenőrizze, hogy az alkalmazás teljesítményében előtt indítsa el az eszközt, vagy az éles környezetben telepítheti a frissítéseket.  
-**Részletes**: futtassa a felhő alapú [terheléses teszteket](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) Azure vizsgálati tervezi használatával:
+**Részletes**: Futtassa a felhő alapú [terheléses teszteket](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) Azure vizsgálati tervezi használatával:
 
 - Keresse meg a teljesítményproblémákat okozhat az alkalmazásban.
 - Üzembe helyezés minőségének javítására.
 - Győződjön meg arról, hogy az alkalmazás mindig elérhető.
 - Győződjön meg arról, hogy az alkalmazás képes kezelni a következő indítási vagy marketing kampány forgalmát.
 
-**Ajánlott eljárás**: alkalmazásteljesítmény Monitorozásához.  
-**Részletes**: [Azure Application Insights](../application-insights/app-insights-overview.md) van egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az Application Insights segítségével figyelheti az élő webalkalmazását. Automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja az analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit felhasználók valójában hogyan használják az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
+**Ajánlott eljárás**: Alkalmazások teljesítményének figyelése.  
+**Részletes**: [Az Azure Application Insights](../application-insights/app-insights-overview.md) van egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az Application Insights segítségével figyelheti az élő webalkalmazását. Automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja az analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit felhasználók valójában hogyan használják az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Csökkentése és a DDoS elleni védelem
 Az elosztott szolgáltatásmegtagadásos (DDoS-) olyan támadás, amely megkísérli az alkalmazás-erőforrások felhasználta rendelkezésére. A cél, hogy az alkalmazás rendelkezésre állásának és történő jogos kérelmek kezelése hatással van. Ezeket a támadásokat egyre több kifinomult és a méretét és a hatása nagyobb. Bármely, amely az interneten keresztül nyilvánosan elérhető végponton célozhatják.
@@ -96,20 +96,20 @@ Megtervezéséért és építéséért DDoS elleni rugalmasság szükséges terv
 
 Az alábbiakban ajánlott eljárások az Azure rugalmas DDoS szolgáltatások létrehozásához.
 
-**Ajánlott eljárás**: Gondoskodjon arról, hogy biztonsági prioritást az alkalmazás, a tervezéstől és implementálástól a központi telepítés és a műveletek teljes életciklusa során. Alkalmazások is rendelkezhetnek, amelyek lehetővé teszik egy viszonylag kis mennyiségű kérést használandó rengeteg erőforrás, szolgáltatás-kimaradás eredményez hibákat.  
-**Részletes**: Microsoft Azure-on futó szolgáltatás védelme érdekében kell az alkalmazásarchitektúra alapos ismerete és összpontosítson a [szoftverminőség következő öt alappillérére](https://docs.microsoft.com/azure/architecture/guide/pillars). Ha tisztában van tipikus forgalommal, a kapcsolódási modellt az alkalmazás és más alkalmazások és a Szolgáltatásvégpontok, amelyek ki vannak téve a nyilvános internethez.
+**Ajánlott eljárás**: Győződjön meg arról, hogy biztonsági prioritást az alkalmazás, a tervezéstől és implementálástól a központi telepítés és a műveletek teljes életciklusa során. Alkalmazások is rendelkezhetnek, amelyek lehetővé teszik egy viszonylag kis mennyiségű kérést használandó rengeteg erőforrás, szolgáltatás-kimaradás eredményez hibákat.  
+**Részletes**: A Microsoft Azure-on futó szolgáltatás védelme érdekében kell az alkalmazásarchitektúra alapos ismerete és összpontosítson a [szoftverminőség következő öt alappillérére](https://docs.microsoft.com/azure/architecture/guide/pillars). Ha tisztában van tipikus forgalommal, a kapcsolódási modellt az alkalmazás és más alkalmazások és a Szolgáltatásvégpontok, amelyek ki vannak téve a nyilvános internethez.
 
 Annak biztosítása, hogy egy alkalmazás elég rugalmas, maga az alkalmazás osztályra irányuló szolgáltatásmegtagadási kezelésére legfontosabb. Az Azure platformba, kezdve beépített biztonság és adatvédelem a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/en-us/sdl). Az SDL-ből dobásig minden fejlesztési fázist, és biztosítja, hogy Azure-t folyamatosan frissítjük, hogy még biztonságosabb.
 
-**Ajánlott eljárás**: megterveznie az alkalmazásokat, [horizontális skálázásra](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) az igény egy felerősített terhelés, kifejezetten a DDoS-támadások esetén. Ha az alkalmazás egy szolgáltatás egyetlen példánya függ, a meghibásodási pontot hoz létre. Rugalmasabb és skálázhatóbb üzembe helyezett példányban több lehetővé teszi a rendszer.  
-**Részletes**: A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölje be egy [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , amelynek keretében több példányt.
+**Ajánlott eljárás**: Az alkalmazások tervezési [horizontális skálázásra](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) az igény egy felerősített terhelés, kifejezetten a DDoS-támadások esetén. Ha az alkalmazás egy szolgáltatás egyetlen példánya függ, a meghibásodási pontot hoz létre. Rugalmasabb és skálázhatóbb üzembe helyezett példányban több lehetővé teszi a rendszer.  
+**Részletes**: A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölje be egy [App Service-csomag](../app-service/overview-hosting-plans.md) , amelynek keretében több példányt.
 
 Az Azure Cloud Services, konfigurálja az összes, használja a szerepkörök [több példány](../cloud-services/cloud-services-choose-me.md).
 
 A [Azure Virtual Machines](../virtual-machines/windows/overview.md), győződjön meg arról, hogy a virtuális gép architektúra tartalmaz-e egynél több virtuális gép és minden virtuális gép szerepel egy [rendelkezésre állási csoport](../virtual-machines/virtual-machines-windows-manage-availability.md). Azt javasoljuk, hogy a virtuális gép méretezési csoportokat használ az automatikus méretezési képességeivel.
 
-**Ajánlott eljárás**: az alkalmazások biztonsági védelmekkel rétegez csökkenti annak az esélyét, a sikeres támadás. Az alkalmazások biztonságos minták megvalósítása az Azure platform beépített funkcióinak használatával.  
-**Részletes**: az alkalmazás méretének (terület) növeli a támadások veszélye. Csökkentheti a támadási engedélyezési használatával gombra kattintva zárja be a közzétett IP-címtér le, és nem szükséges a terheléselosztókat a portokat figyeli ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) és [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)).
+**Ajánlott eljárás**: Az alkalmazások biztonsági védelmekkel rétegez csökkenti annak az esélyét, a sikeres támadás. Az alkalmazások biztonságos minták megvalósítása az Azure platform beépített funkcióinak használatával.  
+**Részletes**: A támadás kockázatát az alkalmazás mérete (terület) egyenes arányban növekszik. Csökkentheti a támadási engedélyezési használatával gombra kattintva zárja be a közzétett IP-címtér le, és nem szükséges a terheléselosztókat a portokat figyeli ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) és [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)).
 
 [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) egy másik módja a támadási felület csökkentése érdekében. Használhat [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags) és [az alkalmazásbiztonsági csoportok](../virtual-network/security-overview.md#application-security-groups) minimalizálása érdekében a biztonsági szabályok létrehozása és konfigurálása a hálózati biztonság, az alkalmazás struktúrájának természetes bővítményeként összetettségét.
 

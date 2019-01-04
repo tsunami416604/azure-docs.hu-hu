@@ -139,7 +139,7 @@
 ### [AES-128-titkosítás](media-services-protect-with-aes128.md)
 ### [PlayReady/Widevine streameléshez](media-services-protect-with-playready-widevine.md)
 ### [FairPlay streameléshez](media-services-protect-hls-with-fairplay.md)
-### [Offline PlayReady Windows 10-hez](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
+### [Offline PlayReady Windows 10-hez](offline-playready-streaming-windows-10.md)
 ### [Offline Fairplay iOS-hez](media-services-protect-hls-with-offline-fairplay.md)
 ### [Offline Widevine Androidhoz](offline-widevine-for-android.md)
 ### [Konfigurálás az Azure Portalon](media-services-portal-protect-content.md)

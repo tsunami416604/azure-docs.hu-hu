@@ -1,46 +1,37 @@
 ---
-title: 'Oktatóanyag: Egyoldalas webalkalmazás készítése – Bing Visual Search'
+title: " Egyoldalas webes alkalmazás összeállítása – a Bing vizuális keresés"
 titleSuffix: Azure Cognitive Services
-description: Útmutató a Bing Visual Search API egyoldalas webalkalmazásban való használatához.
+description: Ismerje meg, hogyan integrálhatja a Bing Visual Search API egy egyoldalas webalkalmazást.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: tutorial
+ms.topic: article
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8ff5e36e6189c522e00c7cdd126c26b1cef92912
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443891"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745142"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>Oktatóanyag: Egyoldalas Visual Search-webalkalmazás
+# <a name="create-a-visual-search-single-page-web-app"></a>Hozzon létre egy vizuális keresés egyoldalas webalkalmazást 
 
 A Bing Visual Search API a Bing.com képeket kereső szolgáltatásában látható képadatokhoz hasonló élményt nyújt. A Visual Search segítségével megadhat egy képet, és olyan információkat kaphat vissza a képpel kapcsolatban, mint a vizuálisan hasonló képek, a vásárlási lehetőségek, a képet tartalmazó weboldalak stb. 
 
-Ebben az oktatóanyagban szüksége lesz egy előfizetést, S9 árkategória elindításához, ahogyan [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+Ez a cikk ismerteti a Bing Image Search API-k kiterjesztése egy egyoldalas webalkalmazást. Oktatóanyag megtekintése, vagy szerezze be az itt használt forráskódját, lásd: [oktatóanyag: Hozzon létre egy egyoldalas alkalmazásból a Bing Image Search API](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md). 
 
-Előfizetés indítása az Azure Portalon:
-1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
-2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
-3. Adja meg `Name` az új erőforrás.
-4. Válassza ki `Pay-As-You-Go` előfizetés.
-5. Válassza ki `S9` tarifacsomag.
-6. Kattintson a `Enable` az előfizetés indításához.
+A teljes (történő bővítése után, hogy a Bing Visual Search API), az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html).
 
-Ez az oktatóanyag kibővíti a Bing Image Search oktatóanyagában használt egyoldalas webalkalmazást (lásd: [Egyoldalas webalkalmazás](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Az oktatóanyag elkezdéséhez a teljes forráskódot itt találja: [Egyoldalas webalkalmazás (forráskód)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Az oktatóanyag végleges forráskódjáért lásd: [Egyoldalas Visual Search-webalkalmazás](tutorial-bing-visual-search-single-page-app-source.md).
+## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag az alábbi feladatokat tárgyalja:
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-> [!div class="checklist"]
-> * A Bing Visual Search API meghívása egy képmegállapítási jogkivonattal
-> * Hasonló képek megjelenítése
+## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>A Bing Visual Search API meghívása, és kezelni a válasz
 
-## <a name="call-bing-visual-search"></a>A Bing Visual Search meghívása
-Szerkessze a Bing Image Search-oktatóanyagot és adja hozzá a következő kódot a 409. sorban található szkriptelem végéhez. A kód meghívja a Bing Visual Search API-t, és megjeleníti az eredményeket.
+A Bing Képkeresés oktatóprogram szerkessze, és adja hozzá a következő kódot, végén a `<script>` elem (és a Bezárás előtt `</script>` címke). A következő kódot az API vizuális keresés válaszára kezeli, végighalad az eredményeket, és megjeleníti őket.
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -70,7 +61,12 @@ function handleVisualSearchResponse(){
         }
     }
 }
+```
 
+A következő kódot keresési kérelmet küld az API meghívásához egy Eseményfigyelőt használatával `handleVisualSearchResponse()`.
+
+
+```javascript
 function bingVisualSearch(insightsToken){
     let visualSearchBaseURL = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch',
         boundary = 'boundary_ABC123DEF456',
@@ -105,13 +101,15 @@ function bingVisualSearch(insightsToken){
 ```
 
 ## <a name="capture-insights-token"></a>Megállapítási jogkivonat rögzítése
-Adja hozzá a következő kódot a 151. sorban található `searchItemsRenderer` objektumhoz. Ez a kód hozzáad egy **hasonló keresése** hivatkozást, amely meghívja a `bingVisualSearch` függvényt, ha rákattintanak. A függvény argumentumként kapja meg az imageInsightsToken jogkivonatot.
+
+Adja hozzá az alábbi kódot a `searchItemsRenderer` objektum. Ez a kód hozzáad egy **hasonló keresése** hivatkozást, amely meghívja a `bingVisualSearch` függvényt, ha rákattintanak. A függvény argumentumként kapja meg az imageInsightsToken jogkivonatot.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
 ```
 
 ## <a name="display-similar-images"></a>Hasonló képek megjelenítése
+
 Adja hozzá a következő HTML-kódot a 601. sorban. Ez a jelölőkód hozzáad egy elemet, amellyel megjeleníthetők a Bing Visual Search API meghívásának az eredményei.
 
 ``` html
@@ -126,5 +124,4 @@ A rendelkezésre álló új JavaScript-kódok és HTML-elemek segítségével a 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Visual Search-webalkalmazás forráskódja](tutorial-bing-visual-search-single-page-app-source.md)
-> [Bing Visual Search API-referencia](https://aka.ms/bingvisualsearchreferencedoc)
+> [Vágja körül, és töltse fel a képet](tutorial-visual-search-crop-area-results.md)

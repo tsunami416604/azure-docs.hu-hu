@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 68f2314b995eb0f2f67307b44cbfd177f5c5a796
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f4053888cc8402ab0196e40c33f1acc3e7eef44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309270"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651131"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>A Microsoft Power BI közvetlen lekérdezés használatával az Azure HDInsight interaktív lekérdezés Apache Hive-adatok megjelenítése
 
@@ -77,7 +77,7 @@ Továbbra is az előző eljárást.
 3. Bontsa ki a térképet.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan HDInsight használata a Power BI adatok vizualizálásához.  Adatmegjelenítés további információkért lásd a következő cikkeket:
+Ebben a cikkben megismerkedett a Microsoft Power BI használatával HDInsight adatok vizualizálásához.  Adatmegjelenítés további információkért lásd a következő cikkeket:
 
 * [A Microsoft Power BI ODBC segítségével az Azure HDInsight az Apache Hive-adatok megjelenítése](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
 * [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](./../hdinsight-connect-hive-zeppelin.md).

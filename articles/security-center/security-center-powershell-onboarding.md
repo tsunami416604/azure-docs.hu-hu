@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 69310e51495cbb91303c3e8837ad42f6a4ac3374
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340368"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972908"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Előkészítés a PowerShell-lel az Azure Security Center automatizálása
 
@@ -49,37 +49,31 @@ Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása 
 1.  PowerShell futtatása rendszergazdaként
 2.  A PowerShellben futtassa a következő parancsokat:
       
-        Install-Module -Name PowerShellGet -Force
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Import-Module PowerShellGet
-6.  Indítsa újra a PowerShell
-
-7. A PowerShellben futtassa a következő parancsokat:
-
-         Install-Module -Name AzureRM.Security -AllowPrerelease -Force
+        Install-Module -Name Az.Security -Force
 
 ## <a name="onboard-security-center-using-powershell"></a>Felvétele a Security Center PowerShell-lel
 
 1.  Az előfizetés a Security Center erőforrás-szolgáltató regisztrálása:
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
+        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
 2.  Nem kötelező: Az előfizetések lefedettség szintet (tarifacsomag) (Ha nincs megadva, a tarifacsomag értéke ingyenes):
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
+        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 
 3.  Az ügynökök jelentést, amelyhez a Log Analytics-munkaterület konfigurálása. Log Analytics-munkaterület már létrehozott, hogy az előfizetéshez tartozó virtuális gépek jelenteni fognak az kell rendelkeznie. Megadhatja, hogy több előfizetést, hogy ugyanazon a munkaterületen. Ha nincs megadva, használja az alapértelmezett munkaterületre.
 
-        Set-AzureRmSecurityWorkspaceSetting -Name "default" -Scope
+        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
 4.  A Microsoft Monitoring Agent szolgáltatást az Azure-beli virtuális gépek automatikus üzembe telepítését:
     
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
-        Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
     > [!NOTE]
     > Azt Javasoltjuk, győződjön meg arról, hogy az Azure-beli virtuális gépek az Azure Security Center által automatikusan védett, az Automatikus kiépítés engedélyezése.
@@ -87,13 +81,13 @@ Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása 
 
 5.  Nem kötelező: Azt javasoljuk, hogy a biztonsági kapcsolattartói adatok esetében az előfizetések felvétele, mint a riasztások és értesítések címzettjeinek fogja használni létrehozott határoz meg a Security Center által:
 
-        Set-AzureRmSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
+        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertsAdmin -NotifyOnAlert 
 
 6.  Az alapértelmezett a Security Center házirend kezdeményezés hozzárendelése:
 
-        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzureRmPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
+        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 Akkor most sikerült előkészíteni az Azure Security Center a PowerShell használatával!
 
@@ -107,7 +101,7 @@ Mostantól használhatja a PowerShell-parancsmagok az automatizálási szkriptek
 ## <a name="see-also"></a>Lásd még
 Hogyan automatizálhatja a Security Center bevezetése használhatja PowerShell kapcsolatos további információkért tekintse meg a következő cikket:
 
-* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.2.0-preview).
+* [Az.Security](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Security/Commands.Security/help/Az.Security.md).
 
 A Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő cikket:
 

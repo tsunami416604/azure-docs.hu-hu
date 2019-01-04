@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b2733bed4418fdfcaefb20c04683cb6a229134e9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400428"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594281"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -41,7 +41,7 @@ Az operációsrendszer-lemezek Írásgyorsító engedélyezése nem lehet az SAP
 Írásgyorsító egy Azure lemez/VHD-t használja, ha ezek a korlátozások vonatkoznak:
 
 - A prémium szintű lemezek gyorsítótárazása állítsa "None" vagy "Csak Olvasás". Minden más gyorsítótárazási mód nem támogatott.
-- Az engedélyezett Írásgyorsító lemezek pillanatképek még nem támogatott. Ez a korlátozás blokkolja az Azure Backup szolgáltatás hajthatnak végre a virtuális gép összes lemezének alkalmazáskonzisztens pillanatképet.
+- Pillanatkép jelenleg nem támogatottak Írásgyorsítót használó lemez. Biztonsági mentés során az Azure Backup szolgáltatás a virtuális Géphez csatolt Írásgyorsítót használó lemezt automatikusan kizárja.
 - Csak kisebb méretű i/o-méretek (< = 32 KiB) gyorsított elérési tart. Számítási helyzetekben, ahol adatok tömeges kezd betöltve, vagy ha a tranzakciós napló pufferek, a különböző DBMS előtt első megőrzi a a storage nagyobb mértékben van kitöltve, valószínűleg, amely az i/o írt lemez nem tart a gyorsított elérési útja.
 
 Az Azure Premium Storage virtuális merevlemezek Írásgyorsító támogató virtuális gépenként korlátozva van. A jelenlegi korlátok a következők:

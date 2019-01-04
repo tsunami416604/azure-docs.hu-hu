@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager sablon változók |} Microsoft Docs
-description: Adja meg a változókat az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával ismerteti.
+title: Az Azure Resource Manager-sablon változóinak |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy Azure Resource Manager-sablonok deklaratív JSON-szintaxist használva a változókat határozhat meg.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08728a3c0b4d4578939004e2d1b1ee2d30a682ab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359288"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53712746"
 ---
-# <a name="variables-section-of-azure-resource-manager-templates"></a>Változók szakaszban az Azure Resource Manager-sablonok
-A változók szakaszban, a sablon egész érték, amely használható hozhat létre. Nem kell meghatároznia a változót, de azok gyakran leegyszerűsítheti a sablon csökkentésével összetett kifejezések.
+# <a name="variables-section-of-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok a változók szakaszban
+A változók szakaszban, a sablon egész értékek, amelyek segítségével hozhatnak létre. Nem kell definiálnia a változókat, de azok összetett kifejezések csökkentésével gyakran egyszerűbb a sablont.
 
-## <a name="define-and-use-a-variable"></a>Adja meg, és a változók használata
+## <a name="define-and-use-a-variable"></a>Definiálja és egy változó
 
-A következő példa bemutatja a változó definícióját. Létrehoz egy a tárfiók nevének karakterlánc-érték. Több sablon függvény használatával jelenik meg a paraméter értékét, és azt egy egyedi karakterlánc összefűzésére.
+Az alábbi példa bemutatja a változó definícióját. Létrehoz egy karakterláncértéket a tárfiók neve. Több sablonokban használható függvények használatával jelenik meg a paraméter értékét, és fűzze össze az azt egy egyedi karakterlánccá.
 
 ```json
 "variables": {
@@ -43,9 +43,9 @@ Az erőforrás definiálásakor használja a változót.
     ...
 ```
 
-## <a name="available-definitions"></a>Definíciók
+## <a name="available-definitions"></a>Rendelkezésre álló definíciók
 
-Az előző példában bemutatta egyik módja változó. A következő definíciókra bármelyikét használhatja:
+Az előző példa bemutatta, adjon meg egy változót az egyik lehetőség. Az alábbi definíciókat bármelyikét használhatja:
 
 ```json
 "variables": {
@@ -78,7 +78,7 @@ Az előző példában bemutatta egyik módja változó. A következő definíci�
 
 ## <a name="configuration-variables"></a>Konfigurációs változók
 
-Összetett JSON-típusok segítségével megadhatja a kapcsolódó értékekről a környezetben. 
+Használhatja a komplex JSON-típusok meghatározása a kapcsolódó értékeket egy adott környezetben. 
 
 ```json
 "variables": {
@@ -95,7 +95,7 @@ Az előző példában bemutatta egyik módja változó. A következő definíci�
 },
 ```
 
-A paraméterek hozzon létre egy értéket, amely jelzi, hogy melyik konfiguráció értékeit használja a.
+A paraméterek hozzon létre egy értéket, amely jelzi, hogy melyik konfigurációs értékeket kell használni.
 
 ```json
 "parameters": {
@@ -109,15 +109,15 @@ A paraméterek hozzon létre egy értéket, amely jelzi, hogy melyik konfigurác
 },
 ```
 
-Az aktuális beállításainak beolvasása:
+A jelenlegi beállítások kérheti le:
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-## <a name="use-copy-element-in-variable-definition"></a>Elem másolása használja a változó definícióját
+## <a name="use-copy-element-in-variable-definition"></a>A változó definícióját másolási eleme használata
 
-Használhatja a **másolási** szintaxisát, és hozzon létre egy változót több elem tömbjét. A szám elemek számát adja meg. Minden elem tartalmazza-e a tulajdonságokat a **bemeneti** objektum. Másolás vagy egy változó belül, vagy hozza létre a változót használhatja. Ha meg egy változót, és használjon **másolása** belül ezt a változót hoz létre olyan objektum, amely a tömb tulajdonsága. Amikor **másolási** legfelső szintjén, és hozzon létre egyet, vagy belül több változót hoz létre egy vagy több tömbök. Mindkét megközelítés az alábbi példában látható:
+Használhatja a **másolási** szintaxis egy változó létrehozása a különböző elemek tömbjét. Egy szám elemek számát adja meg. Minden elem tartalmazza a tulajdonságokat a **bemeneti** objektum. Használhatja a másolás, vagy egy változóban, vagy hozza létre a változót. Adjon meg egy változót, és ha a használata **másolási** adott változóban, hozzon létre egy objektumot, amely rendelkezik vlastnost typu Pole. Használata esetén **másolási** legfelső szintjén, és hozzon létre egyet, vagy több változót a benne lévő, egy vagy több tömbök létrehozására. Mindkét módszerénél a következő példában látható:
 
 ```json
 "variables": {
@@ -148,7 +148,7 @@ Használhatja a **másolási** szintaxisát, és hozzon létre egy változót t�
 },
 ```
 
-A változó **-tömb-a-objektumát** tartalmazza a következő objektum nevű tömb **lemezek**:
+A változó **lemez-tömb-a-objektum** tartalmazza a következő objektum nevű tömbben **lemezek**:
 
 ```json
 {
@@ -172,7 +172,7 @@ A változó **-tömb-a-objektumát** tartalmazza a következő objektum nevű t�
 }
 ```
 
-A változó **lemezek legfelső-szintű-tömb** a következő tömböt tartalmaz:
+A változó **lemezek – legfelső-szintű-tömb** tartalmazza az alábbi tömböt:
 
 ```json
 [
@@ -194,7 +194,7 @@ A változó **lemezek legfelső-szintű-tömb** a következő tömböt tartalmaz
 ]
 ```
 
-Több objektum történő másolás használatával történő létrehozásához változók is megadhat. A következő példában két tömb változók határozza meg. Egy nevű **lemezek legfelső-szintű-tömb** és öt elemmel rendelkezik. A másik nevű **egy másik-tömb** és három elemmel rendelkezik.
+Egynél több objektumot megadhat változók példány használata esetén is. Az alábbi példa két tömbök változókként határozza meg. Az egyik neve **lemezek – legfelső-szintű-tömb** és öt elemmel rendelkezik. A másik nevű **egy másik-tömb** és három elemmel rendelkezik.
 
 ```json
 "variables": {
@@ -221,7 +221,7 @@ Több objektum történő másolás használatával történő létrehozásához
 },
 ```
 
-Ez a módszer jól működik, ha a paraméterértékek eltarthat, és győződjön meg arról, hogy a sablon értéket a megfelelő formátumban kell. Az alábbi példa formázza a biztonsági szabályok definiálásához paraméterértékek:
+Ez a módszer jól működik, ha szüksége van a paraméter értékeit, és ellenőrizze, hogy a sablon értéket a megfelelő formátumban vannak. Az alábbi példa formázza a biztonsági szabályok definiálásához paraméterértékeket:
 
 ```json
 {
@@ -269,26 +269,19 @@ Ez a módszer jól működik, ha a paraméterértékek eltarthat, és győződj�
 }
 ```
 
-## <a name="recommendations"></a>Javaslatok
-Az alábbi információ segítségével esetleg megállapítható, változók használata:
-
-* Változók használata sablonban egynél többször használni kívánt értékeket. Ha az érték csak egyszer legyen használva, kódolt értéket a sablon olvashatóbbá teszi.
-* Nem használhatja a [hivatkozás](resource-group-template-functions-resource.md#reference) működni a **változók** a sablon szakasza. A **hivatkozás** függvény az értékét az erőforrás futásidejű állapot osztályból származik. Azonban változók, megtörténik a sablon kezdeti elemzése során. Szerkezet értékei, amelyen a kell a **hivatkozás** működéséhez közvetlenül a **erőforrások** vagy **kimenete** a sablon szakasza.
-* Az erőforrás nevének egyedinek kell lennie, változókat tartalmazhat.
-
 ## <a name="example-templates"></a>Példa sablonok
 
-A példa sablonok bemutatják, bizonyos esetekben a változók használata. Tesztelje a változók kezelésének módját a különböző helyzetekben való telepítéséhez. 
+A példa sablonok bizonyos változók használatára vonatkozó forgatókönyvek bemutatása. Tesztelje a változók kezelésének módját a különböző helyzetekben való telepítéséhez. 
 
 |Sablon  |Leírás  |
 |---------|---------|
-| [változó definíciók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | A különböző típusú változók mutatja be. A sablon nem kell telepítenie minden olyan erőforrásnál. Változók értékeinek hoz létre, és ezeket az értékeket adja vissza. |
-| [konfigurációs változó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Bemutatja, hogy egy változó, amely meghatározza a konfigurációs értékeket. A sablon nem kell telepítenie minden olyan erőforrásnál. Változók értékeinek hoz létre, és ezeket az értékeket adja vissza. |
-| [hálózati biztonsági szabályok](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) és [paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | A biztonsági szabályok hozzárendelése a hálózati biztonsági csoportok a megfelelő formátumban tömb hoz létre. |
+| [változó definíciók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Azt ismerteti, hogy a különböző típusú változót. A sablon nem üzembe erőforrásokat. Ez változóértékek entitástörzséhez, és ezeket az értékeket ad vissza. |
+| [konfigurációs változó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Bemutatja, hogy egy változó, amely a konfigurációs értékeket határozza meg. A sablon nem üzembe erőforrásokat. Ez változóértékek entitástörzséhez, és ezeket az értékeket ad vissza. |
+| [hálózati biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) és [alkalmazásparaméter-fájlt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Létrehoz egy tömböt a biztonsági szabályok rendel egy hálózati biztonsági csoportot a megfelelő formátumban. |
 
 
 ## <a name="next-steps"></a>További lépések
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
-* A sablonon belül használhatja a functions szolgáltatással kapcsolatos részletekért lásd: [Azure Resource Manager Sablonfüggvényei](resource-group-template-functions.md).
-* Egyesítenie több sablon üzembe helyezése során, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Szükség lehet egy másik erőforráscsoportban található erőforrások használatával. Ez a forgatókönyv nem közös, ha a storage-fiókok vagy több erőforrás csoporttal megosztott virtuális hálózatok. További információkért lásd: a [resourceId függvény](resource-group-template-functions-resource.md#resourceid).
+* A sablonon belül használhatja függvényeivel kapcsolatos részletekért lásd: [Azure Resource Manager-Sablonfüggvények](resource-group-template-functions.md).
+* Sablonok létrehozásával kapcsolatos ajánlások, lásd: [gyakorlati tanácsok az Azure Resource Manager-sablon](template-best-practices.md).
+* Szükség lehet a belül egy másik erőforráscsoportban található erőforrások. Ebben a forgatókönyvben nem gyakori, ha a storage-fiókok vagy a virtuális hálózatokat, amelyek egynél több erőforráscsoport vannak megosztva. További információkért lásd: a [resourceId függvény](resource-group-template-functions-resource.md#resourceid).

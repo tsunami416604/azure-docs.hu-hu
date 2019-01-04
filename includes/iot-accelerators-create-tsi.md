@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8c114ed137089e70899e601ebdc1d4d39f562601
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ab3d4cbe8a200e91d02177e49446065cd9c228df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43383230"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609072"
 ---
 ## <a name="create-a-consumer-group"></a>Hozzon létre egy fogyasztói csoportot
 
@@ -41,7 +41,7 @@ Az alábbi lépéseket az Azure CLI az Azure Cloud shellben hozzon létre a fogy
 
 [Az Azure Time Series Insights](../articles/time-series-insights/time-series-insights-overview.md) teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás IoT-méretű idősoros adatok felhőbeli kezeléséhez. Új Time Series Insights-környezet létrehozása:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza ki **erőforrás létrehozása** > **IOT-** > **Time Series Insights**:
 

@@ -1,5 +1,5 @@
 ---
-title: Tárolókhoz kapcsolódó számítási feladatok Azure Batch |} A Microsoft Docs
+title: Tárolókhoz kapcsolódó számítási feladatok – Azure Batch |} A Microsoft Docs
 description: Megtudhatja, hogyan tárolórendszerképek az Azure Batch alkalmazások futtatását.
 services: batch
 author: dlepow
@@ -10,12 +10,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec18
+ms.openlocfilehash: 4d4dc5d01959406e71859fcbde6de1e36b5871aa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262431"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540996"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Az Azure Batch tárolóalkalmazások futtatásához
 
@@ -29,16 +30,16 @@ Tárolók használatával környezet és alkalmazások futtatását a függősé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **SDK-verziókra**: A Batch SDK-k támogatása tárolórendszerképek kezdődően a következő verziókat:
+* **SDK-verziókra**: A Batch SDK-k támogatják a tárolórendszerképek kezdődően a következő verziókat:
     * Batch – REST API-verzió 2017-09-01.6.0
     * A Batch .NET SDK-val 8.0.0 verzió
     * A Batch Python SDK 4.0-s verziója
     * Batch Java SDK 3.0-s verzió
     * Batch Node.js SDK 3.0-s verzió
 
-* **Fiókok**: az Azure-előfizetésében, hozzon létre egy Batch-fiókot, és opcionálisan egy Azure Storage-fiók szükséges.
+* **Fiókok**: Az Azure-előfizetésében szeretne létrehozni Batch-fiókot, és opcionálisan egy Azure Storage-fiókot.
 
-* **Támogatott Virtuálisgép-rendszerkép**: tárolók csak a virtuálisgép-konfigurációval létrehozott készletek esetén használhatók a következő szakaszban részletes rendszerképekből "támogatott virtuálisgép-rendszerképek." Ha megad egy egyéni rendszerképet, tekintse meg a következő szakaszban a szempontok és a követelményeket a [felügyelt egyéni lemezképek használatával hozzon létre egy virtuálisgép-készletek](batch-custom-images.md). 
+* **Támogatott Virtuálisgép-rendszerkép**: Tárolók csak a virtuálisgép-konfigurációval létrehozott készletek esetén használhatók a következő szakaszban részletes rendszerképekből "támogatott virtuálisgép-rendszerképek." Ha megad egy egyéni rendszerképet, tekintse meg a következő szakaszban a szempontok és a követelményeket a [felügyelt egyéni lemezképek használatával hozzon létre egy virtuálisgép-készletek](batch-custom-images.md). 
 
 ### <a name="limitations"></a>Korlátozások
 

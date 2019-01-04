@@ -1,5 +1,5 @@
 ---
-title: Konzisztenciaszintek és az Azure Cosmos DB API-k
+title: Konzisztenciaszintek és Azure Cosmos DB API-k
 description: A konzisztenciaszintek ismertetése az Azure Cosmos DB API-k között.
 keywords: konzisztencia, az azure cosmos db, azure, modellek, mongodb, cassandra, gráf, tábla, a Microsoft azure
 services: cosmos-db
@@ -8,14 +8,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 277a064d93e2ebcea82f3909b3fd16328a775105
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2fde29111ae1a95aec0cfef93762d3ae4f0e0dd0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832496"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809386"
 ---
-# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és az Azure Cosmos DB API-k
+# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
 Azure Cosmos DB által kínált öt konzisztenciamodell az Azure Cosmos DB SQL API natív módon támogatottak. Azure Cosmos DB használata esetén az SQL API az alapértelmezett érték. 
 
@@ -50,5 +50,5 @@ Az alábbi táblázat az Azure Cosmos DB MongoDB 3.4-es és az alapértelmezett 
 További információ a konzisztenciaszintek és az Azure Cosmos DB API-k a nyílt forráskódú API-kkal közötti kompatibilitást. Lásd az alábbi cikkeket:
 
 * [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
-* [Az Azure Cosmos DB MongoDB API által támogatott MongoDB-funkciók](mongodb-feature-support.md)
+* [A mongodb-hez az Azure Cosmos DB API által támogatott MongoDB-funkciók](mongodb-feature-support.md)
 * [Az Azure Cosmos DB Cassandra API által támogatott Apache Cassandra-funkciók](cassandra-support.md)

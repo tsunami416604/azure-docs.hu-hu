@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c8870fdb0ff0a62c9b1a3b690724aa004e911bb3
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133757"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810882"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Az Azure Cosmos DB csatorna módosítása
 
@@ -32,7 +32,7 @@ Az Azure Cosmos DB a változáscsatorna lehetővé teszi, hogy ezek a minták mi
 
 Ez a funkció jelenleg a következő Azure Cosmos DB API-k és ügyféloldali SDK-k által támogatott.
 
-| **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API**|**Tábla API** |
+| **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API**|**Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | Igen | Nem | Nem | Igen | Nem |
 |Java|NA|Igen|Nem|Nem|Igen|Nem|

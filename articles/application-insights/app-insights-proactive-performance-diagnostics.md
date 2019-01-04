@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b9428e4451ebef921907809b1250238bf084706d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bd7b4bd2e1c3116f2a722b0a06d24ecc43e6ccb2
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864961"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974989"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák
 
 [Az Application Insights](app-insights-overview.md) automatikusan elemzi a webalkalmazás teljesítményét, és figyelmezteti azokról a potenciális problémákról. Akkor lehet, hogy lehet olvassa, mert az intelligens detektálási értesítést kapott.
 
-Ez a funkció nem speciális beállítás, az alkalmazás konfigurálása az Application Insights nem szükséges (a [ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), vagy [Node.js](app-insights-nodejs.md), majd a [weblap kód](app-insights-javascript.md)). Ez akkor aktív, ha az alkalmazása elég telemetriát hoz létre.
+Ez a funkció nem speciális beállítás, az alkalmazás konfigurálása az Application Insights nem szükséges (a [ASP.NET](../azure-monitor/app/asp-net.md), [Java](../azure-monitor/app/java-get-started.md), vagy [Node.js](app-insights-nodejs.md), majd a [weblap kód](../azure-monitor/app/javascript.md)). Ez akkor aktív, ha az alkalmazása elég telemetriát hoz létre.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Ha szeretne egy intelligens detektálási értesítést kaphat?
 
@@ -69,22 +69,22 @@ Az intelligens észlelés teljesítményanomáliákat kapcsolatos e-mailek korl�
 ## <a name="faq"></a>GYIK
 
 * *Tehát Microsoft személyzete tekintse meg az adataimat?*
-  * Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [privát](app-insights-data-retention-privacy.md).
+  * Nem. A szolgáltatás nem teljesen automatikus. Csak az értesítéseket kap. Az adatok [privát](../azure-monitor/app/data-retention-privacy.md).
 * *Application Insights által gyűjtött összes adat elemzése?*
   * Nem, jelenleg. Jelenleg a válaszidő, függőségi válaszidő és oldalbetöltési idő kérelem elemezzük. További metrikák elemzése még megvalósítás Reméljük be van kapcsolva.
 
 * Milyen típusú alkalmazás ez működik?
-  * Ezen romlását bármely olyan alkalmazásban, amely létrehozza a megfelelő telemetriai adatokat észlelt. Ha telepítette az Application Insights a webalkalmazásban, majd és -függőségek automatikusan nyomon követi. Azonban a Háttérszolgáltatásokhoz vagy más alkalmazásokat, ha hívásainak beszúrt [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) vagy [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency), majd az intelligens detektálás ugyanúgy fog működni.
+  * Ezen romlását bármely olyan alkalmazásban, amely létrehozza a megfelelő telemetriai adatokat észlelt. Ha telepítette az Application Insights a webalkalmazásban, majd és -függőségek automatikusan nyomon követi. Azonban a Háttérszolgáltatásokhoz vagy más alkalmazásokat, ha hívásainak beszúrt [TrackRequest()](../azure-monitor/app/api-custom-events-metrics.md#trackrequest) vagy [TrackDependency](../azure-monitor/app/api-custom-events-metrics.md#trackdependency), majd az intelligens detektálás ugyanúgy fog működni.
 
 * *Hozzon létre saját anomáliadetektálási észlelési szabályok vagy testre szabhatja a meglévő szabályokat?*
 
   * Még nincs de:
-    * [Riasztásokat állíthat be](app-insights-alerts.md) , mondja el, ha egy metrika átlépi a küszöbértéket.
-    * [Telemetria exportálása](app-insights-export-telemetry.md) , egy [adatbázis](app-insights-code-sample-export-sql-stream-analytics.md) vagy [Power bi-bA](app-insights-export-power-bi.md), ahol elemezheti, saját magának.
+    * [Riasztásokat állíthat be](../azure-monitor/app/alerts.md) , mondja el, ha egy metrika átlépi a küszöbértéket.
+    * [Telemetria exportálása](../azure-monitor/app/export-telemetry.md) , egy [adatbázis](../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [Power bi-bA](app-insights-export-power-bi.md), ahol elemezheti, saját magának.
 * *Milyen gyakran történik az elemzés?*
 
   * Mi az elemzés futtatása naponta az előző nap (teljes napja UTC időzónában) telemetriai adatok.
-* *A csere együtt növekszik [metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)?*
+* *A csere együtt növekszik [metrikákhoz kapcsolódó riasztások](../azure-monitor/app/alerts.md)?*
   * Nem.  Nem tudjuk véglegesítse minden, érdemes lehet rendellenes viselkedésének észlelésekor.
 
 
@@ -101,7 +101,7 @@ Első lépésként jelentősége? Ha egy lap mindig betöltődni, de a webhely f
 
 Általános útmutató a hatás utasítás (érintett felhasználók vagy %-a forgalmat) használata, de vegye figyelembe, hogy nincs-e a teljes képet. Gyűjtse össze az egyéb igazolást megerősítéséhez.
 
-Fontolja meg a probléma a paramétereket. Ha földrajzi böngészőfüggő, állítsa be [rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md) többek között az adott régióban: egyszerűen van hálózati probléma az adott területre.
+Fontolja meg a probléma a paramétereket. Ha földrajzi böngészőfüggő, állítsa be [rendelkezésre állási tesztek](../azure-monitor/app/monitor-web-app-availability.md) többek között az adott régióban: egyszerűen van hálózati probléma az adott területre.
 
 ### <a name="diagnose-slow-page-loads"></a>Lassú lapbetöltés diagnosztizálása
 Hol található a probléma? Lassan válaszol-e a kiszolgáló, az oldal nagyon hosszú, vagy nem a böngészőben kell elvégezni, a megjelenítéséhez számos tennivalónk?
@@ -109,16 +109,16 @@ Hol található a probléma? Lassan válaszol-e a kiszolgáló, az oldal nagyon 
 A böngészők metrika panel megnyitásához. A böngésző oldal betöltési idő mutatja az idő hol fog szegmentált megjelenítését. 
 
 * Ha **küldése kérelem időtartama** van magas, vagy a kiszolgáló válaszol lassan, vagy a kérelem egy bejegyzést a nagy mennyiségű adatot. Tekintse meg a [teljesítmény-mérőszámok](app-insights-web-monitor-performance.md#metrics) válaszidők vizsgálatára.
-* Állítsa be a [függőségi nyomkövetés](app-insights-asp-net-dependencies.md) , hogy a lassúsága miatt külső szolgáltatásokkal vagy az adatbázis.
-* Ha **válasz fogadása** domináns, az oldal és a függő részek – JavaScript, CSS, és így tovább (de aszinkron módon betöltött adatok) lemezképek hosszúak. Állítsa be egy [rendelkezésre állási teszt](app-insights-monitor-web-app-availability.md), és ügyeljen arra, hogy a függő részek betölteni a beállítást. Amikor eredmények beszerzése, nyissa meg az eredményt a részletek, és bontsa ki a betöltési időt, a különböző fájlok megtekintéséhez.
+* Állítsa be a [függőségi nyomkövetés](../azure-monitor/app/asp-net-dependencies.md) , hogy a lassúsága miatt külső szolgáltatásokkal vagy az adatbázis.
+* Ha **válasz fogadása** domináns, az oldal és a függő részek – JavaScript, CSS, és így tovább (de aszinkron módon betöltött adatok) lemezképek hosszúak. Állítsa be egy [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md), és ügyeljen arra, hogy a függő részek betölteni a beállítást. Amikor eredmények beszerzése, nyissa meg az eredményt a részletek, és bontsa ki a betöltési időt, a különböző fájlok megtekintéséhez.
 * Magas **ügyfél feldolgozási ideje** lassan futnak a parancsfájlok javasol. Ha az OK nem egyértelmű, érdemes lehet hozzáadni egy időzítési kódrészletet, és trackMetric hívások küldése az időpontokat.
 
 ### <a name="improve-slow-pages"></a>Lassú lapok javítása
 Nincs tanácsadás javítása a kiszolgáló válasza és lapbetöltési idők, így azt nem próbál ismételje meg az összes itt a teljes webes. Íme néhány tipp, amely valószínűleg már ismert tudnivalókat, csak az első felhőmegoldásokat:
 
-* Lassú betöltése big Data típusú fájlok miatt: a parancsfájlok és más aszinkron módon tölthető be. Használja a parancsfájl a kötegelés. A főoldalon felosztása widgetet, külön-külön betölteni az adatokat. Ne küldjön egyszerű régi HTML-táblázatok hosszú: parancsfájl használata az adatok kérés JSON vagy más kompakt formátumban, majd töltse ki a tábla helyen. Számos nagyszerű keretrendszerek mindez segítséget. (Is járnak, big Data típusú parancsfájlok természetesen.)
-* Kiszolgálóoldali függőségek lassú: fontolja meg a földrajzi helyeket az összetevők. Például az Azure használata esetén ellenőrizze, hogy a webalkalmazás-kiszolgáló és az adatbázis-e ugyanabban a régióban. Tegye lekérdezések lekéréséhez szükséges több információt? Gyorsítótárazás vagy súgó kötegelés lenne?
-* A kapacitás problémák: tekintse meg a kiszolgáló metrikáinak, válaszidők és a kérelmek számát. A kérések számát csúcsok aránytalanul kiugró válaszidők, valószínű, hogy a kiszolgálók úgy módosítja a program.
+* Nagy fájlok miatt lassú betöltése: Aszinkron módon töltse be a parancsfájlok és egyéb részei. Használja a parancsfájl a kötegelés. A főoldalon felosztása widgetet, külön-külön betölteni az adatokat. Ne küldjön egyszerű régi HTML-táblázatok hosszú: parancsfájl használata az adatok kérés JSON vagy más kompakt formátumban, majd töltse ki a tábla helyen. Számos nagyszerű keretrendszerek mindez segítséget. (Is járnak, big Data típusú parancsfájlok természetesen.)
+* Lassú kiszolgálói függőségei: Vegye figyelembe a földrajzi helyeket az összetevők. Például az Azure használata esetén ellenőrizze, hogy a webalkalmazás-kiszolgáló és az adatbázis-e ugyanabban a régióban. Tegye lekérdezések lekéréséhez szükséges több információt? Gyorsítótárazás vagy súgó kötegelés lenne?
+* A kapacitás problémák: Tekintse meg a kiszolgáló metrikáinak, válaszidők és a kérelmek számát. A kérések számát csúcsok aránytalanul kiugró válaszidők, valószínű, hogy a kiszolgálók úgy módosítja a program.
 
 
 ## <a name="server-response-time-degradation"></a>Kiszolgálói válaszidő romlása
@@ -185,9 +185,9 @@ Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából szárma
 * [Profilkészítő](app-insights-profiler.md) 
 * [Pillanatkép-hibakereső](app-insights-snapshot-debugger.md)
 * [Elemzés](../azure-monitor/log-query/get-started-portal.md)
-* [Intelligens diagnosztika Analytics](app-insights-analytics.md)
+* [Intelligens diagnosztika Analytics](../azure-monitor/app/analytics.md)
 
 Az intelligens észlelés teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 
-* [Manuálisan konfigurált metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)
-* [Rendelkezésre állási webes tesztek](app-insights-monitor-web-app-availability.md)
+* [Manuálisan konfigurált metrikákhoz kapcsolódó riasztások](../azure-monitor/app/alerts.md)
+* [Rendelkezésre állási webes tesztek](../azure-monitor/app/monitor-web-app-availability.md)

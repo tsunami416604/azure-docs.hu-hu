@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 48432b4a415c0c544c4a64444c89cf818fa00e1f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955429"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972428"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -28,17 +28,28 @@ A webes vagy mobilalkalmazásának szolgáltatásaitól legnépszerűbb? Tegye a
 
 A legjobb élményt az Application Insights telepítésével az alkalmazáskód kiszolgáló, mind a weblapok kapjuk meg. Az alkalmazás ügyfél- és összetevői telemetriát küldjön az Azure Portalon elemzés céljából.
 
-1. **Kiszolgálói kód:** az megfelelő moduljának telepítése a [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-overview.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), vagy [más](app-insights-platforms.md) alkalmazást.
+1. **Kiszolgálóoldali kódban:** A megfelelő moduljának telepítése a [ASP.NET](../azure-monitor/app/asp-net.md), [Azure](app-insights-overview.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](app-insights-nodejs.md), vagy [más](app-insights-platforms.md) alkalmazás.
 
     * *Nem szeretné telepíteni a kiszolgálói kód? Csak [hozzon létre egy Azure Application Insights-erőforrást](app-insights-create-new-resource.md).*
 
-2. **Weblapkód:** nyissa meg a [az Azure portal](https://portal.azure.com), nyissa meg az Application Insights-erőforrást az alkalmazáshoz, és nyissa meg **első lépések > figyelése és diagnosztizálása ügyféloldali**. 
+2. **Weblap-kódot:** Adja hozzá a következő szkriptet a weblapra a Bezárás előtt ``</head>``. Cserélje le a megfelelő értéket, az Application Insights-erőforrás kialakítási kulcsát:
 
-    ![Másolja a szkriptet a fő weblaphoz vezetője.](./media/app-insights-usage-overview/02-monitor-web-page.png)
+   ```javascript
+      <script type="text/javascript">
+        var appInsights=window.appInsights||function(a){
+            function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+        }({
+            instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+        });
+        
+        window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+    </script>
+    ```
+    A webhelyek monitorozásával kapcsolatos speciális konfigurációkról a [JavaScript SDK API-referenciáiban](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md) olvashat.
 
-3. **Mobilalkalmazás-kód:** az App Center SDK segítségével eseményeinek gyűjtése az alkalmazásból, majd elküldi ezeket az eseményeket az Application Insights által végzett elemzéshez [ezt az útmutatót](app-insights-mobile-center-quickstart.md).
+3. **Mobilalkalmazás-kód:** Az App Center SDK segítségével eseményeinek gyűjtése az alkalmazásból, majd elküldi ezeket az eseményeket az Application Insights által végzett elemzéshez [ezt az útmutatót](app-insights-mobile-center-quickstart.md).
 
-4. **Telemetriai adatokat:** hibakeresési módban a projekt futtatása néhány percet, és keresse meg az Application Insights áttekintő paneljén eredményez.
+4. **Máris:** A projekt hibakeresési módban futtatja a néhány percet, és keresse meg az Application Insights áttekintő paneljén eredményez.
 
     Tegye közzé az alkalmazást, az alkalmazás teljesítményének figyeléséhez, és ismerje meg, mivel foglalkoznak az a felhasználók az alkalmazását.
 
@@ -103,7 +114,7 @@ Vagy a kiszolgáló oldalán:
 
 Csatlakoztathat tulajdonságértékek ezeket az eseményeket, hogy szűrhető és az eseményeket, amikor a portálon ellenőrizze őket osztani. Emellett egy szabványos tulajdonságkészlettel minden egyes esemény, például a névtelen felhasználó azonosítója, amely lehetővé teszi, hogy követni a tevékenységek egy egyéni felhasználó csatolva van.
 
-Tudjon meg többet [egyéni események](app-insights-api-custom-events-metrics.md#trackevent) és [tulajdonságok](app-insights-api-custom-events-metrics.md#properties).
+Tudjon meg többet [egyéni események](../azure-monitor/app/api-custom-events-metrics.md#trackevent) és [tulajdonságok](../azure-monitor/app/api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Szeletelésére és feldarabolására használnak események
 
@@ -121,7 +132,7 @@ Ezzel a technikával a csatlakoztat különböző tulajdonságértékek minden e
 
 Az Application Insights portálon szűrése, és az adatok a tulajdonság értékekhez, úgy, hogy a különböző verziók összehasonlítása felosztása.
 
-Ehhez [beállítása egy telemetriainicializáló](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer):
+Ehhez [beállítása egy telemetriainicializáló](../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer):
 
 ```csharp
 

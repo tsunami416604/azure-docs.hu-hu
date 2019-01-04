@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437129"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743646"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows-alapú HDInsight-fürtök áttelepítése Linux-alapú fürtre
 
@@ -119,7 +119,7 @@ Ez a szakasz a fürt létrehozásakor különbségek ismertetése.
 
 ### <a name="ssh-user"></a>SSH felhasználói
 
-Linux-alapú HDInsight-fürtök használata a **Secure Shell (SSH)** protokoll, a fürtcsomópontokon távoli elérést biztosíthat. Ellentétben a távoli asztal a Windows-alapú fürtök esetén a legtöbb SSH-ügyfél nem biztosítanak egy grafikus felhasználói felület. Ehelyett SSH-ügyfelet adjon meg egy parancssort, amely lehetővé teszi, hogy a fürtön futtasson parancsokat. Egyes ügyfelek (például [MobaXterm](http://mobaxterm.mobatek.net/)) adjon meg egy grafikus rendszer fájltallózó egy távoli parancssori mellett.
+Linux-alapú HDInsight-fürtök használata a **Secure Shell (SSH)** protokoll, a fürtcsomópontokon távoli elérést biztosíthat. Ellentétben a távoli asztal a Windows-alapú fürtök esetén a legtöbb SSH-ügyfél nem biztosítanak egy grafikus felhasználói felület. Ehelyett SSH-ügyfelet adjon meg egy parancssort, amely lehetővé teszi, hogy a fürtön futtasson parancsokat. Egyes ügyfelek (például [MobaXterm](https://mobaxterm.mobatek.net/)) adjon meg egy grafikus rendszer fájltallózó egy távoli parancssori mellett.
 
 Fürt létrehozása során, és meg kell adnia egy SSH-felhasználót vagy egy **jelszó** vagy **nyilvános kulcsú tanúsítvány** a hitelesítéshez.
 
@@ -199,7 +199,7 @@ Az alábbi ábra a Hive számítási feladatok migrálása nyújt útmutatást.
 | `set hive.execution.engine=tez;` Tez engedélyezése |Apache Tez a helyzet a Linux-alapú fürtök alapértelmezett-végrehajtó motor már nincs szükség a set utasítás. |
 | C# felhasználó által definiált függvények | Információ a Linux-alapú HDInsight-összetevők C# ellenőrzése: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD-fájlokat vagy parancsprogramokat a kiszolgálón, egy Hive-feladat részeként meghívása |Bash-szkriptek használata |
-| `hive` a távoli asztal parancsot |Használat [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [Apache Hive, az SSH-munkamenetből](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` a távoli asztal parancsot |Használat [Apache Hive Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [Apache Hive, az SSH-munkamenetből](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -220,7 +220,7 @@ Az alábbi ábra a Hive számítási feladatok migrálása nyújt útmutatást.
 > [!IMPORTANT]  
 > Ha egy külső Oozie-metaadattár használ, készítsen biztonsági másolatot a metaadattár használata a Linux-alapú HDInsight előtt. Linux-alapú HDInsight egy Oozie, amelynek kompatibilitási problémák lehet újabb verziója érhető el a korábbi verziók által létrehozott metaadattárak.
 
-Az Oozie-munkafolyamatok rendszerhéj műveletek engedélyezése. Rendszerhéj-műveletek az operációs rendszer alapértelmezett rendszerhéját használja a parancssori parancsok futtatásához. Ha a Windows felület támaszkodó Oozie-munkafolyamatok, meg kell felülírnia, munkafolyamatot, amelyet a Linux-rendszerhéj-környezetet (Bash) támaszkodik. Az Oozie használata a rendszerhéj műveletek további információkért lásd: [Oozie rendszerhéj műveleti bővítmény](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
+Az Oozie-munkafolyamatok rendszerhéj műveletek engedélyezése. Rendszerhéj-műveletek az operációs rendszer alapértelmezett rendszerhéját használja a parancssori parancsok futtatásához. Ha a Windows felület támaszkodó Oozie-munkafolyamatok, meg kell felülírnia, munkafolyamatot, amelyet a Linux-rendszerhéj-környezetet (Bash) támaszkodik. Az Oozie használata a rendszerhéj műveletek további információkért lásd: [Oozie rendszerhéj műveleti bővítmény](https://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
 
 Ha egy munkafolyamatot, amely a C#-alkalmazás használ, ellenőrizze ezeket az alkalmazásokat a Linux-környezet. További információkért lásd: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 

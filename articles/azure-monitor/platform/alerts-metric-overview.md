@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342221"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580042"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
@@ -93,7 +93,7 @@ A metrikákhoz kapcsolódó riasztások általában értesítést kap 5 perc ala
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások a támogatott erőforrástípusok
 
-Annak a támogatott típusok teljes listáját a jelen [cikk](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+Annak a támogatott típusok teljes listáját a jelen [cikk](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metrikákhoz kapcsolódó riasztások támogatásához az összes erőforrás megtekintéséhez használja, az alábbi táblázat az erőforrás típusok klasszikus metrikariasztásokat támogatja, és ha támogatja őket metrikákhoz kapcsolódó riasztások még ma, vagy sem.
 

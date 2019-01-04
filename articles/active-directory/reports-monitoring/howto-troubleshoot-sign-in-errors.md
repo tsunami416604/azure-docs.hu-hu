@@ -13,14 +13,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2bba11cd8b0e90f7835872e496c790aa56fcddc8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 47a89da808e2f53cf8dfc901c64eba3d78842d13
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277317"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652030"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Hogyan: bejelentkezési kapcsolatos hibák elhárítása Azure Active Directory-jelentések segítségével
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: Jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-jelentések segítségével
 
 A [bejelentkezésekre](concept-sign-ins.md) az Azure Active Directory (Azure AD) lehetővé teszi a szervezeten belül, az alkalmazásokhoz való hozzáférés kezelése körül kérdésekre adott válaszok többek között:
 
@@ -35,7 +35,7 @@ Emellett a bejelentkezési jelentések is segíthet a szervezet felhasználói b
 
 A következők szükségesek:
 
-* Prémium verzió (P1 vagy P2) licenccel rendelkező Azure AD-bérlővel. 
+* Prémium verzió (P1 vagy P2) licenccel rendelkező Azure AD-bérlővel. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
 * A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó** vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>A bejelentkezések jelentés használatával bejelentkezési hibák elhárítása

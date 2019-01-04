@@ -2,25 +2,18 @@
 title: Az Azure SQL Server-adatbázisok biztonsági mentése |} A Microsoft Docs
 description: Ez az oktatóanyag azt ismerteti, hogyan SQL Server biztonsági mentése az Azure-bA. A cikk azt is bemutatja, az SQL Server helyreállítása.
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/02/2018
-ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.topic: tutorial
+ms.date: 12/21/2018
+ms.author: raynew
+ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410363"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790174"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -44,9 +37,9 @@ A következő elemek ismert korlátozások a nyilvános előzetes verzió:
 - Az SQL virtuális gép (VM) az Azure nyilvános IP-címek eléréséhez internetkapcsolatra van szükség. További információkért lásd: [hálózati kapcsolatot](backup-azure-sql-database.md#establish-network-connectivity).
 - Egy Recovery Services-tároló legfeljebb 2000 SQL-adatbázisok védelmét. További SQL-adatbázisok külön Recovery Services-tárolóban kell tárolni.
 - [Elosztott rendelkezésre állási csoportok biztonsági mentései](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) korlátozások is érvényesek.
-- Az SQL Server mindig a Feladatátvevőfürt-példányokat (példányoktól) nem támogatottak.
+- SQL Server mindig a Feladatátvevőfürt-példányokat (példányoktól) biztonsági mentés esetén nem támogatott.
 - Az Azure portal segítségével konfigurálhatja az Azure Backup az SQL Server-adatbázisok védelmét. Az Azure PowerShell, az Azure CLI és a REST API-k jelenleg nem támogatottak.
-- Tükrözött adatbázisokat, adatbázis-pillanatképeket és FCI tartozó adatbázisok biztonsági mentési és visszaállítási műveletek nem támogatottak.
+- Az FCI tükrözött adatbázisokat, adatbázis-pillanatképeket és adatbázisok biztonsági mentési és visszaállítási műveletek nem támogatottak.
 - Nagy mennyiségű fájlt az adatbázist nem lehet bekapcsolni. Támogatott fájlok maximális száma nem nagyon determinisztikus szám, mert nem csak a fájlok száma attól függ, de a fájlok elérési út hossza attól is függ. Ezekben az esetekben azonban kevésbé gyakran előforduló. Ennek kezelése megoldás készítünk.
 
 Tekintse meg [gyakori kérdésekkel foglalkozó szakaszban](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) további részleteket a támogatás/nem támogatott forgatókönyvek.
@@ -136,7 +129,7 @@ A kompromisszumot kínál a beállítások között a következők: kezelhetős�
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>A nem Marketplace-en az SQL virtuális gépek engedélyeinek beállítása
 
-A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. Csak a virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT Service\AzureWLBackupPluginSvc**. Ez a fiók használatos biztonsági mentési és visszaállítási, és SQL-rendszergazdai jogosultsággal kell rendelkeznie kell. Ezen túlmenően az Azure Backup használja **NT AUTHORITY\SYSTEM** DB felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
+A biztonsági mentéshez egy virtuális gép Azure Backup igényel a **AzureBackupWindowsWorkload** kiterjesztéssel kell telepíteni. Ha Azure Marketplace virtuális gépekhez használja, továbbra is [Fedezze fel az SQL Server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases). Ha a virtuális gép, amelyen az SQL-adatbázisok nem hozott létre az Azure Marketplace-ről, a következő eljárással telepítse a bővítményt, és a megfelelő engedélyek beállítása. Mellett a **AzureBackupWindowsWorkload** bővítmény, az Azure Backup SQL-rendszergazdai jogosultságokkal az SQL-adatbázisok védelméhez szükséges. Csak a virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT SERVICE\AzureWLBackupPluginSvc**. Ez a fiók használatos biztonsági mentési és visszaállítási, és SQL-rendszergazdai jogosultsággal kell rendelkeznie kell. Ezen túlmenően az Azure Backup használja **NT AUTHORITY\SYSTEM** DB felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
 
 Engedélyek beállítása:
 
@@ -182,7 +175,7 @@ A telepítés során, ha a hibaüzenet `UserErrorSQLNoSysadminMembership`, SQL S
 
     ![A bejelentkezés – új párbeszédpanel, válassza ki a keresés](./media/backup-azure-sql-database/new-login-search.png)
 
-3. A virtuális Windows-szolgáltatásfiók **NT Service\AzureWLBackupPluginSvc** a virtuális gép regisztrációja és SQL felderítési fázis során jött létre. Adja meg a fiók nevét, ahogyan az a **írja be a kijelölendő objektum nevét** mezőbe. Válassza ki **Névellenőrzés** oldani a nevet.
+3. A virtuális Windows-szolgáltatásfiók **NT SERVICE\AzureWLBackupPluginSvc** a virtuális gép regisztrációja és SQL felderítési fázis során jött létre. Adja meg a fiók nevét, ahogyan az a **írja be a kijelölendő objektum nevét** mezőbe. Válassza ki **Névellenőrzés** oldani a nevet.
 
     ![Válassza ki a szolgáltatás ismeretlen név Névellenőrzés](./media/backup-azure-sql-database/check-name.png)
 

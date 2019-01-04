@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: ea7b4def23f766e6cda1e1e8e1d4e8dc7be302fe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/16/2018
+ms.openlocfilehash: 40f6b6effa509fd2cfa40ecfc758ac37e0a66778
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997590"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538616"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Az Azure SQL Database-adatbázis komplex veszélyforrások elleni védelem
 
@@ -30,7 +30,7 @@ SQL a speciális veszélyforrások elleni védelem (ATP) egy speciális SQL bizt
 - A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
 - A [fenyegetésészlelés](sql-database-threat-detection-overview.md) észleli az adatbázisok hozzáférésére és az adatbázisok biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A fenyegetésészlelés által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
 
-SQL ATP engedélyezése, ha ahhoz, hogy ezek mindegyikét tartalmazza a funkciók. A Komplex veszélyforrások elleni védelem egyetlen kattintással engedélyezhető az egész adatbázis-kiszolgálón, ezáltal a kiszolgáló minden adatbázisa védelemmel látható el. 
+SQL ATP engedélyezése, ha ahhoz, hogy ezek mindegyikét tartalmazza a funkciók. A Komplex veszélyforrások elleni védelem egyetlen kattintással engedélyezhető az egész adatbázis-kiszolgálón, ezáltal a kiszolgáló minden adatbázisa védelemmel látható el. Engedélyezése és kezelése az ATP-beállításokat, tartozó igényel a [SQL biztonságkezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkör, az SQL adatbázis-rendszergazdai szerepkör vagy SQL server rendszergazdai szerepkör. 
 
 ATP díjszabás igazítja az Azure Security Center standard szintű, ahol egyes védelemmel ellátott SQL Database-kiszolgálók egyetlen csomópontnak számítanak. Újonnan védett erőforrások jogosultak a Security Center standard szintű az ingyenes próbaverziójára. További információkért lásd: a [az Azure Security Center díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f286d8b2ba254cfad542db14b8719d6f3f676222
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093743"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635150"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
 
@@ -218,7 +218,7 @@ A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java v
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-- [Az Apache Spark memória – áttekintés](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [Az Apache Spark memória – áttekintés](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 - [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 

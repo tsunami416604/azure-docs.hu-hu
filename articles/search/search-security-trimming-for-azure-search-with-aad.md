@@ -1,5 +1,5 @@
 ---
-title: Biztonsági szűrők szűkítheti az eredményeket az Active Directory identitások – Azure Search
+title: Biztonsági szűrők szűkítheti az eredményeket az Active Directory – Azure Search
 description: Hozzáférés-vezérlést a biztonsági szűrők és identitások Azure Active Directory (AAD) használatával az Azure Search-tartalom.
 author: brjohnstmsft
 manager: jlembicz
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 1cd862c59154f9da766b5df1ab8fb8d61e15d054
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308823"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628289"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory-identitások használatával találatok vágást biztonsági szűrők
 
@@ -78,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>2. lépés: Hozzon létre [AAD-felhasználó](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users) 
+### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>2. lépés: Hozzon létre [AAD-felhasználó](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users) 
 ```csharp
 User user = new User()
 {
@@ -165,7 +165,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>2. lépés: Állítsa össze a keresési kérelem
+### <a name="step-2-compose-the-search-request"></a>2. lépés: Állítsa össze a keresési kérelem
 
 Feltételezve, hogy a felhasználói csoportok tagságát, a megfelelő szűrési értékekkel a keresési kérelem adhat ki.
 

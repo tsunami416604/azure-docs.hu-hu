@@ -1,6 +1,6 @@
 ---
-title: Service Fabric fürt erőforrás-kezelő - affinitás |} Microsoft Docs
-description: A Service Fabric szolgáltatások kapcsolat konfigurálása – áttekintés
+title: Service Fabric fürt Resource Manager - kapcsolat |} A Microsoft Docs
+description: Kapcsolat a Service Fabric-szolgáltatások konfigurálása – áttekintés
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bda70a6854dc6d94d3d4b37e6f587e4dcd045126
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204855"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543839"
 ---
-# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurálásával és a Service Fabric szolgáltatás affinitás használatával
-Kapcsolat az biztosított főként a vezérlőelem megkönnyítik az átmenet nagyobb egységes alkalmazások be a felhő- és mikroszolgáltatások világ segítségével. Azt is szolgál az optimalizálás szolgáltatások teljesítményének növelése, így bár mellékhatásokkal is.
+# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurálása és a szolgáltatási affinitás használata a Service Fabricben
+Kapcsolat az elsősorban biztosított a vezérlőelem megkönnyítése érdekében a Váltás nagyobb monolitikus alkalmazások, a felhő- és mikroszolgáltatás-alapú világ segítségével. Szolgáltatások teljesítményének növelése, bár ezt egy optimalizálási mellékhatása is van, mivel is használható.
 
-Tegyük fel, most gépidőt, egy nagyobb alkalmazást, vagy olyat, amely nem csupán kialakítása során vegye figyelembe, hogy a Service Fabric mikroszolgáltatások (vagy bármely elosztott környezetben). Ez a átviteli típus általános. Indítsa el a teljes alkalmazás feloldása a környezetbe, csomagolás, valamint annak biztosítása, hogy zökkenőmentesen fut. Majd megkezdése ossza fel különböző kisebb szolgáltatásokat, hogy az összes kommunikálni egymással.
+Tegyük fel, hogy egy nagyobb alkalmazás, vagy olyat, amely csak az ne feledje, hogy a Service Fabric mikroszolgáltatásokat (vagy bármely elosztott környezetben) nem tervezett válnak elérhetővé. Ez a Váltás típus közös. Indítsa el a környezetbe, a teljes alkalmazás emelő csomagolás, és így meg arról, hogy már simán fut. Ezután elindíthatja ossza fel, hogy az összes kommunikáljon egymással különböző kisebb szolgáltatásra.
 
-Végül azt tapasztalhatja, hogy az alkalmazás egyes hibákat észlelt. A problémák általában egyikébe ezen kategóriák:
+Végül tapasztalhatja, hogy az alkalmazás néhány problémát tapasztalja. A problémák általában az alábbi kategóriák valamelyikébe tartoznak:
 
-1. Néhány összetevőt X az egységes alkalmazásban volt egy nem dokumentált függőség összetevő Y, és az összetevőket külön szolgáltatás csak kapcsolva. Mivel ezek a szolgáltatások a fürt különböző csomópontokon futnak, fontosságúak megszakadt.
-2. Ezek az összetevők kommunikációra keresztül (nevesített csövek helyi |} megosztott memória |} lemezen tárolt fájlok) és azok valóban képesnek kell lenniük a teljesítményre vonatkozó megfontolásból megosztott helyi erőforrás most írni. Rögzített függőséget is törlődik, talán.
-3. Minden megfelelően működik, de azt elemről kiderül, hogy, hogy a két összetevő-e a ténylegesen chatty/teljesítmény-és nagybetűket. Ha azok áthelyezi őket szolgáltatások külön teljes tanked az alkalmazások teljesítményének és késést növelni. Emiatt az alkalmazás általános nem teljesíti elvárásainak.
+1. A monolitikus alkalmazások néhány összetevőt X volt egy nem dokumentált függőségi Y összetevő, és csak kapcsolva az összetevőket külön szolgáltatásokra. Ezeket a szolgáltatásokat a fürt másik csomópontjain a most futtatja, mivel azok már megszakadt.
+2. Ezek az összetevők közötti keresztüli kommunikációt (helyi nevesített csövek |} megosztott memória |} lemezen tárolt fájlok) és azok valóban szükséges fognak tudni írni a teljesítmény javítása érdekében a helyi megosztott erőforrás most. Rögzített függőséget is törlődik később, esetleg.
+3. Minden rendben, de azt tapasztaltuk, hogy ez a két összetevő-e a ténylegesen forgalmas/teljesítmény-és nagybetűket. Amikor azokat áthelyezni őket külön szolgáltatásokra teljes tanked alkalmazásteljesítmény vagy késés nagyobb. Ennek eredményeképpen a teljes alkalmazás nem teljesíti a elvárásainak.
 
-Ebben az esetben azt szeretne tartani az újrabontási munka, és nem szeretné, ha vissza kíván térni a monolit. Az utolsó feltétel lehet egy egyszerű optimalizálás kívánatos. Azonban amíg azt lehet átalakítani az összetevők működéséhez természetes szolgáltatásként (vagy igazolnia megoldható a teljesítményre vonatkozó elvárásokat bármilyen más módon) lesz, bizonyos értelemben helység kell.
+Ezekben az esetekben hogy nem szeretné elveszteni a újrabontási munka, és nem szeretné, lépjen vissza a monolit. A legutóbbi feltételt még akkor is, egy egyszerű optimalizálási kívánatosak lehetnek. Azonban amíg azt átalakíthatók az összetevők működik természetesen szolgáltatásként (vagy azt tudja oldani a teljesítmény elvárások más módon) fogunk kell néhány megismerje a helye.
 
-Mi a teendő ilyenkor? Jól próbálkozzon affinitás bekapcsolásával.
+Mi a teendő ilyenkor? Nos próbálkozzon ne tudják bekapcsolni a kapcsolat.
 
 ## <a name="how-to-configure-affinity"></a>Kapcsolat konfigurálása
-Kapcsolat beállításához adja meg egy két különböző szolgáltatások közötti kapcsolat. Az eltolásokat tekintheti affinitás "mutató" egy szolgáltatás más, valamint arról, hogy "csak fut, ahol, hogy fut-e a szolgáltatás." Egyes esetekben affinitás lesz az (ahol, mutasson a gyermek a szülő) szülő-gyermek kapcsolat. Affinitás biztosítja, hogy a replikák és a szolgáltatás egy példánya kerülnek, mint egy másik szolgáltatás ugyanazon csomópontok.
+Kapcsolat beállításához, megadhat egy kapcsolat két különböző szolgáltatások között. Is felfoghatók affinitás "mutat" egy szolgáltatást egy másik, valamint közli, hogy a "csak fut, ahol, hogy fut-e szolgáltatás." Néha nevezzük affinitás, egy szülő-gyermek kapcsolatot (Ha Ön mutassanak a gyermek a szülő). Affinitás biztosítja, hogy egy másik szolgáltatás, mint a azonos csomópontokon a replikák és a egy szolgáltatás példányai vannak elhelyezve.
 
 ```csharp
 ServiceCorrelationDescription affinityDescription = new ServiceCorrelationDescription();
@@ -48,39 +48,39 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
 > [!NOTE]
-> Egy alárendelt szolgáltatás csak egyetlen kapcsolat vehet részt. Ha a gyermek rendelhetők affinitás alapján két szülő szolgáltatások egyszerre néhány lehetőség közül választhat:
-> - A kapcsolatok fordított (parentService1 és az aktuális gyermek szolgáltatási pont parentService2 rendelkeznek), vagy
-> - Konvenció hubot kijelölni a szülő egyikét, és mutasson, hogy a szolgáltatás minden szolgáltatás van. 
+> Egy alárendelt szolgáltatás csak egyetlen kapcsolat vehet részt. Ha a gyermeke lehet hozzárendelt két szülő szolgáltatások egyszerre néhány lehetőségek állnak rendelkezésére:
+> - A kapcsolatok fordított (kell parentService1 és az aktuális gyermek szolgáltatás mutassanak parentService2), vagy
+> - Megjelölni a szülők egyik hub konvenció szerint, és mutasson, hogy a szolgáltatás minden szolgáltatás van. 
 >
 > A fürt elhelyezési viselkedésről azonosnak kell lennie.
 >
 
 ## <a name="different-affinity-options"></a>Másik kapcsolat beállításai
-Kapcsolat több korrelációs rendszer keresztül képviseli, és két különböző módja van. A kapcsolat a leggyakoribb módja a úgynevezett NonAlignedAffinity. NonAlignedAffinity a replikák és a különböző szolgáltatáspéldánynak ugyanazon a csomóponton elhelyezni. A más módja AlignedAffinity. Igazított affinitás akkor hasznos, csak a állapotalapú szolgáltatás. Van igazítva a kapcsolat a két állapotalapú szolgáltatások konfigurálása biztosítja, hogy a szolgáltatások eredményezi kerülnek-e egymással a azonos csomópontokon. Több másodlagos adatbázist, az ezekbe a szolgáltatásokba, az ugyanazon a csomóponton kell elhelyezni minden párt is okoz. Lehetőség arra is (bár a kevésbé közös) NonAlignedAffinity állapotalapú szolgáltatások konfigurálásához. NonAlignedAffinity a két állapotalapú szolgáltatások különböző replikáinak futna ugyanazon a csomóponton, de az elsődleges különböző csomópontokon sikerült befejezéséhez.
+Affinitás jelölt keresztül több korrelációs rendszerek egyikét, és két különböző módot támogat. A leggyakoribb affinitási módja úgynevezett NonAlignedAffinity. NonAlignedAffinity a replikákat vagy a példányok a különböző szolgáltatások ugyanazon a csomóponton elhelyezett. A másik módra AlignedAffinity. Igazított kapcsolat akkor hasznos, csak az állapotalapú szolgáltatásokkal. A kapcsolat van igazítva két állapotalapú szolgáltatások konfigurálása biztosítja, hogy ezeket a szolgáltatásokat eredményezi, egymással azonos csomópontokon vannak elhelyezve. Ezeket a szolgáltatásokat a azonos csomópontokon elhelyezni kívánt másodlagos párjaihoz is okoz. Lehetőség arra is (bár kevésbé gyakori) NonAlignedAffinity konfigurálása az állapotalapú szolgáltatások esetében. A NonAlignedAffinity a két állapotalapú szolgáltatások különböző replikába futtatná a ugyanazon a csomóponton, de az elsődleges sikerült végül a különböző csomópontokon.
 
 <center>
-![Kapcsolat módok és azok által okozott hatások][Image1]
+![Affinitás módok és hatásuk][Image1]
 </center>
 
-### <a name="best-effort-desired-state"></a>Szükséges elérhető legjobb állapota
-Egy kapcsolat a lehető legkedvezőbb módon. Nem biztosít közös elhelyezés vagy megbízhatóságát, hogy a futó megegyezik a folyamat végrehajtható nem azonos garanciát. Egy kapcsolat a szolgáltatások sikertelen lehet, és egymástól függetlenül helyezhető alapvetően különböző entitások. Egy kapcsolat is érvénytelenítheti, bár ezeket ideiglenes. Például kapacitás korlátozások jelentheti, hogy a szolgáltatás objektumokat a kapcsolat némelyike csak egy adott csomópont kiférjen. Ezekben az esetekben annak ellenére, hogy egy kapcsolat van érvényben, akkor nem kényszeríthető a más korlátok miatt. Ha lehetséges, a megsértése automatikusan kijavításáig később.
+### <a name="best-effort-desired-state"></a>A legjobb kívánt tevékenységi állapot
+Egy kapcsolat a lehető legjobb. Elhelyezés és megbízhatóságáról, amelyekre azonos futó végrehajtható a folyamat nem ugyanazon garanciákat nem biztosítják. Egy kapcsolat funkciók alapvetően különböző entitások, visszaadhatja a feladatokat, és egymástól függetlenül helyezhetők. Egy kapcsolat is érvénytelenítheti, bár ezek a sortörések ideiglenes. Például kapacitás korlátozások azt jelenti, hogy csak néhányat a kapcsolat a szolgáltatásobjektumokat kiférjen egy adott csomópont. Ezekben az esetekben annak ellenére, hogy egy kapcsolat van érvényben, akkor nem kényszeríti ki az egyéb megszorítások miatt. Ha lehetséges, akkor a megsértése automatikusan kijavítja később.
 
-### <a name="chains-vs-stars"></a>Csillag és láncok
-Ma a fürt erőforrás-kezelő nem tudta modell láncok affinitás kapcsolatok. Ez azt jelenti, hogy egy szolgáltatás, amely egy kapcsolat a gyermek nem lehet szülője egy másik kapcsolat. Ha azt szeretné, a következő modellre: a kapcsolat típusát, hatékonyan csillag, nem pedig a lánc a modell rendelkezik. Áthelyezése egy csillag, a legalsó gyermek volna szülőjének megadni az első gyermek szülő helyette. Attól függően, hogy a szolgáltatások elrendezésének előfordulhat, hogy ezt többször elvégzéséhez. Ha nincs természetes szülő szolgáltatás, előfordulhat, szeretne létrehozni egyet, amely helyőrzőként szolgál. A követelményeitől függően előfordulhat, hogy szeretné megismerhetők [alkalmazáscsoportok](service-fabric-cluster-resource-manager-application-groups.md).
+### <a name="chains-vs-stars"></a>Láncok és csillagok
+Ma a fürterőforrás-kezelő nem tud modell láncok affinitás kapcsolatok. Ez azt jelenti, hogy egy szolgáltatás, amely egy kapcsolat a gyermek nem lehet szülője egy másik kapcsolat. Ha kíván ilyen kapcsolatban modellezheti, hatékonyan modell, a lánc helyett egy csillag rendelkezik. Szeretne áthelyezni egy láncból egy csillag, a legalsó gyermek lenne kell szülőjének első gyermek-szülő helyette. A szolgáltatások elhelyezkedését, attól függően előfordulhat, ezt többször tennie. Ha természetes szülő szolgáltatás nincs, akkor előfordulhat, hogy hozzon létre egyet, amely egy helyőrző. A követelményeitől függően akkor is érdemes megvizsgáljuk [alkalmazáscsoportok](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
-![Láncok vs. A környezeti kapcsolat kapcsolatok csillagokra][Image2]
+![Láncok vs. Kapcsolat kapcsolatok kontextusában csillagok][Image2]
 </center>
 
-Ma megjegyezni affinitás kapcsolatok egy másik művelet, hogy azok irányt. Ez azt jelenti, hogy a kapcsolatot a szabály csak kényszeríti, hogy a gyermek elhelyezni, hogy a szülő. Ezért nem biztosítja, hogy a szülő elhelyezve a gyermek. Is fontos megjegyezni, hogy a kapcsolat nem perfect vagy azonnal kényszeríthető óta különböző szolgáltatásokhoz különböző életciklusának rendelkező és is sikertelen mozognak. Például tegyük fel, a szülő hirtelen átadja a feladatokat egy másik csomópontra, mert lefagyott. A fürt erőforrás-kezelő és a Feladatátvevőfürt-kezelő a feladatátvétel először óta, a szolgáltatások konzisztens, tartása és kezelésére használható a prioritás van. Miután befejeződött a feladatátvétel, a kapcsolat megszakad, de a erőforrás-kezelőt úgy értelmezi, minden rendben mindaddig, amíg azt észleli, hogy az alárendelt helye nem a szülő. Ezek rendezi az ellenőrzések rendszeres időközönként kerül sor. További információkat a hogyan értékeli ki a fürt erőforrás-kezelő a megkötések [Ez a cikk](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), és [a](service-fabric-cluster-resource-manager-balancing.md) -kiszolgálóhoz a ütemben történik, amelyen ezek a megkötések teljesíthetők a konfigurálásával kapcsolatos további értékeli ki.   
+Egy másik kapcsolat kapcsolatok ma ne előnye, hogy azok alapértelmezés szerint irányt. Ez azt jelenti, hogy a kapcsolat a szabály csak kikényszeríti, hogy a gyermek elhelyezni, hogy a szülő. Ezért nem biztosítja, hogy a gyermek együtt-e a szülő. Ezért ha affinitás megsértést, és a megsértése kijavításához valamilyen okból nem található áthelyezése a gyermek a szülő csomópontra, majd – akkor is, ha a szülő áthelyezése a gyermek csomópont lenne javítása a megsértése – a szülő nem kerül át th e gyermek csomópont. A konfigurációs beállítás [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) , igaz el kell távolítani a írásmód. Is fontos megjegyezni, hogy a kapcsolat nem perfect vagy azonnal kényszeríthető, mivel a különböző szolgáltatásokhoz különböző életciklusának rendelkező és is sikertelen, és egymástól függetlenül át. Például tegyük fel, a szülő hirtelen átadja a feladatokat egy másik csomópontra, mert a lefagyott. A fürterőforrás-kezelő és a Feladatátvevőfürt-kezelő a feladatátvételi funkciót először óta, a szolgáltatások egységes, gondoskodik, és elérhető a prioritás. A feladatátvétel befejezése után a kapcsolat megszakad, de a fürterőforrás-kezelő fenyegetésként észlel, minden rendben mindaddig, amíg azt észleli, hogy az alárendelt helye nem a szülő. Ezek rendezi az ellenőrzések rendszeres időközönként történik. További információkat a hogyan értékeli ki a fürterőforrás-kezelő a megkötések [Ez a cikk](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), és [ehhez](service-fabric-cluster-resource-manager-balancing.md) ismerteti a kiadása, amelyre ezek a korlátozások vannak ütemben történik konfigurálásával kapcsolatos további értékeli ki.   
 
 
-### <a name="partitioning-support"></a>Particionálás támogatása
-A végső lépés kapcsolatra vonatkozó figyelje meg, hogy kapcsolatok nem támogatottak, ha a szülő particionálva van kapcsolat. Lehet, hogy végül támogatja a particionált szülő szolgáltatások, de jelenleg nem engedélyezett.
+### <a name="partitioning-support"></a>Particionálási támogatása
+A végső szembetűnő kapcsolatra vonatkozó dolog, hogy a kapcsolatok nem támogatottak, ahol a szülő particionálva van kapcsolat. Lehet, hogy végül támogatja a particionált szülő szolgáltatások, de jelenleg nem engedélyezett.
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatások konfigurálásáról [további információ a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
-- Korlátozza a gépek egy kis készletét a szolgáltatások vagy szolgáltatások, a terhelés összesítése [alkalmazáscsoportok](service-fabric-cluster-resource-manager-application-groups.md)
+- További információt a szolgáltatások konfigurálása [megismerheti a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
+- Gépek egy kis készletét a szolgáltatásokat, vagy használjon összesíti a szolgáltatások terhelését [alkalmazáscsoport](service-fabric-cluster-resource-manager-application-groups.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png

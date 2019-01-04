@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270110"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599808"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Az Azure Traffic Manager az Azure App Service-forgalom szabályozása
 > [!NOTE]
@@ -52,7 +52,7 @@ Ha az Azure Traffic Managerrel, az Azure-ral, vegye figyelembe a következőket:
 * Csak egy App Service-végpont régiónként adhat egy profilt. Amikor kiválaszt egy alkalmazást egy adott régióban-végpontként, a fennmaradó alkalmazásokat az adott régióban elérhetetlenné válik, hogy a profil kiválasztásához.
 * Az App Service-ben végpontokat, amelyeket egy Azure Traffic Manager-profil megjelenik a **tartománynevek** szakaszban az alkalmazás a profil, de ez nem konfigurálható van a konfigurálás oldalon látható.
 * Miután hozzáadta az alkalmazást a profilhoz a **webhely URL-címe** az irányítópulton, az alkalmazás portáloldalán jelenít meg az az egyéni tartomány URL-címét, ha az egyik beállítását. Ellenkező esetben a Traffic Manager-profil URL-CÍMÉT jeleníti meg (például `contoso.trafficmanager.net`). Mindkét közvetlen tartomány nevét az alkalmazás és a Traffic Manager URL-cím alatt az alkalmazás konfigurálása lapon láthatók a **tartománynevek** szakaszban.
-* Az egyéni tartománynevek működik az elvárásoknak megfelelően, de az alkalmazásokhoz hozzáadásán, is konfigurálnia kell a DNS-térkép átirányítása a Traffic Manager URL-címe. App Service-alkalmazások egyéni tartomány beállítása a további információkért lásd: [meglévő egyéni DNS-név leképezése az Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+* Az egyéni tartománynevek működik az elvárásoknak megfelelően, de az alkalmazásokhoz hozzáadásán, is konfigurálnia kell a DNS-térkép átirányítása a Traffic Manager URL-címe. App Service-alkalmazások egyéni tartomány beállítása a további információkért lásd: [meglévő egyéni DNS-név leképezése az Azure App Service](app-service-web-tutorial-custom-domain.md).
 * Csak vehet fel alkalmazásokat, amelyeket a standard vagy prémium szintű mód használata egy Azure Traffic Manager-profilt.
 
 ## <a name="next-steps"></a>További lépések

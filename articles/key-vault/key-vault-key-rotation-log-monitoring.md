@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: barclayn
-ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 39ae2108c327f38dbf41981ec6aabe7722b77685
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302017"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717381"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Állítsa be az Azure Key Vault kulcsforgatással és vizsgálattal
 
@@ -414,7 +414,7 @@ Ennél a függvénynél további kódtárak pedig, amelyek nem érhetők el az A
 
 Követően **mentése**, az Azure Functions a szükséges bináris fájlokat tölti le.
 
-Váltson a **integráció** lapra, és nevezze el az időzítő paraméter jelentéssel bíró belül a funkció használatához. Az a fenti kóddal, která bude volána az időzítő vár *myTimer*. Adjon meg egy [CRON-kifejezés](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) a következő: 0 \* \* \* \* \* az időzítő, amely újraindítja a függvényt, hogy percenként egyszer futtatni.
+Váltson a **integráció** lapra, és nevezze el az időzítő paraméter jelentéssel bíró belül a funkció használatához. Az a fenti kóddal, která bude volána az időzítő vár *myTimer*. Adjon meg egy [CRON-kifejezés](../app-service/webjobs-create.md#CreateScheduledCRON) módon: 0 \* \* \* \* \* az időzítő, amely újraindítja a függvényt, hogy percenként egyszer futtatni.
 
 Az azonos **integráció** lapon maradva adja hozzá a típusú bemenetet **Azure Blob Storage**. Ez a sync.txt fájlt, amely tartalmazza a tekintett meg, a függvény által az utolsó esemény időbélyegzője fog mutatni. Ez a paraméter nevét a függvényen belül elérhető lesz. A fenti kóddal, az az Azure Blob Storage-bemenetet vár a paraméternév megadásához, hogy *inputBlob*. Válassza ki a tárfiókot, ahol fogja befolyásolni a sync.txt fájlt (Ez lehet ugyanaz vagy egy másik tárfiók). Az elérési út mezőben adja meg az elérési utat, ahol a fájl él-e a következő formátumban: {container-name}/path/to/sync.txt.
 

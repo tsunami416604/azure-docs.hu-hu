@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51252006"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-hitelesítés
@@ -62,8 +62,8 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
  
 A következő parancs futtatásával adja vissza egy hivatkozást. Másolja és illessze be a hivatkozásra kattintva töltheti le egy webes böngésző **VpnClientConfiguration.zip**. Bontsa ki a fájlt, a következő mappák megtekintése: 
  
-* **WindowsAmd64** és **WindowsX86**: ezeket a mappákat tartalmazza a Windows 64 bites és 32 bites telepítőt csomagok jelölik. 
-* **Általános**: Ez a mappa hozhat létre a saját VPN-ügyfél konfigurációja általános információkat tartalmaz. Ez a mappa felhasználóneves és jelszavas hitelesítési konfigurációk esetén nem szükséges.
+* **WindowsAmd64** és **WindowsX86**: Ezeket a mappákat a Windows 64 bites és 32 bites installer csomagokat, illetve tartalmaznak. 
+* **Általános**: Ez a mappa hozhat létre a saját VPN-ügyfél konfigurációja általános adatokat tartalmaz. Ez a mappa felhasználóneves és jelszavas hitelesítési konfigurációk esetén nem szükséges.
 * **Mac**: Ha úgy állította be az IKEv2, a virtuális hálózati átjáró létrehozásakor, akkor egy nevű mappát láthatnak **Mac** , amely tartalmaz egy **mobileconfig** fájlt. Ez a fájl segítségével konfigurálhatja a Mac-ügyfél.
 
 Ha már létrehozott ügyfél konfigurációs fájljainak, kérheti le azokat használatával a `Get-AzureRmVpnClientConfiguration` parancsmagot. Azonban ha módosításokat hajt végre a P2S VPN konfigurációját, például a VPN-protokoll típusa vagy a hitelesítési típus, a konfiguráció nem frissül automatikusan. Futtatnia kell a `New-AzureRmVpnClientConfiguration` parancsmaggal hozzon létre egy új konfigurációjának letöltéséhez.
@@ -193,7 +193,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 
 A következő parancs futtatásával adja vissza egy hivatkozást. Másolja és illessze be a hivatkozást egy webes böngésző VpnClientConfiguration.zip letöltéséhez. Bontsa ki a fájlt, a következő mappák megtekintése:
 
-* **WindowsAmd64** és **WindowsX86**: ezeket a mappákat tartalmazza a Windows 64 bites és 32 bites telepítőt csomagok jelölik. 
+* **WindowsAmd64** és **WindowsX86**: Ezeket a mappákat a Windows 64 bites és 32 bites installer csomagokat, illetve tartalmaznak. 
 * **GenericDevice**: Ez a mappa létrehozása a saját VPN-ügyfél konfigurációja használható általános információkat tartalmaz.
 
 Ha már létrehozott ügyfél konfigurációs fájljainak, kérheti le azokat használatával a `Get-AzureRmVpnClientConfiguration` parancsmagot. Azonban ha módosításokat hajt végre a P2S VPN konfigurációját, például a VPN-protokoll típusa vagy a hitelesítési típus, a konfiguráció nem frissül automatikusan. Futtatnia kell a `New-AzureRmVpnClientConfiguration` parancsmaggal hozzon létre egy új konfigurációjának letöltéséhez.
@@ -266,9 +266,9 @@ Egy másik hitelesítési típus (például OTP) használatára, vagy egy másik
  
 3. A **GenenericDevice** mappa tartalmaz egy XML-fájl nevű **VpnSettings**. Ez a fájl tartalmazza a szükséges adatokat:
 
-   * **VpnServer**: az Azure VPN gateway teljes Tartománynevét. Ez az a cím, amely az ügyfél csatlakozik.
-   * **VpnType**: alagút típus, amely kapcsolódik.
-   * **Útvonalak**: útvonalak, akkor a profilban adja meg, hogy csak az Azure virtuális hálózat kötött adatforgalom a P2S-alagúton keresztül.
+   * **VpnServer**: Az Azure VPN gateway teljes Tartományneve. Ez az a cím, amely az ügyfél csatlakozik.
+   * **VpnType**: Alagút típusa, amely kapcsolódik.
+   * **Útvonalak**: A profilban adja meg, hogy csak az Azure virtuális hálózat kötött adatforgalom a P2S-alagúton keresztül rendelkező útvonalak.
    
    A **GenenericDevice** mappa is tartalmaz egy .cer fájlba nevű **VpnServerRoot**. Ez a fájl tartalmazza a legfelső szintű tanúsítvány P2S-kapcsolat beállítása során az Azure VPN gateway érvényesítéséhez szükséges. Telepítse a tanúsítványt minden olyan eszköz, amely az Azure virtuális hálózat csatlakozni fog.
 

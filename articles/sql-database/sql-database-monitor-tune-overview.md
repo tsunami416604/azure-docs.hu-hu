@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3c809638cef89d111a032e5876b1f2f1b2c1eb7b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272864"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602346"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -91,7 +91,7 @@ A paraméter kényes terv (PSP) probléma hivatkozik egy forgatókönyvet, ahol 
 
 Nincsenek problémák, egyes társított kompromisszumot kínál a és a hátrányai segítségével több megkerülő megoldások:
 
-- Használja a [ÚJRAFORDÍTOTTUK](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezésmutató, minden egyes lekérdezés végrehajtása. Ez a megoldás rendeltetésű ügyletek fordítási idő és nagyobb CPU jobb terv a minőségi. Használatával a `RECOMPILE` beállítás pedig nem lehetséges a nagy átviteli sebességet megkövetelő számítási feladatokhoz.
+- Használja a [ÚJRAFORDÍTOTTUK](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezésmutató, minden egyes lekérdezés végrehajtása. Ez a megoldás a fordítási idő és nagyobb CPU jobb terv a minőségi rendeltetésű. Használatával a `RECOMPILE` beállítás pedig nem lehetséges a nagy átviteli sebességet megkövetelő számítási feladatokhoz.
 - Használja a [lehetőséget (OPTIMALIZÁLÁS a...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezésmutató felülbírálhatja a tényleges paraméter értékét egy jellemző paraméter értéke, amely a legtöbb paraméter értéke lehetőségek elég jó terv.   Ez a beállítás optimális paraméterértékek és a társított terv jellemzők beható ismerete szükséges.
 - Használat [(OPTIMALIZÁLÁSA az ismeretlen BEÁLLÍTÁST)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezésmutató felülbírálása engedélyezések sűrűségű vektor átlagos használata a tényleges paraméter értéke. Ehhez egy másik úgy, hogy a bejövő paraméterértékek rögzítése a helyi változókba, majd a helyi változókat a predikátumok belül magukat a paraméterek használata helyett. Az átlagos sűrűségű kell *elég jó* az adott javítás.
 - Tiltsa le a paraméter elemző használatával a [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezés-végrehajtási.
@@ -104,7 +104,7 @@ Az ilyen típusú problémák megoldása kapcsolatos további információkért 
 
 - Ez [paraméter szag](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogbejegyzés
 - Ez [elemző a problémáról és megkerülő megoldások paraméter](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/) blogbejegyzés
-- Ez [elefántviselkedési és egeret paraméter elemző](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogbejegyzés
+- Ez [elefántviselkedési és egeret paraméter elemző](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogbejegyzés
 - Ez [paraméterezett lekérdezéseknél terv minőségi és dinamikus sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogbejegyzés
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Fordítási tevékenység miatt nem megfelelő paraméterezés hibaelhárítása

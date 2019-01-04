@@ -15,17 +15,17 @@ ms.date: 07/07/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2d035883534430e76d251b22dfc95d34e4eb03cd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8b0277d1e82e655edd9308f8b8afa7d6dcec434e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723567"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754832"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Az alkalmazások az Azure Application Insights a Visual Studióban
 A Visual Studio 2015-ös és újabb verzióiban elemezheti az ASP.NET-webalkalmazások teljesítményét és diagnosztizálhatja a problémákat hibakeresés közben és éles környezetben is az [Azure Application Insights](app-insights-overview.md) telemetriájával.
 
-Ha az ASP.NET-webalkalmazást a Visual Studio 2017-es vagy újabb verziójával hozta létre, már a részét képezi az Application Insights SDK. Korábbi verziók esetén, ha még nem tette meg, [adja hozzá az alkalmazáshoz az Application Insights-t](app-insights-asp-net.md).
+Ha az ASP.NET-webalkalmazást a Visual Studio 2017-es vagy újabb verziójával hozta létre, már a részét képezi az Application Insights SDK. Korábbi verziók esetén, ha még nem tette meg, [adja hozzá az alkalmazáshoz az Application Insights-t](../azure-monitor/app/asp-net.md).
 
 Az alkalmazás éles környezetben végzett megfigyeléséhez általában az [Azure Portalon](https://portal.azure.com) tekintheti meg az Application Insights Telemetriát, ahol riasztásokat állíthat be és hatékony megfigyelő eszközöket alkalmazhat. Hibakereséshez azonban a Visual Studióban is megkeresheti és elemezheti a telemetriát. A Visual Studio segítségével a webhelyet működtetheti élesben pedig a hibakeresés, a fejlesztői gépen fut, a telemetria elemzését. Az utóbbi esetben akkor is elemezhet hibakeresési futtatásokat, ha még nem konfigurálta az SDK-t, hogy a telemetriát az Azure Portalra továbbítsa. 
 
@@ -60,7 +60,7 @@ A kapcsolódó elemeket is megnyithatja a sikertelen kérések vagy a kivételek
 ![A Request Details (Adatok kérése) alatt görgessen le a vonatkozó elemekhez](./media/app-insights-visual-studio/41.png)
 
 ## <a name="view-exceptions-and-failed-requests"></a>Nézet kivételek és sikertelen kérelmek
-A keresési ablakban megjelennek a kivételekről szóló jelentések. (Az ASP.NET alkalmazás néhány régebbi típusában [be kell állítania a kivételfigyelést](app-insights-asp-net-exceptions.md) a keretrendszer által kezelt kivételek megtekintéséhez.)
+A keresési ablakban megjelennek a kivételekről szóló jelentések. (Az ASP.NET alkalmazás néhány régebbi típusában [be kell állítania a kivételfigyelést](../azure-monitor/app/asp-net-exceptions.md) a keretrendszer által kezelt kivételek megtekintéséhez.)
 
 Híváslánc lekéréséhez kattintson egy kivételre. Ha az alkalmazás kódja meg van nyitva a Visual Studióban, a hívásláncból végigkattinthat a kód megfelelő soráig.
 
@@ -72,7 +72,7 @@ Az egyes fölötti Code Lens sorban, a kérések és Application Insights által
 ![Kivétel híváslánca](./media/app-insights-visual-studio/21.png)
 
 > [!NOTE] 
-> A Code Lens csak akkor jeleníti meg az Application Insights adatait, ha [úgy konfigurálta az alkalmazást, hogy telemetriát küldjön az Application Insights portálra](app-insights-asp-net.md).
+> A Code Lens csak akkor jeleníti meg az Application Insights adatait, ha [úgy konfigurálta az alkalmazást, hogy telemetriát küldjön az Application Insights portálra](../azure-monitor/app/asp-net.md).
 >
 
 [További információk az Application Insights-telemetriáról a Code Lensben](app-insights-visual-studio-codelens.md)
@@ -93,7 +93,7 @@ Az adatokban előforduló rendellenességek felderítéséhez válassza valamely
 
 Ez akkor javasolt, ha már közzétette az alkalmazás korábbi verzióit. Az nem lenne szerencsés, ha a hibakeresési munkamenetek telemetriája összekeveredjen a közzétett alkalmazás Application Insights portálján lévő telemetriával.
 
-Az is hasznos, ha van [egyéni telemetriája](app-insights-api-custom-events-metrics.md), amelyen hibakeresést végez, mielőtt elküldené a telemetriát a portálra.
+Az is hasznos, ha van [egyéni telemetriája](../azure-monitor/app/api-custom-events-metrics.md), amelyen hibakeresést végez, mielőtt elküldené a telemetriát a portálra.
 
 * *Először teljes körűen konfiguráltam az Application Insights szolgáltatást, hogy küldjön telemetriát a portálra. Most azonban azt szeretném, hogy a telemetria csak a Visual Studióban jelenjen meg.*
   
@@ -104,6 +104,6 @@ Az is hasznos, ha van [egyéni telemetriája](app-insights-api-custom-events-met
 ## <a name="next-steps"></a>További lépések
 |  |  |
 | --- | --- |
-| **[További adatok hozzáadása](app-insights-asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/app-insights-visual-studio/64.png) |
-| **[Az Application Insights-portál használata](app-insights-dashboards.md)**<br/>Tekintse meg az irányítópultok, hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazáshoz, és az exportált telemetriai adatokat. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
+| **[További adatok hozzáadása](../azure-monitor/app/asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/app-insights-visual-studio/64.png) |
+| **[Az Application Insights-portál használata](../azure-monitor/app/app-insights-dashboards.md)**<br/>Tekintse meg az irányítópultok, hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazáshoz, és az exportált telemetriai adatokat. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
 

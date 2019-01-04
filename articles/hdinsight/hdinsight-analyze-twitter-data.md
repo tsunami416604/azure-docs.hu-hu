@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8782db64a39ab3994c4689e7f809005c20c6dacd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b8ab4acd24a53267711fde4408bb9fa8f52c35f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017457"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635578"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-in-hdinsight"></a>Az Apache Hive a HDInsight használatával Twitter-adatok elemzése
 Közösségi webhelyek egyik fő környezetbarát big-data bevezetésére. Nyilvános API-kat, mint például a Twitter által biztosított okai a hasznos adatok elemzéséhez és megértéséhez népszerű trendeket.
 Ebben az oktatóanyagban fogja beszerezni a Twitter-üzeneteket a streamelési API utalhat egy Twitter, és ezután [Apache Hive](https://hive.apache.org/) az Azure HDInsight Twitter-felhasználók, akik a legtöbb egy bizonyos szót tartalmazó tweeteket küldött listáját.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések egy Windows-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Linux-alapú fürthöz adott lépésekért lásd: [elemzése Twitter-adatok használatával, az Apache Hive a HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -42,7 +42,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnt. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
     > Kérjük, kövesse az alábbi cikkben leírt lépéseket az Azure PowerShell legújabb verziójának telepítéséhez: [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell letöltése és konfigurálása). Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új, az Azure Resource Managerrel működő parancsmagok használatához, tekintse meg az alábbi cikket: [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Az Azure Resource Manager-alapú fejlesztési eszközökre való áttérés HDInsight-fürtök esetén).
@@ -61,12 +61,12 @@ Az alábbi táblázat a jelen oktatóanyagban használt fájlokat listázza:
 ## <a name="get-twitter-feed"></a>Twitter-hírcsatorna lekérése
 Ebben az oktatóanyagban használhatja a [Twitter-streamelési API-k][twitter-streaming-api]. Streamelési API-t fogja használni a meghatározott Twitter [állapotok/szűrés][twitter-statuses-filter].
 
-> [!NOTE]
+> [!NOTE]  
 > 10 000 tweetet tartalmazó fájlt, és a Hive-szkriptfájl (a következő szakaszban ismertetett) fel lett töltve egy nyilvános Blob-tárolóban. Ez a szakasz kihagyhatja, ha azt szeretné használni a feltöltött fájlokat.
 
 Tweetek adatok összetett beágyazott struktúrát tartalmaz a JavaScript Object Notation (JSON) formátumban tárolódik. Rengeteg kódsor írása egy hagyományos programozási nyelv használatával, helyett alakíthatja át a beágyazott struktúra egy Hive-táblába, hogy azt egy Structured Query Language (SQL) lekérdezhetők – például a HiveQL nevű nyelv.
 
-Twitter hitelesített hozzáférést biztosítani az API OAuth-hitelesítést használ. OAuth-hitelesítési protokoll, amely lehetővé teszi a felhasználóknak az alkalmazások megosztása jelszavukat nélkül a felhasználók nevében eljárni jóváhagyásához. További információ található [oauth.net](http://oauth.net/) vagy a kiváló [Alapszintű útmutató az OAuth](http://hueniverse.com/oauth/) Hueniverse a.
+Twitter hitelesített hozzáférést biztosítani az API OAuth-hitelesítést használ. OAuth-hitelesítési protokoll, amely lehetővé teszi a felhasználóknak az alkalmazások megosztása jelszavukat nélkül a felhasználók nevében eljárni jóváhagyásához. További információ található [oauth.net](https://oauth.net/) vagy a kiváló [Alapszintű útmutató az OAuth](https://hueniverse.com/oauth/) Hueniverse a.
 
 OAuth használata az első lépés az új alkalmazás létrehozása a fejlesztői Twitter-webhelyen.
 
@@ -80,7 +80,7 @@ OAuth használata az első lépés az új alkalmazás létrehozása a fejlesztő
    | --- | --- |
    |  Name (Név) |MyHDInsightApp |
    |  Leírás |MyHDInsightApp |
-   |  Webhely |http://www.myhdinsightapp.com |
+   |  Webhely |https://www.myhdinsightapp.com |
 4. Ellenőrizze **Igen, elfogadom**, és kattintson a **Twitter-alkalmazás létrehozása**.
 5. Kattintson a **engedélyek** fülre. Az alapértelmezett engedély **csak olvasható**. Ez a elegendő ehhez az oktatóanyaghoz.
 6. Kattintson a **kulcsok és hozzáférési tokenek** fülre.
@@ -90,7 +90,7 @@ OAuth használata az első lépés az új alkalmazás létrehozása a fejlesztő
 
 Ebben az oktatóanyagban a Windows PowerShell használatával, hogy a webes szolgáltatás hívása. A más népszerű eszköz, hogy a webszolgáltatás-hívás [ *Curl*][curl]. A curl letölthető [Itt][curl-download].
 
-> [!NOTE]
+> [!NOTE]  
 > A curl-parancs használatakor a Windows idézőjeleket helyett használjon szimpla idézőjelek között a beállítási értékeit.
 
 **Twitter-üzenetek beolvasásához**
@@ -245,7 +245,7 @@ Egy érvényesítési eljárás szerint ellenőrizheti a kimeneti fájl **/tutor
 ## <a name="create-hiveql-script"></a>Hozzon létre HiveQL-parancsfájlt
 Az Azure PowerShell használatával futtathatja a több [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) utasításokat egy időben, vagy csomagot egy parancsfájlt a HiveQL-utasítást. Ebben az oktatóanyagban létrehozhat egy HiveQL-parancsfájlt. A parancsfájl az Azure Blob storage-kell feltölteni. A következő szakaszban a parancsfájl fog futtatja az Azure PowerShell használatával.
 
-> [!NOTE]
+> [!NOTE]  
 > A Hive-szkriptfájl és 10 000 tweetet tartalmazó fájl fel lett töltve egy nyilvános Blob-tárolóban. Ez a szakasz kihagyhatja, ha azt szeretné használni a feltöltött fájlokat.
 
 A HiveQL-parancsfájlt hajtsa végre a következő lesz:
@@ -453,7 +453,7 @@ Befejezte az összes előkészítési munkát. Ezzel a Hive-szkript meghívása 
 ### <a name="submit-a-hive-job"></a>Egy Hive-feladat elküldése
 A következő Windows PowerShell-parancsfájlt használja a Hive-szkript futtatásához. Állítsa be az első változót kell.
 
-> [!NOTE]
+> [!NOTE]  
 > Használatához a Twitter-üzeneteket és a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlt, az utolsó két szakaszban feltöltött, $hqlScriptFile állítsa "/ tutorials/twitter/twitter.hql". Szeretne használni, amelyek meg lettek feltöltve egy nyilvános blob azokat, $hqlScriptFile beállítása "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
 
 ```powershell
@@ -529,7 +529,7 @@ Write-Host "==================================" -ForegroundColor Green
 #end region
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > A Hive-tábla \001 használja, mint a mezőhatárolóval. Az elválasztó nem áll a kimenetben látható.
 
 Miután az elemzés eredménye lettek helyezve az Azure Blob storage-ban, exportálja az adatokat egy Azure SQL database vagy SQL server, az adatok exportálása Excelbe a Power Query használatával vagy az adatok az alkalmazás csatlakoztatása a Hive ODBC-illesztő használatával. További információkért lásd: [használata Apache sqoop használatával HDInsight][hdinsight-use-sqoop], [HDInsight használatával repülőjáratok késési adatainak elemzése][hdinsight-analyze-flight-delay-data], [ Csatlakoztathatja az Excelt a HDInsight a Power Query][hdinsight-power-query], és [csatlakoztathatja az Excelt a HDInsight a Microsoft Hive ODBC-illesztő a][hdinsight-hive-odbc].
@@ -543,7 +543,7 @@ Ebben az oktatóanyagban úgy találtuk, hogyan alakíthat át egy strukturálat
 * [Az Excel összekapcsolása a HDInsight és a Microsoft Hive ODBC-illesztő][hdinsight-hive-odbc]
 * [A HDInsight Apache Sqoop használata][hdinsight-use-sqoop]
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 77b19b708b32003edc4555745a233a01d6f60b71
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: eab9f13ad41d4109bb44ae196a7f8e2177886532
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026279"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994198"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -76,8 +76,8 @@ Az alábbi táblázat a más API-kkal támogathatják adatformátumok a célnyel
 
 API | Alapértelmezett adatformátum | További formátumok
 --------|---------------------|--------------
-/instance | JSON-ban | szöveg
-/scheduledevents | JSON-ban | nincs
+/instance | JSON | szöveg
+/scheduledevents | JSON | nincs
 
 Egy nem alapértelmezett válaszformátum eléréséhez, a kérelem lekérdezési karakterlánc paraméterként adja meg a kért formátumát. Példa:
 
@@ -288,7 +288,7 @@ location | Azure-régió, a virtuális gép fut. | 2017-04-02
 név | A virtuális gép neve | 2017-04-02
 az ajánlat | A Virtuálisgép-lemezkép információkat kínálnak. Ez az érték csak megtalálható az Azure lemezkép-katalógus-ről üzembe helyezett rendszerképeket. | 2017-04-02
 publisher | A Virtuálisgép-lemezkép közzétevője | 2017-04-02
-sku | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
+termékváltozat | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
 version | A Virtuálisgép-lemezkép verziója | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
 platformUpdateDomain |  [Frissítési tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
@@ -409,6 +409,50 @@ Az Azure rendelkezik a különböző szuverén felhők például [Azure Governme
   echo $environment
 ```
 
+### <a name="failover-clustering-in-windows-server"></a>A Feladatátvételi fürtszolgáltatás a Windows Server
+
+Az egyes forgatókönyvek esetén Instance Metadata szolgáltatás feladatátvételi fürtszolgáltatás, a lekérdezés esetén szükséges útvonal hozzáadása az útválasztási táblázathoz.
+
+1. Nyissa meg a parancssort rendszergazdai jogosultságokkal.
+
+2. Futtassa a következő parancsot, és jegyezze fel a címet a cél hálózati adapter (`0.0.0.0`) IPv4-útválasztási táblázatához.
+
+```bat
+route print
+```
+
+> [!NOTE] 
+> Az alábbi példa kimenetében a feladatátvevő fürt engedélyezve van a Windows Server virtuális gép csak az IPv4 útválasztási táblázatot az egyszerűség kedvéért tartalmazza.
+
+```bat
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+        224.0.0.0        240.0.0.0         On-link         10.0.1.10    266
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
+```
+
+3. Futtassa a következő parancsot, és használja a címet a felület hálózati cél (`0.0.0.0`) amely (`10.0.1.10`) ebben a példában.
+
+```bat
+route add 169.254.169.254/32 10.0.1.10 metric 1 -p
+```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Példák a virtuális gép több különböző nyelvet használó metadata szolgáltatás hívása 
 

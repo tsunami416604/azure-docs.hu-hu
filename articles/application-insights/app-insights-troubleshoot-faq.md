@@ -10,40 +10,40 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/12/2017
+ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 1c0167fd7f6ef8a66968e70df26d1e7a6ed845b1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323354"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975253"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
 ## <a name="configuration-problems"></a>Konfigurációs problémák kizárása
 *Hiba történt a beállítás lépett saját:*
 
-* [.NET-alkalmazás](app-insights-asp-net-troubleshoot-no-data.md)
-* [Egy már futó alkalmazás](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
+* [.NET-alkalmazás](../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [Egy már futó alkalmazás](../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Az Azure diagnostics](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Java webalkalmazások](app-insights-java-troubleshoot.md)
+* [Java webalkalmazások](../azure-monitor/app/java-troubleshoot.md)
 
 *Nincs adat jelenik meg a kiszolgálón lévő*
 
-* [Végezze el a tűzfalkivételek beállítása](app-insights-ip-addresses.md)
-* [ASP.NET-kiszolgáló beállítása](app-insights-monitor-performance-live-website-now.md)
-* [Egy Java-kiszolgáló beállítása](app-insights-java-agent.md)
+* [Végezze el a tűzfalkivételek beállítása](../azure-monitor/app/ip-addresses.md)
+* [ASP.NET-kiszolgáló beállítása](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Egy Java-kiszolgáló beállítása](../azure-monitor/app/java-agent.md)
 
 ## <a name="can-i-use-application-insights-with-"></a>Használható az Application Insights...?
 
-* [Web apps egy IIS-kiszolgálón – a helyszínen vagy egy virtuális Gépre](app-insights-asp-net.md)
-* [Java-webalkalmazások](app-insights-java-get-started.md)
+* [Web apps egy IIS-kiszolgálón – a helyszínen vagy egy virtuális Gépre](../azure-monitor/app/asp-net.md)
+* [Java-webalkalmazások](../azure-monitor/app/java-get-started.md)
 * [Node.js-alkalmazások](app-insights-nodejs.md)
-* [Az Azure Web apps](app-insights-azure-web-apps.md)
-* [Az Azure cloud Services](app-insights-cloudservices.md)
-* [Docker-ban futó kiszolgálók](app-insights-docker.md)
-* [Egyoldalas web Apps alkalmazások](app-insights-javascript.md)
+* [Az Azure Web apps](../azure-monitor/app/azure-web-apps.md)
+* [Az Azure cloud Services](../azure-monitor/app/cloudservices.md)
+* [Docker-ban futó kiszolgálók](../azure-monitor/app/docker.md)
+* [Egyoldalas web Apps alkalmazások](../azure-monitor/app/javascript.md)
 * [Sharepoint](app-insights-sharepoint.md)
 * [Windows asztali alkalmazás](app-insights-windows-desktop.md)
 * [Más platformok](app-insights-platforms.md)
@@ -60,7 +60,7 @@ A vállalati csomag kötelezettséggel jár, hogy minden webkiszolgáló csomóp
 
 ## <a name="how-much-is-it-costing"></a>IP-címek fenntartási költségszámítási azt?
 
-* Nyissa meg a **használat és becsült költségek lapon** oldal az Application Insights-erőforrás. Nincs legutóbbi használati diagramot. Adatmennyiségi korlát is beállíthat, ha azt szeretné.
+* Nyissa meg a **használat és becsült költségek lapon** az Application Insights-erőforrás. Nincs legutóbbi használati diagramot. Adatmennyiségi korlát is beállíthat, ha azt szeretné.
 * Nyissa meg a [panel az Azure számlázási](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) a számlák megtekintéséhez az összes erőforrás között.
 
 ## <a name="q14"></a>Mi az Application Insights módosítja a saját project?
@@ -95,34 +95,33 @@ A Megoldáskezelőben kattintson a jobb gombbal `ApplicationInsights.config` vá
 
 Egy asztali alkalmazás, amely az IIS-webkiszolgálót a webalkalmazásokban az Application Insights konfigurálásához használhatja. Nem gyűjt telemetriai: állíthatja le, ha nem konfigurál egy alkalmazást. 
 
-[További információk](app-insights-monitor-performance-live-website-now.md#questions).
+[További információk](../azure-monitor/app/monitor-performance-live-website-now.md#questions).
 
 ## <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetriai adatokat gyűjt a rendszer az Application Insights?
 
 A kiszolgáló webes alkalmazásokból:
 
 * HTTP-kérések
-* [Függőségek](app-insights-asp-net-dependencies.md). Hívások: SQL-adatbázisok; Külső szolgáltatások; HTTP-hívások Az Azure Cosmos DB, tábla, a blob storage és queue. 
-* [Kivételek](app-insights-asp-net-exceptions.md) veremkiíratásokat és.
-* [Teljesítményszámlálók](app-insights-performance-counters.md) – Ha [Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md), [Azure monitoring](app-insights-azure-web-apps.md) vagy a [Application Insights összegyűjtött író](app-insights-java-collectd.md).
-* [Egyéni események és mérőszámok](app-insights-api-custom-events-metrics.md) , hogy kódot.
-* [Nyomkövetési naplók](app-insights-asp-net-trace-logs.md) , ha a megfelelő gyűjtő konfigurálásához.
+* [Függőségek](../azure-monitor/app/asp-net-dependencies.md). Hívások: SQL-adatbázisok; Külső szolgáltatások; HTTP-hívások Az Azure Cosmos DB, tábla, a blob storage és queue. 
+* [Kivételek](../azure-monitor/app/asp-net-exceptions.md) veremkiíratásokat és.
+* [Teljesítményszámlálók](app-insights-performance-counters.md) – Ha [Állapotfigyelőt](../azure-monitor/app/monitor-performance-live-website-now.md), [Azure monitoring](../azure-monitor/app/azure-web-apps.md), vagy a [Application Insights összegyűjtött író](../azure-monitor/app/java-collectd.md).
+* [Egyéni események és mérőszámok](../azure-monitor/app/api-custom-events-metrics.md) , hogy kódot.
+* [Nyomkövetési naplók](../azure-monitor/app/asp-net-trace-logs.md) , ha a megfelelő gyűjtő konfigurálásához.
 
-A [ügyfél weblapok](app-insights-javascript.md):
+A [ügyfél weblapok](../azure-monitor/app/javascript.md):
 
 * [Oldalmegtekintések száma](app-insights-usage-overview.md)
-* [AJAX-hívások](app-insights-asp-net-dependencies.md) kérések száma a parancsprogram futtatásához.
+* [AJAX-hívások](../azure-monitor/app/asp-net-dependencies.md) kérések száma a parancsprogram futtatásához.
 * Lapbetöltési adatainak megtekintése
 * Felhasználók és munkamenetek száma
-* [Hitelesített felhasználói azonosítók](app-insights-api-custom-events-metrics.md#authenticated-users)
+* [Hitelesített felhasználói azonosítók](../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)
 
 Más forrásokból, ha konfigurálja őket:
 
 * [Az Azure diagnostics](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [A docker-tárolók](app-insights-docker.md)
-* [Az elemzési tábla importálása](app-insights-analytics-import.md)
-* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
-* [Logstash](app-insights-analytics-import.md)
+* [Importálás analyticshez](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
+* [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
+* [Logstash](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>Szűrje ki vagy valamennyi telemetria módosítani?
 
@@ -131,7 +130,7 @@ Igen, a kiszolgáló írhat a:
 * Telemetria processzor szűrése, vagy további tulajdonságok telemetriai kiválasztott cikkek megkövetelése azok elküldéséhez a saját alkalmazásából.
 * Tulajdonságok hozzáadása a telemetria minden elem Telemetriainicializálót.
 
-A további [ASP.NET](app-insights-api-filtering-sampling.md) vagy [Java](app-insights-java-filter-telemetry.md).
+A további [ASP.NET](../azure-monitor/app/api-filtering-sampling.md) vagy [Java](../azure-monitor/app/java-filter-telemetry.md).
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Hogyan város, ország és egyéb földrajzi adatok kiszámítása?
 
@@ -148,9 +147,9 @@ Is [a Power BI használata](app-insights-export-power-bi.md) a kérelmek telemet
 ## <a name="data"></a>Mennyi ideig őrzi meg adatok a portálon? A biztonságos?
 Vessen egy pillantást [adatok megőrzésére és az adatvédelmi][data].
 
-## <a name="might-personally-identifiable-information-pii-be-sent-in-the-telemetry"></a>Előfordulhat, hogy személyes azonosításra alkalmas adatok (PII) elküldve a telemetriát?
+## <a name="could-personal-data-be-sent-in-the-telemetry"></a>Sikerült a személyes adatok küldhetők a telemetriát?
 
-Ez akkor lehetséges, ha a kód elküldi ezeket az adatokat. Azt is történhet, ha a hívásláncokat változók tartalmazzák a személyazonosításra alkalmas adatok. A fejlesztői csapat, győződjön meg arról, hogy a személyazonosításra alkalmas adatok megfelelő kezeléséről kockázatbecslést kell végezniük. [További információ az adatok megőrzése és adatvédelmi](app-insights-data-retention-privacy.md).
+Ez akkor lehetséges, ha a kód elküldi ezeket az adatokat. Azt is történhet, ha a változók a hívásláncokat személyes adatokat tartalmaznak. A fejlesztői csapat, győződjön meg arról, hogy a személyes adatok megfelelő kezeléséről kockázatbecslést kell végezniük. [További információ az adatok megőrzése és adatvédelmi](../azure-monitor/app/data-retention-privacy.md).
 
 **Az összes** az ügyfél webcímet oktettjének mindig értéke 0 után a földrajzi attribútumokat kulcskeresési vannak.
 
@@ -174,31 +173,31 @@ Automatikusan azt ne naplózza a POST data, de használhat TrackTrace hívás: h
 Egyetlen üzleti rendszerekben használja az összetevők vagy a szerepköröket egy erőforrást. Használjon külön erőforrásokat, fejlesztési, tesztelési és változatból származnak, és független alkalmazásokhoz.
 
 * [A hozzászólás itt talál](app-insights-separate-resources.md)
-* [Példa - felhőszolgáltatás munkavégző és a webes szerepkör](app-insights-cloudservices.md)
+* [Példa - felhőszolgáltatás munkavégző és a webes szerepkör](../azure-monitor/app/cloudservices.md)
 
 ## <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>Hogyan dinamikusan módosítható a kialakítási kulcsot?
 
 * [Itt vitafórum](app-insights-separate-resources.md)
-* [Példa - felhőszolgáltatás munkavégző és a webes szerepkör](app-insights-cloudservices.md)
+* [Példa - felhőszolgáltatás munkavégző és a webes szerepkör](../azure-monitor/app/cloudservices.md)
 
 ## <a name="what-are-the-user-and-session-counts"></a>Mik azok a felhasználók és munkamenetek száma?
 
 * A JavaScript SDK Csoporttevékenységek a webes ügyfél azonosítsa azokat a visszatérő felhasználókat, a felhasználói cookie-k és a egy munkamenetcookie-t állítja be.
 * Ha nincsenek ügyféloldali parancsfájlok, is [állítsa be a cookie-kat a kiszolgálón](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Ha egy valós felhasználói meg a különböző böngészők vagy a privát/inkognitó böngészés használatával, vagy különböző gépek, majd egynél többször beleszámítanak.
-* A bejelentkezett felhasználó azonosíthatja a gépek és a böngészők, adjon hozzá hívást [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
+* A bejelentkezett felhasználó azonosíthatja a gépek és a böngészők, adjon hozzá hívást [setAuthenticatedUserContext()](../azure-monitor/app/api-custom-events-metrics.md#authenticated-users).
 
 ## <a name="q17"></a> Engedélyezte, e mindent az Application insights szolgáltatásban?
 | Mit kell megjelennie | Hogyan kérhet | Miért célszerű az |
 | --- | --- | --- |
-| Rendelkezésre állási diagramok |[Webes tesztek](app-insights-monitor-web-app-availability.md) |Tudja, hogy a webes alkalmazás mentése |
-| Server app-teljesítmény: válaszidők,... |[Az Application Insights hozzáadása a projekthez](app-insights-asp-net.md) vagy [AI állapotfigyelő telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md) (vagy saját kód írása [függőségek nyomon](app-insights-api-custom-events-metrics.md#trackdependency)) |Teljesítményoptimalizált problémák észlelése |
-| Függőségi telemetria |[Mesterséges Intelligencia Állapotmonitor telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md) |Adatbázisok vagy más külső összetevők kapcsolatos problémák diagnosztizálása |
-| Kivételek hívásláncokat beolvasása |[Szúrja be a TrackException kódját](app-insights-asp-net-exceptions.md) (de néhány automatikusan jelenti) |Észlelheti és diagnosztizálhatja a kivételek |
-| Keresés a nyomkövetési naplók |[Naplózás adapter hozzáadása](app-insights-asp-net-trace-logs.md) |Kivételek, teljesítmény problémák diagnosztizálása |
-| Ügyfél használatának alapjait: oldalmegtekintések, munkamenetek,... |[A weboldalak JavaScript inicializátor](app-insights-javascript.md) |Használatelemzés |
-| Egyéni ügyfél-metrikák |[Weblapok hívások nyomon követése](app-insights-api-custom-events-metrics.md) |Felhasználói élmény |
-| Kiszolgáló egyéni metrikák |[A kiszolgáló nyomkövetési hívások](app-insights-api-custom-events-metrics.md) |Üzleti intelligencia |
+| Rendelkezésre állási diagramok |[Webes tesztek](../azure-monitor/app/monitor-web-app-availability.md) |Tudja, hogy a webes alkalmazás mentése |
+| Server app-teljesítmény: válaszidők,... |[Az Application Insights hozzáadása a projekthez](../azure-monitor/app/asp-net.md) vagy [AI állapotfigyelő telepítése a kiszolgálón](../azure-monitor/app/monitor-performance-live-website-now.md) (vagy saját kód írása [függőségek nyomon](../azure-monitor/app/api-custom-events-metrics.md#trackdependency)) |Teljesítményoptimalizált problémák észlelése |
+| Függőségi telemetria |[Mesterséges Intelligencia Állapotmonitor telepítése a kiszolgálón](../azure-monitor/app/monitor-performance-live-website-now.md) |Adatbázisok vagy más külső összetevők kapcsolatos problémák diagnosztizálása |
+| Kivételek hívásláncokat beolvasása |[Szúrja be a TrackException kódját](../azure-monitor/app/asp-net-exceptions.md) (de néhány automatikusan jelenti) |Észlelheti és diagnosztizálhatja a kivételek |
+| Keresés a nyomkövetési naplók |[Naplózás adapter hozzáadása](../azure-monitor/app/asp-net-trace-logs.md) |Kivételek, teljesítmény problémák diagnosztizálása |
+| Ügyfél használatának alapjait: oldalmegtekintések, munkamenetek,... |[A weboldalak JavaScript inicializátor](../azure-monitor/app/javascript.md) |Használatelemzés |
+| Egyéni ügyfél-metrikák |[Weblapok hívások nyomon követése](../azure-monitor/app/api-custom-events-metrics.md) |Felhasználói élmény |
+| Kiszolgáló egyéni metrikák |[A kiszolgáló nyomkövetési hívások](../azure-monitor/app/api-custom-events-metrics.md) |Üzleti intelligencia |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Miért vannak nem egyenlő a számát, a Keresés és a metrikák?
 
@@ -227,7 +226,7 @@ Nem állítsa be a Metrikaböngésző jelentést, vagy állítsa be a folyamatos
 
 ### <a name="querying-the-telemetry"></a>A telemetriai adatok lekérdezése
 
-Használja a [REST API-val](https://dev.applicationinsights.io/) futtatásához [Analytics](app-insights-analytics.md) lekérdezéseket.
+Használja a [REST API-val](https://dev.applicationinsights.io/) futtatásához [Analytics](../azure-monitor/app/analytics.md) lekérdezéseket.
 
 ## <a name="how-can-i-set-an-alert-on-an-event"></a>Hogyan állíthatok be egy riasztást az esemény?
 
@@ -242,7 +241,7 @@ Nem ez függ az Application Insights-erőforrást üzemeltető. Ez csak a végpo
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Küldhetek telemetria az Application Insights portálra?
 
-Azt javasoljuk, hogy az SDK-kat használja, és használja a [SDK API](app-insights-api-custom-events-metrics.md). Nincsenek az SDK a különböző változatának [platformok](app-insights-platforms.md). Ezek az SDK-k kezelésére, pufferelés, tömörítés, szabályozás, az újrapróbálkozások és így tovább. Azonban a [Adatbetöltési séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) nyilvánosak legyenek.
+Azt javasoljuk, hogy az SDK-kat használja, és használja a [SDK API](../azure-monitor/app/api-custom-events-metrics.md). Nincsenek az SDK a különböző változatának [platformok](app-insights-platforms.md). Ezek az SDK-k kezelésére, pufferelés, tömörítés, szabályozás, az újrapróbálkozások és így tovább. Azonban a [Adatbetöltési séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) nyilvánosak legyenek.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Képes megfigyelni az intranetes webkiszolgáló?
 
@@ -254,7 +253,7 @@ Lehetővé teszi a webkiszolgáló, hogy küldjön telemetriát a végpontok htt
 
 ### <a name="proxy"></a>Proxy
 
-Forgalom irányítása a kiszolgálóról egy átjáróhoz az intranet overwritting által ezeket a beállításokat az ApplicationInsights.config példában. A "Végpont" tulajdonságok nem szerepelnek a config, ezeket az osztályokat rendszer használata esetén az alapértelmezett értékeket, az alábbi példában látható.
+Forgalom irányítása a kiszolgálóról az intraneten, ezeket a beállításokat az ApplicationInsights.config példában felülírásával egy átjárót. A "Végpont" tulajdonságok nem szerepelnek a config, ezeket az osztályokat rendszer használata esetén az alapértelmezett értékeket, az alábbi példában látható.
 
 #### <a name="example-applicationinsightsconfig"></a>Példa ApplicationInsights.config:
 ```xml
@@ -283,22 +282,23 @@ http://<your.gateway.endpoint>/v2/track
 http://<your.gateway.endpoint>/api/profiles/{0}/apiId
 ```
 
-
-
-
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Rendelkezésre állási webes tesztek futtathatok egy intranetes kiszolgálóra?
 
-A [webes teszteket](app-insights-monitor-web-app-availability.md) elosztott világszerte megtalálható jelenléti pontok futhatnak. Nincsenek két megoldást:
+A [webes teszteket](../azure-monitor/app/monitor-web-app-availability.md) elosztott világszerte megtalálható jelenléti pontok futhatnak. Nincsenek két megoldást:
 
-* Tűzfal-ajtó – a kiszolgálóhoz érkező kérések engedélyezése [a hosszú és módosítható azon ügynökök listája, webes teszt](app-insights-ip-addresses.md).
+* Tűzfal-ajtó – a kiszolgálóhoz érkező kérések engedélyezése [a hosszú és módosítható azon ügynökök listája, webes teszt](../azure-monitor/app/ip-addresses.md).
 * Rendszeresen kéréseket küldeni a kiszolgálót az intraneten belüli a saját kódot írni. Futtatható a Visual Studio webtesztjeivel erre a célra. A tesztelő sikerült elküldeni az eredményeket az Application Insights TrackAvailability() API használatával.
+
+## <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Mennyi ideig tart a telemetriai adatokat gyűjteni?
+
+A legtöbb Application Insights-adatok egy késését 5 percen belül van. Bizonyos adatok lassabban; általában nagyobb naplófájlokat. További információkért lásd: a [Application Insights SLA](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/).
 
 ## <a name="more-answers"></a>További válaszok
 * [Application Insights-fórum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
 
 <!--Link references-->
 
-[data]: app-insights-data-retention-privacy.md
+[data]: ../azure-monitor/app/data-retention-privacy.md
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md

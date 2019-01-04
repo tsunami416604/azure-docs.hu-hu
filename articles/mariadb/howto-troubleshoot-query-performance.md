@@ -1,20 +1,17 @@
 ---
 title: MariaDB-hez készült Azure Database-ben a lekérdezési teljesítmény hibaelhárítása
 description: Ez a cikk ismerteti, hogyan használható a magyarázat MariaDB-hez készült Azure Database-ben a lekérdezési teljesítmény hibaelhárítása.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bbaffeccbca77f1cab3058152f8c001f721332e
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347685"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53541081"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A profil lekérdezési teljesítmény az Azure Database for MariaDB magyarázat használata
 **ISMERTETIK** egy hasznos eszköz optimalizálni a lekérdezéseket. ISMERTETIK utasítás használható SQL-utasítások végrehajtásának módját információt szeretne kapni. A következő kimenet magyarázat utasítás a végrehajtás egy példát mutat be.

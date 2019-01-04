@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: b39c01e76ba3ec21f0cd2d16b86da5664e1d5002
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014674"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651605"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache HBase hibaelhárítása
 
@@ -288,7 +288,7 @@ Nincs kiszolgálói cím szerepel *hbase: meta* a régióban: xxx.
 
 ### <a name="detailed-description"></a>Részletes leírás
 
-Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürtön a *hbase: meta* tábla nem érhető el. Futó `hbck` előfordulhat, hogy jelenti, hogy "a hbase: meta tábla replicaId 0 nem található a bármely régióban." A probléma az lehet, hogy HMaster nem tudta inicializálni a HBase újraindítása után. A HMaster-naplók, előfordulhat, hogy az üzenetet látja: "nincs kiszolgáló-cím szerepel a hbase: régió hbase meta: biztonsági mentési \<régió neve\>".  
+Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürtön a *hbase: meta* tábla nem érhető el. Futó `hbck` előfordulhat, hogy jelenti, hogy "a hbase: meta tábla replicaId 0 nem található a bármely régióban." A probléma az lehet, hogy HMaster nem tudta inicializálni a HBase újraindítása után. A HMaster-naplók az üzenetet láthatja: "Nincs kiszolgáló-cím szerepel a hbase: régió hbase meta: biztonsági mentési \<régió neve\>".  
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
@@ -314,12 +314,12 @@ Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürt�
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[Nem sikerült feldolgozni a HBase-tábla](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nem sikerült feldolgozni a HBase-tábla](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Hiba
 
-Hasonló végzetes kivétel miatt időtúllépés HMaster "java.io.IOException: időtúllépés 300000ms Várakozás a névtér tábla hozzá kell rendelni."
+Hasonló végzetes kivétel miatt időtúllépés HMaster "java.io.IOException: Időtúllépés miatt megszakadt 300000ms névtér tábla Várakozás hozzá kell rendelni."
 
 ### <a name="detailed-description"></a>Részletes leírás
 
@@ -344,7 +344,7 @@ Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indí
 
 ### <a name="issue"></a>Probléma
 
-Egy régiókiszolgálón újraindítást meghiúsul a következő bevált gyakorlatát előfordulhat, hogy nem történik meg. Azt javasoljuk, hogy nagy munkaterhelést tevékenység felfüggesztése, ha azt tervezi, indítsa újra a HBase-régióbeli kiszolgálók. Ha egy alkalmazás továbbra is régióbeli kiszolgálók összekapcsolása, amikor a Shutdown utasítás folyamatban van, az régió server Újraindítási művelet lassabb lesz szerint néhány percig. Azt is célszerű először kiüríti az összes tábla. Hogyan táblák kiüríteni referenciáért lásd: [HDInsight HBase: hogyan növelheti az Apache HBase fürt újraindítás időpontja a táblák kiürítette](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Egy régiókiszolgálón újraindítást meghiúsul a következő bevált gyakorlatát előfordulhat, hogy nem történik meg. Azt javasoljuk, hogy nagy munkaterhelést tevékenység felfüggesztése, ha azt tervezi, indítsa újra a HBase-régióbeli kiszolgálók. Ha egy alkalmazás továbbra is régióbeli kiszolgálók összekapcsolása, amikor a Shutdown utasítás folyamatban van, az régió server Újraindítási művelet lassabb lesz szerint néhány percig. Azt is célszerű először kiüríti az összes tábla. Hogyan táblák kiüríteni referenciáért lásd: [HDInsight HBase: Hogyan növelheti az Apache HBase fürt újraindítás időpontja a táblák kiürítette](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
 Ha kezdeményez az újraindítási műveletet, a HBase-régióbeli kiszolgálók az Apache Ambari felhasználói felületről, azonnal láthatja, hogy a régióbeli kiszolgálók csökkent, de nem azonnal újraindítás. 
 

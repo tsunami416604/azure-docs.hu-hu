@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 991748c33eae607e97b3916a913b111af7b3b75a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258899"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714474"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2 szintű csomag konfigurálása az Azure App Service-ben
 
@@ -29,7 +29,7 @@ Az új **PremiumV2** tarifacsomag biztosítja gyorsabb processzorokkal, SSD-tár
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A vertikális felskálázás egy webalkalmazás **PremiumV2**, szüksége lesz egy webalkalmazást egy tarifacsomagot alacsonyabb, mint a futó Azure App Service-ben **PremiumV2**, és a webalkalmazás az App Service-környezet, amely támogatja a futnia kell PremiumV2.
+Az alkalmazás vertikális **PremiumV2**, szüksége lesz egy Azure App Service alkalmazást, amely kisebb, mint egy tarifacsomagot **PremiumV2**, és az alkalmazás az App Service-környezet, amely támogatja a PremiumV2 futnia kell.
 
 <a name="availability"></a>
 
@@ -47,7 +47,7 @@ az appservice list-locations --sku P1V2
 
 ## <a name="create-an-app-in-premiumv2-tier"></a>PremiumV2 szintű csomag az új alkalmazás létrehozása
 
-App Service-alkalmazások tarifacsomagja van definiálva a [App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overview.md) azt futtató. App Service-csomagot is létrehozhat, önmagában vagy webes alkalmazás létrehozásának részeként.
+App Service-alkalmazások tarifacsomagja van definiálva a [App Service-csomag](overview-hosting-plans.md) azt futtató. App Service-csomagot is létrehozhat, önmagában vagy alkalmazások létrehozásának részeként.
 
 Az App Service-csomag konfigurálása során a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>válassza **tarifacsomag**. 
 
@@ -88,7 +88,7 @@ Néhány az App Service-csomagok nem vertikális felskálázás a PremiumV2 szin
 
 Ha az alkalmazás fut, az App Service-környezet ahol **PremiumV2** nem érhető el, vagy ha az alkalmazás fut egy régióban jelenleg nem támogatja a **PremiumV2**, telepítse újra az alkalmazást kell használja ki **PremiumV2**.  Erre két lehetősége van:
 
-- Hozzon létre egy **új** erőforrás csoportból, és hozzon létre egy **új** terv webalkalmazás és app Service-ben a **új** erőforráscsoport létrehozása közben a kívánt Azure-régió kiválasztása a folyamat.  Ön **kell** válassza ki a **PremiumV2** terv egyidejűleg jön létre új app service-csomag.  Ez biztosítja, hogy erőforráscsoportot, App Service-csomag együttes használata, és az Azure-régióban eredményez az App Service-csomag egy App Service-környezet, amely támogatja a létrehozás alatt álló **PremiumV2**.  Ezt követően telepítse újra az alkalmazás kódjának a újonnan létrehozott alkalmazást, és az app service-csomagot. Ha ezt követően vertikális az App Service-csomag a megfelelő **PremiumV2** menteni a költségeket, és Ön továbbra is képesek lesznek sikeresen vertikális vissza a jövőben segítségével újból **PremiumV2**.
+- Hozzon létre egy **új** erőforrás csoportból, és hozzon létre egy **új** terv alkalmazás és az App Service a **új** erőforráscsoport, a kívánt Azure-régió kiválasztása a létrehozási folyamat során.  Ön **kell** válassza ki a **PremiumV2** terv egyidejűleg jön létre új app service-csomag.  Ez biztosítja, hogy erőforráscsoportot, App Service-csomag együttes használata, és az Azure-régióban eredményez az App Service-csomag egy App Service-környezet, amely támogatja a létrehozás alatt álló **PremiumV2**.  Ezt követően telepítse újra az alkalmazás kódjának a újonnan létrehozott alkalmazást, és az app service-csomagot. Ha ezt követően vertikális az App Service-csomag a megfelelő **PremiumV2** menteni a költségeket, és Ön továbbra is képesek lesznek sikeresen vertikális vissza a jövőben segítségével újból **PremiumV2**.
 - Ha az alkalmazás már fut egy meglévő **prémium** tier, majd az alkalmazás összes Alkalmazásbeállítások, a kapcsolati karakterláncok és a azokat egy új app service-csomagot használó központi telepítés konfigurálása klónozhat **PremiumV2**.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)

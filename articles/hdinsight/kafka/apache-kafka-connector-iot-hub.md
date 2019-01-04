@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315427"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608630"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
 
@@ -48,7 +48,7 @@ A csatlakozás API további információkért lásd: [ https://kafka.apache.org/
 
 2. A .JAR kiterjesztésű fájlt tölthet fel a Kafka on HDInsight-fürt határcsomópontján, használja a következő parancsot:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Cserélje le `sshuser` a HDInsight-fürthöz az SSH felhasználói fiókkal. Cserélje le `new-edgenode` peremhálózati csomópont nevét. Cserélje le `clustername` a fürt nevére. Az élcsomópont SSH-végpontjának további információkért lásd: a [élcsomópontok használt HDInsight](../hdinsight-apps-use-edge-node.md#access-an-edge-node) dokumentumot.
 
     ```bash
@@ -69,10 +69,10 @@ A csatlakozás API további információkért lásd: [ https://kafka.apache.org/
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-> [!TIP]
+> [!TIP]  
 > Ha hibákba ütközne a jelen dokumentumban leírt lépésekben a többi előre elkészített .jar fájl használatakor, próbaképpen az adatforrás-csomagot.
 >
-> Az összekötők létrehozásához rendelkeznie kell egy Scala fejlesztési környezetet a a [Scala hozhat létre az eszköz](http://www.scala-sbt.org/).
+> Az összekötők létrehozásához rendelkeznie kell egy Scala fejlesztési környezetet a a [Scala hozhat létre az eszköz](https://www.scala-sbt.org/).
 >
 > 1. Letöltheti a forráskódot, az összekötő [ https://github.com/Azure/toketi-kafka-connect-iothub/ ](https://github.com/Azure/toketi-kafka-connect-iothub/) a fejlesztői környezetbe.
 >
@@ -132,7 +132,7 @@ Az élcsomóponthoz SSH-kapcsolatot a következő lépések használatával konf
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Ez a változás lehetővé teszi, hogy tesztelje az konzol előállítói, a Kafka tartalmazza. Szükség lehet különböző más előállítók és fogyasztók számára. A többi converter értékek információkért lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
     * Adjon hozzá egy sort a következő szöveget tartalmazó fájl végén:
@@ -141,7 +141,7 @@ Az élcsomóponthoz SSH-kapcsolatot a következő lépések használatával konf
         consumer.max.poll.records=10
         ```
 
-        > [!TIP]
+        > [!TIP]  
         > Ez a változás, hogy a fogadó Connector időtúllépések megakadályozása, ha egyszerre 10 rekordok korlátozza. Tovább információ: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
 6. Mentse a fájlt, használja a __Ctrl + X__, __Y__, majd __Enter__.
@@ -178,7 +178,7 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
             * __Event Hub-kompatibilis végpont__
             * __Partíciók__
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > A végpont értékét a Portalról, amely ebben a példában nincs szükség további szöveg tartalmazhat. Csomagolja ki, amely megfelel ennek a mintának a szöveg `sb://<randomnamespace>.servicebus.windows.net/`.
 
     * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
@@ -239,14 +239,14 @@ A forrás az IoT hubbal való konfigurálásához hajtsa végre az SSH-kapcsolat
 
     A szerkesztőben keresse meg és módosíthatja az alábbi bejegyzéseket:
 
-    * `Kafka.Topic=PLACEHOLDER`: A csere `PLACEHOLDER` a `iotin`. Az IoT hub felől fogadott üzenetek kerülnek a `iotin` témakör.
-    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: A csere `PLACEHOLDER` Event Hub-kompatibilis névvel.
-    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: A csere `PLACEHOLDER` az Event Hub-kompatibilis végponthoz.
-    * `IotHub.Partitions=PLACEHOLDER`: A csere `PLACEHOLDER` az előző lépésekben a partíciók számát.
-    * `IotHub.AccessKeyName=PLACEHOLDER`: A csere `PLACEHOLDER` a `service`.
-    * `IotHub.AccessKeyValue=PLACEHOLDER`: A csere `PLACEHOLDER` az elsődleges kulccsal rendelkező a `service` házirend.
-    * `IotHub.StartType=PLACEHOLDER`: A csere `PLACEHOLDER` az UTC-dátum. Dátum, az üzenetek ellenőrzése az összekötő indításakor. A dátum formátuma `yyyy-mm-ddThh:mm:ssZ`.
-    * `BatchSize=100`: A csere `100` a `5`. Ez a változás az után, ha öt új üzeneteket az IoT hub üzenetek olvasásához, a Kafka-összekötő okoz.
+    * `Kafka.Topic=PLACEHOLDER`: Cserélje le a  elemet a `iotin` kérdésre. Az IoT hub felől fogadott üzenetek kerülnek a `iotin` témakör.
+    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Cserélje le `PLACEHOLDER` Event Hub-kompatibilis névvel.
+    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az Event Hub-kompatibilis végponthoz.
+    * `IotHub.Partitions=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az előző lépésekben a partíciók számát.
+    * `IotHub.AccessKeyName=PLACEHOLDER`: Cserélje le a  elemet a `service` kérdésre.
+    * `IotHub.AccessKeyValue=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az elsődleges kulccsal rendelkező a `service` házirend.
+    * `IotHub.StartType=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az UTC-dátum. Dátum, az üzenetek ellenőrzése az összekötő indításakor. A dátum formátuma `yyyy-mm-ddThh:mm:ssZ`.
+    * `BatchSize=100`: Cserélje le a  elemet a `5` kérdésre. Ez a változás az után, ha öt új üzeneteket az IoT hub üzenetek olvasásához, a Kafka-összekötő okoz.
 
     Egy példa konfiguráció látható, lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
@@ -272,8 +272,8 @@ A fogadó csatlakozási az IoT hubbal való konfigurálásához hajtsa végre az
 
     A szerkesztőben keresse meg és módosíthatja az alábbi bejegyzéseket:
 
-    * `topics=PLACEHOLDER`: A csere `PLACEHOLDER` a `iotout`. Üzenetek `iotout` a témakör a rendszer továbbítja az IoT hubnak.
-    * `IotHub.ConnectionString=PLACEHOLDER`: A csere `PLACEHOLDER` kapcsolati karakterláncára az `service` házirend.
+    * `topics=PLACEHOLDER`: Cserélje le a  elemet a `iotout` kérdésre. Üzenetek `iotout` a témakör a rendszer továbbítja az IoT hubnak.
+    * `IotHub.ConnectionString=PLACEHOLDER`: Cserélje le `PLACEHOLDER` kapcsolati karakterláncára az `service` házirend.
 
     Egy példa konfiguráció látható, lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
@@ -298,7 +298,7 @@ nnect.IotHubSourceTask:39)
 org.apache.kafka.connect.runtime.WorkerSourceTask:356)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Az összekötő indulásakor több figyelmeztetések jelenhetnek meg. Ezeket a figyelmeztetéseket nem okoz problémát az üzenetek fogadása az IoT hubról.
 
 Az összekötő leállításához használja __Ctrl + C__.
@@ -320,7 +320,7 @@ IotHubSinkTask:47)
 t.runtime.WorkerSinkTask:262)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Több figyelmeztetést, Észreveheti, az összekötő indításakor. Ezek biztonságosan figyelmen kívül hagyhatók.
 
 Üzenetküldés az összekötőn keresztül, használja az alábbi lépéseket:
@@ -332,7 +332,7 @@ t.runtime.WorkerSinkTask:262)
     ```
 2. Üzenetek küldése az a `iotout` témakörben, használja a következő parancsot:
 
-    > [!WARNING]
+    > [!WARNING]  
     > Mivel ez egy új SSH-kapcsolatot a `$KAFKABROKERS` információt nem tartalmaz változót. Állítsa be, használja az alábbi módszerek egyikét:
     >
     > * Első három kövesse a [konfigurálása az Apache Kafka](#configure-apache-kafka) szakaszban.
@@ -346,7 +346,7 @@ t.runtime.WorkerSinkTask:262)
 
 3. Egy üzenet küldéséhez az eszközt, JSON-dokumentumok másolja át az SSH-munkamenetet a `kafka-console-producer`.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Be kell értékét a `"deviceId"` bejegyzést az eszköz azonosítója. A következő példában az eszköz neve `fakepi`:
 
     ```text

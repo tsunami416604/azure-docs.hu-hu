@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 8b14550adf89f866cf3b736db049cc671db5b765
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314507"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652761"
 ---
-# <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok kötegelt betöltése Apache phoenixbe a psql használatával
+# <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok tömeges betöltése az Apache Phoenixbe a psql használatával
 
-[Az Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított relációs adatbázis, [Apache HBase](../hbase/apache-hbase-overview.md). A Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en. A Phoenix JDBC-illesztőprogramok engedélyezése a felhasználók létrehozása, törlése, és egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter használ. Phoenix-lekérdezések összeállításához MapReduce használata helyett natív noSQL-fordítási használja HBase felett közel valós idejű alkalmazások létrehozásához. Phoenix hozzáadja az adatok közös elhelyezése a kód végrehajtása támogatja az ügyfél által megadott kódot futtató kiszolgáló, a címtér a közös processzorral. Így minimálisra csökkenthető az ügyfél-kiszolgáló az adatátvitelt.  Phoenix használata a HDInsight adatokkal dolgozik, először hozzon létre táblák, és ezután az adatok betöltése az őket.
+[Az Apache Phoenix](https://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított relációs adatbázis, [Apache HBase](../hbase/apache-hbase-overview.md). A Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en. A Phoenix JDBC-illesztőprogramok engedélyezése a felhasználók létrehozása, törlése, és egyenként és tömegesen az SQL táblák, indexek, nézetek és a feladatütemezések és upsert sorok alter használ. Phoenix-lekérdezések összeállításához MapReduce használata helyett natív noSQL-fordítási használja HBase felett közel valós idejű alkalmazások létrehozásához. Phoenix hozzáadja az adatok közös elhelyezése a kód végrehajtása támogatja az ügyfél által megadott kódot futtató kiszolgáló, a címtér a közös processzorral. Így minimálisra csökkenthető az ügyfél-kiszolgáló az adatátvitelt.  Phoenix használata a HDInsight adatokkal dolgozik, először hozzon létre táblák, és ezután az adatok betöltése az őket.
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Tömeges betöltés az Apache Phoenixhez
 
@@ -73,7 +73,7 @@ Adatok betöltése előtt győződjön meg arról, hogy engedélyezve van-e a Ph
     python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE] 
+    > [!NOTE]   
     > Meghatározni a `ZookeeperQuorum` név, keresse meg a [Apache ZooKeeper](https://zookeeper.apache.org/) kvórum karakterlánc fájlban `/etc/hbase/conf/hbase-site.xml` tulajdonságnévvel `hbase.zookeeper.quorum`.
 
 5. Miután a `psql` művelet befejeződött, megjelenik egy üzenet a parancsablakban:
@@ -141,7 +141,7 @@ Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatok kötegelt betöltése az Apache Phoenixhez](http://phoenix.apache.org/bulk_dataload.html)
+* [Adatok kötegelt betöltése az Apache Phoenixhez](https://phoenix.apache.org/bulk_dataload.html)
 * [Az Apache HBase Linux-alapú Apache Phoenix használata a HDInsight-fürtök](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [Sózott táblák](https://phoenix.apache.org/salted.html)
-* [A Phoenix-szintaxis](http://phoenix.apache.org/language/index.html)
+* [Az Apache Phoenix szintaxis](https://phoenix.apache.org/language/index.html)

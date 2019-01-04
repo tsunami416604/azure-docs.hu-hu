@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a251eb3915ee3043ab4b69e0cd4cef8fa2170486
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1ad8435626b35859968bdf93589f22dc81e74e02
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101602"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557699"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>A Windows egy szimulált TPM Edge-eszköz létrehozása és kiépítése
 
@@ -61,14 +61,13 @@ Miután létrehozta az egyéni regisztráció, mentse az értékét a **regisztr
 
 Ha befejezte az előző szakaszban, az új eszközt az IoT Hub IoT Edge-eszköz állapottal jelenik meg. Most telepítenie kell az IoT Edge-futtatókörnyezet az eszközön. 
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Annak összetevői tárolókban futtassa, és lehetővé teszi, hogy a kódot futtathatja a peremhálózaton további tárolókat üzembe az eszközön. A Windows rendszerű eszközökhöz választhat, vagy a tárolókat Windows vagy Linux-tárolók használata. Válassza ki a használni kívánt tárolók típusát, és kövesse a lépéseket. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést. 
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Annak összetevői tárolókban futtassa, és lehetővé teszi, hogy a kódot futtathatja a peremhálózaton további tárolókat üzembe az eszközön.  
 
-Kövesse az utasításokat követve telepítse az IoT Edge-futtatókörnyezet, amely az előző szakaszban a szimulált TPM-eszköz fut az eszközön. 
+Kövesse az utasításokat követve telepítse az IoT Edge-futtatókörnyezet, amely az előző szakaszban a szimulált TPM-eszköz fut az eszközön. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést.
 
-A DPS tudja **azonosító hatóköre** és az eszköz **regisztrációs azonosító** ezekben a cikkekben megkezdése előtt. 
+A DPS tudja **azonosító hatóköre** és az eszköz **regisztrációs azonosító** az eszköz IoT Edge telepítése előtt. 
 
-* [Windows-tárolók](how-to-install-iot-edge-windows-with-windows.md)
-* [Linux-tárolók](how-to-install-iot-edge-windows-with-linux.md)
+[Telepítse, és automatikusan kiépítése az IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 

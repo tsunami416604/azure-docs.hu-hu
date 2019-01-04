@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 484cf0976ce10e80ca7eaf9b215329b81ed4bb13
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 428e1bed4e62b4fcbd7a4e03601cfc5c630b6583
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994662"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715528"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A függvényalkalmazás az Azure Functions erőforrások üzembe helyezésének automatizálása
 
@@ -167,7 +167,7 @@ Emellett a használatalapú a hely a konfigurációban két további beállítá
 
 ## <a name="deploy-a-function-app-on-the-app-service-plan"></a>Függvényalkalmazás üzembe helyezése az App Service-csomag
 
-Az App Service-csomag esetében a függvényalkalmazás alap, Standard és prémium szintű termékváltozatok, webes alkalmazásokhoz hasonlóan a dedikált virtuális gépeken futtatja. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Az App Service-csomag esetében a függvényalkalmazás alap, Standard és prémium szintű termékváltozatok, webes alkalmazásokhoz hasonlóan a dedikált virtuális gépeken futtatja. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/overview-hosting-plans.md). 
 
 Egy minta Azure Resource Manager-sablon, lásd: [Az Azure App Service-csomag függvényalkalmazás].
 

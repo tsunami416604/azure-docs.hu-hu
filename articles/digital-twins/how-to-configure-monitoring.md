@@ -1,19 +1,20 @@
 ---
 title: Az Azure digitális Twins figyelésének konfigurálása |} A Microsoft Docs
-description: Az Azure digitális Twins figyelésének konfigurálása
+description: Útmutató az Azure digitális Twins figyelésének konfigurálása.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/26/2018
 ms.author: adgera
-ms.openlocfilehash: 1c8f1931a29ae9769f7d8ad57a184e3240105a1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.custom: seodec18
+ms.openlocfilehash: 2749a5c6c4e6003c51523d83c46b48d3b55b3d45
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945818"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807584"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Az Azure digitális Twins figyelésének konfigurálása
 
@@ -23,7 +24,7 @@ Ez a cikk összefoglalja a naplózás és figyelés lehetőségeket és az Azure
 
 ## <a name="review-activity-logs"></a>A Tevékenységnaplók áttekintése
 
-Azure [tevékenységeket tartalmazó naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) egyes Azure-szolgáltatás-példányokhoz tartozó előfizetés-szintű esemény és művelet előzményeket gyors betekintést nyújtson.
+Azure [tevékenységeket tartalmazó naplók](../azure-monitor/platform/activity-logs-overview.md) egyes Azure-szolgáltatás-példányokhoz tartozó előfizetés-szintű esemény és művelet előzményeket gyors betekintést nyújtson.
 
 Előfizetés-szintű eseményeit tartalmazza:
 
@@ -54,7 +55,7 @@ A speciális naplózása:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Ügyfél-diagnosztikai naplók engedélyezése
 
-Azure [diagnosztikai beállítások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) állítható be az egyes Azure-beli példány lehetőséget a tevékenység naplózása. Tevékenységnaplók előfizetés-szintű eseményeit is vonatkozik, míg a diagnosztikai naplózás révén betekintést kaphat maguk az erőforrások működési előzményeit.
+Azure [diagnosztikai beállítások](../azure-monitor/platform/diagnostic-logs-overview.md) állítható be az egyes Azure-beli példány lehetőséget a tevékenység naplózása. Tevékenységnaplók előfizetés-szintű eseményeit is vonatkozik, míg a diagnosztikai naplózás révén betekintést kaphat maguk az erőforrások működési előzményeit.
 
 Diagnosztikai naplózás közé:
 
@@ -74,7 +75,7 @@ Egy példánya számára a diagnosztikai naplók engedélyezése:
 
     ![Diagnosztikai beállítások két][5]
 
-    Diagnosztikai naplók gyakran lesznek mentve, használatával [Azure File Storage](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide) és a megosztott [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal). Mindkét lehetőség választható.
+    Diagnosztikai naplók gyakran lesznek mentve, használatával [Azure File Storage](../storage/files/storage-files-deployment-guide.md) és a megosztott [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md). Mindkét lehetőség választható.
 
 >[!TIP]
 >Használat **diagnosztikai naplók** az erőforrás-műveletek betekintést.
@@ -91,7 +92,7 @@ Használati példák:
 * Több felhasználó által definiált függvény naplóinak megtekintése
 * Egy megadott időkereten belül két vagy több szolgáltatás naplóinak megjelenítése
 
-Teljes napló lekérdezése által biztosított [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Ezek a hatékony szolgáltatások beállítása:
+Teljes napló lekérdezése által biztosított [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md). Ezek a hatékony szolgáltatások beállítása:
 
 1. Keresse meg **Log Analytics** az Azure Portalon.
 1. Láthatja, hogy a rendelkezésre álló **Log Analytics** példányok. Válasszon egyet, és válassza ki **naplók** lekérdezéséhez:
@@ -106,7 +107,7 @@ Miután a **Log Analytics** példány üzembe van helyezve, hatékony lekérdez�
 
    ![Naplókezelés][8]
 
-Hatékony lekérdezési műveletekkel kapcsolatos további információkért lásd: [Ismerkedés a lekérdezések](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
+Hatékony lekérdezési műveletekkel kapcsolatos további információkért lásd: [Ismerkedés a lekérdezések](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Események küldése során egy 5 perces késleltetés tapasztalhat **Log Analytics** először.
@@ -120,15 +121,15 @@ Az Azure Log Analytics is biztosít a nagy teljesítményű hiba- és riasztási
 
 ## <a name="other-options"></a>Egyéb beállítások
 
-Az Azure digitális Twins is támogatja az alkalmazás-specifikus naplózás és a biztonsági naplózás. Az Azure digitális Twins példány számára elérhető összes Azure naplózási beállítások alapos áttekintéséért lásd: a [az Azure log naplózási](https://docs.microsoft.com/azure/security/azure-log-audit) cikk.
+Az Azure digitális Twins is támogatja az alkalmazás-specifikus naplózás és a biztonsági naplózás. Az Azure digitális Twins példány számára elérhető összes Azure naplózási beállítások alapos áttekintéséért lásd: a [az Azure log naplózási](../security/azure-log-audit.md) cikk.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók az Azure [tevékenységeket tartalmazó naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs).
+- További tudnivalók az Azure [tevékenységeket tartalmazó naplók](../azure-monitor/platform/activity-logs-overview.md).
 
-Részletesen mélyebb Azure diagnosztikai beállítások olvassa el az [diagnosztikai naplók áttekintése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Részletesen mélyebb Azure diagnosztikai beállítások olvassa el az [diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Tudjon meg többet [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal).
+- Tudjon meg többet [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
 <!-- Images -->
 [1]: media/how-to-configure-monitoring/activity-log.png

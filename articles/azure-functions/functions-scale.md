@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b42529df406febc617c778d18d5b420f9c38c59a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434664"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722074"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -66,7 +66,7 @@ Fontolja meg az App Service-csomag, a következő esetekben:
 * Csak az App Service-csomag, például az App Service Environment-környezet, a virtuális hálózat és VPN-kapcsolat és a nagyobb Virtuálisgép-méretek támogatása elérhető funkciókat követel meg.
 * Szeretné futtatni a függvényalkalmazást linuxon, vagy szeretne biztosítani egy egyéni rendszerképet, amelyre a függvények futtatását.
 
-Virtuális gép költséggel jár a végrehajtások száma, végrehajtási időt, és a használt memória leválasztja. Ennek eredményeképpen nem kell fizetnie több, mint a Virtuálisgép-példány lefoglalandó költsége. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Virtuális gép költséggel jár a végrehajtások száma, végrehajtási időt, és a használt memória leválasztja. Ennek eredményeképpen nem kell fizetnie több, mint a Virtuálisgép-példány lefoglalandó költsége. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/overview-hosting-plans.md). 
 
 Az App Service-csomag manuálisan horizontális felskálázása további Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Is skálázhatja egy másik App Service-csomag kiválasztásával. További információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md). 
 

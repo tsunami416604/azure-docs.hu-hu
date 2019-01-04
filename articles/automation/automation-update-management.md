@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342391"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631855"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -589,7 +589,7 @@ Frissítéskezelési frissítés Adatbővítés végez a felhőben, mert néhán
 
 Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a gép, hogy a megfelelő frissítés további adatait, mert nem megfelelő.
 
-Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a viselkedés zypper korlátozva. Bizonyos esetekben a szükséges futtassa újra a frissítések telepítését. Győződjön meg arról, hogy a frissítés naplóban.
+Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. Megfelelően telepíteni a frissítéseket a CentOS, válassza ki az összes besorolásokat frissítések alkalmazásához. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a viselkedés zypper korlátozva. Bizonyos esetekben a szükséges futtassa újra a frissítések telepítését. Győződjön meg arról, hogy a frissítés naplóban.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

@@ -1,5 +1,5 @@
 ---
-title: Nodejs-hez (Part6) MongoB API-val Angular-alkalmazás
+title: Angular alkalmazás létrehozása az Azure Cosmos DB API a MongoDB - hozzáadása CRUD-függvényeket adhat az alkalmazáshoz
 titleSuffix: Azure Cosmos DB
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 6. része.
 author: johnpapa
@@ -7,21 +7,19 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: db4624fb15c7ce5e96dc960de76b56fa19bd9d0e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: affa3fcc580ab69d7cba9db93890ed5f3c499bf4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714712"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793359"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-crud-functions-to-the-app"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 6. rész: CRUD-funkciók hozzáadása az alkalmazáshoz
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a MongoDB - hozzáadása CRUD-függvényeket adhat az alkalmazáshoz
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
-
-Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md). Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * Post, Put és Delete függvények létrehozása a főképszolgáltatáshoz

@@ -1,9 +1,9 @@
 ---
-title: Azure Batch szolgáltatás kvótái és korlátozásai |} A Microsoft Docs
+title: Szolgáltatás kvótái és korlátozásai – Azure Batch |} A Microsoft Docs
 description: Alapértelmezett Azure Batch-kvóták, korlátozások és megkötések ismertetése, és növeli a hogyan kvótát
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0493783cb1253aab78ff39aa42eeabbec8ddb726
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263602"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753199"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -65,9 +65,9 @@ Ha beállítása készletlefoglalási móddal létrehozott Batch-fiók **felhasz
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) számítási csomópontok | csomópont-magok száma 4 x |
 | [Alkalmazások](batch-application-packages.md) Batch-fiókonként | 20 |
 | Alkalmazáscsomagok alkalmazásonként | 40 |
-| A tevékenység maximális élettartama | 7 nap<sup>1</sup> |
+| A tevékenység maximális élettartama | 180 nap<sup>1</sup> |
 
-<sup>1</sup> maximális élettartama egy feladatot, amikor megjelenik a feladat befejezését követően a rendszer 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
+<sup>1</sup> egy feladatot, amikor megjelenik a feladat befejezését követően a maximális élettartama 180 nap. Befejezett feladatok megőrzése 7 nap során. a maximális élettartamon belül nem befejezett tevékenységek adatai nem érhető el.
 
 ## <a name="view-batch-quotas"></a>Batch-kvóták megtekintése
 
@@ -99,14 +99,14 @@ Kövesse az alábbi lépéseket egy kvótát a Batch-fiók vagy az előfizetés 
    
     d. **Támogatási csomag** > **kvóta támogatás – benne foglalt**
    
-    Kattintson a **Tovább** gombra.
+    Kattintson a **tovább**.
 1. A **probléma**:
    
     a. Válassza ki a **súlyossági** a következők szerint a [üzletmenetre gyakorolt hatás][support_sev].
    
     b. A **részletek**, adja meg minden egyes módosítani kívánt kvótát, a Batch-fiók nevét és az új határértéket.
    
-    Kattintson a **Tovább** gombra.
+    Kattintson a **tovább**.
 1. A **kapcsolattartási adatok**:
    
     a. Válassza ki a **elsődleges kapcsolattartási módszert**.

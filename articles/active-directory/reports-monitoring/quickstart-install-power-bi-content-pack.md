@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 314f1c1656485f93942eb23f928cc66720a12565
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622534"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753540"
 ---
-# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Rövid útmutató: Az Azure Active Directory Power BI-tartalomcsomag telepítése
+# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Gyors útmutató: Az Azure Active Directory Power BI tartalom csomag telepítése
 
 |  |
 |--|
@@ -39,7 +39,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Power BI-fiók. Ez megegyezik az O365- vagy Azure AD-fiókjával. 
 * Az Azure AD-bérlő azonosítója. Ez a címtár **címtár-azonosítója**, amely az Azure Portal [tulajdonságok oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) található.
-* Egy Azure AD Prémium- (P1/P2) licenc. 
+* Egy Azure AD Prémium- (P1/P2) licenc. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>Az Azure AD Power BI-tartalomcsomag telepítése 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 2ff7221a3742f59cdef2c5c7c220cc80148b94d0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721561"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580416"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabricben
 > [!div class="op_single_selector"]
@@ -146,6 +146,9 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+> [!IMPORTANT]
+> A futtatókörnyezet hibája miatt győződjön meg arról, hogy a megőrzési időtartamát a megtartási házirend van beállítva 24 napnál kisebb különbségnek kell, különben szolgáltatás biztonsági mentése és helyreállítása kvórum elvesztése replika feladatátvétel után lép eredményez.
+
 ### <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Után az alkalmazás adatvédelmi követelmények teljesítéséhez házirend meghatározása, a biztonsági mentési szabályzat az alkalmazás társítva kell lennie. Követelmény, függően a biztonsági mentési szabályzathoz társított egy alkalmazást, a szolgáltatás és a partíció is lehet.
 
@@ -222,9 +225,13 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+## <a name="known-issues"></a>Ismert problémák
+- Győződjön meg arról, hogy a megőrzési időtartam 24 napnál kisebb különbségnek kell van konfigurálva. 
+- Visszaállítás a biztonsági mentési szolgáltatás nem kapja meg a területi beállításokhoz, ahol a tizedesjel más, az "."
+- Visszaállítás a biztonsági mentési szolgáltatás nem tudja a csoportosan felügyelt szolgáltatásfiók-alapú biztonsági tesztfürtöt merülnek fel.
+
 ## <a name="limitation-caveats"></a>Korlátozás / kikötések
 - Nem Service Fabric beépített PowerShell-parancsmagokat.
-- Service Fabric parancssori felület nem támogatott.
 - Nem támogatja a Service Fabric-fürtök Linux rendszeren.
 
 ## <a name="next-steps"></a>További lépések

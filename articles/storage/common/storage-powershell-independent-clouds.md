@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058406"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628340"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Az Azure-PowerShell-lel független felhőkben tárolás kezelése
 
@@ -23,6 +23,8 @@ A legtöbb ember használata az Azure nyilvános felhő a globális Azure üzeme
 * [Kínában a 21Vianet által üzemeltetett Azure China Cloud](http://www.windowsazure.cn/)
 * [Az Azure német felhőben](../../germany/germany-welcome.md)
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="using-an-independent-cloud"></a>Egy független felhő használatával 
 
 A független felhőkben egy Azure Storage szolgáltatást használja, csatlakoznia kell az adott helyett az Azure-beli nyilvános felhő. Független felhők helyett az Azure-beli nyilvános egyikének használatához:
@@ -31,33 +33,33 @@ A független felhőkben egy Azure Storage szolgáltatást használja, csatlakozn
 * Határozza meg, és használja az elérhető régiók.
 * A megfelelő végpont utótagja, amely eltér a Azure-beli nyilvános használhatja.
 
-Példák Azure PowerShell modul verziója 4.4.0 szükséges vagy újabb. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable AzureRM` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps). 
+Példák Azure PowerShell modul Az 0,7 vagy újabb verziójára lesz szükség. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable Az` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps). 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Futtassa a [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) parancsmaggal ellenőrizheti az elérhető Azure-környezetek:
+Futtassa a [Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) parancsmaggal ellenőrizheti az elérhető Azure-környezetek:
    
 ```powershell
-Get-AzureRmEnvironment
+Get-AzEnvironment
 ```
 
 Jelentkezzen be a fiók, amely hozzáféréssel rendelkezik, amelyhez csatlakozhat, és állítsa be a környezetet szeretne a felhőbe. Ez a példa bemutatja, hogyan lehet bejelentkezni egy fiókba, amelyet az Azure Government Cloud használ.   
 
 ```powershell
-Connect-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzAccount –Environment AzureUSGovernment
 ```
 
 A kínai Felhőszolgáltatásban elérésére, használja a környezet **AzureChinaCloud**. A Németországi Felhőjének elérésére, **AzureGermanCloud**.
 
-Ezen a ponton helyeihez hozhat létre egy storage-fiók vagy egy másik erőforrásra van szüksége, ha lekérdezheti, ha a kiválasztott felhő használatához elérhető helyek [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation).
+Ezen a ponton helyeihez hozhat létre egy storage-fiók vagy egy másik erőforrásra van szüksége, ha lekérdezheti, ha a kiválasztott felhő használatához elérhető helyek [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
 ```powershell
-Get-AzureRmLocation | select Location, DisplayName
+Get-AzLocation | select Location, DisplayName
 ```
 
 Az alábbi táblázat a helyek, a Németországi felhőhöz készült adja vissza.
 
-|Hely | displayName |
+|Hely | Megjelenítendő név |
 |----|----|
 | germanycentral | Közép-Németország|
 | germanynortheast | Északkelet-Németország | 
@@ -67,14 +69,14 @@ Az alábbi táblázat a helyek, a Németországi felhőhöz készült adja vissz
 
 Az egyes ezekben a környezetekben a végpont utótagja eltér az Azure-beli nyilvános végpontot. Például egy, az Azure-beli nyilvános a blob-végpont utótagja nem **blob.core.windows.net**. A kormányzati felhőhöz, a blob-végpont utótagja van **blob.core.usgovcloudapi.net**. 
 
-### <a name="get-endpoint-using-get-azurermenvironment"></a>Használja a Get-AzureRMEnvironment végpont 
+### <a name="get-endpoint-using-get-azenvironment"></a>Használja a Get-AzEnvironment végpont 
 
-Lekérdezni a végpont utótagja használatával [Get-AzureRMEnvironment](/powershell/module/azurerm.profile/get-azurermenvironment). A végpont a *StorageEndpointSuffix* tulajdonság a környezet. Az alábbi kódtöredékek bemutatják, hogyan ehhez. Ezek a parancsok mindegyike adja vissza valami például a "core.cloudapp.net" vagy "core.cloudapi.de", stb. Ez hozzáfűzése a társzolgáltatás az adott szolgáltatás eléréséhez. Például "queue.core.cloudapi.de" hozzá fog férni a queue szolgáltatás német felhőben.
+Lekérdezni a végpont utótagja használatával [Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment). A végpont a *StorageEndpointSuffix* tulajdonság a környezet. Az alábbi kódtöredékek bemutatják, hogyan ehhez. Ezek a parancsok mindegyike adja vissza valami például a "core.cloudapp.net" vagy "core.cloudapi.de", stb. Ez hozzáfűzése a társzolgáltatás az adott szolgáltatás eléréséhez. Például "queue.core.cloudapi.de" hozzá fog férni a queue szolgáltatás német felhőben.
 
 Ez a kódrészlet lekérdezi az összes környezet és a végpont utótagja minden egyes.
 
 ```powershell
-Get-AzureRmEnvironment | select Name, StorageEndpointSuffix 
+Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
 Ez a parancs az alábbi eredményeket adja vissza.
@@ -86,10 +88,10 @@ Ez a parancs az alábbi eredményeket adja vissza.
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | Core.usgovcloudapi.NET |
 
-Összes tulajdonság a megadott környezet lekéréséhez hívja **Get-AzureRmEnvironment** és adja meg a felhő nevét. Ez a kódrészlet tulajdonságok; listáját adja vissza. Keressen **StorageEndpointSuffix** a listában. Az alábbi példa a német felhőben van.
+Összes tulajdonság a megadott környezet lekéréséhez hívja **Get-AzEnvironment** és adja meg a felhő nevét. Ez a kódrészlet tulajdonságok; listáját adja vissza. Keressen **StorageEndpointSuffix** a listában. Az alábbi példa a német felhőben van.
 
 ```powershell
-Get-AzureRmEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud 
 ```
 
 Az eredmények a következőhöz hasonlóak:
@@ -111,7 +113,7 @@ Az eredmények a következőhöz hasonlóak:
 Csak a tárolási végpont utótagja tulajdonság lekéréséhez lekérni az adott felhő, és kérje meg, hogy egy tulajdonság.
 
 ```powershell
-$environment = Get-AzureRmEnvironment -Name AzureGermanCloud
+$environment = Get-AzEnvironment -Name AzureGermanCloud
 Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
 ```
 
@@ -129,7 +131,7 @@ A végpontok beolvasni a storage-fiók tulajdonságait is ellenőrizheti. Ez akk
 # Get a reference to the storage account.
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
-$storageAccount = Get-AzureRmStorageAccount `
+$storageAccount = Get-AzStorageAccount `
   -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
   # Output the endpoints.
@@ -157,7 +159,7 @@ Itt módosítástól, az ugyanazon PowerShell, a storage-fiókok felügyeletéhe
 Ha létrehozott egy új erőforráscsoportot és a egy storage-fiókot ehhez a gyakorlathoz, az erőforráscsoport törlésével eltávolíthatja összes eszköz. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókot és magát az erőforráscsoportot.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések

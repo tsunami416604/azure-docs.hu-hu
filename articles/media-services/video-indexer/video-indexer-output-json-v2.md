@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 8acb1c70dc21efc87e13e0e5e94d9a61acfe01e9
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292408"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554656"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -78,8 +78,8 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |Attribútum | Leírás|
 |---|---|
 |név|A videó neve. Ha például az Azure Monitor.|
-|shortId|A videó azonosítója. Ha például 63c6d532ff.|
-|privacyMode|A részletezése a következő módok egyike lehet: **privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
+|id|A videó azonosítója. Ha például 63c6d532ff.|
+|privacyMode|A részletezése a következő módok egyike lehet: **Privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
 |thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
 |thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr lekéréséhez hívja a Get-miniatűr (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
@@ -149,7 +149,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 
 Az insights olyan dimenzió (például, átirat sorok, arcok, márkákat, stb.), ahol minden dimenzió egyedi elemeket (például face1, felszín 2, felszín 3), és minden egyes elemben meg van saját metaadatait és a példányok listáját, (amelyeket a időtartományok További nem kötelező metaadatok).
 
-Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadatokat és a historikus példányok listáját (például: 00:00:05 – 00:00:10, 00:01:00 – 00:02:30 és 00:41:21 – 00:41:49.) Minden historikus példánya további metaadatokat is lehet. Például az arcok téglalap koordinálja (20,230,60,60).
+Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadatokat és a historikus példányok listáját (például: 00: 00:05 – 00:00:10, 00:01:00 – 00:02:30 és 00:41:21 – 00:41:49.) Minden historikus példánya további metaadatokat is lehet. Például az arcok téglalap koordinálja (20,230,60,60).
 
 |Verzió|A kód verziója|
 |---|---|
@@ -553,7 +553,7 @@ Példa:
 |Name (Név)|Leírás|
 |---|---|
 |CorrespondenceCount|A videóban megfelelések száma.|
-|WordCount|A speaker kiszolgálónként szavak számát.|
+|SpeakerWordCount|A speaker kiszolgálónként szavak számát.|
 |SpeakerNumberOfFragments|A videó szerepel a beszélő töredék mennyisége.|
 |SpeakerLongestMonolog|A beszélő leghosszabb monolog. Ha a beszélő belül a monolog silences része. Csend elején és végén a monolog törlődik.| 
 |SpeakerTalkToListenRatio|A számítás időt a speaker monolog (nélkül a csend köztes) elosztva a videó teljes időtartama alapján. Az idő a harmadik tizedesvesszőtől lesz kerekítve.|
@@ -767,8 +767,8 @@ Video Indexer – lehetővé teszi a legfontosabb témakörök az átiratok köv
 |Name (Név)|Leírás|
 |---|---|
 |id|A témakör azonosítóját.|
-|név|A témakör nevét, például: "Pharmaceuticals".|
-|a referenceid megadása|A témakörök hierarchia tükröző útkövetés. Például: "állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
+|név|A témakör neve, például: "Pharmaceuticals".|
+|a referenceid megadása|A témakörök hierarchia tükröző útkövetés. Példa: "Állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
 |magabiztosan|A [0,1] tartományban konfidencia-pontszám. Újabb sokkal magabiztosabb a munkában.|
 |language|A témakörben használt nyelv.|
 |iptcName|A IPTC adathordozó-neve, kód észlelésekor.|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: aae3454fc8de8455146fa1189b66e6498c32e20c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ba163b797cfaaf73c660f1ef3d8da18758e8139a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440575"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541999"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Az Azure Monitor diagnosztikai naplók tárfiókba archivált formátum módosítás előkészítése
 
@@ -32,7 +32,7 @@ Az Azure Monitor egy olyan funkció, amely lehetővé teszi, hogy küldjön az e
 * Ez a változás az összes nyilvános régióban egyszerre történik. A módosítás nem történik az Azure China, az Azure Germany és az Azure Government még.
 * Ez a módosítás hatással van a következő adattípusokat:
   * [Az Azure erőforrás-diagnosztikai naplók](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([itt erőforrások listájának megtekintéséhez](./../../azure-monitor/platform/tutorial-dashboards.md))
-  * [Az Azure erőforrás-metrikák diagnosztikai beállítások exportálása folyamatban](./../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)
+  * [Az Azure erőforrás-metrikák diagnosztikai beállítások exportálása folyamatban](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
   * [Naplóprofilok által exportált Azure tevékenységnapló adatainak](./../../azure-monitor/platform/archive-activity-log.md)
 * Ez a változás nem érinti:
   * Hálózati forgalmi naplók

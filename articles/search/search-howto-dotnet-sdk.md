@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: c2dd9d7c7567a7c57def093c4d611ab09c870d84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310674"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634541"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Az Azure Search .NET-alkalmazás használata
 Ez a cikk ahhoz, hogy működik és a egy forgatókönyv a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával egy fejlett keresési funkciókat megvalósítása az Azure Search használatával az alkalmazás.
@@ -48,7 +48,7 @@ Ha már használ az Azure Search .NET SDK egy régebbi verzióját, és szeretn�
 ## <a name="requirements-for-the-sdk"></a>Az SDK-követelményei
 1. Visual Studio 2017.
 2. A saját Azure Search szolgáltatást. Az SDK használatához szüksége lesz a szolgáltatás és a egy vagy több API-kulcs neve. [Szolgáltatás létrehozása a portálon](search-create-service-portal.md) segít a fenti lépéseket.
-3. Az Azure Search .NET SDK letöltése [NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.Search) "NuGet-csomagok kezelése" a Visual Studio használatával. Csak keresse meg a csomag neveként `Microsoft.Azure.Search` on NuGet.org (vagy egy másik csomagot a fenti nevek, ha csak az funkciók egy részét).
+3. Az Azure Search .NET SDK letöltése [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Search) "NuGet-csomagok kezelése" a Visual Studio használatával. Csak keresse meg a csomag neveként `Microsoft.Azure.Search` on NuGet.org (vagy egy másik csomagot a fenti nevek, ha csak az funkciók egy részét).
 
 Az Azure Search .NET SDK támogatja az alkalmazások a .NET-keretrendszer 4.5.2-es vagy újabb, valamint a .NET Core.
 
@@ -243,7 +243,7 @@ Ez a módszer létrehoz egy új `Index` objektum listáját `Field` objektumok s
 >
 > 
 
-Mezők mellett is adhat pontozási profilok, javaslattevőket vagy CORS-beállítások az Index (ezek kimaradnak a mintát az áttekinthetőség). Az Index objektum és azok részlegei a további információt talál a [SDK-leírás](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index#microsoft_azure_search_models_index)is, a a [Azure Search REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/).
+Mezők mellett is adhat pontozási profilok, javaslattevőket vagy CORS-beállítások az Index (ezek kimaradnak a mintát az áttekinthetőség). Az Index objektum és azok részlegei a további információt talál a [SDK-leírás](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)is, a a [Azure Search REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>Hozzáláthat a tárgymutató
 A következő lépés `Main` , hogy az újonnan létrehozott index feltöltéséhez. Ez történik, a következő metódusban:
@@ -324,7 +324,7 @@ A második rész létrehoz egy `IndexBatch` tartalmazó dokumentumokat. Azt adja
 Ez a módszer harmadik része a "catch" blokk az indexelés egy fontos hibaesetét kezeli. Ha az Azure Search-szolgáltatásnak nem sikerül indexelnie a kötegben szereplő fájlok valamelyikét, a `Documents.Index` rendszer `IndexBatchException` választ ad. Ez akkor történhet meg, ha olyankor végzi a dokumentumok indexelését, amikor a szolgáltatás nagy terhelés alatt áll. **Javasoljuk, hogy a kódban explicit módon kezelje ezt az esetet.** Azon dokumentumok esetében, ahol az indexelés meghiúsult, elhalaszthatja azt, majd később újra megpróbálkozhat az indexeléssel, vagy a mintának megfelelően naplózhatja azt, és folytathatja a munkáját, esetleg – az alkalmazás adatkonzisztencia-követelményeitől függően – más műveletbe kezdhet.
 
 > [!NOTE]
-> Használhatja a `FindFailedActionsToRetry` metódus csak az előző hívása sikertelen műveleteket tartalmazó új kötegelt `Index`. A metódus dokumentált [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_) , és nincs megfelelően használatával hatásának a megbeszélését [a StackOverflow-n](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> Használhatja a [ `FindFailedActionsToRetry` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) metódus csak az előző hívása sikertelen műveleteket tartalmazó új kötegelt `Index`. Nincs megfelelően használatával hatásának a megbeszélését [a StackOverflow-n](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
@@ -390,20 +390,20 @@ public partial class Hotel
 Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága `Hotel` felel meg az index definícióját, de egy lényeges különbséggel mező: Az egyes mezők neve során minden egyes nyilvános tulajdonsága neve kezdődik ("nagybetűs"), kisbetűvel `Hotel` egy nagybetűt ("Pascal eset") kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
 
 > [!NOTE]
-> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További részletekért lásd: [egyéni szerializálás a JSON.NET](#JsonDotNet).
+> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További részletekért lásd: [egyéni szerializálás a JSON.NET](#JsonDotNet).
 > 
 > 
 
 Figyelje meg, hogy a második lépésben olyan attribútumok, amelyek például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer` , amely minden egyes nyilvános tulajdonsága megadhat. Ezek az attribútumok leképezése közvetlenül a [megfelelő attribútumok az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztályt használja ezeket az index Meződefiníciók létrehozására.
 
-Tudnivalók a harmadik lényeg a `Hotel` osztály a nyilvános tulajdonságok adattípusa. Ezeket a tulajdonságokat a .NET-típusú képezze le az index definícióját a mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `Edm.Boolean`, illetve a `DateTimeOffset?` és `Edm.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály a megfelelőségről gondoskodik, de továbbra is lehet annak megértése, abban az esetben szerializációs hárítsa el kell.
+Tudnivalók a harmadik lényeg a `Hotel` osztály a nyilvános tulajdonságok adattípusa. Ezeket a tulajdonságokat a .NET-típusú képezze le az index definícióját a mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `Edm.Boolean`, illetve a `DateTimeOffset?` és `Edm.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály a megfelelőségről gondoskodik, de továbbra is lehet annak megértése, abban az esetben szerializációs hárítsa el kell.
 
 A saját osztályok dokumentumokként használandó képessége mindkét irányban; működik Is lekérdezheti a keresési eredményeket, és rendelkezik az SDK-val automatikusan deszerializáltathatja azokat a választott típusra láthatóak lesznek a következő szakaszban.
 
 > [!NOTE]
-> Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Kizárólag az utóbbiakat használjuk a mintakód ebben az oktatóanyagban. A `Document` osztály örökli `Dictionary<string, object>`. Egyéb információk [Itt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document#microsoft_azure_search_models_document).
+> Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Kizárólag az utóbbiakat használjuk a mintakód ebben az oktatóanyagban. A [ `Document` osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) örököl `Dictionary<string, object>`.
 > 
-> 
+>
 
 **Miért használjon nullázható adattípusokat?**
 
@@ -418,7 +418,7 @@ Ezért javasoljuk, hogy a modellosztályokban nullázható értéktípusokat has
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>Egyéni szerializálás a JSON.NET használatával
-Az SDK-t használ JSON.NET szerializálásához és deszerializálásához dokumentumokat. Testre szabhatja a szerializálási és szükség esetén definiálásával saját deszerializálási `JsonConverter` vagy `IContractResolver` (lásd a [JSON.NET dokumentáció](http://www.newtonsoft.com/json/help/html/Introduction.htm) további részletekért). Ez hasznos lehet, ha meg szeretné alkalmazkodnak az alkalmazás használatát az Azure Search, és más speciális forgatókönyvekhez egy meglévő modell osztály. Ha például egyéni sorba rendezésre segítségével:
+Az SDK-t használ JSON.NET szerializálásához és deszerializálásához dokumentumokat. Testre szabhatja a szerializálási és szükség esetén definiálásával saját deszerializálási `JsonConverter` vagy `IContractResolver` (lásd a [JSON.NET dokumentáció](https://www.newtonsoft.com/json/help/html/Introduction.htm) további részletekért). Ez hasznos lehet, ha meg szeretné alkalmazkodnak az alkalmazás használatát az Azure Search, és más speciális forgatókönyvekhez egy meglévő modell osztály. Ha például egyéni sorba rendezésre segítségével:
 
 * Belefoglalhat vagy kizárhat bizonyos tulajdonságok modellosztály-dokumentum mezőként tárolják.
 * Képezze le a kódban a tulajdonságnevek és az index mezőnevek között.

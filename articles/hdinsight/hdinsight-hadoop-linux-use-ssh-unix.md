@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: bcd550ac8f4b75002648f2e4737a4683349aa45f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: a7ba66fae3f2a8426cc333cca109a4c6793d1da2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384632"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724323"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Csatlakozhat a HDInsight (az Apache Hadoop) SSH-val
 
@@ -63,7 +63,7 @@ A Microsoft Windows alapértelmezés szerint nem telepít SSH-ügyfelet. Az `ssh
 
 * [Git (https://git-scm.com/)](https://git-scm.com/): A `ssh` és `scp` parancs a GitBash parancssorából érhető el.
 
-Számos grafikus SSH-ügyfél is létezik, például a [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) és a [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Bár ezek az ügyfelek használhatók a HDInsighthoz történő kapcsolódáshoz, a kapcsolódás folyamata más, mint az `ssh` segédprogram használatakor. További információt az Ön által használt grafikus ügyfél dokumentációjában talál.
+Számos grafikus SSH-ügyfél is létezik, például a [PuTTY (https://www.chiark.greenend.org.uk/~sgtatham/putty/)](https://www.chiark.greenend.org.uk/~sgtatham/putty/) és a [MobaXterm (https://mobaxterm.mobatek.net/)](https://mobaxterm.mobatek.net/). Bár ezek az ügyfelek használhatók a HDInsighthoz történő kapcsolódáshoz, a kapcsolódás folyamata más, mint az `ssh` segédprogram használatakor. További információt az Ön által használt grafikus ügyfél dokumentációjában talál.
 
 ## <a id="sshkey"></a>Hitelesítés: SSH kulcsok
 
@@ -252,7 +252,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 >
 > * [Az Azure Storage-et használó HDInsight](hdinsight-hadoop-use-blob-storage.md).
 >
-> * [Az Azure Data Lake Store-t használó HDInsight](hdinsight-hadoop-use-data-lake-store.md).
+> * [A HDInsight segítségével az Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md).
 
 ## <a name="next-steps"></a>További lépések
 

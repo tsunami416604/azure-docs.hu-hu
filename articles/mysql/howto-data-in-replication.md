@@ -1,20 +1,17 @@
 ---
 title: Az adatok replikálása az Azure Database-be a MySQL-hez készült adatok a replikáció konfigurálása.
 description: Ez a cikk azt ismerteti, hogyan állítható be adatokat a replikáció az Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497926"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539619"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database MySQL-adatok a replikáció konfigurálása
 
@@ -156,7 +153,7 @@ Az alábbi lépéseket előkészítése, és a MySQL futó kiszolgálót a helys
    - master_password: a főkiszolgáló jelszavát
    - master_log_file: futását bináris naplófájl neve `show master status`
    - master_log_pos: futását bináris naplójának pozíciója `show master status`
-   - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezetben. Ha nem használ SSL, üres karakterláncot adja át.
+   - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezet. Ha nem használ SSL, üres karakterláncot adja át.
        - Javasoljuk, hogy ezt a paramétert a átadhatja egy változóként. Az alábbiakban talál további információt.
 
 > [!NOTE]

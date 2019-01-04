@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186310"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631668"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
@@ -44,6 +44,10 @@ Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója vál
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók
 A Media Services REST API-korábbi verziók kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
+
+## <a name="december-2018"></a>2018. december
+
+A [Media Hyperlapse előzetes](media-services-hyperlapse-content.md) az Azure Media Services szolgáltatása hamarosan megszűnik. 2018. December 19., kezdve a Media Services fog már nem győződjön meg arról, módosításokat és fejlesztéseket Media hyperlapse használatával való. 2019. március 29., a kivont és már nem elérhető lesz.
 
 ## <a name="october-2018"></a>2018. október
 

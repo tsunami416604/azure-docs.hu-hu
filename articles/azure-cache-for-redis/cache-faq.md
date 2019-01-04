@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260752"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971528"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis.
@@ -83,7 +83,7 @@ Ebben a szakaszban a gyakori kérdések a leggyakoribb monitorozási és hibaelh
 * [Melyik Azure gyorsítótárat használjam a megfelelő a számomra?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Mi az Azure Cache redis?
-A Redis az Azure Cache a népszerű nyílt forráskódú alapján [Azure Cache redis](http://redis.io). A Microsoft által felügyelt, és az Azure-on belül bármely szolgáltatásból elérhető, a Redis egy biztonságos, dedikált Azure Cache hozzáférést biztosít. Részletes ismertetőt talál a [Azure Cache redis](https://azure.microsoft.com/services/cache/) termékoldalán az Azure.com webhelyen.
+A Redis az Azure Cache a népszerű nyílt forráskódú szoftverek alapján [Redis](https://redis.io/). A Microsoft által felügyelt, és az Azure-on belül bármely szolgáltatásból elérhető, a Redis egy biztonságos, dedikált Azure Cache hozzáférést biztosít. Részletes ismertetőt talál a [Azure Cache redis](https://azure.microsoft.com/services/cache/) termékoldalán az Azure.com webhelyen.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Hogyan elkezdhetem használni az Azure Cache redis?
 Többféleképpen is kezdheti az Azure Cache redis.
@@ -174,7 +174,7 @@ Igen, Azure Cache redis érhető el az Azure Government Cloud, Azure China Cloud
 Azure Cache a redis és más felhők használatánál megfontolandó szempontokról további információért tekintse meg a következő hivatkozásokat.
 
 - [Az Azure Government-adatbázisok – az Azure Cache redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Az Azure China Cloud – az Azure Cache redis](https://www.azure.cn/documentation/services/azure-cache-for-redis/)
+- [Az Azure China Cloud – az Azure Cache redis](https://www.azure.cn/home/features/redis-cache/)
 - [A Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
 Azure Cache redis a PowerShell-lel az Azure Government Cloud, Azure China Cloud és a Microsoft Azure Germany használatával további információkért lásd: [kapcsolódás más felhőkben – Azure Cache redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).

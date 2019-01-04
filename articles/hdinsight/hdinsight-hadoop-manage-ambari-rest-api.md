@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384231"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715109"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -26,7 +26,7 @@ Az Apache Ambari leegyszerűsíti a kezelése és figyelése a Hadoop-fürt azá
 
 ## <a id="whatis"></a>Mi az Apache Ambari
 
-[Az Apache Ambari](http://ambari.apache.org) biztosít a webes felhasználói felületen, kezelni és megfigyelni a Hadoop-fürtök használható. A fejlesztők beépíthetik ezeket a képességeket alkalmazásaikban használatával a [az Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Az Apache Ambari](https://ambari.apache.org) biztosít a webes felhasználói felületen, kezelni és megfigyelni a Hadoop-fürtök használható. A fejlesztők beépíthetik ezeket a képességeket alkalmazásaikban használatával a [az Ambari REST API-k](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Alapértelmezett Linux-alapú HDInsight-fürtök az Ambari biztosítják.
 
@@ -232,7 +232,7 @@ foreach($item in $respObj.items) {
 
 ## <a name="example-get-the-default-storage"></a>Példa: Az alapértelmezett tároló beolvasása
 
-Egy HDInsight-fürt létrehozásakor meg kell használnia egy Azure Storage-fiók vagy a Data Lake Store az alapértelmezett tárolóként a fürt számára. Az Ambari segítségével ezen információk lekérése, a fürt létrehozása után. Ha például szeretné az adatok olvasására/írására HDInsight kívül a tárolóhoz.
+Egy HDInsight-fürt létrehozásakor meg kell használnia egy Azure Storage-fiók vagy a Data Lake Storage az alapértelmezett tárolóként a fürt számára. Az Ambari segítségével ezen információk lekérése, a fürt létrehozása után. Ha például szeretné az adatok olvasására/írására HDInsight kívül a tárolóhoz.
 
 Az alábbi példák az alapértelmezett tárolási konfiguráció lekérése a fürt:
 
@@ -255,9 +255,9 @@ A visszaadott érték hasonlít az alábbi példák egyikét:
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Ez az érték azt jelzi, hogy a fürt egy Azure Storage-fiókot használja az alapértelmezett tároló. A `ACCOUNTNAME` a storage-fiók neve. A `CONTAINER` része annak a neve, a storage-fiókban lévő blobtárolóba. A tároló-e a fürt HDFS-kompatibilis tárolás gyökerében.
 
-* `adl://home` – Ez az érték azt jelzi, hogy a fürt van egy Azure Data Lake Store használatával az alapértelmezett tároló.
+* `adl://home` – Ez az érték azt jelzi, hogy a fürt az Azure Data Lake Storage használja alapértelmezett tárolóként.
 
-    A Data Lake Store-fiók nevét, használja az alábbi példák:
+    A Data Lake Storage-fiók nevét, használja az alábbi példák:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -271,9 +271,9 @@ A visszaadott érték hasonlít az alábbi példák egyikét:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    A visszaadott érték hasonlít a `ACCOUNTNAME.azuredatalakestore.net`, ahol `ACCOUNTNAME` a Data Lake Store-fiók neve.
+    A visszaadott érték hasonlít a `ACCOUNTNAME.azuredatalakestore.net`, ahol `ACCOUNTNAME` a Data Lake Storage-fiók neve.
 
-    A könyvtár belül, amely tartalmazza a fürt tárolóhelyét Data Lake Store, használja az alábbi példák:
+    Data Lake Storage, amely tartalmazza a fürt tárolóhelyét a címtárhoz, használja az alábbi példák:
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -287,7 +287,7 @@ A visszaadott érték hasonlít az alábbi példák egyikét:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    A visszaadott érték hasonlít a `/clusters/CLUSTERNAME/`. Ez az érték út a Data Lake Store-fiókon belül. Ez az elérési út a HDFS-kompatibilis a fájlrendszer a fürt gyökerében. 
+    A visszaadott érték hasonlít a `/clusters/CLUSTERNAME/`. Ez az érték út a Data Lake Storage-fiókon belül. Ez az elérési út a HDFS-kompatibilis a fájlrendszer a fürt gyökerében. 
 
 > [!NOTE]  
 > A `Get-AzureRmHDInsightCluster` parancsmag által biztosított [Azure PowerShell-lel](/powershell/azure/overview) is információval a tároló a fürt számára.

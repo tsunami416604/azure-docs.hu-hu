@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: danlep
-ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619843"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993290"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -47,6 +47,7 @@ Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások �
 * Észak-Európa (northeurope)
 * Nyugat-Európa (westeurope)
 * USA nyugati RÉGIÓJA (westus)
+* USA keleti RÉGIÓJA (USA keleti régiója)
 
 **Nem támogatott** hálózati erőforrások:
 
@@ -183,9 +184,9 @@ A kimenet kell megjelennie, amely `wget` tudta csatlakozhat, és töltse le az i
 
 Egy meglévő virtuális hálózatot egy YAML-fájl használatával is telepítheti egy tárolócsoport. Egy alhálózatot a virtuális hálózatban való üzembe helyezéséhez meg néhány további tulajdonságok a YAML:
 
-* `ipAddress`: Az IP-cím beállításait, a tárolócsoport.
+* `ipAddress`: A tárolócsoport IP-cím beállításait.
   * `ports`: A portok megnyitásához, ha van ilyen.
-  * `protocol`: A protokollt (TCP vagy UDP) a megnyitott port.
+  * `protocol`: A protokoll (TCP vagy UDP) a megnyitott port.
 * `networkProfile`: Itt adhatja meg a hálózati beállítások, például a virtuális hálózatot és alhálózatot az Azure-beli erőforráshoz.
   * `id`: A teljes erőforrás-kezelő erőforrás-Azonosítóját a `networkProfile`.
 

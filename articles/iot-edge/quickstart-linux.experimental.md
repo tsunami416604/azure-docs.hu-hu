@@ -4,17 +4,17 @@ description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és ü
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/14/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: dc9ad544bb974dded098a27855ff5f6b9885d879
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 44b47a595c422f62cae13fb1aeb582e0c15787d6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556577"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973502"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Gyors útmutató: Az első IoT Edge-modul x64 Linux rendszerű eszközre telepítéséhez
 
@@ -55,11 +55,13 @@ Felhőerőforrások:
 
 IoT Edge-eszköz:
 
-* Egy Linux rendszerű eszköz vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. Azt javasoljuk, hogy használja a Microsoft által biztosított [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtuális géphez, amely az IoT Edge-futtatókörnyezet rendszer előtelepítése. Hozza létre a virtuális gép a következő paranccsal:
+* Egy Linux rendszerű eszköz vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. Azt javasoljuk, hogy használja a Microsoft által biztosított [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtuális gépet, mely előtelepíti tudnivalót az IoT Edge futtatják egy eszközön. Hozza létre a virtuális gép a következő paranccsal:
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
+
+   Hozzon létre, és az új virtuális gép elindítása néhány percig is eltarthat. 
 
    Amikor létrehoz egy új virtuális gépet, jegyezze fel a a **publicIpAddress**, amely a create parancs kimenete részeként van megadva. A nyilvános IP-cím használatával fog csatlakozni a virtuális géphez az útmutató későbbi részében.
 
@@ -86,9 +88,10 @@ A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResourc
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
 Regisztráljon egy IoT Edge-eszközt az újonnan létrehozott IoT Hubon.
+
 ![Diagram - eszköz regisztrálása az IoT Hub identitással](./media/quickstart-linux/register-device.png)
 
-Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunikálhasson az IoT Hubbal. Az eszközidentitás a felhőben található, és egy egyedi eszközkapcsolati sztringgel társíthat fizikai eszközt az eszközidentitáshoz. 
+Hozzon létre egy új eszközidentitást az IoT Edge-eszköz számára, így az képes legyen kommunikálni az IoT hub. Az eszközidentitás a felhőben található, és egy egyedi eszközkapcsolati sztringgel társíthat fizikai eszközt az eszközidentitáshoz. 
 
 IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök felügyelhetők, mivel ezt az identitást, az IoT Edge-eszköz, a deklarálja a `--edge-enabled` jelzőt. 
 
@@ -110,9 +113,10 @@ IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök f
 
    ![Kapcsolati karakterlánc lekérése a CLI-kimenetből](./media/quickstart/retrieve-connection-string.png)
 
-## <a name="connect-the-iot-edge-device-to-iot-hub"></a>Az IoT Edge-eszköz csatlakoztatása az IoT hubhoz
+## <a name="configure-your-iot-edge-device"></a>Az IoT Edge-eszköz konfigurálása
 
-Telepítse és indítsa el IoT Edge-eszközén az Azure IoT Edge-futtatókörnyezetet. 
+Indítsa el az Azure IoT Edge-futtatókörnyezet az IoT Edge-eszközön. 
+
 ![Diagram - indítása a futtatókörnyezet az eszközön](./media/quickstart-linux/start-runtime.png)
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli. 
@@ -121,30 +125,26 @@ A futtatókörnyezet konfigurálása során meg kell adnia egy eszközkapcsolati
 
 ### <a name="set-the-connection-string-on-the-iot-edge-device"></a>Beállítjuk a kapcsolati karakterláncot az IoT Edge-eszközön
 
-* Ubuntu virtuális gépen az Azure IoT Edge használata esetén használja az eszköz kapcsolati karakterláncának korábban vágólapra másolt és így távolról konfigurálhat az IoT Edge-eszköz:
+Ha használja az Azure IoT Edge Ubuntu virtuális gép ajánlott az előfeltételeket, majd az eszköz már telepítve van az IoT Edge-futtatókörnyezet. Csak az eszköz konfigurálásához az eszköz kapcsolati karakterlánccal, amely az előző szakaszban lekért kell. Ehhez távolról csatlakozhat a virtuális géphez nélkül. Futtassa a következő parancsot, és cserélje le **{device_connection_string}** saját karakterlánccal. 
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
    ```
 
-   A fennmaradó lépéseiért beolvasni a nyilvános IP-címet, amely a létrehozási parancs kimeneti volt. A nyilvános IP-címet a virtuális gép – Áttekintés lapon az Azure Portalon is található. Az alábbi parancs segítségével csatlakozhat a virtuális géphez. Cserélje le **{publicIpAddress}** számítógépe címmel. 
+IoT Edge futtatásakor a helyi számítógépre vagy egy ARM32 eszközön, az eszközön az IoT Edge-futtatókörnyezet és előfeltételei telepíteni szeretné. Kövesse a [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) vagy [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md), majd térjen vissza ehhez a rövid. 
+
+### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
+
+Ebben a rövid útmutatóban szereplő parancsok a többi elvégezze az IoT Edge-eszköz, így láthatja, mi történik az eszközön. Ha egy virtuális gépet használ, csatlakozzon, hogy a gép most már használja a nyilvános IP-címet, amely a létrehozási parancs kimeneti volt. A nyilvános IP-címet a virtuális gép – Áttekintés lapon az Azure Portalon is található. Az alábbi parancs segítségével csatlakozhat a virtuális géphez. Cserélje le **{azureuser}** javasolt az előfeltételeket, mint más felhasználónevet használatakor. Cserélje le **{publicIpAddress}** számítógépe címmel. 
 
    ```azurecli-interactive
    ssh azureuser@{publicIpAddress}
    ```
 
-* IoT Edge futtatásakor a helyi számítógépre vagy egy ARM32 eszközön, nyissa meg a konfigurációs fájlban található /etc/iotedge/config.yaml és frissítse a **device_connection_string** változó értékét a korábban vágólapra másolt, majd indítsa újra a az IoT Edge biztonsági démon a módosítások alkalmazásához:
-
-   ```bash
-   sudo systemctl restart iotedge
-   ```
+Győződjön meg arról, hogy sikeres volt-e telepítve a modul, és az IoT Edge-eszköz konfigurálva. 
 
 >[!TIP]
 >Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig alkalmazza a **sudo** kifejezést a parancsok előtt. 
-
-### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
-
-Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfigurálva.
 
 1. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e.
 
@@ -189,15 +189,18 @@ Nyissa meg a parancssort az IoT Edge-eszközön újra, vagy használja az Azure 
 
    ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2.png)
 
-Tekintse meg a tempSensor modul által küldött üzeneteket:
+A hőmérséklet-érzékelő modul küldött üzenetek megjelenítése:
 
    ```bash
-   sudo iotedge logs tempSensor -f
+   sudo iotedge logs SimulatedTemperatureSensor -f
    ```
 
-![A modulból származó adatok megtekintése](./media/quickstart-linux/iotedge-logs.png)
+   >[!TIP]
+   >IoT Edge-parancsok modulneveket kontextusban való megnevezésekor nagybetűk között.
 
-Előfordulhat, hogy a hőmérsékletérzékelő modul az Edge Hubhoz való csatlakozásra vár, ha a napló utolsó sora `Using transport Mqtt_Tcp_Only`. Próbálja meg leállítani a modult, és hagyja, hogy az Edge-ügynök újraindítsa. A modult a következő paranccsal állíthatja le: `sudo docker stop tempSensor`.
+   ![A modulból származó adatok megtekintése](./media/quickstart-linux/iotedge-logs.png)
+
+A hőmérséklet-érzékelő modul vár az Edge Hub csatlakozni, ha az utolsó sor jelenik meg a napló **átviteli Mqtt_Tcp_Only használatával**. Próbálja ki a modul leállítása, és lehetővé teszi az Edge Agent, indítsa újra. A paranccsal állíthatja le `sudo docker stop SimulatedTemperatureSensor`.
 
 Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény). 
 
@@ -231,10 +234,10 @@ Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tá
    sudo docker ps -a
    ```
 
-Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. Ha más nevet adott neki, módosítsa a tempSensor tároló nevét. 
+Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. 
 
    ```bash
-   sudo docker rm -f tempSensor
+   sudo docker rm -f SimulatedTemperatureSensor
    sudo docker rm -f edgeHub
    sudo docker rm -f edgeAgent
    ```

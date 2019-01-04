@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: caf3ecb64d0bdb5771b2fde705fdcbffdffccacb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957463"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969301"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység
-Ez a cikk egészíti ki a fő Azure Data Factory - integráció a cikk az Azure Machine Learning: [hozhatók létre prediktív adatcsatornák Azure Machine Learning és az Azure Data Factory](transform-data-using-machine-learning.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket. 
+Ez a cikk a fő Azure Data Factory - integráció a cikk az Azure Machine Learning egészíti ki: [Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása](transform-data-using-machine-learning.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket. 
 
 ## <a name="overview"></a>Áttekintés
 A modell Azure Machine Learning-modellek modellezést, a folyamat részeként a betanított és mentve. Ezt követően használhatja azt egy prediktív webszolgáltatás létrehozására. A Web service a webhelyek, az irányítópultok és a mobile apps majd használhatók fel.
@@ -93,7 +93,7 @@ A második társított Azure Machine Learning szolgáltatás a konfiguráció el
 Ha a webszolgáltatás, amely egy Azure Resource Manager-végpontot tesz közzé az új típusú, nem kell hozzáadnia a második **nem alapértelmezett** végpont. A **updateResourceEndpoint** formátum van a hivatkozott szolgáltatásban található: 
 
 ```
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
 Kérheti értékek helyen jogosultak az URL-cím számára a webszolgáltatás a lekérdezésekor a [Azure Machine Learning Web Services portálon](https://services.azureml.net/). 
@@ -118,7 +118,7 @@ Itt látható egy minta a társított szolgáltatás definíciójában:
             "type": "SecureString",
             "value": "APIKeyOfEndpoint1"
             },
-            "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. ",
+            "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview",
             "servicePrincipalId": "000000000-0000-0000-0000-0000000000000",
             "servicePrincipalKey": {
             "type": "SecureString",
@@ -133,7 +133,7 @@ Itt látható egy minta a társított szolgáltatás definíciójában:
 A következő esetben további részletekkel. Rendelkezik egy példa átképezési és a egy Azure Data Factory-folyamatot az Azure ML-modellek frissítése.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Példa: Átképezési, és egy Azure Machine Learning-modellek
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Minta: Átképezési és a egy Azure Machine Learning-modellek
 
 Ez a szakasz egy minta folyamatát, amely tartalmazza a **Azure ML kötegelt végrehajtási tevékenység** a modellek újratanítása. A folyamatot is alkalmaz a **Azure Machine Learning Update Resource-tevékenységek** az pontozási webszolgáltatás a modell frissítése. A szakasz is biztosít JSON-kódrészletek a társított szolgáltatások, adatkészletek és a példában található folyamat.
 

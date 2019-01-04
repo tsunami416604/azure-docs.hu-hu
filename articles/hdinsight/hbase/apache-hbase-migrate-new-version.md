@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499298"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650103"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Az Apache HBase-fürt áttelepítése új verzióra
 
@@ -26,16 +26,16 @@ Feladat-alapú fürtök esetében például [Apache Spark](https://spark.apache.
 4. Átmeneti adatok importálása.
 5. Indítsa el a feladatokat, és folytatja a műveletet az új fürtön.
 
-Frissítése az [Apache HBase](http://hbase.apache.org/) fürt további lépésekre van szükség, ebben a cikkben leírtak szerint.
+Frissítése az [Apache HBase](https://hbase.apache.org/) fürt további lépésekre van szükség, ebben a cikkben leírtak szerint.
 
-> [!NOTE]
+> [!NOTE]  
 > A frissítés során állásidő minimális, perc sorrendjéről kell lennie. Az üzemszünet kiüríteni a memóriában lévő összes adatot, majd konfigurálja, és indítsa újra az új fürtön a szolgáltatásokat az idő okozza a lépéseket. Az eredmények csomópontok, adatok mennyisége és más változók számától függően változhat.
 
 ## <a name="review-apache-hbase-compatibility"></a>Tekintse át az Apache HBase-kompatibilitás
 
-Az Apache HBase a frissítés előtt győződjön meg arról, a HBase-verziók a forrás és cél fürtökön kompatibilisek. További információkért lásd: [Hadoop elérhető HDInsight-összetevők és verziók](../hdinsight-component-versioning.md).
+Az Apache HBase a frissítés előtt győződjön meg arról, a HBase-verziók a forrás és cél fürtökön kompatibilisek. További információkért lásd: [elérhető HDInsight az Apache Hadoop-összetevők és verziók](../hdinsight-component-versioning.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Kifejezetten ajánljuk, hogy tekintse át az a verzió-kompatibilitási mátrixot a [HBase könyv](https://hbase.apache.org/book.html#upgrading).
 
 Íme egy példa verziójú kompatibilitási mátrix, ahol Y azt jelzi, hogy kompatibilitási és N azt jelzi, hogy egy esetleges kompatibilitási:
@@ -54,7 +54,7 @@ Az Apache HBase a frissítés előtt győződjön meg arról, a HBase-verziók a
 | Függőségi kompatibilitása | N | I | I |
 | Működési kompatibilitása | N | N | I |
 
-> [!NOTE]
+> [!NOTE]  
 > A HBase verzió kibocsátási megjegyzésekben használhatatlanná tévő inkompatibilitásokat le kell írni.
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>A frissítés ugyanazt az Apache HBase-főverzió
@@ -203,7 +203,7 @@ A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindke
 9. Ambari jelzett módon, indítsa újra az összes szükséges szolgáltatást.
 10. Az alkalmazás az új fürtre mutat.
 
-    > [!NOTE]
+    > [!NOTE]  
     > A statikus DNS, az alkalmazás módosítja a frissítése. Fix kódolása helyett a DNS, konfigurálhatja egy olyan CNAME REKORDOT a tartománynév DNS-beállítások, amely a fürt neve. Egy másik lehetőség, használhat egy konfigurációs fájlt az alkalmazás újbóli telepítése nélkül frissíthető.
 
 11. Indítsa el a bevitelt megtekintheti, ha minden rendben van a várt módon működik.
@@ -211,7 +211,7 @@ A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindke
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a [Apache HBase](http://hbase.apache.org/) és a HDInsight-fürtök frissítése, lásd az alábbi cikkeket:
+Tudjon meg többet a [Apache HBase](https://hbase.apache.org/) és a HDInsight-fürtök frissítése, lásd az alábbi cikkeket:
 
 * [Egy HDInsight-fürt frissítése újabb verzióra](../hdinsight-upgrade-cluster.md)
 * [Figyelése és felügyelete az Azure HDInsight az Apache Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)

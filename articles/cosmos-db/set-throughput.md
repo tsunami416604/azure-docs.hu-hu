@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 54b2ada0f269bca681305efc2e1eb7c2f9776ab7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075352"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543002"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli
 
@@ -47,7 +47,7 @@ Ajánlott konfigurálása átviteli sebesség, adatbázis, ha meg szeretné oszt
 
 * Az adatbázis kiosztott átviteli sebesség megosztása több tárolók akkor hasznos, ha telepít át egy NoSQL-adatbázis (például a MongoDB, a Cassandra) üzemeltetett virtuális gépek, illetve a helyszíni fizikai kiszolgálóknak az Azure Cosmos DB. A kiosztott átviteli logikai megfelelője (de több költséghatékony és rugalmas), valamint a számítási kapacitás, a mongodb-hez vagy a Cassandra-fürt az Azure Cosmos Database konfigurált is felfoghatók.  
 
-Megadott idő bármikor az adatbázison belüli egy tároló kiosztott átviteli legyen elosztva a tároló összes logikai partíciót. Tárolók, megosztás, adatbázis kiosztott átviteli sebesség, ha külön-külön nem alkalmazhat az átviteli sebességet egy adott tároló és a egy logikai partíciót. A logikai partíció terhelése nagyobb átviteli sebesség az adott logikai partíció számára lefoglalt használ fel, a műveletek sebessége korlátozott lesz. A sebességhatárolt történik, ha növelni az átviteli sebesség a teljes tárolót, vagy próbálja megismételni a műveletet. A particionálás további információkért lásd: [logikai partíció](partition-data.md).
+A partíciókulccsal rendelkező összes tárolót hozott létre egy adatbázist, a kiosztott átviteli sebesség belül kell létrehozni. Megadott idő bármikor az adatbázison belüli egy tároló kiosztott átviteli legyen elosztva a tároló összes logikai partíciót. Tárolók, megosztás, adatbázis kiosztott átviteli sebesség, ha külön-külön nem alkalmazhat az átviteli sebességet egy adott tároló és a egy logikai partíciót. A logikai partíció terhelése nagyobb átviteli sebesség az adott logikai partíció számára lefoglalt használ fel, a műveletek sebessége korlátozott lesz. A sebességhatárolt történik, ha növelni az átviteli sebesség a teljes tárolót, vagy próbálja megismételni a műveletet. A particionálás további információkért lásd: [logikai partíció](partition-data.md).
 
 A adatbázishoz létesített átviteli sebesség megosztása több logikai partíciót az egységes erőforrás-partíció lehet üzemeltetni. Egy adott tároló egy logikai partíció mindig hatókörét erőforrás partíción belül, miközben "L" logikai partíció között a kiosztott átviteli sebesség az adatbázis megosztása "C" tárolók hozzárendelve, és található fizikai partíciók "R". A következő kép bemutatja, hogyan erőforrás-partíció egy vagy több logikai partíciót, egy adatbázison belül különböző tárolók tartozó üzemeltetésére is képes:
 

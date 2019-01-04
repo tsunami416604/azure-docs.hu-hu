@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711157"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754815"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Gyors útmutató: Blobok feltöltése, letöltése, és lista Go használatával
 
 A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkblobok feltöltésére, letöltésére és listázására az Azure Blob Storage-ban található tárolókban. 
 
@@ -51,14 +51,14 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Blob Storage-hoz k�
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 Ehhez a megoldáshoz a tárfióknevét és -kulcsát biztonságosan legyen tárolnia helyileg, a mintakódot futtató gép környezeti változóiban. A környezeti változók létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -148,7 +148,7 @@ handleErrors(err)
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a rövid útmutató is ezeket használja.  
 
-Ha fel szeretne tölteni egy fájlt egy blobba, nyissa meg a fájlt az **os.Open** használatával. Ezután feltöltheti a fájlt a megadott útvonalra a következő REST API-k egyikével: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Ha fel szeretne tölteni egy fájlt egy blobba, nyissa meg a fájlt az **os.Open** használatával. Ezt követően feltöltheti a fájlt a megadott elérési úthoz, a REST API-k egyikével: Feltöltés (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
 Másik lehetőségként az SDK az alacsony szintű REST API-kra épülő [magas szintű API-kat](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) is kínál. Az ***UploadFileToBlockBlob*** függvény például StageBlock (PutBlock) műveletekkel több darabban, egyszerre tölt fel egy fájlt az adatátvitel optimalizálása érdekében. Ha a fájl 256 MB-nál kisebb, a StageBlock (PutBlock) műveletek helyett az Upload (PutBlob) műveletet használja, és egy tranzakcióban hajtja végre az átvitelt.
 

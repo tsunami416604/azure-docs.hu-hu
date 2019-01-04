@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/12/2018
+ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 9f229caa76059db403ced5b74c7a35ec2f0b8e9d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 91966bf2958b1670559aa57076eae7a62214fec5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721891"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809801"
 ---
-# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Kulcs szempontok: services használatával, vagy alkalmazások készítéséhez az Azure Stackhez
+# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Fontos szempontok: Szolgáltatások használatával, vagy alkalmazások készítéséhez az Azure Stackhez
 
 Mielőtt szolgáltatások használatára, vagy alkalmazásokat hozhat létre az Azure Stack, ismernie kell az Azure Stack- és Azure közötti különbségeket. Ez a cikk azonosítja a legfontosabb szempont, amikor az Azure Stack használatával a hibrid felhőalapú fejlesztési környezet.
 
@@ -36,12 +36,13 @@ Az Azure műszaki tartalom azt feltételezi, hogy alkalmazásokat fejlesztenek k
 * Az Azure Stack biztosít egy **részhalmazát** szolgáltatásokat és az Azure-ban elérhető szolgáltatásokat.
 * A vállalat vagy a service provider kiválaszthatja, hogy mely szolgáltatásokat, azok kíván kíván felajánlani. A rendelkezésre álló beállítások testre szabott szolgáltatások vagy alkalmazások lehetnek. Előfordulhat, hogy a saját testre szabott dokumentáció kínálnak.
 * A megfelelő kell használni (például a portál címet és az Azure Resource Manager-végpont URL-címek) az Azure Stack-specifikus végpontok.
-* PowerShell és API-verziók az Azure Stack által támogatott kell használnia. Támogatott verziók használata biztosítja, hogy az alkalmazások működni fog-e az Azure Stack és az Azure.
+* PowerShell és API-verziók az Azure Stack által támogatott kell használnia. Támogatott verziók használata biztosítja, hogy működik-e az alkalmazások az Azure Stack és az Azure.
 
-## <a name="cheat-sheet-high-level-differences"></a>Hasznos tanácsok: fontos eltérést
+## <a name="cheat-sheet-high-level-differences"></a>Hasznos tanácsok: Magas szintű különbségek
 
 A következő táblázat ismerteti az Azure Stack és az Azure magas szintű különbségeit. Fejlesztés az Azure Stackhez vagy az Azure Stack-szolgáltatások használatára, tartsa szem előtt a különbségeket.
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 | Terület | Azure (globális) | Azure Stack |
 | -------- | ------------- | ----------|
@@ -52,17 +53,17 @@ A következő táblázat ismerteti az Azure Stack és az Azure magas szintű kü
 | Portál URL-címe * | [https://portal.azure.com](https://portal.azure.com) | Az Azure Stackkel integrált rendszer nyissa meg az Azure Stack-operátorokról megadott URL-CÍMÉT.<br><br>A fejlesztői készlet használja: https://portal.local.azurestack.external
 | Régió | Kiválaszthatja, hogy melyik régiót szeretné telepíteni. | Az Azure Stackkel integrált rendszer használja a régiót, amelyben a rendszeren érhető el.<br><br>A fejlesztői csomag régió mindig lesz **helyi**.
 | Erőforráscsoportok | Egy erőforráscsoport régióban is kiterjedhetnek. | Integrált rendszerek és a csomag nincs csak egy régiót.
-|Támogatott névtereket, erőforrástípusok és API-verziók | A legújabb (vagy régebbi verziójú, amely még nem avult). | Az Azure Stack támogatja a verziókkal. Ez a cikk "Verziójával kapcsolatos követelmények" című szakaszában talál.
+|Támogatott névtereket, erőforrástípusok és API-verziók | A legújabb (vagy régebbi verziójú, amely még nem avult). | Az Azure Stack támogatja a verziókkal. Tekintse meg a [verziókövetelményekért](#version-requirements) című szakaszát.
 | | |
 
 Ha a áll az Azure Stack operátorait, lásd: [a felügyeleti portál használatával](../azure-stack-manage-portals.md) és [Adminisztráció alapjai](../azure-stack-manage-basics.md) további információt.
 
 ## <a name="helpful-tools-and-best-practices"></a>Hasznos eszközök és ajánlott eljárások
  
- A Microsoft biztosít több eszközöket és útmutatást, amellyel fejlesztése az Azure Stackhez.
+ A Microsoft biztosít eszközöket és útmutatást, amelyek segítségével fejlesztése az Azure Stackhez.
 
-| Ajánlás | Referencia | 
-| -------- | ------------- | 
+| Ajánlás | Referencia |
+| -------- | ------------- |
 | Telepítse a megfelelő eszközöket a fejlesztői munkaállomásán. | - [A PowerShell telepítése](azure-stack-powershell-install.md)<br>- [Eszközök letöltése](azure-stack-powershell-download.md)<br>- [A PowerShell konfigurálása](azure-stack-powershell-configure-user.md)<br>- [A Visual Studio telepítése](azure-stack-install-visual-studio.md) 
 | Tekintse át a következő elemek:<br>– Az azure Resource Manager-sablon kapcsolatos szempontok<br>-Hogyan gyorsindítási sablonok keresése<br>-Házirendmodul használata segít az Azure-fejlesztés az Azure Stackhez | [Fejlesztés az Azure Stackhez](azure-stack-developer.md) | 
 | Tekintse át és kövesse az ajánlott eljárások a sablonokhoz. | [Resource Manager gyorsindítási sablonok](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
@@ -75,16 +76,16 @@ Az Azure Stack az Azure PowerShell és az Azure-szolgáltatás API-k adott verzi
 Győződjön meg arról, hogy az Azure PowerShell megfelelő verzióját használja, használja a [API-verzióprofilok](azure-stack-version-profiles.md). Annak megállapításához, a legújabb API verzió-profilt, amelyet használhat, megtudhatja a build, az Azure Stack használata esetén. Ezt az információt kaphat az Azure Stack rendszergazdájától.
 
 >[!NOTE]
- Ha az Azure Stack Development Kit használ, és rendelkezik rendszergazdai hozzáféréssel, "Az aktuális verzió meghatározása" című szakaszában talál [frissítéseinek kezelése](../azure-stack-updates.md#determine-the-current-version) meghatározni az Azure Stack-build.
+ Ha az Azure Stack fejlesztői készletet használ, és rendelkezik rendszergazdai hozzáféréssel, tekintse meg a [határozza meg a jelenlegi verzió](../azure-stack-updates.md#determine-the-current-version) szakaszban határozza meg az Azure Stack hozhat létre.
 
-A más API-k futtassa a következő PowerShell-parancsot a kimenetben a névterek, erőforrástípusok és API-verziók által támogatott az Azure Stack-előfizetéssel. Vegye figyelembe, hogy továbbra is lehet különbségek tulajdonság szinten. (A parancs működéséhez rendelkeznie kell már [telepített](azure-stack-powershell-install.md) és [konfigurált](azure-stack-powershell-configure-user.md) PowerShell az Azure Stack-környezet. Akkor is rendelkeznie kell az ajánlatot az Azure Stack-előfizetést.)
+A más API-k futtassa a következő PowerShell-parancsot a kimenetben a névterek, erőforrástípusok és API-verziók által támogatott az Azure Stack-előfizetéssel. Vegye figyelembe, hogy továbbra is lehet különbségek tulajdonság szinten. Ez a parancs működéséhez rendelkeznie kell már [telepített](azure-stack-powershell-install.md) és [konfigurált](azure-stack-powershell-configure-user.md) PowerShell az Azure Stack-környezet. Ajánlat az Azure Stack-előfizetést is rendelkeznie kell.
 
 ```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-Example output (truncated): ![Example output of Get-AzureRmResourceProvider command](media/azure-stack-considerations/image1.png)
+Példa a kimenetre (csonkolt): ![Például a Get-AzureRmResourceProvider parancs kimenetéből](media/azure-stack-considerations/image1.png)
  
 ## <a name="next-steps"></a>További lépések
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b8172ba50f7fec8f0aa1ba768c05d087ecabf8c8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 064aeaea47dd59a1dd75cf19ea4060d8f9c2c4bf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285416"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559059"
 ---
-# <a name="sfctl-mesh-secretvalue"></a>sfctl-háló secretvalue
+# <a name="sfctl-mesh-secretvalue"></a>sfctl mesh titkos kódjának értéke
 GET és delete háló secretvalue erőforrásokat.
 
 ## <a name="commands"></a>Parancsok
@@ -29,7 +29,7 @@ GET és delete háló secretvalue erőforrásokat.
 |Parancs|Leírás|
 | --- | --- |
 | delete | A megadott értéket az elnevezett titkos erőforrás törlése. |
-| lista | A listában szereplő összes érték neve az a megadott titkos erőforrás. |
+| lista | Az összes érték a megadott titkos erőforrás nevét. |
 | Show | Kérje le az értéket, a titkos erőforrás adott verzióját. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl-háló secretvalue delete

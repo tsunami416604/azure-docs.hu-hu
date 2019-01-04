@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 8454a22b02f28ece45ce04464f8f2658f745b53e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6701443807a2709edf08a2b979cd59bebacb7b5d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163344"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790156"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -73,10 +73,8 @@ Remove-AzureRmResourceGroup -Name <Resource Group Name>
 ## <a name="scale-clusters"></a>Fürtök méretezése
 A fürtméretezés egy funkció lehetővé teszi, hogy a fürt újbóli létrehozása nélkül fut az Azure HDInsight-fürt által használt munkavégző csomópontok számának módosítását.
 
-> [!NOTE]
-> Csak 3.1.3 verziójú HDInsight-fürtök vagy újabb verziója támogatott. Ha biztos benne, hogy a fürt verziója, a Tulajdonságok lapon ellenőrizheti.  Lásd: [fürtök listázása és megjelenítése](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
->
->
+> [!NOTE]  
+> Csak 3.1.3 verziójú HDInsight-fürtök vagy újabb verziója támogatott. Ha biztos benne, hogy a fürt verziója, a Tulajdonságok lapon ellenőrizheti.  Lásd: [fürtök listázása és megjelenítése](hdinsight-administer-use-portal-linux.md#showClusters).
 
 A fürt a HDInsight által támogatott különböző típusú adatok csomópontok számának módosításával hatásai:
 
@@ -104,7 +102,7 @@ A fürt a HDInsight által támogatott különböző típusú adatok csomóponto
   * A Storm webes felhasználói felületen
   * Parancssori felület (CLI) eszköz
 
-    Tekintse meg a [Apache Storm-dokumentáció](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) további részletekért.
+    Tekintse meg a [Apache Storm-dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) további részletekért.
 
     A Storm webes felhasználói felületen a HDInsight-fürtön érhető el:
 
@@ -158,10 +156,8 @@ $credential = New-Object System.Management.Automation.PSCredential($hadoopUserNa
 Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > A hozzáférés biztosítása/visszavonása, amelyet alaphelyzetbe állítja a fürthöz tartozó felhasználónevet és jelszót.
->
->
 
 Megadására, és visszavonja az elérését is elvégezhető a portálon keresztül. Lásd: [HDInsight felügyelheti az Azure portal használatával][hdinsight-admin-portal].
 
@@ -207,9 +203,9 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>Feladatok elküldése
-**Az Apache Hadoop MapReduce-feladatok elküldése**
+**A MapReduce-feladatok elküldése**
 
-Lásd: [futtatása HDInsight tartalmazza az Apache Hadoop MapReduce példák](hadoop/apache-hadoop-run-samples-linux.md).
+Lásd: [futtassa a szerepel a HDInsight MapReduce-példák](hadoop/apache-hadoop-run-samples-linux.md).
 
 **Az Apache Hive-feladatok elküldése**
 

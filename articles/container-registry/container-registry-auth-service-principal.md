@@ -1,18 +1,18 @@
 ---
-title: A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
-description: Megtudhatja, hogyan biztosíthat a hozzáférést a privát tárolójegyzékben található rendszerképek az Azure Active Directory egyszerű szolgáltatás használatával.
+title: Az Azure Container Registry hitelesítés szolgáltatásnévvel
+description: A privát tárolójegyzékben található rendszerképek hozzáférést biztosítanak az Azure Active Directory egyszerű szolgáltatás használatával.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854487"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754203"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
 
@@ -20,9 +20,9 @@ Az Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával ad
 
 ## <a name="what-is-a-service-principal"></a>Mi az egyszerű szolgáltatás?
 
-Az Azure AD *egyszerű szolgáltatások* az adott előfizetéshez tartozó Azure-erőforrásokhoz való hozzáférés biztosítása. Is felfoghatók szolgáltatás egyszerű, egy felhasználói identitás egy szolgáltatáshoz, ahol a "szolgáltatás" minden olyan alkalmazás, szolgáltatás vagy a platform, amely az erőforrásokat kell elérnie. A hozzáférési jogosultságok hatóköre csak azokhoz az erőforrásokhoz megad egy egyszerű szolgáltatás segítségével konfigurálhat. Ezt követően konfigurálhatja úgy az alkalmazást vagy szolgáltatást a szolgáltatásnév hitelesítő adatainak használata az erőforrások.
+Az Azure AD *egyszerű szolgáltatások* az adott előfizetéshez tartozó Azure-erőforrásokhoz való hozzáférés biztosítása. Is felfoghatók szolgáltatás egyszerű, egy felhasználói identitás egy szolgáltatáshoz, ahol a "szolgáltatás" minden olyan alkalmazás, szolgáltatás vagy a platform, amely az erőforrásokat kell elérnie. A hozzáférési jogosultságok hatóköre csak azokhoz az erőforrásokhoz megad egy egyszerű szolgáltatás segítségével konfigurálhat. Ezután konfigurálja az alkalmazásnak vagy szolgáltatásnak a szolgáltatásnév hitelesítő adatainak használatával ezek az erőforrások eléréséhez.
 
-Azure Container Registry környezetében létrehozhat egy Azure AD egyszerű szolgáltatás lekéréses, leküldéses és lekéréses vagy tulajdonosi engedélyekkel rendelkező a privát Docker-tárolójegyzék az Azure-ban.
+Azure Container Registry környezetében létrehozhat egy Azure AD egyszerű szolgáltatás lekéréses, leküldéses és lekéréses vagy más engedélyt a privát regisztrációs adatbázisba, az Azure-ban. Teljes listáját lásd: [Azure Container Registry-szerepkörökről és engedélyekről](container-registry-roles.md).
 
 ## <a name="why-use-a-service-principal"></a>Miért érdemes használni egy egyszerű szolgáltatást?
 

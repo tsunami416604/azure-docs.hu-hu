@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840205"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723671"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -30,7 +30,7 @@ A következő elemekre szükség, az ebben a cikkben ismertetett lépéseket kö
 
 - A HDInsight-fürt. Hozzon létre egy fürtöt, tekintse meg [HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
-- [Mono](http://www.mono-project.com/docs/getting-started/install/). Mono csak akkor szükséges, Linux és MacOS rendszeren.
+- [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono csak akkor szükséges, Linux és MacOS rendszeren.
 
 ## <a name="install-the-hdinsight-tools"></a>A HDInsight Tools telepítése
    
@@ -72,7 +72,7 @@ Elküldés előtt szkriptek HDInsight-fürtök a VS Code-ból, szeretné-e csatl
 
 1. Hozzon létre egy új munkahelyi mappa és a egy új parancsfájlt, ha már nincs rájuk.
 
-2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és ezt követően a helyi menüben válassza **HDInsight: bejelentkezési**. Is megadhat **Ctrl + Shift + P**, majd adja meg **HDInsight: bejelentkezési**.
+2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és ezt követően a helyi menüben válassza **HDInsight: Bejelentkezési**. Is megadhat **Ctrl + Shift + P**, majd adja meg **HDInsight: Bejelentkezési**.
 
     ![HDInsight Tools for Visual Studio Code-bejelentkezés](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -87,7 +87,7 @@ Elküldés előtt szkriptek HDInsight-fürtök a VS Code-ból, szeretné-e csatl
 
     Miután csatlakozott, az Azure-fiók nevét a VS Code ablakának bal alsó állapotjelző sáv jelenik meg. 
 
-    > [!NOTE]
+    > [!NOTE]  
     > Egy ismert Azure hitelesítési probléma miatt egy böngészőben nyissa meg a privát vagy inkognitó üzemmódban kell. Ha az Azure-fiókjával két tényező engedélyezve van, ajánlott telefonos hitelesítés használata a PIN-kód-hitelesítés helyett.
   
 
@@ -105,7 +105,7 @@ Elküldés előtt szkriptek HDInsight-fürtök a VS Code-ból, szeretné-e csatl
 <h3 id="linkcluster">A fürt összekapcsolása</h3>
 
 Kapcsolat egy normál fürt használatával egy [Apache Ambari](https://ambari.apache.org/) felügyelt felhasználónév, vagy egy biztonságos Hadoop-fürtön vállalati biztonsági csomag hivatkozásra a tartomány felhasználónév használatával (például: user1@contoso.com).
-1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: egy fürtöt**.
+1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: Egy fürtöt**.
 
    ![hivatkozás fürt parancs](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -113,19 +113,19 @@ Kapcsolat egy normál fürt használatával egy [Apache Ambari](https://ambari.a
    
    ![hivatkozás fürt párbeszédpanel](./media/hdinsight-for-vscode/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > A társított felhasználónevet és jelszót használják, ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz társított. 
    
 3. Parancs használatával megtekintheti a társított fürt **lista fürt**. Most már küldhet egy parancsfájlt, hogy a társított fürtöt.
 
    ![a csatolt fürt](./media/hdinsight-for-vscode/linked-cluster.png)
 
-4. Is megszüntetheti a fürt által bevitelével **HDInsight: a fürt leválasztása** a parancskatalógus.
+4. Is megszüntetheti a fürt által bevitelével **HDInsight: A fürt leválasztása** a parancskatalógus.
 
 
 ### <a name="to-link-a-generic-apache-livy-endpoint"></a>Egy általános Apache Livy-végpontra mutat.
 
-1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: egy fürtöt**.
+1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: Egy fürtöt**.
 2. Válassza ki **általános Livy végpont**.
 3. Adja meg az általános Livy-végpont, például: http://10.172.41.42:18080.
 4. Válassza ki **alapszintű** mikor van szükség az általános Livy-végpont, egyébként, engedélyezési válassza **None**.
@@ -142,7 +142,7 @@ A kapcsolat teszteléséhez, a HDInsight-fürtök listázhatja:
 ### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>A HDInsight-fürtök listázása az Azure-előfizetéshez
 1. Megnyit egy munkaterületet, és csatlakoztassa az Azure-bA. További információkért lásd: [nyissa meg a HDInsight-munkaterület](#open-hdinsight-workspace) és [csatlakozás az Azure](#connect-to-hdinsight-cluster).
 
-2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: lista fürt** a helyi menüből. 
+2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: Fürt listában** a helyi menüből. 
 
 3. A HDInsight-fürtök megjelennek a **kimeneti** ablaktáblán.
 
@@ -151,7 +151,7 @@ A kapcsolat teszteléséhez, a HDInsight-fürtök listázhatja:
 ## <a name="set-a-default-cluster"></a>Egy alapértelmezett fürt beállítása
 1. Megnyit egy munkaterületet, és csatlakozzon az Azure-bA. Lásd: [nyissa meg a HDInsight-munkaterület](#open-hdinsight-workspace) és [csatlakozás az Azure](#connect-to-hdinsight-cluster).
 
-2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: állítsa be a fürt alapértelmezett**. 
+2. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza **HDInsight: Állítsa be a fürthöz tartozó alapértelmezett**. 
 
 3. Válasszon egy fürtöt, az alapértelmezett fürt meg a jelenlegi parancsfájlt. Az eszközök automatikusan frissítse a konfigurációs fájl **. VSCode\settings.json**. 
 
@@ -160,7 +160,7 @@ A kapcsolat teszteléséhez, a HDInsight-fürtök listázhatja:
 ## <a name="set-the-azure-environment"></a>Az Azure-környezet beállítása
 1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**.
 
-2. Adja meg **HDInsight: állítsa be az Azure-környezet**.
+2. Adja meg **HDInsight: Állítsa be az Azure-környezet**.
 
 3. Válasszon ki egy környezetet, például az "Azure" vagy "AzureChina" az alapértelmezett bejelentkezési bejegyzést.
 
@@ -181,15 +181,15 @@ HDInsight Tools for VS Code elküldheti az interaktív Hive-lekérdezések, Hive
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. Kattintson a jobb gombbal a parancsprogram-szerkesztő, jelölje be **HDInsight: interaktív Hive-** elküldheti a lekérdezést, vagy használja a helyi **Ctrl + Alt + I**. Válassza ki **HDInsight: Hive kötegelt** küldje el a szkriptet, vagy használja a helyi **Ctrl + Alt + H**. 
+4. Kattintson a jobb gombbal a parancsprogram-szerkesztő, jelölje be **HDInsight: Interaktív Hive** elküldheti a lekérdezést, vagy használja a helyi **Ctrl + Alt + I**. Válassza ki **HDInsight: Hive kötegelt** küldje el a szkriptet, vagy használja a helyi **Ctrl + Alt + H**. 
 
 5. Válassza ki a fürtöt, ha még nem adott meg alapértelmezett fürt. Az eszközök segítségével a helyi menüt használva egy kódblokkot is beküldhet az egész szkriptfájl helyett. Néhány pillanat múlva a lekérdezési eredmények jelennek meg, egy új lapon.
 
    ![Az interaktív Hive eredményei](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - **RESULTS** (EREDMÉNYEK) panel: A teljes eredményt elmentheti CSV-, JSON- vagy Excel-fájlban a helyi útvonalon, de kijelölhet csupán pár sort is.
+    - **EREDMÉNYEK** panelen: Mentse az egész eredményt CSV, JSON vagy Excel-fájl helyi elérési útra, vagy csak válassza ki a több sort.
 
-    - **MESSAGES** (ÜZENETEK) panel: A **sor** számának kiválasztásakor a futó szkript első sorához ugrik.
+    - **ÜZENETEK** panelen: Ha bejelöli **sor** számát, azt ugrik a parancsprogram futtatásához az első sort.
 
 ## <a name="submit-interactive-pyspark-queries"></a>PySpark interaktív lekérdezések elküldése
 
@@ -231,7 +231,7 @@ HDInsight Tools for VS Code elküldheti az interaktív Hive-lekérdezések, Hive
 
    ![Küldje el a Python-feladat eredményének](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) a beküldés állapotát a bal oldali sávon, amikor lekérdezést futtat az alsó állapot jelenik meg. További lekérdezések ne küldjön el, ha az állapot értéke **PySpark kernelt (foglalt)**. 
 
->[!NOTE]
+>[!NOTE]  
 >A fürtök is fenntartható a munkamenet-információk. A definiált változó, a függvény és a megfelelő értékeket a munkamenetet, így azok között ugyanazon fürt több szolgáltatás-hívást lehet hivatkozni tartanak. 
 
 ### <a name="to-disable-environment-check"></a>Környezet ellenőrzés letiltása
@@ -388,7 +388,7 @@ A VS Code HDInsight támogatja a következő funkciókat:
 ## <a name="next-steps"></a>További lépések
 
 ### <a name="demo"></a>Bemutató
-* A VS Code HDInsight: [videó](https://go.microsoft.com/fwlink/?linkid=858706)
+* A VS Code HDInsight: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 
@@ -406,9 +406,9 @@ A VS Code HDInsight támogatja a következő funkciókat:
 * [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához ](./hdinsight-connect-hive-zeppelin.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](spark/apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](spark/apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](spark/apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-running-applications"></a>Hozzon létre és alkalmazások futtatásához

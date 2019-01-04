@@ -56,6 +56,12 @@ items:
   items:
   - name: SSH hibaelhárítása
     href: troubleshoot-ssh-connection.md
+  - name: Fájlrendszer hibáinak elhárítása
+    href: https://support.microsoft.com/help/3213321
+  - name: A kernellel kapcsolatos rendszerindítási problémák elhárítása
+    href: https://support.microsoft.com/help/4091524
+  - name: Fstab-hibák elhárítása
+    href: https://support.microsoft.com/help/3206699
   - name: SSH részletes hibaelhárítása
     href: detailed-troubleshoot-ssh-connection.md
 - name: Gyakori hibaüzenetek
@@ -105,6 +111,8 @@ items:
   href: unexpected-reboots-attached-vhds.md
 - name: A Windows aktiválásával kapcsolatos problémák
   href: troubleshoot-activation-problems.md
+- name: Aktiválási probléma kényszerített bújtatással
+  href: custom-routes-enable-kms-activation.md
 - name: Alkalmazás-hozzáféréssel kapcsolatos problémák
   href: troubleshoot-app-connection.md
 - name: Új virtuális gépek üzembe helyezése
@@ -162,9 +170,9 @@ items:
   href: understand-vm-reboot.md
 - name: Távoli hibaelhárítási eszközök
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: af1f284108a326b3ce099ee49cb15a8f51cc61af
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434858"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976324"

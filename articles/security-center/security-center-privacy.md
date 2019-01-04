@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8417b342dc032f46fddd6c57b82c402cc6c1a10d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 35868545c46acb65ba487c546b66d8834bcb81a7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967725"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543189"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Felhasználói adatokat az Azure Security Centerben
 Ez a cikk ismerteti, hogyan kezelheti a felhasználói adatokat az Azure Security Centerben. Felhasználói adatok kezelése lehetőség eléréséhez, törléséhez vagy exportálhat adatokat.
@@ -98,7 +98,7 @@ A Security Center a felhasználó törlésével vesznek dönthet a [biztonsági 
 [Riasztási adatokat](security-center-managing-and-responding-alerts.md) biztonsági adatok számít, és a két évig őrzi meg a rendszer.
 
 ## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
-A Naplók biztonsági kapcsolattartó, igény szerint, és riasztást küldjön, frissítések karbantartása [Azure-tevékenységnaplóinak](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+A Naplók biztonsági kapcsolattartó, igény szerint, és riasztást küldjön, frissítések karbantartása [Azure-tevékenységnaplóinak](../azure-monitor/platform/activity-logs-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 Felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatokat az Azure Security Center vizsgálat található](security-center-investigation-user-data.md).

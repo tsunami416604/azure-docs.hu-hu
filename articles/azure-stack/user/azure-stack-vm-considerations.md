@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847524"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651503"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Szempontok a virtuális gépek az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack virtuális gépek igény szerinti, méretezhető számítási erőforrás biztosítanak. Mielőtt telepít virtuális gépeket (VM), ismernie kell a virtuális gép az Azure Stackben elérhető funkciókat és a Microsoft Azure közötti különbségeket. Ez a cikk ismerteti a különbségeket, és azonosítja a virtuális gép központi telepítések tervezésének fő szempontjait. Azure Stack és az Azure magas szintű különbségeit kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>Hasznos tanácsok: virtuális gép különbségek
+## <a name="cheat-sheet-virtual-machine-differences"></a>Hasznos tanácsok: Virtuális gép különbségek
 
 | Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
@@ -39,6 +39,7 @@ Az Azure Stack virtuális gépek igény szerinti, méretezhető számítási er�
 | Virtuálisgép-tároló | Támogatja a [felügyelt lemezeket.](../../virtual-machines/windows/managed-disks-overview.md) | A felügyelt lemezek az Azure Stackben 1808 és újabb verziói támogatottak. |
 | Virtuális gépek lemezek teljesítménye | Függ a lemez típusát és méretét. | Virtuális gép, a lemezek vannak csatolva a virtuális gép méretétől függ, tekintse meg a [virtuális gépek méretei az Azure Stackben támogatott](azure-stack-vm-sizes.md) cikk.
 | API-verziók | Az Azure mindig a legújabb API-verziók a virtuális gép minden funkció esetén rendelkezik. | Az Azure Stack konkrét Azure-szolgáltatás és az adott API-verziók támogatja ezeket a szolgáltatásokat. Ha szeretné megtekinteni a támogatott API-verziók listáját, tekintse meg a [API-verziók](#api-versions) című szakaszát. |
+| Az Azure Instance Metadata szolgáltatás | Az Azure Instance Metadata szolgáltatás fut, amelyek segítségével kezelheti és konfigurálhatja a virtuális gépek virtuálisgép-példányok információkat biztosít.  | A Instance metadata szolgáltatás nem támogatott az Azure Stacken. |
 |Virtuális gép rendelkezésre állási csoportok|Több tartalék tartomány (2 vagy 3 régiónként)<br>Több frissítési tartomány<br>Felügyelt lemezek támogatása|Több tartalék tartomány (2 vagy 3 régiónként)<br>(Legfeljebb 20) több frissítési tartomány<br>Nem felügyelt lemezes támogatás|
 |Virtuálisgép-méretezési csoportok|Az automatikus méretezés támogatott|Az automatikus méretezés nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával.
 

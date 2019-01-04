@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: fdf8d8977651c868c9f534dc61e3d1a77a43e672
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435950"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718962"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -86,7 +86,7 @@ Nincsenek Azure-figyelése által gyűjtött metrikák három alapvető forrása
 **Alkalmazásmetrikák** a figyelt alkalmazások és a teljesítménybeli problémák észlelése, és nyomon követheti a trendeket, hogyan használják az alkalmazását az Application Insights által létrehozott. Ez magában foglalja az ilyen értékek _kiszolgáló válaszideje_ és _böngészőkivételek_.
 
 **Egyéni metrikák** vannak metrikák felül a standard mérőszám meghatározó automatikusan elérhető. Egyéni metrikák egy egyetlen erőforráson ennek az erőforrásnak ugyanabban a régióban kell létrehoznia. Egyéni metrikák a következő módszerekkel hozhat létre:
-    - [Az alkalmazás egyéni-metrikáinak definiálása](../../application-insights/app-insights-api-custom-events-metrics.md) , amely figyel az Application Insights. Ezek mellett a standard beállítása, alkalmazásmetrikák.
+    - [Az alkalmazás egyéni-metrikáinak definiálása](../../azure-monitor/app/api-custom-events-metrics.md) , amely figyel az Application Insights. Ezek mellett a standard beállítása, alkalmazásmetrikák.
     - Közzététel használata Windows virtuális gépekről származó egyéni metrikákat [Windows diagnosztikai bővítmény (WAD)](../../azure-monitor/platform/diagnostics-extension-overview.md).
     - Egyéni metrikák használata a Linux rendszerű virtuális gépek a közzététel [InfluxData Telegraf ügynök](https://www.influxdata.com/time-series-platform/telegraf/).
     - Egyéni metrikák az Azure-szolgáltatások az egyéni mérőszámok API segítségével írhat.
@@ -100,8 +100,8 @@ Metrikákkal elvégezhető feladatok a következők:
 - Konfigurálja egy [a metrikaalapú riasztási szabály](alerts-metric.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a metrika átlép egy küszöbértéket.
 - Használat [automatikus skálázási](../../azure-monitor/platform/autoscale-overview.md) növelése vagy csökkentése érdekében a küszöbérték átlépését metrika alapján erőforrásokat.
 - Metrikák irányíthatja a Log Analytics metrikai adatok és naplóadatok elemzéséhez és metrikaértékek 93 napnál hosszabb ideig tárolja. 
-- Metrikák Stream- [Eseményközpont](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
-- [Archív](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit.
+- Metrikák Stream- [Eseményközpont](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
+- [Archív](../../azure-monitor/learn/tutorial-archive-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit.
 - Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) vagy [REST API-val](../../azure-monitor/platform/rest-api-walkthrough.md).
 
 
@@ -129,7 +129,7 @@ Naplók különösen hasznosak a különböző forrásokból származó adatok �
 ### <a name="sources-of-log-data"></a>Naplózási adatok forrásai
 Az Azure Monitor naplóadatokat gyűjthet, különböző forrásokból is Azure-ban és a helyszíni erőforrásokhoz. Naplózási adatok forrásai az alábbiak:
 
-- [Tevékenységnaplók](collect-activity-logs.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
+- [Tevékenységnaplók](collect-activity-logs.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
 - Az ügynökök [Windows](agent-windows.md) és [Linux](../learn/quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások az Azure monitornak a következők szerint küldött telemetriai adatokra [adatforrások](data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../insights/solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
@@ -156,7 +156,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 Minden naplóadatokat az Azure Monitor használatával lekéri a [naplólekérdezés](../log-query/log-query-overview.md) -készült a [adatkezelő lekérdezési nyelv](../log-query/get-started-queries.md), amely lehetővé teszi, hogy gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használat [Log Analytics](../log-query/portals.md) fejlesztésére és tesztelésére a lekérdezések az Azure Portalon. Eredmények interaktív használatához, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Naplók segítségével is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
-> Az Application Insights adatait egy külön partíciót, mint a többi naplóadatokat az Azure monitorban tárolódik. Ez ugyanazokat a funkciókat, mint más naplóadatok támogatja, de kell használnia a [Application Insights-konzol](/application-insights/app-insights-analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) alkalmazás adatok és más naplóadatok elemzéséhez.
+> Az Application Insights adatait egy külön partíciót, mint a többi naplóadatokat az Azure monitorban tárolódik. Ez ugyanazokat a funkciókat, mint más naplóadatok támogatja, de kell használnia a [Application Insights-konzol](/azure-monitor/app/analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) alkalmazás adatok és más naplóadatok elemzéséhez.
 
 ![Logs](media/data-collection/logs.png)
 
@@ -176,7 +176,7 @@ A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozás
 ## <a name="stream-data-to-external-systems"></a>Stream data a külső rendszerekkel
 Mellett az Azure-ban az eszközök használatával elemezheti a monitorozási adatok, szükség lehet a követelmény, hogy egy külső eszköz, például a biztonsági információk és az esemény (SIEM) termékben továbbítja. Közvetlenül a figyelt erőforrások keresztül általában történik a továbbító [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 
 
-Útmutatást kaphat a különböző típusú monitorozási adatait a [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+Útmutatást kaphat a különböző típusú monitorozási adatait a [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>További lépések
 

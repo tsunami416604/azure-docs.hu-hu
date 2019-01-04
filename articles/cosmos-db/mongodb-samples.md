@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB MongoDB API használatával hozhat létre egy Node.js-alkalmazás
-description: Oktatóanyag, amelynek során egy online adatbázist hoz létre a MongoDB-hez készült Azure Cosmos DB API-k használatával.
+description: Ez az oktatóanyag létrehoz egy online adatbázist az Azure Cosmos DB API használatával a mongodb-hez.
 keywords: mongodb példák
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
-ms.date: 03/23/2018
-ms.author: sngun
-ms.openlocfilehash: 3e9436301dca7c88a930d0dbd743bcefe62f4fe3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 98a11f6ba0608a9ab39bf258056f0fa17a41653e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713080"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788344"
 ---
-# <a name="build-an-azure-cosmos-db-for-mongodb-api-app-using-nodejs"></a>Egy Azure Cosmos DB Node.js használatával a MongoDB API-alkalmazás létrehozása
+# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Létrehozhat egy alkalmazást a mongodb-hez a Node.js és az Azure Cosmos DB API használatával 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -26,12 +26,12 @@ ms.locfileid: "53713080"
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
-Ez a példa bemutatja, hogyan hozhat létre Azure Cosmos DB MongoDB API Konzolalkalmazás Node.js használatával.
+Ez a példa bemutatja, hogyan hozhat létre egy konzolalkalmazás a mongodb-hez a Node.js és az Azure Cosmos DB API használatával.
 
 A példa használatához a következőket kell tennie:
 
-* [Hozzon létre](create-mongodb-dotnet.md#create-account) egy Cosmos-fiók MongoDB API-hoz konfigurált.
-* A MongoDB [kapcsolati karakterlánc](connect-mongodb-account.md) információk beszerzése.
+* [Hozzon létre](create-mongodb-dotnet.md#create-account) egy Cosmos-fiók mongodb-hez készült Azure Cosmos DB API használatára konfigurálva.
+* Lekérni a [kapcsolati karakterlánc](connect-mongodb-account.md) információkat.
 
 ## <a name="create-the-app"></a>Az alkalmazás létrehozása
 
@@ -173,4 +173,6 @@ A példa használatához a következőket kell tennie:
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [MongoChef használata](mongodb-mongochef.md) a MongoDB API-hoz konfigurált Cosmos-fiókjához.
+- Ismerje meg, hogyan [a Studio 3T használata](mongodb-mongochef.md) az Azure Cosmos DB API a mongodb-hez.
+- Ismerje meg, hogyan [Robo 3T használata](mongodb-robomongo.md) az Azure Cosmos DB API a mongodb-hez.
+- Ismerkedés a MongoDB [minták](mongodb-samples.md) az Azure Cosmos DB API a mongodb-hez.

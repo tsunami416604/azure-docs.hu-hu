@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5d2f803414db3bd118f57d317cfc32c8f22fcd5a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499121"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653255"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Közzétett alkalmazás – Dataiku DDS telepítése
 
@@ -28,15 +28,15 @@ DSS segítségével teljes körű elemzési megoldást, megvalósítani, kezdve 
 
 A HDInsight használatával telepítheti a DSS [Apache Hadoop](https://hadoop.apache.org/) vagy [Apache Spark](https://spark.apache.org/) fürtök. Telepítheti DSS meglévő futó fürtökön, vagy ha új fürtök létrehozásához. DSS is támogatja az Azure Blob storage összekötőként adat beolvasására vonatkozóan.
 
-DSS segítségével hozhat létre a projektek, amelyek ezután hozhat létre [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) vagy Spark-feladatok. Ezeket a feladatokat, a fürt igény szerint méretezhetők, HDInsight, a MapReduce vagy a Spark normál feladatok végrehajtása.
+DSS segítségével hozhat létre a projektek, amelyek ezután hozhat létre [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) vagy Spark-feladatok. Ezeket a feladatokat, a fürt igény szerint méretezhetők, HDInsight, a MapReduce vagy a Spark normál feladatok végrehajtása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürthöz, a következő konfigurációval kell rendelkeznie:
 
-* A fürt tier(s): Standard, prémium
+* Fürtszint(ek): Standard, prémium szintű
 * Fürttípus(ok): Hadoop, Spark
-* A fürt verziót: 3.4-es, 3.5
+* Fürtverzió(k): 3.4-es, 3.5
 
 ## <a name="install-the-dataiku-dss-published-application"></a>A közzétett alkalmazás telepítése a Dataiku DSS
 
@@ -113,8 +113,8 @@ Olvassa el részletes oktatóanyagok [ismerje meg a Dataiku DSS](https://www.dat
 ## <a name="next-steps"></a>További lépések
 
 * [A Dataiku DSS dokumentáció](https://doc.dataiku.com/dss/latest/).
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
-* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
-* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): ismerje meg, hogyan telepíthet további alkalmazásokat használ.
-* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): Ismerje meg, hogyan lehet HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
+* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Ismerje meg, hogyan teheti közzé egyéni HDInsight-alkalmazásait akár az Azure Marketplace-en.
+* [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx): Ismerje meg, hogyan adhat meg HDInsight-alkalmazások.
+* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): Ismerje meg, hogyan telepíthet további alkalmazásokat használ.
+* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): Ismerje meg, hogy egy üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.

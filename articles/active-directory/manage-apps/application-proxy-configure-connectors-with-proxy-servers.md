@@ -2,25 +2,21 @@
 title: Munka a meglévő helyszíni proxykiszolgálók és az Azure AD |} A Microsoft Docs
 description: Ismerteti a meglévő helyszíni proxykiszolgálók használata.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6409b9313aa9b036e24ea50435659b3653ac01e0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404953"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720101"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -98,7 +94,7 @@ Ehhez módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\A
 
 Ezután konfigurálja a összekötő frissítési szolgáltatást használja a proxy hasonló módosítást végez a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config fájlt.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2. lépés: Az összekötő és a kapcsolódó szolgáltatások keresztül érkező adatforgalom engedélyezéséhez a proxy konfigurálása
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2. lépés: Az összekötő és a kapcsolódó szolgáltatások keresztül érkező adatforgalom engedélyezéséhez a proxy konfigurálása
 
 Négy szempontot kell figyelembe venni, a kimenő proxy:
 * Proxy kimenő szabályok
@@ -107,15 +103,16 @@ Négy szempontot kell figyelembe venni, a kimenő proxy:
 * SSL-ellenőrzés
 
 #### <a name="proxy-outbound-rules"></a>Proxy kimenő szabályok
-Az alábbi végpontok hozzáférés az összekötő szolgáltatás-hozzáférés engedélyezése:
+A következő URL-hozzáférés engedélyezése:
 
-* *.msappproxy.net
-* *.servicebus.windows.net
+| URL-cím | Hogyan használja fel azokat |
+| --- | --- |
+| \*. msappproxy.net<br>\*. servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok |
+| login.windows.net<br>login.microsoftonline.com | Az összekötő URL-használ a regisztrációs folyamat során. |
 
-A kezdeti regisztráció a következő végpontok hozzáférés engedélyezése:
+Ha a tűzfal vagy proxy lehetővé teszi a DNS-engedélyezési, engedélyezett kapcsolatokat is \*. msappproxy.net és \*. servicebus.windows.net. Ha nem, engedélyeznie kell a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Az IP-címtartományok minden héten frissülnek.
 
-* login.windows.net
-* login.microsoftonline.com
 
 Ha nem engedélyezi a csatlakozást a teljes tartománynév alapján, és meg kell adnia ehelyett az IP-címtartományok, használja az alábbi beállításokat:
 

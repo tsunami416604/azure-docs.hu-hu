@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3a0b92e2c2a588fa8ef7edcddaa8c692780814f0
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388918"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721563"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
@@ -163,7 +163,7 @@ További információkért lásd: [webalkalmazások konfigurálása az App Servi
 
 Az Azure Load Balancer rendelkezik a négy perces üresjárati időkorlát alapértelmezett beállítása. Ez általában a webes kérelem ésszerű válasz határidőt. Ha a webalkalmazás háttérben történő feldolgozás van szüksége, az Azure WebJobs használatát javasoljuk. Az Azure web Apps segítségével meghívhatja a webjobs-feladatok, és értesíti, ha a háttérben történő feldolgozása befejeződött. A WebJobs, beleértve az üzenetsorokat és eseményindítók használatával többféle módszer közül választhat.
 
-Webjobs-feladatok háttérben történő feldolgozás van tervezve. Legtöbb háttérben történő feldolgozási webjobs-feladat a kívánt módon teheti meg. Webjobs-feladatok kapcsolatos további információkért lásd: [háttérfeladatok futtatása WebJobs-feladatokkal](web-sites-create-web-jobs.md).
+Webjobs-feladatok háttérben történő feldolgozás van tervezve. Legtöbb háttérben történő feldolgozási webjobs-feladat a kívánt módon teheti meg. Webjobs-feladatok kapcsolatos további információkért lásd: [háttérfeladatok futtatása WebJobs-feladatokkal](webjobs-create.md).
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core alkalmazásokhoz, amelyek az App Service-ben néha nem válaszol. Hogyan lehet kijavítani a hibát a probléma?
 

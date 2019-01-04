@@ -1,5 +1,5 @@
 ---
-title: FELISMERVE nyomtatott és kézzel írt szöveg – a Computer Vision
+title: Nyomtatott, kézzel írt szöveg – a Computer Vision felismerése
 titleSuffix: Azure Cognitive Services
 description: A Computer Vision API használatával képeken nyomtatott és kézzel írt szöveg felismerése kapcsolatos fogalmakat.
 services: cognitive-services
@@ -10,18 +10,19 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 6827bf5f983834dc5222a3f3028386f8bbcb253a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: b23140eef4de904fb862253b6511b6fc2b1ce6dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338100"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582269"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
 Számítógépes Látástechnológia képesek észlelni és nyomtatott vagy kézzel írt szöveg kinyerése a különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások, poszterek, névjegyek, betűket és hátterekkel képét.
 
-Szövegek felismerése időt és energiát takarít meg. Ön hatékonyabbak lehetnek véve a szöveg, kép, ahelyett hogy lefényképezheti azt. Szövegek felismerése digitalizálhatók a jegyzetek lehetővé teszi. A digitalizáció gyors és egyszerű keresés megvalósítását teszi lehetővé. Ezen kívül a papírfelhasználást is csökkenti.
+Szövegek felismerése időt és energiát takarít meg. Ön hatékonyabbak lehetnek véve a szöveg, kép, ahelyett hogy lefényképezheti azt. Szövegek felismerése digitalizálhatók a jegyzetek lehetővé teszi. A digitalizálás által gyors és egyszerű keresések végezhetők. Ezen kívül a papírfelhasználást is csökkenti.
 
 ## <a name="text-recognition-requirements"></a>Szöveg követelményei
 

@@ -8,17 +8,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: e87f8a0d168db02bf0e93216991767f5a9be584c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863516"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651980"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Az SQL Server-adatbázis áttelepítése az Azure SQL Database
 
@@ -33,9 +33,9 @@ Mindkét esetben győződjön meg arról, hogy a forrásadatbázis kompatibilis 
 > [!NOTE]
 > Nem SQL Server-adatbázis (beleértve a Microsoft Access-, Sybase-, MySQL Oracle- és DB2-adatbázisokat) az Azure SQL Database-be történő áttelepítéséhez lásd [az SQL Server áttelepítési segédet](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/) ismertető cikket.
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>1. módszer: Állásidővel járó migrálás
+## <a name="method-1-migration-with-downtime-during-the-migration"></a>1. módszer: Migrálás leállás az áttelepítés során
 
- Ez a módszer segítségével áttelepítheti az egyetlen vagy készletezett adatbázisként, ha Ön megengedhet valamennyi állásidőt vagy hajt végre egy teszt migrálás egy éles adatbázist a későbbi migráláshoz. Foglalkozó oktatóanyagért lásd: [egy SQL Server-adatbázis Migrálása](sql-database-migrate-your-sql-server-database.md).
+ Ez a módszer segítségével áttelepítheti az egyetlen vagy készletezett adatbázisként, ha Ön megengedhet valamennyi állásidőt vagy hajt végre egy teszt migrálás egy éles adatbázist a későbbi migráláshoz. Foglalkozó oktatóanyagért lásd: [egy SQL Server-adatbázis Migrálása](../dms/tutorial-sql-server-to-azure-sql.md).
 
 Az alábbi lista tartalmazza az általános munkafolyamata az egy adott SQL Server adatbázis-migrálásra vagy egy készletezett adatbázis ezzel a módszerrel. Migrálás felügyelt példányra, lásd: [Migrálás felügyelt példányra](sql-database-managed-instance-migrate.md).
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c9161f6d31a3fcff8f8926c8bf188f1bdc14799
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430606"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725861"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
 Vállalatok ma olyan fokozatosan helyez át, vagy az alkalmazottak számára (belső) felé vagy mobilalkalmazások létrehozása a saját végfelhasználóik (külső). Meglévő háttérrendszer rendszerek legyen Nagyszámítógépek vagy bizonyos LoB-alkalmazások, amelyek integrálni kell a mobilalkalmazás-architektúra rendelkeznek. Ez az útmutató ismerteti a lehetséges megoldást javasolja a gyakori forgatókönyvek integrálni a legjobb módja.
@@ -264,6 +264,6 @@ A teljes mintakód elérhető legyen [Notification Hub-minták]. Mindhárom öss
 [Az Azure mobilszolgáltatás]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [Service Bus Pub/Sub programozás]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Az Azure webjobs-feladat]: ../app-service/web-sites-create-web-jobs.md
+[Az Azure webjobs-feladat]: ../app-service/webjobs-create.md
 [Notification Hubs – Windows Universal oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure Portal]: https://portal.azure.com/

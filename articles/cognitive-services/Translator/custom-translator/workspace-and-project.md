@@ -10,12 +10,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6f88ff8ecd1aee588cb82c08ae2eda58fe2eb1e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f3d2276c92868bd2f9d98b119bc31aee4db13a81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627440"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717552"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni a fordítót munkaterület?
 
@@ -31,7 +31,7 @@ Egy projektet egy modellt, a dokumentumok és a teszteket egy burkoló. Minden p
 
 A kategória a tartomány – a terminológia és stílus a használni kívánt terület – azonosítja a projekthez. Válassza ki a dokumentumok igényeinek legjobban megfelelő kategóriát. Bizonyos esetekben a kategória a többféle közvetlenül befolyásolja az egyéni a fordítót viselkedését.
 
-Nem kell, hogy egyéni modellek kategóriák még egy általános alapkonfiguráció rendszer kivételével. De továbbra is javasoljuk, hogy felhasználóknak, hogy a legjobban megfelelő korlátozódjanak kategóriát, hogy a CategoryID azonosítóként használható. Projektek technológia a tartományban "Technológia" kiválasztása biztosítja, hogy amikor egy modell érhető el, hogy a projekt fogja tudni használni.
+Kiindulási modelleket alkalmazhatnak két csoportjára van. Azok az általános és a technológia. Ha a kategória **technológia** van kijelölve, a technológia kiindulási modelleket alkalmazhatnak fogja használni. Bármely más kategória kiválasztásra az általános kiindulási modelleket alkalmazhatnak szolgálnak. A technológia modell nem jól technológia tartományhoz, de mutatja alsó minőség, ha a mondatok fordítása használt nem esik a technológia tartományhoz. Javasoljuk, hogy az ügyfelek számára, válassza ki a kategóriát technológia, csak akkor, ha a mondatok szigorúan a technológia tartományhoz tartoznak.
 
 Ugyanazon a munkaterületen projektek ugyanarra a nyelv két különböző kategóriákban is létrehozhat. Egyéni a fordítót megakadályozza, hogy az azonos nyelv párokból és kategória az ismétlődő-projektek létrehozása. Egy címke alkalmazása a projekthez lehetővé teszi, hogy ez a korlátozás ne. Ne használja a címkéket, kivéve, ha több, mint a projekt egyedi címkék jelennek meg a projektek CategoryID hozzáadása az ügyfelek a fordítási rendszerek fejleszt.
 

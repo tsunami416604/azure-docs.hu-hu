@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 3c9514e39e061067b7332570e0eb6273924529e0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: be86e961d04b600f112a173c041b60cbe50ea00d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339212"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725056"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan állítható be a riasztások felhasználói felüle
 - Feltételek: Adott feltétel, vagy logikai, amely jel látható, ha indíthat el művelet
 - Művelet: Az értesítés - egyetlen külső eseményfogyasztó adott hívás küldött e-mailben, SMS, webhook stb.
 
-Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol jel alapuló egyéni lekérdezés [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../application-insights/app-insights-analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](../../azure-monitor/platform/alerts-unified-log.md).
+Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol jel alapuló egyéni lekérdezés [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](../../azure-monitor/platform/alerts-unified-log.md).
 
 > [!NOTE]
 > Népszerű naplóadatait [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md)
@@ -245,6 +245,6 @@ Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása a
 
 * Ismerje meg [Naplóriasztások az Azure-riasztások](../../azure-monitor/platform/alerts-unified-log.md)
 * Megismerheti [naplóriasztásokra vonatkozó Webhook-műveletek](../../azure-monitor/platform/alerts-log-webhook.md)
-* Tudjon meg többet [Application Insights](../../application-insights/app-insights-analytics.md)
+* Tudjon meg többet [Application Insights](../../azure-monitor/app/analytics.md)
 * Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
 

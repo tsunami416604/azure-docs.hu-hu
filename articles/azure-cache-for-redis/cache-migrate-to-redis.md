@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: c3c1aa9abc6a7ba97bf7c95aa1c670c7239df3ab
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5a1febb80b5d3aaf0e5da2620f1b0a35d5d1144b
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019789"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556798"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service szolgáltatásból át az Azure Cache redis
 Az alkalmazások, amelyek használják az Azure Managed Cache Service az Azure Cache redis migrálása az alkalmazását, az gyorsítótárazási alkalmazása által használt Managed Cache Service funkcióktól függően legfeljebb minimális változtatásokra is elvégezhető. Míg a API-k nem pontosan ugyanaz hasonló, és legfeljebb minimális változtatásokra nagy része a meglévő kódot, amely a gyorsítótár elérésére használja a Managed Cache Service szolgáltatáshoz felhasználhatók. Ez a cikk bemutatja, hogyan javíthatja a szükséges konfigurációs és alkalmazások áttelepítése a Managed Cache Service-alkalmazások Azure Cache a Redis használata módosítja, és bemutatja, hogyan Azure Cache redis funkcióit használható működésének megvalósítása a Managed Cache Service gyorsítótár.
@@ -47,7 +47,7 @@ Az Azure Managed Cache Service és a Redis gyorsítótár hasonlóak, de egyes h
 
 | A felügyelt gyorsítótár-szolgáltatás a szolgáltatás | A felügyelt gyorsítótár szolgáltatás támogatása | Az Azure Cache Redis-támogatás |
 | --- | --- | --- |
-| Nevesített gyorsítótárat foglal magában |Alapértelmezett gyorsítótár van konfigurálva, és a Standard és prémium szintű gyorsítótár az ajánlatok, legfeljebb kilenc további gyorsítótárakat nevű konfigurálható legyen szükség. |Az Azure Cache Rediss a nevesített gyorsítótárat foglal magában, hasonló funkciót megvalósításához használható adatbázisok (alapértelmezés szerint 16) konfigurálható számú rendelkezik. További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration). |
+| Nevesített gyorsítótárat foglal magában |Alapértelmezett gyorsítótár van konfigurálva, és a Standard és prémium szintű gyorsítótár az ajánlatok, legfeljebb kilenc további gyorsítótárakat nevű konfigurálható legyen szükség. |Az Azure Cache redis számos konfigurálható az adatbázisok (alapértelmezés szerint 16), amelyek segítségével megvalósítani egy hasonló funkciókat nevesített gyorsítótárat foglal magában. További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration). |
 | Magas rendelkezésre állás |Magas rendelkezésre állást biztosít a Standard és prémium szintű gyorsítótár-ajánlatok a gyorsítótár elemeinek. Ha elemeket egy hiba miatt megszakadt, a gyorsítótár elemeinek biztonsági másolatok továbbra is elérhetők. A másodlagos gyorsítótárba ír a szinkron módon történik. |A Standard és prémium szintű gyorsítótár ajánlatokat, amely egy két csomópontos elsődleges/replika configuration (a prémium szintű gyorsítótár minden egyes szegmens rendelkezik elsődleges/replika párban) rendelkeznie magas rendelkezésre állás érhető el. A replika írási műveletek aszinkron módon történik. További információkért lásd: [Azure Cache Redis díjszabási](https://azure.microsoft.com/pricing/details/cache/). |
 | Értesítések |Lehetővé teszi az ügyfelek gyorsítótárfürt gyorsítótár-műveleteiről egy nevesített gyorsítótárat a tájékoztató aszinkron üzenetek fogadását. |Ügyfélalkalmazások használhatja a Redis közzétevői/előfizetői vagy [kulcstérértesítések](cache-configure.md#keyspace-notifications-advanced-settings) elérése érdekében a hasonló funkciókat az értesítésekre. |
 | Helyi gyorsítótár |Tárolja a gyorsítótárazott objektumok helyileg extra gyors hozzáférés az ügyfélen. |Ügyfélalkalmazások megvalósítása a funkció használatával egy szótárt és hasonló adatszerkezetből kellene. |
@@ -130,7 +130,7 @@ Adja hozzá a következő using utasítást a lista tetejére minden fájlhoz, a
 using StackExchange.Redis
 ```
 
-Ha ez a névtér nem oldja meg, győződjön meg, hogy a StackExchange.Redis NuGet-csomagot hozzáadta, leírtak szerint [a rövid útmutató: .NET-alkalmazás a redis használata Azure Cache](cache-dotnet-how-to-use-azure-redis-cache.md).
+Ha ez a névtér nem oldja meg, győződjön meg, hogy a StackExchange.Redis NuGet-csomagot hozzáadta, leírtak szerint [a rövid útmutató: Azure Cache a Redis használata .NET-alkalmazás](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
 > Vegye figyelembe, hogy a StackExchange.Redis ügyfél igényel-e a .NET-keretrendszer 4 vagy újabb verzió.

@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7b8cf102160a281b47419680a209c58a7ae60c9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: ff6b61874363bbc869bd509174e58640a2487f56
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582837"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811307"
 ---
 # <a name="whats-happening-to-machine-learning-workbench-in-azure-machine-learning-service"></a>Mi történik a Machine Learning Workbench az Azure Machine Learning szolgáltatás?
 
@@ -68,9 +68,9 @@ A portál munkaterület irányítópult csak a Microsoft Edge, Chrome és a Fire
 
 A már meglévő adatfájlok előkészítése nem a legújabb verziót a hordozható, mert a Machine Learning Workbench már nincs. Azonban továbbra is előkészítheti az adatokat modellezésre.  
 
-A kisebb adatkészletek esetében használhatja a <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning adat-előkészítési SDK</a> gyorsan előkészítheti a modellezési előtt az adatokat. 
+A méretüktől adatkészletekhez a segítségével a [az Azure Machine Learning Data Prep SDK](http://aka.ms/data-prep-sdk) gyorsan előkészítheti az adatokat a modellezési Python-kód írásával. 
 
-Használhatja a azonos <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> nagyobb adatkészletek esetében. Vagy nagy méretű adatkészletek előkészítése az Azure Databricks használatával. 
+Követheti [ebben az oktatóanyagban](tutorial-data-prep.md) tudhat meg többet az Azure Machine Learning Data Prep SDK használatával.
 
 ## <a name="will-projects-persist"></a>Megmaradnak a projektek?
 
@@ -78,7 +78,7 @@ Nem fog elveszni sem kód, sem munka. A régebbi verzióban, a projektek helyi k
 
 A projekt tartalmának nagy részét már a helyi gépen. Így egyszerűen hozzon létre egy konfigurációs fájl ebben a könyvtárban, és hivatkozzon arra a kód a munkaterülethez való kapcsolódáshoz. Ismerje meg, hogyan [migrálni a meglévő projekteket](how-to-migrate.md#projects).
 
-Ismerje meg, hogyan [első lépései a Python és a fő SDK](quickstart-get-started.md).
+Ismerje meg, hogyan kezdheti el [Python és a fő SDK](quickstart-create-workspace-with-python.md) vagy [az Azure portal](quickstart-get-started.md).
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellek és lemezképek?
  

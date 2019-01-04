@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: rajanaki
-ms.openlocfilehash: e965848b0c3c009444762dafdf42acc080b6915e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834953"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791880"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ismételt védelme, és a egy helyszíni helyhez vissza gépek feladatai az Azure-bA a feladatátvételt követően
 
@@ -61,8 +61,8 @@ Az Azure-ban folyamatkiszolgáló üzembe helyezése:
 
 A fő célkiszolgáló fogadja a feladat-visszavételi adatokat. Alapértelmezés szerint a fő célkiszolgáló a helyszíni konfigurációs kiszolgálón fut. Azonban nem sikerült biztonsági forgalom mennyiségétől függően előfordulhat, hogy szeretne hozzon létre egy különálló fő célkiszolgálót a feladat-visszavételhez. Hogyan hozhat létre egyet a következő:
 
-* [Hozzon létre egy Linux rendszerű fő célkiszolgálót](vmware-azure-install-linux-master-target.md) a Linux rendszerű virtuális gépek feladat-visszavételhez. Ez a szükséges.
-* Szükség esetén hozzon létre egy különálló fő célkiszolgálót a Windows virtuális gép feladat-visszavételhez. Ehhez futtassa újra az egyesített telepítő, és válassza ki a fő célkiszolgáló létrehozása. [További információk](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
+* [Hozzon létre egy Linux rendszerű fő célkiszolgálót](vmware-azure-install-linux-master-target.md) a Linux rendszerű virtuális gépek feladat-visszavételhez. Ez a szükséges. Vegye figyelembe, hogy, fő célkiszolgáló az LVM nem támogatott.
+* Szükség esetén hozzon létre egy különálló fő célkiszolgálót a Windows virtuális gép feladat-visszavételhez. Ehhez futtassa újra az egyesített telepítő, és válassza ki a fő célkiszolgáló létrehozása. [További információk](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
 Miután létrehozott egy fő célkiszolgálót, a következő feladatokat végezheti el:
 

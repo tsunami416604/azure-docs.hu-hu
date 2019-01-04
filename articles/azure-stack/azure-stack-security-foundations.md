@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2018
 ms.author: patricka
-ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901481"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727089"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Az Azure Stack infrastruktúrájának biztonsági rendszer kialakításához
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Biztonsági szempontok és a megfelelőségi szabályzat is a fő illesztőprogramokat a hibrid felhők között. Ezek a forgatókönyvek az Azure Stack tervezték. Ez a cikk ismerteti a helyen az Azure Stack biztonsági vezérlők.
 
@@ -40,7 +40,7 @@ Mivel az infrastruktúra meghatározott hardveren és szoftverekről, Azure Stac
 Mivel az Azure Stack egy integrált rendszer kerül, a Microsoft határozza meg az Azure Stack-infrastruktúra biztonsági állapotát. Csakúgy, mint az Azure-ban, bérlők felelős azok bérlői számítási feladatok biztonsági rendszerébe. Ez a dokumentum Ez a alapvető ismeretek az Azure Stack-infrastruktúra biztonsági állapotát.
 
 ## <a name="data-at-rest-encryption"></a>Az adatok inaktív adatok titkosítása
-Az összes Azure Stack infrastruktúra és a bérlői adatok titkosítása a Bitlocker használatával. A titkosítás fizikai elvesztése / eltulajdonítása Azure Stack tároló-összetevők ellen védi. 
+Az összes Azure Stack infrastruktúra és a bérlői adatok titkosítása a Bitlocker használatával. A titkosítás fizikai elvesztése / eltulajdonítása Azure Stack tároló-összetevők ellen védi. További információkért lásd: [adatok inaktív adatok titkosítása az Azure Stackben](azure-stack-security-bitlocker.md).
 
 ## <a name="data-in-transit-encryption"></a>Adatok az átvitel során titkosítás
 Az Azure Stack infrastruktúra-összetevőket a TLS 1.2 titkosított csatornákon használatával kommunikálni. Titkosítási tanúsítványok önálló kezeli az infrastruktúrát. 

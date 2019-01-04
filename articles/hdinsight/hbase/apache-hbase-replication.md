@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163836"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653815"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
-Ismerje meg, hogyan állítható be [Apache HBase](http://hbase.apache.org/) replikációs egy virtuális hálózaton belül, vagy az Azure-ban két virtuális hálózat között.
+Ismerje meg, hogyan állítható be [Apache HBase](https://hbase.apache.org/) replikációs egy virtuális hálózaton belül, vagy az Azure-ban két virtuális hálózat között.
 
 Fürt-replikáció az a forrás-küldéses metódussal. HBase-fürtöt a forrás vagy cél, vagy teljesíteni tudja mindkét szerepkört egyszerre. Replikáció az aszinkron. A replikációs célja végső konzisztenciát. Amikor a forrás és a egy oszlopcsalád szerkesztését kap, ha a replikáció engedélyezve van, a Szerkesztés az összes cél fürtök propagálja. Amikor adatok replikálódnak az egyik fürtről a másikra, a forrás fürt és az összes olyan fürtben, amely már használt fel, az adatok nyomon követi, replikációs hurkok elkerülése érdekében.
 
-Ebben az oktatóanyagban beállította egy forrás-cél replikációs. Más fürt topológiákat, tekintse meg a [Apache HBase referencia-útmutató](http://hbase.apache.org/book.html#_cluster_replication).
+Ebben az oktatóanyagban beállította egy forrás-cél replikációs. Más fürt topológiákat, tekintse meg a [Apache HBase referencia-útmutató](https://hbase.apache.org/book.html#_cluster_replication).
 
 A HBase replikációs használati eseteinek egyetlen virtuális hálózaton az alábbiak:
 
@@ -121,7 +121,7 @@ Kötési telepítéséhez használja a következő eljárást:
 
     Cserélje le `sshuser` a DNS virtuális gép létrehozásakor megadott SSH felhasználói fiókkal.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Számos módon juthat a `ssh` segédprogramot. A Linux, Unix és macOS nyújtja az operációs rendszer részeként. Ha Windows használ, fontolja meg az alábbi lehetőségek közül:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
@@ -162,7 +162,7 @@ Kötési telepítéséhez használja a következő eljárást:
     };
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Cserélje le az értékeket a `goodclients` szakaszt az IP-címtartományt, a két virtuális hálózat. Ez a szakasz határozza meg a címeket, a DNS-kiszolgáló fogadja a kéréseit.
 
     Ez a fájl szerkesztéséhez használja a következő parancsot:
@@ -197,7 +197,7 @@ Kötési telepítéséhez használja a következő eljárást:
     };
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Cserélje le a `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` az a virtuális hálózat DNS-utótagját. És a továbbító IP-cím a virtuális hálózat a DNS-kiszolgáló a magánhálózati IP-címe.
 
     Ez a fájl szerkesztéséhez használja a következő parancsot:
@@ -221,7 +221,7 @@ Kötési telepítéséhez használja a következő eljárást:
     nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Cserélje le `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` a teljesen minősített tartománynevét (FQDN) a DNS virtuális gép a hálózatban.
     >
     > Cserélje le `10.2.0.4` együtt a __belső IP-cím__ az egyéni DNS-kiszolgáló a virtuális hálózatban.
@@ -258,7 +258,7 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>Az Apache HBase-fürtök létrehozása
 
-Hozzon létre egy [Apache HBase](http://hbase.apache.org/) fürtben az egyes a két virtuális hálózat a következő beállításokkal:
+Hozzon létre egy [Apache HBase](https://hbase.apache.org/) fürtben az egyes a két virtuális hálózat a következő beállításokkal:
 
 - **Erőforráscsoport neve**: használja ugyanazt az erőforráscsoport-nevet a virtuális hálózatok létrehozott.
 - **Fürt típusa**: HBase
@@ -295,8 +295,7 @@ A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlm�
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    >[!note]
-    >
+    > [!NOTE]
     > Állomásnév helyett a teljes Tartománynevet használja a forrás- és a fürt DNS-név.
 
 6. Kattintson a **Létrehozás** gombra. A parancsfájl eltarthat egy ideig, futtatásához, különösen ha használja a **- copydata** argumentum.

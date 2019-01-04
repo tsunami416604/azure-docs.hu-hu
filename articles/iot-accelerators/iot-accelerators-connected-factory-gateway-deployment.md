@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139224"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599944"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Egy edge-átjáró számára a Windows vagy Linux rendszeren Okosgyár-megoldásgyorsító üzembe helyezése
 
@@ -70,7 +70,7 @@ További információkért lásd: a [a kötetek](https://docs.docker.com/engine/
 
 Mielőtt telepíti az OPC-összetevőket, a következő lépéseket a környezet előkészítése:
 
-1. Az átjáró telepítéséhez, rendelkeznie kell a **iothubowner** a csatlakoztatott gyár központi telepítésben az IoT hub kapcsolati karakterláncot. Az a [az Azure portal](http://portal.azure.com/), keresse meg az IoT hubot a csatlakoztatott gyár megoldás üzembe helyezésekor létrehozott erőforráscsoportban. Kattintson a **megosztott elérési házirendek** való hozzáférést a **iothubowner** kapcsolati karakterlánc:
+1. Az átjáró telepítéséhez, rendelkeznie kell a **iothubowner** a csatlakoztatott gyár központi telepítésben az IoT hub kapcsolati karakterláncot. Az a [az Azure portal](https://portal.azure.com/), keresse meg az IoT hubot a csatlakoztatott gyár megoldás üzembe helyezésekor létrehozott erőforráscsoportban. Kattintson a **megosztott elérési házirendek** való hozzáférést a **iothubowner** kapcsolati karakterlánc:
 
     ![Keresse meg az IoT Hub kapcsolati karakterláncot](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 127bd965fdce93ae44fbb38a037477174c9cb3fe
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583244"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652235"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -33,7 +33,7 @@ A legjobb Spark-verziót használja a fürt számára.  A HDInsight szolgáltat�
 Amikor létrehoz egy új fürtöt, nincsenek több Spark-verziók közül választhat. A teljes lista megtekintéséhez [HDInsight-összetevők és verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
-> [!NOTE]
+> [!NOTE]  
 > Az alapértelmezett verzió Apache sparkot a HDInsight szolgáltatásban értesítés nélkül változhatnak. Ha egy függőségi, a Microsoft azt javasolja, adjon meg, hogy adott verziót fürtök használata a .NET SDK-val, az Azure PowerShell és az Azure klasszikus parancssori felület létrehozásakor.
 
 Az Apache Spark rendelkezik rendszer-konfiguráció három helyen:
@@ -76,7 +76,7 @@ Tekintse meg, és módosítsa az egyes Spark konfigurációs értékeket, válas
 
 Ha a konfigurációs értékeket, nem alapértelmezett csoportját hozhatja létre, akkor megtekintheti a konfigurációfrissítések előzményeit is.  A korábbi konfigurációkat, mely nem alapértelmezett konfiguráció tartozik-e optimális teljesítmény érdekében hasznos lehet.
 
-> [!NOTE]
+> [!NOTE]  
 > Tekintse meg, de nem módosíthatja, közös Spark fürt konfigurációs beállításokat, jelölje be a **környezet** lapján a legfelső szintű **Spark-feladat felhasználói felület** felületet.
 
 ## <a name="configuring-spark-executors"></a>A Spark végrehajtóval konfigurálása
@@ -89,7 +89,7 @@ Spark-feladatok feldolgozó erőforrások, különösen a memória, használ, í
 
 Három fő paraméterek, amelyek gyakran módosulnak Spark konfigurációk javítása alkalmazáskövetelmények finomhangolásához `spark.executor.instances`, `spark.executor.cores`, és `spark.executor.memory`. Az Executor egy folyamat egy Spark-alkalmazás esetén. Egy végrehajtó a munkavégző csomóponton fut, és a feladatokat az alkalmazás feladata. Minden egyes fürt az alapértelmezett számát végrehajtóval, és az executor-méretek számítjuk alapján a munkavégző csomópontok és a munkavégző csomópont méretét. Ezek tárolt `spark-defaults.conf` a fő fürtcsomópontokon.  Ezeket az értékeket egy futó fürt kiválasztásával szerkesztheti a **egyéni spark-alapértelmezett** hivatkozásra az Ambari webes felület.  Miután változtatásokat, kér a felhasználói felületen **indítsa újra a** minden érintett szolgáltatást.
 
-> [!NOTE]
+> [!NOTE]  
 > Ezen három konfiguráció paraméterei (az összes alkalmazáshoz a fürtön futó) a fürt szintjén konfigurálhatók és minden egyes alkalmazáshoz is megadott.
 
 A Spark végrehajtóval által használt erőforrások adatait egy másik forrása a Spark-alkalmazás felhasználói felületén.  A Spark felhasználói felületén, válassza ki a **végrehajtóval** lapot, hogy megjelenítse a konfiguráció és a végrehajtóval által használt erőforrások összegzés és részletek nézetét.  Ezek a nézetek segítségével határozza meg, hogy a Spark végrehajtóval az egész fürt számára módosítsa az alapértékeket, vagy egy adott feladat-végrehajtások készlete.
@@ -123,15 +123,15 @@ YARN a Spark-csomópontokon a tárolók által használt memória maximális ös
 
 A HDInsight Spark-fürtök számos összetevőnek alapértelmezés szerint tartalmazza. Egyes összetevők magában foglalja az alapértelmezett konfigurációs értékeket, amelyek szükség szerint felülbírálható.
 
-* Spark Core - Spark mag, Spark SQL, Spark streamelési API-k, GraphX és MLlib
-* Anaconda - a python Csomagkezelő manager
-* [Az Apache Livy](https://livy.incubator.apache.org/) – az Apache Spark REST API segítségével a HDInsight Spark-fürt távoli feladatok elküldéséhez
-* [Jupyter](https://jupyter.org/) és [Apache Zeppelin](https://zeppelin.apache.org/) notebookok – interaktív böngészőalapú felhasználói Felületet a Spark-fürthöz való interakcióhoz
-* ODBC-illesztő – a HDInsight Spark-fürtök csatlakozik az üzleti intelligenciára épülő (BI) eszközökkel, például a Microsoft Power BI és a Tableau
+* Spark Core - Spark mag, Spark SQL, Spark streamelési API-k, GraphX és az Apache Spark MLlib.
+* Anaconda - a a python Csomagkezelő manager.
+* [Az Apache Livy](https://livy.incubator.apache.org/) – az Apache Spark REST API segítségével a HDInsight Spark-fürt távoli feladatok elküldéséhez.
+* [Jupyter](https://jupyter.org/) és [Apache Zeppelin](https://zeppelin.apache.org/) notebookok – interaktív böngészőalapú felhasználói Felületet a Spark-fürthöz való interakcióhoz.
+* ODBC-illesztőprogram - csatlakozás a HDInsight Spark-fürtök üzleti intelligenciára épülő (BI) eszközökkel, például a Microsoft Power BI és a Tableau.
 
 Alkalmazások futtatása a Jupyter notebookot, használja a `%%configure` , hogy a konfigurációs parancs módosítja a belül magát a notebookot. Konfigurációs módosítások alkalmazható lesz a Spark-feladatok futtatása a jegyzetfüzet-példányból. A módosítások az alkalmazás futtatása az első kódcella előtt elején célszerű létrehozni. A módosított konfiguráció alkalmazása a Livy-munkamenethez, amikor létrejön.
 
-> [!NOTE]
+> [!NOTE]  
 > Az alkalmazás egy későbbi időpontban a konfiguráció módosításához használja a `-f` (kényszerített) paramétert. Azonban az alkalmazás folyamatban lévő elvesznek.
 
 Az alábbi kód bemutatja, hogyan módosítható konfigurációja egy Jupyter Notebookban futó alkalmazások.

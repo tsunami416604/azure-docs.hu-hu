@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 5a54d70164e393dfe41dc3d9b71fb3c5afa33852
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 45c9d5fac24bbbc7d90abf43f5f7662c26c7d4b0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723620"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810151"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 
@@ -24,7 +24,7 @@ Melyik API-t szeretné használni az Azure Cosmos DB-vel?
 
 * **[SQL API](documentdb-introduction.md)** – Az adatáttelepítési eszközben elérhető bármelyik forráslehetőséggel importálhat adatokat.
 * **[Table API](table-introduction.md)** – Az adatok importálásához használhatja az adatáttelepítési eszközt vagy az AzCopy segédprogramot. További információért olvassa el az [Adatok importálása az Azure Cosmos DB Table API-val való használathoz](table-import.md) című témakört.
-* **[Az Azure Cosmos DB MongoDB API-hoz](mongodb-introduction.md)**  – az adatok áttelepítési eszköz jelenleg nem támogatja az Azure Cosmos DB MongoDB API-hoz forrásként és célként. Ha azt szeretné, vagy ki a gyűjtemények az Azure Cosmos DB az adatok áttelepítéséhez, [adatok áttelepítése az Azure Cosmos DB MongoDB API-hoz](mongodb-migrate.md) útmutatást. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
+* **[Az Azure Cosmos DB MongoDB API-](mongodb-introduction.md)**  – az adatok áttelepítési eszköz jelenleg nem támogatja az Azure Cosmos DB API a mongodb-hez forrásként és célként. Ha azt szeretné, vagy ki a gyűjtemények az Azure Cosmos DB az adatok áttelepítéséhez, [egy Cosmos-adatbázis az Azure Cosmos DB API a MongoDB-adatok áttelepítése a mongodb-hez](mongodb-migrate.md) útmutatást. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
 * **[Gremlin API](graph-introduction.md)**  – az adatok áttelepítési eszköze nem egy támogatott importálási eszköz a Gremlin API-fiókok jelenleg.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
@@ -111,7 +111,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a id="MongoDB"></a>Importálás MongoDB-ből
 
 > [!IMPORTANT]
-> Ha importál egy MongoDB API-hoz konfigurált Cosmos-fiókjába, kövesse az alábbi [utasításokat](mongodb-migrate.md).
+> Ha importál egy Cosmos-fiókba az Azure Cosmos DB API a mongodb-hez konfigurált, kövesse az alábbi [utasításokat](mongodb-migrate.md).
 
 A MongoDB forrás programu Pro import lehetőséggel egy MongoDB-gyűjtemény importálása, opcionális szűrés a dokumentumok egy lekérdezést és módosítása a dokumentum szerkezete leképezés használatával.  
 

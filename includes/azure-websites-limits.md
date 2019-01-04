@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279677"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53736960"
 ---
 | Erőforrás | Ingyenes | Közös | Alapszintű | Standard | Prémium szintű (v2) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Webes, mobil-, és API apps](https://azure.microsoft.com/services/app-service/) kiszolgálónként [App Service-csomag](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup>|
-| [App Service-csomag](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 és régiónként |az adott erőforráscsoport esetében 10 |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100|
+| [Webes, mobil-, és API apps](https://azure.microsoft.com/services/app-service/) kiszolgálónként [App Service-csomag](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup> |Korlátlan számú<sup>2</sup>|
+| [App Service-csomag](../articles/app-service/overview-hosting-plans.md) |1 és régiónként |az adott erőforráscsoport esetében 10 |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100|
 | Számítási példány típusa |Közös |Közös |Dedikált<sup>3</sup> |Dedikált<sup>3</sup> |Dedikált<sup>3</sup></p> |Dedikált<sup>3</sup>|
 | [Horizontális Felskálázás](../articles/app-service/web-sites-scale.md) (példányok max.) |a megosztott 1 |a megosztott 1 |3 dedikált<sup>3</sup> |dedikált 10<sup>3</sup> |dedikált 20<sup>3</sup>|dedikált 100<sup>4</sup>|
 | Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB-OS<sup>5</sup></p> |1 TB-OS<sup>5</sup>|
@@ -24,18 +24,18 @@ ms.locfileid: "52279677"
 | Bandwidth |165 MB |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) alkalmazása |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) alkalmazása |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) alkalmazása |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) alkalmazása |Korlátlan, [adatátviteli díjak](https://azure.microsoft.com/pricing/details/data-transfers/) alkalmazása |
 | Alkalmazásarchitektúra |32 bites |32 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |
 | Webes szoftvercsatornák példányonként<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |Korlátlan |
-| Egyidejű [ladicího programu kapcsolatok](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) alkalmazásonként |1 |1 |1 |5 |5 |5 |
+| Egyidejű [ladicího programu kapcsolatok](../articles/app-service/troubleshoot-dotnet-visual-studio.md) alkalmazásonként |1 |1 |1 |5 |5 |5 |
 | App Service-tanúsítványok száma előfizetésenként<sup>10</sup>| Nem támogatott | Nem támogatott |10 |10 |10 |10 |
 | Egyéni tartományok alkalmazásonként</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |
 | Egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nem támogatott. A helyettesítő tanúsítvány *. azurewebsites.net alapértelmezés szerint elérhető.|Nem támogatott. A helyettesítő tanúsítvány *. azurewebsites.net alapértelmezés szerint elérhető.|Korlátlan számú SNI SSL-kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL-kapcsolatot tartalmaz |Korlátlan számú SNI SSL és 1 IP SSL-kapcsolatot tartalmaz | Korlátlan számú SNI SSL és 1 IP SSL-kapcsolatot tartalmaz|
 | Integrált Load Balancer | |X |X |X |X |X<sup>9</sup> |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
-| [Ütemezett biztonsági mentések](../articles/app-service/web-sites-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként legfeljebb 12 biztonsági mentések naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként legfeljebb 50 biztonsági mentések naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként legfeljebb 50 biztonsági mentések naponta (manuális + ütemezett) |
+| [Ütemezett biztonsági mentések](../articles/app-service/manage-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként legfeljebb 12 biztonsági mentések naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként legfeljebb 50 biztonsági mentések naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként legfeljebb 50 biztonsági mentések naponta (manuális + ütemezett) |
 | [Automatikus méretezés](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
-| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |X |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
 | [Az Azure Scheduler](https://azure.microsoft.com/services/scheduler/) támogatása | |X |X |X |X |X |
 | [Végpontmonitoring](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Átmeneti pontok szolgálnak](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
+| [Átmeneti pontok szolgálnak](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | SLA | |  |99,9% |99.95%|99.95%|99.95%|  
 
 <sup>1</sup> alkalmazások és a tárolási kvótákat van egy App Service-csomag hacsak másként nem jelezzük.  

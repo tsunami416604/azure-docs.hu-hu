@@ -3,16 +3,17 @@ title: Futtassa a vészhelyreállítási próbát az Azure-bA az Azure Site Reco
 description: Ismerje meg a irányuló vészhelyreállítási próbát a helyszínről az Azure-ba, az Azure Site Recovery szolgáltatással.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cd8a7540b14c9d0896b9b0db2cae91ac54d92f2a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844685"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976555"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba 
 
@@ -30,12 +31,12 @@ Ez az eljárás ismerteti egy helyreállítási terv feladatátvételi teszt fut
 
 1. A Site Recovery az Azure Portalon, kattintson **helyreállítási tervek** > *recoveryplan_name* > **feladatátvételi teszt**.
 2. Válassza ki a **helyreállítási pont** , amelyhez a feladatátvételt. Az alábbi lehetőségek egyikét használhatja:
-    - **Legutóbb feldolgozott**: a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak a csomag összes virtuális gép feladatait ezt a beállítást. Tekintse meg a legutóbbi helyreállítási pont egy adott virtuális géphez, ellenőrizze a következőket **legutóbbi helyreállítási pontok** a virtuális gép beállításaiban. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
-    - **Legutóbbi alkalmazáskonzisztens**: a Site Recovery által feldolgozott legutóbbi alkalmazáskonzisztens helyreállítási pont, a csomag összes virtuális gép feladatait ezt a beállítást. Tekintse meg a legutóbbi helyreállítási pont egy adott virtuális géphez, ellenőrizze a következőket **legutóbbi helyreállítási pontok** a virtuális gép beállításaiban.
+    - **Legutóbb feldolgozott**: Ez a beállítás a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak a csomag összes virtuális gép feladatait. Tekintse meg a legutóbbi helyreállítási pont egy adott virtuális géphez, ellenőrizze a következőket **legutóbbi helyreállítási pontok** a virtuális gép beállításaiban. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
+    - **Legutóbbi alkalmazáskonzisztens**: Ezt a beállítást a tervben a Site Recovery által feldolgozott legutóbbi alkalmazáskonzisztens helyreállítási pont a virtuális gépek feladatait. Tekintse meg a legutóbbi helyreállítási pont egy adott virtuális géphez, ellenőrizze a következőket **legutóbbi helyreállítási pontok** a virtuális gép beállításaiban.
     - **Legújabb**: Ez a lehetőség először feldolgozza a helyreállítási pont létrehozása előtt feladatátadás azt a virtuális gépek Site Recovery szolgáltatásba küldött összes adat. Ezt a lehetőséget biztosít a a legkisebb helyreállítási Időkorlát (helyreállítási időkorlát), mert a virtuális gép létrehozása után a feladatátvételi lesz a feladatátvétel elindításakor a Site Recoverybe replikált összes adatot.
     - **Legújabb több virtuális gépre kiterjedő feldolgozott**: Ez a beállítás érhető el helyreállítási terveket biztosít egy vagy több virtuális gépek, amelyeken engedélyezve van a virtuális gépre kiterjedő konzisztencia. A beállítás engedélyezve van a virtuális gépek feladatátvételt a legutóbbi közös virtuális gépre kiterjedő konzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi feldolgozott helyreállítási pontot.  
     - **Legújabb több virtuális gépre kiterjedően alkalmazáskonzisztens**: Ez a beállítás érhető el helyreállítási terveket biztosít egy vagy több virtuális gépek, amelyeken engedélyezve van a virtuális gépre kiterjedő konzisztencia. A replikációs csoport részét képező virtuális gépek feladatátvételt a legutóbbi közös virtuális gépre kiterjedően alkalmazáskonzisztens helyreállítási pontot. Más virtuális gépek feladatátvételt a legutóbbi alkalmazáskonzisztens helyreállítási pontot.
-    - **Egyéni**: használja ezt a beállítást egy adott virtuális gép egy adott helyreállítási pontra való átadásához.
+    - **Egyéni**: Ez a beállítás használatával egy adott helyreállítási pontra az adott virtuális gép feladatainak átadásához.
 3. Válassza ki a teszt virtuális gépek létrehozott Azure virtuális hálózatban.
 
     - Hely helyreállítási kísérletek hozhat létre egy alhálózatot az azonos nevű és azonos IP-címre, amelyek a virtuális gépek tesztelése a **számítás és hálózat** a virtuális gép beállításait.

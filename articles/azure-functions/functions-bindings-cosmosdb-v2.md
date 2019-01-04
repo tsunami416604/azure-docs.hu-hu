@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 362a8f6108ad035c66fe76dae09cf7711dafd070
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344346"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972039"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futásidejének verzióját: "]
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
@@ -274,8 +274,9 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz elindít egy feladatot a számítási, ha a partíciók lesznek elosztva a gazdagép ismert példányok között. Alapértelmezés szerint 13000 (13 másodperc).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, az időköz, amelynek a bérlet egy bérletet, egy partíciót jelölő készül. A bérlet ezen az időtartamon belül nem újítja meg, ha azt eredményezi, hamarosan lejár, és a partíció tulajdonjogának áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
-|**checkpointFrequency**| **checkpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Alapértelmezés szerint mindig után a sikeres a függvényhívást.
+|**checkpointFrequency**| **checkpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Alapértelmezés szerint mindig után minden függvény hívásához szükséges.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Nem kötelező) Ha a beállítás, azt testreszabja egy függvény hívásához szükséges fogadott elemek maximális számát.
+|**startFromBeginning**| **StartFromBeginning**| (Nem kötelező) Ha a beállítás, közli az eseményindítót az olvasást módosítások előzményeit, a gyűjtemény helyett az aktuális idő elejétől kezdi. Ez csak az első alkalommal a Trigger elindul, ahogy ezt követő fut le, az ellenőrzőpontokat már tárolt működik. Ezt a beállítást `true` Ha már létrehozott bérleteket nem lesz hatása.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -384,6 +385,10 @@ namespace CosmosDBSamplesV2
 #### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP-eseményindító, ID keresse meg a lekérdezési karakterláncból (C#)
 
 A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérelem keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Hogy azonosító beolvasásához használt egy `ToDoItem` dokumentumot a megadott adatbázis és gyűjtemény.
+
+>[!NOTE]
+>A HTTP-lekérdezési karakterlánc paramétereként a kis-és nagybetűket.
+>
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1446,29 +1451,253 @@ Hozzáadása egy `project.json` fájlt [ F# felügyeleti csomag](functions-refer
 
 ### <a name="input---java-examples"></a>Bemenet - Java-példák
 
-Az alábbi példa bemutatja egy Java-függvény, amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérés keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez a ToDoItem dokumentum lekérése a megadott adatbázis és gyűjtemény szolgál.
+Ez a szakasz tartalmazza az alábbi példák:
 
-A Java-kód itt látható:
+* [HTTP-eseményindító, ID keresse meg a lekérdezési karakterlánc - karakterlánc-paramétert a](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [HTTP-eseményindító, ID keresse meg a lekérdezési karakterlánc - pojo-vá. a paraméter](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [HTTP eseményindító útvonal adatokból azonosító keresése](#http-trigger-look-up-id-from-route-data-java)
+* [HTTP eseményindító útvonal-adatokból, amelyek használatával az SQL-lekérdezés azonosító keresése](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
+* [HTTP-trigger, a több docs útvonal-adatokból, amelyek használatával az SQL-lekérdezés](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+
+Tekintse meg a példák egy egyszerű `ToDoItem` típusa:
 
 ```java
-@FunctionName("getItem")
-public String cosmosDbQueryById(
-    @HttpTrigger(name = "req",
-                  methods = {HttpMethod.GET},
-                  authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> dummy,
-    @CosmosDBInput(name = "database",
-                      databaseName = "ToDoList",
-                      collectionName = "Items",
-                      leaseCollectionName = "",
-                      id = "{Query.id}"
-                      connectionStringSetting = "AzureCosmosDBConnection") Optional<String> item,
-    final ExecutionContext context
- ) {
-    return item.orElse("Not found");
- }
+public class ToDoItem {
+
+  private String id;
+  private String description;  
+
+  public String getId() {
+    return id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+  
+  @Override
+  public String toString() {
+    return "ToDoItem={id=" + id + ",description=" + description + "}";
+  }
+}
+```
+
+#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP-eseményindító, ID keresse meg a lekérdezési karakterlánc - karakterlánc-paramétert (Java)
+
+Az alábbi példa bemutatja egy Java-függvény, amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérés keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez a dokumentum lekérése a megadott adatbázis és gyűjtemény karakterlánc formájában szolgál.
+
+```java
+public class DocByIdFromQueryString {
+
+    @FunctionName("DocByIdFromQueryString")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
  ```
 
 Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@CosmosDBInput` függvény paraméterei, amelynek értéke a Cosmos DB lenne biztosítja a jegyzet.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használata nem kötelező<T>.
+
+#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP-eseményindító, ID keresse meg a lekérdezési karakterlánc - pojo-vá paraméter (Java)
+
+Az alábbi példa bemutatja egy Java-függvény, amely egyetlen dokumentum beolvasása. A függvényt egy HTTP-kérés keresse ki az azonosító megadása egy lekérdezési karakterláncot használó aktiválja. Ez a dokumentum lekérése a megadott adatbázis és gyűjtemény szolgál. A dokumentum majd alakítani egy példányát a ```ToDoItem``` korábban hozott létre, és a függvény az argumentumként átadott pojo-vá.
+
+```java
+public class DocByIdFromQueryStringPojo {
+
+    @FunctionName("DocByIdFromQueryStringPojo")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{Query.id}",
+              partitionKey = "{Query.id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Item from the database is " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP eseményindító útvonal adatokból (Java) azonosító keresése
+
+Az alábbi példa bemutatja egy Java-függvény, amely egyetlen dokumentum beolvasása. A függvényt, amely egy útvonal-paraméter segítségével keresse ki az azonosító megadása egy HTTP-kérelem aktiválja. Hogy azonosító beolvasásához használt egy dokumentumot a megadott adatbázis és gyűjtemény-visszaküldés, egy ```Optional<String>```.
+
+```java
+public class DocByIdFromRoute {
+
+    @FunctionName("DocByIdFromRoute")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems/{id}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              id = "{id}",
+              partitionKey = "{id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            Optional<String> item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("String from the database is " + (item.isPresent() ? item.get() : null));
+
+        // Convert and display
+        if (!item.isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from Cosmos. Alternatively, we can parse the JSON string 
+            // and return an enriched JSON object.
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item.get())
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP eseményindító útvonal adatokból, SQL-lekérdezés (Java) használatával azonosító keresése
+
+Az alábbi példa bemutatja egy Java-függvény, amely egyetlen dokumentum beolvasása. A függvényt, amely egy útvonal-paraméter segítségével keresse ki az azonosító megadása egy HTTP-kérelem aktiválja. Hogy a dokumentum lekérése a megadott adatbázis és gyűjtemény azonosítója szolgál, az eredmény konvertálása beállítása egy ```ToDoItem[]```, mivel számos dokumentumok visszaadott, attól függően, a lekérdezési feltételeknek.
+
+```java
+public class DocByIdFromRouteSqlQuery {
+
+    @FunctionName("DocByIdFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems2/{id}") 
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where r.id = {id}",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] item,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Items from the database are " + item);
+
+        // Convert and display
+        if (item == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(item)
+                          .build();
+        }
+    }
+}
+ ```
+
+#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP-trigger, a több docs útvonal adatokból, SQL-lekérdezés (Java) használatával
+
+Az alábbi példa bemutatja egy Java-függvény, amely több dokumentumot. A függvényt egy útvonal-paraméter HTTP-kérés aktiválja ```desc``` , adja meg a keresendő karakterláncot a ```description``` mező. A keresési kifejezés dokumentumok gyűjteményét lekérni a megadott adatbázis és -gyűjteményt, az eredmény értékre konvertálása egy ```ToDoItem[]``` és átadásával a függvény argumentumaként.
+
+```java
+public class DocsFromRouteSqlQuery {
+
+    @FunctionName("DocsFromRouteSqlQuery")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "todoitems3/{desc}")
+            HttpRequestMessage<Optional<String>> request,        
+            @CosmosDBInput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              sqlQuery = "select * from Items r where contains(r.description, {desc})",
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            ToDoItem[] items,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+        context.getLogger().info("Number of items from the database is " + (items == null ? 0 : items.length));
+
+        // Convert and display
+        if (items == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("No documents found.")
+                          .build();
+        } 
+        else {
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(items)
+                          .build();
+        }
+    }
+}
+ ```
 
 ## <a name="input---attributes"></a>Bemenet - attribútumok
 
@@ -1511,7 +1740,7 @@ A nyelvspecifikus példa látható:
 * [C#](#output---c-examples)
 * [C# script (.csx)](#output---c-script-examples)
 * [F#](#output---f-examples)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-examples)
 
 Lásd még a [bemeneti példa](#input---c-examples) használó `DocumentClient`.
@@ -1884,20 +2113,163 @@ Hozzáadása egy `project.json` fájlt [ F# felügyeleti csomag](functions-refer
 
 ### <a name="output---java-examples"></a>Kimenet – Java-példák
 
+* [Üzenetsor eseményindító keresztül visszaadott érték adatbázis üzenetek mentése](#queue-trigger-save-message-to-database-via-return-value-java)
+* [HTTP-eseményindító, mentse egy dokumentum-adatbázis visszatérési értéke](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [HTTP-eseményindító egy dokumentum-adatbázis OutputBinding mentése](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [HTTP-eseményindító OutputBinding keresztül az adatbázis több dokumentum mentése](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+
+
+#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Üzenetsor eseményindító keresztül visszaadott érték (Java) adatbázis üzenetek mentése
+
 Az alábbi példa bemutatja egy Java-függvény, amely a Queue storage-ban egy üzenetet ad hozzá egy dokumentumot egy adatokat tartalmazó adatbázis.
 
 ```java
 @FunctionName("getItem")
-@CosmosDBOutput(name = "database", databaseName = "ToDoList", collectionName = "Items", connectionStringSetting = "AzureCosmosDBConnection")
+@CosmosDBOutput(name = "database", 
+  databaseName = "ToDoList", 
+  collectionName = "Items", 
+  connectionStringSetting = "AzureCosmosDBConnection")
 public String cosmosDbQueryById(
-     @QueueTrigger(name = "msg", queueName = "myqueue-items", connection = "AzureWebJobsStorage") String message,
-     final ExecutionContext context
-)  {
-     return "{ id: " + System.currentTimeMillis() + ", Description: " + message + " }";
+    @QueueTrigger(name = "msg", 
+      queueName = "myqueue-items", 
+      connection = "AzureWebJobsStorage") 
+    String message,
+    final ExecutionContext context)  {
+     return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
    }
 ```
 
-Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@CosmosDBOutput` jegyzet a Cosmos DB-hez írt paraméterek.  A jegyzet paraméter típusúnak kell lennie a OutputBinding<T>, ahol T, vagy egy natív Java-típust, vagy egy pojo-vá.
+#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>HTTP-eseményindító, mentse egy dokumentum-adatbázis visszatérési érték (Java)
+
+Az alábbi példa bemutatja egy Java funkció, amelynek aláírással rendelkező van feliratozva ```@CosmosDBOutput``` típusú visszatérési érték pedig ```String```. A függvény által visszaadott JSON-dokumentumok automatikusan lesz írva a megfelelő cosmos DB-gyűjtemény.
+
+```java
+    @FunctionName("WriteOneDoc")
+    @CosmosDBOutput(name = "database", 
+      databaseName = "ToDoList",
+      collectionName = "Items", 
+      connectionStringSetting = "Cosmos_DB_Connection_String")
+    public String run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Parse query parameter        
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        return jsonDocument;
+    }
+```
+
+#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>HTTP-eseményindító, mentse egy dokumentum-adatbázis OutputBinding (Java)
+
+Az alábbi példa bemutatja egy Java-függvény, amely dokumentumot ír a cosmos DB-n keresztül egy ```OutputBinding<T>``` kimeneti paraméterként. Fontos megjegyezni, hogy ez a beállítás, a ```outputItem``` paraméter, amely osztállyal kell ```@CosmosDBOutput```, nem a függvényfej. Használatával ```OutputBinding<T>``` lehetővé teszi, hogy a függvény a kötés, miközben is lehetővé teszi egy másik értéket adnak vissza a függvény hívó, például JSON vagy XML-dokumentum írni a dokumentum cosmos DB előnyeit.
+
+```java
+    @FunctionName("WriteOneDocOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<String> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        // Set outputItem's value to the JSON document to be saved
+        outputItem.setValue(jsonDocument);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Document created successfully.")
+                      .build();
+    }
+```
+
+#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>HTTP-eseményindító, az adatbázis-OutputBinding (Java) használatával több dokumentum mentése
+
+Az alábbi példa bemutatja egy Java-függvény, amely több dokumentumot ír a cosmos DB-n keresztül egy ```OutputBinding<T>``` kimeneti paraméterként. Fontos megjegyezni, hogy ez a beállítás, a ```outputItem``` paraméter, amely osztállyal kell ```@CosmosDBOutput```, nem a függvényfej. A kimeneti paraméter ```outputItem``` listája ```ToDoItem``` -objektumokat a sablon a paraméter típusát. Használatával ```OutputBinding<T>``` lehetővé teszi, hogy a funkció előnyeit a dokumentumok írása a cosmosdb-be is egy másik értéket adnak vissza a függvény hívó, például JSON vagy XML-dokumentum téve a kötés.
+
+```java
+    @FunctionName("WriteMultipleDocsOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET, HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS) 
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database", 
+              databaseName = "ToDoList", 
+              collectionName = "Items", 
+              connectionStringSetting = "Cosmos_DB_Connection_String") 
+            OutputBinding<List<ToDoItem>> outputItem,
+            final ExecutionContext context) {
+  
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+      
+        // Generate documents
+        List<ToDoItem> items = new ArrayList<>();
+
+        for (int i = 0; i < 5; i ++) {
+          // Generate random ID
+          final int id = Math.abs(new Random().nextInt());
+
+          // Create ToDoItem
+          ToDoItem item = new ToDoItem(String.valueOf(id), name);
+          
+          items.add(item);
+        }
+
+        // Set outputItem's value to the list of POJOs to be saved
+        outputItem.setValue(items);
+        context.getLogger().info("Document to be saved: " + items);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Documents created successfully.")
+                      .build();
+    }
+```
+
+Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@CosmosDBOutput` jegyzet a Cosmos DB-hez írt paraméterek.  A jegyzet paraméter típusúnak kell lennie ```OutputBinding<T>```, ahol T, vagy egy natív Java-típust, vagy egy pojo-vá.
 
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok

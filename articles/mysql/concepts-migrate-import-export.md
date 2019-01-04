@@ -1,20 +1,17 @@
 ---
 title: Importálása és exportálása az Azure Database for MySQL-hez
 description: Ez a cikk ismerteti a gyakori módjai importálása és exportálása az adatbázisok az Azure Database for MySQL, eszközök, például a MySQL Workbench használatával.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2018
-ms.openlocfilehash: ee291f24a1ad77f84e7cdb8cf4c687af7dfa3f17
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986219"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545518"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis áttelepítése importálása és exportálása
 Ez a cikk leírja a két leggyakoribb módszer az adatok importálása és exportálása egy Azure Database for MySQL-kiszolgálóhoz a MySQL Workbench használatával. 
@@ -86,14 +83,14 @@ Az alábbi példa a tábla exportálása CSV-fájlba:
 Az alábbi példa a tábla importálja a CSV-fájlból:
 1. Kattintson a jobb gombbal a táblázat az adatbázis importálni. 
 2. Keresse meg és válassza ki az importálni, és kattintson a CSV-fájl **tovább**. 
-3. Válassza ki a céloldali tábla (új vagy meglévő), és válassza ki, vagy törölje a jelet a **csonkolási tábla importálása előtt** jelölőnégyzetet. Kattintson a **Tovább** gombra.
+3. Válassza ki a céloldali tábla (új vagy meglévő), és válassza ki, vagy törölje a jelet a **csonkolási tábla importálása előtt** jelölőnégyzetet. Kattintson a **tovább**.
 4. SELECT kódolás és importálni, és kattintson a kívánt oszlopok **tovább**. 
 5. Az a **adatimportálás** kattintson **tovább**. A varázsló importálja az adatokat annak megfelelően.
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>SQL-adatok exportálása és varázslók importálhat a navigációs panel
 Egy varázsló segítségével exportálja vagy importálhat mysqldump parancsot a létrehozott vagy a MySQL Workbench segítségével létrehozott SQL. Ezekben a varázslókban, a hozzáférés a **kezelő** ablaktáblán vagy kiválasztásával **kiszolgáló** fő menüjéből. Válassza ki **adatexportálás** vagy **adatimportálás**. 
 
-#### <a name="data-export"></a>Adatok exportálása
+#### <a name="data-export"></a>Adatexportálás
 ![A MySQL Workbench-adatok exportálása a navigációs panel használatával](./media/concepts-migrate-import-export/p2.png)
 
 Használhatja a **adatexportálás** fülre, és a MySQL-adatok exportálása. 

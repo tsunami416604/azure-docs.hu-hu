@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308217"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653305"
 ---
-# <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítmény ajánlott eljárások
+# <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
-A leginkább fontos szempont a [Apache Phoenix](https://phoenix.apache.org/) teljesítmény optimalizálása az alapul szolgáló [Apache HBase](http://hbase.apache.org/). A Phoenix a HBase, HBase-műveletek, például a vizsgálatok SQL-lekérdezések alakítja interaktív irányítópultunkat relációs adatmodellekkel hoz létre. A következő tábla sémáját, a kijelölés és az elsődleges kulcsot, és az összes indexek használata a mezők sorrendjét a kialakítás befolyásolja a Phoenix teljesítményét.
+A leginkább fontos szempont a [Apache Phoenix](https://phoenix.apache.org/) teljesítmény optimalizálása az alapul szolgáló [Apache HBase](https://hbase.apache.org/). A Phoenix a HBase, HBase-műveletek, például a vizsgálatok SQL-lekérdezések alakítja interaktív irányítópultunkat relációs adatmodellekkel hoz létre. A következő tábla sémáját, a kijelölés és az elsődleges kulcsot, és az összes indexek használata a mezők sorrendjét a kialakítás befolyásolja a Phoenix teljesítményét.
 
 ## <a name="table-schema-design"></a>Séma Táblatervezés
 
@@ -225,9 +225,9 @@ Ha a forgatókönyv írási sebesség adatintegritásának előnyben részesít�
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-További információ erről és más beállítások: [Phoenix nyelvtani](http://phoenix.apache.org/language/index.html#options).
+További információ erről és más beállítások: [Apache Phoenix nyelvtani](https://phoenix.apache.org/language/index.html#options).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Az Apache Phoenix-finomhangolási útmutató](https://phoenix.apache.org/tuning_guide.html)
-* [A másodlagos indexek](http://phoenix.apache.org/secondary_indexing.html)
+* [A másodlagos indexek](https://phoenix.apache.org/secondary_indexing.html)

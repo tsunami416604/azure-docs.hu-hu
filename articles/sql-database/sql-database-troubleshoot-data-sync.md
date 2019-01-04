@@ -12,18 +12,21 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685820"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723892"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
 Ez a cikk ismerteti az Azure SQL Data Sync szolgáltatással kapcsolatos ismert problémák elhárítása. Ha a probléma megoldása, azt itt biztosítja.
 
 Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync segítségével végzett adatszinkronizálást](sql-database-sync-data.md) ismertető cikket.
+
+> [!IMPORTANT]
+> Az Azure SQL Data Sync does **nem** támogatja az Azure SQL Database felügyelt példánya jelenleg.
 
 ## <a name="sync-issues"></a>Szinkronizálási hibák
 
@@ -37,7 +40,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 - [A teljesítmény jelentős csökkenéséhez láthatók](#sync-perf)
 
-- [Ez az üzenet látható: "nem lehet beszúrni a NULL érték az az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt?](#sync-nulls)
+- [Ez az üzenet jelenik meg: "A NULL érték nem lehet beszúrni az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt?](#sync-nulls)
 
 - [Hogyan kezeli a Data Syncet. a körkörös hivatkozások? Azt jelenti, amikor ugyanazokat az adatokat több szinkronizálási csoportban szinkronizálva van, és ennek eredményeképpen tartja módosítása?](#sync-circ)
 
@@ -102,7 +105,7 @@ A teljesítmény replikákban jelentősen megnő, valószínűleg a pont, ahol m
 
 - **Feloldási**. A legjobb javítás megelőzési. Győződjön meg arról, hogy a szinkronizálási csoport nem rendelkezik. a körkörös hivatkozás. Minden sor egy szinkronizálási csoport által szinkronizálva van egy másik szinkronizálási csoport nem szinkronizálható.
 
-### <a name="sync-nulls"></a> Ez az üzenet látható: "nem lehet beszúrni a NULL érték az az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt? 
+### <a name="sync-nulls"></a> Ez az üzenet jelenik meg: "A NULL érték nem lehet beszúrni az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt? 
 Ez a hibaüzenet azt jelzi, hogy a két alábbi problémák egyike történt:
 -  Egy táblázat nem rendelkezik elsődleges kulccsal. A probléma megoldásához adja hozzá az elsődleges kulcs szinkronizál az összes táblákhoz való.
 -  A CREATE INDEX utasítás WHERE záradék szerepel. Ez az állapot nem kezeli az adatok szinkronizálása. A probléma megoldásához távolítsa el a WHERE záradékban, vagy manuálisan végezze el a módosításokat az összes adatbázishoz. 
@@ -241,7 +244,7 @@ Az SQL Data Sync szolgáltatással kapcsolatos további információkért lásd:
 
 -   Áttekintés – [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázis között az Azure SQL Data Sync szolgáltatással](sql-database-sync-data.md)
 -   Data Sync beállítása
-    - A portálban – [oktatóanyag: a helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálban – [oktatóanyag: A helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
         -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)

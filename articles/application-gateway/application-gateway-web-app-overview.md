@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: c0084580a2e4860f24aecd37232f38da2e55ccc8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e5f48e42a2a677622dae0b733f9d5af484d1c51
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578432"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605806"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Az Application Gateway támogatása több-bérlős háttérrendszerekhez
 
-Az Azure Application Gateway támogatja a virtuálisgép-méretezési csoportok, hálózati adapterek, nyilvános vagy magánhálózati IP- vagy teljes tartománynév (FQDN) nevet a háttérkészlet részeként. Alapértelmezés szerint az Application Gateway nem módosítja az ügyféltől származó bejövő HTTP-állomásfejlécet, és így küldi tovább a háttérrendszernek. Számos olyan szolgáltatás létezik, mint az [Azure Web Apps](../app-service/app-service-web-overview.md), amely eredendően több-bérlős szolgáltatás, és a megfelelő végpontra való feloldáshoz egy adott állomásfejlécet vagy SNI-bővítményt használ. Application Gateway mostantól támogatja a felhasználók felülírja a bejövő HTTP-állomásfejlécet a háttér-HTTP-beállításai alapján. Ez a képesség teszi lehetővé a több-bérlős háttérrendszerek Azure Web Apps és API Management szolgáltatásának támogatását. Ez a képesség a standard és a WAF termékváltozat esetében is elérhető. Több-bérlős háttérszolgáltatások támogatása SSL-lezárások és teljes körű SSL-forgatókönyvek esetében is működik.
+Az Azure Application Gateway támogatja a virtuálisgép-méretezési csoportok, hálózati adapterek, nyilvános vagy magánhálózati IP- vagy teljes tartománynév (FQDN) nevet a háttérkészlet részeként. Alapértelmezés szerint az Application Gateway nem módosítja az ügyféltől származó bejövő HTTP-állomásfejlécet, és így küldi tovább a háttérrendszernek. Például számos szolgáltatást [Azure App Service](../app-service/overview.md) , amely több-bérlős és egy adott állomásfejlécet vagy SNI-bővítményt a megfelelő végpontra való feloldáshoz támaszkodnak. Application Gateway mostantól támogatja a felhasználók felülírja a bejövő HTTP-állomásfejlécet a háttér-HTTP-beállításai alapján. Ez a képesség teszi lehetővé a több-bérlős háttérrendszerek Azure Web Apps és API Management szolgáltatásának támogatását. Ez a képesség a standard és a WAF termékváltozat esetében is elérhető. Több-bérlős háttérszolgáltatások támogatása SSL-lezárások és teljes körű SSL-forgatókönyvek esetében is működik.
 
 > [!NOTE]
 > Hitelesítési tanúsítvány beállítása, nem szükséges, például az Azure Web Apps megbízható Azure-szolgáltatásokhoz.
@@ -36,4 +36,4 @@ Ezzel a képességgel az ügyfelek megadhatják a HTTP-beállítások és az egy
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan állítsa be egy webes alkalmazást az application gateway háttérkészlet tagjaként funkcionáló: [az App Service web apps Application Gatewayjel](application-gateway-web-app-powershell.md)
+Ismerje meg, hogyan állítható be egy webes alkalmazást az application gateway háttérkészlet tagjaként által felkeresése: [Az App Service web Apps-alkalmazások konfigurálása az Application Gatewayen](application-gateway-web-app-powershell.md)

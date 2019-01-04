@@ -1,34 +1,34 @@
 ---
-title: Csatlakozás MongoDB-fiókhoz a Studio 3T használata (MongoChef)
+title: Kapcsolódás az Azure Cosmos DB API a mongodb-hez a Studio 3T használata
 titleSuffix: Azure Cosmos DB
-description: Ismerje meg, hogyan csatlakozhat az Azure Cosmos DB MongoDB API-t a Studio 3T használata, és a egy adatbázis, gyűjtemény és dokumentumok létrehozása, csatlakoztatása után.
+description: Ismerje meg, hogyan csatlakozhat a Cosmos DB-hez a Studio 3T és az Azure Cosmos DB API használatával a mongodb-hez.
 keywords: a mongochef, a studio 3T
 services: cosmos-db
-author: slyons
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: sclyon
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 5bdcf035f892f1cbdb8bb43579dba547f0ec8bfd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 396db84186e00fefe14ac55b9a36497c6674cb43
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135652"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811239"
 ---
-# <a name="connect-to-mongodb-account-using-studio-3t-mongochef"></a>Csatlakozás MongoDB-fiókhoz a Studio 3T használata (MongoChef)
+# <a name="connect-to-cosmos-account-using-studio-3t"></a>Csatlakozás Cosmos-fiókhoz a Studio 3T használata
 
-Szeretne csatlakozni egy Azure Cosmos DB MongoDB API-fiókot, tegye a következőket:
+Ha csatlakozni szeretne egy Cosmos-fiók mongodb-hez készült Azure Cosmos DB API használatával, tegye a következőket:
 
-* Töltse le és telepítse [a Studio 3T](https://studio3t.com/) (korábbi nevén MongoChef)
-* Az Azure Cosmos DB rendelkezik [kapcsolati karakterlánc](connect-mongodb-account.md) a MongoDB-fiókhoz tartozó adatok
+* Töltse le és telepítse [a Studio 3T](https://studio3t.com/)
+* A Cosmos DB rendelkezik [kapcsolati karakterlánc](connect-mongodb-account.md) információk
 
 ## <a name="create-the-connection-in-studio-3t"></a>A kapcsolat létrehozása ezen a Studio 3T
-Az Azure Cosmos DB-fiók hozzáadása a Studio 3T Csatlakozáskezelő, hajtsa végre az alábbi lépéseket:
+A Cosmos-fiók hozzáadása a Studio 3T Csatlakozáskezelő, hajtsa végre az alábbi lépéseket:
 
-1. Lekéri az Azure Cosmos DB kapcsolati információkat, a MongoDB API-fiókot a következő témakör utasításait a [egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása](connect-mongodb-account.md) cikk.
+1. Az Azure Cosmos DB API a MongoDB szakaszban foglaltak konfigurált Cosmos-fiók kapcsolódási adatainak lekérése a [egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása](connect-mongodb-account.md) cikk.
 
     ![Képernyőfelvétel a kapcsolati karakterlánc oldaláról](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. Kattintson a **Connect** a kapcsolat-kezelő megnyitásához kattintson a **új kapcsolat**
@@ -112,4 +112,6 @@ Egy adatbázis, gyűjtemény és a Studio 3T használata dokumentumok létrehoz�
     ![Képernyőfelvétel a Mongo Chef-lekérdezés eredményei](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerkedés az Azure Cosmos DB MongoDB API [minták](mongodb-samples.md).
+
+- Ismerje meg, hogyan [Robo 3T használata](mongodb-robomongo.md) az Azure Cosmos DB API a mongodb-hez.
+- Ismerkedés a MongoDB [minták](mongodb-samples.md) az Azure Cosmos DB API a mongodb-hez.

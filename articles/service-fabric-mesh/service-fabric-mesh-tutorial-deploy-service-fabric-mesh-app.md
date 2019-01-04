@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963321"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788622"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric-háló-alkalmazás üzembe helyezése
 
 Ez az oktatóanyag egy sorozat harmadik része, és azt mutatja be, hogyan tehető közzé az Azure Service Fabric Mesh-alkalmazás közvetlenül a Visual Studióból.
 
@@ -34,7 +34,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Service Fabric Mesh-alkalmazás létrehozása Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Service Fabric Mesh-alkalmazás létrehozása a Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
 > * [Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * Service Fabric Mesh-alkalmazás üzembe helyezése
 > * [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
@@ -113,10 +113,10 @@ A további lépésekhez használhatja az Azure Cloud Shellt vagy az Azure CLI he
 
 Mostanra befejeződött az alkalmazás telepítése. A(z) `app show` paranccsal ellenőrizheti az állapotát. 
 
-Az oktatóanyagban használt alkalmazás neve: `ServiceMeshApp`. A következő paranccsal összegyűjtheti az alkalmazás adatait:
+Az oktatóanyagban használt alkalmazás neve: `todolistapp`. A következő paranccsal összegyűjtheti az alkalmazás adatait:
 
 ```azurecli-interactive
-az mesh app show --resource-group $rg --name ServiceMeshApp
+az mesh app show --resource-group $rg --name todolistapp
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>Az előfizetésben jelenleg üzembe helyezett összes alkalmazás megtekintése

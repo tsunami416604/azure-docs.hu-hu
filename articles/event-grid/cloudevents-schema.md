@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ff40ac0e5ab6176bcf192289c0506f57ebf04a11
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287200"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755087"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
@@ -21,7 +21,7 @@ Mellett a [alapértelmezett eseménysémája](event-schema.md), az Azure Event G
 
 CloudEvents együttműködési leegyszerűsíti egy közös eseménysémája azáltal, hogy a közzétételre, és a felhőt események alapján. Ez a séma lehetővé teszi, hogy egységes azokat az eszközöket, normál módon az Útválasztás és események kezelése és a külső eseménysémája deszerializálása univerzális módjait. Egy közös sémával rendelkező további egyszerűen integrálható a munkahelyi különböző platformokon.
 
-CloudEvents folyamatban van, annak több build [közreműködők](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, beleértve a [Felhőbeli natív számítási Foundation](https://www.cncf.io/). Jelenleg a 0,1 verzióként érhető el.
+CloudEvents létrehozása folyamatban van a több [közreműködők](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, beleértve a [Felhőbeli natív számítási Foundation](https://www.cncf.io/). Jelenleg a 0,1 verzióként érhető el.
 
 Ez a cikk ismerteti a CloudEvents-séma használata az Event GRID használatával.
 

@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086845"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742745"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
-Ahhoz, hogy az ügyfelek egy URL-cím is használható kódolt videó vagy hang lejátszásához, szeretne létrehozni egy [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) és a streamelési URL-címeket. További információkért lásd: [fájl Stream](stream-files-dotnet-quickstart.md).
+Meg kell adnia az ügyfelek is lejátszására használható URL-kódolású video- vagy fájlokat kell, hogy hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) és a streamelési URL-címeket. További információkért lásd: [fájl Stream](stream-files-dotnet-quickstart.md).
 
 ## <a name="streaminglocator-definition"></a>StreamingLocator definíciója
 
@@ -29,16 +29,16 @@ Az alábbi táblázat a StreamingLocator tulajdonságait jeleníti meg, és lehe
 |Name (Név)|Leírás|
 |---|---|
 |id |Az erőforrás teljes erőforrás-azonosítója.|
-|név   |Az erőforrás neve.|
+|név|Az erőforrás neve.|
 |properties.alternativeMediaId|A Streamelési Lokátorok alternatív Media azonosítója.|
-|properties.assetName   |Objektum neve|
-|properties.contentKeys |A Tartalomkulcsok használják a Streamelési lokátor.|
-|Properties.created |A Streamelési lokátor létrehozásának idejét.|
+|properties.assetName|Objektum neve|
+|properties.contentKeys|A Tartalomkulcsok használják a Streamelési lokátor.|
+|Properties.created|A Streamelési lokátor létrehozásának idejét.|
 |properties.defaultContentKeyPolicyName|Az alapértelmezett a Streamelési lokátor által használt ContentKeyPolicy neve.|
-|properties.endTime |A befejezési ideje a Streamelési lokátor.|
+|properties.endTime|A befejezési ideje a Streamelési lokátor.|
 |properties.startTime|A Streamelési lokátor kezdési idejét.|
 |properties.streamingLocatorId|A StreamingLocatorId, a Streamelési Lokátort.|
-|properties.streamingPolicyName |A Streamelési lokátor által használt adatfolyam-házirend nevét. Adja meg a létrehozott Streamelési szabályzat nevét, vagy használja az előre definiált adatfolyam-házirendek egyikét. Vannak elérhető előre definiált adatfolyam-szabályzatok: 'Predefined_DownloadOnly', "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" és "Predefined_ MultiDrmStreaming "|
+|properties.streamingPolicyName |A Streamelési lokátor által használt adatfolyam-házirend nevét. Adja meg a létrehozott Streamelési szabályzat nevét, vagy használja az előre definiált adatfolyam-házirendek egyikét. Elérhető előre definiált adatfolyam-szabályzatok a következők: 'Predefined_DownloadOnly', "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" és "Predefined_MultiDrmStreaming"|
 |type|Az erőforrás típusát.|
 
 A teljes meghatározása: [Streamelési Lokátorok](https://docs.microsoft.com/rest/api/media/streaminglocators).

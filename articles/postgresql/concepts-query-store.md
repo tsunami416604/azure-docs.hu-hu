@@ -1,18 +1,17 @@
 ---
 title: Azure Database for postgresql-hez a Query Store
 description: Ez a cikk ismerteti a Query Store szolgáltatás az Azure Database for postgresql-hez.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 5b760c9148e26421c0df1ffe936365aae4971543
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379161"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546912"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>A Query Store teljesítmény figyelése
 
@@ -114,30 +113,30 @@ Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adat
 |runtime_stats_entry_id |bigint | | A runtime_stats_entries tábla azonosítója|
 |a USER_ID paraméter értékét    |objektumazonosító    |pg_authid.OID  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
 |db_id  |objektumazonosító    |pg_database.OID    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
-|query_id   |bigint  || A belső kivonatkód, az utasítás elemzési fa erősségével|
-|query_sql_text |Varchar(10000)  || Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
+|query_id   |bigint  || A belső kivonatkód, az utasítás elemzési fa erősségével|
+|query_sql_text |Varchar(10000)  || Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
 |plan_id    |bigint |   |Ez a lekérdezés nem érhető el megfelelő még a csomag azonosítója|
 |start_time |időbélyeg  ||  Összesítjük lekérdezések idő gyűjtők által - kérelemegységeket időtartamának alapértelmezés szerint 15 percenként. Ez az a kezdő időpont a idő gyűjtőhöz a bejegyzéshez tartozó megfelelő.|
 |end_time   |időbélyeg  ||  A time gyűjtőhöz a bejegyzéshez tartozó megfelelő befejezési időpontja.|
-|hívás  |bigint  || A lekérdezés végrehajtása hányszor|
-|total_time |a kétszeres pontosság   ||  A lekérdezés teljes végrehajtási idő, ezredmásodpercben|
+|hívás  |bigint  || A lekérdezés végrehajtása hányszor|
+|total_time |a kétszeres pontosság   ||  A lekérdezés teljes végrehajtási idő, ezredmásodpercben|
 |min_time   |a kétszeres pontosság   ||  Minimális lekérdezés-végrehajtási idő (MS)|
 |max_time   |a kétszeres pontosság   ||  Lekérdezés maximális végrehajtási idő (MS)|
 |mean_time  |a kétszeres pontosság   ||  Jelenti azt, hogy a lekérdezés-végrehajtási idő (MS)|
 |stddev_time|   a kétszeres pontosság    ||  A lekérdezés végrehajtási idő, ezredmásodpercben szórása |
-|sor   |bigint ||  Beolvasott vagy a-utasítás által érintett sorok száma|
-|shared_blks_hit|   bigint  ||  Az utasítás által megosztott blokk gyorsítótár-találatok teljes száma|
+|sor   |bigint ||  Beolvasott vagy a-utasítás által érintett sorok száma|
+|shared_blks_hit|   bigint  ||  Az utasítás által megosztott blokk gyorsítótár-találatok teljes száma|
 |shared_blks_read|  bigint  ||  Olvassa el a-utasítás által megosztott blokkok száma összesen|
-|shared_blks_dirtied|   bigint   || Az utasítás által dirtied megosztott blokkok száma összesen |
-|shared_blks_written|   bigint  ||  Az utasítás által írt megosztott blokkok száma összesen|
+|shared_blks_dirtied|   bigint   || Az utasítás által dirtied megosztott blokkok száma összesen |
+|shared_blks_written|   bigint  ||  Az utasítás által írt megosztott blokkok száma összesen|
 |local_blks_hit|    bigint ||   Az utasítás által helyi gyorsítótár-találatok teljes száma|
-|local_blks_read|   bigint   || Az utasítás által beolvasott helyi blokkok száma összesen|
-|local_blks_dirtied|    bigint  ||  Az utasítás által dirtied helyi blokkok száma összesen|
-|local_blks_written|    bigint  ||  Az utasítás által írt helyi blokkok száma összesen|
-|temp_blks_read |bigint  || Az utasítás által beolvasott ideiglenes blokkok száma összesen|
-|temp_blks_written| bigint   || Az utasítás által írt ideiglenes blokkok száma összesen|
-|blk_read_time  |a kétszeres pontosság    || Teljes az utasítás olvasási blokkok ezredmásodpercben töltött idő (ha track_io_timing engedélyezve van, egyébként nulla)|
-|blk_write_time |a kétszeres pontosság    || Teljes az utasítás írása blokkok ezredmásodpercben töltött idő (ha track_io_timing engedélyezve van, egyébként nulla)|
+|local_blks_read|   bigint   || Az utasítás által beolvasott helyi blokkok száma összesen|
+|local_blks_dirtied|    bigint  ||  Az utasítás által dirtied helyi blokkok száma összesen|
+|local_blks_written|    bigint  ||  Az utasítás által írt helyi blokkok száma összesen|
+|temp_blks_read |bigint  || Az utasítás által beolvasott ideiglenes blokkok száma összesen|
+|temp_blks_written| bigint   || Az utasítás által írt ideiglenes blokkok száma összesen|
+|blk_read_time  |a kétszeres pontosság    || Teljes az utasítás olvasási blokkok ezredmásodpercben töltött idő (ha track_io_timing engedélyezve van, egyébként nulla)|
+|blk_write_time |a kétszeres pontosság    || Teljes az utasítás írása blokkok ezredmásodpercben töltött idő (ha track_io_timing engedélyezve van, egyébként nulla)|
     
 ### <a name="querystorequerytextsview"></a>query_store.query_texts_view
 Ez a nézet a Query Store adja vissza szöveges adatokat lekérdezni. Az egyes különálló akkor egy sor van.
@@ -145,7 +144,7 @@ Ez a nézet a Query Store adja vissza szöveges adatokat lekérdezni. Az egyes k
 |**Name (Név)**|  **Típus**|   **Leírás**|
 |---|---|---|
 |query_text_id  |bigint     |A query_texts tábla azonosítója|
-|query_sql_text |Varchar(10000)     |Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
+|query_sql_text |Varchar(10000)     |Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
 
 ### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
 Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes különböző adatbázis-azonosító, a felhasználói azonosító, a lekérdezés Azonosítóját és a esemény egy sor van.
@@ -154,8 +153,8 @@ Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes k
 |---|---|---|---|
 |a USER_ID paraméter értékét    |objektumazonosító    |pg_authid.OID  |Az utasítás végrehajtása felhasználó Objektumazonosítója|
 |db_id  |objektumazonosító    |pg_database.OID    |OID-adatbázis, amelyben a rendszer az utasítást hajtott végre|
-|query_id   |bigint     ||A belső kivonatkód, az utasítás elemzési fa erősségével|
-|event_type |szöveg       ||Az esemény, amelynek a háttérrendszer arra vár, hogy típusát|
+|query_id   |bigint     ||A belső kivonatkód, az utasítás elemzési fa erősségével|
+|event_type |szöveg       ||Az esemény, amelynek a háttérrendszer arra vár, hogy típusát|
 |esemény  |szöveg       ||A várakozási esemény neve, ha a háttérrendszer jelenleg vár|
 |hívás  |Egész szám        ||Az ugyanahhoz az eseményhez rögzített száma|
 
@@ -163,11 +162,11 @@ Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes k
 ### <a name="functions"></a>Functions
 Query_store.qs_reset() void adja vissza
 
-`qs_reset` az összes statisztika Query Store által eddig összegyűjtött elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
+`qs_reset` az összes statisztika Query Store által eddig összegyűjtött elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
 
 Query_store.staging_data_reset() void adja vissza
 
-`staging_data_reset` a memória a Query Store (azaz az adatokat a memóriában, amely nem kiürítése megtörtént, de az adatbázishoz) által gyűjtött összes statisztikai elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
+`staging_data_reset` a memória a Query Store (azaz az adatokat a memóriában, amely nem kiürítése megtörtént, de az adatbázishoz) által gyűjtött összes statisztikai elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 - Ha egy PostgreSQL-kiszolgáló rendelkezik a paraméter default_transaction_read_only, Query Store az adatok rögzítése nem tudja.

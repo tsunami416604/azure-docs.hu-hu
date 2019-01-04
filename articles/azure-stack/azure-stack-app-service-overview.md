@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 3015755d8046f72c03cd1a1485d90a7f720a8909
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b1b4ea5775a661712838c1495ef0025a83b8c518
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353022"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607943"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Az Azure Stack App Service szolgáltatásának áttekintése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure App Service az Azure Stacken egy elérhető az Azure Stack a Microsoft Azure platform –-szolgáltatásként (PaaS) ajánlat. A szolgáltatás lehetővé teszi, hogy a belső vagy külső ügyfelei számára, hogy hozzon létre a webes API-t és az Azure Functions alkalmazások bármilyen platformra vagy eszközre. Ezek az alkalmazások integrálása a helyszíni alkalmazások, és az üzleti folyamatok automatizálása. Az Azure Stack-felhő üzemeltetői futtatható ügyfélalkalmazások teljes körűen felügyelt virtuális gépeken (VM), a megosztott VM-erőforrások és a dedikált virtuális gépek közötti választás.
+Az Azure App Service az Azure Stacken egy elérhető az Azure Stack a Microsoft Azure platform –-szolgáltatásként (PaaS) ajánlat. A szolgáltatás lehetővé teszi, hogy a belső vagy külső ügyfelei számára, hogy hozzon létre a webes API-t és az Azure Functions alkalmazások bármilyen platformra vagy eszközre. Integrálhatják alkalmazásaikat a helyszíni megoldásokkal, valamint automatizálhatják üzleti folyamataikat. Az Azure Stack-felhőüzemeltetők teljes körűen felügyelt virtuális gépeken futtathatják az ügyfelek alkalmazásait, választásuk szerint vagy közös virtuálisgép-erőforrásokkal, vagy dedikált virtuális gépekkel.
 
 Az Azure App Service lehetővé teszi, hogy az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként az Azure App Service lehetővé teszi a különféle összetevők, például a websites, a REST API-k és az üzleti folyamatok, egyetlen megoldás kombinálhat.
 
@@ -33,16 +33,16 @@ Az Azure App Service lehetővé teszi, hogy az üzleti folyamatok automatizálá
 
 Az App Service legfontosabb funkciói és képességei többek között az alábbiak:
 
-- **Több nyelv és keretrendszer**: App Service kiváló támogatást nyújt az ASP.NET, Node.js, Java, PHP és Python rendelkezik. Az App Service virtuális gépeken a Windows PowerShell és egyéb parancsfájlokat vagy futtatható fájlokat is futtathatja.
-- **DevOps-optimalizálás**: állítsa be a folyamatos integrációt és üzembe helyezés a GitHub, a helyi Git vagy a bitbucket használatával. Frissítések tesztelési és átmeneti környezetek támogatása, és az App Service-ben az alkalmazások kezelése az Azure PowerShell-lel vagy a platformfüggetlen parancssori felület (CLI) használatával.
-- **Visual Studio-integráció**: a Visual Studio dedikált eszközei leegyszerűsítik a létrehozása és alkalmazások telepítése.
+- **Több nyelv és keretrendszer**: Az App Service kiváló támogatást nyújt az ASP.NET, Node.js, Java, PHP és Python rendelkezik. Az App Service virtuális gépeken a Windows PowerShell és egyéb parancsfájlokat vagy futtatható fájlokat is futtathatja.
+- **DevOps-optimalizálás**: Állítsa be a folyamatos integrációt és üzembe helyezés a GitHub, a helyi Git vagy a bitbucket használatával. Frissítések tesztelési és átmeneti környezetek támogatása, és az App Service-ben az alkalmazások kezelése az Azure PowerShell-lel vagy a platformfüggetlen parancssori felület (CLI) használatával.
+- **Visual Studio-integráció**: A Visual Studio dedikált eszközei leegyszerűsítik a létrehozása és alkalmazások telepítése.
 
 ## <a name="app-types-in-app-service"></a>Alkalmazástípusok az App Service-ben
 
 Az App Service számos típusú, alkalmazások, amelyek célja, hogy egy adott számítási feladatot kínálja:
 
-- [Web Apps](../app-service/app-service-web-overview.md) webhelyek és webalkalmazások üzemeltetéséhez.
-- [Az API Apps](../app-service/app-service-web-overview.md) REST API-k üzemeltetéséhez.
+- [Web Apps](../app-service/overview.md) webhelyek és webalkalmazások üzemeltetéséhez.
+- [Az API Apps](../app-service/overview.md) REST API-k üzemeltetéséhez.
 - Az Azure Functions eseményvezérelt, kiszolgáló nélküli számítási feladatok futtatásához.
 
 A word *alkalmazás* számítási feladatok futtatására elkülönített üzemeltetési erőforrásokat jelenti. Véve *webalkalmazás* például fájlszerkesztés egy webalkalmazást, a számítási erőforrások és az alkalmazás a böngészőben együttesen funkció code szokták vagyunk. Az App Service-ben webalkalmazás az Azure Stack kínál az alkalmazás kódjában üzemeltető számítási erőforrásokat.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 3f7cfbea414561a50152f88ac9061d7f62c89e2a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc8688e06b430522d2aeb1bcc67f72dae2e9ac6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192406"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728404"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Számítógépcsoportok a Log Analytics naplóbeli kereséseivel
 
@@ -31,7 +31,7 @@ Létrehozhat egy számítógépcsoportot a Log Analytics az alábbi táblázatba
 |:--- |:--- |
 | Naplókeresés |Hozzon létre egy naplókeresést, amely a számítógépek listáját adja vissza. |
 | Log Search API |A Log Search API használatával programozott módon létrehozhat egy Naplókeresés eredménye alapján számítógép csoport. |
-| Active Directory |Automatikus vizsgálatokat végez a csoport tagságát, minden olyan ügynököt futtató számítógépek, amelyek az Active Directory-tartomány tagja, és hozzon létre egy csoportot a Log Analytics az egyes biztonsági csoportokhoz. |
+| Active Directory |Automatikus vizsgálatokat végez a csoport tagságát, minden olyan ügynököt futtató számítógépek, amelyek az Active Directory-tartomány tagja, és hozzon létre egy csoportot a Log Analytics az egyes biztonsági csoportokhoz. (Csak Windows-gépek esetében)|
 | Configuration Manager | Gyűjtemények importálása a System Center Configuration Managerben, és hozzon létre egy csoportot a Log Analytics az egyes. |
 | A Windows Server Update Services |Automatikus csoportok célzó WSUS-kiszolgálók vagy az ügyfelek keresése, és hozzon létre egy csoportot a Log Analytics az egyes. |
 
@@ -60,7 +60,10 @@ Az alábbi eljárás segítségével számítógépcsoport létrehozása egy Nap
 
 
 ### <a name="active-directory"></a>Active Directory
-Konfigurálja a Log Analyticsben, hogy az Active Directory-csoporttagságok importálása, elemzi a Log Analytics-ügynökkel rendelkező bármely tartományhoz csatlakoztatott számítógépek csoport tagsága.  Számítógép csoport jön létre a Log Analytics minden egyes biztonsági csoport az Active Directoryban, és mindegyik számítógépet adnak a számítógépcsoportok, a biztonsági csoportok tagjai megfelelő.  A csoporttagság 4 óránként folyamatosan frissítjük.  
+Amikor konfigurál a Log Analyticsben, hogy az Active Directory-csoporttagságok importálása, elemzi a bármely Windows-tartományhoz csatlakoztatott számítógépeket a Log Analytics-ügynököket a csoport tagsága.  Számítógép csoport jön létre a Log Analytics minden egyes biztonsági csoport az Active Directoryban, és minden egyes Windows-számítógép hozzáadása a számítógépcsoportokat, a biztonsági csoportok tagjai megfelelő.  A csoporttagság 4 óránként folyamatosan frissítjük.  
+
+> [!NOTE]
+> Importált Active Directory-csoportok csak a Windows-gépeket tartalmazhat.
 
 A Log Analytics az Active Directory biztonsági csoportok importálása a Log Analytics konfigurálása **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **Active Directory**, majd **importálás az Active Directory-csoporttagságok számítógépekről**.  Nincs szükség további konfigurációra.
 

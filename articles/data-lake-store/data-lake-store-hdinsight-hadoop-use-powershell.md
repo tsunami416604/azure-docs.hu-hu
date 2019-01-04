@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: Az Azure HDInsight-fürtön az Azure Data Lake Storage Gen1 kiegészítő tárolóként |} A Microsoft Docs'
+title: 'PowerShell: Az Azure Data Lake Storage Gen1 kiegészítő tárolóként az Azure HDInsight-fürtben |} A Microsoft Docs'
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0fa4a4c1586957dabf1c849fdb897a479c4f8db3
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3de675adf7364e8281a03a46c5eeeaa1b74249b5
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957408"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969284"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Az Azure PowerShell használata egy HDInsight-fürt létrehozása az Azure Data Lake Storage Gen1 (kiegészítő tárolóként)
 
@@ -194,7 +194,7 @@ Ebben a szakaszban létrehozunk egy HDInsight Hadoop Linux-fürt a Data Lake Sto
 
         # Create an Azure storage account
         $location = "East US 2"
-        $storageAccountName = "<StorageAcccountName>"   # Provide a Storage account name
+        $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
 
         New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
 

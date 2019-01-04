@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f7567d0c3bfdfc7bd44b918c9f2feda7499386e8
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984079"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554673"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics-feladat, növelheti a teljesítményt méretezése
 Ez a cikk bemutatja, hogyan finomhangolása egy Stream Analytics-lekérdezés növeléséhez a Streaming Analytics-feladatokhoz. Ez az útmutató segítségével méretezheti a feladatot, amely magasabb terhelés kezeléséhez, és több rendszererőforrást (például a nagyobb sávszélességet, több Processzor-erőforrások, több memória) előnyeit.
@@ -34,7 +34,7 @@ Ha a bemeneti partíciók között a lekérdezés teljes természetüknél fogva
 4.  Miután eldöntötte 6 SU feladat elérheti korlátozásait, meg is extrapolálja költségráfordításokkal egyenes arányban a feldolgozási kapacitás, a feladat, amikor több SUS-t, feltéve, hogy nem kell semmilyen adatot döntés, amely lehetővé teszi bizonyos partíció "Forró".
 
 > [!NOTE]
-> Válassza ki a folyamatos átviteli egységek megfelelő számát: Stream Analytics egy feldolgozó csomópont hoz létre, mindegyik 6 Adategység további, mert a legcélszerűbb, hogy a bemeneti partíciók száma osztója a csomópontok számát, a partíciók egyenlően elosztott csomópontjai között.
+> Válassza ki a folyamatos átviteli egységek megfelelő számát: Stream Analytics egy feldolgozó csomópont hozzáadott 6 su hoz létre, mert a legcélszerűbb, hogy a bemeneti partíciók száma osztója a csomópontok számát, a partíciók egyenlően elosztott csomópontjai között.
 > A 6 mért például 4 SU feladat érhető el, 4 MB/s feldolgozási sebesség és a bemeneti partíciók száma. Kiválaszthatja, hogy a feladat futtatásához 12 SU körülbelül 8 MB/s-feldolgozási sebesség eléréséhez, vagy 24 SU elérése érdekében 16 MB/s. Ezután eldöntheti, mikor növelje az SU milyen érték, a feladat a bemeneti forgalom továbbítása.
 
 
@@ -48,15 +48,16 @@ Ha a lekérdezés nem zavaróan párhuzamos, követheti a következő lépéseke
 
 Lekérdezés:
 
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
+ ```SQL
+ WITH Step1 AS (
+ SELECT COUNT(*) AS Count, TollBoothId, PartitionId
+ FROM Input1 Partition By PartitionId
+ GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+ )
+ SELECT SUM(Count) AS Count, TollBoothId
+ FROM Step1
+ GROUP BY TumblingWindow(minute, 3), TollBoothId
+ ```
 A fenti lekérdezés díjmentesen érzékelőadatainak partíciónként / autók számbavételi, és majd adja hozzá a szám az összes partíció együtt.
 
 Miután particionálva, a lépés minden partíció esetében legfeljebb 6 SU, mindegyik partíció 6 kellene lefoglalni SU a maximális, így az egyes partíciók elhelyezhető a saját feldolgozó csomóponton.

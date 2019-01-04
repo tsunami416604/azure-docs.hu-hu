@@ -196,10 +196,6 @@
 #### [Áruház részletei lap](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
 ### [Tanácsadási szolgáltatásajánlat közzététele](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
 
-## [Közzétevő profil kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [Felhasználók kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [GDPR-megfelelősége](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
-
 ## Tesztverzió
 ### [Mi a Tesztverzió?](./cloud-partner-portal-orig/what-is-test-drive.md)
 ### [Azure Resource Manager – Tesztverzió](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)

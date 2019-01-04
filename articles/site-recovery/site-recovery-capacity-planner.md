@@ -3,16 +3,17 @@ title: Kapacitás megtervezése a Hyper-V vészhelyreállítás az Azure Site Re
 description: Ez a cikk segítségével megbecsülheti a kapacitás beállítása az Azure Site Recovery szolgáltatással vészhelyreállítás során.
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: d8ba4fa1b5f5efd671c13ad2201b0cd34642d346
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844940"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976715"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Kapacitás megtervezése a Hyper-V-beli virtuális gépek vészhelyreállításához 
 
@@ -33,8 +34,8 @@ Site Recovery Capacity Planner segítségével a forráskörnyezetét és a szá
 
 Az eszköz két üzemmódban futtatható:
 
-* **Gyors tervezési**: virtuális gépek, a lemezeket, a storage és az adatváltozási sebesség átlagos számán alapuló, hálózat- és leképezések biztosít.
-* **Részletes tervezési**: a virtuális gép szintjén minden számítási feladat részletesen ismerteti. Virtuális gép kompatibilitási elemzése, és a hálózat- és leképezések beolvasása.
+* **Gyors tervezési**: Virtuális gépek, a lemezeket, a storage és az adatváltozási sebesség átlagos számán alapuló, hálózat- és leképezések biztosít.
+* **Részletes tervezési**: A virtuális gép szintjén minden számítási feladat részletesen ismerteti. Virtuális gép kompatibilitási elemzése, és a hálózat- és leképezések beolvasása.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -65,17 +66,17 @@ Az eszköz két üzemmódban futtatható:
 
 4. Miután megadta az értékeket a forráskörnyezethez, a megjelenő kimenet tartalmazza:
 
-   * **(A megabit/másodperc) változásreplikációjához szükséges sávszélesség**: átlagos napi adatváltozási sebesség kiszámítása a hálózati sávszélesség a változásreplikáláshoz.
-   * **A kezdeti replikációhoz (a megabit/másodperc) szükséges sávszélességet**: a kezdeti replikáció értékek kiszámítása a hálózati sávszélesség a kezdeti replikációhoz.
-   * **Tárolás szükséges (GB)**: az összes Azure storage szükséges.
-   * **Standard szintű tárolóban működő IOPS teljes**: A szám a 8 KB IOPS egység méretét a teljes standard storage-fiókok alapján kiszámítja. A gyors Planner a szám alapján számítja ki a forrás virtuális gép az összes lemez és a napi adatváltozási gyakoriság. A részletes Planner száma alapján lesz kiszámítva vannak rendelve a standard szintű Azure-beli virtuális gépek teljes száma, és az adatváltozási sebessége a virtuális gépeken.
-   * **A standard szintű tárfiókok szükséges**: a virtuális gép védelméhez szükséges a standard szintű tárfiókok teljes száma. A standard szintű tárfiók tartalmazhat legfeljebb 20 000 iops-t minden virtuális gépen standard storage-ban. Legfeljebb 500 IOPS lemezenként támogatott.
-   * **Blob szükséges lemezek száma**: az Azure storage létrehozott lemezek számát.
-   * **Szükséges prémium szintű tárfiókok száma**: a virtuális gép védelméhez szükséges prémium szintű tárfiókok teljes száma. A virtuális gép magas iops (több mint 20 000) van szüksége a premium storage-fiók. Premium storage-fiók 80 000 IOPS képes tárolni.
-   * **A Premium Storage IOPS teljes**: A szám kiszámítása a teljes premium storage-fiókok 256 K IOPS-egységet méret alapján. A gyors Planner a szám alapján számítja ki a forrás virtuális gép az összes lemez és a napi adatváltozási gyakoriság. A részletes Planner a szám a prémium szintű Azure virtuális gépek (DS vagy GS sorozat) rendelt virtuális gépek teljes száma alapján számoljuk, és az adatváltozási sebessége a virtuális gépeken.
-   * **Szükséges konfigurációs kiszolgálók száma**: látható, a telepítéshez szükséges konfigurációs kiszolgálók számát.
-   * **További Folyamatkiszolgálók szükséges számú**: bemutatja, hogy a folyamatkiszolgáló alapértelmezés szerint a konfigurációs kiszolgálón futó mellett szükség-e további folyamatkiszolgálók.
-   * **100 %-os tárhely, a forrás**: bemutatja, hogy szükséges-e további tárterületet a forráshelyen.
+   * **(A megabit/másodperc) változásreplikációjához szükséges sávszélesség**: Átlagos napi adatváltozási sebesség kiszámítása a hálózati sávszélesség a változásreplikáláshoz.
+   * **A kezdeti replikációhoz (a megabit/másodperc) szükséges sávszélességet**: A kezdeti replikáció értékek kiszámítása a hálózati sávszélesség a kezdeti replikációhoz.
+   * **Tárolás szükséges (GB)**: A teljes Azure-tárhely szükséges.
+   * **Standard szintű tárolóban működő IOPS teljes**: A szám a 8 KB IOPS egység méretét a teljes standard storage-fiókok alapján lesz kiszámítva. A gyors Planner a szám alapján számítja ki a forrás virtuális gép az összes lemez és a napi adatváltozási gyakoriság. A részletes Planner száma alapján lesz kiszámítva vannak rendelve a standard szintű Azure-beli virtuális gépek teljes száma, és az adatváltozási sebessége a virtuális gépeken.
+   * **A standard szintű tárfiókok szükséges**: A standard szintű tárfiókok teljes száma a virtuális gép védelméhez szükséges. A standard szintű tárfiók tartalmazhat legfeljebb 20 000 iops-t minden virtuális gépen standard storage-ban. Legfeljebb 500 IOPS lemezenként támogatott.
+   * **Blob szükséges lemezek száma**: A létrehozott Azure storage a lemezek számát.
+   * **Szükséges prémium szintű tárfiókok száma**: A virtuális gép védelméhez szükséges prémium szintű tárfiókok teljes száma. A virtuális gép magas iops (több mint 20 000) van szüksége a premium storage-fiók. Premium storage-fiók 80 000 IOPS képes tárolni.
+   * **A Premium Storage IOPS teljes**: A szám a 256 KB IOPS egység méretét a teljes premium storage-fiókok alapján lesz kiszámítva. A gyors Planner a szám alapján számítja ki a forrás virtuális gép az összes lemez és a napi adatváltozási gyakoriság. A részletes Planner a szám a prémium szintű Azure virtuális gépek (DS vagy GS sorozat) rendelt virtuális gépek teljes száma alapján számoljuk, és az adatváltozási sebessége a virtuális gépeken.
+   * **Szükséges konfigurációs kiszolgálók száma**: Látható, a telepítéshez szükséges konfigurációs kiszolgálók számát.
+   * **További Folyamatkiszolgálók szükséges számú**: Látható, hogy a folyamatkiszolgáló alapértelmezés szerint a konfigurációs kiszolgálón futó mellett szükség-e további folyamatkiszolgálók.
+   * **100 %-os tárhely, a forrás**: Látható, hogy szükséges-e további tárterületet a forráshelyen.
 
       ![Kimenet](./media/site-recovery-capacity-planner/output.png)
 

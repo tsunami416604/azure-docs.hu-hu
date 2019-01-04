@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ce39e3ffce0b7721bde84254c7e5a35ec28465dc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 322c7164c0ecda550bf1bfe6a55075759bf95735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583159"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630516"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Üzembe helyezés és kezelés a Windows-alapú HDInsight Apache Storm-topológiák
 
-A [Apache Storm](http://storm.apache.org/) irányítópult lehetővé teszi egyszerű üzembe helyezése és futtatása a HDInsight az Apache Storm-topológiák a fürt a webböngésző használatával. Az irányítópult használatával figyelheti és kezelheti a futó topológiákat. Ha a Visual Studio használata esetén a HDInsight Tools for Visual Studio hasonló funkciók a Visual Studióban adjon meg.
+A [Apache Storm](https://storm.apache.org/) irányítópult lehetővé teszi egyszerű üzembe helyezése és futtatása a HDInsight az Apache Storm-topológiák a fürt a webböngésző használatával. Az irányítópult használatával figyelheti és kezelheti a futó topológiákat. Ha a Visual Studio használata esetén a HDInsight Tools for Visual Studio hasonló funkciók a Visual Studióban adjon meg.
 
 A Storm irányítópultjának és a Storm-szolgáltatások, a HDInsight Tools támaszkodik a Storm REST API, amely segítségével létrehozhatja a saját figyelési és felügyeleti megoldásokat.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépésekben a Storm on HDInsight-fürt által használt Windows operációs rendszer szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > Üzembe helyezéséről és felügyeletéről egy HDInsight-fürt által használt Linux Storm-topológiák további információkért lásd: [üzembe helyezése és kezelése a HDInsight Linux-alapú Apache Storm-topológiák](apache-storm-deploy-monitor-topology-linux.md)
@@ -31,7 +31,7 @@ A Storm irányítópultjának és a Storm-szolgáltatások, a HDInsight Tools t�
 
 * **Az Apache Storm on HDInsight** – lásd: [Apache Storm on HDInsight – első lépések](apache-storm-tutorial-get-started-linux.md) fürt létrehozásának lépéseit.
 
-* Az a **a Storm irányítópultja**: modern böngésző támogatja a HTML5-alapú.
+* Az a **Storm-irányítópult**: Egy HTML5-támogatással rendelkező modern webböngésző.
 
 * A **Visual Studio** – Azure SDK 2.5.1-es vagy újabb verzió és a HDInsight Tools for Visual Studio. Lásd: [első lépései a HDInsight Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md) telepítése és konfigurálása a HDInsight tools for Visual Studio.
 
@@ -59,18 +59,18 @@ A Storm irányítópultjának, válassza ki a **Storm felhasználói felülete**
 
 ![a storm felhasználói felülete][storm-dashboard-ui]
 
-> [!NOTE]
+> [!NOTE]  
 > Egyes verziói az Internet Explorer azt tapasztalhatja, hogy a Storm felhasználói felülete nem frissül után először járt ott. Például akkor lehet, hogy nem jelennek meg, az új topológiák küldte el, valószínűleg egy topológia aktívnak, ha korábban már inaktiválva. A Microsoft a probléma és megoldás dolgozik.
 
 #### <a name="main-page"></a>Fő lapján
 
 A fő lapján, a Storm felhasználói felülete a következő információkat biztosítja:
 
-* **Fürt összegzése**: a Storm-fürt alapvető adatait.
+* **Fürt összegzése**: A Storm-fürt alapvető adatait.
 
-* **Összefoglaló topológia**: futó topológiák listáját. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott topológiák további információt.
+* **Összefoglaló topológia**: Futó topológiák listája. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott topológiák további információt.
 
-* **Összefoglaló felügyelő**: a Storm felügyelő kapcsolatos információkat.
+* **Összefoglaló felügyelő**: A Storm felügyelő kapcsolatos információk.
 
 * **Nimbus-konfiguráció**: Nimbus a fürt konfigurációját.
 
@@ -78,25 +78,25 @@ A fő lapján, a Storm felhasználói felülete a következő információkat bi
 
 A hivatkozás kiválasztása a **topológia összegzése** szakasz jelenít meg a topológia a következő információkat:
 
-* **Összefoglaló topológia**: alapszintű, a topológiával kapcsolatos információk.
+* **Összefoglaló topológia**: A topológia alapvető adatait.
 
-* **Topológia műveletek**: felügyeleti műveleteket hajthat végre a topológia.
+* **Topológia műveletek**: A topológia elvégezhető felügyeleti műveleteket.
 
-  * **Aktiválja**: folytatja inaktivált topológia feldolgozását.
+  * **Aktiválja**: Folytatja az inaktivált topológia feldolgozásra.
 
-  * **Inaktiválás**: megszakítja a futó topológiát.
+  * **Inaktiválás**: Megszakítja a futó topológiát.
 
   * **Újraegyensúlyozására**: Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Ez lehetővé teszi a topológia párhuzamosságának kompenzálják a fürtben található csomópontok száma nagyobb vagy csökkent.
 
-      További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-  * **Kill**: leállítja a Storm-topológia időtúllépést követően.
+  * **Kill**: Storm-topológia leállítása időtúllépést követően.
 
-* **Topológiastatisztikák**: a topológia statisztikája. Hivatkozásai között találhat a **ablak** oszlop beállítása a többieknek időkeretét az oldalon.
+* **Topológiastatisztikák**: A topológia statisztikája. Hivatkozásai között találhat a **ablak** oszlop beállítása a többieknek időkeretét az oldalon.
 
-* **Spoutok**: A spoutok által a topológia használt. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott tartalmaz a spoutokkal kapcsolatban további információt.
+* **Spoutok**: A különböző a topológia használják. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott tartalmaz a spoutokkal kapcsolatban további információt.
 
-* **Boltok**: használja a topológia a boltokhoz. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott tartalmaz a boltokkal kapcsolatban további információt.
+* **Boltok**: A boltok a topológia használják. Ebben a szakaszban a hivatkozások segítségével megtekintheti az adott tartalmaz a boltokkal kapcsolatban további információt.
 
 * **Topológiakonfiguráció**: A konfiguráció a kiválasztott topológia.
 
@@ -104,17 +104,17 @@ A hivatkozás kiválasztása a **topológia összegzése** szakasz jelenít meg 
 
 Egy a spout kiválasztása a **Spoutok** vagy **boltok** szakaszok megjeleníti a kiválasztott elem a következő információkat:
 
-* **Összetevő összefoglalás**: a spout vagy bolt alapvető adatait.
+* **Összetevő összefoglalás**: A spout vagy bolt alapvető adatait.
 
-* **Spout vagy Bolt-statisztikák**: a spout vagy bolt statisztikája. Hivatkozásai között találhat a **ablak** oszlop beállítása a többieknek időkeretét az oldalon.
+* **Spout vagy Bolt-statisztikák**: A spout vagy bolt statisztikája. Hivatkozásai között találhat a **ablak** oszlop beállítása a többieknek időkeretét az oldalon.
 
-* **Beviteli statisztikák** (csak boltok esetében): a bemeneti streamekhez a bolt által felhasznált információk.
+* **Beviteli statisztikák** (csak boltok esetében): A bemeneti streamekhez a bolt által felhasznált információk.
 
-* **Kimeneti statisztikák**: hatással a streameket információ spout vagy bolt.
+* **Kimeneti statisztikák**: A spout vagy bolt által kibocsátott adatfolyamokat kapcsolatos információk.
 
-* **Végrehajtóval**: a példányok a spout vagy bolt kapcsolatos információkat. Válassza ki a **Port** diagnosztikai adatok megtekintését, egy adott végrehajtó bejegyzés előállítása a ezen a példányon.
+* **Végrehajtóval**: A példányok a spout vagy bolt kapcsolatos információk. Válassza ki a **Port** diagnosztikai adatok megtekintését, egy adott végrehajtó bejegyzés előállítása a ezen a példányon.
 
-* **Hibák**: bármilyen hiba adatokat a spout vagy bolt.
+* **Hibák**: Hiba történt az adott spout vagy bolt információt.
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>HDInsight Tools for Visual Studio
 
@@ -132,7 +132,7 @@ Az alábbi lépések segítségével üzembe helyezhet egy mintát, a Storm on H
 
 4. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, és válassza ki **Küldés a HDInsight alatt futó Stormmal**.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ha a rendszer kéri, adja meg a bejelentkezési hitelesítő adatokat az Azure-előfizetésében. Ha több előfizetéssel rendelkezik, jelentkezzen be a Storm on HDInsight-fürt tartalmazza.
 
 5. Válassza ki a Storm, a HDInsight-fürtön a **Storm-fürt** legördülő listából válassza ki, és válassza ki **küldés**. -E a küldés sikeres használatával figyelheti a **kimeneti** ablak.
@@ -141,17 +141,17 @@ Az alábbi lépések segítségével üzembe helyezhet egy mintát, a Storm on H
 
     ![a Visual studio-figyelő](./media/apache-storm-deploy-monitor-topology/vsmonitor.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Megtekintheti továbbá **Storm-topológiák** a **Server Explorer** kibontásával **Azure** > **HDInsight**, majd Kattintson a jobb gombbal a Storm on HDInsight-fürtöt, majd válassza ki **Zobrazit Topologie Stormu**.
 
     Válassza ki az alakzatot a spoutok vagy boltok ezeket az összetevőket kapcsolatos információk megtekintéséhez. Egy új ablakban nyílik meg minden kijelölt elemek.
 
-   > [!NOTE]
+   > [!NOTE]  
    > A topológia név az osztály nevét a topológia (ebben az esetben `HelloWord`,) fűzött időbélyeggel kezdődnek.
 
 7. Az a **topológia összegzése** nézetben válassza **Kill** a topológia leállítása.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Storm-topológiák továbbra is fut, le vannak állítva, vagy a fürt törlésekor.
 
 
@@ -169,7 +169,7 @@ Az alap URI a REST API-hoz a HDInsight-fürtökön **https://&lt;clustername >.a
 
 A REST API-kérésnek kell használnia **alapszintű hitelesítés**, így a HDInsight fürt rendszergazdai felhasználónevét és jelszavát használja.
 
-> [!NOTE]
+> [!NOTE]  
 > Alapszintű hitelesítést a rendszer tiszta szöveges használatával küldi el, mert kell **mindig** HTTPS használatával biztonságos kommunikáció a fürtöt.
 
 ### <a name="return-values"></a>Visszatérési értékek

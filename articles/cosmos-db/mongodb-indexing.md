@@ -1,24 +1,24 @@
 ---
-title: Indexelés az Azure Cosmos DB MongoDB API-hoz
-description: Az Azure Cosmos DB MongoDB API-ban elérhető indexelési képességek áttekintése.
+title: Indexelés az Azure Cosmos DB API a mongodb-hez
+description: Megadja az indexelési képességek áttekintése az Azure Cosmos DB API a mongodb-hez.
 services: cosmos-db
-author: orestis-ms
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: orkostak
-ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 4c6ba4b12625433f0b0218dc88decf2d7cb7ad77
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875297"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792282"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indexelés az Azure Cosmos DB: MongoDB API-ban
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexelés az Azure Cosmos DB API használatával a mongodb-hez
 
-Az Azure Cosmos DB MongoDB API kiaknázza az Azure Cosmos DB automatikus indexkezelési funkcióit. Ennek következtében a felhasználók hozzáférnek az Azure Cosmos DB alapértelmezett indexelési szabályzataihoz. Ezért ha nincsenek felhasználói vagy elvetett indexek, a rendszer alapértelmezés szerint az összes mezőt indexeli, amikor beszúrja őket a gyűjteménybe. A legtöbb esetben ajánlott a fiókhoz beállított alapértelmezett indexelési szabályzat használata.
+Az Azure Cosmos DB MongoDB API-automatikus Indexkezelési funkcióit Cosmos DB használja. Ennek eredményeképpen a felhasználók alapértelmezett indexelési szabályzataihoz Cosmos DB hozzáféréssel rendelkeznek. Tehát ha nincsenek indexek a felhasználó által meghatározott, vagy nincsenek indexek el lett dobva, majd összes mezőt indexeli, amikor beszúrja a gyűjtemény alapértelmezés szerint. A legtöbb esetben ajánlott a fiókhoz beállított alapértelmezett indexelési szabályzat használata.
 
 ## <a name="dropping-the-default-indexes"></a>Az alapértelmezett indexek elvetése
 
@@ -97,5 +97,5 @@ Az előző parancs minden olyan dokumentumot töröl a ```db.coll``` gyűjtemén
 Egyedi indexek jelenleg csak akkor hozhatók létre, ha a gyűjtemény nem tartalmaz dokumentumokat. A MongoDB népszerű migrálási eszközei az adatok importálása után megpróbálják létrehozni az egyedi indexeket. A probléma megkerülése értekében a felhasználóknak érdemes manuálisan létrehozniuk a megfelelő gyűjteményeket vagy egyedi indexeket ahelyett, hogy a migrálási eszköznek engedélyeznék ezt (a ```mongorestore``` esetében ez a viselkedés a parancssorba illesztett --noIndexRestore jelző használatával érhető el).
 
 ## <a name="next-steps"></a>További lépések
-* [Hogyan indexeli az Azure Cosmos DB az adatokat?](../cosmos-db/index-policy.md)
-* [Adatok automatikus elévülése az Azure Cosmos DB-gyűjteményekben az élettartam használatával](../cosmos-db/time-to-live.md)
+* [Az Azure Cosmos DB indexelése](../cosmos-db/index-policy.md)
+* [Adatok az Azure Cosmos DB automatikusan az élettartam elévülése](../cosmos-db/time-to-live.md)

@@ -11,20 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/16/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f4ded67ef964482a2acea0d731b1b154a95168d2
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682095"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741351"
 ---
 # <a name="liveevent-latency-in-media-services"></a>A Media Services videókhoz késés
 
-Ez a cikk bemutatja, hogyan lehet beállítani a közel valós idejű a egy **videókhoz**. Emellett ismerteti a tipikus eredményeket közel valós idejű beállításainak használatával által is látható. Az eredmények függ a CDN és a hálózati késést. 
+Ez a cikk bemutatja, hogyan lehet beállítani a közel valós idejű a egy [videókhoz](https://docs.microsoft.com/rest/api/media/liveevents). Emellett ismerteti a tipikus eredményeket közel valós idejű beállításainak használatával által is látható. Az eredmények függ a CDN és a hálózati késést.
 
-Az új használandó **LowLatency** szolgáltatást, állítsa be a **StreamOptionsFlag** való **LowLatency** a a **videókhoz**. A stream működik-e, ha a [Azure Media Player](http://ampdemo.azureedge.net/) (és) bemutató lapon, és módosítsa a lejátszási a használatához a "alacsony késés a heurisztika profil".
+Az új használandó **LowLatency** szolgáltatást, állítsa be a **StreamOptionsFlag** való **LowLatency** a a **videókhoz**. Létrehozásakor [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) HLS lejátszása, állítsa [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1-re. A stream működik-e, ha a [Azure Media Player](http://ampdemo.azureedge.net/) (AMP bemutató oldalon), és állítsa be a lejátszási beállítások használatához a "alacsony késés a heurisztika profil".
+
+> [!NOTE]
+> Jelenleg az Azure Media Player LowLatency HeuristicProfile lejátszásának DASH protokollal, vagy a HLS-CMAF adatstreameket tervezték. Ha MacOS vagy IOS rendszerű eszközökön keresztül HLS-TS céloz meg (például `format=m3u8-aapl` vagy `format=m3u8-aapl-v3`), ne használja ezt a beállítást, mert AMP közvetlenül a natív Windows Media player ebben az esetben az operációs rendszer által biztosított használ.
 
 A következő .NET példa bemutatja, hogyan állíthatja be **LowLatency** a a **videókhoz**:
 
@@ -34,7 +37,7 @@ LiveEvent liveEvent = new LiveEvent(
             description: "Sample LiveEvent for testing",
             vanityUrl: false,
             encoding: new LiveEventEncoding(
-                        // Set this to Basic to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
+                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
                         encodingType:LiveEventEncodingType.None, 
                         presetName:null
                     ),
@@ -49,7 +52,7 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-A teljes példa: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Tekintse meg a teljes példát: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
 ## <a name="liveevents-latency"></a>LiveEvents késés
 

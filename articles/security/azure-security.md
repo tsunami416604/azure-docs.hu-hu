@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a00f3d2ea4e191bb7860b88d39ff0ccaa338e0ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567162"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714236"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ Ez a tanulmány biztonsági belül a Microsoft Azure felhőalapú platform a Mic
 ## <a name="summary-azure-security-capabilities"></a>Összefoglalás az Azure biztonsági képességei
 A táblázat következő adja meg a biztonsági funkciókat az Azure-infrastruktúra, a vásárlói adatokat és a biztonságos alkalmazások biztonságossá tételéhez a Microsoft által megvalósított rövid leírását.
 ### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Biztonsági funkciók biztonságossá tétele az Azure platformon megvalósított:
-A következő felsorolt funkciók áttekintheti, hogy biztonságos módon kezeli az Azure Platform biztosítja a képességekre. Hivatkozások adtak meg a további lehatolást hogyan a Microsoft adatvédelmi kérdések négy területeken címek: biztonságos platformot, adatvédelmi és vezérlők, megfelelőségi és átláthatóságot.
+A következő felsorolt funkciók áttekintheti, hogy biztonságos módon kezeli az Azure Platform biztosítja a képességekre. Hivatkozások a további lehatolást hogyan a Microsoft adatvédelmi kérdések négy területeken címek adtak meg: Biztonságos platformot, adatvédelmi és vezérlők, megfelelőségi és az átláthatóság.
 
 
 | [Biztonságos platformot](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Adatvédelem és vezérlők](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
@@ -69,7 +69,7 @@ A következő felsorolt funkciók áttekintheti, hogy biztonságos módon kezeli
 ### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>Adatok és alkalmazások védelmét az Azure által nyújtott biztonsági funkciók
 A cloud service modelltől függően nincs változó felelősség kinek a feladata az alkalmazás vagy szolgáltatás biztonságának kezeléséhez. Nincsenek elérhető az Azure Platform, amely segítséget nyújt a teljesíti-e kötelezettségek beépített funkciók révén, és a partneri megoldások, amelyek is telepíthető az Azure-előfizetés keretében képességeket.
 
-A beépített funkciók hat (6) funkcionális területein vannak rendszerezve: műveletek, alkalmazások, tárolási, hálózati, számítási és identitás. További részleteket az funkciók és képességek elérhető az Azure-platform ezeknek a területeknek hat (6) a szolgáltatáson keresztül összegző információit.
+A beépített funkciók hat (6) funkcionális területein vannak rendszerezve: Műveletek, alkalmazások, tárolási, hálózati, számítási és identitás. További részleteket az funkciók és képességek elérhető az Azure-platform ezeknek a területeknek hat (6) a szolgáltatáson keresztül összegző információit.
 
 ## <a name="operations"></a>Műveletek
 Ez a szakasz tartalmazza a legfontosabb jellemzőkkel a biztonsági műveletek kapcsolatos további információkat, és ezek a képességek kapcsolatos összegző információkat.
@@ -110,7 +110,7 @@ Emellett az Azure Security Center segít a biztonsági műveletek azáltal, hogy
 A szakasz a legfontosabb funkcióit az alkalmazás biztonsági és összefoglaló információt ezeket a képességeket kapcsolatos további információkat nyújt.
 
 ### <a name="web-application-vulnerability-scanning"></a>Webes alkalmazás biztonsági ellenőrzése
-Az egyik legegyszerűbb – első lépések a biztonsági rések tesztelése a [App Service-alkalmazás](https://docs.microsoft.com/azure/app-service/app-service-web-overview) használata a [teljesíteni a Tinfoil Security-integráció](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) ellenőrzés az alkalmazás használatát egy biztonsági rés végrehajtásához. Tekintse meg az eredményt egy könnyen érthető jelentésben, és ismerje meg, hogyan háríthatja el az egyes biztonsági lépésről lépésre.
+Az egyik legegyszerűbb – első lépések a biztonsági rések tesztelése a [App Service-alkalmazás](https://docs.microsoft.com/azure/app-service/overview) használata a [teljesíteni a Tinfoil Security-integráció](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) ellenőrzés az alkalmazás használatát egy biztonsági rés végrehajtásához. Tekintse meg az eredményt egy könnyen érthető jelentésben, és ismerje meg, hogyan háríthatja el az egyes biztonsági lépésről lépésre.
 
 ### <a name="penetration-testing"></a>Behatolástesztelés
 Ha inkább saját behatolási teszteket végrehajtására, vagy egy másik képolvasó suite vagy szolgáltató szeretne használni, kövesse a [Azure behatolástesztelést jóváhagyási folyamat](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) és előzetes hagyassa jóvá a kívánt behatolási teszteket végrehajtásához.
@@ -119,13 +119,13 @@ Ha inkább saját behatolási teszteket végrehajtására, vagy egy másik képo
 A webalkalmazási tűzfal (WAF) az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) segít megvédeni a webalkalmazásokat az ismert webalapú támadásoktól, például SQL-injektálás, a többhelyes parancsfájlok futtatására és a munkamenet-eltérítés. Által azonosított fenyegetések elleni védelemre hozzárendeléskor a [nyílt Web Application Security Project (OWASP), a legfontosabb 10 gyakori sebezhetőségként](https://msdn.microsoft.com/library/).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
-[App Service-hitelesítés / engedélyezés](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) olyan szolgáltatás, amely lehetővé teszi, hogy az alkalmazás felhasználók bejelentkeztetéséhez, így nem kell az alkalmazási háttérrendszer a kódot. Az alkalmazás védelme és a felhasználói adatok egy egyszerű megoldást kínál.
+[App Service-hitelesítés / engedélyezés](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) olyan szolgáltatás, amely lehetővé teszi, hogy az alkalmazás felhasználók bejelentkeztetéséhez, így nem kell az alkalmazási háttérrendszer a kódot. Az alkalmazás védelme és a felhasználói adatok egy egyszerű megoldást kínál.
 
 ### <a name="layered-security-architecture"></a>Többrétegű biztonsági architektúra
 Mivel [App Service Environment-környezetek](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) adjon meg egy izolált futtatókörnyezetben helyezi üzembe egy [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview), létrehozhatnak egy többrétegű biztonsági architektúra eltérő szintű megadása az egyes alkalmazásrétegek hálózati hozzáférést. Egy közös törekszik, hogy elrejtése API háttérrendszereket általános Internet-hozzáférés, és csak a felsőbb rétegbeli webes alkalmazások által meghívandó API-k engedélyezése. [Hálózati biztonsági csoportok (NSG-k)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) API-alkalmazásokból való nyilvános hozzáférés korlátozása tartalmazó App Service Environment-környezetek Azure virtuális hálózati alhálózatokon használható.
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web server diagnostics és az application diagnostics
-Az App Service web apps adja meg a diagnosztikai adatok naplózása a webalkalmazás-kiszolgáló és a webes alkalmazás funkciói. Ezek logikailag elkülönített [kiszolgálódiagnosztika webes](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) és [az application diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Webalkalmazás-kiszolgáló két fő tudnak és webhelyek és alkalmazások elhárítása meglehetősen tartalmazza.
+Az App Service web apps adja meg a diagnosztikai adatok naplózása a webalkalmazás-kiszolgáló és a webes alkalmazás funkciói. Ezek logikailag elkülönített [kiszolgálódiagnosztika webes](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) és [az application diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Webalkalmazás-kiszolgáló két fő tudnak és webhelyek és alkalmazások elhárítása meglehetősen tartalmazza.
 
 Az első új funkció alkalmazáskészletek, munkavégző folyamatok, helyek, alkalmazás-tartományok és futó kérések valós idejű megszakítók állapotinformációit. A második új előnyei a részletes nyomkövetési eseményeket, amelyek nyomon követik a kérelem a kérelem / válasz teljes folyamat során.
 
@@ -141,7 +141,7 @@ Engedélyezheti vagy letilthatja a naplók a következő típusú:
 -   A Web Server-naplózás – a W3C bővített naplófájlformátum használata HTTP-tranzakciót kapcsolatos információkat. Ez akkor hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 
 #### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
-[Az Application diagnostics](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Az Application Diagnostics, két fő típusa van események, alkalmazások teljesítményével és alkalmazások hibáival kapcsolatos. A hibák és a hibák oszthatók csatlakozási, biztonsági és meghibásodási problémákra tovább. Probléma adódott az alkalmazáskód hibái általában kapcsolódó.
+[Az Application diagnostics](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Az Application Diagnostics, két fő típusa van események, alkalmazások teljesítményével és alkalmazások hibáival kapcsolatos. A hibák és a hibák oszthatók csatlakozási, biztonsági és meghibásodási problémákra tovább. Probléma adódott az alkalmazáskód hibái általában kapcsolódó.
 
 Az Application Diagnostics felületén tekintheti meg a következő módokon csoportosíthatók események:
 
@@ -289,9 +289,9 @@ A felügyeleti portálon, vagy a hálózati konfigurációs fájlt a vnetben has
 A [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx), vagy a DNS-beli felelős fordítása (vagy feloldása) az IP-címét a webhely vagy szolgáltatás nevét. [Az Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) egy üzemeltetési szolgáltatás DNS-tartományok biztosítani a névfeloldást a Microsoft Azure infrastruktúráját használja. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. A DNS támogatja a rendelkezésre állási szempontból a "CIA" biztonsági háromrészes.
 ### <a name="log-analytics-nsgs"></a>Log Analytics NSG-k
 A következő diagnosztikai napló kategóriák engedélyezheti a hálózati biztonsági csoportok:
--   Esemény: Mely NSG szabályok érvényesek virtuális gépeket és példányszerepköröket MAC-cím alapján bejegyzést tartalmaz. Ezek a szabályok állapota gyűjtött minden 60 másodpercben.
+-   Esemény: Melyik NSG szabályok érvényesek virtuális gépeket és példányszerepköröket MAC-cím alapján bejegyzést tartalmaz. Ezek a szabályok állapota gyűjtött minden 60 másodpercben.
 
--   Szabályok számláló: az egyes NSG-szabályokat alkalmaznak-forgalom engedélyezése vagy megtagadása hány alkalommal bejegyzést tartalmaz.
+-   Szabályok számláló: Az egyes NSG-szabályokat alkalmaznak-forgalom engedélyezése vagy megtagadása hány alkalommal bejegyzést tartalmaz.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 A Security Center segít megelőzését, észlelését és az azokra való reagálásban, és növeli a betekintést nyújt, és szabályozhatóbbá, az Azure-erőforrások biztonságát. Az Azure-előfizetések integrált biztonsági monitorozást és felügyeletet biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és a biztonsági megoldások széles ökoszisztémájával képes együttműködni. Hálózati javaslatok center tűzfalak, a hálózati biztonsági csoportok, konfigurálását, bejövő forgalomra vonatkozó szabályokat és további körül.

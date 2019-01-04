@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 14b849a46701ab19c76ee175717c3715cc89f411
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 11c5d44d44bf66bc7f50dac13c1c7cf0ae7acfff
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408901"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994385"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
 
@@ -58,7 +58,7 @@ Az itt bemutatott munkafolyamat két műveleteket tartalmaz. A műveletek olyan 
 
 2. A Sqoop művelet exportálja az új Hive tábla tartalmát egy Azure SQL Database-ben létrehozott tábla. Sqoop használatával kapcsolatos további információkért lásd: [használata Apache sqoop használatával HDInsight][hdinsight-use-sqoop].
 
-> [!NOTE]
+> [!NOTE]  
 > Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [a HDInsight által biztosított Hadoop-fürtverziók újdonságai][hdinsight-versions].
 
 ## <a name="create-the-working-directory"></a>A munkakönyvtárban létrehozása
@@ -301,7 +301,7 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
     ```
 
     > [!NOTE]  
-    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasb://`. Az Azure Data Lake Store-használata esetén inkább kezdődik, `adl://`.
+    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasb://`. Azure Data Lake Storage-használata esetén inkább kezdődik, `adl://`.
 
     Mentse a tartalmát a `<value>` elem, ahogy a következő lépésben szolgál.
 
@@ -576,7 +576,7 @@ A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok elő
     </coordinator-app>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > A `${...}` változók futásidőben a feladatdefiníciót szereplő értékek helyébe. A változók az alábbiak:
     >
     > * `${coordFrequency}`: A feladat példányait közötti időt.
@@ -737,7 +737,7 @@ Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása 
 * [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel][hdinsight-use-pig]
 * [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
-[hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
+[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]:  hdinsight-component-versioning.md
@@ -757,12 +757,12 @@ Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása 
 
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
-[apache-hadoop]: http://hadoop.apache.org/
-[apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
+[apache-hadoop]: https://hadoop.apache.org/
+[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
+[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
 
 [powershell-download]: https://azure.microsoft.com/downloads/
-[powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
+[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
@@ -773,4 +773,4 @@ Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása 
 [img-preparation-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

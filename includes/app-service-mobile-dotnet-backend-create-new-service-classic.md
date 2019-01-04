@@ -4,19 +4,19 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e087a1db008422aeec8fd4e073a7476eebe4d54b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134178"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729407"
 ---
 1. Jelentkezzen be az [Azure Portal].
 2. Válassza ki **+ új** > **Web + mobil** > **mobilalkalmazás**, majd adja meg egy nevet a Mobile Apps-háttéralkalmazás számára.
 3. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot vagy hozzon létre egy újat (az alkalmazás nevének használatával). 
 4. A **App Service-csomag**, az alapértelmezett csomag (az a [Standard szintű](https://azure.microsoft.com/pricing/details/app-service/)) van kiválasztva. Kiválaszthat egy másik App Service-csomagot is, vagy [létrehozhat egy újat](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
 
-   Az App Service-csomag beállításai határozzák meg a [helyét, a szolgáltatások, a költségek és a számítási erőforrások](https://azure.microsoft.com/pricing/details/app-service/) az alkalmazáshoz társított. További információt az App Service-ben csomagok és a egy új csomag létrehozása egy másik tarifacsomagban réteg és a kívánt helyen, lásd: [Azure App Service díjcsomagjainak részletes áttekintése](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+   Az App Service-csomag beállításai határozzák meg a [helyét, a szolgáltatások, a költségek és a számítási erőforrások](https://azure.microsoft.com/pricing/details/app-service/) az alkalmazáshoz társított. További információt az App Service-ben csomagok és a egy új csomag létrehozása egy másik tarifacsomagban réteg és a kívánt helyen, lásd: [Azure App Service díjcsomagjainak részletes áttekintése](../articles/app-service/overview-hosting-plans.md).
    
 5. Kattintson a **Létrehozás** gombra. Ebben a lépésben létrehozza a Mobile Apps-háttéralkalmazást. 
 6. Az a **beállítások** panelen az új Mobile Apps háttéralkalmazáshoz, válassza ki **gyors üzembe helyezési** > saját ügyfélalkalmazás-platformjára > **adatbázis csatlakoztatása**. 

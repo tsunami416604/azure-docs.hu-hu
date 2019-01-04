@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: 351213749dcec2b4c16728c04230c75a12179118
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e7644128a3f0e0ea531933286e95b15149fdebd3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410983"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557861"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Frissítés a Windows Server 2012 R2-állomások, SCVMM 2012 R2-ben konfigurált az Azure Site Recovery a Windows Server 2016 és az SCVMM 2016-ban
 
@@ -49,7 +49,7 @@ Mielőtt frissít, vegye figyelembe a következőket:-
     - Jegyezze fel az elsődleges 2012 R2 és a helyreállítási VMM-kiszolgálók VMM azonosítója. A VMM-azonosító a beállításjegyzékből "HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup" található.
     - Győződjön meg arról, hogy az új SCVMMs a fürthöz hozzáadni kívánt, ugyanazokat a neveket, mielőtt volt. 
 
-- Ha replikál között, két van-e a helyek mindkét oldalon SCVMMs által kezelt, győződjön meg arról, hogy frissítsen a helyreállítási oldalon először az elsődleges oldal frissítése előtt.
+- Ha két, több minkét SCVMMs által kezelt webhely közötti replikál, győződjön meg arról, hogy frissítsen a helyreállítási oldalon először az elsődleges oldal frissítése előtt.
 > [!WARNING]
 > Az SCVMM 2012 R2 rendszerben elosztott kulcskezelés, a frissítés során válassza ki a **tárolni a titkosítási kulcsokat az Active Directory**. A szolgáltatásfiók és az elosztott kulcskezelés beállításait körültekintően válassza. A választott beállítás alapján a titkosított adatok, például a sablonokban található jelszavak előfordulhat, hogy nem érhető el a frissítés után el, és esetleg a befolyásolja az Azure Site Recovery replikációs
 
@@ -109,5 +109,5 @@ Mielőtt frissít a Windows Server 2012 R2-állomások, frissítenie az SCVMM 20
 4.  Azure portal megnyitása, és ellenőrizze a virtuális gépeket a helyreállítási tár belül replikált állapotát. 
 
 ## <a name="next-steps"></a>További lépések
-Elvégzése után a gazdagépek frissítését hajtja végre, egy [feladatátvételi teszt](tutorial-dr-drill-azure.md) állapotát, a replikálás és vészhelyreállítás recovey állapotának ellenőrzéséhez.
+Elvégzése után a gazdagépek frissítését hajtja végre, egy [feladatátvételi teszt](tutorial-dr-drill-azure.md) a replikáció és a katasztrófa utáni helyreállítás állapota állapotának ellenőrzéséhez.
 

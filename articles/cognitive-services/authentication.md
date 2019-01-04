@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435769"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726290"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Az Azure Cognitive Services-kérések hitelesítéséhez
 
@@ -34,7 +34,7 @@ Tekintsük át gyorsan a hitelesítési fejléceket használható az Azure Cogni
 
 | Fejléc | Leírás |
 |--------|-------------|
-| OCP-Apim-Subscription-Key | Ez a fejléc használatával egy előfizetési kulcsot adott szolgáltatásokhoz, vagy egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez. Ha egy több szolgáltatásos előfizetési kulcsot használ, a régiót az előfizetéshez tartozó formában kell megadni a `Ocp-Apim-Subscription-Region` fejléc. |
+| OCP-Apim-Subscription-Key | Ez a fejléc használatával egy előfizetési kulcsot adott szolgáltatásokhoz, vagy egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez. |
 | OCP-Apim-előfizetés-régió | Ez a fejléc csak akkor szükséges, ha egy több szolgáltatásos előfizetési kulccsal rendelkező a [a Translator Text API](./Translator/reference/v3-0-reference.md). Ez a fejléc használatával adja meg az előfizetés régióban. |
 | Engedélyezés | Ha egy hitelesítési tokent használ, használja ezt a fejlécet. Az alábbi szakaszok a jogkivonatcsere végrehajtásához szükséges lépéseket részletezi. A megadott érték ezt a formátumot követi: `Bearer <TOKEN>`. |
 

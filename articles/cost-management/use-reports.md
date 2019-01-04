@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db24cb1e1b303fbd3f0981390940732685c98baf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075880"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558804"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>A Cloudyn portálon elérhető jelentések
 
@@ -29,7 +29,7 @@ A Cloudyn jelentésekben három típusa van:
 
 - Többlet idő jelentéseket. Ha például az időalapú költségeket tartalmazó jelentést. Többlet idő a jelentések egy idősorozat-adatok megjelenítése egy kiválasztott időszakban előre meghatározott megoldást, és heti felbontása megjelenítése az utolsó két hónapig. Csoportosítás és szűrés segítségével különböző adatpontok nagyítás.
   - Többlet idő jelentések segítségével megtekinthessék a szalagfelhasználási tendenciákat, és a csúcsok és a rendellenességek észlelését.
-- Problémaelemző jelentések. Ha például a Cost Analysis felhasználónkénti jelentés. Ezek a jelentések összesített adatok megjelenítése a időszakban határozza meg, és a csoportosítási és az adatok szűrésének engedélyezése.
+- Problémaelemző jelentések. Ha például a Költségelemzési jelentést. Ezek a jelentések összesített adatok megjelenítése a időszakban határozza meg, és a csoportosítási és az adatok szűrésének engedélyezése.
   - Elemzési jelentés segítségével megtekintheti az adatforgalmi csúcsokhoz és döntse el, anomáliadetektálási kiváltó okokat, és jelenítse meg egy részletes break ki az adatokat.
 - Táblázatos jelentéseket. Megtekintheti a jelentést egy táblát, de egyes jelentések csak táblaként tekinthetők meg. Ezek a jelentések adja meg a részletes elemek listája.
   - Az ajánlások táblázatos jelentések – nincsenek javaslatok egyetlen vizualizációja sincs. Azonban jelenítheti meg az ajánlás eredményeket. Ha például megtakarítások idővel.
@@ -63,7 +63,7 @@ Cloudyn-jelentések megjelenítése a költségvetési információk után manu�
 
 ## <a name="reports-and-reporting-features"></a>Jelentések és a jelentéskészítési szolgáltatások
 
-Clouydn az alábbi jelentések és jelentéskészítési funkciókat is tartalmaz.
+A cloudyn az alábbi jelentések és jelentéskészítési funkciókat.
 
 ### <a name="cost-navigator-report"></a>A kezelő jelentést költség
 
@@ -208,7 +208,7 @@ Egyéni díjak költségjelentésben megjelennek. A tényleges költségelemzés
 
 Cost Allocation 360 használatával egyéni foglalási modelljeinek költségek hozzárendelése felhasznált felhőalapú erőforrásokhoz. Számos jelentést az egyéni modellek létrehozott egyéni modellek adatainak megjelenítése. És egyes jelentések csak adatok megjelenítése egyéni költségmodell a költséglefoglalási a létrehozása után.
 
-Egyéni modellek létrehozásával kapcsolatos további információkért lásd: [oktatóanyag: költségek kezelése az Cloudyn](tutorial-manage-costs.md).
+Egyéni modellek létrehozásával kapcsolatos további információkért lásd: [oktatóanyag: Költségek kezelése az Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>A Cost vs. Költségvetés időalapú jelentés
 
@@ -448,7 +448,7 @@ A **CPU-kihasználtság** a témakör a Processzor kihasználtsága az elmúlt h
 
 Kattintson a diagramra a részletes elemzést, és nyissa meg a példány CPU keresztül idő a jelentés a példányok kibontásának megtekintéséhez.
 
-- Használat **mezők megjelenítése/elrejtése** hozzáadni vagy eltávolítani mezőket: időbélyeg, az átlagos CPU, a minimális CPU, a maximális CPU.
+- Használat **mezők megjelenítése/elrejtése** hozzáadni vagy eltávolítani mezőket: Időbélyeg, átlagos CPU, minimális Processzor, a CPU maximális száma.
 - Használat **dátumtartomány** adjon meg egy dátum vagy dátumtartomány és a egy adott InstanceID részletesen.
 - Használat **bővített szűrők** megjelenítése az összes vagy egy adott példány azonosítója
 - Kattintson a **nagyítás** nyissa meg a CPU-kihasználtság jelentést

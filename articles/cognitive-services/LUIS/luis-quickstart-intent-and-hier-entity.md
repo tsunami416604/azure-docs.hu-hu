@@ -9,32 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 8e46cd7b588355b157eb9da71bdfa44a09a379c4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 91a9646e88adbfaf6d3c3fc0b06b341c647e773f
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726374"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753693"
 ---
-# <a name="tutorial-5-extract-contextually-related-data"></a>5. oktatóanyag: Szövegkörnyezet szerint kapcsolódó adatok kinyerése
-Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során. Munkarendelés létrehozásához mindkét adatrészletre szükség lehet, és az adatrészletek kapcsolódnak egymáshoz.  
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: De kapcsolódó adatok kinyerése az utterance (kifejezés)
 
-Ez az alkalmazás meghatározza, hova lesz áthelyezve egy alkalmazott az indulási helyről (épület és iroda) az érkezési helyre (épület és iroda). A hierarchikus entitás segítségével határozza meg a kimondott szövegben található helyeket. A **hierarchikus** entitás célja kapcsolódó adatok keresése kontextus alapján a kimondott szövegben. 
-
-Ez a hierarchikus entitás jó választás az ilyen típusú adatok esetén, mivel a két adatrészlet:
-
-* Egyszerű entitás.
-* Kapcsolódik egymáshoz a kimondott szövegkörnyezetben.
-* Adott szavakat használ az egyes helyek jelzéséhez. Ilyen szavak például: innen/oda, elhagyja/felé tart, távolodik/közeledik.
-* Mindkét hely általában egyazon kimondott szövegrészletben található. 
-* Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
+Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Ha például egy forrás és cél helye egy átvitelét egy város egy másik. Az adatok két darab lehet szükség, és kapcsolatban állnak egymással.  
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
+> * Új alkalmazás létrehozása
 > * Szándék hozzáadása 
 > * Forrással és célgyermekkel rendelkező helyhierarchikus entitás hozzáadása
 > * Betanítás
@@ -43,47 +34,47 @@ Ez a hierarchikus entitás jó választás az ilyen típusú adatok esetén, miv
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
-Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
+## <a name="hierarchical-data"></a>Hierarchikus adatokkal
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Ez az alkalmazás meghatározza, hogy ha egy alkalmazott át lehet helyezni a forrás város a cél városa. A hierarchikus entitás segítségével határozza meg a kimondott szövegben található helyeket. 
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json).
+A hierarchikus entitás ideális ehhez az adattípushoz, mert a két darab, az adatokat, az alárendelt helyek:
 
-2. Importálja a JSON-t egy új alkalmazásba.
+* Egyszerű entitás.
+* Kapcsolódik egymáshoz a kimondott szövegkörnyezetben.
+* Adott szó választott használatával minden entitás jelzi. Ilyen szavak például: innen/oda, elhagyja/felé tart, távolodik/közeledik.
+* Mindkét gyermekek gyakran az azonos utterance (kifejezés) találhatók. 
+* Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
 
-3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `hier` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
+## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
-## <a name="remove-prebuilt-number-entity-from-app"></a>Előre összeállított szám entitás eltávolítása az alkalmazásból
-Annak érdekében, hogy tekintse meg a teljes utterance (kifejezés), és jelölje meg a hierarchikus gyermekek [ideiglenesen távolítsa el az előre összeállított számú entitást](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token). 
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-move-employees-between-cities"></a>Az alkalmazottak áthelyezését a városok között leképezésének létrehozása
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
+1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
-3. Jelölje be a listában lévő számentitás bal oldalán található jelölőnégyzetet. Válassza a **Törlés** elemet. 
+1. Az előugró párbeszédpanelen írja be a `MoveEmployeeToCity` karakterláncot, majd válassza a **Kész** elemet. 
 
-## <a name="add-utterances-to-moveemployee-intent"></a>Kimondott szövegek hozzáadása a MoveEmployee szándékhoz
+    ![Új szándék létrehozása párbeszédpanel képernyőképe](./media/luis-quickstart-intent-and-hier-entity/create-new-intent-move-employee-to-city.png)
 
-1. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget.
-
-2. A szándékok listájából válassza ki a **MoveEmployee** elemet.
-
-3. Vegye fel az alábbi kimondott szövegpéldákat:
+1. Adjon hozzá kimondott példaszövegeket a szándékhoz.
 
     |Példák kimondott szövegekre|
     |--|
-    |John W. Smith áthelyezése **ide**: a-2345|
-    |Jill Jones átirányítása **ide**: b-3499|
-    |x23456 áthelyezésének megszervezése **innen**: hh-2345, **ide**: e-0234|
-    |Papírmunka megkezdése a következő beállításához: x12345 **elhagyja** a következőt: a-3459, és az f-34567 **felé tart**|
-    |425-555-0000 áthelyezése: **távolodik** a következőtől: g-2323, és **közeledik** hh-2345 felé|
+    |Helyezze át a Seattle elhagyó W. Kovács János jövőképünkből, Dallas|
+    |Seattle-ből áttelepítse Jill Jones Kairó|
+    |Hely John Jackson Tampai, erről Atlanta – hamarosan |
+    |Váltás Perényi Doughtery Tulsa Dallas|
+    |mV való Tampai jövőképünkből Jill Jones Cairo elhagyása|
+    |SHIFT Alice Anderson, Oakland Redmondi|
+    |Carl Chamerlin San franciscóból redmondba|
+    |Steve Standish vigye át a San Diego Bellevue felé |
+    |Chicago, a céges város és shift Péter Thompson áthelyezése|
 
     [![Képernyőkép a LUIS-ról, új kimondott szövegek a MoveEmployee szándékban](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
-
-    A [listaentitással](luis-quickstart-intent-and-list-entity.md) kapcsolatos oktatóanyagban az alkalmazottak név, e-mail-cím, telefonmellék, mobiltelefonszám, vagy USA-beli szövetségi társadalombiztosítási szám alapján vannak kijelölve. Ezeket az alkalmazotti számokat a kimondott szövegekben használja a rendszer. Az előző kimondott szövegpélda különböző módokat tartalmaz az indulási és érkezési hely jelzésére, amelyek félkövér betűvel vannak kiemelve. Néhány kimondott szöveg szándékosan csak érkezési hellyel rendelkezik. Ez segít megérteni a LUIS-nak, hogyan helyezkednek el ezek a helyek a kimondott szövegben, amikor az indulási hely nincs megadva.     
-
-    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>Hely entitás létrehozása
 A LUIS-nak meg kell értenie, hogy a hely pontosan mit jelent. Ez a kimondott szövegben található indulási és érkezési hely címkézésével lehetséges. Ha a kimondott szöveget jogkivonat (nyers) nézetben szeretné megtekinteni, válassza az **Entities View** (Entitások nézet) címkével ellátott, a kimondott szövegek fölötti sávban található kapcsolót. Miután átkapcsolta a kapcsolót, a vezérlő **Tokens View** (Jogkivonatok nézet) címkével lesz ellátva.
@@ -91,170 +82,104 @@ A LUIS-nak meg kell értenie, hogy a hely pontosan mit jelent. Ez a kimondott sz
 Vegyük például a következő kimondott szöveget:
 
 ```json
-mv Jill Jones from a-2349 to b-1298
+move John W. Smith leaving Seattle headed to Dallas
 ```
 
-A kimondott szövegben két hely van megadva: `a-2349` és `b-1298`. Tegyük fel, hogy a betű megfelel egy épület nevének, a szám pedig az irodát jelzi az épületen belül. Ezért érdemes a kettőt egy hierarchikus entitás, a `Locations` entitás gyermekeiként csoportosítani, mert mindkét információt ki kell nyerni a kimondott szövegből a kérelem teljesítéséhez az ügyfélalkalmazásban, és a két információ kapcsolódik egymáshoz. 
+A kimondott szövegben két hely van megadva: `Seattle` és `Dallas`. Mindkét csoportosítva vannak benne egy hierarchikus entitás gyermekeiként `Location`, mivel a két darab, az adatok nyerhetők ki az utterance (kifejezés) az ügyfélalkalmazásban a kérés teljesítéséhez szükséges és kapcsolatban állnak egymással. 
  
 Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érkezés) van jelen, az alkalmazás akkor is kinyeri. Egy vagy néhány gyermek kinyeréséhez nem szükséges az összes gyermeket megtalálni. 
 
-1. A(z) `Displace 425-555-0000 away from g-2323 toward hh-2345` kimondott szövegben válassza ki a következő szót: `g-2323`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Locations`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
+1. A(z) `move John W. Smith leaving Seattle headed to Dallas` kimondott szövegben válassza ki a következő szót: `Seattle`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Location`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
 
-    [![Képernyőkép az új entitás létrehozása a szándék lapon](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "szándék oldalon új entitás létrehozása képernyőképe")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![Képernyőkép az új entitás létrehozása a szándék lapon](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "szándék oldalon új entitás létrehozása képernyőképe")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
 
-2. Az előugró ablakban válassza a **Hierarchikus** entitástípust, gyermekentitásokként a következőkkel: `Origin` és `Destination`. Válassza a **Done** (Kész) lehetőséget.
+1. Az előugró ablakban válassza a **Hierarchikus** entitástípust, gyermekentitásokként a következőkkel: `Origin` és `Destination`. Válassza a **Done** (Kész) lehetőséget.
 
     ![Képernyőkép az entitás létrehozása előugró párbeszédpanelen új helyre az entitáshoz](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "entitás létrehozása előugró párbeszédpanelen új helyre az entitáshoz képernyőképe")
 
-3. A `g-2323` címkéje `Locations`, mivel a LUIS nem tudja, hogy a kifejezés a kiindulási vagy az érkezési hely-e, vagy egyik sem. Válassza ki a `g-2323`, majd a **Locations** (Helyek) elemet, azután pedig a jobb oldali menüben a `Origin` lehetőséget.
+1. A `Seattle` címkéje `Location`, mivel a LUIS nem tudja, hogy a kifejezés a kiindulási vagy az érkezési hely-e, vagy egyik sem. Válassza ki `Seattle`, majd **hely**, majd hajtsa végre a menü a jobb oldalon, és válassza ki `Origin`.
 
-    [![Képernyőkép a felugró párbeszédpanel címkézés entitás módosítani az entitás gyermek helyeken](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "módosítani az entitás gyermek helyeken entitás címkézés felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![Képernyőkép a felugró párbeszédpanel címkézés entitás módosítani az entitás gyermek helyeken](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "módosítani az entitás gyermek helyeken entitás címkézés felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
 
-5. Címkézze meg az egyéb helyeket a többi kimondott szövegben: a kimondott szövegben válassza ki az épületet és az irodát, majd válassza ki a Locations (Helyek) elemet, majd a jobb oldali menüben válassza az `Origin` vagy `Destination` lehetőséget. Ha minden hely fel lett címkézve, a **Tokens View** (Jogkivonatok nézet) kimondott szövegei egy mintára kezdenek hasonlítani. 
+1. A címke az összes többi megcímkézzen más helyeiről. Az összes hely vannak megjelölve, a kimondott szöveg kezdje a következő egy minta módon. 
 
-    [![Képernyőkép a helyek entitás címkézve a kimondott szöveg](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "képernyőképe a helyek entitás címkézve a kimondott szöveg")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![Képernyőkép a helyek entitás címkézve a kimondott szöveg](media/luis-quickstart-intent-and-hier-entity/all-intents-marked-with-origin-and-destination-location.png "képernyőképe a helyek entitás címkézve a kimondott szöveg")](media/luis-quickstart-intent-and-hier-entity/all-intents-marked-with-origin-and-destination-location.png#lightbox)
 
-## <a name="add-prebuilt-number-entity-to-app"></a>Előre összeállított szám entitás hozzáadása az alkalmazáshoz
-Adja hozzá ismét az előre összeállított szám entitást az alkalmazáshoz.
+    A piros aláhúzás azt jelzi a LUIS nem az entitás benne. Ez képzési oldja fel. 
 
-1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben.
+## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
 
-2. Válassza az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) gombot.
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-3. Az előre összeállított entitások listájából válassza a **number** (szám) entitást, majd kattintson a **Done** (Kész) gombra.
-
-    ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
-
-## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-2. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `MoveEmployee`.
+1. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please move Carl Chamerlin from Tampa to Portland`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `MoveEmployee`.
 
     ```json
     {
-      "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
+      "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
-        "intent": "MoveEmployee",
-        "score": 0.9966052
+        "intent": "MoveEmployeeToCity",
+        "score": 0.979823351
       },
       "intents": [
         {
-          "intent": "MoveEmployee",
-          "score": 0.9966052
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.0325253047
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.006137873
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.00462633232
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00415637763
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.00382325822
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00249120337
+          "intent": "MoveEmployeeToCity",
+          "score": 0.979823351
         },
         {
           "intent": "None",
-          "score": 0.00130756292
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00119622645
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 1.26910036E-05
+          "score": 0.0156363435
         }
       ],
       "entities": [
         {
-          "entity": "jill - jones @ mycompany . com",
-          "type": "Employee",
-          "startIndex": 18,
-          "endIndex": 41,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
+          "entity": "portland",
+          "type": "Location::Destination",
+          "startIndex": 41,
+          "endIndex": 48,
+          "score": 0.6044041
         },
         {
-          "entity": "x - 2345",
-          "type": "Locations::Origin",
-          "startIndex": 48,
-          "endIndex": 53,
-          "score": 0.8520272
-        },
-        {
-          "entity": "g - 23456",
-          "type": "Locations::Destination",
-          "startIndex": 58,
-          "endIndex": 64,
-          "score": 0.974032
-        },
-        {
-          "entity": "-2345",
-          "type": "builtin.number",
-          "startIndex": 49,
-          "endIndex": 53,
-          "resolution": {
-            "value": "-2345"
-          }
-        },
-        {
-          "entity": "-23456",
-          "type": "builtin.number",
-          "startIndex": 59,
-          "endIndex": 64,
-          "resolution": {
-            "value": "-23456"
-          }
+          "entity": "tampa",
+          "type": "Location::Origin",
+          "startIndex": 32,
+          "endIndex": 36,
+          "score": 0.739491045
         }
       ]
     }
     ```
     
-    A rendszer előrejelzi a helyes szándékot, és az entitások tömbje az indulás és a cél értékét is tartalmazza a megfelelő **entitás** tulajdonságban.
+    A megfelelő leképezés összegyűjtése várható és az entitások tömb a megfelelő a forrás- és célcsomóponton értékekkel rendelkező **entitások** tulajdonság.
     
-
-## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Használhat reguláris kifejezést minden helyhez?
-Igen, létrehozhatja a reguláriskifejezés-entitást indulási és érkezési szerepkörökkel, és használhatja egy mintában.
-
-Az ebben a példában lévő helyek, például az `a-1234`, egy adott formátumot követnek: egy vagy két betű, kötőjellel elválasztva, ezután egy 4 vagy 5 számból álló sorozat. Ez az adat leírható reguláris kifejezés entitásként az egyes helyekhez kapcsolódó szerepkörrel. A szerepkörök csak a mintákhoz érhetők el. Ezen kimondott szövegek alapján létrehozhat mintákat, majd létrehozhat egy reguláris kifejezést a helyformátumhoz, és hozzáadhatja a mintákhoz. 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="hierarchical-entities-versus-roles"></a>A hierarchikus entitások és a szerepkörök
+## <a name="related-information"></a>Kapcsolódó információk
 
-További információt a [szerepköröket és a hierarchikus entitásokat](luis-concept-roles.md#roles-versus-hierarchical-entities) ismertető cikkben talál.
+* [A hierarchikus](luis-concept-entity-types.md) elméleti információk
+* [Hogyan betanítása](luis-how-to-train.md)
+* [Közzétételi útmutató](luis-how-to-publish-app.md)
+* [A LUIS-portál tesztelése](luis-interactive-test.md)
+* [Szerepkörök és a hierarchikus entitások](luis-concept-roles.md#roles-versus-hierarchical-entities)
+* [Minták az előrejelzések javítása](luis-concept-patterns.md)
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag létrehozott egy új szándékot, és kimondott példaszövegeket adott hozzá az indulási és célhelyek környezetfüggő tanult adataihoz. Amint megtörtént az alkalmazás betanítása és közzététele, az ügyfélalkalmazások felhasználhatják az adott információt a megfelelő információt tartalmazó mozgatási jegy létrehozásához.
+
+Ebben az oktatóanyagban létrehozott egy új szándékot, majd a forrás és cél helyek kontextusban megismert adatok példa beszédmódok hozzáadása. Amint megtörtént az alkalmazás betanítása és közzététele, az ügyfélalkalmazások felhasználhatják az adott információt a megfelelő információt tartalmazó mozgatási jegy létrehozásához.
 
 > [!div class="nextstepaction"] 
 > [Ismerkedés az összetett entitások hozzáadásának módjával](luis-tutorial-composite-entity.md) 

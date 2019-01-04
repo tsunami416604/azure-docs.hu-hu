@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0adc8ad651989d198fecabf00d38fbdeb7cf3cd1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a54c47c0f67052f2ce486a97e009293a118919d4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407094"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994113"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>A HDInsight Apache Hadoop-feladatok adatok feltöltése
 
@@ -171,12 +171,10 @@ vagy
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Más Hadoop-parancsokat, amelyek együttműködnek a fájlok listáját lásd: [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Más Hadoop-parancsokat, amelyek együttműködnek a fájlok listáját lásd: [https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > Az Apache HBase fürtök esetén az alapértelmezett blokkméret használható, ha adatok 256 KB. Ez a jól működik a HBase API-k vagy REST API-k használatakor, miközben használata a `hadoop` vagy `hdfs dfs` parancsokat írhat adatokat ~ 12 GB-nál nagyobb hibát eredményez. További információkért lásd: a [írási a blob storage kivételt](#storageexception) szakasz ebben a cikkben.
->
->
 
 ### <a name="graphical-clients"></a>Grafikus ügyfelek
 Is találhatók, amely a grafikus felületet biztosít az Azure Storage használatát több alkalmazás is. Az alábbi táblázat az néhány ezeknek az alkalmazásoknak a listája:
@@ -184,17 +182,17 @@ Is találhatók, amely a grafikus felületet biztosít az Azure Storage használ
 | Ügyfél | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [A Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
-| [Felhőalapú tárolás Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
+| [Azure Storage Explorer](https://storageexplorer.com/) |✔ |✔ |✔ |
+| [Felhőalapú tárolás Studio 2](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Azure Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
 További információkért lásd: [Navigálás a kapcsolt erőforrásokban](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
 #### <a id="storageexplorer"></a>Azure Storage Explorer
-*Az Azure Storage Explorer* vizsgálatához és módosítása a nyerhető a blobok fontos eszköze. Egy ingyenes, nyílt forráskódú eszköz, amely letölthető a [ http://storageexplorer.com/ ](http://storageexplorer.com/). A forráskódja elérhető a hivatkozásból.
+*Az Azure Storage Explorer* vizsgálatához és módosítása a nyerhető a blobok fontos eszköze. Egy ingyenes, nyílt forráskódú eszköz, amely letölthető a [ https://storageexplorer.com/ ](https://storageexplorer.com/). A forráskódja elérhető a hivatkozásból.
 
 Az eszköz használata előtt ismernie kell az Azure storage-fiók tárfióknév és fiókkulcs. Az alábbi információk kapcsolatos útmutatásért lásd a "How to: Megtekintése, másolása és újragenerálása storage hozzáférési kulcsok"szakaszában [létrehozása, kezelése vagy törlése a storage-fiók][azure-create-storage-account].
 
@@ -315,7 +313,7 @@ Most, hogy megismerte, hogyan olvashatja be őket a HDInsight, olvassa el a tov�
 
 [sqldatabase-create-configure]: ../sql-database-create-configure.md
 
-[apache-sqoop-guide]: http://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
+[apache-sqoop-guide]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 

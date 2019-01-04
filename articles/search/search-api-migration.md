@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 23003859b9a75fb986fe65f5528004f3dd150f9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312187"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633044"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra
 Ha egy korábbi verzióját használja, a [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/), ez a cikk segít frissíteni az alkalmazást a legújabb általánosan elérhető API-verzió, 2017-11-11.
@@ -59,7 +59,7 @@ Ha a kódot használja ezeket a funkciókat, nem tudja frissíteni a 2017-11-11 
 ## <a name="conclusion"></a>Összegzés
 Ha további részleteket az Azure Search szolgáltatás REST API használatával van szüksége, tekintse meg a nemrég frissített [API-referencia](https://docs.microsoft.com/rest/api/searchservice/) az MSDN Webhelyén.
 
-Az Azure Search szívesen fogadjuk a visszajelzéseket. Ha problémákat tapasztal, nyugodtan megszüntetését a Súgó a [Azure Search MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) vagy [StackOverflow](http://stackoverflow.com/). Ha a StackOverflow Azure Search névjegye Ön kérdéseket tehet fel, ellenőrizze, hogy a címke azt az `azure-search`.
+Az Azure Search szívesen fogadjuk a visszajelzéseket. Ha problémákat tapasztal, nyugodtan megszüntetését a Súgó a [Azure Search MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch) vagy [StackOverflow](https://stackoverflow.com/). Ha a StackOverflow Azure Search névjegye Ön kérdéseket tehet fel, ellenőrizze, hogy a címke azt az `azure-search`.
 
 Köszönjük, hogy az Azure Search használatával!
 

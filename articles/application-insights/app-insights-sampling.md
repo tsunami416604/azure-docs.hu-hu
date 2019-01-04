@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 103f4b10d5fbb7fbcf9c3721a82fe4075abe0dc4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 17725f830b347839ddc57eba61ef7c65d5253568
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877615"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970882"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -57,7 +57,7 @@ A mintavételi ráta beállítását a a használat és becsült költségek lap
 
 Mintavételi más típusú, például az algoritmus megtartja a kapcsolódó telemetriai adat elemek. Például ha a telemetria keresése a vizsgálat lesz találta meg a kérelem egy adott kivétel kapcsolatos. Metrika számolja, például a kérések aránya és kivételek sebessége megfelelően megmaradnak.
 
-Mintavétellel elvesznek adatpontok nem érhetők el minden olyan Application Insights szolgáltatásban például [folyamatos exportálás](app-insights-export-telemetry.md).
+Mintavétellel elvesznek adatpontok nem érhetők el minden olyan Application Insights szolgáltatásban például [folyamatos exportálás](../azure-monitor/app/export-telemetry.md).
 
 Betöltési mintavételt SDK-alapú adaptív vagy rögzített mintavételi művelet közben nem működik. Vegye figyelembe, hogy az adaptív mintavételezési alapértelmezés szerint engedélyezve van az ASP.NET SDK engedélyezve van, a Visual Studióban vagy az állapotfigyelő használatával, és a betöltési mintavételt le van tiltva. Ha az SDK a mintavételi ráta kevesebb mint 100 %-os, az Ön által beállított feldolgozási mintavételi ráta figyelmen kívül hagyja.
 
@@ -83,7 +83,7 @@ A projekt NuGet-csomagok frissítése a legújabb verzióra *kiadás előtti* Ap
 
 ### <a name="configuring-adaptive-sampling"></a>Az adaptív mintavétel konfigurálása ###
 
-A [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), módosíthatja a több paramétert a `AdaptiveSamplingTelemetryProcessor` csomópont. A látható adatok az alapértelmezett értékeket:
+A [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md), módosíthatja a több paramétert a `AdaptiveSamplingTelemetryProcessor` csomópont. A látható adatok az alapértelmezett értékeket:
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
@@ -112,11 +112,11 @@ A [ApplicationInsights.config](app-insights-configuration-with-applicationinsigh
 
 * `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
   
-    Pontosvesszővel tagolt listáját, amelyek nem szeretné, hogy mintát venni. Felismeri a típusok a következők: függőségi, Event, kivétel, oldalmegtekintés, kérelem, nyomkövetési. A megadott típusú összes példánya továbbított; a típusok, amelyek nincsenek megadva történik az adatgyűjtés.
+    Pontosvesszővel tagolt listáját, amelyek nem szeretné, hogy mintát venni. Felismert típusok a következők: Nyomkövetési esemény, kivétel, lapnézetben szereplő, a kérelem, függőség. A megadott típusú összes példánya továbbított; a típusok, amelyek nincsenek megadva történik az adatgyűjtés.
 
 * `<IncludedTypes>Request;Dependency</IncludedTypes>`
   
-    Pontosvesszővel tagolt listáját kell mintát venni kívánt típusokat. Felismeri a típusok a következők: függőségi, Event, kivétel, oldalmegtekintés, kérelem, nyomkövetési. A megadott típusok vonnak. mindig az összes példányát a más típusú, a rendszer nem továbbít.
+    Pontosvesszővel tagolt listáját kell mintát venni kívánt típusokat. Felismert típusok a következők: Nyomkövetési esemény, kivétel, lapnézetben szereplő, a kérelem, függőség. A megadott típusok vonnak. mindig az összes példányát a más típusú, a rendszer nem továbbít.
 
 
 **Kikapcsolhatják a** adaptív mintavétel, távolítsa el az AdaptiveSamplingTelemetryProcessor csomópontban a applicationinsights-konfiguráció.
@@ -167,14 +167,14 @@ Távolítsa el a `AdaptiveSamplingTelemetryProcessor` csomópont a .config fájl
 
 ```
 
-([Megismerheti a telemetriai adatok processzorok](app-insights-api-filtering-sampling.md#filtering).)
+([Megismerheti a telemetriai adatok processzorok](../azure-monitor/app/api-filtering-sampling.md#filtering).)
 
 <a name="other-web-pages"></a>
 
 ## <a name="sampling-for-web-pages-with-javascript"></a>A JavaScript weblapokon mintavétel
 Weblapok rögzített mintavételi bármely kiszolgálóról is beállíthatja. 
 
-Amikor Ön [a weblapok konfigurálása az Application Insights](app-insights-javascript.md), módosíthatja a JavaScript-kódrészletet képest az Application Insights portálon. (Az ASP.NET-alkalmazások, a kódrészlet általában kerül _Layout.cshtml.)  Például a sor beszúrása `samplingPercentage: 10,` előtt a kialakítási kulcsot:
+Amikor Ön [a weblapok konfigurálása az Application Insights](../azure-monitor/app/javascript.md), módosíthatja a JavaScript-kódrészletet képest az Application Insights portálon. (Az ASP.NET-alkalmazások, a kódrészlet általában kerül _Layout.cshtml.)  Például a sor beszúrása `samplingPercentage: 10,` előtt a kialakítási kulcsot:
 
     <script>
     var appInsights= ... 
@@ -206,7 +206,7 @@ A Metrikaböngészőben díjszabás, például a kérések és kivételek száma
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>Az ASP.NET-ben rögzített mintavétel konfigurálása ###
 
 1. **A projekt NuGet-csomagok frissítése** a legújabb *kiadás előtti* Application Insights verzióját. A Visual Studióban kattintson a jobb gombbal a projektre a Megoldáskezelőben, válassza a NuGet-csomagok kezelése, ellenőrizze **előzetes verzió** és keresse meg a Microsoft.ApplicationInsights.Web. 
-2. **Tiltsa le az adaptív mintavételezési**: A [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), távolítsa el, vagy tegye megjegyzésbe a `AdaptiveSamplingTelemetryProcessor` csomópont.
+2. **Tiltsa le az adaptív mintavételezési**: A [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md), távolítsa el, vagy tegye megjegyzésbe a `AdaptiveSamplingTelemetryProcessor` csomópont.
    
     ```xml
    
@@ -220,7 +220,7 @@ A Metrikaböngészőben díjszabás, például a kérések és kivételek száma
 
     ```
 
-3. **A rögzített mintavételi modul engedélyezése.** Adja hozzá a kódrészletet [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+3. **A rögzített mintavételi modul engedélyezése.** Adja hozzá a kódrészletet [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md):
    
     ```XML
    
@@ -237,7 +237,7 @@ A Metrikaböngészőben díjszabás, például a kérések és kivételek száma
 
 ### <a name="configuring-fixed-rate-sampling-in-java"></a>Java-környezetben rögzített mintavétel konfigurálása ###
 
-1. Töltse le és a webalkalmazások konfigurálása a legújabb [application insights java SDK](app-insights-java-get-started.md)
+1. Töltse le és a webalkalmazások konfigurálása a legújabb [application insights java SDK](../azure-monitor/app/java-get-started.md)
 
 2. **A rögzített mintavételi modulok** ApplicationInsights.xml fájl ad hozzá az alábbi kódrészletet.
 
@@ -263,7 +263,7 @@ A Metrikaböngészőben díjszabás, például a kérések és kivételek száma
         <IncludedType>Exception</IncludedType>
     </IncludedTypes>
 ```
-A foglalt vagy mintavételi zárva telemetriai típusok a következők: függőségi, Event, kivétel, oldalmegtekintés, kérelem és nyomkövetési.
+A foglalt vagy mintavételi zárva telemetriai típusok a következők: Függőségi, Event, kivétel, oldalmegtekintés, kérelem és nyomkövetési.
 
 > [!NOTE]
 > A mintavételi arányt, amely közel 100/N van, ahol N az egész százalékos válassza.  Mintavétel jelenleg nem támogatja a többi értéket.
@@ -291,7 +291,7 @@ Ahelyett, hogy a mintavétel paraméter beállítása a .config fájlban, progra
 
 ```
 
-([Megismerheti a telemetriai adatok processzorok](app-insights-api-filtering-sampling.md#filtering).)
+([Megismerheti a telemetriai adatok processzorok](../azure-monitor/app/api-filtering-sampling.md#filtering).)
 
 ## <a name="when-to-use-sampling"></a>Mikor érdemes használni a mintavételi?
 Adaptív mintavételezés automatikusan aktiválódik, ha a verzió az ASP.NET SDK 2.0.0-beta3 vagy újabb. Melyik verzióját használja az SDK-t, függetlenül attól, hogy a rendszer mintát a gyűjtött adatok az Application Insights betöltési mintavételt is engedélyezheti.
@@ -316,7 +316,7 @@ Mintavételi fő előnyei a következők:
 **Használja a rögzített mintavételi, ha:**
 
 * Az Application Insights SDK-t használja az ASP.NET web services 2.0.0-s verzió vagy újabb, vagy a Java SDK v2.0.1 vagy újabb, és
-* Azt szeretné, ügyfél és kiszolgáló közötti mintavétel szinkronizált úgy, hogy mikor lekérdezéskapcsolatokról események [keresési](app-insights-diagnostic-search.md), az ügyfél és kiszolgáló, mint például a lapmegtekintések és a http-kérelmekre a kapcsolódó események között akkor tud mozogni.
+* Azt szeretné, ügyfél és kiszolgáló közötti mintavétel szinkronizált úgy, hogy mikor lekérdezéskapcsolatokról események [keresési](../azure-monitor/app/diagnostic-search.md), az ügyfél és kiszolgáló, mint például a lapmegtekintések és a http-kérelmekre a kapcsolódó események között akkor tud mozogni.
 * Biztos a megfelelő mintavételi arányt, az alkalmazás számára. Elég nagy a pontos metrika beolvasása kell lennie, de alább aránya, amely meghaladja a díjszabási kvótát és a szabályozási korlátok. 
 
 **Az adaptív mintavételezési használja:**
@@ -324,7 +324,7 @@ Mintavételi fő előnyei a következők:
 A mintavételezési többi formáját használati feltételei csak akkor érvényesíthetők, ha az adaptív mintavételezési javasoljuk. Ez az SDK-verzió 2.0.0-beta3 ASP.NET-kiszolgálón alapértelmezés szerint engedélyezve van, vagy később. Azt nem csökkenti forgalom mindaddig, amíg egy bizonyos minimális sebességet, ezért alacsony használatú helyeket nem érinti.
 
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>Honnan tudhatom meg, hogy mintavételi van folyamatban?
-Fedezze fel a tényleges mintavételi ráta, függetlenül attól, hol van alkalmazva, használja az [elemzési lekérdezés](app-insights-analytics.md) a:
+Fedezze fel a tényleges mintavételi ráta, függetlenül attól, hol van alkalmazva, használja az [elemzési lekérdezés](../azure-monitor/app/analytics.md) a:
 
 ```
 union * 
@@ -396,5 +396,5 @@ Az ügyféloldali (JavaScript) SDK-t a kiszolgálóoldali SDK-val együtt rögz�
 * Egy külön példányát és a egy új (nem az alapértelmezett aktív) TelemetryConfiguration TelemetryClient inicializálása. A ritka események küldéséhez használhatja, amely.
 
 ## <a name="next-steps"></a>További lépések
-* [Szűrés](app-insights-api-filtering-sampling.md) az SDK-t küld, további szigorú ellenőrzési biztosíthat.
+* [Szűrés](../azure-monitor/app/api-filtering-sampling.md) az SDK-t küld, további szigorú ellenőrzési biztosíthat.
 

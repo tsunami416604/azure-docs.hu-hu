@@ -1,5 +1,5 @@
 ---
-title: Ismertető a felnőtt és szexuális tartalom – a Computer Vision
+title: Írja le a felnőtt és szexuális tartalom – a Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Észleli a felnőtt és szexuális tartalom képeket a Computer Vision APi használatával kapcsolatos fogalmakat.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 71866149e3d2dca4b39585ce8da73aae658a4d59
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: e0cca054acb7d3d649105ecd45748a60a2aa9bbb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344914"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582167"
 ---
 # <a name="detecting-adult-and-racy-content"></a>Felnőtteknek szóló és kényes tartalom észlelése
 
-A különféle visual osztályok között van a felnőtt és szexuális csoport, amely lehetővé teszi, hogy felnőtt anyagok észlelését, és a szexuális tartalmú képek megjelenítéséhez korlátozza. A felnőtt és szexuális tartalom észlelési szűrő értékét is beállíthat a felhasználói beállítás szerint befogadásához.
+A kategóriák között a felnőtt és kényes tartalom is szerepel, ezáltal észlelhető a felnőtt tartalom, és korlátozható a szexuális tartalmú képek megjelenítése. A felnőtteknek szóló vagy kényes tartalom észlelésére vonatkozó szűrő érzékenységét a felhasználó egy csúszka segítségével állíthatja be igényei szerint.
 
 ## <a name="defining-adult-and-racy-content"></a>Felnőtt és szexuális tartalom meghatározása
 

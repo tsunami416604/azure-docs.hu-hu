@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496875"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725269"
 ---
-# <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése a felhasználók
+# <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
 
 [Vállalati biztonsági csomag (ESP) engedélyezve van a HDInsight-fürtök](./domain-joined/apache-domain-joined-introduction.md) adja meg a nagyvállalati szintű funkciókat, beleértve az Azure Active Directory-alapú hitelesítés. Is [új felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md) hozzá az Azure AD-csoportokat, amelyek adtak meg a fürthöz való hozzáférés lehetővé teszi adott felhasználók bizonyos műveletek elvégzéséhez. Felhasználók, csoportok és az engedélyek használata [Apache Ambari](https://ambari.apache.org/) ESP HDInsight-fürtök mind a standard szintű HDInsight-fürtök esetén támogatott.
 
-Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataik használatával jelentkezhet be. Egyéb engedélyezett végpontokban, például a fürt interakció hitelesítéshez tartományi hitelesítő adataik is használhatják [Hue](http://gethue.com/), Ambari Views, ODBC, JDBC, PowerShell és REST API-k.
+Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataik használatával jelentkezhet be. Egyéb engedélyezett végpontokban, például a fürt interakció hitelesítéshez tartományi hitelesítő adataik is használhatják [Hue](https://gethue.com/), Ambari Views, ODBC, JDBC, PowerShell és REST API-k.
 
-> [!WARNING]
+> [!WARNING]  
 > Ne módosítsa a jelszavát a Linux-alapú HDInsight-fürt Ambari figyelő (hdinsightwatchdog). A jelszó módosítása működésképtelenné válik a parancsfájlműveletekkel vagy a fürt skálázási műveleteket végez.
 
 Ha még nem tette meg, hajtsa végre a [ezek az utasítások](./domain-joined/apache-domain-joined-configure.md) egy új ESP-fürt kiépítéséhez.
@@ -100,7 +100,7 @@ Minden szerepkör engedélyeket listájának megtekintéséhez kattintson a a k�
 
 ![Szerepkörök menü-hivatkozás](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
 
-Ezen a lapon nincsenek szerepkörök, felhasználók és csoportok kezeléséhez használható két különböző nézeteket: blokk- és a listában.
+Ezen az oldalon van két különböző nézeteket a felhasználókat és csoportokat a szerepkörök kezeléséhez használhatja: Blokk- és listája.
 
 ### <a name="block-view"></a>Blokknézet
 
@@ -110,7 +110,7 @@ A blokk nézet jeleníti meg az egyes szerepkörök a saját sorában, és bizto
 
 ### <a name="list-view"></a>Listanézet
 
-A listanézet kétféle gyors szerkesztési képességeket biztosít: felhasználókat és csoportokat.
+A listanézet kétféle gyors szerkesztési képességeket biztosítja: Felhasználók és csoportok.
 
 * A listanézet felhasználók kategóriáját jeleníti meg az összes olyan felhasználó, lehetővé teszi, hogy a legördülő listában válassza ki a szerepkör minden felhasználóhoz.
 

@@ -4,19 +4,19 @@ description: Ismerje meg az online migrálást az Azure SQL Database ismert prob
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a8d91c0410d2a59e4b22866aa48d36c026f3ee8e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 816b67488acc567d81bf1916735d13c0e480fe5d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956295"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719557"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure SQL DB
 
@@ -24,11 +24,11 @@ Ismert problémák és korlátozások online migrálást SQL Serverről az Azure
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Áttelepítés nem támogatott a historikus táblák
 
-**Jelenség**
+**Tünet**
 
 Ha a forrásadatbázis egy vagy több historikus táblát tartalmaz, az adatbázis-migrálást az "adatok teljes betöltése" művelet során nem sikerül, és a következő üzenet jelenhet meg:
 
-{"erőforrás-azonosító": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Adatbázis-migrálási hiba", "errorEvents": "[" rögzítési funkciói nem állítható be. RetCode: Való SqlState: 42000 NativeError: 13570 üzenetet: [Microsoft] [SQL Server natív ügyfél 11.0] [SQL Server] a replikáció nem támogatott a rendszerverzióval ellátott historikus tábla a(z) [alkalmazás. Város]: sor: 1 oszlop: -1 "]"}
+{"erőforrás-azonosító": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Adatbázis-migrálási hiba", "errorEvents": "[" rögzítési funkciói nem állítható be. RetCode: Való SqlState: 42000 NativeError: 13570 üzenetet: [Microsoft] [SQL Server natív ügyfél 11.0] [SQL Server] a replikáció nem támogatott a rendszerverzióval ellátott historikus tábla a(z) [alkalmazás. Város] "sort: 1 oszlop: -1 "]"}
  
  ![A historikus tábla hibák példa](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
@@ -48,7 +48,7 @@ További információkért tekintse meg a cikket [időbeli Verziózású táblá
  
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>A táblák áttelepítési tartalmaz egy vagy több oszlop a hierarchyid adattípusú
 
-**Jelenség**
+**Tünet**
 
 Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hierarchyid" a "adatok teljes betöltése" művelet során:
      
@@ -79,7 +79,7 @@ Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hiera
 
 ### <a name="support-for-lob-data-types"></a>A LOB adattípus támogatása
 
-**Jelenség**
+**Tünet**
 
 Ha nagyméretű objektum (LOB) oszlop hossza 32 KB-nál nagyobb méretű, adatok előfordulhat, hogy első csonkolva, a cél. Az alábbi lekérdezés használatával LOB oszlop hossza ellenőrizheti: 
 
@@ -93,7 +93,7 @@ Ha egy LOB oszlop, amely 32 KB-nál nagyobb méretű, lépjen kapcsolatba a mér
 
 ### <a name="issues-with-timestamp-columns"></a>Időbélyegző-oszlopok problémái
 
-**Jelenség**
+**Tünet**
 
 A DMS nem áttelepíteni a forrás timestamp értéket; Ehelyett a DMS a céloldali tábla hoz létre egy új időbélyegző-érték.
 
@@ -103,7 +103,7 @@ Ha DMS áttelepíteni a forrástábla tárolt időbélyeg pontos érték van sz�
 
 ### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>Adatok áttelepítési hibák nem biztosít további részleteket az adatbázis részletes állapota panel.
 
-**Jelenség**
+**Tünet**
 
 Az adatbázisok részletek állapot nézetben a migrálási hibák hibát tapasztal, amikor kiválasztja a **adatok áttelepítési hibák** hivatkozást a felső szalagon nem rendelkezhetnek a migrálási hibák további adatait.
 

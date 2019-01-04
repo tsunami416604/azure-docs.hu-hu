@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ba955e9e71926a513f6c083acb6508b3ec330d17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cc9368bfe95aba3da3dba3a4ac4293790bb09cd3
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094559"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754084"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption Iaas virtuális gépekhez – gyakori kérdések
 
@@ -44,10 +44,10 @@ Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribú
 | --- | --- |--- |
 | Ubuntu | 16.04-NAPI-LTS | Operációsrendszer- és lemez |
 | Ubuntu | 14.04.5-DAILY-LTS | Operációsrendszer- és lemez |
-| RHEL | 7.5 | Adatok lemezre * |
-| RHEL | 7.4 | Adatok lemezre * |
-| RHEL | 7.3 | Adatok lemezre * |
-| RHEL | 7.2 | Adatok lemezre * |
+| RHEL | 7.5 | Operációsrendszer- és lemez * |
+| RHEL | 7.4 | Operációsrendszer- és lemez * |
+| RHEL | 7.3 | Operációsrendszer- és lemez * |
+| RHEL | 7.2 | Operációsrendszer- és lemez * |
 | RHEL | 6.8 | Adatok lemezre * |
 | RHEL | 6.7 | Adatok lemezre * |
 | CentOS | 7.4 | Operációsrendszer- és lemez |
@@ -67,7 +67,7 @@ Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribú
 | SLES | 11 SP4 | Adatlemez |
 
 
-*__ADE RHEL adatlemez esetében támogatott. A jelenlegi ADE implementációja operációsrendszer-lemez esetében működik, de közösen jelenleg nem támogatott. A Microsoft és a Red Hat dolgozik egy közösen támogatott megoldás. Addig is lehet hivatkozni a [Linuxhoz készült Azure Disk Encryption](azure-security-disk-encryption-linux.md) cikk.__
+*__Új ADE végrehajtása RHEL-OS és adatlemez RHEL7 használatalapú lemezképekhez támogatott. ADE a RHEL Bring-Your-saját-előfizetés (saját) lemezképek jelenleg nem támogatott. Emellett tekintse meg a [Linuxhoz készült Azure Disk Encryption](azure-security-disk-encryption-linux.md) cikkben további információt.__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan lehet elindítani az Azure Disk Encryption használatával?
 

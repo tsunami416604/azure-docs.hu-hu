@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 7f67868f6220ab2940aa8ac4d4bf24f82191cc22
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b14a36e79488f586173a6f4c8b81a24d8ce24806
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620251"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727496"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Egy IoT DevKit eszköz csatlakoztatása a távoli figyelési megoldásgyorsító
 
@@ -22,24 +22,21 @@ ms.locfileid: "52620251"
 
 Ez az útmutató bemutatja, hogyan futtathat egy mintaalkalmazást az IoT DevKit eszközén. A mintakód telemetriai adatokat küld a megoldásgyorsító az érzékelőktől az DevKit eszközön.
 
-A [IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) Visual Studio Code-ban. A [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) mintaalkalmazások prototípus IoT-megoldások segítségével tartalmazza.
+A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) vagy [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) bővítőcsomagjának Visual Studio Code-ban. A [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) mintaalkalmazások prototípus IoT-megoldások segítségével tartalmazza.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="before-you-begin"></a>Előkészületek
 
-Kövesse a [IoT DevKet első lépések útmutató](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) fejezze be a következő szakaszokban:
+Ez az oktatóanyag lépéseinek végrehajtásához először a következő feladatokat végezheti el:
 
-* Készítse elő a hardvert
-* Wi-Fi konfigurálása
-* A fejlesztői készlet használatának megkezdése
-* A fejlesztési környezet előkészítése
+* Készítse elő a DevKit a lépéseket követve [IoT DevKit AZ3166 csatlakoztatása az Azure IoT hubba a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 
-## <a name="open-the-sample"></a>Nyissa meg a minta
+## <a name="open-sample-project"></a>Nyissa meg a mintaprojektet
 
 A távoli figyelési minta megnyitása a VS Code-ban:
 
 1. Ellenőrizze, hogy az IoT fejlesztői készlet nincs a számítógépre. Először indítsa el a VS Code, és a fejlesztői készlet csatlakoztatása a számítógéphez.
 
-1. Kattintson a `F1` nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: Példák**. Válassza ki **IoT DevKit** , tábla.
+1. Kattintson a `F1` a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: Példák megnyitása...** . Válassza ki **IoT DevKit** , tábla.
 
 1. Keresés **távoli figyelési** kattintson **nyílt minta**. Egy új VS Code-ablak nyílik meg, a projektmappa fájllistájának megjelenítése:
 
@@ -58,7 +55,7 @@ Az IoT Hub eszköz kapcsolati karakterláncának konfigurálása DevKit eszköz�
 
     ![IoT DevKit konfigurációs mód](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. Nyomja meg **F1** nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: eszköz > konfigurációs beállítások**.
+1. Nyomja meg **F1** a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: -Beállítások konfigurálása... > konfigurációs eszköz kapcsolati karakterláncának**.
 
 1. Illessze be a korábban kimásolt kapcsolati karakterláncot, és nyomja le az **Enter** beállítani az eszközt.
 
@@ -66,13 +63,11 @@ Az IoT Hub eszköz kapcsolati karakterláncának konfigurálása DevKit eszköz�
 
 Hozhat létre, és töltse fel az eszköz kódot:
 
-1. Nyomja meg **F1**a(z) ** nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: eszköz > eszköz feltöltése**:
-
-    ![IoT Workbench: Eszközök - > feltöltése](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
+1. Nyomja meg `F1` a parancskatalógus megnyitásához, írja be, és válassza ki **Azure IoT-eszköz Workbench: Töltse fel az eszköz kód**:
 
 1. A VS Code fordítása sikeres és a kód feltölti az DevKit eszköz:
 
-    ![IoT Workbench: Eszközök - > feltöltve.](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+    ![IoT-munkaterület: Eszköz - > feltöltve.](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
 
 1. A fejlesztői készlet eszköz újraindul, és a feltöltött kódot futtatja.
 
@@ -104,7 +99,7 @@ A fejlesztői készlet LED-ek valamelyikét színét módosításához használj
 
 1. A feladatok a következő értékek használatával konfigurálja, és kattintson a **alkalmaz**:
 
-    * Válassza a feladat: **Run metódus**
+    * Válassza ki a feladatot: **Futtatási mód**
     * Metódus neve: **LedColor**
     * Feladat neve: **ChangeLedColor**
 
@@ -126,7 +121,7 @@ Ha már nincs szüksége a megoldásgyorsító, törölje azt a kiépített mego
 
 Ha problémákat tapasztal, tekintse meg [az IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy fel velünk a kapcsolatot a következő csatornák használatával:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések

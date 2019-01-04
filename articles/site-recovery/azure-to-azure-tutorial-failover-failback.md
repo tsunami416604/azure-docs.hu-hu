@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 93928d7eb84ce986c8a9322188183e4c3dd76d99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847864"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787848"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele Azure-régiók között
 
@@ -44,9 +44,9 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egyetlen Azure-be
 
 2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
 
-   * **Legújabb** (alapértelmezett): Ez a lehetőség feldolgozza a Site Recovery szolgáltatásban lévő összes adatot, és a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja.
-   * **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gép feladatátvételét a Site Recovery által feldolgozott legutóbbi helyreállítási pontra végzi.
-   * **Egyéni**: Akkor használja ezt a lehetőséget, ha egy adott helyreállítási pontra szeretné végezni a feladatátvételt. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
+   * **Legújabb** (alapértelmezett): Ez a beállítás feldolgozza a Site Recovery szolgáltatásban lévő összes adatot, és a legalacsonyabb helyreállítási időkorlátot (RPO) biztosít.
+   * **Legutóbb feldolgozott**: Ez a beállítás visszaáll a virtuális gépet a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot.
+   * **Egyéni**: Ez a beállítás használatával átadja a feladatokat egy adott helyreállítási pontra. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
 
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget, ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul.
 

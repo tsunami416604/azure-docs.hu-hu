@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273935"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600862"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
-Ez az oldal információt nyújt az Azure SQL Database és a felügyelt példány teljesítménnyel kapcsolatos problémákat észlelt a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis teljesítményének diagnosztikai naplója. A diagnosztikai naplót telemetriát továbbítható legyen [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás fejlesztési és üzemeltetési egyéni riasztási és jelentéskészítési képességeit.
+Ez az oldal információt nyújt az Azure SQL Database és a felügyelt példány teljesítménnyel kapcsolatos problémákat észlelt a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis teljesítményének diagnosztikai naplója. A diagnosztikai naplót telemetriát továbbítható legyen [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás fejlesztési és üzemeltetési egyéni riasztási és jelentéskészítési képességeit.
 
 > [!NOTE]
 > Egy gyors SQL Database teljesítménye – hibaelhárítási útmutató Intelligent Insights használatával, lásd: a [ajánlott a hibaelhárítási folyamat](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábra ebben a dokumentumban.
@@ -332,4 +332,4 @@ Intelligent Insights általában egy órán keresztül, és a teljesítménnyel 
 - Ismerje meg, [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakat.
 - Használja a [Intelligent Insights az Azure SQL Database teljesítményét diagnosztikai napló](sql-database-intelligent-insights-use-diagnostics-log.md).
 - A figyelő [Azure SQL Database az Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Ismerje meg, hogyan [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md).

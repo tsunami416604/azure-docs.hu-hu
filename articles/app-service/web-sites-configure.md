@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazások – az Azure App Service konfigurálása
-description: Webalkalmazás konfigurálása az Azure App Servicesben
+title: – Az Azure App Service-alkalmazások konfigurálása
+description: Az Azure App Service-alkalmazás konfigurálása
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,22 +15,20 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269430"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716463"
 ---
-# <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
+# <a name="configure-apps-in-azure-app-service"></a>Alkalmazások konfigurálása az Azure App Service-ben
 
-Ez a témakör azt ismerteti, hogyan konfigurálhatja a webalkalmazás a [Azure Portal].
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Ez a témakör azt ismerteti, hogyan konfigurálhatja egy webalkalmazás, a mobil háttérrendszer vagy az API-alkalmazás használatával az [Azure Portal].
 
 ## <a name="application-settings"></a>Alkalmazásbeállítások
-1. Az a [Azure Portal], a webalkalmazáshoz tartozó panel megnyitásához.
-3. Válassza az **Alkalmazásbeállítások** elemet.
+1. Az a [Azure Portal], az alkalmazás paneljének megnyitásához.
+2. Válassza az **Alkalmazásbeállítások** elemet.
 
 ![Alkalmazásbeállítások][configure01]
 
@@ -47,14 +45,14 @@ A **Alkalmazásbeállítások** panel alatt különböző kategóriákba vannak 
 Technikai okokból Java engedélyezése az alkalmazás letiltja a .NET, PHP és Python-beállításokat.
 
 <a name="platform"></a>
-**Platform**. Választja ki, hogy a webalkalmazás fut egy 32 bites vagy 64-bit-es környezetben. A 64 bites környezet alapszintű vagy Standard csomag szükséges. Az ingyenes és közös szint mindig 32-bit-es környezetben futnak.
+**Platform**. Kiválasztja az alkalmazás 32 bites vagy 64-bit-es környezetben fut-e. A 64 bites környezet alapszintű vagy Standard csomag szükséges. Az ingyenes és közös szint mindig 32-bit-es környezetben futnak.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Webes szoftvercsatornák**. Állítsa be **ON** a WebSocket protokoll; például, ha a webalkalmazás használ [Az ASP.NET SignalR] vagy [a Socket.IO kódtár](https://socket.io/).
+**Webes szoftvercsatornák**. Állítsa be **ON** a WebSocket protokoll; például, ha az alkalmazás által használt [Az ASP.NET SignalR] vagy [a Socket.IO kódtár](https://socket.io/).
 
 <a name="alwayson"></a>
-**Always On**. Alapértelmezés szerint a webalkalmazások távolítva a memóriából, ha bizonyos ideig inaktív legyenek. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Alap vagy Standard módban engedélyezheti **Always On** , hogy az alkalmazás betöltése a folyamatosan. Ha az alkalmazás fut a folyamatos webjobs-feladatok vagy futtatása webjobs-feladatok által aktivált egy CRON-kifejezés használatával, akkor engedélyezze a **Always On**, vagy a webjobs-feladatok futása nem megbízható.
+**Always On**. Alapértelmezés szerint alkalmazások törlődnek a memóriából, ha bizonyos ideig inaktív azok. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Alap vagy Standard módban engedélyezheti **Always On** , hogy az alkalmazás betöltése a folyamatosan. Ha az alkalmazás fut a folyamatos webjobs-feladatok vagy futtatása webjobs-feladatok által aktivált egy CRON-kifejezés használatával, akkor engedélyezze a **Always On**, vagy a webjobs-feladatok futása nem megbízható.
 
 **Kezelt Folyamatverzió**. Beállítja az IIS [folyamatkezelési mód]. Hagyja meg a set integrált (alapértelmezett), kivéve, ha egy örökölt alkalmazás, amely az IIS egy régebbi verziója szükséges.
 
@@ -65,13 +63,13 @@ Technikai okokból Java engedélyezése az alkalmazás letiltja a .NET, PHP és 
 
 **Az ARR-affinitás**. Az alkalmazás, amely horizontálisan a Virtuálisgép-példányok, az ARR-affinitás cookie-k biztosítása, hogy az ügyfél lesz irányítva a munkamenet élettartamára ugyanezen példányában. Állapot nélküli alkalmazások teljesítményének javítása érdekében ehhez a beállításhoz **ki**.   
 
-**Automatikus felcserélés**. Ha engedélyezi az automatikus felcserélés egy üzembe helyezési ponthoz, az App Service lesz automatikusan felcserélni a webalkalmazás éles környezetben amikor leküld egy frissítést, hogy a tárolóhely. További információkért lásd: [üzembe helyezés előkészítési ponton az Azure App Service web Apps](web-sites-staged-publishing.md).
+**Automatikus felcserélés**. Ha engedélyezi az automatikus felcserélés egy üzembe helyezési ponthoz, az App Service lesz automatikusan felcserélni az alkalmazás éles környezetbe amikor leküld egy frissítést, hogy a tárolóhely. További információkért lásd: [üzembe helyezés előkészítési ponton az Azure App Service-alkalmazások](deploy-staging-slots.md).
 
 ### <a name="debugging"></a>Hibakeresés
-**Távoli hibakeresés**. Lehetővé teszi a távoli hibakeresésről. Ha engedélyezve van, használhatja a távoli hibakeresőt a Visual Studióban közvetlenül kapcsolódni a webalkalmazás. Távoli hibakeresés továbbra is engedélyezett marad 48 órán át. 
+**Távoli hibakeresés**. Lehetővé teszi a távoli hibakeresésről. Ha engedélyezve van, használhatja a távoli hibakeresőt a Visual Studióban közvetlenül kapcsolódni az alkalmazáshoz. Távoli hibakeresés továbbra is engedélyezett marad 48 órán át. 
 
 ### <a name="app-settings"></a>Alkalmazásbeállítások
-Ebben a szakaszban be a webalkalmazás betölti a Start menüben név-érték párokat tartalmaz. 
+Ebben a szakaszban be az alkalmazás betölti a Start menüben név-érték párokat tartalmaz. 
 
 * A .NET-alkalmazások esetén ezek a beállítások elhelyezte a .NET-konfiguráció `AppSettings` futásidőben, felülírva a meglévő beállításokat. 
 * Az App Service Linux vagy a Web App for Containers, ha a beágyazott json struktúra neve például `ApplicationInsights:InstrumentationKey` rendelkeznie kell `ApplicationInsights__InstrumentationKey` kulcs neveként. Ezért figyelje meg, hogy bármely `:` kell helyettesíteni `__` (azaz dupla aláhúzásjelet lehet).
@@ -102,7 +100,7 @@ Kapcsolati karakterláncok feloldható a Key Vault használatával [Key Vault hi
 ### <a name="default-documents"></a>Alapértelmezett dokumentumok
 Az alapértelmezett dokumentum a weblap, amelyen egy webhely gyökérszintű URL-címen jelenik meg.  A lista első egyeztetési fájlt használja. 
 
-Web apps modulokkal, hogy útvonal URL-cím alapján. ahelyett, hogy szolgáltató statikus tartalmat, ebben az esetben nincs ilyen nincs alapértelmezett dokumentum használhatnak.    
+Alkalmazások modult, hogy útvonal URL-cím alapján. ahelyett, hogy szolgáltató statikus tartalmat, ebben az esetben nincs ilyen nincs alapértelmezett dokumentum előfordulhat, hogy használja.    
 
 ### <a name="handler-mappings"></a>Leírók leképezése
 Ez a terület használatával adja hozzá az egyéni szkriptek processzorok az adott kérések kezelésére. 
@@ -117,7 +115,7 @@ Konfigurálja a virtuális alkalmazások és könyvtárak, adja meg minden egyes
 ## <a name="enabling-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 Diagnosztikai naplók engedélyezése:
 
-1. A webalkalmazás panelén kattintson **minden beállítás**.
+1. Az alkalmazás paneljén kattintson **minden beállítás**.
 2. Kattintson a **Diagnosztikai naplók** elemre. 
 
 Diagnosztikai naplók írása egy webalkalmazás, amely támogatja a naplózási beállítások: 
@@ -134,31 +132,31 @@ Diagnosztikai naplók írása egy webalkalmazás, amely támogatja a naplózási
 
 Naplófájljainak megtekintéséhez, létre kell hoznia az FTP-hitelesítő adatokat, a következő:
 
-1. A webalkalmazás panelén kattintson **minden beállítás**.
+1. Az alkalmazás paneljén kattintson **minden beállítás**.
 2. Kattintson a **üzembe helyezési hitelesítő adatok**.
 3. Adjon meg egy felhasználónevet és jelszót.
 4. Kattintson a **Save** (Mentés) gombra.
 
 ![Telepítési hitelesítő adatok beállítása][configure03]
 
-Az FTP-felhasználó teljes neve "app\username" hol *alkalmazás* a webalkalmazás neve. A felhasználónév alatt szerepel a webalkalmazás panelére, **Essentials**.
+Az FTP-felhasználó teljes neve "app\username" hol *alkalmazás* az alkalmazás neve. A felhasználónév alatt szerepel a panelén **Essentials**.
 
 ![FTP telepítési hitelesítő adatok][configure02]
 
 ## <a name="other-configuration-tasks"></a>Egyéb konfigurációs feladatok
 ### <a name="ssl"></a>SSL
-Alap vagy Standard módban feltölthet egy egyéni tartomány SSL-tanúsítványok. További információkért lásd: [HTTPS engedélyezése webes alkalmazásokhoz](app-service-web-tutorial-custom-ssl.md). 
+Alap vagy Standard módban feltölthet egy egyéni tartomány SSL-tanúsítványok. További információkért lásd: [HTTPS engedélyezése az alkalmazás](app-service-web-tutorial-custom-ssl.md). 
 
 A feltöltött tanúsítványok megtekintéséhez kattintson **minden beállítás** > **egyéni tartományok és SSL**.
 
 ### <a name="domain-names"></a>Tartománynevek
-A webalkalmazás egyéni tartományneveket adhat hozzá. További információkért lásd: [webalkalmazásokhoz egyéni tartománynév beállítása az Azure App Service](app-service-web-tutorial-custom-domain.md).
+Az alkalmazás egyéni tartományneveket adhat hozzá. További információkért lásd: [egy alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 A tartománynevek megtekintéséhez kattintson **minden beállítás** > **egyéni tartományok és SSL**.
 
 ### <a name="deployments"></a>Központi telepítés
-* Folyamatos üzembe helyezés beállítása. Lásd: [Git használatával üzembe helyezéséhez az Azure App Service Web Apps](app-service-deploy-local-git.md).
-* Üzembe helyezési pontok. Lásd: [Átmeneti környezetek, az Azure App Service Web Apps üzembe helyezése].
+* Folyamatos üzembe helyezés beállítása. Lásd: [Git használatával az Azure App Service-alkalmazások telepítéséhez](deploy-local-git.md).
+* Üzembe helyezési pontok. Lásd: [átmeneti környezetek, az Azure App Service üzembe helyezése].
 
 Az üzembe helyezési pontok megtekintéséhez kattintson **minden beállítás** > **üzembe helyezési pontok**.
 
@@ -167,29 +165,23 @@ Alap vagy Standard módban tesztelheti a rendelkezésre állási HTTP vagy HTTPS
 
 További információkért lásd: [kézikönyv: Webes végpont állapotának figyelése].
 
-> [!NOTE]
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az App Service kipróbálása] oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
-
 ## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynév konfigurálása az Azure App Service-ben]
 * [HTTPS engedélyezése az Azure App Service-alkalmazás]
-* [Webalkalmazások méretezése az Azure App Service-ben]
-* [Megfigyelési alapismeretek az Azure App Service Web Apps]
+* [Alkalmazások skálázása az Azure App Service-ben]
+* [Megfigyelési alapismeretek az Azure App Service-ben]
 
 <!-- URL List -->
 
 [Az ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
-[Átmeneti környezetek, az Azure App Service Web Apps üzembe helyezése]: ./web-sites-staged-publishing.md
+[Átmeneti környezetek, az Azure App Service üzembe helyezése]: ./deploy-staging-slots.md
 [HTTPS engedélyezése az Azure App Service-alkalmazás]: ./app-service-web-tutorial-custom-ssl.md
 [kézikönyv: Webes végpont állapotának figyelése]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Megfigyelési alapismeretek az Azure App Service Web Apps]: ./web-sites-monitor.md
+[Megfigyelési alapismeretek az Azure App Service-ben]: ./web-sites-monitor.md
 [folyamatkezelési mód]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Webalkalmazások méretezése az Azure App Service-ben]: ./web-sites-scale.md
-[Az App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
+[Alkalmazások skálázása az Azure App Service-ben]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

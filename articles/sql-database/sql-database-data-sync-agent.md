@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 11/12/2018
-ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b5916b781c636752ada6898cfa0c03bc02891501
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685140"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715018"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Az Azure SQL Data Sync adatok szinkronizációs ügynök
 
 A helyszíni SQL Server-adatbázisok telepítésével és a Data Sync-ügynök konfigurálása az Azure SQL Data Sync-adatok szinkronizálása. Az SQL Data Sync szolgáltatással kapcsolatos további információkért lásd: [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisban az SQL Data Sync szolgáltatással](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Az Azure SQL Data Sync does **nem** támogatja az Azure SQL Database felügyelt példánya jelenleg.
 
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -136,7 +139,7 @@ Ezekben az esetekben előfordulhat, hogy a probléma:
 
 ### <a name="agent-start"></a> Ügyfélügynök nem indul el (Hiba 1069)
 
-Tudomására jut, hogy az ügynök nem fut SQL Servert futtató számítógépre. Amikor megpróbálja manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely a következő üzenetet jeleníti meg "1069. hiba: A szolgáltatás nem indult el a bejelentkezési hiba miatt."
+Tudomására jut, hogy az ügynök nem fut SQL Servert futtató számítógépre. Amikor megpróbálja manuálisan elindítani az ügynököt, megjelenik egy párbeszédpanel, amely a következő üzenetet jeleníti meg "1069. hiba: A szolgáltatás nem indult el bejelentkezési hiba miatt."
 
 ![Szinkronizálási hiba 1069 párbeszédpanel](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -318,7 +321,7 @@ Az SQL Data Sync szolgáltatással kapcsolatos további információkért tekint
 
 -   Áttekintés – [szinkronizálja az adatokat több felhőalapú és helyszíni adatbázis között az Azure SQL Data Sync szolgáltatással](sql-database-sync-data.md)
 -   Data Sync beállítása
-    - A portálban – [oktatóanyag: a helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálban – [oktatóanyag: A helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
         -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)

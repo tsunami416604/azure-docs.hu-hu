@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 514e85fc61240834d8db152ece65a4f9cce9023e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b554dc1fa33519d87aa0c9c5ba9130b47cbea142
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250407"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971750"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>A ReportViewer használata Azure-ban üzemeltetett webhelyen
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 A Visual Studio a ReportViewer vezérlő, amely a Microsoft Azure virtuális gépen tárolt jelentés megjeleníti a Microsoft Azure webhelyet hozhat létre. A ReportViewer vezérlő egy webalkalmazást hoz létre az ASP.NET webalkalmazás-sablon használatával.
@@ -42,7 +42,7 @@ Tekintse át a "általános ajánlás és ajánlott eljárások" részt [SQL Ser
 
 > [!NOTE]
 > A ReportViewer vezérlők mellékelt a Visual Studióval, a Standard Edition vagy újabb. Ha a webes fejlesztői Express kiadását használja, telepítenie kell a [MICROSOFT jelentés VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) a ReportViewer futásidejű szolgáltatásai.
-> 
+>
 > A ReportViewer konfigurált helyi feldolgozási üzemmódban nem támogatott Microsoft Azure-ban.
 
 ## <a name="adding-assemblies-to-the-deployment-package"></a>Szerelvények hozzáadása a központi telepítési csomag
@@ -50,8 +50,8 @@ Az ASP.NET alkalmazás helyszíni üzemeltetése, a ReportViewer szerelvényeket
 
 Távoli feldolgozási üzemmódban a ReportViewer vezérlő használja az alábbi szerelvények:
 
-* **Microsoft.ReportViewer.WebForms.dll**: a ReportViewer kódra, amely a ReportViewer használata az oldalon kell tartalmazza. A ReportViewer vezérlőelem egy ASP.NET-lapra dobja el a projekt egy hivatkozást a szerelvény hozzáadódik a projekthez.
-* **Microsoft.ReportViewer.Common.dll**: futási időben a ReportViewer vezérlő által használt osztályok tartalmazza. Automatikusan nincs hozzáadva a projekthez.
+* **Microsoft.ReportViewer.WebForms.dll**: A ReportViewer kódra, amely a ReportViewer használata az oldalon kell tartalmazza. A ReportViewer vezérlőelem egy ASP.NET-lapra dobja el a projekt egy hivatkozást a szerelvény hozzáadódik a projekthez.
+* **Microsoft.ReportViewer.Common.dll**: Futási időben a ReportViewer vezérlő által használt osztályok tartalmazza. Automatikusan nincs hozzáadva a projekthez.
 
 ### <a name="to-add-a-reference-to-microsoftreportviewercommon"></a>Microsoft.ReportViewer.Common hivatkozás hozzáadása
 * Kattintson a jobb gombbal a projekt **hivatkozások** csomópontra, és válassza **hivatkozás hozzáadása**, válassza ki a szerelvény a .NET-lap, és kattintson a **OK**.
@@ -71,21 +71,21 @@ Távoli feldolgozási üzemmódban a ReportViewer vezérlő használja az alább
 
 ### <a name="to-configure-for-localized-reportviewer-control"></a>Honosított ReportViewer vezérlő konfigurálása
 1. Töltse le és telepítse a Microsoft jelentés Viewer 2012 Runtime újraterjeszthető csomagot a fenti megadott utasítások szerint.
-2. Hozzon létre <language> mappát a projekt, és másolja a társított erőforrás szerelvény fájlok van. Erőforrás szerelvény másolandó fájlok: **Microsoft.ReportViewer.Webforms.Resources.dll** és **Microsoft.ReportViewer.Common.Resources.dll**. Válassza ki az erőforrás tevékenységszerelvény-fájlokhoz, és a Tulajdonságok panelen **Copy to Output Directory** a "**mindig Másolás**".
-3. A kulturális környezet & UICulture be a webes projekt. A kulturális környezet és a felhasználói felület kultúrafüggő részletei beállítása az ASP.NET-weblap kapcsolatos további információkért lásd: [hogyan: állítsa be a kulturális környezet és a felhasználói felület kultúrafüggő részletei az ASP.NET-weblap globalizációs](https://go.microsoft.com/fwlink/?LinkId=237461).
+2. Hozzon létre \<nyelvi\> mappát a projekt, és másolja a társított erőforrás szerelvény fájlok van. Erőforrás szerelvény fájlok kell másolni a következők: **Microsoft.ReportViewer.Webforms.Resources.dll** és **Microsoft.ReportViewer.Common.Resources.dll**. Válassza ki az erőforrás tevékenységszerelvény-fájlokhoz, és a Tulajdonságok panelen **Copy to Output Directory** a "**mindig Másolás**".
+3. A kulturális környezet & UICulture be a webes projekt. A kulturális környezet és a felhasználói felület kultúrafüggő részletei beállítása az ASP.NET-weblap kapcsolatos további információkért lásd: [hogyan: Állítsa be a kulturális környezet és a felhasználói felület kultúrafüggő részletei az ASP.NET-weblap globalizációs](https://go.microsoft.com/fwlink/?LinkId=237461).
 
 ## <a name="configuring-authentication-and-authorization"></a>Hitelesítés és -engedélyezés konfigurálása
 A ReportViewer szüksége van a jelentéskészítő kiszolgáló használatának hitelesítéséhez szükséges hitelesítő adatokat használja, és azt szeretné, a jelentések eléréséhez a hitelesítő adatokat kell engedélyezni a jelentéskészítő kiszolgáló által. A hitelesítés további információkért tekintse meg a [Reporting Services jelentésmodell – jelentésmegjelenítő vezérlőelem és a Microsoft Azure-alapú virtuális gép jelentéskiszolgálók](https://msdn.microsoft.com/library/azure/dn753698.aspx).
 
 ## <a name="publish-the-aspnet-web-application-to-azure"></a>Tegye közzé a ASP.NET webalkalmazást az Azure-bA
-Egy ASP.NET-es webalkalmazás az Azure-bA közzétételével kapcsolatos útmutatásért lásd: [hogyan: át, és tegye közzé a webalkalmazás a Visual Studióból az Azure-bA](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) és [Ismerkedés a Web Apps és ASP.NET](../../../app-service/app-service-web-get-started-dotnet.md).
+Egy ASP.NET-es webalkalmazás az Azure-bA közzétételével kapcsolatos útmutatásért lásd: [hogyan: Telepítse át, és a Visual Studióból az Azure webalkalmazás közzététele](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) és [Ismerkedés a Web Apps és ASP.NET](../../../app-service/app-service-web-get-started-dotnet.md).
 
 > [!IMPORTANT]
 > Ha az Azure üzembe helyezési projektben adja hozzá, vagy adja hozzá az Azure Felhőszolgáltatás-projekt parancs nem jelenik meg a helyi menüben a Megoldáskezelőben, szükség lehet módosítani a projekt Cílová architektura .NET-keretrendszer 4.
-> 
+>
 > A két parancs lényegében ugyanazokat a funkciókat biztosítanak. Egy vagy a többi parancs megjelenik a helyi menü telepítette a Microsoft Azure SDK verziójától függően.
-> 
-> 
+>
+>
 
 ## <a name="resources"></a>További források
 [A Microsoft-jelentések](https://go.microsoft.com/fwlink/?LinkId=205399)
@@ -93,4 +93,3 @@ Egy ASP.NET-es webalkalmazás az Azure-bA közzétételével kapcsolatos útmuta
 [Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken](../classic/ps-sql-bi.md)
 
 [Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel](../classic/ps-sql-report.md)
-

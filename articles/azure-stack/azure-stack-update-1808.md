@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098100"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754543"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Ez a cikk ismerteti a 1808 csomag tartalmát. A csomag magában foglalja a fejlesztések, javításokat és ismert problémái az Azure Stack jelen verziójában. Ez a cikk egy hivatkozást is tartalmaz, így a frissítés letölthető. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat és a build (telepítés utáni) problémái vannak felosztva.
 
@@ -43,7 +43,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 - **Minden Azure Stack-környezet már használja az egyezményes világidő (UTC) időzóna formátumot.**  Minden naplóadatokat, és most már a kapcsolódó információk megjelenítéséhez UTC formátumban. Ha egy előző verziójáról, amely nem lett telepítve az UTC frissíti, a környezet frissül (UTC) használata. 
 
 <!-- 2437250  | IS  ASDK --> 
-- **Felügyelt lemezek használata támogatott.** Az Azure Stack virtuális gépek és virtuálisgép-méretezési csoportok most már felügyelt lemez is használható. További információkért lásd: [Azure Stack-Managed Disks: különbségek és szempontok](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
+- **Felügyelt lemezek használata támogatott.** Az Azure Stack virtuális gépek és virtuálisgép-méretezési csoportok most már felügyelt lemez is használható. További információkért lásd: [Azure Stack felügyelt lemezek: Különbségek és szempontok](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
 
 <!-- 2563799  | IS  ASDK --> 
 - **Az Azure Monitor**. Azure Monitor az Azure-ban, mint például az Azure Monitor az Azure Stacken biztosít a legtöbb szolgáltatás alapszinten – infrastruktúra-metrikák és naplók. További információkért lásd: [Azure Monitor az Azure Stacken](/azure/azure-stack/user/azure-stack-metrics-azure-data).
@@ -226,16 +226,16 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
 
    #1 riasztás:
-   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
-   - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
-   - Leírás: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
+   - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+   - SÚLYOSSÁG: Figyelmeztetés
+   - ÖSSZETEVŐ: Vezérlő állapota
+   - LEÍRÁS: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
 
   Riasztási #2:
-   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
-   - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
-   - Leírás: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
+   - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+   - SÚLYOSSÁG: Figyelmeztetés
+   - ÖSSZETEVŐ: Vezérlő állapota
+   - LEÍRÁS: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
 
   Mindkét riasztás biztonságosan figyelmen kívül hagyható, és automatikusan fog bezárása idővel.  
 
@@ -243,16 +243,15 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- 2812138 | IS --> 
 - Láthatja, hogy egy riasztás **tárolási** összetevő, amely tartalmazza a következő adatokat:
 
-   - NAME: Storage szolgáltatás belső kommunikációs hiba  
-   - SÚLYOSSÁG: kritikus  
+   - NÉV: Storage szolgáltatás belső kommunikációs hiba  
+   - SÚLYOSSÁG: Kritikus  
    - ÖSSZETEVŐ: Storage  
-   - Leírás: A Storage szolgáltatás belső kommunikációs hiba történt, amikor kéréseket küld az alábbi csomópontok.  
+   - LEÍRÁS: Storage szolgáltatás belső kommunikációs hiba történt a kérés küldésekor az alábbi csomópontok.  
 
     A riasztás biztonságosan figyelmen kívül hagyható, de a riasztás lezárása manuálisan kell.
 
 <!-- 2368581 - IS. ASDK --> 
 - Az Azure Stack operátorait, ha kevés a szabad memória figyelmeztetést, és a bérlői virtuális gépek sikertelen üzembe helyezés egy **Fabric Virtuálisgép-létrehozási hiba**, lehetséges, hogy az Azure Stack-blokk esik a rendelkezésre álló memória. Használja a [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) legjobban megérteni az elérhető kapacitás a számítási feladatokhoz.
-
 
 ### <a name="compute"></a>Compute
 
@@ -283,17 +282,17 @@ Az Azure Stack-használati API-k készült használati jelentések megfelelő me
    - Ha a kvóta értékének 0-ra frissít, egyenértékű, 2048 GiB alapértelmezett értékét. A probléma megoldásához állítsa a kvótaérték 1.
 
 <!-- 2869209 – IS, ASDK --> 
-- Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha helyi elérési útját a lemezt használ, a parancsmag a következő hibával meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 
+- Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha a lemez a helyi elérési utat használ, a parancsmag futtatása sikertelen, a következő hibával: *Hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 
 
 <!--  2966665 – IS, ASDK --> 
-- A prémium szintű méretre SSD adatlemezek csatolására felügyelt lemez (DS, DSv2, Fs, Fs_V2) virtuális gépek sikertelen lesz, és hiba: *nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: a kért művelet nem hajtható végre, mert a tárfiók típusa " Virtuálisgép-méret esetében nem támogatott a Premium_LRS' "Fs_v2 Standard_DS/Ds_V2 és FS)*
+- SSD csatolása a prémium szintű méretre adatlemezek felügyelt lemez virtuális gépek (DS, DSv2, Fs, Fs_V2) meghiúsul egy hiba miatt:  *Nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: A kért művelet nem hajtható végre, mert a Virtuálisgép-méret nem támogatott a "Premium_LRS" fióktípust "Fs_v2 Standard_DS/Ds_V2 és FS)*
 
    A probléma megkerüléséhez használja *Standard_LRS* adatlemez, hanem *Premium_LRS lemezek*. Felhasználása *Standard_LRS* adatlemezek nem változik, iops-t vagy a számlázási költségeket. 
 
 <!--  2795678 – IS, ASDK --> 
 - Ha a portálon hozhat létre virtuális gépeket (VM) a prémium szintű virtuális gép méretét (DS, Ds_v2, FS, FSv2) használ, a virtuális gép létrejött, a standard szintű storage-fiókban. A standard szintű tárfiók-létrehozás nem befolyásolja, funkcionálisan IOPs, vagy számlázási. 
 
-   Biztonságosan figyelmen kívül hagyhatja a figyelmeztetést, amely szerint: *, olyan méretnél, amely támogatja a prémium szintű lemezek használatát egy standard lemez használatát választotta. Ez ronthatja az operációs rendszer teljesítményét, és nem ajánlott. Fontolja meg inkább a prémium szintű tárolást (SSD) használatát.*
+   Biztonságosan figyelmen kívül hagyhatja a figyelmeztetést, amely szerint: *Úgy döntött, a standard szintű lemezes használatához olyan méretnél, amely támogatja a prémium szintű lemezek használatát. Ez ronthatja az operációs rendszer teljesítményét, és nem ajánlott. Fontolja meg inkább a prémium szintű tárolást (SSD) használatát.*
 
 <!-- 2967447 - IS, ASDK --> 
 - A virtuálisgép-méretezési csoportot (VMSS) hozzon létre felhasználói élményt 7.2 CentOS-alapú üzembe helyezési lehetőséget biztosít. A rendszerképet az Azure Stacken nem érhető el, mert az üzemelő példány egy másik operációs rendszer válasszon vagy adjon meg egy másik CentOS képet az operátor telepítené a marketplace-ről letöltött Azure Resource Manager sablonnal.  
@@ -315,7 +314,7 @@ Az Azure Stack-használati API-k készült használati jelentések megfelelő me
 
    A virtuális gép számára a processzor diagram megkereséséhez nyissa meg a **metrikák** panel és a támogatott Windows VM show Vendég mérőszámok.
 
-
+- Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használjon Virtuálisgép-hozzáférés a Linux-bővítmény kiépítése után SSH-kulcsok megvalósításához, vagy jelszóalapú hitelesítés használatára.
 
 ### <a name="networking"></a>Hálózat  
 
@@ -361,8 +360,10 @@ Az Azure Stack-használati API-k készült használati jelentések megfelelő me
 
 
 ## <a name="download-the-update"></a>A frissítés letöltése
-Letöltheti az Azure Stack 1808 frissítési csomagot [Itt](https://aka.ms/azurestackupdatedownload).
-  
+
+Letöltheti az Azure Stack 1808 frissítési csomagot [Itt](https://aka.ms/azurestackupdatedownload). 
+
+Csak csatlakoztatott forgatókönyvekben Azure Stack üzemelő példányok rendszeres időnként ellenőrzik egy biztonságos végpontot, és automatikusan értesíti, ha egy frissítés érhető el a felhőben. További információkért lásd: [frissítések kezelése az Azure Stack](azure-stack-updates.md).
 
 ## <a name="next-steps"></a>További lépések
 - Az Azure Stack integrált rendszerek, és hogy mit kell tennie, hogy a rendszer egy támogatott állapotban karbantartási házirend áttekintéséhez lásd: [karbantartási szabályzat az Azure Stack](azure-stack-servicing-policy.md).  

@@ -1,20 +1,17 @@
 ---
 title: Figyelés az Azure Database for MariaDB
 description: Ez a cikk ismerteti a monitorozási és riasztási az Azure Database for MariaDB, többek között a Processzor, a storage és a kapcsolat statisztikai mérőszámait.
-services: mariadb
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 3daa4eb07e626e53d9106abf978174f505e785ab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 476e74a4d167fb3e9158f07cc5c073f129a74daa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516217"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545892"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés az Azure Database for MariaDB
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MariaDB különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.

@@ -9,15 +9,18 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283292"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634320"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation forgatókönyv- és katalógusok
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, számos forgatókönyv esetében, amely már a Microsoft és a Közösség által készített érheti el.  Ezekben a forgatókönyvekben, módosítás nélkül használhatja, vagy kiindulási pontként használhatja őket, és az adott igények szerint szerkesztheti őket.
+
+> [!NOTE]
+> Az új [Az Azure PowerShell modul](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0) nem támogatottak az Azure Automationben. Ezek a parancsmagok a PowerShell-galériából letöltött parancsprogramokat nem fog működni az Azure Automationben.
 
 Megjelenik a runbookot a [forgatókönyv-katalógusában](#runbooks-in-runbook-gallery) és a modulok a [PowerShell-galériából](#modules-in-powerShell-gallery).  Is hozzájárulhat a Közösség által megosztási forgatókönyveket, amelyek fejleszt, lásd: [runbook felvétele a katalógusban](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 

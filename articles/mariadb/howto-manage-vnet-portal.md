@@ -3,17 +3,15 @@ title: Hozzon létre és kezelhető az Azure Database for MariaDB virtuális há
 description: Hozzon létre és kezelhető az Azure Database for MariaDB virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure portal használatával
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 078c4253f990e3ad2759afb9f5b55832c78d9e73
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 77602898df7d783367ffd78328082c3edcaac83e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334091"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542339"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MariaDB virtuális hálózati Szolgáltatásvégpontok és a VNet-szabályok az Azure portal használatával
 
@@ -27,7 +25,7 @@ Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy vir
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints"></a>Hozzon létre egy virtuális hálózati szabályt, és engedélyezze a szolgáltatásvégpontokat
 
-1. A MariaDB kiszolgálót a beállítások lapon kattintson a fejléc **kapcsolatbiztonság** nyissa meg a kapcsolat biztonsági ablaktáblát az Azure Database for MariaDB. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**. Ha nem rendelkezik egy meglévő Vnetet **+ új virtuális hálózat létrehozása** hozhat létre egyet. Lásd: [a rövid útmutató: hozzon létre egy virtuális hálózatot az Azure portal használatával](../virtual-network/quick-create-portal.md)
+1. A MariaDB kiszolgálót a beállítások lapon kattintson a fejléc **kapcsolatbiztonság** nyissa meg a kapcsolat biztonsági ablaktáblát az Azure Database for MariaDB. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**. Ha nem rendelkezik egy meglévő Vnetet **+ új virtuális hálózat létrehozása** hozhat létre egyet. Lásd: [a rövid útmutató: Hozzon létre egy virtuális hálózatot az Azure portal használatával](../virtual-network/quick-create-portal.md)
 
    ![Az Azure portal – kapcsolatbiztonság kattintson](./media/howto-manage-vnet-portal/1-connection-security.png)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c226eb19dbd2049c486acfb1ffb9423fdb1dad43
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cad368cb968b94d1327cc99ed4dfa6df0aedd2cd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410261"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555098"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>A Jelszókivonat-szinkronizálás az Azure ad összevonási áttelepítésére
 A következő dokumentum útmutatást nyújt a Jelszókivonat-szinkronizálás az AD FS áthelyezését.
@@ -336,7 +336,7 @@ Ez a folyamat részeként a rendszer közvetlen egyszeri bejelentkezés engedél
    > [!IMPORTANT]
    > Nem lesz kell módosítás ahhoz, ahogyan a felhasználók ezen a ponton jelentkeznek be.  
    
-   7. Az Azure AD portálra ellenőrizze, hogy összevonási továbbra is engedélyezhető, és most zökkenőmentes egyszeri bejelentkezés engedélyezve van.
+   7. Az Azure AD portálon ellenőrizze, hogy összevonási továbbra is engedélyezhető mostantól közvetlen egyszeri bejelentkezés engedélyezve van.
    ![Kép: 42](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image16.png)
 
 #### <a name="convert-domains-from-federated-to-managed"></a>Felügyelt összevont tartományokban konvertálása

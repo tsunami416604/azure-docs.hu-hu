@@ -14,37 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2018
+ms.date: 12/22/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 042be0b818ba448d64aa5e8631926420f00f4b5e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 367a9b2bd7b4a32d69974639a13f67340ea56518
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679664"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745006"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
 
-A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Feltételes hozzáférési szabályzatot adja meg a válasz ("Ehhez") való indítására, a házirend ("Amikor ez megtörténik") az az oka. 
+A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Feltételes hozzáférési szabályzatot adja meg a válasz ("Ehhez") való indítására, a házirend ("Amikor ez megtörténik") az az oka.
 
 ![Vezérlés](./media/controls/10.png)
 
-
-A feltételes hozzáférés, a környezetben 
+A feltételes hozzáférés, a környezetben
 
 - "**Ebben az esetben**" nevezzük **feltételek**
 
 - "**Majd ehhez**" nevezzük **hozzáférés-vezérlés**
 
-
 Egy feltétel utasítást a vezérlők együttes használata a feltételes hozzáférési szabályzatot jelöli.
 
 ![Vezérlés](./media/controls/61.png)
 
-Egyes vezérlőelemek követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a felhasználó korlátozás teheti a bejelentkezést követően. 
+Egyes vezérlőelemek követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a felhasználó korlátozás teheti a bejelentkezést követően.
 
-Vezérlők két típusa van: 
+Vezérlők két típusa van:
 
 - **Engedélyezési vezérlők** - kapu hozzáférés
 
@@ -56,24 +54,20 @@ Ez a témakör ismerteti a különféle vezérlők az Azure AD feltételes hozz�
 
 Az engedély teljesen letiltja a hozzáférést, vagy a kívánt vezérlők kiválasztásával további követelmények a hozzáférést. Több vezérlő esetén is van szüksége:
 
-- Az összes kiválasztott teljesítendő vezérlők (*és*) 
+- Az összes kiválasztott teljesítendő vezérlők (*és*)
 - Az egyik kijelölt vezérlő teljesítendő (*vagy*)
 
 ![Vezérlés](./media/controls/17.png)
 
-
-
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Ez a vezérlő segítségével a többtényezős hitelesítést a megadott felhő-alkalmazás elérésére. Ez a vezérlő támogatja a következő multi-factor Authentication szolgáltatók: 
+Ez a vezérlő segítségével a többtényezős hitelesítést a megadott felhő-alkalmazás elérésére. Ez a vezérlő támogatja a következő multi-factor Authentication szolgáltatók:
 
-- Azure Multi-Factor Authentication 
+- Azure Multi-Factor Authentication
 
 - Egy a helyszíni többtényezős hitelesítési szolgáltató az Active Directory összevonási szolgáltatások (AD FS) együtt.
- 
+
 Multi-factor authentication szolgáltatás használatával segít az erőforrások védelme az elsődleges hitelesítő adatokat egy érvényes felhasználó hozzáférést szerzett előfordulhat, hogy jogosulatlan felhasználók ne férhessenek hozzá.
-
-
 
 ### <a name="compliant-device"></a>Megfelelő eszköz
 
@@ -87,25 +81,18 @@ Az Azure AD-eszköztől az eszközalapú feltételes hozzáférési szabályzato
 
 További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](require-managed-devices.md).
 
-
-
-
-
 ### <a name="approved-client-app"></a>Jóváhagyott ügyfélalkalmazás
 
 Mivel az alkalmazottak mobileszközök mind a személyes és munkahelyi feladatokhoz, érdemes elért eszközök még abban az esetben, ha azok által nem kezelt, vállalati adatok védelme érdekében lehetősége.
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) független a mobileszköz-kezelési (MDM) megoldásoktól a vállalati adatok védelme érdekében.
 
-
 A jóváhagyott ügyfélalkalmazások is egy ügyfélalkalmazás, amely megpróbálja elérni a felhőalapú alkalmazások támogatásához szükséges [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást. Más néven van egy feltételes hozzáférési szabályzat megköveteli a jóváhagyott ügyfélalkalmazások [alapján az alkalmazásalapú feltételes hozzáférési szabályzat](app-based-conditional-access.md). Támogatott a jóváhagyott ügyfélalkalmazások listájának megtekintéséhez lásd: [jóváhagyott alkalmazás megkövetelése ügyfél](technical-reference.md#approved-client-app-requirement).
-
 
 ### <a name="terms-of-use"></a>Használati feltételek
 
-Ön megkövetelheti, hogy a felhasználó a bérlőben, hogy engedélyt adjanak az a használati feltételeket, mielőtt erőforrásokhoz való hozzáférést megkapják. Rendszergazdaként konfigurálhatja, és a PDF-dokumentumok feltöltésével testre szabhatja a használati feltételeket. Ha egy felhasználó hányadik hetére esik a hozzáférés egy alkalmazás hatókörének csak kapnak Ha született a használati feltételeket. 
+Ön megkövetelheti, hogy a felhasználó a bérlőben, hogy engedélyt adjanak az a használati feltételeket, mielőtt erőforrásokhoz való hozzáférést megkapják. Rendszergazdaként konfigurálhatja, és a PDF-dokumentumok feltöltésével testre szabhatja a használati feltételeket. Ha egy felhasználó hányadik hetére esik a hozzáférés egy alkalmazás hatókörének csak kapnak Ha született a használati feltételeket.
 
-
-### <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió) 
+### <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
 Feltételes hozzáférés, hogy a felhasználók átirányítása egy kompatibilis szolgáltatás megfelelnek a további Azure Active Directory-en kívül is létrehozhat egyéni vezérlők. Ez lehetővé teszi, hogy az egyes külső többtényezős hitelesítés és hitelesítési szolgáltatók kényszerítésére feltételes hozzáférési szabályokat vagy hozhat létre saját egyéni szolgáltatás. Ez a vezérlő eleget kell tenniük a felhasználók a külső szolgáltatást a rendszer átirányítja, hajtja végre a szükséges hitelesítés vagy érvényesítési tevékenységek és vissza az Azure Active Directory átirányítja. Ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó továbbra is a feltételes hozzáférési folyamat. 
 
@@ -121,6 +108,7 @@ Jelenleg az olyan kompatibilis szolgáltatást nyújtó szolgáltatók a követk
 - [Entrust-Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [A ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
+- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Symantec virtuális IP-cím](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
@@ -138,9 +126,7 @@ Egyéni vezérlő létrehozásának lehetősége van a **kezelés** szakaszában
 
 Kattintson a **új egyéni vezérlő**, a JSON-adatok a vezérlőelem egy szövegmező megnyílik egy panel.  
 
-
 ![Vezérlés](./media/controls/81.png)
-
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 
@@ -156,9 +142,6 @@ Egyéni vezérlő törlése, akkor előbb ellenőrizze, hogy azt nem használja 
 
 Egyéni vezérlő szerkesztése, törlése az aktuális vezérlőelem, és hozzon létre egy új vezérlőt a frissített adatokat.
 
-
-
-
 ## <a name="session-controls"></a>Munkamenet-vezérlők
 
 A munkamenet-vezérlők a funkciók korlátozását teszik lehetővé a felhőalkalmazásokban. A munkamenet-vezérlők felhőalkalmazások tartat be, és az alkalmazáshoz a munkamenet-információk az Azure AD által biztosított további információk alapján.
@@ -171,15 +154,12 @@ Ez a vezérlő segítségével az eszköz információkat adnak át a kiválaszt
 
 További tudnivalókért lásd:
 
-- [Korlátozott hozzáférés a SharePoint online-nal engedélyezése](https://aka.ms/spolimitedaccessdocs) 
+- [Korlátozott hozzáférés a SharePoint online-nal engedélyezése](https://aka.ms/spolimitedaccessdocs)
 
 - [Az Exchange Online korlátozott hozzáférés engedélyezése](https://aka.ms/owalimitedaccess)
-
-
-
 
 ## <a name="next-steps"></a>További lépések
 
 - Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
 
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md). 
+- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md).

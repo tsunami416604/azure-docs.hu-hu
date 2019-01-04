@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4502f7232d2bcfaf4a32a384d24556cd668dc50b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285122"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720305"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
 Ha egy [riasztás jön létre az Azure-ban](alerts-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
@@ -73,13 +73,13 @@ Ebben a példában hasznos, ha a webhook küld az alábbihoz hasonlóra szeretn�
 ```
 Mivel minden változóját egy egyéni webhook kell például a "#searchinterval" JSON ház belül megadott, a létrejövő webhook is megkapják ház mint belül változó adatok "00: 05:00".
 
-Keresési eredmények belefoglalása az egyéni adattartalom, ellenőrizze, hogy **IncudeSearchResults** a json-adattartalom legfelső szintű tulajdonság be van állítva. 
+Keresési eredmények belefoglalása az egyéni adattartalom, ellenőrizze, hogy **IncludeSearchResults** a json-adattartalom legfelső szintű tulajdonság be van állítva. 
 
 ## <a name="sample-payloads"></a>Minta is észleltünk adattartalmakat.
 Ez a szakasz bemutatja a webhook hasznosadat-minta a riasztások, beleértve a szabványos terhelés esetén, és ha az egyéni.
 
 > [!NOTE]
-> Előző verziókkal való kompatibilitás biztosítása érdekében standard webhook hasznos adatai az Azure Log Analytics használatával értesítések megegyezik [Log Analytics-riasztás felügyeleti](alerts-metric.md). De riasztások használatával [Application Insights](../../application-insights/app-insights-analytics.md), a standard szintű webhook hasznos adatai műveletcsoport sémán alapul.
+> Előző verziókkal való kompatibilitás biztosítása érdekében standard webhook hasznos adatai az Azure Log Analytics használatával értesítések megegyezik [Log Analytics-riasztás felügyeleti](alerts-metric.md). De riasztások használatával [Application Insights](../../azure-monitor/app/analytics.md), a standard szintű webhook hasznos adatai műveletcsoport sémán alapul.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standard szintű, Naplóriasztásokra vonatkozó Webhook 
 A helyőrző adattartalom csak két oszlop, és két sor mindkét példa jeleztük.
@@ -200,5 +200,5 @@ Következő egy hasznosadat-minta bármely riasztás egyéni webhook művelet.
 - Ismerje meg [Naplóriasztások az Azure-riasztások ](alerts-unified-log.md)
 - Megismerheti [managaing naplóriasztások az Azure-ban](alerts-log.md)
 - Létrehozásához és kezeléséhez [Műveletcsoportok az Azure-ban](action-groups.md)
-- Tudjon meg többet [Application Insights](../../application-insights/app-insights-analytics.md)
+- Tudjon meg többet [Application Insights](../../azure-monitor/app/analytics.md)
 - Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 

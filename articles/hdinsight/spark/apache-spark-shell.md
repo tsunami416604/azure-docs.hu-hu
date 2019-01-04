@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: f8c296fddaafb8364cc5e0f07b54d850606322d9
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 3da6260faa87aecb7eb13f16386006e0c856d46b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581425"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653849"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Futtassa az Apache Spark a Spark-Shell
 
-Egy interaktív [Apache Spark](https://spark.apache.org/) rendszerhéj egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg (olvasási végrehajtása print-loop) REPL környezetet biztosít. Ez a folyamat hasznos fejlesztés és hibakeresés. A Spark egy parancshéj biztosít minden, a támogatott nyelvek: Scala, Python és az r segítségével
+Egy interaktív [Apache Spark](https://spark.apache.org/) rendszerhéj egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg (olvasási végrehajtása print-loop) REPL környezetet biztosít. Ez a folyamat hasznos fejlesztés és hibakeresés. Spark egy parancshéj biztosít minden, a támogatott nyelvek: Scala, Python és az r segítségével
 
 ## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Az Apache Spark-Shell az ssh-val való beolvasása
 
@@ -63,7 +63,7 @@ A Spark-Shell-parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos parancss
 | Kapcsoló | leírás | Példa |
 | --- | --- | --- |
 | --MASTER_URL fő | Meghatározza a fő URL-CÍMÉT. A HDInsight, az értéke mindig `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Helyi JAR-fájlok kivételével az illesztőprogram és feladat-végrehajtó osztályútvonalakkal elhelyezni a vesszővel tagolt listája. A HDInsight a lista elérési útját az Azure Storage vagy a Data Lake Store az alapértelmezett fájlrendszer tevődik össze. | `--jars /path/to/examples.jar` |
+| --jars JAR_LIST | Helyi JAR-fájlok kivételével az illesztőprogram és feladat-végrehajtó osztályútvonalakkal elhelyezni a vesszővel tagolt listája. A HDInsight a lista elérési útját az alapértelmezett fájlrendszer az Azure Storage vagy a Data Lake Storage tevődik össze. | `--jars /path/to/examples.jar` |
 | --MAVEN_COORDS csomagok | Az illesztőprogram és feladat-végrehajtó osztályútvonalakkal elhelyezni a JAR-fájlok kivételével a maven-koordináták vesszővel tagolt listája. A helyi maven-tárházban, akkor a maven központi, keres, akkor minden további távoli tárházak megadott `--repositories`. A formátum a koordináták *groupId*:*artifactId*:*verzió*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --py-fájlok listája | Pythonhoz készült csak .zip, .egg vagy .py fájlok számára, hogy a PYTHONPATH vesszővel elválasztott listáját. | `--pyfiles "samples.py"` |
 
@@ -72,4 +72,3 @@ A Spark-Shell-parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos parancss
 - Lásd: [Apache Spark on Azure HDInsight Spark bemutatása](apache-spark-overview.md) áttekintését.
 - Lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md) -alapú Spark-fürtök és a sparksql-hez.
 - Lásd: [Mi az Apache Spark strukturált Stream?](apache-spark-streaming-overview.md) alkalmazások írását, amelyek a Spark streamelési adatok dolgozhatók.
-

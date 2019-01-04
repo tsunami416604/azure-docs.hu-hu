@@ -1,29 +1,29 @@
 ---
-title: Hogyan kérdezhet le adatokat az Azure Cosmos DB MongoDB API-hoz
-description: Ismerje meg lehet lekérdezést végezni az Azure Cosmos DB MongoDB API-hoz.
+title: Az Azure Cosmos DB API adatok lekérdezése a mongodb-hez
+description: Ismerje meg, hogyan kérdezhet le adatokat az Azure Cosmos DB API a mongodb-hez.
 services: cosmos-db
-author: SnehaGunda
-ms.author: sngun
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/29/2018
-ms.openlocfilehash: bcfbb0115274c8b0d330426a454530dcd7c170ab
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/26/2018
+ms.openlocfilehash: b2bfc48fa0ba8aab0bbdf19e1b127155633e2271
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724657"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793206"
 ---
-# <a name="tutorial-query-data-using-azure-cosmos-db-for-mongodb-api"></a>Oktatóanyag: Kérdezhet le adatokat az Azure Cosmos DB MongoDB API-hoz
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lekérdezése a mongodb-hez készült Azure Cosmos DB API használatával
 
-Az Azure Cosmos DB-hez készült [MongoDB API](mongodb-introduction.md) támogatja a [MongoDB-héjlekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+A [Azure Cosmos DB MongoDB API-](mongodb-introduction.md) támogatja [MongoDB lekérdezések](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * QQuerying, a MongoDB shell használatával Cosmos-adatbázisban tárolt adatok
+> * A MongoDB shell használatával Cosmos-adatbázisban tárolt adatok lekérdezése
 
 Az első lépésekhez segítséget nyújtanak a jelen dokumentum példái és az alábbi videó, amely az [Azure Cosmos DB MongoDB-felületről történő lekérdezését](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ismerteti.
 
@@ -303,7 +303,7 @@ Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gy
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtudhatta, hogyan lehet lekérdezni a Cosmos DB natív támogatást használatával a MongoDB API-hoz
+> * Megtudhatta, hogyan lehet lekérdezni a Cosmos DB API használatával a mongodb-hez
 
 Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 

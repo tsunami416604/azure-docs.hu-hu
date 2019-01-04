@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: 05c089c0e92672b3602bd9c7bfb3263c56db76ef
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633299"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728040"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
@@ -40,14 +40,14 @@ Ez a témakör ismerteti [fogalmak](#concepts) és [látható szűrők definíci
 
 ### <a name="dynamic-manifests"></a>A dinamikus jegyzékek
 
-Media Services által **dinamikus jegyzékfájlok** alapú az előre meghatározott [szűrők](#filters). Miután meghatározott szűrők, a az ügyfelek használhatja őket egy adott megjelenítés a klipek alárendelt a videó továbbításához. A streamelési URL-CÍMBEN szereplő azokat megadni szűrő(k) alapján. Szűrők lehetett alkalmazni az adaptív sávszélességű streamelési protokollok: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming. 
+Media Services által **dinamikus jegyzékfájlok** alapú az előre meghatározott [szűrők](#filters). Miután meghatározott szűrők, a az ügyfelek használhatja őket egy adott megjelenítés a klipek alárendelt a videó továbbításához. A streamelési URL-CÍMBEN szereplő azokat megadni szűrő(k) alapján. Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming. 
 
 Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
 
 |Protokoll|Példa|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=myAccountFilter)`|
-|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=myAccountFilter)`|
+|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -129,7 +129,7 @@ Ezzel a tulajdonsággal rendelkező **eszköz szűrők**. Nem javasoljuk, hogy a
 |**startTimestamp**|VoD- vagy élő streamet vonatkozik. Az érték egy abszolút kezdőpontja az adatfolyam jelöli. Az érték beolvasása kerekítve a legközelebbi tovább Képcsoporttal Start.<br/><br/>Használat **startTimestamp** és **endTimestamp** szűkítheti a listát (manifest). Ha például startTimestamp = 40000000 és endTimestamp = 100000000 létrehoz egy listát, amely tartalmazza az adathordozó StartTimestamp és EndTimestamp között. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.|
 |**időskálára**|VoD- vagy élő streamet vonatkozik. A időskálára időbélyegei által használt és a fent megadott időtartam. Az alapértelmezett időskálán 10000000. Egy alternatív időskálán is használható. Alapértelmezés szerint száma 10 000 000 HNS (száz nanoszekundumos).|
 
-### <a name="tracks"></a>Nyomon követi
+### <a name="tracks"></a>nyomon követi
 
 Azt adja meg, szűrő nyomon követése Tulajdonságfeltételek (FilterTrackPropertyConditions) listáját, amelyen a nyomon követi a Stream (élő vagy igény szerinti Videószolgáltatás) kell szerepelnie, dinamikusan létrehozott jegyzékfájl. A szűrők használatával egy logikai kombinált **és** és **vagy** műveletet.
 
@@ -206,7 +206,7 @@ A dinamikus Manifest eszközprofilok hozhat létre például mobil-, HD/SD, stb-
 
 ![Megjelenítés szűrési példát][renditions2]
 
-A következő példában egy kódoló egy mezzanine eszköz kódolandó hét ISO MP4-fájlnak videó beállításkészletben (a 180p a 1080p) lett megadva. A kódolt objektumhoz dinamikusan csomagolható be a következő adatfolyam-továbbítási protokollok: HLS, MPEG DASH és Smooth.  A diagram tetején jelenik meg a HLS-jegyzékfájl a szűrők az eszköz (tartalmaz minden hét beállításkészletben).  A bal alsó "ott" nevű szűrőt alkalmaztak, amelyhez a HLS-jegyzékfájl jelenik meg. A "ott" szűrő meghatározza, hogy távolítsa el az összes bitsebességre való átkódolása alább 1 MB/s, amely eredményezett az alsó két minőségi szint alatt levágja, a válaszban. Az alul a jobb oldalon a HLS-jegyzékfájlt, amelyhez "mobileszköz" nevű szűrőt alkalmaztak jelenik meg. A "mobileszköz" szűrő Megadja, hogy távolítsa el a beállításkészletben, ahol a megoldás nem haladja meg a két eredményezett 720p 1080p beállításkészletben levágja, folyamatban van.
+A következő példában egy kódoló egy mezzanine eszköz kódolandó hét ISO MP4-fájlnak videó beállításkészletben (a 180p a 1080p) lett megadva. A kódolt objektumhoz dinamikusan csomagolható be a következő adatfolyam-továbbítási protokollok bármelyikét: HLS, MPEG DASH és Smooth.  A diagram tetején jelenik meg a HLS-jegyzékfájl a szűrők az eszköz (tartalmaz minden hét beállításkészletben).  A bal alsó "ott" nevű szűrőt alkalmaztak, amelyhez a HLS-jegyzékfájl jelenik meg. A "ott" szűrő meghatározza, hogy távolítsa el az összes bitsebességre való átkódolása alább 1 MB/s, amely eredményezett az alsó két minőségi szint alatt levágja, a válaszban. Az alul a jobb oldalon a HLS-jegyzékfájlt, amelyhez "mobileszköz" nevű szűrőt alkalmaztak jelenik meg. A "mobileszköz" szűrő Megadja, hogy távolítsa el a beállításkészletben, ahol a megoldás nem haladja meg a két eredményezett 720p 1080p beállításkészletben levágja, folyamatban van.
 
 ![Megjelenítés szűrése][renditions1]
 
@@ -216,7 +216,7 @@ Az eszközök lehetnek több hang nyelvet, például az angol, spanyol, francia,
 ![Nyelvi nyomon követi a szűréshez][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Egy eszköz levágási kezdete
-A legtöbb élő események streamelése operátorok néhány tesztet, a tényleges esemény előtt futtassa. Például ezek lehetnek a lappal hasonlóan ez az esemény kezdete előtt: "A Program rövid ideig fog kezdődik". Ha a program az archiválás, a tesztelés és állóképek adatokat is archivált és benne a bemutatót. Azonban ezt az információt nem kell feltüntetni az ügyfelek számára. A dinamikus jegyzékfájl létrehozásához egy kezdési idejének szűrője, és a nemkívánatos adatok eltávolítása a jegyzékfájlban.
+A legtöbb élő események streamelése operátorok néhány tesztet, a tényleges esemény előtt futtassa. Ezek lehetnek például egy befutó hasonlóan ez az esemény kezdete előtt: "Program megkezdődik rövid ideig". Ha a program az archiválás, a tesztelés és állóképek adatokat is archivált és benne a bemutatót. Azonban ezt az információt nem kell feltüntetni az ügyfelek számára. A dinamikus jegyzékfájl létrehozásához egy kezdési idejének szűrője, és a nemkívánatos adatok eltávolítása a jegyzékfájlban.
 
 ![Tisztítás kezdő][trim_filter]
 

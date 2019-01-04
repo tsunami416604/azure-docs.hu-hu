@@ -3,17 +3,15 @@ title: Azure Database for MariaDB korlátozásai
 description: Ez a cikk ismerteti a korlátozások az Azure Database for MariaDB, például kapcsolat és a tárolási motort lehetőségek számát.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4fb774341b19034d3905341a99be2114a0d1e18b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835709"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970287"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai.
@@ -36,7 +34,7 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Memóriára optimalizált| 16| 5000|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
-> 1040 (08004). hiba: Túl sok kapcsolat
+> 1040 (08004). HIBA: Túl sok kapcsolat
 
 ## <a name="storage-engine-support"></a>Storage engine-támogatás
 
@@ -46,14 +44,14 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 
 ### <a name="unsupported"></a>Nem támogatott
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/l)
+- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ARCHÍVUM](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Jogosultság-támogatás
 
 ### <a name="unsupported"></a>Nem támogatott
-- Adatbázis-szerepkör: számos kiszolgálói paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy amelyet tagadni kell a Célrendszerben ACID tulajdonságait. Emiatt a szolgáltatás integritás és SLA-t, a termék szintjén fenntartására, ezt a szolgáltatást nem biztosít az adatbázis-szerepkör. Az alapértelmezett felhasználói fiók, amely jön létre egy új adatbázis-példány létrehozásakor, lehetővé teszi, hogy a felhasználó hajtani a legtöbb DDL és DML utasítást, a felügyelt adatbázis példányában.
-- FELÜGYELŐI jogosultságok: hasonlóképpen [FELÜGYELŐI jogosultságok](https://mariadb.com/kb/en/library/grant/#global-privileges) is korlátozva.
+- Adatbázis-szerepkör: Számos kiszolgálói paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy amelyet tagadni kell a Célrendszerben ACID tulajdonságait. Emiatt a szolgáltatás integritás és SLA-t, a termék szintjén fenntartására, ezt a szolgáltatást nem biztosít az adatbázis-szerepkör. Az alapértelmezett felhasználói fiók, amely jön létre egy új adatbázis-példány létrehozásakor, lehetővé teszi, hogy a felhasználó hajtani a legtöbb DDL és DML utasítást, a felügyelt adatbázis példányában.
+- FELÜGYELŐI jogosultság: Hasonlóképpen [FELÜGYELŐI jogosultságok](https://mariadb.com/kb/en/library/grant/#global-privileges) is korlátozva.
 
 ## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
 

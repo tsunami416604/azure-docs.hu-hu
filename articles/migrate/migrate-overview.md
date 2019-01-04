@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250581"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969131"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -37,8 +37,9 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 -  Azure Migrate-projektet csak az alábbi földrajzi területeken hozhat létre. Azonban ez nem korlátozza az értékelések más létrehozásának lehetősége cél Azure-helyen.
     **Régiócsoport** | **Tárolási hely**
     --- | ---
-    Több egység állapotok | USA nyugati középső RÉGIÓJA és USA keleti RÉGIÓJA
     Azure Government | USA-beli államigazgatás – Virginia
+    Európa | Észak-Európában és Nyugat-Európa
+    Több egység állapotok | USA keleti RÉGIÓJA és USA nyugati középső RÉGIÓJA
 
     A migrálási projekthez tartozó földrajzi a helyszíni környezetből felderített metaadatok tárolására szolgál. Metaadatok alapján a migrálási projekt megadott földrajzi régiók egyikében tárolódik. Ha függőségmegjelenítést használ, hozzon létre egy új Log Analytics-munkaterületet, a munkaterület létrehozását a projekt ugyanabban a régióban.
 - A függőségek képi megjelenítésének funkcióival nem érhető el az Azure Government szolgáltatásban.

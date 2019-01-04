@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497538"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584394"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
 
@@ -22,9 +22,9 @@ Ebben a cikkben megismerheti, hogyan kezelheti a Machine Learning Services megl�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Machine Learning-szolgáltatások HDInsight-fürt**: útmutatásért lásd: [Ismerkedés a Machine Learning szolgáltatások a HDInsight](r-server-get-started.md).
+* **Egy Machine Learning-szolgáltatások HDInsight-fürt**: Útmutatásért lásd: [Ismerkedés a Machine Learning szolgáltatások a HDInsight](r-server-get-started.md).
 
-* **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információkért lásd: [az SSH használata a HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **A Secure Shell (SSH) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtasson parancsokat szolgál. További információkért lásd: [az SSH használata a HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Több párhuzamos felhasználó engedélyezése
@@ -54,7 +54,7 @@ A fürt határcsomópontjához az RStudio fut, mert több lépésből áll itt:
 
 Kövesse az utasításokat, [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md) az élcsomópont eléréséhez. A Machine Learning-szolgáltatások HDInsight-fürt az élcsomópont címe a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
-### <a name="step-2-add-more-linux-users-in-edge-node"></a>2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
 
 Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsokat:
 
@@ -80,7 +80,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Távoli csatlakozás a Microsoft Machine Learning-szolgáltatások
 
-Állíthat be hozzáférési a HDInsight Spark számítási környezetet a Machine Learning-ügyfél egy távoli példányát futtató asztali számítógépeken. Ehhez meg kell adnia a beállításokat (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript) Ha az rxspark számítási környezetet az asztalon: például:
+Állíthat be hozzáférési a HDInsight Spark számítási környezetet a Machine Learning-ügyfél egy távoli példányát futtató asztali számítógépeken. Ehhez meg kell adnia a beállításokat (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript) Ha az rxspark számítási környezetet az asztalon: Példa:
 
     myNameNode <- "default"
     myPort <- 0
@@ -299,10 +299,8 @@ Ha szeretne további R-csomagok telepítése az élcsomópontra, `install.packag
 
 A fürt munkavégző csomópontjaira R csomagokat telepítenie, Szkriptműveletet kell használnia. A szkriptműveletek olyan Bash-szkriptek, amelyekkel konfigurációs módosítások végezhetők a HDInsight-fürtön, vagy további szoftverek, például további R-csomagok telepíthetők. 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A további R csomagok szkriptműveletekkel végzett telepítése csak a fürt létrehozása után használható. Használja ezt az eljárást a fürt létrehozásakor, ahogy a parancsfájl támaszkodik a Machine Learning-szolgáltatások teljesen konfigurált.
->
->
 
 1. Kövesse a lépéseket [fürtök testreszabása Szkriptműveletek használatával](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -312,11 +310,11 @@ A fürt munkavégző csomópontjaira R csomagokat telepítenie, Szkriptművelete
 
    * A **neve**, adja meg a parancsfájlművelet nevét.
 
-    * A **Bash parancsfájl URI azonosítója**, adja meg `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Ez az a szkript, amely további R csomagokat telepít a munkavégző csomópont
+    * A **Bash parancsfájl URI azonosítója**, adja meg `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Ez az a szkript, amely további R csomagokat telepít a munkavégző csomópont
 
    * Jelölje be a jelölőnégyzetet, csak a **feldolgozó**.
 
-   * **Paraméterek**: A telepíteni kívánt R csomagok. Például: `bitops stringr arules`
+   * **Paraméterek**: Az R-csomagok telepíthetők. Például: `bitops stringr arules`
 
    * A jelölőnégyzet bejelölésével **parancsfájlműveletet**.  
 

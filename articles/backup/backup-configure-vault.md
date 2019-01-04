@@ -4,17 +4,16 @@ description: A Microsoft Azure Backup ügynök használatával Windows-fájlok �
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: Backup-tárolóba; Windows-kiszolgáló biztonsági mentése biztonsági mentési Időablakok;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874005"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788395"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Windows-kiszolgálóról vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával
 Ez a cikk azt ismerteti, hogyan készíthet biztonsági másolatot a Windows Server (vagy a Windows-ügyfél) fájljairól és mappáiról az Azure az Azure Backuppal a Resource Manager üzemi modell használatával.
@@ -183,6 +182,8 @@ Ha a gép/proxy korlátozott internet-hozzáféréssel rendelkezik, győződjön
 A biztonsági mentési szabályzat, a helyreállítási pontok ütemezése, és mennyi ideig maradnak a helyreállítási pontokat. A fájlok és mappák biztonsági mentési szabályzat létrehozásához használja a Microsoft Azure Backup-ügynök.
 
 ### <a name="to-create-a-backup-schedule"></a>Biztonsági mentési ütemezés létrehozása
+
+A biztonsági mentési ütemezést beállítani. a gép biztonsági. Vegye figyelembe, hogy az idő a biztonsági mentés beállítása eltérhetnek a helyi számítógép idejét, mert az Azure Backup nem használ nyári időszámításra (cél) figyelembe. 
 1. Nyissa meg a Microsoft Azure Backup ügynököt. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
 
     ![Indítsa el az Azure Backup-ügynök](./media/backup-configure-vault/snap-in-search.png)

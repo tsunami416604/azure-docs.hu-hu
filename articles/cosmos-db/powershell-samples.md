@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: ca3bf2ccb33dc1bd857cccb640fa602e365509d2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 480bccd73a049d2f181d5acf906882b2f9b6ccdb
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718499"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808400"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure PowerShell-minták az Azure Cosmos DB-ben
 
@@ -23,11 +23,11 @@ A következő táblázat az Azure Cosmos DB-hez elérhető Azure PowerShell-pél
 | |  |
 |---|---|
 |**Azure Cosmos DB-fiók létrehozása**||
-|[Fiók létrehozása és konfigurálása egy Cosmos SQL API-hoz](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre az SQL API-val történő használathoz. |
-|[Létrehozhat és konfigurálhat egy Cosmos-fiók MongoDB API-hoz](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy egyetlen Azure Cosmos DB-fiók MongoDB API-hoz. |
-|[Fiók létrehozása és konfigurálása egy Cosmos Gremlin API-hoz ](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Gremlin API-val történő használathoz. |
+|[Fiók létrehozása és konfigurálása egy Cosmos SQL API-val](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre az SQL API-val történő használathoz. |
+|[Hozzon létre, és a egy Cosmos-fiók beállítása az Azure Cosmos DB API a mongodb-hez](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy egyetlen Cosmos-fiókot az Azure Cosmos DB API a mongodb-hez. |
+|[Fiók létrehozása és konfigurálása egy Cosmos Gremlin API-val ](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Gremlin API-val történő használathoz. |
 |[Fiók létrehozása és konfigurálása egy Cosmos Cassandra API-val](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Cassandra API-val történő használathoz. |
-|[Fiók létrehozása és konfigurálása egy Cosmos Table API-hoz](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Table API-val történő használathoz. |
+|[Fiók létrehozása és konfigurálása egy Cosmos tábla API-val](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Table API-val történő használathoz. |
 |**Az Azure Cosmos DB méretezése**||
 |[Azure Cosmos DB-fiók replikálása több régióban és a feladatátvételi prioritások konfigurálása](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Globálisan és meghatározott feladatátvételi prioritás szerint replikál fiókadatokat több régióba.|
 |**Az Azure Cosmos DB védelme**||

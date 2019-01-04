@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995034"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810934"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -48,7 +48,7 @@ Tekintse meg a nyelvspecifikus példát egy Event Grid eseményindító:
 
 * [C#](#c-example)
 * [C# script (.csx)](#c-script-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
@@ -221,9 +221,14 @@ def main(event: func.EventGridEvent):
     logging.info("  Data: %s", event.get_json())
 ```
 
-### <a name="trigger---java-example"></a>Eseményindító - Java-példában
+### <a name="trigger---java-examples"></a>Eseményindító - Java-példák
 
-Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [Java függvény](functions-reference-java.md) , amely a kötés használja, és kiírja ezt egy eseményt.
+Ez a szakasz tartalmazza az alábbi példák:
+
+* [Event Grid-trigger, karakterlánc-paraméter](#event-grid-trigger-string-parameter-java)
+* [Event Grid-trigger, pojo-vá paraméter](#event-grid-trigger-pojo-parameter-java)
+
+Az alábbi példák bemutatják az eseményindító kötés egy *function.json* fájl és [Java-függvények](functions-reference-java.md) , amely az a kötés, és nyomtassa ki az esemény, először a, az eseményt fogadó ```String``` és a egy pojo-vá, második.
 
 ```json
 {
@@ -237,16 +242,60 @@ Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a eg
 }
 ```
 
-A Java-kód itt látható:
+#### <a name="event-grid-trigger-string-parameter-java"></a>Event Grid-trigger, karakterlánc-paramétert (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) {
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
+```
+
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>Event Grid-trigger, pojo-vá paraméter (Java)
+
+Ebben a példában használja a következő pojo-vá, jelölő egy Event Grid-esemény legfelsőbb szintű tulajdonságai:
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+Érkezésekor, az esemény hasznos JSON-adatokat megszüntetéséhez szerializált be a ```EventSchema``` pojo-vá. a függvény által használható. Ez lehetővé teszi a funkció eléréséhez az esemény tulajdonságai objektumorientált módon.
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
 ```
 
 Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `EventGridTrigger` jegyzet paraméterekkel, amelynek az értéke EventGrid kellene származnia. Ezek a jegyzetek a paraméterek miatt a funkció futtatását, amikor az esemény érkezik.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használatával `Optional<T>`.

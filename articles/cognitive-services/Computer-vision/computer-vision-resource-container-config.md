@@ -1,24 +1,24 @@
 ---
-title: Tárolók konfigurálása
-titlesuffix: Computer Vision - Azure Cognitive Services
-description: A Computer Vision tárolók konfigurációs beállításait.
+title: Tárolók – Computer Vision konfigurálása
+titlesuffix: Azure Cognitive Services
+description: A Computer Vision szöveg felismerése tárolók különböző beállításainak konfigurálása.
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077018"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579787"
 ---
-# <a name="configure-containers"></a>Tárolók konfigurálása
+# <a name="configure-recognize-text-containers"></a>Szöveg felismerése tárolók konfigurálása
 
 Computer Vision a szöveg felismerése tárolóhoz, az egy közös keretrendszer konfigurációs biztosít, így egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 
@@ -41,7 +41,7 @@ A környezeti változó értékeit felülbírálhatja parancssori argumentumok �
 
 ### <a name="configuration-settings-as-environment-variables"></a>Környezeti változókként konfigurációs beállításai
 
-Használhatja a [ASP.NET Core környezeti változó szintaxis](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment) konfigurációs beállításainak megadásához.
+Használhatja a [ASP.NET Core környezeti változó szintaxis](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider) konfigurációs beállításainak megadásához.
 
 A tároló beolvassa a felhasználói környezeti változókat, amikor a tároló példányosítása. Ha egy környezeti változó már létezik, a környezeti változó értékét felülírja az alapértelmezett érték a megadott konfigurációs beállítás. A környezeti változók használatával előnye, hogy több konfigurációs beállításokkal tárolók létrehozása előtt, és több tároló automatikusan használhatja ugyanazokat a konfigurációs beállításokat.
 
@@ -130,10 +130,10 @@ A `Logging` konfigurációs beállításokat az ASP.NET Core naplózás támogat
 
   | Name (Név) | Adattípus | Leírás |
   |------|-----------|-------------|
-  | `Format` | Karakterlánc | A kimeneti formátum a rendszernapló fájljaiban.<br/> **Megjegyzés:** ezt az értéket kell beállítani `json` a naplózás szolgáltatónak. Ezt az értéket egy kimeneti csatlakoztatási közben hárítható el egy tároló megadása nélkül, ha hiba történik. |
+  | `Format` | Karakterlánc | A kimeneti formátum a rendszernapló fájljaiban.<br/> **Megjegyzés:** Ezt az értéket kell beállítani `json` a naplózás szolgáltatónak. Ezt az értéket egy kimeneti csatlakoztatási közben hárítható el egy tároló megadása nélkül, ha hiba történik. |
   | `MaxFileSize` | Egész szám | A maximális méretét megabájtban (MB), a naplófájlok. Ha az aktuális naplófájl méretét megfelel-e vagy meghaladja ezt az értéket, egy új naplófájl indítja el a naplózás szolgáltató. Ha meg van adva a -1, a naplófájl méretét csak korlátozza a maximális méretet, ha bármely, a kimeneti csatlakoztatási. Az alapértelmezett érték az 1. |
 
-ASP.NET Core-naplózás támogatást konfigurálásával kapcsolatos további információkért lásd: [fájl konfigurációs beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
+ASP.NET Core-naplózás támogatást konfigurálásával kapcsolatos további információkért lásd: [az ASP.NET Core-naplózás](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration).
 
 ## <a name="mounts-configuration-settings"></a>Csatlakoztatja a konfigurációs beállítások
 

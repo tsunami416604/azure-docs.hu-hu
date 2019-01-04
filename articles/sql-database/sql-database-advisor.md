@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f55d3eb67bb9c494a3d055e39d970c9a440dfc67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271045"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603436"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Az SQL Database teljesítménnyel kapcsolatos javaslatok
 
 Az Azure SQL Database együtt tanuló és formálódó alkalmazását. Személyre szabott javaslatok, amelyek lehetővé teszik, hogy az SQL Database-adatbázisok a teljesítmény maximalizálásához biztosít. Az SQL Database folyamatosan értékeli, és elemzi az SQL-adatbázisok használati előzményeit. A javaslatok adatbázis egyedi munkaterhelési mintákat alapul, és a teljesítmény javítása érdekében.
 
 > [!TIP]
-> [Az automatikus hangolás](sql-database-automatic-tuning.md) az ajánlott módszer a teljesítmény finomhangolásának. [Intelligent Insights](sql-database-intelligent-insights.md) az ajánlott módszer a teljesítmény figyelése. 
+> [Az automatikus hangolás](sql-database-automatic-tuning.md) adatbázis teljesítményének leggyakoribb problémák automatikus finomhangolása az ajánlott módszer. [Lekérdezési teljesítmény Elemzéseihez](sql-database-query-performance.md) az ajánlott módszer az alapszintű Azure SQL Database teljesítményfigyelési. [Az Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) az ajánlott módszer van, a speciális monitorozás az adatbázis teljesítményét, automatizált teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
 >
 
 ## <a name="create-index-recommendations"></a>Ajánlott indexek létrehozása

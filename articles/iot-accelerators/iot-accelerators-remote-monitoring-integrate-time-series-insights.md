@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights integrálása a távoli Monitorozással |} A Microsoft Docs
+title: A Time Series Insights integrálása távoli figyelés – Azure |} A Microsoft Docs
 description: Ebben az útmutatóban, megtudhatja, hogyan konfigurálhatja a Time Series Insights, amely már nem tartalmazza a Time Series Insights távoli figyelési megoldás.
 author: aditidugar
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253816"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633742"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Ezután helyezze üzembe a Time Series Insights további erőforrásként a távoli figyelési megoldás, és csatlakoztassa az IoT hubon.
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza ki **erőforrás létrehozása** > **IOT-** > **Time Series Insights**.
 
@@ -164,12 +164,13 @@ A következő lépés, hogy konfigurálja az Azure Stream Analytics Manager mikr
 
 .NET: 
 
-```
+```cmd/sh
 docker pull azureiotpcs/asa-manager-dotnet:1.0.2
 ```
 
 Java:
-```
+
+```cmd/sh
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
@@ -178,13 +179,14 @@ docker pull azureiotpcs/asa-manager-java:1.0.2
 Kérje le a legújabb Telemetriai mikroszolgáltatás be a parancssorba a következő parancs beírásával:
 
 .NET:
-```
+
+```cmd/sh
 docker pull azureiotpcs/telemetry-dotnet:1.0.2
 ```
 
 Java:
 
-```
+```cmd/sh
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
@@ -192,7 +194,7 @@ docker pull azureiotpcs/telemetry-java:1.0.2
 
 A Time Series Insights Explorer saját adatainak megtekintéséhez egyszerűen, javasoljuk, hogy könnyen összekapcsolása a környezet a felhasználói felület testreszabása. Ehhez kérje le a legutóbbi változtatásokat a webes felhasználói felületére, a következő paranccsal:
 
-```
+```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
@@ -220,7 +222,7 @@ A környezet konfigurálása `basic` a frissített mikroszolgáltatások üzembe
 
 1. Adja hozzá az alábbi környezeti változókat az egyes mikroszolgáltatások a docker compose yaml-fájlt, és a `env-setup` szkriptet a virtuális gépen:
 
-    ```
+    ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
     PCS_TSI_FQDN={TSI Data Access FQDN}
     PCS_AAD_TENANT={AAD Tenant Id}
@@ -244,7 +246,7 @@ A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokh
 
 1. Keresse meg a konfigurációs térkép hozzáadása az alábbi új környezeti változókat a TSI:
 
-    ```
+    ```yaml
     telemetry.storage.type: "tsi"
     telemetry.tsi.fqdn: "{TSI Data Access FQDN}"
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
@@ -252,7 +254,7 @@ A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokh
 
 4. A sablon yaml-fájl a telemetriai szolgáltatás pod szerkesztése:
 
-    ```
+    ```yaml
     - name: PCS_AAD_TENANT
         valueFrom:
         configMapKeyRef:
@@ -282,7 +284,7 @@ A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokh
 
 5. A sablonfájl yaml az ASA-kezelő szolgáltatás pod szerkesztése:
 
-    ```
+    ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
         valueFrom:
         configMapKeyRef:

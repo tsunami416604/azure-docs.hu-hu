@@ -1,18 +1,18 @@
 ---
 title: Teszteredmények Hyper-V virtuális gépek replikálása másodlagos helyre az Azure Site Recovery VMM-felhőkben |} A Microsoft Docs
 description: Ez a cikk ismerteti a Teljesítménytesztelés replikálás Hyper-V virtuális gépek egy másodlagos helyre az Azure Site Recovery VMM-felhőkben.
-author: rayne-wiselman
-manager: carmonm
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: raynew
-ms.openlocfilehash: d4540a00ed08f4c5a54108192868b4555eba3fa9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/27/2018
+ms.author: sutalasi
+ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850924"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793036"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Egy másodlagos helyre Hyper-V-replikáció terhelésiteszt-eredményei
 
@@ -152,7 +152,7 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 | Fájlkiszolgáló |50 |1 |2 |552 |22 |
 | VDI |149 |.5 |1 |80 |6 |
 | Webkiszolgáló |149 |.5 |1 |80 |6 |
-| ÖSSZES |470 | | |96.83 TB |4108 |
+| ÖSSZESEN |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>A Site Recovery beállításait
 

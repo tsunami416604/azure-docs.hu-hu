@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193858"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716140"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -38,17 +38,17 @@ HDInsight számos Azure-régióban érhető el. Keresse meg a legközelebbi rég
 
 ### <a name="location-of-default-storage"></a>Alapértelmezett tároló helye
 
-Az alapértelmezett tároló, egy Azure Storage-fiókot vagy egy Azure Data Lake Store a fürt ugyanazon a helyen kell lennie. Az Azure Storage minden helyeken érhető el. Data Lake Store Gen1 érhető el egyes régiókban – tekintse meg a jelenlegi Data Lake Store rendelkezésre állási csoportban *tárolási* a [Azure termékek rendelkezésre álló régiók szerint](https://azure.microsoft.com/regions/services/).
+Az alapértelmezett tároló, egy Azure Storage-fiókot vagy egy Azure Data Lake Storage, a fürt ugyanazon a helyen kell lennie. Az Azure Storage minden helyeken érhető el. Data Lake Storage Gen1 érhető el egyes régiókban – tekintse meg a jelenlegi Data Lake Storage rendelkezésre állási csoportban *tárolási* a [Azure termékek rendelkezésre álló régiók szerint](https://azure.microsoft.com/regions/services/).
 
 ### <a name="location-of-existing-data"></a>A meglévő adatok helye
 
-Ha már rendelkezik, a storage-fiók vagy a Data Lake Store az Ön adatait tartalmazó, és szeretné használni ezt a tárolót a fürt alapértelmezett tárolóként, majd telepítenie kell a fürt adott azonos helyen található.
+Ha már rendelkezik egy storage-fiók vagy a Data Lake Storage, amely tartalmazza az adatokat, és szeretné használni ezt a tárolót a fürt alapértelmezett tárolóként, majd telepítenie kell a fürt adott azonos helyen található.
 
 ### <a name="storage-size"></a>Tároló mérete
 
-Miután egy üzembe helyezett HDInsight-fürtöt, további Azure Storage-fiókokat csatlakoztathat vagy egyéb Data Lake Store eléréséhez. A storage-fiókok a fürt ugyanazon a helyen kell lennie. Bár ez vezethet be bizonyos adatok olvasási/írási késés egy Data Lake Store egy másik helyre is lehet.
+Miután egy üzembe helyezett HDInsight-fürtöt, további Azure Storage-fiókokat csatlakoztathat vagy egyéb Data Lake Storage eléréséhez. A storage-fiókok a fürt ugyanazon a helyen kell lennie. A Data Lake Storage lehet egy másik helyen, bár ez vezethet be bizonyos adatok olvasási/írási késés.
 
-Az Azure Storage rendelkezik néhány [kapacitáskorlátait](../azure-subscription-service-limits.md#storage-limits), míg a Data Lake Store Gen1 gyakorlatilag korlátlan.
+Az Azure Storage rendelkezik néhány [kapacitáskorlátait](../azure-subscription-service-limits.md#storage-limits), míg a Data Lake Storage Gen1 gyakorlatilag korlátlan.
 
 A fürt különböző tárfiókokban kombinációját férhetnek hozzá. Tipikus példák:
 
@@ -75,7 +75,7 @@ A virtuális gép méretét és típusát határozza meg a Processzor feldolgoz�
 
 * MEMÓRIA: A virtuális gép méretét is előírja a virtuális Gépet a rendelkezésre álló RAM mennyiségét. A számítási feladatokhoz, amely tárolja az adatokat a feldolgozáshoz memória az ahelyett, hogy ellenőrizze a lemezről való olvasása, a feldolgozó csomópontokat, rendelkezik elég memória a az adatokat.
 
-* Hálózat: A legtöbb fürt esetében a fürt által feldolgozott adatokat nem a helyi lemezen, hanem egy külső tárolási szolgáltatás, például a Data Lake Store vagy az Azure Storage van. Vegye figyelembe a hálózati sávszélesség és a csomópont virtuális gép és a storage szolgáltatás közötti átviteli sebesség. A virtuális gép számára elérhető sávszélesség általában nagyobb méretű egyenes arányban növekszik. További információkért lásd: [Virtuálisgép mérete – áttekintés](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Hálózat: A legtöbb fürt esetében a fürt által feldolgozott adatokat nem a helyi lemezen, hanem egy külső tárolási szolgáltatás, például a Data Lake Storage vagy az Azure Storage van. Vegye figyelembe a hálózati sávszélesség és a csomópont virtuális gép és a storage szolgáltatás közötti átviteli sebesség. A virtuális gép számára elérhető sávszélesség általában nagyobb méretű egyenes arányban növekszik. További információkért lásd: [Virtuálisgép mérete – áttekintés](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Válassza ki a fürt vertikális
 
@@ -89,7 +89,7 @@ Ki lehet terjeszteni a terhelés megnövekedett igényeket kell kielégíteni, m
 
 A fürt élettartama díjkötelesek. Ha csak vannak, hogy kell-e a fürt felfelé és a futó megadott időpontok, [Azure Data Factory segítségével igény szerinti fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-adf.md). PowerShell-parancsfájlok, amelyek kiépítése, és törölje a fürtöt is létrehozhat, és majd ütemezze ezeket a szkripteket használatával [Azure Automation](https://azure.microsoft.com/services/automation/).
 
-> [!NOTE]
+> [!NOTE]  
 > A fürt törlésekor az alapértelmezett Hive-metaadattár is törlődik. A következő fürt újbóli létrehozásához a metaadattár fennáll, használja a külső metaadat-tárral, például az Azure Database vagy [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
@@ -115,12 +115,12 @@ Után, amely meghatározza, hogy a fürt virtuális célgép méretét, a méret
     
     ![Hozzon létre egy támogatási kérést a HDInsight magkvóta növeléséhez](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Kattintson a **Tovább**gombra.
+1. Kattintson a **tovább**.
 1. Az a **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, és válassza ki a kívánt kapcsolattartási formát.
 1. Kattintson a **tovább: Felülvizsgálat + létrehozás**.
 1. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.
 
-> [!Note]
+> [!NOTE]  
 > Ha szeretne egy privát régióban a HDInsight magkvóta növeléséhez [be egy engedélyezési kérést](https://aka.ms/canaryintwhitelist).
 
 Is [kérje egy kvótájának növelését az ügyfélszolgálattól](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).

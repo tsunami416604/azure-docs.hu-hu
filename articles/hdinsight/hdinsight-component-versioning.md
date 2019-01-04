@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 878d9e635d82e52d8a47d47a135ba865f140c9e9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321886"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971120"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
@@ -60,7 +60,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 
 Társított fürtverziók HDInsight Hadoop-ökoszisztéma összetevő verziók a frissítések HDInsight módosíthatja. Ellenőrizze a Hadoop-összetevők, és ellenőrizze, hogy mely verziói vannak használatban a fürt, az Ambari REST API használata. A **GetComponentInformation** a paranccsal kérdezhető le információ a szolgáltatás-összetevők. További információkért lásd: a [Apache Ambari dokumentáció][ambari-docs].
 
-> [!IMPORTANT]  
+> [!IMPORTANT]    
 > Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További információkért lásd: [a HDInsight Windows kivezetési](#hdinsight-windows-retirement).
 
 ### <a name="release-notes"></a>Kibocsátási megjegyzések
@@ -139,9 +139,9 @@ Jelenleg csak a következő fürttípus támogatja a vállalati biztonsági csom
 - Spark
 - Interaktív lekérdezés
 
-### <a name="support-for-azure-data-lake-store"></a>Az Azure Data Lake Store támogatása
+### <a name="support-for-azure-data-lake-storage"></a>Az Azure Data Lake Storage támogatása
 
-A vállalati biztonsági csomag támogatja az Azure Data Lake Store használatával az elsődleges tárolási és a kiegészítő tárterület is.
+A vállalati biztonsági csomag támogatja az Azure Data Lake Storage használata az elsődleges tárolási és a kiegészítő tárterület is.
 
 ### <a name="pricing-and-sla"></a>Díjszabás és SLA
 A vállalati biztonsági csomag díjszabással és a szolgáltatásiszint-szerződés kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -149,7 +149,7 @@ A vállalati biztonsági csomag díjszabással és a szolgáltatásiszint-szerz�
 ## <a name="hdinsight-windows-retirement"></a>A windowsos HDInsight kivonása
 A Microsoft Azure HDInsight 3.3-as verziója lett a HDInsight, a Windows előző verzióját. A kivezetési dátum, a HDInsight, a Windows rendszer 2018. július 31-ig. Ha minden HDInsight-fürtök a Windows 3.3-as vagy korábbi, át kell telepítenie a Linux (HDInsight 3.5-ös vagy újabb verziójú) HDInsight előtt 2018. július 31-ig. A Linux OS-ba való migrálás lehetővé teszi lehetővé a létrehozása vagy a HDInsight-fürtök méretezése megőrzése. A HDInsight 3.3-as, a Windows verzió támogatása 2016. június 27-én lejárt.
 
-A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik a [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), interaktív lekérdezés [Apache Spark](https://spark.apache.org/), HDInsight-alkalmazások és az Azure Data Lake Store fájlrendszer elsődleges. A Linux operációs rendszer csak a HDInsight későbbi kiadásaiban érhetők el. Nem HDInsight, a Windows későbbi verzióiban lesz. 
+A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik a [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), interaktív lekérdezés [Apache Spark](https://spark.apache.org/), HDInsight alkalmazásokat és az Azure Data Lake Storage elsődleges fájlrendszer. A Linux operációs rendszer csak a HDInsight későbbi kiadásaiban érhetők el. Nem HDInsight, a Windows későbbi verzióiban lesz. 
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -172,7 +172,7 @@ Az Azure Portalon nyissa meg a HDInsight-fürt – áttekintés oldalra, és ker
 A HDInsight Windows-fürt fut,-van, de nem hozható létre egy új HDInsight Windows-fürt, vagy egy meglévő HDInsight Windows-fürt méretezése. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Fürt rendelkezik egy .NET-függőséget. Hogyan oldhatom fel ezt a függőséget Linux rendszeren?
-A Linux-fürt függőségi használatával oldható meg a [monó projekt](http://www.mono-project.com/). Ezen .NET nyílt forráskódú megvalósítása a HDInsight Linux-fürtök esetén érhető el. További információ: a [HDInsight dokumentu migrace](hdinsight-migrate-from-windows-to-linux.md). 
+A Linux-fürt függőségi használatával oldható meg a [monó projekt](https://www.mono-project.com/). Ezen .NET nyílt forráskódú megvalósítása a HDInsight Linux-fürtök esetén érhető el. További információ: a [HDInsight dokumentu migrace](hdinsight-migrate-from-windows-to-linux.md). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>A HDInsight, a Windows egy új ügyfél vagyok. Hogyan hozható létre egy HDInsight Windows-fürtöt?
 2017. július 3, meglévő HDInsight Windows ügyfelek hozhat létre új HDInsight Windows fürtök. Új ügyfeleket nem hozható létre egy HDInsight Windows-fürtön az Azure Portalon PowerShell vagy az SDK használatával. Azt javasoljuk, hogy az új ügyfelek hozzon létre egy Linux rendszerű HDInsight-fürtöt. Meglévő ügyfeleinknek létrehozhatnak új HDInsight Windows fürtök a kivezetési dátum Windows a HDInsight-ig. 
@@ -186,7 +186,7 @@ Nem, a díjszabása megegyezik a HDInsight vagy operációs rendszereken.
 * Azon képessége, hogy a Hadoop és más big data-technológiák a nyílt forráskódú Közösség aktív fejlesztés
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Biztosítja a HDInsight Linux rendszeren érhető el az Windows a HDInsight további funkciókat?
-A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik az Apache Ranger, Kafka, interaktív lekérdezés, Spark, a HDInsight-alkalmazások, és az Azure Data Lake Store fájlrendszer elsődleges. 
+A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik az Apache Ranger, Kafka, interaktív lekérdezés, Spark, a HDInsight-alkalmazások, és az Azure Data Lake Storage elsődleges fájlrendszer. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight-fürt verziók szolgáltatásiszint-szerződés
 A szolgáltatásiszint-szerződés (SLA) van meghatározva, hogy egy _támogatási ablak_. A támogatási időszak az az időtartam, a Microsoft ügyfélszolgálata és a egy HDInsight-fürt verziója támogatott. A verzió-e egy _támogatja a lejárati dátum_ , amely megfelelt, a HDInsight-fürt a támogatási időszakon kívül. További információ a támogatott verziók listájának megtekintéséhez [támogatott HDInsight-fürt verziók](hdinsight-migrate-from-windows-to-linux.md). A megadott verzió (miután elérhetővé vált egy újabb X + 1) X HDInsight támogatás lejárati dátuma számítjuk ki, hogy a későbbi a:  
@@ -203,10 +203,10 @@ A _kivezetési dátum_ az a dátum, amely után a fürt verziója nem hozható l
 
 A szakasz a kibocsátási megjegyzések a Hortonworks Data Platform disztribúcióiról, valamint a használt HDInsight Apache-összetevők a mutató hivatkozásokat tartalmaz.
 * HDInsight fürt 4.0-s verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)
-* HDInsight fürt 3.6-os verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 2.6](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html).
-* Fürtverzió HDInsight 3.5-ös verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 2.5](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). A HDInsight fürt 3.5-ös verziója a _alapértelmezett_ az Azure Portalon létrehozott Hadoop-fürtöt.
-* HDInsight fürt 3.4-es verziójú használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html).
-* HDInsight-fürt verziója 3.3-as használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.3](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html).
+* HDInsight fürt 3.6-os verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html).
+* Fürtverzió HDInsight 3.5-ös verzióját használja egy Hadoop-változat alapján [Hortonworks Data Platform 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html). A HDInsight fürt 3.5-ös verziója a _alapértelmezett_ az Azure Portalon létrehozott Hadoop-fürtöt.
+* HDInsight fürt 3.4-es verziójú használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html).
+* HDInsight-fürt verziója 3.3-as használ egy Hadoop-változat alapján [Hortonworks Data Platform 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html).
 
   * [Az Apache Storm kibocsátási megjegyzések](https://storm.apache.org/2015/11/05/storm0100-released.html) a Apache webhelyen érhető el.
   * [Kibocsátási megjegyzések az Apache Hive](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) az Apache webhelyen érhető el.
@@ -230,11 +230,11 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
   | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark  | Machine Learning-kiszolgáló |
   | --- | --- | --- | --- | --- | --- | --- |
-  | A fő: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2 | D13,<br/> D14 |A4 v2 |D12 v2 |D12 v2 |
+  | A fő: virtuális gépek alapértelmezett mérete |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
   | A fő: javasolt Virtuálisgép-méretek |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2  | D13,<br/> D14 |A4 v2-ben<br/> A8 v2-ben<br/> A2m v2 |D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
-  | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 v2 |D3 v2  | D13,<br/> D14 |D3 v2 |D4 v2 | D4 v2 |
+  | Feldolgozó: virtuális gépek alapértelmezett mérete |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
   | Feldolgozó: javasolt Virtuálisgép-méretek |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2  | D13,<br/> D14 |D3 v2-ben<br/> D4 v2-ben<br/> D12 v2 |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
-  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 | |A2 v2 | | |
+  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
   | ZooKeeper: javasolt Virtuálisgép-méretek | |A4 v2-ben<br/> A8 v2-ben<br/> A2m v2 | | A2 v2-ben<br/> A4 v2-ben<br/> A8 v2 | | |
   | Edge: virtuális gépek alapértelmezett mérete | | | | | |D4 v2 |
   | Edge: Virtuálisgép-méretet ajánlott | | | | | |D4 v2-ben<br/> D12 v2-ben<br/> Két D13 v2-ben<br/> D14 v2 |
@@ -242,11 +242,11 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
   | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
   | --- | --- | --- | --- | --- | --- | --- |
-  | A fő: virtuális gépek alapértelmezett mérete |D3 |D3  | D13,<br/> D14 |A3 |D12 |D12 |
+  | A fő: virtuális gépek alapértelmezett mérete |D12 |D12  | D13 |A3 |D12 |D12 |
   | A fő: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4.<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
-  | Feldolgozó: virtuális gépek alapértelmezett mérete |D3 |D3  | D13,<br/> D14 |D3 |D4 |D4 |
+  | Feldolgozó: virtuális gépek alapértelmezett mérete |D4 |D4  |  D14 |D3 |D13 |D4 |
   | Feldolgozó: javasolt Virtuálisgép-méretek |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
-  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A2 | | A2 | | |
+  | ZooKeeper: virtuális gépek alapértelmezett mérete | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
   | ZooKeeper: javasolt Virtuálisgép-méretek | |A2-ES<br/> A3<br/> A4 | |A2-ES<br/> A3<br/> A4 | | |
   | Edge: alapértelmezett Virtuálisgép-méretek | | | | | |D4 |
   | Edge: javasolt Virtuálisgép-méretek | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
@@ -270,16 +270,16 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
 [hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
 
-[hdp-2-1-7]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
+[hdp-2-1-7]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
 
-[hdp-2-1-1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
+[hdp-2-1-1]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
 
-[hdp-2-0-8]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
+[hdp-2-0-8]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
 
-[hdp-1-3-0]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
+[hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
 
 [hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
 
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[zookeeper]: http://zookeeper.apache.org/
+[zookeeper]: https://zookeeper.apache.org/

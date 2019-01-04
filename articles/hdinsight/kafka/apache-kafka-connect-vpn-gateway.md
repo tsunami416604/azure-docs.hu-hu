@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307474"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605007"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafka on HDInsight egy Azure virtuális hálózaton keresztül
 
@@ -49,7 +49,7 @@ HDInsight nem engedélyezi a közvetlen kapcsolat, a Kafka, a nyilvános interne
 
     További információkért lásd: a [csatlakozás az Apache Kafka az egy VPN-ügyfél](#vpnclient) szakaszban.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Ez a konfiguráció csak a következő korlátozások miatt ajánlott fejlesztési célokra:
     >
     > * Minden egyes ügyfélnek csatlakoznia kell egy VPN-szoftverügyfél használatával.
@@ -61,7 +61,7 @@ A HDInsight segítségével a virtuális hálózat további információkért l�
 
 Kafka-fürt, amely kommunikál a helyszíni hálózattal létrehozásához kövesse a [HDInsight csatlakoztatása a helyszíni hálózathoz](./../connect-on-premises-network.md) dokumentumot.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A HDInsight-fürt létrehozásakor válassza ki a __Kafka__ fürt típusa.
 
 Ezeket a lépéseket hozza létre a következő konfigurációt:
@@ -186,7 +186,7 @@ Ebben a szakaszban a lépések segítségével hozzon létre a következő konfi
         -VpnClientRootCertificates $p2sRootCert
     ```
 
-    > [!WARNING]
+    > [!WARNING]  
     > A folyamat befejezése több percet is igénybe vehet.
 
 5. Az Azure Storage-fiókot és a blob-tároló létrehozásához használja a következő kódot:
@@ -232,7 +232,7 @@ Ebben a szakaszban a lépések segítségével hozzon létre a következő konfi
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]
+  > [!WARNING]  
   > Ez a folyamat körülbelül 15 percet vesz igénybe befejezéséhez.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Kafka IP hirdetés konfigurálása
@@ -317,7 +317,7 @@ A Kafka, a kapcsolat ellenőrzéséhez használja a következő lépések létre
 
     Mentse a visszakapott információk használható a következő lépésben.
 
-2. A következők használatával telepítheti a [kafka-python](http://kafka-python.readthedocs.io/) ügyfél:
+2. A következők használatával telepítheti a [kafka-python](https://kafka-python.readthedocs.io/) ügyfél:
 
         pip install kafka-python
 

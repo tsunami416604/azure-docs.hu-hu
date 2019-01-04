@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 80f7d93037c0b900608301ebf6463f85be10f2de
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311320"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714355"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -56,7 +56,7 @@ Ha azt szeretné, hogy a webes projektek közzététele leggyorsabb elérési ú
 
 Webalkalmazások, mobilalkalmazások háttérkomponenseit és API-alkalmazásokat hozhat létre.
 
-Mivel minden három alkalmazástípus az App Service-modul, egy webhely üzemeltetéséhez, mobilos ügyfeleket támogatja, és teszi közzé az API-k az Azure-ban, az ugyanazon a projekten, vagy a megoldás egy. App Service-ben kapcsolatos további információkért lásd: [Mi az Azure Web Apps](../../app-service/app-service-web-overview.md).
+Mivel minden három alkalmazástípus az App Service-modul, egy webhely üzemeltetéséhez, mobilos ügyfeleket támogatja, és teszi közzé az API-k az Azure-ban, az ugyanazon a projekten, vagy a megoldás egy. App Service-ben kapcsolatos további információkért lásd: [Mi az Azure Web Apps](../../app-service/overview.md).
 
 App Service-ben úgy tervezték, a fejlesztési és üzemeltetési szem előtt. Közzététel és a folyamatos integráció környezetekhez, például a GitHub webhookok, a Jenkins, Azure DevOps, TeamCity és mások különböző eszközöket támogatja.
 
@@ -168,7 +168,7 @@ Nagyon fontos tudni, hogy nem csak az alkalmazásokat használó, hanem az erőf
 
     >**Mikor érdemes használni**: Ha engedélyezi a hitelesítést az App Service-alkalmazások Azure AD-vel szeretne közösségi identitásszolgáltatókat, vagy mindkettőt.
 
-    >**Első lépések**: Az App Service hitelesítés kapcsolatos további információkért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../../app-service/app-service-authentication-overview.md).
+    >**Első lépések**: Az App Service hitelesítés kapcsolatos további információkért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../../app-service/overview-authentication-authorization.md).
 
 Ajánlott biztonsági eljárások az Azure-ban kapcsolatos további információkért lásd: [Azure ajánlott biztonsági eljárások és minták](../../security/security-best-practices-and-patterns.md).
 
@@ -190,7 +190,7 @@ Virtuális gépek kiépítése, vagy a web apps, a folyamatos közzététel, az 
 
 >**Kipróbálás:** [Próbálja ki a DevOps-integrációkkal számos](https://azure.microsoft.com/try/devops/).
 
->**Első lépések**: Az App Service-alkalmazások fejlesztési és üzemeltetési lehetőségek megtekintéséhez lásd: [folyamatos üzembe helyezés az Azure App Service-](../../app-service/app-service-continuous-deployment.md).
+>**Első lépések**: Az App Service-alkalmazások fejlesztési és üzemeltetési lehetőségek megtekintéséhez lásd: [folyamatos üzembe helyezés az Azure App Service-](../../app-service/deploy-continuous-deployment.md).
 
 
 ## <a name="azure-regions"></a>Azure-régiók

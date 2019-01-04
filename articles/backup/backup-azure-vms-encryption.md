@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b269b8db59c4aeecf182b6ea11b92a3980a2cd6d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567417"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583068"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással
 Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a virtuális gépek (VM) az Azure Backup használatával. A következő többi hibaeseteket támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépéseket részletesen is ismerteti.
@@ -27,6 +27,10 @@ Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a 
    | --- | --- | --- |
    | **Nem felügyelt virtuális gépek**  | Igen | Igen  |
    | **Felügyelt virtuális gépek**  | Igen | Igen  |
+
+   > [!NOTE]
+   > Az Azure Backup támogatja a különálló kulcsával használatával titkosított virtuális gépeket. Bármelyik billentyűt, amely része a virtuális gép titkosításához használt tanúsítványt jelenleg nem támogatott.
+   >   
 
 ## <a name="prerequisites"></a>Előfeltételek
 * A virtuális gép használatával titkosított [az Azure Disk Encryption](../security/azure-security-disk-encryption.md).

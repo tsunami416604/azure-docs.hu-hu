@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB MongoDB API a MongoDB olvasási beállítás használata
-description: Ismerje meg, az Azure Cosmos DB MongoDB API a MongoDB olvasási beállítás használata
+title: MongoDB olvasási beállítás használata az Azure Cosmos DB API a mongodb-hez
+description: Ismerje meg, a MongoDB olvasási beállítás használata az Azure Cosmos DB API a mongodb-hez
 services: cosmos-db
 author: vidhoonv
 ms.author: sclyon
@@ -9,22 +9,22 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.openlocfilehash: 4f40a2dac04102a19be7b3209c6bf37be9252cde
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 25c1872a677b05980899307a8de9f9b51fa749f9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875348"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787837"
 ---
-# <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Hogyan terjessze globálisan olvasási beállítás használata az Azure Cosmos DB MongoDB API-olvasások 
+# <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Hogyan terjessze globálisan olvassa be az Azure Cosmos DB API használatával a mongodb-hez
 
-Ez a cikk bemutatja, hogyan terjessze globálisan az olvasási műveletek használatával [MongoDB olvasási beállítás](https://docs.mongodb.com/manual/core/read-preference/) és az Azure Cosmos DB MongoDB API-beállítások. 
+Ez a cikk bemutatja, hogyan terjessze globálisan az olvasási műveletek [MongoDB olvasási beállítás](https://docs.mongodb.com/manual/core/read-preference/) beállításait a mongodb-hez Azure Cosmos DB API segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-Ebben [rövid](tutorial-global-distribution-mongodb.md) cikkben talál útmutatást, állítsa be a globális terjesztését az Azure Cosmos DB-fiókot, és hogyan csatlakozhat a MongoDB API használatával az Azure portal használatával.
+Ebben [rövid](tutorial-global-distribution-mongodb.md) cikk útmutatást találhat az Azure portal használatával állítsa be a globális elosztás egy Cosmos-fiók beállítása, és hogyan csatlakozhat ahhoz.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -52,10 +52,10 @@ cd mean
 npm install
 node index.js
 ```
-Az alkalmazás megpróbál csatlakozni egy MongoDB-forráshoz, és meghiúsul, mert a kapcsolati karakterlánc érvénytelen. Kövesse a lépéseket a kapcsolati karakterlánc frissítése példasablonjainak `url`. Frissítse a `readFromRegion` egy olvasási régióban az Azure Cosmos DB-fiókban. Az alábbi utasításokat a NodeJS-mintából a következők:
+Az alkalmazás megpróbál csatlakozni egy MongoDB-forráshoz, és meghiúsul, mert a kapcsolati karakterlánc érvénytelen. Kövesse a lépéseket a kapcsolati karakterlánc frissítése példasablonjainak `url`. Frissítse a `readFromRegion` olvasási régiót Cosmos-fiókjában található. Az alábbi utasításokat a NodeJS-mintából a következők:
 
 ```
-* Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos DB account's values. 
+* Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
 ```
 
 Után a következő lépésekkel a mintaalkalmazás futtatja, és a következő kimenetet:
@@ -74,7 +74,7 @@ readFromSecondaryfunc query completed!
 
 ## <a name="read-using-read-preference-mode"></a>Olvasási mód olvasási beállítás használata
 
-MongoDB biztosít az ügyfelek számára a következő olvasási beállítás mód:
+MongoDB-protokoll biztosítja az ügyfelek számára a következő olvasási beállítás mód:
 
 1. ELSŐDLEGES
 2. PRIMARY_PREFERRED
@@ -82,7 +82,7 @@ MongoDB biztosít az ügyfelek számára a következő olvasási beállítás m�
 4. SECONDARY_PREFERRED
 5. LEGKÖZELEBBI
 
-Tekintse meg a részletes [MongoDB olvasási beállítás viselkedése](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) ezekről a működését a dokumentációt, olvassa el előnyben módokat. Azure Cosmos DB elsődleges írási régiót és a másodlagos OLVASÁSI régióban leképezések rendeli hozzá.
+Tekintse meg a részletes [MongoDB olvasási beállítás viselkedése](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) ezekről a működését a dokumentációt, olvassa el előnyben módokat. Cosmos dB-ben elsődleges írási régiót és a másodlagos OLVASÁSI régióban leképezések rendeli hozzá.
 
 Gyakori forgatókönyvek alapján, azt javasoljuk, a következő beállításokat:
 
@@ -137,7 +137,7 @@ Tekintse meg a megfelelő minta alkalmazás adattáraknál a más platformokon, 
 
 ## <a name="read-using-tags"></a>Olvassa el a címkék használatával
 
-MongoDB mellett a olvasási beállítás mód lehetővé teszi a címkéket, hogy az olvasási műveletek közvetlen használatát. Az Azure Cosmos DB MongoDB API-hoz a `region` címke részeként alapértelmezés szerint tartalmazza a `isMaster` választ:
+Mellett az olvasási beállítás mód a MongoDB protokoll lehetővé teszi a közvetlen olvasási műveletek címkék használatát. A Cosmos DB API a mongodb-hez a `region` címke részeként alapértelmezés szerint tartalmazza a `isMaster` választ:
 
 ```json
 "tags": {
@@ -145,7 +145,7 @@ MongoDB mellett a olvasási beállítás mód lehetővé teszi a címkéket, hog
       }
 ```
 
-Ezért a MongoClient használhatja a `region` címkét az olvasási műveletek adott régiókba történő közvetlen régiónévhez együtt. Azure Cosmos DB-fiókok esetében régiók neveit az Azure Portalon, a bal oldali alatt található **beállítások -> replika adatait globálisan**. Ez a beállítás akkor hasznos, eléréséhez **elkülönítési olvasási** -melyik ügyfélalkalmazás olyan esetben szeretné irányítani az olvasási műveletek csak egy adott területre. Ez a beállítás ideális megoldást biztosít nem éles/Analytics írja be a forgatókönyveket, amelyek a háttérben futnak, és nem éles kritikus szolgáltatások.
+Ezért a MongoClient használhatja a `region` címkét az olvasási műveletek adott régiókba történő közvetlen régiónévhez együtt. Cosmos-fiókok esetében a régiók neveit megtalálható az Azure portal alatt a bal oldali **beállítások -> replika adatait globálisan**. Ez a beállítás akkor hasznos, eléréséhez **elkülönítési olvasási** -melyik ügyfélalkalmazás olyan esetben szeretné irányítani az olvasási műveletek csak egy adott területre. Ez a beállítás ideális megoldást biztosít nem éles/Analytics írja be a forgatókönyveket, amelyek a háttérben futnak, és nem éles kritikus szolgáltatások.
 
 A mintaalkalmazás az alábbi kódrészlet bemutatja, hogyan NodeJS a címkék az olvasási beállítás konfigurálása:
 
@@ -160,7 +160,7 @@ A mintaalkalmazás az alábbi kódrészlet bemutatja, hogyan NodeJS a címkék a
 
 Tekintse meg a megfelelő minta alkalmazás adattáraknál a más platformokon, például [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) és [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
 
-Ebben a cikkben bemutattuk, hogyan terjessze globálisan az olvasási műveletek olvasási beállítás használata az Azure Cosmos DB MongoDB API-val.
+Ebben a cikkben bemutattuk, hogyan terjessze globálisan az olvasási műveletek olvasási beállítás használata az Azure Cosmos DB API a mongodb-hez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -172,5 +172,5 @@ Ha nem folytatja az alkalmazás használatához, törölje a Ez a cikk az alább
 ## <a name="next-steps"></a>További lépések
 
 * [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
-* [Globálisan replikált Azure Cosmos DB-fiók beállítása és használata a MongoDB API-val](tutorial-global-distribution-mongodb.md)
-* [Helyi fejlesztés az emulátorral](local-emulator.md)
+* [A telepítő egy globálisan elosztott adatbázist az Azure Cosmos DB API a mongodb-hez](tutorial-global-distribution-mongodb.md)
+* [Helyi fejlesztés az Azure Cosmos DB emulátorral](local-emulator.md)

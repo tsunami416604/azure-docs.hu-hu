@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: af6915a522788f95aaac8ec1b690a7e53b31aac6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 54dbeeede58116b01f21db784b3e34970ace029f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863431"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792147"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Linux-alapú fürtök létrehozása az Azure PowerShell használatával HDInsight
 
@@ -22,7 +22,7 @@ ms.locfileid: "52863431"
 
 Az Azure PowerShell az egy hatékony parancsfájl-kezelési környezet, amellyel szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a Microsoft Azure-ban a számítási feladatokat. Ez a dokumentum egy Linux-alapú HDInsight-fürt létrehozása az Azure PowerShell-lel kapcsolatos információkat nyújt. Példa parancsfájl is tartalmaz.
 
-> [!NOTE]
+> [!NOTE]  
 > Az Azure PowerShell csak Windows-ügyfelek számára érhető el. Ha a Linux, Unix vagy Mac OS X-ügyfelet használ, tekintse meg [hozzon létre egy Linux-alapú HDInsight-fürtöt klasszikus Azure CLI-vel](hdinsight-hadoop-create-linux-clusters-azure-cli.md) fürt létrehozása a klasszikus parancssori felület használatával kapcsolatos információkat.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,7 +31,7 @@ Ez az eljárás megkezdése előtt a következőket kell tartalmaznia:
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnt. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
     > A lépések végrehajtásával [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) telepítése az Azure PowerShell legújabb verzióját. Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új, az Azure Resource Managerrel működő parancsmagok használatához, tekintse meg az alábbi cikket: [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Az Azure Resource Manager-alapú fejlesztési eszközökre való áttérés HDInsight-fürtök esetén).
@@ -55,14 +55,14 @@ A fürtre való bejelentkezéshez megadott értékek a Hadoop-felhasználói fi�
 
 Az SSH-felhasználót a megadott értékek a fürthöz az SSH-felhasználó létrehozásához használt. Ez a fiók használatával indítson el egy távoli SSH-munkamenetet a fürtön, valamint a feladatok futtatását. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha azt tervezi, több mint 32 munkavégző csomópontok (vagy a fürt létrehozása vagy a fürt létrehozása után felskálázásával) használja, akkor is meg kell egy fő csomópont mérete legalább 8 maggal és 14 GB RAM.
 >
 > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 Fürt létrehozása akár 20 percig is eltarthat.
 
-## <a name="create-cluster-configuration-object"></a>Fürt létrehozása: konfigurációs objektum
+## <a name="create-cluster-configuration-object"></a>Fürt létrehozása: Konfigurációs objektum
 
 Egy HDInsight konfigurációs objektum használatával is létrehozhat `New-AzureRmHDInsightClusterConfig` parancsmagot. Ezt követően módosíthatja ezt a konfigurációs objektumot ahhoz, hogy további konfigurációs lehetőségek a fürt számára. Végül a `-Config` paraméterében a `New-AzureRmHDInsightCluster` parancsmagot, hogy a konfigurációt használja.
 
@@ -70,7 +70,7 @@ A következő szkriptet az R Server HDInsight-fürt típusának konfigurálása 
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 
-> [!WARNING]
+> [!WARNING]  
 > A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott. Ebben a példában használatakor a kiszolgáló ugyanazon a helyen hozza létre a további tárfiókot.
 
 ## <a name="customize-clusters"></a>Fürtök személyre szabása
@@ -84,7 +84,7 @@ A következő szkriptet az R Server HDInsight-fürt típusának konfigurálása 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -94,7 +94,7 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, az alábbi forrásanya
 
 * [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
 * [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
-* [Apache HAdoop MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Az Apache HBase-fürtök
 
@@ -111,6 +111,6 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, az alábbi forrásanya
 
 * [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md)
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](spark/apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](spark/apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
 

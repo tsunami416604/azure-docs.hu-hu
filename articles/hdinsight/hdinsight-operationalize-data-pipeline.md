@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436160"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744445"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -551,7 +551,7 @@ Ahogy látható, a koordinátor többsége, csupán továbbítja konfigurációs
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Koordinátor felelős műveletek belül a `start` és `end` dátumtartomány szerint a megadott időköz az `frequency` attribútum. Minden ütemezett művelethez ezután futtatja a munkafolyamatot a konfigurált. A fenti koordinátor definíciójában a koordinátor van konfigurálva műveleteket hajtson végre 2017. január 1-től 2017. január 5-én. A gyakoriság 1 nap értékre van állítva a [Oozie kifejezés nyelve](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) gyakorisága kifejezés `${coord:days(1)}`. Ez a művelet ütemezés koordinátor eredményez (és így a munkafolyamat) naponta egyszer. Dátumtartományokat, amelyek korábban, mint ebben a példában a művelet lesz ütemezve késedelem nélkül fusson. A dátum, amelyen művelet való futásra van ütemezve kezdetét nevezzük a *névleges idő*. Ha például az adatok feldolgozása a 2017. január 1-től a koordinátor ütemeznek művelet után névleges költséget számítunk időpont 2017-01-01T00:00:00 GMT.
+    Koordinátor felelős műveletek belül a `start` és `end` dátumtartomány szerint a megadott időköz az `frequency` attribútum. Minden ütemezett művelethez ezután futtatja a munkafolyamatot a konfigurált. A fenti koordinátor definíciójában a koordinátor van konfigurálva műveleteket hajtson végre 2017. január 1-től 2017. január 5-én. A gyakoriság 1 nap értékre van állítva a [Oozie kifejezés nyelve](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) gyakorisága kifejezés `${coord:days(1)}`. Ez a művelet ütemezés koordinátor eredményez (és így a munkafolyamat) naponta egyszer. Dátumtartományokat, amelyek korábban, mint ebben a példában a művelet lesz ütemezve késedelem nélkül fusson. A dátum, amelyen művelet való futásra van ütemezve kezdetét nevezzük a *névleges idő*. Ha például az adatok feldolgozása a 2017. január 1-től a koordinátor ütemeznek művelet után névleges költséget számítunk időpont 2017-01-01T00:00:00 GMT.
 
 * 2. pont: A munkafolyamat dátum keretein belül a `dataset` elem megadja, hogy legyen egy adott dátumtartományra vonatkozóan az adatokat HDFS-ben keresse meg, és konfigurálja, hogyan Oozie határozza meg, hogy az adatok rendelkezésre áll-e még feldolgozásra.
 
@@ -651,6 +651,6 @@ Futtathatja a folyamatot a koordinátor, folytatható hasonlóan végezhető, mi
 
 ## <a name="next-steps"></a>További lépések
 
-* [Apache Oozie-dokumentáció](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie-dokumentáció](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

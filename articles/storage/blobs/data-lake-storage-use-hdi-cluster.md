@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b9f7a1144be21b425ff0bed9e2e6cb47315c13a2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0b171c7ed13eab84d84bb797e154a3acec8fbac7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974898"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633676"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök
 
@@ -63,17 +63,17 @@ A számítási fürtök és tárolási erőforrások nem egy helyre helyezésév
 
 Több előnye is van annak, ha az adatokat a HDFS helyett az Azure Blob Storage tárolóban tárolja:
 
-* **Adatok újbóli használata és megosztása:** A HDFS-ben az adatok a számítási fürtön belül találhatóak. Csak a számítási fürtöt elérő alkalmazások használhatják az adatokat HDFS API-k használatával. Az Azure Blob Storage-ban lévő adatok a HDFS API-kon vagy a [Blob Storage REST API-kon][blob-storage-restAPI] keresztül érhetők el. Így az alkalmazások (beleértve más HDInsight fürtöket) és eszközök nagyobb készlete használható az adatok előállításához és fogyasztásához.
+* **Adatok újbóli használata és megosztása:** Az adatok a HDFS-ben a számítási fürtön belül találhatók. Csak a számítási fürtöt elérő alkalmazások használhatják az adatokat HDFS API-k használatával. Az Azure Blob Storage-ban lévő adatok a HDFS API-kon vagy a [Blob Storage REST API-kon][blob-storage-restAPI] keresztül érhetők el. Így az alkalmazások (beleértve más HDInsight fürtöket) és eszközök nagyobb készlete használható az adatok előállításához és fogyasztásához.
 
-* **Adatarchiválás:** Az adatok Azure Blob Storage tárolóban végzett tárolása lehetővé teszi, hogy biztonságosan törölje a számításhoz használt HDInsight fürtöket a felhasználói adatok elvesztése nélkül.
+* **Adatarchiválás:** Adatok az Azure storage tárolóban végzett tárolása lehetővé teszi, hogy a, hogy biztonságosan felhasználói adatok elvesztése nélkül törölje a számításhoz használt HDInsight fürtöket.
 
-* **Adattárolási költség:** adatok tárolására a natív HDFS-ben, a hosszú távú költségesebb, mint az adatok tárolása az Azure storage-ban, mert a számítási fürt költsége nagyobb, mint az Azure storage költsége. Ezenkívül mivel az adatokat nem kell újból betölteni minden számítási fürt létrehozásakor, az adatbetöltési költségeket is megtakaríthatja.
+* **Adattárolási költség:** A natív HDFS adatok a hosszú távú tárolása költségesebb, mint az adatok tárolása az Azure storage-ban, mert a számítási fürt költsége nagyobb, mint az Azure storage költsége. Ezenkívül mivel az adatokat nem kell újból betölteni minden számítási fürt létrehozásakor, az adatbetöltési költségeket is megtakaríthatja.
 
-* **Rugalmas kibővítés:** Bár a HDFS kibővített fájlrendszert biztosít, a léptéket a fürthöz létrehozott csomópontok száma határozza meg. A lépték módosítása bonyolultabb folyamattá válhat, mintha az Azure Blob Storage tárolóban automatikusan elérhető rugalmas léptékezési képességekre támaszkodna.
+* **Rugalmas kibővítés:** Bár a HDFS kibővített fájlrendszert biztosít, a méretezési csoport, amely a fürthöz létrehozott csomópontok száma határozza meg. A lépték módosítása bonyolultabb folyamattá válhat, mintha az Azure Blob Storage tárolóban automatikusan elérhető rugalmas léptékezési képességekre támaszkodna.
 
-* **Georeplikáció:** az Azure storage-adatok a georeplikált lehet. Bár ez a képesség nyújt földrajzi helyreállítást és adatredundanciát, a georeplikált helyre feladatátvétel súlyosan támogatása hatással van a teljesítményre, és további költségeket vonhat. Ezért, válassza ki a georeplikáció, gondosan és csak az adatok érték esetén a további költségeket.
+* **Georeplikáció:** Az Azure storage-adatok georeplikált is lehet. Bár ez a képesség nyújt földrajzi helyreállítást és adatredundanciát, a georeplikált helyre feladatátvétel súlyosan támogatása hatással van a teljesítményre, és további költségeket vonhat. Ezért, válassza ki a georeplikáció, gondosan és csak az adatok érték esetén a további költségeket.
 
-* **Életciklus-felügyelet:** bármely fájlrendszerben lévő összes adatot halad végig a saját életciklusát. Adatokat gyakran ki nagyon fontosak, és a gyakran használt elindul, kevésbé értékes folyamatban, és kevesebb hozzáférést igénylő értékre vált, és végső soron igényel a archiválása vagy törlése. Az Azure Storage biztosít adatokat rétegezést és életciklus, hogy az adatok megfelelő módon rétegzi a életciklusfázis kezelési szabályzatokat.
+* **Adatok életciklus-felügyeletét:** Bármely fájlrendszer összes adat halad végig a saját életciklusát. Adatokat gyakran ki nagyon fontosak, és a gyakran használt elindul, kevésbé értékes folyamatban, és kevesebb hozzáférést igénylő értékre vált, és végső soron igényel a archiválása vagy törlése. Az Azure Storage biztosít adatokat rétegezést és életciklus, hogy az adatok megfelelő módon rétegzi a életciklusfázis kezelési szabályzatokat.
 
 Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak létre, amelyeket nem érdemes az Azure Blob Storage tárolóban tárolni. Ebben az esetben a helyi HDFS-ben is tárolhatja az adatokat. Valójában a HDInsight a natív HDFS implementációra (amely nevezzük az elosztott Fájlrendszerbeli) használja több ilyen köztes eredményhez a Hive-feladatokban és egyéb folyamatokban.
 
@@ -101,35 +101,39 @@ Egy HDInsight-fürt létrehozása a portálról, ha a közül választhat (ahogy
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ha Ön [telepítette és konfigurálta az Azure PowerShell-lel][powershell-install], használhatja a következő kódot az Azure PowerShell parancssorról egy tárfiók és tároló létrehozásához:
 
 [!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
 
-    $SubscriptionID = "<Your Azure Subscription ID>"
-    $ResourceGroupName = "<New Azure Resource Group Name>"
-    $Location = "WEST US 2"
+```azurepowershell
+$SubscriptionID = "<Your Azure Subscription ID>"
+$ResourceGroupName = "<New Azure Resource Group Name>"
+$Location = "WEST US 2"
 
-    $StorageAccountName = "<New Azure Storage Account Name>"
-    $containerName = "<New Azure Blob Container Name>"
+$StorageAccountName = "<New Azure Storage Account Name>"
+$containerName = "<New Azure Blob Container Name>"
 
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId $SubscriptionID
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId $SubscriptionID
 
-    # Create resource group
-    New-AzureRmResourceGroup -name $ResourceGroupName -Location $Location
+# Create resource group
+New-AzResourceGroup -name $ResourceGroupName -Location $Location
 
-    # Create default storage account
-    New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
-      -Name StorageAccountName `
-      -Location $Location `
-      -SkuName Standard_LRS `
-      -Kind StorageV2 
-      -HierarchialNamespace $True
+# Create default storage account
+New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
+  -Name StorageAccountName `
+  -Location $Location `
+  -SkuName Standard_LRS `
+  -Kind StorageV2 
+  -HierarchialNamespace $True
 
-    # Create default blob containers
-    $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value
-    $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-    New-AzureStorageContainer -Name $containerName -Context $destContext
+# Create default blob containers
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $StorageAccountName)[0].Value
+$destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
+New-AzStorageContainer -Name $containerName -Context $destContext
+```
 
 > [!NOTE]
 > Tároló létrehozása az azonos a fájlrendszer létrehozása a Data Lake Storage Gen2.
@@ -209,7 +213,7 @@ További információkért lásd:
 * [Az Azure Data Lake Storage Gen2 használata a Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Adatokat az Azure Data Lake Storage Gen2 a distcp használata](data-lake-storage-use-distcp.md)
 
-[powershell-install]: /powershell/azureps-cmdlets-docs
+[powershell-install]: /powershell/azure/install-az-ps
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md
 
 [blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx

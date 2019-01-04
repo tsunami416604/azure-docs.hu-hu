@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 850ff2cfb02b5a968a40e0cd43b5c65d9d4e3490
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b760780912642dac664f68c1f2b9d8d4ebf8cbde
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001727"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809896"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
 
-Konfigurálhatja az [Application Insightsot](app-insights-overview.md) számos különféle alkalmazás vagy alkalmazás-szerepkör, -összetevő vagy mikroszolgáltatás monitorozására. A webalkalmazásokhoz és -szolgáltatásokhoz a Visual Studio [egylépéses konfigurációs lehetőséget ](app-insights-asp-net.md) biztosít. Más típusú .NET-alkalmazásokhoz, például a háttérkiszolgálói szerepkörökhöz vagy az asztali alkalmazásokhoz beállíthatja manuálisan az Application Insightsot.
+Konfigurálhatja az [Application Insightsot](app-insights-overview.md) számos különféle alkalmazás vagy alkalmazás-szerepkör, -összetevő vagy mikroszolgáltatás monitorozására. A webalkalmazásokhoz és -szolgáltatásokhoz a Visual Studio [egylépéses konfigurációs lehetőséget ](../azure-monitor/app/asp-net.md) biztosít. Más típusú .NET-alkalmazásokhoz, például a háttérkiszolgálói szerepkörökhöz vagy az asztali alkalmazásokhoz beállíthatja manuálisan az Application Insightsot.
 
 ![Példa teljesítményfigyelő diagramokra](./media/app-insights-windows-services/10-perf.png)
 
@@ -36,7 +36,7 @@ A következők szükségesek:
 
 Az „erőforrás” az adatok összegyűjtésének és megjelenítésének helye az Azure Portalon. Választhat, hogy újat hoz-e létre, vagy megoszt egy már meglévőt.
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>Egy nagyobb alkalmazás része: létező erőforrás használata
+### <a name="part-of-a-larger-app-use-existing-resource"></a>Egy nagyobb alkalmazás része: Létező erőforrás használata
 
 Ha a webalkalmazás több részből áll – például egy előtéri webalkalmazásból és egy vagy több háttérszolgáltatásból –, akkor minden helyről ugyanarra az erőforrásra kell telemetriát küldenie. Ez lehetővé teszi, hogy egyetlen alkalmazástérképen megjeleníthetőek legyenek, valamint nyomon követhetőek legyenek a kérések az egyes összetevők közt.
 
@@ -90,7 +90,7 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 * Állítsa be a rendszerállapotkulcsot a kódban, például `main()`: 
   
     `TelemetryConfiguration.Active.InstrumentationKey = "`*az Ön kulcsa*`";` 
-* [Írjon saját telemetriát az API-val](app-insights-api-custom-events-metrics.md#ikey).
+* [Írjon saját telemetriát az API-val](../azure-monitor/app/api-custom-events-metrics.md#ikey).
 
 **Ha más Application Insights-csomagokat is telepített,** akkor a .config fájl segítségével igény szerint beállíthatja a rendszerállapotkulcsot:
 
@@ -119,7 +119,7 @@ Részletesebb mérőszámokért kattintson bármelyik diagramra. [További infor
 
 ### <a name="no-data"></a>Nincs adat?
 * Az alkalmazás segítségével nyisson meg különböző oldalakat, hogy létrejöjjön némi telemetria.
-* Az egyes események megtekintéséhez nyissa meg a [Keresés](app-insights-diagnostic-search.md)csempét. Események esetében kicsit tovább is eltarthat a mérőszámok folyamatain való végighaladás.
+* Az egyes események megtekintéséhez nyissa meg a [Keresés](../azure-monitor/app/diagnostic-search.md)csempét. Események esetében kicsit tovább is eltarthat a mérőszámok folyamatain való végighaladás.
 * Várjon néhány másodpercet, és kattintson a **Frissítés** lehetőségre. A diagramok rendszeres időközönként frissülnek, de manuálisan is frissítheti őket, ha várja valamilyen adatok megjelenését.
 * Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
 
@@ -134,7 +134,7 @@ Ha hibakeresési módban futtatja az alkalmazást, az egész folyamatban szolgá
 Nyissa meg a portokat a kimenő forgalom számára a kiszolgáló tűzfalán. A szükséges címek listája [ezen az oldalon](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) tekinthető meg 
 
 ### <a name="trouble-on-your-build-server"></a>Probléma adódott a lemezképfájl-kiszolgálóján?
-Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
+Tekintse meg [ezt a Hibaelhárítási cikket](../azure-monitor/app/asp-net-troubleshoot-no-data.md#NuGetBuild).
 
 > [!NOTE]
 > Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Az azonos kéréshez tartozó események azonban csoportosan lesznek kijelölve, illetve így lesz törölve a jelölésük, hogy lehessen mozogni a kapcsolódó események között. 
@@ -147,5 +147,5 @@ Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>További lépések
-* [További telemetriák hozzáadásával](app-insights-asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
+* [További telemetriák hozzáadásával](../azure-monitor/app/asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
 

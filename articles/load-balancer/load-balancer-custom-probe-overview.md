@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: f9ada3518c4354b112e9e288da89ee9659629b1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435123"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538685"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -201,7 +201,7 @@ Ha nem engedélyezi a [forrás IP-cím](#probesource) a mintavétel a tűzfal-h�
 
 Load Balancer állapotmintához jelöljön ki a példány akkor **kell** bármely Azure-ban az IP-címének engedélyezéséhez [hálózati biztonsági csoportok](../virtual-network/security-overview.md) és a helyi tűzfal-házirendek.  Alapértelmezés szerint minden hálózati biztonsági csoport tartalmazza a [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer állapot-mintavételi forgalom engedélyezéséhez.
 
-Egészségügyi mintavételi hiba tesztelése, vagy jelölje meg egy egyéni példány le szeretné, ha egy [hálózati biztonsági csoportok](../virtual-network/security-overview.md) explicit tiltsa le az állapotminta (célport vagy [forrás IP-cím](#probesource)), és szimulálhatja a Hiba történt a mintavétel.
+Egészségügyi mintavételi hiba tesztelése, vagy jelölje meg egy egyéni példány le szeretné, ha egy [hálózati biztonsági csoportok](../virtual-network/security-overview.md) explicit módon letiltja az állapotminta (célport vagy [forrás IP-cím](#probesource)), és szimulálhatja a Hiba történt a mintavétel.
 
 A Microsoft tulajdonában lévő, amely tartalmazza a 168.63.129.16 IP-címtartomány nem konfigurálja a virtuális hálózathoz.  Az ilyen konfigurációk fog ütköznek az állapotminta IP-címét, és okozhat a forgatókönyvben sikertelen lesz.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495366"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653917"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight alkalmazást is telepítheti egy Linux-alapú HDInsight-fürtön. Ebből a cikkből megtudhatja, hogyan HDInsight alkalmazás közzététele az Azure piactéren. Az Azure Marketplace közzétételi kapcsolatos általános információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md).
@@ -53,7 +53,7 @@ Két lépést is igényel, az alkalmazás-közzététel a piactéren. Először 
 ## <a name="application-installation-script"></a>Alkalmazás telepítési parancsfájlt
 Ha az alkalmazás telepítve van egy fürtön (vagy egy meglévő fürthöz, vagy egy új), egy élcsomópontot jön létre. Az alkalmazás telepítési parancsfájlt futtat az élcsomóponthoz.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Az alkalmazás telepítési parancsfájl neve az adott fürt egyedinek kell lennie. A szkript neve a következő formátumban kell rendelkeznie:
   > 
   > "name": "[concat (" hue-install-v0 ','-', uniquestring('applicationName')] "
@@ -81,9 +81,8 @@ Hozzon létre egy .zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepí
 * mainTemplate.json (egy minta: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).)
 * Az összes szükséges szkriptek
 
-> [!NOTE]
+> [!NOTE]  
 > Az alkalmazás fájljai (beleértve a webes alkalmazás fájlok) bármilyen nyilvánosan elérhető végponton is üzemeltethet.
-> 
 
 ## <a name="publish-the-application"></a>Az alkalmazás közzététele
 Egy HDInsight-alkalmazás közzététele:

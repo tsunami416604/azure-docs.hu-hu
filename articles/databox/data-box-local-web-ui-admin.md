@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/11/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: c0793cd4adc5359aaa2282eb2505c257315c056f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093884"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793393"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>A Data Box felügyelete a helyi webes felhasználói felülettel
 
@@ -25,8 +25,7 @@ A cikk az alábbi oktatóanyagokat tartalmazza:
 
 - Támogatási csomag létrehozása
 - Az eszköz leállítása és újraindítása
-- Adatok biztonságos törlése az eszközön
-- Az eszköz rendelkezésre álló kapacitásának monitorozása
+- Az eszköz rendelkezésre álló kapacitásának megtekintése
 - Ellenőrzőösszeg-érvényesítés kihagyása 
 
 ## <a name="generate-support-package"></a>Támogatási csomag létrehozása

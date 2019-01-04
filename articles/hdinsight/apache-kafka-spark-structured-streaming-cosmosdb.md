@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c35082d7aa1e9d669bc9c5b89948f190d3edd2f3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014531"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630160"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Az Apache Spark strukturált Stream az Apache Kafka és Azure Cosmos DB használata
 
@@ -24,7 +24,7 @@ Ismerje meg, hogyan használható [Apache Spark](https://spark.apache.org/) [str
 
 A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. A strukturált Streamelésről további információkért lásd: a [strukturált Streamelés programozási útmutató](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) az Apache.org webhelyen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ebben a példában a HDInsight 3.6-os Spark 2.2 használja.
 >
 > A dokumentum lépései olyan Azure-erőforráscsoportot hoznak létre, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
@@ -37,7 +37,7 @@ Az Apache Kafka on HDInsight nem nyújt hozzáférést a Kafka-közvetítőkhöz
 
 ![Azure virtuális hálózatban lévő Spark- és Kafka-fürtök ábrája](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > A Kafka szolgáltatás a virtuális hálózaton belüli kommunikációra van korlátozva. A fürtön lévő többi szolgáltatás, például az SSH és az Ambari az interneten keresztül is elérhető. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
 Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtök manuális, egyszerűbb legyen a használata az Azure Resource Manager-sablon. Az alábbi lépések segítségével üzembe helyezése az Azure virtuális hálózat, a Kafka és Spark-fürtök az Azure-előfizetéshez.
@@ -58,46 +58,46 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
     * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
 
-        > [!NOTE]
+        > [!NOTE]  
         > A sablon által létrehozott virtuális hálózat a 10.0.0.0/16 címteret használja.
 
     * Egy Azure Cosmos DB SQL API-adatbázis.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Az ebben a példában használt strukturált stream a Spark on HDInsight 3.6-os verzióját igényli. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. Az alábbi információk segítségével feltöltik a a **egyéni üzembe helyezés** szakaszban:
    
     ![HDInsight-egyéni üzembe helyezés](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
 
-    * **Előfizetés**: Válassza ki az Azure-előfizetést.
+    * **Előfizetés**: Válassza ki az Azure-előfizetését.
    
-    * **Erőforráscsoport**: hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
+    * **Erőforráscsoport**: Hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
 
-    * **Hely**: válasszon, földrajzilag közeli helyet.
+    * **Hely**: Válasszon egy helyet, földrajzilag közel.
 
-    * **Cosmos DB-fiók nevét**: ezt az értéket használja, a Cosmos DB-fiók nevét.
+    * **A cosmos DB-fiók neve**: Ez az érték a Cosmos DB-fiók neve lesz.
 
-    * **Fürt neve alapján**: ezt az értéket használja, a Spark alapnevét, és a Kafka-fürtök. Ha például **myhdi** nevű egy Spark-fürtöt hoz létre __spark-myhdi__ és a egy nevű Kafka-fürt **kafka-myhdi**.
+    * **Fürt neve alapján**: Ez az érték a Spark és Kafka-fürtök alapnevét szolgál. Ha például **myhdi** nevű egy Spark-fürtöt hoz létre __spark-myhdi__ és a egy nevű Kafka-fürt **kafka-myhdi**.
 
     * **Fürt verziója**: A HDInsight-fürt verziója.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Ebben a példában a HDInsight 3.6-os szolgáltatás tesztelése, és egyéb fürttípusok esetleg nem fog.
 
-    * **A fürt bejelentkezési név**: a Spark és Kafka-fürtök rendszergazdai felhasználóneve.
+    * **A fürt bejelentkezési név**: Az a Spark és Kafka-fürtök rendszergazdai felhasználójának neve.
 
-    * **A fürt bejelentkezési jelszavának**: a Spark és Kafka-fürtök rendszergazdai felhasználójának jelszava.
+    * **A fürt bejelentkezési jelszavának**: A Spark és Kafka-fürtök rendszergazdai felhasználójának jelszava.
 
-    * **SSH-felhasználónév**: az SSH-felhasználó, a Spark és Kafka-fürtök létrehozása.
+    * **SSH-felhasználónév**: Az SSH-felhasználó számára a Spark és Kafka-fürtök létrehozásához.
 
-    * **SSH-jelszó**: a Spark és Kafka-fürtök az SSH-felhasználó jelszavát.
+    * **SSH jelszó**: A Spark és Kafka-fürtök az SSH-felhasználó jelszavát.
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
 4. Végül válassza **beszerzési**. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A fürtök, a virtuális hálózat és a Cosmos DB-fiók létrehozása akár 45 percig is eltarthat.
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>A Cosmos DB-adatbázis és gyűjtemény létrehozása
@@ -140,7 +140,7 @@ A dokumentum végpont és az elsődleges kulcsra az alábbi szöveghez hasonlít
 "YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A végpont és a kulcs értékeit, mentse a Jupyter notebookok a szükség van rájuk.
 
 ## <a name="get-the-apache-kafka-brokers"></a>Az Apache Kafka-közvetítőkhöz beolvasása
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > A Bash példa vár `$CLUSTERNAME` tartalmazza a Kafka-fürt nevére.
 >
 > Ez a példa a [jq](https://stedolan.github.io/jq/) elemezni az adatokat a JSON-dokumentum segédprogramot.

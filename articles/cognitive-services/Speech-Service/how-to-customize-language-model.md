@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Nyelvi modell létrehozása a Speech Service segítségével'
+title: 'Oktatóanyag: Nyelvi modell létrehozása a Speech szolgáltatással'
 titlesuffix: Azure Cognitive Services
 description: Megismerheti a nyelvi modellek létrehozását a Speech Service segítségével. A Microsoft meglévő állapota-a-a legújabb beszédmodellekké együtt a testreszabott nyelvi modell használatával beszédfelismerési interakció hozzáadása az alkalmazáshoz.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e65fa21eefcc103f553f8e1bc47792ac372c59e3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093462"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975440"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Oktatóanyag: Egyéni nyelvi modell létrehozása
 
@@ -100,9 +100,7 @@ Bármely művelet elvégzése előtt ki kell választani a megfelelő területi 
 
 A Create Language Model (Nyelvi modell létrehozása) lapon a **Name** (Név) és a **Description** (Leírás) mezők kitöltésével követheti nyomon a modellel kapcsolatos információkat, például azt, hogy milyen adatkészletet használ. Ezután válassza ki a legördülő menü **Base Language Model** (Alap nyelvi modell) elemét. Ez a modell szolgál a testreszabás kiindulópontjaként.
 
-Két alap nyelvi modell közül választhat. A Search and Dictation (Keresési és diktálási) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. A Conversational (Beszélgetési) modell a beszélgetési stílusban elhangzott beszélgetések feldolgozására való. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el.
-
-A Search and Dictation (Keresési és diktálási) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. A Conversational (Beszélgetési) modell a beszélgetési stílusban elhangzott beszélgetések feldolgozására való. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el. Egy új, „Universal” (Univerzális) nevű modell is általánosan elérhetővé vált. A Universal (Univerzális) modell célja, hogy a használatával minden beszédhelyzet kezelhető legyen, és a jövőben felváltsa a Search and Dictation (Keresési és diktálási) és Conversational (Beszélgetési) modelleket.
+Két alap nyelvi modell közül választhat. A Search and Dictation (Keresési és diktálási) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. A Conversational (Beszélgetési) modell a beszélgetési stílusban elhangzott beszélgetések feldolgozására való. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el. Egy új, „Universal” (Univerzális) nevű modell is általánosan elérhetővé vált. A Universal (Univerzális) modell célja, hogy a használatával minden beszédhelyzet kezelhető legyen, és a jövőben felváltsa a Search and Dictation (Keresési és diktálási) és Conversational (Beszélgetési) modelleket.
 
 A következő példában látható módon, az alap nyelvi modell kiválasztása után a **Language Data** (Nyelvi adatok) legördülő menüből válassza ki azt a nyelvi adatkészletet, amelyet a testreszabáshoz szeretne használni.
 

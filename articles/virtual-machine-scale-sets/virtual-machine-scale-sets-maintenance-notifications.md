@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270132"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546861"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>A virtual machine scale sets tervezett karbantartásával kapcsolatos értesítések
 
@@ -32,7 +32,7 @@ Az Azure rendszeresen végez javítása, a megbízhatóság, teljesítmény és 
 
 Tervezett karbantartás, hogy újra kell indítani a regisztrálást megelőző szakaszban tanácsos van ütemezve. Egyes szakaszokban eltérő hatókörbe (régió) rendelkezik:
 
-- A szakasz egy értesítés azoknak az ügyfeleknek kezdődik. Alapértelmezés szerint az előfizetés tulajdonosa és a társtulajdonosok értesítést küld. Hozzáadhat címzetteket és üzenetküldési lehetőségeket, például e-mail, SMS és webhookok az értesítéseket az Azure [tevékenységnapló-riasztásokba](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).  
+- A szakasz egy értesítés azoknak az ügyfeleknek kezdődik. Alapértelmezés szerint az előfizetés tulajdonosa és a társtulajdonosok értesítést küld. Hozzáadhat címzetteket és üzenetküldési lehetőségeket, például e-mail, SMS és webhookok az értesítéseket az Azure [tevékenységnapló-riasztásokba](../azure-monitor/platform/activity-logs-overview.md).  
 - Az értesítés egy *önkiszolgáló ablak* szeretné elérhetővé tenni. Ezen időszak alatt találja, amely a virtuális gépek szerepelnek a wave. Proaktív módon elindítható a karbantartás ütemezési igény szerint.
 - Az önkiszolgáló ablak után egy *ütemezett karbantartási időszaknál* kezdődik. Ezen időszak alatt bármikor Azure ütemezi, és a szükséges karbantartás a virtuális Gépre vonatkozik. 
 
@@ -95,7 +95,7 @@ A **önkiszolgáló karbantartási** oszlop most már a virtual machine scale se
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Értesítések és riasztások a portálon
 
-Az Azure tervezett karbantartási ütemezés egy e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport kommunikál. Adhat hozzá címzetteket és csatornák a kommunikáció tevékenységnapló-riasztások létrehozásával. További információkért lásd: [figyelése az Azure-tevékenységnapló előfizetés](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Az Azure tervezett karbantartási ütemezés egy e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport kommunikál. Adhat hozzá címzetteket és csatornák a kommunikáció tevékenységnapló-riasztások létrehozásával. További információkért lásd: [figyelése az Azure-tevékenységnapló előfizetés](../azure-monitor/platform/activity-logs-overview.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza ki a **figyelő**. 

@@ -9,15 +9,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496867"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631821"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
-Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](http://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](http://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
+Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](https://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](https://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
 
 Nem csak az SCP-projekt már a Windows-alapú Storm, de is hozzá a projekthez, bővítmények és a Windows-ökoszisztéma testreszabást. A bővítmények közé tartozik a .NET-fejlesztők számára, és a szalagtárak, a Testreszabás tartalmazza a Windows-alapú központi telepítés. 
 
@@ -309,7 +309,7 @@ A ISCPBatchBolt, kapunk `StormTxAttempt` a `parms`, és ennek segítségével me
 
 A szolgáltatáskapcsolódási pont beépülő modulok általánosan fogalmazva, itt két módban futhat:
 
-1. Helyi vizsgálati mód: Ebben a módban a szolgáltatáskapcsolódási pont beépülő modulok (a C\# felhasználói kód) Visual Studio rendszerén belül a fejlesztési fázis során futtassa. `LocalContext` Ebben a módban a kibocsátott rekordokat tartalmazó helyi fájlokba történő szerializálásához módszer, olvassa el őket vissza a memóriát biztosít használható.
+1. Tesztcélú helyi mód: Ebben a módban a szolgáltatáskapcsolódási pont beépülő modulok (a C\# felhasználói kód) Visual Studio rendszerén belül a fejlesztési fázis során futtassa. `LocalContext` Ebben a módban a kibocsátott rekordokat tartalmazó helyi fájlokba történő szerializálásához módszer, olvassa el őket vissza a memóriát biztosít használható.
    
         public interface ILocalContext
         {
@@ -317,7 +317,7 @@ A szolgáltatáskapcsolódási pont beépülő modulok általánosan fogalmazva,
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. Normál módú: Ebben a módban a szolgáltatáskapcsolódási pont beépülő modulok indult storm java folyamat.
+2. Normál módú: Ebben a módban a szolgáltatáskapcsolódási pont beépülő modulok storm java folyamat indul el.
    
     Íme egy példa SCP beépülő modul elindítása:
    
@@ -346,7 +346,7 @@ A szolgáltatáskapcsolódási pont beépülő modulok általánosan fogalmazva,
         }
 
 ## <a name="topology-specification-language"></a>Topológia specifikációs nyelv
-Szolgáltatáskapcsolódási pont topológia meghatározása az egy tartomány-specifikus nyelv, kivizsgáljuk a problémát, és az SCP topológiák konfigurálásához. A Storm Clojure DSL-alapú (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) és az SCP bővített.
+Szolgáltatáskapcsolódási pont topológia meghatározása az egy tartomány-specifikus nyelv, kivizsgáljuk a problémát, és az SCP topológiák konfigurálásához. A Storm Clojure DSL-alapú (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) és az SCP bővített.
 
 Közvetlenül a storm-fürt végrehajtási keresztül küldheti topológia specifikációk a ***runspec*** parancsot.
 

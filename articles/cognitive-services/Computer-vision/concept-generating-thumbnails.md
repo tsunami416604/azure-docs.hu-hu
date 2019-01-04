@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 371fa639b2edc300e44cc495393e89c9fce9c4bf
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966738"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580858"
 ---
-# <a name="generating-thumbnails"></a>Miniatűrök létrehozása
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>A Computer Vision intelligens csonkolva miniatűrök létrehozása
 
 A miniatűr kép csökkentett méretű reprezentációját. Miniatűr képeket és egyéb adatokat képviselő gazdaságosabb, elrendezés mobilbarát lehetővé szolgálnak. A Computer Vision API használatával intelligens levágás, a kép átméretezése együtt egy adott rendszerképhez intuitív miniatűrök létrehozása.
 
@@ -42,9 +43,9 @@ Az alábbi táblázat a példában képek a Computer Vision által generált tip
 
 | Kép | Miniatűr |
 |-------|-----------|
-|![Hegyvidéki tájkép](./Images/mountain_vista.png) | ![Öltözet hegyi miniatűrje](./Images/mountain_vista_thumbnail.png) |
-|![Virág képe vizuális elemzéshez](./Images/flower.png) | ![Vizuális elemzése Flower miniatűrje](./Images/flower_thumbnail.png) |
-|![Nő a tetőn](./Images/woman_roof.png) | ![Nőről tető miniatűrje](./Images/woman_roof_thumbnail.png) |
+|![Egy személy állandó az egy Hegyi rock napnyugta:](./Images/mountain_vista.png) | ![Öltözet hegyi miniatűrje](./Images/mountain_vista_thumbnail.png) |
+|![Egy zöld hátterű fehér flower](./Images/flower.png) | ![Vizuális elemzése Flower miniatűrje](./Images/flower_thumbnail.png) |
+|![Egy nő a tető egy apartman épület](./Images/woman_roof.png) | ![Nőről tető miniatűrje](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>További lépések
 

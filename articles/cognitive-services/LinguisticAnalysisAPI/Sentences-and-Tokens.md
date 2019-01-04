@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 96c2bd1c11554481e441662a6051620f4b2e2993
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237874"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972362"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Mondatok szétválasztása és lexikális elemzése
 
 > [!IMPORTANT]
-> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
+> A Linguistic Analysis előzetes verzióját 2018. augusztus 9-én visszavontuk. A szövegek feldolgozásához és elemzéséhet az [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) javasoljuk használni.
 
 ## <a name="background-and-motivation"></a>Háttér-információkért és motiváció
 
@@ -75,4 +75,4 @@ Ez a jogkivonatok lehetővé teszi számunkra az kezelni a word *nem* és a kife
 ## <a name="specification"></a>Specifikáció
 
 Fontos konzisztens döntéseket mondatok és a egy token foglalja magában.
-Hogy támaszkodnak az specifikációt a a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (További részletekért ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html érhető el).
+Hogy támaszkodnak az specifikációt a a [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) (További részletekért ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html érhető el).

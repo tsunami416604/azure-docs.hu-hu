@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 11/28/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 84924900403a4aa2a65143c65a0b26f2c95a1e5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 00c4d750d0617d36ab476719ce31c8038065511c
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962647"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807210"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-regisztráció
 Regisztrálhat az Azure Stack Development Kit (ASDK) telepítése az Azure marketplace-elemek letöltése az Azure-ból, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Regisztráció teljes Azure Stack-funkciók, többek között a piactér tartalomtípus-gyűjtési támogatásához szükséges. Regisztrációs ajánlott, mivel lehetővé teszi, hogy tesztelje fontos Azure Stack-funkciók, például a Marketplace-en tartalomtípus-gyűjtési és használati jelentések készítése. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati. Láthatja a regisztráció során használt előfizetés alatt. Azonban ASDK felhasználók nem számítunk fel díjat minden használati jelentést.
@@ -69,7 +69,7 @@ Kövesse az alábbi lépéseket a ASDK regisztrálni az Azure-ral.
     -RegistrationName $RegistrationName `
     -UsageReportingEnabled:$true
     ```
-3. Miután a parancsfájl futása befejeződött, megjelenik ez az üzenet: **környezete már regisztrálva van, és aktiválta a megadott paraméterekkel.**
+3. Miután a parancsfájl futása befejeződött, az üzenetnek kell megjelennie: **A környezet már regisztrálva van, és aktiválta a megadott paraméterekkel.**
 
     ![A környezet már regisztrálva van](media/asdk-register/1.PNG)
 
@@ -201,21 +201,21 @@ Másik lehetőségként használhatja a **Get-tartalom** parancsmagot, hogy a re
 Az aktiválás befejeződése után üzenetnek kell megjelennie egy hasonló **a környezet a regisztrációs és aktiválási folyamat befejeződött.**
 
 ## <a name="verify-the-registration-was-successful"></a>Ellenőrizze a regisztráció sikeres volt
-Kövesse az alábbi lépéseket, ellenőrizze, hogy a ASDK regisztráció az Azure-ral **csatlakoztatott környezetekben** sikeres volt-e.
+
+Használhatja a **régiók kezelése** csempére kattintva ellenőrizze, hogy az Azure Stack-regisztráció sikeres volt-e. Ez a csempe nem érhető el az alapértelmezett irányítópult, a felügyeleti portálon.
 
 1. Jelentkezzen be a [Azure Stack felügyeleti portálon](https://adminportal.local.azurestack.external).
 
-2. Kattintson a **Marketplace felügyeleti** > **hozzáadása az Azure-ból**.
+2. Az irányítópulton, válassza ki a **régiók kezelése**.
 
-    ![](media/asdk-register/2.PNG)
+    [ ![Régió felügyeleti csempe](media/asdk-register/admin1sm.png "régió felügyeleti csempe") ](media/asdk-register/admin1.png#lightbox)
 
-3. Ha látja az Azure-ból elérhető elemek listáját, az aktiválás sikeres volt.
-
-    ![](media/asdk-register/3.PNG)
+3. Válassza ki **tulajdonságok**. Ezen a panelen látható, az állapot és a környezet sajátosságait. Az állapot lehet **regisztrált** vagy **nincs regisztrálva**. Ha regisztrált, azt is bemutatja az Azure-előfizetés azonosítója segítségével regisztrálja az Azure Stack, a regisztrációs erőforráscsoportot és a neve mellett.
 
 ## <a name="move-a-registration-resource"></a>Regisztrációs erőforrás áthelyezése
 Regisztrációs erőforrás ugyanahhoz az előfizetéshez tartozó erőforráscsoportok közötti áthelyezése **van** támogatott. Erőforrások áthelyezése új erőforráscsoport kapcsolatos további információkért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 
 ## <a name="next-steps"></a>További lépések
-[Azure Stack piactéren elem hozzáadása](../azure-stack-marketplace.md)
+
+- [Azure Stack piactéren elem hozzáadása](../azure-stack-marketplace.md)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243162"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974046"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
 
@@ -150,7 +150,7 @@ MetaMask telepítés után nyissa meg a böngészőben a Cégirányítási DApp.
 #### <a name="becoming-an-admin"></a>Egy rendszergazda neve
 Ha Ön az első olyan tag a hálózaton telepített, ezután automatikusan Ön lesz egy rendszergazda, és a paritásos csomópontok érvényesítők fog szerepelni.  Ha, amelyhez csatlakozik a hálózathoz, szüksége lesz első szavazó rendszergazdai többsége (több mint 50 %-a) a meglévő rendszergazda.  Ha úgy dönt, hogy nem rendszergazdai válik, akkor a csomópont továbbra is szinkronizálása, és nem a blockchain; ellenőrzése azonban ezek nem vesz részt a blokk létrehozását. Rendszergazdai lesz a szavazási folyamat elindításához kattintson __Nominate__ és az Ethereum-címet és egy alias.
 
-![Kijelölés](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
+![Jelölés](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
 #### <a name="candidates"></a>Jelöltek
 Válassza a __jelöltek__ lapon megjelenik az aktuális készletét jelölt rendszergazdák.  Ha egy jelentkező elérte a jelenlegi rendszergazdák többsége szavazat, a jelölt előléptetni egy rendszergazdának beolvasása  Szavazzon egy jelölt, válassza ki a sort, majd kattintson a "Szavazati" tetején.  Ha meggondolja magát a szavazás, válassza ki a jelölt, és kattintson a "Rescind vote".
@@ -198,7 +198,7 @@ Ehhez a folyamathoz szükséges Azure-előfizetést is támogatja a több virtu�
 
 Miután egy előfizetést védett, nyissa meg az Azure Portalon. Jelölje be "+", a piactér ("összes megjelenítése"), és keresse meg a Ethereum PoA Consortium.
 
-Az alábbi szakasz végigvezeti az első tagtól erőforrás-igényű konfigurálása a hálózatban. Az üzembe helyezési folyamat öt lépést oszlik: alapjait, üzembe helyezési régiók, a hálózat mérete és a teljesítmény, Ethereum-beállítások, az Azure Monitor.
+Az alábbi szakasz végigvezeti az első tagtól erőforrás-igényű konfigurálása a hálózatban. Az üzembe helyezési folyamat öt lépést oszlik: Alapjait, üzembe helyezési régiók, a hálózat méretétől és a teljesítményt, Ethereum-beállítások, az Azure Monitor.
 
 #### <a name="basics"></a>Alapvető beállítások
 
@@ -273,7 +273,7 @@ Egyes paraméterek részletes leírását a következő:
   Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
 Consortium tag azonosítója|Minden tagja részt vesz a consortium network konfigurálhatók az IP-címterek ütközések elkerülése érdekében társított azonosítója. A privát hálózat esetén Tagazonosító egyedinek kell lennie különböző szervezetekhez ugyanazon a hálózaton keresztül.  Egy egyedi Tagazonosító van szükség, akkor is, ha több régióban telepít ugyanazon a szervezeten belül. Jegyezze meg a paraméter értékét, mivel annak biztosítására ne legyen semmilyen ütközési csatlakozó tagjaival ossza meg kell.|0-255|NA
-Hálózati azonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve.  Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója.|5 – 999,999,999|10101010
+Hálózatazonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve.  Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója.|5 – 999,999,999|10101010
 Rendszergazdai Ethereum-cím|Ethereum fiók címét, amely részt vesz a PoA cégirányítási szolgál.  Az Ethereum-cím generálásához MetaMask használatát javasoljuk.|0 x 42 alfanumerikus karakterek|NA
 Speciális beállítások|Speciális beállítások Ethereum-beállítások|Engedélyezése vagy letiltása|Letiltás
 Nyilvános IP-cím (Speciális beállítások = engedélyezés)|A hálózati virtuális hálózati átjáró mögött helyezi üzembe, és eltávolítja a társviszony-létesítési hozzáférés. Ha ezt a lehetőséget választja, minden tag kell használnia a kapcsolatot a virtuális hálózati átjáró kompatibilis.|Nyilvános IP-Címek privát virtuális hálózaton|Nyilvános IP-cím
@@ -744,7 +744,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>Az intelligens szerződést is Truffle hibakeresése
 
-Truffle intelligens szerződés hibakeresési elérhető helyi fejlesztés hálózattal rendelkezik. A teljes oktatóanyagban talál [Itt](http://truffleframework.com/tutorials/debugging-a-smart-contract).
+Truffle intelligens szerződés hibakeresési elérhető helyi fejlesztés hálózattal rendelkezik. A teljes oktatóanyagban talál [Itt](https://truffleframework.com/tutorials/debugging-a-smart-contract).
 
 ### <a name="webassembly-wasm-support"></a>WebAssembly (WASM) támogatása
 

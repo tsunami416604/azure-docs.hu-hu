@@ -17,12 +17,12 @@ ms.date: 09/14/2018
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f47faaf5c0536ce7041e00686d630427c72771aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a7034e65b0c1e804326e5c087b320f8e7ffde907
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426084"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557094"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Az Azure Active Directory 2.0-s verziójú hitelesítési kódtárai
 
@@ -37,15 +37,15 @@ Javasoljuk, hogy használja-e hajtsa végre a biztonságos fejlesztési Életcik
 
 Az Azure AD v2.0-végpont működik együtt könyvtárak két típusa:
 
-* **Ügyfélkódtárak**: natív ügyfelek és kiszolgálók használatával klienskódtárak lekérése egy erőforráshoz, például a Microsoft Graph hívásakor vonatkozó hozzáférési jogkivonatait.
-* **Server közbenső könyvtárak**: Web apps server közbenső kódtárak használata a felhasználói bejelentkezés. Webes API-k server közbenső könyvtárak használatával natív ügyfelek vagy más kiszolgálók által küldött jogkivonatainak érvényesítéséhez.
+* **Ügyfélkódtárak**: Natív ügyfelek és kiszolgálók klienskódtárak használatával lekérése egy erőforráshoz, például a Microsoft Graph hívásakor vonatkozó hozzáférési jogkivonatait.
+* **Server közbenső könyvtárak**: A felhasználói bejelentkezés kiszolgáló közbenső kódtárakat használó webalkalmazások. Webes API-k server közbenső könyvtárak használatával natív ügyfelek vagy más kiszolgálók által küldött jogkivonatainak érvényesítéséhez.
 
 ## <a name="library-support"></a>Klienskódtár-támogatásával
 
 Szalagtárak érkeznek két támogatási kategóriákban:
 
-* **A Microsoft által támogatott**: Microsoft javításokat nyújt ezek a kódtárak és SDL végzett szerkezetkialakításra, ezek a könyvtárak a.
-* **Kompatibilis**: a Microsoft tesztelte ezek a kódtárak alapszintű forgatókönyvekben és megerősítette, hogy működnek-e a v2.0-végponttal. A Microsoft nem biztosít javítását, ezek a kódtárak és nem végrehajtva ezek a kódtárak áttekintését. Problémák és a funkciókérések legyen átirányítva a tár nyílt forráskódú projekt.
+* **A Microsoft által támogatott**: A Microsoft javításokat nyújt ezek a kódtárak és SDL végzett szerkezetkialakításra, ezek a könyvtárak a.
+* **Kompatibilis**: A Microsoft tesztelte ezek a kódtárak alapszintű forgatókönyvekben és megerősítette, hogy működnek-e a v2.0-végponttal. A Microsoft nem biztosít javítását, ezek a kódtárak és nem végrehajtva ezek a kódtárak áttekintését. Problémák és a funkciókérések legyen átirányítva a tár nyílt forráskódú projekt.
 
 Tekintse meg a következő szakasz ebben a cikkben, amelyek együttműködnek a v2.0-végpont könyvtárak listáját.
 
@@ -53,8 +53,8 @@ Tekintse meg a következő szakasz ebben a cikkben, amelyek együttműködnek a 
 
 Védett webes API hívása egy token beszerzéséhez használt ügyfél-hitelesítési tárak
 
-| Platform | Erőforrástár | Letöltés | Forráskód | Sample | Leírások | Fogalmi doc | Ütemterv |
-| --- | --- | --- | --- | --- | --- | --- | ---| ---|
+| Platform | Kódtár | Letöltés | Forráskód | Sample | Leírások | Fogalmi doc | Ütemterv |
+| --- | --- | --- | --- | --- | --- | --- | ---|
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js (előzetes verzió) | [NPM](https://www.npmjs.com/package/msal) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [Egyoldalas alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki)|
 |![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
 ![Angular](media/sample-v2-code/logo_angular.png) | Az MSAL Angular(Preview) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
@@ -66,7 +66,7 @@ Védett webes API hívása egy token beszerzéséhez használt ügyfél-hiteles�
 
 Közbenső kódtárak webalkalmazások és webes API-k védelmére használhatók. Webalkalmazás vagy írt az ASP.NET- vagy ASP.NET Core webes API, a közbenső szoftver kódtárak használják az ASP.NET és ASP.NET Core
 
-| Platform | Erőforrástár | Letöltés | Forráskód | Sample | Leírások
+| Platform | Kódtár | Letöltés | Forráskód | Sample | Leírások
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET-biztonság |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[ASP.NET-biztonsági (GitHub)](https://github.com/aspnet/Security) |[MVC-alkalmazás](quickstart-v2-aspnet-webapp.md) |[Az ASP.NET API-referencia](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| A .NET-hez IdentityModel bővítmények| |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-alkalmazás](quickstart-v2-aspnet-webapp.md) |[Referencia](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
@@ -79,7 +79,7 @@ Közbenső kódtárak webalkalmazások és webes API-k védelmére használható
 |![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Java Scribe](https://github.com/scribejava/scribejava) | [Verzió 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
 | ![PHP](media/sample-v2-code/logo_php.png) | [A PHP az NFL oauth2-ügyfél](https://github.com/thephpleague/oauth2-client) | [1.4.2 verziója](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1<br />omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 ![iOS](media/sample-v2-code/logo_iOS.png) |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[Natív alkalmazás minta](active-directory-v2-devquickstarts-ios.md) |
 
 Bármely szabványokkal kompatibilis szalagtár használható a v2.0-végpont, ezért fontos, hogy tudja, hol találhat a támogatást.

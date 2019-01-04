@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436330"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743793"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Az Apache Ambari API-val a HDInsight Apache Hadoop-fürtök monitorozása
 Útmutató a HDInsight-fürtök figyelése Apache Ambari API-k használatával.
 
 > [!NOTE]  
 > Ebben a cikkben található információk az elsősorban a Windows-alapú HDInsight-fürtök az Ambari REST API egyik csak olvasható verzióját. A Linux-alapú fürtök esetén lásd: [kezelése Apache Hadoop-fürtök az Ambari az Apache](hdinsight-hadoop-manage-ambari.md).
-> 
-> 
 
 ## <a name="what-is-ambari"></a>Mi az Ambari?
 [Az Apache Ambari] [ ambari-home] kiépítésére, kezelésére és figyelése Apache Hadoop-fürtök szolgál. Operátori eszközök intuitív gyűjteményét és egy robusztus API-készletet foglal magában, amelyek elfedik a Hadoop összetettségét, és leegyszerűsítik a fürtök működését. Az API-k kapcsolatos további információkért lásd: [Ambari API-referencia][ambari-api-reference]. 
@@ -38,8 +36,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
   
   > [!NOTE]  
   > Ha használja a cURL-parancsot a Windows, egyszeres idézőjelek lehetőség az értékek helyett használja idézőjelek közé.
-  > 
-  > 
+
 * **Egy Azure HDInsight-fürt**. Útmutatás a fürtök kiépítése: [HDInsight használatának első lépései] [ hdinsight-get-started] vagy [Provision HDInsight clusters][hdinsight-provision]. A következő adatokat az oktatóanyagot lesz szüksége:
   
   | Fürt tulajdonság | Az Azure PowerShell-változó neve | Érték | Leírás |
@@ -146,13 +143,13 @@ Most már megtanulhatta, hogyan használható a figyelési Apache Ambari API-hí
 * [HDInsight-dokumentáció][hdinsight-documentation]
 * [HDInsight – első lépések][hdinsight-get-started]
 
-[ambari-home]: http://ambari.apache.org/
+[ambari-home]: https://ambari.apache.org/
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
-[microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
+[microsoft-hadoop-SDK]: https://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx

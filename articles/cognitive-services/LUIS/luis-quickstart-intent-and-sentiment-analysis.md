@@ -1,7 +1,7 @@
 ---
 title: Hangulatelemzés
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhető ki pozitív, negatív vagy semleges érzelem a kimondott szövegekből. A hangulat meghatározása a teljes kimondott szövegből történik.
+description: Ebben az oktatóanyagban létrehoz egy alkalmazást, amely a pozitív, negatív és semleges vélemények lekérését a kimondott szöveg. A hangulat meghatározása a teljes kimondott szövegből történik.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,56 +9,64 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: e556b63fbe6bf1fe89672ee3aad4b7c9191233c5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ee50907d7965a66d09dc57113e87edecb1932083
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727632"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754288"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>9. oktatóanyag:  Bontsa ki a témáról általános utterance (kifejezés)
-Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhető ki pozitív, negatív vagy semleges érzelem a kimondott szövegekből. A hangulat meghatározása a teljes kimondott szövegből történik.
+# <a name="tutorial--get-sentiment-of-utterance"></a>Oktatóanyag:  Vélemények az utterance (kifejezés) beolvasása
 
-A hangulatelemzés az a képesség, amellyel megállapítható, hogy egy felhasználó által kimondott szöveg pozitív, negatív, vagy semleges. 
+Ebben az oktatóanyagban hozzon létre egy alkalmazást, amely bemutatja, hogyan pozitív, negatív és semleges kimondott szöveg hangulatának megállapításához. A hangulat meghatározása a teljes kimondott szövegből történik.
+
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Új alkalmazás létrehozása
+> * Hangulatelemzés hozzáadása közzétételi beállításként
+> * Alkalmazás betanítása
+> * Alkalmazás közzététele
+> * Kimondott szöveg hangulatának lekérése végpontból
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="sentiment-analysis-is-a-publish-setting"></a>Hangulatelemzés a publish beállítást
 
 Az alábbi kimondott szövegek a különböző hangulatokat példázzák:
 
 |Hangulat|Pontszám|Kimondott szöveg|
 |:--|:--|:--|
 |pozitív|0,91 |John W. Smith remek prezentációt tartott Párizsban.|
-|pozitív|0,84 |jill-jones@mycompany.com nagyszerű munkát végzett a Parker befektetői bemutatón.|
+|pozitív|0,84 |A Seattle mérnökök a Parker felébresztve ünnepi munka volt.|
 
-A hangulatelemzés egy olyan közzétételi beállítás, amely minden kimondott szövegre vonatkozik. Önnek nem kell megkeresnie és felcímkéznie a hangulatot kifejező szavakat a kimondott szövegekben, mert a hangulatelemzés a teljes kimondott szövegre vonatkozik. 
+A hangulatelemzés egy olyan közzétételi beállítás, amely minden kimondott szövegre vonatkozik. Nem rendelkezik az utterance (kifejezés) a vélemények jelző szó, és jelölje meg őket. 
 
 Mivel ez közzétételi beállítás, a szándékok vagy az entitások oldalán nem jelenik meg; az [interaktív teszt](luis-interactive-test.md#view-sentiment-results) panelen vagy a végpont URL-címén való teszteléskor látható. 
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata 
-> * Hangulatelemzés hozzáadása közzétételi beállításként
-> * Betanítás
-> * Közzététel
-> * Kimondott szöveg hangulatának lekérése végpontból
+## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+## <a name="add-personname-prebuilt-entity"></a>Adja hozzá a PersonName előre összeállított entitások 
 
-Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben.
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json).
+1. Válassza az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) gombot.
 
-2. Importálja a JSON-t egy új alkalmazásba.
+1. Adja meg a következő entitást előre összeállított entitások listájából, majd válassza ki **kész**:
 
-3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `sentiment` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
+    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-## <a name="employeefeedback-intent"></a>Az EmployeeFeedback szándék 
+    ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+
+## <a name="create-an-intent-to-determine-employee-feedback"></a>Egy alkalmazott visszajelzés meghatározásához leképezésének létrehozása
+
 Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti visszajelzések rögzítéséhez. 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
@@ -71,122 +79,66 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
 
 4. Adja hozzá több kimondott szöveget, amelyek azt jelzik, hogy az alkalmazott valamit jól végzett el, vagy amelyek olyan területet jelölnek, ahol fejlődni kell:
 
-    Ne feledje, az Emberi erőforrások alkalmazásban az alkalmazottak az `Employee` listaentitásban vannak meghatározva, név, e-mail-cím, telefonmellék, mobiltelefonszám, és az USA-beli szövetségi társadalombiztosítási szám alapján. 
-
     |Beszédmódok|
     |--|
-    |425-555-1212 szépen üdvözölte a szülési szabadságról visszatérő munkatársat|
-    |234-56-7891 vigaszt nyújtott gyászoló munkatársa számára.|
-    |jill-jones@mycompany.com nem rendelkezik a papírmunkához szükséges számlákkal.|
-    |john.w.smith@mycompany.com egy hónap késéssel adta le a szükséges nyomtatványokat, aláírások nélkül|
-    |x23456 nem ért oda a fontos, külső helyszínen tartott marketing értekezletre.|
-    |x12345 nem jelent meg a júniusi felülvizsgálatokat ismertető értekezleten.|
-    |Jill Jones nagyszerű befektetési bemutatót tartott a Harvardon|
-    |John W. Smith remek prezentációt tartott a Stanfordon|
+    |John Smith fejeződött üdvözlő vissza nagyszerű feladat egy munkatársnak a szülési|
+    |Jill Jones egy remek, egy munkatársnak tőkeösszegű szeretteink az időt a volt.|
+    |Bob Barnes nem kell minden szükséges számláit a dokumentumokat.|
+    |A szükséges nyomtatványokat aláírás nélküli késői havonta Todd Thomas kapcsolva|
+    |Katherine Tibor kezdeményezte, a fontos marketing külső helyszínen lévő értekezletre.|
+    |Farkas Dillard az értekezlet június felülvizsgálatok nem talált.|
+    |Megjelölés Mathews rocked a felébresztve Harvard:|
+    |Walter Williams volt egy remek, Stanford bemutatása|
 
     [ ![A LUIS-alkalmazás képernyőképe: kimondott példaszövegek az EmployeeFeedback szándékban](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train"></a>Betanítás
+## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Alkalmazás konfigurálása hangulatelemzés belefoglalásához
+
 1. Válassza a **Manage** (Kezelés) lehetőséget a jobb felső navigációs területen, majd a **Publish settings** (Közzétételi beállítások) elemet a bal oldali menüben.
 
-2. A beállítás engedélyezéséhez kapcsolja be a **hangulatelemzést**. 
+1. Válassza ki **Hangulatelemzés** a beállítás engedélyezése. 
 
     ![Hangulatelemzés bekapcsolása közzétételi beállításai](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-## <a name="publish"></a>Közzététel
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-sentiment-of-utterance-from-endpoint"></a>Kimondott szöveg hangulatának lekérése végpontból
+## <a name="get-the-sentiment-of-an-utterance-from-the-endpoint"></a>A végpont jelöli az utterance (kifejezés) beolvasása
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `Jill Jones work with the media team on the public portal was amazing`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia kinyert hangulatelemzéssel: `EmployeeFeedback`.
+1. Lépjen az URL-cím végéhez, és írja be a következőt: `Jill Jones work with the media team on the public portal was amazing`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia kinyert hangulatelemzéssel: `EmployeeFeedback`.
     
     ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {
         "intent": "EmployeeFeedback",
-        "score": 0.4983256
+        "score": 0.9616192
       },
       "intents": [
         {
           "intent": "EmployeeFeedback",
-          "score": 0.4983256
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.06617523
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.04631853
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0103248553
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.007531875
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00344597152
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00337914471
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.0026357458
+          "score": 0.9616192
         },
         {
           "intent": "None",
-          "score": 0.00214573368
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00157622492
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 7.379545E-05
+          "score": 0.09347677
         }
       ],
       "entities": [
         {
           "entity": "jill jones",
-          "type": "Employee",
-          "startIndex": 0,
-          "endIndex": 9,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
-        },
-        {
-          "entity": "media team",
-          "type": "builtin.keyPhrase",
-          "startIndex": 25,
-          "endIndex": 34
-        },
-        {
-          "entity": "public portal",
-          "type": "builtin.keyPhrase",
-          "startIndex": 43,
-          "endIndex": 55
-        },
-        {
-          "entity": "jill jones",
-          "type": "builtin.keyPhrase",
+          "type": "builtin.personName",
           "startIndex": 0,
           "endIndex": 9
         }
@@ -198,11 +150,19 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
     }
     ```
 
-    A SentimentAnalysis pozitív, 0,86 értékű pontszámmal. 
+    A sentimentAnalysis-egy pontszám 86 %-os pozitívnak kell lennie. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>Kapcsolódó információk
+
+* Hangulatelemzés a Cognitive Services-szolgáltatás által biztosított [Szövegelemzés](../Text-Analytics/index.yml). A szolgáltatás korlátozódik, Szövegelemzés [támogatott nyelvek](luis-language-support.md##languages-supported).
+* [Hogyan betanítása](luis-how-to-train.md)
+* [Közzétételi útmutató](luis-how-to-publish-app.md)
+* [A LUIS-portál tesztelése](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag közzétételi beállításként hozzáadja a hangulatelemzést, amellyel átfogó hangulatértékek nyerhetők ki a kimondott szövegből.

@@ -9,30 +9,30 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1eab8b248fd8ad42adf8c0a747565fed9bbc14e8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164058"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652557"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Az Apache HBase Java-alkalmazások
 
-Ismerje meg, hogyan hozhat létre egy [Apache HBase](http://hbase.apache.org/) alkalmazás Java-környezetben. Az Azure HDInsight HBase majd használni az alkalmazást.
+Ismerje meg, hogyan hozhat létre egy [Apache HBase](https://hbase.apache.org/) alkalmazás Java-környezetben. Az Azure HDInsight HBase majd használni az alkalmazást.
 
 A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache.org/) hozhat létre, és a projekt buildjének elkészítéséhez. Maven egy szoftverfrissítési projektmenedzsment és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre.
 
-> [!NOTE]
+> [!NOTE]  
 > A jelen dokumentumban leírt lépések legutóbb tesztelt a HDInsight 3.6-ot.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Követelmények
 
 * [A Java platform JDK](https://aka.ms/azure-jdks) 8 vagy újabb.
 
-    > [!NOTE]
+    > [!NOTE]  
     > A HDInsight 3.5-ös és újabb Java 8 van szükség. HDInsight korábbi verzióiban a Java 7 van szükség.
 
 * [Apache Maven](https://maven.apache.org/)
@@ -49,14 +49,14 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha a Powershellt használ, meg kell tenni a `-D` paramétereket a dupla idézőjelek között.
     >
     > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     Ez a parancs létrehoz egy könyvtárat a neve megegyezik a **artifactID** paraméter (**hbaseapp** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
 
-   * **pom.xml**:  A projekt Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
+   * **pom.xml**:  A projekt Object Model ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
    * **src**: A könyvtár, amely tartalmazza a **main/java/com/microsoft/példák** könyvtárat, ahol az alkalmazást hoz létre.
 
 3. Törölje a `src/test/java/com/microsoft/examples/apptest.java` fájlt. Ebben a példában nincs használatban.
@@ -78,9 +78,9 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
     </dependency>
    ```
 
-    Ez a szakasz azt jelzi, hogy kell-e a projekt **hbase-ügyfél** és **phoenix-core** összetevőket. A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven központi tárházban keresési](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
+    Ez a szakasz azt jelzi, hogy kell-e a projekt **hbase-ügyfél** és **phoenix-core** összetevőket. A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven központi tárházban keresési](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > A hbase-ügyfél verziószáma meg kell egyeznie az Apache HBase a HDInsight-fürt a megadott verzióját. A következő táblázat segítségével keresse meg a megfelelő verziószámot.
 
    | HDInsight-fürt verziója | Az Apache HBase verziója |
@@ -88,7 +88,7 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
    | 3.2 |0.98.4-hadoop2 |
    | 3.3-as, 3.4-es, 3.5-ös és 3.6-os |1.1.2 |
 
-    A HDInsight-verziók és -összetevők további információkért lásd: [Mik azok a különböző elérhető, a HDInsight Hadoop-összetevők](../hdinsight-component-versioning.md).
+    A HDInsight-verziók és -összetevők további információkért lásd: [Mik azok a különböző HDInsight elérhető az Apache Hadoop-összetevő](../hdinsight-component-versioning.md).
 
 3. Adja hozzá a következő kódot a **pom.xml** fájlt. Ez a szöveg belül kell lennie a `<project>...</project>` a fájlt, a címkék között például `</dependencies>` és `</project>`.
 
@@ -139,10 +139,10 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
 
     Ebben a szakaszban konfigurálja egy erőforrást (`conf/hbase-site.xml`), amely tartalmazza a konfigurációs adatait a hbase-hez.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Beállíthatja a konfigurációs értékek kód segítségével is. A Megjegyzések a `CreateTable` példa.
 
-    Ez a szakasz is konfigurálja a [Maven fordító beépülő modul](http://maven.apache.org/plugins/maven-compiler-plugin/) és [Maven Shade beépülő modul](http://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez a beépülő modul segítségével egy "ismétlődő licencfájlok" hiba megakadályozza a futási időben, a HDInsight-fürtön. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy a hiba.
+    Ez a szakasz is konfigurálja a [Apache Maven fordító beépülő modul](https://maven.apache.org/plugins/maven-compiler-plugin/) és [Apache Maven Shade beépülő modul](https://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez a beépülő modul segítségével egy "ismétlődő licencfájlok" hiba megakadályozza a futási időben, a HDInsight-fürtön. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy a hiba.
 
     A maven-shade-beépülő modul is az uber jar, amely tartalmazza az alkalmazás számára szükséges összes függőséget hoz létre.
 
@@ -357,7 +357,7 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
 
 2. A parancs befejeződésekor a `hbaseapp/target` könyvtár tartalmaz egy fájlt `hbaseapp-1.0-SNAPSHOT.jar`.
 
-   > [!NOTE]
+   > [!NOTE]  
    > A `hbaseapp-1.0-SNAPSHOT.jar` fájl az uber jar. Az alkalmazás futtatásához szükséges összes függőséget tartalmaz.
 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409541"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807686"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
 
@@ -24,7 +24,7 @@ Miután létrehozott egy [Azure Cosmos DB-fiók](account-overview.md) az Azure-e
 
 A fiók alatt létrehozhat egy vagy több Azure-Cosmos-adatbázis. Egy adatbázis nevű névtér, hanem több Azure-Cosmos-tárolók egysége. Az alábbi táblázat bemutatja, hogyan le van képezve egy Azure Cosmos database különböző API-specifikus entitások:
 
-| **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
 |Az Azure Cosmos-adatbázis | Adatbázis | Kulcstér | Adatbázis | Adatbázis | NA |
 
@@ -35,7 +35,7 @@ A fiók alatt létrehozhat egy vagy több Azure-Cosmos-adatbázis. Egy adatbázi
 
 Egy Azure Cosmos database, az Azure Cosmos következő API-k használatával kezelheti:
 
-| **Művelet** | **Azure CLI**|**SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Művelet** | **Azure CLI**|**SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
 |Minden adatbázis számbavétele| Igen | Igen | Igen (adatbázis le van képezve egy kulcstér) | Igen | NA | NA |
 |Adatbázis olvasása| Igen | Igen | Igen (adatbázis le van képezve egy kulcstér) | Igen | NA | NA |
@@ -67,7 +67,7 @@ Egy egyedi kulcsot az Azure Cosmos-tárolót is megadhat. Hozzon létre egyedi, 
 
 Az Azure Cosmos-tárolókat a következő kifejezetten az API-specifikus entitásokkal:
 
-| **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
 |Az Azure Cosmos-tároló | Gyűjtemény | Tábla | Gyűjtemény | Graph | Tábla |
 
@@ -75,7 +75,7 @@ Az Azure Cosmos-tárolókat a következő kifejezetten az API-specifikus entitá
 
 Egy Azure Cosmos-tárolóhoz egy rendszer által meghatározott tulajdonságkészlettel rendelkezik. A kiválasztott API-t, attól függően némelyike nem lehet közvetlenül téve. A következő táblázat ismerteti a támogatott rendszer által definiált tulajdonságok listája:
 
-| **Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be** | **Cél** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be** | **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__rid | A rendszer által létrehozott | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |__etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
@@ -91,7 +91,7 @@ Egy Azure Cosmos-tárolóhoz egy rendszer által meghatározott tulajdonságkés
 
 Az Azure Cosmos-tárolókat a következő műveletek bármelyikével az Azure Cosmos API-kat támogatja.
 
-| **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A tárolók egy adatbázis számbavétele | Igen* | Igen | Igen | Igen | NA | NA |
 | Egy tároló olvasása | Igen | Igen | Igen | Igen | NA | NA |
@@ -103,7 +103,7 @@ Az Azure Cosmos-tárolókat a következő műveletek bármelyikével az Azure Co
 
 Az API-t a választás, attól függően egy Azure Cosmos-elemet vagy egy dokumentumot egy gyűjtemény egy sort a táblában vagy egy csomópont/edge grafikon hozhat létre. Az alábbi táblázat bemutatja egy Azure Cosmos-elemet az API-specifikus entitások közötti leképezést:
 
-| **Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
 |Az Azure Cosmos-elem | Dokumentum | Sor | Dokumentum | Csomópont- vagy Peremtábla | Elem |
 
@@ -111,7 +111,7 @@ Az API-t a választás, attól függően egy Azure Cosmos-elemet vagy egy dokume
 
 Minden Azure-Cosmos-elem a következő definiált rendszertulajdonsággal rendelkezik. A kiválasztott API-t, attól függően némelyike nem lehet közvetlenül téve.
 
-|**Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be**| **Cél** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+|**Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be**| **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__id | A rendszer által létrehozott | Elem egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |__etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
@@ -124,7 +124,7 @@ Minden Azure-Cosmos-elem a következő definiált rendszertulajdonsággal rendel
 
 Az Azure Cosmos-cikk támogatja a következő műveleteket az Azure Cosmos API-k használatával elvégezhető.
 
-| **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **Tábla API** |
+| **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Helyezze be, cserélje le, törlése, Upsert, olvassa el | Nem | Igen | Igen | Igen | Igen | Igen |
 

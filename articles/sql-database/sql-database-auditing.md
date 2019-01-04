@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 892e4e776479d767326d4895dbf4bd4f30c418b0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971521"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973202"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -175,13 +175,15 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
 Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges adatbázis a másodlagos adatbázis lesz azonos a naplózási házirend. A másodlagos adatbázis naplózásának engedélyezésével naplózásának beállítása lehetőség arra is a **másodlagos kiszolgáló**, függetlenül az elsődleges adatbázisból.
 
-- Kiszolgálószintű (**ajánlott**): kapcsolja be a naplózást is a **elsődleges kiszolgáló** , valamint a **másodlagos kiszolgáló** – az elsődleges és másodlagos adatbázisok mindegyike naplózza egymástól függetlenül azok megfelelő kiszolgálószintű házirend alapján.
-- Adatbázisszintű: A adatbázisszintű naplózása a másodlagos adatbázisok csak az elsődleges adatbázis naplózási beállításait lehet konfigurálni.
+- Kiszolgálószintű (**ajánlott**): Kapcsolja be a naplózást is a **elsődleges kiszolgáló** , valamint a **másodlagos kiszolgáló** – az elsődleges és másodlagos adatbázisok mindegyike naplózva lesz egymástól függetlenül a megfelelő kiszolgálói szintű házirend alapján.
+- Adatbázisszintű: Másodlagos adatbázisok adatbázisszintű naplózása csak konfigurálható az elsődleges adatbázis naplózási beállításait.
   - Naplózás engedélyezve kell lennie a *elsődleges adatbázis*, nem a kiszolgálón.
   - Naplózás engedélyezése után az elsődleges adatbázison, akkor is válik elérhetővé, a másodlagos adatbázison.
 
     >[!IMPORTANT]
     >Az adatbázisszintű naplózást, a másodlagos adatbázis tárolási beállításait lesz megegyeznek az elsődleges adatbázis-régiók közti forgalom okozza. Azt javasoljuk, hogy csak a kiszolgálószintű naplózás engedélyezéséhez, és hagyja meg az adatbázisszintű naplózást az összes adatbázis le van tiltva.
+    > [!WARNING]
+    > Event hub vagy a log analytics használatával célként az auditnaplókhoz a kiszolgáló szintjén jelenleg nem támogatott georeplikált másodlagos adatbázisok.
 
 ### <a id="subheading-6">Tárolás kulcs újragenerálása</a>
 
@@ -220,12 +222,12 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 ## <a id="subheading-7"></a>Az SQL database naplózási Azure PowerShell-lel kezelése
 
-**PowerShell-parancsmagok**:
+**PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)**:
 
-- [Létrehozás vagy frissítés adatbázis Blob naplórend (Set-AzureRMSqlDatabaseAuditing)][105]
-- [Létrehozni vagy frissíteni Server Blob naplórend (Set-AzureRMSqlServerAuditing)][106]
-- [Adatbázis naplózási házirend lekérése (Get-AzureRMSqlDatabaseAuditing)][101]
-- [Kiszolgáló Blob naplózási házirend lekérése (Get-AzureRMSqlServerAuditing)][102]
+- [Létrehozás vagy frissítés adatbázis Blob naplórend (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Létrehozni vagy frissíteni Server Blob naplórend (Set-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing)
+- [Adatbázis naplózási házirend lekérése (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Kiszolgáló Blob naplózási házirend lekérése (Get-AzSqlServerAuditing)](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing)
 
 A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -245,6 +247,14 @@ AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
 - [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
+## <a id="subheading-10"></a>Kezelheti az SQL database naplózási ARM-sablonok használatával
+
+Az Azure SQL database naplózási használata kezelheti [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) sablonok, az alábbi példákban szemléltetett módon:
+
+- [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Azure blob storage-fiók üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni a Log Analytics üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Event Hubs üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1
 [Set up auditing for your database]: #subheading-2
@@ -254,6 +264,7 @@ AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
 [Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
 [Manage SQL database auditing using REST API]: #subheading-9
+[Manage SQL database auditing using ARM templates]: #subheading-10
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
@@ -266,10 +277,3 @@ AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
-
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing

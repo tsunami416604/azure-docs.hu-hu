@@ -11,22 +11,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/15/2018
+ms.date: 12/14/2018
 ms.author: raiye
-ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 94cf90dbc41533b8f5d41a0bdb18e5cdcb7be474
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854271"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541030"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
-## <a name="november-2018-guest-os"></a>A 2018. november a vendég operációs rendszer
+## <a name="december-2018-guest-os"></a>A 2018 december vendég operációs rendszer
 
 >[!NOTE]
->A November vendég operációs rendszer jelenleg tesszük elérhetővé a Cloud Service virtuális gépeken, az automatikus frissítések vannak beállítva. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A November vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
+>A December vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A December vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
+
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-12-rel | [4471321] | A Windows 10 biztonsági | 5.26 | 2018. december 11. |
+| 18-12-rel | [4471328] | Windows biztonsági   | 2.81 | 2018. december 11. |
+| 18-12-rel | [4471326] | Windows biztonsági   | 3.68 | 2018. december 11. |
+| 18-12-rel | [4471322] | Windows biztonsági   | 4.61 | 2018. december 11. |
+| 18-12-rel | [4470600] | .NET 3.x biztonsága  | 2.81 | 2018. december 11. |
+| 18-12-rel | [4470601] | .NET 3.x biztonsága  | 3.68 | 2018. december 11.|
+| 18-12-rel | [4470602] | .NET 3.x biztonsága  | 4.61 | 2018. december 11. |
+| 18-12-rel | [4470493] | .NET 4.x biztonsága  | 2.81 | 2018. december 11. |
+| 18-12-rel | [4470492] | .NET 4.x biztonsága  | 3.68 | 2018. december 11. |
+| 18-12-rel | [4470491] | .NET 4.x biztonsága  | 4.61| 2018. december 11. |
+| 18-12-rel | [4471331] | Flash  | 3.68, 4.61, 5.26 | 2018. december 5.  |
+| 18-12-rel | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 2018. december 11. |
+| – | [4468323] | Időzóna frissítése    | 2.81, 3.68, 4.61 | 2018. december 13. |
+| – | [4467107] | November nem – a biztonság összegzése   | 2.81 | 2018. november 13. |
+| – | [4467701] | November nem – a biztonság összegzése     | 3.68 | 2018. november 13. |
+| – | [4467697] | November nem – a biztonság összegzése     | 4.61 | 2018. november 13. |
+
+[4471321]: http://support.microsoft.com/kb/4471321
+[4471328]: http://support.microsoft.com/kb/4471328
+[4471326]: http://support.microsoft.com/kb/4471326
+[4471322]: http://support.microsoft.com/kb/4471322
+[4470600]: http://support.microsoft.com/kb/4470600
+[4470601]: http://support.microsoft.com/kb/4470601
+[4470602]: http://support.microsoft.com/kb/4470602
+[4470493]: http://support.microsoft.com/kb/4470493
+[4470492]: http://support.microsoft.com/kb/4470492
+[4470491]: http://support.microsoft.com/kb/4470491
+[4471331]: http://support.microsoft.com/kb/4471331
+[4470199]: http://support.microsoft.com/kb/4470199
+[4468323]: http://support.microsoft.com/kb/4468323
+[4467107]: http://support.microsoft.com/kb/4467107
+[4467701]: http://support.microsoft.com/kb/4467701
+[4467697]: http://support.microsoft.com/kb/4467697
+
+## <a name="november-2018-guest-os"></a>A 2018. november a vendég operációs rendszer
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
@@ -427,7 +465,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – |  [3212646] |2017 január biztonsági havi minőségi összegzése Windows 7 SP1 és a Windows Server 2008 R2 SP1 |2.60 |2017. március 14. |
 | – |  [3205409] |2016. december biztonsági havi minőségi összegzése a Windows Server 2012-ben |3.47 |2017. március 14. |
 | – |  [3205401] |2016. december biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.40 |2017. március 14. |
-| – |  [3211320] |Karbantartási frissítés a Windows 10 1607-es verziójának és a Windows Server 2016 zásobníku: 2017. január 24. |5.5 |2017. március 14. |
+| – |  [3211320] |Karbantartási frissítését a Windows 10 1607-es verziójának és a Windows Server 2016-ra: 2017. január 24. |5.5 |2017. március 14. |
 
 ## <a name="january-2017-guest-os"></a>2017 január vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -468,13 +506,13 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – |[3192321] |Török ér véget a nyári Időszámítás betartása |5.3, 4.38, 3.45, 2.57 |2016. november 8. |
 | – |[3185330] |2016. október biztonsági havi minőségi összegzése Windows 7 SP1 és a Windows Server 2008 R2 SP1 |2.57 |2016. november 8. |
 | – |[3192403] |2016. október előzetes verzió havi minőségi kumulatív for Windows 7 SP1 és a Windows Server 2008 R2 SP1 |2.57 |2016. november 8. |
-| – |[3177467] |Karbantartási frissítés a Windows 7 SP1 és a Windows Server 2008 R2 SP1 zásobníku: 2016. szeptember 20. |2.57 |2016. november 8. |
+| – |[3177467] |Karbantartási frissítését Windows 7 SP1 és a Windows Server 2008 R2 SP1: 2016. szeptember 20. |2.57 |2016. november 8. |
 | – |[3185332] |2016. október biztonsági havi minőségi összegzése a Windows Server 2012 |3.45 |2016. november 8. |
 | – |[3192406] |2016. október előzetes verzió havi minőségi kumulatív a Windows Server 2012 |3.45 |2016. november 8. |
 | – |[3185331] |2016. október biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 |4.38 |2016. november 8. |
 | – |[3192404] |2016. október előzetes verzió havi minőségi kumulatív Windows 8.1 és Windows Server 2012 R2 rendszerben |4.38 |2016. november 8. |
-| – |[3199986] |Karbantartási frissítés a Windows 10 1607-es verziójának zásobníku: 2016. október 27. |5.3 |2016. november 8. |
-| – |[3197954] |A Windows 10 1607-es verzió és Windows Server 2016 összegző frissítés: 2016. október 27. |5.3 |2016. november 8. |
+| – |[3199986] |A Windows 10 1607-es verziójának frissítését karbantartási: 2016. október 27. |5.3 |2016. november 8. |
+| – |[3197954] |A Windows 10 1607-es verzió és Windows Server 2016 összesített frissítés: 2016. október 27. |5.3 |2016. november 8. |
 
 ## <a name="october-2016-guest-os"></a>2016. október vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -581,7 +619,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – |[3133977] |A BitLocker meghajtó nem titkosítható miatt svchost.exe folyamatban lévő Windows 7 vagy Windows Server 2008 R2 szolgáltatás összeomlik  |2.51 |2016. május 10. |
 | – |[3133681] |Virtuális gépek nem válaszolnak a művelet az scvmm-ben a Windows Server 2012 R2  |4.32 |2016. május 10. |
 | – |[3123245] |A frissítés javítja port Erőforrásfogyás azonosítása a Windows Server 2012 R2  |4.32 |2016. május 10. |
-| – |[Tiltsa le az RC4-et] | A Microsoft biztonsági tanácsadó: letiltja az RC4 frissítése  |4.32, 3.39, 2.51 |2016. május 10. |
+| – |[Tiltsa le az RC4-et] | A Microsoft biztonsági tanácsadó: Frissítés a RC4 letiltása  |4.32, 3.39, 2.51 |2016. május 10. |
 
 ## <a name="april-2016-guest-os"></a>2016. április vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -630,7 +668,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS16-005 |[3124584] |Biztonsági frissítés a Windows-Kernel módú illesztőprogramjaival távoli kódfuttatást megoldása |4.28, 3.35, 2.47 |2016. január 12-én |
 | MS16-007 |[3124901] |Biztonsági frissítés a Microsoft Windows távoli kódfuttatást megoldása |4.28, 3.35, 2.47 |2016. január 12-én |
 | MS16-008 |[3124605] |Biztonsági frissítés a Kernel történő kiterjesztését |4.28, 3.35, 2.47 |2016. január 12-én |
-| A Microsoft biztonsági tanácsadó változat |[2755801] |Az Adobe Flash Player az Internet Explorerben a biztonsági frissítés (csomag KB: TBD)-tanácsadó helyőrző |4.28, 3.35 |2016. január 12-én |
+| A Microsoft biztonsági tanácsadó változat |[2755801] |Az Adobe Flash Player az Internet Explorerben a biztonsági frissítés (KB-os csomag: Meghatározandó) - tanácsadó helyőrző |4.28, 3.35 |2016. január 12-én |
 | A Microsoft biztonsági tanácsadó |[3109853] |TLS kölcsönös átjárhatóságot javítása érdekében a frissítés |4.28, 3.35 |2016. január 12-én |
 | A Microsoft biztonsági tanácsadó |[3123479] |Az SHA-1 kivonatoló algoritmust a Microsoft Root Certificate Program elavulása |4.28, 3.35, 2.47 |2016. január 12-én |
 | A Microsoft biztonsági tanácsadó |[2736233] |Frissítések ActiveX Kill BITS |4.28, 3.35, 2.47 |2016. január 12-én |
@@ -778,7 +816,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS15-014 |[3004361] |Az SMB biztonsági rése biztonsági funkció figyelmen kívül hagyása |4.17, 3.24, 2.36 |– |
 | MS15-015 |[3031432] |A Microsoft Windows biztonsági rése jogok kiterjesztése |4.17, 3.24, 2.36 |– |
 | MS15-016 |[3029944] |A Microsoft grafikus összetevő biztonsági résen információk Szivároghatnak |4.17, 3.24, 2.36 |– |
-| – |[3004375] |Javítása Windows Update parancs sor naplózása<p/>**Megjegyzés:**: Ez telepítve van, de a beállításkulcs, az engedélyezéshez ki van kapcsolva. |4.17, 3.24, 2.36 |– |
+| – |[3004375] |Javítása Windows Update parancs sor naplózása<p/>**Megjegyzés**: Ez telepítve van, de a beállításkulcs, az engedélyezéshez ki van kapcsolva. |4.17, 3.24, 2.36 |– |
 
 ## <a name="january-2015-guest-os"></a>2015 januári vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: diberry
-ms.openlocfilehash: 476e982bdddd41c1daf06c3a673d964ce2a85f98
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 625bacb48ec0e8552c296242038ec038758145d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270892"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993820"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Gyors útmutató: A kapott eredménynek a Tudásbázis Postman használatával
 
@@ -34,25 +34,34 @@ Amikor készen áll egy kérdésre adott válasz a Tudásbázis, a létrehozás�
 
 A Tudásbázis közzétételekor a **közzététel** lap megjeleníti a HTTP-kérelem beállítások választ létrehozásához. Az alapértelmezett nézet jeleníti meg a választ a létrehozásához szükséges beállításokat [Postman](https://www.getpostman.com).
 
+Az alábbi ábrán a sárga számok jelölik, mely név-érték párokat. a következő lépésekben használni.
+
 [![Eredmények közzététele](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
 Létrehozás Postman-válasz, hajtsa végre az alábbi lépéseket:
 
 1. Nyissa meg a Postmant. 
-1. Válassza ki a építőeleme, hozzon létre egy alapszintű kérelmet.
-1. Állítsa be a **kérelem neve** , `Generate QnA Maker answer`és a **gyűjtemény** , `Generate QnA Maker answers`.
-1. A munkaterületen válassza ki a HTTP-metódusa **POST**.
-1. Az URL-címéhez fűzze össze a GAZDAGÉP és a teljes URL-cím létrehozása bejegyzés értéke. 
+1. Válassza ki a építőelem hozhat létre egy **alapszintű kérelem**.
+1. Állítsa be a **kérelem neve** , `Generate QnA Maker answer`és a **gyűjtemény** , `Generate QnA Maker answers`. Ha nem szeretné menteni egy gyűjteményhez, válassza ki a **Mégse** gombra.
+1. Az eredményül kapott munkaterületen válassza ki a HTTP-metódusa **POST**.
 
-    [![A Postman módszert állítja be a Post és a teljes URL-címe](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [![A Postman beállítása a POST-metódus](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+
+1. Az URL-fűzze össze a GAZDAGÉP (2-rendszerképből) és a Post értékkel (1-rendszerképből) hozhat létre a teljes URL-CÍMÉT. Egy teljes példát URL-cím hasonlóan néz ki: 
+
+    `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
+
+    [![A Postman beállítása a teljes URL-címe](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
 1. Válassza ki a **fejlécek** lap URL-CÍMÉT, majd válassza a **tömeges szerkesztése**. 
-1. Másolja a fejlécek a szöveg területre.
+1. Másolja a fejléceket (#3 és rendszerképből #4) a szöveg területre.
 
     [![A Postman beállítása a fejlécek](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
 1. Válassza ki a **törzs** fülre.
-1. Válassza ki a **nyers** formázhatja, és adja meg a JSON-t jelöli a kérdését.
+1. Válassza ki a **nyers** formázhatja, és adja meg a kérdés képviselő JSON (5-rendszerképből).
+
+    `{"question":"How do I programmatically update my Knowledge Base?"}`
 
     [![A Postman beállítása a szervezet JSON-értéket](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 

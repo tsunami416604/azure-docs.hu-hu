@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b1bea9b1a2bdb04a60fa6a8fa1d92bfbaf80c6d6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2df24cfe217a9955a3abb08d042836821b083946
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320829"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580637"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
 Webhookok használatával irányíthatja a riasztási értesítés az Azure utólagos feldolgozási vagy egyéni műveleteket más rendszerekre. A riasztás egy webhook használatával átirányítása a szolgáltatások által küldött SMS-ezni, hibák, csevegési vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csapat értesítése bejelentkezni. 
@@ -27,7 +27,7 @@ Hozzáadandó vagy frissítendő a webhook URI-t, az a [az Azure portal](https:/
 
 ![Adjon hozzá egy riasztási szabály panelen](./media/alerts-webhooks/Alertwebhook.png)
 
-Beállíthatja egy riasztás küldése a webhook URI használatával [Azure PowerShell-parancsmagok](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts), amely egy [platformfüggetlen CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts), vagy [Azure Monitor REST API-k](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Beállíthatja egy riasztás küldése a webhook URI használatával [Azure PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), amely egy [platformfüggetlen CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts), vagy [Azure Monitor REST API-k](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
 A webhook jogkivonat-alapú hitelesítést végezhet hitelesítést. A webhook URI-t is mentve lesz egy token. Például:`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

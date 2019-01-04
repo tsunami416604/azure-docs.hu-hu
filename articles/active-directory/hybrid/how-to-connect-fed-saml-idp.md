@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Használata egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató a |} A Microsoft Docs'
+title: 'Azure AD Connect: SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez a |} A Microsoft Docs'
 description: Ez a dokumentum ismerteti, hogy a megfelelő SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez a.
 services: active-directory
 author: billmath
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e3bd48cf56650e266f5002a179d20177b3127f25
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8f8503f560985e1170105199212734dd704d81c1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426402"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743527"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató (IdP) használata
 
@@ -167,7 +167,7 @@ Engedélyeznie kell a SAML 2.0 identitásszolgáltató és az Azure AD közötti
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Windows PowerShell telepítése bejelentkezéshez a SAML 2.0 identitásszolgáltató
 Az SAML 2.0 identitásszolgáltató használata az Azure AD bejelentkezés konfigurálása után a következő lépésre, töltse le és telepítse az Azure Active Directory modul a Windows PowerShell. A telepítést követően az Azure AD-tartományok konfigurálása összevont tartományok használandó ezeket a parancsmagokat.
 
-Az Azure Active Directory modul a Windows PowerShell az Azure AD a szervezetek adatkezelési letöltés. Ez a modul olyan parancsmagok készletét telepíti a Windows Powershellbe; azok a parancsmagok, egyszeri bejelentkezéses hozzáférést az Azure AD beállításához futtatja, és kapcsolja be az összes, a cloud Services az előfizetett. Töltse le és telepítse a parancsmagokkal kapcsolatos útmutatásért lásd: [https://technet.microsoft.com/library/jj151815.aspx](httpss://technet.microsoft.com/library/jj151815.aspx)
+Az Azure Active Directory modul a Windows PowerShell az Azure AD a szervezetek adatkezelési letöltés. Ez a modul olyan parancsmagok készletét telepíti a Windows Powershellbe; azok a parancsmagok, egyszeri bejelentkezéses hozzáférést az Azure AD beállításához futtatja, és kapcsolja be az összes, a cloud Services az előfizetett. Töltse le és telepítse a parancsmagokkal kapcsolatos útmutatásért lásd: [https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Az identitásszolgáltató SAML és az Azure AD közötti megbízhatósági kapcsolat beállítása
 Összevonás konfigurálása az Azure AD-tartomány, mielőtt konfigurált egy egyéni tartományt kell rendelkeznie. A Microsoft által biztosított alapértelmezett tartomány nem vonható össze. Az alapértelmezett tartomány a Microsoft az "onmicrosoft.com" végződik.
@@ -183,14 +183,14 @@ Az alábbi eljárás végigvezeti egy meglévő standard szintű tartomány áta
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Az Azure AD Directory összevonáshoz tartomány konfigurálása
 
 
-1. Bérlői rendszergazdaként az Azure AD-címtárhoz Connect: Connect-MsolService.
+1. Bérlői rendszergazdaként csatlakozhat az Azure AD-címtár: Connect-MsolService.
 2.  Adja meg a kívánt Office 365-tartomány összevonási használatához az SAML 2.0-val: `$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
 3.  Az IDP metaadatait tartalmazó fájl szerezhet az aláíró tanúsítvány base64-kódolású karakterlánc. Példa erre a helyre lett megadva, de a megvalósítás alapján némileg eltérőek lehetnek.
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-A "Set-MsolDomainAuthentication" kapcsolatos további információkért lásd: [ https://technet.microsoft.com/library/dn194112.aspx ](httpss://technet.microsoft.com/library/dn194112.aspx).
+A "Set-MsolDomainAuthentication" kapcsolatos további információkért lásd: [ https://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Használat kell futtatásakor "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" csak akkor, ha az identitásszolgáltató ECP bővítmény beállítása. Az Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a POST-alapú aktív végpontot. Ha a SAML 2.0 STS valósít meg egy aktív végpontot egy aktív végpontot a Shibboleth ECP megvalósítása hasonló lehet az ezek olyan funkciógazdag ügyfeleket kommunikáljon az Exchange Online szolgáltatáshoz.
@@ -207,7 +207,7 @@ Windows PowerShell is használható, az új felhasználók automatikus hozzáad�
 Ez az eljárás bemutatja, hogyan egyetlen felhasználó hozzáadása az Azure ad-hez.
 
 
-1. Bérlői rendszergazdaként az Azure AD-címtárhoz Connect: Connect-MsolService.
+1. Bérlői rendszergazdaként csatlakozhat az Azure AD-címtár: Connect-MsolService.
 2.  Hozzon létre egy új egyszerű: ` New-MsolUser
         -UserPrincipalName elwoodf1@contoso.com
         -ImmutableId ABCDEFG1234567890
@@ -218,7 +218,7 @@ Ez az eljárás bemutatja, hogyan egyetlen felhasználó hozzáadása az Azure a
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-További információ a "New-MsolUser" kivételt, [https://technet.microsoft.com/library/dn194096.aspx](httpss://technet.microsoft.com/library/dn194096.aspx)
+További információ a "New-MsolUser" kivételt, [https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >A "UserPrinciplName" értékét meg kell egyeznie az érték, amely az SAML 2.0 jogcímet a "IDPEmail" küld, és a "ImmutableID" értékét meg kell egyeznie az értéket küldi el a "NameID" helyességi feltétel.
@@ -260,7 +260,7 @@ A Microsoft közzétett egy eszköz, amellyel tesztelheti a SAML 2.0-alapú szem
 7. Ezt az ablakot a tesztelés sikertelen eredményt jeleníti meg. Kattintva tekintse át a részletes eredmények minden egyes végrehajtott vizsgálat eredményei kapcsolatos információk jelennek meg. Az eredményeket, és annak érdekében, hogy megoszthatja azokat lemezre mentheti is.
  
 >[!NOTE]
->A Connectivity analyzer is teszteli, WS * használatával aktív összevonást-alapú és a ECP/PAOS protokollokat. Ha nem használja ezeket figyelmen kívül hagyhatja a következő hiba: a aktív bejelentkezési folyamat tesztelésének az identitásszolgáltató aktív összevonást végpont használatával.
+>A Connectivity analyzer is teszteli, WS * használatával aktív összevonást-alapú és a ECP/PAOS protokollokat. Ha nem használja a következő hiba figyelmen kívül hagyhatja ezeket: Az aktív bejelentkezési folyamata az identitásszolgáltató aktív összevonást végpont használatával tesztelése.
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>Ellenőrizze, hogy egyszeri bejelentkezés beállítása megfelelően manuálisan
 Manuális ellenőrzést biztosít a további lépéseket, győződjön meg arról, hogy a SAML 2.0 identity Provider sokféle helyzetben megfelelően működik is igénybe vehet.
@@ -268,7 +268,7 @@ Annak ellenőrzéséhez, hogy egyszeri bejelentkezés rendelkezik megfelelően b
 
 
 1. A tartományhoz csatlakoztatott számítógépen jelentkezzen be a felhőszolgáltatáshoz a bejelentkezési névvel, amelyet használhat a vállalati hitelesítő adatok használatával.
-2.  Kattintson a jelszó mezőbe. Ha egyszeri bejelentkezésre van beállítva, a jelszó mező árnyékolt lesz, és látni fogja a következő üzenetet: ", most kell bejelentkezni &lt;vállalata&gt;."
+2.  Kattintson a jelszó mezőbe. Egyszeri bejelentkezés be van állítva, ha a jelszó mező árnyékolt lesz, és a következő üzenetet láthatja: "Most kell bejelentkezni &lt;vállalata&gt;."
 3.  Kattintson a bejelentkezés jelenleg &lt;vállalata&gt; hivatkozásra. Ha tudja, hogy jelentkezzen be, majd egyszeri bejelentkezéses be lett állítva.
 
 ## <a name="next-steps"></a>További lépések

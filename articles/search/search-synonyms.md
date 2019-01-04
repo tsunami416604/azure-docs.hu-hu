@@ -1,5 +1,5 @@
 ---
-Title: Synonyms for query expansion over a search index  - Azure Search
+title: Lekérdezés bővítése keresztül a keresési index – Azure Search szinonimáiról
 description: Hozzon létre egy szinonimatérképet, bontsa ki az Azure Search-index a keresési lekérdezés hatókörét. Hatókör van szélesíteni adnia egyenértékű kifejezések foglalandó listáját.
 author: brjohnstmsft
 services: search
@@ -10,12 +10,12 @@ ms.date: 04/20/2018
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: ce9eb8ed099a232128ba924da1466917df542fbb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cea95756f115e9efd6dc184fc85a0485ab49d1b9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315662"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634660"
 ---
 # <a name="synonyms-in-azure-search"></a>Az Azure Search szolgáltatásban a szinonimák
 

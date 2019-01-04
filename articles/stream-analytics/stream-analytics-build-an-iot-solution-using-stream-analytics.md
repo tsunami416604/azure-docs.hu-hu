@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4817efcb5cfa5f8692f2b7e5c65d411bc0d21942
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317389"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971103"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás készítése a Stream Analytics használatával
 
@@ -185,7 +185,7 @@ Kövesse az alábbi lépéseket a streamelési feladat indítása:
 ## <a name="review-the-cosmosdb-output-data"></a>Tekintse át a cosmos db kimeneti adatok
 1. Keresse meg a TollApp erőforrásokat tartalmazó erőforráscsoportot.
 
-2. Válassza ki az Azure Cosmos DB-fiókot a névminta **tollapp<random>– cosmos**.
+2. Válassza ki az Azure Cosmos DB-fiókot a névminta **tollapp\<véletlenszerű\>– cosmos**.
 
 3. Válassza ki a **adatkezelő** fejlécre az adatkezelő oldal megnyitásához.
 

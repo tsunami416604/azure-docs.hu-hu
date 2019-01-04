@@ -1,20 +1,17 @@
 ---
 title: Visszaállítása egy kiszolgálót az Azure Database for MySQL-hez
 description: Ez a cikk ismerteti, hogyan lehet visszaállítani egy kiszolgálót az Azure Database for MySQL-hez az Azure portal használatával.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 7f75950a0f61c646d6cf36ea0903ebdefbd336ee
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e1545e830ac04000920c3881486b2add79744201
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138479"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548867"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MySQL-hez az Azure portal használatával
 
@@ -65,10 +62,10 @@ A következő lépések a mintakiszolgálót egy-időponthoz állítja vissza:
 3. Adja meg a visszaállítás űrlapon a szükséges információkkal:
 
    ![Azure Database for MySQL - visszaállítási információ ](./media/howto-restore-server-portal/3-restore.png)
-   - **Visszaállítási pont**: válassza ki a-időponthoz a visszaállítani kívánt.
+   - **Visszaállítási pont**: Válassza ki a-időponthoz a visszaállítani kívánt.
    - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét.
-   - **Hely**: a régió nem választhat ki. Alapértelmezés szerint a ugyanaz, mint a forráskiszolgálón.
-   - **A tarifacsomag**: ezek a paraméterek nem módosítható, ha egy időponthoz visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
+   - **Hely**: A régió nem választható. Alapértelmezés szerint a ugyanaz, mint a forráskiszolgálón.
+   - **A tarifacsomag**: Ezek a paraméterek nem módosítható, egy időpontban a visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
 
 4. Kattintson a **OK** visszaállítása egy pont kötött visszaállítása a kiszolgálón. 
 
@@ -85,7 +82,7 @@ Ha konfigurálta a kiszolgáló georedundáns biztonsági mentésekhez, egy új 
    ![Az "Azure Database for MySQL" lehetőség](./media/howto-restore-server-portal/2_navigate-to-mysql.png)
 
 2. Az űrlap **forrás kiválasztása** legördülő menüben válassza a **Backup**. Ez a művelet betölti a földrajzi georedundáns biztonsági mentés engedélyezve rendelkező kiszolgálók listáját. Válasszon ki egy ezeket a biztonsági másolatokat az új kiszolgáló forrása lehet.
-   ![Forrás kiválasztása: Biztonsági mentés és földrajzi redundáns biztonsági másolatainak listáját](./media/howto-restore-server-portal/2-georestore.png)
+   ![Forrás kiválasztása: Biztonsági mentés és a georedundáns redundáns biztonsági másolatainak listáját](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
    > A kiszolgáló létrehozásakor azt nem lehet geo-visszaállítás azonnal elérhetővé válik. A szükséges metaadatok kell feltöltenie néhány órát vehet igénybe.

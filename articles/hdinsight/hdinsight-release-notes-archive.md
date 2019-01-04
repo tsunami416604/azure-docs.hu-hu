@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 43acf5f59667f45e67156b33e31d28160ba47c13
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408808"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743170"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Az Azure HDInsight archivált kibocsátási megjegyzései
 
@@ -52,10 +52,9 @@ Az alábbiakban a fontosabb eseményeket. A részletes kibocsátási megjegyzés
   
 
 
-
 ## <a name="04062017---general-availability-of-hdinsight-36"></a>04/06/2017 – a HDInsight 3.6-os általános rendelkezésre állás
 
-* Ebben a kiadásban az Azure HDInsight hozzáadja a HDP 2.6 alapul, 3.6-os verzióját. HDP 2.6 kibocsátási megjegyzései elérhetők [Itt](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) találhat további információt a HDInsight-verziókról és [Itt](hdinsight-component-versioning.md). HDInsight 3.6-os verziója érhető el a következő számítási feladatokkal:
+* Ebben a kiadásban az Azure HDInsight hozzáadja a HDP 2.6 alapul, 3.6-os verzióját. HDP 2.6 kibocsátási megjegyzései elérhetők [Itt](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) találhat további információt a HDInsight-verziókról és [Itt](hdinsight-component-versioning.md). HDInsight 3.6-os verziója érhető el a következő számítási feladatokkal:
 
     * Hadoop v2.7.3
     * A HBase v1.1.2
@@ -63,7 +62,7 @@ Az alábbiakban a fontosabb eseményeket. A részletes kibocsátási megjegyzés
     * A Spark v2.1.0
     * Interaktív Hive v2.1.0
 
-* **Hive-nézet 2.0 támogatása**. Ez a felhasználói élmény interaktív Hive kell javításához. További információkért lásd: [Hortonworks dokumentáció](http://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html).
+* **Hive-nézet 2.0 támogatása**. Ez a felhasználói élmény interaktív Hive kell javításához. További információkért lásd: [Hortonworks dokumentáció](https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html).
 
 * **Hive LLAP-teljesítményt érintő továbbfejlesztés**. További információkért lásd: [Hortonworks dokumentáció](https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/).
 
@@ -87,11 +86,11 @@ Az alábbiakban a fontosabb eseményeket. A részletes kibocsátási megjegyzés
 
 
 ## <a name="02282017---release-of-spark-21-on-hdinsight-36-preview"></a>02/28/2017 – a Spark 2.1-es on HDInsight 3.6-os kiadásában (előzetes verzió)
-* [A Spark 2.1-es](http://spark.apache.org/releases/spark-release-2-1-0.html) növeli a sok stabilitással és használattal kapcsolatos problémák korábbi verzióival. Minden Spark számítási feladatok, például a Spark mag, az SQL, a gépi tanulás és a Streamelési új funkciókat is biztosít.
+* [A Spark 2.1-es](https://spark.apache.org/releases/spark-release-2-1-0.html) növeli a sok stabilitással és használattal kapcsolatos problémák korábbi verzióival. Minden Spark számítási feladatok, például a Spark mag, az SQL, a gépi tanulás és a Streamelési új funkciókat is biztosít.
 * Strukturált Streamelés esemény idő vízjelek és a Kafka 0.10-ás connector támogatása továbbfejlesztett méretezhetőség beolvasása.
-* Spark SQL-particionálást már kezeli új méretezhető partíció kezelési mechanizmus segítségével. További részletek [Itt](http://spark.apache.org/releases/spark-release-2-1-0.html) amelyen a verziófrissítésre.
+* Spark SQL-particionálást már kezeli új méretezhető partíció kezelési mechanizmus segítségével. További részletek [Itt](https://spark.apache.org/releases/spark-release-2-1-0.html) amelyen a verziófrissítésre.
 * Az Azure HDInsight 3.6 előzetes verziója jelenleg Spark 2.1-es nem támogatja az Üzletiintelligencia-eszköze kapcsolat ODBC-illesztő használatával.
-* A Spark 2.1-es fürtök az Azure Data Lake Store-hozzáférés nem támogatott ebben az előzetes verzióban.
+* Az Azure Data Lake Storage hozzáféréssel a Spark 2.1-es fürtök nem támogatott ebben az előzetes verzióban.
 
 
 ## <a name="11182016---release-of-spark-201-on-hdinsight-35"></a>11/18/2016-2.0.1 sparkot a HDInsight 3.5-ös kiadás
@@ -110,9 +109,4 @@ Spark 2.0.1 már elérhető a Spark-fürtökön (HDInsight 3.5-ös verzió).
 * Az R Server on HDInsight-fürtök kiépítése egyszerűbb lett.
 * Az R Server on HDInsight már elérhető, mint a rendszeres HDInsight "R Server" fürt típusa, és a egy külön HDInsight-alkalmazás már nincs telepítve. A peremhálózati csomópont és az R Server bináris fájlok most már kiépített az R Server-fürt központi telepítésének részeként. Ez növeli a gyorsasága és megbízhatósága kiépítése. Az R Server díjszabási modellje a ennek megfelelően frissül.
 * Az R Server-fürt típusa árát most Standard szintnek megfelelő díjat, és az R Server pótdíja ár alapján. Ez a változás nem érinti hatékony díjszabása az R Server csak hogyan a költségek jelenik meg a számlán változik. Minden meglévő R Server-fürt továbbra is működni, és a Resource Manager-sablonok továbbra is működnek, amíg elavulással kapcsolatos figyelmeztetés. **Bár az új Resource Manager-sablonnal történő parancsfájlalapú telepítés frissítése az ajánlott.**
-
-
-
-
-
 

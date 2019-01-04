@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409751"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722651"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service speciális használata
 
-Ez a cikk bemutatja, hogyan szabhatja testre a beépített [hitelesítés és engedélyezés az App Service-ben](app-service-authentication-overview.md), és az identitások kezelésére az alkalmazásból. 
+Ez a cikk bemutatja, hogyan szabhatja testre a beépített [hitelesítés és engedélyezés az App Service-ben](overview-authentication-authorization.md), és az identitások kezelésére az alkalmazásból. 
 
 Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 
@@ -37,13 +37,13 @@ Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 
 ## <a name="use-multiple-sign-in-providers"></a>Több bejelentkezési szolgáltató használata
 
-A portál konfigurációja nem található több bejelentkezési szolgáltatók (például Facebook és Twitter) a felhasználók számára, kulcsrakész lehetőséget biztosít. Azonban nem nehéz a Funkciók hozzáadása a webalkalmazáshoz. A lépéseket a következő eljárásokat:
+A portál konfigurációja nem található több bejelentkezési szolgáltatók (például Facebook és Twitter) a felhasználók számára, kulcsrakész lehetőséget biztosít. Azonban nem nehéz a Funkciók hozzáadása az alkalmazáshoz. A lépéseket a következő eljárásokat:
 
 Az első a **hitelesítési / engedélyezési** lapon az Azure Portalon, az engedélyezni kívánt identitásszolgáltató konfigurálja.
 
 A **elvégzendő művelet, ha a kérés nincs hitelesítve**válassza **engedélyezése névtelen kérések (nincs művelet)**.
 
-A bejelentkezési oldal vagy a navigációs sávon, vagy bármely más helyen található, a bejelentkezési hivatkozás hozzáadása az engedélyezett szolgáltatók mindegyike (`/.auth/login/<provider>`). Példa:
+A bejelentkezési oldal vagy a navigációs sávon, vagy bármely más helyre, az alkalmazás, a bejelentkezési hivatkozás hozzáadása az engedélyezett szolgáltatók mindegyike (`/.auth/login/<provider>`). Példa:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -63,7 +63,7 @@ Amikor a felhasználó a hivatkozásra kattint, a megfelelő bejelentkezési old
 
 ## <a name="validate-tokens-from-providers"></a>-Szolgáltatóktól származó jogkivonatokat ellenőrzése
 
-Az adott ügyfél által vezérelt bejelentkezés, az alkalmazás manuális jelentkezik be a felhasználót, hogy a szolgáltató, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából (lásd: [hitelesítési folyamat](app-service-authentication-overview.md#authentication-flow)). Ez maga érvényesítési ténylegesen nem adja meg a kívánt alkalmazás-erőforrások elérését, de egy ellenőrzést kap egy munkamenet-jogkivonatot használó alkalmazás-erőforrások eléréséhez. 
+Az adott ügyfél által vezérelt bejelentkezés, az alkalmazás manuális jelentkezik be a felhasználót, hogy a szolgáltató, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából (lásd: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow)). Ez maga érvényesítési ténylegesen nem adja meg a kívánt alkalmazás-erőforrások elérését, de egy ellenőrzést kap egy munkamenet-jogkivonatot használó alkalmazás-erőforrások eléréséhez. 
 
 A szolgáltató jogkivonat érvényesítéséhez, App Service-alkalmazás először konfigurálni kell a kívánt szolgáltatójával. Futásidőben, a hitelesítési jogkivonat lekérése a szolgáltató, miután közzé a jogkivonat `/.auth/login/<provider>` ellenőrzés céljából. Példa: 
 
@@ -186,15 +186,15 @@ Amikor a szolgáltató hozzáférési jogkivonat lejár, hitelesítse magát új
 - **Microsoft-fiók**: Amikor [konfigurálása a Microsoft-fiók hitelesítési beállításai](configure-authentication-provider-microsoft.md), jelölje be a `wl.offline_access` hatókör.
 - **Az Azure Active Directory**: A [ https://resources.azure.com ](https://resources.azure.com), tegye a következőket:
     1. A lap tetején válassza **olvasási/írási**.
-    1. A bal oldali böngészőben navigáljon **előfizetések** > **_\<előfizetés\_neve_**   >  **resourceGroups** > _**\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek** > _**\<alkalmazás \_neve >**_ > **config** > **authsettings**. 
-    1. Kattintson a **Szerkesztés** gombra.
-    1. A következő tulajdonság módosításával. Cserélje le  _\<alkalmazás\_azonosítója >_ az Azure Active Directory-alkalmazás azonosítójával az elérni kívánt szolgáltatás.
+    2. A bal oldali böngészőben navigáljon **előfizetések** > **_\<előfizetés\_neve_**   >  **resourceGroups** > _**\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek** > _**\<alkalmazás \_neve >**_ > **config** > **authsettings**. 
+    3. Kattintson a **Szerkesztés** gombra.
+    4. A következő tulajdonság módosításával. Cserélje le  _\<alkalmazás\_azonosítója >_ az Azure Active Directory-alkalmazás azonosítójával az elérni kívánt szolgáltatás.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    1. Kattintson a **Put**. 
+    5. Kattintson a **Put**. 
 
 Miután konfigurálta, a szolgáltató is [keresse meg a frissítési jogkivonatot, és a hozzáférési jogkivonat lejárati idejének](#retrieve-tokens-in-app-code) a jogkivonat-tároló a. 
 

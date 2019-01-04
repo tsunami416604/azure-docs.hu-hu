@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384198"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714661"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET – megoldások áttelepítése Linux-alapú HDInsight a Windows-alapú HDInsight esetében
 
@@ -24,7 +24,7 @@ Linux-alapú HDInsight-fürtök használata [Mono (https://mono-project.com) ](h
 
 Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját. További információ a Mono HDInsight mellékelt verzióját, lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md). Egy adott verzióját Mono telepítése: a [Mono telepítése vagy frissítése](hdinsight-hadoop-install-mono.md) dokumentumot.
 
-A .NET és a Mono között további információkért lásd: a [monó kompatibilitási (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentumot.
+A .NET és a Mono között további információkért lásd: a [monó kompatibilitási (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentumot.
 
 > [!IMPORTANT]  
 > Az SCP.NET keretrendszer Mono esetén. A Mono való használatához készült SCP.NET további információkért lásd: [C#-topológiák fejlesztése a HDInsight az Apache stormmal történő használatát a Visual Studio](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -52,7 +52,7 @@ A [.NET hordozhatóságot Analyzer](https://marketplace.visualstudio.com/items?i
 
 ## <a name="manual-portability-analysis"></a>Manuális hordozhatóságot elemzése
 
-A kód található információk segítségével a manuális naplózási hajtsa végre a [alkalmazás-hordozhatóságot (http://www.mono-project.com/docs/getting-started/application-portability/) ](http://www.mono-project.com/docs/getting-started/application-portability/) dokumentumot.
+A kód található információk segítségével a manuális naplózási hajtsa végre a [alkalmazás-hordozhatóságot (https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) dokumentumot.
 
 ## <a name="modify-and-build"></a>Módosíthatja, és hozhat létre
 

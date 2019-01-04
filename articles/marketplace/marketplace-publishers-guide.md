@@ -14,16 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f4ff7c11952e6e222104b3953c547a91b4fc124
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223072"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753965"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
 
 A Piactéri közzétételi útmutató célja új és meglévő közzétevők megtudhatja, hogyan használhatja a kirakattípus a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [Microsoft AppSource](https://appsource.microsoft.com) partnerségben üzleti növekedésért alkalmazások és szolgáltatások listázásával a Microsofttal.
+
+>[!Note]
+>Itt a piactéren az Azure Marketplace és appsource-ban is hivatkozik.  Lásd: [egy Marketplace-en két kirakattípus](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace) további információt.
 
 Ez az útmutató ismerteti a következő témaköröket: 
 *   Mi a Marketplace-en az eszközmegfelelőségről és működéséről 
@@ -52,7 +55,7 @@ A képességek előnyeit a Marketplace-en, hogy terjessze ki üzleti tevékenys�
 
 Felülértékesítési és keresztértékesítési a megoldások ügyfelek problémái kielégítésével számítási feladatokat a felhőbe való áthelyezése után. Ha értékesítheti, vagy üzembe helyezése a piactérről, értékesítési ciklus csökkentheti, projektek felgyorsíthatja és teljes körű megoldások értékesítése a cél adott számítási feladatok és iparági forgatókönyvek üzlet jövedelmezőség növelése. 
 
-### <a name="get-actionable-insights"></a>Gyakorlatban is hasznosítható eredmények 
+### <a name="get-actionable-insights"></a>Gyakorlatban is hasznosítható részletes adatok 
 
 Elemzéseket kaphat a listaelemek teljesítményét és az elemzéseket, a Marketplace-en keresztül is elérhető. További információ a kampányok teljesítményét, a megrendelések és a kifizetések és azt, hogy a megoldás a kampány tevékenységek miként kaphat.
 
@@ -62,7 +65,7 @@ A Marketplace új ajánlatai jogosultak kezébe a különböző segítségével 
 
 *   Technikai: Minden le szeretné kérni az alkalmazás készen áll a bevezetésre. Műszaki támogatást, alkalmazás-tervezés és architektúra megtervezése, és az Azure-kreditek fejlesztési és tesztelési célra. 
 
-*   Marketing-együttműködéssel: Minden szükséges összetevőt indítsa el az ajánlatot. Hozzáférés a Microsoft piaci megjelenést indítsa el a Fundamentals segítségével indítsa el, és a megoldás előléptetése ingyenes. Is jogosult lehet a Microsoft marketing további kampány belefoglalási és lehetőségeket a kiemelt a Marketplace-en.
+*   Marketing-együttműködés: Minden szükséges összetevőt indítsa el az ajánlatot. Hozzáférés a Microsoft piaci megjelenést indítsa el a Fundamentals segítségével indítsa el, és a megoldás előléptetése ingyenes. Is jogosult lehet a Microsoft marketing további kampány belefoglalási és lehetőségeket a kiemelt a Marketplace-en.
 
 *   Közös értékesítés: Kezdődhet, és gyorsabban értékesítése a Microsofttal a Marketplace-en keresztül. Programok és a támogatási szolgáltatások együttes az értékesítést és a Microsoft teams eléréséhez.
 

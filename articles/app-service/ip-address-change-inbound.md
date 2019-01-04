@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2a494b318011d601609033bc877134f0b0eeff09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249328"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721359"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Hogyan készíti elő a bejövő IP-cím módosítása
 
@@ -50,4 +50,4 @@ Az új bejövő IP-cím, az alkalmazás adott van, a portál a **virtuális IP-c
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk részletesen egy IP-cím módosítása az Azure által kezdeményezett előkészítése. IP-címek az Azure App Service kapcsolatos további információkért lásd: [bejövő és kimenő IP-címek az Azure App Service](app-service-ip-addresses.md).
+Ez a cikk részletesen egy IP-cím módosítása az Azure által kezdeményezett előkészítése. IP-címek az Azure App Service kapcsolatos további információkért lásd: [bejövő és kimenő IP-címek az Azure App Service](overview-inbound-outbound-ips.md).

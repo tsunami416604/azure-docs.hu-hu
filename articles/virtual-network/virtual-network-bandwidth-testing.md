@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: fa0adef58ae1eda8604cefc9c3d7e3a4c32d63d0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023822"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793539"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>A sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 
@@ -29,13 +29,14 @@ Másolja az eszköz két Azure virtuális gépek azonos méretű. Egy virtuális
 
 #### <a name="deploying-vms-for-testing"></a>Tesztelési virtuális gépek üzembe helyezéséhez
 Ez a vizsgálat céljából a két virtuális gép ugyanazon a Felhőszolgáltatáson vagy a rendelkezésre állási csoportban kell lennie, hogy azt használja a belső IP-címek és Terheléselosztók kizárása a teszt. Lehetséges a virtuális IP-CÍMEK tesztelése, de az ilyen tesztelést nem ez a dokumentum foglalkozik.
- 
+
 Jegyezze fel a fogadó IP-cím. Adjuk a "a.b.c.r" IP-Címre
 
-Jegyezze fel a magok számát a virtuális gépen. Adjuk a "\#num\_magok"  
+Jegyezze fel a magok számát a virtuális gépen. Adjuk a "\#num\_magok"
+
 Futtassa a 300 másodperc (azaz 5 perc) NTTTCP tesztet a virtuális gép küldő és fogadó virtuális gép.
 
-Tipp: A teszt az első alkalommal beállításakor próbálja meg egy rövidebb tesztelési időszakra hamarabb kaphat a visszajelzést. Az eszköz a várt módon működik, ha a legpontosabb eredmények 300 másodperc terjed ki a tesztelési időszakra.
+Tipp: Ez a teszt az első alkalommal beállításakor próbálja meg egy rövidebb tesztelési időszakra hamarabb kaphat a visszajelzést. Az eszköz a várt módon működik, ha a legpontosabb eredmények 300 másodperc terjed ki a tesztelési időszakra.
 
 > [!NOTE]
 > A küldő **és** adjon meg fogadó **azonos** tesztelése időtartama paraméter (-t).

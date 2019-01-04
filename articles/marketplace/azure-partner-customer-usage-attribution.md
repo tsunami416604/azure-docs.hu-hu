@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262601"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602171"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -30,7 +30,7 @@ A Microsoft kínál egy metódust elősegítik a partnerek jobban ügyfél közp
 A Microsoft-partnerként bármely Azure-erőforrások, amelyek az ügyfél nevében üzembe Azure-használat is társíthat. A társítás használatával az Azure piactéren, a rövid útmutató tárház, privát GitHub-adattárak és személyes customer engagement is alkotnak. Ahhoz, hogy nyomon követése, két megközelítés érhetők el:
 
 - Az Azure Resource Manager-sablonok: Resource Manager-sablonok vagy megoldássablonok a partner szoftverek futtatását az Azure-szolgáltatások üzembe helyezéséhez. Partnerek hozhat létre egy Resource Manager-sablon infrastruktúráját és konfigurációját az Azure-megoldás meghatározásához. A Resource Manager-sablon lehetővé teszi, hogy Ön és ügyfelei teljes életciklusa során a megoldás üzembe helyezéséhez. Biztos lehet benne, hogy az erőforrások telepítése konzisztens lesz. 
-- Az Azure Resource Manager API-k: Partnerek segítségével meghívhatja a Resource Manager API-k, közvetlenül a Resource Manager-sablon üzembe helyezése vagy az API-hívások közvetlen kiosztása az Azure-szolgáltatások létrehozásához. 
+- Az Azure Resource Manager API-kat: Partnerek segítségével meghívhatja a Resource Manager API-k, közvetlenül a Resource Manager-sablon üzembe helyezése vagy létrehozni az API-hívások közvetlenül az Azure-szolgáltatások kiépítése. 
 
 Az összes szükséges ügyfél-használati tesznek elérhetővé; ilyenek [megoldássablonok](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) közzé az Azure piactéren. 
 
@@ -270,15 +270,11 @@ A Microsoft partnereinek ügyfél központi telepítései insights, valamint a s
 
 **Akik GUID adhat hozzá egy sablont?**
 
-A nyomon követési erőforrás célja az ügyfél Azure-használat a partnermegoldás csatlakozni. A használati adatok egy partner Microsoft Partner Network-azonosító (MPN-azonosító) van kötve. Jelentéskészítés a CPP partnerei számára érhető el.
+A nyomon követési erőforrás célja az ügyfél Azure-használat a partnermegoldás csatlakozni. A használati adatok egy partner Microsoft Partner Network-azonosító (MPN-azonosító) van kötve. 
 
 **Miután hozzáadott egy GUID Azonosítót, akkor módosítható?**
  
 Igen, egy ügyfél vagy megvalósítási partnere előfordulhat, hogy a sablon testreszabásához, és módosíthatja vagy eltávolítja a globálisan egyedi Azonosítót. Javasoljuk, hogy a partnerek proaktív módon írja le a szerepkört az erőforrás és GUID GUID követési eltávolítása és a módosítások megelőzése érdekében az ügyfelek és partnerek számára. A GUID módosítása hatással van, csak a új, nem meglévő üzemelő példányok és erőforrások.
-
-**Amikor jelentéskészítési rendelkezésre áll?**
-
-Jelentéskészítés béta verzióját kell hamarosan közzétesszük. Jelentéskészítés integráljuk a CPP.
 
 **Sablonok üzembe helyezett egy nem Microsoft-adattárból, például a Githubból tudja követni?**
 

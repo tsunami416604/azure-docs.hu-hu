@@ -10,14 +10,14 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345356"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753078"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing Speech recognition REST API használata
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing beszédfelismerés REST API használata
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -66,7 +66,7 @@ Néhány példa a szolgáltatás URI-k az alábbi táblázatban láthatók.
 | Felismerési mód  | Nyelv | Kimeneti formátum | Szolgáltatás URI-ja |
 |---|---|---|---|
 | `interactive` | pt-BR | Alapértelmezett | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | hu-HU | Részletes |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `conversation` | en-US | Részletes |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | FR-FR | Egyszerű | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
@@ -76,7 +76,7 @@ Néhány példa a szolgáltatás URI-k az alábbi táblázatban láthatók.
 
 A következő mezőket a a kérelem fejlécében kell megadni:
 
-- `Ocp-Apim-Subscription-Key`: Minden alkalommal, amikor a szolgáltatást hívják meg át kell az előfizetési kulcs található a `Ocp-Apim-Subscription-Key` fejléc. Beszédszolgáltatás is támogatja az engedélyezési jogkivonatok előfizetési kulcsok helyett. További információkért lásd: [hitelesítési](../How-to/how-to-authentication.md).
+- `Ocp-Apim-Subscription-Key`: Minden alkalommal, amikor a szolgáltatást hívják meg át kell az előfizetési kulcs található a `Ocp-Apim-Subscription-Key` fejléc. Beszédszolgáltatás is támogatja az engedélyezési jogkivonatok előfizetési kulcsok helyett. További információért lásd: [Hitelesítés](../How-to/how-to-authentication.md).
 - `Content-type`: A `Content-type` mező formátumát és a hang Stream kodek ismerteti. Jelenleg csak WAV fájlt, és a PCM Mono 16000 kódolást támogatja. A Content-type érték ehhez a formátumhoz `audio/wav; codec=audio/pcm; samplerate=16000`.
 
 A `Transfer-Encoding` mező kitöltése nem kötelező. Ha ez a mező `chunked`, akkor is a hanganyag részeket felosztása kisebb tömbökre. További információkért lásd: [darabolásos átvitel](../How-to/how-to-chunked-transfer.md).
@@ -100,7 +100,7 @@ Az alábbi példa bemutatja, hogyan speech recognition kérést küldhet a Speec
 > [!NOTE]
 > Cserélje le `YOUR_AUDIO_FILE` a korábban rögzített hangfájl az elérési útját. Cserélje le `YOUR_SUBSCRIPTION_KEY` a saját előfizetés-kulccsal.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -135,7 +135,7 @@ A példában a curl Linux bash-környezet. Ha nem érhető el a platformon, szü
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 HttpWebRequest request = null;
@@ -184,7 +184,7 @@ A kérés feldolgozása után beszédszolgáltatás adja vissza a válasz JSON-f
 
 A következő kódrészlet azt szemlélteti, hogyan olvashatja a válasz az adatfolyamból.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 # show the response in JSON format
@@ -199,7 +199,7 @@ Ebben a példában a curl közvetlenül a karakterlánc a válaszüzenetben adja
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 /*

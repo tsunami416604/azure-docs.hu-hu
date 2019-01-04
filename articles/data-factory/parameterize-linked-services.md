@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 874d2e7b5925bf299c3749948206401e00553736
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649414"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650447"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Az Azure Data Factory társított szolgáltatásokat paraméterezése
 
@@ -34,7 +34,7 @@ A 7 perces bevezető és a funkció bemutatójáért tekintse meg a következő 
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
-Jelenleg társított szolgáltatás paraméterezés a Data Factory felhasználói felülete az Azure Portalon a következő adattárakat támogatja. Minden más adattárakban kiválasztásával lehet paraméterezni a társított szolgáltatás a **kód** ikonra a folyamat fülre, és a JSON-szerkesztő használatával.
+Jelenleg társított szolgáltatás paraméterezés a Data Factory felhasználói felülete az Azure Portalon a következő adattárakat támogatja. Minden más adattárakban kiválasztásával lehet paraméterezni a társított szolgáltatás a **kód** ikonra a **kapcsolatok** lapra, és a JSON-szerkesztő használatával.
 - Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386825"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582915"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
@@ -40,7 +40,7 @@ Ebben a szakaszban létrehoz egy mintául szolgáló IoT Edge megoldást tartalm
 
 3. A minta az IoT Edge-megoldást most már készen áll. Az alapértelmezett C# modul egy függőleges vonal üzenet-modult funkcionál. Az a `deployment.template.json`, látni fogja, ez a megoldás két lehetővé tevő modulokat tartalmaz. Az üzenet akkor jöjjön létre a `tempSensor` modult, és a rendszer kell közvetlenül adatcsatornán keresztül `FilterModule`, majd az IoT hubnak küldött.
 
-4. Ezek a projektek mentse, majd be az Azure-Adattárakkal véglegesítéséhez.
+4. Ezek a projektek mentse, majd véglegesíteni az Azure-Adattárakkal adattárba.
     
 > [!NOTE]
 > Az Azure-kódtárak használatával kapcsolatos további információkért lásd: [megosztani a kódot a Visual Studio és az Azure-Adattárakkal](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -69,11 +69,11 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
     
     * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **üzemeltetett Ubuntu 1604**
     * Ha szeretné a modulok Windows-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **Hosted VS2017** 
-    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 összeállítása kell beállítása a saját build-ügynök telepítése kattintva a **kezelés** gombra.
+    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 összeállítása, kell beállítása a saját build-ügynök telepítése funkcionáló a **kezelés** gombra.
     
     ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
 
-1. Az ügynök feladatot, kattintson a "+" három feladatok hozzáadása a buildelési folyamat. A rendszer az első két **Azure IoT Edge**. És a harmadik látható: **összeállítása összetevők közzététele**
+1. Az ügynök feladatot, nyissa meg a "+" három feladatok hozzáadása a buildelési folyamat. A rendszer az első két **Azure IoT Edge**. És a harmadik látható: **összeállítása összetevők közzététele**
     
     ![Tevékenységek hozzáadása a buildelési folyamat](./media/how-to-ci-cd/add-tasks.png)
 
@@ -93,13 +93,13 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
 
     ![Kapcsolja be a folyamatos integráció aktiválása](./media/how-to-ci-cd/configure-trigger.png)
 
-    Mentse az új buildelési folyamat. Kattintson a **Mentés** gombra.
+    Mentse az új buildelési folyamat az **mentése** gombra.
 
 
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Folyamatos üzembe helyezés Azure folyamatok konfigurálása
 Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan futnak, amikor a buildelési folyamat csökken összetevők van beállítva, és annak üzembe helyezési naplók az Azure-folyamatok mutatja.
 
-1. Az a **kiadásokban** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik kiadási folyamatokat, válassza ki a **+ új** gombra, és kattintson a **+ új kibocsátásában**.  
+1. Az a **kiadásokban** lapra, majd **+ új adatcsatorna**. Vagy, ha már rendelkezik kiadási folyamatokat, válassza ki a **+ új** gombra, majd **+ új kibocsátásában**.  
 
     ![Adja hozzá a kibocsátási folyamat](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -115,7 +115,7 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
 
     ![Adjon hozzá összetevőket](./media/how-to-ci-cd/add-artifacts.png)  
     
-    A **adjon hozzá egy összetevő oldalt**, forrástípus kiválasztása **összeállítása**. Ezután válassza ki a projektet, és létrehozott buildelési folyamat. Kattintson a **hozzáadása**.
+    A **adjon hozzá egy összetevő oldalt**, forrástípus kiválasztása **összeállítása**. Ezután válassza ki a projektet, és létrehozott buildelési folyamat. Ezután válassza a **Hozzáadás** lehetőséget.
 
     ![Adja hozzá a buildösszetevőt](./media/how-to-ci-cd/add-an-artifact.png)
 
@@ -127,7 +127,7 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
 
     ![QA feladatok konfigurálása](./media/how-to-ci-cd/view-stage-tasks.png)
 
-   Üzembe helyezési feladata a platform és nagybetű nincs megkülönböztetve, ami azt jelenti, választhat **Hosted VS2017** vagy **üzemeltetett Ubuntu 1604** a a **ügynökkészlet** (vagy bármely más ügynök által felügyelt saját kezűleg). Kattintson a "+" és a egy feladat hozzáadása.
+   Üzembe helyezési feladata a platform és nagybetű nincs megkülönböztetve, ami azt jelenti, választhat **Hosted VS2017** vagy **üzemeltetett Ubuntu 1604** a a **ügynökkészlet** (vagy bármely más ügynök által felügyelt saját kezűleg). Jelölje be "+" és a egy feladat hozzáadása.
 
     ![Tevékenységek hozzáadása a QA](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -135,13 +135,13 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
 
     ![QA üzembe helyezése](./media/how-to-ci-cd/deploy-to-qa.png)
 
-    Mentse az új kiadási folyamatot. Kattintson a **Mentés** gombra. Majd **folyamat** térhet vissza a folyamatot.
+    Mentse az új kiadás rendelkező folyamatot az **mentése** gombra. Majd **folyamat** térhet vissza a folyamatot.
 
 6. A második szakasz olyan éles környezetben. Szeretne hozzáadni egy új "ÉLES" szakaszban, a "QA" szakasz klónozása és a klónozott fázis átnevezése **PROD**,
 
     ![Szakasz klónozása](./media/how-to-ci-cd/clone-stage.png)
 
-7. Konfigurálja a tevékenységek az éles környezetben. Fel, hogy több IoT Edge eszközök ellátott 'prod', a feladat konfigurációk esetében frissítheti a Célfeltétel "éles" és "üzembe helyezése – éles" a speciális beállításokban állítja be az üzemelő példány azonosítója. Kattintson a **Mentés** gombra. Majd **folyamat** térhet vissza a folyamatot.
+7. Konfigurálja a tevékenységek az éles környezetben. Fel, hogy több IoT Edge eszközök ellátott 'prod', a feladat konfigurációk esetében frissítheti a Célfeltétel "éles" és "üzembe helyezése – éles" a speciális beállításokban állítja be az üzemelő példány azonosítója. Mentse a a **mentése** gombra. Majd **folyamat** térhet vissza a folyamatot.
     
     ![Éles üzembe helyezése](./media/how-to-ci-cd/deploy-to-prod.png)
 
@@ -151,7 +151,7 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
 
         ![Nyissa meg a központi telepítés előtti feltételek](./media/how-to-ci-cd/pre-deploy-conditions.png)    
 
-    2. Állítsa be **engedélyezve** a **központi telepítés előtti jóváhagyások**. És töltse ki a **jóváhagyók** bemeneti. Ezután kattintson a **Save** (Mentés) gombra.
+    2. Állítsa be **engedélyezve** a **központi telepítés előtti jóváhagyások**. És töltse ki a **jóváhagyók** bemeneti. Mentse a **mentése** gombra.
     
         ![Beállítása feltételek](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
@@ -165,7 +165,7 @@ Ebben a szakaszban létre fog hozni egy kiadási folyamatot, amely automatikusan
 
 Ebben a szakaszban a build, hogy működik a CI/CD-folyamat vált. Ellenőrizze az üzembe helyezés sikeres.
 
-1. A fordítási feladatot indításához küldje le a véglegesítés forráskódraktárban vagy is aktiválása manuálisan. Is aktiválhatja a fordítási feladatot a buildelési folyamat kattintva a **várólista** gombra az alábbi képernyőképen látható módon.
+1. A fordítási feladatot indításához küldje le a véglegesítés forráskódraktárban vagy is aktiválása manuálisan. Is aktiválhatja a fordítási feladatot a buildelési folyamat kiválasztásával a **várólista** gombra az alábbi képernyőképen látható módon.
 
     ![Manuális eseményindító](./media/how-to-ci-cd/manual-trigger.png)
 

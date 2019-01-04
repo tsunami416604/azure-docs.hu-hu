@@ -1,6 +1,6 @@
 ---
 title: Másolja, vagy az Azure Storage-adatok áthelyezése az AzCopy v10 (előzetes verzió) |} A Microsoft Docs
-description: Az AzCopy v10 használata (előzetes verzió) segédprogram áthelyezése vagy másolhat blob, tábla és fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
+description: Az AzCopy v10 használata (előzetes verzió) segédprogram áthelyezése vagy másolhat blob, a data lake és a fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958413"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808117"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Adatátvitel az AzCopy v10 (előzetes verzió)
 
@@ -54,18 +54,24 @@ Az AzCopy v10 nem igényel a telepítés. Nyisson meg egy előnyben részesítet
 ## <a name="authentication-options"></a>A hitelesítési beállítások
 
 AzCopy v10 lehetővé teszi, hogy az Azure Storage hitelesítésekor a következő beállításokat:
-- Azure Active Directory. Használat ```.\azcopy login``` bejelentkezni az Azure Active Directory használatával.  A felhasználóknak rendelkezniük kell ahhoz ["Storage-Blobadatok Közreműködője" szerepkörrel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) írni a Blob storage, Azure Active Directory-hitelesítéssel.
-- A Blob elérési útja kell csatolni kell SAS-jogkivonatot. Az Azure-portált használja, SAS-jogkivonatot [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestorageblobsastoken?view=azurermps-6.9.0), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **[A Blob és ADLS Gen2 támogatott] az Azure Active Directory**. Használat ```.\azcopy login``` bejelentkezni az Azure Active Directory használatával.  A felhasználóknak rendelkezniük kell ahhoz ["Storage-Blobadatok Közreműködője" szerepkörrel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) írni a Blob storage, Azure Active Directory-hitelesítéssel.
+- **SAS-tokeneket [támogatott a Blobok és fájlok szolgáltatás]**. A SAS-jogkivonat hozzáfűzése a blob elérési útja a parancssorban a használatára. Az Azure-portált használja, SAS-jogkivonatot [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 ## <a name="getting-started"></a>Első lépések
 
-Az AzCopy v10 egy egyszerű helyi dokumentált szintaxissal rendelkezik. Az általános szintaxist írja le a következőképpen néz ki:
+Az AzCopy v10 egy egyszerű helyi dokumentált szintaxissal rendelkezik. Az általános szintaxist írja le a következőképpen néz ki az Azure Active Directoryban bejelentkezve:
 
 ```azcopy
 .\azcopy <command> <arguments> --<flag-name>=<flag-value>
-# Example:
+# Examples if you have logged into the Azure Active Directory:
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/containersastoken" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
+
+# Examples if you are using SAS tokens to authenticate:
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
 ```
 
 Itt látható, hogyan kezdheti az elérhető parancsok listáját:
@@ -84,15 +90,27 @@ A súgóban talál oldal és a egy bizonyos paranccsal példáit futtassa az al�
 .\azcopy cp -h
 ```
 
-## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Hozzon létre egy fájlrendszert (csak az Azure Data Lake Storage Gen2 esetén)
+## <a name="create-a-blob-container-or-file-share"></a>A Blob-tárolóba vagy a fájlmegosztás létrehozása 
 
-Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, az alábbi parancs segítségével hozzon létre egy új fájlrendszer, így a, feltölthet egy fájlok letöltése.
+**Blobtároló létrehozása**
 
 ```azcopy
-.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+.\azcopy make "https://account.blob.core.windows.net/container-name"
 ```
 
-A ``account`` Ez a karakterlánc része a tárfiók nevére. A ``top-level-resource-name`` Ez a karakterlánc része a fájlrendszer, amely a létrehozni kívánt nevét.
+**Fájlmegosztás létrehozása**
+
+```azcopy
+.\azcopy make "https://account.file.core.windows.net/share-name"
+```
+
+**Hozzon létre egy blobtárolót ADLS Gen2 használatával**
+
+Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, az alábbi parancs segítségével hozzon létre egy új fájlrendszer (Blob tároló), így a fájlokat feltöltheti azt.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name"
+```
 
 ## <a name="copy-data-to-azure-storage"></a>Adatok másolása az Azure Storage
 
@@ -102,37 +120,22 @@ A Másolás parancs segítségével adatátvitel a forrásból a célra. A forr�
 - Az Azure fájl vagy könyvtár/fájlmegosztás URI
 - Az Azure Data Lake Storage Gen2 fájlrendszer/Directory/fájl URI
 
-> [!NOTE]
-> Jelenleg az AzCopy v10 támogatja között két storage-fiókok csak blokkblobokhoz másolása.
-
 ```azcopy
 .\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
 # Using alias instead
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-A következő parancsot a tároló "mycontainer1" a mappa C:\local\path rekurzív módon található összes fájlt tölt fel:
+A következő parancs a mappában található összes fájlt tölt fel `C:\local\path` rekurzív módon a tároló `mycontainer1` létrehozása `path` könyvtárat a tárolóban:
 
 ```azcopy
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
-Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, a fájlok feltöltése a fájlrendszer használhatja a következő parancsot:
-
-```azcopy
-.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
-```
-
-A következő parancsot a C:\local\path mappában található összes fájlt feltölti a tároló "mycontainer1" (nélkül recursing alkönyvtárak be):
+A következő parancs a mappában található összes fájlt tölt fel `C:\local\path` (nélkül recursing alkönyvtárak be), a tároló `mycontainer1`:
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
-```
-
-Ha engedélyezte a hierarchikus névterek a blob storage-fiókjában, használhatja a következő parancsot:
-
-```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 További példák lekéréséhez használja a következő parancsot:
@@ -143,23 +146,21 @@ További példák lekéréséhez használja a következő parancsot:
 
 ## <a name="copy-data-between-two-storage-accounts"></a>Másolja az adatokat két storage-fiókok között
 
-Két storage-fiókok közötti másolást használja a [URL blokk Put](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API-t, és nem használja az ügyfél gépének hálózati sávszélesség. Két Azure Storage-kiszolgálók közvetlenül közötti adatokat másolja az AzCopy egyszerűen hangolja össze a másolási művelet során. 
+Két storage-fiókok közötti másolást használja a [URL blokk Put](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API-t, és nem használja az ügyfél gépének hálózati sávszélesség. Két Azure Storage-kiszolgálók közvetlenül közötti adatokat másolja az AzCopy egyszerűen hangolja össze a másolási művelet során. Ez a beállítás jelenleg csak akkor használható a Blob Storage.
 
 Két tárfiókok között az adatok másolásához használja a következő parancsot:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
-Dolgozunk a blob storage-fiókok, amelyek hierarchikus névterek engedélyezettek, cserélje le a karakterlánc ``blob.core.windows.net`` a ``dfs.core.windows.net`` ezekben a példákban.
-
 > [!NOTE]
 > A parancs fogja enumerálni az összes blob-tárolót, és másolja őket a cél-fiók. Jelenleg az AzCopy v10 támogatja között két storage-fiókok csak blokkblobokhoz másolása. Minden egyéb tárolási fiók objektum (hozzáfűzés a blobok, a lapblobok, fájlok, táblák és üzenetsorok) kimarad.
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Másolja egy VHD-rendszerképet egy tárfiókba
 
-Alapértelmezés szerint az AzCopy v10 adatait feltölti az a blokkblobok használatát támogatják. Azonban ha egy forrásfájl vhd-bővítmény, az AzCopy v10 alapértelmezés szerint feltölti azt egy lapblob. Ez a viselkedés nem konfigurálható.
+Alapértelmezés szerint az AzCopy v10 adatait feltölti az a blokkblobok használatát támogatják. Azonban ha egy forrásfájl vhd-bővítmény, az AzCopy v10 alapértelmezés szerint feltölti azt egy lapblob. Ez a viselkedés jelenleg nem konfigurálható.
 
-## <a name="sync-incremental-copy-and-delete"></a>Szinkronizálás: növekményes másolása és törlése
+## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Szinkronizálás: növekményes másolása és törlése (csak Blob storage)
 
 > [!NOTE]
 > Sync parancsot a tartalmat a forrás célhelyre szinkronizálja, és ez magában foglalja a cél fájlok törlése, ha azok nem léteznek a forrás. Ellenőrizze, hogy a célhelyen történő szinkronizálása használja.
@@ -177,9 +178,7 @@ Ugyanúgy szinkronizálhat egy blobtárolót a helyi fájlrendszer le:
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-A parancs lehetővé teszi a növekményes szinkronizálás a forrás utolsó módosítás időbélyegek alapján a célhelyre. Hozzáadásakor, vagy töröljön egy fájlt a forrás, az AzCopy v10 fog végezze el ugyanezt a célhelyen.
-
-[!NOTE] Dolgozunk a blob storage-fiókok, amelyek hierarchikus névterek engedélyezettek, cserélje le a karakterlánc ``blob.core.windows.net`` a ``dfs.core.windows.net`` ezekben a példákban.
+A parancs lehetővé teszi a növekményes szinkronizálás a forrás utolsó módosítás időbélyegek alapján a célhelyre. Hozzáadásakor, vagy töröljön egy fájlt a forrás, az AzCopy v10 fog végezze el ugyanezt a célhelyen. Az AzCopy a törlés előtt kérni fogja a fájlokat a törlés megerősítéséhez.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -246,6 +245,10 @@ Sikertelen/megszakított feladatok azonosítójával együtt (Ez még nem állan
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
+
+### <a name="change-the-default-log-level"></a>Az alapértelmezett naplózási szint módosításához
+
+Alapértelmezés szerint az AzCopy naplózási szint INFO értéke. Ha szeretné, hogy lemezterületet a napló részletességi csökkentésére, felülírja a beállítás használatával ``--log-level`` lehetőséget. Elérhető naplózási szintek a következők: HIBAKERESÉSI információ, figyelmeztetés, hiba, KILÉPJEN és végzetes
 
 ## <a name="next-steps"></a>További lépések
 

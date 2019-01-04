@@ -5,25 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: e590500dd622988226c592352b0b86f16d54a9d4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 08fed2206d7d74d9ab6cb7f1462388486f999987
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983063"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718792"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Milyen a szervezetben a felhasználók egy alkalmazáshoz vendégfelhasználókat is meghívhat
 
-Vendég után felhasználói van adva a címtárban az Azure AD-ben az alkalmazás tulajdonosa küldhet a vendégfelhasználó egy közvetlen hivatkozást a megosztani kívánt alkalmazáshoz. Az Azure AD-rendszergazdák is állíthat be önkiszolgáló felügyeleti alkalmazástulajdonosok és kezelhető a saját vendég felhasználók akkor is, ha a vendég felhasználók még nem lett felvéve a címtárba még. Ha egy alkalmazást az önkiszolgáló működésre van konfigurálva, az alkalmazás tulajdonosa használatával alkalmazás Vendég felhasználó meghívása vagy vendégfelhasználó felvétele egy csoportba, amely hozzáfér az alkalmazás hozzáférési paneljén. Önkiszolgáló alkalmazás kezeléséhez szükséges néhány kezdeti beállítás a rendszergazda A következő található egy összefoglaló az a telepítési lépéseket (a részletesebb útmutatásért tekintse meg a [Előfeltételek](#prerequisites) ezen az oldalon lentebb):
+Vendég után felhasználói van adva a címtárban az Azure AD-ben az alkalmazás tulajdonosa küldhet a vendégfelhasználó egy közvetlen hivatkozást a megosztani kívánt alkalmazáshoz. Az Azure AD-rendszergazdák is állíthat be a katalógus vagy a SAML-alapú alkalmazásokat az Azure AD-bérlő önkiszolgáló kezelése. Ezzel a módszerrel alkalmazástulajdonosok kezelheti saját vendég felhasználók akkor is, ha a vendég felhasználók még nem lett felvéve a címtárba még. Ha egy alkalmazást az önkiszolgáló működésre van konfigurálva, az alkalmazás tulajdonosa használatával alkalmazás Vendég felhasználó meghívása vagy vendégfelhasználó felvétele egy csoportba, amely hozzáfér az alkalmazás hozzáférési paneljén. Önkiszolgáló alkalmazás-felügyeleti katalógus és a SAML-alapú alkalmazások néhány kezdeti beállítás rendszergazda van szükség. A következő található egy összefoglaló az a telepítési lépéseket (a részletesebb útmutatásért tekintse meg a [Előfeltételek](#prerequisites) ezen az oldalon lentebb):
 
  - Önkiszolgáló csoportkezelés a bérlő engedélyezése
  - Hozzon létre egy csoportot, rendelje hozzá az alkalmazáshoz, és adja meg a felhasználó egy olyan tulajdonost
  - Az önkiszolgáló alkalmazás konfigurálása és a csoport hozzárendelése az alkalmazáshoz
+
+> [!NOTE]
+> Ez a cikk bemutatja, hogyan állítható be a katalógus és a SAML-alapú alkalmazások az Azure AD-bérlő hozzáadott önkiszolgáló felügyelete. Emellett [beállítása az Office 365-csoportok önkiszolgáló](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) így a felhasználók kezelhetik a saját Office 365-csoportok a hozzáférést. További módokon felhasználók megoszthatják az Office-fájlok és alkalmazások vendégfelhasználók, lásd: [vendég hozzáférés az Office 365-csoportok](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és [megosztani a SharePoint-fájlok vagy mappák](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>A Vendég felhasználó meghívása egy alkalmazáshoz a hozzáférési panelen
 
@@ -38,11 +41,11 @@ Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, alka
    
    ![Felhasználó hozzáadása a hozzáférési Panel](media/add-users-iw/access-panel-manage-app-add-user.png)
    
-4. Az a **tagok hozzáadása** keresőmezőbe, a Vendég felhasználó e-mail címét. Szükség esetén üdvözlő üzenet hozzáadása.
+4. Az a **tagok hozzáadása** keresőmezőbe, a Vendég felhasználó e-mail címét. Ha szeretné, üdvözlő üzenetet is megadhat.
    
    ![Hozzáférési Panel meghívót](media/add-users-iw/access-panel-invitation.png)
    
-5. Válassza ki **Hozzáadás** , a vendégfelhasználó meghívó küldéséhez. Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a könyvtár vendégként.
+5. Válassza ki **Hozzáadás** , a vendégfelhasználó meghívó küldéséhez. Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
 
 ## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Meghívás a csatlakozás a csoporthoz, amely hozzáfér az alkalmazáshoz
 Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, az alkalmazástulajdonosok a az általuk kezelt csoportokhoz, a megosztani kívánt alkalmazásokat elérő vendégfelhasználókat is meghívhat. A vendégfelhasználók nem kell a könyvtárban már létezik. Az alkalmazás tulajdonosa kövesse az alábbi lépéseket a csoportba vendégfelhasználó meghívni, hogy az alkalmazás eléréséhez.
@@ -61,11 +64,11 @@ Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, az a
    
    ![Hozzáférési Panel – csoportok tag hozzáadása](media/add-users-iw/access-panel-groups-add-member.png)
    
-6. Az a **tagok hozzáadása** keresőmezőbe, a Vendég felhasználó e-mail címét. Szükség esetén üdvözlő üzenet hozzáadása.
+6. Az a **tagok hozzáadása** keresőmezőbe, a Vendég felhasználó e-mail címét. Ha szeretné, üdvözlő üzenetet is megadhat.
    
    ![Hozzáférési Panel csoport meghívót](media/add-users-iw/access-panel-invitation.png)
    
-7. Válassza ki **Hozzáadás** meghívóban leírtakat, a vendégfelhasználó automatikus küldése. Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a könyvtár vendégként.
+7. Válassza ki **Hozzáadás** meghívóban leírtakat, a vendégfelhasználó automatikus küldése. Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -89,7 +92,7 @@ Az önkiszolgáló alkalmazás kezeléséhez szükséges néhány kezdeti beáll
 3. Válassza ki **csoportok**.
 4. Válassza ki **új csoport**.
 5. A **csoporttípust**válassza **biztonsági**.
-6. Adjon meg egy **csoportnév** és **csoport leírása**.
+6. Gépelje be a **Csoport nevét** és a **Csoport leírását**.
 7. A **tagságtípusának**válassza **hozzárendelt**.
 8. Válassza ki **létrehozás**, és zárja be a **csoport** lapot.
 9. Az a **csoportok – összes csoport** lapon, nyissa meg a csoportot. 
@@ -102,6 +105,7 @@ Az önkiszolgáló alkalmazás kezeléséhez szükséges néhány kezdeti beáll
 4. Az alkalmazás listában keresse meg és nyissa meg az alkalmazást.
 5. A **kezelés**válassza **egyszeri bejelentkezési**, és az alkalmazás egyszeri bejelentkezés konfigurálása. (További információkért lásd: [egyszeri bejelentkezést a vállalati alkalmazások kezelése](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
 6. A **kezelés**válassza **önkiszolgáló**, és az önkiszolgáló alkalmazás-hozzáférés beállítása. (További információkért lásd: [önkiszolgáló alkalmazás-hozzáférés használata](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
+
     > [!NOTE]
     > A beállítás **melyik csoporthoz lesz hozzáadva a hozzárendelt felhasználók?** válassza ki az előző szakaszban létrehozott a csoportot.
 7. Alatt **kezelés**, jelölje be **felhasználók és csoportok**, és győződjön meg arról, hogy az önkiszolgáló csoportkezelési létrehozott megjelenik a listában.

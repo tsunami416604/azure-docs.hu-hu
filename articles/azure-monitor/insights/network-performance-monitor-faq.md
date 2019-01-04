@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166608"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543988"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -70,6 +70,9 @@ A szkript kizárólag Windows tűzfal helyben konfigurálja. Ha tűzfal vagy a h
 
 ### <a name="how-many-agents-should-i-use"></a>Hány ügynök használjam?
 Legalább egy ügynököt, amely a figyelni kívánt minden egyes alhálózathoz használjon.
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Mi az ügynökök is használhatok maximális számát, vagy hibát "… elérte a konfigurációs korlátot"?
+Az NPM Munkaállomásonként 5000-es IP-címek IP-címek számát korlátozza. Ha egy csomópont IPv4 és IPv6-címeket is rendelkezik, ez számítanak 2 IP-címek a csomópontra vonatkozóan. Ezért ezt a korlátot, az 5000-es IP-címek akkor döntse el, az ügynökök számának felső korlátja. NPM csomópontok lapján törölheti az inaktív ügynököt >> konfigurálása. Npm-et is fenntartják, minden IP-címekről felhasználónevéhez rendelt minden eddiginél a virtuális Gépet üzemeltető az ügynököt, és ezek szintén számít, hogy felső korlátja 5000-es IP-címek külön IP-címek hozzájáruló előzményeit. Szabadítson fel IP-címek a munkaterülethez, használhatja a csomópontok lap törli az IP-címek, amelyek nem használja.
 
 ## <a name="monitoring"></a>Figyelés
 

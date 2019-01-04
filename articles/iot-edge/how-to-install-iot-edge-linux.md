@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: beda9fa096dd8308822a5cd5a816b569712b8c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9945b0aad32fe9abc6a51132a287da10f1b28daa
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086087"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557750"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (x64) linuxon
 
@@ -142,7 +142,7 @@ Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon új
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>2. lehetőség: Az Automatikus kiépítés
+### <a name="option-2-automatic-provisioning"></a>2. lehetőség: Automatikus felhasználóátadás
 
 Automatikus kiépítésére egy eszközt, [Device Provisioning Service beállítása és lekérése a regisztrációs Eszközazonosító](how-to-auto-provision-simulated-device-linux.md). Csak olyan eszközökre, amelyeken egy platformmegbízhatósági modul (TPM) lapka automatikus üzembe helyezés működik. Például Raspberry Pi-eszközök nem biztosítja a TPM-hez alapértelmezés szerint. 
 
@@ -206,7 +206,39 @@ A korlátozott erőforráshoz eszközökön, azt javasoljuk, hogy beállította 
 
 Ha a hálózat, amely rendelkezik egy proxykiszolgáló, kövesse a [a proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása](how-to-configure-proxy-support.md).
 
+## <a name="uninstall-iot-edge"></a>Távolítsa el az IoT Edge
+
+Ha szeretné eltávolítani a IoT Edge-telepítést, a Linux rendszerű eszközről, használja az alábbi parancsokat a parancssorban. 
+
+Távolítsa el az IoT Edge-futtatókörnyezetet. 
+
+```bash
+sudo apt-get remove --purge iotedge
+```
+
+Ha eltávolítják az IoT Edge-futtatókörnyezet, a tároló által létrehozott, le vannak állítva, de továbbra is létezik az eszközön. Tekintse meg, melyiket továbbra is megtekintheti az összes tárolót. 
+
+```bash
+sudo docker ps -a
+```
+
+A tárolók törlése az eszközről, többek között a két futtatókörnyezet tárolóiból. 
+
+```bash
+sudo docker rm -f <container name>
+```
+
+Végezetül távolítsa el a tároló-futtatókörnyezet az eszközről. 
+
+```bash 
+sudo apt-get remove --purge moby-cli
+sudo apt-get remove --purge moby-engine
+```
+
 ## <a name="next-steps"></a>További lépések
+
+Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md).
 
 Ha az Edge-futtatókörnyezet megfelelően telepíti a problémák merülnek fel, tekintse meg a [hibaelhárítási](troubleshoot.md) lapot.
 
+Egy meglévő telepítéshez az IoT Edge a legújabb verzióra frissítéséhez lásd [az IoT Edge biztonsági démon és a futtatókörnyezet frissítése](how-to-update-iot-edge.md).

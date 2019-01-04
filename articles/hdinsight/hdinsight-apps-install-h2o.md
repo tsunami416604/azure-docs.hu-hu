@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4be346163fd54c0c5f962d15bc2433c7fab49e0b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497208"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650943"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Közzétett alkalmazás – H2O Sparkling Water telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [H20 Sparkling Water](http://www.h2o.ai/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [H20 Sparkling Water](https://www.h2o.ai/) közzétett [Apache Hadoop](https://hadoop.apache.org/) alkalmazás az Azure HDInsight a. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-h2o-sparkling-water"></a>Tudnivalók a H2O Sparkling Water
 
@@ -34,7 +34,7 @@ H2O Sparkling Water biztosítja:
 ### <a name="resource-links"></a>Erőforrás-hivatkozások
 
 * [H2O.ai mérnöki ütemterve](http://jira.h2o.ai/)
-* [H2O.ai kezdőlapja](http://www.h2o.ai/)
+* [H2O.ai kezdőlapja](https://www.h2o.ai/)
 * [H2O.ai dokumentációja](http://docs.h2o.ai/)
 * [H2O.ai támogatása](https://support.h2o.ai/)
 * [H2O.ai nyílt forráskódú kódbázis](https://github.com/h2oai/)
@@ -43,9 +43,9 @@ H2O Sparkling Water biztosítja:
 
 Telepíti az alkalmazást egy új HDInsight-fürtöt, vagy egy meglévő fürthöz, a következő konfigurációval kell rendelkeznie:
 
-* A fürt tier(s): Standard vagy prémium szint
+* Fürtszint(ek): Standard vagy prémium szintű
 * Fürt típusa: Spark
-* A fürt verziót: 3.5-ös és 3.6-os
+* Fürtverzió(k): 3.5-ös és 3.6-os
 
 ## <a name="install-the-h2o-sparkling-water-published-application"></a>A közzétett alkalmazás telepítése a H2O Sparkling Water
 
@@ -55,7 +55,7 @@ Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti út
 
 1. A telepítés után megkezdheti H2O Sparkling Water (h2o-sparklingwater) az Azure Portalon a fürtről megnyitásával [Jupyter notebookok](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`). Akkor is elérhető Jupyter kiválasztásával **fürt irányítópultja** a fürt panelről a portálon, majd válassza **Jupyter Notebook**. A hitelesítő adatok megadását kéri. Adja meg a fürt Hadoop hitelesítő adatokat a fürt létrehozásakor megadott.
 
-2. A Jupyter, három mappák látja: H2O-PySparkling-példák, a PySpark példákat és a Scala példákat. Válassza ki a **H2O-PySparkling-példák** mappát.
+2. A Jupyter három mappa jelenik meg: H2O-PySparkling-példák, PySpark példákat és a Scala példákat. Válassza ki a **H2O-PySparkling-példák** mappát.
 
     ![Otthoni Jupyter-notebookok](./media/hdinsight-apps-install-h2o/jupyter-home.png)
 
@@ -69,7 +69,7 @@ Ezzel és más elérhető ISV-alkalmazások telepítésének lépésenkénti út
 
 5. Miután a H2O fürt működik és elérhető, nyissa meg a H2O Flow a **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ha nem tudja megnyitni a H2O Flow, törölje a böngésző gyorsítótárát. Ha még mindig nem lehet elérni, valószínűleg nem rendelkezik elegendő erőforrás a fürtön. Próbálja ki a munkavégző csomópontok számának növelése a **fürt méretezése** beállítást a fürt ablaktáblán.
 
     ![A Flow H2O irányítópult](./media/hdinsight-apps-install-h2o/h2o-flow.png)
@@ -95,8 +95,8 @@ Ennyi az egész! Mesterséges intelligencia Spark csupán néhány percen belül
 ## <a name="next-steps"></a>További lépések
 
 * [H2O dokumentációja](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/index.html)
-* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): útmutató HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
-* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
-* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
-* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): ismerje meg, hogyan telepíthet további alkalmazásokat használ.
-* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.
+* [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): Ismerje meg, hogyan lehet HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
+* [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Ismerje meg, hogyan teheti közzé egyéni HDInsight-alkalmazásait akár az Azure Marketplace-en.
+* [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx): Ismerje meg, hogyan adhat meg HDInsight-alkalmazások.
+* [Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása](hdinsight-hadoop-customize-cluster-linux.md): Ismerje meg, hogyan telepíthet további alkalmazásokat használ.
+* [Üres élcsomópontok használata a HDInsight](hdinsight-apps-use-edge-node.md): Ismerje meg, hogy egy üres élcsomópontot használata a HDInsight-fürtök eléréséhez, és a teszteléshez és a HDInsight-alkalmazások üzemeltetése.

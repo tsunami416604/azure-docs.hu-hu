@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ea2fe0f7e326db00a63529c0279c9c15d30c744c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384240"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744819"
 ---
 # <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Az Apache Maven használata Java-alkalmazások, amelyek Apache HBase használata a Windows-alapú HDInsight (Apache Hadoop)
-Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://hbase.apache.org/) alkalmazás javában az Apache Maven segítségével. Ezután használja az alkalmazást az Azure HDInsight (Apache Hadoop).
+Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](https://hbase.apache.org/) alkalmazás javában az Apache Maven segítségével. Ezután használja az alkalmazást az Azure HDInsight (Apache Hadoop).
 
-[Az Apache Maven](http://maven.apache.org/) olyan szoftver project management és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre. Ebből a cikkből megismerheti, hogyan hozzon létre egy egyszerű Java-alkalmazást hoz létre, lekérdezések, és törli az Azure HDInsight-fürtön egy HBase-tábla használatával.
+[Az Apache Maven](https://maven.apache.org/) olyan szoftver project management és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre. Ebből a cikkből megismerheti, hogyan hozzon létre egy egyszerű Java-alkalmazást hoz létre, lekérdezések, és törli az Azure HDInsight-fürtön egy HBase-tábla használatával.
 
 > [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések szükség egy HDInsight-fürt által használt Windows. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Követelmények
 * [A Java platform JDK](https://aka.ms/azure-jdks) 7 vagy újabb verzió
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 * Egy Windows-alapú HDInsight-fürtöt, a hbase-ben
 
     > [!NOTE]  
@@ -40,7 +40,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
 
     Ez a parancs létrehoz egy könyvtárat az aktuális helyen, által megadott név a **artifactID** paraméter (**hbaseapp** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
 
-   * **pom.xml**:  A projekt Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
+   * **pom.xml**:  A projekt Object Model ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
    * **src**: A könyvtár, amely tartalmazza a **main\java\com\microsoft\examples** könyvtárat, ahol az alkalmazás fogja készíthet.
 3. Törölje a **src\test\java\com\microsoft\examples\apptest.java** fájlhoz, mert nem szerepel ebben a példában.
 
@@ -53,7 +53,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
           <version>1.1.2</version>
         </dependency>
 
-    Ez a szakasz arra utasítja a Maven, hogy szükséges-e a projekt **hbase-ügyfél** verzió **1.1.2**. A fordítás során a függőség az alapértelmezett Maven tárházból letölti. Használhatja a [Apache Maven központi tárházban keresési](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
+    Ez a szakasz arra utasítja a Maven, hogy szükséges-e a projekt **hbase-ügyfél** verzió **1.1.2**. A fordítás során a függőség az alapértelmezett Maven tárházból letölti. Használhatja a [Apache Maven központi tárházban keresési](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) további információ a függőség.
 
    > [!IMPORTANT]  
    > A verziószámnak meg kell egyeznie a HBase a HDInsight-fürt a megadott verzióját. A következő táblázat segítségével keresse meg a megfelelő verziószámot.
@@ -127,7 +127,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
    >
    >
 
-    Ez `<plugins>` szakaszban konfigurálja a [Apache Maven fordító beépülő modul](http://maven.apache.org/plugins/maven-compiler-plugin/) és [Apache Maven Shade beépülő modul](http://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez használható oka az, hogy az ismétlődő licencfájlok futási időben, a HDInsight-fürtön hibát okozhat. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy ezt a hibát.
+    Ez `<plugins>` szakaszban konfigurálja a [Apache Maven fordító beépülő modul](https://maven.apache.org/plugins/maven-compiler-plugin/) és [Apache Maven Shade beépülő modul](https://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez használható oka az, hogy az ismétlődő licencfájlok futási időben, a HDInsight-fürtön hibát okozhat. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy ezt a hibát.
 
     A maven-shade-beépülő modul is hoz létre, az uber jar (vagy az fat jar), amely tartalmazza az alkalmazás számára szükséges összes függőséget.
 4. Mentse a **pom.xml** fájlt.
@@ -147,7 +147,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
           * "License"); you may not use this file except in compliance
           * with the License.  You may obtain a copy of the License at
           *
-          *     http://www.apache.org/licenses/LICENSE-2.0
+          *     https://www.apache.org/licenses/LICENSE-2.0
           *
           * Unless required by applicable law or agreed to in writing, software
           * distributed under the License is distributed on an "AS IS" BASIS,

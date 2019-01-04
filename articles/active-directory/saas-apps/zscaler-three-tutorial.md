@@ -1,10 +1,11 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Zscaler három |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler három |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Zscaler három között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: f352e00d-68d3-4a77-bb92-717d055da56f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -12,26 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: b148967af0882993d8ab113bdf0fd3ad3835296f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 442d7478669a206f04cb799cb86b807cfe7b0624
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092610"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790157"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Oktatóanyag: Azure Active Directory-integráció az Zscaler három
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Oktatóanyag: A Zscaler három Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Zscaler három integrálása az Azure Active Directory (Azure AD).
 
 Az Azure AD integrálása Zscaler három nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá a Zscaler három Azure AD-ben
-- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Zscaler három (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+- Szabályozhatja, ki férhet hozzá a Zscaler három Azure AD-ben.
+- A felhasználók automatikusan első bejelentkezett Zscaler három (egyszeri bejelentkezés), engedélyezheti az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,12 +47,11 @@ Az Azure AD-integráció konfigurálása a Zscaler három, a következőkre van 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség: [próba](https://azure.microsoft.com/pricing/free-trial/).
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
-Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. A katalógusból Zscaler három hozzáadása
 2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
@@ -62,23 +62,23 @@ Az Azure AD integrálása a Zscaler három konfigurálásához hozzá kell Zscal
 
 **Adja hozzá a Zscaler három a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![Alkalmazások][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb][3]
 
-4. Az eredmények panelen válassza ki a **Zscaler három**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Zscaler három**válassza **Zscaler három** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-three-tutorial/tutorial_zscalerthree_addfromgallery.png)
+    ![Az eredmények listájában három Zscaler](./media/zscaler-three-tutorial/tutorial_zscalerthree_addfromgallery.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Zscaler három a teszt "Britta Simon" nevű felhasználó.
 
@@ -86,14 +86,14 @@ Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felh
 
 Az Azure AD egyszeri bejelentkezés a Zscaler három tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Proxybeállítások konfigurálása](#configuring-proxy-settings)**  – az Internet Explorerben a Proxybeállítások konfigurálása
-3. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Zscaler három tesztfelhasználó létrehozása](#creating-a-zscaler-three-test-user)**  – egy megfelelője a Britta Simon Zscaler három felhasználó Azure ad-ben reprezentációja van csatolva van.
-5. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-6. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Zscaler három egyszeri bejelentkezés konfigurálása](#configure-zscaler-three-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Hozzon létre három Zscaler tesztfelhasználót](#create-zscaler-three-test-user)**  – egy megfelelője a Britta Simon Cisco rendszerére, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és három Zscaler alkalmazását az egyszeri bejelentkezés konfigurálása.
 
@@ -101,95 +101,123 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az Azure Portalon az a **Zscaler három** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen kattintson **kiválasztása** a **SAML** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_general_301.png)
+    ![Egyszeri bejelentkezés konfigurálása](common/tutorial_general_301.png)
 
-3. Ha váltani szeretne **SAML** üzemmódról bármely másik, kattintson a **egyszeri bejelentkezési mód megváltoztatása** a képernyő fölött.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_general_300.png)
+    ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_general_302.png)
+    ![Zscaler három tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/zscaler-three-tutorial/tutorial_zscalerthree_url.png)
 
-5. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: `https://login.zscalerthree.net/sfc_sso`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_zscalerthree_url.png)
+5. Zscaler három alkalmazást az SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok & jogcímek** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML lap**, kattintson a **szerkesztése** gombra kattintva nyissa meg **felhasználói attribútumok & jogcímek** párbeszédpanel.
 
-    A bejelentkezési URL-címe szövegmezőbe adja meg az URL-cím: `https://login.zscalerthree.net/sfc_sso`
+    ![Az attribútumkapcsolat](./media/zscaler-three-tutorial/tutorial_zscalerthree_attribute.png)
 
-6. Az a **SAML-aláíró tanúsítvány** szakaszt, kattintson a **letöltése** letöltéséhez **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_zscalerthree_certificate.png)
+    | Name (Név)  | Adatforrás-attribútum  |
+    | ---------| ------------ |
+    | Tagja(Pénzügy)     | User.assignedroles |
 
-8. Az a **Zscaler három beállítása** területén másolja a **bejelentkezési URL-cím**.
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_zscalerthree_configure.png)
+    ![image](./common/new_save_attribute.png)
+    
+    ![image](./common/new_attribute_details.png)
+
+    b. Az a **forrásattribútum** listájában, selelct az attribútum értéke.
+
+    c. Kattintson az **OK** gombra.
+
+    d. Kattintson a **Save** (Mentés) gombra.
+
+    > [!NOTE]
+    > Kattintson a [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tudni, hogy az Azure AD-szerepkör konfigurálása
+
+7. Az a **SAML-aláíró tanúsítvány** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **tanúsítvány (Base64)**, és mentse a tanúsítványfájlt a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozás](./media/zscaler-three-tutorial/tutorial_zscalerthree_certificate.png) 
+
+8. Az a **Zscaler három beállítása** területén másolja a megfelelő URL-címet a követelmény alapján.
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+    ![Zscaler három konfiguráció](common/configuresection.png)
+
+### <a name="configure-zscaler-three-single-sign-on"></a>Zscaler három egyszeri bejelentkezés konfigurálása
 
 9. Egy másik böngészőablakban jelentkezzen be a Zscaler három vállalati hely rendszergazdaként.
 
-10. A felső menüben kattintson **felügyeleti**.
-
+10. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
+   
     ![Felügyeleti](./media/zscaler-three-tutorial/ic800206.png "felügyelete")
 
-9. A **szerepkörök és a rendszergazdák kezelése**, kattintson a **felhasználók kezelése és a hitelesítési**.
+    a. Hitelesítés típusa alatt válassza ki a **SAML**.
 
-    ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-three-tutorial/ic800207.png "felhasználók és hitelesítés kezeléséhez")
+    b. Kattintson a **SAML konfigurálása**.
 
-10. Az a **hitelesítési beállítások kiválasztása a szervezet** szakaszban, hajtsa végre az alábbi lépéseket:
+11. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
+            
+    ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-three-tutorial/ic800208.png "felhasználók és hitelesítés kezeléséhez")
+    
+    a. Az a **SAML portál URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** Azure Portalról másolt.
 
-    ![Hitelesítési](./media/zscaler-three-tutorial/ic800208.png "hitelesítés")
+    b. Az a **bejelentkezési név attribútum** szövegmezőbe írja be **NameID**.
 
-    a. Válassza ki **hitelesítés SAML egyszeri bejelentkezés használatával**.
+    c. Kattintson a **feltöltése**töltheti fel az Azure SAML aláíró tanúsítvány az Azure Portalról letöltött a **nyilvános SSL-tanúsítvány**.
 
-    b. Kattintson a **SAML egyszeri bejelentkezés paramétereinek konfigurálása**.
+    d. Váltás a **SAML automatikus kiépítés engedélyezése**.
 
-11. Az a **konfigurálása SAML egyszeri bejelentkezéses paraméterek** párbeszédpanel lapon hajtsa végre az alábbi lépéseket, és kattintson **kész**
+    e. Az a **felhasználói megjelenítési név attribútum** szövegmezőbe írja be **displayName** szeretné engedélyezni a SAML automatikus kiépítés displayName attribútumok esetén, ha.
 
-    ![Egyszeri bejelentkezés](./media/zscaler-three-tutorial/ic800209.png "egyszeri bejelentkezés")
+    f. Az a **csoport neve attribútum** szövegmezőbe írja be **tagja(Pénzügy)** szeretné engedélyezni a SAML automatikus kiépítés tagja(Pénzügy) attribútumok esetén, ha.
 
-    a. Illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról történő másolta a **URL-címe, amelyhez a felhasználók eljuthatnak a hitelesítéshez a SAML-portál** szövegmezőbe.
+    g. Az a **részleg neve attribútum** Enter **részleg** Ha engedélyezi a SAML automatikus kiépítés részleg attribútumokat.
 
-    b. Az a **bejelentkezési nevet tartalmazó attribútum** szövegmezőbe írja be **NameID**.
-
-    c. A letöltött tanúsítvány feltöltéséhez kattintson **Zscaler pem**.
-
-    d. Válassza ki **SAML automatikus kiépítés engedélyezése**.
+    i. Kattintson a **Save** (Mentés) gombra.
 
 12. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
 
-    ![Felügyeleti](./media/zscaler-three-tutorial/ic800210.png "felügyelete")
+    ![Adminisztráció](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. Kattintson a **Save** (Mentés) gombra.
+    a. A kurzort a **aktiválási** menüjének bal alsó.
 
     b. Kattintson a **aktiválása**.
 
 ## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
-
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>A Proxybeállítások konfigurálása az Internet Explorerben
 
 1. Indítsa el **az Internet Explorer**.
 
-2. Válassza ki **Internetbeállítások** származó a **eszközök** nyílt menüje a **Internetbeállítások** párbeszédpanel.
-
+1. Válassza ki **Internetbeállítások** származó a **eszközök** nyílt menüje a **Internetbeállítások** párbeszédpanel.   
+    
      ![Internetbeállítások](./media/zscaler-three-tutorial/ic769492.png "Internetbeállítások")
 
-3. Kattintson a **kapcsolatok** fülre.
+1. Kattintson a **kapcsolatok** fülre.   
   
      ![Kapcsolatok](./media/zscaler-three-tutorial/ic769493.png "kapcsolatok")
 
-4. Kattintson a **LAN-beállítások** megnyitásához a **LAN-beállítások** párbeszédpanel.
+1. Kattintson a **LAN-beállítások** megnyitásához a **LAN-beállítások** párbeszédpanel.
 
-5. A Proxy server szakaszban hajtsa végre az alábbi lépéseket:
-
+1. A Proxy server szakaszban hajtsa végre az alábbi lépéseket:   
+   
     ![Proxykiszolgáló](./media/zscaler-three-tutorial/ic769494.png "proxykiszolgáló")
 
     a. Válassza ki **proxykiszolgáló használata a helyi hálózaton**.
 
-    b. A cím szövegmezőbe írja be **gateway.zscalerthree.net**.
+    b. A cím szövegmezőbe írja be **átjáró. Zscaler Three.net**.
 
     c. Írja be a Port szövegmező **80-as**.
 
@@ -197,9 +225,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     e. Kattintson a **OK** gombra kattintva zárja be a **helyi hálózati (LAN) beállításai** párbeszédpanel.
 
-6. Kattintson a **OK** gombra kattintva zárja be a **Internetbeállítások** párbeszédpanel.
+1. Kattintson a **OK** gombra kattintva zárja be a **Internetbeállítások** párbeszédpanel.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -209,53 +237,28 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-three-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create_aaduser_01.png) 
 
 3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/zscaler-three-tutorial/create_aaduser_02.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create_aaduser_02.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
 
-### <a name="creating-a-zscaler-three-test-user"></a>Zscaler három tesztfelhasználó létrehozása
+### <a name="create-zscaler-three-test-user"></a>Zscaler három tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Zscaler három, akkor ki kell építeni a Zscaler három. Zscaler három esetén kiépítése a manuális feladat.
+Ez a szakasz célja a Zscaler három Britta Simon nevű felhasználó létrehozásához. Zscaler három támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó Zscaler három eléréséhez, ha még nem létezik tett kísérlet során jön létre.
+>[!Note]
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Zscaler három támogatási csoportjának](https://www.zscaler.com/company/contact).
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:
-
-1. Jelentkezzen be a **Zscaler három** bérlő.
-
-2. Kattintson a **felügyeleti**.
-
-    ![Felügyeleti](./media/zscaler-three-tutorial/ic781035.png "felügyelete")
-
-3. Kattintson a **felhasználókezelés**.
-
-     ![Adjon hozzá](./media/zscaler-three-tutorial/ic781036.png "hozzáadása")
-
-4. Az a **felhasználók** lapra, majd **Hozzáadás**.
-
-    ![Adjon hozzá](./media/zscaler-three-tutorial/ic781037.png "hozzáadása")
-
-5. A felhasználó hozzáadása a szakaszban a következő lépésekkel:
-
-    ![Felhasználó hozzáadása](./media/zscaler-three-tutorial/ic781038.png "felhasználó hozzáadása")
-
-    a. Írja be a **UserID**, **felhasználó megjelenített neve**, **jelszó**, **jelszó megerősítése**, majd válassza ki **csoportok**és a **részleg** egy érvényes Azure AD-fiókot kíván üzembe helyezni.
-
-    b. Kattintson a **Save** (Mentés) gombra.
-
-> [!NOTE]
-> Zscaler három felhasználói fiók létrehozása eszközöket és három Zscaler által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Zscaler három Azure egyszeri bejelentkezés használatára.
 
@@ -271,15 +274,23 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Felhasználó hozzárendelése][202]
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra, majd válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználó **Britta Simon** a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+6. A a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő felhasználói szerepkört a listában, majd kattintson a **válassza** gombra a képernyő alján.
+
+    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelése** gombra.
+
+    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -293,14 +304,13 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 
 <!--Image references-->
 
-[1]: ./media/zscaler-three-tutorial/tutorial_general_01.png
-[2]: ./media/zscaler-three-tutorial/tutorial_general_02.png
-[3]: ./media/zscaler-three-tutorial/tutorial_general_03.png
-[4]: ./media/zscaler-three-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/zscaler-three-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/zscaler-three-tutorial/tutorial_general_200.png
-[201]: ./media/zscaler-three-tutorial/tutorial_general_201.png
-[202]: ./media/zscaler-three-tutorial/tutorial_general_202.png
-[203]: ./media/zscaler-three-tutorial/tutorial_general_203.png
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

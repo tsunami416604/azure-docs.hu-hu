@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271011"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630461"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -151,7 +151,7 @@ Ezen IP-címek az Azure Portalon az ASEv2 jól látható, az ASE felhasználói 
 
 ### <a name="app-assigned-ip-addresses"></a>Alkalmazás által kiosztott IP-címek ###
 
-Külső ASE környezetben, az IP-címeket rendelhet az egyes alkalmazások. ILB ASE környezetben, nem tudja megtenni. Az alkalmazás a saját IP-cím konfigurálása a további információkért lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure web appshez](../app-service-web-tutorial-custom-ssl.md).
+Külső ASE környezetben, az IP-címeket rendelhet az egyes alkalmazások. ILB ASE környezetben, nem tudja megtenni. Az alkalmazás a saját IP-cím konfigurálása a további információkért lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](../app-service-web-tutorial-custom-ssl.md).
 
 Amikor egy alkalmazást a saját IP-alapú SSL-címmel rendelkezik, az ASE fenntartja két port adott IP-címére való leképezéséhez. Egy port a HTTP-forgalom, és a más port HTTPS-hez van. Ezeket a portokat az ASE UI, az IP-címek szakaszban szerepelnek. Forgalom elérhetik ezeket a portokat a virtuális IP-cím a kell lennie, vagy az alkalmazások elérhetetlenné válnak. Ez a követelmény nem szabad elfelejteni, amikor konfigurálja a hálózati biztonsági csoportok (NSG-k).
 

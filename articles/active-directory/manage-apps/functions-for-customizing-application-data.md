@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 867fdd57df163f37d86572798aaae6d78d43f479
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105155"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973723"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -27,14 +27,14 @@ Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön ált
 Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic függvényeihez kapcsolódó alkalmazások (VBA).
 
 * A teljes kifejezésnek funkciók, amelyek követi zárójelben argumentumok nevét kell meghatározni: <br>
-  *Függvénynév (<< 1 argumentum >>, <<argument N>>)*
-* Függvények beágyazhatók egymásba előfordulhat, hogy ágyazhatók egymásba. Példa: <br> *FunctionOne(FunctionTwo(<<argument1>>))*
+  *Függvénynév (`<<argument 1>>`,`<<argument N>>`)*
+* Függvények beágyazhatók egymásba előfordulhat, hogy ágyazhatók egymásba. Példa: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
 * Az funkciók három eltérő típusú argumentumokat adhat át:
   
   1. Attribútumok, amelyek szögletes zárójelek közé kell tenni. Például: [attributeName]
-  2. A karakterlánc-állandókat, amelyek dupla idézőjelek közé kell tenni. Például: "Egyesült Államok"
-  3. Más funkciók. Például: FunctionOne (<<argument1>>, FunctionTwo (<<argument2>>))
-* A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Például: "cég neve: \"Contoso\""
+  2. A karakterlánc-állandókat, amelyek dupla idézőjelek közé kell tenni. Példa: "Egyesült Államok"
+  3. Más funkciók. Példa: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
+* A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Függvények listája.
 [Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch)
@@ -243,7 +243,7 @@ Létre kell hoznia egy felhasználói alias, a felhasználó utónevét első 3 
 
 * **BEMENETI** (givenName): "János"
 * **BEMENETI** (Vezetéknév): "Jakab"
-* **KIMENETI**: "JohDoe"
+* **KIMENETI**:  "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Távolítsa el az e mellékjeleket egy karakterláncból.
 Cserélje le a megfelelő karakterek, ékezetes nem tartalmazó ékezetes karakter hosszúságúnak kell.
@@ -254,7 +254,7 @@ NormalizeDiacritics([givenName])
 **Bemeneti/kimeneti. példa:** <br>
 
 * **BEMENETI** (givenName): "Zoë"
-* **KIMENETI**: "Zoe"
+* **KIMENETI**:  "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Egy bizonyos formátumú karakterlánc formájában kimeneti dátum
 
@@ -268,7 +268,7 @@ Ha például szeretné formátumához servicenow-hoz készült.
 **Bemeneti/kimeneti. példa:**
 
 * **BEMENETI** (extensionAttribute1): "20150123105347.1Z"
-* **KIMENETI**: "2015-01-23"
+* **KIMENETI**:  "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Cserélje le az előre megadott beállítások alapján értéket
 

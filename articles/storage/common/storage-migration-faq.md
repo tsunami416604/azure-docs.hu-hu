@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a15c983291d35063884178f7b84e21fe4908b49a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416392"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632314"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Az Azure-tárterület-áttelepítés – gyakran ismételt kérdések
 
@@ -54,9 +54,9 @@ Nincs biztonsági mentése egy teljes tárfiókot közvetlenül lehetőség. De,
             /Dest:https://destaccount.blob.core.windows.net/mycontainer2
             /SourceKey:key1 /DestKey:key2 /S
 
-    - `/Source`: A forrás tárfiókban (akár a tároló) adja meg az URI-t.  
+    - `/Source`: Adja meg az URI-t a forrás tárfiókban (akár a tároló).  
     - `/Dest`: Adja meg az URI-t a céloldali tárfiók (akár a tároló).  
-    - `/SourceKey`: A forrás tárfiókban elsődleges kulcsát adja meg. Ezt a kulcsot az Azure Portalról másolhatja a storage-fiók kiválasztásával.  
+    - `/SourceKey`: Adja meg a forrás tárfiókban elsődleges kulcsát. Ezt a kulcsot az Azure Portalról másolhatja a storage-fiók kiválasztásával.  
     - `/DestKey`: Adja meg a célként megadott tárfiók elsődleges kulcsát. Ezt a kulcsot a portálról másolhatja a storage-fiók kiválasztásával.
 
 Ez a parancs futtatása után a tároló fájlokat áthelyezik a célként megadott tárfiók.
@@ -118,6 +118,8 @@ További információkért lásd: [adatok áthelyezése az AzCopy Windows rendsz
 
 **Hogyan helyezhetek át a felügyelt lemezek egy másik tárfiókba?**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Kövesse az alábbi lépéseket:
 
 1.  Állítsa le a virtuális gép, amely a felügyelt lemez csatolva van.
@@ -125,15 +127,15 @@ Kövesse az alábbi lépéseket:
 2.  Másolja a felügyelt lemezt VHD-t egy területről egy másikra a következő Azure PowerShell-szkript futtatásával:
 
     ```
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionId <ID>
+    Select-AzSubscription -SubscriptionId <ID>
 
-    $sas = Grant-AzureRmDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
+    $sas = Grant-AzDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
 
-    $destContext = New-AzureStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
+    $destContext = New-AzStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
 
-    Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
+    Start-AzStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
 3.  Felügyelt lemez létrehozása VHD-fájl egy másik régióban, amelybe a virtuális merevlemez használatával. Ehhez futtassa a következő Azure PowerShell-parancsfájlt:  
@@ -151,9 +153,9 @@ Kövesse az alábbi lépéseket:
 
     $storageType = 'StandardLRS'
 
-    $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
+    $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
-    $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+    $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
 Egy felügyelt lemezt egy virtuális gép üzembe helyezésével kapcsolatos további információkért lásd: [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
@@ -164,7 +166,7 @@ Az AzCopy használatával töltse le az adatokat. További információkért lá
 
 **Hogyan módosíthatom a másodlagos hely az Európai régióban a storage-fiók?**
 
-Amikor létrehoz egy tárfiókot, válassza ki az elsődleges régió a fiókhoz. A másodlagos régió kiválasztása az elsődleges régió alapján, és nem módosítható. További információkért lásd: [georedundáns tárolás (GRS): az Azure Storage-régiók közti replikációs](storage-redundancy.md).
+Amikor létrehoz egy tárfiókot, válassza ki az elsődleges régió a fiókhoz. A másodlagos régió kiválasztása az elsődleges régió alapján, és nem módosítható. További információkért lásd: [georedundáns tárolás (GRS): Az Azure Storage-régiók közti replikációs](storage-redundancy.md).
 
 **Hol kaphatok további információt az Azure Storage Service Encryption (SSE)?**  
   
@@ -234,7 +236,7 @@ Ha a virtuális gépekkel rendelkezik, a storage-fiók adatok áttelepítése el
 
 **Hogyan helyezhetek át klasszikus tárfiók a storage-fiókba az Azure Resource Manager?**
 
-Használhatja a **Move-AzureStorageAccount** parancsmagot. Ez a parancsmag több lépésből áll (érvényesítéséhez, előkészítése, véglegesítése). Az áthelyezés előtt ellenőrizheti.
+Használhatja a **Move-AzStorageAccount** parancsmagot. Ez a parancsmag több lépésből áll (érvényesítéséhez, előkészítése, véglegesítése). Az áthelyezés előtt ellenőrizheti.
 
 Ha a virtuális gépekkel rendelkezik, a storage-fiók adatok áttelepítése előtt további lépéseket kell végrehajtani. További információkért lásd: [át IaaS-erőforrások klasszikusból Azure Resource Manager Azure PowerShell-lel](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
@@ -274,11 +276,11 @@ A más hozzáférést biztosít a tárolási erőforrások:
 
 -   Ha írásvédett georedundáns tárolás használata esetén férhet hozzá adataihoz a másodlagos régióból bármikor. Az alábbi módszerek valamelyikével:  
       
-    - **Az AzCopy**: hozzáfűzése **– másodlagos** , a tárfiók nevét a másodlagos végpont elérésére az URL-címben. Példa:  
+    - **Az AzCopy**: Hozzáfűzés **– másodlagos** , a tárfiók nevét a másodlagos végpont elérésére az URL-címben. Példa:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS-jogkivonat**: egy SAS-jogkivonat használatával érheti el adatait a végpontról. További információkért lásd: [a közös hozzáférésű jogosultságkódot](storage-dotnet-shared-access-signature-part-1.md).
+    - **SAS-jogkivonat**: SAS-jogkivonat használatával érheti el adatait a végpontról. További információkért lásd: [a közös hozzáférésű jogosultságkódot](storage-dotnet-shared-access-signature-part-1.md).
 
 **Hogyan egy HTTPS-egyéni tartomány használata a storage-fiókomat? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif" tűnnek "https://www.contoso.com/images/image.gif"?**
 
@@ -295,6 +297,6 @@ Ha azt szeretné, csak az adatok letöltése a Storage Explorerben vagy más has
 
  Ehhez használja a [áttelepítési parancsfájl Blob](../scripts/storage-common-transfer-between-storage-accounts.md).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

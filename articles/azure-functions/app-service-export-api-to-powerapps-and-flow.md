@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 53aa40c047b2b5201cd74c0409d56e97d2880eb0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410465"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602851"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Egy Azure-ban üzemeltetett API exportálása a PowerApps és Microsoft Flow
 
 [A PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) egy szolgáltatás segítségével olyan egyéni üzleti alkalmazások, amelyek csatlakozhat az adataihoz, és a platformok közötti használathoz. [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) segítségével könnyebben automatizálhatja a munkafolyamatokat és üzleti folyamatokat a kedvenc alkalmazásai és szolgáltatásai között. A PowerApps és a Microsoft Flow jár a beépített összekötők különböző adatforrások, például az Office 365, Dynamics 365, Salesforce és több. Bizonyos esetekben alkalmazások és folyamatok is létrehozói számára az adatforrások és a szervezet által készített API-k csatlakozni.
 
-Ehhez hasonlóan szeretne közzétenni az API-k szélesebb körben a szervezeten belül a fejlesztők elérhetővé teheti saját API-k, alkalmazások és folyamatok sikerei. Ez a témakör bemutatja, hogyan exportálni egy API-t a következővel [Azure Functions](../azure-functions/functions-overview.md) vagy [Azure App Service](../app-service/app-service-web-overview.md). Az exportált API lesz a *egyéni összekötő*, amely szolgál a PowerApps és Microsoft Flow hasonlóan egy beépített összekötő.
+Ehhez hasonlóan szeretne közzétenni az API-k szélesebb körben a szervezeten belül a fejlesztők elérhetővé teheti saját API-k, alkalmazások és folyamatok sikerei. Ez a témakör bemutatja, hogyan exportálni egy API-t a következővel [Azure Functions](../azure-functions/functions-overview.md) vagy [Azure App Service](../app-service/overview.md). Az exportált API lesz a *egyéni összekötő*, amely szolgál a PowerApps és Microsoft Flow hasonlóan egy beépített összekötő.
 
 ## <a name="create-and-export-an-api-definition"></a>Hozzon létre és API-definíció exportálása
 API-k az exportálás előtt le kell írnia az API-t egy OpenAPI-definíció (korábban egy [Swagger](https://swagger.io/) fájlt). Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését. A PowerApps és a Microsoft Flow OpenAPI 2.0-definíció bármilyen egyéni összekötőket hozhat létre. Az Azure Functions és az Azure App Service rendelkezik beépített támogatást nyújt a létrehozása, üzemeltetéséhez és felügyeletéhez az OpenAPI-definíció. További információkért lásd: [az Azure App Service cors-támogatással rendelkező RESTful API üzemeltetése](../app-service/app-service-web-tutorial-rest-api.md).

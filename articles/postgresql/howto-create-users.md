@@ -3,16 +3,15 @@ title: Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgál�
 description: Ez a cikk bemutatja, hogyan kommunikálhat egy Azure Database for PostgreSQL-kiszolgáló új felhasználói fiókokat hozhat létre.
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
-ms.openlocfilehash: 45d1f55e60763724aeb1b1685c5c69696475a424
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 8b1bf6f1eccefb9235751c9e113c90566dfdff79
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958100"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540825"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for PostgreSQL-kiszolgálóhoz.
@@ -27,7 +26,7 @@ Az Azure Database for PostgreSQL-kiszolgálóhoz megadott 3 alapértelmezett sze
 
 A kiszolgálói rendszergazda felhasználó a azure_pg_admin szerepkör tagja. Azonban a kiszolgálói rendszergazdai fiók nem szerepel a azure_superuser szerepkör. Mivel ez a szolgáltatás egy felügyelt PaaS-szolgáltatás, akkor csak a Microsoft a felügyelő szerepkör részét képezi. 
 
-A PostgreSQL motor által jogosultsággal férhet hozzá az adatbázis-objektumok, az a [PostgreSQL termékdokumentáció](https://www.postgresql.org/docs/current/static/sql-createrole.html). Az Azure Database for postgresql-hez, a kiszolgálói rendszergazda felhasználó ezeket a jogosultságokat kap: bejelentkezés, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
+A PostgreSQL motor által jogosultsággal férhet hozzá az adatbázis-objektumok, az a [PostgreSQL termékdokumentáció](https://www.postgresql.org/docs/current/static/sql-createrole.html). Az Azure Database for postgresql-hez a kiszolgálói rendszergazda felhasználó ezeket a jogosultságokat kap: BEJELENTKEZÉS, NOSUPERUSER, ÖRÖKLIK, CREATEDB, CREATEROLE, NOREPLICATION
 
 A kiszolgálói rendszergazdai felhasználói fiókkal használható további felhasználók létrehozása, és biztosítson számára ezek a felhasználók a azure_pg_admin szerepkörhöz. A kiszolgálói rendszergazdai fiók is, kevesebb jogosultsággal rendelkező felhasználók és szerepkörök, amelyek hozzáférhetnek a különálló adatbázisok és sémák létrehozásához használható.
 
@@ -77,6 +76,6 @@ A kiszolgálói rendszergazdai felhasználói fiókkal használható további fe
    ```
 
 ## <a name="next-steps"></a>További lépések
-Az új felhasználók gépek, hogy azok tudjanak csatlakozni az IP-címek számára megnyitja a tűzfalat: [hozzon létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure portal használatával](howto-manage-firewall-using-portal.md) vagy [Azure CLI-vel](howto-manage-firewall-using-cli.md).
+Megnyitja a tűzfalat, hogy azok tudjanak csatlakozni az új felhasználók gépek IP-címek: [Hozzon létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure portal használatával](howto-manage-firewall-using-portal.md) vagy [Azure CLI-vel](howto-manage-firewall-using-cli.md).
 
 Fiókkezeléssel kapcsolatos további információkért tekintse meg a termékhez tartozó dokumentáció PostgreSQL [adatbázis-szerepkörök és jogosultságok](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT szintaxis](https://www.postgresql.org/docs/current/static/sql-grant.html), és [jogosultságokkal](https://www.postgresql.org/docs/current/static/ddl-priv.html).

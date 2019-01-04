@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337818"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994759"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Használja az SQL Database felügyelt példánya, közel 100 %-os kompatibilitással és a virtuális hálózatokkal
 
@@ -30,7 +30,7 @@ A következő ábra a felügyelt példány legfontosabb funkcióit ismerteti:
 
 ![a legfontosabb jellemzők](./media/sql-database-managed-instance/key-features.png)
 
-Az Azure SQL Database felügyelt példánya a szeretne áttelepítést végezni az alkalmazások nagy számú helyszíni vagy IaaS, önállóan létrehozott, ügyfelek számára lett kifejlesztve, vagy ISV előírt környezet teljes körűen felügyelt PaaS-felhőalapú környezethez, alacsony áttelepítési energiát, a lehető. Használja a teljes mértékben automatizált [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) az Azure-on ügyfelei is átemelése a helyszíni SQL Server egy felügyelt példányra, amely kompatibilis a helyszíni SQL Server és a teljes elkülönítést ügyfél példány virtuális hálózatok közötti támogatást biztosít.  Frissítési garanciával működő, exchange is a kedvezményes díjszabás a egy SQL Database felügyelt példánya a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  SQL Database felügyelt példánya a legjobb áttelepítés célja a fokozott biztonságot és a egy gazdag programozhatóság surface igénylő SQL Server-példányokat a felhőben.
+Az Azure SQL Database felügyelt példánya a szeretne áttelepítést végezni az alkalmazások nagy számú helyszíni vagy IaaS, önállóan létrehozott, ügyfelek számára lett kifejlesztve, vagy ISV előírt környezet teljes körűen felügyelt PaaS-felhőalapú környezethez, alacsony áttelepítési energiát, a lehető. Használja a teljes mértékben automatizált [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) az Azure-on ügyfelei is átemelése a helyszíni SQL Server egy felügyelt példányra, amely kompatibilis a helyszíni SQL Server és a teljes elkülönítést ügyfél példány virtuális hálózatok közötti támogatást biztosít.  Frissítési garanciával működő, exchange is a kedvezményes díjszabás a egy SQL Database felügyelt példánya a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).  SQL Database felügyelt példánya a legjobb áttelepítés célja a fokozott biztonságot és a egy gazdag programozhatóság surface igénylő SQL Server-példányokat a felhőben.
 
 Általános rendelkezésre állás a felügyelt példány célja, hogy közel 100 %-os támadási kompatibilitási legújabb verziójával a helyszíni SQL Server egy előkészített kiadási csomag kézbesítése.
 
@@ -70,7 +70,7 @@ Felügyelt példány legfontosabb funkcióit az alábbi táblázatban láthatók
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) a felügyelt példány lehetőséget kínál a rugalmasságot, ellenőrzés, átláthatóság és lefordítani a helyszíni tevékenységprofil követelményeinek felhőbe kézenfekvő módot. Ez a modell lehetővé teszi, hogy számítási, memória és a munkaterhelés igényei alapján tárolási módosíthatja. A Virtuálismag-modell nem is jogosult fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) a felügyelt példány lehetőséget kínál a rugalmasságot, ellenőrzés, átláthatóság és lefordítani a helyszíni tevékenységprofil követelményeinek felhőbe kézenfekvő módot. Ez a modell lehetővé teszi, hogy számítási, memória és a munkaterhelés igényei alapján tárolási módosíthatja. A Virtuálismag-modell nem is jogosult fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 A Virtuálismag-modell választhat hardver generációja.
 
@@ -146,7 +146,7 @@ Az Azure SQL Database biztosít, amelyek segítségével az adatok védelme a sp
 - [Sorszintű biztonság](/sql/relational-databases/security/row-level-security) lehetővé teszi, hogy a vezérlőelem egy adatbázistábla soraihoz való eléréséhez a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet szerint). A sorszintű biztonság (RLS) egyszerűsíti az alkalmazás védelmének megtervezését és kódolását. Az RLS használatával korlátozásokat érvényesíthet az adatsorokhoz való hozzáférésre. Például annak érdekében, hogy a dolgozók férhessenek hozzá csak azok a szervezeti egységükre vonatkozó az adatsorokat, vagy egy adat-hozzáférés korlátozása csak a releváns adatokat.
 - [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) titkosítja az Azure SQL Database felügyelt példányába adatfájlok, más néven az inaktív adatok titkosítása. TDE valós idejű i/o-titkosításához és visszafejtéséhez az adathoz és naplófájlhoz hajt végre. A titkosítást használ egy adatbázis-titkosítási kulcs (adattitkosítási kulcsot), a helyreállítás során a rendelkezésre állási adatbázis rendszerindító rekordját tárolt. Összes adatbázis a felügyelt példány transzparens adattitkosítással védheti meg. TDE az SQL Server kipróbált inaktív titkosítási technológia, amely számos megfelelőségi szabvány szükséges elleni védelemként.
 
-Egy titkosított, az SQL Database áttelepítése támogatott, az Azure Database Migration Service (DMS) vagy a natív visszaállítási keresztül. Ha titkosított adatbázis natív visszaállítással való áttelepítését tervezi, a migrálás a helyszíni SQL Server vagy SQL Server rendszerű virtuális gép a felügyelt példánynak meglévő TDE tanúsítvány, lépésre szükség. Áttelepítési beállítások kapcsolatos további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
+Egy titkosított, az SQL Database áttelepítése támogatott, az Azure Database Migration Service (DMS) vagy a natív visszaállítási keresztül. Ha egy titkosított adatbázis natív visszaállítással való áttelepítését tervezi, akkor a TDE származó meglévő tanúsítványt a helyszíni SQL Server vagy SQL Server rendszerű virtuális gép felügyelt példányhoz az áttelepítése nem lépésre szükség. Áttelepítési beállítások kapcsolatos további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 

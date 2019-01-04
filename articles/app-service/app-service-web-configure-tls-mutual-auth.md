@@ -1,6 +1,6 @@
 ---
 title: TLS kölcsönös hitelesítés – az Azure App Service konfigurálása
-description: Ismerje meg, hogyan konfigurálja a webappot a TLS ügyfél Tanúsítványalapú hitelesítés használatára.
+description: Ismerje meg, hogyan állítsa be alkalmazását a TLS ügyfél Tanúsítványalapú hitelesítés használatára.
 services: app-service
 documentationcenter: ''
 author: naziml
@@ -15,40 +15,38 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d441329bc3f279e95b2ee302db53d78f786c3470
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252881"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650397"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>TLS kölcsönös hitelesítés beállítása webalkalmazáshoz
+# <a name="how-to-configure-tls-mutual-authentication-for-azure-app-service"></a>TLS kölcsönös hitelesítés az Azure App Service konfigurálása
 ## <a name="overview"></a>Áttekintés
-Hozzáférés az Azure-webalkalmazást, hitelesítési típust engedélyezésével korlátozhatja. Ennek egyik módja a hitelesítés ügyféltanúsítvány használatával, ha a rendszer a TLS/SSL-en keresztül. Ez a mechanizmus TLS kölcsönös hitelesítés vagy a hitelesítést, és ez a cikk részletesen ügyféltanúsítvány-alapú hitelesítés használatára a webalkalmazás beállítása ügyféltanúsítvány nevezzük.
+Engedélyezi a hitelesítést, a különböző típusú hozzáférést korlátozhatja az Azure App Service-alkalmazás. Ennek egyik módja a hitelesítés ügyféltanúsítvány használatával, ha a rendszer a TLS/SSL-en keresztül. Ez a mechanizmus TLS kölcsönös hitelesítés vagy a hitelesítést, és ez a cikk részletesen ügyféltanúsítvány-alapú hitelesítés használata az alkalmazás beállítása ügyféltanúsítvány nevezzük.
 
 > **Megjegyzés:** Ha a HTTP és HTTPS-nem keresztül éri el a hely, nem fog kapni minden olyan ügyfél-tanúsítványt. Tehát ha az alkalmazás ügyfél-tanúsítványok nem engedélyezze kérelmeket az alkalmazás HTTP-n keresztül.
 > 
 > 
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-## <a name="configure-web-app-for-client-certificate-authentication"></a>Ügyféltanúsítvány-alapú hitelesítés a webalkalmazás konfigurálása
-A webalkalmazás beállítása az ügyféltanúsítványok megköveteléséhez, kell adja hozzá a webalkalmazás az ügyféltanúsítvány engedélyezésével hely beállítást, és állítsa igaz értékre. A beállítás akkor is konfigurálhatók, az SSL-tanúsítványok panel alatt az Azure Portalon.
+## <a name="configure-app-service-for-client-certificate-authentication"></a>Az App Service az ügyféltanúsítvány-alapú hitelesítés konfigurálása
+Az alkalmazás beállítása az ügyféltanúsítványok megköveteléséhez, kell adja hozzá az alkalmazás az ügyféltanúsítvány engedélyezésével hely beállítást, és állítsa igaz értékre. A beállítás akkor is konfigurálhatók, az SSL-tanúsítványok panel alatt az Azure Portalon.
 
 Használhatja a [ARMClient eszköz](https://github.com/projectkudu/ARMClient) megkönnyíti a REST API-hívás írhat. Miután jelentkezik be az eszközt, szüksége lesz az alábbi parancsot:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-cserélje le a tartalmát {} a adatokkal, a webes alkalmazás, és hozzon létre egy fájlt nevű enableclientcert.json a következő JSON-tartalom:
+cserélje le a tartalmát {} való az alkalmazás és a tartalom nevű enableclientcert.json az alábbi JSON-fájl létrehozásával kapcsolatos információkat:
 
     {
-        "location": "My Web App Location",
+        "location": "My App Location",
         "properties": {
             "clientCertEnabled": true
         }
     }
 
-Ellenőrizze, hogy a "hely" értékét módosítsa arra, bárhol is legyenek a webalkalmazás található példa, USA északi középső Régiója és USA nyugati RÉGIÓJA stb.
+Ellenőrizze, hogy a "hely" értékét módosítsa arra, bárhol is legyenek az alkalmazás található példa, USA északi középső Régiója és USA nyugati RÉGIÓJA stb.
 
 Is https://resources.azure.com tükrözés, a `clientCertEnabled` tulajdonságot `true`.
 
@@ -56,11 +54,11 @@ Is https://resources.azure.com tükrözés, a `clientCertEnabled` tulajdonságot
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Az ügyféltanúsítvány a webes alkalmazás elérése
+## <a name="accessing-the-client-certificate-from-app-service"></a>Az ügyféltanúsítvány elérése az App Service-ben
 Használja az ASP.NET, és állítsa be alkalmazását az ügyféltanúsítvány-alapú hitelesítés használatára, ha a tanúsítvány érhető el a **HttpRequest.ClientCertificate** tulajdonság. Más alkalmazáscsoportokat az alkalmazásban a "X-ARR-ClientCert" kérés fejlécében base64-kódolású értéket keresztül elérhető lesz az ügyféltanúsítvány. Az alkalmazás is hozzon létre egy tanúsítványt a ezt az értéket, majd az alkalmazás hitelesítési és engedélyezési célból.
 
 ## <a name="special-considerations-for-certificate-validation"></a>Különleges szempontok a tanúsítvány érvényesítése
-Az ügyféltanúsítvány, amelyet az alkalmazás elküld nem halad át minden érvényesítése az Azure Web Apps platformon. Ez a tanúsítvány érvényesítése feladata a webalkalmazás. Itt látható minta ASP.NET-kód, amely ellenőrzi a hitelesítési tanúsítvány tulajdonságai.
+Az ügyféltanúsítvány, amelyet az alkalmazás elküld nem halad át minden érvényesítése az Azure App Service platformon. Ez a tanúsítvány érvényesítése feladata az alkalmazás. Itt látható minta ASP.NET-kód, amely ellenőrzi a hitelesítési tanúsítvány tulajdonságai.
 
     using System;
     using System.Collections.Specialized;

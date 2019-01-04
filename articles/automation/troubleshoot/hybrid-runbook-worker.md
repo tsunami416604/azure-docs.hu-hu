@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a95c9f1edd6983c915316f2900885a8131245860
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 57897060e79ffbd750b47b21e97bb16d651f835c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437833"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583510"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibaelhárítása
 
@@ -34,7 +34,7 @@ Runbook végrehajtása sikertelen, és a következő hibaüzenetet kapja:
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-A runbook röviddel utána kísérel meg végrehajtani, három alkalommal fel van függesztve. Nincsenek feltételek, amelyek megszakíthatja a runbook sikeresen elvégezte a, és a kapcsolódó hibaüzenet nem tartalmazza a minden további információt, amely jelzi, hogy miért.
+Háromszor végrehajtásához megpróbál röviddel a runbook fel van függesztve. Nincsenek feltételek, amelyek megszakíthatja a runbook befejezését. Ha ez történik, a kapcsolódó hibaüzenet nem feltétlenül tartalmazzák a tájékoztatja, hogy miért további adatokat.
 
 #### <a name="cause"></a>Ok
 
@@ -46,17 +46,40 @@ A lehetséges lehetséges okok a következők:
 
 * A runbookok nem tudja hitelesíteni a helyi erőforrásokkal
 
-* A hibrid Runbook-feldolgozó szolgáltatás futtatására kijelölt számítógép megfelel a minimális hardverkövetelményeknek.
+* A hibrid Runbook-feldolgozó szolgáltatás futtatásához konfigurált számítógép megfelel a minimális hardverkövetelményeknek.
 
 #### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze, hogy a számítógép *.azure-automation.net kimenő hozzáféréssel rendelkezik a 443-as porton.
 
-A hibrid Runbook-feldolgozó futtató számítógépek meg kell felelnie a minimális hardverkövetelményeknek, hogy ez a szolgáltatás üzemeltetéséhez kijelölése előtt. Ellenkező esetben az függően más háttérfolyamatok és a versengés során a runbook végrehajtása is az erőforrás-használat oka a számítógép túlterhelt válik, és runbook-feladat késedelem és időtúllépéseket okoz.
+A hibrid Runbook-feldolgozó futtató számítógépek meg kell felelnie a minimális hardverkövetelményeknek előtt, ez a szolgáltatás gazdagépeként van konfigurálva. A Runbookok és a háttérben futó folyamatok, használják okozhat a rendszer túlterhelt legyen, és runbook-feladat késedelem és időtúllépéseket okoz.
 
-Győződjön meg arról, a hibrid Runbook-feldolgozó szolgáltatás futtatására kijelölt számítógép megfelel a minimális hardverkövetelményeknek. Ha igen, figyelheti a CPU és memória kihasználtságáról, a hibrid Runbook-feldolgozó folyamat teljesítményét és a Windows bármely korrelációját meghatározásához. Ha nincs, memória és CPU nyomás, ez jelezheti frissítése vagy további processzorok hozzáadása, vagy növelje a memória oldja meg az erőforrás szűk keresztmetszetet, és hárítsa el a hibát. Azt is megteheti válassza ki a különböző számítási erőforrás által támogatható a minimális követelményeknek és a méretezési csoport, amikor terheléshez azt jelzik, hogy megnöveltük szükség.
+Erősítse meg, amely a hibrid Runbook-feldolgozó szolgáltatás fogja futtatni a számítógép megfelel-e a minimális hardverkövetelményeknek. Ha igen, monitor CPU és memória segítségével meghatározhatja a hibrid Runbook-feldolgozó folyamat teljesítményét és a Windows bármely korrelációját. Ha nincs, memória és CPU nyomás, ez jelezheti erőforrások frissítése. Válassza ki a különböző számítási erőforrás által támogatható a minimális követelményeknek és a méretezési csoport, amikor terheléshez azt jelzik, hogy szükség a növekedést is.
 
 Ellenőrizze a **Microsoft-SMA** eseménynaplót, amelyben egy megfelelő eseményt, leírás *Win32 folyamat kilépési kódja [4294967295]*. Ez a hiba oka még nincs konfigurálva a hitelesítést a runbookokban, vagy a hibrid feldolgozócsoport a futtató hitelesítő adatokat adott. Felülvizsgálat [Runbook-engedélyek](../automation-hrw-run-runbooks.md#runbook-permissions) , győződjön meg arról, hogy megfelelően konfigurálta hitelesítést a runbookokban.
+
+### <a name="no-cert-found"></a>Forgatókönyv: Nem található tanúsítvány a tanúsítványtárolóban, a hibrid Runbook-feldolgozón
+
+#### <a name="issue"></a>Probléma
+
+Hibrid Runbook-feldolgozók futó runbook a következő hibaüzenettel meghiúsul:
+
+```error
+Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+At line:3 char:1
++ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordul elő, próbálja meg használni, amikor egy [futtató fiók](../manage-runas-account.md) , amely egy hibrid Runbook-feldolgozó, ahol a futtató fiók tanúsítványa nem a jelenlegi futtat egy runbookban. Hibrid Runbook-feldolgozók nincs tanúsítványobjektum helyi alapértelmezetten, amelyek a futtató fiók megfelelő működéséhez szükségesek.
+
+#### <a name="resolution"></a>Megoldás:
+
+Ha egy Azure virtuális Gépen, a hibrid Runbook-feldolgozó használhatja [felügyelt identitások az Azure-erőforrások](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) helyette. Ebben a forgatókönyvben lehetővé teszi az Azure virtuális gép felügyelt identitás használata helyett a futtató fiók, leegyszerűsíti a hitelesítést az Azure erőforrásokban való hitelesítéshez. Ha egy helyszíni gépre, a hibrid Runbook-feldolgozó kell a futtató fiók tanúsítványának telepítése a gépre. A tanúsítvány telepítése című témakörben talál a lépések végrehajtásához a [Export-RunAsCertificateToHybridWorker](../automation-hrw-run-runbooks.md#runas-script) runbook.
 
 ## <a name="linux"></a>Linux
 
@@ -64,7 +87,8 @@ A hibrid Runbook-feldolgozója Linuxra attól függ, hogy az OMS-ügynök Linux 
 
 ### <a name="oms-agent-not-running"></a>Forgatókönyv: A Linuxhoz készült OMS-ügynök nem fut
 
-Ha a Linuxhoz készült OMS-ügynök nem fut, a hibrid Runbook-feldolgozója Linuxra Ez megakadályozza az Azure Automation szolgáltatással folytatott kommunikációját. Ellenőrizze az ügynök fut-e a következő parancs beírásával: `ps -ef | grep python`. A python-folyamatok az alábbihoz hasonló kimenetnek kell megjelennie **nxautomation** felhasználói fiókot. Az Update Management vagy az Azure Automation-megoldások nem engedélyezett, ha nincs, az alábbi eljárások futnak.
+
+Ha a Linuxhoz készült OMS-ügynök nem fut, megakadályozza, hogy a hibrid Runbook-feldolgozója Linuxra az Azure Automation szolgáltatással folytatott kommunikációját. Ellenőrizze az ügynök fut-e a következő parancs beírásával: `ps -ef | grep python`. A python-folyamatok az alábbihoz hasonló kimenetnek kell megjelennie **nxautomation** felhasználói fiókot. Az Update Management vagy az Azure Automation-megoldások nem engedélyezett, ha nincs, az alábbi eljárások futnak.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -74,11 +98,12 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 Az alábbi lista tartalmazza a folyamatot, amelyet egy hibrid Runbook-feldolgozója Linuxra vonatkozó elindulnak. Ezek már az összes található a `/var/opt/microsoft/omsagent/state/automationworker/` könyvtár.
 
-* **OMS.conf** – Ez a folyamat a feldolgozófolyamat manager, a DSC-ről Ez a folyamat elindul.
+
+* **OMS.conf** -értéke a feldolgozófolyamat manager. Közvetlenül a DSC elindul.
 
 * **Worker.conf** – Ez a folyamat automatikusan regisztrálva hibrid feldolgozói során a rendszer, a feldolgozó kezelő elindul. Ez a folyamat használja az Update Management és transzparens módon történik, a felhasználó számára. Ez a folyamat nincs jelen, ha az Update Management megoldás nincs engedélyezve a gépen.
 
-* **diy/Worker.conf** – Ez a folyamat rendszer tanácsokat önálló hibrid feldolgozó folyamaton. A házi KÉSZÍTÉSŰ hibrid feldolgozói folyamat segítségével hajtható végre felhasználói runbookok a hibrid Runbook-feldolgozón. Csak eltér az automatikus regisztrált hibrid feldolgozói folyamat a fő részletesen, amely használja egy másik konfigurációs. Ez a folyamat nincs jelen, ha az Azure Automation-megoldás nincs engedélyezve, és a házi KÉSZÍTÉSŰ Linux hibrid feldolgozó nincs regisztrálva.
+* **diy/Worker.conf** – Ez a folyamat rendszer tanácsokat önálló hibrid feldolgozó folyamaton. A házi KÉSZÍTÉSŰ hibrid feldolgozói folyamat segítségével hajtható végre felhasználói runbookok a hibrid Runbook-feldolgozón. Csak eltér az automatikus regisztrált hibrid feldolgozói folyamat a fő részletesen, amely használja egy másik konfigurációs. Ez a folyamat nincs jelen, ha az Azure Automation-megoldás le van tiltva, és a házi KÉSZÍTÉSŰ Linux hibrid feldolgozó nincs regisztrálva.
 
 Ha az OMS-ügynököt a Linux nem fut, futtassa a következő parancsot a szolgáltatás elindítása: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
@@ -102,7 +127,7 @@ A `healthservice` szolgáltatás nem fut, a hibrid Runbook-feldolgozó gépen.
 
 #### <a name="cause"></a>Ok
 
-Ha a Microsoft Monitoring Agent Windows szolgáltatás nem fut, ez a forgatókönyv megakadályozza, hogy a hibrid Runbook-feldolgozó az Azure Automation szolgáltatással folytatott kommunikációját.
+Ha a Microsoft Monitoring Agent Windows szolgáltatás nem fut, ez az állapot megakadályozza, hogy a hibrid Runbook-feldolgozó az Azure Automation szolgáltatással folytatott kommunikációját.
 
 #### <a name="resolution"></a>Megoldás:
 

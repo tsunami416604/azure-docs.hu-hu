@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: d08fc0cb8e3203a60cbd426145ec50bb3636e758
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857125"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752537"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Az Azure Kubernetes Service-ből az Azure Container Registry a hitelesítéshez
 
@@ -22,7 +22,7 @@ Amikor az Azure Container Registry (ACR) az Azure Kubernetes Service (AKS) haszn
 
 Amikor egy AKS-fürtöt hoz létre, az Azure is létrehoz egy egyszerű szolgáltatást az egyéb Azure-erőforrások a fürt működési követelmények támogatásához. Hitelesítés az ACR-beállításjegyzékből ezt automatikusan létrehozott szolgáltatásnév is használhat. Ehhez hozzon létre egy Azure ad-ben kell [szerepkör-hozzárendelés](../role-based-access-control/overview.md#role-assignments) , amely engedélyezi a fürt szolgáltatásnév hozzáférhessen a tárolóregisztrációs adatbázisba.
 
-Használja a következő szkriptet az AKS által létrehozott szolgáltatás egyszerű hozzáférést egy Azure container registrybe. Módosítsa a `AKS_*` és `ACR_*` változók a parancsfájl futtatása előtt környezete számára.
+A következő szkript használatával egy Azure container Registry tárolóregisztrációs adatbázist az AKS által létrehozott szolgáltatás egyszerű lekéréses hozzáférést adni. Módosítsa a `AKS_*` és `ACR_*` változók a parancsfájl futtatása előtt környezete számára.
 
 ```bash
 #!/bin/bash
@@ -39,7 +39,7 @@ CLIENT_ID=$(az aks show --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER
 ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --query "id" --output tsv)
 
 # Create role assignment
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 ```
 
 ## <a name="access-with-kubernetes-secret"></a>Hozzáférés a Kubernetes titkos kulcs
@@ -58,8 +58,8 @@ SERVICE_PRINCIPAL_NAME=acr-service-principal
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a 'Reader' role assignment with a scope of the ACR resource.
-SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
+# Create acrpull role assignment with a scope of the ACR resource.
+SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role acrpull --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
 # Get the service principal client id.
 CLIENT_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420387"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994402"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Az Azure Data Encryption inaktív
 
@@ -104,7 +104,7 @@ Nincsenek kiszolgálóoldali titkosítás három forgatókönyv:
 - Ügyfelek kezelése és a helyszíni kulcsok tárolására (vagy más biztonságos tárolók). Kulcsok nem érhetők el az Azure-szolgáltatások
 - Csökkentett felhőalapú funkciókkal
 
-A támogatott titkosítási modellek az Azure-ban felosztása két fő csoportot: "Ügyfél titkosítás" és "kiszolgálóoldali titkosítás" mint azt korábban említettük. A titkosítás a rest-modellben használt, Azure-szolgáltatások mindig független egy biztonságos átvitel, például a TLS vagy HTTPS használatát javasoljuk. Ezért a titkosítás az átvitel az átviteli protokoll által beavatkozást igényel, és tényező rest modellt használja, mely titkosítási meghatározása nem lehet.
+A támogatott titkosítási modellek az Azure-ban felosztása két fő csoportok: "Ügyfél titkosítás" és "kiszolgálóoldali titkosítás" mint azt korábban említettük. A titkosítás a rest-modellben használt, Azure-szolgáltatások mindig független egy biztonságos átvitel, például a TLS vagy HTTPS használatát javasoljuk. Ezért a titkosítás az átvitel az átviteli protokoll által beavatkozást igényel, és tényező rest modellt használja, mely titkosítási meghatározása nem lehet.
 
 ### <a name="client-encryption-model"></a>Ügyféloldali titkosítás modell
 
@@ -201,7 +201,7 @@ Szolgáltatás által kezelt kulcsok használata az ügyfél által felügyelt h
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Titkosítás inaktív állapotban a Microsoft cloud services
 
-A Microsoft Cloud services három felhőmodellekre használatban vannak: IaaS, PaaS, SaaS. Az alábbi példákat, hogy azok elférjenek az egyes rendelkezik:
+A Microsoft Cloud services három felhőmodellekre használt: IaaS, PaaS, SaaS. Az alábbi példákat, hogy azok elférjenek az egyes rendelkezik:
 
 - Szoftver kiszolgálóként vagy alkalmazást a felhőbe, például az Office 365 által biztosított SaaS szoftveres szolgáltatások, neve.
 - A platformszolgáltatások, mely ügyfelek használhatja a felhőt az alkalmazásaikat, például tárolási, elemzési és service bus-funkciót a felhő használatával.
@@ -243,8 +243,8 @@ Minden olyan vevői Azure infrastruktúráját használja a szolgáltatás (IaaS
 
 Minden Azure Storage szolgáltatás (Blob storage, Queue storage, Table storage és az Azure Files) támogatja a kiszolgálóoldali titkosítás inaktív állapotban, néhány szolgáltatás felhasználó által kezelt kulcsokkal és ügyféloldali titkosítás támogatása.  
 
-- Kiszolgálóoldali: Minden Azure Storage szolgáltatás kiszolgálóoldali titkosítás engedélyezése a használatával a szolgáltatás által kezelt kulcsokkal, amely is átlátható az alkalmazás alapértelmezés szerint. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption). Az Azure Blob storage és az Azure Files is támogatják az RSA 2048-bites ügyfél által felügyelt kulcsok Azure Key vaultban. További információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
-- Ügyféloldali: Azure-Blobok, táblák és üzenetsorok támogatja az ügyféloldali titkosítását. Ügyféloldali titkosítás használata esetén az ügyfelek titkosítja az adatokat, és töltse fel az adatokat, mint egy titkosított blobot. Kulcskezelés végzi el az ügyfél. További információkért lásd: [ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
+- Kiszolgálóoldali: Az Azure Storage-szolgáltatások segítségével szolgáltatás által kezelt kulcsokkal, amely átlátható az alkalmazás alapértelmezés szerint a kiszolgálóoldali titkosítást. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption). Az Azure Blob storage és az Azure Files is támogatják az RSA 2048-bites ügyfél által felügyelt kulcsok Azure Key vaultban. További információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Ügyféloldali: Az Azure-Blobok, táblák és üzenetsorok támogatja az ügyféloldali titkosítását. Ügyféloldali titkosítás használata esetén az ügyfelek titkosítja az adatokat, és töltse fel az adatokat, mint egy titkosított blobot. Kulcskezelés végzi el az ügyfél. További információkért lásd: [ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
@@ -262,6 +262,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 | Lemez (IaaS)                      | -                  | Igen, RSA 2048-bites  | -                  |
 | Az SQL Server (IaaS)                | Igen                | Igen, RSA 2048-bites  | Igen                |
 | Az Azure SQL-(adatbázis vagy adatraktár) | Igen                | Igen, RSA 2048-bites  | Igen                |
+| Az Azure SQL (Database felügyelt példány) | Igen                | Az előzetes RSA 2048-bites  | Igen                |
 | Az Azure Storage (Blobok blokk vagy lap) | Igen                | Igen, RSA 2048-bites  | Igen                |
 | Azure Storage (Files)            | Igen                | Igen, RSA 2048-bites  | -                  |
 | Az Azure Storage (táblák, üzenetsorok)   | Igen                | -                  | Igen                |

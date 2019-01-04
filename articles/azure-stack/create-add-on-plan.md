@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 07/30/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e84e72157726311281994b0e287eda7dfc4b144a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076791"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716754"
 ---
 # <a name="azure-stack-add-on-plans"></a>Az Azure Stack kiegészítő csomagok
 
@@ -32,7 +32,7 @@ Vannak olyan helyzetek, amikor egyetlen csomagban kombinálásával mindent nem 
 Felhasználók, erőforrások kihasználtságát, fordítson egy másik oka a használatára a kiegészítő csomagok azt. Ehhez egy alapcsomagot viszonylag kis kvóták (attól függően, a szükséges szolgáltatások) tartalmazó kezdhet. Ezt követően felhasználók kapacitás érni, azok lenne riasztást kap, akkor a lefoglalt erőforrásokat a hozzárendelt terv alapján felhasznált. Itt a felhasználók ezután válassza ki egy kiegészítő csomagot, amely a további forrásokat biztosít.
 
 > [!NOTE]
-> Ha nem szeretné kiterjeszteni a kvóta egy kiegészítő csomag használatával, azt is beállíthatja a [az eredeti konfigurációt kvóta szerkesztése](azure-stack-quota-types.md#to-edit-a-quota). 
+> Ha nem szeretné kiterjeszteni a kvóta egy kiegészítő csomag használatával, azt is beállíthatja a [az eredeti konfigurációt kvóta szerkesztése](azure-stack-quota-types.md#edit-a-quota). 
 
 Amikor egy felhasználó felvesz egy kiegészítő csomag egy meglévő ajánlat előfizetéshez, a további erőforrások is igénybe vehet egy órát jelenik meg. 
 

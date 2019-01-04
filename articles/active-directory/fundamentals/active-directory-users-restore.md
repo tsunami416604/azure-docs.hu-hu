@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/17/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 5f747d90368b636cb2ab8cf0e20ef5e676f99af6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 066c9189e0c3cea409a99217e0ab4b46002df1f9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080503"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556781"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Állítsa vissza vagy az Azure Active Directoryval nemrégiben törölt felhasználó eltávolítása
 A felhasználó törlését követően a fiók maradt felfüggesztett állapotba 30 napig. A 30 napos időszak alatt a felhasználói fiók is lehet visszaállítani, együtt minden hozzá tartozó tulajdonságok. A 30 napos időszak letelte után a felhasználó automatikusan, és véglegesen, törlődik.
@@ -59,6 +59,9 @@ Egy felhasználói fiók fel van függesztve, amíg a rendszer megőrzi a kapcso
 2. Válassza ki **visszaállítási felhasználói**.
 
     ![Felhasználók – törölt felhasználók lapon a visszaállítási felhasználói opció kiemelésével](media/active-directory-users-restore/users-deleted-users-restore-user.png)
+
+>[!NOTE]
+>Korábban, amikor egy felhasználó lett eltávolítva a helyszíni szinkronizálási hatókör, és törli a felhőben, a fiók a DirSyncEnabled állapota hibás állított be "false"értékre. Ha, hogy a felhasználó ezt követően manuálisan lett visszaállítva a az Azure AD Recycle Bin, szerint a "Csak felhőalapú" fiók egy nem megfelelő állapotát. Ez most már megoldották a problémát, és a DirSyncEnabled állapot értéke mindig megőrzi "True" egy felhasználó eltávolításakor az adatszinkronizálás hatóköre, majd helyreállíthatóan törölt, és manuálisan helyreállított az Azure AD Recycle Bin.
 
 ## <a name="permanently-delete-a-user"></a>Felhasználó végleges törlése
 Az automatikus törlésre 30 nap várakozás nélkül a címtárban lévő véglegesen törli a felhasználó. Nem állítható vissza egy felhasználó véglegesen törölve, és Ön egy másik rendszergazda nem támogatja a Microsoft ügyfélszolgálat.

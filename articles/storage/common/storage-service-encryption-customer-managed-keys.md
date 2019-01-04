@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 5ef9c15d4edf62ef63b16765f16971a9be5ca58b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e2497233ec97ffc88bf13797f62d601d4da373a1
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970705"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628493"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption
 
@@ -32,11 +32,13 @@ Miért érdemes létrehozni a saját kulcsok? Egyéni kulcsok nagyobb rugalmass�
 
 Felhasználó által kezelt kulcsok használata SSE, létrehozhat egy új kulcstartóba, és a kulcs, vagy használhatja egy meglévő kulcstároló és egy kulcsot. A storage-fiók és a key vault ugyanabban a régióban kell lennie, de különböző előfizetésekhez is lehetnek.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ### <a name="step-1-create-a-storage-account"></a>1. lépés: Tárfiók létrehozása
 
 Először hozzon létre egy storage-fiókot, ha még nincs ilyen. További információ: [Tárfiók létrehozása](storage-quickstart-create-account.md).
 
-### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>2. lépés: A Blobok és fájlok tárolási engedélyezéséről
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>2. lépés: A Blobok és fájlok tárolási engedélyezéséről
 
 Ahhoz, hogy az ügyfél által felügyelt kulcsokkal SSE, két Kulcsvédelmi szolgáltatás: a helyreállítható törlés és nem kiürítése, is engedélyezni kell az Azure Key Vaultban. Ezek a beállítások biztosítása érdekében a kulcsok nem lehet véletlenül vagy szándékosan törölve. A kulcsok a megőrzési időszak 90 nap, a felhasználók rosszindulatú vagy zsarolóprogram-támadások elleni védelem van beállítva.
 
@@ -45,7 +47,7 @@ Ha programozott módon engedélyezzük a felhasználó által kezelt kulcsokkal 
 Felhasználó által kezelt kulcsok használata SSE, hozzá kell rendelnie egy storage-fiók identitás a storage-fiókba. Az identitást a következő PowerShell vagy az Azure CLI-parancs végrehajtásával állíthatja be:
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
 ```
 
 ```azurecli-interactive
@@ -58,18 +60,18 @@ az storage account \
 Az alábbi PowerShell vagy az Azure CLI-parancsok végrehajtásával engedélyezheti a helyreállítható törlés és hajtsa végre végleges törlése:
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enableSoftDelete -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enablePurgeProtection -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 ```
 
@@ -83,7 +85,7 @@ az resource update \
     --set properties.enablePurgeProtection=true
 ```
 
-### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>3. lépés: Engedélyezze a titkosítást a felhasználó által kezelt kulcsok
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>3. lépés: Titkosítás engedélyezése a felhasználó által kezelt kulcsok
 
 Alapértelmezés szerint az SSE használja a Microsoft által felügyelt kulcsokkal. Az SSE engedélyezheti az ügyfél által felügyelt kulcsokat a tárfiók tárfiókkulcsait a [az Azure portal](https://portal.azure.com/). Az a **beállítások** a storage-fiókok panelen kattintson a **titkosítási**. Válassza ki a **a saját kulcs használata** beállítás, az alábbi ábrán látható módon.
 
@@ -121,14 +123,14 @@ Az Azure Key Vault az Azure Portalon és a tárfiókhoz való hozzáférést is 
 A fenti kulcsot is társíthat egy meglévő tárfiókot, a következő PowerShell-parancsokkal:
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 ```
 
-### <a name="step-5-copy-data-to-storage-account"></a>5. lépés: Adatok másolása a storage-fiók
+### <a name="step-5-copy-data-to-storage-account"></a>5. lépés: Másolja az adatokat a storage-fiók
 
 Adatok átviteléhez az új storage-fiókba, hogy titkosítva van. További információ: [gyakran ismételt kérdések a Storage Service Encryption](storage-service-encryption.md#faq-for-storage-service-encryption).
 
@@ -154,7 +156,7 @@ A Storage Service Encryption az Azure Managed Disks elérhető a Microsoft álta
 Az Azure Disk Encryption biztosít operációsrendszer-alapú megoldások, például a BitLocker és a DM-Crypt és az Azure KeyVault közötti integrációt. A Storage Service Encryption natív módon a rétegben az Azure storage platform, a virtuális gép alábbi titkosítását biztosítja.
 
 **Visszavonhatja a hozzáférést a titkosítási kulcsokat?**
-Igen, visszavonhatja a hozzáférést bármikor. Többféleképpen is lehet vonni a hozzáférést a kulcsokhoz. Tekintse meg [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [Azure Key Vault parancssori felület](https://docs.microsoft.com/cli/azure/keyvault) további részletekért. Hozzáférés visszavonása hatékonyan letilthatja a hozzáférést a storage-fiókban lévő összes BLOB, mivel a titkosítási kulcsát nem érhető el az Azure Storage által.
+Igen, visszavonhatja a hozzáférést bármikor. Többféleképpen is lehet vonni a hozzáférést a kulcsokhoz. Tekintse meg [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) és [Azure Key Vault parancssori felület](https://docs.microsoft.com/cli/azure/keyvault) további részletekért. Hozzáférés visszavonása hatékonyan letilthatja a hozzáférést a storage-fiókban lévő összes BLOB, mivel a titkosítási kulcsát nem érhető el az Azure Storage által.
 
 **Létrehozhatok egy tárfiók és a kulcs eltérő régióban?**  
 Nem, a storage-fiók és az Azure Key Vault és a kulcsot kell ugyanabban a régióban.

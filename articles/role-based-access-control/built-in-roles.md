@@ -15,12 +15,12 @@ ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b2d834c5f9f46f2ebe3c997c75dc50f30ed4bda7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386961"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558923"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -98,7 +98,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
-| [Az Azure Cache a Redis-közreműködő](#redis-cache-contributor) | Lehetővé teszi az Rediss, de ezekhez nem biztosít hozzáférést Azure Cache kezelését. |
+| [Az Azure Cache a Redis-közreműködő](#redis-cache-contributor) | Lehetővé teszi a redis Azure-gyorsítótár kezeléséről, de nem érhető el hozzájuk. |
 | [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
 | [A Scheduler Feladatgyűjteményeinek Közreműködője](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
 | [Search szolgáltatás Közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
@@ -114,7 +114,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Tárolási fiók fő operátora – szolgáltatási szerepkör](#storage-account-key-operator-service-role) | A tárfiók kulcsának operátorai jogosultak a tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
 | [Storage-Blobadatok Közreműködője (előzetes verzió)](#storage-blob-data-contributor-preview) | Azure Storage-blobtárolók és -adatok olvasási, írási és törlési hozzáférésének engedélyezése |
-| [Tárolási Blob adatok tulajdonosa (előzetes verzió)](#storage-blob-data-owner-preview) | Lehetővé teszi, hogy az olvasási, írási, törlési és POSIX superuser hozzáférést az Azure Storage-blobtárolók és adatok |
+| [Tárolási Blob adatok tulajdonosa (előzetes verzió)](#storage-blob-data-owner-preview) | Az Azure Storage-blobtárolók és -adatok olvasási, írási, törlési és POSIX superuser felhasználói elérésének lehetővé tétele |
 | [Storage-Blobadatok olvasója (előzetes verzió)](#storage-blob-data-reader-preview) | Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
 | [Storage-Üzenetsorbeli adatok Közreműködője (előzetes verzió)](#storage-queue-data-contributor-preview) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási, írási és törlési hozzáférésének engedélyezése |
 | [Storage-Üzenetsorbeli adatok olvasója (előzetes verzió)](#storage-queue-data-reader-preview) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási hozzáférésének engedélyezése |
@@ -1289,11 +1289,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az Rediss, de ezekhez nem biztosít hozzáférést Azure Cache kezelését. |
+> | **Leírás** | Lehetővé teszi a redis Azure-gyorsítótár kezeléséről, de nem érhető el hozzájuk. |
 > | **Azonosító** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
-> | Microsoft.Cache/redis/* | Hozzon létre, és kezelheti az Azure Cache Rediss |
+> | Microsoft.Cache/redis/* | Létrehozása és kezelése az Azure Cache redis |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
@@ -1697,11 +1697,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Blobot vagy blobok listáját adja vissza |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Blob írásának eredményét adja vissza |
 
-## <a name="storage-blob-data-owner-preview"></a>Tárolási Blob adatok tulajdonosa (előzetes verzió)
+## <a name="storage-blob-data-owner-preview"></a>Storage-blobadatok tulajdonosa (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi, hogy az olvasási, írási, törlési és POSIX superuser hozzáférést az Azure Storage-blobtárolók és adatok |
+> | **Leírás** | Az Azure Storage-blobtárolók és -adatok olvasási, írási, törlési és POSIX superuser felhasználói elérésének lehetővé tétele |
 > | **Azonosító** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | A tároló törlésének eredményét adja vissza |

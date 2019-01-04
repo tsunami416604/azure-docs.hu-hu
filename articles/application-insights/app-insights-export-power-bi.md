@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 8bb36111da04ad44f5c13ef3dce2b1684784094e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993361"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808384"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
@@ -25,7 +25,7 @@ ms.locfileid: "52993361"
 Az Application Insights-adatok exportálása Power bi-hoz három módszer van:
 
 * [**Exportálja az elemzési lekérdezések**](#export-analytics-queries). Ez az előnyben részesített módszere. Minden írási lekérdezés szeretne, majd exportálhatja, és a Power bi-ban. Ez a lekérdezés állíthat be egy irányítópultot, valamint minden egyéb adatot.
-* [**A folyamatos exportálás és az Azure Stream Analytics**](app-insights-export-stream-analytics.md). Ez a módszer akkor hasznos, ha azt szeretné, hogy hosszú ideig tárolja az adatait. Ha nem rendelkezik egy kibővített adatok megőrzési követelmény, exportálás analytics lekérdezési módszert használja. A folyamatos exportálás és a Stream Analytics magában foglalja a több munkahelyi beállításához és további indextárolási terheléssel jár.
+* [**A folyamatos exportálás és az Azure Stream Analytics**](../azure-monitor/app/export-stream-analytics.md). Ez a módszer akkor hasznos, ha azt szeretné, hogy hosszú ideig tárolja az adatait. Ha nem rendelkezik egy kibővített adatok megőrzési követelmény, exportálás analytics lekérdezési módszert használja. A folyamatos exportálás és a Stream Analytics magában foglalja a több munkahelyi beállításához és további indextárolási terheléssel jár.
 * [**A Power BI adapter**](#power-pi-adapter). A diagramok készletét parancspéldány előre definiált, de a más forrásokból is hozzáadhat a saját lekérdezéseket.
 
 > [!NOTE]
@@ -105,8 +105,8 @@ Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkenté
 
 1. Hozzon létre egy [API-kulcs](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Frissítse a Power BI M szkriptet, és cserélje le az Azure Resource Manager URL-címet az Application Insights API által exportált Analytics.
-   * Cserélje le **https://management.azure.com/subscriptions/...**
-   * **https://api.applicationinsights.io/beta/apps/...**
+   * Cserélje le  **https://management.azure.com/subscriptions/...**
+   *  **https://api.applicationinsights.io/beta/apps/...**
 3. Végül frissítse a hitelesítő adatok alapszintű, és az API-kulcsot használja.
 
 **Meglévő parancsfájl**
@@ -119,7 +119,7 @@ Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkenté
  ```
 
 ## <a name="about-sampling"></a>Tudnivalók a mintavételezésről
-Ha az alkalmazás nagy mennyiségű adatot küld, akkor érdemes használni az adaptív mintavételezés funkció, amely csak a telemetria százalékát küldi. Ugyanez igaz akkor is, ha manuálisan állította mintavételi az SDK vagy betöltéskor. [További tudnivalók a mintavételezésről](app-insights-sampling.md).
+Az alkalmazás által küldött adatok mennyiségétől függően előfordulhat, hogy használni kívánt az adaptív mintavételezés funkció, amely csak a telemetria százalékát küldi. Ugyanez igaz akkor is, ha manuálisan állította mintavételi az SDK vagy betöltéskor. [További tudnivalók a mintavételezésről](app-insights-sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>(Elavult) a Power BI-adapter
 Ez a módszer létrehoz egy teljes irányítópultot telemetria. A kezdeti adatkészlet parancspéldány előre definiált, de további adatokat adhat.

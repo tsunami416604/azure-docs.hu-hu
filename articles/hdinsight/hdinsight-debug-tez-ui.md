@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 65e0fed29909ad5714b35659a7dd453e095a3eeb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012810"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713720"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Az Apache Tez felhasználói felület használata a Windows-alapú HDInsight a Tez-feladatok hibakereséséhez
 A [Apache TEZ](https://tez.apache.org/) felhasználói felület segítségével debug [Apache Hive](https://hive.apache.org/) használata a Tez végrehajtómotor feladatokat. A Tez felhasználói felület megjeleníti a feladat, egy grafikont a csatlakoztatott elemek részletesen az egyes elemeket, és statisztikák és a naplózási információk lekéréséhez.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések szükség egy HDInsight-fürt által használt Windows. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy Windows-alapú HDInsight-fürt. Az új fürt létrehozásának lépéseiért lásd: [Windows-alapú HDInsight használatának első lépései](hdinsight-hadoop-tutorial-get-started-windows.md).
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Az Apache Tez felhasználói felület a Windows-alapú HDInsight-fürtök 2016. február 8. után létrehozott csak érhető el.
-  >
-  >
+
 * Egy Windows-alapú távoli asztali ügyfél.
 
 ## <a name="understanding-apache-tez"></a>Az Apache Tez ismertetése
@@ -65,10 +64,8 @@ Az alábbi lépések segítségével által használt Tez Hive-lekérdezést fut
         en-GB   Nairobi Area    Kenya
 
 ## <a name="use-the-tez-ui"></a>A Tez felhasználói felület használata
-> [!NOTE]
+> [!NOTE]  
 > A Tez felhasználói felület csak akkor használható a fürt átjárócsomópontjaiból asztaláról, így az átjárócsomópontokat kapcsolódni a távoli asztal kell használni.
->
->
 
 1. Az a [az Azure portal](https://portal.azure.com), válassza ki a HDInsight-fürtöt. A HDInsight panel tetején válassza a **a távoli asztal** ikonra. Ez a hivatkozás a távoli asztali panel jeleníti meg.
 
@@ -77,10 +74,9 @@ Az alábbi lépések segítségével által használt Tez Hive-lekérdezést fut
 
     ![Távoli asztali kapcsolat ikon](./media/hdinsight-debug-tez-ui/remotedesktopconnect.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ha nem engedélyezte a távoli asztali kapcsolat, adjon meg egy felhasználónevet, jelszót és lejárati dátum, majd válassza **engedélyezése** távoli asztal engedélyezése. Ha ez engedélyezve van, használja az előző lépésekben való csatlakozáshoz.
-   >
-   >
+
 3. A csatlakozás után nyissa meg az Internet Explorer, a távoli asztalon, kattintson a fogaskerék ikonra a jobb felső sarkában a böngészőben, és válassza **kompatibilitási nézet beállításai**.
 4. Alján **kompatibilitási nézet beállításai**, törölje a jelet a jelölőnégyzetből a **kompatibilitási nézetet megjeleníteni az intranetes helyek** és **használja a Microsoft kompatibilitási lista**, és Válassza ki **Bezárás**.
 5. Az Internet Explorerben lépjen http://headnodehost:8188/tezui/#/. Ez megjeleníti a Tez felhasználói felület
@@ -101,10 +97,8 @@ Az alábbi lépések segítségével által használt Tez Hive-lekérdezést fut
    * **Minden feladat** a DAG az összes csúcspontok a tevékenységek listáját jeleníti meg.
    * **Az összes TaskAttempts** a feladatok futtatása a DAG megpróbálja információit jeleníti meg.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Oszlop jelenítse meg a csúcspontok, feladatok és TaskAttempts görgetve láthatja, hogy nincsenek-e megtekintésére szolgáló hivatkozások **számlálók** és **megtekintése és letöltése a naplók** minden egyes sorára.
-     >
-     >
 
      Hiba történt a feladat meghiúsul, ha a DAG részletek állapota sikertelen, és a sikertelen feladat kapcsolatos információkra mutató hivatkozásokat. Diagnosztikai adatokat a rendszer a DAG Részletek alatt jelennek meg.
 8. Válassza ki **grafikus nézetet**. Ez megjeleníti a DAG grafikus ábrázolását. Az egér, információit jeleníti meg a nézetben minden csúcspont keresztül helyezheti.
@@ -115,20 +109,17 @@ Az alábbi lépések segítségével által használt Tez Hive-lekérdezést fut
     ![Csomópont részletei](./media/hdinsight-debug-tez-ui/vertexdetails.png)
 10. Vegye figyelembe, hogy most már rendelkezik az oldal tetején lévő hivatkozások csúcspontok és-feladatokhoz kapcsolódó.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Is is érkezik erre a lapra visszatérve által **DAG részletei**és **csúcspont részletei**, és válassza a **térkép 1** csúcspont.
-    >
-    >
 
     * **Csúcspont számlálók** a csúcspont számláló adatait jeleníti meg.
     * **Feladatok** a csúcspont számára feladatokat jeleníti meg.
     * **Tevékenység-kísérletek** tett kísérleteket a csúcspont feladatok információit jeleníti meg.
     * **Adatforrások és a fogadók** adatforrásokat jeleníti meg, és a fogadók a csúcspont számára.
 
-      > [!NOTE]
+      > [!NOTE]  
       > Mint az előző menüben görgetve oszlop jelenítse meg a feladatok, feladat kísérletek, és források & Sinks__ az egyes elemekhez további információk megjelenítéséhez.
-      >
-      >
+
 11. Válassza ki **feladatok**, majd válassza a nevű elem **00_000000**. Ez a hivatkozás megjeleníti a **feladat részletei** erre a célra. Ezen a képernyőn megtekintheti **feladat számlálók** és **feladat kísérletek**.
 
     ![Feladat részletei](./media/hdinsight-debug-tez-ui/taskdetails.png)

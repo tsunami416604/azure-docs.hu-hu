@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: e760b67c1b971613de6b21102687c8ffeb556ed8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ce39b431adfd333db1e771913ed28881a193b327
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386876"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790840"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Az Apache Hadoop, az Apache Spark, az Apache Kafka és több HDInsight-fürtök beállítása
 
@@ -107,12 +107,12 @@ Nem kell explicit módon adja meg a fürt helye: A fürt van ugyanazon a helyen 
 
 ## <a name="storage-endpoints-for-clusters"></a>Tárolási végpontok fürtök
 
-Bár a Hadoop helyszíni telepítve a Hadoop elosztott fájlrendszer (HDFS) használ a tároló a fürtre, a felhőben használhatja tárolási végpontok fürthöz csatlakozik. HDInsight-fürtök bármelyikkel [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) vagy [az Azure Storage-blobok](hdinsight-hadoop-use-blob-storage.md). Az Azure Storage vagy a Data Lake Store azt jelenti, hogy biztonságosan törölheti a továbbra is az adatok megőrzése törölje a számításhoz használt HDInsight fürtöket. 
+Bár a Hadoop helyszíni telepítve a Hadoop elosztott fájlrendszer (HDFS) használ a tároló a fürtre, a felhőben használhatja tárolási végpontok fürthöz csatlakozik. HDInsight-fürtök bármelyikkel [Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) vagy [az Azure Storage-blobok](hdinsight-hadoop-use-blob-storage.md). Az Azure Storage vagy a Data Lake Storage azt jelenti, hogy biztonságosan törölheti a továbbra is az adatok megőrzése törölje a számításhoz használt HDInsight fürtöket. 
 
 > [!WARNING]  
 > A HDInsight-fürtről egy másik helyen található egy tárfiókot használ nem támogatott.
 
-Konfigurálása során az alapértelmezett tárolási végpont, adja meg az Azure Storage-fiókot vagy egy Data Lake Store egy blob-tárolóba. Az alapértelmezett tárolóként tartalmazza az alkalmazás- és naplókat. Szükség esetén további társított Azure Storage-fiókok és a fürt által elérhető Data Lake Store-fiókok is megadhat. A HDInsight-fürt és a függő tárfiókot ugyanazon Azure-beli helyen kell lennie.
+Konfigurálása során az alapértelmezett tároló végpontjaként, adja meg az Azure Storage-fiók vagy a Data Lake Storage blobtárolójára. Az alapértelmezett tárolóként tartalmazza az alkalmazás- és naplókat. Szükség esetén további társított Azure Storage-fiókok és a fürt által elérhető Data Lake Storage-fiókok is megadhat. A HDInsight-fürt és a függő tárfiókot ugyanazon Azure-beli helyen kell lennie.
 
 ![Fürt-tárolási beállítások: HDFS-kompatibilis tárolási végpontok](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
@@ -247,7 +247,7 @@ Az Azure virtuális hálózatban két fürttípusok használatának példájáé
 
 ## <a name="troubleshoot-access-control-issues"></a>Hozzáférés-vezérlés hibáinak elhárítása
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 

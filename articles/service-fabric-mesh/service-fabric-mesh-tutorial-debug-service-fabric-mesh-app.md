@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887508"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787630"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: A helyi fejlesztési fürtön futó Service Fabric-háló alkalmazások hibakeresése
 
 Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric Mesh-alkalmazások helyi fejlesztői fürtön történő felépítését és hibakeresését ismerteti.
 
@@ -93,8 +93,8 @@ Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy ta
 ### <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 
 Hibakeresése a Visual Studióban egy Service Fabric-háló alkalmazást, hogy egy helyi Service Fabric fejlesztési fürtöt használ. Annak ellenőrzéséhez, hogy a rendszer miként olvassa be a teendőket a háttérszolgáltatásból, végezze el az OnGet() metódus hibakeresését.
-1. A **WebFrontEnd** projektben nyissa meg az **Oldalak** > **Index.cshtml** > **Index.cshtml.cs** fájlt, és állítson be egy töréspontot a **Get** metódusban (17. sor).
-2. A **ToDoService** projektben nyissa meg a **TodoController.cs** fájlt, és állítson be egy töréspontot az **OnGet** metódusban (15. sor).
+1. Az a **WebFrontEnd** projektben nyissa meg **oldalak** > **Index.cshtml** > **Index.cshtml.cs** és állítsa be a Töréspont az a **OnGet** metódus (17. sor).
+2. Az a **ToDoService** projektben nyissa meg **TodoController.cs** és állítson be egy töréspontot a **első** metódus (15. sor).
 3. Térjen vissza a böngészőbe, és frissítse az oldalt. Az első töréspont a webes kezelőfelület `OnGet()` metódusában jelentkezik. A `backendUrl` változó ellenőrzésével megvizsgálhatja, hogy a rendszer hogyan vonja össze a **service.yaml** fájlban megadott környezeti változókat a háttérszolgáltatással való kapcsolatfelvételhez használt URL-ben.
 4. Lépje át a `client.GetAsync(backendUrl).GetAwaiter().GetResult())` hívást (F10), és a következő töréspont a vezérlő `Get()`metódusában jelentkezik. Ezzel a módszerrel láthatja, hogy a rendszer hogyan olvassa be a teendők listáját a memóriabeli listából.
 5. Amikor végzett, nyomja le a Visual Studióban a project hibakeresésének leállításához **Shift + F5**.

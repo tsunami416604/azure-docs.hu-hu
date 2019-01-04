@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: cf3c30d33e618ae3fd9d4ad942c77d211a414e82
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288544"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601151"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>A távoli figyelési megoldásgyorsító helyileg – a Docker üzembe helyezése
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. Elsajátíthatja a mikroszolgáltatások helyi Docker-tárolók üzembe helyezése. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: az IoT Hub, Cosmos DB, az Azure Stream Analytics és az Azure Time Series Insights szolgáltatások a felhőben.
+Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. Elsajátíthatja a mikroszolgáltatások helyi Docker-tárolók üzembe helyezése. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: Az IoT Hub, Cosmos DB, az Azure Stream Analytics és az Azure Time Series Insights-szolgáltatások a felhőben.
 
 Ha meg szeretné futtatni a távoli figyelési megoldásgyorsító IDE-ben a helyi gépén, [üzembe helyezése a távoli figyelési megoldásgyorsító helyileg – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -27,7 +27,7 @@ Ha meg szeretné futtatni a távoli figyelési megoldásgyorsító IDE-ben a hel
 
 Az Azure-szolgáltatások használják a távoli figyelési megoldásgyorsító üzembe helyezéséhez aktív Azure-előfizetés szükséges.
 
-Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](http://azure.microsoft.com/pricing/free-trial/).
+Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Gép beállítása
 
@@ -72,11 +72,11 @@ Ez a parancs első futtatásakor Docker tölti le a mikroszolgáltatás-lemezké
 > [!TIP]
 > A Microsoft új Docker-rendszerképek gyakran közzéteszi az új funkciókkal. Használhatja következő csoportját cleanup parancsokat a helyi Docker-tárolók és a megfelelő rendszerképek előtt, kérje le a legújabb azokat:
 
-    ```cmd/sh
-    docker list
-    docker rm <list_of_containers>
-    docker rmi <list_of_images>
-    ```
+```cmd/sh
+docker list
+docker rm <list_of_containers>
+docker rmi <list_of_images>
+```
 
 Egy külön rendszerhéj használatával a tároló naplóinak megtekintéséhez. Először keresse ki a tárolót azonosító használatával a `docker ps` parancsot. Ezután `docker logs {container-id} --tail 1000` tekintheti meg a megadott tároló utolsó 1000 bejegyzéseket.
 

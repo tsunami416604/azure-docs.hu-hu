@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313938"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632433"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
@@ -34,7 +34,7 @@ Az alkalmazások fejlesztéséhez jelent létrehozó alkalmazáskódban lekérde
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
 Ez a cikk egy feladat keresési portált használja példaként. A példában egy ASP.NET MVC alkalmazás van megvalósítva.
 
--   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](http://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](https://azjobsdemo.azurewebsites.net/).
 
 -   A kód letöltése a [Azure-Samples-adattárat a Githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -371,7 +371,7 @@ A szűrő példái annak [OData-kifejezések szintaxisa (Azure Search)](https://
 ## <a name="try-the-demo"></a>Próbálja ki a demót
 Az Azure Search feladat portál bemutató példák ebben a cikkben tartalmazza.
 
--   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](http://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](https://azjobsdemo.azurewebsites.net/).
 
 -   A kód letöltése a [Azure-Samples-adattárat a Githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -396,12 +396,12 @@ Végzett munka, a keresési eredmények között, nézze meg az URL-cím lekérd
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Részletek
-Tekintse meg [részletes ismertetése az Azure Search](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). 45:25, jelenleg nincs egy bemutatót értékkorlátozással megvalósítása.
+Tekintse meg [részletes ismertetése az Azure Search](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). 45:25, jelenleg nincs egy bemutatót értékkorlátozással megvalósítása.
 
 A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, hogy az alábbi hivatkozásokat:
 
 * [Jellemzőalapú keresés tervezése](http://www.uie.com/articles/faceted_search/)
-* [Tervezési minták: Jellemzőalapú navigáció](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [Tervezési minták: Jellemzőalapú navigáció](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -431,7 +431,7 @@ A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, 
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/

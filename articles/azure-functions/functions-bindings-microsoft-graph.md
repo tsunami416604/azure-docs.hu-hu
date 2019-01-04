@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e979930ed504dafe330b774725f4193f1c15ed17
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301016"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793988"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
 
@@ -63,7 +63,7 @@ Ha használja a Visual Studio, a bővítmények beszerezheti telepítésével [a
 
 ### <a name="configuring-authentication--authorization"></a>Hitelesítés / engedélyezés
 
-A következő cikkben ismertetett kötések szükséges használandó identitást. Ez lehetővé teszi a Microsoft Graph kényszerítése az engedélyeket, és kapcsolati naplózása. Az identitás lehet egy felhasználó az alkalmazás vagy maga az alkalmazás eléréséhez. Adja meg ezt az identitást, állítsa be a [App Service-hitelesítés / engedélyezés](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) az Azure Active Directoryval. Akkor is kell kérnie a függvényekben erőforrás engedélyek.
+A következő cikkben ismertetett kötések szükséges használandó identitást. Ez lehetővé teszi a Microsoft Graph kényszerítése az engedélyeket, és kapcsolati naplózása. Az identitás lehet egy felhasználó az alkalmazás vagy maga az alkalmazás eléréséhez. Adja meg ezt az identitást, állítsa be a [App Service-hitelesítés / engedélyezés](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) az Azure Active Directoryval. Akkor is kell kérnie a függvényekben erőforrás engedélyek.
 
 > [!Note] 
 > A Microsoft Graph-bővítmény csak az Azure AD-hitelesítést támogatja. Felhasználók kell bejelentkezni a munkahelyi vagy iskolai fiókkal jelentkezik be.
@@ -226,7 +226,8 @@ Maga a kötés nem igényel minden olyan Azure AD-engedélyekről, de attól fü
 
 A jogkivonat mindig megjelenik kód karakterláncként.
 
-
+> [!Note]
+> Mindkét esetben helyi fejlesztése során `userFromId`, `userFromToken` vagy `userFromRequest` beállítások, a szükséges jogkivonat lehet [kézzel](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) és a megadott `X-MS-TOKEN-AAD-ID-TOKEN` kérelem fejléce a hívó ügyfélalkalmazás.
 
 
 <a name="excel-input"></a>

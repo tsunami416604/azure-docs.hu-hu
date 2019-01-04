@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164644"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537627"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -64,9 +64,16 @@ Jelenleg más nagyméretű virtuálisgép-méretezési csoportokkal kapcsolatos 
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Mi a Service Fabric-fürt minimális mérete? Miért nem lenne, kisebb?
 
-A minimális támogatott számítási feladatok futtatása a Service Fabric-fürt mérete öt csomópontot. Fejlesztési és tesztelési célra három csomópontot tartalmazó fürt nyújtunk támogatást.
+A minimális támogatott számítási feladatok futtatása a Service Fabric-fürt mérete öt csomópontot. Fejlesztési forgatókönyvek esetén támogatott (optimalizált, gyors fejlesztési élményt biztosít a Visual Studióban) egy csomópontot, és 5 csomópontos fürt.
 
-E minimális díj léteznek, mivel a Service Fabric-fürt állapot-nyilvántartó rendszer szolgáltatások, többek között az elnevezési szolgáltatás és a Feladatátvevőfürt-kezelő. Ezek olyan szolgáltatásokat, amelyek nyomon követése, mely szolgáltatások a fürtben lett telepítve, és ha azok még jelenleg üzemel, erős konzisztencia függenek. A konzisztenciát, függ beszerezni lehetővé teszi egy *kvórum* bármely azok állapotát az adott frissítés szolgáltatási, ahol a kvórum jelenti a szigorú többsége a replikák (N/2 + 1) egy adott szolgáltatáshoz.
+Szükség van egy éles fürtöt legalább 5 csomóponttal rendelkeznek, a következő három okok miatt:
+1. Akkor is, ha nincs olyan szolgáltatást futtatja, a Service Fabric-fürt állapot-nyilvántartó rendszer szolgáltatások, többek között az elnevezési szolgáltatás és a Feladatátvevőfürt-kezelő szolgáltatás futtatja. E rendszerszolgáltatások nélkülözhetetlenek a fürt működőképes maradjon.
+2. Egy replika csomópontonként, a szolgáltatás azt mindig helyezze el, így foglalásiegység-méret (valójában egy partíció) szolgáltatás rendelkezhet replikák számának felső határát.
+3. Legalább egy csomópont le a fürtfrissítések tartalomtérkép érhető el, mivel azt szeretné, hogy legalább egy csomópont puffer, ezért szeretnénk egy fürt legalább két csomóponttal rendelkezik, *emellett* operációs minimális. Az operációs rendszer nélküli minimális érték kövesse az alábbi utasításokat rendszerszolgáltatás kvórum méretét.  
+
+Szeretnénk, hogy a fürt két csomópont egyidejű meghibásodása esetén érhető el. A Service Fabric-fürtön elérhető legyen a rendszer szolgáltatások elérhetőnek kell lennie. Állapotalapú szolgáltatások, például elnevezési szolgáltatás és feladatátvételi kezelő szolgáltatás, nyomon követheti, mely szolgáltatások a fürtben lett telepítve, és ha azok még jelenleg üzemel, erős konzisztencia függenek. A konzisztenciát, függ beszerezni lehetővé teszi egy *kvórum* bármely azok állapotát az adott frissítés szolgáltatási, ahol a kvórum jelenti a szigorú többsége a replikák (N/2 + 1) egy adott szolgáltatáshoz. Így két csomópontot (így a rendszer szolgáltatás két replika egyidejű elvesztésével) egyidejű adatvesztés elleni rugalmas szeretnénk, ha azt kell rendelkeznie a fürt méretének nullánál - QuorumSize > = 2, amely arra kényszeríti a minimális méretét öt. Megtekintheti, fontolja meg a fürt rendelkezik N csomópontokat, és N replika, a rendszer szolgáltatás – egy minden egyes csomóponton. A kvórum rendszerszolgáltatás mérete (N/2 + 1). A fenti egyenlótlenség néz N - (N/2 + 1) > = 2. Két esetekben érdemes figyelembe venni: Ha N még akkor is, és ha N páratlan. Ha N még akkor is, például: N = 2\*m ahol m > = 1, 2 egyenlótlenség tűnik\*m - (2\*m/2 + 1) > 2-es vagy m = > = 3. Az n-re legalább 6, és ez mikor elért m = 3. Másrészről, ha N páratlan, mondjuk N = 2\*m + 1 where m > = 1, 2 egyenlótlenség tűnik\*m + 1 – ((2\*m + 1) / 2 + 1) > = 2-es vagy 2\*m + 1 – (m + 1) > 2-es vagy m = > = 2. Az n-re legalább 5, és ez mikor elért m = 2. Ezért között szereplő összes N, amelyek megfelelnek a fürt méretének nullánál - QuorumSize egyenlótlenség > = 2, a minimális érték 5.
+
+Vegye figyelembe, a fenti argumentum azt rendelkezik feltételezi, hogy minden csomópont egy replikát a rendszer szolgáltatás, így a kvórum mérete számított a fürtben található csomópontok száma alapján. Azonban módosításával *TargetReplicaSetSize* azt teheti, hogy a kvórum mérete kisebb, mint (N / 2 + 1) amely előfordulhat, hogy adjon a benyomást, hogy mi sikerült fürt kisebb, mint 5 csomópontot, és továbbra is rendelkeznek 2 extra csomópont feletti a kvórum mérete. Például egy 4 csomópont fürtben elkészülünk a TargetReplicaSetSize 3, ha a kvórum TargetReplicaSetSize alapján mérete (3/2 + 1) vagy 2, így van CluserSize - QuorumSize = 4-2 > = 2. Azonban nem tudjuk garantálni, hogy a rendszer szolgáltatás lesz vagy újabb kvórum azt elvesztése minden virtuálisgép-pár csomópontok egyidejűleg, annak oka az lehet, hogy a két csomópont elveszítjük két replika is üzemeltető, így a rendszer szolgáltatás (csak egyetlen replika kellene balra) kvórum elvesztése lépnek egy ND nem lesz elérhető.
 
 Végzett most vizsgálja meg néhány lehetséges fürtkonfigurációk:
 
@@ -74,9 +81,13 @@ Végzett most vizsgálja meg néhány lehetséges fürtkonfigurációk:
 
 **Két csomópont**: a két csomópontra telepített szolgáltatáshoz a kvórum (N = 2) a következő 2 (2/2 + 1 = 2). Egyetlen replika nem vesztek el, ha nem lehet létrehozni egy kvórum. Egy szolgáltatás frissítése szükséges ideiglenesen le egy replikát tart, ez a beállítás nem lehet hasznos.
 
-**Három csomóponttal**: három csomóponttal (N = 3) a követelmény létrehozása egy kvórum, még két csomópont (3/2 + 1 = 2). Ez azt jelenti, hogy az egyes csomópontok elvesznek, és továbbra is a kvórum fenntartásához.
+**Három csomóponttal**: három csomóponttal (N = 3) a követelmény létrehozása egy kvórum, még két csomópont (3/2 + 1 = 2). Ez azt jelenti, hogy az egyes csomópontok elvesznek, és továbbra is a kvórum fenntartásához, de két csomópont egyidejű meghibásodása be kvórum elvesztése a helyrendszeri szolgáltatások hatékony felhasználhatóságot, és a fürt elérhetetlenné okoz.
 
-A három csomópontos fürtkonfiguráció azért támogatott fejlesztési és tesztelési biztonságosan végzi frissítéseket és stabilitást biztosít az egyes csomópontok meghibásodásai, mert mindaddig, amíg azok nem egyszerre következnek be. Az éles számítási feladatokhoz, rugalmasnak kell lennie az ilyen egyidejű hibája esetén, így öt csomópont szükség.
+**Négy csomópont**: négy csomópont (N = 4), hogy hozzon létre egy kvórum három csomóponttal (4/2 + 1 = 3). Ez azt jelenti, hogy az egyes csomópontok elvesznek, és továbbra is a kvórum fenntartásához, de két csomópont egyidejű meghibásodása be kvórum elvesztése a helyrendszeri szolgáltatások hatékony felhasználhatóságot, és a fürt elérhetetlenné okoz.
+
+**Öt csomópont**: öt csomóponttal (N = 5), a követelmény létrehozása egy kvórum, továbbra is három csomóponttal (5/2 + 1 = 3). Ez azt jelenti, hogy egy időben két csomópont elvesznek, és továbbra is a rendszerszolgáltatások a kvórum fenntartásához.
+
+Az éles számítási feladatokhoz, rugalmasnak kell lennie (például egy fürt frissítése, egy más okok miatt), legalább két csomópont egyidejű meghibásodása, így öt csomópont szükség.
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Ki lehet kapcsolni a fürt, éjszaka és Hétvége költségeit?
 

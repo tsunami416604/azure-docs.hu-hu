@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258015"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653390"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai #
 
@@ -141,7 +141,7 @@ Egy vagy több hibrid kapcsolat hozzáadása a HCM:
 ![Képernyőkép az új hibrid kapcsolatok konfigurálása][8]
 
 1. Jelentkezzen be az Azure-fiókjával.
-1. Válasszon egy előfizetést.
+1. Válasszon előfizetést.
 1. Válassza ki a hibrid kapcsolatok a HCM továbbítani kívánt.
 ![Képernyőkép a hibrid kapcsolatok][9]
 
@@ -177,7 +177,7 @@ Nincsenek időszakos frissítések, a Hibridkapcsolat-kezelő kapcsolatos probl�
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Hibrid kapcsolat hozzáadása az alkalmazáshoz programozott módon ##
 
-Az alábbi esetekben API-k segítségével közvetlenül kezelheti a hibrid kapcsolatok a web apps csatlakozik. 
+Az alábbi esetekben API-k segítségével közvetlenül a hibrid kapcsolatok csatlakozik az alkalmazások kezeléséhez. 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -198,7 +198,7 @@ A hibrid kapcsolat társított JSON-objektum hasonlóan néz ki:
       }
     }
 
-Egy ezzel az információval módja a armclient, amelyeket kérhet le a [ARMClient] [ armclient] GitHub-projekt. Íme egy példa egy már létező hibrid kapcsolat csatolására a webalkalmazáshoz. Hozzon létre egy JSON-fájlt, mint például a fenti séma szerint:
+Egy ezzel az információval módja a armclient, amelyeket kérhet le a [ARMClient] [ armclient] GitHub-projekt. Íme egy példa egy már létező hibrid kapcsolat csatolására az alkalmazáshoz. Hozzon létre egy JSON-fájlt, mint például a fenti séma szerint:
 
     {
       "name": "relay-demo-hc",
@@ -230,7 +230,7 @@ Az App Service-ben a tcpping eszköz a speciális eszközök (Kudu) konzolról i
 
 ## <a name="biztalk-hybrid-connections"></a>Hibrid kapcsolatok a BizTalk szolgáltatásokban ##
 
-Ez a funkció korai formájában BizTalk hibrid kapcsolatok lett meghívva. Ez a funkció 2018. május 31-ig. a végfelhasználók az élettartam történt, és operations megszűnt. BizTalk hibrid kapcsolatok a web Apps-alkalmazások összes el lettek távolítva, és nem a portál vagy API-n keresztül elérhető. Ha továbbra is ezeket a a Hibridkapcsolat-kezelő konfigurált régebbi kapcsolatokat, majd meg Kifutott állapotot és egy záró az élettartam utasítás megjelenítéséhez a lap alján.
+Ez a funkció korai formájában BizTalk hibrid kapcsolatok lett meghívva. Ez a funkció 2018. május 31-ig. a végfelhasználók az élettartam történt, és operations megszűnt. BizTalk hibrid kapcsolatok az összes alkalmazás el lettek távolítva, és nem a portál vagy API-n keresztül elérhető. Ha továbbra is ezeket a a Hibridkapcsolat-kezelő konfigurált régebbi kapcsolatokat, majd meg Kifutott állapotot és egy záró az élettartam utasítás megjelenítéséhez a lap alján.
 
 ![BizTalk hibrid kapcsolatok a HCM a][12]
 

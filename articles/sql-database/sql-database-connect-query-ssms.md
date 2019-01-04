@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 7049691e6635940e70795f0b5b4cc4c94cfd3631
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607319"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745074"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
-Használhat [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) bármely SQL-infrastruktúra kezelésére az SQL Servertől az SQL Database a Microsoft Windows. Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure SQL database, majd futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és törli az adatokat az SSMS használatával. 
+Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) egy Azure SQL Database-adatbázishoz csatlakozhat. Ezután futtassa a Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissítése és adatok törlése. SSMS segítségével bármilyen SQL infrastruktúra kezelésére az SQL Servertől az SQL Database a Microsoft Windows.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,11 +75,11 @@ Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Használja a következő [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL kód használatával lekérdezheti kategóriánként az első 20 terméket.
+Futtassa a következő parancsot [kiválasztása](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL kód használatával lekérdezheti kategóriánként az első 20 terméket.
 
-1. Az Object Explorerben kattintson a jobb gombbal **mySampleDatabase** válassza **új lekérdezés**. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
+1. Az Object Explorerben kattintson a jobb gombbal **mySampleDatabase** válassza **új lekérdezés**. Megnyílik egy új, az adatbázishoz kapcsolódó lekérdezési ablakot.
 
-1. A lekérdezési ablakban illessze be az SQL-lekérdezést.
+2. A lekérdezési ablakban illessze be az SQL-lekérdezést.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -90,11 +90,11 @@ Használja a következő [kiválasztása](https://msdn.microsoft.com/library/ms1
 
 3. Válassza az eszköztár **Execute** be adatokat a `Product` és `ProductCategory` táblákat.
 
-    ![2 táblákból származó adatok beolvasására irányuló lekérdezés](./media/sql-database-connect-query-ssms/query2.png)
+    ![adatok két tábla lekérdezése](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) hozhat létre egy új terméket a Transact-SQL-kódot a `SalesLT.Product` tábla.
+Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/library/ms174335.aspx) hozhat létre egy új terméket a Transact-SQL-kódot a `SalesLT.Product` tábla.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -117,7 +117,7 @@ Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms1743
            ,GETDATE() );
    ```
 
-2. Válassza ki **Execute** , a Product tábla egy új sor beszúrásához. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
+2. Válassza ki **Execute** az új sor beszúrásához a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
 
 ## <a name="view-the-result"></a>Az eredmény megtekintéséhez
 
@@ -134,7 +134,7 @@ Használja a következő [BESZÚRÁSA](https://msdn.microsoft.com/library/ms1743
  
 ## Update data
 
-Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
 1. Replace the previous query with this one.
 
@@ -144,11 +144,11 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **Execute** a Product tábla egy megadott sorának frissítéséhez. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
+2. Válassza ki **Execute** egy megadott sorának frissítéséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
 
 ## <a name="delete-data"></a>Adat törlése
 
-Használja a következő [törlése](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-kód eltávolítása az előzőleg hozzáadott új terméket.
+Futtassa a következő parancsot [törlése](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-kódot az új termék eltávolítása.
 
 1. Ehhez cserélje le az előző lekérdezést.
 
@@ -157,7 +157,7 @@ Használja a következő [törlése](https://msdn.microsoft.com/library/ms189835
    WHERE Name = 'myNewProduct';
    ```
 
-2. Válassza ki **Execute** a Product tábla egy megadott sorának törléséhez. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
+2. Válassza ki **Execute** egy megadott sorának törléséhez a `Product` tábla. A **üzenetek** ablaktáblán megjelennek azok **(1 sort érint)**.
 
 ## <a name="next-steps"></a>További lépések
 

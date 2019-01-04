@@ -3,17 +3,15 @@ title: Memóriakép MariaDB adatbázis migrálása, és állítsa vissza az Azur
 description: Ez a cikk leírja a két leggyakoribb biztonsági mentése és visszaállítása az adatbázisok az Azure Database for MariaDB, eszközök, például a mysqldump, a MySQL Workbench és a PHPMyAdmin használatával.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5ac80ef36241b58812832c66511c0a09d49b365f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986984"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540443"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>A MariaDB-adatbázis migrálása az Azure Database for MariaDB memóriakép és visszaállítás használatával
 Ez a cikk azt ismerteti, biztonsági mentése és visszaállítása az Azure Database-adatbázisok a MariaDB-hez két gyakori módjai

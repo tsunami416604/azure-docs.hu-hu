@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 2c5a584bd5c235eb143c8e1911006aa6e142ff0d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498137"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605636"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -26,16 +26,16 @@ Machine Learning szolgáltatások a HDInsight a tárolási megoldások széles m
 
 Lehetősége is van, több Azure storage-fiókok és -tárolót a HDInsight-fürt eléréséhez. Az Azure File storage az kényelmes adatok tárolási lehetőség használatra az élcsomóponton, amely lehetővé teszi, hogy egy, az Azure Storage-fájlmegosztás csatlakoztatása például a Linux-fájlrendszer. De Azure-fájlmegosztások csatlakoztatva van, és bármilyen, amely rendelkezik egy támogatott operációs rendszert, például a Windows vagy Linux rendszert használják. 
 
-Amikor HDInsight egy Apache Hadoop-fürtöt hoz létre, vagy megadhatja egy **az Azure storage** fiókot vagy egy **Data Lake store**. Ebből a fiókból egy adott tároló tárolja a fájlrendszer, a fürt által létrehozott (például a Hadoop elosztott fájlrendszer). További információkért és útmutatóért lásd:
+Amikor HDInsight egy Apache Hadoop-fürtöt hoz létre, vagy megadhatja egy **az Azure storage** fiók vagy **Data Lake Storage**. Ebből a fiókból egy adott tároló tárolja a fájlrendszer, a fürt által létrehozott (például a Hadoop elosztott fájlrendszer). További információkért és útmutatóért lásd:
 
 - [Az Azure storage használata a HDInsight](../hdinsight-hadoop-use-blob-storage.md)
-- [Használata Data Lake Store az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-store.md)
+- [Data Lake Storage használata az Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Az Azure Blob storage-fiókok használata a Machine Learning-szolgáltatások-fürttel
 
 Ha egynél több tárfiókot a Machine Learning-szolgáltatások fürt létrehozásakor megadott, az alábbi utasítások azt ismertetik, hogyan adatelérési és a egy Machine Learning-szolgáltatások fürt műveletek másodlagos fiókot használhatják. Tegyük fel, a következő tárfiókok és a tároló: **storage1** és a egy alapértelmezett tárolót **container1**, és **storage2** a **container2**.
 
-> [!WARNING]
+> [!WARNING]  
 > A teljesítmény a HDInsight-fürt létrejön az Ön által megadott elsődleges tárfióknak ugyanabban az adatközpontban. A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott.
 
 ### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>Az alapértelmezett tároló használata a HDInsight-ML szolgáltatásokkal
@@ -102,29 +102,29 @@ A/User/RevoShare/konfigurálására<SSH username> könyvtárába **storage2** m�
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>Az Azure Data Lake Store használata a Machine Learning-szolgáltatások-fürttel 
+## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>Azure Data Lake Storage használata a Machine Learning-szolgáltatások-fürttel 
 
-Data Lake Store használata a HDInsight-fürt, kell a fürt hozzáférést biztosít minden Azure Data Lake Store, amelyet használni szeretne. Az Azure portal használata egy HDInsight-fürt létrehozása az alapértelmezett tárolóként, vagy egy kiegészítő tárolóként az Azure Data Lake Store-fiókkal kapcsolatos utasításokért lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Storage használata a HDInsight-fürt, kell a fürt hozzáférést biztosít minden Azure Data Lake Storage, amelyet használni szeretne. Az Azure portal használata egy HDInsight-fürt létrehozása az alapértelmezett tárolóként vagy kiegészítő tárolóként az Azure Data Lake Storage-fiókkal kapcsolatos utasításokért lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Azure portalhasználatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
-Ezt követően használhatja az áruház az R-szkript sokkal megismert egy másodlagos Azure-tárfiókot az előző eljárásban leírtak szerint.
+Majd a storage használata az R-szkript sokkal megismert egy másodlagos Azure-tárfiókot az előző eljárásban leírtak szerint.
 
-### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>Az Azure Data Lake store a fürt hozzáférés hozzáadása
-A Data Lake store egy Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával, amely a HDInsight-fürthöz társított érheti el.
+### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Fürt-hozzáférés hozzáadása az Azure Data Lake Storage
+Az Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával, amely a HDInsight-fürthöz társított érheti el a Data Lake Storage.
 
 1. A HDInsight-fürt létrehozásakor válassza **fürt AAD-identitásával** származó a **adatforrás** fülre.
 
 2. Az a **fürt AAD-identitásával** párbeszédpanel **AD-szolgáltatásnév kiválasztása**válassza **új létrehozása**.
 
-Miután hozzon létre egy jelszót, és nevezze el az egyszerű szolgáltatás kattintson **ADLS-hozzáférés kezelése** a szolgáltatásnév társítása a Data Lake Store.
+Miután hozzon létre egy jelszót, és nevezze el az egyszerű szolgáltatás kattintson **ADLS-hozzáférés kezelése** a szolgáltatásnév társítása a Data Lake Storage.
 
-Akkor is fürt hozzáférés hozzáadása a fürt létrehozása a következő egy vagy több Data Lake Store fiókot. Nyisson meg egy Data Lake Store az Azure portal bejegyzését, és nyissa meg **adatkezelő > hozzáférés > Hozzáadás**. 
+Akkor is fürt hozzáférés hozzáadása a fürt létrehozása a következő egy vagy több Data Lake Storage fiókok. Nyissa meg az Azure portal bejegyzés egy Data Lake Storage számára, majd **adatkezelő > hozzáférés > Hozzáadás**. 
 
-### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>A Machine Learning szolgáltatások a HDInsight a Data Lake store elérése
+### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>Machine Learning szolgáltatások a HDInsight a Data Lake Storage elérése
 
-Után hozzáférést adott, egy Data Lake Store, használhatja a Machine Learning szolgáltatások a fürtben tárolóban a HDInsight egy másodlagos Azure-tárfiók ugyanúgy. Az egyetlen különbség, hogy az előtag **wasb: / /** vált **adl: / /** módon:
+A Data Lake Storage hozzáférést adott, miután a storage használható a Machine Learning-szolgáltatások HDInsight-fürt egy másodlagos Azure-tárfiók ugyanúgy. Az egyetlen különbség, hogy az előtag **wasb: / /** vált **adl: / /** módon:
 
 
-    # Point to the ADL store (e.g. ADLtest)
+    # Point to the ADL Storage (e.g. ADLtest)
     myNameNode <- "adl://rkadl1.azuredatalakestore.net"
     myPort <- 0
 
@@ -143,7 +143,7 @@ Után hozzáférést adott, egy Data Lake Store, használhatja a Machine Learnin
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-A Data Lake Store-fiók konfigurálása RevoShare címtárhoz, és adja hozzá a .csv-mintafájlt az előző példában a következő parancsok segítségével:
+A következő parancsok segítségével konfigurálja a Data Lake-tárfiókra RevoShare címtárhoz, és adja hozzá a .csv-mintafájlt az előző példában:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

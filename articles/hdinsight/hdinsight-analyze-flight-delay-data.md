@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2e24a138220f350e56b30406f65bb869dd523bad
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015874"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632891"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával
 [Az Apache Hive](https://hive.apache.org/) futó módszert biztosít az [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok egy SQL-szerű programozási nyelv révén nevű *[HiveQL] [ hadoop-hiveql]*, felé összefoglalójához, lekérdezéséhez és nagy mennyiségű adat elemzéséhez is alkalmazható.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések egy Windows-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú fürtökkel működik lépéseiért lásd: [repülőjáratok késési adatainak elemzése a HDInsight (Linux) az Apache Hive használatával](hdinsight-analyze-flight-delay-data-linux.md).
 
 Az egyik fő vívmánya, az Azure HDInsight az adatok tárolási és számítási szétválasztását. HDInsight adatokat tároló Azure Blob storage használ. Egy tipikus feladatot három részből áll:
@@ -43,8 +43,8 @@ A fő részét az oktatóanyag bemutatja, hogyan egy Windows PowerShell-szkript 
 
 A függelékben találja az utasításokat repülőjáratok késési adatainak feltöltése, a Hive a lekérdezési karakterlánc létrehozása és feltöltése és az Azure SQL database előkészítése a Sqoop feladatokhoz.
 
-> [!NOTE]
-> A jelen dokumentumban leírt lépések Windows-alapú HDInsight-fürtökre jellemzőek. A Linux-alapú fürtökkel működik lépéseiért lásd: [Apache Hive a HDInsight (Linux) használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
+> [!NOTE]  
+> A jelen dokumentumban leírt lépések Windows-alapú HDInsight-fürtökre jellemzőek. A Linux-alapú fürtökkel működik lépéseiért lásd: [Apache Hive a HDInsight (Linux) használatával repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md).
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
@@ -52,7 +52,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Munkaállomás Azure PowerShell-lel**.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnt. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
     > Kérjük, kövesse az alábbi cikkben leírt lépéseket az Azure PowerShell legújabb verziójának telepítéséhez: [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell letöltése és konfigurálása). Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új, az Azure Resource Managerrel működő parancsmagok használatához, tekintse meg az alábbi cikket: [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Az Azure Resource Manager-alapú fejlesztési eszközökre való áttérés HDInsight-fürtök esetén).
@@ -242,7 +242,7 @@ Az adatfájl feltöltése és a [HiveQL](https://cwiki.apache.org/confluence/dis
 * **A HDInsight-fürt által használandó meg alapértelmezett fájlrendszerként azonos Azure Storage-fiókot használni.** A HDInsight-fürt lesz a Tárfiók hozzáférési kulcsát, mert nem kell további módosításokat.
 * **Használja a HDInsight-fürt alapértelmezett fájlrendszerének egy másik Azure Storage-fiókjában.** Ez a helyzet, ha módosítania kell a Windows PowerShell parancsfájl található létrehozásra vonatkozó részét [létre HDInsight-fürt és az Apache Hive/Sqoop futtathatja feladatait](#runjob) a Storage-fiók kiegészítő tárfiókként. Útmutatásért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision]. A HDInsight-fürt majd tudja, hogy a tárfiók hozzáférési kulcsára.
 
-> [!NOTE]
+> [!NOTE]  
 > A Blob storage az adatok fájl elérési útja rögzített bekódolni a HiveQL-parancsfájlt. Ennek megfelelően kell frissíteni.
 
 **A flight adatok letöltése**
@@ -351,7 +351,7 @@ Ha a fájlok feltöltése más módszert használni kívánja, ellenőrizze, hog
 
 Az oktatóanyagok/flightdelay/adatok elérési útja az a virtuális mappa hozott létre a fájlok feltöltésekor. Győződjön meg arról, hogy nincsenek-e egy minden hónapban a 12 fájlokat.
 
-> [!NOTE]
+> [!NOTE]  
 > Frissítenie kell a Hive-lekérdezést az új hely olvasni.
 >
 > Vagy konfigurálnia kell a tároló nyilvános vagy a HDInsight-fürt kötést létrehozni a tárfiók hozzáférési engedélyt. Ellenkező esetben a Hive lekérdezés-karakterlánc nem érhetik el az adatfájlokat.
@@ -615,7 +615,7 @@ A HiveQL parancsok teljes listájáért lásd: [Apache Hive-adatdefiníciós nye
     #region - Constants and variables
 
     # IP address REST service used for retrieving external IP address and creating firewall rules
-    [String]$ipAddressRestService = "http://bot.whatismyipaddress.com"
+    [String]$ipAddressRestService = "https://bot.whatismyipaddress.com"
     [String]$fireWallRuleName = "FlightDelay"
 
     # SQL database variables
@@ -699,12 +699,12 @@ A HiveQL parancsok teljes listájáért lásd: [Apache Hive-adatdefiníciós nye
     Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
     ```
 
-   > [!NOTE]
-   > A szkript egy representational állapot transfer (REST) szolgáltatás http://bot.whatismyipaddress.com, a külső IP-cím lekéréséhez. Az IP-cím szolgál egy tűzfalszabályt az SQL database-kiszolgálóhoz létrehozásához.
+   > [!NOTE]  
+   > A szkript egy representational állapot transfer (REST) szolgáltatás https://bot.whatismyipaddress.com, a külső IP-cím lekéréséhez. Az IP-cím szolgál egy tűzfalszabályt az SQL database-kiszolgálóhoz létrehozásához.
 
     Íme néhány a szkriptben használt változók:
 
-   * **$ipAddressRestService** – az alapértelmezett érték http://bot.whatismyipaddress.com. Egy nyilvános IP-címet REST-szolgáltatás esetében a külső IP-cím beolvasása. Más szolgáltatások is használhatja, ha azt szeretné. A szolgáltatás segítségével a külső IP-cím használandó hozzon létre egy tűzfalszabályt az Azure SQL database-kiszolgáló úgy, hogy hozzáférhessen az adatbázishoz a munkaállomásáról (a Windows PowerShell-parancsfájl használatával).
+   * **$ipAddressRestService** – az alapértelmezett érték https://bot.whatismyipaddress.com. Egy nyilvános IP-címet REST-szolgáltatás esetében a külső IP-cím beolvasása. Más szolgáltatások is használhatja, ha azt szeretné. A szolgáltatás segítségével a külső IP-cím használandó hozzon létre egy tűzfalszabályt az Azure SQL database-kiszolgáló úgy, hogy hozzáférhessen az adatbázishoz a munkaállomásáról (a Windows PowerShell-parancsfájl használatával).
    * **$fireWallRuleName** – az Azure SQL-kiszolgáló a tűzfalszabály neve. Alapértelmezés szerint ez <u>FlightDelay</u>. Ha azt szeretné, átnevezheti.
    * **$sqlDatabaseMaxSizeGB** – Ez az érték csak egy új Azure SQL database server létrehozásakor használható. Az alapértelmezett érték: 10 GB-ot. 10 GB-ot is elegendő ehhez az oktatóanyaghoz.
    * **$sqlDatabaseName** – Ez az érték csak egy új Azure SQL-adatbázis létrehozásakor használható. Az alapértelmezett érték: HDISqoop. Ha átnevezi, ennek megfelelően frissítse a Sqoop Windows PowerShell-parancsfájlt.
@@ -725,7 +725,7 @@ Most már megismerte, hogyan tölthet fel egy fájlt az Azure Blob storage-, hog
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -739,9 +739,9 @@ Most már megismerte, hogyan tölthet fel egy fájlt az Azure Blob storage-, hog
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
-[hadoop-shell-commands]: http://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
+[hadoop-shell-commands]: https://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
 [image-hdi-flightdelays-avgdelays-dataset]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.AvgDelays.DataSet.png
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png

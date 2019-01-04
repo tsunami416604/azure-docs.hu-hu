@@ -3,7 +3,7 @@ title: A Visual Studio-sablonok – Azure Batch-megoldások létrehozása |} A M
 description: Ismerje meg, hogyan Visual Studio-projektsablonok segíthet megvalósítása és nagy számítási igényű számítási feladatok futtatása Azure Batch.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114096"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538123"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>A Visual Studio-projektsablonok segítségével gyorsan elindíthatja a Batch-megoldások
 
@@ -62,7 +62,7 @@ A Batch-sablonjainak használatához a következőkre lesz szüksége:
     
     * Az Azure Batch Feladatkezelő a feladat felosztó
     * Az Azure Batch-feladat processzor
-  * A sablonok letöltésére az online katalógusból a Visual Studióhoz: [a Microsoft Azure Batch projektsablonok][vs_gallery_templates]
+  * A sablonok letöltésére az online katalógusból a Visual Studióhoz: [A Microsoft Azure Batch projektsablonok][vs_gallery_templates]
 * Ha azt tervezi, használja a [alkalmazáscsomagok](batch-application-packages.md) üzembe helyezéséhez a Feladatkezelő funkció és a processzor-feladat a Batch számítási csomópontokon kell, hogy egy storage-fiókot kapcsol a Batch-fiókhoz.
 
 ## <a name="preparation"></a>Előkészítés
@@ -111,9 +111,9 @@ A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, �
 
 **Keretrendszer fájlok**
 
-* `Configuration.cs`: A feladat konfigurációs adatok, például a Batch-fiók adatait, társított storage-fiók hitelesítő adatait, feladat és a feladatok adataihoz és feladatparaméter betöltését magában foglalja. A Batch által definiált környezeti változót (lásd a környezeti beállítások tevékenységekhez, a Batch dokumentációjában) a Configuration.EnvironmentVariable osztállyal hozzáférést is biztosít.
-* `IConfiguration.cs`: A konfigurációs osztály végrehajtásának kivonatolja a feladat felosztó használatával egy hamis vagy utánzatként funkcionáló konfigurációs objektum segítségével test jednotky.
-* `JobManager.cs`: A feladat manager program összetevői hangolja össze. Ez felelős az feladat elválasztó, a feladat felosztó meghívása és a feladatokat a tárfeladat küldője a feladat felosztó által visszaadott zahájeno inicializálása.
+* `Configuration.cs`: Magában foglalja a feladat konfigurációs adatok, például a Batch-fiók adatait, társított storage-fiók hitelesítő adatait, feladat és a feladatok adataihoz és feladatparaméter betöltését. A Batch által definiált környezeti változót (lásd a környezeti beállítások tevékenységekhez, a Batch dokumentációjában) a Configuration.EnvironmentVariable osztállyal hozzáférést is biztosít.
+* `IConfiguration.cs`: A konfigurációs osztály végrehajtásának kivonatolja, a feladat felosztó használatával egy hamis vagy utánzatként funkcionáló konfigurációs objektum segítségével test jednotky.
+* `JobManager.cs`: A feladat manager program összetevői koordinálja. Ez felelős az feladat elválasztó, a feladat felosztó meghívása és a feladatokat a tárfeladat küldője a feladat felosztó által visszaadott zahájeno inicializálása.
 * `JobManagerException.cs`: Leállítja a Feladatkezelő igénylő hiba jelöli. JobManagerException segítségével burkolása "várt" hibák, ahol adott diagnosztikai adatokat lezárást részeként adható meg.
 * `TaskSubmitter.cs`: Ez az osztály a Batch-feladat a feladat felosztó által visszaadott feladatok hozzáadása a feladata. A JobManager osztály összesítések feladatok sorozatát kötegekbe hatékony, de a megfelelő időben is a feladat ekkor meghívja a TaskSubmitter.SubmitTasks a háttérbeli szálon az egyes kötegek.
 
@@ -123,9 +123,9 @@ A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, �
 
 **Standard szintű .NET parancssori soubory projektu**
 
-* `App.config`: Standard .NET alkalmazás-konfigurációs fájl.
-* `Packages.config`: Standard NuGet csomag függőségi fájlt.
-* `Program.cs`: A program belépési pont és a legfelső szintű kivételkezelés tartalmazza.
+* `App.config`: Standard szintű .NET alkalmazás-konfigurációs fájl.
+* `Packages.config`: Standard szintű NuGet csomag függőségi fájlt.
+* `Program.cs`: A program a belépési pont és a legfelső szintű kivételkezelés tartalmazza.
 
 ### <a name="implementing-the-job-splitter"></a>A feladat felosztó megvalósítása
 Amikor megnyitja a Feladatkezelő sablonprojektjét, a projekt lesz alapértelmezés szerint a JobSplitter.cs fájlt. Meg lehet valósítani a felosztási logika, a feladatok a számítási feladatok a Split() metódus megjelenítése az alábbi használatával:
@@ -280,8 +280,8 @@ A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, �
 
 **Keretrendszer fájlok**
 
-* `Configuration.cs`: A feladat konfigurációs adatok, például a Batch-fiók adatait, társított storage-fiók hitelesítő adatait, feladat és a feladatok adataihoz és feladatparaméter betöltését magában foglalja. A Batch által definiált környezeti változót (lásd a környezeti beállítások tevékenységekhez, a Batch dokumentációjában) a Configuration.EnvironmentVariable osztállyal hozzáférést is biztosít.
-* `IConfiguration.cs`: A konfigurációs osztály végrehajtásának kivonatolja a feladat felosztó használatával egy hamis vagy utánzatként funkcionáló konfigurációs objektum segítségével test jednotky.
+* `Configuration.cs`: Magában foglalja a feladat konfigurációs adatok, például a Batch-fiók adatait, társított storage-fiók hitelesítő adatait, feladat és a feladatok adataihoz és feladatparaméter betöltését. A Batch által definiált környezeti változót (lásd a környezeti beállítások tevékenységekhez, a Batch dokumentációjában) a Configuration.EnvironmentVariable osztállyal hozzáférést is biztosít.
+* `IConfiguration.cs`: A konfigurációs osztály végrehajtásának kivonatolja, a feladat felosztó használatával egy hamis vagy utánzatként funkcionáló konfigurációs objektum segítségével test jednotky.
 * `TaskProcessorException.cs`: Leállítja a Feladatkezelő igénylő hiba jelöli. TaskProcessorException segítségével burkolása "várt" hibák, ahol adott diagnosztikai adatokat lezárást részeként adható meg.
 
 **A feladat processzor**
@@ -297,9 +297,9 @@ A többi Ez a szakasz ismerteti a különböző fájlok és a kód szerkezete, �
 
 **Standard szintű .NET parancssori soubory projektu**
 
-* `App.config`: Standard .NET alkalmazás-konfigurációs fájl.
-* `Packages.config`: Standard NuGet csomag függőségi fájlt.
-* `Program.cs`: A program belépési pont és a legfelső szintű kivételkezelés tartalmazza.
+* `App.config`: Standard szintű .NET alkalmazás-konfigurációs fájl.
+* `Packages.config`: Standard szintű NuGet csomag függőségi fájlt.
+* `Program.cs`: A program a belépési pont és a legfelső szintű kivételkezelés tartalmazza.
 
 ## <a name="implementing-the-task-processor"></a>A feladat processzor megvalósítása
 A feladat processzor sablonprojekt megnyitásakor a projekt lesz alapértelmezés szerint a TaskProcessor.cs fájlt. Meg lehet valósítani a feladatokat a futtatási logikát a számítási feladatok Run() alább látható módon:

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497790"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725966"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -27,10 +27,10 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 
 * Közvetlen hozzáférés [Apache Hadoop](https://hadoop.apache.org/) szolgáltatásokat, amelyek nem érhető el nyilvánosan az interneten keresztül. Ha például [Apache Kafka](https://kafka.apache.org/) API-k vagy a [Apache HBase](https://hbase.apache.org/) Java API-t.
 
-> [!WARNING]
+> [!WARNING]  
 > A jelen dokumentumban lévő információk a TCP/IP-hálózati ismeretét igényli. Ha nem ismeri a TCP/IP-hálózat, meg kell partneri valakivel, aki a módosításokat éles hálózati környezetben a végrehajtása előtt.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ha a csatlakozás részletes útmutatást HDInsight, a helyszíni hálózat az Azure Virtual Network használatával, lásd: a [HDInsight csatlakoztatása a helyszíni hálózathoz](connect-on-premises-network.md) dokumentumot.
 
 ## <a name="planning"></a>Tervezés
@@ -53,7 +53,7 @@ A kérdéseket, amelyeket a HDInsight telepítése egy virtuális hálózat megt
 
 Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meglévő Azure virtuális hálózat felderítése.
 
-> [!NOTE]
+> [!NOTE]  
 > Nem adhat hozzá egy meglévő HDInsight-fürtöt egy virtuális hálózatban.
 
 1. Használja a klasszikus vagy Resource Manager üzemi modell esetében a virtuális hálózat?
@@ -88,7 +88,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
         További információkért lásd: a [hálózati biztonsági csoportok hibaelhárítása](../virtual-network/diagnose-network-traffic-filter-problem.md) dokumentumot.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Hálózati biztonsági csoport szabályait alkalmazza a rendszer a szabály prioritása alapján. Az első szabály, amely megfelel a forgalmi minták alkalmazzák, és nincs más lépnek érvénybe, hogy a forgalom. A legalacsonyabb a leginkább megengedő szabályok sorrendben. További információkért lásd: a [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../virtual-network/security-overview.md) dokumentumot.
 
     * Felhasználó által megadott útvonalak
@@ -112,7 +112,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
     * [Klasszikus Azure CLI-vel HDInsight létrehozása](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [A HDInsight használata az Azure Resource Manager-sablon létrehozása](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Egy választható konfigurációs lépés HDInsight ad hozzá egy virtuális hálózaton. Mindenképpen jelölje ki a virtuális hálózat, a fürt konfigurálása során.
 
 ## <a id="multinet"></a>Több hálózat csatlakoztatása
@@ -132,7 +132,7 @@ Az Azure névfeloldás kínál Azure-szolgáltatások telepítve vannak a virtu�
 
 Az alapértelmezett névhozzárendelés does __nem__ lehetővé teszik a HDInsight-erőforrások a hálózatok, a virtuális hálózathoz csatlakozó a nevek feloldásához. Ha például szokás a helyszíni hálózat csatlakoztatása a virtuális hálózat. Csak az alapértelmezett a névfeloldás HDInsight nem fér hozzá a helyszíni hálózaton található erőforrások neve szerint. Ennek az ellenkezője is igaz, a helyszíni hálózati erőforrások nem lehet hozzáférni az erőforrásokhoz a virtuális hálózat neve.
 
-> [!WARNING]
+> [!WARNING]  
 > Hozzon létre egyéni DNS-kiszolgáló és a virtuális hálózat a használatára a HDInsight-fürt létrehozása előtt konfigurálnia kell.
 
 A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások közötti névfeloldás engedélyezéséhez hajtsa végre a következő műveleteket:
@@ -141,7 +141,7 @@ A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások 
 
 2. A virtuális hálózat használatához az egyéni DNS-kiszolgáló konfigurálása.
 
-3. Keresse meg az Azure a virtuális hálózat DNS-utótag rendelve. Ez az érték hasonlít a `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. A keresés, a DNS-utótag információkért lásd: a [példa: egyéni DNS](#example-dns) szakaszban.
+3. Keresse meg az Azure a virtuális hálózat DNS-utótag rendelve. Ez az érték hasonlít a `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. A keresés, a DNS-utótag információkért lásd: a [példa: Egyéni DNS](#example-dns) szakaszban.
 
 4. Konfigurálja a DNS-kiszolgálók közötti továbbítás. A konfiguráció attól függ, hogy a távoli hálózat típusát.
 
@@ -153,7 +153,7 @@ A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások 
 
             * Továbbíthatja a helyi DNS-kiszolgáló minden más kérelemhez. A helyi DNS-ben kezeli az összes többi névfeloldási, még akkor is, kérelmek, az internetes erőforrásokhoz, például a Microsoft.com webhelyre mutat.
 
-        * __A helyszíni DNS__: egyéni DNS-kiszolgálóra a virtuális hálózat DNS-utótag kérelmeket továbbítja. Az egyéni DNS-kiszolgáló ezután továbbítja az Azure rekurzív feloldó.
+        * __A helyszíni DNS__: A kérelmeket továbbítsa a virtuális hálózat DNS-utótag egyéni DNS-kiszolgálóra. Az egyéni DNS-kiszolgáló ezután továbbítja az Azure rekurzív feloldó.
 
         A konfiguráció útvonalak kérelmek teljesen minősített tartományneveket tartalmazó egyéni DNS-kiszolgálóra a virtuális hálózat DNS-utótagját. Minden más kérelemhez (akár a nyilvános internet-címekhez) a helyi DNS-kiszolgáló kezeli.
 
@@ -167,7 +167,7 @@ A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások 
 
         A DNS-kiszolgáló esetében minden egyes hálózati továbbítja a kérelmeket a másik alapján DNS-utótagot. Az Azure rekurzív feloldó használata más kérelmek elhárulnak.
 
-    Az egyes konfigurációkhoz egy példa: a [példa: egyéni DNS](#example-dns) szakaszban.
+    Az egyes konfigurációkhoz egy példa: a [példa: Egyéni DNS](#example-dns) szakaszban.
 
 További információkért lásd: a [virtuális gépek és Szerepkörpéldányok névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
 
@@ -201,7 +201,7 @@ Az Apache Ambari és a más weblapok, a virtuális hálózaton keresztül csatla
 
     A csomópontok visszaadott listában keresse meg a teljes tartománynév a fő csomópontok, és a teljes tartománynevek használatával csatlakozik az Ambari és más webes szolgáltatásokat. Például `http://<headnode-fqdn>:8080` Ambari eléréséhez.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Néhány az átjárócsomópontokkal üzemeltetett szolgáltatásokra: csak az egyik csomóponton aktív egyszerre. Próbálja meg a szolgáltatás az egyik fő csomópont és a 404-es hibát ad vissza, ha átvált a fő csomópontot.
 
 2. Annak megállapításához, a csomópont és a portot, amelyet egy szolgáltatás érhető el, tekintse meg a [HDInsight Hadoop-szolgáltatások által használt portok](./hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
@@ -212,7 +212,7 @@ Egy Azure-beli virtuális hálózatok hálózati forgalmához szabályozhatja a 
 
 * **Hálózati biztonsági csoportok** (NSG) lehetővé teszi a hálózati bejövő és kimenő forgalom szűrését. További információkért lásd: a [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../virtual-network/security-overview.md) dokumentumot.
 
-    > [!WARNING]
+    > [!WARNING]  
     > HDInsight nem támogatja a kimenő forgalom korlátozása. Az összes kimenő forgalmat engedélyezni kell.
 
 * **Felhasználó által megadott útvonalak** (UDR) definiálhatja a forgalom adatfolyamait a hálózaton lévő erőforrások között. További információkért lásd: a [felhasználó által megadott útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md) dokumentumot.
@@ -248,7 +248,7 @@ Kényszerített bújtatás egy felhasználó által meghatározott útválasztá
 
 ## <a id="hdinsight-ip"></a> Szükséges IP-címek
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Az Azure-állapot és a felügyeleti szolgáltatások kommunikálni a HDInsight képesnek kell lennie. A hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat, ha ezeknek a szolgáltatásoknak a HDInsight eléréséhez az IP-címekről érkező forgalom.
 >
 > Ha nem használja a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalak forgalom szabályozása, figyelmen kívül hagyhatja ebben a szakaszban.
@@ -266,7 +266,7 @@ Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvo
 
 2. Ha a HDInsight-fürt a következő régiók valamelyikében van, majd engedélyeznie kell a régió felsorolt IP-címekről érkező forgalmat:
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Ha nem szerepel az Azure-régiót használ, csak használja az 1. lépésben négy IP-címek.
 
     | Ország | Régió | Engedélyezett IP-címek | Engedélyezett port | Irány |
@@ -330,14 +330,14 @@ Az alábbi Resource Management-sablont hoz létre egy virtuális hálózatot, am
 
 * [Egy biztonságos Azure virtuális hálózaton és a egy HDInsight Hadoop-fürt üzembe helyezése](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 A következő PowerShell-parancsfájl használatával hozzon létre egy virtuális hálózatot, amely korlátozza a bejövő forgalmat, és lehetővé teszi az észak-európai régióban IP-címekről érkező forgalom.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
 
 ```powershell
@@ -435,7 +435,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 $vnet | Set-AzureRmVirtualNetwork
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ez a példa bemutatja, hogyan szabályok engedélyezik a bejövő forgalmat a szükséges IP-címek hozzáadása. Nem tartalmaz egy szabályt, amely korlátozza a más forrásból származó bejövő hozzáférést.
 >
 > A következő példa bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
@@ -458,7 +458,7 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 
 2. Használja a következő használatával adhat szabályokat az új hálózati biztonsági csoportot, amely engedélyezi a bejövő kommunikációt az az Azure HDInsight állapotát és a felügyeleti szolgáltatás a 443-as porton. Cserélje le **RESOURCEGROUPNAME** az erőforráscsoport, amely tartalmazza az Azure virtuális hálózat nevére.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
 
     ```azurecli
@@ -490,7 +490,7 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 
     Ez a parancs befejeződése után telepítheti a HDInsight a virtuális hálózatban.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ezeket a lépéseket csak nyissa meg az Azure-felhőben HDInsight állapotát és a felügyeleti szolgáltatáshoz való hozzáférést. A HDInsight fürt a virtuális hálózaton kívül bármely más hozzáférés le lesz tiltva. Ahhoz, hogy a virtuális hálózaton kívülről való eléréshez, hozzá kell adnia a további hálózati biztonsági csoportokra vonatkozó szabályokat.
 >
 > A következő példa bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
@@ -499,7 +499,7 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 > az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 > ```
 
-## <a id="example-dns"></a> Például: DNS-konfiguráció
+## <a id="example-dns"></a> Példa: DNS-konfiguráció
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>A névfeloldás virtuális hálózat és a egy csatlakoztatott helyi hálózat között
 
@@ -580,7 +580,7 @@ Az egyéni DNS-kiszolgálón a virtuális hálózat:
 
 4. A feltételes továbbítók hozzáadása a helyi DNS-kiszolgáló. A feltételes továbbító az 1. lépésben a DNS-utótag kérést küld az egyéni DNS-kiszolgáló konfigurálása.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tekintse át a DNS-szoftver bírálattal felvétele a feltételes továbbítók lévő dokumentációját.
 
 Ezek a lépések elvégzése után, vagy teljesen minősített tartománynevet (FQDN) használatával hálózatban lévő erőforrásokra csatlakozhat. HDInsight most már telepítheti a virtuális hálózatban.

@@ -1,5 +1,5 @@
 ---
-title: Az Event Hubs az Azure Time Series Insights hozzáadása egy eseményközpont - hozzáadása Azure Time Series Insights eseményforráshoz |} A Microsoft Docs
+title: Az Event Hubs eseményforrás hozzáadása Azure Time Series Insights |} A Microsoft Docs
 description: Ez a cikk ismerteti, amely a Time Series Insights-környezethez csatlakozik az Azure Event Hubs eseményforrás hozzáadása.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6e7a6a089681ac9f7c0de5244feb3aea67052f25
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274207"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557784"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 

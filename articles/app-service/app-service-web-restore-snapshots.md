@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: 174fbd8f3e4c652c25a78911185ef8a98a80bb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260038"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726561"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Az Azure-beli alkalmazás visszaállítása pillanatképből
-Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/app-service-web-overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja egy korábbi állapotát, az alkalmazás a pillanatképek alapján. Nem kell a pillanatképek biztonsági mentés engedélyezése, a platform automatikusan menti a helyreállítási célból minden alkalmazás pillanatképét.
+Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja egy korábbi állapotát, az alkalmazás a pillanatképek alapján. Nem kell a pillanatképek biztonsági mentés engedélyezése, a platform automatikusan menti a helyreállítási célból minden alkalmazás pillanatképét.
 
-Pillanatképeket növekményes pillanatképek és a normál felett több előnye is van [biztonsági mentések](web-sites-backup.md):
+Pillanatképeket növekményes pillanatképek és a normál felett több előnye is van [biztonsági mentések](manage-backup.md):
 - Fájl másolása hibák fájl zárolása miatt.
 - Storage mérete korlátozás nélkül.
 - Nem szükséges konfiguráció.

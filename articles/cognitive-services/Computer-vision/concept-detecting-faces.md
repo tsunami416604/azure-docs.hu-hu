@@ -1,7 +1,7 @@
 ---
 title: Arcok – Computer Vision észlelése
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával arcok észlelése kapcsolatos fogalmakat.
+description: A face észlelési funkciója a Computer Vision API kapcsolatos fogalmakat.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0c6485bff4ad11aab37139cd2aa2d3660bddac0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342313"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580537"
 ---
-# <a name="detecting-faces"></a>Arcfelismerés
+# <a name="face-detection-with-computer-vision"></a>Arcfelismerés a Computer Vision
 
 Számítógépes Látástechnológia a képen látható emberi arcok észlelése, és az életkor, nemek és minden egyes észlelt face négyszöge generál. A Computer Vision a [Face](/azure/cognitive-services/face/) funkcióinak csak egy részét tartalmazza. A Face szolgáltatást részletesebb elemzések elvégzésére is használhatja, például az arc vagy a testtartás azonosítására.  
 
@@ -25,7 +26,7 @@ Számítógépes Látástechnológia a képen látható emberi arcok észlelése
 
 Az első példa bemutatja egy egyetlen emberi arcok tartalmazó rendszerképek Computer Vision által visszaadott JSON-választ.
 
-![Vizuális Nőről tető Face elemzése](./Images/woman_roof_face.png)
+![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png)
 
 ```json
 {

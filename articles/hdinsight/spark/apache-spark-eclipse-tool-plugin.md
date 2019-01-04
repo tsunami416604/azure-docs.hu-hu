@@ -1,5 +1,5 @@
 ---
-title: 'Eclipse-hez készült Azure-eszközkészlet: létrehozása a Scala-alkalmazások HDInsight Spark '
+title: 'Azure-eszközkészlet az Eclipse-hez: A HDInsight Spark Scala-alkalmazások létrehozása '
 description: Az Azure Toolkit for Eclipse HDInsight Tools használatával írt Scala Spark alkalmazásokat fejleszthet, és küldheti el ezeket a HDInsight Spark-fürt közvetlenül az Eclipse IDE-ből.
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: a875e7517870e4a782d3169fd5eb0796c9b0f16a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4370cc5e39b7d1b9a50e8fc8af9f7bfc58f6356a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496590"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602749"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Eclipse-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
 HDInsight Tools használata az Azure-eszközkészlet [Eclipse](https://www.eclipse.org/) fejleszthet [Apache Spark](https://spark.apache.org/) írt alkalmazások [Scala](https://www.scala-lang.org/) , és küldje el őket az Azure HDInsight Spark-fürt közvetlenül az Eclipse IDE. A HDInsight eszközök beépülő modul a különböző módokon használhatja:
 
-* És beküldésének Scala Spark-alkalmazását egy HDInsight Spark-fürtön
-* Az Azure HDInsight Spark fürterőforrásokat eléréséhez
-* Fejlesztés és a Scala Spark-alkalmazás helyileg történő futtatása
+* És beküldésének Scala Spark-alkalmazását egy HDInsight Spark-fürtön.
+* Az Azure HDInsight Spark fürterőforrásokat eléréséhez.
+* Fejlesztés és a Scala Spark-alkalmazás helyileg történő futtatása.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ez az eszköz segítségével létrehozása és elküldése az alkalmazások csak a HDInsight Spark-fürt Linux rendszeren.
 > 
 > 
@@ -78,7 +78,7 @@ Kapcsolat egy normál fürt kezelése az Ambari felhasználónév használatáva
    
    ![hivatkozás fürt párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz társított a társított storage-kulcs, a felhasználónevet és jelszót használunk.
    > ![az eclipse-ben a Storage Explorerben](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
@@ -207,7 +207,7 @@ Az Azure Toolkit for Eclipse HDInsight Tools használatával Spark Scala-alkalma
 ### <a name="prerequisite"></a>Előfeltétel
 A helyi Spark Scala-alkalmazások egy Windows-számítógépen futtatja, miközben kaphat kivétel leírtak [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356). Ez a kivétel lép fel, mert **WinUtils.exe** Windows hiányzik. 
 
-Ez a hiba elhárításához szükséges [a végrehajtható fájl letöltése](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**, majd adja hozzá a környezeti változó **HADOOP_HOME** , és állítsa az értékét a változó **C\WinUtils**.
+Ez a hiba elhárításához szükséges [a végrehajtható fájl letöltése](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**, majd adja hozzá a környezeti változó **HADOOP_HOME** , és állítsa az értékét a változó **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Egy helyi Spark Scala-alkalmazások futtatása
 1. Indítsa el az eclipse-ben, és hozzon létre egy projektet. Az a **új projekt** párbeszédpanelen válassza a következőket, és válassza **tovább**.
@@ -242,12 +242,12 @@ Két módja a feladatok elküldéséhez. Ha a tároló hitelesítő adat áll re
 Ha bármilyen visszajelzése van, vagy bármely egyéb problémákat tapasztal, amikor ezzel az eszközzel, küldjön egy e-mailt hdivstool@microsoft.com.
 
 ## <a name="seealso"></a>Lásd még:
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+* [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
-* [Az Apache Spark és BI: interaktív adatelemzés a Spark on HDInsight használatával, BI-eszközökkel végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: a Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére a használata](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: használja a Spark on HDInsight az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
+* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
+* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
+* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
 * [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Létrehozása és alkalmazások futtatásához

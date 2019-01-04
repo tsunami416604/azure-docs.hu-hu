@@ -4,22 +4,22 @@ description: További információ az Azure Database Migration Service által t�
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 9eea3c28751ecaec0ffdb27e08f84cad1bf62acd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 12/19/2018
+ms.openlocfilehash: 81bd23f7e4b7065155b708703e52bc0a351696c1
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53267866"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722090"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
-Az Azure Database Migration Service úgy tervezték, hogy különböző áttelepítési forgatókönyveinek (forrás – cél párok) kapcsolat nélküli módban is támogatja (egyszeri) és az online (folyamatos szinkronizálása) áttelepítéseket. Az Azure Database Migration Service által biztosított forgatókönyv lefedettséget idővel történő kiterjesztése. Új forgatókönyvek rendszeresen jelennek meg. Ez a cikk azonosítja az az Azure Database Migration Service és az állapot (privát előzetes verzió, nyilvános előzetes verzióban, vagy mindenki számára elérhető), vagy egyes forgatókönyvek által jelenleg támogatott áttelepítési forgatókönyvek.
+Az Azure Database Migration Service úgy tervezték, hogy különböző áttelepítési forgatókönyveinek (forrás – cél párok) kapcsolat nélküli módban is támogatja (egyszeri) és az online (folyamatos szinkronizálása) áttelepítéseket. Az Azure Database Migration Service által biztosított forgatókönyv lefedettséget idővel történő kiterjesztése. Új forgatókönyvek rendszeresen jelennek meg. Ez a cikk azonosítja az jelenleg támogatja az Azure Database Migration Service és az állapot-áttelepítési forgatókönyvek (privát [vagy korlátozott] Preview-ban, nyilvános előzetes és általánosan elérhető) vagy az egyes forgatókönyvek.
 
 ## <a name="offline-versus-online-migrations"></a>Offline és online áttelepítések
 Ha adatbázisokat telepít át az Azure-bA az Azure Database Migration Service segítségével, offline vagy egy online migrálás is elvégezheti. A *offline* áttelepítéseket alkalmazás üzemszünet megkezdése a migráláshoz kell egy időben. A *online* áttelepítések, állásidő korlátozódik, az áttelepítés befejezése után az új környezetben keresztül Kivágás szükséges időt. Azt javasoljuk, hogy annak megállapításához, hogy az állásidő elfogadható; offline áttelepítés tesztelése Ha nem, online történő áttelepítés.

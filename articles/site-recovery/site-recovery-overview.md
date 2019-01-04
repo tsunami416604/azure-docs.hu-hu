@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5942f27313cf8bb6a9ed8bf0a5cc4fb556693065
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2cd9e89c92b2bed75c52654d779f4f7d8c17596e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832224"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975321"
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
@@ -23,8 +23,8 @@ Vállalatának szüksége van egy üzletmenet-folytonossági és vészhelyreáll
 
 Az Azure Recovery Services segít a BCDR-stratégia kidolgozásában:
 
-- **Site Recovery szolgáltatás**: A Site Recovery azzal segít fenntartani az üzletmenet folytonosságát, hogy leállás esetén tovább futtatja az üzleti alkalmazásokat és a számítási feladatokat. A Site Recovery képes a fizikai és virtuális gépeken futó számítási feladatok replikálására egy elsődleges helyről egy másodlagos helyre. Ha az elsődleges helyen kimaradás történik, a rendszer átadja a feladatokat a másodlagos helynek, és az alkalmazások onnan lesznek elérhetők. Amint az elsődleges hely megint elérhetővé válik, visszatérhet hozzá.  
-- **Backup szolgáltatás**: Az [Azure Backup](https://docs.microsoft.com/azure/backup/) szolgáltatás az adatok biztonságáról és helyreállíthatóságáról gondoskodik azzal, hogy biztonsági másolatot készít az Azure-ban.
+- **Site Recovery szolgáltatás**: A Site Recovery azzal segít üzletmenet-folytonossági üzleti alkalmazások és számítási feladatok leállások idején, hogy. A Site Recovery képes a fizikai és virtuális gépeken futó számítási feladatok replikálására egy elsődleges helyről egy másodlagos helyre. Ha az elsődleges helyen kimaradás történik, a rendszer átadja a feladatokat a másodlagos helynek, és az alkalmazások onnan lesznek elérhetők. Amint az elsődleges hely megint elérhetővé válik, visszatérhet hozzá.  
+- **Biztonsági mentési szolgáltatás**: A [Azure Backup](https://docs.microsoft.com/azure/backup/) szolgáltatással biztosíthatja adatai biztonságáról és helyreállíthatóságáról gondoskodik azzal biztonsági másolatot készít az Azure platformra.
 
 A Site Recovery a következők replikációját képes kezelni:
 

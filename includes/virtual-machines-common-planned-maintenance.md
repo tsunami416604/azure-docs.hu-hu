@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: f5bd0923c1edac06f952ff93e087505a76407b05
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444177"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53805709"
 ---
 Az Azure platform a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében rendszeres időközönként frissíti. Ezen frissítések köre, a javítás szoftverösszetevőket hardver leszerelésének hálózati összetevők frissítése, a üzemeltetési környezetben. Ezek a frissítések a legtöbb nincs hatással a futtatott virtuális gépek tartalmaz. Előfordulhatnak azonban olyan esetekben, amikor a frissítések hatással vannak, és az Azure úgy dönt, a frissítések legalább hatásos módszer:
 
@@ -27,7 +27,7 @@ Az ütemezett események a közeledő karbantartással kapcsolatban a virtuális
 
 "Útmutató" információ a tervezett karbantartás kezelése: "Tervezett karbantartásával kapcsolatos értesítések kezelése" a [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="non-rebootful-maintenance"></a>Nem-rebootful karbantartás
+## <a name="memory-preserving-maintenance"></a>Karbantartás megőrzése memória
 
 A legtöbb nem rebootful frissítések célja a virtuális gép felfüggesztése kevesebb mint 10 másodperc. Bizonyos esetekben memóriában karbantartás megőrzése mechanizmust használ, amely legfeljebb 30 másodpercig a virtuális gép felfüggesztése, és megőrzi a memóriát RAM-ban. A virtuális gép majd helyreáll, és a virtuális gép órája a rendszer automatikusan szinkronizálja. Az Azure egyre inkább az élő áttelepítés technológiák használatával, és millióiról karbantartási mechanizmus, amellyel csökkentheti a szünet időtartama memória javítása.
 

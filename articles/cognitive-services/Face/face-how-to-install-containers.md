@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 556cf755890f49e540afe64de6e485d9ebde2147
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086436"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536542"
 ---
 # <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
 
@@ -30,11 +30,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A Face tároló használata előtt a következő előfeltételeknek kell megfelelnie:
 
-**Docker-motor**: rendelkeznie kell helyileg telepített Docker-motor. A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), és [Windows](https://docs.docker.com/docker-for-windows/). A Windows Linux-tárolók támogatják a Docker kell konfigurálni. Docker-tárolóit közvetlenül is telepíthető [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), vagy egy [Kubernetes](https://kubernetes.io/) üzembehelyezettfürt[Az azure Stack](/azure/azure-stack/). Kubernetes az Azure Stackhez való telepítéséről további információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+**Docker-motor**: Helyileg telepített Docker-motor kell rendelkeznie. A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), és [Windows](https://docs.docker.com/docker-for-windows/). A Windows Linux-tárolók támogatják a Docker kell konfigurálni. Docker-tárolóit közvetlenül is telepíthető [Azure Kubernetes Service](../../aks/index.yml), [Azure Container Instances](../../container-instances/index.yml), vagy egy [Kubernetes](https://kubernetes.io/) üzembehelyezettfürt[Az azure Stack](../../azure-stack/index.yml). Kubernetes az Azure Stackhez való telepítéséről további információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 
 Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz.
 
-**A Microsoft Container Registry és a Docker ismerős**: rendelkeznie kell Microsoft Container Registry és a Docker fő fogalmaira, például beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint ismerete alapvető ismeretekkel Alapszintű `docker` parancsokat.  
+**A Microsoft Container Registry és a Docker ismerős**: Rendelkeznie kell Microsoft Container Registry és a Docker fő fogalmaira, például beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel `docker` parancsokat.  
 
 A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).
 
@@ -58,7 +58,7 @@ Ha azt szeretné, a Face tároló használatához létre kell hoznia az Azure-ba
 A következő lépésekkel hozhat létre, és a egy oldallal erőforrás lévő információk lekéréséhez:
 
 1. Hozzon létre egy Face erőforrást az Azure Portalon.  
-   Ha azt szeretné, a Face tároló használatára, először létre kell hoznia egy megfelelő ARC-erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: a Cognitive Services-fiók létrehozása az Azure Portalon](../cognitive-services-apis-create-account.md).
+   Ha azt szeretné, a Face tároló használatára, először létre kell hoznia egy megfelelő ARC-erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: Cognitive Services-fiók létrehozása az Azure Portalon](../cognitive-services-apis-create-account.md).
 
 1. A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat.  
    Az Azure-erőforrás létrehozása után a megfelelő Face tároló példányosítása ennek az erőforrásnak a végpont URL-cím és egy előfizetési kulcsra kell használnia. A végpont URL-CÍMÉT és az előfizetési kulcs, a gyors üzembe helyezés és a kulcsok lapok a Face erőforrás az Azure Portalon a másolhatja.

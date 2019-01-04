@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067805"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968988"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása, és a egy tartós kötet használata az Azure Files Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ A Kubernetes állandó köteteken további információkért lásd: [Kubernetes 
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -184,7 +184,7 @@ A pod-létrehozása a [a kubectl a alkalmazni] [ kubectl-apply] parancsot.
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-Az Azure csatlakoztatott lemezzel most már rendelkezik egy futó pod a */mnt/azure* könyvtár. Ez a konfiguráció látható, amikor a pod-n keresztül vizsgálatával `kubectl describe pod mypod`. A következő sűrített példához kimenetet jeleníti meg a kötet csatlakoztatva van a tárolóban:
+A csatlakoztatott Azure Files megosztási a most már rendelkezik egy futó pod a */mnt/azure* könyvtár. Ez a konfiguráció látható, amikor a pod-n keresztül vizsgálatával `kubectl describe pod mypod`. A következő sűrített példához kimenetet jeleníti meg a kötet csatlakoztatva van a tárolóban:
 
 ```
 Containers:

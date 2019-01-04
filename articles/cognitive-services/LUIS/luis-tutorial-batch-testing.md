@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106039"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754390"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>2. oktatóanyag: A Batch-teszt adatkészletek
+# <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: Batch-teszt adatkészletek
 
 Ez az oktatóanyag bemutatja, hogyan használja a batch tesztelése az alkalmazásban az előrejelzési problémák utterance (kifejezés) megkeresheti és kijavíthatja azokat.  
 
@@ -36,7 +36,7 @@ Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van 
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
+> * Példa-alkalmazás importálása
 > * Hozzon létre egy kötegfájlt teszt 
 > * Egy batch-teszt futtatása
 > * Vizsgálati eredmények áttekintése
@@ -45,13 +45,13 @@ Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+## <a name="import-example-app"></a>Példa-alkalmazás importálása
 
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Ehhez a következő lépések szükségesek:
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
 
 2. Importálja a JSON-t egy új alkalmazásba.
 
@@ -61,7 +61,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
 ## <a name="batch-file"></a>Batch-fájl
 
-1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztő vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) azt. 
+1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztő vagy [letöltése](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) azt. 
 
 2. A JSON-formátumú parancsfájlba, az beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. 
 
@@ -177,7 +177,7 @@ Amikor először és a tesztelésre kötegfájlok, érdemes néhány utterances 
 
 Az érték egy **feladat** entitás, a teszt utterances megadott, általában egy vagy két szavak, néhány példa alatt további szavakat. Ha _saját_ emberi erőforrások alkalmazáson általában számos szavak feladat nevét, a példában megcímkézzen címkézte **feladat** entitás ebben az alkalmazásban nem működne.
 
-1. Hozzon létre `HumanResources-entities-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/) vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) azt.
+1. Hozzon létre `HumanResources-entities-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/) vagy [letöltése](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) azt.
 
 
 2. A JSON-formátumú batch fájlban adja hozzá a kimondott szöveg objektumok egy tömbjét a **szándékot** szeretné a tesztelési, valamint a helyek az utterance (kifejezés) bármely entitáslistájában előre jelzett. Mivel egy entitás jogkivonat-alapú, ügyeljen arra, hogy elindíthatja és leállíthatja a minden entitás az a karakter. Ne kezdő vagy záró szóközt az utterance (kifejezés). Ez hibát okoz a batch-fájl importálása során.  

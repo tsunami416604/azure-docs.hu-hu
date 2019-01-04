@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271385"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993063"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás a kifejezés szolgáltatásai
 
@@ -29,6 +29,10 @@ Kifejezés listája tartalmaz egy csoportot az értékek (szavak vagy kifejezés
 
 Kifejezések listáját, LUIS egy második jelzés ezeket szavakkal kapcsolatos hozzáadja az jobban illeszkedhet az alkalmazás tartomány.
 
+## <a name="phrase-lists-help-all-models"></a>A kifejezés listák segítségével minden modell
+
+Kifejezés listák nem kapcsolódnak egy adott szándékot vagy egy entitás, de egy boost adja hozzá az összes modellekhez. Feladata, szándék észlelési és entitás besorolás javításához.
+
 ## <a name="how-to-use-phrase-lists"></a>A kifejezés listák használata
 A HR alkalmazás [egyszerű entitás oktatóanyag](luis-quickstart-primary-and-secondary-data.md), az alkalmazás által használt egy **feladat** programozói, roofer és miniszter feladat típusú kifejezés listája. Ha az alábbi értékek egyikére gép megtanult egységként címke, LUIS megtanulja felismerni a többi. 
 
@@ -40,6 +44,7 @@ A kifejezéslista felcserélhetők vagy nem cserélhető lehet. Egy *felcserélh
 |Nem cserélhető|Az alkalmazás több, mint általában más szavakat azon a nyelven jellemző alkalmazás szakszavakat.|
 
 A kifejezés nem csak az entitás észlelési kapcsolatban sorolja fel, de is szándék besorolást, ha nem cserélhető logikus például a szöveg szóhasználati szavak nem ismert angol nyelven kívül hozzáadása.
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

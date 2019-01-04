@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583213"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652081"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Az Apache Spark Stream áttekintése
 
@@ -203,7 +203,7 @@ A Spark Streamelési API-ban elérhető mozgó ablakfüggvények ablakban, count
 
 ## <a name="checkpointing"></a>Ellenőrzőpontok használata
 
-Rugalmasság és a hibatűrés biztosításához, a Spark Streaming szolgáltatás ellenőrzőpontok használata, győződjön meg arról, hogy adatfolyam-feldolgozás továbbra is megszakítás nélkül, csomóponthibák esetén is támaszkodik. A HDInsight Spark ellenőrzőpontok tartós tárolási, (Azure Storage vagy a Data Lake Store) hoz létre. Ezek az ellenőrzőpontok a streamelési alkalmazásadatokat, például a konfigurációt, az alkalmazást, és a rendszer várólistára, de még nem feldolgozott kötegek által meghatározott műveleteket metaadatok tárolására. Bizonyos esetekben az ellenőrzőpontokat is tartalmazza az adatok mentése a az rdd-k gyorsabban újraépítése származó mi szerepel az rdd-k Spark által kezelt adatok állapotát.
+Rugalmasság és a hibatűrés biztosításához, a Spark Streaming szolgáltatás ellenőrzőpontok használata, győződjön meg arról, hogy adatfolyam-feldolgozás továbbra is megszakítás nélkül, csomóponthibák esetén is támaszkodik. A HDInsight Spark ellenőrzőpontok tartós tárolási, (Azure Storage vagy a Data Lake Storage) hoz létre. Ezek az ellenőrzőpontok a streamelési alkalmazásadatokat, például a konfigurációt, az alkalmazást, és a rendszer várólistára, de még nem feldolgozott kötegek által meghatározott műveleteket metaadatok tárolására. Bizonyos esetekben az ellenőrzőpontokat is tartalmazza az adatok mentése a az rdd-k gyorsabban újraépítése származó mi szerepel az rdd-k Spark által kezelt adatok állapotát.
 
 ## <a name="deploying-spark-streaming-applications"></a>Spark Streaming-alkalmazások üzembe helyezéséhez
 

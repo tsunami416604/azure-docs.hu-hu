@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/18/2018
 ms.author: adgera
-ms.openlocfilehash: 5c06e38bf5a51744a4878a7acb6c365d7e812a61
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 92ff8cb732c7c10c525d8a8ec76180cb435bd466
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711140"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975015"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
@@ -31,7 +31,7 @@ Az OAuth 2.0 típusú implicit engedélyezés folyamat használata az Azure AD-a
 
 1. Kövesse a [ebben a rövid útmutatóban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) típusú natív Azure AD-alkalmazást létrehozni. Vagy használhat egy meglévő natív alkalmazás regisztrációja.
 
-1. A **szükséges engedélyek**, adja meg `Azure Digital Twins` válassza **delegált engedélyek**. Válassza ki **engedélyek megadása**.
+1. Alatt **szükséges engedélyek**válassza **Hozzáadás** , és adja meg **Azure digitális Twins** alatt **API-hozzáférés hozzáadása**. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre. Ezután válassza ki **engedélyek megadása > delegált engedélyek** és **kész**.
 
     ![Az Azure AD-alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
@@ -53,20 +53,19 @@ Ezután állítsa be, és konfigurálja az Azure AD-token beszerzése a Postman.
 1. Ügyeljen arra, hogy a **engedélyezési URL-címet** helyes-e. A formátum kell vennie:
 
     ```plaintext
-    https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=YOUR_RESOURCE_ID
+    https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
     | Name (Név)  | Csere erre | Példa |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | A bérlő vagy a szervezet neve | `microsoft` |
-    | YOUR_RESOURCE_ID | Az erőforrás-azonosítója | `10b07f429-9f4b-4714-9392-cc5e8e80c8b0` |
 
 1. Válassza ki a **engedélyezési** lapon jelölje be **OAuth 2.0**, majd válassza ki **új hozzáférési Token letöltése**.
 
     | Mező  | Érték |
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
-    | Visszahívási URL | [`https://www.getpostman.com/oauth2/callback`](https://www.getpostman.com/oauth2/callback) |
+    | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Használja a **engedélyezési URL-címet** a fenti 2. lépésben |
     | Ügyfél-azonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure AD-alkalmazás |
     | Hatókör | Hagyja üresen |

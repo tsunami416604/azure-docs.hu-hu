@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 5ad49c8e28f0e91b18af6dc485489d11464fbc0d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 15c0a3d90b4a6493c49b67058f1d989a4ab72346
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413387"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726850"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Az Apache Hadoop-fürt létrehozása biztonságos átvitellel rendelkező tárfiókok az Azure HDInsight
 
@@ -78,7 +78,7 @@ Ha szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve 
 
 Ha többet szeretne megtudni a HDInsight-fürtök létréhozásáról vagy kezeléséről, tekintse meg a következő cikkeket:
 
-* Információk a Linux-alapú HDInsight-fürtök kezeléséhez: [Manage HDInsight clusters using Ambari](hdinsight-hadoop-manage-ambari.md) (HDInsight-fürtök kezelése az Ambari segítségével).
+* A Linux-alapú HDInsight-fürt kezelésével kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 * További információ a HDInsight-fürtök létrehozásakor kiválasztható beállításokról: [Creating HDInsight on Linux using custom options](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight létrehozása Linux rendszeren egyéni beállításokkal).
 * Ha már ismeri a Linux- és Apache Hadoop, de konkrét részleteket a HDInsight a Hadoop tudni szeretné, tekintse meg [HDInsight használata Linux rendszeren](hdinsight-hadoop-linux-information.md). Ez a cikk többek között az alábbi információkat tartalmazza:
 

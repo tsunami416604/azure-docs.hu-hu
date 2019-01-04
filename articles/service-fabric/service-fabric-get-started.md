@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386426"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792849"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -50,6 +50,9 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
 Webplatform-telepítő (WebPI) az SDK és eszközök telepítése a javasolt módja. Futásidejű hibák WebPI segítségével kap, ha is megtalálhatja a telepítőcsomagokat mutató közvetlen hivatkozásokat a kibocsátási megjegyzésekben egy adott Service Fabric-kiadásban. A kibocsátási megjegyzések találhatók a különböző kiadás megtalálható a [Service Fabric-csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
+> [!NOTE]
+> Helyi Service Fabric fejlesztési fürtöt frissítés nem támogatott.
+
 ### <a name="to-use-visual-studio-2017"></a>A Visual Studio 2017 használata
 A Service Fabric-eszközök a Visual Studio 2017 Azure Development Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
 Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t és futtatókörnyezetet is a webplatform-telepítővel.
@@ -66,8 +69,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.3.617
-* Service Fabric-futtatókörnyezet 6.4.617
+* Service Fabric SDK és eszközök 3.3.622
+* Service Fabric-futtatókörnyezet 6.4.622
 * Service Fabric Tools Pro Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 tartalmazza a Service Fabric Tools for Visual Studio 2.4.11024.1 
 

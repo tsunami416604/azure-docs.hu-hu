@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 9af4f5223dfe269ace459c8a7de07fe6dd0c2427
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238520"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973961"
 ---
 # <a name="part-of-speech-tagging"></a>Rész-az-szövegrészeket
 
 > [!IMPORTANT]
-> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
+> A Linguistic Analysis előzetes verzióját 2018. augusztus 9-én visszavontuk. A szövegek feldolgozásához és elemzéséhet az [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) javasoljuk használni.
 
 ## <a name="background-and-motivation"></a>Háttér-információkért és motiváció
 
@@ -42,11 +42,11 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 | . | mondat szegmenslezáró | . ! ? |
 | : | pontosvesszővel vagy a három pontra | : ; ... |
 | Másolat | együtt, a koordinációt | és, de vagy még|
-| CD-RŐL | számok, kardinális | kilenc 20-at 1980 96 " |
+| CD | számok, kardinális | kilenc 20-at 1980 96 " |
 | DT | determiner |egy a-minden mindkét sem|
 | AZ EX | meglétet vizsgáló: Itt | Hiba |
 | KERETRENDSZER | külső word | enfant terrible hoi polloi je ne sais quoi |
-| INDIA | preposition vagy megemlítése együttes használata| Ha, hogy a benne lévő |
+| IN | preposition vagy megemlítése együttes használata| Ha, hogy a benne lévő |
 | JJ | melléknév vagy számok sorszámnál | kilencedik viszonylag execrable multimodális |
 | JJR | összehasonlító melléknév | gyorsabb, hatékonyabb olcsóbb |
 | JJS | melléknév superlative | ajánlott leggyorsabb legolcsóbb |
@@ -80,4 +80,4 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 
 ## <a name="specification"></a>Specifikáció
 
-A jogkivonatok, mint hogy támaszkodik a specifikációnak a a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42).
+A jogkivonatok, mint hogy támaszkodik a specifikációnak a a [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42).

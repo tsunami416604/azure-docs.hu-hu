@@ -1,21 +1,18 @@
 ---
 title: Kiszolgálói naplók az Azure Database MySQL-hez készült Azure CLI-vel
 description: Ez a cikk azt ismerteti, hogyan férhetnek hozzá a kiszolgálónaplók, Azure database for MySQL-hez, az Azure CLI parancssori segédprogram használatával.
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978454"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547031"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
 Azure CLI, az Azure parancssori segédprogram használatával töltheti le az Azure Database for MySQL-kiszolgáló naplóit.
@@ -28,7 +25,7 @@ Ez az útmutató lépéseinek, az alábbiak szükségesek:
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>MySQL-hez készült Azure-adatbázis naplózásának konfigurálása
 A kiszolgálóhoz a MySQL lassú lekérdezések naplója a következő lépések végrehajtásával konfigurálhatja:
 1. Kapcsolja be a naplózást beállításával a **lassú\_lekérdezés\_log** paraméter ON értékre állítása.
-2. Állítsa be például a többi paraméter **hosszú\_lekérdezés\_idő** és **log\_lassú\_rendszergazdai\_utasítások**.
+2. Állítsa be például a többi paraméter **hosszú\_lekérdezés\_idő** és **log\_lassú\_rendszergazdai\_utasítások**.
 
 Ezeket a paramétereket, az Azure CLI-n keresztül értékének beállításával kapcsolatban lásd: [kiszolgáló paramétereinek konfigurálása](howto-configure-server-parameters-using-cli.md). 
 

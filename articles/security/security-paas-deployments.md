@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: ee62e81b8c75200f26dfb5f7303083190f83eb8e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016844"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728482"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -84,19 +84,19 @@ Alapelvek és a hálózat szegélyén mintákat volt elérhető évtizedes. Ezze
 
 Az alábbiakban az identitás peremhálózati kezelésére vonatkozó ajánlott eljárások.
 
-**Ajánlott eljárás**: a kulcsokat és a PaaS üzemelő példány biztonságos hitelesítő adatok védelme.   
-**Részletes**: kulcsok és hitelesítő adatok elvesztése gyakori probléma. Egy központi megoldás használható, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulok. Az Azure biztosít a felhőben a hardveres biztonsági modul [Azure Key Vault](../key-vault/key-vault-whatis.md).
+**Ajánlott eljárás**: A kulcsok és a PaaS üzemelő példány biztonságos hitelesítő adatok biztonságos.   
+**Részletes**: Kulcsok és hitelesítő adatok elvesztése gyakori probléma. Egy központi megoldás használható, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulok. Az Azure biztosít a felhőben a hardveres biztonsági modul [Azure Key Vault](../key-vault/key-vault-whatis.md).
 
-**Ajánlott eljárás**: hitelesítő adatok és egyéb titkok nem állítja, a forráskód vagy a GitHub.   
-**Részletes**: csak rosszabb, mint a kulcsok és hitelesítő adatok elvesztése kellene a jogosulatlan személyek érni őket. A támadók kihasználhatja a robot technológiák kulcsok és titkok forráskódtárakból, például a GitHub tárolt található. Ne tegye kulcs és titkos kulcsok az alábbi nyilvános kódtárházakhoz.
+**Ajánlott eljárás**: Ne helyezzen hitelesítő adatait, valamint egyéb titkok forráskódja vagy a GitHub.   
+**Részletes**: Csak rosszabb, mint a kulcsok és hitelesítő adatok elvesztése kellene a jogosulatlan személyek érni őket. A támadók kihasználhatja a robot technológiák kulcsok és titkok forráskódtárakból, például a GitHub tárolt található. Ne tegye kulcs és titkos kulcsok az alábbi nyilvános kódtárházakhoz.
 
-**Ajánlott eljárás**: a virtuális gép kezelőfelületek, a hibrid PaaS és IaaS-szolgáltatások, amely lehetővé teszi a távoli kezelőfelület használatával ezek a virtuális gépek közvetlenül kezelhetnek.   
-**Részletes**: távoli felügyeleti protokollok, mint például [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607), és [PowerShell távoli eljáráshívás](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) is használható. Általában azt javasoljuk, hogy nem engedélyezi a közvetlen távelérési virtuális géphez az internetről.
+**Ajánlott eljárás**: Védelmet a virtuális gép kezelőfelületek, a hibrid PaaS és IaaS-szolgáltatások, amely lehetővé teszi a távoli kezelőfelület segítségével kezelheti ezek a virtuális gépek közvetlenül.   
+**Részletes**: Távoli felügyeleti protokollok, mint például [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607), és [PowerShell távoli eljáráshívás](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) is használható. Általában azt javasoljuk, hogy nem engedélyezi a közvetlen távelérési virtuális géphez az internetről.
 
 Ha lehetséges használjon alternatív módszerek, például a virtuális magánhálózatok használata az Azure-beli virtuális hálózathoz. Ha alternatív módszerek nem érhetők el, győződjön meg arról, összetett jelszavak és a kétfaktoros hitelesítés használatát (például [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
 
-**Ajánlott eljárás**: erős hitelesítési és engedélyezési platformot használja.   
-**Részletes**: használja az összevont identitások kialakítása helyett egyéni felhasználói tárolókkal Azure AD-ben. Ha összevont identitások kialakítása használja, a platform-alapú megközelítés előnyeit, és delegálja a partnerek számára engedélyezett azonosítók kezelését. Egy összevont identitáskezelési megközelítés különösen fontos, amikor az alkalmazottak megszűnik, és információkat kell több identitáskezelési és engedélyezési rendszer hatással lehet.
+**Ajánlott eljárás**: Használjon erős hitelesítési és engedélyezési platformot.   
+**Részletes**: Használja az összevont identitások kialakítása helyett egyéni felhasználói tárolókkal Azure AD-ben. Ha összevont identitások kialakítása használja, a platform-alapú megközelítés előnyeit, és delegálja a partnerek számára engedélyezett azonosítók kezelését. Egy összevont identitáskezelési megközelítés különösen fontos, amikor az alkalmazottak megszűnik, és információkat kell több identitáskezelési és engedélyezési rendszer hatással lehet.
 
 Használja a platform által biztosított hitelesítési és engedélyezési mechanizmusokkal egyéni kód helyett. A hiba oka egyéni kód fejlesztése, hogy a hibalehetőségeket rejt magában. A fejlesztők a legtöbb nem biztonsági szakértők és nem valószínű, hogy az apró és a legújabb fejlemények a hitelesítés és engedélyezés. Kereskedelmi-kódokat (például Microsoft), gyakran alaposan tekintse át biztonsági.
 
@@ -119,24 +119,24 @@ Az alábbi táblázat STRIDE fenyegetések listázása, és bizonyos Azure-funkc
 | Jogok kiterjesztése | Engedélyezés | Használat [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md). |
 
 ## <a name="develop-on-azure-app-service"></a>Fejlesztés az Azure App Service-ben
-[Az Azure App Service](../app-service/app-service-web-overview.md) egy PaaS-ajánlat, amely lehetővé teszi a webes és mobilalkalmazásokat bármilyen platformra vagy eszközre létrehozása, és bárhol kapcsolódhatnak az adatokhoz, a felhőben vagy helyszíni. App Service-ben a webes és mobil funkciókkal, amelyeket a rendszer korábban külön-külön tartalmazott Azure-webhelyek és Azure Mobile Services tartalmazza. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként az App Service lehetőségek gazdag tárházaként segíti a lehetőségeket a webes, mobil és integrációs feladatokhoz.
+[Az Azure App Service](../app-service/overview.md) egy PaaS-ajánlat, amely lehetővé teszi a webes és mobilalkalmazásokat bármilyen platformra vagy eszközre létrehozása, és bárhol kapcsolódhatnak az adatokhoz, a felhőben vagy helyszíni. App Service-ben a webes és mobil funkciókkal, amelyeket a rendszer korábban külön-külön tartalmazott Azure-webhelyek és Azure Mobile Services tartalmazza. Ezenkívül új lehetőségek is elérhetők az üzleti folyamatok automatizálásához és felhőalapú API-k üzemeltetéséhez. Egyetlen integrált szolgáltatásként az App Service lehetőségek gazdag tárházaként segíti a lehetőségeket a webes, mobil és integrációs feladatokhoz.
 
 Az alábbiakban az App Service használatának ajánlott eljárásai.
 
-**Ajánlott eljárás**: [hitelesítés Azure Active Directoryn keresztül](../app-service/app-service-authentication-overview.md).   
+**Ajánlott eljárás**: [Az Azure Active Directoryn keresztül hitelesítést](../app-service/overview-authentication-authorization.md).   
 **Részletes**: App Service-ben az identitásszolgáltató az OAuth 2.0 szolgáltatást biztosít. OAuth 2.0 ügyfél fejlesztői egyszerűség művelet során gondoskodik a webalkalmazások, asztali alkalmazások és mobiltelefonon adott engedélyezési folyamatok tárgyalja. Az Azure AD OAuth 2.0 használja ahhoz, hogy engedélyezze a hozzáférést mobil- és webalkalmazásokat.
 
-**Ajánlott eljárás**: meg kell tudnia és a legalacsonyabb jogosultsági biztonsági alapelveket alapján korlátozhatja a hozzáférést.   
-**Részletes**: hozzáférés korlátozása elengedhetetlen a szervezetek által adatok elérésére vonatkozó biztonsági szabályzatok kikényszerítéséhez. Az RBAC használatával engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy bizonyos hatókörben. Felhasználók alkalmazásokhoz való hozzáférésének engedélyezésére vonatkozó további tudnivalókért lásd: [hozzáférés-kezelés – első lépések](../role-based-access-control/overview.md).
+**Ajánlott eljárás**: Hozzáférés korlátozása alapján kell tudnia és a legalacsonyabb jogosultsági biztonsági alapelveket.   
+**Részletes**: Hozzáférés korlátozása elengedhetetlen, szervezetek által adatok elérésére vonatkozó biztonsági szabályzatok kikényszerítéséhez. Az RBAC használatával engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy bizonyos hatókörben. Felhasználók alkalmazásokhoz való hozzáférésének engedélyezésére vonatkozó további tudnivalókért lásd: [hozzáférés-kezelés – első lépések](../role-based-access-control/overview.md).
 
 **Ajánlott eljárás**: Ön kulcsainak védelmét.   
-**Részletes**: Azure Key Vault segít a kriptográfiai kulcsokat és titkos kódok, amelyek felhőalapú alkalmazásokat és szolgáltatásokat használja. A Key Vault titkosíthatók az kulcsok és titkos kulcsokat (például hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat. PFX-fájlok és jelszavak) hardveres biztonsági modulokban (HSM) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. Lásd: [Azure Key Vault](../key-vault/key-vault-whatis.md) további. A Key Vault használatával kezelheti a TLS-tanúsítványok az automatikus megújítás.
+**Részletes**: Az Azure Key Vault segít a kriptográfiai kulcsokat és titkos kódok, amelyek felhőalapú alkalmazásokat és szolgáltatásokat használja. A Key Vault titkosíthatók az kulcsok és titkos kulcsokat (például hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat. PFX-fájlok és jelszavak) hardveres biztonsági modulokban (HSM) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. Lásd: [Azure Key Vault](../key-vault/key-vault-whatis.md) további. A Key Vault használatával kezelheti a TLS-tanúsítványok az automatikus megújítás.
 
-**Ajánlott eljárás**: bejövő forrás IP-címek korlátozása.   
+**Ajánlott eljárás**: Korlátozza a bejövő forrás IP-címek.   
 **Részletes**: [App Service Environment-környezet](../app-service/environment/intro.md) rendelkezik, amely segítséget nyújt a hálózati biztonsági csoportokon keresztül bejövő forrás IP-címek korlátozása virtuális hálózati integráció funkcióval. Virtuális hálózatok lehetővé teszik Azure-erőforrások elhelyezni, hogy ki férhet hozzá az internet, az irányítható hálózatban. További tudnivalókért lásd: [az alkalmazás integrálása az Azure-beli virtuális hálózathoz](../app-service/web-sites-integrate-with-vnet.md).
 
-**Ajánlott eljárás**: az App Service Environment-környezetek biztonsági állapotának figyelése.   
-**Részletes**: az App Service Environment-környezetek figyelése az Azure Security Center. A Security Center azonosítja a potenciális biztonsági réseket, amikor létrehozza [javaslatok](../security-center/security-center-virtual-machine-recommendations.md) , amely végigvezeti Önt a szükséges vezérlők konfigurálásának folyamatán.
+**Ajánlott eljárás**: Az App Service Environment-környezetek biztonsági állapotának figyelése.   
+**Részletes**: Az App Service Environment-környezetek figyelése a az Azure Security Center. A Security Center azonosítja a potenciális biztonsági réseket, amikor létrehozza [javaslatok](../security-center/security-center-virtual-machine-recommendations.md) , amely végigvezeti Önt a szükséges vezérlők konfigurálásának folyamatán.
 
 > [!NOTE]
 > Monitoring App Service-ben van és elérhető előzetes verzióban kizárólag a a [Standard szintű](../security-center/security-center-pricing.md) , a Security Center.

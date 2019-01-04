@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342095"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632618"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -176,22 +176,7 @@ Hangalapú testreszabási az Amerikai angol (en-US) kontinens kínai (zh-CN), fr
 
 ## <a name="speech-translation"></a>Tolmácsolás
 
-A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages).
-
-### <a name="speech-languages"></a>Beszédnyelvek lekérdezése
-
-| Beszédfelismerési nyelvet   | Nyelvkód |
-|:----------- |-|
-| Arab (Modern Standard)      | `ar` |
-| Kínai (Mandarin)      | `zh` |
-| Angol      | `en` |
-| francia      | `fr` |
-| német      | `de` |
-| olasz      | `it` |
-| japán      | `jp` |
-| Portugál (brazíliai)     | `pt` |
-| orosz      | `ru` |
-| spanyol      |  `es` |
+A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig a hang-szöveg transzformációs nyelvi táblából kell származnia. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Szöveg nyelvének
 

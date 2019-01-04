@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 85bbd59cb921e5f20feb7b1cf1073fd7b695864f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7f50d6f6417764a20125f85398dd9cbf93f3a4a1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393570"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542110"
 ---
 # <a name="service-bus-diagnostic-logs"></a>A Service Bus-diagnosztikai naplók
 
 Azure Service Bus két típusú naplók tekintheti meg:
-* **[A Tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Ezek a naplók egy feladat végrehajtott műveletek vonatkozó adatokat tartalmaznak. A naplók mindig engedélyezve van.
-* **[Diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Konfigurálhatja a diagnosztikai naplók részletesebb információ minden, a feladatokon belül történik. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
+* **[A Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md)**. Ezek a naplók egy feladat végrehajtott műveletek vonatkozó adatokat tartalmaznak. A naplók mindig engedélyezve van.
+* **[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)**. Konfigurálhatja a diagnosztikai naplók részletesebb információ minden, a feladatokon belül történik. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
 
 ## <a name="turn-on-diagnostic-logs"></a>Kapcsolja be a diagnosztikai naplók
 
@@ -52,7 +52,7 @@ Alapértelmezés szerint le vannak tiltva a diagnosztikai naplók. Diagnosztikai
 
 Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően naplók jelenik meg a beállított archív tároló, a **diagnosztikai naplók** panelen.
 
-Konfiguruje se diagnostika kapcsolatos további információkért lásd: a [Azure diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Konfiguruje se diagnostika kapcsolatos további információkért lásd: a [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="diagnostic-logs-schema"></a>Diagnosztikai naplók séma
 

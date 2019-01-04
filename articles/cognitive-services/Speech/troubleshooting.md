@@ -10,12 +10,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 80e39e845ab631ad5cc3ae8af9e2e42f09b521bf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 2da6795e938f1a0c0ed0495fb169007126501eea
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342190"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753660"
 ---
 # <a name="troubleshooting-bing-speech"></a>Bing Speech elhárítása
 
@@ -52,7 +52,7 @@ Az ellenőrzéshez a következő parancsot futtathatja. Cserélje le a Megjegyz�
 > [!NOTE]
 > Cserélje le `YOUR_SUBSCRIPTION_KEY` a saját előfizetés-kulccsal.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -88,7 +88,7 @@ Ez a lépés csak akkor szükséges, ha engedélyezési jogkivonat használ a hi
 > [!NOTE]
 > Cserélje le `YOUR_AUDIO_FILE` az elérési útját a korábban rögzített hangfájl és `YOUR_ACCESS_TOKEN` az az engedélyezési jogkivonatot adott vissza az előző lépésben.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 

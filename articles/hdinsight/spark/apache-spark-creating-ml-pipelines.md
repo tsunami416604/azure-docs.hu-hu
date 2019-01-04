@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499404"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597477"
 ---
-# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Hozzon létre egy Apache Spark machine learning-folyamat
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark Machine Learning-folyamat létrehozása
 
-Az Apache Spark skálázható gépi tanulási kódtár (MLlib) egy elosztott környezetben modellező képességeket biztosít. A Spark-csomag [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames épülő magas szintű API-k készlete. Ezen API-k segítségével hozhat létre, és gyakorlati gépi tanulási folyamatok finomhangolása.  *A Spark machine learning* az MLlib DataFrame-alapú API, nem a régebbi RDD-alapú folyamat API hivatkozik.
+Az Apache Spark skálázható gépi tanulási kódtár (MLlib) egy elosztott környezetben modellező képességeket biztosít. A Spark-csomag [ `spark.ml` ](https://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames épülő magas szintű API-k készlete. Ezen API-k segítségével hozhat létre, és gyakorlati gépi tanulási folyamatok finomhangolása.  *A Spark machine learning* az MLlib DataFrame-alapú API, nem a régebbi RDD-alapú folyamat API hivatkozik.
 
 Machine learning (gépi tanulás) folyamat kombinálva különböző gépi tanulási algoritmus együtt teljes munkafolyamatot. Számos, dolgozza fel, és ismerje meg az adatokat, egy feladatütemezési algoritmusok igénylő szükséges lépéseket is lehet. A folyamatok a szinteket és a egy gépi tanulási folyamat sorrendje határozza meg. MLlib, a folyamat szakaszai képviseli PipelineStages, ahol egy átalakító és a egy Estimator egyes feladatokat konkrét sorrendje.
 
@@ -30,7 +30,7 @@ Minden állapot nélküli példány átalakítón vagy egy Estimator rendelkezik
 
 ## <a name="pipeline-example"></a>Folyamat – példa
 
-Egy gépi Tanulási folyamat gyakorlati használatának bemutatása érdekében ez a példa a minta `HVAC.csv` adatfájlt, amely a HDInsight-fürthöz, vagy az Azure Storage, vagy a Data Lake Store az alapértelmezett tároló előre betöltött származik. A fájl tartalmának megtekintéséhez lépjen a `/HdiSamples/HdiSamples/SensorSampleData/hvac` könyvtár. `HVAC.csv` a HVAC, ahányszor a cél- és tényleges hőmérsékletek tartalmaz (*fűtésrendszerek, a szellőzőrendszerek, a légkondicionáló*) rendszerek különböző épületben. A célja, hogy az adatokat a modell betanítását, és az előrejelzési hőmérséklet egy megadott létrehozásához.
+Egy gépi Tanulási folyamat gyakorlati használatának bemutatása érdekében ez a példa a minta `HVAC.csv` adatfájlt, amely az alapértelmezett tároló a HDInsight-fürthöz, vagy az Azure Storage, vagy a Data Lake Storage előre betöltött származik. A fájl tartalmának megtekintéséhez lépjen a `/HdiSamples/HdiSamples/SensorSampleData/hvac` könyvtár. `HVAC.csv` a HVAC, ahányszor a cél- és tényleges hőmérsékletek tartalmaz (*fűtésrendszerek, a szellőzőrendszerek, a légkondicionáló*) rendszerek különböző épületben. A célja, hogy az adatokat a modell betanítását, és az előrejelzési hőmérséklet egy megadott létrehozásához.
 
 A következő kódot:
 

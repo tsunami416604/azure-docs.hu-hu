@@ -12,17 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2018
+ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230284"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653548"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-alkalmazás- és szolgáltatásjegyzékek
 Ez a cikk bemutatja, hogyan történik a Service Fabric-alkalmazásokat és szolgáltatásokat, hogy meghatározott és verziószámmal ApplicationManifest.xml és ServiceManifest.xml fájlokat használja.  További részletes példák: [alkalmazás és a service manifest példák](service-fabric-manifest-examples.md).  Ezek a jegyzékfájlok XML-séma leírása itt található [ServiceFabricServiceModel.xsd séma dokumentáció](service-fabric-service-model-schema.md).
+
+> [!WARNING]
+> A jegyzékfájl XML-fájl séma kikényszeríti a gyermekelemek helyes sorrendje.  Részleges Áthidaló megoldásként nyissa meg a "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" a Visual Studio szerzői vagy bármely, a Service Fabric jegyzékek módosítása közben. A és lehetővé teszi, hogy ellenőrizze az eredménykészlet sorrendjét gyermekelemek intelli-érzékelő.
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>Egy szolgáltatás a ServiceManifest.xml leírása
 A szolgáltatásjegyzék deklaratív szolgáltatás típusa és verziója határozza meg. Azt adja meg a szolgáltatás metaadatokat, például a szolgáltatás típusának, egészségügyi tulajdonságok, terheléselosztási metrikák, bináris fájljait és konfigurációs fájlok.  Másképp fogalmazva, a kód, a konfiguráció és az adatok csomagok egy szolgáltatási csomagot, amely egy vagy több szolgáltatás típusok támogatása az alkotó ismerteti. A szolgáltatásjegyzék több kódot, konfiguráció és adatok csomagokat, amelyek egymástól függetlenül lehet rendszerverzióval ellátott is tartalmazhat. Itt van az ASP.NET Core webes kezelőfelületi szolgáltatás a szolgáltatás jegyzékfájl a [mintául szolgáló Szavazóalkalmazás](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (és néhány [részletesebb példákat](service-fabric-manifest-examples.md)):

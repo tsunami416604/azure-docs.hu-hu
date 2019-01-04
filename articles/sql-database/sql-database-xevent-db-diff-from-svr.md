@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3b51f4a4a4d00bcfaa1baf1c46ad7f6eb638ad2b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4971d680994c9d81e86a4070ea79365ac8ec4dd
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867868"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606486"
 ---
 # <a name="extended-events-in-sql-database"></a>Az SQL Database bővített események
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,7 +32,7 @@ Ez a témakör elmagyarázza, hogyan megvalósítása az Azure SQL Database bőv
 
 Az Azure SQL Database és a Microsoft SQL Server kiterjesztett eseményekkel kapcsolatos további információkat érhető el:
 
-- [Gyors üzembe helyezés: Az SQL Server a bővített események](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Gyors üzembe helyezés: Az SQL Server bővített események](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Bővített események](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Előfeltételek

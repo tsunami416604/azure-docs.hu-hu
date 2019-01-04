@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: f1c42a3e091bc4b3804edfe835e521a99fcee880
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975066"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792889"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Gyors útmutató: A HDInsight-fürtök beállítása
 
@@ -39,7 +39,7 @@ Az alábbi táblázat a különböző módszerek használatával egy HDInsight-f
 | [cURL](../../hdinsight/hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Az Azure Resource Manager-sablonok](../../hdinsight/hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-## <a name="quick-create-basic-cluster-setup"></a>Gyors létrehozás: alapszintű fürt beállítása
+## <a name="quick-create-basic-cluster-setup"></a>Gyors létrehozás: Alapszintű fürt beállítása
 
 Ez a cikk végigvezeti a telepítés a [az Azure portal](https://portal.azure.com), ahol létrehozhat egy HDInsight fürt a *Gyorslétrehozás* vagy *egyéni*.
 
@@ -86,8 +86,8 @@ További információ a tartományhoz csatlakoztatott HDInsight létrehozása a 
 
 A HDInsight-fürtökkel a fürt létrehozásakor két felhasználói fiókot konfigurálhat:
 
-* A HTTP-felhasználó: az alapértelmezett felhasználónév *rendszergazdai*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
-* SSH-felhasználó (Linux-fürtök): a fürt ssh-n keresztül csatlakozik. További információ: [Az SSH használata HDInsighttal](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* A HTTP-felhasználó: Az alapértelmezett felhasználónév *rendszergazdai*. Az alapkonfiguráció használ az Azure Portalon. Más néven "Fürt a felhasználó."
+* SSH-felhasználó (Linux-fürtök): Csatlakozhat a fürthöz ssh-n keresztül. További információ: [Az SSH használata HDInsighttal](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="location"></a>Fürtök és tárolási hely (régió)
 
@@ -102,7 +102,7 @@ Bár a Hadoop helyszíni telepítve a Hadoop elosztott fájlrendszer (HDFS) hasz
 
 Konfigurálása során az alapértelmezett storage-végpont megadása Data Lake Storage. Az alapértelmezett tárolóként tartalmazza az alkalmazás- és naplókat. Igény szerint további társított storage-fiók, amely rendelkezik a Data Lake Storage Gen2 megadhatja, hogy a fürt hozzáférhet-e engedélyezve. A HDInsight-fürt és a függő tárfiókot ugyanazon Azure-beli helyen kell lennie.
 
-![Tároló beállításai: HDFS-kompatibilis tárolási végpontok](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
+![Fürt-tárolási beállítások: HDFS-kompatibilis tárolási végpontok](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > Ügyeljen arra, hogy **tiltsa le a Data Lake Store-hozzáférés**. Ez a beállítás hivatkozik a régi *Data Lake Store* funkciókat és igényeinek megfelelően le kell tiltani ahhoz, hogy *Data Lake Storage* szolgáltatások helytelenül fog működni.
@@ -172,8 +172,8 @@ Az Azure portal használatával konfigurálja a fürtöt, amikor a csomópont m�
 
 Fürt központi telepítése esetén válassza ki a számítási erőforrásokat tervez üzembe helyezni, a megoldás alapján. HDInsight-fürtök a következő virtuális gépek használják:
 
-* A és a D1-4-sorozat virtuális gépei: [General-purpose Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* D11-14-es sorozatú virtuális gépek: [memóriaoptimalizált Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A és a D1-4-sorozat virtuális gépei: [Általános célú Linuxos Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
+* D11-14-es sorozatú virtuális gépek: [A memóriaoptimalizált Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 Ismerje meg, mi az értékre kell használatával adja meg a virtuális gép méretét a különböző SDK-k használatával fürt létrehozása közben, vagy során Azure PowerShell-lel, tekintse meg [Virtuálisgép-méretek használata a HDInsight-fürtök](../../cloud-services/cloud-services-sizes-specs.md#size-tables). Az értéket használja a hivatkozott cikk a **mérete** a táblázatok oszlopát.
 
@@ -229,7 +229,7 @@ Egyes esetekben szeretné a létrehozási folyamat során a következő konfigur
 
 További információkért lásd: [Bootstrap használatával testre szabhatja a HDInsight-fürtök](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Speciális beállítások: fürtök és a virtuális hálózat kiterjesztése
+## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Speciális beállítások: Fürtök és a virtuális hálózat kiterjesztése
 
 Ha a megoldáshoz szükséges technológiákról, amelyeket több HDInsight-fürttípusok, vannak elosztva egy [az Azure virtual network](https://docs.microsoft.com/azure/virtual-network) csatlakozni tud a szükséges típusokat. Ez a konfiguráció lehetővé teszi, hogy a fürtöket, és bármilyen kód telepít őket közvetlenül kommunikálni egymással.
 
@@ -239,12 +239,12 @@ Az Azure virtuális hálózatban két fürttípusok használatának példájáé
 
 ## <a name="troubleshoot-access-control-issues"></a>Hozzáférés-vezérlés hibáinak elhárítása
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../../hdinsight/hdinsight-administer-use-portal-linux.md#create-clusters).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Lake Storage Gen2 ABFS Hadoop-fájlrendszer illesztőprogramja](data-lake-storage-abfs-driver.md)
-- [Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)
+- [Oktatóanyag: A kinyerési, átalakítási és adatok betöltése az Azure HDInsight az Apache Hive használata](data-lake-storage-tutorial-extract-transform-load-hive.md)
 - [Mi a HDInsight, a Hadoop-ökoszisztéma és Hadoop-fürtök?](../../hdinsight/hadoop/apache-hadoop-introduction.md)
 - [A Hadoop első lépései a HDInsightban](../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Hadoop on HDInsight az olyan Windows PC-s verziójában](../../hdinsight/hdinsight-hadoop-windows-tools.md)

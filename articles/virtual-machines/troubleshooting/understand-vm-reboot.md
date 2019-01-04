@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ea9d8be9bf341c77c993bc04d438953241915c2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246667"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544835"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure virtuális Géphez tartozó rendszer-újraindítás ismertetése
 
@@ -64,7 +64,7 @@ A többpéldányos frissítések végrehajtása (a rendelkezésre állási csopo
     
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>Felhasználó által kezdeményezett újraindítás vagy leállítás műveletek
  
-Ha az Azure Portalon, az Azure PowerShell, a parancssori felület vagy a REST API az újraindítást hajt végre, Észreveheti, hogy az esemény a [Azure-tevékenységnapló](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Ha az Azure Portalon, az Azure PowerShell, a parancssori felület vagy a REST API az újraindítást hajt végre, Észreveheti, hogy az esemény a [Azure-tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md).
 
 A művelet végrehajtása a virtuális gép operációs rendszerről, megkeresni az eseményt a rendszer naplókban.
 

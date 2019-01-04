@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012572"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650507"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata egy HDInsight Spark-fürt távoli feladatok elküldéséhez
 
-Ismerje meg, hogyan használható [Apache Livy](https://livy.incubator.apache.org/), a [Apache Spark](https://spark.apache.org/) REST API-t, amely egy Azure HDInsight Spark-fürt távoli feladatok elküldéséhez használható. További részletes dokumentációt: [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
+Ismerje meg, hogyan használható [Apache Livy](https://livy.incubator.apache.org/), a [Apache Spark](https://spark.apache.org/) REST API-t, amely egy Azure HDInsight Spark-fürt távoli feladatok elküldéséhez használható. További részletes dokumentációt: [ https://livy.incubator.apache.org/ ](https://livy.incubator.apache.org/).
 
 Livy használatával futtassa az interaktív Spark parancskörnyezet vagy futtatható Spark, a batch-feladatok elküldése. Ez a cikk ismerteti a batch-feladatok elküldése a Livy használatával. A kódrészletek ebben a cikkben a cURL használatával REST API-hívásokat a Livy Spark-végpontra.
 
@@ -172,9 +172,9 @@ Az alábbiakban néhány problémát, miközben a távoli feladatok elküldésé
 
 ### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Egy külső jar, a további tárhely használata nem támogatott.
 
-**Probléma:** a Livy Spark-feladat egy külső jar hivatkozik a fürthöz társított további storage-fiókból, ha a feladat sikertelen lesz.
+**Probléma:** Ha a Livy Spark-feladat a fürthöz társított további tárfiókból egy külső jar hivatkozik, a feladat sikertelen lesz.
 
-**Megoldás:** győződjön meg arról, hogy a használni kívánt jar érhető el az alapértelmezett Storage a HDInsight-fürthöz társított.
+**Megoldás:** Győződjön meg arról, hogy a használni kívánt jar érhető el az alapértelmezett Storage a HDInsight-fürthöz társított.
 
 
 
@@ -182,7 +182,7 @@ Az alábbiakban néhány problémát, miközben a távoli feladatok elküldésé
 
 ## <a name="next-step"></a>Következő lépés
 
-* [Az Apache Livy REST API-dokumentáció](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Az Apache Livy REST API-dokumentáció](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
 

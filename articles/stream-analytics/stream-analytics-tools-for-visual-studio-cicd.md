@@ -4,17 +4,16 @@ description: Ez a cikk ismerteti, hogyan állítsa be a folyamatos integráció 
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: 567e2f850e2c51a6103dc24b91d139042d58acb3
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2f3cc3b386dec0010b179455372fb49bcec55ffc
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986832"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558396"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Folyamatos integráció és a Stream Analytics tools fejlesztése
 Ez a cikk ismerteti, hogyan használható az Azure Stream Analytics tools for Visual Studio használatával állítsa be a folyamatos integrációs és üzembe helyezési folyamat.
@@ -80,11 +79,11 @@ localrun -Project [ProjectFullPath]
 
 A *arm* parancs fogadja a feladat sablon és a feladat sablon paraméterfájljait keresztül build bemenetként létrehozott. Ezután azt egyesíti azokat egy feladat definícióját JSON-fájlt, amely a Stream Analytics PowerShell API-val használható.
 
-```
+```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]
 ```
 Példa:
-```
+```powershell
 ./tools/SA.exe arm -JobTemplate "ProjectA.JobTemplate.json" -JobParameterFile "ProjectA.JobTemplate.parameters.json" -OutputFile "JobDefinition.json" 
 ```
 

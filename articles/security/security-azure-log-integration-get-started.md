@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036802"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602188"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Az Azure diagnosztikai naplózás és a Windows-eseménytovábbítás Azure Log Integration
 
@@ -151,9 +151,9 @@ Miután végzett az alapszintű, készen áll a telepítés utáni és ellenőrz
 Ebben a lépésben konfigurálja a storage-fiók, amely tartalmazza a naplófájlok csatlakozni az Azure Log Integration szolgáltatás futtató gép.
 
 Ez a lépés utolsó mozzanataként kell néhány dolgot:  
-* **FriendlyNameForSource**: egy rövid nevet a alkalmazni, hogy a virtuális gép az Azure diagnosztikai adatainak tárolására konfigurálta a tárfiókot is.
-* **StorageAccountName**: az Azure Diagnostics konfigurálásakor megadott tárfiók neve.  
-* **StorageKey tulajdonságát**: A tárfiók hívóbetűjét, a tárfiók a virtuális gép az Azure diagnosztikai adatok tárolására.  
+* **FriendlyNameForSource**: Egy rövid nevet, hogy a storage-fiókot, hogy konfigurálta a virtuális gép az Azure diagnosztikai adatainak tárolására alkalmazhat.
+* **StorageAccountName**: Az Azure Diagnostics konfigurálásakor megadott tárfiók neve.  
+* **StorageKey tulajdonságát**: A tárkulcs a tárfiók a virtuális gép az Azure diagnosztikai adatok tárolására.  
 
 A storage-kulcs beszerzéséhez kövesse az alábbi lépéseket:
 1. Nyissa meg az [Azure Portal](http://portal.azure.com).
@@ -198,7 +198,7 @@ Az alábbi videó az előző lépéseket mutatja be:<br /><br />
 ## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Ha az adatai nem jelennek meg a továbbított események mappában
 Ha az adatai nem jelennek meg a továbbított események mappában egy óra elteltével, hajtsa végre ezeket a lépéseket:
 
-1. Ellenőrizze a gép, amely az Azure Log Integration szolgáltatás fut-e. Győződjön meg arról, hogy hozzá tudjon férni az Azure-e. Tesztelheti a kapcsolatot, egy böngészőben, próbálja ki ugorhat a [az Azure portal](http://portal.azure.com).
+1. Ellenőrizze a gép, amely az Azure Log Integration szolgáltatás fut-e. Győződjön meg arról, hogy hozzá tudjon férni az Azure-e. Tesztelheti a kapcsolatot, egy böngészőben, próbálja ki ugorhat a [az Azure portal](https://portal.azure.com).
 2. Győződjön meg arról, hogy a felhasználói fiók Azlog rendelkezik írási engedéllyel a mappa users\Azlog.
   1. Nyissa meg a Fájlkezelőt.
   2. Ugrás a C:\users.
@@ -243,7 +243,7 @@ Megnyithatja a [támogatási kérelem](../azure-supportability/how-to-create-azu
 
 ## <a name="next-steps"></a>További lépések
 
-Azure Log Integration kapcsolatos további információkért tekintse meg a következő cikkeket: Mielőtt megkísérli a jelen cikkben ismertetett lépések, kell a Get lépéseket bemutató cikkben tekintse át és hajtsa végre a lépéseket van.
+Azure Log Integration kapcsolatos további információkért tekintse meg a következő cikkeket: Mielőtt megkísérli a jelen cikkben ismertetett lépések, tekintse át a Get lépéseket bemutató cikkben, és hajtsa végre a lépéseket van.
 
 * [Az Azure-naplók az Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324). A letöltőközpontból tartalmazza a részleteket, a rendszerkövetelmények és telepítési utasításokat az Azure Log Integration.
 * [Bevezetés az Azure Log Integration](security-azure-log-integration-overview.md). Ez a cikk bemutatja, Azure Log Integration, annak főbb funkcióit és működését.

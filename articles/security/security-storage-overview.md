@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259139"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973128"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
 
@@ -67,11 +67,11 @@ Titkosítás az átvitel során egy mechanizmust, az adatok védelme, amikor azo
 További információ az ügyféloldali titkosítás:
 
 * [A Microsoft Azure Storage ügyféloldali titkosítása](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [A cloud security sorozat szabályozza: az átvitt adatok titkosítása](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [A cloud security sorozat vezérlők: Az átvitt adatok titkosítása](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-A legtöbb szervezet számára [adattitkosítás inaktív](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés az adatok adatvédelmi, megfelelőségi és az adatok elkülönítése felé. Három Azure-funkciókról, aktívan nem használt adatok titkosításának adja meg:
+A legtöbb szervezet számára [adattitkosítás inaktív](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés az adatok adatvédelmi, megfelelőségi és az adatok elkülönítése felé. Három Azure-funkciókról, aktívan nem használt adatok titkosításának adja meg:
 
 * [A Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) lehetővé teszi, hogy a storage szolgáltatás automatikusan adatok titkosítása írásakor, az Azure Storage-kérelem.
 * [Ügyféloldali titkosítás](../storage/common/storage-security-guide.md#client-side-encryption) az inaktív adatok titkosítását a szolgáltatást is nyújt.

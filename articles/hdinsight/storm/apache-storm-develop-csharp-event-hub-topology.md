@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582213"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633776"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)
 
-Ismerje meg, hogyan használható az Azure Event Hubs a [Apache Storm](http://storm.apache.org/) a HDInsight. Ez a dokumentum olvasása és írása az adatokat az Event Hubs C# Storm-topológia használja
+Ismerje meg, hogyan használható az Azure Event Hubs a [Apache Storm](https://storm.apache.org/) a HDInsight. Ez a dokumentum olvasása és írása az adatokat az Event Hubs C# Storm-topológia használja
 
-> [!NOTE]
+> [!NOTE]  
 > Ez a projekt Java verziója: [dolgozza fel az Azure Event Hubsból az Apache Storm on HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
 
 ## <a name="scpnet"></a>SCP.NET
 
 A jelen dokumentumban leírt lépések SCP.NET, a NuGet-csomagot, amellyel egyszerűen hozhat létre a C#-topológiák és összetevők használatra a HDInsight alatt futó Stormmal használható.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések egy Windows fejlesztési környezetet a Visual Studióval támaszkodnak, amíg a lefordított projekt küldheti el a Storm on HDInsight-fürt által használt Linux. Csak a Linux-alapú fürtök 2016. október 28. után létrehozott SCP.NET topológiákat támogatja.
 
-HDInsight 3.4-es és nagyobb mértékben használják Mono C#-topológiák futtatásához. Az itt bemutatott példában a HDInsight 3.6-os együttműködik. Ha azt tervezi, hogy a saját .NET – megoldások létrehozását a HDInsight, ellenőrizze a [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/) lehetséges inkompatibilitásokat a dokumentum.
+HDInsight 3.4-es és nagyobb mértékben használják Mono C#-topológiák futtatásához. Az itt bemutatott példában a HDInsight 3.6-os együttműködik. Ha azt tervezi, hogy a saját .NET – megoldások létrehozását a HDInsight, ellenőrizze a [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/) lehetséges inkompatibilitásokat a dokumentum.
 
 ### <a name="cluster-versioning"></a>Fürt-verziókezelés
 
 A Microsoft.SCP.Net.SDK NuGet-csomagot a projekthez használt telepítve a HDInsight Storm főverziója egyeznie kell. HDInsight-verziók 3.5-ös és 3.6-os alatt futó Storm használható 1.x, így ezek a fürtök SCP.NET verzió 1.0.x.x kell használnia.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A példában a jelen dokumentum vár egy HDInsight 3.5-ös és 3.6-fürt.
 >
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -47,13 +47,13 @@ C#-topológiák is kell céloznia a .NET 4.5-ös verzióját.
 
 A Microsoft biztosít egy Java-összetevők az Event Hubs egy Storm-topológiából származó folytatott kommunikációhoz használható. A Java-archívumfájl (JAR), amely ezeket az összetevőket, kompatibilis a HDInsight 3.6-os verzióját tartalmazza annak [ https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Amíg az összetevők Java nyelven íródtak, könnyen használhatja őket a C#-topológiák.
 
 A következő összetevőket ebben a példában használt:
 
-* __EventHubSpout__: beolvassa az adatokat az Event hubs Eseményközpontokból.
-* __EventHubBolt__: írja az adatokat az Event hubs szolgáltatásba.
+* __EventHubSpout__: Beolvassa az adatokat az Event hubs Eseményközpontokból.
+* __EventHubBolt__: Az Event hubs szolgáltatásba írja az adatokat.
 * __EventHubSpoutConfig__: EventHubSpout konfigurálásához használt.
 * __EventHubBoltConfig__: EventHubBolt konfigurálásához használt.
 
@@ -99,7 +99,7 @@ topologyBuilder.SetJavaBolt(
         .shuffleGrouping("Spout");
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Ebben a példában egy átadott karakterlánc használata helyett Clojure kifejezés **JavaComponentConstructor** hozhat létre egy **EventHubBoltConfig**, mint a spout-példában. Mindkét módszer használható. Úgy érzi, a legjobb módszert használja.
 
 ## <a name="download-the-completed-project"></a>Töltse le a befejezett projekt
@@ -110,7 +110,7 @@ A projekt ebben az oktatóanyagban létrehozott egy teljes körű verziója let�
 
 * Egy [Apache Storm on HDInsight 3.5-ös és 3.6-os fürtverzió](apache-storm-tutorial-get-started-linux.md).
 
-    > [!WARNING]
+    > [!WARNING]  
     > Az itt bemutatott példa a Storm on HDInsight 3.5-ös és 3.6-os verziója szükséges. Ez nem működik a HDInsight, régebbi verzióival használhatatlanná tévő osztály nevének módosítása miatt. Ebben a példában, amely együttműködik a régi fürtök verzióját, lásd: [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
 
 * Egy [az Azure event hub](../../event-hubs/event-hubs-create.md).

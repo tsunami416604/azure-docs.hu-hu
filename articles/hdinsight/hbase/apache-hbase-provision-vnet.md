@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: cf037000a047b02f3874c3bccc9678f2ea18ecec
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011198"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653798"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Az Azure virtuális hálózaton található HDInsight az Apache HBase-fürtök létrehozása
 Ismerje meg, hogyan hozhat létre az Azure HDInsight az Apache HBase-fürtök egy [Azure Virtual Network][1].
@@ -34,14 +34,14 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Virtuális hálózatban az Apache HBase-fürt létrehozása
 Ebben a szakaszban egy Linux-alapú Apache HBase-fürt létrehozása az Azure virtual network használatával a függő Azure Storage-fiók egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-template-deploy.md). Egyéb Fürtlétrehozási módszerekhez és az beállításainak ismertetése, lásd: [létre HDInsight-fürtök](../hdinsight-hadoop-provision-linux-clusters.md). A HDInsight Apache Hadoop-fürtök létrehozása sablon használatával kapcsolatos további információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight az Azure Resource Manager-sablonok használatával](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-> [!NOTE]
+> [!NOTE]  
 > Egyes tulajdonságok módosíthatóként a sablonba. Példa:
 >
-> * **Hely**: USA keleti RÉGIÓJA 2
+> * **Hely**: USA 2. keleti régiója
 > * **Fürt verziója**: 3.6
 > * **A fürt munkavégző csomópontok száma**: 2
 > * **Storage-fiók alapértelmezett**: egy egyedi karakterlánccá
-> * **Virtuális hálózat neve**: &lt;fürt neve >-vnet
+> * **Virtuális hálózat neve**: &lt;Fürt neve >-vnet
 > * **Virtuális hálózat címtere**: 10.0.0.0/16
 > * **Alhálózat neve**: subnet1
 > * **Alhálózati címtartomány**: 10.0.0.0/24
@@ -55,13 +55,13 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürt létrehozása az Azure vi
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Az a **egyéni üzembe helyezés** panelen adja meg a következő tulajdonságokat:
 
-   * **Előfizetés**: válassza ki a HDInsight-fürtöt, a függő tárfiókot és az Azure virtuális hálózat létrehozásához használt Azure-előfizetés.
-   * **Erőforráscsoport**: válasszon **új létrehozása**, és a egy új erőforráscsoport-nevet adja meg.
+   * **Előfizetés**: Válassza ki a HDInsight-fürtöt, a függő tárfiókot és az Azure virtuális hálózat létrehozásához használt Azure-előfizetés.
+   * **Erőforráscsoport**: Válassza ki **új létrehozása**, és a egy új erőforráscsoport-nevet adja meg.
    * **Hely**: Válasszon egy helyet az erőforráscsoportnak.
    * **ClusterName**: Adja meg a létrehozandó Hadoop-fürt nevét.
-   * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
-   * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni.
-   * **Elfogadom a feltételeket és a fenti feltételeket**: (válasszon)
+   * **Fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
+   * **SSH-felhasználónevet és jelszót**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni.
+   * **Elfogadom a feltételeket és a fenti feltételeket**: (Válasszon)
 3. Kattintson a **Purchase** (Vásárlás) gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. Miután a fürt létrejött, kattintson a portálon nyissa meg a fürt paneljén.
 
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésével az utasításokért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure portal használatával](../hdinsight-administer-use-management-portal.md#delete-clusters).
@@ -71,13 +71,11 @@ Az új HBase-fürt használatának megkezdése előtt, használhatja a találhat
 ## <a name="connect-to-the-apache-hbase-cluster-using-apache-hbase-java-rpc-apis"></a>Csatlakozás az Apache HBase-fürtöt, az Apache HBase Java RPC API-k használatával
 1. Hozzon létre egy infrastruktúra szolgáltatás (IaaS) virtuális gép ugyanabban az Azure virtuális hálózatban, és ugyanahhoz az alhálózathoz. Új IaaS virtuális gép létrehozásával kapcsolatos útmutatóért lásd: [hozzon létre egy virtuális gépen futó Windows Server](../../virtual-machines/windows/quick-create-portal.md). A jelen dokumentum lépéseit követve a következőket, amikor a hálózati konfigurációt a következő értékeket kell használnia:
 
-   * **Virtuális hálózat**: &lt;fürt neve >-vnet
+   * **Virtuális hálózat**: &lt;Fürt neve >-vnet
    * **Alhálózat**: subnet1
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Cserélje le &lt;fürt neve > néven az előző lépésekben a HDInsight-fürt létrehozásakor használt.
-   >
-   >
 
    Ezeket az értékeket használja, a virtuális gép bekerül az azonos virtuális hálózatot és alhálózatot a HDInsight-fürttel. Ez a konfiguráció lehetővé teszi, hogy azokat közvetlenül kommunikálnak egymással. Az üres élcsomópontot egy HDInsight-fürt létrehozásának egyik módja van. Az élcsomópont a fürt kezelésére használható.  További információkért lásd: [üres élcsomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md).
 
@@ -232,10 +230,8 @@ Használja ezt az információt egy Java-alkalmazást, kövesse a lépéseket a 
         <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
     </property>
 
-> [!NOTE]
+> [!NOTE]  
 > Az Azure-ban a névfeloldással kapcsolatos további információk virtuális hálózatok, beleértve a saját DNS-kiszolgáló használata: [neve (DNS) névfeloldási](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
->
->
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre Apache HBase-fürtöt. További tudnivalókért lásd:

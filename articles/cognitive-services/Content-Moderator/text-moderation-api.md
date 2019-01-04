@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0948251c18ad8eece974914ee33dff18b5930553
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226568"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535803"
 ---
 # <a name="text-moderation"></a>Szövegmoderálás
 
@@ -149,7 +149,7 @@ Ha az automatikus javítás, a válaszban a szöveg a javított verzió:
 Bár az alapértelmezett, globális neveinek listáját a legtöbb esetben működik jól, érdemes ellen, amelyek az üzleti igényeinek megfelelő feltételek képernyőn. Például érdemes a bejegyzések a felhasználók bármilyen versenyképes márkanevek szűréséhez.
 
 > [!NOTE]
-> A maximális korlát **5 kifejezés sorolja fel** az egyes lista **nem haladhatja meg a 10 000 feltételek**.
+> A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
 >
 
 Az alábbi példa bemutatja a megfelelő lista azonosítója:

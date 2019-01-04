@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274564"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993286"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -146,9 +146,9 @@ Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti 
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Alternatív bejelentkezési azonosító-támogatás a hibrid Azure AD-csatlakozás
 
-Korlátozott támogatást nyújt a Windows 10-es hibrid Azure AD-csatlakozás [alternatív bejelentkezési azonosítók](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) alapján a másodlagos bejelentkezési azonosítót, [hitelesítési módszer](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn), típusa és a Windows 10-es verzió. Nincsenek másodlagos felhasználói azonosítók, amelyek a környezetében létezhet két típusát.
+Korlátozott támogatást nyújt a Windows 10-es hibrid Azure AD-csatlakozás [alternatív bejelentkezési azonosítók](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) alapján a másodlagos bejelentkezési azonosítót, [hitelesítési módszer](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), típusa és a Windows 10-es verzió. Nincsenek másodlagos felhasználói azonosítók, amelyek a környezetében létezhet két típusát.
 
- - Irányítható másodlagos bejelentkezési azonosítót: Egy útválasztós alternatív bejelentkezési azonosítóval rendelkezik egy érvényes ellenőrzött tartományt, a tartományregisztráló regisztrált. Például, ha az elsődleges tartomány, a contoso.com contoso.org contoso.co.uk jsou Contoso tulajdonában lévő érvényes tartományok és [ellenőrzése az Azure ad-ben](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)
+ - Irányítható másodlagos bejelentkezési azonosítót: Egy útválasztós alternatív bejelentkezési azonosítóval rendelkezik egy érvényes ellenőrzött tartományt, a tartományregisztráló regisztrált. Például, ha az elsődleges tartomány, a contoso.com contoso.org contoso.co.uk jsou Contoso tulajdonában lévő érvényes tartományok és [ellenőrzése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
  - A nem irányítható másodlagos bejelentkezési azonosítót: Olyan nem átirányítható alternatív bejelentkezési azonosító nem rendelkezik egy ellenőrzött tartomány. Akkor csak a szervezet magánhálózaton belül. Például ha az elsődleges tartomány, a contoso.com contoso.local nem egy ellenőrizhető az internetes tartományához de szolgál a Contoso hálózatán belül.
  

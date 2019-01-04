@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3eb5b2300ea2af7bc778e0831d105f286eab247c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3808b3e93ed7e3ad374054c3c32fd54930f50972
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721408"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606571"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profil élő Azure Service Fabric-alkalmazásokat az Application insights segítségével
 
 Ezek a szolgáltatások az Application Insights profiler is telepítheti:
-* [Azure Web Apps](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Felhőszolgáltatások](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuális gépek](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Állítsa be a környezet üzemelő példány definíciója
 
-Application Insights Profiler megtalálható a Windows Azure Diagnostics (WAD). A WAD-bővítmény a Service Fabric-fürt számára egy Azure erőforrás-kezelő sablon használatával is telepíthető. Van itt egy példa sablon: [ **sablont, amely WAD telepíti a Service Fabric-fürtön.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
+Application Insights Profiler megtalálható a Windows Azure Diagnostics (WAD). A WAD-bővítmény a Service Fabric-fürt számára egy Azure erőforrás-kezelő sablon használatával is telepíthető. Van itt egy példa sablon: [**A sablon, amely WAD telepíti a Service Fabric-fürtön.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
 Állítsa be a környezetet, hajtsa végre a következő műveleteket:
 1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb, elegendő ahhoz, hogy erősítse meg, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb.

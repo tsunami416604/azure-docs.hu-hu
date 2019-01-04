@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322294"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599876"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Az Azure HDInsight hozzáférést Grafana
 
@@ -34,7 +34,7 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
 
 2. Adja meg vagy válassza ki az értékeket az alábbi képernyőképen látható módon:
 
-    > [!NOTE]
+    > [!NOTE]  
     > A megadott értékeknek egyedinek kell lenniük, és követniük kell az elnevezési irányelveket. A sablon nem végez érvényességi ellenőrzéseket. Ha a megadott értékek már használatban vannak, vagy nem felelnek meg az irányelveknek, a sablon elküldését követően egy hibaüzenetet fog kapni.       
     > 
     >
@@ -66,10 +66,8 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
 5. A csempe a fürthöz tartozó alapértelmezett tárterületet is felsorolja. Minden egyes fürt egy [Azure Storage-fióktól](../hdinsight-hadoop-use-blob-storage.md) vagy egy [Azure Data Lake-fióktól](../hdinsight-hadoop-use-data-lake-store.md) függ. Ez az alapértelmezett tárfiók. HDInsight-fürt és az alapértelmezett tárfióknak ugyanazon Azure-régióban kell felhőátjárónak. A fürtök törlésével a tárfiók nem törlődik.
     
 
-> [!NOTE]
-> Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört.       
-> 
->
+> [!NOTE]  
+> Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. 
 
 ## <a name="access-the-grafana-dashboard"></a>Hozzáférés a lesz a Grafana irányítópultja
 
@@ -94,10 +92,8 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. 
 
-> [!NOTE]
+> [!NOTE]  
 > Ha *azonnal* továbblép a következő oktatóanyagra, amelyben megismerheti, hogyan futtathat ETL-műveleteket a Hadoop használatával a HDInsighton, érdemes lehet futva hagyni a fürtöt. Ez azért van, mert az oktatóanyagban ismét létre kell hoznia egy Hadoop-fürtöt. Ha azonban nem azonnal folytatja a következő oktatóanyaggal, most törölnie kell a fürtöt.
-> 
-> 
 
 **A fürt és/vagy az alapértelmezett tárfiók törlése**
 
@@ -124,7 +120,7 @@ A HDInsight használatával történő adatelemzésről az alábbi cikkekben tal
 
 * További információ a Hive a HDInsight, beleértve a Visual Studióban a Hive-lekérdezések végrehajtása: [Apache Hive használata a HDInsight](../hdinsight-use-hive.md).
 * További információ az adatok átalakítására szolgáló Pig: [Apache Pig használata a HDInsight](../hdinsight-use-pig.md).
-* További információ az Apache Hadoop MapReduce, a hadoopon adatokat feldolgozó programok írására úgy: [Apache Hadoop MapReduce használata a HDInsight-](../hdinsight-use-mapreduce.md).
+* További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal](../hdinsight-use-mapreduce.md).
 * A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
 
 

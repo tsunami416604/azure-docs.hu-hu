@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A konvertálás szöveg-beszéd átalakítás, .NET Core - beszédszolgáltatások'
+title: 'Gyors útmutató: Szöveg-beszéd átalakítás, .NET Core - beszédszolgáltatások konvertálása'
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutatóban megismerheti, hogyan átalakítandó szöveg-hang transzformációs szöveg-hang transzformációs REST API-val fog. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d463ca73fb533b8a44c2019a478f2df0162cb23
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089870"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791445"
 ---
-# <a name="quickstart-convert-text-to-speech-using-net-core"></a>Gyors útmutató: Konvertálása szöveg-hang transzformációs .NET Core használatával
+# <a name="quickstart-convert-text-to-speech-using-net-core"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs .NET Core használatával
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs .NET Core és a szöveg-hang transzformációs REST API használatával. A jelen útmutatóban szereplő minta szöveg van strukturálva, [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md), amely lehetővé teszi, hogy a válasz nyelv és válassza ki.
 
@@ -27,7 +27,7 @@ Ez a rövid útmutatóhoz egy [Azure Cognitive Services-fiók](https://docs.micr
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
 * A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcsa
 
@@ -109,7 +109,7 @@ public class Authentication
 ```
 
 > [!NOTE]
-> A hitelesítés további információkért lásd: [hozzáférési jogkivonat beszerzése](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token).
+> A hitelesítés további információkért lásd: [hitelesítés hozzáférési jogkivonatot a](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
 ## <a name="get-an-access-token-and-set-the-host-url"></a>Hozzáférési jogkivonat lekérése és a gazdagép URL-Címének beállítása
 
@@ -162,7 +162,7 @@ string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis'
 ```
 
 > [!NOTE]
-> Ebben a példában a `ZiraRUS` hangtípusú. A Microsoft teljes listáját adott beszédhangot/nyelvek, lásd: [nyelvi támogatás](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/language-support). Ha érdekli a saját márkáját egy egyedi, könnyen felismerhető névre hangalapú létrehozása, [létrehozása egyéni hangtípust](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font).
+> Ebben a példában a `ZiraRUS` hangtípusú. A Microsoft teljes listáját adott beszédhangot/nyelvek, lásd: [nyelvi támogatás](language-support.md). Ha érdekli a saját márkáját egy egyedi, könnyen felismerhető névre hangalapú létrehozása, [létrehozása egyéni hangtípust](how-to-customize-voice-font.md).
 
 ## <a name="instantiate-the-client-make-a-request-and-save-synthesized-audio-to-a-file"></a>Hozza létre az ügyfél, a kérés és a szintetizált hang mentése fájlba
 

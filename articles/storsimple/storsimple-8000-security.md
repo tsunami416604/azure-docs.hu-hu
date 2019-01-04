@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 2f4bc578b567462c2591c28b270f863ba5756815
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193909"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976018"
 ---
 # <a name="storsimple-security-and-data-protection"></a>A StorSimple biztonsági és adatvédelmi
 
@@ -121,7 +121,7 @@ A StorSimple Snapshot Managerrel kapcsolatos további információkért lépjen 
 Javasoljuk, hogy érdekében győződjön meg arról, hogy a StorSimple-jelszavak erős és a magas szintű védelmet használja az alábbi irányelveket:
 
 * A jelszavak háromhavonta módosítása A jelszavak módosítása a évente kényszerítve.
-* Használjon erős jelszavakat. További információért ugorjon [erősebb jelszót létrehozni, és azok védelme](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Használjon erős jelszavakat. További információért ugorjon [erősebb jelszót létrehozni, és azok védelme](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
 * Mindig használjon különböző jelszót eltérő hozzáférési mechanizmusok; a megadott jelszavak mindegyike egyedinek kell lennie.
 * Ne ossza meg jelszót bárki, aki nem jogosult a StorSimple eszköz elérésére.
 * Ne előadásokat elé mások jelszó és jelszó formátumát a mutatót.

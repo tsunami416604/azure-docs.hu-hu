@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3500a29c1cdd8b1997f67a3cf1918090dc4ca812
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e52a7cbb5c81f779ac4d12d2f3e5fd1e4ae62852
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383595"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714015"
 ---
 # <a name="install-and-use-apache-solr-on-hdinsight-hadoop-clusters"></a>Telepítse és Apache Solr használata a HDInsight Hadoop-fürtök
 
@@ -28,12 +28,12 @@ ms.locfileid: "53383595"
 
 ## <a name="whatis"></a>Mi az a Solr
 
-[Az Apache Solr](http://lucene.apache.org/solr/features.html) egy vállalati keresési platform, amely lehetővé teszi az adatok hatékony teljes szöveges keresés. Míg a Hadoop tárolására és kezelésére, az adatok óriási mennyiségben, Apache Solr biztosít a keresési funkciókkal gyorsan az adatok lekéréséhez.
+[Az Apache Solr](https://lucene.apache.org/solr/features.html) egy vállalati keresési platform, amely lehetővé teszi az adatok hatékony teljes szöveges keresés. Míg a Hadoop tárolására és kezelésére, az adatok óriási mennyiségben, Apache Solr biztosít a keresési funkciókkal gyorsan az adatok lekéréséhez.
 
 > [!WARNING]   
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatja a Microsoft által.
 >
-> Egyéni összetevők, például a Solr, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Nem lehet egyéni összetevőkkel kapcsolatos problémák megoldásához a Microsoft ügyfélszolgálatához. Szükség lehet a nyílt forráskódú Közösségek végezhetnek segítségért. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők, például a Solr, annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Nem lehet egyéni összetevőkkel kapcsolatos problémák megoldásához a Microsoft ügyfélszolgálatához. Szükség lehet a nyílt forráskódú Közösségek végezhetnek segítségért. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>A parancsfájl leírása
 
@@ -68,7 +68,7 @@ Szereplő lépések segítségével hozzon létre egy fürtöt, amely a Solr tel
 ## <a name="usesolr"></a>A Solr használata a HDInsight
 
 > [!IMPORTANT]  
-> A jelen szakaszban ismertetett lépések bemutatják, Solr alapvető funkciói. A Solr használata további információkért lásd: a [Apache Solr hely](http://lucene.apache.org/solr/).
+> A jelen szakaszban ismertetett lépések bemutatják, Solr alapvető funkciói. A Solr használata további információkért lásd: a [Apache Solr hely](https://lucene.apache.org/solr/).
 
 ### <a name="index-data"></a>Adatok indexelése
 

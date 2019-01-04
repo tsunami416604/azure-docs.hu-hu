@@ -1,5 +1,5 @@
 ---
-title: A távoli figyelési megoldás integrálása az Azure Data Lake Store |} A Microsoft Docs
+title: A távoli figyelési megoldás integrálása a Data Lake Store – Azure |} A Microsoft Docs
 description: Ismerje meg, hogyan integrálható a távoli figyelési megoldás az Azure Data Lake Store használatával az Azure Stream Analytics-feladat.
 author: philmea
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: a918866ff5e206ea4d2dedde2711424924a478fe
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188066"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603929"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása az Azure Data Lake Store
 
@@ -154,7 +154,7 @@ Az Azure Stream Analytics egy SQL-szerű lekérdezési nyelvet adja meg az adato
 
 1. Térjen vissza néhány óra folytattuk a munkát, ha az eszköz megkezdődött streamelési adatok az egyéni idő beállítása.
 
-1. Kattintson a **Start**.
+1. Kattintson az **Indítás**gombra.
 
     ![Egyéni dátum kiválasztása](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 

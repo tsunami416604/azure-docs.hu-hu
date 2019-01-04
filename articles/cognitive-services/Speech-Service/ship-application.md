@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 4999639356fd440b6358983f1e4859fb3c505fc7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8c230143a4b3ab15e5a43d8b565d1973bc47ec29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106498"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599016"
 ---
 # <a name="ship-an-application"></a>Szállítási alkalmazás
 
@@ -55,7 +55,7 @@ Jelölje ki, amely megfelel az alkalmazás verziója (x86, x64). A Linux verzió
 * A cURL-tár (`libcurl.so.4`)
 * A megosztott szalagtár ALSA alkalmazásokhoz (`libasound.so.2`)
 
-Az Ubuntu 16.04, például a GNU C-függvénytárak kell már alapértelmezés szerint telepítve. Az utolsó három is telepíthetők az alábbi parancsokkal:
+Ubuntu 16.04 vagy 18.04, például a GNU C-függvénytárak kell már alapértelmezés szerint telepítve. Az utolsó három is telepíthetők az alábbi parancsokkal:
 
 ```sh
 sudo apt-get update

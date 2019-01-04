@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 71be338aeb6d0234d22d412d6838e36a26797b20
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a74097521cc7dceea2c47f78c1dbb2f17e292aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002111"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726680"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>App Service-ben a meglévő Node.js az Azure Mobile Service frissítése
 Az App Service Mobile egy új módja a Microsoft Azure mobile alkalmazásokat hozhat létre. További tudnivalókért lásd: [Mi a Mobile Apps szolgáltatás?].
@@ -98,7 +98,7 @@ A telepítés során szüksége lesz a következőket:
 2. Kattintson az **+ÚJ** > **Web + mobil** > **Mobile App** elemre, majd adjon meg egy nevet a mobilalkalmazás háttérrendszerének.
 3. Az **Erőforráscsoport** beállításánál válasszon ki egy létező erőforráscsoportot, vagy hozzon létre egy újat (az alkalmazás nevének használatával).
 
-    Kiválaszthat egy másik App Service-csomagot, vagy újat is létrehozhat. Az App Service-csomagokkal, valamint az új csomagok egy másik tarifacsomagban és a kívánt helyen történő létrehozásával kapcsolatos további információk: [Azure App Service plans in-depth overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) (Az Azure App Service-csomagok részletes áttekintése).
+    Kiválaszthat egy másik App Service-csomagot, vagy újat is létrehozhat. Az App Service-csomagokkal, valamint az új csomagok egy másik tarifacsomagban és a kívánt helyen történő létrehozásával kapcsolatos további információk: [Azure App Service plans in-depth overview](../app-service/overview-hosting-plans.md) (Az Azure App Service-csomagok részletes áttekintése).
 4. Az **App Service-csomag** elemnél az alapértelmezett ([standard szintbe](https://azure.microsoft.com/pricing/details/app-service/) tartozó) csomag van kiválasztva. Kiválaszthat egy másik App Service-csomagot is, vagy [létrehozhat egy újat](../app-service/app-service-plan-manage.md#create-an-app-service-plan). Az App Service-csomag beállításai határozzák meg a [helyét, a szolgáltatások, a költségek és a számítási erőforrások](https://azure.microsoft.com/pricing/details/app-service/) az alkalmazáshoz társított.
 
     A csomag kiválasztása után kattintson a **Létrehozás** gombra. Létrejön a mobilalkalmazás háttérrendszere.
@@ -162,7 +162,7 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Hitelesítés – fogalmak]: ../app-service/app-service-authentication-overview.md
+[Hitelesítés – fogalmak]: ../app-service/overview-authentication-authorization.md
 [Hitelesítés a rövid útmutató]: app-service-mobile-auth.md
 
 [Azure Portal]: https://portal.azure.com/

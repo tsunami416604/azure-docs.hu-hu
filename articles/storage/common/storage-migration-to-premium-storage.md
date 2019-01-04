@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c9e9dd0eab127fcb0deb3085915bd51eeb309089
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232555"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632840"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -32,7 +32,7 @@ A jelen útmutató célja, hogy új felhasználók az Azure Premium Storage nagy
 Más platformokon, a virtuális gépek áttelepítése az Azure Premium Storage, vagy meglévő Azure virtuális gépek migrálása Standard Storage prémium szintű Storage. Ez az útmutató mindkét két forgatókönyv lépéseit ismerteti. A forgatókönyvtől függően vonatkozó részében meghatározott lépésekkel.
 
 > [!NOTE]
-> A funkciók áttekintését és a prémium szintű tárterülettel, a prémium szintű Storage díjszabása: [nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md). Azt javasoljuk, hogy minden virtuálisgép-lemez magas iops-t az Azure Premium Storage igénylő a legjobb teljesítmény érdekében az alkalmazás migrálása. Ha a lemez nincs szükség a magas iops-érték, megőrizve a standard szintű tárolóban, amely tárolja a virtuális gép lemez adatait a (merevlemezes HDD) meghajtók helyett SSD-k korlátozhatja költségeket.
+> A funkciók áttekintését és a prémium szintű tárterülettel, a prémium szintű Storage díjszabása találja: [Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md). Azt javasoljuk, hogy minden virtuálisgép-lemez magas iops-t az Azure Premium Storage igénylő a legjobb teljesítmény érdekében az alkalmazás migrálása. Ha a lemez nincs szükség a magas iops-érték, megőrizve a standard szintű tárolóban, amely tárolja a virtuális gép lemez adatait a (merevlemezes HDD) meghajtók helyett SSD-k korlátozhatja költségeket.
 >
 
 Ebben az esetben az áttelepítési folyamat befejezése szükség lehet további műveletek előtt és után a jelen útmutatóban ismertetett lépéseket. Ilyenek például a virtuális hálózatok vagy végpontok konfigurálása vagy kódmódosítások belül magát az alkalmazást, amelyre szükség lehet némi állásidőt jelent az alkalmazásban. Ezek a műveletek minden alkalmazáshoz egyedi, és együtt a váltásban a teljes prémium szintű Storage, amennyire csak lehetséges, zökkenőmentes útmutatóban ismertetett lépéseket kell végeznie őket.
@@ -67,7 +67,7 @@ Premium Storage-fiókok rendelkezik a következő teljesítménycélokat mellett
 
 | Teljes számla kapacitás | Helyileg redundáns tárfiókok teljes sávszélesség |
 |:--- |:--- |
-| Lemez kapacitása: 35TB<br />Pillanatkép-kapacitás: 10 TB-os |Legfeljebb 50 Gigabit / másodperc bejövő + kimenő |
+| Lemez kapacitása: 35TB<br />Pillanatkép-kapacitás: 10 TB |Legfeljebb 50 Gigabit / másodperc bejövő + kimenő |
 
 A Premium Storage-specifikációk további információkért tekintse meg [méretezhetőségi és Teljesítménycéljai használatakor a prémium szintű Storage](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets).
 
@@ -81,13 +81,13 @@ Válasszon ki egy helyet, ahol az Azure Premium Storage érhető el. Lásd: [Azu
 Egy Azure virtuális gép létrehozásakor meg kell adnia az egyes virtuális gép beállításainak konfigurálása. Ne feledje, hogy néhány beállítás rögzítettek a virtuális gép teljes élettartama során módosíthatja, vagy később hozzáadhat mások. Tekintse át ezeket az Azure virtuális gép konfigurációs beállításait, és győződjön meg arról, hogy ezek is megfelelően konfigurálta a munkaterhelés követelményeinek megfelelően.
 
 ### <a name="optimization"></a>Optimalizálás
-[Az Azure Premium Storage: Nagy teljesítményű tervezése](../../virtual-machines/windows/premium-storage-performance.md) hasznos útmutatást ad az Azure Premium Storage nagy teljesítményű alkalmazások készítéséhez. Az irányelveket, az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva is követheti.
+[Az Azure Premium Storage: Nagy teljesítményű rendszer tervezése](../../virtual-machines/windows/premium-storage-performance.md) hasznos útmutatást ad az Azure Premium Storage nagy teljesítményű alkalmazások készítéséhez. Az irányelveket, az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva is követheti.
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Készítse elő, és másolja a virtuális merevlemezeket (VHD) prémium szintű Storage
 A következő szakaszban talál útmutatást előkészítése virtuális merevlemezek a virtuális gépről, és másolja a VHD-k az Azure Storage.
 
-* [1. forgatókönyv: "szeretnék vagyok áttelepítés meglévő Azure virtuális gépek az Azure Premium Storage."](#scenario1)
-* [2. forgatókönyv: "I vagyok áttelepítés virtuális gépek más platformokon, a prémium szintű Azure Storage."](#scenario2)
+* [1. forgatókönyv: "Tudom vagyok áttelepítése meglévő Azure virtuális gépek az Azure Premium Storage."](#scenario1)
+* [2. forgatókönyv: "Tudom vagyok-ről virtuális gépek más platformokon az Azure Premium Storage."](#scenario2)
 
 ### <a name="prerequisites"></a>Előfeltételek
 Áttelepítés a virtuális merevlemezek előkészítéséhez lesz szüksége:
@@ -105,7 +105,7 @@ A következő szakaszban talál útmutatást előkészítése virtuális merevle
 >
 >
 
-### <a name="scenario1"></a>1. forgatókönyv: "szeretnék vagyok áttelepítés meglévő Azure virtuális gépek az Azure Premium Storage."
+### <a name="scenario1"></a>1. forgatókönyv: "Tudom vagyok áttelepítése meglévő Azure virtuális gépek az Azure Premium Storage."
 Meglévő Azure virtuális gépeket telepít át, ha a virtuális gép leállítása, készítse elő a VHD-k száma a kívánt virtuális merevlemez típusát, és másolja a VHD-AzCopy vagy a PowerShell használatával.
 
 A virtuális gép kell lennie a teljes mértékben lefelé áttelepíteni a tiszta állapotot. Lesz használható az áttelepítés befejeződéséig.
@@ -160,10 +160,10 @@ Adatlemezek esetén dönthet úgy, hogy ne néhány adatlemezt a standard szint�
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>3. lépés. Másolja a VHD-AzCopy vagy a PowerShell használatával
 Meg kell keresnie feldolgozni a két lehetőség közül választhat a tároló elérési útja és a tárfiók kulcsára. Tároló elérési útja és a tárfiók kulcsát található **az Azure Portal** > **tárolási**. A tároló URL-címe lesz, mint például "https://myaccount.blob.core.windows.net/mycontainer/".
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: Az Azcopyval (aszinkron példány) virtuális merevlemez másolása
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: Másolja a VHD-t az Azcopyval (aszinkron példány)
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
 
-1. Töltse le és telepítse az AzCopy innen: [az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
+1. Töltse le és telepítse az AzCopy innen: [Az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
 2. Nyissa meg az Azure PowerShell-lel, és nyissa meg a mappát, ahol telepítve van-e az AzCopy.
 3. A következő parancs használatával másolja a VHD-fájlt a "Forrás", "Cél".
 
@@ -179,25 +179,28 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
     Az alábbiakban az AzCopy-parancsban használt paraméterek leírását:
 
-   * **/ Forrás:  *&lt;forrás&gt;:***  a mappa vagy a storage tárolót tartalmazó URL-cím a virtuális Merevlemezt.
-   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:***  a forrástárfiók tárfiókkulcs.
-   * **/ Cél:  *&lt;cél&gt;:***  másolni a virtuális merevlemez tárolási tároló URL-címe.
-   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:***  a cél tárfiók Tárfiók-kulcsot.
-   * **/ Minta:  *&lt;Fájlnév&gt;:***  adja meg a virtuális merevlemez másolása fájl nevét.
+   * **/ Forrás:  *&lt;forrás&gt;:*** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
+   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:*** A forrás tárfiókban tárfiókkulcs.
+   * **/ Cél:  *&lt;cél&gt;:*** Tárolási tároló URL-cím a virtuális merevlemez másolása.
+   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:*** A cél tárfiók tárfiók kulcsa.
+   * **/ Minta:  *&lt;Fájlnév&gt;:*** Adja meg a virtuális merevlemez másolása a fájl nevét.
 
 Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>2. lehetőség: A PowerShell-lel (Synchronized másolása) virtuális merevlemez másolása
-Másolhatja a VHD-fájl Start-AzureStorageBlobCopy PowerShell-parancsmag segítségével is. Az Azure PowerShell-lel az alábbi parancs használatával másolja a VHD-t. <> Szereplő értékeket cserélje le a forrás- és storage-fiókból tartozó értékek. Használja ezt a parancsot, a cél tárfiók VHD-ken nevű tárolóban kell rendelkeznie. Ha a tároló nem létezik, hozzon létre egyet a parancs futtatása előtt.
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>2. lehetőség: Másolja a VHD-t a PowerShell-lel (Synchronized példány)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Másolhatja a VHD-fájl Start-AzStorageBlobCopy PowerShell-parancsmag segítségével is. Az Azure PowerShell-lel az alábbi parancs használatával másolja a VHD-t. <> Szereplő értékeket cserélje le a forrás- és storage-fiókból tartozó értékek. Használja ezt a parancsot, a cél tárfiók VHD-ken nevű tárolóban kell rendelkeznie. Ha a tároló nem létezik, hozzon létre egyet a parancs futtatása előtt.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
 
-$sourceContext = New-AzureStorageContext  –StorageAccountName <source-account> -StorageAccountKey <source-account-key>
+$sourceContext = New-AzStorageContext  –StorageAccountName <source-account> -StorageAccountKey <source-account-key>
 
-$destinationContext = New-AzureStorageContext  –StorageAccountName <dest-account> -StorageAccountKey <dest-account-key>
+$destinationContext = New-AzStorageContext  –StorageAccountName <dest-account> -StorageAccountKey <dest-account-key>
 
-Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer <dest-container> -DestBlob <dest-disk-name> -DestContext $destinationContext
+Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer <dest-container> -DestBlob <dest-disk-name> -DestContext $destinationContext
 ```
 
 Példa:
@@ -205,14 +208,14 @@ Példa:
 ```powershell
 C:\PS> $sourceBlobUri = "https://sourceaccount.blob.core.windows.net/vhds/myvhd.vhd"
 
-C:\PS> $sourceContext = New-AzureStorageContext  –StorageAccountName "sourceaccount" -StorageAccountKey "J4zUI9T5b8gvHohkiRg"
+C:\PS> $sourceContext = New-AzStorageContext  –StorageAccountName "sourceaccount" -StorageAccountKey "J4zUI9T5b8gvHohkiRg"
 
-C:\PS> $destinationContext = New-AzureStorageContext  –StorageAccountName "destaccount" -StorageAccountKey "XZTmqSGKUYFSh7zB5"
+C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destaccount" -StorageAccountKey "XZTmqSGKUYFSh7zB5"
 
-C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
+C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>2. forgatókönyv: "I vagyok áttelepítés virtuális gépek más platformokon, a prémium szintű Azure Storage."
+### <a name="scenario2"></a>2. forgatókönyv: "Tudom vagyok-ről virtuális gépek más platformokon az Azure Premium Storage."
 Ha az áttelepítés VHD-t a nem – az Azure felhőalapú tárolás az Azure-ba, először exportálnia kell a virtuális Merevlemezt egy helyi könyvtárba. A teljes forrásának elérési útvonala a helyi könyvtárban virtuális Merevlemezt tároló praktikus rendelkezik, és az AzCopy segítségével töltse fel az Azure Storage.
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>1. lépés Exportálja a virtuális Merevlemezt egy helyi könyvtárba
@@ -246,7 +249,7 @@ Erősen ajánlott, a prémium szintű storage használata éles számítási fel
 #### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3. lépés A virtuális merevlemez feltöltése az Azure Storage
 Most, hogy a VHD-t a helyi könyvtárban, az AzCopy vagy AzurePowerShell használhatja a .vhd fájl feltöltése az Azure Storage. Két lehetőség áll rendelkezésre a itt:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>1. lehetőség: Az Azure PowerShell Add-AzureVhd segítségével a .vhd-fájl feltöltése
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>1. lehetőség: Azure PowerShell Add-AzureVhd segítségével a .vhd-fájl feltöltése
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
@@ -257,7 +260,7 @@ Példa <Uri> lehet ***"https://storagesample.blob.core.windows.net/mycontainer/b
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>2. lehetőség: A .vhd-fájl feltöltése AzCopy használatával
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
 
-1. Töltse le és telepítse az AzCopy innen: [az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
+1. Töltse le és telepítse az AzCopy innen: [Az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
 2. Nyissa meg az Azure PowerShell-lel, és nyissa meg a mappát, ahol telepítve van-e az AzCopy.
 3. A következő parancs használatával másolja a VHD-fájlt a "Forrás", "Cél".
 
@@ -273,12 +276,12 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
     Az alábbiakban az AzCopy-parancsban használt paraméterek leírását:
 
-   * **/ Forrás:  *&lt;forrás&gt;:***  a mappa vagy a storage tárolót tartalmazó URL-cím a virtuális Merevlemezt.
-   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:***  a forrástárfiók tárfiókkulcs.
-   * **/ Cél:  *&lt;cél&gt;:***  másolni a virtuális merevlemez tárolási tároló URL-címe.
-   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:***  a cél tárfiók Tárfiók-kulcsot.
-   * **/ BlobType: lap:** azt jelenti, hogy a cél egy lapblob.
-   * **/ Minta:  *&lt;Fájlnév&gt;:***  adja meg a virtuális merevlemez másolása fájl nevét.
+   * **/ Forrás:  *&lt;forrás&gt;:*** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
+   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:*** A forrás tárfiókban tárfiókkulcs.
+   * **/ Cél:  *&lt;cél&gt;:*** Tárolási tároló URL-cím a virtuális merevlemez másolása.
+   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:*** A cél tárfiók tárfiók kulcsa.
+   * **/ BlobType: lap:** Megadja, hogy a cél egy lapblob.
+   * **/ Minta:  *&lt;Fájlnév&gt;:*** Adja meg a virtuális merevlemez másolása a fájl nevét.
 
 Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
@@ -430,7 +433,7 @@ Ha több virtuális gép áttelepítése, automation PowerShell-parancsprogramok
 Előfeltételek a következők:
 
 * Klasszikus Azure-beli virtuális gépek létrehozásakor.
-* A forrás operációsrendszer-lemezek és a forrás az adatlemezeket is ugyanazt a tárfiókot, és ugyanazt a tárolót. Ha az operációsrendszer-lemez és adatlemezek nem ugyanazon a helyen, az AzCopy vagy az Azure PowerShell használatával VHD-k másolja át a storage-fiókok és a tárolók. Tekintse meg az előző lépésből: [másolási VHD-AzCopy vagy a PowerShell használatával](#copy-vhd-with-azcopy-or-powershell). Ezt a szkriptet a forgatókönyv megfelelnek szerkesztését másik lehetőség, de javasoljuk, hogy könnyebben és gyorsabban, mert az AzCopy vagy a PowerShell használatával.
+* A forrás operációsrendszer-lemezek és a forrás az adatlemezeket is ugyanazt a tárfiókot, és ugyanazt a tárolót. Ha az operációsrendszer-lemez és adatlemezek nem ugyanazon a helyen, az AzCopy vagy az Azure PowerShell használatával VHD-k másolja át a storage-fiókok és a tárolók. Tekintse meg az előző lépésből: [Másolja a VHD-AzCopy vagy a PowerShell használatával](#copy-vhd-with-azcopy-or-powershell). Ezt a szkriptet a forgatókönyv megfelelnek szerkesztését másik lehetőség, de javasoljuk, hogy könnyebben és gyorsabban, mert az AzCopy vagy a PowerShell használatával.
 
 Az automation-szkript lejjebb találja. Szöveg cserélje le az adatokat, és frissítse a szkriptet az adott forgatókönyvnek megfelelően.
 
@@ -610,18 +613,18 @@ Az automation-szkript lejjebb találja. Szöveg cserélje le az adatokat, és fr
 
     # Get source storage account information, not considering the data disks and os disks are in different accounts
     $sourceStorageAccountName = $sourceOSDisk.MediaLink.Host -split "\." | select -First 1
-    $sourceStorageKey = (Get-AzureStorageKey -StorageAccountName $sourceStorageAccountName).Primary
-    $sourceContext = New-AzureStorageContext –StorageAccountName $sourceStorageAccountName -StorageAccountKey $sourceStorageKey
+    $sourceStorageKey = (Get-AzStorageKey -StorageAccountName $sourceStorageAccountName).Primary
+    $sourceContext = New-AzStorageContext –StorageAccountName $sourceStorageAccountName -StorageAccountKey $sourceStorageKey
 
     # Create destination context
-    $destStorageKey = (Get-AzureStorageKey -StorageAccountName $DestStorageAccount).Primary
-    $destContext = New-AzureStorageContext –StorageAccountName $DestStorageAccount -StorageAccountKey $destStorageKey
+    $destStorageKey = (Get-AzStorageKey -StorageAccountName $DestStorageAccount).Primary
+    $destContext = New-AzStorageContext –StorageAccountName $DestStorageAccount -StorageAccountKey $destStorageKey
 
     # Create a container of vhds if it doesn't exist
-    if ((Get-AzureStorageContainer -Context $destContext -Name vhds -ErrorAction SilentlyContinue) -eq $null)
+    if ((Get-AzStorageContainer -Context $destContext -Name vhds -ErrorAction SilentlyContinue) -eq $null)
     {
         Write-Host "`n[WORKITEM] - Creating a container vhds in the destination storage account." -ForegroundColor Yellow
-        New-AzureStorageContainer -Context $destContext -Name vhds
+        New-AzStorageContainer -Context $destContext -Name vhds
     }
 
 
@@ -634,7 +637,7 @@ Az automation-szkript lejjebb találja. Szöveg cserélje le az adatokat, és fr
         # from the same vhd blob.
         $ContinueAnswer = Read-Host "`n`t[Warning] You chose to copy data disks only. Moving VM requires removing the original VM (the disks and backing vhd files will NOT be deleted) so that the new VM can boot from the same vhd. This is an irreversible action. Do you wish to proceed right now? (Y/N)"
         If ($ContinueAnswer -ne "Y") { Write-Host "`n Exiting." -ForegroundColor Red;Exit }
-        $destOSVHD = Get-AzureStorageBlob -Blob $sourceOSVHD -Container vhds -Context $sourceContext
+        $destOSVHD = Get-AzStorageBlob -Blob $sourceOSVHD -Container vhds -Context $sourceContext
         Write-Host "`n[WORKITEM] - Removing the original VM (the vhd files are NOT deleted)." -ForegroundColor Yellow
         Remove-AzureVM -Name $SourceVMName -ServiceName $SourceServiceName
 
@@ -652,7 +655,7 @@ Az automation-szkript lejjebb találja. Szöveg cserélje le az adatokat, és fr
         # copy the os disk vhd
         Write-Host "`n[WORKITEM] - Starting copying os disk $($disk.DiskName) at $(get-date)." -ForegroundColor Yellow
         $allDisksToCopy += @($sourceOSDisk)
-        $targetBlob = Start-AzureStorageBlobCopy -SrcContainer vhds -SrcBlob $sourceOSVHD -DestContainer vhds -DestBlob $sourceOSVHD -Context $sourceContext -DestContext $destContext -Force
+        $targetBlob = Start-AzStorageBlobCopy -SrcContainer vhds -SrcBlob $sourceOSVHD -DestContainer vhds -DestBlob $sourceOSVHD -Context $sourceContext -DestContext $destContext -Force
         $destOSVHD = $targetBlob
     }
 
@@ -664,7 +667,7 @@ Az automation-szkript lejjebb találja. Szöveg cserélje le az adatokat, és fr
         $blobName = $disk.MediaLink.Segments[2]
         # copy all data disks
         Write-Host "`n[WORKITEM] - Starting copying data disk $($disk.DiskName) at $(get-date)." -ForegroundColor Yellow
-        $targetBlob = Start-AzureStorageBlobCopy -SrcContainer vhds -SrcBlob $blobName -DestContainer vhds -DestBlob $blobName -Context $sourceContext -DestContext $destContext -Force
+        $targetBlob = Start-AzStorageBlobCopy -SrcContainer vhds -SrcBlob $blobName -DestContainer vhds -DestBlob $blobName -Context $sourceContext -DestContext $destContext -Force
         # update the media link to point to the target blob link
         $disk.MediaLink = $targetBlob.ICloudBlob.Uri.AbsoluteUri
     }
@@ -683,7 +686,7 @@ Az automation-szkript lejjebb találja. Szöveg cserélje le az adatokat, és fr
                 Continue
             }
             $blobName = $disk.MediaLink.Segments[2]
-            $copyState = Get-AzureStorageBlobCopyState -Blob $blobName -Container vhds -Context $destContext
+            $copyState = Get-AzStorageBlobCopyState -Blob $blobName -Container vhds -Context $destContext
             if ($copyState.Status -eq "Success")
             {
                 Write-Host "`n[Status] - Success for disk copy $($disk.DiskName) at $($copyState.CompletionTime)" -ForegroundColor Green
@@ -762,7 +765,7 @@ Azt is ellenőrizze, tudjon meg többet az Azure Storage és az Azure Virtual Ma
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
+* [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

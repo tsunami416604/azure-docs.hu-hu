@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 3053e136ab08c38d9460d60f64464a17f6f61574
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824081"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543410"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
@@ -26,7 +26,7 @@ Az Azure-összetevőket és Azure-erőforrások figyeléséhez elérhető szolg�
 
 ## <a name="subscription-level-monitoring"></a>Előfizetés-szintű figyelése
 
-Az előfizetés szintjén, amely magában foglalja a Batch-fiókok, a [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) gyűjti a működési események adatait [különböző kategóriákba](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log).
+Az előfizetés szintjén, amely magában foglalja a Batch-fiókok, a [Azure tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md) gyűjti a működési események adatait [különböző kategóriákba](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log).
 
 A Batch-fiókok kifejezetten, a tevékenységnapló gyűjti a fiók létrehozásának és törlésének és kulcskezelési kapcsolódó eseményeket.
 
@@ -34,7 +34,7 @@ Események lekérése a tevékenységnaplót egyik módja, hogy az Azure Portalo
 
 ## <a name="batch-account-level-monitoring"></a>Batch-fiókszintű figyelése
 
-Szolgáltatását használja, amely minden egyes Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-collection.md#metrics) és opcionálisan [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a Batch-fiókot, például a készletek, feladatok és tevékenységek szintjén hatókörön belüli erőforrások. Gyűjtése és felhasználása ezeket az adatokat, manuálisan vagy programon keresztül a Batch-fiókban lévő tevékenységek figyelését, és diagnosztizálhatja a problémákat. További információkért lásd: [Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
+Szolgáltatását használja, amely minden egyes Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-collection.md#metrics) és opcionálisan [diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md) a Batch-fiókot, például a készletek, feladatok és tevékenységek szintjén hatókörön belüli erőforrások. Gyűjtése és felhasználása ezeket az adatokat, manuálisan vagy programon keresztül a Batch-fiókban lévő tevékenységek figyelését, és diagnosztizálhatja a problémákat. További információkért lásd: [Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
  
 > [!NOTE]
 > Metrikák érhetők el további konfiguráció nélkül a Batch-fiók alapértelmezés szerint, és a egy 30 napos gördülő előzmények rendelkeznek. Engedélyeznie kell a Batch-fiók diagnosztikai naplózását, és Ön további költségekkel járhat tárolásához, vagy diagnosztikai naplóadatokat feldolgozni. 

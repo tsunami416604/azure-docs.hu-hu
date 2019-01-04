@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 8c601bdd7fbba536aa5b8a4d1965f4ef2bb906f9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187847"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726228"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -161,8 +161,8 @@ A megoldás a következő telemetriai típusú adatokat fogad a csatlakoztatott 
 - Rendelkezésre állás
 - Kivételek
 - Kérelmek
-- Lapmegtekintések – a munkaterület fogadni a lapmegtekintések, konfigurálnia kell az alkalmazásokat, adatokat gyűjthet. További információkat lásd: [Oldalmegtekintések](../../application-insights/app-insights-api-custom-events-metrics.md#page-views).
-- Egyéni események – az egyéni eseményeket szeretne fogadni. a munkaterület konfigurálnia kell az alkalmazások, adatok gyűjtéséhez. További információkat lásd: [TrackEvent](../../application-insights/app-insights-api-custom-events-metrics.md#trackevent).
+- Lapmegtekintések – a munkaterület fogadni a lapmegtekintések, konfigurálnia kell az alkalmazásokat, adatokat gyűjthet. További információkat lásd: [Oldalmegtekintések](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
+- Egyéni események – az egyéni eseményeket szeretne fogadni. a munkaterület konfigurálnia kell az alkalmazások, adatok gyűjtéséhez. További információkat lásd: [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 Érkezik adat az Application Insights szolgáltatásból a Log Analytics által elérhetővé váló.
 

@@ -9,34 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: cf2cd8a3dade408bf98a6fcc64af0d4ee4419fa0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718248"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971409"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>4. oktatóanyag: Pontos szövegegyezések kinyerése
-Ebben az oktatóanyagban megismerheti, hogyan kérheti le az elemek előre meghatározott listájával egyező adatokat. A lista minden eleme tartalmazhatja szinonimák egy listáját. Az Emberi erőforrások alkalmazásban egy alkalmazottat számos kulcsfontosságú információ azonosíthat, például a név, az e-mail-cím, a telefonszám és az USA-beli szövetségi adóazonosító szám. 
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: Pontos szövege egyezik-adatokat kérhet le az utterance (kifejezés)
 
-Az Emberi Erőforrások alkalmazásnak meg kell határoznia, melyik alkalmazottat helyezik át az egyik épületből egy másikba. Az alkalmazott költözéséről szóló kimondott szövegben a LUIS meghatározza a szándékot, és úgy nyeri ki az alkalmazottat, hogy az ügyfélalkalmazás létrehozhasson egy szokványos sorrendet az alkalmazott áthelyezéséhez.
-
-Ez az alkalmazás egy listaentitást használ az alkalmazott kinyeréséhez. Az alkalmazottra név, vállalati telefonmellék, e-mail-cím, mobiltelefonszám vagy USA-beli szövetségi társadalombiztosítási szám alapján lehet hivatkozni. 
-
-A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
-
-* Az adatok értékei egy ismert készletbe tartoznak.
-* A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. 
+Ebből az oktatóanyagból megtudhatja, hogyan Entitásadatok, amely megegyezik az előre meghatározott elemek listájának beolvasása. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata
-> * MoveEmployee szándék hozzáadása
+> * App létrehozása
+> * Szándék hozzáadása
 > * Listaentitás hozzáadása 
 > * Betanítás 
 > * Közzététel
@@ -44,25 +35,31 @@ A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
-Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
+## <a name="what-is-a-list-entity"></a>Mi az a lista entitást?
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Egy lista entitás egy pontos szövege egyezik az utterance (kifejezés) szavakat. 
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json).
+A lista minden eleme tartalmazhatja szinonimák egy listáját. Az emberi erőforrások alkalmazás vállalati részleg több kulcsfontosságú adatokat, például egy hivatalos nevét, a köznapi mozaikszavak és a számlázási részleg kódok segítségével azonosítható. 
 
-2. Importálja a JSON-t egy új alkalmazásba.
+Az emberi erőforrások alkalmazáson kell meghatározni a részleg egy alkalmazott átvitele. 
 
-3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `list` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
+A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
+* Az adatok értékei egy ismert készletbe tartoznak.
+* A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
+* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. A LUIS túli szöveg pontos egyezés a lista nem használ. Amely szerint elnevezéseket és egyéb változatok csak adott entitással listában nincs feloldva. Kezelheti a változatok, fontolja meg egy [minta](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) választható szöveg szintaxissal. 
 
-## <a name="moveemployee-intent"></a>MoveEmployee szándék
+## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
+
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Az alkalmazottak át egy másik részleghez leképezésének létrehozása
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
-3. Az előugró párbeszédpanelen írja be a `MoveEmployee` karakterláncot, majd válassza a **Kész** elemet. 
+3. Az előugró párbeszédpanelen írja be a `TransferEmployeeToDepartment` karakterláncot, majd válassza a **Kész** elemet. 
 
     ![Új szándék létrehozása párbeszédpanel képernyőképe](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
@@ -70,205 +67,122 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
     |Példák kimondott szövegekre|
     |--|
-    |John W. Smith áthelyezése innen: B-1234, ide: H-4452|
-    |john.w.smith@mycompany.com áthelyezése a b-1234 irodából a h-4452 irodába|
-    |x12345 váltása holnap: h-1234|
-    |425-555-1212 elhelyezése a következőben: HH-2345|
-    |123-45-6789 áthelyezése innen: A-4321, ide: J-23456|
-    |Jill Jones áthelyezése innen: D-2345, ide: J-23456|
-    |jill-jones@mycompany.com váltása: M-12345|
-    |x23456 – M-12345|
-    |425-555-0000 – h-4452|
-    |234-56-7891 – hh-2345|
+    |Helyezze át a könyvelési részleg W. Kovács János|
+    |R & D Jill Jones, a átvitele|
+    |Részleg 1234 rendelkezik számlázási Bradstreettől nevű új tag|
+    |John Jackson helyezze a mérnöki csapathoz |
+    |Helyezze át Perényi Doughtery belüli értékesítések|
+    |mV Jill Jones, informatikai|
+    |SHIFT Alice Anderson devops|
+    |A pénzügyi Carl Chamerlin|
+    |Steve Standish az 1234|
+    |A 3456 Tanner Thompson|
 
-    [ ![Képernyőkép a Szándék lapról, az új kimondott szövegek kiemelésével](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    Ne feledje, hogy a number és a datetimeV2 az előző oktatóanyagban hozzá lettek adva, így automatikusan meg lesznek címkézve, ha szerepelnek egy kimondottszöveg-mintában.
+    [![Képernyőkép a leképezést és példa utterances](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "leképezést és példa utterances képernyőképe")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="employee-list-entity"></a>Alkalmazottlista-entitás
-Most, hogy a **MoveEmployee** szándéknak vannak kimondottszöveg-mintái, a LUIS-nak meg kell értenie, hogy az alkalmazott pontosan micsoda. 
+## <a name="department-list-entity"></a>Részleg lista entitás
 
-Az egyes elemek elsődleges, _kanonikus_ neve az alkalmazotti szám. Ebben a tartományban az egyes kanonikus nevek szinonimáinak példái: 
+Most, hogy a **TransferEmployeeToDepartment** szándékot példa utterances, a LUIS meg kell ismernie, mi az a szervezeti egység. 
 
-|Szinonima célja|Szinonima értéke|
+Az elsődleges _kanonikus_nevű minden elem van a részleg nevét. A szinonimák minden egyes canonical név példák: 
+
+|Kanonikus név|Szinonimák|
 |--|--|
-|Name (Név)|John W. Smith|
-|E-mail-cím|john.w.smith@mycompany.com|
-|Telefonmellék|x12345|
-|Saját mobiltelefonszám|425-555-1212|
-|USA-beli szövetségi társadalombiztosítási szám (SSN)|123-45-6789|
-
+|Könyvelés|Acct<br>accting<br>3456|
+|Fejlesztési műveletek|Fejlesztés és üzemeltetés<br>4949|
+|Mérnöki tudományok|angol<br>naplófeladat<br>4567|
+|Pénzügy|Pénzügy<br>2020|
+|Információtechnológiai|IT<br>2323|
+|Belső értékesítés|isale<br>insale<br>1414|
+|Kutatás-fejlesztés|R &AMP; D<br>1234|
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali ablaktáblán.
 
-2. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget.
+1. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget.
 
-3. A felugró párbeszédpanelen adja meg az `Employee` értéket az entitás neveként, és a **List** (Lista) értéket az entitás típusaként. Válassza a **Done** (Kész) lehetőséget.  
+1. A felugró párbeszédpanelen adja meg az `Department` értéket az entitás neveként, és a **List** (Lista) értéket az entitás típusaként. Válassza a **Done** (Kész) lehetőséget.  
 
-    [![Új entitás felugró párbeszédpanel létrehozásának képernyőképe](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "létrehozása új entitás felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Új entitás felugró párbeszédpanel létrehozásának képernyőképe](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "létrehozása új entitás felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-4. Az Employee entity (Alkalmazottentitás) lapon az új értéknek adja meg a következőt: `Employee-24612`.
+1. A részleg entitás oldalán `Accounting` új értéket.
 
     [![Képernyőkép a érték megadása](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "érték megadása képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-5. Szinonimák esetében vegye fel az alábbi értékeket:
-
-    |Szinonima célja|Szinonima értéke|
-    |--|--|
-    |Name (Név)|John W. Smith|
-    |E-mail-cím|john.w.smith@mycompany.com|
-    |Telefonmellék|x12345|
-    |Saját mobiltelefonszám|425-555-1212|
-    |USA-beli szövetségi társadalombiztosítási szám (SSN)|123-45-6789|
+1. A szinonimák a szinonimák felvétele a korábbi táblából.
 
     [![Képernyőkép a szinonimák megadásáról](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Képernyőkép a szinonimák megadása")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
-6. Új értékként írja be a következőt: `Employee-45612`.
+1. Továbbra is a canonical nevek és a szinonimák hozzáadásával. 
 
-7. Szinonimák esetében vegye fel az alábbi értékeket:
+## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
 
-    |Szinonima célja|Szinonima értéke|
-    |--|--|
-    |Name (Név)|Jill Jones|
-    |E-mail-cím|jill-jones@mycompany.com|
-    |Telefonmellék|x23456|
-    |Saját mobiltelefonszám|425-555-0000|
-    |USA-beli szövetségi társadalombiztosítási szám (SSN)|234-56-7891|
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train"></a>Betanítás
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanításához, így a módosítások a leképezés tesztelhető legyen 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Közzététel
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, így a betanított modell lekérdezhető a végpontról
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és egyéb entitások előrejelzés beolvasása végpont
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `shift 123-45-6789 from Z-1242 to T-54672`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **q**uery. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a `Employee` szándékot kell visszaadnia, kinyerve a következőt: `MoveEmployee`.
+1. Lépjen az URL-cím végéhez, és írja be a következőt: `shift Joe Smith to IT`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **q**uery. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a `Department` szándékot kell visszaadnia, kinyerve a következőt: `TransferEmployeeToDepartment`.
 
   ```json
-  {
-    "query": "shift 123-45-6789 from Z-1242 to T-54672",
-    "topScoringIntent": {
-      "intent": "MoveEmployee",
-      "score": 0.9882801
-    },
-    "intents": [
-      {
-        "intent": "MoveEmployee",
-        "score": 0.9882801
+    {
+      "query": "shift Joe Smith to IT",
+      "topScoringIntent": {
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9775754
       },
-      {
-        "intent": "FindForm",
-        "score": 0.016044287
-      },
-      {
-        "intent": "GetJobInformation",
-        "score": 0.007611245
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.007063288
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00684710965
-      },
-      {
-        "intent": "None",
-        "score": 0.00304174074
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.002981
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 0.00212222221
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.00191026414
-      },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0007461446
-      }
-    ],
-    "entities": [
-      {
-        "entity": "123 - 45 - 6789",
-        "type": "Employee",
-        "startIndex": 6,
-        "endIndex": 16,
-        "resolution": {
-          "values": [
-            "Employee-24612"
-          ]
+      "intents": [
+        {
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9775754
+        },
+        {
+          "intent": "None",
+          "score": 0.0154493852
         }
-      },
-      {
-        "entity": "123",
-        "type": "builtin.number",
-        "startIndex": 6,
-        "endIndex": 8,
-        "resolution": {
-          "value": "123"
+      ],
+      "entities": [
+        {
+          "entity": "it",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 20,
+          "resolution": {
+            "values": [
+              "Information Technology"
+            ]
+          }
         }
-      },
-      {
-        "entity": "45",
-        "type": "builtin.number",
-        "startIndex": 10,
-        "endIndex": 11,
-        "resolution": {
-          "value": "45"
-        }
-      },
-      {
-        "entity": "6789",
-        "type": "builtin.number",
-        "startIndex": 13,
-        "endIndex": 16,
-        "resolution": {
-          "value": "6789"
-        }
-      },
-      {
-        "entity": "-1242",
-        "type": "builtin.number",
-        "startIndex": 24,
-        "endIndex": 28,
-        "resolution": {
-          "value": "-1242"
-        }
-      },
-      {
-        "entity": "-54672",
-        "type": "builtin.number",
-        "startIndex": 34,
-        "endIndex": 39,
-        "resolution": {
-          "value": "-54672"
-        }
-      }
-    ]
-  }
+      ]
+    }
   ```
-
-  A rendszer megtalálta az alkalmazottat, és visszaadta `Employee` típusúként, `Employee-24612` megoldásértékkel.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>Kapcsolódó információk
+
+* [Entitás listában](luis-concept-entity-types.md#list-entity) elméleti információk
+* [Hogyan betanítása](luis-how-to-train.md)
+* [Közzétételi útmutató](luis-how-to-publish-app.md)
+* [A LUIS-portál tesztelése](luis-interactive-test.md)
+
+
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag létrehozott egy új szándékot, kimondottszöveg-példákat adott hozzá, majd létrehozott egy listaentitást a pontos szövegegyezések kimondott szövegből történő kinyerése céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
+
+Ez az alkalmazás folytatásához [hozzáadása egy összetett entitást](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
 > [Hierarchikus entitás hozzáadása az alkalmazáshoz](luis-quickstart-intent-and-hier-entity.md)

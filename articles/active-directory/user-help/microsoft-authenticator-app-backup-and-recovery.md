@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 623e7276ccba85b6df74291ee857613019349b7a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406124"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993433"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -76,7 +76,7 @@ Személyes Microsoft-fiókok igazolja az identitását a jelszót és a egy más
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>A további ellenőrzési munkahelyi vagy iskolai fiókok esetében
 1.  Az a **fiókok** képernyőjén a Microsoft Authenticator alkalmazást, válassza ki a legördülő nyílra a helyreállítani kívánt fiók mellett.
 
-    ![A Microsoft Authenticator alkalmazás képe, amelyen azok társított lefelé mutató nyíllal elérhető fiókok](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
+    ![A Microsoft Authenticator alkalmazás képe, amelyen azok társított lefelé mutató nyíllal elérhető fiókok](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additional-accts.png)
 
 2.  Válassza ki **vizsgálata QR-kód helyreállítása**, majd vizsgálja meg a QR-kódot.
 

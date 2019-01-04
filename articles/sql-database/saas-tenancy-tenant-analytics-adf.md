@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: MightyPen
+ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056594"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606044"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Az Azure SQL Database, az SQL Data Warehouse, a Data Factory és a Power BI SaaS-analytics megismerése
 
@@ -142,7 +142,7 @@ Ez a szakasz ismerteti az adat-előállítóban létrehozott objektumok. Az alá
 Az Áttekintés lapon váltson **Szerző** lapra a bal oldali panelen, és figyelje meg, hogy háromféle [folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) és három [adatkészletek](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) létrehozott.
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-A három beágyazott folyamatok vannak: SQLDBToDW DBCopy és TableCopy.
+A három beágyazott folyamatok a következők: SQLDBToDW DBCopy és TableCopy.
 
 **1 – SQLDBToDW folyamat** kikeresi a bérlői adatbázisokat, a katalógus-adatbázisban tárolt nevét (táblanév: [__ShardManagement]. [ ShardsGlobal]), és minden bérlői adatbázis végrehajtja a **DBCopy** folyamat. A művelet befejezését követően a megadott **sp_TransformExtractedData** tárolt eljárás séma, hajtja végre. Ez a tárolt eljárás alakítja át a betöltött adatokra az átmeneti tárolási táblázatokban, és feltölti a csillagséma-táblákat.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315806"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633861"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Teljes szöveges keresés működése az Azure Search szolgáltatásban
 
@@ -385,7 +385,7 @@ Ebben a cikkben bemutattuk az Azure Search kontextusában a teljes szöveges ker
 
 + A mintakód-index létrehozása, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [hozhat létre, és a portálon egy index lekérdezése](search-get-started-portal.md#query-index).
 
-+ Próbálja ki a további lekérdezési szintaxis a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) példa szakaszban vagy [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a keresési ablakban a portálon.
++ Próbálja ki a további lekérdezési szintaxis a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) példa szakaszban vagy [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a keresési ablakban a portálon.
 
 + Felülvizsgálat [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) Ha azt szeretné, ennek a területnek a keresési alkalmazásban finomhangolása.
 
@@ -393,7 +393,7 @@ Ebben a cikkben bemutattuk az Azure Search kontextusában a teljes szöveges ker
 
 + [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimális feldolgozás vagy adott mezők speciális terhelése.
 
-+ [Hasonlítsa össze a standard és az angol nyelvű elemzők](http://alice.unearth.ai/)) egymás mellett a bemutató webhelyről. 
++ [Hasonlítsa össze a standard és az angol nyelvű elemzők](https://alice.unearth.ai/)) egymás mellett a bemutató webhelyről. 
 
 ## <a name="see-also"></a>Lásd még
 

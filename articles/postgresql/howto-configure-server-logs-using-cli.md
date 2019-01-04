@@ -1,21 +1,18 @@
 ---
 title: Konfigurálja és hozzáférés-kiszolgáló naplóit a PostgreSQL-hez készült Azure CLI-vel
 description: Ez a cikk ismerteti, hogyan konfigurálhat és PostgreSQL-hez készült Azure Database-ben a kiszolgálónaplók elérése az Azure CLI parancssori.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: af5a0843acced4611b219088b7662f9ea4b32beb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969581"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545022"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
 A PostgreSQL-kiszolgáló hibanaplói a parancssori felület (Azure CLI) használatával töltheti le. Azonban a tranzakciós naplókhoz való hozzáférés nem támogatott. 
@@ -28,7 +25,7 @@ Ez az útmutató lépéseinek, az alábbiak szükségesek:
 ## <a name="configure-logging-for-azure-database-for-postgresql"></a>Konfigurálhatja a naplózás az Azure Database for postgresql-hez
 Beállíthatja, hogy a kiszolgáló eléréséhez a lekérdezések naplói és a hibanaplók. Hibanaplók automatikus vákuumszivattyú, kapcsolat és ellenőrzőpont adatait is rendelkezhet.
 1. Kapcsolja be a naplózást.
-2. Lekérdezések naplózásának engedélyezéséhez frissíteni **log\_utasítás** és **log\_min\_időtartama\_utasítás**.
+2. Lekérdezések naplózásának engedélyezéséhez frissíteni **log\_utasítás** és **log\_min\_időtartama\_utasítás**.
 3. A megőrzési időtartam frissítése.
 
 További információkért lásd: [kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).

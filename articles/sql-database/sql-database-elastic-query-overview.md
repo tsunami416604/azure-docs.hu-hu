@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 777b0e6e98c0d8d726b69f0fc169f2d2752b4b6d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: dd6a9ee00ba6244e5a0d04f654e6b57db8896ea6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865012"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603947"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Az Azure SQL Database rugalmas lekérdezésének áttekintése (előzetes verzió)
 
@@ -56,8 +56,8 @@ Az a rugalmas lekérdezés lehetővé teszi az adatbázisok SQL Server Managemen
 
 Rugalmas lekérdezés forgatókönyvet a következő topológiákat jellemző:
 
-* **A vertikális particionálás - adatbázisközi lekérdezések** (1. topológia): az adatok függőlegesen particionált adatok szintű adatbázisok számú között. Táblák más-más részhalmazához általában különböző adatbázisok találhatók. Amely azt jelenti, hogy a séma különböző különböző adatbázisokon. Például a készlet összes tábla van egy adatbázis Bár minden nyilvántartási kapcsolódó tábla egy második adatbázishoz. Ez a topológia a gyakori alkalmazási helyzetek szükséges egyik lekérdezésére, vagy fordítsa le a jelentések számos adatbázisokban lévő táblák között.
-* **Horizontális particionálás – bérlőadatok horizontális skálázása** (topológia % 2): adatok horizontális particionálása sorok szét a bővítő adatok szint. Ezzel a módszerrel a séma megegyezik a programban részt vevő összes adatbázis. Ez a megközelítés "horizontális skálázási" is nevezik. A horizontális skálázás elvégezhető, és (1) az elastic database használatával felügyelt eszközöket, kódtárak és (2) a önkiszolgáló-horizontális particionálás. Az a rugalmas lekérdezés kérdezheti le vagy több horizontális partícióra kiterjedő fordítsa le a jelentések segítségével.
+* **A vertikális particionálás - adatbázisközi lekérdezések** (1. topológia): Az adatok függőlegesen particionált adatok szintű adatbázisok számú között. Táblák más-más részhalmazához általában különböző adatbázisok találhatók. Amely azt jelenti, hogy a séma különböző különböző adatbázisokon. Például a készlet összes tábla van egy adatbázis Bár minden nyilvántartási kapcsolódó tábla egy második adatbázishoz. Ez a topológia a gyakori alkalmazási helyzetek szükséges egyik lekérdezésére, vagy fordítsa le a jelentések számos adatbázisokban lévő táblák között.
+* **Horizontális particionálás – bérlőadatok horizontális skálázása** (topológiája 2): Adatok horizontális particionálása sorok szét a bővítő adatok szint. Ezzel a módszerrel a séma megegyezik a programban részt vevő összes adatbázis. Ez a megközelítés "horizontális skálázási" is nevezik. A horizontális skálázás elvégezhető, és (1) az elastic database használatával felügyelt eszközöket, kódtárak és (2) a önkiszolgáló-horizontális particionálás. Az a rugalmas lekérdezés kérdezheti le vagy több horizontális partícióra kiterjedő fordítsa le a jelentések segítségével.
 
 > [!NOTE]
 > Rugalmas lekérdezés a leginkább jelentéskészítési lehetőségeket, ahol a feldolgozás (szűrés, összesítési) többsége a külső adatforrás-oldali hajtható végre. Nem alkalmas az ETL-műveletek ahol nagy mennyiségű adat átvitele a távoli adatbázis (oka). Jelentéskészítési terhelés vagy az adatraktározási forgatókönyvekben az összetett lekérdezések esetén is érdemes [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
@@ -79,7 +79,7 @@ Az a rugalmas lekérdezés segítségével más SQL-adatbázisok számára elér
 
 ![Vertikális particionálás – rugalmas lekérdezés a lekérdezés Referenciaadatokkal][3]
 
-**Adatbázisközi lekérdezés**: rugalmas lekérdezések engedélyezése használati esetek igénylő, számos SQL-adatbázisok lekérdezése. 3. ábrán látható négy különböző adatbázisok: CRM, a szoftverleltár, a HR és a termékek. Egy adatbázis végrehajtott lekérdezéseket is egyikét vagy mindegyikét az egyéb adatbázisok hozzá kell férniük. Az a rugalmas lekérdezés használatával, konfigurálhatja az adatbázis ebben az esetben az egyes négy adatbázis néhány egyszerű DDL-utasítások futtatásával. Ez egyszeri konfigurálás után egyszerű: a T-SQL-lekérdezések, illetve az Üzletiintelligencia-eszközökkel egy helyi táblára hivatkozó távoli tábla a hozzáférést. Ez a megközelítés akkor ajánlott, ha a távoli lekérdezés nem adott vissza nagy eredményeket.
+**Adatbázisközi lekérdezés**: Rugalmas lekérdezések használati esetek, számos SQL-adatbázisok lekérdezése igénylő engedélyezése. 3. ábrán látható négy különböző adatbázist: CRM, a szoftverleltár, a HR és a termékek. Egy adatbázis végrehajtott lekérdezéseket is egyikét vagy mindegyikét az egyéb adatbázisok hozzá kell férniük. Az a rugalmas lekérdezés használatával, konfigurálhatja az adatbázis ebben az esetben az egyes négy adatbázis néhány egyszerű DDL-utasítások futtatásával. Ez egyszeri konfigurálás után egyszerű: a T-SQL-lekérdezések, illetve az Üzletiintelligencia-eszközökkel egy helyi táblára hivatkozó távoli tábla a hozzáférést. Ez a megközelítés akkor ajánlott, ha a távoli lekérdezés nem adott vissza nagy eredményeket.
 
 **3. ábra** vertikális particionálás – rugalmas lekérdezés a lekérdezés használatával különböző adatbázisok között
 

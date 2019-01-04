@@ -10,15 +10,15 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: eaf69ffdd7aa0964860f90b1f98d542175ea086b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 46b201b2b5d8a3ee774f759326afae885ad6cb30
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315409"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651844"
 ---
-# <a name="what-is-apache-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-apache-hadoop"></a>Mi az Apache HBase a HDInsight: egy NoSQL-adatbázis, amely BigTable-szerű képességeket biztosít az Apache Hadoop
-[Az Apache HBase](http://hbase.apache.org/) egy nyílt forráskódú nosql-alapú adatbázis-alapú [Apache Hadoop](https://hadoop.apache.org/) és modellezett után [Google BigTable](https://cloud.google.com/bigtable/). A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára egy séma nélküli adatbázisban oszlopcsaládok szerint rendezve.
+# <a name="what-is-apache-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-apache-hadoop"></a>Mi az Apache HBase a HDInsight: NoSQL-adatbázis, amely BigTable-szerű képességeket biztosít az Apache Hadoop
+[Az Apache HBase](https://hbase.apache.org/) egy nyílt forráskódú nosql-alapú adatbázis-alapú [Apache Hadoop](https://hadoop.apache.org/) és modellezett után [Google BigTable](https://cloud.google.com/bigtable/). A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára egy séma nélküli adatbázisban oszlopcsaládok szerint rendezve.
 
 Felhasználói szempontból a HBase hasonlít egy adatbázishoz. A sorok és a egy tábla oszlopait tárolt adatokat, és a sorokon belüli adatok oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. Az adatredundanciára, a kötegelt feldolgozásra és más olyan szolgáltatásokra támaszkodhat, amelyeket elosztott alkalmazások nyújtanak a Hadoop rendszerben.
 
@@ -31,13 +31,12 @@ A HDInsight HBase az Azure környezetbe integrált felügyelt fürtként érhet�
 A HDInsight-implementáció kihasználja a HBase méretezhető architektúráját, hogy a táblák automatikus árnyalását, az írások és olvasások erős következetességét és automatikus feladatátvételt nyújtson. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HBase-fürt a virtuális hálózaton belül hozható létre. További információ: [HDInsight-fürtök létrehozása az Azure Virtual Networkön](./apache-hbase-provision-vnet.md).
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Hogyan történik az adatok kezelése a HDInsight HBase-ben?
-Az adatok a HBase-ben a(z) `create`, `get`, `put` és `scan` parancsokkal kezelhetők a HBase rendszerhéjból. Az adatok a(z) `put` paranccsal írhatók, és a(z) `get` paranccsal olvashatók az adatbázisban. A(z) `scan` paranccsal szerezhetők be adatok a táblák több sorából. Az adatok a HBase C# API-val is kezelhetők, amely egy ügyfélkönyvtárat biztosít a HBase REST API-n felül. A HBase adatbázisok használatával is lekérdezhetők [Apache Hive](https://hive.apache.org/). Ezen programozási modellek bemutatását lásd: [A HBase és a Hadoop használatának első lépései a HDInsightban](./apache-hbase-tutorial-get-started-linux.md). Társprocesszorok is elérhetők, amelyek lehetővé teszik az adatfeldolgozást az adatbázist szolgáltató csomópontokban.
+Az adatok a HBase-ben a(z) `create`, `get`, `put` és `scan` parancsokkal kezelhetők a HBase rendszerhéjból. Az adatok a(z) `put` paranccsal írhatók, és a(z) `get` paranccsal olvashatók az adatbázisban. A(z) `scan` paranccsal szerezhetők be adatok a táblák több sorából. Az adatok a HBase C# API-val is kezelhetők, amely egy ügyfélkönyvtárat biztosít a HBase REST API-n felül. A HBase adatbázisok használatával is lekérdezhetők [Apache Hive](https://hive.apache.org/). Ezen programozási modellek bemutatását lásd: [Apache hadooppal a HDInsight Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md). Társprocesszorok is elérhetők, amelyek lehetővé teszik az adatfeldolgozást az adatbázist szolgáltató csomópontokban.
 
-> [!NOTE]
+> [!NOTE]  
 > A HBase nem támogatja a Thriftet a HDInsightban.
->
 
-## <a name="scenarios-use-cases-for-apache-hbase"></a>Forgatókönyv: Az Apache HBase használati esetei
+## <a name="scenarios-use-cases-for-apache-hbase"></a>Alkalmazási helyzetek: Az Apache HBase használati esetei
 A kanonikus használati eset, amely BigTable (és továbbgyűrűzéseként HBase) létrejött, a webes keresés. A keresőmotorok indexeket építenek, amelyek kifejezéseket képeznek le az azokat tartalmazó weblapokra. A HBase azonban sok más használati esethez megfelelő – amelyek közül több ebben a szakaszban van felsorolva.
 
 * Kulcs-érték tároló
@@ -51,7 +50,7 @@ A kanonikus használati eset, amely BigTable (és továbbgyűrűzéseként HBase
     [Az Apache Phoenix](https://phoenix.apache.org/) Apache hbase SQL lekérdezési motorja van. JDBC-illesztőként érhető el, és lehetővé teszi a HBase táblák SQL eszközzel végzett lekérdezését és kezelését.
 * A HBase platformként
   
-    Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyenek például a Phoenix, [OpenTSDB](http://opentsdb.net/), Kiji és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyenek például [Apache Hive](https://hive.apache.org/), [Apache Pig](https://pig.apache.org/), [Solr](http://lucene.apache.org/solr/), [Apache Storm](http://storm.apache.org/), [Apache Flume](https://flume.apache.org/), [ Apache Impala](https://impala.apache.org/), [Apache Spark](https://spark.apache.org/) , [Ganglia](http://ganglia.info/), és [Apache Drill](https://drill.apache.org/).
+    Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyenek például a Phoenix, [OpenTSDB](http://opentsdb.net/), Kiji és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyenek például [Apache Hive](https://hive.apache.org/), [Apache Pig](https://pig.apache.org/), [Solr](https://lucene.apache.org/solr/), [Apache Storm](https://storm.apache.org/), [Apache Flume](https://flume.apache.org/), [ Apache Impala](https://impala.apache.org/), [Apache Spark](https://spark.apache.org/) , [Ganglia](http://ganglia.info/), és [Apache Drill](https://drill.apache.org/).
 
 ## <a name="next-steps"></a>Következő lépések
 * [Az Apache hadooppal a HDInsight Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md)
@@ -62,7 +61,7 @@ A kanonikus használati eset, amely BigTable (és továbbgyűrűzéseként HBase
 ## <a name="see-also"></a>Lásd még:
 * [Apache HBase](https://hbase.apache.org/)
 * [Az Apache HBase referencia-útmutató](https://hbase.apache.org/book.html)
-* [Bigtable: Elosztott tárolórendszer strukturált adatokhoz](http://research.google.com/archive/bigtable.html)
+* [Bigtable: Elosztott tárolórendszer strukturált adatokhoz](https://research.google.com/archive/bigtable.html)
 * [Az Apache HBase/Phoenix – tippeket, trükköket és ajánlott eljárások az Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2016/08/28/hdinsight-hbase-faq/)
 
 

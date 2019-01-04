@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89d1859b521fff8ca8d3e8c7342bcb5a4b8d59fe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3ee1cfaa9e5eb08b2fe6ee7d210dcb84a8c39d78
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012980"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715324"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Telepítse, és az Apache Giraph használata Windows-alapú HDInsight-fürtökön
 
 Ismerje meg a Windows-alapú HDInsight-fürt testreszabása a Script actionnel Apache Giraph, és hogyan lehet a Giraph használata nagyméretű gráfok feldolgozásához. A Giraph használata a Linux-alapú fürt információkért lásd: [HDInsight Hadoop-fürtök (Linux) az Apache Giraph telepítése](hdinsight-hadoop-giraph-install-linux.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A jelen dokumentumban leírt lépések csak a Windows-alapú HDInsight-fürtökkel működik. HDInsight csak akkor használható a Windows-verziók alacsonyabb, mint a HDInsight 3.4-es. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Giraph telepítése egy Linux-alapú HDInsight-fürtön információkért lásd: [HDInsight Hadoop-fürtök (Linux) az Apache Giraph telepítése](hdinsight-hadoop-giraph-install-linux.md).
 
 
@@ -34,7 +34,7 @@ Telepítheti a Giraph bármilyen típusú Azure HDInsight (Hadoop-, Storm, HBase
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions.md).
 
 ## <a name="what-is-giraph"></a>Mi az a Giraph?
-<a href="http://giraph.apache.org/" target="_blank">Az Apache Giraph</a> diagramfeldolgozási Hadoop használatával végezhető el, és az Azure HDInsight is használható. Gráfok objektumok, például az útválasztók nagyobb hálózatokon, mint például az interneten, vagy a közösségi hálózatokon (más néven egy közösségi diagram) személyek közötti kapcsolatok közötti kapcsolatok közötti kapcsolatok modellezésére. Gráffeldolgozási lehetővé teszi a grafikon, objektumok közötti kapcsolatok vonatkozó döntések meghozatalát például:
+<a href="https://giraph.apache.org/" target="_blank">Az Apache Giraph</a> diagramfeldolgozási Hadoop használatával végezhető el, és az Azure HDInsight is használható. Gráfok objektumok, például az útválasztók nagyobb hálózatokon, mint például az interneten, vagy a közösségi hálózatokon (más néven egy közösségi diagram) személyek közötti kapcsolatok közötti kapcsolatok közötti kapcsolatok modellezésére. Gráffeldolgozási lehetővé teszi a grafikon, objektumok közötti kapcsolatok vonatkozó döntések meghozatalát például:
 
 * A jelenlegi kapcsolatok alapján lehetséges barátok azonosítása.
 * A hálózat két számítógép közötti legrövidebb útvonal azonosítása.
@@ -61,7 +61,7 @@ Telepítheti a Giraph bármilyen típusú Azure HDInsight (Hadoop-, Storm, HBase
     Hozzáadhat több parancsfájlművelet több összetevők telepíthetők a fürtön. Miután hozzáadta a parancsfájlok, kattintson a pipa jelre a fürt létrehozásának megkezdéséhez.
 
 ## <a name="use-giraph"></a>A Giraph használata
-Használjuk a SimpleShortestPathsComputation példa az alapszintű bemutatásához <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> megvalósítása a grafikus objektumok közötti legrövidebb útvonal megkeresése. Az alábbi lépések segítségével a mintaadatok és példa fájlt tölthet fel, a feladat futtatása SimpleShortestPathsComputation példa használatával, és tekintse meg az eredményeket.
+Használjuk a SimpleShortestPathsComputation példa az alapszintű bemutatásához <a href = "https://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> megvalósítása a grafikus objektumok közötti legrövidebb útvonal megkeresése. Az alábbi lépések segítségével a mintaadatok és példa fájlt tölthet fel, a feladat futtatása SimpleShortestPathsComputation példa használatával, és tekintse meg az eredményeket.
 
 1. Egy minta adatfájl feltöltése az Azure Blob storage. A helyi munkaállomáson, hozzon létre egy új fájlt **tiny_graph.txt**. A következő sorokat kell tartalmaznia:
 
@@ -80,7 +80,7 @@ Használjuk a SimpleShortestPathsComputation példa az alapszintű bemutatásáh
     ![különböző távolságát sornyi körök Megrajzolás tiny_graph.txt](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
 2. Futtassa a SimpleShortestPathsComputation példa. A következő Azure PowerShell-parancsmagok használatával futtassa a példa bemenetként a tiny_graph.txt fájl használatával.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnt. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel működnek.
     >
     > Kérjük, kövesse az alábbi cikkben leírt lépéseket az Azure PowerShell legújabb verziójának telepítéséhez: [Install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell letöltése és konfigurálása). Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új, az Azure Resource Managerrel működő parancsmagok használatához, tekintse meg az alábbi cikket: [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Az Azure Resource Manager-alapú fejlesztési eszközökre való áttérés HDInsight-fürtök esetén).
@@ -164,8 +164,8 @@ Lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop
 * [A HDInsight Apache Hadoop-fürtök létrehozása](hdinsight-provision-clusters.md): általános információk a HDInsight-fürtök létrehozása során.
 * [Szkriptműveletek használatával HDInsight-fürt testreszabása][hdinsight-cluster-customize]: általános információk a Testreszabás szkriptműveletekkel HDInsight-fürtök.
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions.md).
-* [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]: parancsfájlművelet minta Spark telepítésével kapcsolatban.
-* [A HDInsight-fürtökön Apache Solr telepítése](hdinsight-hadoop-solr-install.md): parancsfájlművelet minta Solr telepítésével kapcsolatban.
+* [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]: A művelet példaszkript Spark telepítésével kapcsolatban.
+* [A HDInsight-fürtökön Apache Solr telepítése](hdinsight-hadoop-solr-install.md): A művelet példaszkript Solr telepítésével kapcsolatban.
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/

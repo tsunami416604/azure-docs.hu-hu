@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5c7c9938b6a0b3d2e6050940154a8dc3f114341e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39485963"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53638787"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Biztonsági mentési és vész-helyreállítási Azure IaaS-lemezek
 
@@ -63,15 +63,15 @@ A leállások az IaaS munkaterhelések védelme érdekében kell tervezése a re
 
 A Vészhelyreállítás szempontjai a következők lehetnek a következő szempontokat:
 
-- Magas rendelkezésre állás: azon képessége, az alkalmazás állapota kifogástalan, jelentős állásidő nélkül folytatódik. Által *megfelelő állapotba*, ez az állapot azt jelenti, hogy az alkalmazás válaszol, és a felhasználók kapcsolódnak az alkalmazáshoz és kezelheti azt. Bizonyos alapvető fontosságú alkalmazások és adatbázisok lehet szükség, mindig elérhető legyen, akkor is, ha a platform fordulnak elő hibák. Ezeket a feladatokat szükség lehet az alkalmazás, valamint az adatok redundanciájának megtervezése.
+- Magas rendelkezésre állás: Azon képessége, az alkalmazás állapota kifogástalan, jelentős állásidő nélkül folytatódik. Által *megfelelő állapotba*, ez az állapot azt jelenti, hogy az alkalmazás válaszol, és a felhasználók kapcsolódnak az alkalmazáshoz és kezelheti azt. Bizonyos alapvető fontosságú alkalmazások és adatbázisok lehet szükség, mindig elérhető legyen, akkor is, ha a platform fordulnak elő hibák. Ezeket a feladatokat szükség lehet az alkalmazás, valamint az adatok redundanciájának megtervezése.
 
-- Adatok tartóssága: bizonyos esetekben a legfontosabb szempont annak ellenőrzése, hogy az adatok megmaradjanak-e, ha katasztrófa történik. Ezért szükség lehet egy másik helyet az adatok biztonsági másolata. Ilyen számítási feladatok esetén nincs szükség lehet az alkalmazás, de csak egy rendszeres biztonsági mentés a lemezek teljes redundancia.
+- Adatok tartóssága: Bizonyos esetekben a legfontosabb szempont annak ellenőrzése, hogy az adatok megmaradjanak-e, ha katasztrófa történik. Ezért szükség lehet egy másik helyet az adatok biztonsági másolata. Ilyen számítási feladatok esetén nincs szükség lehet az alkalmazás, de csak egy rendszeres biztonsági mentés a lemezek teljes redundancia.
 
 ## <a name="backup-and-dr-scenarios"></a>Biztonsági mentési és Vészhelyreállítási forgatókönyvek
 
 Tekintsünk meg néhány jellemző példa az alkalmazás munkaterhelés-forgatókönyvek és a vész-helyreállítási tervezési szempontokat.
 
-### <a name="scenario-1-major-database-solutions"></a>1. forgatókönyv: A fő adatbázis megoldások
+### <a name="scenario-1-major-database-solutions"></a>1. forgatókönyv: Fő adatbázis-megoldások
 
 Fontolja meg egy éles adatbázis-kiszolgáló, mint például az SQL Server vagy az Oracle által támogatott magas rendelkezésre állású. Kritikus fontosságú éles alkalmazások és a felhasználók ehhez az adatbázishoz függenek. A Vészhelyreállítási terv esetében a rendszer támogatja az alábbiakat lehet szükség:
 
@@ -82,21 +82,21 @@ A vész-helyreállítási terv szükség lehet az adatbázis biztonsági mentés
 
 NoSQL-adatbázisok, például a mongodb-hez, emellett támogatja a [replikák](https://docs.mongodb.com/manual/replication/) a redundancia biztosítása érdekében. A magas rendelkezésre állást a replikák szolgálnak.
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>2. forgatókönyv: Egy olyan fürtjét, redundáns virtuális gépek
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>2. forgatókönyv: Redundáns virtuális gépek
 
 Érdemes lehet a munkaterhelés kezeli a virtuális gépek, amelyek a redundancia és a terheléselosztás. Egy példa, egy régióban üzembe helyezve, Cassandra-fürtjére. Az ilyen típusú architektúra már biztosít egy magas szintű redundancia a régión belül. Azonban a számítási feladatok védelmét a regionális szintű meghibásodása, érdemes szét a fürt két régióban, vagy egy másik régióba rendszeres biztonsági mentések készítése.
 
-### <a name="scenario-3-iaas-application-workload"></a>3. forgatókönyv: IaaS alkalmazás számítási feladatait
+### <a name="scenario-3-iaas-application-workload"></a>3. forgatókönyv: IaaS-alkalmazás számítási feladatait
 
 Tekintsük át az IaaS-alkalmazás számítási feladatait. Ez az alkalmazás Előfordulhat például, egy Azure-beli virtuális gépen egy jellemző éles üzemi számítási feladatot. A webalkalmazás-kiszolgáló vagy a fájlkiszolgáló a tartalom és más erőforrások, a hely lehet. A személyre szabott üzleti alkalmazások, a virtuális gépen, amely tárolja az adatokat, erőforrások és alkalmazásállapot a Virtuálisgép-lemezek is lehet. Ebben az esetben fontos, hogy rendszeresen a biztonsági mentések igénybe vehet. Biztonsági mentés gyakorisága a virtuális gép számítási jellege kell alapulnia. Például ha az alkalmazás naponta fut, és módosítja az adatokat, majd a biztonsági mentést kell fordítani óránként.
 
 Egy másik példa a jelentéskészítő kiszolgáló, amely más forrásokból származó adatokat kér le, és összesített jelentéseket hoz létre. A virtuális gép vagy lemez elvesztését elvesztését, a jelentések vezethet. Azonban esetleg futtassa újra a jelentéskészítési folyamat és a kimenet újbóli létrehozása. Ebben az esetben nem igazán rendelkezik adatvesztést, akkor is, ha a jelentéskészítő kiszolgáló elérte a vészhelyzet. Ennek eredményeképpen előfordulhat, hogy rendelkezik a magasabb szintű részét a jelentéskészítő kiszolgálón az adatok elvesztése. Ebben az esetben a kevésbé gyakori biztonsági mentései költségek csökkentése érdekében lehetőség.
 
-### <a name="scenario-4-iaas-application-data-issues"></a>4. forgatókönyv: IaaS alkalmazás adatokkal kapcsolatos problémák
+### <a name="scenario-4-iaas-application-data-issues"></a>4. forgatókönyv: IaaS-alkalmazás adatokkal kapcsolatos problémák
 
 IaaS alkalmazásproblémák adatokat egy másik lehetőség. Érdemes lehet olyan alkalmazás, amely kiszámítja, tárolja és szolgálja ki a kritikus fontosságú kereskedelmi forgalomban beszerezhető adatok, például a díjszabásról. Az alkalmazás új verziójának kellett egy szoftverfrissítési programhiba, amelynek helytelenül számított díjszabását, és a meglévő, a platform által kiszolgált kereskedelmi adatok sérültek. Itt a legjobb megoldás érdekében, hogy az alkalmazás- és a korábbi verziójának visszaállítása. Engedélyezéséhez hajtsa végre a rendszer rendszeres biztonsági mentést.
 
-## <a name="disaster-recovery-solution-azure-backup"></a>Vész-helyreállítási megoldást: az Azure Backup 
+## <a name="disaster-recovery-solution-azure-backup"></a>Vész-helyreállítási megoldást: Azure Backup 
 
 [Az Azure Backup](https://azure.microsoft.com/services/backup/) használatos biztonsági mentések és a Vészhelyreállítás, és együttműködik az [felügyelt lemezek](../articles/virtual-machines/windows/managed-disks-overview.md) , valamint [nem felügyelt lemezek](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks). Biztonsági mentési feladat idő-alapú biztonsági mentések, könnyű VM-helyreállítás és a biztonsági másolatok megőrzési házirendeket is létrehozhat. 
 
@@ -152,7 +152,7 @@ Kövesse az alábbi lépéseket a virtuális gépek biztonsági másolatainak en
 
 1.  A biztonsági mentési szabályzat konfigurálása, és válassza ki a virtuális gép ugyanazon a felhasználói felületről.
 
-1.  Győződjön meg arról, hogy a Backup szolgáltatás ügynöke telepítve van a virtuális gépen. Ha a virtuális gép létrehozása az Azure-katalógus-lemezkép használatával, majd a Backup-ügynök már telepítve van. Egyéb (azaz ha egyéni rendszerkép használatával), kövesse az utasításokat a [Virtuálisgép-ügynök telepítése a virtuális gépen](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
+1.  Győződjön meg arról, hogy a Backup szolgáltatás ügynöke telepítve van a virtuális gépen. Ha a virtuális gép létrehozása az Azure-katalógus-lemezkép használatával, majd a Backup-ügynök már telepítve van. Egyéb (azaz ha egyéni rendszerkép használatával), kövesse az utasításokat a [Virtuálisgép-ügynök telepítése a virtuális gépen](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 
 1.  Győződjön meg arról, hogy a virtuális gép lehetővé teszi, hogy a biztonsági mentési szolgáltatás függvény hálózati kapcsolattal. Kövesse az utasításokat [hálózati kapcsolat](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 

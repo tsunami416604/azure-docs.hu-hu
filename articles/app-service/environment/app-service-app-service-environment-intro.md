@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5a06e2577468baa6f3e46f838db11f1925ec0e1d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 205e61634a902ef052f665c65f2b67a66e6fe598
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271606"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728227"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az App Service környezet v1
 
@@ -29,7 +29,7 @@ ms.locfileid: "53271606"
 > 
 
 ## <a name="overview"></a>Áttekintés
-App Service-környezet van egy [prémium] [ PremiumTier] csomag lehetőséget a szolgáltatás [Azure App Service](../app-service-web-overview.md) biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít, amely Az Azure App Service-alkalmazások nagy méretben, beleértve a Web Apps, Mobile Apps és API-alkalmazások  
+App Service-környezet van egy [prémium] [ PremiumTier] csomag lehetőséget a szolgáltatás [Azure App Service](../overview.md) biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít, amely Az Azure App Service-alkalmazások nagy méretben, beleértve a Web Apps, Mobile Apps és API-alkalmazások  
 
 App Service Environment-környezetek ideálisak igénylő alkalmazások és szolgáltatások:
 
@@ -88,7 +88,7 @@ Az App Service-környezet használata az expressroute-tal, részletek: a követk
 <!-- LINKS -->
 [PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
 [MoreInfoOnVirtualNetworks]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePlan]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[AppServicePlan]: ../overview-hosting-plans.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
 [LogicApps]: https://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/

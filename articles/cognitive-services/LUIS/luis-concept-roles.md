@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105564"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547745"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>A minták entitás szerepkör a környezeti altípus
 Ezek az entitások csak a felhasznált nevesített, környezetfüggő altípusainak [minták](luis-concept-patterns.md).
@@ -45,6 +45,16 @@ Az entitás- és szerepkör csúcsos zárójelek között, között `{}`. Az ent
 
 
 [!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+
+## <a name="example-role-for-entities"></a>Az entitások például szerepkör
+
+A szerepkör az imént kontextusban megismert elhelyezését egy entitás az utterance (kifejezés) belül. Akkor a leghatékonyabb, ha az utterance (kifejezés) rendelkezik az adott entitás egynél több. A legegyszerűbb például bármely entitástípus, megkülönböztetni a, és a helyről. A hely sok különböző entitástípusok jelölhető ki. 
+
+Egy példa használati esetekhez átviteléhez egy alkalmazott egy részlegből egy másikba minden részleg esetén a lista egy elemének. Példa: 
+
+`Move [PersonName] from [Department:from] to [Department:to]`. 
+
+A visszaadott előrejelzésbe mindkét részleg entitások a JSON-válasz lesznek visszaadva, és a szerepkör nevének valamennyi tartalmazza. 
 
 ## <a name="roles-with-prebuilt-entities"></a>Szerepkörök az előre összeállított entitások
 

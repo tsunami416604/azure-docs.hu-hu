@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 1d1811549978d78a8dddad8e89895fdf605ed02b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1393dd32aea8cb6d348092ea1fc56752f659beab
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341898"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717874"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure Stack-tár: Különbségek és szempontok
 
@@ -34,8 +34,8 @@ Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbs
 | Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Felhőalapú SMB-fájlmegosztások támogatott|Még nem támogatott
-|Az Azure storage service encryption az inaktív adatok|256 bites AES-titkosítás|A BitLocker 128 bites AES-titkosítás
-|Tárfiók típusa|Általános célú és az Azure blob storage-fiókok|Általános célú csak.
+|Az Azure storage service encryption az inaktív adatok|256 bites AES-titkosítás. Támogatja a titkosítást, felhasználó által kezelt kulcsok használata a Key Vaultban.|BitLocker 128 bites AES-titkosítást. Titkosítás az ügyfél által kezelt kulcsok használata nem támogatott.
+|Tárfiók típusa|Általános célú V1, V2 és Blob storage-fiókok|Csak általános célú V1.
 |Replikációs beállítások|Helyileg redundáns tárolás, georedundáns tárolás, georedundáns írásvédett tárolás és zónaredundáns tárolás|Helyileg redundáns tárolás.
 |Prémium szintű Storage|Teljes mértékben támogatott.|Bővítheti, de nincs teljesítményszint vagy garantálja.
 |Felügyelt lemezek|Prémium és standard szintű támogatott|1808 vagy újabb verzió használata esetén támogatott.
@@ -44,11 +44,14 @@ Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbs
 |Blob pillanatkép-másolás lap|Biztonsági mentés nem felügyelt virtuális Géphez csatolt Azure lemezeken futó virtuális gépek támogatott|Még nem támogatott.
 |Blob növekményes pillanatkép-másolás lap|Prémium és standard oldala az Azure-blobok támogatott|Még nem támogatott.
 |A blob Storage tárolási rétegek|Gyakori és ritka elérésű és archív tárolási szintek.|Még nem támogatott.
-A blob Storage a helyreállítható törlés|Előzetes verzió|Még nem támogatott.
+|A blob Storage a helyreállítható törlés|Általános elérhető|Még nem támogatott.
 |Blob maximális mérete|8 TB|1 TB
 |Lapblob oldal méretét|512 bájt|4 KB
 |Tábla partíciós kulcs és a sor kulcsméret|1024 karakter hosszúságú (2048 bájt)|400 karakter (800 bájt)
-|BLOB-pillanatkép|Egy blob pillanatképeinek maximális számát. nem korlátozódik.|Egy blob pillanatképeinek maximális száma 1000.|
+|BLOB-pillanatkép|Egy blob pillanatképeinek maximális számát. nem korlátozódik.|Egy blob pillanatképeinek maximális száma 1000.
+|Tárolás az Azure AD-hitelesítés|Előzetes verzióban|Még nem támogatott.
+|Blobok nem módosítható|Általános elérhető|Még nem támogatott.
+|Tűzfal- és tárolási virtuális hálózati szabályok|Általános elérhető|Még nem támogatott.|
 
 A storage-mérőszámok különbségek is vannak:
 
@@ -61,7 +64,17 @@ Azure Stack Storage a következő verziók támogatottak:
 
 Az Azure Storage szolgáltatási API-kkal:
 
-az 1802-frissítés vagy újabb:
+1811 frissítés vagy újabb verzió:
+
+ - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+ - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
+ - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+
+az 1802 frissítés 1809 Update:
 
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
@@ -79,6 +92,12 @@ Az Azure Storage felügyeleti API-k szolgáltatásaihoz:
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
+Korábbi verziók:
+
+ - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ 
 ## <a name="sdk-versions"></a>SDK-verziókra
 
 Az Azure Stack storage a következő ügyfélkódtárak támogatja:

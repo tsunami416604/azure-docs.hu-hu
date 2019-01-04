@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dddb42f53d4bb59113df937799bd4de10d31491c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5102f2b43819c279d0087754b29a616812e5a5f2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338779"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556560"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Forgatókönyv: Integrálhatja az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -33,7 +33,7 @@ A IEF adatokat küld a jogcímeket, valamint adatokat fogad újra a jogcím. A R
 
 A kapott jogcímek később segítségével módosítsa a folyamat végrehajtása.
 
-A kapcsolati érvényesítési profil is tervezhet. További információkért lásd: [forgatókönyv: integrálása a REST API-t az Azure AD B2C felhasználói interakciósorozatban szereplő cseréje jogcímek a felhasználói bevitel auditáló](active-directory-b2c-rest-api-validation-custom.md).
+A kapcsolati érvényesítési profil is tervezhet. További információkért lásd: [forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő](active-directory-b2c-rest-api-validation-custom.md).
 
 A forgatókönyv a következő, hogy a felhasználók a profilszerkesztés hajt végre, ha azt szeretné:
 
@@ -45,7 +45,7 @@ A forgatókönyv a következő, hogy a felhasználók a profilszerkesztés hajt 
 
 - Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
 - REST API-végpont használatával kommunikálhat. Ez az útmutató egy egyszerű Azure-függvény alkalmazás webhook használja példaként.
-- *Ajánlott*: végezze el a [REST API-ellenőrzésként exchange forgatókönyv jogcímek](active-directory-b2c-rest-api-validation-custom.md).
+- *Ajánlott*: Végezze el a [REST API-ellenőrzésként exchange forgatókönyv jogcímek](active-directory-b2c-rest-api-validation-custom.md).
 
 ## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Készítse elő a REST API-függvénye
 
@@ -79,7 +79,7 @@ return request.CreateResponse<ResponseContent>(
 
 Azure-függvényalkalmazás megkönnyíti a függvény URL-címére, amely tartalmazza az azonosító az adott függvény. Ebben az esetben a URL-je: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Használhatja a teszteléshez.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>2. lépés: Az RESTful API jogcímcsere konfigurálása TrustFrameworExtensions.xml fájlban technikai profil
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>2. lépés: A TrustFrameworExtensions.xml fájlban technikai profil RESTful API jogcímcsere konfigurálása
 
 Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigurációját. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProvider>` elemet.
 
@@ -97,6 +97,7 @@ Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigur�
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
@@ -133,7 +134,7 @@ Az igényt `city` még nem határozott bármilyen környezetben a sémában. Adj
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>. 4. lépés: Egy vezénylési lépés a a profil szerkesztése felhasználói interakciósorozatban szereplő TrustFrameworkExtensions.xml közé a REST-szolgáltatás jogcímcsere
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>4. lépés: Egy vezénylési lépés a profil szerkesztése felhasználói interakciósorozat TrustFrameworkExtensions.xml a REST szolgáltatás jogcímcsere közé
 
 Adjon hozzá egy lépéssel a profil szerkesztése felhasználói interakciósorozat, ha a felhasználó már hitelesített (vezénylési lépésekből 1 – 4 a következő XML formátumú), és a felhasználó már rendelkezik a frissített profil adatait (5. lépés).
 

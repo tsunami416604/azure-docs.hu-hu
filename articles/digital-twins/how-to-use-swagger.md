@@ -1,21 +1,22 @@
 ---
-title: Az Azure digitális Twins Swagger használatának megismerése |} A Microsoft Docs
-description: Az Azure digitális Twins generáljon a swaggerrel
+title: Az Azure digitális Twins referencia a Swagger használatának megismerése |} A Microsoft Docs
+description: Segédanyagok az Azure digitális Twins Swagger használatának megértéséhez.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/31/2018
 ms.author: adgera
-ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624250"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975644"
 ---
-# <a name="use-azure-digital-twins-swagger"></a>Az Azure digitális Twins generáljon a swaggerrel
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
 Minden üzembe helyezett Azure digitális Twins-példány saját automatikusan generált Swagger dokumentációja tartalmazza.
 
@@ -34,19 +35,19 @@ Swagger az API-t, amely tartalmaz egy interaktív összegzést tartalmaz:
 * Példa a válasz információk érvényesíti, és erősítse meg a HTTP-válaszok.
 * Hiba adatok.
 
-A swagger, amelyek segítik a fejlesztési és tesztelési, a felügyeleti API-hívások eszköz.
+A swagger, amelyek segítik a fejlesztési és tesztelési, az Azure digitális Twins felügyeleti API-hívások eszköz.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Leírások
 
-Referenciaanyag az automatikusan létrehozott ismerteti a fontos fogalmakat és objektummodellt.
+Az automatikusan generált Swagger-referenciaanyag választékát kínálja a fontos fogalmakat, elérhető felügyeleti API-végpont és az egyes hálózatiobjektum-modellje, amelyek segítik a fejlesztési és tesztelési leírását gyors áttekintést.
 
 Rövid összefoglaló ismerteti az API-t.
 
 ![Swagger felső][1]
 
-Core API objektummodellt is megtalálható.
+Felügyeleti API-objektum modellek is megtalálható.
 
 ![Swagger-modellek][2]
 
@@ -58,7 +59,7 @@ A generált Swagger objektummodellt kényelmesek, tekintse meg az összes elérh
 
 ## <a name="endpoint-summary"></a>A végpont összegzése
 
-Swagger is minden olyan végpontok, az API-t alkotó alapos áttekintést nyújt.
+Swagger is a felügyeleti API-k alkotó összes végpont alapos áttekintést nyújt.
 
 Minden felsorolt végpont adatokat is tartalmaz a szükséges kérelem, mint például a:
 

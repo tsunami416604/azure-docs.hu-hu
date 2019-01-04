@@ -1,5 +1,5 @@
 ---
-title: Az Azure Time Series Insights explorer adatfeltárás – Fedezze fel az adatokat az Azure Time Series Insights explorer |} A Microsoft Docs
+title: Fedezze fel az adatokat az Azure Time Series Insights explorer |} A Microsoft Docs
 description: Ez a cikk ismerteti a böngészőben az Azure Time Series Insights explorer segítségével gyorsan megjelenítheti a globális a big data- és az IoT-környezet ellenőrzése.
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273136"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556594"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Az Azure Time Series Insights explorer
 Ez a cikk ismerteti a különböző funkciók és lehetőségek a Time Series Insights explorer webalkalmazáson belül. Használhatja a Time Series Insights explorer webböngészőben az adatok vizualizációkat hozhat létre.
@@ -37,7 +37,7 @@ Ez a videó videó a Time Series Insights épül:
 ## <a name="prerequisites"></a>Előfeltételek
 
 A Time Series Insights explorer használata előtt a következőket kell tennie:
-- Egy Time Series Insights-környezet létrehozása
+- Time Series Insights-környezet létrehozása
 - Adja meg a hozzáférést a fiókjához a környezetben
 - Gyűjthet adatokat, és tárolja az eseményforrás hozzáadása
 

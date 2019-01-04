@@ -9,23 +9,23 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 8132e2ad986bbdc5056d16714eab6dd8394f0f08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05af52ab492fcfe509b547efdd182a366642b9ed
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718571"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754407"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>3. oktatóanyag: Gyakori kimondottszöveg-formátumok hozzáadása
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Oktatóanyag: Gyakori minta sablon utterance (kifejezés) formátumok hozzáadása
 
 Az oktatóanyagban mintákat használunk a szándék- és entitás-előrejelzések pontosságának javításához kevesebb kimondottszöveg-példa megadásával. A minta egy sablonként szolgáló kimondottszöveg-példán alapul, amelynek a szintaxisával azonosíthatók az entitások és a figyelmen kívül hagyható szövegek. A minta a kifejezések egyeztetését gépi tanulással ötvözi.  A sablonként szolgáló kimondottszöveg-példa a szándékot tartalmazó kimondott szövegekkel együtt segít megérteni a LUIS számára, hogy milyen kimondott szövegek felelnek meg a szándéknak. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Meglévő oktatóalkalmazás használata 
+> * Példa-alkalmazás importálása 
 > * Szándék létrehozása
 > * Betanítás
 > * Közzététel
@@ -37,11 +37,11 @@ Az oktatóanyagban mintákat használunk a szándék- és entitás-előrejelzés
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+## <a name="import-example-app"></a>Példa-alkalmazás importálása
 
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+Ehhez a következő lépések szükségesek:
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
 

@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: da105be19f7d546e530298f87974fe7f3f78989f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7326cf6a1153d5dc1f7e5f910a376a21b05db606
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012215"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725440"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Az Apache Hadoop YARN-alkalmazásnaplók elérése a Windows-alapú HDInsight
 Ez a dokumentum ismerteti, hogyan érhető el a naplókat [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) alkalmazásokat, amelyek befejezte egy Windows-alapú Apache hadoop-fürtön az Azure HDInsight
 
-> [!IMPORTANT]
-> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés Apache Hadoop YARN-alkalmazásnaplók a HDInsight Linux-alapú Apache hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md)
->
+> [!IMPORTANT]  
+> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés Apache Hadoop YARN-alkalmazásnaplók a HDInsight Linux-alapú Apache hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 
 ### <a name="prerequisites"></a>Előfeltételek
 * Egy Windows-alapú HDInsight-fürt.  Lásd: [létrehozása Windows-alapú Apache Hadoop-fürtök a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN idővonal-kiszolgáló
-A <a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN idővonal-kiszolgáló</a> általános információkat biztosít a befejezett alkalmazásokkal, valamint a keretrendszer-specifikus alkalmazással kapcsolatos adatok két különböző felületen. Konkrétan:
+A <a href="https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN idővonal-kiszolgáló</a> általános információkat biztosít a befejezett alkalmazásokkal, valamint a keretrendszer-specifikus alkalmazással kapcsolatos adatok két különböző felületen. Konkrétan:
 
 * Tárolásához és lekéréséhez általános alkalmazással kapcsolatos információk a HDInsight-fürtökön lett engedélyezve 3.1.1.374 verziójával vagy újabb.
 * A keretrendszer-specifikus alkalmazás információk összetevője az idővonal-kiszolgáló jelenleg nem áll rendelkezésre a HDInsight-fürtökön.
@@ -75,7 +74,7 @@ A YARN ResourceManager felhasználói felülete a fürt átjárócsomópontjáva
 3. A felső menüben kattintson a **irányítópult**. Megjelenik egy oldal nyit meg egy új böngésző nevű lapot **HDInsight Lekérdezéskonzol**.
 4. A **HDInsight Lekérdezéskonzol**, kattintson a **Yarn felhasználói felületén**.
 
-[YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
+[YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315

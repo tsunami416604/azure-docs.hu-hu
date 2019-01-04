@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877184"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720716"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 Rugalmas adatbázis-tranzakciók az Azure SQL Database (SQL-adatbázis) teszik lehetővé, amelyek több adatbázist az SQL DB tranzakciókat futtatni. Az SQL Database rugalmas adatbázis-tranzakciók forrásoszlopokat használó .NET-alkalmazások érhetők el, valamint integrálhatja a szolgáltatást a megszokott programozási felület használatával a [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályokat. A szalagtár lekéréséhez lásd: [.NET-keretrendszer 4.6.1-es verziója (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -30,7 +30,7 @@ A helyszínen ilyen esetben általában szükséges a Microsoft elosztott tranza
 Az SQL Database rugalmas adatbázis-tranzakciók lehetővé teszik az alkalmazások számos különböző SQL-adatbázisokban tárolt adatok atomi módosítja. Az előzetes verzió a C# és a .NET ügyféloldali fejlesztési környezeteket összpontosít. A T-SQL használatával kiszolgálóoldali élmény tervezett későbbi időpontra.  
 Rugalmas adatbázis-tranzakciók célozza meg benne a következő esetekben:
 
-* Több adatbázis-alkalmazások az Azure-ban: Ebben a forgatókönyvben a adatok vertikális particionálása az SQL dB-ben több adatbázis közötti úgy, hogy a különböző adatfajták által a különböző adatbázisok találhatók. Egyes műveletekhez szükséges adatokat, amelyet a két vagy több adatbázis módosításait. Az alkalmazás használ a rugalmas adatbázis-tranzakciók koordinálja a módosításokat adatbázis között, és biztosítja az atomitást.
+* Több adatbázis-alkalmazások az Azure-ban: Ebben az esetben az adatok vertikális particionálása az SQL dB-ben több adatbázis közötti úgy, hogy a különböző típusú adatok különböző adatbázist tartalmazó. Egyes műveletekhez szükséges adatokat, amelyet a két vagy több adatbázis módosításait. Az alkalmazás használ a rugalmas adatbázis-tranzakciók koordinálja a módosításokat adatbázis között, és biztosítja az atomitást.
 * Szilánkokra osztott adatbázis-alkalmazások az Azure-ban: Ebben a forgatókönyvben az adatréteg használja a [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md) és önkiszolgáló-horizontális particionálás az adatok horizontális particionálásához az SQL dB-ben több adatbázis közötti. Egy neves használati eset szükség, ha módosításokat span bérlők atomi módosításokat végrehajtani a horizontálisan skálázott több-bérlős alkalmazás. Úgy gondolja, hogy például a másikra, két különböző adatbázisok elhelyezkedhet egyetlen bérlő át. Egy másik eset, minden részletre kiterjedő horizontális skálázási egy nagy-bérlőjéhez, amely viszont általában azt jelenti, hogy néhány atomi művelet kell használni a ugyanazt bérlőhöz tartozó több adatbázis között a Stretch kapacitásszükségletének befogadásához. Egy harmadik funkcióban atomi frissítései adatbázisok közötti replikált adatokra hivatkoznak. Ezek a sorok mentén atomi, tranzakciós, művelet most is koordinált az előzetes verziójának több adatbázis között.
   Rugalmas adatbázis-tranzakciók használja kétfázisú végrehajtási tranzakció atomitást adatbázis között. Egy jó megoldás lehet kisebb, mint 100 adatbázisnak egyszerre egy tranzakción belül érintő tranzakciók. Ezek a korlátok nem kényszerítettek, de az egyik teljesítmény- és a sikerességi arányokat, ha ezek a korlátok túllépése esetén csökkenhet a rugalmas tranzakciók számíthat.
 
@@ -92,7 +92,7 @@ Az SQL Database rugalmas adatbázis-tranzakciók is támogatja az elosztott tran
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>A .NET telepítése az Azure Cloud Services
-Az Azure .NET-alkalmazások üzemeltetése több ajánlatok biztosít. A különböző ajánlatok összehasonlítása megtalálható [Azure App Service-ben, Cloud Services és Virtual Machines összevetése](../app-service/choose-web-site-cloud-service-vm.md). Ha a vendég operációs rendszer az ajánlat kisebb, mint a .NET 4.6.1 rugalmas tranzakciók szükséges, a vendég operációs rendszer frissítése a 4.6.1 szüksége. 
+Az Azure .NET-alkalmazások üzemeltetése több ajánlatok biztosít. A különböző ajánlatok összehasonlítása megtalálható [Azure App Service-ben, Cloud Services és Virtual Machines összevetése](../app-service/overview-compare.md). Ha a vendég operációs rendszer az ajánlat kisebb, mint a .NET 4.6.1 rugalmas tranzakciók szükséges, a vendég operációs rendszer frissítése a 4.6.1 szüksége. 
 
 Az Azure App Services a vendég operációs rendszer frissítése jelenleg nem támogatottak. Az Azure Virtual Machines, egyszerűen csak jelentkezzen be a virtuális Gépre, és futtassa a telepítőt a legújabb .NET-keretrendszer. Az Azure Cloud Services az üzembe helyezés az indítási feladatok, például újabb verzióját kell. A fogalmakat és lépéseket vannak dokumentálva [.NET telepítése egy Cloud Service szerepkör](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 
@@ -123,17 +123,17 @@ Rugalmas adatbázis-tranzakciók több különböző logikai kiszolgálók az Az
 A következő PowerShell-parancsmagok segítségével kezelheti a kiszolgálók közötti kommunikáció kapcsolatokat az a rugalmas adatbázis-tranzakciók:
 
 * **Új AzureRmSqlServerCommunicationLink**: Ez a parancsmag segítségével hozzon létre egy új kommunikációs kapcsolatot két Azure SQL Database logikai kiszolgáló között. A kapcsolat a szimmetrikus ami azt jelenti, hogy mindkét kiszolgálón is kezdeményezhető a tranzakciók a kiszolgálóval.
-* **Get-AzureRmSqlServerCommunicationLink**: Ez a parancsmag használatával lekérheti az meglévő kommunikációs kapcsolatok és azok tulajdonságait.
+* **Get-AzureRmSqlServerCommunicationLink**: Ez a parancsmag használatával lekérheti a meglévő kommunikációs kapcsolatok és azok tulajdonságait.
 * **Remove-AzureRmSqlServerCommunicationLink**: Ez a parancsmag segítségével távolítsa el a meglévő kommunikációs kapcsolat. 
 
 ## <a name="monitoring-transaction-status"></a>Tranzakció állapotának figyelése
-Az SQL DB dinamikus felügyeleti nézetekkel (DMV-kkel) használatával a figyelő és a rugalmas adatbázisban folyamatban lévő tranzakciók állapotáról. Az SQL dB-ben az elosztott tranzakciók összes DMV-vel kapcsolatos tranzakciók szükségesek. Dinamikus felügyeleti nézetek megfelelő listáját itt találja: [tranzakció kapcsolódó dinamikus felügyeleti nézetek és függvények (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Az SQL DB dinamikus felügyeleti nézetekkel (DMV-kkel) használatával a figyelő és a rugalmas adatbázisban folyamatban lévő tranzakciók állapotáról. Az SQL dB-ben az elosztott tranzakciók összes DMV-vel kapcsolatos tranzakciók szükségesek. Dinamikus felügyeleti nézetek megfelelő listáját itt találja: [Dinamikus felügyeleti nézetek és függvények (Transact-SQL) a tranzakció kapcsolatos](https://msdn.microsoft.com/library/ms178621.aspx).
 
 A dinamikus felügyeleti nézetek különösen hasznosak:
 
-* **sys.DM\_tran\_aktív\_tranzakciók**: a jelenleg aktív tranzakciók és állapotukat sorolja fel. A UOW-Értékkel (munkaegység) oszlop azonosíthatja a különböző alárendelt tranzakciók, amely ugyanazon az elosztott tranzakció tartozik. Az azonos, elosztott tranzakción belül minden tranzakció végrehajtása UOW-Értékkel azonos értéket. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms174302.aspx) további információt.
-* **sys.DM\_tran\_adatbázis\_tranzakciók**: tranzakció, például a naplóban lévő tranzakció elhelyezését további információkat tartalmaz. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms186957.aspx) további információt.
-* **sys.DM\_tran\_zárolások**: azt ismerteti, amely jelenleg nincsen lekötve folyamatban lévő tranzakciók által a zárolása. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms190345.aspx) további információt.
+* **sys.DM\_tran\_aktív\_tranzakciók**: A jelenleg aktív tranzakciók és állapotukat sorolja fel. A UOW-Értékkel (munkaegység) oszlop azonosíthatja a különböző alárendelt tranzakciók, amely ugyanazon az elosztott tranzakció tartozik. Az azonos, elosztott tranzakción belül minden tranzakció végrehajtása UOW-Értékkel azonos értéket. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms174302.aspx) további információt.
+* **sys.DM\_tran\_adatbázis\_tranzakciók**: Tranzakció, például a naplóban lévő tranzakció elhelyezését további információkat tartalmaz. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms186957.aspx) további információt.
+* **sys.DM\_tran\_zárolások**: Az aktuálisan folyamatban lévő tranzakciók által tartott zárolások arról nyújt tájékoztatást. Tekintse meg a [DMV-dokumentáció](https://msdn.microsoft.com/library/ms190345.aspx) további információt.
 
 ## <a name="limitations"></a>Korlátozások
 Jelenleg a következő korlátozások vonatkoznak az SQL DB rugalmas adatbázis-tranzakciók:

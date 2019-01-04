@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Blob storage, Azure Storage a statikus webhely üzemeltetése'
+title: 'Oktatóanyag: A Blob storage, Azure Storage statikus webhely üzemeltetése'
 description: Megtudhatja, hogyan konfigurálhatja a statikus webhely üzemeltetése egy storage-fiókját, és a egy statikus webhelyet üzembe helyezni az Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 12/31/2018
 ms.author: tamram
 ms.custom: seodec18
-ms.openlocfilehash: d007f7f1aeee2b4397e5b9e68c0e48108772fb32
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: eb472465c0d35150f2a13563058905751219411d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109467"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976460"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Oktatóanyag: Blob Storage-statikus webhely üzemeltetése
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Oktatóanyag: A Blob Storage statikus webhely üzemeltetése
 
 Ez az oktatóanyag egy sorozat első része. Abban megismerheti, hogyan készíthet és helyezhet üzembe egy statikus webhely az Azure Storage. Ha elkészült, kell, hogy a felhasználók nyilvánosan statikus webhely. 
 
@@ -78,7 +78,7 @@ Ezután hozzon létre egy "Hello World" weboldal a Visual Studio Code használat
     ```
 
 1. Hozzon létre az alapértelmezett hiba történt a fájl *404. html*.
-1. Nyissa meg *error.html* a szerkesztőben, illessze be a következő szöveget a fájlba, és mentse:
+1. Nyissa meg *404. html* a szerkesztőben, illessze be a következő szöveget a fájlba, és mentse:
 
     ```
     <h1>404</h1>

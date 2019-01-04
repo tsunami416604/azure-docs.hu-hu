@@ -1,18 +1,17 @@
 ---
 title: Teljesítménnyel kapcsolatos javaslatok az Azure Database for postgresql-hez
 description: Ez a cikk ismerteti a teljesítménnyel kapcsolatos javaslatok egy kérheti le az Azure Database for postgresql-hez.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 46a4e69ecb08276e12ccc197de2d3ad838628b78
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378601"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548101"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for postgresql-hez
 
@@ -24,23 +23,23 @@ ms.locfileid: "49378601"
 A teljesítménnyel kapcsolatos javaslatok funkció a felső indexeket hozhat létre az Azure Database for PostgreSQL-kiszolgáló a teljesítmény javítása, amely azonosítja. Index ajánlások előállításához, a szolgáltatás figyelembe veszi különféle adatbázis jellemzőit, beleértve a séma- és a számítási feladatok Query Store által jelentett módon. Után minden teljesítmény javaslat megvalósítása, ügyfelek kell teljesítménytesztelési ezeket a módosításokat hatásának vizsgálatában. 
 
 ## <a name="permissions"></a>Engedélyek
-**Tulajdonos** vagy **közreműködői** elemzése a teljesítménnyel kapcsolatos javaslatok funkció használatával futtatásához szükséges engedéllyel.
+A Teljesítménnyel kapcsolatos javaslatok funkcióval futtatott elemzéshez **Tulajdonos** vagy **Közreműködő** jogosultság szükséges.
 
 ## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
-A [teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) funkció elemzi a számítási feladatok indexek azonosíthatja a teljesítmény javítása a lehetséges a kiszolgáló között.
+A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) funkció elemzi a szerveren futó számítási feladatokat a potenciálisan javítható teljesítményű indexek azonosításához.
 
-Nyissa meg **teljesítménnyel kapcsolatos javaslatok** származó a **támogatás + hibaelhárítás** a menüsávon a PostgreSQL-kiszolgáló az Azure portál oldalán szakaszában.
+Nyissa meg a PostgreSQL-kiszolgálója Azure portáloldalán lévő menüsáv **Támogatás és hibaelhárítás** részén lévő **Teljesítménnyel kapcsolatos javaslatok** menüpontot.
 
-![Teljesítménnyel kapcsolatos javaslatok kezdőlap](./media/concepts-performance-recommendations/performance-recommendations-landing-page.png)
+![A Teljesítménnyel kapcsolatos javaslatok kezdőlapja](./media/concepts-performance-recommendations/performance-recommendations-landing-page.png)
 
-Válassza ki **elemzés** , és válasszon egy adatbázist. Ennek hatására elkezdődik az elemzés. A számítási feladatok függően ez eltarthat néhány percig végrehajtásához. Ha elkészült az elemzés, a portálon értesítést lesz.
+Jelölje ki az **Elemzés** funkciót, és válasszon egy adatbázist. Ez elindítja az elemzést. A számítási feladatok függően ez eltarthat néhány percig végrehajtásához. Amikor az elemzés elkészült, a portálon megjelenik egy értesítés.
 
-A **teljesítménnyel kapcsolatos javaslatok** ablakban megjelennek a javaslatok listája, ha bármelyik találhatók. Javaslat jelennek meg a megfelelő információ **adatbázis**, **tábla**, **oszlop**, és **Index mérete**.
+A **Teljesítménnyel kapcsolatos javaslatok** ablakban megjelenik a javaslatok listája (ha vannak). A javaslat információt jelenít meg a releváns **adatbázisról**, **tábláról**, **oszlopról** és **indexméretről**.
 
 ![Teljesítmény javaslatok új lap](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-A javaslat megvalósítása, másolja a lekérdezés szövege, és futtathatja az ügyfél által választott.
+A javaslat megvalósításához másolja ki a lekérdezés szövegét, és futtassa azt a választott ügyfélről.
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [megfigyelés és finomhangolás](concepts-monitoring.md) az Azure Database for postgresql-hez.
+- További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).
 

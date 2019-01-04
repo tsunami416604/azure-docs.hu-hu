@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Az
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1df09a885d6c636ff6bd4bcbec03d27ff7b44ff9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836984"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789246"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -63,9 +63,9 @@ Válassza ki, hogy mit szeretne replikálni, és hová.
 1. Kattintson a **Helyreállítási tárak** > tár elemre.
 2. Az Erőforrás menüben kattintson a **Site Recovery** > **Az infrastruktúra előkészítése** > **Védelmi cél** lehetőségre.
 3. A **Védelmi cél** ablakban válassza ki, hogy mit szeretne migrálni.
-    - **VMware**: Válassza az **Azure-ba** > **Igen, a következővel: VMWare vSphere hipervizorral** lehetőséget.
-    - **Fizikai gép**: Válassza az **Azure-ba** > **Nem virtualizált/egyéb** lehetőséget.
-    - **Hyper-V**: Válassz az **Azure-ba** > **Igen, a következővel: Hyper-V** lehetőséget. Ha a Hyper-V virtuális gépeket egy VMM kezeli, válassza az **Igen** lehetőséget.
+    - **VMware**: Válassza ki **az Azure-bA** > **Igen, a VMWare vSphere Hipervizorral**.
+    - **Fizikai gép**: Válassza ki **az Azure-bA** > **nem virtualizált/egyéb**.
+    - **A Hyper-V**: Válassza ki **az Azure-bA** > **Igen, a Hyper-V-vel**. Ha a Hyper-V virtuális gépeket egy VMM kezeli, válassza az **Igen** lehetőséget.
 
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
@@ -119,7 +119,7 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A feladatátvétel indítása előtt a virtuális gép replikációja leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: Virtuális gép replikációja leáll a feladatátvétel indítása előtt. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
 
 Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Bizonyára észrevette, hogy hosszabb a feladatátvételi teszt ideje a fizikai kiszolgálókon, a VMware Linux gépeken, a nem DHCP-vel kiosztott IP-című VMware virtuális gépeken, valamint a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépeken: storvsc, vmbus, storflt, intelide, atapi.
 

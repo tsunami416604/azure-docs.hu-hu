@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 0187ef3d3b6853c1d1225fc9f208f2508372978d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425727"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994858"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -49,7 +49,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Milyen erőforrások jelenleg háttérkészlet részeként támogatottak?
 
-Háttérkészletek összeállítható a hálózati adapterek, a virtual machine scale sets, nyilvános IP-címek, belső IP-címek, teljesen minősített neve (FQDN), és több-bérlős háttéralkalmazások hasonlóan az Azure Web Apps. Application Gateway háttérkészlet érintett tagjai nem egy rendelkezésre állási csoporthoz vannak társítva. Háttérkészletek tagjai lehetnek, fürtök és adatközpontok között, vagy Azure-on kívül mindaddig, amíg az IP-kapcsolattal rendelkeznek.
+Háttérkészletek összeállítható a hálózati adapterek, a virtual machine scale sets, nyilvános IP-címek, belső IP-címek, teljesen minősített neve (FQDN), és több-bérlős háttéralkalmazások hasonlóan az Azure App Service-ben. Application Gateway háttérkészlet érintett tagjai nem egy rendelkezésre állási csoporthoz vannak társítva. Háttérkészletek tagjai lehetnek, fürtök és adatközpontok között, vagy Azure-on kívül mindaddig, amíg az IP-kapcsolattal rendelkeznek.
 
 ### <a name="what-regions-is-the-service-available-in"></a>Mely régiókban érhető el a szolgáltatást?
 
@@ -88,9 +88,11 @@ Csak egy nyilvános IP-cím egy application gateway esetében támogatott.
 Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra.
 Ha például egy application gateway beállítása három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat szükséges. Ebben az esetben az application gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
 
-### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>K. Üzembe helyezhetem egynél több Application Gateway-erőforrás egyetlen alhálózatra? **
+### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>K. Üzembe helyezhetem egynél több Application Gateway-erőforrás egyetlen alhálózatra?
 
 Igen, egy adott Application Gateway telepítési több példánya mellett, telepíthet egy meglévő alhálózatot, amely tartalmazza a különböző Application Gateway erőforrás egy másik egyedi Application Gateway erőforrás.
+
+Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton nem támogatott. Ezenkívül az automatikus skálázás engedélyezve van, egy alhálózatot csak egy alkalmazás-átjáróval rendelkezhet.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Az Application Gateway támogatja az x-továbbított – a fejlécek?
 
@@ -103,6 +105,8 @@ Az Application Gateway is szúr be a X-eredeti-állomásfejlécet, amely tartalm
 Új Application Gateway v1 Termékváltozatot telepítések esetén is igénybe vehet akár 20 percig kiépítése. Példány mérete és száma módosításai nem zavaró, és ez idő alatt az átjáró aktív marad.
 
 V2 szintű Termékváltozatot központi telepítések kiépítése körülbelül 5-6 percig is eltarthat.
+
+Az Application Gateway támogatja az x-továbbított – a fejlécek?
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -210,7 +214,7 @@ Igen. -Kapcsolatának kiürítéséhez módosítása tagok találhatóak a hátt
 
 ### <a name="what-are-application-gateway-sizes"></a>Mik azok az application gateway méretét?
 
-Az Application Gateway jelenleg három méretben érhető el: **Kicsi**, **Közepes** és **Nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+Az Application Gateway jelenleg három méretben érhető el: **Kis**, **Közepes**, és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -316,9 +320,9 @@ Diagnosztikai naplózás keresztül figyelt WAF, további információ a diagnos
 
 Nem, a észlelési mód csak naplózza a forgalmat, amely a WAF-szabály aktiválva.
 
-### <a name="how-do-i-customize-waf-rules"></a>Hogyan szabható testre a WAF-szabályok?
+### <a name="can-i-customize-waf-rules"></a>WAF-szabályok testreszabása
 
-Igen, a WAF-szabályok is testre szabható, bővebben lásd a Testreszabás [testreszabása WAF-szabálycsoportjainak és szabályok](application-gateway-customize-waf-rules-portal.md)
+Igen, a WAF-szabályok is testre szabható. További információkért lásd: [testreszabása WAF-szabálycsoportjainak és szabályok](application-gateway-customize-waf-rules-portal.md)
 
 ### <a name="what-rules-are-currently-available"></a>Milyen szabályok jelenleg elérhetők
 

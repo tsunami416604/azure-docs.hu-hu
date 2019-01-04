@@ -7,12 +7,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: f49f56d57de6cdcb7c5e9b557ed897d17a6bf7fb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c93b53a78891eaf46e5455bd13198f7b9bd90903
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079177"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808011"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási helyzetek
 Ez a cikk számos gyakori alkalmazási helyzetek áttekintést nyújt az Azure Cosmos DB.  Ebben a cikkben szereplő ajánlások szolgálhat a kiindulási pontként, a Cosmos DB az alkalmazás fejlesztését.   
@@ -27,7 +27,7 @@ Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásá
 ## <a name="introduction"></a>Bevezetés
 [Az Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott adatbázis-szolgáltatása. A szolgáltatás célja, hogy az ügyfelek számára, hogy rugalmasan (és egymástól függetlenül) átviteli sebesség és tárterület tetszőleges számú földrajzi régió között. Az Azure Cosmos DB, az első globálisan elosztott adatbázis-szolgáltatás a piacon elérhető még ma, hogy kínál átfogó [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/cosmos-db/) mely magában foglalja az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia. 
 
-Az Azure Cosmos DB egy globális elosztott, többmodelles adatbázis, amely az alkalmazások és az alkalmazási helyzetek széles van használatban. A jó választás [kiszolgáló nélküli](https://azure.com/serverless) alkalmazás, amely sorrendben az ezredmásodperc válaszidőt kell, és gyors és globálisan kell. Több adatmodellt is támogat, (kulcs-érték, dokumentum, diagram vagy oszlopos) és több API-t, az adatok eléréséhez, többek között [MongoDB API-val](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md), és [ Táblák API](table-introduction.md) natív módon, és a egy bővíthető módon. 
+Az Azure Cosmos DB egy globális elosztott, többmodelles adatbázis, amely az alkalmazások és az alkalmazási helyzetek széles van használatban. A jó választás [kiszolgáló nélküli](https://azure.com/serverless) alkalmazás, amely sorrendben az ezredmásodperc válaszidőt kell, és gyors és globálisan kell. Több adatmodellt is támogat, (kulcs-érték, dokumentum, diagram vagy oszlopos) és több API-t, az adatok eléréséhez, többek között [Azure Cosmos DB MongoDB API-](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md), és [Tables API](table-introduction.md) natív módon, és a egy bővíthető módon. 
 
 Az alábbiakban néhány attribútum az Azure Cosmos DB, győződjön meg arról, hogy kiválóan alkalmas nagy teljesítményű alkalmazások globális léptéke.
 
@@ -69,7 +69,7 @@ Emellett az Azure Cosmos DB-ben tárolt adatok integrálható a HDInsight a big 
 ## <a name="gaming"></a>Játékok
 Az adatbázisszint játékalkalmazások felhőtermékekkel. A modern játékok grafikus feldolgozási mobile/konzol ügyfeleken, de a felhőt, például játékon belüli, a közösségimédia-integráció és a ranglistákat testre szabott és személyre szabott tartalmat továbbít. Játékok gyakran szükséges ezredmásodperces olvasási és írási műveletek egy vonzó biztosítanak a játékbeli felhasználói élményt. A játék-adatbázist kell gyors és kérelemarányok jelentkező hatalmas terheléseket kezelje az új játékok indul, és a funkciófrissítéseket.
 
-Az Azure Cosmos DB például a játékok által használt [a the Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) által [Next Games](https://www.nextgames.com/), és [a Halo 5: Őrei](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Az Azure Cosmos DB a játék fejlesztők számára a következő előnyöket nyújtja:
+Az Azure Cosmos DB például a játékok által használt [a the Walking Dead: No Man's Land című](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) által [Next Games](https://www.nextgames.com/), és [Halo 5: Őrei](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Az Azure Cosmos DB a játék fejlesztők számára a következő előnyöket nyújtja:
 
 * Az Azure Cosmos DB lehetővé teszi, hogy a teljesítmény skálázását felfelé vagy lefelé rugalmasan. Ez lehetővé teszi a frissítési profil és -statisztikák a több tucat egyidejű játékélményt nyújthat millió kezelése azáltal, hogy egyetlen API hívással játékokat.
 * Az Azure Cosmos DB ezredmásodperces olvasási támogatja, és írja a játék során bármilyen késedelmes jelentések elkerülése érdekében.
@@ -115,7 +115,7 @@ Vagy, ha többet szeretne azokról az ügyfelekről a Cosmos DB használatával,
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha az Azure Cosmos DB ügyfeleket és a cégeket összekapcsolásához India.
 * [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). NewOrbit az Azure Cosmos DB repülési vesz igénybe.
 * [Az Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Az affinio az AWS az Azure Cosmos DB, nagy mennyiségű közösségi adatot.
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). A the Walking Dead: No Man's Land című játék soars az Azure Cosmos DB által támogatott #1-re.
+* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). A the Walking Dead: No Man's Land című játék soars Azure Cosmos DB által támogatott #1-re.
 * [A Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Hogyan Halo 5 miként valósította meg a Azure Cosmos DB használatával közösségi játékfunkciókat.
 * [Cortana Analytics katalógusban](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Cortana Analytics katalógusban – egy Azure Cosmos DB épülő méretezhető közösségi webhelyére.
 * [Pofonegyszerű](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Rendszerintegrátor vezető betekintést enged multinacionális cégek globális percek alatt, a rugalmas felhőalapú technológiák terén.

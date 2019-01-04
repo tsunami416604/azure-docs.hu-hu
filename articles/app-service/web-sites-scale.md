@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 98d3d1f6fc0f2f30196f360811808579dfbab312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251052"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727479"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Az Azure-beli alkalmazás vertikális felskálázása
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan skálázhatja őket az Azure App Service-ben. Két m
 * [Horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Az alkalmazást futtató Virtuálisgép-példányok számának növelése.
   Horizontálisan akár 20 példány, hogy a tarifacsomagtól függően. [App Service Environment-környezetek](environment/intro.md) a **elkülönített** szint tovább növeli a horizontális felskálázás count 100 példány. További információ a horizontális felskálázás: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md). Itt megtudhatja, hogyan az automatikus skálázást, amely a példányok száma automatikusan alapján előre meghatározott szabályok és ütemezések méretezését.
 
-A méretezési csoport beállításai csak érvényesek, és hatással vannak az összes alkalmazása másodpercig is eltarthat a [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+A méretezési csoport beállításai csak érvényesek, és hatással vannak az összes alkalmazása másodpercig is eltarthat a [App Service-csomag](../app-service/overview-hosting-plans.md).
 Nem kívánnak, hogy módosítania kell a kódot, vagy az alkalmazás újbóli üzembe helyezése.
 
 A díjszabást és az egyes App Service-csomagokkal kapcsolatos további információkért lásd: [App Service díjszabása](https://azure.microsoft.com/pricing/details/web-sites/).  

@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 6bcea43fb21cae6f000f3522b498dfc6c0f6d9a7
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4d14569219c8db503fc91f52a6867de85373aa05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166217"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724385"
 ---
-# <a name="find-endpoint-region-with-nodejs"></a>Keresse meg a végpont régió, a node.js használatával
+# <a name="programmatically-find-endpoint-region-with-nodejs"></a>Programozott módon található végponti régió a node.js használatával
 Ha rendelkezik a LUIS alkalmazás és a LUIS előfizetés-azonosító, Észreveheti, hogy melyik régiót kell végpont lekérdezések használatával.
 
 > [!NOTE] 
-> A teljes Node.js-megoldás érhető el a [ **LUIS-Samples** GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
+> A teljes Node.js-megoldás érhető el a [ **Azure-minták** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/nodejs/).
 
 ## <a name="luis-endpoint-query-strategy"></a>A LUIS végpont lekérdezés stratégia
 Minden egyes LUIS végpont lekérdezés van szükség:

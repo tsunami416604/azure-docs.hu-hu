@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341406"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713231"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions)-diagnosztika
 
@@ -25,7 +25,7 @@ Több lehetőség a problémák diagnosztizálásához [Durable Functions](durab
 
 [Az Application Insights](../../application-insights/app-insights-overview.md) diagnosztika és monitorozás az Azure Functions ajánlott módja. Durable Functions Ugyanez vonatkozik. Hogyan használható az Application Insights a függvényalkalmazásban áttekintését lásd: [figyelése az Azure Functions](../functions-monitoring.md).
 
-Az Azure Functions-Durable Extension is bocsát ki *követési események* , amelyek engedélyezik a vezénylések végrehajtásának teljes körű nyomon követését. Ezek található, és megkérdezi a használatával a [Application Insights-elemzési](../../application-insights/app-insights-analytics.md) eszköz az Azure Portalon.
+Az Azure Functions-Durable Extension is bocsát ki *követési események* , amelyek engedélyezik a vezénylések végrehajtásának teljes körű nyomon követését. Ezek található, és megkérdezi a használatával a [Application Insights-elemzési](../../azure-monitor/app/analytics.md) eszköz az Azure Portalon.
 
 ### <a name="tracking-data"></a>Követési adatok
 

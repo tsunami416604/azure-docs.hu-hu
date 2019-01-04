@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a099fe371198da7d3cda3146bbd9668c4d49285
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343649"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581646"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Használjon olyan riasztást, egy Azure Automation-runbook elindítása
 
@@ -33,7 +33,7 @@ Riasztás a runbookot hívja, a tényleges hívás esetén, a webhook HTTP POST-
 |---------|---------|---------|
 |[Klasszikus metrikariasztás](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld, ha bármely platformszintű metrika megfelel egy adott feltételnek. Például, ha az érték **százalékos processzorhasználatról** a virtuális gép értéke nagyobb, mint **90** az elmúlt 5 percben.| [Metrikaalapú riasztás adattartalom-osztályséma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
 |[Tevékenységnapló-riasztás](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld minden olyan új esemény, az Azure tevékenységnaplójában megegyezik a megadott feltételeknek. Például, hogy amikor egy `Delete VM` művelethez az szükséges, **myProductionResourceGroup** , vagy ha egy új Azure Service Health-esemény az egy **aktív** állapot jelenik meg.| [Műveletnapló-adattartalom riasztási séma](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Közel valós idejű metrikariasztás](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés gyorsabban metrikákhoz kapcsolódó riasztások küldése, ha egy vagy több platform-szintű metrikákat megfelel egy bizonyos feltételnek. Például, hogy amikor értéke **processzorhasználatról** a virtuális gép értéke nagyobb, mint **90**, és az értéke **bejövő** nagyobb, mint **500 MB-os** az elmúlt 5 perc.| [Közel valós idejű metrikaalapú riasztási adattartalom-séma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Közel valós idejű metrikariasztás](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés gyorsabban metrikákhoz kapcsolódó riasztások küldése, ha egy vagy több platform-szintű metrikákat megfelel egy bizonyos feltételnek. Például, hogy amikor értéke **processzorhasználatról** a virtuális gép értéke nagyobb, mint **90**, és az értéke **bejövő** nagyobb, mint **500 MB-os** az elmúlt 5 perc.| [Közel valós idejű metrikaalapú riasztási adattartalom-séma](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 Mivel az adatok különböző típusú riasztás által biztosított különböző, az egyes riasztástípusok eltérően kell kezelni. A következő szakaszban megismerheti, hogyan kezelje a különböző típusú riasztásokat runbook létrehozása.
 

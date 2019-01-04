@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 45bf9bbffdbba22336da08c81df069ce0267686f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 40df81d496e04ab2d549923cc0645afb8eddaf57
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092660"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724453"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Adatok átvitele tools for Azure Stack-tároló használata
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A Microsoft Azure Stack a storage-szolgáltatás, a lemezek, blobok, táblák, üzenetsorok és fiók felügyeleti funkciókat biztosít. Az Azure storage-eszközöket is használhatja, ha szeretné kezelni, vagy helyezze át az adatokat, vagy az Azure Stack-storage-ból. Ez a cikk áttekintést a rendelkezésre álló eszközöket.
 
@@ -48,7 +48,7 @@ A követelmények határozza meg, amely a következő eszközök működik a leg
 
     A virtuális fájlrendszer illesztőprogramja az Azure Blob Storage, amely lehetővé teszi, hogy a meglévő blokkblobok adataival a tárfiókban lévő hozzáférnie a Linux-fájlrendszer. 
 
-Miatt a tárolási szolgáltatások az Azure és az Azure Stack közötti különbségeket van néhány konkrét követelmények az egyes eszközök a következő szakaszok ismertetik. Azure Stack storage és az Azure storage összehasonlításáért lásd: [Azure Stack-tároló: különbségek és szempontok](azure-stack-acs-differences.md).
+Miatt a tárolási szolgáltatások az Azure és az Azure Stack közötti különbségeket van néhány konkrét követelmények az egyes eszközök a következő szakaszok ismertetik. Azure Stack storage és az Azure storage összehasonlításáért lásd: [Azure Stack-tároló: Különbségek és szempontok](azure-stack-acs-differences.md).
 
 ## <a name="azcopy"></a>AzCopy
 
@@ -56,16 +56,17 @@ Az AzCopy parancssori segédprogram az adatmásolás egyszerű parancs használa
 
 ### <a name="download-and-install-azcopy"></a>Töltse le és telepítse az Azcopyval
 
-Az AzCopy segédprogram két verziója: a Windows és Linux rendszeren az AzCopy az AzCopy.
+Nincsenek az AzCopy segédprogram két verziója: Az AzCopy Windows és Linux rendszeren az AzCopy.
 
  - **AzCopy Windowson**
-    - Töltse le az AzCopy támogatott verzióját az Azure Stackhez. Telepítse, és ugyanúgy, mint az Azure használata az AzCopy az Azure Stacken. További tudnivalókért lásd: [az AzCopy Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
-        - Az 1802 frissítés vagy újabb verziók [töltse le az AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
-        - A korábbi verziók [töltse le az AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20170417).
+    - Töltse le az AzCopy támogatott verzióját az Azure Stackhez. Telepítse, és ugyanúgy, mint az Azure használata az AzCopy az Azure Stacken. További információkért lásd: [az AzCopy Windows](../../storage/common/storage-use-azcopy.md).
+        - A 1811 frissítés és újabb verziók [töltse le az AzCopy 7.3.0](https://aka.ms/azcopyforazurestack20171109).
+        - A korábbi verziók (a 1809 1802-es frissítés) [töltse le az AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
 
  - **AzCopy Linuxon**
 
-    - AzCopy Linuxon futó Azure Stack 1802-es frissítés és újabb verzióin támogatja. Telepítse, és ugyanúgy, mint az Azure használata az AzCopy az Azure Stacken. További tudnivalókért lásd: [AzCopy linuxon](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
+    - Telepítse, és ugyanúgy, mint az Azure használata az AzCopy az Azure Stacken. További információkért lásd: [AzCopy linuxon](../../storage/common/storage-use-azcopy-linux.md).
+    - A korábbi verziók (1802 való 1809 frissítések), tekintse meg a [telepítési lépések AzCopy 7.1-es és korábbi verzióiban](../../storage/common/storage-use-azcopy-linux.md#installation-steps-for-azcopy-71-and-earlier-versions).
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Adatátvitel az AzCopy parancs példák
 
@@ -75,36 +76,36 @@ Az alábbi példák hajtsa végre az adatok másolása, és az Azure Stack-blobo
 
 **Windows**
 
-````AzCopy
+```shell
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount.blob.local.azurestack.external/mycontainer \
     --destination /mnt/myfiles \
     --source-key <key> \
     --recursive
-````
+```
 
 ### <a name="upload-single-file-to-virtual-directory"></a>Virtuális könyvtár egyetlen fájl feltöltése
 
 **Windows**
 
-```AzCopy
+```shell
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source /mnt/myfiles/abc.txt \
     --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
     --dest-key <key>
-````
+```
 
 ### <a name="move-data-between-azure-and-azure-stack-storage"></a>Adatok áthelyezése Azure és az Azure Stack-tárolás között
 
@@ -112,13 +113,13 @@ Az Azure storage és az Azure Stack közötti aszinkron adatátvitel nem támoga
 
 **Windows**
 
-````AzCopy
+```shell
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
     --destination https://myaccount2.blob.core.windows.net/myContainer/ \
@@ -126,7 +127,7 @@ azcopy \
     --dest-key <key2> \
     --include "abc.txt" \
     --sync-copy
-````
+```
 
 ### <a name="azcopy-known-issues"></a>Az Azcopy ismert problémák
 
@@ -217,28 +218,27 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-````
+```
 
 ### <a name="powershell-known-issues"></a>Ismert problémák PowerShell
 
 Aktuális kompatibilis az Azure PowerShell modul verzióját az Azure Stack a felhasználói műveletek 1.2.11. Ez eltér az Azure PowerShell legújabb verzióját. Ez a különbség a tárolási szolgáltatások művelet hatással van:
 
-* A visszaadott érték formátuma `Get-AzureRmStorageAccountKey` verzióban 1.2.11 kettő olyan tulajdonság tartozik: `Key1` és `Key2`, míg a jelenlegi Azure verziót tartalmazó összes fiókkulcsok tömböt ad vissza.
+A visszaadott érték formátuma `Get-AzureRmStorageAccountKey` verzióban 1.2.11 kettő olyan tulajdonság tartozik: `Key1` és `Key2`, míg a jelenlegi Azure verziót tartalmazó összes fiókkulcsok tömböt ad vissza.
 
-   ```
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.4, and later versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Value[0]
+```powershell
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.4, and later versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.3.2, and previous versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Key1
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.3.2, and previous versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Key1
+```
 
-   ```
-
-   További információkért lásd: [Get-AzureRmStorageAccountKey](https://docs.microsoft.com/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0).
+További információkért lásd: [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey).
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -265,7 +265,7 @@ A parancsfájl futtatása előtt győződjön meg arról, hogy képes sikeresen 
 4. Megjelölés végrehajtható, mint a szkriptet, szükség esetén: `chmod +x my_storage_sample.sh`
 5. A szkript végrehajtása. Ha például a Bash: `./my_storage_sample.sh`
 
-```bash
+```azurecli
 #!/bin/bash
 # A simple Azure Stack storage example script
 
@@ -296,7 +296,7 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-````
+```
 
 ## <a name="microsoft-azure-storage-explorer"></a>A Microsoft Azure storage Explorerrel
 
@@ -317,20 +317,20 @@ Az Azure Stack development Kit a blobEndpoint kell `myaccount.blob.local.azurest
 
 Vegye figyelembe, hogy accountKey és sasToken csak lehet konfigurált egyszerre csak egy. Tárfiók kulcsa van megadva, a hitelesítő adatok konfigurációs fájl esetén a következő formátumban: 
 
-```text  
-    accountName myaccount 
-    accountKey myaccesskey== 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```
+accountName myaccount 
+accountKey myaccesskey== 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 Megosztott hozzáférési jogkivonatot kap, amikor a következő formátumban kell megadni a hitelesítő adatok konfigurációs fájl:
 
-```text  
-    accountName myaccount 
-    sasToken ?mysastoken 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```  
+accountName myaccount 
+sasToken ?mysastoken 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 860d602ecba257ed9015d1e080e5dcb1aa5ab872
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9c85ee23f433e7b14278d8cc0ca3bff3e1ab4b94
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624624"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752571"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API használatának első lépései
 
@@ -48,6 +48,11 @@ Részletes útmutatásért lásd: a [az Azure Active Directory reporting API el�
 
 A Microsoft Graph API-végpont az auditnaplókhoz `https://graph.microsoft.com/beta/auditLogs/directoryAudits` és a Microsoft Graph API-végpont a bejelentkezések `https://graph.microsoft.com/beta/auditLogs/signIns`. További információkért lásd: a [naplózási API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) és [be API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
+Emellett használhatja a [Identity Protection kockázati események API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) programozott hozzáférést a Microsoft Graph használatával biztonsági észlelések eléréséhez. További információkért lásd: [Ismerkedés az Azure Active Directory Identity Protection és Microsoft Graph](../identity-protection/graph-get-started.md). 
+
+> [!NOTE]
+>  A **https:\/\/graph.windows.net\/\<bérlőnevet\>\/jelentések\/**  végpont elavult. Az új API-végpontokat, programozott módon érheti el a tevékenység és a biztonsági jelentések a fent leírt használja.
+  
 ## <a name="apis-with-graph-explorer"></a>A Graph Explorer API-k
 
 Használhatja a [MSGraph explorer](https://developer.microsoft.com/graph/graph-explorer) ellenőrizze a bejelentkezést és naplózási adatok API-t. Ügyeljen arra, hogy jelentkezzen be a fiókjába mind a bejelentkezési gomb a Graph Explorer felhasználói felületén, és állítsa be **AuditLog.Read.All** és **Directory.Read.All** látható módon a bérlőhöz tartozó engedélyeket.   

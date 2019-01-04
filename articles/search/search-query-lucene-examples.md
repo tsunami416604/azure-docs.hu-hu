@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317158"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631838"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Példák Lucene szintaxisú lekérdezésekre, amellyel az Azure Search speciális lekérdezések
 Lekérdezések az Azure Search létrehozásánál lecserélheti az alapértelmezett [egyszerű lekérdezéselemzőt](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) szélesebb körben alkalmazhatóvá vált a [Lucene lekérdezéselemző az Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) határozhatja meg a speciális és speciális lekérdezés definíciók. 
@@ -174,7 +174,7 @@ Authentication beállítását a, minél nagyobb a boost tényező, több megfel
 
 ## <a name="example-6-regex"></a>6. példa: reguláris kifejezés
 
-Keresés reguláris kifejezés közötti útjaiban perjeleket a "/", a dokumentált tartalma alapján egyezést talál az [RegExp osztály](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
+Keresés reguláris kifejezés közötti útjaiban perjeleket a "/", a dokumentált tartalma alapján egyezést talál az [RegExp osztály](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
 
 Ebben a lekérdezésben, keresse meg a kifejezés vezető vagy beosztott rendelkező feladatok: ' search = business_title:/(Sen| Június) ior / ".
 

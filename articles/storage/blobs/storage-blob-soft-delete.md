@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 0e7487525dc23482cbd3029b626e7bb30dd51b50
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398560"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633385"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Helyreállítható Törlés az Azure Storage-BLOB
 Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
@@ -170,26 +170,29 @@ Miután visszavonni a pillanatképek egy blobhoz törlését, rákattinthat **el
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 ### <a name="powershell"></a>PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Helyreállítható törlés engedélyezéséhez a blob-ügyfelet szolgáltatás tulajdonságainak frissítése. Az alábbi példa egy alegységénél fiókokat egy előfizetésben a helyreállítható törlés lehetővé teszi:
 
 ```powershell
-Set-AzureRmContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzureRMStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 7
+Set-AzContext -Subscription "<subscription-name>"
+$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
+$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
 A helyreállítható törlés kapcsolta be a következő paranccsal ellenőrizheti:
 
 ```powershell
-$MatchingAccounts | Get-AzureStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 Véletlenül törölt blobok helyreállítása, hívható meg törölt azokat a blobokat. Ne feledje, hogy a hívó **Blob törlésének visszavonása**, mind az aktív és a helyreállíthatóan törölt blobok visszaállítja az összes társított helyreállíthatóan törölt pillanatképek aktívként. Az alábbi példa a törlés visszavonásának meghívja a minden helyreállíthatóan törölt és aktív tárolóban lévő blobokat:
 ```powershell
 # Create a context by specifying storage account name and key
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Get the blobs in a given container and show their properties
-$Blobs = Get-AzureStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
+$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
 $Blobs.ICloudBlob.Properties
 
 # Undelete the blobs
@@ -198,8 +201,8 @@ $Blobs.ICloudBlob.Undelete()
 A helyreállítható törlés currrent adatmegőrzési házirend megkereséséhez használja a következő parancsot:
 
 ```azurepowershell-interactive
-   $account = Get-AzureRmStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzureStorageServiceProperty -ServiceType Blob -Context $account.Context
+   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
 ### <a name="azure-cli"></a>Azure CLI 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314159"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631895"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Az Azure portal Azure Search szolgáltatás figyelése
 
@@ -70,7 +70,7 @@ A műveletnaplók exportálhatja a szolgáltatás és a metrikák az előző sza
 
 
 ### <a name="enabling-monitoring"></a>Figyelés engedélyezése
-Nyissa meg az Azure Search szolgáltatás az [az Azure portal](http://portal.azure.com) alatt a Monitorozás engedélyezése lehetőséget.
+Nyissa meg az Azure Search szolgáltatás az [az Azure portal](https://portal.azure.com) alatt a Monitorozás engedélyezése lehetőséget.
 
 Válassza ki az exportálandó adatokat: Naplók, mérőszámok vagy mindkettőt. Másolja a tárfiókhoz, küldje el az eseményközpontok felé, vagy exportálhatja, és a Log Analytics.
 

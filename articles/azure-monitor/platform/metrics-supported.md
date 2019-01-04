@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 19582c59460644d8599034afeaafde8735c04ec3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53441009"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549632"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -1572,4 +1572,4 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 ## <a name="next-steps"></a>További lépések
 * [További információ a metrikák az Azure monitorban](../../azure-monitor/platform/data-collection.md)
 * [Riasztások létrehozása metrikákhoz](../../azure-monitor/platform/alerts-overview.md)
-* [A storage, az Event Hubs vagy a Log Analytics metrikák exportálása](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [A storage, az Event Hubs vagy a Log Analytics metrikák exportálása](../../azure-monitor/platform/diagnostic-logs-overview.md)

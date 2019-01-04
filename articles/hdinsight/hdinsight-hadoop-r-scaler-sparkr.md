@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386900"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974845"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a HDInsight egyesítése
 
@@ -21,7 +21,7 @@ Ez a dokumentum bemutatja, hogy miként jelezhetők előre a járatok érkezési
 
 Bár mindkét csomagot futtatja, az Apache Hadoop Spark-végrehajtó motor, azok hozzáférése a memóriában lévő adatok megosztása, tesztelhető, mindegyik a saját megfelelő Spark-munkamenetet. Ezzel a problémával ML Server egy jövőbeli verziójában, amíg a megoldás, hogy egymást nem átfedő Spark-munkameneteket, valamint az exchange-adatok köztes fájlok között. Az itt leírt utasításokat mutatja, hogy ezek a követelmények egyszerű eléréséhez.
 
-Ebben a példában először megosztott egy előadás Strata 2016 a Mario Inchiosa és Roni Burd. Ez az előadás címen található [létrehozása egy méretezhető adatelemzési Platform r](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+Ebben a példában először megosztott egy előadás Strata 2016 a Mario Inchiosa és Roni Burd. Ez az előadás címen található [létrehozása egy méretezhető adatelemzési Platform r](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
 A kód eredetileg íródott ML Server Spark futtat egy HDInsight-fürtön az Azure-ban. Azonban egy parancsfájl ScaleR és SparkR használatát keverése fogalma is érvényes a helyszíni környezetekben kontextusában.
 
@@ -29,9 +29,9 @@ Ez a dokumentum lépései azt feltételezik, hogy egy köztes szint alatt, és a
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és időjárási adatkészletek
 
-A flight data érhető el a [US government archívumok](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Emellett érhető el a zip [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+A flight data érhető el a [US government archívumok](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Emellett érhető el a zip [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Az időjárási adatok letölthető tömörített fájlként nyers formában, havonta, a [együttműködési és a felügyelet alá tárház](http://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában töltse le az adatokat a május 2007 – a 2012. December. Az óránkénti adatfájlokat használjon, és `YYYYMMMstation.txt` fájlt a zips belül. 
+Az időjárási adatok letölthető tömörített fájlként nyers formában, havonta, a [együttműködési és a felügyelet alá tárház](https://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában töltse le az adatokat a május 2007 – a 2012. December. Az óránkénti adatfájlokat használjon, és `YYYYMMMstation.txt` fájlt a zips belül. 
 
 ## <a name="setting-up-the-spark-environment"></a>A Spark környezet beállítása
 
@@ -41,7 +41,7 @@ Használja a következő kódot a Spark környezet beállításához:
 workDir        <- '~'  
 myNameNode     <- 'default' 
 myPort         <- 0
-inputDataDir   <- 'wasb://hdfs@myAzureAcccount.blob.core.windows.net'
+inputDataDir   <- 'wasb://hdfs@myAzureAccount.blob.core.windows.net'
 hdfsFS         <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
 # create a persistent Spark session to reduce startup times 
@@ -535,7 +535,7 @@ Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fe
 
 ## <a name="next-steps-and-more-information"></a>Következő lépések és további információ
 
-- Az Apache Spark Machine Learning-kiszolgáló használatának további információkért lásd: a [útmutató az első lépésekhez](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Az Apache Spark Machine Learning-kiszolgáló használatának további információkért lásd: a [útmutató az első lépésekhez](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
 
 - A Machine Learning-kiszolgáló általános információkért lásd: a [R – első lépések](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
 
@@ -543,6 +543,6 @@ Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fe
 
 SparkR használata további információkat lásd:
 
-- [Az Apache SparkR dokumentum](https://spark.apache.org/docs/2.1.0/sparkr.html)
+- [Az Apache SparkR dokumentum](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [SparkR áttekintése](https://docs.databricks.com/spark/latest/sparkr/overview.html) databricksből
+- [SparkR áttekintése](https://docs.databricks.com/spark/latest/sparkr/overview.html) databricksből.

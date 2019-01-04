@@ -3,27 +3,26 @@ title: Az Azure stack-beli szolgáltatásnév létrehozása |} A Microsoft Docs
 description: Ismerteti, hogyan lehet létrehozni egy szolgáltatásnevet, a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager-erőforrásokhoz való hozzáférés kezelésére használható.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: mattbriggs
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
-ms.author: sethm
+ms.date: 12/12/2018
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958314"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715829"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Alkalmazások hozzáférést biztosíthat az Azure Stack-erőforrások egyszerű szolgáltatások létrehozásával
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Egy alkalmazás-hozzáférés egy egyszerű szolgáltatásnév létrehozása az Azure Resource Managert használja, amely szerint adhat az Azure Stack-erőforrások. Egyszerű szolgáltatás lehetővé teszi a delegált engedélyeket használatával [szerepköralapú hozzáférés-vezérlés](azure-stack-manage-permissions.md).
 
@@ -52,7 +51,7 @@ Azure Stack konfigurált Active Directory módja határozza meg, hogyan hoz lét
 
 A lépéseket a hozzárendelése egy egyszerű szolgáltatást a szerepkör ugyanazt az Azure AD és az AD FS. Miután létrehozta az egyszerű szolgáltatás, [engedélyeket delegálhatnak](azure-stack-create-service-principals.md#assign-role-to-service-principal) , ha hozzárendeli egy szerepkörhöz.
 
-## <a name="create-a-service-principal-for-azure-ad"></a>Az Azure ad egyszerű szolgáltatás létrehozása
+## <a name="create-service-principal-for-azure-ad"></a>Az Azure ad egyszerű szolgáltatás létrehozása
 
 Ha az Azure Stack az Azure AD használja, mint az ügyfélidentitás-tárolóval, létrehozhat egy szolgáltatás egyszerű használja ugyanazokat a lépéseket, mint az Azure-ban, az Azure portal használatával.
 
@@ -95,11 +94,11 @@ Ha telepítette az Azure Stack az ügyfélidentitás-tárolóval, mint az AD FS 
 * Egyszerű szolgáltatás hozzárendelése szerepkörhöz.
 * Jelentkezzen be az egyszerű szolgáltatás identitás használatával.
 
-Az egyszerű szolgáltatás létrehozása a részletekért lásd: [az AD FS egyszerű szolgáltatás létrehozása](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
+Az egyszerű szolgáltatás létrehozása a részletekért lásd: [az AD FS egyszerű szolgáltatás létrehozása](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Az egyszerű szolgáltatás hozzárendelése szerepkörhöz
 
-Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, melyik szerepkör jelöli az alkalmazást a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
+Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, melyik szerepkör jelöli az alkalmazást a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 >[!NOTE]
 A szerepkör hatóköre egy előfizetés, erőforráscsoport vagy erőforrás szinten állíthatja be. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Egy alkalmazást egy erőforráscsoportot az Olvasó szerepkör például azt jelenti, hogy az alkalmazás tudja olvasni a az erőforrások az erőforráscsoportban.
@@ -114,9 +113,7 @@ Kövesse az alábbi lépéseket segítségképp szerepkört rendel egy egyszerű
 
 3. Válassza ki **hozzáférés-vezérlés (IAM)** az előfizetéshez.
 
-     ![Válassza ki a hozzáférés-vezérlés](./media/azure-stack-create-service-principal/image17.png)
-
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
 5. Válassza ki a az alkalmazáshoz hozzárendelni kívánt szerepkört.
 

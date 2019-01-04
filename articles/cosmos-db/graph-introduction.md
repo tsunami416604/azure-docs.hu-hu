@@ -8,14 +8,14 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 833b9e7ce65a566757c739feebdfc8e0f1d268e9
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077446"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976341"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Az Azure Cosmos DB bemutatása: Gremlin API
 
 Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Többmodelles adatbázis, amely támogatja a dokumentumokat, a kulcs-érték párokat, a gráfokat és az oszlopos adatmodelleket. Az Azure Cosmos DB Gremlin API segítségével gráfadatokat lehet tárolni, és műveleteket lehet rajtuk végezni. A Gremlin API segítségével gráfadatok modellezhetők és járhatók be.
 
@@ -24,7 +24,7 @@ A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyar
 ## <a name="what-is-a-graph-database"></a>Mi az a gráfadatbázis?
 Az adatok a való világban természetes módon kapcsolódnak egymáshoz. A hagyományos adatmodellezés az entitásokra fókuszál. Számos alkalmazás esetében szükséges az entitások és a kapcsolatok természetes modellezése is.
 
-A [gráf](https://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. 
+A [gráf](http://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. 
 
 * **Csúcsok** – A csúcsok diszkrét objektumokat jelölnek, például személyeket, helyeket vagy eseményeket. 
 

@@ -15,16 +15,16 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f8c3c770cb7e30bda16b4857d5b337923d2417d2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967895"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541557"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC-módosítások Tevékenységnaplók megtekintése
 
-Néha szüksége információ a szerepköralapú hozzáférés-vezérlés (RBAC) módosításokat, mint például a naplózás és hibaelhárítás céljából. A módosítások valaki módosít szerepkör-hozzárendeléseket vagy szerepkör-definíciók belül az előfizetések bármikor első bejelentkezve [Azure-tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Megtekintheti a vizsgálati naplók az elmúlt 90 napra vonatkozó összes RBAC-módosítások megtekintéséhez.
+Néha szüksége információ a szerepköralapú hozzáférés-vezérlés (RBAC) módosításokat, mint például a naplózás és hibaelhárítás céljából. A módosítások valaki módosít szerepkör-hozzárendeléseket vagy szerepkör-definíciók belül az előfizetések bármikor első bejelentkezve [Azure-tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md). Megtekintheti a vizsgálati naplók az elmúlt 90 napra vonatkozó összes RBAC-módosítások megtekintéséhez.
 
 ## <a name="operations-that-are-logged"></a>Naplózott műveletek
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: eb177852be273f1c9af06b1f9d85fbba4cc98567
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ae71fb9f509c39e871f4d1dfb29626be47bea4b9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845480"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790979"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V – Azure vészhelyreállítási recovery architektúrájáról
 
@@ -132,8 +132,8 @@ Miután a helyszíni infrastruktúra újra működik, visszaadhatja a. Feladat-v
 
 1. Elindít egy tervezett feladatátvételt az Azure-ból a helyszíni helyre:
     - **Minimalizálják az állásidőt**: Ha ezt a beállítást használja a Site Recovery szinkronizálja az adatokat a feladatátvétel előtt. Azt ellenőrzi, hogy megváltozott az adatblokkokat, és letölti azokat a helyszíni helyre, miközben az Azure virtuális gép megőrzi fut, minimálisra csökkentik az állásidőt. Manuálisan adja meg, hogy a feladatátvételt kell elvégezni, amikor az Azure virtuális gép leállt, bármely végső változásokat másolja, és a feladatátvétel indítása.
-    - **Teljes letöltés**: ezt a lehetőséget az adatok szinkronizálása a feladatátvétel során. Ez a beállítás a teljes lemez tölti le. Ez azért gyorsabban nincs ellenőrzőösszegek számítása, de több állásidőt. Használja ezt a beállítást, ha futtatja, a replika Azure virtuális gépek egy kis ideig, vagy ha a helyszíni virtuális gép törölve lett.
-    - **Virtuális gép létrehozása**: hajtja végre, vissza ugyanazon a virtuális Gépen vagy egy másik virtuális géphez ki. Megadhatja, hogy a Site Recovery a virtuális Gépet kell létrehoznia, ha még nem létezik.
+    - **Teljes letöltés**: Ez a beállítás az adatok szinkronizálása feladatátvétel során. Ez a beállítás a teljes lemez tölti le. Ez azért gyorsabban nincs ellenőrzőösszegek számítása, de több állásidőt. Használja ezt a beállítást, ha futtatja, a replika Azure virtuális gépek egy kis ideig, vagy ha a helyszíni virtuális gép törölve lett.
+    - **Virtuális gép létrehozása**: Választhatja azt, hogy hajtja végre, vissza ugyanazon a virtuális Gépen vagy egy másik virtuális géphez. Megadhatja, hogy a Site Recovery a virtuális Gépet kell létrehoznia, ha még nem létezik.
 
 2. Miután a kezdeti szinkronizálás befejezését követően válassza ki a feladatátvétel végrehajtásához. Miután ez befejeződik, bejelentkezhetnek a helyszíni virtuális Gépre, és ellenőrizze, hogy minden a várt módon működik. Az Azure Portalon látható, hogy az Azure virtuális gépek lett leállítva.
 3.  Ekkor véglegesíti a feladatátvételt, hogy hozzáférhessen a helyszíni virtuális gép újra számítási és a Befejezés.

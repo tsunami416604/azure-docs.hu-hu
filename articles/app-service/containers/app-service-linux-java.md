@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6f6dac37d1114e8a9faa16c07fd5c14a90a5b0fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407337"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976732"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -28,7 +28,7 @@ Ez az útmutató a főbb fogalmakat és a Linux App Service-ben használata Java
 
 ## <a name="logging-and-debugging-apps"></a>Bejelentkezés és hibakeresés alkalmazások
 
-Teljesítményjelentések készítésére, forgalom Vizualizációk és egészségügyi checkups eeach alkalmazás az Azure Portalon keresztül érhetők el. Tekintse meg a [diagnosztikai áttekintése az Azure App Service](/azure/app-service/app-service-diagnostics) eléréséhez, és ezek a diagnosztikai eszközök használatával kapcsolatban.
+Teljesítményjelentések készítésére, forgalom Vizualizációk és egészségügyi checkups eeach alkalmazás az Azure Portalon keresztül érhetők el. Tekintse meg a [diagnosztikai áttekintése az Azure App Service](/azure/app-service/overview-diagnostics) eléréséhez, és ezek a diagnosztikai eszközök használatával kapcsolatban.
 
 ## <a name="application-performance-monitoring"></a>Alkalmazásteljesítmény-figyelés
 
@@ -54,11 +54,11 @@ A konzol használatával, naplók folyamatos átvitele majd `az webapp log tail`
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-További információkért lásd: [folyamatos átviteli naplók az Azure CLI-vel](../web-sites-enable-diagnostic-log.md#streaming-with-azure-cli).
+További információkért lásd: [folyamatos átviteli naplók az Azure CLI-vel](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
 
 ### <a name="app-logging"></a>Alkalmazás-naplózás
 
-Engedélyezése [alkalmazásnaplózás](/azure/app-service/web-sites-enable-diagnostic-log#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása.
+Engedélyezése [alkalmazásnaplózás](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása.
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) nyomkövetés, is továbbíthatja, tekintse át az Azure Application Insights a nyomkövetések utasításai a naplózási keretrendszer konfigurációs [Ismerkedés a Java-nyomkövetési naplókat az Application Insights](/azure/application-insights/app-insights-java-trace-logs). 
 
@@ -173,9 +173,6 @@ Tomcat a Java adatbázis-kapcsolat (JDBC) vagy a Java adatmegőrzés API (JPA) h
 
 Vagy állítsa be a környezeti változókat az Azure Portalon az "Alkalmazás beállítások" panelen.
 
->[!NOTE]
-> Ha az Azure Database for Postgres használ, cserélje le a `ssl=true` a `sslmode=require` JDBC kapcsolati karakterláncban.
-
 Következő lépésként határozza meg, ha az adatforrás elérhető, több alkalmazást vagy a Tomcat servlet futó összes alkalmazás kell lennie.
 
 #### <a name="for-application-level-data-sources"></a>Alkalmazásszintű adatforrások: 
@@ -259,7 +256,7 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
 
     3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a `/home/tomcat/lib` mappát.
 
-    Az FTP-ügyfél segítségével azt is megteheti, töltse fel a JDBC-illesztővel. Kövesse az alábbi [vonatkozó, az FTP-hitelesítő adatok első](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+    Az FTP-ügyfél segítségével azt is megteheti, töltse fel a JDBC-illesztővel. Kövesse az alábbi [vonatkozó, az FTP-hitelesítő adatok első](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 2. Ha létrehozott egy kiszolgálószintű adatforrást, az App Service Linux alkalmazás újraindítása. Alaphelyzetbe állítja a tomcat `CATALINA_HOME` való `/home/tomcat/conf` és a frissített konfigurációt használja.
 

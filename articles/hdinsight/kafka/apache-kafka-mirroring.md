@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309038"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581028"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a Kafka on HDInsight az Apache Kafka-témakörökhöz replikáláshoz
 
@@ -22,7 +22,7 @@ ms.locfileid: "52309038"
 
 Ebben a példában tükrözés segítségével témakörök replikálása a HDInsight fürtök közötti. Mindkét fürt az Azure Virtual Network ugyanabban a régióban találhatók.
 
-> [!WARNING]
+> [!WARNING]  
 > Tükrözés nem lehet tekinteni hibatűrés megvalósítása a módszerrel. Az eltolás egy témakörön belül elemekre eltérőek a forrás- és a fürtök közötti, így az ügyfelek nem használhatják a két az felcserélhető.
 >
 > Ha a hibatűrés a témakörök replikálása a fürtön belül kell beállítania. További információkért lásd: [Apache Kafka on HDInsight – első lépések](apache-kafka-get-started.md).
@@ -47,11 +47,11 @@ Kafka-fürtök különböző hálózatokon között tükrözéséhez van szüks�
 
 * **Átjárók**: A hálózatok kommunikálhat a TCPIP szinten kell lennie.
 
-* **Névfeloldás**: A Kafka-fürtök minden egyes hálózati állomásnevek használatával csatlakozni egymáshoz képesnek kell lennie. Ez lehet szükség a tartománynévrendszer (DNS) kiszolgáló, az egyes kérelmek továbbítása a más hálózatokon konfigurált hálózatok.
+* **Névfeloldás**: A Kafka-fürtök, az egyes hálózatok csatlakozni egymáshoz állomásnevek használatával képesnek kell lennie. Ez lehet szükség a tartománynévrendszer (DNS) kiszolgáló, az egyes kérelmek továbbítása a más hálózatokon konfigurált hálózatok.
 
     A hálózathoz, a megadott automatikus DNS használata helyett egy Azure virtuális hálózat létrehozásakor meg kell adnia egy egyéni DNS-kiszolgáló és a kiszolgáló IP-címét. A virtuális hálózat létrehozása után, majd hozzon létre egy Azure virtuális gép által használt IP-címet, majd telepítenie és konfigurálnia kell DNS-szoftver rajta.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Hozzon létre, és az egyéni DNS-kiszolgáló konfigurálása a virtuális hálózatban a HDInsight telepítése előtt. Nem tartozik a HDInsight használatára konfigurált virtuális hálózat DNS-kiszolgáló számára szükséges további konfiguráció.
 
 A két Azure virtuális hálózatok összekapcsolása további információkért lásd: [VNet – VNet kapcsolat konfigurálása](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
@@ -66,32 +66,32 @@ Bár létrehozhat Azure-beli virtuális hálózathoz, és a Kafka-fürtök manu�
    
     Az Azure Resource Manager-sablon a következő helyen található: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**.
 
-    > [!WARNING]
+    > [!WARNING]  
     > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. A sablon egy három feldolgozó csomópontot tartalmazó Kafka-fürtöt hoz létre.
 
 2. Az alábbi információk segítségével feltöltik a a **egyéni üzembe helyezés** panelen:
     
     ![HDInsight-egyéni üzembe helyezés](./media/apache-kafka-mirroring/parameters.png)
     
-    * **Erőforráscsoport**: hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
+    * **Erőforráscsoport**: Hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürt.
 
-    * **Hely**: válasszon, földrajzilag közeli helyet.
+    * **Hely**: Válasszon egy helyet, földrajzilag közel.
      
-    * **Fürt neve alapján**: ezt az értéket használja a kiinduló neveként a Kafka-fürtök. Ha például **hdi** nevű fürtöket hoz létre, **forrás-hdi** és **cél-hdi**.
+    * **Fürt neve alapján**: Ez az érték a Kafka-fürtök alapnevét szolgál. Ha például **hdi** nevű fürtöket hoz létre, **forrás-hdi** és **cél-hdi**.
 
     * **A fürt bejelentkezési név**: A rendszergazdai felhasználóneve a forrás- és a Kafka-fürtök.
 
-    * **A fürt bejelentkezési jelszavának**: a forrás- és a rendszergazdai felhasználójának jelszava a Kafka-fürtök.
+    * **A fürt bejelentkezési jelszavának**: A rendszergazdai felhasználójának jelszava a forrás- és a Kafka-fürtök.
 
-    * **SSH-felhasználónév**: az SSH-felhasználó, a forrás- és Kafka-fürtök létrehozása.
+    * **SSH-felhasználónév**: Az SSH-felhasználót a forrás- és Kafka-fürtök létrehozásához.
 
-    * **SSH-jelszó**: a forrás- és SSH-felhasználó jelszavát a Kafka-fürtök.
+    * **SSH jelszó**: A jelszót az SSH-felhasználó számára a forrás- és a Kafka-fürtök.
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
 4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A HDInsight-fürtök neve vannak **forrás-BASENAME** és **cél-BASENAME**, ahol a sablonhoz megadott BASENAME. Ezeket a neveket használni a későbbi lépésekben a fürtök való kapcsolódás során.
 
 ## <a name="create-topics"></a>Hozzon létre kapcsolatos témakörök
@@ -218,7 +218,7 @@ Bár létrehozhat Azure-beli virtuális hálózathoz, és a Kafka-fürtök manu�
 
 7. A HDInsight alatt futó Kafka az alapértelmezett konfigurációja nem engedélyezi a témakörök automatikus létrehozása. Az alábbi lehetőségek közül a tükrözés folyamat elindítása előtt kell használnia:
 
-    * **A témakörök létrehozásához a célfürtön**: ezt a lehetőséget is lehetővé teszi a partíciók és a replikációs tényező számának beállításához.
+    * **A témakörök létrehozásához a célfürtön**: Ez a beállítás is lehetővé teszi a partíciók és a replikációs tényező számának beállításához.
 
         A következő parancs segítségével hozhat létre előre témakörök:
 
@@ -250,13 +250,13 @@ Bár létrehozhat Azure-beli virtuális hálózathoz, és a Kafka-fürtök manu�
 
     Ebben a példában használt paraméterek a következők:
 
-    * **--consumer.config**: meghatározza azt a fájlt, amely a felhasználói tulajdonságokat tartalmazza. Ezek a tulajdonságok hozhatók létre, amely beolvassa a fogyasztó a *forrás* Kafka-fürt.
+    * **--consumer.config**: Megadja a felhasználói tulajdonságokat tartalmazó fájlt. Ezek a tulajdonságok hozhatók létre, amely beolvassa a fogyasztó a *forrás* Kafka-fürt.
 
-    * **--producer.config**: Adja meg az előállítói tulajdonságait tartalmazó fájlt. Ezek a Tulajdonságok író előállító létrehozásához használt az *cél* Kafka-fürt.
+    * **--producer.config**: Megadja az előállítói tulajdonságait tartalmazó fájlt. Ezek a Tulajdonságok író előállító létrehozásához használt az *cél* Kafka-fürt.
 
-    * **engedélyezési lista –**: Mirrormakerrel replikálja a forrás-fürtről a cél témakörök listáját.
+    * **engedélyezési lista –**: A cél a forrás-fürtből származó replikált Mirrormakerrel témakörök listáját.
 
-    * **--num.streams**: létrehozása fogyasztói szálak száma.
+    * **--num.streams**: Hozzon létre felhasználói szálak számát.
 
  Az Indítás Mirrormakerrel hasonló információt ad vissza a következő szöveget:
 

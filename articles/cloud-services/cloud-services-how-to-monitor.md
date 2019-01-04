@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059511"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789467"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a felhőalapú szolgáltatás figyelése
 
-Minden olyan felhőalapú szolgáltatás fő teljesítménymutatói követheti nyomon. Minden felhőszolgáltatási szerepkör minimális adatokat gyűjt: Processzor kihasználtsága, hálózati használati és lemezhasználat. Ha a felhőszolgáltatáshoz a `Microsoft.Azure.Diagnostics` bővítmény egy szerepkörhöz, a szerepkör a alkalmazni az adatok további pontok képes összegyűjteni. Ez a cikk az Azure Diagnostics bevezetést nyújt a Cloud Services.
+Minden olyan felhőalapú szolgáltatás fő teljesítménymutatói követheti nyomon. Minden felhőszolgáltatási szerepkör minimális adatokat gyűjti össze: CPU-használat, a hálózati forgalom és a lemezkihasználtság. Ha a felhőszolgáltatáshoz a `Microsoft.Azure.Diagnostics` bővítmény egy szerepkörhöz, a szerepkör a alkalmazni az adatok további pontok képes összegyűjteni. Ez a cikk az Azure Diagnostics bevezetést nyújt a Cloud Services.
 
 Alapszintű figyelési szerepkör példányai a teljesítményszámlálók adatainak mintavételezés és összegyűjtött 3 perces időközönként. Ez a alapvető figyelési adatok nincs tárolva a tárfiók, és azt további költségek nélkül kapcsolódik.
 
@@ -93,13 +93,13 @@ Valószínűleg már kettővel fog rendelkezni **.cscfg** fájlok, az egyik nev�
 
 ## <a name="use-application-insights"></a>Az Application Insights használata
 
-Amikor közzéteszi a Felhőszolgáltatás a Visual Studióból, akkor a diagnosztikai adatok küldése az Application Insights lehetőséget kapnak. Ekkor az Application Insights az Azure-erőforrás létrehozásához, vagy egy meglévő Azure-erőforrás elküldi az adatokat. A felhőszolgáltatás rendelkezésre állási, teljesítmény, hibák és használatát az Application Insights is figyeli. Egyéni diagramok is hozzáadhatók az Application Insights, hogy az adatokat láthatja, hogy a legtöbb számít. Szerepkör-példány adatait a felhőszolgáltatási projektet az Application Insights SDK használatával gyűjthetők össze. Hogyan integrálható az Application Insights további információkért lásd: [Application Insights a Cloud Services](../application-insights/app-insights-cloudservices.md).
+Amikor közzéteszi a Felhőszolgáltatás a Visual Studióból, akkor a diagnosztikai adatok küldése az Application Insights lehetőséget kapnak. Ekkor az Application Insights az Azure-erőforrás létrehozásához, vagy egy meglévő Azure-erőforrás elküldi az adatokat. A felhőszolgáltatás rendelkezésre állási, teljesítmény, hibák és használatát az Application Insights is figyeli. Egyéni diagramok is hozzáadhatók az Application Insights, hogy az adatokat láthatja, hogy a legtöbb számít. Szerepkör-példány adatait a felhőszolgáltatási projektet az Application Insights SDK használatával gyűjthetők össze. Hogyan integrálható az Application Insights további információkért lásd: [Application Insights a Cloud Services](../azure-monitor/app/cloudservices.md).
 
 Vegye figyelembe, hogy míg az Application Insights segítségével a teljesítményszámlálók (és a többi beállítás) megadott keresztül a Windows Azure Diagnostics bővítményt, akkor csak sokoldalúbb felhasználói élményben lekérése az Application Insights SDK való integrálásával a feldolgozó és a webes szerepkör.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg az Application Insights a Cloud Services](../application-insights/app-insights-cloudservices.md)
+- [Ismerje meg az Application Insights a Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Állítsa be a teljesítményszámlálók](diagnostics-performance-counters.md)
 

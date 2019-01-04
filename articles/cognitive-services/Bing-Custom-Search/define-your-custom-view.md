@@ -1,5 +1,5 @@
 ---
-title: Adja meg egy egyéni nézet – Bing egyéni keresés
+title: A Bing egyéni keresés felhasználói beállítása |} A Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: Ismerteti, hogyan hozhat létre a hely és a függőleges keresési szolgáltatások
 services: cognitive-services
@@ -10,163 +10,145 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: d45d917d733727eca3286bb6335ce77591f39685
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ac5ba80740c47dd71a30bb20aab4a54829eac822
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427284"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597800"
 ---
-# <a name="configure-your-custom-search-experience"></a>Konfigurálja az egyéni keresés
+# <a name="configure-your-bing-custom-search-experience"></a>A Bing egyéni keresés felhasználói beállítása
 
-Egy egyéni keresési példány lehetővé teszi a keresési funkciók csak tartalmát, hogy a felhasználók számára is megfelelő kódolási sebesség kiválasztását. Helyett a webes keresés, a Bing keresés csak az Önt érdeklő webes szelet. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai). További információ a portál bejelentkezés: [az első Bing Custom Search-példány létrehozása](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
+Egy egyéni keresési példány lehetővé teszi a keresési funkciók csak tartalmát, hogy a felhasználók számára is megfelelő kódolási sebesség kiválasztását. Helyett a webes keresés, a Bing csak szeleteit a weben az Ön által megszabott keres. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai).
 
-A portálon egy keresési példányát, amely meghatározza a tartományok, mindegyik lapot tünteti, és, amelyek azt szeretné, hogy a Keresés a Bing és az azokkal, amelyek nem szeretné, hogy a keresés létrehozását teszi lehetővé. A tartalom, hogy megismerkedett az URL-címek megadása, mellett is kérhet, javasolja a tartalmakat, amelyeket érdemes a nézethez hozzáadandó a portálon. 
+A portálon teszi lehetővé, amely meghatározza a szeletek a webes keresés példányt hoz létre: tartományok, mindegyik lapot tünteti, és a weblapok, amelyek azt szeretné, hogy a Bing keresés, és azokkal, amelyek nem szeretné, hogy a keresés. A portálon is tud javaslatot tartalmakat, amelyeket érdemes felvenni.
 
-A következő módja az, hogy határozhatja meg a webes szelet: 
+Ha a webes webterületek definiálása, használja a következő:
 
-1.  A tartomány. Tartomány szelet magában foglalja az internetes tartományban található összes tartalmat. Ha például www.microsoft.com. A tartomány altartományokra is kereshet a Bing kihagyva "www" okoz. Például ha megadja a Microsoft.com webhelyre mutat, a Bing is eredményeket ad vissza a support.microsoft.com vagy technet.microsoft.com.  
-  
-2.  Melléklap. Melléklap szelet magában foglalja a Melléklap és elérési utak alatta található összes tartalmat. Legfeljebb két mindegyik lapot tünteti előfordulhat, hogy adja meg az elérési utat. Ha például www.microsoft.com/en-us/windows/  
-  
-3.  Weblap. A weblap szelet belefoglalhatja egyéni keresés csak weblapról. Azt igény szerint megadhatja, hogy mindegyik lapot tünteti tartalmazza.
+| Szelet neve | Leírás                                                                                                                                                                                                                                                                                                |
+|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Domain     | Tartomány szelet magában foglalja az internetes tartományban található összes tartalmat. Például: `www.microsoft.com`. Felsorolhatja `www.` hatására a Bing, a tartomány altartományokra is kereshet. Például, ha a megadott `microsoft.com`, a Bing is eredményét adja vissza `support.microsoft.com` vagy `technet.microsoft.com`. |
+| Melléklap    | Melléklap szelet magában foglalja a Melléklap és elérési utak alatta található összes tartalmat. Legfeljebb két mindegyik lapot tünteti előfordulhat, hogy adja meg az elérési utat. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
+| Weblap    | A weblap szelet belefoglalhatja egyéni keresés csak weblapról. Azt igény szerint megadhatja, hogy mindegyik lapot tünteti tartalmazza.                                                                                                                                                                                  |
 
-Minden tartomány, mindegyik lapot tünteti és, amelyek a megadott nyilvános és a Bing által indexelt kell lennie. Ha fel szeretne venni a Keresés nyilvános helyen a saját, és a Bing nem indexelt azt, tekintse meg a Bing [gazdáját dokumentáció](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) részletes információ a Bing indexelés céljából. Emellett a részleteinek beolvasása a bejárt hely frissítéséhez, ha az index nem naprakész a Bing a gazdáját dokumentációjában talál.
+> [!IMPORTANT]
+> Minden tartomány, mindegyik lapot tünteti és, amelyek a megadott nyilvános és a Bing által indexelt kell lennie. Ha fel szeretne venni a Keresés nyilvános helyen a saját, és a Bing nem indexelt azt, tekintse meg a Bing [gazdáját dokumentáció](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) részletes információ a Bing indexelés céljából. Emellett a részleteinek beolvasása a bejárt hely frissítéséhez, ha az index nem naprakész a Bing a gazdáját dokumentációjában talál.
 
-## <a name="adding-slices-to-your-custom-search"></a>A szeletek ad hozzá az egyéni keresés
+## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>A Web ad hozzá az egyéni keresési példány
 
-Az egyéni keresőpéldányok határozza meg, ha az aktív és a blokkolt tartományok, mindegyik lapot tünteti és, amelyek szeretne keresni, vagy keres, nem adja meg.  
+Az egyéni keresőpéldányok létrehozásakor megadhatja a webes szeleteit: tartományok, mindegyik lapot tünteti és weblapok, kívánt tartalmazza vagy blokkolva van a keresési eredmények közül. 
 
-- Aktív: Listáját tartományok, mindegyik lapot tünteti vagy a keresés foglalandó weblapok.  
-  
-- Letiltva: Listáját tartomány, mindegyik lapot tünteti vagy kizárása a keresési weblapok. Az aktív listában felsorolt letiltja kell lennie tartalom a tartományokat, és mindegyik lapot tünteti alatt található elemek.
+Ha tudja, hogy az egyéni keresőpéldányok szerepeltetni szeretne a szeletek, vegye fel őket a példány **aktív** listája. 
 
-Minden egyes lista eléréséhez kattintson az egyéni keresőpéldányok a aktív és a letiltott lapokon. 
+Ha nem biztos abban, hogy mely szeletek tartalmazza, elküldheti a Bing keresési lekérdezések a **előzetes** ablaktáblán, és válassza ki a kívánt szeleteket. Ehhez tegye a következőket: 
+
+1. az előnézeti ablaktáblában láthatja a legördülő listából válassza ki a "Bing", és adja meg a keresési lekérdezést
+
+2. Kattintson a **Hozzáadás hely** mellett fel szeretne venni az eredményt. Ezután kattintson az OK gombra.
+
+>[!NOTE]
+> [!INCLUDE[publish or revert](./includes/publish-revert.md)]
 
 <a name="active-and-blocked-lists"></a>
-## <a name="active-and-blocked-lists"></a>Aktív és a letiltott listák 
 
-A webes keresés a Bing kívánt szelet megadásához kattintson a **aktív** lapra, és a tartományok, mindegyik lapot tünteti és keresés weblapok listázása. A szelet közvetlenül hozzáadása a listához, vagy egynél több szelet hozzáadása, ha feltölt egy szöveges fájlt, a Feltöltés ikonra.
+### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Az aktív és a letiltott listákkal keresési élmény testreszabása 
 
-Fájl feltöltése részletei: 
+Az aktív és a blokkolt szeletek hosszabb listájának kattintva érheti a **aktív** és **letiltott** az egyéni keresőpéldányok lapjait. Az aktív listához hozzáadott szeletek szerepelni fog az egyéni keresés. Letiltott szeletek nem fog keresni, és a keresési eredmények nem jelennek meg.
 
-- Fájl feltöltése csak a szeleteket ad hozzá az aktív lista elérhető, nem használható szeletek hozzáadása a letiltott listájához.  
-  
-- Hozzon létre egy szövegfájlt, és adja meg a tartományra, Melléklap vagy külön sorba weblap. A teljes feltöltés nem fogadja el, ha hiba történik.  
-  
-- Ha a letiltott lista tartalmaz, a tartomány, Melléklap vagy weblap, amelyen a feltöltendő fájl a megadott, a szolgáltatás eltávolítja a letiltott listán, és hozzáadja azt az aktív lista.  
-  
-- A szolgáltatás figyelmen kívül hagyja a feltöltendő fájl ismétlődő.
+Azt szeretné, hogy a Keresés a Bing webes szeleteit megadásához kattintson a **aktív** lapra, és adjon hozzá egy vagy több URL-címeket. URL-címek módosításához vagy eltávolításához használja a beállítások alatt a **vezérlők** oszlop. 
 
-Szerkesztése vagy törlése a szeletek használja a beállítások alatt a **vezérlők** oszlop. 
+Amikor hozzáadása az URL-címek használatával a **Active** lista is hozzáadhat egyetlen URL-címek, vagy több URL-címeket egyszerre, ha feltölt egy szöveges fájlt, a Feltöltés ikonra.
 
-Hasonlóképpen adhat hozzá szeletek letiltott listán (kivéve a szeletek megadásához egy feltöltendő fájl nem használható).
+![A Bing Custom Search aktív lapon](media/file-upload-icon.png)
 
-## <a name="pinned-list"></a>Rögzített listája
+Töltsön fel egy fájlt, hozzon létre egy szövegfájlt, és adja meg a tartományra, Melléklap vagy külön sorba weblap. A fájl elutasításra kerül, ha nincs megfelelően formázva.
 
-A portál azt is lehetővé teszi, hogy egy meghatározott weboldalt rögzítsen a keresési eredmények elején, ha a felhasználó egy bizonyos keresési kifejezést ad meg. A **Pinned** lapon lekérdezési kifejezés, és a weblap párok, melyek adja meg a weblap, egy adott lekérdezésre vonatkozó felső eredményként megjelenő listáját tartalmazza. Ezenkívül csak indexelt weblapjait keresések megjelennek. További információ a rögzítés eredmények: [rangsor módosítása](#adjustrank). 
+> [!NOTE]
+> * Csak feltölthet egy fájlt a **aktív** listája. A szeletek hozzáadása nem használható a **letiltott** listája.  
+> * Ha a **letiltott** lista tartalmaz egy tartományt, Melléklap vagy weblap, amelyen a feltöltendő fájl megadott azt eltávolítjuk a **letiltott** listában, és hozzá a **Active** lista .
+> * A feltöltendő fájl ismétlődő bejegyzéseket a Bing Custom Search figyelmen kívül. 
 
-Rögzítés eredmények nem áll rendelkezésre a képkeresési, és a videó keresési megoldásokat.
+### <a name="get-website-suggestions-for-your-search-experience"></a>Webhely telepheti a keresési funkciót
 
-## <a name="website-suggestions"></a>Webhely-javaslatok
+Gyakori való hozzáadása után a **aktív** listájában, a Bing Custom Search portál webhelyére és Melléklap javaslatok a lap alján hoz létre. Ezek a szeletet, amelyet a Bing Custom Search fenyegetésként észlel, érdemes felvenni. Kattintson a **frissítése** frissített javaslatokat beolvasni az egyéni keresőpéldányok beállításainak frissítése után. Ez a szakasz csak akkor látható, ha a javaslat érhető el.
 
-Szeletek az aktív listára felvett esetén a szolgáltatás webhely és Melléklap javaslatokat, amelyeket érdemes hozzáadni a keresés állít elő. A **érdemes hozzáadni** szakasz tartalmazza a vonatkozó javaslatok. A példány beállításai lapon tartalmazza az ebben a szakaszban csak akkor, ha a javaslat érhető el. 
+## <a name="search-for-images-and-videos"></a>Képek és videók keresése
 
-Javaslatok az aktív lista hozzáadásához kattintson a + ikonra.  Mivel a szolgáltatás javaslatait a beállítások alapján hoz létre, mindenképp kattintson **frissítése** a javaslatok hozzáadása után. 
+Kereshet képek és videók hasonlóan a webtartalomhoz való használatával a [Bing Custom-Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference) vagy a [Bing egyéni Videókeresési API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference). Ezeket az eredményeket megjelenítheti a [felhasználói felület üzemeltetett](hosted-ui.md), vagy az API-k. 
 
-## <a name="preview-pane"></a>Podokno náhledu
+Egyéni-API-k hasonlóak [a Bing Képkeresés](../Bing-Image-Search/overview.md) és [Bing Video Search](../Bing-Video-Search/search-the-web.md) API-k, de a teljes webes keresés, és nem igénylik a `customConfig` lekérdezési paraméter. További információ ezen dokumentáció készletek használata a képek és videók jelenik meg. 
 
-A jobb oldalon a betekintő segítségével keresési lekérdezéseknek és az eredmények megtekintése a search-példány ki tesztelheti. 
+## <a name="test-your-search-instance-with-the-preview-pane"></a>Az előnézeti ablaktáblában a keresés példány tesztelése
 
-1. Válassza ki **saját példány**
-2. Válassza ki a biztonságos keresési szűrő és a mi piac keresése (lásd: [lekérdezési paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)).
-3. Adjon meg egy lekérdezést, és nyomja le adja meg, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. 
+Tesztelheti a keresési példány használatával az előnézeti ablaktáblában láthatja a portál jobb oldalán a keresési lekérdezések elküldéséhez, és tekintse meg az eredményeket. 
 
-Válassza ki a keresés végrehajtásához, kattintson a **webes** webes lekéréséhez **kép** kép eredményt, vagy **videó** videó eredmények eléréséhez. 
-
-Használja az előnézeti ablaktáblában láthatja, emellett áttekintheti a Bing-eredmények kiválasztásával **Bing** helyett **saját példány**. Ez a keresés eredményeit a Bing által visszaadott eredmények összehasonlításához hasznos lehet.
+1. A keresőmező alatt válassza ki a **saját példány**. Összehasonlíthatja az eredményeket a keresési funkciót, a Bing, kiválasztásával **Bing**. 
+2. Válassza ki a biztonságos keresés szűrési és kereséséhez, amelyek piaci (lásd: [lekérdezési paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)).
+3. Adjon meg egy lekérdezést, és nyomja le adja meg, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. Módosíthatja a keresési típust kattintva elvégezheti **webes**, **kép**, vagy **videó** megfelelő eredmények eléréséhez. 
 
 <a name="adjustrank"></a>
-## <a name="adjust-rank"></a>Rangsor módosítása
 
-A portál segítségével módosíthatja a ranglistán megjelenő módosítására, a Bing adja vissza az eredményeket. A betekintő ablaktáblában meg egy keresett kifejezést, és futtassa a lekérdezést. Az előnézeti ablaktáblában láthatja a keresési eredmények a lekérdezés listázza. Jobbra található minden eredmény látható beállításainak listája, végezhet. 
+## <a name="adjust-the-rank-of-specific-search-results"></a>A keresési eredmények rangsor módosítása
 
-- Letiltása. A tartomány, Melléklap vagy weblap áthelyezi a letiltott listába. Akkor válassza ki a szintet, hogy. A Bing a keresési eredmények a kiválasztott hely nem tartalmazza a tartalmat.  
-  
-- Jelentősen növelheti. A tartomány vagy nagyobb a keresési eredmények Melléklap kiadóvállalat tartalmat. Akkor válassza ki, hogy jelentősen növelheti a tartalom a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. [További](#boosting-and-demoting)  
-  
-- Lefokozása. Értéksorrá minősíti vissza a tartományt vagy a keresési eredmények alsó Melléklap tartalmat. Akkor válassza ki, hogy fokozza le a tartalmat a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. [További információ](#boosting-and-demoting).  
-  
-- PIN-kód fent. Adja meg a weblap, amelyen a legfelül jelenik meg az eredményeket, ha a felhasználó lekérdezési karakterlánc megfelel a PIN-kódok. lekérdezési karakterlánc alapján a PIN-kódot az egyezési feltétellel. Az aktív lista nem kell tartalmaznia, hogy rögzítse a képernyőn látható weblapon. [További információ](#pin-to-top).
+A portál lehetővé teszi a keresési rangsorolás, a tartalom tartományok, mindegyik lapot tünteti és weblapok történő beállítása. Keresési lekérdezés küldése a betekintő ablaktáblában, után minden keresési eredmény módosítások is hozzá listáját tartalmazza:  
 
-Rangsor módosítása esetén nem áll rendelkezésre a képkeresési, és a videó keresési megoldásokat.
+|            |                                                                                                                                                                      |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Blokk      | A tartomány, Melléklap vagy weblap áthelyezi a letiltott listába. Bing ki fogja zárni a tartalom a kiválasztott hely megjelenjenek a keresési eredmények között.                    |
+| Kiemelés      | Felgyorsíthatók a tartalom a tartomány vagy Melléklap magasabb a keresési eredmények között lehet.                                                                                        |
+| Lefokozása     | Értéksorrá minősíti vissza a tartományt vagy a keresési eredmények alsó Melléklap tartalmat. Akkor válassza ki, hogy fokozza le a tartalmat a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. |
+| Rögzítse a tetejére | A tartomány, Melléklap vagy a weblap helyezi a **Pinned** listája. Ez kényszeríti a weblap jelenik meg, mint a felső keresési eredmény számára egy adott keresési lekérdezésnek.                   |
 
-## <a name="boosting-and-demoting"></a>Kiemelési és lefokozása
+Rangsor módosítása nem áll rendelkezésre a kép vagy videó kereséseket.
 
-Super növelése, növelheti, vagy bármilyen tartomány lefokozása vagy is az aktív lista subpage. Alapértelmezés szerint az összes szelet a azonos súlyú kerülnek. A keresési eredmények között (a felügyelői boost rangsorolási boost nagyobb) magasabb rangsora Super súlyozott vagy súlyozott cikkeket. A keresési eredmények között, hogy a rendszer visszalép elemek rangsora alacsonyabb.
+### <a name="boosting-and-demoting-search-results"></a>Kiemelési és a keresési eredmények lefokozása
 
-Fontos megjegyezni, amely super növelése jelentősen növelheti és fokozza a tartományok vagy mindegyik lapot tünteti biztosíthat hozzájuk variantní hodnoty. Ez ez csak egyike az eredmények sorrendjének meghatározásához a rangsorolás által használt számos jelek. Ez azt jelenti, hogy egy adott lekérdezésre vonatkozó azok hatása nem garantált, sok más tényező befolyásolhatja a webes eredmények teljes rangsorolását.  Lehetséges megállapításához, hogy kiemelési vagy lefokozásához rendelkezik a rangsorolás, teszteléshez a keresési funkciót a betekintő ablaktáblában.
+Super növelése, növelheti, vagy bármilyen tartomány lefokozása vagy is a subpage a **aktív** listája. Alapértelmezés szerint az összes szelet rangsorolási módosítás nélkül kerülnek. A webes, hogy a rendszer Super súlyozott vagy Boosted szeletek újabb sorrendje a keresési eredmények között (a felügyelői boost rangsorolási boost nagyobb). A keresési eredmények között, hogy a rendszer visszalép elemek rangsora alacsonyabb.
 
-Is super növelése, növelheti, vagy lefokozása elemek vezérlőelemeivel sorrend beállítása az aktív lista vagy a Boost használatával és lefokozása szabályozza az előnézeti ablaktáblában láthatja. A szolgáltatás a szelet ad hozzá az aktív listához, és beállítja a rangsorolás ennek megfelelően.
+Super növelése, növelése vagy elemek le használatával a **prioritás beállítása** vezérlőket az a **aktív** listájában, vagy a használatával a Boost és lefokozása szabályozza az előnézeti ablaktáblában láthatja. A szolgáltatás a szelet ad hozzá az aktív listához, és beállítja a rangsorolás ennek megfelelően.
 
-Super növelése jelentősen növelheti és lefokozása nem állnak rendelkezésre a képkeresési és Videókeresési funkciókat.
+> [!NOTE] 
+> Kiemelési és a tartományokat, és mindegyik lapot tünteti lefokozása Bing Custom Search segítségével határozza meg, a keresési eredmények sorrendje számos módszer egyike. Eredő rangsor módosítása miatt a különböző webes tartalom alapján a rangsorolás befolyásoló egyéb tényezők, eltérőek lehetnek. Az előnézeti ablaktáblában láthatja segítségével tesztelheti a keresési eredmények rangsorát módosításával hatásait. 
 
-## <a name="pin-to-top"></a>Rögzítse a tetejére
+Super növelése jelentősen növelheti és lefokozása nem érhetők el a lemezkép és a videó kereséseket.
 
-Egy weblap, egy adott lekérdezésre vonatkozó a keresési eredmények tetejére rögzíteni, válassza ki az alábbi lehetőségek közül:
+## <a name="pin-slices-to-the-top-of-search-results"></a>PIN-kód szeletek tetején a keresési eredmények
 
-1.  Az a **Pinned** lapra, adja meg a felső részén az eredményeket, és a lekérdezés, amely elindítja a rögzítés rögzítése a weblap URL-CÍMÉT.  
-  
-2.  Az a **előzetes** panelen adja meg a keresési kifejezésre, és kattintson a Keresés gombra. Ezután azonosítsa a weblapra a szeretne rögzíteni az eredmények tetejére, ha a felhasználó ad ugyanazokkal a lekérdezési eredmények. Kattintson a **felső PIN-kód**. A szolgáltatás hozzáadja a weblapon és a lekérdezés a **Pinned** listája. 
+A portálon is lehetővé teszi használatával adott keresési kifejezéseket, a keresési eredmények tetejére URL-címek rögzítése a **Pinned** fülre. Adjon meg egy URL-cím és a lekérdezés, amely a legjobb eredmény jelenik meg a weblap megadása. Vegye figyelembe, hogy egy weblap keresési lekérdezésenként legfeljebb rögzíthet, és csak indexelt weblapjait keresések megjelennek. Rögzítés eredmények nem áll rendelkezésre a kép vagy videó keresések.
 
-A PIN-kódok a nyomon követheti a **Pinned** fülre. A PIN-kód jelenik meg másként\<lekérdezés\>, \<weblap\>"párokat. 
+Két módon is rögzíthet egy weblap, a lista tetejére:
 
-Az eredmények tetejére egy weblap legfeljebb egy adott lekérdezésre vonatkozó is rögzíthet.
+* Az a **Pinned** lapra, adja meg a felső, és a megfelelő lekérdezés rögzítése a weblap URL-CÍMÉT.
 
-PIN-kódok nem érhetők el a képkeresési, és a videó keresési megoldásokat.
+* Az a **előzetes** panelen adjon meg egy keresési lekérdezést, és kattintson a Keresés gombra. Keresse meg a PIN-kód, a lekérdezés, és kattintson a kívánt weblap **felső PIN-kód**. a weblap és a lekérdezés hozzáadódik a **Pinned** listája.
 
-### <a name="specifying-the-pins-match-condition"></a>A PIN-kódot az egyezési feltétellel megadása
+### <a name="specify-the-pins-match-condition"></a>Adja meg a PIN-kód egyezési feltételei
 
-A weblap rögzítve van az eredmények tetejére csak akkor, ha a felhasználó lekérdezési karakterlánc megfelel a PIN-kód lekérdezési karakterlánc PIN kód egyezés feltétel alapján. Alapértelmezés szerint a PIN-kód csak akkor, ha a PIN-kód lekérdezési karakterláncot, és a felhasználói lekérdezési karakterlánc pontosan egyezik. A következő egyezési feltételei megadásával módosíthatja az alapértelmezett viselkedést.
+Alapértelmezés szerint weblapok csak rögzítve tetején a keresési eredmények egy felhasználói lekérdezési karakterlánc pontosan megegyezik egy szerepel a **Pinned** listája. A következő egyezési feltételei megadásával módosíthatja ezt a viselkedést:
 
-- Kezdődik &mdash; a PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterlánccal kezdődik.
-- Végződik &mdash; a PIN-kód egyezés, ha a felhasználó lekérdezési karakterláncot a PIN-kód lekérdezési karakterlánccal végződik.
-- Tartalmaz &mdash; a PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterláncot tartalmaz.
+> [!NOTE]
+> Között a felhasználó keresési lekérdezést, és a PIN-kód keresési lekérdezés minden összehasonlítások megkülönböztetik a kis-és nagybetűket.
 
-A PIN-kódot az egyezési feltétellel módosításához kattintson a PIN-kód szerkesztési ikonra (a Ceruza tűnik). Az a **lekérdezés az egyezési feltétellel** oszlopot, kattintson a legördülő listára, és válassza ki az új feltétel használatához. Ezután kattintson a Mentés ikonra a módosítás mentéséhez.
+| Érték | Leírás                                                                          |
+|---------------|----------------------------------------------------------------------------------|
+| Kezdete | A PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterlánccal kezdődik |
+| Vége   | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterlánccal végződik.  |
+| Contains    | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterláncot tartalmaz.   |
 
-Az összes összehasonlítások megkülönböztetik a kis-és nagybetűket.
 
-### <a name="changing-the-order-of-the-pins"></a>A PIN-kódok sorrendjének módosítása
+A PIN-kódot az egyezési feltétellel módosításához kattintson a Szerkesztés ikonra a PIN-kódot. Az a **lekérdezés az egyezési feltétellel** oszlopot, kattintson a legördülő listára, és válassza ki az új feltétel használatához. Ezután kattintson a Mentés ikonra a módosítás mentéséhez.
 
-A PIN-kódok sorrendjének módosításához n húzza a PIN-kódot is, vagy szerkesztheti a PIN-kódot, és a sorszám megváltoztatásához. N húzza a PIN-kódot kattintson a PIN-kód áthelyezése, válságos tartani az egérgombot, és a PIN-kód húzza át a PIN-kód lecseréli a listában, és majd engedje el az egér gombját. Figyelje meg, hogy a PIN-kód sorszám ennek megfelelően változik.
+### <a name="change-the-order-of-your-pinned-sites"></a>A rögzített webhelyek sorrendjének módosítása
 
-A PIN-kód sorszám szerkesztheti is. Az a **vezérlők** oszlopot, kattintson a PIN-kód szerkesztési ikonra (a Ceruza tűnik). Adja meg a számát, ha azt szeretné, hogy a PIN-kód jelenik meg a listában, és nyomja le a adja meg, vagy kattintson a Mentés ikonra. Ha például a PIN-kód jelenleg hatodik a listában, és azt szeretné, hogy a második kell, ha a sorszám megváltoztatásához a két (2).
+A PIN-kódok sorrendjének módosításához is, és húzza a őket, vagy sorszámuk szerkesztéséhez kattintson a "edit" ikonra a **vezérlők** oszlopa a **Pinned** listája.
 
-Több PIN-kód egyezés feltételnek, ha a PIN-kódok sorrendje határozza meg, melyik PIN-kód, a Bing. Például ha PIN-kódok két és három egyezés feltételnek, a Bing PIN-kód két használja.
+Ha több PIN-kód felel meg az egyeztetési feltételt, a Bing Custom Search fogja használni a lista legnagyobb.
 
-## <a name="use-bing-to-specify-slices"></a>Megadhatja a Bing használatával
-
-Nincsenek többféle módon, adja meg az egyéni keresési alkotó webes szeleteit. Ha tudja, hogy a szeletek fel szeretne venni példányában, vegye fel őket a példány **aktív** listája. Elemek hozzáadásával kapcsolatos információkat a **aktív** lista, lásd: [aktív és a letiltott listák](#active-and-blocked-lists).
-
-De ha nem biztos abban, hogy mely szeletek tartalmazza, lekérdezéseket is futtathat a Bing a **előzetes** ablaktáblán, és tekintse meg a Bing adja vissza. Ezután válassza ki, hogy az egyéni keresési szerepeltetni kívánt szelet. Akkor valószínűséggel kell futtatnia, győződjön meg arról, hogy a példány kívánt összes szelet több lekérdezési kifejezéseket. 
-
-Kövesse az alábbi lépéseket a Bing használatával szeleteket ad hozzá az egyéni keresési példány. 
-
-1.  Jelentkezzen be a Bing Custom Search [portál](https://customsearch.ai).
-2.  Hozzon létre egy példányt, vagy válasszon ki egy példányt frissíteni.
-3.  Az Előnézet ablaktáblán a jobb oldalon válassza ki a Bing a legördülő listából.
-4.  A keresőmezőbe adja meg a példány fontos lekérdezési kifejezés.
-5.  Kattintson a **Hozzáadás hely** mellett fel szeretne venni az eredményt.
-6.  Kattintson az **OK** gombra.
-
-[!INCLUDE [publish or revert](./includes/publish-revert.md)]
-
-## <a name="view-statistics"></a>Statisztikák megjelenítése
+## <a name="view-statistics"></a>Statisztikák megtekintése
 
 Ha egyéni keresés megfelelő szinten előfizetett (lásd a [díjszabási lapjait](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), amely egy **statisztika** lapra kerül az éles környezetben üzemelő példányok. A Statisztika lapon részletesebb információt nyújt az egyéni keresés végpontok használata, beleértve a hívások mennyisége, a leggyakoribb lekérdezések, a földrajzi eloszlása, a válaszkódot és a biztonságos keresés. Ismerteti a megadott vezérlők használatával szűrheti.
 
-## <a name="understanding-quota"></a>Kvóta ismertetése
+## <a name="usage-guidelines"></a>Használati útmutató
 
 - Egyéni keresési példányonként maximális számát, előfordulhat, hogy győződjön meg arról, hogy ennek a területnek korrekciók **Active** és **letiltott** szeletek 400 korlátozódik.
 - Egy rangsorolást korrekciós számít az aktív vagy letiltott lapokat ad hozzá egy szeletet.

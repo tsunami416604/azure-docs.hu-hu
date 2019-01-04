@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 24a9b014028bf99673881904e17ec0911d0b5063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 94a072d3c8bde9e4fb16342db1e0705bfc22cf77
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952052"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539585"
 ---
 # <a name="application-types-for-v20"></a>Alkalmazástípusok a 2.0-s verzió
 
@@ -121,7 +121,7 @@ Ebből a folyamatból az alkalmazás fogad egy hozzáférési kóddal a v2.0-vé
 
 ## <a name="daemons-and-server-side-apps"></a>Démonok és a kiszolgálóoldali alkalmazások
 
-Alkalmazások, amelyek hosszú ideig futó folyamatokat, vagy egy felhasználói interakció nélkül kíván hozzáférni a védett erőforrások, például a webes API-k is kell. Ezek az alkalmazások hitelesítheti és a jogkivonatok lekérésére, az alkalmazás identitás használatával, nem pedig a felhasználó delegált identitása, az OAuth 2.0 ügyfél-hitelesítési folyamata az.
+Alkalmazások, amelyek hosszú ideig futó folyamatokat, vagy egy felhasználói interakció nélkül kíván hozzáférni a védett erőforrások, például a webes API-k is kell. Ezek az alkalmazások hitelesítheti és a jogkivonatok lekérésére, az alkalmazás identitás használatával, nem pedig a felhasználó delegált identitása, az OAuth 2.0 ügyfél-hitelesítési folyamata az. Titkos Ügyfélkód vagy tanúsítvány használata az alkalmazás identitását bizonyíthatja. További információ: [tanúsítványok démon alkalmazások az Azure ad hitelesítése](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
 Ebből a folyamatból, az alkalmazás közvetlenül kommunikál a `/token` végpontot a végpontok beszerzése:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB-tervezési minta: közösségimédia-alkalmazások'
+title: 'Az Azure Cosmos DB-tervezési minta: Közösségimédia-alkalmazások'
 description: Ismerje meg a kialakítási mintában a közösségi hálózatokkal a storage rugalmas Azure Cosmos DB és más Azure-szolgáltatások kihasználásával.
 keywords: közösségimédia-alkalmazások
 services: cosmos-db
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 669cfdc59fc0b2f509db704afa4867d8f55d86f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 494566cc7d49d502fd0bd864e70b338b8d6e0788
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083971"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726782"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 
 Egy nagy mértékben összekapcsolt társadalom élő azt jelenti, hogy életre valamely pontján, részévé válik a **közösségi hálózati**. Használhat közösségi hálózatokkal, hogy barátai, munkatársai, termékcsalád vagy más néven közös érdeklődési rendelkező személyek a szenvedélyét megosztani.
 
-Szakemberek vagy fejlesztők számára akkor előfordulhat, hogy rendelkezik testreszabásakor nem tudta hogyan lehet ezeket a hálózatokat tárolja és ezek az adatok. Vagy, előfordulhat, hogy rendelkezik is lett kiadta létrehozásához vagy egy adott jelentethet piacra új közösségi hálózat tervezhet. Ha ez a jelentős kérdése merül fel: ezek az adatok tárolási módját?
+Szakemberek vagy fejlesztők számára akkor előfordulhat, hogy rendelkezik testreszabásakor nem tudta hogyan lehet ezeket a hálózatokat tárolja és ezek az adatok. Vagy, előfordulhat, hogy rendelkezik is lett kiadta létrehozásához vagy egy adott jelentethet piacra új közösségi hálózat tervezhet. Ha ez a jelentős kérdése merül fel: Ezek az adatok tárolási módját?
 
 Tegyük fel, ahol a felhasználók kapcsolódó adathordozók, például képek, videók vagy zene akár cikkeket is közzé az új és fényes közösségi hálózatokon hoz létre. A felhasználók bejegyzések fűzni és pontokat biztosíthat az értékelésekhez. Hírcsatorna felhasználók lesz és fő webhely kezdőlapján használhassa fel lesz. Ez a módszer nem összetett, hang-először, de az egyszerűség, most leállítás van. (Jobban is elmélyedne kapcsolatok által érintett egyéni felhasználói hírcsatornák, de a cél a cikk az ezenkívül.)
 
@@ -100,7 +100,7 @@ Adatcsatornák létrehozása a következő annyit, amelyet egy adott relevancia 
 
 A "legutóbbi" stream-létrehozási dátuma szerint rendezve bejegyzések lehet. Vagy lehet-e az elmúlt 24 órában további kedvelések hozzászólásokat "legkeresettebb" adatfolyam. Akkor is Megvalósíthat egy egyéni stream minden egyes felhasználó követőinek és érdeklődése, így például logika alapján. A bejegyzések listájának továbbra is lenne. Gyorsan, hogyan hozhat létre a listák, de az olvasási teljesítmény akadálytalan marad. Ha e listák valamelyikébe szerez be, egyetlen lekérdezést kiadni Cosmos DB használatával a [OPERÁTORBAN](how-to-sql-query.md#WhereClause) egyszerre bejegyzések lapjain beolvasásához.
 
-Használja a hírcsatorna adatfolyamok sikerült beépített [Azure App Services](https://azure.microsoft.com/services/app-service/) háttér-folyamatok: [Webjobs](../app-service/web-sites-create-web-jobs.md). Bejegyzés létrehozása után a háttérben történő feldolgozás használatával is elindítható [Azure Storage](https://azure.microsoft.com/services/storage/) [üzenetsorok](../storage/queues/storage-dotnet-how-to-use-queues.md) és a Webjobs használatával aktivált a [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)végrehajtási, a Propagálás közzététele a saját egyéni logika alapján Streamek belül.
+Használja a hírcsatorna adatfolyamok sikerült beépített [Azure App Services](https://azure.microsoft.com/services/app-service/) háttér-folyamatok: [Webjobs-feladatok](../app-service/webjobs-create.md). Bejegyzés létrehozása után a háttérben történő feldolgozás használatával is elindítható [Azure Storage](https://azure.microsoft.com/services/storage/) [üzenetsorok](../storage/queues/storage-dotnet-how-to-use-queues.md) és a Webjobs használatával aktivált a [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)végrehajtási, a Propagálás közzététele a saját egyéni logika alapján Streamek belül.
 
 Pontok és a egy közleményre kedvelések ugyanezzel a módszerrel használatával egy végül konzisztens környezetet hozhat létre, a késleltetett módon lehet feldolgozni.
 
@@ -206,15 +206,15 @@ További információ az Azure Search, keresse fel a [Hitchhiker's Guide Search]
 
 ## <a name="the-underlying-knowledge"></a>Az alapul szolgáló ismeretek
 
-A tartalom, amely növekszik, és minden nap növekszik rendezést követően gondolkodás találhatja: Mi a teendő az adatok az adatfolyam a felhasználóim?
+A tartalom, amely növekszik, és minden nap növekszik rendezést követően gondolkodás találhatja: Mire használhatom a felhasználóktól az adatok az adatfolyam?
 
-A válasz nagyon egyszerű:, működik, és ismerje meg, hogy.
+A válasz nagyon egyszerű: Használatbavétel működik, és ismerje meg azt.
 
 De mi is elsajátíthatja? Néhány egyszerű példák [hangulatelemzés](https://en.wikipedia.org/wiki/Sentiment_analysis), tartalom, javaslatokat a felhasználói beállítások alapján, vagy akár egy automatizált biztosítja, hogy a tartalmat, a közösségi hálózat által közzétett a content moderator eszköze biztonságosan a család.
 
 Most, hogy szükségem van csatlakoztatva, valószínűleg gondolja lesz szüksége ezen mintákat és adatokat egyszerű adatbázisok és a fájlok kibontásához a matematikai adatelemzési néhány PhD, de lenne megfelelő.
 
-[Az Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)részeként elérhető a [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), van egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi az algoritmusok használatával egy egyszerű fogd és vidd felületén hozzon létre munkafolyamatokat, a saját algoritmusokhoz code[ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), vagy használja a már létrehozott és készen áll, mint például az API-k használata: [Szövegelemzés](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [a Content Moderator, vagy [javaslatok](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Az Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)részeként elérhető a [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), van egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi az algoritmusok használatával egy egyszerű fogd és vidd felületén hozzon létre munkafolyamatokat, a saját algoritmusokhoz code[ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), vagy használja a már létrehozott és készen áll, mint például az API-k használata: [Szövegelemzés](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator, vagy [javaslatok](https://gallery.azure.ai/Solution/Recommendations-Solution).
 
 A Machine Learning esetekben eléréséhez használható [az Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) , hogy a különböző forrásokból származó adatokat. Is [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) feldolgozni az információkat, és a egy kimeneti Azure Machine Learning által feldolgozható létrehozásához.
 

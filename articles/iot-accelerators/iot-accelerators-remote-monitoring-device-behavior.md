@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 70f9ccbbe737bad4d6f88365e804d4421c418d28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: edd5da35d33aa7e79fc3e972f3ea1cfe2ef40973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164007"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631413"
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszközmodell viselkedésének megvalósítása
 
@@ -21,6 +21,9 @@ A cikk [az eszközmodell sémájának megismerése](iot-accelerators-remote-moni
 
 - **Állapot** JavaScript-fájlok, amelyek a belső állapotot, az eszköz frissítéséhez rögzített időközönként futnak.
 - **Módszer** JavaScript-fájlok, amelyek futtatását, amikor a megoldás meghív egy metódust az eszközön.
+
+> [!NOTE]
+> Modell eszközműködés csak az eszköz szimulálása szolgáltatásban üzemeltetett szimulált eszközök vonatkoznak. Ha szeretne létrehozni egy fizikai eszközt, tekintse meg [az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító](iot-accelerators-connecting-devices.md).
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

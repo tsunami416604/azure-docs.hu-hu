@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: raynew
-ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a7f09341c1362850409a940810a4e2dd20aa7f74
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864536"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745040"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások figyelése
+
 Riasztások a szolgáltatást, hogy egy teljesítményesemény küszöbértéke teljesül vagy túllépése érkező válaszokat is. Hogy mikor problémák kezdő kritikus fontosságú üzleti dokumentumkezelésben lehet. Riasztások általában nem fordulhat elő, ütemezés szerint, és így hasznos lehet tudni, hogy minél hamarabb után kapcsolatos riasztások történnek. Ha például egy biztonsági mentési vagy visszaállítási feladat sikertelen lesz, ha egy riasztás a hiba öt percen belül. A tároló irányítópultján a biztonsági riasztások csempén kritikus és figyelmeztetési szintű eseményeket jeleníti meg. A biztonsági mentési riasztások beállításai az összes eseményt megtekintheti. De mi a következő lépés Ha egy riasztás történik, amikor éppen dolgozik egy külön probléma? Ha nem tudja, ha a riasztás történik, előfordulhat, hogy egy kisebb elnézését kérjük, vagy veszélyeztethetik a data. Győződjön meg arról, hogy a megfelelő személyek ismeri - riasztás esetén a konfigurálnia a e-mailen keresztül riasztási értesítések küldéséhez. E-mail-értesítések beállításával kapcsolatos részletekért lásd: [értesítések konfigurálása](backup-azure-monitor-vms.md#configure-notifications).
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>Hogyan találhatom meg a riasztások adatai?
+
 Az esemény által kiváltott riasztást kapcsolatos információk megtekintéséhez, meg kell nyitnia a biztonsági mentési riasztások szakaszban. Nyissa meg a biztonsági mentési riasztások szakaszban két módja van: az a biztonsági riasztások csempén a tároló irányítópultján, vagy a riasztások és események szakaszban.
 
 A biztonsági riasztások panel megnyitásához a biztonsági riasztások csempén:
@@ -43,6 +45,7 @@ A biztonsági riasztások panel megnyitásához a riasztások és események sza
     Testre szabhatja az attribútumokat, megjelennek a listában, lásd: [további esemény attribútumok megtekintése](backup-azure-monitor-vms.md#view-additional-event-attributes)
 
 ## <a name="configure-notifications"></a>Értesítések konfigurálása
+
  Beállíthatja, hogy a szolgáltatás, amely az elmúlt egy órában, vagy bizonyos típusú események bekövetkezésekor történt a riasztásokról szóló e-mail értesítések küldéséhez.
 
 Riasztásokhoz kapcsolódó e-mail értesítések beállítása
@@ -62,14 +65,16 @@ Riasztásokhoz kapcsolódó e-mail értesítések beállítása
 5. Az a **súlyossági** párbeszédpanelen válasszon egy vagy több szint, amelyet szeretne e-mailben értesítést vált.
 6. Kattintson a **Save** (Mentés) gombra.
 
-   ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Milyen típusú riasztásokról érhetők el az Azure IaaS virtuális gépek biztonsági mentését?
+### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Milyen típusú riasztásokról érhetők el az Azure IaaS virtuális gép biztonsági mentése
+
    | Riasztási szint | Elküldött riasztások |
    | --- | --- |
    | Kritikus | biztonsági mentés sikertelen, a sikertelen helyreállítás |
    | Figyelmeztetés | a biztonsági mentési feladatok sikeres volt, figyelmeztetésekkel fejeződött be (például: néhány írók nem sikerült a pillanatkép létrehozása közben) |
    | Tájékoztató | jelenleg nincsenek tájékoztató riasztások érhetők el az Azure virtuális gép biztonsági mentése |
 
-### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Olyankor is előfordul, hogy nem érkezik meg az e-mail, ha az értesítések be vannak állítva?
+### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Olyan helyzetekben, ahol nem érkezik e-mail, még akkor is, ha az értesítések beállítása
+
 Nincsenek olyan helyzetekben, ahol a rendszer nem küld figyelmeztetést, annak ellenére, hogy az értesítéseket megfelelően legyenek konfigurálva. Az alábbi helyzetekben e-mail értesítések nem érkeznek riasztási zaj elkerülése érdekében:
 
 * Ha az értesítések óránkénti összegzésre vannak konfigurálva, és a egy riasztás kiadása és feloldása egy órán belül.
@@ -79,9 +84,13 @@ Nincsenek olyan helyzetekben, ahol a rendszer nem küld figyelmeztetést, annak 
 
 ## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>Értesítés a sikeres biztonsági mentések tevékenységeket tartalmazó naplók segítségével
 
+> [!NOTE]
+> A Recovery Services-tárolók az Azure Backup műveletnaplóinak főfenékvízcsövön új modell áthelyeztük. Sajnos ez a független Felhőkben Azure vizsgálati naplók létrehozása hatással volt. Azure szuverén felhő felhasználók létrehozása vagy nincs konfigurálva minden olyan riasztások tevékenységnaplókból itt említett Azure monitoron keresztül, ha, akkor nem aktiválódik. Ebben az esetben javasoljuk volna az ilyen felhasználók a diagnosztikai beállítások és LA munkaterület vagy [Power bi jelentéskészítő megoldás](backup-azure-configure-reports.md) a vonatkozó információkat lekérni. Emellett minden nyilvános Azure-régióban, ha egy felhasználó gyűjti Recovery Services-Tevékenységnaplók egy Log Analytics-munkaterületre említettek szerint a [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity), ezek a naplók még nem jelent.
+
 Ha szeretne értesítést kap, ha a biztonsági mentések sikeres, alapuló riasztásokat is használhatja a [tevékenységeket tartalmazó naplók](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) tár.
 
 ### <a name="login-into-azure-portal"></a>Jelentkezzen be az Azure Portalon
+
 Jelentkezzen be az Azure portal és a kapcsolódó Azure Recovery Services-tároló továbbléphet, és kattintson a Tulajdonságok "Activity log" című szakaszában.
 
 ### <a name="identify-appropriate-log"></a>Azonosítsa a megfelelő naplót
@@ -98,9 +107,7 @@ Kattintson a "Tevékenységnapló-riasztás hozzáadása" az összes napló rias
 
 "Tevékenységnapló-riasztás hozzáadása" gombra kattintva megjelenik egy képernyő alább látható módon
 
-![Tevékenységnapló-riasztás](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
-    
-Az előfizetésben és erőforráscsoportban a riasztás tárolására szolgálnak. A feltételek előre kitöltött lesz. Ellenőrizze, hogy a követelmény a megfelelő összes értékét.
+![Tevékenységnapló-riasztás](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png) az előfizetésben és erőforráscsoportban a riasztás tárolására szolgálnak. A feltételek előre kitöltött lesz. Ellenőrizze, hogy a követelmény a megfelelő összes értékét.
 
 A sikeres biztonsági mentések a "szint" van megjelölve, a "Tájékoztatási szintű" és "Sikeres" állapotot.
 
@@ -112,18 +119,19 @@ Használja a "művelet"csoport generált riasztás esetén a művelet meghatáro
 
 ![Tevékenység log műveletcsoport](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-
 Miután az OK gombra kattint, egy tevékenységnapló-riasztás generál, és a rendszer rögzíti a sikeres biztonsági mentések későbbi tevékenységeket tartalmazó naplók a művelet akkor aktiválódik, ahogyan az a műveletcsoport.
 
 ### <a name="limitations-on-alerts"></a>Korlátozások a riasztásokat
+
 Eseményalapú értesítéssel a következő korlátozások vonatkoznak:
 
 1. A figyelmeztetéseket a helyreállítási tárban lévő összes virtuális gépeken. Nem szabhatja testre a riasztás egy Recovery Services-tárolót a virtuális gépek egy részhalmaza számára.
 2. Küldi a riasztásokat "alerts-noreply@mail.windowsazure.com". Az e-mailt küldő jelenleg nem módosítható.
 
 ## <a name="next-steps"></a>További lépések
+
 Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md).
 
-Ha a virtuális gépek védelme információra van szüksége, tekintse meg [áttekintés: Recovery Services-tároló virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md). 
+Ha a virtuális gépek védelme információra van szüksége, tekintse meg [első lépések: Recovery Services-tároló virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md).
 
 További információ a felügyeleti tevékenységek a cikk a virtuális gép biztonsági mentéseinek [kezelése az Azure virtuális gépek biztonsági mentéseinek](backup-azure-manage-vms.md).

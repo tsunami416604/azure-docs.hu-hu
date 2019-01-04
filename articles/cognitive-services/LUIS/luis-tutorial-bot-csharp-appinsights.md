@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: a5150d3f318fce2f66adfa4bdc43ae8aec651223
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 46065a742afd08585707f4f4fdf6ad2e32cd89b2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251147"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719455"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>A LUIS-eredményeket ad hozzá egy robottal az Application InsightsC#
 
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ebben az oktatóanyagban kódja érhető el a [LUIS-minták GitHub-adattár](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//LUIS Tutorial:`.
+Ebben az oktatóanyagban kódja érhető el a [Azure-minták GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//LUIS Tutorial:`.
 
 ## <a name="review-luis-web-app-bot"></a>Tekintse át a LUIS web app bot
 
@@ -127,11 +127,11 @@ A **Application Insights** csomagot a projektben már van, és megfelelően konf
 
 2. Az a **közzététel** ablakban válassza **új profil létrehozásához**.
 
-    ![Projekt közzététele a portálra](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
+    ![Közzététel részeként az új profil létrehozásához.](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
 
 3. Válassza ki **profil importálása**, és válassza ki **OK**.
 
-    ![Projekt közzététele a portálra](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
+    ![Közzététel részeként a profil importálása](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
 
 4. Az a **közzététele beállításfájl importálása** windows, lépjen a projektmappába, keresse meg a `PostDeployScripts` mappát, válassza ki a fájlt, amely `.PublishSettings`, és válassza ki `Open`. Most már konfigurálta a projekt közzététele.
 
@@ -204,7 +204,7 @@ Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez.
 
 1. Válassza a portál **összes erőforrás** majd szűrés a webalkalmazás robot neve. Kattintson az erőforráson típusú **Application Insights**. Az ikonra az Application Insights egy villanykörte.
 
-    ![Keresés az app insights](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
+    ![Keresés az app insights az Azure Portalon](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
 2. Az erőforrás megnyitása után kattintson a a **keresési** ikonjára a Nagyító ikonra a jobb szélen panelen. Egy új panel a jobb oldali jeleníti meg. Telemetriai adatok mennyiségétől függően található, a panel megjelenítéséhez egy második is igénybe vehet. Keressen a `LUIS` kifejezésre. A listában csak a LUIS lekérdezési eredmények ebben az oktatóanyagban hozzáadja van szűkíthető.
 

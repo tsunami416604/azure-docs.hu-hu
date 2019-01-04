@@ -10,22 +10,22 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e95b20a12fafa9d1dbcbd641ce1c9f2674314489
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126568"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606435"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Üzembe helyezése és munkafolyamataiból Azure Logic Apps egyéni API-k hívása
 
-Miután [egyéni API-k létrehozása](./logic-apps-create-api-app.md) használni a logikai alkalmazások munkafolyamataiba, telepítenie kell az API-k őket meghívása előtt. Telepítheti az API-k [webes alkalmazások](../app-service/app-service-web-overview.md), érdemes megfontolni az API-t, de [API-alkalmazások](../app-service/app-service-web-tutorial-rest-api.md), könnyebben ami a a feladatot, amikor készíthet, üzemeltethet és felhasználása a felhőben és helyszíni API-k. Nem kell minden olyan kódot az API-k – csupán telepítse kódját egy API-alkalmazásba. Az API-k is üzemeltethet [Azure App Service](../app-service/app-service-web-overview.md), a platform--szolgáltatásként (PaaS) kínál, amely a nagy mértékben skálázható, egyszerű API-t üzemeltető biztosít.
+Miután [egyéni API-k létrehozása](./logic-apps-create-api-app.md) használni a logikai alkalmazások munkafolyamataiba, telepítenie kell az API-k őket meghívása előtt. Telepítheti az API-k [webes alkalmazások](../app-service/overview.md), érdemes megfontolni az API-t, de [API-alkalmazások](../app-service/app-service-web-tutorial-rest-api.md), könnyebben ami a a feladatot, amikor készíthet, üzemeltethet és felhasználása a felhőben és helyszíni API-k. Nem kell minden olyan kódot az API-k – csupán telepítse kódját egy API-alkalmazásba. Az API-k is üzemeltethet [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely a nagy mértékben skálázható, egyszerű API-t üzemeltető biztosít.
 
 Bár minden olyan API-t a legjobb élmény meghívhat egy logikai alkalmazást, a, adjon hozzá [OpenAPI (korábban Swagger) metaadat](http://swagger.io/specification/) , amely az API műveleteit és paramétereit írja le. Az OpenAPI-fájl segítségével könnyebben integrálhatja, és a logic apps segítségével jobban használható az API.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Az API-webalkalmazás vagy API-alkalmazás üzembe helyezése
 
-Az egyéni API-k meghívása logikai alkalmazásból származó, előtt üzembe helyezése az Azure App Service-webalkalmazás vagy API-alkalmazás az API-t. Emellett ahhoz, hogy az OpenAPI-fájlt a Logic Apps Designerben által is olvasható, a API-definíció tulajdonságainak beállítása, és kapcsolja be a [eltérő eredetű erőforrások megosztása (CORS)](../app-service/app-service-web-overview.md) a webalkalmazás vagy API-alkalmazás.
+Az egyéni API-k meghívása logikai alkalmazásból származó, előtt üzembe helyezése az Azure App Service-webalkalmazás vagy API-alkalmazás az API-t. Emellett ahhoz, hogy az OpenAPI-fájlt a Logic Apps Designerben által is olvasható, a API-definíció tulajdonságainak beállítása, és kapcsolja be a [eltérő eredetű erőforrások megosztása (CORS)](../app-service/overview.md) a webalkalmazás vagy API-alkalmazás.
 
 1. Az a [az Azure portal](https://portal.azure.com), válassza ki a webalkalmazás vagy API-alkalmazás.
 

@@ -7,20 +7,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.component: metric
-ms.openlocfilehash: 4fcde6773bcdfe7ac522c813151518785dc14e25
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.component: metrics
+ms.openlocfilehash: a5e38f1400b99c6030799121d37721c26e16649c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383561"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721138"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) Azure metrikákhoz kapcsolódó riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások, annak érdekében, hogy megfelelően figyelt összes erőforrás létrehozásakor.
 
 > [!NOTE]
 > 
-> Ez a cikk ismerteti, hogy létrehozása **klasszikus metrikariasztásokat** Resource Manager-sablonok használatával. Ha a keresett létrehozása [újabb metrikákhoz kapcsolódó riasztások](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md) sablonokkal, [Ez a cikk](alerts-metric-create-templates.md) részleteit.
+> Ez a cikk ismerteti, hogy létrehozása **klasszikus metrikariasztásokat** Resource Manager-sablonok használatával. Ha a keresett létrehozása [újabb metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) sablonokkal, [Ez a cikk](alerts-metric-create-templates.md) részleteit.
 >
 
 

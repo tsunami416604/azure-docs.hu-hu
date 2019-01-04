@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963594"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600303"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: egy szótár, az Azure platform felhőalapú terminológia
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: Az Azure platform felhőalapú terminológia szótár
 
 A Microsoft Azure szószedet egy rövid szótárban az Azure platform felhőalapú terminológia. Lásd még:
 
@@ -37,7 +37,7 @@ Lásd: [egy Azure-előfizetést, az Office 365-fiókjával regisztráljon](billi
 Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
 ## <a name="app-service-app"></a>App Service-alkalmazás
-A számítási erőforrásokat, amelyek [Azure App Service](app-service/app-service-web-overview.md) biztosít egy webhelyre vagy webalkalmazásra alkalmazást, a webes API-t, a üzemeltetési vagy [mobil-háttéralkalmazás](app-service-mobile/app-service-mobile-value-prop.md). App Service-alkalmazások is nevezzük *App Services*, *webes alkalmazások*, *az API apps*, és *mobilalkalmazások*.
+A számítási erőforrásokat, amelyek [Azure App Service](app-service/overview.md) biztosít egy webhelyre vagy webalkalmazásra alkalmazást, a webes API-t, a üzemeltetési vagy [mobil-háttéralkalmazás](app-service-mobile/app-service-mobile-value-prop.md). App Service-alkalmazások is nevezzük *App Services*, *webes alkalmazások*, *az API apps*, és *mobilalkalmazások*.
 
 ## <a name="availability-set"></a>A rendelkezésre állási csoport
 Virtuális gépek, amelyek felügyelete együtt, adja meg az alkalmazás a redundancia és megbízhatóság gyűjteménye. Rendelkezésre állási csoport használata biztosítja, hogy mindkét tervezett vagy nem tervezett karbantartási események legalább egy virtuális gép elérhető.  
@@ -70,7 +70,7 @@ Lásd: [aktív Georeplikáció az Azure SQL Database-hez](sql-database/sql-datab
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
-Egy fájl, amely tartalmazza az operációs rendszer és alkalmazás-konfigurációs tetszőleges számú virtuális gépek létrehozásához használható. Az Azure-beli lemezképek két típusa van: virtuális gép kép- és operációsrendszer-lemezkép. Virtuálisgép-rendszerkép tartalmazza az operációs rendszer és a rendszerkép létrehozásakor egy virtuális géphez csatlakoztatott összes lemez. Operációsrendszer-lemezkép csak egy általánosított operációs rendszer, amely nincs adatok lemezkonfigurációk tartalmazza.  
+Egy fájl, amely tartalmazza az operációs rendszer és alkalmazás-konfigurációs tetszőleges számú virtuális gépek létrehozásához használható. Az Azure-ban két típusa van lemezképek: Virtuálisgép-rendszerképet és operációsrendszer-lemezkép. Virtuálisgép-rendszerkép tartalmazza az operációs rendszer és a rendszerkép létrehozásakor egy virtuális géphez csatlakoztatott összes lemez. Operációsrendszer-lemezkép csak egy általánosított operációs rendszer, amely nincs adatok lemezkonfigurációk tartalmazza.  
 Lásd: [navigálása és kiválasztása Windows virtuálisgép-lemezképek az Azure-ban a PowerShell vagy a parancssori felület](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="limits"></a>Korlátok
@@ -83,7 +83,7 @@ Egy erőforrás, amely elosztja a bejövő forgalmat a hálózaton lévő szám�
 ## <a name="mobile-app"></a>mobilalkalmazás
 Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
-## <a name="offer"></a>ajánlat
+## <a name="offer"></a>az ajánlat
 A díjszabás, kreditek és érvényes Azure-előfizetéshez kapcsolódó feltételeket.  
 Tekintse meg a [Azure-ajánlat részletei lap](https://azure.microsoft.com/support/legal/offer-details/)
 
@@ -106,13 +106,13 @@ Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-gr
 Egy JSON-fájlt, amely deklaratív meghatározza egy vagy több Azure-erőforrások és, amely meghatározza, hogy a telepített erőforrások közti függőségeket. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó.  
 Lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md)
 
-## <a name="resource-provider"></a>erőforrás-szolgáltató
+## <a name="resource-provider"></a>Erőforrás-szolgáltató
 Egy szolgáltatás, amely az erőforrásokat, akkor telepítheti és kezelheti a Resource Manageren keresztül. Mindegyik erőforrás-szolgáltató műveleteket biztosít a telepített erőforrásokkal folytatott munkához. Erőforrás-szolgáltatók az Azure Portalon, az Azure PowerShell és a számos programozási SDK-k érhetők el.  
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="role"></a>szerepkör
 Hanem a hozzáférés-felhasználók, csoportok és szolgáltatásokat kell hozzárendelni. Ezek tudni elvégezni a műveleteket, mint például létrehozása, kezelése, és olvassa el az Azure-erőforrás.  
-Lásd: [RBAC: beépített szerepkörök](role-based-access-control/built-in-roles.md)
+Lásd: [RBAC: Beépített szerepkörök](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>szolgáltatói szerződés (SLA)
 A szerződést, amely a Microsoft elkötelezettségét a üzemidejével és elérhetőségével. Minden Azure szolgáltatásnak van egy adott SLA-t.  

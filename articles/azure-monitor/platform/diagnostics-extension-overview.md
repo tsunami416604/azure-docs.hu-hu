@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338158"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789756"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
 Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, a virtuálisgép-méretezési csoportok és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../../azure-monitor/overview.md).
@@ -42,7 +42,7 @@ Az Azure Diagnostics bővítmény gyűjthet adatokat a következő típusú:
 ## <a name="data-storage"></a>Adattárolás
 A bővítmény tárolja az adatait egy [Azure Storage-fiók](diagnostics-extension-to-storage.md) megadott.
 
-Emellett elküldheti az, hogy [Application Insights](../../application-insights/app-insights-cloudservices.md). Egy másik lehetőség, hogy adatfolyamként való [Eseményközpont](../../event-hubs/event-hubs-about.md), amely azután lehetővé teszi, hogy küldje el a nem Azure-beli figyelés szolgáltatásokhoz.
+Emellett elküldheti az, hogy [Application Insights](../../azure-monitor/app/cloudservices.md). Egy másik lehetőség, hogy adatfolyamként való [Eseményközpont](../../event-hubs/event-hubs-about.md), amely azután lehetővé teszi, hogy küldje el a nem Azure-beli figyelés szolgáltatásokhoz.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Is választhat, hogy az Azure Monitor az adatok küldésére. Jelenleg ez a fogadó csak akkor érvényes, a teljesítményszámlálók. Lehetővé teszi, hogy a virtuális Gépen, VMSS, gyűjtött teljesítményszámlálók küldése vagy a felhőalapú szolgáltatás az Azure monitornak egyéni mérőszámokként. Az Azure Monitor-fogadó támogatja:
@@ -66,7 +66,7 @@ Válassza ki, melyik szolgáltatás próbált meg a diagnosztikai adatok gyűjt�
 
 Az összetettebb témákra lásd:
 
-* [Az Azure Diagnostics használatával az Application insights segítségével a Cloud Services](../../application-insights/app-insights-cloudservices.md)
+* [Az Azure Diagnostics használatával az Application insights segítségével a Cloud Services](../../azure-monitor/app/cloudservices.md)
 * [A folyamat egy Cloud Services-alkalmazás az Azure Diagnostics segítségével nyomon követése](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [A Cloud Services diagnosztika beállítása a PowerShell használatával](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

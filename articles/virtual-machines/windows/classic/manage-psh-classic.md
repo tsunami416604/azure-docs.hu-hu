@@ -1,6 +1,6 @@
 ---
-title: A virtuális gépek kezelése az Azure PowerShell használatával |} Microsoft Docs
-description: Ismerje meg, amely segítségével automatizálhatja a feladatokat a virtuális gépek kezelése a parancsok.
+title: A virtuális gépek kezelése az Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, amelyek segítségével automatizálhatja a feladatokat a virtuális gépek kezeléséhez.
 services: virtual-machines-windows
 documentationcenter: windows
 author: singhkays
@@ -16,45 +16,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-ms.openlocfilehash: 942141fad09e6233efc7f850212a73f8a39c163c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b7fafa148417ba1667ec0277b414105f95e428ce
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30918305"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971784"
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>A virtuális gépek kezelése az Azure PowerShell-lel
 > [!IMPORTANT] 
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Általános PowerShell-parancsokat a Resource Manager modellt használja, lásd: [Itt](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Gyakori PowerShell-parancsok a Resource Manager modellt használja, lásd: [Itt](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Ezt megteheti, hogy a virtuális gépek kezelése a napi feladatok automatizálhatók Azure PowerShell-parancsmagok használatával. Ez a cikk ad Példaparancsok egyszerűbb feladatokat, és hivatkozásokat tartalmaz, amelyek megjelenítik a parancsokat az összetettebb feladatok cikkek.
+Számos feladatot végezhet el, minden nap, a virtuális gépek kezelése az Azure PowerShell-parancsmagok használatával automatizálható. Ez a cikk megtalálható Példaparancsok egyszerűbb feladatokat, és hivatkozásokat tartalmaz olyan cikkekre, amelyek a parancsok az összetettebb feladatok megjelenítése.
 
 > [!NOTE]
-> Ha még nem telepített és konfigurált Azure PowerShell, még a cikkben szereplő útmutatást kaphat [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+> Ha még nem telepítette és konfigurálta az Azure PowerShell, még a cikk útmutatást kaphat [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 > 
 > 
 
 ## <a name="how-to-use-the-example-commands"></a>A példa parancsok használata
-Cserélje le a parancsokban a keresett szöveg, amely a környezetnek megfelelő lesz szüksége. A < és > szimbólumokat kell cserélnie Szöveg jelzi. Ha a szöveg, távolítsa el a szimbólumok, de hagyja meg az ajánlat közötti helyen.
+Cserélje le a parancsokban szereplő a keresett szöveg, amely a környezetnek megfelelő kell. A < és > szimbólumok azt jelzik, ki kell cserélni a szöveget. Ha lecseréli a szöveget, távolítsa el szimbólumok, de hagyja meg az ajánlat együtt helyen.
 
-## <a name="get-a-vm"></a>A virtuális gép beolvasása
-Ez a gyakran használt egyszerű feladat. Ezzel a virtuális gép adatainak beolvasása, a feladatok végrehajtása a virtuális gép vagy a tárolható egy változóban az beszerzése kimeneti.
+## <a name="get-a-vm"></a>A virtuális gép lekérése
+Ez a alapvető feladat gyakran fogja használni. Használhatja egy virtuális gép adatainak lekérése, a virtuális gép feladatait vagy első kimeneti tárolja egy változóban.
 
-A virtuális gép kapcsolatos információért futtassa ezt a parancsot, cseréje az ajánlatokat, beleértve a tartalmát a < és > karakter:
+Információt szeretne kapni a virtuális gép, futtassa a parancsot, és mindent az ajánlatokat, többek között a < és > karakterek:
 
-     Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
+    Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-A kimeneti $vm változó tárolja, futtassa:
+A kimenet egy $vm változóban tárolja, futtassa:
 
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## <a name="log-on-to-a-windows-based-vm"></a>Jelentkezzen be a Windows-alapú virtuális gépek
-Futtassa az alábbi parancsokat:
+## <a name="log-on-to-a-windows-based-vm"></a>Jelentkezzen be a Windows-alapú virtuális gép
+Futtassa a következő parancsokat:
 
 > [!NOTE]
-> A virtuális gép és felhő szolgáltatásnév lekérheti a megjelenítéséhez használatos a **Get-AzureVM** parancsot.
+> A virtuális gép és a felhőalapú szolgáltatás neve kérhet le a megjelenítését a **Get-AzureVM** parancsot.
 > 
-> $svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "< meghajtót és mappaútvonalat a letöltött RDP-fájl tárolási helyét példa: c:\temp >" $localFile = $localPath + "\" $vmname +".rdp"Get-AzureRemoteDesktopFile - ServiceName $svcName-Name $vmName - LocalPath $localFile-elindítása
+> $svcName = `"<cloud service name>"` $vmName = `"<virtual machine name>"` $localPath = `"<drive and folder location to store the downloaded RDP file, example: c:\temp >"` $localFile = $localPath + "\" $vmname +".rdp"get-AzureRemoteDesktopFile - ServiceName $svcName-$vmName – LocalPath $localFile nevezze-indítása
 > 
 > 
 
@@ -64,7 +64,7 @@ Futtassa ezt a parancsot:
     Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 > [!IMPORTANT]
-> Ez a paraméter használatával tartani a virtuális IP-cím (VIP) a felhőalapú szolgáltatás, amely a felhőszolgáltatás utolsó virtuális gép esetén. <br><br> Ha a StayProvisioned paraméter használata esetén a fogjuk továbbra is számlázni a virtuális gép.
+> Használja ezt a paramétert, hogy a virtuális IP-cím (VIP) a felhőalapú szolgáltatás, abban az esetben ez az utolsó virtuális gép található, amely a felhőszolgáltatás. <br><br> A StayProvisioned paraméter használatakor a fog továbbra is felszámítjuk a virtuális Gépet.
 > 
 > 
 
@@ -74,9 +74,9 @@ Futtassa ezt a parancsot:
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## <a name="attach-a-data-disk"></a>Adatlemez csatolása
-Ez a feladat néhány lépést igényel. Először is használhatja a x Add-AzureDataDisk x parancsmag használatával adja hozzá a lemezt a $vm objektum. Ezután **frissítés-AzureVM** parancsmag használatával frissítse a virtuális gép konfigurációját.
+Ez a feladat néhány lépést igényel. Először is használhatja az x Add-AzureDataDisk x parancsmag használatával adja hozzá a lemezt a $vm objektum. Ezután **Update-AzureVM** parancsmag frissíti a virtuális gép konfigurációját.
 
-El kell döntenie, hogy új vagy adatokat már tartalmazó lemezt szeretne-e csatolni. Új lemez a parancs a .vhd fájlt hoz létre, és csatolja.
+El kell döntenie, hogy új vagy adatokat már tartalmazó lemezt szeretne-e csatolni. Új lemez a parancs a .vhd fájlt hoz létre, és csatolja azt.
 
 Új lemez csatolásához futtassa ezt a parancsot:
 
@@ -86,7 +86,7 @@ Már meglévő adatlemez csatolásakor futtassa ezt a parancsot:
 
     Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> | Update-AzureVM
 
-A blob Storage tárolóban meglévő .vhd fájl adatlemezt csatolni futtassa ezt a parancsot:
+Adatlemez csatolása a blob storage-ban egy meglévő .vhd fájlból, a következő parancs futtatásával:
 
     Add-AzureDataDisk -ImportFrom -MediaLocation `
               "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" `
@@ -94,10 +94,10 @@ A blob Storage tárolóban meglévő .vhd fájl adatlemezt csatolni futtassa ezt
               Update-AzureVM
 
 ## <a name="create-a-windows-based-vm"></a>Windows-alapú virtuális gép létrehozása
-Hozzon létre egy új Windows-alapú virtuális gépet az Azure-ban, kövesse az utasításokat a [Azure PowerShell használata hozhat létre és konfigurálja a Windows-alapú virtuális gépek előre](create-powershell.md). Ez a témakör lépéseit meg kell létrehozni az Azure PowerShell paranccsal állítsa be, amely létrehoz egy Windows-alapú virtuális Gépet, amely megfelelően előre beállíthatók:
+Egy új Windows-alapú virtuális gép létrehozása az Azure-ban, használja a következő témakör utasításait [hozhat létre, és előre konfigurálása a Windows-alapú virtuális gépek Azure PowerShell használata](create-powershell.md). Ez a témakör lépéseit létrehozása az Azure PowerShell paranccsal állítsa be, amely bemutatja, hogyan hoz létre a megfelelően előre beállíthatók Windows-alapú virtuális Gépet:
 
 * Az Active Directory tartományi tagságát.
-* A további lemezek.
-* Elosztott terhelésű meglévő tagjaként beállítása.
-* Statikus IP-címmel.
+* A további lemezeket.
+* Egy meglévő elosztott terhelésű tagjaként beállítása.
+* Egy statikus IP-címmel.
 

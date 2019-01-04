@@ -1,7 +1,7 @@
 ---
-title: Beszélgetés tanuló folyamatábrán - Microsoft kognitív szolgáltatások |} Microsoft Docs
+title: Beszélgetés Learner átvitelvezérlés – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg a beszélgetési tanuló folyamatábrán.
+description: Ismerje meg a Beszélgetéstanuló vezérlési folyamatában.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,35 +10,35 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 592ca82db7e0ab3ff89d25b61f38f8b226f3bc86
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8007e9e9fe2f404b4d702471610ff76047f7ed86
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348574"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790928"
 ---
 ## <a name="control-flow"></a>Átvitelvezérlés
 
-Ez a dokumentum ismerteti a folyamatábrán az a beszélgetés tanuló (CL) szerint jelenik meg az alábbi ábra.
+Ez a dokumentum ismerteti a vezérlési folyamatában, a beszélgetés Learner (CL) szerint jelenik meg az alábbi ábrán látható.
 
 ![](media/controlflow.PNG)
 
-1. Egy kifejezés és a botot például "Mi legyen a budapesti időjárási?" kifejezést adja meg felhasználói
-1. CL átadja a felhasználó által megadott a gépi tanulási modell, amely kinyeri entitások számára
-    - Ez a modell által beszélgetés tanuló leghatékonyabban, és www.luis.ai által üzemeltetett
-2. A kibontott entitások, és a felhasználó bemeneti szöveget, a rendszer átadja a botot kódban entitás észlelési visszahívási metódus.
-    - Ezt a kódot is entitást set/törlés/kezelheti értékek
-1. Neurális hálózat CL elvégzi entitás kibontásával felhasználói bevitelt, és a botot definiált összes művelet eredményeinek kimeneti
-    - Ebben a példában a legnagyobb valószínűség művelet, hogy adja meg a időjárás:
+1. Felhasználó sikeresen megadja egy kifejezéssel a robot a például, "Mi az az időjárás, a Seattle?"
+1. CL átadja egy gépi tanulási modellt, amely kinyeri az entitásokat, a felhasználói bevitel
+    - Ez a modell által Beszélgetéstanuló hozhat létre, és www.luis.ai által üzemeltetett
+1. Minden kinyert entitásokat, és a felhasználói bevitel szöveg-, a robot kódban entitás észlelési visszahívási metódus lesznek átadva.
+    - Ez a kód előfordulhat, hogy a set/törlés/módosítására entitásértékek
+1. Neurális hálózat CL elvégzi az entitások kinyeréséhez, és a felhasználói bevitel, és a pontszámok a robot definiált összes művelet kimenete
+    - Ebben a példában a legnagyobb valószínűség műveletet, hogy az időjárás-előrejelzés küldése:
 
-![](media/controlflow_forecast.PNG)
+    ![](media/controlflow_forecast.PNG)
 
-5. A kiválasztott művelet ebben az esetben szükséges egy API-hívás a időjárás beolvasása. 
-6. Ez az API, amely a CL volt regisztrálva. AddAPICallback módszer, majd elindítása.  Ez az API eredményét ezután visszaérkezik a felhasználó, egy üzenet – például "A 67-es nagy Sunny."
-7. A majd kezdeményezték a Neurális hálózat alapján az előző lépésben a következő művelet meghatározásához.
-8. Neurális hálózat majd előrejelzi a következő lehetséges műveletek készletét, és a kiválasztott művelet nem jelenik meg a felhasználó ebben az esetben "Bármi más?"
+1. A kiválasztott művelet ebben az esetben szükséges egy API-hívások időjárás-előrejelzés beolvasása. 
+1. Ez az API, amely a CL volt regisztrálva. AddCallback módot, majd meghívni.  Az API-t, az eredmény ezután visszaérkezik a felhasználó, egy üzenet – például "Sunny 67-es, a magas."
+1. A majd kezdeményezték a Neurális hálózat alapján az előző lépésben a következő művelet meghatározásához.
+1. A Neurális hálózat majd előrejelzi a lehetséges műveletek következő készletét, és a kiválasztott művelet van a felhasználó számára megjelenő, ebben az esetben "Bármi más?"
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hogyan mutatja meg a beszélgetési tanuló ](./how-to-teach-cl.md)
+> [Hogyan, akik a Beszélgetéstanuló ](./how-to-teach-cl.md)

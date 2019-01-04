@@ -1,5 +1,5 @@
 ---
-title: Nodejs-hez (Part2) MongoB API-val Angular-alkalmazás
+title: Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – Node.js Express alkalmazás létrehozása
 titleSuffix: Azure Cosmos DB
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 2. része.
 author: johnpapa
@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 53e3f4d975ec18b32d6b8166f978bfad2c064f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8e122ab62009463ae12d5635323655be708aa29d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716430"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788055"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 2. rész: Node.js Express alkalmazás létrehozása
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – Node.js Express alkalmazás létrehozása
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos-fiók MongoDB API-hoz konfigurált](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md).
 
 Az oktatóanyag 2. része a [bevezető részre](tutorial-develop-mongodb-nodejs.md) épül, és az alábbi feladatokat ismerteti:
 

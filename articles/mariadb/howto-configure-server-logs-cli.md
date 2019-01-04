@@ -1,21 +1,18 @@
 ---
 title: Kiszolgálói naplók az Azure Database for MariaDB Azure CLI-vel
 description: Ez a cikk azt ismerteti, hogyan férhetnek hozzá a kiszolgálónaplók, Azure database for MariaDB, az Azure CLI parancssori segédprogram használatával.
-services: mariadb
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: b9ae07b88164a830598db791d61b77a6abb7b1df
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 403f111882b1bd151b26af56fd614355e7ba88e3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516220"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539211"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
 Az Azure Database for MariaDB naplók az Azure CLI, az Azure parancssori segédprogram használatával töltheti le.

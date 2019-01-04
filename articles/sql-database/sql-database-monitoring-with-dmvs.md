@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 88e0ad847d8d779bd769ed73d4f0393ddfb65588
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876313"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604429"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Azure SQL Database teljesítményének figyelése dinamikus felügyeleti nézetek használatával
 
@@ -574,7 +574,7 @@ A következő példa bemutatja, hogy különböző módon használhatja a **sys.
     ORDER BY start_time DESC;
     ```
 
-2. Arról, hogy a számítási feladatok megfelel-e a számítási méret kipróbálhatók egyes funkcióiról, az erőforrás-mérőszámok feltárásához kell: Processzor, olvasási, írási, feldolgozók száma és munkamenetek számát. Íme a módosított lekérdezés használatával **sys.resource_stats** jelentéséhez ezen erőforrás-mérőszámok átlagos és maximális értékeit:
+2. Arról, hogy a számítási feladatok megfelel-e a számítási méret, értékelődik ki kell egyes funkcióiról, az erőforrás-mérőszámok feltárásához: CPU, olvasási, írási, feldolgozók száma és munkamenetek számát. Íme a módosított lekérdezés használatával **sys.resource_stats** jelentéséhez ezen erőforrás-mérőszámok átlagos és maximális értékeit:
 
     ```sql
     SELECT

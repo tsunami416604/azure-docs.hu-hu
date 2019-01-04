@@ -8,16 +8,16 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: d02ae48bab6a17cbf5568996b30ccb39ccb81c59
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994014"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755019"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tárolópéldányok üzembe helyezése
 
-Bizonyos nagy számítási igényű számítási feladatok futtatásához az Azure Container Instances üzembe helyezése a tárolócsoportok az *GPU-erőforrások*. A container Instances szolgáltatásban tárolókhoz kapcsolódó számítási feladatok, például a CUDA fut, és a deep learning-alkalmazások férhetnek hozzá egy vagy több NVIDIA Tesla gpu-kat.
+Bizonyos nagy számítási igényű számítási feladatok futtatásához az Azure Container Instances üzembe helyezése a [tárolócsoportok](container-instances-container-groups.md) a *GPU-erőforrások*. A csoportban található tárolópéldányok tárolókhoz kapcsolódó számítási feladatok, például a CUDA fut, és a deep learning-alkalmazások férhetnek hozzá egy vagy több NVIDIA Tesla gpu.
 
 Ahogyan azt ebben a cikkben, ha telepít egy tárolócsoport használatával adhat hozzá GPU-erőforrások egy [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md).
 
@@ -40,7 +40,7 @@ Előzetes verzióban elérhető az alábbi korlátozások érvényesek a tárol�
 
 Támogatási idővel további régiókban megjelenik.
 
-**Támogatott operációsrendszer-típus**: csak Linux
+**Támogatott operációsrendszer-típus**: Csak Linux
 
 **További korlátozások**: GPU-erőforrások nem használható, egy tárolócsoport történő üzembe helyezésekor a [virtuális hálózat](container-instances-vnet.md).
 
@@ -87,7 +87,7 @@ GPU-erőforrások üzembe helyezésekor, állítsa be a terhelés, akár a maxim
 
 ## <a name="yaml-example"></a>YAML-példa
 
-Másolja a következő yaml-kódot egy új fájlt *gpu üzembe helyezése aci.yaml*, majd mentse a fájlt. A YAML létrehoz egy tárolócsoport nevű *gpucontainergroup* adnak meg egy tárolópéldányt egy K80 gpu-val. A példány egy minta CUDA vektor emellett alkalmazást futtat. Az erőforrás-kérelmek elegendőek a számítási feladat futtatásához.
+Adja hozzá a GPU-erőforrások egyike a használatával történő telepítéséhez egy tárolócsoport egy [YAML-fájl](container-instances-multi-container-yaml.md). Másolja a következő yaml-kódot egy új fájlt *gpu üzembe helyezése aci.yaml*, majd mentse a fájlt. A YAML létrehoz egy tárolócsoport nevű *gpucontainergroup* adnak meg egy tárolópéldányt egy K80 gpu-val. A példány egy minta CUDA vektor emellett alkalmazást futtat. Az erőforrás-kérelmek elegendőek a számítási feladat futtatásához.
 
 ```YAML
 additional_properties: {}
@@ -134,7 +134,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Resource Manager-sablon példa
 
-Először hozzon létre egy fájlt `gpudeploy.json`, majd másolja bele a következő JSON-fájllal. Ebben a példában egy tárolópéldányt egy V100 GPU, amelyen üzembe helyezi egy [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) elleni betanítási feladat a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/). Az erőforrás-kérelmek elegendőek a számítási feladat futtatásához.
+Egy másik módja egy tárolócsoportot GPU-erőforrások üzembe helyezése használatával, egy [Resource Manager-sablon](container-instances-multi-container-group.md). Először hozzon létre egy fájlt `gpudeploy.json`, majd másolja bele a következő JSON-fájllal. Ebben a példában egy tárolópéldányt egy V100 GPU, amelyen üzembe helyezi egy [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) elleni betanítási feladat a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/). Az erőforrás-kérelmek elegendőek a számítási feladat futtatásához.
 
 ```JSON
 {
