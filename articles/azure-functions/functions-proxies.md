@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 7c1d3adec6fd718df12abde1b56a89e662de284e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538990"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017106"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions-proxyk használata
 
@@ -47,13 +47,13 @@ Az Azure Functions-proxyk módosíthatja a kérelmek és válaszok a háttérren
 
 Alapértelmezés szerint a háttér-kérelem egy másolatát az eredeti kérelem inicializálása. Amellett, hogy a háttér-URL-cím beállítása, a HTTP módszert, fejlécek és lekérdezési karakterlánc paraméterei módosításokat végezheti el. A módosított értékek hivatkozhatnak [Alkalmazásbeállítások] és [paramétert az eredeti ügyfélkérelemben].
 
-Háttér-kérelmek expading által módosítható a portálon a *kérés felülbírálása* proxy részletek lapon szakaszában. 
+Háttér-kérelmek által bővítése módosítható a portálon a *kérés felülbírálása* proxy részletek lapon szakaszában. 
 
 ### <a name="modify-response"></a>A válasz módosítása
 
 Alapértelmezés szerint az ügyfél válaszára inicializálva van a háttér-válasz egy másolatát. A válasz állapotkódja, indoklás, fejlécek és törzs módosításokat végezheti el. A módosított értékek hivatkozhatnak [Alkalmazásbeállítások], [paramétert az eredeti ügyfélkérelemben], és [paraméterek a háttér-válaszból].
 
-Háttér-kérelmek expading által módosítható a portálon a *válasz felülbírálása* proxy részletek lapon szakaszában. 
+Háttér-kérelmek által bővítése módosítható a portálon a *válasz felülbírálása* proxy részletek lapon szakaszában. 
 
 ## <a name="using-variables"></a>Változók használata
 
@@ -176,12 +176,13 @@ A proxy viselkedését több alkalmazás beállításai vezérlik. Azok az össz
 
 ### <a name="reservedChars"></a> (Karakterlánc formázása) fenntartott karaktereket
 
-Olvassa el az összes karakterlánc értelmezése, kivéve a kapcsos zárójelek és perjeleket nélkül proxyk
+Proxyk, olvassa el minden kívül egy JSON-karakterlánc fájl használatával \, egy escape szimbólumot. Proxyk is tudja értelmezni a kapcsos zárójelek közé. Tekintse meg az alábbi példák teljes körű.
 
 |Karakter|Escape-karaktert|Példa|
 |-|-|-|
 |{vagy}|{{és}}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>Egy requestOverrides objektum meghatározása
 

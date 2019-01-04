@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259377"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002671"
 ---
-# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Rövid útmutató: Üzenetek küldése és fogadása az Azure Portallal és a .NET-tel
+# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Gyors útmutató: Az Azure portal és a .NET használatával üzenetek küldése és fogadása
 
 A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és teljes mértékben megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását, továbbá az állapot- vagy adatváltozások továbbítását foglalja magában. Ilyen esetekben előfordulhat, hogy több kötegelt feladatokat kell üzemeznie más alkalmazásokban vagy szolgáltatásokban, vagy pedig ki kell váltani a megrendelések teljesítését. Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vonatkozó adatait egy háttérrendszernek vagy egy regionális terjesztőközpontnak feltöltés vagy leltárfrissítés céljából. Ebben a forgatókönyvben az ügyfélalkalmazás üzeneteket küld és fogad egy Service Bus-üzenetsorból.  
 
@@ -59,7 +59,7 @@ Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös 
 1.  Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
 2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
 3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
-4. A **Szabályzat: RootManageSharedAccessKey** ablakban az **Elsődleges kapcsolati sztring** melletti **Másolás** gombra kattintva másolja a kapcsolati sztringet a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre. 
+4. Az a **házirend: RootManageSharedAccessKey** ablakban kattintson a **másolási** megjelenítő gombra **elsődleges kapcsolati karakterlánc**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre. 
 
     ![connection-string][connection-string]
 5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
@@ -77,7 +77,7 @@ Adja meg a névteret, amelyben létre kívánja hozni a Service Bus-üzenetsort.
 
 ## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 
-Miután kiépítette a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-jms) vizsgálhatja meg.
+Miután kiépítette a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
 
 A kód futtatásához tegye a következőt:
 

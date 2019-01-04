@@ -9,14 +9,14 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b03a0538e92ac126a50a1346eb1bf7fb003189f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fb3358775881f102ecea62fbd20a1e4d85dda308
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966857"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001634"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Az Azure Portallal és az üzenettémák, előfizetések készlet frissítése
 
 A Microsoft Azure Service Bus egy több-bérlős felhőalapú üzenetkezelési szolgáltatás, amely információkat küld alkalmazások és szolgáltatók között. Az aszinkron műveletek rugalmas, közvetítőalapú üzenettovábbítást, valamint strukturált, érkezési sorrendben történő üzenetkiküldést tesznek lehetővé. Emellett közzétételi vagy előfizetési lehetőségeket is biztosítanak. Ebből az oktatóanyagból megtudhatja, hogyan használhatók a Service Bus-témakörök és -előfizetések kereskedelmi leltárazási forgatókönyvekben az Azure Portalt és a .NET-et használó közzétételi/feliratkozási csatornákkal.
 
@@ -70,7 +70,7 @@ Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös 
 1. Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
 2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
 3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
-4. A **Szabályzat: RootManageSharedAccessKey** ablakban az **Elsődleges kapcsolati sztring** melletti **Másolás** gombra kattintva másolja a kapcsolati sztringet a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
+4. Az a **házirend: RootManageSharedAccessKey** ablakban kattintson a **másolási** megjelenítő gombra **elsődleges kapcsolati karakterlánc**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
 
     ![connection-string][connection-string]
 5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
@@ -91,7 +91,7 @@ Adja meg a névteret, amelyben létre kívánja hozni a Service Bus-témakört. 
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Szűrési szabályok létrehozása előfizetésekhez
 
-Miután kiépítette a névteret és a témakört/előfizetéseket, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az előfizetések szűrési szabályainak létrehozására, majd az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/GettingStarted/BasicSendReceiveTutorialwithFilters) vizsgálhatja meg.
+Miután kiépítette a névteret és a témakört/előfizetéseket, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az előfizetések szűrési szabályainak létrehozására, majd az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
 
 ### <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 

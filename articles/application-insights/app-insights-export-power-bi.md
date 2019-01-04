@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bb36111da04ad44f5c13ef3dce2b1684784094e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b4d87ab62503bee1ff54ba9713f7c49d09a2e547
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808384"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015066"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
@@ -119,7 +119,7 @@ Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkenté
  ```
 
 ## <a name="about-sampling"></a>Tudnivalók a mintavételezésről
-Az alkalmazás által küldött adatok mennyiségétől függően előfordulhat, hogy használni kívánt az adaptív mintavételezés funkció, amely csak a telemetria százalékát küldi. Ugyanez igaz akkor is, ha manuálisan állította mintavételi az SDK vagy betöltéskor. [További tudnivalók a mintavételezésről](app-insights-sampling.md).
+Az alkalmazás által küldött adatok mennyiségétől függően előfordulhat, hogy használni kívánt az adaptív mintavételezés funkció, amely csak a telemetria százalékát küldi. Ugyanez igaz akkor is, ha manuálisan állította mintavételi az SDK vagy betöltéskor. [További tudnivalók a mintavételezésről](../azure-monitor/app/sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>(Elavult) a Power BI-adapter
 Ez a módszer létrehoz egy teljes irányítópultot telemetria. A kezdeti adatkészlet parancspéldány előre definiált, de további adatokat adhat.
