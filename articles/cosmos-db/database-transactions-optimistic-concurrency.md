@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fbb92fd1186881a359f77a9c6b68816763dd8f9b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ddd3b7a859e48e3212d8d51d627eea2e69c7c1ff
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629066"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024705"
 ---
 # <a name="database-transactions-and-optimistic-concurrency-control"></a>Adatbázis-tranzakciók és az optimista egyidejűség-vezérlés
 
@@ -53,9 +53,9 @@ Az optimista egyidejűség-vezérlés lehetővé teszi, hogy megakadályozza az 
 
 Egy elemet egyidejű frissítése az Azure Cosmos DB kommunikációs protokoll réteg által a OCC vannak kitéve. Az Azure Cosmos database biztosítja, hogy az elem frissítése (vagy törlése) ügyféloldali verziója ugyanaz, mint a verzió a cikk az Azure Cosmos-tárolóban. Ez garantálja, hogy az írási mások, és ez fordítva is igaz az írások véletlenül felülírásra védettek. Többfelhasználós környezetben az optimista egyidejűség-vezérlés megóvja a véletlen törlését, vagy helytelen verziójára figyelmeztet elem frissítése. Emiatt a elemek védve legyenek a infamous "elveszett update" vagy "elveszett törlés" problémákat.
 
-Minden Azure-Cosmos-tárolóban tárolt elemnek egy rendszer által meghatározott `__etag` tulajdonság. Értékét a `__etag` automatikusan létrehozza és frissíti a kiszolgáló minden alkalommal, amikor az elem frissítése. `__etag` segítségével az ügyfél által megadott if-match kérelem fejléce együtt lehetővé teszik a kiszolgáló eldönteni, hogy egy elem feltételesen frissíthetők. Az if-match fejléc értéke megegyezik a `__etag` a kiszolgálón, majd frissül az elemet. A kérelemben if-match fejléc értéke már nem aktuális, ha a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszüzenet. Az ügyfél ezután is refetch az elemet a kiszolgálón az elem aktuális verziójának beszerzéséhez és nem írhatók felül a cikk a kiszolgáló a saját verzióját `__etag` elem értékét. Emellett `__etag` meghatározni, hogy szükség van-e egy adott erőforrás egy refetch az if-none-match fejléc használható. 
+Minden Azure-Cosmos-tárolóban tárolt elemnek egy rendszer által meghatározott `_etag` tulajdonság. Értékét a `_etag` automatikusan létrehozza és frissíti a kiszolgáló minden alkalommal, amikor az elem frissítése. `_etag` segítségével az ügyfél által megadott if-match kérelem fejléce együtt lehetővé teszik a kiszolgáló eldönteni, hogy egy elem feltételesen frissíthetők. Az if-match fejléc értéke megegyezik a `_etag` a kiszolgálón, majd frissül az elemet. A kérelemben if-match fejléc értéke már nem aktuális, ha a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszüzenet. Az ügyfél ezután is refetch az elemet a kiszolgálón az elem aktuális verziójának beszerzéséhez és nem írhatók felül a cikk a kiszolgáló a saját verzióját `_etag` elem értékét. Emellett `_etag` meghatározni, hogy szükség van-e egy adott erőforrás egy refetch az if-none-match fejléc használható. 
 
-Az elem __etag értéke módosul, minden alkalommal, amikor az elem frissítése. A Csere elem műveletek if-match kell explicit módon megadni a kérelem beállítások részeként. Egy vonatkozó példáért tekintse meg a mintakód a [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `__etag` értékeket implicit módon ellenőrzi csinált semmit a tárolt eljárás által az összes írt cikkeket. Ha bármely ütközést észlel, a tárolt eljárás fog állítsa vissza a tranzakciót, és kivételt jelez. Ezzel a módszerrel a tárolt eljárás minden vagy nincs írási szolgáltatásfrissítést érvényesek. Ez a jel, az alkalmazás újból alkalmazni a frissítéseket, és ismételje meg az eredeti ügyfél kérelmet.
+Az elem _etag értéke módosul, minden alkalommal, amikor az elem frissítése. A Csere elem műveletek if-match kell explicit módon megadni a kérelem beállítások részeként. Egy vonatkozó példáért tekintse meg a mintakód a [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag` értékeket implicit módon ellenőrzi csinált semmit a tárolt eljárás által az összes írt cikkeket. Ha bármely ütközést észlel, a tárolt eljárás fog állítsa vissza a tranzakciót, és kivételt jelez. Ezzel a módszerrel a tárolt eljárás minden vagy nincs írási szolgáltatásfrissítést érvényesek. Ez a jel, az alkalmazás újból alkalmazni a frissítéseket, és ismételje meg az eredeti ügyfél kérelmet.
 
 ## <a name="next-steps"></a>További lépések
 

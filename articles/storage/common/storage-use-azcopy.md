@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/03/2019
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c0672ddb3e6791fae3b9b8c04e9ff98827c9e22f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 03d307a324826a4805da5ed6ff8b995b7c3eab62
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256731"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019303"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatok áthelyezése az AzCopy az Windows rendszeren
 Az AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, fájl és Table storage, az adatok másolása szolgál az optimális teljesítmény érdekében tervezett egyszerű parancs használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
@@ -448,9 +448,9 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytab
 
 A beállítás `/EntityOperation` azt jelzi, hogy hogyan entitások beszúrni a táblába. Lehetséges értékek:
 
-* `InsertOrSkip`: Egy létező entitásba kihagyja vagy szúr be egy új entitást, ha a tábla nem létezik.
-* `InsertOrMerge`: Egy létező entitásba egyesíti, vagy szúr be egy új entitást, ha a tábla nem létezik.
-* `InsertOrReplace`: Váltja fel egy meglévő entitásra, vagy szúr be egy új entitást, ha a tábla nem létezik.
+* `InsertOrSkip`: Meglévő entitás kihagyja vagy szúr be egy új entitást, ha a tábla nem létezik.
+* `InsertOrMerge`: Meglévő entitás egyesíti, vagy szúr be egy új entitást, ha a tábla nem létezik.
+* `InsertOrReplace`: Meglévő entitás váltja fel, vagy szúr be egy új entitást, ha a tábla nem létezik.
 
 Vegye figyelembe, hogy a beállítás nem adható meg `/PKRS` importálás forgatókönyvben. Az exportálás, amelyben a kapcsolót kell megadnia a forgatókönyvben eltérően `/PKRS` párhuzamos műveletek indításához az AzCopy az egyidejű művelet alapértelmezés szerint elindul egy tábla importálásakor. A lépések az egyidejű művelet alapértelmezett száma egyenlő; a Processzormagok száma azonban különböző számú párhuzamos lehetőséggel megadhatja `/NC`. További információkért írja be a `AzCopy /?:NC` a parancssorból.
 
@@ -458,7 +458,7 @@ Vegye figyelembe, hogy az AzCopy csak támogatja a JSON-t, nem CSV importálása
 
 ### <a name="import-entities-into-a-table-from-blob-storage"></a>Entitások importálása egy táblába a Blob storage-ból
 
-Tegyük fel, a Blob-tároló tartalmazza a következő: egy JSON-fájlt, amely egy Azure-tábla és a hozzájuk tartozó Alkalmazásjegyzék-fájl.
+Tegyük fel, hogy egy blobtárolót a következőket tartalmazza: Az Azure Table és a hozzájuk tartozó jegyzékfájl jelölő JSON-fájlt.
 
     myaccount_mytable_20140103T112020.manifest
     myaccount_mytable_20140103T112020_0_0_0AF395F1DC42E952.json
@@ -712,11 +712,11 @@ Megadja, hogy a cél blob blokkblob, lapblob és hozzáfűző blob. Ez a beáll�
 
 ### <a name="checkmd5"></a>/ CheckMD5
 
-Egy MD5-kivonat, a letöltött adatok kiszámolja, és ellenőrzi, hogy az MD5-kivonat a blobban tárolt vagy a fájl tartalma-MD5 tulajdonsága egyezést mutat a kiszámított kivonatát. Az MD5-ellenőrzést ki van kapcsolva, alapértelmezés szerint meg kell adnia ezt a beállítást, elvégzi a MD5-ellenőrzést, amikor adatokat tölti le, így.
+Egy MD5-kivonat, a letöltött adatok kiszámolja, és ellenőrzi, hogy az MD5-kivonat a blobban tárolt vagy a fájl tartalma-MD5 tulajdonsága egyezést mutat a kiszámított kivonatát. Ha az értékek nem egyeznek, az AzCopy nem fogja tudni letölteni az adatokat. Az MD5-ellenőrzést ki van kapcsolva, alapértelmezés szerint meg kell adnia ezt a beállítást, elvégzi a MD5-ellenőrzést, amikor adatokat tölti le, így.
 
-Vegye figyelembe, hogy az Azure Storage nem garantálja, hogy naprakész állapotban-e tárolni a blob- vagy MD5-kivonat. Feladata ügyfél frissítéséhez az MD5-tel, a blob- vagy módosításakor.
+Vegye figyelembe, hogy az Azure Storage nem garantálja, hogy naprakész állapotban-e tárolni a blob- vagy MD5-kivonat. Feladata ügyfél frissítéséhez az MD5-tel, a blob- vagy módosításakor. Lemezképek (felügyelt vagy nem felügyelt lemezek) Azure virtuális gépek nem frissítik az MD5-tel érték, a lemez tartalmának módosítása esetén ezért /CheckMD5 kivételt fogja kijelezni hiba lemezképeket letöltésekor.
 
-AzCopy után feltölteni a a szolgáltatás mindig egy Azure blob- vagy a tartalom-MD5 tulajdonságát állítja be.  
+AzCopy v8 után feltölteni a a szolgáltatás mindig egy Azure blob- vagy a tartalom-MD5 tulajdonságát állítja be.  
 
 **Alkalmazható:** Blobok, fájlok
 
@@ -893,7 +893,7 @@ Minden művelet exportálja egy három partíció kulcstartományokkal, ahogy az
 
   [bb partíciós kulccsal]
 
-**Alkalmazható:** táblák
+**Alkalmazható:** Táblák
 
 ### <a name="splitsizefile-size"></a>/ SplitSize: "fájlméret"
 
@@ -903,7 +903,7 @@ Ha ez a beállítás nincs megadva, az AzCopy táblaadatok egyetlen fájlba expo
 
 Ha a tábla adatok exportálva lettek egy blobot, és az exportált fájl mérete eléri a 200 GB-os korlátot, a blob mérete, majd az AzCopy bontja az exportált fájlt, akkor is, ha ez a beállítás nincs megadva.
 
-**Alkalmazható:** táblák
+**Alkalmazható:** Táblák
 
 ### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/ EntityOperation: "InsertOrSkip" |} "InsertOrMerge" |} "InsertOrReplace"
 
@@ -913,7 +913,7 @@ Itt adhatja meg a tábla importálása működéshez.
 * InsertOrMerge - egyesítése egy létező entitásba, vagy szúr be egy új entitást, ha a tábla nem létezik.
 * InsertOrReplace - váltja fel egy meglévő entitásra, vagy szúr be egy új entitást, ha a tábla nem létezik.
 
-**Alkalmazható:** táblák
+**Alkalmazható:** Táblák
 
 ### <a name="manifestmanifest-file"></a>/Manifest:"manifest-file"
 
@@ -923,7 +923,7 @@ Ez a beállítás akkor választható, az exportálási művelet közben, az AzC
 
 Az adatfájlok kereséséhez az importálási művelet során ezt a beállítást kötelező megadni.
 
-**Alkalmazható:** táblák
+**Alkalmazható:** Táblák
 
 ### <a name="synccopy"></a>/SyncCopy
 
@@ -951,7 +951,7 @@ Itt adhatja meg a táblázat az exportált adatok fájl formátumát.
 
 Ha ez a beállítás nincs megadva, alapértelmezés szerint az AzCopy exportálja tábla adatok fájlját JSON formátumban.
 
-**Alkalmazható:** táblák
+**Alkalmazható:** Táblák
 
 ## <a name="known-issues-and-best-practices"></a>Ismert problémák és ajánlott eljárások
 
@@ -981,7 +981,7 @@ For property "AzureStorageUseV1MD5":
 * Az alapértelmezett érték, az AzCopy igaz - használja a .NET MD5 végrehajtására.
 * Hamis – AzCopy a FIPS előírásainak megfelelő MD5 algoritmust használja.
 
-A Windows alapértelmezés szerint a FIPS előírásainak megfelelő algoritmusok le vannak tiltva. Ezzel a szabályzatbeállítással módosíthatja a gépen. A Futtatás ablakba (Windows + R), írja be a secpol.msc megnyitásához a **helyi biztonsági házirend** ablak. Az a **biztonsági beállítások** ablakában navigáljon a **biztonsági beállítások** > **helyi házirendek** > **vonatkozóbiztonságibeállítások**. Keresse meg a **rendszer-kriptográfia: a titkosításhoz, kivonatoláshoz és aláíráshoz használható FIPS előírásainak megfelelő algoritmusok** házirend. Kattintson duplán az érték jelenik meg a szabályzatot a **biztonsági beállítás** oszlop.
+A Windows alapértelmezés szerint a FIPS előírásainak megfelelő algoritmusok le vannak tiltva. Ezzel a szabályzatbeállítással módosíthatja a gépen. A Futtatás ablakba (Windows + R), írja be a secpol.msc megnyitásához a **helyi biztonsági házirend** ablak. Az a **biztonsági beállítások** ablakában navigáljon a **biztonsági beállítások** > **helyi házirendek** > **vonatkozóbiztonságibeállítások**. Keresse meg a **rendszer-kriptográfia: A FIPS előírásainak megfelelő algoritmusok használata titkosításhoz, kivonatoláshoz és aláíráshoz** házirend. Kattintson duplán az érték jelenik meg a szabályzatot a **biztonsági beállítás** oszlop.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -998,9 +998,9 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage-blogbejegyzések:
 * [Introducing Azure Storage adatátviteli könyvtár Adatelőnézet](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
 * [Az AzCopy: Bemutatkozik a szinkron másolása és testre szabott tartalom típusa](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [Az AzCopy: Általános rendelkezésre állás az AzCopy 3.0 és az előzetes kiadásban az AzCopy 4.0 támogatásával, tábla és fájl bejelentése](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Nagyméretű példány esetekre optimalizált](https://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy: Írásvédett georedundáns tárolás támogatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [Az AzCopy: Adatátvitel újraindítható üzemmódban és SAS-jogkivonat](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [Az AzCopy: Kereszt-fiók másolás Blob használatával](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [Az AzCopy: Azure-Blobok feltöltése/letöltése fájlok](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [Az AzCopy: Általános rendelkezésre állás az AzCopy 3.0 bejelentése, valamint előzetes támogatásával, tábla és fájl AzCopy 4.0-s verziója](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [Az AzCopy: Nagyméretű példány esetekre optimalizált](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [Az AzCopy: Írásvédett georedundáns tárolás támogatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [Az AzCopy: Adatok áthelyezése az újraindítható üzemmódban és SAS-jogkivonat](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [Az AzCopy: A Blob másolásához cross-fiók használatával](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [Az AzCopy: Fájlok feltöltése/letöltése az Azure-Blobok](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

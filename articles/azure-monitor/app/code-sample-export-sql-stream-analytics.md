@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: f9b1096f2d409f46e3b9e48a2d59420930150c1a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8ed645066eef93ae02722858381af77854d7d1eb
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974556"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001882"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Forgatókönyv: SQL-exportálás a Stream Analytics használatával az Application Insights
 Ez a cikk bemutatja, hogyan helyezheti át a küldött telemetriai adatok [Azure Application Insights] [ start] be egy Azure SQL database használatával [folyamatos exportálás] [ export] és [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -70,7 +70,7 @@ A folyamatos exportálás mindig adatokat egy Azure Storage-fiókot, így Önnek
     ![Válassza ki az események típusai](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Néhány adat gyűlik össze legyen. Dőljön hátra, és a felhasználók használják az alkalmazását egy ideig. Telemetriai adatok származnak, és láthatja a statisztikai diagramok a [metrika explorer](../../application-insights/app-insights-metrics-explorer.md) és az egyes események [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md). 
+1. Néhány adat gyűlik össze legyen. Dőljön hátra, és a felhasználók használják az alkalmazását egy ideig. Telemetriai adatok származnak, és láthatja a statisztikai diagramok a [metrika explorer](../../azure-monitor/app/metrics-explorer.md) és az egyes események [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md). 
    
     És emellett az adatok a Storage exportálandó. 
 2. Vizsgálja meg az exportált adatok, vagy a portálon – kiválasztása **Tallózás**, válassza ki a tárfiókot, majd **tárolók** - vagy a Visual Studióban. A Visual Studióban válassza **megtekintése / Cloud Explorer**, és nyissa meg az Azure / Storage. (Ha ez a menüpont nem rendelkezik, az Azure SDK-t telepítenie kell: Az új projekt párbeszédpanel megnyitásához, és nyissa meg a Vizualizáció C# / Cloud / .NET-hez készült Microsoft Azure SDK beszerzése.)
@@ -258,7 +258,7 @@ Néhány perc múlva lépjen vissza az SQL Server felügyeleti eszközeit, és f
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../application-insights/app-insights-metrics-explorer.md
+[metrics]: ../../azure-monitor/app/metrics-explorer.md
 [portal]: https://portal.azure.com/
 [start]: ../../application-insights/app-insights-overview.md
 

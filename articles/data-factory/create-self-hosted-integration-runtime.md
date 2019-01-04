@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969481"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021118"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -155,8 +154,8 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 
 ### <a name="terminology"></a>Terminológia
 
-- **Integrációs modul megosztott**: az eredeti saját üzemeltetésű integrációs modul, amely a fizikai infrastruktúra fut-e.  
-- **Integrációs modul társított**: az integrációs modul egy másik hivatkozó megosztott IR. Ez egy logikai integrációs modul és a egy másik saját üzemeltetésű integrációs modul (megosztott)-infrastruktúrát használja.
+- **Integrációs modul megosztott**: Az eredeti saját üzemeltetésű integrációs modul, amely a fizikai infrastruktúra fut-e.  
+- **Integrációs modul társított**: Az integrációs modul egy másik hivatkozó megosztott IR. Ez egy logikai integrációs modul és a egy másik saját üzemeltetésű integrációs modul (megosztott)-infrastruktúrát használja.
 
 ### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Magas szintű lépései egy csatolt saját üzemeltetésű integrációs modul létrehozása
 
@@ -257,9 +256,9 @@ A saját üzemeltetésű integrációs modul csatlakozni a felhőszolgáltatásh
 
 Három konfigurációs lehetőség áll rendelkezésre:
 
-- **Proxy használatának mellőzése**: A saját üzemeltetésű integrációs modul nem explicit módon használja bármely proxy cloud serviceshez való csatlakozáshoz.
-- **Rendszerproxy használata**: A saját üzemeltetésű integrációs modult használja a proxybeállításokat, hogy a konfigurált diahost.exe.config és diawp.exe.config. Nincs proxy diahost.exe.config és diawp.exe.config van konfigurálva, a saját üzemeltetésű integrációs modul kapcsolódik közvetlenül a proxy áthaladás nélkül a felhőszolgáltatáshoz.
-- **Egyéni proxy használatát**: beállítás használata a saját üzemeltetésű integrációs modul diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása. **Cím** és **Port** szükség. **Felhasználónév** és **jelszó** megadása nem kötelező, attól függően, a proxy hitelesítési beállítást. Minden beállítás a saját üzemeltetésű integrációs modul a Windows DPAPI titkosítva, és a gép helyben tárolja.
+- **Proxy használatának mellőzése**: A saját üzemeltetésű integrációs modul nem explicit módon használja bármely proxy a cloud serviceshez való csatlakozáshoz.
+- **Rendszerproxy használata**: A saját üzemeltetésű integrációs modult használja a proxybeállítást a diahost.exe.config és diawp.exe.config konfigurált. Nincs proxy diahost.exe.config és diawp.exe.config van konfigurálva, a saját üzemeltetésű integrációs modul kapcsolódik közvetlenül a proxy áthaladás nélkül a felhőszolgáltatáshoz.
+- **Egyéni proxy használatát**: A beállítás használata a saját üzemeltetésű integrációs modul diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása. **Cím** és **Port** szükség. **Felhasználónév** és **jelszó** megadása nem kötelező, attól függően, a proxy hitelesítési beállítást. Minden beállítás a saját üzemeltetésű integrációs modul a Windows DPAPI titkosítva, és a gép helyben tárolja.
 
 Az integration runtime gazdaszolgáltatása automatikusan újraindul, miután mentette a frissített proxybeállításokat.
 
@@ -318,7 +317,7 @@ Szükség is győződjön meg arról, hogy a Microsoft Azure szerepel-e a válla
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges tünetek
 Ha a következő hasonló hibákat észlel, akkor valószínű, a tűzfal vagy proxy kiszolgálóra, amely letiltja a Data Factory kapcsolódjon a saját üzemeltetésű integrációs modul önmaga hitelesítéséhez a helytelen konfiguráció miatt. Győződjön meg arról, hogy a tűzfal és proxy-kiszolgáló megfelelően vannak-e konfigurálva, tekintse meg az előző szakaszban.
 
-* Ha a saját üzemeltetésű integrációs modult regisztrálni próbál, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az Integration Runtime ezen csomópontja! Győződjön meg arról, hogy a hitelesítési kulcs érvényes, és az integrációs szolgáltatás gazdaszolgáltatása fut ezen a számítógépen."
+* Ha a saját üzemeltetésű integrációs modult regisztrálni próbál, a következő hibaüzenetet kapja: "Nem sikerült regisztrálni az Integration Runtime ezen csomópontja! Győződjön meg arról, hogy a hitelesítési kulcs érvényes, és az integrációs szolgáltatás gazdaszolgáltatása fut ezen a számítógépen."
 * Integration Runtime konfigurációkezelőjének megnyitásakor megjelenik egy állapotát **leválasztott** vagy **csatlakozás**. A Ha megtekintése Windows-eseménynaplók, **Eseménynapló** > **alkalmazás- és szolgáltatásnaplók** > **Microsoft Integration Runtime**, Ehhez hasonló hibaüzenetek jelennek meg:
 
     ```
@@ -345,4 +344,4 @@ Ha nem kíván nyissa meg a saját üzemeltetésű integrációs modul gépen 80
 
 
 ## <a name="next-steps"></a>További lépések
-A következő oktatóanyaggal, a részletes útmutatást lásd: [oktatóanyag: másolási a helyszíni adatok felhőbe](tutorial-hybrid-copy-powershell.md).
+Tekintse meg a részletes útmutatást a következő oktatóanyaggal: [Oktatóanyag: Másolás a helyszíni adatok felhőbe](tutorial-hybrid-copy-powershell.md).

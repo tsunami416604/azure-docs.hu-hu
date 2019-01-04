@@ -9,23 +9,22 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 385a2890159d99b2aa91b7227895dfd830056a06
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620489"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021951"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adat-előállító létrehozása Azure Resource Manager-sablon használatával
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Hozzon létre egy Azure data factoryt az Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuális verzió](quickstart-create-data-factory-resource-manager-template.md) 
 
-A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő **átalakításának** útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md). 
+A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Hogyan oktatóanyagot **átalakítása** Azure Data factoryval, lásd: [oktatóanyag: Adatok átalakítása a Spark használatával](transform-data-using-spark.md). 
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -268,7 +267,7 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 
 > [!IMPORTANT]
 > - Adja meg az Azure Storage-fiók nevét és kulcsát a **storageAccountName** és **storageAccountKey** paraméterek értékeinek ebben a paraméterfájlban. Létrehozta az adftutorial tárolót, és feltöltötte a mintafájlt (emp.txt) az Azure Blob Storage bemeneti mappájába. 
-> - Adjon meg egy globálisan egyedi nevet az adat-előállító számára a **dataFactoryName** paraméterhez. Például: ARMTutorialFactoryJohnDoe11282017. 
+> - Adjon meg egy globálisan egyedi nevet az adat-előállító számára a **dataFactoryName** paraméterhez. Példa: ARMTutorialFactoryJohnDoe11282017. 
 > - A **triggerStartTime** paraméterhez adja meg az aktuális napot a következő formátumban: `2017-11-28T00:00:00`.
 > - A **triggerEndTime** paraméterhez adja meg a következő napot a következő formátumban: `2017-11-29T00:00:00`. Az aktuális UTC-időt is megtekintheti, és befejezési időpontként megadhatja a következő egy-két órát. Például ha az aktuális UTC-idő 1:32, adja meg a következőt befejezési időpontként: `2017-11-29:03:00:00`. Ebben az esetben az eseményindító kétszer futtatja a folyamatot (2:00-kor és 3:00-kor).
 
@@ -440,11 +439,11 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
     ![Folyamat futtatásának figyelése](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)    
 
     > [!IMPORTANT]
-    > Látható, hogy a folyamat csak egész órakor fut (például: 4:00, 5:00, 6:00 stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra. 
+    > A folyamatfuttatások csak egész órakor, láthatja (például: 4 AM, 5, 6: 00-kor, stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra. 
 5. Kattintson a **Műveletek** oszlopokban található hivatkozásra. 
 
     ![Folyamat művelethivatkozása](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
-6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamat csak egyetlen tevékenységtípussal rendelkezik: Másolás. Így ennek a tevékenységnek a futtatása látható. 
+6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ez a rövid útmutatóban a folyamat csak egyetlen tevékenységtípussal rendelkezik: Másolja. Így ennek a tevékenységnek a futtatása látható. 
 
     ![Tevékenységfuttatások](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 1. Kattintson a **Kimenet** oszlop alatti hivatkozásra. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt. 

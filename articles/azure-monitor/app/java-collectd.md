@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1da207545fd98c9582aff6798f69f7ed02a02cf0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: a57422b4bbac4b929a67495bfffeec7bf0476e9c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980792"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000223"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>összegyűjtött: Linux teljesítmény-mérőszámok az Application insights szolgáltatásban
 
@@ -141,6 +141,6 @@ Megkerülő megoldás: A probléma írási beépülő modulok által gyűjtött 
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../application-insights/app-insights-metrics-explorer.md
+[metrics]: ../../azure-monitor/app/metrics-explorer.md
 
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6a2bbc75c3802d6eea86e6d552330adde4bdc5f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9510b26b56d1602787e35006379a40ce1cbd21d9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101772"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015169"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Responsys
 
@@ -45,7 +44,7 @@ Oracle Responsys társított szolgáltatás a következő tulajdonságok támoga
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Responsys** | Igen |
+| type | A type tulajdonságot kell beállítani: **Responsys** | Igen |
 | endpoint | A végpont a Respopnsys kiszolgáló  | Igen |
 | clientId | A Responsys alkalmazással társított ügyfél-azonosító.  | Igen |
 | clientSecret | Az ügyfél titkos kulcsát, az Responsys alkalmazáshoz kapcsolódó. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: eae0dc1d38b06a451091d79946bc95ed722ac861
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5e882bf0a9b7cbc8a3e96c0184cc1ad53893e989
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994820"
+ms.locfileid: "53999220"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
@@ -31,9 +31,9 @@ Az Azure Monitor újabb metrika platform most fog power Application Insights fig
 
 Az új egységesített figyelés és riasztások kezelése az Application Insights kell foglalnia:
 
-- **Application Insights Platform metrikák** – amely biztosít a népszerű előre összeállított metrikákat az Application Insights terméket. További információkért lásd: Ez a cikk használatával [Platform metrikák az új Azure Monitor az Application Insights](../../application-insights/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
+- **Application Insights Platform metrikák** – amely biztosít a népszerű előre összeállított metrikákat az Application Insights terméket. További információkért lásd: Ez a cikk használatával [Platform metrikák az új Azure Monitor az Application Insights](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
 - **Application Insights rendelkezésre állás és a webes teszt** – amely lehetővé teszi a felmérni a válaszképesség és a webes alkalmazás vagy a kiszolgáló rendelkezésre állását. További információkért lásd: Ez a cikk használatával [rendelkezésre állási tesztek és a riasztások az új Azure Monitor az Application Insights](../../azure-monitor/app/monitor-web-app-availability.md).
-- **Application Insights egyéni metrikákat** – amely segítségével definiálhatja és gridre bocsáthatja ki saját metrikákat a figyelés és riasztások. További információkért lásd: Ez a cikk használatával [egyéni metrika az új Azure Monitor az Application Insights](../../application-insights/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+- **Application Insights egyéni metrikákat** – amely segítségével definiálhatja és gridre bocsáthatja ki saját metrikákat a figyelés és riasztások. További információkért lásd: Ez a cikk használatával [egyéni metrika az új Azure Monitor az Application Insights](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 - **Application Insights Hibaanomáliák (az intelligens detektálás része)** – amely szabály automatikus értesítést küld közel valós időben Ha a webalkalmazás szokatlan mértékben megnőtt a sikertelen HTTP-kérések vagy függőségi hívások sebessége. Application Insights rendellenes hibák (az intelligens detektálás része) az új Azure Monitor, részeként hamarosan elérhető lesz, és frissíteni fogjuk ezt a dokumentumot mutató hivatkozásokat tartalmaz a következő verzió továbbfejlesztésében meg azt a vezethető az elkövetkező hónapokban.
 
 ## <a name="unified-metrics--alerts-for-other-azure-resources"></a>Egyesített metrikák és értesítések más Azure-erőforrások

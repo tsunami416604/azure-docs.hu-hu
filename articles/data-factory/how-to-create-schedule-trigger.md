@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: f6b7764bf994079f7f3ef9e6243720da0d2f4a28
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868225"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016630"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Hozzon létre egy eseményindítót, amely egy ütemezés szerint futtatja a folyamatot
 Ez a cikk az ütemezési eseményindító és létrehozása, indítása és monitorozása az ütemezési eseményindító lépéseit ismerteti. Más típusú eseményindítókat, lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -67,7 +66,7 @@ Létrehozhat egy **ütemezési eseményindító** ütemezni egy folyamat futtat�
     ![Eseményindító-futtatások monitorozása](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és az ütemezési eseményindító figyelni az Azure PowerShell használatával. Minta működés, először lépjen a [a rövid útmutató: adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md). Ezt követően adja a következő kódot a fő metódus létrehozza és elindítja egy ütemezési eseményindítót, amely 15 percenként fut le. Nevű folyamatot az eseményindító társítva **Adfv2QuickStartPipeline** a rövid útmutató során létrehozott.
+Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és az ütemezési eseményindító figyelni az Azure PowerShell használatával. Minta működés, először lépjen a [a rövid útmutató: Adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md). Ezt követően adja a következő kódot a fő metódus létrehozza és elindítja egy ütemezési eseményindítót, amely 15 percenként fut le. Nevű folyamatot az eseményindító társítva **Adfv2QuickStartPipeline** a rövid útmutató során létrehozott.
 
 1. Hozzon létre egy JSON-fájlt **MyTrigger.json** a C:\ADFv2QuickStartPSH\ mappában az alábbi tartalommal:
 
@@ -143,7 +142,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és az ütemezési es
 
 
 ## <a name="net-sdk"></a>.NET SDK
-Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és a egy eseményindító figyelni a .NET SDK használata. Minta működés, először lépjen a [a rövid útmutató: adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md). Ezt követően adja a következő kódot a fő metódus létrehozza és elindítja egy ütemezési eseményindítót, amely 15 percenként fut le. Nevű folyamatot az eseményindító társítva **Adfv2QuickStartPipeline** a rövid útmutató során létrehozott.
+Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és a egy eseményindító figyelni a .NET SDK használata. Minta működés, először lépjen a [a rövid útmutató: Adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md). Ezt követően adja a következő kódot a fő metódus létrehozza és elindítja egy ütemezési eseményindítót, amely 15 percenként fut le. Nevű folyamatot az eseményindító társítva **Adfv2QuickStartPipeline** a rövid útmutató során létrehozott.
 
 Hozhat létre, és indítsa el egy ütemezési eseményindítót, amely 15 percenként fut le, adja hozzá a következő kódot a fő metódushoz:
 
@@ -223,7 +222,7 @@ Az eseményindító figyelése fut, és az Azure Portalon folyamatfuttatások, l
 
 
 ## <a name="python-sdk"></a>Python SDK
-Ez a szakasz bemutatja, hogyan használható a Python SDK-t hozhat létre, indítsa el, és a egy eseményindító figyelni. Minta működés, először lépjen a [a rövid útmutató: adat-előállító létrehozása a Python SDK-val](quickstart-create-data-factory-python.md). Adja hozzá az alábbi kódblokkot az "a folyamat futásának monitorozása" kódblokkot, a Python-szkript után. Ez a kód létrehoz egy ütemezési eseményindítót, amely a megadott kezdő és befejező időpontok közötti 15 percenként fut le. Frissítés a **start_time** változó az aktuális UTC időpontig, és a **end_time** változó az aktuális UTC időpontig elmúlt egy óra.
+Ez a szakasz bemutatja, hogyan használható a Python SDK-t hozhat létre, indítsa el, és a egy eseményindító figyelni. Minta működés, először lépjen a [a rövid útmutató: Adat-előállító létrehozása a Python SDK-val](quickstart-create-data-factory-python.md). Adja hozzá az alábbi kódblokkot az "a folyamat futásának monitorozása" kódblokkot, a Python-szkript után. Ez a kód létrehoz egy ütemezési eseményindítót, amely a megadott kezdő és befejező időpontok közötti 15 percenként fut le. Frissítés a **start_time** változó az aktuális UTC időpontig, és a **end_time** változó az aktuális UTC időpontig elmúlt egy óra.
 
 ```python
     # Create a trigger

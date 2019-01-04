@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429388"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021866"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
@@ -68,7 +67,7 @@ Ha például az az előző képernyőképen látható. az eseményindító aktiv
 
 Az alábbi táblázat áttekintést az eseményalapú eseményindítókat kapcsolódó séma elemei:
 
-| **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Szükséges** |
+| **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **Hatókör** | Az Azure Resource Manager erőforrás-azonosító a Storage-fiók. | Sztring | Az Azure Resource Manager-Azonosítót | Igen |
 | **események** | Ez az eseményindító aktiválódik a kiváltó esemény típusa. | Tömb    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, ezekre az értékekre tetszőleges kombinációját. |

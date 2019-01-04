@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: ec6fbcc7de9a5fe15231373a23f7c8491ac8c122
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9ab256526ccba3fa84d4979ba536f6b681a7df89
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975967"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001668"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -39,7 +39,7 @@ A felhőszolgáltatás Application Insightsszal való figyelésének leggyorsabb
 
 Ez a beállítás futásidőben utasítja az alkalmazást, és biztosítja az összes szükséges telemetriát, amely a kérések, kivételek és függőségek figyeléséhez szükséges a webes szerepkörében, valamint a feldolgozói szerepkörökből származó teljesítményszámlálók figyeléséhez. A rendszer az alkalmazás által létrehozott diagnosztikai nyomkövetéseket is továbbítja az Application Insightsnak.
 
-Ha csak ennyire van szüksége, már kész is van! A következő lépések [az alkalmazás mérőszámainak megtekintése](../../application-insights/app-insights-metrics-explorer.md), [az adatok lekérdezése az Analytics használatával](../../azure-monitor/app/analytics.md), valamint esetleg egy [irányítópult](../../azure-monitor/app/app-insights-dashboards.md) beállítása. Esetleg érdemes lehet [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) beállítania, és [kódot hozzáadnia a weboldalakhoz](../../azure-monitor/app/javascript.md) a teljesítmény figyeléséhez a böngészőben.
+Ha csak ennyire van szüksége, már kész is van! A következő lépések [az alkalmazás mérőszámainak megtekintése](../../azure-monitor/app/metrics-explorer.md), [az adatok lekérdezése az Analytics használatával](../../azure-monitor/app/analytics.md), valamint esetleg egy [irányítópult](../../azure-monitor/app/app-insights-dashboards.md) beállítása. Esetleg érdemes lehet [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) beállítania, és [kódot hozzáadnia a weboldalakhoz](../../azure-monitor/app/javascript.md) a teljesítmény figyeléséhez a böngészőben.
 
 Azonban további lehetőségeket is elérhet:
 
@@ -75,7 +75,7 @@ Az ilyen helyzetek elkerülése érdekében hozzon létre külön erőforrásoka
 Annak érdekében, hogy a telemetria a megfelelő erőforrásokba érkezzen, beállíthatja, hogy az Application Insights SDK különböző kialakítási kulcsokat használjon a buildkonfigurációtól függően. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Application Insights-erőforrás létrehozása mindegyik szerepkörhöz
-Ha úgy döntött, hogy külön erőforrást hoz létre mindegyik szerepkörhöz – és esetleg egy külön készletet az egyes buildkonfigurációkhoz is –, a legegyszerűbb, ha mindegyiket az Application Insights portálon hozza létre. (Ha sokszor hoz létre erőforrásokat, [automatizálhatja a folyamatot](../../application-insights/app-insights-powershell.md).)
+Ha úgy döntött, hogy külön erőforrást hoz létre mindegyik szerepkörhöz – és esetleg egy külön készletet az egyes buildkonfigurációkhoz is –, a legegyszerűbb, ha mindegyiket az Application Insights portálon hozza létre. (Ha sokszor hoz létre erőforrásokat, [automatizálhatja a folyamatot](../../azure-monitor/app/powershell.md).)
 
 1. Hozzon létre egy új Application Insights-erőforrást az [Azure Portalon][portal]. Az alkalmazás típusánál válassza az ASP.NET alkalmazás lehetőséget. 
 
@@ -129,7 +129,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
     (A .config fájlban lévő üzenetek azt tanácsolják majd, hogy ide helyezze a kialakítási kulcsot. A felhőalapú alkalmazásokhoz célszerű azonban jobb azt a a ``.cscfg file``. Ezzel biztosítható, hogy a szerepkör megfelelően legyen azonosítva a portálon.)
 
 #### <a name="run-and-publish-the-app"></a>Az alkalmazás futtatása és közzététele
-Futtassa az alkalmazást, és jelentkezzen be az Azure-ba. Nyissa meg a létrehozott Application Insights-erőforrásokat, és külön adatpontok jelennek meg a [Keresésben](../../azure-monitor/app/diagnostic-search.md), valamint összesített adatok a [Metrikaböngészőben](../../application-insights/app-insights-metrics-explorer.md). 
+Futtassa az alkalmazást, és jelentkezzen be az Azure-ba. Nyissa meg a létrehozott Application Insights-erőforrásokat, és külön adatpontok jelennek meg a [Keresésben](../../azure-monitor/app/diagnostic-search.md), valamint összesített adatok a [Metrikaböngészőben](../../azure-monitor/app/metrics-explorer.md). 
 
 Adjon hozzá további telemetriát (lásd az alábbi szakaszokat), majd tegye közzé az alkalmazást, hogy élő diagnosztikai adatokat és használati visszajelzéseket kapjon. 
 
@@ -146,7 +146,7 @@ Az [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnosti
 * A Windows eseménynaplók nyomkövetésekként és egyéni eseményekként jelennek meg.
 * Az alkalmazásnaplók, ETW-naplók és egyéb diagnosztikai infrastruktúra-naplók nyomkövetésként jelennek meg.
 
-A teljesítményszámlálók és az eseményszámok megtekintéséhez nyissa meg a [Metrikaböngészőt](../../application-insights/app-insights-metrics-explorer.md), és vegyen fel egy új diagramot:
+A teljesítményszámlálók és az eseményszámok megtekintéséhez nyissa meg a [Metrikaböngészőt](../../azure-monitor/app/metrics-explorer.md), és vegyen fel egy új diagramot:
 
 ![Az Azure diagnosztikai adatai](./media/cloudservices/23-wad.png)
 
@@ -231,8 +231,8 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Servi
 
 ## <a name="next-steps"></a>További lépések
 * [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Application Insights-erőforrások létrehozásának automatizálása](../../application-insights/app-insights-powershell.md)
-* [Az Azure Diagnostics-diagnosztikák automatizálása](../../application-insights/app-insights-powershell-azure-diagnostics.md)
+* [Application Insights-erőforrások létrehozásának automatizálása](../../azure-monitor/app/powershell.md)
+* [Az Azure Diagnostics-diagnosztikák automatizálása](../../azure-monitor/app/powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md

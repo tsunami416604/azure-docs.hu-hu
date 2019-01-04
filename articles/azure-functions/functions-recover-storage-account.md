@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 115a78993929b900b835450ea52d590e00ff7461
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604973"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000019"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Hogyan háríthatók el a "a functions futtatókörnyezete nem érhető el"
 
@@ -37,6 +37,7 @@ Végigvezetjük a négy leggyakoribb hibák azonosítása és megoldása minden 
 1. Tárfiók alkalmazás beállításainak törlése
 1. Tárfiók hitelesítő adatainak érvénytelen
 1. A Tárfiók nem érhető el
+1. Napi végrehajtási kvóta teljes
 
 ## <a name="storage-account-deleted"></a>Storage-fiók törölve
 
@@ -79,6 +80,13 @@ A Függvényalkalmazás kell tudni hozzáférni a tárfiókhoz. Gyakori problém
 * Függvényalkalmazások üzembe helyezett App Service Environment anélkül, hogy a megfelelő hálózati szabályok engedélyezi az adatforgalmat, és a storage-fiókból
 * A storage-fiók tűzfal engedélyezve van, és nincs konfigurálva, hogy a funkciók és kimenő forgalma. [További információ a tárfiók tűzfal konfigurálása ide](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+## <a name="daily-execution-quota-full"></a>Napi végrehajtási kvóta teljes
+
+Ha egy napi végrehajtási kvóta beállítva, a Függvényalkalmazás ideiglenesen le lesz tiltva, és számos, a portál-vezérlőelemek nem lesz elérhető. 
+
+* Győződjön meg arról, hogy ellenőrizze nyissa meg a Platform szolgáltatásai > Függvényalkalmazás-beállításokat a portálon. A következő üzenet akkor jelenik meg, ha túllépte a kvótát
+    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+* Távolítsa el a kvótát, és indítsa újra az alkalmazást a probléma megoldásához.
 
 ## <a name="next-steps"></a>További lépések
 

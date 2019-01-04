@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e561a59ebe503e0088362087dbda4d7d89fee4c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 35c0d9190a11ad76ef44b43ef5160d2b39bee1fc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275686"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016910"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az és Oracle az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,11 +58,11 @@ Az Oracle-beli társított szolgáltatás a következő tulajdonságok támogato
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **Oracle**. | Igen |
-| kapcsolati Sztringje | Itt adható meg az Oracle Database-példányhoz való kapcsolódáshoz szükséges információkat. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).<br><br>**Kapcsolat típusa támogatott**: használhatja **Oracle biztonsági azonosító** vagy **Oracle-szolgáltatás neve** azonosításához az adatbázis:<br>-Ha biztonsági azonosító: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
+| kapcsolati Sztringje | Itt adható meg az Oracle Database-példányhoz való kapcsolódáshoz szükséges információkat. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).<br><br>**Kapcsolat típusa támogatott**: Használhat **Oracle biztonsági azonosító** vagy **Oracle-szolgáltatás neve** az adatbázis azonosításához:<br>-Ha biztonsági azonosító: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!TIP]
->Ha eléri hiba üzenettel "ORA-01025: UPI paraméter engedélyezett tartományon kívül esik" és az Oracle-verzió 8i, adjon hozzá `WireProtocolMode=1` a kapcsolati karakterláncot, és próbálkozzon újra.
+>Ha eléri hiba üzenettel "ORA-01025: UPI paraméter engedélyezett tartományon kívül esik"és az Oracle-verzió 8i, adjon hozzá `WireProtocolMode=1` a kapcsolati karakterláncot, és próbálkozzon újra.
 
 **Oracle kapcsolati titkosításának**, két lehetősége van:
 

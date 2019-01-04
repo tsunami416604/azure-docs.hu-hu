@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: ddd5bc574dcef548a62fbe7d3a0300a71ce73cf3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558838"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002756"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -306,6 +306,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |ApplicationUpgradeTimeout| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(360)|Dinamikus| Adja meg az időtartam másodpercben. Az alkalmazásfrissítés időkorlátja. Ha az időkorlát kisebb, mint a "ActivationTimeout" deployerhez sikertelen lesz. |
 |Üzemeltetés|sztring, alapértelmezett érték a "-H localhost:2375 -H npipe: / /"|Statikus|Service Fabric (SF) kezeli a docker-démon (kivéve a windows-ügyfélgépekről Win10 hasonlóan). Ez a konfiguráció lehetővé teszi a felhasználóknak meg kell adni a docker-démon indítása, ha egyéni argumentumok. Ha egyéni argumentumok vannak megadva, a Service Fabric nem továbbítja a Docker-motornak, kivéve a "--pidfile" argumentum. Ezért felhasználók nem szabad megadni a(z)--pidfile "argumentum az ügyfél argumentumok részeként. Emellett az egyéni argumentumok biztosítania kell, hogy a docker démon figyeli az alapértelmezett nevesített csövön a Windows (vagy Linux rendszerű Unix-tartománycsatorna) a Service Fabric kommunikálni tudnak.|
 |ContainerServiceLogFileMaxSizeInKb|int, alapértelmezett 32768|Statikus|A docker-tárolók által létrehozott naplófájl fájl maximális méretét.  Csak Windows.|
+|ContainerImageDownloadTimeout|int, másodpercben, alapértelmezett érték az 1200-as (20 perc)|Dinamikus|Kép letöltése előtt eltelt másodpercek száma túllépi az időkorlátot.|
 |ContainerImagesToSkip|karakterlánc, a rendszerképnevek elválasztva a függőleges vonal karaktert, alapértelmezett érték a ""|Statikus|Nem szabad törölni egy vagy több tárolórendszerképek neve.  A PruneContainerImages paraméterrel együtt használható.|
 |ContainerServiceLogFileNamePrefix|sztring, alapértelmezett "sfcontainerlogs"|Statikus|A docker-tárolók által létrehozott naplófájlokat fájl nevének előtagját.  Csak Windows.|
 |ContainerServiceLogFileRetentionCount|Int, alapértelmezett érték 10|Statikus|Docker-tárolók előtt a naplófájlok által létrehozott naplófájlt a rendszer felülírja.  Csak Windows.|

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Folyamat létrehozása a Másolás varázsló használatával | Microsoft Docs'
+title: 'Oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával |} A Microsoft Docs'
 description: Az oktatóanyag során létrehoz egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot a Data Factory által támogatott Másolás varázslóval.
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 85cea4bea0b1cff65464a2ad692e500efdc50c10
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: ace2ffdacf775a3c0c5a579e9a4208641c20f661
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095374"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025759"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Folyamat létrehozása másolási tevékenységgel a Data Factory másolás varázslója használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -64,7 +63,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
       - Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
       - Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
           
-        Az oktatóanyag egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
+        Ez az oktatóanyag lépései során feltételezzük, hogy a nevet használja: **ADFTutorialResourceGroup** az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
    6. Kattintson a **Create** (Létrehozás) gombra.
@@ -84,7 +83,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    1. Írja be a **CopyFromBlobToAzureSql** kifejezést a **Task name** (Feladat neve) mezőbe.
    2. Adjon meg **leírást** (opcionális).
    3. A **Start date time** (Kezdő dátum és időpont) és az **End date time** (Záró dátum és időpont) mező értékét módosítsa úgy, hogy a záró dátum a mai napra, a kezdő dátum pedig öt nappal korábbra essen.  
-   4. Kattintson a **Tovább** gombra.  
+   4. Kattintson a **tovább**.  
       
       ![Copy (Másolás) eszköz – Properties (Tulajdonságok) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. A **Source data store** (Forrásadattár) oldalon kattintson az **Azure Blob Storage** csempére. Az oldal használatával megadhatja a forrásadattárat a másolási feladathoz. 
@@ -120,7 +119,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    3. Jelölje ki az Azure-**előfizetést**.  
    4. Válassza ki a **Server name** (Kiszolgálónév) és a **Database** (Adatbázis) mezők értékeit.
    5. Adja meg a **felhasználónevet** és a **jelszót**.
-   6. Kattintson a **Tovább** gombra.  
+   6. Kattintson a **tovább**.  
       
       ![Copy (Másolás) eszköz – specify Azure SQL database (Az Azure SQL Database megadása) oldal](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. A **Table mapping** (Tábla-hozzárendelés) oldalon válassza ki a legördülő listából az **emp** beállítást a **Destination** (Cél) mezőhöz, és kattintson a **lefelé mutató nyílra** (opcionális) a séma és az adatok előnézetének megtekintéséhez.

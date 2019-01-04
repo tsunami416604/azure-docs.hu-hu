@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 09b5f387b0c7f765ea0835dcef79932203d68338
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390136"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014352"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryban az adatok átalakítása
 > [!div class="op_single_selector"]
@@ -62,7 +61,7 @@ Az idő múlásával a prediktív modelleket a Machine Learning pontozási kís�
 Lásd: [használata a Machine Learning-tevékenységek](transform-data-using-machine-learning.md) ezek a Machine Learning-tevékenységek részleteit. 
 
 ## <a name="stored-procedure-activity"></a>Tárolt eljárás tevékenysége
-Használhatja az SQL Server tárolt eljárás tevékenység a Data Factory-folyamatot egy tárolt eljárást az egyik a következő adattárakat elindításához: Azure SQL Database, Azure SQL Data Warehouse, SQL Server-adatbázis a vállalati vagy egy Azure virtuális Gépen. Lásd: [Stored Procedure-tevékenység](transform-data-using-stored-procedure.md) részleteivel.  
+Az SQL Server tárolt eljárás tevékenység használhatja a Data Factory-folyamat a következő adattárakat egyikét a tárolt eljárás meghívása: Az Azure SQL Database, Azure SQL Data Warehouse, SQL Server-adatbázis a vállalati vagy egy Azure virtuális Gépen. Lásd: [Stored Procedure-tevékenység](transform-data-using-stored-procedure.md) részleteivel.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
 Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürt. Lásd: [Data Analytics U-SQL-tevékenység](transform-data-using-data-lake-analytics.md) részleteivel. 
@@ -87,10 +86,10 @@ Létrehozhat egy egyéni tevékenységet R-parancsfájlok futtatására egy olya
 ## <a name="compute-environments"></a>Számítási környezetek
 Ön létrehoz egy társított szolgáltatást a számítási környezet, majd a társított szolgáltatás egy Adatátalakítási tevékenységgel meghatározásakor. A Data Factory által támogatott számítási környezetek két típusa van. 
 
-- **Igény szerinti**: Ebben az esetben a számítási környezet teljes körűen felügyelt adat-előállítók által. Automatikusan létrejön a Data Factory szolgáltatás előtt egy feladat küldött adatok feldolgozásához, és eltávolítja a feladat elvégzésekor. Konfigurálja, és a feladat-végrehajtási, a kezelő és a műveletek rendszerindítása igény szerinti számítási környezet részletes beállításainak kezeléséhez. 
-- **Bring Your Own**: Ebben az esetben a Data Factory társított szolgáltatásként regisztrálhatja a saját számítási környezetben (például a HDInsight fürt). A számítási környezet Ön által felügyelt és a Data Factory szolgáltatás használ a tevékenységek végrehajtásához. 
+- **Igény szerinti**:  Ebben az esetben a számítási környezet teljes körűen felügyelt adat-előállítók által. Automatikusan létrejön a Data Factory szolgáltatás előtt egy feladat küldött adatok feldolgozásához, és eltávolítja a feladat elvégzésekor. Konfigurálja, és a feladat-végrehajtási, a kezelő és a műveletek rendszerindítása igény szerinti számítási környezet részletes beállításainak kezeléséhez. 
+- **Használhat sajátot**: Ebben az esetben a saját számítási környezetben (például a HDInsight fürt) regisztrálhat a Data Factory társított szolgáltatásként. A számítási környezet Ön által felügyelt és a Data Factory szolgáltatás használ a tevékenységek végrehajtásához. 
 
 Lásd: [számítási társított szolgáltatások](compute-linked-services.md) a cikkben megismerheti a Data Factory által támogatott számítási szolgáltatások. 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő oktatóanyaggal egy példát egy Adatátalakítási tevékenységgel: [oktatóanyag: adatok átalakítása a Spark használatával](tutorial-transform-data-spark-powershell.md)
+Tekintse meg a következő oktatóanyaggal egy példát egy Adatátalakítási tevékenységgel használatával: [Oktatóanyag: adatok átalakítása a Spark használatával](tutorial-transform-data-spark-powershell.md)

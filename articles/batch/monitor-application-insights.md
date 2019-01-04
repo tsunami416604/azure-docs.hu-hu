@@ -11,18 +11,18 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 2188451e987aad7e4edfaa2097a828ab9714d706
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4a77f73f4d87f7def7c8a841c7a59aed04b9bee2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793781"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020047"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Figyelheti és hibakeresése az Azure Batch .NET-alkalmazás, az Application insights segítségével
 
 [Az Application Insights](../application-insights/app-insights-overview.md) elegáns és hatékony megoldást kínál a fejlesztők számára üzembe helyezett Azure-szolgáltatások figyelése és hibakeresési alkalmazásokat. Application insights szolgáltatás segítségével figyelő teljesítményszámlálók és kivételeket, valamint az eszköz a kód egyéni metrikákkal és nyomon követését. Az Application Insights integrációja az Azure Batch-alkalmazás lehetővé teszi viselkedések mélyebb betekintést, és közel valós időben problémák kivizsgálásában.
 
-Ez a cikk bemutatja, hogyan adhat hozzá és Application Insights-könyvtár konfigurálása az Azure Batch .NET-megoldásba, és alakítsa ki az alkalmazás kódjában. Azt is bemutatja, monitorozhatók az alkalmazások az Azure Portalon, és egyéni irányítópultokat hozhat létre. Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../application-insights/app-insights-platforms.md).
+Ez a cikk bemutatja, hogyan adhat hozzá és Application Insights-könyvtár konfigurálása az Azure Batch .NET-megoldásba, és alakítsa ki az alkalmazás kódjában. Azt is bemutatja, monitorozhatók az alkalmazások az Azure Portalon, és egyéni irányítópultokat hozhat létre. Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../azure-monitor/app/platforms.md).
 
 Minta C#-megoldásból, és ez a cikk kísérő kódot érhető el a [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights). Ebben a példában az Application Insights-kialakítási kód hozzáadja a [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) példa. Ha még nem ismeri az, hogy a példában készítése és TopNWords először próbálja meg. Ennek a segítségével megismerheti a bemeneti blobokat több számítási csomóponton párhuzamosan készletét feldolgozási alapszintű Batch munkafolyamat. 
 
@@ -338,12 +338,12 @@ pool.StartTask = new StartTask()
 
 ## <a name="throttle-and-sample-data"></a>Szabályozás és mintaadatok 
 
-Az éles környezetben futó Azure Batch-alkalmazások nagyméretű jellege miatt előfordulhat, hogy szeretné korlátozni a költségek kezelése az Application Insights által gyűjtött adatok mennyisége. Lásd: [Application Insights-mintavétel](../application-insights/app-insights-sampling.md) ennek érdekében bizonyos mechanizmusok számára.
+Az éles környezetben futó Azure Batch-alkalmazások nagyméretű jellege miatt előfordulhat, hogy szeretné korlátozni a költségek kezelése az Application Insights által gyűjtött adatok mennyisége. Lásd: [Application Insights-mintavétel](../azure-monitor/app/sampling.md) ennek érdekében bizonyos mechanizmusok számára.
 
 
 ## <a name="next-steps"></a>További lépések
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-overview.md).
 
-* Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../application-insights/app-insights-platforms.md).
+* Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../azure-monitor/app/platforms.md).
 
 

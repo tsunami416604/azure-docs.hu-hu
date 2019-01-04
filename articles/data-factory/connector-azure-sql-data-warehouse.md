@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0971122ee7b9cde0664ee661454a8b7824f4b7d5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3d82becf209e44fe66711c964f825ce78d691b2d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093903"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024836"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -69,8 +68,8 @@ Egy Azure SQL Data Warehouse társított szolgáltatást a következő tulajdons
 Különböző hitelesítési típus tekintse meg a következő szakaszok az Előfeltételek és a JSON-minták, illetve:
 
 - [SQL-hitelesítés](#sql-authentication)
-- Az Azure AD alkalmazástoken-hitelesítésének: [egyszerű szolgáltatás](#service-principal-authentication)
-- Az Azure AD alkalmazástoken-hitelesítésének: [felügyelt identitások az Azure-erőforrásokhoz](#managed-identity)
+- Az Azure AD alkalmazástoken-hitelesítésének: [Egyszerű szolgáltatás](#service-principal-authentication)
+- Az Azure AD alkalmazástoken-hitelesítésének: [Azure-erőforrások felügyelt identitásai](#managed-identity)
 
 >[!TIP]
 >Ha nyomja le az "UserErrorFailedToConnectToSqlServer", hibakód: Hiba történt, és üzenet például a "a munkamenet korlátot, az adatbázis XXX elérte.", és adja hozzá `Pooling=false` a kapcsolati karakterláncot, és próbálkozzon újra.

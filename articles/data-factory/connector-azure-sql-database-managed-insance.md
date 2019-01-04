@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706721"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025079"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Database felügyelt példányába Azure Data Factory használatával
 
@@ -50,7 +49,7 @@ Az Azure SQL Database felügyelt példányain társított szolgáltatás a köve
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **SqlServer** | Igen |
+| type | A type tulajdonságot kell beállítani: **SQL Server** | Igen |
 | kapcsolati Sztringje |Adja meg a connectionString adatokat szeretne csatlakozni a felügyelt példányhoz az SQL-hitelesítés vagy a Windows-hitelesítés szükséges. Tekintse meg a következő mintát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | Felhasználónév |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Nem |
@@ -188,7 +187,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa be a
 ]
 ```
 
-**Példa: Egy tárolt eljárás használatával**
+**Példa: Tárolt eljárás használatával**
 
 ```json
 "activities":[
@@ -250,7 +249,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **SqlSink** | Igen |
-| WriteBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát.<br/>Engedélyezett értékek a következők: egész szám (sorok száma). |Nem (alapértelmezett: 10000) |
+| WriteBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát.<br/>Engedélyezett értékek a következők: egész szám (sorok száma). |Nem (alapértelmezett: 10 000) |
 | writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Engedélyezett értékek a következők: időtartam. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adja meg a felügyelt példány az adatok írása előtt hajtsa végre a másolási tevékenység egy SQL-lekérdezést. Azt fogja csak egyszer hívhatók példányonkénti futtatni. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok céloldali táblához, pl. do upserts vagy a saját üzleti logika átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás lesz **kötegenként meghívása**. Ha azt szeretné, hogy csak egyszer fut, és nem a forrásadatokat, például törlés/truncate, használja a művelet elvégzéséhez `preCopyScript` tulajdonság. |Nem |
@@ -292,7 +291,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 ]
 ```
 
-**2. példa: Egy tárolt eljárás meghívása során az upsert másolása**
+**2. példa: Tárolt eljárás meghívása során az upsert másolása**
 
 További részletek a [a fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
 

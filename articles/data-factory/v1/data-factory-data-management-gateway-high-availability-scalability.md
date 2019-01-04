@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055102"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016767"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Az adatkezelési átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -171,7 +170,7 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 - Támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
 - Tanúsítvány használata a CNG kulcsok nem támogatottak.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Gyakori kérdések: Ha lenne nem engedélyezhető a titkosítás?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>GYAKORI KÉRDÉSEK: Ha szeretné nem engedélyezhető a titkosítás?
 Titkosítás engedélyezése adhat hozzá, bizonyos ezért az infrastruktúra (tulajdonos nyilvános tanúsítvány) költség, kihagyhatja a titkosításának engedélyezésével az alábbi esetekben:
 - Ha az integrációs modul megbízható hálózathoz, vagy a hálózaton, például IP küszöbértéküket átlátható titkosítási fut. Mivel ez a csatorna kommunikáció csak korlátozott megbízható hálózaton belül, előfordulhat, hogy nem kell további titkosítási.
 - Ha az integrációs modul nem fut éles környezetben. Ez segít a TLS/SSL-tanúsítvány költségek csökkentésére.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: a5aea15c2563a81f4e915baa1b332beda64a1a70
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d96a7b775ec051f3511a179ebd4e879f50b9af32
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970967"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019640"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 Az a [az Azure Portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../application-insights/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -97,7 +97,7 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>További lépések
-* [Futtassa a profilkészítőt a működő alkalmazásán.](../../application-insights/app-insights-profiler.md)
+* [Futtassa a profilkészítőt a működő alkalmazásán.](../../azure-monitor/app/profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
 * [Engedélyezze az Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.
 * [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../../azure-monitor/platform/data-collection.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.

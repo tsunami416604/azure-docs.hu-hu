@@ -4,14 +4,14 @@ description: Látható, hogy melyik Azure-erőforrástípus támogatja a címké
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 12/21/2018
+ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: ef365cdf0a5df168c438abd0428e41200b07756c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 50ea7a2446b5560bd208b2da128fa877068ce452
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753778"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000291"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resource-group-using-tags.md).
@@ -24,15 +24,20 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="ad-hybrid-health-service"></a>Hibrid AD Állapotfigyelő szolgáltatás
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| services | Nem | 
-| addsservices | Nem | 
-| konfiguráció | Nem | 
-| ügynökök | Nem | 
+| addsservices | Nem |
 | aadsupportcases | Nem | 
-| jelentések | Nem | 
-| servicehealthmetrics | Nem | 
-| naplók | Nem | 
+| ügynökök | Nem | 
 | anonymousapiusers | Nem | 
+| konfiguráció | Nem | 
+| naplók | Nem | 
+| jelentések | Nem | 
+| services | Nem | 
+| servicehealthmetrics | Nem | 
+
+## <a name="aks"></a>AKS
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| managedClusters | Igen | 
 
 ## <a name="analysis-services"></a>Analysis Services
 | Erőforrás típusa | Támogatja a címkék |
@@ -43,11 +48,11 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | apiManagementAccounts | Nem | 
-| apiManagementAccounts/connectionProviders | Nem | 
-| apiManagementAccounts/kapcsolatok | Nem | 
-| apiManagementAccounts/connectionAcls | Nem | 
-| apiManagementAccounts/connectionProviderAcls | Nem | 
 | apiManagementAccounts/API-k | Nem | 
+| apiManagementAccounts/connectionAcls | Nem | 
+| apiManagementAccounts/connectionProviders | Nem | 
+| apiManagementAccounts/connectionProviderAcls | Nem | 
+| apiManagementAccounts/kapcsolatok | Nem | 
 
 ## <a name="api-management"></a>API Management
 | Erőforrás típusa | Támogatja a címkék |
@@ -58,11 +63,48 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | AutomationAccounts | Igen | 
-| automationAccounts/runbookok | Igen | 
 | automationAccounts/konfigurációk | Igen | 
-| automationAccounts és webhookok | Nem | 
-| automationAccounts/softwareUpdateConfigurations | Nem | 
 | automationAccounts/feladatok | Nem | 
+| automationAccounts/runbookok | Igen | 
+| automationAccounts/softwareUpdateConfigurations | Nem | 
+| automationAccounts és webhookok | Nem | 
+
+## <a name="azure-database-for-mariadb"></a>Azure Database for MariaDB
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| kiszolgáló | Igen | 
+| kiszolgálók/konfigurációk | Nem |
+| kiszolgálók és adatbázisok | Nem |
+| kiszolgálók/firewallRules | Nem |
+| kiszolgálók/recoverableServers | Nem | 
+| kiszolgálók/securityAlertPolicies | Nem |
+| kiszolgálók/virtualNetworkRules | Nem | 
+
+## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| kiszolgáló | Igen | 
+| kiszolgálók/konfigurációk | Nem |
+| kiszolgálók és adatbázisok | Nem |
+| kiszolgálók/firewallRules | Nem |
+| kiszolgálók/recoverableServers | Nem | 
+| kiszolgálók/securityAlertPolicies | Nem |
+| kiszolgálók/virtualNetworkRules | Nem | 
+
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| kiszolgáló | Igen | 
+| kiszolgálók/tanácsadók | Nem | 
+| kiszolgálók/konfigurációk | Nem |
+| kiszolgálók és adatbázisok | Nem |
+| kiszolgálók/firewallRules | Nem |
+| kiszolgálók/queryTexts | Nem | 
+| kiszolgálók/recoverableServers | Nem | 
+| kiszolgálók/securityAlertPolicies | Nem |
+| kiszolgálók/topQueryStatistics | Nem | 
+| kiszolgálók/virtualNetworkRules | Nem | 
+| kiszolgálók/waitStatistics | Nem | 
 
 ## <a name="batch"></a>Batch
 | Erőforrás típusa | Támogatja a címkék |
@@ -87,12 +129,12 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="cdn"></a>Tartalomkézbesítési hálózat (CDN)
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
+| edgenodes | Nem | 
 | Profilok | Igen | 
 | profilok és végpontok | Igen | 
-| profilok és végpontok és források | Nem | 
 | profilok és végpontok/customdomains | Nem | 
+| profilok és végpontok és források | Nem | 
 | validateProbe | Nem | 
-| edgenodes | Nem | 
 
 ## <a name="classic-compute"></a>Klasszikus Compute
 | Erőforrás típusa | Támogatja a címkék |
@@ -114,8 +156,8 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | virtualNetworks | Nem | 
-| virtualNetworks/virtualNetworkPeerings | Nem | 
 | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nem | 
+| virtualNetworks/virtualNetworkPeerings | Nem | 
 
 ## <a name="classic-storage"></a>Hagyományos tároló
 | Erőforrás típusa | Támogatja a címkék |
@@ -127,23 +169,23 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | availabilitySets | Igen | 
-| virtuális gép | Igen | 
-| virtuális gép/bővítmények | Igen | 
-| virtualMachineScaleSets | Igen | 
-| virtualMachineScaleSets/bővítmények | Nem | 
-| virtualMachineScaleSets/virtuális gép | Nem | 
-| virtualMachineScaleSets/hálózati | Nem | 
-| virtualMachineScaleSets/virtuális gép/hálózati | Nem | 
-| virtualMachineScaleSets/publicIPAddresses | Nem | 
+| Lemezek | Igen | 
+| images | Igen | 
 | restorePointCollections | Igen | 
 | restorePointCollections/restorePoints | Nem | 
-| virtuális gép/diagnosticSettings | Nem | 
-| virtuális gép/metricDefinitions | Nem | 
 | sharedVMImages | Igen | 
 | sharedVMImages/verziója | Igen | 
-| Lemezek | Igen | 
 | pillanatképek | Igen | 
-| images | Igen | 
+| virtuális gép | Igen | 
+| virtuális gép/diagnosticSettings | Nem | 
+| virtuális gép/bővítmények | Igen | 
+| virtuális gép/metricDefinitions | Nem | 
+| virtualMachineScaleSets | Igen | 
+| virtualMachineScaleSets/bővítmények | Nem | 
+| virtualMachineScaleSets/hálózati | Nem | 
+| virtualMachineScaleSets/publicIPAddresses | Nem | 
+| virtualMachineScaleSets/virtuális gép | Nem | 
+| virtualMachineScaleSets/virtuális gép/hálózati | Nem | 
 
 ## <a name="container"></a>Tároló
 | Erőforrás típusa | Támogatja a címkék |
@@ -155,6 +197,14 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | ------------- | ----------- |
 | containerGroups | Igen | 
 | serviceAssociationLinks | Nem | 
+
+## <a name="container-registry"></a>Container Registry
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| beállításjegyzékek | Igen | 
+| beállításjegyzékek/replikációk | Igen |
+| beállításjegyzékek/feladatok | Igen |
+| beállításjegyzékek és webhookok | Igen |
 
 ## <a name="container-service"></a>Container Service
 | Erőforrás típusa | Támogatja a címkék |
@@ -177,6 +227,11 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | ------------- | ----------- |
 | Összekötők | Igen | 
 
+## <a name="data-box"></a>Data Box
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| feladatok | Igen | 
+
 ## <a name="data-box-edge"></a>Data Box Edge
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
@@ -196,11 +251,11 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | dataFactories | Igen | 
-| gyárak | Igen | 
-| előállítók/integrationRuntimes | Nem | 
 | dataFactories/diagnosticSettings | Nem | 
 | dataFactories/metricDefinitions | Nem | 
 | dataFactorySchema | Nem | 
+| gyárak | Igen | 
+| előállítók/integrationRuntimes | Nem | 
 
 ## <a name="devices"></a>Eszközök
 | Erőforrás típusa | Támogatja a címkék |
@@ -218,9 +273,24 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | Laborgyakorlatok | Igen | 
-| Ütemezések | Igen | 
-| laborok/virtuális gép | Igen | 
+| laborok/artifactsources | Igen |
+| laborok/költségek | Igen |
+| laborok/customimages | Igen |
+| laborok/képletek | Igen |
+| laborok/notificationchannels | Igen |
+| laborok/policysets/házirendek | Igen |
+| laborok/ütemezések | Igen |
 | laborok/serviceRunners | Igen | 
+| laborok/felhasználók | Igen |
+| laborok/felhasználó/lemez | Igen |
+| laborok/felhasználó/környezetek | Igen |
+| laborok/felhasználó/titkos kulcsok | Igen |
+| laborok/felhasználó/servicefabrics | Igen |
+| ütemezések Labs/felhasználó/servicefabrics | Igen |
+| laborok/virtuális gép | Igen | 
+| laborok/virtuális gép/ütemezések | Igen |
+| laborok/virtualnetworks | Igen |
+| Ütemezések | Igen | 
 
 ## <a name="dynamics-lcs"></a>Dynamics LCS
 | Erőforrás típusa | Támogatja a címkék |
@@ -232,18 +302,23 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="event-grid"></a>Event Grid
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| eventSubscriptions | Nem | 
-| kapcsolatos témakörök | Igen | 
 | tartományok | Igen | 
 | tartományok/kapcsolatos témakörök | Nem | 
-| topicTypes | Nem | 
+| eventSubscriptions | Nem | 
 | extensionTopics | Nem | 
+| kapcsolatos témakörök | Igen | 
+| topicTypes | Nem | 
 
 ## <a name="event-hub"></a>Eseményközpont
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| Névterek | Igen | 
 | Fürtök | Igen | 
+| Névterek | Igen | 
+| névtér/szabályok | Nem |
+| névtér/disasterRecoveryConfigs | Nem |
+| névtér/eventhubs | Nem |
+| névtér/eventhubs/szabályok | Nem |
+| névtér/eventhubs/consumergroups | Nem |
 
 ## <a name="hana-on-azure"></a>Azure-beli Hana
 | Erőforrás típusa | Támogatja a címkék |
@@ -265,28 +340,31 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | actionGroups | Igen |
-| Összetevők | Igen | 
-| összetevő/lekérdezés | Nem | 
-| összetevő/a mérőszámok | Nem | 
-| összetevő/események | Nem | 
-| webteszt | Igen | 
-| lekérdezés | Nem | 
-| scheduledqueryrules | Igen | 
-| összetevő/pricingPlans | Nem | 
-| migrateToNewPricingModel | Nem | 
-| rollbackToLegacyPricingModel | Nem | 
+| activityLogAlerts | Igen |
+| alertrules | Igen |
 | automatedExportSettings | Nem | 
-| munkafüzetek | Igen | 
-| myWorkbooks | Nem | 
+| Összetevők | Igen | 
+| összetevő/események | Nem | 
+| összetevő/a mérőszámok | Nem | 
+| összetevő/pricingPlans | Nem | 
+| összetevő/lekérdezés | Nem | 
 | naplók | Nem | 
+| metricAlerts | Igen |
+| migrateToNewPricingModel | Nem | 
+| myWorkbooks | Nem | 
+| lekérdezés | Nem | 
+| rollbackToLegacyPricingModel | Nem | 
+| scheduledqueryrules | Igen | 
+| webteszt | Igen | 
+| munkafüzetek | Igen | 
 
 ## <a name="key-vault"></a>Key Vault
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| tárolók | Igen | 
-| Tárolók vagy titkos kódokkal | Nem | 
-| tárolók/accessPolicies | Nem | 
 | deletedVaults | Nem | 
+| tárolók | Igen | 
+| tárolók/accessPolicies | Nem | 
+| Tárolók vagy titkos kódokkal | Nem | 
 
 ## <a name="log-analytics"></a>Log Analytics
 | Erőforrás típusa | Támogatja a címkék |
@@ -296,8 +374,8 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="logic"></a>Logika
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| A munkafolyamatok | Igen | 
 | integrationAccounts | Igen | 
+| A munkafolyamatok | Igen | 
 
 ## <a name="machine-learning-services"></a>Machine Learning Services
 | Erőforrás típusa | Támogatja a címkék |
@@ -310,13 +388,6 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | ------------- | ----------- |
 | Identitások | Nem | 
 | userAssignedIdentities | Igen | 
-
-## <a name="mariadb"></a>MariaDB
-| Erőforrás típusa | Támogatja a címkék |
-| ------------- | ----------- |
-| kiszolgáló | Igen | 
-| kiszolgálók/recoverableServers | Nem | 
-| kiszolgálók/virtualNetworkRules | Nem | 
 
 ## <a name="marketplace-apps"></a>Marketplace-alkalmazások
 | Erőforrás típusa | Támogatja a címkék |
@@ -333,64 +404,57 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | mediaservices | Igen | 
+| mediaservices/accountFilters | Nem | 
 | mediaservices/eszközök | Nem | 
+| mediaservices/eszközök/assetFilters | Nem | 
 | mediaservices/contentKeyPolicies | Nem | 
-| mediaservices/streamingLocators | Nem | 
-| mediaservices/streamingPolicies | Nem | 
 | mediaservices/eventGridFilters | Nem | 
-| mediaservices/átalakítások | Nem | 
-| mediaservices/átalakítások és feladatok | Nem | 
-| mediaservices/Streamvégpontok | Igen | 
+| mediaservices/liveEventOperations | Nem | 
 | mediaservices/liveEvents | Igen | 
 | mediaservices/liveEvents/liveOutputs | Nem | 
-| mediaservices/streamingEndpointOperations | Nem | 
-| mediaservices/liveEventOperations | Nem | 
 | mediaservices/liveOutputOperations | Nem | 
-| mediaservices/eszközök/assetFilters | Nem | 
-| mediaservices/accountFilters | Nem | 
-
-## <a name="mysql"></a>MySQL
-| Erőforrás típusa | Támogatja a címkék |
-| ------------- | ----------- |
-| kiszolgáló | Igen | 
-| kiszolgálók/recoverableServers | Nem | 
-| kiszolgálók/virtualNetworkRules | Nem | 
+| mediaservices/Streamvégpontok | Igen | 
+| mediaservices/streamingEndpointOperations | Nem | 
+| mediaservices/streamingLocators | Nem | 
+| mediaservices/streamingPolicies | Nem | 
+| mediaservices/átalakítások | Nem | 
+| mediaservices/átalakítások és feladatok | Nem | 
 
 ## <a name="network"></a>Network (Hálózat)
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| virtualNetworks | Igen | 
-| publicIPAddresses | Igen | 
-| Hálózati | Igen | 
+| applicationGateways | Igen | 
+| applicationSecurityGroups | Igen | 
+| azureFirewalls | Igen | 
+| kapcsolatok | Igen | 
+| ddosProtectionPlans | Igen | 
+| expressRouteCircuits | Igen | 
+| frontdoors | Igen | 
+| frontdoorWebApplicationFirewallPolicies | Igen | 
 | interfaceEndpoints | Igen | 
 | Használatát | Igen | 
-| networkSecurityGroups | Igen | 
-| applicationSecurityGroups | Igen | 
-| serviceEndpointPolicies | Igen | 
+| localNetworkGateways | Igen | 
 | networkIntentPolicies | Igen | 
-| routeTables | Igen | 
-| publicIPPrefixes | Igen | 
+| Hálózati | Igen | 
+| networkProfiles | Igen | 
+| networkSecurityGroups | Igen | 
 | networkWatchers | Igen | 
 | networkWatchers/connectionMonitors | Igen | 
 | networkWatchers/átvilágított felülettel | Igen | 
 | networkWatchers/pingMeshes | Igen | 
-| virtualnetworkgateways-hez | Igen | 
-| localNetworkGateways | Igen | 
-| kapcsolatok | Igen | 
-| applicationGateways | Igen | 
-| expressRouteCircuits | Igen | 
-| routeFilters | Igen | 
-| virtualWans | Igen | 
-| vpnSites | Igen | 
-| virtualHubs | Igen | 
-| vpnGateways | Igen | 
-| azureFirewalls | Igen | 
-| virtualNetworkTaps | Igen | 
 | privateLinkServices | Igen | 
-| ddosProtectionPlans | Igen | 
-| networkProfiles | Igen | 
-| frontdoors | Igen | 
-| frontdoorWebApplicationFirewallPolicies | Igen | 
+| publicIPAddresses | Igen | 
+| publicIPPrefixes | Igen | 
+| routeFilters | Igen | 
+| routeTables | Igen | 
+| serviceEndpointPolicies | Igen | 
+| virtualHubs | Igen | 
+| virtualNetworks | Igen | 
+| virtualnetworkgateways-hez | Igen | 
+| virtualNetworkTaps | Igen | 
+| virtualWans | Igen | 
+| vpnGateways | Igen | 
+| vpnSites | Igen | 
 | webApplicationFirewallPolicies | Igen | 
 
 ## <a name="notification-hubs"></a>Notification Hubs
@@ -398,6 +462,20 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | ------------- | ----------- |
 | Névterek | Igen | 
 | névtér/notificationHubs | Igen | 
+
+## <a name="operational-insights"></a>Operational Insights
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| munkaterületek | Igen |
+| munkaterületek/adatforrások | Igen |
+| munkaterületek/linkedServices | Igen |
+| munkaterületek/savedSearches | Nem |
+| munkaterületek/storageInsightConfigs | Igen |
+
+## <a name="operations-management"></a>Operations Management
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| megoldások | Nem |
 
 ## <a name="portal"></a>Portál
 | Erőforrás típusa | Támogatja a címkék |
@@ -409,17 +487,6 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | ------------- | ----------- |
 | rootResources | Igen | 
 
-## <a name="postgresql"></a>PostgreSQL
-| Erőforrás típusa | Támogatja a címkék |
-| ------------- | ----------- |
-| kiszolgáló | Igen | 
-| kiszolgálók/recoverableServers | Nem | 
-| kiszolgálók/virtualNetworkRules | Nem | 
-| kiszolgálók/topQueryStatistics | Nem | 
-| kiszolgálók/queryTexts | Nem | 
-| kiszolgálók/waitStatistics | Nem | 
-| kiszolgálók/tanácsadók | Nem | 
-
 ## <a name="power-bi"></a>Power BI
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
@@ -428,8 +495,8 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="recovery-services"></a>Recovery Services
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| tárolók | Igen | 
 | backupProtectedItems | Nem | 
+| tárolók | Igen | 
 
 ## <a name="relay"></a>Továbbító
 | Erőforrás típusa | Támogatja a címkék |
@@ -451,8 +518,8 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 ## <a name="search"></a>Keresés
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| searchServices | Igen | 
 | resourceHealthMetadata | Nem | 
+| searchServices | Igen | 
 
 ## <a name="security"></a>Biztonság
 | Erőforrás típusa | Támogatja a címkék |
@@ -495,6 +562,64 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | applicationDefinitions | Igen | 
 | jitRequests | Igen | 
 
+## <a name="sql"></a>SQL
+| Erőforrás típusa | Támogatja a címkék |
+| ------------- | ----------- |
+| helyek/instanceFailoverGroups | Nem |
+| managedInstances | Igen |
+| managedInstances/adatbázis | Igen |
+| managedInstances/adatbázisok/backupShortTermRetentionPolicies | Nem |
+| managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels | Nem |
+| managedInstances/adatbázisok/vulnerabilityAssessments | Nem |
+| managedInstances/adatbázisok/vulnerabilityAssessments/szabályok/alaptervek | Nem |
+| managedInstances/encryptionProtector | Nem |
+| managedInstances és kulcs | Nem |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nem |
+| managedInstances/vulnerabilityAssessments | Nem |
+| kiszolgáló | Igen |
+| kiszolgálók és a rendszergazdák | Nem |
+| kiszolgálók/tanácsadók | Nem |
+| kiszolgálók/auditingSettings | Nem |
+| kiszolgálók/backupLongTermRetentionVaults | Nem |
+| kiszolgálók/communicationLinks | Nem |
+| kiszolgálók/connectionPolicies | Nem |
+| kiszolgálók és adatbázisok | Igen |
+| kiszolgálók és adatbázisok/tanácsadók | Nem |
+| kiszolgálók és adatbázisok/auditingSettings | Nem |
+| kiszolgálók és adatbázisok/backupLongTermRetentionPolicies | Nem |
+| kiszolgálók és adatbázisok/backupShortTermRetentionPolicies | Nem |
+| kiszolgálók és adatbázisok/connectionPolicies | Nem |
+| kiszolgálók és adatbázisok/dataMaskingPolicies | Nem |
+| kiszolgálók és adatbázisok/dataMaskingPolicies/szabályok | Nem |
+| kiszolgálók és adatbázisok/extendedAuditingSettings | Nem |
+| kiszolgálók és adatbázisok/bővítmények | Nem |
+| kiszolgálók és adatbázisok/geoBackupPolicies | Nem |
+| kiszolgálók és adatbázisok/sémák/táblák/oszlopok/sensitivityLabels | Nem |
+| kiszolgálók és adatbázisok/securityAlertPolicies | Nem |
+| kiszolgálók és adatbázisok/syncGroups | Nem |
+| kiszolgálók és adatbázisok/syncGroups/syncMembers | Nem |
+| kiszolgálók és adatbázisok/transparentDataEncryption | Nem |
+| kiszolgálók és adatbázisok/vulnerabilityAssessments | Nem |
+| kiszolgálók és adatbázisok/vulnerabilityAssessments/szabályok/alaptervek | Nem |
+| kiszolgálók/disasterRecoveryConfiguration | Nem |
+| kiszolgálók/dnsAliases | Nem |
+| kiszolgálók/elasticPools | Igen |
+| kiszolgálók/encryptionProtector | Nem |
+| kiszolgálók/extendedAuditingSettings | Nem |
+| kiszolgálók/failoverGroups | Igen |
+| kiszolgálók/firewallRules | Nem |
+| kiszolgálók/jobAgents | Igen |
+| kiszolgálók/jobAgents/hitelesítő adatok | Nem |
+| kiszolgálók/jobAgents/feladatok | Nem |
+| kiszolgálók/jobAgents/feladatok/végrehajtások | Nem |
+| kiszolgálók/jobAgents/feladatok/lépéseket | Nem |
+| kiszolgálók/jobAgents/célcsoportok | Nem |
+| kiszolgálók és kulcs | Nem |
+| kiszolgálók/securityAlertPolicies | Nem |
+| kiszolgálók/syncAgents | Nem |
+| kiszolgálók/virtualNetworkRules | Nem |
+| kiszolgálók/vulnerabilityAssessments | Nem |
+
 ## <a name="sql-virtual-machine"></a>Az SQL virtuális gép
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
@@ -505,20 +630,20 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | ------------- | ----------- |
 | Tárfiókok | Igen | 
 | storageAccounts/blobServices | Nem | 
-| storageAccounts/tableServices | Nem | 
-| storageAccounts/queueServices | Nem | 
 | storageAccounts/fileServices | Nem | 
+| storageAccounts/queueServices | Nem | 
 | storageAccounts/services | Nem | 
 | storageAccounts/services/metricDefinitions | Nem | 
+| storageAccounts/tableServices | Nem | 
 
 ## <a name="storage-sync"></a>Társzinkronizálási
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | storageSyncServices | Igen | 
+| storageSyncServices/registeredServers | Nem | 
 | storageSyncServices/syncGroups | Nem | 
 | storageSyncServices/syncGroups/cloudEndpoints | Nem | 
 | storageSyncServices/syncGroups/serverEndpoints | Nem | 
-| storageSyncServices/registeredServers | Nem | 
 | storageSyncServices/munkafolyamatok | Nem | 
 
 ## <a name="storsimple"></a>A Storsimple
@@ -548,53 +673,50 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkézés](resou
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | account | Igen | 
-| fiók és a projekt | Igen | 
 | fiók/bővítmény | Igen | 
-| account | Igen | 
 | fiók és a projekt | Igen | 
-| fiók/bővítmény | Igen | 
 
 ## <a name="web"></a>Web
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
-| helyek és példányok | Nem | 
-| helyek és tárolóhelyek/példány | Nem | 
-| webhelyek/példány/bővítmények | Nem | 
-| webhelyek/tárolóhelyek/példány/bővítmények | Nem | 
-| publishingUsers | Nem | 
-| Ellenőrzése | Nem | 
-| sourceControls | Nem | 
-| webhelyek/hostNameBindings | Nem | 
-| webhelyek/domainOwnershipIdentifiers | Nem | 
-| helyek és tárolóhelyek/hostNameBindings | Nem | 
+| apiManagementAccounts | Nem | 
+| apiManagementAccounts/apiAcls | Nem | 
+| apiManagementAccounts/API-k | Nem | 
+| apiManagementAccounts/API/apiAcls | Nem | 
+| apiManagementAccounts/API/connectionAcls | Nem | 
+| apiManagementAccounts/API/kapcsolatok | Nem | 
+| apiManagementAccounts/API/kapcsolat/connectionAcls | Nem | 
+| apiManagementAccounts/API/localizedDefinitions | Nem | 
+| apiManagementAccounts/connectionAcls | Nem | 
+| apiManagementAccounts/kapcsolatok | Nem | 
+| billingMeters | Nem | 
 | tanúsítványok | Igen | 
+| connectionGateways | Igen | 
+| kapcsolatok | Igen | 
+| customApis | Igen | 
+| deletedSites | Nem | 
+| functions | Nem | 
+| hostingEnvironments | Igen | 
+| hostingEnvironments/a mérőszámok | Nem | 
+| hostingEnvironments/multiRolePools | Nem | 
+| hostingEnvironments/workerPools | Nem | 
+| publishingUsers | Nem | 
 | Kiszolgálófarmok | Igen | 
 | Kiszolgálófarmok/feldolgozó | Nem | 
 | Helyek | Igen | 
-| helyek és tárhelyek | Igen | 
+| webhelyek/domainOwnershipIdentifiers | Nem | 
+| webhelyek/hostNameBindings | Nem | 
+| helyek és példányok | Nem | 
+| webhelyek/példány/bővítmények | Nem | 
 | helyek és metrikák | Nem | 
-| webhelyek/tárolóhelyek/a mérőszámok | Nem | 
 | webhelyek/premieraddons | Igen | 
-| hostingEnvironments | Igen | 
-| hostingEnvironments/multiRolePools | Nem | 
-| hostingEnvironments/workerPools | Nem | 
-| hostingEnvironments/a mérőszámok | Nem | 
-| functions | Nem | 
-| deletedSites | Nem | 
-| apiManagementAccounts | Nem | 
-| apiManagementAccounts/kapcsolatok | Nem | 
-| apiManagementAccounts/connectionAcls | Nem | 
-| apiManagementAccounts/API/kapcsolat/connectionAcls | Nem | 
-| apiManagementAccounts/API/connectionAcls | Nem | 
-| apiManagementAccounts/apiAcls | Nem | 
-| apiManagementAccounts/API/apiAcls | Nem | 
-| apiManagementAccounts/API-k | Nem | 
-| apiManagementAccounts/API/localizedDefinitions | Nem | 
-| apiManagementAccounts/API/kapcsolatok | Nem | 
-| kapcsolatok | Igen | 
-| customApis | Igen | 
-| connectionGateways | Igen | 
-| billingMeters | Nem | 
+| helyek és tárhelyek | Igen | 
+| helyek és tárolóhelyek/hostNameBindings | Nem | 
+| helyek és tárolóhelyek/példány | Nem | 
+| webhelyek/tárolóhelyek/példány/bővítmények | Nem | 
+| webhelyek/tárolóhelyek/a mérőszámok | Nem | 
+| sourceControls | Nem | 
+| Ellenőrzése | Nem | 
 | verifyHostingEnvironmentVnet | Nem | 
 
 ## <a name="xrm"></a>XRM

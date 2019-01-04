@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 02699e5072801dbb8f4a8f97c88db006d31e6e0f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993286"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022036"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -111,6 +111,11 @@ Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az inter
 
 
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, lásd: [eszközt, a hibrid Azure AD join vezérlése](hybrid-azuread-join-control.md).
+
+Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) a bérlő, vegye figyelembe, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A hibrid Azure Ad-csatlakozás és az Azure AD-ban regisztrálva lennie kettős állapota nem támogatott. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota: 
+ - Minden meglévő Azure ad-ben regisztrált állapot automatikusan megszűnik, miután az eszköz a hibrid Azure AD-hez. 
+ - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001
+
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Tekintse át a hibrid Azure AD join eszköz vezérlése
 

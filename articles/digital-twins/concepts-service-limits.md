@@ -1,19 +1,19 @@
 ---
 title: Az Azure digitális Twins nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások |} A Microsoft Docs
-description: Megismerheti az Azure digitális Twins nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások
+description: Ismerje meg az Azure digitális Twins nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások.
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7d9686b9bcc6cb89fabf4fdaa79bf5b8c6c45ddc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961755"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020625"
 ---
 # <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
@@ -35,21 +35,25 @@ A nyilvános előzetes során minden Azure-előfizetés létrehozása, vagy egys
 
 Ezután minden egyes Azure digitális Twins példány veheti fel:
 
-- Egy **IoTHub** erőforrás.
-- Egy **EventHub** esemény típusú végpont **DeviceMessage**.
+- Pontosan egy **IoTHub** erőforrás.
+- Pontosan egy **EventHub** esemény típusú végpont **DeviceMessage**.
 - Legfeljebb három **EventHub**, **ServiceBus**, vagy **EventGrid** az esemény típusú végpontok **SensorChange**, **SpaceChange** , **TopologyOperation**, vagy **UdfCustom**.
 
-## <a name="management-api-limits"></a>Felügyeleti API-korlátok
+> [!NOTE]
+> Egyes általában a fenti Azure IoT-entitások létrehozásakor meghatározott paraméterek nem szükségesek a nyilvános előzetes verzió ideje alatt.
+> - Tekintse át a [Swagger dokumentációja](./how-to-use-swagger.md) számára a legújabb API-specifikációkat.
 
-A kérelem sebességhatárok a felügyeleti API-hoz a következők:
+## <a name="azure-digital-twins-management-api-limits"></a>Az Azure digitális Twins felügyeleti API-korlátok
 
-- 100 vonatkozó kérelmek másodpercenkénti száma a felügyeleti API-hoz.
-- Egyetlen felügyeleti API-lekérdezés által visszaadott legfeljebb 1000 objektumot. 
+Az Azure digitális Twins felügyeleti API a kérelem sebességhatárt a következők:
+
+- 100 vonatkozó kérelmek másodpercenkénti száma az Azure digitális Twins felügyeleti API-hoz.
+- Egyetlen Azure digitális Twins felügyeleti API-lekérdezés által visszaadott legfeljebb 1000 objektumot.
 
 > [!IMPORTANT]
 > Ha 1000-objektum korlátot túllépi, hibaüzenetet kap, és a lekérdezés egyszerűsítenie kell.
 
-## <a name="udf-rate-limits"></a>Sebességhatárok UDF-ben
+## <a name="user-defined-functions-rate-limits"></a>Felhasználó által definiált függvények sebességhatárok
 
 Az alábbi korlátozások beállítása az Azure digitális Twins-példány összes felhasználó által definiált függvény hívások teljes száma:
 
@@ -59,7 +63,7 @@ Az alábbi korlátozások beállítása az Azure digitális Twins-példány öss
 > [!NOTE]
 > Előfordulhat, hogy a következő műveleteket a alkalmazni ideiglenesen további sebességhatárok:
 > - A topológia objektum metaadatainak szerkesztése
-> - Az UDF-definíció végzett frissítések
+> - A felhasználó által definiált függvény definíciója végzett frissítések
 > - Az első alkalommal telemetriai adatokat küldő eszközök
 
 ## <a name="device-telemetry-limits"></a>Telemetria eszközkorlátok

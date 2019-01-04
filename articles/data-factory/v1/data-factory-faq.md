@@ -9,17 +9,16 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 414a6042d064a1dece7025dc277533d40ef2aa64
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781913"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024042"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory – gyakori kérdések
 > [!NOTE]
@@ -55,7 +54,7 @@ Szerző/létrehozhat adat-előállítók az alábbi eszközök/SDK-k egyikével:
 * **Az Azure PowerShell** lásd [létrehozása és a figyelő Azure PowerShell-lel az Azure Data Factory](data-factory-build-your-first-pipeline-using-powershell.md) oktatóanyag/forgatókönyv egy PowerShell-lel adat-előállító létrehozásához. Lásd: [Data Factory parancsmagjainak leírása] [ adf-powershell-reference] a Data Factory-parancsmagok átfogó dokumentáció tartalmát az MSDN könyvtárában.
 * **.NET-osztálytár** Data Factory .NET SDK-val programozott módon hozhat létre data factoryt. Lásd: [létrehozása, figyelése és kezelése a .NET SDK-t az adat-előállítók](data-factory-create-data-factories-programmatically.md) használható a .NET SDK használatával egy adat-előállító létrehozásához. Lásd: [Data Factory osztálytár-referenciát] [ msdn-class-library-reference] egy átfogó Data Factory .NET SDK dokumentációját.
 * **REST API-val** is használhatja az Azure Data Factory szolgáltatás által elérhetővé tett REST API létrehozása és üzembe helyezése az adat-előállítók. Lásd: [Data Factory REST API-referencia] [ msdn-rest-api-reference] átfogó dokumentáció, amely a Data Factory REST API számára.
-* **Az Azure Resource Manager-sablon** lásd [oktatóanyag: az első Azure data factory használatával az Azure Resource Manager-sablon létrehozása](data-factory-build-your-first-pipeline-using-arm.md) fo részleteit.
+* **Az Azure Resource Manager-sablon** lásd [oktatóanyag: Az első Azure data factory használatával az Azure Resource Manager-sablon létrehozása](data-factory-build-your-first-pipeline-using-arm.md) fo részleteit.
 
 ### <a name="can-i-rename-a-data-factory"></a>Átnevezheti a data factory?
 Nem. Egyéb Azure-erőforrások, például egy Azure data factory neve nem módosítható.
@@ -72,12 +71,12 @@ Az alábbi táblázat a Data Factory és a rajtuk futó tevékenységek által t
 | --- | --- |
 | [Igény szerinti HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) vagy [a saját HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streamelési](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-tevékenységek: Kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
 | [Az Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Az Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [az SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory összehasonlítása az SQL Server Integration Services (SSIS) 
-Tekintse meg a [Azure Data Factory vs. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) az MVP-k (legnagyobb értékű szakemberek számára) egyik bemutató: Reza Rad. Az útmutató legutóbbi módosításait a Data Factory néhány előfordulhat, hogy nem jelenik meg a bemutatót. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Azt fogja funkcióját beépítse ezeket a frissítéseket a Microsoft integrációs adattechnológiáira összehasonlítása valamikor év.   
+Tekintse meg a [Azure Data Factory vs. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutatót az MVP-k (legnagyobb értékű szakemberek számára) közül: Reza Rad. Az útmutató legutóbbi módosításait a Data Factory néhány előfordulhat, hogy nem jelenik meg a bemutatót. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Azt fogja funkcióját beépítse ezeket a frissítéseket a Microsoft integrációs adattechnológiáira összehasonlítása valamikor év.   
 
 ## <a name="activities---faq"></a>Tevékenységek – gyakori kérdések
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Mik azok a tevékenységek is használhatja a Data Factory-folyamatok különböző típusú?

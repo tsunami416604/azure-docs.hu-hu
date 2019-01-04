@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2017
 ms.author: jingwang
-ms.openlocfilehash: 3428fb5034435d9f3444347329171d803136177c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944668"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016648"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok Store az Azure Key Vaultban
 
@@ -47,7 +46,7 @@ Társított Azure Key Vault szolgáltatás a következő tulajdonságok támogat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **azurekeyvault értékre van**. | Igen |
+| type | A type tulajdonságot kell beállítani: **Azurekeyvault értékre van**. | Igen |
 | BaseUrl | Adja meg az Azure Key Vault URL-címet. | Igen |
 
 **Használatával a szerzői műveletek a felhasználói felület:**

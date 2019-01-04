@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 905431c73488ddc6ebf2d13823e4bb705d16304c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102010"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019265"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Presto
 
@@ -45,12 +44,12 @@ Presto társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Presto** | Igen |
+| type | A type tulajdonságot kell beállítani: **A presto** | Igen |
 | gazdagép | Az IP-cím vagy a gazdagép a Presto kiszolgáló neve. (azaz 192.168.222.160)  | Igen |
 | serverVersion | A Presto kiszolgáló verziója. (azaz 0.148-t)  | Igen |
 | katalógus | A katalógus környezet összes kérelem a kiszolgálón.  | Igen |
 | port | A Presto kiszolgáló ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték: 8080-as.  | Nem |
-| authenticationType | A Presto kiszolgálóhoz való csatlakozáshoz használt hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **névtelen**, **LDAP** | Igen |
+| authenticationType | A Presto kiszolgálóhoz való csatlakozáshoz használt hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, **LDAP** | Igen |
 | felhasználónév | A Presto kiszolgálóhoz való csatlakozáshoz használt felhasználónév.  | Nem |
 | jelszó | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |

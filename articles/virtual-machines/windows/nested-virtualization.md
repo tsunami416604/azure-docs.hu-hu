@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1caf8455816bd86411a75821ee33516e8aad5de3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435106"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002263"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális Gépen a beágyazott virtualizálás engedélyezése
 
@@ -180,3 +180,7 @@ Ebben a példában a 192.168.0.0/24 címtartományt a címet fogja használni.
 
 A Vendég virtuális gépen nyissa meg a böngészőt, és keresse meg a weblapot.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>A Vendég virtuális gép intranetes kapcsolatok beállítása
+
+A Vendég virtuális gépek és Azure virtuális gépek közötti transzparens kapcsolódásának engedélyezése útmutatásért lásd az [ebben a dokumentumban](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network).

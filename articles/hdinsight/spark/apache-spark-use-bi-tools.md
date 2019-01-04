@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 688aab6c6e67b259931e4e2331e2d632e87f1db9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c058cfa3bc9fa976726731cedeb80eb76a1f0810
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651469"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999271"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: A Power BI használata a HDInsight az Apache Spark-adatok elemzése 
 
@@ -103,7 +103,7 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
         A diagram a következőképpen fog kinézni:
 
-        ![Spark-adatvizualizációk létrehozása az Apache Spark BI használatával](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Spark-adatvizualizációk létrehozása az Apache Spark BI használatával")
+        ![Spark-adatvizualizációk létrehozása az Apache Spark BI használatával](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Spark-adatvizualizációk létrehozása az Apache Spark BI használatával")
 
         Alapértelmezés szerint a vizualizáció az **ActualTemp** és a **TargetTemp** mezők összegét jeleníti meg. Ha az **ActualTemp** és a **TargetTemp** mezők melletti lefelé mutató nyílra kattint a Vizualizációk ablaktáblán, akkor láthatja, hogy az **Összeg** paraméter van kiválasztva.
 
@@ -113,7 +113,7 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
         Az adatok vizualizációjának a képernyőképen láthatóhoz hasonlóan kell kinéznie. Ha az egérmutatót a vizualizáció fölé viszi, megtekintheti a kapcsolódó adatokhoz tartozó eszköztippeket.
 
-        ![Spark-adatvizualizációk létrehozása az Apache Spark BI használatával](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Spark-adatvizualizációk létrehozása az Apache Spark BI használatával")
+        ![Spark-adatvizualizációk létrehozása az Apache Spark BI használatával](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Spark-adatvizualizációk létrehozása az Apache Spark BI használatával")
 
 7. Kattintson a **Fájl**, majd a **Mentés** elemre, és adja meg a következő nevet a fájl számára: `BuildingTemperature.pbix`. 
 

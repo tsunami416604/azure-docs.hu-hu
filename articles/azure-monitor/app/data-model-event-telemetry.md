@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 7e69fb74226aaaad13b0a5410e0a46a152d73533
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 0f294b25bda39b44ea577f70bf63c61a4ce43093
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812341"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002144"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Telemetriai esemény: Application Insights-adatmodell
 
@@ -43,4 +43,4 @@ Maximális hossz: 512 karakter
 
 - Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
 - [Egyéni esemény telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Tekintse meg [platformok](../../application-insights/app-insights-platforms.md) Application Insights által támogatott.
+- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.

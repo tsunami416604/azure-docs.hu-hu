@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4b0023c42d99842c704734d4f994273436f201e4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 76f54674b6c292cfaecfe8440d12bfa17d5a5a5e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077647"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016580"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával HubSpot
 
@@ -45,7 +44,7 @@ HubSpot társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Hubspot** | Igen |
+| type | A type tulajdonságot kell beállítani: **Hubspot** | Igen |
 | clientId | Hubspot az alkalmazáshoz tartozó ügyfél-azonosító.  | Igen |
 | clientSecret | A Hubspot az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | hozzáférési tokent | Az OAuth-integráció kezdeti hitelesítéskor kapott hozzáférési jogkivonat. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |

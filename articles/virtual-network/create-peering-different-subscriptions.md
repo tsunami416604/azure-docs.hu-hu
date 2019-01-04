@@ -1,13 +1,10 @@
 ---
-title: Egy Azure virtuális hálózat létrehozása – Resource Manager - társviszony-létesítés eltérő előfizetésekben |} A Microsoft Docs
+title: Egy Azure virtuális hálózat létrehozása – Resource Manager - társviszony-létesítés eltérő előfizetésekben
+titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan hozhat létre egy virtuális hálózatot a Resource Managerben létrehozott, amely a különböző Azure-előfizetésekben található virtuális hálózatok közötti társviszony.
 services: virtual-network
 documentationcenter: ''
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 04ed8e0e99f0aba4ca067700f8a651b6d6c52423
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f06f0b5392ebb60cd852d3c2eb201478b31ae167
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727477"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014966"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Egy virtuális hálózati társviszony-létesítés létrehozása – Resource Manager, a különböző előfizetések
 
@@ -53,8 +50,8 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
     - **Címtér**: *10.0.0.0/16*
     - **Alhálózat neve**: *alapértelmezett*
     - **Alhálózati címtartomány**: *10.0.0.0/24*
-    - **Előfizetés**: válassza ki előfizetését rögzíti.
-    - **Erőforráscsoport**: válasszon **új létrehozása** , és adja meg *myResourceGroupA*
+    - **Előfizetés**: Válassza ki előfizetését rögzíti.
+    - **Erőforráscsoport**: Válassza ki **új létrehozása** , és adja meg *myResourceGroupA*
     - **Hely**: *USA keleti RÉGIÓJA*
 4. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetA*. Válassza ki **myVnetA** amikor megjelenik a keresési eredmények között. 
 5. Válassza ki **hozzáférés-vezérlés (IAM)** a bal oldali beállítások függőleges listájából.
@@ -70,8 +67,8 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
     - **Címtér**: *10.1.0.0/16*
     - **Alhálózat neve**: *alapértelmezett*
     - **Alhálózati címtartomány**: *10.1.0.0/24*
-    - **Előfizetés**: válassza ki a b előfizetés
-    - **Erőforráscsoport**: válasszon **új létrehozása** , és adja meg *myResourceGroupB*
+    - **Előfizetés**: B előfizetés kiválasztása
+    - **Erőforráscsoport**: Válassza ki **új létrehozása** , és adja meg *myResourceGroupB*
     - **Hely**: *USA keleti RÉGIÓJA*
 
 13. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetB*. Válassza ki **myVnetB** amikor megjelenik a keresési eredmények között.
@@ -84,10 +81,10 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
 20. A **myVnetA - Társviszonyok**válassza **+ Hozzáadás**
 21. A **Hozzáadás társviszony-létesítés**, adja meg, vagy válassza ki, a következő beállításokat, majd válassza a **OK**:
      - **Név**: *myVnetAToMyVnetB*
-     - **Virtuális hálózat üzemelőpéldány-modellje**: válasszon **Resource Manager**.
-     - **Tudom, hogy az erőforrás-Azonosítómat**: ezt a jelölőnégyzetet.
+     - **Virtuális hálózat üzemelőpéldány-modellje**:  Válassza a **Resource Manager** lehetőséget.
+     - **Tudom, hogy az erőforrás-Azonosítómat**: Ezt a jelölőnégyzetet.
      - **Erőforrás-azonosító**: Adja meg az erőforrás-azonosítója a 14. lépés.
-     - **Virtuális hálózati hozzáférés engedélyezése:** ügyeljen arra, hogy **engedélyezve** van kiválasztva.
+     - **Virtuális hálózati hozzáférés engedélyezése:** Ügyeljen arra, hogy **engedélyezve** van kiválasztva.
     Ebben az oktatóanyagban nincs más beállításokat használja. Minden társviszony beállításai kapcsolatos további információkért olvassa el a [kezelheti a virtuális társhálózatok](virtual-network-manage-peering.md#create-a-peering).
 22. A társviszony-létesítés létrehozott jelenik meg egy rövid várakozás kiválasztása után **OK** az előző lépésben. **Kezdeményezett** szerepel-e a **társviszony-LÉTESÍTÉS állapota** oszlopában a **myVnetAToMyVnetB** társviszony-létesítés, létrehozva. MyVnetA myVnetB, akkor már társviszonyban, de most a myVnetA myVnetB kell társviszonyt. A társviszony-létesítést mindkét irányban, lehetővé teszik az erőforrások a virtuális hálózatok egymással kommunikálni kell létrehozni.
 23. Jelentkezzen ki a portálra a Felhasználóa felhasználóként, és jelentkezzen be Felhasználób felhasználóként.
@@ -95,8 +92,8 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
 25. Kiválasztása után néhány másodpercig **OK** hozhat létre, a társviszony-létesítést myVnetB, a **myVnetBToMyVnetA** együtt jelenik meg az imént létrehozott társviszony **csatlakoztatva** a a**Társviszony-LÉTESÍTÉS állapota** oszlop.
 26. Jelentkezzen ki a Felhasználób portált, és jelentkezzen be a Felhasználóa felhasználóként.
 27. Végezze el ismét a 17-19. lépést. A **társviszony-LÉTESÍTÉS állapota** számára a **myVnetAToVNetB** társviszony-létesítés jelenleg is **csatlakoztatva**. A sikeresen létrejött a társviszony, miután látta, **csatlakoztatva** a a **társviszony-LÉTESÍTÉS állapota** oszlopot mindkét a társviszony-létesítés virtuális hálózatok. Bármelyik virtuális hálózatban hoz létre Azure-erőforrások immár képes az IP-címekkel kommunikálhatnak egymással. Ha Azure névfeloldási szolgáltatása alapértelmezett a virtuális hálózatok használata esetén a virtuális hálózatokban az erőforrások nem lesznek tudják feloldani a virtuális hálózatok között. Ha szeretné feloldani az egy társviszony-létesítés virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgáló. Ismerje meg, hogyan állítható be [névfeloldás saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
-28. **Nem kötelező**: azonban ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, az egyes virtuális hálózatok virtuális gép létrehozása és csatlakoztatása egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
-29. **Nem kötelező**: az ebben az oktatóanyagban létrehozott erőforrás törléséhez hajtsa végre a lépéseit a [törölje az erőforrást](#delete-portal) című szakaszát.
+28. **Nem kötelező**: Bár ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, egy virtuális gép létrehozása az egyes virtuális hálózatok, és csatlakozzon egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
+29. **Nem kötelező**: Ebben az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a lépések a [törölje az erőforrást](#delete-portal) című szakaszát.
 
 ## <a name="cli"></a>Társviszony - létrehozása az Azure CLI
 
@@ -173,8 +170,8 @@ Telepítése a parancssori felület és annak függőségeit, helyett használha
     > [!NOTE]
     > A társviszony nem jön létre, amíg a társviszony-létesítés állapota **csatlakoztatva** mindkét virtuális hálózat számára.
 
-11. **Nem kötelező**: azonban ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, az egyes virtuális hálózatok virtuális gép létrehozása és csatlakoztatása egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
-12. **Nem kötelező**: az ebben az oktatóanyagban létrehozott erőforrás törléséhez hajtsa végre a lépéseit [törölje az erőforrást](#delete-cli) ebben a cikkben.
+11. **Nem kötelező**: Bár ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, egy virtuális gép létrehozása az egyes virtuális hálózatok, és csatlakozzon egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
+12. **Nem kötelező**: Ebben az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a lépések [törölje az erőforrást](#delete-cli) ebben a cikkben.
 
 Bármelyik virtuális hálózatban hoz létre Azure-erőforrások immár képes az IP-címekkel kommunikálhatnak egymással. Ha Azure névfeloldási szolgáltatása alapértelmezett a virtuális hálózatok használata esetén a virtuális hálózatokban az erőforrások nem lesznek tudják feloldani a virtuális hálózatok között. Ha szeretné feloldani az egy társviszony-létesítés virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgáló. Ismerje meg, hogyan állítható be [névfeloldás saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
  
@@ -243,8 +240,8 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 
     Bármelyik virtuális hálózatban hoz létre Azure-erőforrások immár képes az IP-címekkel kommunikálhatnak egymással. Ha Azure névfeloldási szolgáltatása alapértelmezett a virtuális hálózatok használata esetén a virtuális hálózatokban az erőforrások nem lesznek tudják feloldani a virtuális hálózatok között. Ha szeretné feloldani az egy társviszony-létesítés virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgáló. Ismerje meg, hogyan állítható be [névfeloldás saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-13. **Nem kötelező**: azonban ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, az egyes virtuális hálózatok virtuális gép létrehozása és csatlakoztatása egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
-14. **Nem kötelező**: az ebben az oktatóanyagban létrehozott erőforrás törléséhez hajtsa végre a lépéseit [törölje az erőforrást](#delete-powershell) ebben a cikkben.
+13. **Nem kötelező**: Bár ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, egy virtuális gép létrehozása az egyes virtuális hálózatok, és csatlakozzon egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
+14. **Nem kötelező**: Ebben az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a lépések [törölje az erőforrást](#delete-powershell) ebben a cikkben.
 
 ## <a name="template"></a>-Társviszony létrehozása Resource Manager-sablon
 
@@ -285,11 +282,11 @@ Ha a virtuális hálózatok különböző előfizetésekben találhatóak, és a
 
 3. Jelentkezzen be az Azure-bA Felhasználóa felhasználóként, és a sablon üzembe a [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine), vagy a [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Adja meg a fájlnevet, 2. lépésben mentett a példa json-szövegben.
 4. A példa json másolásához a 2. lépés egy fájlt a számítógépen, és módosítja a kezdődő sorokat:
-    - **név**: Change *myVnetA/myVnetAToMyVnetB* való *myVnetB/myVnetBToMyVnetA*.
-    - **ID**: cserélje le `<subscription ID>` Felhasználób az előfizetés-azonosító, és módosítsa a *myVnetB* való *myVnetA*.
+    - **Név**: Változás *myVnetA/myVnetAToMyVnetB* való *myVnetB/myVnetBToMyVnetA*.
+    - **ID**: Cserélje le `<subscription ID>` Felhasználób az előfizetés-azonosító, és módosítsa a *myVnetB* való *myVnetA*.
 5. 3. lépés kész, bejelentkezésének az Azure-bA Felhasználób.
-6. **Nem kötelező**: azonban ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, az egyes virtuális hálózatok virtuális gép létrehozása és csatlakoztatása egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
-7. **Nem kötelező**: az ebben az oktatóanyagban létrehozott erőforrás törléséhez hajtsa végre a lépéseit a [törölje az erőforrást](#delete) című szakaszát, az Azure portal, PowerShell vagy az Azure CLI használatával.
+6. **Nem kötelező**: Bár ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, egy virtuális gép létrehozása az egyes virtuális hálózatok, és csatlakozzon egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
+7. **Nem kötelező**: Ebben az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a lépések a [törölje az erőforrást](#delete) című szakaszát, az Azure portal, PowerShell vagy az Azure CLI használatával.
 
 ## <a name="delete"></a>Erőforrások törlése
 Ez az oktatóanyag befejezése után érdemes törölni, így nem használati díjak merülhetnek fel az oktatóanyagban létrehozott erőforrásokat. Egy erőforráscsoport törlésekor a, amelyek az erőforráscsoportban lévő összes erőforrást is törli.

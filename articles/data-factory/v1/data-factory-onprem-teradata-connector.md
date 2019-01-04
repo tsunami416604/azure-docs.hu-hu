@@ -9,17 +9,16 @@ ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901b44b829398ef92e63f94e0b35549e63cdd3db
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2b7a90f948f0176285f1e56bc3c84a2cda2f2577
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262250"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023523"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával Teradata
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,8 +46,8 @@ Az adatkezelési átjárót a Teradata-adatbázishoz csatlakozni, telepítenie k
 ## <a name="getting-started"></a>Első lépések
 Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
 
-- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- -Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
+- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -56,7 +55,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
 3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni Teradata adattár használt JSON-definíciói egy minta: [példa JSON: adatok másolása az Teradata az Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni Teradata adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob Teradata](#json-example-copy-data-from-teradata-to-azure-blob) című szakaszát. 
 
 A következő szakaszok a Teradata adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -65,9 +64,9 @@ Az alábbi táblázatban a JSON-elemeket Teradata-beli társított szolgáltatá
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonság értékre kell állítani: **OnPremisesTeradata** |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesTeradata** |Igen |
 | kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
-| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyszíni Teradata-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
@@ -88,7 +87,7 @@ Ha a forrása típusa **RelationalSource** (amely tartalmazza a Teradata), a kö
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Igen |
 
-### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: adatok másolása az Teradata az Azure Blob
+### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: Adatok másolása az Teradata az Azure Blob
 Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ezek bemutatják, hogyan Teradata adatokat másol az Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
 
 A minta az alábbi data factory-entitások rendelkezik:
@@ -168,7 +167,7 @@ A minta azt feltételezi, létrehozott egy táblát "MyTable" Teradata és a egy
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatok írása egy új blob minden órában (frequency: óra, az interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -296,7 +295,7 @@ Adatok áthelyezése a Teradata, amikor a következő hozzárendeléseket haszn�
 | VarByte |Byte] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| tizedes tört |tizedes tört |
+| Tizedes tört |Tizedes tört |
 | Dupla |Dupla |
 | Egész szám |Int32 |
 | Szám |Dupla |

@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók az Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok
+title: Tudnivalók az Azure Key Vault kulcsok, titkos kódok és tanúsítványok – Azure Key Vault
 description: Az Azure Key Vault REST felületet és fejlesztői részletei kulcsok, titkos kódok és tanúsítványok áttekintése.
 services: key-vault
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 464574716971388f3785879ba40ad3e8a624fc7f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384785"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002620"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -36,7 +36,7 @@ Tudnivalók a Key Vaultról további általános információkért lásd: [Mi az
 
 Az alábbi szakaszok a Key Vault szolgáltatás megvalósítása között vonatkozó általános információkat kínálnak.
 
-###  <a name="supporting-standards"></a>Szabványok támogatása
+### <a name="supporting-standards"></a>Szabványok támogatása
 
 A JavaScript Object Notation (JSON) és a JavaScript Object aláírás és titkosítás (JOSE) előírások olyan fontos háttér-információkat.  
 
@@ -60,7 +60,7 @@ Tekintse meg a megfelelő adattípusokat kulcsok, titkosítási és aláírási 
 -   **Identitás** - identitás az Azure Active Directory (AAD).  
 -   **IntDate** – 1970. a másodpercek számát jelölő JSON decimális-01-ig az adott UTC szerinti dátuma/ideje (UTC) 01T0:0:0Z. Lásd: különösen RFC3339 date/times észlelésével kapcsolatos részletekért és az UTC.  
 
-###  <a name="objects-identifiers-and-versioning"></a>Objektumok, azonosítók és verziókezelés
+### <a name="objects-identifiers-and-versioning"></a>Objektumok, azonosítók és verziókezelés
 
 A Key Vaultban tárolt objektumok verziószámmal is, amikor létrejön egy objektum új példányát. Minden verzió van rendelve egy egyedi azonosító URL-CÍMÉT. Objektum létrehozásakor megadott egyedi verzióazonosítót, és az objektum aktuális verziója megjelölve. Az azonos nevű objektum egy új példányának létrehozása lehetővé teszi az új objektum egyedi verzióazonosító okozza, hogy a jelenlegi verzió válik.  
 
@@ -85,7 +85,7 @@ Az elemek magyarázata:
 
 ## <a name="key-vault-keys"></a>A Key Vault-kulcsok
 
-###  <a name="keys-and-key-types"></a>Kulcsok és a kulcs típusa
+### <a name="keys-and-key-types"></a>Kulcsok és a kulcs típusa
 
 Titkosítási kulcsok a Key Vaultban JSON webes kulcs [JWK] objektumként jelennek meg. Az alap JWK/JWA előírásoknak is terjeszteni a Key Vault megvalósításához egyedi kulcstípusok engedélyezése. Például importálása a HSM szállító-specifikus csomagolás eszközzel, lehetővé teszi, hogy csak akkor használható, a Key Vault HSM-kulcsok biztonságos szállítása.  
 
@@ -206,15 +206,15 @@ Hozzáférés-vezérlés a Key Vault által kezelt kulcsok egy Key Vaultot, amel
 A következő is adhatók engedélyek, az egy / felhasználó / service egy tároló kulcsainak hozzáférés-vezérlési bejegyzés egyszerű rendszeresen. Ezek az engedélyek szorosan tükrözik a kulcs-objektum engedélyezett műveletek:  
 
 - Kulcskezelési műveletek engedélyeket
-  - *első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
-  - *lista*: A kulcsok vagy a key vaultban tárolt kulcs verzióinak listázása
+  - *Első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
+  - *Lista*: A kulcsok vagy a key vaultban tárolt kulcs verzióinak listázása
   - *Frissítés*: Frissítse az attribútumot a kulcshoz
   - *Hozzon létre*: Új kulcsok létrehozása
   - *Importálás*: Kulcs importálása egy kulcstartóba
   - *Törlés*: A kulcs-objektum törlése
   - *helyreállítás*: Egy törölt kulcs helyreállítása
-  - *biztonsági mentési*: A key vault-kulcs biztonsági mentése
-  - *visszaállítás*: Key vault kulcs biztonsági visszaállítása
+  - *Biztonsági mentés*: A key vault-kulcs biztonsági mentése
+  - *Visszaállítás*: Key vault kulcs biztonsági visszaállítása
 
 - A titkosítási műveletek engedélyek
   - *visszafejtés*: A kulcs használatával bájt sorozatát feloldása
@@ -265,13 +265,13 @@ Hozzáférés-vezérlés a Key vaultban felügyelt titkos kulcsok, szintjén, am
 A következő engedélyeket is használható, egyszerű alapon, az egy tároló titkos kódok hozzáférés-vezérlési bejegyzés, és szorosan tükrözik a titkos objektum engedélyezett műveletek:  
 
 - Titkoskód-kezelési műveletek vonatkozó engedélyek
-  - *első*: Olvassa el a titkos kulcs  
-  - *lista*: A titkos kulcsok vagy a Key Vaultban tárolt titkos kulcs verzióinak listázása  
+  - *Első*: Olvassa el a titkos kulcs  
+  - *Lista*: A titkos kulcsok vagy a Key Vaultban tárolt titkos kulcs verzióinak listázása  
   - *Állítsa be*: Titkos kulcs létrehozása  
   - *Törlés*: Titkos kulcs törlése  
   - *helyreállítás*: Törölt titkos kulcs helyreállítása
-  - *biztonsági mentési*: Készítsen biztonsági másolatot a kulcstartóban található titkos kulcs
-  - *visszaállítás*: A key vault titkos kulcs biztonsági visszaállítása
+  - *Biztonsági mentés*: Készítsen biztonsági másolatot a kulcstartóban található titkos kulcs
+  - *Visszaállítás*: A key vault titkos kulcs biztonsági visszaállítása
 
 - Privilegizált műveleteket vonatkozó engedélyek
   - *végleges törlés*: Végleges törlés (végleges törlése) titkos kulcs törlése
@@ -422,15 +422,15 @@ Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítv
  Egyszerű – ellenében, a titkos kulcsok a key vault, és szorosan tükör titkos objektum engedélyezett műveletek hozzáférési szabály használható a következő engedélyekkel:  
 
 - Tanúsítványkezelési műveletek vonatkozó engedélyek
-  - *első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
-  - *lista*: Az aktuális tanúsítványokat vagy tanúsítvány verzióinak listázása  
+  - *Első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
+  - *Lista*: Az aktuális tanúsítványokat vagy tanúsítvány verzióinak listázása  
   - *Frissítés*: A tanúsítvány frissítése
   - *Hozzon létre*: Hozzon létre egy Key Vault-tanúsítvánnyal
   - *Importálás*: Tanúsítvány anyag importálása a Key Vault-tanúsítvánnyal
   - *Törlés*: Törölje a tanúsítványt, a házirendet, és annak összes verzióját  
   - *helyreállítás*: Helyreállítás egy tanúsítvány törlése
-  - *biztonsági mentési*: Készítsen biztonsági másolatot a kulcstartóban található tanúsítvány
-  - *visszaállítás*: Key vault a biztonsági másolat tanúsítvány visszaállítása
+  - *Biztonsági mentés*: Készítsen biztonsági másolatot a kulcstartóban található tanúsítvány
+  - *Visszaállítás*: Key vault a biztonsági másolat tanúsítvány visszaállítása
   - *managecontacts*: A Key Vault tanúsítványpartnerek kezelése  
   - *manageissuers*: A Key Vault hatóságok/tanúsítványkiállítók kezelése
   - *getissuers*: A tanúsítvány hatóságok/kiállítók beolvasása
@@ -459,13 +459,13 @@ További információkért lásd: [Azure Key Vault Tárfiókkulcsokat](key-vault
 A következő engedélyek használható egy felhasználó vagy alkalmazás egyszerű engedélyezésekor egy felügyelt tárfiókot műveletek végrehajtásához:  
 
 - A felügyelt tárfiókot és SaS-definíciója műveletek engedélyek
-  - *első*: Storage-fiók adatainak beolvasása 
-  - *lista*: A Key Vault kezeli tárfiókok listája
+  - *Első*: Storage-fiók adatainak beolvasása 
+  - *Lista*: A Key Vault kezeli tárfiókok listája
   - *Frissítés*: Tárfiók frissítése
   - *Törlés*: Tárfiók törlése  
   - *helyreállítás*: Helyreállítás törölt tárfiókokat
-  - *biztonsági mentési*: Készítsen biztonsági másolatot egy storage-fiók
-  - *visszaállítás*: Biztonsági másolat storage-fiók egy Key Vaultot visszaállítása
+  - *Biztonsági mentés*: Készítsen biztonsági másolatot egy storage-fiók
+  - *Visszaállítás*: Biztonsági másolat storage-fiók egy Key Vaultot visszaállítása
   - *Állítsa be*: Létrehozni vagy frissíteni a storage-fiók
   - *regeneratekey*: Storage-fiókok megadott kulcsérték újragenerálása
   - *getsas*: Storage-fiókok egy SAS-definíció adatainak beolvasása

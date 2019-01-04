@@ -10,17 +10,16 @@ ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2c00e42284783439b0a01f6ba6bab31be053b1c9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736410"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015814"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Az Azure Data Factory-folyamatok Spark-programok meghívása
 
@@ -46,7 +45,7 @@ A Spark-tevékenység az egyik a [adat-átalakítási tevékenységeket](data-fa
 > - A Spark-tevékenység, amely elsődleges tárolóként használnia az Azure Data Lake Store HDInsight Spark-fürtökön nem támogatja.
 > - A Spark-tevékenységet támogatja a csak meglévő (saját) HDInsight Spark-fürtökön. Egy igény szerinti HDInsight társított szolgáltatás nem támogatott.
 
-## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Forgatókönyv: Egy Spark-tevékenységgel rendelkező folyamat létrehozása
+## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Forgatókönyv: Folyamat létrehozása egy Spark-tevékenységgel
 Hozzon létre egy data factory-folyamatot egy Spark-tevékenységgel a tipikus lépései a következők: 
 
 * Adat-előállító létrehozása
@@ -74,7 +73,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 1. Az a **új adat-előállító** panel alatt **neve**, adja meg **SparkDF**.
 
    > [!IMPORTANT]
-   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibát látja, "Data factory SparkDF név nem érhető el", módosítsa az adat-előállító nevét. Például yournameSparkDFdate használja, és hozza létre újra az adat-előállítóban. További információ az elnevezési szabályokról: [A Data Factory elnevezési szabályai](data-factory-naming-rules.md).
+   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibát látja, "Data factory SparkDF név nem érhető el", módosítsa az adat-előállító nevét. Például yournameSparkDFdate használja, és hozza létre újra az adat-előállítóban. Elnevezési szabályokról szóló további információkért lásd: [adat-előállító: Elnevezési szabályok](data-factory-naming-rules.md).
 
 1. Az **Előfizetés** területen válassza ki azt az Azure-előfizetést, ahol létre kívánja hozni az adat-előállítót.
 
@@ -338,7 +337,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 | Osztálynév | Alkalmazás fő Java/Spark-osztálya. | Nem |
 | argumentumok | A Spark-program parancssori argumentumokat listája. | Nem |
 | proxyUser | A felhasználói fiók megszemélyesítése a Spark-program végrehajtásához. | Nem |
-| sparkConfig | Adja meg a Spark-konfiguráció szereplő tulajdonságok értékeit [Spark-konfigurációja: alkalmazástulajdonságok](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nem |
+| sparkConfig | Adja meg a Spark-konfiguráció szereplő tulajdonságok értékeit [Spark konfigurálása: Alkalmazástulajdonságok](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nem |
 | getDebugInfo | Itt adhatja meg, ha a Spark log fájlokat másolja a HDInsight-fürt által használt tárterület (vagy) sparkJobLinkedService által megadott. Megengedett értékek: None, mindig, vagy hiba. Az alapértelmezett értéke None. | Nem |
 | sparkJobLinkedService | A Storage társított szolgáltatás, amely tartalmazza a Spark, feladat-fájlt, a függőségeket és a naplókat. Ez a tulajdonság értékét nem adja meg, ha a tárolót a HDInsight-fürthöz társított szolgál. | Nem |
 

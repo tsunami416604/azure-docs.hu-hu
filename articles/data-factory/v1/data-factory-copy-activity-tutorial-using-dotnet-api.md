@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával | Microsoft Docs'
+title: 'Oktatóanyag: Folyamat létrehozása másolási tevékenységgel .NET API használatával |} A Microsoft Docs'
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre másolási tevékenységgel rendelkező Azure Data Factory-adatcsatornákat a .NET API használatával.
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c875793bf558013d5052f99c24d3a04a3525af5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9a536efd59008572459b8736e2a6ada669c00519
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253040"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015185"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: .NET API használatával másolási tevékenységgel rendelkező folyamat létrehozása
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -37,14 +36,14 @@ ms.locfileid: "51253040"
 
 A cikk útmutatást nyújt adat-előállítók [.NET API](https://portal.azure.com) használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-ból másolnak adatokat az Azure SQL Database-be. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
-Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
+Ebben az oktatóanyagban egy folyamatot egy tevékenységgel rendelkező létrehozása: Másolási tevékenység. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
 Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információ az [egy folyamaton belüli több tevékenységről](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) szóló témakörben található. 
 
 > [!NOTE] 
 > A Data Factory .NET API teljes dokumentációját a [Data Factory szolgáltatással kapcsolatos .NET API-referencia](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) tartalmazza.
 > 
-> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
+> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Adatok átalakítása az Azure Data Factory használatával kapcsolatos oktatóanyagért lásd: [oktatóanyag: Az adatok Hadoop-fürttel történő átalakítására szolgáló folyamat létrehozása](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az **előfeltételként** elvégzendő lépésekkel.
@@ -132,7 +131,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 3. A **Csomagkezelő konzolban** hajtsa végre a következő lépéseket:
    1. A Data Factory-csomag telepítéséhez futtassa az alábbi parancsot: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Adja hozzá az alábbi **appSetttings** részt az **App.config** fájlhoz. Ezeket a beállításokat a **GetAuthorizationHeader** segédmetódus használja.
+4. Adja hozzá az alábbi **appSetttings** részt az **App.config** fájlhoz. Ezek a beállítások segédmetódus használhatók: **GetAuthorizationHeader**.
 
     Az **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;** és **&lt;tenant ID&gt;** értékek helyére írja be saját értékeit.
 
@@ -234,7 +233,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 
     Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben az oktatóanyagban nem használunk számítási szolgáltatásokat (például Azure HDInsight vagy Azure Data Lake Analytics). Csak kétféle típusú adattárat használunk: Azure Storage (forrás) és Azure SQL Database (cél). 
 
-    Ezért két társított szolgáltatást fog létrehozni AzureStorageLinkedService és AzureSqlLinkedService néven (típus: AzureStorage és AzureSqlDatabase).  
+    Ezért AzureStorageLinkedService és azuresqllinkedservice néven típusú két társított szolgáltatást hoz létre: AzureStorage és AzureSqlDatabase.  
 
     Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Ebben a tárfiókban hozta létre a tárolót, és ebbe töltötte fel adatokat az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.
 9. Adja hozzá az alábbi kódot, amely létrehozza az **Azure SQL-társított szolgáltatást** a **Main** metódusban.

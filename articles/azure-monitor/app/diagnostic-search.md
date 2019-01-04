@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b7f49571aa78a262a464f9626b7b98a85f8187f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2a7b5a1f90ddc6ccfdbc568113a5c265dd9ac84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973332"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022954"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](../../application-insights/app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
@@ -129,7 +129,7 @@ Az alábbiakban a keresési kifejezéseket is használhatja:
 ## <a name="sampling"></a>Mintavételezés
 Ha az alkalmazása sok telemetriát hoz létre (és használ, akkor a verzió az ASP.NET SDK 2.0.0-beta3 vagy újabb), az adaptív mintavételezési modul automatikusan csökkenti a által csak töredékeket az események elküldése a portálra küldött kötetet. Azonban az azonos kéréshez kapcsolódó eseményeket kiválasztva, vagy a jelölésük, úgy, hogy lehessen mozogni a kapcsolódó események között. 
 
-[Ismerkedés a mintavételezéssel](../../application-insights/app-insights-sampling.md).
+[Ismerkedés a mintavételezéssel](../../azure-monitor/app/sampling.md).
 
 ## <a name="create-work-item"></a>Munkaelem létrehozása
 Létrehozhat egy hiba a GitHub vagy az Azure DevOps bármilyen szereplő telemetriai elem adatait. 
@@ -153,7 +153,7 @@ Az Application Insights SDK által küldött-a-beépített telemetriát, valamin
 ## <a name="questions"></a>A Q &AMP; A
 ### <a name="limits"></a>Mennyi adatot megmarad?
 
-Tekintse meg a [korlátozások összegzése](../../application-insights/app-insights-pricing.md#limits-summary).
+Tekintse meg a [korlátozások összegzése](../../azure-monitor/app/pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Hogyan tekinthetem meg POST data a kiszolgálói kérelmekre a?
 Automatikusan azt ne naplózza a POST data, de használhat [TrackTrace vagy a naplóhoz hívások](../../azure-monitor/app/asp-net-trace-logs.md). Az üzenet-paraméter a POST data helyezze el. Nem lehet szűrni az üzenet tulajdonságait szűrésével ugyanúgy, de a méretkorlátot hosszabb.

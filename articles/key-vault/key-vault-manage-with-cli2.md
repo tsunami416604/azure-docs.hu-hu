@@ -1,5 +1,5 @@
 ---
-title: Az Azure Key Vault parancssori felület használata kezelheti |} A Microsoft Docs
+title: Az Azure Key Vault parancssori felület – Azure Key Vault használata kezelheti |} A Microsoft Docs
 description: Ez a cikk segítségével automatizálhatja a gyakori feladatok a Key Vault az Azure CLI-vel
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 632620bf8140ba855198a9354fbd7e50604e18c3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256451"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000308"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Az Azure CLI használatával a Key Vault felügyelete 
 
@@ -133,8 +133,8 @@ az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGro
 
 Ez a parancs kimenetét mutatja a létrehozott kulcstartó tulajdonságait. A két legfontosabb tulajdonság:
 
-* **név**: a példában a neve a következő ContosoKeyVault. Más Key Vault parancsok ezt a nevet fogja használni.
-* **vaultUri**: a példában az URI-ja https://contosokeyvault.vault.azure.net. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **Név**: A példában a név ContosoKeyVault. Más Key Vault parancsok ezt a nevet fogja használni.
+* **vaultUri**: A példában az URI-ja https://contosokeyvault.vault.azure.net. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Kezdődően még senki más nem engedélyezett.
 
@@ -228,18 +228,18 @@ az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Használat [az keyvault update](/cli/azure/keyvault#az-keyvault-update) a kulcstartó speciális szabályzatok engedélyezéséhez. 
 
- Központi telepítés engedélyezése a Key Vault: lehetővé teszi, hogy a virtuális gépek a tárolóból titkos kódként tárolt tanúsítványok lekérése.
+ A Key Vault üzembe helyezés engedélyezése: Lehetővé teszi, hogy a virtuális gépek a tárolóból titkos kódként tárolt tanúsítványok lekérése.
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
  ``` 
 
-A Key Vault engedélyezése lemeztitkosítás: megadása kötelező, ha a tároló az Azure Disk encryption használatával.
+Lemeztitkosítás Key Vault engedélyezése: Az Azure Disk encryption a tároló használata esetén szükséges.
 
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
  ```  
 
-A Key Vault engedélyezése a sablon üzembe helyezéshez: Resource Manager lehetővé teszi, hogy a titkos kódok lekérése a tárolóból.
+Sablon telepítése a Key Vault engedélyezése: Lehetővé teszi a Resource Manager beolvasni a titkos kulcsok a tárolóból.
  ```azurecli 
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```

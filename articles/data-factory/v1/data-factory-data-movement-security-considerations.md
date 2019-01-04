@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3c4bd08d2ba3aa4aeceb38a0ae498786f681d800
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960685"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015746"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatáthelyezés biztonsági szempontjai
 
@@ -181,14 +180,14 @@ A következő felhőalapú adattárak alkalmazásátjáróra IP-címét az átj�
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Kérdés:** az átjárón keresztül megoszthatók különböző adat-előállítók?
-**Válasz:** a rendszer nem támogatja ezt a szolgáltatást még. Aktívan dolgozunk rajta.
+**Kérdés:** Különböző adat-előállítók között megosztható az átjáró?
+**Válasz:** Ez a funkció még nem támogatott. Aktívan dolgozunk rajta.
 
-**Kérdés:** milyen követelmények vonatkoznak a portokra működik az átjáró?
-**Válasz:** átjáró lehetővé teszi a kapcsolat HTTP-alapú internet megnyitásához. A **443-as és a 80-as kimenő portot** kell megnyitni az átjáró a kapcsolat létrehozásához. Nyissa meg **bejövő Port 8050** csak a gépek szintjén (nem a vállalati tűzfalon szintjén) a hitelesítőadat-kezelő alkalmazás. Azure SQL Database vagy Azure SQL Data Warehouse használata esetén, a forrás / cél, akkor meg kell nyitnia **1433-as** portot is. További információkért lásd: [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) szakaszban. 
+**Kérdés:** Milyen követelmények vonatkoznak a portokra működik az átjáró?
+**Válasz:** Átjáró lehetővé teszi a kapcsolat HTTP-alapú internet megnyitásához. A **443-as és a 80-as kimenő portot** kell megnyitni az átjáró a kapcsolat létrehozásához. Nyissa meg **bejövő Port 8050** csak a gépek szintjén (nem a vállalati tűzfalon szintjén) a hitelesítőadat-kezelő alkalmazás. Azure SQL Database vagy Azure SQL Data Warehouse használata esetén, a forrás / cél, akkor meg kell nyitnia **1433-as** portot is. További információkért lásd: [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) szakaszban. 
 
 **Kérdés:** Mik azok az átjáró esetében a tanúsítványkövetelmények?
-**Válasz:** jelenlegi átjáróval biztonságosan a tároló hitelesítő adatainak beállításához a hitelesítőadat-kezelő alkalmazást által használt tanúsítvány szükséges. Ez a tanúsítvány egy önaláírt tanúsítvány létrehozása és konfigurálása az átjáró telepítője által. Használhatja a saját TLS / SSL-tanúsítvány helyett. További információkért lásd: [kattintson – egyszer hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakaszban. 
+**Válasz:** Jelenlegi átjáróval biztonságosan a tároló hitelesítő adatainak beállításához a hitelesítőadat-kezelő alkalmazást által használt tanúsítvány szükséges. Ez a tanúsítvány egy önaláírt tanúsítvány létrehozása és konfigurálása az átjáró telepítője által. Használhatja a saját TLS / SSL-tanúsítvány helyett. További információkért lásd: [kattintson – egyszer hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakaszban. 
 
 ## <a name="next-steps"></a>További lépések
 További információ a másolási tevékenység teljesítménye: [másolási tevékenységek teljesítményéhez és finomhangolási útmutató](data-factory-copy-activity-performance.md).

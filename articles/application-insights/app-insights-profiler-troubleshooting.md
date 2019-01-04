@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7b7aad2cb8aa9b4faeada795f20c818995f62fb6
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fc30dc928afbee0de2cd0d11a147c08b9f47cef1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720439"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024620"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -94,7 +94,7 @@ Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott friss�
 
 Engedélyezheti a Profiler jelenleg legfeljebb négy Azure web apps és az azonos service-csomag futó üzembe helyezési pontok. További web Apps alkalmazások, mint egy app service-csomag futó rendelkezik, egy a profiler által okozott Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException jelenhet meg. A profiler minden webes alkalmazáshoz külön-külön fut, és próbálja meg elindítani a minden alkalmazás ETW-munkamenetet. De van néhány ETW olyan munkamenetek, amelyek egy időben lehet aktív. A Profiler webjobs-feladat túl sok aktív profilkészítési munkamenetek jelent, ha néhány webes alkalmazás áthelyezése egy másik service-csomagot.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Központi telepítési hiba: nem üres könyvtár "D:\\otthoni\\hely\\wwwroot\\App_Data\\feladatok
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Központi telepítési hiba: Könyvtár nem üres "D:\\otthoni\\hely\\wwwroot\\App_Data\\feladatok
 
 Ha az a Web Apps erőforrás-webalkalmazás újraalkalmaz a Profiler engedélyezve van, a következő üzenetet láthatja:
 
@@ -128,12 +128,12 @@ D:\ProgramData\ApplicationInsightsProfiler\config.json
 ```
 Ellenőrizze, hogy helyesen szerepel-e a rendszerállapotkulcsot a profiler parancssorban. 
 
-Harmadik az elérési utat a fenti config.json fájl használata esetén ellenőrizze a profiler naplófájlt. A profiler által használt beállításokat és a profiler az állapot és a hibaüzenetek jelző ladicí informace megjelenik. Ha a profiler fut, amíg az alkalmazás kéréseket fogad, ez az üzenet láthatja: a Rendszerállapotkulcsot tevékenységet. Ha a nyomkövetési adatok feltöltése folyamatban van, megjelenik ez az üzenet: történő nyomkövetési feltöltésének megkezdése. 
+Harmadik az elérési utat a fenti config.json fájl használata esetén ellenőrizze a profiler naplófájlt. A profiler által használt beállításokat és a profiler az állapot és a hibaüzenetek jelző ladicí informace megjelenik. Ha a profiler fut, amíg az alkalmazás kéréseket fogad, akkor ez az üzenet jelenik meg: A Rendszerállapotkulcsot észlelhető tevékenység. Amikor a nyomkövetési adatok feltöltése folyamatban van, akkor ezt az üzenetet jelenik meg: Nyomkövetési feltöltése megkezdődött. 
 
 
-[profiler-search-telemetry]:./media/app-insights-profiler/Profiler-Search-Telemetry.png
-[a Profiler-webjobs-feladat]:./media/app-insights-profiler/Profiler-webjob.png
-[a Profiler-webjob-log]:./media/app-insights-profiler/Profiler-webjob-log.png
+[profiler-search-telemetry]:./media/app-insights-profiler-troubleshooting/Profiler-Search-Telemetry.png
+[a Profiler-webjobs-feladat]:./media/app-insights-profiler-troubleshooting/Profiler-webjob.png
+[a Profiler-webjob-log]:./media/app-insights-profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

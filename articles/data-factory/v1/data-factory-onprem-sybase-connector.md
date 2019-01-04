@@ -9,17 +9,16 @@ ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0832d5a3f5b529a815046bb6f12755ad733ff03c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0de8d4145ff41b498149774af8ed74c56375dea9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260567"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023657"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával Sybase
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,8 +48,8 @@ Sybase SQL bárhol (ASA) verzió 16 SAP és a fenti támogatott; Sweetiq és az 
 ## <a name="getting-started"></a>Első lépések
 Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
 
-- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- -Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
+- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -58,7 +57,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
 3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni Sybase-adattár használt JSON-definíciói egy minta: [példa JSON: adatok másolása az Sybase az Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni Sybase-adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob Sybase](#json-example-copy-data-from-sybase-to-azure-blob) című szakaszát. 
 
 Az alábbi szakaszok nyújtanak egy Sybase-adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -67,11 +66,11 @@ A következő táblázat jellemző a Sybase-beli társított szolgáltatás JSON
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonság értékre kell állítani: **OnPremisesSybase** |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesSybase** |Igen |
 | kiszolgáló |A Sybase-kiszolgáló neve. |Igen |
 | adatbázis |A Sybase-adatbázis neve. |Igen |
 | séma |A séma az adatbázis neve. |Nem |
-| authenticationType |A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyszíni Sybase-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
@@ -97,7 +96,7 @@ Ha a forrása típusa **RelationalSource** (amely tartalmazza a Sybase), a köve
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 
-## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON-példa: adatok másolása az Sybase az Azure Blob
+## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON-példa: Adatok másolása az Sybase az Azure Blob
 Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Sybase-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
 
 A minta az alábbi data factory-entitások rendelkezik:
@@ -177,7 +176,7 @@ A minta azt feltételezi, létrehozott egy táblát "MyTable" Sybase, és a egy 
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatok írása egy új blob minden órában (frequency: óra, az interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
 {

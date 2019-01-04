@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése az Azure Cosmos DB |} Microsoft Docs
-description: Megtudhatja, hogyan helyezi át az adatokat az Azure Data Factory használatához Azure Cosmos DB gyűjtemény
+title: Adatok áthelyezése és- tárolókról az Azure Cosmos DB |} A Microsoft Docs
+description: Ismerje meg, hogyan át az adatokat, és- tárolókról az Azure Data Factory használatával az Azure Cosmos DB-gyűjtemények
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
@@ -9,59 +9,58 @@ ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f3ebd704129aabecffdaa2589b8b086803a2d092
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d95534cceb11f7bf20f6966e0205694fc1db021d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046601"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017599"
 ---
-# <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése, és az Azure Cosmos Adatbázisba az Azure Data Factory használatával
+# <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok importálására és az Azure Cosmos DB az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](data-factory-azure-documentdb-connector.md)
-> * [(Az aktuális verzió) 2-es verzió](../connector-azure-cosmos-db.md)
+> * [1-es verzió](data-factory-azure-documentdb-connector.md)
+> * [2-es verzió (aktuális verzió)](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Azure Cosmos DB-összekötőt, a V2](../connector-azure-cosmos-db.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben az Azure Cosmos DB-összekötő](../connector-azure-cosmos-db.md).
 
-Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factory áthelyezni az adatokat és a Azure Cosmos DB (SQL API-t). Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést. 
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factoryban adatáthelyezést és-tárolókról az Azure Cosmos DB (az SQL API-t). Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése. 
 
-Bármely támogatott forrás adattárolóból Azure Cosmos DB vagy az Azure Cosmos Adatbázisból bármely támogatott fogadó adattárolóhoz adatainak másolhatja. Adatforrások vagy mosdók a másolási tevékenység által támogatott adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. 
+Másolhatja az adatokat bármely támogatott forrás adattárból az Azure Cosmos DB-hez vagy az Azure Cosmos DB bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. 
 
 > [!IMPORTANT]
-> Azure Cosmos DB connector csak az SQL API támogatja.
+> Az Azure Cosmos DB-összekötő csak az SQL API támogatja.
 
-Az adatok másolása-van/JSON-fájlokat vagy egy másik Cosmos DB gyűjteményhez, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).
+Az adatok másolása – van- tárolókról a JSON-fájlokat, vagy egy másik Cosmos DB-gyűjtemények, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).
 
 ## <a name="getting-started"></a>Első lépések
-A másolási tevékenység, mely az adatok Azure Cosmos DB és a különböző eszközök/API-k használatával létrehozhat egy folyamatot.
+Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok és-tárolókról az Azure Cosmos DB áthelyezéséhez a különböző eszközök/API-k használatával.
 
-Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
+A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
-Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban: 
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
 
-1. Hozzon létre **összekapcsolt szolgáltatások** bemeneti és kimeneti adatok csatolásához tárolja a a data factory.
-2. Hozzon létre **adatkészletek** a másolási művelet bemeneti és kimeneti adatok. 
-3. Hozzon létre egy **csővezeték** , amely fogad egy bemeneti adatkészlet és egy kimeneti adatkészletet másolási tevékenységgel. 
+1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a Data Factory entitások (összekapcsolt szolgáltatások adatkészletek és a feldolgozási sor) JSON-definíciók automatikusan létrejönnek. Eszközök/API-k (kivéve a .NET API-t) használata esetén adja meg a Data Factory entitások a JSON formátum használatával.  Adatok másolása az Cosmos DB használandó adat-előállító entitások JSON-definíciók minták, lásd: [JSON példák](#json-examples) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amelyek/Cosmos DB az adatok másolása JSON-definíciói minták, lásd: [JSON példák](#json-examples) című szakaszát. 
 
-A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások Cosmos DB JSON-tulajdonságok: 
+A következő szakaszok a Cosmos DB-hez adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletek: 
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
-A következő táblázat a JSON-elemek szerepelnek Azure Cosmos DB kapcsolódó szolgáltatásra vonatkozó leírást.
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+Az alábbi táblázatban az adott Azure Cosmos DB-hez társított szolgáltatás JSON-elemek leírását.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **DocumentDb** |Igen |
-| connectionString |Adja meg Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges adatokat. |Igen |
+| type |A type tulajdonságot kell beállítani: **A DocumentDb** |Igen |
+| kapcsolati Sztringje |Azure Cosmos DB-adatbázishoz való kapcsolódáshoz szükséges információkat adják meg. |Igen |
 
 Példa:
 
@@ -78,13 +77,13 @@ Példa:
 ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-A szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
+Szakaszok & adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
 
-A typeProperties szakasz más adatkészlet egyes típusai és információkat nyújt azokról az adattárban adatok helyét. A typeProperties szakasz az adatkészlet típusú **DocumentDbCollection** a következő tulajdonságokkal rendelkezik.
+A typeProperties szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyére vonatkozó információkat. A typeProperties szakasz az adatkészlet típusa **DocumentDbCollection** a következő tulajdonságokkal rendelkezik.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
-| collectionName |A Cosmos DB dokumentum gyűjtemény nevét. |Igen |
+| collectionName |A Cosmos DB-dokumentumgyűjteményt neve. |Igen |
 
 Példa:
 
@@ -105,63 +104,63 @@ Példa:
   }
 }
 ```
-### <a name="schema-by-data-factory"></a>Adat-előállító sémája
-Például az Azure Cosmos DB tárolóinak sémamentes adatokra a Data Factory szolgáltatásnak kikövetkezteti a séma a következő módszerek valamelyikével:  
+### <a name="schema-by-data-factory"></a>Adat-előállítók által séma
+A séma nélküli adattárakban, mint az Azure Cosmos DB a Data Factory szolgáltatás kikövetkezteti a használandó sémát az alábbi módszerek egyikével:  
 
-1. Ha az adatok szerkezete használatával adja meg a **struktúra** tulajdonsághoz a DataSet adatkészlet-definícióban a Data Factory szolgáltatásnak eleget tegyen a séma szerint ez a struktúra. Ebben az esetben ha egy sort tartalmaz egy olyan oszlop értékét, null értékű nyújtanak az.
-2. Ha nincs megadva az adatok szerkezete használatával a **struktúra** tulajdonság az adatkészlet-definícióban, a Data Factory szolgáltatásnak kikövetkezteti a séma az adatok első sora használatával. Ebben az esetben ha az első sort tartalmazza a teljes séma, néhány oszlop nem érhető el a másolási művelet eredménye.
+1. Ha az adatok struktúráját használatával adja meg a **struktúra** tulajdonságot az adatkészlet-definícióban, a Data Factory szolgáltatás figyelembe veszi a sémát, ez a struktúra. Ebben az esetben ha egy sort tartalmaz egy oszlop értékét, null értékű biztosítjuk.
+2. Ha nincs megadva az adatok struktúráját használatával a **struktúra** tulajdonságot az adatkészlet-definícióban, a Data Factory szolgáltatás kikövetkezteti a használandó sémát az első sor az adatok használatával. Ebben az esetben ha az első sor nem tartalmazza a teljes séma, egyes oszlopok nem érhető el a másolási művelet eredményét.
 
-Ezért sémamentes adatforrások, az ajánlott eljárás, hogy adja meg az adatok szerkezete a **struktúra** tulajdonság.
+Ezért sémamentes adatforrások esetében az ajánlott eljárás, hogy adja meg az adatok a struktúra a **struktúra** tulajdonság.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A szakaszok & rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listájáért tekintse meg a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Például a nevét, leírását, valamint bemeneti és kimeneti táblák és házirend tulajdonságai minden típusú tevékenységek érhetők el.
+Szakaszok & definiálását tevékenységek tulajdonságainak teljes listájáért tekintse meg a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti táblák és a házirend az összes típusú tevékenységek érhetők el.
 
 > [!NOTE]
-> A másolási tevékenység során csak egy bemenettel rendelkezik, és csak egy kimenetet.
+> A másolási tevékenység csak egy bemenettel rendelkezik, és csak egy kimenetet.
 
-Tulajdonságok érhetők el a tevékenység typeProperties szakaszában viszont eltérőek a tevékenységek minden típusának, és a források és mosdók típusától függően változik másolási tevékenység esetén.
+A tevékenység a typeProperties szakasz tulajdonságai másrészről a tevékenységek minden típusának eltérőek lehetnek, és a másolási tevékenység esetén azok eltérőek lehetnek attól függően, a forrásként és fogadóként típusú.
 
-Ha forrás típusa másolási tevékenység esetén **DocumentDbCollectionSource** a következő tulajdonságok érhetők el **typeProperties** szakasz:
+Ha forrás típusa másolási tevékenység esetén **DocumentDbCollectionSource** érhetők el a következő tulajdonságokat a **typeProperties** szakaszban:
 
-| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| lekérdezés |Adja meg a lekérdezés adatainak olvasására. |Lekérdezés-karakterlánc hossza Azure Cosmos DB által támogatott. <br/><br/>Példa: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |Jelzi, hogy a dokumentum van beágyazva speciális karakter |Bármely karakter. <br/><br/>Azure Cosmos-adatbázis egy NoSQL-tároló JSON-dokumentumok, amelyben beágyazott struktúrákat engedélyezett. Az Azure Data Factory lehetővé teszi, hogy a felhasználó nestingSeparator, amely használatával a hierarchia jelöléséhez "." a fenti példákban. A elválasztóval, a másolási tevékenység hoz létre a "Name" objektum három gyermekek elemekkel először középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában. |Nem |
+| lekérdezés |Adja meg a lekérdezés adatokat olvasni. |Lekérdezés-karakterlánc, az Azure Cosmos DB által támogatott. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely hajtja végre: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |Jelzi, hogy a dokumentum van beágyazva speciális karakter |Bármely karakter. <br/><br/>Azure Cosmos DB a NoSQL-alapú tárolót a JSON-dokumentumok, amelyben beágyazott struktúrák engedélyezettek. Az Azure Data Factory lehetővé teszi, hogy a felhasználó nestingSeparator, amely használatával a hierarchia jelölésére "." a fenti példákban. Az elválasztó, a másolási tevékenység hoz létre három gyermeket elem "Name" objektum először, középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában. |Nem |
 
 **DocumentDbCollectionSink** támogatja a következő tulajdonságokkal:
 
-| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy különleges karakterek van szükség. <br/><br/>Például fent: `Name.First` a kimeneti táblát hoz létre a következő JSON struktúrában a Cosmos DB dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Alapértelmezett érték `.` (pont). |
-| writeBatchSize |Dokumentumok létrehozásához Azure Cosmos DB szolgáltatás párhuzamos kérelmek száma.<br/><br/>A teljesítmény úgy finomhangolhatja, és a Cosmos DB adatok másolásakor e tulajdonság használatával. A jobb teljesítmény számíthat, mivel több párhuzamos kérelem Cosmos DB writeBatchSize növelésével. Azonban kell elkerülheti a sávszélesség-szabályozás, amely képes throw a hibaüzenet a következő: "Ez nagy lekérő".<br/><br/>Sávszélesség-szabályozás tényező, beleértve a dokumentumok, a dokumentumok számát méretét, indexelő házirend célgyűjteményt stb határoz meg. A másolási műveletek segítségével jobban gyűjtemény (pl. S3) rendelkezik a legtöbb átviteli sebesség érhető el (2500 kérés egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
-| writeBatchTimeout |Várakozási idő a művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
+| nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy speciális karaktert van szükség. <br/><br/>Például a fent: `Name.First` a kimeneti tábla hoz létre a következő JSON-struktúrát a Cosmos DB-dokumentumban:<br/><br/>"Name": {}<br/>    "First": "János"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Alapértelmezett érték `.` (pont). |
+| WriteBatchSize |Dokumentumok létrehozása az Azure Cosmos DB szolgáltatás párhuzamos kérelmek száma.<br/><br/>A teljesítmény finomhangolására, példatípust az adatok és a Cosmos DB használatával ezt a tulajdonságot. A jobb teljesítmény várható writeBatchSize növelése, mert a Cosmos DB-hez további párhuzamos kérés lesz elküldve. Azonban, amely szabályozás elkerülése érdekében kell nagyvállalat a hibaüzenet: "Meg túl sok kérelmet adott".<br/><br/>Szabályozás számos tényezőtől, beleértve a dokumentumokat, a feltételek a dokumentumok száma méretét, indexelési szabályzat célgyűjtemény stb határoz meg. A másolási műveletek segítségével jobb gyűjtemény (például S3 szintű) rendelkezik a legtöbb számára elérhető adatátviteli mennyiség (2500 kérés kérelemegység/s). |Egész szám |Nem (alapértelmezett: 5.) |
+| writeBatchTimeout |Várjon, amíg a művelet befejezését, mielőtt azt az időkorlátot. |Időtartam<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 ## <a name="importexport-json-documents"></a>Importálási/exportálási JSON-dokumentumok
-A Cosmos DB összekötő használatával egyszerűen
+A Cosmos DB-összekötő használatával egyszerűen
 
-* Importálja a JSON-dokumentumok különböző forrásokból Cosmos DB Azure Blob, beleértve az Azure Data Lake, a helyszíni fájlrendszer vagy egyéb fájlalapú tárolók Azure Data Factory által támogatott.
-* A Cosmos DB collecton JSON-dokumentumok exportálása különböző fájlalapú tárolók.
-* Adatok áttelepítése között két Cosmos DB gyűjteményeket-van.
+* JSON-dokumentumok importálása különböző forrásokból származó az Azure Blob, beleértve az Azure Data Lake, a helyi fájlrendszer vagy egyéb fájlalapú tárolók az Azure Data Factory által támogatott, Cosmos DB-be.
+* JSON-dokumentumok exportálása a Cosmos DB collecton különböző fájlalapú tárolók.
+* Adatok áttelepítése a között, két Cosmos DB-gyűjtemények-van.
 
-A séma-független másolat eléréséhez 
-* Másolása varázsló segítségével, hogy a **"exportálni-JSON-fájlokat vagy Cosmos DB gyűjtemény"** lehetőséget.
-* Ha JSON szerkesztésére használatával nem adnak meg a "structure" szakasz Cosmos DB adatkészlet(ek), sem "nestingSeparator" tulajdonságának Cosmos DB forrás/fogadó a másolási tevékenység. Importálhat / JSON fájlokba exportálását, a fájl tároló adatkészlet adja meg formázási típusa "JsonFormat", "filePattern" konfigurációs és hagyja ki a többi formázási beállítások. További információ: [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format) részletei szakaszban.
+Az ilyen sémafüggetlen másolási eléréséhez 
+* A másolás varázsló használata esetén ellenőrizze a **"exportálása – JSON-fájlokat vagy a Cosmos DB-gyűjtemény"** lehetőséget.
+* Ha használja a JSON-adatok szerkesztése, ne adja meg a "struktúra" szakaszban Cosmos DB adatkészlet(ek) sem "nestingSeparator" tulajdonság a Cosmos DB forrás/fogadó a másolási tevékenység. JSON-fájlok exportálása / importálása, fájl store adatkészlet adja meg formátum típusa "JsonFormat", "filePattern" konfigurációs és hagyja ki a rest-fájlformátum beállításai, lásd: [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format) szakaszban talál.
 
 ## <a name="json-examples"></a>JSON-példák
-Az alábbi példák megadják minta JSON-definíciókat tartalmazzon, segítségével hozzon létre egy folyamatot [Azure-portálon](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure Cosmos DB és az Azure Blob Storage mutatnak. Azonban az adatok átmásolhatók **közvetlenül** bármelyik bármely, a megadott nyelő források [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenység során az Azure Data Factory használatával.
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure Cosmos DB és az Azure Blob Storage mutatnak. Azonban az adatok átmásolhatók **közvetlenül** egyetlen forrás sem a conditions stated above fogadóként [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
-## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>Példa: Adatok másolása az Azure Cosmos DB az Azure-Blobba
-Az alábbi példa látható:
+## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>Példa: Adatok másolása az Azure Cosmos DB az Azure Blob
+Az alábbi példában látható:
 
 1. A társított szolgáltatás típusa [DocumentDb](#linked-service-properties).
 2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Bemeneti [dataset](data-factory-create-datasets.md) típusú [DocumentDbCollection](#dataset-properties).
-4. Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [csővezeték](data-factory-create-pipelines.md) a másolási tevékenység által használt [DocumentDbCollectionSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [DocumentDbCollection](#dataset-properties).
+4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [DocumentDbCollectionSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-A minta Azure Cosmos DB adatainak Azure Blob másolása. A mintákat a következő szakaszok ismertetik ezeket a mintákat használt JSON-tulajdonságok.
+A minta adatokat másol az Azure Cosmos DB az Azure-Blobba. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 
-**A társított szolgáltatásnak Azure Cosmos DB:**
+**Az Azure Cosmos DB-beli társított szolgáltatást:**
 
 ```JSON
 {
@@ -174,7 +173,7 @@ A minta Azure Cosmos DB adatainak Azure Blob másolása. A mintákat a következ
   }
 }
 ```
-**Az Azure Blob storage társított szolgáltatásnak:**
+**Az Azure Blob storage-beli társított szolgáltatást:**
 
 ```JSON
 {
@@ -187,11 +186,11 @@ A minta Azure Cosmos DB adatainak Azure Blob másolása. A mintákat a következ
   }
 }
 ```
-**Az Azure Document DB rendszerbe bemeneti adatkészletet:**
+**Az Azure Document DB bemeneti adatkészlet:**
 
-A példa feltételezi, hogy rendelkezik-e egy nevű gyűjtemény **személy** Azure Cosmos DB adatbázisban.
+A példa feltételezi, hogy a gyűjteményt **személy** egy Azure Cosmos DB-adatbázisban.
 
-"External" beállítása: "true", és externalData házirenddel kapcsolatos információk az Azure Data Factory szolgáltatásnak, hogy a tábla külső data factoryval való, és nem egy adat-előállító tevékenység által előállított megadásával.
+Beállítás az "external": "true", és externalData házirend adatait az Azure Data Factory szolgáltatásban, hogy a tábla a data factory a külső, és nem egy adat-előállító tevékenység által előállított megadásával.
 
 ```JSON
 {
@@ -211,9 +210,9 @@ A példa feltételezi, hogy rendelkezik-e egy nevű gyűjtemény **személy** Az
 }
 ```
 
-**Az Azure Blob kimeneti adatkészlet:**
+**Azure blobkimeneti adatkészlet:**
 
-Adatokat egy új blob minden órában az elérési úttal rendelkező a BLOB a megadott dátum és idő órában lépésköz tükröző másolja.
+Adatokat másolja egy új blob minden órában a BLOB szótárral kezdheti az adott dátum/idő óra granularitással az elérési útját.
 
 ```JSON
 {
@@ -236,7 +235,7 @@ Adatokat egy új blob minden órában az elérési úttal rendelkező a BLOB a m
   }
 }
 ```
-A minta JSON-dokumentum a személy gyűjtemény egy Cosmos DB adatbázisban:
+Példa JSON-dokumentumok egy Cosmos DB-adatbázisban a személy gyűjtemény:
 
 ```JSON
 {
@@ -248,7 +247,7 @@ A minta JSON-dokumentum a személy gyűjtemény egy Cosmos DB adatbázisban:
   }
 }
 ```
-Cosmos DB támogatja a JSON-dokumentumok hierarchikus over szintaxis például egy SQL használatával dokumentumok lekérdezését.
+A cosmos DB támogatja a dokumentumok lekérdezését egy SQL-szintaxis típusú hierarchikus JSON-dokumentumokon végzett.
 
 Példa: 
 
@@ -256,7 +255,7 @@ Példa:
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
 ```
 
-A következő adatcsatorna másol adatokat az Azure Cosmos DB adatbázisban a személy gyűjtemény egy Azure-blobot. Része a másolási tevékenység során a bemeneti és kimeneti adatkészletek van megadva.  
+A következő folyamat adatokat másol egy Azure-blobból az Azure Cosmos DB-adatbázisban a személy gyűjteményből. Része a másolási tevékenység a bemeneti és kimeneti adatkészleteket lett megadva.  
 
 ```JSON
 {
@@ -299,18 +298,18 @@ A következő adatcsatorna másol adatokat az Azure Cosmos DB adatbázisban a sz
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Példa: Adatok másolása az Azure Blob az Azure Cosmos DB 
-Az alábbi példa látható:
+## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Példa: Adatok másolása Azure blobból az Azure Cosmos DB-hez 
+Az alábbi példában látható:
 
 1. A társított szolgáltatás típusa [DocumentDb](#azure-documentdb-linked-service-properties).
 2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Bemeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [DocumentDbCollection](#azure-documentdb-dataset-type-properties).
-5. A [csővezeték](data-factory-create-pipelines.md) a másolási tevékenység által használt [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties).
+3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [DocumentDbCollection](#azure-documentdb-dataset-type-properties).
+5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties).
 
-A minta másolja az adatokat az Azure blob az Azure Cosmos-Adatbázishoz. A mintákat a következő szakaszok ismertetik ezeket a mintákat használt JSON-tulajdonságok.
+A minta adatokat másol az Azure blob az Azure Cosmos DB-hez. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 
-**Az Azure Blob storage társított szolgáltatásnak:**
+**Az Azure Blob storage-beli társított szolgáltatást:**
 
 ```JSON
 {
@@ -323,7 +322,7 @@ A minta másolja az adatokat az Azure blob az Azure Cosmos-Adatbázishoz. A mint
   }
 }
 ```
-**A társított szolgáltatásnak Azure Cosmos DB:**
+**Az Azure Cosmos DB-beli társított szolgáltatást:**
 
 ```JSON
 {
@@ -336,7 +335,7 @@ A minta másolja az adatokat az Azure blob az Azure Cosmos-Adatbázishoz. A mint
   }
 }
 ```
-**Az Azure Blob bemeneti adatkészletet:**
+**Azure blobbemeneti adatkészlet:**
 
 ```JSON
 {
@@ -417,7 +416,7 @@ A minta egy "Személy" nevű gyűjtemény másolja az adatokat.
   }
 }
 ```
-A következő adatcsatorna másol adatokat Azure Blob a Cosmos DB a személy gyűjteménynek. Része a másolási tevékenység során a bemeneti és kimeneti adatkészletek van megadva.
+A következő folyamat adatokat másol az Azure-Blobból a személy gyűjteményhez, a Cosmos DB-ben. Része a másolási tevékenység a bemeneti és kimeneti adatkészleteket lett megadva.
 
 ```JSON
 {
@@ -467,7 +466,7 @@ Ha a minta blob bemeneti van, mint
 ```
 1,John,,Doe
 ```
-A kimeneti JSON-t Cosmos DB lesz majd megfelelően:
+A kimenet a Cosmos dB-ben JSON lesz majd megfelelően:
 
 ```JSON
 {
@@ -480,21 +479,21 @@ A kimeneti JSON-t Cosmos DB lesz majd megfelelően:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos-adatbázis egy NoSQL-tároló JSON-dokumentumok, amelyben beágyazott struktúrákat engedélyezett. Az Azure Data Factory lehetővé teszi, hogy a felhasználó keresztül hierarchia jelöléséhez **nestingSeparator**, amely "." Ebben a példában. A elválasztóval, a másolási tevékenység hoz létre a "Name" objektum három gyermekek elemekkel először középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában.
+Azure Cosmos DB a NoSQL-alapú tárolót a JSON-dokumentumok, amelyben beágyazott struktúrák engedélyezettek. Az Azure Data Factory lehetővé teszi, hogy a felhasználó keresztül hierarchia jelölésére **nestingSeparator**, amely "." Ebben a példában. Az elválasztó, a másolási tevékenység hoz létre három gyermeket elem "Name" objektum először, középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában.
 
 ## <a name="appendix"></a>Függelék
-1. **Kérdés:** a másolási tevékenység támogatási frissítés a meglévő rekordok Does?
+1. **Kérdés:** A másolási tevékenység támogatási a meglévő rekordok módosítása nem?
 
-    **Válasz:** nem.
-2. **Kérdés:** hogyan működik az Azure Cosmos DB kezelésére másolatának újrapróbálkozást már másolt rekordok?
+    **Válasz:** Nem.
+2. **Kérdés:** Hogyan foglalkozik az Azure Cosmos DB-példány ismételt már másolt rekordok?
 
-    **Válasz:** ha rögzíti egy "ID" mezőt rendelkezik, és a másolási művelet megkísérli beszúrására ugyanezzel az Azonosítóval rendelkező, a másolási művelet hibát jelez.  
-3. **Kérdés:** nem támogatja a Data Factory [tartományt vagy a kivonat-alapú adatparticionálás](../../cosmos-db/sql-api-partition-data.md)?
+    **Válasz:** Ha a rekordok rendelkezik egy "ID" mezőt, és a másolási művelet próbál beszúrni egy rekord ugyanazzal az azonosítóval, a másolási művelet hibát jelez.  
+3. **Kérdés:** A Data Factory támogatja [tartomány vagy az ujjlenyomat-alapú adatparticionálás](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Válasz:** nem.
-4. **Kérdés:** állítható be egy táblához több Azure Cosmos DB gyűjtemény?
+    **Válasz:** Nem.
+4. **Kérdés:** Meghatározható, hogy a táblázat egynél több Azure Cosmos DB-gyűjtemények?
 
-    **Válasz:** nem. Jelenleg csak egy gyűjteményhez adható meg.
+    **Válasz:** Nem. Jelenleg csak egy gyűjteményhez adható meg.
 
-## <a name="performance-and-tuning"></a>Teljesítmény- és hangolása
-Lásd: [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md) tájékozódhat az kulcsfontosságú szerepet játszik adatátvitelt jelölik a (másolási tevékenység során) az Azure Data Factory és különböző módokon optimalizálhatja azt, hogy hatás teljesítményét.
+## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
+Lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md) megismerheti a kulcsfontosságú szerepet játszik az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre.

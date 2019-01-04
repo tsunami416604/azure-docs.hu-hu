@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: 5dd1926496351f5bbfe8e5b3e4d1e0b68e82d272
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 38f587fc24478beff3ab236207de3ed8a892c915
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283393"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998948"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálási és horizontális skálázás az Azure Cosmos DB-ben
 
 Ez a cikk ismerteti az Azure Cosmos DB és a méretezést, és a particionálás vonatkozó ajánlott eljárások a fizikai és logikai partíció. 
 
-## <a name="logical-partitions"></a>Logikai partíció
+## <a name="logical-partitions"></a>Logikai partíciók
 
 A logikai partíció ugyanazzal a partíciókulccsal rendelkező egy tételcsoport áll. Vegyük példaként egy tárolót, ha az összes elemet tartalmaznak egy `City` tulajdonság, majd használhatja `City` tároló partíciókulcsként. Csoportok adott értékek az elemek a `City` például a "London", "Párizs", "NYC" stb. egy külön logikai partícióba képezik.
 
@@ -29,7 +29,7 @@ A tárolóba új elemek hozzáadásakor, vagy ha a tárolóban kiosztott átvite
 
 ## <a name="physical-partitions"></a>Fizikai partíciók
 
-Az adatok és az átviteli sebességet a nagy számú logikai partíciók közötti elosztásával méretezett egy Cosmos-tárolót. Belső használatra vannak rendelve egy vagy több logikai partíciót egy **erőforrás-partíció** , más néven a replikakészlethez replikák készlete áll. Minden egyes replikakészlethez üzemelteti a Cosmos-adatbázismotor egy példányához. A replikakészlet révén a tartós, magas rendelkezésre állású és egységes erőforrás-partíció tárolja az adatokat. Erőforrás-partíció támogatja egy rögzített, maximális összege a tárolás és a fenntartott egységek. Minden egyes replikának, amely tartalmazza az erőforrás-partíció örökli a tárhelykvótát. És erőforrás-partíció összes replikával együttesen támogatja az erőforrás-partíció kiosztott átviteli. Az alábbi képen látható, hogyan logikai partíciók globálisan elosztott fizikai partíciókra van leképezve:
+Az adatok és az átviteli sebességet a nagy számú logikai partíciók közötti elosztásával méretezett egy Cosmos-tárolót. Belső használatra vannak rendelve egy vagy több logikai partíciót egy **fizikai partíciók** , más néven a replikakészlethez replikák készlete áll. Minden egyes replikakészlethez üzemelteti a Cosmos-adatbázismotor egy példányához. A replikakészlet lehetővé teszi a fizikai partíciók tartós, magas rendelkezésre állású és egységes tárolja az adatokat. Egy fizikai partíciónak támogatja egy rögzített, maximális összege a tárolás és a fenntartott egységek. Minden egyes replikának, amely magában foglalja a fizikai partíciók örökli a tárhelykvótát. És a egy fizikai partíciónak az összes replika együttesen támogatja a fizikai partíciónként kiosztott átviteli. Az alábbi képen látható, hogyan logikai partíciók globálisan elosztott fizikai partíciókra van leképezve:
 
 ![Az Azure Cosmos DB particionálási](./media/partition-data/logical-partitions.png)
 

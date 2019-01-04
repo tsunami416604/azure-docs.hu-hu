@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: fc2b5a5badcf38f7bc94a876f9f0a21af4f558b7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812051"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015474"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetria környezet: Application Insights-adatmodell
 
@@ -84,7 +84,7 @@ Maximális hossz: 64
 
 Névtelen felhasználó azonosítója. A végfelhasználó számára az alkalmazás jelöli. Telemetriai adatokat a szolgáltatásból küldött, a felhasználói környezet tárgya a felhasználó által kezdeményezett a műveletet a szolgáltatásban.
 
-[Mintavételi](../../application-insights/app-insights-sampling.md) minimalizálására gyűjtött telemetria módszerek egyike. Bármelyik mintát és leskálázása a korrelált telemetria megkísérli mintavételezési algoritmus használhatóvá válik. Névtelen felhasználói azonosítót használja a pontszám generációs mintavétel. Így a névtelen felhasználói azonosító elég véletlenszerű értéknek kell lennie. 
+[Mintavételi](../../azure-monitor/app/sampling.md) minimalizálására gyűjtött telemetria módszerek egyike. Bármelyik mintát és leskálázása a korrelált telemetria megkísérli mintavételezési algoritmus használhatóvá válik. Névtelen felhasználói azonosítót használja a pontszám generációs mintavétel. Így a névtelen felhasználói azonosító elég véletlenszerű értéknek kell lennie. 
 
 Névtelen felhasználó azonosítója használja a felhasználónév tárolására, a mező egy való visszaélés. Használja a hitelesített felhasználó azonosítója.
 

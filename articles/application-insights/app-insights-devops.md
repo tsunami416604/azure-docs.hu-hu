@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9c3f9018965908ae065cedb63149190080d7f07
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1a160cd6d81ab7cb760a85ee7cbdbedf55c17167
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970236"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998233"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -156,7 +156,7 @@ Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat
 ## <a name="but-what-about"></a>De mi a helyzet...?
 * [Adatvédelmi és tárolási](../azure-monitor/app/data-retention-privacy.md) – a telemetria másolatok Azure kiszolgálók védelmének biztosításához.
 * Teljesítmény – a hatás az, nagyon alacsony. Telemetria a kötegelni.
-* [Díjszabás](app-insights-pricing.md) – ingyenes kezdheti, és, hogy továbbra is fennáll, kevés közben.
+* [Díjszabás](../azure-monitor/app/pricing.md) – ingyenes kezdheti, és, hogy továbbra is fennáll, kevés közben.
 
 
 ## <a name="video"></a>Videó
@@ -167,6 +167,6 @@ Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat
 Ismerkedés az Application Insights ördöngösség. A főbb lehetőségek közül választhat:
 
 * Alakítsa ki egy már futó webalkalmazás. Ez lehetővé teszi a beépített teljesítményfigyelő telemetriai adatokat. Érhető el [Java](../azure-monitor/app/java-live.md) és [IIS-kiszolgálókkal](../azure-monitor/app/monitor-performance-live-website-now.md), és emellett a [Azure App Service](app-insights-overview.md).
-* Alakítsa ki a projektet a fejlesztés során. Ehhez [ASP.NET](../azure-monitor/app/asp-net.md) vagy [Java](../azure-monitor/app/java-get-started.md) alkalmazások esetében, valamint [Node.js](app-insights-nodejs.md) és a egy sereg [más típusú](app-insights-platforms.md). 
+* Alakítsa ki a projektet a fejlesztés során. Ehhez [ASP.NET](../azure-monitor/app/asp-net.md) vagy [Java](../azure-monitor/app/java-get-started.md) alkalmazások esetében, valamint [Node.js](../azure-monitor/app/nodejs.md) és a egy sereg [más típusú](../azure-monitor/app/platforms.md). 
 * Eszköz [bármilyen weblapon](../azure-monitor/app/javascript.md) rövid kódtöredék hozzáadásával.
 

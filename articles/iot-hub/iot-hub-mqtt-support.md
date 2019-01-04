@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 9df2e8762d546e6115dc1205548e927cfee7bb60
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1214df922e8e656ba2ff566571d878b0031fea9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341880"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000257"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
 
@@ -279,11 +279,12 @@ Ha egy eszköz csatlakozik, az IoT Hub értesítéseket küld a témakör `$ioth
 ```json
 {
     "telemetrySendFrequency": "5m",
-    "route": null
+    "route": null,
+    "$version": 8
 }
 ```
 
-Tulajdonság frissítései, mint `null` érték azt jelenti, hogy a JSON-objektum tag törlése folyamatban van.
+Tulajdonság frissítései, mint `null` érték azt jelenti, hogy a JSON-objektum tag törlése folyamatban van. Továbbá vegye figyelembe, hogy `$version` azt jelzi, hogy az új verziót az ikereszköz kívánt tulajdonságait szakaszának.
 
 > [!IMPORTANT]
 > Az IoT Hub értesítéseket hoz létre, csak ha az eszköz van csatlakoztatva. Ügyeljen arra, hogy végrehajtja a [eszköz újrakapcsolódási folyamat] [ lnk-devguide-twin-reconnection] tartani a kívánt tulajdonságok, szinkronizálja az IoT Hub és az eszköz alkalmazás között.

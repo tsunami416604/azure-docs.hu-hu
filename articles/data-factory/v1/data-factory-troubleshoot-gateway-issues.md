@@ -1,6 +1,6 @@
 ---
-title: Az adatkezelési átjáró elhárítása |} Microsoft Docs
-description: Tippek az adatkezelési átjáró kapcsolatos problémák elhárítása érdekében.
+title: Az adatkezelési átjáró hibáinak elhárítása |} A Microsoft Docs
+description: Tippek a Data Management Gateway kapcsolatos problémák elhárítása.
 services: data-factory
 author: nabhishek
 manager: craigg
@@ -8,68 +8,67 @@ ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047564"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022538"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
-Ez a cikk tájékoztatást nyújt az adatkezelési átjáró használatával kapcsolatos hibák elhárításához.
+Ez a cikk információkat biztosít az adatkezelési átjáró segítségével kapcsolatos hibák elhárítása.
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [önállóan üzemel az adat-előállítóban integrációs futásidejű](../create-self-hosted-integration-runtime.md).
+> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [saját üzemeltetésű integrációs modul az adat-előállító](../create-self-hosted-integration-runtime.md).
 
-Tekintse meg a [az adatkezelési átjáró](data-factory-data-management-gateway.md) cikk az átjáró kapcsolatos részletes információkat. Tekintse meg a [helyezze át az adatokat a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) áthelyezése adatok egy helyi SQL Server-adatbázis a Microsoft Azure Blob storage az átjáró használatával kapcsolatos általános bemutatóért cikkében.
+Tekintse meg a [adatkezelési átjáró](data-factory-data-management-gateway.md) ismertető cikkben talál részletes információt az átjárót. Tekintse meg a [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) bemutató cikk, amely adatokat helyez át egy helyszíni SQL Server-adatbázis a Microsoft Azure Blob storage az átjáró használatával.
 
-## <a name="failed-to-install-or-register-gateway"></a>Nem sikerült telepíteni vagy az átjáró regisztrálása
+## <a name="failed-to-install-or-register-gateway"></a>Nem sikerült telepíteni vagy átjáró regisztrálása
 ### <a name="1-problem"></a>1. Probléma
-Megjelenik a hibaüzenet, amikor telepítése és regisztrálása az átjáró, az átjáró telepítési fájl letöltése során.
+Ez a hibaüzenet, ha telepítése és regisztrálása az átjáró, az átjáró telepítőfájl letöltése közben látni.
 
 `Unable to connect to the remote server". Please check your local settings (Error Code: 10003).`
 
 #### <a name="cause"></a>Ok
-A gép, amelyen az átjáró telepítéséhez kívánt letöltőközpontból az átjáró legújabb telepítési fájlját a hálózati probléma miatt nem sikerült.
+A gép, amelyen az átjáró telepítése kívánt hálózati hiba következtében a letöltőközpontból töltheti le az átjáró legújabb telepítési fájlját nem sikerült.
 
 #### <a name="resolution"></a>Megoldás:
-Ellenőrizze a tűzfal proxykiszolgáló beállításait megtekintéséhez, hogy a beállítások tiltsák le a hálózati kapcsolat a számítógépről a [letöltőközpontból](https://download.microsoft.com/), frissítse a beállításokat, és ennek megfelelően.
+Ellenőrizze a proxy server tűzfalbeállításokat megtekintéséhez, hogy a beállítások letiltása a hálózati kapcsolat a számítógépről a [letöltőközpontból](https://download.microsoft.com/), frissítse a beállításokat, és ennek megfelelően.
 
-Azt is megteheti, letöltheti a legújabb átjárót telepítőfájlja a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) más számítógépeken, amelyek hozzáférhetnek a letöltőközpontból. A telepítőfájl másolja az átjáró gazdaszámítógépet, majd futtassa azt manuálisan kell telepíteni, és frissítheti az átjárót.
+Másik lehetőségként letöltheti a telepítőfájlt a legújabb átjáróhoz a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) más gépeken, amelyek hozzáférhetnek a letöltőközpontból. A telepítőfájl átmásolása az átjáró gazdaszámítógépet, majd manuálisan kell telepíteni és frissíteni az átjáró futtatható.
 
 ### <a name="2-problem"></a>2. Probléma
-Ezt a hibaüzenetet látja, ha telepít egy átjárót kattintva végrehajtani kívánt **telepíthető közvetlenül a számítógépen** az Azure portálon.
+Ezt a hibát látja, amikor az átjáró telepítéséhez kattintson a végrehajtani kívánt **telepítheti közvetlenül a számítógépre** az Azure Portalon.
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
 
 #### <a name="cause"></a>Ok
-Átjáró már telepítve van a számítógépen.
+Az átjáró már telepítve van a gépen.
 
 #### <a name="resolution"></a>Megoldás:
-Távolítsa el a gépen a jelenlegi átjárót, majd kattintson a **telepíthető közvetlenül a számítógépen** újra hivatkozásra.
+Távolítsa el a meglévő átjárót a gépen, majd kattintson a **telepítheti közvetlenül a számítógépre** újra hivatkozásra.
 
 ### <a name="3-problem"></a>3. Probléma
-Ez a hiba jelenhet meg, amikor egy új átjáró regisztrálása.
+Előfordulhat, hogy ezt a hibaüzenetet, ha új átjáró regisztrálása.
 
 `Error: The gateway has encountered an error during registration.`
 
 #### <a name="cause"></a>Ok
-Ez az üzenet a következő okok valamelyike láthatja:
+Ez az üzenet a következő okok valamelyike jelenhetnek meg:
 
-* Az átjáró kulcsát formátuma érvénytelen.
-* Az átjáró kulcsát érvénytelenné vált.
-* Az átjáró kulcsát újra lett létrehozza a rendszer a portálról.  
+* Az átjáró kulcs formátuma érvénytelen.
+* Az átjáró kulcs érvénytelenné vált.
+* Az átjáró kulcs a portálról rendelkezik újra lett létrehozva.  
 
 #### <a name="resolution"></a>Megoldás:
-Győződjön meg arról, hogy használ-e a megfelelő átjárókulcsot, amit a portálon. Ha szükséges, a kulcs újragenerálása és a kulcs segítségével regisztrálja az átjárót.
+Győződjön meg arról, hogy használ-e a megfelelő átjáró kulcsot a portálról. Ha szükséges, újragenerálja a kulcsot, és a kulcs használatával regisztrálnia kell az átjárót.
 
 ### <a name="4-problem"></a>4. Probléma
-Átjáró regisztrálásakor még a következő hibaüzenet jelenhet meg.
+Láthatja a következő hibaüzenetet kapja, már regisztrálhatja az átjárót.
 
 `Error: The content or format of the gateway key "{gatewayKey}" is invalid, please go to azure portal to create one new gateway or regenerate the gateway key.`
 
@@ -78,211 +77,211 @@ Győződjön meg arról, hogy használ-e a megfelelő átjárókulcsot, amit a p
 ![Tartalom és a kulcs formátuma érvénytelen](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
 
 #### <a name="cause"></a>Ok
-A tartalom vagy a bemeneti átjárókulcs formátuma nem megfelelő. Egyik oka lehet, hogy a kulcsot csak egy részét átmásolva a portálon, vagy érvénytelen kulcsot használ.
+A tartalma vagy a bemeneti átjáró kulcs formátuma helytelen. Az okok egyike miatt lehet, hogy csak egy része a kulcsot a portálról kimásolt, vagy érvénytelen kulcsot használ.
 
 #### <a name="resolution"></a>Megoldás:
-Hozzon létre egy átjáró kulcsot a portálon, és használja a Másolás gombra a teljes kulcsot másolja. Illessze be az ablakot, hogy regisztrálja az átjárót majd.
+Hozzon létre egy átjáró kulcsot a portálon, és a másolási gomb használatával másolja a teljes kulcsot. Majd illessze be az ablakot, hogy regisztrálja az átjárót.
 
 ### <a name="5-problem"></a>5. Probléma
-Átjáró regisztrálásakor még a következő hibaüzenet jelenhet meg.
+Láthatja a következő hibaüzenetet kapja, már regisztrálhatja az átjárót.
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Átjáró kulcsa érvénytelen vagy üres:](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Átjáró kulcsa érvénytelen vagy nincs megadva](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Ok
-Az átjáró kulcsát újra lett létrehozva. vagy az átjáró törölve lett az Azure portálon. Akkor is előfordulhat, ha az adatkezelési átjáró beállítása nincs legújabb.
+Az átjáró kulcs újbóli létrehozása rendelkezik lett, vagy az átjáró törölve lett az Azure Portalon. Azt is történhet, ha a Data Management Gateway beállítása nem a legutóbbi.
 
 #### <a name="resolution"></a>Megoldás:
-Ellenőrizze, hogy ha a telepítő az adatkezelési átjáró legújabb verziója, a Microsoft a legújabb verzió található [letöltőközpontból](https://go.microsoft.com/fwlink/p/?LinkId=271260).
+Ellenőrizze, hogy ha az adatkezelési átjárót a telepítő legújabb verziója, Észreveheti, hogy a legújabb verziót a Microsoft [letöltőközpontból](https://go.microsoft.com/fwlink/p/?LinkId=271260).
 
-Ha a beállítás jelenlegi / legújabb és átjáró még létezik a portálon, újragenerálja az átjáró kulcsát az Azure-portálon használ a Másolás gombra a teljes kulcsot másolja, és majd illessze be az ablakot, hogy regisztrálja az átjárót. Ellenkező esetben hozza létre újra az átjárót, és kezdje újra a folyamatot.
+Ha a beállítás jelenlegi / legújabb és átjáró még létezik-e a portálon, az Azure Portalon, az átjáró kulcsának újragenerálása és a másolási gomb használatával másolja a teljes kulcsot, és majd illessze be az ablakot, hogy regisztrálja az átjárót. Ellenkező esetben hozza létre újra az átjárót, és kezdje elölről.
 
 ### <a name="6-problem"></a>6. Probléma
-Átjáró regisztrálásakor még a következő hibaüzenet jelenhet meg.
+Láthatja a következő hibaüzenetet kapja, már regisztrálhatja az átjárót.
 
 `Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
 
-![Átjáró kulcsa érvénytelen vagy üres:](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
+![Átjáró kulcsa érvénytelen vagy nincs megadva](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
 #### <a name="cause"></a>Ok
 Ez a hiba akkor fordulhat elő, mert az átjáró törölve lett, vagy a kapcsolódó átjárókulcs újra lett létrehozva.
 
 #### <a name="resolution"></a>Megoldás:
-Ha az átjáró törölve lett, hozza létre újból az átjárót a portál, kattintson a **regisztrálása**, a kulcs másolása a portálról, illessze be és próbálja meg regisztrálni az átjárót.
+Ha az átjáró törölve lett, hozza létre újból az átjárót a portálon, kattintson a **regisztrálása**, másolja a kulcsot a portálról, illessze be és próbálja meg regisztrálni az átjárót.
 
-Ha az átjáró még létezik, de a kulcsot újra lett létrehozva., az új kulcs segítségével regisztrálja az átjárót. Ha még nem rendelkezik a kulcsot, újragenerálja a kulcsot újra a portálról.
+Ha az átjáró továbbra is létezik, de rendelkezik lett újragenerálta a kulcsot, az új kulcs használatával regisztrálnia kell az átjárót. Ha a kulcs nem rendelkezik, újragenerálja a kulcsot a portálról újra.
 
 ### <a name="7-problem"></a>7. Probléma
-Átjáró regisztrálásakor van szükség lehet a tanúsítvány elérési útja és a jelszó megadását.
+Az átjáró regisztráció során szüksége lehet adja meg a tanúsítvány elérési útja és a jelszavát.
 
 ![Adja meg a tanúsítvány](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Ok
-Az átjáró más gépeken előtt regisztrálva van. Átjáró, a kezdeti regisztráció során egy titkosítási tanúsítvány nincs hozzárendelve az átjárót. A tanúsítvány lehet önálló az átjáró által generált, vagy a felhasználó által megadott.  Ezzel a tanúsítvánnyal az adattár (társított szolgáltatás) hitelesítő adatok titkosításához.  
+Az átjáró regisztrálása előtt más gépeken. Egy átjáró, a kezdeti regisztráció során egy titkosítási tanúsítvány nincs hozzárendelve az átjárót. A tanúsítvány az átjáró által önállóan létrehozott vagy a felhasználó által megadott.  Ezt a tanúsítványt az adattár (társított szolgáltatás) hitelesítő adatok titkosításához használatos.  
 
 ![Tanúsítvány exportálása](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
 
-Az átjáró másik gazdaszámítógépet visszaállításakor a regisztrációs varázsló megkérdezi, a tanúsítvány visszafejtése a korábban a tanúsítvánnyal titkosított hitelesítő adatokat.  Ez a tanúsítvány nélkül nem tudja visszafejteni a hitelesítő adatokat az új átjáró, és az új átjáró társított későbbi másolási tevékenység végrehajtások meghiúsul.  
+Az átjáró egy másik gazdagépen visszaállításakor a regisztrációs varázsló kéri, a tanúsítvány visszafejtése a tanúsítvánnyal a korábban titkosított hitelesítő adatokat.  Ez a tanúsítvány nélkül a hitelesítő adatokat nem lehet visszafejteni az új átjárót, és az új átjáró társított későbbi másolási tevékenység-végrehajtások sikertelenek lesznek.  
 
 #### <a name="resolution"></a>Megoldás:
-Ha exportálta a hitelesítési tanúsítványt az eredeti átjáró gépen használatával a **exportálása** gombra a **beállítások** az adatkezelési átjáró konfigurációkezelőjének lapon, a tanúsítvány használatára itt.
+Ha rendelkezik exportált hitelesítőadat-tanúsítványa az eredeti átjárót tartalmazó számítógépen használatával a **exportálása** gombot a **beállítások** a Data Management Gateway Configuration Manager lapon, a tanúsítvány használatára itt.
 
-Ebben a szakaszban nem hagyható ki, amikor egy átjáró helyreállítása. Ha a tanúsítvány hiányzik, törölje az átjárót a portálról, és hozza létre az új átjáró szüksége.  Emellett frissítse az átjáró által ismét be kell írni a hitelesítő adataik kapcsolódó összes társított szolgáltatások.
+Ebben a szakaszban az átjáró helyreállításakor nem hagyhatja ki. Ha a tanúsítvány hiányzik, törölje az átjárót a portálon, és a egy új átjárót hozhat újra létre szüksége.  Emellett frissítse az összes társított szolgáltatás által kell újra megadniuk hitelesítő adataikat az átjáróhoz kapcsolódó.
 
 ### <a name="8-problem"></a>8. Probléma
-A következő hibaüzenet jelenhet meg.
+Láthatja, hogy a következő hibaüzenetet kapja.
 
 `Error: The remote server returned an error: (407) Proxy Authentication Required.`
 
 #### <a name="cause"></a>Ok
-Ez a hiba történik, ha az átjáró egy olyan környezetben, szükséges a HTTP-proxy elérni az internetes erőforrásokhoz, vagy a proxy hitelesítési jelszó megváltozik, de nem frissül megfelelően a átjáróban.
+Ez a hiba akkor fordul elő, amikor az átjáró egy olyan környezetben, szükséges egy HTTP-proxy el az internetes erőforrások, vagy a proxy hitelesítési jelszó megváltozik, de nem frissül megfelelően működik az átjáróban.
 
 #### <a name="resolution"></a>Megoldás:
-Kövesse az utasításokat a [Proxy server szempontjai](#proxy-server-considerations) Ez a szakasz a következő cikket, és konfigurálja a proxybeállításokat az adatkezelési átjáró konfigurációkezelőjének.
+Kövesse az utasításokat a [Proxy server szempontjai](#proxy-server-considerations) szakaszában című cikket, és konfigurálja a proxybeállításokat a Data Management Gateway Configuration Managerrel.
 
-## <a name="gateway-is-online-with-limited-functionality"></a>Átjáró korlátozott funkciójú online állapotban
+## <a name="gateway-is-online-with-limited-functionality"></a>Átjáró korlátozott funkciókkal online állapotban
 ### <a name="1-problem"></a>1. Probléma
-Az átjáró állapotának online, az korlátozott funkciókkal láthatja.
+Az átjáró állapotának, online, korlátozott funkciókkal láthatja.
 
 #### <a name="cause"></a>Ok
-Megjelenik az átjáró állapotának online korlátozott szolgáltatásokkal a következő okok valamelyike:
+Megjelenik az átjáró állapotának online korlátozott funkciókkal a következő okok valamelyike:
 
-* Átjáró nem tud kapcsolódni a felhőalapú szolgáltatás Azure Service Buson keresztül.
-* A felhőalapú szolgáltatás nem tud kapcsolódni a Service Buson keresztül átjáró.
+* Átjáró nem tud csatlakozni a felhőalapú szolgáltatás az Azure Service Buson keresztül.
+* A felhőalapú szolgáltatás nem tud kapcsolódni a gateway Service Buson keresztül.
 
-Ha az átjáró online korlátozott szolgáltatásokkal, nem feltétlenül a Data Factory másolása varázsló használatával hozzon létre az adatok másolása, vagy a helyszíni adattárolókhoz adatok folyamatok. A probléma megoldásához használhatja Data Factory Editor a portálon, a Visual Studio vagy az Azure PowerShell.
+Ha az átjáró online korlátozott funkciókkal, nem feltétlenül tudja használni a Data Factory Copy varázslót, vagy a helyszíni adattárakból származó adatok másolása az adatfolyamatok létrehozására. Áthidaló megoldásként használhatja a portal, a Visual Studio vagy az Azure PowerShell-lel a Data Factory Editor.
 
 #### <a name="resolution"></a>Megoldás:
-A probléma feloldása (online korlátozott funkciójú) azon alapul, hogy az átjáró nem tud csatlakozni a felhőalapú szolgáltatás vagy a más módon. A következő szakaszokban ezek a megoldások.
+A probléma megoldási (online korlátozott funkciókkal) alapuló e az átjáró nem tud csatlakozni a felhőszolgáltatáshoz, vagy a más módon. A következő szakaszok ezek a megoldások.
 
 ### <a name="2-problem"></a>2. Probléma
-Az alábbi hibaüzenet látható.
+Az alábbi hibát látja.
 
 `Error: Gateway cannot connect to cloud service through service bus`
 
-![Átjáró felhőalapú szolgáltatás nem tud kapcsolódni.](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+![Átjáró nem tud csatlakozni a felhőszolgáltatáshoz](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Ok
-Átjáró nem tud kapcsolódni a Service Buson keresztül a felhőalapú szolgáltatáshoz.
+Átjáró nem tud csatlakozni a felhőszolgáltatáshoz a Service Buson keresztül.
 
 #### <a name="resolution"></a>Megoldás:
-Kövesse az alábbi lépéseket követve az átjáró online:
+Kövesse az alábbi lépéseket az átjáró online állapotba:
 
-1. IP-címet az átjáró számítógépe és a vállalati tűzfalon kimenő szabályok engedélyezése. Található IP-címek a Windows Eseménynapló (ID == 401): kísérlet történt olyan módon, a hozzáférési engedélyeket XX tiltott hozzáférés. A(Z) XX. A(Z) XX. XX:9350.
-* Proxybeállítások konfigurálása az átjárón. Tekintse meg a [Proxy server szempontjai](#proxy-server-considerations) című szakaszban talál információt.
-* Engedélyezze a kimenő portok 5671 és 9350 – 9354-es mindkét a Windows tűzfal az átjáró gépen és a vállalati tűzfalon. Tekintse meg a [portok és a tűzfalon](#ports-and-firewall) című szakaszban talál információt. Ez a lépés nem kötelező, de a teljesítmény okokból ajánlott.
+1. IP-címének engedélyezéséhez az átjárót tartalmazó számítógépen, és a vállalati tűzfalon a kimenő szabályok. Annak IP-címek a Windows Eseménynapló (azonosítója == 401-es): Kísérlet történt olyan módon, a hozzáférési engedélyeket XX tiltott hozzáférés. XX. XX. XX:9350.
+* Proxybeállítások konfigurálása az átjárón. Tekintse meg a [Proxy server szempontjai](#proxy-server-considerations) című szakasz részletezi.
+* Engedélyezze a kimenő 5671 és 9350 – 9354-es mind a Windows tűzfal az átjárót tartalmazó számítógépen és a vállalati tűzfalon. Tekintse meg a [portokat és a tűzfal](#ports-and-firewall) című szakasz részletezi. Ez a lépés nem kötelező, de ajánlott kiegészítője teljesítményének figyelembe veszi.
 
 ### <a name="3-problem"></a>3. Probléma
-Az alábbi hibaüzenet látható.
+Az alábbi hibát látja.
 
 `Error: Cloud service cannot connect to gateway through service bus.`
 
 #### <a name="cause"></a>Ok
-Egy átmeneti hiba történt a hálózati kapcsolatot.
+Átmeneti hiba történt a hálózati kapcsolatot.
 
 #### <a name="resolution"></a>Megoldás:
-Kövesse az alábbi lépéseket követve az átjáró online:
+Kövesse az alábbi lépéseket az átjáró online állapotba:
 
-1. Várjon néhány percig, a kapcsolatot a rendszer automatikusan helyreállítja a eltűnt a hiba esetén.
-* Ha a probléma továbbra is fennáll, indítsa újra az átjáró szolgáltatást.
+1. Várjon néhány percet, a kapcsolat a rendszer automatikusan helyreállítja a eltűnt a hiba esetén.
+* Ha a hiba továbbra is fennáll, indítsa újra az átjárószolgáltatást.
 
-## <a name="failed-to-author-linked-service"></a>Nem sikerült a társított szolgáltatás létrehozásához
+## <a name="failed-to-author-linked-service"></a>Nem sikerült létrehozni a társított szolgáltatás
 ### <a name="problem"></a>Probléma
-Ez a hiba jelenhet meg a portálon hitelesítőadat-kezelő segítségével adjon meg egy új társított szolgáltatás hitelesítő adatait, vagy egy meglévő kapcsolt szolgáltatás hitelesítő adatait megkísérlésekor.
+Előfordulhat, hogy ezt a hibaüzenetet a portálon a hitelesítőadat-kezelő használatával adjon meg egy új társított szolgáltatás hitelesítő adatait, vagy egy meglévő társított szolgáltatás hitelesítő adatainak frissítése közben.
 
 `Error: The data store '<Server>/<Database>' cannot be reached. Check connection settings for the data source.`
 
-Amikor megjelenik ez a hiba, a beállítások lapon az adatkezelési átjáró konfigurációkezelőjének nézhet ki például az alábbi képernyőfelvételen.
+Ha ezt a hibát látja, a beállítások lapon Data Management Gateway Configuration Manager a következő képernyőképhez hasonlóan nézhet ki.
 
 ![Adatbázis nem érhető el](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>Ok
-Az SSL-tanúsítvány előfordulhat, hogy már megszakadt az átjáró számítógépén. Az átjáró-számítógép nem tudja betölteni a jelenleg használt tanúsítvány az SSL-titkosítást. Az eseménynaplóban, az alábbihoz hasonló hibaüzenetet is megjelenhet.
+Az SSL-tanúsítvány előfordulhat, hogy már megszakadt az átjárót tartalmazó számítógépen. Az átjáró-számítógép nem tudja betölteni a jelenleg használt tanúsítványt az SSL-titkosítást. Az eseménynaplóban az alábbihoz hasonló hibaüzenetet is megjelenhet.
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
 #### <a name="resolution"></a>Megoldás:
 Kövesse az alábbi lépéseket a probléma megoldásához:
 
-1. Indítsa el az adatkezelési átjáró Konfigurációkezelőjében.
+1. Indítsa el a Data Management Gateway Configuration Manager.
 2. Váltson a **Settings** (Beállítások) lapra.  
-3. Kattintson a **módosítása** gombra kattintva módosíthatja az SSL-tanúsítvány.
+3. Kattintson a **módosítása** gombra kattintva módosíthatja az SSL-tanúsítványt.
 
    ![Módosítás tanúsítvány gombra](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. Jelöljön ki új tanúsítványt, az SSL-tanúsítvány. Bármely Ön által létrehozott SSL-tanúsítvány vagy bármely szervezeti is használhatja.
+4. Válasszon egy új tanúsítványt SSL-tanúsítványt. Bármely Ön által létrehozott SSL-tanúsítvány vagy bármely szervezet is használhatja.
 
    ![Adja meg a tanúsítvány](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
-## <a name="copy-activity-fails"></a>Másolási tevékenység sikertelen lesz.
+## <a name="copy-activity-fails"></a>Másolási tevékenység sikertelen
 ### <a name="problem"></a>Probléma
-Bizonyára észrevette, hogy a következő "UserErrorFailedToConnectToSqlserver" hiba a portál folyamat beállítása után.
+A következő "UserErrorFailedToConnectToSqlserver" hiba előfordulhat, hogy figyelje meg, miután beállította egy folyamatot a portálon.
 
 `Error: Copy activity encountered a user error: ErrorCode=UserErrorFailedToConnectToSqlServer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server`
 
 #### <a name="cause"></a>Ok
-Ez akkor fordulhat elő különböző okokból, és a megoldás ennek megfelelően változik.
+Ez különböző okok miatt fordulhat elő, és kockázatcsökkentési ennek megfelelően változik.
 
 #### <a name="resolution"></a>Megoldás:
-Engedélyezi az kimenő TCP-kapcsolatok az adatkezelési átjáró ügyféloldali TCP/1433-as porton keresztül egy SQL-adatbázishoz szeretne csatlakozni.
+Kimenő TCP-kapcsolat engedélyezése az adatkezelési átjáró ügyféloldalon TCP/1433-as porton keresztül SQL Database-adatbázishoz való csatlakozás előtt.
 
-Ha a céladatbázis Azure SQL-adatbázis, ellenőrizze az SQL-kiszolgáló a tűzfal beállításai Azure is.
+Ha a céladatbázis egy Azure SQL database, ellenőrizze az SQL Server Tűzfalbeállításaiban az Azure-hoz is.
 
-A következő részben a helyszíni adattárolóihoz létrehozott kapcsolat ellenőrzéséhez.
+A következő részben tesztelje a kapcsolatot a helyszíni adattárban.
 
-## <a name="data-store-connection-or-driver-related-errors"></a>Az adattároló csatlakozási vagy kapcsolatos hibák
-Ha adatok tárolásához a kapcsolódáshoz vagy az illesztőprogram-kapcsolatos hibákat, kövesse az alábbi lépéseket:
+## <a name="data-store-connection-or-driver-related-errors"></a>Az adattároló kapcsolat vagy illesztőprogram-kapcsolatos hibák
+Ha kapcsolat vagy illesztőprogram kapcsolatos hibákat tárolt adatokat látja, hajtsa végre az alábbi lépéseket:
 
-1. Indítsa el az adatkezelési átjáró Konfigurációkezelőjét az átjárót működtető gépen.
-2. Váltás a **diagnosztika** fülre.
-3. A **kapcsolat tesztelése**, az átjáró csoport értékek hozzáadásához.
-4. Kattintson a **teszt** megjelenítéséhez, ha csatlakozhat a helyszíni adatforráshoz az átjárót működtető gépen a kapcsolati adatokat, és a hitelesítő adatok használatával. Amennyiben a kapcsolat tesztelése az illesztő telepítése után is sikertelen, indítsa újra az átjárót, hogy az érvényesítse a legutóbbi módosítást.
+1. Indítsa el a Data Management Gateway Configuration Manager az átjárót tartalmazó számítógépen.
+2. Váltson a **diagnosztikai** fülre.
+3. A **kapcsolat tesztelése**, adja hozzá az átjáró értékeit.
+4. Kattintson a **teszt** megtekintheti, ha csatlakozhat a helyszíni adatforráshoz az átjárót tartalmazó számítógépen a kapcsolati adatokat és hitelesítő adatok használatával. Amennyiben a kapcsolat tesztelése az illesztő telepítése után is sikertelen, indítsa újra az átjárót, hogy az érvényesítse a legutóbbi módosítást.
 
-![Kapcsolat tesztelése a Diagnosztika lap](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
+![Diagnosztika lap a kapcsolat tesztelése](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
-## <a name="gateway-logs"></a>Átjáró naplói
-### <a name="send-gateway-logs-to-microsoft"></a>Átjáró naplókat küldeni a Microsoftnak
-Amikor kapcsolatba lép a Microsoft Support átjáró problémák hibaelhárításával kapcsolatos, a program kérheti megosztani az átjáró naplói. Az átjáró számára készült kötelező átjáró naplók és a két gombra történő kattintás az adatkezelési átjáró konfigurációkezelőjének is megoszthatja.    
+## <a name="gateway-logs"></a>Átjárónaplók
+### <a name="send-gateway-logs-to-microsoft"></a>Átjáró-naplók küldése a Microsoftnak
+Amikor kapcsolatba lép a Microsoft Support segítség a hibaelhárítási kérdéseket, előfordulhat, hogy megkérdezi, hogy az átjáró naplóit megosztásához. Az átjáró kiadása szükséges átjárónaplók két gombra kattintással a Data Management Gateway Configuration Manager megoszthatja.    
 
-1. Váltás a **diagnosztika** az adatkezelési átjáró konfigurációkezelőjének fülre.
+1. Váltson a **diagnosztikai** fülre a Data Management Gateway Configuration Managerben.
 
-    ![Felügyeleti átjáró Diagnostics lapon](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
+    ![Data Management Gateway-Diagnosztika lap](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
 2. Kattintson a **naplók küldése** a következő párbeszédpanel megjelenítéséhez.
 
-    ![Felügyeleti átjáró küldése adatnaplók](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. (Választható) Kattintson a **naplók megtekintése** áttekintéséhez naplózza az esemény viewer.
-4. (Választható) Kattintson a **adatvédelmi** áttekintése a Microsoft web services adatvédelmi nyilatkozatát.
-5. Ha elégedett a feltöltés, kattintson a kívánt esetén **naplók küldése** ténylegesen a naplók az elmúlt hét napban a Microsoftnak küldendő hibaelhárításhoz. Az alábbi képernyőfelvételen látható módon kell megjelennie a küldési-naplók művelet állapotát.
+    ![Data Management Gateway küldhet naplók](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
+3. (Nem kötelező) Kattintson a **megtekinthetők a naplófájlok** tekintse át a naplók az eseménynaplóban megjelenítő.
+4. (Nem kötelező) Kattintson a **adatvédelmi** , tekintse át a Microsoft web services adatvédelmi nyilatkozatát.
+5. Ha elégedett tölthet fel, kattintson a kívánt **naplók küldése** ténylegesen a naplók az elmúlt hét nap a Microsoftnak küldendő hibaelhárításhoz. A naplók küldése művelet állapotát az alábbi képernyőképen látható módon kell megjelennie.
 
-    ![Adatok felügyeleti átjáró küldése naplózza állapota](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
-6. A művelet befejezése után megjelenik egy párbeszédpanel az alábbi képernyőfelvételen látható módon.
+    ![Data Management Gateway küldhet naplók állapota](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+6. A művelet befejezése után egy párbeszédpanelen megjelenik az alábbi képernyőképen látható módon.
 
-    ![Adatok felügyeleti átjáró küldése naplózza állapota](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
-7. Mentse a **azonosítója** és ossza meg a Microsoft Support. A jelentés Azonosítót az átjáró naplók hibaelhárítási feltöltött kereséséhez használható.  A jelentés Azonosítót is a menti viewer.  Az eseményazonosító "25" megtekintésével megtalálja, és ellenőrizze a dátum és idő.
+    ![Data Management Gateway küldhet naplók állapota](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
+7. Mentse a **Jelentésazonosító** , és megoszthatja Support. A Jelentésazonosító keresse meg az átjáró naplóit hibaelhárítási feltöltött szolgál.  A jelentés Azonosítót is menti a rendszer az megjelenítő.  Keresse meg azt az eseményazonosító "25" megnézzük, és ellenőrizze a dátum és idő.
 
-    ![Adatok felügyeleti átjáró küldése naplózza az azonosítója](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
+    ![Data Management Gateway küldhet naplók jelentés azonosítója](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
 
-### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Az átjáró állomás számítógépén archív-átjáró naplói
-Léteznek olyan forgatókönyvek, ahol átjáró problémák vannak, és közvetlenül nem osztható meg átjáró naplói:
+### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Átjáró gazdagépen archív-átjáró naplói
+Léteznek olyan forgatókönyvek, ahol kérdéseket rendelkezik, és közvetlenül nem oszthat meg átjárónaplók:
 
-* Manuálisan telepítse az átjárót, és regisztrálja az átjárót.
-* Próbálja meg regisztrálni az átjárót az adatkezelési átjáró konfigurációkezelőjének újragenerált kulccsal.
-* Próbálja meg elküldeni a naplókat, és nem lehet csatlakozni az átjáró gazdaszolgáltatás.
+* Manuális módszerrel telepítse az átjárót, és regisztrálja az átjárót.
+* Próbálja meg a kulcs újragenerálása a Data Management Gateway Configuration Manager regisztrálja az átjárót.
+* Próbálja meg elküldeni a naplókat, és az átjárószolgáltatás gazdagép nem lehet csatlakozni.
 
-Ezek a forgatókönyvek az átjáró naplói elmentse egy zip-fájlt, és ossza meg, amikor a Microsoft támogatási szolgálatához. Például ha arra vonatkozó hibaüzenetet kap, amíg az átjáró, regisztrálnia jelenik meg az alábbi képernyőfelvételen.   
+Ebben az esetben átjárónaplók mentheti egy zip-fájlba, és ossza meg, amikor kapcsolatba lép a Microsoft ügyfélszolgálatához. Például ha hibaüzenetet kap, akkor regisztrálnia kell az átjárót, amíg a következő képernyőképen látható.   
 
-![Felügyeleti átjáró regisztrációs hiba](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
+![Data Management Gateway regisztrációs hiba](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 
-Kattintson a **átjáró naplók archiválása** csatolása archivált, és mentse a naplókat, és majd a zip-fájl megosztása a Microsoft támogatási szolgálatához.
+Kattintson a **átjáró naplói archiválása** archiválni és menteni a naplók hivatkozásra, és megoszthatják a zip-fájlt a Microsoft ügyfélszolgálatához.
 
-![Felügyeleti átjáró archív adatnaplók](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
+![Data Management Gateway archív naplók](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
 
-### <a name="locate-gateway-logs"></a>Keresse meg az átjáró naplói
-A Windows eseménynaplóiban keresse meg a részletes átjáró naplóadatok találja.
+### <a name="locate-gateway-logs"></a>Keresse meg az átjáró naplóit
+A Windows eseménynaplóiban annak részletes átjáró adatait.
 
-1. A Windows indítása **Eseménynapló**.
-2. Keresse meg a naplókat a **alkalmazás- és szolgáltatásnaplók** > **az adatkezelési átjáró** mappát.
+1. Indítsa el a Windows **Eseménynapló**.
+2. Keresse meg a naplókat a **alkalmazás- és szolgáltatásnaplók** > **adatkezelési átjáró** mappát.
 
- Átjáró kapcsolatos problémák elhárításakor még keressen szintű hibaesemények az Eseménynapló viewer.
+ Átjáró kapcsolatos problémák elhárításakor van keressen hibaszintű eseményeket az eseménynaplóban megjelenítő.
 
-![Az adatkezelési átjáró naplózza az eseménynaplóban](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
+![Az eseménynaplóban naplózza az adatkezelési átjáró](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

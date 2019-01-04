@@ -1,6 +1,6 @@
 ---
-title: Várjon, amíg az Azure Data Factory tevékenység |} Microsoft Docs
-description: A Várakozás tevékenység felfüggesztése a feldolgozási sor végrehajtása az adott időszakra vonatkozóan.
+title: Wait tevékenység az Azure Data Factoryban |} A Microsoft Docs
+description: A Várakozás tevékenység felfüggeszti a folyamat végrehajtását az adott időszakra vonatkozóan.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,18 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 74a5d687535915fab7d518faaf916b98ab262c4b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 731df55a11f4671670a65dac8a83927d81da454c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053898"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015797"
 ---
-# <a name="wait-activity-in-azure-data-factory"></a>Várjon, amíg az Azure Data Factory tevékenység
+# <a name="wait-activity-in-azure-data-factory"></a>Wait tevékenység az Azure Data Factoryban
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
 
 ## <a name="syntax"></a>Szintaxis
@@ -36,21 +35,21 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 
 ```
 
-## <a name="type-properties"></a>A típus tulajdonságai
+## <a name="type-properties"></a>Tulajdonságok
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | Neve a `Wait` tevékenység. | Sztring | Igen
-type | Meg kell **Várjon, amíg**. | Sztring | Igen
-waitTimeInSeconds | A feldolgozási folytatása előtt megvárja-e a folyamat másodpercek száma. | Egész szám | Igen
+név | Neve a `Wait` tevékenység. | Karakterlánc | Igen
+type | Meg kell **várjon**. | Karakterlánc | Igen
+waitTimeInSeconds | A folyamat kivárja a feldolgozás folytatása előtt másodpercek számát. | Egész szám | Igen
 
 ## <a name="example"></a>Példa
 
 > [!NOTE]
-> Ez a szakasz a JSON-definíciók és futtatjuk a folyamatot a PowerShell Példaparancsok nyújt. Az Azure PowerShell és a JSON-definíciók használatával a Data Factory-folyamathoz létrehozásának részletes útmutatóját bemutatóért lásd: [oktatóanyag: Azure PowerShell használatával létrehozni egy adat-előállító](quickstart-create-data-factory-powershell.md).
+> Ez a szakasz a JSON-definíciók és minta PowerShell-parancsokat a folyamat futtatása biztosít. A részletes utasításokat követve hozzon létre egy Data Factory-folyamatot az Azure PowerShell és a JSON-definíciók bemutatóért lásd: [oktatóanyag: adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-wait-activity"></a>A Várakozás tevékenység-feldolgozási folyamat
-Ebben a példában az adatcsatorna két tevékenység rendelkezik: **amíg** és **Várjon, amíg**. A Várakozás tevékenység egy másodperces várakozás van konfigurálva. A folyamat fut a webes tevékenység ismétlődő várakozási idő közötti minden egyes futtatásához egy második. 
+### <a name="pipeline-with-wait-activity"></a>Várakozás tevékenységet a folyamat
+Ebben a példában a folyamat két tevékenységet tartalmaz: **Mindaddig, amíg** és **várjon**. A Várakozás tevékenység egy másodperces várakozás van konfigurálva. A folyamatfuttatások a webes tevékenység hurokba került a várakozási idő közötti minden egyes futtatásához egy másodperc. 
 
 ```json
 {
@@ -101,7 +100,7 @@ Ebben a példában az adatcsatorna két tevékenység rendelkezik: **amíg** és
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi adat-előállító által támogatott vezérlésfolyam-tevékenységek: 
+Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

@@ -10,16 +10,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 08/02/2017
+ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 5a224d7a78e35776b36b162228f6ba4c72677069
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 29e76338b8d19ce70dedea971d26a49544e9f152
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636203"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018143"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Az Azure Application Insights használati bővítsék azonosítók felhasználói környezet küldése
 
@@ -34,10 +34,11 @@ Az Application Insights lehetővé teszi, hogy figyelését és nyomon követhet
 
 Nyomon követheti, mi a felhasználó időbeli végrehajtja, az Application Insights-azonosító az egyes felhasználók vagy a munkamenet van szüksége. Minden egyéni esemény vagy oldal nézet vegye fel a következő azonosítóval.
 
-- Felhasználók, a tölcsérek, a megőrzési és a Kohorszok: közé tartozik a felhasználói azonosítóját.
+- Felhasználók, a tölcsérek, a megőrzési és a Kohorszok: Tartalmazza a felhasználói azonosítóját.
 - Munkamenetek: Tartalmazza a munkamenet-azonosítót.
 
-Ha az alkalmazás integrálva van a [JavaScript SDK](https://docs.microsoft.com/azure/application-insights/app-insights-javascript#set-up-application-insights-for-your-web-page), felhasználói azonosító automatikusan követi nyomon.
+> [!NOTE]
+> Ez a speciális cikk sbalování a manuális lépéseket az Application insights segítségével a felhasználói tevékenység nyomon követése. Számos webes alkalmazások **ezeket a lépéseket nem feltétlenül szükséges**, mint az alapértelmezett kiszolgálóoldali SDK-k együtt a [/böngésző ügyféloldali JavaScript SDK](app-insights-website-monitoring.md), általában automatikusan követésére felhasználói tevékenység. Ha még nem konfigurálta [az ügyféloldali figyelés](app-insights-website-monitoring.md) mellett a kiszolgálóoldali SDK-t, először hajtsa végre, és ellenőrizze, hogy ha a felhasználói viselkedés elemzőeszközök elvárt.
 
 ## <a name="choosing-user-ids"></a>Felhasználók kiválasztása
 
@@ -51,7 +52,7 @@ Az azonosító egy GUID azonosítót vagy egy másik karakterláncra elég bonyo
 
 Ha az azonosító a felhasználó személyes azonosító információkat tartalmaz, azt nem megfelelő érték küldése az Application Insightsba, mint a felhasználói azonosítóját. Elküldheti az azonosítója, mint egy [hitelesített felhasználó azonosítója](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), de nem felel meg a felhasználói azonosító követelménye használati forgatókönyvek.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-alkalmazások: a felhasználói környezet egy ITelemetryInitializer beállítása
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-alkalmazások: A felhasználói környezet egy ITelemetryInitializer beállítása
 
 Hozzon létre egy telemetriainicializáló részletesen ismertetett módon [Itt](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). A munkamenet-azonosító, a kérelmek telemetriai adatai keresztül adja át, és állítsa be a Context.User.Id és a Context.Session.Id.
 

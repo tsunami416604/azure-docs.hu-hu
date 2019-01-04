@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4e13050715927fb0b158c32393b56b32290cf175
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d48c046fbbb363e0c8409e43ebd0ac0b1480d87b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078089"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019402"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Vertica 
 
@@ -42,7 +41,7 @@ Vertica társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Vertica** | Igen |
+| type | A type tulajdonságot kell beállítani: **Vertica** | Igen |
 | kapcsolati Sztringje | Egy kapcsolódni a Vertica ODBC kapcsolati karakterlánc. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 

@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618869"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015492"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Folyamatok figyelése és felügyelete az Azure Data Factory az Azure portal és a PowerShell használatával
 > [!div class="op_single_selector"]

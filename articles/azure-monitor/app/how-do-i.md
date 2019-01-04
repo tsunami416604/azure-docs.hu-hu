@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 188c6148e169da62dec342e1695bf20ca57e3256
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974879"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999681"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése Ha...
@@ -54,7 +54,7 @@ Riasztások két állapota van, mert rendelkezik alacsony értéket küldött, f
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-A diagram létrehozásához [metrika explorer](../../application-insights/app-insights-metrics-explorer.md) a riasztás megtekintéséhez:
+A diagram létrehozásához [metrika explorer](../../azure-monitor/app/metrics-explorer.md) a riasztás megtekintéséhez:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -77,7 +77,7 @@ Néhány megfontolandó szempont:
 [Új riasztások létrehozása a PowerShell használatával](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Az Application Insights kezelése PowerShell használatával
-* [Új erőforrásokat hozhat létre](../../application-insights/app-insights-powershell-script-create-resource.md)
+* [Új erőforrásokat hozhat létre](../../azure-monitor/app/powershell-script-create-resource.md)
 * [Új riasztások létrehozása](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Különböző verzióit külön telemetria
@@ -91,7 +91,7 @@ Néhány megfontolandó szempont:
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Több alkalmazás a metrika az irányítópulton
-* A [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md), a diagram testreszabásához, és kedvencként mentheti. Az Azure-irányítópulton rögzítheti is.
+* A [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md), a diagram testreszabásához, és kedvencként mentheti. Az Azure-irányítópulton rögzítheti is.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Az adatokat más forrásokból és Application Insights irányítópult
 * [Telemetria exportálása a Power bi-bA](../../application-insights/app-insights-export-power-bi.md).
@@ -132,7 +132,7 @@ Ha azt szeretné, hogy az adatok, például hogy milyen lapok olyan felhasznál�
 * A weblapok minden lapmegtekintés jelentett Ajax-hívások számának korlátozása. Miután a parancsfájl kódrészletben `instrumentationKey:...` , insert: `,maxAjaxCallsPerView:3` (vagy egy megfelelő szám).
 * Ha használ [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), az összesítést, metrikaértékek kötegek számítási az eredmény elküldése előtt. Nincs a trackmetric() függvény, amely biztosítja, hogy egy túlterhelésére.
 
-Tudjon meg többet [árai és kvótái](../../application-insights/app-insights-pricing.md).
+Tudjon meg többet [árai és kvótái](../../azure-monitor/app/pricing.md).
 
 ## <a name="disable-telemetry"></a>Telemetria letiltása
 A **dinamikusan leállítására és elindítására** a gyűjtemény és továbbítását a telemetriai adatokat a kiszolgálóról:
@@ -159,5 +159,5 @@ A metrikák, megjelenítheti a metrikaböngészőben többek között olyan rend
 * **UNIX-kiszolgáló** - [összegyűjtött telepítése](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>További teljesítményszámlálók megjelenítése
-* Először [új diagram hozzáadása](../../application-insights/app-insights-metrics-explorer.md) , és hogy van-e a számláló az alapszintű készletben, amely biztosítunk.
-* Ha nem, [adhatja hozzá a számláló a teljesítményszámláló modul által gyűjtött](../../application-insights/app-insights-performance-counters.md).
+* Először [új diagram hozzáadása](../../azure-monitor/app/metrics-explorer.md) , és hogy van-e a számláló az alapszintű készletben, amely biztosítunk.
+* Ha nem, [adhatja hozzá a számláló a teljesítményszámláló modul által gyűjtött](../../azure-monitor/app/performance-counters.md).

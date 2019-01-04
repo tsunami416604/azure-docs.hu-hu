@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 036daad8898d12874c86b22429627cbebfcfce37
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 14dd5eef90ff4e6b3281f5a1337b9b59796277e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974726"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018755"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -102,14 +102,14 @@ A portálon az egyik csempére vagy diagramra kattintva további részleteket te
 [További tudnivalók az Application Insights használatáról az Azure Portalon](../../azure-monitor/app/app-insights-dashboards.md).
 
 ## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
-Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../application-insights/app-insights-metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
+Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
 A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](../../azure-monitor/app/app-insights-dashboards.md) állíthat be. Használhatja a sokoldalú [Log Analytics lekérdezési nyelvet](https://aka.ms/LogAnalyticsLanguage) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
 
 Folytathatja a telemetria elemzését a [Visual Studióban](../../application-insights/app-insights-visual-studio.md) olyan eszközökkel, mint például a diagnosztikai keresés és a [trendek](../../application-insights/app-insights-visual-studio-trends.md).
 
 > [!NOTE]
-> Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](../../application-insights/app-insights-pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](../../application-insights/app-insights-sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
+> Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](../../azure-monitor/app/pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](../../azure-monitor/app/sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
 >
 >
 
@@ -159,4 +159,4 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 
 ### <a name="automation"></a>Automation
 
-* [Application Insights-erőforrások létrehozásának automatizálása](../../application-insights/app-insights-powershell.md)
+* [Application Insights-erőforrások létrehozásának automatizálása](../../azure-monitor/app/powershell.md)

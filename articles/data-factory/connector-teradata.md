@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 37e7281af87a8cfc57aae95411eb2d4cce9eef65
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228062"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018993"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Teradata
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,9 +54,9 @@ Teradata-beli társított szolgáltatás a következő tulajdonságok támogatot
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Teradata** | Igen |
+| type | A type tulajdonságot kell beállítani: **Teradata** | Igen |
 | kiszolgáló | A Teradata-kiszolgáló neve. | Igen |
-| authenticationType | A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **alapszintű**, és **Windows**. | Igen |
+| authenticationType | A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **Windows**. | Igen |
 | felhasználónév | Adja meg a felhasználónevet a Teradata-adatbázishoz való csatlakozáshoz. | Igen |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
@@ -171,7 +170,7 @@ Ha az adatok másolása a Teradata, Azure Data Factory-közbenső adattípusok a
 | CHAR |Karakterlánc |
 | CLOB |Karakterlánc |
 | Dátum |DateTime |
-| tizedes tört |tizedes tört |
+| Tizedes tört |Tizedes tört |
 | Dupla |Dupla |
 | Kép |Karakterlánc |
 | Egész szám |Int32 |

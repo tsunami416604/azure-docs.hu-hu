@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/02/2019
 ms.author: tamram
-ms.openlocfilehash: 03344cf989e1381f97b108e82b8d63e9c4653404
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: fd635682d1b5dc7c3ab784208ac485872d5c7099
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809802"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998999"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -61,9 +61,6 @@ Mielőtt az Azure Files SMB-n keresztül engedélyezi az Azure AD, győződjön 
 4.  **Válassza ki, vagy hozzon létre egy Azure-fájlmegosztást.**
 
     Válassza ki egy új vagy meglévő fájlmegosztást, amely ugyanazt az előfizetést az Azure AD-bérlővel van társítva. Új fájlmegosztás létrehozásával kapcsolatban lásd: [fájlmegosztás létrehozása az Azure Files](storage-how-to-create-file-share.md). 
-
-    Az Azure AD-bérlővel kell telepíteni, SMB-n keresztül az Azure AD az előzetes verzióra támogatott. Az előzetes kivételével az összes nyilvános régióban érhető el: USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA, USA déli középső RÉGIÓJA, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső RÉGIÓJA, Ausztrália keleti régiója, Nyugat-Európa, Észak-Európa.
-
     Az optimális teljesítmény érdekében a Microsoft azt javasolja, hogy a fájlmegosztás a virtuális gép, amelyről azt tervezi, hogy a megosztás elérése ugyanabban a régióban van.
 
 5.  **Ellenőrizze az Azure Files kapcsolatot csatlakoztatja az Azure-fájlmegosztások a tárfiók kulcsára.**

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 58afaacb6e0165582f9f54c3ec3c273e2a063804
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: eeaedc84e860cebc0b001300ace4fe1594375af2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753250"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999407"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -202,18 +202,18 @@ if ($resourceGroups -notcontains $resourceGroup) {
 # the following command creates an AFS context 
 # it enables subsequent AFS cmdlets to be executed with minimal 
 # repetition of parameters or separate authentication 
-Login-AzStorageSync `
+Login-AzureRmStorageSync `
     -SubscriptionId $subID `
     -ResourceGroupName $resourceGroup `
     -TenantId $tenantID `
     -Location $region
 ```
 
-Az Azure File Sync-környezet létrehozása után a `Login-AzStorageSync` parancsmaggal hozhat létre a Storage Sync Service. Ne felejtse el `<my-storage-sync-service>` a Storage Sync Service kívánt nevét.
+Az Azure File Sync-környezet létrehozása után a `Login-AzureR,StorageSync` parancsmaggal hozhat létre a Storage Sync Service. Ne felejtse el `<my-storage-sync-service>` a Storage Sync Service kívánt nevét.
 
 ```PowerShell
 $storageSyncName = "<my-storage-sync-service>"
-New-AzStorageSyncService -StorageSyncServiceName $storageSyncName
+New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 ```
 
 ---
@@ -239,7 +239,7 @@ Miután kiválasztotta a megfelelő információkat, válassza ki a **regisztrá
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
-$registeredServer = Register-AzStorageSyncServer -StorageSyncServiceName $storageSyncName
+$registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
 
 ---
@@ -269,7 +269,7 @@ A szinkronizálási csoport létrehozásához hajtsa végre az alábbi PowerShel
 
 ```PowerShell
 $syncGroupName = "<my-sync-group>"
-New-AzStorageSyncGroup -SyncGroupName $syncGroupName -StorageSyncService $storageSyncName
+New-AzureRmStorageSyncGroup -SyncGroupName $syncGroupName -StorageSyncService $storageSyncName
 ```
 
 Ha a szinkronizálási csoport sikeresen létrejött, a felhőbeli végpont is létrehozhat. Ne felejtse el `<my-storage-account>` és `<my-file-share>` a várt értékkel.
@@ -302,7 +302,7 @@ if ($fileShare -eq $null) {
 }
 
 # Create the cloud endpoint
-New-AzStorageSyncCloudEndpoint `
+New-AzureRmStorageSyncCloudEndpoint `
     -StorageSyncServiceName $storageSyncName `
     -SyncGroupName $syncGroupName ` 
     -StorageAccountResourceId $storageAccount.Id `
@@ -345,7 +345,7 @@ if ($cloudTieringDesired) {
     }
 
     # Create server endpoint
-    New-AzStorageSyncServerEndpoint `
+    New-AzureRmStorageSyncServerEndpoint `
         -StorageSyncServiceName $storageSyncName `
         -SyncGroupName $syncGroupName `
         -ServerId $registeredServer.Id `
@@ -355,7 +355,7 @@ if ($cloudTieringDesired) {
 }
 else {
     # Create server endpoint
-    New-AzStorageSyncServerEndpoint `
+    New-AzureRmStorageSyncServerEndpoint `
         -StorageSyncServiceName $storageSyncName `
         -SyncGroupName $syncGroupName `
         -ServerId $registeredServer.Id `

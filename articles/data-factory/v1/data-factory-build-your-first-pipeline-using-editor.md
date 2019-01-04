@@ -10,19 +10,18 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732226"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020710"
 ---
-# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
+# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első data factory létrehozása az Azure portal használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,14 +32,14 @@ ms.locfileid: "45732226"
 
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg az [adat-előállító Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-dot-net.md) című cikket.
+> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás régebbi verzióját használja, lásd: [a rövid útmutató: Adat-előállító létrehozása a Data Factory használatával](../quickstart-create-data-factory-dot-net.md).
 
 Ez az oktatóanyag bemutatja, hogyan hozhatja létre első adat-előállítóját az[Azure Portal](https://portal.azure.com/) használatával. Ha ezt az oktatóanyagot más eszközök/SDK-k használatával szeretné elvégezni, válassza ki az egyik lehetőséget a legördülő listából. 
 
 A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: ez az Azure HDInsight Hive-tevékenység. A tevékenység egy Hive-szkriptet futtat egy HDInsight-fürtön, amely a bemeneti adatok átalakításával állítja elő a kimeneti adatokat. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
 
 > [!NOTE]
-> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. Az adatok Data Factory használatával történő másolására vonatkozó útmutatásért lásd [az adatok Azure Blob Storage-ból Azure SQL Database-be történő másolását ismertető oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. Az adatok másolása a Data Factory használatával, olvassa el [oktatóanyag: Adatok másolása az Azure Blob storage-ból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
@@ -65,7 +64,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
    ![A New data factory (Új data factory) panel](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
    > [!IMPORTANT]
-   > Az adat-előállító nevének globálisan egyedinek kell lennie. Ha „A(z) „GetStartedDF” adat-előállító nem érhető el” hibaüzenetet kapja, módosítsa a nevet. Például használja az ÖnNeveGetStartedDF nevet, majd próbálkozzon újra az adat-előállító létrehozásával. További információ az elnevezési szabályokról: [A Data Factory elnevezési szabályai](data-factory-naming-rules.md).
+   > Az adat-előállító nevének globálisan egyedinek kell lennie. Ha „A(z) „GetStartedDF” adat-előállító nem érhető el” hibaüzenetet kapja, módosítsa a nevet. Például használja az ÖnNeveGetStartedDF nevet, majd próbálkozzon újra az adat-előállító létrehozásával. Elnevezési szabályokról szóló további információkért lásd: [adat-előállító: Elnevezési szabályok](data-factory-naming-rules.md).
    >
    > Az adat-előállító neve később DNS-névként regisztrálható, és nyilvánosan láthatóvá tehető.
    >
@@ -327,7 +326,7 @@ Ebben a lépésben létrehozza a HDInsight Hive-tevékenységgel rendelkező els
 
     A folyamat **start** (kezdés) és **end** (befejezés) tulajdonságai a folyamat aktív időszakát határozzák meg.
 
-    A tevékenység JSON-fájljában meg van határozva, hogy a Hive-szkript a **linkedServiceName**: **HDInsightOnDemandLinkedService** által meghatározott számítási szolgáltatáson fut.
+    A tevékenység JSON, megadhatja, hogy fut-e a Hive-parancsfájl által meghatározott számítási **linkedServiceName**: **HDInsightOnDemandLinkedService**.
 
    > [!NOTE]
    > A példában használt JSON-tulajdonságokkal kapcsolatos további információért lásd a [Data Factory folyamatait és tevékenységeit](data-factory-create-pipelines.md) ismertető témakör a folyamat JSON-fájljáról szóló részét.
@@ -434,7 +433,7 @@ Az oktatóanyag során létrehozott egy adat-előállítót, amely egy HDInsight
 * Egy HDInsight Hive-tevékenységgel rendelkező folyamat létrehozása.
 
 ## <a name="next-steps"></a>További lépések
-Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. Ha tudni szeretné, hogyan használhatja a Másolás tevékenységet az adatok Azure-blobból Azure SQL Database-adatbázisba történő másolásához, lásd: [Oktatóanyag: Adatok másolása blobtárolóból az SQL Database-be](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. Adatok másolása blob storage-ból egy SQL-adatbázis egy másolási tevékenység használatával, olvassa el [oktatóanyag: Adatok másolása Blob storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még
 | Témakör | Leírás |

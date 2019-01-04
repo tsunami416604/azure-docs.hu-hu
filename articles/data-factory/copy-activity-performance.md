@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7602524675edbf0e3ca96c74a2aba2eac48c417b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084073"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020886"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -263,9 +262,9 @@ Javasoljuk, hogy ezen lépések a Data Factory szolgáltatás másolási tevéke
 
 Ha a másolási tevékenység végrehajtása a helyi Integration Runtime, vegye figyelembe a következőket:
 
-**A telepítő**: javasoljuk, hogy használjon egy dedikált gépre host Integration Runtime. Lásd: [szempontok a helyi Integration Runtime](concepts-integration-runtime.md).
+**A telepítő**: Azt javasoljuk, hogy használja-e egy dedikált gépre host Integration Runtime. Lásd: [szempontok a helyi Integration Runtime](concepts-integration-runtime.md).
 
-**Horizontális felskálázás**: egy egyetlen logikai integrációs modulnak egy vagy több csomóponttal rendelkező szolgálhat több másolási tevékenység fut egyszerre egy időben. Ha hibrid adatáthelyezés nagyszámú egyidejű másolási tevékenység-végrehajtás vagy nagy mennyiségű adat másolása (nagy erőforrásigényű) szükség van, érdemes lehet [horizontális felskálázási helyi Integration Runtime](create-self-hosted-integration-runtime.md#high-availability-and-scalability) úgy, hogy a további erőforrások kiépítése biztosítson hatékony eszközöket másolása.
+**Horizontális felskálázás**: Egy egyetlen logikai integrációs modulnak egy vagy több csomóponttal rendelkező szolgálhat több másolási tevékenység fut egyszerre egy időben. Ha hibrid adatáthelyezés nagyszámú egyidejű másolási tevékenység-végrehajtás vagy nagy mennyiségű adat másolása (nagy erőforrásigényű) szükség van, érdemes lehet [horizontális felskálázási helyi Integration Runtime](create-self-hosted-integration-runtime.md#high-availability-and-scalability) úgy, hogy a további erőforrások kiépítése biztosítson hatékony eszközöket másolása.
 
 ## <a name="considerations-for-the-source"></a>A forrás szempontjai
 
@@ -281,13 +280,13 @@ A Microsoft olyan adattárakban, lásd: [megfigyelés és finomhangolás témak�
 
 ### <a name="file-based-data-stores"></a>Fájlalapú adattárak
 
-* **Átlagos méretét és a fájlszám**: másolási tevékenységgel továbbítja egy adatfájlt egy időben. Az adatok áthelyezésének akkora a teljes átviteli sebesség alacsonyabb, ha néhány nagy méretű fájlok miatt a rendszer-indításkori fázis minden egyes fájl helyett a sok kis méretű fájlt tartalmaz. Ezért ha lehetséges, egyesítendő kisméretű fájlok nagyobb fájlok nagyobb átviteli sebességet biztosítanak.
-* **A fájl formátuma és tömörítés**: találhat további részleteket a teljesítmény javítása, a [szerializálást és deszerializálást szempontjai](#considerations-for-serialization-and-deserialization) és [tömörítési szempontjai](#considerations-for-compression) szakaszok.
+* **Átlagos méretét és a fájlszám**: A másolási tevékenység egy adatfájlt egy időben továbbítja. Az adatok áthelyezésének akkora a teljes átviteli sebesség alacsonyabb, ha néhány nagy méretű fájlok miatt a rendszer-indításkori fázis minden egyes fájl helyett a sok kis méretű fájlt tartalmaz. Ezért ha lehetséges, egyesítendő kisméretű fájlok nagyobb fájlok nagyobb átviteli sebességet biztosítanak.
+* **A fájl formátuma és tömörítés**: További részleteket a teljesítmény javítása, lásd: a [szerializálást és deszerializálást szempontjai](#considerations-for-serialization-and-deserialization) és [tömörítési szempontjai](#considerations-for-compression) szakaszokat.
 
 ### <a name="relational-data-stores"></a>Relációs adattárak
 
 * **Adatmintát**: A következő tábla sémáját másolási átviteli sebesség hatással van. Egy nagy méretű sor mérete kis sor mérete, azonos mennyiségű adatot másolni egy jobb teljesítményt biztosít. A hiba oka, hogy az adatbázis hatékonyabban lekérheti kevesebb váró adatokat, amelyek kevesebb sort tartalmaznak.
-* **Lekérdezés vagy tárolt eljárás**: optimalizálja a lekérdezést, vagy adja meg, ha a másolási tevékenység forrásból történő adatlehívást, hatékonyabban tárolt eljárás logikáját.
+* **Lekérdezés vagy tárolt eljárás**: Optimalizálhatja a lekérdezést, vagy adja meg, ha a másolási tevékenység forrásból történő adatlehívást, hatékonyabban tárolt eljárás logikáját.
 
 ## <a name="considerations-for-the-sink"></a>A fogadó szempontjai
 
@@ -303,12 +302,12 @@ A Microsoft olyan adattárakban, tekintse meg [megfigyelés és finomhangolás t
 
 ### <a name="file-based-data-stores"></a>Fájlalapú adattárak
 
-* **Másolja a viselkedés**: adatokat másolja egy másik fájl alapú adatokat az adattárból, ha a másolási tevékenység használatával három pontot tartalmaz az **copyBehavior** tulajdonság. Ez a megőrzi a hierarchia, simítja egybe a hierarchia, vagy egyesíti a fájlokat. Az egybesimítás hierarchia vagy megőrzi az rendelkezik alig vagy egyáltalán nem teljesítménybeli terhelést, de a fájlok egyesítése növelése teljesítménybeli terhelést okoz.
-* **A fájl formátuma és tömörítés**: tekintse meg a [szerializálást és deszerializálást szempontjai](#considerations-for-serialization-and-deserialization) és [tömörítési szempontjai](#considerations-for-compression) szakaszokban talál további részleteket a teljesítmény javítása.
+* **Másolja a viselkedés**: Ha adatokat másolja egy másik fájl alapú adatokat az adattárból, a másolási tevékenység keresztül három pontot tartalmaz az **copyBehavior** tulajdonság. Ez a megőrzi a hierarchia, simítja egybe a hierarchia, vagy egyesíti a fájlokat. Az egybesimítás hierarchia vagy megőrzi az rendelkezik alig vagy egyáltalán nem teljesítménybeli terhelést, de a fájlok egyesítése növelése teljesítménybeli terhelést okoz.
+* **A fájl formátuma és tömörítés**: Tekintse meg a [szerializálást és deszerializálást szempontjai](#considerations-for-serialization-and-deserialization) és [tömörítési szempontjai](#considerations-for-compression) szakaszokban talál további részleteket a teljesítmény javítása.
 
 ### <a name="relational-data-stores"></a>Relációs adattárak
 
-* **Másolja a viselkedés**: függően a beállított tulajdonságok **sqlSink**, a másolási tevékenység adatokat ír a céladatbázis különböző módon.
+* **Másolja a viselkedés**: A Tulajdonságok függően beállított **sqlSink**, a másolási tevékenység adatokat ír a céladatbázis különböző módon.
   * Alapértelmezés szerint az adatok adatátviteli szolgáltatás által a tömeges másolási API-t az adatok beszúrása hozzáfűzése üzemmódot, amely a lehető legjobb teljesítményt biztosít.
   * Ha a fogadó tárolt eljárás konfigurálja, az adatbázis az adatokat egy sort egy kötegelt betöltés, hanem egyszerre vonatkozik. Teljesítmény jelentősen csökken. Ha az adatkészlet túl nagy, ha lehetséges, fontolja meg, hogy használatával a **preCopyScript** tulajdonság.
   * Ha konfigurálja a **preCopyScript** tulajdonság minden egyes másolási tevékenység futtatása, a szolgáltatás aktiválása a parancsfájl és majd illessze be az adatokat a tömeges másolási API-t használja. Például a teljes tábla felülírja a legújabb adatokkal, is megadhat egy parancsfájlt, amely először törölje az összes rekordot a forrás az új adatok tömeges-betöltés előtt.
@@ -319,7 +318,7 @@ A Microsoft olyan adattárakban, tekintse meg [megfigyelés és finomhangolás t
 ### <a name="nosql-stores"></a>NoSQL-tárolókat
 
 * A **Table storage**:
-  * **Partíció**: adatok írása összefűzéses partíciók jelentősen rontja a teljesítményt. A forrásadatok rendezés partíciós kulccsal, hogy az adatokat a rendszer beszúrta hatékonyan egy partíciót egymás után, vagy módosítsa az adatokat írni az ugyanazon a partíción logikát.
+  * **partíció**: Írja az adatokat a partíciók összefűzéses jelentősen rontja a teljesítményt. A forrásadatok rendezés partíciós kulccsal, hogy az adatokat a rendszer beszúrta hatékonyan egy partíciót egymás után, vagy módosítsa az adatokat írni az ugyanazon a partíción logikát.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Szerializálást és deszerializálást szempontjai
 
@@ -333,17 +332,17 @@ Szerializálást és deszerializálást akkor fordulhat elő, ha a bemeneti adat
   * Ha a bemeneti és kimeneti adatkészleteket is rendelkezik különböző fájlformátumokban vagy különböző konfigurációkat, például az elválasztó karakterek, az adatátviteli szolgáltatás deserializes forrásadatok adatfolyam, átalakítása és majd szerializálni a kimeneti formátumba, jelzett. Ez a művelet egy sokkal jelentős teljesítménybeli többletterhelést képest más esetben eredményez.
 * Ha másolja a fájlokat egy adattár, amely nem fájl alapú (például az olyan fájlalapú tároló relációs tárolóval), akkor a szerializálása vagy deszerializálása lépésre szükség. Ebben a lépésben jelentős teljesítménybeli terhelést eredményez.
 
-**Fájlformátum**: A választott fájl formátumát hatással lehetnek a másolási teljesítmény. Például a Avro kompakt bináris formátum, amely tárolja az adatokat metaadatok. Széles körben támogatja a Hadoop-ökoszisztéma, feldolgozása és lekérdezési rendelkezik. Azonban az Avro szerializálást és deszerializálást, ami szövegformátum képest alacsonyabb másolási átviteli sebességet eredményez a drágább. Győződjön meg azok alkalmazásfüggőségeit a kiválasztott fájlformátum teljes feldolgozási folyamat során. Kezdés milyen formában az adatokat tárolja a forrásadattárakból vagy külső rendszerek; kinyerése a storage, az analitikus feldolgozás és a lekérdezési; legjobb formátum és milyen formátumban az adatok exportálja az adatpiacok jelentéskészítő és vizualizációs eszközök, a. Néha olyan fájlformátum, amely az optimálisnál rosszabb olvasási és írási teljesítmény előfordulhat, hogy jó választás meghatározásakor a teljes elemzési folyamatot.
+**Fájlformátum**: A választott fájl formátumát másolási teljesítmény hatással lehetnek. Például a Avro kompakt bináris formátum, amely tárolja az adatokat metaadatok. Széles körben támogatja a Hadoop-ökoszisztéma, feldolgozása és lekérdezési rendelkezik. Azonban az Avro szerializálást és deszerializálást, ami szövegformátum képest alacsonyabb másolási átviteli sebességet eredményez a drágább. Győződjön meg azok alkalmazásfüggőségeit a kiválasztott fájlformátum teljes feldolgozási folyamat során. Kezdés milyen formában az adatokat tárolja a forrásadattárakból vagy külső rendszerek; kinyerése a storage, az analitikus feldolgozás és a lekérdezési; legjobb formátum és milyen formátumban az adatok exportálja az adatpiacok jelentéskészítő és vizualizációs eszközök, a. Néha olyan fájlformátum, amely az optimálisnál rosszabb olvasási és írási teljesítmény előfordulhat, hogy jó választás meghatározásakor a teljes elemzési folyamatot.
 
 ## <a name="considerations-for-compression"></a>A tömörítés szempontjai
 
 Ha a bemeneti vagy kimeneti adatkészlet egy fájlt, írja az adatokat a rendeltetési tömörítés vagy a kibontás végrehajtani a másolási tevékenység állíthatja be. Ha tömörítést választja, akkor győződjön meg arról, bemeneti/kimeneti (I/O) magával és a CPU. Tömöríti a számítási erőforrásokat az extra költségek. De cserébe csökkenti a hálózati i/o- és storage. Az adatoktól függően a teljes másolási átviteli sebesség boost jelenhet meg.
 
-**Kodek**: minden egyes tömörítési kodeket előnnyel jár. Például bzip2 rendelkezik a legalacsonyabb másolási teljesítmény, de a legjobb Hive lekérdezés teljesítmény bzip2 kap, mert azt a feldolgozáshoz is fel. A gzip a legtöbb kiegyensúlyozott beállítás használatát, és azt a leggyakrabban használt. Válassza ki a leginkább megfelelő a végpontok közötti forgatókönyv kodek.
+**Kodek**: Minden egyes tömörítési kodeket előnnyel jár. Például bzip2 rendelkezik a legalacsonyabb másolási teljesítmény, de a legjobb Hive lekérdezés teljesítmény bzip2 kap, mert azt a feldolgozáshoz is fel. A gzip a legtöbb kiegyensúlyozott beállítás használatát, és azt a leggyakrabban használt. Válassza ki a leginkább megfelelő a végpontok közötti forgatókönyv kodek.
 
-**Szint**: minden egyes tömörítési kodeket két lehetőség közül választhat: leggyorsabb tömörített és optimális tömörített. A leggyorsabb tömörített lehetőség a lehető leggyorsabban tömöríti az adatokat, még akkor is, ha az eredményül kapott fájl nem optimális tömöríti. Az optimális tömörített beállítás több időt tölt a tömörítést, és a egy minimális mennyiségű adatot eredményez. Mindkét lehetőség megtekintéséhez, amely biztosítja, hogy jobb általános teljesítményt abban az esetben tesztelheti.
+**Szint**: Minden egyes tömörítési kodeket két lehetőség közül választhat: leggyorsabb tömörített és optimális tömörített. A leggyorsabb tömörített lehetőség a lehető leggyorsabban tömöríti az adatokat, még akkor is, ha az eredményül kapott fájl nem optimális tömöríti. Az optimális tömörített beállítás több időt tölt a tömörítést, és a egy minimális mennyiségű adatot eredményez. Mindkét lehetőség megtekintéséhez, amely biztosítja, hogy jobb általános teljesítményt abban az esetben tesztelheti.
 
-**Veszi figyelembe**: egy nagy mennyiségű adat a helyszínen és a felhő közötti másolásához, érdemes lehet [szakaszos Másolás](#staged-copy) a tömörítéssel kompatibilis. Ideiglenes tároló használata akkor hasznos, ha a sávszélesség a vállalati hálózat és az Azure-szolgáltatások korlátozzák, és azt szeretné, hogy a bemeneti adatkészlet és a kimeneti adatkészlet mindkét tömörítetlen formában.
+**Veszi figyelembe**: A nagy mennyiségű adat a helyszínen és a felhő közötti másolásához, érdemes lehet [szakaszos Másolás](#staged-copy) a tömörítéssel kompatibilis. Ideiglenes tároló használata akkor hasznos, ha a sávszélesség a vállalati hálózat és az Azure-szolgáltatások korlátozzák, és azt szeretné, hogy a bemeneti adatkészlet és a kimeneti adatkészlet mindkét tömörítetlen formában.
 
 ## <a name="considerations-for-column-mapping"></a>Az oszlopleképezés szempontjai
 
@@ -359,32 +358,32 @@ Ha másolni kívánt adatok mérete nagy, módosíthatja az üzleti logikát az 
 
 Legyen óvatos az adatkészletek és a Data Factory csatlakozni egy időben ugyanazt az adattárat igénylő másolási tevékenységek száma. Számos egyidejű másolási feladat lehet, hogy adattár szabályozás és teljesítménycsökkenésért másolási feladat belső újrapróbálkozás, és bizonyos esetekben végrehajtási hibák vezethet.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Mintaforgatókönyv: másolása a helyszíni SQL Serverről a Blob storage
+## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Mintaforgatókönyv: Másolja a helyszíni SQL Serverről a Blob storage
 
-**A forgatókönyv**: A folyamat adatokat másol egy helyszíni SQL Server a Blob storage-ban CSV formátumban való használatra készült. Ahhoz, hogy gyorsabban a másolási feladat, a CSV-fájlokat kell tömörített, bzip2 formátumba.
+**A forgatókönyv**: Egy folyamat adatokat másol egy helyszíni SQL Server a Blob storage-ban CSV formátumban való használatra készült. Ahhoz, hogy gyorsabban a másolási feladat, a CSV-fájlokat kell tömörített, bzip2 formátumba.
 
-**Teszt- és elemzési**: a másolási tevékenység az átviteli sebesség legfeljebb 2 MB/s, azaz sokkal lassabb, mint a teljesítmény a teljesítményteszt.
+**Teszt- és elemzési**: Az átviteli sebességet, a másolási tevékenység érték kisebb, mint 2 MB/s, amely sokkal lassabb, mint a teljesítmény a teljesítményteszt.
 
-**Teljesítményelemzés és a hangolási**: a teljesítménnyel kapcsolatos problémák elhárításához, nézzük meg az adatok feldolgozása és áthelyezték.
+**Teljesítményelemzés és a hangolási**: A teljesítménnyel kapcsolatos problémák elhárításához, tekintsük át az adatok feldolgozása és áthelyezték.
 
-1. **Adatok olvasása**: az Integration runtime megnyit egy kapcsolatot az SQL Server, és elküldi a lekérdezést. Az SQL Server válaszol, ha az adatfolyamban integrációs modul az intraneten keresztül küld.
-2. **Szerializálható és az adatok tömörítése**: az Integration runtime szerializálja a CSV formátumba az adatfolyamot, és tömöríti az adatokat, bzip2 adatfolyamba.
-3. **Adatok írása**: az Integration runtime a bzip2 stream feltölti a Blob storage, az interneten keresztül.
+1. **Adatok olvasása**: Az Integration runtime megnyit egy kapcsolatot az SQL Server, és elküldi a lekérdezést. Az SQL Server válaszol, ha az adatfolyamban integrációs modul az intraneten keresztül küld.
+2. **Szerializálható és az adatok tömörítése**: Az Integration runtime szerializálja a CSV formátumba az adatfolyamot, és tömöríti az adatokat, bzip2 adatfolyamba.
+3. **Adatok írása**: Az Integration runtime a bzip2 stream feltölti a Blob storage, az interneten keresztül.
 
-Folyamatban van, ahogy látható, az adatok feldolgozása, és áthelyezte streamelési soros módon: SQL Server > LAN > az Integration runtime > WAN > Blob storage-ban. **Az általános teljesítmény a minimális átviteli engedi át a folyamat között**.
+Folyamatban van, ahogy látható, az adatok feldolgozását, és áthelyezte streamelési soros módon: Az SQL Server > LAN > az Integration runtime > WAN > Blob storage-ban. **Az általános teljesítmény a minimális átviteli engedi át a folyamat között**.
 
 ![Az adatfolyam](./media/copy-activity-performance/case-study-pic-1.png)
 
 Egy vagy több, az alábbi tényezők okozhatják a teljesítménybeli szűk keresztmetszetet:
 
-* **Forrás**: az SQL Server magát rendelkezik alacsony átviteli sebesség miatt nagy terheléseket.
+* **forrás**: Maga az SQL Server alacsony átviteli sebesség nagy terheléseket miatt van.
 * **Saját üzemeltetésű integrációs modul**:
-  * **Hálózati Ébresztés**: az Integration runtime az SQL Servert futtató gép távol található, és a egy kis sávszélességű kapcsolattal rendelkezik.
-  * **Az Integration runtime**: az Integration runtime elérte a terhelés korlátozások, a következő műveletek végrehajtásához:
-    * **Szerializálási**: lassú teljesítmény az adatfolyam CSV formátumban történő szerializálásához rendelkezik.
-    * **A tömörítés**: választotta, a lassú tömörítési kodek (például bzip2, amely alapvető i7 2.8-as MBps).
-  * **WAN**: a vállalati hálózat és az Azure-szolgáltatások közötti sávszélesség értéke alacsony (például a T1 1,544 kbps; = T2 = 6,312 KB/s).
-* **Fogadó**: Blob storage alacsony átviteli sebesség tartozik. (Ebben a forgatókönyvben a nem valószínű, mert a hozzá tartozó SLA-garanciát legalább 60 MB/s.)
+  * **HÁLÓZATI ÉBRESZTÉS**: Az Integration runtime az SQL Servert futtató gép távol található, és a egy kis sávszélességű kapcsolattal rendelkezik.
+  * **Az Integration runtime**: Az Integration runtime elérte a terhelés korlátozások, a következő műveletek végrehajtásához:
+    * **Szerializálási**: Lassú teljesítmény az adatfolyam CSV formátumban történő szerializálásához rendelkezik.
+    * **A tömörítés**: Azt választotta, a lassú tömörítési kodek (például bzip2, amely alapvető i7 2.8-as MBps).
+  * **WAN**: A vállalati hálózat és az Azure-szolgáltatások közötti sávszélesség értéke alacsony (például a T1 1,544 kbps; = T2 = 6,312 KB/s).
+* **Fogadó**: A BLOB storage alacsony átviteli sebesség tartozik. (Ebben a forgatókönyvben a nem valószínű, mert a hozzá tartozó SLA-garanciát legalább 60 MB/s.)
 
 Ebben az esetben az adattömörítés bzip2 előfordulhat, hogy lehet lelassítja a teljes folyamat. A gzip tömörítési kodek átváltása, előfordulhat, hogy a szűk keresztmetszet megkönnyítése érdekében.
 
@@ -392,12 +391,12 @@ Ebben az esetben az adattömörítés bzip2 előfordulhat, hogy lehet lelassítj
 
 Teljesítmény figyelése és hangolása hivatkozásokat a támogatott adattárak némelyikét a következő:
 
-* Az Azure Storage (beleértve a Blob storage és Table storage): [Azure Storage skálázhatósági célértékét](../storage/common/storage-scalability-targets.md) és [Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista](../storage/common/storage-performance-checklist.md)
+* Az Azure Storage (beleértve a Blob storage és Table storage): [Az Azure Storage skálázhatósági célértékét](../storage/common/storage-scalability-targets.md) és [Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista](../storage/common/storage-performance-checklist.md)
 * Az Azure SQL Database: Is [figyelemmel kísérni a teljesítményét](../sql-database/sql-database-single-database-monitor.md) , és ellenőrizze az adatbázis tranzakciós egységek (DTU) százalékos aránya
-* Az Azure SQL Data Warehouse: Alkalmasságát mérik az adattárházegységek (Dwu); Lásd: [kezelés számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Az Azure Cosmos DB: [az Azure Cosmos DB teljesítményszintek](../cosmos-db/performance-levels.md)
-* A helyszíni SQL Server: [figyelés és hangolás teljesítmény](https://msdn.microsoft.com/library/ms189081.aspx)
-* A helyi fájlkiszolgáló: [teljesítményhangolás fájlkiszolgálók](https://msdn.microsoft.com/library/dn567661.aspx)
+* Az Azure SQL Data warehouse-bA: A funkció mérik az adattárházegységek (Dwu); Lásd: [kezelés számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Az Azure Cosmos DB: [Az Azure Cosmos DB teljesítményszintek](../cosmos-db/performance-levels.md)
+* A helyszíni SQL Server: [Figyelése és a teljesítmény hangolása](https://msdn.microsoft.com/library/ms189081.aspx)
+* A helyi fájlkiszolgáló: [Teljesítmény-finomhangolási fájlkiszolgálók](https://msdn.microsoft.com/library/dn567661.aspx)
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység egyéb cikkekben talál:

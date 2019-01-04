@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 17a8e6f6d6d374c6f8620ecb525727e6fee8c4b9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: de730004b55f72cb645c6a31c02fd1fe28a52ecd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501877"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013179"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Adatok átalakítása egy Python-tevékenység fut az Azure Databricksben
 
-Az Azure Databricks Python tevékenység egy [Data Factory-folyamatot](concepts-pipelines-activities.md) az Azure Databricks-fürtön fut egy Python-fájlt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
+Az Azure Databricks Python tevékenység egy [Data Factory-folyamatot](concepts-pipelines-activities.md) az Azure Databricks-fürtön fut egy Python-fájlt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -68,7 +67,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 |név|A folyamat a tevékenység neve.|Igen|
 |leírás|A tevékenység leírása leíró szöveg.|Nem|
 |type|Databricks Python tevékenységhez a tevékenység esetében DatabricksSparkPython.|Igen|
-|linkedServiceName|A Python-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
+|linkedServiceName|A Python-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |pythonFile|URI-ját a Python-fájlt kell végrehajtani. Csak a DBFS elérési utak támogatottak.|Igen|
 |paraméterek|Parancssori paraméterek, amelyek a rendszer átad a Python-fájlt. Ez a karakterláncok tömbje.|Nem|
 |Kódtárak|Telepíteni a fürt, amely végrehajtja a feladat a könyvtárak listáját. Álló tömb lehet < karakterlánc, objektum >|Nem|

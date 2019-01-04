@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: d58e72c4487a3ab6d7b562fd328098d98761da5e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620336"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017157"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -76,7 +75,7 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 >[!NOTE]
 >A Dynamics-összekötő segítségével "szervezetnév" tulajdonság csak akkor használható a Dynamics CRM/365 Online példányát azonosítja. Tartja működik, amíg a használata javasolt a jobb teljesítmény érdekében például felderítési próbál a jeggyel Ehelyett adja meg az új "serviceUri" tulajdonság.
 
-**Például: Dynamics online Office 365-hitelesítés használatával**
+**Példa: Dynamics online Office 365-hitelesítés használatával**
 
 ```json
 {
@@ -121,7 +120,7 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 >[!IMPORTANT]
 >Az adatok másolása a Dynamics-be explicit módon [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) közelében a Dynamics-példány helyét. Társítsa azt a társított szolgáltatás az alábbi példában látható módon.
 
-**Például: Dynamics a helyszínen az internetes Elérésű, internetes Elérésű hitelesítés használatával**
+**Példa: Dynamics a helyszínen az internetes Elérésű, internetes Elérésű hitelesítés használatával**
 
 ```json
 {
@@ -278,7 +277,7 @@ Adatok másolása a Dynamics, állítsa a fogadó típusa a másolási tevékeny
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **DynamicsSink**. | Igen |
 | WriteBehavior | A művelet írási viselkedését.<br/>Az érték engedélyezett **"Upsert"**. | Igen |
 | WriteBatchSize | A sorok száma az egyes kötegekben lévő Dynamics írt adatok. | Nem (az alapértelmezett érték 10) |
-| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok (kivéve a kulcsmezők) null értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: hagyja az adatokat a rendeltetési objektum változatlan marad, ha így tesz, upsert/frissítés művelet. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: frissítse az adatokat a rendeltetési objektumban NULL upsert/frissítés művelet végrehajtásakor. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
+| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok (kivéve a kulcsmezők) null értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, ha így tesz, upsert/frissítés művelet. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: Frissítse az adatokat a rendeltetési objektumban NULL upsert/frissítés művelet végrehajtásakor. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
 
 >[!NOTE]
 >Az alapértelmezett érték a fogadó "**writeBatchSize**"és a másolási tevékenység"**[parallelCopies](copy-activity-performance.md#parallel-copy)**", a Dynamics-fogadó le mindkét 10. Tehát 100 rekordig elküldi Dynamics egyidejűleg.
@@ -333,18 +332,18 @@ A Data Factory megfelelő adattípusokat konfigurálja a forrás Dynamics adatt�
 | AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
 | AttributeType.Customer | GUID | ✓ | | 
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
-| AttributeType.Decimal | tizedes tört | ✓ | ✓ |
+| AttributeType.Decimal | Tizedes tört | ✓ | ✓ |
 | AttributeType.Double | Dupla | ✓ | ✓ |
-| AttributeType.EntityName | Sztring | ✓ | ✓ |
+| AttributeType.EntityName | Karakterlánc | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | GUID | ✓ | ✓ (a kapcsolódó egyetlen cél) |
 | AttributeType.ManagedProperty | Logikai | ✓ | |
-| AttributeType.Memo | Sztring | ✓ | ✓ |
-| AttributeType.Money | tizedes tört | ✓ | ✓ |
+| AttributeType.Memo | Karakterlánc | ✓ | ✓ |
+| AttributeType.Money | Tizedes tört | ✓ | ✓ |
 | AttributeType.Owner | GUID | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | GUID | ✓ | ✓ |
-| AttributeType.String | Sztring | ✓ | ✓ |
+| AttributeType.String | Karakterlánc | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

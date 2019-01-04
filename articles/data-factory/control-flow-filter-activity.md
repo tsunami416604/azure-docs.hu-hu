@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory tevékenység szűréséhez |} Microsoft Docs
-description: A szűrő tevékenység szűrése az adatokat.
+title: Tevékenységszűrés az Azure Data Factoryban |} A Microsoft Docs
+description: 'A tevékenység: Filter szűri a bemeneti adatok.'
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
-ms.openlocfilehash: b3b26869a84b8519ced19a4c93a6d39d6ed20f9b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050352"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021832"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Az Azure Data Factory szűrő tevékenység
-Egy folyamatot egy szűrő tevékenység segítségével egy kifejezést vonatkozik a bemeneti tömb. 
+# <a name="filter-activity-in-azure-data-factory"></a>Az Azure Data Factoryben a tevékenység szűréséhez
+Egy tevékenység: Filter a folyamat segítségével egy kifejezést a bemeneti tömb vonatkoznak. 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -36,18 +35,18 @@ Egy folyamatot egy szűrő tevékenység segítségével egy kifejezést vonatko
 }
 ```
 
-## <a name="type-properties"></a>A típus tulajdonságai
+## <a name="type-properties"></a>Tulajdonságok
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 név | Neve a `Filter` tevékenység. | Sztring | Igen
 type | Meg kell **szűrő**. | Sztring | Igen
 feltétel | A bemeneti szűréshez használandó feltétel. | Kifejezés | Igen
-elem | A bemeneti tömb amelyen szűrőt kell alkalmazni. | Kifejezés | Igen
+elem | A bemeneti tömb, amelyen szűrőt kell alkalmazni. | Kifejezés | Igen
 
 ## <a name="example"></a>Példa
 
-Ebben a példában az adatcsatorna két tevékenység rendelkezik: **szűrő** és **ForEach**. A szűrő konfigurálta a bemeneti tömb 3-nál nagyobb értéket elemek szűrésére. A ForEach tevékenység majd elemein végiglépkedve szűrt értékeit, és megvárja, az aktuális értéke által meghatározott másodpercben.
+Ebben a példában a folyamat két tevékenységet tartalmaz: **Szűrő** és **ForEach**. A szűrő tevékenység a bemeneti számtömbből 3-nál nagyobb értéket az elemek szűréséhez van konfigurálva. A ForEach tevékenység ezután a szűrt értékek ismétel, és megvárja, amíg a jelenlegi érték által megadott másodpercek számát.
 
 ```json
 {
@@ -93,7 +92,7 @@ Ebben a példában az adatcsatorna két tevékenység rendelkezik: **szűrő** �
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi adat-előállító által támogatott vezérlésfolyam-tevékenységek: 
+Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0f16f61e99e059c8cf21ec4ffa85eef0a04702bc
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 63045ce1ac06bfb87595675395a411978a17f95a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972992"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017055"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -41,7 +41,7 @@ A riasztási szabályok panel megnyitásához, és használja a Hozzáadás gomb
 * Állítsa be az erőforrást, mielőtt a többi tulajdonságot. **Válassza ki a "(összetevők)" erőforrást** Ha azt szeretné, a teljesítmény vagy a használati metrikákhoz riasztásokat állíthat be.
 * A neve, amely engedélyezi a riasztást, az erőforráscsoportot (nem csak az alkalmazás) belül egyedinek kell lennie.
 * Ügyeljen arra, hogy vegye figyelembe az egységeket, amelyben kéri, hogy adja meg a küszöbértéket.
-* Ha bejelöli a jelölőnégyzetet "E-mail küldése a tulajdonosoknak...", riasztások által küldött e-mailek mindenki számára, aki hozzáfér az ebben az erőforráscsoportban. Bontsa ki a csoport, akik, adja hozzá őket a [erőforráscsoportba vagy előfizetésbe](../../application-insights/app-insights-resources-roles-access-control.md) (nem az erőforrás).
+* Ha bejelöli a jelölőnégyzetet "E-mail küldése a tulajdonosoknak...", riasztások által küldött e-mailek mindenki számára, aki hozzáfér az ebben az erőforráscsoportban. Bontsa ki a csoport, akik, adja hozzá őket a [erőforráscsoportba vagy előfizetésbe](../../azure-monitor/app/resources-roles-access-control.md) (nem az erőforrás).
 * Ha megadja a "További e-mailek", riasztást kap az adott személyek vagy csoportok (függetlenül attól, be van jelölve az "e-mail-tulajdonosok..." mezőben). 
 * Állítsa be a [webhook cím](../../azure-monitor/platform/alerts-webhooks.md) Ha meg van adva egy webalkalmazást, amely válaszol a riasztásokra. A riasztás aktiválásakor mind a megoldott nevezzük. (De vegye figyelembe, hogy jelenleg lekérdezési paraméterek nem továbbítódnak tulajdonságokként webhook.)
 * Letilthatja a riasztás engedélyezése vagy: a gombok a panel tetején.
@@ -51,7 +51,7 @@ A riasztási szabályok panel megnyitásához, és használja a Hozzáadás gomb
 * Szervezeti fiók használatával? Beállíthat riasztásokat, ha rendelkezik tulajdonosi vagy közreműködői hozzáférést az alkalmazás-erőforrást. Vessen egy pillantást az Access Control panelen. [További tudnivalók a hozzáférés-vezérlés][roles].
 
 > [!NOTE]
-> A riasztások panelen láthatja, hogy már van egy riasztási csoport: [Proaktív diagnosztika](../../application-insights/app-insights-proactive-failure-diagnostics.md). Az automatikus riasztás figyeli egy adott mérőszám, kérelmek hibaaránya. Kivéve, ha úgy dönt, hogy a proaktív riasztás letiltása, nem kell beállítani a saját riasztás kérelmek hibaaránya. 
+> A riasztások panelen láthatja, hogy már van egy riasztási csoport: [Proaktív diagnosztika](../../azure-monitor/app/proactive-failure-diagnostics.md). Az automatikus riasztás figyeli egy adott mérőszám, kérelmek hibaaránya. Kivéve, ha úgy dönt, hogy a proaktív riasztás letiltása, nem kell beállítani a saját riasztás kérelmek hibaaránya. 
 > 
 > 
 
@@ -89,10 +89,10 @@ Népszerű riasztások a következők:
 * **Kiszolgáló válaszideje** webes alkalmazás kiszolgálói oldalára. Riasztások beállítása, valamint ez a mérőszám, ha azt művelettől aránytalanul magas kérelemarányok megtekintéséhez kövesse figyelemmel: variation jelezheti, hogy az alkalmazás fut-e elegendő erőforrással. 
 * **Kiszolgálókivételek** – őket, hogy rendelkezik egy elvégzése [további telepítési](../../azure-monitor/app/asp-net-exceptions.md).
 
-Ne feledje, hogy [proaktív hibadiagnosztika arány](../../application-insights/app-insights-proactive-failure-diagnostics.md) automatikusan figyelni a sebesség, amellyel az alkalmazás válasza, hiba kód-kérelmekre. 
+Ne feledje, hogy [proaktív hibadiagnosztika arány](../../azure-monitor/app/proactive-failure-diagnostics.md) automatikusan figyelni a sebesség, amellyel az alkalmazás válasza, hiba kód-kérelmekre. 
 
 ## <a name="automation"></a>Automation
-* [Riasztások beállítása automatizálása a PowerShell használatával](../../application-insights/app-insights-powershell-alerts.md)
+* [Riasztások beállítása automatizálása a PowerShell használatával](../../azure-monitor/app/powershell-alerts.md)
 * [Webhookok használatával automatizálhatja a riasztásokra való reagálásról](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Videó
@@ -101,14 +101,14 @@ Ne feledje, hogy [proaktív hibadiagnosztika arány](../../application-insights/
 
 ## <a name="see-also"></a>Lásd még
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Riasztások beállítása automatizálása](../../application-insights/app-insights-powershell-alerts.md)
+* [Riasztások beállítása automatizálása](../../azure-monitor/app/powershell-alerts.md)
 * [Proaktív diagnosztika](../../application-insights/app-insights-proactive-diagnostics.md) 
 
 <!--Link references-->
 
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [client]: ../../azure-monitor/app/javascript.md
-[platforms]: ../../application-insights/app-insights-platforms.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[platforms]: ../../azure-monitor/app/platforms.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [start]: ../../application-insights/app-insights-overview.md
 

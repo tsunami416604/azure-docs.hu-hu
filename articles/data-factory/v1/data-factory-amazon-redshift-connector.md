@@ -9,17 +9,16 @@ ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee0cd90b8d1b901f9e8a506674b3f04167b48899
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1fde06f483821b0e9958c25bf5ce37aae4c8f61d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968783"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022019"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +42,7 @@ A Data Factory jelenleg támogatja az Amazon Redshift csak helyez át adatokat e
 ## <a name="getting-started"></a>Első lépések
 Adatok áthelyezése a különböző eszközök és API-k segítségével az Amazon Redshift-forrás egy másolási tevékenységgel rendelkező folyamatot hozhat létre.
 
-A folyamat létrehozásának legegyszerűbb módja, hogy az Azure Data Factory Copy varázslót használja. A folyamatot a másolás varázsló használatával történő létrehozásának egy gyors bemutatóért lásd: a [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
+A folyamat létrehozásának legegyszerűbb módja, hogy az Azure Data Factory Copy varázslót használja. A folyamatot a másolás varázsló használatával történő létrehozásának egy gyors bemutatóért lásd: a [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
 Az Azure Portalon, a Visual Studio, az Azure PowerShell vagy más eszközök használatával is létrehozhat egy folyamatot. Az Azure Resource Manager-sablonok, a .NET API-t vagy a REST API is használható a folyamat létrehozásához. Egy másolási tevékenységgel ellátott adatcsatorna létrehozása a lépésenkénti útmutatójáért lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
@@ -53,7 +52,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Adatkészleteket hoz létre, a másolási művelet bemeneti és kimeneti adatokat képviselik. 
 3. Létrehoz egy folyamatot egy másolási tevékenység, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A másolás varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitások JSON-definíciói. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A [JSON-példa: adatok másolása az Amazon Redshift az Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) jeleníti meg, amely adatokat másol egy Amazon Redshift-adattár segítségével a Data Factory-entitások a JSON-definíciói.
+A másolás varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitások JSON-definíciói. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A [JSON-példa: Adatok másolása az Amazon Redshift az Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) jeleníti meg, amely adatokat másol egy Amazon Redshift-adattár segítségével a Data Factory-entitások a JSON-definíciói.
 
 A következő szakaszok ismertetik az Amazon Redshift a Data Factory-entitások definiálásához használt JSON-tulajdonságokat.
 
@@ -139,7 +138,7 @@ A példa használati esetekhez, a másolási tevékenység először eltávolít
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON-példa: adatok másolása az Amazon Redshift az Azure Blob storage
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON-példa: Amazon Redshift az Azure Blob storage-adatok másolása
 Ez a példa bemutatja, hogyan adatok másolása az Amazon Redshift-adatbázishoz az Azure Blob Storage. Minden közvetlenül az adatok átmásolhatók [támogatott fogadó](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenység használatával.  
 
 A minta az alábbi data factory-entitások rendelkezik:
@@ -334,7 +333,7 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | SMALLINT |Int16 |
 | EGÉSZ SZÁM |Int32 |
 | BIGINT |Int64 |
-| TIZEDES TÖRT |tizedes tört |
+| TIZEDES TÖRT |Tizedes tört |
 | VALÓDI |Önálló |
 | A KÉTSZERES PONTOSSÁG |Dupla |
 | LOGIKAI ÉRTÉK |Karakterlánc |

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 336fe8241a65009e9e100dccd12d88f45df4751d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138245"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999356"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -179,7 +179,7 @@ Alapértelmezés szerint a Functions-proxyk egy API-hívások küldése a proxyk
 
 |Kulcs|Érték|Leírás|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Meghívja a helyi függvényben függvény mutató háttérkiszolgáló url-címet már nem küld közvetlenül a függvényt, és inkább irányítja a rendszer a HTTP-kezelőfelület vissza a a függvényalkalmazás|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|A helyi függvény mutató háttérkiszolgáló url-címet hívások Függvényalkalmazás többé nem kapnak közvetlenül a függvényt, és inkább irányítja a rendszer a HTTP-kezelőfelület vissza a a függvényalkalmazás|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Ez az alapértelmezett érték. A helyi függvény mutató háttérkiszolgáló url-hívások Függvényalkalmazás a rendszer továbbítja közvetlenül a függvény|
 
 

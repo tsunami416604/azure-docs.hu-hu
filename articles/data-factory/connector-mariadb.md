@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 59078ae86adce861f9e4ad3d02e35b12fd345e60
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c62dd8d51d229f2270d244fea06700175c1f5e98
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014879"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MariaDB 
 
@@ -44,7 +43,7 @@ A MariaDB-beli társított szolgáltatás a következő tulajdonságok támogato
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **MariaDB** | Igen |
+| type | A type tulajdonságot kell beállítani: **MariaDB** | Igen |
 | kapcsolati Sztringje | Az ODBC kapcsolati karakterlánc MariaDB csatlakozni. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 

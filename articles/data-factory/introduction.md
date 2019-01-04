@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 87df752f62956cffd455358059a3ab7b275b6a5d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 9704002a30556c76c65ddcad1cb576fbf4502b55
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090496"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014301"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,7 +112,7 @@ A Data Factory alapelveivel kapcsolatban további információkat a következő 
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.
+Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.
 
 Maga az Azure Data Factory nem tárol adatokat. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a támogatott adattárak közötti adatmozgás és az adatok számítási szolgáltatásokkal történő feldolgozása más régiókban, illetve helyszíni környezetben. Lehetővé teszi továbbá a munkafolyamatok monitorozását és kezelését mind szoftveres, mind pedig felhasználói felületi mechanizmusokkal.
 

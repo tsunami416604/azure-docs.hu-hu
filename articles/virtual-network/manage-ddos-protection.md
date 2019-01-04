@@ -1,5 +1,6 @@
 ---
-title: Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával |} A Microsoft Docs
+title: Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
+titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan használhatja az Azure DDoS Protection normál telemetriai az Azure monitorban támadás.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 39525c7e25e247504429ea36210986a5e3300cc1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 360c0d9a96b8dac2f08b89caa8c1fd36e8a54b3f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537172"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020421"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 

@@ -9,17 +9,16 @@ ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2498fbef8d13fe9c61fd474dbbb678aa0b133e8a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728412"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015539"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása és a Data Lake Storage Gen1 Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,9 +52,9 @@ Azt javasoljuk, hogy használjon egyszerű szolgáltatásnév hitelesítése, k�
 ## <a name="get-started"></a>Bevezetés
 Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez és-tárolókról az Azure Data Lake Store más eszközök/API-k használatával.
 
-Az adatok másolása folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. A folyamat létrehozása a másolás varázsló használatával, olvassa el [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
+Az adatok másolása folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. A folyamat létrehozása a másolás varázsló használatával, olvassa el [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
--Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
@@ -130,7 +129,7 @@ Felhasználói hitelesítő adatok hitelesítési segítségével azt is megtehe
 >- **Data Lake Store használatára pedig a fogadó**, adjon meg legalább **írás + végrehajtás** adat-hozzáférési engedély szükséges gyermekelemek létrehozásához a mappában. Ha Azure integrációs modul használatával lehetővé teheti a másolás és (a forrás- és fogadó olyan felhőbeli), annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory szolgáltatás segítségével, adjon meg legalább **olvasó** szerepkört a fiókhoz hozzáférés-vezérlés (IAM). Ha el szeretné kerülni ezt IAM szerepkör [adja meg az executionlocation használata a következő](data-factory-data-movement-activities.md#global) helyét, a Data Lake Store a másolási tevékenység.
 >- Ha Ön **folyamatok létrehozását a másolás varázsló használatával**, adjon meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkör. Emellett adja meg legalább **Olvasás + végrehajtás** a Data Lake Store gyökér ("/") és annak gyermekeihez engedéllyel. Ellenkező esetben előfordulhat, hogy az üzenetet látja "a megadott hitelesítő adatok érvénytelenek."
 
-**Például: Felhasználói hitelesítő adatok hitelesítése**
+**Példa: Felhasználói hitelesítő adatok hitelesítése**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",
@@ -150,7 +149,7 @@ Felhasználói hitelesítő adatok hitelesítési segítségével azt is megtehe
 #### <a name="token-expiration"></a>Jogkivonat lejáratáról
 Az engedélyezési kódot, amely a használatával létrehozhat a **engedélyezés** gombra egy bizonyos idő elteltével lejár. A következő üzenet azt jelenti, hogy a hitelesítési jogkivonat lejárt:
 
-Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő adatok ellenőrzése. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 időbélyeg: 2015. 12 – 15 21-09-31Z.
+Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 időbélyeg: 2015. 12 – 15 21-09-31Z.
 
 Az alábbi táblázat a különböző típusú felhasználói fiókokat lejárati idejét jeleníti meg:
 
@@ -192,13 +191,13 @@ A Data Factory-osztályokat használja a kód kapcsolatos részletekért lásd: 
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-**Jelenség:** Példatípust az adatok **be** Azure Data Lake Store, ha a másolási tevékenység sikertelen lesz a következő hiba miatt:
+**Jelenség:** Ha másol adatokat **be** Azure Data Lake Store, ha a másolási tevékenység sikertelen lesz a következő hiba miatt:
 
   ```
   Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
   ```
 
-**Alapvető ok:** 2 oka lehet:
+**Alapvető ok:** Van 2 lehetséges okok:
 
 1. A `resourceGroupName` és/vagy `subscriptionId` megadott Azure Data Lake Store társított szolgáltatás helytelen;
 2. A felhasználó vagy az egyszerű szolgáltatás nem rendelkezik a szükséges engedéllyel.
@@ -241,9 +240,9 @@ A **typeProperties** szakasz egy adatkészlet típusú **AzureDataLakeStore** a 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **folderPath** |A tároló és a Data Lake Store-mappában elérési útja. |Igen |
-| **Fájlnév** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban kell adatokat. _GUID_.txt'. Például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
+| **Fájlnév** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban kell adatokat. _GUID_.txt'. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
 | **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Használhatja a dinamikus elérési út és fájlnév idősorozat-adatok megadása. Ha például **folderPath** az adatok óránkénti rendelkeznek. Részletek és példák: [partitionedBy tulajdonság](#using-partitionedby-property). |Nem |
-| **Formátum** | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és  **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt **formátum** az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszát a [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) cikk. <br><br> Ha azt szeretné, a fájlok másolása a "as-van" közötti fájlalapú tárolók (bináris másolat), hagyja ki a `format` mindkét bemeneti és kimeneti adatkészlet-definíciók szakaszában. |Nem |
+| **Formátum** | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt **formátum** az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszát a [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) cikk. <br><br> Ha azt szeretné, a fájlok másolása a "as-van" közötti fájlalapú tárolók (bináris másolat), hagyja ki a `format` mindkét bemeneti és kimeneti adatkészlet-definíciók szakaszában. |Nem |
 | **A tömörítés** | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 ### <a name="the-partitionedby-property"></a>A partitionedBy tulajdonság
@@ -291,7 +290,7 @@ A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenységek sz
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| **a copyBehavior** |Meghatározza a másolási viselkedés. |<b>PreserveHierarchy</b>: megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><br/><b>FlattenHierarchy</b>: az első szintjét a célmappában jönnek létre a forrásmappából összes fájlt. A cél fájlok jönnek létre automatikusan létrehozott névvel.<br/><br/><b>MergeFiles</b>: egyesíti a forrásmappából egy fájl összes fájlt. A fájl- vagy blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben a fájlnév formátuma automatikusan létrehozott. |Nem |
+| **a copyBehavior** |Meghatározza a másolási viselkedés. |<b>PreserveHierarchy</b>: Megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><br/><b>FlattenHierarchy</b>: Minden fájl a forrásmappából az első szintjét a célmappában jönnek létre. A cél fájlok jönnek létre automatikusan létrehozott névvel.<br/><br/><b>MergeFiles</b>: Egy fájl összes fájlt a forrásmappából egyesíti. A fájl- vagy blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben a fájlnév formátuma automatikusan létrehozott. |Nem |
 
 ### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
 Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet rekurzív és copyBehavior értékek különböző kombinációihoz.

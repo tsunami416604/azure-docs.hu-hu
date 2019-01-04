@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 8beabfb8c77d4d62b9b15dca8ae3146c34c3b20a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634812"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998676"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Rövid útmutató: Üzenetek küldése és fogadása az Azure CLI és a Java használatával
+# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Gyors útmutató: Azure CLI és a Java használatával üzenetek küldése és fogadása
 
 A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását (az alkalmazásoknak nem kell egyidejűleg online állapotban lenniük), az állapot- vagy adatváltozások továbbítását, valamint az alkalmazások közötti üzenetküldést foglalja magában. 
 
@@ -66,7 +66,7 @@ Az utolsó parancs futtatása után másolja ki és illessze be a kapcsolati szt
 
 ## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 
-Miután létrehozta a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java) vizsgálhatja meg.
+Miután létrehozta a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
 
 1. Győződjön meg róla, hogy a Cloud Shell nyitva van, és a Bash-parancssort jeleníti meg.
 
@@ -108,7 +108,7 @@ az group delete --resource-group myResourceGroup
 
 ## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
-Ez a szakasz a mintakód fő szakaszaival kapcsolatos további részleteket ismerteti. A GitHub-adattárban található kódot megkeresheti [itt](https://github.com/Azure/azure-service-bus/blob/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java).
+Ez a szakasz a mintakód fő szakaszaival kapcsolatos további részleteket ismerteti. A GitHub-adattárban található kódot megkeresheti [itt](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 

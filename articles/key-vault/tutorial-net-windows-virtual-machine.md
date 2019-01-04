@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Key Vault használata az Azure Windows virtuális gép .NET-keretrendszerben |} A Microsoft Docs
+title: Oktatóanyag – az Azure Key Vault az Azure Windows virtuális gép használata a .NET-keretrendszerhez – Azure Key Vault hogyan |} A Microsoft Docs
 description: 'Oktatóanyag: ASP.NET Core-alkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához'
 services: key-vault
 documentationcenter: ''
@@ -9,15 +9,15 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: eb27bed02b44cad791a0c1fa2c8e0ed0b54537cd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f12d73904b547da6531e24a899277eca7dd46660
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972549"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998761"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Oktatóanyag: Az Azure Key Vault használata az Azure Windows virtuális gép a .NET-ben
 
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban egy konzolalkalmazást adatokat olvasni az Azure Key Va
 > * A Konzolalkalmazás adatokat olvasni a key vault szükséges engedélyeket.
 > * Titkos kódok lekérése a Key Vaultból
 
-A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#basic-concepts).
+Mielőtt továbbmennénk, olvassa el a [alapvető fogalmait](key-vault-whatis.md#basic-concepts).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Összes platform:
@@ -45,6 +45,7 @@ A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#b
 Ebben az oktatóanyagban felhasznál a Felügyeltszolgáltatás-identitást
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Mi az a Managed Service Identity, és hogyan működik?
+
 A folytatás előtt ismerkedjünk meg az MSI-vel. Az Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem találhatók meg a kódban, azonban a lekérésükhöz hitelesítés szükséges az Azure Key Vaultban. A Key Vaultban való hitelesítéshez hitelesítő adatokra van szükség. Klasszikus rendszerindítási probléma. Az MSI az Azure és az Azure AD révén egy „rendszerindítási identitást” biztosít, amellyel sokkal egyszerűbb nekilátni a feladatoknak.
 
 Lássuk, hogyan működik! Ha engedélyezi az MSI-t egy Azure-szolgáltatás, például a Virtual Machines, az App Service vagy a Functions számára, az Azure létrehoz egy [szolgáltatásnevet](key-vault-whatis.md#basic-concepts) a szolgáltatás Azure Active Directoryban található példánya számára, majd beszúrja a szolgáltatásnév hitelesítő adatait a szolgáltatás példányába. 
@@ -54,9 +55,9 @@ Lássuk, hogyan működik! Ha engedélyezi az MSI-t egy Azure-szolgáltatás, p�
 Ezután a kód meghívja a egy helyi metadata szolgáltatás érhető el a az Azure-erőforráshoz hozzáférési jogkivonatot kapjon.
 A kód a helyi MSI_ENDPOINT-tól beszerzett hozzáférési jogkivonattal végzi el a hitelesítést az Azure Key Vault szolgáltatásban. 
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Ha az Azure-ba az Azure CLI használatával szeretne bejelentkezni, írja be a következőt:
+Jelentkezzen be az Azure-bA az Azure CLI-vel, írja be:
 
 ```azurecli
 az login
@@ -131,7 +132,7 @@ Most már biztosítani tudjuk a fent létrehozott Key Vault identitás engedély
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>Jelentkezzen be a virtuális gép
+## <a name="sign-in-to-the-virtual-machine"></a>Jelentkezzen be a virtuális gép
 
 Kövesse ezt [oktatóanyag](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)
 
@@ -143,7 +144,7 @@ Kövesse a jelen telepítheti a .NET Core [cikk](https://www.microsoft.com/net/d
 
 Nyisson meg egy parancssort
 
-Futtassa az alábbi parancsokkal látnia kell a "Hello World" nyomtatott a konzolhoz
+Futtassa az alábbi parancsokat, megjelenik a konzol nyomtatott "Hello World"
 
 ```
 dotnet new console -o helloworldapp
@@ -161,7 +162,8 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-Módosítsa az osztály a fájlban az alábbi kód. A 2. lépés folyamatban. 
+Módosítsa az osztály a fájlban az alábbi kód. A 2. lépés folyamatban.
+
 1. Jogkivonatot beolvasni a helyi MSI-végpontot a virtuális gépen, amely ezután lekéri egy tokent az Azure Active Directoryból
 2. A jogkivonat átadni a Key Vault és a titkos kód beolvasása 
 

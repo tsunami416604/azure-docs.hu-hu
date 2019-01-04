@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: a47d0130cd06a936da456ec6d78bde99907072f2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a271359f09ca63e1a0c3a143994739ee7db8aab
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526300"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014182"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Adatok átalakítása egy Jar tevékenység futtatja az Azure Databricksben
 
-Az Azure Databricks Jar tevékenységének egy [Data Factory-folyamatot](concepts-pipelines-activities.md) egy Spark-Jar fut az Azure Databricks-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
+Az Azure Databricks Jar tevékenységének egy [Data Factory-folyamatot](concepts-pipelines-activities.md) egy Spark-Jar fut az Azure Databricks-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -62,7 +61,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 |név|A folyamat a tevékenység neve.|Igen|
 |leírás|A tevékenység leírása leíró szöveg.|Nem|
 |type|Databricks Jar tevékenységhez a tevékenység típus DatabricksSparkJar.|Igen|
-|linkedServiceName|A Jar-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
+|linkedServiceName|A Jar-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |mainClassName|Az osztály, amely tartalmazza a fő módszert hajtható végre teljes neve. Ez az osztály egy JAR kódtárként megadott tartalmaznia kell.|Igen|
 |paraméterek|A fő metódusnak átadott paraméterek.  Ez a karakterláncok tömbje.|Nem|
 |Kódtárak|Telepíteni a fürt, amely végrehajtja a feladat a könyvtárak listáját. Álló tömb lehet < karakterlánc, objektum >|Igen (legalább egy tartalmazó mainClassName módszer)|

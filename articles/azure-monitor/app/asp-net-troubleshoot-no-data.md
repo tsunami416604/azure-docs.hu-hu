@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e1b06328f02ebad77f98acc480c146793f124c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2695f4e2dcd2441b0a8845bd194d4e393e1d7ca
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970458"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020472"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
 *Az Application Insights csak látható az alkalmazás által generált események töredékéért.*
 
-* Az azonos töredék következetesen jelennek meg, esetén valószínűleg miatt adaptív [mintavételi](../../application-insights/app-insights-sampling.md). Ennek ellenőrzéséhez nyissa meg a keresési (az Áttekintés panelről), és tekintse meg a kérelem vagy más esemény egy példányát. A Tulajdonságok szakaszának alján kattintson a "...", teljes tulajdonság részletes. Ha a Count > 1 kérelem, majd a mintavétel van folyamatban. 
-* Ellenkező esetben lehetséges, hogy állt egy [sávszélesség-korlátjának](../../application-insights/app-insights-pricing.md#limits-summary) a díjcsomagra. Ezek a korlátok percenkénti érvényesek.
+* Az azonos töredék következetesen jelennek meg, esetén valószínűleg miatt adaptív [mintavételi](../../azure-monitor/app/sampling.md). Ennek ellenőrzéséhez nyissa meg a keresési (az Áttekintés panelről), és tekintse meg a kérelem vagy más esemény egy példányát. A Tulajdonságok szakaszának alján kattintson a "...", teljes tulajdonság részletes. Ha a Count > 1 kérelem, majd a mintavétel van folyamatban. 
+* Ellenkező esetben lehetséges, hogy állt egy [sávszélesség-korlátjának](../../azure-monitor/app/pricing.md#limits-summary) a díjcsomagra. Ezek a korlátok percenkénti érvényesek.
 
 ## <a name="no-data-from-my-server"></a>Nincsenek a kiszolgálón lévő adatok
 *Az alkalmazás telepítése a webkiszolgálón, és be van kapcsolva, nem látható semmilyen telemetriai adatot belőle. A fejlesztői gépen, dolgoztam OK.*
@@ -51,7 +51,7 @@ Valószínű okai a következők:
 
 * Nem sikerült az Application Insights portálon kommunikációt; vagy
 * Probléma lép fel az Azure-fiókkal;
-* Csak [olvasási hozzáférést az előfizetés vagy a csoport, ahol próbált létrehozni az új erőforrás](../../application-insights/app-insights-resources-roles-access-control.md).
+* Csak [olvasási hozzáférést az előfizetés vagy a csoport, ahol próbált létrehozni az új erőforrás](../../azure-monitor/app/resources-roles-access-control.md).
 
 Javítás:
 
@@ -95,7 +95,7 @@ A Microsoft bejelentkezési a legutóbb használt az alapértelmezett böngész�
 * Egynél több Microsoft-fiók – talán egy munkahelyi és személyes Microsoft-fiókkal van? A legutóbb használt az alapértelmezett böngészőben a bejelentkezési volt-e egy másik fiókot, amely hozzáféréssel rendelkezik [az Application Insights hozzáadása a projekthez](../../azure-monitor/app/asp-net.md). 
   
   * Javítás: Kattintson a nevére, a böngésző ablakának jobb oldalán, és jelentkezzen ki. Majd jelentkezzen be azzal a fiókkal, amely hozzáféréssel rendelkezik. Ezután a bal oldali navigációs sávon kattintson az Application Insights, és válassza ki az alkalmazást.
-* Valaki más Application Insights hozzáadja a projekthez, és azokat, hogy elfelejtette [hozzáférés az erőforráscsoporthoz](../../application-insights/app-insights-resources-roles-access-control.md) található, amely lett létrehozva. 
+* Valaki más Application Insights hozzáadja a projekthez, és azokat, hogy elfelejtette [hozzáférés az erőforráscsoporthoz](../../azure-monitor/app/resources-roles-access-control.md) található, amely lett létrehozva. 
   
   * Javítás: Ha szervezeti fiókkal használják, azokat is hozzáadhatja a csapat; akkor is, az egyes való hozzáférés engedélyezése vagy az erőforráscsoportot.
 
@@ -167,7 +167,7 @@ Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java web
 * Elérte a havi kvóta adatpontok? Nyissa meg a beállítások/kvóta és díjszabás megtudhatja. Ha igen, váltson magasabb szintű csomagra, vagy további kapacitást kell fizetnie. Tekintse meg a [díjszabási séma](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Felfedezhetem minden adat nem látható
-Ha az alkalmazás nagy mennyiségű adatot küld el, és használja az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb, illetve a [adaptív mintavételezés](../../application-insights/app-insights-sampling.md) funkció is működnek, és csak a telemetria százalékában küldjön. 
+Ha az alkalmazás nagy mennyiségű adatot küld el, és használja az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb, illetve a [adaptív mintavételezés](../../azure-monitor/app/sampling.md) funkció is működnek, és csak a telemetria százalékában küldjön. 
 
 Bármikor letilthatja azt, de ez nem ajánlott. Mintavételi célja, hogy a kapcsolódó telemetriai adatokat megfelelően továbbítani, diagnosztikai célokra. 
 

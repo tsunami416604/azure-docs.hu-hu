@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 90c36e728a8ec91606f93c080258eeca9c3825e6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423728"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020778"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach tevékenység az Azure Data Factoryban
 A ForEach tevékenység ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
@@ -86,7 +85,7 @@ Ha **isSequential** hamis értékre van állítva, a tevékenység, amely legfel
 A ForEach tevékenység adja meg a tulajdonság végrehajtódik a tömb **elemek**. " Használat `@item()` egyetlen enumerálás ciklustevékenység a ForEach tevékenység. Például ha **elemek** tömb: [1, 2, 3], `@item()` 1 az első példányát, a második ismétléskor 2 és 3, a harmadik ismétléskor adja vissza.
 
 ## <a name="iterating-over-a-single-activity"></a>Egyetlen tevékenységgel keresztül léptetés
-**Forgatókönyv:** több cél fájlt az Azure-Blobban található azonos forrásfájlból az Azure-Blobban található másolás.
+**Forgatókönyv:** Ugyanazt a fájlt az Azure Blob másolása az Azure-Blobban található több cél fájlt.
 
 ### <a name="pipeline-definition"></a>Folyamat meghatározása
 
@@ -237,7 +236,7 @@ Több tevékenység ciklustevékenység lehetséges (például: másolás és a 
 
 ```
 ### <a name="example"></a>Példa
-**Forgatókönyv:** Iterate belül egy ForEach tevékenység a folyamat végrehajtása tevékenység egy InnerPipeline keresztül. A paraméteres sémadefiníciók belső másol.
+**Forgatókönyv:** Egy ForEach tevékenység a folyamat végrehajtása tevékenység belül egy InnerPipeline ciklustevékenység. A paraméteres sémadefiníciók belső másol.
 
 #### <a name="master-pipeline-definition"></a>Minta folyamatdefiníció
 

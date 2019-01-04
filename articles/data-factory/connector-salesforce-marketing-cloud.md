@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a9916a412341d0b345bfc7a0e0f28d8e0add1846
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6b45284f8fe4bd7fb45e89eeecf13ae7b9b2969b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081456"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016681"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Salesforce Marketing Cloud
 
@@ -45,7 +44,7 @@ Salesforce Marketing Cloud-beli társított szolgáltatás a következő tulajdo
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **következőhöz: SalesforceMarketingCloud** | Igen |
+| type | A type tulajdonságot kell beállítani: **Következőhöz: SalesforceMarketingCloud** | Igen |
 | clientId | A Salesforce Marketing Cloud alkalmazással társított ügyfél-azonosító.  | Igen |
 | clientSecret | Az ügyfél titkos kulcsát, a Salesforce Marketing Cloud-alkalmazáshoz társított. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |

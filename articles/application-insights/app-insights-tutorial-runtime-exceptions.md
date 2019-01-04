@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 820f43a8caa5e0d6d9960985fd1d46271071b0fb
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 2b9542f9f67b3d26609f35cf8b8705b11b3a4b72
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742830"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023522"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -66,7 +66,7 @@ Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, �
 
     ![Sikertelen kérelmek mintái](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. A sikertelen kérés részleteit mutató oldal Gantt-diagramot jelenít meg, amely megmutatja, hogy két függőségi hiba történt ebben a tranzakcióban, amelyek együtt a teljes időtartam több mint 50%-át tették ki. Ez a felület az összes olyan telemetriát megjeleníti, amely ezen műveleti azonosítóhoz kötődő hozzárendelt alkalmazások alkotóelemeire vonatkozik. [További információ az új felületről](app-insights-transaction-diagnostics.md). Ha kiválasztja bármelyik elemet, a jobb oldalon megjelennek az elem részletei. 
+6. A sikertelen kérés részleteit mutató oldal Gantt-diagramot jelenít meg, amely megmutatja, hogy két függőségi hiba történt ebben a tranzakcióban, amelyek együtt a teljes időtartam több mint 50%-át tették ki. Ez a felület az összes olyan telemetriát megjeleníti, amely ezen műveleti azonosítóhoz kötődő hozzárendelt alkalmazások alkotóelemeire vonatkozik. [További információ az új felületről](../azure-monitor/app/transaction-diagnostics.md). Ha kiválasztja bármelyik elemet, a jobb oldalon megjelennek az elem részletei. 
 
     ![Sikertelen kérelem részletei](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
 

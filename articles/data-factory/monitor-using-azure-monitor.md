@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 99cca60fe13b9757b3328d00cf66b673c95f66ea
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 53fcaab5d98dd63579390105f3b62c053208e894
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558430"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020302"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Riasztás megjelenítése és figyelése az Azure Monitor használatával adat-előállítók
 A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, hogy az alkalmazás mindig elérhető fel az adatokat és kifogástalan állapotban fut figyelést biztosít. Segít, hogy ki a lehetséges problémák stave vagy korábbi kiépítettektől hibaelhárítása. Monitorozási adatok segítségével emellett részletes elemzéseket kaphat az alkalmazásról. A Tudásbázis segítségével javíthatja az alkalmazás teljesítménye vagy Karbantarthatóság, vagy ellenkező esetben manuális beavatkozást igénylő műveletek automatizálása.

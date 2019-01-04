@@ -1,5 +1,5 @@
 ---
-title: Az Azure Key Vault használata egy webalkalmazásból – oktatóanyag | Microsoft Docs
+title: Az Azure Key Vault használata egy webalkalmazás-oktatóanyag – Azure Key Vault |} A Microsoft Docs
 description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Key Vaultot egy webalkalmazásból.
 services: key-vault
 author: barclayn
@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 85eb7762437bff8d9f6f6a360fc9cc1ea2e6e145
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 79bccbcbcf78de18504c5cb0235e29930d90ede8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718214"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999305"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Oktatóanyag: Az Azure Key Vault használata egy webalkalmazásból
 
@@ -71,8 +71,6 @@ Három alkalmazásbeállítást kell hozzáadnia a web.config fájlhoz a követk
     <add key="SecretUri" value="secreturi" />
     <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
-
-
 
 ## <a id="gettoken"></a>Metódus hozzáadása hozzáférési jogkivonat lekéréséhez
 
@@ -188,7 +186,7 @@ A parancsok futtatása után láthatja az alkalmazást az Azure AD-ben. Az alkal
 
 Most kódot adunk a webalkalmazáshoz a tanúsítvány elérése érdekében, és hitelesítésre használjuk. 
 
-Először van egy kód a tanúsítvány eléréséhez. Figyelje meg, hogy a StoreLocation a LocalMachine helyett CurrentUser értékű. És hogy „false” értéket adunk meg a Find metódushoz, mert teszttanúsítványt használunk.
+Először van egy kód a tanúsítvány eléréséhez. A tároló helye CurrentUser helyett a helyi gépen lévő. És hogy „false” értéket adunk meg a Find metódushoz, mert teszttanúsítványt használunk.
 
 ```cs
 //Add this using statement

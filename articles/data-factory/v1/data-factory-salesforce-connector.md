@@ -9,17 +9,16 @@ ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b4485344f0bb85cb5dd2a2d621833d0fed15a8e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125670"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022478"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +34,7 @@ Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure da
 Az Azure Data Factory jelenleg csak helyez át adatokat, a Salesforce-ból támogatja [támogatott fogadó adattárakba](data-factory-data-movement-activities.md#supported-data-stores-and-formats), de nem támogatott amely adatokat helyez át más adatokat tárolja, a Salesforce-hoz.
 
 ## <a name="supported-versions"></a>Támogatott verziók
-Ez az összekötő támogatja az alábbi kiadásainak Salesforce: Developer Edition szoftverhez, Professional Edition, Enterprise Edition vagy korlátlan Edition. És a Salesforce éles, védőfal és az egyéni tartomány másolása támogatja.
+Ez az összekötő támogatja az alábbi kiadásainak Salesforce-ban: Developer Edition szoftverhez, Professional Edition, Enterprise Edition vagy korlátlan Edition. És a Salesforce éles, védőfal és az egyéni tartomány másolása támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * API-t jogosultsági engedélyezve kell lennie. Lásd: [hogyan engedélyezhető az engedélyek beállítása a Salesforce-ban API-hozzáférés?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
@@ -52,9 +51,9 @@ A "REQUEST_LIMIT_EXCEEDED" hiba a mindkét forgatókönyvet is kaphat. "API-t k�
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a Salesforce-ból a különböző eszközök/API-k használatával.
 
-A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
--Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
 
@@ -62,7 +61,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
 3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások használatával adatait átmásolhatja a Salesforce-hoz használt JSON-definíciói egy minta: [JSON-példa: adatok másolása a Salesforce-ból az Azure-Blobba](#json-example-copy-data-from-salesforce-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások használatával adatait átmásolhatja a Salesforce-hoz használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása a Salesforce-ból az Azure-Blobba](#json-example-copy-data-from-salesforce-to-azure-blob) című szakaszát. 
 
 A következő szakaszok a Salesforce-hoz adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért: 
 
@@ -71,7 +70,7 @@ Az alábbi táblázat ismerteti a Salesforce-beli társított szolgáltatás ado
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonság értékre kell állítani: **Salesforce**. |Igen |
+| type |A type tulajdonságot kell beállítani: **A Salesforce**. |Igen |
 | environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> – Alapértelmezett érték a "https://login.salesforce.com". <br> – Adatok másolása a tesztkörnyezetből, adja meg a "https://test.salesforce.com". <br> – Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
 | jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
@@ -125,7 +124,7 @@ Lekérdezés a helyreállíthatóan törölt rekordok a Salesforce Lomtárból, 
 * A törölt rekordok lekérdezése, adja meg a "kiválasztása * MyTable__c a **ahol IsDeleted = 1**"
 * Lekérdezés az összes többek között a meglévő és a törölt a rekordokat, adja meg a "válassza * MyTable__c a **ahol IsDeleted = 0 vagy IsDeleted = 1**"
 
-## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-példa: adatok másolása a Salesforce-ból az Azure Blobba
+## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-példa: Adatok másolása a Salesforce-ból az Azure Blobba
 Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Salesforce-ból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
 
 Az alábbiakban a Data Factory-összetevők, amelyek kell létrehozni a forgatókönyv megvalósításához. A listán a következő szakaszok ezeket a lépéseket részleteket nyújtanak.
@@ -204,7 +203,7 @@ Beállítás **külső** való **igaz** a Data Factory szolgáltatás tájékozt
 
 **Azure blobkimeneti adatkészlet**
 
-Adatok írása egy új blob minden órában (frequency: óra, az interval: 1).
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.).
 
 ```json
 {
@@ -289,15 +288,15 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 | --- | --- |
 | Automatikus száma |Sztring |
 | Jelölőnégyzet |Logikai |
-| Currency (Pénznem) |tizedes tört |
+| Currency (Pénznem) |Tizedes tört |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
 | E-mail |Sztring |
 | Azonosító |Sztring |
 | Keresési kapcsolat |Sztring |
 | Többszörös kijelöléses értéklista |Sztring |
-| Szám |tizedes tört |
-| Százalék |tizedes tört |
+| Szám |Tizedes tört |
+| Százalék |Tizedes tört |
 | Telefonszám |Sztring |
 | Értéklista |Sztring |
 | Szöveg |Sztring |

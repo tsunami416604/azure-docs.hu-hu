@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: b528507d0f12cda72855db19aa28c7b06a4e26c1
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 776b1eb71b4f15c3376644de92205a4eeb77e4b2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345215"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020523"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +53,7 @@ Az SQL Server-alapú társított szolgáltatás a következő tulajdonságok tá
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **SqlServer** | Igen |
+| type | A type tulajdonságot kell beállítani: **SQL Server** | Igen |
 | kapcsolati Sztringje |Az SQL-hitelesítés vagy a Windows-hitelesítés használatával az SQL Server-adatbázishoz való csatlakozáshoz szükséges connectionString információkat adják meg. Tekintse meg a következő mintát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | Felhasználónév |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Nem |
@@ -254,7 +253,7 @@ Adatok másolása az SQL Server, állítsa be a fogadó típusa a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **SqlSink** | Igen |
-| WriteBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát.<br/>Engedélyezett értékek a következők: egész szám (sorok száma). |Nem (alapértelmezett: 10000) |
+| WriteBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát.<br/>Engedélyezett értékek a következők: egész szám (sorok száma). |Nem (alapértelmezett: 10 000) |
 | writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Engedélyezett értékek a következők: időtartam. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adjon meg egy SQL-lekérdezést az SQL Server adatainak írása előtt hajtsa végre a másolási tevékenység. Azt fogja csak egyszer hívhatók példányonkénti futtatni. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok céloldali táblához, pl. do upserts vagy a saját üzleti logika átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás lesz **kötegenként meghívása**. Ha azt szeretné, hogy csak egyszer fut, és nem a forrásadatokat, például törlés/truncate, használja a művelet elvégzéséhez `preCopyScript` tulajdonság. |Nem |
@@ -534,7 +533,7 @@ Példatípust az adatok, vagy az SQL Server, a következő hozzárendeléseket h
 3. Ugyanebben a ablakban kattintson duplán **TCP/IP** elindításához **TCP/IP-tulajdonságok** ablak.
 4. Váltson a **IP-címek** fülre. Legörgetve találja meg **IPAll** szakaszban. Jegyezze fel a ** TCP-Port ** (alapértelmezett érték a **1433-as**).
 5. Hozzon létre egy **szabály a Windows tűzfal** ezen a porton keresztül bejövő adatforgalmát engedélyező a gépen.  
-6. **Kapcsolat ellenőrzése**: szeretne csatlakozni az SQL Server teljesen minősített nevet, használja az SQL Server Management Studio egy másik gépről. Például: `"<machine>.<domain>.corp.<company>.com,1433"`.
+6. **Kapcsolat ellenőrzése**: Szeretne csatlakozni az SQL Server teljesen minősített nevet, használja az SQL Server Management Studio egy másik gépről. Például: `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 
 ## <a name="next-steps"></a>További lépések

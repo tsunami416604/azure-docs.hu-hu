@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 424de36dbbd3b09e635679900110148b9edd0242
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 58afbdf3488850a643e7d4b8979bf860f93141df
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422882"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014114"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -104,10 +103,12 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | type                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
 | linkedServiceName     | Társított szolgáltatás az Azure Batch szolgáltatásban. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  | Igen      |
 | command               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
-| resourceLinkedService | Az Azure Storage társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | Nem       |
-| folderPath            | Az egyéni alkalmazást és annak összes függőségét a mappa elérési útja<br/><br/>Ha rendelkezik egy hierarchikus mapparendszert almappák – azaz tárolt függőségek *folderPath* – a gyökérmappa-szerkezetében jelenleg lett simítva, amikor a rendszer átmásolja a fájlokat az Azure Batch. Azt jelenti minden fájl átkerülnek egy mappát az almappák nélkül. Ez a probléma megkerüléséhez, fontolja meg a fájlok tömörítése, a tömörített fájl másolása és majd kicsomagolta egyéni kódot a kívánt helyre. | Nem       |
+| resourceLinkedService | Az Azure Storage társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | nem&#42;       |
+| folderPath            | Az egyéni alkalmazást és annak összes függőségét a mappa elérési útja<br/><br/>Ha rendelkezik egy hierarchikus mapparendszert almappák – azaz tárolt függőségek *folderPath* – a gyökérmappa-szerkezetében jelenleg lett simítva, amikor a rendszer átmásolja a fájlokat az Azure Batch. Azt jelenti minden fájl átkerülnek egy mappát az almappák nélkül. Ez a probléma megkerüléséhez, fontolja meg a fájlok tömörítése, a tömörített fájl másolása és majd kicsomagolta egyéni kódot a kívánt helyre. | nem&#42;       |
 | referenceObjects      | Meglévő társított szolgáltatásokat és adatkészleteket tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket lesznek átadva a egyéni alkalmazás JSON formátumban, az egyéni kódot is lehet hivatkozni az adat-előállító erőforrások | Nem       |
 | extendedProperties    | Ezért az egyéni kódot is lehet hivatkozni a további tulajdonságok az egyéni alkalmazás JSON formátumban kell átadni, felhasználó által definiált tulajdonságai | Nem       |
+
+&#42;A Tulajdonságok `resourceLinkedService` és `folderPath` kell adható meg egyszerre, vagy mindkettő ki lehet hagyni.
 
 ## <a name="custom-activity-permissions"></a>Egyéni tevékenység engedélyek
 
@@ -353,7 +354,7 @@ Teljes minta, hogyan a teljes körű DLL-t és a folyamat minta ismertetett az a
 ## <a name="auto-scaling-of-azure-batch"></a>Automatikus skálázás az Azure Batch
 Az Azure Batch-készlet is létrehozhat **automatikus skálázási** funkció. Létrehozhat például egy azure batch-készletet 0 dedikált virtuális gépek és az automatikus skálázás képletét a függőben lévő feladatok száma alapján. 
 
-A mintául szolgáló képlet itt éri el a következő viselkedés: a készlet létrehozásakor először, 1 virtuális gép kezdődik. $PendingTasks metrika határozza meg, hogy a feladatok száma futó + (sorban áll) aktív állapotban.  A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Tehát új feladatokat az elküldésüket készlet automatikusan nő befejeződött feladatokat, mint a virtuális gépek ingyenes egyenként válnak és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. igény szerinti startingNumberOfVMs és maxNumberofVMs kell beállítani.
+A mintául szolgáló képlet itt éri el a következő viselkedés: Amikor először hozza létre a készletet, 1 virtuális gép kezdődik. $PendingTasks metrika határozza meg, hogy a feladatok száma futó + (sorban áll) aktív állapotban.  A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Tehát új feladatokat az elküldésüket készlet automatikusan nő befejeződött feladatokat, mint a virtuális gépek ingyenes egyenként válnak és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. igény szerinti startingNumberOfVMs és maxNumberofVMs kell beállítani.
 
 Automatikus skálázási képletet:
 

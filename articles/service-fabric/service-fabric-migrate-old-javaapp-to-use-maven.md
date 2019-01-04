@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958358"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999169"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Korábbi Java Service Fabric-alkalmazások frissítése a Java-kódtárak a Mavenből történő lekérésére
 Nemrégiben áthelyeztük a Service Fabric Java bináris fájlokat a Service Fabric Java SDK-ból a Mavenen futó tárakba. A **mavencentral** paranccsal mostantól lekérheti a legújabb Service Fabric Java-függőségeket. Ennek a gyors üzembehelyezési útmutatónak a segítségével Yeoman-sablonok vagy az Eclipse használatával frissítheti a korábban a Service Fabric Java SDK-val való használatra létrehozott meglévő Java-alkalmazásait, hogy a Maven-alapú build kompatibilis legyen azokkal.
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-Általánosságban véve, ha szeretne átfogó képet kapni arról, hogy a felépítési szkriptek hogyan néznek ki egy Service Fabric állapotmentes Java-szolgáltatásban, tekintse meg az első lépéseket bemutató példáinkban szereplő bármelyik mintát. Itt van például a [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) az EchoServer-mintához.
+Általánosságban véve, ha szeretne átfogó képet kapni arról, hogy a felépítési szkriptek hogyan néznek ki egy Service Fabric állapotmentes Java-szolgáltatásban, tekintse meg az első lépéseket bemutató példáinkban szereplő bármelyik mintát. Itt van például a [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle) az EchoServer-mintához.
 
 ## <a name="migrating-service-fabric-actor-service"></a>A Service Fabric aktorszolgáltatás migrálása
 

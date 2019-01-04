@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089701"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000563"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
 
@@ -27,11 +27,11 @@ Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azur
 
 Logic Apps-alkalmazás három alapvető részből áll:
 
-* **Logikai alkalmazás erőforrásához**: többek között a tervet, helyét és a munkafolyamat-definíció díjszabási információkat tartalmaz.
-* **Munkafolyamat-definíció**: a logikai alkalmazás munkafolyamat-lépéseit, és hogyan hajtsa végre a Logic Apps-motor kell a munkafolyamatot ismerteti.
+* **Logikai alkalmazás erőforrásához**: Többek között a tervet, helyét és a munkafolyamat-definíció díjszabási információkat tartalmaz.
+* **Munkafolyamat-definíció**: A logikai alkalmazás munkafolyamat-lépéseit, és hogyan hajtsa végre a Logic Apps-motor kell a munkafolyamatot ismerteti.
 Ez a definíció tekintheti meg a logikai alkalmazás **Kódnézet** ablak.
 Ez a definíció az annak az a logikai alkalmazás erőforrásához a `definition` tulajdonság.
-* **Kapcsolatok**: a különálló erőforrásokat, amelyek biztonságos tárolása a metaadatokat, például egy kapcsolati karakterláncot és egy hozzáférési tokent minden olyan összekötő kapcsolatok hivatkozik.
+* **Kapcsolatok**: A különálló erőforrásokat, amelyek biztonságos tárolása a metaadatokat, például egy kapcsolati karakterláncot és egy hozzáférési tokent minden olyan összekötő kapcsolatok hivatkozik.
 A logikai alkalmazás erőforrásához, az a logikai alkalmazás erőforrásainak hivatkozik a `parameters` szakaszban.
 
 Egy hasonló eszköz használatával megtekintheti a meglévő logic apps összes megtalálhatja [Azure erőforrás-kezelő](http://resources.azure.com).
@@ -187,7 +187,7 @@ Példa parancsfájl van a githubon a [LogicAppConnectionAuth](https://github.com
 <a name="team-services"></a>
 ## <a name="azure-devops-azure-pipelines"></a>Az Azure DevOps Azure folyamatok
 
-Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például az Azure-folyamatok az Azure DevOps, a logikai alkalmazás központi telepítési sablont. Az Azure DevOps tartalmaz egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási folyamathoz hozhat létre.
+Egy általános forgatókönyv üzembe helyezéséhez és felügyeletéhez egy környezetet, hogy egy eszköz, például az Azure-folyamatok az Azure DevOps, a logikai alkalmazás központi telepítési sablont. Az Azure DevOps tartalmaz egy [üzembe helyezése Azure-erőforráscsoport](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) feladat, amelyet minden build ad hozzá vagy kibocsátásában. Rendelkeznie kell egy [szolgáltatásnév](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) az engedélyezési üzembe helyezéséhez, és engedélyezi a kiadási folyamathoz hozhat létre.
 
 1. Válassza ki az Azure-folyamatok, **üres** úgy, hogy létrehoz egy üres folyamatot.
 

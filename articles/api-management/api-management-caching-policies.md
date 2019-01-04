@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52bdeb5fe517430497c57a5c34b822df5933e3ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310436"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608885"
 ---
 # <a name="api-management-caching-policies"></a>Az API Management gyorsítótárazási házirendek
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -118,8 +118,8 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 | gyorsítótár-beállítás               | Az attribútum a következő értékek közül választhat:<br />- `internal` a beépített API Management-gyorsítótár használata<br />- `external` az ismertetett módon kihasználhassák a külső gyorsítótár [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Ellenkező esetben használja a belső vagy külső gyorsítótár, ha konfigurálva. | Nem       | `prefer-external` |
 | alsóbb rétegbeli gyorsítótárazási típus        | Ez az attribútum a következő értékek egyikére kell beállítani.<br /><br /> – Nincs – alsóbb rétegbeli gyorsítótárazás nem engedélyezett.<br />-privát – alsóbb rétegbeli privát gyorsítótárazás használata engedélyezett.<br />– nyilvános - titkos és megosztott alsóbb rétegbeli engedélyezve van a gyorsítótárazás.                                                                                                          | Nem       | nincs              |
 | kell-revalidate                | Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van ez az attribútum be- vagy kikapcsolja a `must-revalidate` gyorsítótár vezérlő irányelv az átjáró válaszokat.                                                                                                                                                                                                                      | Nem       | true              |
-| változó-által-fejlesztő              | Állítsa be `true` a gyorsítótár-válaszok száma [előfizetési kulcs](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Igen      |                   |
-| változó-által-developer-csoportok       | Állítsa be `true` a gyorsítótár-válaszok száma [felhasználói csoport](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Igen      |                   |  
+| változó-által-fejlesztő              | Állítsa be `true` a gyorsítótár-válaszok száma [előfizetési kulcs](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Igen      |         False (Hamis)          |
+| változó-által-developer-csoportok       | Állítsa be `true` a gyorsítótár-válaszok száma [felhasználói csoport](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Igen      |       False (Hamis)            |  
 
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

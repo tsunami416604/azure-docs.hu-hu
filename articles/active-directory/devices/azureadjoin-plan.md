@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b891995fab9e7def4b9b72f8bd8630d6b7e11d27
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310369"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023857"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -113,7 +113,7 @@ Ha hoz létre, hogy a felhasználók a:
 
 - **Az Azure AD**, nincs további beállítást nem szükséges.
 
-[Alternatív bejelentkezési azonosítók](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) az Azure AD-csatlakoztatott eszközök nem támogatottak. Ha a felhasználók egy másodlagos bejelentkezési Azonosítót használ, meg kell terveznie elsődleges Felhasználónevük átvált az Azure ad-ben.
+A helyszíni UPN-EK, amelyek nem azonosak az Azure AD UPN-EK nem támogatottak az Azure AD-csatlakoztatott eszközökön. Ha a felhasználók egy a helyszíni egyszerű Felhasználónévvel, meg kell terveznie elsődleges Felhasználónevük átvált az Azure ad-ben.
 
 
 

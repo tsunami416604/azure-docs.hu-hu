@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/26/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f5305c2d077f909a4b6c7c5e6905376d655dd60d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b772aa314316906a4079e3d6b8b4e0aeb0f54fba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794566"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022988"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
 Ez a cikk lépéseit a kiépítési Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF). Ezt követően használhatja az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) üzembe helyezéséhez és futtatásához az SQL Server Integration Services (SSIS) csomagokat a ezt az integrációs modult az Azure-ban. 

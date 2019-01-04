@@ -8,18 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 77a3685f59c7b15473deda1894f6fd6934fafc1f
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993413"
+ms.locfileid: "54002195"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
 Valós idejű big data-megoldások a mozgásban lévő adatok cselekedhet. Ezeket az adatokat általában a legértékesebb érkezési a időpontban. Ha a bejövő adatfolyam nagyobb, mint az adott időpontban lehet kezelni, szükség lehet a sávszélesség-szabályozási le erőforrásokat. Azt is megteheti egy HDInsight-fürtöt is méretezhető a folyamatos átviteli megoldás igény szerinti csomópontok hozzáadásával.
 
+
 A streamelési alkalmazások esetén egy vagy több adatforrás generál nélkül elvetését minden hasznos információt gyorsan betöltött-események (néha a másodpercenként több millió). A bejövő eseményeket kezeli a *streampufferelésnek*, más néven is néven *események üzenetsorba való helyezése*, például a szolgáltatás által [Apache Kafka](kafka/apache-kafka-introduction.md) vagy [az Event Hubs](https://azure.microsoft.com/services/event-hubs/). Miután összegyűjtötte az eseményeket, belül valós idejű elemzési rendszert használ az adatok elemzésével aztán a *adatfolyam-feldolgozás* réteg, mint például [Apache Storm](storm/apache-storm-overview.md) vagy [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók a hosszú távú tárolási rendszerek, például [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), és megjelennek az üzleti intelligencia irányítópulton, valós időben például [Power BI](https://powerbi.microsoft.com), Tableau vagy egy egyéni webhely oldal.
+
 
 ![HDInsight Streaming-minták](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 

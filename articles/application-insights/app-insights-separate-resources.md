@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: fe9c33f5a872c60ad30faf7cc5074004f5d6fc50
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 58ccfefa0a0d76334734c67688ef50230881e945
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973797"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018804"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztja a fejlesztési, tesztelési és éles környezetben
 
@@ -78,15 +78,15 @@ Az a [portal.azure.com](https://portal.azure.com), Application Insights-erőforr
 
 ![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-separate-resources/01-new.png)
 
-* **Az alkalmazástípus** érinti, amit lát az áttekintési panelen és az elérhető tulajdonságok [metrika explorer](app-insights-metrics-explorer.md). Ha nem látja az alkalmazás típusát, válassza ki a web típusú weblapokra vonatkozóan.
-* **Erőforráscsoport** kezeléséhez a tulajdonságokat, mint a kényelem van [hozzáférés-vezérlés](app-insights-resources-roles-access-control.md). A fejlesztési, tesztelési és éles külön erőforráscsoportok használatával.
+* **Az alkalmazástípus** érinti, amit lát az áttekintési panelen és az elérhető tulajdonságok [metrika explorer](../azure-monitor/app/metrics-explorer.md). Ha nem látja az alkalmazás típusát, válassza ki a web típusú weblapokra vonatkozóan.
+* **Erőforráscsoport** kezeléséhez a tulajdonságokat, mint a kényelem van [hozzáférés-vezérlés](../azure-monitor/app/resources-roles-access-control.md). A fejlesztési, tesztelési és éles külön erőforráscsoportok használatával.
 * **Előfizetés** a fizetési fiók az Azure-ban.
 * **Hely** van, ahol azt tartsa adatait. Jelenleg nem módosítható. 
 * **Irányítópult hozzáadása** az erőforrás gyors elérést csempe az Azure kezdőlapjának helyezi. 
 
 Az erőforrás létrehozásához néhány másodpercet vesz igénybe. Amikor kész van, megjelenik egy riasztás.
 
-(Írhat egy [PowerShell-parancsprogram](app-insights-powershell-script-create-resource.md) erőforrás automatikus létrehozásához.)
+(Írhat egy [PowerShell-parancsprogram](../azure-monitor/app/powershell-script-create-resource.md) erőforrás automatikus létrehozásához.)
 
 ### <a name="getting-the-instrumentation-key"></a>A kialakítási kulcs beolvasása
 A kialakítási kulcs azonosítja az erőforrást, Ön által létrehozott. 
@@ -98,7 +98,7 @@ Szüksége lesz a kialakítási kulcs, amelyhez az összes erőforrást az alkal
 ## <a name="filter-on-build-number"></a>A buildszám szűrése
 Ha közzéteszi az alkalmazás új verziója, érdemes tudni a telemetriai adatok elkülönítése különböző buildeket.
 
-Az alkalmazás verziója tulajdonság beállíthatja, hogy szűrheti [keresési](../azure-monitor/app/diagnostic-search.md) és [metrika explorer](app-insights-metrics-explorer.md) eredményeket.
+Az alkalmazás verziója tulajdonság beállíthatja, hogy szűrheti [keresési](../azure-monitor/app/diagnostic-search.md) és [metrika explorer](../azure-monitor/app/metrics-explorer.md) eredményeket.
 
 ![Vlastnost szűrése](./media/app-insights-separate-resources/050-filter.png)
 
@@ -148,7 +148,7 @@ Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Micr
     </PropertyGroup>
 ```
 
-Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](app-insights-metrics-explorer.md).
+Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../azure-monitor/app/metrics-explorer.md).
 
 Ne feledje azonban, hogy a buildverzió számát csak a Microsoft Build Engine hozza létre, a Visual Studio fejlesztői buildje nem.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: b777928295d37b0824287d2b9e08526eae29e0f9
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: a80c96891f3d91a920519db2915932742bd84d72
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976494"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002297"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Híváslánc-telemetria: Application Insights-adatmodell
 
@@ -43,4 +43,4 @@ Nyomon követheti a súlyossági szintet. Az érték lehet `Verbose`, `Informati
 - [Ismerje meg a nyomkövetési naplók az Application Insights Java](../../azure-monitor/app/java-trace-logs.md).
 - Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
 - [A nyomkövetési egyéni telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Tekintse meg [platformok](../../application-insights/app-insights-platforms.md) Application Insights által támogatott.
+- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.

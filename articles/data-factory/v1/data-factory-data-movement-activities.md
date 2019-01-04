@@ -9,17 +9,16 @@ ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299860"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014681"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Adatok áthelyezése másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +78,7 @@ A Data Factory másolási tevékenysége adatokat másol egy forrásadattárból
 ### <a name="supported-file-formats"></a>Támogatott fájlformátumok
 Használhatja a másolási tevékenység **másolja a fájlokat,-van** két fájlalapú adattárak között, akkor kihagyhatja a [szakasz formázása](data-factory-create-datasets.md) mind a bemeneti és kimeneti adatkészlet-definíciókban. Az adatokat bármely szerializálás/deszerializálás nélkül hatékonyan másolja.
 
-Másolási tevékenység is olvas és ír a megadott formátumú: **szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) adatokkal.
+A másolási tevékenység is olvas és ír a megadott formátumú: **Szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) adatokkal.
 
 Ha például a következő másolási tevékenységek teheti:
 
@@ -139,7 +138,7 @@ Többféle módon másolási tevékenységgel rendelkező folyamatot hozhat lét
 A Data Factory másolás varázslójával segít másolási tevékenységgel rendelkező folyamat létrehozása. Ez a folyamat lehetővé teszi, hogy az adatok másolása támogatott forrásokból a célhelyekre *JSON írása nélkül* társított szolgáltatások, adatkészletek és folyamatok definíciói. Lásd: [Data Factory másolás varázslójával](data-factory-copy-wizard.md) további információ a varázsló.  
 
 ### <a name="by-using-json-scripts"></a>JSON-parancsfájlok használatával
-Az Azure portal, a Visual Studio vagy az Azure PowerShell-lel a Data Factory Editor használatával hozzon létre egy folyamatot egy JSON-definíciót (a másolási tevékenység használatával). Ezt követően telepítheti a Data Factoryban a folyamat létrehozásához. Lásd: [oktatóanyag: Azure Data Factory-folyamatot másolási tevékenységgel használata](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részletes utasításokat tartalmazó oktatóanyagért.    
+Az Azure portal, a Visual Studio vagy az Azure PowerShell-lel a Data Factory Editor használatával hozzon létre egy folyamatot egy JSON-definíciót (a másolási tevékenység használatával). Ezt követően telepítheti a Data Factoryban a folyamat létrehozásához. Lásd: [oktatóanyag: Az Azure Data Factory-folyamatot használja a másolási tevékenység](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részletes utasításokat tartalmazó oktatóanyagért.    
 
 Az összes típusú tevékenységet (például név, leírás, bemeneti és kimeneti táblák és szabályzatok) JSON-tulajdonságokkal érhetők el. Az elérhető tulajdonságok köre az `typeProperties` a tevékenység szakaszban tevékenységek minden típusának számától függ.
 

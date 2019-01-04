@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 600bec9e4cfe356dcd28d489707d20ab47f5b013
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 62ee1c880987d0f9ad358f1a0d31af4a73263725
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753642"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017973"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -28,7 +28,7 @@ Funkciók is rendelkezik [beépített monitorozást, amely nem használható az 
 
 ## <a name="application-insights-pricing-and-limits"></a>Az Application Insights díjszabása és korlátozásai
 
-Kipróbálhatja az Application Insights-integráció a Függvényalkalmazások ingyenes. Azonban a feldolgozandó adatok mennyiségét is ingyenesen napi korlátja, és előfordulhat, hogy eléri ezt a korlátot a tesztelés során. Az Azure portal és az e-mailes értesítéseket biztosít, amikor a, Ön hamarosan eléri a napi korlátot.  De ha hagyja ki ezeket a riasztásokat, és nyomja le a korlátot, az új naplók többé nem jelenik meg az Application Insights-lekérdezéseket. Ezért vegye figyelembe a korlátot, a szükségtelen hibaelhárítási idő elkerülése érdekében. További információkért lásd: [az Application Insights árak és adatmennyiségek kezelése](../application-insights/app-insights-pricing.md).
+Kipróbálhatja az Application Insights-integráció a Függvényalkalmazások ingyenes. Azonban a feldolgozandó adatok mennyiségét is ingyenesen napi korlátja, és előfordulhat, hogy eléri ezt a korlátot a tesztelés során. Az Azure portal és az e-mailes értesítéseket biztosít, amikor a, Ön hamarosan eléri a napi korlátot.  De ha hagyja ki ezeket a riasztásokat, és nyomja le a korlátot, az új naplók többé nem jelenik meg az Application Insights-lekérdezéseket. Ezért vegye figyelembe a korlátot, a szükségtelen hibaelhárítási idő elkerülése érdekében. További információkért lásd: [az Application Insights árak és adatmennyiségek kezelése](../azure-monitor/app/pricing.md).
 
 ## <a name="enable-app-insights-integration"></a>Az App Insights-integráció engedélyezése
 
@@ -85,7 +85,7 @@ Után, ahogyan az előző szakaszokban állította be az Application Insights-in
 
 1. Válassza ki **frissítése** rendszeres időközönként, amíg megjelenik a függvény meghívásához listája.
 
-   A lista jelenik meg, a telemetriai ügyfél kötegek adatainak továbbítása a kiszolgálón lehet akár 5 percig is eltarthat. (Ez a késleltetés nem vonatkozik a [élő metrikák Stream](../application-insights/app-insights-live-stream.md). A szolgáltatás csatlakozik a Functions-gazdagép az oldal betöltésekor, így közvetlenül az oldalra a naplók átvitt.)
+   A lista jelenik meg, a telemetriai ügyfél kötegek adatainak továbbítása a kiszolgálón lehet akár 5 percig is eltarthat. (Ez a késleltetés nem vonatkozik a [élő metrikák Stream](../azure-monitor/app/live-stream.md). A szolgáltatás csatlakozik a Functions-gazdagép az oldal betöltésekor, így közvetlenül az oldalra a naplók átvitt.)
 
    ![Indítások listája](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -115,7 +115,7 @@ Az Application Insights egy függvényalkalmazást az Azure Portalon való megny
 
 Az Application Insights használatával kapcsolatos információkért lásd: a [Application Insights dokumentáció](https://docs.microsoft.com/azure/application-insights/). Ez a szakasz bemutatja néhány példa a adatainak megtekintése az Application Insightsban. Ha már ismeri az Application insights szolgáltatással, akkor lépjen közvetlenül [konfigurálásáról és testreszabásáról a telemetriai adatokat a szakaszok](#configure-categories-and-log-levels).
 
-A [Metrikaböngésző](../application-insights/app-insights-metrics-explorer.md), diagramokat hozhat létre, és riasztásokat teljesítménymetrikák alapján például függvény meghívásához, a végrehajtási idő és a sikerességi arányról számot.
+A [Metrikaböngésző](../azure-monitor/app/metrics-explorer.md), diagramokat hozhat létre, és riasztásokat teljesítménymetrikák alapján például függvény meghívásához, a végrehajtási idő és a sikerességi arányról számot.
 
 ![Metrikaböngésző](media/functions-monitoring/metrics-explorer.png)
 
@@ -123,7 +123,7 @@ Az a [hibák](../azure-monitor/app/asp-net-exceptions.md) lapon létrehozhat dia
 
 ![Hibák](media/functions-monitoring/failures.png)
 
-Az a [teljesítmény](../application-insights/app-insights-performance-counters.md) lapon elemezheti a teljesítménybeli problémák.
+Az a [teljesítmény](../azure-monitor/app/performance-counters.md) lapon elemezheti a teljesítménybeli problémák.
 
 ![Teljesítmény](media/functions-monitoring/performance.png)
 
@@ -131,7 +131,7 @@ A **kiszolgálók** lap erőforrások kihasználtságát és a kiszolgáló sebe
 
 ![Kiszolgálók](media/functions-monitoring/servers.png)
 
-A [élő metrikák Stream](../application-insights/app-insights-live-stream.md) lapon látható a mérőszámadatokat, valós idejű létrehozás.
+A [élő metrikák Stream](../azure-monitor/app/live-stream.md) lapon látható a mérőszámadatokat, valós idejű létrehozás.
 
 ![Élő stream](media/functions-monitoring/live-stream.png)
 
@@ -329,7 +329,7 @@ Az előző szakaszban feljegyzett futásidejű függvénykivételek adatait egy 
 
 ## <a name="configure-sampling"></a>Mintavétel konfigurálása
 
-Az Application Insights rendelkezik egy [mintavételi](../application-insights/app-insights-sampling.md) szolgáltatás, amely szembeni az előállító túl sok telemetriai adatokat esetenként a csúcsterhelés között. Ha a bejövő telemetriát aránya túllépi a küszöbértéket, az Application Insights véletlenszerűen figyelmen kívül az egyes bejövő elemek elindul. Az alapértelmezett beállítás a tétel / másodperc maximális száma érték az 5. Beállíthatja, hogy a mintavétel [host.json](functions-host-json.md).  Például:
+Az Application Insights rendelkezik egy [mintavételi](../azure-monitor/app/sampling.md) szolgáltatás, amely szembeni az előállító túl sok telemetriai adatokat esetenként a csúcsterhelés között. Ha a bejövő telemetriát aránya túllépi a küszöbértéket, az Application Insights véletlenszerűen figyelmen kívül az egyes bejövő elemek elindul. Az alapértelmezett beállítás a tétel / másodperc maximális száma érték az 5. Beállíthatja, hogy a mintavétel [host.json](functions-host-json.md).  Például:
 
 ### <a name="version-2x"></a>Verzió 2.x 
 
@@ -360,7 +360,7 @@ Az Application Insights rendelkezik egy [mintavételi](../application-insights/a
 ```
 
 > [!NOTE]
-> [Mintavételi](../application-insights/app-insights-sampling.md) alapértelmezés szerint engedélyezve van. Ha jelennek meg adatok hiányoznak, előfordulhat, hogy egyszerűen módosíthatja a mintavételezési beállításokat adott figyelési helyzethez.
+> [Mintavételi](../azure-monitor/app/sampling.md) alapértelmezés szerint engedélyezve van. Ha jelennek meg adatok hiányoznak, előfordulhat, hogy egyszerűen módosíthatja a mintavételezési beállításokat adott figyelési helyzethez.
 
 ## <a name="write-logs-in-c-functions"></a>Naplók írhat C#-függvények
 

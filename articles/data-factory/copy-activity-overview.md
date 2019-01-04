@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082646"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014131"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -55,7 +54,7 @@ A másolási tevékenység adatokat másol a forrásadattárból egy fogadó, a 
 
 A másolási tevékenység használható **másolja a fájlokat,-van** két fájlalapú adattárak között, amelyben az esetben az adatok másolódik hatékonyan bármely szerializálás/deszerializálás nélkül.
 
-A másolási tevékenység is támogatja a olvasását és írását megadott formátumú: **szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [támogatott fájl- és tömörítési formátumok](supported-file-formats-and-compression-codecs.md) adatokkal.
+A másolási tevékenység is támogatja a olvasását és írását megadott formátumú: **Szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [támogatott fájl- és tömörítési formátumok](supported-file-formats-and-compression-codecs.md) adatokkal.
 
 Ha például a következő másolási tevékenységek teheti:
 
@@ -130,7 +129,7 @@ Az alábbi sablont, a másolási tevékenység támogatott tulajdonságok teljes
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység type tulajdonsága értékre kell állítani: **másolása** | Igen |
+| type | A másolási tevékenység type tulajdonsága értékre kell állítani: **Másolás** | Igen |
 | bemenetek | Adja meg az adatkészlet mely mutat a forrásadatok létrehozott. A másolási tevékenység csak egy egyetlen bemeneti támogatja. | Igen |
 | kimenetek | Adja meg az adatkészlet mely mutat a fogadó adatait létrehozott. A másolási tevékenység csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Egy csoport tulajdonságainak konfigurálása a másolási tevékenység. | Igen |

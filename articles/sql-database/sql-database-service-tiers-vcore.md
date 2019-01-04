@@ -11,20 +11,20 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 11/27/2018
-ms.openlocfilehash: de77dfc40306f014a10e1ab11f2581392d3c160b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/02/2019
+ms.openlocfilehash: f756f043a7ab3c9086b21b8bdb88a5a6a7ed60df
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993743"
+ms.locfileid: "54001600"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
 A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül méretezheti a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár. Lehetővé teszi hardvertől kiválasztása:
 
 - 4 – általános legfeljebb 24 logikai CPU-alapú Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a virtuális mag = 1 PP (fizikai mag), egy mag, 7 GB-os csatlakoztatott SSD
-- 5 – általános legfeljebb 80 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzor, a virtuális mag = 1. LP (a hyper-szál), egy 5.5-ös. GB / core, gyors eNVM SSD
+- 5 – általános legfeljebb 80 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzor, a virtuális mag = 1. LP (a hyper-szál), 5.1-es. GB / core, gyors eNVM SSD
 
 Virtuálismag-modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak.
 
@@ -42,7 +42,7 @@ Az alábbi táblázat segítséget nyújt a három réteg közötti különbség
 |A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
 |Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
 |Memory (Memória)|Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag | Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag |Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag|
-|Storage|Használja a [távoli prémium szintű storage](../virtual-machines/windows/premium-storage.md):<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 1 TB<br/>Felügyelt példány: 32 GB – 4 TB-IG |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
+|Storage|Használja a [távoli prémium szintű storage](../virtual-machines/windows/premium-storage.md):<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB – 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB – 4 TB-IG |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
 |IO-átviteli sebesség (becsült)|Önálló adatbázis: A 7000-es maximális IOPS / virtuális mag 500 IOPS</br>Felügyelt példány: Attól függ, [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|A maximális iops-érték 200 000 magonként 5000 IOPS|TBD|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|?|
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítás nagyon gyors és nem egy adatművelet (véve a perc helyett órák vagy napok) méretét.|

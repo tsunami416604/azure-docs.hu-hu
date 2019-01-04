@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bb1709d10a406d88378189cd68b9a36abed2c8d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974515"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017566"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -28,23 +28,7 @@ Az Azure digitális Twins támogatja a blobok csatolása eszköz, a tárolóhely
 
 Használhatja a több részből álló kéréseket az eszközspecifikus végpontokat és a megfelelő funkciók blobok feltöltése.
 
-> [!IMPORTANT]
-> Több részből álló kéréseket három információt igényel:
-> * A **Content-Type** fejléc:
->   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **tartalomtípus-szabályozó**: `form-data; name="metadata"`
-> * A feltöltendő fájl tartalma
->
-> A **Content-Type** és **tartalomtípus-szabályozó** információ a használati forgatókönyvtől függően változhat.
-
-Az Azure digitális Twins felügyeleti API-k többrészes kérelmek két részből rendelkezik:
-
-* BLOB metaadatokat, például egy kapcsolódó MIME-típus, ahogyan az a **Content-Type** és **tartalomtípus-szabályozó** információk
-
-* BLOB tartalmát (strukturálatlan tartalmát a fájl)  
-
-A két részből egyike sem nem szükséges **javítására** kérelmeket. Mindkettő szükséges **POST** vagy -létrehozási műveletek.
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ### <a name="blob-metadata"></a>Blob metaadatai
 
@@ -158,7 +142,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | A kívánt blob azonosítója |
 
-Így egy **javítására** egyazon végpont irányuló kérelem lehetővé teszi, hogy frissítse a metaadatok leírását, és hozzon létre egy új verziója a blob. A HTTP-kérelem keresztül jön létre a **javítására** módszer, bármilyen szükséges meta és többrészes űrlapadatok együtt.
+Így egy **javítására** egyazon végpont irányuló kérelem lehetővé teszi, hogy frissítse a metaadatok leírását, és hozzon létre egy új verziója a blob. A HTTP-kérelem keresztül történik a **javítására** módszer, bármilyen szükséges meta és többrészes űrlapadatok együtt.
 
 Sikeres műveletek visszaadása egy **SpaceBlob** objektum, amely megfelel a következő sémának. Visszaadott adatok felhasználásához használhatja azt.
 

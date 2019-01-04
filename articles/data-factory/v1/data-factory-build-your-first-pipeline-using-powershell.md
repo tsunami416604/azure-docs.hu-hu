@@ -10,17 +10,16 @@ ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5d490b195f2e8fd58ca331b3e68ed451d92932f0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: e3421f8401d227e5c14dd244d87711427c57eefb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241837"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019231"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Oktatóanyag: Az első Azure data factory létrehozása az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -35,14 +34,14 @@ ms.locfileid: "50241837"
 
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg [az adat-előállító Azure Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-powershell.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a rövid útmutató: Hozzon létre egy data factoryt az Azure Data Factory](../quickstart-create-data-factory-powershell.md).
 
 Ez a cikk azt ismerteti, hogyan hozhatja létre első Azure data factoryját az Azure PowerShell használatával. Ha ezt az oktatóanyagot más eszközök/SDK-k használatával szeretné elvégezni, válassza ki az egyik lehetőséget a legördülő listából.
 
-A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: ez a **HDInsight Hive-tevékenység**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
+Ebben az oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: **HDInsight Hive-tevékenység**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
 
 > [!NOTE]
-> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az adatok Azure Data Factory használatával történő másolásának útmutatásáért olvassa el [az adatok Blob Storage-ból SQL Database-be történő másolását ismertető oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
@@ -83,7 +82,7 @@ Vegye figyelembe a következő szempontokat:
 * Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha a **Data factory name “FirstDataFactoryPSH” is not available** (A „FirstDataFactoryPSH” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a nevet (például: azÖnneveFirstDataFactoryPSH). Használja ezt az ADFTutorialFactoryPSH helyett az oktatóanyag lépéseinek végrehajtása során. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
 * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének/rendszergazdájának kell lennie.
 * Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
-* Ha a „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel:
+* Ha a hibaüzenetet kapja: "**Ez az előfizetés nincs regisztrálva a Microsoft.DataFactory névtér**", tegye a következők egyikét, és próbálkozzon újra a közzététellel:
 
   * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához:
 
@@ -262,7 +261,7 @@ Most a kimeneti adatkészletet hozza létre, amely az Azure Blob Storage-tárban
     ```
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
-Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező első adatcsatornát. A bemeneti szelet havonta érhető el (frequency: Month, interval: 1), a kimeneti szelet előállítása havonta történik, és a tevékenység scheduler (ütemező) tulajdonsága szintén a hónap értékre van állítva. A kimeneti adatkészlet és a tevékenységütemező beállításainak egyezniük kell. Jelenleg a kimeneti adatkészlet vezérli az ütemezést, ezért kimeneti adatkészletet akkor is létre kell hoznia, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. Az alábbi JSON-fájlban használt tulajdonságok magyarázata a szakasz végén található.
+Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező első adatcsatornát. A bemeneti szelet havonta érhető el (frequency: Hónap, időköz: 1.), kimeneti szelet előállítása havonta történik, és a tevékenység (Ütemező) tulajdonsága is értékre van állítva. A kimeneti adatkészlet és a tevékenységütemező beállításainak egyezniük kell. Jelenleg a kimeneti adatkészlet vezérli az ütemezést, ezért kimeneti adatkészletet akkor is létre kell hoznia, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. Az alábbi JSON-fájlban használt tulajdonságok magyarázata a szakasz végén található.
 
 1. Hozzon létre egy MyFirstPipelinePSH.json nevű JSON-fájlt a C:\ADFGetStarted mappában az alábbi tartalommal:
 
@@ -411,7 +410,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight
 4. Létrehozott egy **folyamatot** egy **HDInsight Hive**-tevékenységgel.
 
 ## <a name="next-steps"></a>További lépések
-Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti Azure HDInsight-fürtön. Ha tudni szeretné, hogyan használhatja a Másolás tevékenységet az adatok Azure-blobból Azure SQL Database adatbázisba történő másolásához, tekintse meg a következő cikket: [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Oktatóanyag: adatok másolása Azure-blobból Azure SQL Database adatbázisba).
+Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti Azure HDInsight-fürtön. A másolási tevékenység adatokat másol egy Azure-Blobból az Azure SQL használatával, olvassa el [oktatóanyag: Adatok másolása az Azure-Blobból Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még:
 | Témakör | Leírás |

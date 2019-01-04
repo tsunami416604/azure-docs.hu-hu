@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3e642e5954a8c1154ca5b07f06f9450e4e9ee39a
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 68155b69c1122d645eca5fe121d32bd9353db2da
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807924"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002722"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazással kapcsolatos adatok *erőforrás*. Ezért részét képezi egy új erőforrás létrehozását [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben egy erőforrás létrehozását teheti meg automatikusan az ide. De bizonyos esetekben egy erőforrást manuálisan létrehozott – például számára elkülönített erőforrások fejlesztési és éles környezetben hoz létre az alkalmazás.
@@ -66,18 +66,18 @@ Kattintson a keresés csempét megtekintéséhez [diagnosztikai keresés][diagno
 Ha több adatot vár, kattintson a **frissítése** néhány másodperc múlva.
 
 ## <a name="creating-a-resource-automatically"></a>Erőforrás automatikus létrehozása
-Írhat egy [PowerShell-parancsprogram](app-insights-powershell.md) erőforrás automatikus létrehozásához.
+Írhat egy [PowerShell-parancsprogram](../azure-monitor/app/powershell.md) erőforrás automatikus létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 * [Irányítópult létrehozása](../azure-monitor/app/app-insights-dashboards.md)
 * [Diagnosztikai keresés](../azure-monitor/app/diagnostic-search.md)
-* [Metrikák böngészése](app-insights-metrics-explorer.md)
+* [Metrikák böngészése](../azure-monitor/app/metrics-explorer.md)
 * [Analytics-lekérdezések](../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
 [api]: ../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../azure-monitor/app/diagnostic-search.md
-[metrics]: app-insights-metrics-explorer.md
+[metrics]: ../azure-monitor/app/metrics-explorer.md
 [start]: app-insights-overview.md
 

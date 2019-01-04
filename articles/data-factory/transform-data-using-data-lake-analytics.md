@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: cbe4d3931a5e7b279218a1f56a3842efbc238780
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053567"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016494"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,7 +36,7 @@ Az alábbi táblázat ismerteti a JSON-definíciójában használt általános t
 
 | Tulajdonság                 | Leírás                              | Szükséges                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. | Igen                                      |
+| **type**                 | A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. | Igen                                      |
 | **Fióknév**          | Az Azure Data Lake Analytics-fiók neve.  | Igen                                      |
 | **dataLakeAnalyticsUri** | Az Azure Data Lake Analytics URI.           | Nem                                       |
 | **subscriptionId**       | Azure-előfizetés azonosítója                    | Nem                                       |
@@ -130,7 +129,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | prioritás            | Meghatározza, hogy mely feladatok közül, hogy a rendszer várólistára helyezi, melyet futtatni kíván van kiválasztva. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem       |
 | paraméterek          | A U-SQL parancsfájl átadandó paramétereket.    | Nem       |
 | runtimeVersion      | Futtatókörnyezet-verzióját a U-SQL-motort használja. | Nem       |
-| compilationMode     | <p>Fordítási mód az U-SQL. Ezek az értékek egyikének kell lennie: **Szemantikus:** csak hajtsa végre a szükséges megerősítések, és a szemantikai ellenőrzési **teljes:** hajtsa végre a teljes fordítás, beleértve a szintaxis-ellenőrzés, optimalizálás, generování kódu, stb., **SingleBox:** hajtsa végre a teljes fordítás SingleBox TargetType beállítással együtt. Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza, hogy az optimális fordítási mód. | Nem |
+| compilationMode     | <p>Fordítási mód az U-SQL. Ezek az értékek egyikének kell lennie: **Szemantikai:** Csak a szükséges megerősítések, és a szemantikai ellenőrzési végre **teljes:** Hajtsa végre a teljes fordítás, beleértve a szintaxis-ellenőrzés, optimalizálás, generování kódu, stb., **SingleBox:** Hajtsa végre a teljes fordítás SingleBox TargetType beállítással együtt. Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza, hogy az optimális fordítási mód. | Nem |
 
 A Data Factory elküldi a lásd [SearchLogProcessing.txt szkriptet definíciójának](#sample-u-sql-script) a parancsfájl-definíciójában. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: a993e35282c0c49ae4e3f2ff9f2314f12d779438
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8de7ed00114a11b4c765bfa9f9ae42529ef53f7f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981057"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024025"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
 
@@ -38,7 +38,7 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 | Kérések és kivételek |Igen |Igen |
 | [Részletes kivételek](../../azure-monitor/app/asp-net-exceptions.md) | |Igen |
 | [Függőségek diagnosztikája](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| [Rendszerteljesítmény-számlálók](../../application-insights/app-insights-performance-counters.md) |Igen |Igen |
+| [Rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md) |Igen |Igen |
 | [API egyéni telemetriához][api] |Igen |Nem |
 | [Nyomkövetési napló integrációja](../../azure-monitor/app/asp-net-trace-logs.md) |Igen |Nem |
 | [Lapmegtekintések és felhasználói adatok](../../azure-monitor/app/javascript.md) |Igen |Nem |
@@ -256,7 +256,7 @@ A fordítási során már kiépített alkalmazások esetén:
 
 A telemetriai adatok megtekintése:
 
-* [A metrikák áttekintése](../../application-insights/app-insights-metrics-explorer.md) a teljesítmény és a használat figyeléséhez
+* [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
 * [Események és naplók keresése][diagnostic] a problémák diagnosztizálásához
 * [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
 * [Irányítópultok létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
@@ -275,5 +275,5 @@ További telemetriai funkciók hozzáadása:
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
 [qna]: ../../application-insights/app-insights-troubleshoot-faq.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory használatával Cassandra |} Microsoft Docs
-description: 'Útmutató: adatok másolása Cassandra támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
+title: Adatok másolása az Azure Data Factory használatával Cassandra |} A Microsoft Docs
+description: Megtudhatja, hogyan másolhat adatokat a Cassandra támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,62 +9,61 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a0095ae4aa50845a24cabb981399ac4035afdebe
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1347012971d53728d978f378e30684311c88828b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051450"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022280"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Cassandra
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-onprem-cassandra-connector.md)
+> * [1-es verzió](v1/data-factory-onprem-cassandra-connector.md)
 > * [Aktuális verzió](connector-cassandra.md)
 
-Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory adatok másolása Cassandra adatbázis. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység adatokat másol egy Cassandra-adatbázis használata. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok bármely támogatott fogadó adattárolóhoz Cassandra adatbázis másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+A Cassandra-adatbázis adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Konkrétan ez Cassandra az összekötő támogatja:
+Pontosabban a Cassandra-összekötő támogatja:
 
 - Cassandra **verziók 2.x és 3.x**.
-- Adatok másolása **alapvető** vagy **névtelen** hitelesítés.
+- Másolja az adatokat az **alapszintű** vagy **névtelen** hitelesítést.
 
 >[!NOTE]
->A tevékenység fut a Self-hosted integrációs futásidejű Cassandra 3.x IR 3.7-es verziója óta vagy újabb támogatott.
+>A tevékenység fut a helyi Integration Runtime, IR 3.7-es verziója óta, vagy újabb támogatott 3.x Cassandra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adatok másolása nem nyilvánosan elérhető Cassandra adatbázist, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk további részleteket. Az integrációs futásidejű beépített Cassandra illesztőprogram biztosít, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram Cassandra a/az adatok másolásakor kell.
+Adatokat másol egy Cassandra-adatbázis, amely nem érhető el nyilvánosan, akkor be kell állítania egy helyi Integration Runtime. Lásd: [helyi Integration Runtime](create-self-hosted-integration-runtime.md) további részleteket a cikkben. Az integrációs modul egy beépített Cassandra-illesztőprogram biztosít, így nem kell manuálisan telepítenie az összes illesztőprogram példatípust az adatok, és a Cassandra.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják való Cassandra összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Cassandra összekötő-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-A következő tulajdonságok Cassandra kapcsolódó szolgáltatás támogatottak:
+Cassandra-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **Cassandra** |Igen |
-| gazdagép |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
-| port |A TCP-portot, amelyen a Cassandra kiszolgáló ügyfélkapcsolatokat. |Nem (alapértelmezett érték 9042) |
-| authenticationType | A Cassandra adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető**, és **névtelen**. |Igen |
+| gazdagép |Egy vagy több IP-címek vagy kiszolgálók Cassandra gazdagép nevét.<br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
+| port |A Cassandra-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. |Nem (alapértelmezés szerint a 9042) |
+| authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **névtelen**. |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
-| jelszó |Adja meg a felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen, ha authenticationType beállítása alapszintű. |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen, ha authenticationType beállítása alapszintű. |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!NOTE]
->Kapcsolat SSL használatával Cassandra jelenleg nem támogatott.
+>SSL-lel Cassandra kapcsolat jelenleg nem támogatott.
 
 **Példa**
 
@@ -92,15 +91,15 @@ A következő tulajdonságok Cassandra kapcsolódó szolgáltatás támogatottak
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör Cassandra dataset által támogatott tulajdonságokról.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a Cassandra-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása Cassandra, az adatkészlet típus tulajdonságának beállítása **CassandraTable**. A következő tulajdonságok támogatottak:
+Adatmásolás Cassandra, állítsa be a type tulajdonság, az adatkészlet **CassandraTable**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **CassandraTable** | Igen |
-| kulcstérértesítések használatával |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Nem (ha van megadva a "query" a "CassandraSource") |
-| tableName |A tábla Cassandra adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **CassandraTable** | Igen |
+| kulcstér |A kulcstér vagy a sémát a Cassandra-adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
+| tableName |A tábla, Cassandra-adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
 
 **Példa**
 
@@ -124,17 +123,17 @@ Adatok másolása Cassandra, az adatkészlet típus tulajdonságának beállít�
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör Cassandra forrás által támogatott tulajdonságokról.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a Cassandra-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="cassandra-as-source"></a>Cassandra forrásaként
+### <a name="cassandra-as-source"></a>Cassandra forrásként
 
-Adatok másolása Cassandra, állítsa be a forrás típusa a másolási tevékenység **CassandraSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása a Cassandra, állítsa be a forrás típusaként a másolási tevékenység **CassandraSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **CassandraSource** | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |SQL-92 vagy CQL lekérdezés. Lásd: [CQL hivatkozás](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstérértesítések használatával name.table neve** a lekérdezni kívánt táblázat képviseli. |Nem (Ha a "tableName" és "kulcstérértesítések" használatával adatkészlet meg van adva). |
-| consistencyLevel |A konzisztencia szint határozza meg, hány replikák adatok visszatér az ügyfélalkalmazás egy olvasási kérést kell válaszolnia. Cassandra ellenőrzi a megadott számú replikákat az adatok a olvasási kérelem teljesítéséhez. Lásd: [konfigurálása az adatok konzisztenciájának](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) részleteiről.<br/><br/>Két érték engedélyezett: **egy**, **két**, **három**, **KVÓRUM**, **összes**, **LOCAL_ KVÓRUM**, **EACH_QUORUM**, és **LOCAL_ONE**. |Nem (alapértelmezett érték a `ONE`) |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **CassandraSource** | Igen |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-92 vagy CQL lekérdezés. Lásd: [CQL referencia](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstér name.table neve** a lekérdezni kívánt tábla ábrázolásához. |Nem (Ha a "tableName" és "kulcstér" adatkészletben levő meg van adva). |
+| consistencyLevel |A konzisztencia szintjét adja meg, hány replikák válaszolnia kell egy olvasási kérést előtt adatokat ad vissza az ügyfélalkalmazásnak. Cassandra ellenőrzi a megadott számú replikákat az adatok az olvasási kérelem teljesítéséhez. Lásd: [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) részleteiről.<br/><br/>Engedélyezett értékek a következők: **EGY**, **két**, **három**, **KVÓRUM**, **összes**, **LOCAL_QUORUM**, **EACH_QUORUM**, és **LOCAL_ONE**. |Nem (alapértelmezett érték a `ONE`) |
 
 **Példa**
 
@@ -168,66 +167,66 @@ Adatok másolása Cassandra, állítsa be a forrás típusa a másolási tevéke
 ]
 ```
 
-## <a name="data-type-mapping-for-cassandra"></a>Adattípus-leképezést Cassandra
+## <a name="data-type-mapping-for-cassandra"></a>Adattípus-leképezés Cassandra
 
-Az adatok másolása Cassandra, amikor az Azure Data Factory ideiglenes adattípusok a következő megfeleltetéseket használtak Cassandra adattípusokat. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
+Amikor az adatok másolása a Cassandra, a következő hozzárendeléseket szolgálnak a Cassandra-adattípusok Azure Data Factory-közbenső adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-| Cassandra adattípus | Data factory ideiglenes adattípus |
+| Cassandra-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
-| ASCII |Sztring |
+| ASCII |Karakterlánc |
 | BIGINT |Int64 |
-| A BLOB |Byte] |
+| BLOB |Byte] |
 | LOGIKAI ÉRTÉK |Logikai |
-| DECIMÁLIS |Decimális |
+| TIZEDES TÖRT |Tizedes tört |
 | DUPLA |Dupla |
 | LEBEGŐPONTOS |Önálló |
-| INET |Sztring |
+| INET |Karakterlánc |
 | INT |Int32 |
-| SZÖVEG |Sztring |
+| SZÖVEG |Karakterlánc |
 | IDŐBÉLYEG |DateTime |
 | TIMEUUID |GUID |
 | UUID |GUID |
-| VARCHAR |Sztring |
-| VARINT |Decimális |
+| VARCHAR |Karakterlánc |
+| VARINT |Tizedes tört |
 
 > [!NOTE]
-> A gyűjtemény típusa (térkép, set, lista stb.), meg [virtuális tábla használatával Cassandra gyűjteménytípusok együttműködve](#work-with-collections-using-virtual-table) szakasz.
+> Gyűjtemény típusa (map, set, list, stb.), tekintse meg [használata virtuális tábla használatával Cassandra gyűjteménytípusai](#work-with-collections-using-virtual-table) szakaszban.
 >
-> Felhasználó által definiált típusok nem támogatottak.
+> Felhasználó által meghatározott típusok nem támogatottak.
 >
-> A bináris oszlop és karakterlánc-oszlopnak hosszúságú hossza nem lehet nagyobb, mint 4000.
+> A bináris és karakterlánc oszlop hossza hossza nem lehet nagyobb, mint 4000.
 >
 
 ## <a name="work-with-collections-using-virtual-table"></a>Virtuális tábla használatával gyűjtemények használata
 
-Az Azure Data Factory beépített ODBC-illesztőprogram használatával csatlakozhat, és másolja az adatokat a Cassandra adatbázisból. A gyűjtemény típusú térkép, a készlet és a lista az illesztőprogram renormalizes az adatok megfelelő virtuális táblákba. Pontosabban Ha a tábla gyűjtemény oszlopot tartalmaz, az illesztőprogram állít elő, a következő virtuális táblák:
+Az Azure Data Factory kapcsolódni, és adatokat másol a Cassandra-adatbázis egy beépített ODBC-illesztőt használja. Gyűjtemény esetében, beleértve a térkép, set és lista az illesztőprogram renormalizes az adatok megfelelő virtuális táblákba. Pontosabban Ha egy tábla gyűjtemény oszlopokat tartalmaz, az illesztőprogram állít elő, a következő virtuális táblák:
 
-* A **alaptábla**, amely tartalmazza a tényleges táblából, a gyűjtemény oszlopok ugyanazokat az adatokat. Az alaptábla ugyanazt a nevet használja, amely valós táblázatként.
-* A **virtuális tábla** gyűjtemény oszlopok, amely a beágyazott adatok tárolásához. A virtuális táblákat, amelyek megfelelnek a gyűjtemények az alábbi néven valós tábla, egy elválasztó elnevezése "*vt*" és az oszlop neve.
+* A **alaptábla**, kivéve a gyűjtemény oszlopok valós táblaként azonos adatokat tartalmaz, amely. Az alaptábla ugyanazt a nevet használja, mint a valódi tábla, amely azt jelöli.
+* A **virtuális tábla** minden gyűjtemény oszlophoz, amely kibővíti a beágyazott adatok. A virtuális táblákat, amelyek a gyűjtemények a név a valódi tábla, egy elválasztó használatával elnevezett "*vt*" és az oszlop neve.
 
-Virtuális táblák tekintse meg az adatok a valós táblázatban, az illesztőprogram, a nem normalizált adatok eléréséhez. Lásd például című szakaszban talál információt. A tartalom Cassandra gyűjtemények kérdez le, és a virtuális tábla érheti el.
+Tekintse meg az adatok denormalizált adatokat az illesztőprogram, a valós táblázatban virtuális táblákat. Részletekért lásd a példa részét. Cassandra-gyűjtemények tartalmának lekérdezése és a virtuális táblázatok összekapcsolása elérheti.
 
 ### <a name="example"></a>Példa
 
-A következő "ExampleTable" például egy egész elsődleges kulcsként megadott oszlop "pk_int", érték nevű szöveges oszlop, egy listaoszlop, térkép oszlop és egy oszlopkészlet ("StringSet" nevű) nevű tartalmazó Cassandra adatbázistábla.
+Például egy, az alábbi "ExampleTable" nem egy Cassandra-adatbázis tábla, amely egy egész elsődlegeskulcs-oszlop neve "pk_int", érték nevű szöveges oszlop, lista oszlop, egy térkép oszlop és egy oszlopkészlet (más néven "StringSet") tartalmaz.
 
 | pk_int | Érték | Lista | Térkép | StringSet |
 | --- | --- | --- | --- | --- |
-| 1 |"a minta érték 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
-| 3 |"a minta 3. érték" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
+| 1 |"a minta 1. érték" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
+| 3 |"a mintául szolgáló 3. érték" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
-Az illesztőprogram az egyetlen tábla képviselő virtuális táblákat hoz létre. A külső kulcs oszlopokra virtuális táblázatokban a valódi tábla elsődleges kulcs oszlopai hivatkozik, és melyik felel meg a virtuális tábla sorainak valós tábla sorainak jelzi.
+Az illesztőprogram hoz létre több virtuális táblákat, amelyek ebben a táblázatban szerepelnek. A virtuális táblák idegen kulcs oszlopát a valódi tábla elsődleges kulcs oszlopaira hivatkozik, és melyik felel meg a virtuális táblázatsor valós táblázatsor jelzi.
 
-Az első virtuális táblát kell az alaptábla "ExampleTable" nevű az alábbi táblázatban látható: 
+Az első virtuális tábla az alaptábla "ExampleTable" nevű az alábbi táblázatban látható: 
 
 | pk_int | Érték |
 | --- | --- |
-| 1 |"a minta érték 1" |
-| 3 |"a minta 3. érték" |
+| 1 |"a minta 1. érték" |
+| 3 |"a mintául szolgáló 3. érték" |
 
-A következő alaptáblában az eredeti adatbázis táblából a gyűjteményeket, amelyek ebből a táblázatból nincs megadva, és más virtuális táblák kibontva ugyanazokat az adatokat tartalmazza.
+Az alaptábla az eredeti adatbázis tábla kivételével a gyűjteményeket, amelyek ebből a táblázatból nincs megadva, és más virtuális táblák kibontva azonos adatokat tartalmaz.
 
-Az alábbi táblázatok bemutatják az adatokat a listában, térkép és StringSet oszlopokból renormalize virtuális táblákhoz. Az oszlopok kiderül, hogy a "_index" vagy "_kulcsvédelmi" adja meg az adatokat az eredeti lista vagy a térkép pozícióját. "_Value" végződő nevű oszlopot tartalmazhat a kibontott adatok a gyűjteményből.
+Az alábbi táblázatokban látható a listában, a térkép és StringSet oszlop adatait normalizálását virtuális táblákhoz. Az oszlopokat "_index" vagy "_kulcsvédelmi" karakterre végződjön adja meg az adatok az eredeti listát vagy térkép pozícióját. Az "é_rtéke" karakterre végződjön oszlopokat abból a gyűjteményből kibontott adatokat tartalmazzák.
 
 **"ExampleTable_vt_List". tábla:**
 
@@ -247,7 +246,7 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
-| 3 |S1 |T |
+| 3 |S1 |t |
 
 **Table "ExampleTable_vt_StringSet":**
 
@@ -260,4 +259,4 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | 3 |E |
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f5fb62a04f1829726796b674a8e6e72951e6bb35
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9c574d5e5cecaa4618bbd44fae8a2200930ab2e3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083376"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019452"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HBase 
 
@@ -42,11 +41,11 @@ HBase-beli társított szolgáltatás a következő tulajdonságok támogatottak
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **HBase** | Igen |
+| type | A type tulajdonságot kell beállítani: **HBase** | Igen |
 | gazdagép | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. (pl.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Igen |
 | port | A HBase-példány az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 9090. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Nem |
 | httpPath | Példa: a HBase-kiszolgáló megfelelő részleges URL-cím `/hbaserest0` Hdinsight-fürt használata esetén. | Nem |
-| authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **névtelen**, **alapszintű** | Igen |
+| authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, **alapszintű** | Igen |
 | felhasználónév | A HBase-példányhoz való csatlakozáshoz használt felhasználónév.  | Nem |
 | jelszó | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |

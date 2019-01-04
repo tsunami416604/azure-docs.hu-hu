@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42061384"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019622"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása DB2 az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,10 +61,10 @@ DB2-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Db2** | Igen |
+| type | A type tulajdonságot kell beállítani: **Db2** | Igen |
 | kiszolgáló |A DB2-kiszolgáló neve. Megadhatja, hogy a port számát, a kiszolgáló neve, pontosvesszővel elválasztva például a következő `server:port`. |Igen |
 | adatbázis |A DB2-adatbázis neve. |Igen |
-| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az érték engedélyezett: **alapszintű**. |Igen |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Megengedett értéke: **Alapszintű**. |Igen |
 | felhasználónév |Adja meg a felhasználónevet, a DB2-adatbázishoz való csatlakozáshoz. |Igen |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
@@ -177,28 +176,28 @@ Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a köv
 | BigInt |Int64 |
 | Bináris |Byte] |
 | Blob |Byte] |
-| CHAR |Sztring |
-| CLOB |Sztring |
+| CHAR |Karakterlánc |
+| CLOB |Karakterlánc |
 | Dátum |Dátum és idő |
-| DB2DynArray |Sztring |
-| DbClob |Sztring |
-| tizedes tört |tizedes tört |
-| DecimalFloat |tizedes tört |
+| DB2DynArray |Karakterlánc |
+| DbClob |Karakterlánc |
+| Tizedes tört |Tizedes tört |
+| DecimalFloat |Tizedes tört |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
-| Kép |Sztring |
+| Kép |Karakterlánc |
 | Egész szám |Int32 |
 | LongVarBinary |Byte] |
-| LongVarChar |Sztring |
-| LongVarGraphic |Sztring |
-| Numerikus |tizedes tört |
+| LongVarChar |Karakterlánc |
+| LongVarGraphic |Karakterlánc |
+| Numerikus |Tizedes tört |
 | Real |Önálló |
 | SmallInt |Int16 |
 | Time |Időtartam |
 | Időbélyeg |DateTime |
 | VarBinary |Byte] |
-| VarChar |Sztring |
-| VarGraphic |Sztring |
+| VarChar |Karakterlánc |
+| VarGraphic |Karakterlánc |
 | Xml |Byte] |
 
 

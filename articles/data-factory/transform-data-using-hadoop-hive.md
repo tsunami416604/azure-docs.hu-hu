@@ -1,6 +1,6 @@
 ---
-title: Hadoop Hive tevékenység használata az Azure Data Factory adatok átalakítása |} Microsoft Docs
-description: Ismerje meg, hogyan használhatja a Hive tevékenység egy Azure data factoryban a-igény szerint vagy a saját HDInsight-fürtök a Hive-lekérdezések futtatásához.
+title: Adatok átalakítása Hadoop Hive-tevékenység használatával az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Hive-tevékenység az Azure data factory a Hive-lekérdezések futtatásához egy a-igény és a saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -8,25 +8,24 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: fc7c2c49de582a413b49d31c4b4e062d81e5e6ae
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6dc702b4bcffc0d1dec299093aa05ba480e9bbf8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051324"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019979"
 ---
-# <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Hadoop Hive tevékenység használata az Azure Data Factory adatok átalakítása
+# <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Hive-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-hive-activity.md)
+> * [1-es verzió](v1/data-factory-hive-activity.md)
 > * [Aktuális verzió](transform-data-using-hadoop-hive.md)
 
-A HDInsight Hive tevékenység egy adat-előállítóban [csővezeték](concepts-pipelines-activities.md) Hive-lekérdezések végrehajtása a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürthöz. Ez a cikk épít, a [adatok átalakítása tevékenységek](transform-data.md) cikk, amelynek során az adatok átalakítása és a támogatott átalakítása tevékenységek általános áttekintést.
+A HDInsight Hive tevékenység, egy Data factoryben [folyamat](concepts-pipelines-activities.md) a Hive-lekérdezéseket hajt végre [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése.
 
-Ha most ismerkedik az Azure Data Factory, olvassa végig [Bevezetés az Azure Data Factory](introduction.md) hajtsa végre a [oktatóanyag: adatok](tutorial-transform-data-spark-powershell.md) a cikk elolvasása előtt. 
+Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory bemutatását](introduction.md) és végezze el a [oktatóanyag: adatok átalakítása](tutorial-transform-data-spark-powershell.md) Ez a cikk elolvasása előtt. 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -58,25 +57,25 @@ Ha most ismerkedik az Azure Data Factory, olvassa végig [Bevezetés az Azure Da
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság            | Leírás                              | Szükséges |
 | ------------------- | ---------------------------------------- | -------- |
-| név                | A tevékenység neve.                     | Igen      |
+| név                | A tevékenység neve                     | Igen      |
 | leírás         | Mire használható a tevékenységet leíró szöveg | Nem       |
-| type                | Hive tevékenység a tevékenység típusa nem HDinsightHive | Igen      |
-| linkedServiceName   | A HDInsight-fürt mutató hivatkozás a Data Factory kapcsolt szolgáltatásként regisztrálva. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk. | Igen      |
-| scriptLinkedService | Egy Azure Storage társított szolgáltatást fogja tárolni a Hive-parancsfájl futtatását hivatkozás. A társított szolgáltatás nem adja meg, ha az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott szolgál. | Nem       |
-| scriptPath          | Adja meg a fájl elérési útját a parancsfájl a scriptLinkedService által hivatkozott Azure Storage szolgáltatásban tárolja. A fájlnév pedig kis-és nagybetűket. | Igen      |
-| getDebugInfo        | Itt adhatja meg, ha a naplófájlok kerülnek az Azure Storage HDInsight-fürt által használt (vagy) leírt módon scriptLinkedService. Megengedett értékek: None, mindig, vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
-| argumentumok           | Hadoop-feladat argumentumok tömbjét adja meg. Az argumentumok parancssori argumentumként átadott minden egyes tevékenységhez. | Nem       |
-| határozza meg             | Adja meg a paraméterek kulcs/érték párok való hivatkozás a Hive-parancsfájl belül. | Nem       |
+| type                | A Hive-tevékenység a tevékenység típusát HDinsightHive | Igen      |
+| linkedServiceName   | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
+| scriptLinkedService | A Hive-szkriptet futtatandó tárolására használt Azure Storage társított szolgáltatás hivatkozik. Ha nem adja meg ezt a társított szolgáltatást, az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott használja. | Nem       |
+| scriptPath          | Adja meg a scriptlinkedservice szolgáltatás által hivatkozott Azure Storage-ban tárolt a parancsfájl elérési útját. A fájlnév formátuma a kis-és nagybetűket. | Igen      |
+| getDebugInfo        | Itt adhatja meg, amikor a naplófájlok másolja az Azure Storage HDInsight-fürt által használt (vagy) scriptlinkedservice szolgáltatás által megadott. Megengedett értékek: Nincs, mindig, vagy sikertelen. Alapértelmezett érték: Nincs. | Nem       |
+| argumentumok           | Argumenty Pro Hadoop-feladatok egy tömbjét adja meg. Az argumentumok adhatók be a parancssori argumentumok minden egyes tevékenységhez. | Nem       |
+| határozza meg             | Kulcs/érték párokként paraméterek megadása a Hive-parancsfájl belül hivatkozik. | Nem       |
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkekben talál, amely ismerteti az adatok más módon: 
+Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [A Pig-tevékenység](transform-data-using-hadoop-pig.md)
-* [MapReduce művelethez](transform-data-using-hadoop-map-reduce.md)
+* [Pig-tevékenység](transform-data-using-hadoop-pig.md)
+* [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop Streamelési tevékenységben](transform-data-using-hadoop-streaming.md)
-* [A Spark-tevékenység](transform-data-using-spark.md)
+* [Spark-tevékenység](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
-* [A tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)
+* [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)
 

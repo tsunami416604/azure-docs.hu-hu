@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 519b237b217aac8dc254a4bf7dcb447c3e4eb447
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 63ee308c50a2d5399dd395dc90c2666fae0bbf49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980699"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999458"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](../../application-insights/app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -120,7 +120,7 @@ Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített t
 
 Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](../../application-insights/app-insights-troubleshoot-faq.md).
 
-A Böngésző panel [Metrikaböngésző panel](../../application-insights/app-insights-metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
+A Böngésző panel [Metrikaböngésző panel](../../azure-monitor/app/metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 
 ## <a name="page-load-performance"></a>Lapbetöltés teljesítménye
 Felül található a lapbetöltési idők szegmentált diagramja. A diagram teljes magassága jelzi a lapok betöltésének és megjelenítésének átlagos idejét az alkalmazásából a felhasználók böngészőiben. Az idő mérése onnan kezdődik, amikor a böngésző elküldi a kezdeti HTTP-kérelmet, és addig tart, amíg az összes szinkron betöltési esemény fel lett dolgozva, beleértve az elrendezést és a futó szkripteket. Ebben nem tartoznak bele az aszinkron feladatok, például a kijelzők betöltése az AJAX hívásokból.

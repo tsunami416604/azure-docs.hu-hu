@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 6c8f4fa1fdfdb18d57f001308a6b2105acf9a08d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f5c8241907459a06f0a6206ae6865cdf3fe9ab89
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788854"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998965"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
@@ -33,13 +33,13 @@ Forrásgép konfigurációs kiszolgálót regisztrálja a mobilitási ügynök t
     - A hibák megoldása után hajtsa végre a megadott irányelveket [Itt](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) manuálisan újra a regisztrációt.
 4. Ha a fenti karakterláncot nem található, Ugrás a forrásgép és a naplóban C:\ProgramData\ASRSetupLogs\UploadedLogs\* ASRUnifiedAgentInstaller.log ProgramData mappa rejtett is lehet. Ha nem tudják találni, próbálja meg fedje a mappát. A hibák több problémák is okozhatják. Keresési karakterlánc "kérelem közzététele: (7) – nem sikerült csatlakozni a kiszolgálóhoz". Ha talál,
     - A forrás gép és a konfigurációs kiszolgáló között a hálózati problémák megoldásához. Győződjön meg arról, hogy a konfigurációs kiszolgáló forrásgépről használata a hálózati eszközök, mint például a ping, a traceroute, a webböngésző stb., győződjön meg arról, hogy a forrásgép képes elérni a konfigurációs kiszolgáló 443-as porton keresztül.
-    - Annak ellenőrzése, hogy minden olyan tűzfalszabályokat forrásgépen forgalomszűrők blokkolják a forrása machine és a konfigurációs kiszolgáló közötti kapcsolat. Együttműködik a a hálózati rendszergazdák tiltásának feloldása a kapcsolódási problémák.
+    - Annak ellenőrzése, hogy minden olyan tűzfalszabályokat forrásgépen forgalomszűrők blokkolják a forrása machine és a konfigurációs kiszolgáló közötti kapcsolat. Együttműködik a a hálózat rendszergazdájával, feloldása a kapcsolódási problémák.
     - Győződjön meg, hogy az említett mappák [Itt](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a víruskereső szoftver nem tartoznak.
     - A hálózati hibák megoldása után próbálja megismételni a regisztrációt által megadott, a következő irányelveket [Itt](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 5. Ha nem található, a karakterlánc azonos log keresés "kérelem: (60) – adott CA-tanúsítványok társ tanúsítvány nem hitelesíthető a. ". Ha talál, 
     - Ez a hiba oka az lehet, a konfigurációs kiszolgáló tanúsítványa lejárt vagy a forrásgép nem támogatja a TLS 1.0-s és újabb SSL protokollok vagy, amelyek forrása machine és a konfigurációs kiszolgáló közötti SSL-kommunikáció nem blokkolja tűzfal.
     - Konfigurációs kiszolgáló IP-cím URI https:// segítségével. a forrásgépen webböngészővel csatlakozzon háríthatja el<CSIPADDRESS>: 443 /. Győződjön meg arról, hogy a forrásgép képes elérni a konfigurációs kiszolgáló 443-as porton keresztül.
-    - Ellenőrizze, hogy vannak-e minden olyan tűzfalszabályokat kell a forrásgép felvegye a CS hozzáadja/törli a forrásgépen. Sok más tűzfal szoftver is okozhatja, mivel nincs lehetőség a szükséges konfigurációkat lejjebb listában, az ügyfél hálózati rendszergazdák együttműködve.
+    - Annak ellenőrzése, hogy minden olyan tűzfalszabályokat forrásgépen forgalomszűrők blokkolják a forrása machine és a konfigurációs kiszolgáló közötti kapcsolat. Együttműködik a a hálózat rendszergazdájával, feloldása a kapcsolódási problémák.
     - Győződjön meg, hogy az említett mappák [Itt](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a víruskereső szoftver nem tartoznak.  
     - A hibák megoldása után próbálja megismételni a regisztrációt által megadott, a következő irányelveket [Itt](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 6. A Linux Ha < INSTALLATION_DIR > /etc/drscout.conf platformja értékét sérült, majd regisztráció sikertelen lesz. Azonosítsa, nyissa meg a napló /var/log/ua_install.log. Megtalálja a karakterláncot "Konfigurációs megszakítása VM_PLATFORM értéke null, vagy azt, nem VmWare/Azure-beli." A platform "VmWare" vagy "Azure" kell beállítani. Mivel a drscout.conf fájl sérült, javasoljuk, hogy [eltávolítása](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) a mobilitási ügynök, és telepítse újra. Ha kiszolgálón.%0 nem sikerül, kövesse az alábbi lépéseket:

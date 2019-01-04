@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b97b8e145e2a770a00c77eefc9ce6d323fd6222e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3cf59db2e6f8fcffd9eefc38fcd22c25ba646456
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101837"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018636"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle felhőalapú
 
@@ -45,7 +44,7 @@ Társított Oracle Service felhőalapú szolgáltatás a következő tulajdonsá
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **OracleServiceCloud** | Igen |
+| type | A type tulajdonságot kell beállítani: **OracleServiceCloud** | Igen |
 | gazdagép | Az Oracle-szolgáltatás Cloud-példány URL-címe  | Igen |
 | felhasználónév | Oracle felhőalapú kiszolgáló hozzáféréséhez használt felhasználónév.  | Igen |
 | jelszó | A felhasználónév-kulcsot a megadott felhasználónév megfelelő jelszava. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |

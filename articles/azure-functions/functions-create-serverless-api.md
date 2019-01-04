@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 63e35a32cb4a031ea9848486c4ecda7058707914
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599893"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001464"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Kiszolgáló nélküli API létrehozása az Azure Functions használatával
 
@@ -104,7 +104,7 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
     | Mező | Mintaérték | Leírás |
     |---|---|---|
     | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
-    | Útvonalsablon | /api/hello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
+    | Útvonalsablon | / api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
     | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
     
 1. Figyelje meg, hogy a proxyk nem adják hozzá az `/api` alapútvonal-előtagot, azt Önnek kell beírni az útvonalsablonba.
@@ -112,9 +112,9 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
 1. Kattintson a **Create** (Létrehozás) gombra.
 1. Ki is próbálhatja az új proxyt. Másolja ki a proxy URL-címét, és tesztelje le a böngészőben vagy a választott HTTP-ügyféllel.
     1. Névtelen funkció esetében ezt használja:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
     1. Engedélyezést igénylő függvény esetében ezt használja:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>API-utánzat létrehozása
 
@@ -132,7 +132,7 @@ Ha követte az eddigi lépéseket, akkor a proxies.json fájlnak így kell kiné
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         }
@@ -148,7 +148,7 @@ Most következik az API-utánzat hozzáadása. Cserélje a proxies.json fájlt a
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         },

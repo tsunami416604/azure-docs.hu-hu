@@ -1,13 +1,10 @@
 ---
-title: Virtuális hálózatot az Azure-szolgáltatások |} A Microsoft Docs
+title: Virtuális hálózat az Azure-szolgáltatásokhoz
+titlesuffix: Azure Virtual Network
 description: Ismerje meg a virtuális hálózatban üzembe helyezni erőforrásokat előnyeit. A virtuális hálózatok erőforrások kommunikálhatnak egymással, és a helyszíni erőforrásokat, anélkül, hogy az interneten áthaladó forgalom lesz.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 4e136d4a0a60838af7d2b1a111982b0c16b06dd2
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8672fbccb384a87a1b227bab7c81fdd99438d1da
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975151"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020506"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatások
 

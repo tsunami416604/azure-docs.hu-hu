@@ -1,56 +1,58 @@
 ---
 title: Az Azure digitális Twins Postman konfigurálása |} A Microsoft Docs
-description: Az Azure digitális Twins Postman konfigurálása
+description: Tudnivalók az Azure digitális Twins Postman konfigurálása.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 92ff8cb732c7c10c525d8a8ec76180cb435bd466
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 32c56a2ac3df9f386300a6ee8207a76c8031ab10
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975015"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016715"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
-Ez a cikk ismerteti a OAuth 2.0 típusú implicit engedélyezés folyamat használatához egy Azure Active Directory (Azure AD-) alkalmazást. Ezután azt tárgyalja, hogyan konfigurálhatja a Postman REST-ügyféllel, hogy jogkivonat hordozó HTTP-kéréseket a felügyeleti API-k.
+Ez a cikk bemutatja, hogyan kezelhetik és az Azure digitális Twins felügyeleti API-k tesztelése a Postman REST-ügyfél konfigurálásához.
+
+A cikk bemutatja, hogyan konfigurálása Azure Active Directory-alkalmazás, az OAuth 2.0 típusú implicit engedélyezés folyamat használata. Emellett bemutatja, hogyan lehet az, hogy jogkivonat hordozó HTTP-kéréseket a felügyeleti API-k Postman REST-ügyfél konfigurálásához.
 
 ## <a name="postman-summary"></a>Postman-összefoglaló
 
 Bevezetés az Azure digitális Twins egy REST-ügyféleszköz segítségével [Postman](https://www.getpostman.com/) készítse elő a helyi tesztelési környezetét. A Postman-ügyfél segítségével gyorsan létrehozhat összetett HTTP-kérelmekre. Töltse le a Postman-ügyfél asztali verzióját a [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[Postman](https://www.getpostman.com/) REST teszteli, amely megkeresi a legfontosabb HTTP kérés funkciói egy hasznos, asztali és a grafikus felhasználói Felülettel beépülő modul-alapú eszköz. A Postman-ügyfélen keresztül megoldások fejlesztők adhatja meg a HTTP-kérelem típusú hívás és az SSL (POST, GET, frissítés, PATCH és DELETE), API-végpont. Postman is támogatja a HTTP-kérelmek fejléceinek hozzáadását, paraméterek, űrlapadatokból és szervek.
+[Postman](https://www.getpostman.com/) REST teszteli, amely megkeresi a legfontosabb HTTP kérés funkciói egy hasznos, asztali és a grafikus felhasználói Felülettel beépülő modul-alapú eszköz. A Postman-ügyfélen keresztül megoldások fejlesztők adhatja meg a HTTP-kérelem típusú (*POST*, *első*, *frissítés*, *javítására*, és  *Törlés*), API-végpont meghívására, valamint az SSL használatát. Postman is támogatja a HTTP-kérelmek fejléceinek hozzáadását, paraméterek, űrlapadatokból és szervek.
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Az Azure Active Directory is használhassa azt az OAuth 2.0 típusú implicit engedélyezés konfigurálása
 
-Az OAuth 2.0 típusú implicit engedélyezés folyamat használata az Azure AD-alkalmazás konfigurálása.
+Az Azure Active Directory-alkalmazások, az OAuth 2.0 típusú implicit engedélyezés folyamat a konfigurálása.
 
 1. Kövesse a [ebben a rövid útmutatóban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) típusú natív Azure AD-alkalmazást létrehozni. Vagy használhat egy meglévő natív alkalmazás regisztrációja.
 
 1. Alatt **szükséges engedélyek**válassza **Hozzáadás** , és adja meg **Azure digitális Twins** alatt **API-hozzáférés hozzáadása**. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre. Ezután válassza ki **engedélyek megadása > delegált engedélyek** és **kész**.
 
-    ![Az Azure AD-alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
+    ![Az Azure Active Directory alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
 1. Kattintson a **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
 
-      ![Az Azure AD implicit folyamat][1]
+      ![Az Azure Active Directory implicit folyamat][1]
 
-1. Konfigurálja a **válasz URL-cím** való [ `https://www.getpostman.com/oauth2/callback` ](https://www.getpostman.com/oauth2/callback).
+1. Konfigurálja a **válasz URL-cím** való `https://www.getpostman.com/oauth2/callback`.
 
-      ![Az Azure AD-válasz URL-címe][2]
+      ![Az Azure Active Directory-válasz URL-címe][2]
 
-1. Másolja ki és tartsa a **Alkalmazásazonosító** az Azure AD-alkalmazáshoz. Alább szolgál.
+1. Másolja ki és tartsa a **Alkalmazásazonosító** az Azure Active Directory-alkalmazás. Alább szolgál.
 
-## <a name="configure-the-postman-client"></a>A Postman-ügyfél konfigurálása
+### <a name="configure-the-postman-client"></a>A Postman-ügyfél konfigurálása
 
-Ezután állítsa be, és konfigurálja az Azure AD-token beszerzése a Postman. Ezt követően hajtsa végre egy hitelesített HTTP-kérelem Azure digitális Twins beszerzett token használatával:
+Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Postman konfigurálása. Ezt követően hajtsa végre egy hitelesített HTTP-kérelem Azure digitális Twins beszerzett token használatával:
 
 1. Lépjen a [www.getpostman.com]([https://www.getpostman.com/) letölteni az alkalmazást.
-1. Ügyeljen arra, hogy a **engedélyezési URL-címet** helyes-e. A formátum kell vennie:
+1. Ellenőrizze, hogy a **engedélyezési URL-címet** helyes-e. A formátum kell vennie:
 
     ```plaintext
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
@@ -67,7 +69,7 @@ Ezután állítsa be, és konfigurálja az Azure AD-token beszerzése a Postman.
     | Engedélyezési típus | `Implicit` |
     | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Használja a **engedélyezési URL-címet** a fenti 2. lépésben |
-    | Ügyfél-azonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure AD-alkalmazás |
+    | Ügyfél-azonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure Active Directory-alkalmazás |
     | Hatókör | Hagyja üresen |
     | Állapot | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |

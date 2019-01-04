@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442169"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001702"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Írása, és a Service Fabric-alkalmazások kezelése a Visual Studio használatával
 Az Azure Service Fabric-alkalmazások és szolgáltatások Visual Studión keresztül kezelheti. Miután [a fejlesztési környezet beállítása](service-fabric-get-started.md), a Visual Studio segítségével Service Fabric-alkalmazások létrehozása, adja hozzá a szolgáltatások vagy a csomag regisztrálása és alkalmazások üzembe helyezése a helyi fejlesztési fürtön.
@@ -47,7 +47,7 @@ A Visual Studio meg tulajdonsággal **alkalmazás hibakeresési módban**, amely
 
 #### <a name="application-debug-modes"></a>Alkalmazás hibakeresési üzemmód
 
-1. **Aktualizovat Aplikaci** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus fájlok szerkesztése a hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürt [1 csomópontos üzemmódúra]. Ez az alkalmazás hibakeresési mód alapértelmezés szerint. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Aktualizovat Aplikaci** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus fájlok szerkesztése a hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürt [1 csomópontos üzemmódúra](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Ez az alkalmazás hibakeresési mód alapértelmezés szerint.
 2. **Alkalmazás eltávolítása** távolítható el, ha a hibakeresési munkamenet véget ér az alkalmazást.
 3. **Automatikus frissítés** az alkalmazás továbbra is fut, amikor a hibakeresési munkamenet befejeződik. A következő hibakeresési munkamenet kezeli az üzembe helyezés frissítéseként. A frissítési folyamat megőrzi a korábbi hibakeresési munkamenetben megadott adatokat.
 4. **Zachovat Aplikaci** az alkalmazás a fürt továbbra is működik, ha a hibakeresési munkamenet azért ér véget. A következő hibakeresési munkamenet elején, az alkalmazás törlődni fog.

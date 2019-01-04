@@ -9,21 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 4cb133cc617ecc121fb93a4da816120986e131e8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086926"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015423"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, a folyamat egy e-mailt küld a sikeres műveletről, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, a folyamat egy e-mailt küld a sikertelen műveletről, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
 
-A forgatókönyv általános áttekintése: ![Áttekintés](media/tutorial-control-flow-portal/overview.png)
+A forgatókönyv általános áttekintést: ![Áttekintés](media/tutorial-control-flow-portal/overview.png)
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -149,7 +148,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.      
-8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.

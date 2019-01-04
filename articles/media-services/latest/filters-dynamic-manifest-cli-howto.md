@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5aa617edf13aee9c5899a59c46aeb729f202719f
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 471277433f0fc9a54a28baa158f1e20f1efb613f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744207"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000518"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a CLI-vel 
 
@@ -78,7 +78,8 @@ REST, a megadott szűrők közé tartozik a "Tulajdonságok" burkolót JSON-obje
 
 A következő [az ams-fiók-szűrő](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) parancs létrehoz egy szűrő szűrő nyomon követése beállításokat, amelyek korábban [korábban meghatározott](#define-a-filter). 
 
-A következő parancsot egy lehetőség lehetővé teszi, hogy `--tracks` , amely fogad egy fájlt. Ha az Azure CLI helyileg használ, adja meg a fájl teljes elérési útja:
+A parancs lehetővé teszi, hogy egy nem kötelező adnia `--tracks` JSON a track beállításokat jelölő paraméterben.  Használat @{file} betölteni a JSON-fájlból. Ha az Azure CLI helyileg használ, adja meg a fájl teljes elérési útja:
+
 
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json

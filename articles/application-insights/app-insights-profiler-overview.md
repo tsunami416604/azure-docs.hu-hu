@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7780c10233a0ce256ee6e9015f40ea789516c25b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c7266d840a8d60275a40cf31291d3a8f524131f9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726899"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016746"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles üzemi alkalmazások az Azure-ban az Application insights segítségével
 ## <a name="enable-profiler-for-your-application"></a>Profiler engedélyezése az alkalmazáshoz
@@ -26,7 +26,7 @@ Application Insights Profiler az éles környezetben az Azure-ban futó alkalmaz
 
 A profiler működik együtt a következő Azure-szolgáltatások üzembe .net-alkalmazásokban. Az egyes szolgáltatás fut. a profiler engedélyezésével tartozó utasításokat az alábbi hivatkozások találhatók.
 
-* [App Services](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [App Services](../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Felhőszolgáltatások](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric-alkalmazások](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuális gépek és a virtuális gép Scalesets](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -49,10 +49,10 @@ Válassza ki a megjelenítendő kód szintű információkat töltött időt a k
 
 A nyomkövetés-kezelő az alábbi információkat jeleníti meg:
 
-* **Legaktívabb ág megjelenítése**: megnyílik a legnagyobb levél csomópont, vagy valami legalább bezárása. A legtöbb esetben ez a csomópont teljesítménybeli szűk keresztmetszetet közelében van.
-* **Címke**: a függvény vagy az esemény nevét. A fa kódot és (például az SQL és a HTTP-események) bekövetkezett eseményeket jeleníti meg. Az első esemény a kérés teljes időtartama jelöli.
-* **Eltelt idő**: a művelet megkezdése és a művelet közötti időintervallum.
-* **Amikor**: az idő, amikor a függvény vagy esemény futott relációban át más függvényeknek.
+* **Legaktívabb ág megjelenítése**: Megnyílik a legnagyobb levél csomópont, vagy valami legalább bezárása. A legtöbb esetben ez a csomópont teljesítménybeli szűk keresztmetszetet közelében van.
+* **Címke**: A függvény vagy esemény neve. A fa kódot és (például az SQL és a HTTP-események) bekövetkezett eseményeket jeleníti meg. Az első esemény a kérés teljes időtartama jelöli.
+* **Eltelt idő**: A művelet megkezdése és a művelet közötti időintervallum.
+* **Amikor**: Az idő, ha a függvény vagy esemény futott relációban át más függvényeknek.
 
 ## <a name="how-to-read-performance-data"></a>Teljesítményadatok olvasása
 
@@ -124,11 +124,11 @@ Profiler véletlenszerűen futtat minden virtuális gép, amelyen az alkalmazás
 
 ## <a name="next-steps"></a>További lépések
 Application Insights Profiler engedélyezése az Azure-alkalmazásokat
-* [App Services](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [App Services](../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Felhőszolgáltatások](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric-alkalmazások](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuális gépek és a virtuális gép Scalesets](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
-[performance-blade]: ./media/app-insights-profiler/performance-blade-v2-examples.png
-[trace-explorer]: ./media/app-insights-profiler/trace-explorer.png
+[performance-blade]: ./media/app-insights-profiler-overview/performance-blade-v2-examples.png
+[trace-explorer]: ./media/app-insights-profiler-overview/trace-explorer.png

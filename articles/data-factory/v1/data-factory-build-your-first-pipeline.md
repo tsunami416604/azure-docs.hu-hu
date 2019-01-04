@@ -1,5 +1,5 @@
 ---
-title: 'Data Factory-oktatóanyag: első adatfolyamat |} A Microsoft Docs'
+title: 'Data Factory-oktatóanyag: Első adatfolyamat |} A Microsoft Docs'
 description: Az Azure Data Factory-oktatóanyag bemutatja, hogyan hozhat létre és ütemezhet egy adat-előállítót, amely feldolgozza a Hive-szkript használata a Hadoop-fürtön az adatok.
 services: data-factory
 documentationcenter: ''
@@ -10,19 +10,18 @@ ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734252"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015950"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozását.
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozása
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,11 +32,11 @@ ms.locfileid: "45734252"
 
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg [az adat-előállító Azure Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-dot-net.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a rövid útmutató: Hozzon létre egy data factoryt az Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 Ebben az oktatóanyagban az első Azure data factoryját adatfolyamat hozhat létre. A folyamat bemeneti adatokat átalakítja a kimeneti adatok előállításához egy Azure HDInsight (Hadoop) fürtön Hive-szkript futtatásával.  
 
-Ez a cikk áttekintése és az oktatóanyag előfeltételei. Miután végzett az előfeltételekkel, az oktatóanyag a következő eszközök/SDK-k egyikével teheti: az Azure portal, a Visual Studio, a PowerShell, a Resource Manager-sablon, a REST API-t. Válassza ki a beállítások a legördülő lista elején (vagy) hajtsa végre az oktatóanyag ezen beállítások valamelyikét használja, ez a cikk végén található hivatkozásokat.    
+Ez a cikk áttekintése és az oktatóanyag előfeltételei. Miután végzett az előfeltételekkel, az oktatóanyag a következő eszközök/SDK-k egyikével teheti meg: Az Azure portal, a Visual Studio, a PowerShell, a Resource Manager-sablon, a REST API-t. Válassza ki a beállítások a legördülő lista elején (vagy) hajtsa végre az oktatóanyag ezen beállítások valamelyikét használja, ez a cikk végén található hivatkozásokat.    
 
 ## <a name="tutorial-overview"></a>Az oktatóanyag áttekintése
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -45,12 +44,12 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 1. Hozzon létre egy **adat-előállító**. Adat-előállító egy vagy több és adatok átalakítására szolgáló adatfolyamatokat is tartalmazhat. 
 
     Ebben az oktatóanyagban létrehozhat egy folyamatot az adat-előállítóban. 
-2. Hozzon létre egy **folyamat**. Egy folyamatot egy vagy több tevékenység is rendelkezhet (példák: a másolási tevékenység, HDInsight Hive-tevékenység). Ebben a példában a HDInsight Hive tevékenység, amely egy Hive-szkriptet futtat egy HDInsight Hadoop-fürtöt. A szkript először létrehoz egy táblát, amely a nyers webes naplóadatokat, az Azure blob storage-ban tárolt hivatkozik, és majd particionálja a nyers adatok év és hónap szerint.
+2. Hozzon létre egy **folyamat**. Egy folyamatot egy vagy több tevékenység is rendelkezhet (példák: Másolási tevékenység, HDInsight Hive-tevékenység). Ebben a példában a HDInsight Hive tevékenység, amely egy Hive-szkriptet futtat egy HDInsight Hadoop-fürtöt. A szkript először létrehoz egy táblát, amely a nyers webes naplóadatokat, az Azure blob storage-ban tárolt hivatkozik, és majd particionálja a nyers adatok év és hónap szerint.
 
     Ebben az oktatóanyagban a folyamat használja a Hive-tevékenység az adatok átalakítása a Hive-lekérdezéseket futtat egy Azure HDInsight Hadoop-fürtöt. 
 3. Hozzon létre **társított szolgáltatásokat**. Létrehozhat egy társított szolgáltatást, egy adattárat vagy számítási szolgáltatások adat-előállítóhoz. Egy adattár, például az Azure Storage a folyamat tevékenységek bemeneti és kimeneti adatokat tárolja. HDInsight Hadoop-fürt hasonló számítási szolgáltatásokhoz a folyamatok/átalakítások adatokat.
 
-    Ebben az oktatóanyagban két társított szolgáltatást hoz létre: **Azure Storage** és **Azure HDInsight**. Az Azure Storage társított szolgáltatás egy Azure Storage-fiókot, amely a bemeneti és kimeneti adatokat tárol a data factoryhoz. Az Azure HDInsight társított szolgáltatás egy Azure HDInsight-fürtöt, amellyel alakíthat át adatokat a data factoryhoz. 
+    Ebben az oktatóanyagban két társított szolgáltatást hoz létre: **Az Azure Storage** és **Azure HDInsight**. Az Azure Storage társított szolgáltatás egy Azure Storage-fiókot, amely a bemeneti és kimeneti adatokat tárol a data factoryhoz. Az Azure HDInsight társított szolgáltatás egy Azure HDInsight-fürtöt, amellyel alakíthat át adatokat a data factoryhoz. 
 3. Hozzon létre bemeneti és kimeneti **adatkészletek**. A bemeneti adatkészletek a folyamattevékenységek bemenetét jelölik, a kimeneti adatkészletek pedig a tevékenységek kimeneteit.
 
     Ebben az oktatóanyagban a bemeneti és kimeneti adatkészleteket bemeneti és kimeneti adatokat az Azure Blob Storage helyét adja meg. A Azure Storage társított szolgáltatás határozza meg, mi az Azure Storage-fiókot használja. Bemeneti adatkészlet meghatározza, hol találhatók a bemeneti fájlok és a egy kimeneti adatkészletet adja meg, ahol a kimeneti fájlok kerülnek. 
@@ -63,7 +62,7 @@ Lásd: [az Azure Data Factory bemutatását](data-factory-introduction.md) cikk 
 ![A Data Factory az oktatóanyagban a diagram nézet](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-Ebben az oktatóanyagban **inputdata** mappában található a **adfgetstarted** az Azure blob-tároló nevű input.log fájl tartalmazza. Ez a naplófájl tartozik három hónap bejegyzéseinek: 2016. március, január és február. Az alábbiakban a minta sorok minden hónapban a bemeneti fájl. 
+Ebben az oktatóanyagban **inputdata** mappában található a **adfgetstarted** az Azure blob-tároló nevű input.log fájl tartalmazza. Ez a naplófájl három hónap bejegyzéseinek rendelkezik: Január február és 2016. március. Az alábbiakban a minta sorok minden hónapban a bemeneti fájl. 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 
@@ -103,7 +102,7 @@ Miután végzett az előfeltételekkel, válassza ki az alábbi eszközök/SDK-k
 Az Azure portal és a Visual Studio adja meg a grafikus lehetőség az adat-előállítók. Mivel a PowerShell, a Resource Manager-sablon és a REST API-t az adat-előállítók létrehozásának parancsfájlok és programozás-megoldást kínál.
 
 > [!NOTE]
-> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az adatok Azure Data Factory használatával történő másolásának útmutatásáért olvassa el [az adatok Blob Storage-ból SQL Database-be történő másolását ismertető oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 
 

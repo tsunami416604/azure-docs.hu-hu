@@ -10,19 +10,18 @@ ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a04e91cea4ce1670fcc0a7be2d7591d5856b738f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: bf39f9d0ea96259aaec14562e302e31781b64231
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106862"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023770"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory létrehozása Azure Resource Manager-sablon használatával
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory használatával az Azure Resource Manager-sablon létrehozása
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,16 +32,16 @@ ms.locfileid: "43106862"
 > 
  
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg [az adat-előállító Azure Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-dot-net.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a rövid útmutató: Hozzon létre egy data factoryt az Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 Ez a cikk bemutatja, hogyan hozhatja létre első Azure data factoryját egy Azure Resource Manager-sablonnal. Ha ezt az oktatóanyagot más eszközök/SDK-k használatával szeretné elvégezni, válassza ki az egyik lehetőséget a legördülő listából.
 
-A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: ez a **HDInsight Hive-tevékenység**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
+Ebben az oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: **HDInsight Hive-tevékenység**. A tevékenység egy hive-szkriptet futtat egy Azure HDInsight fürtön, amely a bemeneti adatokat átalakítja a kimeneti adatok előállításához. A folyamat úgy van ütemezve, hogy havonta egyszer fusson a megadott kezdő és befejező időpontok közt. 
 
 > [!NOTE]
-> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. Az adatok Azure Data Factory használatával történő másolásának útmutatásáért olvassa el [az adatok Blob Storage-ból SQL Database-be történő másolását ismertető oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. Az Azure Data Factory használata adatok másolása oktatóanyagért lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> Az oktatóanyagban szereplő folyamat csak egyetlen tevékenységtípussal rendelkezik: HDInsightHive. Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+> Ebben az oktatóanyagban szereplő folyamat csak egyetlen tevékenységtípussal rendelkezik: HDInsightHive. Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
@@ -262,7 +261,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFGetStarted
 ```
 
 > [!NOTE]
-> Az Azure data factory létrehozására szolgáló Resource Manager-sablonra a következő helyen találhat egy másik példát: [Oktatóanyag: Folyamat létrehozása másolási tevékenységgel és Azure Resource Manager-sablon használatával](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
+> Azure data factory létrehozásához a Resource Manager-sablon egy másik példát talál [oktatóanyag: Folyamat létrehozása másolási tevékenységgel az Azure Resource Manager-sablon használatával](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
 > 
 > 
 
@@ -616,7 +615,7 @@ Az itt látható, mintául szolgáló Resource Manager-sablonnal egy háttérben
     ]
 }
 ```
-Ez a sablon létrehozza a GatewayUsingArmDF nevű data factoryt a GatewayUsingARM nevű átjáróval. 
+Ez a sablon nevű átjáróval GatewayUsingArmDF nevű data factoryt hoz létre: GatewayUsingARM. 
 
 ## <a name="see-also"></a>Lásd még:
 | Témakör | Leírás |

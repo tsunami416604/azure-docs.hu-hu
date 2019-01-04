@@ -9,17 +9,16 @@ ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5fb4034d49982d600fe5b0de17d0b198e3ee653e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056413"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020149"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB adat betöltése az Azure SQL Data Warehouse-bA a Data Factory 15 perc alatt
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "42056413"
 
 Ismerkedés az Azure SQL Data Warehouse már használatával minden eddiginél egyszerűbben **Azure Data Factory**.  Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely egy SQL Data Warehouse az adatokat, a meglévő rendszerről, és hogy értékes időt kiértékelése az SQL Data Warehouse és az elemzések készítése közben mentése feltöltéséhez használható megoldások. Az alábbiakban az adatok betöltése az Azure Data Factory használatával az Azure SQL Data Warehouse előnyei:
 
-* **Könnyű beállítás**: intuitív varázslóval 5-lépés nem kötelező parancsfájl.
+* **Könnyű beállítás**: 5. lépés – nincs parancsfájl-szükséges intuitív varázslóval.
 * **Sokrétű támogatás adattároló**: a helyszíni és felhőalapú adattárak számos beépített támogatása.
 * **Biztonságos és megfelelő**: HTTPS- vagy ExpressRoute keresztül továbbított adatok, és a szolgáltatás globális jelenlét biztosítja az adatok sosem hagyja el a földrajzi határ
 * **A PolyBase használatával páratlan teljesítményt** – adatok áthelyezése az Azure SQL Data Warehouse-bA a Polybase használatával a leghatékonyabb módja a. Az előkészítési blob szolgáltatást használja, minden típusú adattárakban mellett az Azure Blob storage, amely alapértelmezés szerint támogatja a Polybase nagy terhelés sebességet érhet el.
@@ -42,7 +41,7 @@ Ebben a cikkben részletes útmutatást nyújt az adatok áthelyezése az Azure 
 > [!NOTE]
 >  Általános információk képességekkel kapcsolatos adat-előállító az adatok áthelyezését és- tárolókról az Azure SQL Data Warehouse: [adatok importálására és az Azure Data Factory használatával az Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) cikk.
 >
-> Is létrehozható Azure Portalon, a Visual Studio, PowerShell, folyamatokat stb. Lásd: [oktatóanyag: adatok másolása Azure blobból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) gyors bemutató részletes utasításokat a másolási tevékenységgel az Azure Data Factoryban.  
+> Is létrehozható Azure Portalon, a Visual Studio, PowerShell, folyamatokat stb. Lásd: [oktatóanyag: Adatok másolása Azure blobból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) gyors bemutató részletes utasításokat a másolási tevékenységgel az Azure Data Factoryban.  
 >
 >
 
@@ -118,7 +117,7 @@ Az előfeltételként felsorolt lépéseket befejeződött, az azt most már ké
 3. Az a **új adat-előállító** panelen:
 
    1. Adja meg **LoadIntoSQLDWDataFactory** számára a **neve**.
-       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **nem érhető el a Data factory name "LoadIntoSQLDWDataFactory"**, módosítsa a nevet az adat-előállító (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
+       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "LoadIntoSQLDWDataFactory"**, módosítsa a nevet az adat-előállító (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
    2. Jelölje ki az Azure-**előfizetést**.
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét:
       1. Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
@@ -143,12 +142,12 @@ A **Properties** (Tulajdonságok) oldalon:
 
 1. Adja meg **CopyFromBlobToAzureSqlDataWarehouse** a **feladat neve**
 2. Válassza ki **futtatása után azonnal** lehetőséget.   
-3. Kattintson a **Tovább** gombra.  
+3. Kattintson a **tovább**.  
 
     ![Másolás varázsló – Tulajdonságok lap](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
-## <a name="step-2-configure-source"></a>2. lépés: Konfigurálja a forrás
-Ez a szakasz bemutatja a forrás konfigurálásáról: az 1 TB-os TPC tartalmazó Azure Blob-H sortételt fájlokat.
+## <a name="step-2-configure-source"></a>2. lépés: Forrás konfigurálása
+Ez a szakasz bemutatja, a forrás konfigurálásának lépéseit: Az 1 TB-os TPC tartalmazó Azure Blob-H sortételt fájlokat.
 
 1. Válassza ki a **Azure Blob Storage** , az adatok tárolására, és kattintson a **tovább**.
 
@@ -166,7 +165,7 @@ Ez a szakasz bemutatja a forrás konfigurálásáról: az 1 TB-os TPC tartalmaz�
 
     ![Másolás varázsló - fájlformátum beállításai](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
-## <a name="step-3-configure-destination"></a>3. lépés: A cél konfigurálása
+## <a name="step-3-configure-destination"></a>3. lépés: Cél konfigurálása
 Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` az Azure SQL Data Warehouse-adatbázis táblája.
 
 1. Válasszon **Azure SQL Data Warehouse** céljaként tárolja, és kattintson a **tovább**.
@@ -183,13 +182,13 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` az Azure SQL 
 
 4. A séma hozzárendelése oldal, hagyja "Oszlop-hozzárendelés alkalmazás" beállítás nincs bejelölve, és kattintson a **tovább**.
 
-## <a name="step-4-performance-settings"></a>4. lépés: Finomhangolása
+## <a name="step-4-performance-settings"></a>4. lépés: Teljesítményadat-beállításai
 
-**A polybase lehetővé** alapértelmezés szerint be van jelölve.  Kattintson a **Tovább** gombra.
+**A polybase lehetővé** alapértelmezés szerint be van jelölve.  Kattintson a **tovább**.
 
 ![Másolás varázsló - séma hozzárendelése oldal](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>5. lépés: Üzembe helyezése és figyelése az eredmények betöltése
+## <a name="step-5-deploy-and-monitor-load-results"></a>5. lépés: Telepítheti és figyelheti a betöltési eredmények
 1. Kattintson a **Befejezés** telepítése gombra.
 
     ![Másolás varázsló – Összegzés lapján](media/data-factory-load-sql-data-warehouse/summary-page.png)

@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: c23bdba74ab528a0774b73598dbee8888ebfdc7e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d53de431ea619dfc8865ef23439146517d37764
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076117"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013298"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi az az Azure Active Directory architektúrájának?
 Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](active-directory-whatis.md)
@@ -34,7 +34,7 @@ Ez a cikk a következő architektúraelemeket tárgyalja:
  *  Adatközpontok
 
 ### <a name="service-architecture-design"></a>Szolgáltatásarchitektúra kialakítása
-Leggyakoribb módja hozhat létre egy elérhető és használható, adatokban gazdag rendszerek keresztül független építőelemek vagy skálázási egységek számára az Azure AD adatrétege skálázási egységek nevezzük *partíciók*. 
+A leggyakoribb módja hozhat létre egy elérhető és használható, adatokban gazdag rendszerek független építőelemek vagy skálázási egységek keresztül. Az Azure AD adatrétege skálázási egységek nevezzük *partíciók*. 
 
 Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra bemutatja, hogyan lépnek egy egy címtárból partíció összetevői a földrajzilag elosztott adatközpontokban. 
 
@@ -66,7 +66,7 @@ Az Azure AD partíciójának kialakítása a vállalati AD kialakításához, am
 
 **Hibatűrés**
 
-A rendszereknek jobb a rendelkezésre állása, ha képesek tűrni a hardveres, hálózati és szoftverhibákat. A címtárban lévő összes partícióhoz tartozik egy magas rendelkezésre állású főreplika. Ez az elsődleges replika. Ezen a replikán csak a partíció írása történik. Ez a replika folyamatos megfigyelés alatt áll, és az írások azonnal egy másik replikára helyezhetők (amely az új elsődleges replikává válik), ha a rendszer hibát észlel. Feladatátvétel esetén általában 1-2 percig megszűnhet az írás rendelkezésre állása. Ez nincs hatással az olvasás rendelkezésre állására.
+A rendszereknek jobb a rendelkezésre állása, ha képesek tűrni a hardveres, hálózati és szoftverhibákat. A címtárban lévő összes partícióhoz magas rendelkezésre állású főreplika létezik: Az elsődleges replika. Ezen a replikán csak a partíció írása történik. Ez a replika folyamatos megfigyelés alatt áll, és az írások azonnal egy másik replikára helyezhetők (amely az új elsődleges replikává válik), ha a rendszer hibát észlel. Feladatátvétel esetén általában 1-2 percig megszűnhet az írás rendelkezésre állása. Ez nincs hatással az olvasás rendelkezésre állására.
 
 Az olvasási műveletek (amelyek száma nagyságrendekkel meghaladja az írásokét) csak a másodlagos replikákhoz érkeznek. Mivel a másodlagos replikák idempotensek, egy adott partíció bármely replikájának elvesztése könnyedén orvosolható az olvasások egy másik replikára történő irányításával, általában ugyanabban az adatközpontban.
 

@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638240"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014896"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 Ez a cikk a Data Factoryt hasonlítja össze a Data Factory 1. verziójával. A Data Factory megismeréséhez tekintse meg a [Data Factoryt bemutató](introduction.md) cikket. A Data Factory 1. verziójának megismeréséhez olvassa el az [Azure Data Factory használatának első lépéseit](v1/data-factory-introduction.md) ismertető cikket. 
@@ -68,7 +67,7 @@ A folyamatok igény szerint (esemény alapján, például blobbejegyzés esetén
 A [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md) lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
 
 ### <a name="delta-flows"></a>Változási folyamatok
-A fő használati eset az ETL-mintákban a „változásbetöltések”, amelyekben csak az olyan adatokat töltik be, amelyek módosultak a folyamat utolsó ismétlése óta. Az aktuális verzió új képességei, például a [keresési tevékenység](control-flow-lookup-activity.md), a rugalmas ütemezés vagy az átvitelvezérlés természetes módon teszik lehetővé ezt a használati esetet. Részletes utasításokat tartalmazó oktatóanyagért lásd: [Oktatóanyag: Növekményes másolat](tutorial-incremental-copy-powershell.md).
+A fő használati eset az ETL-mintákban a „változásbetöltések”, amelyekben csak az olyan adatokat töltik be, amelyek módosultak a folyamat utolsó ismétlése óta. Az aktuális verzió új képességei, például a [keresési tevékenység](control-flow-lookup-activity.md), a rugalmas ütemezés vagy az átvitelvezérlés természetes módon teszik lehetővé ezt a használati esetet. Részletes utasításokat tartalmazó oktatóanyagért lásd: [oktatóanyag: A növekményes másolási](tutorial-incremental-copy-powershell.md).
 
 ### <a name="other-control-flow-activities"></a>Egyéb átvitelvezérlési tevékenységek
 Az alábbiakban néhány további, a Data Factory aktuális verziója által támogatott átvitelvezérlési tevékenység található. 
@@ -117,13 +116,13 @@ További információ: [Az egyéni tevékenységek közötti különbségek a Da
 ## <a name="sdks"></a>SDK-k
  a Data Factory aktuális verziója az SDK-k szélesebb választékát biztosítja, amelyeket folyamatok létrehozásához, kezeléséhez és monitorozásához használhat.
 
-- **.NET SDK**: A .NET SDK frissült az aktuális verzióban.
+- **.NET SDK-VAL**: A .NET SDK frissült a jelenlegi verzióban.
 
-- **PowerShell**: A PowerShell-parancsmagok frissültek az aktuális verzióban. Az aktuális verzió parancsmagjainak nevében szerepel a **DataFactoryV2** tag, például a Get-AzureRmDataFactoryV2 névben. 
+- **PowerShell**: A PowerShell-parancsmagok frissültek a jelenlegi verzióban. Az aktuális verzió esetében a parancsmagjainak **DataFactoryV2** a nevében, például: Get-AzureRmDataFactoryV2. 
 
-- **Python SDK**: Ez az SDK az aktuális verzióban lett bevezetve.
+- **Python SDK**: Ez az SDK a jelenlegi verzióban jelent meg.
 
-- **REST API**: A REST API frissült az aktuális verzióban. 
+- **REST API-VAL**: A REST API frissült a jelenlegi verzióban. 
 
 Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ügyfeleivel. 
 
@@ -147,4 +146,4 @@ az aktuális verzióban a data factorykat az [Azure Monitor](monitor-using-azure
 
 
 ## <a name="next-steps"></a>További lépések
-A következő gyors útmutatók részletes utasításait végrehajtva megismerkedhet az adat-előállítók létrehozásának módjával: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+Útmutató: adat-előállító létrehozása a következő gyors útmutatók részletes utasításait követve: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API-val](quickstart-create-data-factory-rest-api.md). 

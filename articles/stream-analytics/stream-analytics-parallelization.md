@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091043"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000546"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési ezerszer
 Ez a cikk bemutatja, hogyan ezerszer kihasználásához az Azure Stream Analytics szolgáltatásban. Megismerheti a Stream Analytics-feladatok méretezése a bemeneti partíció konfigurálásával, valamint a elemzési lekérdezés definíciójának finomhangolásával.
@@ -41,12 +41,13 @@ Használatakor a Stream Analytics-szel, igénybe veheti a kimenetekben particion
 -   Azure Functions
 -   Azure-tábla
 -   A BLOB storage (állíthatja a partíciós kulcs explicit módon)
--   Cosmos dB (állítsa be a partíciós kulcs explicit módon kell)
--   Az EventHub (állítsa be a partíciós kulcs explicit módon kell)
+-   A cosmos DB (állítsa be a partíciós kulcs explicit módon kell)
+-   Az Event Hubs (állítsa be a partíciós kulcs explicit módon kell)
 -   Az IoT Hub (állítsa be a partíciós kulcs explicit módon kell)
 -   Service Bus
+- SQL és az SQL Data Warehouse a particionálás nem kötelező: a további információ a [kimeneti Azure SQL Database oldalára](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
-A Power BI, az SQL és SQL-adattárház kimenetek nem támogatják a particionálást. Azonban továbbra is particionáló a bemeneti leírtak szerint [ebben a szakaszban](#multi-step-query-with-different-partition-by-values) 
+A Power BI nem támogatja a particionálást. Azonban továbbra is particionáló a bemeneti leírtak szerint [ebben a szakaszban](#multi-step-query-with-different-partition-by-values) 
 
 A partíciók kapcsolatos további információkért lásd a következő cikkeket:
 
@@ -75,8 +76,8 @@ Az alábbi szakaszok tárgyalják a példákat megtekinteni, amelyek zavaróan p
 
 ### <a name="simple-query"></a>Egyszerű lekérdezés
 
-* Bemenet: Eseményközpont 8 partícióval rendelkező
-* Kimenete: Eseményközpont 8 partícióval rendelkező
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: 8 partícióval rendelkező eseményközpontot
 
 Lekérdezés:
 
@@ -90,8 +91,8 @@ Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, am
 
 ### <a name="query-with-a-grouping-key"></a>A csoportosítás kulccsal lekérdezése
 
-* Bemenet: Eseményközpont 8 partícióval rendelkező
-* A kimenetre: A Blob storage
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: Blob Storage
 
 Lekérdezés:
 
@@ -108,20 +109,20 @@ Ez a lekérdezés csoportosítási kulccsal rendelkezik. Ezért az események cs
 Az előző szakaszban megmutattuk néhány zavaróan párhuzamos forgatókönyvet. Ebben a szakaszban bemutatjuk a forgatókönyvek, amelyek nem felelnek meg az összes követelmények zavaróan párhuzamos. 
 
 ### <a name="mismatched-partition-count"></a>Nem egyező partíciók száma
-* Bemenet: Eseményközpont 8 partícióval rendelkező
-* Kimenete: Eseményközpont 32 partícióval rendelkező
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: 32 partícióval rendelkező eseményközpontot
 
 Ebben az esetben nem számít, mi az a lekérdezést. Ha a bemeneti partíciók száma nem egyezik meg a kimeneti partíciók száma, a topológia nem zavaróan párhuzamos. + azonban továbbra is kapunk bizonyos szintű vagy folyamatkezelést biztosítja.
 
 ### <a name="query-using-non-partitioned-output"></a>Lekérdezés kimenete nem particionált használatával
-* Bemenet: Eseményközpont 8 partícióval rendelkező
-* Kimenet: a Power BI
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: Power BI
 
-A Power bi-kimenet jelenleg nem támogatja a particionálást. Ezért az ebben a forgatókönyvben nem zavaróan párhuzamos.
+A Power BI-kimenet jelenleg nem támogatja a particionálást. Ezért az ebben a forgatókönyvben nem zavaróan párhuzamos.
 
 ### <a name="multi-step-query-with-different-partition-by-values"></a>Többlépéses lekérdezés eltérő PARTITION BY értékek
-* Bemenet: Eseményközpont 8 partícióval rendelkező
-* Kimenete: Eseményközpont 8 partícióval rendelkező
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: 8 partícióval rendelkező eseményközpontot
 
 Lekérdezés:
 

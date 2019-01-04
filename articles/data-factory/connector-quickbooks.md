@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 51a48576b56413e0e779a49829a6eccaa0266a57
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b6e9557503933dfc5271868692cf8546c785bc03
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076102"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021849"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Adatok másolása a QuickBooks online-hoz az Azure Data Factory (előzetes verzió) használatával
 
@@ -47,7 +46,7 @@ QuickBooks társított szolgáltatás a következő tulajdonságok támogatottak
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **QuickBooks** | Igen |
+| type | A type tulajdonságot kell beállítani: **QuickBooks** | Igen |
 | endpoint | A végpont a QuickBooks Online-kiszolgáló. (azaz quickbooks.api.intuit.com)  | Igen |
 | companyId | A QuickBooks vállalati engedélyezésére vállalat azonosítója. Keresse meg a vállalati azonosító kapcsolatos információk: [Hogyan találhatom meg a vállalati azonosító?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Igen |
 | consumerKey | Az OAuth 1.0-s hitelesítési fogyasztói kulcs. | Igen |

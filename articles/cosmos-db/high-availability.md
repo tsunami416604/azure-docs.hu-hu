@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 112b41aa41706a807a82e708fe1fb4173fd084ca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3f3af4b9ca7369cb14f0e91915f9f35086dc761c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837528"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999628"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
 Az Azure Cosmos DB transzparensen replikálja az adatokat, minden régióban az Azure-Cosmos-fiókjához hozzárendelt. A cosmos DB többrétegű redundanciát biztosít az adatok alkalmaz, az alábbi képen látható módon:
 
-![Erőforrás-particionálás](./media/high-availability/figure1.png)
+![Fizikai particionálása](./media/high-availability/figure1.png)
 
 - Cosmos-tárolók belül az adatok horizontális particionálása.
 
@@ -49,9 +49,9 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 
 - Többrégiós fiókok több írási régiók konfigurált írások és olvasások magas rendelkezésre állású lesz. Régiónkénti feladatátvétel azonnali és nem igényel módosításokat az alkalmazásból.
 
-- A single-írási régió többrégiós fiókokat: egy írási régió kimaradás során ezek a fiókok marad magas rendelkezésre állású az olvasásokhoz. Azonban az írási műveletek "engedélyeznie kell az Automatikus feladatátvétel" a feladatátvétel az érintett régió egy másik régióba tartozó Cosmos-fiókjában. A feladatátvétel megadott régióban prioritás szerinti sorrendben történik. Végül az érintett régió újra online állapotba kerül, amikor az az érintett írási régió a szolgáltatáskimaradás közben nem replikált adatok keresztül teszik elérhetővé a hírcsatorna-ütközéseket. Alkalmazás is olvashat az ütközések hírcsatorna, az alkalmazás-specifikus logika alapján ütközések feloldásához és a frissített adatokat írhat vissza a megfelelő Cosmos-tároló. A korábban érintett írási régió állítja helyre, ha automatikusan elérhetővé válik, az olvasási régióban. Manuális feladatátvétel meghívása, és konfigurálja az érintett régió az írási régió. A manuális feladatátvétel elvégezhető használatával [Azure CLI-vel vagy az Azure Portalon](how-to-manage-database-account.md#manual-failover).  
+- A single-írási régió rendelkező fiókok többrégiós: Egy írási régió kimaradás során ezek a fiókok maradnak magas rendelkezésre állású olvasási. Azonban az írási műveletek "engedélyeznie kell az Automatikus feladatátvétel" a feladatátvétel az érintett régió egy másik régióba tartozó Cosmos-fiókjában. A feladatátvétel megadott régióban prioritás szerinti sorrendben történik. Végül az érintett régió újra online állapotba kerül, amikor az az érintett írási régió a szolgáltatáskimaradás közben nem replikált adatok keresztül teszik elérhetővé a hírcsatorna-ütközéseket. Alkalmazás is olvashat az ütközések hírcsatorna, az alkalmazás-specifikus logika alapján ütközések feloldásához és a frissített adatokat írhat vissza a megfelelő Cosmos-tároló. A korábban érintett írási régió állítja helyre, ha automatikusan elérhetővé válik, az olvasási régióban. Manuális feladatátvétel meghívása, és konfigurálja az érintett régió az írási régió. A manuális feladatátvétel elvégezhető használatával [Azure CLI-vel vagy az Azure Portalon](how-to-manage-database-account.md#manual-failover).  
 
-- A single-írási régió többrégiós fiókokat: egy olvasási régió kimaradás során ezek a fiókok maradnak magas rendelkezésre állású olvasási és írási. Az érintett terület a rendszer automatikusan leválasztja az írási régió és lesznek megjelölve offline állapotban van. A Cosmos DB SDK átirányítja az olvasási hívásokat a következő rendelkezésre álló terület az elsődleges régió listában. Ha az elsődleges régió lista régiót egyik sem érhető el, hívások automatikusan térhet vissza az aktuális írási régióba. Nincs szükség módosításokra az alkalmazás kódjában olvasási régióban leállás kezelésére. Végül az érintett régió újra online állapotba kerül, ha a korábban érintett olvasási régió automatikusan szinkronizálja az aktuális írási régióba való és újra számára olvasási kérelmek kiszolgálására elérhető lesz. A helyreállított régió további olvasási megnyílik az alkalmazás kódjának módosítása nélkül. Alatt is feladatátvételi és újracsatlakozás egy korábban meghiúsult régió olvasási konzisztenciagaranciákat továbbra is Cosmos DB által veszi figyelembe.
+- A single-írási régió rendelkező fiókok többrégiós: Egy olvasási régió kimaradás során ezek a fiókok maradnak magas rendelkezésre állású olvasási és írási. Az érintett terület a rendszer automatikusan leválasztja az írási régió és lesznek megjelölve offline állapotban van. A Cosmos DB SDK átirányítja az olvasási hívásokat a következő rendelkezésre álló terület az elsődleges régió listában. Ha az elsődleges régió lista régiót egyik sem érhető el, hívások automatikusan térhet vissza az aktuális írási régióba. Nincs szükség módosításokra az alkalmazás kódjában olvasási régióban leállás kezelésére. Végül az érintett régió újra online állapotba kerül, ha a korábban érintett olvasási régió automatikusan szinkronizálja az aktuális írási régióba való és újra számára olvasási kérelmek kiszolgálására elérhető lesz. A helyreállított régió további olvasási megnyílik az alkalmazás kódjának módosítása nélkül. Alatt is feladatátvételi és újracsatlakozás egy korábban meghiúsult régió olvasási konzisztenciagaranciákat továbbra is Cosmos DB által veszi figyelembe.
 
 - Egyetlen régióban fiókok elveszítheti a rendelkezésre állás a következő regionális kimaradás. Azt javasoljuk, hogy legalább két régió (lehetőleg, legalább két írási régió), a Cosmos-fiók beállítása mindig a magas rendelkezésre állásának biztosításához.
 

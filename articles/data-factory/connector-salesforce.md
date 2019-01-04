@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409577"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015083"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-hoz, és az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -99,7 +98,7 @@ A Salesforce-beli társított szolgáltatás a következő tulajdonságok támog
 }
 ```
 
-**Példa: Store hitelesítő adatokat a Key Vaultban**
+**Példa: Hitelesítő adatok Store a Key Vaultban**
 
 ```json
 {
@@ -168,7 +167,7 @@ Adatok másolása a és a Salesforce-hoz, állítsa be a type tulajdonság, az a
 ```
 
 >[!NOTE]
->Előző verziókkal való kompatibilitás: adatok másolása a Salesforce-ból, ha az előző "RelationalTable" típusú adatkészletet használ, amikor, tartja működik bár egy javaslatot, váltson át az új "SalesforceObject" típust.
+>Előző verziókkal való kompatibilitás érdekében: Ha az adatok másolása a Salesforce-ból, ha az előző "RelationalTable" típusú adatkészletet használ, bár egy javaslatot, váltson át az új "SalesforceObject" típus tartja működik.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -227,7 +226,7 @@ Adatok másolása a Salesforce-ból, állítsa a forrás típusaként a másolá
 ```
 
 >[!NOTE]
->Előző verziókkal való kompatibilitás: adatok másolása a Salesforce-ból, ha a korábbi "RelationalSource" típusú példány használja, ha a forrás tartja dolgozik, bár egy javaslatot, váltson át az új "SalesforceSource" típust.
+>Előző verziókkal való kompatibilitás érdekében: Adatok másolása a Salesforce-ból, ha a korábbi "RelationalSource" típusú példány használja, ha a forrás tartja dolgozik, bár egy javaslatot, váltson át az új "SalesforceSource" típus.
 
 ### <a name="salesforce-as-a-sink-type"></a>A Salesforce, a fogadó típusa
 
@@ -239,9 +238,9 @@ Adatok másolása a Salesforce-hoz, állítsa a fogadó típusa a másolási tev
 | WriteBehavior | Az írási viselkedésének a művelethez.<br/>Engedélyezett értékek a következők **beszúrása** és **Upsert**. | Nem (alapértelmezés szerint a Insert) |
 | externalIdFieldName | A külsőazonosító-mező az upsert művelet neve. A megadott mezőt kell definiálni a Salesforce-objektum külsőazonosító-mezőjeként"". A megfelelő bemeneti adatokat, nem tartalmazhat NULL értékeket. | Igen, az "Upsert" |
 | WriteBatchSize | A sorok száma az egyes kötegekben lévő a Salesforce-hoz írt adatok. | Nem (az alapértelmezett érték 5 000) |
-| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok NULL értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: hagyja az adatokat a rendeltetési objektum változatlan marad, amikor ezt teszi, hogy egy upsert vagy frissítési műveletben. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: frissítse az adatokat a rendeltetési objektumban NULL upsert vagy frissítési művelet végrehajtásakor. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
+| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok NULL értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, amikor ezt teszi, hogy egy upsert vagy frissítési műveletben. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: Ekkor egy upsert vagy frissítési műveletben, frissítse az adatokat a rendeltetési objektumban NULL. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
 
-**. Példa: A másolási tevékenység fogadó Salesforce**
+**Példa: A másolási tevékenység fogadó Salesforce-ban**
 
 ```json
 "activities":[
@@ -312,25 +311,25 @@ Adatok másolása a Salesforce-ból, ha a Data Factory-közbenső adattípusok a
 
 | Salesforce-adatok típusa | Data Factory közbenső adattípus |
 |:--- |:--- |
-| Automatikus száma |Sztring |
+| Automatikus száma |Karakterlánc |
 | Jelölőnégyzet |Logikai |
-| Currency (Pénznem) |tizedes tört |
+| Currency (Pénznem) |Tizedes tört |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
-| E-mail |Sztring |
-| Azonosító |Sztring |
-| Keresési kapcsolat |Sztring |
-| Többszörös kijelöléses értéklista |Sztring |
-| Szám |tizedes tört |
-| Százalék |tizedes tört |
-| Telefonszám |Sztring |
-| Értéklista |Sztring |
-| Szöveg |Sztring |
-| Szövegterület |Sztring |
-| Szövegterület (hosszú) |Sztring |
-| Szövegterület (részletes) |Sztring |
-| Szöveg (titkosítva) |Sztring |
-| URL-cím |Sztring |
+| E-mail |Karakterlánc |
+| Azonosító |Karakterlánc |
+| Keresési kapcsolat |Karakterlánc |
+| Többszörös kijelöléses értéklista |Karakterlánc |
+| Szám |Tizedes tört |
+| Százalék |Tizedes tört |
+| Telefonszám |Karakterlánc |
+| Értéklista |Karakterlánc |
+| Szöveg |Karakterlánc |
+| Szövegterület |Karakterlánc |
+| Szövegterület (hosszú) |Karakterlánc |
+| Szövegterület (részletes) |Karakterlánc |
+| Szöveg (titkosítva) |Karakterlánc |
+| URL-cím |Karakterlánc |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

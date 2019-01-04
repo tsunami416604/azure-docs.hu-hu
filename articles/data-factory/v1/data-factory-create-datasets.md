@@ -9,17 +9,16 @@ ms.assetid: 0614cd24-2ff0-49d3-9301-06052fd4f92a
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 77e81dce7857433481f501410419f1067a51c3fc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38667438"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020336"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adatkészleteket az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +40,7 @@ Egy tevékenység is igénybe vehet a nulla vagy több bemeneti **adatkészletek
 
 Mielőtt egy adatkészletet hoz létre, létre kell hoznia egy **társított szolgáltatás** az adattárhoz összekapcsolása a data factoryhoz. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Az adatkészletek azonosíthatja az adatokat a társított adattárakban, mint például az SQL-táblák, fájlok, mappák és dokumentumok belül. Például egy Azure Storage társított szolgáltatás egy storage-fiókot a data factoryhoz. Az Azure Blob-adatkészlet a blobtárolót és a bemeneti blobokat feldolgozású tartalmazó mappát jelöli. 
 
-Íme egy példa forgatókönyv. Adatok másolása Blob storage-ból egy SQL Database-adatbázishoz, hozzon létre két társított szolgáltatást: Azure Storage és Azure SQL Database. Ezután hozzon létre két adatkészletet: az Azure Blob-adatkészlet (amely az Azure Storage társított szolgáltatásra vonatkozik) és az Azure SQL Table adatkészlet (amely az Azure SQL Database-beli társított szolgáltatásra vonatkozik). Az Azure Storage és Azure SQL Database-beli társított szolgáltatások tartalmaznak, amelyek a Data Factory használ futtatáskor az Azure Storage és Azure SQL Database-csatlakozás kapcsolati karakterláncok. Az Azure Blob-adatkészlet pedig meghatározza a blobtárolót és a Blob storage-ban a bemeneti blobokat tartalmazó blob mappát. Az Azure SQL Table adatkészlet adja meg az SQL-adatbázis, amelyhez az adatokat kell másolni az SQL-táblát.
+Íme egy példa forgatókönyv. Adatok másolása Blob storage-ból egy SQL Database-adatbázishoz, akkor hozzon létre két társított szolgáltatást: Az Azure Storage és az Azure SQL-adatbázis. Ezután hozzon létre két adatkészletet: Az Azure Blob-adatkészlet (amely az Azure Storage társított szolgáltatásra vonatkozik) és az Azure SQL Table adatkészlet (amely az Azure SQL Database-beli társított szolgáltatásra vonatkozik). Az Azure Storage és Azure SQL Database-beli társított szolgáltatások tartalmaznak, amelyek a Data Factory használ futtatáskor az Azure Storage és Azure SQL Database-csatlakozás kapcsolati karakterláncok. Az Azure Blob-adatkészlet pedig meghatározza a blobtárolót és a Blob storage-ban a bemeneti blobokat tartalmazó blob mappát. Az Azure SQL Table adatkészlet adja meg az SQL-adatbázis, amelyhez az adatokat kell másolni az SQL-táblát.
 
 Az alábbi ábrán látható a folyamat, a tevékenység, az adatkészlet és a társított szolgáltatás közötti kapcsolatokat a Data Factoryban: 
 
@@ -83,9 +82,9 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
 | név |Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |NA |
-| type |Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [adatkészlettípus](#Type). |Igen |NA |
+| type |Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: Azure Blobba, AzureSqlTable). <br/><br/>További információkért lásd: [adatkészlettípus](#Type). |Igen |NA |
 | struktúra |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |NA |
-| typeProperties | A típus tulajdonságokat különböznek az egyes (például: az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |NA |
+| typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |NA |
 | external | Adja meg, hogy data factory-folyamatok explicit módon előállított adatkészlet vagy nem a logikai jelzőt. Ha a tevékenység bemeneti adatkészlete nem a jelenlegi folyamat által előállított, ezt a jelzőt true értékre. Ezt a jelzőt igaz értékre a folyamat az első tevékenység bemeneti adatkészlete esetében.  |Nem |false |
 | rendelkezésre állás | Határozza meg (például óránként vagy naponta) feldolgozási időszakának vagy a slicing az adatkészlet üzemi modellt. Egy tevékenység futtatása által felhasznált és előállított adatok minden egysége adatszelet nevezzük. Kimeneti adatkészlet rendelkezésre állásának napi (gyakorisága –, időköz – 1 nap) értékre van állítva, ha a szelet előállítása naponta. <br/><br/>További információkért lásd: [adatkészlet rendelkezésre](#Availability). <br/><br/>Felosztási modelljét a adatkészlet részletes ismertetéséért tekintse meg a [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
 | szabályzat |Határozza meg a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. <br/><br/>További információkért lásd: a [adatkészlet házirend](#Policy) szakaszban. |Nem |NA |
@@ -197,7 +196,7 @@ Minden egyes oszlopának struktúrája a következő tulajdonságokat tartalmazz
 | --- | --- | --- |
 | név |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát.  |Nem |
-| kulturális környezet |. NET-alapú kulturális környezetet használni, amikor a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. |Nem |
+| kulturális környezet |. NET-alapú kulturális környezetet használni, amikor a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. |Nem |
 | Formátum |Formázó karakterlánc típus egy .NET-típus esetén használandó: `Datetime` vagy `Datetimeoffset`. |Nem |
 
 Az alábbi irányelvek segítségével eldöntheti, hogy mikor struktúra információval, és mit kell foglalni a **struktúra** szakaszban.
@@ -238,10 +237,10 @@ A következő táblázat ismerteti a rendelkezésre állási szakaszban használ
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| frequency |Megadja az adatkészlet szelet éles üzemi környezetek részei.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Igen |NA |
+| frequency |Megadja az adatkészlet szelet éles üzemi környezetek részei.<br/><br/><b>Támogatott gyakoriság</b>: Perc, óra, nap, hét, hónap |Igen |NA |
 | interval |Megadja egy szorzóval gyakoriság esetén.<br/><br/>"X időköz" határozza meg, hogy milyen gyakran a szelet előállítása. Például ha az adatkészlet óradíjat kell szeletelt van szüksége, akkor be <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/>Vegye figyelembe, hogy ha megad **gyakorisága** , **perc**, az intervallum nem lehet kisebb, mint 15-re kell beállítani. |Igen |NA |
 | stílus |Itt adhatja meg, hogy a szeletet, vagy az időszak végén kell mutatni.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Ha **gyakorisága** értékre van állítva **hónap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a hónap utolsó napján. Ha **stílus** értékre van állítva **StartOfInterval**, a szelet előállítása a hónap első napján.<br/><br/>Ha **gyakorisága** értékre van állítva **nap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a nap az elmúlt órában.<br/><br/>Ha **gyakorisága** értékre van állítva **óra**, és **stílus** értékre van állítva **EndOfInterval**, a szelet előállítása a óra végén. Például egy szelet az du. 1-2 PM időszakban, a rendszer óránként létrehoz egy 2-kor. |Nem |EndOfInterval |
-| anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási idő abszolút pozícióját határozza meg. <br/><br/>Vegye figyelembe, hogy ha a propoerty rendelkezik dátum részei, amelyek részletesebben, mint a megadott gyakorisággal, a részletesebb részek figyelmen kívül hagyja. Például ha a **időköz** van **óránként** (frequency: hour és interval: 1), és a **anchorDateTime** tartalmaz **perceket és másodperceket**, akkor a perceket és másodperceket részeit **anchorDateTime** figyelmen kívül hagyja. |Nem |01/01/0001 |
+| anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási idő abszolút pozícióját határozza meg. <br/><br/>Vegye figyelembe, hogy ha a propoerty rendelkezik dátum részei, amelyek részletesebben, mint a megadott gyakorisággal, a részletesebb részek figyelmen kívül hagyja. Például ha a **időköz** van **óránként** (frequency: hour és interval: 1.), és a **anchorDateTime** tartalmaz **perceket és másodperceket**, akkor a perceket és másodperceket részeit **anchorDateTime** figyelmen kívül hagyja. |Nem |01/01/0001 |
 | offset |Időtartam, amely szerint a kezdő és befejező az összes adatkészlet szeleteit áttért. <br/><br/>Ne feledje, ha mindkét **anchorDateTime** és **eltolás** meg van adva, a kombinált shift eredménye. |Nem |NA |
 
 ### <a name="offset-example"></a>a példában eltolása
@@ -286,7 +285,7 @@ A **házirend** az adatkészlet-definícióban szakasz definiálja a feltételek
 | Házirend neve | Leírás | A alkalmazni | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Azt ellenőrzi, hogy az adatok **Azure Blob storage** megfelel a minimális méret (megabájtban). |Azure Blob Storage |Nem |NA |
-| minimumRows |Azt ellenőrzi, hogy az adatok egy **Azure SQL database** vagy egy **Azure-tábla** sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
+| minimumRows |Azt ellenőrzi, hogy az adatok egy **Azure SQL database** vagy egy **Azure-tábla** sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL-adatbázis</li><li>Azure-tábla</li></ul> |Nem |NA |
 
 #### <a name="examples"></a>Példák
 **minimumSizeMB:**

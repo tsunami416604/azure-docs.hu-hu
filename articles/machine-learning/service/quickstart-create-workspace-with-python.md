@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95d7fc06d1ea7db3eddd0ac228263f3b6a07a719
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: da84d6361d80db8aea797827ed3d7bc612e2eda3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810253"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999050"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
@@ -134,7 +134,7 @@ pip install azureml-sdk[databricks]
 
    Futtassa a kódot, amikor a program kérheti jelentkezzen be az Azure-fiókjával. A bejelentkezés után a rendszer helyben gyorsítótárazza a hitelesítési jogkivonatot.
 
-1. A munkaterület adatai, például a hozzájuk kapcsolódó tárterületért, tároló-beállításjegyzék és a key vault viewe adja meg a következő kódot:
+1. A munkaterület megtekintéséhez részleteit, például a hozzájuk kapcsolódó tárterületért, tároló-beállításjegyzék és a key vault adja meg a következő kódot:
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
 

@@ -9,17 +9,16 @@ ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b2d9bdd8a7faee81794beef7cf6a764aeea666ae
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276005"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020115"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +80,7 @@ Ez a bemutató részeként végezhet két magas szintű lépései a következők
 2. Hozzon létre egy Azure data factory az egyéni tevékenységet használó folyamatot.
 
 ### <a name="create-a-custom-activity"></a>Egyéni tevékenységek létrehozása
-.NET egyéni tevékenység, hozzon létre egy **.NET osztálytár** projekt egy olyan osztállyal, amely megvalósító **IDotNetActivity** felületet. Ez az interfész már csak egy ezek közül: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) , és az aláírása:
+.NET egyéni tevékenység, hozzon létre egy **.NET osztálytár** projekt egy olyan osztállyal, amely megvalósító **IDotNetActivity** felületet. Ez az interfész már csak egy ezek közül: [Hajtsa végre](https://msdn.microsoft.com/library/azure/mt603945.aspx) , és az aláírása:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -426,7 +425,7 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
    3. Kattintson a **Data Factory** elemre a **Data analytics** (Adatelemzés) panelen.
    
     ![Új Azure Data Factory menü](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **nem érhető el a Data factory name "CustomActivityFactory"**, módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
+2. Az a **új adat-előállító** panelen adja meg **CustomActivityFactory** neve. Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "CustomActivityFactory"**, módosítsa az adat-előállító nevét (például **yournameCustomActivityFactory**), és próbálkozzon újra a létrehozással.
 
     ![Új Azure Data Factory panel](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Kattintson a **ERŐFORRÁSCSOPORT-név**, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot.
@@ -437,7 +436,7 @@ Az alábbiakban a jelen szakaszban végrehajtandó lépések:
     
     ![A Data Factory panel](media/data-factory-use-custom-activities/data-factory-blade.png)
 
-### <a name="step-2-create-linked-services"></a>2. lépés: A társított szolgáltatások létrehozása
+### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
 A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. Ebben a lépésben társítani fogja az Azure Storage-fiók és az Azure Batch-fiókot az adat-előállítóhoz.
 
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
@@ -511,7 +510,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
     }
     ```
 
-   Létrehoz egy folyamatot a kezdési időpont az útmutató későbbi részeiben: 2016-11-16T00:00:00Z és a záró időpont: 2016-11-16T05:00:00Z. Ütemezés szerint állítja elő a adatokat óránként, hogy öt bemeneti/kimeneti szeletek (közötti **00**: 00:00 -> **05**: 00:00).
+   Ebből az útmutatóból kezdő időpont későbbi részében létrehoz egy folyamatot: 2016-11-16T00:00:00Z és a záró időpont: 2016-11-16T05:00:00Z. Ütemezés szerint állítja elő a adatokat óránként, hogy öt bemeneti/kimeneti szeletek (közötti **00**: 00:00 -> **05**: 00:00).
 
    A **gyakorisága** és **időköz** a bemeneti adatkészlet beállítása **óra** és **1**, ami azt jelenti, hogy a bemeneti szelet érhető el Óránként. Ebben a példában a fájl (file.txt) a intputfolder.
 
@@ -554,7 +553,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
 
     Kimeneti blob/fájl jön létre az egyes bemeneti szeletek. Itt látható, hogy az egyes szeletekhez egy kimeneti fájl neve. A kimeneti fájlok jönnek létre egy kimeneti mappában: **adftutorial\customactivityoutput**.
 
-   | Szelet | Kezdés időpontja | Kimeneti fájl |
+   | Szelet | Kezdő időpont | Kimeneti fájl |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
@@ -562,7 +561,7 @@ Ebben a lépésben adatkészleteket hoz létre, bemeneti és kimeneti adatokat k
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    Ne feledje, hogy a bemeneti mappában lévő összes fájlt a fent említett kezdési idejének a szelet részei. A szeletek feldolgozásakor a rendszer az egyéni tevékenység keresztül minden fájlt átvizsgálja, és hoz létre egy sort a kimeneti fájl a keresési kifejezés ("Microsoft") előfordulásainak száma. A inputfolder három fájl is tartalmaz, van-e három sort a kimeneti fájl az egyes óránkénti szeletek: 2016-11-16:01:00:00.txt 2016-11-16-00.txt, stb.
+    Ne feledje, hogy a bemeneti mappában lévő összes fájlt a fent említett kezdési idejének a szelet részei. A szeletek feldolgozásakor a rendszer az egyéni tevékenység keresztül minden fájlt átvizsgálja, és hoz létre egy sort a kimeneti fájl a keresési kifejezés ("Microsoft") előfordulásainak száma. A inputfolder három fájl is tartalmaz, van-e három sort az egyes óránkénti szeletek a kimeneti fájl: 2016-11-16:01:00:00.txt 2016-11-16-00.txt, stb.
 3. Üzembe helyezéséhez a **OutputDataset**, kattintson a **telepítés** a parancssávon.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Létrehozni és futtatni egy folyamatot, amely használja az egyéni tevékenység
@@ -687,7 +686,7 @@ Néhány alapvető technikából áll:
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ``` 
-2. Ha a következő hibát látja, ellenőrizze, hogy az osztály a CS-fájl neve megegyezik-e a megadott név a **EntryPoint** tulajdonság a folyamat JSON-Fájljában. A forgatókönyv az osztály neve van: MyDotNetActivity, illetve a belépési pont a JSON-fájlban: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Ha a következő hibát látja, ellenőrizze, hogy az osztály a CS-fájl neve megegyezik-e a megadott név a **EntryPoint** tulajdonság a folyamat JSON-Fájljában. A forgatókönyv az osztály neve van: A következő MyDotNetActivity, és a belépési pont a JSON-fájlban: MyDotNetActivityNS. **MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
@@ -729,7 +728,7 @@ Néhány alapvető technikából áll:
 Ha frissíti a kódot az egyéni tevékenység, építse fel, és a blob Storage új bináris fájlokat tartalmazó zip-fájl feltöltése.
 
 ## <a name="appdomain-isolation"></a>Appdomain isolation
-Lásd: [Adatbázisközi AppDomain minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely ismerteti, amelyek nem csak a szerelvény verziója a Data Factory indítója által használt egyéni tevékenységek létrehozásához (Példa: WindowsAzure.Storage verze 4.3.0, a Newtonsoft.Json v6.0.x, stb.).
+Lásd: [Adatbázisközi AppDomain minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely ismerteti, amelyek nem csak a szerelvény verziója a Data Factory indítója által használt egyéni tevékenységek létrehozásához (Példa: WindowsAzure.Storage verze 4.3.0 Newtonsoft.Json v6.0.x, stb.).
 
 ## <a name="access-extended-properties"></a>A hozzáférés további tulajdonságok
 A tevékenység JSON az alábbi mintában látható módon kiterjesztett tulajdonságok deklarálhatnak:
@@ -748,7 +747,7 @@ A tevékenység JSON az alábbi mintában látható módon kiterjesztett tulajdo
 ```
 
 
-A példában két kiterjesztett tulajdonságok vannak: **SliceStart** és **DataFactoryName**. Az érték a SliceStart a SliceStart rendszerváltozóhoz alapul. Lásd: [rendszerváltozók](data-factory-functions-variables.md) támogatott rendszerváltozók listáját. A DataFactoryName értéke kötelezően CustomActivityFactory.
+A példában a rendszer két további tulajdonságok: **SliceStart** és **DataFactoryName**. Az érték a SliceStart a SliceStart rendszerváltozóhoz alapul. Lásd: [rendszerváltozók](data-factory-functions-variables.md) támogatott rendszerváltozók listáját. A DataFactoryName értéke kötelezően CustomActivityFactory.
 
 Ezek a további tulajdonságok a eléréséhez a **Execute** módszer használható kódja a következő kódhoz hasonló:
 
@@ -769,7 +768,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Automatikus skálázás az Azure Batch
 Az Azure Batch-készlet is létrehozhat **automatikus skálázási** funkció. Létrehozhat például egy azure batch-készletet 0 dedikált virtuális gépek és az automatikus skálázás képletét a függőben lévő feladatok száma alapján. 
 
-A mintául szolgáló képlet itt éri el a következő viselkedés: a készlet létrehozásakor először, 1 virtuális gép kezdődik. $PendingTasks metrika határozza meg, hogy a feladatok száma futó + (sorban áll) aktív állapotban.  A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Tehát új feladatokat az elküldésüket készlet automatikusan nő befejeződött feladatokat, mint a virtuális gépek ingyenes egyenként válnak és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. igény szerinti startingNumberOfVMs és maxNumberofVMs kell beállítani.
+A mintául szolgáló képlet itt éri el a következő viselkedés: Amikor először hozza létre a készletet, 1 virtuális gép kezdődik. $PendingTasks metrika határozza meg, hogy a feladatok száma futó + (sorban áll) aktív állapotban.  A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Tehát új feladatokat az elküldésüket készlet automatikusan nő befejeződött feladatokat, mint a virtuális gépek ingyenes egyenként válnak és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. igény szerinti startingNumberOfVMs és maxNumberofVMs kell beállítani.
 
 Automatikus skálázási képletet:
 

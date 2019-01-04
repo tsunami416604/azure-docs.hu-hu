@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987696"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023838"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális gépek az Azure Resource Manager-sablon
 
@@ -260,7 +260,7 @@ A legtöbb erőforrást megfelelő működéséhez más erőforrások függenek.
 ],
 ```
 
-Resource Manager párhuzamosan telepíti az olyan erőforrások, amelyek nem függnek egy másik erőforrás üzembe helyezve. Ügyeljen arra, hogy függőségek beállításakor, mivel a szükségtelen függőségek meghatározásával véletlenül lelassíthatja a központi telepítés. Függőségek láncolhatja össze a több-erőforrások használatával. Ha például a hálózati adaptert a nyilvános IP-cím és a virtuális hálózati erőforrások függ.
+Resource Manager párhuzamosan telepíti az olyan erőforrások, amelyek nem függ egy másik erőforrás üzembe helyezve. Ügyeljen arra, hogy függőségek beállításakor, mivel a szükségtelen függőségek meghatározásával véletlenül lelassíthatja a központi telepítés. Függőségek láncolhatja össze a több-erőforrások használatával. Ha például a hálózati adaptert a nyilvános IP-cím és a virtuális hálózati erőforrások függ.
 
 Hogyan tudta, hogy ha egy függőség szükség? Tekintse meg a sablonban megadott értékeket. Ha a virtuális gép erőforrás definíció mutat egy másik erőforrás üzembe helyezett ugyanazt a sablont egy eleme, egy függőségi kell. A példában a virtuális gép például egy hálózati profil határozza meg:
 
@@ -374,7 +374,7 @@ Igény szerint hozzáadhat adatlemezeket a virtuális gépekhez. A [lemezek szá
 
 ## <a name="extensions"></a>Bővítmények
 
-Bár a [bővítmények](extensions-features.md) külön erőforrást, az szorosan kapcsolódik virtuális gépeket. Bővítmények hozzáadható egy gyermek-erőforrás a virtuális gép, vagy külön erőforrást. A példa bemutatja a [diagnosztikai bővítmény](extensions-diagnostics-template.md) a virtuális gépeket ad hozzá:
+Bár a [bővítmények](extensions-features.md) külön erőforrást, az szorosan virtuális gépekre van kötve. Bővítmények hozzáadható egy gyermek-erőforrás a virtuális gép, vagy külön erőforrást. A példa bemutatja a [diagnosztikai bővítmény](extensions-diagnostics-template.md) a virtuális gépeket ad hozzá:
 
 ```
 { 
@@ -436,7 +436,7 @@ Számos olyan bővítmény, amelyet telepíthet a virtuális gép, de a leghaszn
 }
 ```
 
-A start.ps1 parancsfájl számos konfigurációs feladatokat végezheti el. Ha például az adatlemezeket, a példában a virtuális gépek hozzáadott nincs inicializálva; Egyéni parancsfájl használatával inicializálja őket. Ha több indítási feladatok elvégzésére, a start.ps1 fájl segítségével más PowerShell-szkriptek meghívása az Azure storage-ban. A példa Powershellt használ, de bármilyen a parancsfájl-kezelési módszer, amely az operációs rendszer által használt érhető el.
+A start.ps1 parancsfájl számos konfigurációs feladatokat végezheti el. Például az adatlemezeket, a példában a virtuális gépek hozzáadott nem inicializált; Egyéni parancsfájl használatával inicializálja őket. Ha több indítási feladatok elvégzésére, a start.ps1 fájl segítségével más PowerShell-szkriptek meghívása az Azure storage-ban. A példa Powershellt használ, de bármilyen a parancsfájl-kezelési módszer, amely az operációs rendszer használata esetén érhető el.
 
 A bővítmények beállítások a portálon a telepített bővítmények állapotát tekintheti meg:
 
@@ -448,7 +448,7 @@ Emellett információkat szerezhet a bővítmény használatával a **Get-AzureR
 
 Amikor telepít egy sablont, az Azure az erőforrásokat, hogy telepített egy csoportot, és automatikusan hozzárendel egy nevet a központilag telepített csoportban követi nyomon. Az üzemelő példány neve megegyezik a sablon nevét.
 
-Ha kíváncsi a központi telepítésben lévő erőforrások állapotáról, az erőforráscsoport panelről is használhatja az Azure Portalon:
+Ha Ön inspirációkkal a központi telepítésben lévő erőforrások állapotáról, tekintse meg az erőforráscsoport az Azure Portalon:
 
 ![Získat informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
     
@@ -459,3 +459,4 @@ Akkor sem, használja ugyanazt a sablont hozhat létre erőforrásokat, vagy fri
 - Hozzon létre saját sablont [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
 - Az eszközzel létrehozott sablon üzembe helyezése [Windows virtuális gép létrehozása Resource Manager-sablonnal](ps-template.md).
 - A használatával létrehozott virtuális gépek kezelése [létrehozása és a Windows virtuális gépek kezelése az Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- A JSON-szintaxist és a sablonok erőforrástípusok tulajdonságainak: [Azure Resource Manager sablonreferenciája](/azure/templates/).

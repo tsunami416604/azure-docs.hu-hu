@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 67658d75f7ad4a6db1af5db97a525774b0ab6e61
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e91bcdf3980b0f03967c09b0b7a75aa3d3a520a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095278"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014624"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával ServiceNow
 
@@ -42,9 +41,9 @@ ServiceNow-beli társított szolgáltatás a következő tulajdonságok támogat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **ServiceNow** | Igen |
+| type | A type tulajdonságot kell beállítani: **ServiceNow** | Igen |
 | endpoint | A végpont a ServiceNow-kiszolgáló (`http://<instance>.service-now.com`).  | Igen |
-| authenticationType | A használandó hitelesítés típusa. <br/>Engedélyezett értékek a következők: **alapszintű**, **OAuth2** | Igen |
+| authenticationType | A használandó hitelesítés típusa. <br/>Engedélyezett értékek a következők: **Alapszintű**, **OAuth2** | Igen |
 | felhasználónév | Az alapszintű és az OAuth2-hitelesítéshez a ServiceNow-kiszolgálóhoz való csatlakozáshoz használt felhasználónév.  | Igen |
 | jelszó | A jelszó, a felhasználónevet Basic és OAuth2-hitelesítéshez megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | clientId | Az ügyfél-azonosító OAuth2-hitelesítéshez.  | Nem |
@@ -118,8 +117,8 @@ Vegye figyelembe a következőket megadásakor a séma és az oszlopot a Service
 - **Séma:** adja meg a séma szerint `Actual` vagy `Display` a ServiceNow-lekérdezés, tekintse meg, az paraméterként, amely `sysparm_display_value` , IGAZ vagy hamis értéket, ha a hívó [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
 - **Oszlop:** tényleges értéke alapján oszlopneve `Actual` sémája `[columne name]_value`, a megjelenítési érték alatt `Display` sémája `[columne name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma térképet.
 
-**Mintalekérdezés:** 
- `SELECT col_value FROM Actual.alm_asset` vagy 
+**Mintalekérdezés:**
+`SELECT col_value FROM Actual.alm_asset` VAGY 
 `SELECT col_display_value FROM Display.alm_asset`
 
 **Példa**

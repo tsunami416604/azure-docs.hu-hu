@@ -7,16 +7,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: fae74d3912bb608afec93b7aa587885f66af4e53
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ec5ebfa29af13b5a34617be7f423fd7bc220636b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115059"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017752"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabása a példákon keresztül ismertetése
 
@@ -44,7 +43,7 @@ Ehhez a forgatókönyvhöz, létrehoz egy folyamatot a következő elemeket kell
 | Folyamatok beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 2 tevékenység-végrehajtás (1. az eseményindító-futtatás, 1. a tevékenység-végrehajtás) |
 | Másolás adatok feltételezzük: végrehajtási idő = 10 perc | 10 \* 4 azure integrációs modul (alapértelmezett beállítás DIU = 4) integrációs adategységek és teljesítményéről. másolási optimalizálása. További információkért lásd: [Ez a cikk](copy-activity-performance.md) |
-| A figyelő folyamat feltételezzük: Csak az 1 futtatása történt | 2 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 1. a tevékenység-végrehajtásonként) |
+| A figyelő folyamat feltételezzük: Csak 1 történt futtatása | 2 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 1. a tevékenység-végrehajtásonként) |
 
 **Teljes forgatókönyv díjszabás: $0.16811**
 
@@ -75,7 +74,7 @@ Ehhez a forgatókönyvhöz, létrehoz egy folyamatot a következő elemeket kell
 | Folyamatok beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 3 tevékenység-végrehajtás (1. az eseményindító-futtatás, a tevékenység-végrehajtás 2) |
 | Másolás adatok feltételezzük: végrehajtási idő = 10 perc | 10 \* 4 azure integrációs modul (alapértelmezett beállítás DIU = 4) integrációs adategységek és teljesítményéről. másolási optimalizálása. További információkért lásd: [Ez a cikk](copy-activity-performance.md) |
-| A figyelő folyamat feltételezzük: Csak az 1 futtatása történt | 3 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 2 a tevékenység-végrehajtásonként) |
+| A figyelő folyamat feltételezzük: Csak 1 történt futtatása | 3 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 2 a tevékenység-végrehajtásonként) |
 | Hajtsa végre a Databricks tevékenység feltételezzük: végrehajtási idő 10 perc | 10 perc külső folyamat tevékenység-végrehajtás |
 
 **Teljes forgatókönyv díjszabás: $0.16916**
@@ -109,7 +108,7 @@ Ehhez a forgatókönyvhöz, létrehoz egy folyamatot a következő elemeket kell
 | Folyamatok beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 4 tevékenység-végrehajtás (1. az eseményindító-futtatás, a tevékenység-végrehajtás 3) |
 | Másolás adatok feltételezzük: végrehajtási idő = 10 perc | 10 \* 4 azure integrációs modul (alapértelmezett beállítás DIU = 4) integrációs adategységek és teljesítményéről. másolási optimalizálása. További információkért lásd: [Ez a cikk](copy-activity-performance.md) |
-| A figyelő folyamat feltételezzük: Csak az 1 futtatása történt | 4 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 3, a tevékenység-végrehajtásonként) |
+| A figyelő folyamat feltételezzük: Csak 1 történt futtatása | 4 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 3, a tevékenység-végrehajtásonként) |
 | Végrehajtani átvállalása keresési tevékenység: végrehajtási idő = 1 perc | a folyamatok tevékenységeit végrehajtása. 1 perc |
 | Hajtsa végre a Databricks tevékenység feltételezzük: végrehajtási idő 10 perc | Külső folyamat tevékenység-végrehajtási 10 perc |
 

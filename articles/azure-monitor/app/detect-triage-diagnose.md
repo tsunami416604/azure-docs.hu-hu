@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5cc5e0e9bf1d05bde273d1c26c03165a38e02122
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ea2e0513ef2674fdbe6d28f77c4f709848a0d2eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976647"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016375"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -78,7 +78,7 @@ Itt nincs jele erőforráshiánynak, így a kiszolgáló válaszadási idejében
 ## <a name="set-alerts-to-meet-goals"></a>Riasztások beállítása a célok elérése érdekében
 Ettől függetlenül Marcela szeretné szemmel tartani a válaszidőket. Ha túl magasra ugranak, azonnal tudni szeretne róla.
 
-Ezért beállít egy [riasztást](../../application-insights/app-insights-metrics-explorer.md) a jellemző küszöbértékeket meghaladó válaszidőkre. Így biztos lehet benne, hogy tudni fog az esetleges lassú válaszidőkről.
+Ezért beállít egy [riasztást](../../azure-monitor/app/metrics-explorer.md) a jellemző küszöbértékeket meghaladó válaszidőkre. Így biztos lehet benne, hogy tudni fog az esetleges lassú válaszidőkről.
 
 ![Riasztás hozzáadása panel](./media/detect-triage-diagnose/07-alerts.png)
 
@@ -184,7 +184,7 @@ A diagnosztizálás nem teljesen ugyanaz, mint a hibakeresés. Mielőtt elkezden
 
 Egyes lassúsági függőségi problémákat földrajzi hely okoz. A Fabrikam Bank Azure-beli virtuális gépeket használ, és felfedezték, hogy a webkiszolgálót és a fiókkiszolgálót véletlenül eltérő országokban helyezték el. Miután az egyiket migrálták, drámai javulás következett be.
 
-**Mit tettünk?** Ha úgy tűnik, hogy a probléma nem függőségben van, és nem volt mindig tapasztalható, valószínűleg egy friss változás okozhatja. Az esemény- és a mérőszám-diagramok által biztosított előzményekkel könnyen összekapcsolhatja a hirtelen változásokat és az üzembe helyezéseket. Ez megkönnyíti a probléma keresését. Engedélyezze az Application Insights Profilert az alkalmazáskód azon sorainak azonosításához, amelyek a lassú teljesítményt okozták. Lásd az [élő Azure-webalkalmazások Application Insightsszal történő profilkészítését](./../../application-insights/app-insights-profiler.md) ismertető szakaszt. Miután engedélyezte a profilkészítőt, a következőhöz hasonló nyomot fog látni. Az alábbi példában könnyen észrevehető, hogy a *GetStorageTableData* metódus okozta a problémát.  
+**Mit tettünk?** Ha úgy tűnik, hogy a probléma nem függőségben van, és nem volt mindig tapasztalható, valószínűleg egy friss változás okozhatja. Az esemény- és a mérőszám-diagramok által biztosított előzményekkel könnyen összekapcsolhatja a hirtelen változásokat és az üzembe helyezéseket. Ez megkönnyíti a probléma keresését. Engedélyezze az Application Insights Profilert az alkalmazáskód azon sorainak azonosításához, amelyek a lassú teljesítményt okozták. Lásd az [élő Azure-webalkalmazások Application Insightsszal történő profilkészítését](./../../azure-monitor/app/profiler.md) ismertető szakaszt. Miután engedélyezte a profilkészítőt, a következőhöz hasonló nyomot fog látni. Az alábbi példában könnyen észrevehető, hogy a *GetStorageTableData* metódus okozta a problémát.  
 
 ![App Insights Profiler-nyom](./media/detect-triage-diagnose/AppInsightsProfiler.png)
 
@@ -229,7 +229,7 @@ Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Vál
 
 * [ASP.NET-es webalkalmazás](../../azure-monitor/app/asp-net.md)
 * [Java-webalkalmazás](../../azure-monitor/app/java-get-started.md)
-* [Node.js-webalkalmazás](../../application-insights/app-insights-nodejs.md)
+* [Node.js-webalkalmazás](../../azure-monitor/app/nodejs.md)
 * Már üzembe helyezett, az [IIS](../../azure-monitor/app/monitor-web-app-availability.md)-ben, [J2EE](../../azure-monitor/app/java-live.md)-ben vagy [Azure](../../application-insights/app-insights-overview.md)-ban működő alkalmazások.
 * [Weblapok](../../azure-monitor/app/javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.

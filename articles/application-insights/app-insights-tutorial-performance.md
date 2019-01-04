@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 669d5995b66322a2a6ad346643444d5a46c4b6f8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b870383634412c5b095738e2a7f79b9cf4dcf78a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744411"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018211"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -36,7 +36,7 @@ Az oktatóanyag elvégzéséhez:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../azure-monitor/app/asp-net.md)-t.
-- [Engedélyezze az Application Insights profilkészítőt](app-insights-profiler.md#installation) az alkalmazásához.
+- [Engedélyezze az Application Insights profilkészítőt](../azure-monitor/app/profiler.md#installation) az alkalmazásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
@@ -61,7 +61,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 
     ![Időtartamok eloszlása](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  Első ránézésre is megállapítható, hogy a Fabrikamaccount Azure-tábla a felelős a tranzakció teljes időtartamának legnagyobb részéért. Láthatja továbbá, hogy egy kivétel miatt meghiúsult. Ha a lista bármelyik elemére kattint, a jobb oldalon megjelennek az elem részletei. [További információ a tranzakciódiagnosztikai felületről](app-insights-transaction-diagnostics.md)
+5.  Első ránézésre is megállapítható, hogy a Fabrikamaccount Azure-tábla a felelős a tranzakció teljes időtartamának legnagyobb részéért. Láthatja továbbá, hogy egy kivétel miatt meghiúsult. Ha a lista bármelyik elemére kattint, a jobb oldalon megjelennek az elem részletei. [További információ a tranzakciódiagnosztikai felületről](../azure-monitor/app/transaction-diagnostics.md)
 
     ![Művelet részletei](media/app-insights-tutorial-performance/operation-details.png)
     

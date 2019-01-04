@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése DB2 Azure Data Factory használatával |} Microsoft Docs
-description: 'Útmutató: Azure Data Factory másolási tevékenység segítségével áthelyezni az adatokat a helyszíni DB2-adatbázishoz'
+title: Adatok áthelyezése az Azure Data Factory használatával DB2 |} A Microsoft Docs
+description: 'Útmutató: adatok áthelyezése egy helyszíni DB2-adatbázisból az Azure Data Factory másolási tevékenység használatával'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,125 +9,124 @@ ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046530"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015134"
 ---
-# <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory másolási tevékenység segítségével DB2 tárolt adatok mozgatása
+# <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése az Azure Data Factory másolási tevékenység használatával DB2
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](data-factory-onprem-db2-connector.md)
-> * [(Az aktuális verzió) 2-es verzió](../connector-db2.md)
+> * [1-es verzió](data-factory-onprem-db2-connector.md)
+> * [2-es verzió (aktuális verzió)](../connector-db2.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [DB2-összekötő a V2](../connector-db2.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [DB2-összekötő a v2-ben](../connector-db2.md).
 
 
-Ez a cikk azt ismerteti, hogyan használható másolási tevékenység az Azure Data Factory adatok másolása egy helyszíni DB2-adatbázishoz a tárolóban. Bármely tároló, amely egy támogatott fogadó a blokkolandóként adatokat másolhat a [adat-előállító adatok mozgása tevékenységek](data-factory-data-movement-activities.md#supported-data-stores-and-formats) cikk. Ez a témakör a Data Factory cikket, amely áttekintést nyújt az adatátvitelt jelölik a másolási tevékenység segítségével, és felsorolja a támogatott adatokat tároló kombinációk épül. 
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatokat másol egy helyszíni DB2-adatbázis egy adattárba. A bármilyen, amely szerepel a támogatott fogadóként is másolhatja az adatokat a [Data Factory adatáthelyezési tevékenységek](data-factory-data-movement-activities.md#supported-data-stores-and-formats) cikk. Ez a témakör a Data Factory című cikket, amely áttekintést nyújt az adatok áthelyezése másolási tevékenység használatával, és felsorolja a támogatott data store kombinációk épül. 
 
-Adat-előállító jelenleg egy DB2-adatbázisból való áthelyezése adatok kizárólag egy [támogatott fogadó adattár](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Egy DB2-adatbázishoz nem támogatott az adatok áthelyezését más adatokat tárolja.
+A Data Factory jelenleg csak helyez át adatokat egy DB2-adatbázishoz való támogatja egy [támogatott fogadó adattárba](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Egy DB2-adatbázis nem támogatott, amely adatokat helyez át más adatokat tárolja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Adat-előállító támogatja a helyszíni DB2-adatbázishoz való kapcsolódás a [az adatkezelési átjáró](data-factory-data-management-gateway.md). Hozzon létre az átjáró adatok feldolgozási sor az adatok áthelyezése a részletes útmutatót lásd: a [tárolt adatok mozgatása felhőbe helyszíni](data-factory-move-data-between-onprem-and-cloud.md) cikk.
+A Data Factory támogatja használó csatlakozik egy helyszíni DB2-adatbázishoz a [adatkezelési átjáró](data-factory-data-management-gateway.md). Állítsa be az átjáró adatfolyamat az adatok áthelyezése a lépésenkénti útmutatójáért lásd: a [adatok áthelyezése a helyszínről a felhőbe](data-factory-move-data-between-onprem-and-cloud.md) cikk.
 
-Átjáróra szükség, még akkor is, ha a DB2 Azure IaaS virtuális üzemelteti. Az átjáró telepíthető ugyanabból az infrastruktúra-szolgáltatási virtuális adattárként. Az átjáró képes kapcsolódni az adatbázishoz, ha az átjáró telepíthető egy másik virtuális Gépet.
+Egy átjáróra szükség, akkor is, ha Azure IaaS virtuális Gépen lévő üzemeltetett a DB2. Az átjáró telepíthető adattárként azonos IaaS virtuális Gépen. Ha az átjáró képes kapcsolódni az adatbázishoz, az átjáró is telepítheti egy másik virtuális gépen.
 
-Az adatkezelési átjáró egy beépített DB2-illesztőprogram biztosít, így nem kell manuálisan az adatokat másolni DB2 illesztőprogramot telepíteni.
+Az adatkezelési átjárót egy beépített DB2-illesztőprogram biztosít, így nem kell manuálisan az adatok másolása a DB2-illesztőprogram telepítése.
 
 > [!NOTE]
-> Kapcsolat és az átjáró problémák hibaelhárításával kapcsolatos tippek, tekintse meg a [átjáró elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) cikk.
+> Tippek a kapcsolat és az átjáró-problémák hibaelhárítása: a [gateway hibáinak elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) cikk.
 
 
 ## <a name="supported-versions"></a>Támogatott verziók
-A Data Factory DB2-összekötő a következő IBM DB2-platformok és 11, 9, 10 elosztott relációs adatbázis architektúra (DRDA) SQL hozzáférés-kezelési verzióival verziókat támogatja:
+A Data Factory DB2-összekötő a következő IBM DB2-platformokat és verziókat elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager verziókkal 9, 10-es és 11 támogatja:
 
-* IBM DB2 z/os 11.1 verziója
-* IBM DB2 z/OS 10.1 verziója
-* IBM DB2-i (AS400) verziójának 7.2
-* IBM DB2-i (AS400) 7.1-es verziójához
-* IBM DB2 Linux, UNIX és a Windows (LUW) 11-es verzió
-* IBM DB2 a LUW 10.5 verziója
-* IBM DB2 a LUW 10.1 verziója
+* Z/os verziót 11.1 IBM DB2-höz
+* Z/os verziót 10.1 IBM DB2-höz
+* I (AS400) verzió 7.2 IBM DB2-höz
+* I (AS400) 7.1-es verzió az IBM DB2-höz
+* IBM DB2, Linux, UNIX és a Windows (LUW) 11-es verzió
+* A verzió 10,5 LUW IBM DB2-höz
+* A verzió 10.1 LUW IBM DB2-höz
 
 > [!TIP]
-> Ha a hibaüzenet jelenhet meg: "a megfelelő SQL-utasítás végrehajtása kérelmet csomag nem található. SQLSTATE 51002 SQLCODE =-805, = "oka egy szükséges csomag nem lesz létrehozva a normál felhasználói az operációs rendszer. A probléma megoldásához kövesse az alábbi utasításokat a DB2-kiszolgáló típusának:
-> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó, a másolási tevékenység futtatása előtt a normál felhasználó gyűjtemény létrehozása. A gyűjtemény létrehozásához használja a parancsot: `create collection <username>`
-> - A z/OS- vagy LUW DB2: magas jogosultsági fiókkal--egy kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, végrehajtási JOGOT nyilvános engedélyek - példányt is futtatni a egyszer. A szükséges csomag automatikusan jön létre a másolás során. Ezután válthat a normál felhasználók a következő másolási kísérletekhez.
+> Ha a hibaüzenet jelenhet meg: "egy SQL-utasítás végrehajtási kérelméhez tartozó csomag nem található. SQLSTATE 51002 SQLCODE =-805, = "oka szükséges csomag nem a normál felhasználó az operációs rendszer számára jön létre. A probléma megoldásához kövesse ezeket az utasításokat a DB2-kiszolgáló típusának:
+> - A DB2 i (AS400): Lehetővé teszik a kiemelt felhasználó, a másolási tevékenység futtatása előtt a normál felhasználói gyűjtemény létrehozása. A gyűjtemény létrehozásához használja a parancsot: `create collection <username>`
+> - A – z/OS- vagy LUW DB2: A magas jogosultságú fiók – kiemelt felhasználó vagy rendszergazda, amelynek a csomag hatóságok és kötési, BINDADD, támogatás hajtsa végre a nyilvános engedélyeket – egyszer futtatni a másolási használata. A szükséges csomag automatikusan jön létre a másolás során. A későbbiekben válthat a normál felhasználó számára az ezt követő másolási futtatások.
 
 ## <a name="getting-started"></a>Első lépések
-A másolási tevékenység tárolt adatok mozgatása egy helyszíni DB2 adattároló különböző eszközöket és API-k segítségével létrehozhat egy folyamatot: 
+Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyezése a helyszíni DB2 adattárolókból a különböző eszközök és API-k használatával: 
 
-- Hozzon létre egy folyamatot legegyszerűbb módja az Azure Data Factory másolása varázsló használatával. A folyamat létrehozása a varázsló segítségével gyorsan útmutatást lásd: a [oktatóanyag: hozzon létre egy folyamatot a másolása varázslóval](data-factory-copy-data-wizard-tutorial.md). 
-- Eszközök segítségével hozzon létre egy folyamatot, beleértve az Azure-portálon, a Visual Studio, Azure PowerShell, az Azure Resource Manager-sablon, a .NET API és a REST API-t. Hozzon létre egy folyamatot a másolási tevékenység lépésenkénti útmutatójáért tekintse meg a [másolási tevékenység az oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- A folyamat létrehozásának legegyszerűbb módja, hogy az Azure Data Factory Copy varázslót használja. A folyamatot a másolás varázsló használatával történő létrehozásának egy gyors bemutatóért lásd: a [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md). 
+- Eszközök segítségével hozzon létre egy folyamatot, beleértve az Azure Portalon, a Visual Studio, az Azure PowerShell, Azure Resource Manager-sablon, a .NET API és a REST API-t. Egy másolási tevékenységgel ellátott adatcsatorna létrehozása a lépésenkénti útmutatójáért lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
-Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
-1. Bemeneti hivatkozásra, és a kimeneti adatok az áruházakkal, a data factory társított szolgáltatások létrehozásához.
-2. A másolási művelet bemeneti és kimeneti adatok adatkészletek létrehozása. 
-3. Hozzon létre egy folyamatot, amely fogad egy bemeneti adatkészlet és egy kimeneti adatkészletet a másolási tevékenység. 
+1. A bemeneti és kimeneti adattárak az adat-előállítóhoz társított szolgáltatások létrehozása.
+2. Adatkészleteket hoz létre, a másolási művelet bemeneti és kimeneti adatokat képviselik. 
+3. Létrehoz egy folyamatot egy másolási tevékenység, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-Használatakor a másolása varázsló, a JSON-definíciókat a Data Factory kapcsolt szolgáltatások, az adatkészletek és az adatcsatorna entitások automatikusan létrejönnek. Eszközök vagy API-k (kivéve a .NET API-t) használ, amikor az a JSON formátum használatával adja meg a Data Factory entitások. A [JSON-példa: adatok másolása az DB2 az Azure Blob Storage tárolóban](#json-example-copy-data-from-db2-to-azure-blob) jeleníti meg a JSON-definíciókat a Data Factory entitások adatok másolása egy helyszíni DB2 adattároló használt.
+Ha használja a Másolás varázslót, a JSON-definíciók az adat-Előállítóhoz társított szolgáltatások, adatkészletek és folyamat entitásokat automatikusan jönnek létre az Ön számára. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A [JSON-példa: Adatok másolása az Azure Blob storage DB2](#json-example-copy-data-from-db2-to-azure-blob) jeleníti meg, amely adatokat másol egy helyszíni DB2-adattár segítségével a Data Factory-entitások a JSON-definíciói.
 
-A következő szakaszok részletesen bemutatják a JSON tulajdonságokat, amelyeket a Data Factory entitásokat a DB2-tárolóban megadott meghatározásához használják.
+A következő szakaszok konkrétan egy DB2-adattárat a Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részleteket.
 
-## <a name="db2-linked-service-properties"></a>Kapcsolódó DB2 szolgáltatás tulajdonságai
-Az alábbi táblázat a DB2 rendszerhez kapcsolódó szolgáltatásra vonatkozó JSON tulajdonságokat.
+## <a name="db2-linked-service-properties"></a>DB2-beli társított szolgáltatás tulajdonságai
+Az alábbi táblázat jellemző egy DB2-beli társított szolgáltatás JSON-tulajdonságokat.
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **type** |Ez a tulajdonság értékre kell állítani **OnPremisesDb2**. |Igen |
-| **server** |A DB2-kiszolgáló nevét. |Igen |
-| **database** |Neve a DB2-adatbázishoz. |Igen |
-| **schema** |A DB2-adatbázishoz a séma neve. Ez a tulajdonság a kis-és nagybetűket. |Nem |
-| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
-| **felhasználónév** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
-| **jelszó** |A felhasználói fiók jelszavát. |Nem |
-| **gatewayName** |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni DB2-adatbázishoz való kapcsolódáshoz neve. |Igen |
+| **type** |Ezt a tulajdonságot állítsa **OnPremisesDb2**. |Igen |
+| **server** |A DB2-kiszolgáló neve. |Igen |
+| **database** |A DB2-adatbázis neve. |Igen |
+| **schema** |A séma, a DB2-adatbázis neve. Ez a tulajdonság nem kis-és nagybetűket. |Nem |
+| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: Névtelen, alapszintű és a Windows. |Igen |
+| **felhasználónév** |Alapszintű vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
+| **jelszó** |A felhasználói fiók jelszava. |Nem |
+| **gatewayName** |Az átjáró által a Data Factory szolgáltatás a helyszíni DB2-adatbázishoz való csatlakozáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-A szakaszok és meghatározásához adatkészletek rendelkezésre álló tulajdonságok listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Szakasz, például a **struktúra**, **rendelkezésre állási**, és a **házirend** adatkészlet JSON hasonlóak az összes adatkészlet esetében (Azure SQL, Azure Blob Storage tárolóban, az Azure Table-tároló és így tovább).
+A szakaszok és definiálása az adatkészletek rendelkezésre álló tulajdonságok listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Részei, mint például **struktúra**, **rendelkezésre állási**, és a **házirend** JSON adatkészletek hasonlóak az összes adatkészlet esetében (az Azure SQL, Azure Blob storage, az Azure Table storage és így tovább).
 
-A **typeProperties** szakasz eltérő adatkészlet egyes típusai és információkat nyújt azokról az adattárban adatok helyét. A **typeProperties** szakasz egy adatkészlet típusú **RelationalTable**, mely tartalmazza a DB2 adatkészlet a következő tulajdonság tartozik:
+A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A **typeProperties** szakasz egy adatkészlet típusú **RelationalTable**, amely tartalmazza a DB2-adathalmaz rendelkezik a következő tulajdonság:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **Táblanév** |A tábla, amelyre a társított szolgáltatás hivatkozik DB2-adatbázispéldány neve. Ez a tulajdonság a kis-és nagybetűket. |Nem (Ha a **lekérdezés** tulajdonság típusa másolási tevékenység **RelationalSource** van megadva) |
+| **Táblanév** |A tábla a DB2-adatbázispéldányban, amely hivatkozik a társított szolgáltatás neve. Ez a tulajdonság nem kis-és nagybetűket. |Nem (Ha a **lekérdezés** egy másolási tevékenységgel típusú tulajdonsága **RelationalSource** van megadva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A szakaszok és definiálása a másolási tevékenység rendelkezésre álló tulajdonságok listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Másolja a tevékenység tulajdonságai, például a **neve**, **leírás**, **bemenetek** tábla, **kimenete** tábla, és **házirend**, minden típusú tevékenységek érhetők el. Az elérhető tulajdonságok a **typeProperties** szakasz a tevékenység eltérőek az egyes tevékenységhez. A másolási tevékenység során a tulajdonságok az adatforrások és mosdók függenek.
+A szakaszok és másolási tevékenységek definiálását tulajdonságok listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Például a másolási tevékenység tulajdonságai, **neve**, **leírása**, **bemenetek** tábla, **kimenete** táblát, és **házirend**, minden típusú tevékenységek érhetők el. Az elérhető tulajdonságok a **typeProperties** a tevékenység szakaszban eltérőek lehetnek a tevékenységek minden típusának. A másolási tevékenység a tulajdonságok a típusú adatok forrásként és fogadóként változhat.
 
-A másolási tevékenység, ha az adatforrás típusú **RelationalSource** (amely tartalmazza a DB2 rendszerhez), a következő tulajdonságok érhetők el a **typeProperties** szakasz:
+A másolási tevékenység, ha a forrás típusa **RelationalSource** (amely tartalmazza a DB2), a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| **lekérdezés** |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterlánc. Például:`"query": "select * from "MySchema"."MyTable""` |Nem (Ha a **tableName** a DataSet adatkészlet tulajdonság meg van adva) |
+| **Lekérdezés** |Az egyéni lekérdezés használata az adatok olvasásához. |SQL-lekérdezési karakterláncot. Például:`"query": "select * from "MySchema"."MyTable""` |Nem (Ha a **tableName** adatkészlet tulajdonság meg van adva) |
 
 > [!NOTE]
-> Séma-és tábla-és nagybetűk. A lekérdezés utasításban, tegye a tulajdonságnevek használatával "" (idézőjelek).
+> Séma-és tábla-és nagybetűk. A lekérdezési utasítás az idézőjelek közé kell tenni a tulajdonságnevek használatával "" (dupla idézőjel).
 
-## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON-példa: adatok másolása az DB2 az Azure Blob-tároló
-Ebben a példában a minta JSON-definíciókat tartalmazzon, segítségével hozzon létre egy folyamatot biztosít a [Azure-portálon](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). A példa bemutatja, hogyan egy DB2-adatbázishoz a Blob storage adatokat másolni. Azonban adatokat másolhat [bármely támogatott adatok tárolásához a fogadó típusa](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Azure Data Factory másolási tevékenység használatával.
+## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON-példa: DB2 az Azure Blob storage-adatok másolása
+Ebben a példában példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot biztosít a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példa bemutatja, hogyan másolhat adatokat egy DB2-adatbázisból Blob Storage. Azonban adatok átmásolhatók [valamennyi támogatott adat tárolása a fogadó típusa](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Azure Data Factory másolási tevékenység használatával.
 
-A minta a következő adat-előállító entitások rendelkezik:
+A minta az alábbi Data Factory-entitások rendelkezik:
 
-- Egy DB2 társított szolgáltatás típusa [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties)
+- Egy DB2-beli társított szolgáltatást típusú [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties)
 - Egy Azure Blob storage társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-- Bemeneti [dataset](data-factory-create-datasets.md) típusú [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)
-- Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-- A [csővezeték](data-factory-create-pipelines.md) , a másolási tevékenység által használt a [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) tulajdonságai
+- Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)
+- Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [Azure Blobba](data-factory-azure-blob-connector.md#dataset-properties)
+- A [folyamat](data-factory-create-pipelines.md) egy másolási tevékenységgel, amely használja a [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) tulajdonságai
 
-A minta másol adatokat egy lekérdezés eredményét DB2-adatbázisban egy Azure blob óránként. A JSON-tulajdonságok a mintában használt entitás definíciókat Ez a rész ismerteti.
+A minta adatokat másol egy lekérdezés eredménye egy DB2-adatbázishoz az Azure-blobba óránként. A példában használt JSON-tulajdonságokat az entitás meghatározásokat a következő szakaszok ismertetik.
 
-Első lépésként telepítse, és konfigurálja a data gateway. Utasítások szerepelnek a [adatokat a helyszíni helyek és a felhő közötti áthelyezése](data-factory-move-data-between-onprem-and-cloud.md) cikk.
+Első lépésként telepítse, és konfigurálja a data gateway. Utasítások találhatók a [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk.
 
-**DB2 társított szolgáltatás**
+**DB2-beli társított szolgáltatás**
 
 ```json
 {
@@ -147,7 +146,7 @@ Első lépésként telepítse, és konfigurálja a data gateway. Utasítások sz
 }
 ```
 
-**Az Azure Blob storage társított szolgáltatás**
+**Az Azure Blob storage-beli társított szolgáltatás**
 
 ```json
 {
@@ -161,11 +160,11 @@ Első lépésként telepítse, és konfigurálja a data gateway. Utasítások sz
 }
 ```
 
-**DB2 bemeneti adatkészlet**
+**Bemeneti adatkészlet DB2**
 
-A példa feltételezi, hogy létrehozott egy táblát a "MyTable" oszlop adatsorozat időadatok "időbélyegzőjét" címkével rendelkező nevű DB2.
+A minta azt feltételezi, hogy létrehozott egy táblát DB2 "MyTable", amely rendelkezik az idősorozat-adatok a "timestamp" címkével ellátott oszlop neve.
 
-A **külső** tulajdonság értéke "true"értékre. Ez a beállítás arról értesíti a Data Factory szolgáltatásnak, hogy ehhez az adatkészlethez az adat-előállítóban külső, és egy tevékenység adat-előállító nem hozzák. Figyelje meg, hogy a **típus** tulajdonsága **RelationalTable**.
+A **külső** tulajdonság értéke "true". Ez a beállítás a Data Factory szolgáltatás tájékoztatja az, hogy ez az adatkészlet a data factory a külső, és nem egy adat-előállító tevékenység által előállított. Figyelje meg, hogy a **típus** tulajdonsága **RelationalTable**.
 
 
 ```json
@@ -193,7 +192,7 @@ A **külső** tulajdonság értéke "true"értékre. Ez a beállítás arról é
 
 **Azure blobkimeneti adatkészlet**
 
-Adatot ír egy új blob óránként úgy, hogy a **gyakoriság** "Hour" tulajdonságot, és a **időköz** 1 tulajdonság. A **folderPath** tulajdonság a blob dinamikusan ki lesz értékelve az alapján a szelet feldolgozása folyamatban van, a kezdési idejét. A mappa elérési útját használja, év, hónap, nap, és a kezdési idő órában részeit.
+Adatok írása egy új blob minden órában beállításával a **gyakorisága** "Hour" tulajdonságot és a **időköz** tulajdonságot 1-re. A **folderPath** tulajdonság a blob dinamikusan abban az esetben a alapján a feldolgozás alatt álló szelet kezdő időpontja. A mappa elérési útját használja, az év, hónap, nap és a kezdési időpont órás részeit.
 
 ```json
 {
@@ -251,9 +250,9 @@ Adatot ír egy új blob óránként úgy, hogy a **gyakoriság** "Hour" tulajdon
 }
 ```
 
-**A másolási tevékenységhez folyamat**
+**A másolási tevékenység folyamat**
 
-A feldolgozási sor tartalmazza a másolási tevékenység, amely a megadott bemeneti és kimeneti adatkészletek van konfigurálva, és amely óránkénti futásra nem ütemezték. Az adatcsatorna JSON-definícióban a **forrás** típusúra **RelationalSource** és a **fogadó** típusúra **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság kiválasztja az adatokat a "Rendelések" táblából.
+A folyamat egy másolási tevékenység, amely a megadott bemeneti és kimeneti adatkészleteket van konfigurálva, és amely ütemezett óránként tartalmazza. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** és a **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság kiválasztja az adatokat az "Orders" táblából.
 
 ```json
 {
@@ -299,15 +298,15 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a megadott bem
 }
 ```
 
-## <a name="type-mapping-for-db2"></a>Típusleképezés a DB2 rendszerhez
-Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, a másolási tevékenység automatikus típuskonverziók forrástípus gyűjtése típus a következő kétlépcsős megközelítést használatával hajtja végre:
+## <a name="type-mapping-for-db2"></a>DB2-leképezés típusa
+Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) cikk, a másolási tevékenység hajt végre automatikus típuskonverziók a fogadó típusa a következő kétlépéses módszer használatával a forrás típusa:
 
-1. Egy natív forrástípus átalakítása .NET-típus
-2. .NET-típus konvertálása a natív a fogadó típusa
+1. Egy natív forrás típusa átalakítása typ .NET
+2. Typ .NET átalakítása egy natív fogadó típusa
 
-A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység konvertálja az adatokat egy DB2-típusból .NET-típus:
+A következő hozzárendeléseket használják, amikor a másolási tevékenység alakítja az adatokat egy DB2 írja be a .NET-típus:
 
-| DB2-adatbázishoz típusa | .NET-keretrendszer típusa |
+| DB2-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | SmallInt |Int16 |
 | Egész szám |Int32 |
@@ -315,46 +314,46 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | Real |Önálló |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
-| Decimális |Decimális |
-| DecimalFloat |Decimális |
-| Numerikus |Decimális |
+| tizedes tört |Tizedes tört |
+| DecimalFloat |Tizedes tört |
+| Numerikus |Tizedes tört |
 | Dátum |DateTime |
-| Time |A TimeSpan |
+| Time |Időtartam |
 | Időbélyeg |DateTime |
 | Xml |Byte] |
-| karakter |Sztring |
-| VarChar |Sztring |
-| LongVarChar |Sztring |
-| DB2DynArray |Sztring |
+| CHAR |Karakterlánc |
+| VarChar |Karakterlánc |
+| LongVarChar |Karakterlánc |
+| DB2DynArray |Karakterlánc |
 | Bináris |Byte] |
 | VarBinary |Byte] |
 | LongVarBinary |Byte] |
-| Kép |Sztring |
-| VarGraphic |Sztring |
-| LongVarGraphic |Sztring |
-| CLOB |Sztring |
+| Kép |Karakterlánc |
+| VarGraphic |Karakterlánc |
+| LongVarGraphic |Karakterlánc |
+| CLOB |Karakterlánc |
 | Blob |Byte] |
-| DbClob |Sztring |
+| DbClob |Karakterlánc |
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
 | Real |Önálló |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
-| Decimális |Decimális |
-| DecimalFloat |Decimális |
-| Numerikus |Decimális |
+| tizedes tört |Tizedes tört |
+| DecimalFloat |Tizedes tört |
+| Numerikus |Tizedes tört |
 | Dátum |DateTime |
-| Time |A TimeSpan |
+| Time |Időtartam |
 | Időbélyeg |DateTime |
 | Xml |Byte] |
-| karakter |Sztring |
+| CHAR |Karakterlánc |
 
-## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
-A forrás adatkészletben levő oszlopok hozzárendelése oszlop szerepel a fogadó dataset, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
+A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
-## <a name="repeatable-reads-from-relational-sources"></a>A relációs források ismételhető olvasási műveletek
-Ha az adatokat másolni relációs adattároló, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Úgy konfigurálhatja az újrapróbálkozási **házirend** tulajdonságot egy adatkészlet szelet újrafuttathatja, amikor hiba történik. Győződjön meg arról, hogy ugyanazokat az adatokat olvasni, függetlenül attól, hogy hányszor a szelet akkor fut újra, és hogyan futtassa újból a szeletet függetlenül. További információkért lásd: [Repeatable olvassa be az relációs források](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-reads-from-relational-sources"></a>A relációs források megismételhető olvasások
+Amikor adatokat másol egy relációs adattároló, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja az ismételt **házirend** tulajdonságot egy adatkészlet szelet újrafuttatása, ha hiba történik. Győződjön meg arról, hogy ugyanazokat az adatokat függetlenül attól, hogy hány alkalommal fut újra a szeletet, és hogyan futtassa újból a szeletet függetlenül van-e olvasni. További információkért lásd: [Repeatable beolvassa a relációs források](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-További tudnivalók a másolási tevékenység és a teljesítmény optimalizálása teljesítményt befolyásoló legfontosabb tényezők a [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md).
+További információ a másolási tevékenység és a teljesítmény optimalizálása teljesítményét befolyásoló legfontosabb tényezők a [másolási tevékenységek teljesítményéről és finomhangolási útmutató](data-factory-copy-activity-performance.md).

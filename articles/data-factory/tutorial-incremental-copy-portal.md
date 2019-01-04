@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: e31f35aadfa7e46426a1779cdc057691bef91336
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ad490630d3ce5d625bce05c75c20fa71a7aa2d29
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965547"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014540"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL Database-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
@@ -172,7 +171,7 @@ END
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.      
-8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.

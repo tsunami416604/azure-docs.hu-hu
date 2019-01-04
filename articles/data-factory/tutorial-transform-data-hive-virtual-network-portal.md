@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: douglasl
-ms.openlocfilehash: 60dc0e88998580732b50cb202fb5d00a7cfcae21
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: a8ac93d5a820b7d15b46efceb5db383d5b83a804
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019809"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNet) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -38,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 - **Egy Azure virtuális hálózat.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
 
     ![Virtuális hálózat létrehozása](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatolja az előző lépésben létrehozott virtuális hálózathoz az [Azure HDInsight Azure virtuális hálózat segítségével történő bővítésével](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) kapcsolatos cikk utasításait követve. Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
+- **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatlakoztathatja azt a következő Ez a cikk az előző lépésben létrehozta a virtuális hálózatot: [Az Azure Virtual Network használata Azure HDInsight kiterjesztése](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
 
     ![HDInsight virtuális hálózaton](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
@@ -91,7 +90,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
-8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.

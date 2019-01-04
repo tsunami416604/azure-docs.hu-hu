@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 6b0a4b7a8b2a30b9572ecfc488e2af7554b46346
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.openlocfilehash: 7035035823e00fb0c12de3f4eeae11d8b3e1d54d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017738"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016921"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
 
@@ -34,7 +33,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
   - A folyamat futásának monitorozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy  [ingyenes](https://azure.microsoft.com/free/)  fiókot.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -46,37 +45,37 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1.  Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
+1.  Indítsa el a **Microsoft Edge** vagy **Google Chrome** webböngésző. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 
-1.  Kattintson az **Erőforrás létrehozása** elemre a bal oldali menüben, majd az **Analitika**, végül a **Data Factory** elemre.
+1.  Válassza ki **erőforrás létrehozása** a bal oldali menüben válassza ki a **Analytics**, majd válassza ki **adat-előállító**.
 
     ![Új adat-előállító létrehozása](media/transform-data-using-databricks-notebook/new-azure-data-factory-menu.png)
 
-1.  Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
+1.  Az a **új adat-előállító** panelen adja meg **ADFTutorialDataFactory** alatt **neve**.
 
-    Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például: **\<sajátneve\>ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](https://docs.microsoft.com/azure/data-factory/naming-rules) ismertető cikkben találja.
+    Az Azure-beli adat-előállító nevét kell *globálisan egyedi*. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például **\<sajátneve\>ADFTutorialDataFactory**). Data Factory-összetevők elnevezési szabályait, tekintse meg a [Data Factory – elnevezési szabályok](https://docs.microsoft.com/azure/data-factory/naming-rules) cikk.
 
     ![Az új adat-előállító elnevezése](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
-1.  **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni.
+1.  A **előfizetés**, válassza ki az Azure-előfizetés, amelyben az adat-előállítót létre szeretné.
 
-1.  **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
+1.  A **erőforráscsoport**, hajtsa végre a következő lépések egyikét:
     
-    - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
+    - Válassza ki **meglévő** és a legördülő listából válasszon ki egy meglévő erőforráscsoportot.
     
-    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.
+    - Válassza ki **új létrehozása** , és adja meg az erőforráscsoport nevét.
 
-    A rövid útmutató egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
+    Ebben a rövid útmutatóban a lépések azt feltételezik, hogy a név **ADFTutorialResourceGroup** az erőforráscsoportnak. Erőforráscsoportok kapcsolatos további információkért lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
-1.  A **Verzió** résznél válassza a **V2** értéket.
+1.  A **verzió**válassza **V2**.
 
-1.  **Hely:** válassza ki az adat-előállító helyét.
+1.  A **hely**, válassza ki az adat-előállító helyét.
 
-    Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-1.  Kattintson a **Létrehozás** gombra.
+    Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+1.  Válassza ki **létrehozása**.
 
 
-1.  A létrehozás befejezése után megjelenik az **Adat-előállító** lap. A Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+1.  A létrehozás befejezése után megjelenik a **adat-előállító** lapot. Válassza ki a **létrehozás és Monitorozás** csempére kattintva indítsa el a Data Factory felhasználói felülete alkalmazás külön lapon.
 
     ![Az adat-előállító felhasználói felület alkalmazás indítása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image4.png)
 
@@ -86,19 +85,19 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
 ### <a name="create-an-azure-databricks-linked-service"></a>Azure Databricks-beli társított szolgáltatás létrehozása
 
-1.  Az **Első lépések** lapon váltson a **Szerkesztés** lapra a bal oldali ablaktáblán.
+1.  Az a **első lépések** lapon, váltson át a **szerkesztése** lapra a bal oldali panelen.
 
     ![Az új társított szolgáltatás szerkesztése](media/transform-data-using-databricks-notebook/get-started-page.png)
 
-1.  Kattintson az ablak alján látható **Kapcsolatok**, majd az **+ Új** elemre.
+1.  Válassza ki **kapcsolatok** alján az ablakot, és válassza ki, **+ új**.
     
     ![Új kapcsolat létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image6.png)
 
-1.  Az **Új társított szolgáltatás** ablakban válassza a **Compute** \> **Azure Databricks** lehetőséget, majd kattintson a **Folytatás** elemre.
+1.  Az a **új társított szolgáltatás** ablakban válassza **számítási** \> **Azure Databricks**, majd válassza ki ** Továbbra is**.
     
     ![Databricks társított szolgáltatás megadása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image7.png)
 
-1.  Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
+1.  Az a **új társított szolgáltatás** ablakban hajtsa végre a következő lépéseket:
     
     1.  A **Név** mezőben adja meg a következőt: ***AzureDatabricks\_LinkedService***
     
@@ -122,7 +121,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-1.  Kattintson a **+** (plusz) gombra, majd a menüben válassza a **Folyamat** elemet.
+1.  Válassza ki a **+** (plusz) gombra, és válassza ki **folyamat** menüben.
 
     ![Új folyamat létrehozására szolgáló gombok](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -132,15 +131,15 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
     ![A név paraméter létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image11.png)
 
-1.  A **Tevékenységek** eszközkészletben bontsa ki a **Databricks** elemet. Húzza a **Jegyzetfüzet** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére.
+1.  Az a **tevékenységek** eszközkészletben bontsa ki a **Databricks**. Húzza a **Notebook** tevékenységet a **tevékenységek** eszközkészletből a folyamat tervezőfelületére.
 
     ![A jegyzetfüzet áthúzása a tervezőfelületre](media/transform-data-using-databricks-notebook/new-adf-pipeline.png)
 
-1.  A **Databricks**-**jegyzetfüzet** tevékenységeinek tulajdonságok ablakában végezze el az alábbi lépéseket:
+1.  Tulajdonságai között a **Databricks** **Notebook** tevékenység ablak alján, a következő lépéseket:
 
-    a. Váltson az **Azure Databricks** lapra.
+    a. Váltson a **Azure Databricks** fülre.
 
-    b. Válassza ki az előző lépésben létrehozott **AzureDatabricks\_LinkedService** elemet.
+    b. Válassza ki **az Azure Databricks\_LinkedService** (amely az előző eljárásban létrehozott).
 
     c. Váltson a **Beállítások** lapra
 
@@ -174,7 +173,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
        1. Ebben az esetben a **jegyzetfüzet útvonala** **/adftutorial/mynotebook**.
 
-1.  Váltson vissza a **Data Factory felhasználói felületet létrehozó eszközre**. Navigáljon a **Beállítások** lapra az **1. jegyzetfüzet tevékenységei** területen. 
+1.  Váltson vissza a **Data Factory felhasználói felületet létrehozó eszközre**. Navigáljon a **Beállítások** lapra az **1. jegyzetfüzet tevékenységei** területen. 
     
     a.  **Adjon paramétert** a jegyzetfüzet tevékenységeihez. Ugyanazt a paramétert használja, mint amit korábban hozzáadott a **folyamathoz**.
 
@@ -182,17 +181,17 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
     b.  A paraméter neve legyen **input**, értékként pedig a **@pipeline().parameters.name** kifejezést adja meg.
 
-1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **\>\>** (jobbra mutató nyíl) gombra.
+1.  A folyamat érvényesítéséhez kattintson az **ellenőrzése** gombra az eszköztáron. Az érvényesítési ablak bezárásához válassza a **\>\>** (jobbra mutató nyíl) gombra.
 
     ![A folyamat érvényesítése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
-1.  Kattintson **Az összes közzététele** gombra. A Data Factory felhasználói felülete entitásokat (társított szolgáltatásokat és folyamatot) tesz közzé az Azure Data Factory szolgáltatásban.
+1.  Válassza ki **összes közzététele**. A Data Factory felhasználói felülete entitásokat (társított szolgáltatásokat és folyamatot) tesz közzé az Azure Data Factory szolgáltatásban.
 
     ![Az új adat-előállító entitások közzététele](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image19.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
 
-Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget.
+Válassza ki **eseményindító** az eszköztáron, majd válassza ki a **Aktiválás most**.
 
 ![Az Aktiválás most parancs kiválasztása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
@@ -202,17 +201,17 @@ A **Folyamatfuttatás** párbeszédpanel kéri a **név** paramétert. Itt param
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1.  Váltson a **Monitorozás** lapra. Ellenőrizze, hogy megjelenik-e a futó folyamat. Egy, a jegyzetfüzetet végrehajtó Databricks feladatfürt létrehozása körülbelül 5–8 percet vesz igénybe.
+1.  Váltson a **figyelő** fülre. Ellenőrizze, hogy megjelenik-e a futó folyamat. Egy, a jegyzetfüzetet végrehajtó Databricks feladatfürt létrehozása körülbelül 5–8 percet vesz igénybe.
 
     ![A folyamat figyelése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 
-1.  Rendszeres időközönként kattintson a **Frissítés** gombra a folyamat futási állapotának ellenőrzéséhez.
+1.  Válassza ki **frissítése** rendszeres időközönként, hogy a folyamat futási állapotának ellenőrzéséhez.
 
-1.  A folyamat futásához kapcsolódó tevékenységfuttatások megtekintéséhez kattintson a **Tevékenységfuttatások megtekintése** elemre a **Műveletek** oszlopban.
+1.  A folyamat futásához társított tevékenységfuttatások megtekintéséhez válasszon **Tevékenységfuttatások megtekintése** a a **műveletek** oszlop.
 
     ![A tevékenységfuttatások megtekintése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image23.png)
 
-A fenti **Folyamatok** elemre kattintva visszaválthat a folyamatfuttatások nézetre.
+Válthat vissza a folyamatfuttatások nézetre való kiválasztásával a **folyamatok** a fenti hivatkozásra.
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
 

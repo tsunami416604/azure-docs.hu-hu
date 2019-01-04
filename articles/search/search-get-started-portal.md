@@ -1,32 +1,34 @@
 ---
-title: Indexelés, lekérdezés és szűrés az Azure portal – Azure Search-oktatóanyag
-description: Ebben az oktatóanyagban az Azure Portal és előre meghatározott mintaadatok segítségével indexet hozhat létre az Azure Searchben. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást.
+title: Azure portal – Azure Search használatával indexelést és lekérdezést a rövid útmutató
+description: Ez a rövid útmutató segítségével az Azure portal és a beépített mintaadatok indexet hozhat létre az Azure Search szolgáltatásban. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314023"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001787"
 ---
-# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>Oktatóanyag: Beépített portal-eszközök használata az Azure Search-indexelő és a lekérdezések
+# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
 
-Az Azure Search alapfogalmainak gyors áttekintéséhez használhatja az Azure Portalon, az Azure Search szolgáltatás lapján elérhető beépített eszközöket. Ezek az eszközök ugyan nem biztosítják a .NET és a REST API-k összes funkcióját, de a varázslókkal és a szerkesztőkkel kód írása nélkül megismerkedhet az Azure Search használatával, és azonnal érdekes lekérdezéseket állíthat össze egy mintaadatkészleten.
+Egy gyors felkészülési Azure Search-fogalmakról próbálja meg a beépített eszközök az Azure Portalon. Varázslók és a szerkesztők nem kínál a .NET és REST API-k teljes paritás, de Ön is gyorsan használatba a kódmentes bevezető érdekes-lekérdezéseket futtassanak a mintaadatok írása percen belül.
 
 > [!div class="checklist"]
-> * Kezdje a nyilvános mintaadatokkal, és automatikusan hozzon létre egy Azure Search-indexet az **Adatok importálása** varázslóval.
-> * Az Azure Searchben közzétett bármely index indexsémáját és attribútumait megtekintheti.
-> * A **keresési ablakban** használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést és a geosearch funkciót.  
+> * Indítsa el az Azure-ban üzemeltetett ingyenes nyilvános minta adatkészlet
+> * Futtassa a **adatimportálás** varázsló az Azure Search-indexet hozhat létre és az adatok betöltése
+> * Az indexelő folyamatot a portálon
+> * Meglévő index, és azt módosítására szolgáló beállítások megtekintése
+> * Ismerje meg a teljes szöveges keresés, szűrőket, értékkorlátozással, intelligens keresés és a geosearch **keresési ablak**
 
-Ha az eszközök túl korlátozottnak bizonyulnak, érdemes lehet áttekintenie [az Azure Search .NET-ben való programozásának kódalapú bevezetését](search-howto-dotnet-sdk.md) vagy [a REST API-hívások indításához készült webes teszteszközöket](search-fiddler.md).
+Ha az eszközök túl vannak korlátozza, érdemes lehet egy [kódalapú bevezetését programozási Azure search .NET-keretrendszerben](search-howto-dotnet-sdk.md) vagy [Postman vagy a REST API-hívások Fiddler](search-fiddler.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
 
@@ -44,82 +46,95 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, három adatforrásra és három indexelőre korlátozódik. Mielőtt hozzákezdene, ellenőrizze, hogy elegendő hellyel rendelkezik-e további elemek számára. Az oktatóanyagban minden objektumból egyet hozhat majd létre.
 
-> [!TIP]
-> A szolgáltatás irányítópultján megtekintheti, hány index, indexelő és adatforrás áll rendelkezésére. Az Indexelő csempe a sikeresség és a sikertelenség jelölőit jeleníti meg. Kattintson a csempére az indexelők számának megtekintéséhez.
->
-> ![Indexelők és adatforrások csempéje][1]
->
+A szolgáltatás irányítópultján szakaszok bemutatják, hogy hány indexek, indexelők és adatforrások már rendelkezik. 
+
+! [Az indexek, indexelők és adatforrások listája] [media/search-get-started-portal/tiles-indexers-datasources2.png]
 
 ## <a name="create-index"></a> Index létrehozása és az adatok betöltése
 
 A keresési lekérdezések egy [*index*](search-what-is-an-index.md) alapján ismétlődnek, amely kereshető adatokat, metaadatokat és további szerkezeteket tartalmaz, amelyek bizonyos keresési viselkedések optimalizálásához használhatók.
 
-Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely könnyedén bejárható egy [*indexelővel*](search-indexer-overview.md) az **Adatok importálása** varázslón keresztül. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. A portálon az indexelők az **Adatok importálása** varázslóban érhetők el. Később az indexelőket programozott módon, független erőforrásként hozhatja létre és kezelheti.
+Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely könnyedén bejárható egy [*indexelővel*](search-indexer-overview.md) az **Adatok importálása** varázslón keresztül. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. Általában az indexelők programozott módon használják, de a portálon hozzáférhetnek azokhoz a **adatimportálás** varázsló. 
 
-### <a name="step-1-start-the-import-data-wizard"></a>1. lépés: Adatok importálása varázsló indítása
+### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1. lépés – az adatok importálása varázsló elindításához, és hozzon létre egy adatforrást
 
-1. Az Azure Search szolgáltatás irányítópultján kattintson a parancssávon található **Adatok importálása** elemre a varázsló indításához. A varázsló segítségével létrehozhat egy keresési indexet, majd feltöltheti adatokkal.
+1. Az Azure Search szolgáltatás irányítópultján kattintson **adatimportálás** a parancssávon hozhat létre, és a search-index feltöltéséhez.
 
-    ![Adatok importálása parancs][2]
+   ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd2.png)
 
-2. A varázslóban kattintson a **Csatlakozás az adatokhoz** > **Minták** > **realestate-us-sample** elemre. Az adatforrás neve, típusa és kapcsolódási adatai előre konfigurálva vannak. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
+2. A varázslóban kattintson a **Csatlakozás az adatokhoz** > **Minták** > **realestate-us-sample** elemre. Az ehhez az adatforráshoz. A saját adatforrás hozott létre, ha egy név, típus és kapcsolatadatok megadása kell. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
-    ![Minta adatkészlet kiválasztása][9]
+   ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample2.png)
 
-3. Az adatkészlet használatához kattintson az **OK** gombra.
+3. Folytassa a következő lapra.
 
-### <a name="skip-cognitive-skills"></a>Kognitív képességek kihagyása
+   ![Cognitive Search következő oldal gomb](media/search-get-started-portal/next-button-add-cog-search.png)
 
-Az **Adatok importálása** egy, a kognitív képességekre vonatkozó, nem kötelező lépést is tartalmaz, amellyel egyéni MI-algoritmusokkal egészítheti ki az indexelést. Most hagyja ki ezt a lépést, és lépjen tovább a **Célindex testreszabása** című szakaszra.
+### <a name="step-2---skip-cognitive-skills"></a>2. lépés – Kihagyás kognitív képességek
+
+A varázsló támogatja az egy [kognitív képességeket folyamat](cognitive-search-concept-intro.md) számára a Cognitive Services AI-algoritmusok beépítése az indexelés. 
+
+Azt fogjuk ezt a lépést kihagyhatja a lépést, és helyezze közvetlenül a **célindex testreszabása**.
+
+   ![A kognitív képességek lépés kihagyása](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
 > Kipróbálhatja az Azure Search előzetes verzióban elérhető új kognitív keresési szolgáltatását is a [kognitív keresés rövid útmutatójában](cognitive-search-quickstart-blob.md) vagy az [oktatóanyagban](cognitive-search-tutorial-blob.md).
 
-   ![A kognitív képességek lépés kihagyása][11]
+### <a name="step-3---configure-index"></a>3. lépés – index konfigurálása
 
-### <a name="step-2-define-the-index"></a>2. lépés: Az index meghatározása
-
-Az index létrehozása általában manuális feladat, amelyet kód segítségével szoktak megoldani. Ebben az oktatóanyagban a varázsló bármilyen bejárható adatforráshoz képes indexet létrehozni. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál.
+Az index létrehozása általában egy kódalapú gyakorlatban befejeződött az adatok betöltése előtt. Azonban ez az oktatóanyag azt mutatja, ahogy a varázsló hozhat létre egy alapszintű index fel tud térképezni semmilyen adatforrás esetében. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál. Ezenkívül azt is megadhatja a nyelvi elemzőket vagy javaslattevőket Ha azt szeretné, automatikus kiegészítés vagy a lekérdezések javasolt.
 
 A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jelölőnégyzetek *indexattribútumok*, amelyek a mező használati módját szabályozzák.
 
 * **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. A jelölőnégyzet törlésével az egyes mezőket a keresési eredmények korlátjain kívül esőként jelölheti meg, például amikor a mezőket csak szűrőkifejezésekben használják.
-* **Szűrhető**, **Rendezhető** és **Kategorizálható**: azt határozzák meg, hogy egy mező használható-e szűrésben, rendezésben vagy jellemzőalapú navigációs szerkezetben.
+* **Kulcs** dokumentum egyedi azonosítója. A rendszer mindig egy karakterlánc, és szükség rá.
+* **Szűrhető**, **Sortable**, és **kategorizálható** meghatározása mezők használja-e egy szűrési, rendezési vagy jellemzőalapú navigációs struktúrát.
 * **Kereshető**: azt jelenti, hogy a mező szerepel a teljes szöveges keresésben. A sztringek kereshetők. A numerikus és logikai mezőket gyakran nem kereshetőként jelölik meg.
+
+Tárolási követelmények változnak az eredményeként választását. Például, ha beállította a **lekérhető** attribútum több mező alapján tárolási követelmények lép fel.
 
 Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. A sztringek lekérhetőként és kereshetőként vannak megjelölve. Az egész számok lekérhetőként, szűrhetőként, rendezhetőként és kategorizálhatóként vannak megjelölve.
 
-  ![Létrehozott ingatlanindex][3]
+1. Fogadja el az összes alapértelmezett beállítást.
 
-Az index létrehozásához kattintson az **OK** gombra.
+  ![Létrehozott ingatlanindex](media/search-get-started-portal/realestateindex2.png)
 
-### <a name="step-3-define-the-indexer"></a>3. lépés: Az indexelő meghatározása
+2. Folytassa a következő lapra.
+
+  ![Következő oldal indexelő létrehozása](media/search-get-started-portal/next-button-create-indexer.png)
+
+### <a name="step-4---configure-indexer"></a>4. lépés – az indexelő konfigurálása
 
 Továbbra is az **Adatok importálása** varázslóban maradva kattintson az **Indexelő** > **Név** lehetőségre, és gépelje be az indexelő nevét.
 
-Ez az objektum egy végrehajtható folyamatot határoz meg. Ismétlődő ütemezés is beállítható, de most használja az alapértelmezett beállítást, és futtassa az indexelőt egyszer, közvetlenül az **OK** gombra való kattintás után.  
+Ez az objektum egy végrehajtható folyamatot határoz meg. Sikerült feltölteni a ismétlődő ütemezés szerint, de most használja az alapértelmezett beállítás, futtassa az indexelőt egyszer, azonnal.
 
-  ![ingatlanindexelő][8]
+Kattintson a **küldés** hozhat létre, és egyszerre is futtathatja az indexelőt.
 
-### <a name="check-progress"></a>Folyamat állapotának ellenőrzése
+  ![ingatlanindexelő](media/search-get-started-portal/realestate-indexer2.png)
 
-Az adatimportálás felügyeletéhez térjen vissza a szolgáltatás irányítópultjához, görgessen le, és kattintson duplán az **Indexelők** csempére az indexelők listájának megnyitásához. Az újonnan létrehozott indexelőnek szerepelnie kell a listában. Az index állapotának megjelölése „in progress” (folyamatban) vagy sikeres lehet. Emellett az indexelt dokumentumok száma is megjelenik.
+## <a name="monitor-progress"></a>A figyelő folyamatban
 
-   ![Indexelő állapotüzenete][4]
+A varázsló nagyjából az indexelők listájának, ahol figyelemmel kísérheti folyamatban van. Önkiszolgáló navigációs sávján keresse az Áttekintés lapon, majd kattintson **indexelők**.
 
-### <a name="step-4-view-the-index"></a>4. lépés: Az index megtekintése
+A portál a lap frissítése néhány percet vesz igénybe, de kell megjelennie a listában, az állapot jelzi az újonnan létrehozott indexelő "folyamatban" vagy sikeres indexelt dokumentumok számával együtt.
 
-A szolgáltatás irányítópultjának csempéin összegző adatok tekinthetők meg az erőforrásokban lévő különböző objektumokkal kapcsolatban, valamint innen érhetők el a részletes információk is. Az **Indexek** csempén a meglévő indexek listáját láthatja, beleértve az előző lépésben létrehozott *realestate-us-sample* indexet is.
+   ![Indexelő állapotüzenete](media/search-get-started-portal/indexers-inprogress2.png)
 
-Kattintson a *realestate-us-sample* csempére az indexdefiníció a portálon elérhető beállításainak megtekintéséhez. A **Mezők hozzáadása/szerkesztése** beállítással mezőket hozhat létre és láthat el attribútumokkal. A meglévő mezők fizikailag vannak jelölve az Azure Searchben, és így nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új mezőt, és vesse el a régit.
+## <a name="view-the-index"></a>Az index megtekintése
 
-   ![példa indexdefinícióra][10]
+A **indexek** lista mutatja azokat a meglévő indexeket, beleértve a *realestate-us-sample* a varázsló az újonnan létrehozott indexben.
+
+Ebből a listából az indexséma megtekintheti, és ha szükséges, hozzáadhat új mezőket, de nem módosíthatja a meglévő mezőket. A meglévő mezők fizikailag vannak jelölve az Azure Searchben, és így nem módosíthatók, még a kódban sem. Alapvető változást existující Pole, hozzon létre egy új index, az eredeti elvetését.
+
+   ![példa indexdefinícióra](media/search-get-started-portal/sample-index-def.png)
 
 Egyéb szerkezetek, például pontozási profilok és CORS-paraméterek, bármikor hozzáadhatók.
 
-Annak érdekében, hogy jól átlássa az indextervezés során szerkeszthető és nem szerkeszthető elemeket, szánjon egy percet az indexdefiníciós lehetőségek áttekintésére. A kiszürkített lehetőségek azt jelzik, hogy az érték nem módosítható vagy törölhető. Hasonlóképpen most hagyja ki az Elemző és a Javaslattevő jelölőnégyzeteket is.
+Annak érdekében, hogy jól átlássa az indextervezés során szerkeszthető és nem szerkeszthető elemeket, szánjon egy percet az indexdefiníciós lehetőségek áttekintésére. A kiszürkített lehetőségek azt jelzik, hogy az érték nem módosítható vagy törölhető. 
 
-## <a name="query-index"></a> Az index lekérdezése
+## <a name="query-index"></a> Lekérdezés a keresési ablak használatával
 
 Továbblépve most már rendelkezünk egy keresési indexszel, amely készen áll a lekérdezésre a beépített [**Keresési ablak**](search-explorer.md) lekérdezési lappal. Ez egy keresőmezőt biztosít, amellyel tesztelheti a tetszőleges lekérdezési sztringeket.
 
@@ -129,29 +144,33 @@ Továbblépve most már rendelkezünk egy keresési indexszel, amely készen ál
 
 1. A parancssávon kattintson a **Keresési ablak** elemre.
 
-   ![Keresési ablak parancs][5]
+   ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd2.png)
 
 2. Kattintson a parancssáv **Index módosítása** elemére a *realestate-us-sample* indexre való váltáshoz. Kattintson a parancssáv **API-verzió beállítása** elemére az elérhető REST API-k megtekintéséhez. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2017-11-11).
 
-   ![Index és API-parancsok][6]
+   ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
 3. A keresősávba írja be az alábbi lekérdezési sztringeket, majd kattintson a **Keresés** gombra.
 
     > [!NOTE]
-    > A **Keresési ablak** csak a [REST API-kérések](https://docs.microsoft.com/rest/api/searchservice/search-documents) kezelésre alkalmas. Elfogadja az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene lekérdezéselemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) szintaxisát is, továbbá a [Dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) műveletekben elérhető összes keresési paramétert.
+    > **A keresési ablak** csak rendelkezik a [REST API-kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents). Elfogadja az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene lekérdezéselemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) szintaxisát is, továbbá a [Dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) műveletekben elérhető összes keresési paramétert.
     >
+
+## <a name="example-queries"></a>Példa a lekérdezésekre
+
+Megadhat egy Binget vagy Google keresési, vagy teljesen megadott lekérdezési kifejezések előfordulhat, hogy ehhez hasonló kifejezésekkel. Eredmények a rendszer a részletes JSON-dokumentumok formájában adja vissza.
 
 ### <a name="simple-query-with-top-n-results"></a>Egyszerű lekérdezés az első N eredménnyel
 
-#### <a name="example-string-searchseattle"></a>Példa (sztring): `search=seattle`
+#### <a name="example-string-query-searchseattle"></a>(Lekérdezési karakterlánc). például: `search=seattle`
 
 * A **search** paraméter kulcsszavas keresés bevitelére használható teljes szöveges kereséshez. Jelen esetben olyan hirdetéseket kapunk vissza a Washington állambeli King megyéből, amelyek tartalmazzák a *Seattle* kifejezést a dokumentum bármely kereshető mezőjében.
 
-* A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. Ez szándékos – fejlesztési célokból fontos a teljes dokumentum láthatósága, különösen a tesztelés során. A jobb felhasználói élmény érdekében olyan kódot kell írnia, amely [a keresési eredmények kezelésével](search-pagination-page-layout.md) kiemeli a fontosabb elemeket.
+* A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. Ez a szándékos; a teljes dokumentum betekintést fontos fejlesztési célokra, különösen a tesztelés során. A jobb felhasználói élmény érdekében olyan kódot kell írnia, amely [a keresési eredmények kezelésével](search-pagination-page-layout.md) kiemeli a fontosabb elemeket.
 
-* A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. A portálon az indexattribútumok megtekintéséhez kattintson a *realestate-us-sample* elemre az **Indexek** csempén.
+* A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. A portálon az indexattribútumok megtekintéséhez, kattintson a *realestate-us-sample* a a **indexek** listája.
 
-#### <a name="example-parameterized-searchseattlecounttruetop100"></a>Példa (paraméteres): `search=seattle&$count=true&$top=100`
+#### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>(A paraméteres lekérdezés). például: `search=seattle&$count=true&$top=100`
 
 * Az **&** szimbólum a keresési paraméterek összefűzésére használható, amelyek bármilyen sorrendben megadhatók.
 
@@ -231,35 +250,22 @@ A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik �
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Ez az oktatóanyag röviden bemutatta az Azure Search Azure Portalról való használatát.
+Ebben az oktatóanyagban biztosított az Azure Search röviden bemutatja az Azure portal használatával.
 
 Megtudta, hogyan hozhat létre keresési indexet az **Adatok importálása** varázslóval. Megismerkedett az [indexelőkkel](search-indexer-overview.md), valamint az indextervezés alapvető munkafolyamatával, többek között [a közzétett indexek támogatott módosításaival](https://docs.microsoft.com/rest/api/searchservice/update-index) is.
 
 Az Azure Portal **Keresési ablakával** megismert egyes alapvető lekérdezési szintaxisokat olyan gyakorlati példákon keresztül, amelyek kulcsfontosságú funkciókat, például a szűrést, a találatok kiemelését, az intelligens és a földrajzi keresést mutatták be.
 
-Emellett megtanulta azt is, hogyan használhatja a keresési index, az indexelő és az adatforrások csempéit a portál irányítópultján. Később bármilyen új adatforrás definícióit és mezőgyűjteményeit gyorsan és egyszerűen ellenőrizheti a portálon.
+Azt is megtanulta, hogyan találhatja meg az indexek, indexelők és adatforrások a portálon. Később bármilyen új adatforrás definícióit és mezőgyűjteményeit gyorsan és egyszerűen ellenőrizheti a portálon.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha ebben az oktatóanyagban használta először az Azure Search szolgáltatást, törölje a szolgáltatást tartalmazó erőforráscsoportot. Ha nem, keresse ki a megfelelő erőforráscsoport nevét a szolgáltatások listájában, és törölje.
+Ha ez az oktatóanyag az Azure Search szolgáltatás első használatát, törölje az erőforráscsoportot, amely tartalmazza az Azure Search szolgáltatás. Ha nem, keresse ki a megfelelő erőforráscsoport nevét a szolgáltatások listájában, és törölje.
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Searchöt behatóbban is megismerheti az alábbi programozási eszközökkel:
 
-* [Index létrehozása a .NET SDK használatával](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [Index létrehozása REST API-k használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Az Azure Search REST API-jainak meghívása webes teszteszközök, például a Postman vagy a Fiddler használatával](search-fiddler.md)
-
-<!--Image references-->
-[1]: ./media/search-get-started-portal/tiles-indexers-datasources2.png
-[2]: ./media/search-get-started-portal/import-data-cmd2.png
-[3]: ./media/search-get-started-portal/realestateindex2.png
-[4]: ./media/search-get-started-portal/indexers-inprogress2.png
-[5]: ./media/search-get-started-portal/search-explorer-cmd2.png
-[6]: ./media/search-get-started-portal/search-explorer-changeindex-se2.png
-[7]: ./media/search-get-started-portal/search-explorer-query2.png
-[8]: ./media/search-get-started-portal/realestate-indexer2.png
-[9]: ./media/search-get-started-portal/import-datasource-sample2.png
-[10]: ./media/search-get-started-portal/sample-index-def.png
-[11]: ./media/search-get-started-portal/skip-cog-skill-step.png
+* [-Index létrehozása .NET SDK használatával](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+* [-Index létrehozása REST API-k használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
+* [-Index létrehozása Postman vagy a Fiddlerre, és az Azure Search REST API-k használatával](search-fiddler.md)

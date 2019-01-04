@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269590"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013145"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>A Visual Studio Code az Azure Machine Learning használatának első lépései
 
@@ -80,7 +80,8 @@ Mielőtt elkezdené a képzés és a VS Code használata a machine learning-mode
 
 1. Kattintson az Azure ikon a Visual Studio Code tevékenységsávon. Az Azure Machine Learning oldalsáv jelenik meg.
 
-   [![Az oldalsáv](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![Telepítése](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+
 
 1. Kattintson a jobb gombbal az Azure-előfizetéshez, és válassza ki **munkaterület létrehozása**. Egy lista jelenik meg. Az animált képen az előfizetés neve "Ingyenes próbaverzió" pedig a munkaterület "TeamWorkspace". 
 
@@ -96,11 +97,11 @@ Mielőtt elkezdené a képzés és a VS Code használata a machine learning-mode
  
 1. Az enter, és az új kísérlet jön létre. A munkaterület neve alatti fájában jelenik meg.
 
-1. Kattintson a jobb gombbal a kísérlet neve, és válassza a **kísérlet mappát csatolni**. A mappának tartalmaznia kell a helyi Python-szkriptek. A mappa majd csatolva lesz a kísérlet a felhőben. 
+1. Kattintson a jobb gombbal a munkaterület egy kísérletet, és válassza a "Állítja be aktív kísérlet". A **"Aktív"** kísérletet a kísérlet jelenleg használ, és a mappa megnyitása a VS Code lesz összekapcsolva Ez a kísérlet, a felhőben. A mappának tartalmaznia kell a helyi Python-szkriptek.
 
    Most már minden, a kísérlet fut, is futtathatja a kísérletet, így a fő mérőszámok tárolja a kísérlet előzmények, és a modellek betanítása, automatikusan lekérése az Azure Machine Learning feltöltött és a kísérlet metrikákat és naplókat tárolja.
 
-   [![Csatolhat egy mappát a VS Code-ban](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
+   [![Csatolhat egy mappát a VS Code-ban](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>Billentyűparancsok használata
 

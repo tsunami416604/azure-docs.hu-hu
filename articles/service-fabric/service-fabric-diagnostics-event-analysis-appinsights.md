@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f51d132d3cdc2d8aed65919df5fa225711508c60
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753095"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001770"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Esemény elemzése és vizualizációs az Application insights segítségével
 
@@ -120,7 +120,7 @@ Ha fejleszt, a .NET-ben, és valószínűleg használják majd néhány Service 
 
 Miután konfigurálta az Application Insights az események és naplók kimenetként, információkat kell kezdenie, néhány perc alatt az Application Insights-erőforrásban jelenik meg. Keresse meg az Application Insights-erőforrást, amellyel az Application Insights-erőforrás irányítópultot. Kattintson a **keresési** az Application Insights tálcán, amely a fogadott legújabb nyomainak megtekintéséhez, és szűrheti ezeket.
 
-*Metrikaböngésző* hasznos eszköz a metrikák, előfordulhat, hogy az alkalmazások, szolgáltatások és a fürt reporting alapján egyéni irányítópultokat hoz létre. Lásd: [metrikák felfedezése az Application Insights](../application-insights/app-insights-metrics-explorer.md) beállításához néhány diagramok, saját magának a gyűjtött adatok alapján.
+*Metrikaböngésző* hasznos eszköz a metrikák, előfordulhat, hogy az alkalmazások, szolgáltatások és a fürt reporting alapján egyéni irányítópultokat hoz létre. Lásd: [metrikák felfedezése az Application Insights](../azure-monitor/app/metrics-explorer.md) beállításához néhány diagramok, saját magának a gyűjtött adatok alapján.
 
 Kattintson a **Analytics** léphet az Application Insights-elemzési portálra, ahol lekérdezheti, ha az események és nagyobb hatókörrel és a lehetőség összefüggésbe a nyomkövetéseket. További információ a következő [az Application Insights Analytics](../azure-monitor/app/analytics.md).
 

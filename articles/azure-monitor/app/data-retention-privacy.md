@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 42a15e7513fb0aa84734f0965ad8e305cabc0b28
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 21b72a6999b58e7896a79766073ba5a8fa35a734
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971841"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023006"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -87,7 +87,7 @@ A nyers adatpontokat (vagyis a cikkek, amelyek Analytics-lekérdezést, és vizs
 
 Összesített adatok (azt jelenti, számát, átlagokat és egyéb statisztikai adatok Metrikaböngésző látható), egy 90 napig 1 perces időfelbontási szint megmaradnak.
 
-[Hibakeresési pillanatképei](../../application-insights/app-insights-snapshot-debugger.md) hét napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
+[Hibakeresési pillanatképei](../../azure-monitor/app/snapshot-debugger.md) hét napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 Az Ön adatai, és ha már van szervezeti fiókja, a munkacsoportja többi tagjával. 
@@ -294,7 +294,7 @@ A termék által elérhető MaxMind létrehozott GeoLite2 adatokat tartalmaz [ h
 [config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
 [java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../application-insights/app-insights-platforms.md
+[platforms]: ../../azure-monitor/app/platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../application-insights/app-insights-overview.md

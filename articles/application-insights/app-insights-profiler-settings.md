@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96b4a99b2ea66cdeff43f06c1789dd133c2c31a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: db3142837c5bb2c5758e47ddf017da284b2e0f0e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723006"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017735"
 ---
 # <a name="configure-application-insights-profiler"></a>Az Application Insights Profiler konfigurálása
 
@@ -43,7 +43,7 @@ Attól függően, hogy az ASE van konfigurálva ellenőrizze az ügynök állapo
 Profiler manuálisan egy gombra kattintással is elindítható. Tegyük fel, hogy egy webes teljesítményt tesztet futtatja. Szüksége lesz a nyomkövetések segítségével megismerheti, hogyan működik a webes alkalmazás terhelés alatt. Szabályozhatja, mikor rögzítve lesznek a nyomkövetések kellene azért rendkívül fontos, mert a terhelési teszt fog futni, de a véletlenszerű mintavételi időköz előfordulhat, hogy hagyja ki tudja.
 A következő lépések bemutatják, hogyan működik a ebben a forgatókönyvben:
 
-### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Nem kötelező) 1. lépés: A webalkalmazás-forgalom létrehozása egy webes teljesítménytesztelési elindításával
+### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Nem kötelező) 1. lépés: A webes teljesítménytesztelési elindításával forgalmat a webes alkalmazás készítése
 
 Ha a webalkalmazás már van a bejövő forgalmat, vagy ha csak át szeretné manuálisan létrehozni a forgalmat, kihagyhatja ezt a szakaszt, és folytassa a 2. lépés.
 
@@ -61,13 +61,13 @@ Látni fogja az új vizsgálat a várólistára első, "folyamatban" állapotú 
 
 ![terheléses teszt folyamatban fut.][load-test-in-progress]
 
-### <a name="step-2-start-profiler-on-demand"></a>2. lépés: Indítsa el a profiler igény szerinti
+### <a name="step-2-start-profiler-on-demand"></a>2. lépés: Indítsa el a profiler igény szerinti
 
 Ha a terhelési teszt már fut, a profiler rögzíthesse a hívásláncokat a webalkalmazásban fogadja betöltése közben is kezdődik.
 Keresse meg a Profiler konfigurálása panelen:
 
 
-### <a name="step-3-view-traces"></a>3. lépés: Nézet nyomkövetések
+### <a name="step-3-view-traces"></a>3. lépés: Nyomok megtekintése
 
 A profiler a lejáratot követően újrainduljon, ha kövesse a teljesítmény-nyomkövetés oldal és a nézet értesítésben.
 
@@ -86,9 +86,9 @@ Miért érdemes ezt a hibaüzenetet két oka lehet:
 Kövesse az alábbi lépéseket, és telepítse a legújabb Profiler:
 
 1. App Services alkalmazás beállításaiban, és ellenőrizze, hogy ha a következő beállítást:
-    * **Állítani az APPINSIGHTS_INSTRUMENTATIONKEY**: cserélje le a megfelelő rendszerállapotkulcsot az Application Insights.
+    * **ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY**: Cserélje le a megfelelő rendszerállapotkulcsot az Application Insights.
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 amennyiben ezen beállítások bármelyike nincs megadva, nyissa meg az Application Insights engedélyezését ablaktábla a legújabb webhelybővítmény telepítése.
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0-s, ha ezek a beállítások bármelyikét nincs megadva, nyissa meg az Application Insights engedélyezését ablaktábla a legújabb webhelybővítmény telepítése.
 
 1. Nyissa meg az Application Insights paneljén App Services portálon.
 
@@ -103,7 +103,7 @@ Kövesse az alábbi lépéseket, és telepítse a legújabb Profiler:
     ![Módosítsa és mentse az app insights][change-and-save-appinsights]
 
 1. Lépjen vissza a **Alkalmazásbeállítások** lapon ellenőrizze a következő alkalmazás beállítások elemeinek az App Service vannak beállítva:
-    * **Állítani az APPINSIGHTS_INSTRUMENTATIONKEY**: cserélje le a megfelelő rendszerállapotkulcsot az application insights.
+    * **ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY**: Cserélje le a megfelelő rendszerállapotkulcsot az application insights.
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
@@ -116,15 +116,15 @@ Kövesse az alábbi lépéseket, és telepítse a legújabb Profiler:
 ## <a name="next-steps"></a>További lépések
 [Profiler engedélyezése és megtekintése a nyomkövetések](app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
-[profiler-on-demand]: ./media/app-insights-profiler/Profiler-on-demand.png
-[configure-profiler-entry]: ./media/app-insights-profiler/configure-profiler-entry.png
-[create-performance-test]: ./media/app-insights-profiler/new-performance-test.png
-[configure-performance-test]: ./media/app-insights-profiler/configure-performance-test.png
-[load-test-queued]: ./media/app-insights-profiler/load-test-queued.png
-[load-test-in-progress]: ./media/app-insights-profiler/load-test-inprogress.png
-[enable-app-insights]: ./media/app-insights-profiler/enable-app-insights-blade-01.png
-[update-site-extension]: ./media/app-insights-profiler/update-site-extension-01.png
-[change-and-save-appinsights]: ./media/app-insights-profiler/change-and-save-appinsights-01.png
-[app-settings-for-profiler]: ./media/app-insights-profiler/appsettings-for-profiler-01.png
-[check-for-extension-update]: ./media/app-insights-profiler/check-extension-update-01.png
-[profiler-timeout]: ./media/app-insights-profiler/profiler-timeout.png
+[profiler-on-demand]: ./media/app-insights-profiler-settings/Profiler-on-demand.png
+[configure-profiler-entry]: ./media/app-insights-profiler-settings/configure-profiler-entry.png
+[create-performance-test]: ./media/app-insights-profiler-settings/new-performance-test.png
+[configure-performance-test]: ./media/app-insights-profiler-settings/configure-performance-test.png
+[load-test-queued]: ./media/app-insights-profiler-settings/load-test-queued.png
+[load-test-in-progress]: ./media/app-insights-profiler-settings/load-test-inprogress.png
+[enable-app-insights]: ./media/app-insights-profiler-settings/enable-app-insights-blade-01.png
+[update-site-extension]: ./media/app-insights-profiler-settings/update-site-extension-01.png
+[change-and-save-appinsights]: ./media/app-insights-profiler-settings/change-and-save-appinsights-01.png
+[app-settings-for-profiler]: ./media/app-insights-profiler-settings/appsettings-for-profiler-01.png
+[check-for-extension-update]: ./media/app-insights-profiler-settings/check-extension-update-01.png
+[profiler-timeout]: ./media/app-insights-profiler-settings/profiler-timeout.png

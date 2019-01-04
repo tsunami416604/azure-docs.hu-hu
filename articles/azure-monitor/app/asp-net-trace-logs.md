@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: e5e1a415ce5c5bd14a8afef41e506259555d79f6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b5cc0004edf105d8875ff83240b659e210b18e41
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970253"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019945"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Ismerkedés a .NET hívásláncnaplók megtekintése az Application Insights
 Ha NLog, a log4Net, vagy a System.Diagnostics.trace keretrendszert használja, az ASP.NET-alkalmazás diagnosztikai nyomkövetés rendelkezhet a küldött naplók [Azure Application Insights][start], ahol tallózása és keresés őket. A naplók fogja egyesíthető az alkalmazásból érkező, hogy a karbantartási minden egyes felhasználói kéréshez társított nyomkövetési azonosításához, és összefüggésbe hozva azokat az egyéb események és a kivételekről szóló jelentések egyéb telemetriai adatokat.
@@ -160,7 +160,7 @@ Akkor is, például:
 * Ezen a lapon-konfigurációjának mentése a Kedvencek közé
 
 > [!NOTE]
-> **Mintavétel.** Ha az alkalmazása sok adatot küld, és az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb verziójához használja, működhet az adaptív mintavételezés funkció és lehet, hogy csak a telemetria valamely százalékát küldi el. [További tudnivalók a mintavételezésről.](../../application-insights/app-insights-sampling.md)
+> **Mintavétel.** Ha az alkalmazása sok adatot küld, és az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb verziójához használja, működhet az adaptív mintavételezés funkció és lehet, hogy csak a telemetria valamely százalékát küldi el. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,7 +194,7 @@ Egyes esetekben is eltarthat, amíg az összes esemény és -kéréseinek keresz
 Számos tényező befolyásolhatja a megőrzött adatok mennyisége. Tekintse meg a [korlátok](../../azure-monitor/app/api-custom-events-metrics.md#limits) szakaszban további információk az ügyfél esemény metrikák oldal. 
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>Nem látok az egyes a naplóbejegyzéseket, amelyeket a várt
-Ha az alkalmazása sok adatot küld, és az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb verziójához használja, működhet az adaptív mintavételezés funkció és lehet, hogy csak a telemetria valamely százalékát küldi el. [További tudnivalók a mintavételezésről.](../../application-insights/app-insights-sampling.md)
+Ha az alkalmazása sok adatot küld, és az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb verziójához használja, működhet az adaptív mintavételezés funkció és lehet, hogy csak a telemetria valamely százalékát küldi el. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
 
 ## <a name="add"></a>Következő lépések
 * [Állítsa be a rendelkezésre állás és a válaszképesség tesztek][availability]

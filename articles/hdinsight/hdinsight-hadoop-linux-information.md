@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: e78f456a7c69e308257b450a7572f6317dfa6eec
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715443"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001923"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -106,7 +106,7 @@ HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és 
 * Kisegítő lehetőségek a külső szolgáltatások, például a websites, a fájl feltöltése/letöltése segédprogramok, a különböző nyelvű SDK és a böngészők.
 * Nagyméretű fájlok kapacitást és nagy méretezhető tárhely.
 
-További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/).
+További információkért lásd: [ismertetése blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
 Azure Storage vagy a Data Lake Storage használatakor nem kell semmit speciális a HDInsight férhet hozzá az adatokhoz. Ha például a következő parancs felsorolja a fájlok a `/example/data` függetlenül attól, hogy tárolása Azure Storage vagy a Data Lake Storage mappában:
 
@@ -177,7 +177,7 @@ A HDInsight-fürtön kívülről származó adatok eléréséhez a különböző
 Ha használ __Azure Storage__, tekintse meg a következő hivatkozások módon, hogy érheti el az adatokat:
 
 * [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Működik az Azure parancssori felületi parancsokkal. Telepítés után használja a `az storage` a Súgó a tároló, a parancs vagy `az storage blob` blob-specifikus parancsokhoz.
-* [blobxfer.PY](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Az Azure Storage-blobokkal dolgozik a python-szkriptet.
+* [blobxfer.PY](https://github.com/Azure/blobxfer): Az Azure Storage-blobokkal dolgozik a python-szkriptet.
 * Különböző SDK-k:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)

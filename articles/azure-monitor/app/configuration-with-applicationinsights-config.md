@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: d306629e552686e180a3927108fca276bcad2aa5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e91f6ecb4ff510b1ba93b56d0bfb0bda0a156cf1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971699"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019826"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
@@ -46,7 +46,7 @@ A saját függőségi nyomkövetés a kódot is írhat a [TrackDependency API](.
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet-csomagot.
 
 ### <a name="performance-collector"></a>Teljesítmény-gyűjtő
-[Gyűjti a rendszerteljesítmény-számlálók](../../application-insights/app-insights-performance-counters.md) például a CPU, memória- és betölteni az IIS telepítését. Megadhat számlálók összegyűjtése, többek között a teljesítményszámlálók állított be saját magának.
+[Gyűjti a rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md) például a CPU, memória- és betölteni az IIS telepítését. Megadhat számlálók összegyűjtése, többek között a teljesítményszámlálók állított be saját magának.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet-csomagot.
@@ -125,7 +125,7 @@ A standard szintű inicializálók összes állítottak vagy a Web- vagy Windows
 * `OperationNameTelemetryInitializer` frissítések a `Name` tulajdonságát a `RequestTelemetry` és a `Name` tulajdonságát a `Operation` összes telemetriai elem kontextusában a HTTP-metódus, valamint a ASP.NET MVC-vezérlő és a kérelem feldolgozását meghívott művelet neve alapján.
 * `OperationIdTelemetryInitializer` vagy `OperationCorrelationTelemetryInitializer` frissítések a `Operation.Id` környezeti tulajdonsága az összes telemetriai elem közben az automatikusan létrehozott kérések nyomon követett `RequestTelemetry.Id`.
 * `SessionTelemetryInitializer` frissítések a `Id` tulajdonságát a `Session` kinyert értékkel rendelkező összes telemetriai elem környezetét a `ai_session` cookie-k a felhasználó böngészőjében futó applicationinsights – JavaScript-kialakítási kód által generált.
-* `SyntheticTelemetryInitializer` vagy `SyntheticUserAgentTelemetryInitializer` frissítések a `User`, `Session`, és `Operation` környezetek tulajdonságokat az összes telemetriai elem nyomon követni a kérések feldolgozása során a szintetikus forrásból, például egy rendelkezésre állási teszt, vagy keressen motor robot. Alapértelmezés szerint [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md) szintetikus telemetriai adatok nem jelennek meg.
+* `SyntheticTelemetryInitializer` vagy `SyntheticUserAgentTelemetryInitializer` frissítések a `User`, `Session`, és `Operation` környezetek tulajdonságokat az összes telemetriai elem nyomon követni a kérések feldolgozása során a szintetikus forrásból, például egy rendelkezésre állási teszt, vagy keressen motor robot. Alapértelmezés szerint [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) szintetikus telemetriai adatok nem jelennek meg.
 
     A `<Filters>` azonosítási a kérések tulajdonságainak beállítása.
 * `UserTelemetryInitializer` frissítések a `Id` és `AcquisitionDate` tulajdonságainak `User` kinyert értékek az összes telemetriai elem környezetét a `ai_user` az Application Insights JavaScript instrumentation kód fut, a felhasználó által létrehozott cookie-k böngésző.
@@ -154,7 +154,7 @@ Ez e beállítás alapértelmezés szerint engedélyezve van. Ha az alkalmazása
 
 A paraméter a cél elérése érdekében próbálja meg az algoritmus biztosít. Az SDK-t minden egyes példányánál egymástól függetlenül, működik, így ha a kiszolgáló egy fürt több gépet, a telemetriai adatok tényleges mérete szorozva ennek megfelelően kell-e.
 
-[További tudnivalók a mintavételezésről](../../application-insights/app-insights-sampling.md).
+[További tudnivalók a mintavételezésről](../../azure-monitor/app/sampling.md).
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Rögzített mintavételi telemetriai processzor (a 2.0.0-beta1)
 Emellett van egy standard [telemetriai processzor mintavételi](../../azure-monitor/app/api-filtering-sampling.md) (a 2.0.1):
@@ -233,7 +233,7 @@ Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tár
 
 #### <a name="local-forwarder"></a>Helyi továbbító
 
-[Helyi továbbító](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és keretrendszereket és továbbítja azt az Application Insights. Windows és Linux alatt alkalmas állapotban. Amikor az Application Insights Java SDK szolgáltatással párosítva a helyi továbbító teljes mértékben támogatja [élő mérőszámok](../../application-insights/app-insights-live-stream.md) és adaptív mintavételezés.
+[Helyi továbbító](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és keretrendszereket és továbbítja azt az Application Insights. Windows és Linux alatt alkalmas állapotban. Amikor az Application Insights Java SDK szolgáltatással párosítva a helyi továbbító teljes mértékben támogatja [élő mérőszámok](../../azure-monitor/app/live-stream.md) és adaptív mintavételezés.
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">

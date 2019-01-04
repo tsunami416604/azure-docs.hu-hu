@@ -1,5 +1,5 @@
 ---
-title: A Key Vault-támogatás hozzáadása az ASP.NET-projektben a Visual Studio használatával |} A Microsoft Docs
+title: A Key Vault-támogatás hozzáadása az ASP.NET-projektben, Visual Studio használatával – az Azure Key Vault |} A Microsoft Docs
 description: Ez az oktatóanyag segítségével elsajátíthatja a Key Vault támogatásának hozzáadása egy ASP.NET- vagy ASP.NET Core-webalkalmazás.
 services: key-vault
 author: ghogen
@@ -9,14 +9,14 @@ ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 04/15/2018
+ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a6de5385046918c48b3f606477727ca4623a784c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230437"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998625"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 

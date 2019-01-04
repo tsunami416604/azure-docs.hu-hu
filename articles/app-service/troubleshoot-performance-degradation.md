@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 790aab75b311b116e6ca03af016e181c11019e27
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 25b8b66e67450cb96cd988efd6dd5ffd03377fde
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726646"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016545"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Az Azure App Service szolgáltatásban lassú teljesítménybeli problémáinak hibaelhárítása
 Ez a cikk segítséget nyújt a lassú alkalmazástelepítések teljesítménnyel kapcsolatos problémáinak elhárítása [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -114,7 +114,7 @@ Engedélyezheti az Application Insights Profiler részletes teljesítmény-nyomk
 
 Application Insights Profiler válaszideje minden webes hívás- és nyomkövetési, amely jelzi, hogy melyik kódsort az okozza, a lassú válaszai nyújt információkat. Egyes esetekben az App Service-alkalmazás azért lassú bizonyos kód nem fog szerepelni a nagy teljesítményt nyújtva módja. Ilyenek például a szekvenciális kódot futtathat párhuzamos és a nemkívánatos adatbázis zárolási versenyt válthat ki. A kód a szűk keresztmetszetek eltávolítása növeli a teljesítményt az alkalmazás, de nehezen észlelhető összetettebb nyomkövetéseket és a naplók beállítása nélkül. Az Application Insights Profiler által összegyűjtött nyomok segít a lelassul, az alkalmazás kódsorokat azonosítása, és a nehézség App Service-alkalmazások számára.
 
- További információkért lásd: [profilkészítés az Azure App Service az Application Insights élő alkalmazások](../application-insights/app-insights-profiler.md).
+ További információkért lásd: [profilkészítés az Azure App Service az Application Insights élő alkalmazások](../azure-monitor/app/profiler.md).
 
 ##### <a name="use-remote-profiling"></a>Távoli profilkészítés használata
 Az Azure App Service-webalkalmazások, API apps, mobil háttérrendszer, és a webjobs-feladatok távoli profilozhatók. Válassza ezt a lehetőséget, ha hozzáfér az alkalmazás-erőforrást, és tudja, hogyan reprodukálnia a hibát, vagy történik, ha ismeri a pontos időtartam alatt a teljesítménnyel kapcsolatos problémák.

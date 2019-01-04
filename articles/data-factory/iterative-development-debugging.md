@@ -11,13 +11,12 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
-ms.openlocfilehash: 610f0c8691714bf30415347dd2775b6fa3625c11
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c80b67ac5575360a6556befd3fd2a6a5c8e562c0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391096"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015763"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratív fejlesztés és hibakeresés az Azure Data Factoryvel
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Visual Studio használatával | Microsoft Docs'
+title: 'Oktatóanyag: A Visual Studio használatával másolási tevékenységgel rendelkező folyamat létrehozása |} A Microsoft Docs'
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre másolási tevékenységgel rendelkező Azure Data Factory-folyamatot a Visual Studio használatával.
 services: data-factory
 documentationcenter: ''
@@ -10,19 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.custom: vs-azure
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ae8374dc8b3424f953e24ef74796602d34413bc8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 5b6f968bef3708ca311bc5a41fe029ea9a10f62b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240834"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015848"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Visual Studio használatával
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Oktatóanyag: A Visual Studio használatával másolási tevékenységgel rendelkező folyamat létrehozása
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -40,12 +39,12 @@ ms.locfileid: "50240834"
 
 A cikk útmutatást nyújt adat-előállítók Microsoft Visual Studio használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-ból másolnak adatokat az Azure SQL Database-be. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
-Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
+Ebben az oktatóanyagban egy folyamatot egy tevékenységgel rendelkező létrehozása: Másolási tevékenység. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
 Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információért lásd: [egy folyamaton belüli több tevékenység](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE] 
-> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
+> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Adatok átalakítása az Azure Data Factory használatával kapcsolatos oktatóanyagért lásd: [oktatóanyag: Az adatok Hadoop-fürttel történő átalakítására szolgáló folyamat létrehozása](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. Olvassa el [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.       
@@ -53,12 +52,12 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 3. A számítógépre a következőket kell telepíteni: 
    * Visual Studio 2013 vagy Visual Studio 2015
    * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következőképpen is frissítheti: A menüben kattintson a **Tools** -> **Extensions and Updates** -> **Online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update** (Eszközök > Bővítmények és frissítések > Online > Visual Studio-gyűjtemény > Microsoft Azure Data Factory-eszközök a Visual Studióhoz > Frissítés) elemre.
+   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modul a következő lépések végrehajtásával is frissítheti: Kattintson a menü **eszközök** -> **bővítmények és frissítések** -> **Online** -> **Visual Studio-galéria**  ->  **Microsoft Azure Data Factory Tools for Visual Studio** -> **frissítés**.
 
 ## <a name="steps"></a>Lépések
 Az oktatóanyag során a következő lépéseket fogja elvégezni:
 
-1. Hozzon létre **társított szolgáltatásokat** az adat-előállítóban. Ebben a lépésben a következő két típusú társított szolgáltatást hozza létre: Azure Storage és Azure SQL Database. 
+1. Hozzon létre **társított szolgáltatásokat** az adat-előállítóban. Ebben a lépésben két típusú társított szolgáltatást hoz létre: Az Azure Storage és az Azure SQL-adatbázis. 
     
     Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Létrehozott egy tárolót, és adatokat töltött fel ebbe a tárfiókba az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.   
 
@@ -85,7 +84,7 @@ Az oktatóanyag során a következő lépéseket fogja elvégezni:
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben az oktatóanyagban nem használunk számítási szolgáltatásokat (például Azure HDInsight vagy Azure Data Lake Analytics). Csak kétféle típusú adattárat használunk: Azure Storage (forrás) és Azure SQL Database (cél). 
 
-Ezért a következő két típusú társított szolgáltatást hozza létre: AzureStorage és AzureSQLDatabase.  
+Ezért két típusú társított szolgáltatást hoz létre: AzureStorage és AzureSqlDatabase.  
 
 Az Azure Storage társított szolgáltatás az Azure tárfiókot társítja az adat-előállítóval. Ebben a tárfiókban hozta létre a tárolót, és ebbe töltötte fel az adatokat az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.   
 
@@ -281,7 +280,7 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
      
     A **start** (kezdés) tulajdonság értékét cserélje az aktuális, az **end** (befejezés) tulajdonság értékét pedig a következő napra. Azt is megteheti, hogy a dátum-időpont paraméternek csak a dátum részét adja meg, az időpont részét pedig kihagyja. Megadhatja például a „2016-02-03” értéket, amely a következőnek felel meg: „2016-02-03T00:00:00Z”
      
-    Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2016-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. 
+    Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Példa: 2016-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. 
      
     Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendszer a „**kezdő időpont + 48 óra**” számítással határozza meg azt. A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
      
@@ -329,7 +328,7 @@ Ebben a lépésben a korábban létrehozott Data Factory-entitásokat (társíto
 
 Vegye figyelembe a következő szempontokat: 
 
-* Ha a „This subscription is not registered to use namespace Microsoft.DataFactory” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
+* Ha a hibaüzenetet kapja: "Ez az előfizetés nincs regisztrálva a Microsoft.DataFactory névtér", tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
   
   * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához. 
 
@@ -372,7 +371,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 3. **Adatkészleteket** hozott létre, amelyek az adatcsatorna bemeneti és kimeneti adatait írják le.
 4. Létrehozott egy **folyamatot** egy **Másolási tevékenységgel**, ahol a **BlobSource** a forrás, az **SqlSink** pedig a fogadó. 
 
-Ha további információt szeretne arról, hogy hogyan használható a HDInsight Hive-tevékenység az adatok Azure HDInsight-fürttel történő átalakítására, olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
+Adatok átalakítása az Azure HDInsight-fürt használatával egy HDInsight Hive-tevékenység használatával, olvassa el [ oktatóanyag: Az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozása](data-factory-build-your-first-pipeline.md).
 
 Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 
 

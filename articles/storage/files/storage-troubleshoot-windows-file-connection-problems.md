@@ -6,15 +6,15 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744235"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023094"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -261,6 +261,15 @@ Ez a probléma megoldásához módosításával a **DirectoryCacheEntrySizeMax**
  
 Például beállíthatja azt a 0x100000, és tekintse meg, ha a teljesítmény jobb válnak.
 
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Hiba AadDsTenantNotFound az Azure Files "Nem található az aad-tenant-id azonosító bérlő aktív bérlők" Azure Active Directory-hitelesítés engedélyezése
+
+### <a name="cause"></a>Ok
+
+AadDsTenantNotFound hiba akkor fordul elő, amikor megpróbálja [engedélyezése az Azure Active Directory (AAD) hitelesítés az Azure Files számára](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) a storage-fiók ahol [AAD tartományi Service(AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre az aad-ben a társított előfizetés bérlő.  
+
+### <a name="solution"></a>Megoldás
+
+AAD tartományi szolgáltatások engedélyezése az AAD-bérlő az előfizetés üzembe helyezett storage-fiókjában található. Az AAD-bérlő létrehozása egy felügyelt tartomány rendszergazdai jogosultságok szükségesek. Ha nem az Azure AD-bérlő rendszergazdája, forduljon a rendszergazdához, és kövesse a részletes útmutatónkat [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

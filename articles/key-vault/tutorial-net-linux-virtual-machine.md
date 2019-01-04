@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Key Vault használata az Azure Linux virtuális gép .NET-keretrendszerben |} A Microsoft Docs
+title: Oktatóanyag – Azure Key Vault használata az Azure Linux rendszerű virtuális gépként a .NET-keretrendszerhez – az Azure Key Vault hogyan |} A Microsoft Docs
 description: 'Oktatóanyag: ASP.NET Core-alkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához'
 services: key-vault
 documentationcenter: ''
@@ -9,15 +9,15 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 28c695462f6989efd2e69ab6b0e23df38a8205ff
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 68a788205917e87469b432de435e296dcabc350c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600539"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001685"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Oktatóanyag: Az Azure Key Vault használata az Azure Linux virtuális gép a .NET-ben
 
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban egy konzolalkalmazást adatokat olvasni az Azure Key Va
 > * A Konzolalkalmazás adatokat olvasni a key vault szükséges engedélyeket.
 > * Titkos kódok lekérése a Key Vaultból
 
-A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#basic-concepts).
+Mielőtt továbbmennénk, olvassa el a [alapvető fogalmait](key-vault-whatis.md#basic-concepts).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Összes platform:
@@ -45,6 +45,7 @@ A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#b
 Ebben az oktatóanyagban felhasznál a Felügyeltszolgáltatás-identitást
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Mi az a Managed Service Identity, és hogyan működik?
+
 A folytatás előtt ismerkedjünk meg az MSI-vel. Az Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem találhatók meg a kódban, azonban a lekérésükhöz hitelesítés szükséges az Azure Key Vaultban. A Key Vaultban való hitelesítéshez hitelesítő adatokra van szükség. Klasszikus rendszerindítási probléma. Az MSI az Azure és az Azure AD révén egy „rendszerindítási identitást” biztosít, amellyel sokkal egyszerűbb nekilátni a feladatoknak.
 
 Lássuk, hogyan működik! Ha engedélyezi az MSI-t egy Azure-szolgáltatás, például a Virtual Machines, az App Service vagy a Functions számára, az Azure létrehoz egy [szolgáltatásnevet](key-vault-whatis.md#basic-concepts) a szolgáltatás Azure Active Directoryban található példánya számára, majd beszúrja a szolgáltatásnév hitelesítő adatait a szolgáltatás példányába. 
@@ -54,9 +55,9 @@ Lássuk, hogyan működik! Ha engedélyezi az MSI-t egy Azure-szolgáltatás, p�
 Következő lépésként a kód meghív egy, az Azure-erőforráson elérhető helyi metaadat-szolgáltatást a hozzáférési jogkivonat beszerzéséhez.
 A kód a helyi MSI_ENDPOINT-tól beszerzett hozzáférési jogkivonattal végzi el a hitelesítést az Azure Key Vault szolgáltatásban. 
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Ha az Azure-ba az Azure CLI használatával szeretne bejelentkezni, írja be a következőt:
+Jelentkezzen be az Azure-bA az Azure CLI-vel, írja be:
 
 ```azurecli
 az login
@@ -132,6 +133,7 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 Vegye észere a saját `publicIpAddress` címét a virtuális gép kimenetében. A következő lépésekben ez a cím használható a virtuális gép eléréséhez.
 
 ## <a name="assign-identity-to-virtual-machine"></a>Identitás hozzárendelése a virtuális gép
+
 Ebben a lépésben a rendszer a virtuális géphez, a következő parancs futtatásával hozzárendelt identitás létrehozása folyamatban
 
 ```
@@ -148,21 +150,23 @@ Vegye figyelembe az alábbi systemAssignedIdentity. A fenti parancs kimenete len
 ```
 
 ## <a name="give-vm-identity-permission-to-key-vault"></a>Virtuális gép identitása engedélyt a Key Vaulthoz
+
 Most már biztosítani tudjuk a fent létrehozott Key Vault identitás engedélyt a következő parancs futtatásával
 
 ```
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>Jelentkezzen be a virtuális gép
+## <a name="sign-in-to-the-virtual-machine"></a>Jelentkezzen be a virtuális gép
 
-Most már a bejelentkezési parancsot egy terminálban a használatával a virtuális géphez
+Most jelentkezzen be a virtuális gép egy terminál használatával
 
 ```
 ssh azureuser@<PublicIpAddress>
 ```
 
 ## <a name="install-dot-net-core-on-linux"></a>.NET-keretrendszer core telepítése Linux rendszeren
+
 ### <a name="register-the-microsoft-product-key-as-trusted-run-the-following-two-commands"></a>Regisztráljon a Microsoft Product kulcs megbízhatóként. Az alábbi két parancs futtatása
 
 ```
@@ -171,6 +175,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ```
 
 ### <a name="set-up-desired-version-host-package-feed-based-on-operating-system"></a>Állítsa be a kívánt verziót gazdagép csomag hírcsatorna alapján operációs rendszer
+
 ```
 # Ubuntu 17.10
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-artful-prod artful main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -200,7 +205,7 @@ dotnet --version
 
 ## <a name="create-and-run-sample-dot-net-app"></a>Hozzon létre és futtassa a mintaalkalmazást Dot Net
 
-Futtassa az alábbi parancsokkal látnia kell a "Hello World" nyomtatott a konzolhoz
+Futtassa az alábbi parancsokat, megjelenik a konzol nyomtatott "Hello World"
 
 ```
 dotnet new console -o helloworldapp
@@ -209,6 +214,7 @@ dotnet run
 ```
 
 ## <a name="edit-console-app"></a>Konzol alkalmazás szerkesztése
+
 Nyissa meg a Program.cs fájlt, és adja hozzá ezeket a csomagokat
 ```
 using System;
@@ -218,8 +224,10 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-Módosítsa az osztály a fájlban az alábbi kód. A 2. lépés folyamatban. 
-1. Beolvassa a jogkivonatot a helyi MSI-végpontról a virtuális gép mely inturn lekéri egy tokent az Azure Active Directoryból
+
+Módosítsa az osztály a fájlban az alábbi kód. Egy kétlépéses folyamat.
+
+1. Jogkivonatot beolvasni a helyi MSI-végpontot a virtuális gépen, amely ezután lekéri egy tokent az Azure Active Directoryból
 2. A jogkivonat átadni a Key Vault és a titkos kód beolvasása 
 
 ```
@@ -268,7 +276,6 @@ Módosítsa az osztály a fájlban az alábbi kód. A 2. lépés folyamatban.
 ```
 
 A fenti kód bemutatja, hogyan hajtsa végre a műveleteket az Azure Key Vault az Azure Linux rendszerű virtuális gépként. 
-
 
 ## <a name="next-steps"></a>További lépések
 

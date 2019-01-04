@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232494"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002399"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Most, hogy meg van összesítésével események az Azure Storage [Log Analytics
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>A diagnosztikai bővítmény az Azure Resource Manager üzembe helyezése
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>A diagnosztikai bővítmény-fürt létrehozása
-Fürt létrehozása a Resource Manager használatával, adja hozzá a diagnosztikai konfigurációs JSON-fájlt a teljes Resource Manager-sablon, a fürt létrehozása előtt kell. Diagnosztikai konfiguráció a Resource Manager-sablonminták részeként hozzáadja biztosítunk egy mintát öt virtuális fürt Resource Manager-sablon. Az Azure-minták galériájában található ezen a helyen láthatja: [diagnosztikai erőforrás-kezelő sablon minta az ötcsomópontos fürt](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Fürt létrehozása a Resource Manager használatával, hozzá kell a diagnosztikai konfigurációs JSON-fájlt a teljes Resource Manager-sablont. Diagnosztikai konfiguráció a Resource Manager-sablonminták részeként hozzáadja biztosítunk egy mintát öt virtuális fürt Resource Manager-sablon. Azt az Azure-minták galériájában található ezen a helyen tekintheti meg: [Diagnosztika a Resource Manager-sablon minta az ötcsomópontos fürt](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 A Resource Manager-sablonban a diagnosztikai beállítás megtekintéséhez nyissa meg az azuredeploy.json fájlt, és keresse meg **IaaSDiagnostics**. Ez a sablon használatával a fürt létrehozásához válassza a **üzembe helyezés az Azure** gombra a fenti hivatkozáson érhető el.
 
@@ -196,24 +196,24 @@ A táblák a bővítmény által óta növekszik elérte a kvótát, amíg érde
 ## <a name="log-collection-configurations"></a>Napló gyűjtése konfigurációk
 További csatornák származó naplók is elérhetők a gyűjteményhez, Íme néhány a leggyakoribb használható konfigurációkat az Azure-ban futó fürtök a sablonban.
 
-* Műveleti csatorna - alapja: Alapértelmezett, a magas szintű, a Service Fabric és a fürtöt, események, hamarosan egy új alkalmazást, üzembe helyezéséhez, a csomópont által végrehajtott műveletek és a egy frissítési visszaállítási engedélyezve van-e stb. Események listája, tekintse meg a [műveleti csatorna események](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Műveleti csatorna - alapja: Magas szintű, a Service Fabric és a fürtöt, egy csomópontot hamarosan, egy új alkalmazást, üzembe helyezéséhez vagy egy frissítési visszaállítási események által végrehajtott műveletek alapértelmezés szerint engedélyezve van-e stb. Események listája, tekintse meg a [műveleti csatorna események](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Műveleti csatorna - részletes: Ide tartoznak a rendszerállapot-jelentések és terheléselosztási döntéseket hozhat, valamint az alap műveleti csatorna mindent. Ezeket az eseményeket az állapotfigyelő használatával vagy a rendszer, vagy a kód által előállított, vagy például betölteni a jelentéskészítő API-kat [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) vagy [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Ezeket az eseményeket a diagnosztikai eseménynapló a Visual Studióban adjon hozzá megtekintése "a Microsoft-ServiceFabric:4:0x4000000000000008" ETW-szolgáltatók listájára.
+* Műveleti csatorna - részletes: Ez magában foglalja a rendszerállapot-jelentések és a terheléselosztási döntéseket hozhat, valamint az alap műveleti csatorna mindent. Ezeket az eseményeket az állapotfigyelő használatával vagy a rendszer, vagy a kód által előállított, vagy például betölteni a jelentéskészítő API-kat [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) vagy [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Ezeket az eseményeket a diagnosztikai eseménynapló a Visual Studióban adjon hozzá megtekintése "a Microsoft-ServiceFabric:4:0x4000000000000008" ETW-szolgáltatók listájára.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Adatok és üzenetküldési csatorna - alapja: kritikus naplókat és az esemény jön létre az üzenetküldés (jelenleg csak a ReverseProxy) és az adatok elérési útja, emellett a részletes műveleti csatorna naplókhoz. Ezek az események olyan kérelemfeldolgozási hibák és a Reverseproxyhoz más kritikus fontosságú problémáit, valamint a feldolgozott kérések. **Ez az átfogó naplózási Javaslataink**. Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló megtekintéséhez adja hozzá a "Microsoft-ServiceFabric:4:0x4000000000000010" ETW-szolgáltatók listájára.
+* Adatok és a csatorna - alapja: Kritikus fontosságú naplókat és az esemény jön létre az üzenetküldés (jelenleg csak a ReverseProxy) és az adatok elérési útja, emellett a részletes műveleti csatorna naplókhoz. Ezek az események olyan kérelemfeldolgozási hibák és a Reverseproxyhoz más kritikus fontosságú problémáit, valamint a feldolgozott kérések. **Ez az átfogó naplózási Javaslataink**. Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló megtekintéséhez adja hozzá a "Microsoft-ServiceFabric:4:0x4000000000000010" ETW-szolgáltatók listájára.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* Adat & üzenetküldés csatornák – részletes: részletes adatok és a fürt és a részletes műveleti csatorna üzenetekkel minden nem kritikus fontosságú naplót tartalmazó csatornát. Részletes hibaelhárítási az összes fordított proxy esemény tekintse meg a [fordított proxy diagnosztikai útmutató](service-fabric-reverse-proxy-diagnostics.md).  Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló megtekintéséhez adja hozzá a "Microsoft-ServiceFabric:4:0x4000000000000020" ETW-szolgáltatók listájára.
+* Adat & csatorna - részletes: Részletes csatorna, amely tartalmazza a nem kritikus fontosságú naplók az adatok és a fürt és a részletes műveleti csatorna-üzenetkezeléstől. Részletes hibaelhárítási az összes fordított proxy esemény tekintse meg a [fordított proxy diagnosztikai útmutató](service-fabric-reverse-proxy-diagnostics.md).  Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló megtekintéséhez adja hozzá a "Microsoft-ServiceFabric:4:0x4000000000000020" ETW-szolgáltatók listájára.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"

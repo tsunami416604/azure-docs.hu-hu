@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 5f21f33678b8cf09d9dbd8966d42b1a5ebac9ffb
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 8ab6dad36bf47430a925d21ca2464286e7e70002
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224652"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022070"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Adatok átalakítása a Databricks-jegyzetfüzet futtatása
 
-Az Azure Databricks-jegyzetfüzet tevékenységeivel az egy [Data Factory-folyamatot](concepts-pipelines-activities.md) Databricks-jegyzetfüzet futtatása az Azure Databricks-munkaterületen. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
+Az Azure Databricks-jegyzetfüzet tevékenységeivel az egy [Data Factory-folyamatot](concepts-pipelines-activities.md) Databricks-jegyzetfüzet futtatása az Azure Databricks-munkaterületen. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Az Azure Databricks egy Apache Spark rendszert futtató felügyelt platform.
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks-jegyzetfüzet tevékenységet definíciója
 
@@ -63,7 +62,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 |név|A folyamat a tevékenység neve.|Igen|
 |leírás|A tevékenység leírása leíró szöveg.|Nem|
 |type|Databricks-jegyzetfüzetek tevékenységeit tevékenység típus DatabricksNotebook.|Igen|
-|linkedServiceName|Amelyen futtatja a Databricks-jegyzetfüzetek Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
+|linkedServiceName|Amelyen futtatja a Databricks-jegyzetfüzetek Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |notebookPath|A jegyzetfüzet futtatása a Databricks-munkaterület az abszolút elérési útja. Az elérési út perjellel kell kezdődnie.|Igen|
 |baseParameters|Kulcs-érték párokból álló tömb. Alap paramétereket az egyes tevékenységek futtatásához használható. Ha a notebook tart egy paramétert, amely nincs megadva, az alapértelmezett érték a notebookból használható. További információ: a paraméterek [Databricks-jegyzetfüzeteket](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nem|
 |Kódtárak|Telepíteni a fürt, amely végrehajtja a feladat a könyvtárak listáját. Álló tömb lehet \<karakterlánc, objektum >.|Nem|

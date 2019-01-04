@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault – Áttekintés | Microsoft Docs
+title: Az Azure Key Vault – áttekintés – az Azure Key Vault |} A Microsoft Docs
 description: Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik.
 services: key-vault
 author: barclayn
@@ -12,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/17/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 7945ff5d67f8229802666ac4a12209c2d26607f7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 80a740e13f5c3a13b7533d75e386a9afa2855085
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608409"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002246"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
-Az Azure Key Vault segít megoldani az alábbi problémákat
+Az Azure Key Vault segít a következő problémák megoldásához:
+
 - **Titkos kódok kezelése** – Az Azure Key Vaulttal biztonságosan tárolhatók a jogkivonatok, jelszavak, tanúsítványok, API-kulcsok és egyéb titkos kulcsok, valamint szigorúan szabályozható az ezekhez való hozzáférés
 - **Kulcskezelés** – Az Azure Key Vault kulcskezelési megoldásként is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
 - **Tanúsítványkezelés** – Az Azure Key Vault egyben egy olyan szolgáltatás is, amellyel egyszerűen építhet ki, kezelhet és helyezhet üzembe az Azure-ral és a belső csatlakoztatott erőforrásokkal használható nyilvános és privát SSL- és TLS-tanúsítványokat. 
@@ -33,9 +34,9 @@ Az Azure Key Vault segít megoldani az alábbi problémákat
 
 ### <a name="centralize-application-secrets"></a>Titkos alkalmazáskulcsok központosítása
 
-A titkos alkalmazáskulcsok tárolásának központosítása az Azure Key Vaultban lehetővé teszi azok elosztásának irányítását. A Key Vault nagymértékben csökkenti a veszélyét annak, hogy a titkos kulcsok véletlenül kiszivárogjanak. A Key Vault használatával az alkalmazásfejlesztőknek többé nem kell az alkalmazásban tárolniuk a biztonsági információkat. Ezzel a megoldással ezeket az információkat nem kell beépíteni a kódba. Tegyük fel például, hogy egy alkalmazásnak egy adatbázishoz kell csatlakoznia. A kapcsolati sztring biztonságosan tárolható a Key Vaultban az alkalmazás kódja helyett.
+A titkos alkalmazáskulcsok tárolásának központosítása az Azure Key Vaultban lehetővé teszi azok elosztásának irányítását. A Key Vault nagymértékben csökkenti a veszélyét annak, hogy a titkos kulcsok véletlenül kiszivárogjanak. A Key Vault használatával az alkalmazásfejlesztőknek többé nem kell az alkalmazásban tárolniuk a biztonsági információkat. Nem rendelkezik biztonsági adatok tárolására az alkalmazások nem, hogy ez a szabályzat információk részének kell. Tegyük fel például, hogy egy alkalmazásnak egy adatbázishoz kell csatlakoznia. Helyett a kapcsolati karakterláncot az alkalmazáskódban lévő, Ön is tárolja biztonságos helyen a Key Vaultban.
 
-Az alkalmazások URI-k használatával biztonságosan elérhetik a szükséges információkat, amelyek lehetővé teszik egy titkos kulcs bizonyos verziójának lekérését, miután az alkalmazás kulcsa vagy titkos kulcsa el lett tárolva az Azure Key Vaultban. Ez anélkül történik meg, hogy egyéni kódot kellene írnia a titkos információk megvédéséhez.
+Az alkalmazások biztonságosan férhetnek hozzá az URI-k használatával adatokat. Az URI-k lehetővé teszik az alkalmazások titkos kulcs bizonyos verziójának lekérését. Hiba esetén nem kell a Key vaultban tárolt titkos információk megvédéséhez egyéni kód írására.
 
 ### <a name="securely-store-secrets-and-keys"></a>A titkos kulcsok és a kulcsok biztonságos tárolása
 
@@ -51,7 +52,7 @@ Végül pedig az Azure Key Vault kialakításából adódóan a Microsoft nem te
 
 ### <a name="monitor-access-and-use"></a>A hozzáférés és használat monitorozása
 
-Miután létrehozott néhány kulcstartót, monitorozhatja, hogyan és mikor férnek hozzá a kulcsokhoz és a titkos kulcsokhoz. Ezt megteheti a Key Vault naplózásának engedélyezésével. Az Azure Key Vaultot beállíthatja az alábbiak elvégzésére:
+Miután létrehozott néhány kulcstartót, monitorozhatja, hogyan és mikor férnek hozzá a kulcsokhoz és a titkos kulcsokhoz. A tárolók naplózásának engedélyezésével követheti a tevékenység. Az Azure Key Vaultot beállíthatja az alábbiak elvégzésére:
 
 - Archiválás tárfiókba
 - Streamelés eseményközpontba
@@ -61,11 +62,11 @@ Engedélyekkel rendelkezik a naplók felett, és meg is védheti őket a hozzáf
 
 ### <a name="simplified-administration-of-application-secrets"></a>A titkos alkalmazáskulcsok egyszerűsített adminisztrációja
 
-Értékes adatok tárolásakor el kell végeznie néhány lépést. A biztonsági információknak védettnek kell lenniük, követniük kell egy életciklust, és magas rendelkezésre állásúnak kell lenniük. Az Azure Key Vault ezt egyszerűsíti, a következőképpen:
+Értékes adatok tárolásakor el kell végeznie néhány lépést. Biztonsági információknak védettnek kell lenniük, követniük kell az életciklusuk, magas rendelkezésre állású kell lennie. Az Azure Key Vault leegyszerűsíti a folyamatot, ezeknek a követelményeknek:
 
 - Nem lesz többé szükség a hardveres biztonsági modulok (HSM-ek) házon belüli ismeretére
 - Rendkívül gyorsan igazodik a vállalata használati igényeiben jelentkező növekedésekhez.
-- A kulcstartója tartalmát egy régión belül és egy másodlagos régióba replikálja. Ez magas rendelkezésre állást biztosít, és szükségtelenné teszi a feladatátvétel elindításához szükséges rendszergazdai műveleteket.
+- A kulcstartója tartalmát egy régión belül és egy másodlagos régióba replikálja. Az adatreplikáció biztosítja a magas rendelkezésre állást, és szükségtelenné a műveleteket kell rendszergazdai elindíthatja a feladatátvételt.
 - Standard Azure felügyeleti lehetőségeket biztosít a Portal, az Azure CLI és a PowerShell segítségével.
 - Automatizálja a nyilvános hitelesítésszolgáltatóktól vásárolt tanúsítványokon elvégzett egyes műveleteket, például a regisztrálást és a megújítást.
 
@@ -73,7 +74,12 @@ Továbbá az Azure Key Vault-kulcstartók lehetővé teszik a titkos alkalmazás
 
 ### <a name="integrate-with-other-azure-services"></a>Integráció más Azure-szolgáltatásokkal
 
-Az Azure-ban biztonságos tárolóként a Key Vault rendelkezik egyszerűsítésére használják helyzetek, például [az Azure Disk Encryption](../security/azure-security-disk-encryption.md), a [mindig titkosított]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkció az SQL server és az Azure SQL Database [Azure App Szolgáltatás]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a Log Analytics-szel.
+Az Azure-ban biztonságos tárolóként a Key Vault rendelkezik egyszerűsítésére használják helyzetek, például:
+-  [Az Azure Disk Encryption](../security/azure-security-disk-encryption.md)
+-  A [mindig titkosított]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkció az SQL server és az Azure SQL Database
+- [Az Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
+
+A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a Log Analyticsszel.
 
 ## <a name="next-steps"></a>További lépések
 

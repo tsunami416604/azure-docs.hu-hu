@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 58fffafe9658919a96d1aef2881424c0d324e688
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6d0524471ddc62e1ff6285bd0c80049917e726a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876477"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014947"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
 > * [1-es verzió](v1/data-factory-scheduling-and-execution.md)
 > * [Aktuális verzió](concepts-pipeline-execution-triggers.md)
 
@@ -92,7 +91,7 @@ POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-Teljes minta: [Rövid útmutató: Adat-előállító létrehozása a REST API használatával](quickstart-create-data-factory-rest-api.md).
+A teljes minta: [a rövid útmutató: Adat-előállító létrehozása a REST API-val](quickstart-create-data-factory-rest-api.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 A következő mintaparancs bemutatja, hogyan futtathatja manuálisan a folyamatot az Azure PowerShell használatával:
@@ -118,7 +117,7 @@ A válasz hasznos adat a folyamatfuttatás egyedi azonosítója:
 }
 ```
 
-Teljes minta: [Rövid útmutató: Adat-előállító létrehozása az Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
+A teljes minta: [a rövid útmutató: Adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md).
 
 ### <a name="net-sdk"></a>.NET SDK
 A következő mintahívás bemutatja, hogyan futtathatja manuálisan a folyamatot a .NET SDK használatával:
@@ -127,7 +126,7 @@ A következő mintahívás bemutatja, hogyan futtathatja manuálisan a folyamato
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-Teljes minta: [Rövid útmutató: Adat-előállító létrehozása a .NET SDK használatával](quickstart-create-data-factory-dot-net.md).
+A teljes minta: [a rövid útmutató: Adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
 > A .NET SDK-t Data Factory-folyamatok meghívásához használhatja, többek között az Azure Functionsből vagy egy saját webszolgáltatásból stb.
@@ -135,11 +134,11 @@ Teljes minta: [Rövid útmutató: Adat-előállító létrehozása a .NET SDK ha
 <h2 id="triggers">Eseményindító végrehajtása</h2>
 A folyamatok futtatása triggerek használatával is elvégezhető. Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A Data Factory jelenleg a triggerek három típusát támogatja:
 
-- Ütemezési eseményindító: a folyamatokat időpont alapú ütemezés szerint meghívó eseményindító.
+- Ütemezési eseményindító: Egy folyamat egy időpontalapú ütemezés szerint meghívó eseményindító.
 
-- Átfedésmentes ablakos eseményindító: az állapot megőrzése mellett, rendszeres időközönként működő eseményindító.
+- Átfedésmentes ablakos eseményindító: Állapot megőrzése mellett, rendszeres időközönként működő eseményindító.
 
-- Eseményalapú trigger: olyan trigger, amely egy eseményre válaszol.
+- Eseményalapú eseményindító: Egy eseményindítót, amelyek reagálnak az eseményre.
 
 A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egy folyamatot több eseményindító is indíthat, és egyetlen eseményindító indíthat több folyamatot is. Az eseményindító alábbi definíciójában a **folyamatok** tulajdonság az adott eseményindító által aktivált folyamatok listájára vonatkozik. A tulajdonság meghatározása a folyamatparaméterek értékeit is tartalmazza.
 
@@ -370,7 +369,7 @@ Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az üte
 |:--- |:--- |:--- |
 | **Visszatöltési forgatókönyvek** | Támogatott. A folyamatfuttatások ütemezhetők múltbéli időszakokra. | Nem támogatott. A folyamatfuttatások csak az aktuális időszaktól vagy egy jövőbeli időszaktól hajthatók végre. |
 | **Megbízhatóság** | 100%-os megbízhatóság. A folyamatfuttatások egy adott kezdési időponttól minden időszakhoz ütemezhetők, hézagok nélkül. | Kevésbé megbízható. |
-| **Újrapróbálkozási képesség** | Támogatott. A sikertelen folyamatfuttatások alapértelmezett újrapróbálkozási szabályzata 0, vagy a felhasználó által az eseményindító definíciójában megadott szabályzat. Automatikusan újrapróbálkozik, ha a folyamatfuttatás egyidejűségi/kiszolgálói/szabályozási korlátok miatt meghiúsul (ilyenek például a 400-as (felhasználói hiba), 429-es (túl sok kérés), 500-as (belső kiszolgálóhiba) állapotkódok). | Nem támogatott. |
+| **Újrapróbálkozási képesség** | Támogatott. A sikertelen folyamatfuttatások alapértelmezett újrapróbálkozási szabályzata 0, vagy a felhasználó által az eseményindító definíciójában megadott szabályzat. Automatikusan újrapróbálkozik, ha a folyamatfuttatás egyidejűségi/kiszolgálói/szabályozási korlátok miatt meghiúsul (azaz állapotkódok 400: Felhasználói hiba, a 429-es: Túl sok kérelmet, és 500-as: Belső kiszolgálóhiba). | Nem támogatott. |
 | **Párhuzamosság** | Támogatott. A felhasználók explicit módon adhatják meg az eseményindító egyidejűségi korlátját. 1 és 50 közötti egyidejű aktivált folyamatfuttatást engedélyez. | Nem támogatott. |
 | **Rendszerváltozók** | Támogatja a **WindowStart** és **WindowEnd** rendszerváltozók használatát. A felhasználók hozzáférhetnek a `triggerOutputs().windowStartTime` és `triggerOutputs().windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` és `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nem támogatott. |
 | **Folyamat–trigger kapcsolat** | Támogatja az egy-az-egyhez kapcsolatot. Csak egy folyamat indítható el. | Támogatja a több-a-többhöz kapcsolatokat. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is. | 
@@ -378,6 +377,6 @@ Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az üte
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi oktatóanyagokat:
 
-- [Gyors útmutató: adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md)
+- [Gyors útmutató: Adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md)
 - [Ütemezési eseményindító létrehozása](how-to-create-schedule-trigger.md)
 - [Átfedésmentes ablakos eseményindító létrehozása](how-to-create-tumbling-window-trigger.md)

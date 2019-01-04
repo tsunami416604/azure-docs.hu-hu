@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0a31f5450ad5847951393e18e8af648060eb2e1f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2fa7c4c7dc3af28dcc49371a086c2e7555278b99
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971358"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015219"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -51,7 +51,7 @@ Ha a hivatkozás még nem rendelkezik az Application Insights SDK:
 
   * [ASP.NET project](../../azure-monitor/app/asp-net.md)
   * [Java project](../../azure-monitor/app/java-get-started.md)
-  * [NODE.js-projektet](../../application-insights/app-insights-nodejs.md)
+  * [NODE.js-projektet](../../azure-monitor/app/nodejs.md)
   * [Az egyes weblap JavaScript](../../azure-monitor/app/javascript.md) 
 * Az eszköz vagy a webkiszolgáló kódjába illessze be a következőt:
 
@@ -113,7 +113,7 @@ A projektek, a Node.js használhatja `new applicationInsights.TelemetryClient(in
 
 ## <a name="trackevent"></a>TrackEvent
 
-Az Application insights szolgáltatásban egy *egyéni esemény* van, amely megjelenítheti, hogy egy adatpont [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md) összegzett darabszámát, és a [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md) önálló események. (Ez nem kapcsolódó MVC vagy más keretrendszer "események".)
+Az Application insights szolgáltatásban egy *egyéni esemény* van, amely megjelenítheti, hogy egy adatpont [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) összegzett darabszámát, és a [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md) önálló események. (Ez nem kapcsolódó MVC vagy más keretrendszer "események".)
 
 Helyezze be `TrackEvent` meghívja a kódban történt különféle események számát. Milyen gyakran a felhasználók megadhatják, egy adott funkció, milyen gyakran adott célok eléréséhez, vagy előfordulhat, hogy milyen gyakran vállalnak bizonyos típusú hibákkal.
 
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 A telemetria érhető el a `customEvents` táblára [Application Insights-elemzési](analytics.md). Minden egyes sora jelöl hívása `trackEvent(..)` az alkalmazásban.
 
-Ha [mintavételi](../../application-insights/app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy a trackEvent() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Egyéni események megfelelő száma lekéréséhez használjon ezért használható kóddal például `customEvents | summarize sum(itemCount)`.
+Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy a trackEvent() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Egyéni események megfelelő száma lekéréséhez használjon ezért használható kóddal például `customEvents | summarize sum(itemCount)`.
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -440,7 +440,7 @@ Lásd: [Application Insights .NET SDK-val egyéni műveletek követése](../../a
 
 A [Application Insights-elemzési](analytics.md), show kéri fel a a `requests` tábla.
 
-Ha [mintavételi](../../application-insights/app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság értékét fogja megjeleníteni egy 1-nél nagyobb. A példában az elemek száma a == 10 azt jelenti, hogy trackRequest() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Kérelmek és a kérelmek név szerint szegmentált átlagos időtartamának megfelelő megszámlálása használja például a kódot:
+Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, az elemek száma tulajdonság értékét fogja megjeleníteni egy 1-nél nagyobb. A példában az elemek száma a == 10 azt jelenti, hogy trackRequest() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Kérelmek és a kérelmek név szerint szegmentált átlagos időtartamának megfelelő megszámlálása használja például a kódot:
 
 ```kusto
 requests
@@ -451,7 +451,7 @@ requests
 
 Kivételek küldése az Application Insights:
 
-* A [azok megszámlálása](../../application-insights/app-insights-metrics-explorer.md), mint arra utalhat, hogy a probléma gyakoriságát.
+* A [azok megszámlálása](../../azure-monitor/app/metrics-explorer.md), mint arra utalhat, hogy a probléma gyakoriságát.
 * A [vizsgálja meg az egyes események](../../azure-monitor/app/diagnostic-search.md).
 
 A jelentések közé tartozik a hívásláncokat.
@@ -522,7 +522,7 @@ Az SDK-k számos-komponensek kivételeinek kezelése automatikusan, így mindig 
 
 A [Application Insights-elemzési](analytics.md), kivételek jelennek meg az a `exceptions` tábla.
 
-Ha [mintavételi](../../application-insights/app-insights-sampling.md) van folyamatban, a `itemCount` tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy trackexception() hívásait a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Kivétel típusa alapján szegmentált kivételek megfelelő számát, amelyet kód például:
+Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, a `itemCount` tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy trackexception() hívásait a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Kivétel típusa alapján szegmentált kivételek megfelelő számát, amelyet kód például:
 
 ```kusto
 exceptions
@@ -603,7 +603,7 @@ A [keresési](../../azure-monitor/app/diagnostic-search.md), majd könnyen kisz�
 
 A [Application Insights-elemzési](analytics.md), megjelennek TrackTrace hívásokat a `traces` tábla.
 
-Ha [mintavételi](../../application-insights/app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma == 10-es azt jelenti, hogy a 10 hívás `trackTrace()`, mintavételi folyamata továbbított csak az egyiket. Megszerezni a nyomkövetési hívásokat megfelelő számát, használjon ezért kód például `traces | summarize sum(itemCount)`.
+Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma == 10-es azt jelenti, hogy a 10 hívás `trackTrace()`, mintavételi folyamata továbbított csak az egyiket. Megszerezni a nyomkövetési hívásokat megfelelő számát, használjon ezért kód például `traces | summarize sum(itemCount)`.
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -678,7 +678,7 @@ A normál függőség-követési modult a C# kikapcsolásához szerkesztése [Ap
 
 A [Application Insights-elemzési](analytics.md), trackDependency hívások show a `dependencies` tábla.
 
-Ha [mintavételi](../../application-insights/app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy trackDependency() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. A célként megadott összetevő által szegmentált függőségek megfelelő számát, amelyet kód például:
+Ha [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy trackDependency() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. A célként megadott összetevő által szegmentált függőségek megfelelő számát, amelyet kód például:
 
 ```kusto
 dependencies
@@ -764,7 +764,7 @@ Ha az alkalmazás felhasználók csoportosítja a fiókok, is átadhat a fiók (
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-A [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md), létrehozhat egy diagram, amely counts **, felhasználók hitelesítése**, és **felhasználói fiókok**.
+A [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md), létrehozhat egy diagram, amely counts **, felhasználók hitelesítése**, és **felhasználói fiókok**.
 
 Emellett [keresési](../../azure-monitor/app/diagnostic-search.md) ügyfél adatpontokhoz az adott felhasználói neveket és fiókok.
 
@@ -897,7 +897,7 @@ requests
 Figyelje meg, hogy:
 
 * Egy érték kinyerése a customDimensions vagy customMeasurements JSON, ha dinamikus típusa van, és úgy kell alakítania azt `tostring` vagy `todouble`.
-* Annak a lehetőségét figyelembe [mintavételi](../../application-insights/app-insights-sampling.md), használjon `sum(itemCount)`, nem `count()`.
+* Annak a lehetőségét figyelembe [mintavételi](../../azure-monitor/app/sampling.md), használjon `sum(itemCount)`, nem `count()`.
 
 ## <a name="timed"></a> Időzítési események
 
@@ -1141,7 +1141,7 @@ Ha megadta ezeket az értékeket saját magának, érdemes eltávolítani a megf
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-A sávszélesség-korlátjának elkerülje, használja a [mintavételi](../../application-insights/app-insights-sampling.md).
+A sávszélesség-korlátjának elkerülje, használja a [mintavételi](../../azure-monitor/app/sampling.md).
 
 Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az adatvédelmi](../../azure-monitor/app/data-retention-privacy.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: d57e928c30a09faf00b684fd469fe3ad0b024fce
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 65375cab9e59697856ef2c37b5a7a192501577eb
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980701"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000002"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -493,5 +493,5 @@ Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [eclipse]: ../../application-insights/app-insights-java-quick-start.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../application-insights/app-insights-metrics-explorer.md
+[metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

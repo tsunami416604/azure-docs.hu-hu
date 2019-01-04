@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9402be4045b9b3113623cfe3e441c944f62296cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5088d1d4f5b80e4de3dca1d8d41ee48feea12a46
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079382"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019741"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Hive 
 
@@ -42,12 +41,12 @@ Hive-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Hive** | Igen |
+| type | A type tulajdonságot kell beállítani: **Hive** | Igen |
 | gazdagép | IP-cím vagy a gazdagép a Hive kiszolgáló neve, pontosvesszővel (;) több gazdagépek (amikor csak serviceDiscoveryMode beállítás engedélyezve).  | Igen |
 | port | A TCP-port a Hive-kiszolgáló által az ügyfélkapcsolatok figyeléséhez. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Igen |
 | serverType | Hive server típusa. <br/>Engedélyezett értékek a következők: **HiveServer1**, **hiveserver2-n keresztül**, **HiveThriftServer** | Nem |
-| thriftTransportProtocol | Az átviteli protokoll használatára a Thrift-rétegben. <br/>Engedélyezett értékek a következők: **bináris**, **SASL**, **HTTP** | Nem |
-| authenticationType | A Hive-kiszolgáló eléréséhez használt hitelesítési módszert. <br/>Engedélyezett értékek a következők: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| thriftTransportProtocol | Az átviteli protokoll használatára a Thrift-rétegben. <br/>Engedélyezett értékek a következők: **Bináris**, **SASL**, **HTTP** | Nem |
+| authenticationType | A Hive-kiszolgáló eléréséhez használt hitelesítési módszert. <br/>Engedélyezett értékek a következők: **Névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | serviceDiscoveryMode | Igaz értéket a szolgáltatással ZooKeeper, false nem jelzi.  | Nem |
 | zooKeeperNameSpace | A névtér a ZooKeeper, mely Hive Server 2 szerint csomópontokat ad hozzá.  | Nem |
 | useNativeQuery | Itt adhatja meg, hogy az illesztőprogram natív HiveQL lekérdezéseket használ, vagy alakítja át őket egy azzal egyenértékű HiveQL űrlapra.  | Nem |

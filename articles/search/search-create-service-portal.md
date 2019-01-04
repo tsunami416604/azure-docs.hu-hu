@@ -6,19 +6,23 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315985"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002637"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
-Útmutató Azure Search szolgáltatás létrehozásához és üzembe helyezéséhez a portálon. 
+Az Azure Search egy használt keresési funkciókat adhat hozzá egyéni alkalmazások önálló erőforrásként. Azure Search egyszerűen integrálható számos Azure-szolgáltatásokat, bár használhatja önmagában, a hálózati kiszolgálókon lévő üzemeltetett alkalmazások vagy más felhőplatformon futó szoftvert. 
+
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Search-erőforrást a [az Azure portal](https://portal.azure.com/). 
+
+![A portál Azure Search-erőforrás](media/search-create-service-portal/azure-search-resource-label.png)
 
 Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekhez az [Azure Search szolgáltatás kezelése a PowerShell használatával](search-manage-powershell.md) című cikkben ismertetett háttérinformációk nyújtanak segítséget.
 
@@ -31,13 +35,15 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 ## <a name="find-azure-search"></a>Az Azure Search megkeresése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a plusz jelre („+ Erőforrás létrehozása”) a bal felső sarokban.
-3. Válassza a **Web** > **Azure Search** lehetőséget.
+3. A Keresősáv használatával keresse meg az "Azure Search", vagy navigáljon arra az erőforrásra **webes** > **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>A szolgáltatás és az URL-végpont elnevezése
 
-A szolgáltatás neve része annak az URL-végpontnak, amelyre az API-hívások hivatkoznak: `https://your-service-name.search.windows.net`. Adja meg a szolgáltatás nevét az **URL** mezőben. 
+A szolgáltatás neve része annak az URL-végpontnak, amelyre az API-hívások hivatkoznak: `https://your-service-name.search.windows.net`. Adja meg a szolgáltatás nevét az **URL** mezőben.
+
+Például, ha azt szeretné, hogy a végpont `https://my-app-name-01.search.windows.net`, adjon meg `my-app-name-01`.
 
 A szolgáltatásnévre vonatkozó követelmények:
    * Egyedinek kell lennie a search.windows.net névtérben
@@ -51,6 +57,8 @@ Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez a
 
 ## <a name="select-a-resource-group"></a>Erőforráscsoport kiválasztása
 Az erőforráscsoport együtt használt Azure-szolgáltatások és -erőforrások gyűjteménye. Ha az Azure Search szolgáltatást például egy SQL-adatbázis indexelésére használja, akkor mindkét szolgáltatásnak ugyanabban az erőforráscsoportban kell lennie.
+
+Ha nem kombinálásával erőforrást rendezhet egy csoportba, vagy ha meglévő erőforráscsoportok ki vannak töltve az erőforrások nem kapcsolódó megoldásokban használt hozzon létre egy új erőforráscsoportot, és az Azure Search-erőforrást az.
 
 > [!TIP]
 > Egy erőforráscsoport törlésekor a benne lévő szolgáltatások is törölve lesznek. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el. 
@@ -109,7 +117,7 @@ Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet 
 A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replikák frissítése egymást követően történik, tehát legalább egy mindig működni fog a szolgáltatásfrissítés végrehajtása közben. A hasznos üzemidőről a [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/) oldalán tájékozódhat bővebben.
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Search szolgáltatás üzembe helyezése után már készen áll egy [index definiálására](search-what-is-an-index.md) hogy feltölthesse adatait és keresést végezhessen. 
+Üzembe helyezés az Azure Search szolgáltatást, után továbbra is az első index létrehozása a portálon.
 
 > [!div class="nextstepaction"]
-> [Az Azure Search használata a .NET-ben](search-howto-dotnet-sdk.md)
+> [Oktatóanyag: Adatok importálása, Tárgymutató és lekérdezések futtatását a portálon](search-get-started-portal.md)

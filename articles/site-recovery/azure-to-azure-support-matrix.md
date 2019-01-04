@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 24776e2d14824c6d7b028a2cb9e2ba1e1aaa5c96
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 40ee4fe15b2fde917c1d056a1454b95b9655b465
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789126"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999730"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -92,8 +92,8 @@ CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0-ban, 7.1-es, 7.2, 7.3, 7.4, 7.5, 7.6
 Ubuntu 14.04 LTS Server | [Támogatott kernel-verzióknál](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16.04 LTS Server | [Támogatott kernel verziója](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Előfordulhat, hogy Ubuntu-kiszolgálók jelszó alapú hitelesítési és bejelentkezési és a cloud-init-csomag konfigurálása a cloud-beli virtuális gépek jelszóalapú bejelentkezés le van tiltva, a feladatátvétel (függően a cloudinit konfigurálása). Jelszóalapú bejelentkezés újból engedélyezhető a virtuális gépen az ügyfélszolgálattól a jelszó alaphelyzetbe állításával > Hibaelhárítás > Beállítások menüjében (a feladatátvételen átesett virtuális gép az Azure Portalon.
 Debian 7 | [Támogatott kernel-verzióknál](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | [Támogatott kernel-verzióknál)](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2 SP3 VERZIÓT KELL HASZNÁLNIA. [Támogatott kernel-verzióknál](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+Debian 8 | [Támogatott kernel-verzióknál](#supported-debian-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1, SP2 SP3 VERZIÓT KELL HASZNÁLNIA. [(Támogatott kernel-verzióknál)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> A gépek replikálásához SP3 SP4 való frissítés nem támogatott. Ha a replikált gépek frissítve lett, tiltsa le a replikációt, és engedélyezze újra a frissítés után a replikáció szüksége.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0-ban, 7.1-es, 7.2, 7.3, 7.4, 7.5 <br/><br/> A Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel Release-3 (UEK3) fut.
@@ -103,35 +103,36 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0-ban, 7.1-es, 7.2, 7.3, 7.
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
+14.04 LTS | 9.21 | a 3.13.0-163-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.15.0-1035-azure 4.15.0-1023-Azure |
 14.04 LTS | 9.20 | a 3.13.0-161-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.15.0-1030-azure 4.15.0-1023-Azure |
 14.04 LTS | 9.19 | a 3.13.0-153-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-131-generic 4.4.0-21-Generic |
 14.04 LTS | 9.18 | a 3.13.0-151-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-128-generic 4.4.0-21-Generic |
-14.04 LTS | 9.17 | a 3.13.0-147-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-124-generic 4.4.0-21-Generic |
 |||
+16.04 LTS | 9.21 | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-42-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure <br/>a 4.15.0-1035-azure 4.15.0-1012-Azure|
 16.04 LTS | 9.20 | a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-38-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure <br/>a 4.15.0-1030-azure 4.15.0-1012-Azure|
 16.04 LTS | 9.19 | a 4.4.0-131-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-30-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure <br/>a 4.15.0-1019-azure 4.15.0-1012-Azure|
 16.04 LTS | 9.18 | a 4.4.0-128-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure |
-16.04 LTS | 9.17 | a 4.4.0-124-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-41-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1016-azure 4.13.0-1005-Azure |
 
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Debian kernel verziója támogatott Azure-beli virtuális gépek
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9.17,9.18,9.19,9.20 | a 3.2.0-6-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.18,9.19,9.20,9.21 | a 3.2.0-6-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.20 | a 3.16.0-7-amd64, hogy 4.9.0-0.bpo.8-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+Debian 8 | 9.20, 9.21 | a 3.16.0-7-amd64, hogy 4.9.0-0.bpo.8-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 Debian 8 | 9.19 | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.7-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
-Debian 8 | 9.17, 9.18 | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+Debian 8 | 9.18 | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure-beli virtuális gépek támogatott SUSE Linux Enterprise Server 12 kernel verziója
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.162-94.69-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.140-94.42-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.138-94.39-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default 3.12.74-60.64.40-default<br/><br/> A 3.12.74-60.64.88-default SP1(LTSS) 3.12.74-60.64.45-default<br/><br/> SP2 4.4.21-69-default 4.4.120-92.70-default<br/><br/>SP2(LTSS) 4.4.121-92.73-default<br/><br/>A 4.4.126-94.22-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.21 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.93-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.138-94.39-default SP3 4.4.73-5-default |
+
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikált gépek – Linux rendszer/Vendég fájltárolás
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7f4c03c4335f9936d78890ad2e3903d0986f86d8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807686"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025674"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
 
@@ -77,10 +77,10 @@ Egy Azure Cosmos-tárolóhoz egy rendszer által meghatározott tulajdonságkés
 
 | **Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be** | **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__rid | A rendszer által létrehozott | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
-|__etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
-|__ts | A rendszer által létrehozott | A tároló utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
-|__self | A rendszer által létrehozott | A tároló címezhető URI | Igen | Nem | Nem | Nem | Nem |
+|_rid | A rendszer által létrehozott | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
+|_etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
+|_ts | A rendszer által létrehozott | A tároló utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
+|_self | A rendszer által létrehozott | A tároló címezhető URI | Igen | Nem | Nem | Nem | Nem |
 |id | Felhasználó által konfigurálható | Felhasználó által megadott egyedi a tároló nevét. | Igen | Igen | Igen | Igen | Igen |
 |indexingPolicy | Felhasználó által konfigurálható | Lehetővé teszi az index elérési utat, a pontosság és a konzisztencia modell módosításához. | Igen | Nem | Nem | Nem | Igen |
 |TimeToLive | Felhasználó által konfigurálható | Lehetővé teszi elemek törlése automatikusan végre egy bizonyos idő elteltével. További részletekért tekintse meg a [Time To Live](time-to-live.md) cikk. | Igen | Nem | Nem | Nem | Igen |
@@ -113,10 +113,10 @@ Minden Azure-Cosmos-elem a következő definiált rendszertulajdonsággal rendel
 
 |**Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be**| **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__id | A rendszer által létrehozott | Elem egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
-|__etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
-|__ts | A rendszer által létrehozott | A cikk utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
-|__self | A rendszer által létrehozott | Az elemek címezhető URI azonosítója | Igen | Nem | Nem | Nem | Nem |
+|_azonosítója | A rendszer által létrehozott | Elem egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
+|_etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
+|_ts | A rendszer által létrehozott | A cikk utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
+|_self | A rendszer által létrehozott | Az elemek címezhető URI azonosítója | Igen | Nem | Nem | Nem | Nem |
 |id | Vagy | Felhasználó által definiált belül egyedi nevet a logikai partíció. Ha a felhasználó nem ad meg az azonosító, a rendszer automatikusan létrehoz egyet. | Igen | Igen | Igen | Igen | Igen |
 |Tetszőleges, felhasználó által definiált tulajdonságai | Felhasználó által megadott | Felhasználó által definiált tulajdonságok jelölt API natív ábrázolás (JSON, BSON, CQL, stb.) | Igen | Igen | Igen | Igen | Igen |
 

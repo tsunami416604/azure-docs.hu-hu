@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 81bfd5e0354fefea4690e6871dd5e846f41dc6d8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980791"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015522"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>A Java-webalkalmazásban szűrőtelemetria
 
@@ -31,7 +31,7 @@ A-beépített szűrők a következők:
 
 > [!NOTE]
 > Szűrők az alkalmazás a metrikák döntés. Például dönthet úgy, hogy lassúak a válaszok diagnosztizálhatja, hogy beállítsa az elveti a gyors válaszidők szűrőt. De vegye figyelembe, hogy az átlagos válaszidők az Application Insights által jelentett igaz sebessége lassabb lesz, és a kérelmek száma kisebb, mint a valós szám lesz.
-> Ez nagyon fontos, ha [mintavételi](../../application-insights/app-insights-sampling.md) helyette.
+> Ez nagyon fontos, ha [mintavételi](../../azure-monitor/app/sampling.md) helyette.
 
 ## <a name="setting-filters"></a>Szűrők beállítása
 
@@ -262,4 +262,4 @@ Az applicationinsights.xml fájlt:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mintavételi](../../application-insights/app-insights-sampling.md) -fontolja meg a mintavétel a metrikák nem tevékenységdiagramon alternatívájaként.
+* [Mintavételi](../../azure-monitor/app/sampling.md) -fontolja meg a mintavétel a metrikák nem tevékenységdiagramon alternatívájaként.

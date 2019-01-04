@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614021"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021985"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének (UI) használatával egy adat-előállító folyamatot hoz létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között.
@@ -195,7 +194,7 @@ Az adat-előállító nevének *globálisan egyedinek* kell lennie. Ha a Név me
 
     ![Integrációs modul neve](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. Az **1. lehetőség: Expressz telepítés** alatt kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre. 
+1. A **1. lehetőség: Expressz telepítés**válassza **kattintson ide a számítógép Expressz telepítés indításához**. 
 
     ![Expressz telepítés hivatkozás](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 

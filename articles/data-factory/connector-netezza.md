@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8e2b65f83395c9e8991338864d2037d0572dd269
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 676eac6853c8cead40cb702855090eac5e2ce7d8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078006"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025654"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Netezza adatokat másol az Azure Data Factory használatával 
 
@@ -50,7 +49,7 @@ Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<data
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| SecurityLevel | Az adattárban való csatlakozáshoz használja az illesztőprogram (SSL/TLS) biztonsági szintjét. Példa: `SecurityLevel=preferredSecured`. Támogatott értékei a következők:<br/>- **Csak nem biztonságos** (**onlyUnSecured**): az illesztőprogram nem használ SSL.<br/>- **Előnyben részesített nem biztonságos (preferredUnSecured) (alapértelmezett)**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram nem használ SSL. <br/>- **Előnyben részesített (preferredSecured) biztonságos**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogramot használja az SSL. <br/>- **Csak a (onlySecured) védett**: az illesztőprogram nem csatlakozzon, hacsak nem érhető el SSL-kapcsolat. | Nem |
+| SecurityLevel | Az adattárban való csatlakozáshoz használja az illesztőprogram (SSL/TLS) biztonsági szintjét. Példa: `SecurityLevel=preferredSecured`. Támogatott értékei a következők:<br/>- **Csak nem biztonságos** (**onlyUnSecured**): Az illesztőprogram nem használ SSL.<br/>- **Előnyben részesített nem biztonságos (preferredUnSecured) (alapértelmezett)**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram az SSL használatára nem. <br/>- **Előnyben részesített (preferredSecured) biztonságos**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram az SSL. <br/>- **Csak a (onlySecured) védett**: Az illesztőprogram nem kapcsolatot, ha SSL-kapcsolat nem érhető el. | Nem |
 | CA-tanúsítványfájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha SSL engedélyezve van |
 
 **Példa**

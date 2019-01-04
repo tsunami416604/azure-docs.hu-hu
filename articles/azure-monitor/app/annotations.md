@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24b737b8403c185bc118b18473cadb3535ad1c34
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 126c0d63a7d59b76361a25844575ee6556a475b1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808723"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002076"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
 
-A jegyzetek [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Azure fejlesztési és üzemeltetési szolgáltatásokat hozhat létre a rendszer](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Is létrehozhat, hogy ez a jelző azt tetszés szerint bármilyen eseményre [hozza létre őket a PowerShell](#create-annotations-from-powershell).
+A jegyzetek [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Azure fejlesztési és üzemeltetési szolgáltatásokat hozhat létre a rendszer](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Is létrehozhat, hogy ez a jelző azt tetszés szerint bármilyen eseményre [hozza létre őket a PowerShell](#create-annotations-from-powershell).
 
 > [!NOTE]
 > Ez a cikk tükrözi az elavult **klasszikus metrikák élmény**. Jegyzetek rendszer csak a klasszikus tapasztalatok és a jelenleg elérhető  **[munkafüzetek](../../application-insights/app-insights-usage-workbooks.md)**. További információ a currrent metrikák tapasztal, olvassuk [Ez a cikk](../../azure-monitor/platform/metrics-charts.md).
@@ -107,4 +107,4 @@ Módosítsa a parancsfájlt, például az elmúlt jegyzetek könnyebbé vált a.
 ## <a name="next-steps"></a>További lépések
 
 * [Munkaelem létrehozása](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automatizálás a PowerShell-lel](../../application-insights/app-insights-powershell.md)
+* [Automatizálás a PowerShell-lel](../../azure-monitor/app/powershell.md)

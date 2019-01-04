@@ -9,17 +9,16 @@ ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7357b609909c3db0bc42d58cb2cd32436c864f66
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2f964ac77ade69f14692a337f17011e93f85f68c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235870"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025708"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a postgresql-hez az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,7 +48,7 @@ Adatkezelési átjáró csatlakozni a PostgreSQL-adatbázishoz, telepítse a [Ng
 ## <a name="getting-started"></a>Első lépések
 Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni PostgreSQL adattárolókból más eszközök/API-k használatával is létrehozhat. 
 
-- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
+- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
 - A következő eszközök használatával hozzon létre egy folyamatot: 
     - Azure Portal
     - Visual Studio
@@ -66,7 +65,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
 3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni PostgreSQL adattár használt JSON-definíciói egy minta: [példa JSON: adatok másolása az PostgreSQL az Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni PostgreSQL adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob PostgreSQL](#json-example-copy-data-from-postgresql-to-azure-blob) című szakaszát. 
 
 Az alábbi szakaszok nyújtanak egy PostgreSQL-adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -75,11 +74,11 @@ A következő táblázat a JSON-elemeket társított PostgreSQL szolgáltatás l
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonság értékre kell állítani: **OnPremisesPostgreSql** |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesPostgreSql** |Igen |
 | kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
 | adatbázis |A PostgreSQL-adatbázis neve. |Igen |
 | séma |A séma az adatbázis neve. A séma neve a kis-és nagybetűket. |Nem |
-| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyi PostgreSQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
@@ -111,7 +110,7 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza a PostgreSQL), 
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-példa: adatok másolása az Azure Blob PostgreSQL
+## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-példa: Adatok másolása az Azure Blob PostgreSQL
 Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a PostgreSQL-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
 
 > [!IMPORTANT]
@@ -192,7 +191,7 @@ Beállítás `"external": true` a Data Factory szolgáltatás tájékoztatja, ho
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatok írása egy új blob minden órában (frequency: óra, az interval: 1). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -334,8 +333,8 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 | Vonal | |Byte [], karakterlánc |&nbsp;
 | lseg | |Byte [], karakterlánc |&nbsp;
 | macaddr | |Byte [], karakterlánc |&nbsp;
-| költséget takaríthat meg | |tizedes tört |&nbsp;
-| numerikus [(p, s)] |tizedes tört [(p, s)] |tizedes tört |
+| költséget takaríthat meg | |Tizedes tört |&nbsp;
+| numerikus [(p, s)] |tizedes tört [(p, s)] |Tizedes tört |
 | numrange | |Karakterlánc |&nbsp;
 | objektumazonosító | |Int32 |&nbsp;
 | elérési út | |Byte [], karakterlánc |&nbsp;

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e25cdd0677efce0ea8d40ad1c8ae07a5d071a67f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 65dae64a43fb145f34c6933f0b74f8e798f5e373
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969788"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016324"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -248,7 +247,7 @@ END
 1. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 1. Kattintson a **Create** (Létrehozás) gombra.      
-1. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+1. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -277,7 +276,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
 
    ![Saját üzemeltetésű integrációs modul neve](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre az **1. lehetőség: Expressz telepítés** szakaszban. 
+1. Kattintson a **kattintson ide a számítógép Expressz telepítés indításához** a a **1. lehetőség: Expressz telepítés** szakaszban. 
 
    ![Kattintás az Expressz telepítés hivatkozásra](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban kattintson a **Bezárás** elemre. 

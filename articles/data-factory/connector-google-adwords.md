@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 2a17bca6f7b95850f84781b5838719617d45bdd2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b712b576e1dd47698de66889d4edf9dda026a16c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077817"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017990"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Google AdWords
 
@@ -45,7 +44,7 @@ A következő tulajdonságok támogatottak a Google AdWords társított szolgál
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **GoogleAdWords** | Igen |
+| type | A type tulajdonságot kell beállítani: **GoogleAdWords** | Igen |
 | clientCustomerID | Az ügyfél ügyfél-azonosító, hogy a jelentés adatait beolvasni kívánt AdWords fiók.  | Igen |
 | developerToken | A fejlesztői token társított a-kezelői fiók, amellyel a AdWords API a hozzáférési jogot.  Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | authenticationType | Az OAuth 2.0 hitelesítési mechanizmust a hitelesítéshez használt. ServiceAuthentication csak akkor használható a saját üzemeltetésű <br/>Engedélyezett értékek a következők: **ServiceAuthentication**, **UserAuthentication** | Igen |

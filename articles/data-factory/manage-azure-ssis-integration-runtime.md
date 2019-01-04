@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7d4accf7958b93addd1b6d99e2d40a447c32dba9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0022ee46049181ed15e6b3968b9b952483c7fba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956591"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016029"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Konfigurálja újra az Azure-SSIS integrációs modul
 Ez a cikk ismerteti, hogyan konfigurálható újra egy meglévő Azure-SSIS integrációs modult. Egy Azure-SSIS integrációs modul (IR) létrehozása az Azure Data Factoryban: [hozzon létre egy Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md).  
@@ -93,7 +92,7 @@ További információ az Azure-SSIS modult tekintse meg a következő témakör�
 
 - [Az Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs modulok általában többek között az Azure-SSIS integrációs modult. 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 
+- [kézikönyv: Hozzon létre egy Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a virtuális hálózat oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson ahhoz. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
  

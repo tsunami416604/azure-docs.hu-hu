@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/7/2018
 ms.author: shlo
-ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: afaa5ae622f962dcffec52dbdbea8a754ba260ab
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281693"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025385"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -47,7 +46,7 @@ Azure-Adattárakkal Git-integrációval történő vizuális tartalomkészítés
 ### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Egy Azure-Adattárakkal Git-tárház beállítása az Azure Data Factoryvel
 Az adat-előállító két módszer segítségével konfigurálhatja egy Azure-Adattárakkal Git-tárházba.
 
-#### <a name="method1"></a> 1 (az Azure-Adattárakkal Git-tárház) a konfigurálási módszerhez: első lépések lap
+#### <a name="method1"></a> Konfigurálása (Azure-Adattárakkal Git-tárház) 1. módszer: Első lépések lap
 
 Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
@@ -61,7 +60,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
-| **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Az Azure-Adattárakkal Git |
+| **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/>**Megjegyzés**: GitHub jelenleg nem támogatott. | Az Azure-Adattárakkal Git |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | <your tenant name> |
 | **Az Azure-Adattárakkal szervezet** | Az Azure-Adattárakkal szervezet neve. : Az Azure-Adattárakkal szervezet nevének megkereséséhez `https://{organization name}.visualstudio.com`. Is [jelentkezzen be a szervezet Azure-Adattárakkal](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | <your organization name> |
 | **ProjectName** | Az Azure-Adattárakkal projekt nevét. Megkeresheti az Azure-Adattárakkal projekt nevét `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
@@ -70,7 +69,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | **Gyökérmappa** | A legfelső szintű mappát a saját Azure-Adattárakkal együttműködés ágban. | <your root folder name> |
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy Azure-Adattárakkal Git-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 
-#### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>2 (Azure-Adattárakkal Git-tárház) a konfigurálási módszerhez: UX szerzői vászon
+#### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>Konfigurálása (Azure-Adattárakkal Git-tárház) 2. módszer: Szerzői vászon UX
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
 A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások <a href="#method1">konfigurációs módszer 1</a>.
@@ -164,7 +163,7 @@ A 9 perces bevezető és a funkció bemutatójáért tekintse meg a következő 
 
 Az adat-előállító két módszer segítségével konfigurálhatja egy GitHub-adattárból.
 
-**1 (nyilvános tárházban) a konfigurálási módszerhez: első lépések lap**
+**Konfiguráció (nyilvános tárházban) 1. módszer: Első lépések lap**
 
 Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
@@ -186,7 +185,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 | **Az erőforrás importálásához ág**                       | Itt adhatja meg, mely a főágban (a folyamatok, adatkészletek, a társított szolgáltatások stb.) a data factory-erőforrások importálása. Erőforrások importálhatja a következő fiókok közül: egy. Együttműködés b. Hozzon létre új c. Meglévő használata                                                                                                                                                                                                     |                    |
 
-#### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>2 (nyilvános tárházban) a konfigurálási módszerhez: UX szerzői vászon
+#### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>Konfiguráció (nyilvános tárházban) 2. módszer: Szerzői vászon UX
 
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
@@ -196,7 +195,7 @@ A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcso
 
 Az adat-előállító két módszer segítségével konfigurálhatja a GitHub Enterprise-zal tárház.
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>1 (Enterprise tárházban) a konfigurálási módszerhez: első lépések lap
+ #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfiguráció (Enterprise tárházban) 1. módszer: Első lépések lap
 
 Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
@@ -220,7 +219,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 | **Az erőforrás importálásához ág**                       | Itt adhatja meg, mely a főágban (a folyamatok, adatkészletek, a társított szolgáltatások stb.) a data factory-erőforrások importálása. Erőforrások importálhatja a következő fiókok közül: egy. Együttműködés b. Hozzon létre új c. Meglévő használata                                                                                                                                                                                                     |                    |
 
-#### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>2 (Enterprise tárházban) a konfigurálási módszerhez: UX szerzői vászon
+#### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>Konfiguráció (Enterprise tárházban) 2. módszer: Szerzői vászon UX
 
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 

@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5bd300a318008b34415f8bc9625cad3c38dec873
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 0fa9503e4536090e56e2f2709ceca5338bb593de
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40107225"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018058"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure Elastic Database-feladatok az SSISDB-naplók törlése
 
@@ -265,6 +264,6 @@ ORDER BY start_time DESC
 
 A felügyeleti és megfigyelési feladatok, az Azure-SSIS integrációs modul kapcsolódik tekintse meg a következő cikkekben talál. Az Azure-SSIS integrációs modul az SSISDB az Azure SQL Database tárolja az SSIS-csomagok futásidejű összetevő.
 
--   [Konfigurálja újra az Azure-SSIS integrációs modul](manage-azure-ssis-integration-runtime.md)
+-   [Az Azure-SSIS Integration Runtime újrakonfigurálása](manage-azure-ssis-integration-runtime.md)
 
 -   [Az Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime).

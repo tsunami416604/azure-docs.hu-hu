@@ -13,12 +13,12 @@ ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 47d04f6e73d95a7cb1ba63c437b97468041af57f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0450feb82e539ebd73c3013e066104b29916238d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189863"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018772"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
@@ -36,7 +36,7 @@ A következő licencek használata a Csoportalapú licencelés egyikét kell ren
 - Fizetős vagy próba kiadás, az Office 365 nagyvállalati E3 vagy Office 365 a3-as vagy újabb verzióhoz
 
 ### <a name="required-number-of-licenses"></a>Szükséges licencek száma
-Minden olyan licenc hozzárendelése csoportok esetén is rendelkezik licenccel minden egyedi tag. Nem kell minden egyes tagja a csoport egy licencet hozzárendelni, amíg minden tagot legalább elegendő licenccel kell rendelkeznie. A példában ha 1000 egyedi tagot, akik a saját bérlőjében, licenccel rendelkező csoportok tagjai rendelkeznie kell legalább 1000 licencek a licencszerződés kielégítése érdekében.
+Minden olyan licenc hozzárendelése csoportok esetén is rendelkezik licenccel minden egyedi tag. Nem kell minden egyes tagja a csoport egy licencet hozzárendelni, amíg minden tagot legalább elegendő licenccel kell rendelkeznie. Például ha 1000 egyedi tagjai, akik a saját bérlőjében licenccel rendelkező csoportok részét képezik, meg kell rendelkeznie legalább 1000 licenceket felel meg a licencszerződést.
 
 ## <a name="features"></a>Szolgáltatások
 

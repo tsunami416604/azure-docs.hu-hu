@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: caf3ecb64d0bdb5771b2fde705fdcbffdffccacb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: de3407b45fb82aa38bec7b84fef34c1654676122
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969301"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016215"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység
 Ez a cikk a fő Azure Data Factory - integráció a cikk az Azure Machine Learning egészíti ki: [Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása](transform-data-using-machine-learning.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket. 

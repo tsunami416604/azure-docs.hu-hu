@@ -1,13 +1,10 @@
 ---
-title: Létrehozása, módosítása vagy törlése az Azure nyilvános IP-címelőtag |} A Microsoft Docs
+title: Létrehozása, módosítása vagy törlése az Azure nyilvános IP-cím előtagja
+titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: a0ae1f3fbf9189068cae4b18ac92f0bea0498f67
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427573"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015287"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
 
@@ -29,7 +26,7 @@ További tudnivalók a nyilvános IP-címelőtag és létrehozása, módosítás
 ## <a name="before-you-begin"></a>Előkészületek
 
 > [!IMPORTANT]
-> Nyilvános IP-előtag van, korlátozott számú régióban egy nyilvános előzetes verzióban érhető el. Is [ismerje meg, hogy mit jelent az előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Nyilvános IP-címelőtag jelenleg érhető el: USA nyugati középső Régiója, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia. Régiók frissített listáját, keresse fel [Azure-frissítések](https://azure.microsoft.com/updates/?product=virtual-network).
+> Nyilvános IP-előtag van, korlátozott számú régióban egy nyilvános előzetes verzióban érhető el. Is [ismerje meg, hogy mit jelent az előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Nyilvános IP-előtag jelenleg érhető el: USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia. Régiók frissített listáját, keresse fel [Azure-frissítések](https://azure.microsoft.com/updates/?product=virtual-network).
 
 Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa végre a következőket:
 
@@ -85,7 +82,7 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
 2. Válassza ki a nevét a nyilvános IP-címelőtag szeretné tekinteni, beállításainak módosítása vagy törlése a listából.
 3. Fejezze be a következő beállításokat, attól függően, hogy a megtekintése, törlése és módosítása a nyilvános IP-címelőtag egyikét.
     - **Nézet**: A **áttekintése** szakasz bemutatja a nyilvános IP-címelőtagot, például előtag-beállításait.
-    - **Törlés**: a nyilvános IP-címelőtag törléséhez válassza ki **törlése** a a **áttekintése** szakaszban. Ha az előtag belül cím nyilvános IP-cím erőforrás van társítva, a nyilvános IP-cím erőforrás először törölnie kell. Lásd: [egy nyilvános IP-cím törlése](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+    - **Törlés**: A nyilvános IP-címelőtag törléséhez válassza ki **törlése** a a **áttekintése** szakaszban. Ha az előtag belül cím nyilvános IP-cím erőforrás van társítva, a nyilvános IP-cím erőforrás először törölnie kell. Lásd: [egy nyilvános IP-cím törlése](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
 
 **Parancsok**
 

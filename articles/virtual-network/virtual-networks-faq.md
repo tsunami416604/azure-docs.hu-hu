@@ -1,5 +1,6 @@
 ---
-title: Az Azure Virtual Network – gyakori kérdések |} A Microsoft Docs
+title: Az Azure Virtual Network – gyakori kérdések
+titlesuffix: Azure Virtual Network
 description: A Microsoft Azure virtuális hálózatok leggyakrabban feltett kérdésekre adott válaszok.
 services: virtual-network
 documentationcenter: na
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277522"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021033"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 

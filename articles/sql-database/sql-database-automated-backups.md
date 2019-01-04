@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: b8c7abacbf99bfbf68b7dd76a01011c8220bf9f2
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608460"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001277"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -105,13 +105,19 @@ Ha az adatbázis telepít át az alapértelmezett PITR a megőrzési 35 nap a DT
 Módosíthatja az alapértelmezett PITR a biztonsági másolat megőrzési idejének az Azure Portal, PowerShell vagy a REST API használatával. A támogatott értékek a következők: 7, 14, 21, 28 és 35 nap. Az alábbi példák bemutatják, hogyan PITR a Megtartás módosítása 28 nap.
 
 > [!NOTE]
-> Ezek API-k csak negatív hatással lesz a PITR a megőrzési időtartam. Ha az adatbázis konfigurált balról jobbra, ez nem érinti. Az LTR-megőrzési időszak módosításával kapcsolatos további információkért lásd: [hosszú távú megőrzés](sql-database-long-term-retention.md).
+> Ezen API-k csak negatív hatással lesz a PITR a megőrzési időtartam. Ha az adatbázis konfigurált balról jobbra, ez nem érinti. Az LTR-megőrzési időszak módosításával kapcsolatos további információkért lásd: [hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Az Azure portal használatával PITR a biztonsági másolat megőrzési idejének módosítása
 
-Az Azure Portallal PITR a biztonsági másolat megőrzési idejének módosításához lépjen az adatbázishoz, amelynek megőrzési ideje, hogy módosítani kívánja, majd kattintson **áttekintése**.
+Az Azure Portallal PITR a biztonsági másolat megőrzési idejének módosításához nyissa meg a kiszolgáló objektum amelynek megőrzési ideje módosítani a portálon, és válassza ki a megfelelő beállítást szeretné melyik kiszolgáló objektumon, módosít alapján. 
 
-![Változás PITR a az Azure portal](./media/sql-database-automated-backup/configure-backup-retention.png)
+#### <a name="change-pitr-for-a-logical-server"></a>Egy logikai kiszolgáló PITR módosítása
+
+![Változás PITR a az Azure portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
+
+#### <a name="change-pitr-for-a-managed-instance"></a>Felügyelt példány PITR módosítása
+
+![Változás PITR a az Azure portal](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell-lel PITR a biztonsági másolat megőrzési idejének módosítása
 

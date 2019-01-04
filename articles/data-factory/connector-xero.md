@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 02bd85e8502af5e479d052f08276b08bb734d855
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6793fbcc50711e10231b87fa6e1f11f54f90d325
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103575"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018432"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Xero
 
@@ -50,7 +49,7 @@ Xero-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Xero** | Igen |
+| type | A type tulajdonságot kell beállítani: **Xero** | Igen |
 | gazdagép | A végpont a Xero-kiszolgáló (`api.xero.com`).  | Igen |
 | consumerKey | A Xero-alkalmazáshoz társított fogyasztói kulcs. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | privateKey | A titkos kulcsot a .pem fájl jött létre a Xero magánhálózati alkalmazáshoz, tekintse meg [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Vegye figyelembe, hogy **készítése a privatekey.pem az 512 numbits** használatával `openssl genrsa -out privatekey.pem 512`; 1024 nem támogatott. A .pem-fájlt, többek között a Unix sor endings(\n) minden szöveget tartalmaznak, tekintse meg az alábbi mintát.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |

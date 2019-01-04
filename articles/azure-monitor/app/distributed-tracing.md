@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8ab6782a63c019bea11d047af8588c4489d8b580
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812311"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002212"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az az elosztott nyomkövetési?
 
@@ -51,7 +51,7 @@ A megfelelő Application Insights SDK telepítése és konfigurálása, a nyomk�
 
 Az Application Insights SDK-k mellett az Application Insights is támogatja keresztül elosztott nyomkövetést [OpenCensus](https://opencensus.io/). OpenCensus egy nyílt forráskódú, gyártófüggetlen, egyetlen terjesztési kódtárak metrikák gyűjtési és elosztott nyomkövetést a szolgáltatások biztosítása érdekében. Emellett lehetővé teszi a nyílt forráskódú fejlesztői Közösség elosztott nyomkövetést, Redis, a Memcached, vagy a MongoDB népszerű technológiáival engedélyezéséhez. [A Microsoft együttműködnek a OpenCensus számos más figyelési és a felhő partnerek](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Elosztott nyomkövetést képességek hozzáadása alkalmazáshoz való hozzárendelésként az OpenCensus, először [telepítése és konfigurálása az Application Insights helyi továbbító](./../../application-insights/opencensus-local-forwarder.md). Itt konfigurálhatja a OpenCensus elosztott nyomkövetési adatokat a helyi továbbító keresztül irányíthatja. Mindkét [Python](./../../application-insights/opencensus-python.md) és [Go](./../../application-insights/opencensus-go.md) támogatottak.
+Elosztott nyomkövetést képességek hozzáadása alkalmazáshoz való hozzárendelésként az OpenCensus, először [telepítése és konfigurálása az Application Insights helyi továbbító](./../../azure-monitor/app/opencensus-local-forwarder.md). Itt konfigurálhatja a OpenCensus elosztott nyomkövetési adatokat a helyi továbbító keresztül irányíthatja. Mindkét [Python](./../../azure-monitor/app/opencensus-python.md) és [Go](./../../azure-monitor/app/opencensus-go.md) támogatottak.
 
 A OpenCensus webhely fenntartja API referenciadokumentációt tartalmaz a [Python](https://opencensus.io/api/python/trace/usage.html) és [Go](https://godoc.org/go.opencensus.io), különféle különböző útmutatók a OpenCensus valamint. 
 

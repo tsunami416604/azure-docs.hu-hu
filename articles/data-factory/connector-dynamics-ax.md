@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 1dca3621b31d74d2ae40156672009b15ba30e3f4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 48c6fb178b61fd65e0fbf6122d541bef5e3e9830
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339535"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014386"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Adatok másolása a Dynamics AX használatával az Azure Data Factory (előzetes verzió)
 
@@ -135,7 +134,7 @@ Adatok másolása a Dynamics AX, állítsa be a **forrás** írja be a másolás
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **DynamicsAXSource**. | Igen |
-| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés:**: Az összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 

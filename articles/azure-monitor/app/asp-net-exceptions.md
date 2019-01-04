@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 76ce5f0c44dd1985fbf47d493b4566634f4894d0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6f534858194719a0d3059808073ae057f150b599
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021016"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása
 Az élő webalkalmazását kivételek által jelentett [Application Insights](../../application-insights/app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.
@@ -90,7 +90,7 @@ Ezek az események megtekintéséhez nyissa meg a [keresési](../../azure-monito
 ![Áthatoló részletezést](./media/asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Ugyanehhez a művelethez tartozó események lesz kiválasztva, vagy a jelölésük, úgy, hogy lehessen mozogni a kapcsolódó események között. [További tudnivalók a mintavételezésről.](../../application-insights/app-insights-sampling.md)
+> Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Ugyanehhez a művelethez tartozó események lesz kiválasztva, vagy a jelölésük, úgy, hogy lehessen mozogni a kapcsolódó események között. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -489,4 +489,4 @@ Ez eltér a "Kivétel" száma az Application Insights portálon TrackException j
 ## <a name="next-steps"></a>További lépések
 * [REST, SQL és más, a függőségek hívásainak figyelése](../../azure-monitor/app/asp-net-dependencies.md)
 * [Megfigyelheti az oldalbetöltési időket, a böngészőkivételek és AJAX-hívások](../../azure-monitor/app/javascript.md)
-* [A figyelő teljesítményszámlálók](../../application-insights/app-insights-performance-counters.md)
+* [A figyelő teljesítményszámlálók](../../azure-monitor/app/performance-counters.md)

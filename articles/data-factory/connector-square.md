@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 80389be735d337f72426f0745fee5717b96fa78a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 68ac03a8aba4042a842b5e740d67ab4198236275
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100871"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013162"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával szögletes
 
@@ -45,7 +44,7 @@ Négyzetes társított szolgáltatás a következő tulajdonságok támogatottak
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **szögletes** | Igen |
+| type | A type tulajdonságot kell beállítani: **Négyszög** | Igen |
 | gazdagép | A példány URL-címét a négyzetes. (i.e. mystore.mysquare.com)  | Igen |
 | clientId | A négyzetes alkalmazással társított ügyfél-azonosító.  | Igen |
 | clientSecret | A négyzetes az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |

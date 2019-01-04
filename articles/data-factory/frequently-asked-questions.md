@@ -9,16 +9,15 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249587"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024093"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk ismerteti az Azure Data Factory kapcsolatos gyakori kérdésekre adott válaszokat.  
@@ -50,7 +49,7 @@ A Data Factory modellezheti az összes folyamat stílus, amely szükséges az ad
 - Változási folyamatok:
     - Paramétereket használhat és a magas vízjelbe beleszámított a változásadatok másolásához áthelyezés a dimenzió-vagy egy relációs tárolóból, a helyszínen vagy a felhőben, az adatok betöltéséhez az adattárba közben. 
 
-További információkért lásd: [oktatóanyag: folyamatok szabályozhatja](tutorial-control-flow.md).
+További információkért lásd: [oktatóanyag: Szabályozza a folyamatok](tutorial-control-flow.md).
 
 ### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>A kód ingyenes rendelkező nagy mennyiségű adatok átalakítása
 Az új, böngészőalapú fejlesztőeszközeit kódmentes folyamatok készítése és üzembe helyezéséhez használható egy modern, interaktív webes felületet biztosít.
@@ -92,9 +91,9 @@ Az adat-előállítók PowerShell, SDK-t vagy a böngésző felhasználói felü
 ## <a name="what-is-integration-runtime"></a>Mi az integrációs modul?
 Az Integration runtime különböző hálózati környezetekben a következő adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll:
 
-- **Adatáthelyezés**: adatáthelyezéskor az integrációs modul helyezi át az adatokat a forrás- és adattárak között, miközben gondoskodik a beépített összekötők, formátumátalakítás, oszlopmegfeleltetésről, és nagy teljesítményű, skálázható adatátvitelről.
-- **Tevékenységek szállítást**: átalakításkor az integrációs modul lehetőséget SSIS csomagok natív végrehajtására.
-- **SSIS-csomagok**: natív módon végrehajtja az SSIS-csomagok Azure-beli felügyelt számítási környezetben. Az integrációs modul lehetővé teszi a különböző számítási szolgáltatásokon, például az Azure HDInsighton, az Azure Machine Learningen, az Azure SQL Database-en és az SQL Serveren futó átalakítási tevékenységek szervezését és figyelését.
+- **Adatáthelyezés**: Adatáthelyezéskor az integrációs modul helyezi át az adatokat a forrás adattárolóból a cél adattárolóba. A művelet során gondoskodik a beépített összekötőkről, a formátumkonverzióról, az oszlopmegfeleltetésről, valamint a nagy teljesítményű, skálázható adatátvitelről.
+- **Tevékenységek szállítást**: Átalakításkor az integrációs modul lehetőséget teremt az SSIS csomagok natív végrehajtására.
+- **SSIS-csomagok**: Natív módon végrehajtja az SSIS-csomagok Azure-beli felügyelt számítási környezetben. Az integrációs modul lehetővé teszi a különböző számítási szolgáltatásokon, például az Azure HDInsighton, az Azure Machine Learningen, az Azure SQL Database-en és az SQL Serveren futó átalakítási tevékenységek szervezését és figyelését.
 
 Integrációs modul egy vagy több példány is üzemeltethető, van szükség az adatok áthelyezéséhez és átalakításához. Az Integration runtime futtathat egy Azure-beli nyilvános hálózaton vagy egy magánhálózaton (helyszíni, Azure Virtual Network vagy Amazon Web Services virtuális magánfelhő [VPC]). 
 

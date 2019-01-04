@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 072201dd552f5d68a9b6621b2ca7c83acd76a1f5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440526"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001617"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használat és becsült költségek figyelése
 
@@ -22,7 +22,7 @@ ms.locfileid: "53440526"
 > Ez a cikk ismerteti a használat és becsült költségek megtekintése eltérő díjszabási modelleket a több Azure figyelési szolgáltatások között.  További kapcsolódó információt a következő cikkekben talál.
 > - [Költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](../../azure-monitor/platform/manage-cost-storage.md) azt ismerteti, hogyan tarthatja a költségeket az Adatmegőrzés időtartama módosításával.
 > - [Adathasználat elemzése a Log Analytics](../../azure-monitor/platform/data-usage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
-> - [Az Application Insights árak és adatmennyiségek kezelése](../../application-insights/app-insights-pricing.md) adathasználat elemzése az Application Insights a ismerteti.
+> - [Az Application Insights árak és adatmennyiségek kezelése](../../azure-monitor/app/pricing.md) adathasználat elemzése az Application Insights a ismerteti.
 
 A figyelő hubon, az Azure Portal a **felhasználás és becsült költségek** lap bemutatja, core, például a figyelési funkciók használata [riasztási, metrikákat, értesítéseket](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), és [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). A 2018 április előtt elérhető díjcsomagok az ügyfelek is magában foglalja az Insights keretében vásárolt Log Analytics-használat és elemzési ajánlat.
 

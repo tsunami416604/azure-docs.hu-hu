@@ -1,31 +1,34 @@
 ---
-title: 'A rövid útmutató: Azure portal – Azure Search Cognitive search folyamat'
+title: Az Azure portal – Azure Search mesterséges indexeléshez cognitive search folyamat létrehozása
 description: Példa adatkinyerési, természetes nyelvi és képfeldolgozási képességekre az Azure Portalon, mintaadatok használatával.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/01/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7d579bfdaf38b6c06b26cfa7b36f8e4d2ac5a1f2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386264"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015272"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Gyors útmutató: Folyamat létrehozása a kognitív keresés használatával képességeit, és mintaadatok
 
-A kognitív keresés (előzetes verzió) adatkinyerési, természetes nyelvi feldolgozási (NLP) és képfeldolgozási képességekkel bővíti az Azure Search indexelőfolyamatát, ezáltal javítja a nem kereshető vagy strukturálatlan tartalmak kereshetőségét. Az entitásfelismeréshez vagy a képelemzéshez hasonló képességek által létrehozott információk bekerülnek az Azure Search szolgáltatás egyik indexébe.
+A kognitív keresés (előzetes verzió) adatkinyerési, természetes nyelvi feldolgozási (NLP) és képfeldolgozási képességekkel bővíti az Azure Search indexelőfolyamatát, ezáltal javítja a nem kereshető vagy strukturálatlan tartalmak kereshetőségét. 
 
-Ebben a rövid útmutatóban a kód megírása előtt kipróbálja a bővítési folyamatot az [Azure Portalon](https://portal.azure.com):
+A kognitív keresés folyamat integrálható [Cognitive Services-erőforrások](https://azure.microsoft.com/services/cognitive-services/) – például [OCR](cognitive-search-skill-ocr.md), [nyelvfelismerés](cognitive-search-skill-language-detection.md), [entitások felismerése](cognitive-search-skill-entity-recognition.md)– egy indexelő folyamatba. Az AI-algoritmusokat, Cognitive Services segítségével keresse meg a mintákat, szolgáltatások és jellemzői forrásadatok visszaadni struktúrák és a szöveges tartalom használható teljes szöveges keresési megoldások Azure Search alapján.
 
-* Kezdje az Azure Blob Storage mintaadataival
-* Konfigurálja az [Adatok importálása varázslót](search-import-data-portal.md) indexeléshez és bővítéshez 
-* Futtassa a varázslót (egy entitásképesség észleli a személyeket, a tartózkodási helyet és a szervezeteket)
-* Használja a [keresési ablakot](search-explorer.md) a bővített adatok lekérdezéséhez.
+Ebben a rövid útmutatóban a felderítési bővítést az első folyamat létrehozása a [az Azure portal](https://portal.azure.com) egy egyetlen sor kód írása előtt:
+
+> [!div class="checklist"]
+> * Kezdje az Azure Blob Storage mintaadataival
+> * Konfigurálja a [ **adatimportálás** ](search-import-data-portal.md) varázsló az indexelés kognitív és Adatbővítés 
+> * Futtassa a varázslót (egy entitásképesség észleli a személyeket, a tartózkodási helyet és a szervezeteket)
+> * Használat [ **keresési ablak** ](search-explorer.md) a bővített adatok lekérdezése
 
 ## <a name="supported-regions"></a> Támogatott régiók
 
@@ -58,8 +61,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ebben a forgatókönyvben kizárólag Azure-szolgáltatásokat használunk. A szükséges szolgáltatások létrehozása az előkészületek részét képezi.
 
-+ A forrásadatokat egy Azure Blob Storage biztosítja.
-+ Az Azure Search kezeli az adatbetöltést és az indexelést, a kognitív keresési bővítést, valamint a teljes szöveges keresési lekérdezéseket.
++ [Az Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) biztosít a forrásadatok
++ [A cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biztosít az AI (hozhat létre ezen erőforrások beágyazott, a folyamat megadása esetén)
++ [Az Azure Search](https://azure.microsoft.com/services/search/) a képi elemekben gazdag indexelési folyamat és a egy gazdag szabad formátumú szöveges keresés biztosít az egyéni alkalmazások használata
 
 ### <a name="set-up-azure-search"></a>Az Azure Search beállítása
 
@@ -71,16 +75,16 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
   ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
 
-1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot a rövid útmutató során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután a rövid útmutató végére ért.
+1. Az erőforráscsoport területen hozzon létre egy új ebben a rövid útmutatóban létrehozott összes erőforrást tartalmazó erőforráscsoport. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután a rövid útmutató végére ért.
 
-1. A helyen, válasszon egyet az a [támogatott régiók](#supported-regions) Cognitive search.
+1. A helyen, válasszon egyet az a [támogatott régiók](#supported-regions) cognitive search.
 
 1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
 
   Az ingyenes szolgáltatás legfeljebb 3 indexet és 2 perc indexelést tartalmazhat, 16 MB-os maximális blobmérettel, amely nem elegendő a kognitív keresés funkcióinak teljes körű használatához. A különböző csomagok korlátozásait a [szolgáltatási korlátozásokat](search-limits-quotas-capacity.md) ismertető részben tekintheti meg.
 
-  ![A portál szolgáltatás-definíció lap](./media/cognitive-search-tutorial-blob/create-search-service1.png "szolgáltatás definíció lap a portálon")
-  ![szolgáltatás definíció lap a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Service definition lap az a portálon")
+  ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Szolgáltatásdefiníciós oldal a portálon")
+
   > [!NOTE]
   > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Fogja tudni elvégezni a végrehajtott információbeolvasás korlátozott számú fizetős Cognitive Services-erőforrás társítása nélkül. Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
 
@@ -94,79 +98,88 @@ A bővítési folyamat az [Azure Search indexelői](search-indexer-overview.md) 
 
 1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. 
 
-1. Regisztráljon az Azure Blob Storage-ra, hozzon létre egy tárfiókot, jelentkezzen be a Storage Explorerbe, és hozzon létre egy tárolót. Részletes útmutatást az [Azure Storage Explorer rövid útmutatójában](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) talál.
+1. Iratkozzon fel az Azure Blob storage, hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót. A tárolóban, állítsa a nyilvános hozzáférés szintet **tároló**. További információkért lásd: ["Tároló létrehozása" szakaszban](../storage/blobs/storage-unstructured-search.md#create-a-container) a a *strukturálatlan adatok keresése* oktatóanyag.
 
-1. A mintafájlok az Azure Storage Explorerrel való feltöltéséhez a létrehozott tárolóban kattintson a **Feltöltés** gombra.
+1. Kattintson a létrehozott tárolót, **feltöltése** az előző lépésben letöltött minta fájlok feltöltéséhez.
 
   ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>A bővítési folyamat létrehozása
 
-Lépjen vissza az Azure Search szolgáltatás Irányítópult lapjára, és kattintson a parancssávon található **Adatok importálása** elemre, ahol négy lépésben beállíthatja a bővítést.
+Térjen vissza az Azure Search szolgáltatás irányítópult-oldalon, és kattintson a **adatimportálás** négy lépésben cognitive Adatbővítés beállításához a parancssávon.
+
+  ![Adatok importálása parancs](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
 
-A **Csatlakozás az adatokhoz** > **Azure Blob Storage** menüpontban válassza ki a létrehozott fiókot és tárolót. Adjon nevet az adatforrásnak, a többi beállításnál pedig használja az alapértelmezett értékeket. 
+A **csatlakozás az adatokhoz**, válassza a **Azure Blob storage**, válassza ki a fiókot és a létrehozott tárolóba. Adjon nevet az adatforrásnak, a többi beállításnál pedig használja az alapértelmezett értékeket. 
 
-   ![Azure Blob-konfiguráció](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
+  ![Azure Blob-konfiguráció](./media/cognitive-search-quickstart-blob/blob-datasource.png)
 
+Folytassa a következő lapra.
 
-Az adatforrás létrehozásához kattintson az **OK** gombra.
+  ![Cognitive Search következő oldal gomb](media/cognitive-search-quickstart-blob/next-button-add-cog-search.png)
 
-Az **adatimportálási** varázsló használatának egyik előnye, hogy az az index létrehozására is képes. Az adatforrás létrehozásával egyidejűleg a varázsló egy indexsémát is létrehoz. Az index létrehozása eltarthat néhány másodpercig.
+### <a name="step-2-add-cognitive-skills"></a>2. lépés: Kognitív képességek hozzáadása
 
-### <a name="step-2-add-cognitive-skills"></a>2. lépés: Kognitív képességek hozzáadása
+Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. Ha nem rendelkezik a Cognitive Services-erőforrás, akkor regisztráljon olyan díjmentes verziója, amely felkínálja 20 tranzakció naponta. A mintaadatok 14 fájlok áll, így a napi lefoglalt feladatpercek többnyire használható a varázsló futtatása után.
 
-Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. A portál előre meghatározott kognitív képességeket biztosít a kép- és szövegelemzéshez. A portálon egy képességcsoport egyetlen forrásmezőn végez műveleteket. Ez kis célnak tűnhet, de az Azure-blobok esetében a blobdokumentum (például egy Word-dokumentum vagy egy PowerPoint-bemutató) legnagyobb részét a `content` mező tartalmazza. Ez a mező tehát nem ideális bemenet, mert egy blob összes tartalma szerepel benne.
+1. Bontsa ki a **csatolása a Cognitive Services** a Cognitive Services API-k resourcing beállításainak megtekintéséhez. Ez az oktatóanyag az alkalmazásában, használhatja a **ingyenes** erőforrás.
 
-Előfordulnak olyan esetek, amikor ki szeretné nyerni a szöveges tartalmat olyan fájlokból, amelyek főleg beolvasott képekből állnak. Ilyenek például a lapolvasók által létrehozott PDF-fájlok. Az Azure Search automatikusan ki tudja nyerni a dokumentum beágyazott képeinek tartalmát. Ehhez jelölje be az **OCR engedélyezése és az összes szöveg egyesítése a merged_content mezőben** elem melletti jelölőnégyzetet. Ez a művelet automatikusan létre fog hozni egy `merged_content` mezőt, amely tartalmazza a dokumentumból kinyert szöveget, valamint a dokumentum beágyazott képeinek szöveges alakját. Ha megadja ezt a beállítást, a `Source data field` értéke `merged_content` lesz.
+  ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
-A **Kognitív képességek hozzáadása** résznél válasszon ki olyan képességeket, amelyek a természetes nyelvek feldolgozását végzik. Ebben a rövid útmutatóban válassza az entitások felismerése lehetőséget a személyekhez, szervezetekhez és helyekhez.
+2. Bontsa ki a **hozzáadása végrehajtott Információbeolvasás** , és válassza ki, amelyek hajtanak végre természetes nyelvi feldolgozási képességek. Ebben a rövid útmutatóban válassza az entitások felismerése lehetőséget a személyekhez, szervezetekhez és helyekhez.
 
-Kattintson az **OK** gombra a definíció elfogadásához.
-   
-  ![A képességcsoport definíciója](./media/cognitive-search-quickstart-blob/skillset.png)
+  ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/skillset.png)
 
-A természetes nyelvi feldolgozási képességek a mintaadatkészletbeli szöveges tartalmakon végeznek műveleteket. Mivel egyetlen képfeldolgozási lehetőséget sem választottunk ki, a mintaadatkészletben szereplő JPEG-fájlok ebben a rövid útmutatóban nem lesznek feldolgozva. 
+  A portál biztosít beépített tudását a OCR feldolgozási és szöveg elemzése. A portálon egy képességcsoport egyetlen forrásmezőn végez műveleteket. Ez kis célnak tűnhet, de az Azure-blobok esetében a blobdokumentum (például egy Word-dokumentum vagy egy PowerPoint-bemutató) legnagyobb részét a `content` mező tartalmazza. Ez a mező tehát nem ideális bemenet, mert egy blob összes tartalma szerepel benne.
+
+3. Folytassa a következő lapra.
+
+  ![Következő oldal index testreszabása](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
+
+> [!NOTE]
+> A természetes nyelvi feldolgozási képességek a mintaadatkészletbeli szöveges tartalmakon végeznek műveleteket. Mivel nem kiválasztjuk a OCR-beállítást, a minta adatkészletben JPEG, PNG és fájlok ebben a rövid útmutatóban nem dolgozható fel. 
 
 ### <a name="step-3-configure-the-index"></a>3. lépés: Az index konfigurálása
 
-Emlékszik még az adatforrással együtt létrehozott indexre? Ebben a lépésben megtekintheti az index sémáját, és a beállítások felülvizsgálatára is lehetősége lesz. 
+A varázsló általában tudja kikövetkeztetni egy alapértelmezett indexet. Ebben a lépésben megtekintheti a létrehozott indexet sémát és potenciálisan a beállítások módosításához. Alább az alapértelmezett index létrejön a bemutató Blob adatkészletében.
 
 Ebben a rövid útmutatóban a varázsló észszerű alapértelmezett beállításokat határoz meg: 
 
-+ Minden egyes indexnek rendelkeznie kell egy névvel. Az adatforrástípus esetében az alapértelmezett név az *azureblob-index*.
++ Alapértelmezés szerint ez *azureblob-index*.
++ Alapértelmezett kulcs *metadata_storage_path* (ezt a mezőt tartalmaz egyedi értékeket).
++ Alapértelmezett adattípusokkal és attribútumokkal a teljes szöveges keresési forgatókönyvek esetén érvényesek.
 
-+ Minden dokumentumnak rendelkeznie kell egy kulccsal. A varázsló egy egyedi értékekkel rendelkező mezőt választ ki. Ebben a rövid útmutatóban a kulcs a *metadata_storage_path*.
+Fontolja meg az elszámolási **lekérhető** származó a `content` mező. Blobok ezt a mezőt, sorok ezer futtathat. Hogyan nehéz lenne megtekintéséhez a tartalom-(nagy erőforrásigényű) fájlok, például a Word-dokumentumok vagy PowerPoint pakli JSON-fájlként a keresési eredmények listájában is tekinthető. 
 
-+ Minden mezőgyűjteménynek rendelkeznie kell az értékeket leíró adatokat tartalmazó mezőkkel, és minden mezőnek rendelkeznie kell olyan indexattribútumokkal, amelyek leírják a mező keresési forgatókönyvbeli szerepét. 
+Mivel megadott egy képességek alkalmazási lehetőségét, a varázsló feltételezi, hogy az eredeti forrás adatmező, valamint a kognitív folyamat által létrehozott kimeneti mezők. Ezért a portál indexmezőket ad a `content`, `people`, `organizations` és `locations` mezőhöz. Figyelje meg, hogy a varázsló automatikusan engedélyezi a **lekérhető** és **kereshető** ezekben a mezőkben. **Kereshető** azt jelzi, hogy a mező kereshető. **Lekérhető** azt jelenti, hogy az eredmények adhatók vissza azt. 
 
-Mivel megadott egy képességcsoportot, a varázsló feltételezi, hogy a forrásadatmezőt és a kimeneti mezőket a képességekkel szeretné létrehozni. Ezért a portál indexmezőket ad a `content`, `people`, `organizations` és `locations` mezőhöz. Figyelje meg, hogy a varázsló az említett mezők esetében automatikusan engedélyezi a Lekérdezhető és Kereshető attribútumot.
+  ![Indexmezők](media/cognitive-search-quickstart-blob/index-fields.png)
+  
+Folytassa a következő lapra.
 
-Az **Index testreszabása** résznél tekintse át a mezők attribútumait, hogy láthassa, a rendszer hogyan használja azokat egy indexben. A Kereshető attribútum azt jelzi, hogy a mező kereshető. A Lekérdezhető attribútum azt jelzi, hogy visszaadható az eredményekben. 
-
-Fontolja meg a Lekérdezhető attribútum törlését a `content` mezőből. A blobokban ez a mező több ezer sort is kitölthet, amely a **Keresési ablakhoz** hasonló eszközökkel nehezen olvasható.
-
-Kattintson az **OK** gombra az index definíciójának elfogadásához.
-
-  ![Indexmezők](./media/cognitive-search-quickstart-blob/index-fields.png)
-
-> [!NOTE]
-> A nem használt mezőket az áttekinthetőség kedvéért levágtuk. A portálon ugyanez a lista több mezővel jelenik meg.
+  ![Következő oldal indexelő létrehozása](media/cognitive-search-quickstart-blob/next-button-create-indexer.png)
 
 ### <a name="step-4-configure-the-indexer"></a>4. lépés: Az indexelő konfigurálása
 
-Az indexelő az indexelési folyamatot irányító magas szintű erőforrás. Ez az erőforrás határozza meg az adatforrás nevét, az indexet és a végrehajtás gyakoriságát. Az **Adatok importálása** varázsló mindig egy indexelőt eredményez, amely ismétlődő jelleggel futtatható.
+Az indexelő az indexelési folyamatot irányító magas szintű erőforrás. Meghatározza az adatforrás nevét, egy célindex és a végrehajtás gyakoriságát. Az **Adatok importálása** varázsló mindig egy indexelőt eredményez, amely ismétlődő jelleggel futtatható.
 
-Az **Indexelő** lapon nevezze el az indexelőt, és az azonnali futtatáshoz használja az alapértelmezett „egyszeri futtatás” lehetőséget. 
+Az a **indexelő** lapon fogadja el az alapértelmezett nevet, és használja a **egyszeri futtatás** azonnal futtatni a beállítással ütemezheti. 
 
-  ![Az indexelő definíciója](./media/cognitive-search-quickstart-blob/indexer-def.png)
+  ![Az indexelő definíciója](media/cognitive-search-quickstart-blob/indexer-def.png)
 
-Az adatok importálásához, bővítéséhez és indexeléséhez kattintson az **OK** gombra.
+Kattintson a **küldés** hozhat létre, és egyszerre is futtathatja az indexelőt.
+
+## <a name="monitor-indexing"></a>A figyelő indexelése
+
+Adatbővítés lépéseket, mint a szokásos szöveges indexelő hosszabb időt vesz igénybe. A varázsló kell nyissa meg az indexelő listát az Áttekintés lapon, hogy nyomon tudja. Önkiszolgáló navigációs sávján keresse az Áttekintés lapon, majd kattintson **indexelők**.
+
+A figyelmeztetés akkor jelenik meg, mert JPG és PNG-fájlok olyan fájlok, kép, és hogy nincs megadva ez a folyamat az optikai Karakterfelismerés szakértelem. Csonkolási értesítéseket is találhat. Az Azure Search korlátozza a kinyerés az ingyenes szinten 32000 karakter hosszúságú lehet.
 
   ![Azure Search-értesítés](./media/cognitive-search-quickstart-blob/indexer-notification.png)
 
-Az indexelés és a bővítés sok időt vehet igénybe, ezért a funkció kipróbálásához kisebb adatkészletek használatát javasoljuk. Az indexelés állapotát az Azure Portal Értesítések területén követheti figyelemmel. 
+Az indexelés és a bővítés sok időt vehet igénybe, ezért a funkció kipróbálásához kisebb adatkészletek használatát javasoljuk. 
 
 ## <a name="query-in-search-explorer"></a>Lekérdezés a Keresési ablakban
 
@@ -176,19 +189,17 @@ Miután az index létrejött, lekérdezéseket küldhet be, amelyek dokumentumok
 
 1. A létrehozott index kiválasztásához kattintson az **Index módosítása** lehetőségre az oldal tetején.
 
-1. Adjon meg egy keresési karakterláncot az index lekérdezéséhez, például: „John F. Kennedy”.
+1. Adja meg a keresési karakterláncot az index lekérdezése például `search=Microsoft&searchFields=organizations`.
 
-A rendszer JSON-formátumban adja vissza az eredményeket, amely különösen az Azure-blobokból származó nagyméretű dokumentumok esetén részletes és nehezen olvasható lehet. 
+A rendszer JSON-formátumban adja vissza az eredményeket, amely különösen az Azure-blobokból származó nagyméretű dokumentumok esetén részletes és nehezen olvasható lehet. Ha az eredményeket nem lehet egyszerűen áttekinteni, a CTRL-F billentyűkombinációval kereshet a dokumentumokban. Ehhez a lekérdezéshez adott feltételek belül a JSON sikerült keresési. 
 
-Ha az eredményeket nem lehet egyszerűen áttekinteni, a CTRL-F billentyűkombinációval kereshet a dokumentumokban. Jelen lekérdezés esetén a JSON-ban a „John F. Kennedy” kifejezésre keresve jelenítheti meg a kifejezés előfordulásait. 
-
-A CTRL-F billentyűkombináció abban is segítségére lehet, hogy meghatározza az egy adott eredményhalmazban szereplő dokumentumok számát. Az Azure-blobok esetében a portál a „metadata_storage_path” kulcsot választja, mert annak minden értéke egyedi a dokumentumban. A CTRL-F billentyűkombinációval keressen a „metadata_storage_path” kifejezésre, amely visszaadja a dokumentumok számát. Jelen lekérdezés esetében két dokumentum tartalmazza a „John F. Kennedy” kifejezést.
+A CTRL-F billentyűkombináció abban is segítségére lehet, hogy meghatározza az egy adott eredményhalmazban szereplő dokumentumok számát. Az Azure-blobok esetében a portál a „metadata_storage_path” kulcsot választja, mert annak minden értéke egyedi a dokumentumban. A CTRL-F billentyűkombinációval keressen a „metadata_storage_path” kifejezésre, amely visszaadja a dokumentumok számát. 
 
   ![Keresési ablak – példa](./media/cognitive-search-quickstart-blob/search-explorer.png)
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Az első bővített indexelési gyakorlat végére ért. Ennek a rövid útmutatónak a célja az volt, hogy bemutassa a legfontosabb alapelveket, és végigvezesse a varázsló lépésein, hogy saját adatait felhasználva gyorsan elkészíthesse egy kognitív keresési megoldás prototípusát.
+Ön teljesítette az első cognitive bővített indexelés gyakorlat. Ennek a rövid útmutatónak a célja az volt, hogy bemutassa a legfontosabb alapelveket, és végigvezesse a varázsló lépésein, hogy saját adatait felhasználva gyorsan elkészíthesse egy kognitív keresési megoldás prototípusát.
 
 Az általunk közvetíteni kívánt legfontosabb alapelvek egyike az Azure-adatforrásoktól való függőség. A kognitív keresési bővítés az indexelőkhöz kötődik, az indexelők pedig Azure- és forrásspecifikusak. Bár ez a rövid útmutató az Azure Blob Storage-ot használja, más Azure-adatforrások használata is lehetséges. További információkért lásd az [indexelők az Azure Search szolgáltatásban történő használatának](search-indexer-overview.md) ismertetését.
 
@@ -206,7 +217,7 @@ Feltéve, hogy mindkét szolgáltatást ugyanabban a csoportban helyezte üzembe
 
 ## <a name="next-steps"></a>További lépések
 
-Az indexeléssel és a bővítéssel tovább kísérletezhet, ha a varázslót más képességekkel és forrás-adatmezőkkel ismételten futtatja. A lépések megismétléséhez törölje az indexelőt, majd hozza létre újra az indexelőt más választott beállításokkal.
+Attól függően, hogy Ön által üzembe helyezett Cognitive Services-erőforrás kísérletezhet az indexelés és a felderítési bővítést lefuttatnia a varázslót a különböző képességek és a forrás adatmezőket. A lépések megismétléséhez törölje az indexelőt, majd hozza létre újra az indexelőt más választott beállításokkal.
 
 + Az **Áttekintés** > **Indexelők** résznél válassza ki a létrehozott indexet, majd kattintson a **Törlés** lehetőségre.
 

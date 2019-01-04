@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f31d995ba4390eb5a893c3ebde49ee4e96e8023
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631481"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021135"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Az Azure Stack PKI-tanúsítványok előkészítése az üzembe helyezési vagy elforgatás használható
 A tanúsítványfájlokat [választott a hitelesítésszolgáltatótól kapott](azure-stack-get-pki-certs.md) kell exportálható és importálható az Azure Stack szemben támasztott követelményeknek megfelelő tulajdonságokkal.
@@ -73,7 +73,14 @@ Nyissa meg a tanúsítványkezelőben MMC-konzolt, és csatlakozzon a helyi szá
 
 1. Válassza ki **Igen, a titkos kulcs exportálását választom**, és kattintson a **tovább**.
 
-1. Az Exportfájlformátum szakaszban jelölje ki **exportálja az összes kiterjesztett tulajdonság** majd **tovább**.
+1. Az Exportfájlformátum szakaszban:
+    
+    - Válassza ki **minden tanúsítvány belefoglalása a tanúsítvány**.  
+    - Válassza ki **exportálja az összes kiterjesztett tulajdonság**.  
+    - Válassza ki **engedélyezése tanúsítvány adatvédelmi**.  
+    - Kattintson a **tovább**.  
+    
+    ![Tanúsítvány exportálása varázslóban a kiválasztott beállítások](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
 1. Válassza ki **jelszó** , és adjon meg egy jelszót a tanúsítványokat. Ne felejtse el ezt a jelszót, mivel üzembehelyezési paraméterként szolgál. Kattintson a **Tovább** gombra.
 
@@ -82,4 +89,5 @@ Nyissa meg a tanúsítványkezelőben MMC-konzolt, és csatlakozzon a helyi szá
 1. Válassza a **Finish** (Befejezés) elemet.
 
 ## <a name="next-steps"></a>További lépések
+
 [PKI-tanúsítványok ellenőrzése](azure-stack-validate-pki-certs.md)

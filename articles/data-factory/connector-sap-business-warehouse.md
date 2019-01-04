@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590330"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022288"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,7 +60,7 @@ SAP Business Warehouse (BW) társított szolgáltatás a következő tulajdonsá
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **SapBw** | Igen |
+| type | A type tulajdonságot kell beállítani: **SapBw** | Igen |
 | kiszolgáló | A kiszolgálóra, amelyen az SAP BW-példány neve. | Igen |
 | systemNumber | Az SAP BW-rendszer rendszer száma.<br/>Érték engedélyezett: kétjegyű tizedes tört egy karakterláncból. | Igen |
 | clientId | Az SAP W rendszerben az ügyfél ügyfél-azonosítója.<br/>Érték engedélyezett: háromjegyű tizedes tört egy karakterláncból. | Igen |
@@ -167,28 +166,28 @@ Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer 
 
 | SAP BW-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
-| ACCP | int |
-| CHAR | Sztring |
-| CLNT | Sztring |
-| PÉNZNEM | tizedes tört |
-| CUKY | Sztring |
-| DEC | tizedes tört |
+| ACCP | Int |
+| CHAR | Karakterlánc |
+| CLNT | Karakterlánc |
+| PÉNZNEM | Tizedes tört |
+| CUKY | Karakterlánc |
+| DEC | Tizedes tört |
 | FLTP | Dupla |
 | INT1 | Bájt |
 | INT2 | Int16 |
-| INT4 | int |
-| NYELV | Sztring |
-| LCHR | Sztring |
+| INT4 | Int |
+| NYELV | Karakterlánc |
+| LCHR | Karakterlánc |
 | LRAW | Byte] |
 | PREC | Int16 |
-| QUAN | tizedes tört |
+| QUAN | Tizedes tört |
 | RAW | Byte] |
 | RAWSTRING | Byte] |
-| STRING | Sztring |
-| EGYSÉG | Sztring |
-| DATS | Sztring |
-| NUMC | Sztring |
-| TIMS | Sztring |
+| STRING | Karakterlánc |
+| EGYSÉG | Karakterlánc |
+| DATS | Karakterlánc |
+| NUMC | Karakterlánc |
+| TIMS | Karakterlánc |
 
 
 ## <a name="next-steps"></a>További lépések

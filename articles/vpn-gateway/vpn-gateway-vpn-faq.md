@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: yushwang
-ms.openlocfilehash: a6390203ecc4ae672f968b19d83eafc8a552ec3a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 7545000e0dda959195d3669da877a77c5bedea40
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994849"
+ms.locfileid: "54002059"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 
@@ -42,7 +42,7 @@ A következő létesítmények közötti kapcsolattípusok támogatottak:
 * Pont–hely kapcsolat – VPN-kapcsolat SSTP (Secure Socket Tunneling Protocol) vagy IKE v2 használatával. Ehhez a kapcsolattípushoz nem szükséges VPN-eszköz. További információ: [Pont–hely kapcsolat](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * Virtuális hálózatok közötti kapcsolat – A helyek közötti kapcsolattal megegyező kapcsolattípus. A virtuális hálózatok közötti kapcsolat egy IPsec-et (IKE v1 és IKE v2) használó VPN-kapcsolat, nem szükséges hozzá VPN-eszköz. További információ: [Virtuális hálózatok közötti kapcsolat](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 * Többhelyes kapcsolat – Ez a helyek közötti kapcsolat egy változata, amely több helyszíni hely csatlakoztatását teszi lehetővé egy virtuális hálózathoz. További információ: [Többhelyes kapcsolat](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
-* ExpressRoute – Az ExpressRoute közvetlen kapcsolatot biztosít az Azure-ral WAN-on (nem egy VPN-kapcsolattal a nyilvános interneten) keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
+* ExpressRoute – ExpressRoute származik, privát kapcsolatot az Azure-bA a WAN, nem a nyilvános interneten keresztül VPN-kapcsolatot. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
 
 További információk a VPN Gateway-kapcsolatokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 

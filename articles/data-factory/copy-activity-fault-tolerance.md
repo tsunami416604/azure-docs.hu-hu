@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f207cdb3af3f7e328cd5843053240bbbe15980e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f1a40c09c2d08eddedd3b6b51d2a138ec403f6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418343"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014913"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége a hibatűrés
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,15 +34,15 @@ A másolási tevékenység, a rendszer kihagyja, és nem kompatibilis adatok nap
 
 - **Az adattípusra és a fogadó nativní typ között inkompatibilitás**. 
 
-    Példa: adatok másolása Blob storage-ban CSV-fájlból egy SQL Database egy séma-definícióval, amely három INT típusú oszlopokat tartalmaz. A numerikus adatok, például 123,456,789 tartalmazó CSV-fájl sorok sikeresen lesz másolva a fogadótároló. Azonban 123,456, például a nem numerikus értékeket tartalmazó sorok abc észlelhetők a nem kompatibilis, és a rendszer kihagyja.
+    Példa: Adatok másolása Blob storage-ban CSV-fájlból egy SQL Database egy séma-definícióval, amely három INT típusú oszlopokat tartalmaz. A numerikus adatok, például 123,456,789 tartalmazó CSV-fájl sorok sikeresen lesz másolva a fogadótároló. Azonban 123,456, például a nem numerikus értékeket tartalmazó sorok abc észlelhetők a nem kompatibilis, és a rendszer kihagyja.
 
 - **A forrás és a fogadó oszlopok száma nem egyezik**.
 
-    Példa: adatok másolása Blob storage-ban CSV-fájlból egy SQL Database egy séma-definícióval, amely hat oszlopokat tartalmazza. A hat oszlopokat tartalmazó CSV-fájl sorok sikeresen lesz másolva a fogadótároló. Több vagy kevesebb, mint 6 oszlopokat tartalmazó CSV-fájl sorok észlelhetők a nem kompatibilis, és a rendszer kihagyja.
+    Példa: Adatok másolása Blob storage-ban CSV-fájlból egy SQL Database egy séma-definícióval, amely hat oszlopokat tartalmazza. A hat oszlopokat tartalmazó CSV-fájl sorok sikeresen lesz másolva a fogadótároló. Több vagy kevesebb, mint 6 oszlopokat tartalmazó CSV-fájl sorok észlelhetők a nem kompatibilis, és a rendszer kihagyja.
 
 - **Elsődleges kulcsok protokollmegsértési írásakor az SQL Server vagy az Azure SQL Database vagy az Azure Cosmos DB**.
 
-    Példa: adatok másolása az SQL-kiszolgáló SQL-adatbázishoz. A fogadó SQL database-ben meg van adva egy elsődleges kulcs, de nincs ilyen elsődleges kulcs van definiálva a forrás SQL-kiszolgálón. A duplikált sorokat, amelyek szerepelnek a forrás nem lehet másolni a fogadó. Másolási tevékenység az adatok csak az első sor mobilkészülékét a lefolyóba másol. Az ismétlődő elsődleges kulcs értékét a következő forrás a sorokat észlelhetők a nem kompatibilis, és a rendszer kihagyja.
+    Példa: Adatmásolás az SQL-kiszolgáló SQL-adatbázishoz. A fogadó SQL database-ben meg van adva egy elsődleges kulcs, de nincs ilyen elsődleges kulcs van definiálva a forrás SQL-kiszolgálón. A duplikált sorokat, amelyek szerepelnek a forrás nem lehet másolni a fogadó. Másolási tevékenység az adatok csak az első sor mobilkészülékét a lefolyóba másol. Az ismétlődő elsődleges kulcs értékét a következő forrás a sorokat észlelhetők a nem kompatibilis, és a rendszer kihagyja.
 
 >[!NOTE]
 >- Az adatok betöltése az SQL Data Warehouse-bA a PolyBase, beállításokat kell megadni a PolyBase a natív tartalék tolerancia visszautasítási szabályzatokat megadásával "[kapcsolódó polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" a másolási tevékenység. Átirányítás a PolyBase inkompatibilis sorok Blobhoz vagy a szokásos módon, ahogy az alábbi ADLS továbbra is engedélyezheti.

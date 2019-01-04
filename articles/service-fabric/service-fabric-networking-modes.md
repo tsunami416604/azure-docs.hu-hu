@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866066"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024790"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
@@ -35,7 +35,7 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
 
 ## <a name="set-up-open-networking-mode"></a>Nyissa meg a hálózati mód beállítása
 
-1. Az Azure Resource Manager-sablon beállítása. Az a **fabricSettings** szakaszban, a DNS-szolgáltatás és az IP-szolgáltató engedélyezése: 
+1. Az Azure Resource Manager-sablon beállítása. Az a **fabricSettings** szakasz a fürterőforrás engedélyezi a DNS-szolgáltatás és az IP-szolgáltató: 
 
     ```json
     "fabricSettings": [
@@ -77,8 +77,10 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
                 }
             ],
     ```
+    
+2. Állítsa be a hálózati profil szakaszt a Virtual Machine Scale Set erőforrás. Ez lehetővé teszi a több IP-címmel kell konfigurálni a fürt mindegyik csomópontján. Az alábbi példában öt IP-cím / Windows/Linux Service Fabric-fürt csomópontja beállítja. Minden egyes csomóponton porton öt szolgáltatáspéldányok rendelkezhet. Ahhoz, hogy érhető el az Azure Load Balancerhez öt IP-cím, regisztrálni az Azure Load Balancer Háttércímkészlethez öt IP-cím alább látható módon.  A program programra kíván, a sablon a változók szakaszban elejéhez adja hozzá a változókat.
 
-2. Állítsa be a hálózati profil szakaszt, hogy több IP-címmel kell konfigurálni a fürt mindegyik csomópontján. Az alábbi példában öt IP-cím / Windows/Linux Service Fabric-fürt csomópontja beállítja. Minden egyes csomóponton porton öt szolgáltatáspéldányok rendelkezhet. Ahhoz, hogy érhető el az Azure Load Balancerhez öt IP-cím, regisztrálni az Azure Load Balancer Háttércímkészlethez öt IP-cím alább látható módon.
+    Ez a szakasz hozzá változókat:
 
     ```json
     "variables": {
@@ -97,6 +99,11 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]"
     }
+    ```
+    
+    Ez a szakasz a Virtual Machine Scale Set erőforrás adja hozzá:
+
+    ```json   
     "networkProfile": {
                 "networkInterfaceConfigurations": [
                   {

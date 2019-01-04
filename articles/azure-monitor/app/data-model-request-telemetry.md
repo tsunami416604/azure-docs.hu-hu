@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 45289a972854237d0b6848e796d40305d9321113
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 91f6254fe756f256a2c88429fb4d96156867ef4a
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812083"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001906"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelmek telemetriai adatai: Application Insights-adatmodell
 
@@ -84,4 +84,4 @@ Tudjon meg több a kérés eredménye kód és az állapotkódot az [blogbejegyz
 - [A kérelem egyéni telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
 - Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
 - Ismerje meg, hogyan [konfigurálhatja az ASP.NET Core](../../azure-monitor/app/asp-net.md) alkalmazáshoz az Application insights segítségével.
-- Tekintse meg [platformok](../../application-insights/app-insights-platforms.md) Application Insights által támogatott.
+- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.

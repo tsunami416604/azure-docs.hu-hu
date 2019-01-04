@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2c5a584bd5c235eb143c8e1911006aa6e142ff0d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605636"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001515"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
 Machine Learning szolgáltatások a HDInsight a tárolási megoldások széles megőrizni az adatokat, kódok vagy objektumokat, amelyek az elemzési eredményeket. Ezek közé tartozik a következő beállításokat:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Az Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
+- [Az Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Az Azure File storage](https://azure.microsoft.com/services/storage/files/)
 
 Lehetősége is van, több Azure storage-fiókok és -tárolót a HDInsight-fürt eléréséhez. Az Azure File storage az kényelmes adatok tárolási lehetőség használatra az élcsomóponton, amely lehetővé teszi, hogy egy, az Azure Storage-fájlmegosztás csatlakoztatása például a Linux-fájlrendszer. De Azure-fájlmegosztások csatlakoztatva van, és bármilyen, amely rendelkezik egy támogatott operációs rendszert, például a Windows vagy Linux rendszert használják. 

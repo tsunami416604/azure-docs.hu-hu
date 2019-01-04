@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b38db71e624d32e7a4a532181a374edb13f13fbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237859"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021934"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Cassandra-fürt futtatásához az Azure-ban Node.js linuxon
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Tekintse meg a Resource Manager-sablonokkal [Datastax Enterprise](https://azure.microsoft.com/documentation/templates/datastax) és [a Spark-fürt és a Cassandra futtatása CentOS](https://azure.microsoft.com/documentation/templates/spark-and-cassandra-on-centos/).
 
 ## <a name="overview"></a>Áttekintés
-Microsoft Azure egy nyílt felhőplatform, amely futtatja a Microsoft és a nem Microsofttól származó, amely tartalmazza az operációs rendszerek, alkalmazáskiszolgálók, üzenetkezelési közbenső szoftverek, valamint az SQL és a NoSQL-adatbázisok mindkét kereskedelmi és nyílt forráskódú modellből a. A nyilvános felhők – köztük az Azure rugalmas szolgáltatások gondos tervezést és igényel szándékos architektúra mindkét alkalmazáskiszolgálók jól tárolási rétegek szerint. A Cassandra elosztott tároló-architektúra természetes módon segít a magas rendelkezésre állású, hibatűrő fürt hibák rendszereket. Cassandra a felhőbeli skálázással cassandra.apache.org, az Apache Software Foundation által kezelt NoSQL-adatbázis. Cassandra Java nyelven van megírva. Így futtatja a Windows és Linux platformokon is.
+Microsoft Azure egy nyílt felhőplatform, amely a Microsoft és nem Microsoft szoftvert is fut a. A szoftver tartalmazza az operációs rendszerek, alkalmazáskiszolgálók, üzenetkezelési közbenső szoftverek, valamint az SQL és a NoSQL-adatbázisok mindkét kereskedelmi és nyílt forráskódú modellből. A nyilvános felhők – köztük az Azure rugalmas szolgáltatások gondos tervezést és igényel szándékos architektúra mindkét alkalmazáskiszolgálók jól tárolási rétegek szerint. A Cassandra elosztott tároló-architektúra természetes módon segít a magas rendelkezésre állású, hibatűrő fürt hibák rendszereket. Cassandra a felhőbeli skálázással cassandra.apache.org, az Apache Software Foundation által kezelt NoSQL-adatbázis. Cassandra Java nyelven van megírva. Így futtatja a Windows és Linux platformokon is.
 
-Ez a cikk célja, hogy megjelenítése a Cassandra üzembe helyezése az ubuntu rendszeren, amely használja az Azure Virtual Machines és a virtuális hálózatok egy vagy több data center fürtként. A fürt üzembe helyezésének optimalizált éles számítási feladatok esetében ez a cikk hatókörén kívül esik, mivel több lemez csomópont-konfiguráció, megfelelő körgyűrűs topológia tervezési és a szükséges replikációs, az adatkonzisztencia, átviteli sebességet és nagy adatmodellezési rendelkezésre állási követelmények vonatkoznak.
+Ez a cikk célja, hogy megjelenítése a Cassandra üzembe helyezése az ubuntu rendszeren, amely használja az Azure Virtual Machines és a virtuális hálózatok egy vagy több data center fürtként. A fürt üzembe helyezésének optimalizált éles számítási feladatokra az ebben a cikkben hatókörén kívül esik, mert több lemez csomópont-konfiguráció megfelelő körgyűrűs topológia tervezési és támogatja a szükséges replikációs, az adatkonzisztencia, az átviteli sebesség, adatmodellezést igényel és magas rendelkezésre állással.
 
-Ez a cikk vesz igénybe, egy alapvető megközelítés mi megjeleníthető részt vesz a Cassandra-fürt létrehozása a Docker, Chef vagy Puppet, amely megkönnyítheti az infrastruktúra telepítése sokkal képest.  
+Ez a cikk egy alapvető megközelítés megjelenítéséhez a Cassandra-fürt, mint a korábban megszokott Docker, a Chef vagy Puppet épületben vesz részt vesz igénybe. Ez a megközelítés megkönnyítheti az infrastruktúra telepítése sokkal.
 
 ## <a name="the-deployment-models"></a>Az üzembe helyezési modellek
-A Microsoft Azure-hálózatkezelés lehetővé teszi, hogy a központi telepítését, amelyek a hozzáférés korlátozható részletes hálózati biztonság megvalósítása érdekében elkülönített privát fürtök.  Mivel ez a cikk a Cassandra üzembe helyezése alkalmazáskészítés megjelenítésével kapcsolatos, a konzisztencia szintjét, és az átviteli sebességet optimális tároló-kialakításában, nem koncentrálhat. A következő hálózati követelményei a elméleti fürt listáját:
+A Microsoft Azure-hálózatkezelés lehetővé teszi, hogy a központi telepítését, amelyek a hozzáférés korlátozható részletes hálózati biztonság megvalósítása érdekében elkülönített privát fürtök. Mivel ez a cikk a Cassandra üzembe helyezése alkalmazáskészítés megjelenítésével kapcsolatos, a konzisztencia szintjét, és az átviteli sebességet optimális tároló-kialakításában, nem koncentrálhat. A következő hálózati követelményei a elméleti fürt listáját:
 
 * Külső rendszerek nem tudnak hozzáférni a Cassandra-adatbázis belül vagy kívül Azure
 * Cassandra-fürtjére azt thrift-forgalom egy terheléselosztó mögött kell
@@ -47,9 +47,9 @@ A Microsoft Azure-hálózatkezelés lehetővé teszi, hogy a központi telepít�
 Cassandra telepíthető egy adott Azure-régióban, vagy több régióban a számítási feladatok elosztott jellege alapján. Többrégiós üzembe helyezési modell használatával szolgálja ki a végfelhasználók számára közelebb, hogy egy adott térségen Cassandra ugyanazon az infrastruktúrán keresztül. Cassandra a beépített csomópont replikációs veszi fel kell foglalkozni a szinkronizálást az több főkiszolgálós ír, több adatközpontot származó, és megadja az adatok az alkalmazások konzisztens nézetét. Többrégiós üzembe helyezés a kockázatcsökkentés a szélesebb körű támogatásban részesülnek az Azure szolgáltatás-kimaradások, az segíthet is. A Cassandra hangolható konzisztencia és a replikációs topológia segítségével az alkalmazások különböző RPO igényeinek kielégítésében.
 
 ### <a name="single-region-deployment"></a>Egyetlen régióban történő üzembe helyezés
-Most egy egyetlen régióban történő üzembe helyezés kezdődhet, és gyűjtsön a tapasztalatainkat többrégiós modell létrehozásához. Az Azure virtuális hálózatok segítségével elkülönített alhálózatok létrehozására, hogy a fent említett hálózati biztonsági követelmények is kielégíthetők.  Az egyetlen régióban történő üzembe helyezés létrehozása ismertetett folyamatot Ubuntu 14.04 LTS és a Cassandra 2.08 használja. Azonban a folyamat is könnyen elfogadni Linux variantní hodnoty. Az alábbiakban néhány szisztematikus módszert, az egyetlen régióban történő üzembe helyezés.  
+Most egy egyetlen régióban történő üzembe helyezés kezdődhet, és gyűjtsön a tapasztalatainkat többrégiós modell létrehozásához. Az Azure virtuális hálózatok segítségével elkülönített alhálózatok létrehozására, hogy a fent említett hálózati biztonsági követelmények is kielégíthetők. Az egyetlen régióban történő üzembe helyezés létrehozása ismertetett folyamatot Ubuntu 14.04 LTS és a Cassandra 2.08 használja. Azonban a folyamat is könnyen elfogadni Linux variantní hodnoty. Az alábbiakban néhány szisztematikus módszert, az egyetlen régióban történő üzembe helyezés.
 
-**Magas rendelkezésre állás:** a Cassandra-csomópontokat az 1. ábráján látható két rendelkezésre állási csoportot telepített, hogy a csomópontokon futó magas rendelkezésre állás érdekében több tartalék tartomány között. Az egyes rendelkezésre állási feliratozva virtuális gépek 2 hibatűrési tartományt van leképezve. Az Azure a tartalék tartomány fogalmát kezelheti a nem tervezett leállás (például a hardver- vagy hibák) használja. A frissítési tartomány (például gazdagép vagy vendég operációs rendszer javítási/frissítése, alkalmazásfrissítések) fogalmát ütemezett üzemszünet kezelésére szolgál. Lásd: [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](https://msdn.microsoft.com/library/dn251004.aspx) a szerepkör a hibatűrési és frissítési tartományok magas rendelkezésre állás eléréséhez.
+**Magas rendelkezésre állás:** A Cassandra-csomópontokat az 1. ábráján látható két rendelkezésre állási csoportot telepített, hogy a csomópontokon futó magas rendelkezésre állás érdekében több tartalék tartomány között. Az egyes rendelkezésre állási feliratozva virtuális gépek 2 hibatűrési tartományt van leképezve. Az Azure a tartalék tartomány fogalmát kezelheti a nem tervezett leállás (például a hardver- vagy hibák) használja. A frissítési tartomány (például gazdagép vagy vendég operációs rendszer javítási/frissítése, alkalmazásfrissítések) fogalmát ütemezett üzemszünet kezelésére szolgál. Lásd: [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](https://msdn.microsoft.com/library/dn251004.aspx) a szerepkör a hibatűrési és frissítési tartományok magas rendelkezésre állás eléréséhez.
 
 ![Egyetlen régióban történő üzembe helyezés](./media/cassandra-nodejs/cassandra-linux1.png)
 
@@ -57,15 +57,15 @@ Most egy egyetlen régióban történő üzembe helyezés kezdődhet, és gyűjt
 
 Vegye figyelembe, hogy a cikk írásának időpontjában Azure nem engedélyezi egy adott tartalék tartomány; a virtuális gépek csoportjai explicit leképezése Ennek következtében akár az üzemi modellel 1. ábráján látható, valószínű statisztikailag, hogy a virtuális gépek négy helyett két tartalék tartomány lehet rendelni.
 
-**Betöltés terheléselosztás Thrift forgalom:** Thrift-ügyfélkódtárak belül a webalkalmazás-kiszolgáló csatlakozzon a fürthöz egy belső terheléselosztón keresztül. Ehhez szükséges, hogy a belső terheléselosztó hozzáadása az "adatok" alhálózathoz (lásd az 1. ábra) a Cassandra-fürt üzemeltető felhőszolgáltatás keretében. Miután a belső terheléselosztó van definiálva, minden csomópont szükséges az elosztott terhelésű végpontot hozzá kell a megjegyzések, elosztott terhelésű készlet a korábban meghatározott terheléselosztó neve. Lásd: [Azure Internal Load Balancing ](../../../load-balancer/load-balancer-internal-overview.md)további részletekért.
+**Terheléselosztás Thrift-forgalmat:** A webkiszolgáló belül Thrift-ügyfélkódtárak csatlakozzon a fürthöz egy belső terheléselosztón keresztül. Ehhez szükséges, hogy a belső terheléselosztó hozzáadása az "adatok" alhálózathoz (lásd az 1. ábra) a Cassandra-fürt üzemeltető felhőszolgáltatás keretében. Miután a belső terheléselosztó van definiálva, minden csomópont szükséges az elosztott terhelésű végpontot hozzá kell a megjegyzések, elosztott terhelésű készlet a korábban meghatározott terheléselosztó neve. Lásd: [Azure Internal Load Balancing ](../../../load-balancer/load-balancer-internal-overview.md)további részletekért.
 
-**Fürt magok:** fontos, hogy válassza ki a magok, a magas rendelkezésre állású legtöbb csomópont, amint az új csomópontok kommunikálni magcsomópontok feltérképezi a fürt. Egyes rendelkezésre állási csoport egy csomópont magcsomópontok kijelölt rendszerkritikus meghibásodási pontot elkerülése érdekében.
+**Fürt magok:** Fontos, az új csomópontok kommunikálni magcsomópontok feltérképezi a fürt magok, a magas rendelkezésre állású legtöbb csomópont jelöli. Egyes rendelkezésre állási csoport egy csomópont magcsomópontok kijelölt rendszerkritikus meghibásodási pontot elkerülése érdekében.
 
-**Replikációs tényező és a Konzisztenciaszint:** Cassandra a beépített magas rendelkezésre állású és az adatok tartóssága jellemzi a replikációs tényező (RF – minden sorban a fürtön tárolt adatmásolatok száma) és a konzisztencia szintjét (replikák száma lehet írt vagy olvasott az eredmény a hívónak való visszatérés előtt). Replikációs tényező van megadva KULCSTÉR (hasonlóan egy relációs adatbázishoz) létrehozása közben, mivel a konzisztenciaszint van megadva a CRUD-lekérdezés elküldése során. Cassandra-dokumentációban, megtekintéséhez [konzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) konzisztencia részleteket és a képlet kvórum törölje a számításhoz.
+**Replikációs tényező és a Konzisztenciaszint:** A replikációs tényező (RF – minden sorban a fürtön tárolt adatmásolatok száma) az egyes Cassandra a beépített magas rendelkezésre állású és az adatok tartóssága és a konzisztencia szintjét (kell az írt vagy olvasott előtt a hívónak az eredményt visszaadó replikák száma). Replikációs tényező van megadva KULCSTÉR (hasonlóan egy relációs adatbázishoz) létrehozása közben, mivel a konzisztenciaszint van megadva a CRUD-lekérdezés elküldése során. Cassandra-dokumentációban, megtekintéséhez [konzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) konzisztencia részleteket és a képlet kvórum törölje a számításhoz.
 
 Cassandra integritás adatmodellek – konzisztencia és a végleges konzisztencia; két típusát támogatja. a replikációs tényező és a Konzisztenciaszint együtt, hogy az adatok egységes, amint kész vagy a végül konzisztens egy írási művelet. Például adja meg a KVÓRUMA, a Konzisztenciaszint mindig biztosítja, hogy az adatok konzisztenciájának során bármilyen konzisztenciaszint alább a KVÓRUM (például egy) eléréséhez szükség szerint írandó replikák száma eredményez folyamatban van a végül konzisztens adatokat.
 
-A 8 csomópontos fürt látható a fenti 3 és KVÓRUM replikációs tényezőt (2 csomópont vannak olvasása vagy írása a konzisztencia) olvasási/írási konzisztencia szintjét, a replikáció csoportonként legfeljebb 1 csomópontos elméleti elvesztését hibatűrését okainak alkalmazás indítása előtt a Hiba történt. A parancs feltételezi, hogy a kulcs tárolóhelyek jól kiegyensúlyozott rendelkezik az összes olvasási/írási kérelmek.  Az üzembe helyezett fürt használt paraméterek a következők:
+A 8 csomópontos fürt látható a fenti 3 és KVÓRUM replikációs tényezőt (2 csomópont vannak olvasása vagy írása a konzisztencia) olvasási/írási konzisztencia szintjét, a replikáció csoportonként legfeljebb 1 csomópontos elméleti elvesztését hibatűrését okainak alkalmazás indítása előtt a Hiba történt. A parancs feltételezi, hogy a kulcs tárolóhelyek jól kiegyensúlyozott rendelkezik az összes olvasási/írási kérelmek. Az üzembe helyezett fürt használt paraméterek a következők:
 
 Egyetlen régió Cassandra fürtkonfiguráció:
 
@@ -78,29 +78,29 @@ Egyetlen régió Cassandra fürtkonfiguráció:
 | Replikációs stratégia |Lásd a NetworkTopologyStrategy [adatreplikáció](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) Cassandra dokumentációjában talál további információt a |Tisztában van azzal az üzembe helyezési topológiát és a replikák helyezi a csomópontokon, hogy minden replika végül nem a azonos állvány a |
 | Snitch |Lásd a GossipingPropertyFileSnitch [kapcsolók](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) Cassandra dokumentációjában talál további információt a |NetworkTopologyStrategy snitch egy fogalom megértéséhez a topológia használ. GossipingPropertyFileSnitch az egyes csomópontok leképezése adatközpont- és állványalapú nagyobb ellenőrzést biztosít. A fürt pletykákat használja fel ezeket az információkat propagálása. Ez a jóval egyszerűbb viszonyított PropertyFileSnitch dinamikus IP-beállításai |
 
-**Cassandra-fürt Azure szempontjai:** Microsoft Azure Virtual Machines képesség használja az Azure Blob storage lemezek adatmegőrzési állapota; Az Azure Storage menti a nagyfokú tartósság az egyes lemezek három replikával. Ez azt jelenti, hogy minden egyes sorához egy Cassandra táblába beszúrt adatokat már tárolták a három replika készül. Ezért az adatkonzisztencia már elvégzi, akkor is, ha a replikációs tényező (RF) 1. 1 folyamatban replikációs tényező fő problémája, hogy az alkalmazás állásidő észlel, akkor is, ha egy Cassandra egyetlen csomópont meghibásodik. Azonban ha egy csomópont nem működik a ismeri fel az Azure Fabric Controller problémákat (például hardverek, szoftverek rendszerhibák), helyezi üzembe a segítségével az ugyanazon tárolóeszközöket helyére egy új csomópont. A régi helyett egy új csomópont kiépítése néhány percig is eltarthat.  Hasonlóképpen tervezett karbantartási tevékenységek például a vendég operációs rendszer módosításokat, Cassandra frissíti, és alkalmazások módosítására az Azure Fabric Controller végrehajtja a működés közbeni frissítés a csomópontok a fürtben.  A működés közbeni frissítés is is igénybe vehet néhány csomópont le egy időben, és ezért a fürt tapasztalhat néhány partíciók rövid idejű leállást. Azonban az adatok nem vesznek el, a beépített Azure-tárhely-redundancia miatt.  
+**Cassandra-fürt Azure szempontjai:** A Microsoft Azure Virtual Machines képesség használja az Azure Blob storage lemezek adatmegőrzési állapota; Az Azure Storage menti a nagyfokú tartósság az egyes lemezek három replikával. Ez azt jelenti, hogy minden egyes sorához egy Cassandra táblába beszúrt adatokat már tárolták a három replika készül. Ezért az adatkonzisztencia már elvégzi, akkor is, ha a replikációs tényező (RF) 1. 1 folyamatban replikációs tényező fő problémája, hogy az alkalmazás állásidő észlel, akkor is, ha egy Cassandra egyetlen csomópont meghibásodik. Azonban ha egy csomópont nem működik a ismeri fel az Azure Fabric Controller problémákat (például hardverek, szoftverek rendszerhibák), helyezi üzembe a segítségével az ugyanazon tárolóeszközöket helyére egy új csomópont. A régi helyett egy új csomópont kiépítése néhány percig is eltarthat. Hasonlóképpen tervezett karbantartási tevékenységek például a vendég operációs rendszer módosításokat, Cassandra frissíti, és alkalmazások módosítására az Azure Fabric Controller végrehajtja a működés közbeni frissítés a csomópontok a fürtben. A működés közbeni frissítés is is igénybe vehet néhány csomópont le egy időben, és ezért a fürt tapasztalhat néhány partíciók rövid idejű leállást. Azonban az adatok nem vesznek el, a beépített Azure-tárhely-redundancia miatt.
 
-Üzembe helyezni az Azure magas rendelkezésre állást nem igénylő rendszerek (például körülbelül 99,9 ami egyenértékű 8.76 óra/év; lásd: [magas rendelkezésre állású](http://en.wikipedia.org/wiki/High_availability) részletekért) lehet futtatni, hogy RF = 1 és a Konzisztenciaszint = egyet.  Az alkalmazások magas rendelkezésre állással, RF = 3, és a Konzisztenciaszint = KVÓRUM eltűr egyik a replikákat az egyik csomópont lefelé idején. RF = 1, a hagyományos központi telepítések (például a helyszínen) a problémák, mint például a lemezek meghibásodása eredő esetleges adatvesztés miatt nem használható.   
+Üzembe helyezni az Azure magas rendelkezésre állást nem igénylő rendszerek (például körülbelül 99,9 ami egyenértékű 8.76 óra/év; lásd: [magas rendelkezésre állású](http://en.wikipedia.org/wiki/High_availability) részletekért) lehet futtatni, hogy RF = 1 és a Konzisztenciaszint = egyet. Az alkalmazások magas rendelkezésre állással, RF = 3, és a Konzisztenciaszint = KVÓRUM eltűr egyik a replikákat az egyik csomópont lefelé idején. RF = 1, a hagyományos központi telepítések (például a helyszínen) a problémák, mint például a lemezek meghibásodása eredő esetleges adatvesztés miatt nem használható.
 
 ## <a name="multi-region-deployment"></a>Többrégiós fejlesztés
 A több régióból álló üzemelő bármilyen külső eszköz nélkül segít a Cassandra a data-center-kompatibilis replikáció és a konzisztencia modell a fent leírt. Ez különbözik a hagyományos relációs adatbázisoktól, a telepítő az adatbázis-tükrözés több főkiszolgálós írási műveletek számára bonyolult lehet. A használati forgatókönyvek, többek között a forgatókönyvek a több régióban a telepítő a Cassandra segítséget:
 
-**Közelségi alapú üzembe helyezési:** több-bérlős alkalmazások, törölje a bérlő felhasználók hozzárendelése-a-régió, is származott, által a többrégiós fürt alacsony késés érdekében. Ha például egy learning oktatási intézmények számára a felügyeleti rendszerek kiszolgálása a megfelelő most az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA régiókban elosztott fürtöt is telepíthet tranzakciós és analitikai. Az adatok az idő írások és olvasások: lehet helyileg egységes és végül konzisztens mindkét a régiók között elosztva. További példák, például a telepítési adathordozó, e-kereskedelmi és bármit és mindent, ami a koncentrált földrajzi felhasználói alap szolgálja ki az e-alapú üzemi modell hasznosnak találta az esetben.
+**Közelségi alapú telepítés:** Több-bérlős alkalmazások, a bérlő felhasználói egyértelmű leképezés-a-régió, is származott, által a többrégiós fürt alacsony késés érdekében. Ha például egy learning oktatási intézmények számára a felügyeleti rendszerek kiszolgálása a megfelelő most az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA régiókban elosztott fürtöt is telepíthet tranzakciós és analitikai. Az adatok az idő írások és olvasások: lehet helyileg egységes és végül konzisztens mindkét a régiók között elosztva. További példák, például a telepítési adathordozó, e-kereskedelmi és bármit és mindent, ami a koncentrált földrajzi felhasználói alap szolgálja ki az e-alapú üzemi modell hasznosnak találta az esetben.
 
-**Magas rendelkezésre állás:** redundancia kulcsfontosságú tényező, hardver- és magas rendelkezésre állás eléréséhez; a Microsoft Azure-on épület megbízható felhőalapú rendszerek részleteket talál. A Microsoft Azure-ban a csak megbízható igaz redundancia megvalósításának módja egy többrégiós fürt üzembe helyezésével. Alkalmazások telepíthetők egy aktív – aktív vagy aktív – passzív módban, és a egy régiót nem működik, ha az Azure Traffic Manager forgalom átirányíthatja az aktív terület.  Az egyetlen régióban üzemelő, ha a rendelkezésre állás 99,9, a két-régióban történő üzembe helyezés el tud érni a képlettel kiszámított 99.9999 a rendelkezésre állási: (1-(1-0.999) * (1 – 0.999)) * 100); olvassa el a fenti részleteiről.
+**Magas rendelkezésre állás:** A redundancia egy kulcsfontosságú tényező szoftverek és hardverek; magas rendelkezésre állás elérése információt talál a Microsoft Azure épület megbízható felhőalapú rendszerek. A Microsoft Azure-ban a csak megbízható igaz redundancia megvalósításának módja egy többrégiós fürt üzembe helyezésével. Alkalmazások telepíthetők egy aktív – aktív vagy aktív – passzív módban, és a egy régiót nem működik, ha az Azure Traffic Manager forgalom átirányíthatja az aktív terület. Az egyetlen régióban üzemelő Ha a rendelkezésre állás 99,9, a két-régióban történő üzembe helyezés el tud érni a képlettel kiszámított 99.9999 a rendelkezésre állási: (1-(1-0.999) * (1 – 0.999)) * 100); olvassa el a fenti részleteiről.
 
-**Vész-helyreállítási:** többrégiós Cassandra-fürt megfelelően ki tudja szolgálni, ha képes elviselni katasztrofális data center valamilyen okból kimaradás lép. Ha egy adott régióban nem működik, a más régióban üzembe helyezett alkalmazás megkezdheti a végfelhasználók kiszolgálása. Mint bármely más üzleti folytonossági megvalósításokhoz az alkalmazás nem lehet az adatokat a aszinkron folyamat eredő adatvesztést a hibatűrő. Azonban Cassandra lehetővé teszi a helyreállítást, mint a hagyományos adatbázis helyreállítási folyamatok által igénybe vett idő sokkal zavartalanabbá. 2. ábra nyolc csomóponttal rendelkező tipikus többrégiós üzembe helyezési modelljét mutatja az egyes régiókban. Mindkét régióban ugyanahhoz a szimmetrikus; minden más tükrözött képek valós tervek attól függ, a számításifeladat-típust (például tranzakciós vagy elemző), a helyreállítási Időkorlát, a RTO, a adatkonzisztencia és a rendelkezésre állási követelmények vonatkoznak.
+**Vész-helyreállítási:** Többrégiós Cassandra-fürt megfelelően ki tudja szolgálni, ha képes elviselni katasztrofális data center valamilyen okból kimaradás lép. Ha egy adott régióban nem működik, a más régióban üzembe helyezett alkalmazás megkezdheti a végfelhasználók kiszolgálása. Mint bármely más üzleti folytonossági megvalósításokhoz az alkalmazás nem lehet az adatokat a aszinkron folyamat eredő adatvesztést a hibatűrő. Azonban Cassandra lehetővé teszi a helyreállítást, mint a hagyományos adatbázis helyreállítási folyamatok által igénybe vett idő sokkal zavartalanabbá. 2. ábra nyolc csomóponttal rendelkező tipikus többrégiós üzembe helyezési modelljét mutatja az egyes régiókban. Mindkét régióban ugyanahhoz a szimmetrikus; minden más tükrözött képek valós tervek attól függ, a számításifeladat-típust (például tranzakciós vagy elemző), a helyreállítási Időkorlát, a RTO, a adatkonzisztencia és a rendelkezésre állási követelmények vonatkoznak.
 
 ![Több régióban történő üzembe helyezés](./media/cassandra-nodejs/cassandra-linux2.png)
 
-2. ábra: Több régióban a Cassandra üzembe helyezése
+2. ábra: Többrégiós a Cassandra üzembe helyezése
 
 ### <a name="network-integration"></a>Hálózat-integráció
 Csoportok magánhálózatokon található két régióban üzembe helyezett virtuális gépek egymáshoz VPN-alagút használatával kommunikál. A VPN-alagút a hálózat üzembe helyezési folyamat során létesített két szoftverfrissítési átjáró csatlakozik. Mindkét régióban van a hasonló hálózati architektúra szempontjából a "webes" és "adatok" alhálózatok; Az Azure-hálózatok lehetővé teszi, hogy igény szerint annyi alhálózatok létrehozásának és ACL-ek alkalmazása a hálózati biztonság igény szerint. A fürt topológia tervezésekor többek data center kommunikációs késés és a hálózati forgalmat kell figyelembe venni a gazdasági hatásáról.
 
 ### <a name="data-consistency-for-multi-data-center-deployment"></a>Adatkonzisztencia több adatközpontban üzembe helyezéshez
 Az elosztott központi telepítések kell figyelembe venni átviteli sebesség és a magas rendelkezésre állású fürt topológia hatását. A RF és a Konzisztenciaszint kell, hogy a kvórum nem függ az adatközpontok rendelkezésre állását módon ki kell jelölni.
-Magas konzisztenciát igénylő rendszer a konzisztencia szintjét (az olvasási és írási) egy LOCAL_QUORUM gondoskodik arról, hogy elégedett a a helyi írások és olvasások a helyi csomópont, miközben az adatok replikálása aszinkron módon történik a távoli adatközpontban.  2. táblázat foglalja össze a többrégiós fürt másolatot az írható leírt konfigurációs adatait.
+Magas konzisztenciát igénylő rendszer a konzisztencia szintjét (az olvasási és írási) egy LOCAL_QUORUM gondoskodik arról, hogy elégedett a a helyi írások és olvasások a helyi csomópont, miközben az adatok replikálása aszinkron módon történik a távoli adatközpontban. 2. táblázat foglalja össze a többrégiós fürt másolatot az írható leírt konfigurációs adatait.
 
 **Cassandra-fürtkonfiguráció két-régió**
 
@@ -129,13 +129,13 @@ Az üzembe helyezés egyszerűsítéséhez, töltse le a szükséges szoftverekn
 A fenti szoftverek letöltési be egy jól ismert letöltési könyvtár (például a Windows %TEMP%/downloads vagy ~/Downloads a legtöbb Linux-disztribúciók vagy Mac) a helyi számítógépen.
 
 ### <a name="create-ubuntu-vm"></a>UBUNTU RENDSZERŰ VIRTUÁLIS GÉP LÉTREHOZÁSA
-Ebben a lépésben a folyamat hoz létre Ubuntu-képre az előfeltételként szükséges szoftverek az, hogy a kép több Cassandra-csomópontok kiépítéséhez használható fel újra.  
+Ebben a lépésben a folyamat hoz létre Ubuntu-képre az előfeltételként szükséges szoftverek az, hogy a kép több Cassandra-csomópontok kiépítéséhez használható fel újra.
 
-#### <a name="step-1-generate-ssh-key-pair"></a>1. lépés: Hozzon létre SSH-kulcspár
+#### <a name="step-1-generate-ssh-key-pair"></a>1. LÉPÉS: SSH-kulcspár létrehozása
 Az Azure-PEM vagy DER nyilvános kulcsot, az üzembe helyezés ideje kódolású X509 kér. Hozzon létre egy nyilvános/titkos kulcspárt, hogyan lehet az SSH használata Linuxon az Azure-ban található utasításokat követve. Ha azt tervezi, putty.exe használja, mint egy SSH-ügyféllel, vagy a Windows vagy Linux rendszeren, a PEM-kódolású konvertálni kell RSA titkos kulcs használatával puttygen.exe PPK formátumba. A következő útmutatót: Ez a fenti weblapon található.
 
-#### <a name="step-2-create-ubuntu-template-vm"></a>2. lépés: Az Ubuntu sablon virtuális gép létrehozása
-A Virtuálisgép-sablon létrehozásához jelentkezzen be az Azure Portalon, és kövesse az alábbi eljárást: kattintson az új, számítás, a virtuális gépek, FROM GALLERY, UBUNTU, Ubuntu Server 14.04 LTS, majd kattintson a jobbra mutató nyílra. Ez az oktatóanyag azt ismerteti, hogyan hozhat létre Linux rendszerű virtuális gép hozzon létre egy virtuális gépen futó Linux talál.
+#### <a name="step-2-create-ubuntu-template-vm"></a>2. LÉPÉS: Ubuntu sablon virtuális gép létrehozása
+A Virtuálisgép-sablon létrehozásához jelentkezzen be az Azure Portalra, és kövesse az alábbi eljárást: Kattintson az új, számítás, a virtuális gépek, FROM GALLERY, UBUNTU, Ubuntu Server 14.04 LTS, és kattintson a jobbra mutató nyílra. Ez az oktatóanyag azt ismerteti, hogyan hozhat létre Linux rendszerű virtuális gép hozzon létre egy virtuális gépen futó Linux talál.
 
 A #1 "virtuálisgép-konfiguráció" képernyőn adja meg a következőket:
 
@@ -167,96 +167,97 @@ A #2 "virtuálisgép-konfiguráció" képernyőn adja meg a következőket:
 Kattintson a jobbra mutató nyílra, majd meghagyhatja az alapértelmezett beállításokat a #3 képernyőn. Kattintson az "ellenőrzés" gombra a virtuális gép üzembe helyezési folyamat befejezéséhez. Néhány perc elteltével a virtuális Gépet a neve "ubuntu-template" a "fut" állapotban kell lennie.
 
 ### <a name="install-the-necessary-software"></a>A SZÜKSÉGES SZOFTVEREK TELEPÍTÉSE
-#### <a name="step-1-upload-tarballs"></a>1. lépés: Feltöltés tarballs
+#### <a name="step-1-upload-tarballs"></a>1. LÉPÉS: Tarballs feltöltése
 A szolgáltatáskapcsolódási pont vagy pscp, másolja a korábban letöltött szoftverügyfélre ~/downloads directory formátuma a következő parancs használatával:
 
 ##### <a name="pscp-server-jre-8u5-linux-x64targz-localadminhk-cas-templatecloudappnethomelocaladmindownloadsserver-jre-8u5-linux-x64targz"></a>pscp kiszolgáló-jre-8u5 – linux-x64.tar.gz localadmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
 Ismételje meg a fenti parancs JRE, valamint a Cassandra bits lehet.
 
-#### <a name="step-2-prepare-the-directory-structure-and-extract-the-archives"></a>2. lépés: Készítse elő a könyvtárstruktúra, és bontsa ki az archívumba
+#### <a name="step-2-prepare-the-directory-structure-and-extract-the-archives"></a>2. LÉPÉS: Készítse elő a könyvtárstruktúra, és bontsa ki az archívumba
 Jelentkezzen be a virtuális Gépre, és a directory-struktúra létrehozása, és bontsa ki a szoftver az alábbi bash-szkript használatával felügyelőként:
 
-    #!/bin/bash
-    CASS_INSTALL_DIR="/opt/cassandra"
-    JRE_INSTALL_DIR="/opt/java"
-    CASS_DATA_DIR="/var/lib/cassandra"
-    CASS_LOG_DIR="/var/log/cassandra"
-    DOWNLOADS_DIR="~/downloads"
-    JRE_TARBALL="server-jre-8u5-linux-x64.tar.gz"
-    CASS_TARBALL="apache-cassandra-2.0.8-bin.tar.gz"
-    SVC_USER="localadmin"
+```bash
+#!/bin/bash
+CASS_INSTALL_DIR="/opt/cassandra"
+JRE_INSTALL_DIR="/opt/java"
+CASS_DATA_DIR="/var/lib/cassandra"
+CASS_LOG_DIR="/var/log/cassandra"
+DOWNLOADS_DIR="~/downloads"
+JRE_TARBALL="server-jre-8u5-linux-x64.tar.gz"
+CASS_TARBALL="apache-cassandra-2.0.8-bin.tar.gz"
+SVC_USER="localadmin"
 
-    RESET_ERROR=1
-    MKDIR_ERROR=2
+RESET_ERROR=1
+MKDIR_ERROR=2
 
-    reset_installation ()
-    {
-       rm -rf $CASS_INSTALL_DIR 2> /dev/null
-       rm -rf $JRE_INSTALL_DIR 2> /dev/null
-       rm -rf $CASS_DATA_DIR 2> /dev/null
-       rm -rf $CASS_LOG_DIR 2> /dev/null
-    }
-    make_dir ()
-    {
-       if [ -z "$1" ]
-       then
-          echo "make_dir: invalid directory name"
-          exit $MKDIR_ERROR
-       fi
+reset_installation ()
+{
+  rm -rf $CASS_INSTALL_DIR 2> /dev/null
+  rm -rf $JRE_INSTALL_DIR 2> /dev/null
+  rm -rf $CASS_DATA_DIR 2> /dev/null
+  rm -rf $CASS_LOG_DIR 2> /dev/null
+}
+make_dir ()
+{
+  if [ -z "$1" ]
+  then
+    echo "make_dir: invalid directory name"
+    exit $MKDIR_ERROR
+  fi
 
-       if [ -d "$1" ]
-       then
-          echo "make_dir: directory already exists"
-          exit $MKDIR_ERROR
-       fi
+  if [ -d "$1" ]
+  then
+    echo "make_dir: directory already exists"
+    exit $MKDIR_ERROR
+  fi
 
-       mkdir $1 2>/dev/null
-       if [ $? != 0 ]
-       then
-          echo "directory creation failed"
-          exit $MKDIR_ERROR
-       fi
-    }
+  mkdir $1 2>/dev/null
+  if [ $? != 0 ]
+  then
+    echo "directory creation failed"
+    exit $MKDIR_ERROR
+  fi
+}
 
-    unzip()
-    {
-       if [ $# == 2 ]
-       then
-          tar xzf $1 -C $2
-       else
-          echo "archive error"
-       fi
+unzip()
+{
+  if [ $# == 2 ]
+  then
+    tar xzf $1 -C $2
+  else
+    echo "archive error"
+  fi
 
-    }
+}
 
-    if [ -n "$1" ]
-    then
-       SVC_USER=$1
-    fi
+if [ -n "$1" ]
+then
+  SVC_USER=$1
+fi
 
-    reset_installation
-    make_dir $CASS_INSTALL_DIR
-    make_dir $JRE_INSTALL_DIR
-    make_dir $CASS_DATA_DIR
-    make_dir $CASS_LOG_DIR
+reset_installation
+make_dir $CASS_INSTALL_DIR
+make_dir $JRE_INSTALL_DIR
+make_dir $CASS_DATA_DIR
+make_dir $CASS_LOG_DIR
 
-    #unzip JRE and Cassandra
-    unzip $HOME/downloads/$JRE_TARBALL $JRE_INSTALL_DIR
-    unzip $HOME/downloads/$CASS_TARBALL $CASS_INSTALL_DIR
+#unzip JRE and Cassandra
+unzip $HOME/downloads/$JRE_TARBALL $JRE_INSTALL_DIR
+unzip $HOME/downloads/$CASS_TARBALL $CASS_INSTALL_DIR
 
-    #Change the ownership to the service credentials
+#Change the ownership to the service credentials
 
-    chown -R $SVC_USER:$GROUP $CASS_DATA_DIR
-    chown -R $SVC_USER:$GROUP $CASS_LOG_DIR
-    echo "edit /etc/profile to add JRE to the PATH"
-    echo "installation is complete"
-
+chown -R $SVC_USER:$GROUP $CASS_DATA_DIR
+chown -R $SVC_USER:$GROUP $CASS_LOG_DIR
+echo "edit /etc/profile to add JRE to the PATH"
+echo "installation is complete"
+```
 
 Ha ez a szkript illessze vim ablak, el kell távolítania a kocsivissza ("\r") a következő paranccsal:
 
     tr -d '\r' <infile.sh >outfile.sh
 
-#### <a name="step-3-edit-etcprofile"></a>3. lépés: Stb/profil szerkesztése
+#### <a name="step-3-edit-etcprofile"></a>3. lépés: Stb-profil szerkesztése
 Fűzze hozzá a végén a következőket:
 
     JAVA_HOME=/opt/java/jdk1.8.0_05
@@ -266,8 +267,8 @@ Fűzze hozzá a végén a következőket:
     export CASS_HOME
     export PATH
 
-#### <a name="step-4-install-jna-for-production-systems"></a>4. lépés: Telepítés JNA éles rendszerek esetén.
-Az alábbi parancs folyamattal: az alábbi parancs telepíti a jna-3.2.7.jar és jna-platform-3.2.7.jar /usr/share.java directory sudo apt-get paranccsal való telepítése libjna – java
+#### <a name="step-4-install-jna-for-production-systems"></a>4. lépés: JNA telepítése éles rendszerek esetén.
+Használja a következő parancssort: Az alábbi parancs telepíti a jna-3.2.7.jar és jna-platform-3.2.7.jar /usr/share.java directory sudo apt-get paranccsal való telepítése libjna – java
 
 Hozzon létre szimbolikus hivatkozások $CASS_HOME/lib könyvtár, Cassandra indítási parancsfájl megkereshesse a JAR-fájlok kivételével:
 
@@ -295,24 +296,24 @@ Hajtsa végre a következő lépéseket, a lemezkép rögzítését célzó műv
 ##### <a name="1-deprovision"></a>1. Megszüntetési
 A parancs használata "sudo waagent – megszüntetési + felhasználó" virtuálisgép-példány adott információk eltávolításához. Tekintse meg a [Linux rendszerű virtuális gép rögzítése](capture-image-classic.md) használandó sablont további részleteket a lemezkép rögzítését.
 
-##### <a name="2-shut-down-the-vm"></a>2: a virtuális gép leállítása
+##### <a name="2-shut-down-the-vm"></a>2: A virtuális gép leállítása
 Győződjön meg arról, hogy a virtuális gép ki van-e jelölve, és kattintson a LEÁLLÍTÁS hivatkozásra a alsó parancssávon.
 
-##### <a name="3-capture-the-image"></a>3: a lemezképének rögzítése
+##### <a name="3-capture-the-image"></a>3: A lemezkép rögzítése
 Győződjön meg arról, hogy a virtuális gép ki van-e jelölve, és a rögzítés hivatkozásra az alsó sáv. A következő képernyőn, adja meg a RENDSZERKÉP neve (például hk-cas-2-08-ub-14-04-2014071), megfelelő KÉPLEÍRÁS, és kattintson az "ellenőrzés" megjelölni a rögzítési folyamat befejezéséhez.
 
 Ez a folyamat eltarthat néhány másodpercig, és a lemezkép elérhetőnek kell lennie, a lemezkép-katalógus MY IMAGES szakaszában. A forrásoldali virtuális gép automatikusan törlődik, miután a lemezkép rögzítése sikerült. 
 
 ## <a name="single-region-deployment-process"></a>Egy régióban üzembe helyezési folyamat
-**1. lépés: A virtuális hálózat létrehozása** jelentkezzen be az Azure Portalon, és hozzon létre egy virtuális hálózat (klasszikus) a következő táblázatban szereplő attribútumokkal. Lásd: [hozzon létre egy virtuális hálózat (klasszikus), az Azure portal használatával](../../../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a folyamat részletes leírását.      
+**1. lépés: A virtuális hálózat létrehozása** jelentkezzen be az Azure Portalon, és hozzon létre egy virtuális hálózat (klasszikus) a következő táblázatban szereplő attribútumokkal. Lásd: [hozzon létre egy virtuális hálózat (klasszikus), az Azure portal használatával](../../../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a folyamat részletes leírását.
 
 <table>
 <tr><th>Virtuális gép attribútum neve</th><th>Érték</th><th>Megjegyzések</th></tr>
 <tr><td>Name (Név)</td><td>vnet-CAS kiszolgálókat is – Nyugat-USA</td><td></td></tr>
 <tr><td>Régió</td><td>USA nyugati régiója</td><td></td></tr>
 <tr><td>DNS-kiszolgálók</td><td>None</td><td>Figyelmen kívül hagyja ezt, hogy nem használ a DNS-kiszolgáló</td></tr>
-<tr><td>Címtartomány</td><td>10.1.0.0/16</td><td></td></tr>    
-<tr><td>Kezdő IP-cím</td><td>10.1.0.0</td><td></td></tr>    
+<tr><td>Címtartomány</td><td>10.1.0.0/16</td><td></td></tr>
+<tr><td>Kezdő IP-cím</td><td>10.1.0.0</td><td></td></tr>
 <tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>
 </table>
 
@@ -324,9 +325,9 @@ Adja hozzá a következő alhálózatok:
 <tr><td>adat</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont alhálózatot</td></tr>
 </table>
 
-Adatok és a webes alhálózatok – Ez a cikk az hatókörén kívül esik a lefedettségét a hálózati biztonsági csoportok védelme biztosítható.  
+Adatok és a webes alhálózatok – Ez a cikk az hatókörén kívül esik a lefedettségét a hálózati biztonsági csoportok védelme biztosítható.
 
-**2. lépés: Virtuális gépek kiépítése** a korábban létrehozott rendszerkép használatával, akkor a következő virtuális gépek létrehozása a cloud Server "hk-c-svc-nyugati", és kösse őket a megfelelő alhálózatokat alább látható módon:
+**2. lépés: Virtuális gépek üzembe helyezése** a korábban létrehozott rendszerkép használatával, akkor a következő virtuális gépek létrehozása a cloud Server "hk-c-svc-nyugati", és kösse őket a megfelelő alhálózatokat alább látható módon:
 
 <table>
 <tr><th>Gépnév    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/állvány</th><th>Kezdőérték?</th></tr>
@@ -353,60 +354,62 @@ A fenti folyamat hajtható végre az Azure Portalon; egy Windows-gép (Ha nincs 
 
 **1. listája: PowerShell-szkript a virtuális gépek kiépítése**
 
-        #Tested with Azure Powershell - November 2014
-        #This powershell script deployes a number of VMs from an existing image inside an Azure region
-        #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
+```powershell
+#Tested with Azure Powershell - November 2014
+#This powershell script deployes a number of VMs from an existing image inside an Azure region
+#Import your Azure subscription into the current Powershell session before proceeding
+#The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
-        #fundamental variables - change these to reflect your subscription
-        $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
-        $numVMs=8;$prefix = "hk-cass";$ilbIP="your_ilb_ip"
-        $subscriptionName = "Azure_subscription_name";
-        $vmSize="ExtraSmall"; $imageName="your_linux_image_name"
-        $ilbName="ThriftInternalLB"; $thriftEndPoint="ThriftEndPoint"
+#fundamental variables - change these to reflect your subscription
+$country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
+$numVMs=8;$prefix = "hk-cass";$ilbIP="your_ilb_ip"
+$subscriptionName = "Azure_subscription_name";
+$vmSize="ExtraSmall"; $imageName="your_linux_image_name"
+$ilbName="ThriftInternalLB"; $thriftEndPoint="ThriftEndPoint"
 
-        #generated variables
-        $serviceName = "$prefix-svc-$region-$country"; $azureRegion = "$region $country"
+#generated variables
+$serviceName = "$prefix-svc-$region-$country"; $azureRegion = "$region $country"
 
-        $vmNames = @()
-        for ($i=0; $i -lt $numVMs; $i++)
-        {
-           $vmNames+=("$prefix-vm"+($i+1) + "-$region-$country" );
-        }
+$vmNames = @()
+for ($i=0; $i -lt $numVMs; $i++)
+{
+    $vmNames+=("$prefix-vm"+($i+1) + "-$region-$country" );
+}
 
-        #select an Azure subscription already imported into Powershell session
-        Select-AzureSubscription -SubscriptionName $subscriptionName -Current
-        Set-AzureSubscription -SubscriptionName $subscriptionName -CurrentStorageAccountName $storageAccount
+#select an Azure subscription already imported into Powershell session
+Select-AzureSubscription -SubscriptionName $subscriptionName -Current
+Set-AzureSubscription -SubscriptionName $subscriptionName -CurrentStorageAccountName $storageAccount
 
-        #create an empty cloud service
-        New-AzureService -ServiceName $serviceName -Label "hkcass$region" -Location $azureRegion
-        Write-Host "Created $serviceName"
+#create an empty cloud service
+New-AzureService -ServiceName $serviceName -Label "hkcass$region" -Location $azureRegion
+Write-Host "Created $serviceName"
 
-        $VMList= @()   # stores the list of azure vm configuration objects
-        #create the list of VMs
-        foreach($vmName in $vmNames)
-        {
-           $VMList += New-AzureVMConfig -Name $vmName -InstanceSize ExtraSmall -ImageName $imageName |
-           Add-AzureProvisioningConfig -Linux -LinuxUser "localadmin" -Password "Local123" |
-           Set-AzureSubnet "data"
-        }
+$VMList= @()   # stores the list of azure vm configuration objects
+#create the list of VMs
+foreach($vmName in $vmNames)
+{
+    $VMList += New-AzureVMConfig -Name $vmName -InstanceSize ExtraSmall -ImageName $imageName |
+            Add-AzureProvisioningConfig -Linux -LinuxUser "localadmin" -Password "Local123" |
+            Set-AzureSubnet "data"
+}
 
-        New-AzureVM -ServiceName $serviceName -VNetName $vnetName -VMs $VMList
+New-AzureVM -ServiceName $serviceName -VNetName $vnetName -VMs $VMList
 
-        #Create internal load balancer
-        Add-AzureInternalLoadBalancer -ServiceName $serviceName -InternalLoadBalancerName $ilbName -SubnetName "data" -StaticVNetIPAddress "$ilbIP"
-        Write-Host "Created $ilbName"
-        #Add the thrift endpoint to the internal load balancer for all the VMs
-        foreach($vmName in $vmNames)
-        {
-            Get-AzureVM -ServiceName $serviceName -Name $vmName |
-                Add-AzureEndpoint -Name $thriftEndPoint -LBSetName "ThriftLBSet" -Protocol tcp -LocalPort 9160 -PublicPort 9160 -ProbePort 9160 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ilbName |
-                Update-AzureVM
+#Create internal load balancer
+Add-AzureInternalLoadBalancer -ServiceName $serviceName -InternalLoadBalancerName $ilbName -SubnetName "data" -StaticVNetIPAddress "$ilbIP"
+Write-Host "Created $ilbName"
+#Add the thrift endpoint to the internal load balancer for all the VMs
+foreach($vmName in $vmNames)
+{
+    Get-AzureVM -ServiceName $serviceName -Name $vmName |
+            Add-AzureEndpoint -Name $thriftEndPoint -LBSetName "ThriftLBSet" -Protocol tcp -LocalPort 9160 -PublicPort 9160 -ProbePort 9160 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ilbName |
+            Update-AzureVM
 
-            Write-Host "created $vmName"     
-        }
+    Write-Host "created $vmName"
+}
+```
 
-**3. lépés: Konfigurálja a Cassandra az egyes virtuális Gépeken**
+**3. lépés: Cassandra konfigurálhatja az egyes virtuális Gépeken**
 
 Jelentkezzen be a virtuális Gépre, és hajtsa végre a következő:
 
@@ -417,7 +420,7 @@ Jelentkezzen be a virtuális Gépre, és hajtsa végre a következő:
   
        Seeds: "10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10"
 
-**4. lépés: Indítsa el a virtuális gépeket, és a fürt tesztelése**
+**4. lépés: Indítsa el a virtuális gépek és a fürt tesztelése**
 
 Jelentkezzen be az egyik (például hk-c1 – Nyugat-us) csomópontot, és futtassa a következő parancsot a fürt állapotának megjelenítéséhez:
 
@@ -463,7 +466,7 @@ A 4. lépésben létrehozott kulcstér SimpleStrategy használ egy replication_f
 Kihasználhatja az egyetlen régióban üzembe helyezés befejeződött, és ugyanahhoz a folyamathoz ismételje meg a második régiót telepítése. Az egyetlen vagy több régióban történő üzembe helyezés közötti fő különbség a VPN-alagút beállítást a régiók közötti kommunikációhoz; Indítsa el a hálózati telepítést, a virtuális gépek kiépítése, és konfigurálja a Cassandra.
 
 ### <a name="step-1-create-the-virtual-network-at-the-2nd-region"></a>1. lépés: A virtuális hálózat létrehozása a 2. régió:
-Jelentkezzen be az Azure Portalra, és hozzon létre egy virtuális hálózatot az attribútumok megjelenítése a táblában. Lásd: [Cloud-Only virtuális hálózat konfigurálása az Azure Portalon](../../../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a folyamat részletes leírását.      
+Jelentkezzen be az Azure Portalra, és hozzon létre egy virtuális hálózatot az attribútumok megjelenítése a táblában. Lásd: [Cloud-Only virtuális hálózat konfigurálása az Azure Portalon](../../../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a folyamat részletes leírását.
 
 <table>
 <tr><th>Attribútum neve    </th><th>Érték    </th><th>Megjegyzések</th></tr>
@@ -486,7 +489,7 @@ Adja hozzá a következő alhálózatok:
 </table>
 
 
-### <a name="step-2-create-local-networks"></a>2. lépés: A helyi hálózatok létrehozása
+### <a name="step-2-create-local-networks"></a>2. lépés: Helyi hálózatok létrehozása
 Az Azure virtuális hálózatok helyi hálózati proxy címtér képez le egy távoli helyen, beleértve a magánfelhő vagy egy másik Azure-régióban. A proxy címtartomány van kötve egy távoli átjáró útválasztási hálózat a megfelelő hálózati helyre. Lásd: [virtuális hálózat virtuális hálózatok közötti kapcsolat konfigurálása](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) VNET – VNET kapcsolat útmutatást.
 
 Hozzon létre két helyi hálózatok száma a következő adatokat:
@@ -496,7 +499,7 @@ Hozzon létre két helyi hálózatok száma a következő adatokat:
 | hk-lnet-map-to-east-us |23.1.1.1 |10.2.0.0/16 |Létrehozásakor a helyi hálózati átjáró-címmel látja el egy helyőrző. A valódi átjáró címe meg van adva, az átjáró létrehozása után. Győződjön meg arról, hogy a címtér pontosan megegyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat létrehozása az USA keleti régiójában. |
 | hk-lnet-map-to-west-us |23.2.2.2 |10.1.0.0/16 |Létrehozásakor a helyi hálózati átjáró-címmel látja el egy helyőrző. A valódi átjáró címe meg van adva, az átjáró létrehozása után. Győződjön meg arról, hogy a címtér pontosan megegyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat létrehozása az USA nyugati régiója. |
 
-### <a name="step-3-map-local-network-to-the-respective-vnets"></a>3. lépés: Térkép "Local" hálózati a megfelelő virtuális hálózatokhoz
+### <a name="step-3-map-local-network-to-the-respective-vnets"></a>3. lépés: A megfelelő virtuális hálózat "Local" hálózat leképezése
 Az Azure Portalon válassza ki a minden egyes virtuális hálózatok közötti, "Konfigurálás" gombra, ellenőrizze a "Kapcsolódás a helyi hálózatra", és válassza ki a helyi hálózatok száma a következő adatokat:
 
 | Virtual Network | Helyi hálózat |
@@ -504,10 +507,10 @@ Az Azure Portalon válassza ki a minden egyes virtuális hálózatok közötti, 
 | hk-vnet-west-us |hk-lnet-map-to-east-us |
 | hk-vnet-east-us |hk-lnet-map-to-west-us |
 
-### <a name="step-4-create-gateways-on-vnet1-and-vnet2"></a>4. lépés: A a VNET1 és a VNET2 átjárók létrehozása
+### <a name="step-4-create-gateways-on-vnet1-and-vnet2"></a>4. lépés: A VNET1 és a VNET2 átjárók létrehozása
 A virtuális hálózatok az irányítópultról kattintson az ÁTJÁRÓ létrehozása a VPN-átjáró kiépítési folyamat aktiválásához. Néhány perc elteltével az irányítópult minden egyes virtuális hálózat megjelenjen a tényleges átjárócímet.
 
-### <a name="step-5-update-local-networks-with-the-respective-gateway-addresses"></a>5. lépés: Frissítés "Local" hálózatok a megfelelő "" átjárócímek
+### <a name="step-5-update-local-networks-with-the-respective-gateway-addresses"></a>5. lépés: Frissítse a megfelelő "" átjárócímek "Local" hálózatok
 Cserélje le a helyőrző IP-címét az imént kiépített átjárók valós IP-címét, mind a helyi hálózatok szerkesztése. A következő hozzárendelést használja:
 
 <table>
@@ -522,7 +525,7 @@ A következő Powershell-parancsfájlt használja az IPSec-kulcsot minden egyes 
 ### <a name="step-7-establish-the-vnet-to-vnet-connection"></a>7. lépés: A VNET – VNET kapcsolat létrehozása
 Az Azure Portalról az "IRÁNYÍTÓPULT" menü, mind a virtuális hálózatok használatával gateway-átjáró kapcsolatot létesíteni. Használja a "Csatlakozás" elemeket az alsó eszköztáron. Néhány perc elteltével az irányítópult megjelenjen-e a kapcsolat adatai grafikusan.
 
-### <a name="step-8-create-the-virtual-machines-in-region-2"></a>8. lépés: A virtuális gépek létrehozása a #2 régióban
+### <a name="step-8-create-the-virtual-machines-in-region-2"></a>8. lépés: #2 régióban található virtuális gépek létrehozása
 Az Ubuntu-rendszerkép létrehozása a következő lépéseket vagy a #2 régióban található Azure storage-fiókhoz a kép VHD-fájl másolása #1 régióban történő üzembe helyezés leírtak szerint, és a rendszerkép létrehozása. Ennek a képnek és hozzon létre az alábbi listán szereplő virtuális gépek az új felhőalapú szolgáltatás hk-c-svc-kelet-USA:
 
 | Gépnév | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/állvány | Kezdőérték? |
@@ -539,11 +542,11 @@ Az Ubuntu-rendszerkép létrehozása a következő lépéseket vagy a #2 régió
 
 #1 régió mint ugyanezeket a lépéseket, de 10.2.xxx.xxx címteret használja.
 
-### <a name="step-9-configure-cassandra-on-each-vm"></a>9. lépés: Konfigurálja a Cassandra az egyes virtuális Gépeken
+### <a name="step-9-configure-cassandra-on-each-vm"></a>9. lépés: Cassandra konfigurálhatja az egyes virtuális Gépeken
 Jelentkezzen be a virtuális Gépre, és hajtsa végre a következő:
 
 1. A formátumban adja meg az erőforrás- és állványalapú tulajdonságait $CASS_HOME/conf/cassandra-rackdc.properties szerkesztése: dc = USA keleti RÉGIÓJA rack = rack1
-2. Szerkesztés cassandra.yaml magcsomópontok konfigurálása: magok: "10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10,10.2.2.4,10.2.2.6,10.2.2.8,10.2.2.10"
+2. Szerkesztés cassandra.yaml magcsomópontok konfigurálása:  Mag: "10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10,10.2.2.4,10.2.2.6,10.2.2.8,10.2.2.10"
 
 ### <a name="step-10-start-cassandra"></a>10. lépés: Indítsa el a Cassandra
 Jelentkezzen be minden egyes virtuális Gépre, és indítsa el a Cassandra a háttérben a következő parancs futtatásával: $CASS_HOME/bin/cassandra
@@ -553,15 +556,15 @@ Már Cassandra 16 csomóponton a 8 csomópont minden egyes Azure-régióban van 
 
 ### <a name="step-1-get-the-internal-load-balancer-ip-for-both-the-regions-using-powershell"></a>1. lépés: A belső terheléselosztó IP lekérése is a régiókat, PowerShell-lel
 * Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
-* Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
+* Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"
   
     Jegyezze fel az IP-címek (a példában Nyugat - 10.1.2.101, kelet - 10.2.2.101) jelenik meg.
 
-### <a name="step-2-execute-the-following-in-the-west-region-after-logging-into-hk-w1-west-us"></a>2. lépés: Hajtsa végre az alábbiakat a nyugati régióban Miután bejelentkezett, hk-w1 – Nyugat-USA
+### <a name="step-2-execute-the-following-in-the-west-region-after-logging-into-hk-w1-west-us"></a>2. lépés: Miután bejelentkezett, hk-w1 – Nyugat-USA hajtsa végre az alábbiakat a nyugati régióban
 1. Hajtsa végre a $CASS_HOME/bin/cqlsh 10.1.2.101 9160
 2. Hajtsa végre a következő CQL-parancsokat:
    
-     A REPLIKÁCIÓ létrehozása KULCSTÉR customers_ks = {"class": 'NetworkToplogyStrategy', 'WESTUS': 3, "EASTUS": 3};   Customers_ks; használata   Hozzon létre a tábla Customers(customer_id int PRIMARY KEY, firstname text, lastname text);   Helyezze be az Customers(customer_id, firstname, lastname) VALUES(1, 'John', 'Doe');   INSERT INTO Customers(customer_id, firstname, lastname) VALUES (2, "Jane", "János").   Válassza ki * ÜGYFELEKTŐL;
+     A REPLIKÁCIÓ létrehozása KULCSTÉR customers_ks = {"class": "NetworkToplogyStrategy', 'WESTUS': 3, "EASTUS": 3};   Customers_ks; használata   Hozzon létre a tábla Customers(customer_id int PRIMARY KEY, firstname text, lastname text);   Helyezze be az Customers(customer_id, firstname, lastname) VALUES(1, 'John', 'Doe');   INSERT INTO Customers(customer_id, firstname, lastname) VALUES (2, "Jane", "János").   Válassza ki * ÜGYFELEKTŐL;
 
 A képernyő az alábbihoz hasonlóan kell megjelennie:
 
@@ -570,7 +573,7 @@ A képernyő az alábbihoz hasonlóan kell megjelennie:
 | 1 |János |Például a DOE |
 | 2 |Jane |Például a DOE |
 
-### <a name="step-3-execute-the-following-in-the-east-region-after-logging-into-hk-w1-east-us"></a>3. lépés: Hajtsa végre a következő a keleti régió hk-w1 – kelet-USA való bejelentkezés után:
+### <a name="step-3-execute-the-following-in-the-east-region-after-logging-into-hk-w1-east-us"></a>3. lépés: Hajtsa végre a következő keleti hk-w1 – kelet-USA való bejelentkezés után:
 1. Hajtsa végre a $CASS_HOME/bin/cqlsh 10.2.2.101 9160
 2. Hajtsa végre a következő CQL-parancsokat:
    
@@ -588,100 +591,99 @@ Néhány további Beszúrások hajtható végre, és tekintse meg, hogy azok rep
 ## <a name="test-cassandra-cluster-from-nodejs"></a>Cassandra-fürtjére teszt node.js-sel
 A "webes" szint korábban létrehozott Linux virtuális gépek egyikével végrehajtása egy egyszerű Node.js-szkript a korábban beszúrt adatokat olvasni.
 
-**1. lépés: A Node.js és a Cassandra-ügyfél telepítése**
+**1. lépés: Node.js és a Cassandra-ügyfél telepítése**
 
 1. Telepítse a Node.js és npm
 2. Csomag "cassandra-ügyfél csomópont" telepítése az npm segítségével
 3. Hajtsa végre a következő szkriptet a shell parancssorában, mely megjeleníti a beolvasott adatok json-karakterlánc:
-   
-        var pooledCon = require('cassandra-client').PooledConnection;
-        var ksName = "custsupport_ks";
-        var cfName = "customers_cf";
-        var hostList = ['internal_loadbalancer_ip:9160'];
-        var ksConOptions = { hosts: hostList,
-                             keyspace: ksName, use_bigints: false };
-   
-        function createKeyspace(callback){
-           var cql = 'CREATE KEYSPACE ' + ksName + ' WITH strategy_class=SimpleStrategy AND strategy_options:replication_factor=1';
-           var sysConOptions = { hosts: hostList,  
-                                 keyspace: 'system', use_bigints: false };
-           var con = new pooledCon(sysConOptions);
-           con.execute(cql,[],function(err) {
-           if (err) {
-             console.log("Failed to create Keyspace: " + ksName);
-             console.log(err);
-           }
-           else {
-             console.log("Created Keyspace: " + ksName);
-             callback(ksConOptions, populateCustomerData);
-           }
-           });
-           con.shutdown();
-        }
-   
-        function createColumnFamily(ksConOptions, callback){
-          var params = ['customers_cf','custid','varint','custname',
-                        'text','custaddress','text'];
-          var cql = 'CREATE COLUMNFAMILY ? (? ? PRIMARY KEY,? ?, ? ?)';
+    
+    ```
+    var pooledCon = require('cassandra-client').PooledConnection;
+    var ksName = "custsupport_ks";
+    var cfName = "customers_cf";
+    var hostList = ['internal_loadbalancer_ip:9160'];
+    var ksConOptions = { hosts: hostList,
+                         keyspace: ksName, use_bigints: false };
+
+    function createKeyspace(callback) {
+        var cql = 'CREATE KEYSPACE ' + ksName + ' WITH strategy_class=SimpleStrategy AND strategy_options:replication_factor=1';
+        var sysConOptions = { hosts: hostList,
+                              keyspace: 'system', use_bigints: false };
+        var con = new pooledCon(sysConOptions);
+        con.execute(cql,[],function(err) {
+            if (err) {
+                console.log("Failed to create Keyspace: " + ksName);
+                console.log(err);
+            }
+            else {
+                console.log("Created Keyspace: " + ksName);
+                callback(ksConOptions, populateCustomerData);
+            }
+        });
+        con.shutdown();
+    }
+
+    function createColumnFamily(ksConOptions, callback) {
+        var params = ['customers_cf','custid','varint','custname',
+                      'text','custaddress','text'];
+        var cql = 'CREATE COLUMNFAMILY ? (? ? PRIMARY KEY,? ?, ? ?)';
         var con =  new pooledCon(ksConOptions);
-          con.execute(cql,params,function(err) {
-              if (err) {
-                 console.log("Failed to create column family: " + params[0]);
-                 console.log(err);
-              }
-              else {
-                 console.log("Created column family: " + params[0]);
-                 callback();
-              }
-          });
-          con.shutdown();
-        }
-   
-        //populate Data
-        function populateCustomerData() {
-           var params = ['John','Infinity Dr, TX', 1];
-           updateCustomer(ksConOptions,params);
-   
-           params = ['Tom','Fermat Ln, WA', 2];
-           updateCustomer(ksConOptions,params);
-        }
-   
-        //update also inserts the record if none exists
-        function updateCustomer(ksConOptions,params)
-        {
-          var cql = 'UPDATE customers_cf SET custname=?,custaddress=? where custid=?';
-          var con = new pooledCon(ksConOptions);
-          con.execute(cql,params,function(err) {
-              if (err) console.log(err);
-              else console.log("Inserted customer : " + params[0]);
-          });
-          con.shutdown();
-        }
-   
-        //read the two rows inserted above
-        function readCustomer(ksConOptions)
-        {
-          var cql = 'SELECT * FROM customers_cf WHERE custid IN (1,2)';
-          var con = new pooledCon(ksConOptions);
-          con.execute(cql,[],function(err,rows) {
-              if (err)
-                 console.log(err);
-              else
-                 for (var i=0; i<rows.length; i++)
+        con.execute(cql,params,function(err) {
+            if (err) {
+                console.log("Failed to create column family: " + params[0]);
+                console.log(err);
+            }
+            else {
+                console.log("Created column family: " + params[0]);
+                callback();
+            }
+        });
+        con.shutdown();
+    }
+
+    //populate Data
+    function populateCustomerData() {
+        var params = ['John','Infinity Dr, TX', 1];
+        updateCustomer(ksConOptions,params);
+
+        params = ['Tom','Fermat Ln, WA', 2];
+        updateCustomer(ksConOptions,params);
+    }
+
+    //update also inserts the record if none exists
+    function updateCustomer(ksConOptions,params) {
+        var cql = 'UPDATE customers_cf SET custname=?,custaddress=? where custid=?';
+        var con = new pooledCon(ksConOptions);
+        con.execute(cql,params,function(err) {
+            if (err) console.log(err);
+            else console.log("Inserted customer : " + params[0]);
+        });
+        con.shutdown();
+    }
+
+    //read the two rows inserted above
+    function readCustomer(ksConOptions) {
+        var cql = 'SELECT * FROM customers_cf WHERE custid IN (1,2)';
+        var con = new pooledCon(ksConOptions);
+        con.execute(cql,[],function(err,rows) {
+            if (err)
+                console.log(err);
+            else
+                for (var i=0; i<rows.length; i++)
                     console.log(JSON.stringify(rows[i]));
             });
-           con.shutdown();
-        }
-   
-        //exectue the code
-        createKeyspace(createColumnFamily);
-        readCustomer(ksConOptions)
+        con.shutdown();
+    }
+
+    //execute the code
+    createKeyspace(createColumnFamily);
+    readCustomer(ksConOptions)
+    ```
 
 ## <a name="conclusion"></a>Összegzés
-Microsoft Azure egy rugalmas platform, amely lehetővé teszi mind a Microsoft, valamint a nyílt forráskódú szoftverek futtatását, amint azt a ebben a gyakorlatban a. Magas rendelkezésre állású Cassandra-fürt egyetlen adatközpontján keresztül a fürt csomópontjai szét több tartalék tartomány között is telepíthetők. Cassandra-fürtök Azure-régióban több földrajzilag távoli vészhelyreállítási megvalósíthatósági példában rendszerekhez is telepíthető. Azure-ban és a Cassandra együtt teszi lehetővé felépítése rugalmasan méretezhető, magas rendelkezésre állású és vészhelyreállítási helyreállítható a cloud services szükséges mai interneten horizontális szolgáltatások.  
+Microsoft Azure egy rugalmas platform, amely lehetővé teszi mind a Microsoft, valamint a nyílt forráskódú szoftverek futtatását, amint azt a ebben a gyakorlatban a. Magas rendelkezésre állású Cassandra-fürt egyetlen adatközpontján keresztül a fürt csomópontjai szét több tartalék tartomány között is telepíthetők. Cassandra-fürtök Azure-régióban több földrajzilag távoli vészhelyreállítási megvalósíthatósági példában rendszerekhez is telepíthető. Azure-ban és a Cassandra együtt teszi lehetővé felépítése rugalmasan méretezhető, magas rendelkezésre állású és vészhelyreállítási helyreállítható a cloud services szükséges mai interneten horizontális szolgáltatások.
 
 ## <a name="references"></a>Referencia
 * [http://cassandra.apache.org](http://cassandra.apache.org)
 * [http://www.datastax.com](http://www.datastax.com)
 * [http://www.nodejs.org](http://www.nodejs.org)
-

@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7a5c0866bc08c5a73888d9baca41980106a62ae2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954937"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020081"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Frissítése az Azure Machine Learning-modellek használata az Update-Erőforrástevékenység
 
@@ -38,7 +37,7 @@ ms.locfileid: "49954937"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [frissítése a machine learning-modellek a Data Factory](../update-machine-learning-models.md).
 
-Ez a cikk egészíti ki a fő Azure Data Factory - integráció a cikk az Azure Machine Learning: [hozhatók létre prediktív adatcsatornák Azure Machine Learning és az Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket. 
+Ez a cikk a fő Azure Data Factory - integráció a cikk az Azure Machine Learning egészíti ki: [Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása](data-factory-azure-ml-batch-execution-activity.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket. 
 
 ## <a name="overview"></a>Áttekintés
 Az idő múlásával a prediktív modelleket a kísérletek pontozási Azure ML új bemeneti adatkészletek használatával lehet retrained kell. Miután végzett átképezési retrained gépi Tanulási modell a pontozási webszolgáltatás frissíteni kívánt. A jellemzően előforduló lépéseket ahhoz, hogy megőrzési és frissítése webszolgáltatásokkal Azure ML-modellek a következők:

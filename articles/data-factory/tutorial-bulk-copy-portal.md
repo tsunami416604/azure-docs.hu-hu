@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e7c134881cbf8745a4e4ef9102a418f7d47a6f8c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43098028"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020013"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -93,10 +92,10 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
          
       Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
-1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+1. Válassza ki a Data Factory **helyét**. Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 1. Kattintson a **Create** (Létrehozás) gombra.
-1. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+1. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -208,7 +207,7 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
     ![Adatkészlet paramétereinek szerkesztője](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>Folyamatok létrehozása
-Ebben az oktatóanyagban a következő két folyamatot hozza létre: **IterateAndCopySQLTables** és **GetTableListAndTriggerCopyData**. 
+Ebben az oktatóanyagban két folyamatot hoz létre: **IterateAndCopySQLTables** és **GetTableListAndTriggerCopyData**. 
 
 A **GetTableListAndTriggerCopyData** folyamat két lépést hajt végre:
 
@@ -400,7 +399,7 @@ Lépjen a **GetTableListAndTriggerCopyData** folyamathoz, kattintson az **Aktiv�
         ]
     }
     ```    
-1. A **Folyamatfuttatások** nézetre való visszaváltáshoz kattintson a fent található **Folyamatok** hivatkozásra. Kattintson az **IterateAndCopySQLTables** folyamat **Tevékenységfuttatások megtekintése** hivatkozására (a **Tevékenységek** oszlop első hivatkozása). A kimenetnek az alábbi képen látható módon kell megjelennie. Vegye figyelembe, hogy a **keresési** tevékenység kimenetében minden táblához tartozik egy **másolási** tevékenységfuttatás. 
+1. A **Folyamatfuttatások** nézetre való visszaváltáshoz kattintson a fent található **Folyamatok** hivatkozásra. Kattintson az **IterateAndCopySQLTables** folyamat **Tevékenységfuttatások megtekintése** hivatkozására (a **Tevékenységek** oszlop első hivatkozása). Az alábbi képen látható módon kimenetnek kell megjelennie: Figyelje meg, hogy van egy **másolási** tevékenység minden egyes futtatásához a **keresési** tevékenység kimenete. 
 
     ![Tevékenységfuttatások](./media/tutorial-bulk-copy-portal/activity-runs-2.png)
 1. Ellenőrizze, hogy a rendszer átmásolta-e az adatokat az oktatóanyagban használt SQL Data Warehouse-célra. 

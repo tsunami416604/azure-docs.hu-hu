@@ -1,5 +1,5 @@
 ---
-title: Mi a teendő, ha meghibásodik egy Azure-szolgáltatás megszakadása, ami hatással van az Azure Key Vault |} A Microsoft Docs
+title: Mi a teendő, ha meghibásodik egy Azure-szolgáltatás megszakadása, ami hatással van az Azure Key Vault az Azure Key Vault - |} A Microsoft Docs
 description: Ismerje meg, mi a teendő az Azure szolgáltatáskimaradás, amely hatással van az Azure Key Vault működésében.
 services: key-vault
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: key-vault
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 5ab6fc207d8a7732062a51a6215c25a4a0fac006
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 0479e5f7e51d02a08f6d542515212c88b3a43df5
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465843"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999237"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állás és redundancia
+
 Az Azure Key Vault többrétegű redundanciát biztosít, győződjön meg arról, hogy a kulcsok és titkok továbbra is elérhetők az alkalmazás akkor is, ha a szolgáltatás egyes összetevők nem tudnak funkciókat.
 
 A key vault tartalmát a rendszer replikálja a régión belül, és a egy másodlagos régióba legalább 150 mérföld nyelvet a lenti listában, de azonos földrajzi helyen belül. Ez a nagyfokú tartósság, a kulcsok és titkok tart fenn. Tekintse meg a [Azure párosított régióiról](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) dokumentum adott régiópárok részleteiért.

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a8bb5e7ca71a24f36b102938668d57bdccd0b0b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101806"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023795"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Eloqua
 
@@ -45,7 +44,7 @@ Oracle Eloqua társított szolgáltatás a következő tulajdonságok támogatot
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Eloqua** | Igen |
+| type | A type tulajdonságot kell beállítani: **Eloqua** | Igen |
 | endpoint | A végpont a Eloqua kiszolgáló. Eloqua támogatja, több adatközpontot, határozza meg a végpont, jelentkezzen be a https://login.eloqua.com a hitelesítő adataival, majd másolja a **alap URL** részen található mintát követik az átirányított URL-CÍMÉT `xxx.xxx.eloqua.com`. | Igen |
 | felhasználónév | A hely neve és a képernyőn a Eloqua fiók felhasználóneve: `SiteName\Username` például `Eloqua\Alice`.  | Igen |
 | jelszó | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |

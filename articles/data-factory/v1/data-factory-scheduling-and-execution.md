@@ -1,6 +1,6 @@
 ---
-title: Ütemezés és a Data Factory végrehajtási |} Microsoft Docs
-description: Ismerje meg az Azure Data Factory alkalmazásmodell ütemezés és a végrehajtási aspektusait.
+title: Ütemezés és végrehajtás a Data Factoryvel |} A Microsoft Docs
+description: Ismerje meg az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,30 +9,29 @@ ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a70c3ddb624639411dbee961b1c4d59ac1277147
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054602"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016086"
 ---
-# <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és a végrehajtás
+# <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [csővezeték-végrehajtási és eseményindítók](../concepts-pipeline-execution-triggers.md) cikk.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [folyamat-végrehajtás és eseményindítók](../concepts-pipeline-execution-triggers.md) cikk.
 
-Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. Ez a cikk feltételezi, hogy tudomásul veszi a Data Factory alkalmazás modell fogalmakat, beleértve a tevékenység, a folyamatok, a társított szolgáltatások és a adatkészletek alapjait. Azure Data Factory alapvető fogalmait tekintse meg a következő cikkeket:
+Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. Ez a cikk azt feltételezi, hogy ismeri az adat-előállító alkalmazás modell fogalommal, mint például a tevékenység, a folyamatok, társított szolgáltatásokat és adatkészleteket alapjait. Az Azure Data Factory alapvető fogalmait tekintse meg a következő cikkeket:
 
-* [Adat-előállító bemutatása](data-factory-introduction.md)
+* [Data Factory bemutatása](data-factory-introduction.md)
 * [Folyamatok](data-factory-create-pipelines.md)
 * [Adatkészletek](data-factory-create-datasets.md) 
 
-## <a name="start-and-end-times-of-pipeline"></a>Feldolgozási folyamat kezdő és befejező időpontja
-Egy folyamat aktív csak között a **start** idő és **end** idő. Nem hajtotta végre, a kezdő időpont elé vagy a befejező időpont után. Ha a feldolgozási sor fel van függesztve, nem végre függetlenül a kezdő és záró idő. A futtatásához egy folyamatot azt kell nem lehet szüneteltetni. Ezek a beállítások (kezdő, célból szünetel) található a feldolgozási sor definíciója: 
+## <a name="start-and-end-times-of-pipeline"></a>Folyamat kezdési és befejezési idejének
+Folyamat aktív csak között a **start** idő és **záró** idő. Nem hajtotta végre, a kezdési időpont előtt vagy után a Befejezés időpontja. Ha a folyamat szüneteltetve van, nem végrehajtása attól függetlenül, a kezdési és befejezési idő. A folyamat futtatásához akkor kell szüneteltethető. Ezek a beállítások (indítás, Befejezés, szünetel) található a folyamat definíciója: 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -40,11 +39,11 @@ Egy folyamat aktív csak között a **start** idő és **end** idő. Nem hajtott
 "isPaused": false
 ```
 
-További információ: ezek a Tulajdonságok [hozzon létre adatcsatornák](data-factory-create-pipelines.md) cikk. 
+További információ: ezek a Tulajdonságok [folyamatokat hozhat létre](data-factory-create-pipelines.md) cikk. 
 
 
-## <a name="specify-schedule-for-an-activity"></a>Egy tevékenység ütemezése
-A folyamat, amely végrehajtja a rendszer nincs. A tevékenységek, amelyek a feldolgozási sor általános összefüggésben folyamatban. Segítségével egy tevékenység ismétlődő ütemezés szerint megadhatja a **Feladatütemező** tevékenység JSON szakasza. Például ütemezheti az óránkénti futásra következő tevékenységet:  
+## <a name="specify-schedule-for-an-activity"></a>Adja meg egy tevékenység ütemezését
+Már nem a végrehajtott folyamat. A folyamatban lévő teljes a környezetben, a folyamat végrehajtása tevékenység. Egy tevékenység ismétlődő ütemezés szerint megadhatja az a **scheduler** tevékenység JSON szakaszában. Például egy tevékenység, amely a következő óránként futtat ütemezhet:  
 
 ```json
 "scheduler": {
@@ -53,20 +52,20 @@ A folyamat, amely végrehajtja a rendszer nincs. A tevékenységek, amelyek a fe
 },
 ```
 
-Az alábbi ábrán is látható, mert annak ütemezését, hogy egy tevékenység létrehoz több windows átfedésmentes a folyamat elindítása és befejezési időpontja. Átfedésmentes windows rendszer rögzített méretű mozaikként, átfedés nélkül, összefüggő időközök sorozata. A logikai átfedésmentes egy tevékenység hívjuk **tevékenység windows**.
+Az alábbi ábrán látható, adjon meg egy ütemezést egy tevékenység létrehoz több windows átfedésmentes az a folyamat kezdési és befejezési időpontja. Az átfedésmentes ablakok rögzített méretű mozaikként, átfedés, összefüggő időintervallumok egymást. Ezek logikai az átfedésmentes ablakok egy tevékenység nevezzük **tevékenységablakok**.
 
-![Tevékenység Feladatütemező – példa](media/data-factory-scheduling-and-execution/scheduler-example.png)
+![Tevékenység ütemező példa](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
-A **Feladatütemező** tevékenység tulajdonsága nem kötelező. Ha megadja ezt a tulajdonságot, akkor meg kell egyeznie a ütemben történik meg a kimeneti adatkészlet a tevékenység-definíció adható meg. Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Ezért egy kimeneti adatkészlet kell létrehoznia, még akkor is, ha a tevékenység nem ad kimenetet. 
+A **scheduler** egy tevékenység tulajdonság nem kötelező. Ez a tulajdonság adja meg, ha azt meg kell egyeznie a tevékenység kimeneti adatkészlet definíciójában megadott kiadása ütemben történik. Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Ezért kell létrehoznia egy kimeneti adatkészletet akkor is, ha a tevékenység nem állít elő semmilyen kimenetet. 
 
-## <a name="specify-schedule-for-a-dataset"></a>Adja meg a DataSet adatkészlet ütemezését
-A Data Factory-folyamat egy tevékenységének is igénybe vehet a nulla vagy több bemeneti **adatkészletek** , majd előállítanak egy vagy több kimeneti adatkészletek. A tevékenység, a ütemben történik, amelyen a bemeneti adatok érhető el, vagy a kimeneti adatok hozzák használó adhat meg a **rendelkezésre állási** szakasz az adatkészlet-definíciókban. 
+## <a name="specify-schedule-for-a-dataset"></a>Adja meg az ütemezés egy adatkészlethez.
+A Data Factory-folyamat egy tevékenységet is igénybe vehet a nulla vagy több bemeneti **adatkészletek** , és egy vagy több kimeneti adatkészletet. Egy tevékenység kiadása ütemben történik, amikor a bemeneti adatok érhető el, vagy a kimeneti adatokat használó által előállított megadhatja a **rendelkezésre állási** szakasz az adatkészlet-definíciókban. 
 
-**Gyakoriság** a a **rendelkezésre állási** szakasz megadja időegységét. A gyakoriság engedélyezett értékek a következők: perc, óra, nap, hét és hónap. A **időköz** rendelkezésre állással kapcsolatos szakaszának a tulajdonság határozza meg a gyakoriság egy szorzóval. Példa: Ha a gyakoriság napra van beállítva, és időköz egy kimeneti adatkészlet 1 értékre van állítva, a kimeneti adatok naponta jön létre. Ha gyakoriságát percben, azt javasoljuk, hogy beállította az intervallum nem lehet kisebb, mint 15. 
+**Gyakoriság** a a **rendelkezésre állási** szakasz meghatározza a időegység. A gyakoriság megengedett értékei a következők: Perc, óra, nap, heti és havi. A **időköz** tulajdonság a rendelkezésre állási szakaszban adja meg a gyakoriság egy szorzóval. Példa: Ha a időköz értéke 1, a kimeneti adatkészletek gyakoriságát napi értékre van állítva, a kimeneti adatokat naponta jön létre. Perc, a gyakoriságot adja meg, azt javasoljuk, hogy az intervallum nem lehet kisebb, mint 15-re állítsa be. 
 
-A következő példában a bemeneti érhetők el adatok óránkénti és a kimeneti adatok rendszer óránként készít adatszeletet (`"frequency": "Hour", "interval": 1`). 
+A következő példában a bemeneti adatok érhető el Óránként, és a kimeneti adatokat a rendszer létrehoz egy adatszeletet (`"frequency": "Hour", "interval": 1`). 
 
-**Bemeneti adatkészletet:** 
+**Bemeneti adatkészlet:** 
 
 ```json
 {
@@ -118,9 +117,9 @@ A következő példában a bemeneti érhetők el adatok óránkénti és a kimen
 }
 ```
 
-Jelenleg **kimeneti adatkészlet meghajtók az ütemezés**. Más szóval a megadott kimeneti adatkészlet ütemezése futásidőben tevékenység futtatásához használt. Ezért egy kimeneti adatkészlet kell létrehoznia, még akkor is, ha a tevékenység nem ad kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. 
+Jelenleg **kimeneti adatkészlet határozza az ütemezés**. Más szóval a kimeneti adatkészlet megadott ütemezés egy tevékenység futásidőben futtatásához használt. Ezért kell létrehoznia egy kimeneti adatkészletet akkor is, ha a tevékenység nem állít elő semmilyen kimenetet. Ha a tevékenység nem fogad semmilyen bemenetet, kihagyhatja a bemeneti adatkészlet létrehozását. 
 
-A következő adatcsatorna-definícióban a **Feladatütemező** tulajdonság használatával adja meg a tevékenység ütemezését. Ez a tulajdonság nem kötelező. Az ütemezés a tevékenység jelenleg, meg kell egyeznie a megadott kimeneti adatkészlet ütemezése.
+A következő folyamat definíciójában a **scheduler** tulajdonság segítségével adja meg a tevékenység ütemezését. Ez a tulajdonság nem kötelező. A tevékenység ütemezését jelenleg a kimeneti adatkészlet megadott ütemezés egyeznie kell.
  
 ```json
 {
@@ -165,36 +164,36 @@ A következő adatcsatorna-definícióban a **Feladatütemező** tulajdonság ha
 }
 ```
 
-Ebben a példában a tevékenység fut, a kezdő és befejező időpontja a feldolgozási folyamat között óránkénti. A kimeneti adatok óránkénti állítanak elő háromórás windows (8 de - de, Reggel 9-10 Reggel 9, és 10 de - de). 
+Ebben a példában a tevékenység fut, a folyamat kezdési és befejezési idejének között óránként. A kimeneti adatokat van létrehoz egy adatszeletet háromórás Windows (8-kor – 9 kor, 9: 00 - 10-kor, és 10 óra – 11: 00). 
 
-Felhasznált vagy egy futtatása tevékenység által létrehozott adatok tárolóegységekhez nevezik egy **adatszelet**. Az alábbi ábrán látható egy példa egy bemeneti adatkészlet a tevékenység, és egy kimeneti adatkészletet: 
+Felhasznált vagy futtatása tevékenység által előállított adatok minden egysége nevezzük egy **adatszelet**. Az alábbi ábrán látható egy példa egy bemeneti adatkészlet tevékenységet, és a egy kimeneti adatkészletet: 
 
-![Rendelkezésre állási Feladatütemező](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
+![Rendelkezésre állási ütemező](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
-Az ábrán látható a bemeneti és kimeneti adatkészlet óránkénti adatszeletek. Az ábrán látható, amely készen áll a feldolgozás három bemeneti szeletek. A 10-11 AM tevékenység van folyamatban, a 10-11 AM kimeneti szeletet előállító. 
+Az ábrán látható, a bemeneti és kimeneti adatkészlet óránkénti adatszelet. Az ábrán látható három a bemeneti szeletek, amelyek készen állnak a feldolgozásra. A 10-11 Órakor tevékenység van folyamatban, a 10-11 Órakor kimeneti szelet előállítása. 
 
-A alatt az időtartam alatt a jelenlegi szelet az adatkészlet JSON társított változók használatával végezheti el: [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) és [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Hasonló módon érheti el a WindowStart és WindowEnd segítségével egy tevékenység ablakban társított időtartam alatt. Az ütemezés tevékenység meg kell egyeznie a kimeneti adatkészlet a tevékenység ütemezését. Ezért a SliceStart és a SliceEnd értékek megegyeznek WindowStart és WindowEnd értékek kulcsattribútumokkal. Ezek a változók további információkért lásd: [adat-előállító funkciók és rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables) cikkeket.  
+Az időintervallum, az aktuális szelet az adatkészlet JSON társított változók használatával érhető el: [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) és [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Ehhez hasonlóan az időintervallum tartozó adatszeleteket WindowStart és WindowEnd segítségével érheti el. Az ütemezés egy tevékenység meg kell egyeznie az ütemezését, a tevékenység kimeneti adatkészlete. Ezért a SliceStart és a SliceEnd értékei ugyanazok, mint WindowStart és WindowEnd értékeket jelölik. Ezeket a változókat a további információkért lásd: [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables) cikkeket.  
 
-Ezek a változók többféle célra használhatja a a tevékenység JSON-NÁ. Például használhatja őket adatok kiválasztásához a bemeneti és kimeneti adatkészletek adatsorozat időadatok képviselő (például: 8 óra a Reggel 9). Ez a példa **WindowStart** és **WindowEnd** jelölje be a megfelelő adatokat egy tevékenységhez futtatni, és másolja a megfelelő blob **folderPath**. A **folderPath** külön mappába kaphatnak minden órában a paraméteres van.  
+A tevékenység JSON különböző célokra lehessen felhasználni ezeket a változókat. Például használhatja őket, jelölje ki az adatokat a bemeneti és kimeneti adatkészleteket jelölő idősorozat-adatok (például: 8 VAGYOK a 9-kor). Ebben a példában is használt **WindowStart** és **WindowEnd** válassza ki a megfelelő adatokat egy tevékenységhez futtassa, és másolja a megfelelő blob **folderPath**. A **folderPath** szeretné, hogy egy külön mappát minden óra paraméteres van.  
 
-A fenti példában az ütemezés a megadott bemeneti és kimeneti adatkészletek azonos (óránként). Ha a tevékenység bemeneti adatkészlet érhető el egy másik gyakorisággal mondja ki 15 percenként, a tevékenység, amely létrehozza a kimeneti adatkészletet továbbra is fut óránként, a kimeneti adatkészlet működik a tevékenység ütemezés szerint. További információkért lásd: [eltérő gyakorisággal adatkészletek modell](#model-datasets-with-different-frequencies).
+Az előző példában az ütemezés a megadott bemeneti és kimeneti adatkészleteket az azonos (óránként). A tevékenység a bemeneti adatkészlet érhető el a különböző gyakorisággal, például: 15 percenként, ha a tevékenység, amely a kimeneti adatkészletet hozza létre továbbra is fut óránként egyszer, mert a kimeneti adatkészlet vezérli az tevékenység ütemezést. További információkért lásd: [modellezheti az adatkészletek eltérő gyakorisággal](#model-datasets-with-different-frequencies).
 
-## <a name="dataset-availability-and-policies"></a>Adatkészlet rendelkezésre állását és házirendek
-Amint láthatta gyakoriságát és a rendelkezésre állással kapcsolatos szakaszának adatkészlet-definícióban időköz tulajdonságok használatát. Néhány más tulajdonságok, amelyek hatással vannak az ütemezés és tevékenység végrehajtási vannak. 
+## <a name="dataset-availability-and-policies"></a>Adatkészlet rendelkezésre állás és a szabályzatok
+Amint láthatta gyakoriságát és az adatkészlet-definícióban rendelkezésre állási szakaszának időköz tulajdonságok használatát. Nincsenek néhány más tulajdonságok, amelyek befolyásolják, hogy az ütemezés és a tevékenység. 
 
 ### <a name="dataset-availability"></a>Adatkészlet rendelkezésre állása 
-A következő táblázat ismerteti a használható tulajdonságok a **rendelkezésre állási** szakasz:
+A következő táblázat ismerteti a használható tulajdonságok a **rendelkezésre állási** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| frequency |Megadja a dataset szelet üzemi időegységét.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Igen |NA |
-| interval |Megadja egy szorzóval gyakoriság<br/><br/>"X időköz" határozza meg, milyen gyakran a szelet jön létre.<br/><br/>Ha módosítania kell a adatkészlet kell szeletelhetők óránként, beállíthatja <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/><b>Megjegyzés:</b>: perces gyakoriságot ad meg, ha azt javasoljuk, hogy beállította az intervallum nem lehet kisebb, mint 15 |Igen |NA |
-| stílus |Meghatározza, hogy a szelet akkor a rendszer az időköz kezdő/végén.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha gyakoriságának beállítása hónapot és stílus EndOfInterval beállítása, a szelet hónap utolsó napján elő. Ha a stílus StartOfInterval van megadva, a szelet hónap első napján elő.<br/><br/>Ha nap gyakoriságának beállítása és stílus EndOfInterval beállítása, a szelet elő az elmúlt órában a nap.<br/><br/>Ha gyakoriságának beállítása óra és stílus EndOfInterval beállítása, a szelet elő az órát végén. Például egy adatszelethez du. 1 – 2 óra időszakban, a szelet hozzák 2 du. |Nem |EndOfInterval |
-| anchorDateTime |Határozza meg az idő az ütemező által használt adatkészlet szelet határok számítási abszolút pozíciója. <br/><br/><b>Megjegyzés:</b>: Ha a AnchorDateTime részekből dátum, amelyek részletesebben, mint a gyakorisága, akkor a részletesebb részek figyelmen kívül lesznek hagyva. <br/><br/>Például ha a <b>időköz</b> van <b>óránkénti</b> (gyakoriság: óra és időköz: 1) és a <b>AnchorDateTime</b> tartalmaz <b>percet és másodpercet</b>, akkor a <b>percet és másodpercet</b> a AnchorDateTime részei a rendszer figyelmen kívül hagyja. |Nem |01/01/0001 |
-| offset |TimeSpan érték, amely a kezdő és a záró összes adatkészlet szeletek vette. <br/><br/><b>Megjegyzés:</b>: Ha anchorDateTime és az offset is meg van adva, az eredmény a kombinált shift-e. |Nem |NA |
+| frequency |Megadja az adatkészlet szelet éles üzemi környezetek részei.<br/><br/><b>Támogatott gyakoriság</b>: Perc, óra, nap, hét, hónap |Igen |NA |
+| interval |Megadja egy szorzóval gyakoriság<br/><br/>"X időköz" határozza meg, hogy milyen gyakran a szelet előállítása.<br/><br/>Ha az adatkészlet óradíjat kell szeletelt van szüksége, akkor be <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/><b>Megjegyzés</b>: Perces gyakoriságot ad meg, ha azt javasoljuk, hogy legalább 15-re állítsa be az időköz |Igen |NA |
+| stílus |Itt adhatja meg, hogy a szelet intervallum kezdő/záró lehet termelni.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha a gyakoriság értéke hónap és EndOfInterval van beállítva, a szelet előállítása a hónap utolsó napján. Ha a stílus StartOfInterval értékre van állítva, a szelet előállítása a hónap első napján.<br/><br/>Gyakoriságát napi értékre van állítva, és EndOfInterval van beállítva, ha a szelet előállítása a nap az elmúlt órában.<br/><br/>Ha a stílus beállítása EndOfInterval Frequency értéke Hour, a szelet előállítása a óra végén. Például egy szelet du. 1 – 2 PM időszakban, a rendszer óránként létrehoz egy 2-kor. |Nem |EndOfInterval |
+| anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási idő abszolút pozícióját határozza meg. <br/><br/><b>Megjegyzés</b>: Ha a AnchorDateTime dátum részei, amelyek részletesebben, mint a gyakorisága, majd a rendszer figyelmen kívül hagyja a részletesebb részeket. <br/><br/>Például ha a <b>időköz</b> van <b>óránként</b> (frequency: hour és interval: 1.) és a <b>AnchorDateTime</b> tartalmaz <b>perceket és másodperceket</b>, akkor a <b>perceket és másodperceket</b> a AnchorDateTime részei a rendszer figyelmen kívül hagyja. |Nem |01/01/0001 |
+| offset |Időtartam, amely szerint a kezdő és befejező az összes adatkészlet szeleteit áttért. <br/><br/><b>Megjegyzés</b>: Ha anchorDateTime és az offset is meg van adva, a kombinált shift jön létre. |Nem |NA |
 
-### <a name="offset-example"></a>az eltolási – példa
-Alapértelmezés szerint naponta (`"frequency": "Day", "interval": 1`) szeletek kezdjék 12 óra UTC idő szerint (éjfél). Ha azt szeretné, hogy a kezdési idő reggel 6 óra UTC idő helyette, állítsa be az eltolás látható módon a következő kódrészletet: 
+### <a name="offset-example"></a>a példában eltolása
+Alapértelmezetten naponta (`"frequency": "Day", "interval": 1`) a szeletek 12 AM (éjfél) (UTC) időpontban el. Ha azt szeretné, reggel 6 óra UTC idő helyett lennie a kezdési időpont, állítsa be az eltolás az alábbi kódrészletben látható módon: 
 
 ```json
 "availability":
@@ -204,8 +203,8 @@ Alapértelmezés szerint naponta (`"frequency": "Day", "interval": 1`) szeletek 
     "offset": "06:00:00"
 }
 ```
-### <a name="anchordatetime-example"></a>anchorDateTime – példa
-A következő példában a dataset 23 óránként jön létre. A anchorDateTime, melynek értéke által meghatározott időpontban elindítja az első szelet `2017-04-19T08:00:00` (UTC idő).
+### <a name="anchordatetime-example"></a>anchorDateTime példa
+A következő példában az adatkészlet 23 óránként jön létre. Az első szelet elindítja a anchorDateTime, amelynek értéke által meghatározott időben `2017-04-19T08:00:00` (UTC idő).
 
 ```json
 "availability":    
@@ -216,8 +215,8 @@ A következő példában a dataset 23 óránként jön létre. A anchorDateTime,
 }
 ```
 
-### <a name="offsetstyle-example"></a>Az offset/stílus – példa
-A következő adatkészlet egy havi adatkészlet és a 3. minden hónap 8:00 órakor hozzák (`3.08:00:00`):
+### <a name="offsetstyle-example"></a>Példa offset/stílusa
+A következő adatkészlet egy havi adatkészlet és a 3. – 8:00 órakor havonta jön létre (`3.08:00:00`):
 
 ```json
 "availability": {
@@ -228,15 +227,15 @@ A következő adatkészlet egy havi adatkészlet és a 3. minden hónap 8:00 ór
 }
 ```
 
-### <a name="dataset-policy"></a>A DataSet házirend
-Egy adatkészlet tartozhat egy meghatározott érvényesség-ellenőrzési házirend, amely meghatározza, hogyan olyan szelet végrehajtással által létrehozott adatokat is ellenőrizni kell, mielőtt azt készen áll a felhasználásra. Ilyen esetben a szelet végrehajtás befejezését követően a kimeneti szelet állapota **Várakozás** rendelkező, a részállapot **érvényesítési**. A szeletek ellenőrzését követően a szelet állapota **készen**. Ha egy adatszelet készült, de nem felelt meg az érvényesítési, alsóbb rétegbeli szeletek a szelet függő tevékenység fut nincsenek feldolgozva. [Megfigyelés és kezelés folyamatok](data-factory-monitor-manage-pipelines.md) ismerteti a különböző állapotok adat-előállítóban adatszeletek.
+### <a name="dataset-policy"></a>Adatkészlet-házirend
+Egy adatkészlet tartozhat egy meghatározott érvényesség-ellenőrzési szabályzat, amely meghatározza, hogyan egy szelet végrehajtását által létrehozott adatokat is ellenőrizni kell, mielőtt, készen áll a felhasználásra. Ezekben az esetekben a szelet befejezése után a végrehajtási, a kimeneti szelet állapota **Várakozás** -az-substatus **érvényesítési**. Miután a szelet érvényesítése után a szelet állapota **készen**. Adatszelet készült, de nem felelt meg az ellenőrzést, ha a szelet függő, alsóbb rétegbeli szeletek tevékenység-végrehajtás nem kerülnek feldolgozásra. [Folyamatok figyelése és felügyelete](data-factory-monitor-manage-pipelines.md) ismerteti a különböző állapotok adatszelet adat-előállítóban.
 
-A **házirend** az adatkészlet-definícióban szakaszban határozza meg, a feltételek vagy a feltétellel, hogy a dataset szeletek teljesítenie kell. A következő táblázat ismerteti a használható tulajdonságok a **házirend** szakasz:
+A **házirend** az adatkészlet-definícióban szakasz definiálja a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. A következő táblázat ismerteti a használható tulajdonságok a **házirend** szakaszban:
 
-| Házirend neve | Leírás | Vonatkozik. | Szükséges | Alapértelmezett |
+| Házirend neve | Leírás | A alkalmazni | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Azt ellenőrzi, hogy az adatokat egy **Azure blob** megfelel a minimális méretét (megabájtban). |Azure-blob |Nem |NA |
-| minimumRows | Azt ellenőrzi, hogy az adatokat egy **Azure SQL adatbázis** vagy egy **Azure-tábla** a sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
+| minimumSizeMB | Azt ellenőrzi, hogy az adatok egy **az Azure blob** megfelel a minimális méret (megabájtban). |Azure-blob |Nem |NA |
+| minimumRows | Azt ellenőrzi, hogy az adatok egy **Azure SQL database** vagy egy **Azure-tábla** sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
 
 #### <a name="examples"></a>Példák
 **minimumSizeMB:**
@@ -264,76 +263,76 @@ A **házirend** az adatkészlet-definícióban szakaszban határozza meg, a felt
 }
 ```
 
-Ezek a tulajdonságok és példák kapcsolatos további információkért lásd: [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. 
+Ezeket a tulajdonságokat és példákat kapcsolatos további információkért lásd: [adatkészleteket hoz létre](data-factory-create-datasets.md) cikk. 
 
 ## <a name="activity-policies"></a>Tevékenységszabályzatok
-A házirendek milyen hatással a futtatási viselkedés tevékenység, kifejezetten a szelet egy tábla feldolgozásakor. A következő táblázat a részletesen.
+Házirendek egy tevékenység futásidejű viselkedését befolyásolják, kifejezetten egy tábla a szelet feldolgozása során. Az alábbi táblázatban a részleteket.
 
 | Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
-| egyidejűségi |Egész szám <br/><br/>A maximális érték: 10 |1 |A tevékenység egyidejű végrehajtások száma.<br/><br/>Meghatározza, hogy a párhuzamos tevékenység végrehajtások, amely akkor fordulhat elő, a másik szeletek számát. Például ha egy tevékenység kell végighaladnia rendelkezésre álló adatok, nagyobb feldolgozási értéke számos felgyorsítja az adatok feldolgozása. |
-| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza, hogy feldolgozott adatszeletek sorrendje.<br/><br/>Például ha 2 szeletek (du. 4: egy azonban és délután 5 óra egy másik tulajdonságnak), és mindkét végrehajtási függőben van. Ha a executionPriorityOrder NewestFirst kell, a szelet, délután 5 óra lesz elsőként feldolgozva. Hasonlóképpen ha OldestFIrst kell executionPriorityORder, majd a szelet du. 4: dolgoz fel. |
-| retry |Egész szám<br/><br/>A maximális érték 10 is lehet. |0 |Az adatok feldolgozása a szeletre vonatkozó hiba van megjelölve, mielőtt újrapróbálkozások száma. Egy adatszelet tevékenység végrehajtása a rendszer ismét megkísérli legfeljebb a megadott újrapróbálkozások maximális számát. Az újra gombra a lehető leghamarabb a meghibásodás után történik. |
-| timeout |A TimeSpan |00:00:00 |A tevékenység időkorlátja. . Példa: 00:10:00 (azt jelenti, időtúllépés 10 perc)<br/><br/>Ha az érték nincs megadva vagy 0, az időtúllépési érték végtelen.<br/><br/>A szelet adatok feldolgozási ideje meghaladja a időtúllépési értéket, ha azt megszakadt, és a rendszer megkísérli újra feldolgozását. Az újrapróbálkozások száma attól függ, hogy az újra gombra tulajdonság. Időtúllépés történik, ha a beállítás időtúllépésbe került. |
-| késleltetés |A TimeSpan |00:00:00 |Adja meg a késleltetés, elindul a szelet feldolgozásának előtt.<br/><br/>Egy adatszelet tevékenység végrehajtása után a késleltetési idő legyen a várt végrehajtási ideje elmúlt elindult.<br/><br/>. Példa: 00:10:00 (magában foglalja a késleltetést a 10 perc) |
-| hosszú újrapróbálkozás |Egész szám<br/><br/>A maximális érték: 10 |1 |Sikertelen volt a szelet végrehajtása előtt hosszú újrapróbálkozási kísérletek száma.<br/><br/>hosszú újrapróbálkozás kísérletek által longRetryInterval távolságban helyezkednek el. Ha meg kell adnia egy újrapróbálkozási kísérletek között eltelt idő, így hosszú újrapróbálkozás használja. Ha mind az újra gombra, és a hosszú újrapróbálkozás meg van adva, minden hosszú újrapróbálkozás kísérlet tartalmazza újrapróbálkozások és kísérletek maximális számát. Próbálkozzon újra * hosszú újrapróbálkozás.<br/><br/>Ha például a tevékenység-házirend van a következő beállításokat:<br/>Próbálkozzon újra: 3<br/>hosszú újrapróbálkozás: 2. régiója<br/>longRetryInterval: 01:00:00<br/><br/>Tegyük fel, nincs végrehajtandó csak egy szelet (állapot vár) és a tevékenység végrehajtása meghiúsul minden alkalommal. Eredetileg nem lenne 3 egymást követő végrehajtási kísérletek. A szelet állapota minden kísérlet után újra lehet. Miután először 3 kísérletet keresztül történik, a szelet állapota hosszú újrapróbálkozás lehet.<br/><br/>Egy óra (Ez azt jelenti, hogy longRetryInteval tartozó érték) nem lenne a 3 egymást követő végrehajtási kísérletek egy másik készlet. Ezt követően a szelet állapota akkor sikertelen, és nincs további újrapróbálkozások volna kísérli meg a. Ezért a teljes 6 történt kísérlet.<br/><br/>Ha bármely végrehajtása sikeres, a szelet állapota Kész és nincs további újrapróbálkozások próbált vannak.<br/><br/>hosszú újrapróbálkozás függő adatok nem determinisztikus időpontokban érkeznek vagy flaky akkor következik be, mely az adatfeldolgozás alatt a környezetben használható. Ilyen esetekben újrapróbálkozások egymás után nem segíthet ezzel, és ezzel egy időszak után időt a kívánt kimeneti eredményez.<br/><br/>Járjon el a Word: nincs beállítva hosszú újrapróbálkozás vagy longRetryInterval magas értékeit. Általában a magasabb értékkel rendszeres problémákkal utalnak. |
-| longRetryInterval |A TimeSpan |00:00:00 |Hosszú újrapróbálkozások közötti késleltetés |
+| Egyidejűség |Egész szám <br/><br/>A maximális érték: 10 |1 |A tevékenység párhuzamos végrehajtások száma.<br/><br/>Ez határozza meg, amely akkor fordulhat elő, a másik szeletek párhuzamos tevékenység-végrehajtások száma. Például ha egy tevékenység kell áthaladnia rengeteg rendelkezésre álló adatok, a nagyobb párhuzamosság értéke felgyorsítja az adatfeldolgozás. |
+| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza, hogy a feldolgozott adatszelet rendezése.<br/><br/>Például ha 2 szeletekre (du. 4: az egyik oka és a egy másik, 17: 00), és mindkettő végrehajtás függőben. A executionPriorityOrder NewestFirst kell állít be, ha a szelet délután 5-kor lesz elsőként feldolgozva. Hasonlóképpen ha beállította a executionPriorityORder OldestFIrst kell, majd du. 4: a szeletet dolgoz fel. |
+| retry |Egész szám<br/><br/>A maximális érték 10 lehet. |0 |Mielőtt az adatfeldolgozás a szelet hiba van megjelölve. az újrapróbálkozások száma. Tevékenység-végrehajtási adatszelet rendszer legfeljebb a megadott újrapróbálkozások számát. Az újrapróbálkozás történik, a hiba után minél hamarabb. |
+| timeout |Időtartam |00:00:00 |A tevékenység időkorlátja. Példa: 00:10:00 (magában foglalja a időkorlátja 10 perc)<br/><br/>Ha egy érték nincs megadva vagy 0, az időtúllépési érték a végtelen.<br/><br/>Ha a szelet adatok feldolgozási idő meghaladja az időtúllépés értéke, meg lett szakítva, és a rendszer megpróbálja próbálkozzon újra a feldolgozást. Az újrapróbálkozások száma attól függ, hogy az újrapróbálkozási tulajdonság. Időtúllépés történik, ha az állapot értéke időtúllépés miatt megszakadt. |
+| késleltetés |Időtartam |00:00:00 |Adja meg a késleltetés, elindul a szelet feldolgozásának előtt.<br/><br/>Adatszelet tevékenység végrehajtása után a késleltetési idő legyen a várt végrehajtási időn túli elindult.<br/><br/>Példa: 00:10:00 (magában foglalja a késés 10 perc) |
+| longRetry |Egész szám<br/><br/>A maximális érték: 10 |1 |A szelet végrehajtása előtt hosszú újrapróbálkozási kísérletek száma.<br/><br/>longRetry kísérletek által longRetryInterval elosztásban. Ezért ha egy újrapróbálkozási kísérletek közötti időre van szüksége, a longRetry. Ha az újrapróbálkozás és longRetry is meg van adva, egyes longRetry kísérletek magában foglalja az újrapróbálkozási kísérletek és kísérletek maximális számát. a rendszer újrapróbálkozik * longRetry.<br/><br/>Például ha a tevékenységszabályzat is van a következő beállításokat:<br/>Ismételje meg: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Tegyük fel, hogy csak egyetlen szeletet végrehajtására van (Várakozás állapot) és a tevékenység-végrehajtási minden alkalommal sikertelen lesz. Kezdetben lenne 3 egymást követő végrehajtási kísérlet. Minden kísérlet után a szelet állapota lenne, próbálkozzon újra. Első 3 kísérletek esnek, miután a szelet állapota LongRetry lehet.<br/><br/>Egy óra (azaz longRetryInteval a érték) egy másik hárompéldányos készletet 3 egymást követő végrehajtási kísérlet lenne. Ezt követően a szelet állapota szeretné végrehajtani, és nincs további újrapróbálkozások volna lehetséges. Ezért a teljes 6 kísérlet történt.<br/><br/>Minden olyan végrehajtása sikeres, ha a szelet állapota kész lenne, és nincs további próbálkozások nem megkísérlése.<br/><br/>a függő adatok érkeznek nem determinisztikus időpontokban vagy a teljes környezet nem flaky akkor fordul elő, hogy mely adatok feldolgozása a longRetry használni. Ezekben az esetekben újrapróbálkozások egymás után nem segíthet ezzel és a egy időszak után így időben a kívánt kimenetet eredményez.<br/><br/>Legyen körültekintő, Word: nincs beállítva a longRetry, longRetryInterval vagy nagy értékeket. Általában a magasabb értékek hasonló más rendszerből adódó problémákat. |
+| longRetryInterval |Időtartam |00:00:00 |Hosszú újrapróbálkozás kísérletek közötti késleltetés |
 
 További információkért lásd: [folyamatok](data-factory-create-pipelines.md) cikk. 
 
-## <a name="parallel-processing-of-data-slices"></a>Párhuzamos feldolgozás adatszeletek
-A feldolgozási sor kezdő dátuma a múltban állíthatja be. Ha így tesz, a Data Factory automatikusan kiszámítja a (hátsó kitöltés) összes adatszeletek a múltban, és elkezdi őket. Példa: Ha kezdő dátum 2017-04-01 hoz létre egy folyamatot, és az aktuális dátum 2017-04-10. Ha a ütemben történik a kimeneti adatkészlet naponta, majd a Data Factory indítása összes a szeletet 2017-04-01-től 2017-04-09 feldolgozása azonnal, mert a kezdő dátuma a múltban van. A szelet 2017-04-10-nem lett feldolgozva még, mert a rendelkezésre állással kapcsolatos szakaszának style tulajdonságának értéke EndOfInterval alapértelmezés szerint. A legrégebbi szelet feldolgozása először alapértelmezett executionPriorityOrder értéke OldestFirst. A style tulajdonságának ismertetését lásd: [adatkészlet rendelkezésre állási](#dataset-availability) szakasz. A executionPriorityOrder szakasz, olvassa el a [tevékenység szabályzatai](#activity-policies) szakasz. 
+## <a name="parallel-processing-of-data-slices"></a>Párhuzamos feldolgozás adatszelet
+A folyamat kezdő dátuma a múltban állíthatja be. Ha így tesz, a Data Factory automatikusan kiszámítja a (háttérrendszer kitöltéseket) az összes adatszelet a múltban, és elkezdi őket. Példa: Ha a kezdő dátuma: 2017-04-01 létrehoz egy folyamatot, és az aktuális dátum későbbi, a 2017-04-10. Ha a kiadása ütemben történik, a kimeneti adatkészlet naponta, akkor az összes szelet a 2017-04-01, 2017-04-09 feldolgozása a Data Factory kezdődik azonnal, mert a kezdő dátuma a múltban van. 2017-04-10 származó szelet nem lett feldolgozva még, mert a rendelkezésre állási szakaszban style tulajdonság értéke EndOfInterval alapértelmezés szerint. A legrégebbi szelet feldolgozása először alapértelmezett executionPriorityOrder értéke OldestFirst. A stílustulajdonság ismertetését lásd: [adatkészlet rendelkezésre](#dataset-availability) szakaszban. A executionPriorityOrder szakasz, olvassa el a [tevékenység-szabályzatok](#activity-policies) szakaszban. 
 
-Konfigurálhat biztonsági kitöltött adatszeletek beállításával párhuzamos feldolgozásra a **egyidejűségi** tulajdonságot a **házirend** szakasz a tevékenység JSON. Ez a tulajdonság, amely akkor fordulhat elő, a másik szeletek párhuzamos tevékenység végrehajtások számát határozza meg. A feldolgozási tulajdonság alapértelmezett értéke 1. Ezért egy szelet feldolgozása egyszerre alapértelmezés szerint. A maximális értéke 10. Amikor egy folyamatot kell halad át a rendelkezésre álló adatok, nagyobb feldolgozási értéke számos felgyorsítja az adatok feldolgozása. 
+Adatszelet biztonsági töltve beállításával a párhuzamos feldolgozásra is beállíthat a **egyidejűségi** tulajdonságot a **házirend** szakasz a tevékenység JSON. Ez a tulajdonság határozza meg, amely akkor fordulhat elő, a másik szeletek párhuzamos tevékenység-végrehajtások száma. Az egyidejűség tulajdonság alapértelmezett értéke 1. Ezért egy szelet feldolgozása egyszerre alapértelmezés szerint. A maximális értéke 10. Ha egy folyamat igények haladhat végig elérhető adatokat, a nagyobb párhuzamosság értéke rengeteg felgyorsítja az adatfeldolgozás. 
 
 ## <a name="rerun-a-failed-data-slice"></a>Futtassa újra a sikertelen adatszelet
-Adatok szelet feldolgozása során hiba lép fel, ha azt megtudhatja, miért nem sikerült a szelet feldolgozása az Azure portál paneleken vagy a figyelő és App kezelése. Lásd: [figyelése és kezelése az Azure portál paneleken használatával folyamatok](data-factory-monitor-manage-pipelines.md) vagy [figyelés és a felügyeleti alkalmazás](data-factory-monitor-manage-app.md) részleteiről.
+Hiba esetén egy adatszelet feldolgozásakor talál miért sikertelen volt a szelet feldolgozása az Azure portal paneljeinek vagy Monitor and Manage Appot. Lásd: [figyelése és felügyelete az Azure portal paneljeinek használatával folyamatok](data-factory-monitor-manage-pipelines.md) vagy [megfigyelési és felügyeleti alkalmazás](data-factory-monitor-manage-app.md) részleteiről.
 
-Vegye figyelembe a következő példának, amely két tevékenység jeleníti meg. Activity1 és 2 tevékenység. Activity1 Dataset1 szelet használ fel, és Dataset2, amely runbook az Activity2 végső DataSet szelet létrehozásához által felhasznált bemeneti adatokként a szelet eredményez.
+Vegye figyelembe a következő példának, amely két tevékenységet. Hogy az Activity1 és 2. tevékenység. Activity1 Dataset1 a szelet használ fel, és a egy szeletét mutatja meg Dataset2, amely bemenetként egy szeletét mutatja meg a végső adatkészlet létrehozásához runbook az Activity2 által felhasznált eredményez.
 
-![Hibás szeletet](./media/data-factory-scheduling-and-execution/failed-slice.png)
+![Sikertelen szeletek](./media/data-factory-scheduling-and-execution/failed-slice.png)
 
-Az ábra azt mutatja, hogy kívül három legutóbbi szeletek, a 9-10 de szeletet előállító a Dataset2 hiba történt. Adat-előállító automatikusan nyomon követi a függőséget az az idő adatsorozat adatkészletet. Emiatt nem indul el a Reggel 9-10 alárendelt szeletre vonatkozó tevékenységfuttatási.
+Az ábrán látható, amely három legutóbbi szeletek, kívül a 9-10-kor szeletet előállító számára Dataset2 hiba lépett fel. A Data Factory automatikusan nyomon követi a time series adatkészlet függősége. Ennek eredményeképpen nem indul el a 9-10: 00 alsóbb rétegbeli szelet tevékenységfuttatás.
 
-Adatok gyári figyelése és a felügyeleti eszközök lehetővé teszik a diagnosztikai naplók könnyen található okozza a problémát, majd hárítsa el a sikertelen szelet elemezze. A probléma kijavítása után könnyen megkezdheti a tevékenységfuttatási a hibás szeletet létrehozásához. Futtassa újra a, és állapotváltozási adat áramlik az adatok megismeréséhez kapcsolatos további információkért lásd: [figyelése és kezelése az Azure portál paneleken használatával folyamatok](data-factory-monitor-manage-pipelines.md) vagy [figyelés és a felügyeleti alkalmazás](data-factory-monitor-manage-app.md).
+Data Factory-figyelési és felügyeleti eszközök lehetővé teszik a diagnosztikai naplókat a probléma alapvető okának megkereséséhez és javítást a sikertelen szelet részletesen. A probléma kijavítása után könnyen megkezdheti a tevékenységet a előállítani a sikertelen szeletet. Futtassa újra a valamint állapotváltásra az adatszelet további információkért lásd: [figyelése és felügyelete az Azure portal paneljeinek használatával folyamatok](data-factory-monitor-manage-pipelines.md) vagy [megfigyelési és felügyeleti alkalmazás](data-factory-monitor-manage-app.md).
 
-Után futtassa újra a a 9-10 de újrapróbálása **Dataset2**, adat-előállító elindítja a futtatáskor a 9-10 de függő szeletre vonatkozó végső adatkészlet.
+Után futtassa újra a 9-10-kor szelete **Dataset2**, a Data Factory a Futtatás a 9-10-kor függő szelet elindítja a végső adatkészlet.
 
-![Futtassa újra a sikertelen szelet](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
+![Futtassa újra a sikertelen szeletek](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Több tevékenység egy adott folyamatban
-Egy folyamathoz azonban több tevékenység is tartozhat. Ha több tevékenység rendelkezik egy folyamatot, és a tevékenység kimenete nem bemenet egy másik tevékenység, a tevékenységek párhuzamos futtathatja, ha készen áll a tevékenységekhez tartozó bemeneti adatszeletek.
+Egy folyamathoz azonban több tevékenység is tartozhat. Ha több tevékenység van folyamatban lévő és a egy tevékenység kimenetét, nem egy másik tevékenység bemeneti, a tevékenységek párhuzamosan is futtathatók a tevékenységek bemeneti adatszeletek készen állnak.
 
-Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. A tevékenységek azonos vagy különböző folyamatok lehet. A második tevékenység hajtja végre, csak ha az első címtárra futtatása sikeresen befejeződött.
+Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. A tevékenységek lehetnek azonos vagy eltérő folyamatokban. A második tevékenység végrehajtása csak az elsőt végeztével sikeresen megtörtént.
 
-Vegyük példaként a következő eset, ha a folyamat két tevékenység rendelkezik:
+Vegyük példaként a következő esetben, ha a folyamat két tevékenység rendelkezik:
 
-1. Külső bemeneti adatkészlet D1, és az előállított kimeneti adatkészlet D2 igénylő tevékenységek A1.
-2. A kimeneti adatkészlet D3 tevékenység A2 D2 adatkészletből beavatkozást igényel, és hozza létre.
+1. Tevékenység a1-es, amely külső bemeneti adatkészlet D1 igényel, és létrehozza a kimeneti adatkészlet D2.
+2. Tevékenység A2 D2 adatkészletből adatbevitelt igényel, és létrehozza a kimeneti adatkészlet D3.
 
-Ebben a forgatókönyvben tevékenységek A1 és A2 azonos szerepelnek. A tevékenység a A1 fut, amikor a külső adatokat érhető el, és elérte az ütemezett rendelkezésre állása gyakoriságát. A tevékenység a A2 fut, amikor a D2 ütemezett szeletek rendelkezésre állására, és elérte az ütemezett rendelkezésre állása gyakoriságát. Ha nincs hiba fordult elő egy adatkészlet D2 szeletek, A2 nem fut a, hogy a szelet amíg elérhetővé válik.
+Ebben a forgatókönyvben tevékenységek A1 és A2 azonos folyamatban vannak. Az a1-es tevékenységfuttatások érhető el a külső adatokat, és elérte az ütemezett rendelkezésre állása gyakorisága. A tevékenység a A2 fut, amikor elérhetővé válik a D2-es gép az ütemezett szeletek és ütemezett rendelkezésre állása gyakoriságát elérésekor. Ha egy D2 adatkészlet szelete, a2-es befejezéséig nem fut le, hogy a szelet elérhetővé válik.
 
-Az alábbi ábra a Diagram nézet azonos mindkét tevékenységeinek jelenne meg:
+A Diagram nézet mindkét azonos folyamat tevékenységei esetében a következő ábra jelenne meg:
 
-![Láncolás az azonos adatcsatorna tevékenységeinek](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
+![Láncolási tevékenységek a azonos folyamat](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
-Amint azt korábban említettük, a tevékenységek a különböző folyamatok lehet. Ilyen esetben a diagram nézetben az alábbi ábra jelenne meg:
+Ahogy korábban említettük, a tevékenységek a különböző folyamatok lehet. Ilyen esetben a következő ábra a diagram nézet jelenne meg:
 
-![Két kimenetátirányítási titkosításblokkoló tevékenységek](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
+![Láncolási tevékenységek a két folyamatot](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-Tekintse meg a [egymás után másolja](#copy-sequentially) szakasz egy példát a függelékben.
+Tekintse meg a [egymás után másolja](#copy-sequentially) szakaszban példaként a függelékben.
 
-## <a name="model-datasets-with-different-frequencies"></a>Eltérő gyakorisággal modell adatkészletek
-A minta bemeneti és kimeneti adatkészletek és a tevékenység ütemezési ablak a gyakoriságot azonos volt. Bizonyos esetekben van szükség, hogy egy vagy több bemeneti gyakoriságát eltérő gyakorisággal eredménye. Adat-előállító támogatja a modellezési forgatókönyvekben.
+## <a name="model-datasets-with-different-frequencies"></a>Modell adatkészletek eltérő gyakorisággal
+A minták a bemeneti és kimeneti adatkészleteket és a tevékenység ütemezési ablak a gyakoriságot is azonos. Egyes forgatókönyvekben van szükség, hogy állít elő kimenetet egy vagy több bemeneti gyakoriságát eltér a gyakorisággal. A Data Factory támogatja ezeket a forgatókönyveket a modellezési.
 
-### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>1. példa: A bemeneti adatok óránként napi kimeneti jelentést készít.
-Fontolja meg egy olyan forgatókönyvet, amelyben van megadott mérési adatokat az érzékelők érhető el az Azure Blob storage óránként. A statisztikákról, például átlag, maximális és minimális napi összesített jelentést készít a napon szeretné [adat-előállító hive tevékenység](data-factory-hive-activity.md).
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>1. példa: Jelentést készít, napi kimeneti a bemeneti adatokat, amely minden órában érhető el
+Példaként vegyünk egy forgatókönyvet, amelyben megadott mérési adatokat az érzékelők érhető el minden órában az Azure Blob storage-ban. Szeretne jelentést kell készítenie naponta összesített statisztikáit, például átlag, a maximális és minimális az esetén a nap [adat-előállító hive-tevékenység](data-factory-hive-activity.md).
 
-Hogyan modellezhető ebben a forgatókönyvben a Data Factory itt található:
+Itt látható, hogyan modellezhetik az ebben a forgatókönyvben a Data Factoryban:
 
 **Bemeneti adatkészlet**
 
-Az óránkénti bemeneti fájlok dobja a mappában található a megadott napon. Bemeneti rendelkezésre állásra van beállítva **óra** (gyakoriság: óra, időköz: 1).
+Az óránkénti bemeneti fájlok az adott napra megszakadnak a mappában. Bemeneti rendelkezésre állásra van beállítva, **óra** (frequency: Óra, időköz: 1.).
 
 ```json
 {
@@ -362,7 +361,7 @@ Az óránkénti bemeneti fájlok dobja a mappában található a megadott napon.
 ```
 **Kimeneti adatkészlet**
 
-Egy kimeneti fájl a napi mappában jön létre naponta. Kimeneti rendelkezésre állását nem állítják **nap** (gyakoriság: nap és időköz: 1).
+Egy kimeneti fájl jön létre minden nap a napi mappában. Kimeneti rendelkezésre állásának beállított **nap** (frequency: Nap és időköz: 1.).
 
 ```json
 {
@@ -389,9 +388,9 @@ Egy kimeneti fájl a napi mappában jön létre naponta. Kimeneti rendelkezésre
 }
 ```
 
-**Tevékenység: struktúra egy feldolgozási soros tevékenység**
+**Tevékenység: a folyamat hive-tevékenység**
 
-A hive-parancsfájl megkapja a megfelelő *DateTime* paramétereket, amelyek adatként a **WindowStart** változó, ahogy az az alábbi kódrészletet. A hive-parancsfájl Ez a változó segítségével az adatok betöltése a megfelelő mappából a nap, és futtassa az összesítés a kimenet előállításához.
+A hive-parancsfájl megkapja a megfelelő *DateTime* információkat használó paraméterként a **WindowStart** változó az alábbi kódrészletben látható módon. A hive-parancsfájl betöltheti az adatokat a megfelelő mappából a napot és az összesítést a kimenet létrehozásához futtassa ezt a változót használja.
 
 ```json
 {  
@@ -440,22 +439,22 @@ A hive-parancsfájl megkapja a megfelelő *DateTime* paramétereket, amelyek ada
 }
 ```
 
-Az alábbi ábrán a forgatókönyv a-függőség szempontjából.
+Az alábbi ábrán a forgatókönyv egy adat-függőség szempontjából.
 
 ![Függőség](./media/data-factory-scheduling-and-execution/data-dependency.png)
 
-A kimeneti szelet esetén minden nap 24 óránként szeletek a egy bemeneti adatkészlet függ. Adat-előállító ezeket a függőségeket automatikusan kiszámítja a bemeneti adatok böngészésére idő alatt, akkor a rendszer a kimeneti szelet eső szeleteket. A 24 bemeneti szeletek bármelyike nem érhető el, ha a Data Factory vár a bemeneti szelet készen álljon a napi tevékenységfuttatási megkezdése előtt.
+A kimeneti szelet minden nap a bemeneti adatkészlet a 24 óránkénti szeletek függ. A Data Factory a függőségek foglalkozhatunk azzal, a bemeneti adatokat, amely az idő alatt, a kimeneti szelet előállított szeletek által automatikusan kiszámítja. A 24 a bemeneti szeletek bármelyike nem érhető el, ha a Data Factory megvárja, amíg a bemeneti szelet készen álljon a napi tevékenységek futtatása előtt.
 
 ### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>2. példa: Adja meg a függőségi kifejezések és a Data Factory-funkciók
-Mérlegeljük, egy másik helyzet. Tegyük fel, a hive tevékenység, amely feldolgozza a két bemeneti adatkészletek. Egyik új adatokat naponta, de egyikük kap új adatokat minden héten. Tegyük a csatlakozzon a két bemenet közötti és előállít egy kimeneti minden nap.
+Vegyünk például egy másik forgatókönyv. Tegyük fel, egy hive-tevékenység, amely feldolgozza a két bemeneti adatkészletet. Egy őket az új adatok naponta rendelkezik, de egyikük lekérdezi az új adatok minden héten. Tegyük fel, hogy a csatlakozzon ehhez a két bemenet közötti, és minden nap kimenetet.
 
-Az egyszerű módszer, mely adat-előállítóban automatikusan adatokat, a jobb oldali bemeneti szeletek feldolgozását igazítani a kimeneti adatok szelet időszak nem működik.
+Az egyszerű módszer, mely adat-előállítóban automatikusan kitalálja, hogy a jobb a bemeneti szeletek feldolgozása által a kimeneti adatok szelet időpontja időszak nem működik.
 
-Meg kell adnia, hogy minden tevékenység futtatásához, a Data Factory érdemes használni a múlt héten adatszelet heti bemeneti adatkészlet. Segítségével szeretne Azure Data Factory látható módon a következő kódrészletet a viselkedés.
+Meg kell adnia, hogy minden tevékenység-végrehajtásonként, az adat-előállító kell használnia múlt héten adatszelet heti bemeneti adatkészlete esetében. Használhatja az Azure Data Factory-függvények az alábbi kódrészletben látható módon végrehajtja ezt a viselkedést.
 
 **Input1: Az Azure blob**
 
-Az első bemeneti érték naponta frissíti az Azure-blobot.
+Az első bemeneti adat naponta frissíti az Azure-blobot.
 
 ```json
 {
@@ -485,7 +484,7 @@ Az első bemeneti érték naponta frissíti az Azure-blobot.
 
 **Input2: Az Azure blob**
 
-Input2 az Azure-blobot hetente frissítése folyamatban.
+Input2 az Azure blob hetente frissítése folyamatban.
 
 ```json
 {
@@ -513,9 +512,9 @@ Input2 az Azure-blobot hetente frissítése folyamatban.
 }
 ```
 
-**Kimenete: Az Azure blob**
+**A kimenetre: Az Azure blob**
 
-Egy kimeneti fájl napjára létrejön a mappa minden nap. Kimeneti rendelkezésre állását értéke **nap** (gyakoriság: nap, időköz: 1).
+Egy kimeneti fájl jön létre minden nap a mappában az adott napra vonatkozóan. Kimeneti rendelkezésre állásának beállítása **nap** (frequency: Nap, időköz: 1.).
 
 ```json
 {
@@ -542,9 +541,9 @@ Egy kimeneti fájl napjára létrejön a mappa minden nap. Kimeneti rendelkezés
 }
 ```
 
-**Tevékenység: struktúra egy feldolgozási soros tevékenység**
+**Tevékenység: a folyamat hive-tevékenység**
 
-A hive időt vesz igénybe a két bemenet és egy kimeneti szeletet előállító minden nap. Minden nap kimeneti szelet az előző hét bemeneti szelet heti bemeneti függnek az alábbiak szerint adhatja meg.
+A hive-tevékenység a két bemenet vesz igénybe, és létrehozza a kimeneti szelet minden nap. Minden nap kimeneti szelet a következőképpen függnek az előző hét a heti bemeneti bemeneti szelet is megadhat.
 
 ```json
 {  
@@ -598,24 +597,24 @@ A hive időt vesz igénybe a két bemenet és egy kimeneti szeletet előállít�
 }
 ```
 
-Lásd: [adat-előállító funkciók és rendszerváltozók](data-factory-functions-variables.md) funkciók és a Data Factory támogató rendszerváltozók listáját.
+Lásd: [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md) függvények és rendszerváltozók, amely támogatja a Data Factory listáját.
 
 ## <a name="appendix"></a>Függelék
 
-### <a name="example-copy-sequentially"></a>Példa: egymás után másolása
-Akkor is futtathatók több másolási műveletek egymás után szekvenciális/rendezett módon. Például lehetséges, hogy két másolási tevékenység egy folyamat (CopyActivity1 és CopyActivity2) a következő bemeneti adatok kimeneti adatkészletekkel:   
+### <a name="example-copy-sequentially"></a>Példa: másolja egymás után
+Lehetőség több másolási műveletek futtatásához egymás után több egymást követő/rendezett módon. Például előfordulhat, hogy van két másolási tevékenység (CopyActivity1 és CopyActivity2) a következő bemeneti adatokat kimeneti adatkészletek rendelkező folyamatot:   
 
 CopyActivity1
 
-Bemenet: Dataset. Kimenet: Dataset2.
+Bemenet: Adatkészlet. Kimenet: Dataset2.
 
 CopyActivity2
 
 Bemenet: Dataset2.  Kimenet: Dataset3.
 
-CopyActivity2 fog futni, ha a CopyActivity1 végrehajtása sikeresen befejeződött, és Dataset2 érhető el.
+CopyActivity2 futna, ha a CopyActivity1 végrehajtása sikeresen befejeződött, és Dataset2 érhető el.
 
-Ez a minta adatcsatorna JSON:
+Itt látható a minta folyamat JSON-Fájljában:
 
 ```json
 {
@@ -696,9 +695,9 @@ Ez a minta adatcsatorna JSON:
 }
 ```
 
-Figyelje meg, hogy a példában a kimeneti adatkészlet első másolási tevékenység (Dataset2) van megadva a második tevékenység bemeneti adatként. Ezért a második tevékenység fut, csak akkor, amikor készen áll a kimeneti adatkészlet első tevékenységtől származnak.  
+Figyelje meg, hogy a példában a kimeneti adatkészlet az első másolási tevékenység (Dataset2) van megadva a második tevékenység bemeneteként. A második tevékenység fut, ezért csak akkor, amikor készen áll az első tevékenység kimeneti adatkészlete.  
 
-A példában CopyActivity2 egy másik bemeneti Dataset3, például rendelkezhet, de megadott Dataset2 CopyActivity2, bemenetként, a tevékenység nem futtatja a CopyActivity1 befejezéséig. Példa:
+A példában CopyActivity2 lehet egy másik beviteli Dataset3, például, de Dataset2 bemeneteként CopyActivity2, megadhatja, így a tevékenység nem futtatható CopyActivity1 befejezéséig. Példa:
 
 CopyActivity1
 
@@ -790,7 +789,7 @@ Bemenetek: Dataset3, Dataset2. Kimenet: Dataset4.
 }
 ```
 
-Figyelje meg, hogy a példában két bemeneti adatkészletek vannak megadva a második másolási tevékenységhez. Ha több bemeneti adatok meg vannak adva, csak az első bemeneti adatkészletet szolgál az adatok másolásának, de más adatkészletek függőségek használatosak. CopyActivity2 szeretné elindítani, csak azt követően a következő feltételek teljesülnek:
+Figyelje meg, hogy a példában két bemeneti adatkészletet vannak megadva a második másolási tevékenység. Több bemenetei között meg van adva, csak az első bemeneti adatkészletet adatok másolása szolgál, de egyéb adatkészletekhez függőségeket használják. CopyActivity2 lép érvénybe, csak azt követően a következő feltételek teljesülnek:
 
-* CopyActivity1 sikeresen befejeződött, és Dataset2 érhető el. Adat másolása az Dataset4 ezt az adathalmazt nem használja. Csak működik ütemezési függőségei a CopyActivity2.   
-* Dataset3 érhető el. Ehhez az adatkészlethez az adatokat, amelyek a célra másolódik jelöli. 
+* CopyActivity1 sikeresen befejeződött, és Dataset2 érhető el. Ez az adatkészlet nem használatos Dataset4 adatok másolásakor. Csak funkcionál ütemezési függőség CopyActivity2 számára.   
+* Dataset3 érhető el. Ez az adatkészlet a célhelyre másolt adatokat jelöli. 

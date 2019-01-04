@@ -9,17 +9,16 @@ ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698757"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022308"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -51,7 +50,7 @@ Az adatkezelési átjáró az alábbi képességeket biztosítja:
 ### <a name="command-flow-and-data-flow"></a>Parancsot a folyamat és az adatfolyam
 A másolási tevékenység használatával másolja az adatokat a helyszíni és a felhő között, amikor a tevékenység használja az átjáró át helyszíni adatforrásból származó adatok felhőbeli futtatását.
 
-Íme az adatok magas szintű folyamata és az átjáróval másolására szolgáló lépések összefoglalása: ![adatfolyam-átjáró használatával](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+A következő magas szintű adatfolyam és az átjáróval másolására szolgáló lépések összefoglalása: ![Az adatfolyam-átjáró használatával](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
 1. Adatok fejlesztői átjárót hoz létre egy Azure Data Factory segítségével a [az Azure portal](https://portal.azure.com) vagy [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/azurerm.datafactories/).
 2. Adatok fejlesztői egy helyszíni adattár társított szolgáltatás létrehoz az átjáró megadásával. A társított szolgáltatás beállításának részeként az adatok fejlesztői hitelesítési típusok és a hitelesítő adatok megadásához hitelesítő adatok beállítása alkalmazást használja.  A hitelesítő adatok beállítása párbeszédpanel kommunikál az adattár tesztelheti a kapcsolatot és az átjáró a hitelesítő adatok mentéséhez.
@@ -182,9 +181,9 @@ Ha a vállalati hálózati környezet az egy proxykiszolgálón keresztül csatl
 
 Három konfigurációs lehetőség áll rendelkezésre:
 
-* **Proxy használatának mellőzése**: átjáró nem explicit módon használja bármely proxy cloud serviceshez való csatlakozáshoz.
-* **Rendszerproxy használata**: átjáró használja a proxybeállításokat, hogy a konfigurált diahost.exe.config és diawp.exe.config.  Ha nincs proxy van konfigurálva a diahost.exe.config és diawp.exe.config, átjáró felhőszolgáltatásához csatlakozva közvetlenül a proxy áthaladás nélkül.
-* **Egyéni proxy használatát**: beállítás használata az átjáró diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása.  Cím és Port is szükséges.  Felhasználónév és jelszó megadása nem kötelező, attól függően, a proxy hitelesítési beállítást.  Minden beállítás titkosítva az átjáró hitelesítőadat-tanúsítványa és az állomás átjárót tartalmazó számítógépen helyben tárolja.
+* **Proxy használatának mellőzése**: Átjáró nem explicit módon használja bármely proxy a cloud serviceshez való csatlakozáshoz.
+* **Rendszerproxy használata**: Átjáró használja a proxybeállítást a diahost.exe.config és diawp.exe.config konfigurált.  Ha nincs proxy van konfigurálva a diahost.exe.config és diawp.exe.config, átjáró felhőszolgáltatásához csatlakozva közvetlenül a proxy áthaladás nélkül.
+* **Egyéni proxy használatát**: A beállítás használata az átjáró diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása.  Cím és Port is szükséges.  Felhasználónév és jelszó megadása nem kötelező, attól függően, a proxy hitelesítési beállítást.  Minden beállítás titkosítva az átjáró hitelesítőadat-tanúsítványa és az állomás átjárót tartalmazó számítógépen helyben tárolja.
 
 Az adatkezelési átjárót gazdaszolgáltatása automatikusan újraindul, miután mentette a frissített proxybeállításokat.
 
@@ -236,7 +235,7 @@ Ezeken a pontokon kívül is szüksége, hogy a Microsoft Azure, amely a vállal
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges tünetek
 Ha a következő hasonló hibákat észlel, akkor valószínű, a tűzfal vagy proxy kiszolgálóra, amely blokkolja az átjárót a Data Factory kapcsolódni önmaga hitelesítéséhez a helytelen konfiguráció miatt. Tekintse át a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően legyenek konfigurálva.
 
-1. Amikor megpróbálja regisztrálni az átjáró, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az átjáró-kulcsot. Regisztrálja újra az átjáró kulcs előtt győződjön meg arról, hogy az adatkezelési átjárót egy csatlakoztatott állapotban van, és a Data Management Gateway szolgáltatás elindult."
+1. Amikor megpróbálja regisztrálni az átjáró, a következő hibaüzenetet kapja: "Nem sikerült regisztrálni az átjáró-kulcsot. Regisztrálja újra az átjáró kulcs előtt győződjön meg arról, hogy az adatkezelési átjárót egy csatlakoztatott állapotban van, és a Data Management Gateway szolgáltatás elindult."
 2. A Configuration Manager megnyitásakor állapotot látja "Leválasztott" vagy "Csatlakozás". Ha Windows-eseménynaplók, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Adatkezelési átjáró", hibaüzenetek jelennek meg például a következő hiba: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
@@ -439,7 +438,7 @@ Ez a szakasz lépéseit mozgó átjáró ügyfél egyik gépről egy másik szá
 A Data Factory Editorban hitelesítő adatok titkosításához, tegye a következőket:
 
 1. A webböngésző indítása a **átjárót tartalmazó számítógépen**, navigáljon a [az Azure portal](http://portal.azure.com). Az adat-előállító keresése, ha szükséges, nyissa meg az adat-előállítóhoz a **adat-előállító** lapon, majd kattintson **létrehozás és üzembe helyezés** Data Factory Editor elindításához.   
-2. Kattintson egy meglévő **társított szolgáltatás** a fanézetben megtekintheti a JSON-definíciójában, vagy létrehoz egy társított szolgáltatást, amely egy adatkezelési átjárón igényel (például: SQL Server- vagy Oracle).
+2. Kattintson egy meglévő **társított szolgáltatás** a fanézetben megtekintheti a JSON-definíciójában, vagy létrehoz egy társított szolgáltatást, amely egy adatkezelési átjárón igényel (például: Az SQL Server vagy Oracle).
 3. A JSON-szerkesztőben a a **átjárónév** tulajdonság, adja meg az átjárója nevére.
 4. Adja meg a kiszolgáló nevét a **adatforrás** tulajdonságot a **connectionString**.
 5. Adja meg az adatbázisnév a **Initial Catalog** tulajdonságot a **connectionString**.    

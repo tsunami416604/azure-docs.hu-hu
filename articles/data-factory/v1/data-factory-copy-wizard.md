@@ -1,6 +1,6 @@
 ---
-title: Másolja az adatokat könnyen másolása varázsló – Azure |} Microsoft Docs
-description: Ismerje meg az adatokat másolni a támogatott adatforrások mosdók a Data Factory másolása varázsló használatával kapcsolatban.
+title: Adatok másolása egyszerűen a Másolás varázslóval – Azure |} A Microsoft Docs
+description: Ismerje meg a Data Factory másolási varázslója használatával adatokat másol a támogatott adatforrások a fogadóként.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,89 +10,88 @@ ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b74a431664faa95e8be9c9ff90970fd6e7c0ec7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048720"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020353"
 ---
-# <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Átmásolnia vagy áthelyeznie az adatokat könnyen az Azure Data Factory másolása varázsló
+# <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Másolja, vagy az adatok áthelyezése egyszerűen az Azure Data Factory másolási varázslója
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [másolási tevékenység oktatóanyag](../quickstart-create-data-factory-dot-net.md). 
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md). 
 
 
-Az Azure Data Factory másolása varázsló választásával dolgozhat fel adatokat, amely általában az első lépés egy végpont integrációs forgatókönyvet folyamatának megkönnyítése érdekében. Az Azure Data Factory másolása varázsló áthaladás, ha nem kell megérteni az összes társított szolgáltatások, adathalmazok és adatcsatornák a JSON-definíciót. Miután végzett a varázsló utasításait, az a varázsló automatikusan létrehozza a kijelölt adatforrás adatainak másolása a kiválasztott cél csővezeték. Emellett a varázsló segít ellenőrzése a szerzői, időpontjában alatt okozhatnak adatait, amely menti a idő jelentős részét, különösen ha meg vannak adatok bevitele először az adatforrásból. A varázsló elindításához kattintson a **adatok másolása** csempét a data factory kezdőlapján.
+Az Azure Data Factory Copy varázslót, hogy megkönnyítik a fürtjét adatokat, amely általában egy teljes körű adat-integrációs forgatókönyv az első lépés. Alatt áll az Azure Data Factory Copy varázslót, ha nem kell minden olyan JSON-definíciói társított szolgáltatások, adatkészletek és folyamatok ismertetése. Miután a varázsló összes lépését végrehajtotta, az a varázsló automatikusan létrehozza a folyamat adatokat másol a kijelölt adatforrás a kijelölt célhelyen. Emellett a másolás varázsló segítségével ellenőrizhetők a szerzői műveletek, időpontjában folyamatban betöltött adatokat, menti az idő, különösen ha meg vannak tölt be adatot az első alkalommal az adatforrásból. A másolás varázsló elindításához kattintson a **adatmásolás** csempére az adat-előállító kezdőlapja.
 
 ![Másolás varázsló](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
-## <a name="an-intuitive-wizard-for-copying-data"></a>Adatok másolása egy egyszerűen elsajátítható varázslót
-Ez a varázsló lehetővé teszi, hogy könnyedén helyezhetik át adatokat különböző forrásokból célhelyekre perc múlva. Elvégzése után a varázsló, a másolási tevékenység során a folyamat automatikusan létrejön függő Data Factory entitások (társított szolgáltatások és adatkészletek) együtt. Nincsenek további lépéseket kell végrehajtani a folyamatot létrehozni.   
+## <a name="an-intuitive-wizard-for-copying-data"></a>Egy intuitív varázslóval telepítheti az adatok másolása
+Ez a varázsló lehetővé teszi, hogy könnyedén áthelyezheti az adatokat a különféle forrásokból származó célhelyre percek alatt. Miután a varázsló lépéseit, egy másolási tevékenységgel rendelkező folyamatot automatikusan létrejön, a függő Data Factory-entitásokat (társított szolgáltatásokat és adatkészleteket) együtt. Nincsenek további lépések szükségesek a folyamat létrehozásához.   
 
 ![Adatforrás kiválasztása](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
-> Lásd: [másolása varázsló az oktatóanyag](data-factory-copy-data-wizard-tutorial.md) cikk lépéseit másolása minta folyamatokat létrehozni adatait az Azure blob-Azure SQL Database táblához. 
+> Lásd: [másolása varázsló az oktatóanyag](data-factory-copy-data-wizard-tutorial.md) cikk részletes utasításokat követve hozzon létre egy mintafolyamatot másolni az adatokat egy Azure-blobból egy Azure SQL-adatbázistáblába. 
 > 
 > 
 
-A varázsló a big Data típusú adatok szem előtt a kezdetektől úgy van kialakítva. Egyszerű és hatékony hozhatnak létre, amelyek több száz mappákat, fájlokat vagy az adatok másolása varázslóval táblák áthelyezése adat-előállító adatcsatornák. A varázsló támogatja a következő három szolgáltatás: automatikus adatelőnézet, séma rögzítési és leképezés és az adatok szűrése. 
+A varázsló big Data típusú szem előtt a kezdetektől úgy van kialakítva. Egyszerű és hatékony adat-előállító folyamatok létrehozását, hogy mappákat, fájlokat vagy táblákat, az adatok másolása varázsló segítségével több száz. A varázsló a következő három szolgáltatás támogatja: Automatikus adatelőnézet séma rögzítése és a leképezési és adatok szűrése. 
 
-## <a name="automatic-data-preview"></a>Automatikus megtekintés
-A varázsló lehetővé teszi, hogy tekintse át a választott adatforrással kapcsolatosan, hogy ellenőrizze, hogy az adatok a másolni kívánt adatokat az adatok egy részét. Ezenkívül ha az adatok szövegfájlba, másolása varázsló kijelölt szöveg sor és oszlop elválasztókat és séma automatikusan további. 
+## <a name="automatic-data-preview"></a>Automatikus adatelőnézet
+A Másolás varázslót, hogy megállapítani, hogy a megfelelő adatokat másolni kívánt adatokat-e a kijelölt adatforrás adatainak részét teszi lehetővé. Emellett ha a forrásadatok egy szövegfájlba, a Másolás varázslóval a szövegfájlt a sor- és oszlophatárolókat és séma további automatikusan elemzi. 
 
 ![A Fájlformátum beállításai](./media/data-factory-copy-wizard/file-format-settings.png)
 
 ## <a name="schema-capture-and-mapping"></a>Séma rögzítési és -leképezés
-A séma, bemeneti adatokat előfordulhat, hogy a kimeneti adatokat egyes esetekben sémája nem egyezik meg. Ebben a forgatókönyvben kell hozzárendelni a cél séma oszlopok a forrás séma oszlopokat. 
+A bemeneti adatok sémáját előfordulhat, hogy a kimeneti adatok bizonyos esetekben a séma nem egyezik meg. Ebben a forgatókönyvben a forrás-séma oszlopait a célséma oszlopokat kell. 
 
-Másolása varázsló automatikusan leképezi a forrás sémában oszlopok oszlopok a cél sémában. A leképezések felülírása a legördülő listák segítségével (de) adja meg, hogy egy oszlopot kell figyelmen kívül hagyja az adatok másolásakor.   
+A másolás varázsló automatikusan képezi le a forrás sémájának oszlopai a célséma oszlopai. Ön is a leképezések felülírása a legördülő listákkal (vagy) adja meg, hogy kell-e egy oszlopot ki kell hagyni az adatok másolása közben.   
 
-![Séma-hozzárendelése](./media/data-factory-copy-wizard/schema-mapping.png)
+![Séma-hozzárendelés](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Adatok szűrése
-A varázsló lehetővé teszi szűrése forrásadatok csak, amelyet a cél/fogadó adattárba másolni kívánt adatok kiválasztásához. Szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, és ezért javítja a teljesítményt, a másolási művelet. Biztosít egy relációs adatbázisban lévő adatok szűrése rugalmasan használatával SQL lekérdezési nyelv (vagy) fájlok az Azure blob mappában használatával [adat-előállító funkciók és változók](data-factory-functions-variables.md).   
+A varázsló lehetővé teszi, hogy végezhet szűrést a forrásadatokat, amelyet a cél/fogadó adattárba másolandó adatok kiválasztásához. Szűrés csökkenti az adatmennyiséget a fogadó adattárba másolandó, és ezért növeli az átviteli sebességet, a másolási művelet. Lehetővé teszi rugalmas szűrt adatok egy relációs adatbázisban SQL lekérdezési nyelv (vagy) fájlok használatával egy Azure blob-mappába használatával [Data Factory-funkciók és a változók](data-factory-functions-variables.md).   
 
-### <a name="filtering-of-data-in-a-database"></a>Egy adatbázis adatok szűrése
-A példában az SQL-lekérdezést használ a `Text.Format` függvény és `WindowStart` változó. 
+### <a name="filtering-of-data-in-a-database"></a>Adatbázis adatainak szűrése
+A példában az SQL-lekérdezést használja a `Text.Format` függvény és `WindowStart` változó. 
 
 ![Kifejezések ellenőrzése](./media/data-factory-copy-wizard/validate-expressions.png)
 
-### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Az adatok Azure blob mappában szűrése
-Adatok másolása egy mappába, amely alapján futásidőben határozza meg a mappa elérési változók is használhatja [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables). A támogatott értékek: **{year}**, **{month}**, **{day}**, **{óra}**, **{perc}**, és **{egyéni}**. Példa: inputfolder / {year} / {month} / {day}.
+### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Egy Azure blob-mappában lévő adatok szűrése
+Adatokat másol egy mappát, amely alapján futásidőben határozzák meg a mappa elérési útját a változók is használhat [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables). A támogatott értékek: **{year}**, **{month}**, **{day}**, **{hour}**, **{minute}**, és **{egyéni}**. Példa: inputfolder / {year} / {month} / {day}.
 
-Tegyük fel, hogy rendelkezik-e bemeneti mappák a következő formátumban:
+Tegyük fel, hogy a bemeneti mappa a következő formátumban:
 
     2016/03/01/01
     2016/03/01/02
     2016/03/01/03
     ...
 
-Kattintson a **Tallózás** gombra kattint, a **fájl vagy mappa**, keresse meg az egyik mappát (például 2016 -> 03 -> 01 -> 02), és kattintson a **válasszon**. Megtekintheti az `2016/03/01/02` a szövegmezőben. Most, cserélje le **2016** rendelkező **{year}**, **03** rendelkező **{month}**, **01** rendelkező **{day}** , és **02** rendelkező **{óra}**, és nyomja meg a Tab. Legördülő lista használatával válassza ki a formátumot az alábbi négy változók kell megjelennie:
+Kattintson a **Tallózás** gombot **fájl vagy mappa**, tallózással keresse meg az egyik mappát (például 2016 -> 03 -> 01-02 >), kattintson **válasszon**. Megtekintheti az `2016/03/01/02` a szövegmezőben. Most cserélje le **2016** a **{year}**, **03** a **{month}**, **01** a **{day}** , és **02** a **{hour}**, és lenyomja a Tab billentyűt. Válassza ki ezeket a változókat formátumát, legördülő listák kell megjelennie:
 
-![Rendszer változók használata](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
+![Rendszerváltozók használata](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Ahogy az az alábbi képernyőfelvételen, használhatja a **egyéni** változó, és bármilyen [támogatott formázási karakterláncok](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Válasszon egy mappát a struktúra, használja a **Tallózás** először gombra. Ezután cserélje le a értékét **{egyéni}**, és nyomja le az ENTER lapon, láthatja a szövegmezőben, ahová beírhatja a Formátum-karakterlánc.     
+Ahogy az az alábbi képernyőfelvételen is látható, is használhatja a **egyéni** változót, és bármely [formázási karakterláncokat támogatott](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Válasszon ki egy mappát, a struktúrával, használja a **Tallózás** először gombra. Ezután cserélje le az értéket **{egyéni}**, és nyomja le az lapján megtekintheti, a szövegmezőbe, ahol beírhatja a formázó karakterlánc.     
 
 ![Egyéni változóval](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
-## <a name="support-for-diverse-data-and-object-types"></a>A különböző adatok és objektumtípusok támogatása
-A varázsló segítségével, akár több százszor is mappákat, fájlokat vagy táblák hatékonyan mozgatják.
+## <a name="support-for-diverse-data-and-object-types"></a>Változatos és objektumtípusok támogatása
+A másolás varázsló használatával hatékonyan áthelyezheti a több száz mappákat, fájlokat vagy táblákat.
 
-![Válassza ki azokat a táblákat, amelyből adatok másolása](./media/data-factory-copy-wizard/select-tables-to-copy-data.png)
+![Másolhat adatokat tartalmazó táblák kiválasztása](./media/data-factory-copy-wizard/select-tables-to-copy-data.png)
 
 ## <a name="scheduling-options"></a>Ütemezési beállítások
-Futtathatja a másolási művelet egyszer vagy ütemezés (óránként, naponta, és így tovább). Mindkét lehetőség használható az összekötők a hardverekről a helyszínen, a felhő és a helyi asztali példány között.
+Futtathatja a másolási művelet egyszer vagy ütemterv alapján (óránként, naponta, és így tovább). Mindkét lehetőség használható betekintést az összekötők a helyszíni, felhőbeli és helyi asztali példány között.
 
-Egy egyszeri másolási művelet lehetővé teszi, hogy egy célra forrásból adatmozgás csak egyszer. Érvényes adatok bármilyen méretű és bármely támogatott formátumra. Az ütemezett másolatát lehetővé teszi, hogy az előírt ismétlődése adatokat másolhat. Gazdag beállításaihoz (például az újra gombra, időtúllépés és riasztások) segítségével konfigurálhatja az ütemezett másolatát.
+Egy egyszeri másolási művelet csak egyszer lehetővé teszi adatok áthelyezése egy forrásból egy célhelyre. Bármilyen méretű és bármely támogatott formátumú adatok vonatkozik. Az ütemezett másolási lehetővé teszi az előírt ismétlődéssel adatok másolása. Gazdag beállítások (például az újrapróbálkozási, időtúllépés és riasztások) segítségével konfigurálhatja a ütemezett példányt.
 
-![Ütemezési tulajdonságok](./media/data-factory-copy-wizard/scheduling-properties.png)
+![Ütemezés tulajdonságai](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>További lépések
-A Data Factory másolása varázsló segítségével hozzon létre egy folyamatot másolási tevékenység az első útmutatást lásd: [oktatóanyag: hozzon létre egy folyamatot, a másolása varázslóval](data-factory-copy-data-wizard-tutorial.md).
+Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Copy varázslót a gyors bemutató, lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 

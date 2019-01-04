@@ -4,15 +4,15 @@ description: Azure Files szolgáltatással kapcsolatos gyakori kérdésekre adot
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 10/04/2018
+ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972082"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001532"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -182,7 +182,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="ad-support-regions"></a>
 **Érhető el az előzetes verzió, az Azure AD SMB-n keresztül az Azure Files számára az összes Azure-régióban?**
 
-    Az előzetes verzió érhető el az összes nyilvános régióban, kivéve a: Észak-Európa.
+    Az előzetes verzióra az összes nyilvános régióban érhető el.
 
 * <a id="ad-support-on-premises"></a>
 **Támogatja az Azure AD-hitelesítés SMB-n keresztül az Azure Files (előzetes verzió) hitelesítés a helyszíni gépeket az Azure AD-vel?**
@@ -262,7 +262,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 ## <a name="share-snapshots"></a>Megosztási pillanatképek
 
-### <a name="share-snapshots-general"></a>A fájlmegosztások pillanatképeinek: általános
+### <a name="share-snapshots-general"></a>Megosztási pillanatképek: Általános kérdések
 * <a id="what-are-snaphots"></a>
 **Mik azok a fájlmegosztások pillanatképei?**  
     Az Azure fájlmegosztási pillanatképeket segítségével hozza létre a fájlmegosztások csak olvasható verzióját. Is használhatja az Azure Files a tartalom vissza egy korábbi másolása máshová az Azure-ban vagy a helyszíni további módosításokat a megosztáshoz. Megosztási pillanatképek kapcsolatos további információkért tekintse meg a [pillanatkép áttekintése megosztása](storage-snapshots-files.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1c0167fd7f6ef8a66968e70df26d1e7a6ed845b1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5cd720225144a34163f8d4802b63aca6a439e2c7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975253"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017667"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -39,20 +39,20 @@ ms.locfileid: "53975253"
 
 * [Web apps egy IIS-kiszolgálón – a helyszínen vagy egy virtuális Gépre](../azure-monitor/app/asp-net.md)
 * [Java-webalkalmazások](../azure-monitor/app/java-get-started.md)
-* [Node.js-alkalmazások](app-insights-nodejs.md)
+* [Node.js-alkalmazások](../azure-monitor/app/nodejs.md)
 * [Az Azure Web apps](../azure-monitor/app/azure-web-apps.md)
 * [Az Azure cloud Services](../azure-monitor/app/cloudservices.md)
 * [Docker-ban futó kiszolgálók](../azure-monitor/app/docker.md)
 * [Egyoldalas web Apps alkalmazások](../azure-monitor/app/javascript.md)
 * [Sharepoint](app-insights-sharepoint.md)
 * [Windows asztali alkalmazás](app-insights-windows-desktop.md)
-* [Más platformok](app-insights-platforms.md)
+* [Más platformok](../azure-monitor/app/platforms.md)
 
 ## <a name="is-it-free"></a>Az ingyenes?
 
 Igen, kísérleti célokra. Az alapszintű díjszabási csomaggal az alkalmazás egy bizonyos adatkeret meg minden hónapban díjmentesen is küldhet. Az ingyenes kerettel elég nagy lefedik fejlesztéshez és tegyünk közzé egy alkalmazást a felhasználók kis számú. Egy korlát, hogy több mint egy adott mennyiségű adatot feldolgozás alatt állíthatja be.
 
-Nagyobb mennyiségű, telemetriát a GB-os alapján számítjuk fel. Néhány tipp útmutatást biztosítunk [a költségek korlátozására](app-insights-pricing.md).
+Nagyobb mennyiségű, telemetriát a GB-os alapján számítjuk fel. Néhány tipp útmutatást biztosítunk [a költségek korlátozására](../azure-monitor/app/pricing.md).
 
 A vállalati csomag kötelezettséggel jár, hogy minden webkiszolgáló csomópontját a telemetriai adatokat küld minden nap. Emellett akkor megfelelő, ha szeretné használni a nagy méretű folyamatos exportálása.
 
@@ -86,7 +86,7 @@ A részletek projekt típusától függ. Egy webes alkalmazáshoz:
 * (Új csak - projektek, ha Ön [Application Insights hozzáadása egy meglévő projekt][start], ehhez manuálisan kell.) A kódrészletek szúr be az ügyfél és kiszolgáló kódot inicializálása őket az Application Insights-erőforrás azonosítója. Például egy MVC-alkalmazásban kódot szúr be a mesterweblap Views/Shared/_Layout.cshtml
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíthetek az SDK korábbi verziók?
-Tekintse meg a [kibocsátási megjegyzések](app-insights-release-notes.md) az SDK az alkalmazás típusát megfelelő.
+Tekintse meg a [kibocsátási megjegyzések](../azure-monitor/app/release-notes.md) az SDK az alkalmazás típusát megfelelő.
 
 ## <a name="update"></a>Hogyan válthatok az Azure erőforrás-projektemmel elküldi az adatokat?
 A Megoldáskezelőben kattintson a jobb gombbal `ApplicationInsights.config` válassza **Update Application Insights**. Az adatokat küldhet egy meglévő vagy új erőforrást az Azure-ban. A frissítési varázsló módosítja a kialakítási kulcs az applicationinsights.config fájlban, amely azt határozza meg, ahol a kiszolgáló SDK-t küld-e az adatokat. Hacsak nem törli a "Frissítés az összes", a kulcs, ahol megjelenik a weblapok is megváltozik.
@@ -104,7 +104,7 @@ A kiszolgáló webes alkalmazásokból:
 * HTTP-kérések
 * [Függőségek](../azure-monitor/app/asp-net-dependencies.md). Hívások: SQL-adatbázisok; Külső szolgáltatások; HTTP-hívások Az Azure Cosmos DB, tábla, a blob storage és queue. 
 * [Kivételek](../azure-monitor/app/asp-net-exceptions.md) veremkiíratásokat és.
-* [Teljesítményszámlálók](app-insights-performance-counters.md) – Ha [Állapotfigyelőt](../azure-monitor/app/monitor-performance-live-website-now.md), [Azure monitoring](../azure-monitor/app/azure-web-apps.md), vagy a [Application Insights összegyűjtött író](../azure-monitor/app/java-collectd.md).
+* [Teljesítményszámlálók](../azure-monitor/app/performance-counters.md) – Ha [Állapotfigyelőt](../azure-monitor/app/monitor-performance-live-website-now.md), [Azure monitoring](../azure-monitor/app/azure-web-apps.md), vagy a [Application Insights összegyűjtött író](../azure-monitor/app/java-collectd.md).
 * [Egyéni események és mérőszámok](../azure-monitor/app/api-custom-events-metrics.md) , hogy kódot.
 * [Nyomkövetési naplók](../azure-monitor/app/asp-net-trace-logs.md) , ha a megfelelő gyűjtő konfigurálásához.
 
@@ -201,7 +201,7 @@ Egyetlen üzleti rendszerekben használja az összetevők vagy a szerepköröket
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Miért vannak nem egyenlő a számát, a Keresés és a metrikák?
 
-[Mintavételi](app-insights-sampling.md) csökkenti azon elemeinek telemetriát (kérelmeket, egyéni eseményeket és így tovább) ténylegesen a portál az alkalmazásából származó küldött. A keresés ténylegesen kapott elemek száma látható. A mérőszám-diagramok, amely megjeleníti az események számát az eredeti bekövetkezett események száma látható. 
+[Mintavételi](../azure-monitor/app/sampling.md) csökkenti azon elemeinek telemetriát (kérelmeket, egyéni eseményeket és így tovább) ténylegesen a portál az alkalmazásából származó küldött. A keresés ténylegesen kapott elemek száma látható. A mérőszám-diagramok, amely megjeleníti az események számát az eredeti bekövetkezett események száma látható. 
 
 Minden elemet, amelyet a rendszer szintén továbbíthatja a Microsoftnak végzi egy `itemCount` tulajdonságot, amely az eredeti események számát mutatja, hogy az elem jelöli. Mintavételi művelet megfigyelni, ez a lekérdezés Analytics futtathatja:
 
@@ -214,7 +214,7 @@ Minden elemet, amelyet a rendszer szintén továbbíthatja a Microsoftnak végzi
 
 ### <a name="configuring-application-insights"></a>Az Application Insights konfigurálása
 
-Is [PowerShell-parancsfájlokat írhat](app-insights-powershell.md) használata az Azure erőforrás-figyelő:
+Is [PowerShell-parancsfájlokat írhat](../azure-monitor/app/powershell.md) használata az Azure erőforrás-figyelő:
 
 * Hozzon létre, és frissítse az Application Insights-erőforrást.
 * Állítsa be, a díjszabással.
@@ -241,7 +241,7 @@ Nem ez függ az Application Insights-erőforrást üzemeltető. Ez csak a végpo
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Küldhetek telemetria az Application Insights portálra?
 
-Azt javasoljuk, hogy az SDK-kat használja, és használja a [SDK API](../azure-monitor/app/api-custom-events-metrics.md). Nincsenek az SDK a különböző változatának [platformok](app-insights-platforms.md). Ezek az SDK-k kezelésére, pufferelés, tömörítés, szabályozás, az újrapróbálkozások és így tovább. Azonban a [Adatbetöltési séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) nyilvánosak legyenek.
+Azt javasoljuk, hogy az SDK-kat használja, és használja a [SDK API](../azure-monitor/app/api-custom-events-metrics.md). Nincsenek az SDK a különböző változatának [platformok](../azure-monitor/app/platforms.md). Ezek az SDK-k kezelésére, pufferelés, tömörítés, szabályozás, az újrapróbálkozások és így tovább. Azonban a [Adatbetöltési séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) nyilvánosak legyenek.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Képes megfigyelni az intranetes webkiszolgáló?
 
@@ -299,6 +299,6 @@ A legtöbb Application Insights-adatok egy késését 5 percen belül van. Bizon
 <!--Link references-->
 
 [data]: ../azure-monitor/app/data-retention-privacy.md
-[platforms]: app-insights-platforms.md
+[platforms]: ../azure-monitor/app/platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 39b5a7a99f56c33aee0b0db9211f4f45a058f418
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 370da046e5a964d91b668ea80730b8d331065d29
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094338"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019962"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Spark 
 
@@ -42,12 +41,12 @@ Spark-társított szolgáltatást a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Spark** | Igen |
+| type | A type tulajdonságot kell beállítani: **Spark** | Igen |
 | gazdagép | Spark kiszolgáló IP-cím vagy a gazdagép nevét  | Igen |
 | port | A Spark-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Igen |
 | serverType | A Spark-kiszolgáló típusa. <br/>Engedélyezett értékek a következők: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nem |
-| thriftTransportProtocol | Az átviteli protokoll használatára a Thrift-rétegben. <br/>Engedélyezett értékek a következők: **bináris**, **SASL**, **HTTP** | Nem |
-| authenticationType | A Spark-kiszolgáló eléréséhez használt hitelesítési módszert. <br/>Engedélyezett értékek a következők: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| thriftTransportProtocol | Az átviteli protokoll használatára a Thrift-rétegben. <br/>Engedélyezett értékek a következők: **Bináris**, **SASL**, **HTTP** | Nem |
+| authenticationType | A Spark-kiszolgáló eléréséhez használt hitelesítési módszert. <br/>Engedélyezett értékek a következők: **Névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Spark-kiszolgáló hozzáféréséhez használt felhasználónév.  | Nem |
 | jelszó | A jelszó a felhasználónak megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | httpPath | Részleges URL-cím a Spark-kiszolgálóhoz.  | Nem |

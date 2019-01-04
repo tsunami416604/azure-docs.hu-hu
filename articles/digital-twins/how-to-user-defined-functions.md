@@ -1,20 +1,20 @@
 ---
 title: Felhasználó által definiált függvények létrehozása az Azure digitális Twins |} A Microsoft Docs
-description: A szerepkör-hozzárendelések, matchers és felhasználó által definiált függvények létrehozása az Azure digitális Twins útmutató arra az esetre.
+description: Szerepkör-hozzárendelések, matchers és felhasználó által definiált függvények létrehozása az Azure digitális Twins módja.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 06c6d2935358650eb9f7ef1cda55d5292e203daf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993405"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019928"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure digitális Twins
 
@@ -73,19 +73,13 @@ A JSON-törzse:
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
-A matchers létrehozása után az a következő függvény kódrészlet feltöltési hitelesített HTTP **POST** kérelem:
+A matchers létrehozása után töltse fel a függvény kódrészletet a következő hitelesített többrészes HTTP POST kérés:
+
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
-
-> [!IMPORTANT]
-> - Győződjön meg arról, hogy a fejlécek belefoglalása: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-> - A megadott törzse a következő többrészes:
->   - Az első rész az UDF-ben szükséges metaadatokat tartalmazza.
->   - A második rész a JavaScript számítási logikáját tartalmazza.
-> - Az a **USER_DEFINED_BOUNDARY** szakaszban, cserélje le a **spaceId** (`YOUR_SPACE_IDENTIFIER`) és **matchers**(`YOUR_MATCHER_IDENTIFIER`) értékeket.
-> - Megjegyzés: a JavaScript UDF, csakúgy, mint `Content-Type: text/javascript`.
 
 Használja a következő JSON-törzse:
 
@@ -116,6 +110,15 @@ function process(telemetry, executionContext) {
 | USER_DEFINED_BOUNDARY | A többrészes tartalom határcsoport neve |
 | YOUR_SPACE_IDENTIFIER | Hely azonosítója  |
 | YOUR_MATCHER_IDENTIFIER | A használni kívánt megfeleltetőben megadott azonosítója |
+
+1. Győződjön meg arról, hogy a fejlécek belefoglalása: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Győződjön meg arról, hogy a szervezet többrészes:
+
+   - Az első rész a felhasználó által definiált függvény szükséges metaadatokat tartalmaz.
+   - A második rész a JavaScript számítási logikáját tartalmazza.
+
+1. Az a **USER_DEFINED_BOUNDARY** szakaszban, cserélje le a **spaceId** (`YOUR_SPACE_IDENTIFIER`) és **matchers** (`YOUR_MATCHER_IDENTIFIER`) értékeket.
+1. Győződjön meg arról, hogy a felhasználó által definiált JavaScript-függvény objektumnevet `Content-Type: text/javascript`.
 
 ### <a name="example-functions"></a>Példa funkciók
 
@@ -192,14 +195,14 @@ Felhasználó által definiált függvény összetettebb kódja minta tekintse m
 
 A felhasználó által definiált függvény alatt szeretné futtatni a szerepkör-hozzárendelés létrehozása. Ha nincsenek szerepkör-hozzárendelés már létezik a felhasználó által definiált függvény, azt nem kell a megfelelő engedélyekkel, a felügyeleti API-val vagy műveleteket hajthat végre gráfsémákkal hozzá. Egy felhasználó által definiált függvény hajthat végre műveleteket a megadott és keresztül szerepköralapú hozzáférés-vezérlés az Azure digitális Twins felügyeleti API-k belül definiált. Például felhasználó által definiált függvények is lehet korlátozott hatókör egyes szerepkörök vagy a megadott access control elérési útjait megadásával. További információkért lásd: a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációját.
 
-1. [A rendszer API lekérdezése](./security-create-manage-role-assignments.md#all) beolvasni a szerepkör-azonosító az UDF hozzárendelni kívánt összes szerepköre. Ehhez a azáltal, hogy egy hitelesített HTTP GET kérést:
+1. [A rendszer API lekérdezése](./security-create-manage-role-assignments.md#all) beolvasni a szerepkör-azonosító, a felhasználó által definiált függvényt hozzárendelni kívánt összes szerepköre. Ehhez a azáltal, hogy egy hitelesített HTTP GET kérést:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    Tartsa meg a kívánt szerepkör-azonosítót. A JSON-törzse attribútumként lesznek átadva **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) alatt.
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) lesz a korábban létrehozott UDF-azonosító.
+1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) lesz a korábban létrehozott felhasználó által definiált függvény azonosítója.
 1. Keresse meg az értéket a **elérési** (`YOUR_ACCESS_CONTROL_PATH`) és a tárolóhelyek lekérdezésével `fullpath`.
 1. Másolja a visszaadott `spacePaths` értéket. Szeretné használni, amely alatt. Győződjön meg arról, egy hitelesített HTTP GET kérést:
 
@@ -211,7 +214,7 @@ A felhasználó által definiált függvény alatt szeretné futtatni a szerepk�
     | --- | --- |
     | YOUR_SPACE_NAME | A használni kívánt terület neve |
 
-1. Illessze be a visszaadott `spacePaths` be érték **elérési út** azáltal, hogy a hitelesített HTTP POST-kérelmet UDF szerepkör-hozzárendelés létrehozásához:
+1. Illessze be a visszaadott `spacePaths` be érték **elérési út** azáltal, hogy hitelesített HTTP POST-kérelmet a felhasználó által definiált függvény szerepkör-hozzárendelés létrehozásához:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -230,12 +233,12 @@ A felhasználó által definiált függvény alatt szeretné futtatni a szerepk�
     | Érték | Csere erre |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | A kívánt szerepkör esetében az azonosító |
-    | YOUR_USER_DEFINED_FUNCTION_ID | Az UDF-ben használni kívánt azonosítója |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Az UDF típusát megadó azonosítója |
+    | YOUR_USER_DEFINED_FUNCTION_ID | A felhasználó által definiált függvényt használni kívánt azonosítója |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | A felhasználó által definiált függvény típusát megadó azonosítója |
     | YOUR_ACCESS_CONTROL_PATH | A hozzáférés-vezérlési elérési útja |
 
 >[!TIP]
-> A cikk a [létrehozása és kezelése a szerepkör-hozzárendelések](./security-create-manage-role-assignments.md) UDF kapcsolatos felügyeleti API-műveleteket és a végpontok további információt.
+> A cikk a [létrehozása és kezelése a szerepkör-hozzárendelések](./security-create-manage-role-assignments.md) további információ a felhasználó által definiált függvény felügyeleti API-műveleteket és a végpontok.
 
 ## <a name="send-telemetry-to-be-processed"></a>A feldolgozásra telemetria küldése
 

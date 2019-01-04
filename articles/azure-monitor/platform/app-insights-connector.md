@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e6d750d62ccd31a85cbf47e13c12be078bcb2c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726228"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023124"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -142,7 +142,7 @@ Forgáspont, kattintson a három pontra (**...** ), amely akkor jelenik meg az e
 
 ### <a name="sample-corrected-data"></a>Minta – korrigált adatok
 
-Az Application Insights nyújt *[javítás mintavételi](../../application-insights/app-insights-sampling.md)* telemetriai forgalom csökkentése érdekében. Mintavételi engedélyezi az Application Insights alkalmazást, kap egy Application Insights és a Log Analytics szolgáltatásban tárolt bejegyzések csökkentett száma. Amíg megőrzi az adatkonzisztencia magyarázata a **Application Insights-összekötő** oldal és a perspektívák kézzel korrigálja mintavételezett adatokat az egyéni lekérdezések.
+Az Application Insights nyújt *[javítás mintavételi](../../azure-monitor/app/sampling.md)* telemetriai forgalom csökkentése érdekében. Mintavételi engedélyezi az Application Insights alkalmazást, kap egy Application Insights és a Log Analytics szolgáltatásban tárolt bejegyzések csökkentett száma. Amíg megőrzi az adatkonzisztencia magyarázata a **Application Insights-összekötő** oldal és a perspektívák kézzel korrigálja mintavételezett adatokat az egyéni lekérdezések.
 
 Íme egy példa, egy naplóbeli keresési lekérdezés a mintavételi korrekciós:
 

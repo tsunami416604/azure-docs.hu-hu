@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 0349e3f482923a236ea29332abfc3a9206828ba7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 39229bbd120ca52f31a0bd54446e49990d952c9d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976885"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020132"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Az Azure monitorban adatok forrásai
 Ez a cikk ismerteti az Azure Monitor állapotát és teljesítményét az erőforrások és a rajtuk futó alkalmazások figyelése által gyűjtött adatok forrásai. Ezeket az erőforrásokat az Azure-ban, egy másik felhőben vagy helyszíni lehet.  Lásd: [Azure Monitor által gyűjtött adatok](data-collection.md) hogyan tárolja ezeket az adatokat, és hogyan tekintheti meg.
@@ -96,7 +96,7 @@ Amikor engedélyezi az Application Insights egy alkalmazás számára egy kialak
 Is használhatja az Application Insights [hozzon létre egy egyéni metrika](../../azure-monitor/app/api-custom-events-metrics.md).  Ez lehetővé teszi, hogy definiálja saját logika összeillesztésétől a numerikus értékek, és ezután tárolja ezt az értéket, amely a Metrikaböngésző érhető el, és használt más metrikákkal [automatikus skálázási](../../azure-monitor/platform/autoscale-custom-metric.md) és metrikákhoz kapcsolódó riasztások.
 
 ### <a name="dependencies"></a>Függőségek
-Annak érdekében, hogy egy alkalmazás különböző logikai műveletek monitorozására, kell [telemetriai adatok gyűjtése a több összetevőt](../../application-insights/app-insights-transaction-diagnostics.md). Az Application Insights támogatja [telemetriai korreláció elosztott](../../azure-monitor/app/correlation.md) amely azonosítja a függőségeket, így elemezheti együtt összetevői között.
+Annak érdekében, hogy egy alkalmazás különböző logikai műveletek monitorozására, kell [telemetriai adatok gyűjtése a több összetevőt](../../azure-monitor/app/transaction-diagnostics.md). Az Application Insights támogatja [telemetriai korreláció elosztott](../../azure-monitor/app/correlation.md) amely azonosítja a függőségeket, így elemezheti együtt összetevői között.
 
 ### <a name="availability-tests"></a>Rendelkezésre állási tesztek
 [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) az Application Insights lehetővé teszi, hogy ellenőrizze a rendelkezésre állásának és válaszkészségének az alkalmazás különböző helyekről, a nyilvános interneten. Hajtsa végre egy egyszerű ping teszt annak ellenőrzéséhez, hogy az alkalmazás aktív, vagy hozzon létre egy webes tesztet, amely a felhasználói forgatókönyv szimulálja a Visual Studio használatával.  Rendelkezésre állási tesztek nem igénylik bármilyen, az alkalmazás kialakítási.

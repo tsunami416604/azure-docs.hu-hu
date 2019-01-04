@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 8e764bfc4481343a1e1fb710df7d09f7a38f4f78
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 856ffe050fce204d52d6666025a7284788bb0893
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420355"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022240"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
@@ -117,7 +117,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/app-insights-website-monitoring/analytics-query.png)
 
-3. Térjen vissza az **Áttekintés** oldalra. Kattintson a **Böngészés** elemre a **Vizsgálat** fejléc alatt, majd válassza a **Teljesítmény** lehetőséget. Ezen a felületen találja a webhely teljesítményével kapcsolatos metrikákat. Emellett egy megfelelő nézetet is talál itt a webhelyen található hibák és kivételek elemzéséhez. A **Minták** elemre kattintva megtekintheti az egyes tranzakciók részleteit. Innen pedig elérheti a [tranzakciók részletes adatait tartalmazó](app-insights-transaction-diagnostics.md) felületet.
+3. Térjen vissza az **Áttekintés** oldalra. Kattintson a **Böngészés** elemre a **Vizsgálat** fejléc alatt, majd válassza a **Teljesítmény** lehetőséget. Ezen a felületen találja a webhely teljesítményével kapcsolatos metrikákat. Emellett egy megfelelő nézetet is talál itt a webhelyen található hibák és kivételek elemzéséhez. A **Minták** elemre kattintva megtekintheti az egyes tranzakciók részleteit. Innen pedig elérheti a [tranzakciók részletes adatait tartalmazó](../azure-monitor/app/transaction-diagnostics.md) felületet.
 
    ![Kiszolgálómetrikák diagram](./media/app-insights-website-monitoring/browser-performance.png)
 

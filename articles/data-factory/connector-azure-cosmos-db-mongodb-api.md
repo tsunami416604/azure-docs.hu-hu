@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 2cffc99eade88d50e3de212b5680b640c14fa7a7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 3f60ffcde43bd1ee43b5dd7d1e86da3a8bf2c521
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812377"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002110"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-mongodb-api-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB (MongoDB API-t) az Azure Data Factory használatával
 
@@ -172,7 +172,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **fogadó*
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát **CosmosDbMongoDbApiSink**. |Igen |
 | WriteBehavior |Ismerteti, hogyan lehet adatokat írni az Azure Cosmos DB-hez. Megengedett értékek: **beszúrása** és **upsert**.<br/><br/>Viselkedését **upsert** , hogy cserélje le a dokumentumot, ha egy dokumentum ugyanazzal az azonosítóval már létezik; egyéb esetben helyezze be a dokumentum.<br /><br />**Megjegyzés**: A Data Factory automatikusan létrehozza egy dokumentumot egy Azonosítót, ha nem ad meg Azonosítót vagy az eredeti dokumentum vagy oszlop-hozzárendelés. Ez azt jelenti, hogy gondoskodnia kell arról, hogy a **upsert** a várt módon működik, a dokumentum rendelkezik azonosítóval. |Nem<br />(az alapértelmezett érték **beszúrása**) |
-| WriteBatchSize | A **writeBatchSize** tulajdonság írása az egyes kötegekben lévő dokumentumok méretét szabályozza. Próbálja meg az értékét növelje **writeBatchSize** jobb teljesítmény és az érték csökkentésével, ha a dokumentumok méretétől, nagy folyamatban. |Nem<br />(az alapértelmezett érték **5**) |
+| WriteBatchSize | A **writeBatchSize** tulajdonság írása az egyes kötegekben lévő dokumentumok méretét szabályozza. Próbálja meg az értékét növelje **writeBatchSize** jobb teljesítmény és az érték csökkentésével, ha a dokumentumok méretétől, nagy folyamatban. |Nem<br />(az alapértelmezett érték **10 000**) |
 | writeBatchTimeout | A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot. Engedélyezett értéke időtartam. | Nem<br/>(az alapértelmezett érték **00:30:00** – 30 perc) |
 
 **Példa**

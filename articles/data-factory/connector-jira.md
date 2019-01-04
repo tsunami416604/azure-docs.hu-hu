@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 61b331c330da5e2083a7a029e3f3137e6d4a1aab
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8a2e8b3cb841c18d337a610284bfb31862b0c63f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077834"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015865"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Jira
 
@@ -45,7 +44,7 @@ Jira-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Jira** | Igen |
+| type | A type tulajdonságot kell beállítani: **Jira** | Igen |
 | gazdagép | Az IP-cím vagy a gazdagép a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
 | port | A Jira-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 443-as akkor, ha a kapcsolaton keresztül a HTTPS vagy a 8080-as, ha HTTP Protokollon keresztül csatlakozik.  | Nem |
 | felhasználónév | Jira-szolgáltatás eléréséhez használt felhasználónév.  | Igen |

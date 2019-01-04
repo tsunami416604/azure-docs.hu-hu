@@ -1,6 +1,6 @@
 ---
 title: A Data Factory nevű adatintegrációs szolgáltatás ismertetése | Microsoft Docs
-description: 'A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
+description: 'Ismerje meg, mi az Azure Data Factory: Egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,17 +9,16 @@ ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0cdf10f4898ba103f9b6f65179300a10c9e33cdf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087171"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014930"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -120,7 +119,7 @@ A társított szolgáltatásokat két okból használjuk a Data Factoryban:
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory-entitások közötti kapcsolatok
 
-![Ábra: Data Factory áttekintése, felhőalapú adatintegrációs szolgáltatás – fő fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Ábra: Data Factory egy felhőalapú adatintegrációs szolgáltatás – fő fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
 Jelenleg az USA nyugati régiójában, az USA keleti régiójában és az észak-európai régióban hozhat létre data factoryt. Egy adat-előállító azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory SFTP-kiszolgáló |} Microsoft Docs
-description: Ismerje meg, amely lehetővé teszi az adatok másolása az SFTP-kiszolgáló az adattároló utasításként támogatott, a fogadó az Azure Data Factory MySQL-összekötőjét.
+title: Adatok másolása az Azure Data Factory használatával az SFTP-kiszolgáló |} A Microsoft Docs
+description: Ismerje meg, amely lehetővé teszi az adatok másolása az SFTP-kiszolgálóra fogadóként támogatott adattárak az Azure Data Factory MySQL-összekötőjét.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,61 +9,60 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 3425558ac1ffa9e8d5146a5126f01c4ac55050dc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 28802b018711b3cd95946b60a8505684089dca18
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049630"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019214"
 ---
-# <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory SFTP-kiszolgáló
+# <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SFTP-kiszolgáló
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-sftp-connector.md)
+> * [1-es verzió](v1/data-factory-sftp-connector.md)
 > * [Aktuális verzió](connector-sftp.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatok másolása az SFTP-kiszolgáló. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása az SFTP-kiszolgálóra. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-SFTP-kiszolgáló adatok bármely támogatott fogadó adattárolóhoz másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Másolhat adatokat az SFTP-kiszolgáló bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Konkrétan ez SFTP az összekötő támogatja:
+Az SFTP-összekötővel, a következőket támogatja:
 
-- Fájlokat másol használatával **alapvető** vagy **SshPublicKey** hitelesítés.
-- Mint a fájlok másolása-fájlok elemzése, vagy a [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md).
+- Másolás a fájlok **alapszintű** vagy **SshPublicKey** hitelesítést.
+- Másolja a fájlokat,-elemzési a fájlokat, vagy a [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják az SFTP adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+A következő szakaszok segítségével határozhatók meg a Data Factory-entitások adott az SFTP-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Kapcsolódó SFTP szolgáltatás támogatott a következő tulajdonságokkal:
-
-| Tulajdonság | Leírás | Szükséges |
-|:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Sftp**. |Igen |
-| gazdagép | Az SFTP-kiszolgáló neve vagy IP-címét. |Igen |
-| port | Port, amelyen az SFTP kiszolgáló figyel.<br/>Két érték engedélyezett: egész szám, alapértelmezett értéke **22**. |Nem |
-| skipHostKeyValidation | Adja meg, hogy a gazdagép kulcs ellenőrzésének kihagyására.<br/>Két érték engedélyezett: **igaz**, **hamis** (alapértelmezett).  | Nem |
-| hostKeyFingerprint | Adja meg a gazdagép kulcs az ujjlenyomat. | Igen, ha a "skipHostKeyValidation" hamis értékre van állítva.  |
-| authenticationType | Adja meg a hitelesítés típusát.<br/>Két érték engedélyezett: **alapvető**, **SshPublicKey**. Tekintse meg [használja az egyszerű hitelesítés](#using-basic-authentication) és [használatával SSH nyilvános kulcsos hitelesítés](#using-ssh-public-key-authentication) további tulajdonságokat és JSON-minták szakasz. |Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
-
-### <a name="using-basic-authentication"></a>Alapszintű hitelesítést használó
-
-Az egyszerű hitelesítést használ, állítsa "authenticationType" tulajdonságot **alapvető**, és adja meg az SFTP összekötő általános néhányat a meglévők közül az utolsó szakaszban bemutatott mellett az alábbi tulajdonságokat:
+SFTP-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| Felhasználónév | Felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Igen |
-| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
+| type | A type tulajdonságot kell beállítani: **Az Sftp**. |Igen |
+| gazdagép | Az SFTP-kiszolgáló neve vagy IP-címe. |Igen |
+| port | A port, amelyen az SFTP-kiszolgáló figyel.<br/>Engedélyezett értékek a következők: egész szám, alapértelmezett értéke **22-es**. |Nem |
+| skipHostKeyValidation | Adja meg, hogy állomáskulcsok ellenőrzésének kihagyása.<br/>Engedélyezett értékek a következők: **igaz**, **hamis** (alapértelmezett).  | Nem |
+| hostKeyFingerprint | Adja meg a gazdagép-kulcs az ujjlenyomat. | Igen, ha a "skipHostKeyValidation" hamis értékre van állítva.  |
+| authenticationType | Adja meg a hitelesítés típusát.<br/>Engedélyezett értékek a következők: **Alapszintű**, **SshPublicKey**. Tekintse meg [alapszintű hitelesítés használata](#using-basic-authentication) és [használatával SSH nyilvános kulcs alapú hitelesítés](#using-ssh-public-key-authentication) további tulajdonságok és JSON-minták részei. |Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
+
+### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
+
+Alapszintű hitelesítés használatához állítsa "authenticationType" tulajdonságot **alapszintű**, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| Felhasználónév | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó. |Igen |
+| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
@@ -96,19 +95,19 @@ Az egyszerű hitelesítést használ, állítsa "authenticationType" tulajdonsá
 
 ### <a name="using-ssh-public-key-authentication"></a>SSH nyilvános kulcsos hitelesítés használatával
 
-SSH nyilvános kulcsos hitelesítés használatához állítsa "authenticationType" tulajdonság **SshPublicKey**, és adja meg az SFTP összekötő általános néhányat a meglévők közül az utolsó szakaszban bemutatott mellett az alábbi tulajdonságokat:
+SSH nyilvános kulcsos hitelesítés használatához állítsa a "authenticationType" tulajdonság **SshPublicKey**, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | Felhasználónév | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
-| privateKeyPath | Adja meg a titkos kulcsfájl integrációs futásidejű hozzáférő abszolút elérési útja. Csak akkor, ha önálló üzemeltetett integrációs futásidejű van megadva a "connectVia" vonatkozik. | Adja meg a `privateKeyPath` vagy `privateKeyContent`.  |
-| privateKeyContent | Base64 kódolású SSH titkos kulcs tartalmát. Titkos SSH-kulcsot OpenSSH formátumban kell lennie. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Adja meg a `privateKeyPath` vagy `privateKeyContent`. |
-| hozzáférési kód | Adja meg a pass kifejezést/jelszót a titkos kulcs visszafejtésére, ha a kulcs fájlját egy hozzáférési kódot védi. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen, ha a titkos kulcsfájl védik a hozzáférési kód. |
+| privateKeyPath | Adja meg a titkos kulcs fájlját, az Integration Runtime eléréséhez abszolút elérési útját. Csak akkor, ha a saját üzemeltetésű integrációs modulok típusának van megadva a "connectVia" vonatkozik. | Adja meg a `privateKeyPath` vagy `privateKeyContent`.  |
+| privateKeyContent | Base64 kódolású SSH titkos kulcs tartalmát. Titkos SSH-kulcs OpenSSH formátumban kell lennie. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Adja meg a `privateKeyPath` vagy `privateKeyContent`. |
+| hozzáférési kód | Adja meg a pass kifejezés/jelszót a titkos kulcs visszafejtésére, ha a kulcs fájlját egy hozzáférési kódot védi. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen, ha a titkos kulcs fájlját egy hozzáférési kódot védi. |
 
 > [!NOTE]
-> SFTP-összekötő támogatja az RSA/DSA OpenSSH-kulcsot. Ellenőrizze, hogy a kulcsot tartalmazó fájlt tartalom "---BEGIN [RSA/DSA] titkos kulcsot---" kezdődik. Ha a titkos kulcsfájl ppk formátumfájlt, használjon Putty eszközt .ppk átalakítása OpenSSH formátumban. 
+> SFTP-összekötő támogatja az RSA/DSA OpenSSH-kulcs. Ellenőrizze, hogy a kulcsfájl tartalom "----BEGIN [RSA/DSA] PRIVATE KEY----" karakterlánccal kezdődik. Ha a titkos kulcs fájlját ppk formátumfájlt, használjon Putty eszközt .ppk átalakítása OpenSSH formátumban. 
 
-**1. példa: Az SshPublicKey hitelesítés használata a titkos kulcs fájl elérési útja**
+**1. példa: Titkos kulcs filePath SshPublicKey hitelesítéshez**
 
 ```json
 {
@@ -137,7 +136,7 @@ SSH nyilvános kulcsos hitelesítés használatához állítsa "authenticationTy
 }
 ```
 
-**2. példa: Az SshPublicKey hitelesítés használata a titkos kulcs tartalmát**
+**2. példa: Titkos kulcs tartalmát SshPublicKey hitelesítéshez**
 
 ```json
 {
@@ -171,23 +170,23 @@ SSH nyilvános kulcsos hitelesítés használatához állítsa "authenticationTy
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör az SFTP dataset által támogatott tulajdonságokról.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz az SFTP-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az SFTP, állítsa be a type tulajdonságot az adathalmaz **fájlmegosztási**. A következő tulajdonságok támogatottak:
+Adatok másolása az SFTP, állítsa be a type tulajdonság, az adatkészlet **FileShare**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **fájlmegosztás** |Igen |
-| folderPath | A mappa elérési útját. Helyettesítő karakter szűrő nem támogatott. Például: mappát vagy almappát / |Igen |
-| fileName |  **Név vagy helyettesítő karakter szűrő** az alatt a megadott "folderPath" (oka) t. Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában lévő összes fájlt. <br/><br/>Szűrő, az engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több karakter megegyezik) és `?` (nulla megegyezik vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használjon `^` -e a tényleges fájlnév helyettesítő vagy a escape karaktere belül karaktert. |Nem |
-| Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretne elemezni egy adott formátumú fájlok, a következő formátumban típusú támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
-| tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **Fájlmegosztás** |Igen |
+| folderPath | A mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Például: mappát vagy almappát / |Igen |
+| fileName |  **Név vagy helyettesítő karaktert tartalmazó szűrő** az fájl(ok) a megadott "folderPath" alatt. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>Szűrő esetén engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használat `^` elkerülésére, ha a fájl tényleges nevét helyettesítő elemet vagy a escape karaktere belül. |Nem |
+| Formátum | Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha meg szeretné elemezni az adott formátumú fájlok, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszokat. |Nem (csak a bináris másolás esetén) |
+| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimális** és **leggyorsabb**. |Nem |
 
 >[!TIP]
->Másolja az összes fájlt egy mappában, adja meg a **folderPath** csak.<br>Adja meg a megadott nevű egyetlen fájl másolásához **folderPath** mappa megadó és **Fájlnév** fájlnévvel.<br>Másol egy mappát a fájlok egy részét, adja meg a **folderPath** mappa megadó és **Fájlnév** helyettesítő szűrővel.
+>Másolja egy mappában található összes fájlt, adja meg a **folderPath** csak.<br>Adja meg a megadott nevű egyetlen fájl másolásához **folderPath** mappára vonatkozó részt a és **fileName** nevére.<br>Másolja a fájlokat egy mappában egy részét, adja meg a **folderPath** mappára vonatkozó részt a és **fileName** helyettesítő szűrővel.
 
 >[!NOTE]
->Ha a fájl szűrő használt "fileFilter" tulajdonság, az továbbra is támogatott-van, amíg a "fájlnevet" továbbítja a hozzáadandó új szűrő funkció használatához javasoltak.
+>Ha fájlt szűrő "fileFilter" tulajdonságot használja, továbbra is támogatott-van, miközben Ön a "fájlnevet" a jövőben hozzáadott új szűrő funkció használata javasolt.
 
 **Példa**
 
@@ -221,16 +220,16 @@ Adatok másolása az SFTP, állítsa be a type tulajdonságot az adathalmaz **f�
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az SFTP forrás által támogatott tulajdonságokról.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az SFTP-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="sftp-as-source"></a>SFTP forrásaként
+### <a name="sftp-as-source"></a>Az SFTP forrásként
 
-Adatok másolása SFTP, állítsa be a forrás típusa a másolási tevékenység **FileSystemSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása az SFTP, állítsa be a forrás típusaként a másolási tevékenység **FileSystemSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **FileSystemSource** |Igen |
-| rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát. Megjegyzés: Ha a rekurzív értéke true, és a fogadó fájlalapú tároló, üres mappa/alterület-folder nem lesz másolva vagy hozható létre a fogadó.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis** | Nem |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **FileSystemSource** |Igen |
+| a rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. Megjegyzés: Ha a rekurzív értéke igaz, és a fogadó fájlalapú tároló, üres mappa/alárendelt-folder nem lesz másolva vagy hozható létre, a fogadó.<br/>Engedélyezett értékek a következők: **igaz** (alapértelmezett), **false (hamis)** | Nem |
 
 **Példa**
 
@@ -266,4 +265,4 @@ Adatok másolása SFTP, állítsa be a forrás típusa a másolási tevékenysé
 
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

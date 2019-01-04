@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: d8d48a41f9100abc3bc8ba306c766d9511f80026
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: adf055983ad4247101401b907024328607a19bfe
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972073"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017140"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-csomagok
 
@@ -82,5 +82,5 @@ Ezek a csomagok futásidejű megfigyelése a legfontosabb funkcióit részét al
 ## <a name="next-steps"></a>További lépések
 
 - A figyelő [ASP.NET Core](../azure-monitor/app/asp-net-core.md).
-- Profiljának ASP.NET Core [Azure-beli Linuxos web apps](app-insights-profiler-aspnetcore-linux.md).
-- Az ASP.NET Debug [pillanatképek](app-insights-snapshot-debugger.md).
+- Profiljának ASP.NET Core [Azure-beli Linuxos web apps](../azure-monitor/app/profiler-aspnetcore-linux.md).
+- Az ASP.NET Debug [pillanatképek](../azure-monitor/app/snapshot-debugger.md).

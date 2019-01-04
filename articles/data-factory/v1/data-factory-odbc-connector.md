@@ -9,17 +9,16 @@ ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1039cde45824491bcc82f324c05e4819e66355e0
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 20a769736efb1232e9605e322bfda6136687cec4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975992"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023583"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Helyezze át az adatok Azure Data Factory használatával az ODBC-adattárak
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,9 +46,9 @@ Az adatkezelési átjárót akkor is is telepítenie kell az ODBC-illesztő az a
 ## <a name="getting-started"></a>Első lépések
 Egy folyamatot egy másolási tevékenységgel, amely helyez át adatokat egy ODBC adatokat az adattárból más eszközök/API-k használatával is létrehozhat.
 
-A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
--Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
 
@@ -57,7 +56,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
 3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy ODBC data store használt JSON-definíciói egy minta: [példa JSON: ODBC data az adatok másolása az Azure-Blobba tárolására](#json-example-copy-data-from-odbc-data-store-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy ODBC data store használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az ODBC-adattár az Azure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) című szakaszát. 
 
 A következő szakaszok és az ODBC data store adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletek:
 
@@ -66,10 +65,10 @@ Az alábbi táblázatban a társított szolgáltatás JSON-elemeket ODBC leírá
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonság értékre kell állítani: **OnPremisesOdbc** |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesOdbc** |Igen |
 | kapcsolati Sztringje |A kapcsolati karakterláncot, és a egy nem kötelező titkosított hitelesítő adatokat nem eléréséhez szükséges hitelesítő adatokat része. Lásd az alábbi szakaszokban található példákat. <br/><br/>Például a minta segítségével adható meg a kapcsolati karakterlánc `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használja a rendszer DSN (adatforrás neve), állítsa be az átjárót tartalmazó számítógépen `"DSN=<name of the DSN>;"` (meg kell továbbra is adja meg a hitelesítő adatok rész társított szolgáltatásban ennek megfelelően). |Igen |
 | hitelesítő adat |A hozzáférési hitelesítő adatok része, a kapcsolati karakterláncot a megadott illesztőprogram-specifikus tulajdonság-érték formátuma. Példa: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nem |
-| authenticationType |Az ODBC-adattárban való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen és alapszintű. |Igen |
+| authenticationType |Az ODBC-adattárban való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen és alapszintű. |Igen |
 | felhasználónév |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | átjáró neve |Az átjáró, amely a Data Factory szolgáltatás használatával kell kapcsolódni az ODBC-adattár neve. |Igen |
@@ -153,7 +152,7 @@ A másolási tevékenység, ha a forrása típusa **RelationalSource** (amely ta
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Igen |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-példa: adatok másolása az ODBC-adatokból tárolja az Azure Blobba
+## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-példa: Adatok másolása az ODBC-adattár az Azure Blob
 Ebben a példában biztosít, amelyek segítségével hozzon létre egy folyamat JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Azt mutatja, hogyan másolhat adatokat egy ODBC-forrás egy Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 A minta az alábbi data factory-entitások rendelkezik:
@@ -234,7 +233,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 
 **Azure blobkimeneti adatkészlet**
 
-Adatok írása egy új blob minden órában (frequency: óra, az interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {

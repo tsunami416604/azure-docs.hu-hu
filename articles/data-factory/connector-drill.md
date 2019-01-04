@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 180489aecc5eb5e937b4c163bc40937f3f6d2d80
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2dd02e50ecde19b3affd26a024c4734e99fc4978
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077664"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017327"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) segítségével részletes
 
@@ -45,7 +44,7 @@ Részletezés társított szolgáltatás a következő tulajdonságok támogatot
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **részletezés** | Igen |
+| type | A type tulajdonságot kell beállítani: **Részletezés** | Igen |
 | kapcsolati Sztringje | Egy ODBC kapcsolati karakterlánc részletes csatlakozni. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 

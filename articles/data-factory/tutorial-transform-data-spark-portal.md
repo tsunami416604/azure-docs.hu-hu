@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: 64dacb33a8cd235e155a640d57d868f384f93d76
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 34580687c047e842bfbfa12730c7c2d9868187b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959009"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014148"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 Ebben az oktatóanyagban egy Azure Data Factory-folyamatot hoz létre az Azure Portal használatával. Ez a folyamat egy Spark-tevékenységgel és egy igény szerinti Azure HDInsight társított szolgáltatással alakítja át az adatokat. 
@@ -102,7 +101,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét. 
 
-   Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+   Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -251,7 +250,7 @@ A mintában szereplő folyamat egy Spark-tevékenységgel és egy igény szerint
 A következő oktatóanyagra lépve megtudhatja, hogyan alakíthat át adatokat egy Hive-szkript a virtuális hálózatban lévő Azure HDInsight-fürtön való futtatásával. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: adatok átalakítása a Hive használatával egy Azure virtuális hálózatban](tutorial-transform-data-hive-virtual-network-portal.md).
+> [Oktatóanyag: Adatok átalakítása a Hive, az Azure Virtual Network használatával](tutorial-transform-data-hive-virtual-network-portal.md).
 
 
 

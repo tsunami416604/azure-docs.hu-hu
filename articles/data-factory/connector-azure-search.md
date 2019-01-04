@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása Search-index Azure Data Factory használatával |} Microsoft Docs
-description: További tudnivalók leküldéses vagy adatok másolása az Azure search-index használatával a másolási tevékenység során az Azure Data Factory-folyamathoz.
+title: Adatok másolása a Search-indexbe az Azure Data Factory használatával |} A Microsoft Docs
+description: További leküldéses vagy az adatok másolása az Azure search-index által az Azure Data Factory-folyamatot másolási tevékenységgel kapcsolatban.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,48 +9,47 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d31859a2af0402789b03447510d510a9658961de
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051008"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023345"
 ---
-# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
+# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index, az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](v1/data-factory-azure-search-connector.md)
+> * [1-es verzió](v1/data-factory-azure-search-connector.md)
 > * [Aktuális verzió](connector-azure-search.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatait átmásolja az Azure Search-index. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása az Azure Search-indexbe. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-Bármely támogatott forrás adattár adatok átmásolhatja az Azure Search-index. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Bármely támogatott forrásadattárból adatokat másolhatja az Azure Search-index. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Azure Search-összekötőhöz használt tulajdonságokat.
+A következő szakaszok segítségével határozhatók meg a Data Factory-entitások adott Azure Search-összekötőre-tulajdonságokkal kapcsolatos részletekért.
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Csatolt Azure Search szolgáltatás támogatott a következő tulajdonságokkal:
+Társított Azure Search szolgáltatás az alábbi tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **AzureSearch** | Igen |
+| type | A type tulajdonságot kell beállítani: **Az AzureSearch** | Igen |
 | url | Az Azure Search szolgáltatás URL-címe. | Igen |
-| kulcs | Az Azure Search szolgáltatás adminisztrációs kulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| kulcs | Az Azure Search szolgáltatás rendszergazdai kulcsa. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 > [!IMPORTANT]
-> Felhőalapú adattároló az adatok másolása az Azure Search-index, az Azure Search szolgáltatás csatolt kell egy Azure integrációs futásidejű connactVia explicit régiót, tekintse meg. A régió állítja be azt az Azure Search helyezkedik el. A további [Azure integrációs futásidejű](concepts-integration-runtime.md#azure-integration-runtime).
+> Az Azure Search-index, az Azure Search szolgáltatásban az adatok másolása egy felhőalapú adattár társított szolgáltatást, amikor kell hivatkozni egy Azure integrációs modul connactVia explicit régiókba. A régió állítja be az Azure Search található egy. További információkat talál a [Azure integrációs modul](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Példa**
 
@@ -76,14 +75,14 @@ Csatolt Azure Search szolgáltatás támogatott a következő tulajdonságokkal:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör az Azure Search dataset által támogatott tulajdonságokról.
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz az Azure Search adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása az Azure Search szolgáltatásba történő, állítsa be a type tulajdonságot az adathalmaz **RelationalTable**. A következő tulajdonságok támogatottak:
+Adatok másolása az Azure Search szolgáltatásba, állítsa be a type tulajdonság, az adatkészlet **RelationalTable**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **AzureSearchIndex** | Igen |
-| indexName | Az Azure Search-index neve. Adat-előállító nem hoz létre az indexet. Az index az Azure Search léteznie kell. | Igen |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **AzureSearchIndex** | Igen |
+| indexName | Az Azure Search-index neve. Adat-előállító nem hoz létre az indexet. Az index léteznie kell az Azure Search szolgáltatásban. | Igen |
 
 **Példa**
 
@@ -105,32 +104,32 @@ Adatok másolása az Azure Search szolgáltatásba történő, állítsa be a ty
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az Azure Search forrás által támogatott tulajdonságokról.
+Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz az Azure Search-adatforrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-search-as-sink"></a>Az Azure Search mint fogadó
+### <a name="azure-search-as-sink"></a>Az Azure Search pedig a fogadó
 
-Adatok másolása az Azure Search szolgáltatásba történő, állítsa be a forrás típusa a másolási tevékenység **AzureSearchIndexSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakasz:
+Az adatok másolása az Azure Search szolgáltatásba, állítsa be a forrás típusaként a másolási tevékenység **AzureSearchIndexSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **AzureSearchIndexSink** | Igen |
-| writeBehavior | Megadja, hogy egyesíteni vagy cserélje le, ha az index már létezik egy dokumentumot. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Két érték engedélyezett: **egyesítése** (alapértelmezett), és **feltöltése**. | Nem |
-| writeBatchSize | Amikor a puffer mérete eléri writeBatchSize feltölti az adatok be az Azure Search-index. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek: 1-1 000; egész szám alapértelmezett érték 1000. | Nem |
+| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AzureSearchIndexSink** | Igen |
+| WriteBehavior | Megadja, hogy egyesítéséhez, vagy cserélje le, amikor a dokumentum az indexben már létezik. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Engedélyezett értékek a következők: **Egyesítse** (alapértelmezett), és **feltöltése**. | Nem |
+| WriteBatchSize | Amikor a puffer mérete eléri a writeBatchSize feltölti az adatokat az Azure Search-indexbe. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek a következők: egész szám 1, 1000; alapértelmezett érték 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 
-AzureSearchSink upserts adatok írásakor. Ez azt jelenti történő írásakor egy dokumentumot, ha a dokumentum kulcs már létezik az Azure Search-index, az Azure Search frissíti a meglévő dokumentumról, hanem egy ütközés Kivétel kiváltása.
+Az adatok írásakor AzureSearchSink upserts. Más szóval ha ír egy dokumentumot, ha az Azure Search-index már létezik a dokumentum kulcsaként, Azure Search frissíti egy ütközést kivétel értesítő helyett a meglévő dokumentumot.
 
-A AzureSearchSink az alábbi két upsert viselkedésmódok biztosít a (AzureSearch SDK használatával):
+A AzureSearchSink biztosítja az alábbi két upsert viselkedések (SDK-val AzureSearch):
 
-- **Egyesítési**: kombinálhatja az összes oszlop az új dokumentum a meglévővel. Az oszlop, null értéket ad meg az új dokumentum a meglévő ütemezés értékét megőrződik.
-- **Töltse fel**: az új dokumentum lecseréli a meglévő fájlt. Nincs megadva az új dokumentum oszlopokhoz a beállítás értéke be NULL értékre van-e egy nem null értéket a meglévő dokumentum vagy sem.
+- **Egyesítse**: összes oszlop az új dokumentum a egyesítése. Az új dokumentum null értékű oszlopokhoz a rendszer megőrzi az értéket a meglévőt.
+- **Töltse fel**: Az új dokumentum felülírja a meglévőt. Nincs megadva az új dokumentum oszlopokhoz a értéke van-e egy nem null értéket a meglévő dokumentum vagy nem null értékű.
 
-Az alapértelmezett viselkedés **egyesítése**.
+Alapértelmezés szerint **egyesítése**.
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
 
-Az Azure Search szolgáltatás egy kötegelt dokumentumok írása támogatja. A kötegelt 1-1 000 műveletek is tartalmazhat. Egy műveletet a feltöltési/egyesítési művelet egy dokumentum kezeli.
+Az Azure Search szolgáltatás támogatja a kötegelt dokumentumok írása. A batch 1-1 000 műveletek is tartalmazhat. Egy műveletet kezeli egy dokumentumot a feltöltési/merge művelet végrehajtásához.
 
 **Példa**
 
@@ -166,11 +165,11 @@ Az Azure Search szolgáltatás egy kötegelt dokumentumok írása támogatja. A 
 
 ### <a name="data-type-support"></a>Adattípus-támogatás
 
-Az alábbi táblázat felsorolja, hogy az Azure Search adattípus támogatott-e, vagy nem.
+Az alábbi tábla meghatározza, hogy egy Azure Search adattípus támogatott-e, vagy nem.
 
 | Az Azure Search-adattípus | Az Azure Search fogadó támogatott |
 | ---------------------- | ------------------------------ |
-| Sztring | I |
+| Karakterlánc | I |
 | Int32 | I |
 | Int64 | I |
 | Dupla | I |
@@ -180,4 +179,4 @@ Az alábbi táblázat felsorolja, hogy az Azure Search adattípus támogatott-e,
 | GeographyPoint | N |
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

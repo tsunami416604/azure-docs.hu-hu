@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426791"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019313"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység az Azure Data Factoryban
 
@@ -106,7 +105,7 @@ Ebben a példában a másolási tevékenység adatokat másol az Azure SQL Datab
 Ez a példa bemutatja a keresés csak az első sorhoz. Keresés az összes sort, és összekapcsolja az eredményeket a ForEach tevékenység, a mintáiban találhat [több táblák tömeges másolása az Azure Data Factory használatával](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Folyamat
-Ez a folyamat két tevékenységet tartalmaz: a keresési és másolási. 
+Ez a folyamat két tevékenységet tartalmaz: A keresési és másolási. 
 
 - A keresési tevékenység használatára van konfigurálva **LookupDataset**, amely az Azure Blob storage egy olyan helyre hivatkozik. A keresési tevékenység beolvassa egy JSON-fájlt ezen a helyen az SQL-tábla neve. 
 - Másolási tevékenység használja a keresési tevékenység, amely az SQL-tábla neve kimenetét. A **tableName** tulajdonságot a **SourceDataset** a keresési tevékenység kimenete használatára van konfigurálva. Másolja a tevékenység adatokat másol az SQL-táblát egy olyan helyre, az Azure Blob storage-ban. A hely által meghatározott a **SinkDataset** tulajdonság. 

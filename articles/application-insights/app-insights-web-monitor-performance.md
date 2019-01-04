@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 9af2dd3a17eb150d44bf69cda86e480a083a3164
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6731b19984c0b2e0a663e93b2a6ef00c530a4d48
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971205"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014641"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
@@ -116,7 +116,7 @@ Valamelyik metrika rendkívüli értékek az e-mailben értesítést kapjon, ria
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Megkeresheti és kijavíthatja a teljesítmény szűk teljesítményvizsgálati felület
 
-A teljesítményvizsgálati felület segítségével tekintse át a lassú művelet a webalkalmazásban. Gyorsan egy adott lassú művelet kiválasztása és használata [Profiler](app-insights-profiler.md) legfelső szintű kód le a lassú műveletek miatt. Használja az új időtartamok eloszlása látható a kijelölt művelet gyorsan egyetlen pillantással felmérheti milyen rossz tapasztalat van az ügyfelek számára. Láthatja, hogy hány felhasználó ügyfélkapcsolati érintett minden lassú művelet. A következő példában azt korábban úgy döntött, hogy közelebb tekintse meg a GET Customers/Details művelet nyújtotta felhasználói élmény. Az az időtartam terjesztés láthatjuk, hogy nincsenek-e három adatforgalmi csúcsokhoz. Bal szélső kiugrás körülbelül 400 MS, és rugalmas kiváló jelöli. Középső kiugrás van 1,2 s és jelöli egy közepes élményt. Végül, a 3.6-os s van egy másik kis kiugrás, amely nagy eséllyel eredményez elégedetlen vagyok velük, hogy ügyfeleink az esetek 99 % PERCENTILIS élmény jelöli. Ez a tapasztalat tízszer lassabb, mint a nagyszerű felhasználói élményt ugyanehhez a művelethez. 
+A teljesítményvizsgálati felület segítségével tekintse át a lassú művelet a webalkalmazásban. Gyorsan egy adott lassú művelet kiválasztása és használata [Profiler](../azure-monitor/app/profiler.md) legfelső szintű kód le a lassú műveletek miatt. Használja az új időtartamok eloszlása látható a kijelölt művelet gyorsan egyetlen pillantással felmérheti milyen rossz tapasztalat van az ügyfelek számára. Láthatja, hogy hány felhasználó ügyfélkapcsolati érintett minden lassú művelet. A következő példában azt korábban úgy döntött, hogy közelebb tekintse meg a GET Customers/Details művelet nyújtotta felhasználói élmény. Az az időtartam terjesztés láthatjuk, hogy nincsenek-e három adatforgalmi csúcsokhoz. Bal szélső kiugrás körülbelül 400 MS, és rugalmas kiváló jelöli. Középső kiugrás van 1,2 s és jelöli egy közepes élményt. Végül, a 3.6-os s van egy másik kis kiugrás, amely nagy eséllyel eredményez elégedetlen vagyok velük, hogy ügyfeleink az esetek 99 % PERCENTILIS élmény jelöli. Ez a tapasztalat tízszer lassabb, mint a nagyszerű felhasználói élményt ugyanehhez a művelethez. 
 
 ![GET Customers/Details három időtartama adatforgalmi csúcsokhoz](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -159,8 +159,8 @@ A teljesítményvizsgálati felület jelentésvászon oldalán vonatkozó elemz�
 [redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
-[livestream]: app-insights-live-stream.md
-[snapshot]: app-insights-snapshot-debugger.md
+[livestream]: ../azure-monitor/app/live-stream.md
+[snapshot]: ../azure-monitor/app/snapshot-debugger.md
 
 
 

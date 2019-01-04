@@ -12,18 +12,18 @@ ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58354bf95b11e497f05fdf08ba4740b3f55c6d6e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096588"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022784"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
-Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználói hozzáférés magában foglalja a felhasználó típusát, [szerepkörtagságait](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) és az egyes objektumok tulajdonjogát. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait.
+Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusát áll a [szerepkörtagságai](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal), és az egyes objektumok tulajdonjogának. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait.
 
 ## <a name="member-and-guest-users"></a>Tag- és vendégfelhasználók
-A kiosztott alapértelmezett engedélykészlet tartalma attól függ, hogy az adott felhasználó natív tagja-e a bérlőnek (tagfelhasználó) vagy egy B2B-együttműködés révén megjelenő vendég (vendégfelhasználó). A B2B-együttműködéssel kapcsolatos további információért lásd: [Mi az az Azure AD B2B-együttműködés?](../b2b/what-is-b2b.md) (itt talál további információkat a vendégfelhasználókról). 
+A kiosztott alapértelmezett engedélykészlet tartalma attól függ, hogy az adott felhasználó natív tagja-e a bérlőnek (tagfelhasználó) vagy egy B2B-együttműködés révén megjelenő vendég (vendégfelhasználó). További információ a B2B-együttműködés: [Mi az Azure AD B2B együttműködés?](../b2b/what-is-b2b.md) vendégfelhasználók további információt. 
 * A tagfelhasználók alkalmazásokat regisztrálhatnak, kezelhetik saját profilképüket és mobiltelefonszámukat, módosíthatják jelszavukat, valamint meghívhatnak B2B-vendégfelhasználókat. Ezen kívül a felhasználók a címtár összes adatát olvashatják (néhány kivétellel). 
 * Az Azure AD B2B-vendégfelhasználói korlátozott címtárengedélyekkel rendelkeznek. A vendégfelhasználók például csak a saját profiljuk adatait látják a bérlőn. A vendégfelhasználók azonban egy másik felhasználó egyszerű felhasználónevének vagy ObjectId azonosítójának megadásával adatokat kérdezhetnek le az adott felhasználóról. A vendégfelhasználók nem láthatják a többi bérlőobjektum (például csoportok és alkalmazások) adatait.
 

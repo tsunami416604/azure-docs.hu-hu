@@ -1,6 +1,6 @@
 ---
-title: Azure-integráció futásidejű létrehozása az Azure Data Factory |} Microsoft Docs
-description: 'Útmutató: Azure integrációs futásidejű létrehozása az Azure Data Factory, amely másolja az adatokat, és a feladó átalakító tevékenységek.'
+title: Azure-beli integrációs modul létrehozása az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre Azure integrációs modul az Azure Data Factoryben, amely csatolva az átalakítási tevékenységek és az adatok másolása szolgál.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -8,40 +8,39 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: cb1a263c0a33a291a44e7c60b3c032d7f9dc16a3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f9dfb2dde4c49d9ca167b0f4ea6af28bd1db6872
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054075"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013587"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Hozzon létre, és Azure integrációs futásidejű konfigurálása
-Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos további információkért lásd: [integrációs futásidejű](concepts-integration-runtime.md).
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Hogyan hozhat létre, és az Azure integrációs modul konfigurálása
+Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos további információkért lásd: [integrációs modul](concepts-integration-runtime.md).
 
-Az Azure IR natív módon tevékenységeket elvégezzen az adatok mozgás és a feladó adatok átalakítása számítja ki a szolgáltatásokat, mint a HDInsight egy teljes körűen felügyelt számítógépes biztosít. Az Azure-alapú környezetben üzemel, és erőforrások nyilvános elérhető végpontok nyilvános hálózati környezetben történő csatlakozást támogatja.
+Azure integrációs modul natív módon végrehajtani az adatok mozgását és küldő adat-átalakítási tevékenységeket számítási szolgáltatások, például a HDInsight egy teljes mértékben felügyelt számítási biztosít. Azure-környezetben üzemeltetett és a támogatja az erőforrás nyilvános hálózati környezetben nyilvánosan hozzáférhető végpontokkal.
 
-Ez a dokumentum bemutatja, hogyan hozhat létre, és konfigurálja az Azure integrációs futásidejű. 
+Ez a dokumentum bemutatja, hogyan létrehozása és konfigurálása az Azure integrációs modul. 
 
-## <a name="default-azure-ir"></a>Alapértelmezett Azure IR
-Alapértelmezés szerint minden adat-előállító rendelkezik egy Azure-IR a háttérben, amely támogatja a felhő adatokat tárolja, és a nyilvános hálózati szolgáltatások számítási műveleteket. Az adott Azure IR helye automatikus feloldása. Ha **connectVia** tulajdonság nincs megadva a kapcsolódószolgáltatás-definícióban az alapértelmezett Azure IR szolgál. Csak létrehozásához szükséges kifejezetten az Azure-IR szeretné definiálhat explicit módon az infravörös helyét, vagy ha szeretné a tevékenység végrehajtások a különböző felügyeleti célú IRs gyakorlatilag csoportban. 
+## <a name="default-azure-ir"></a>Alapértelmezett Azure integrációs modul
+Alapértelmezés szerint minden adat-előállító egy Azure integrációs modul van a háttérrendszerhez, amely támogatja a műveleteket a felhő adatokat tárolja, és a számítási szolgáltatások a nyilvános hálózatban. Automatikus feloldása, hogy az Azure integrációs modul helye. Ha **connectVia** tulajdonság nincs megadva az alapértelmezett Azure integrációs Modult használja a társított szolgáltatás definíciójában. Csak akkor kell explicit módon szeretne explicit módon határozhatja meg az integrációs modul helyét, vagy ha, amelyet szeretne a tevékenység-végrehajtások a különböző IRs felügyeleti célú gyakorlatilag csoport hozzon létre egy Azure integrációs modul. 
 
-## <a name="create-azure-ir"></a>Az Azure IR létrehozása
-Integrációs futásidejű segítségével hozhatók létre a **Set-AzureRmDataFactoryV2IntegrationRuntime** PowerShell-parancsmagot. Hozzon létre egy Azure-IR, meg kell adnia nevét, helyét és típusát. a parancshoz. Íme egy példa a parancsra hozzon létre egy Azure-IR "Nyugat-Európa" értékűre helye:
+## <a name="create-azure-ir"></a>Az Azure integrációs modul létrehozása
+Integrációs modul hozható létre a **Set-AzureRmDataFactoryV2IntegrationRuntime** PowerShell-parancsmagot. Hozzon létre egy Azure integrációs Modult, adja meg a nevét, helyét és írja be a következő paranccsal. Egy mintául szolgáló parancs egy Azure integrációs modul létrehozása "Nyugat-európai" állítsa helyre az itt látható:
 
 ```powershell
 Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Az Azure-IR, a típust kell beállítani **felügyelt**. Nem kell adja meg a számítási adatait, mert a teljes körűen felügyelt rugalmasan a felhőben. Adja meg a számítási csomópont méretének és a csomópont száma, amikor szeretné létrehozni az Azure-SSIS infravörös például Részletek További információkért lásd: [létrehozása és konfigurálása Azure-SSIS-IR](create-azure-ssis-integration-runtime.md).
+Az Azure IR, a típus értékre kell állítani **felügyelt**. Nem kell megadnia a számítási részletei, mert azt teljes körűen felügyelt rugalmasan a felhőben. Adja meg a számítási részletesen, a csomópont méretét és a csomópont száma, ha szeretne létrehozni az Azure-SSIS integrációs modult. További információkért lásd: [létrehozása és konfigurálása az Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md).
 
-Egy meglévő Azure-IR szeretné módosítani a Set-AzureRmDataFactoryV2IntegrationRuntime PowerShell-parancsmag használatával konfigurálható. Egy Azure-IR helyére vonatkozó további információkért lásd: [integrációs futásidejű bemutatása](concepts-integration-runtime.md).
+Beállíthatja, hogy egy meglévő Azure integrációs modul helyét a Set-AzureRmDataFactoryV2IntegrationRuntime PowerShell-parancsmag használatával módosíthatja. Az Azure integrációs modul helyének kapcsolatos további információkért lásd: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md).
 
-## <a name="use-azure-ir"></a>Az Azure IR használata
+## <a name="use-azure-ir"></a>Azure integrációs modul használata
 
-Egy Azure-IR létrehozása után hivatkozhasson rá a Kapcsolódószolgáltatás-definícióban. Alább hogyan is hivatkozni lehessen az Azure integrációs futásidejű mintát készült fent egy Azure Storage társított szolgáltatást:  
+Az Azure IR létrehozása után a társított szolgáltatás definíciójában hivatkozhasson rá. Alább egy mintát hogyan hivatkozhat az Azure integrációs modul jön létre fent egy Azure Storage társított szolgáltatás:  
 
 ```json
 {
@@ -64,8 +63,8 @@ Egy Azure-IR létrehozása után hivatkozhasson rá a Kapcsolódószolgáltatás
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkekben integrációs futtatókörnyezetek más típusú létrehozásával:
+Más típusú integrációs modulok létrehozásáról a következő cikkekben talál:
 
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)
-- [Azure-SSIS integrációs futásidejű létrehozása](create-azure-ssis-integration-runtime.md)
+- [Az Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md)
  

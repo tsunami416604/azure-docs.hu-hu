@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 0399836191050996ac3eaf0fbe59496e10e2b426
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b1f4ad523f84616391d4121dbf7eaabb2dfde060
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059495"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018619"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table storage szolgáltatásba vagy onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +78,7 @@ Az Azure Storage társított szolgáltatása a fiókkulcs használatával hozhat
 
 Storage társított szolgáltatás egy közös hozzáférésű jogosultságkód használatával hozhat létre. Az adat-előállító all/adott erőforrásokat a storage-ban korlátozott/időhöz kötött hozzáférést biztosít.
 
-Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Segítségével, az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó engedélyek bizonyos készletét a és a egy megadott ideig. Nem kell megosztani a fiók hozzáférési kulcsait. A közös hozzáférésű jogosultságkód URI, amely a lekérdezési paraméterek magában foglalja a tárolási erőforrásokhoz való hitelesített hozzáférés szükséges összes információt. A közös hozzáférésű jogosultságkód-adattároló erőforrások elérésére, az ügyfél csak kell a megfelelő konstruktor vagy a metódus a közös hozzáférésű jogosultságkód adja át. Közös hozzáférésű jogosultságkódokkal kapcsolatos további információkért lásd: [közös hozzáférésű jogosultságkódok: megismerheti a közös hozzáférésű jogosultságkód modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. Segítségével, az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó engedélyek bizonyos készletét a és a egy megadott ideig. Nem kell megosztani a fiók hozzáférési kulcsait. A közös hozzáférésű jogosultságkód URI, amely a lekérdezési paraméterek magában foglalja a tárolási erőforrásokhoz való hitelesített hozzáférés szükséges összes információt. A közös hozzáférésű jogosultságkód-adattároló erőforrások elérésére, az ügyfél csak kell a megfelelő konstruktor vagy a metódus a közös hozzáférésű jogosultságkód adja át. Közös hozzáférésű jogosultságkódokkal kapcsolatos további információkért lásd: [közös hozzáférésű jogosultságkódok: Megismerheti a közös hozzáférésű jogosultságkód modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > A Data Factory mostantól támogatja mindkét **szolgáltatás közös hozzáférésű jogosultságkódot** és **fiók közös hozzáférésű jogosultságkód**. Két, és hogyan kell őket összeállítani kapcsolatos további információkért lásd: [közös hozzáférésű jogosultságkódok típusú](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
@@ -280,7 +279,7 @@ Ha Ön adatok importálására és az Azure-tábla, a következő [leképezések
 | Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |
-| Edm.String |Sztring |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
+| Edm.String |Karakterlánc |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

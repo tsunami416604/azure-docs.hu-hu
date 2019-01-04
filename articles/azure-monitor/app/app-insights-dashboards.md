@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c0f68304a73f8489668fafb98c51bd1e78b7588f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 653a636ca2d71c573ffde2e9e70a06cf3fcc95fb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972651"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021883"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
 Miután [Application Insights beállítása a projektben](../../application-insights/app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
@@ -96,7 +96,7 @@ Ha létrehozott egy irányítópultot, megoszthatja azt más felhasználókkal.
 
 ![Az irányítópult fejlécében kattintson a megosztás](./media/app-insights-dashboards/41.png)
 
-Ismerje meg [szerepkörök és hozzáférés-vezérlés](../../application-insights/app-insights-resources-roles-access-control.md).
+Ismerje meg [szerepkörök és hozzáférés-vezérlés](../../azure-monitor/app/resources-roles-access-control.md).
 
 ## <a name="create-dashboards-programmatically"></a>Programozott módon létrehozhat irányítópultokat
 Irányítópult létrehozása használatával automatizálható [Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) és a egy egyszerű JSON-szerkesztőt.
@@ -109,7 +109,7 @@ Az Áttekintés panelen az alkalmazással kapcsolatos további információkat a
 ### <a name="overview-blade-buttons"></a>Áttekintés panelen gombok
 ![Áttekintés panel felső navigációs sávban](./media/app-insights-dashboards/app-overview-top-nav.png)
 
-* [**Metrikaböngésző** ](../../application-insights/app-insights-metrics-explorer.md) – hozzon létre saját diagramokat, teljesítményét és használatát.
+* [**Metrikaböngésző** ](../../azure-monitor/app/metrics-explorer.md) – hozzon létre saját diagramokat, teljesítményét és használatát.
 * [**Keresés** ](../../azure-monitor/app/diagnostic-search.md) - specifikus példányai, például kérések, kivételek, események vizsgálata vagy a nyomkövetési naplók.
 * [**Analytics** ](../../azure-monitor/app/analytics.md) – hatékony telemetriai lekérdezéseket hajthat végre a.
 * **Időtartomány** – állítsa be a a panelen a diagramok szerint jelenik meg.
@@ -123,14 +123,14 @@ Az Áttekintés panelen az alkalmazással kapcsolatos további információkat a
 
 * **Áttekintés** – az alkalmazás áttekintése panelre való visszatéréshez.
 * **Tevékenységnapló** -riasztások és az Azure felügyeleti események.
-* [**Hozzáférés-vezérlés** ](../../application-insights/app-insights-resources-roles-access-control.md) -hozzáférés biztosítása a csapattagok és mások.
+* [**Hozzáférés-vezérlés** ](../../azure-monitor/app/resources-roles-access-control.md) -hozzáférés biztosítása a csapattagok és mások.
 * [**A címkék** ](../../azure-resource-manager/resource-group-using-tags.md) -címkék használata a csoport az alkalmazás másokkal.
 
 VIZSGÁLAT
 
 * [**Alkalmazás-hozzárendelés** ](app-map.md) – aktív térképként ábrázolja a az alkalmazás összetevőinek a függőségi adatok származnak.
 * [**Intelligens detektálás** ](../../application-insights/app-insights-proactive-diagnostics.md) – tekintse át a legutóbbi teljesítményével kapcsolatos riasztások.
-* [**Élő Stream** ](../../application-insights/app-insights-live-stream.md) – A rögzített közel azonnali mérőszámokat, akkor hasznos, ha egy új buildet üzembe helyezéséhez, vagy a hibakeresés.
+* [**Élő Stream** ](../../azure-monitor/app/live-stream.md) – A rögzített közel azonnali mérőszámokat, akkor hasznos, ha egy új buildet üzembe helyezéséhez, vagy a hibakeresés.
 * [**Rendelkezésre állás / webes teszteket** ](../../azure-monitor/app/monitor-web-app-availability.md) -rendszeres kérelmeket küldjön a webes alkalmazás körül a world.*
 * [**Hibák, a teljesítmény** ](../../application-insights/app-insights-web-monitor-performance.md) -kivételek, hibaarányok és a válaszidők a kérelmek az alkalmazás és az alkalmazás kéréseit [függőségek](../../azure-monitor/app/asp-net-dependencies.md).
 * [**Teljesítmény** ](../../application-insights/app-insights-web-monitor-performance.md) -válaszidőt, a válaszidők függőségi.
@@ -145,14 +145,14 @@ KONFIGURÁLÁS
 * [Riasztások](../../azure-monitor/app/alerts.md) -riasztási konfigurációja.
 * [A folyamatos exportálás](../../azure-monitor/app/export-telemetry.md) -konfigurálása az Azure storage-telemetria exportálása.
 * [Teljesítménytesztelés](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) – állítsa be a webhely szintetikus terhelését.
-* [Kvóta és díjszabás](../../application-insights/app-insights-pricing.md) és [betöltési mintavételt](../../application-insights/app-insights-sampling.md).
+* [Kvóta és díjszabás](../../azure-monitor/app/pricing.md) és [betöltési mintavételt](../../azure-monitor/app/sampling.md).
 * **API-hozzáférés** -létrehozása [kiadási jegyzetek](annotations.md) és az adatok hozzáférés API-hoz.
 * [**Munkaelemek** ](../../azure-monitor/app/diagnostic-search.md#create-work-item) -követési rendszer, így hozhat létre hibák telemetriai vizsgálata során munkahelyi csatlakozás.
 
 BEÁLLÍTÁSOK
 
 * [**Zárolja** ](../../azure-resource-manager/resource-group-lock-resources.md) – zárolhatja az Azure-erőforrások
-* [**Automation-szkript** ](../../application-insights/app-insights-powershell.md) -Exportálás egy az Azure-erőforrás definícióját, hogy ezzel sablonként új erőforrásokat hozhatnak létre.
+* [**Automation-szkript** ](../../azure-monitor/app/powershell.md) -Exportálás egy az Azure-erőforrás definícióját, hogy ezzel sablonként új erőforrásokat hozhatnak létre.
 
 
 ## <a name="video"></a>Videó
@@ -163,6 +163,6 @@ BEÁLLÍTÁSOK
 
 |  |  |
 | --- | --- |
-| [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md)<br/>Szegmentálására és szűrésére is metrikák |![Keresés példa](./media/app-insights-dashboards/64.png) |
+| [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md)<br/>Szegmentálására és szűrésére is metrikák |![Keresés példa](./media/app-insights-dashboards/64.png) |
 | [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)<br/>Keresse meg és események, kapcsolódó események vizsgálata és létrehozása a hibák |![Keresés példa](./media/app-insights-dashboards/61.png) |
 | [Elemzés](../../azure-monitor/app/analytics.md)<br/>Hatékony lekérdezési nyelvet |![Keresés példa](./media/app-insights-dashboards/63.png) |

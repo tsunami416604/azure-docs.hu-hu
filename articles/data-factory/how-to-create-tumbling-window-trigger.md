@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 4f124be9ef2247ab91d1e968b4533297ee8dba02
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6efccdb3034bb25e60904c858f346ff9a5695fc0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437248"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019724"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot egy átfedésmentes ablak
 Ez a cikk létrehozása, indítása és monitorozása az átfedésmentes ablakos eseményindító lépéseit ismerteti. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -79,7 +78,7 @@ Az alábbi táblázat a fő JSON-elemek, amelyek kapcsolatos ismétlődés és �
 | JSON-elem | Leírás | Típus | Megengedett értékek | Szükséges |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | A trigger típusa. A típus a rögzített érték "TumblingWindowTrigger." | Karakterlánc | "TumblingWindowTrigger" | Igen |
-| **runtimeState** | Az eseményindító-futtatás ideje aktuális állapotát.<br/>**Megjegyzés:**: Ez az elem \<readOnly >. | Karakterlánc | "Elindítva", "leállított," "Letiltva" | Igen |
+| **runtimeState** | Az eseményindító-futtatás ideje aktuális állapotát.<br/>**Megjegyzés**: Ez az elem \<readOnly >. | Karakterlánc | "Elindítva", "leállított," "Letiltva" | Igen |
 | **frequency** | Az eseményindító ismétlődésének gyakorisági gyakoriság egysége (percek vagy órák) jelölő karakterláncot. Ha a **startTime** dátum értékek a következők részletesebben, mint a **gyakorisága** érték, a **startTime** dátumok számítanak, amikor számítja ki az ablak határok. Például ha a **gyakorisága** értéke óránként és a **startTime** értéke 2017-09-01T10:10:10Z, az első ablak van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Karakterlánc | "minute", "hour"  | Igen |
 | **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Például ha a **időköz** 3 és a **gyakorisága** "hour", akkor az eseményindító 3 óránként ismétlődik. | Egész szám | Pozitív egész szám. | Igen |
 | **startTime**| Az első előfordulás, amely lehet múltbeli. Az első eseményindító időköz (**startTime**, **startTime** + **időköz**). | DateTime | Egy dátum/idő érték. | Igen |

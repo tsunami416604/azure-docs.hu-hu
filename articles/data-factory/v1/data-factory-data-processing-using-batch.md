@@ -9,17 +9,16 @@ ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a20ba54226e5cdcec242e29344110840615a0c95
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317525"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021577"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -546,7 +545,7 @@ A következő forgatókönyv további részleteket biztosít.
 
    ![Adat-előállító lap](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
+#### <a name="step-2-create-linked-services"></a>2. lépés: Társított szolgáltatások létrehozása
 Társított szolgáltatások adattárakat vagy számítási szolgáltatások adat-előállító. Ebben a lépésben társítani fogja a storage-fiók és a Batch-fiókot az adat-előállítóhoz.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása

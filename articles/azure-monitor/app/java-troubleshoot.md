@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: a3af54b01de1966240484c7266e7906490d7db4e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1b2e1300c200619f5d1177e9761ad948c62c1239
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981056"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013808"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme néhány tipp.
@@ -48,7 +48,7 @@ Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme
 * Információra van szüksége, a megfelelő AI-erőforrás? Adjon meg kell egyeznie a Rendszerállapotkulcsot az alkalmazás az erőforráshoz, ahol sebességhez telemetriai adatokat. Ezek egyeznie kell.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Felfedezhetem minden adat nem látható
-* Nyissa meg a használat és becsült költségek lapon és ellenőrizze hogy [mintavételi](../../application-insights/app-insights-sampling.md) van folyamatban. (100 %-os továbbítása azt jelenti, hogy a mintavétel a művelet nem.) Az Application Insights szolgáltatás beállítható csak töredéke alatt az alkalmazásból érkező telemetriai adatok fogadására. Ez lehetővé teszi a telemetria havi kvótán belül.
+* Nyissa meg a használat és becsült költségek lapon és ellenőrizze hogy [mintavételi](../../azure-monitor/app/sampling.md) van folyamatban. (100 %-os továbbítása azt jelenti, hogy a mintavétel a művelet nem.) Az Application Insights szolgáltatás beállítható csak töredéke alatt az alkalmazásból érkező telemetriai adatok fogadására. Ez lehetővé teszi a telemetria havi kvótán belül.
 * SDK mintavételi engedélyezve van? Ha igen, akkor az adatok a alkalmazni típusokhoz adott díjak mintát venni.
 * A Java SDK egy régebbi verzióját futtatja? 2.0.1-es verziójával kezdődően bevezettük a tartalék tolerancia mechanizmus, amellyel kezelni az időszakos hálózati és a háttér-hibák, valamint az adatmegőrzést a helyi meghajtókon.
 * Vannak, első miatt szabályozza a túl sok telemetriát? Ha bekapcsolja a naplózási adatokat, látni fogja a napló "Alkalmazás szabályozva" üzenet. Az aktuális korlát 32 ezer telemetriai tétel/másodperc.
@@ -165,7 +165,7 @@ Használja az Application Insights `org.apache.http`. Ez az Application Insights
 [data]: ../../azure-monitor/app/data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../application-insights/app-insights-platforms.md
+[platforms]: ../../azure-monitor/app/platforms.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md
 [usage]: javascript.md
 

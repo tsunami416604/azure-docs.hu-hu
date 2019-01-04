@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c93b23e3b06afe754ea1ca2472806d26c70f4c92
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c6323a4b8243791cc7a9f847c7d08e5bd5946e96
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973264"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025266"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -71,14 +71,14 @@ Az Exportálás véglegesen megszüntetéséhez törölje azt. Így nem, töröl
 ## <a name="analyze"></a> Milyen eseményeket be?
 Az exportált adatok a az alkalmazásból érkező nyers telemetriát, azzal a különbséggel, hogy a helyadatok, amelyek kiszámítása adjuk hozzá az ügyfél IP-címről.
 
-Adatok, amelyek szerint el lett vetve [mintavételi](../../application-insights/app-insights-sampling.md) nem szerepel az exportált adatok.
+Adatok, amelyek szerint el lett vetve [mintavételi](../../azure-monitor/app/sampling.md) nem szerepel az exportált adatok.
 
 Egyéb számított metrika nem szerepelnek. Például nem nem exportálni átlagos CPU-kihasználtság, de nem exportálni a nyers telemetriát, amelyről átlagát számítja ki.
 
 Az adatokat is tartalmaz az eredmények bármely [rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) , amely meg van adva.
 
 > [!NOTE]
-> **Mintavétel.** Ha az alkalmazás nagy mennyiségű adatot küld, a mintavételezés funkció működjön, és csak töredéke alatt létrehozott telemetriát küldjön. [További tudnivalók a mintavételezésről.](../../application-insights/app-insights-sampling.md)
+> **Mintavétel.** Ha az alkalmazás nagy mennyiségű adatot küld, a mintavételezés funkció működjön, és csak töredéke alatt létrehozott telemetriát küldjön. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,4 +194,4 @@ A nagyobb méretek, érdemes lehet [HDInsight](https://azure.microsoft.com/servi
 <!--Link references-->
 
 [exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md

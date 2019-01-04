@@ -9,17 +9,16 @@ ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 848616bb69aa0eae384b9c4e7ea1c2ac3da3c04e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1ccf66da14bbbd4993f29da2e40d996cb564864e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167120"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024909"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
@@ -56,7 +55,7 @@ Az átjáróra szükség, akkor is, ha az Oracle Azure-infrastruktúrák szolgá
 
 Az Oracle-összekötő illesztőprogramok két verziója támogatja:
 
-- **Oracle (ajánlott) Microsoft-illesztőprogram**: kezdve az adatkezelési átjáró, 2.7-es verzió egy Microsoft-illesztőprogram Oracle automatikusan telepítve van az átjáró számára. Nem kell telepíteni vagy frissíteni az illesztőprogram csatlakozni és Oracle-ig. Jobb másolási teljesítmény akkor is jelentkezhet, ha az illesztőprogram használatával. Oracle-adatbázisok ezen verziói támogatottak:
+- **Oracle (ajánlott) Microsoft-illesztőprogram**: Az adatkezelési átjáró 2.7-es verzió kezdve a Microsoft Oracle-illesztőprogram automatikusan települ az átjáróval. Nem kell telepíteni vagy frissíteni az illesztőprogram csatlakozni és Oracle-ig. Jobb másolási teljesítmény akkor is jelentkezhet, ha az illesztőprogram használatával. Oracle-adatbázisok ezen verziói támogatottak:
     - Oracle 12c R1 (12.1)
     - Oracle 11g R1 vagy R2 (11.1, 11.2)
     - Oracle 10g R1 vagy R2 (10.1, 10,2)
@@ -70,7 +69,7 @@ Az Oracle-összekötő illesztőprogramok két verziója támogatja:
     > Jelenleg a Microsoft Oracle-illesztőprogram támogatja az Oracle csak adatmásolásra. Az illesztőprogram nem támogatja az írást és Oracle-ig. A teszt kapcsolat funkció az adatkezelési átjárót a **diagnosztikai** lap nem támogatja az illesztőprogramot. Is használhatja a másolás varázsló a kapcsolat ellenőrzéséhez.
     >
 
-- **Oracle-adatszolgáltató a .NET-hez**: Oracle-adatszolgáltatójának használatával másolja az adatokat, vagy és Oracle-ig. Ez az összetevő megtalálható [Oracle Data Access összetevői a Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Telepítse a megfelelő verzió (32 bites vagy 64 bites) a gépen, amelyen az átjáró telepítve van. [Oracle-adatszolgáltató a .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) Oracle Database 10 g Release 2 és újabb verziói is hozzáférhetnek.
+- **Oracle-adatszolgáltató a .NET-hez**: Oracle-adatszolgáltatójának használatával másolja az adatokat, vagy Oracle. Ez az összetevő megtalálható [Oracle Data Access összetevői a Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Telepítse a megfelelő verzió (32 bites vagy 64 bites) a gépen, amelyen az átjáró telepítve van. [Oracle-adatszolgáltató a .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) Oracle Database 10 g Release 2 és újabb verziói is hozzáférhetnek.
 
     Ha **XCopy telepítési**, végezze el a readme.htm fájlban leírt lépéseket. Javasoljuk, hogy válassza a telepítő, amely a felhasználói felület (nem az XCopy telepítő).
 
@@ -82,7 +81,7 @@ A másolás varázsló használatával hozhat létre a másolási folyamat, ha a
 
 Egy másolási tevékenységgel rendelkező folyamatot hozhat létre. A folyamat helyez át adatokat, vagy egy helyszíni Oracle-adatbázisból a különböző eszközök vagy API-k használatával.
 
-A folyamat létrehozásának legegyszerűbb módja, hogy a Másolás varázslóval. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató folyamat létrehozása adatok másolása varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja, hogy a Másolás varázslóval. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató folyamat létrehozása adatok másolása varázsló használatával.
 
 Használhatja a következő eszközök egyikét egy folyamat létrehozásához: a **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager sablon**, a **.NET API**, vagy a **REST API-val**. Tekintse meg a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kapcsolatos lépésenkénti útmutatót egy másolási tevékenységgel rendelkező folyamat létrehozása.
 
@@ -111,7 +110,7 @@ A következő táblázat ismerteti, amelyek adott, az Oracle-beli társított sz
 **Példa: A Microsoft-illesztő használatával**
 
 > [!TIP]
-> Ha hibaüzenet jelenik meg, amely szerint a "ORA-01025: UPI paraméter engedélyezett tartományon kívül esik" és az Oracle-verzió 8i, adjon hozzá `WireProtocolMode=1` a kapcsolati karakterláncot, és próbálkozzon újra:
+> Ha hibaüzenet jelenik meg, amely szerint a "ORA-01025: UPI paraméter engedélyezett tartományon kívül esik"és az Oracle-verzió 8i, adjon hozzá `WireProtocolMode=1` a kapcsolati karakterláncot, és próbálkozzon újra:
 
 ```json
 {
@@ -127,7 +126,7 @@ A következő táblázat ismerteti, amelyek adott, az Oracle-beli társított sz
 }
 ```
 
-**Példa: ODP-illesztőprogram használatával.**
+**Példa: A ODP illesztőprogram segítségével**
 
 Engedélyezett formátumokat kapcsolatos további információkért lásd: [Oracle-adatszolgáltató a .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
 
@@ -191,7 +190,7 @@ A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következ
 
 Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a vagy Oracle-adatbázishoz, és az Azure Blob storage-ból. Azonban adatok átmásolhatók a felsorolt fogadóként valamelyik [támogatott adattárak és formátumok](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.   
 
-**Példa: Adatok másolása az Oracle az Azure Blob storage**
+**Példa: Oracle az Azure Blob storage-adatok másolása**
 
 A minta az alábbi Data Factory-entitások rendelkezik:
 

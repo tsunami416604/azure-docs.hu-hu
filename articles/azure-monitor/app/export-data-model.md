@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: mbullwin
-ms.openlocfilehash: a3cab6af86a18e23199437c91b6d07102e783cd1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c906f313ae367fcc660d1ce1df0b3d667c7f04a3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971273"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016117"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights exportálási Data Model
 Ez a táblázat által küldött telemetriát tulajdonságait a [Application Insights](../../application-insights/app-insights-overview.md) SDK-k a portálra.
 Láthatja, hogy ezeket a tulajdonságokat az adatkimenet bármilyen [folyamatos exportálás](export-telemetry.md).
-Is megjelennek a tulajdonságszűrők [Metrikaböngésző](../../application-insights/app-insights-metrics-explorer.md) és [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md).
+Is megjelennek a tulajdonságszűrők [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) és [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md).
 
 Tudnivalók:
 
@@ -158,7 +158,7 @@ Egyéni események által generált [TrackEvent()](../../azure-monitor/app/api-c
 
 | Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
-| [0] események száma |egész szám |100 / ([mintavételi](../../application-insights/app-insights-sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
+| [0] események száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
 | [0] esemény neve |sztring |Esemény neve.  Maximális hossz 250. |
 | [0] esemény URL-címe |sztring | |
 | [0] esemény urlData.base |sztring | |
@@ -170,7 +170,7 @@ Jelentések [kivételek](../../azure-monitor/app/asp-net-exceptions.md) a kiszol
 | Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | szerelvény [0] basicException |sztring | |
-| [0] basicException száma |egész szám |100 / ([mintavételi](../../application-insights/app-insights-sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
+| [0] basicException száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
 | [0] basicException exceptionGroup |sztring | |
 | [0] basicException exceptionType |sztring | |
 | [0] basicException failedUserCodeMethod |sztring | |
@@ -211,7 +211,7 @@ TrackDependency által küldött. Jelentés teljesítményét és használatát 
 | az aszinkron remoteDependency [0] |logikai | |
 | [0] remoteDependency baseName |sztring | |
 | [0] remoteDependency commandName |sztring |Például "home/index" |
-| [0] remoteDependency száma |egész szám |100 / ([mintavételi](../../application-insights/app-insights-sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
+| [0] remoteDependency száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
 | [0] remoteDependency dependencyTypeName |sztring |HTTP, SQL... |
 | [0] remoteDependency durationMetric.value |szám |A befejezési válasz a függőségi hívás ideje |
 | [0] remoteDependency azonosítója |sztring | |
@@ -229,7 +229,7 @@ TrackDependency által küldött. Jelentés teljesítményét és használatát 
 
 | Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
-| [0] kérések száma |egész szám |100 / ([mintavételi](../../application-insights/app-insights-sampling.md) sebesség). Példa: 4 =&gt; 25 %. |
+| [0] kérések száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Példa: 4 =&gt; 25 %. |
 | kérelem [0] durationMetric.value |szám |A válasz érkező kérelem ideje. 1e7 == 1s |
 | a [0] kérés azonosítója |sztring |Műveletazonosító |
 | [0] kérelem neve |sztring |GET/POST + alap URL-címét.  Maximális hossz 250 |
@@ -264,7 +264,7 @@ TrackPageView() által küldött vagy [stopTrackPage](../../azure-monitor/app/ap
 
 | Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
-| [0] száma |egész szám |100 / ([mintavételi](../../application-insights/app-insights-sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
+| [0] száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
 | [0] durationMetric.value megtekintése |egész szám |Igény szerint hozzáadhat trackPageView() vagy startTrackPage() - érték stopTrackPage(). Nem ugyanaz, mint clientPerformance értékeket. |
 | [0] nézet neve |sztring |Lap címe.  Maximális hossz 250 |
 | url megtekintése [0] |sztring | |
@@ -279,7 +279,7 @@ Jelentések [rendelkezésre állási webes tesztek](../../azure-monitor/app/moni
 | --- | --- | --- |
 | rendelkezésre állási [0] availabilityMetric.name |sztring |rendelkezésre állás |
 | rendelkezésre állási [0] availabilityMetric.value |szám |1.0-s vagy 0,0 |
-| rendelkezésre állási [0] száma |egész szám |100 / ([mintavételi](../../application-insights/app-insights-sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
+| rendelkezésre állási [0] száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
 | rendelkezésre állási [0] dataSizeMetric.name |sztring | |
 | rendelkezésre állási [0] dataSizeMetric.value |egész szám | |
 | rendelkezésre állási [0] durationMetric.name |sztring | |
@@ -341,7 +341,7 @@ A többi mező célja, hogy a metrikák, hogy az SDK-ban, a forgalom csökkenté
 
 A fenti táblázatokban a ritkán használt mezők száma, min, max, stdDev és sampledValue kihagytunk azt.
 
-Előre összesítése metrikák helyett használhat [mintavételi](../../application-insights/app-insights-sampling.md) Ha lerövidítheti a telemetriai adatok mennyisége.
+Előre összesítése metrikák helyett használhat [mintavételi](../../azure-monitor/app/sampling.md) Ha lerövidítheti a telemetriai adatok mennyisége.
 
 ### <a name="durations"></a>Időtartamok
 Azzal a különbséggel, jelezve, időtartamok tized-mikromásodperces jelennek meg, hogy 10000000.0 azt jelenti, hogy 1 másodperc.

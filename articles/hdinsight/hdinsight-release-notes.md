@@ -2,19 +2,19 @@
 title: Az Azure HDInsight kibocsátási megjegyzései
 description: Legújabb kibocsátási megjegyzések az Azure HDInsight. Szerezze be a fejlesztési tippek és részletek Hadoop, Spark, az R Server, Hive és más rendszerekhez.
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0555fa7de7ed85cf6d26f85b93f0010b2ab6fa53
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976970"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000078"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -1308,6 +1308,16 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 |**A Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|A beállítás letiltja a Feladatütemező |**Az érintett összetevő:** Zeppelin-kiszolgáló<br /><br />**Előző viselkedés:** A Zeppelin a korábbi kiadásokban nem volt lehetőség a scheduler letiltása.<br /><br />**Az új viselkedés:** Alapértelmezés szerint felhasználók többé nem látja a scheduler, mivel alapértelmezés szerint le van tiltva.<br /><br />**Megkerülő megoldás/várt felhasználói művelet:** A scheduler engedélyezni szeretné, ha szüksége lesz azeppelin.notebook.cron.enable az egyéni zeppelin webhelyen a true érték hozzáadása a Ambari Zeppelin beállításait.|
 
 ## <a name="known-issues"></a>Ismert problémák
+
+-   **HDInsight-integráció az ADLS általános 2** nincsenek két problémák HDInsight ESP-fürtökön az Azure Data Lake Storage általános 2 használatával felhasználói könyvtárak és engedélyekkel:
+   
+   1. A felhasználók számára kezdőkönyvtárak nem első jönnek létre a fő csomópont 1. Áthidaló megoldásként hozzon létre manuálisan a könyvtárak és tulajdonjogai módosulnak a megfelelő felhasználói UPN.
+   
+   2. /Hdp könyvtár jelenleg nincs beállítva a 751. Ezt manuálisan kell beállítani 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **A Spark 2.3.**
 

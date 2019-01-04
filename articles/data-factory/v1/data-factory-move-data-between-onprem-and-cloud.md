@@ -9,17 +9,16 @@ ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242840"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015831"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -63,7 +62,7 @@ Ebben a lépésben, az Azure portal használatával hozzon létre egy Azure Data
     ![Hozzáadás a Kezdőpulthoz](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **nem érhető el a Data factory name "ADFTutorialOnPremDF"**, módosítsa a nevet az adat-előállító (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ez a név helyett ADFTutorialOnPremDF használja ez az oktatóanyag fennmaradó lépéseinek végrehajtása során.
+   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **Nem érhető el a Data factory name "ADFTutorialOnPremDF"**, módosítsa a nevet az adat-előállító (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ez a név helyett ADFTutorialOnPremDF használja ez az oktatóanyag fennmaradó lépéseinek végrehajtása során.
    >
    > Az adat-előállító nevét regisztrálható egy **DNS** nevét, a jövőben így nyilvánosan láthatóvá válhat.
    >
@@ -281,7 +280,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    * **folderPath** értékre van állítva **adftutorial/outfromonpremdf** ahol outfromonpremdf-e a mappát az adftutorial tárolóban. Hozzon létre a **adftutorial** tárolót, ha azt nem létezik.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás létrehoz egy kimeneti adatszeletet az óránként a **emp** táblát az Azure SQL Database-ben.
 
-   Ha nem ad meg egy **fileName** a egy **kimeneti tábla**, az előállított fájlok a **folderPath** a következő formátumban lesznek elnevezve: Data.<Guid>. txt típusú (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Ha nem ad meg egy **fileName** a egy **eredménytábla**, az előállított fájlok a **folderPath** a következő formátumban lesznek elnevezve: Adatok. <Guid>.txt (például:: Data.0a405f8a-93ff-4c6f-B3BE-f69616f1df7a.txt.).
 
    Beállítása **folderPath** és **fileName** dinamikusan alapján a **SliceStart** idő, a "partitionedBy" tulajdonsággal. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz.
 
@@ -363,7 +362,7 @@ Ebben a lépésben hozzon létre egy **folyamat** egy **másolási tevékenység
    * Az a **typeProperties** szakaszban **SqlSource** a következőként van megadva a **adatforrástípust** és ** BlobSink ** a következőként van megadva a **fogadó típusa**.
    * SQL-lekérdezés `select * from emp` van megadva a **sqlReaderQuery** tulajdonsága **SqlSource**.
 
-   Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.
+   Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Példa: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.
 
    Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendszer a „**kezdő időpont + 48 óra**” számítással határozza meg azt. A folyamat határozatlan ideig történő futtatásához adja meg a **9/9/9999** értéket az **end** (befejezés) tulajdonsághoz.
 

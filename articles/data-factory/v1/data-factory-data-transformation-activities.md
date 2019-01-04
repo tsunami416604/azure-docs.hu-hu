@@ -1,6 +1,6 @@
 ---
-title: 'Adatok átalakítása: Folyamat & átalakítási adatok |} Microsoft Docs'
-description: Megtudhatja, hogyan átalakítási adatok vagy az Azure Data Factory a Hadoop, a Machine Learning vagy az Azure Data Lake Analytics folyamat közé.
+title: 'Adatátalakítás: Adatok folyamata és átalakítása |} A Microsoft Docs'
+description: Ismerje meg, hogyan alakíthat át adatokat vagy dolgozza fel az adatokat az Azure Data Factoryban Hadoop, a Machine Learning vagy az Azure Data Lake Analytics használatával való.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,19 +9,18 @@ ms.assetid: 39786731-1e4b-40a4-81b7-d06e127427aa
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: afa00a81738563ec3c5b4b168f533b732c263825
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b1a99f2872a69e01232c69a73f36319552429ca0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045619"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022444"
 ---
-# <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryben az adatok átalakítása
+# <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryban az adatok átalakítása
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -30,64 +29,64 @@ ms.locfileid: "37045619"
 > * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
 > * [Tárolt eljárás](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [Egyéni .NET](data-factory-use-custom-activities.md)
+> * [.NET egyéni](data-factory-use-custom-activities.md)
 
 ## <a name="overview"></a>Áttekintés
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [adatok átalakítása tevékenységek adat-előállítóban](../transform-data.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [Data Factory az Adatátalakítási tevékenységeket](../transform-data.md).
 
-Ez a cikk ismerteti az Azure Data Factory használatával átalakító, és feldolgozza a nyers adatok előrejelzéseket és elemzések adatok átalakítása tevékenységek. Egy átalakítási tevékenységet hajtja végre, például az Azure HDInsight-fürt vagy egy Azure Batch számítási környezetben. Cikkek hivatkozásainak átalakítása tevékenységeiről részletes információkat biztosít.
+Ez a cikk ismerteti az Azure Data Factory segítségével átalakíthatja, és a nyers adatok feldolgozza az előrejelzési díjat és az elemzések adat-átalakítási tevékenységeket. Egy Adatátalakítási tevékenységgel hajt végre, például Azure HDInsight-fürt vagy egy Azure Batch számítási környezetben. Az egyes átalakítási tevékenységek részletes információt biztosít cikkekre mutató hivatkozások.
 
-Adat-előállító támogatja a következő adatok átalakítása tevékenységek is hozzáadhatók [folyamatok](data-factory-create-pipelines.md) vagy önállóan vagy egy másik tevékenységgel kapcsolt.
+A Data Factory támogatja a következő az Adatátalakítási tevékenységeket is hozzáadhatók [folyamatok](data-factory-create-pipelines.md) vagy külön-külön vagy visszavezethetők más tevékenységekkel.
 
 > [!NOTE]
-> Lépésenkénti utasításokat talál útmutatást lásd: [hozzon létre egy folyamatot Hive átalakítása](data-factory-build-your-first-pipeline.md) cikk.  
+> Lépésről lépésre egy bemutatóért lásd: [egy folyamat létrehozása Hive-átalakítás](data-factory-build-your-first-pipeline.md) cikk.  
 > 
 > 
 
-## <a name="hdinsight-hive-activity"></a>HDInsight Hive tevékenység
-A HDInsight Hive tevékenység a Data Factory-folyamat saját Hive-lekérdezéseket vagy igény szerinti Windows/Linux-alapú HDInsight-fürt hajt végre. Lásd: [Hive tevékenység](data-factory-hive-activity.md) szóló cikkben olvashat ennek a tevékenységnek. 
+## <a name="hdinsight-hive-activity"></a>HDInsight Hive-tevékenység
+A HDInsight Hive tevékenység, a Data Factory-folyamatok futtatják a Hive-lekérdezések saját maga, vagy igény szerinti Windows/Linux-alapú HDInsight-fürt. Lásd: [Hive-tevékenység](data-factory-hive-activity.md) cikket ezzel a tevékenységgel kapcsolatos részletekért. 
 
-## <a name="hdinsight-pig-activity"></a>HDInsight Pig tevékenység
-A HDInsight Pig tevékenység a Data Factory-folyamat saját Pig lekérdezések vagy igény szerinti Windows/Linux-alapú HDInsight-fürt hajt végre. Lásd: [Pig tevékenység](data-factory-pig-activity.md) szóló cikkben olvashat ennek a tevékenységnek. 
+## <a name="hdinsight-pig-activity"></a>HDInsight Pig-tevékenység
+A HDInsight Pig-tevékenység, a Data Factory-folyamatok Pig-lekérdezéseket a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. Lásd: [Pig-tevékenység](data-factory-pig-activity.md) cikket ezzel a tevékenységgel kapcsolatos részletekért. 
 
-## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce művelethez
-A HDInsight MapReduce művelethez a Data Factory-folyamat saját MapReduce programok vagy igény szerinti Windows/Linux-alapú HDInsight-fürt hajt végre. Lásd: [MapReduce művelethez](data-factory-map-reduce.md) szóló cikkben olvashat ennek a tevékenységnek.
+## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-tevékenység
+A HDInsight MapReduce-tevékenység, a Data Factory-folyamatok MapReduce-programok saját maga, vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. Lásd: [MapReduce-tevékenység](data-factory-map-reduce.md) cikket ezzel a tevékenységgel kapcsolatos részletekért.
 
-## <a name="hdinsight-streaming-activity"></a>HDInsight Streamelési tevékenységben
-A HDInsight Streamelési tevékenységben a Data Factory-folyamat saját Hadoop Streamelési programok vagy igény szerinti Windows/Linux-alapú HDInsight-fürt hajt végre. Lásd: [HDInsight Streamelési tevékenységben](data-factory-hadoop-streaming-activity.md) ezzel a tevékenységgel kapcsolatos részletekért.
+## <a name="hdinsight-streaming-activity"></a>HDInsight Streaming-tevékenység
+A HDInsight Streaming-tevékenység a Data Factory-folyamatok Hadoop Streamelési programok saját maga vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre. Lásd: [HDInsight Streaming-tevékenység](data-factory-hadoop-streaming-activity.md) ezzel a tevékenységgel kapcsolatos részletekért.
 
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark-tevékenység
-A HDInsight Spark tevékenység a Data Factory-folyamat saját HDInsight-fürt végrehajtja a Spark programokat. További információkért lásd: [meghívása Spark programok az Azure Data Factory](data-factory-spark.md). 
+A HDInsight Spark-tevékenység, Data Factory-folyamatok a Spark-programok saját HDInsight-fürtön hajtja végre. További információkért lásd: [Invoke Spark-programok Azure Data Factory](data-factory-spark.md). 
 
-## <a name="machine-learning-activities"></a>Machine Learning tevékenységek
-Az Azure Data Factory lehetővé teszi, hogy könnyen létrehozhat egy közzétett Azure Machine Learning webszolgáltatás prediktív elemzési használó folyamatok. Használja a [kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) egy Azure Data Factory-folyamat a hívhat meg a Machine Learning webszolgáltatás előrejelzéseket készítsen a kötegben lévő adatokat.
+## <a name="machine-learning-activities"></a>Machine Learning-tevékenységek
+Az Azure Data Factory lehetővé teszi, hogy egyszerűen hozzon létre egy közzétett Azure Machine Learning webszolgáltatás prediktív elemzési használó folyamatok. Használatával a [kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity) az Azure Data Factory-folyamatot, az előrejelzéseket a batch szolgáltatásban az adatok egy Machine Learning webszolgáltatás hívhatók meg.
 
-Az idő múlásával a Machine Learning scoring-kísérletek a prediktív modellek kell kell retrained új bemeneti adatkészletek használata. Miután elkészült, az átképezési, retrained gépi tanulási modell a pontozási webszolgáltatás frissíteni kívánt. Használhatja a [erőforrás tevékenység frissítése](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) frissítheti a webszolgáltatás a újonnan betanított modell.  
+Az idő múlásával a prediktív modelleket a Machine Learning pontozási kísérletek kell kell retrained új bemeneti adatkészletek használatával. Miután elkészült, az átképezési, frissítse a pontozási webszolgáltatás retrained Machine Learning-modellhez szeretne. Használhatja a [Erőforrástevékenység frissítése](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity) a webszolgáltatás újonnan betanított modell frissítésével.  
 
-Lásd: [használata a Machine Learning tevékenységek](data-factory-azure-ml-batch-execution-activity.md) ezeket a Machine Learning tevékenységeket vonatkozó további információért. 
+Lásd: [használata a Machine Learning-tevékenységek](data-factory-azure-ml-batch-execution-activity.md) ezek a Machine Learning-tevékenységek részleteit. 
 
 ## <a name="stored-procedure-activity"></a>Tárolt eljárás tevékenysége
-Használhatja az SQL Server tárolt eljárási tevékenység a Data Factory-folyamat a következő adatokat tárolja egyikében tárolt eljárás meghívása: Azure SQL Database, Azure SQL Data Warehouse szolgáltatásban a vállalat SQL Server-adatbázis vagy egy Azure virtuális Gépen. Lásd: [tárolt eljárási tevékenység](data-factory-stored-proc-activity.md) cikkben alább.  
+Az SQL Server tárolt eljárás tevékenység használhatja a Data Factory-folyamat a következő adattárakat egyikét a tárolt eljárás meghívása: Az Azure SQL Database, Azure SQL Data Warehouse, SQL Server-adatbázis a vállalati vagy egy Azure virtuális Gépen. Lásd: [tárolt eljárási tevékenység](data-factory-stored-proc-activity.md) részleteivel.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
-Data Lake Analytics U-SQL-tevékenység egy Azure Data Lake Analytics-fürt U-SQL parancsfájlt futtat. Lásd: [Analytics U-SQL tevékenységet](data-factory-usql-activity.md) cikkben alább. 
+Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürt. Lásd: [Data Analytics U-SQL-tevékenység](data-factory-usql-activity.md) részleteivel. 
 
 ## <a name="net-custom-activity"></a>.NET egyéni tevékenység
-Ha úgy, hogy nem támogatja a Data Factory adatok átalakítása van szüksége, hozzon létre egy egyéni tevékenység saját adatokat feldolgozó logika, és használja a tevékenységet a feldolgozási. Az egyéni .NET tevékenység segítségével futtatja, az Azure Batch szolgáltatás vagy az Azure HDInsight-fürtöt is konfigurálhat. Lásd: [egyéni tevékenységeket felhasználni](data-factory-use-custom-activities.md) cikkben alább. 
+Adatok átalakítása a Data Factory által nem támogatott módon van szüksége, ha egyéni tevékenységek létrehozása a saját adatok feldolgozási logikáját, és használja a tevékenységet a folyamat. Konfigurálhatja úgy az egyéni .NET-tevékenységet egy Azure Batch szolgáltatás vagy egy Azure HDInsight-fürt futtatásához. Lásd: [egyéni tevékenységek használata](data-factory-use-custom-activities.md) részleteivel. 
 
 Létrehozhat egy egyéni tevékenységet R-parancsfájlok futtatására egy olyan HDInsight-fürtön, amelyen telepítve van az R. Lásd: [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (R-parancsfájl futtatása az Azure Data Factory használatával). 
 
 ## <a name="compute-environments"></a>Számítási környezetek
-A számítási környezet társított szolgáltatás létrehozása, és kövesse a társított szolgáltatás, egy átalakítási tevékenységet meghatározásakor. A Data Factory által támogatott számítási környezetek két típusa van. 
+Ön létrehoz egy társított szolgáltatást a számítási környezet, majd a társított szolgáltatás egy Adatátalakítási tevékenységgel meghatározásakor. A Data Factory által támogatott számítási környezetek két típusa van. 
 
-1. **Igény szerinti**: Ebben az esetben a számítógépes környezet teljes kezeli adat-Előállítóban. Az automatikusan hozta létre a Data Factory szolgáltatásnak egy feladat folyamata adatokat küldött, és eltávolítja a feladat befejezése előtt. Konfigurálja, és az igény szerinti számítási környezet feladat végrehajtási, a kiszolgálófürt-felügyelet és a műveletek rendszerindítása részletes beállításainak kezeléséhez. 
-2. **Bring Your Own**: Ebben az esetben regisztrálhatja a saját informatikai környezetben (például HDInsight-fürtök) a Data Factory kapcsolt szolgáltatásként. A számítógépes környezet által felügyelt, és a Data Factory szolgáltatásnak a tevékenységek végrehajtásához használja. 
+1. **Igény szerinti**:  Ebben az esetben a számítási környezet teljes körűen felügyelt adat-előállítók által. Automatikusan létrejön a Data Factory szolgáltatás előtt egy feladat küldött adatok feldolgozásához, és eltávolítja a feladat elvégzésekor. Konfigurálja, és a feladat-végrehajtási, a kezelő és a műveletek rendszerindítása igény szerinti számítási környezet részletes beállításainak kezeléséhez. 
+2. **Használhat sajátot**: Ebben az esetben a saját számítási környezetben (például a HDInsight fürt) regisztrálhat a Data Factory társított szolgáltatásként. A számítási környezet Ön által felügyelt és a Data Factory szolgáltatás használ a tevékenységek végrehajtásához. 
 
-Lásd: [összekapcsolt szolgáltatások számítási](data-factory-compute-linked-services.md) cikkben tájékozódhat az adat-előállító által támogatott számítási szolgáltatások. 
+Lásd: [számítási társított szolgáltatások](data-factory-compute-linked-services.md) a cikkben megismerheti a Data Factory által támogatott számítási szolgáltatások. 
 
 ## <a name="summary"></a>Összegzés
-Az Azure Data Factory támogatja a következő adatok átalakítása tevékenységek és a számítási környezetek a tevékenységekhez. Az átalakítási tevékenységek hozzá folyamatok vagy külön-külön, vagy egy másik tevékenységgel kapcsolt.
+Az Azure Data Factory támogatja a következő adat-átalakítási tevékenységeket és a számítási környezetek a tevékenységek. Az átalakítási tevékenységek hozzá a folyamatokhoz egyenként, vagy egy másik tevékenységgel láncolt is.
 
 | Adatátalakítási tevékenység | Számítási környezet |
 |:--- |:--- |
@@ -95,7 +94,7 @@ Az Azure Data Factory támogatja a következő adatok átalakítása tevékenys�
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Machine Learning-tevékenységek: Kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [Tárolt eljárás](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse vagy SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] vagy Azure Batch |

@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/03/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33b0b2b4148a8cfbe97413bf3cdec23d375206bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c6e4e142025e40e77afee01d70de9cef68eca1f0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983888"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013196"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Linux rendszerű virtuális gép létrehozása Azure Resource Manager-sablonokkal
 
@@ -32,7 +32,6 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan egy Linux rendszerű virtu
 
 ## <a name="templates-overview"></a>Sablonok – áttekintés
 Az Azure Resource Manager-sablonok JSON-fájlok, amelyek meghatározzák az infrastruktúra és az Azure-megoldás konfigurációs. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. A sablont, és hogyan formázásával kapcsolatos további információkért lásd: [az első Azure Resource Manager-sablon létrehozása](../../azure-resource-manager/resource-manager-create-first-template.md). Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/) témakört.
-
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroupVM* a a *eastus* régió:
@@ -73,3 +72,11 @@ ssh azureuser@<ipAddress>
 
 ## <a name="next-steps"></a>További lépések
 Ebben a példában egy egyszerű Linux virtuális Gépet hozott létre. További Resource Manager-sablonok, amelyek tartalmazzák az alkalmazás-keretrendszerek vagy összetett környezeteket hozhat létre, tallózással keresse meg a [az Azure-gyorssablonok katalógusába](https://azure.microsoft.com/documentation/templates/).
+
+Sablonok létrehozásával kapcsolatos további információkért tekintse meg a JSON-szintaxist és a telepített erőforrások típusok tulajdonságait:
+
+* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

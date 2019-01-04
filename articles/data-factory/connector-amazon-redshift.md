@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 686b602828856e75300152c41bfe4c35cd6a8219
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970161"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024365"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az Amazon Redshift
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +53,7 @@ Amazon Redshift-beli társított szolgáltatás a következő tulajdonságok tá
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **AmazonRedshift** | Igen |
+| type | A type tulajdonságot kell beállítani: **AmazonRedshift** | Igen |
 | kiszolgáló |IP-cím vagy a gazdagép neve az Amazon Redshift-kiszolgáló. |Igen |
 | port |Az Amazon Redshift-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem, az alapértelmezett érték 5439 |
 | adatbázis |Az Amazon Redshift-adatbázis neve. |Igen |
@@ -132,7 +131,7 @@ Adatok másolása az Amazon Redshift, állítsa be a forrás típusaként a más
 | s3LinkedServiceName | -To-be – használja az ideiglenes tárolóként az Amazon S3 hivatkozik egy "az AmazonS3" típusú társított szolgáltatás neve megadásával. | Igen, ha a MEMÓRIÁBÓL használatával |
 | bucketName | Adja meg, az S3 gyűjtőt átmeneti adatok tárolására. Ha nincs megadva, a Data Factory szolgáltatás állít elő, akkor automatikusan.  | Igen, ha a MEMÓRIÁBÓL használatával |
 
-**. Példa: A másolási tevékenység használatával a MEMÓRIÁBÓL Amazon Redshift-forrás**
+**Példa: A másolási tevékenység használatával UNLOAD amazon Redshift-forrás**
 
 ```json
 "source": {
@@ -214,7 +213,7 @@ Ha az adatok másolása az Amazon Redshift, az Azure Data Factory-közbenső ada
 | LOGIKAI ÉRTÉK |Karakterlánc |
 | CHAR |Karakterlánc |
 | DATE |DateTime |
-| TIZEDES TÖRT |tizedes tört |
+| TIZEDES TÖRT |Tizedes tört |
 | A KÉTSZERES PONTOSSÁG |Dupla |
 | EGÉSZ SZÁM |Int32 |
 | VALÓDI |Önálló |

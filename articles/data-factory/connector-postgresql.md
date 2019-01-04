@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c321d96efc7af387fb30b6ed608eb871cb7de5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43e7425890d8799272aa782ceef3d3b89fd6ce78
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230495"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025487"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>PostgreSQL adatokat másol az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,7 +50,7 @@ PostgreSQL-beli társított szolgáltatás a következő tulajdonságok támogat
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **PostgreSql** | Igen |
+| type | A type tulajdonságot kell beállítani: **PostgreSql** | Igen |
 | kapcsolati Sztringje | Az ODBC kapcsolati karakterlánc csatlakozás az Azure Database for postgresql-hez. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 

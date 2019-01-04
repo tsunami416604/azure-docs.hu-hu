@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8c3210a560c079f66cd21dbb30be4a4b823a6502
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 332687d14593024bb4354e2cd59ff0d50ae0aaef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078208"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017310"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
@@ -34,7 +33,7 @@ A Marketo szoftveréből származó adatok másolhatja bármely támogatott foga
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 >[!NOTE]
->A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](http://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri a hibák közli, hogy "hiba történt a REST API-val kísérlet során: maximális sebesség túllépte a korlátot"100"a"20"másodperc (606)" vagy "REST API-val tett kísérlet során hiba: (615) elérte az egyidejű hozzáférés korlátot"10"", való egyidejű másolási tevékenység-végrehajtás csökkentése érdekében fontolja meg Csökkentse a kérelmek száma a szolgáltatás.
+>A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](http://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri közli, hogy hibákat "hiba történt a REST API-val kísérlet során: Maximális sebesség túllépte a korlátot "100" a "20" másodperc (606) "vagy" hiba történt a REST API-val kísérlet során: Egyidejű hozzáférés korlátozása '10' (615) elérte ", próbálják meg csökkenteni a kérések száma a szolgáltatás egyidejű másolási tevékenység-végrehajtás csökkentése érdekében érdemes lehet.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -48,7 +47,7 @@ A Marketo-beli társított szolgáltatás a következő tulajdonságok támogato
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonság értékre kell állítani: **Marketo** | Igen |
+| type | A type tulajdonságot kell beállítani: **Marketo** | Igen |
 | endpoint | A végpont a Marketo-kiszolgáló. (i.e. 123-ABC-321.mktorest.com)  | Igen |
 | clientId | Az ügyfél a Marketo-szolgáltatás azonosítója.  | Igen |
 | clientSecret | Ügyfélkulcs a Marketo-szolgáltatás. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |

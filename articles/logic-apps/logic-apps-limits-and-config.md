@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c7eaecf74f56035c39267407e6a965c57897b1ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853829"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015440"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -88,7 +88,7 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 | Az eseményindító egyidejűségi | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti egy időben, vagy a párhuzamosan futtatható logic app-példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
 | Maximális várakozási futtatások | 100 | Az alapértelmezett érték 10. Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát 0 és 100 közötti értéket szélsőértékeket is beleértve, lásd: [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
 | Foreach-elemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
-| Foreach ciklus ismétléseinek | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Az alapértelmezett korlát a egy értéke 1 és 50 között szélsőértékeket is beleértve, című témakör nyújt [módosítása "for each" egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Foreach-párhuzamosság | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Az alapértelmezett korlát a egy értéke 1 és 50 között szélsőértékeket is beleértve, című témakör nyújt [módosítása "for each" egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | SplitOn-elemek | 100 000 | | 
 | UNTIL-iterációk | 5000 | | 
 |||| 
@@ -102,10 +102,10 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Művelet: Végrehajtások száma 5 percenként | 300,000 | Az alapértelmezett érték 100 000. Az alapértelmezett korlát módosításához lásd [a logikai alkalmazás futtatása "nagy átviteli sebességű" módban](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), amely jelenleg előzetes verzióban. Vagy a számítási feladatok szét szükség szerint több mint egy logikai alkalmazást. | 
-| Művelet: Párhuzamos kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
-| Futásidejű végpont: egyidejű beérkező hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
-| Futásidejű végpont: olvassa el a hívások száma 5 percenként  | 60,000 | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
-| Futásidejű végpont: 5 percenként hívások meghívása | 45,000 | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
+| Művelet: Egyidejű kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
+| Futásidejű végpont: Egyidejű beérkező hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
+| Futásidejű végpont: Olvasási hívások száma 5 percenként  | 60,000 | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
+| Futásidejű végpont: Hívások száma 5 percenként meghívása | 45,000 | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
 | Tartalom átviteli 5 percenként | 600 MB | Számítási feladatok között egynél több alkalmazáshoz szükség szerint terjesztheti. | 
 |||| 
 
@@ -238,10 +238,10 @@ Az ingyenes szinten csak felderítő forgatókönyvek esetén nem termelési for
 | ---- | ----- | ----- | 
 | Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használja a [blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Térkép (XSLT-fájl) | 2 MB | | 
-| Futásidejű végpont: olvassa el a hívások száma 5 percenként | 60,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
-| Futásidejű végpont: 5 percenként hívások meghívása | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
-| Futásidejű végpont: 5 percenként hívások nyomon követése | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
-| Futásidejű végpont: blokkolja a párhuzamos hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
+| Futásidejű végpont: Olvasási hívások száma 5 percenként | 60,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
+| Futásidejű végpont: Hívások száma 5 percenként meghívása | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
+| Futásidejű végpont: Nyomkövetési hívások száma 5 percenként | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
+| Futásidejű végpont: Blokkolja a párhuzamos hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

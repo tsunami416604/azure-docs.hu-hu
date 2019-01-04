@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 27686cf036f69a9a4597c499e9b8b7d66d77e1e9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059480"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019673"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Folyékony sablonokkal speciális JSON csatlakoztatva átalakításokat hajthattak végre az Azure Logic Appsben
 
@@ -34,7 +34,7 @@ Tehát Liquid átalakítás végrehajtásához a logikai alkalmazásban, elősz�
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Folyékony sablon vagy az integrációs fiók térkép létrehozása
 
 1. Ebben a példában létre ebben a lépésben ismertetett Liquid mintasablon.
-Ha szeretné használni a szűrők a Liquid sablonban, ellenőrizze, hogy ezeket a szűrőket kezdje a nagybetűk. Tudjon meg többet [folyadék szűri](https://shopify.github.io/liquid/basics/introduction/#filters). 
+Ha szeretné használni a szűrők a Liquid sablonban, ellenőrizze, hogy ezeket a szűrőket kezdje a nagybetűk. Tudjon meg többet [folyadék szűri](https://shopify.github.io/liquid/basics/introduction/#filters), mely használata [DotLiquid](https://dotliquidmarkup.org/) és C# elnevezési konvenciói.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -80,7 +80,7 @@ Ha szeretné használni a szűrők a Liquid sablonban, ellenőrizze, hogy ezeket
 
 2. A Logic App Designerben adja hozzá a [kérelem típusú trigger](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) a logikai alkalmazáshoz.
 
-3. Az eseményindító területén válassza a **új lépés**. A keresőmezőbe, írja be az "folyadék" szűrőként, és válassza a következő műveletet: **JSON átalakítása JSON - folyadék**
+3. Az eseményindító területén válassza a **új lépés**. A keresőmezőbe írja be a "folyadék" szűrőként, és válassza a következő műveletet: **JSON - folyadék JSON-átalakítás**
 
    ![Keresse meg és válassza ki a Liquid műveletet](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -117,11 +117,11 @@ Folyékony nem korlátozódik, csak a JSON-átalakításokat. Az alábbiakban az
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
-   Az alábbiakban minta bemenet és kimenet:
+   Az alábbiakban minta bemeneteit és kimeneteit:
   
    ![Példa a kimenetre JSON szöveg](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* XML átalakítása JSON
+* XML átalakítása JSON-ná
   
   Itt látható az ebben a példában használt Liquid sablon:
    
@@ -130,7 +130,7 @@ Folyékony nem korlátozódik, csak a JSON-átalakításokat. Az alábbiakban az
         {{item}}
     {% endJSONArrayFor -%}]
    ```
-   Az alábbiakban minta bemenet és kimenet:
+   Az alábbiakban minta bemeneteit és kimeneteit:
 
    ![Példa a kimenetre XML JSON-ná](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
 
@@ -142,7 +142,7 @@ Folyékony nem korlátozódik, csak a JSON-átalakításokat. Az alábbiakban az
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
 
-   Az alábbiakban minta bemenet és kimenet:
+   Az alábbiakban minta bemeneteit és kimeneteit:
 
    ![Példa a kimenetre XML szöveg](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 

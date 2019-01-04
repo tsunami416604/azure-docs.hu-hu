@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7cde9fa0849729ba9db9b604dd0ad26cf362a484
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: de260560f141691fc1a7c0dd3bfad262d2d79598
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969862"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025572"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](../../application-insights/app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
@@ -121,7 +121,7 @@ Más esetben nem nincs függőségi hívás, amely túl hosszú. De között id�
 
 ### <a name="profile-your-live-site"></a>Az élő webhelyet profil
 
-Nem tudja, ahol az idő halad? A [Application Insights profiler](../../application-insights/app-insights-profiler.md) nyomkövetések HTTP meghívja a élő webhelyre, és megjeleníti a funkciókról a kódban a leghosszabb időt vett igénybe.
+Nem tudja, ahol az idő halad? A [Application Insights profiler](../../azure-monitor/app/profiler.md) nyomkövetések HTTP meghívja a élő webhelyre, és megjeleníti a funkciókról a kódban a leghosszabb időt vett igénybe.
 
 ## <a name="failed-requests"></a>Sikertelen kérelmek
 Sikertelen kérelmek is lehet társítva, a függőségek hívásainak sikertelen. Ismét hogy végigkattinthat nyomon követheti a problémát.

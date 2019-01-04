@@ -7,12 +7,12 @@ author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.openlocfilehash: 8461797e0c3b8d92466c37c5564df895e494ce74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: afc3b9dbb1965ea28995d67f8f5e174721d73197
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957589"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999441"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A figyelő és hibakeresése az Azure Cosmos DB metrikákkal
 
@@ -38,7 +38,7 @@ Az egyenetlen átviteli terjesztési okozhat *gyakori elérésű* partíció, am
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Határozza meg a tároló terjesztési partíciók között
 
-A partíció egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, minden olyan partíció szerinti bontásban a particionált tároló átviteli eloszlása, a metrikák paneljén lépjen az [az Azure portal](https://portal.azure.com). Az átviteli sebesség lapon tárolási táblázat összefoglalja a által maximálisan felhasznált RU/s minden egyes fizikai partíciók diagramon látható. A következő ábra mutatja be az adatok egy alacsony terjesztési, ahogy azt a lehetőséget a bal szélen magokon partíció.
+A partíció egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, a tároló terjesztési bármely partíciók bontásban particionált tároló, a metrikák paneljén lépjen az [az Azure portal](https://portal.azure.com). A tárolás fülön a storage bontás jelenik meg az adatok + felső partíciós kulcsok diagram által felhasznált tárterület Index. A következő ábra mutatja be, az adattárolás, ahogy azt a lehetőséget a bal szélen magokon partíció a gyenge eloszlása.
 
 ![Gyenge adatelosztás – példa](media/use-metrics/metrics-07.png)
 

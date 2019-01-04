@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0d6a370884e6648aaf131892759ee45b29ed3693
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265134"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001651"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentés és igény szerinti adatok visszaállítása az Azure Cosmos DB-ben
 
@@ -25,7 +25,7 @@ Az Azure Cosmos DB nem csak az adatokat, de az adatok biztonsági mentését is 
 A biztonsági mentések teljesítményére vagy az alkalmazás rendelkezésre állásának befolyásolása nélkül kerül. Az Azure Cosmos DB hajt végre, minden további kiosztott átviteli kapacitás (RU) használó vagy a teljesítmény és az adatbázis rendelkezésre állásának befolyásolása nélkül az adatok biztonsági mentése a háttérben.
 
 Az Azure Cosmos DB tárolja az Azure Blob Storage-automatikus biztonsági mentést, míg a tényleges adatok helyben Azure Cosmos DB. Garantálja az alacsony késés, az a biztonsági mentési pillanatképet az Azure Blob storage-ban és az aktuális írási régióba (vagy egy írási régiót, ha több főkiszolgálós konfigurációt) ugyanabban a régióban tárolja a Cosmos DB-adatbázisfiók. A regionális katasztrófa elleni rugalmasság érdekében minden pillanatképet a biztonsági mentési adatok Azure Blob storage-ban újra replikálása a georedundáns tárolás (GRS) egy másik régióban. A régió, amelyre a biztonsági mentés a rendszer replikálja a forrásrégióban és a regionális párokból érdemes a forrásrégióban társított alapul. További tudnivalókért tekintse meg a [Azure-régióra, georedundáns értékpárok listáját](../best-practices-availability-paired-regions.md) cikk. Ez a biztonsági másolat nem érhetők el közvetlenül. Az Azure Cosmos DB fogja használni a biztonsági mentés, csak akkor, ha egy biztonsági mentési visszaállítás kezdeményezhető.
-A következő kép bemutatja, hogyan egy Azure Cosmos-tárolóhoz, az összes három elsődleges erőforrás partíciót az USA nyugati RÉGIÓJA az USA nyugati Régiójában egy távoli Azure Blob Storage-fiók biztonsági mentésének és replikálja az USA keleti régiója:
+A következő kép bemutatja, hogyan egy Azure Cosmos-tárolóhoz, az összes a három elsődleges fizikai partíciók az USA nyugati RÉGIÓJA az USA nyugati Régiójában egy távoli Azure Blob Storage-fiók biztonsági mentésének és replikálja az USA keleti régiója:
 
 ![Rendszeres teljes biztonsági mentést az összes Cosmos DB-entitások GRS Azure Storage-ban](./media/online-backup-and-restore/automatic-backup.png)
 
