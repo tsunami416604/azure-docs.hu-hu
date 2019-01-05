@@ -1,25 +1,24 @@
 ---
-title: Az Azure IoT-Eszközfelügyelet az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code |} A Microsoft Docs
-description: Használja az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code az Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
+title: Az Azure IoT-Eszközfelügyelet az Azure IoT-eszközök a Visual Studio Code |} A Microsoft Docs
+description: Az Azure IoT-eszközök használata a Visual Studio Code az Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
-ms.date: 8/3/2018
+ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 4b7de0652172de5120e88e7c597fc31037ddbbb3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ec19045892b975fed7611c7747fa7b2bb4b1515c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339569"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051136"
 ---
-# <a name="use-azure-iot-hub-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>A Visual Studio Code az Azure IoT Hub-eszközkészlet bővítmény használata az Azure IoT Hub-Eszközfelügyelet
+# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Az Azure IoT-eszközök a Visual Studio Code használata az Azure IoT Hub-Eszközfelügyelet
 
 ![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Az Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet) egy hasznos Visual Studio Code-bővítmény, amely egyszerűbbé teszi az IoT Hub kezelése. Felügyeleti lehetőségeket, amelyek segítségével különböző feladatok elvégzésére, tartalmaz.
+[Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy hasznos, a Visual Studio Code-bővítmény, amely megkönnyíti az IoT Hub és IoT-alkalmazás fejlesztői. Felügyeleti lehetőségeket, amelyek segítségével különböző feladatok elvégzésére, tartalmaz.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -36,18 +35,18 @@ Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációi
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Megismerheti az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code használata a fejlesztési számítógépén különböző felügyeleti lehetőségek.
+Megismerheti az Azure IoT-eszközök a Visual Studio Code használata a fejlesztési számítógépén különböző felügyeleti lehetőségek.
 
 ## <a name="what-you-do"></a>TEENDŐ
 
-Futtassa az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code különböző felügyeleti lehetőségek.
+Futtassa az Azure IoT-eszközök a Visual Studio Code különböző felügyeleti lehetőségek.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
 * Aktív Azure-előfizetés.
 * Az Azure IoT hub az előfizetéséhez.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Az Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* [Az Azure IoT-eszközök a VS Code alkalmazáshoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
 
@@ -98,6 +97,6 @@ Küldjön üzenetet az IoT hubhoz az eszközt, kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>További lépések
 
-Bemutattuk, hogyan lehet Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code használata különböző felügyeleti lehetőségek.
+Bemutattuk, hogyan lehet Azure IoT Tools bővítmény a Visual Studio Code használata különböző felügyeleti lehetőségek.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

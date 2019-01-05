@@ -3,17 +3,17 @@ title: Az Ansible modul és verzió mátrix az Azure-hoz
 description: Az Ansible modul és verzió mátrix az Azure-hoz
 ms.service: ansible
 keywords: az ansible, szerepkörök, mátrix, verzió, azure, fejlesztés és üzemeltetés
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: accb7b84793b9fc98bc20f1637ec30f97a7f4a87
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5265b6f6ebf779c83792ab2569c1b613d11070da
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962080"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051526"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
 

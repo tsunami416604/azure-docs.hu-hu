@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8138a7dcae427d5f5f622170a7825306a7bf8dae
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8ad5b167977059f0749da4221effd427427920e9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140319"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040217"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Az Azure Cosmos DB adatbázis-titkosítás inaktív állapotban
 
@@ -36,26 +36,26 @@ Egy felhasználói kérelem használt alapvető folyamat a következőképpen t�
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>K: hogyan sok egyéb mellett az Azure Storage szolgáltatás Ha engedélyezve van a Storage Service Encryption szolgáltatással?
-V: nincs további költség nélkül.
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>KÉRDÉS: Több IP-címek fenntartási az Azure Storage szolgáltatás Ha engedélyezve van a Storage Service Encryption szolgáltatással?
+VÁLASZ: Nincs további költség nélkül.
 
-### <a name="q-who-manages-the-encryption-keys"></a>K: akik kezeli a titkosítási kulcsokat?
-V: a kulcsokat a Microsoft felügyeli.
+### <a name="q-who-manages-the-encryption-keys"></a>KÉRDÉS: Akik kezeli a titkosítási kulcsokat?
+VÁLASZ: A Microsoft által felügyelt kulcsok.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>Kérdés: milyen gyakran elforgatott a titkosítási kulcsokat?
-V: a Microsoft rendelkezik egy belső irányelveket rögzített a titkosítási kulcs kulcsrotálás, amely a Cosmos DB a következő. A megadott irányelveket nem tesszük közzé. A Microsoft közzététele a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx), amely belső útmutató egy részét, látható, és fejlesztők számára hasznos ajánlott eljárásokat tartalmaz.
+### <a name="q-how-often-are-encryption-keys-rotated"></a>KÉRDÉS: Milyen gyakran elforgatott a titkosítási kulcsokat?
+VÁLASZ: A Microsoft rendelkezik egy belső irányelveket rögzített a titkosítási kulcs kulcsrotálás, amely a Cosmos DB a következő. A megadott irányelveket nem tesszük közzé. A Microsoft közzététele a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx), amely belső útmutató egy részét, látható, és fejlesztők számára hasznos ajánlott eljárásokat tartalmaz.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>K: használhatok saját titkosítási kulcsokat?
-V: a cosmos DB egy PaaS szolgáltatás, és azt keményen dolgozott, hogy a szolgáltatás egyszerűen használható. Azt észleltük, hogy ezt a kérdést gyakran feltesznek, például a PCI DSS megfelelőségi követelménynek proxy kérdést. Ez a szolgáltatás létrehozásának részeként működtünk együtt, győződjön meg arról, hogy ügyfeleink, akik Cosmos DB követelményeinek saját maguk kulcsok kezelése nélkül a megfelelőségi auditorok.
+### <a name="q-can-i-use-my-own-encryption-keys"></a>KÉRDÉS: Használhatja a saját titkosítási kulcsokat?
+VÁLASZ: A cosmos DB egy PaaS szolgáltatás, és azt keményen dolgozott, hogy a szolgáltatás egyszerűen használható. Azt észleltük, hogy ezt a kérdést gyakran feltesznek, például a PCI DSS megfelelőségi követelménynek proxy kérdést. Ez a szolgáltatás létrehozásának részeként működtünk együtt, győződjön meg arról, hogy ügyfeleink, akik Cosmos DB követelményeinek saját maguk kulcsok kezelése nélkül a megfelelőségi auditorok.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>K: milyen régiók van kapcsolva a titkosítás?
-V: összes az Azure Cosmos DB-régióban van titkosítás engedélyezve van a összes felhasználói adatot.
+### <a name="q-what-regions-have-encryption-turned-on"></a>KÉRDÉS: Mely régiók titkosítási bekapcsolta?
+VÁLASZ: Azure Cosmos DB minden régióban van a titkosítás engedélyezve van a összes felhasználói adatot.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>K: titkosítási befolyásolja a teljesítményt késésével és átviteli SLA-kat?
-V: ne legyen hatással vagy változások a teljesítmény most, hogy az összes meglévő és új fiók engedélyezve van a titkosítás inaktív állapotban SLA-kat. Tudjon meg többet a a [a Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) oldalon tekintheti meg a legújabb garanciákat.
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>KÉRDÉS: Befolyásolja-e a titkosítás, teljesítmény késésével és átviteli SLA-kat?
+VÁLASZ: Nem gyakorolt hatás vagy a módosítások a teljesítmény most, hogy az összes meglévő és új fiók engedélyezve van a titkosítás inaktív állapotban SLA-kat. Tudjon meg többet a a [a Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) oldalon tekintheti meg a legújabb garanciákat.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>K: a helyi emulátor támogatja az inaktív adatok titkosítását?
-V: az emulátor egy önálló fejlesztési-tesztelési eszköz, és nem használja a kulcskezelési szolgáltatások, a felügyelt Cosmos DB szolgáltatás által használt. Azt javasoljuk, hogy hol tárolja bizalmas emulátor Tesztadatok meghajtók engedélyezheti a Bitlockert. A [emulátor támogatja az alapértelmezett adatkönyvtárát módosítása](local-emulator.md) valamint a jól ismert hely használatát.
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>KÉRDÉS: A helyi emulátor támogatja az inaktív adatok titkosítását?
+VÁLASZ: Az emulátor egy önálló fejlesztési-tesztelési eszköz, és nem használja a kulcskezelési szolgáltatások, a felügyelt Cosmos DB szolgáltatás által használt. Azt javasoljuk, hogy hol tárolja bizalmas emulátor Tesztadatok meghajtók engedélyezheti a Bitlockert. A [emulátor támogatja az alapértelmezett adatkönyvtárát módosítása](local-emulator.md) valamint a jól ismert hely használatát.
 
 ## <a name="next-steps"></a>További lépések
 

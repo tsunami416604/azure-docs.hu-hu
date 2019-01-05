@@ -7,12 +7,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: eee80563a838e6d453278735abf96fa5a6996f19
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 35577f103979bf5f767e3b9d42548ed488e365c8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835497"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041900"
 ---
 # <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Használatával az Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára
 
@@ -32,17 +33,17 @@ Ha két kiszolgáló nélküli Azure functions monitorozási ugyanazt a tároló
 
 A változáscsatorna feldolgozói kódtára végrehajtási négy fő összetevőből áll: 
 
-1. **A figyelt tároló:** a figyelt tárolót le az adatokat, amelyről a módosítási hírcsatorna jön létre. Bármely beszúrások és a figyelt tároló módosításait a módosítási hírcsatorna a tároló is megjelennek.
+1. **A figyelt tároló:** A figyelt tároló rendelkezik, amelyről a módosítási hírcsatorna jön létre, az adatokat. Bármely beszúrások és a figyelt tároló módosításait a módosítási hírcsatorna a tároló is megjelennek.
 
-1. **A bérlet tároló:** a bérlet tároló koordináták feldolgozása a változáscsatorna feldolgozó között. Egy külön tárolót a partíciónként egy bérlet a bérletek tárolásához használni kívánt szolgál. Célszerű a bérlet tároló tárolja az írási régió közelebb hol futnak a változáscsatorna processzor egy másik fiókot. A bérlet objektum tartalmazza a következő attribútumokat:
+1. **A bérlet tároló:** A bérlet tároló koordinálja a változáscsatorna beolvasását feldolgozó módosítás feldolgozása. Egy külön tárolót a partíciónként egy bérlet a bérletek tárolásához használni kívánt szolgál. Célszerű a bérlet tároló tárolja az írási régió közelebb hol futnak a változáscsatorna processzor egy másik fiókot. A bérlet objektum tartalmazza a következő attribútumokat:
 
-   * Tulajdonos: Itt adhatja meg a gazdagépet, amely a bérlet tulajdonosa.
+   * Tulajdonos: Adja meg a gazdagépet, amely a bérlet tulajdonosa.
 
-   * Folytatási: A pozíció (folytatási kód) egy adott partíció a változáscsatorna adja meg.
+   * Folytatási: Megadja a pozíció (folytatási kód) egy adott partíció a változáscsatorna.
 
-   * Időbélyeg: Legutóbbi bérleti frissítése megtörtént; az időbélyeg segítségével ellenőrizze, hogy a bérlet lejárt számít.
+   * Időbélyeg: Utoljára frissítve lett a bérlet; az időbélyeg segítségével ellenőrizze, hogy a bérlet lejárt számít.
 
-1. **A processzor-gazdagép:** minden gazdagépen határozza meg, hány particionálja folyamat gazdagépek hány példánya van aktív bérleteket alapján.
+1. **A processzor-gazdagép:** Minden gazdagépen határozza meg, hány partíciók feldolgozása alapján gazdagépek hány példánya van aktív bérleteket.
 
    * A gazdagép indításakor az összes gazdagép a terhelés elosztása érdekében a bérletek szerez be. Egy gazdagép rendszeres időközönként megújítja bérleteket, a bérletek aktív marad, így.
 
@@ -52,7 +53,7 @@ A változáscsatorna feldolgozói kódtára végrehajtási négy fő összetevő
 
    Jelenleg nem lehet nagyobb, mint a partíciók (bérleteket) gazdagépek száma.
 
-1. **A fogyasztók:** fogyasztók számára, és a feldolgozókhoz, a változáscsatorna feldolgozást egyes állomások által indított hozzászóláslánc. Minden egyes processzor gazdagép több fogyasztó is rendelkezhet. Összes fogyasztóvédelmi olvassa be, a módosítás hírcsatorna oszlopát a partícióból hozzá van rendelve, és értesíti a változások gazdagépe és bérleteket lejárt.
+1. **A fogyasztók számára:** A fogyasztók vagy dolgozó a változáscsatorna feldolgozást egyes állomások által indított hozzászóláslánc. Minden egyes processzor gazdagép több fogyasztó is rendelkezhet. Összes fogyasztóvédelmi olvassa be, a módosítás hírcsatorna oszlopát a partícióból hozzá van rendelve, és értesíti a változások gazdagépe és bérleteket lejárt.
 
 Így jobban megismerheti az ezen négy módosítási hírcsatorna elemeinek processzor munkahelyi együtt, nézzük meg az alábbi ábrán egy példa. A figyelt gyűjteményhez tárolja a dokumentumokat, és használja a "City" partíciókulcsként. Láthatjuk, hogy a kék partíció "A-E" a "City" mezőt a dokumentumok tartalmazza, és így tovább. Nincsenek a négy partíció párhuzamosan olvasásakor két fogyasztóval rendelkező két gazdagép. A nyilak a fogyasztók a csatorna módosítása egy adott helyszínen olvasásakor. Az első partícióban a sötétebb kék olvasatlan módosítások jelöli, a világoskék jelöli a módosítási hírcsatorna megváltozik a már olvasása közben. A gazdagépek a bérletek gyűjteményének használni egy "folytatási" érték az aktuális olvasó pozíció minden felhasználóhoz nyomon követéséhez.
 

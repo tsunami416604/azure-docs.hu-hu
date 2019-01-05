@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab2e35c916c6bd6f2d73a328f71710378fac890
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8dbf7b6f6741998972070234d90e87baca1154a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343938"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042461"
 ---
-# <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions)-példányok kezelése
+# <a name="manage-instances-in-durable-functions-in-azure"></a>Az Azure-ban Durable Functions-példányok kezelése
 
 [Durable Functions](durable-functions-overview.md) vezénylési példányok elindult, megszakadt, lekérdezhetők, és küldött értesítés eseményeket. Az összes példány felügyeleti történik használatával a [kötés vezénylési ügyfél](durable-functions-bindings.md). Ez a cikk hiányzóra változik az egyes példány felügyeleti műveletek részleteit.
 
@@ -520,7 +520,7 @@ A sikertelen vezénylési példány *visszatekerése* be egy korábban megfelel�
 > [!NOTE]
 > Ez az API nem helyettesíti a megfelelő hibakezelést és újrapróbálkozási szabályzatok készült. Célja, azt csak abban az esetben, ha a vezénylési példányok váratlan okokból nem használható. Hiba hibakezelést és újrapróbálkozási szabályzatok további információkért tekintse meg a [hibakezelés](durable-functions-error-handling.md) témakör.
 
-Például a kis-és nagybetűhasználattal *visszatekerés* egy munkafolyamat eseteken [emberi jóváhagyások](durable-functions-overview.md#pattern-5-human-interaction). Tegyük fel, hogy vannak, amelyek értesítik valaki, hogy szükség van-e a jóváhagyási tevékenységet függvények sorozatát, és várjon, amíg a valós idejű választ ki. Amikor az összes jóváhagyási tevékenységek kapott válaszok vagy túllépte az időkorlátot, egy másik tevékenység meghiúsul egy alkalmazás helytelen konfiguráció, például egy érvénytelen adatbázis-kapcsolati karakterlánc miatt. Az eredmény egy vezénylési hiba a mély a munkafolyamatba. Az a `RewindAsync` (.NET) vagy `rewindAsync` (JavaScript) API-t, az alkalmazás-rendszergazda megoldhatja a konfigurációs hiba és *visszatekerés* sikertelen vezénylési vissza az állapot azonnal a meghibásodása előtt. Az emberi-interakció lépések egyike sem kell felhasználnák, és a vezénylési most már képes sikerrel befejeződni.
+Például a kis-és nagybetűhasználattal *visszatekerés* egy munkafolyamat eseteken [emberi jóváhagyások](durable-functions-concepts.md#human). Tegyük fel, hogy vannak, amelyek értesítik valaki, hogy szükség van-e a jóváhagyási tevékenységet függvények sorozatát, és várjon, amíg a valós idejű választ ki. Amikor az összes jóváhagyási tevékenységek kapott válaszok vagy túllépte az időkorlátot, egy másik tevékenység meghiúsul egy alkalmazás helytelen konfiguráció, például egy érvénytelen adatbázis-kapcsolati karakterlánc miatt. Az eredmény egy vezénylési hiba a mély a munkafolyamatba. Az a `RewindAsync` (.NET) vagy `rewindAsync` (JavaScript) API-t, az alkalmazás-rendszergazda megoldhatja a konfigurációs hiba és *visszatekerés* sikertelen vezénylési vissza az állapot azonnal a meghibásodása előtt. Az emberi-interakció lépések egyike sem kell felhasználnák, és a vezénylési most már képes sikerrel befejeződni.
 
 > [!NOTE]
 > A *visszatekerés* funkció nem támogatja a visszatekerése orchestration-példányok tartós időzítők használja.

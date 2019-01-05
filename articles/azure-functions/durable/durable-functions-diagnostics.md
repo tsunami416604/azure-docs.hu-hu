@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 066ae6ffba64c7dd71c982172f7cd15a881809b4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713231"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036800"
 ---
-# <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions)-diagnosztika
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Az Azure-ban Durable Functions-diagnosztika
 
 Több lehetőség a problémák diagnosztizálásához [Durable Functions](durable-functions-overview.md). Ezek a beállítások némelyike normál funkciók esetében azonos, és ezek némelyike Durable Functions egyedi.
 

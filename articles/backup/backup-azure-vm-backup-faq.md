@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6ec178a8cb457973f39ea2dd929a3486a7696c55
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972192"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041288"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Gyakori kérdések – Azure Backup
 
@@ -63,7 +63,7 @@ Az Azure Backup legfeljebb 16 lemez a biztonsági mentést virtuális gépeket. 
 Az Azure Backup támogatja [SSD standard szintű felügyelt lemezek](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD felügyelt lemezeket az Azure virtuális gépek tartós tárolási egy új típusú adja meg. SSD felügyelt lemezek támogatása megtalálható a [legújabb verziója](backup-upgrade-to-vm-backup-stack-v2.md) V2 veremterület az Azure virtuális gépek biztonsági mentését.
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Hogy készíthető lemez írási gyorsító WA-kompatibilis virtuális gépek?
-Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból. Lemez kizárása a virtuális gépek WA-kompatibilis lemezek csak Azure virtuális gép biztonsági mentési vermének v2 verziójára frissített előfizetések esetén támogatott. Az Azure virtuális gép biztonsági mentési vermének v2 verziójára frissíti, tekintse meg ezt [cikk](backup-upgrade-to-vm-backup-stack-v2.md). Ez a funkció már érhető el japán keleti régiójában, Észak-Európa, Délkelet-Ázsia, USA keleti RÉGIÓJA, USA 2. nyugati régiója, Nyugat-Európa és 2. keleti régiója.
+Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból. Lemez kizárása a virtuális gépek WA-kompatibilis lemezek csak Azure virtuális gép biztonsági mentési vermének v2 verziójára frissített előfizetések esetén támogatott. Az Azure virtuális gép biztonsági mentési vermének v2 verziójára frissíti, ez látható [cikk](backup-upgrade-to-vm-backup-stack-v2.md). Ez a funkció már érhető el japán keleti régiójában, Észak-Európa, Délkelet-Ázsia, USA keleti RÉGIÓJA, USA 2. nyugati régiója, Nyugat-Európa és 2. keleti régiója.
 
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Írási gyorsító (CS) lemezekkel rendelkező virtuális gép van, és az SAP HANA telepítve. Hogyan készíthetek biztonsági másolatot?

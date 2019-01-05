@@ -10,16 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086947"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040659"
 ---
-# <a name="how-to-configure-password-writeback"></a>Útmutató: A jelszóvisszaírás konfigurálása
-
-Azt javasoljuk, hogy az automatikus frissítési funkcióját használja [az Azure AD Connect](../hybrid/how-to-connect-install-express.md) jelszóvisszaíró használata esetén.
+# <a name="how-to-configure-password-writeback"></a>Útmutató: Jelszóvisszaíró konfigurálása
 
 A következő lépések azt feltételezik, hogy már konfigurálta az Azure AD Connect a környezetében az a [Express](../hybrid/how-to-connect-install-express.md) vagy [egyéni](../hybrid/how-to-connect-install-custom.md) beállításait.
 
@@ -38,7 +36,25 @@ A jelszóvisszaírás, kapcsolódó általános hibaelhárítási feladatokat c�
 > [!WARNING]
 > A jelszóvisszaíró régebbi során és az Azure AD Connect verziója 1.0.8641.0 használó ügyfeleink számára megszűnnek működni a [Azure Access Control service (ACS) 2018. November 7 kivonják](../develop/active-directory-acs-migration.md). Az Azure AD Connect verziója 1.0.8641.0 és a régebbi engedélyezi többé a jelszóvisszaíró adott időpontban, mert az a funkciók ACS függenek.
 >
-> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md)
+> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: Egy előző verzióról a legújabbra frissítése](../hybrid/how-to-upgrade-previous-version.md)
+>
+
+## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket
+
+**Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással a rendszer egy Azure ad premium-funkció**. Licenceléssel kapcsolatos további információkért lásd: a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
+
+A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a bérlő egyik:
+
+* Prémium szintű Azure AD P1
+* Prémium szintű Azure AD P2
+* Enterprise Mobility + Security E3 vagy A3
+* Enterprise Mobility + Security E5 vagy a5 csomag
+* A Microsoft 365 E3 vagy A3
+* A Microsoft 365 E5 vagy a5 csomag
+* Microsoft 365 F1
+
+> [!WARNING]
+> Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
 >
 
 ## <a name="active-directory-permissions"></a>Az Active Directory-engedélyek

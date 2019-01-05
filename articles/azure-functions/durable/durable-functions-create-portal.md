@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339722"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038432"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Hozzon létre Durable Functions az Azure portal használatával
 
@@ -139,4 +139,4 @@ Az első tartós függvény működik-e már az Azure-ban.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tartós függvény előforduló általános minták megismeréséhez](durable-functions-overview.md)
+> [Tartós függvény előforduló általános minták megismeréséhez](durable-functions-concepts.md)

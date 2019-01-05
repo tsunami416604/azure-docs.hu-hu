@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 62e4171a6895f2f425d67b9d1143fe9d3999a9b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/03/2019
+ms.openlocfilehash: 38b7c478e3b90347086c2dd005630d239db7fd89
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715902"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038211"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -26,18 +26,17 @@ Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati a
 > [!IMPORTANT]
 > **[Közelgő változás] Azure SQL-kiszolgáló, végpont kapcsolatok szolgáltatás egy `Default` kapcsolat viselkedés vált `Redirect`.**
 >
-> Módosítsa a Dél-Brazíliát és Nyugat-európai régióban már 2018. November 10 lép érvénybe. Minden régió esetében módosítsa a 2019. január 2. től lép érvénybe.
+> Módosítás érvényben, vagy azt megelőzően 2019. január 2. minden régió esetében.
 >
 > Ebből a változásból meglévő környezetekben használhatatlanná tévő szolgáltatási végponton keresztüli kapcsolat megakadályozása érdekében használjuk telemetriai hajtsa végre a következő:
 > - -Kiszolgálók, hogy a rendszer azt észleli, hogy a módosítás előtt a szolgáltatásvégpontokon keresztül elért, hogy váltson a kapcsolat típusát `Proxy`.
 > - További kiszolgálók, hogy váltson a kapcsolat típusa fognak váltani `Redirect`.
 >
-> Szolgáltatási végpont felhasználók továbbra is hatással lehetnek a következő esetekben: 
-> - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése 
-> - Automatizált üzembehelyezési logikai létrehoz egy logikai kiszolgálót, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy` 
+> Szolgáltatási végpont felhasználók továbbra is hatással lehetnek a következő esetekben:
+> - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése
+> - Automatizált üzembehelyezési logikai létrehoz egy logikai kiszolgálót, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy`
 >
 > Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) portok 11000-12000. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
-
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
@@ -131,7 +130,6 @@ Az Azure SQL Database egy Azure SQL Database-kiszolgáló kapcsolódási szabál
 
 > [!IMPORTANT]
 > A szkriptnek szüksége van a [Azure PowerShell-modul](/powershell/azure/install-azurerm-ps).
->
 
 A következő PowerShell-parancsfájl bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
 

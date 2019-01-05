@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158998"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043039"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
-Az Azure Active Directory (Azure AD) négy változatban érhető el: ingyenes, alap-, prémium P1 és prémium P2 szintű. Számos különböző szolgáltatásokat, amelyek be új jelszó önkiszolgáló kérésének, módosítás, például alaphelyzetbe állítása, zárolásának feloldásához és a jelszóvisszaíró, az Azure AD különböző kiadásai által biztosított vannak. Ez a cikk próbál szemléltetik az eltéréseket. Mindegyik Azure AD-kiadás szolgáltatásait, további részletek találhatók a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
+Az Azure Active Directory (Azure AD) négy változatban érhető el: Ingyenes, alapszintű, prémium P1 és prémium P2 szintű. Számos különböző szolgáltatásokat, amelyek be új jelszó önkiszolgáló kérésének, módosítás, például alaphelyzetbe állítása, zárolásának feloldásához és a jelszóvisszaíró, az Azure AD különböző kiadásai által biztosított vannak. Ez a cikk próbál szemléltetik az eltéréseket. Mindegyik Azure AD-kiadás szolgáltatásait, további részletek találhatók a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="compare-editions-and-features"></a>Kiadások és szolgáltatások összehasonlítása
 
@@ -41,7 +41,7 @@ Az Azure AD önkiszolgáló jelszó-visszaállítás van licenccel rendelkezniü
    * Ez a funkció Azure AD Premium P1 vagy Premium P2 kiadás tartalmazza.
 
 > [!WARNING]
-> Önálló Office 365 licencelési csomagok **nem támogatják a jelszóvisszaírást** , és az Azure AD Premium P1 vagy Premium P2 kiadás esetében ez a funkció működéséhez szükséges.
+> Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* és szükség van egy csomagra, amely tartalmazza az Azure AD Premium P1, vagy az ezt a funkciót a Premium P2 kiadás működik.
 >
 
 További licencelési információk, beleértve a költségek, a következő lapokon található:

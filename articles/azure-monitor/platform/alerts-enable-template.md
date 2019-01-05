@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.component: metrics
-ms.openlocfilehash: a5e38f1400b99c6030799121d37721c26e16649c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17f82eb0940d0e1baca23a882ca301804fbd00dd
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721138"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054809"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) Azure metrikákhoz kapcsolódó riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások, annak érdekében, hogy megfelelően figyelt összes erőforrás létrehozásakor.
@@ -404,4 +404,4 @@ A Resource Manager-sablonnal riasztást általában akkor hasznos, ha a riasztá
 ## <a name="next-steps"></a>További lépések
 * [További információ a riasztásokkal kapcsolatban](alerts-overview.md)
 * [Diagnosztikai beállítások hozzáadása](../../azure-monitor/platform/diagnostic-logs-stream-template.md) , a Resource Manager-sablon
-
+* A JSON-szintaxist és a Tulajdonságok [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) tárfióksablonok referenciáját.

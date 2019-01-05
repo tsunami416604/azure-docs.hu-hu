@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: ea2e0513ef2674fdbe6d28f77c4f709848a0d2eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c7b9485d9a7da6479e65689fbcab67e10dec5cb2
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016375"
+ms.locfileid: "54052274"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -61,7 +61,7 @@ A hibák piros pöttyökként jelennek meg a webes tesztdiagramon:
 Még fontosabb azonban, hogy minden egyes riasztásról e-mail érkezik a fejlesztői csapathoz. Így szinte minden ügyfélnél korábban értesülnek a problémáról.
 
 ## <a name="monitor-performance"></a>Teljesítmény monitorozása
-Az Application Insights áttekintő oldalán található egy diagram, amely több [kulcsfontosságú metrikát](../../application-insights/app-insights-web-monitor-performance.md) tartalmaz.
+Az Application Insights áttekintő oldalán található egy diagram, amely több [kulcsfontosságú metrikát](../../azure-monitor/app/web-monitor-performance.md) tartalmaz.
 
 ![Teljesítmény KPI-grafikonok áttekintésének képernyőképe](./media/detect-triage-diagnose/overview-graphs.png)
 
@@ -151,7 +151,7 @@ A kivételek és az események a [Diagnosztikai keresés](diagnostic-search.md) 
 
 
 ## <a name="monitor-proactively"></a>Proaktív monitorozás
-Marcela nem várja tétlenül a riasztásokat. Minden ismételt üzembe helyezés után nem sokkal ellenőrzi a [válaszidőket](../../application-insights/app-insights-web-monitor-performance.md) – a teljes képet, a leglassabb kérések táblázatát és a kivételek számát is.  
+Marcela nem várja tétlenül a riasztásokat. Minden ismételt üzembe helyezés után nem sokkal ellenőrzi a [válaszidőket](../../azure-monitor/app/web-monitor-performance.md) – a teljes képet, a leglassabb kérések táblázatát és a kivételek számát is.  
 
 ![Válaszidő-grafikon és a kiszolgáló válaszidejének táblázata.](./media/detect-triage-diagnose/response-time.png)
 
@@ -215,7 +215,7 @@ Bármi is az ok, az adatok segítik a csapatot annak meghatározásában, hogy m
 
 A csapat lassan hozzászokik, hogy információkat kap a felhasználói tevékenységekről. Mostanában a szolgáltatások tervezésekor azt is kidolgozzák, hogyan fognak visszajelzést kapni a használatáról. A kezdetektől beépítik a szolgáltatásba a nyomkövető hívást. A visszajelzés segítségével javítják a szolgáltatást minden fejlesztési szakaszban.
 
-[További információk a használat követéséről](../../application-insights/app-insights-usage-overview.md).
+[További információk a használat követéséről](../../azure-monitor/app/usage-overview.md).
 
 ## <a name="apply-the-devops-cycle"></a>A fejlesztői és üzemeltetői ciklus alkalmazása
 Ez csapat tehát így használja az Application Insightsot az egyes hibák elhárítására és a fejlesztési ciklus javítására. Remélem, ez a példa adott néhány ötletet arról, hogyan segíthet az Application Insights a saját alkalmazása teljesítményének kezelésében.

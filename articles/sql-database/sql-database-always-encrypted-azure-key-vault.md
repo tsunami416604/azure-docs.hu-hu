@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 5499193ba96d5a32ac6d3b310eee531c68fd52fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/03/2019
+ms.openlocfilehash: e988a3c86302b875f8393264279e4a65c45ba1eb
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255922"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041237"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelmét, és tárolja a titkosítási kulcsokat az Azure Key Vaultban
 
 Ez a cikk bemutatja, hogyan titkosítás használatával az SQL-adatbázisban tárolt bizalmas adatok védelme a [Always Encrypted varázsló](https://msdn.microsoft.com/library/mt459280.aspx) a [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Emellett olyan utasításokat tartalmaz, amelyek bemutatják, hogyan egyes titkosítási kulcsok tárolására az Azure Key Vaultban.
 
@@ -60,6 +60,7 @@ Gyorsan létrehozhat egy kulcstartót a következő szkript futtatásával. Ezek
     $userPrincipalName = '<username@domain.com>'
     $applicationId = '<application ID from your AAD application>'
     $resourceGroupName = '<resource group name>'
+    # Use the same resource group name when creating your SQL Database below
     $location = '<datacenter location>'
     $vaultName = 'AeKeyVault'
 
@@ -132,14 +133,14 @@ SSMS biztosít egy varázsló, amellyel könnyen konfigurálhatja az Always Encr
    
     ![Oszlopok titkosítása](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Az Always Encrypted varázsló az alábbi szakaszokat tartalmazza: **Oszlopválasztás**, **főkulcs konfigurációs**, **érvényesítési**, és **összegzése**.
+Az Always Encrypted varázsló az alábbi szakaszokat tartalmazza: **Oszlopválasztás**, **főkulcs konfigurációs**, **érvényesítési**, és **összefoglalás**.
 
 ### <a name="column-selection"></a>Oszlop kiválasztása
 Kattintson a **tovább** a a **bemutatása** megnyitásához a **Oszlopválasztás** lapot. Ezen a lapon kiválaszthatja titkosítására, mely oszlopok [titkosítás, típusa és milyen oszloptitkosítási kulcs (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) használatára.
 
 Titkosítása **SSN** és **születési** egyes betegek adatait. A társadalombiztosítási szám oszlop determinisztikus titkosítás, mely támogatja a egyenlőség kereséseket, illesztés és csoportosítás fogja használni. A születési dátum oszlop véletlenszerű titkosítás, amely nem támogatja a műveletek alkalmaznak.
 
-Állítsa be a **titkosítási típus** SSN oszlop **Deterministic** és születési dátum oszlop **Randomized**. Kattintson a **Tovább** gombra.
+Állítsa be a **titkosítási típus** SSN oszlop **Deterministic** és születési dátum oszlop **Randomized**. Kattintson a **tovább**.
 
 ![Oszlopok titkosítása](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -150,7 +151,7 @@ Az oktatóanyag bemutatja, hogy a kulcsokat az Azure Key Vaultban.
 
 1. Válassza ki **az Azure Key Vault**.
 2. A legördülő listából válassza ki a kívánt key vaultban.
-3. Kattintson a **Tovább** gombra.
+3. Kattintson a **tovább**.
 
 ![A főkulcs konfiguráció](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 

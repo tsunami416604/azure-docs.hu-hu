@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/28/2018
+ms.date: 01/03/2019
 ms.author: b-juche
-ms.openlocfilehash: fa498c39123e09c212466c900e6000c0138db467
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: e6792d994c01fb77739ad7a044bc7193e350e173
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413098"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053789"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Az Azure NetApp Files tárhely-hierarchiájának ismertetése
 
@@ -59,4 +59,5 @@ Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészle
 
 ## <a name="next-steps"></a>További lépések
 
-[Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)
+- [Az Azure Files-NetApp erőforráskorlátok](azure-netapp-files-resource-limits.md)
+- [Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)

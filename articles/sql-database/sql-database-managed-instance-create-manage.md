@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 7fb6917e129c015536143a707fd2a89fc5423a99
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 01/03/2019
+ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323080"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040200"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Az Azure SQL Database felügyelt példányain a felügyelt API-referencia
 
@@ -37,9 +37,13 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 | Parancsmag | Leírás |
 | --- | --- |
 |[Új AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Létrehoz egy Azure SQL Database felügyelt példány |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlInstance)|Az Azure SQL felügyelt példány adatait adja vissza|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Set-AzureRmSqlInstance)|Egy Azure SQL Database felügyelt példánya tulajdonságainak beállítása|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Remove-AzureRmSqlInstance)|Eltávolít egy Azure SQL felügyelt adatbázis-példány|
+|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Az Azure SQL felügyelt példány adatait adja vissza|
+|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Egy Azure SQL Database felügyelt példánya tulajdonságainak beállítása|
+|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Eltávolít egy Azure SQL felügyelt adatbázis-példány|
+|[Új AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Létrehoz egy Azure SQL Database felügyelt példányába database|
+|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Az Azure SQL felügyelt példánya adatbázis adatait adja vissza|
+|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Egy felügyelt Azure SQL Database példány adatbázis eltávolítása|
+|[Visszaállítás – AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Visszaállít egy Azure SQL Database Felügyeltpéldány-adatbázist|
 
 ## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI: Logikai kiszolgálóiról és adatbázisairól kezelése
 
@@ -47,15 +51,19 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az [
 
 > [!TIP]
 > Az Azure CLI-vel a rövid útmutatóban talál [SQL felügyelt példányt az Azure CLI-vel](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
->
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[az sql buszpéldány létrehozása](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-create) |Létrehoz egy felügyelt példányt|
-|[az sql mi lista](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-list)|Listák elérhető felügyelt példányok|
-|[az sql buszpéldány show](/cli/azure/sql/db#az-sql-mi-show)|Részletes információkkal szolgál a felügyelt példányhoz|
-|[az sql-buszpéldány frissítés](/cli/azure/sql/db#az-sql-mi-update)|Felügyelt példány frissítése|
-|[az sql buszpéldány delete](/cli/azure/sql/db#az-sql-mi-delete)|Eltávolítja a felügyelt példány|
+|[az sql buszpéldány létrehozása](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Létrehoz egy felügyelt példányt|
+|[az sql mi lista](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Listák elérhető felügyelt példányok|
+|[az sql buszpéldány show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Részletes információkkal szolgál a felügyelt példányhoz|
+|[az sql-buszpéldány frissítés](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Felügyelt példány frissítése|
+|[az sql buszpéldány delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Eltávolítja a felügyelt példány|
+|[az sql KÖZÉP2 létrehozása](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Létrehoz egy felügyelt adatbázis|
+|[az sql KÖZÉP2 listája](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Elérhető lista felügyelt adatbázisok|
+|[az sql KÖZÉP2 visszaállítása](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Felügyelt adatbázis visszaállítása|
+|[az sql-KÖZÉP2 frissítés](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|Frissíti egy felügyelt adatbázis|
+|[az sql KÖZÉP2 delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Eltávolít egy felügyelt adatbázis|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Logikai kiszolgálóiról és adatbázisairól kezelése
 

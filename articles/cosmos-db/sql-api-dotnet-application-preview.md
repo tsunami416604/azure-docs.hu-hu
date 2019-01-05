@@ -3,19 +3,19 @@ title: Az oktatóanyag az Azure Cosmos DB-vel egy ASP.NET MVC webalkalmazás fej
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy ASP .net MVC-webalkalmazás Azure Cosmos DB használatával. Fogja tárolni, és JSON-adatok elérése az Azure-ban tárolt teendőkezelő alkalmazásból.
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e3ad852246b4b78d5ed7ac938348e59e9b7e6ce0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101330"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037123"
 ---
-# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Oktatóanyag: Azure Cosmos DB-vel egy ASP.NET MVC webalkalmazásról fejleszthet a .net SDK-előzetes verzió 
+# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Oktatóanyag: Az Azure Cosmos DB az ASP.NET MVC webalkalmazás fejlesztése .net SDK-előzetes verzió használatával 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -47,7 +47,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A jelen cikkben lévő utasítások követése előtt győződjön meg arról, hogy rendelkezik az alábbi erőforrásokkal:
 
-* **Aktív Azure-fiók:** Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt. 
+* **Aktív Azure-fiók:** Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -57,7 +57,7 @@ A jelen cikkben lévő utasítások követése előtt győződjön meg arról, h
 
 A jelen cikk összes képernyőfelvétele a Microsoft Visual Studio Community 2017 programmal készült. Ha a rendszer egy másik verziója van konfigurálva, lehetséges, hogy a képernyők és beállítások előfordulhat, hogy nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek ebben a megoldásban használható.
 
-## <a name="create-an-azure-cosmos-account"></a>1. lépés: Hozzon létre egy Azure Cosmos-fiók
+## <a name="create-an-azure-cosmos-account"></a>1. lépés: Egy Azure Cosmos-fiók létrehozása
 
 Először hozzon létre egy Azure Cosmos-fiók. Ha már rendelkezik egy Azure Cosmos DB SQL API-fiókot, vagy ha az Azure Cosmos DB emulatort használja ehhez az oktatóanyaghoz, továbbléphet a [hozzon létre egy új ASP.NET MVC alkalmazás](#create-a-new-mvc-application) szakaszban.
 
@@ -194,7 +194,7 @@ Hasonló hogyan hozott létre, listaelemek nézetet is konfigurációelemek lét
 
 Ha ezzel végzett, zárja be az összes cshtml dokumentumot a Visual Studio, ezek a nézetek később vissza.
 
-## <a name="connect-to-cosmosdb"></a>5. lépés: Csatlakozás az Azure Cosmos DB 
+## <a name="connect-to-cosmosdb"></a>5. lépés: Csatlakozás az Azure Cosmos DB-hez 
 
 Most, hogy a standard szintű MVC elvégeztük a, most be hozzá a kódot, amellyel csatlakozhat az Azure Cosmos DB és a CRUD-műveletek végrehajtása. 
 
@@ -244,7 +244,7 @@ Ha most felépíti és futtatja ezt a projektet, valami ilyesmit kell látnia.
 ![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/sql-api-dotnet-application-preview/build-and-run-the-project-now.png)
 
 
-## <a name="run-the-application"></a>6. lépés: Az alkalmazás helyileg történő futtatása
+## <a name="run-the-application"></a>6. lépés: Az alkalmazás helyi futtatása
 
 A helyi gépen lévő alkalmazás teszteléséhez használja a következő lépéseket:
 
@@ -264,7 +264,7 @@ A helyi gépen lévő alkalmazás teszteléséhez használja a következő lép�
 
 5. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
-## <a name="deploy-the-application-to-azure"></a>7. lépés: Az alkalmazás üzembe helyezése 
+## <a name="deploy-the-application-to-azure"></a>7. lépés: Az alkalmazás központi telepítése 
 Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatbázissal, az Azure App Service-be fogjuk telepíteni ezt a webalkalmazást.  
 
 1. Az alkalmazás közzétételéhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben** válassza **közzététel**.

@@ -1,13 +1,10 @@
 ---
-title: Hozza létre és társítsa a szolgáltatásvégpont-szabályzat – Azure portal |} A Microsoft Docs
+title: Hozza létre és társítsa a szolgáltatásvégpont-szabályzat – Azure portal
+titlesuffix: Azure Virtual Network
 description: Ebből a cikkből megtudhatja, hogyan állítható be, és a kapcsolódó szolgáltatásvégpont-szabályzat az Azure portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: anithaa
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 6bd318da5b3cd667d0a39b9c963e8d3ffd472f41
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633010"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054435"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Létrehozása, módosítása vagy törlése a szolgáltatásvégpont-szabályzat az Azure portal használatával
 
@@ -46,27 +43,27 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 2. A keresés panelen írja be a "szolgáltatásvégpont-szabályzat szolgáltatás", és válassza ki **szolgáltatásvégpont-szabályzat (előzetes verzió) szolgáltatás** , majd **létrehozás**.
 3. Adja meg, vagy válassza ki a következő adatokat a **alapjai** 
 
-   - Előfizetés: Válassza ki az előfizetést a házirend.    
-   - Erőforráscsoport: válasszon **új létrehozása** , és adja meg *myResourceGroup*.     
+   - Előfizetés: Válassza ki az előfizetését, a szabályzat.    
+   - Erőforráscsoport: Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.     
    - Name: myEndpointPolicy
-   - Hely: USA nyugati középső RÉGIÓJA     
+   - Hely: USA nyugati középső régiója     
  
    ![Hozzon létre szolgáltatásvégpont házirend alapjai](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
    
 4. Adja meg, vagy válassza ki a következő adatokat a **Szabályzatdefiníciók**
 
    - Kattintson a **+ adjon hozzá egy erőforrást**, adja meg, vagy válassza ki a következő adatokat, fogadja el a többi beállítás esetében az alapértelmezett és kattintson a **Hozzáadás**.  
-   - Hatókör: Jelölje ki **egyetlen fiók** vagy **előfizetésben található összes fiók** vagy **erőforráscsoportban lévő összes fiók**.    
+   - Hatókör: Válassza ki **egyetlen fiók** vagy **előfizetésben található összes fiók** vagy **erőforráscsoportban lévő összes fiók**.    
    - Előfizetés: Válassza ki az előfizetést a tárfiókhoz. A házirend- és storage-fiókok különböző előfizetésekhez is lehet.   
-   - Erőforráscsoport: Jelölje ki az erőforráscsoportot. Szükséges, amennyiben a hatókör van beállítva, "Az összes fiókok erőforráscsoportban" vagy "Egyetlen fiók".  
+   - Erőforráscsoport: Válassza ki az erőforráscsoportot. Szükséges, amennyiben a hatókör van beállítva, "Az összes fiókok erőforráscsoportban" vagy "Egyetlen fiók".  
    - Erőforrás: mystorageaccountportal    
    - Kattintson a **+ adjon hozzá egy erőforrást** folytatja a további erőforrások hozzáadásával.
    
    ![Szolgáltatásvégpont szabályzatdefiníciók létrehozása](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. Nem kötelező: Adjon meg vagy válassza ki a következő adatokat a **címkék**:
+5. Nem kötelező: Adja meg vagy válassza ki a következő adatokat a **címkék**:
    
-   - Kulcs: Válassza ki a kulcsot a szabályzathoz. Például: osztály     
+   - Kulcs: Válassza ki a kulcsot a szabályzathoz. Például: Osztály     
    - Érték: Adja meg a kulcs érték pár. Például: Pénzügy
 
 6. Válassza ki **felülvizsgálat + létrehozás**. Ellenőrizze az adatokat, és kattintson **létrehozás**. Ahhoz, hogy további módosításokat, kattintson a **előző**. 
@@ -100,10 +97,10 @@ Mielőtt hozzárendelhetne egy szabályzatot, amely egy alhálózathoz, létre k
 2. Válassza a **Hálózatkezelés**, majd a **Virtuális hálózat** elemet.
 3. A **Virtuális hálózat létrehozása** területen adja meg vagy válassza ki a következő adatokat, fogadja a többi beállításnál fogadja el az alapértelmezett értékeket, majd válassza a **Létrehozás** elemet:
    - Name: myVirtualNetwork      
-   - Címtere: 10.0.0.0/16      
-   - Előfizetés: Válassza ki az előfizetését. A házirend a virtuális hálózatnak ugyanabban az előfizetésben kell lennie.     
-   - Erőforráscsoport: válasszon **meglévő** , majd *myResourceGroup*     
-   - Hely: USA nyugati középső RÉGIÓJA     
+   - Címtér: 10.0.0.0/16      
+   - Előfizetés: Válassza ki előfizetését. A házirend a virtuális hálózatnak ugyanabban az előfizetésben kell lennie.     
+   - Erőforráscsoport: Válassza ki **meglévő** majd *myResourceGroup*     
+   - Hely: USA nyugati középső régiója     
    - Alhálózat neve: titkos     
    - Címtartomány: 10.0.0.0/24
      

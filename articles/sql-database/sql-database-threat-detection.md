@@ -11,23 +11,24 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: 91b5fa521b1513f86bb9112138cf10fdb31badca
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 01/03/2019
+ms.openlocfilehash: 3f4a120e2aaf2925805bec26f721d5cfb4194bf1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997312"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041543"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-database"></a>Az Azure SQL Database Threat Detection önálló adatbázis
 
-Az Azure SQL [Fenyegetésészlelés](sql-database-threat-detection-overview.md) a [SQL Database](sql-database-technical-overview.md) önálló adatbázisok észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A Fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [Fenyegetésészlelési riasztásokat](sql-database-threat-detection.md#azure-sql-database-threat-detection-alerts).
+Az Azure SQL [Fenyegetésészlelés](sql-database-threat-detection-overview.md) a [SQL Database](sql-database-technical-overview.md) önálló adatbázisok észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A Fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [Fenyegetésészlelési riasztásokat](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
 
-Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection.md#explore-threat-detection-alerts-for-your-database-in-the-Azure-portal)
+Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
 [Veszélyforrások Detektálása](sql-database-threat-detection-overview.md) része a [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md) (ATP) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A Fenyegetésészlelés érheti el és a központi SQL ATP portálján felügyelt. Fenyegetés-észlelési szolgáltatás díjának 15 USD/hónap logikai kiszolgálónként 30 napig ingyenesen.
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Állítsa be az Azure Portalon az adatbázishoz tartozó fenyegetések észlelése
+
 1. Indítsa el az Azure Portalra a [ https://portal.azure.com ](https://portal.azure.com).
 2. Keresse meg a konfigurációs lapon, a védeni kívánt Azure SQL Database-kiszolgáló. Válassza ki a biztonsági beállítások **komplex veszélyforrások elleni védelem**.
 3. Az a **komplex veszélyforrások elleni védelem** konfigurációs lapon:
@@ -43,9 +44,9 @@ A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés kon
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [Fenyegetésészlelés](sql-database-threat-detection-overview.md).
-* Tudjon meg többet [a felügyelt példány Fenyegetésészlelési](sql-database-managed-instance-threat-detection.md).  
-* Tudjon meg többet [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md). 
-* Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)
-* Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Díjszabási információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/)  
+- Tudjon meg többet [Fenyegetésészlelés](sql-database-threat-detection-overview.md).
+- Tudjon meg többet [a felügyelt példány Fenyegetésészlelési](sql-database-managed-instance-threat-detection.md).  
+- Tudjon meg többet [SQL komplex veszélyforrások elleni védelem](sql-advanced-threat-protection.md).
+- Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)
+- Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Díjszabási információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/)  

@@ -1,23 +1,21 @@
 ---
-title: 'Azure Cosmos DB: Az SQL API kezdeti lépéseit ismertető oktatóanyag'
+title: 'Az Azure Cosmos DB: Az SQL API kezdeti lépéseket ismertető oktatóanyag'
 description: Ez az oktatóanyag létrehoz egy online adatbázist és egy C# konzolalkalmazást az SQL API használatával.
-keywords: nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867529"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043447"
 ---
-# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Az SQL API kezdeti lépéseit ismertető oktatóanyag
+# <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Az Azure Cosmos DB: Az SQL API kezdeti lépéseket ismertető oktatóanyag
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -77,7 +75,7 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet h
 
 Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
 
-## <a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
+## <a id="Connect"></a>3. lépés: Csatlakozás az Azure Cosmos DB-fiók
 Először adja hozzá az alábbi hivatkozásokat a C# alkalmazás elejéhez a Program.cs fájlban:
 
     using System;
@@ -367,7 +365,7 @@ Gratulálunk! Sikeresen létrehozott két Azure Cosmos DB-dokumentumot.
 
 ![A diagram a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>7. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
+## <a id="Query"></a>7. lépés: Azure Cosmos DB-erőforrások lekérdezése
 Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](how-to-sql-query.md).  Az alábbi kódminta több olyan lekérdezést mutat be – az Azure Cosmos DB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
 
 Másolja, majd illessze be a **ExecuteSimpleQuery** metódust a **CreateFamilyDocumentIfNotExists** metódus után.
@@ -423,7 +421,7 @@ Az alábbi diagram bemutatja, hogyan indít hívást az Azure Cosmos DB SQL-lek�
 
 A [FROM](how-to-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből, mivel az Azure Cosmos DB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. Az Azure Cosmos DB úgy tekinti, hogy a Families, a root vagy a választott változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
-## <a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
+## <a id="ReplaceDocument"></a>8. lépés: Cserélje le a JSON-dokumentumok
 Az Azure Cosmos DB támogatja a JSON-dokumentumok cseréjét.  
 
 Másolja, majd illessze be a **ReplaceFamilyDocument** metódust az **ExecuteSimpleQuery** metódus után.
@@ -495,7 +493,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-adatbázist.
 
-## <a id="Run"></a>11. lépés: Futtassa a teljes C# konzolalkalmazást!
+## <a id="Run"></a>11. lépés: Futtassa a C# Konzolalkalmazás minden egy helyen!
 Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához.
 
 Egy konzolablakban meg kell jelennie az Első lépések alkalmazás kimenetének. A kimenet megjeleníti a hozzáadott lekérdezések eredményeit, amelynek meg kell egyeznie az alábbi mintaszöveggel.
@@ -538,7 +536,7 @@ Ennyi az egész! Építse ki, és máris jó úton jár!
 
 
 ## <a name="next-steps"></a>További lépések
-* Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Tekintse meg a következőt: [ASP.NET MVC-oktatóanyag: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással](sql-api-dotnet-application.md).
+* Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Lásd: [ASP.NET MVC oktatóprogram: Webalkalmazások fejlesztése az Azure Cosmos DB](sql-api-dotnet-application.md).
 * Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Tekintse meg az [Azure Cosmos DB használatával történő teljesítmény- és mérettesztelést](performance-testing.md) ismertető cikket.
 * Ismerje meg, hogyan [monitorozhatja az Azure Cosmos DB-kérelmeket, -használatot és -tárolást](monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.

@@ -1,21 +1,19 @@
 ---
 title: Oktatóanyag Java alapú alkalmazásfejlesztéshez Azure Cosmos DB használatával
 description: Ez a Java-webalkalmazásokkal kapcsolatos oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Java-alkalmazás adatait az Azure Cosmos DB és az SQL API segítségével.
-keywords: Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazás, java-webalkalmazás oktatóanyag, azure, Microsoft Azure
-services: cosmos-db
 author: tknandu
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: bdfe390314f2d2174a26e9b321022a3589a06467
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3add2b6800463cf9320d2fcfdd87897d2e38d32d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086539"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039809"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Java-webalkalmazás létrehozása az Azure Cosmos DB és az SQL API használatával
 
@@ -52,10 +50,10 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/app-service-web-get-started-java.md)
 
-Ha először telepíti ezeket az eszközöket, a coreservlets.com webhelyen megtalálhatja a telepítési folyamat útmutatóját (angol nyelven) az alábbi cikk Quick Start (Gyors üzembe helyezés) szakaszában: [Tutorial: Installing TomCat7 and Using it with Eclipse](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Oktatóanyag: A Tomcat7 telepítése és használata az Eclipse-szel).
+Ha először telepíti ezeket az eszközöket, coreservlets.com webhelyen a telepítési folyamat a gyors üzembe helyezés szakaszában azok [oktatóanyag: Tomcat 7 telepítéssel és az eclipse-szel](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) cikk.
 
 ## <a id="CreateDB"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
-Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP) című lépésre.
+Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy ha használ az Azure Cosmos DB Emulatort ehhez az oktatóanyaghoz, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -83,7 +81,7 @@ JSP-alkalmazás létrehozása:
    
     ![Hello World – Java-alkalmazásokra vonatkozó oktatóanyag](./media/sql-api-java-application/image12.png)
 
-## <a id="InstallSDK"></a>3. lépés: Az SQL Java SDK telepítése
+## <a id="InstallSDK"></a>3. lépés: Telepítse az SQL Java SDK
 Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Maven](https://maven.apache.org/) használatával kérhetők le.
 
 Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések végrehajtásával:
@@ -106,7 +104,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
 6. Az **OK** gombra való kattintás után a Maven telepíti a SQL Java SDK-t.
 7. Mentse a pom.xml fájlt.
 
-## <a id="UseService"></a>4. lépés: Az Azure Cosmos DB szolgáltatás használata Java-alkalmazásokban
+## <a id="UseService"></a>4. lépés: Az Azure Cosmos DB szolgáltatás használata Java-alkalmazás
 1. Először is határozza meg a TodoItem (Tennivaló) objektumot a TodoItem.java fájlban:
    
         @Data
@@ -340,7 +338,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             return true;
         }
 
-## <a id="Wire"></a>5. lépés: A Java-alkalmazásfejlesztési projekt fennmaradó részeinek összefűzése
+## <a id="Wire"></a>5. lépés: Fennmaradó részeinek összefűzése a Java-alkalmazásfejlesztési projekt együtt
 Most, hogy elért a könnyebb részek végére, már csak fel kell építenie egy gyors felhasználói felületet, és hozzá kell fűznie azt a DAO-objektumhoz.
 
 1. Először is hozzon létre egy vezérlőt a DAO meghívásához:
@@ -712,7 +710,7 @@ Most, hogy elért a könnyebb részek végére, már csak fel kell építenie eg
 5. Nagyszerű! Most már csak le kell tesztelni az alkalmazást. Futtassa az alkalmazást helyileg, és adjon hozzá néhány teendőt. Ehhez adja meg az elemek nevét és kategóriáját, majd kattintson az **Add Task** (Feladat hozzáadása) elemre.
 6. Ha megjelent az elem, a jelölőnégyzet bejelölésével, majd az **Update Tasks** (Feladatok frissítése) gombra való kattintással állíthatja be, hogy elvégezte-e már azt.
 
-## <a id="Deploy"></a>6. lépés: A Java-alkalmazás üzembe helyezése az Azure Websitesban
+## <a id="Deploy"></a>6. lépés: A Java-alkalmazás az Azure webhelyek üzembe helyezése
 Az Azure Websites megkönnyíti a Java-alkalmazások telepítését. Nincs más dolga, mint exportálni az alkalmazást WAR-fájlként, majd feltölteni azt egy forráskezelő rendszer (pl. Git) vagy FTP segítségével.
 
 1. Az alkalmazás WAR-fájlként történő exportálásához kattintson a jobb gombbal a projektre a **Project Explorer** (Projektböngésző) nézetben, majd kattintson az **Export** (Exportálás), és végül a **WAR File** (WAR-fájl) lehetőségre.

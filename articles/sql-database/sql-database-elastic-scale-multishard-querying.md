@@ -11,55 +11,55 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: bc0ca62699c21848e4d5fdc18bef292dce4634bf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/03/2019
+ms.openlocfilehash: a7a27d8447a306bc7a3440d64cc6216ca20d2528
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863465"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038149"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Többszegmenses lekérdezés a rugalmas Adatbáziseszközök használatáról
 
 ## <a name="overview"></a>Áttekintés
 
-Az a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), szilánkokra osztott adatbázis megoldásokat hozhat létre. **Többszegmenses lekérdezés** feladatok szolgál, például a gyűjtemény/jelentő egy lekérdezés futtatásának igénylő húzódó több szegmens között. (A, ellentétben [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md), amely az összes munkát végez egy szegmenst.) 
+Az a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), szilánkokra osztott adatbázis megoldásokat hozhat létre. **Többszegmenses lekérdezés** feladatok szolgál, például a gyűjtemény/jelentő egy lekérdezés futtatásának igénylő húzódó több szegmens között. (A, ellentétben [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md), amely az összes munkát végez egy szegmenst.)
 
-1. Get- **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) vagy **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map), [.NET ](https://msdn.microsoft.com/library/azure/dn807370.aspx)) használatával a **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), a **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), vagy a **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metódust. Lásd: **[hozhat létre, amely egy ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)** és  **[egy RangeShardMap vagy ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)**.
-2. Hozzon létre egy **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_connection), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)) objektum.
-3. Hozzon létre egy **MultiShardStatement vagy MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)). 
-4. Állítsa be a **vlastnost CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.commandtext.aspx#P:Microsoft.Azure.SqlDatabase.ElasticScale.Query.MultiShardCommand.CommandText)), a T-SQL paranccsal.
-5. A parancs meghívásával hajtható végre a **ExecuteQueryAsync vagy Executereadert** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_statement.executeQueryAsync), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.executereader.aspx)) metódust.
-6. Tekintse meg az eredményeket használja a **MultiShardResultSet vagy MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_result_set), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)) osztály. 
+1. Get- **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) vagy **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) használatával a **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), a **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), vagy a **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metódust. Lásd: [hozhat létre, amely egy ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) és [egy RangeShardMap vagy ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Hozzon létre egy **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) objektum.
+3. Hozzon létre egy **MultiShardStatement vagy MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
+4. Állítsa be a **vlastnost CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)), a T-SQL paranccsal.
+5. A parancs meghívásával hajtható végre a **ExecuteQueryAsync vagy Executereadert** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) metódust.
+6. Tekintse meg az eredményeket használja a **MultiShardResultSet vagy MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) osztály.
 
 ## <a name="example"></a>Példa
 
-Az alábbi kód bemutatja a használatát több horizontális partíciós lekérdezések használatával egy adott **ShardMap** nevű *myShardMap*. 
+Az alábbi kód bemutatja a használatát több horizontális partíciós lekérdezések használatával egy adott **ShardMap** nevű *myShardMap*.
 
 ```csharp
-using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString)) 
-{ 
+using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString))
+{
     using (MultiShardCommand cmd = conn.CreateCommand())
-    { 
-        cmd.CommandText = "SELECT c1, c2, c3 FROM ShardedTable"; 
-        cmd.CommandType = CommandType.Text; 
-        cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn; 
-        cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults; 
+    {
+        cmd.CommandText = "SELECT c1, c2, c3 FROM ShardedTable";
+        cmd.CommandType = CommandType.Text;
+        cmd.ExecutionOptions = MultiShardExecutionOptions.IncludeShardNameColumn;
+        cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults;
 
-        using (MultiShardDataReader sdr = cmd.ExecuteReader()) 
-        { 
+        using (MultiShardDataReader sdr = cmd.ExecuteReader())
+        {
             while (sdr.Read())
-            { 
-                var c1Field = sdr.GetString(0); 
-                var c2Field = sdr.GetFieldValue<int>(1); 
+            {
+                var c1Field = sdr.GetString(0);
+                var c2Field = sdr.GetFieldValue<int>(1);
                 var c3Field = sdr.GetFieldValue<Int64>(2);
-            } 
-        } 
-    } 
-} 
+            }
+        }
+    }
+}
 ```
 
-A fő különbség többszegmenses kapcsolatok építését. Ahol **SqlConnection** egy önálló adatbázis működik a **MultiShardConnection** vesz igénybe egy ***szegmensek gyűjteményét*** bemenetként. Adja meg a gyűjtemény horizontálispartíció-térkép a szegmens. A lekérdezés majd hajtja végre a szegmensek gyűjteményét **UNION ALL** szemantika egy teljes eredmény összegyűjtése. Szükség esetén a szegmens, ahol a sor származik nevét a kimeneti történő is hozzáadhatók a **ExecutionOptions** parancssori tulajdonságot. 
+A fő különbség többszegmenses kapcsolatok építését. Ahol **SqlConnection** egy önálló adatbázis működik a **MultiShardConnection** vesz igénybe egy ***szegmensek gyűjteményét*** bemenetként. Adja meg a gyűjtemény horizontálispartíció-térkép a szegmens. A lekérdezés majd hajtja végre a szegmensek gyűjteményét **UNION ALL** szemantika egy teljes eredmény összegyűjtése. Szükség esetén a szegmens, ahol a sor származik nevét a kimeneti történő is hozzáadhatók a **ExecutionOptions** parancssori tulajdonságot.
 
 Vegye figyelembe a hívást **myShardMap.GetShards()**. Ez a módszer minden szegmensre lekéri a szegmenstérkép, és minden megfelelő adatbázis-lekérdezés futtatható egy egyszerűbb megoldást kínál. A gyűjtemény szegmens többszegmenses lekérdezés finomított is lehet további keresztül a gyűjtemény egy LINQ-lekérdezésekre elvégzésével által visszaadott hívása **myShardMap.GetShards()**. És a részleges eredményeket szabályzat együttes alkalmazásával a jelenlegi képességről többszegmenses lekérdezés esetén működik megfelelően a szegmensek több száz legfeljebb tíz úgy lett kialakítva.
 

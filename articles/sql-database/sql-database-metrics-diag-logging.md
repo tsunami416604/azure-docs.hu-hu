@@ -11,28 +11,28 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601559"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044569"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
 Az Azure SQL Database, a rugalmas készletek, a felügyelt példány és az adatbázisok a felügyelt példány is könnyebben alkalmazásteljesítmény-figyelés a metrikák és diagnosztikai naplók streamelése. Az adatbázis erőforrás-használat, a dolgozók és a munkamenetek és a egy, a következő Azure-erőforrások kapcsolat továbbítására konfigurálhatja:
 
-* **Az Azure SQL Analytics**: az Azure-adatbázisok, amely tartalmazza az teljesítményjelentések készítésére, riasztások és javaslatok kockázatcsökkentési intelligens monitorozást beolvasásához.
-* **Az Azure Event Hubs**: SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal.
-* **Az Azure Storage**: archiválására hatalmas mennyiségű telemetriai árának töredékéért.
+- **Az Azure SQL Analytics**: az Azure-adatbázisok, amely tartalmazza az teljesítményjelentések készítésére, riasztások és javaslatok kockázatcsökkentési intelligens monitorozást beolvasásához.
+- **Az Azure Event Hubs**: SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal.
+- **Az Azure Storage**: archiválására hatalmas mennyiségű telemetriai árának töredékéért.
 
     ![Architektúra](./media/sql-database-metrics-diag-logging/architecture.png)
 
 A különböző Azure-szolgáltatások által támogatott mérőszámokban és naplófájlokban kategóriák kapcsolatos további információkért lásd:
 
-* [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure-beli diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Azure-beli diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Ez a cikk nyújt útmutatást az adatbázisok, rugalmas készletek és a felügyelt példány diagnostics telemetriai adatainak engedélyezéséhez. Azt is segítségével megtudhatja, hogyan konfigurálhat egy Azure SQL Analytics egy figyelési eszköz adatbázis diagnostics telemetriai adatainak megtekintéséhez.
 
@@ -101,7 +101,6 @@ Az Azure SQL Database-diagnostics telemetriai adatainak streamelésének engedé
 
 > [!NOTE]
 > Adatbázis diagnosztikai beállítások alapján nem sikerült engedélyezni a biztonsági naplókat. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [SQL Audit naplók az Azure Log Analytics és az Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
-
 > [!TIP]
 > Ismételje meg ezeket a lépéseket minden egyes Azure SQL Database figyelni szeretné.
 
@@ -112,17 +111,17 @@ Az Azure SQL Database-diagnostics telemetriai adatainak streamelésének engedé
 Felügyelt példány található adatbázisok a diagnostics telemetriai adatainak streamelésének engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg az adatbázis a felügyelt példányhoz.
-1. Válassza ki **diagnosztikai beállítások**.
-1. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállítások módosítása.
+2. Válassza ki **diagnosztikai beállítások**.
+3. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállítások módosítása.
    - Legfeljebb három (3) a stream diagnostics telemetriai adatainak párhuzamos kapcsolatot hozhat létre.
    - Válassza ki **+ diagnosztikai beállítás hozzáadása** párhuzamos streamelési több erőforrás diagnosztikai adatok konfigurálása.
 
    ![Felügyelt példány adatbázis-diagnosztika engedélyezése](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. Adja meg a saját referenciaként a beállítás nevét.
-1. Válasszon ki egy cél-erőforrást, a streamelési diagnosztikai adatok: **Archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**.
-1. Válassza ki az adatbázis diagnostics telemetriai adatainak jelölőnégyzetét: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** és **hibák**.
-1. Kattintson a **Mentés** gombra.
+4. Adja meg a saját referenciaként a beállítás nevét.
+5. Válasszon ki egy cél-erőforrást, a streamelési diagnosztikai adatok: **Archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**.
+6. Válassza ki az adatbázis diagnostics telemetriai adatainak jelölőnégyzetét: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** és **hibák**.
+7. Kattintson a **Mentés** gombra.
 
    ![Felügyelt példány adatbázisa diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -170,7 +169,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be a f
 
 | Erőforrás | Telemetriai adatok figyelése |
 | :------------------- | ------------------- |
-| **Felügyelt példány** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, foglalt tárhely tartalmaz, és a használt tárterület. |
+| **Felügyelt példány** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, foglalt tárhely tartalmaz, és a használt tárterület. |
 
 Felügyelt példány erőforrás diagnostics telemetriai adatainak streamelésének engedélyezéséhez kövesse az alábbi lépéseket:
 
@@ -338,11 +337,11 @@ A kiválasztott adatok streamelése az Event Hubsba, miután Ön, amely lehetőv
 
 Event hubs adatfolyamként továbbított metrikákat is használhatja:
 
-* **Szolgáltatás állapotának megtekintéséhez a streamelési adatok ritkáról gyakori elérésű útvonal a Power bi-bA**. Az Event Hubs, a Stream Analytics és a Power bi-ban, a metrikák és diagnosztikai adatok közel valós idejű elemzések egyszerűen alakíthatja át az Azure-szolgáltatások. Bemutatja, hogyan állíthat be egy eseményközpontot, dolgozza fel az adatokat a Stream Analytics és a Power BI használja kimenetként, lásd [Stream Analytics és a Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
+- **Szolgáltatás állapotának megtekintéséhez a streamelési adatok ritkáról gyakori elérésű útvonal a Power bi-bA**. Az Event Hubs, a Stream Analytics és a Power bi-ban, a metrikák és diagnosztikai adatok közel valós idejű elemzések egyszerűen alakíthatja át az Azure-szolgáltatások. Bemutatja, hogyan állíthat be egy eseményközpontot, dolgozza fel az adatokat a Stream Analytics és a Power BI használja kimenetként, lásd [Stream Analytics és a Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
-* **Stream naplók külső naplózás és a telemetriai Streamek**. Streamelés az Event Hubs használatával lekérheti a metrikák és diagnosztikai naplók különböző külső figyelés és a log analytics megoldásokban.
+- **Stream naplók külső naplózás és a telemetriai Streamek**. Streamelés az Event Hubs használatával lekérheti a metrikák és diagnosztikai naplók különböző külső figyelés és a log analytics megoldásokban.
 
-* **Hozhat létre egy egyéni telemetriát és a naplózás platform**. Ehhez már rendelkezik egy személyre szabott telemetriai platform vagy használatát fontolgatja létrehozására? A rugalmasan skálázható közzétételi és előfizetési jellege az Event Hubs lehetővé teszi, hogy rugalmasan diagnosztikai naplók. Lásd: [Dan Rosanova útmutató az Event Hubs használatával egy globális szintű telemetriai platformon](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+- **Hozhat létre egy egyéni telemetriát és a naplózás platform**. Ehhez már rendelkezik egy személyre szabott telemetriai platform vagy használatát fontolgatja létrehozására? A rugalmasan skálázható közzétételi és előfizetési jellege az Event Hubs lehetővé teszi, hogy rugalmasan diagnosztikai naplók. Lásd: [Dan Rosanova útmutató az Event Hubs használatával egy globális szintű telemetriai platformon](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="stream-into-storage"></a>Stream Storage-bA
 
@@ -386,7 +385,7 @@ Az Azure SQL Analytics használja, ha az adathasználat Adatbetöltési a megold
 
 ## <a name="metrics-and-logs-available"></a>Metrikák és naplók érhető el
 
-Figyelési gyűjtött telemetria használhatja a saját _egyéni elemző_ és _alkalmazásfejlesztés_ használatával [SQL Analytics nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries). 
+Figyelési gyűjtött telemetria használhatja a saját _egyéni elemző_ és _alkalmazásfejlesztés_ használatával [SQL Analytics nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="all-metrics"></a>Az összes metrikák
 
@@ -690,12 +689,12 @@ Tudjon meg többet a [Intelligent Insights naplóformátum](sql-database-intelli
 
 Megtudhatja, hogyan naplózás engedélyezése és a metrikák és naplózása támogatja a különböző Azure-szolgáltatások, kategóriák:
 
-* [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure-beli diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Azure-beli diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Az Event Hubs szolgáltatásról, olvassa el:
 
-* [Mi az Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Mi az Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Az Azure Storage szolgáltatással kapcsolatos további tudnivalókért lásd: [metrikák és diagnosztikai naplók letöltése a Storage-ból](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

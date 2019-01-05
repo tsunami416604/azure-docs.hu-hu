@@ -1,22 +1,19 @@
 ---
 title: Python Flask-webalkalmazás oktatóanyag az Azure Cosmos DB-hez
 description: Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait az Azure Cosmos DB használatával. Alkalmazásfejlesztési megoldások keresése.
-keywords: Alkalmazásfejlesztés, python flask, python-webalkalmazás, python-webfejlesztés
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2c7b7c5dc68bb96e0b54dc89f2c170cdb20c792
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a59de5fad7f457fffcc36ed55fd5862bc9329a1d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081914"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037157"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Python Flask-webalkalmazás létrehozása az Azure Cosmos DB használatával
 
@@ -61,15 +58,15 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
 * [Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).
 
-## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
-Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2-create-a-new-python-flask-web-application) című lépésre.
+## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>1. lépés: Az Azure Cosmos DB-adatbázisfiók létrehozása
+Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy ha használ az Azure Cosmos DB Emulatort ehhez az oktatóanyaghoz, továbbléphet a [2. lépés: Hozzon létre egy új Python Flask-webalkalmazás](#step-2-create-a-new-python-flask-web-application).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <br/>
 Most végigvezetjük azon, hogyan hozhat létre új Python Flask-webalkalmazást az alapoktól kezdve.
 
-## <a name="step-2-create-a-new-python-flask-web-application"></a>2. lépés: Új Python Flask-webalkalmazás létrehozása
+## <a name="step-2-create-a-new-python-flask-web-application"></a>2. lépés: Hozzon létre egy új Python Flask-webalkalmazás
 1. A Visual Studio programban, a **File** (Fájl) menüben mutasson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
    
     Megjelenik a **New project** (Új projekt) párbeszédpanel.
@@ -349,7 +346,7 @@ def vote():
    
     ![Képernyőfelvétel a Visual Studio Solution Explorer (Megoldáskezelő) ablakáról](./media/sql-api-python-application/cosmos-db-python-solution-explorer.png)
 
-## <a name="step-4-run-your-web-application-locally"></a>4. lépés: A webalkalmazás helyileg történő futtatása
+## <a name="step-4-run-your-web-application-locally"></a>4. lépés: Helyileg futtassa a zabalení webové aplikace
 1. Fordítsa le a megoldást a **Ctrl**+**Shift**+**B** billentyűkombináció lenyomásával.
 2. A sikeres fordítás után indítsa el a webhelyet az **F5** billentyű lenyomásával. A következőnek kell megjelennie a képernyőn.
    
@@ -365,7 +362,7 @@ def vote():
     ![Képernyőfelvétel a szavazás oldalának Results (Eredmények) lapjáról](./media/sql-api-python-application/cosmos-db-voting-results.png)
 6. A projekt hibakeresésének leállításához nyomja le a Shift+F5 billentyűkombinációt.
 
-## <a name="step-5-deploy-the-web-application-to-azure"></a>5. lépés: A webalkalmazás telepítése az Azure-ra
+## <a name="step-5-deploy-the-web-application-to-azure"></a>5. lépés: Az Azure webes alkalmazás üzembe helyezése
 Most, hogy helyben a teljes alkalmazás megfelelően működik az Azure Cosmos DB-vel, létrehozunk egy web.config fájlt, frissítjük a kiszolgálón található fájlokat, hogy megfeleljenek a helyi környezetnek, majd megtekintjük a kész alkalmazást az Azure-on. Ez az eljárás a Visual Studio 2017-re vonatkozik. Ha a Visual Studio más verzióját használja, tekintse meg a [Közzététel az Azure App Service-ben](/visualstudio/python/publishing-to-azure) című cikket.
 
 1. A Visual Studio **Megoldáskezelőjében** kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás > Új elem...** lehetőséget. A megjelenő párbeszédablakban válassza az **Azure web.config (Fast CGI)** sablont, és kattintson az **OK** gombra. Ez létrehoz egy `web.config` fájlt a projekt gyökérkönyvtárában. 
@@ -436,4 +433,4 @@ Ha további funkciókat szeretne a webalkalmazáshoz adni, tekintse át az [Azur
 
 Az Azure-ra, a Visual Studióval és a Pythonnal kapcsolatos további információkért lásd: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/). 
 
-További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) (A Flask óriási oktatóanyaga – 1. rész: Hello, World!) 
+További Python Flask-oktatóanyagok, lásd: [The Flask Mega-Tutorial, i. rész: helló világ! ](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 

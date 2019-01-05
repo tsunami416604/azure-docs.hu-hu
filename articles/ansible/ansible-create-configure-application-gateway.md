@@ -3,17 +3,17 @@ title: Az Azure Application Gatewayen a webes forgalom kezelése Ansible-lel
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Application Gatewayt a webes forgalom kezeléséhez az Ansible használatával
 ms.service: ansible
 keywords: az ansible, azure, devops, bash, forgatókönyv, az Alkalmazásátjáró, terheléselosztó-, web forgalom
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: af7f22ae5c289a01e6876d8ce586cb32383c8d3b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 43e8681e5266f113d466a138abeeda77aff1c18b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253356"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052257"
 ---
 # <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Az Azure Application Gatewayen a webes forgalom kezelése Ansible-lel
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 94ff3aca84eb27df5171df2a7a3b2b0f708a1d24
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624228"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043787"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Az Azure Resource Manager egy Service Fabric-fürt létrehozása 
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ A következő paranccsal hozhat létre fürtöt, ha a fürt védelmére használ
 Ha ez egy hitelesítésszolgáltató által aláírt tanúsítvány, amely, megszűnik más célra, majd javasoljuk, hogy kimondottan a key vault adjon meg egy egyedi erőforráscsoport. Azt javasoljuk, hogy a key vault mindössze a saját erőforráscsoport. Ez a művelet lehetővé teszi a számítási és tárolási erőforráscsoport eltávolítására, beleértve az erőforráscsoport, amely a Service Fabric-fürt tartalmazza a kulcsok és titkok elvesztése nélkül. **Az erőforráscsoport, amely tartalmazza a kulcstartó *ugyanabban a régióban kell lennie* a fürt által használt.**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Az alapértelmezett öt csomópont, a modul részét képező egy csomópont típusa sablon használata
-A használt sablon megtalálható a [Azure-minták: Windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+A használt sablon megtalálható a [Azure-minták: Windows-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 A fürt PowerShell-lel üzembe helyezéséhez:
 
@@ -288,6 +288,8 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ## <a name="next-steps"></a>További lépések
 Ezen a ponton rendelkezik egy Azure-ban futó biztonságos fürt. Ezután [csatlakozni a fürthöz](service-fabric-connect-to-secure-cluster.md) , és ismerje meg, hogyan [titkos alkalmazáskulcsok kezelése](service-fabric-application-secret-management.md).
+
+A JSON-szintaxist és egy sablon tulajdonságait: [Microsoft.ServiceFabric/clusters sablonreferenciája](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps

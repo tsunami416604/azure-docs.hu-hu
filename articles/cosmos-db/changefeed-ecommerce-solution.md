@@ -1,19 +1,18 @@
 ---
 title: Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 description: Ez a cikk bemutatja, hogyan módosítási hírcsatorna segítségével olyan kereskedelmi cég felhasználói mintákról, hajtsa végre a valós idejű adatok elemzését és megjelenítését.
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: e663a7b8f68c43ebf4c562dd67630db5d113e979
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090754"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037106"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 
@@ -31,7 +30,7 @@ Az alábbi ábrán az adatfolyam és a következő összetevők kapnak szerepet 
 
 ![Projekt Vizualizáció](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Adat-előállítás:** adatszimuláló esemény, például egy felhasználó egy elem megtekintése, felvesz egy elemet a bevásárlókocsihoz és elemeire vásárlási kereskedelmi adatok létrehozására szolgál. Az adatgenerátor használatával nagy mintaadatkészletet is létrehozhat. A létrehozott mintaadatokat tartalmaz dokumentumokat a következő formátumban:
+1. **Adatok generálása:** Adatszimuláló esemény, például egy felhasználó egy elem megtekintése, felvesz egy elemet a bevásárlókocsihoz és elemeire vásárlási kereskedelmi adatok létrehozására szolgál. Az adatgenerátor használatával nagy mintaadatkészletet is létrehozhat. A létrehozott mintaadatokat tartalmaz dokumentumokat a következő formátumban:
    
    ```json
    {      
@@ -42,17 +41,17 @@ Az alábbi ábrán az adatfolyam és a következő összetevők kapnak szerepet 
    }
    ```
 
-2. **A cosmos DB:** generált adatok egy Azure Cosmos DB-gyűjteményben tárolja.  
+2. **A cosmos DB:** A létrehozott adatok egy Azure Cosmos DB-gyűjteményben tárolja el.  
 
-3. **Módosítási hírcsatorna:** a módosítási hírcsatorna figyeli az Azure Cosmos DB-gyűjtemények változásait. Minden alkalommal, amikor a gyűjtemény (esemény következik be, például egy felhasználó megtekintése egy elemet, amikor felvesz egy elemet a bevásárlókocsihoz, vagy elemeire vásárlási) adnak hozzá egy új dokumentumot, a módosítási hírcsatorna fogja elindítani egy [Azure-függvény](../azure-functions/functions-overview.md).  
+3. **Módosítási hírcsatorna:** Az Azure Cosmos DB-gyűjtemények változásait a módosítási hírcsatorna figyeli. Minden alkalommal, amikor a gyűjtemény (esemény következik be, például egy felhasználó megtekintése egy elemet, amikor felvesz egy elemet a bevásárlókocsihoz, vagy elemeire vásárlási) adnak hozzá egy új dokumentumot, a módosítási hírcsatorna fogja elindítani egy [Azure-függvény](../azure-functions/functions-overview.md).  
 
-4. **Azure-függvény:** az Azure-függvény feldolgozza az új adatokat, és elküldi azt egy [Azure Event Hub](../event-hubs/event-hubs-about.md).  
+4. **Azure-függvény:** Az Azure-függvény feldolgozza az új adatokat, és elküldi azt egy [Azure Event Hub](../event-hubs/event-hubs-about.md).  
 
-5. **Event Hubs:** az Azure Event Hubs tárolja ezeket az eseményeket, és elküldi azokat [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) részletes elemzéseket végezhet.  
+5. **Event Hubs:** Az Azure Event Hubs tárolja ezeket az eseményeket, és elküldi azokat [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) részletes elemzéseket végezhet.  
 
-6. **Az Azure Stream Analytics:** az Azure Stream Analytics határozza meg az események feldolgozását, és valós idejű adatelemzés végrehajtása a lekérdezéseket. Ezeket az adatokat elküldi a [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Az Azure Stream Analytics:** Az Azure Stream Analytics az események feldolgozását, és valós idejű adatelemzés végrehajtása a lekérdezések határozza meg. Ezeket az adatokat elküldi a [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **A Power bi-ban:** Power BI segítségével jelenítheti meg az Azure Stream Analytics által küldött adatokat. Tekintse meg, hogyan módosíthatja a a metrikák valós idejű irányítópultot hozhat létre.  
+7. **A Power bi-ban:** A Power BI segítségével jelenítheti meg az Azure Stream Analytics által küldött adatokat. Tekintse meg, hogyan módosíthatja a a metrikák valós idejű irányítópultot hozhat létre.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -317,7 +316,7 @@ Power BI egy üzleti elemzési eszközök az adatok elemzése és elemzéseket o
 
    ![Vizualizációk](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Választható lehetőség: Egy elektronikus kereskedelmi webhellyel megjelenítése
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Nem kötelező: Egy elektronikus kereskedelmi webhellyel megjelenítése
 
 Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-kereskedelmi webhely kapcsolódni. Az e-kereskedelmi webhely készítéséhez használni egy Azure Cosmos DB-adatbázis (nők, férfi, Uniszex) termékkategóriák listája, a termékkatalógus és a legnépszerűbb elemek listáját.
 

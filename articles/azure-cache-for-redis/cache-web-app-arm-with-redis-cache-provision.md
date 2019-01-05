@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: adca39fd86563ad4e494995feb843b76b76806d6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f95db9b1c8119784d2b1d9cfb9dd005fc42ac3e4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019605"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033791"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Hozzon létre egy webalkalmazás és az Azure Cache redis-sablon használatával
 Ebben a témakörben megtudhatja, hogyan hozhat létre egy Azure Resource Manager-sablon üzembe helyez egy Azure-webalkalmazást az Azure Cache redis. Megtudhatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md).
+Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md). A JSON-szintaxist és a gyorsítótár erőforrástípusok tulajdonságaival kapcsolatos tudnivalókért lásd: [a Microsoft.Cache erőforrás-típus](/azure/templates/microsoft.cache/allversions).
 
 A teljes sablonját, lásd: [webalkalmazást az Azure Cache Redis-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 

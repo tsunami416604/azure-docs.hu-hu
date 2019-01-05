@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2a7b5a1f90ddc6ccfdbc568113a5c265dd9ac84
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f0f1464adde2c80706fbced7309877447644d19e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022954"
+ms.locfileid: "54040438"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](../../application-insights/app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
@@ -166,4 +166,4 @@ Automatikusan azt ne naplózza a POST data, de használhat [TrackTrace vagy a na
 * [Összetett lekérdezéseket írni az Analyticsben](../../azure-monitor/log-query/get-started-portal.md)
 * [Naplók és egyéni telemetriát küldjön az Application Insightsba](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Állítsa be a rendelkezésre állás és a válaszképesség tesztek](../../azure-monitor/app/monitor-web-app-availability.md)
-* [hibaelhárítással](../../application-insights/app-insights-troubleshoot-faq.md)
+* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)

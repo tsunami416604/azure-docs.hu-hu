@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2fa7c4c7dc3af28dcc49371a086c2e7555278b99
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7422e7145acfece9c9da3277c8d92c949220dbab
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015219"
+ms.locfileid: "54039316"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -1175,4 +1175,4 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
 ## <a name="next"></a>Következő lépések
 
 * [Keresési események és naplók](../../azure-monitor/app/diagnostic-search.md)
-* [hibaelhárítással](../../application-insights/app-insights-troubleshoot-faq.md)
+* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)

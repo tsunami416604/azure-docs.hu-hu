@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 856ffe050fce204d52d6666025a7284788bb0893
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bee48efd52a6ead6896691683c4605fcf833e2b6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022240"
+ms.locfileid: "54033697"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
@@ -121,11 +121,11 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Kiszolgálómetrikák diagram](./media/app-insights-website-monitoring/browser-performance.png)
 
-4. A [felhasználói viselkedést elemző eszközök](app-insights-usage-overview.md) megismeréséhez az Application Insights fő menüjében válassza a [**Felhasználók**](app-insights-usage-segmentation.md) elemet a **Használat** fejléc alatt. Mivel a tesztelést egyetlen gépről végezzük, csak egy felhasználó adatait fogjuk látni. Egy élő webhely esetében a felhasználók eloszlása az alábbihoz hasonlóan nézhet ki:
+4. A [felhasználói viselkedést elemző eszközök](../azure-monitor/app/usage-overview.md) megismeréséhez az Application Insights fő menüjében válassza a [**Felhasználók**](../azure-monitor/app/usage-segmentation.md) elemet a **Használat** fejléc alatt. Mivel a tesztelést egyetlen gépről végezzük, csak egy felhasználó adatait fogjuk látni. Egy élő webhely esetében a felhasználók eloszlása az alábbihoz hasonlóan nézhet ki:
 
      ![Felhasználók diagram](./media/app-insights-website-monitoring/usage-users.png)
 
-5. Ha egy összetettebb webhelyet alakítottunk volna ki több oldallal, ehhez egy másik hasznos eszköz a [**Felhasználói folyamatok**](app-insights-usage-flows.md). A **Felhasználókövetéssel** nyomon követheti a látogatóknak a webhely különböző részeit érintő útját.
+5. Ha egy összetettebb webhelyet alakítottunk volna ki több oldallal, ehhez egy másik hasznos eszköz a [**Felhasználói folyamatok**](../azure-monitor/app/usage-flows.md). A **Felhasználókövetéssel** nyomon követheti a látogatóknak a webhely különböző részeit érintő útját.
 
   ![Felhasználókövetés vizualizációja](./media/app-insights-website-monitoring/user-flows.png)
 

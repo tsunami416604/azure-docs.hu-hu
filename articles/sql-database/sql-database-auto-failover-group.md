@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: e20b18afb579839343fc4c079c039d7b9e5438f7
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994640"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033808"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -175,7 +175,7 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
   Amikor létrejön egy új példányt, egyedi azonosító automatikusan jön létre, mint a DNS-zóna és a példány DNS-név szerepel. A több tartományt (SAN) tanúsítvány esetében ez a példány üzembe van helyezve, a SAN-mezőt formájában `zone_id.database.windows.net`. Ez a tanúsítvány használható a DNS-zónájában egy példányt az ügyfélkapcsolatok hitelesítése céljából. Győződjön meg, hogy az elsődleges példány nem megszakadt kapcsolat a feladatátvételt követően az elsődleges és másodlagos példányok kell lennie DNS-zónájában. Az alkalmazás éles környezet készen áll, amikor egy másodlagos példány létrehozása egy másik régióban, és ellenőrizze, hogy a DNS-zóna közös az elsődleges példánnyal. Ez történik, adjon meg egy `DNS Zone Partner` nem kötelező paraméter, az Azure portal, PowerShell vagy a REST API használatával.
 
-  Ugyanazt a DNS-zónájában, az elsődleges példány a másodlagos példány létrehozásával kapcsolatos további információkért lásd: [feladatátvételi csoportok kezelése a felügyelt példány (előzetes verzió)](#managing-failover-groups-with-managed-instances-preview).
+  Ugyanazt a DNS-zónájában, az elsődleges példány a másodlagos példány létrehozásával kapcsolatos további információkért lásd: [feladatátvételi csoportok kezelése a felügyelt példány (előzetes verzió)](#powershell-managing-failover-groups-with-managed-instances-preview).
 
 - **Két példány közötti replikációs forgalom engedélyezése**
 
@@ -349,7 +349,7 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 | API | Leírás |
 | --- | --- |
 | [Hozzon létre vagy feladatátvételi csoport frissítése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Létrehoz vagy frissít egy feladatátvételi csoportot |
-| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/instancefailovergroups/delete) | A feladatátvételi csoport eltávolítása a kiszolgálóról |
+| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | A feladatátvételi csoport eltávolítása a kiszolgálóról |
 | [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Átadja a feladatokat az aktuális elsődleges kiszolgálóról a kiszolgálóhoz. |
 | [Kényszerített feladatátvétel adatvesztés engedélyezése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails keresztül az aktuális elsődleges kiszolgálóról a kiszolgálóhoz. Ez a művelet adatvesztést okozhat. |
 | [Feladatátvételi csoport lekérése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | A feladatátvételi csoport lekérése. |

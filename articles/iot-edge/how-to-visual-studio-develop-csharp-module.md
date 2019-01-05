@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/21/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 954fb0fd4c8b9773edad904fa82a0a90111a66fa
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754594"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054923"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Fejlesztés és az Azure IoT Edge (előzetes verzió) C# modul hibakeresése a Visual Studio 2017 használatával
 
@@ -37,7 +37,7 @@ Mivel ez a cikk a Visual Studio 2017, a fő fejlesztési eszközt használ, tele
 
 Miután készen áll a Visual Studio 2017, emellett kell a következő eszközök és -összetevők:
 
-- Töltse le és telepítse [Azure IoT Edge bővítmény](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) egy IoT Edge-projekt létrehozása a Visual Studio 2017 a Visual Studio marketplace-ről.
+- Töltse le és telepítse [(előzetes verzió) az Azure IoT Edge bővítmény](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) egy IoT Edge-projekt létrehozása a Visual Studio 2017 a Visual Studio marketplace-ről.
 
 - Töltse le és telepítse [a Docker Community Edition](https://docs.docker.com/install/) a fejlesztői gépen való létrehozásához és futtatásához a modul rendszerképeit. Állítsa be a Docker CE futtatását Linux-tároló mód vagy a Windows tároló módban kell.
 

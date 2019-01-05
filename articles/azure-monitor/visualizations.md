@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728346"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049962"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
@@ -71,7 +71,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 
 
 ## <a name="application-insights-workbooks"></a>Application Insights munkafüzetek
-[Munkafüzetek](../application-insights/app-insights-usage-workbooks.md) adataihoz, vizsgálati és együttműködési belül a team betekintést nyújtó interaktív dokumentumok. Útmutatók és az incidens postmortem konkrét példákat, ahol munkafüzetek hasznosak hibaelhárítást.
+[Munkafüzetek](../azure-monitor/app/usage-workbooks.md) adataihoz, vizsgálati és együttműködési belül a team betekintést nyújtó interaktív dokumentumok. Útmutatók és az incidens postmortem konkrét példákat, ahol munkafüzetek hasznosak hibaelhárítást.
 
 ![Munkafüzet](media/visualizations/workbook.png)
 
@@ -140,7 +140,7 @@ Napló adatai és az Azure monitorban metrikaadatok hozzáférhet bármely REST-
 - További információ a [Azure Monitor által gyűjtött adatok](platform/data-collection.md).
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
 - Ismerje meg [nézetek az Azure Monitor](platform/view-designer.md).
-- Ismerje meg [az Application Insights-munkafüzetek](../application-insights/app-insights-usage-workbooks.md).
+- Ismerje meg [az Application Insights-munkafüzetek](../azure-monitor/app/usage-workbooks.md).
 - Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](../azure-monitor/platform/powerbi.md).
 - További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](../azure-monitor/platform/grafana-plugin.md).
 

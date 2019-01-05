@@ -1,23 +1,21 @@
 ---
-title: 'Gyors útmutató: Table API .NET-tel – Azure Cosmos DB használatával'
+title: 'Gyors útmutató: TABLE API .NET-tel – Azure Cosmos DB használatával'
 description: Ez a rövid útmutató ismerteti, hogyan használható az Azure Cosmos DB Table API alkalmazások létrehozására az Azure Portal és a .NET segítségével
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.custom: quickstart connect, mvc
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 22b2f247de97a0bf0b4a145062c7b92fec61ee9a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 453c3ce2d813093e087bea67056036f9125941c6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074984"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038602"
 ---
-# <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Rövid útmutató: Table API-alkalmazás létrehozása a .NET és az Azure Cosmos DB használatával 
+# <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás a .NET és az Azure Cosmos DB létrehozása 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)

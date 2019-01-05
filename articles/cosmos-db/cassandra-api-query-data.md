@@ -1,22 +1,22 @@
 ---
-title: 'Oktatóanyag: Az Azure Cosmos DB Cassandra API-fiók adatainak lekérdezése'
+title: 'Oktatóanyag: Az Azure Cosmos DB Cassandra API-fiók adatait kérdezi le'
 description: Ez az oktatóanyag bemutatja, hogyan lehet egy Azure Cosmos DB Cassandra API-fiókot felhasználói adatokat kérdezhet le egy Java-alkalmazás használatával.
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 57d83516708e3105ba32f8b83420f06aadf0ace1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867512"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038177"
 ---
-# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Az Azure Cosmos DB Cassandra API-fiók adatainak lekérdezése
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Az Azure Cosmos DB Cassandra API-fiók adatait kérdezi le
 
 A fejlesztők lehetséges, hogy alkalmazásokat, amelyek használják a kulcs-érték párokat. Az Azure Cosmos DB Cassandra API-fiók használhatja, tárolására, és a kulcs/érték-adatok lekérdezése. Ez az oktatóanyag bemutatja, hogyan Java-alkalmazás használatával az Azure Cosmos DB Cassandra API-fiók felhasználói adatok lekérdezésére. A Java-alkalmazás használja a [Java illesztőprogram](https://github.com/datastax/java-driver) , és lekérdezi a felhasználói adatok, például a felhasználói Azonosítóját, a felhasználónév és a felhasználó városa. 
 

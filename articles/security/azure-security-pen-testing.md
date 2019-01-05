@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 4096cf3a44b7c32ed94fdd2ef5dcbad9db08a386
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3f7d44a2a34f6b52c2229cf6491e99c65d5bb525
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42061373"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052989"
 ---
 # <a name="pen-testing"></a>Toll tesztelése
 Egy alkalmazás tesztelése és üzembe helyezéséhez az Azure használatának előnyeit, hogy az képes gyorsan létrehozott környezeteket.  Nem kell aggódnia a requisitioning, beszerzése, és a "szoftverjavítási és rétegezést" a saját helyszíni hardvert.
@@ -40,7 +40,7 @@ Mi a teendő ilyenkor?
 Szabványos teszteket hajthat végre a következők:
 
 * Tesztek alapján a végpontokon, fedje fel a [Open Web Application Security Project (OWASP) 10 biztonsági rések leggyakoribb](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-* [Tesztelés fuzz](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) végpont
+* [Tesztelés fuzz](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) végpont
 * [Portfigyelést](https://en.wikipedia.org/wiki/Port_scanner) végpont
 
 Tesztelje, hogy nem végezhető el egy adott típusú ilyen típusú [szolgáltatásmegtagadásos (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadás. Ez magában foglalja egy szolgáltatásmegtagadási támadás önmagában kezdeményezésének, vagy előfordulhat, hogy határozza meg, bemutatják, vagy bármilyen típusú szolgáltatásmegtagadási támadás szimulálása kapcsolódó tesztek végrehajtása.

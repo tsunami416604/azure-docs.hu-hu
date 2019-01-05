@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339586"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043957"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions - Hello feladatütemezési minta a láncolási függvény
 
-Függvény-láncolás a minta egy adott sorrendben hajtsa végre a funkciók sorozatát jelenti. A kimenet egy függvény gyakran kell egy másik függvény a bemeneti alkalmazható. Ez a cikk ismerteti a titkosításblokkoló feladatütemezési, amikor befejezte a tartós függvények a rövid útmutatóban létrehozott ([ C# ](durable-functions-create-first-csharp.md) vagy [JavaScript](quickstart-js-vscode.md)). Durable Functions kapcsolatos további információkért lásd: [Durable Functions – áttekintés](durable-functions-overview.md).
+Függvény-láncolás a minta egy adott sorrendben hajtsa végre a funkciók sorozatát jelenti. A kimenet egy függvény gyakran kell egy másik függvény a bemeneti alkalmazható. Ez a cikk ismerteti a titkosításblokkoló feladatütemezési, amikor befejezte a tartós függvények a rövid útmutatóban létrehozott ([ C# ](durable-functions-create-first-csharp.md) vagy [JavaScript](quickstart-js-vscode.md)). Durable Functions kapcsolatos további információkért lásd: [Durable Functions-minták és technikai kulcsfogalmak](durable-functions-concepts.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -142,7 +142,7 @@ Amint láthatja, a `runtimeStatus` , de a példány *befejezve* és a `output` o
 > [!NOTE]
 > A HTTP POST-végpontot, amely az orchestrator függvény lépések implementálva van a mintaalkalmazást, mint a HTTP-trigger "HttpStart" nevű függvény. Megvalósíthat például minden olyan eseményindító esetében hasonló kezdő szintű logikai `queueTrigger`, `eventHubTrigger`, vagy `timerTrigger`.
 
-Tekintse meg a függvény végrehajtási naplókat. A `E1_HelloSequence` függvény elindult, és többször befejeződött leírt visszajátszását hiba miatt a [áttekintése](durable-functions-overview.md). Másrészről, volt, csak három végrehajtások `E1_SayHello` ezeket függvénykivételek visszajátszani nem lekérése óta.
+Tekintse meg a függvény végrehajtási naplókat. A `E1_HelloSequence` függvény elindult, és többször befejeződött leírt visszajátszását hiba miatt a [áttekintése](durable-functions-concepts.md). Másrészről, volt, csak három végrehajtások `E1_SayHello` ezeket függvénykivételek visszajátszani nem lekérése óta.
 
 ## <a name="visual-studio-sample-code"></a>A Visual Studio-mintakód
 

@@ -1,20 +1,19 @@
 ---
 title: Tábla másolási műveletek az Azure Cosmos DB Cassandra API Spark rendszerből.
 description: Ez a cikk részletesen bemutatja az adatok másolása az Azure Cosmos DB Cassandra API táblák között
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 4be80bfa7354f4a4b6a13a7a34150c7052a2117b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227129"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034162"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Tábla másolási műveletek az Azure Cosmos DB Cassandra API Spark rendszerből
 
@@ -147,6 +146,6 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
 
 ## <a name="next-steps"></a>További lépések
 
- * Ismerkedés a [Cassandra API-fiók, adatbázis és tábla létrehozása](create-cassandra-api-account-java.md) Java-alkalmazás használatával.
- * [A Cassandra API táblához mintaadatokat tölthet be](cassandra-api-load-data.md) Java-alkalmazás használatával.
- * [A Cassandra API-fiók adatokat kérdezhet le](cassandra-api-query-data.md) Java-alkalmazás használatával.
+ * Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával.
+ * [Mintaadatokat betöltése a Cassandra API táblába](cassandra-api-load-data.md) Java-alkalmazás használatával.
+ * [Adatok lekérdezése a Cassandra API-fiókból](cassandra-api-query-data.md) Java-alkalmazás használatával.

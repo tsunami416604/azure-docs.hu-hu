@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e16d27314a159b124e35560ffb8cd9685fc5c7a0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438013"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035695"
 ---
 # <a name="routing-events-and-messages"></a>Események és üzenetek útválasztása
 
@@ -65,6 +65,7 @@ Az Azure digitális Twins jelenleg támogatja a következő **EventTypes** , ame
 ## <a name="next-steps"></a>További lépések
 
 - További információ az Azure digitális Twins előzetes verzió korlátai,: [nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások](concepts-service-limits.md).
+
 - Próbálja ki az Azure digitális Twins minta, tekintse meg a [rövid útmutatóban elérhető teremkeresés](quickstart-view-occupancy-dotnet.md).
 
 <!-- Images -->

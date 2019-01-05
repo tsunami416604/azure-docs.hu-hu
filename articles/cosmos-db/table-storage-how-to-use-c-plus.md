@@ -1,20 +1,19 @@
 ---
 title: C++ Azure Table Storage és az Azure Cosmos DB Table API használatával
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: 9bfc6ed2c781ddc54815665c492e7f2413033ca0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 40b84a56f93ad670a26eb876a18820e0d4037f63
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087116"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033976"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a C++ nyelvvel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -41,7 +40,7 @@ Az útmutatóban olyan Storage-szolgáltatásokat használ, amelyek futtathatók
 
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
-* **Linux:** Kövesse az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) oldalán található utasításokat.  
+* **Linux:** Kövesse az utasításokat az adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.  
 * **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be az alábbi parancsot a [NuGet csomagkezelő konzolján](/nuget/tools/package-manager-console), majd nyomja le az Enter billentyűt.  
   
      Install-Package wastorage

@@ -1,19 +1,17 @@
 ---
 title: Az Azure Cosmos DB Emulatort tanúsítványok exportálása
 description: Ha olyan nyelveken és futtatókörnyezetekben fejleszt, amelyek nem használják a Windows-tanúsítványtárolót, akkor exportálnia és kezelnie kell az SSL-tanúsítványokat. Ez a bejegyzés lépésről lépésre leírja a teendőket.
-services: cosmos-db
-keywords: Azure Cosmos DB Emulator
-author: David-Noble-at-work
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 06/06/2017
-ms.author: danoble
-ms.openlocfilehash: b7a6649fab8b0203c20b93bee9e941614828a99b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: deborahc
+ms.author: dech
+ms.openlocfilehash: 1cbf08cc903069f5b1cf81f57b7daa16f24c0216
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091798"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043855"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 

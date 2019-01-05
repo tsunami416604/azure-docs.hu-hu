@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 50f5cf48838e5578dc94c61b4463f94e76f886e6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 92a3caefaa0185aa4bd86fbf66d6279e49b0f5c1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028590"
+ms.locfileid: "54053234"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 
@@ -166,7 +166,7 @@ A következő környezetekben támogatottak:
 
 ### <a name="configure-snapshot-collection-for-other-net-applications"></a>Pillanatkép-gyűjtemény más .NET-alkalmazások konfigurálása
 
-1. Ha az alkalmazás már nincs kialakítva az Application Insights, első lépésként [az Application Insights engedélyezése és a kialakítási kulcs beállítása](../../application-insights/app-insights-windows-desktop.md).
+1. Ha az alkalmazás már nincs kialakítva az Application Insights, első lépésként [az Application Insights engedélyezése és a kialakítási kulcs beállítása](../../azure-monitor/app/windows-desktop.md).
 
 2. Adja hozzá a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
@@ -478,4 +478,4 @@ Ha az alkalmazás csatlakozik az interneten keresztül proxy vagy tűzfal, szük
 
 * [A kódban snappoints beállítása](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) beolvasni a pillanatképek kivétel nélkül.
 * [A webalkalmazások kivételeinek diagnosztizálása](../../azure-monitor/app/asp-net-exceptions.md) azt ismerteti, hogyan további kivételek láthatóvá az Application Insightsba.
-* [Intelligens detektálás](../../application-insights/app-insights-proactive-diagnostics.md) automatikusan felderíti a teljesítményanomáliákat.
+* [Intelligens detektálás](../../azure-monitor/app/proactive-diagnostics.md) automatikusan felderíti a teljesítményanomáliákat.

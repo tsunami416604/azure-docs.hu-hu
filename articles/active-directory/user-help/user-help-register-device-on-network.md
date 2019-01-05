@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7126a47bd90168c7d86fe9fcc05fab0a60955063
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: dc3a0974eed7b044e137b45ec367c56d7534cee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180828"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054078"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Regisztrálja a személyes eszköz a vállalati hálózaton
-Regisztrálja a személyes eszköz, általában egy telefonjához vagy táblagépéhez, a vállalati hálózaton. Az eszköz regisztrálása után, akkor fog hozzáférni a szervezet korlátozott erőforrások eléréséhez.
+Regisztrálja a személyes eszköz (általában egy telefonon vagy táblagépen) a vállalati hálózaton. Az eszköz regisztrálása után, akkor fog hozzáférni a szervezet korlátozott erőforrások eléréséhez.
 
 >[!Note]
 >Ez a cikk egy Windows eszköz használja bemutatási célokra, de az iOS, Android vagy macOS rendszerű eszközöket is regisztrálhatja.
@@ -34,7 +34,7 @@ Az eszköz a vállalati hálózathoz a regisztrálás közben történik a köve
 
 - Igény szerint lehetőségeket a szervezet alapján, akkor előfordulhat, hogy automatikusan regisztrálhatók mobileszköz-kezelés, például a Microsoft Intune. A Microsoft Intune-ban regisztrációval kapcsolatos további információkért lásd: [-eszköz regisztrálása az Intune-ban](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
 
-- A bejelentkezési folyamat lépünk, a felhasználónév és jelszó használata a személyes Microsoft-fiókjával.
+- A bejelentkezési folyamat lépünk, a felhasználónév és jelszó használata a munkahelyi vagy iskolai fiókjával.
 
 ## <a name="to-register-your-windows-device"></a>A Windows-eszköz regisztrálása
 
@@ -44,30 +44,26 @@ Kövesse az alábbi lépéseket a hálózaton a személyes eszköz regisztrálá
 
     ![Fiókok, a beállítások képernyőn](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Válassza ki **E-mail és fiókok**, majd válassza ki **csatlakozzon a Microsoft-fiók**.
+2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, majd válassza ki **Connect** származó a **hozzáférés munkahelyi vagy iskolai** képernyő.
 
-    ![E-mailek & a fiókok és a egy Microsoft-fiók hivatkozások hozzáadása](./media/user-help-register-device-on-network/register-device-email-and-accounts.png)
+    ![Munkahelyi vagy iskolai képernyő eléréséhez Connect opció kiemelésével](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. Az a **Microsoft-fiók beállítása** képernyőn írja be az e-mail-címét, a személyes Microsoft-fiókjával.
+3. Az a **munkahelyi vagy iskolai fiók beállítása** képernyőn, majd válassza ki, írja be a munkahelyi vagy iskolai fiókjához tartozó e-mail cím **tovább**. Például: alain@contoso.com.
 
-    ![A Microsoft fiók e-mail-címével képernyő hozzáadása](./media/user-help-register-device-on-network/register-device-add-accounts.png)
-
-4. Az a **jelszó** képernyőn írja be a személyes Microsoft-fiók jelszavát, majd válassza ki **jelentkezzen be a**.
-
-    ![Adja meg a jelszót képernyő](./media/user-help-register-device-on-network/register-device-enter-password.png)
+4. Jelentkezzen be munkahelyi vagy iskolai fiókjával, és válassza **jelentkezzen be a**.
 
 5. Fejezze be a regisztrációs folyamat, beleértve a hagyja jóvá a személyazonosság-ellenőrző kérést, (Ha a kétlépéses ellenőrzés használja) beállítása és telepítése Windows Hello (ha szükséges).
 
-## <a name="to-make-sure-youre-registered"></a>Győződjön meg arról, hogy már regisztrált
+## <a name="to-verify-that-youre-registered"></a>Ellenőrizze, hogy Ön regisztrálva van
 Biztosíthatja, hogy Ön regisztrálva megnézzük a beállításokat.
 
 1. Nyissa meg **beállítások**, majd válassza ki **fiókok**.
 
     ![Fiókok, a beállítások képernyőn](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Válassza ki **E-mail és fiókok**, és ellenőrizze, hogy a személyes Microsoft-fiókjával.
+2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy a munkahelyi vagy iskolai fiókjával.
 
-    ![Hozzáférés munkahelyi vagy iskolai képernyő és csatlakoztatott contoso-fiók](./media/user-help-register-device-on-network/register-device-verify-account.png)
+    ![Hozzáférés munkahelyi vagy iskolai képernyő és csatlakoztatott contoso-fiók](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
 ## <a name="next-steps"></a>További lépések
 Miután regisztrálta a személyes eszköz a vállalati hálózaton, hozzáférhet az erőforrások kell lennie.

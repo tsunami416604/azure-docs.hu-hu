@@ -1,20 +1,17 @@
 ---
 title: Az Azure Cosmos DB-ben konzisztenciaszintek
 description: Az Azure Cosmos DB öt konzisztenciaszint egyenleg végleges konzisztencia, a rendelkezésre állás és a késleltetés kompromisszummal segítségével rendelkezik.
-keywords: végleges konzisztencia, az azure cosmos db, azure, Microsoft azure
-services: cosmos-db
-author: aliuy
-ms.author: andrl
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089734"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034964"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
@@ -42,20 +39,20 @@ Az átfogó SLA-k az Azure Cosmos DB garantálja, hogy az olvasási kérések 10
 
 Az öt konzisztenciaszintek szemantikáját ebben a témakörben találhatók:
 
-- **Erős**: erős konzisztencia kínálja a [linearizálhatósági](https://aphyr.com/posts/313-strong-consistency-models) garantálja. Az olvasások garantáltan adja vissza egy elem legutóbbi véglegesített verzióba. Egy ügyfél soha nem lát egy nem véglegesített vagy részleges írása. Felhasználók mindig garantáltan olvassa el a legutóbbi véglegesített írása.
+- **Erős**: Erős konzisztencia kínálja a [linearizálhatósági](https://aphyr.com/posts/313-strong-consistency-models) garantálja. Az olvasások garantáltan adja vissza egy elem legutóbbi véglegesített verzióba. Egy ügyfél soha nem lát egy nem véglegesített vagy részleges írása. Felhasználók mindig garantáltan olvassa el a legutóbbi véglegesített írása.
 
-- **Korlátozott frissesség**: az olvasások garantáltan konzisztens előtag garanciát az irányadó. Az olvasási késés jelentkezhet írások verziónkénti legfeljebb "K" (az "updates") egy elem, vagy a "t" alatt az időtartam alatt. Ha úgy dönt, korlátozott frissesség, a "frissesség" két módon konfigurálhatók: 
+- **Korlátozott frissesség**: Tartsa tiszteletben a konzisztens előtag garantálja az olvasások garantáltan. Az olvasási késés jelentkezhet írások verziónkénti legfeljebb "K" (az "updates") egy elem, vagy a "t" alatt az időtartam alatt. Ha úgy dönt, korlátozott frissesség, a "frissesség" két módon konfigurálhatók: 
 
   * Az elem (K) verzióinak száma
   * Az időintervallum (t), amely szerint az olvasási késés jelentkezhet az írási műveletek 
 
   Korlátozott frissesség ajánlatok teljes globális rendelési kivételével a "frissesség időszakban." A monoton olvasási garancia egy adott régión belül és a frissesség időszakon kívül is belül léteznek. Erős konzisztencia rendelkezik, mint a korlátozott frissesség által kínált azonos szemantikáját. A frissesség időszak nem lehet negatív érték. Korlátozott frissesség is idő – késleltetett linearizálhatósági nevezik. Amikor egy ügyfél ugyanabban a régióban, amely írási olvasási műveleteket végez, korlátozott frissesség konzisztencia által nyújtott garanciák megegyeznek biztosítékok az erős konzisztencia.
 
-- **Munkamenet**: garantálja az olvasások garantáltan tartsa tiszteletben a konzisztens előtag (feltéve, hogy egyetlen "író" munkamenet), monoton olvasások, monoton írások, olvassa el az írásokat, és írási-követi-olvasások. Egy ügyfél-munkamenet munkamenet-konzisztencia hatókörét.
+- **Munkamenet**: Tartsa tiszteletben a konzisztens előtag (feltéve, hogy egyetlen "író" munkamenet), monoton olvasások, monoton írások, olvassa el az írásokat, és írási-követi-olvasások garantálja az olvasások garantáltan. Egy ügyfél-munkamenet munkamenet-konzisztencia hatókörét.
 
-- **Konzisztens előtag**: visszaadott frissítések nincsenek szünetek és az összes frissítés néhány előtagja tartalmaznak. Konzisztens előtag garantálja, hogy olvasási out soron kívüli írások soha nem jelenik meg.
+- **Konzisztens előtag**: Visszaadott frissítések nincsenek szünetek és az összes frissítés néhány előtagja tartalmaznak. Konzisztens előtag garantálja, hogy olvasási out soron kívüli írások soha nem jelenik meg.
 
-- **Végleges**: nem sorbarendezésre garantált az olvasásokhoz. A további írási műveleteket hiányában a replikák végül szerveződik.
+- **Végleges**: Nincs sorbarendezésre garanciát az olvasásokhoz. A további írási műveleteket hiányában a replikák végül szerveződik.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Konzisztenciaszintek a Baseball példáján
 
@@ -71,8 +68,8 @@ Egy Azure Cosmos DB-tároló tárolja a látogatói és az otthoni csoport össz
 | **Konzisztenciaszint** | **Pontszámok** |
 | - | - |
 | **Erős** | 2 – 5 |
-| **Korlátozott frissesség** | Eredmények, amelyek legfeljebb egy elavult inning: 2-3, 2 – 4, 2 – 5 |
-| **Munkamenet** | <ul><li>Az író számára: 2 – 5</li><li> a csak az író: 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>1 – 3 elolvasása után: 1-3, 1 – 4, 1 – 5, 2-3, 2 – 4, 2 – 5</li> |
+| **Korlátozott frissesség** | Olyan pontszámokat, amelyek legfeljebb egy elavult inning: 2-3, 2 – 4, 2 – 5 |
+| **Munkamenet** | <ul><li>Az író: a 2 – 5</li><li> Bárki a író eltérő: 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>1 – 3 elolvasásával: 1 – 3, 1 – 4, 1 – 5, 2-3, 2 – 4, 2 – 5</li> |
 | **Konzisztens előtag** | 0-0, 0 – 1, 1-1, 1-2, 1 – 3, 2-3, 2 – 4, 2 – 5 |
 | **Végleges** | 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5 |
 
@@ -84,7 +81,7 @@ Konzisztencia fogalmak kapcsolatos további információkért olvassa el a köve
 - [A replikált adatok konzisztencia kifejtett keresztül Baseball (videó) Doug Terry által](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [A replikált adatok konzisztencia kifejtett keresztül Baseball (tanulmány) Doug Terry által](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Munkamenet garanciákat, kis mértékben konzisztens replikált adatok](https://dl.acm.org/citation.cfm?id=383631)
-- [Konzisztencia kompromisszumot kínál a Modern elosztott adatbázis rendszerek kialakításában: korlát a történetet csak egy részét képezi.](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [Konzisztencia kompromisszumot kínál a Modern elosztott adatbázis-rendszerek kialakítása: SAPKA a történetet csak egy részét képezi.](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 - [A gyakorlati részleges határozatképességére valószínűségi korlátozott frissesség (PBS)](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Végül konzisztens – javított változat](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 

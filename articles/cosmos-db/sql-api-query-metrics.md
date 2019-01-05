@@ -1,20 +1,18 @@
 ---
 title: SQL-lekérdezés metrikák az Azure Cosmos DB SQL API-hoz
 description: Ismerje meg, alakítsa ki és hibakeresése az Azure Cosmos DB-kérelmek SQL-lekérdezések teljesítményével kapcsolatos.
-keywords: SQL-szintaxis, sql-lekérdezés, sql-lekérdezéseket, json lekérdezési nyelvet, adatbázis-tervezésben és sql-lekérdezések aggregátumfüggvények
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 02f5cf7159847d6f67ee3d8e92805f785a58e959
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e6d16c31b8975036202fe77906e2d729391b5c59
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142547"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038075"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
 

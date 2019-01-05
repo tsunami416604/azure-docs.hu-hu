@@ -1,101 +1,101 @@
 ---
-title: Üzembe helyezés és kezelés a PowerShell-lel az Azure fájlmegosztások biztonsági mentése
+title: Üzembe helyezése és kezelése az Azure-fájlmegosztások biztonsági mentése PowerShell-lel
 description: Üzembe helyezése és az Azure-ban az Azure-fájlmegosztások biztonsági másolatainak kezelése PowerShell használatával
 services: backup
 author: pvrk
 manager: shivamg
-keywords: PowersShell; Az Azure files biztonsági mentése; Az Azure files-visszaállítás;
+keywords: PowerShell; Az Azure Files biztonsági mentése; Az Azure Files-visszaállítás;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632635"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051220"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>PowerShell-lel történő biztonsági mentése és visszaállítása az Azure-fájlmegosztások
 
-Ez a cikk bemutatja, hogyan biztonsági mentése és helyreállítása Azure-fájlmegosztások a Recovery Services-tárolót az Azure PowerShell-parancsmagok használatával. Recovery Services-tároló egy Azure Resource Manager-erőforrás használt adatokat és adategységeket az Azure Backup és az Azure Site Recovery szolgáltatást.
+Ez a cikk bemutatja, hogyan biztonsági mentése és helyreállítása Azure-fájlmegosztások a Recovery Services-tárolót az Azure PowerShell-parancsmagok használatával. Recovery Services-tároló egy Azure Resource Manager-erőforrás, amely adatokat és adategységeket az Azure Backup és az Azure Site Recovery segítségével.
 
 ## <a name="concepts"></a>Alapelvek
 
-Ha nem ismeri az Azure Backup szolgáltatás a szolgáltatás áttekintését ismertető cikkben [Mi az Azure Backup?](backup-introduction-to-azure-backup.md). Mielőtt elkezdené, győződjön meg arról, hogy, jegyezze fel az előzetes verzióként elérhető funkciókat dokumentált Azure-fájlmegosztások biztonsági mentésével [Itt](backup-azure-files.md).
+Ha még nem ismeri az Azure Backup szolgáltatással, a szolgáltatás áttekintését, [Mi az Azure Backup?](backup-introduction-to-azure-backup.md). Mielőtt elkezdené, tekintse meg az előzetes verzióként elérhető funkciókat, amelyek biztonsági mentése az Azure-fájlmegosztások a [biztonsági mentése az Azure-fájlmegosztások](backup-azure-files.md).
 
 A PowerShell segítségével hatékonyan, fontos tudni, hogy a hierarchiában, és hol kell elkezdeni az objektumok.
 
 ![Recovery Services objektum hierarchia](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Az AzureRm.RecoveryServices.Backup PowerShell-parancsmagok leírása, tekintse meg a [Azure Backup – Recovery Services-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup) az Azure-könyvtárban.
+Megtekintéséhez a **AzureRm.RecoveryServices.Backup** PowerShell-parancsmagok leírása, lásd: [Azure Backup – Recovery Services-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup) az Azure-könyvtárban.
 
 ## <a name="setup-and-registration"></a>Beállítása és regisztrálása
 
 > [!NOTE]
-> Feljegyzett [Itt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), az AzureRM modul véget ér 2018. november az új funkciókkal. Ezért adjuk támogatása az Azure-fájlmegosztások biztonsági mostantól általánosan elérhető az új "Az' PS-modullal
+> Amint [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), az AzureRM-modul a 2018 November végződő az új funkciókkal. Támogatást biztosítunk az új Az PowerShell-modul, amely már általánosan elérhető az Azure-fájlmegosztások biztonsági mentése.
 
-A kezdéshez:
+Kövesse az alábbi lépéseket a kezdéshez.
 
-1. ["Az" PowerShell legújabb verzióját töltse](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0) (a szükséges minimális verziója: 1.0.0-s)
+1. [Töltse le a legújabb verzióját Az PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0). A minimálisan szükséges verzió 1.0.0-s.
 
-2. Keresse meg a rendelkezésre álló Azure Backup PowerShell-parancsmagok a következő parancs beírásával:
+2. Keresse meg a **Azure Backup PowerShell** parancsmagok érhető el a következő parancs beírásával.
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
-    Az aliasok és az Azure Backup az Azure Site Recovery és a Recovery Services-tároló-parancsmagok jelennek meg. Az alábbi képen látható egy példa látni. Akkor sem a parancsmagok teljes listája.
+    Az aliasok és az Azure Backup az Azure Site Recovery és a Recovery Services-tároló-parancsmagok jelennek meg. Az alábbi képen látható egy példa megjelenő. Akkor sem a parancsmagok teljes listája.
 
-    ![a Recovery Services listája](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
+    ![A Recovery Services-parancsmagok listája](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-3. Jelentkezzen be az Azure-fiók használatával **Connect-AzAccount**. Ez a parancsmag kimenetei weblap kéri a hitelesítő adatait:
+3. Jelentkezzen be az Azure-fiók használatával **Connect-AzAccount**. Ez a parancsmag kimenetei egy weblap, amelyen a fiók hitelesítő adatainak megadását kéri:
 
     * Azt is megteheti, megadhatja a fiók hitelesítő adatait a paramétert a **Connect-AzAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
-    * Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Példa: **Csatlakozás AzAccount-bérlő "fabrikam.com"**
+    * Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél bérlőként Bérlőazonosítója vagy bérlői elsődleges tartománynév használatával. Például **Connect-AzAccount-bérlő** fabrikam.com.
 
-4. Társítsa az előfizetést szeretné használni a fiókot, mert egy fiók több előfizetéssel is rendelkezik:
+4. Az előfizetés, mert egy fiók több előfizetéssel is rendelkezik a fiókkal használni kívánt társítja.
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Az Azure Backup használatakor az első alkalommal kell használnia a **Register-AzResourceProvider** parancsmagot, hogy regisztrálja az Azure Recovery Services-szolgáltatót az előfizetésében.
+5. Ha első alkalommal használja az Azure Backup, használja a **Register-AzResourceProvider** parancsmagot, hogy az Azure Recovery Services-szolgáltató regisztrálása az előfizetéshez.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-6. Ellenőrizheti, hogy a szolgáltatók regisztrálása sikeresen befejeződött, a következő parancsokkal:
+6. Győződjön meg arról, hogy a szolgáltatók regisztrálása sikeresen befejeződött a következő parancs segítségével.
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-    A parancs kimenetében a **RegistrationState** kell módosítani a **regisztrált**. Ha nem, egyszerűen csak futtatnia kell a **Register-AzResourceProvider** újra a parancsmagot.
+    A parancs kimeneténél **RegistrationState** vált **regisztrált**. Ha nem látja ezt a módosítást, futtassa a **Register-AzResourceProvider** újra a parancsmagot.
 
 A PowerShell használatával automatizálható a következő feladatokat:
 
-* Recovery Services-tároló létrehozása
-* Azure-fájlmegosztások biztonsági mentésének konfigurálása
-* Biztonsági mentési feladat aktiválása
-* A biztonsági mentési feladat monitorozása
-* Azure-fájlmegosztás visszaállítása
-* Egy külön Azure fájl Azure-fájlmegosztás visszaállítása
+* Recovery Services-tároló létrehozása.
+* Azure-fájlmegosztások biztonsági mentésének konfigurálásához.
+* Biztonsági mentési feladat aktiválása.
+* A biztonsági mentési feladat monitorozása.
+* Azure-fájlmegosztás visszaállítása.
+* Egy külön Azure fájl visszaállítása egy Azure-fájlmegosztást.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-A következő lépések végigvezetik Önt a Recovery Services-tároló létrehozása.
+Kövesse az alábbi lépéseket egy Recovery Services-tároló létrehozása.
 
-1. A Recovery Services-tároló, a Resource Manager-erőforrással, így a elhelyezi egy erőforráscsoporton belül kell. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a **New-AzResourceGroup** parancsmagot. Egy erőforráscsoport létrehozásakor adja meg a nevét és az erőforráscsoport helyét.  
+1. A Recovery Services-tároló, a Resource Manager-erőforrással, így a erőforráscsoporton belül kell elhelyeznie. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy erőforráscsoportot a **New-AzResourceGroup** parancsmagot. Amikor létrehoz egy erőforráscsoportot, adja meg a nevét és az erőforráscsoport helyét.  
 
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
-2. Használja a **New-AzRecoveryServicesVault** parancsmagot a Recovery Services-tároló létrehozásához. Mindenképpen adja meg a tároló ugyanazon a helyen, mint az erőforráscsoport.
+2. Használja a **New-AzRecoveryServicesVault** parancsmagot a Recovery Services-tároló létrehozásához. Adja meg a tároló ugyanarra a helyre, amint lett megadva az erőforráscsoport.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-3. Adja meg a használandó; tárhely-redundancia típusát használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) vagy [Georedundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md). Az alábbi példa bemutatja, hogy a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
+3. Adja meg a használandó tárhely-redundancia típusát. Használhat [helyileg redundáns tárolás](../storage/common/storage-redundancy-lrs.md) vagy [georedundáns tárolás](../storage/common/storage-redundancy-grs.md). A következő példa bemutatja a **- BackupStorageRedundancy** beállításhoz tartozó **testvault** beállítása **GeoRedundant**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -104,13 +104,13 @@ A következő lépések végigvezetik Önt a Recovery Services-tároló létreho
 
 ## <a name="view-the-vaults-in-a-subscription"></a>A tárolók megtekintheti az előfizetéshez
 
-Az előfizetés összes tárolók megtekintéséhez használja **Get-AzRecoveryServicesVault**:
+Az előfizetés összes tárolók megtekintéséhez használja **Get-AzRecoveryServicesVault**.
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-A kimenet a következő példához hasonló, figyelje meg, hogy a társított ResourceGroupName és a helyet.
+A kimenet a következő példához hasonló. Figyelje meg, hogy a társított **ResourceGroupName** és **hely** vannak megadva.
 
 ```powershell
 Name              : Contoso-vault
@@ -124,16 +124,16 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum.
 
-Használat **Set-AzRecoveryServicesVaultContext** a tárolási környezet beállításához. A tárolási környezet beállítását követően az minden további parancsmagra érvényes lesz. Az alábbi példa beállítja a tárolóhoz, a tárolási környezet *testvault*.
+Használat **Set-AzRecoveryServicesVaultContext** a tárolási környezet beállításához. A tárolási környezet beállítását követően minden további parancsmagra vonatkozik. A következő példa állítja a tárolási környezetet a **testvault**.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
 > [!NOTE]
-> Azt tervezi, hogy az Azure PowerShell irányelveinek megfelelően tárolási környezet beállítását kivezetjük. Ehelyett azt javasoljuk, hogy felhasználók számára, hogy az alábbiakban említett vault azonosítója
+> Tervezzük kivezetjük a tároló környezet beállítása az Azure PowerShell igényeinek megfelelően. Ehelyett azt javasoljuk, hogy a felhasználók adja át a tárolót azonosító említetteknek megfelelően az alábbi utasításokat.
 
-Azt is megteheti akkor is store/fetch, amelyhez hozzá szeretné PowerShell művelet végrehajtása, és adja át azt a megfelelő parancsot a tároló azonosítója.
+Azt is megteheti tárolásához, vagy beolvassa az azonosítója, amelyhez a PowerShell művelet végrehajtása, és adja át azt az adott parancs szeretne a tárolóhoz.
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -141,9 +141,13 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 
 ## <a name="configure-backup-for-an-azure-file-share"></a>Azure-fájlmegosztások biztonsági mentésének konfigurálása
 
-### <a name="create-protection-policy"></a>Védelmi szabályzat létrehozása
+### <a name="create-a-protection-policy"></a>Egy védelmi szabályzat létrehozása
 
-A biztonsági mentési alkalmazásvédelmi szabályzat legalább egy adatmegőrzési házirend társítva. Adatmegőrzési szabályzat határozza meg, mennyi ideig egy helyreállítási pontot a megtartani, mielőtt törölné a rendszer. Használat **Get-AzRecoveryServicesBackupRetentionPolicyObject** az alapértelmezett megőrzési szabályzat megtekintéséhez.  Ehhez hasonlóan használhatja **Get-AzRecoveryServicesBackupSchedulePolicyObject** az alapértelmezett ütemezés házirend beszerzéséhez. A **New-AzRecoveryServicesBackupProtectionPolicy** parancsmag létrehoz egy PowerShell-objektumot, amely tartalmazza a biztonsági mentési szabályzat. A ütemezése és megőrzése csoportházirend-objektumok használhatók bemeneteként a **New-AzRecoveryServicesBackupProtectionPolicy** parancsmagot. A következő példában változókat az ütemezési házirend és a megőrzési házirend tárolja. A példában használja ezeket a változókat paraméterek megadásához egy védelmi szabályzat létrehozásakor *NewPolicy*.
+A biztonsági mentési alkalmazásvédelmi szabályzat legalább egy adatmegőrzési házirend társítva. A megőrzési házirend határozza meg, mennyi ideig egy helyreállítási pontot a megtartani, mielőtt törölné a rendszer. Használat **Get-AzRecoveryServicesBackupRetentionPolicyObject** az alapértelmezett megőrzési szabályzat megtekintéséhez. 
+
+Ehhez hasonlóan használhatja **Get-AzRecoveryServicesBackupSchedulePolicyObject** az alapértelmezett ütemezés házirend beszerzéséhez. A **New-AzRecoveryServicesBackupProtectionPolicy** parancsmag létrehoz egy PowerShell-objektumot, amely tartalmazza a biztonsági mentési szabályzat. A ütemezése és megőrzése csoportházirend-objektumok használhatók bemeneteként a **New-AzRecoveryServicesBackupProtectionPolicy** parancsmagot. 
+
+A következő példában változókat az ütemezési házirend és a megőrzési házirend tárolja. A példában ezeket a változókat a paraméterek meghatározása során a **NewPolicy** alkalmazásvédelmi szabályzat jön létre.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -151,7 +155,7 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "Azure
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-A kimenet a következő példához hasonló:
+A kimenet a következő példához hasonló.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -159,21 +163,21 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
 
-A "NewAFSPolicy" vesz igénybe egy napi biztonsági mentést, és 30 napig őrzi meg.
+**NewAFSPolicy** vesz egy napi biztonsági mentést, és 30 napig őrzi meg.
 
 ### <a name="enable-protection"></a>Védelem engedélyezése
 
-Miután meghatározta az alkalmazásvédelmi szabályzatot, engedélyezheti a védelmét, az Azure-fájlmegosztást az ehhez a szabályzathoz.
+Az alkalmazásvédelmi szabályzat határozza meg, miután a védelem az Azure-fájlmegosztást az ehhez a szabályzathoz tartozó engedélyezheti.
 
-Először beolvassa a megfelelő csoportházirend-objektumot a **Get-AzRecoveryServicesBackupProtectionPolicy** parancsmagot. Használhatja ezt a parancsmagot egy adott szabályzatot, vagy egy számításifeladat-típust rendelt házirendek megtekintéséhez.
+Először beolvassa a megfelelő csoportházirend-objektumot a **Get-AzRecoveryServicesBackupProtectionPolicy** parancsmagot. Ezt a parancsmagot használhatja egy adott szabályzatot vagy számításifeladat-típust rendelt házirendek megtekintéséhez.
 
-Az alábbi példa lekéri a számítási feladatok típusa, az Azure filesba – szabályzatok.
+Az alábbi példa lekéri a szabályzatok a számítási típus **Azure filesba –**.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
 ```
 
-A kimenet a következő példához hasonló:
+A kimenet a következő példához hasonló.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -182,25 +186,25 @@ dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 
 ```
 
 > [!NOTE]
-> A PowerShellben a BackupTime mező az időzóna UTC. Azonban amikor biztonsági mentésének ideje jelenik meg az Azure Portalon, az idő igazodik a helyi időzónában.
+> Időzónája a **BackupTime** mezőt a PowerShellben az egyezményes világidő (UTC). Ha biztonsági mentésének ideje jelenik meg az Azure Portalon, az idő a helyi időzóna igazodik.
 >
 >
 
-A következő szabályzatot a biztonsági mentési házirend nevű, "dailyafs" kérdezi le.
+A következő szabályzatot kérdezi le a biztonsági mentési házirend nevű **dailyafs**.
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 ```
 
-Használat **engedélyezése – AzRecoveryServicesBackupProtection** kívánja engedélyezni a védelmet a cikk a házirend. Ha a házirend társítva a tárolóhoz, a biztonsági mentési munkafolyamat akkor aktiválódik, a házirend-ütemezés meghatározott időben.
+Használat **engedélyezése – AzRecoveryServicesBackupProtection** kívánja engedélyezni a védelmet a cikk a házirend. Miután a szabályzat rendelve a tárolóhoz, a biztonsági mentési munkafolyamat akkor aktiválódik, a házirend-ütemezés meghatározott időben.
 
-Az alábbi példa lehetővé teszi, hogy az Azure-fájlmegosztást, "testAzureFileShare", a tárolási fiók "testStorageAcct", mellett a házirend dailyafs a védelmét.
+Az alábbi példa az Azure-fájlmegosztás védelmének engedélyezése **testAzureFileShare** a storage-fiókban **testStorageAcct** szabályzat **dailyafs**.
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol
 ```
 
-A parancs megvárja, amíg a védelem konfigurálásának feladata befejeződött, és lehetővé teszi a hasonló kimenet, ahogy az alábbi.
+A parancs megvárja, amíg a védelem konfigurálásának feladata befejeződött, és a egy hasonló kimenetet biztosít látható módon.
 
 ```cmd
 WorkloadName       Operation            Status                 StartTime                                                                                                         EndTime                   JobID
@@ -210,7 +214,7 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ### <a name="trigger-an-on-demand-backup"></a>Indítson egy igény szerinti biztonsági mentést
 
-Használat **Backup-AzRecoveryServicesBackupItem** védett Azure fájlmegosztás biztonsági mentési feladat aktiválásához. Kérje le a tárolási fiók és a fájlmegosztást a benne a következő parancsokat, és indítson egy igény szerinti biztonsági mentést.
+Használat **Backup-AzRecoveryServicesBackupItem** védett Azure fájlmegosztás biztonsági mentési feladat aktiválásához. Kérje le a tárolási fiók és a fájlmegosztást a benne található a következő parancsokat, és indítson egy igény szerinti biztonsági mentést.
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
@@ -218,7 +222,7 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
-A parancs visszaadja egy feladatot a következő példához hasonlóan azonosítójú nyomon kell követni.
+A parancs visszaadja a követni kívánt azonosítójú feladat a következő példában látható módon.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -226,13 +230,13 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS       Backup               Completed            11/12/2018 2:42:07 PM     11/12/2018 2:42:11 PM     8bdfe3ab-9bf7-4be6-83d6-37ff1ca13ab6
 ```
 
-Azt a biztonsági másolatok készítése közben vannak kihasználva Azure fájlmegosztási pillanatképeket, és ezért általában a feladat befejeződik a parancs a kimenetet visszaadja a ideje
+Az Azure fájlmegosztási pillanatképeket használt közben a biztonsági másolatokat készít, ezért általában a feladat befejeződik a parancs a kimenetet visszaadja a ideje.
 
-### <a name="modify-protection-policy"></a>Alkalmazásvédelmi szabályzat módosítása
+### <a name="modify-the-protection-policy"></a>Az alkalmazásvédelmi szabályzat módosítása
 
-Ha meg szeretné változtatni a-házirend esetén, amelyek az Azure-fájlmegosztás védelmét, használja a **engedélyezése – AzRecoveryServicesBackupProtection** a megfelelő biztonságimásolat-elem és az új védelmi házirendet.
+Ha módosítani szeretné a szabályzatot, amellyel az Azure-fájlmegosztás védelmét, használjon **engedélyezése – AzRecoveryServicesBackupProtection** a megfelelő biztonságimásolat-elem és az új védelmi házirendet.
 
-Az alábbi példák módosítja a védelmi házirendje "monthlyafs", "dailyafs" a "testAzureFS"
+A következő példát módosítások a **testAzureFS** protection-házirend **dailyafs** való **monthlyafs**.
 
 ```powershell
 $monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
@@ -241,13 +245,13 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
 ```
 
-## <a name="restore-azure-file-sharesazure-files"></a>Állítsa vissza az Azure fájlmegosztáso / Azure fájlok
+## <a name="restore-azure-file-shares-and-azure-files"></a>Azure-fájlmegosztások és Azure-fájlok visszaállítása
 
-Egy teljes fájlmegosztás visszaállíthatja az eredeti vagy egy másik helyre. Hasonlóképpen a fájlmegosztás egyes fájlokra is állíthatók vissza.
+Egy teljes fájlmegosztás visszaállíthatja az eredeti helyére vagy máshová. Ehhez hasonlóan a fájlmegosztás egyes fájlokra is lehet visszaállítani, túl.
 
-### <a name="fetching-recovery-points"></a>Helyreállítási pontok beolvasása
+### <a name="fetch-recovery-points"></a>Helyreállítási pontok beolvasása
 
-Használja a **Get-AzRecoveryServicesBackupRecoveryPoint** parancsmag használatával listázhatja a biztonságimásolat-elem tartozó összes helyreállítási pontot. A következő parancsfájlt, a változó a **$rp**, helyreállítási pontot a kiválasztott biztonsági mentési elemet, az elmúlt hét napban tömbje. A tömb fordított sorrendben idő 0. indexnél a legújabb helyreállítási ponttal van rendezve. Standard PowerShell tömb indexelő segítségével válassza ki a helyreállítási pont. $Rp [0] a példában a legutóbbi helyreállítási pontot választja.
+Használja a **Get-AzRecoveryServicesBackupRecoveryPoint** parancsmag használatával listázhatja a biztonságimásolat-elem tartozó összes helyreállítási pontot. A következő parancsfájlt, a változó a **$rp** helyreállítási pontjait a kiválasztott biztonsági mentési elemet az elmúlt hét napban tömbje. A tömb fordított sorrendben rendezi indexpozíciójánál található legújabb helyreállítási pont az idő **0**. Standard PowerShell tömb indexelő segítségével válassza ki a helyreállítási pont. A példában **$rp [0]** a legutóbbi helyreállítási pontot választja.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -257,7 +261,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-A kimenet a következő példához hasonló:
+A kimenet a következő példához hasonló.
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -273,26 +277,26 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-Után a megfelelő helyreállítási pontot választja, folytassa a fájlmegosztás/fájl visszaállítása egy másodlagos/eredeti helyre, kövesse az alábbi utasításokat.
+Után a megfelelő helyreállítási pontot választja, állítsa vissza a fájlmegosztás vagy egy másik helyre vagy az eredeti helyre itt leírtak.
 
 ### <a name="restore-azure-file-shares-to-an-alternate-location"></a>Azure-fájlmegosztások visszaállítás másik helyre
 
-#### <a name="restoring-an-azure-file-share"></a>Azure-fájlmegosztás visszaállítása
+#### <a name="restore-an-azure-file-share"></a>Azure-fájlmegosztás visszaállítása
 
 Határozza meg a másik helyet azáltal, hogy a következő információkat:
 
-* ***TargetStorageAccountName***: Storage-fiók, amelyre a biztonsági másolat tartalom helyreáll. A célként megadott tárfiók, tároló, amely ugyanazon a helyen kell lennie.
-* ***TargetFileShareName***: A célként megadott tárfiók, amelyre a biztonsági másolat tartalom helyreáll lévő fájlmegosztások
-* ***TargetFolder***: A fájlmegosztás adatainak visszaállítása, amelyhez a mappát. Ha gyökérmappájába, a biztonsági másolat tartalmat kell visszaállítani, adja meg a célként megadott mappa értékek üres karakterlánc
-* ***ResolveConflict***: A visszaállított adatokkal ütközés utasítás. Fogadja el a "Felülírása" vagy "kihagyja"
+* **TargetStorageAccountName**: A storage-fiók, amelyre a biztonsági másolat tartalom helyreáll. A céloldali tárfiók és a tárolónak ugyanazon a helyen kell lennie.
+* **TargetFileShareName**: A fájlmegosztások belül a céloldali tárfiók fiókot a biztonsági másolat tartalom helyreáll.
+* **TargetFolder**: A fájlmegosztás adatainak visszaállítása, amelyhez a mappát. Ha a biztonsági másolatban szereplő tartalmat vissza kell állítani a gyökérmappájába, adjon meg a célként megadott mappa értékeket egy üres karakterlánccal.
+* **ResolveConflict**: Ha a helyreállított adatokkal ütközés utasítás. Fogadja el **felülírása** vagy **kihagyása**.
 
-Adja meg ezeket a paramétereket egy másik helyre fájlmegosztás visszaállítása biztonsági a restore parancsot.
+Adja meg ezeket a paramétereket a restore parancsot készül fájlmegosztás visszaállítása másik helyre.
 
 ````powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
 ````
 
-A parancs visszaadja az alábbi példában látható módon követendő azonosítójú feladat.
+A parancs visszaadja a követni kívánt azonosítójú feladat a következő példában látható módon.
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -300,28 +304,28 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
 ````
 
-#### <a name="restoring-an-azure-file"></a>Egy Azure fájl visszaállítása
+#### <a name="restore-an-azure-file"></a>Állítsa vissza egy Azure-fájlt
 
-Abban az esetben, szeretne egy egyedi fájl helyett egy teljes fájlmegosztás visszaállítását, az egyes fájl egyedi módon azonosítani kell a következő paraméterek megadásával.
+Egy egyedi fájl helyett egy teljes fájlmegosztás visszaállítását, egyedi azonosításához az adott fájl a következő paraméterek megadásával:
 
-* ***TargetStorageAccountName***: Storage-fiók, amelyre a biztonsági másolat tartalom helyreáll. A célként megadott tárfiók, tároló, amely ugyanazon a helyen kell lennie.
-* ***TargetFileShareName***: A célként megadott tárfiók, amelyre a biztonsági másolat tartalom helyreáll lévő fájlmegosztások
-* ***TargetFolder***: A fájlmegosztás adatainak visszaállítása, amelyhez a mappát. Ha gyökérmappájába, a biztonsági másolat tartalmat kell visszaállítani, adja meg a célként megadott mappa értékek üres karakterlánc
-* ***SourceFilePath***: A fájlmegosztás karakterláncként belül vissza kell állítani a fájl abszolút elérési útja. Ez a ugyanazt az útvonalat a használt ```Get-AzStorageFile``` PS-parancsmagot.
-* ***SourceFileType***: E könyvtár vagy fájl van kiválasztva. Fogadja el a "Directory" vagy "Fájl"
-* ***ResolveConflict***: A visszaállított adatokkal ütközés utasítás. Fogadja el a "Felülírása" vagy "kihagyja"
+* **TargetStorageAccountName**: A storage-fiók, amelyre a biztonsági másolat tartalom helyreáll. A céloldali tárfiók és a tárolónak ugyanazon a helyen kell lennie.
+* **TargetFileShareName**: A fájlmegosztások belül a céloldali tárfiók fiókot a biztonsági másolat tartalom helyreáll.
+* **TargetFolder**: A fájlmegosztás adatainak visszaállítása, amelyhez a mappát. Ha a biztonsági másolatban szereplő tartalmat vissza kell állítani a gyökérmappájába, adjon meg a célként megadott mappa értékeket egy üres karakterlánccal.
+* **SourceFilePath**: A fájlmegosztás karakterláncként belül vissza kell állítani a fájl abszolút elérési útja. Ez az elérési út használatban ugyanazt az útvonalat a **Get-AzStorageFile** PowerShell-parancsmagot.
+* **SourceFileType**: E könyvtár vagy fájl van kiválasztva. Fogadja el **Directory** vagy **fájl**.
+* **ResolveConflict**: Ha a helyreállított adatokkal ütközés utasítás. Fogadja el **felülírása** vagy **kihagyása**.
 
-Amint láthatja, a további paraméterek csak kapcsolódó vissza kell állítani a fájlméretet.
+A további paraméterek csak vissza kell állítani az egyes fájlok kapcsolódnak.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-Ez is visszaad egy feladatot, amely egy azonosítóval, ahogyan fentebb nyomon követheti.
+Ez a parancs is visszaadja a követni kívánt azonosítójú feladat előzőekben ismertetettek szerint.
 
-### <a name="restore-azure-file-shares-to-original-location"></a>Azure-fájlmegosztások visszaállítás az eredeti helyre
+### <a name="restore-azure-file-shares-to-the-original-location"></a>Azure-fájlmegosztások visszaállítás az eredeti helyre
 
-Eredeti hely visszaállítását, esetén az összes cél kapcsolódó paraméterei nem adhatók meg. Csak ```ResolveConflict``` kell megadni
+Amikor helyreállítja az eredeti helyre, cél - és cél kapcsolatos összes paraméter nem kell megadni. Csak **ResolveConflict** meg kell adni.
 
 #### <a name="overwrite-an-azure-file-share"></a>Írja felül az Azure-fájlmegosztások
 
@@ -337,7 +341,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="track-backup-and-restore-jobs"></a>Nyomon követheti a biztonsági mentési és visszaállítási feladatok
 
-Igény szerinti biztonsági mentési és visszaállítási műveletek látható módon adja vissza egy feladat és a egy azonosító [fent](#trigger-an-on-demand-backup). Használja a ```Get-AzRecoveryServicesBackupJobDetails``` parancsmag a feladat előrehaladását úgy követheti nyomon, és beolvassa a további részleteket.
+Igény szerinti biztonsági mentési és visszaállítási műveletek az előző szakaszban látható módon adja vissza egy feladat Azonosítóját, valamint ["Aktiválás egy igény szerinti biztonsági mentést."](#trigger-an-on-demand-backup) Használja a **Get-AzRecoveryServicesBackupJobDetails** parancsmagot, hogy a feladat előrehaladását úgy követheti nyomon, és beolvassa a további részleteket.
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -362,5 +366,5 @@ $job.ErrorDetails
 
  ErrorCode ErrorMessage                                          Recommendations
  --------- ------------                                          ---------------
-1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support
+1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```

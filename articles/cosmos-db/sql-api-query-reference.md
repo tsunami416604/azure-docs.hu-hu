@@ -1,19 +1,19 @@
 ---
 title: Az Azure Cosmos DB SQL-nyelv szintaxisát
 description: Ez a cikk ismerteti az Azure Cosmos DB, a másik operátorok és a kulcsszavak ezen a nyelven érhető el a használt SQL lekérdezési nyelvi szintaxisát.
-author: LalithaMV
+author: markjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.topic: reference
 ms.date: 12/07/2018
-ms.author: laviswa
+ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: eec3846319a93e94ca362d9ef6815a73d0ca958a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142561"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044382"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -474,7 +474,7 @@ ORDER BY <sort_specification>
 |**Kategória**|**Részletek**|  
 |-|-|  
 |**Aritmetikai**|Operátor input(s) szám(ok) kell megadni. Kimeneti is az a szám. Ha a bemeneti adatok bármelyike **nem definiált** típusa eltérő számú majd az eredményt vagy **nem definiált**.|  
-|**Bitenkénti**|Operátor kell a 32 bites előjeles egész számokat szám(ok) input(s) vár. Kimenet is a 32 bites, előjeles egész szám.<br /><br /> Nem egész értéket a rendszer kerekíti. Pozitív értéket lefelé, az értéket felfelé kerekíti a negatív.<br /><br /> Bármilyen érték, amely a 32 bites egész tartományon kívül esik a legutóbbi 32-bit a két cég hexadecimális végrehajtásával konvertálja.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be más, mint a szám, akkor az eredmény **nem definiált**.<br /><br /> **Megjegyzés:** a fenti viselkedése összeegyeztethető JavaScript bitenkénti operátor viselkedését.|  
+|**Bitenkénti**|Operátor kell a 32 bites előjeles egész számokat szám(ok) input(s) vár. Kimenet is a 32 bites, előjeles egész szám.<br /><br /> Nem egész értéket a rendszer kerekíti. Pozitív értéket lefelé, az értéket felfelé kerekíti a negatív.<br /><br /> Bármilyen érték, amely a 32 bites egész tartományon kívül esik a legutóbbi 32-bit a két cég hexadecimális végrehajtásával konvertálja.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be más, mint a szám, akkor az eredmény **nem definiált**.<br /><br /> **Megjegyzés:** A fenti viselkedése összeegyeztethető JavaScript bitenkénti operátor viselkedését.|  
 |**Logikai**|Operátor input(s) Boolean(s) kell megadni. Kimeneti akkor is egy logikai érték.<br />Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be másik logikai értéket, majd eredményül **nem definiált**.|  
 |**Összehasonlítás**|Operátor azonos típusú, és nem lehet a nem definiált input(s) vár. A kimenete egy logikai érték.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** vagy a bemeneti adatok különböző rendelkezik, majd az eredmény **nem definiált**.<br /><br /> Lásd: **összehasonlított értékek rendezés** érték rendezése részletei táblázatban.|  
 |**string**|Operátor input(s) vágóelem kell megadni. Kimenet: karakterlánc.<br />Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be másik karakterláncot, majd az eredmény **nem definiált**.|  
@@ -517,7 +517,7 @@ ORDER BY <sort_specification>
   
  A Cosmos dB-ben a típusú értékek gyakran nem ismert mindaddig, amíg az adatok lekérése az adatbázisból. Annak érdekében, hogy a hatékony lekérdezések végrehajtása támogatja, az operátorok a legtöbb szigorú adattípus-követelményekkel rendelkeznek. Operátorok önmagukban is hajt végre implicit konverzió.  
   
- Ez azt jelenti, hogy a lekérdezés, például: válassza ki * a legfelső szintű r WHERE r.Age = 21 csak visszatér kora tulajdonsággal rendelkező dokumentumok egyezik a 21. Dokumentumok kora egyenlő a karakterlánc "21" vagy "0021" karakterlánc tulajdonsággal nem egyeznek meg, mint a "21" kifejezés = 21 kiértékeli a nem meghatározott. Ez lehetővé teszi egy jobban kihasználja a indexek, mert a keresés egy adott értéket (például a 21) gyorsabb, mint a határozatlan számú keresése lehetséges megegyezik (21 szám vagy karakterláncok "21", "021", "21,0"...). Ez eltér a hogyan értékeli ki a JavaScript a kezelők az eltérő típusú értékeket.  
+ Ez azt jelenti, hogy a lekérdezés, például: Válassza ki * a legfelső szintű r WHERE r.Age = 21 csak visszatér kora tulajdonsággal rendelkező dokumentumok egyezik a 21. Dokumentumok kora egyenlő a karakterlánc "21" vagy "0021" karakterlánc tulajdonsággal nem egyeznek meg, mint a "21" kifejezés = 21 kiértékeli a nem meghatározott. Ez lehetővé teszi egy jobban kihasználja a indexek, mert a keresés egy adott értéket (például a 21) gyorsabb, mint a határozatlan számú keresése lehetséges megegyezik (21 szám vagy karakterláncok "21", "021", "21,0"...). Ez eltér a hogyan értékeli ki a JavaScript a kezelők az eltérő típusú értékeket.  
   
  **Tömbök és objektumok egyenlőség és összehasonlítása**  
   
@@ -1051,7 +1051,7 @@ EXP (<numeric_expression>)
   
  A kitevő, egy szám az állandó **e** hatványára szám. Ha például EXP(1.0) = e ^ 1.0-s = 2.71828182845905 és EXP(10) = e ^ 10 = 22026.4657948067.  
   
- Az exponenciális egy szám természetes alapú logaritmus alapja az a szám maga: EXP (napló (n)) = n. Az exponenciális egy szám természetes algoritmusát az a szám, és maga: LOG (EXP (n)) = n.  
+ Az exponenciális egy szám természetes alapú logaritmus alapja az a szám maga: EXP (napló (n)) = n. Az exponenciális egy szám természetes algoritmusát az a szám, és maga: NAPLÓ (EXP (n)) = n.  
   
  **Példák**  
   
@@ -1108,7 +1108,7 @@ LOG (<numeric_expression> [, <base>])
   
  A természetes alapú logaritmus alapja az alap-es alapú logaritmusa **e**, ahol **e** megegyezik egy irrational állandó körülbelül 2.718281828.  
   
- Az exponenciális egy szám természetes algoritmusát az a szám maga: LOG (EXP (n)) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP (napló (n)) = n.  
+ Az exponenciális egy szám természetes algoritmusát az a szám maga: NAPLÓ (EXP (n)) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP (napló (n)) = n.  
   
  **Példák**  
   

@@ -6,40 +6,40 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0d75b13369cff4e99bef6f57a3b01f3d8eee6e4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 61b923b278d13bdcf97e05859c36b14bf9edba6e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227163"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050996"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Bevezetés az Azure Stack-alapú virtuális gépekbe
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure Stack kínál megoldást a virtuális gépek (VM) egy igény szerinti, méretezhető számítási erőforrás egy típusa. Választhat egy virtuális Gépet, amikor szüksége van a számítási környezet jobban szabályozhatja, mint az egyéb lehetőségek. Ez a cikk részletesen a virtuális gép létrehozása előtt.
+Az Azure Stack egy igény szerinti, méretezhető számítási erőforrás egy típusú virtuális gépeken (VM) kínál. Amikor, a számítási környezet átfogóbb vezérlésére van szüksége egy virtuális Gépet választhat. Ez a cikk részletesen az első virtuális gép létrehozása előtt.
 
 Azure Stack virtuális gép rugalmasságot biztosít a virtualization fürtök vagy az egyes gépek kezelése nélkül. Azonban akkor is szükséges műveleteket, mint a konfigurálását, javítását és a rajta futó szoftver telepítése a virtuális gép karbantartásához.
 
-Azure Stack virtuális gépek különféle módon használhatja. Példa:
+Azure Stack virtuális gépek többféleképpen is használhatja. Példa:
 
 - **Fejlesztés és tesztelés**  
-    Az Azure Stack-beli virtuális gépek egy számítógép létrehozásához szükséges kódot adott konfigurációval, és az alkalmazás tesztelése gyors és egyszerű lehetőséget biztosít.
+    Az Azure Stack-beli virtuális gépek lehetővé teszik a szükséges kódot adott konfigurációval rendelkező számítógép létrehozása és a egy alkalmazás teszteléséhez.
 
 - **Alkalmazásokat a felhőben**  
-    Mivel az alkalmazások iránti igény ingadozhaz, célszerű gazdasági virtuális gépen az Azure Stack futtatásához. A további virtuális gépekért csak akkor kell fizetnie, amikor szüksége van rájuk, amikor pedig nincs, akkor leállíthatja őket.
+    Mivel az alkalmazások iránti igény ingadozhaz, célszerű gazdasági virtuális gépen az Azure Stack futtatásához. Amikor szükség van rájuk, és állítsa azokat le, ha ezt nem fizet további virtuális gépeket.
 
 - **Bővített adatközpont**  
-    Az Azure Stack virtuális hálózatban a virtuális gépek könnyedén összekapcsolhatók a vállalati hálózaton vagy az Azure-bA.
+    Egy Azure Stack virtuális hálózatban lévő virtuális gépek is csatlakoztathatók, a vállalati hálózaton vagy az Azure-bA.
 
-A virtuális gépek, amelyek a kérelem által használt vertikális vagy horizontális felskálázás függetlenül szükség az igényeinek.
+A virtuális gépek, a kérelem által használt vertikális és horizontális felskálázás, bármi szükség az igényeinek.
 
-## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Mit kell átgondolnom egy virtuális gép létrehozása előtt?
+## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Mit kell gondolja át a virtuális gép létrehozása előtt
 
-Nincsenek mindig számos tervezési szempontok alkalmazás-infrastruktúrák, az Azure Stackben készítése során. Virtuális gépek következő tulajdonságait fontos átgondolni, az infrastruktúra létrehozásának megkezdése előtt:
+Nincsenek mindig kialakításával kapcsolatos szempontok alkalmazás-infrastruktúrák, az Azure Stackben készítése során. Virtuális gépek következő tulajdonságait fontos átgondolni, az infrastruktúra létrehozásának megkezdése előtt:
 
 - Az alkalmazás erőforrásainak nevei.
 - A virtuális gép méretét.
@@ -52,30 +52,29 @@ Nincsenek mindig számos tervezési szempontok alkalmazás-infrastruktúrák, az
 
 Egy virtuális gép rendelkezik egy névvel, és a számítógép nevét, az operációs rendszer részeként konfigurálva van. A virtuális gépek neve legfeljebb 15 karakter hosszú lehet.
 
-Azure Stack használatával az operációsrendszer-lemez létrehozása, ha a számítógép nevét és a virtuális gép neve azonosak. Ha feltöltése és a saját egy korábban konfigurált operációs rendszert tartalmazó lemezképek használata, és ezzel hozzon létre egy virtuális gépet, a neveket eltérő lehet. Ha saját rendszerképet fájlt tölt fel, végezze el az operációs rendszer a számítógép nevét, és a virtuális gép neve ugyanaz, mint az ajánlott eljárás.
+Azure Stack használatával az operációsrendszer-lemez létrehozása, ha a számítógép nevét és a virtuális gép neve azonosak. Ha feltöltése és a saját egy korábban konfigurált operációs rendszert tartalmazó lemezképek használata, és ezzel hozzon létre egy virtuális gépet, a neveket eltérő lehet. Amikor feltölti a saját képfájlt, ajánlott eljárásként, győződjön meg arról, a számítógép nevét az operációs rendszer és a virtuális gép neve azonos.
 
 ### <a name="vm-size"></a>Virtuális gép mérete
 
-A használt virtuális gép méretét a számítási feladat, amelyet futtatni szeretne határozza meg. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure stackhez számos különböző méretet különféle felhasználási módokhoz.
+A használt virtuális gép méretét a számítási feladat, amelyet futtatni szeretne határozza meg. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure Stack számos különböző méretet különféle felhasználási módokhoz.
 
 ### <a name="vm-limits"></a>A virtuális gépekre korlátai
 
-Az előfizetés alapértelmezett kvótakorlátozások vonatkoznak, amely hatással lehet a projektjéhez nagy számú virtuális gépet a központi telepítés rendelkezik. A jelenlegi határérték minden előfizetés esetében régiónként 20 virtuális gép.
+Az előfizetés rendelkezik alapértelmezett kvótakorlátozások vonatkoznak, amelyek hatással lehetnek a projektjéhez tartozó virtuális gépek telepítését. A jelenlegi határérték minden előfizetés esetében régiónként 20 virtuális gép.
 
 ### <a name="operating-system-disks-and-images"></a>Operációsrendszer-lemezek és -rendszerképek
 
-A virtuális gépek virtuális merevlemezeken (VHD-k) tárolják az operációs rendszereket és az adatokat. A VHD-ken találhatók az operációs rendszer telepítéséhez kiválasztható rendszerképek is.
-Az Azure Stack biztosít különböző verzióit és típusait az operációs rendszerek használata a piactéren. Marketplace-rendszerképek azonosítják a rendszerkép közzétevője, ajánlat, termékváltozat és verzió (általában verzió van megadva, a legújabb.)
+A virtuális gépek virtuális merevlemezeken (VHD-k) tárolják az operációs rendszereket és az adatokat. A VHD-ken találhatók az operációs rendszer telepítéséhez kiválasztható rendszerképek is. Az Azure Stack biztosít különböző verzióit és típusait az operációs rendszerek használata a piactéren. Marketplace-rendszerképek azonosítják a rendszerkép közzétevője, ajánlat, Termékváltozat és verzió (általában a verzió van megadva **legújabb**.)
 
-Az alábbi táblázatban bemutat néhány módszert, hogy a lemezképre vonatkozó információkat talál:
+Az alábbi táblázat a rendszerképek információinak megkeresése:
 
 |Módszer|Leírás|
 |---------|---------|
 |Az Azure Stack portálon|Az értékek a rendszerképek kiválasztásakor automatikusan megjelennek.|
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
-|REST API-k     |[Rendszerkép-közzétevők listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br>[Rendszerkép-ajánlatok listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[Kép termékváltozatok listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
+|REST API-k     |[Rendszerkép-közzétevők listázása](/rest/api/compute/platformimages/platformimages-list-publishers)<br>[Rendszerkép-ajánlatok listázása](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[Kép termékváltozatok listázása](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
-Kiválaszthatja, hogy fel és saját rendszerképét használja. Ha így tesz, a közzétevő neve, az ajánlat és a termékváltozat nem használható.
+Kiválaszthatja, hogy fel és saját rendszerképét használja. Ha így tesz, a közzétevő neve, az ajánlat és a Termékváltozat nem használ.
 
 ### <a name="extensions"></a>Bővítmények
 
@@ -83,7 +82,7 @@ A Virtuálisgép-bővítmények lehetővé teszik a virtuális gép további ké
 A bővítményekkel a következő gyakori feladatok végezhetők el:
 
 - **Egyéni szkriptek futtatása**  
-    Az egyéni Szkriptbővítmény segítségével a virtuális gép számítási feladatainak konfigurálásában a parancsfájl futtatásával, ha a virtuális gép ki van építve.
+    Az egyéni szkriptbővítmény segítségével a virtuális gép számítási feladatainak konfigurálásában a parancsfájl futtatásával, ha a virtuális gép ki van építve.
 
 - **Üzembe helyezés és kezelés konfigurációk**  
     A PowerShell Desired State Configuration (DSC) bővítmény segítségével állítsa be a virtuális gép DSC konfigurációk és környezetek kezeléséhez.
@@ -93,8 +92,7 @@ A bővítményekkel a következő gyakori feladatok végezhetők el:
 
 ### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
-Az alábbi táblázatban az erőforrásokat a virtuális gép által használt, és létezik, vagy hozható létre a virtuális gép létrehozásakor kell.
-
+Az erőforrások az alábbi táblázat a virtuális gép által használt, és létezik, vagy hozható létre, ha a virtuális gép létrehozása:
 
 |Erőforrás|Szükséges|Leírás|
 |---------|---------|---------|
@@ -107,9 +105,7 @@ Az alábbi táblázatban az erőforrásokat a virtuális gép által használt, 
 
 ## <a name="create-your-first-vm"></a>Az első virtuális gép létrehozása
 
-Lehetősége van több virtuális gép létrehozásához. A választott környezettől függ.
-A következő táblázat információkat az első lépések a virtuális gép létrehozása.
-
+Lehetősége van több virtuális gép létrehozásához. A választott környezettől függ. A következő táblázat információkat nyújtanak segítséget a virtuális gép létrehozásának lépései:
 
 |Módszer|Cikk|
 |---------|---------|
@@ -131,14 +127,13 @@ Virtuális gépek egy böngészőalapú portállal, parancsfájlkezelést, vagy 
 
 Az alábbi táblázat bemutatja, egy virtuális gép információkat szerezhet a több szempontból.
 
-
 |Módszer|Leírás|
 |---------|---------|
 |Az Azure Stack portálon|A központi menüben kattintson a virtuális gépeket, és válassza ki a virtuális Gépet a listából. A lapon a virtuális gép elérhető lesz az információk áttekintését, értékek beállításait és a mérőszámok figyelését.|
-|Azure PowerShell|Virtuális gépek kezelése a hasonló az Azure és az Azure Stackben. PowerShell-lel kapcsolatos további információkért lásd a következő Azure témakör:<br>[Hozzon létre és kezelheti a Windows virtuális gépek az Azure PowerShell modullal](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
-|Ügyfél-SDK-k|A virtuális gépek kezelése a C# használatával hasonlít az Azure és az Azure Stackben. További információkért tekintse meg a következő Azure témakör:<br>[Létrehozása és kezelése Windows virtuális gépek az Azure-ban C# használatával](https://docs.microsoft.com/azure/virtual-machines/windows/csharp)|
+|Azure PowerShell|Virtuális gépek kezelése a hasonló az Azure és az Azure Stackben. PowerShell-lel kapcsolatos további információkért lásd a következő Azure témakör:<br>[Hozzon létre és kezelheti a Windows virtuális gépek az Azure PowerShell modullal](../../virtual-machines/windows/tutorial-manage-vm.md#understand-vm-sizes)|
+|Ügyfél-SDK-k|A virtuális gépek kezelése a C# használatával hasonlít az Azure és az Azure Stackben. További információkért tekintse meg a következő Azure témakör:<br>[Létrehozása és kezelése Windows virtuális gépek az Azure-ban C# használatával](../../virtual-machines/windows/csharp.md)|
 
-### <a name="connect-to-your-vm"></a>Csatlakozzon a virtuális Géphez
+### <a name="connect-to-your-vm"></a>Csatlakozás a virtuális géphez
 
 Használhatja a **Connect** gomb az Azure Stack portálon a virtuális Géphez való csatlakozáshoz.
 

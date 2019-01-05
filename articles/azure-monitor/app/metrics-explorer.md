@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: aaa34d27e73c1691e69ea2f6860226639217f0c6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6341ffe33984a7f40f9d4120ca6726a082463474
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003544"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039707"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Az Application Insightsban a metrikák felfedezése
 A metrikák [Application Insights] [ start] mért értékek és az eseményszámok az alkalmazásból küldött telemetriai adatokat a rendszer. Ezek segítenek teljesítménybeli problémák észlelése, és tekintse meg az alkalmazás használatának trendjei. Standard mérőszámok széles skáláját, és a saját egyéni metrikákkal és eseményekkel is létrehozhat.
@@ -200,7 +200,7 @@ Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvas
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>További lépések
-* [Az Application Insights figyelési használat](../../application-insights/app-insights-usage-overview.md)
+* [Az Application Insights figyelési használat](../../azure-monitor/app/usage-overview.md)
 * [Diagnosztikai keresés használata](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->

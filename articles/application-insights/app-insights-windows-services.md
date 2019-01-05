@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: c23ff8a22284416a9c87750e4ca0448e0690de0e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f828ebf9131be014d2ea572b3314b1aacd630d14
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017514"
+ms.locfileid: "54050345"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
 
@@ -99,7 +99,7 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
     `<InstrumentationKey>`*a kimásolt kialakítási kulcs*`</InstrumentationKey>`
 * Győződjön meg arról, hogy az ApplicationInsights.config tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
 
-Hasznos lehet a kialakítási kulcsot kódból megadni, ha [a különböző felépítéskonfigurációkban váltogatni szeretné a kulcsot](app-insights-separate-resources.md). Ha a kulcsot kódból adja meg, nem kell azt beállítania a `.config` fájlban.
+Hasznos lehet a kialakítási kulcsot kódból megadni, ha [a különböző felépítéskonfigurációkban váltogatni szeretné a kulcsot](../azure-monitor/app/separate-resources.md). Ha a kulcsot kódból adja meg, nem kell azt beállítania a `.config` fájlban.
 
 ## <a name="run"></a> A projekt futtatása
 Futtassa az **F5** billentyűvel az alkalmazást, és próbálja ki: nyisson meg több oldalt, hogy létrejöjjön valamennyi telemetria.
@@ -115,13 +115,13 @@ Az Áttekintés diagramokon keresse meg az adatot. Először csak egy vagy két 
 
 ![Kattintson végig rajtuk a további adatokért](./media/app-insights-windows-services/12-first-perf.png)
 
-Részletesebb mérőszámokért kattintson bármelyik diagramra. [További információk a metrikákról.](app-insights-web-monitor-performance.md)
+Részletesebb mérőszámokért kattintson bármelyik diagramra. [További információk a metrikákról.](../azure-monitor/app/web-monitor-performance.md)
 
 ### <a name="no-data"></a>Nincs adat?
 * Az alkalmazás segítségével nyisson meg különböző oldalakat, hogy létrejöjjön némi telemetria.
 * Az egyes események megtekintéséhez nyissa meg a [Keresés](../azure-monitor/app/diagnostic-search.md)csempét. Események esetében kicsit tovább is eltarthat a mérőszámok folyamatain való végighaladás.
 * Várjon néhány másodpercet, és kattintson a **Frissítés** lehetőségre. A diagramok rendszeres időközönként frissülnek, de manuálisan is frissítheti őket, ha várja valamilyen adatok megjelenését.
-* Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
+* Lásd: [Hibaelhárítás](../azure-monitor/app/troubleshoot-faq.md).
 
 ## <a name="publish-your-app"></a>Az alkalmazás közzététele
 Most telepítse az alkalmazását a kiszolgálóra vagy az Azure-ba, és figyelje meg, hogyan gyűlnek az adatok.

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/06/2018
-ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 41ba0816dde63bc611dcb5be544609b88dfe9158
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997507"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052643"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Azure virtuális hálózatok az Azure Logic Apps keresztül csatlakozhat egy integrációs service-környezet (ISE)
 
@@ -110,8 +110,8 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
    | **Integráció Service-környezet neve** | Igen | <*környezet neve*> | A környezet nevét | 
    | **Hely** | Igen | <*Az Azure-adatközpont-régió*> | Az Azure-adatközpontrégiót használhatják az üzembe helyezés a környezet | 
    | **Kapacitás** | Igen | 0, 1, 2, 3 | Az ISE-erőforrás használandó feldolgozási egységek száma | 
-   | **Virtuális hálózat** | Igen | <*Az Azure-virtuális hálózat neve*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik olyan hálózattal, létrehozhat egy itt. <p>**Fontos**: is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. Azonban ez a kapcsolat létrehozásához, győződjön meg arról, hogy már [beállítása szerepköralapú hozzáférés-vezérlés a virtuális hálózat az Azure Logic Apps](#vnet-access). | 
-   | **Alhálózatok** | Igen | <*IP-címtartomány*> | Az ISE-ben szükséges négy *üres* alhálózatokat. Ezen alhálózatok undelegated bármely szolgáltatás és -erőforrások létrehozását a környezetében használt. Ön *nem módosítható* ezen IP-címtartományok a környezet létrehozása után. <p><p>Minden egyes alhálózat létrehozásához [a táblázat alatti lépéseket követve](#create-subnet). Minden alhálózati ezeknek a feltételeknek kell megfelelnie: <p>-Nem léteznie kell a kiválasztott virtuális hálózaton, sem bármely más magánhálózati IP-címek amikor csatlakozik a virtuális hálózat azonos címtartománya. <br>-Olyan nevet, amely nem kezdődik számmal vagy kötőjel használ. <br>– Használja az [Classless Inter-Domain Routing (CIDR) formátum](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-A-B osztály cím terület szükséges. <br>-Tartalmaz egy `/27`. Például adja meg a minden alhálózat egy 32 bites címtartomány: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, és `10.0.0.96/27`. <br>-Kell megadni. |
+   | **Virtuális hálózat** | Igen | <*Az Azure-virtuális hálózat neve*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik olyan hálózattal, létrehozhat egy itt. <p>**Fontos**: Is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. Azonban ez a kapcsolat létrehozásához, győződjön meg arról, hogy már [beállítása szerepköralapú hozzáférés-vezérlés a virtuális hálózat az Azure Logic Apps](#vnet-access). | 
+   | **Alhálózatok** | Igen | <*IP-címtartomány*> | Az ISE-ben szükséges négy *üres* alhálózatokat. Ezen alhálózatok undelegated bármely szolgáltatás és -erőforrások létrehozását a környezetében használt. Ön *nem módosítható* ezen IP-címtartományok a környezet létrehozása után. <p><p>Minden egyes alhálózat létrehozásához [a táblázat alatti lépéseket követve](#create-subnet). Minden alhálózati ezeknek a feltételeknek kell megfelelnie: <p>-Olyan nevet, amely nem kezdődik számmal vagy kötőjel használ. <br>– Használja az [Classless Inter-Domain Routing (CIDR) formátum](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-A-B osztály cím terület szükséges. <br>-Tartalmaz egy `/27`. Például adja meg a minden alhálózat egy 32 bites címtartomány: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, és `10.0.0.96/27`. <br>-Kell megadni. |
    |||||
 
    <a name="create-subnet"></a>
@@ -120,7 +120,7 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    1. Alatt a **alhálózatok** menüben válassza ki **kezelés alhálózati konfigurációt**.
 
-      ![Alhálózat konfigurációjának kezelése](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Alhálózati konfiguráció kezelése](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
 
    1. Az a **alhálózatok** panelen válassza a **alhálózati**.
 
@@ -128,8 +128,8 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    1. Az a **alhálózat hozzáadása** panelen adja meg ezt az információt.
 
-      * **Név**: az alhálózat nevét
-      * **Címtartomány (CIDR-blokk)**: az alhálózati címtartományt a virtuális hálózat és a CIDR formátumban
+      * **Név**: Az alhálózat nevét
+      * **Címtartomány (CIDR-blokk)**: Az alhálózati címtartományt a virtuális hálózat és a CIDR formátumban
 
       ![Adja hozzá az alhálózati adatokat](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 

@@ -1,8 +1,7 @@
 ---
-title: Az Azure Traffic Manager - forgalom-útválasztási módszerei |} A Microsoft Docs
+title: Az Azure Traffic Manager - forgalom-útválasztási módszerek
 description: Ez segít megérteni a különböző forgalom-útválasztási módszer a Traffic Manager által használt cikkei
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 57ae9f3a747ef3fde1a21de8a56ec4059becf392
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139340"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054724"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
@@ -24,12 +23,12 @@ Az Azure Traffic Manager támogatja, határozza meg, hogyan irányíthatja a há
 
 A következő forgalom-útválasztási módszerek érhetők el a Traffic Managerben:
 
-* **[Prioritás](#priority):** kiválasztása **prioritású** Ha szeretne egy elsődleges végpontot használja minden forgalom, és adja meg a biztonsági mentések esetben az elsődleges vagy a biztonsági mentési végpont sem érhető el.
-* **[Súlyozott](#weighted):** kiválasztása **súlyozott** szeretné elosztani a forgalmat végpontok között, vagy egyenlő arányban vagy súlyok, amely alapján határozzák meg.
-* **[Teljesítmény](#performance):** kiválasztása **teljesítmény** Ha végpontok különböző földrajzi helyeken rendelkezik, és a végfelhasználók számára, hogy a legalacsonyabb hálózati késéssel szempontjából a "legközelebbi" végpont használni szeretne.
-* **[Földrajzi](#geographic):** kiválasztása **földrajzi** úgy, hogy a felhasználók mely földrajzi helye alapján meghatározott végpontokhoz (Azure, külső vagy beágyazott) a rendszer átirányítja a DNS-lekérdezés származik. Ez lehetővé teszi a Traffic Manager-ügyfelek olyan forgatókönyvekben, ahol, hogy a felhasználó földrajzi régióban, és azokat, amelyek alapján útválasztás fontos engedélyezéséhez. Ilyenek például az adatok szuverenitását megbízás tartalom és a felhasználói felület honosítása megfelel, és a különféle régiókból származó forgalom mérése.
-* **[Típushoz](#multivalue):** kiválasztása **típushoz** a Traffic Manager-profilok, amelyek csak IPv4/IPv6-címek végpontként rendelkezhet. Ehhez a profilhoz fogadásakor egy lekérdezést, a rendszer az összes kifogástalan állapotú végpontok adja vissza.
-* **[Alhálózat](#subnet):** kiválasztása **alhálózati** forgalom-útválasztási módszer beállítása a végfelhasználói IP-címtartományok beállítását leképezése egy adott végpontot egy Traffic Manager-profilon belül. Amikor kérelem érkezik, a végpont az egyik rendelendő a kérés IP-forráscím adott vissza. 
+* **[Prioritás](#priority):** Válassza ki **prioritású** Ha szeretne egy elsődleges végpontot használja minden forgalom, és adja meg a biztonsági mentések esetben az elsődleges vagy a biztonsági mentési végpont sem érhető el.
+* **[Súlyozott](#weighted):** Válassza ki **súlyozott** szeretné elosztani a forgalmat végpontok között, vagy egyenlő arányban vagy súlyok, amely alapján határozzák meg.
+* **[Teljesítmény](#performance):** Válassza ki **teljesítmény** Ha végpontok különböző földrajzi helyeken rendelkezik, és a végfelhasználók számára, hogy a legalacsonyabb hálózati késéssel szempontjából a "legközelebbi" végpont használni szeretne.
+* **[Földrajzi](#geographic):** Válassza ki **Geographic** úgy, hogy a felhasználók mely földrajzi helye alapján meghatározott végpontokhoz (Azure, külső vagy beágyazott) a rendszer átirányítja a DNS-lekérdezés származik. Ez lehetővé teszi a Traffic Manager-ügyfelek olyan forgatókönyvekben, ahol, hogy a felhasználó földrajzi régióban, és azokat, amelyek alapján útválasztás fontos engedélyezéséhez. Ilyenek például az adatok szuverenitását megbízás tartalom és a felhasználói felület honosítása megfelel, és a különféle régiókból származó forgalom mérése.
+* **[Típushoz](#multivalue):** Válassza ki **típushoz** a Traffic Manager-profilok, amelyek csak IPv4/IPv6-címek végpontként rendelkezhet. Ehhez a profilhoz fogadásakor egy lekérdezést, a rendszer az összes kifogástalan állapotú végpontok adja vissza.
+* **[Alhálózat](#subnet):** Válassza ki **alhálózati** forgalom-útválasztási módszer beállítása a végfelhasználói IP-címtartományok beállítását leképezése egy adott végpontot egy Traffic Manager-profilon belül. Amikor kérelem érkezik, a végpont az egyik rendelendő a kérés IP-forráscím adott vissza. 
 
 
 Traffic Manager-profilok közé tartozik a végpontonkénti állapotot és a végpont az Automatikus feladatátvétel figyelését. További információkért lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md). Egyetlen Traffic Manager-profil csak egyetlen forgalom-útválasztási módszert használhatja. A profil bármikor választhat a különböző forgalom-útválasztási módszert. Egy percen belül lépnek életbe a módosítások, és üzemkimaradást sem okoz merül fel. Forgalom-útválasztási módszer kombinálható is beágyazott Traffic Manager-profilok használatával. A beágyazási lehetővé teszi, hogy kifinomult és rugalmas forgalom-útválasztási beállítani, a nagyobb méretű, összetett alkalmazások igényeihez. További információkért lásd: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).
@@ -51,15 +50,15 @@ Az Azure Resource Manager, a végpontok a "prioritás" tulajdonság használatá
 
 ![Az Azure Traffic Manager az "Súlyozott" forgalom-útválasztási módszer](media/traffic-manager-routing-methods/weighted.png)
 
-Súlyozott forgalom-útválasztási módszer esetében a súlyt rendel a Traffic Manager-profil konfigurációjának a végpontot. A súly egy egész számot 1 és 1000. Ez a paraméter nem kötelező. Ha nincs megadva, a Traffic Manager-példányok "1" alapértelmezett súlyozást használ. A nagyobb súlyt, annál magasabb a prioritás.
+Súlyozott forgalom-útválasztási módszer esetében a súlyt rendel a Traffic Manager-profil konfigurációjának a végpontot. A súlyok 1 és 1000 közötti egész számok. Ez a paraméter nem kötelező. Ha nincs megadva, a Traffic Manager-példányok "1" alapértelmezett súlyozást használ. A nagyobb súlyt, annál magasabb a prioritás.
 
 Minden egyes megadott DNS-lekérdezés érkezett a Traffic Manager véletlenszerűen választ elérhető végpontot. A valószínűsége annak, a végpont kiválasztása a hozzárendelt összes elérhető végpontok súlyok alapul. Az azonos súly használatával-még akkor is, az adatforgalom eloszlása eredményez az összes végpontok között. Ezekre a végpontokra, a DNS-válaszok ritkább vagy gyakoribb visszaadandó magasabb vagy alacsonyabb súlyok használata a meghatározott végpontokhoz okoz.
 
 A súlyozott mód néhány hasznos forgatókönyveket teszi lehetővé:
 
-* Fokozatos alkalmazásfrissítés: százalékát az új végpontot irányíthatja a forgalmat, és fokozatosan növelje idővel 100 %-a forgalmat.
-* Alkalmazás migrálását az Azure-bA:-profil létrehozása az Azure és a külső végpontokat. A végpontok előnye a végpont súlyának módosíthatja.
-* Felhőbeli tartalékkapacitás további kapacitás: gyorsan bontsa ki a-felhőbe egy helyi központi mögött egy Traffic Manager-profil helyezésével. A felhőben extra kapacitásra van szüksége, amikor hozzáadása vagy engedélyezze a több végpontot, és adja meg, milyen forgalom részét az egyes végpontok irányul.
+* Fokozatos alkalmazás frissítése: Foglaljon le egy új végpontot irányíthatja a forgalom százalékaránya, és fokozatosan növelje idővel 100 %-a forgalmat.
+* Alkalmazás migrálását az Azure-bA: Profil létrehozása az Azure és a külső végpontokat. A végpontok előnye a végpont súlyának módosíthatja.
+* Felhőbeli tartalékkapacitásos további kapacitás: Gyorsan bontsa ki a-felhőbe egy helyi központi mögött egy Traffic Manager-profil helyezésével. A felhőben extra kapacitásra van szüksége, amikor hozzáadása vagy engedélyezze a több végpontot, és adja meg, milyen forgalom részét az egyes végpontok irányul.
 
 Az Azure portal használata mellett súlyok Azure Powershellt, CLI és a REST API-k használatával is beállíthatja.
 

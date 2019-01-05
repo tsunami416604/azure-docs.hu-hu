@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a160cd6d81ab7cb760a85ee7cbdbedf55c17167
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 31ab9f37bcb4ea32caa48edf9460fa7ffcdf764d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998233"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052070"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -94,7 +94,7 @@ A Real Madrid a telemetria megtekintése a Power BI-modul használ.
 ![A Power BI megtekintése az Application Insights telemetria](./media/app-insights-devops/080.png)
 
 ## <a name="smart-detection"></a>Intelligens detektálás
-[Proaktív diagnosztika](app-insights-proactive-diagnostics.md) legújabb szolgáltatása. Anélkül, hogy Ön semmiféle speciális beállítást az Application Insights automatikusan észleli és hibaarányok az alkalmazásban a szokatlan megnövekszik kapcsolatos figyelmeztetést küld. Legyen elég intelligensek ahhoz, figyelmen kívül hagyja a háttér alkalmanként sikertelen, és is, amelyek egyszerűen arányos megnövekedhet a kérelmek megnövekszik. Így például ha az egyik az alapszolgáltatásokkal hiba történik, vagy ha az új hozhat létre, az imént telepített nem működik olyan jól, hogy tudni fog, amint az e-mailben tekinti meg, majd. (És webhookok, hogy más alkalmazások is indíthat.)
+[Proaktív diagnosztika](../azure-monitor/app/proactive-diagnostics.md) legújabb szolgáltatása. Anélkül, hogy Ön semmiféle speciális beállítást az Application Insights automatikusan észleli és hibaarányok az alkalmazásban a szokatlan megnövekszik kapcsolatos figyelmeztetést küld. Legyen elég intelligensek ahhoz, figyelmen kívül hagyja a háttér alkalmanként sikertelen, és is, amelyek egyszerűen arányos megnövekedhet a kérelmek megnövekszik. Így például ha az egyik az alapszolgáltatásokkal hiba történik, vagy ha az új hozhat létre, az imént telepített nem működik olyan jól, hogy tudni fog, amint az e-mailben tekinti meg, majd. (És webhookok, hogy más alkalmazások is indíthat.)
 
 Ez a szolgáltatás másik része a telemetriai adatok, amelyeket nehéz felderíteni Teljesítmény szokatlan minták keres egy napi részletes elemzés hajt végre. Ha például megtalálhatja a lassú teljesítmény az kapcsolódik egy adott földrajzi területen, vagy egy adott böngészőben verzióval.
 

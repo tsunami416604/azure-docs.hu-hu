@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63ee308c50a2d5399dd395dc90c2666fae0bbf49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: be7cb2e602f1c8c0c8471c866d68c28e0ec37498
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999458"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042342"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](../../application-insights/app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Példa:
 
 * Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: `View\Shared\_Layout.cshtml`
-* Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](../../application-insights/app-insights-sharepoint.md) elemet.
+* Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](../../azure-monitor/app/sharepoint.md) elemet.
 
 A szkript tartalmazza a kialakítási kulcsot, amely az adatokat az Application Insights-erőforrásra irányítja. 
 
@@ -118,7 +118,7 @@ Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített t
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Beállítások, Böngésző lehetőségre](./media/javascript/03.png)
 
-Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](../../application-insights/app-insights-troubleshoot-faq.md).
+Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md).
 
 A Böngésző panel [Metrikaböngésző panel](../../azure-monitor/app/metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 
@@ -227,7 +227,7 @@ A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL-cím, de a re
 ## <a name="usage-tracking"></a>Használatkövetés
 Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
-* [Ismerje meg a felhasználói viselkedés elemzési eszközök](../../application-insights/app-insights-usage-overview.md)
+* [Ismerje meg a felhasználói viselkedés elemzési eszközök](../../azure-monitor/app/usage-overview.md)
 * [Információk az egyéni eseményekről és a mérőszám API-ról](../../azure-monitor/app/api-custom-events-metrics.md).
 
 ## <a name="video"></a>Videó
@@ -238,7 +238,7 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 
 ## <a name="next"></a> Következő lépések
-* [Használat követése](../../application-insights/app-insights-usage-overview.md)
+* [Használat követése](../../azure-monitor/app/usage-overview.md)
 * [Egyéni események és a mérőszámok](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Összeállítás, mérés, tanulás](../../application-insights/app-insights-usage-overview.md)
+* [Összeállítás, mérés, tanulás](../../azure-monitor/app/usage-overview.md)
 

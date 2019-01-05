@@ -1,21 +1,19 @@
 ---
 title: 'Az Azure Cosmos DB: SQL Python API, SDK és -erőforrások'
 description: Mindent megtudhat a SQL Python API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB Python SDK minden verziója közötti végzett módosításokat.
-services: cosmos-db
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf796466d8d4156eb442e6b0d1b51cb70d0d30f3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: 01f6fe3ef309f19896befe61512d524a8543745f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337087"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041458"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]

@@ -1,19 +1,17 @@
 ---
 title: Csatlakozás az Azure Cosmos DB használatával, BI elemzési eszközök
 description: Ismerje meg, hogyan normalizált adatok BI és az adatok elemzési szoftver lehet megtekinteni, hogy a táblák és nézetek létrehozásához az Azure Cosmos DB ODBC-illesztő használatával.
-keywords: ODBC, odbc-illesztő
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: d1ea0a51d9637c1ca1dba214e969e6835dfb241c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136358"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034472"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
 
@@ -50,7 +48,7 @@ Kezdjük az ODBC-illesztőt.
 
     ![Az Azure Cosmos DB ODBC Data Source Administrator](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>2. lépés: Csatlakozás az Azure Cosmos DB-adatbázishoz
+## <a id="connect"></a>2. lépés: Csatlakozzon az Azure Cosmos DB-adatbázis
 
 1. Után [telepítése az Azure Cosmos DB ODBC-illesztő](#install), a a **ODBC Data Source Administrator** ablakban kattintson a **Hozzáadás**. Létrehozhat egy felhasználói vagy Rendszeradatforrás. Ebben a példában létrehoz egy felhasználói DSN.
 
@@ -59,17 +57,17 @@ Kezdjük az ODBC-illesztőt.
 1. Az a **Azure Cosmos DB ODBC illesztőprogram SDN-alapú beállítási** ablakban adja meg a következő információkat: 
 
     ![Az Azure Cosmos DB ODBC-illesztőprogram DSN-beállítások ablak](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Adatforrás neve**: saját ODBC DSN rövid nevét. Ez a név egyedi az Azure Cosmos DB-fiókja, így neki megfelelő, ha több fiókot.
-    - **Leírás**: az adatforrás rövid leírását.
-    - **Gazdagép**: URI-azonosítóját az Azure Cosmos DB-fiókot. Letöltheti ezt az Azure Portalon az Azure Cosmos DB kulcsok oldalról az alábbi képernyőképen látható módon. 
-    - **Hozzáférési kulcs**: az Azure Cosmos DB-kulcsok az elsődleges vagy másodlagos, olvasási és írási vagy olvasási kulcs lapon az Azure Portalon, az alábbi képernyőképen látható módon. Azt javasoljuk, hogy az írásvédett kulcsát, használható, ha a DSN csak olvasható adatok feldolgozása és a jelentéskészítés.
+    - **Adatforrás neve**: A saját ODBC DSN rövid nevét. Ez a név egyedi az Azure Cosmos DB-fiókja, így neki megfelelő, ha több fiókot.
+    - **Leírás**: Az adatforrás rövid leírását.
+    - **Gazdagép**: Az Azure Cosmos DB-fiókhoz tartozó URI. Letöltheti ezt az Azure Portalon az Azure Cosmos DB kulcsok oldalról az alábbi képernyőképen látható módon. 
+    - **Hozzáférési kulcs**: Az elsődleges vagy másodlagos, olvasási és írási vagy olvasási kulcs az alábbi képernyőképen látható módon az Azure Portalon az Azure Cosmos DB kulcsok oldalról. Azt javasoljuk, hogy az írásvédett kulcsát, használható, ha a DSN csak olvasható adatok feldolgozása és a jelentéskészítés.
     ![Azure Cosmos DB kulcsok oldalán](./media/odbc-driver/odbc-driver-keys.png)
-    - **A hozzáférési kulcs titkosítására**: válassza ki a legjobb választás alapján a felhasználók ezt a gépet. 
+    - **A hozzáférési kulcs titkosítására**: Válassza ki a legjobb választás alapján a felhasználók ezt a gépet. 
     
 1. Kattintson a **teszt** gombra, hogy az Azure Cosmos DB-fiókhoz kapcsolódhat. 
 
 1. Kattintson a **speciális beállítások** állítsa be a következő értékeket:
-    - **Lekérdezési konzisztenciát**: válassza ki a [konzisztenciaszint](consistency-levels.md) a műveletek. Az alapértelmezett érték a munkamenet.
+    - **Lekérdezési konzisztenciát**: Válassza ki a [konzisztenciaszint](consistency-levels.md) a műveletek. Az alapértelmezett érték a munkamenet.
     - **Újrapróbálkozások száma**: Adja meg az újrapróbálkozások egy műveletet, ha a kezdeti kérelem befejezése sikertelennek bizonyul szolgáltatás sebesség korlátozása miatt.
     - **Soubor schématu**: Itt több lehetőség van.
         - Elhagyása (üres), mert ez a bejegyzés alapértelmezés szerint az illesztőprogram megvizsgálja az egyes gyűjtemények-séma megállapításához összes gyűjtemény adatainak első oldalán. Ez az úgynevezett leképezési gyűjteményt. Egy sémafájlt definiált nélkül az illesztőprogram a vizsgálat végrehajtania az egyes illesztőprogram-munkamenet, és hatására a DSN használó alkalmazások magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájlt az Adatbázisnevet.
@@ -201,7 +199,7 @@ Ezt a a **Nézetdefiníciókból** ablakban tegye a következőket:
 
 Tetszés szerint számos nézet hozhat létre. Ha elkészült a nézetek meghatározása, segítségével majd mintavételi az adatokat. 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>5. lépés: Az üzleti Intelligencia eszközök, például a Power BI Desktop-adatok megtekintése
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>5. lépés: Az Üzletiintelligencia-eszközökkel, például a Power BI Desktop-adatok megtekintése
 
 Az új DSN segítségével bármely ODBC-kompatibilis eszközök az Azure Cosmos DB csatlakozni – ebben a lépésben egyszerűen bemutatja, hogyan csatlakozhat a Power BI Desktop és a Power BI-Vizualizációk létrehozása.
 

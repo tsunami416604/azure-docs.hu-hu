@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: f732391cc73f0a7cb417409cd6f6f2b3c54f93d6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a26c4b6d16ac16596f8b1b0606aca029be335d71
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994130"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038500"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -149,6 +149,23 @@ Ha nem rendelkezik már meglévő tartalom feltöltéséhez a Tudásbázis, hozz
 ## <a name="formatting-considerations"></a>Formázási kapcsolatos szempontok
 
 Egy fájlba vagy URL-cím az importálás után konvertálva a Markdown és a formátumban tárolja. Ha az átalakítási folyamat nem megfelelően konvertálása a fájl-és URL-címeket hivatkozásokkal, szerkesztenie kell a kérdések és válaszok a a **szerkesztése** lapot. 
+
+|Formátum|Cél|
+|--|--|
+|`\n\n`| Új sor|
+|`\n*`|Egy rendezett listához pont listajele|
+
+## <a name="editing-your-knowledge-base-locally"></a>Helyileg a Tudásbázis szerkesztése
+
+Tudásbázis létrehozása után javasoljuk, hogy Ön módosíthatja is a Tudásbázis szöveget a [QnA Maker portal](https://qnamaker.ai), exportálása és a helyi fájlok között importintézkedésekkel helyett. Előfordulhat azonban, hogy helyileg Tudásbázis szerkeszteni szeretné. 
+
+A Tudásbázis a exportálása a **beállítások** lapon, majd szerkessze a Tudásbázis következő, a Microsoft Excel használatával. Ha egy másik alkalmazás használja az exportált TSV-fájl szerkesztése lehetőséget választja, az alkalmazás szintaktikai hibák vezethet be, mivel nem teljes mértékben megfelelő TSV. A Microsoft Excel TSV fájlok általában nem vezetnek be esetleges formázási hibákat. 
+
+Ha elkészült, a módosítások, importálja újra a TSV-fájlt a **beállítások** lap. Ez lesz a jelenlegi Tudásbázis teljes mértékben lecserélheti a importált Tudásbázis segítségével. 
+
+## <a name="testing-your-markdown"></a>A Markdown tesztelése
+
+Használja a **[CommonMark](https://commonmark.org/help/tutorial/index.html)** az oktatóanyag a Markdown ellenőrzése. Rendelkezik az oktatóanyag egy **kipróbálás** szolgáltatás gyors, másolási és beillesztési ellenőrzés céljából. 
 
 ## <a name="next-steps"></a>További lépések
 

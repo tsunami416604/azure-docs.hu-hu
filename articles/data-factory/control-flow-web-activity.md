@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 1c657fd7b3059dcf46a371b133a5d078e02f0599
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014199"
+ms.locfileid: "54054286"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység az Azure Data Factoryban
-A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 
+A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára.
 
 ## <a name="syntax"></a>Szintaxis
 
 ```json
-{  
+{
    "name":"MyWebActivity",
    "type":"WebActivity",
-   "typeProperties":{  
+   "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
-      "headers":{  
+      "headers":{
          "Content-Type":"application/json"
       },
-      "authentication":{  
-         "type":"ClientCertificate",  
+      "authentication":{
+         "type":"ClientCertificate",
          "pfx":"****",
          "password":"****"
       },
-      "datasets":[  
-         {  
+      "datasets":[
+         {
             "referenceName":"<ConsumedDatasetName>",
             "type":"DatasetReference",
-            "parameters":{  
+            "parameters":{
                ...
             }
          }
       ],
-      "linkedServices":[  
-         {  
+      "linkedServices":[
+         {
             "referenceName":"<ConsumedLinkedServiceName>",
             "type":"LinkedServiceReference"
          }
@@ -92,10 +92,10 @@ Az alábbi táblázat bemutatja a JSON-tartalmak követelményei:
 Ha a hitelesítés nem szükséges, nem tartalmazzák a "hitelesítés" tulajdonság.
 
 ### <a name="basic"></a>Alapszintű
-Adja meg a felhasználónevet és jelszót az alapszintű hitelesítés használata. 
+Adja meg a felhasználónevet és jelszót az alapszintű hitelesítés használata.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"Basic",
    "username":"****",
    "password":"****"
@@ -103,12 +103,12 @@ Adja meg a felhasználónevet és jelszót az alapszintű hitelesítés használ
 ```
 
 ### <a name="client-certificate"></a>Ügyféltanúsítvány
-Adja meg a PFX-fájlok és a jelszó base64-kódolású tartalmát. 
+Adja meg a PFX-fájlok és a jelszó base64-kódolású tartalmát.
 
 ```json
-"authentication":{  
+"authentication":{
    "type":"ClientCertificate",
-   "pfx":"****",   
+   "pfx":"****",
    "password":"****"
 }
 ```
@@ -125,7 +125,7 @@ Adja meg az erőforrás URI azonosítója, amelyhez a hozzáférési jogkivonato
 ```
 
 ## <a name="request-payload-schema"></a>Kérelem hasznos séma
-Ha a POST és PUT metódust használja, a szervezet tulajdonság jelöli a a végpontnak küldött hasznos. Társított szolgáltatásokat és adatkészleteket adhat át a hasznos részeként. Íme a sémát az adattartalomhoz: 
+Ha a POST és PUT metódust használja, a szervezet tulajdonság jelöli a a végpontnak küldött hasznos. Társított szolgáltatásokat és adatkészleteket adhat át a hasznos részeként. Íme a sémát az adattartalomhoz:
 
 ```json
 {
@@ -144,11 +144,11 @@ Ha a POST és PUT metódust használja, a szervezet tulajdonság jelöli a a vé
             }
         }]
     }
-} 
+}
 ```
 
 ## <a name="example"></a>Példa
-Ebben a példában a webes tevékenység a folyamat meghívja a REST-végpontot. Egy Azure SQL társított szolgáltatás és az Azure SQL-adatkészlet átadja a végpontot. A REST-végpontot használja az Azure SQL-kapcsolati karakterlánc az Azure SQL-kiszolgálóhoz való csatlakozáshoz, és az SQL Server-példány nevét adja vissza. 
+Ebben a példában a webes tevékenység a folyamat meghívja a REST-végpontot. Egy Azure SQL társított szolgáltatás és az Azure SQL-adatkészlet átadja a végpontot. A REST-végpontot használja az Azure SQL-kapcsolati karakterlánc az Azure SQL-kiszolgálóhoz való csatlakozáshoz, és az SQL Server-példány nevét adja vissza.
 
 ### <a name="pipeline-definition"></a>Folyamat meghatározása
 
@@ -242,7 +242,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
+Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek:
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)

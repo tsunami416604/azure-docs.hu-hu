@@ -10,19 +10,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b63a75a2505ecbd82896932018ef4f0936b9b37
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 9c4b66501cfb51088609de81fe00b5b041e056d3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182892"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037528"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 API-profilok adja meg, az Azure erőforrás-szolgáltató és az Azure REST-végpontokat az API-verzió. Létrehozhat egyéni ügyfelek különböző nyelveken, API-profilok használatával. Minden ügyfél egy API-profilt használja a megfelelő erőforrás-szolgáltató és az API-verzió forduljon az Azure Stackhez készült.
 
@@ -37,41 +37,41 @@ Ez a témakör segítségével:
 ## <a name="summary-of-api-profiles"></a>API-profilok összefoglalása
 
 - API-profilok segítségével az Azure erőforrás-szolgáltatók és a saját API-verziók jelölik.
-- API-profilokat hozhat létre a sablonok között több Azure-felhők jöttek létre. Profilok felel meg az igényeknek, kompatibilis és állandó kapcsolat célja.
+- API-profilokat hozhat létre a sablonok között több Azure-felhők jöttek létre. Profilok egy stabil és kompatibilis felületet kínálnak.
 - Profilok évente négy alkalommal jelennek meg.
 - Három profilt elnevezési konvenciókat használja:
     - **legfrissebb**  
         Tartalmazza a legújabb API-verziók, amely a globális Azure-ban.
     - **yyyy-mm-dd-hybrid**  
-    Kiadás dátuma: egy róla kiadása ütemben történik, ebben a kiadásban összpontosít és stabilabbá teheti több felhő között. Ez a profil optimális Azure Stack-kompatibilitási célozza.
-    - **éééé-hh-nn-profil** optimális stabilitás és a legújabb funkciók között helyezkedik el.
+    Kiadás dátuma: kétévente történik, ebben a kiadásban összpontosít és stabilabbá teheti több felhő között. Ez a profil optimális Azure Stack-kompatibilitási célozza.
+    - **éééé-hh-nn-profil** elosztja a optimális stabilitását és a legújabb funkciókhoz.
 
 ## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Az Azure API-profilok és az Azure Stack-kompatibilitás
 
 A legújabb Azure API-profilok nem kompatibilisek az Azure Stack használatával. A következő tanúsítványelnevezési módszerek segítségével azonosíthatja a profilok használata az Azure Stack-megoldások számára.
 
 **legfrissebb**  
-Ez a profil a legújabb API-verziók található a globális Azure-t, amely nem fog működni az Azure Stack rendelkezik. **Legújabb** kompatibilitástörő változásokat legnagyobb száma. A profil fenntartott helyezi, stabilitás és más felhőkben való kompatibilitás érdekében. Ha a legújabb API-verziókat használhat **legújabb** a profilt kell használnia.
+Ez a profil van a legfrissebb API-verziók található a globális Azure-ban, amely nem működnek az Azure Stackben. **Legújabb** kompatibilitástörő változásokat legnagyobb száma. A profil fenntartott helyezi, stabilitás és más felhőkben való kompatibilitás érdekében. Ha szeretne a legújabb API-verziókat használhat **legújabb** a profilt kell használnia.
 
 **éééé-hh-nn-hibrid**  
-Ez a profil jelent márciusi és szeptemberi frissítések minden évben. Ezzel a profillal rendelkezik, optimális stabilitását és a különböző felhőkben való kompatibilitás érdekében. **Éééé-hh-nn-hibrid** célja, hogy a cél a globális Azure és az Azure Stackben. Az Azure API-verziói ehhez a profilhoz lesznek ugyanaz, mint az Azure Stacken felsorolt azokat. Ez a profil használatával kód a hibrid felhőalapú megoldások fejlesztése.
+Ez a profil jelent márciusi és szeptemberi frissítések minden évben. Optimális stabilitását és különféle felhőkben való kompatibilitás rendelkezik. **Éééé-hh-nn-hibrid** célja, hogy a cél a globális Azure és az Azure Stackben. Az Azure API-verziói ehhez a profilhoz lesznek ugyanaz, mint az Azure Stacken felsorolt azokat. Ez a profil használatával kód a hibrid felhőalapú megoldások fejlesztése.
 
 **yyyy-mm-dd-profile**  
-Ez a profil jelent meg az Azure globális június és December. Ezt a profilt nem fognak működni az Azure Stack; ellen általában lesz számos kompatibilitástörő változásokat. Bár ez optimális stabilitását és a legújabb funkciók, a különbség a között helyezkedik el **legújabb** , és ezt a profilt, amely **legújabb** mindig a legújabb API-verziók, függetlenül attól, hogy mikor fog állni az API-hoz fel lett oldva. Például ha egy új API-verzió holnap létrehozása a Compute API-hoz, hogy API-verzió jelenik a **legújabb**, azonban nem a **éééé-hh-nn-profil** mert ehhez a profilhoz már létezik.  **éééé-hh-nn-profil** június és December előtt kiadott a legújabb verziókat ismerteti.
+Ez a profil jelent meg az Azure globális június és December. Nem működik az Azure Stack; általában lesz számos kompatibilitástörő változásokat. Bár ez elosztja a optimális stabilitását és a legújabb funkciók, az a különbség a között **legújabb** , és ezt a profilt, amely **legújabb** mindig a legújabb API-verziók, függetlenül attól, amikor az API-t volt áll kiadás dátuma. Például ha egy új API-verzió holnap létrehozása a Compute API-hoz, hogy API-verzió szerepel a **legújabb**, azonban nem a **éééé-hh-nn-profil** profil, mert ez a profil már létezik. **éééé-hh-nn-profil** június és December előtt kiadott a legújabb verziókat ismerteti.
 
 ## <a name="azure-resource-manager-api-profiles"></a>Az Azure Resource Manager API-profilok
 
-Az Azure Stack nem használja a globális Azure-ban található API-verziók legújabb verzióját. Egy megoldás létrehozásakor meg kell keresnie az API-verziót minden egyes Azure erőforrás-szolgáltató, amely kompatibilis az Azure Stack használatával.
+Az Azure Stack nem használja a globális Azure-ban található API-verziók legújabb verzióját. Amikor létrehoz egy megoldást, minden egyes Azure erőforrás-szolgáltató, amely kompatibilis az Azure Stack használatával keresse meg az API-verziót.
 
-Inkább, mint a minden erőforrás-szolgáltató és az Azure Stack által támogatott verziót kutatás, használhat egy API-profilt. A profil az erőforrás-szolgáltatók és API-verziók egy halmazát határozza meg. Az SDK-t vagy egy eszközt, az SDK visszaáll a cél api-verzió a profilban megadott. Az API-profiljaival megadhatja a profil verziója, amely egy teljes sablon vonatkozik, és futásidőben, az Azure Resource Manager választja ki a megfelelő verziót az erőforrás.
+Inkább, mint a minden erőforrás-szolgáltató és az Azure Stack által támogatott verziót kutatás, használhat egy API-profilt. A profil az erőforrás-szolgáltatók és API-verziók egy halmazát határozza meg. Az SDK-t vagy egy eszközt, az SDK visszaáll a cél `api-version` a profilban megadott. Az API-profiljaival megadhatja a profil verziója, amely egy teljes sablont és futásidőben vonatkozik, az Azure Resource Manager kiválasztja a megfelelő verziót az erőforrás.
 
 API-profilok, amelyek használják az Azure Resource Managerrel, például a PowerShell, az Azure CLI, az SDK-t mind a Microsoft Visual Studio code tools együttműködve. Eszközök és SDK-k segítségével profilok olvassa el a modulok és a egy application készítése során alkalmazandó kódtárak melyik verzióját.
 
-Például, ha a PowerShell használatával hozzon létre egy tárolási fiókot a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja az api-verzió 2016-03-30 és a egy virtuális Gépet a Microsoft.Compute erőforrás-szolgáltató használatával az api-verzió 2015-12-01, keresse ki az PowerShell-modul támogatja a 2016-03-30 Storage kell, és mely modul támogatja a 2015-02-01-es számítási és telepítheti azokat. Ehelyett egy profil is használhatja. A parancsmag **telepítés-profil \*profilename**\* x és PowerShell betölti a modulokat megfelelő verzióját.
+Például, ha a PowerShell használatával hozzon létre egy tárolási fiókot a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja a **api-version** 2016-03-30-as és a egy virtuális gépet a  **Microsoft.Compute** erőforrás-szolgáltató **api-version** 2015-12-01 Storage PowerShell modul támogatja a 2016-03-30 kell meg, és mely modul 2015-02-01 támogatja a számítás, majd Telepítse a frissítéseket. Ehelyett egy profil is használhatja. A parancsmag `Install-Profile <profilename>`, és a PowerShell betölti a modulokat megfelelő verzióját.
 
 Ehhez hasonlóan ha Python-alapú alkalmazás készítése a Python SDK-t használja, megadhatja a profil. Az SDK-t a parancsfájlban megadott erőforrás-szolgáltatókat betölti a megfelelő modulokat.
 
-A fejlesztők összpontosíthat a megoldás írása. Ahelyett, hogy melyik api-verziók, erőforrás-szolgáltató kutatást és melyik felhő működik együtt, egy profilt használ, és tudja, hogy a kód minden felhőkben, amelyek támogatják a profil működni fog-e.
+A fejlesztők összpontosíthat a megoldás írása. Ahelyett, hogy melyik API verzió, az erőforrás-szolgáltató és a felhő kutatást működik együtt, -profillal, és tudja, hogy működik-e a kód, amely támogatja a profilt az összes felhőkben.
 
 ## <a name="api-profile-code-samples"></a>API-profil-Kódminták
 
@@ -82,12 +82,12 @@ Megtalálhatja a segítséget nyújtanak a választott nyelven az Azure Stack-pr
 Használhatja a **AzureRM.Bootstrapper** modul elérhető a PowerShell-galériából, a PowerShell-parancsmagok használata API-verzióprofilok kell lekérni. További információ: [használata API-verzióprofilok PowerShell](azure-stack-version-profiles-powershell.md).
 - **Azure CLI**  
 Frissítheti az Ön környezetének konfigurációját az Azure Stack meghatározott API verzió profil használatára. További információ: [használata API-verzióprofilok Azure CLI-hez](azure-stack-version-profiles-azurecli2.md).
-- **GO**  
-A GO SDK egy profil a különböző szolgáltatásokhoz különböző verziójú különböző erőforrástípusok kombinációját. a profilok alatt érhetők el profilok / elérési út, a verziójuk a **éééé-hh-nn** formátumban. További információ: [használata API-verzióprofilok GÓHOZ készült](azure-stack-version-profiles-go.md).
+- **Go**  
+A Go SDK egy profil a különböző szolgáltatásokhoz különböző verziójú különböző erőforrástípusok kombinációját. A profilok/elérési úton, a verziójuk érhetők el profilok a **éééé-hh-nn** formátumban. További információ: [használata API-verzióprofilok Góhoz készült](azure-stack-version-profiles-go.md).
 - **Ruby**  
 A Ruby SDK az Azure Stack Resource Manager biztosít eszközöket és az infrastruktúra kezelését. Az SDK-t az erőforrás-szolgáltató például számítási, a virtuális hálózatok és a tárolási Ruby nyelven. További információ: [használata API-verzióprofilok Ruby használatával](azure-stack-version-profiles-ruby.md)
 - **Python**  
-A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a globális Azure más felhőalapú platformot támogatja. Használhat API-t egy hibrid felhőalapú megoldások létrehozásához. További információ: [használata API-verzióprofilok Python használatával](azure-stack-version-profiles-python.md)
+A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a globális Azure más felhőalapú platformot támogatja. API-profilok segítségével hibrid felhőbeli megoldások létrehozásához. További információ: [használata API-verzióprofilok Python használatával](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>További lépések
 

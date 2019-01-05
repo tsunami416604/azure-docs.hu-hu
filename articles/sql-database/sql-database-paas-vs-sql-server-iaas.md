@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: e9f322198cf94232dd2d87aa1f27dbbd6a282b72
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: c1ef32256569d1718f6848a968585216f43f333a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994997"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033451"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>Válassza ki a jobb oldalon az SQL Server beállítása az Azure-ban – PaaS vagy IaaS
 
@@ -87,10 +87,11 @@ Az alábbi táblázatban az SQL Database és az Azure virtuális gépeken futó 
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Az Azure SQL Database vagy az Azure virtuális gépeken futó SQL Server használatát támogató üzleti indokok
 
 Van több, válassza ki az SQL-adatbázisok üzemeltetéséhez PaaS vagy IaaS mellett is befolyásoló tényezők:
+
 - [Költség](#cost) -egyaránt PaaS és IaaS beállítást tartalmazza base pontosan rögzítik, az alapul szolgáló infrastruktúrát, és licencelési díjszabása. Azonban az IaaS-beállítást kell további időt és erőforrásokat az adatbázis kezeléséhez, amíg a paas is ezeket a felügyeleti funkciókat az ár tartalmazza az első támogatásán. IaaS-beállítás lehetővé teszi, hogy a leállított az erőforrások miközben nem használja őket a költségek csökkentéséhez, amíg PaaS-verzió mindig fut, kivéve, ha ha dobja el és hozza létre újból az erőforrásokat szükség esetén.
 - [Felügyeleti](#administration) – PaaS beállítások csökkentheti az, hogy mennyi ideig kell az adatbázis felügyeletéhez befektetni. Azonban azt is megakadályozhatja, hogy, hogy néhány egyéni felügyeleti feladatot, amely a számítási feladat teljesítményét javíthatja.
 - [Szolgáltatásiszint-szerződés](#service-level-agreement-sla) – is IaaS és PaaS biztosít magas, iparági standard szintű SLA-t. PaaS-beállítás 99,99 %-os SLA-t, garantálja, míg IaaS garantálja 99,95 %-os SLA-infrastruktúra, ami azt jelenti, hogy meg kell valósítania az adatbázisok rendelkezésre állásának biztosításához a további mechanizmusok. A szélsőséges esetben ha azt szeretné, hogy a megfelelő PaaS, magas rendelkezésre állású megoldás megvalósításához szüksége lehet további SQL-kiszolgáló létrehozása a virtuális gép, és előfordulhat, hogy a double a költségek az adatbázis AlwaysOn rendelkezésre állási csoportok konfigurálásához.
-- [Helyezi át a felhőbe](#time-to-move-to-cloud) – SQL Server Azure-beli virtuális gépen a környezetben, a pontos egyezés, ezért áttelepítés a helyszínről az Azure SQL virtuális Géphez nem más, mint az adatbázisok áthelyezését egy helyszíni kiszolgáló között. Felügyelt példány is lehetővé teszi a rendkívül egyszerű áttelepítés; azonban van néhány felügyelt példányába történő migrálás előtt alkalmazza a szükséges módosításokat.
+- [Az Azure-bA áthelyezéséhez szükséges idő](#market) – SQL Server Azure-beli virtuális gépen a környezetben, a pontos egyezés, ezért áttelepítés a helyszínről az Azure SQL virtuális Géphez nem más, mint az adatbázisok áthelyezését egy helyszíni kiszolgáló között. Felügyelt példány is lehetővé teszi a rendkívül egyszerű áttelepítés; azonban van néhány felügyelt példányába történő migrálás előtt alkalmazza a szükséges módosításokat.
 
 Ezek a tényezők az alábbi szakaszok részletesebben tárgyalja.
 
@@ -102,10 +103,8 @@ Az adatbázisok üzemeltetési módjának kiválasztását általában a rendelk
 
 Jelenleg **SQL Database** szolgáltatásként vásárolható meg, és a különböző árakat, erőforrások, amelyek mindegyike számlázzuk óránként egy rögzített a szolgáltatási szint és a választott számítási mérete alapján többféle szolgáltatáscsomagban érhető el.
 Az önálló SQL-adatbázist választhat, amely a legjobban az igényeinek, az árak kezdet: 5 USD/hónap alapszintű számos szolgáltatási réteg.
-Az SQL Database felügyelt példánya a saját licencét is használhatja. A bring-your-own licenc további információkért lásd: [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/) vagy [Azure Hybrid Benefit Számológép](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/#sql-database) megtekintéséhez hogyan **akár 40 %-osmentése**.
+Az SQL Database felügyelt példánya a saját licencét is használhatja. A bring-your-own licenc további információkért lásd: [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/) vagy [Azure Hybrid Benefit Számológép](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) megtekintéséhez hogyan **akár 40 %-osmentése**.
 Emellett a kimenő internetes forgalom számlázása a normál [adatátviteli díjszabások](https://azure.microsoft.com/pricing/details/data-transfers/) szerint történik. Módosíthatja a szolgáltatási szintek és méretek szerint változó átviteli igényekhez az alkalmazás számítási dinamikusan. A legfrissebb információkért támogatott az aktuális szolgáltatásszintek, lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezenkívül létrehozhat [rugalmas készletek](sql-database-elastic-pool.md) megosztott erőforrások adatbázispéldányok csökkentheti a költségeket és befogadásához használat hirtelen megugró kihasználtság.
-
-
 
 Az **SQL Database** használata esetén az adatbázis automatikus konfigurálásáért, javításáért és frissítéséért a Microsoft felel, így Önnek kevesebbet kell adminisztrációra költenie. Ezenfelül a [beépített biztonsági mentési](sql-database-automated-backups.md) funkciókkal is jelentős költségmegtakarítást érhet el, különösen, ha nagyszámú adatbázist használ.
 

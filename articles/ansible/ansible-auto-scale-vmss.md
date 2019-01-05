@@ -3,17 +3,17 @@ title: Az Azure-ban az Ansible beállítása egy virtuálisgép-méretezési cso
 description: Ismerje meg, hogyan skálázhatja állítsa be az automatikus méretezési funkció az Azure-beli virtuálisgép-méretezési csoportot az Ansible használatával
 ms.service: ansible
 keywords: az ansible, azure, devops, bash, forgatókönyv, méretezhető, automatikus skálázási, virtuális gép, virtuálisgép-méretezési csoportot, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: yuwzho, kyliel
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.openlocfilehash: c6678d6df3a695d3a0471e5779bc3af4b6ba6c84
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b573eecb2f5c67014901f0006cf1087a261cf9c4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410915"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049945"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Az Azure-ban az Ansible beállítása egy virtuálisgép-méretezési csoport automatikus méretezése
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti a virtuálisgép-méretezési csoportokat (VMSS) az Azure-ban, ahogy azt bármely más Azure-erőforrással tenné. 

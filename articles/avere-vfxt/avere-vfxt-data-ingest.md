@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bf16c0fbc7090bf9b548796765502cde1731aef9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634132"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050489"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>A vFXT fürthöz - párhuzamos adatokat helyez át adatokat képes feldolgozni. 
 
@@ -19,7 +19,7 @@ Miután létrehozott egy új vFXT fürtöt, az első feladat lehet áthelyezni a
 
 Mivel a Avere vFXT fürt több ügyfél gyorsítótárának méretezhető, több ügyfél van a leggyorsabb és leghatékonyabb módszert az adatok másolásához. Ezzel a technikával a fájlok és objektumok Adatbetöltési parallelizes.
 
-![Több ügyfél, több szálon futó adatáthelyezés bemutató ábra: bal felső, a helyszíni hardver tárolási ikonja érkező, több nyilak rendelkezik. A nyilak az ügyfélgépek négy mutasson. Az egyes ügyfél gépéről három nyilak a Avere vFXT felé mutat. A Avere vFXT a Blob storage több nyíl mutat.](media/avere-vfxt-parallel-ingest.png) 
+![Bemutató ábra. Ez több ügyfél, több szálon futó adatáthelyezés: Bal felső részén egy ikont a helyszíni hardver tárolási rendelkezik több nyilak származó azt. A nyilak az ügyfélgépek négy mutasson. Az egyes ügyfél gépéről három nyilak a Avere vFXT felé mutat. A Avere vFXT a Blob storage több nyíl mutat.](media/avere-vfxt-parallel-ingest.png) 
 
 A ``cp`` vagy ``copy`` használatával az adatok átvitele egy tárolórendszer között gyakran használt parancsok a következők egyszálas folyamatokat, amelyek egyszerre csak egy fájl másolása. Ez azt jelenti, hogy a fájlkiszolgáló van csak egy fájlt tölt egyszerre – amely a fürt erőforrásainak feleslegesen használna.
 
@@ -167,7 +167,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ### <a name="create-file-manifests"></a>Jegyzékek fájl létrehozása
 
-Ismertetése után a megközelítések a fenti (több másolási-szálak száma a cél, több célhelyre ügyfelenként, több ügyfelek száma a forrás hálózati fájlrendszer), fontolja meg a javaslat: hozhat létre a fájladatokat, majd azokat másolással parancsok több ügyfélre.
+Ismertetése után a megközelítések a fenti (több másolási-szálak száma a cél, több célhelyre ügyfelenként, több ügyfelek száma a forrás hálózati fájlrendszer), vegye figyelembe a javaslat: Hozhat létre a fájladatokat, majd azokat a másolási parancsai több ügyfélre.
 
 Ez a forgatókönyv használ a UNIX ``find`` paranccsal hozza létre a jegyzékek található fájlok vagy könyvtárak:
 
@@ -272,7 +272,7 @@ Msrsync használatával töltse fel az Azure-felhő kötet-Avere fürthöz, köv
 1. Telepítse a msrsync és az Előfeltételek (rsync és Python 2.6-os vagy újabb)
 1. Határozza meg, hogy a fájlok és könyvtárak másolandó teljes száma.
 
-   Ha például a Avere segédprogrammal ``prime.py`` argumentumokkal ```prime.py --directory /path/to/some/directory``` (töltse le az URL-cím elérhető https://raw.githubusercontent.com/Azure/Avere/master/src/dataingestor/prime.py).
+   Ha például a Avere segédprogrammal ``prime.py`` argumentumokkal ```prime.py --directory /path/to/some/directory``` (töltse le az URL-cím elérhető https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
 
    Ha nem használ ``prime.py``, kiszámíthatja a Gnu az elemek száma ``find`` eszközt az alábbiak szerint:
 

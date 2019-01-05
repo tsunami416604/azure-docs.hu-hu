@@ -1,23 +1,21 @@
 ---
-title: 'Az Azure Cosmos DB: Alkalmazás létrehozása a Python és az SQL API-val'
+title: 'Az Azure Cosmos DB: A Python és az SQL API-alkalmazás létrehozása'
 description: Egy Python-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc, devcenter
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 6f3f1f6eb89127e6b0ac0e2983a27dfd731651cb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b9ea87b3a56c4759a0d96b7d01e33087c64ccd91
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094236"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037555"
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: SQL API-alkalmazás létrehozása a Python és az Azure Portal használatával
+# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Az Azure Cosmos DB: Az SQL API-alkalmazás, a Python és az Azure Portalon
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -173,7 +171,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Válassza a Visual Studio Code-ban a **Nézet**>**Parancskatalógus** lehetőséget. 
 
-2. A megjelenő panelen írja be a **Python: Select Interpreter** szöveget, majd válassza ki a használandó Python-verziót.
+2. Amikor a rendszer kéri, adja meg a **Python: Válassza ki a Interpret** , és válassza ki a használandó Python-verzió.
 
     A választott értelmező ekkor megjelenik a Visual Studio Code ablakának állapotsorában. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7aa5ccb402bf8648668a5eb00d6a740caf7bf3d4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794549"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055149"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -145,11 +145,13 @@ Egy kiszolgálói végpont állapotának "Nincs tevékenység" azt jelenti, hogy
 
 A kiszolgálóvégpontok nem lehetséges, hogy jelentkezzen szinkronizálási tevékenység a következő okok miatt:
 
-- A kiszolgáló elérte az egyidejű szinkronizálási munkamenetek maximális számát. Az Azure File Sync jelenleg támogatja a processzor vagy server 8 active sync-munkamenetek legfeljebb 2 active sync-munkamenetek.
+- A kiszolgáló rendelkezik egy aktív VSS szinkronizálási munkamenet (SnapshotSync). Aktív a kiszolgálói végpont VSS szinkronizálási munkamenet esetén más kiszolgálói végpontot, ugyanazon a köteten a kezdő szinkronizálási munkamenet a VSS-szinkronizálási munkamenet befejezéséig nem lehet elindítani.
 
-- A kiszolgáló rendelkezik egy aktív VSS szinkronizálási munkamenet (SnapshotSync). Aktív a kiszolgálói végpont VSS szinkronizálási munkamenet esetén más kiszolgálói végpontot a kiszolgálón a kezdő szinkronizálási munkamenet a VSS-szinkronizálási munkamenet befejezéséig nem lehet elindítani.
+    A kiszolgáló jelenlegi szinkronizálási tevékenység megtekintéséhez [hogyan szinkronizálási munkamenet jelenlegi állapotának figyelése?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-A kiszolgáló jelenlegi szinkronizálási tevékenység megtekintéséhez [hogyan szinkronizálási munkamenet jelenlegi állapotának figyelése?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- A kiszolgáló elérte az egyidejű szinkronizálási munkamenetek maximális számát. 
+    - Ügynök verziója 4.x-es és újabb verziók: Korlát rendelkezésre álló erőforrásoktól függ.
+    - Ügynök verziója 3.x: 2 active szinkronizálási munkamenetek processzor vagy server 8 active sync-munkamenetek maximális száma.
 
 > [!Note]  
 > Ha a kiszolgáló állapota, a regisztrált kiszolgálók panelen "Jelenik meg a kapcsolat nélküli", hajtsa végre a leírt lépéseket a [kiszolgálói végpont rendelkezik egy "Nincs tevékenység" vagy "Függő" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Offline jelenik meg" ](#server-endpoint-noactivity) szakaszban.
@@ -244,13 +246,14 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 **ItemResults log - elem szinkronizálási hibák**  
 | HRESULT | HRESULT (decimális) | Hibasztring | Probléma | Szervizelés |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80065 | -2134376347 | ECS_E_DATA_TRANSFER_BLOCKED | A fájl az állandó hibák által előállított szinkronizálás során, és ezért csak kísérli meg a rendszer naponta egyszer szinkronizálja. Az alapul szolgáló hiba található egy korábbi eseménynaplóban. | Az R2 ügynökök (2.0-s) és újabb, az eredeti hiba helyett ez egyik illesztett. Frissítsen a legújabb ügynököt a mögöttes hibaüzenet megtekintéséhez, vagy tekintse meg korábbi eseménynaplóit megkereséséhez az eredeti hiba okát. |
-| 0x7B | 123 | ERROR_INVALID_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [pokyny Pro pojmenování Azure Files](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) és az alábbi nem támogatott karakterek listáját. |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [pokyny Pro pojmenování Azure Files](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) és az alábbi nem támogatott karakterek listáját. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Egy fájl módosult, de a módosítás nem még észlelt szinkronizálás által. Szinkronizálás után ez a változás észlelésekor állítja helyre. | Nincs szükség felhasználói műveletre. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
-| 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Egy fájl vagy címtár módosítása nem szinkronizálható még, mert egy függő mappa szinkronizálása még nem történt. Ez az elem után a rendszer szinkronizálja a függő módosításokat szinkronizálja. | Nincs szükség felhasználói műveletre. |
+| 0x7B | 123 | ERROR_INVALID_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [kezelése nem támogatott karaktereket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) további információt. |
+| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [kezelése nem támogatott karaktereket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) további információt. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Egy fájl módosult, de a módosítás nem még észlelt szinkronizálás által. Szinkronizálás után ez a változás észlelésekor állítja helyre. | Nincs szükség felhasználói műveletre. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | A fájl nem szinkronizálható, mert az Azure-beli fájlmegosztás korlátot. | A probléma megoldásához tekintse meg [a megosztás Azure fájltárolási korlátot elérte](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) a hibaelhárítási útmutató szakaszát. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, ha a fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, vagy a fájl rendelkezik törlési a függő állapotú. | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. |
+| 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket

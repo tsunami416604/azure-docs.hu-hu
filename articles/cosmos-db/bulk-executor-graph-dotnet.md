@@ -1,21 +1,19 @@
 ---
 title: Műveletek tömeges végrehajtása a BulkExecutor .NET-gráfkódtár használatával az Azure Cosmos DB Gremlin API-ban
 description: Ismerje meg, hogyan importálhat tömegesen gráfadatokat egy Azure Cosmos DB Gremlin API-tárolóba a BulkExecutor-kódtár használatával.
-services: cosmos-db
-keywords: gráf, gremlin, tömeges, bulkexecutor, migrálás, adatok, cosmosdb, cosmos, adatbázis, importálás
 author: luisbosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
-ms.custom: mvc
-ms.openlocfilehash: d5a25bd7cab68f77a37b14ba41bf3cc832c2125f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 2f949265e3961794e2fc4b0efbce107762a75ef7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836712"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041560"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Műveletek tömeges végrehajtása a BulkExecutor .NET-gráfkódtár használatával az Azure Cosmos DB Gremlin API-ban
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 952a87d05cb4040aa4d9aa652f8aeb814396549f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: db2972019e81ab413857d49ffa65eade3ff061ec
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028442"
+ms.locfileid: "54051186"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Az ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler-profil
 
@@ -31,7 +31,7 @@ Ez az útmutató befejeztével az alkalmazás például a képen látható a nyo
 ## <a name="prerequisites"></a>Előfeltételek
 Összes Windows, Linux és Mac fejlesztési környezetre vonatkozik az alábbi utasításokat:
 
-* Telepítse a [.NET Core SDK 2.1.2 vagy újabb](https://www.microsoft.com/net/download/windows/build).
+* Telepítse a [.NET Core SDK 2.1.2 vagy újabb](https://dotnet.microsoft.com/download/archives).
 * A Git telepítése a webhelyen található utasításokat követve [első lépések – Git telepítése](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ## <a name="set-up-the-project-locally"></a>A projekt helyi beállítása

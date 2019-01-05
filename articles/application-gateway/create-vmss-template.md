@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: d6180156e1a8f3fa053c7fbb247e38831f86e76a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998404"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037412"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
 
@@ -68,7 +68,7 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 
    * **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a típus `Microsoft.Network/applicationGateways`, amely egy application gateway jelöli.
    * **Név** Az erőforrás neve. Figyelje meg a `[parameters('applicationGatewayName')]`, mely azt jelenti, hogy a név bemenetként, vagy egy paraméterfájl üzembe helyezés során.
-   * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja.
+   * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja. A JSON-szintaxist és egy sablon az application gateway tulajdonságainak: [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways).
 
 1. Lépjen vissza a [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kattintson a **azuredeploy-parameters.json**, és kattintson a **RAW**.
@@ -118,7 +118,7 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Az Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával
 
-Ha még sosem használta az Azure PowerShell-lel, keresse fel: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) és kövesse az utasításokat az Azure-ba való bejelentkezéshez, és válassza ki az előfizetését.
+Ha még nem használta az Azure Powershellt, tekintse meg: [Azure PowerShell telepítése és konfigurálása annak](/powershell/azure/overview) és kövesse az utasításokat az Azure-ba való bejelentkezéshez, és válassza ki az előfizetését.
 
 1. Bejelentkezés a Powershellbe
 
@@ -226,9 +226,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>További lépések
 
-Ha SSL-alapú kiszervezést szeretne konfigurálni, tekintse meg a következőt: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](tutorial-ssl-cli.md).
+Ha azt szeretné, SSL-alapú kiszervezés konfigurálása, látogassa meg: [Konfigurálja az application gateway SSL-alapú kiszervezéshez](tutorial-ssl-cli.md).
 
-Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](redirect-internal-site-cli.md).
+Ha szeretne egy belső terheléselosztó használata application gateway konfigurálása, látogassa meg: [Application gateway létrehozása belső terheléselosztóval (ILB)](redirect-internal-site-cli.md).
 
 Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
 

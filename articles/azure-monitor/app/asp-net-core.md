@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 19830ade92e5d2a046abc8a2ad00c086a5bf62ec
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972787"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054843"
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
 
@@ -62,7 +62,7 @@ Ez a funkció teszteléséhez:
    ![Képernyőfelvétel a Visual Studio Application Insights-keresés](./media/asp-net-core/006-search.png)
 
 > [!NOTE]
-> További információ a módját, például a Visual Studio lámpa funkciók mentése [Application Insights keresés](../../application-insights/app-insights-visual-studio.md) és [Codelensben](../../application-insights/app-insights-visual-studio-codelens.md) helyileg előtt Application Insights hozzáadása az ASP.NET Core-projektet, tekintse meg [ Application Insights keresés folyamatos](#application-insights-search-continued).
+> További információ a módját, például a Visual Studio lámpa funkciók mentése [Application Insights keresés](../../azure-monitor/app/visual-studio.md) és [Codelensben](../../azure-monitor/app/visual-studio-codelens.md) helyileg előtt Application Insights hozzáadása az ASP.NET Core-projektet, tekintse meg [ Application Insights keresés folyamatos](#application-insights-search-continued).
 
 ## <a name="add-application-insights-telemetry"></a>Application Insights Telemetria hozzáadása
 
@@ -404,7 +404,7 @@ Ezen módszerek bármelyikével problémája, hogy azok ne tiltsa le csak az App
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerje meg a felhasználói folyamatok](../../application-insights/app-insights-usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazáson keresztül.
+* [Ismerje meg a felhasználói folyamatok](../../azure-monitor/app/usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazáson keresztül.
 * [Pillanatkép gyűjtésének konfigurálása](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) forráskód és a változók állapotának megtekintéséhez jelenleg a függvény kivételt vált ki.
 * [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) küldése a saját események és mérőszámok az alkalmazás teljesítményének és használatának részletesebb megjelenítéséhez.
 * Használat [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) ellenőrizheti az alkalmazás folyamatosan az egész világon.

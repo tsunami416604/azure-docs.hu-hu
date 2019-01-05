@@ -1,22 +1,21 @@
 ---
 title: Az Azure Cosmos DB Table API .NET SDK-t és az erőforrások
 description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
-services: cosmos-db
-author: rnagpal
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.author: rnagpal
-ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f2492e3d49f9b7e965c33ed4419f566e81dd62ed
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878584"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043464"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table API-t .NET: Töltse le és kibocsátási megjegyzések
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table .NET API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -28,7 +27,7 @@ ms.locfileid: "52878584"
 |---|---|
 |**SDK letöltése**|[NuGet](https://aka.ms/acdbtablenuget)|
 |**API-dokumentáció**|[.NET API dokumentációja](https://aka.ms/acdbtableapiref)|
-|**Gyors útmutató**|[Az Azure Cosmos DB: Alkalmazás létrehozása a .NET és a Table API](create-table-dotnet.md)|
+|**Gyors útmutató**|[Az Azure Cosmos DB: .NET-tel és a Table API-alkalmazás létrehozása](create-table-dotnet.md)|
 |**Oktatóanyag**|[Az Azure Cosmos DB: Fejlesztés a Table API a .NET használatával](tutorial-develop-table-dotnet.md)|
 |**Aktuális támogatott keretrendszer**|[A Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 

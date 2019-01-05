@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5774af4e0550ceb7a51e399fcab203a503a7f23f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011493"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033604"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Azure AD jelszóvédelem üzembe helyezése
 
@@ -55,7 +55,7 @@ Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update
 * Minden olyan tartományban legalább egy tartományvezérlő és az Azure AD jelszó védelme proxy szolgáltatást futtató legalább egy kiszolgáló között léteznie kell a hálózati kapcsolatot. A kapcsolat lehetővé teszi a tartományvezérlő hozzáférés RPC-végpont eseményleképező portja (135-ös) és a proxy szolgáltatást az RPC-kiszolgáló portja.  Az RPC-kiszolgáló portja alapértelmezés szerint dinamikus RPC-portot, de konfigurálható (lásd alább) a statikus port használatára.
 * Minden gép üzemeltetése az Azure AD jelszó védelme proxy szolgáltatás az alábbi végpontok hálózati hozzáféréssel kell rendelkeznie:
 
-    |Végpont |Rendeltetés|
+    |Végpont |Cél|
     | --- | --- |
     |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
     |`https://enterpriseregistration.windows.net`|Az Azure AD jelszó-védelmi funkciók|
@@ -85,6 +85,9 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
 
 2. Telepítse a jelszót a házirend-proxyszolgáltatás szoftvert a AzureADPasswordProtectionProxy.msi MSI-csomaggal.
    * A Szoftvertelepítés nem kell újraindítani. A Szoftvertelepítés előfordulhat, hogy automatizálható a szokásos eljárásokkal MSI, például: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`
+
+      > [!NOTE]
+      > A Windows tűzfal szolgáltatásnak futnia kell az AzureADPasswordProtectionProxy.msi MSI-csomag telepítése előtt, különben telepítési hiba történik. Futtassa a Windows tűzfal van konfigurálva, a megoldás-e ideiglenes engedélyezéséhez, és indítsa el a Windows tűzfal szolgáltatást a telepítési folyamat során. A proxy szoftvert a Windows tűzfal szoftver telepítése után nincs konkrét függőségre rendelkezik. A külső tűzfalat használ, ha továbbra is kell konfigurálni annak a központi telepítésére vonatkozó követelmények kielégítéséhez (engedélyezi a 135-ös portot a bejövő hozzáférést és az RPC-proxy kiszolgáló portja e dinamikus vagy statikus). [Üzembe helyezési követelményeket lásd:](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
 
 3. Nyisson meg egy PowerShell-ablakot rendszergazdaként.
    * Az Azure AD jelszóvédelem Proxy szoftver AzureADPasswordProtection nevű új PowerShell-modult tartalmaz. A következő lépések alapján különböző parancsmagok futtatja a PowerShell-modult, és feltételezik, hogy megnyitották egy új PowerShell-ablakot, és a következőképpen importálta-e az új modul:
@@ -142,7 +145,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
    > [!NOTE]
    > Ahhoz, hogy `Register-AzureADPasswordProtectionForest` legalább egy Windows Server 2012 vagy újabb tartomány sikeres vezérlő elérhetőnek kell lennie a proxykiszolgálót a tartományban. Azonban esetében nem követelmény, hogy a tartományvezérlő ügynök szoftvert telepítenie minden olyan tartományvezérlőn, ez a lépés előtt.
 
-6. Választható lehetőség: Konfigurálása az Azure AD jelszó védelme proxy szolgáltatás egy adott portot figyeljen.
+6. Nem kötelező: Konfigurálja az Azure AD jelszó védelme proxy szolgáltatás egy adott portot figyeljen.
    * RPC TCP-n keresztül az Azure AD jelszó védelmi proxy szolgáltatással való kommunikációban használják az Azure AD jelszóvédelem DC ügynökszoftver a tartományvezérlőkön. Alapértelmezés szerint az Azure AD jelszóvédelem jelszó házirend Proxy szolgáltatás figyeli az összes rendelkezésre álló dinamikus RPC-végpont. Hálózati topológia vagy tűzfalra vonatkozó követelmények miatt szükséges, ha a szolgáltatás ehelyett beállítható egy adott TCP-porton figyeljen.
       * A szolgáltatás futtatásához egy statikus port megadásához használja a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmagot.
          ```

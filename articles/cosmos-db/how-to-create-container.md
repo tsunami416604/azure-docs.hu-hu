@@ -1,18 +1,17 @@
 ---
 title: Tároló létrehozása az Azure Cosmos DB-ben
 description: Tudnivalók a tárolók Azure Cosmos DB-ben történő létrehozásáról
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 66fdb1313177b6f6a285f7d1b1b02dadac9472cc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7434407c7d1afe197a560d9ed9c4f1e7e94b6c2b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810440"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033536"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Tároló létrehozása az Azure Cosmos DB-ben
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5a991bf5da6d17aad6b1456e82f6c7795ab67356
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 5ca3af8e660b45fdb7e7ea8186139d86a66ae00e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745023"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042189"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez:
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
 - Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../azure-monitor/app/asp-net.md)-t. 
-- [Küldjön telemetriát az alkalmazásból](app-insights-usage-overview.md#send-telemetry-from-your-app) egyéni események/oldalmegtekintések hozzáadásához
+- [Küldjön telemetriát az alkalmazásból](../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) egyéni események/oldalmegtekintések hozzáadásához
 - Küldjön [felhasználói környezetet](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) a felhasználók tevékenységeinek időbeli nyomon követéséhez és a használati funkciók teljes körű kiaknázásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba

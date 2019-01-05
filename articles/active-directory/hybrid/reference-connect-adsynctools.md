@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: ADSyncTools PowerShell-referencia |} A Microsoft Docs'
+title: 'Azure AD Connect: ADSyncTools PowerShell-referencia |} A Microsoft Docs'
 description: Ebben a dokumentumban részletes információ a ADSyncTools.psm1 PowerShell-modult.
 author: billmath
 manager: mtillman
@@ -8,14 +8,14 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 586f3c81fad79f49b3506b0bd84a4f7b218d8605
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426485"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054962"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Az Azure AD Connect: ADSyncTools PowerShell-referencia
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  ADSyncTools PowerShell-referencia
 A következő dokumentáció arról nyújt a ADSyncTools.psm1 PowerShell-modult, amely tartalmazza az Azure AD Connecttel kapcsolatos referenciainformációk.
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>CLEAR-ADSyncToolsConsistencyGuid
@@ -338,7 +338,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-TEGYE AD objektumot adja vissza: több erdő támogatása
+TEGYE AD objektumot adja vissza: Több erdő támogatása
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -470,7 +470,7 @@ További információk: about_CommonParameters (https://go.microsoft.com/fwlink/
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>SZINOPSZIS
-AAD Connnect futtatási előzmények beolvasása
+Get AAD Connect futtatási előzmények
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -479,7 +479,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Függvény, amely XML formátumban adja vissza az AAD Connnect futtatási előzmények
+Függvény, amely XML formátumban adja vissza az AAD Connect futtatási előzmények
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -526,7 +526,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Függvény AAD Connnect futtatási előzmények lekérdezése, és exportálja az összes olyan felhasználót, a hibát jelez: "SourceAnchor attribútum módosult."
+Lekérdezések AAD Connect futtatási előzmények működik, és exportálja a hibát jelentő összes felhasználója: "SourceAnchor attribútum módosult."
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -719,7 +719,7 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 Ez a szkript veszi a szervezeti egységbe az összes objektum az Active Directory-tartomány - objektumosztály (felhasználó/számítógép) alapján szűri, és szerepel a UserCertificate attribútum lejárt tanúsítványok törlése.
 Fogja csak biztonsági mentése (BackupOnly mód) alapértelmezés szerint lejárt tanúsítványok egy fájlba, és nem hajtsa végre a módosításokat az ad-ben.
 Ha - BackupOnly $false használja, akkor ezen objektumok UserCertificate attribútum található bármely lejárt tanúsítvány törlődni fognak a másolását követően AD fájlba.
-Minden tanúsítvány készül biztonsági másolat egy elkülönített FILENAME: ObjectClass_ObjectGUID_CertThumprint.cer a parancsfájlt is létrehozhat egy naplófájlt CSV formátumban, hogy érvényes vagy lejárt a tényleges megtett (beleértve a-e vagy tanúsítványok rendelkező összes felhasználó megjelenítése Kihagyott/exportált/törölt).
+Mindegyik tanúsítvány egy elkülönített filename készül biztonsági másolat: A parancsfájl ObjectClass_ObjectGUID_CertThumprint.cer CSV formátumban, vagy amelyek érvénytelen vagy lejárt, beleértve a tényleges megtett tanúsítványok rendelkező összes felhasználó megjelenítése (kimaradnak/exportált/törölt) is létrehoz egy naplófájlt.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -1227,7 +1227,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Az új ConsistencyGuid (ImmutableId) értékkel a ConsistencyGuid jelentés a függvény átveszi a frissítések felhasználók támogatja a WhatIf kapcsolóval Megjegyzés: ConsistencyGuid jelentés lap azokat a kell importálni.
+Frissíti a felhasználók az új ConsistencyGuid (immutableid azonosítója) értéket a ConsistencyGuid jelentés Ez a funkció támogatja a WhatIf kapcsolóval vegye figyelembe venni: ConsistencyGuid jelentés lap azokat a kell importálni.
 
 ### <a name="examples"></a>PÉLDÁK
 

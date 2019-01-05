@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dacd2e0d43f2c7711539896b88838adb85542963
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051730"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése Ha...
@@ -83,11 +83,11 @@ Néhány megfontolandó szempont:
 ## <a name="separate-telemetry-from-different-versions"></a>Különböző verzióit külön telemetria
 
 * Több szerepkört egy alkalmazásban: Egy Application Insights-erőforrást használja, és szűrheti a [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* A fejlesztési, tesztelési és kiadásverziót elválasztása: Használja a különböző Application Insights-erőforrást. Vegyen fel a kialakítási kulcs, melyet a web.config fájlból. [További információ](../../application-insights/app-insights-separate-resources.md)
-* Jelentéskészítési build verziója: Adjon hozzá egy tulajdonságot egy telemetriainicializáló eszközzel. [További információ](../../application-insights/app-insights-separate-resources.md)
+* A fejlesztési, tesztelési és kiadásverziót elválasztása: Használja a különböző Application Insights-erőforrást. Vegyen fel a kialakítási kulcs, melyet a web.config fájlból. [További információ](../../azure-monitor/app/separate-resources.md)
+* Jelentéskészítési build verziója: Adjon hozzá egy tulajdonságot egy telemetriainicializáló eszközzel. [További információ](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>A figyelő háttérkiszolgálók és asztali alkalmazások
-[A Windows Server SDK modul használata](../../application-insights/app-insights-windows-desktop.md).
+[A Windows Server SDK modul használata](../../azure-monitor/app/windows-desktop.md).
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Több alkalmazás a metrika az irányítópulton

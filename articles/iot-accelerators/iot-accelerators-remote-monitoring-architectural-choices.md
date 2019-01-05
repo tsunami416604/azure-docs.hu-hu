@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679596"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050591"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Távoli Monitorozási architektúra lehetőségei
 
@@ -51,7 +51,7 @@ Az Azure IoT Hub használata a távoli figyelési megoldás felhőátjárónak. 
 
 IoT-eszköz kapcsolatot használhatja:
 
-- A [az IoT Hub eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) az eszköz natív ügyfélalkalmazás megvalósítása. Az SDK-k az IoT Hub – REST API körül burkolókat és a forgatókönyvek, például az újrapróbálkozások kezelésére.
+- A [az IoT Hub eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) az eszköz natív ügyfélalkalmazás megvalósítása. Az SDK-k az IoT Hub – REST API körül burkolókat és a forgatókönyvek, például az újrapróbálkozások kezelésére.
 - Az integráció az Azure IoT Edge üzembe helyezése és kezelése az eszközök tárolókban futó egyéni modulok.
 - Az integráció az automatikus az Eszközfelügyelet az IoT hubhoz csatlakoztatott eszközök tömeges kezelése.
 

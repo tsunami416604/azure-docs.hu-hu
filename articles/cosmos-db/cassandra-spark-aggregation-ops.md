@@ -1,21 +1,19 @@
 ---
 title: A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek
 description: Ez a cikk ismerteti az Azure Cosmos DB Cassandra API táblák Spark kapcsolatos művelet-végrehajtási egyszerű aggregálástól
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.custom: basics, DDL, DML
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 385a365ac3b81bca70a71eeed7ca1876c9df49b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 56cd2284fb4bf7dabb280170757c128b8f985433
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225000"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037310"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek 
 
@@ -93,15 +91,15 @@ Válasszon egy [tárolási lehetőség]( https://spark.apache.org/docs/2.2.0/rdd
 
 * MEMORY_AND_DISK: Tároló RDD, mint a JVM deszerializált Java-objektumok. Az RDD nem fér el a memóriában, tárolja a partíciók, amely nem fér el a lemezen, és minden alkalommal, amikor szükséges, olvassa el őket a helyen vannak tárolva.
 
-* MEMORY_ONLY_SER (Java/Scala): A tárolók RDD, Java objektumok bájtos egy tömb partíciónként serializovat. Ez a beállítás akkor terület hatékonyan deszerializált objektumokat, különösen akkor használ, egy gyors szerializáló képest, de több CPU-igényes olvasni.
+* MEMORY_ONLY_SER (Java/Scala): Tároló RDD Java partíciónként szerializált objektumok bájtos egy tömb. Ez a beállítás akkor terület hatékonyan deszerializált objektumokat, különösen akkor használ, egy gyors szerializáló képest, de több CPU-igényes olvasni.
 
 * MEMORY_AND_DISK_SER (Java/Scala): Ezzel a tárolási lehetőséggel MEMORY_ONLY_SER hasonlóan, az egyetlen különbség, hogy azt Önt partíciókra, amelyek nem egyeznek meg a lemez memóriában helyett újraszámítása őket, amikor szükség van rájuk.
 
-* DISK_ONLY: Az RDD-partíciókat csak a lemezen tárolja.
+* DISK_ONLY: Az RDD-partíciók tárolja a lemezen.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Ugyanaz, mint a fenti szintek két fürt csomópontjai az egyes partíciók azonban replikálja.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Ugyanaz, mint a fenti szintek de mindegyik partíció két fürtcsomópontokon replikálja.
 
-* (Kísérleti funkció) OFF_HEAP: hasonló MEMORY_ONLY_SER, de azt az adatokat a halommemória memóriában tárolja, és engedélyezni kell a kívánt időben halommemória memóriát igényel. 
+* (Kísérleti funkció) OFF_HEAP: Hasonló MEMORY_ONLY_SER, de a halommemória memóriában tárolja az adatokat, és engedélyezni kell a kívánt időben halommemória memóriát igényel. 
 
 ```scala
 //Workaround

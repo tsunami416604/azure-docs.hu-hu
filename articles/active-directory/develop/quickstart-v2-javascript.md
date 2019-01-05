@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 99ea7e7db9d0cc80bfd37a256fc1be388feaa530
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317347"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043889"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Gyors útmutató: A felhasználók Bejelentkeztetéséhez és a egy JavaScript-alkalmazását a hozzáférési jogkivonat beszerzése
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Gyors útmutató: A felhasználók és a egy JavaScript-alkalmazását a hozzáférési jogkivonat beszerzése
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -31,7 +31,18 @@ Ebben a rövid útmutatóban fog megtudhatja, hogyan használhat egy kódmintát
 ![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-javascript/javascriptspa-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Az alkalmazás regisztrálása és a rövid útmutató mintaalkalmazásának letöltése
+> ## <a name="register-and-download-your-quickstart-application"></a>Regisztráljon, és letöltheti a rövid útmutató
+> A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
+> * [Express] [1. lehetőség: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Manuális] [2. lehetőség: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta
+>
+> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) szakaszt.
+> 1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
+> 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta
 >
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 >
@@ -55,7 +66,7 @@ Ebben a rövid útmutatóban fog megtudhatja, hogyan használhat egy kódmintát
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-javascript/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-the-project"></a>2. lépés: A projekt letöltése
+#### <a name="step-2-download-the-project"></a>2. lépés: Töltse le a projekt
 
 Alkalmas ezen beállítások valamelyikét is válassza ki a fejlesztői környezetbe.
 * [A core projektfájlok - webkiszolgáló, például a Node.js letöltése](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)

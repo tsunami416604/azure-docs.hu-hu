@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 2f9800deedb2e8d55362920fed2493a42290e764
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 39709377a83226c90626221f0f5a98f3d7d5c74a
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555846"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051203"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
 
@@ -93,9 +93,9 @@ A következő operációs rendszer tárolórendszerképeket a szolgáltatások �
 
 ## <a name="developer-experience-issues"></a>Fejlesztői élmény kapcsolatos problémák
 
-### <a name="dns-resolution-from-an-outbound-container-doesnt-work"></a>Egy kimenő tárolóból DNS-feloldás nem működik
+### <a name="dns-resolution-and-outgoing-traffic-from-a-container-doesnt-work"></a>DNS-feloldás és a egy tároló kimenő forgalma nem működik
 
-Szolgáltatások közötti kommunikáció sikertelen bizonyos körülmények között lehet. A rendszer vizsgálata folyamatban van. Csökkentése érdekében:
+Ha rendelkezik egy tároló, amely elküldi a kimenő forgalmat, beleértve az elérni kívánt DNS-szolgáltatás, előfordulhat, hogy bizonyos körülmények között. A rendszer vizsgálata folyamatban van. Csökkentése érdekében:
 
 - Használja a Windows Fall Creators update (1709-es verzió) vagy nagyobb, mint az alapszintű tárolórendszerképet.
 - Ha egyedül a szolgáltatás neve sem működik, próbálja meg a teljes nevet: ServiceName.ApplicationName.

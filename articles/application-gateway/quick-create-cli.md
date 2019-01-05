@@ -10,31 +10,29 @@ ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 12/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 62c4e51cd160ed7830eb42943225847857dc4963
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 59c7781efa8aaa6405ef3cb021ca2123d94ad61b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963628"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035491"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure CLI-vel
 
-Az Azure Application Gateway szolgáltatással az alkalmazása webes forgalmát adott erőforrásokhoz irányíthatja figyelők portokhoz társításával, szabályok létrehozásával és erőforrások a háttérkészlethez adásával.
-
-Ez az útmutató megmutatja, hogyan hozhat létre gyorsan az Azure CLI segítségével egy olyan Application Gatewayt, amely két virtuális géppel rendelkezik a háttérkészletben. Ezután tesztelheti, hogy megfelelően működik-e.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre gyorsan egy application gateway a háttérkészlet két virtuális gép az Azure CLI használatával. Ezután tesztelheti, hogy megfelelően működik-e. Az Azure Application Gatewayjel, az alkalmazás webes forgalom meghatározott forrásokhoz való közvetlen: figyelői portok, szabályok létrehozásával és hozzárendelésével hozzáadunk erőforrásokat egy háttérkészlet.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szüksége. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha helyi telepítése és használata a parancssori Felületet, futtassa az Azure CLI 2.0.4-es vagy újabb. A verzió megkereséséhez futtassa **az--verzió**. Telepítésekor vagy verziófrissítésekor kapcsolatos információkért lásd: [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoportokban mindig létre kell hoznia erőforrásokat. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. 
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoportba foglalhat. Hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az-group-create). 
 
 A következő példában létrehozunk egy *myResourceGroupAG* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -44,9 +42,9 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Ahhoz, hogy az alkalmazásátjáró kommunikálhasson más erőforrásokkal, létre kell hoznia egy virtuális hálózatot. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Ebben a példában két alhálózatot hozunk létre: egyet az Application Gateway számára, egyet pedig a virtuális gépekhez. 
+Amikor egy virtuális hálózatot hoz létre, az application gateway kommunikálhatnak más erőforrásokkal. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Ebben a példában két alhálózattal hoz létre: egyet az application gateway, a másik pedig a virtuális gépek. 
 
-Hozza létre a virtuális hálózatot és az alhálózatot az [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) paranccsal. Hozza létre a nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) paranccsal.
+A virtuális hálózatot és alhálózatot létrehozni, használjon [az network vnet létrehozása](/cli/azure/network/vnet#az-network-vnet-create). Futtatás [az network public-ip létrehozása](/cli/azure/network/public-ip#az-public-ip-create) nyilvános IP-cím létrehozásához.
 
 ```azurecli-interactive
 az network vnet create \
@@ -68,13 +66,13 @@ az network public-ip create \
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazásátjáró háttérkiszolgálóiként fogunk használni. 
+Ebben a példában az application gateway számára háttérkiszolgálóiként használja az Azure két virtuális gépet hoz létre. 
 
 ### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
 
-Az Application Gateway sikeres létrehozásának ellenőrzéséhez az NGINX-et is telepíti a virtuális gépekre. Egy cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy „Hello World” Node.js-alkalmazást a Linux rendszerű virtuális gépeken. 
+Telepítse a [NGINX-webkiszolgálót](https://docs.nginx.com/nginx/) az alkalmazás ellenőrzéséhez a virtuális gépek átjáró sikeresen létrejött. A cloud-init konfigurációs fájl használatával telepíti az nginx-et és a egy "Hello World" Node.js-alkalmazás futtatása Linux rendszerű virtuális gépen. Cloud-Init használatával kapcsolatos további információkért lásd: [Cloud-init támogatása az Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init).
 
-Az aktuális parancshéjban hozzon létre egy cloud-init.txt nevű fájlt, majd másolja és illessze be a következő konfigurációt a parancshéjba. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+Az Azure Cloud shellben, másolja és illessze be a következő konfigurációs fájlba *cloud-init.txt*. Adja meg *szerkesztő cloud-init.txt* a fájl létrehozásához.
 
 ```yaml
 #cloud-config
@@ -118,7 +116,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Hozza létre a hálózati interfészeket az [az network nic create](/cli/azure/network/nic#az-network-nic-create) paranccsal. Hozza létre a virtuális gépeket az [az vm create](/cli/azure/vm#az-vm-create) paranccsal.
+Hozza létre a hálózati interfészeket az [az network nic create](/cli/azure/network/nic#az-network-nic-create) paranccsal. A virtuális gépek létrehozására használhatja [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -140,7 +138,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Hozzon létre egy Application Gatewayt az [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) paranccsal. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. A hálózati interfészek privát IP-címeit kiszolgálóként adjuk hozzá az Application Gateway háttérkészletéhez.
+Hozzon létre egy application gateway használatával [az network application-gateway létrehozása](/cli/azure/network/application-gateway#az-application-gateway-create). Egy application gateway az Azure CLI-vel való létrehozásakor megadhatja a konfigurációs adatokat, például a kapacitás, a Termékváltozat és a HTTP beállításait. Az Azure magánhálózati IP-címet a hálózati adapterek ezt követően hozzáadja az application Gateway háttérkészlet-kiszolgálóként.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -158,17 +156,17 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Az Application Gateway létrehozása 30 percet is igénybe vehet. Az Application Gateway létrehozása után megtekintheti a funkcióit:
+Az application gateway létrehozása akár 30 percet is igénybe vehet. A létrehozást követően a következő beállításokat is megtekintheti a **beállítások** szakaszában a **az Application gateway** oldalon:
 
-- *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
-- *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
-- *appGatewayHttpListener* – Az *appGatewayBackendPool* készlethez társított alapértelmezett figyelő.
-- *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
-- *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
+- **appGatewayBackendPool**: Található a **háttérkészletek** lapot. Azt adja meg a szükséges háttérkészlethez.
+- **appGatewayBackendHttpSettings**: Található a **HTTP-beállítások** lapot. Meghatározza, hogy az application gateway 80-as portot és a HTTP protokollt használja a kommunikációhoz.
+- **appGatewayHttpListener**: Található a **figyelői lap**. Azt adja meg a társított alapértelmezett figyelő **appGatewayBackendPool**.
+- **appGatewayFrontendIP**: Található a **előtérbeli IP-konfigurációk** lapot. Rendeli hozzá a *myAGPublicIPAddress* való **appGatewayHttpListener**.
+- **felhasználóval a rule1**: Található a **szabályok** lapot. Azt adja meg az alapértelmezett útválasztási szabályt, amely társítva van **appGatewayHttpListener**.
 
-## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az NGINX telepítése nem kötelező az Application Gateway létrehozásához, ebben az útmutatóban azonban megtettük, hogy ellenőrizzük az Application Gateway sikeres létrehozását. Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
+Bár az Azure nem szükséges egy NGINX-webkiszolgálót az application gateway létrehozása, telepítése, ebben a rövid, ellenőrizze, hogy az Azure sikeresen létrejött-e az application gateway. Az új application gateway nyilvános IP-címét használja [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -178,13 +176,15 @@ az network public-ip show \
   --output tsv
 ``` 
 
+Másolja és illessze be a nyilvános IP-címet a böngésző címsorába.
+    
 ![Az alkalmazásátjáró tesztelése](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-Amikor frissíti a böngészőt, megjelenik a másik virtuális gép neve.
+Amikor frissíti a böngészőben, megtekintheti a második virtuális gép nevét.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Először tekintse át az Application Gatewayjel együtt létrehozott erőforrásokat, majd ha már nincs rájuk szüksége, az [az group delete](/cli/azure/group#az-group-delete) paranccsal távolítsa el az eszközcsoportot, az Application Gatewayt és a kapcsolódó erőforrásokat.
+Ha már nincs szüksége az application gateway segítségével létrehozott erőforrásokat, használja a [az csoport törlése](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport. Az erőforráscsoport eltávolításával is eltávolítja az application gateway és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 776956624dc1da12427d6e4f79ea5e59788f2459
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d2863e39b5f28c56e2b9045513aa83326d8b8c7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135355"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043192"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény- és mérettesztelés az Azure Cosmos DB tesztelése
 
@@ -37,16 +37,16 @@ Ha az Azure Cosmos DB-teljesítmény javítása érdekében: ügyféloldali konf
 ## <a name="run-the-performance-testing-application"></a>A Teljesítmény alkalmazás tesztelése
 Első lépések a leggyorsabb mód az fordítása és futtatása a .NET-minta a következő lépésben ismertetett módon. Tekintse át a forráskódot, és hasonló konfigurációkat megvalósítani a saját ügyfélalkalmazásait is.
 
-**1. lépés:** töltse le a projektet a [Azure Cosmos DB teljesítménytesztelési minta](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), vagy a GitHub-tárház elágaztatása.
+**1. lépés:** Töltse le a projektet a [Azure Cosmos DB teljesítménytesztelési minta](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), vagy a GitHub-tárház elágaztatása.
 
-**2. lépés:** EndpointUrl, AuthorizationKey, CollectionThroughput és az App.config fájlban (nem kötelező) DocumentTemplate beállításainak módosítását.
+**2. lépés:** Módosítsa a beállításokat az EndpointUrl, AuthorizationKey, CollectionThroughput és DocumentTemplate az App.config fájlban (nem kötelező).
 
 > [!NOTE]
 > Mielőtt üzembe helyezi és nagy teljesítményű gyűjteményeket, tekintse meg a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/cosmos-db/) gyűjteményenként költségek becslése érdekében. Az Azure Cosmos DB keresztül számláz az adott tárolási és átviteli sebesség függetlenül órákra lebontva. Költségeket takaríthat törlése vagy a tesztelés után az Azure Cosmos DB-gyűjtemények átviteli kapacitást csökkentését.
 > 
 > 
 
-**3. lépés:** fordítsa le és futtassa a konzolalkalmazást a parancssorból. A következőhöz hasonló kimenetnek kell megjelennie:
+**3. lépés:** Fordítsa le és futtassa a konzolalkalmazást a parancssorból. A következőhöz hasonló kimenetnek kell megjelennie:
 
     C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
@@ -89,7 +89,7 @@ Első lépések a leggyorsabb mód az fordítása és futtatása a .NET-minta a 
     Press any key to exit...
 
 
-**(Ha szükséges), a 4. lépés:** a jelentett átviteli sebesség (RU/s) az eszköz legyen ugyanaz vagy magasabb, mint a kiosztott átviteli sebesség, a gyűjtemény vagy egy gyűjteményt. Ha nem így van, kis lépésekben az Analyticsunits növelése segíthetnek eléri a korlátot. Ha az átviteli sebesség az ügyfélalkalmazás trületek, indítsa el az alkalmazás több példánya további ügyfélszámítógépeken. Ehhez a lépéshez segítségre van szüksége, ha e-mailt askcosmosdb@microsoft.com vagy a támogatási jegyet a [az Azure portal](https://portal.azure.com).
+**4. lépés (ha szükséges):** A jelentett átviteli sebesség (RU/s) az eszköz legyen ugyanaz vagy magasabb, mint a kiosztott átviteli sebesség, a gyűjtemény vagy egy gyűjteményt. Ha nem így van, kis lépésekben az Analyticsunits növelése segíthetnek eléri a korlátot. Ha az átviteli sebesség az ügyfélalkalmazás trületek, indítsa el az alkalmazás több példánya további ügyfélszámítógépeken. Ehhez a lépéshez segítségre van szüksége, ha e-mailt askcosmosdb@microsoft.com vagy a támogatási jegyet a [az Azure portal](https://portal.azure.com).
 
 Miután az alkalmazást futtató, próbálkozzon másik [indexelési szabályzataihoz](index-policy.md) és [konzisztenciaszintek](consistency-levels.md) átviteli sebességgel és késéssel gyakorolt hatásuk megértéséhez. Tekintse át a forráskódot is, és a saját tesztelési megvásárlásával vagy éles üzemi alkalmazások pedig hasonló konfigurációk megvalósításához.
 

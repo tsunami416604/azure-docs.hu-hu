@@ -1,21 +1,21 @@
 ---
 title: Hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben?
 description: Megismerheti, hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben
-services: cosmos-db
 author: rafats
 ms.author: rafats
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.openlocfilehash: 7f8c3f6d11ba7551cb0d0c9398b46bb001b9b75b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 329f50341649c353fae21d92e8d5f25b1e45a632
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832632"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043583"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB lekérdezése az SQL API használatával
 
 Az Azure Cosmos DB [SQL API](documentdb-introduction.md) támogatja a dokumentumok SQL-lel való lekérdezését. Ebben a cikkben egy mintadokumentum, valamint két minta SQL-lekérdezés és azok eredménye található.
 
@@ -121,7 +121,7 @@ A következő lekérdezés a család összes olyan gyermekének utónevét adja 
 
 **Results**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+[{"givenName": "Jesse"}, {"givenName": "Lisa"}]
 
 
 ## <a name="next-steps"></a>További lépések

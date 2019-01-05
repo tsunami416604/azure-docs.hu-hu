@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 12/31/2018
+ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: dd4873017105db190f9a468ec1f1f77f4e8c9c0e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 019d6120f8f3769d2d974270d575278da0370ef0
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53977127"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54057388"
 ---
 Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üzembe helyezése az IoT Edge-eszközökön. Az IoT Edge-modul egy tárolóként megvalósított végrehajtható csomag. Ebben a szakaszban egy előre elkészített modulnak a üzembe a [IoT Edge-modulok szakaszában az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Ez a modul az IoT Edge-eszköz szimulált telemetriát hoz létre.
 
@@ -21,13 +21,13 @@ Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üze
 
    ![Az Azure portál keresési szimulált hőmérséklet-érzékelő](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
 
-2. Válassza ki az IoT Edge-eszköz, ez a modul fogadásához. Az a **IoT Edge-modul a Céleszközök**, adja meg a következő információkat:
+2. Válassza ki az IoT Edge-eszköz, ez a modul fogadásához. Az a **IoT Edge-modul a Céleszközök** lap, adja meg a következő információkat:
 
    1. **Előfizetés**: válassza ki az előfizetést, amely tartalmazza az IoT hub használata esetén.
 
    2. **Az IoT Hub**: válassza ki az IoT hub használata a nevét.
 
-   3. **IoT Edge-eszköz neve**: Ha a javasolt eszköznév ebben a rövid útmutatóban a korábban használt, adja meg a **myEdgeDevice**. Vagy válassza **található eszköz** választhat az IoT hub-eszközök listáját. 
+   3. **IoT Edge-eszköz neve**: Ha a javasolt eszköznév ebben a rövid útmutatóban a korábban használt, adja meg a **myEdgeDevice**. Vagy válassza **található eszköz** választhat az IoT hub IoT Edge-eszközök listáját. 
    
    4. Kattintson a **Létrehozás** gombra.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: f7eea6e9fdbe69003a93e34f9107d279f2105d7f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2f480fd4d5d7d6261776660f1a7eab587320c849
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720339"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052513"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -236,9 +236,7 @@ A mintaalkalmazás sikeresen fut, amikor megjelenik a következő eredmények:
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Az Azure IoT Hub által fogadott telemetriai adatok megtekintése
 
-Használhat [Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén az Azure IoT-eszközkészlet) eszköz – felhő (D2C) üzenetek az IoT Hub figyeléséhez.
-
-1. A Visual Studio Code-ban keresse meg **Azure IoT Hub-eszközkészlet** a bővítmény Marketplace-en, és telepítse.
+Használhat [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) az eszközről a felhőbe (D2C) üzenetek az IoT Hub figyeléséhez.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/), keresse meg az IoT Hub létrehozott.
     ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)

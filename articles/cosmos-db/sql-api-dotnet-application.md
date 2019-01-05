@@ -1,24 +1,21 @@
 ---
-title: 'ASP.NET MVC oktatóprogram az Azure Cosmos DB: webalkalmazás-fejlesztés'
+title: 'ASP.NET MVC oktatóprogram az Azure Cosmos DB: Webalkalmazás-fejlesztés'
 description: ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához az Azure Cosmos DB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre.
-keywords: asp.net mvc oktatóanyag, webalkalmazás fejlesztése, mvc-webalkalmazás, asp net mvc lépésről lépésre haladó oktatóanyag
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
-ms.custom: devcenter, vs-azure
-ms.openlocfilehash: b0c8d46e74eec4bad7b7e664682c97eb0f0068b6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 138df4aa0a0e23bd97bca960573cc0971b66b869
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098726"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041407"
 ---
-# <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással
+# <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: Webalkalmazás-fejlesztés az Azure Cosmos DB használatával
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -51,7 +48,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
 A jelen cikk összes képernyőfelvétele a Microsoft Visual Studio Community 2017 programmal készült. Ha a rendszere más verzióval van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
-## <a name="_Toc395637761"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
+## <a name="_Toc395637761"></a>1. lépés: Az Azure Cosmos DB-adatbázisfiók létrehozása
 Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik SQL-fiókkal az Azure Cosmos DB-hez, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -216,7 +213,7 @@ Az **Elemindex** nézet létrehozásához hasonlóan most létrehozunk egy új n
 
 Ha ezzel végzett, zárja be az összes cshtml dokumentumot a Visual Studióban, mivel később vissza fog térni ezekhez a nézetekhez.
 
-## <a name="_Toc395637769"></a>5. lépés: Az Azure Cosmos DB csatlakoztatása
+## <a name="_Toc395637769"></a>5. lépés: Azure Cosmos DB csatlakoztatása
 Most, hogy elvégeztük az MVC-vel kapcsolatos szokásos feladatokat, adjuk hozzá az Azure Cosmos DB kódját. 
 
 Ebben a szakaszban a következők kezeléséhez adunk hozzá kódot:
@@ -414,9 +411,9 @@ Adjunk néhány kódot az Azure Cosmos DBRepository és az ItemController elemhe
    
     Ez a kód a DocumentDBRepository tárat hívja be, és a CreateItemAsync metódussal őrzi meg az új teendőelemet az adatbázisban. 
    
-    **Biztonsági megjegyzés**: A **ValidateAntiForgeryToken** attribútum itt segít megvédeni az alkalmazást a webhelyközi kérések hamisítása ellen. Az attribútum hozzáadásánál többről van szó, a nézeteknek is működniük kell ezzel a hamisítás elleni tokennel. A témáról további részletekért és a megfelelő megvalósításának példáiért lásd: [Webhelyközi kérések hamisításának megakadályozása][Preventing Cross-Site Request Forgery]. A [GitHubon][GitHub] közzétett forráskódban szerepel a teljes megvalósítás.
+    **Biztonsági megjegyzés**: A **ValidateAntiForgeryToken** attribútum segítségével itt segít megvédeni az alkalmazást a webhelyközi kérések hamisítása ellen. Az attribútum hozzáadásánál többről van szó, a nézeteknek is működniük kell ezzel a hamisítás elleni tokennel. A témáról további részletekért és a megfelelő megvalósításának példáiért lásd: [Webhelyközi kérések hamisításának megakadályozása][Preventing Cross-Site Request Forgery]. A [GitHubon][GitHub] közzétett forráskódban szerepel a teljes megvalósítás.
    
-    **Biztonsági megjegyzés**: A metódus paraméteren a **Bind** (Kötés) attribútummal is segítünk a túlküldéses támadások elleni védelemben. További részletekért lásd: [Alapvető CRUD műveletek az ASP.NET MVC-ben][Basic CRUD Operations in ASP.NET MVC].
+    **Biztonsági megjegyzés**: Is használhatja a **kötési** attribútum a metódus paraméteren túlküldéses támadások elleni védelem érdekében. További részletekért lásd: [Alapvető CRUD műveletek az ASP.NET MVC-ben][Basic CRUD Operations in ASP.NET MVC].
 
 Ennyi lenne az adatbázishoz új elemek hozzáadásához szükséges kód.
 
@@ -494,7 +491,7 @@ Az egyik utolsó teendő azon funkció hozzáadása, amellyel az **elemek** szer
 
 Ennyi, ez minden, amire szükségünk van az alkalmazás futtatásához, a hiányos **elemek** listázásához és új **elemek** hozzáadásához, valamint az **elemek** szerkesztéséhez.
 
-## <a name="_Toc395637773"></a>6. lépés: Az alkalmazás helyileg történő futtatása
+## <a name="_Toc395637773"></a>6. lépés: Az alkalmazás helyi futtatása
 Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
 1. Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
@@ -516,7 +513,7 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
     ![Képernyőfelvétel az Index nézetről, bejelölt Completed (Befejezve) jelölőnégyzettel](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
-## <a name="_Toc395637774"></a>7. lépés: Az alkalmazás üzembe helyezése az Azure App Service-ben 
+## <a name="_Toc395637774"></a>7. lépés: Az Azure App Service-alkalmazás üzembe helyezése 
 Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatbázissal, az Azure App Service-be fogjuk telepíteni ezt a webalkalmazást.  
 
 1. Az alkalmazás közzétételéhez egyszerűen a jobb gombbal a projektre kell kattintania a **Megoldáskezelőben**, majd a **Publish** (Közzététel) parancsot választania.

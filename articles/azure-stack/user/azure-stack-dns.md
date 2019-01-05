@@ -11,29 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: df4f6066a4bf03f6b09777f3556c52a237501592
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497653"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052342"
 ---
 # <a name="using-dns-in-azure-stack"></a>DNS-sel az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack a következő tartománynévrendszer (DNS) funkciókat támogatja:
 
 * DNS-állomásnév feloldása
-* DNS-zónák és -rekordjait az API létrehozására és kezelésére
+* DNS-zónák és -rekordjait az API létrehozása és kezelése
 
 ## <a name="support-for-dns-hostname-resolution"></a>DNS-állomásnév feloldása támogatása
 
 Megadhat egy DNS-tartománynév címkét a nyilvános IP-erőforrások. Használja az Azure Stack **domainnamelabel.location.cloudapp.azurestack.external** a címke nevét és a maps számára, hogy a nyilvános IP-cím az Azure Stack felügyelt DNS-kiszolgálók.
 
-Például, ha létrehoz egy nyilvános IP-erőforráshoz az **contoso** egy tartománynévcímkét a helyi Azure Stack-helyen, mint a [teljesen minősített tartománynevét (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)  **contoso.local.cloudapp.azurestack.external** feloldja az erőforrás nyilvános IP-címét.   Ez a teljes tartománynév használatával hozzon létre egy CNAME rekordot a nyilvános IP-címre az Azure Stackben, egyéni tartományt.
+Például, ha létrehoz egy nyilvános IP-erőforráshoz az **contoso** egy tartománynévcímkét a helyi Azure Stack-helyen, mint a [teljesen minősített tartománynevét (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)  **contoso.local.cloudapp.azurestack.external** feloldja az erőforrás nyilvános IP-címét. Ez a teljes tartománynév használatával hozzon létre egy CNAME rekordot a nyilvános IP-címre az Azure Stackben, egyéni tartományt.
 
 A névfeloldással kapcsolatos további tudnivalókért tekintse meg a [DNS-feloldás](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) cikk.
 
@@ -58,23 +58,19 @@ Az Azure Stack DNS-infrastruktúra képes legyen tömörebb, mint az Azure. A m�
 
 ## <a name="comparison-with-azure-dns"></a>Az Azure DNS összehasonlítása
 
-Az Azure DNS DNS az Azure Stackben hasonlít, de fontos kivételek:
+Az Azure DNS DNS az Azure Stackben hasonlít, de néhány fontos kivételek:
 
-* **Nem támogatja a AAAA típusú rekord**
+* **Nem támogatja a AAAA típusú rekord**: Az Azure Stack nepodporuje AAAA típusú rekord, mert az Azure Stack nem támogatja az IPv6-címek. Ez a fő különbség a DNS az Azure-ban és az Azure Stackben.
 
-    Az Azure Stack nepodporuje AAAA típusú rekord, mert az Azure Stack nem támogatja az IPv6-címek. Ez a fő különbség a DNS az Azure-ban és az Azure Stackben.
-* **Nem több-bérlős**
+* **Nem több-bérlős**: A DNS-szolgáltatás, az Azure Stackben ne legyen több-bérlős. Mindegyik bérlő ugyanazt a DNS-zóna nem hozható létre. Csak az első előfizetés, amely megpróbálja a zóna létrehozása sikeres volt, és a későbbi kérelmeket. Ez a fő különbség az Azure és az Azure Stack DNS.
 
-    A DNS-szolgáltatás, az Azure Stackben ne legyen több-bérlős. Mindegyik bérlő ugyanazt a DNS-zóna nem hozható létre. Csak az első előfizetés, amely megpróbálja a zóna létrehozása sikeres volt, és a későbbi kérelmeket. Ez a fő különbség az Azure és az Azure Stack DNS.
-* **A címkék, metaadatokat és ETag**
-
-    Hogyan kezeli az Azure Stack a címkéket, metaadatok, ETag és korlátokat kisebb különbségek vannak.
+* **A címkék, metaadatokat és ETag**: Hogyan kezeli az Azure Stack a címkéket, metaadatok, ETag és korlátokat kisebb különbségek vannak.
 
 Azure DNS szolgáltatással kapcsolatos további tudnivalókért lásd: [DNS-zónák és rekordok](../../dns/dns-zones-records.md).
 
 ### <a name="tags"></a>Címkék
 
-Az Azure Stack DNS támogatja az Azure Resource Manager-címkék használatát a DNS-zóna erőforrás. Nem támogatja a címkék a DNS-rekordhalmazok, alternatív megoldásként "metaadatok" támogatják a DNS-rekordhalmazok ezután mértékét.
+Az Azure Stack DNS támogatja az Azure Resource Manager-címkék használatát a DNS-zóna erőforrás. Nem támogatja a címkék a DNS-rekordhalmazok, bár lehetőségként **metaadatok** a DNS-rekordhalmazok, támogatott a következő szakaszban leírtak szerint.
 
 ### <a name="metadata"></a>Metaadatok
 
@@ -86,7 +82,7 @@ Tegyük fel, hogy a két személynek vagy két folyamatok próbálja meg módos�
 
 Használja az Azure Stack DNS *ETag* biztonságosan kezelje az egyidejű módosításokat ugyanarra az erőforrásra. ETag nem ugyanaz az Azure Resource Manager *címkék*. Minden DNS-erőforrás (zóna vagy rekordhalmaz) egy hozzá társított ETag címkével rendelkezik. Ha egy erőforrás lekérdezése van, az ETag címkéje is lekéri. Egy erőforrás frissítésekor kiválaszthatja adja át vissza az ETag címke, az Azure Stack DNS-ben is ellenőrizze, hogy az Etag a kiszolgáló megfelel. Minden frissítés egy erőforráshoz újragenerálása folyamatban van az Etag eredményez, mivel az Etag nem egyezik azt jelzi, egyidejű változás történt. ETag is segítségével új erőforrás létrehozásakor győződjön meg arról, hogy az erőforrás még nem létezik.
 
-Alapértelmezés szerint az Azure Stack DNS PowerShell-parancsmagok használatával ETag egyidejű letiltása a zónák és -rekordhalmazok. A választható **-felülírása** kapcsoló használható Etag ellenőrzések letiltásához, ebben az esetben minden egyidejű bekövetkezett változásokat a rendszer felülírja.
+Alapértelmezés szerint az Azure Stack DNS PowerShell-parancsmagok használatával ETag egyidejű letiltása a zónák és -rekordhalmazok. Használhatja a választható `-Overwrite` váltson le Etag-ellenőrzéseket, emiatt felülírásának történt egyidejű módosításokat.
 
 Az Azure Stack DNS REST API a szintjén ETag megadott HTTP-fejlécek használata. Az alábbi táblázatban ismertetett viselkedésük:
 
@@ -109,4 +105,4 @@ Az alábbi alapértelmezett korlátok vonatkoznak az Azure Stack DNS használata
 
 ## <a name="next-steps"></a>További lépések
 
-[IDN formátumú tartománynevek az Azure Stack bemutatása](azure-stack-understanding-dns.md)
+- [IDN formátumú tartománynevek az Azure Stack bemutatása](azure-stack-understanding-dns.md)

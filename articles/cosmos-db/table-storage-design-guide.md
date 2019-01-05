@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB támogatja a méretezést és teljesítményt táblák tervezése
-description: 'Az Azure Storage Table tervezési útmutatója: Tervezése méretezhető és nagytejesítményű táblákat az Azure Cosmos DB és az Azure Storage-táblából'
-author: SnehaGunda
-ms.author: sngun
+description: 'Az Azure Storage Table tervezési útmutatója: Tervezési méretezhető és nagytejesítményű táblákat az Azure Cosmos DB és az Azure Storage-táblából'
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 12/07/2018
+author: wmengmsft
+ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 656a8acc06a0d02959dda42c980db65c011f0bb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140948"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044178"
 ---
-# <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezése méretezhető és Nagytejesítményű táblákat
+# <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezési méretezhető és Nagytejesítményű táblákat
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -132,7 +132,7 @@ A fiók neve, a táblázat neve, és **PartitionKey** együttesen azonosítja a 
 
 A Table service szolgáltatásban az egyes csomópontok services egy vagy több fejezze be a partíciók és a szolgáltatás skálázható dinamikus terheléselosztás partíciók csomópontok között. Ha egy csomópont terhelés alatt van, a table service is *felosztása* partíciók számos különböző csomópontokon alakzatot a csomópont által kiszolgált; enyhül a forgalmat, ha a szolgáltatás is *egyesítési* csendes csomópontjáról partíció tartományok vissza az alakzatot egyetlen csomópont.  
 
-További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: A magas rendelkezésre álló felhős Társzolgáltatás erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: Erős konzisztencia magas rendelkezésre állású Felhőbeli Tárolószolgáltatásba](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Tranzakciók
 A Table service szolgáltatásban (EGTs) tranzakciók atomi frissítések végrehajtásához több entitásban a kizárólag beépített mechanizmus. EGTs is nevezzük *batch-tranzakciók* bizonyos dokumentációkban. EGTs csak működhet a (ugyanazzal a partíciókulccsal adott táblában található megosztás), ugyanazon a partíción tárolt entitások így bármikor atomi tranzakciós viselkedés van szüksége arról, hogy ezeket az entitásokat is ugyanazon a partíción kell több entitás. Ez a gyakran több entitástípusok tárolja az ugyanabban a táblában (és a partíció), és nem használja több tábla különböző entitástípusok okát. Egyetlen EGT működhet, a legfeljebb 100 entitást.  Több egyidejű EGTs feldolgozásra elküldött, esetén fontos, hogy ezek EGTs nem fog működni az entitások, amelyek közösek EGTs között, ellenkező esetben feldolgozása késhet.
@@ -582,11 +582,11 @@ Vezetéknév keresési engedélyezése a fenti entitás struktúrával, meg kell
 * Hozzon létre index entitások az alkalmazottak entitásokként ugyanazon a partíción.  
 * Index entitások létrehozása egy külön partíciót vagy tábla.  
 
-<u>#1. lehetőség: A blob storage</u>  
+<u>#1. lehetőség: Blob storage használata</u>  
 
 Az első lehetőség, akkor hozzon létre minden egyedi Vezetéknév, és minden egyes blob-tárolóban lévő blobok listáját a **PartitionKey** (részleg) és **RowKey** alkalmazottak a múlt nevet (alkalmazott azonosítója) értékeit. Adja hozzá, vagy egy alkalmazott törlésekor, biztosítania kell, hogy idővel konzisztenssé váljanak az alkalmazott entitások-e a megfelelő blob tartalmát.  
 
-<u>#2. lehetőség:</u> ugyanazon a partíción index entitások létrehozása  
+<u>#2. lehetőség:</u> Ugyanazon a partíción index entitások létrehozása  
 
 A második lehetőség használja a index entitások, amelyek tárolják a következő adatokat:  
 
@@ -608,7 +608,7 @@ Az alábbi lépéseket kell követnie, amikor szüksége van egy részleg utols�
 2. Elemezni az alkalmazotti azonosítókat a EmployeeIDs mezőben listája.  
 3. További információ az egyes ezeknek a dolgozóknak (például e-mail-címeket) van szüksége, ha minden ilyen használatával alkalmazott lekéréséhez **PartitionKey** "Értékesítés" érték és **RowKey** értékeket a 2. lépésben beolvasott alkalmazottak listája.  
 
-<u>#3. lehetőség:</u> index entitások egy külön partíciót, vagy a tábla létrehozása  
+<u>#3. lehetőség:</u> Index entitások egy külön partíciót, vagy a tábla létrehozása  
 
 A harmadik lehetőség, amely a következő adatokat tárolja index entitások használja:  
 
@@ -1300,7 +1300,7 @@ Ez a szakasz további része a Storage ügyféloldali kódtár, amely ugyanabban
 #### <a name="retrieving-heterogeneous-entity-types"></a>Heterogén entitástípusok beolvasása
 Ha használja a Storage ügyféloldali kódtár, akkor három lehetőség több entitás típusok kezelése.  
 
-Ha tudja, hogy az entitást, tárolja és a egy adott típusú **rowkey tulajdonságok esetén** és **PartitionKey** értékek, akkor az előző két példában látható módon az entitás kikeresésekor a entitástípus megadhatja, hogy kérje le az entitásokat típusú **EmployeeEntity**: [a Storage ügyféloldali kódtár használatával pont lekérdezést végrehajtó](#executing-a-point-query-using-the-storage-client-library) és [beolvasása a LINQ használatával több entitás](#retrieving-multiple-entities-using-linq).  
+Ha tudja, hogy az entitást, tárolja és a egy adott típusú **rowkey tulajdonságok esetén** és **PartitionKey** értékek, akkor az előző két példában látható módon az entitás kikeresésekor a entitástípus megadhatja, hogy kérje le az entitásokat típusú **EmployeeEntity**: [A Storage ügyféloldali kódtár használatával pont lekérdezést végrehajtó](#executing-a-point-query-using-the-storage-client-library) és [beolvasása a LINQ használatával több entitás](#retrieving-multiple-entities-using-linq).  
 
 A második lehetőség a **DynamicTableEntity** típusa (egy tulajdonságcsomagot) helyett egy konkrét POCO entitás típusa (ezt a lehetőséget is javíthatja a teljesítményt, mert nem kell szerializálható és deszerializálható az entitás a .NET-típusok). Az alábbi C#-kód potenciálisan több különböző típusú entitás beolvasása a táblából, de adja vissza minden entitás, **DynamicTableEntity** példányok. Ezután a **EntityType** tulajdonságot minden entitás típusának meghatározása:  
 
@@ -1507,9 +1507,9 @@ Aszinkron példában láthatja a szinkron verzió a következő módosításokat
 Az ügyfélalkalmazás több aszinkron metódusok ehhez hasonló meghívhatja, és minden egyes metódus meghívásának egy külön szál fog futni.  
 
 ### <a name="credits"></a>Stáblisták
-Köszönjük, hogy az Azure-csapat kaphatnak hozzájárulásukért következő tagjai szeretnénk: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Vinay Shah Serdar Ozler, valamint a Microsoft DX Tom Hollander. 
+Köszönjük, hogy az Azure-csapat kaphatnak hozzájárulásukért következő tagjai szeretnénk: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Vinay Shah és Serdar Ozler, valamint a Microsoft DX Tom Hollander. 
 
-Köszönjük, hogy értékes visszajelzést a következő Microsoft MVPs felülvizsgálati ciklus során a is szeretnénk: Igor Papirov és Edward Bakker.
+Szeretnénk Köszönjük, hogy értékes visszajelzést a következő Microsoft MVPs felülvizsgálati ciklus során is: IGOR Papirov és Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

@@ -13,25 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 45a65c7a94f3e6917b2882f27c9ad7d764ef97d7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52621835"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049758"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Az Azure API Management-előfizetések
 
-Előfizetések egy fontos fogalom, melyet az Azure API Management (APIM). Az APIM-példány keresztül közzétett API-k hozzáférést szerezni az API-fogyasztókat leggyakoribb módja. Ez a cikk a fogalmi áttekintése.
+Előfizetések az Azure API Management egyik fontos vonása. Azok az API Management-példány keresztül közzétett API-k eléréséhez az API-fogyasztókat leggyakoribb módja. Ez a cikk a fogalmi áttekintése.
 
-## <a name="what-is-subscriptions"></a>Mi az előfizetéseket
+## <a name="what-are-subscriptions"></a>Mik azok az előfizetések?
 
-Közzé API-kat az APIM segítségével, a legegyszerűbb és leggyakrabban használt módszer a biztonságos hozzáférés az API-k esetén előfizetési kulcsok használatával. Más szóval fejlesztőknek szól, akik a fogyasztói a közzétett API-k tartalmaznia kell egy érvényes előfizetési kulcsot a HTTP-kérések API-k hívása esetén. Ellenkező esetben a hívások azonnal visszautasítja az APIM-átjáróhoz, és nem továbbítja a háttérszolgáltatások.
+API Management szolgáltatáson keresztül API-kat tesz közzé, amelyet esetén könnyen és a közös API-kból való biztonságos hozzáférés előfizetési kulcsok használatával. Fejlesztőknek szól, akik a fogyasztói a közzétett API-k tartalmaznia kell egy érvényes előfizetési kulcsot HTTP-kérelmekre adott API-kat fejlécekben. Ellenkező esetben a hívásokat a rendszer elutasítja azonnal az API Management-átjáró által. Ezek a háttérszolgáltatások nem továbbítja.
 
-Szerezze be API-k eléréséhez egy előfizetési kulcsot, az előfizetés szükség. Előfizetés az előfizetés egy kulcspárra lényegében egy elnevezett tároló. Előfizetések fejlesztőknek szól, akik a fogyasztói a közzétett API-k, vagy anélkül jóváhagyási API-kiadók által olvasható be. API-kiadók is létrehozhat az előfizetések, közvetlenül az API-fogyasztókat nevében.
+Az első API-k eléréséhez egy előfizetési kulcsot, egy előfizetésére szükség. Egy előfizetés az előfizetés egy kulcspárra lényegében egy elnevezett tároló. Fejlesztők számára, akiknek szükség van a közzétett API-kat használhat az előfizetések kérheti le. És API-kiadók jóváhagyására nincs szükségük. API-kiadók is létrehozhat előfizetés közvetlenül az API-fogyasztókat.
 
 > [!TIP]
-> API-k többek között való hozzáférés védelmét is támogatja más mechanizmusok APIM [OAuth2.0](api-management-howto-protect-backend-with-aad.md), [ügyféltanúsítványok](api-management-howto-mutual-certificates-for-clients.md), és [IP-címei engedélyezési listára helyezhetők](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> Az API Management más mechanizmusok is támogatja az API-k, többek között az alábbi példák való hozzáférés biztonságossá tétele:
+> - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
+> - [Ügyféltanúsítványok](api-management-howto-mutual-certificates-for-clients.md)
+> - [IP-címei engedélyezési listára helyezhetők](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Előfizetések hatókörének
 
@@ -39,29 +42,30 @@ Előfizetések társíthatók különböző hatókörök: termék, az összes AP
 
 ### <a name="subscriptions-for-a-product"></a>A termék előfizetések
 
-Hagyományosan, mindig is egyetlen társított előfizetéseket az APIM [API-termékekre](api-management-terminology.md) hatókör. Fejlesztők lenne keresse meg a termékek listáját a fejlesztői portálon, és küldje el a feliratkozási kérelmeket a termékek szeretnék használni. Miután egy előfizetést szabadságkérésének jóváhagyásakor (automatikusan vagy API-kiadók által), a fejlesztői használatával a kulcsokat, a termék minden API-k elérésére.
+Hagyományosan, mindig lettek társítva egyetlen előfizetés az API Management [API-termékekre](api-management-terminology.md) hatókör. A fejlesztők a fejlesztői portál termékek listája található. Ezután ezek feliratkozási kérelmeket a termékek kapcsolniuk a használni kívánt elküld. Miután egy előfizetési kérést jóváhagyják, automatikusan vagy API-kiadók a fejlesztői használhatja a kulcsokat, a termék minden API-k elérésére.
 
 ![A termék-előfizetés](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> Bizonyos forgatókönyvek alapján API-kiadók érdemes API-termék közzétételét a nyilvános előfizetések anélkül. Akkor is, hogy törölje a **előfizetés szükséges** beállítást a **beállítások** az Azure Portalon a termék oldalán. Ennek eredményeképpen a termék minden API-k is elérhető API-kulcs nélkül.
+> Bizonyos forgatókönyvek alapján API-kiadók érdemes API-termék közzétételét a nyilvános előfizetések anélkül. Törölje azokat a **előfizetés szükséges** beállítást a **beállítások** az Azure Portalon a termék oldalán. Ennek eredményeképpen a termék minden API-k is elérhető API-kulcs nélkül.
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Minden API-k vagy egyéni API-előfizetések
 
 > [!NOTE]
 > Ez a funkció jelenleg csak az API Management Használatalapú tarifacsomagban érhető el.
 
-Amikor bevezettük a [fogyasztás](https://aka.ms/apimconsumptionblog) réteg az APIM, végeztünk néhány változtatást, hogy korszerűsítheti a kulcskezelést. Először is hozzáadott két további előfizetés hatókörök - az összes API-k és a egy egyetlen API-t. Előfizetések hatókörének már nem korlátozódik API-termék. Már lehetséges egy API-t (vagy az összes API-k APIM-példány belül), anélkül, termék létrehozása és hozzáadása az API-k, először való hozzáférés biztosítása a kulcsok létrehozásához. Ezen kívül minden APIM-példányra most már tartalmaz egy nem módosítható, minden-API-k előfizetés, amely egyszerűbbé és egyszerűbb, tesztelése és hibakeresése az API-k a Test-konzolon.
+Amikor bevezettük a [fogyasztás](https://aka.ms/apimconsumptionblog) szint az API Management, végeztünk néhány változtatást, hogy korszerűsítheti a kulcskezelést:
+- Először két több előfizetés hatókört bővítettük: az összes API-k és a egy egyetlen API-t. Előfizetések hatókörének már nem korlátozódik API-termék. Már lehetséges, hogy hozzáférést biztosítani az API-k, vagy minden API-k az API Management példányok belül anélkül, hogy hozzon létre egy terméket, és hozzá tud adni az API-k először kulcsok létrehozásához. API Management minden példányához is, most már tartalmaz egy nem módosítható, minden-API-k előfizetés keretében. Ez az előfizetés megkönnyíti és egyszerűbb, tesztelése és hibakeresése az API-k a test-konzolon.
 
-A második APIM most már lehetővé teszi a "különálló" előfizetések. Előfizetések már nem kell társítani egy fejlesztői fiók nevében. Ez akkor hasznos, a forgatókönyvek, például ha egy előfizetés megosztva több fejlesztők vagy fejlesztőcsapatok számára.
+- Másodszor, az API Management most már lehetővé teszi, hogy **önálló** előfizetések. Előfizetések már nem kell társítani egy fejlesztői fiók nevében. Ez a funkció akkor hasznos, forgatókönyvekben, például ha több fejlesztők vagy fejlesztőcsapatok számára megosztani egy előfizetést.
 
-Végül, API-kiadók mostantól [előfizetések létrehozása](api-management-howto-create-subscriptions.md) közvetlenül az Azure Portalon:
+- Végül, API-kiadók mostantól [előfizetések létrehozása](api-management-howto-create-subscriptions.md) közvetlenül az Azure Portalon:
 
-![Rugalmas előfizetések](./media/api-management-subscriptions/flexible-subscription.png)
+    ![Rugalmas előfizetések](./media/api-management-subscriptions/flexible-subscription.png)
 
 ## <a name="next-steps"></a>További lépések
 További információ az API Management:
 
-+ Ismerje meg, hogy más [fogalmak](api-management-terminology.md) az API Management szolgáltatásban
-+ Kövesse a [oktatóanyagok](import-and-publish.md) további információ az API Management
-+ Ellenőrizze a [gyakori kérdéseket tartalmazó oldal](api-management-faq.md) vonatkozó gyakori kérdések
++ Ismerje meg, hogy más [fogalmak](api-management-terminology.md) az API Management szolgáltatásban.
++ Kövesse a [oktatóanyagok](import-and-publish.md) további információ az API Management.
++ Ellenőrizze a [gyakori kérdéseket tartalmazó oldal](api-management-faq.md) gyakori kérdéseket.

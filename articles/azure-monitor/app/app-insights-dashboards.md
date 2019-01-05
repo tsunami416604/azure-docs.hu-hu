@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 653a636ca2d71c573ffde2e9e70a06cf3fcc95fb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d3dca1d7247a822720d32e32fe959053fb80ddd1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021883"
+ms.locfileid: "54052479"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
 Miután [Application Insights beállítása a projektben](../../application-insights/app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
@@ -129,12 +129,12 @@ Az Áttekintés panelen az alkalmazással kapcsolatos további információkat a
 VIZSGÁLAT
 
 * [**Alkalmazás-hozzárendelés** ](app-map.md) – aktív térképként ábrázolja a az alkalmazás összetevőinek a függőségi adatok származnak.
-* [**Intelligens detektálás** ](../../application-insights/app-insights-proactive-diagnostics.md) – tekintse át a legutóbbi teljesítményével kapcsolatos riasztások.
+* [**Intelligens detektálás** ](../../azure-monitor/app/proactive-diagnostics.md) – tekintse át a legutóbbi teljesítményével kapcsolatos riasztások.
 * [**Élő Stream** ](../../azure-monitor/app/live-stream.md) – A rögzített közel azonnali mérőszámokat, akkor hasznos, ha egy új buildet üzembe helyezéséhez, vagy a hibakeresés.
 * [**Rendelkezésre állás / webes teszteket** ](../../azure-monitor/app/monitor-web-app-availability.md) -rendszeres kérelmeket küldjön a webes alkalmazás körül a world.*
-* [**Hibák, a teljesítmény** ](../../application-insights/app-insights-web-monitor-performance.md) -kivételek, hibaarányok és a válaszidők a kérelmek az alkalmazás és az alkalmazás kéréseit [függőségek](../../azure-monitor/app/asp-net-dependencies.md).
-* [**Teljesítmény** ](../../application-insights/app-insights-web-monitor-performance.md) -válaszidőt, a válaszidők függőségi.
-* [Kiszolgálók](../../application-insights/app-insights-web-monitor-performance.md) -teljesítményszámlálók. Ha elérhető, [telepítse az Állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md).
+* [**Hibák, a teljesítmény** ](../../azure-monitor/app/web-monitor-performance.md) -kivételek, hibaarányok és a válaszidők a kérelmek az alkalmazás és az alkalmazás kéréseit [függőségek](../../azure-monitor/app/asp-net-dependencies.md).
+* [**Teljesítmény** ](../../azure-monitor/app/web-monitor-performance.md) -válaszidőt, a válaszidők függőségi.
+* [Kiszolgálók](../../azure-monitor/app/web-monitor-performance.md) -teljesítményszámlálók. Ha elérhető, [telepítse az Állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Böngésző** -nézet és az AJAX teljesítménye lapon. Ha elérhető, [alakítsa ki a weblapok](../../azure-monitor/app/javascript.md).
 * **Használati** -lapon nézet, felhasználók és munkamenetek száma. Ha elérhető, [alakítsa ki a weblapok](../../azure-monitor/app/javascript.md).
 

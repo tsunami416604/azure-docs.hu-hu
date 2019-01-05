@@ -1,20 +1,19 @@
 ---
 title: 'Az Azure Cosmos DB: SQL .NET API, SDK és -erőforrások'
 description: Mindent megtudhat a SQL .NET API és az SDK, beleértve a kiadási dátum, kivezetési dátum és az Azure Cosmos DB .NET SDK minden verziója között végrehajtott módosítások.
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337937"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051951"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -54,6 +53,14 @@ ms.locfileid: "53337937"
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
 * Streamek támogatását. 
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* Fokozása újrapróbálkozási logikát a feladatátvétel során a tárolt eljárás végrehajtása hívásokat.
+
+* Kezdeményezni DocumentClientEventSource egypéldányos. 
+
+* Javítsa ki a nem érvényesítenie ConnectionPolicy RequestTimeout GatewayAddressCache időkorlátja.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -350,6 +357,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |2018. december 24. |--- |
 | [2.2.0](#2.2.0) |2018. december 07. |--- |
 | [2.1.3](#2.1.3) |2018. október 15. |--- |
 | [2.1.2](#2.1.2) |2018. október 04. |--- |

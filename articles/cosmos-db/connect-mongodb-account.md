@@ -1,20 +1,19 @@
 ---
 title: Egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása
 description: Ismerje meg, a MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez.
-keywords: mongodb kapcsolati sztring
-services: cosmos-db
 author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 9a6cbc551704541f3e4ead40567f272205b71325
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.reviewer: sngun
+ms.openlocfilehash: 737e179c2c16937d00bc9b6601f12ebe392c1906
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791387"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040319"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása
 Ismerje meg, a MongoDB-alkalmazás csatlakoztatása egy Azure Cosmos DB MongoDB-kapcsolati karakterlánc használatával. Ezután használhatja az Azure Cosmos DB-adatbázis az adatokat, a MongoDB-alkalmazást az áruházból. 

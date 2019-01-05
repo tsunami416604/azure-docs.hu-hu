@@ -1,20 +1,19 @@
 ---
 title: A Spark az Azure Cosmos DB Cassandra API használata
 description: Ez a cikk a fő lapján, a Spark a Cosmos DB Cassandra API-integráció.
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: cb58ad60501be43ff4da2db29ab3ad3dfee9aad1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847133"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037225"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás a Spark az Azure Cosmos DB Cassandra API-hoz
 
@@ -26,16 +25,16 @@ Ez a cikk az egyik, többek között Spark az Azure Cosmos DB Cassandra API-inte
 * A választott, a Spark környezet kiépítése [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |} Mások].
 
 ## <a name="dependencies-for-connectivity"></a>A hálózati kapcsolatot függőségek
-* **Spark-összekötő a Cassandra:** Spark-összekötő segítségével Azure Cosmos DB Cassandra API-hoz csatlakozhat.  Azonosítsa és verzióját használja, az összekötő található [Maven központi]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Ez az a Spark környezet és a Scala Spark verzióival kompatibilis.
+* **Spark-összekötő Cassandra:** Spark-összekötő segítségével Azure Cosmos DB Cassandra API-hoz csatlakozhat.  Azonosítsa és verzióját használja, az összekötő található [Maven központi]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Ez az a Spark környezet és a Scala Spark verzióival kompatibilis.
 
-* **Az Azure Cosmos DB Cassandra API segédkódtárba helyezni:** a Spark-összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ez a kódtár egyéni kapcsolat gyári, és ismételje meg a házirend osztályokat tartalmazza.
+* **Az Azure Cosmos DB segédkódtárba helyezni a Cassandra API esetén:** A Spark-összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ez a kódtár egyéni kapcsolat gyári, és ismételje meg a házirend osztályokat tartalmazza.
 
   Az Azure Cosmos DB újrapróbálkozási szabályzat HTTP állapot kód 429 ("kérés sebessége nagy") kivételek van konfigurálva. Az Azure Cosmos DB Cassandra API a rendszer lefordítja a Cassandra natív protokoll túlterhelt hibákká ezeket a kivételeket, és újra a biztonsági kompromisszumot. Mivel az Azure Cosmos DB a kiosztott átviteli sebesség modellt használ, kérelem korlátozó kivételeket fordulhat elő, ha a bejövő/kimenő forgalom sebesség növekedését. Az újrapróbálkozási szabályzat védelmet biztosít a spark-feladatok ellen, amelyek rövid ideig túllépik a gyűjteményhez kiosztott átviteli adatok adatforgalmi csúcsokhoz.
 
   > [!NOTE] 
   > Az újrapróbálkozási szabályzat a spark-feladatok csak pillanatnyi adatforgalmi csúcsokhoz ellen védheti. Ha nem konfigurálta elegendő csökkenti a számítási feladatok futtatásához szükséges, az újrapróbálkozási szabályzat nem alkalmazható, és az újrapróbálkozási szabályzat osztály rethrows a kivétel.
 
-* **Az Azure Cosmos DB-fiók kapcsolat részletei:** Your Azure Cassandra API fióknév, fiók végpontját és kulcsát.
+* **Az Azure Cosmos DB fiók kapcsolat részletei:** A Azure Cassandra API fióknév, fiók végpontját és kulcsát.
     
 ## <a name="spark-connector-throughput-configuration-parameters"></a>A Spark összekötő átviteli konfigurációs paraméterei
 

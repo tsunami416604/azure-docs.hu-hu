@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 63045ce1ac06bfb87595675395a411978a17f95a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d3d2aa78ef853903263b4b497f0e399241ac8ce9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017055"
+ms.locfileid: "54050829"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -29,7 +29,7 @@ A riasztások három fő típusba sorolhatók:
 
 * **Metrikákhoz kapcsolódó riasztások** mondja el, ha egy metrika átlépi egy bizonyos időn – például a válaszidőt, a kivételek számát, a CPU-használat vagy a lapmegtekintések egy küszöbértéket. 
 * [**Webes teszteket** ] [ availability] mondja el, ha a hely nem érhető el az interneten, vagy válaszra képes lassan. [További][availability].
-* [**Proaktív diagnosztika** ](../../application-insights/app-insights-proactive-diagnostics.md) konfigurálása automatikusan megtörténik a szokatlan teljesítmény minták kaphat értesítést.
+* [**Proaktív diagnosztika** ](../../azure-monitor/app/proactive-diagnostics.md) konfigurálása automatikusan megtörténik a szokatlan teljesítmény minták kaphat értesítést.
 
 Ebben a cikkben metrikákhoz kapcsolódó riasztások koncentrálunk.
 
@@ -102,7 +102,7 @@ Ne feledje, hogy [proaktív hibadiagnosztika arány](../../azure-monitor/app/pro
 ## <a name="see-also"></a>Lásd még
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Riasztások beállítása automatizálása](../../azure-monitor/app/powershell-alerts.md)
-* [Proaktív diagnosztika](../../application-insights/app-insights-proactive-diagnostics.md) 
+* [Proaktív diagnosztika](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

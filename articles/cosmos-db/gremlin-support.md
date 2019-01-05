@@ -1,19 +1,18 @@
 ---
 title: Az Azure Cosmos DB Gremlin-támogatás
 description: Tudnivalók az Apache TinkerPop Gremlin nyelvéről. Megismerheti, milyen funkciók és lépések érhetők el az Azure Cosmos DB-ben.
-services: cosmos-db
 author: LuisBosquez
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 53ca762232db5e79acdacbb3d52ce05f88dc108b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e7230e9c4d97c1c3ba8f0cf20d32f5a59ea2219b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080401"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034522"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
 Az Azure Cosmos DB támogatja az [Apache TinkerPop](https://tinkerpop.apache.org) gráfbejárási nyelvét, a [Gremlint](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), amely egy Gremlin API a gráfentitások létrehozásához és gráflekérdezési műveletek végrehajtásához. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
@@ -29,17 +28,17 @@ Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekér
 
 A gráfban a következő csúcsponttípusok találhatók (ezeket a Gremlinben „címkéknek” nevezzük):
 
-- Személyek: a gráfban három személy található: Robin, Thomas és Ben.
-- Érdeklődési körök: a személyek érdeklődési köre, amely ebben a példában a labdarúgás.
-- Eszközök: a személyek által használt eszközök.
-- Operációs rendszerek: az eszközökön futó operációs rendszerek.
+- Személyek: A diagramnak három ember Robin, Thomas és Ben
+- Érdekében: Az érdeklődési ebben a példában a játék futball
+- Eszközök: Az eszközök, amelyeket azok, akik használata
+- Operációs rendszerek: Az eszközökön futó operációs rendszerek
 
 Ezen entitások kapcsolatait a következő éltípusok/címkék jelzik:
 
-- Knows (Ismeri): Például „Thomas ismeri Robint”.
-- Interested (Érdekli): A gráfban szereplő személyek érdeklődési körét jelzi, például „Bent érdekli a labdarúgás”.
-- RunsOS (Futó operációs rendszer): A laptopon Windows operációs rendszer fut.
-- Uses (Használ): A személyek által használt eszközt képviseli. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
+- Tudja, hogy: Például "Thomas tudja Robin"
+- Szeretne: Annak a személynek a gráfon, például "Ben olyan iránt labdarúgó" érdekében képviselő
+- RunsOS: Hordozható számítógép a Windows operációs rendszer fut.
+- Használja: Melyik eszközt használja a személy jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
 
 Most futtassunk néhány műveletet a gráfra vonatkozóan a [Gremlin Console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) segítségével. Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával.  Mielőtt áttekintenénk, hogy az Azure Cosmos DB mit támogat, lássunk néhány példát, amelyek segítségével megismerkedhetünk a szintaxissal.
 
@@ -81,7 +80,7 @@ Az alábbi táblázat a TinkerPop azon funkcióit sorolja fel, amelyeket az Azur
 | Élfunkciók | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Lehetővé teszi élek létrehozását, módosítását és törlését. |
 | Éltulajdonság-funkciók | Tulajdonságok, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Lehetővé teszi éltulajdonságok létrehozását, módosítását és törlését. |
 
-## <a name="gremlin-wire-format-graphson"></a>A Gremlin átviteli formátuma: GraphSON
+## <a name="gremlin-wire-format-graphson"></a>Gremlin formátumot: GraphSON
 
 Az Azure Cosmos DB a [GraphSON formátum](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format) használatával adja vissza a Gremlin-műveletek eredményeit. A GraphSON a Gremlin szabványos formátuma a csúcspontok, élek és tulajdonságok (egy- és többértékű tulajdonságok) jelöléséhez a JSON használatával. 
 

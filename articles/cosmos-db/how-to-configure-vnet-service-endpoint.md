@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 73858cac4176c10ff8ce14347acb9b869471ebc2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 37cc7dcb3157459f6f6387323cc44d6f97954e92
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838089"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035814"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Azure Cosmos DB-erőforrások eléréséhez a virtuális hálózatok
 
@@ -49,8 +49,8 @@ A következő szakaszok ismertetik az Azure Cosmos DB-fiók egy virtuális hál�
 
 > [!NOTE]
 > Ahhoz, hogy a virtuális hálózati Szolgáltatásvégpontok, a következő előfizetés-engedélyek szükségesek:
-  * Előfizetés a virtual network: hálózati közreműködő
-  * Az Azure Cosmos DB-fiók előfizetés: a DocumentDB-fiókközreműködő
+  * Előfizetés a virtual network szolgáltatással: Hálózati közreműködő
+  * Előfizetés az Azure Cosmos DB-fiók: A DocumentDB-fiókközreműködő
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Egy új Azure virtuális hálózat és alhálózat szolgáltatásvégpont beállítása
 

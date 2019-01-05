@@ -1,10 +1,9 @@
 ---
-title: Alhálózati forgalom útválasztási módszerének konfigurálása az Azure Traffic Managerrel | Microsoft Docs
+title: Alhálózat forgalom-útválasztási módszer az Azure Traffic Manager konfigurálása
 description: Ez a cikk azt ismerteti, hogy hogyan konfigurálhatja úgy a Traffic Managert, hogy a felhasználói alhálózatok forgalmát adott végpontokba irányítsa.
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 20c34b820eb326a18be1c4298b0850a58599be64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956234"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053074"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
 

@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 514516dcc28e99d03611c7db6ec09c7b4a48ff0e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306663"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051441"
 ---
 # <a name="visualize-data-with-power-bi"></a>Adatok ábrázolása a Power BI használatával
 Ez az oktatóanyag az SQL-adatraktárhoz Power BI-on keresztül történő kapcsolódást
@@ -77,7 +77,7 @@ Most már készen áll az AdventureWorksDW-mintaadatok elemzésére a Power BI h
 
 A folyamatot bármikor mentheti a **Fájl** gombra kattintva, majd a **Mentés** lehetőséget választva.
 
-## <a name="using-direct-connnect"></a>Közvetlen kapcsolat használatával
+## <a name="using-direct-connect"></a>Használatával a közvetlen csatlakoztatása
 Mint az Azure SQL Database, az SQL Data Warehouse közvetlen csatlakozás lehetővé teszi, hogy logikai legördülő lista mellett a Power BI elemzési képességeit. Közvetlen csatlakozás az küldi a lekérdezéseket vissza az Azure SQL Data Warehouse a valós idejű az adatok feltárásakor.  Ez a funkció az SQL Data Warehouse, a méretezési csoport kombinálva lehetővé teszi dinamikus jelentéseket hozhat létre percek alatt akár több terabájtnyi adat. Emellett a Megnyitás a Power BI gomb bevezetésének lehetővé teszi a közvetlenül csatlakozhat a Power BI az SQL Data Warehouse adatainak összegyűjtése az Azure egyéb részeitől nélkül.
 
 Ha közvetlen kapcsolódás használatával:

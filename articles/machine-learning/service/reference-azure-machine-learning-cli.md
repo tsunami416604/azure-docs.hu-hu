@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f85934b0c800ca354cc9cff02132a40c8eccea57
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bbe843f3481c6cd15f2c14386088cbb8d2d355d6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014845"
+ms.locfileid: "54053125"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>A CLI-bővítmény használata az Azure Machine Learning szolgáltatáshoz
 
@@ -119,11 +119,15 @@ A következő parancsok bemutatják, hogyan használhatja a parancssori felület
     az ml project attach --experiment-name myhistory
     ```
 
-* A kísérlet egy Futtatás elindításához. Ezzel a paranccsal egy számítási célnak adja meg. Ebben a példában `local` használja a helyi számítógép használata a modell betanításához az `train.py` parancsfájlt:
+* A kísérlet egy Futtatás elindításához. Ez a parancs használata esetén adja meg a nevét a `.runconfig` fájlt, amely tartalmazza a futtatási konfigurációt. A számítási célnak a modell a betanítási környezetet hozhat létre, a futtatási konfigurációt használja. Ebben a példában a futtatási konfigurációtól betöltődnek az `./aml_config/myrunconfig.runconfig` fájlt.
 
     ```azurecli-interactive
-    az ml run submit -c local train.py
+    az ml run submit -c myrunconfig train.py
     ```
+
+    Alapértelmezett `.runconfig` nevű fájlt a `docker.runconfig` és `local.runconfig` jönnek létre egy projektet az csatolása a `az ml project attach` parancsot. Előfordulhat, hogy szeretné módosítani ezeket, mielőtt alkalmazná őket a modell betanításához. 
+
+    Egy futtatási konfigurációt szoftveresen is létrehozhat a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) osztály. Létrehozását követően használhatja a `save()` metódussal hoz létre a `.runconfig` fájlt.
 
 * Az elküldött kísérletek listájának megtekintéséhez:
 

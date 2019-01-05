@@ -12,15 +12,15 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 53536604ed2f371d1ae7e63b286b17501b260c8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 286c46f760dda4991fd89651bc3a01424d8a5502
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100718"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054792"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Jelentkezzen be a szervezete Azure Active Directory használata
-Regisztráljon az Azure Active Directory (Azure AD) egy új Microsoft Azure-előfizetés használatával:
+Regisztráljon az Azure Active Directory (Azure AD) vagy egy új Microsoft Azure-előfizetést, a használatával:
 
 - **A Microsoft-fiók.** A személyes Microsoft-fiók használatával hozzáférés az Azure és a végfelhasználóra irányuló Microsoft-termékek minden és felhőszolgáltatásokhoz, például Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE- vagy Office 365-höz. Microsoft-fiókkal regisztrál egy Outlook.com-os postaláda automatikusan hoz létre. További információkért lásd: [Microsoft-fiók áttekintése](https://account.microsoft.com/account).
 

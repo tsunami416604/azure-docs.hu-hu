@@ -12,16 +12,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 11/6/2017
+ms.date: 1/3/2019
 ms.author: twhitney
-ms.openlocfilehash: caca297afb9ed4e2d85f1068ad3c1122db60c1d7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 422b4bbcfc6811cdc6bbf1649e2c660d04d95776
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191988"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039673"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A Reliable Collections Azure Service Fabric állapotalapú szolgáltatások bemutatása
+
 A Reliable Collections lehetővé teszi magas rendelkezésre álló, skálázható és közel valós idejű felhőbeli alkalmazások írása, mintha egyetlen számítógépekhez készült alkalmazások írása közben. Az osztályok a **Microsoft.ServiceFabric.Data.Collections** névtér biztosítanak a gyűjteményeket, amelyek automatikusan az állapot magas rendelkezésre állásúvá tenni. A fejlesztők csak a megbízható gyűjtemény API-k programot, és hagyhatja, hogy a replikált és helyi állapot kezelése a Reliable Collections kell.
 
 A Reliable Collections és egyéb magas rendelkezésre állású technológiák (például a Redis, az Azure Table Storage-szolgáltatás és az Azure Queue szolgáltatás) közötti fő különbség az, hogy az állapot maradjanak helyi szolgáltatáspéldány közben is magas rendelkezésre állású kerül sor. Ez azt jelenti, hogy:
@@ -35,6 +36,7 @@ A Reliable Collections is természetes továbbfejlődése értelmezhetők, a **S
 
 * Replikált: Változások lesznek replikálva, magas rendelkezésre állás érdekében.
 * Megőrzött: Adatait a rendszer megőrzi a nagy méretű valamilyen okból kimaradás lép (például egy adatközpont áramkimaradás) ellen tartósság lemezre.
+* Írási műveletek vannak tárolása és replikálása, mert egy ideiglenes ReliableDictionary, ReliableQueue vagy más megbízható gyűjteményt használ, amely csak a memóriában lévő adatot nem hozható létre.
 * Aszinkron: API-k aszinkron, győződjön meg arról, hogy szál nem blokkolják a felmerülő IO.
 * Tranzakciós: API-k használatára elvonása, tranzakciók, így az egy szolgáltatásban több a Reliable Collections könnyen kezelhetők.
 
@@ -45,7 +47,7 @@ Gyengébb egységességének biztosítása érdekében, alkalmazások is igazolj
 A megbízható gyűjtemények API-k API-k egyidejű gyűjtemények továbbfejlesztett változata (megtalálható a **System.Collections.Concurrent** névtér):
 
 * Aszinkron: Adja vissza egy feladatot, mivel egyidejű gyűjtemények, ellentétben a műveletek replikációja és megőrzi.
-* Nem meghatározott paraméterek: Használja a `ConditionalValue<T>` adhatja vissza egy logikai és a egy érték helyett paraméterek meg. `ConditionalValue<T>` hasonló `Nullable<T>` , de nincs szükség egy struct kell T.
+* Nem meghatározott paraméterek: Használja a `ConditionalValue<T>` vissza egy `bool` és paraméterek meg helyett egy értéket. `ConditionalValue<T>` hasonló `Nullable<T>` , de nincs szükség egy struct kell T.
 * Tranzakciók: Ahhoz, hogy a felhasználót, hogy a csoport műveletek egy tranzakció több a Reliable Collections tranzakció objektumot használ.
 
 Még ma **Microsoft.ServiceFabric.Data.Collections** tartalmaz a három gyűjteményben:
@@ -55,6 +57,7 @@ Még ma **Microsoft.ServiceFabric.Data.Collections** tartalmaz a három gyűjtem
 * [Megbízható egyidejű várólista](service-fabric-reliable-services-reliable-concurrent-queue.md): Egy replikált, tranzakciós és aszinkron ajánlott beavatkozást rendezése várólista magas átviteli sebességet jelöl. Hasonló a **ConcurrentQueue**, típustól függetlenül az érték lehet.
 
 ## <a name="next-steps"></a>További lépések
+
 * [A Reliable Collections – irányelvek és javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)

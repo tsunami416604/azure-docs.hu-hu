@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865826"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038959"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Üzembe helyezése Azure tűzfal-sablon használatával
 
@@ -39,8 +39,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. A portálon a a **hozzon létre egy tesztkörnyezet beállítása AzureFirewall** lapon adja meg a következő értékeket:
    
-   - **Erőforráscsoport**: válasszon **új létrehozása**, írja be az erőforráscsoport nevét, és válassza ki **OK**. 
-   - **Virtuális hálózat neve**: Adjon meg egy nevet az új vnet. 
+   - **Erőforráscsoport**: Válassza ki **új létrehozása**, írja be az erőforráscsoport nevét, és válassza ki **OK**. 
+   - **Virtuális hálózat neve**: Adja meg az új virtuális hálózat nevét. 
    - **Rendszergazdai felhasználónév**: Írjon be egy rendszergazdai felhasználói fiókhoz tartozó felhasználónév.
    - **Rendszergazdai jelszó**: Írjon be egy rendszergazdai jelszót. 
    
@@ -51,6 +51,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
    Az erőforrások létrehozása néhány percet vesz igénybe. 
    
 1. Fedezze fel az erőforrásokat, a tűzfal-ekkel hozta létre. 
+
+A JSON-szintaxist és a egy sablonban tűzfalak tulajdonságaival kapcsolatos tudnivalókért lásd: [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -66,4 +68,4 @@ Ne távolítsa el az erőforráscsoportot és a tűzfal, ha azt tervezi, hogy a 
 Ezután az Azure tűzfalnaplók figyelheti:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)

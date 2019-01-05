@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087933"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053534"
 ---
-# <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
+# <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Hozzon létre, és az exportált adatok kezelése
 
 Ha elolvasta a Költségelemzés című oktatóanyagot, akkor ismeri a Cost Management-adatok manuális letöltésének módját. Az ismétlődő feladatokat, amelyek automatikusan exportálja a Cost Management adataihoz az Azure storage-napi, heti vagy havi időközönként is létrehozhat. Az exportált adatok CSV formátumúak, és a Cost Management által gyűjtött összes adatot tartalmazzák. Ezt követően az Azure Storage-beli exportált adatokat külső rendszerekkel is használhatja, illetve saját egyéni adataival kombinálhatja őket. Az exportált adatokat külső rendszerben, például egy irányítópulton vagy egyéb pénzügyi rendszerben is használhatja.
 
@@ -61,6 +61,22 @@ Az Exportálás részleteiért tekintse át, és kattintson a **létrehozás**.
 Az új exportálási feladat megjelenik az exportálási feladatok listájában. Új exportálási alapértelmezés szerint engedélyezve vannak. Ha szeretne letiltani vagy törölni egy ütemezett exportálási feladatot, kattintson a lista bármelyik elemére, majd a **Letiltás** vagy a **Törlés** parancsra.
 
 Kezdetben egy-két óra is eltelhet az exportálási feladat lefutásáig. Azonban négy órát is igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
+
+### <a name="export-schedule"></a>Ütemezés exportálása
+
+Ütemezett exportálások az időt és a hét első létrehozásakor, az Exportálás vannak hatással. Amikor létrehoz egy ütemezett exportálás, az exportálás minden ezt követő exportálás előfordulást nap egyszerre fut. Például hozzon létre egy napi exportálás: 1:00 Órakor. A következő exportálási 1:00 Órakor a következő napon lefut. Az aktuális idő hatással van minden kiviteli típus azonos módon – a nap, amikor eredetileg létrehozta az Exportálás egyszerre mindig futnak. Egy másik példa, hétfőn egy heti exportálás du. 4:00: hozzon létre. DU. 4:00-kor fut a következő jelentés a következő hétfőn. *Az exportált adatok futási idő négy órán belül érhető el.*
+
+Minden kiviteli hoz létre egy új fájlba, így a régebbi export nem írja felül.
+
+Exportálási beállítások három típusa van:
+
+**Hónap elejétől számított költségek napi exportálási** – az első exportálás azonnal futtatja. Ezt követő exportálások futtassa a következő nap a kezdeti exportálási egyszerre. A legfrissebb adatokat összesített értéket jelenít meg az előző napi exportálások.
+
+**Az elmúlt hét nap heti költségeinek** – a kezdeti exportálási azonnal futtatja. Ezt követő export a nap, hét, és a kezdeti exportálási egyszerre futtatni. A díjakat az elmúlt hét napban.
+
+**Egyéni** – lehetővé teszi, hogy az ütemezés hetente és havonta exportálja hét és a hónap elejétől számított összetevőkkel. *A kezdeti exportálási azonnal fog futni.*
+
+![Új Exportálás – egyéni heti-hét kijelölés alapismeretek lap](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
 

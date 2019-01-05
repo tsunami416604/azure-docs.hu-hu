@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879366"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053193"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Az Azure IoT SDK-k Eszközplatform-támogatás
 
@@ -20,9 +20,9 @@ A [Azure IoT SDK-k](iot-hub-devguide-sdks.md) kommunikáljon az IoT Hub és a sz
 
 A Microsoft támogatja az operációs rendszerek/platformok és keretrendszerek széles, és az Azure IoT C SDK-t is kiterjeszthető. Néhány hivatalosan által támogatott a csapat számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva. *Teljes körűen támogatott platformok* azt jelenti, hogy a Microsoft:
 
-    * Folyamatosan épít, és teljes körű teszteket futtatja a master és a támogatott LTS verziót.  Ahhoz, hogy a tesztelési lefedettségről különböző verzióin átívelő, általában teszteljük a legújabb LTS verzióját és a legnépszerűbb verzió szemben.  Egyéb verziói ugyanarra a platformra keresztül platform verziókompatibilitás támogathatók.
-    * Telepítéssel kapcsolatos útmutató vagy csomagokat biztosít, ha van ilyen.
-    * Teljes körűen támogatja a platformokhoz a Githubon.
+- Folyamatosan épít, és teljes körű teszteket futtatja a master és a támogatott LTS verziót.  Ahhoz, hogy a tesztelési lefedettségről különböző verzióin átívelő, általában teszteljük a legújabb LTS verzióját és a legnépszerűbb verzió szemben.  Egyéb verziói ugyanarra a platformra keresztül platform verziókompatibilitás támogathatók.
+- Telepítéssel kapcsolatos útmutató vagy csomagokat biztosít, ha van ilyen.
+- Teljes körűen támogatja a platformokhoz a Githubon.
 
 Emellett az C SDK be további platformok rendelkezik ültették át a partnerek listáját, és azok vannak karbantartása a platform absztrakciós réteg (PAL). [Az Azure Certified for IoT Eszközkatalógus](https://catalog.azureiotsolutions.com/) is funkciók OS-platformokat, a különböző SDK-k listáját teszteltük ellen. Az SDK-k is rendszeresen hozhat létre, ezek a rendszerek, a korlátozott tesztelése, és támogatja:
 

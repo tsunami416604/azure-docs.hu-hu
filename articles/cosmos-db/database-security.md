@@ -1,19 +1,17 @@
 ---
 title: Adatbázis-biztonság – Azure Cosmos DB-hez
 description: Ismerje meg, hogyan nyújt az Azure Cosmos DB az adatbázis védelmét és az adatok biztonsági adataihoz.
-keywords: nosql-alapú adatbázis-biztonság, információ-biztonság, adatbiztonság, az adatbázis-titkosítás, az adatbázis védelme, biztonsági házirendeket, biztonsági tesztelés
-services: cosmos-db
 author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 0ffd07269570b26b527286f1a0b5a57a6b5c6018
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5fcf04c57f957b670d813de8ffe2d945f70cb3c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093420"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038772"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Az Azure Cosmos DB adatbázis-biztonság
 
@@ -78,11 +76,11 @@ Tájékozódjon részletesebben mindegyikhez.
 |Titkosítás inaktív állapotban|Az Azure Cosmos DB-be tárolt összes adat titkosítása. További információ: [Azure Cosmos DB-titkosítás inaktív állapotban](./database-encryption-at-rest.md)|
 |Javított kiszolgálók|Egy felügyelt adatbázis Azure Cosmos DB szükségtelenné teszi a kezelése és a patch-kiszolgálók által elvégzett, automatikusan.|
 |Erős jelszót a rendszergazdai fiókok|Hihetetlen, még akkor is meg kell ezt a követelményt említik, de néhány lemaradni a versenytársak eltérően nem lehet egy rendszergazdai fiók, jelszó nélküli rendelkezik az Azure Cosmos DB.<br><br> Alapértelmezés szerint a számlázásnak biztonsági SSL és HMAC-val titkos alapú hitelesítés használatával.|
-|Biztonság és a data protection minősítések|A legtöbb legfeljebb adatok listája minősítései közül is bemutat, lásd: a teljes [Azure megfelelőségi hely](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) és a legújabb [Azure megfelelőségi dokumentum](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) az összes tanúsítványának (Cosmos keresése). Tekintse meg a 2018. április 25. bejegyzés egy célzottabb olvasni a [Azure #CosmosDB: biztonságos, privát, megfelelő](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) is tartalmazó csak 1/2 Type 2, HITRUST, PCI DSS Level 1, az ISO 27001, a HIPAA, magas szintű FedRAMP és sok más.
+|Biztonság és a data protection minősítések|A legtöbb legfeljebb adatok listája minősítései közül is bemutat, lásd: a teljes [Azure megfelelőségi hely](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) és a legújabb [Azure megfelelőségi dokumentum](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) az összes tanúsítványának (Cosmos keresése). Tekintse meg a 2018. április 25. bejegyzés egy célzottabb olvasni a [Azure #CosmosDB: Biztonságos, privát, megfelelő](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) is tartalmazó csak 1/2 Type 2, HITRUST, PCI DSS Level 1, az ISO 27001, a HIPAA, magas szintű FedRAMP és sok más.
 
-Az alábbi képernyőfelvételen az Active directory-integráció (RBAC) hozzáférés-vezérlés (IAM) használatával az Azure Portalon: ![hozzáférés-vezérlés (IAM) bemutatására adatbázis-biztonság – az Azure Portalon](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
+Az alábbi képernyőfelvételen az Active directory-integráció (RBAC) hozzáférés-vezérlés (IAM) használatával az Azure Portalon: ![Hozzáférés-vezérlés (IAM) bemutatására adatbázis-biztonság – az Azure Portalon](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 
-A következő képernyőképen látható, hogyan használhatja naplózás és a tevékenység auditnaplók a fiók figyelése: ![az Azure Cosmos DB-Tevékenységnaplók](./media/database-security/nosql-database-security-application-logging.png)
+Az alábbi képernyőképen látható, hogyan naplózás és a tevékenység auditnaplók használhatja a fiók figyelése: ![A Tevékenységnaplók az Azure Cosmos DB](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>További lépések
 

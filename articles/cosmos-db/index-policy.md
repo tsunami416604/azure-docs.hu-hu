@@ -6,32 +6,32 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2153f0a16df9e79b3f5324ce19880e2708855196
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0fb2c3daf19ce07d9641cbc5504cb3b598ad5b0d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848000"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034455"
 ---
 # <a name="indexing-policy-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési házirend
 
 Felülbírálhatja az alapértelmezett indexelési szabályzat egy Azure Cosmos-tárolón úgy konfigurálja a következő paraméterekkel:
 
-* **Bevonhat vagy kizárhat elemek és elérési utak az indexből**: kizárása, vagy adott elemeket tartalmaznak az indexben, helyezze be vagy cserélje le a tárolóban lévő elemek. Akkor is is belefoglalhat vagy kizárhat meghatározott vlastnosti cest Pro hledání/indexelendő egyes tárolók között. Elérési utak tartalmazhat helyettesítő karakterek mintái, például *.
+* **Bevonhat vagy kizárhat elemek és elérési utak az indexből**: Zárja ki, vagy adott elemeket tartalmaznak az indexben, helyezze be vagy cserélje le a tárolóban lévő elemek. Akkor is is belefoglalhat vagy kizárhat meghatározott vlastnosti cest Pro hledání/indexelendő egyes tárolók között. Elérési utak tartalmazhat helyettesítő karakterek mintái, például *.
 
-* **Index típusok konfigurálása**: emellett tartomány indexelt elérési utak, adja hozzá az indexek más típusú például térbeli.
+* **Index típusok konfigurálása**: Emellett az indexelt elérési utak tartomány, adja hozzá indexeket más típusú például térbeli.
 
-* **Index módok konfigurálása**: egy tárolót az indexelési házirendet használatával konfigurálhatja az indexelő mód például *Consistent* vagy *None*.
+* **Index módok konfigurálása**: Az indexelési házirendet egy tároló használatával konfigurálhatja az indexelő mód például *Consistent* vagy *None*.
 
 ## <a name="indexing-modes"></a>Az indexelő módok 
 
 Az Azure Cosmos DB két lehetőséget támogat az indexelő konfigurálható egy Azure Cosmos-tárolón. A következő két indexelési mód az indexelési szabályzat konfigurálhatja: 
 
-* **Egységes**: egy Azure Cosmos-tárolóhoz szabályzat Consistent úgy van beállítva, ha a lekérdezések egy adott tárolón hajtsa végre a megadott pont olvasási műveleteknél a konzisztencia szintjét (például erős, kötött elavulás, munkamenet és végleges). 
+* **Egységes**: Ha egy Azure Cosmos-tárolóhoz szabályzat Consistent úgy van beállítva, a lekérdezések egy adott tárolón hajtsa végre a konzisztencia szintjét pont olvasási műveleteknél a megadott (például erős, kötött elavulás, munkamenet és végleges). 
 
   Az index frissítése szinkron módon történik, az elemek frissítése során. Ha például beszúrás, cserélje le, frissítési és törlési műveletek egy elemre eredményez az index frissítése. Egységes indexelő támogatja az egységes lekérdezéseket tárolómappába, mely negatív hatással a lemezírás teljesítménye. Lemezírás teljesítménye csökkentése attól függ, a "elérési út tartalmazza az indexelés", és a "konzisztenciaszint." Indexelő mód CONSISTENT írható gyorsan szolgál, és azonnal számítási feladatok lekérdezése.
 
-* **Nincs**: egy tároló, amely tartalmaz egy index mód nincs társítva indexszel rendelkezik. Ez általában akkor használatos, ha az Azure Cosmos-adatbázis egy kulcs-érték tárolóként szolgál, és csak az ID tulajdonság által elért elemek.
+* **Nincs**: Egy tároló, amely tartalmaz egy index mód nincs társítva indexszel rendelkezik. Ez általában akkor használatos, ha az Azure Cosmos-adatbázis egy kulcs-érték tárolóként szolgál, és csak az ID tulajdonság által elért elemek.
 
   > [!NOTE]
   > A létező indexek elvetését mellékhatása az indexelési mód konfigurálása egy sem rendelkezik. Ezt a beállítást kell használnia, ha ID használatának megkövetelése a hozzáférési mintákat, vagy önhivatkozást csak.

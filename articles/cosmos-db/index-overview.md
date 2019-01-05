@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: adddbc03b5ec61944e95a2e0fff8767c41d96b0e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834638"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033757"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelése
 
@@ -29,7 +29,7 @@ Adja meg szülőként a tényleges csomópontok, a címkék a dokumentum alá ta
 
 Az Azure Cosmos DB-projektek, JSON-dokumentumok formájában elemek, és tetszőleges fák. Majd hangolhassa a szabályzatok az elérési utak a fa belül. Választhat, vagy elérési utak kizárása a indexelés. Ez jobb írási teljesítményt, és csökkentheti a indexelt tárolási forgatókönyvekhez, ahol a lekérdezési mintáknak ismert előre. További tudnivalókért lásd: [Index elérési utak](index-paths.md).
 
-## <a name="indexing-under-the-hood"></a>Indexelés: technikai részletek
+## <a name="indexing-under-the-hood"></a>Indexelés: Technikai részletek
 
 Az Azure Cosmos database vonatkozik, az adatokat, ahol minden elérési út egy fa indexelt csak az egyes elérési utak kizárása az Automatikus indexelés.
 

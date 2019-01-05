@@ -1,13 +1,9 @@
 ---
-title: Az Azure Traffic Manager felhasználó mérések |} Microsoft Docs
-description: Felhasználó mérések őket a Traffic Manager bemutatása
+title: Az Azure Traffic Manager valós Felhasználóiélmény-mérések
+description: A Traffic Manager valós Felhasználóiélmény-mérések bemutatása
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,33 +12,33 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4e8d808d65c9898d230455d128e3ffc50db303d6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fd37ef739522955ae8227db39a41aecf199d65c3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178113"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052819"
 ---
-# <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager valós felhasználói mérések áttekintése
+# <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager valós Felhasználóiélmény-mérések áttekintése
 
-Állít be Traffic Manager-profil a teljesítmény-útválasztási módszert használja, ha a szolgáltatás keres, ha a DNS-lekérdezési kérelmek érkező, és ezeket az Azure-régió, amely a legkisebb mértékű késleltetést tartománytagi hitelesítéssel közvetlen útválasztási döntéseket. Ez úgy érhető el, a hálózati késés eszközintelligencia Traffic Manager által a különböző végfelhasználói hálózatok használata.
+Traffic Manager-profil beállítása, a teljesítmény-útválasztási módszert használja, a szolgáltatás jelenik meg, ha a DNS-lekérdezésekre vonatkozó kérelmek érkeznek, és ezeket az Azure-régióban, amely a legkisebb késéssel tartománytagi hitelesítéssel közvetlen útválasztási döntéseket. Ez a hálózati késés intelligenciával, amely különböző végfelhasználói hálózatok fenntartja a Traffic Manager használatával történik.
 
-Valós felhasználói mérések lehetővé teszi az Azure-régiók, hálózati késés mérések mérjük az ügyfélalkalmazások, használja a végfelhasználók számára, és rendelkezik a Traffic Manager vegye figyelembe ezt az információt, valamint útválasztási döntések meghozásakor. A tényleges felhasználói mérések választ, növelheti az ezekhez a hálózatokhoz érkező, amelyen a végfelhasználók találhatók kérelmek útválasztási pontosságát. 
+Valós felhasználói mérések lehetővé teszi, hogy a hálózati késési mérések mértéket az Azure-régióban, az ügyfélalkalmazások, a végfelhasználók használják, és rendelkezik a Traffic Manager megfontolandó legyen útválasztási döntéseket. A valós Felhasználóiélmény-mérések használatához kiválasztásával növelheti ezekhez a hálózatokhoz származik, amelyen a végfelhasználók találhatók kérelmek útválasztását pontosságát. 
 
-## <a name="how-real-user-measurements-work"></a>Valós felhasználói mérések működése
+## <a name="how-real-user-measurements-work"></a>Hogyan működik a valós felhasználói mérések
 
-Valós felhasználói mérések azzal, hogy az ügyfél alkalmazások mérték késés Azure-régiók, a végfelhasználó hálózatokon használt vannak alapegységét működik. Tegyük fel Ha egy weblap, amelyen a felhasználók férhetnek hozzá (például az Észak-amerikai régió), a különböző helyek között kihasználhatja valós felhasználói mérések power teljesítmény útválasztási módszer használatakor a legjobb Azure-régiót való eléréséhez amely a kiszolgálóalkalmazás tárolja.
+Valós felhasználói mérések végfelhasználói hálózatot, amelyben használt ahogyan kellene az ügyfél alkalmazások mérték késés az Azure-régiók szerint működnek. Például ha egy weblap, amelyen a felhasználók különböző helyeken (például az Észak-amerikai régió) keresztül érhető el, használhatja valós felhasználói mérések a Teljesítménycentrikus útválasztási mód használhassa őket az ajánlott Azure-régió, amelyben a kiszolgáló alkalmazás üzemel.
 
-A weblapok ágyaz be egy Azure megadott JavaScript (a benne lévő egyedi kulcs) kezdődik. Ezt követően, amikor a felhasználó meglátogat weblapról, a JavaScript lekérdezi a Traffic Manager kell értékelnie, hogy az Azure-régiók kapcsolatos információkat. A szolgáltatás adja vissza, amely végpontok a parancsfájlt, amely akkor mérték e régiók egymás után úgy, hogy egy adott Azure-régiók üzemel, és a várakozási idő közötti megjegyezni egyetlen képpont kép letölti a kérelmet küldték, és az idő, amikor az első bájt érkezett . A mérési adatok majd vissza jelenti a Traffic Manager szolgáltatásba.
+Elindítja a weblapok (a benne egy egyedi kulcsot) egy Azure megadott JavaScript beágyazásával. Miután ez megtörtént, amikor egy felhasználó meglátogat weblapról, a JavaScript lekérdezi a Traffic Manager kell értékelnie, hogy az Azure-régiók információt szeretne kapni. A szolgáltatás végpontok a parancsfájlt, majd ezekben a régiókban, egymás után úgy, hogy egy ezen Azure-régióban lévő üzemeltetett és a várakozási idő közötti megállapítva vastagságú lemezképet letölti a kérelmet küldte mérték és időt adja vissza a az első bájtig eltelt érkezésekor . Ezeknek a méréseknek majd vissza jelenti a Traffic Manager szolgáltatáshoz.
 
-Idővel ez sokszor történik, és a Traffic Manager, amelyben a hálózatot késési jellemzői pontosabb információt első vezető sok hálózatokon keresztül a végfelhasználók találhatók. Ez az információ akkor kezdődik, által a Traffic Manager útválasztási döntések szereplő első. Ennek eredményeképpen vezet ezeket a döntéseket a tényleges felhasználói mérések küldött alapján a megnövekedett pontosságát.
+Idővel ez történik, hogy hányszor, és a Traffic Manager a hálózatok késési jellemzői kapcsolatos pontos információk lekérése, amelyben vezető számos hálózatokon keresztül a végfelhasználók találhatók. Ezt az információt elindítja a által a Traffic Manager útválasztási döntéseit foglalandó első. Ennek eredményeképpen vezet nagyobb pontosságát az ezeket a döntéseket küldött valós Felhasználóiélmény-mérések alapján.
 
-Valós felhasználói mérések használatakor számlázása a Traffic Manager küldött mérések száma alapján. Az árakkal kapcsolatos további részletekért látogasson el a [árképzést ismertető oldalra Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Valós felhasználói mérések használatakor küldött a Traffic Manager-mérések száma alapján számlázzuk. A díjszabás a további részletekért látogasson el a [díjszabását ismertető lapon a Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan használható [valós felhasználói mérések a weblapokat](traffic-manager-create-rum-web-pages.md)
+- Ismerje meg, hogyan használható [weblapokat valós felhasználói mérések](traffic-manager-create-rum-web-pages.md)
 - Ismerje meg, [Traffic Manager működése](traffic-manager-overview.md)
-- További információ [Mobile Center](https://docs.microsoft.com/mobile-center/)
-- További információ a [forgalom-útválasztási módszert](traffic-manager-routing-methods.md) Traffic Manager által támogatott
-- Megtudhatja, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
+- Tudjon meg többet [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Tudjon meg többet a [forgalom-útválasztási módszerek](traffic-manager-routing-methods.md) a Traffic Manager által támogatott
+- Ismerje meg, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
 

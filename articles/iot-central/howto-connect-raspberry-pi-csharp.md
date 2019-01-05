@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Central alkalmazáshoz (C#) Raspberry Pi Connnect |} A Microsoft Docs
+title: Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#) |} A Microsoft Docs
 description: Eszköz fejlesztőként Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, C# használatával.
 author: viv-liu
 ms.author: viviali
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50956723"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051390"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők Raspberry Pi kapcsolódni 
 A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
 
 * [.NET core 2](https://www.microsoft.com/net) a fejlesztői gépen telepítve van. Emellett rendelkeznie kell egy megfelelő Kódszerkesztő például [Visual Studio Code](https://code.visualstudio.com/).
-* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
+* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 * Raspberry Pi eszköz a Raspbian operációs rendszert.
 
 
@@ -43,7 +43,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
     - Giroszkóp (X, Y, a – Z)
 - Beállítások
     - Feszültségérzékelő
-    - Aktuális
+    - Jelenlegi
     - Sebesség ventilátor
     - Integrációs modul váltógombot.
 - Tulajdonságok
@@ -350,7 +350,7 @@ Numerikus beállításai
 | Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 A beállítások ki-/ bekapcsolása

@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341048"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038157"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Az első tartós függvény létrehozása a C\#
 
 *Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
 
-Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszközök az Azure Functions helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a függvény összehangolására, és a lánc együttesen hívások egyéb funkciók. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
+Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszközök az Azure Functions helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a funkció, amellyel előkészíthető és egyéb funkciók láncok együtt hívások. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
 
 ![Azure-ban futó tartós függvény](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszk�
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a [Visual Studio 2017](https://azure.microsoft.com/downloads/)-et, és győződjön meg arról, hogy az **Azure-fejlesztési** számítási feladat is telepítve van.
+* Telepítse a [Visual Studio 2017](https://azure.microsoft.com/downloads/)-et. Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van.
 
 * Győződjön meg arról, hogy rendelkezik a [legújabb Azure Functions-eszközökkel](../functions-develop-vs.md#check-your-tools-version).
 
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
-A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
+Az Azure Functions-sablont hoz létre egy projektet, amely közzétehető egy függvényalkalmazáshoz az Azure-ban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
 
 1. A Visual Studio **Fájl** menüjében válassza az **Új** > **Projekt** lehetőséget.
 
@@ -55,14 +55,14 @@ A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, 
     | Beállítás      | Ajánlott érték  | Leírás                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Verzió** | Azure Functions 2.x <br />(.NET Core) | A verzió 2.x verziójú futtatókörnyezet, az Azure Functions, amely támogatja a .NET Core használó Functions-projektet hoz létre. Az Azure Functions 1.x támogatja a .NET-keretrendszert. További információ: [Azure Functions futtatókörnyezet-verzió megcélzása](../functions-versions.md).   |
-    | **Sablon** | Üres | Ez létrehoz egy üres függvényalkalmazást. |
+    | **Sablon** | Üres | Létrehoz egy üres függvényalkalmazást. |
     | **Storage-fiók**  | Storage Emulator | Storage-fiók megadása kötelező a tartós függvény állapot-felügyeleti. |
 
-4. Kattintson a **OK** üres Functions-projekt létrehozása.
+4. Kattintson a **OK** üres Functions-projekt létrehozása. Ez a projekt a függvények végrehajtásához szükséges alapvető konfigurációs fájlokat tartalmaz.
 
 ## <a name="add-functions-to-the-app"></a>Funkciók hozzáadása az alkalmazáshoz
 
-A Visual Studio létrehoz egy üres függvényalkalmazás projektjét.  Az alkalmazáshoz szükséges alapvető konfigurációs fájlokat tartalmaz, de még nem tartalmaz minden.  Adja hozzá a projekthez egy tartós függvénysablon kell.
+Az alábbi lépéseket egy sablon használatával a tartós függvénykód létrehozása a projektben.
 
 1. Kattintson a jobb gombbal a projektre a Visual Studióban, és válassza ki **Hozzáadás** > **új Azure-függvény**.
 
@@ -74,11 +74,13 @@ A Visual Studio létrehoz egy üres függvényalkalmazás projektjét.  Az alkal
 
     ![Tartós sablon kiválasztása](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
-Egy új tartós függvény megjelenik az alkalmazáshoz.  Nyissa meg az új fájl a tartalom megtekintéséhez.  A tartós funkciója láncolás – példa egy egyszerű függvényt.  
+Az alkalmazás egy új tartós függvény kerül.  Nyissa meg az új .cs fájlt a tartalom megtekintéséhez. A tartós feladata egy egyszerű függvény láncolás – példa a következő módszerekkel:  
 
-* A `RunOrchestrator` módszer társítva az orchestrator-funkció.  Ez a függvény elindítja, hozzon létre egy listát, és adja hozzá a lista három függvény meghívásával eredményét.  A három függvényhívások befejezése után a listát ad vissza.  A függvény azt hívja a `SayHello` metódus (alapértelmezett fogja meghívni `<NameOfFile>_Hello`).
-* A `SayHello` a függvény egy hello adja vissza.
-* A `HttpStart` módszer bemutatja a függvényt, amely megkezdi a vezénylési példánya.  Társítva van egy [HTTP-eseményindító](../functions-bindings-http-webhook.md) , amely elindítja az orchestrator egy új példányát, és visszaadja a jelölőnégyzet állapotának választ.
+| Módszer | Függvénynév | Leírás |
+| -----  | ------------ | ----------- |
+| **`RunOrchestrator`** | `<file-name>` | A tartós vezénylési kezeli. Ebben az esetben a vezénylési kezdődik, létrehoz egy listát, és hozzáadja a lista három funkció hívásainak eredményét.  Ha a három függvényhívások befejezése, listáját adja vissza. |
+| **`SayHello`** | `<file-name>_Hello` | A függvény egy hello adja vissza. Ez az a függvény, amely tartalmazza az üzleti logika, amely vezényelt van folyamatban. |
+| **`HttpStart`** | `<file-name>_HttpStart` | Egy [HTTP-eseményindítóval aktivált függvényt](../functions-bindings-http-webhook.md) , amely elindít egy példányát a vezénylési és a egy jelölőnégyzet állapotának választ ad vissza. |
 
 Most, hogy létrehozta a Functions-projektet és a egy tartós függvényt, tesztelheti a helyi számítógépen.
 
@@ -143,4 +145,4 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 A Visual Studio segítségével létrehozása és közzététele egy C# tartós függvényalkalmazást.
 
 > [!div class="nextstepaction"]
-> [Ismerje meg a gyakori tartós függvény minták.](durable-functions-overview.md)
+> [Ismerje meg a gyakori tartós függvény minták.](durable-functions-concepts.md)

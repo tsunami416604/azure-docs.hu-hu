@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 71f024c81983fcb9c3e99bdf633a5bde306452b8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873240"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051237"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Rugalmas adatbázis-ügyfélkódtárnak az Entity Framework
 Ez a dokumentum az Entity Framework-alkalmazásba való integrálásához szükséges változásait jeleníti meg a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A fókusz a összeállítása van [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md) és [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md) az Entity Framework- **Code First** megközelítést. A [kód először – új adatbázis](https://msdn.microsoft.com/data/jj193542.aspx) oktatóanyag az EF ebben a dokumentumban futó példaként szolgálja ki. A jelen dokumentum kísérő mintakódot is, a Visual Studio-Kódminták beállítása elastic database-eszközök részét képezi.
@@ -42,10 +42,10 @@ Miután létrehozta az adatbázisok, adja meg a hely tulajdonosainak **Program.c
 ## <a name="entity-framework-workflows"></a>Entity Framework munkafolyamatai
 Entity Framework a fejlesztők a következő négy munkafolyamatok alkalmazásokat hozhat létre, és annak biztosítása érdekében az alkalmazás objektumának adatmegőrzés egyik támaszkodik: 
 
-* **Code First (új adatbázis)**: az EF-fejlesztői az alkalmazás kódjának a modellt hoz létre, és ezután EF hoz létre az adatbázist. 
+* **Code First (új adatbázis)**: Az EF fejlesztői az alkalmazás kódjának a modell hoz létre, és ezután EF hoz létre az adatbázist. 
 * **Code First (meglévő adatbázis)**: A fejlesztői lehetővé teszi, hogy az alkalmazás kódjának a modell létrehozásához egy meglévő adatbázis EF.
 * **Első modell**: A fejlesztői hoz létre a modell az EF-Tervező, és ezután EF hoz létre az adatbázist a modellből.
-* **Adatbázis-első**: A fejlesztői eszközök célszámítógéppel a modellt a meglévő adatbázis EF használja. 
+* **Adatbázis-első**: A fejlesztői eszközök célszámítógéppel a modellt a meglévő adatbázis EF használ. 
 
 Ezek a módszerek a DbContext osztályt transzparens módon kezelheti az adatbázis-kapcsolatok és a egy alkalmazás adatbázisséma támaszkodnak. A DbContext alaposztály különböző konstruktorok különböző szintű kézben kapcsolat létrehozásakor, rendszerindításra adatbázis és séma létrehozását teszik lehetővé. Elsősorban az a tény, hogy a kapcsolatot a megadott Adatfüggő útválasztási felületek funkcióival metszi a adatbázis-kapcsolat EF által biztosított felügyeleti kihívások által az elastic database-ügyfélkódtár merülnek fel. 
 
@@ -59,10 +59,10 @@ A szilánkleképezés-kezelő felhasználók megvédi az inkonzisztens nézetek 
 ## <a name="requirements"></a>Követelmények
 A rugalmas adatbázis-klienskódtár és a Entity Framework API-k használata, ha meg szeretné őrizni az alábbi tulajdonságokat: 
 
-* **Horizontális felskálázás**: hozzáadásához, vagy eltávolíthat adatbázisokat a szilánkos alkalmazás kapacitásigény szükséges az alkalmazás adatrétegének. Ez azt jelenti, létrehozását és törlését, az adatbázisok és a rugalmas adatbázis szilánkleképezés-kezelővel API-k segítségével kezelheti az adatbázisok és shardlet leképezéseit felett. 
-* **Konzisztencia**: az alkalmazás horizontális skálázást alkalmaz, és használja az ügyféloldali kódtár Adatfüggő útválasztás képességeit. Sérülés vagy hibás lekérdezési eredmények elkerülése érdekében kapcsolatok keresztül a szilánkleképezés-kezelő által felügyelt. Ez akkor is megtartja, érvényesítése és a konzisztencia.
-* **Code First**: megőrzi az EF a kód első paradigm, a kényelem érdekében. A Code First a osztályok, az alkalmazás transzparens módon vannak leképezve az alapul szolgáló adatbázis struktúrák. Az alkalmazás kódjában, hogy maszkolja a legtöbb területét az alapul szolgáló adatbázis-feldolgozási részt DbSets kommunikál.
-* **Séma**: entitás-keretrendszer kezdeti adatbázis sémájának létrehozása és későbbi séma fejlődést szem előtt tartva keresztül áttelepítések kezeli. Szerint megőrzése ezeket a képességeket, az alkalmazás gyakorlatainak az egyszerű, az adatok haladásával. 
+* **Horizontális felskálázás**: Adja hozzá, vagy eltávolíthat adatbázisokat a szilánkos alkalmazás kapacitásigény szükséges az alkalmazás adatrétegének. Ez azt jelenti, létrehozását és törlését, az adatbázisok és a rugalmas adatbázis szilánkleképezés-kezelővel API-k segítségével kezelheti az adatbázisok és shardlet leképezéseit felett. 
+* **Konzisztencia**: Az alkalmazás horizontális skálázást alkalmaz, és használja az ügyféloldali kódtár Adatfüggő útválasztás képességeit. Sérülés vagy hibás lekérdezési eredmények elkerülése érdekében kapcsolatok keresztül a szilánkleképezés-kezelő által felügyelt. Ez akkor is megtartja, érvényesítése és a konzisztencia.
+* **Code First**: Ha a EF a kód első paradigm, a kényelem érdekében. A Code First a osztályok, az alkalmazás transzparens módon vannak leképezve az alapul szolgáló adatbázis struktúrák. Az alkalmazás kódjában, hogy maszkolja a legtöbb területét az alapul szolgáló adatbázis-feldolgozási részt DbSets kommunikál.
+* **Séma**: Entity Framework kezdeti adatbázis sémájának létrehozása és későbbi séma fejlődést szem előtt tartva keresztül áttelepítések kezeli. Szerint megőrzése ezeket a képességeket, az alkalmazás gyakorlatainak az egyszerű, az adatok haladásával. 
 
 A következő útmutatást arra utasítja, hogy ezek megfelelnek a rugalmas Adatbáziseszközök használatáról Code First alkalmazások hogyan. 
 
@@ -189,7 +189,7 @@ A fenti hitelesítésikód-példák bemutatják, hogy az alapértelmezett konstr
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>EF-áttelepítés – a szegmensben séma üzembe helyezése
 Automatikus séma az Entity Framework által biztosított kényelem. Rugalmas Adatbáziseszközök használatáról alkalmazások kontextusában szeretné megőrizni ezt a funkciót, az újonnan létrehozott szegmensek-séma automatikus kiépítésére, amikor a szilánkos alkalmazás felvett adatbázisok. Az elsődleges használati eset, hogy növeli a kapacitást az adatszinten EF használó horizontálisan skálázott alkalmazások számára. EF a séma felügyeleti funkciókat a függő csökkenti az adatbázis-felügyeleti erőfeszítés EF épülő horizontálisan skálázott alkalmazással. 
 
-EF-áttelepítés – a séma üzembe helyezése a legalkalmasabb az **kapcsolatok olvasatlan**. Ez a szakembereket Adatfüggő útválasztás a forgatókönyv, amely a megnyitott kapcsolat, a rugalmas adatbázis-ügyfél API által biztosított támaszkodik. Egy másik különbség a konzisztencia követelmény: az összes Adatfüggő útválasztás kapcsolathoz egyidejű szegmens térkép adatkezelési ellen védelmet biztosító konzisztencia biztosításához szükséges, miközben már nem jelent problémát egy kezdeti séma üzembe helyezése egy új adatbázis még nincs regisztrálva a horizontális skálázási térképet, és le lett foglalva, amely tárolja a shardlet még nem rendelkezik. Ezért ebben az esetben Adatfüggő útválasztásnak ellentétben rendszeres adatbázis-kapcsolatainak támaszkodnak.  
+EF-áttelepítés – a séma üzembe helyezése a legalkalmasabb az **kapcsolatok olvasatlan**. Ez a szakembereket Adatfüggő útválasztás a forgatókönyv, amely a megnyitott kapcsolat, a rugalmas adatbázis-ügyfél API által biztosított támaszkodik. Egy másik különbség a konzisztencia követelmény: Az összes Adatfüggő útválasztás kapcsolathoz egyidejű szegmens térkép adatkezelési ellen védelmet biztosító konzisztencia biztosításához szükséges, miközben már nem kezdeti séma üzembe helyezése egy új adatbázisra, amely még nincs regisztrálva a horizontális skálázási térképet, és még nem rendelkezik kapcsolatos észrevétel lefoglalt shardlet tárolásához. Ezért ebben az esetben Adatfüggő útválasztásnak ellentétben rendszeres adatbázis-kapcsolatainak támaszkodnak.  
 
 Ez vezet megközelítést, ahol EF-áttelepítés – a séma üzembe helyezése a szorosan összekapcsolt az új adatbázis regisztrációját, az alkalmazás horizontális skálázási térképet a szegmensek. Ez az alábbi előfeltételek támaszkodik: 
 
@@ -236,13 +236,13 @@ Ez a példa bemutatja a metódus **RegisterNewShard** , amely a szegmens regiszt
         } 
 
         // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connnectionString) 
+        private static string SetInitializerForConnection(string connectionString) 
         { 
             // You want existence checks so that the schema can get deployed 
             Database.SetInitializer<ElasticScaleContext<T>>( 
         new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connnectionString; 
+            return connectionString; 
         } 
 
 Előfordulhat, hogy az egyik használt a konstruktort az alaposztálytól verzióját. De a kód meg kell győződnie arról, hogy a csatlakozáskor használt-e az alapértelmezett inicializáló mintáját. Ezért a rövid detour be a statikus metódus kapcsolati alaposztály konstruktorának hívása előtt. Vegye figyelembe, hogy a regisztráció szegmens fusson-e az eltérő alkalmazástartományból vagy folyamat, győződjön meg arról, hogy ne ütközzenek EF inicializáló beállításait. 

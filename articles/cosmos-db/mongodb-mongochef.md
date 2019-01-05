@@ -2,21 +2,19 @@
 title: Kapcsolódás az Azure Cosmos DB API a mongodb-hez a Studio 3T használata
 titleSuffix: Azure Cosmos DB
 description: Ismerje meg, hogyan csatlakozhat a Cosmos DB-hez a Studio 3T és az Azure Cosmos DB API használatával a mongodb-hez.
-keywords: a mongochef, a studio 3T
-services: cosmos-db
-author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: rimman
+author: sivethe
+ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 396db84186e00fefe14ac55b9a36497c6674cb43
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811239"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038413"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Csatlakozás Cosmos-fiókhoz a Studio 3T használata
 

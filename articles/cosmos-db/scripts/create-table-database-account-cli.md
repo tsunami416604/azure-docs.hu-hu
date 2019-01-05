@@ -4,17 +4,18 @@ description: Azure CLI-példaszkript – Azure Cosmos DB Table API-fiók, -adatb
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: 5e9cd406f02ea17c4d91e316cbd3f0cc937f6afc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: afb92b34db00f9294b03dc096f72c698a44b30da
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957572"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035321"
 ---
-# <a name="azure-cosmos-db-create-a-table-api-account-using-azure-cli"></a>Azure Cosmos DB: Table API-fiók létrehozása az Azure CLI használatával
+# <a name="azure-cosmos-db-create-a-table-api-account-using-azure-cli"></a>Az Azure Cosmos DB: Azure CLI-vel a Table API-fiók létrehozása
 
 Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB Table API-fiókot, -adatbázist és -táblázatot.
 

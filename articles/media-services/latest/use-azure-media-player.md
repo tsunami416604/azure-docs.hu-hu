@@ -1,5 +1,5 @@
 ---
-title: Lejátszása az Azure Media Player – Azure |} A Microsoft Docs
+title: A lejátszás az Azure Media Player – Azure |} A Microsoft Docs
 description: Ez a témakör áttekintést nyújt az Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -11,26 +11,42 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 4677fc9a56db3190073b3f310a51632055510bc2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cf419af1e6a45ded5fd1c4b363ff06a9388351d5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028553"
+ms.locfileid: "54033044"
 ---
-# <a name="play-back-with-azure-media-player"></a>Az Azure Media Player lejátszása
+# <a name="azure-media-player-overview"></a>Az Azure Media Player áttekintése
 
-[Az Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) webes videolejátszót médiatartalmak lejátszására a Microsoft Azure Media Services számos különböző böngészők és eszközök is. Az Azure Media Player iparági szabványok – például HTML5, Media forrás Extensions (MSE) és az Encrypted Media Extensions (EME) adjon meg egy streamelési megoldást használja. Ha ezek a szabványok nem érhetők el, az eszközön vagy böngészőben, az Azure Media Player használja Flashre és Silverlightra tartalék technológia. A fejlesztők a lejátszási technológiától függetlenül egy egységes JavaScript-felület API-k elérése kell. Ez lehetővé teszi az Azure Media Services által kiszolgált tartalom wide-számos eszköz és bármely extra erőfeszítést böngészőkben lejátszhatók legyenek.
+Az Azure Media Player egy webes videólejátszó médiatartalmak lejátszására a Microsoft Azure Media Services számos különböző böngészők és eszközök is. Az Azure Media Player iparági szabványok – például HTML5, Media forrás Extensions (MSE) és az Encrypted Media Extensions (EME) adjon meg egy streamelési megoldást használja. Ha ezek a szabványok nem érhetők el, az eszközön vagy böngészőben, az Azure Media Player használja Flashre és Silverlightra tartalék technológia. A fejlesztők a lejátszási technológiától függetlenül egy egységes JavaScript-felület API-k elérése kell. Ez lehetővé teszi az Azure Media Services által kiszolgált tartalom wide-számos eszköz és bármely extra erőfeszítést böngészőkben lejátszhatók legyenek.
 
 A Microsoft Azure Media Services lehetővé teszi, hogy a tartalom kiszolgálása HLS, DASH, Smooth Streaming formátumban vissza tartalom lejátszása. Az Azure Media Player a különféle formátumokat figyelembe veszi, és automatikusan játszik a legjobb hivatkozás, a platformjától és böngészői képességeitől alapján. A Media Services emellett lehetővé teszi, hogy a dinamikus titkosítást, PlayReady-titkosítást az eszközök, vagy a 128 bites AES-boríték-titkosítást. Az Azure Media Player lehetővé teszi a PlayReady-titkosítás visszafejtésére és 128 bites AES-titkosított tartalmat, ha megfelelően konfigurálva. 
 
 [Az ingyenes próbaverzió használatának megkezdéséhez](http://azure.microsoft.com/en-us/pricing/free-trial/)
 
-## <a name="monitor-diagnostics-of-a-video-stream"></a>A video-adatfolyamot diagnosztika figyelése
+## <a name="use-azure-media-player-demo-page"></a>Az Azure Media Player demó lapon
+
+### <a name="start-using"></a>Használatának megkezdése
+
+Használhatja a [Azure Media Player demó lap](http://aka.ms/amp) lejátszása az Azure Media Services-minták vagy a saját stream.  
+
+Új videó lejátszása, illessze be egy másik URL-CÍMÉT, és nyomja meg **frissítés**.
+
+Különböző lejátszási beállítások (például technológia, nyelv vagy a titkosításhoz) konfigurálását **speciális beállítások**.
+
+![Azure Media Player](./media/azure-media-player/home-page.png)
+
+### <a name="monitor-diagnostics-of-a-video-stream"></a>A video-adatfolyamot diagnosztika figyelése
 
 Használhatja a [Azure Media Player demó lap](http://aka.ms/amp) , video-adatfolyamot diagnosztika figyelése. 
 
-! [Az azure Media Player diagnostics] [amp_diagnostics]
+![Az Azure Media Player diagnostics](./media/azure-media-player/diagnostics.png)
+
+## <a name="set-up-azure-media-player-in-your-html"></a>Állítsa be az Azure Media Player a HTML-ben
+
+Állítsa be az Azure Media Player ördöngösség. Csak megkapni a alapszintű médiatartalom lejátszása a Media Services-fiók néhány percet vesz igénybe. Lásd: [dokumentáció az Azure Media Player](https://aka.ms/ampdocs) való telepítése és konfigurálása az Azure Media Player számára. 
 
 ## <a name="next-steps"></a>További lépések
 

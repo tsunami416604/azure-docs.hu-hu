@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4d311794c1c0f2dd6b9a0b2a44983b47bfeef362
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319371"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040540"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -30,16 +30,16 @@ A jelszóvisszaíró támogatják az olyan környezetekben, amelyek:
 > [!WARNING]
 > A jelszóvisszaíró régebbi során és az Azure AD Connect verziója 1.0.8641.0 használó ügyfeleink számára megszűnnek működni a [Azure Access Control service (ACS) 2018. November 7 kivonják](../develop/active-directory-acs-migration.md). Az Azure AD Connect verziója 1.0.8641.0 és a régebbi engedélyezi többé a jelszóvisszaíró adott időpontban, mert az a funkciók ACS függenek.
 >
-> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md)
+> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: Egy előző verzióról a legújabbra frissítése](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 A jelszóvisszaíró biztosítja:
 
-* **A helyszíni Active Directory-jelszó házirendek kényszerítését**: amikor a felhasználó alaphelyzetbe állítja a jelszavát, a rendszer ellenőrzi, győződjön meg arról, megfelel-e a helyszíni Active Directory-szabályzat, a címtárhoz véglegesítése előtt. A felülvizsgálat magában foglalja az előzményeket, bonyolultsága, kor, jelszószűrők és egyéb jelszó korlátozásokat a helyi Active Directory megadott ellenőrzése.
-* **Nulla-késleltetés visszajelzés**: a jelszóvisszaírás egy szinkronizált művelet. A felhasználók azonnali értesítést kapjon a jelszó nem felel meg a házirend vagy nem alaphelyzetbe állítása vagy bármilyen okból megváltozott.
-* **Támogatja a jelszó is módosul, a hozzáférési panelen és az Office 365**: amikor összevont jelszókivonatok szinkronizálása és felhasználók származnak, hogy módosítsák jelszavukat lejárt vagy nem járt le, ezeket a jelszavakat a rendszer visszaírja a helyi Active Directory-környezetbe.
-* **A jelszóvisszaíró támogatja, ha egy rendszergazda visszaállítja azokat az Azure Portalról**: minden alkalommal, amikor egy rendszergazda visszaállítja-e egy felhasználó jelszavát az a [az Azure portal](https://portal.azure.com), ha a felhasználó vagy a jelszókivonatok szinkronizálása, a jelszó, visszaírja a helyszíni. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
-* **Nincs szükség semmilyen bejövő tűzfalszabályokat**: a jelszóvisszaírás egy Azure Service Bus relay használja, mint az alapul szolgáló kommunikációs csatornát. Minden kommunikáció a 443-as porton keresztül akkor kimenő forgalomról beszélünk.
+* **A helyszíni Active Directory-jelszó házirendek kényszerítését**: Amikor a felhasználó alaphelyzetbe állítja a jelszavát, a rendszer ellenőrzi annak érdekében, hogy megfelel-e a helyszíni Active Directory-szabályzat, a címtárhoz véglegesítése előtt. A felülvizsgálat magában foglalja az előzményeket, bonyolultsága, kor, jelszószűrők és egyéb jelszó korlátozásokat a helyi Active Directory megadott ellenőrzése.
+* **Nulla-késleltetés visszajelzés**: A jelszóvisszaírás egy szinkronizált művelet. A felhasználók azonnali értesítést kapjon a jelszó nem felel meg a házirend vagy nem alaphelyzetbe állítása vagy bármilyen okból megváltozott.
+* **Támogatja a jelszó is módosul, a hozzáférési panelen és az Office 365**: Ha összevont jelszókivonatok szinkronizálása és felhasználók származnak, hogy módosítsák jelszavukat lejárt vagy nem járt le, ezeket a jelszavakat a rendszer visszaírja a helyi Active Directory-környezetbe.
+* **A jelszóvisszaíró támogatja, ha egy rendszergazda visszaállítja azokat az Azure Portalról**: Minden alkalommal, amikor egy rendszergazda visszaállítja-e egy felhasználó jelszavát az a [az Azure portal](https://portal.azure.com), ha a felhasználó vagy Jelszókivonat szinkronizálása, a jelszó van visszaírja a helyszíni. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
+* **Nincs szükség semmilyen bejövő tűzfalszabályokat**: A jelszóvisszaírás egy Azure Service Bus relay használja, mint az alapul szolgáló kommunikációs csatornát. Minden kommunikáció a 443-as porton keresztül akkor kimenő forgalomról beszélünk.
 
 > [!Note]
 > A jelszóvisszaíró található védett csoportok a helyszíni Active Directoryban lévő felhasználói fiókok nem használható. Védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok az Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
@@ -57,10 +57,10 @@ A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a 
 * Enterprise Mobility + Security E5 vagy a5 csomag
 * A Microsoft 365 E3 vagy A3
 * A Microsoft 365 E5 vagy a5 csomag
-* A Microsoft 365 F1 csomag
+* Microsoft 365 F1
 
 > [!WARNING]
-> Önálló Office 365 licencelési csomagok *nem támogatják a jelszóvisszaírást* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
+> Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
 >
 
 ## <a name="how-password-writeback-works"></a>Jelszóvisszaírás működéséről
@@ -121,10 +121,10 @@ A jelszóvisszaíró szolgáltatás rendkívül biztonságos. Az adatok védelme
 
 Miután egy felhasználó beküld egy jelszó-visszaállítás, a visszaállítási kérelem végighalad számos titkosítási lépést, a helyszíni környezetben megérkezése előtt. Ezek a titkosítás lépései győződjön meg arról, maximális szolgáltatás megbízhatóságát. Ezek az alábbiak szerint:
 
-* **1. lépés: Jelszó-titkosítási 2048-bites RSA-kulcsa**: visszaírását a helyszíni jelszó elküldése után a beküldött jelszó magát egy 2048 bites RSA-kulcsa titkosítva van-e.
-* **2. lépés: Csomag szintű titkosítást AES-GCM-**: AES-GCM használatával titkosítja a teljes csomag: a jelszó és a szükséges metaadatokat. A titkosítás megakadályozza, hogy bárki közvetlen hozzáférést a mögöttes ServiceBus-csatornára megtekintése vagy illetéktelenül módosítsák a tartalmát.
-* **3. lépés: Az összes kommunikáció a TLS/SSL keresztül történik.**: a ServiceBus folytatott minden kommunikáció zajlik az SSL/TLS-csatorna. A titkosítás a tartalom jogosulatlan harmadik felektől származó védi.
-* **Minden hat hónapban automatikus kulcs visszaállítási**: az összes kulcs vihető hathavonta, illetve minden alkalommal jelszóvisszaíró le van tiltva, majd újra engedélyezik az Azure AD Connectben maximális szolgáltatás biztonsági és biztonságának.
+* **1. lépés: Jelszó titkosítása 2048-bites RSA-kulcsa**: Miután egy felhasználó visszaírását a helyszíni jelszót ad meg, a beküldött jelszó magát egy 2048 bites RSA-kulcsa titkosítva van.
+* **2. lépés: AES-GCM-csomag szintű titkosítást**: A teljes csomag: a jelszó és a szükséges metaadatokat AES-GCM használatával van titkosítva. A titkosítás megakadályozza, hogy bárki közvetlen hozzáférést a mögöttes ServiceBus-csatornára megtekintése vagy illetéktelenül módosítsák a tartalmát.
+* **3. lépés: Minden kommunikáció a TLS/SSL-en keresztül történik**: Az SSL/TLS-csatorna a ServiceBus folytatott minden kommunikáció történik. A titkosítás a tartalom jogosulatlan harmadik felektől származó védi.
+* **Minden hat hónapban automatikus kulcs visszaállítási**: Az összes kulcs minden hat hónapon keresztül, illetve minden alkalommal, amikor a jelszóvisszaíró le van tiltva, majd újra engedélyezik az Azure AD Connectben maximális szolgáltatás biztonsági és biztonságának állítja.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Jelszó-visszaírás sávszélesség-használat
 
@@ -169,4 +169,4 @@ A jelszóban *nem* visszaírja a következő helyzetek egyikében:
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóprogram a jelszóvisszaírás engedélyezése: [a jelszóvisszaírás engedélyezése](tutorial-enable-writeback.md)
+Az oktatóprogram a jelszóvisszaírás engedélyezése: [A jelszóvisszaírás engedélyezése](tutorial-enable-writeback.md)

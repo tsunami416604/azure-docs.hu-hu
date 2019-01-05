@@ -1,18 +1,17 @@
 ---
 title: Az adatok kezelése az Azure Cosmos DB explorer használatával
 description: Az Azure Cosmos DB explorer egy önálló webes felület, amely lehetővé teszi, hogy az Azure Cosmos DB-ben tárolt adatok megtekintése és kezelése.
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: c1af73d57255b3c74bbab4c69767d1756b24a6da
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: df0b031e432c91897ff61e2cd9fcadc86bb54ee2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541574"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036868"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Az adatok kezelése az Azure Cosmos DB explorer használatával 
 

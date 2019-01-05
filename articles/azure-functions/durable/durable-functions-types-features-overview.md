@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336527"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037276"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Függvény típusa és a tartós függvények (az Azure Functions) szolgáltatások áttekintése
 
@@ -37,7 +37,7 @@ További információt és példákat találhat a [Durable Functions kötés cik
 
 ### <a name="orchestrator-functions"></a>Az orchestrator-funkciók
 
-Az orchestrator függvények olyan tartós függvények legfontosabb céljait segítik.  Az orchestrator-funkciók a módja és a végrehajtás sorrendje leírása.  Az orchestrator-funkciók leírása a vezénylési kód (C# vagy JavaScript), ahogyan a [durable functions áttekintése](durable-functions-overview.md).  Egy vezénylési számos különböző típusú műveletek, például rendelkezhet [tevékenységfüggvényeket](#activity-functions), [alárendelt vezénylések](#sub-orchestrations), [külső események Várakozás](#external-events), és [ időzítők](#durable-timers).  
+Az orchestrator függvények olyan tartós függvények legfontosabb céljait segítik.  Az orchestrator-funkciók a módja és a végrehajtás sorrendje leírása.  Az orchestrator-funkciók leírása a kódban a vezénylési (C# vagy JavaScript), ahogyan a [Durable Functions-minták és technikai kulcsfogalmak](durable-functions-concepts.md).  Egy vezénylési számos különböző típusú műveletek, például rendelkezhet [Tevékenységfüggvényeket](#activity-functions), [alárendelt vezénylések](#sub-orchestrations), [külső események Várakozás](#external-events), és [ időzítők](#durable-timers).  
 
 Az orchestrator függvényének kell elindítható a egy [vezénylési eseményindító](durable-functions-bindings.md#orchestration-triggers).
 

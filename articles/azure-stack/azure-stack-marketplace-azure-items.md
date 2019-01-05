@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: fc23efb206496bd36922da39adc0ff32abb78907
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 05a0e0d88f09853274d6bc6b65f66cf66369f77d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608678"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044195"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -236,6 +236,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![Eseménykövető SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [Eseménykövető SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | Eseménykövető SIEM egy átfogó biztonsági platformot kiépítenünk, amely speciális naplózási használatra kész megfelelőségi funkciókkal rendelkező biztonsági eszközök. | Eseménykövető |
 | ![Exivity – hibrid Felhőmegoldás számlázás](media/azure-stack-marketplace-azure-items/exivity.png) | [Exivity – hibrid Felhőmegoldás számlázás](https://azuremarketplace.microsoft.com/marketplace/apps/exivity.exivity-vm)  | A számlázási képes szinte bármilyen informatikai szolgáltatás kézbesítési követelményeinek megfelelő eszköz modellje, akár helyszíni, nyilvános felhőbeli vagy hibrid környezetek belül vannak üzembe helyezve. | Exivity |
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [F5 Big-IP virtuális kiadás](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Speciális terheléselosztás, a GSLB, a hálózati tűzfal, a DNS, a WAF és az alkalmazás eléréséhez. | F5 Networks |
+| ![FortiGate új generációs tűzfal](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate új generációs tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | Tűzfal-technológiája, amely teljes körű tartalom- és hálózatvédelmet és egy átfogó, hatékony biztonsági funkciókészlet biztosít. Alkalmazásvezérlést, IP-CÍMEK, webszűrést, valamint olyan speciális funkciókat, például a biztonsági rések kezelése VPN azonosításához és elhárításához szükséges a legújabb összetett biztonsági fenyegetések vírusvédelmet működik. | Fortinet |
 | ![Hortonworks Data Platform (HDP) tesztkörnyezet](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) tesztkörnyezet](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Szolgáltató: HDP 2,5 100 %-os nyílt forráskódú platform a Hadoop, Spark, Storm, HBase, a Kafka, Hive, az Ambari. | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Biztonság a Kaspersky hibrid felhőben](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | A Kaspersky Hybrid Cloud Security egy zökkenőmentesen előkészített és adaptív kiberbiztonsági ökoszisztéma lehetővé teszi. | Kaspersky tesztkörnyezet |
 | ![KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4 – 7. rétegbeli alkalmazás kézbesítési Vezérlőszolgáltatást (ADC) terheléselosztót, Content kapcsolóval, és a Traffic Manager. | KEMP Technologies Inc. |

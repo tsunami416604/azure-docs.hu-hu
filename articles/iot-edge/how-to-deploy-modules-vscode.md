@@ -4,18 +4,18 @@ description: Modulok IoT Edge-eszköz üzembe helyezése a Visual Studio Code ha
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 212f103a356dc3663795a5e5453869c99da3fff9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 345b8d0ab2a45e87ccc3465c31dbe53861154b70
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100820"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054130"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>A Visual Studio Code-ból az Azure IoT Edge-modulok telepítése
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan hozzon létre egy JSON-manifest nasazení, majd kül
 * Egy [az IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében. 
 * Egy [IoT Edge-eszköz](how-to-register-device-portal.md) az telepítve van az IoT Edge-futtatókörnyezet. 
 * [Visual Studio Code](https://code.visualstudio.com/).
-* [Azure IoT Edge-bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) a Visual Studio Code-hoz. 
+* [Az Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) a Visual Studio Code. 
 
 ## <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
 

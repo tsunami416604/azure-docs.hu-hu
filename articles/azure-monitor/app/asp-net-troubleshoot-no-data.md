@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2695f4e2dcd2441b0a8845bd194d4e393e1d7ca
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 18416f4208a77c27290b7e524b207fc681f06fdb
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020472"
+ms.locfileid: "54050812"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -39,7 +39,7 @@ ms.locfileid: "54020472"
 ## <a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual studióban
 *Ha a jobb gombbal egy meglévő projektben a Megoldáskezelőre, az Application Insights-beállításokat nem látható.*
 
-* Az eszközök által támogatott .NET-projekt nem minden típusú. Webes és WCF-projektek támogatottak. Minden olyan projekt esetében, mint például az asztali vagy service-alkalmazások, akkor is [manuálisan az Application Insights SDK hozzáadása a projekthez](../../application-insights/app-insights-windows-desktop.md).
+* Az eszközök által támogatott .NET-projekt nem minden típusú. Webes és WCF-projektek támogatottak. Minden olyan projekt esetében, mint például az asztali vagy service-alkalmazások, akkor is [manuálisan az Application Insights SDK hozzáadása a projekthez](../../azure-monitor/app/windows-desktop.md).
 * Ellenőrizze, hogy [Visual Studio 2013 Update 3 vagy újabb](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Developer Analytics eszközök, amelyeket az Application Insights SDK-t adja meg az előre telepített származik.
 * Válassza ki **eszközök**, **bővítmények és frissítések** , és ellenőrizze, hogy **Developer Analytics Tools** telepítve és engedélyezve van. Ha igen, kattintson a **frissítések** , hogy van egy frissítés.
 * Az új projekt párbeszédpanel megnyitásához, és válassza ki az ASP.NET-webalkalmazás. Ha látja az Application Insights lehetőség van, az eszközök vannak telepítve. Ha nem, kísérelje meg eltávolítani, majd telepítse újra az Application Insights Tools.
@@ -154,7 +154,7 @@ Az adatok a weboldalakon parancsfájlok származik.
 Lásd: [– függőségi telemetria](../../azure-monitor/app/asp-net-dependencies.md) és [kivételtelemetria](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Teljesítményadatok
-Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](../../azure-monitor/app/java-collectd.md), [Windows asztali alkalmazások](../../application-insights/app-insights-windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Az azure Cloud Services](../../application-insights/app-insights-overview.md). a beállítások kiszolgálók találhat.
+Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](../../azure-monitor/app/java-collectd.md), [Windows asztali alkalmazások](../../azure-monitor/app/windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Az azure Cloud Services](../../application-insights/app-insights-overview.md). a beállítások kiszolgálók találhat.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Nincs (kiszolgáló) adat, mivel az alkalmazás közzétett kiszolgálóhoz
 * Ellenőrizze, hogy ténylegesen kimásolt minden Microsoft. A kiszolgálóval együtt Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights dll-EK

@@ -14,28 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 2e65c5f0d6c2d493abcd61bea4077cbdd8ff95fa
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 135ee9f6b833165cd393b9c5ca582e0ee9499e0f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52331074"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54057384"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
-
-Többféle módon kell regisztrálni egy alkalmazást. Válassza ki a lehetőséget, amely leginkább megfelel az igényeinek:
-* [Expressz mód – az SPA-ALKALMAZÁSOKBA a rövid útmutató segítségével az alkalmazás konfigurálása](#option-1-register-your-application-express-mode)
-* [Az alkalmazás-beállítások manuális konfigurálásával mód – speciális](#option-2-register-your-application-advanced-mode)
-
-### <a name="option-1-register-your-application-express-mode"></a>1. lehetőség: Regisztrálja az alkalmazást (Expressz mód)
-
-1. Jelentkezzen be a [az Azure portal alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) kell regisztrálni egy alkalmazást.
-1. Az a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
-1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
-1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
-1. Az utasítások a rövid útmutató letöltéséhez, és automatikusan konfigurálja az új alkalmazást, egyetlen kattintással.
-
-### <a name="option-2-register-your-application-advanced-mode"></a>2. lehetőség: Regisztrálja az alkalmazást (Speciális mód)
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) kell regisztrálni egy alkalmazást.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.

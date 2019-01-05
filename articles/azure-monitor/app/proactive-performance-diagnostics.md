@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 77b278d939b7d2676ade03af75e48c1e2df184f9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de28bce852d00900bee19b2fa4d7e4e39d050b4d
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028602"
+ms.locfileid: "54054518"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák
 
@@ -108,7 +108,7 @@ Hol található a probléma? Lassan válaszol-e a kiszolgáló, az oldal nagyon 
 
 A böngészők metrika panel megnyitásához. A böngésző oldal betöltési idő mutatja az idő hol fog szegmentált megjelenítését. 
 
-* Ha **küldése kérelem időtartama** van magas, vagy a kiszolgáló válaszol lassan, vagy a kérelem egy bejegyzést a nagy mennyiségű adatot. Tekintse meg a [teljesítmény-mérőszámok](../../application-insights/app-insights-web-monitor-performance.md#metrics) válaszidők vizsgálatára.
+* Ha **küldése kérelem időtartama** van magas, vagy a kiszolgáló válaszol lassan, vagy a kérelem egy bejegyzést a nagy mennyiségű adatot. Tekintse meg a [teljesítmény-mérőszámok](../../azure-monitor/app/web-monitor-performance.md#metrics) válaszidők vizsgálatára.
 * Állítsa be a [függőségi nyomkövetés](../../azure-monitor/app/asp-net-dependencies.md) , hogy a lassúsága miatt külső szolgáltatásokkal vagy az adatbázis.
 * Ha **válasz fogadása** domináns, az oldal és a függő részek – JavaScript, CSS, és így tovább (de aszinkron módon betöltött adatok) lemezképek hosszúak. Állítsa be egy [rendelkezésre állási teszt](../../azure-monitor/app/monitor-web-app-availability.md), és ügyeljen arra, hogy a függő részek betölteni a beállítást. Amikor eredmények beszerzése, nyissa meg az eredményt a részletek, és bontsa ki a betöltési időt, a különböző fájlok megtekintéséhez.
 * Magas **ügyfél feldolgozási ideje** lassan futnak a parancsfájlok javasol. Ha az OK nem egyértelmű, érdemes lehet hozzáadni egy időzítési kódrészletet, és trackMetric hívások küldése az időpontokat.

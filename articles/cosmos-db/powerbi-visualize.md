@@ -1,19 +1,17 @@
 ---
 title: A Power BI oktatóanyag az Azure Cosmos DB-összekötő
 description: Ebben az oktatóanyagban a Power BI használatával JSON importálása, hozzon létre részletes jelentéseket és jelenítheti meg az Azure Cosmos DB és a Power BI-összekötő segítségével adatokat.
-keywords: a Power bi-oktatóanyag, adatok, a power bi-összekötő megjelenítése
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: fa4e6aa1274609ebf990a02d41f63541668d3b37
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438710"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043651"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
 

@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 11/27/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 54449e26279e6c6d83a57daa9c8f40819fab4993
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715761"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050115"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -29,14 +29,14 @@ Helyi fejlesztés során fejlesztői hitelesítő adatok használatával haszná
 
 A `Microsoft.Azure.Services.AppAuthentication` könyvtár kezeli a hitelesítés automatikusan, amely viszont lehetővé teszi, hogy a megoldás ahelyett, hogy a hitelesítő adatok összpontosíthat.
 
-A `Microsoft.Azure.Services.AppAuthentication` kódtár támogatja a helyi fejlesztés a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Azure App Services vagy egy Azure virtuális gép (VM) telepítésekor automatikusan használja-e a szalagtár [felügyelt Azure-szolgáltatások identitásainak](/azure/active-directory/msi-overview). Nincs kódírásra vagy konfigurálásra módosításokra szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) Ha egy felügyelt identitás nem érhető el, vagy ha a fejlesztői biztonsági környezetben nem lehet megállapítani a helyi fejlesztés során.
+A `Microsoft.Azure.Services.AppAuthentication` kódtár támogatja a helyi fejlesztés a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Amikor telepít egy Azure-erőforrás, amely támogatja a felügyelt identitás, automatikusan használja-e a szalagtár [felügyelt identitások az Azure-erőforrások](/azure/active-directory/msi-overview). Nincs kódírásra vagy konfigurálásra módosításokra szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) Ha egy felügyelt identitás nem érhető el, vagy ha a fejlesztői biztonsági környezetben nem lehet megállapítani a helyi fejlesztés során.
 
 <a name="asal"></a>
 ## <a name="using-the-library"></a>A kódtár használatával
 
 A .NET-alkalmazásokban, a legegyszerűbb módszer egy felügyelt identitás használata keresztül, a `Microsoft.Azure.Services.AppAuthentication` csomagot. Első lépések a következő:
 
-1. Vegyen fel egy hivatkozást a [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) az alkalmazás NuGet-csomagot.
+1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok az alkalmazáshoz. 
 
 2. Adja hozzá a következő kódot:
 
@@ -44,16 +44,13 @@ A .NET-alkalmazásokban, a legegyszerűbb módszer egy felügyelt identitás has
     using Microsoft.Azure.Services.AppAuthentication;
     using Microsoft.Azure.KeyVault;
 
-    // ...
+    // Instantiate a new KeyVaultClient object, with an access token to Key Vault
+    var azureServiceTokenProvider1 = new AzureServiceTokenProvider();
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider1.KeyVaultTokenCallback));
 
-    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(
-    azureServiceTokenProvider.KeyVaultTokenCallback));
-
-    // or
-
-    var azureServiceTokenProvider = new AzureServiceTokenProvider();
-    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync(
-       "https://management.azure.com/").ConfigureAwait(false);
+    // Optional: Request an access token to other Azure services
+    var azureServiceTokenProvider2 = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
 A `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában, és lekéri az Azure ad-ből lejárata előtt. Ennek következtében, már nem rendelkezik a lejárati hívása előtt ellenőrizze a `GetAccessTokenAsync` metódust. Ha meg szeretné használni a jogkivonat csak a metódust hívja. 
@@ -234,8 +231,5 @@ A következő beállítások támogatottak:
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [felügyelt identitások az Azure-erőforrások](/azure/app-service/overview-managed-identity).
-
-- Ismerje meg, különböző módjait [hitelesítése és engedélyezése az alkalmazások](/azure/app-service/overview-authentication-authorization).
-
-- További információ az Azure AD [hitelesítési forgatókönyvek](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application).
+- Tudjon meg többet [felügyelt identitások az Azure-erőforrások](/azure/active-directory/managed-identities-azure-resources/).
+- Tudjon meg többet [az Azure AD hitelesítési forgatókönyvei](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application).

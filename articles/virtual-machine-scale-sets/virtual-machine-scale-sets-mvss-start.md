@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741879"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036562"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>További információ a virtuális gép méretezési csoportok sablonjairól
 Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag-sorozat bemutatja egy minimális működőképes méretezési csoport sablonjának létrehozása és módosítása a sablon igény szerint a különböző forgatókönyvekben. Valamennyi példa származnak, ez [GitHub-adattár](https://github.com/gatneil/mvss). 
@@ -70,7 +70,7 @@ Ezután a rendszer a sablon erőforrás szakaszába. Itt akkor megadhatja, hogy 
    "resources": [
 ```
 
-Összes erőforrást igényelnek `type`, `name`, `apiVersion`, és `location` tulajdonságait. Ez a példa első erőforrás típusa rendelkezik `Microsft.Network/virtualNetwork`nevű `myVnet`, és API-verzió `2016-03-30`. (A legújabb API-verzió az erőforrástípushoz, lásd: a [Azure REST API-dokumentáció](https://docs.microsoft.com/rest/api/).)
+Összes erőforrást igényelnek `type`, `name`, `apiVersion`, és `location` tulajdonságait. Ez a példa első erőforrás típusa rendelkezik [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)nevű `myVnet`, és API-verzió `2016-03-30`. (A legújabb API-verzió az erőforrástípushoz, lásd: a [Azure Resource Manager sablonreferenciája](/azure/templates/).)
 
 ```json
      {
@@ -124,7 +124,7 @@ Ebben az esetben nincs csak egy elemet a listában, az előző példában a virt
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>Adja meg a méretezési csoport tulajdonságainak beállítása
-A méretezési csoportok a méretezési csoportban lévő virtuális gépek testreszabásának számos tulajdonságokkal rendelkezik. Ezek a tulajdonságok teljes listáját lásd: a [méretezési csoport REST API-dokumentáció](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). Ebben az oktatóanyagban csak néhány gyakran használt tulajdonságok vannak beállítva.
+A méretezési csoportok a méretezési csoportban lévő virtuális gépek testreszabásának számos tulajdonságokkal rendelkezik. Ezek a tulajdonságok teljes listáját lásd: a [sablonreferenciája](/azure/templates/microsoft.compute/virtualmachinescalesets). Ebben az oktatóanyagban csak néhány gyakran használt tulajdonságok vannak beállítva.
 ### <a name="supply-vm-size-and-capacity"></a>Adja meg a virtuális gép mérete és a kapacitás
 A méretezési csoport a virtuális gép létrehozása ("sku name") milyen méretű tudnia kell, és hány ezekhez a virtuális gépekhez ("kapacitás" sku) létrehozásához. Melyik Virtuálisgép-méret érhető el, olvassa el a [Virtuálisgép-méretek dokumentáció](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 

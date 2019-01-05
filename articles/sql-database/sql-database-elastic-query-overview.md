@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: dd6a9ee00ba6244e5a0d04f654e6b57db8896ea6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 139bf169a00f1c529e95499124358c447d0de8c5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603947"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044671"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Az Azure SQL Database rugalmas lekérdezésének áttekintése (előzetes verzió)
 
@@ -108,11 +108,11 @@ Rugalmas lekérdezés használatával jelentéskészítési feladatok elvégzés
 
 Az alábbi lépéseket a rugalmas adatbázis-lekérdezések horizontális particionálási forgatókönyvek esetén (általában) több távoli SQL-adatbázis található táblázatok halmazát hozzáférést igénylő konfigurálása:
 
-* [Hozzon létre FŐKULCS](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
+* [Hozzon létre FŐKULCS](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * Hozzon létre egy [szegmenstérkép](sql-database-elastic-scale-shard-map-management.md) jelölő az adatszint az elastic database ügyfélkódtár használatával.
-* [KÜLSŐ ADATFORRÁS létrehozása/DROP](https://msdn.microsoft.com/library/dn935022.aspx) típusú mydatasource **SHARD_MAP_MANAGER**
-* [KÜLSŐ tábla létrehozása/DROP](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [KÜLSŐ ADATFORRÁS létrehozása/DROP](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) típusú mydatasource **SHARD_MAP_MANAGER**
+* [KÜLSŐ tábla létrehozása/DROP](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 Miután elvégezte ezeket a lépéseket, érheti el a horizontálisan particionált tábla "mytable", mintha egy helyi táblára. Az Azure SQL Database automatikusan megnyílik a távoli adatbázis a táblák fizikailag tároló több párhuzamos kapcsolatot, feldolgozza a kérelmeket a távoli adatbázis, és az eredményeket adja vissza.
 További információk a tekintheti meg a horizontális particionálási forgatókönyvhöz szükséges lépésekről [rugalmas lekérdezés horizontális particionálási](sql-database-elastic-query-horizontal-partitioning.md).

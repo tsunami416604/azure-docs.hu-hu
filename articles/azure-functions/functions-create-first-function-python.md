@@ -11,18 +11,18 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: a5abc90f5a40911538b6516622203f595adfed5c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091815"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039058"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Az első Python-függvény létrehozása az Azure-ban (előzetes verzió)
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-Ez a rövid útmutató a cikk bemutatja, hogyan hozhat létre az első a az Azure CLI használatával [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) Linux rendszeren futó Python függvényalkalmazásnak. A függvénykód helyben jön létre, és az [Azure Functions Core Tools](functions-run-local.md) segítségével lehet üzembe helyezni az Azure-ban. A függvényalkalmazást linuxon futó előzetes szempontjai kapcsolatos további információkért lásd: [Ez a cikk a Linux-függvények](https://aka.ms/funclinux).
+Ez a rövid útmutató a cikk bemutatja, hogyan hozhat létre az első a az Azure CLI használatával [kiszolgáló nélküli](https://azure.com/serverless) Linux rendszeren futó Python függvényalkalmazásnak. A függvénykód helyben jön létre, és az [Azure Functions Core Tools](functions-run-local.md) segítségével lehet üzembe helyezni az Azure-ban. A függvényalkalmazást linuxon futó előzetes szempontjai kapcsolatos további információkért lásd: [Ez a cikk a Linux-függvények](https://aka.ms/funclinux).
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógépeken követheti.
 

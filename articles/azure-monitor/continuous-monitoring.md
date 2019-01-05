@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8cbd09beffb8d86ab35e5fc1cf15c37b1bef9eb2
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002280"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050608"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -32,7 +32,7 @@ A cikk lépései során a munkafolyamatok folyamatos figyelés engedélyezése a
 Ahhoz, hogy kapjon observability környezete egészében, a webes alkalmazások és szolgáltatások figyelését engedélyeznie kell. Ez lehetővé teszi, hogy könnyen megjelenítheti a végpontok közötti tranzakció és kapcsolatok termékcsalád összes tagjára.
 
 - [Az Azure DevOps Projects](../devops-project/overview.md) biztosítanak a meglévő kódot és a Git-tárház egy egyszerűsített élményt, vagy létrehoz egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-bA mintaalkalmazásból közül választhat.
-- [Folyamatos figyelés a DevOps-kiadási folyamatok](../application-insights/app-insights-vsts-continuous-monitoring.md) lehetővé teszi, hogy kapu vagy visszaállítani az üzembe helyezett szolgáltatáspéldányt a figyelési adatok.
+- [Folyamatos figyelés a DevOps-kiadási folyamatok](../azure-monitor/app/continuous-monitoring.md) lehetővé teszi, hogy kapu vagy visszaállítani az üzembe helyezett szolgáltatáspéldányt a figyelési adatok.
 - [Az állapotfigyelő](../azure-monitor/app/monitor-performance-live-website-now.md) lehetővé teszi, hogy a Windows az Azure Application Insights élő .NET-alkalmazás kialakítása módosítása vagy a kód ismételt telepítése nélkül.
 - Ha az alkalmazás rendelkezik hozzáféréssel a kódot, majd engedélyezze a teljes körű figyelési [Application Insights](../application-insights/app-insights-overview.md) az Azure Monitor készült Application Insights SDK telepítésével [.NET](../application-insights/quick-monitor-portal.md), [Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), vagy [bármely más programnyelv](../azure-monitor/app/platforms.md). Ez lehetővé teszi, hogy adja meg az egyéni eseményeket, metrikákat vagy lapmegtekintés, amely az alkalmazás és a cége a.
 
@@ -64,7 +64,7 @@ Folyamatos integráció / folyamatos üzembe helyezés lehetővé teszi, hogy au
 
 - Használat [Azure folyamatok](/azure/devops/pipelines) folyamatos üzembe helyezés implementálását és automatizálását a CI/CD-tesztek alapján éles kód véglegesítésétől a teljes folyamatot.
 - Használat [minőségi kapuk](/devops/pipelines/release/approvals/gates) integrálható a központi telepítés előtti vagy utáni figyelést. Ez biztosítja, hogy a kulcs egészségügyi/teljesítmény-mérőszámokat (KPI-k) a megfelel, az alkalmazások éles és az infrastruktúra-környezetben a különbségeket válthatnak fejlesztési vagy a méretezési csoport nem negatív negatív hatással van a KPI-ket.
-- [Különálló figyelési példány karbantartása](../application-insights/app-insights-separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../azure-monitor/platform/metrics-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések a Log Analytics](log-query/cross-workspace-query.md).
+- [Különálló figyelési példány karbantartása](../azure-monitor/app/separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../azure-monitor/platform/metrics-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések a Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Műveletek a gyakorlatban hasznosítható riasztások létrehozása
@@ -80,16 +80,16 @@ Monitorozás kritikus fontosságú tényezője van pontos rendszergazdák aktuá
 Arról, hogy a fejlesztési és operatív rendelkezik-e a hozzáférést ugyanazon telemetriát és eszközök lehetővé teszi a környezete egészében minták megtekintése és az időt a észlelése (MTTD) és átlagos idő a visszaállítás (MTTR) minimalizálása érdekében.
 
 - Készítse elő [egyéni irányítópultokat](../application-insights/app-insights-tutorial-dashboards.md) gyakori metrikák és naplók a szervezet a eltérő szerepkörök alapján. Az irányítópultok az összes Azure-erőforrások származó adatok is kombinálhatók.
-- Készítse elő [munkafüzetek](../application-insights/app-insights-usage-workbooks.md) , hogy fejlesztési és a műveletek közötti adatmegosztás. Ezek a sikerült, dinamikus jelentéseket a mérőszám-diagramok és naplólekérdezések, vagy akár a hibaelhárítási útmutatók alapszintű problémák kezeléséhez útmutatás nyújtása a támogatási, illetve műveletek fejlesztők által készített elő kell készíteni.
+- Készítse elő [munkafüzetek](../azure-monitor/app/usage-workbooks.md) , hogy fejlesztési és a műveletek közötti adatmegosztás. Ezek a sikerült, dinamikus jelentéseket a mérőszám-diagramok és naplólekérdezések, vagy akár a hibaelhárítási útmutatók alapszintű problémák kezeléséhez útmutatás nyújtása a támogatási, illetve műveletek fejlesztők által készített elő kell készíteni.
 
 ## <a name="continuously-optimize"></a>Folyamatos optimalizálást végezhet
  Figyelés az egyik Összefoglalásul népszerű Build mérték további filozófia, amely javasolja folyamatosan nyomon követheti a KPI-k és a felhasználói viselkedés mérőszámok, és ezután mindent megtesz tervezési ismétlések segítségével optimalizálja őket. Az Azure Monitor segítséget nyújt a metrikák és a megfelelő, az üzleti és szükség szerint a következő központi telepítésben lévő új adatpontok hozzáadása naplóinak összegyűjtésére.
 
 - Az Application Insights eszközzel [nyomon követheti a végfelhasználói viselkedés és engagement](../application-insights/app-insights-tutorial-users.md).
-- Használat [hatáselemzés](../application-insights/app-insights-usage-impact.md) segítséget rangsorolhatja mely területek kiemelten fontos KPI-k meghajtót be.
+- Használat [hatáselemzés](../azure-monitor/app/usage-impact.md) segítséget rangsorolhatja mely területek kiemelten fontos KPI-k meghajtót be.
 
 
 ## <a name="next-steps"></a>További lépések
 
 - További információ a különbség a összetevői [Azure Monitor](overview.md).
-- [Folyamatos megfigyelés hozzáadása](../application-insights/app-insights-vsts-continuous-monitoring.md) a kiadási folyamathoz.
+- [Folyamatos megfigyelés hozzáadása](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamathoz.

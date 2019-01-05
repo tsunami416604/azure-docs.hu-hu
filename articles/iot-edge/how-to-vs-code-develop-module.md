@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/14/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb3d19d35a15d5476594948b035a39ae703f1c3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5eb896978e9b04a6ad87fe1f669d9155e9cc1433
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551445"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053211"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -31,7 +31,7 @@ Az írt modulok C#, vagy a Node.js, Java, hibakeresése a Visual Studio Code-mod
 
 Telepítés [Visual Studio Code](https://code.visualstudio.com/) első majd adja hozzá a következő bővítményeket:
 
-- [Az Azure IoT Edge-bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
+- [Az Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 - [Docker-bővítmény](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - A Visual Studio fájlformátum(ok) kiterjesztését vagy kiterjesztéseit adott nyelven fejleszt, a:
   - C#, beleértve az Azure Functions: [C#-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
@@ -73,7 +73,7 @@ Kivéve, ha a modul C nyelven fejleszt, emellett a Python-alapú [Azure IoT Edge
 
 ## <a name="create-a-new-solution-template"></a>Új megoldássablon létrehozásához
 
-A következő lépések bemutatják, hogyan hozhat létre egy IoT Edge-modul az előnyben részesített fejlesztési nyelven (többek között az Azure Functions-ben írt C#) Visual Studio Code és az Azure IoT Edge bővítmény használatával. Indítsa el a megoldás létrehozásával és majd létrehozni ebben a megoldásban az első modult. Egyes megoldások a több modul is tartalmazhat.
+A következő lépések bemutatják, hogyan hozhat létre egy IoT Edge-modul az előnyben részesített fejlesztési nyelven (többek között az Azure Functions-ben írt C#) Visual Studio Code és az Azure IoT-eszközök használatával. Indítsa el a megoldás létrehozásával és majd létrehozni ebben a megoldásban az első modult. Egyes megoldások a több modul is tartalmazhat.
 
 1. Válassza ki **nézet** > **paletta parancs**.
 

@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: c9c9f07eab395df716a4575338f881f07d573b74
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019129"
+ms.locfileid: "54044246"
 ---
-# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és társított szolgáltatások, az Azure Data Factoryban 
-> [!div class="op_single_selector" title1="SelectVálassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és társított szolgáltatások, az Azure Data Factoryban
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-create-datasets.md)
 > * [Aktuális verzió](concepts-datasets-linked-services.md)
 
-Ez a cikk bemutatja, milyen adatkészletek, hogyan vannak definiálva JSON formátumban, és hogy ezek hogyan használhatók az Azure Data Factory-folyamatok. 
+Ez a cikk bemutatja, milyen adatkészletek, hogyan vannak definiálva JSON formátumban, és hogy ezek hogyan használhatók az Azure Data Factory-folyamatok.
 
-Ha most ismerkedik a Data Factory, [az Azure Data Factory bemutatását](introduction.md) áttekintését. 
+Ha most ismerkedik a Data Factory, [az Azure Data Factory bemutatását](introduction.md) áttekintését.
 
 ## <a name="overview"></a>Áttekintés
 A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** logikai csoportosítása **tevékenységek** , amelyek együttesen hajtanak végre egy feladatot. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Például használhat egy másolási tevékenység adatokat másol egy helyszíni SQL Server az Azure Blob storage. Ezt követően használható a Hive-tevékenység, amely egy Hive-szkriptet az Azure HDInsight-fürtön az adatfeldolgozás kimeneti adatok előállításához a Blob storage-ból. Végül egy második másolási tevékenység használatával lehet, hogy a kimeneti adatok másolása az Azure SQL Data Warehouse, amelyre üzletiintelligencia (BI-) jelentéskészítési megoldások épülnek. További információ a folyamatok és tevékenységek: [folyamatok és tevékenységek](concepts-pipelines-activities.md) az Azure Data Factoryban.
@@ -70,7 +70,7 @@ typeProperties | A tulajdonságait különböznek az összes adattárat vagy sz�
 connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem
 
 ## <a name="linked-service-example"></a>A kapcsolódószolgáltatás-példa
-A következő társított szolgáltatás az Azure Storage társított szolgáltatása. Figyelje meg, hogy a típusuk értéke AzureStorage. A tulajdonságait az Azure Storage társított szolgáltatás egy kapcsolati karakterláncot tartalmaznak. A Data Factory szolgáltatás ezt a kapcsolati karakterláncot az adattár futásidőben való kapcsolódáshoz használ. 
+A következő társított szolgáltatás az Azure Storage társított szolgáltatása. Figyelje meg, hogy a típusuk értéke AzureStorage. A tulajdonságait az Azure Storage társított szolgáltatás egy kapcsolati karakterláncot tartalmaznak. A Data Factory szolgáltatás ezt a kapcsolati karakterláncot az adattár futásidőben való kapcsolódáshoz használ.
 
 ```json
 {
@@ -101,7 +101,7 @@ Egy adatkészletet a Data Factory a következőképpen van meghatározva JSON fo
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
         "linkedServiceName": {
                 "referenceName": "<name of linked service>",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "structure": [
             {
@@ -136,7 +136,7 @@ A következő példában az adatkészlet egy SQL database-ben MyTable nevű táb
         "type": "AzureSqlTable",
         "linkedServiceName": {
                 "referenceName": "MyAzureSqlLinkedService",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "typeProperties":
         {
@@ -166,9 +166,9 @@ A példában az előző szakaszban az adatkészlet típusa értéke **AzureSqlTa
         "type": "AzureBlob",
         "linkedServiceName": {
                 "referenceName": "MyAzureStorageLinkedService",
-                 "type": "LinkedServiceReference",
-        }, 
- 
+                "type": "LinkedServiceReference",
+        },
+
         "typeProperties": {
             "fileName": "input.log",
             "folderPath": "adfgetstarted/inputdata",
@@ -218,14 +218,14 @@ A következő eszközök és SDK-k használatával adatkészleteket is létrehoz
 
 ## <a name="current-version-vs-version-1-datasets"></a>1. verzió az adatkészletek és a jelenlegi verzió
 
-Az alábbiakban a Data Factory és a Data Factory 1. verziójának adatkészletek közötti különbségeket: 
+Az alábbiakban a Data Factory és a Data Factory 1. verziójának adatkészletek közötti különbségeket:
 
 - Az external tulajdonság a jelenlegi verzióban nem támogatott. A rendszer felülírja a [eseményindító](concepts-pipeline-execution-triggers.md).
 - A házirend- és rendelkezésre állási tulajdonságok nem támogatottak a jelenlegi verzióban. A folyamat kezdési ideje függ [eseményindítók](concepts-pipeline-execution-triggers.md).
-- A jelenlegi verzióban nem támogatottak a hatókörrel rendelkező adatkészletek (a folyamat megadott adatkészletek). 
+- A jelenlegi verzióban nem támogatottak a hatókörrel rendelkező adatkészletek (a folyamat megadott adatkészletek).
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő oktatóanyaggal, a részletes folyamatokról és adatkészletekről létrehozásához a következő eszközök és SDK-k használatával. 
+Tekintse meg a következő oktatóanyaggal, a részletes folyamatokról és adatkészletekről létrehozásához a következő eszközök és SDK-k használatával.
 
 - [Gyors útmutató: adat-előállító létrehozása .NET használatával](quickstart-create-data-factory-dot-net.md)
 - [Gyors útmutató: a PowerShell használatával egy adat-előállító létrehozása](quickstart-create-data-factory-powershell.md)

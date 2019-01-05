@@ -10,29 +10,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380216"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036239"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok
 
 Ez a cikk az Azure Stack által használt minden egyes API-profil az erőforrás-szolgáltató és a verziószámok találja. Ez a cikk a táblázatokban a verziók mindegyik erőforrás-szolgáltató és a profilok az API-verziók esetében támogatott. Mindegyik erőforrás-szolgáltató erőforrás-típusok és adott verziószámok tartalmazza.
 
 Az API-profil három elnevezési konvenciókat használja:
- - legújabb
- - éééé-hh-nn-hibrid
- - éééé-hh-nn-profil
+
+ - **legfrissebb**
+ - **yyyy-mm-dd-hybrid**
+ - **yyyy-mm-dd-profile**
 
 Egy API-profilokat és verzió kiadási ütem az Azure Stack, ismertetését [kezelése API-verzióprofilok az Azure Stackben](azure-stack-version-profiles.md).
 
 > [!Note]  
-> A **legújabb** API profil az erőforrás-szolgáltató API-ja verzió a legújabb tartalmaz, és nem szerepel ebben a cikkben.
+> A **legújabb** API-profil tartalmazza az erőforrás-szolgáltató API legújabb verzióját, és nem szerepel ebben a cikkben.
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>2018-03-01-hibrid áttekintése
 
@@ -76,13 +77,13 @@ Több a szolgáltatók a API-profilban az egyes erőforrástípusok verzióját,
 | Resources_Locks | 2016-09-01 |
 | Előfizetések | 2016. 06. 1 |
 
-Több a szolgáltatók a api-profilban az egyes erőforrástípusok verzióját, lásd: [a 2018-03-01-hibrid részletei](#details-for-the-2018-03-01-hybrid)
+A szolgáltatók a API-profilban az egyes erőforrástípusok verzióinak listájáért tekintse meg a következő szakaszban.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>A 2018-03-01-hibrid részletei
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Szerepköralapú hozzáférés-vezérlés használatával kezelheti a a szervezeti felhasználók végezhetnek el az erőforrásokon. Ez számos műveletet lehetővé teszi a Szerepkörök definiálása, szerepköröket hozzárendelni felhasználók vagy csoportok és engedélyek adatainak beolvasása. További információkért lásd: [engedélyezési](https://docs.microsoft.com/rest/api/authorization/).
+Szerepköralapú hozzáférés-vezérlés használatával kezelheti a a szervezeti felhasználók végezhetnek el az erőforrásokon. Ez számos műveletet lehetővé teszi a Szerepkörök definiálása, szerepköröket hozzárendelni felhasználók vagy csoportok és engedélyek adatainak beolvasása. További információkért lásd: [engedélyezési](/rest/api/authorization/).
 
 | Erőforrástípusok | API-verziók |
 |---------------------|--------------------|
@@ -108,7 +109,7 @@ Szerepköralapú hozzáférés-vezérlés használatával kezelheti a a szerveze
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Az Azure Compute API-k, programozás alapú hozzáférést biztosít a virtuális gépek és az azokat támogató erőforrásokhoz. További információkért lásd: [Azure Compute](https://docs.microsoft.com/rest/api/compute/).
+Az Azure Compute API-k, programozás alapú hozzáférést biztosít a virtuális gépek és az azokat támogató erőforrásokhoz. További információkért lásd: [Azure Compute](/rest/api/compute/).
 
 | Erőforrás típusa | API-verzió |
 |---------------------------------------------------------------|-------------|
@@ -155,7 +156,7 @@ Az Azure Compute API-k, programozás alapú hozzáférést biztosít a virtuáli
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-A kulcs kezelése tárolók, valamint a kulcsok, titkos kódok és tanúsítványok a kulcstartók belül. További információkért lásd: [Azure Key Vault REST API-referencia](https://docs.microsoft.com/rest/api/keyvault/).
+A kulcs kezelése tárolók, valamint a kulcsok, titkos kódok és tanúsítványok a kulcstartók belül. További információkért lásd: a [Azure Key Vault REST API-referencia](/rest/api/keyvault/).
 
 | Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
@@ -166,7 +167,7 @@ A kulcs kezelése tárolók, valamint a kulcsok, titkos kódok és tanúsítván
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Műveleti hívás eredménye az elérhető hálózati lista reprezentációját. További információkért lásd: [művelet REST API-val](https://docs.microsoft.com/rest/api/operation/).
+A műveleti hívás eredménye a rendelkezésre álló hálózati lista reprezentációját. További információkért lásd: [művelet REST API-val](/rest/api/operation/).
 
 | Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
@@ -188,7 +189,7 @@ Műveleti hívás eredménye az elérhető hálózati lista reprezentációját.
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Az Azure Resource Manager üzembe helyezése és kezelése az Azure-megoldások infrastruktúrája lehetővé teszi. Az erőforráscsoportok kapcsolódó erőforrások rendezéséhez, és az erőforrások JSON-sablonok üzembe helyezése. Bevezetés az erőforrások Resource Manager használatával történő üzembe helyezéséről, lásd: [Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Az Azure Resource Manager üzembe helyezése és kezelése az Azure-megoldások infrastruktúrája lehetővé teszi. Az erőforráscsoportok kapcsolódó erőforrások rendezéséhez, és az erőforrások JSON-sablonok üzembe helyezése. Az erőforrások Resource Manager használatával történő üzembe helyezéséről bevezető, tekintse meg a [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
 
 | Erőforrástípusok | API-verziók |
 |-----------------------------------------|-------------------|
@@ -220,7 +221,7 @@ Az Azure Resource Manager üzembe helyezése és kezelése az Azure-megoldások 
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók és kulcsok programozással felügyelheti. További információkért lásd: [Azure Storage Resource Provider REST API-referencia](https://docs.microsoft.com/rest/api/storagerp/).
+A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók és kulcsok programozással felügyelheti. További információkért lásd: a [Azure Storage erőforrás-szolgáltató REST API-referencia](/rest/api/storagerp/).
 
 | Erőforrástípusok | API-verziók |
 |-------------------------|--------------|

@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: 5b0543b28117d349ceaef173a1201574cf2b3682
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604548"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039095"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>A Resource Health használata az Azure SQL Database-kapcsolatának hibaelhárítása
 
@@ -77,6 +77,6 @@ Reconfigurations átmeneti feltételek minősülnek, és várhatóan időről id
 
 - Tudjon meg többet [újrapróbálkozási logika átmeneti hibák esetén](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
 - [SQL-csatlakozási hibák elhárítása, diagnosztizálása és elkerülése](./sql-database-connectivity-issues.md)
-- Tudjon meg többet [Resource Health-riasztások konfigurálása](/articles/service-health/resource-health-alert-arm-template-guide.md)
-- Áttekintheti a [Resource Health](/articles/service-health/resource-health-overview.md)
-- [A Resource Health – gyakori kérdések](/articles/service-health/resource-health-faq.md)
+- Tudjon meg többet [Resource Health-riasztások konfigurálása](../service-health/resource-health-alert-arm-template-guide.md)
+- Áttekintheti a [Resource Health](../service-health/resource-health-overview.md)
+- [A Resource Health – gyakori kérdések](../service-health/resource-health-faq.md)

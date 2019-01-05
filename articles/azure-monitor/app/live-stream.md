@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: cf0ffa6069cf8882a541b2a0a82ad96bfb4043ee
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 73dc8c2217a0f4eecd5d5b0f934624d9491055a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025620"
+ms.locfileid: "54040234"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
@@ -202,7 +202,7 @@ Nincs adat? Ha az alkalmazás egy védett hálózat: Élő metrikák Stream hasz
 
 
 ## <a name="next-steps"></a>További lépések
-* [Az Application Insights figyelési használat](../../application-insights/app-insights-usage-overview.md)
+* [Az Application Insights figyelési használat](../../azure-monitor/app/usage-overview.md)
 * [Diagnosztikai keresés használata](../../azure-monitor/app/diagnostic-search.md)
 * [Profilkészítő](../../azure-monitor/app/profiler.md)
 * [Pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md)

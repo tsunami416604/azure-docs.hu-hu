@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793070"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042053"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -33,12 +33,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e. Támogatott verziók többek között: 
-  - Windows Server 2016 
-  - Windows Server 2012 R2
-  - Windows Server 2012 
-  - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója
-  - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), Citrix PV- vagy AWS PV-illesztővel. A RedHat PV-illesztőket futtató példányok *nem* támogatottak.
- - A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
+      - Windows Server 2016 
+      - Windows Server 2012 R2
+      - Windows Server 2012 
+      - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója
+      - Red Hat Enterprise Linux 6.4 6.10, hogy 7.6 7.1-es (csak HVM virtualizált példányok) a *(RedHat PV illesztőprogramokat futtató példányok nem támogatottak.)*
+      - CentOS 6.4, 6.10 való 7.6 7.1-es (csak HVM virtualizált példányok)
+ 
+- A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
 
     > [!IMPORTANT]
     > A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálását. Az automatikus telepítéshez elő kell készíteni egy fiókot az EC2-példányokon, amelynek használatával a Site Recovery eléri a virtuális gépet. Tartományi vagy helyi fiókot egyaránt használhat. 
