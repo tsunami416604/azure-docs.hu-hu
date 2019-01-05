@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/21/2018
+ms.date: 01/04/2018
 ms.author: b-juche
-ms.openlocfilehash: ff28429ba81a97ca85364364a2a432e39aaad380
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: c25cc4619eb77b69aebde3bb41260e3cfc361dd9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414056"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054418"
 ---
-# <a name="register-for-azure-netapp-files"></a>Regisztráljon a Azure NetApp-fájlok
+# <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 Mielőtt Azure NetApp fájlokat használ, a NetApp fájlokat az Azure szolgáltatásban regisztrálni kérelmet kell benyújtania.  A regisztráció után, majd regisztrálja a szolgáltatás használatához.
 
 ## <a name="request-to-enroll-in-the-service"></a>A szolgáltatás regisztráció kérelem
-Kell tartoznia a nyilvános előzetes program és az engedélyezési listához hozzáadni kívánt Microsoft.NetApp erőforrás-szolgáltató elérésére. A nyilvános előzetes verzió programjához való csatlakozással kapcsolatos részletekért lásd az [Azure NetApp Files nyilvános előzetes verzió regisztrációs lapját](http://aka.ms/anfsignup). 
+Kell tartoznia a nyilvános előzetes program és az engedélyezési listához hozzáadni kívánt Microsoft.NetApp erőforrás-szolgáltató elérésére. A nyilvános előzetes verzió programjához való csatlakozással kapcsolatos részletekért lásd az [Azure NetApp Files nyilvános előzetes verzió regisztrációs lapját](http://aka.ms/nfspublicpreview). 
 
 
 ## <a name="register-the-netapp-resource-provider"></a>A NetApp erőforrás-szolgáltató regisztrálása

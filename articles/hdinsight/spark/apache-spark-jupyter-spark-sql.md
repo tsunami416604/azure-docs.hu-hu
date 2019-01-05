@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e816799ba2df0f97aca7618e7c181a1086bb84a9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2fc88f82222deeecb55dac8fa77e1d8702ffe011
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791914"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055030"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Gyors útmutató: Hozzon létre egy Apache Spark-fürt a HDInsight-sablon használatával
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark-fürt létrehozása
 
-Hozzon létre egy HDInsight Spark-fürtöt az Azure Resource Manager-sablon használatával. A sablonban található [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/).
+Hozzon létre egy HDInsight Spark-fürtöt az Azure Resource Manager-sablon használatával. A sablonban található [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/). A JSON-szintaxist és a fürt tulajdonságait: [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters).
 
 1. Az alábbi hivatkozásra kattintva megnyithatja a sablont az Azure Portalon egy új böngészőlapon:
 

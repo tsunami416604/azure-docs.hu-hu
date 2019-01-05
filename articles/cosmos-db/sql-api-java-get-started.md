@@ -1,23 +1,21 @@
 ---
-title: 'NoSQL-oktatóanyag: SQL API-t az Azure Cosmos DB Java SDK-val'
+title: 'NoSQL-oktatóanyag: Az SQL API-t az Azure Cosmos DB Java SDK'
 description: NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy Java-konzolalkalmazást az Azure Cosmos DB SQL API használatával. Az Azure SQL egy NoSQL-alapú adatbázis a JSON formátumhoz.
-keywords: nosql-oktatóanyag, online adatbázis, java konzolalkalmazás
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4b03fc3721d7a2be1e2099bf4878f6abb50e6b76
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093020"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044042"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: SQL API Java-konzolalkalmazás létrehozása
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: Egy SQL API Java Konzolalkalmazás létrehozása
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -78,7 +76,7 @@ A könyvtár tartalmazza a projekt `pom.xml` fájlját és egy `src` mappát, am
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
+## <a id="Connect"></a>3. lépés: Csatlakozás az Azure Cosmos DB-fiók
 Térjen vissza az [Azure Portalra](https://portal.azure.com) a végpont és az elsődleges főkulcs beszerzéséért. Az Azure Cosmos DB végpont és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban.
 
 Az Azure Portalon lépjen a Azure Cosmos DB-fiókra, majd kattintson a **Kulcsok** elemre. Másolja ki az URI-t a portálról, és illessze be a Program.java fájl `https://FILLME.documents.azure.com` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `FILLME` elembe.
@@ -140,7 +138,7 @@ A dokumentum használatával hozható létre a [Documentclient](/java/api/com.mi
 
 ![A diagram a NoSQL-oktatóanyagban a Java konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>7. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
+## <a id="Query"></a>7. lépés: Azure Cosmos DB-erőforrások lekérdezése
 Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](how-to-sql-query.md).  Az alábbi mintakód bemutatja, hogyan kérdezheti le a dokumentumokat az Azure Cosmos DB-ben az SQL-szintaxis és a [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) metódus együttes használatával.
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -153,7 +151,7 @@ Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentum
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
+## <a id="ReplaceDocument"></a>8. lépés: Cserélje le a JSON-dokumentumok
 Az Azure Cosmos DB támogatja a JSON-dokumentumok [replaceDocument](/java/api/com.microsoft.azure.documentdb._document_client.replacedocument) metódussal végrehajtott frissítését.
 
     // Update a property
@@ -174,7 +172,7 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>11. lépés: Futtassa a teljes Java konzolalkalmazást!
+## <a id="Run"></a>11. lépés: Futtassa a Java-Konzolalkalmazás minden egy helyen!
 Az alkalmazás konzolról való futtatásához lépjen a projektmappába, és fordítsa le az alkalmazást Mavennel:
     
     mvn package

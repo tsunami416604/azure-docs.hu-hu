@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 5d8aa2c25bf79278b10b96f93733e3abf89e4783
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971181"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040744"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
@@ -31,18 +31,15 @@ A log Analytics engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a K
 1. Válassza ki például az AKS-fürt erőforráscsoportjának *myResourceGroup*. Ne válassza ki az erőforráscsoport, amely tartalmaz az egyes AKS-fürt erőforrásokat, például *MC_myResourceGroup_myAKSCluster_eastus*.
 1. A bal oldalon válassza ki a **diagnosztikai beállítások**.
 1. Válassza ki például az AKS-fürt *myAKSCluster*, majd válassza a **diagnosztika bekapcsolása**.
-1. Adjon meg egy nevet, például *myAKSLogs*, majd válassza a **Küldés a Log Analyticsnek**.
+1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza a **Küldés a Log Analyticsnek**.
     * Válassza ki a *konfigurálása* – Naplóelemzés, majd válassza ki a meglévő munkaterület vagy **új munkaterület létrehozása**.
     * Hozzon létre egy munkaterületet van szüksége, ha adjon meg egy nevet, egy erőforráscsoportot és egy helyen.
-1. A naplók listájából válassza ki a naplók például engedélyezni kívánt *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező*. Lépjen vissza, és az összegyűjtött naplók módosítani, ha a Log Analytics engedélyezve vannak.
+1. Az elérhető naplóit, jelölje ki az engedélyezni kívánt naplók. Alapértelmezés szerint a *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező* naplói engedélyezve vannak. Például engedélyezheti a további naplók *kube-naplózási* és *fürt-méretező*. Lépjen vissza, és az összegyűjtött naplók módosítani, ha a Log Analytics engedélyezve vannak.
 1. Ha elkészült, válassza ki a **mentése** a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
 Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban, majd létrehozhat egy Log Analytics-munkaterület:
 
 ![Log Analytics-munkaterületet a Log Analytics az AKS-fürt engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
-
->[!NOTE]
->Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Az AKS-fürtöt teszt podján ütemezése
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 4663cb467d7d1d864425f4899c829b6618b9547c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584462"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051696"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Rdma-t vagy a GPU-példányt használja a Batch-készletekben
 
@@ -100,7 +100,7 @@ Speciális Virtuálisgép-méretét a Batch-készlet konfigurálásához szüks�
 
 Windows NC-csomópontok készletét a CUDA-alkalmazások futtatásához kell NVDIA GPU-illesztők telepítése. Az alábbi minta lépéseket alkalmazáscsomag telepítéséhez az NVIDIA GPU-illesztőprogramokat használja. Ezt a lehetőséget választhatja azt is, ha a számítási feladat egy adott GPU illesztőprogramjának verziószámát függ.
 
-1. A GPU-illesztőprogramokat, a Windows Server 2016-ot egy telepítési csomagjának letöltése a [NVIDIA webhely](http://us.download.nvidia.com/Windows/) – például [verzió 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Mentse a fájlt helyileg a például egy rövid nevet használó *GPUDriverSetup.exe*.
+1. A GPU-illesztőprogramokat, a Windows Server 2016-ot egy telepítési csomagjának letöltése a [NVIDIA webhely](https://www.nvidia.com/Download/index.aspx) – például [verzió 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Mentse a fájlt helyileg a például egy rövid nevet használó *GPUDriverSetup.exe*.
 2. Hozzon létre a csomag zip-fájlban.
 3. A csomag feltöltése a Batch-fiókhoz. Útmutató: a [alkalmazáscsomagok](batch-application-packages.md) útmutatást. Adjon meg egy alkalmazásazonosítót például *GPUDriver*, és a egy verziót például *411.82*.
 1. A Batch API-k vagy az Azure portal használatával, hoz létre egy készletet a kívánt számú csomópontot és a méretezési csoport virtuálisgép-konfiguráció. Az alábbi táblázatban látható minta beállítások csendes használatával az indítási tevékenység NVIDIA GPU-illesztők telepítése:

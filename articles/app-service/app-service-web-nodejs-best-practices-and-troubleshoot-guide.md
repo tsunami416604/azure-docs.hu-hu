@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632687"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051852"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
 
@@ -147,7 +147,7 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>A node-alkalmazás túl sok CPU is használja.
 
-Az Azure App Service ajánlása a Portal tudnivalók a magas cpu-felhasználás jelenhet meg. Tekintse meg az egyes is állíthatja figyelők [metrikák](web-sites-monitor.md). A CPU-használat a ellenőrzésekor a [Azure Portal irányítópultján](../application-insights/app-insights-web-monitor-performance.md), ellenőrizze a maximális processzor maradjon le a maximális értékeket.
+Az Azure App Service ajánlása a Portal tudnivalók a magas cpu-felhasználás jelenhet meg. Tekintse meg az egyes is állíthatja figyelők [metrikák](web-sites-monitor.md). A CPU-használat a ellenőrzésekor a [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md), ellenőrizze a maximális processzor maradjon le a maximális értékeket.
 Ha úgy véli, hogy az alkalmazás túl sok CPU is használja, és miért nem magyarázni, ismerje meg, hogy a node-alkalmazás is készíthet profilt.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>A node-alkalmazás az Azure App Service-ben V8-Profiler profilkészítés
@@ -220,7 +220,7 @@ Láthatja, hogy a WriteConsoleLog függvény által felhasznált 95 %-ában. A k
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>A node-alkalmazás túl sok memóriát is használja.
 
-Ha az alkalmazás túl sok memóriát is használja, lásd: az értesítés az Azure App Service kapcsolatos magas memóriahasználat a portálon. Beállíthat figyelők tekintse meg az egyes [metrikák](web-sites-monitor.md). A memóriahasználat a ellenőrzésekor a [Azure Portal irányítópultján](../application-insights/app-insights-web-monitor-performance.md), ügyeljen arra, hogy ellenőrizze a maximális memóriát maradjon le a maximális értékeket.
+Ha az alkalmazás túl sok memóriát is használja, lásd: az értesítés az Azure App Service kapcsolatos magas memóriahasználat a portálon. Beállíthat figyelők tekintse meg az egyes [metrikák](web-sites-monitor.md). A memóriahasználat a ellenőrzésekor a [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md), ügyeljen arra, hogy ellenőrizze a maximális memóriát maradjon le a maximális értékeket.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Észlelését és a node.js-hez készült halommemória összehasonlítása
 

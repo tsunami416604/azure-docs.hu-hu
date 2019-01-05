@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1bd92b9c4611465b680f195e4881a447f4bb701
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631583"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044399"
 ---
 # <a name="back-up-azure-vms-with-the-azure-backup-service"></a>Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltatással
 
@@ -290,7 +290,7 @@ A kezdeti biztonsági mentési feladat futtatása:
   Az üzembehelyezési értesítések értesítik, hogy a biztonsági mentési feladat elindult, és hogy a feladat állapotát a Biztonsági mentési feladatok oldalon figyelheti. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
   > [!NOTE]
-  > Az Azure backuppal biztonsági mentés alatt álló adatok titkosítása keresztül az összes [Storage Service Encryption (SSE)](../storage/common/storage-service-encryption.md).
+  > - Az Azure backuppal biztonsági mentés alatt álló adatok titkosítása keresztül az összes [Storage Service Encryption (SSE)](../storage/common/storage-service-encryption.md).
   >
   >
 
@@ -339,4 +339,3 @@ Az Azure-beli virtuális gépek biztonsági mentésének költsége a védett p�
 ## <a name="next-steps"></a>További lépések
 
 [Kezelése](backup-azure-manage-vms.md) a biztonsági másolatokat.
-

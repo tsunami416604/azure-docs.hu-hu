@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Central alkalmazáshoz (Python) Raspberry Pi Connnect |} A Microsoft Docs
+title: Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python) |} A Microsoft Docs
 description: Eszköz fejlesztőként Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz Python használatával.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f39832b50ed983e7d8a0bfc0a06366870717fa3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239593"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051985"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők a Raspberry Pi csatlakozta
 
 A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
 
-* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
+* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 * Raspberry Pi eszköz a Raspbian operációs rendszert. Egy figyelő, billentyűzetből és egérből a Raspberry Pi csatlakozik a grafikus felhasználói környezet elérésére van szüksége. A Raspberry Pi képesnek kell lennie [csatlakozni az internethez](https://www.raspberrypi.org/learning/software-guide/wifi/).
 * Szükség esetén egy [értelemben Hat](https://www.raspberrypi.org/products/sense-hat/) a Raspberry pi bővítmény tábla. Ez a tábla gyűjt telemetrikus adatokat küldeni az Azure IoT Central alkalmazáshoz különböző érzékelők. Ha nem rendelkezik egy **értelemben Hat** táblához, használhatja helyette az emulátor (elérhető Raspberry Pi-kép részeként).
 
@@ -42,7 +42,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
     - Giroszkóp (X, Y, a – Z)
 - Beállítások
     - Feszültségérzékelő
-    - Aktuális
+    - Jelenlegi
     - Sebesség ventilátor
     - Integrációs modul váltógombot.
 - Tulajdonságok
@@ -107,7 +107,7 @@ Numerikus beállításai
 | Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 A beállítások ki-/ bekapcsolása

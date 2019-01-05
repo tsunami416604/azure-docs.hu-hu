@@ -1,20 +1,17 @@
 ---
 title: Az Azure Cosmos DB adatbázis-migrálási eszköz
 description: Ez a dokumentum ismerteti, hogy hogyan telepíthet át adatokat az Azure Cosmos DB nyílt forráskódú adatáttelepítési eszközeivel az Azure Cosmos DB-be különféle forrásokból, például MongoDB-, SQL Server-, Table Storage- és Amazon DynamoDB-adatbázisokból, illetve CSV- és JSON-fájlokból. A CSV-fájlokat JSON formátumba konvertálhatja.
-keywords: csv–json, adatbázis-áttelepítési eszközök, csv konvertálása json formátumba
-services: cosmos-db
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
-ms.custom: mvc
-ms.openlocfilehash: 45c9d5fac24bbbc7d90abf43f5f7662c26c7d4b0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 82c34f3dcc606ccf7103b557518cd7a54a153183
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810151"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034120"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 

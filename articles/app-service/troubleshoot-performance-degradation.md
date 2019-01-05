@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25b8b66e67450cb96cd988efd6dd5ffd03377fde
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016545"
+ms.locfileid: "54052155"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Az Azure App Service szolgáltatásban lassú teljesítménybeli problémáinak hibaelhárítása
 Ez a cikk segítséget nyújt a lassú alkalmazástelepítések teljesítménnyel kapcsolatos problémáinak elhárítása [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -92,7 +92,7 @@ Minden App Service-alkalmazás egy bővíthető felügyeleti végpontot, amely l
 - Kód szerkesztők, mint [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Felügyeleti eszközök csatlakoztatott források, például egy MySQL-adatbázishoz csatlakozik egy alkalmazást.
 
-[Az Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítményfigyelési webhelybővítmény is rendelkezésre áll. Az Application Insights használatához újra kell építeni a kód egy SDK-val. Bővítménye által biztosított további adatokhoz való hozzáférés is telepítheti. Az SDK lehetővé teszi, hogy írhat kódot a használatot és a további részleteket az alkalmazás teljesítményét. További információkért lásd: [webalkalmazások teljesítményének monitorozása](../application-insights/app-insights-web-monitor-performance.md).
+[Az Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítményfigyelési webhelybővítmény is rendelkezésre áll. Az Application Insights használatához újra kell építeni a kód egy SDK-val. Bővítménye által biztosított további adatokhoz való hozzáférés is telepítheti. Az SDK lehetővé teszi, hogy írhat kódot a használatot és a további részleteket az alkalmazás teljesítményét. További információkért lásd: [webalkalmazások teljesítményének monitorozása](../azure-monitor/app/web-monitor-performance.md).
 
 <a name="collect" />
 

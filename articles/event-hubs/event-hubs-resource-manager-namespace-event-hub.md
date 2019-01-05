@@ -14,18 +14,17 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: db5bb30c4049eca699f8adb45a923915033b4216
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 992b27622328bab85fcfaf06ad5a941aceed446f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134454"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051458"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Gyors útmutató: Azure Resource Manager-sablon használatával eseményközpont létrehozása
+# <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure Resource Manager-sablon használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-Ebben a rövid útmutatóban létrehozhat egy eseményközpontba, egy Azure Resource Manager-sablon használatával. Az Azure Resource Manager-sablon használatával hozzon létre egy névteret típusú [az Event Hubs](event-hubs-what-is-event-hubs.md), és az egy eseményközponttal és a egy fogyasztói csoporton. A cikk bemutatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Sablonok létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
-
+Ebben a rövid útmutatóban létrehozhat egy eseményközpontba, egy Azure Resource Manager-sablon használatával. Az Azure Resource Manager-sablon használatával hozzon létre egy névteret típusú [az Event Hubs](event-hubs-what-is-event-hubs.md), és az egy eseményközponttal és a egy fogyasztói csoporton. A cikk bemutatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Sablonok létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates]. A JSON-szintaxist és a egy sablonban használandó tulajdonságokat: [hátralékának erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
 
 > [!NOTE]
 > A teljes sablont, tekintse meg a [Event hub és a fogyasztói csoport sablon] [ Event Hub and consumer group template] a Githubon. Ez a sablon mellett az event hub-névtér és eseményközpont fogyasztói csoportot hozott létre. A legújabb sablonokért keresse fel az [Azure-gyorssablonok][Azure Quickstart Templates] gyűjteményt, és keressen az Event Hubs kifejezésre.

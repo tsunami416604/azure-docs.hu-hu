@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075641"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052138"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
@@ -39,6 +39,10 @@ Költségadatok megtekintése, a felhasználó kell rendelkeznie legalább olvas
 <sup>1</sup> a számlázási fiók is nevezzük a nagyvállalati szerződés vagy a regisztráció.
 
 <sup>2</sup> a regisztrációs fiók is nevezzük a fiók tulajdonosától.
+
+A következő ábra szemlélteti a Cost Management hatókörök szerepkörökkel és a nagyvállalati szerződéssel rendelkező portálbeállítások közötti kapcsolat.
+
+![Cost Management hatókörök szerepkörökkel és a Nagyvállalati portál beállításai között bemutató diagram](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>A nagyvállalati szerződések portáljának költségek hozzáférésének engedélyezése
 

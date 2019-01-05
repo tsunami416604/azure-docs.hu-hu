@@ -5,8 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457289"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052393"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>1 – példa egy egyszerű Szegélyhálózat NSG-k használata az Azure Resource Manager-sablon létrehozása
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -51,8 +49,8 @@ A hivatkozások szakaszban az Azure Resource Manager-sablon, amely összeállít
 
 **Ebben a környezetben hozhat létre** (részletes utasításokat is ez a dokumentum a hivatkozások szakaszban);
 
-1. Az Azure Resource Manager-sablon, üzembe helyezése: [Azure gyorsindítási sablonok][Template]
-2. A mintaalkalmazás telepítése: [minta alkalmazás-parancsfájl][SampleApp]
+1. Az Azure Resource Manager-sablon, üzembe helyezése: [Azure-Gyorssablonok][Template]
+2. A mintaalkalmazás telepítése: [A Példaszkript alkalmazás][SampleApp]
 
 >[!NOTE]
 >Ebben a példányban háttér-kiszolgálók távoli asztali eléréséhez az IIS-kiszolgálón szolgál egy "jump boxon." Az IIS-kiszolgálón, majd az IIS kiszolgáló RDP-vel a háttér-kiszolgáló az első RDP. Alternatív megoldásként egy nyilvános IP-címet minden egyes kiszolgáló egyszerűbb RDP hálózati Adapteréhez társítva lehet.
@@ -350,7 +348,7 @@ A sablon olyan ebben a példában a Githubról, majd az Azure Portalon üzembe h
 A központi telepítés eltávolításához törölje az erőforráscsoportot, és minden gyermek-erőforrás is törlődik.
 
 #### <a name="sample-application-scripts"></a>Mintaszkriptek alkalmazás
-A sablon sikeres futtatása után beállíthatja a webkiszolgáló és a egy egyszerű webalkalmazást, hogy a tesztelés a DMZ-konfigurációval rendelkező alkalmazások kiszolgálói. Egy mintaalkalmazás telepítése ezzel és más DMZ példák, egy lett megadva, a következő hivatkozásra: [minta alkalmazás-parancsfájl][SampleApp]
+A sablon sikeres futtatása után beállíthatja a webkiszolgáló és a egy egyszerű webalkalmazást, hogy a tesztelés a DMZ-konfigurációval rendelkező alkalmazások kiszolgálói. Egy mintaalkalmazás telepítése ezzel és más DMZ példák, egy lett megadva, a következő hivatkozásra: [A Példaszkript alkalmazás][SampleApp]
 
 ## <a name="next-steps"></a>További lépések
 

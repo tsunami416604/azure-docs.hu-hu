@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4013b7136fd365b1d37348cfc1f0b46cce787ce2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 63f0c1846a6e32dc5a5fcc9b1162d343890387a1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363123"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053517"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Az Azure Stack portálon sablonok üzembe helyezése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A portál segítségével az Azure Stack üzembe helyezése Azure Resource Manager-sablonok.
 
 ## <a name="to-deploy-a-template"></a>A sablon üzembe helyezése
 
 1. Jelentkezzen be a portálra, válassza ki **+ erőforrás létrehozása**, majd válassza ki **egyéni**.
-2. Válassza ki **sablonalapú telepítés**.
+2. Válassza a **Template deployment** lehetőséget.
 3. Válassza ki **szerkesztési sablon**, majd illessze be a sablon JSON-kód a kód ablakba. Kattintson a **Mentés** gombra.
 4. Válassza ki **paraméterek szerkesztése**, adja meg, hogy látható-e, és válassza a paraméterek értékeit **OK**.
 5. Válassza ki **előfizetés**. Válassza ki az előfizetést szeretné használni, és válassza ki **OK**.
@@ -40,6 +40,6 @@ A portál segítségével az Azure Stack üzembe helyezése Azure Resource Manag
 
 ## <a name="next-steps"></a>További lépések
 
-Sablonok telepítésével kapcsolatos további tudnivalókért lásd:
+Sablonok telepítésével kapcsolatos további tudnivalókért tekintse meg a következő cikket:
 
-[Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)
+- [Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)
