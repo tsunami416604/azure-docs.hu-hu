@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ce887c6d9e4e625d8fe08ee3acfc179cd903d187
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633758"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054061"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Az első függvény létrehozása a Visual Studio Code használatával
 
@@ -27,7 +27,7 @@ Ebben a cikkben megtudhatja, hogy a [Azure Functions-bővítmény a Visual Studi
 
 ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-A bővítmény a jelenleg a C#-, a JavaScript- és a Java-függvényeket támogatja. Az ebben a cikkben leírt lépések eltérhetnek az Azure Functions-projekthez választott nyelvtől függően. A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
+A bővítmény jelenleg teljes mértékben támogatja a C#, JavaScript és Java-függvények, Python támogatással jelenleg előzetes verzióban érhető el. Az ebben a cikkben leírt lépések eltérhetnek az Azure Functions-projekthez választott nyelvtől függően. A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ A gyorsútmutató elvégzéséhez:
 
 ## <a name="create-an-http-triggered-function"></a>HTTP által aktivált függvény létrehozása
 
-1. Az **Azure: Functions** menüben válassza a függvény létrehozására szolgáló ikont.
+1. A **Azure: Függvények**, kattintson a Create Function ikonra.
 
     ![Függvény létrehozása](./media/functions-create-first-function-vs-code/create-function.png)
 

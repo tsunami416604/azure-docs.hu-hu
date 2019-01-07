@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: b4d87ab62503bee1ff54ba9713f7c49d09a2e547
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1a5f756c4fac92260e77b24ca2cde6abccf0797a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015066"
+ms.locfileid: "54042784"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
@@ -65,7 +65,7 @@ Telepítés [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 8. A beállítások lapon egy ütemezett frissítés beállítása, illetve manuálisan frissítse a jelentést, időközönként.
 
 ### <a name="export-a-funnel"></a>A tölcsér exportálása
-1. [Győződjön meg arról, a tölcsér](usage-funnels.md).
+1. [Győződjön meg arról, a tölcsér](../azure-monitor/app/usage-funnels.md).
 2. Válassza ki **Power bi-ban**.
 
    ![Képernyőfelvétel: a Power BI gomb](./media/app-insights-export-power-bi/button.png)

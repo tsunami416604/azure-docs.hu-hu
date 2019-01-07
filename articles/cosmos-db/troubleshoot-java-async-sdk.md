@@ -1,20 +1,20 @@
 ---
 title: Diagnosztika és hibaelhárítás az Azure Cosmos DB Java aszinkron SDK
 description: Szolgáltatások használata, mint az ügyféloldali naplózás és más külső eszközök, diagnosztika, problémák azonosítása és elhárítása az Azure Cosmos DB.
-services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
-ms.component: cosmosdb-sql
-ms.openlocfilehash: 951c26ea5b5c77cf205e7793834d564889b9a635
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: cosmosdb-sql
+ms.reviewer: sngun
+ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876103"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039843"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Hibák elhárításához, ha az aszinkron Java SDK használata Azure Cosmos DB SQL API-fiókok
 Ez a cikk ismerteti gyakori problémák, megoldások, diagnosztikai lépések és eszközök használata esetén a [Java SDK-val aszinkron](sql-api-sdk-async-java.md) az Azure Cosmos DB SQL API-fiókok.

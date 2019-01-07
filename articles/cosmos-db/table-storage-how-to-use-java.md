@@ -1,20 +1,19 @@
 ---
 title: Hogyan használható az Azure Table storage vagy az Azure Cosmos DB Table API a Javával
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 62e94d1551efed5acc8dbd93bc941a4f9aeceb25
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079313"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044688"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Java segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -455,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés a **select** metódust használja a táblában található entitások e-mail-címének lekérdezéséhez. Az eredményeket a rendszer egy **EntityResolver** objektum segítségével egy **sztring** gyűjteménybe képezi le, amely a típuskonverziót a kiszolgálótól érkező entitásokon hajtja végre. További információk a leképezésről az [Azure Tables: és a Lekérdezésleképezés bemutatása] [Azure Tables: és a Lekérdezésleképezés bemutatása]. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table Service-fiók használatával működik.
+Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés a **select** metódust használja a táblában található entitások e-mail-címének lekérdezéséhez. Az eredményeket a rendszer egy **EntityResolver** objektum segítségével egy **sztring** gyűjteménybe képezi le, amely a típuskonverziót a kiszolgálótól érkező entitásokon hajtja végre. További információk a leképezésről az [Azure Tables: És a Lekérdezésleképezés bemutatása] [Azure-táblák: És a Lekérdezésleképezés bemutatása]. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table Service-fiók használatával működik.
 
 ```java
 try
@@ -497,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy cseréje
-Gyakran előfordulhat, hogy egy entitást anélkül szeretne hozzáadni egy táblához, hogy tudná, az létezik-e már a táblában. A beszúrás-vagy-csere művelettel egyetlen kéréssel elvégezheti mindezt, amely beszúrja az entitást, ha az nem létezik, és lecseréli a meglévőt, ha már létezik. A korábbi példák alapján az alábbi kód beszúrja vagy lecseréli „Walter Harp” entitását. Az új entitás létrehozását követően ez a kód meghívja a **TableOperation.insertOrReplace** metódust. Ez a kód meghívja az **execute** metódust a **CloudTable** objektumra vonatkozóan, amelynek paraméterei a tábla és a beszúrás-vagy-csere táblaművelet lesznek. Ha egy entitásnak csak egy részét szeretné frissíteni, használhatja ehelyett a **TableOperation.insertOrMerge** metódust. A helyi Storage Emulator nem támogatja a beszúrás-vagy-csere műveletet, így a kód csak a Table Service-fiók használatával működik. További információ a beszúrása vagy lecserélése és insert-vagy-merge ezen további [Azure Tables: és a Lekérdezésleképezés bemutatása] [Azure Tables: és a Lekérdezésleképezés bemutatása].
+Gyakran előfordulhat, hogy egy entitást anélkül szeretne hozzáadni egy táblához, hogy tudná, az létezik-e már a táblában. A beszúrás-vagy-csere művelettel egyetlen kéréssel elvégezheti mindezt, amely beszúrja az entitást, ha az nem létezik, és lecseréli a meglévőt, ha már létezik. A korábbi példák alapján az alábbi kód beszúrja vagy lecseréli „Walter Harp” entitását. Az új entitás létrehozását követően ez a kód meghívja a **TableOperation.insertOrReplace** metódust. Ez a kód meghívja az **execute** metódust a **CloudTable** objektumra vonatkozóan, amelynek paraméterei a tábla és a beszúrás-vagy-csere táblaművelet lesznek. Ha egy entitásnak csak egy részét szeretné frissíteni, használhatja ehelyett a **TableOperation.insertOrMerge** metódust. A helyi Storage Emulator nem támogatja a beszúrás-vagy-csere műveletet, így a kód csak a Table Service-fiók használatával működik. További információ a beszúrása vagy lecserélése és insert-vagy-merge ezen további [Azure Tables: És a Lekérdezésleképezés bemutatása] [Azure-táblák: És a Lekérdezésleképezés bemutatása].
 
 ```java
 try
