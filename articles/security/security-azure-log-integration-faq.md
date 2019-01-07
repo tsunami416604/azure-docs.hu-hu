@@ -1,6 +1,6 @@
 ---
-title: Azure Naplóelemzés integrációs – gyakori kérdések |} Microsoft Docs
-description: Ez a cikk az Azure napló integrációs kapcsolatos kérdésekre ad választ.
+title: Az Azure Log Integration – gyakori kérdések |} A Microsoft Docs
+description: Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad választ.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -15,49 +15,49 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: bec62b8c6b70706fa6519cbc2fd59bf69f119e9d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 458b615ea872b62a412a71cbbb0b3827ccb4d9b8
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236263"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580926"
 ---
-# <a name="azure-log-integration-faq"></a>Azure Naplóelemzés integrációs – gyakori kérdések
+# <a name="azure-log-integration-faq"></a>Az Azure Log Integration – gyakori kérdések
 
-Ebben a cikkben megválaszolunk kapcsolatos gyakori kérdések (GYIK) Azure napló integráció.
+Ebben a cikkben megválaszolunk Azure Log Integration kapcsolatos gyakori kérdések (GYIK).
 
 >[!IMPORTANT]
-> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-Azure napló-integráció egy olyan Windows operációs rendszer szolgáltatás, az Azure-erőforrások származó nyers naplók integrálja a helyszíni biztonsági információkat és az esemény (SIEM) felügyeleti rendszerek használható. Ez az integráció kínál az új, egységesített irányítópult minden Ez az eszköz, a helyszínen vagy a felhőben. Ezután összesíteni, összefüggéseket, elemzése, és az alkalmazások társított biztonsági események riasztást.
+Az Azure Log Integration szolgáltatása egy Windows operációs rendszer, amellyel az Azure-erőforrások nyers naplóinak integrálása a helyszíni biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszerek. Ez az integráció az egységesített irányítópult kínál az összes eszközt, a helyszíni vagy a felhőben. Ezután összesíteni, összekapcsolását, elemzése, és az alkalmazásokkal kapcsolatos biztonsági események a riasztást.
 
-Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
+Az előnyben részesített módja az Azure-naplók integrálása a SIEM szállítói s Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Azonban a SIEM szállítói adatforgalmi-t az Azure monitornak biztosítani egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (Ha a siem-nek az Azure Log Integration) mindaddig, amíg elérhető ilyen egy összekötőt.
 
-## <a name="is-the-azure-log-integration-software-free"></a>Az ingyenes Azure napló integrációs szoftver?
+## <a name="is-the-azure-log-integration-software-free"></a>Az Azure Log Integration szoftver ingyenes?
 
-Igen. Nincs az Azure napló integrációs szoftver díjmentes.
+Igen. Nem jár költséggel az Azure Log Integration szoftverek.
 
-## <a name="where-is-azure-log-integration-available"></a>Amennyiben Azure napló integrációs rendelkezésre áll?
+## <a name="where-is-azure-log-integration-available"></a>Hol érhető el az Azure Log Integration?
 
-Jelenleg az Azure kereskedelmi és Azure Government érhető el, és nem áll rendelkezésre a kínai vagy Németország.
+Az Azure kereskedelmi és az Azure Government jelenleg elérhető és a nem áll rendelkezésre a China vagy Germany szolgáltatásba.
 
-## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Honnan látom, amelyből Azure napló integrációs Azure virtuális gép naplók van húzza a storage-fiókok?
+## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Hogyan tekinthetem meg a storage-fiókok, amelyről az Azure Log Integration lehetőség van az Azure virtuális gépek naplóinak?
 
 Futtassa a parancsot **AzLog forráslista**.
 
-## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Hogyan állapítható meg az Azure napló integrációs naplók tartoznak, amelyhez az előfizetési?
+## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Honnan tudom, hogy melyik előfizetést az Azure Log Integration naplók származnak?
 
-Naplók kerülnek, amely esetén a **AzureResourcemanagerJson** könyvtárak, az előfizetés-azonosító szerepel a naplófájl nevét. Ugyanez a naplók a **AzureSecurityCenterJson** mappa. Példa:
+Auditnaplók kerülnek, amely esetén a **AzureResourcemanagerJson** könyvtárak, az előfizetés-azonosító szerepel a naplófájl nevét. Ez akkor is igaz, a naplók a **AzureSecurityCenterJson** mappát. Példa:
 
 20170407T070805_2768037.0000000023.**1111e5ee-1111-111b-a11e-1e111e1111dc**.json
 
-Az Azure Active Directory-naplók a bérlő azonosítója a név részeként tartalmazza.
+Az Azure Active Directory-auditnaplók a bérlő Azonosítóját, a név részeként tartalmazza.
 
-Az eseményközpontban lévő olvasható diagnosztikai naplói nem tartalmazzák az előfizetés-azonosító, a név részeként. Ehelyett a rövid nevét a hub eseményforrás létrehozása részeként megadott tartalmaznak. 
+Diagnosztikai naplók egy adott eseményközpontból olvasható nem tartalmazza az előfizetés-Azonosítót a nevének részeként. Ehelyett a hub-eseményforrás létrehozása részeként megadott rövid nevét tartalmazzák. 
 
-## <a name="how-can-i-update-the-proxy-configuration"></a>Hogyan frissíthetők a proxykonfigurációt?
+## <a name="how-can-i-update-the-proxy-configuration"></a>Hogyan frissíthetem a proxykiszolgáló-konfigurációt?
 
-Ha a megadott proxybeállítást nem teszi lehetővé az Azure storage access közvetlenül, nyissa meg a **AZLOG. EXE-FÁJL. CONFIG** fájlt **c:\Program Files\Microsoft Azure napló integrációs**. Frissítse a fájl elejéhez a **defaultProxy** a szervezet proxycímmel szakasza. A frissítés után állítsa le és indítsa el a szolgáltatást a parancsokkal **net stop AzLog** és **net start AzLog**.
+Ha a proxy beállításai nem engedélyezi a hozzáférést az Azure storage közvetlenül, nyissa meg a **AZLOG. EXE-FÁJL. CONFIG** fájlt **c:\Program Files\Microsoft Azure Log Integration**. A fájl frissítése a **defaultProxy** a szervezet proxycímmel szakaszában. Miután a frissítés elkészült, állítsa le és indítsa el a szolgáltatást a parancsokkal **net stop AzLog** és **net start AzLog**.
 
     <?xml version="1.0" encoding="utf-8"?>
     <configuration>
@@ -75,12 +75,12 @@ Ha a megadott proxybeállítást nem teszi lehetővé az Azure storage access k�
         <performanceCounters filemappingsize="20971520" />
       </system.diagnostics>   
 
-## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Honnan látom az előfizetési adatok a Windows-eseményeket?
+## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Hogyan tekinthetem meg az előfizetési információkat a Windows-eseményeket?
 
-Az előfizetés-azonosító hozzáfűzése a rövid nevet a forrás hozzáadása közben:
+Az előfizetés-azonosító hozzáfűzése a valódi nevet a forrás hozzáadása közben:
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
-Az XML az esemény a következő metaadatokat, beleértve az előfizetés-azonosító van:
+Az esemény XML rendelkezik a következő metaadatokat, beleértve az előfizetés-azonosító:
 
 ![Esemény XML][1]
 
@@ -89,34 +89,34 @@ Az XML az esemény a következő metaadatokat, beleértve az előfizetés-azonos
 
 Hiba:
 
-  *Nem sikerült létrehozni az alkalmazás AAD - 72f988bf-86f1-41af-91ab-2d7cd011db37-OK bérlői = "Tiltott" - Message = "Megfelelő jogosultsággal a művelet végrehajtása."*
+  *Nem sikerült létrehozni az AAD-alkalmazás - 72f988bf-86f1-41af-91ab-2d7cd011db37-OK bérlői = "Tiltott" – üzenet = "Nincs megfelelő jogosultsága a művelet végrehajtásához."*
 
-A **azlog createazureid** parancs megpróbálja hozzon létre egy egyszerű szolgáltatást olyan előfizetést, amely az Azure bejelentkezési hozzáféréssel rendelkezik az Azure AD-bérlő. Ha az Azure bejelentkezési csak a Vendég felhasználó az Azure AD bérlőre, a parancs az "Megfelelő jogosultsággal a művelet végrehajtása." Kérje meg a fiók hozzáadása a bérlői felhasználói a bérlői rendszergazda.
+A **azlog createazureid** a parancs megpróbál egy egyszerű szolgáltatás létrehozása az előfizetéseket, amely hozzáféréssel rendelkezik az Azure-azonosító az Azure AD-bérlőt. Ha az Azure bejelentkezési csak egy adott Azure AD-bérlőjében vendégfelhasználó, a parancs az "Nincs megfelelő jogosultsága a művelet végrehajtásához." Kérje meg a bérlői rendszergazda a bérlő felhasználói fiók hozzáadásához.
 
-### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>A parancs futtatásakor **azlog engedélyezik**, miért jelenik meg a következő hiba?
+### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>A parancs futtatásakor **azlog engedélyezése**, miért jelenik meg a következő hiba?
 
 Hiba:
 
-  *Szerepkör-hozzárendelés - AuthorizationFailed létrehozása figyelmeztetés: az ügyfél janedo@microsoft.com"objektum"fe9e03e4-4dad-4328-910f-fd24a9660bd2"azonosítója nem jogosult elvégezni művelet"Microsoft.Authorization/roleAssignments/write"hatókörben" / 97 – b971-0d8ff0000000 előfizetések / 70d 95299-d689-4c ".*
+  *Szerepkör-hozzárendelés - AuthorizationFailed létrehozása figyelmeztetés: Az ügyfél janedo@microsoft.com"objektum"fe9e03e4-4dad-4328-910f-fd24a9660bd2"azonosítója nem rendelkezik a 'Microsoft.Authorization/roleAssignments/write' művelet végrehajtására"/ subscriptions/70 95299-d689-4 c d 97 – b971-0d8ff0000000"hatókörben.*
 
-A **azlog engedélyezik** parancs olvasó szerepkört rendel hozzá az Azure AD szolgáltatás egyszerű (létre **azlog createazureid**) a megadott előfizetésekhez. Ha az Azure bejelentkezési nincs társadminisztrátorának vagy az előfizetés tulajdonosa, az nem "Engedélyezési sikertelen" hibaüzenet. Ez a művelet befejezéséhez szükséges Azure szerepköralapú hozzáférés-vezérlés (RBAC) társadminisztrátoraként vagy a tulajdonos.
+A **azlog engedélyezése** parancsot az Olvasó szerepkörhöz rendel az Azure AD egyszerű szolgáltatás (létrehozott **azlog createazureid**) a megadott előfizetéshez. Ha az Azure-azonosító nem egy társ-rendszergazdaként vagy az előfizetés tulajdonosa, "Engedélyezése nem sikerült" hibaüzenettel meghiúsul. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) társ-rendszergazdaként vagy a tulajdonos van szükség a művelet végrehajtásához.
 
-## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Hol találok tulajdonságainak meghatározása a biztonsági naplóban?
+## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Hol találhatok tulajdonságainak meghatározása a naplóban?
 
 Lásd:
 
-* [Naplózási műveletek az Azure Resource Manager eszközzel](../azure-resource-manager/resource-group-audit.md)
-* [A felügyeleti események a Azure REST API előfizetés felsorolása](https://msdn.microsoft.com/library/azure/dn931934.aspx)
+* [Auditálási műveletek az Azure Resource Managerrel](../azure-resource-manager/resource-group-audit.md)
+* [Az Azure Monitor REST API-ban egy adott előfizetés felügyeleti eseményeinek listázása](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
-## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Hol található az Azure Security Center riasztásait részleteit?
+## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Hol található az Azure Security Center riasztásait a részletei?
 
-Lásd: [kezelése és az Azure Security Centerben a biztonsági riasztásokra való reagálásról](../security-center/security-center-managing-and-responding-alerts.md).
+Lásd: [kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md).
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Hogyan módosítható meg, hogy a Virtuálisgép-diagnosztika gyűjtött adatok?
 
-Részletes információt lekérni, módosítására és az Azure diagnosztikai konfiguráció beállítása a következő témakörben: [Windows rendszerű virtuális gépként Azure Diagnostics engedélyezéséhez használja a Powershellt](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Megtudhatja, hogyan szeretne kapni, módosíthatja, és állítsa be az Azure Diagnostics konfigurációja, lásd: [Windows rendszerű virtuális gép az Azure Diagnostics engedélyezéséhez használja a Powershellt](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Az alábbi példa lekérdezi az Azure diagnosztikai konfiguráció:
+Az alábbi példa lekéri az Azure Diagnostics konfigurálása:
 
     -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
     $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
@@ -126,25 +126,25 @@ Az alábbi példa lekérdezi az Azure diagnosztikai konfiguráció:
 
     $xmlconfig | Out-File -Encoding utf8 -FilePath "d:\WADConfig.xml"
 
-A következő példa az Azure Diagnostics konfigurációját módosítja. Ebben a konfigurációban csak azonosító 4624 és esemény azonosítója 4625 gyűjtenek a biztonsági eseménynaplóba. A Microsoft Antimalware Azure események begyűjti a rendszer-eseménynaplójában. Az XPath kifejezések használatára, lásd: [fel események](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85)).
+Az alábbi példa módosítja az Azure Diagnostics konfigurációja. Ebben a konfigurációban csak event ID 4624 és azonosító 4625-ös számú esemény összegyűjtése az a biztonsági eseménynaplóba. A Microsoft Antimalware az Azure-eseményeket a rendszer eseménynaplójába gyűjtenek. XPath-kifejezéseket használatára vonatkozó részletekért lásd: [események felhasználásához](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85)).
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
         <DataSource name="System!*[System[Provider[@Name='Microsoft Antimalware']]]"/>
     </WindowsEventLog>
 
-A következő példa az Azure Diagnostics konfigurációjának beállítása:
+Az alábbi példa az Azure Diagnostics konfigurációjának beállítása:
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
-Módosítása után, ellenőrizze annak érdekében, hogy a megfelelő események gyűjtése történt a tárfiók.
+Miután változtatásokat, ellenőrizze a storage-fiók segítségével, győződjön meg arról, hogy a megfelelő események gyűjtött.
 
-Ha probléma merül fel a telepítés és konfigurálás során, nyisson meg egy [támogatási kérelem](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Válassza ki **napló integrációs** a szolgáltatást, amelynek támogatási kérelmet.
+Ha problémája van a telepítés és konfigurálás során, nyisson egy [támogatási kérelem](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Válassza ki **Naplóintegráció** a kért támogatási szolgáltatással.
 
-## <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>Azure napló integrációs használatával hálózati figyelőt naplók integrálja a saját SIEM?
+## <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>Azure Log Integration segítségével integrálhatók a Network Watcher naplók saját siem-be?
 
-Az Azure hálózati figyelőt naplózási információk nagy mennyiségű állít elő. Ezek a naplók nem jogosultak a SIEM küldendő. Hálózati figyelőt naplók csak támogatott célja egy tárfiókot. Azure napló-integráció nem támogatja a naplók beolvasásakor, és elérhetővé teszi azokat a siem-mel.
+Az Azure Network Watcher állít elő, nagy mennyiségű naplózási információk. Ezek a naplók nem jelentenek a kell küldeni a siem-be. A Network Watcher naplók az egyetlen támogatott cél tárfiók. Az Azure Log Integration nem támogatja a naplók olvasása és elérhetővé teszi azokat a SIEM.
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
