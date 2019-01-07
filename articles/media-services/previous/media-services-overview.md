@@ -22,7 +22,7 @@ ms.locfileid: "50211604"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a használni kívánt Media Services verzióját:"]
 > * [2-es verzió](media-services-overview.md)
 > * [3-as verzió](../latest/media-services-overview.md)
 
