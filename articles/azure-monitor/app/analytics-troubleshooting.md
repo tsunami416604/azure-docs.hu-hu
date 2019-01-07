@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1dc312598fa9bbacedc085480b0771adeb2d182a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5459786ccf69c51fec1630d612fd37b1b78c36c9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731418"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017004"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights-elemzési](analytics.md)? Itt érdemes kezdenie. Analytics az Azure Application Insights hatékony keresési eszközben.
@@ -78,7 +78,7 @@ Alkalmazás-erőforrás törölve lett az Application Insights és a nem t elér
 
 Nincs engedélye az alkalmazás megnyitásához az Analyticsben.
 
-* Jutott el a hivatkozást személy? Kérje meg őket, hogy Ön a [olvasók vagy az erőforráscsoporthoz közreműködő](../../application-insights/app-insights-resources-roles-access-control.md).
+* Jutott el a hivatkozást személy? Kérje meg őket, hogy Ön a [olvasók vagy az erőforráscsoporthoz közreműködő](../../azure-monitor/app/resources-roles-access-control.md).
 * Menti a különböző hitelesítő adatok használatával hivatkozást? Nyissa meg a [az Azure portal](https://portal.azure.com), jelentkezzen ki, és ismételje meg ezt a hivatkozást, a megfelelő hitelesítő adatokkal.
 
 ## <a name="html-storage"></a>403 ... HTML5-alapú tárolás

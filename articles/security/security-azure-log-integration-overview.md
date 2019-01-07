@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások naplók integrálása a SIEM-rendszerekről |} Microsoft Docs
-description: Tudnivalók Azure napló integrációs, annak főbb funkcióit és annak működéséről.
+title: Azure-erőforrások naplóinak integrálása a SIEM-rendszerekkel |} A Microsoft Docs
+description: Tudnivalók az Azure Log Integration, annak főbb funkcióit és működését.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -15,66 +15,66 @@ ms.workload: na
 ms.date: 06/07/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 3c875060a7abdf4431026e79ce966efdc89e4e77
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f20da4ab60eeec3e9c353445f6bc20449b9c1cb6
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236178"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584479"
 ---
-# <a name="introduction-to-azure-log-integration"></a>Bevezetés az Azure Naplóelemzés integráció
+# <a name="introduction-to-azure-log-integration"></a>Bevezetés az Azure-naplók integrációja
 
 >[!IMPORTANT]
-> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-Azure napló-integráció lett elérhetővé tenni az leegyszerűsítik a Azure integrálása a helyszíni biztonsági adatai és az esemény felügyeleti SIEM-rendszer naplókat.
+Az Azure Log Integration volt elérhetővé egyszerűsítheti a integrálása az Azure naplói a helyszíni biztonságiadat- és eseménykezelés (SIEM) rendszerbe.
 
- Az ajánlott módszer integráló Azure naplókat, hogy a SIEM gyártója által biztosított összekötők használja. Az Azure a figyelő lehetővé teszi a adatfolyamként küldje el a naplókat az event hubsban, és a SIEM-beszállítót írhat napló, az event hubs további integrálja a SIEM-összekötőt.  Ennek működéséről leírását, kövesse az utasításokat a [figyelési adatok az event hubs figyelő adatfolyam](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). A cikk is megjeleníti a siem-ektől, amelynek közvetlen Azure összekötők már rendelkezésre állnak.  
+ Az ajánlott módszer az Azure-naplók integráló, hogy az SIEM szállítói s összekötőkhöz. Az Azure Monitor lehetővé teszi a naplók streamelése az event hubsba, és a SIEM-beszállítót írhat összekötők további integrálásához az eseményközpontból származó naplókat a siem-be.  Hogyan is működik mindez leírását, kövesse a [figyelési adatok az event hubs figyelő-adatfolyam](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). A cikk felsorolja az siem-EK, amelyhez közvetlen Azure-összekötők már rendelkezésre állnak.  
 
 > [!IMPORTANT]
-> Ha elsődleges érdeklődését van a virtuális gép naplók gyűjtésére, legtöbb SIEM-beszállítót a megoldás vegye fel ezt a beállítást. A SIEM gyártója által biztosított összekötő használata mindig az előnyben részesített megoldás.
+> Ha elsődleges érdeklődését gyűjti a virtuális gépek naplóinak, a legtöbb SIEM-beszállítót adni ezt a lehetőséget a megoldásban. Az SIEM gyártója által biztosított összekötő használata mindig az előnyben részesített megoldás.
 
-A dokumentáció az Azure-napló integrációs szolgáltatás továbbra is folyamatban megmarad, amíg a funkció elavult.
+A dokumentáció az Azure Log Integration szolgáltatást még mindig folyamatban változatlan marad mindaddig, amíg a funkció elavult.
 
-Olvassa el a további található további információ az Azure napló integrációs szolgáltatás számára:
+További információ az Azure Log Integration szolgáltatás érdekében olvasható:
 
-Azure napló-integráció Windows-eseményeket gyűjti össze a Windows Eseménynapló-naplók [Azure tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), [Azure Security Center riasztásait](../security-center/security-center-intro.md), és [Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a Azure-erőforrások. Rendszer integrálása segít a SIEM megoldás, hogy az eszközök, adjon meg egy új, egységesített irányítópult a helyszínen vagy a felhőben. Irányítópult segítségével kap, összesíteni, összefüggéseket és biztonsági események riasztásai elemzése.
+Az Azure Log Integration Windows eseménynaplók, Windows-eseményeket gyűjt [Azure-Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md), [Azure Security Center riasztásainak](../security-center/security-center-intro.md), és [Azure Diagnostics-naplók](../azure-monitor/platform/diagnostic-logs-overview.md) a Azure-erőforrások. Integráció az SIEM-megoldástól, hogy az eszközök, adja meg az egységesített irányítópult segít a helyszíni vagy a felhőben. Egy irányítópult segítségével kapni, összesítése, összekapcsolását és elemzését a biztonsági eseményekkel kapcsolatos riasztások.
 
 > [!NOTE]
-> Azure napló integrációs jelenleg csak az Azure kereskedelmi és Azure Government felhők. Nem támogatja a többi felhőből.
+> Azure Log Integration jelenleg csak az Azure kereskedelmi és az Azure Government felhőben. Más felhőkben nem támogatottak.
 
-![Az Azure napló integrációs folyamatban][1]
+![Az Azure Log Integration folyamat][1]
 
-## <a name="what-logs-can-i-integrate"></a>Milyen naplókat is integrálhatja?
+## <a name="what-logs-can-i-integrate"></a>Milyen naplók integrálása?
 
-Azure hoz létre minden egyes Azure szolgáltatás kiterjedt naplózás. A naplók háromféle napló mutatják be:
+Az Azure széles körű naplózás az egyes Azure szolgáltatások eredményez. A naplók mutatják be három napló típusa:
 
-* **Ellenőrzés/management-naplók**: betekintést nyújtanak a [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) LÉTREHOZÁSI, frissítési és törlési műveletek. Egy Azure tevékenységnapló például a következő napló.
-* **Adatok sík naplók**: Adjon meg egy Azure-erőforrás használatakor előállított események láthatósága. Példa az ilyen típusú napló: a Windows Eseménynapló **rendszer**, **biztonsági**, és **alkalmazás** csatornák Windows virtuális gépként. Egy másik példa: Azure Diagnostics-naplózást is, amelyet az Azure-figyelő keresztül.
-* **A feldolgozott események**: nyújtson elemzett esemény és a feldolgozott riasztási információkat. Ez eseménytípusra példa, hogy Azure Security Center riasztásait. Az Azure Security Center feldolgozza, és adja meg a riasztásokat, amelyek szükségesek a jelenlegi biztonságot előfizetés elemzi.
+* **Ellenőrzés/felügyeleti naplók**: Nyújtanak betekintést a [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) LÉTREHOZÁSI, frissítési és törlési műveleteket. Egy Azure-tevékenységnapló, amelyek az ilyen típusú naplót.
+* **Adatok adatsík naplók**: Betekintést az eseményeket, amelyek akkor aktiválódnak, ha egy Azure-erőforrás használja. Napló az ilyen például a Windows Eseménynapló **rendszer**, **biztonsági**, és **alkalmazás** csatornák Windows virtuális gépen. Egy másik példa, az Azure diagnosztikai naplózás, amelyet az Azure monitoron keresztül.
+* **Események feldolgozása**: Adja meg az elemzett esemény- és riasztási információkat, amelyek feldolgozása az Ön számára. Egy ilyen típusú események példája az Azure Security Center riasztásait. Az Azure Security Center feldolgozza, és elemzi az előfizetést, amely az aktuális biztonsági állapotát a szolgáltatás riasztásokat nyújt.
 
-Azure napló-integráció ArcSight, QRadar és Splunk támogatja. Ellenőrizze a SIEM forgalmazójával annak ellenőrzéséhez, hogy a szállító natív összekötő rendelkezik. Azure napló integrációs ne használjon, ha natív összekötő érhető el.
+Az Azure Log Integration ArcSight QRadar és Splunk támogatja. Ellenőrizze a SIEM gyártójával annak ellenőrzéséhez, hogy a szállító rendelkezik egy natív összekötőt. Azure Log Integration ne használjon, ha egy natív összekötő érhető el.
 
-Ha nincs más lehetőségek állnak rendelkezésre, érdemes lehet Azure napló integráció. A következő táblázat a ajánlásokat tartalmaz:
+Ha nincsenek más lehetőségek állnak rendelkezésre, fontolja meg az Azure Log Integration. Az alábbi táblázat a javaslatokat tartalmaz:
 
-|SIEM | Ügyfél már használja az Azure naplóelemzés integráló | Ügyfél vizsgálja a SIEM-integrációs beállítások|
+|SIEM | Ügyfél már használja az Azure-naplók rendszerintegrátor | Ügyfél vizsgálja a SIEM-integráció beállításai|
 |---------|--------------------------|-------------------------------------------|
-|**Splunk** | Az áttelepítés megkezdése a [Splunk Azure figyelő bővítménye](https://splunkbase.splunk.com/app/3534/). | Használja a [Splunk összekötő](https://splunkbase.splunk.com/app/3534/). |
-|**QRadar** | Telepítse át, vagy utolsó szakaszában az QRadar összekötő dokumentált használatának megkezdése [figyelési adatok a felhasználásához az eseményközpontba egy külső eszközzel adatfolyam Azure](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). | Használja a QRadar összekötő dokumentált utolsó szakaszában [figyelési adatok a felhasználásához az eseményközpontba egy külső eszközzel adatfolyam Azure](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). |
-|**ArcSight** | Továbbra is használhatja az Azure naplóelemzés integráló, amíg az összekötő érhető el, és telepítse át az összekötő alapú megoldás.  | Érdemes lehet használni az Azure Naplóelemzés helyett. Nem bevezetésében Azure napló integrációhoz kivéve, ha a rendszer halad át az áttelepítési folyamat, amikor az összekötő elérhetővé válik. |
+|**Splunk** | -BA való migrálás megkezdéséhez a [Splunk bővítménye az Azure Monitor](https://splunkbase.splunk.com/app/3534/). | Használja a [Splunk összekötő](https://splunkbase.splunk.com/app/3534/). |
+|**QRadar** | Telepíthető át, vagy az utolsó szakaszában az ismertetett QRadar összekötő használatának megkezdéséhez [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). | A dokumentált QRadar-összekötő használata a utolsó szakaszában [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). |
+|**ArcSight** | Továbbra is használhatja az Azure-naplók integráló mindaddig, amíg az összekötő érhető el, majd utána áttelepíteni az összekötő-alapú megoldáshoz.  | Vegye figyelembe, alternatív megoldásként az Azure Log Analytics szolgáltatást. Ne készítse elő az Azure Log Integration, kivéve, ha a rendszer fogadja el az áttelepítési folyamatot, amikor elérhetővé válik az összekötőt. |
 
 > [!NOTE]
-> Bár Azure napló integrációs szabad megoldást, nincsenek társított napló fájl adatokat tároló Azure storage költségei.
+> Bár az Azure Log Integration ingyenes megoldása, nincsenek társított log fájl adatokat tároló Azure storage költségeit.
 
-Ha segítségre van szüksége, létrehozhat egy [támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md). A szolgáltatás, válassza ki a **napló integrációs**.
+Ha segítségre van szüksége, létrehozhat egy [támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki a szolgáltatás **Naplóintegráció**.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk bevezetett Azure napló integráció. Azure napló integrációs és a támogatott naplók típusait kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebben a cikkben megismerkedhetett az Azure Log Integration. Azure Log Integration, és a naplók által támogatott típusú kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Ismerkedés az Azure napló integrációs](security-azure-log-integration-get-started.md). Ez az oktatóanyag végigvezeti Azure napló-integráció telepítése. Azt is bemutatja, hogyan integrálható a napló, a Windows Azure diagnosztikai (ÜVEGVATTA) tároló, Azure tevékenységi naplóit, Azure Security Center riasztásait és Azure Active Directory naplókat.
-* [Azure napló-integráció gyakori kérdések (GYIK)](security-azure-log-integration-faq.md). Ez a GYIK kapcsolatos kérdésekre ad közös Azure napló integráció.
-* További tudnivalók a [adatfolyam-figyelési adatok a felhasználásához az eseményközpontba egy külső eszközzel Azure](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
+* [Ismerkedés az Azure Log Integration](security-azure-log-integration-get-started.md). Ez az oktatóanyag végigvezeti az Azure Log Integration telepítése. Emellett bemutatja, hogyan lehet Windows Azure Diagnostics (WAD) storage, Azure-Tevékenységnaplók, az Azure Security Center riasztásainak és az Azure Active Directory naplóinak naplóinak integrálása.
+* [Az Azure Log Integration – gyakori kérdések (GYIK)](security-azure-log-integration-faq.md). Ez a GYIK az Azure Log Integration kapcsolatos általános kérdéseket válaszol.
+* Ismerje meg, hogyan [streamelése az Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png
