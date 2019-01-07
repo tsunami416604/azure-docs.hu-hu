@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7599fbe05b99466ed1d1a3db17156888cf9ea353
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338294"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055081"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -40,8 +40,8 @@ Nincsenek _eszközoldali SDK-k_ érhető el, amelyek lehetővé teszik, hogy hoz
 ## <a name="azure-iot-service-sdks"></a>Azure IoT service SDKs
 Nincsenek _szolgáltatási SDK-k_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [háttéralkalmazásokat](#back-end-app) , amely az IoT hub-interakciót. Az IoT Hub oktatóanyagok bemutatják, hogyan ezen szolgáltatási SDK-k használatához. A Forráskód és a szolgáltatási SDK-k kapcsolatos további információkat a Githubon találhatja [tárház](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-hub-toolkit"></a>Az Azure IoT Hub-eszközkészlet
-A [Azure IoT Hub-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet) egy többplatformos, nyílt forráskódú Visual Studio Code bővítmény, amely segítséget nyújt az Azure IoT Hub és a VS Code-ban eszközök kezelésére a rendszer. Az Azure IoT Hub-eszközkészlet IoT a fejlesztők egyszerűen fejleszthet a IoT-projektet a VS Code-ban sikerült.
+## <a name="azure-iot-tools"></a>Az Azure IoT-eszközök
+A [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy platformfüggetlen, nyílt forráskódú Visual Studio Code bővítmény, amely segít kezelése az Azure IoT Hub és az eszközök a VS Code-ban. Az Azure IoT-eszközök IoT a fejlesztők egyszerűen fejleszteni IoT-projektet a VS Code-ban.
 
 ## <a name="azure-portal"></a>Azure Portal
 A [Microsoft Azure-portálon](https://portal.azure.com) egy központi felület, amelyen üzembe helyezése és kezelése az Azure-erőforrások. A tartalom használatával szervezi _panelek_.
