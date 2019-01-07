@@ -22,7 +22,7 @@ ms.locfileid: "53384734"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a használni kívánt Media Services verzióját:"]
 > * [2-es verzió](media-services-media-encoder-standard-formats.md)
 > * [3-as verzió](../latest/media-encoder-standard-formats.md)
 

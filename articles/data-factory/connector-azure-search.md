@@ -21,7 +21,7 @@ ms.locfileid: "54023345"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index, az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-search-connector.md)
 > * [Aktuális verzió](connector-azure-search.md)
 

@@ -17,7 +17,7 @@ ms.lasthandoff: 12/08/2018
 ms.locfileid: "53095346"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-blob-connector.md)
 > * [Aktuális verzió](connector-azure-blob-storage.md)
 
