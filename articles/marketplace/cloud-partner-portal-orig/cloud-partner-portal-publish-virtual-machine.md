@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247075"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078116"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Virtuális gép közzététele az Azure piactéren
 
@@ -31,35 +31,23 @@ A következő műszaki és nem technikai jellegű Előfeltételek vonatkoznak k�
 
 ### <a name="technical"></a>Műszaki
 
--   [Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki előfeltételei](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki előfeltételei](../cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
 -   [Egy Linux VHD létrehozása és feltöltése](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [& Tesztelje egy rendszerképből egy Linux rendszerű virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [A Windows VHD létrehozása és feltöltése ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [& Tesztelje egy rendszerképből egy Windows virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
-
--   [Virtuális merevlemez létrehozása során tapasztalt gyakori hibáinak elhárítása](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
+-   [Virtuális merevlemez létrehozása során tapasztalt gyakori hibáinak elhárítása](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 -   [Biztonsági javaslatok az Azure Marketplace-rendszerképek](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>Nem technikai jellegű (üzleti követelmények)
 
  -   A vállalatnak (vagy az leányvállalatának) az Azure piactér által támogatott vevői országban található
-
 -   A termék licenccel kell rendelkezniük, amely kompatibilis a számlázási modellek az Azure piactér által támogatott módon
-
 -   Ön felelős az ügyfelek számára elérhetővé tétele az műszaki támogatást, olyan üzletileg ésszerű módon. Ez a támogatás lehet ingyenes, fizetős vagy közösségi.
-
 -   Ön felelős a szoftver- és külső függőségek licencelése.
-
--   Azt adja meg a tartalmat, amely megfelel a feltételeknek az Azure Marketplace-en és az Azure felügyeleti portálon való megjelentetéséhez ajánlatban.
-
+-   Azt adja meg a tartalmat, amely megfelel a feltételeknek az Azure Marketplace-en és az Azure Portalon való megjelentetéséhez ajánlatban.
 -   Ön vállalja, hogy az Azure piactér részvételi szabályzatának és a kiadói szerződés feltételeit.
-
 -   Ahhoz, hogy elfogadja a [használati](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [Microsoft adatvédelmi nyilatkozatát](https://www.microsoft.com/privacystatement/default.aspx), és [a Microsoft Azure Certified Program szerződését](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -140,7 +128,7 @@ Miután hozzáadta a Termékváltozat, az SKU-k megtekintése a termékváltozat
 
 ### <a name="hide-this-sku"></a>Ez a Termékváltozat elrejtése
 
-Ez a beállítás segítségével kezelheti a Termékváltozat látható-e. "Ez Termékváltozat elrejtése" be van kapcsolva, a Termékváltozat-e látható [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure Portal](https://portal.azure.com/) az ügyfelek számára. Előfordulhat, hogy el szeretné rejteni a Termékváltozat, ha csak szeretné elérhető megoldássablonok keresztül, és nem a vásárlás külön-külön.
+Ez a beállítás segítségével kezelheti a Termékváltozat látható-e. "Ez Termékváltozat elrejtése" be van kapcsolva, a Termékváltozat-e látható [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure portal](https://portal.azure.com/) az ügyfelek számára. Előfordulhat, hogy el szeretné rejteni a Termékváltozat, ha csak szeretné elérhető megoldássablonok keresztül, és nem a vásárlás külön-külön.
 
 ### <a name="cloud-availability"></a>Felhőalapú rendelkezésre állása
 
@@ -177,9 +165,9 @@ Kezelheti a virtuális gépen futó szoftver licencelése. A Microsoft csak díj
 
 #### <a name="usage-based-monthly-billed-sku"></a>Használat alapján, havi díját Termékváltozat
 
-Ügyfelek által a kiadók a Virtuálisgép-méretek a díjszabási táblázat alapján óránkénti alapon kell fizetnie. Az **óradíjas** modell a termékváltozatok teljes költsége a szoftver költségét a közzétevő alapján számítjuk fel, a infrastruktúra díjat számítunk fel a Microsoft által a háttéradatok lesz. A teljes költség jelenik meg az ügyfél egy óránkénti és havi díja, a vásárlás kiválasztásakor. A számlázás ebben az esetben lesz havonta.
+Ügyfelek által a kiadók a Virtuálisgép-méretek a díjszabási táblázat alapján óránkénti alapon kell fizetnie. Ha a **óradíjas** modellt használja, a teljes díj lesz a háttéradatok a szoftver költségét a közzétevő alapján számítjuk fel, a infrastruktúra Microsoft alapján számítjuk fel. A teljes költség jelenik meg az ügyfél egy óránkénti és havi díja, a vásárlás kiválasztásakor. A számlázás ebben az esetben lesz havonta.
 
-A Használatalapú modell belül szükség további beállítások tartoznak.
+A használatalapú modell belül szükség további beállítások tartoznak.
 
 **Ingyenes próbaverzió**
 
@@ -188,21 +176,21 @@ Itt az ügyfélnek nem kell fizetnie szoftverköltség az első 30 vagy 90 nap s
 
 **Core díjszabás szerint**
 
-A Termékváltozat díjszabása magonként állíthatja be. Ehhez csak meg kell adnia egy alapszintű díjakból az egyetlen mag és azt automatikus-számítási díjak a többi a Processzormagok száma. Írja be az árak USD-ben a portálon, és azt fogja automatikusan kiszámítsa más régiókban a díjszabása. Az árak a más régiókban használatával ellenőrizheti **díjszabási adatok exportálása**
+A Termékváltozat díjszabása magonként állíthatja be. Ezt a beállítást csak meg kell adnia egy alapszintű díjakból egyetlen mag a, és azt automatikus nagy számítási díjak a többi a Processzormagok száma. Írja be az árak USD-ben a portálon, és azt fogja automatikusan kiszámítsa más régiókban a díjszabása. Az árak a más régiókban használatával ellenőrizheti **díjszabási adatok exportálása**
 
 ![Core díjszabás szerint](./media/cloud-partner-portal-publish-virtual-machine/publishvm6.png)
 
 
 **Különálló díjszabása**
 
-A díjszabás minden magok részhalmazához külön-külön Ha külön-külön díja az egyes maghoz szeretné állíthatja be.
+A díjszabás az egyes magok külön-külön Ha külön-külön díja az egyes maghoz szeretné állíthatja be.
 
 ![Különálló díjszabása](./media/cloud-partner-portal-publish-virtual-machine/publishvm7.png)
 
 **Exportálási-importálási díjszabása**
 
-Exportálás díjszabás rugalmas, amely a portálon a módosításokat az excel-felületen keresztül lett konfigurálva van. Ez lehetővé teszi, hogy ellenőrizze a régiók szerinti díjszabás és a helyi pénznemben díjszabása.
-Kattintson a **exportálás díjszabás** tölti le a díjszabás előre fel van töltve egy excel-fájlt. Lesz szerkesztése ezek az excel programban, majd **importálás díjszabás** elvégzett módosítások importálásához.
+Exportálás díjszabás rugalmas, amely a portálon a módosításokat az excel-felületen keresztül lett konfigurálva van. Ez a beállítás lehetővé teszi, hogy ellenőrizze a régiók szerinti díjszabás és a helyi pénznemben díjszabása.
+Kattintson a **exportálás díjszabás** tölti le a díjszabás előre fel van töltve egy Excel-fájlt. Lesz a számolótábla ezen adatok szerkesztéséhez, majd **importálás díjszabás** elvégzett módosítások importálásához.
 Az importált díjszabás fogja tartalmazni, valamint a portálon.
 
 A díjszabási Excelből a különböző régiók árai helyi pénznemben számított láthatók. Használjuk a árfolyam naponta frissülnek.
@@ -219,24 +207,18 @@ A díjszabási Excelből a különböző régiók árai helyi pénznemben szám�
 
 Hajtsa végre a következő szakaszban lesz a Virtuálisgép-rendszerképek szakaszban. Mielőtt továbblépne ebben a szakaszban a, szüksége lesz a virtuális Merevlemezt, amely készen közzé szeretné tenni. Az alábbiakban az egyes hivatkozások annak megakadályozása, hogy a virtuális merevlemez létrehozása:
 
--   [Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki előfeltételei](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki előfeltételei](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
 -   [Létrehozásával és a egy Linux VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [& Tesztelje egy rendszerképből egy Linux rendszerű virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Létrehozása és egy Windows VHD feltöltése ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [& Tesztelje egy rendszerképből egy Windows virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
+-   [Virtuális merevlemez létrehozása során tapasztalt gyakori hibáinak elhárítása](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 
--   [Virtuális merevlemez létrehozása során tapasztalt gyakori hibáinak elhárítása](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
-Miután a virtuális merevlemez kész, indítsa el ebben a szakaszban beküldésekor.
-Az alábbiakban néhány adatát egyes mezőit.
+Miután a virtuális merevlemez kész, indítsa el ebben a szakaszban beküldésekor.  Az alábbiakban néhány adatát egyes mezőit.
 
 ### <a name="recommended-vm-sizes"></a>Javasolt Virtuálisgép-méretek
 
-Válasszon legfeljebb hat javasolt Virtuálisgép-méretet. Ezek a javaslatok az Azure Marketplace-en és az Azure Portalon a Tarifacsomag panelen amikor megvásárlása és a rendszerkép üzembe helyezése mellett döntenek jelennek meg. **Ezek csak ajánlások. Az ügyfél el tudja válasszon, amely megfelelő a lemezképben megadott lemezek bármely Virtuálisgép-méretet.**  Az alábbi képernyőfelvételen látható, hogy egy ügyfél jelenik meg az Azure Portalon javasolt Virtuálisgép-méretek.
+Válasszon legfeljebb hat javasolt Virtuálisgép-méretet. Ha úgy döntenek, megvásárlása és üzembe helyezése a rendszerkép ezeket a javaslatokat az ügyfelek számára az Azure Marketplace-en, és az Azure Portalon a Tarifacsomag panelen jelennek meg. *Ezeket a méreteket csak ajánlások. Az ügyfél el tudja válasszon, amely megfelelő a lemezképben megadott lemezek bármely Virtuálisgép-méretet.*  Az alábbi képernyőfelvétel-készítés ügyfél számára javasolt Virtuálisgép-méretek az Azure Portalon látható.
 
 
 ![Javasolt Virtuálisgép-méretek](./media/cloud-partner-portal-publish-virtual-machine/publishvm9.png)
@@ -248,9 +230,9 @@ Adja meg a portokat, amelyet végzett megnyitva és elérhető. Ezeket a portoka
 
 ### <a name="adding-vm-images"></a>Virtuálisgép-rendszerkép hozzáadása
 
-A következő lépés, hogy egy Virtuálisgép-lemezkép adja meg a Termékváltozat. Termékváltozat száma legfeljebb 8 lemez verziók is hozzáadhat. Csak a legmagasabb szintű lemez verzió számát egy adott termékváltozat jelennek meg az Azure Marketplace-en. API-kon keresztül látható lesz mások.
+A következő lépés, hogy egy Virtuálisgép-lemezkép adja meg a Termékváltozat. Termékváltozat száma nyolc lemez verziók is hozzáadhat. Csak a legmagasabb szintű lemez verzió számát egy adott termékváltozat jelennek meg az Azure Marketplace-en. API-kon keresztül látható lesz mások.
 
-A **lemez verziója**válassza **+ új verzió**. Ez azt a következő mezők kitöltése szükséges.
+A **lemez verziója**válassza **+ új verzió**. Ez a lehetőség a következő mezők kitöltéséhez igénylő mutatja.
 
 #### <a name="vm-image-version"></a>VM-lemezkép verziója
 
@@ -258,13 +240,13 @@ A Virtuálisgép-lemezkép verziója szükséges a [sémantická verze](http://s
 
 #### <a name="os-vhd-url"></a>OS VHD URL-CÍME
 
-Adja meg a [közös hozzáférésű jogosultságkód URI Azonosítójának](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) az operációs rendszer virtuális Merevlemeze számára létrehozott.
+Adja meg a [közös hozzáférésű jogosultságkód URI Azonosítójának](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) az operációs rendszer virtuális Merevlemeze számára létrehozott.
 
 Ha ez a Termékváltozat társított adatlemezek vannak, ezek a lemezek hozzáadása kiválasztásával választhat a **+ új adatlemez** hivatkozásra. Ez a művelet, hogy töltse ki további mezőket jeleníti meg.
 
 #### <a name="lun-vhd-url"></a>LUN VIRTUÁLIS MEREVLEMEZ URL-CÍME
 
-Adja meg a [közös hozzáférésű jogosultságkód URI Azonosítójának](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) az adatokat lemezen.
+Adja meg a [közös hozzáférésű jogosultságkód URI Azonosítójának](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) az adatokat lemezen.
 
 #### <a name="lun-number"></a>Logikai egység száma
 
@@ -277,16 +259,16 @@ Rendelje hozzá a LUN számot. Ez a szám az adatlemezt, ez a Termékváltozat a
 
 | Probléma                                                                 | Üzenet                                                                           | Javítás                                                           |  Dokumentációra mutató hivatkozással                                                                                |
 |---------------------------------------------------------------------  |-------------------------------------------------------------------------------    |-----------------------------------------------------------    |---------------------------------------------------------------------------------------------------    |
-| Hiba történt a Másolás-lemezkép - "?" nem található a SAS URL-címe                | Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.       | Frissítés az SAS URL-cím használata ajánlott eszközök                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Hiba történt a Másolás lemezkép - "st" és "se" paraméterek nem az SAS URL-címe   | Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.        | A kezdő és záró dátuma, az SAS URL-cím frissítése             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása                    | Hiba: A lemezképek másolása. Nem sikerült letölteni a blob SAS URI-t használó megadott         | Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve     | Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.        | Frissítse a SAS URL-címét, szóközök nélkül                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása               | Hiba: A lemezképek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült     | Az SAS URL-címet generálni                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Hiba történt a Másolás-lemezkép - "?" nem található a SAS URL-címe                | Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.       | Frissítés az SAS URL-cím használata ajánlott eszközök                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Hiba történt a Másolás lemezkép - "st" és "se" paraméterek nem az SAS URL-címe   | Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.        | A kezdő és záró dátuma, az SAS URL-cím frissítése             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása                    | Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob SAS URI-t használó megadott         | Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve     | Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.        | Frissítse a SAS URL-címét, szóközök nélkül                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása               | Hiba: Másolás a rendszerképeket. Töltse le a blob engedélyezési hiba miatt nem sikerült     | Az SAS URL-címet generálni                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
 
 
 ## <a name="to-configure-the-marketplace"></a>A Marketplace-en konfigurálása
 
-Konfigurálja a mezőket, amelyek az ajánlat jelennek meg a Marketplace-en nézete segítségével [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure Portal](https://portal.azure.com/).
+Konfigurálja a mezőket, amelyek az ajánlat jelennek meg a Marketplace-en nézete segítségével [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure portal](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>Előfizetés azonosítókat előzetes verzió
 
@@ -294,7 +276,7 @@ Az Azure előfizetés azonosítókat, amelyeket meg szeretne hozzáférése az a
 
 ### <a name="suggested-categories"></a>Javasolt kategóriák
 
-A megadott listáról, hogy az ajánlat társítható legjobb legfeljebb 5 kategóriák kiválasztása A kiválasztott kategóriákra lesz használható az ajánlat leképezése elérhető termékkategóriák [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [az Azure Portal](https://portal.azure.com/).
+A megadott listáról, hogy az ajánlat társítható legjobb legfeljebb öt kategóriák kiválasztása A kiválasztott kategóriákra lesz használható az ajánlat leképezése elérhető termékkategóriák [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [az Azure portal](https://portal.azure.com/).
 
 Az alábbi példák bemutatják a Piactérrel kapcsolatos információkat az Azure Marketplace-en és az Azure Portalon.
 
@@ -316,7 +298,6 @@ Az alábbi példák bemutatják a Piactérrel kapcsolatos információkat az Azu
 ![publishvm12](./media/cloud-partner-portal-publish-virtual-machine/publishvm12.png)
 
 
-
 ![publishvm13](./media/cloud-partner-portal-publish-virtual-machine/publishvm13.png)
 
 
@@ -329,11 +310,11 @@ Kövesse a Cloud Partner portálra feltöltött emblémák:
 -   Az Azure Portal a témák színei fehér, és fekete. Ne használja ezeket a színeket, a emblémák háttérszíne. Használjon színt, amely biztosítja, a emblémák neves az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát.
 
     >[!Note] 
-    >Ha használ áttetsző háttérrel, majd győződjön meg arról, hogy a emblémák szöveg nem fehér, fekete vagy a kék.
+    >Ha használ áttetsző háttérrel, majd győződjön meg arról, hogy a emblémák szöveg nem fehér, fekete, vagy a kék.
 
 -   Ne használjon színátmenetes hátteret az emblémában.
 
--   Szöveg elkerüli az embléma. Ez magában foglalja az Ön vállalatát vagy márkanév. Az embléma megjelenését és működését kell lennie *egybesimított* és átmenetekhez kerülendő.
+-   Elkerüli a szöveg, beleértve a vállalata vagy márkanév az embléma a.  Az embléma megjelenését és működését kell lennie *egybesimított* és átmenetekhez kerülendő.
 
 -   Az embléma nem archiválhatók.
 
@@ -345,7 +326,7 @@ A Hero embléma megadása nem kötelező. A közzétevő nem szeretné Hero embl
 
 -   A közzétevő megjelenített neve, csomag címét és az ajánlat hosszú összegzése jelennek meg a fehér színű betűtípus használatával. Ne használja a bármely világos szín a háttérben. Fekete, a fehér és áttetsző háttérrel Hero ikonok esetén nem engedélyezett.
 
--   A közzétevő megjelenített név, cím, az ajánlat hosszú összegzése és a Létrehozás gombra vannak beágyazva programozott módon a Hero embléma az ajánlat felsorolt tervet. Ne adja meg a szöveg, amikor az identitásfelügyelet a Hero embléma. Hagyja meg az üres területet a jobb oldalon az embléma. Ez a terület 415 x 100 képpont legyen, és 370 ellensúlyozza a balról képpont.
+-   A közzétevő megjelenített név, cím, az ajánlat hosszú összegzése és a Létrehozás gombra vannak beágyazva programozott módon a Hero embléma Ha szerepel a listán az ajánlat terv. Ne adja meg a szöveg, amikor az identitásfelügyelet a Hero embléma. Hagyja meg az üres területet a jobb oldalon az embléma. Ez a terület 415 x 100 képpont legyen, és 370 ellensúlyozza a balról képpont.
 
 ![Példa a főképemblémára](./media/cloud-partner-portal-publish-virtual-machine/publishvm14.png)
 

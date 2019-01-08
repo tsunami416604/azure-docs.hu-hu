@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cd539e1ba1b740155a22960645c3947d7c4d8176
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e94a667cb67e4812984d4a338e763ebeaa1d3205
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666525"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073220"
 documentType: LandingData
 title: A Jenkins az Azure-on
 metadata:
@@ -12,7 +12,7 @@ metadata:
   description: A Jenkins üzembe helyezése és integrálása az Azure használatával
   ms.service: jenkins
   keywords: jenkins, azure, devops, oktatóanyagok, minták, referencia
-  author: tomarcher
+  author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
@@ -66,4 +66,4 @@ sections:
     - title: Beépülő modulok
       html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure virtuálisgép-ügynökök</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure-tárolóügynökök</a><p><a href="https://plugins.jenkins.io/azure-function">Az Azure-függvények beépülő modulja</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service beépülő modul</a>
 - type: paragraph
-  text: <h4>A Jenkins® a Software in the Public Interest, Inc. bejegyzett védjegye. A [Jenkins® embléma](https://wiki.jenkins.io/display/JENKINS/Logo) licencelése a [Jenkins projektből](https://jenkins.io) a [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) alapján történik.</h4>
+  text: <h4>A Jenkins® a Public Interest, Inc. bejegyzett védjegye. A [Jenkins® embléma](https://wiki.jenkins.io/display/JENKINS/Logo) licencelése a [Jenkins projektből](https://jenkins.io) a [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) alapján történik.</h4>

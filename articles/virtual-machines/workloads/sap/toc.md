@@ -52,12 +52,9 @@
 ## [SAP HANA fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
 ## [SAP HANA-tárhely pillanatképes biztonsági mentései](sap-hana-backup-storage-snapshots.md)
 # SAP NetWeaver és Business One az Azure Virtual Machinesban
-## [SAP Business One az Azure Virtual Machinesban](business-one-azure.md)
-## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
-## [SAP NetWeaver a Linux rendszerű, Azure-beli virtuális gépeken](suse-quickstart.md)
+## [SAP számítási feladatok tervezési és üzembehelyezési ellenőrzőlistája](sap-deployment-checklist.md)
 ## [SAP NetWeaver tervezése és megvalósítása Azure-ban](planning-guide.md)
 ## [SAP NetWeaver üzembehelyezési útmutató](deployment-guide.md)
-## [Az Azure SAP LaMa összekötője](lama-installation.md)
 ## DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
 ### [Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_general.md)
 ### [SQL Server Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
@@ -69,6 +66,10 @@
 ### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
 ### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
 ### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
+## [SAP Business One az Azure Virtual Machinesban](business-one-azure.md)
+## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
+## [SAP NetWeaver a Linux rendszerű, Azure-beli virtuális gépeken](suse-quickstart.md)
+## [Az Azure SAP LaMa összekötője](lama-installation.md)
 ## Magas rendelkezésre állás (HA) Windowson és Linuxon
 ### [Áttekintés](sap-high-availability-guide-start.md)
 ### Magas rendelkezésre állású architektúra
