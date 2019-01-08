@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dbd97ba8faacdc387a6e0b78c206f65a201ca246
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261547"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074087"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Marketplace és appsource-ban
 Tanácsadási szolgáltatások az Azure Marketplace és AppSource biztosít a Microsoft-partnerek, a cél támogatja, és bővítheti használata során az Azure-szolgáltatásokkal csatlakozó ügyfelek és az üzleti céljainak megvalósítását. 
@@ -66,8 +66,8 @@ Partnerek van szüksége egy **silver vagy gold kompetencia** a szolgáltatásuk
 |Elsődleges termék |Jogosultsági követelmény |
 |---------|---------|
 | Dynamics 365 for Customer Engagement    |   Silver vagy Gold [felhőalapú Ügyfélkapcsolat-kezelés](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) kompetencia.    | 
-|Dynamics 365 for Finance and Operations, Enterprise edition  |  Silver vagy Gold [vállalati erőforrás-tervezés](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) kompetencia, és a egy minimális bevétel, $25 K a Felhőbeli műveletek a záró 12 hónapon belül.       |
-|Dynamics 365 for Finance and Operations, Business edition  |  Átállás folyamatában [Felhőszolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális partnert a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél      |
+|Dynamics 365 for Finance and Operations, Enterprise edition  |  Silver vagy Gold [vállalati erőforrás-tervezés](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencia, és a egy minimális bevétel, $25 K a Felhőbeli műveletek a záró 12 hónapon belül.       |
+|Dynamics 365 for Finance and Operations, Business edition  |  Átállás folyamatában [Felhőszolgáltató (CSP)](https://partner.microsoft.com/cloud-solution-provider) vagy [digitális partnert a rekord (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) legalább egy ügyfél      |
 |A Power BI, Power BI egyéni Vizualizációk | Megfelel a [Felhőszolgáltatói Partner feltételek](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
 |PowerApps | Rendelkezik egy közzétett [Partnerbemutatókhoz]() megoldás
 
@@ -84,10 +84,10 @@ Partnerek van szüksége egy **silver vagy gold kompetencia** a szolgáltatásuk
 |Dánia   |Olaszország   |     Norvégia          |Egyesült Államok |
 |Finnország   |Japán   |     Lengyelország          
 
-Tanácsadási szolgáltatásokat vehet igénybe a bevezetésre kerül élő meghatározott földrajzi régióban. Az alkalmazás első indításakor lesz: Amerikai Egyesült Államok, Kanada, Egyesült Királyság és Ausztráliában. A más országokban katalógusokat élesben elteltével egy jelentéssel bíró és lenyűgöző szolgáltatásajánlatok választott lett partnerek által küldött és a Microsoft által jóváhagyott.
+Tanácsadási szolgáltatásokat vehet igénybe a bevezetésre kerül élő meghatározott földrajzi régióban. Az alkalmazás első indításakor a következő lesz: Egyesült Államok, Kanada, az Egyesült Királyságban és Ausztrália. A más országokban katalógusokat élesben elteltével egy jelentéssel bíró és lenyűgöző szolgáltatásajánlatok választott lett partnerek által küldött és a Microsoft által jóváhagyott.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>How To Register tanácsadási szolgáltatások az Azure Marketplace és appsource-ban a
-Első lépésként [regisztrálása](https://azuremarketplace.microsoft.com/en-us/sell/signup) a vállalati adatok a Marketplace-en. A kiadók is hivatkozhatnak [válhat Kiadóvá a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), teljes ellenőrzés-listáját a eszközregisztráció követelményeinek. 
+Első lépésként [regisztrálása](https://azuremarketplace.microsoft.com/sell/signup) a vállalati adatok a Marketplace-en. A kiadók is hivatkozhatnak [válhat Kiadóvá a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), teljes ellenőrzés-listáját a eszközregisztráció követelményeinek. 
 
 **Milyen a várható után regisztrációs** a bevezetési csapat felveszi Önnel 1-3 munkanapon egy üdvözlő e-mailt, amely magában foglalja a Cloud Partner Portal (CPP) bejelentkezési adatait. [Cloud Partner Portalon](https://cloudpartner.azure.com) a ajánlat listaelem portál, ahol a kiadók az ajánlati információk és jelentkezés küldje el. 
 
@@ -119,38 +119,38 @@ Regisztráció előtt gyűjtésének megkezdéséhez, és előkészíti a tartal
 ## <a name="publishing-process"></a>Közzétételi folyamat
 A következő szakaszok a tanácsadási szolgáltatási ajánlat az Azure Marketplace és appsource-ban ajánlati foglalja magában:
 
-1. **Ajánlati**: Start jelentkezik be egy új ajánlati tervezésére a [Cloud Partner Portalon](https://cloudpartner.azure.com) fiókot. Válassza ki az új ajánlat és a "Tanácsadási szolgáltatások" lehetőséget a legördülő menüből. Adja meg a tőzsdei összetevő, és tegye közzé.
+1. **Listázás**: Indítsa el a jelentkezik be egy új ajánlati tervezése a [Cloud Partner Portalon](https://cloudpartner.azure.com) fiókot. Válassza ki az új ajánlat és a "Tanácsadási szolgáltatások" lehetőséget a legördülő menüből. Adja meg a tőzsdei összetevő, és tegye közzé.
 2. **Érvényesítési**: A kérelem felülvizsgálata, győződjön meg arról, hogy megfelel a jogosultsági feltételeknek. Ezután küldhetjük a tanácsadási szolgáltatásokat kínáló ajánlati vonatkozó utasításokat. 
-3. **Küldje el**: Adja meg a szükséges információkat, amely szerepel az utasításokat. Az összes tartalom és kapcsolódó anyagokat angol nyelven kell benyújtani. 
-4. **Felülvizsgálat**: marketing és szerkesztői csapatunk áttekinti a beküldött elemet, és optimalizálja őket az olvashatóság érdekében, nyelvtani és hatékonyságát. 
+3. **Küldje el**: Adja meg a szükséges adatokat, amely szerepel az utasításokat. Az összes tartalom és kapcsolódó anyagokat angol nyelven kell benyújtani. 
+4. **Felülvizsgálat**: A marketing és szerkesztői csapat áttekinti a beküldött elemet, és optimalizálja őket az olvashatóság érdekében, nyelvtani és hatékonyságát. 
 5. **Átmeneti**: A beküldött előkészített áttekintésre. 
-6. **Közzétételi**: Ön és a Microsoft a manuálisan előkészített tartalommal teljesülése esetén a marketplace-en az élő esemény indításra készen áll-e a listában. Az éles dátum, a listaelem ajánlata megadott ország függ. Ha a kiválasztott országban katalógusának már élő az Azure Marketplace-en vagy az appsource-ban, a listaelem néhány órán belül fog megjelenni. Ellenkező esetben az eredményablakban megjelenik, amint a katalógus élesíti.
+6. **Közzétételi**: Ön és a Microsoft a manuálisan előkészített tartalommal teljesülése esetén a lista elkészült, válassza a marketplace-en. Az éles dátum, a listaelem ajánlata megadott ország függ. Ha a kiválasztott országban katalógusának már élő az Azure Marketplace-en vagy az appsource-ban, a listaelem néhány órán belül fog megjelenni. Ellenkező esetben az eredményablakban megjelenik, amint a katalógus élesíti.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>Ajánlati információk és a tartalom felülvizsgálati feltételek
 Ajánlatok kell lennie a következő öt szolgáltatást típusú (listázhatja egynél több): 
 
-* **Értékelés**: ügyfél környezet határozza meg a megoldás alkalmazhatóságát és becsült költségek és az időzítési értékelését. 
-* **Tájékoztatásának**: megoldást vagy felhasználói érdeklődés megrajzolásához keretrendszereket, bemutatók és példák ügyfelektől tanácsadási szolgáltatás bemutatása. 
-* **Megvalósítás**: teljes telepítéséhez, amely egy teljes mértékben működő megoldást eredményez. Azt javasoljuk, hogy korlátozza, megoldásokat, amelyekkel megvalósított két héten belül vagy kevesebb is lehet. 
-* **A koncepció igazolása**: meghatározni, hogy a megoldás megfelel-e az ügyfelek igényei és A korlátozott hatókörű megvalósítás. 
-* **Workshop**: egy interaktív engagement, amely az ügyfél helyszíni végez. Képzés, tájékoztatói, értékelések vagy bemutatók a vásárlói adatok vagy környezet beépített is magában foglalhat. 
+* **Értékelés**: Az ügyfél környezet határozza meg a megoldás alkalmazhatóságát és becsült költségek és az időzítési értékelését. 
+* **Tájékoztatásának**: A megoldás vagy a felhasználói érdeklődés megrajzolásához keretrendszereket, bemutatók és példák ügyfelektől tanácsadási szolgáltatás bemutatása. 
+* **Megvalósítás**: A telepítés befejezéséhez, amely egy teljes mértékben működő megoldást eredményez. Azt javasoljuk, hogy korlátozza, megoldásokat, amelyekkel megvalósított két héten belül vagy kevesebb is lehet. 
+* **A koncepció igazolása**: A korlátozott hatókörű megvalósítás meghatározni, hogy a megoldás megfelel-e az ügyfelek igényei. 
+* **Workshop**: Az ügyfél helyszíni végzett interaktív engagement. Képzés, tájékoztatói, értékelések vagy bemutatók a vásárlói adatok vagy környezet beépített is magában foglalhat. 
 
-**Megjegyzés:** kivételével a *Briefing* szolgáltatástípus, tanácsadási szolgáltatások kínálhatók fel (vagyis egy ügyfél vagy egy partneri létesítményben helyszíni) személyesen vagy virtuálisan (azaz keresztül teleconferencing, webes konferencia, vagy távoli megvalósítása). Tájékoztatói személyesen kell kínáljuk.
+**Megjegyzés:** Az alábbiakat kivéve a *Briefing* szolgáltatástípus, tanácsadási szolgáltatások kínálhatók fel (vagyis egy ügyfél vagy egy partneri létesítményben helyszíni) személyesen vagy virtuálisan (azaz keresztül teleconferencing, webes konferencia, vagy a távoli megvalósítása). Tájékoztatói személyesen kell kínáljuk.
 
 Miután konfigurálta a fent felsorolt szükséges elemeket, a tartalom csapatától ellenőrzi, hogy az ajánlat leírása az informatív és befejeződött a célközönséget. 
 
 #### <a name="listing-title"></a>Cím listázása
 
-A cím mező esetében a 50 karakter hosszúságú, és szükség továbbítására keresés keresőmotor-optimalizálás maximalizálhatja az ajánlat időtartamát és a szolgáltatás típusa. A kötelező formátum a következőképpen történik: név: időtartam típusa
+A cím mező esetében a 50 karakter hosszúságú, és szükség továbbítására keresés keresőmotor-optimalizálás maximalizálhatja az ajánlat időtartamát és a szolgáltatás típusa. A kötelező formátum a következőképpen történik: NÉV: IDŐTARTAM TÍPUSA
 
 Példák:
 
 
 |Mintául szolgáló cím  |Helyes formátumban  |
 |---------|---------|
-|Ismerkedés az Azure IoT a gyártásban    |   Gyártási IoT: 2 napos értékelése      |
+|Ismerkedés az Azure IoT a gyártásban    |   IoT gyártási: Értékelés 2 nap      |
 |Az intelligens kenyérpirítók Workshop        |  Az intelligens kenyérpirítók: 1 – hét Workshop       |
-|  Az SQL Server Migrálási megvalósíthatósági vizsgálat    | SQL-áttelepítés: 3-héttel a koncepció igazolása        |
+|  Az SQL Server Migrálási megvalósíthatósági vizsgálat    | SQL-áttelepítés: A koncepció igazolása 3 – hét        |
 
 #### <a name="listing-summaries-and-descriptions"></a>Összegzéseket és leírásokat listázása
 
@@ -180,8 +180,9 @@ Cloud Partner Portalon adhat hozzá a tőzsdei használatával formázás [Markd
 
 Ha ezt még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
 
 Ha Ön regisztrálva van és működik-e a Cloud Partner portálra, 
 
-- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot
+- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
+- Lásd: [tanácsadási szolgáltatási ajánlat Azure-ban és a Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) további információt.

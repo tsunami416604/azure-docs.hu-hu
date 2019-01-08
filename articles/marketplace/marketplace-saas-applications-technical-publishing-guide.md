@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123482"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074716"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat közzétételi útmutató
 
-SaaS-alkalmazások tehetők közzé a piactéren, három különböző művelet meghívásával: "kérje meg a," a "Kipróbálás" és a "Letöltés most." Ez az útmutató azt ismerteti, hogy ezen három lehetőségekről, beleértve az egyes. 
+SaaS-alkalmazások tehetők közzé a piactéren, három különböző művelet meghívásával: "Velem a kapcsolatot," "Kipróbálás most" és "Letöltés most." Ez az útmutató azt ismerteti, hogy ezen három lehetőségekről, beleértve az egyes. 
 
 ## <a name="offer-overview"></a>Az ajánlat áttekintése  
 
@@ -34,8 +34,8 @@ SaaS-alkalmazások érhetők el mindkét Azure Kirakattípus a következő tábl
 | AppSource | Igen (velem a kapcsolatot) | Igen (a Power bi/Dynamics) |
 | Azure Piactér | Nem | Igen (SaaS-alkalmazások) |   
 
-**Lista:** a tőzsdei közzétételi lehetőség áll egy névjegyet Me ajánlattípusra és használatos, ha egy próba - vagy tranzakciószintet részvételi nem megvalósítható. Ez a megközelítés előnye, hogy lehetővé teszi a megoldás a piacra jutási közzétevőket azonnali megkezdéséhez fogadása az érdeklődők, az növelheti az üzleti üzletek kapcsolható.  
-**Próbaverzió és a tranzakciós:** az ügyfél közvetlenül vásárolni, vagy a megoldás próbaverziója lehetősége van. Próbaverzió biztosítása érdekében növeli az engagement szintjét, az ügyfelek számára érhető el, és lehetővé teszi az ügyfelek számára, hogy a megoldás megismerése megvásárlása előtt. A próbaidőszak felhasználói élményét kell jobb szoftver-és promóciós a kirakattípus a, és több és több funkcióval az ügyfélesetekből származó érdeklődők kell látnia. Kísérletek tartalmaznia kell ingyenes támogatási legalább a próbaidőszak alatt időtartamára.  
+**Lista:**  A lista közzétételi lehetőség áll egy névjegyet ajánlattípus és használatos, ha egy próba - vagy tranzakciószintet részvételi nem megvalósítható. Ez a megközelítés előnye, hogy lehetővé teszi a megoldás a piacra jutási közzétevőket azonnali megkezdéséhez fogadása az érdeklődők, az növelheti az üzleti üzletek kapcsolható.  
+**Próbaverzió és a tranzakciós:**  Az ügyfél közvetlenül vásárolni, vagy a megoldás próbaverziója lehetősége van. Próbaverzió biztosítása érdekében növeli az engagement szintjét, az ügyfelek számára érhető el, és lehetővé teszi az ügyfelek számára, hogy a megoldás megismerése megvásárlása előtt. A próbaidőszak felhasználói élményét kell jobb szoftver-és promóciós a kirakattípus a, és több és több funkcióval az ügyfélesetekből származó érdeklődők kell látnia. Kísérletek tartalmaznia kell ingyenes támogatási legalább a próbaidőszak alatt időtartamára.  
 
 | SaaS-alkalmazások ajánlat | Üzleti feltételek | Technikai követelmények |  
 | --- | --- | --- |  
@@ -94,7 +94,7 @@ Videós oktatóanyagok tekintse át a következőket:
 * [Videók a Microsoft Azure Active Directory összpontosítanak.](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Ingyenes Azure Active Directory-képzés érhető el:  
-* [Microsoft Azure for IT Pros tartalom sorozat: az Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [Microsoft Azure for IT Pros tartalom sorozat: Az Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Emellett az Azure Active Directory biztosít egy hely szolgáltatás frissítései   
 * [Az Azure AD-szolgáltatásfrissítések](https://azure.microsoft.com/updates/?product=active-directory)
@@ -145,10 +145,11 @@ A Microsoft a kereskedelmi tranzakciót futtat. A Microsoft az Ön nevében az �
 | Előfizetés API | Elérhetővé teszi egy szolgáltatás, amely az SaaS-előfizetés létrehozása, frissítése és egy felhasználói fiókot és a service-csomag törlése hatással lehet. Kritikus fontosságú API-módosítás támogatnia kell a 24 órán belül. A nem kritikus API-módosítás rendszeres időközönként kiadjuk. |  
 
 ## <a name="next-steps"></a>További lépések
-Ha ezt még nem tette meg, 
+Ha ezt még nem tette meg,
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
 
 Ha regisztrálva van és a egy új ajánlat létrehozása vagy egy meglévő, dolgozik
 
-- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot
+- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
+- Lásd: [Azure SaaS-alkalmazás ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer) további információt.

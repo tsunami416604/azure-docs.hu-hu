@@ -12,12 +12,12 @@ ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: b857b0bd56b479d4301535a4e1f734d8002dcc8e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c63872ce19cc7076929785cc7bd150c1599c5705
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099052"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063048"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatait az Azure Active Directoryval
 
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) használatával, módosíthatja egy csoport be
 
     - **Csoport típusa.** Miután létrejött a csoport típusa nem módosítható. Módosíthatja a **csoporttípust**, akkor törölje a csoportot, majd hozzon létre egy új.
     
-    - **Tagság típusa.** A tagsági típus módosítása A rendelkezésre álló tagságát különféle típusaival kapcsolatos további információkért lásd: [hogyan: hozzon létre egy alapszintű csoportot és felhasználókat adhatnának használata az Azure Active Directory portálon](active-directory-groups-create-azure-portal.md)
+    - **Tagság típusa.** A tagsági típus módosítása A rendelkezésre álló tagságát különféle típusaival kapcsolatos további információkért lásd: [hogyan: Hozzon létre egy alapszintű csoportot és felhasználókat adhatnának használata az Azure Active Directory portálon](active-directory-groups-create-azure-portal.md).
     
     - **Objektum azonosítója.** Az Objektumazonosító nem módosítható, de az, hogy a PowerShell-parancsokban a csoport számára is másolhatja. PowerShell-parancsmagok használatával kapcsolatos további információkért lásd: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-v2-cmdlets.md).
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 11/30/2018
+ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846895"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065341"
 ---
 # <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
 
@@ -35,7 +35,7 @@ Mind az Azure ad PIM által küldött e-mailek és az Azure erőforrás-szerepk�
 
 E-mailek tartalmaznak egy **PIM** a tárgysorban előtag. Például:
 
-- A PIM: Alain Charon véglegesen rendelte a biztonsági olvasói szerepköre
+- A PIM: Alain Charon tartósan hozzá volt rendelve a biztonsági olvasói szerepköre
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>A PIM e-mailek, az Azure AD-szerepkörök
 
@@ -43,16 +43,15 @@ A PIM e-maileket küld, ha az alábbi események történnek az Azure AD-szerepk
 
 - Ha egy rendszerjogosultságú szerepkör aktiválása a jóváhagyásra van
 - Ha egy rendszerjogosultságú szerepkör-aktiválási kérelem befejeződött
-- Ha a kiemelt szerepkörű tulajdonságuk van hozzárendelve
 - Ha engedélyezve van-e az Azure AD PIM-ben
 
 Ki kapja, e-mailek, az Azure AD-szerepkörökhöz tartozó függ a szerepkört, az esemény és az értesítések beállítása:
 
-| Felhasználó | Szerepkör-aktiválás jóváhagyása függőben van | Szerepkör-aktiválási kérelem befejeződött | Szerepkör szerint jogosult van hozzárendelve. | A PIM engedélyezve van |
-| --- | --- | --- | --- | --- |
-| Kiemelt szerepkörű rendszergazda</br>(Aktív/rendelkezésre álló) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen | Igen |
-| Biztonsági rendszergazda</br>(Aktív/rendelkezésre álló) | Nem | Igen* | Igen | Igen |
-| Globális rendszergazda</br>(Aktív/rendelkezésre álló) | Nem | Igen* | Igen | Igen |
+| Felhasználó | Szerepkör-aktiválás jóváhagyása függőben van | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
+| --- | --- | --- | --- |
+| Kiemelt szerepkörű rendszergazda</br>(Aktív/rendelkezésre álló) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen |
+| Biztonsági rendszergazda</br>(Aktív/rendelkezésre álló) | Nem | Igen* | Igen |
+| Globális rendszergazda</br>(Aktív/rendelkezésre álló) | Nem | Igen* | Igen |
 
 \* Ha a [ **értesítések** beállítás](pim-how-to-change-default-settings.md#notifications) értékre van állítva **engedélyezése**.
 

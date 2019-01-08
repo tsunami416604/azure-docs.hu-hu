@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e620deae1a73c110dd22133a12155166a55b999
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: cb2383ee8a921aa2c9c4e3b536edc203dd883200
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052019"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074444"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -141,7 +141,7 @@ A további [ASP.NET](../../azure-monitor/app/api-filtering-sampling.md) vagy [Ja
 
 Konfigurálhatja a `ClientIpHeaderTelemetryInitializer` beolvasandó az IP-cím egy másik fejlécet. Egyes rendszerekben, például áthelyezés olyan proxy, és töltse be a terheléselosztó vagy a CDN-t `X-Originating-IP`. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-Is [a Power BI használata](../../application-insights/app-insights-export-power-bi.md) a kérelmek telemetriai adatai megjelenítéséhez a térképen.
+Is [a Power BI használata](../../azure-monitor/app/export-power-bi.md ) a kérelmek telemetriai adatai megjelenítéséhez a térképen.
 
 
 ## <a name="data"></a>Mennyi ideig őrzi meg adatok a portálon? A biztonságos?

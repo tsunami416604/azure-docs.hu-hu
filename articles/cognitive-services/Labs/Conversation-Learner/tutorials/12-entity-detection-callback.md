@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 147887151abd5c1f7455b0efbf9aadbc2d884183
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a96cfcb07252dc4a9089eab2decaec9efb01a67b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796777"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064990"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Entitás észlelési visszahívási használata
 
@@ -95,7 +95,7 @@ A visszahívási kód itt látható:
 6. A "Score műveletek" gombra.
     - A gombra kattintva az entitás észlelési visszahívási aktiválása
     - A visszahívási kód megfelelően a "Győr" CityResolved entitás értékét állítja be.
-7. Válassza ki a választ, "new York-i van nagyon hasznos."
+7. Válassza ki a választ, a "new York-i nagyon hasznos."
 
 Ez a minta akkor bot számos forgatókönyv jellemző. Felhasználói utterances és kinyert entitások végzik az üzleti logikát, és logikát a kanonikus formájában, amely későbbi bekapcsolja a párbeszédpanelen az programozott entitásokkal, majd menti az utterance (kifejezés) alakítja át.
 

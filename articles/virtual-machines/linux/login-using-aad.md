@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850975"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073407"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -37,7 +37,7 @@ Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszer�
   - További biztonságos jelentkezzen be az Azure virtual machines a multi-factor authentication is konfigurálhat.
   - Jelentkezzen be a Linux rendszerű virtuális gépek az Azure Active Directory lehetővé teszi az ügyfelek által használt is működik [összevonási szolgáltatások](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Zökkenőmentes együttműködés:** With Role-Based hozzáférés-vezérlés (RBAC), is megadhat, aki bejelentkezhet egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználó csatlakozzon, vagy hagyja meg a csapat, frissítheti a virtuális gép megfelelő hozzáférést biztosít az RBAC házirend. Ez a tapasztalat jóval egyszerűbb, mint el kell távolítani a virtuális gépek eltávolítja a felesleges nyilvános SSH-kulcsokat, ha. Amikor az alkalmazottak elhagyják a szervezet és a felhasználói fiók le van tiltva vagy Azure AD-ből eltávolított, már nem rendelkeznek az erőforrásokhoz való hozzáférés.
+- **Zökkenőmentes együttműködés:** A szerepköralapú hozzáférés vezérlése (RBAC), megadhatja a ki jelentkezhet be egy adott virtuális gépre normál felhasználóként vagy rendszergazdai jogosultságokkal. Amikor a felhasználó csatlakozzon, vagy hagyja meg a csapat, frissítheti a virtuális gép megfelelő hozzáférést biztosít az RBAC házirend. Ez a tapasztalat jóval egyszerűbb, mint el kell távolítani a virtuális gépek eltávolítja a felesleges nyilvános SSH-kulcsokat, ha. Amikor az alkalmazottak elhagyják a szervezet és a felhasználói fiók le van tiltva vagy Azure AD-ből eltávolított, már nem rendelkeznek az erőforrásokhoz való hozzáférés.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Támogatott Azure-régiók és a Linux-disztribúciók
 
@@ -96,8 +96,8 @@ A *provisioningState* , *sikeres* a bővítményt a virtuális gép telepítése
 
 Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) házirend határozza meg, aki bejelentkezhet a virtuális Gépet. Engedélyezze a virtuális gép bejelentkezési két RBAC-szerepkörök használhatók:
 
-- **A virtuális gépre való rendszergazdai bejelentkezés**: az ehhez a szerepkörhöz rendelt felhasználók bejelentkezhet egy Azure virtuális géphez, a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival.
-- **A virtuális gépre való felhasználói bejelentkezés**: az ehhez a szerepkörhöz rendelt felhasználók bejelentkezhet egy Azure virtuális gépen a normál felhasználói jogosultságokat.
+- **A virtuális gépre való rendszergazdai bejelentkezés**: Az ehhez a szerepkörhöz rendelt felhasználók bejelentkezhetnek a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival Azure virtuális gépeken.
+- **A virtuális gépre való felhasználói bejelentkezés**: Az ehhez a szerepkörhöz rendelt felhasználók bejelentkezhet egy Azure virtuális gépen a normál felhasználói jogosultságokat.
 
 > [!NOTE]
 > Lehetővé teszi, hogy jelentkezzen be a virtuális Gépre ssh-n keresztül, hozzá kell rendelnie vagy a *virtuális gépre való rendszergazdai bejelentkezés* vagy *virtuális gépre való felhasználói bejelentkezés* szerepkör. Az Azure-felhasználó a *tulajdonosa* vagy *közreműködői* egy virtuális géphez hozzárendelt szerepkörök automatikusan nem rendelkezik jogosultságokkal jelentkezzen be a virtuális gép ssh-n keresztül.
@@ -150,7 +150,7 @@ Zárja be a böngészőablakot, térjen vissza az SSH parancssor, és nyomja le 
 
 ## <a name="sudo-and-aad-login"></a>Sudo és AAD-bejelentkezés
 
-Az első futtatásakor sudo, a rendszer kéri, másodszor hitelesítéséhez. Ha nem szeretné futtatni a sudo újra hitelesíteni kell, szerkesztheti a sudoers fájl `/aad/etc/sudoers.d/aad_admins` , és cserélje le ezt a sort:
+Az első futtatásakor sudo, a rendszer kéri, másodszor hitelesítéséhez. Ha nem szeretné futtatni a sudo újra hitelesíteni kell, szerkesztheti a sudoers fájl `/etc/sudoers.d/aad_admins` , és cserélje le ezt a sort:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -166,7 +166,7 @@ az ezt a sort:
 
 Az Azure AD-beli hitelesítő ssh meg néhány gyakori hibák közé tartozik a nincs hozzárendelve, RBAC-szerepkörök és ismételni utasításokat követve jelentkezzen be. Az alábbi szakaszok segítségével javítsa ki ezeket a problémákat.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>A hozzáférés megtagadva: RBAC szerepkör nincs hozzárendelve
+### <a name="access-denied-rbac-role-not-assigned"></a>A hozzáférés megtagadva: Az RBAC-szerepkör nincs hozzárendelve
 
 Ha az SSH-parancssorban a következő hibát látja, ellenőrizze, hogy [konfigurált RBAC-házirendeket](#configure-rbac-policy-for-the-virtual-machine) a virtuális gép, amely engedélyezi a felhasználó vagy a *virtuális gépre való rendszergazdai bejelentkezés* vagy *virtuális Számítógép-felhasználói bejelentkezésre* szerepkör:
 

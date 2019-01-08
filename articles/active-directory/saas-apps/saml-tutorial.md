@@ -1,224 +1,200 @@
 ---
-title: 'Oktatóanyag: SAML 1.1-es tokent az Azure Active Directory integrálása engedélyezve LOB-alkalmazás |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory között, és a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ced1d88d-0e48-40d5-9aea-ef991cd9d270
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/20/2018
+ms.topic: tutorial
+ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: edabc09f820093d088ec0b8ed1222fb26c800bee
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 32fa6f7c13180179a49c656763e58d1b915fb607
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426428"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064661"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Oktatóanyag: SAML 1.1-es tokent az Azure Active Directory integrálása engedélyezve LOB-alkalmazás
+# <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Oktatóanyag: Az Azure Active Directory integrációja az SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás az Azure Active Directoryval (Azure AD).
-
 Integrálja a SAML 1.1-es jogkivonat engedélyezett LOB-alkalmazás az Azure ad-vel nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy az Azure AD ki férhet hozzá a SAML 1.1-es Token LOB-alkalmazás engedélyezve van.
-- Engedélyezheti a felhasználók automatikusan el bejelentkezett a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, hogy az Azure AD ki férhet hozzá a SAML 1.1-es Token LOB-alkalmazás engedélyezve van.
+* Engedélyezheti a felhasználók automatikusan bejelentkezett a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Konfigurálhatja az Azure AD-integráció a SAML 1.1-es Token LOB-alkalmazás engedélyezve van, a következőkre van szüksége:
 
-- Az Azure AD-előfizetéshez
-- A SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás egyszeri bejelentkezési engedélyezett előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás egyszeri bejelentkezési engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. SAML 1.1-jogkivonat hozzáadása engedélyezve van a LOB-alkalmazás a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás által támogatott **SP** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-saml-11-token-enabled-lob-app-from-the-gallery"></a>SAML 1.1-jogkivonat hozzáadása engedélyezve van a LOB-alkalmazás a katalógusból
+
 SAML 1.1-es Token integrációjának konfigurálása engedélyezve LOB-alkalmazás az Azure AD-be, a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás a galériából a felügyelt SaaS-alkalmazások listájában, hozzá kell adnia.
 
 **SAML 1.1-es jogkivonat engedélyezve van a katalógusból LOB-alkalmazás hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás**, jelölje be **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás a találatok listájában](./media/saml-tutorial/tutorial_saml_addfromgallery.png)
+4. A Keresés mezőbe írja be a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás**, jelölje be **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a SAML 1.1-es jogkivonat engedélyezett LOB-alkalmazás "Britta Simon" nevű tesztfelhasználó alapján.
-
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, mely a partner felhasználót a SAML 1.1-es jogkivonat engedélyezett LOB-alkalmazás, hogy egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a SAML 1.1-es Token hivatkozás kapcsolata engedélyezve LOB-alkalmazás kell létrehozni.
+Ebben a szakaszban konfigurálni és vizsgálat az Azure AD egyszeri bejelentkezés a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazást egy teszt nevű felhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználót és a kapcsolódó felhasználó a SAML 1.1-es Token hivatkozás kapcsolata engedélyezve van a LOB-alkalmazás kell létrehozni.
 
 A konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazáshoz, hajtsa végre a következő építőelemeket:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás tesztfelhasználó](#create-a-saml-11-token-enabled-lob-app-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Konfigurálása SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás egyszeri bejelentkezéssel](#configure-saml-11-token-enabled-lob-app-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás tesztfelhasználó](#create-saml-11-token-enabled-lob-app-test-user)**  – hogy egy megfelelője a Britta Simon a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés az Azure Portalon engedélyezése és konfigurálása egyszeri bejelentkezéshez a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazáshoz alkalmazást.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Konfigurálhatja az Azure AD egyszeri bejelentkezés a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazáshoz, hajtsa végre az alábbi lépéseket:**
+Konfigurálhatja az Azure AD egyszeri bejelentkezés a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/saml-tutorial/tutorial_saml_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás tartomány és URL-címek egyetlen bejelentkezési adatait](./media/saml-tutorial/tutorial_saml_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://your-app-url`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-címe: `https://your-app-url`
-     
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Alkalmazás konkrét URL-címekkel rendelkező, cserélje le ezeket az értékeket.  
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    ![SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás tartomány és URL-címek egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    ![A tanúsítvány letöltési hivatkozás](./media/saml-tutorial/tutorial_saml_certificate.png) 
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://your-app-url`
 
-1. Kattintson a **mentése** gombra.
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://your-app-url`
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/saml-tutorial/tutorial_general_400.png)
-    
-1. Az a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazások konfigurálása** területén kattintson **SAML 1.1-es Token konfigurálása engedélyezve LOB-alkalmazás** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartási SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás ügyfél-támogatási csoport beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    ![SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazások konfigurálása](./media/saml-tutorial/tutorial_saml_configure.png) 
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-1. Az egyszeri bejelentkezés konfigurálása **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás** oldalon kell küldenie a letöltött **tanúsítvány (Base64), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** , alkalmazás az ügyfélszolgálathoz. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+6. Az a **SAML 1.1-es Token beállítása engedélyezve van a LOB-alkalmazás** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Az Azure Ad-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-saml-11-token-enabled-lob-app-single-sign-on"></a>Konfigurálása LOB-alkalmazás egyszeri bejelentkezéssel SAML 1.1-es jogkivonat engedélyezve
+
+Az egyszeri bejelentkezés konfigurálása **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és megfelelő másolt URL-címek az Azure Portalról SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás támogatási csoportjának. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/saml-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/saml-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/saml-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/saml-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-saml-11-token-enabled-lob-app-test-user"></a>Hozzon létre egy SAML 1.1-es jogkivonat engedélyezve van a tesztfelhasználó LOB-alkalmazás
-
-Ebben a szakaszban hoz létre egy nevű Britta Simon felhasználó SAML 1.1-es Token LOB-alkalmazás engedélyezve. Az alkalmazás használata támogatási csoportjának felhasználó létrehozásához az alkalmazás oldalán. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban Britta Simon használható az Azure engedélyezi az egyszeri bejelentkezés a hozzáférés biztosításával SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazás.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás**.
 
-**Britta Simon hozzárendelése a SAML 1.1-es jogkivonat engedélyezve van a LOB-alkalmazáshoz, hajtsa végre az alábbi lépéseket:**
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listáját, írja be, és válassza ki **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![A SAML 1.1-es jogkivonat engedélyezve van az alkalmazások listáját a LOB-alkalmazás-hivatkozás](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A SAML 1.1-es jogkivonat engedélyezve van az alkalmazások listáját a LOB-alkalmazás-hivatkozás](./media/saml-tutorial/tutorial_saml_app.png)  
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+### <a name="create-saml-11-token-enabled-lob-app-test-user"></a>Hozzon létre a SAML 1.1-es jogkivonat engedélyezve van a tesztfelhasználó LOB-alkalmazás
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+Ebben a szakaszban hoz létre egy nevű Britta Simon felhasználó SAML 1.1-es Token LOB-alkalmazás engedélyezve. A SAML 1.1-es jogkivonat használata engedélyezve van a LOB-alkalmazás támogatási csapatával a SAML 1.1-es jogkivonat számára engedélyezve van a LOB-alkalmazás platform hozzáadása. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Kattintás után a SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás csempe a hozzáférési panelen, a kapja meg automatikusan bejelentkezett, a SAML 1.1-es jogkivonat-kompatiblis alkalmazásokhoz LOB-alkalmazás.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Kattintás után a SAML 1.1-es jogkivonat engedélyezve van a hozzáférési panelen LOB-alkalmazás csempéjére, meg kell hogy automatikusan jelentkezzenek be a LOB-alkalmazás, amelynek beállítása egyszeri bejelentkezés a SAML 1.1-es jogkivonat engedélyezve. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-<!--Image references-->
-
-[1]: ./media/saml-tutorial/tutorial_general_01.png
-[2]: ./media/saml-tutorial/tutorial_general_02.png
-[3]: ./media/saml-tutorial/tutorial_general_03.png
-[4]: ./media/saml-tutorial/tutorial_general_04.png
-
-[100]: ./media/saml-tutorial/tutorial_general_100.png
-
-[200]: ./media/saml-tutorial/tutorial_general_200.png
-[201]: ./media/saml-tutorial/tutorial_general_201.png
-[202]: ./media/saml-tutorial/tutorial_general_202.png
-[203]: ./media/saml-tutorial/tutorial_general_203.png

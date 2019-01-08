@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7b7de745d63ca5f6ac28dee4f98b0069a52ea0a8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: e53aa250f19c69e234a678be5e9f51a3836cb3a2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003619"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074852"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>Közelgő módosítások előnézetének megtekintése az Azure Application insights segítségével 
 
@@ -37,4 +37,4 @@ Az előzetes verzió panelen amikor előnézete megjelenik a következő lehető
 
 ## <a name="next-steps"></a>További lépések
 
-- [Erőforrás létrehozása](../../application-insights/app-insights-create-new-resource.md)
+- [Erőforrás létrehozása](../../azure-monitor/app/create-new-resource.md )

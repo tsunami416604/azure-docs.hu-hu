@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 6f644416a9e56009aadd0f8e1b217402d625af84
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: dc903fca206f5d40f631181b83252f505b9f57a2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788735"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065210"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás és méretezés az Azure-bA VMware vész-helyreállítási terv
 
@@ -30,7 +30,7 @@ Tudnivalók az Azure Site Recovery-infrastruktúra követelményei, a replikál�
 **Konfigurációs kiszolgáló** | A konfigurációs kiszolgáló tudja kezelni a napi módosítási aránya kapacitást az összes védett gépeken futó számítási feladatok között kell lennie, és ha folyamatosan szeretné replikálni adatokat az Azure Storage elegendő sávszélességet kell.<br/><br/> Ajánlott eljárásként keresse meg a konfigurációs kiszolgáló az ugyanahhoz a hálózathoz és a LAN-szegmens, a védeni kívánt gépeket. Egy másik hálózaton található, de a védeni kívánt gépek kell rendelkezniük a réteg 3 hálózati rá.<br/><br/> A tábla a következő szakaszban található a konfigurációs kiszolgáló méretezési javaslatokat foglalja össze.
 **Folyamatkiszolgáló** | Az első folyamatkiszolgáló a konfigurációs kiszolgálón alapértelmezés szerint telepítve van. A környezet skálázása további folyamatkiszolgálók telepítheti. <br/><br/> A folyamatkiszolgáló replikációs adatokat fogad a védett gépekre, és a gyorsítótárazás, tömörítés és titkosítás segítségével optimalizálja őket. Ezután, elküldi az adatokat az Azure-bA. A folyamat kiszolgáló gépnek rendelkeznie kell a következő feladatok végrehajtására elegendő erőforrással.<br/><br/> A folyamatkiszolgáló a lemezalapú gyorsítótárban használja. 600 GB vagy több külön gyorsítótár lemez használata esetén a hálózati szűk keresztmetszet, illetve leállás tárolt adatok változásának kezelésére.
 
-## <a name="size-recommendations-for-the-configuration-serverin-built-process-server"></a>A konfigurációs kiszolgáló és a beépített folyamatkiszolgáló vonatkozó javaslatok a méretekkel kapcsolatban
+## <a name="size-recommendations-for-the-configuration-server-along-with-in-built-process-server"></a>A konfigurációs kiszolgáló (valamint a beépített folyamatkiszolgáló) javaslatok a méretekkel kapcsolatban
 
 Minden egyes konfigurációs kiszolgáló helyezzük [OVF-sablon](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) beépített folyamatkiszolgálóval rendelkező. Erőforrások, például a Processzor, a memória, a szabad terület a konfigurációs kiszolgáló különböző ütemben használhatók, ha a virtuális gépek védelmét a beépített folyamatkiszolgáló tételnél jelennek. Ezért a követelmények eltérőek lehetnek, ha a beépített folyamatkiszolgáló fel van.
 Ha a beépített folyamatkiszolgáló számítási feladatok védelmére használt konfigurációs kiszolgáló legfeljebb 200 olyan virtuális gépet, a következő konfigurációk alapján képes kezelni.
@@ -47,18 +47,6 @@ Az elemek magyarázata:
 
 * Minden egyes forrásgép egyenként 100 GB-os 3 lemezzel van konfigurálva.
 * Teljesítménymérési tárolási, 8, 10 k RPM, SAS-meghajtót a RAID 10-ben, gyorsítótár lemez mértékegysége használtuk.
-
-## <a name="size-recommendations-for-the-configuration-server"></a>A konfigurációs kiszolgáló méretezési javaslatokat
-
-Ha nem tervezi egy folyamat kiszolgálóként a konfigurációs kiszolgálót használni, kövesse az alábbi konfigurációban legfeljebb 650 virtuális gépek kezeléséhez.
-
-**CPU** | **RAM-MAL** | **Operációsrendszer-lemez mérete** | **A módosult adatok aránya** | **Védett gépek**
---- | --- | --- | --- | ---
-24 vcpu-k (2 sockets * 12 magok \@ 2,5 gigahertz [GHz-es])| 32GB | 80 GB | Nem alkalmazható | Legfeljebb 650 virtuális gépet
-
-Minden egyes forrásgép, ahol egyenként 100 GB-os 3 lemezzel van konfigurálva.
-
-Óta folyamat kiszolgáló funkció nem használható, adatváltozási sebesség nem alkalmazható. A fenti kapacitás fenntartása válthat a számítási feladatok beépített folyamatkiszolgálóról horizontális felskálázás egy másik folyamat az alábbi az irányelveket [Itt](vmware-azure-manage-process-server.md#balance-the-load-on-process-server).
 
 ## <a name="size-recommendations-for-the-process-server"></a>A folyamatkiszolgáló vonatkozó javaslatok a méretekkel kapcsolatban
 
@@ -123,7 +111,7 @@ A **Set-OBMachineSetting -NoThrottle** beállítás azt jelenti, hogy nincs szü
 Az Azure Site Recovery-infrastruktúra beállítása előtt hozzá kell férnie a környezet az alábbi tényezők mérésére: kompatibilis virtuális gépek, a napi adatok megváltoztatása arány, a szükséges hálózati sávszélesség a kívánt rpo-t, az Azure site recovery száma szükséges összetevők, ideje befejezni a kezdeti replikáció stb.,
 
 1. Azoknak az ezeket a paramétereket, ügyeljen arra, hogy az adott környezet megosztott irányelvek segítségével a deployment planner futtatása [Itt](site-recovery-deployment-planner.md).
-2. Konfigurációs kiszolgáló üzembe helyezése az említett követelményeinek [Itt](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server). Ha az éles számítási feladatok nagyobb, mint 650 virtuális gépek, egy másik konfigurációs kiszolgáló telepítése.
+2. Konfigurációs kiszolgáló üzembe helyezése a fenti követelmények. Ha az éles számítási feladatok nagyobb, mint 650 virtuális gépek, egy másik konfigurációs kiszolgáló telepítése.
 3. Mért napi adatváltozási sebessége alapján, üzembe helyezése [horizontális felskálázási folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#download-installation-file) conditions stated above mérete irányelvek segítségével [Itt](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
 4. Ha az adatváltozási sebessége a lemez virtuális gépek túllépné a 2 MB/s, ügyeljen arra, hogy [premium storage-fiók beállítása](tutorial-prepare-azure.md#create-a-storage-account). Deployment planner futtatása egy adott időtartamra, mivel az adatok maximális szám más időszakban, előfordulhat, hogy a jelentés nem rögzített időszakok akkor változik.
 5. Az RPO megfelelően [állítsa be a hálózati sávszélesség](site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
