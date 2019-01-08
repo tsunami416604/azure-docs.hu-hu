@@ -21,7 +21,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54022053"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése egy webes táblázat a forrás Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-web-table-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-web-table.md)
 
