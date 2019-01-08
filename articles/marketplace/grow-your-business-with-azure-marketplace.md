@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 054215a44b66d8fbf30c1a3e61f66425350392b1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233014"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074529"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Növelje üzletét a Marketplace-en 
 Az appsource-on vagy az Azure piactéren az ajánlat közzététele után a Microsofttal közös piaci megjelenést (GTM) tevékenységek használhatja a lista egy kezdőpanele. Vezetői forgalom, a Piactéri ajánlat és gondozásának biztosításáig a Marketplace-en az érdeklődők, például módon nagyszerű felgyorsíthatja az üzlet növekedésének megfelelően. 
@@ -33,15 +33,15 @@ A következő szakaszok táblázatai vonzó marketplace-ajánlat létrehozásár
 ### <a name="storefront-offer-details"></a>Storefront ajánlat részletei
 | Storefront beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Csomag neve | Adjon meg egy erős címet:<br>Az alkalmazás nevére kell kommunikálnak, amelyek az ügyfelek megkapják a legfontosabb értékekre. Az alkalmazás címében többek között a keresési kulcsszavak segíthet az alkalmazás újabb rangsorolni a keresőmotorok találatai között.<br><br>Hajtsa végre a tanácsadási szolgáltatás listaelemek set cím formátuma:<br>[Ajánlat neve]: [időtartama] [ajánlattípusa.] \(például *Contoso: 2 héten megvalósítási*)<br><br>Jelen védjegyezési útmutatójának felelnie:<br>Hajtsa végre a [Microsoft Trademark és a jelen védjegyezési útmutatójának](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és a Microsoft védjegyeiről és a Microsoft-szoftver, a termékek és szolgáltatások nevére hivatkozik, amikor megfelelő, a termékkel kapcsolatos útmutatásokat. |
+| Csomag neve | Adjon meg egy erős címet:<br>Az alkalmazás nevére kell kommunikálnak, amelyek az ügyfelek megkapják a legfontosabb értékekre. Az alkalmazás címében többek között a keresési kulcsszavak segíthet az alkalmazás újabb rangsorolni a keresőmotorok találatai között.<br><br>Hajtsa végre a tanácsadási szolgáltatás listaelemek set cím formátuma:<br>[Ajánlat neve]: [időtartama] [ajánlattípusa.] (például *Contoso: 2 héten megvalósítási*)<br><br>Jelen védjegyezési útmutatójának felelnie:<br>Hajtsa végre a [Microsoft Trademark és a jelen védjegyezési útmutatójának](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) és a Microsoft védjegyeiről és a Microsoft-szoftver, a termékek és szolgáltatások nevére hivatkozik, amikor megfelelő, a termékkel kapcsolatos útmutatásokat. |
 | Az ajánlat leírása | Adjon meg egy tiszta ajánlat leírása:<br>Az ajánlat értékajánlat az első néhány mondatokban a leírás egyértelműen ismerteti. Ne feledje, hogy az első néhány mondatokat előfordulhat, hogy kell-e megjeleníteni a keresőmotorok találatai között. Ne támaszkodjon kizárólag szolgáltatásait és funkcióit, hogy a termék. Ehelyett koncentrálhat, az érték teszi elérhetővé. Az iparág-specifikus szókincsből eredőket vagy a lehető legnagyobb előny-alapú megfogalmazást.<br><br>Alapvető összetevői a értékajánlat tartalmaznia kell a következő információkat:<ul><li>A termék leírását</li><li>Felhasználó, amely számos előnyt biztosít az a termék típusa</li><li>Ügyféligény vagy problémás, amely a termék</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Storefront lista részletei
 | Storefront beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Iparág: AppSource alkalmazások és tanácsadó csak | Válassza ki a iparágakban, az ajánlat címek iparág-specifikus követelmények:<br>Hívja meg az ajánlat leírása az iparág-specifikus képességek.<br><br>**Megjegyzés:**: A lehetőségek maximális száma ajánlattípusra függően változik, és a Cloud Partner Portal jelzi. |
-| Kategóriák | Válassza ki a kategóriát, amely a leginkább az előfizetési csomag keretében igazítása:<br>Óvatosan, választható a kategóriák, mert az ügyfelek ezek segítségével keresse meg a megfelelő alkalmazásokat. Győződjön meg arról, hogyan az ajánlat támogatja a kategóriára vonatkozó igények ajánlat leírása hívásához.<br><br> **Megjegyzés:**: A lehetőségek maximális száma ajánlattípusra függően változik, és a Cloud Partner Portal jelzi. |
-| Az alkalmazás-mel együttműködő termékek (3&nbsp;maximális): csak az AppSource alkalmazások | További termékek és technológiák, amelyek a megoldás használ, vagy kiterjeszti a listában:<br>Például az Azure IoT Hub vagy az Azure Machine Learning. |
+| Iparág: AppSource alkalmazások, és csak a tanácsadási szolgáltatások | Válassza ki a iparágakban, az ajánlat címek iparág-specifikus követelmények:<br>Hívja meg az ajánlat leírása az iparág-specifikus képességek.<br><br>**Megjegyzés**: A lehetőségek maximális száma ajánlattípusra függően változik, és a Cloud Partner Portal jelzi. |
+| Kategóriák | Válassza ki a kategóriát, amely a leginkább az előfizetési csomag keretében igazítása:<br>Óvatosan, választható a kategóriák, mert az ügyfelek ezek segítségével keresse meg a megfelelő alkalmazásokat. Győződjön meg arról, hogyan az ajánlat támogatja a kategóriára vonatkozó igények ajánlat leírása hívásához.<br><br> **Megjegyzés**: A lehetőségek maximális száma ajánlattípusra függően változik, és a Cloud Partner Portal jelzi. |
+| Az alkalmazás-mel együttműködő termékek (3&nbsp;maximális): Csak az AppSource alkalmazások | További termékek és technológiák, amelyek a megoldás használ, vagy kiterjeszti a listában:<br>Például az Azure IoT Hub vagy az Azure Machine Learning. |
 | Keresés kulcsszavak (3&nbsp;max) | A keresési kulcsszavak, amelyek segítségével az üzleti felhasználók kereséséhez az Azure Marketplace és AppSource-on vagy keresőmotor segítségével keresse meg a ajánlatát használja:<br>Az ajánlatban; az első három keresési kulcsszavakat azonosítása Építse be a keresési kulcsszavakat a összefoglaló ajánlat és a leírás; és a kulcsszavak listája. |
 
 ### <a name="storefront-marketing-details"></a>Storefront marketing részletei
@@ -147,7 +147,7 @@ Az ingyenes részeként biztosított Azure Marketplace-en jelvény [piaci megjel
 
 ### <a name="link-to-your-app-listing-page-in-the-marketplace-from-your-website"></a>Az alkalmazás ajánlatuk információs oldalán a Marketplace-en összekapcsolása a webhelyről
 Az appsource-on vagy az Azure Marketplace-en jelvény a webhelyen való kapcsolódáskor a lista a Marketplace-en, támogatja az erős elemzési és jelentéskészítési funkciót többek között az alábbi lekérdezési paramétereket az URL-cím végén található:
-* **src**: a forrás, amelyről az adatforgalmat az appsource-ban (például webhelyre, LinkedIn, vagy a Facebook) tartalmazza.
+* **src**: A forrás, amelyről az adatforgalmat az appsource-ban (például webhelyre, LinkedIn, vagy a Facebook) tartalmaznak.
 * **mktcmpid**: A marketing Kampányazonosító, legfeljebb 16 karakter betű tetszőleges kombinációját tartalmazó, számokat, aláhúzásjeleket tartalmazhat, és a kötőjel (például *blogpost_12*).
 
 Az alábbi minta URL is az előző lekérdezési paramétereket tartalmazza: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`

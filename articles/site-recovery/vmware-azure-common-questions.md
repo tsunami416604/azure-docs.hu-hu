@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 920ae8ff09cb8e936a1ba70b2c862bd9bc076046
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e229fcc2c9eb6b8e1b49293dfd741a2f96f62871
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974692"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077385"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -108,6 +108,12 @@ Igen, adhat hozzá új virtuális gépek egy meglévő replikációs csoporthoz.
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Módosíthatja a hozzáadásával vagy a lemezek átméretezése replikáló virtuális gépek?
 
 A VMware – Azure replikálás módosíthatja a lemez méretét. Ha azt szeretné, adjon hozzá új lemezeket kell a lemezt adja hozzá, és engedélyezheti a virtuális gép védelmét.
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Át tudom telepíteni a helyszíni gépeket az új Vcenter folyamatban lévő replikáció befolyásolása nélkül?
+Nem, Vcenter vagy a migrálás folyamatban lévő replikáció hatással van. A vcenter-kiszolgáló az automatikus rendszer-Helyreállítás beállítása és a gépek replikációjának engedélyezéséhez kell.
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Replikálhatok gyorsítótár vagy a céloldali tárfiókot, amely egy virtuális hálózathoz (az Azure storage-tűzfalak) konfigurálva van?
+Nem, az Azure Site Recovery nem támogatja a replikációt a Storage a virtuális hálózaton.
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -225,9 +231,10 @@ Az Azure-t hibatűrőnek terveztük. A Site Recovery a feladatátvétel egy más
 Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az eredeti kapcsolatot nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Miért kell egy VPN- vagy ExpressRoute visszavételhez?
-
 Ha nem sikerül az Azure-ból, Azure származó adatokat másolja vissza a helyszíni virtuális gép, és privát hozzáférésre szükség.
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>Átméretezhetek az Azure virtuális Géphez feladatátvétel után?
+A cél virtuális gép mérete nem, a feladatátvétel után nem módosítható.
 
 
 ## <a name="automation-and-scripting"></a>Automatizálás és parancsfájl-kezelési
