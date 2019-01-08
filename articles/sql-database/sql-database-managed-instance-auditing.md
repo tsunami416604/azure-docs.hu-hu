@@ -9,28 +9,29 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: b295f7a2a454e3987e8639814f785b7457dd452b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973094"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063877"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
 [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:
+
 - Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
 - Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/).
 
-
-## <a name="set-up-auditing-for-your-server"></a>A kiszolgáló naplózás beállítása
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>A kiszolgáló, az Azure Storage-naplózás beállítása 
 
 Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurálása.
+
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Az alábbi lépéseket, hozzon létre egy Azure Storage **tároló** naplók tárolására.
 
@@ -124,15 +125,69 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
     GO
     ```
 
-## <a name="analyze-audit-logs"></a>Naplók elemzése
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Állítsa be a naplózást a kiszolgáló Event Hubs és a Log Analytics számára
+
+A felügyelt példány auditnaplók még Hubs és a Log Analytics az Azure Monitor használatával lehet küldeni. Ez a szakasz ismerteti, hogyan konfigurálhatja ezt:
+
+1. Navigálás a [az Azure Portal](https://portal.azure.com/) az SQL felügyelt példánya.
+
+2. Kattintson a **diagnosztikai beállítások**.
+
+3. Kattintson a **diagnosztika bekapcsolása**. Ha diagnosztikai már engedélyezve van a *+ diagnosztikai beállítás hozzáadása* jelennek meg helyette.
+
+4. Válassza ki **SQLSecurityAuditEvents** naplók listájában.
+
+5. Válassza ki a célhelyet a naplózási események – Event Hub, a Log Analytics vagy mindkettőt. Minden egyes célhoz konfigurálja a szükséges paramétereket (például: Log Analytics-munkaterület).
+
+6. Kattintson a **Save** (Mentés) gombra.
+
+  ![Navigációs ablaktábla][9]
+
+7. Csatlakozhat a felügyelt példány használatával **SQL Server Management Studio (SSMS)** vagy más támogatott ügyfél.
+
+8. Hajtsa végre a következő T-SQL utasítást a kiszolgáló naplózási létrehozásához:
+
+    ```SQL
+    CREATE SERVER AUDIT [<your_audit_name>] TO EXTERNAL_MONITOR;
+    GO
+    ```
+
+9. Hozzon létre egy kiszolgáló naplóspecifikáció vagy a specifikációjába, mint az SQL Server:
+
+   - [Hozzon létre a kiszolgáló naplózási specifikáció T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Hozzon létre az adatbázis naplózási specifikáció T-SQL-útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+
+10. A 7. lépésben létrehozott kiszolgálói naplózás engedélyezése:
+ 
+    ```SQL
+    ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
+    GO
+    ```
+
+## <a name="consume-audit-logs"></a>A naplófájlok felhasználása
+
+### <a name="consume-logs-stored-in-azure-storage"></a>Az Azure Storage szolgáltatásban tárolt naplókért felhasználása
+
 Többféleképpen naplófájlokat blob megtekintéséhez használhatja.
 
 - A rendszer függvénnyel `sys.fn_get_audit_file` (T-SQL) a naplózási adatokat vissza a táblázatos formátumban. Ez a funkció használatáról további információkért lásd: a [sys.fn_get_audit_file dokumentáció](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
+- Auditnaplók áttekintheti például az Azure Storage Explorer eszközével. Az Azure storage-ban naplói sqldbauditlogs nevű tárolóban lévő blob fájlok kerülnek mentésre. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a Blob auditálási napló fájlformátum referenciája.
+
 - Auditálási napló felhasználási módszert teljes listájáért tekintse meg a [első lépései az SQL database naplózási szolgáltatásával](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing).
 
 > [!IMPORTANT]
-> Módszer megtekintése az Azure Portalon ("Naplórekordok" ablaktábla) a naplózási rekordoknak a felügyelt példány jelenleg nem érhetők el.
+> Megtekintése az Azure Portalon ("Naplórekordok" ablaktábla) a naplózási rekordoknak a felügyelt példány jelenleg nem érhetők el.
+
+### <a name="consume-logs-stored-in-event-hub"></a>Event Hub tárolt naplók használata
+
+Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért tekintse meg az Azure Event Hubs – dokumentáció.
+
+### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Ugyanúgy használják, és tárolja a Log Analytics-naplók elemzése
+
+A Log Analytics naplók írt, ha azok elérhetők a Log Analytics-munkaterületet, ahol a Speciális keresés futtatásához a naplózási adatok. Kiindulási pontként, keresse meg a Log Analytics és a *általános* szakaszban kattintson *naplók* írjon be egy egyszerű lekérdezéssel, például: `search "SQLSecurityAuditEvents"` naplózza a naplózási megtekintéséhez.  
+
+A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat a Log Analytics keresési nyelv és a parancsok, lásd: [Log Analytics keresési referenciáját bemutató](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
 ## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Naplózás a felügyelt példány, az Azure SQL Database és az SQL Server közötti különbségek
 
@@ -145,22 +200,17 @@ A felügyelt példány, az Azure SQL Database és az SQL Server helyszíni SQL-n
 Az Azure blob storage tárolók XEvent naplózási a felügyelt példányt támogat. Fájl- és windows-naplók **nem támogatott**.
 
 A kulcs közötti különbségek a `CREATE AUDIT` szintaxist a naplózás az Azure blob storage-vannak:
+
 - Egy új szintaxis `TO URL` van megadva, és lehetővé teszi a URL-címét az Azure blob Storage-tárolóba, a `.xel` fájlok kerülnek.
+- Egy új szintaxis `TO EXTERNAL MONITOR` ahhoz, hogy még a hubot és a Log Analytics célok biztosított.
 - A szintaxist `TO FILE` van **nem támogatott** , mert a felügyelt példány nem érhető el Windows-fájlmegosztásokon.
 - Leállítási lehetőség **nem támogatott**.
 - `queue_delay` a 0 van **nem támogatott**.
-
 
 ## <a name="next-steps"></a>További lépések
 
 - Auditálási napló felhasználási módszert teljes listájáért tekintse meg a [első lépései az SQL database naplózási szolgáltatásával](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 - Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/).
-
-
-<!--Anchors-->
-[Set up auditing for your server]: #subheading-1
-[Analyze audit logs]: #subheading-2
-[Auditing differences between Managed Instance, Azure SQL DB and SQL Server]: #subheading-3
 
 <!--Image references-->
 [1]: ./media/sql-managed-instance-auditing/1_blobs_widget.png
@@ -171,3 +221,4 @@ A kulcs közötti különbségek a `CREATE AUDIT` szintaxist a naplózás az Azu
 [6]: ./media/sql-managed-instance-auditing/6_storage_settings_menu.png
 [7]: ./media/sql-managed-instance-auditing/7_sas_configure.png
 [8]: ./media/sql-managed-instance-auditing/8_sas_copy.png
+[9]: ./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png

@@ -10,16 +10,15 @@ ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296550"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074053"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -27,7 +26,7 @@ Az Azure Key Vault támogatja a JSON formátumú kérelmeket és válaszokat. Az
 
 Ez a témakör ismerteti az Azure Key Vault szolgáltatás-adatait. Azure REST-felületeihez, beleértve a hitelesítés/engedélyezés és a egy hozzáférési jogkivonat beszerzése az általános információkhoz lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/azure).
 
-## <a name="request-url"></a>Lekérdezés URL-címe  
+## <a name="request-url"></a>Kérés URL-címe  
  Kulcskezelési műveletek használata a HTTP DELETE, GET, PATCH, PUT és HTTP POST és a titkosítási műveletek ellen a meglévő objektumok használata a HTTP POST. Ügyfelek, amelyek nem támogatják a HTTP-műveleteket is használhatnak HTTP POST használatával adja meg a kívánt műveletet; az X-HTTP-kérelem fejléce a szervezet normális esetben nem igénylő kérelmek tartalmaznia kell egy üres törzs HTTP POST, például amikor a POST használatát törlése helyett használatakor.  
 
  Dolgozunk az Azure Key vaultban objektumok, a következők példa URL-címek:  
@@ -65,13 +64,13 @@ Ez a témakör ismerteti az Azure Key Vault szolgáltatás-adatait. Azure REST-f
 ## <a name="error-responses"></a>Hibaválaszok  
  Hibakezelés HTTP-állapotkódok fogja használni. Tipikus eredmények a következők:  
 
--   2xx – sikeres: normál művelethez használt. A válasz törzse fogja tartalmazni a várt eredmény  
+-   2xx – sikeres: Használja a normál működést. A válasz törzse fogja tartalmazni a várt eredmény  
 
--   3xx – átirányítási: feltételes GET teljesítéséhez visszaadott a 304 "nem módosította". Egyéb 3xx kódok jelezheti a DNS-és elérési útja a jövőben használhatók.  
+-   3xx – átirányítási: A 304 "Nem módosította" Előfordulhat, hogy vissza kell adni egy feltételes GET teljesítéséhez. Egyéb 3xx kódok jelezheti a DNS-és elérési útja a jövőben használhatók.  
 
--   4xx – ügyfél-hiba: hibás kérésekből, a hiányzó kulcsok, a szintaktikai hibákat, a érvénytelen paramétereket, a hitelesítési hibák használják, stb. A válasz törzse fogja tartalmazni a hibával kapcsolatos részletes magyarázatát.  
+-   4xx – ügyfél-hiba: Hibás kérésekből, a hiányzó kulcsok, a szintaktikai hibákat, a érvénytelen paramétereket, a hitelesítési hibák használják, stb. A válasz törzse fogja tartalmazni a hibával kapcsolatos részletes magyarázatát.  
 
--   5XX – kiszolgálóhiba: belső kiszolgálóhibák használt. A válasz törzse összesített hibaadatokat fog tartalmazni.  
+-   5XX – kiszolgálóhiba: Használja a belső hibákat. A válasz törzse összesített hibaadatokat fog tartalmazni.  
 
  A rendszer tervezték proxy vagy tűzfal mögé. Ezért egy ügyfél más hibakódok kaphat.  
 
@@ -115,9 +114,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  A WWW-Authenticate fejléc a paraméterek a következők:  
 
--   engedélyezés: A cím az OAuth2 engedélyezési szolgáltatás, amely a kérelem hozzáférési jogkivonat beszerzésére is használható.  
+-   Hitelesítés: A cím az OAuth2 engedélyezési szolgáltatás, amely a kérelem hozzáférési jogkivonat beszerzésére is használható.  
 
--   erőforrás: az engedélyezési kérésben használandó erőforrás nevére.  
+-   erőforrás: Az engedélyezési kérésben használata az erőforrás neve.  
 
 ## <a name="see-also"></a>Lásd még:  
  [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076355"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074376"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -483,12 +483,12 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű szolgáltatást használja. Kövesse az alábbi lépéseket egy szolgáltatásnév létrehozásához.
 
-1. Nyissa meg a következőt: <https://portal.azure.com>
+1. Lépjen a < https\://portal.azure.com >
 1. Nyissa meg az Azure Active Directory panel  
    Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlőazonosító**.
 1. Kattintson az alkalmazásregisztrációk
 1. Kattintson az Add (Hozzáadás) parancsra
-1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) , és kattintson a Létrehozás gombra
+1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http\://localhost), és kattintson a Létrehozás gombra
 1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
@@ -525,7 +525,7 @@ A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a
 
 Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", amely az előző fejezetben a szolgáltatásnév sikeresen létrehozva. A tulajdonosi szerepkör ne használjon többé!
 
-1. Nyissa meg a következőt: https://portal.azure.com
+1. Lépjen a https\://portal.azure.com
 1. Nyissa meg az összes erőforrás panelen
 1. Válassza ki a virtuális gépet, az első fürtcsomópontra
 1. Kattintson a hozzáférés-vezérlés (IAM)

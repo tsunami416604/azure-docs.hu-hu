@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: be20f01511990ef8de6ce6e0e13ddfa99b004dcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076610"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076217"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Az ExpressRoute közvetlen (előzetes verzió) konfigurálása
 
@@ -69,7 +69,7 @@ Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft tár
 3. Határozza meg, hogy rendelkezik-e egy olyan helyre, fent felsorolt rendelkezésre álló sávszélesség
 
   ```powershell
-  Get-AzureRMExpressRoutePortsLocations -Name "Equinix-San-Jose-SV1"
+  Get-AzureRmExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
   ```
 
   **Példa a kimenetre**
@@ -229,7 +229,7 @@ Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft tár
 
 Alapértelmezés szerint az előfizetés, amelyben az ExpressRoute közvetlen erőforrás van a 10 Kapcsolatcsoportok hozhat létre. Ez a támogatás által növelhető. Ön felelős nyomon követheti kiépített és a felhasznált sávszélesség. Kiosztott sávszélességre sávszélesség az ExpressRoute közvetlen erőforrás minden kapcsolatcsoportra összegét, és a mögöttes fizikai adapterek fizikai használatát a magas kihasználtságú sávszélesség.
 
-Nincsenek további kapcsolatcsoport sávszélessége, amely az ExpressRoute közvetlen csak a fent vázolt forgatókönyvek támogatásához, amellyel. Ezek a: 40Gbps és 100Gbps.
+Nincsenek további kapcsolatcsoport sávszélessége, amely az ExpressRoute közvetlen csak a fent vázolt forgatókönyvek támogatásához, amellyel. Ezek a következők: 40Gbps és 100Gbps.
 
 Standard vagy prémium szintű kapcsolatok hozhatók létre. Standard Kapcsolatcsoportok megtalálhatók a költség, míg a prémium szintű Kapcsolatcsoportok költsége a kiválasztott sávszélesség alapján. Kapcsolatcsoportok csak hozhatók létre, a forgalmi díjas, korlátlan, nem támogatott az ExpressRoute közvetlen.
 
@@ -239,7 +239,7 @@ Kapcsolatcsoport létrehozása az ExpressRoute közvetlen erőforráson.
   New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Más sávszélességeket tartalmazza: 5.0, 10.0 és 40.0
+  Más sávszélességeket a következők: 5.0-s, 10.0 és 40.0
 
   **Példa a kimenetre:**
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Képosztályozási projekt létrehozása a C#-hoz készült Custom Vision SDK-val'
+title: 'Gyors útmutató: Kép besorolási projekt létrehozása a Custom Vision készült SDK-valC#'
 titlesuffix: Azure Cognitive Services
 description: Projekt létrehozása, címkék hozzáadása, képek feltöltése, projekt betanítása és előrejelzés létrehozása a .NET SDK és a C# együttes használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: anroth
-ms.openlocfilehash: 6f92201e1c7222bed5d59066798d7eb6844ecd76
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: aaffd5e47c8465d44c2dbcdde3f40cf6e6995e55
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279432"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079085"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rövid útmutató: Képosztályozási projekt létrehozása a Custom Vision .NET SDK-val
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Gyors útmutató: A Custom Vision .NET SDK-val kép besorolási projekt létrehozása
 
 Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a C# együttes használatával egy képosztályozási modell létrehozása céljából. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Használja sablonként a példát a saját .NET-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
 
@@ -42,6 +42,10 @@ Ez a Visual Studio-projekt létrehoz egy új, __My New Project__ nevű Custom Vi
 Nyissa meg a _Program.cs_ fájlt, és tekintse át a kódot. Szúrja be az előfizetési kulcsokat a megfelelő definíciókba a **Main** metódusban.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=21-30)]
+
+A végpont paramétert kell mutatnia a régió, ahol a Custom Vision erőforrásokat tartalmazó Azure-erőforráscsoportot létrehozták. Ebben a példában azt, hogy az USA déli középső régiójában pedig használja:
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=14-14)]
 
 Az alábbi kódsorok a projekt elsődleges funkcióját hajtják végre.
 

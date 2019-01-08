@@ -1,35 +1,35 @@
 ---
-title: Egyedi jellemzőinek oldala az Azure-blobok |} A Microsoft Docs
-description: Oldala az Azure-blobok és azok részesülnek – beleértve a használati esetek-mintaszkriptek áttekintése.
+title: Az Azure-lapblobok áttekintése |} A Microsoft Docs
+description: Oldala az Azure-blobok és azok előnyeit, beleértve a mintaszkriptek az alkalmazási helyzetek áttekintése.
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022688"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063931"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Egyedi jellemzőinek oldala az Azure-blobok
+# <a name="overview-of-azure-page-blobs"></a>Az Azure-lapblobok áttekintése
 
-Az Azure Storage a blob storage háromféle biztosít: Blokkblobokat, hozzáfűző Blobok és lapblobok. A blokkblobok blokkokból állnak, és ideális megoldást szöveg vagy bináris fájlok tárolásához, valamint hatékonyan nagy fájlok feltöltése. Hozzáfűző blobokat is épülnek fel blokkok alkotják, de vannak optimalizálva fűzze hozzá a művelet, így ideális megoldás a naplózási forgatókönyvekben. Lapblobok épülnek fel az 512 bájtos oldalak és 8 TB a teljes méret és a gyakori véletlenszerű olvasási és írási műveletek tervezve. A lapblobok olyan Azure IaaS-lemezek alapját. Ez a cikk a funkciók és előnyök, a lapblobok elmagyarázza összpontosít.
+Az Azure Storage a blob storage háromféle kínál: Blokkblobokat, hozzáfűző Blobok és lapblobok. A blokkblobok blokkokból állnak, és ideális megoldást szöveg vagy bináris fájlok tárolásához, valamint hatékonyan nagy fájlok feltöltése. Hozzáfűző blobokat is épülnek fel blokkok alkotják, de vannak optimalizálva fűzze hozzá a művelet, így ideális megoldás a naplózási forgatókönyvekben. Lapblobok épülnek fel az 512 bájtos oldalak és 8 TB a teljes méret és a gyakori véletlenszerű olvasási és írási műveletek tervezve. A lapblobok olyan Azure IaaS-lemezek alapját. Ez a cikk a funkciók és előnyök, a lapblobok elmagyarázza összpontosít.
 
 A lapblobok 512 bájtos lapok, amely lehetővé teszi, hogy olvasási/írási bájt tetszőleges címtartományok gyűjteményei. Ezért lapblobok ideális megoldást jelentenek a virtuális gépek és adatbázisok index és a ritka adatstruktúrák például az operációs rendszer és az adatlemezek tárolása. Például Azure SQL DB használja a lapblobok az alapul szolgáló állandó tárolóként az adatbázisok számára. Ezenkívül lapblobok is gyakran használják tartományalapú frissítésekkel rendelkező fájlokat.  
 
-Azure lapblobok fő funkciói a következők: a REST-felület, a tartósságra az alapul szolgáló tárolóról, és a zökkenőmentes áttelepítési képességek az Azure-bA. Ezek a szolgáltatások további részleteket a következő szakasz tárgyalja. Emellett oldala az Azure-blobok jelenleg támogatott a két tárolási típust kínál: Premium Storage- és Standard tárterület. A Premium Storage kifejezetten konzisztens nagy teljesítményű és kis késésű, így a prémium szintű lapblobok ideális a nagy teljesítményű adatokat tároló adatbázis igénylő számítási feladatokhoz készült.  Standard szintű Storage jelenleg költséghatékonyabb késleltetést toleráló számítási feladatok futtatásához.
+Azure lapblobok fő funkciói a következők: a REST-felület, a tartósságra az alapul szolgáló tárolóról, és a zökkenőmentes áttelepítési képességek az Azure-bA. Ezek a szolgáltatások további részleteket a következő szakasz tárgyalja. Emellett oldala az Azure-blobok jelenleg a következőkön támogatottak két tárolási típust kínál: A Premium Storage- és Standard tárterület. A Premium Storage kifejezetten konzisztens nagy teljesítményű és kis késésű, így a prémium szintű lapblobok ideális a nagy teljesítményű adatokat tároló adatbázis igénylő számítási feladatokhoz készült.  Standard szintű Storage jelenleg költséghatékonyabb késleltetést toleráló számítási feladatok futtatásához.
 
 ## <a name="sample-use-cases"></a>Példa használati esetek
 
 Vizsgáljuk meg néhány használati esetek kezdve az Azure IaaS-lemezek lapblobok esetében. Azure lapblobok az Azure IaaS virtuális lemezek platform gerincét. Az Azure-OS és az adatlemezeket is az adatokat, az Azure Storage-platformon tartósan tárolja és kézbesítését a virtuális gépekhez, a maximális teljesítmény virtuális lemezek vannak megvalósítva. Az Azure Disks megmaradnak a Hyper-V [VHD formátumú](https://technet.microsoft.com/library/dd979539.aspx) tárolt, és a egy [lapblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) az Azure Storage-ban. Virtuális lemezek az Azure IaaS virtuális gépek használatán, a lapblobok PaaS és DBaaS forgatókönyvek, például az Azure SQL Database szolgáltatást, amely a jelenleg használt lapblobok az adatbázis a gyors, véletlenszerű olvasási és írási műveletek engedélyezése az SQL-adatok tárolására szolgáló is engedélyezheti. Egy másik példa lenne, ha egy PaaS-szolgáltatás megosztott media Access for videó szerkesztési alkalmazások által biztosított együttműködési környezettel rendelkezik, a lapblobok véletlenszerű helyeken és az adathordozó gyors hozzáférés engedélyezése. Azt is lehetővé teszi, hogy gyors és hatékony szerkesztését, és a több felhasználó által ugyanazon adathordozó egyesítését. 
 
 Belső Microsoft-szolgáltatások, az Azure Site Recovery, Azure biztonsági mentés, valamint számos külső fejlesztők valósította olyan piacvezető innovációkat lapblob a REST-felület használatával. Az alábbiakban néhány, az Azure-ban megvalósított egyedi forgatókönyvekről: 
-* Alkalmazás által vezérelt növekményes pillanatkép-kezelő: alkalmazások kihasználhatják a blobpillanatképeket oldal és a REST API-k anélkül költséges másolása az adatok az alkalmazás ellenőrzőpontokat mentéséhez. Az Azure Storage támogatja a helyi pillanatképek a lapblobokhoz, amelyek nem igényelnek, a teljes blob másolása. Ezek nyilvános pillanatkép API-k is engedélyezheti elérése és -pillanatképek közötti eltérések szinte azonnali másolását.
-* Élő áttelepítés alkalmazás és a helyszíni adatokat a felhőbe: a helyszíni adatok másolása és a REST API-k használata közben a helyszíni virtuális gép továbbra is fut a közvetlenül egy oldala az Azure-blobba való írásához. Ha a cél rendelkezik szerepelnek, is gyorsan használatával az adatokat az Azure virtuális géphez feladatátvétel. Ezzel a módszerrel a virtuális gépeket telepíthet át, és virtuális lemezek helyszíni tárolóból felhőbe minimális állásidővel, mivel az adatok migrálása a háttérben történik, miközben továbbra is használhatja a virtuális gép és a feladatátvételhez szükséges állásidő (percben) rövid lesz.
+* Alkalmazás által vezérelt növekményes pillanatkép-kezelés: Alkalmazások lap tárolóblob-pillanatképek és a REST API-k használhatnak anélkül költséges másolása az adatok az alkalmazás ellenőrzőpontokat mentéséhez. Az Azure Storage támogatja a helyi pillanatképek a lapblobokhoz, amelyek nem igényelnek, a teljes blob másolása. Ezek nyilvános pillanatkép API-k is engedélyezheti elérése és -pillanatképek közötti eltérések szinte azonnali másolását.
+* Élő áttelepítés alkalmazás és a helyszíni adatokat a felhőbe: A helyszíni adatok másolása, és közvetlenül egy oldala az Azure-blobba való írása közben a helyszíni virtuális gép továbbra is fut a REST API-k használatával. Ha a cél rendelkezik szerepelnek, is gyorsan használatával az adatokat az Azure virtuális géphez feladatátvétel. Ezzel a módszerrel a virtuális gépeket telepíthet át, és virtuális lemezek helyszíni tárolóból felhőbe minimális állásidővel, mivel az adatok migrálása a háttérben történik, miközben továbbra is használhatja a virtuális gép és a feladatátvételhez szükséges állásidő (percben) rövid lesz.
 * [SAS-alapú](../common/storage-dotnet-shared-access-signature-part-1.md) megosztott hozzáférés, amely lehetővé teszi a több-olvasók és a egy-író egyidejűség-vezérlés támogatása.
 
 ## <a name="page-blob-features"></a>Lapblobok funkciói

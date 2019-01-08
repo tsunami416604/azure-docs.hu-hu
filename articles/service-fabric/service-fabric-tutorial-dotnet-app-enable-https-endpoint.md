@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4333a234efe96f32541254819c9c5f21bb031757
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115076"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077250"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása egy ASP.NET Core Web API kezelőfelületi szolgáltatás a Kestrel használatával
 
 Ez az oktatóanyag egy sorozat harmadik része.  Az oktatóanyag során el fogja sajátítani a HTTPS engedélyezését a Service Fabricen futó ASP.NET Core-szolgáltatásban. Ha ezzel végzett, rendelkezni fog egy HTTPS-kompatibilis ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely a 443-as porton figyel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást a [NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md) szakaszban, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz.
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz
-> * [CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [A CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -54,10 +54,10 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Tanúsítvány beszerzése vagy egy önaláírt fejlesztési tanúsítvány létrehozása
 
-Éles alkalmazásokhoz használjon [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt. Fejlesztési és tesztelési célok érdekében létrehozhat és használhat önaláírt tanúsítványt. A Service Fabric SDK biztosítja a *CertSetup.ps1* szkriptet, amely létrehozza az önaláírt tanúsítványt, és importálja azt a `Cert:\LocalMachine\My` tanúsítványtárolóba. Rendszergazdaként nyisson meg egy parancssort, és futtassa a következő parancsot egy CN=localhost tárgyú tanúsítvány létrehozásához:
+Éles alkalmazásokhoz használjon [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt. Fejlesztési és tesztelési célok érdekében létrehozhat és használhat önaláírt tanúsítványt. A Service Fabric SDK biztosítja a *CertSetup.ps1* szkriptet, amely létrehozza az önaláírt tanúsítványt, és importálja azt a `Cert:\LocalMachine\My` tanúsítványtárolóba. Nyisson meg egy parancssort rendszergazdaként, és a következő paranccsal hozzon létre egy tanúsítványt a tulajdonos "CN = mytestcert":
 
 ```powershell
-PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
+PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
 ```
 
 Ha már rendelkezik a tanúsítvány PFX kiterjesztésű fájljával, a következő lekérdezés futtatásával importálhatja a tanúsítványt a `Cert:\LocalMachine\My` tanúsítványtárolóba:
@@ -158,7 +158,7 @@ serviceContext =>
         }))
 ```
 
-Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  Cserélje le a &lt;saját_CN_értéke&gt; elemet localhost-ra, amennyiben az előző PowerShell-paranccsal önaláírt tanúsítványt hozott létre, vagy használja a tanúsítványa rövid nevét.
+Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  Cserélje le "&lt;saját_cn_értéke&gt;" a "mytestcert", ha az előző PowerShell-paranccsal önaláírt tanúsítványt létrehozni, vagy a tanúsítványt használja.
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -238,7 +238,7 @@ Módosítsa a *Setup.bat* fájltulajdonságokat a **Copy to Output Directory** (
 A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** pontra, és válassza az **Add**->**New Item** (Hozzáadás, Új elem) pontot, majd adjon hozzá egy új fájlt SetCertAccess.ps1 névvel.  Szerkessze a *SetCertAccess.ps1* fájlt, és adja hozzá az alábbi szkriptet:
 
 ```powershell
-$subject="localhost"
+$subject="mytestcert"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
@@ -349,7 +349,7 @@ Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatá
 
 Mielőtt üzembe helyezné az alkalmazást az Azure-ban, telepítse a tanúsítványt a távoli fürtcsomópontok `Cert:\LocalMachine\My` tárolójában.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
-Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *localhost* tanúsítványra, és válassza a **Minden feladat**>**Exportálás** elemet.
+Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza **feladatok**>**exportálása**.
 
 ![Tanúsítvány exportálása][image4]
 
@@ -444,7 +444,7 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [A CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 [image1]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/SetupBatProperties.png
 [image2]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppLocal.png

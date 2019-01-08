@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 73e1fac5ba9fbb981c92ff8d32064f7d34729ef7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 06a9cf124708984444bc2bc19f2529a3c0f75283
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812288"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074359"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insights a HockeyApp-adatok feltárása
 
 > [!NOTE]
-> Új alkalmazások hockeyapp szolgáltatással már nem érhető el. HockeyApp meglévő telepítések továbbra is működni fog. A Visual Studio App Center mostantól a Microsoft ajánlott szolgáltatása új mobile Apps-alkalmazások figyelésére. [Ismerje meg, hogyan állítható be az alkalmazásokat az App Center és az Application Insights](../../application-insights/app-insights-mobile-center-quickstart.md).
+> Új alkalmazások hockeyapp szolgáltatással már nem érhető el. HockeyApp meglévő telepítések továbbra is működni fog. A Visual Studio App Center mostantól a Microsoft ajánlott szolgáltatása új mobile Apps-alkalmazások figyelésére. [Ismerje meg, hogyan állítható be az alkalmazásokat az App Center és az Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 [A HockeyApp](https://azure.microsoft.com/services/hockeyapp/) egy szolgáltatás élő asztali és mobil alkalmazások figyelésére. A HockeyApp-küldhet egyéni és nyomkövetési telemetriai használat monitorozása és diagnosztizálása (mellett összeomlási adatok beolvasása) segítik. Ez az adatfolyam telemetria kérdezhetők a nagy teljesítményű [Analytics](../../azure-monitor/app/analytics.md) funkcióját [Azure Application Insights](../../application-insights/app-insights-overview.md). Emellett akkor is [exportálja az egyéni és nyomkövetési telemetriai](export-telemetry.md). Ahhoz, hogy ezeket a funkciókat, beállíthatja, hogy az Application Insights a HockeyApp egyéni adatokat közvetítenek hidat.
 
@@ -33,7 +33,7 @@ A HockeyApp, nyissa meg a fiók beállításait, [API-jogkivonatai](https://rink
 
 ![A HockeyApp API token beszerzése](./media/hockeyapp-bridge-app/01.png)
 
-A Microsoft Azure portal megnyitásához és [hozzon létre egy Application Insights-erőforrást](../../application-insights/app-insights-create-new-resource.md). Az alkalmazástípus állítsa "HockeyApp bridge alkalmazás":
+A Microsoft Azure portal megnyitásához és [hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ). Az alkalmazástípus állítsa "HockeyApp bridge alkalmazás":
 
 ![Új Application Insights-erőforrás](./media/hockeyapp-bridge-app/02.png)
 

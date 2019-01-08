@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 710b584777abc312388c3857ced06ce196416a31
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 170ba8e85318ab3774aef95b0a62e452bc2c5e24
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042937"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077861"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -217,7 +217,7 @@ Annak érdekében, hogy átfogó képet kaphasson a rendszerről, a főbb figyel
 
 Ha a rendszer egyéb Azure-szolgáltatásokat (például Stream Analytics) is tartalmaz, ezeknek a figyelési diagramjait is beillesztheti. 
 
-Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../../application-insights/app-insights-mobile-center-quickstart.md). [Analytics](../../azure-monitor/app/analytics.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
+Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../../azure-monitor/learn/mobile-center-quickstart.md). [Analytics](../../azure-monitor/app/analytics.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
 
 ## <a name="example"></a>Példa
 [Ez a példa](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.

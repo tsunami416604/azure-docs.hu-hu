@@ -3,7 +3,7 @@ title: Virtuálisgép-rendszerképek létrehozása az Azure Marketplace-en |} A 
 description: A beszerzési mások számára az Azure piactéren virtuálisgép-lemezkép létrehozásáról részletes útmutatást.
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0dc33c669a73dd92926eef6a9c4a476160ce60a4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6737e16efa93370b5b5d2b46026fce3bbc22d38f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686364"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075158"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure Marketplace-en
 Ez a cikk **2. lépés**, a virtuális merevlemezek (VHD), amely központilag telepíti az Azure Marketplace-en való előkészítésének módját mutatja. A virtuális merevlemezek az alapítvány termékváltozat. A folyamat eltér attól függően, hogy egy Linux-alapú vagy Windows-alapú Termékváltozatot. Ez a cikk mindkét forgatókönyvvel foglalkozunk. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -30,14 +31,14 @@ Ebben a szakaszban megismerheti az ajánlatok és a kapcsolódó Termékváltoza
 Az ajánlat az összes termékváltozatának „szülője”. Több ajánlattal is rendelkezhet. Ajánlatait igényei szerint strukturálhatja. Az ajánlat átmeneti üzembe helyezése annak összes termékváltozatával együtt történik. Termékváltozat-azonosítókat használ, alaposan gondolja át, mert azok meg fognak jelenni az URL-cím:
 
 * Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
-* Az Azure betekintő portálon: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
+* Az Azure Portalon: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 A Termékváltozat a Virtuálisgép-lemezkép kereskedelmi neve. Virtuálisgép-rendszerkép tartalmaz egy operációsrendszer-lemezt és nulla vagy több adatlemezeket. Lényegében a virtuális gép teljes tárprofiljáról van szó. Lemezenként egy virtuális merevlemez szükséges. Még az üres lemezekhez hozható létre egy virtuális Merevlemezt.
 
 A használt operációs rendszertől függetlenül csak a minimális számú adatlemez szükséges a termékváltozathoz. Ügyfelek nem távolítható el a lemezeket, amelyek egy lemezkép részei, a telepítéshez, de mindig hozzáadhat lemezeket során, vagy üzembe helyezés után ha szükségük van rá.
 
 > [!IMPORTANT]
-> **Az új lemezkép verzióban lemezek száma nem változik.** A kép adatlemezek újra kell konfigurálnia, ha egy új Termékváltozat meghatározása. Közzététele egy másik lemez számokkal új lemezkép verziója lesz rendelkezik a lehetséges használhatatlanná tévő új központi telepítési alapján az új lemezkép-verzió azokban az esetekben az ARM-sablonokkal és az egyéb forgatókönyvek megoldásokat automatikus skálázást, az automatikus központi telepítései.
+> *Az új lemezkép verzióban lemezek száma nem változik.* A kép adatlemezek újra kell konfigurálnia, ha egy új Termékváltozat meghatározása. Közzététele egy másik lemez számokkal új lemezkép verziója lesz rendelkezik a lehetséges használhatatlanná tévő új központi telepítési alapján az új lemezkép-verzió azokban az esetekben az ARM-sablonokkal és az egyéb forgatókönyvek megoldásokat automatikus skálázást, az automatikus központi telepítései.
 >
 >
 
@@ -59,7 +60,7 @@ Miután hozzáadott egy ajánlatot, és azonosíthatja a termékváltozatok szü
 3. Ha Windows-alapú termékváltozatokat használ, kövesse a javasolt hivatkozásokat a Windows Server jóváhagyott verzióinak beszerzéséhez.
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2. Hozzon létre egy Azure-kompatibilis virtuális Merevlemezt (Linux-alapú)
-Ebben a szakaszban egy Linux-alapú Virtuálisgép-rendszerképet hoz létre az Azure Marketplace-en az ajánlott eljárásait tárgyalja. Lépésenkénti útmutató, tekintse meg az alábbi dokumentációt: [Linux rendszerű virtuális gép egyéni rendszerképének létrehozása](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ebben a szakaszban egy Linux-alapú Virtuálisgép-rendszerképet hoz létre az Azure Marketplace-en az ajánlott eljárásait tárgyalja. Lépésenkénti útmutató tekintse meg az alábbi dokumentációt: [Linux rendszerű virtuális gép egyéni rendszerképének létrehozása](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3. Hozzon létre egy Azure-kompatibilis virtuális Merevlemezt (Windows-alapú)
 Ez a szakasz az Azure Marketplace-en Windows Serveren alapuló Termékváltozat létrehozásának lépéseit tárgyalja.
@@ -81,13 +82,13 @@ A hivatkozások a közzétételi portálon is megtalálhatók az SKU (Termékvá
 >
 
 ### <a name="32-create-your-windows-based-vm"></a>3.2-es verzióját a Windows-alapú virtuális gép létrehozása
-A Microsoft Azure Portalon a virtuális gép néhány egyszerű lépésben valamelyik jóváhagyott alaplemezkép alapján hozhat létre. Az alábbiakban látható a folyamat áttekintését:
+A Microsoft Azure Portalon a virtuális gép néhány egyszerű lépésben valamelyik jóváhagyott alaplemezkép alapján hozhat létre. Az alábbi lista áttekintést a folyamat:
 
 1. Az alaplemezkép lapján válassza **virtuális gép létrehozása** a rendszer az új [Microsoft Azure-portálon][link-azure-portal].
 
     ![rajz][img-acom-1]
 2. Jelentkezzen be a portálra a Microsoft-fiók és a használni kívánt Azure-előfizetéshez tartozó jelszóval.
-3. Kövesse az utasításokat a virtuális gép létrehozása a kiválasztott alaplemezkép használatával. Meg kell adnia a gazdagép neve (a számítógép nevét), a felhasználónevet (rendszergazdaként regisztrálva) és a jelszó a virtuális gép számára.
+3. Kövesse az utasításokat a virtuális gép létrehozása a kiválasztott alaplemezkép használatával. Adja meg a gazdagép neve (a számítógép nevét), a felhasználónevet (rendszergazdaként regisztrálva) és a jelszó a virtuális gép számára.
 
     ![rajz][img-portal-vm-create]
 4. Válassza ki a méretet a virtuális gép üzembe helyezéséhez:
@@ -110,7 +111,7 @@ A Microsoft Azure Portalon a virtuális gép néhány egyszerű lépésben valam
 
     a.    Ha azt tervezi, a VHD-t a helyszíni fejlesztés, a hely nem számít, mivel a rendszer feltölti a lemezképet az Azure-bA később.
 
-    b.    Amennyiben az Azure-ban kívánja fejleszteni a lemezképet, javasolt kezdettől fogva valamelyik amerikai Microsoft Azure-régiót használni. Ez felgyorsítja a VHD másolási folyamat, amely a Microsoft az Ön nevében hajt végre, a lemezkép minősítésre való elküldésekor.
+    b.    Amennyiben az Azure-ban kívánja fejleszteni a lemezképet, javasolt kezdettől fogva valamelyik amerikai Microsoft Azure-régiót használni. Ezzel a választással felgyorsítja a VHD másolási folyamat, amely a Microsoft az Ön nevében hajt végre, a lemezkép minősítésre való elküldésekor.
 
     ![rajz][img-portal-vm-location]
 7. Kattintson a **Create** (Létrehozás) gombra. A virtuális gép elindul, és üzembe helyezése. A sikeres üzembe helyezés percek kérdése, és ekkor megkezdheti a termékváltozatához tartozó lemezkép létrehozását.
@@ -152,7 +153,7 @@ RDP további információt az MSDN webhelyen megtalálható a cikk [csatlakozhat
 
 **Konfiguráljon egy virtuális Gépet, és saját Termékváltozat létrehozása**
 
-Az operációs rendszer VHD letöltése után használja a Hyper-v, és konfiguráljon egy virtuális Gépet a Termékváltozat létrehozásának megkezdéséhez. Részletes lépéseket tekinthet meg a következő TechNet-hivatkozás: [telepítése Hyper-v és a virtuális gép konfigurálása](https://technet.microsoft.com/library/hh846766.aspx).
+Az operációs rendszer VHD letöltése után használja a Hyper-v, és konfiguráljon egy virtuális Gépet a Termékváltozat létrehozásának megkezdéséhez. A következő TechNet-hivatkozás található részletes lépései: [Hyper-v telepítése és konfigurálása a virtuális gép](https://technet.microsoft.com/library/hh846766.aspx).
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4 virtuális merevlemez megfelelő méretének kiválasztása
 A Windows operációs rendszer virtuális Merevlemeze a Virtuálisgép-lemezkép egy 128 GB-os rögzített formátumú VHD-fájlként kell létrehoznia.  
@@ -168,7 +169,7 @@ Az alaplemezképek a közzétételük dátumáig kiadott javításokat tartalmaz
 Ha további konfigurációs van szüksége, fontolja meg végső módosításokat a virtuális gép után üzembe helyezéskor elvégzik rendszerindításkor futó ütemezett feladatot:
 
 * Bevált gyakorlat, hogy a feladat sikeres végrehajtása után törli magát.
-* Nincs konfiguráció meghajtók C, D meghajtóra támaszkodhat, mivel ez az a két meghajtó, amely mindig garantáltan létezik. A C meghajtó az operációsrendszer-lemez, és a D meghajtón, az átmeneti helyi lemezt.
+* Nincs konfiguráció meghajtók C, D meghajtóra támaszkodhat, mivel ezek a meghajtók, a csak két, amely mindig garantáltan létezik. A C meghajtó az operációsrendszer-lemez, és a D meghajtón, az átmeneti helyi lemezt.
 
 ### <a name="37-generalize-the-image"></a>3.7. a lemezkép általánossá tétele
 Az Azure piactéren elérhető összes rendszerkép újrafelhasználható újrafelhasználhatónak kell lennie. Más szóval az operációs rendszer virtuális Merevlemeze általánossá kell tenni:
@@ -178,10 +179,10 @@ Az Azure piactéren elérhető összes rendszerkép újrafelhasználható újraf
 
         sysprep.exe /generalize /oobe /shutdown
 
-  Hogyan Sysprep az operációs rendszernek. lépés a következő MSDN-cikkben szereplő útmutatást: [létrehozása és feltöltése az Azure-ban Windows Server VHD](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  A sysprep hogyan az operációs rendszernek a lépésben a következő MSDN-cikk: [Hozzon létre, és a Windows Server VHD feltöltése az Azure-bA](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4. Virtuális gép üzembe helyezése a VHD-ből
-A virtuális merevlemezek (az általánosított operációs rendszer virtuális Merevlemeze és nulla vagy több adatlemezzel VHD-k) Azure storage-fiókkal való feltöltése után felhasználói Virtuálisgép-lemezképként regisztrálhatja őket. Ezután tesztelheti ezt a lemezképet. Vegye figyelembe, hogy az operációs rendszer virtuális Merevlemeze általánosítva van, mert azt közvetlenül a virtuális gép nem telepíthető azáltal, hogy a virtuális merevlemez URL-CÍMÉT.
+A virtuális merevlemezek (az általánosított operációs rendszer virtuális Merevlemeze és nulla vagy több adatlemezzel VHD-k) Azure storage-fiókkal való feltöltése után felhasználói Virtuálisgép-lemezképként regisztrálhatja őket. Ezután tesztelheti ezt a lemezképet. Az operációs rendszer virtuális Merevlemeze általánosítva van, mert Ön nem helyezheti közvetlenül üzembe a virtuális gép azáltal, hogy a virtuális merevlemez URL-CÍMÉT.
 
 Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse át a következő blogbejegyzésekben:
 
@@ -189,20 +190,20 @@ Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse á
 * [Virtuális gép rendszerkép PowerShell hogyan](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [Tudnivalók az Azure-beli Virtuálisgép-rendszerképek](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>A szükséges eszközök, PowerShell és az Azure klasszikus parancssori felület beállítása
+### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>A szükséges eszközök, a PowerShell és az Azure klasszikus parancssori felület beállítása
 * [PowerShell-telepítés](/powershell/azure/overview)
 * [Azure CLI beállítása](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 felhasználói Virtuálisgép-lemezkép létrehozása
 #### <a name="capture-vm"></a>Virtuális gép rögzítése
-Kérjük, olvassa el a virtuális gép API vagy PowerShell vagy az Azure CLI-vel rögzítése útmutatást az alábbiakban a hivatkozások.
+A hivatkozások az API vagy PowerShell vagy az Azure CLI-vel VM rögzítése útmutatást az alábbiakban olvasható.
 
 * [API](https://msdn.microsoft.com/library/mt163560.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Azure CLI](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="generalize-image"></a>Lemezkép általánossá tétele
-Kérjük, olvassa el a virtuális gép API vagy PowerShell vagy az Azure CLI-vel rögzítése útmutatást az alábbiakban a hivatkozások.
+A hivatkozások az API vagy PowerShell vagy az Azure CLI-vel VM rögzítése útmutatást az alábbiakban olvasható.
 
 * [API](https://msdn.microsoft.com/library/mt269439.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -225,7 +226,7 @@ Virtuális gép felhasználói Virtuálisgép-lemezkép központi telepítéséh
 
 **Virtuális gép üzembe helyezése a PowerShell**
 
-Nagy virtuális gép üzembe helyezése az imént létrehozott általánosított Virtuálisgép-rendszerképet, használhatja a következő parancsmagokat.
+Az újonnan létrehozott általánosított Virtuálisgép-rendszerképek a nagyméretű virtuális gép üzembe helyezéséhez a következő parancsmagokat használhatja.
 
     $img = Get-AzureVMImage -ImageName "myVMImage"
     $user = "user123"
@@ -276,7 +277,7 @@ A teszt befejezése után megjelennek a tesztelt összetevőkre vonatkozó eredm
 
 ![Windows virtuális gép lemezképének esetek][img-cert-vm-test-win]
 
-Ha bármelyik teszt sikertelen, a lemezkép nem kell hitelesíteni. Ha ilyet tapasztal, tekintse át a követelményeket, és végezze el a szükséges módosításokat.
+Ha bármelyik teszt sikertelen, a lemezkép nem kell hitelesíteni. Ha a probléma akkor fordul elő, tekintse át a követelményeket, és végezze el a szükséges módosításokat.
 
 Az automatikus vizsgálatot követően rendszer további bemeneti biztosítsanak a Virtuálisgép-lemezkép használatával egy kérdőív képernyő.  Végezze el a kérdéseket, és válassza ki **tovább**.
 
@@ -289,18 +290,18 @@ Miután végrehajtotta a kérdőívet, a lemezkép és annak magyarázatát, bá
 ![Mentse a minősítési terhelésiteszt-eredményei][img-cert-vm-results]
 
 ### <a name="52-get-the-shared-access-signature-uri-for-your-vm-images"></a>5.2 a közös hozzáférésű jogosultságkód URI Azonosítójának lekérése a Virtuálisgép-rendszerképek
-A közzétételi folyamat során adja meg a virtuális merevlemezhez a termékváltozathoz létrehozott minden egyes vezető egységes erőforrás-azonosítók (URI-k). Ezek a Microsoft számára szükségesek a virtuális merevlemezek eléréséhez a minősítési folyamat során. Ezért szeretne létrehozni egy közös hozzáférésű jogosultságkód URI-t minden egyes virtuális merevlemezhez. Ez az az URI-t kell megadni a **lemezképek** fülre a közzétételi portálon.
+A közzétételi folyamat során adja meg a virtuális merevlemezhez a termékváltozathoz létrehozott minden egyes vezető egységes erőforrás-azonosítók (URI-k). Ezek a Microsoft számára szükségesek a virtuális merevlemezek eléréséhez a minősítési folyamat során. Ezért szeretne létrehozni egy közös hozzáférésű jogosultságkód URI-t minden egyes virtuális merevlemezhez. Ez az URI kell megadni a **lemezképek** fülre a közzétételi portálon.
 
 A közös hozzáférésű jogosultságkód URI létrehozott meg kell felelnie az alábbi követelményeknek:
 
-Megjegyzés: az alábbi utasítások alapján csak a nem felügyelt lemezek, amelyek az egyetlen olyan altípus támogatott vonatkoznak.
+Az alábbi utasítások alapján kell alkalmazni, csak a nem felügyelt lemezek, amelyek az egyetlen olyan altípus támogatott.
 
 * Közös hozzáférésű jogosultságkód URL-címének a VHD-k létrehozásakor a lista és olvasási engedélyekkel elegendőek. Ne adjon írási vagy törlési hozzáférést.
 * A hozzáférés időtartama legalább három (3) héten belül kell lennie, a közös hozzáférésű jogosultságkód URI Azonosítójának létrehozásakor.
 * A védelme érdekében UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Jelölje be például, ha az aktuális dátum későbbi, 2014. október 6., 10/5/2014.
 
 SAS URL-címet a virtuális merevlemez megosztása az Azure piactér többféle módon hozhatók létre.
-Az alábbiakban a 3 javasolt eszközök:
+Az alábbiakban a három javasolt eszközök:
 
 1.  Azure Storage Explorer
 2.  Microsoft Storage Explorer
@@ -323,7 +324,7 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása az Azure Storage Exp
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_03.png)
 
-5. Adja meg a tárfiók neve, a tárfiók-kulcsot és a tárolási végpontok tartományát. Ez az a tárfiók Azure-előfizetésében ahol kell tárolni a VHD-t az Azure Portalon.
+5. Adja meg a tárfiók neve, a tárfiók-kulcsot és a tárolási végpontok tartományát. Ez a tárfiók ahol kell tárolni a VHD-t az Azure Portalon az Azure-előfizetése van.
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
 
@@ -347,11 +348,11 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása az Azure Storage Exp
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a. **Engedélyezett hozzáférési:** révén UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Jelölje be például, ha az aktuális dátum későbbi, 2014. október 6., 10/5/2014.
+    a. **A engedélyezi a hozzáférést:** A védelme érdekében UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Jelölje be például, ha az aktuális dátum későbbi, 2014. október 6., 10/5/2014.
 
-    b. **Engedélyezett hozzáférési:** válassza ki a dátumot, amely legalább 3 hét után a **engedélyezett hozzáférési** dátum.
+    b. **A hozzáférés engedélyezett:** Válassza ki a dátumot, amely legalább három hét után a **engedélyezett hozzáférési** dátum.
 
-    c. **Engedélyezett műveletek:** válassza ki a **lista** és **olvasási** engedélyeket.
+    c. **Engedélyezett műveletek:** Válassza ki a **lista** és **olvasási** engedélyeket.
 
     d. Ha kiválasztotta a .vhd fájl megfelelően, majd a fájl jelenik meg **eléréséhez blobnév** .vhd kiterjesztéssel együtt.
 
@@ -360,12 +361,12 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása az Azure Storage Exp
     f. A **létrehozott megosztott hozzáférési Jogosultságkód URI-ját ebben a tárolóban**, ellenőrizze a következő, a kiemelt fenti:
 
        - Győződjön meg arról, hogy a lemezkép-fájl neve és **".vhd"** található az URI-t.
-       - Az aláírás végén, ügyeljen arra, hogy **"= rl"** jelenik meg. Ez azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
-       - Az aláírás közepén, ellenőrizze, hogy **"sr = c"** jelenik meg. Ez azt jelenti, hogy a tároló hozzáférési
+       - Az aláírás végén, ügyeljen arra, hogy **"= rl"** jelenik meg. Ez az érték azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
+       - Az aláírás közepén, ellenőrizze, hogy **"sr = c"** jelenik meg. Ez az érték azt ismerteti, hogy a tároló hozzáférési
 
 11. Győződjön meg arról, hogy a létrehozott megosztott hozzáférési jogosultságkód URI működik, kattintson a **tesztelés böngészőben**. El kell indítaniuk a letöltési folyamatot.
 
-12. Másolja a közös hozzáférésű jogosultságkód URI-t. Ezt az URI-t kell beillesztenie a közzétételi portálon.
+12. Másolja a közös hozzáférésű jogosultságkód URI-t. Ez az URI illessze be a közzétételi portálon.
 
 13. Minden egyes virtuális Merevlemezhez a termékváltozat esetében ismételje meg a 6 – 10.
 
@@ -381,7 +382,7 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása a Microsoft Azure St
 
 3.  Kattintson a **fiók hozzáadása**.
 
-4.  A Microsoft Azure Storage Explorer konfigurálásához jelentkezzen be a fiókjába az előfizetéshez
+4.  A Microsoft Azure Storage Explorer konfigurálása az előfizetéshez szerint jelentkezzen be a fiókjába
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
@@ -391,15 +392,15 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása a Microsoft Azure St
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
-7.  Kezdési idő, lejárati időpontot és engedélyek frissítése következő kiszolgálónként
+7.  Kezdési idő, lejárati időpontot és engedélyeket frissítése a következő kiszolgálónként
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.  **Kezdő időpont:** révén UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Jelölje be például, ha az aktuális dátum későbbi, 2014. október 6., 10/5/2014.
+    a.  **Kezdő időpont:** A védelme érdekében UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Jelölje be például, ha az aktuális dátum későbbi, 2014. október 6., 10/5/2014.
 
-    b.  **Lejárati idő:** válassza ki a dátumot, amely legalább 3 hét után a **kezdő időpont** dátum.
+    b.  **Lejárati idő:** Válassza ki a dátumot, amely legalább három hét után a **kezdő időpont** dátum.
 
-    c.  **Engedélyek:** válassza ki a **lista** és **olvasási** engedélyek
+    c.  **Engedélyek:** Válassza ki a **lista** és **olvasási** engedélyek
 
 8.  Másolja a tároló közös hozzáférésű jogosultságkód URI
 
@@ -418,12 +419,12 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása a Microsoft Azure St
     TestRGVM201631920152.vhd a virtuális merevlemez nevét, majd a virtuális Merevlemezek SAS URL-cím `https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
     - Győződjön meg arról, hogy a lemezkép-fájl neve és **".vhd"** található az URI-t.
-    - Az aláírás közepén, ellenőrizze, hogy **"sp = rl"** jelenik meg. Ez azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
-    - Az aláírás közepén, ellenőrizze, hogy **"sr = c"** jelenik meg. Ez azt jelenti, hogy a tároló hozzáférési
+    - Az aláírás közepén, ellenőrizze, hogy **"sp = rl"** jelenik meg. Ez az érték azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
+    - Az aláírás közepén, ellenőrizze, hogy **"sr = c"** jelenik meg. Ez az érték azt ismerteti, hogy a tároló hozzáférési
 
 9.  Győződjön meg arról, hogy a létrehozott megosztott hozzáférési jogosultságkód URI működik, a tesztelés a böngészőben. A letöltési folyamat azt kell kezdődnie
 
-10. Másolja a közös hozzáférésű jogosultságkód URI-t. Ezt az URI-t kell beillesztenie a közzétételi portálon.
+10. Másolja a közös hozzáférésű jogosultságkód URI-t. Ez az URI illessze be a közzétételi portálon.
 
 11. A termékváltozatban található minden egyes virtuális merevlemeznél ismételje meg a fenti lépéseket.
 
@@ -435,7 +436,7 @@ Az SAS URL-cím létrehozása a klasszikus Azure CLI-vel lépései a következő
 
 1.  Töltse le a Microsoft Azure parancssori felületét [Itt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Különböző mutató hivatkozásokat is talál **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** és  **[MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)**.
 
-2.  Miután letöltötte, telepítse a
+2.  Miután letöltötte, telepítse az ezzel az eszközzel.
 
 3.  Hozzon létre egy Bash-(vagy más ezzel egyenértékű parancsfájl végrehajtható fájlt) a következő kóddal fájlt, és mentse helyileg
 
@@ -447,20 +448,20 @@ Az SAS URL-cím létrehozása a klasszikus Azure CLI-vel lépései a következő
 
     Frissítse a következő paramétereket felett
 
-    a. **`<Storage Account Name>`**: Adjon a tárfiók nevét
+    a. **`<Storage Account Name>`**: Adja meg a tárfiók nevét
 
-    b. **`<VHD Blob Name>`**: A VHD-blob nevét kell adni.
+    b. **`<VHD Blob Name>`**: Adja meg a virtuális merevlemez blob neve.
 
-    Válassza ki a dátumot, amely legalább 3 hét után a kezdő dátum (alapértelmezés szerint a sas-token létrehozásakor). Érték például: **2018-10-11T23:56Z**.
+    Válassza ki a dátumot legalább három hét után a kezdő dátum (alapértelmezés szerint a sas-token létrehozásakor). Érték például: `2018-10-11T23:56Z`.
 
-    Az alábbiakban a példakód után frissítése megfelelő paramétereket exportálása AZURE_STORAGE_ACCOUNT vhdstorage1ba78dfb6bc2d8 LEJÁRAT = = $(-d "3 hét" dátum "+ %Y – %m-% dT % H: % MZ") CONTAINER_SAS = $(az storage container sas generálása - n VHD-k – engedélyek rl--lejárati $ LEJÁRAT - otsv) BLOB_URL = $(az storage blob URL-cím - c VHD - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
+    Az alábbiakban a példakód után frissítése megfelelő paramétereket exportálása AZURE_STORAGE_ACCOUNT vhdstorage1ba78dfb6bc2d8 LEJÁRAT = = $(-d "három hétig" dátum "+ %Y – %m-% dT % H: % MZ") CONTAINER_SAS = $(az storage container sas generálása - n VHD-k – engedélyek rl-- lejárat $EXPIRY - otsv) BLOB_URL = $(az storage blob URL-cím - c VHD - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
 
 4.  Futtassa a szkriptet, és azt biztosít Önnek a SAS URL-címet a tároló hozzáférési.
 
 5.  Ellenőrizze a SAS URL-CÍMÉT.
 
     - Győződjön meg arról, hogy a bináris fájl neve és a ".vhd" az URI-t is.
-    -   Az aláírás közepén, ellenőrizze, hogy "sp = rl" jelenik meg. Ez azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
+    -   Az aláírás közepén, ellenőrizze, hogy "sp = rl" jelenik meg. Ez az érték azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
     -   Az aláírás közepén, ellenőrizze, hogy "sr = c" jelenik meg. Ez azt jelenti, hogy a tároló hozzáférési
 
     Példa:
@@ -469,7 +470,7 @@ Az SAS URL-cím létrehozása a klasszikus Azure CLI-vel lépései a következő
 
 8.  Győződjön meg arról, hogy a létrehozott megosztott hozzáférési jogosultságkód URI működik, a tesztelés a böngészőben. A letöltési folyamat azt kell kezdődnie
 
-9.  Másolja a közös hozzáférésű jogosultságkód URI-t. Ezt az URI-t kell beillesztenie a közzétételi portálon.
+9.  Másolja a közös hozzáférésű jogosultságkód URI-t. Ez az URI illessze be a közzétételi portálon.
 
 10. A termékváltozatban található minden egyes virtuális merevlemeznél ismételje meg a fenti lépéseket.
 
@@ -483,7 +484,7 @@ Az ajánlat és a Termékváltozat létrehozása után a Termékváltozathoz tá
 4. Adja meg a tulajdonságokat a **termékváltozatok** szakaszban.
 5. A **operációs rendszer termékcsaládját**, kattintson az operációs rendszer típusa, az operációs rendszer virtuális Merevlemeze társított.
 6. Az a **operációs rendszer** mezőbe operációs rendszert határozzák meg. Célszerű megadni az operációs rendszer termékcsaládját, típusát, verzióját és frissítéseket. Ilyen például, "A Windows Server Datacenter 2014 R2."
-7. Válasszon legfeljebb hat javasolt Virtuálisgép-méretet. Ezek a javaslatok, amelyek az ügyfélnek a Tarifacsomag panelen az Azure Portalon a amikor megvásárlása és a rendszerkép üzembe helyezése mellett döntenek jelennek meg. **Ezek csak ajánlások. Az ügyfél el tudja válasszon, amely megfelelő a lemezképben megadott lemezek bármely Virtuálisgép-méretet.**
+7. Válasszon legfeljebb hat javasolt Virtuálisgép-méretet. Ezeket a méreteket elsősorban az ügyfélnek a Tarifacsomag panelen az Azure Portalon a amikor megvásárlása és a rendszerkép üzembe helyezése mellett döntenek jelennek meg javaslatok. **Ezek csak ajánlások. Az ügyfél el tudja válasszon, amely megfelelő a lemezképben megadott lemezek bármely Virtuálisgép-méretet.**
 8. Adja meg a verziót. A verzió mező magában foglalja egy, a termék és a frissítések sémantická verze:
    * Verziók az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lenniük.
    * A lemezképek különböző termékváltozatban különböző fő- és alverzió verziók is rendelkezhet.
@@ -499,18 +500,18 @@ Az ajánlat és a Termékváltozat létrehozása után a Termékváltozathoz tá
 
 |Probléma|Hibaüzenet|Javítás|Dokumentáció-hivatkozás|
 |---|---|---|---|
-|Hiba történt a Másolás-lemezkép - "?" nem található az SAS URL-címe|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítés az SAS URL-cím használata ajánlott eszközök|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a Másolás lemezkép - "st" és "se" paraméterek nem az SAS URL-címe|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|A kezdő és záró dátuma, az SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob SAS URI-t használó megadott|Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítse a SAS URL-címét, szóközök nélkül|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: A lemezképek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-címet generálni|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – az SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik teljes dátum-idő specifikáció|Hiba: A lemezképek másolása. Nem sikerült helytelen SAS URL-cím miatt blob letöltése |Teljes dátum-idő előírás 11 például SAS URL-cím indítása és a záró dátum paraméter ("st", "se") van szüksége-02-2017T00:00:00Z, és nem csak a dátum vagy akkor használhatja rövidített verzió alkalommal. Lehetséges, hogy ezt a forgatókönyvet az Azure CLI 2.0-s vagy újabb verzió. Mindenképpen adja meg a teljes dátum-idő specifikációinak, és az SAS URL-címet generálni.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a Másolás-lemezkép - "?" nem található az SAS URL-címe|Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítés az SAS URL-cím használata ajánlott eszközök|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a Másolás lemezkép - "st" és "se" paraméterek nem az SAS URL-címe|Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|A kezdő és záró dátuma, az SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása|Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob SAS URI-t használó megadott|Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve|Hiba: Másolás a rendszerképeket. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítse a SAS URL-címét, szóközök nélkül|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: Másolás a rendszerképeket. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-címet generálni|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – az SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik teljes dátum-idő specifikáció|Hiba: Másolás a rendszerképeket. Nem sikerült helytelen SAS URL-cím miatt blob letöltése |Teljes dátum-idő előírás 11 például SAS URL-cím indítása és a záró dátum paraméter ("st", "se") van szüksége-02-2017T00:00:00Z, és nem csak a dátum vagy akkor használhatja rövidített verzió alkalommal. Lehetséges, hogy ezt a forgatókönyvet az Azure CLI 2.0-s vagy újabb verzió. Mindenképpen adja meg a teljes dátum-idő specifikációinak, és az SAS URL-címet generálni.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Következő lépés
-Miután elkészült, a Termékváltozat adatokkal, áthelyezheti előre a [Azure Marketplace-en marketing content útmutató][link-pushstaging]. Hogy a közzétételi folyamat lépésben biztosítanak a marketinganyagot, a díjszabást és a szükséges egyéb információkat előtti **3. lépés: a virtuális gép tesztelése az átmeneti állapotában is kínálnak**, tesztelni különböző használatieset-forgatókönyvek üzembe helyezése előtt, a az Azure piactér nyilvános átláthatósága és beszerzési kínálnak.  
+Miután elkészült, a Termékváltozat adatokkal, áthelyezheti előre a [Azure Marketplace-en marketing content útmutató][link-pushstaging]. Hogy a közzétételi folyamat lépésben biztosítanak a marketinganyagot, a díjszabást és a szükséges egyéb információkat előtti **3. lépés: A virtuális gép tesztelése az átmeneti állapotában is kínálnak**, ahol üzembe helyezése az ajánlat az Azure piactér nyilvános átláthatósága és a vásárlás előtt különböző használatieset-forgatókönyvek tesztelését.  
 
 ## <a name="see-also"></a>Lásd még
-* [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
+* [Első lépések: Ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3bf24a4ed17986ff948a7396e608a51ae38208a5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255312"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076501"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Használata esetén az Azure Application Insights Java SDK
 Esetén figyelési mértékek alkalmazásmetrikák JVM-alapú alkalmazás code, és exportálja az adatokat a kívánt rendszerek figyelése. Ez a cikk használata esetén az Application insights segítségével a Spring Boot és a Spring Boot-alkalmazások hogyan meg.
@@ -27,7 +27,7 @@ Adja hozzá a következő függőségeket a build.gradle vagy a pom.xml fájlba:
 * [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA vagy újabb
 * Esetén az Azure Registry 1.1.0-ás vagy újabb
 * [Örökölt esetén Spring](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-ás vagy újabb (Ez a hálózat automatikus beállítása kódot a Spring keretrendszer portolások).
-* [ApplicationInsights erőforrás](app-insights-create-new-resource.md)
+* [ApplicationInsights erőforrás](../azure-monitor/app/create-new-resource.md )
 
 Lépések
 
@@ -65,7 +65,7 @@ Adja hozzá a következő függőségeket a build.gradle vagy a pom.xml fájlba:
 
 * Application Insights Spring boot-starter 2.1.2 vagy újabb
 * Az Azure-spring-rendszerindítás-mérőszámok – például 2.0.7 vagy újabb  
-* [Application Insights-erőforrás](app-insights-create-new-resource.md)
+* [Application Insights-erőforrás](../azure-monitor/app/create-new-resource.md )
 
 Lépések:
 
@@ -126,7 +126,7 @@ Adja hozzá a következő függőségeket a build.gradle vagy a pom.xml fájlba:
 * [Az Application Insights webalkalmazás-2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) vagy újabb
 * [Webszűrő regisztrálása](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * Esetén az Azure Registry 1.1.0-ás vagy újabb
-* [Application Insights-erőforrás](app-insights-create-new-resource.md)
+* [Application Insights-erőforrás](../azure-monitor/app/create-new-resource.md )
 
 Lépések:
 

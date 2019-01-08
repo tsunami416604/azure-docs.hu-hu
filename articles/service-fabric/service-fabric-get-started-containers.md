@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: twhitney
-ms.openlocfilehash: e6552984fd629810fd5e422c92ef9ee8ecd2b342
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053108"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063828"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -332,9 +332,9 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ### <a name="configure-cluster-wide-credentials"></a>Fürtre kiterjedő hitelesítő adatainak konfigurálása
 
-V6.3 kezdődően a Service Fabric engedélyezése a felhasználó számára alkalmazások által használható alapértelmezett adattár hitelesítő fürtre kiterjedő hitelesítő adatainak konfigurálása.
+6.3 futásidejű verziótól kezdődően a Service Fabric lehetővé teszi alkalmazások által használható alapértelmezett adattár hitelesítő fürtre kiterjedő hitelesítő adatainak konfigurálása.
 
-Engedélyezheti vagy letilthatja a szolgáltatást egy "UseDefaultRepositoryCredentials" attribútum hozzáadásával az ApplicationManifest.xml ContainerHostPolicies és a egy "true/false" logikai érték.
+Engedélyezheti vagy letilthatja a szolgáltatást a `UseDefaultRepositoryCredentials` attribútumot `ContainerHostPolicies` ApplicationManifest.xml és a egy `true` vagy `false` értéket.
 
 ```xml
 <ServiceManifestImport>
@@ -348,14 +348,14 @@ Engedélyezheti vagy letilthatja a szolgáltatást egy "UseDefaultRepositoryCred
 </ServiceManifestImport>
 ```
 
-Közli, hogy a Service Fabric a clustermanifest jegyzékben, a üzemeltetési szakaszában megadható alapértelmezett adattár hitelesítő adatokat használja.  Ha UseDefaultRepositoryCredentials értéke igaz, a Service Fabric lesz most olvasása a következő értékeket a clustermanifest jegyzékben:
+A Service Fabric majd használja az alapértelmezett adattár hitelesítő adatait, amelyeket a clustermanifest jegyzékben alatt megadhatja az `Hosting` szakaszban.  Ha `UseDefaultRepositoryCredentials` van `true`, Service Fabric a clustermanifest jegyzékben olvassa be a következő értékeket:
 
 * DefaultContainerRepositoryAccountName (karakterlánc)
 * DefaultContainerRepositoryPassword (karakterlánc)
 * IsDefaultContainerRepositoryPasswordEncrypted (logikai)
-* DefaultContainerRepositoryPasswordType(string)---V6.4 támogatott
+* (Karakterlánc)---DefaultContainerRepositoryPasswordType támogatott 6.4-es futásidejű kezdve
 
-Íme egy példa a ClusterManifestTemplate.json üzemeltetési szakaszon belül is hozzáadhat. További információ a [fürt beállítás konfigurálása](service-fabric-cluster-fabric-settings.md) és [ titkosítása jelszóval](service-fabric-application-secret-management.md)
+Íme egy példa belül is hozzáadhat a `Hosting` szakaszt az ClusterManifestTemplate.json fájlban. További információkért lásd: [módosítása az Azure Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md) és [titkos alkalmazáskulcsok kezelése az Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
       {
@@ -384,7 +384,6 @@ Közli, hogy a Service Fabric a clustermanifest jegyzékben, a üzemeltetési sz
         ]
       },
 ```
-
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
 A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Folyamatelkülönítési módban az ugyanazon a gazdagépen futó összes tároló ugyanazt a kernelt használja, mint a gazdagép. Hyper-V elkülönítési módban az egyes Hyper-V tárolók és a tároló gazdagép kernelei elkülönülnek. Az elkülönítési mód az alkalmazásjegyzék-fájl `ContainerHostPolicies` elemében van meghatározva. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték folyamatelkülönítési mód a Windows Server-gazdagépeken. A Windows 10-gazdagépeken csak a Hyper-V elkülönítési módban támogatott, így a tároló fut a Hyper-V elkülönítési módban az elkülönítési mód beállítástól függetlenül. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.

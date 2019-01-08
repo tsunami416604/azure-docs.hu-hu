@@ -4,17 +4,17 @@ description: Egy Marketplace-rendszerképpel egy Terraformot használó linuxos 
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, virtuális gép, távoli állapot, azure
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971164"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076227"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
@@ -47,17 +47,17 @@ Itt találja a Terraformot használó linuxos virtuális gép egy példányának
 
 1. **Alapvető beállítások**
     
-   * **Név**: A Terraformot használó virtuális gép neve.
+   * **Név**: A Terraform virtuális gép neve.
    * **Felhasználónév**: Az első fiók bejelentkezési azonosítója.
    * **Jelszó**: Az első fiók jelszava. (Jelszó helyett használhat nyilvános SSH-kulcsot is.)
-   * **Előfizetés**: Az az előfizetés, amelyen a gépet létrehozza és amelyen fizet érte. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-   * **Erőforráscsoport**: Egy új vagy létező erőforráscsoport.
-   * **Hely**: A legmegfelelőbb adatközpont. Általában ez a legtöbb adattal rendelkező vagy – a gyorsabb hálózati hozzáférés érdekében – a fizikai helyéhez legközelebbi adatközpont.
+   * **Előfizetés**: Az előfizetés, amelyen a gép létrehozása és a számlázás is. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+   * **Erőforráscsoport**: Egy új vagy meglévő erőforráscsoportot.
+   * **Hely**: Az Adatközpont leginkább megfelelő. Általában ez a legtöbb adattal rendelkező vagy – a gyorsabb hálózati hozzáférés érdekében – a fizikai helyéhez legközelebbi adatközpont.
 
 2. **További beállítások**
 
-   * **Méret**: A virtuális gép mérete. 
-   * **Virtuális gép lemeztípusa**: SSD vagy HDD.
+   * **Méret**: A virtuális gép méretét. 
+   * **Virtuális merevlemez típusa**: SSD vagy HDD.
 
 3. **A Terraform összegzése**
 

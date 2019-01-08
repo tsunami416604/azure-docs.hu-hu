@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: de28bce852d00900bee19b2fa4d7e4e39d050b4d
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1db4f4be7ab883e6be52b52bd93a43468829bed5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054518"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076625"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák
 
@@ -80,7 +80,7 @@ Az intelligens észlelés teljesítményanomáliákat kapcsolatos e-mailek korl�
 
   * Még nincs de:
     * [Riasztásokat állíthat be](../../azure-monitor/app/alerts.md) , mondja el, ha egy metrika átlépi a küszöbértéket.
-    * [Telemetria exportálása](../../azure-monitor/app/export-telemetry.md) , egy [adatbázis](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [Power bi-bA](../../application-insights/app-insights-export-power-bi.md), ahol elemezheti, saját magának.
+    * [Telemetria exportálása](../../azure-monitor/app/export-telemetry.md) , egy [adatbázis](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [Power bi-bA](../../azure-monitor/app/export-power-bi.md ), ahol elemezheti, saját magának.
 * *Milyen gyakran történik az elemzés?*
 
   * Mi az elemzés futtatása naponta az előző nap (teljes napja UTC időzónában) telemetriai adatok.

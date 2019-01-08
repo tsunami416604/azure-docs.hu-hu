@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 4a77f73f4d87f7def7c8a841c7a59aed04b9bee2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 69ba67eb74333e8316b739fc2f264434643cab95
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020047"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075141"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Figyelheti és hibakeresése az Azure Batch .NET-alkalmazás, az Application insights segítségével
 
@@ -35,11 +35,11 @@ Minta C#-megoldásból, és ez a cikk kísérő kódot érhető el a [GitHub](ht
 
 * [Batch-fiók és a társított storage-fiók](batch-account-create-portal.md)
 
-* [Application Insights-erőforrás](../application-insights/app-insights-create-new-resource.md)
+* [Application Insights-erőforrás](../azure-monitor/app/create-new-resource.md )
   
    * Az Azure portal használatával hozzon létre egy Application Insights *erőforrás*. Válassza ki a *általános* **alkalmazástípus**.
 
-   * Másolás a [kialakítási kulcs](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) a portálról. Ez a cikk későbbi részében szükséges.
+   * Másolás a [kialakítási kulcs](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) a portálról. Ez a cikk későbbi részében szükséges.
   
   > [!NOTE]
   > Előfordulhat, hogy [felszámított](https://azure.microsoft.com/pricing/details/application-insights/) az Application insights szolgáltatásban tárolt adatokhoz. Ez magában foglalja a diagnosztikai és a monitorozási adatok, a cikkben leírtak szerint.

@@ -1,7 +1,7 @@
 ---
 title: Oktatóanyag – CI/CD a Jenkinsből az Azure-beli virtuális gépekre az Azure DevOps Services szolgáltatással | Microsoft Docs
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan állíthatja be a Node.js-alkalmazás folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) a Azure virtuális gépekre a Jenkins használatával a Visual Studio Team Services kiadáskezeléséből vagy a Microsoft Team Foundation Serveren
-author: tomarcher
+author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388489"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074767"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése Linux rendszerű virtuális gépeken az Azure-ban a Jenkins és az Azure DevOps Services használatával
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Alkalmazás üzembe helyezése az Azure-beli Linux rendszerű virtuális gépek használatával a Jenkins és az Azure DevOps-szolgáltatásokkal
 
 Folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) egy folyamatból, amellyel építheti, kiadhatja és üzembe helyezheti a kódot. Az Azure DevOps Services teljes funkcionalitású CI-/CD-automatizálási eszközöket biztosít az Azure-ban történő üzembe helyezéshez. A Jenkins egy olyan népszerű, harmadik féltől származó CI/CD szolgáltatást nyújtó, kiszolgálóalapú eszköz, amely CI/CD-automatizálást is biztosít. Az Azure DevOps Services és a Jenkins együttes használatával testre szabhatja, hogyan kézbesíti felhőalapú alkalmazását vagy szolgáltatását.
 
@@ -68,7 +68,7 @@ Hozzon létre egy adattármásolatot az alkalmazáshoz, és jegyezze le a helyet
 
 ## <a name="configure-jenkins-plug-ins"></a>A Jenkins beépülő moduljainak konfigurálása
 
-Először két Jenkins beépülő modult kell konfigurálnia: **NodeJS** és **VS Team Services Continuous Deployment**.
+Először konfigurálnia kell két Jenkins beépülő: **NodeJS** és **VS Team Services, a folyamatos üzembe helyezés**.
 
 1. Nyissa meg a Jenkins-fiókját, és válassza a **Manage Jenkins** (Jenkins kezelése) lehetőséget.
 2. A **Manage Jenkins** (Jenkins kezelése) oldalon válassza a **Manage Plugins** (Beépülő modulok kezelése) lehetőséget.
@@ -164,7 +164,7 @@ Kiadási folyamat létrehozása az Azure Pipelinesban:
 
 1. Válassza a **+ Release** (+ Kiadás) elemet, majd a **Create Release** (Kiadás létrehozása) lehetőséget.
 2. A kiemelt legördülő listában válassza ki a befejezett buildet, majd válassza a **Queue** (Várólista) lehetőséget.
-3. Kattintson az előugró üzenetben a kiadási hivatkozásra. Például erre: „Release **Release-1** has been created.”
+3. Kattintson az előugró üzenetben a kiadási hivatkozásra. Példa: "Release **Release-1** létrejött."
 4. Nyissa meg a **Logs** (Naplók) lapot a kiadási konzol kimenetének megtekintéséhez.
 5. A böngészőben nyissa meg az üzembe helyezési csoporthoz hozzáadott egyik kiszolgáló URL-címét. Adja meg például a **http://{your-server-ip-address}** címet.
 6. Lépjen a Git-adattárba, és módosítsa a **h1** fejléc tartalmát az app/views/index.jade fájlban egy módosított szövegre.

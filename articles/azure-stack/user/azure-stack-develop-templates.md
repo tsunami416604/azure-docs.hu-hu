@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 16cf679f91dae185a857813ec27441b9a4440e37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.reviewer: ''
+ms.openlocfilehash: 34804dae53fcf06d1a18bf503cdabea61f272585
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244049"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065392"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Az Azure Resource Manager-sablon kapcsolatos szempontok
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az alkalmazás fejlesztését, fontos annak biztosítása érdekében az Azure és az Azure Stack közötti sablon hordozhatóság. Ez a cikk ismerteti az Azure Resource Manager fejlesztési szempontok [sablonok](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), így az alkalmazás- és vizsgálati üzembe helyezés az Azure-ban az Azure Stack környezettel való hozzáférés nélkül is prototípusát.
 
 ## <a name="resource-provider-availability"></a>Az erőforrás-szolgáltató elérhetőség
 
-A sablont szeretné telepíteni, csak kell használnia a Microsoft Azure-szolgáltatások, amelyek már elérhető, vagy az Azure Stack előzetes verzióban érhető el.
+A sablon, amely tervez üzembe helyezni, csak kell használnia a Microsoft Azure-szolgáltatások, amelyek már elérhető, vagy az Azure Stack előzetes verzióban érhető el.
 
 ## <a name="public-namespaces"></a>Nyilvános névterek
 
-Mivel a helyi adatközpontban Azure Stack, azt különböző szolgáltatási végpont névtérrel rendelkezik, mint az Azure nyilvános felhő. Ennek eredményeképpen szoftveresen kötött nyilvános végpontokat az Azure Resource Manager-sablonokban sikertelen üzembe helyezheti őket az Azure Stack megkísérlésekor. Dinamikusan hozhat létre Szolgáltatásvégpontok használatával a *referencia* és *összefűzni* funkciók értékeket beolvasni az erőforrás-szolgáltató üzembe helyezése során. Hardcoding helyett például *blob.core.windows.net* a sablonban lekérni a [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) dinamikus beállításához az *osDisk.URI* végpont:
+Mivel a helyi adatközpontban Azure Stack, azt különböző szolgáltatási végpont névtérrel rendelkezik, mint az Azure nyilvános felhő. Ennek eredményeképpen változtatható nyilvános végpontokat az Azure Resource Manager-sablonokban sikertelen üzembe helyezheti őket az Azure Stack megkísérlésekor. Dinamikusan hozhat létre Szolgáltatásvégpontok használatával a `reference` és `concatenate` funkciók értékeket beolvasni az erőforrás-szolgáltató üzembe helyezése során. Például a fix kódolása helyett *blob.core.windows.net* lekérni a sablonban a [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) dinamikus beállításához az *osDisk.URI* végpont:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -56,7 +56,7 @@ Azure-szolgáltatás verziói között az Azure és az Azure Stack eltérhet. Az
 
 ## <a name="template-functions"></a>Sablonfüggvények
 
-Az Azure Resource Manager [funkciók](../../azure-resource-manager/resource-group-template-functions.md) dinamikus sablonok létrehozásához szükséges képességeket biztosít. Például használhatja funkciók feladatok például:
+Az Azure Resource Manager [funkciók](../../azure-resource-manager/resource-group-template-functions.md) adja meg a szükséges dynamic sablonokat hozhat létre. Például használhatja funkciók feladatok például:
 
 * Összetűzésének, vagy karakterlánc-csonkolás.
 * Egyéb erőforrások hivatkozó értékeit.

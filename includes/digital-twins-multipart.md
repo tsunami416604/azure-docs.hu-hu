@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 1c6579776b86decb78c172578cbe55a66c05d78f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6eb7993b4dbec3ab4901dc7071d18eae98ab8ae4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54026553"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079255"
 ---
 > [!NOTE]
 > Több részből álló kérelmeket általában a művelethez három adatra van szükség:
@@ -34,3 +34,5 @@ Több részből álló kéréseket programozott módon lehet tenni (keresztül C
 > * BLOB tartalmát, többek között a strukturálatlan tartalmát egy feltölteni kívánt fájlt
 >
 > A két részből egyike sem nem szükséges **javítására** kérelmeket. Mindkettő szükséges **POST** vagy -létrehozási műveletek.
+
+A [foglaltsága rövid forráskód](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) tartalmazza a teljes C# példa bemutatja, hogyan lehet, hogy az Azure digitális Twins felügyeleti API-k többrészes kérelmeket.

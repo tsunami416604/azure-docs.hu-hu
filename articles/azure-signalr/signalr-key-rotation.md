@@ -1,41 +1,41 @@
 ---
 title: Hozzáférés az Azure SignalR Service kulcsrotálás
-description: Áttekintés arról, hogy miért kell ügyfél rendszeresen a a hozzáférési kulcsainak rotálása, és megtudhatja, hogyan teheti a portál a grafikus felhasználói felület és a CLI használatával.
+description: Miért kell az ügyfél rendszeresen a a hozzáférési kulcsainak rotálása és az Azure Portalon grafikus felhasználói felület és az Azure CLI áttekintése.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 2c0f60b0ef3a90372fc4a095c830f39bc148f354
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 04321e62ea41b58e9ee4314b600c77e6c39b7ade
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636155"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065834"
 ---
 # <a name="access-key-rotation-for-azure-signalr-service"></a>Hozzáférés az Azure SignalR Service kulcsrotálás
 
-Minden egyes Azure SignalR Service-példány két tárelérési kulcsok rendelkezik: Elsődleges és másodlagos kulcsok. SignalR-ügyfelek hitelesítésére, ha a szolgáltatás-kérelem indítására szolgálnak. A kulcsok társítva a példány végpont URL-címe. A kulcsok biztonsága, és rendszeresen elforgatása őket. Két kulcsot, így egy kulcs használatával, amíg az egyiket a kapcsolatok fenntartásához rendelkezésre.
+Minden egyes Azure SignalR Service-példány egy elsődleges és másodlagos kulcsok nevű hozzáférés kulcspárra rendelkezik. Ha a kérelmeket a szolgáltatás a SignalR-ügyfelek hitelesítésére használhatók. A kulcsok társítva a példány végpont URL-címe. A kulcsok biztonsága, és rendszeresen elforgatása őket. Most már a megadott két hozzáférési kulcsokkal, így a kapcsolatok fenntartásához amíg az egyiket egy kulcs használatával.
 
 ## <a name="why-rotate-access-keys"></a>Miért elforgatása a hozzáférési kulcsok?
 
-A biztonsági és megfelelőségi miatt követelmény a fejlesztők számára ajánlott, hogy rendszeresen a a hozzáférési kulcsainak rotálása.
+Biztonsági okokból és megfelelőségi követelmények rendszeresen a hozzáférési kulcsainak rotálása.
 
-## <a name="how-to-regenerate-access-keys"></a>Elérési kulcsok újragenerálása hogyan?
+## <a name="regenerate-access-keys"></a>Elérési kulcsok újragenerálása
 
-1. Az [Azure Portalon](https://portal.azure.com/) jelentkezzen be a hitelesítő adataival.
+1. Nyissa meg a [az Azure portal](https://portal.azure.com/), és jelentkezzen be a hitelesítő adataival.
 
-1. Keresse meg a **kulcsok** szakaszban az Azure SignalR Service-példányban, hogy újragenerálja a kulcsokat.
+1. Keresse meg a **kulcsok** szakasz újragenerálja a kulcsot az Azure SignalR Service-példányában.
 
-1. Kattintson a **kulcsok** a navigációs menüben.
+1. Válassza ki **kulcsok** a navigációs menüben.
 
-1. Kattintson a **elsődleges kulcs újragenerálása** vagy **másodlagos kulcs újragenerálása**.
+1. Válassza ki **elsődleges kulcs újragenerálása** vagy **másodlagos kulcs újragenerálása**.
 
-Új kulcs és a hozzá tartozó kapcsolati karakterlánc létrejön és jelenik meg.
+   Egy új kulcsot, és a megfelelő kapcsolati karakterláncot létrehozni és jelenik meg.
 
- ![Kulcsok újragenerálása](media/signalr-key-rotation/regenerate-keys.png)
+   ![Kulcsok újragenerálása](media/signalr-key-rotation/regenerate-keys.png)
 
-Kulcsok használatával is létrehozhatja [Azure CLI-vel](/cli/azure/ext/signalr/signalr/key?view=azure-cli-latest#ext-signalr-az-signalr-key-renew).
+Emellett létrehozhatja kulcsok használatával a [Azure CLI-vel](/cli/azure/ext/signalr/signalr/key?view=azure-cli-latest#ext-signalr-az-signalr-key-renew).
 
 ## <a name="update-configurations-with-new-connection-strings"></a>Az új kapcsolati karakterláncok frissítése konfigurációk
 
@@ -47,16 +47,16 @@ Kulcsok használatával is létrehozhatja [Azure CLI-vel](/cli/azure/ext/signalr
 
 ## <a name="forced-access-key-regeneration"></a>A kényszerített elérési kulcs újragenerálása
 
-Az Azure SignalR Service léptethet egy kötelező elérési kulcs újragenerálása bizonyos helyzet alapján. A szolgáltatás értesíti ügyfeleit e-mailben és a portál értesítései. Ha ez a kommunikáció kap, vagy szolgáltatás hibája miatt a hozzáférési kulcsot észlel, a kulcsok rotálására a ezt az útmutatót.
+Az Azure SignalR Service egy kötelező elérési kulcs újragenerálása bizonyos helyzetekben előfordulhat, hogy kényszerítése. A szolgáltatás értesítést küld e-mailben és a portál értesítései ügyfelek. Ha ez a kommunikáció kap, vagy szolgáltatás hibája miatt egy hozzáférési kulcsot észlel, a kulcsok rotálására a Ez az útmutató utasításait követve.
 
 ## <a name="next-steps"></a>További lépések
 
-Azt javasoljuk ajánlott biztonsági eljárásként rendszeresen elforgatása a hozzáférési kulcsait.
+A hozzáférési kulcsainak rotálása rendszeresen ajánlott biztonsági eljárás.
 
-Ebben az útmutatóban megismerhette tárelérési kulcsok újragenerálásával. Folytassa a következő oktatóanyagok hitelesítés OAuth vagy az Azure Functions használatával kapcsolatos.
-
-> [!div class="nextstepaction"]
-> [Integráció az ASP.NET Core-identitás](./signalr-authenticate-oauth.md)
+Ebben az útmutatóban útmutatóból megtudhatta, hogyan újragenerálni a hozzáférési kulcsokat. Folytassa a következő oktatóanyagok hitelesítés OAuth vagy az Azure Functions használatával kapcsolatos.
 
 > [!div class="nextstepaction"]
-> [Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása](./signalr-authenticate-azure-functions.md)
+> [Integráció az ASP.NET core-identitás](./signalr-authenticate-oauth.md)
+
+> [!div class="nextstepaction"]
+> [Hitelesítés a valós idejű kiszolgáló nélküli alkalmazás készítése](./signalr-authenticate-azure-functions.md)

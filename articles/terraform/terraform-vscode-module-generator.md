@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan Terraform alap sablon létrehozása az Azure-ba
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtuális gép, azure, yeoman
-author: v-mavick
+author: tomarchermsft
 manager: jeconnoc
-ms.author: v-mavick
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 36e4b424cdb961920fccdf7f050e28447ccbd6cf
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284335"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074520"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>A Terraform alap sablon létrehozása az Azure-ban Yeoman használatával
 
@@ -28,11 +28,11 @@ Ebben a cikkben a Yeoman modulgenerátor alapszintű Terraform-sablon létrehoz�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-- **Visual Studio Code**: A Yeoman generátor által létrehozott fájlokat a [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) használatával fogjuk megvizsgálni. Ön használhatja a saját maga által választott kódszerkesztőt is.
-- **Terraform**: A Yeoman által létrehozott modul futtatásához szüksége lesz a [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) egy telepített példányára.
-- **Docker**: A [Dockert](https://www.docker.com/get-started) a Yeoman generátor által létrehozott modul futtatásához fogjuk használni. (Ha úgy kívánja, a Docker helyett a Rubyt is használhatja a mintamodul futtatásához.)
-- **Go programozási nyelv**: Szüksége lesz a [Go](https://golang.org/) telepítésére, ugyanis a Yeoman által generált tesztesetek Go nyelven vannak megírva.
+- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+- **A Visual Studio Code**: Fogjuk használni [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) hozta létre a Yeoman generátor fájlok vizsgálatát. Ön használhatja a saját maga által választott kódszerkesztőt is.
+- **A Terraform**: Szüksége lesz egy telepített [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) a Yeoman által létrehozott modul futtatásához.
+- **Docker**: Fogjuk használni [Docker](https://www.docker.com/get-started) futtatásához a modul által létrehozott a Yeoman generátor. (Ha úgy kívánja, a Docker helyett a Rubyt is használhatja a mintamodul futtatásához.)
+- **Go programozási nyelv**: Szüksége lesz egy telepített [lépjen](https://golang.org/) mert, lépjen a Yeoman által létrehozott esetek készültek.
 
 >[!NOTE]
 >Ebben az oktatóanyagban az eljárások többsége parancssori bevitelt is igényel. Az itt leírt lépések minden operációs rendszerre és parancssori eszközre érvényesek. A példákban azt választotta, a helyi környezet és a Git Bash használandó PowerShell cloud shell-környezet.
@@ -140,16 +140,16 @@ A modul kimenetének tartalmát definiálja. Itt ez a beépített **random_shuff
 
 A fordítási lépéseket határozza meg. Ilyen lépések többek között:
 
-- **build**: A main.tf fájl formázását ellenőrzi.
-- **unit**: A modul generált váza nem tartalmaz egységteszthez alkalmas kódot. Ha egységtesztet is meg kíván adni, akkor ahhoz itt írhatja be a kódot.
-- **e2e**: A modul teljes körű tesztelését futtatja le.
+- **Build**: Ellenőrzi, hogy a main.tf fájl formázását.
+- **Egység**: A modul létrehozott vázat nem tartalmazza a kódot egység teszteléséhez. Ha egységtesztet is meg kíván adni, akkor ahhoz itt írhatja be a kódot.
+- **e2e**: A modul egy teljes körű tesztet futtatja.
 
 ### <a name="test"></a>test
 
 - A tesztesetek Go nyelven vannak megírva.
 - A tesztkódok mindegyike teljes körű teszt.
 - A teljes körű tesztek a **fixture** alatt definiált összes elemet megkísérlik létrehozni a Terraform használatával, majd összehasonlítják a **template_output.go** fájlban lévő kimenetet az előre megadott, elvárt értékekkel.
-- **Gopkg.lock** és **Gopkg.toml**: Definiálja a függőségeket. 
+- **Gopkg.LOCK** és **Gopkg.toml**: A függőségek meghatározása. 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Tesztelje az új Terraform modul Docker-fájl használatával
 
@@ -248,16 +248,16 @@ Ezek az elemek összes előre telepített, a Cloud Shellben.
 
 1. Ezen a ponton a Cloud Shell fog már konfigurált GOPATH a környezeti változók az Ön számára. Adja meg az elérési út megtekintéséhez `go env`.
 
-1. Ha egy nem létezik, hozzon létre a $GOPATH mappát: Adja meg `mkdir ~/go`.
+1. Ha egy nem létezik, hozzon létre a $GOPATH mappa: Írja be a `mkdir ~/go` (igen) kifejezést.
 
-1. Hozzon létre egy mappát az $GOPATH mappájában: írja be `mkdir ~/go/src`. Ez a mappa, amely tárolja, és rendezheti is létrehozhat, például a < az modul neve-> mappát hozunk létre a következő lépéssel más projekthez mappák használható.
+1. Hozzon létre egy mappát a $GOPATH mappában található: Írja be a `mkdir ~/go/src` (igen) kifejezést. Ez a mappa, amely tárolja, és rendezheti is létrehozhat, például a < az modul neve-> mappát hozunk létre a következő lépéssel más projekthez mappák használható.
 
-1. Hozzon létre egy mappát, amely tárolja a Terraform modult: írja be `mkdir ~/go/src/<your-module-name>`.
+1. Hozzon létre egy mappát, amely tárolja a Terraform modul: Írja be a `mkdir ~/go/src/<your-module-name>` (igen) kifejezést.
 
     >[!NOTE]
     >Ebben a példában választottuk `my-module-name` a mappa neve.
 
-1. Lépjen abba a mappába, modul: Adjon meg `cd ~/go/src/<your-module-name>`
+1. Keresse meg a modul mappában: Adja meg `cd ~/go/src/<your-module-name>`
 
 ### <a name="create-and-test-your-terraform-module"></a>Hozhat létre és tesztelhet a Terraform modul
 

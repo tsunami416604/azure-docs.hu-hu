@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654104"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064695"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. Az Event Hubs másodpercenként több millió esemény feldolgozására képes, valós időben. Ebben a rövid útmutatóban létrehozunk egy eseményközpontot, csatlakozunk hozzá az Azure Data Explorerből, és megfigyeljük az adatok a rendszeren keresztüli áramlását.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. [Az Event Hubs](/azure/event-hubs/event-hubs-about) millió másodpercenként a közel valós idejű események feldolgozására is. Ebben a rövid útmutatóban létrehozunk egy eseményközpontot, csatlakozunk hozzá az Azure Data Explorerből, és megfigyeljük az adatok a rendszeren keresztüli áramlását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 * [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
-* [Egy mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), amely adatokat állít elő, és elküldi azokat egy eseményközpontnak
+* [Egy mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , amely adatokat állít elő, és elküldi azt az eseményközpontba. Töltse le a mintaalkalmazást a rendszer.
 
 * A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a mintaalkalmazás futtatásához
 
@@ -37,7 +37,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy eseményközpontnak. Első lépésként létre kell hoznia egy eseményközpontot. Ezt egy Azure Resource Manager-sablon használatával teheti meg az Azure Portalon.
 
-1. Az üzembe helyezés indításához kattintson a következő gombra. Javasoljuk, hogy a hivatkozást egy új lapon vagy ablakban nyissa meg, hogy könnyebben követhesse a cikk további lépéseit.
+1. Létrehoz egy eseményközpontot, használja az alábbi gombra a telepítés elindításához. Kattintson a jobb gombbal, és válassza ki **Megnyitás új ablakban** hivatkozás egy másik lapon vagy ablakban, ezért kövesse a cikkben ismertetett lépések a többi.
 
     [![Üzembe helyezés az Azure-ban](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -79,7 +79,7 @@ Most létrehozunk egy táblát az Azure Data Explorerben, amelyre az Event Hubs 
 
     ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. Másolja be a következő parancsot az ablakba, és válassza a **Futtatás** lehetőséget.
+1. A következő parancs másolja be az ablakot, és válassza ki **futtatása** fogadják a feldolgozott adatokat (TestTable) tábla létrehozásához.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -87,12 +87,11 @@ Most létrehozunk egy táblát az Azure Data Explorerben, amelyre az Event Hubs 
 
     ![Létrehozási lekérdezés futtatása](media/ingest-data-event-hub/run-create-query.png)
 
-1. Másolja be a következő parancsot az ablakba, és válassza a **Futtatás** lehetőséget.
+1. A következő parancs másolja be az ablakot, és válassza ki **futtatása** való leképezéséhez a tábla (TestTable) oszlop nevükkel és adattípusukkal bejövő JSON-adatokat.
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    A parancs a bejövő JSON-adatokat leképezi a táblában (TestTable) szereplő oszlopnevekre és adattípusokra.
 
 ## <a name="connect-to-the-event-hub"></a>Csatlakozás az eseményközponthoz
 
@@ -112,13 +111,23 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
 
     ![Eseményközpont-kapcsolat](media/ingest-data-event-hub/event-hub-connection.png)
 
+    Adatforrás:
+
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Adatkapcsolat neve | *test-hub-connection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
     | Eseményközpont-névtér | A névtér egyedi neve | A korábban a névtér azonosításához választott név. |
     | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
-    | Céltábla | Hagyja **A saját adatok útválasztási információt tartalmaznak** lehetőséget bejelöletlenül. | Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben a rövid útmutatóban statikus útválasztást alkalmazunk (ez az alapértelmezett), amelyben megadjuk a táblanevet, a fájlformátumot és a leképezést. Dinamikus útválasztás is alkalmazható, ha a saját adatok tartalmazzák a szükséges útválasztási információkat. |
+    | | |
+
+    Céloldali tábla:
+
+    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben a rövid útmutatóban statikus útválasztást alkalmazunk (ez az alapértelmezett), amelyben megadjuk a táblanevet, a fájlformátumot és a leképezést. Ezért hagyja **adataimat magában foglalja az útválasztási információ** nincs bejelölve.
+    Dinamikus útválasztás is alkalmazható, ha a saját adatok tartalmazzák a szükséges útválasztási információkat.
+
+     **Beállítás** | **Ajánlott érték** | **Mező leírása**
+    |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
     | Adatformátum | *JSON* | A JSON és a CSV formátum támogatott. |
     | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
@@ -138,7 +147,7 @@ Amikor elindítja az Előfeltételek között szereplő [mintaalkalmazást](http
 
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
-Most, hogy az Azure Data Explorer és az eseményközpont között létrejött a kapcsolat, a letöltött [mintaalkalmazással](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) előállíthatja az adatokat.
+Használja a [mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) letöltött adatok létrehozására.
 
 1. Nyissa meg a mintaalkalmazást a Visual Studióban.
 
@@ -162,8 +171,6 @@ Most, hogy az alkalmazás adatokat állít elő, láthatja, ahogy ezek az adatok
 
     ![Eseményközpont diagramja](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. Lépjen vissza a mintaalkalmazáshoz, és állítsa le, amint az üzenetek száma eléri a 99-et.
-
 1. A következő lekérdezés a tesztadatbázison való futtatásával ellenőrizze, hogy hány üzenet került át eddig a pillanatig az adatbázisba.
 
     ```Kusto
@@ -171,15 +178,18 @@ Most, hogy az alkalmazás adatokat állít elő, láthatja, ahogy ezek az adatok
     | count
     ```
 
-1. Az üzenetek tartalmának megtekintéséhez futtassa az alábbi lekérdezést.
+1. Az üzenetek a tartalom megtekintéséhez futtassa a következő lekérdezést:
 
     ```Kusto
     TestTable
     ```
 
-    Az eredményhalmaznak a következőhöz hasonlóan kell kinéznie.
+    Az eredményhalmaz a következőhöz hasonlóan kell kinéznie:
 
     ![Üzenetek eredményhalmaza](media/ingest-data-event-hub/message-result-set.png)
+
+    > [!NOTE]
+    > ADX rendelkezik egy Adatbetöltési, optimalizálja a betöltési folyamat (kötegelés) összesítési házirend. A házirendet 5 perc van konfigurálva, a késés tapasztalható.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

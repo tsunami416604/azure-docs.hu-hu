@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/21/2018
+ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291215"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063285"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az PIM-ben
 
@@ -30,9 +30,9 @@ Az Azure AD Privileged Identity Management (PIM) riasztásokat állít elő, ha 
 
 Ez a szakasz felsorolja az összes biztonsági riasztás címtárszerepkörökkel, hogyan háríthatja el a mellett, hogy hogyan. Súlyosság a következő jelentése van:
 
-* **Magas**: azonnali beavatkozást igényel egy szabályzat megsértése miatt.
-* **Közepes**: nem igényelnek azonnali intézkedést, de lehetséges szabályzat megsértését jelzi.
-* **Alacsony**: nem igényelnek azonnali intézkedést, de javasol a előnyösebb házirend módosítását.
+* **Magas**: Egy szabályzat megsértése miatt azonnali beavatkozást igényel.
+* **Közepes**: Nem igényel azonnali intézkedést, de lehetséges szabályzat megsértését jelzi.
+* **Alacsony**: Nem igényel azonnali intézkedést, de javasol a előnyösebb házirend módosítását.
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>A rendszergazdák nem rendszerjogosultságú szerepkörökhöz használja.
 
@@ -69,7 +69,7 @@ Ez a szakasz felsorolja az összes biztonsági riasztás címtárszerepkörökke
 | | |
 | --- | --- |
 | **Súlyosság** | Közepes |
-| **Miért jelenik meg ez a riasztás?** | Fiókok, amelyek nem változtak meg a jelszavát nemrég lehet szolgáltatás vagy a megosztott fiókok, amelyek nem tart. Ezek a fiókok, a kiemelt szerepkörű ki téve a támadók számára. |
+| **Miért jelenik meg ez a riasztás?** | Számlák a kiemelt szerepkörű az utolsó 90 napban nem módosított jelszó. Ezek a fiókok lehet szolgáltatás, vagy a megosztott fiókok nem alatt marad, és amelyek sebezhetővé. |
 | **Hogyan lehet kijavítani?** | Tekintse át a fiókok a listában. Ha már nincs szükségük hozzáférést, távolítsa el őket a rendszerjogosultságú szerepkörökhöz. |
 | **Megelőzési** | Győződjön meg arról, hogy a felhasználók, amelyekről tudja, hogy a jelszó megváltozása esetén, amelyek a megosztott fiókok vannak Elforgatás erős jelszavakat. </br>Rendszeresen tekintse át a fiókok a kiemelt szerepkörök használatával [hozzáférési felülvizsgálatokkal](pim-how-to-start-security-review.md) és már nem szükséges szerepkör-hozzárendelések eltávolítása. |
 | **A portálon kockázatcsökkentési művelet** | A kiemelt szerepkörű eltávolítja a fiókot. |

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754050"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077963"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -48,6 +48,8 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
    További információkért lásd: [syslog-továbbítás az Azure Stack](azure-stack-integrate-security.md).
 
 - Mostantól [helyezze át a regisztrációs erőforrást](azure-stack-registration.md#move-a-registration-resource) az Azure-ban anélkül, hogy újra kellene erőforráscsoportok között. A Felhőszolgáltatók (CSP) között is áthelyezheti a regisztrációs erőforrás előfizetések, mindaddig, amíg a régi és új előfizetések vannak leképezve a megegyezik CSP-partner. Ez nem érinti a meglévő ügyfél bérlői leképezések. 
+
+- Támogatás hozzáadva a száma hálózati adapterenként több IP-címet rendelni.  További információ: [több IP-cím hozzárendelése a virtuális gépek PowerShell-lel](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 

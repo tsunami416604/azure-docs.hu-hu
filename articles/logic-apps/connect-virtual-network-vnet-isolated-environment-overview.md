@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845195"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061023"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Azure virtuális hálózati erőforrásokhoz való hozzáférés Azure Logic Apps integrációs service-környezetek (ISEs) használatával
 
@@ -33,7 +33,7 @@ Ez az Áttekintés ismerteti egy ISE lehetővé teszi a logic apps és integrác
 
 ## <a name="isolated-versus-global"></a>Izolált, és a globális
 
-Amikor integrált service-környezet (ISE) hoz létre az Azure-ban, ki kell választania egy Azure virtuális hálózat, a *beszúrása* környezetben. Azure üzembe helyezte a virtuális hálózatban a Logic Apps szolgáltatás a privát példány. Ez a művelet létrehoz egy izolált környezethez, ahol Ön hozhat létre és futtathat a logic apps a dedikált erőforrásokat. Amikor létrehoz egy logikai alkalmazást, az alkalmazás helyeként, amelyek a logikai alkalmazás közvetlen hozzáférést biztosít a virtuális hálózatban lévő erőforrásokra irányuló kiválasztása ebben a környezetben. 
+Integrált service-környezet (ISE) az Azure-ban való létrehozásakor, válassza ki az Azure virtuális hálózat, ahol szeretné *beszúrása* az ISE-ben. Azure üzembe helyezte a virtuális hálózatban a Logic Apps szolgáltatás a privát példány. Ez a művelet létrehoz egy izolált környezethez, ahol Ön hozhat létre és futtathat a logic apps a dedikált erőforrásokat. Amikor létrehoz egy logikai alkalmazást, az alkalmazás helyeként, amelyek a logikai alkalmazás közvetlen hozzáférést biztosít a virtuális hálózatban lévő erőforrásokra irányuló kiválasztása ebben a környezetben. 
 
 A Logic apps egy ISE-ben a globális Logic Apps szolgáltatás az ugyanazon felhasználói élmények és a hasonló funkciókat biztosítanak. Nem csak akkor használhatja az azonos beépített műveletek és az összekötők a globális Logic Apps szolgáltatásban, de ISE-specifikus összekötők is használhatja. Például Íme néhány standard szintű összekötők, amelyek az ISE-ben futtatott verziókat kínálnak:
  

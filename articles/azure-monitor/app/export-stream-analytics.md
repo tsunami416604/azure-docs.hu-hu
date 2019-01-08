@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8afe994f2441e736d660a306746508e9c6d13691
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ca9148093660f3ed223fd2117e85d309c919e040
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001838"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076926"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application insights exportált adatok feldolgozása a Stream Analytics használatával
 [Az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) az ideális eszköz a adatfeldolgozás [Application Insights exportált](export-telemetry.md). Stream Analytics különböző forrásokból származó adatok is lekérése. Átalakíthatja és szűrheti az adatokat, és átirányítása fogadóként különböző.
@@ -25,7 +25,7 @@ ms.locfileid: "54001838"
 Ebben a példában létrehozunk egy adaptert, amely beolvassa az adatokat az Application Insightsból, átnevezése és feldolgozza az egyes mezőit, és átadja azt a Power BI-bA.
 
 > [!WARNING]
-> Sokkal jobb és egyszerűbb [javasolt módját Application Insights-adatok megjelenítése Power BI-ban](../../application-insights/app-insights-export-power-bi.md). Bemutatott elérési út csak egy példa mutatja be az exportált adatok feldolgozása.
+> Sokkal jobb és egyszerűbb [javasolt módját Application Insights-adatok megjelenítése Power BI-ban](../../azure-monitor/app/export-power-bi.md ). Bemutatott elérési út csak egy példa mutatja be az exportált adatok feldolgozása.
 > 
 > 
 
@@ -198,7 +198,7 @@ Várjon, amíg a feladat fut-e.
 
 ## <a name="see-results-in-power-bi"></a>Tekintse meg az eredményeket a Power bi-ban
 > [!WARNING]
-> Sokkal jobb és egyszerűbb [javasolt módját Application Insights-adatok megjelenítése Power BI-ban](../../application-insights/app-insights-export-power-bi.md). Bemutatott elérési út csak egy példa mutatja be az exportált adatok feldolgozása.
+> Sokkal jobb és egyszerűbb [javasolt módját Application Insights-adatok megjelenítése Power BI-ban](../../azure-monitor/app/export-power-bi.md ). Bemutatott elérési út csak egy példa mutatja be az exportált adatok feldolgozása.
 > 
 > 
 

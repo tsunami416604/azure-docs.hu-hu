@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000563"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065732"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
 
@@ -34,7 +34,7 @@ Ez a definíció az annak az a logikai alkalmazás erőforrásához a `definitio
 * **Kapcsolatok**: A különálló erőforrásokat, amelyek biztonságos tárolása a metaadatokat, például egy kapcsolati karakterláncot és egy hozzáférési tokent minden olyan összekötő kapcsolatok hivatkozik.
 A logikai alkalmazás erőforrásához, az a logikai alkalmazás erőforrásainak hivatkozik a `parameters` szakaszban.
 
-Egy hasonló eszköz használatával megtekintheti a meglévő logic apps összes megtalálhatja [Azure erőforrás-kezelő](http://resources.azure.com).
+Egy hasonló eszköz használatával megtekintheti a meglévő logic apps összes megtalálhatja [Azure erőforrás-kezelő](http://resources.azure.com). JSON-szintaxist és a Tulajdonságok [Microsoft.Logic erőforrás-típus](/azure/templates/microsoft.logic/allversions).
 
 Ahhoz, hogy egy logikai alkalmazást az erőforráscsoportok üzemelő példányainak használandó sablont, kell erőforrásokat határozzák meg, és szükség szerint paraméterezni.
 Például ha telepít egy fejlesztési, tesztelési és éles környezetben való, valószínűleg használni kívánt SQL-adatbázis különböző kapcsolati karakterláncokkal minden környezetben.

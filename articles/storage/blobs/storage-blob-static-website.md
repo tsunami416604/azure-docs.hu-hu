@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8f88bf6b0de8296de14dccd51b38ee6ca480f059
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598890"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065086"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
@@ -97,10 +97,10 @@ A webes végpont URL-lekérdezés:
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Töltse fel az objektumok a *$web* forráskönyvtárból tároló:
+Töltse fel az objektumok a *$web* tároló forráskönyvtárból. Ügyeljen arra, hogy megfelelően escape-mutató hivatkozást a *$web* a parancsot a tároló. Például ha a cloud Shell az Azure CLI-vel használ az Azure Portalon, karakterpárt a *$web* tároló látható módon:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d `$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Környezet

@@ -3,7 +3,7 @@ title: Üzembe helyezni az ajánlatot az Azure piactér |} A Microsoft Docs
 description: Ismerje meg, és haladjon végig az utasításokat követve üzembe helyezni az ajánlatot – virtuálisgép-lemezkép, fejlesztői szolgáltatás, adatszolgáltatás, stb. – az Azure piactéren.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
-ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 058f50853795453617593a6a07e2951f15f28174
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714281"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076111"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Üzembe helyezni az ajánlatot az Azure piactéren
 Ha elégedett az előfizetési csomag keretében (azaz tesztelt forgatókönyvet, marketing-tartalmat, stb.) indítsa el, a kérés készen áll, és **továbbítsa az éles** a a **közzététel** lapon.  
@@ -62,15 +63,15 @@ Ha elégedett az előfizetési csomag keretében (azaz tesztelt forgatókönyvet
 * Az Azure arculata egyszerű színpalettát használ. Tartsa számát az elsődleges és másodlagos színt az embléma alacsony.
 * Az Azure Portal a témák színei fehér, és fekete. Ezért kerülje ezeket a színeket, a emblémák hátterének színét. Néhány színekkel, amely biztosítja, a emblémák neves az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát. Ha használ áttetsző hátterű, majd győződjön meg arról, hogy az embléma/szöveg nem fehér vagy fekete.
 * Ne használjon egy színátmenetes hátterének az embléma.
-* Szöveg-, akár a vállalat vagy a márkanév, elkerüli az embléma.
+* Elkerüli a szöveg, még akkor is a vállalat vagy a neve, az embléma a saját arculat.
 * Az embléma megjelenését és működését "egyszerű" kell lennie, és kerülje átmenetekhez.
 * Az embléma nem kell nyújtani.
 
 **A Hero embléma irányelveket:**
 
 * A Hero embléma megadása nem kötelező. A közzétevő nem szeretné Hero emblémát tölthet fel. **Azonban Miután feltöltött a hero ikon nem lehet törölni a közzétételi portálon. Ugyanakkor a partner kell kövesse a Azure Marketplace-en Hero ikonok másnak az ajánlat nem hagyható jóvá az éles környezetbe.**
-* A közzétevő megjelenített neve, a Termékváltozat jogcímre és a hosszú összegzése ajánlat fehér a betűk színe megjelenik. Ezért kerülje a Hero ikon a háttérben gondoskodik a bármely világos szín. Fekete, fehér és átlátható háttér nem engedélyezett a Hero-ikonokat.
-* A közzétevő nevét, SKU-cím, az ajánlat hosszú összegzése megjelenítéséhez, és a Létrehozás gombra vannak beágyazva programozott módon a Hero embléma után az ajánlat kerül a listában szereplő. Így nem szöveg kell adnia, a Hero embléma tervezésekor. Ne változtassa meg üres területet a jobb oldalon, mert a szöveget (pl. közzétevő megjelenített neve, SKU title, az ajánlat hosszú összegzése) szerepelni fognak programozott módon, van ott. Az üres helyet a szöveg legyen 415 x 100, a jobb oldali (és a balról 370px ellensúlyozza,).
+* Közzétevő megjelenített nevét, SKU-cím és az ajánlat hosszú összegzése fehér betűszínt jelenik meg. Ezért kerülje a Hero ikon a háttérben gondoskodik a bármely világos szín. Fekete, a fehér és a transzparens háttér nem engedélyezett a Hero-ikonokat.
+* A közzétevő nevét, SKU-cím, az ajánlat hosszú összegzése megjelenítéséhez, és a Létrehozás gombra vannak beágyazva programozott módon a Hero embléma után az ajánlat kerül a listában szereplő. Így nem szöveg kell adnia, a Hero embléma tervezésekor. Ne változtassa meg üres területet a jobb oldalon, mert a szöveget (azt jelenti, közzétevő megjelenített neve, SKU-cím, az ajánlat hosszú összegzése) szerepelni fognak programozott módon, van ott. Az üres helyet a szövegnek kell lennie a 415 x 100, a jobb oldalon (és 370 ellensúlyozza, a balról képpont).
 
 ## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>További éles ellenőrzőlista már listán szereplő virtuális gép kínál
 * Ellenőrizze, hogy van-e már a céges ajánlat ugyanilyen nevű ajánlat. Ha igen, akkor hozzá kell adnia egy új verziója a Termékváltozat egy új ismétlődő ajánlat létrehozása helyett a meglévő szerződéssel.
@@ -81,7 +82,7 @@ Ha elégedett az előfizetési csomag keretében (azaz tesztelt forgatókönyvet
 Az ajánlat élesíti, miután az ügyfél teszteléshez ellenőrizze, hogy minden a szerződések és -funkcióinak megfelelően működjön, az éles környezetben tesztelt, és átmeneti környezetben érvényesítve.
 
 ## <a name="see-also"></a>Lásd még
-* [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
+* [Első lépések: Ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png

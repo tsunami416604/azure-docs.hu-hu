@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban AppSource cége |} Azure
-description: Használatáról AppSource, amely lehetővé teszi a Microsoft partnerei való partner technológia és a szolgáltatások felderíthető, az ügyfél számára a Microsoft által támogatott online kirakat keresztül.
+title: Vállalatfejlesztés az appsource-ban az Azure-ban |} Az Azure
+description: Appsource-ban, amely lehetővé teszi, hogy partner technológiákat és szolgáltatásokat az ügyfelek számára a Microsoft által támogatott online kirakat keresztül felderíthető Microsoft-partnerek használatával kapcsolatos információkat.
 services: Azure, Marketplace, AppSource, Compute, Storage, Networking, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,174 +14,174 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: f39392518f89ac51afd9a18fe59bcef46840478d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2a4343b036716e6c49f7a05a8a480c6e74463760
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054174"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077997"
 ---
-# <a name="grow-your-business-with-appsource"></a>Cége AppSource  
-AppSource használja, ha található, próbálja meg, és üzleti szoftverek (SaaS) szolgáltatás üzleti felhasználók megszólítása, alkalmazások és szolgáltatások végrehajtása a meghajtó üzleti eredmények számítanak, és csökkentse idő érték.  
+# <a name="grow-your-business-with-appsource"></a>Vállalatfejlesztés az AppSource segítségével  
+Használja az appsource-ban, ha üzleti ügyfeleit keresése, próbálja ki, és le üzleti szoftvereket szolgáltatásként (SaaS) alkalmazások és szolgáltatások végrehajtása a meghajtó üzleti eredmények és csökkenteni a piacra értéket.  
 
 | Felhasználói kérdés | Funkció |  
 |:--- |:--- |  
-| ***Üzleti megoldások, amelyek használhatók a Microsoft-termékek az ügyfelek már*** | Lehetővé teszi az ügyfelek partner alkalmazások és szolgáltatások segítségével a Microsoft felhőalapú alkalmazások és technológiák |  
-| ***Könnyedén megtalálhatja a jobb megoldás, illetve implementációjára szolgáltatás lehetővé teszi.*** | Biztosít egy lehetőségekkel felderítése, próbálja meg, és alkalmazások és szolgáltatások és bővítmények |  
-| ***A felhasználói adott üzleti kihívást megoldására iparág-specifikus üzleti megoldások*** | Azonosításához, és ellenőrizze a követelmények között számos iparágakban végzett végpontok közötti iparági megoldásokat biztosít |  
-| ***Alkalmazások termelékenység, hatékonyságát és üzleti elemzések készítése javítása érdekében*** | Alkalmazások biztosít üzletágak, például az ügyfélszolgálat, HR, műveletek |  
-| ***Partnert tapasztalt megvalósítása érdekében az alkalmazások az ügyfél számára egyedi követelmények*** | Dynamics 365, a Power BI, PowerApps és partneralkalmazások előre jelezhető eredményekkel fájlmegosztásba üzleti felhasználók alapuló megoldásokat Consulting Services tanácsadó szolgálat ajánlatok katalógusba |  
+| ***Üzleti megoldásokat, amelyek működnek a Microsoft-termékekkel ügyfeleink már használata*** | Lehetővé teszi az ügyfeleknek partner alkalmazások és szolgáltatások használatával kiterjesztheti a Microsoft felhőalapú alkalmazások és technológiák |  
+| ***Lehetőség használatával könnyedén megtalálhatja a megfelelő megoldást, illetve implementációjára szolgáltatást.*** | Itt egyablakos felderíteni, próbálja meg és alkalmazások és szolgáltatások és bővítmények beszerzése |  
+| ***Iparág-specifikus üzleti megoldások az ügyfelek adott üzleti kihívások megoldása*** | Azonosításához, és számos iparággal követelményeinek ellenőrzése kész teljes körű ipari megoldást nyújt |  
+| ***Alkalmazások javítható a hatékonyság, hatékonyságát és üzleti elemzések készítése*** | Biztosít üzletágak, beleértve az ügyfélszolgálat, HR, műveleteket és más alkalmazások |  
+| ***Tapasztalt megvalósítási partnert alkalmazkodjon az ügyfelek számára egyedi helyzet alkalmazások*** | Biztosít egy katalógust, a Dynamics 365, Power BI, PowerApps és partnerek segítségével az üzleti felhasználók biztosít, kiszámítható eredményekkel alapuló megoldások Consulting Services-ajánlatok |  
 
-<!-- # Grow your business with AppSource  --> Azure piactér és AppSource is a Microsoft közös Ugrás piacra jutási tevékenységek indító pontokat és üzleti növekedésének megfelelően lendítõtömeggel. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a Piactéri ajánlat lehet a felhő üzleti motor centerpiece. Nincs részt vevő díja van. Microsoft-ügyfél látogasson el a kirakatokkal a piactéren naponta keresse meg a megfelelő alkalmazások és szolgáltatások ügyfele számára az üzleti növelése érdekében. Microsoft cél szervezetek a megoldásaival való kapcsolódáshoz, és a Microsoft és a Microsoft-partnerek szolgáltatásokhoz.  
+<!-- # Grow your business with AppSource  --> Az Azure Marketplace és appsource-ban is a Microsofttal közös piaci megjelenést tevékenységek indításakor pontokat és az üzleti növekedés lendítõtömeggel. Előléptetés indítása, igény szerinti generálása és közös értékesítési és marketing segítségével, a Piactéri ajánlat lehet a felhőbeli üzlet középpontjába áll majd. Nincsenek való részvételre vonatkozó díj nincs. A Microsoft ügyfelei látogasson el a kirakattípus a marketplace-en naponta keresse meg a megfelelő alkalmazásokat és szolgáltatásokat az üzleti fokozzák az ügyfelek számára. A Microsoft célja megoldások szervezetek kapcsolódni fog, és a Microsoft és a Microsoft partnerek szolgáltatásokhoz.  
 
-## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Üzleti előnyök csatlakoztatása a cloud piactér  
-Miért csatlakoznia kell a piactéren kirakatokkal sok kényszerítő van. Az alábbiakban az előnyöket kifejezetten listázása a felkínál AppSource cége nyújt segítséget:  
-*   **Csatlakozás közvetlenül döntéshozók**  
-    AppSource segít az ISV-k és a rendszer implementors éri el a lehetséges ügyfeleket, és csatlakozzon közvetlenül ezeket kritikus üzleti döntéshozók, biztosít az üzleti felhasználók felderítésére, majd próbálja meg a LoB-SaaS-alkalmazások egyetlen célhelyét.  
-*   **További felhasználók elérni**  
-    AppSource segít elérni az üzleti felhasználók világszerte piacokon, akkor előfordulhat, hogy nem képes elérni előtt. Az ügyfelek könnyedén megtalálhatja a alkalmazásokat nem csak a AppSource, de is a Microsoft-termékek összefüggésében az ügyfelek már az – keresztül a terméken belüli alkalmazás gyűjteményei.  
-    *   AppSource kapcsolatos további információkért látogasson el a helyen található AppSource lap [ https://appsource.microsoft.com ](https://appsource.microsoft.com).  
-*   **Érdeklődők és értékesítési lehetőségek készítése**  
-    Üzleti felhasználók megpróbálják AppSource Microsoft megosztások az alkalmazást az ügyfél elérhetőségét Önnel közvetlenül a CRM-rendszerbe, az ügyféllel csatlakozhat, és kapcsolja be az ügyfél az értékesítési lehetőségek.  
-*   **Az értékesítési csapat kiterjesztése**  
-    Az értékesítési csapat döntő szerepet játszanak az üzleti. Felsorolja az AppSource alkalmazásokat, egy másik értékesítési csatorna, amely lehetővé teszi az üzleti felhasználók kereshetnek, és megpróbál üzletági alkalmazások révén. Plus tőzsdei AppSource, amelyet Ön is felkereshetők a Microsoft értékesítési csapat a végpont megoldásokat.  
-*   **Javíthatja az üzleti értékekre, és növelje a meglévő és új ügyfelek üzlet mérete**  
-    Üzlet mérete és a cím ügyfélszolgálatnak problémás pontok nő, amikor a felhő helyezi át a munkaterheléseket. Csökkentse az értékesítési ciklusok, és növelheti üzlet jövedelmezőségre teljes megoldásokat kínál, hogy a cél bizonyos munkaterhelések vagy iparág forgatókönyvek.  
-*   **Microsoft Ugrás piacra jutási szolgáltatások feloldása**  
-    Microsoft Ugrás piacra jutási (GTM) szolgáltatások súgójában olvashat bővebben nyissa meg a közös indítási tervezési keresztül új ajtók, globális bővítése, csatorna fejlesztési megosztását, és több vezethet. Attól függően, hogy a próbaverziója ajánlatot tesz, és a Microsoft-technológiák alkalmazása növekedésével további GTM előnyöket feloldásához kap.  
-*   **A tanácsadási szolgáltatásokat ajánlatok felsorolása**  
-    Üzleti felhasználók által előre jelezhető eredményekkel továbbít minőségi tanácsadási szolgáltatásokat nyújtó Ismerkedés abban, hogy az ügyfél segítségével tapasztalt partnerek keres. Listázza az üzleti felhasználók keresése az ügyfél segítségével ajánlatok gyors használatbavétel tanácsadási szolgáltatásokat ajánlatok létrehozásában.  
-*   **Ismerkedés az vetett bizalmat**  
-    A Microsoft AppSource csoport a következő helyen a zökkenőmentes bevezetési érdekében. A AppSource team itt célja segíteni minden lépésnél; hogy működik a próba- vagy tesztkörnyezetben meghajtó szerzett, segít a listaelem feltételeket, és több felel meg.  
-*   **Az alkalmazás listaelem oldal testreszabása**  
-    Amikor arról dönt, hogyan szeretné az alkalmazásokat AppSource piaci beleszólása van. Adja meg a videót, adatlapok, dokumentáció és részletes leírását. A Microsoft, hogy az alkalmazás megtalálható AppSource vonzó módon működik.  
-*   **Gyakorlatban használható elemzések lekérése**  
-    Mélyebb betekintés az a Cloud Partner portálra vagy az Office-alkalmazás közzétételi folyamat a listaelemek teljesítményére. Nyomon követése hány látogatók listázása lekérdezi az alkalmazást, és hány próbálja az alkalmazást. Ismerje meg, a marketingkampányok és milyen tartalmakat a leghatékonyabb kapcsolatos adatokat.  
+## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Üzleti előnyök csatlakoztatása egy felhőbeli piactér  
+Nincsenek számos ok is késztetheti miért a marketplace-en a kirakattípus csatlakoznia. Az alábbiakban az előnyöket, kifejezetten a segítséget vállalatfejlesztés az appsource-ban az ajánlatok listázása:  
+*   **Közvetlenül a döntéshozók**  
+    Az AppSource segítségével ISV-k és a rendszer implementors potenciális ügyfeleket érhet el, és közvetlenül a ezeket kritikus fontosságú üzleti döntéshozók, videóanyagai egyetlen, az üzleti felhasználók felderítésére, majd próbálja meg a LoB-SaaS-alkalmazások kezeléséről.  
+*   **Szélesebb ügyfélkör elérése**  
+    Az AppSource segítségével érhető el az üzleti felhasználók globális piacon, akkor előfordulhat, hogy nem tud elérni előtt. Ügyfelek könnyen megtalálják apps nem csak az appsource-ban, de még a Microsoft-termékek kontextusában ügyfél használhat már a – terméken belüli alkalmazás-katalógusok keresztül.  
+    *   További információ az appsource-ban, oldalán az appsource-ban található [ https://appsource.microsoft.com ](https://appsource.microsoft.com).  
+*   **Az érdeklődők és az értékesítési lehetőségekig készítése**  
+    Amikor az üzleti felhasználók, próbálja meg az alkalmazás a AppSource Microsoft-megosztásokon az ügyfél elérhetőségét, közvetlenül a CRM-rendszerbe, így az ügyfél összekapcsolása, és kapcsolja be az ügyfél az értékesítési lehetőségek.  
+*   **Az értékesítési csoport kiterjesztése**  
+    Az értékesítési csoport kulcsfontosságú szerepet játszanak az üzleti. Alkalmazását az appsource-ban, egy másik olyan értékesítési csatorna, amely lehetővé teszi az üzleti felhasználók kereséséhez, és próbálja meg üzleti alkalmazások révén. Ezenkívül által az appsource-on, tőzsdei, is együttműködnek a Microsoft értékesítői csapatok végpontok közötti megoldásokat nyújtsanak.  
+*   **Növelje üzleti értéket és jobb üzletek meglévő és új ügyfelek**  
+    Növelje az ügylet mérete és a cím ügyfelei panaszait, számítási feladatok a felhőbe való áthelyezésekor. Értékesítési ciklus csökkentheti, és teljes körű megoldások értékesítése az adott cél adott számítási feladatok vagy iparági forgatókönyvek üzlet jövedelmezőség növelése.  
+*   **A Microsoft Go-To-Market Services zárolásának feloldása**  
+    A Microsoft piaci segítő (GTM) szolgáltatások segítségre van szüksége, nyissa meg az új módjait tette lehetővé, és a közös indítási tervezés, a globális megjelenés, csatorna fejlesztési, megosztása és egyéb vezethet. Attól függően, a kipróbálására nyújt lehetőséget kínál, és Microsoft-technológiák alkalmazása növekedésével további GTM-előnyök feloldásához kap.  
+*   **A tanácsadási szolgáltatások ajánlatok listázása**  
+    Az üzleti felhasználók tapasztalt partnerek segítségével első lépésként magabiztosan minőségi továbbít, kiszámítható eredményekkel tanácsadási szolgáltatásokat kínáló ügyfelek keres. Tanácsadási szolgáltatások ajánlatai segítségével keresse meg az ajánlatok az ügyfél segítségével gyorsan használatba vehető, az üzleti felhasználók listázása.  
+*   **Magabiztos indulás**  
+    A Microsoft AppSource-csapatunk készségesen a zökkenőmentes bevezetése érdekében. Az AppSource-csapatunk készségesen segít minden lépésnél rendkívüli módon; hogy működik a próba- vagy tesztkörnyezetből meghajtó környezetet biztosít, és megfelelhet a közzétételi feltételek teljesítéséről és egyéb.  
+*   **Testre szabhatja az alkalmazás ajánlatuk információs oldalán**  
+    Annak eldöntése, hogyan szeretné a piaci alkalmazásait az appsource-on való rugalmasságot rendelkezik. Adjon meg egy videót, adatlapok, dokumentáció és részletes leírása. A Microsoft, hogy az alkalmazás az appsource-on vonzó módon működik.  
+*   **Gyakorlatban hasznosítható elemzéseket kaphat**  
+    Elemzések lekérése a listaelemek a Cloud Partner portálra vagy az Office-alkalmazás közzétételi folyamat teljesítményét. Nyomon követheti a hány látogatók alkalmazásainak lekérdezi, és hány kipróbálják az alkalmazását. Ismerje meg, hogy a digitálismarketing-kampányok és melyik tartalmat a leghatékonyabb részleteit.  
 
-## <a name="how-to-grow-your-business-with-appsource"></a>Hogyan cége AppSource  
-A AppSource felkínál marketing a bevált gyakorlat a következő segítségével maximalizálhatja az üzleti előnyei és beállítását, az Ugrás piacra jutási és a Microsoft közös Sell kezdeményezések sikeres. A Microsoft Partner Network (MPN) az átjáró a marketing minden nem piactér-kapcsolódó és szoftveres erőforrások.  
-*   MPN kapcsolatos további információkért látogasson el a Microsoft Partner Network lapon található [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
+## <a name="how-to-grow-your-business-with-appsource"></a>Hogyan vállalatfejlesztés az AppSource segítségével  
+A következő gyakorlati tanácsok az AppSource-on az ajánlatok marketing segítségével maximalizálhatja az üzleti előnyei, és állítsa be, a piaci megjelenést és a Microsoft Sell kezdeményezések sikerre. A Microsoft Partner Network (MPN) az átjáró összes nem Marketplace-kapcsolódó marketingcélú és szoftveres erőforrások.  
+*   MPN kapcsolatban további információt, látogasson el a Microsoft Partner Network oldalon található [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
 
-A alkalmazás-közzététel és ügyfél-központú igény szerint és a partner engagement súgó meghajtó ügyfél növekedési a saját üzleti elkötelezettségének minőségét.  
+Az alkalmazás-közzététel és a vonatkozó kötelezettségvállalást, ügyfélközpontú igény szerint és a partner engagement segítséget ügyfél növekedésének elősegítése a vállalkozása számára minőségét.  
 
-Az alábbi ellenőrzőlista marketing ajánlott eljárások és közzé kell tenni a AppSource ajánlatok létrehozásakor megfontolandó erőforrásokat tartalmazza:  
-*   **Vegye figyelembe a Microsoft Trademark & Brand irányelveket.**  
-    Ha az alkalmazás elnevezésekor és a Microsoft védjegyeiről és a Microsoft-szoftverek, termékek és szolgáltatások, a neveket kövesse a Microsoft Trademark márka útmutatást, valamint termékspecifikus vonatkozó irányelveket.  
-    *   A Microsoft védjegyeiről és branding kapcsolatos további információkért látogasson el a Microsoft Trademark és a márka irányelvek lapon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).  
-*   **Ingyenes próbaverziós ajánlat, most tapasztal, get engedélyezze, vagy a meghajtó élményét, az alkalmazás tesztelése.**  
-    Üzleti felhasználók szeretne először manuálisan tapasztalhat az alkalmazást.  
-*   **Hozzon létre egy erős értékajánlatához.**  
-    Azonosítsa a lehetséges ügyfél, és milyen a megoldás does, amely nem azonos a módját a felhasználó jelenleg tesz a valamit.  
-*   **Ellenőrizze az alkalmazás listaelem ki.**  
-    Az alkalmazás kezdőlapja az első benyomást, amely egy üzleti felhasználó élvezheti. Az alkalmazás listaelem alapján, az ügyfelek mellett dönt, szeretné-e további, és próbálja meg az alkalmazások.  
-*   **Optimalizálása érdekében a program keresési motor rangsort a listát.**  
-    Ellenőrizze, hogy a keresési kulcsszavakat a alkalmazásnév, a összegzése és a listaelem tartalmaznia, és a keresési kulcsszavakat szerepeljenek a három keresési kulcsszavakat.  
-*   **Üzleti felhasználók támaszkodnak az ügyfelek visszajelzései alapján.**  
-    A minősítés, és tekintse át az ügyfeleket emlékeztesse. Felhasználók kapnak e-mailt az ügyfelek élménye megosztani, azok próbaverzió elindítása után.  
-*   **Támogatja az, hogy az alkalmazás legyen a AppSource.**  
-    Az alkalmazáshoz, a használatával a AppSource jelvény oldalról a AppSource listázása hivatkozásra, és az URL-cím címkézés minden alkalommal, amikor az alkalmazás hivatkozott használja.  
-*   **Az igény szerinti generációs terv.**  
-    Az ügyfelek választható megoldások túlságosan számát. Hogyan tegye meg, hogy az ügyfelek a megoldások tudomást? A meghajtó marketing tevékenységek igény szerint.  
-*   **Az érdeklődési megosztásának engedélyezése.**  
-    Az ügyfél a kapcsolattartási adatokat küld az alkalmazás jobb próbálnak a CRM rendszerben. Győződjön meg arról, hogy egy folyamatot, hogy nyomon követheti a érdeklődők.  
-*   **Tekintse át az alkalmazás listaelem teljesítményét.**  
-    Az irányítópult a Cloud Partner portálra vagy az Office-alkalmazás közzétételi folyamat segítségével teljesítményének áttekintése.  
-*   **Nyissa meg piacra jutási szolgáltatások előnyeit használják.**  
-    Ha a listában AppSource az ajánlatot, akkor lépjen piacra jutási szolgáltatásokhoz való hozzáférés. További tudnivalók a Microsoft Partner Network (MPN) keresztül elérhető előnyöket.  
+Az alábbi ellenőrzőlista marketing ajánlott eljárások és ajánlatok tehetők közzé az appsource-on való létrehozásakor megfontolandó erőforrásokat tartalmazza:  
+*   **Vegye figyelembe a Microsoft Trademark & márkanév-használati irányelveinek.**  
+    Ha az alkalmazás elnevezésében és hivatkozó Microsoft védjegyeiről és a Microsoft-szoftverekhez, termékeket és szolgáltatásokat, kövesse a Trademark Microsoft jelen védjegyezési útmutatójának, valamint termékspecifikus vonatkozó irányelveket.  
+    *   A Microsoft védjegyeiről és a márkakezelés kapcsolatos további információkért látogasson el a Microsoft Trademark és a jelen védjegyezési útmutatójának oldalon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+*   **Ingyenes próbaverziós ajánlat, most találkozik, get engedélyezze, vagy a meghajtó élmény az alkalmazás tesztelése.**  
+    Az üzleti felhasználók szeretné az alkalmazás első kézből tapasztalható.  
+*   **Hozzon létre egy erős értékajánlatát.**  
+    Azonosítsa, aki a lehetséges ügyfelet és milyen a megoldás használható, amely eltér a hogyan a felhasználó van éppen tevékenységet.  
+*   **Győződjön meg az alkalmazás leírására bírnak.**  
+    Az alkalmazás kezdőlapja, amely egy üzleti felhasználó lekérdezi az első benyomást. Az alkalmazás leírására alapján, ügyfelek döntse el, szeretné-e további, és próbálja meg az alkalmazások.  
+*   **A lista boost search engine módosítják a rangsort segítségével optimalizálhatja.**  
+    Ellenőrizze, hogy építse be az alkalmazás neve, Összegzés és listázása a keresési kulcsszavakat, és tartalmazza a keresési kulcsszavakat a három keresési kulcsszavakat.  
+*   **Az üzleti felhasználók visszajelzései támaszkodnak.**  
+    Küldje el a minősítést, és tekintse át az ügyfelek emlékeztesse. A felhasználók kapnak egy e-mailben megosztani élmény az ügyfelek a azokat egy próbaverzió elindítása után.  
+*   **Léptesse elő, hogy az alkalmazás érhető el az appsource-ban.**  
+    Az AppSource-jelvény a lapot az AppSource-on alkalmazásainak összekapcsolása, és URL-cím címkézés minden alkalommal, amikor az alkalmazáshoz társítani fogja használni.  
+*   **Az igény szerinti generálása terv létrehozásához.**  
+    Ügyfelek megoldások túlságosan sok közül választhatnak. Tegye alakíthat ki az ügyfelek tisztában a megoldások? A meghajtó marketing tevékenységek igény szerint.  
+*   **Érdeklődő megosztás engedélyezéséhez.**  
+    Az ügyfél elérhetőségi adatokat küld a alkalmazás közvetlenül a CRM-rendszerbe próbálják. Ellenőrizze, hogy már működik a folyamat a követéséhez érdeklődők válaszaránya.  
+*   **Tekintse át az alkalmazás leírására teljesítményét.**  
+    A Cloud Partner portálra vagy az Office-alkalmazás közzétételi folyamat az irányítópult használatával tekintse át a teljesítményt.  
+*   **Használja a piaci megjelenést szolgáltatások előnyeit.**  
+    Amikor egy ajánlatot az appsource-on listázza, piaci megjelenést szolgáltatásokhoz való hozzáférés rendelkezik. További információ a Microsoft Partner Network (MPN) keretében elérhető előnyöket.  
  
-### <a name="app-listing-best-practices"></a>Alkalmazás listaelem gyakorlati tanácsok  
-A lista tartalmazza a AppSource lehet a lehetséges ügyfél első interakció. Bármely első benyomást, például azt szeretné, hogy erős legyen, és valamit a célközönséget szeretne nyomon követheti. Annak biztosítására, a listaelem üzenetküldési és támogató tartalma a marketing csoport partnert megkülönböztetett, és segít az ajánlatot ki. 
+### <a name="app-listing-best-practices"></a>Alkalmazás listázása – ajánlott eljárások  
+A lista az appsource-ban lehet egy potenciális vevő első-szal. Bármely első benyomást, például azt szeretné, hogy erős és valamit a közönség számára szeretne követni. Annak biztosítása érdekében a lista tartalma üzenetküldési és a támogató a marketingcsoport partner differenciált, és segít a ajánlatra kitűnhet. 
 
-Az alábbiakban néhány alapvető lehetősége van arra, hogy a nagy első benyomást. 
+Az alábbiakban néhány alapvető műveletet is végezhet egy nagyszerű első benyomást biztosít. 
 
 ![Első benyomást](./media/marketplace-appsource/appsourcefirstimpression.png)
 
-A következő szakasz végigvezeti a különböző szükséges küldje el a piactér listázása. Figyelmesen olvassa el rajta tartalmaz ajánlott eljárásokat, amelyekkel az alkalmazás ki, és javíthatja a keresés motor rangsort. 
+Ez a szakasz végigvezeti a marketplace piactéren elküldeni különböző lépéseit. Figyelmesen olvassa el rajta tartalmaz ajánlott eljárásokat, amelyek segítségével az alkalmazás jól látható, és javíthatja a keresés motor módosítják a rangsort. 
 
-Az alábbi táblázatok egyes lépéseinek kitöltésével a ajánlat listaelem adatok találhatók.
+Az alábbi táblázatok bemutatják, minden egyes az ajánlat lista mezőinek. lépését.
 
 **Az ajánlat identitás**  
 
 | Az ajánlat beállítás | Ajánlott eljárások | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Name (Név)** | **Az ajánlat elnevezése**<br />Olyan nevet adjon az alkalmazást egy fő döntési. Nevek juttatás alapú sokkal hatékonyabb, mint leíró neveket. Az alkalmazás neve lépjen kapcsolatba a core value-ügyfelek fogadására. Az alkalmazásnak, hogy a keresőmotorok találatai között előrébb is hozzájárulhat a keresési kulcsszavakat beleértve az alkalmazás-cím. Kövesse a Microsoft Trademark márka útmutatást, valamint megfelelő termékspecifikus irányelvek vonatkozásban a Microsoft védjegyeiről és a Microsoft, szoftverek, termékek és szolgáltatások.<ul> <li>A Microsoft védjegyeiről és branding kapcsolatos további információkért látogasson el a Microsoft Trademark és a márka irányelvek lapon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Name (Név)** | **Az ajánlat elnevezése**<br />Olyan nevet adjon az alkalmazás egy fő döntési. Értékelemek-alapú nevek hatékonyabb, érthető nevekkel osztályozhatók, mint. Az alkalmazás nevére kell kommunikálnak, a core value-ügyfelek kapnak. Többek között a keresési kulcsszavak az alkalmazás címében is segít az alkalmazás újabb rangsorolni a keresőmotorok találatai között. Microsoft védjegyeiről és a Microsoft, szoftverekre, termékekre és szolgáltatásokra való megnevezésekor hajtsa végre a Trademark Microsoft jelen védjegyezési útmutatójának, valamint termékspecifikus vonatkozó irányelveket.<ul> <li>A Microsoft védjegyeiről és a márkakezelés kapcsolatos további információkért látogasson el a Microsoft Trademark és a jelen védjegyezési útmutatójának oldalon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
 
-**Storefront részletei - ajánlat részleteihez**  
+**Részletek storefront - ajánlat részletei**  
 
-| Storefront beállítások | Ajánlott eljárások | 
+| Storefront beállításai | Ajánlott eljárások | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Az ajánlat neve** | A lapon a AppSource kezdőlap és az alkalmazás gyűjteménye a ajánlat az ajánlat-összefoglaló jelenik meg. Vegye fel az alkalmazást a keresőmotorok találatai között prioritása javítása érdekében a ajánlat-összefoglaló keresési kulcsszavakat. |
-| **Ajánlat leírása** | **Adjon meg egy helyes ajánlat leírást**<br />Az ajánlat az első néhány mondatokat, a leírás a értékajánlatához egyértelműen ismertetik. Ne feledje, hogy az első néhány mondat előfordulhat jelenik meg a keresőmotorok találatai között.<br />Ne használja a szolgáltatásokat és funkciókat értékesítési a terméket. Ehelyett a értéknek, átadná összpontosítanak. A iparág-specifikus szóhasználatának vagy lehető megfogalmazást juttatás-alapú.<br />Alapvető összetevői a értékajánlatához kapcsolatos információt tartalmaznia kell:<ul> <li>Mi az a termék</li>  <li>Aki kap, a legtöbb</li> <li>Milyen kell, vagy a problémás rendelkezik,.</li> </ul>Adja meg az ügyfelek hogyan az üzleti vagy a munkahelyi élettartam eltérő lehet a megoldás használata után.<br />Vegye figyelembe a keresési kulcsszavakat és kulcsszó változásait a ajánlat leírását az ajánlatot a keresőmotorok találatai között prioritása javítása érdekében.<br />Adja meg az ajánlat egyszerű HTML leírását.<br />Íme egy példa egy egyszerű ajánlat felsoroló lap (a példában látható módon a listaelem fent látható), amely az ajánlat összegzését, kiegészítve a főbb funkciók listáját. A karakterek maximális száma: 3000.<br />*HTML-példa*<br />Dynamics 365 (online) a szervezet Insights a Dynamics 365 szervezet, és segítséget nyújt a teljesítmény és a támogatási problémák szolgáltatásokban eszközök fontos elfogadása és használati metrikák biztosít. <ul> <li>**Irányítópultok testreszabása**<br />Állítsa be az irányítópult gazdag felhasználói élmény és a pillanatképek készítése a fontos adatokról.<ul> <li>**Figyelése elfogadása és használata**<br />A legaktívabb felhasználók azonosítása lapkérések, leggyakrabban használt entitások, munkafolyamatok és több száma.</li> </ul></li> </ul>Minimális támogatott platform verzió: `8.1.1` |
+| **Ajánlat neve** | Az ajánlat összefoglalásának megjelenik a keresési oldalon az ajánlat az appsource-ban kezdőlapjára, és az alkalmazás-katalógusban. A keresési kulcsszavak felvétel az ajánlat összefoglalásának ennek a területnek a keresőmotorok találatai között az alkalmazás javítása érdekében. |
+| **Az ajánlat leírása** | **Adjon meg egy jó ajánlat leírása**<br />Az Ön ajánlatát a leírás az első néhány mondatokban értékajánlatát egyértelműen ismerteti. Ne feledje, hogy az első néhány mondatokat előfordulhat, hogy kell-e megjeleníteni a keresőmotorok találatai között.<br />Ne támaszkodjon kizárólag szolgáltatásait és funkcióit, hogy a termék. Ehelyett koncentrálhat, az érték teszi elérhetővé. Az iparág-specifikus szókincsből eredőket vagy a lehető legnagyobb előny-alapú megfogalmazást.<br />Alapvető összetevői a értékajánlat kapcsolatos információt tartalmaznia kell:<ul> <li>Mi az a termék</li>  <li>Akik kap belőle a legtöbbet</li> <li>Milyen kell, vagy problémás, megszüntetése.</li> </ul>Ossza meg az ügyfelek hogyan azok üzleti vagy munkahelyi életre eltérő lehet a megoldás használata után.<br />Építse be keresési kulcsszavakat és kulcsszó változásait az ajánlat leírása alapján a rangsorolás, az ajánlatok keresőmotorok találatai között a javítása érdekében.<br />Adja meg az ajánlat leírása egyszerű HTML-kód használatával.<br />Íme egy példa egy egyszerű ajánlati információs oldal (a fenti lista példa szerint), amely biztosít az ajánlat összefoglalásának kulcsfunkcióit listája követi. A karakterek maximális száma 3000.<br />*Minta HTML*<br />Szervezet Insights Dynamics 365 (online) a fontos elfogadása és a használati metrikákat, a Dynamics 365 szervezet, és segítséget nyújt a teljesítmény- és támogatási problémák lépéselőnyben legyenek az eszközök biztosít. <ul> <li>**Alakítsa az irányítópultot**<br />Állítsa be az Irányítópult segítségével gazdag felhasználói élmény és a fontos adatok pillanatképeit.<ul> <li>**Bevezetési figyelése és használata**<br />Azonosíthatja a legaktívabb felhasználók lap kérelmek, leggyakrabban használt entitásokat, a munkafolyamatok és további száma.</li> </ul></li> </ul>Támogatott platform minimális verziója: `8.1.1` |
 
-**Storefront részletei - listát részletei**  
+**Részletek storefront - lista részletei**  
 
-| Storefront beállítások | Ajánlott eljárások | 
+| Storefront beállításai | Ajánlott eljárások | 
 |:--- |:--- |
-| **Iparágakban (legfeljebb 2)** | Legfeljebb két iparágakban akkor válassza, ha az ajánlatot követelményeit iparág-specifikus címek. Ügyeljen arra, hogy az ajánlat leírásában ezen iparág-specifikus képességek hívásához. |
-| **Kategóriák (maximális 3)** | Válassza ki, amely a legjobban megfelel-e az ajánlatot legfeljebb három kategóriába. Válasszon ki ezen kategóriák gondosan felhasználók kategóriák segítségével kapcsolódó alkalmazások keresése. Győződjön meg arról, hogyan ajánlatát támogatja a kategóriára vonatkozó igényeinek ajánlat leírásában hívásához. |
-| **Termékek a az alkalmazás akkor működik (maximális 3.)** | További termékek és technológiák a megoldást használó listában. Például Azure IOT Hub, Azure Machine Learning, stb. |
-| **Keresési kulcsszavakat (maximális 3)** | Keresési kulcsszavakat súgó üzleti felhasználók megkeresését ajánlatát AppSource vagy a Keresőmotorokból. A felső 3 identitás keresési kulcsszavakat a szolgáltatásokat, a keresési kulcsszavakat a ajánlat összefoglaló leírásban tartalmaznia, és itt a keresési kulcsszavakat listája. |
+| **Iparágak (legfeljebb 2.)** | Válassza ki a két iparágakban, az ajánlat címek iparág-specifikus követelmények. Ellenőrizze, hogy meg az iparág-specifikus képességek az ajánlat leírása. |
+| **Kategóriák (max. 3)** | Válassza ki a legjobban az ajánlat olyan legfeljebb három kategóriába. Ezekben a kategóriákban válassza körültekintően, a felhasználók a kategóriák segítségével keresse meg a megfelelő alkalmazások. Győződjön meg arról, hogyan az ajánlat támogatja a kategóriára vonatkozó igények ajánlat leírása hívásához. |
+| **Az alkalmazás működik együtt (max. 3) termékek** | További termékek és technológiák, amelyek a megoldás listázása. Például az Azure IOT Hub és az Azure Machine Learning, stb. |
+| **A keresési kulcsszavak (max. 3)** | A keresési kulcsszavak segítségével az üzleti felhasználók megkeresését az ajánlat az appsource-on vagy a keresőmotor használatával. A felső 3 identitás a keresési kulcsszavak az ajánlatban építhet be a keresési kulcsszavak az ajánlat-összefoglaló, leírását, és a kulcsszavak listája. |
 
-**Storefront részletei - Marketing összetevők**  
+**Storefront részleteiről, Marketing-összetevők**  
 
-| Storefront beállítások | Ajánlott eljárások | 
+| Storefront beállításai | Ajánlott eljárások | 
 |:--- |:--- |
-| **Az ajánlat embléma (.png formátumú, 48 x 48 óra)** | Az embléma kell kell megtervezni és digitális közepes optimalizálva.<br />Töltse fel a lapon az ajánlat PNG formátumban embléma. |
-| **Az ajánlat embléma (.png. x 216 216)** | Az embléma kell kell megtervezni és digitális közepes optimalizálva.<br />Töltse fel az alkalmazás adatait az ajánlatot oldalán listázása PNG formátumban embléma. |
-| **További információ** | Támogató értékesítés és marketing "További," az eszközök közé tartozik például tanulmányok, brosúrák, ellenőrzőlisták, diavetítések, és így tovább. Minden fájl PDF formátumúnak kell lennie. Nem eladásra, tájékoztassa a potenciális.<br />A hivatkozás hozzáadása az alkalmazás kezdőlapja a dokumentumok, és adja hozzá az URL-cím paraméterek látogatók és kísérletek nyomon követéséhez. |
-| **Videók** | Legalább egy videó feltöltése, akár négy videók engedélyezettek. A videó lépjen kapcsolatba az ajánlatot értékét. Ellenőrizze, hogy a potenciális a szövegegység, nem a vállalat hero. A videó az elsődleges kell beszéd kihívást és a fő döntési készítő személy céljaira.<br />Ajánlott hossza: 60 – 90 másodperc. A videók nevében kulcs keresőszavak tartalmaznia.<br />Vegyen fel további videók, például útmutató videót; bevezető videó vagy felhasználói testimonial videó. |
-| **Képernyőfelvételek** | Legfeljebb öt a képernyőfelvételek hozzáadásához kulcs keresőszavak nevében szereplő tartalmaznia. |
+| **Az ajánlat embléma (.png formátumú, 48 x 48)** | Az embléma kell kell megtervezni és digitális közepes optimalizálva.<br />Az Ön ajánlatát a keresési lap PNG formátumú emblémát tölthet fel. |
+| **Az ajánlat embléma (.png. 216 x 216)** | Az embléma kell kell megtervezni és digitális közepes optimalizálva.<br />Az alkalmazás részletei lap az Ön ajánlatát ajánlati PNG formátumban emblémát tölthet fel. |
+| **További információ** | Például a támogató értékesítési és marketing-eszközök "További," alatt például tanulmányok, brosúrák, ellenőrzőlisták, diavetítések, és így tovább. Minden fájl PDF formátumban kell megadni. Nem eladni, a potenciális oktatása.<br />A hivatkozás hozzáadása az alkalmazás kezdőlapját, így az összes dokumentumot, és adja hozzá az URL-paraméter látogatók és kísérletek nyomon követéséhez. |
+| **Videók** | Legalább egy videó feltöltése, legfeljebb négy videót engedélyezettek. A videó kapcsolatba az Ön ajánlatát a érték. Ellenőrizze, hogy a potenciális, a történetet, nem a vállalat a fő kép. A videó kell beszéljen az egyszerű, kihívások és az alapvető döntési létrehozó személy célja.<br />Ajánlott hossza: 60 – 90 másodperc. Kulcs keresőszavakat be a videók nevét tartalmazzák.<br />Érdemes lehet hozzáadni egy bemutató videó; például további videók első lépéseket bemutató videó és a egy ügyfél testimonial videót. |
+| **Képernyőképek** | Legfeljebb öt képernyőképek hozzáadása, a kulcs keresőszavakat nevében szereplő építhet be. |
 
-### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Az ajánlatot a AppSource rendelkezésre állását előléptetése  
-Az ajánlatot AppSource szerepel, amikor a megjelenítendő jobb nyert a ***hozzáférhető a AppSource*** jelvény a lapon. 
+### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Az ajánlat az appsource-ban rendelkezésre állásának előléptetése  
+Ha az ajánlat az appsource-on, ezért megjelenítéséhez jobb a ***az appsource-on elérhető*** jelvényt a lapján. 
 
- ![AppSource jelvény](./media/marketplace-appsource/appsourcebadge.png)
+ ![Az AppSource-jelvény](./media/marketplace-appsource/appsourcebadge.png)
     
-A helyre való felvételekor a jelvény elősegíti, hogy az ajánlatot AppSource, és társíthatja a lehetséges ügyfeleket közvetlenül a listaelem lap. A AppSource jelvény három méretben kaphatók érhető el. Útmutatás a használandó együtt jelvény letöltheti [lépteti elő az alkalmazás a Microsoft AppSource rendelkezésre állását](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
+Ez a jelvény ad hozzá a hely elősegíti, hogy az appsource-ban, és az ajánlat potenciális vevők közvetlen kapcsolat a ajánlatuk információs oldalán. Az appsource-ban jelvény három méretben érhető el. A jelvény együtt használja azt, hogyan töltheti [támogatása a Microsoft AppSource-ban az alkalmazás rendelkezésre állásának](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
 
-#### <a name="linking-to-your-app-listing-page-on-appsource-from-your-page"></a>A lap a listaelem oldalra AppSource a hivatkozás  
-Az a AppSource jelvény a webhelyen való kapcsolódáskor AppSource a tőzsdei, meg kell adni az URL-cím végén a következő lekérdezési paraméterek:
+#### <a name="linking-to-your-app-listing-page-on-appsource-from-your-page"></a>Az appsource-ban az alkalmazás ajánlatuk információs oldalán összekapcsolása az oldalról  
+Az appsource-ban jelvény a webhelyen való kapcsolódáskor a lista az appsource-on, szerepelnie kell az URL-cím végén található lekérdezési paraméterek:
 *   **src**  
-    Például ha a forgalom AppSource irányítása a forrás. Például a webhely, LinkedIn, a Facebook, stb.
+    Például a forrás hova érkezzen a forgalom az AppSource-bA. Például a webhely, LinkedIn, a Facebook, stb.
 *   **mktcmpid**  
-    A marketing kampány Azonosítóját, ami magában foglalhatja legfeljebb 16 karakter betű, szám, aláhúzásjelet és kötőjel bármely kombinációjával. Például: `blogpost_12` 
+    A marketing kampány-azonosító is tartalmazhat, legfeljebb 16 betűt, számot, aláhúzásjelet és kötőjel tetszőleges kombinációjával. Például: `blogpost_12` 
 
-A következő példa bemutatja egy URL-címet, amely tartalmazza a két lekérdezési paramétereket. A Paraméterek hozzáadása a AppSource URL-cím lehetővé teszi, hogy tekintse át a kampányt az elemzések irányítópultján a felhő partnerportálon hatékonyságát.  
+Az alábbi példa bemutatja egy URL-címet, amely tartalmazza a két lekérdezési paramétereket. A Paraméterek hozzáadása az appsource-on URL-cím lehetővé teszi, hogy tekintse át a kampány analytics irányítópultján található a Cloud Partner portálra hatékonyságát.  
 
 ```html
 https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12
 ```  
 
 >[!Important]  
->Amikor előkészíti az URL-címet, nem tartalmaznak nyelvi kódját, például a `/en-us/`.  
+>Amikor előkészíti az URL-cím, nem tartalmaznak a nyelvkódot, mint például ".  
 
 
 #### <a name="link-to-gtm-benefits"></a>GTM előnyöket mutató hivatkozás
-*  Látogasson el a [GTM előnyeit a piactéren](./gtm-benefits.md) lap.   
+*  Látogasson el a [GTM előnyeit a marketplace-en](./gtm-benefits.md) lapot.   
 
 ---  
 
-### <a name="link-to-landing-page"></a>Kezdőlapján mutató hivatkozás
-*   Látogasson el a [a Üzenetsorokra lapja Build](./build-your-landing-page.md) lap.  
+### <a name="link-to-landing-page"></a>Kezdőlap mutató hivatkozás
+*   Látogasson el a [a rendszer esetén megjelenő lapja hozhat létre](./build-your-landing-page.md) lapot.  
 
-#### <a name="link-to-enable-lead-sharing"></a>Csatolás nyújtják megosztásának engedélyezése  
-*   Látogasson el a [megosztásának engedélyezése vezethet](./enable-lead-sharing.md) lap.  
+#### <a name="link-to-enable-lead-sharing"></a>Elégtelen megosztásának engedélyezése mutató hivatkozás  
+*   Látogasson el a [engedélyezése megosztó érdeklődő](./enable-lead-sharing.md) lapot.  
 
-#### <a name="link-to-promote-your-business-with-microsoft"></a>Hivatkozás a Microsofttal az üzleti előléptetése  
-*   Látogasson el a [lépteti elő a vállalati Microsoft](promote-your-business-with-microsoft.md) lap.  
+#### <a name="link-to-promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsoft mutató hivatkozás  
+*   Látogasson el a [elősegítik az üzleti Microsoft](promote-your-business-with-microsoft.md) lapot.  
 
-#### <a name="search-engine-optimization"></a>Optimalizálás érdekében  
-A keresőmotorok találatai között ajánlatát prioritása is szabályozhatja. Azzal a marketing csoport, kulcsszavak azonosításához, és ügyeljen arra, hogy a találatok között alkalmazások javítása érdekében az alábbi útmutatást követve:
-*   Nevezze el az ajánlat, amely a keresési kulcsszavakat szem előtt.
-*   Vegye fel az ajánlat-összefoglaló keresési kulcsszavakat.
-*   A listában a három legfontosabb keresési kulcsszavakat a szolgáltatásokat a kirakat részleteit.
-*   A megfelelő kategóriát és iparági ajánlatát társítani.
-*   Rendszeresen tweetet ajánlatát rendelkezésre állásáról és ajánlatát mutató hivatkozást.  
+#### <a name="search-engine-optimization"></a>Keresés keresőmotor-optimalizálás  
+Az ajánlatok keresőmotorok találatai között a alapján a rangsorolás befolyásolhatja. A marketingcsoport-partnerré, azonosíthatja a kulcsszavakat, és ellenőrizze, hogy az alkalmazások keresési eredmények javítása érdekében az alábbi útmutatót követve:
+*   Adjon nevet a keresési kulcsszavak szem előtt az ajánlatát.
+*   A keresési kulcsszavak felvétel az ajánlat-összefoglaló.
+*   Az első három az ajánlatban kirakatban részletei között a keresési kulcsszavak listája.
+*   Az ajánlat társítsa a megfelelő kategóriát és iparági.
+*   Rendszeresen tweet az ajánlat rendelkezésre állásáról, és tartalmaz egy hivatkozást az ajánlatot.  
 
 #### <a name="merchandising"></a>Kereskedelmi  
-Arany Microsoft-partnerek is lesznek jogosultak a kiemelt, amikor egy app próbaverziója (ingyenes alkalmazást, ingyenes próbaverzió, illetve tesztelése) a AppSource biztosít partner alkalmazást. Alkalmazások is funkcionalitást, kategória vagy iparág, és általában két héten legalább van előléptetve. További információt a kiemelt alkalmazások elférjen keretén belül a Go piacra jutási előnyeit, tekintse át a piactér GTM előnyöket című szakaszában talál.   
+A Microsoft Gold szintű partnerekkel kell a partner alkalmazást funkcióval ellátott, egy app próbaverziója (ingyenes alkalmazást, ingyenes próba vagy Test Drive) az appsource-on változatának jogosult válhat. Alkalmazások is kiemelt kategória vagy iparág szerint, és a rendszer általában hitelesítenie kelljen magát egy legalább két hétig. A piaci megjelenést előnyeit kontextusában fér hogyan kiemelt alkalmazások további információkért tekintse át a Marketplace-en GTM előnyöket című szakaszában talál.   
 
 ## <a name="next-steps"></a>További lépések
-*   Látogasson el a [AppSource Publisher útmutató és az Azure piactér](./marketplace-publishers-guide.md) lap.  
+*   Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](./marketplace-publishers-guide.md) lapot.  
 
 ---  

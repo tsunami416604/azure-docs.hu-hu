@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service teljesítményének figyelése |} A Microsoft Docs
-description: Alkalmazásteljesítmény figyelése Azure-webappok esetében. Diagrambetöltési és -válaszidők függőségi információk és beállított, teljesítménnyel kapcsolatos riasztások.
+title: Az Azure szolgáltatások teljesítményének figyelése |} A Microsoft Docs
+description: Az alkalmazásteljesítmény-figyelés az Azure app services. Diagrambetöltési és -válaszidők függőségi információk és beállított, teljesítménnyel kapcsolatos riasztások.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96a7b775ec051f3511a179ebd4e879f50b9af32
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3e027b92114bdf8cebf6e6bf239ebd9beb4943d6
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019640"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073339"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 Az a [az Azure Portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../application-insights/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -25,20 +25,20 @@ Az a [az Azure Portal](https://portal.azure.com) beállíthat alkalmazásteljes�
 ## <a name="run-time-or-build-time"></a>Futási idő vagy felépítési idő
 A figyelés konfigurálásához kétféle módon alakíthatja ki az alkalmazást:
 
-* **Futási idő** – Kiválaszthat egy teljesítményfigyelési bővítményt, amikor a webapp már működik. Nem szükséges újraépíteni vagy újratelepíteni az alkalmazást. Olyan standard csomagkészletet kap, amely figyeli a válaszidőt, a sikerességi arányokat, a kivételeket, a függőségeket stb. 
+* **Futási idő** -kiválaszthat egy teljesítményfigyelési bővítményt, ha már élő az app service. Nem szükséges újraépíteni vagy újratelepíteni az alkalmazást. Olyan standard csomagkészletet kap, amely figyeli a válaszidőt, a sikerességi arányokat, a kivételeket, a függőségeket stb. 
 * **Felépítési idő** – Telepíthet egy csomagot fejlesztés alatt álló alkalmazásába. Ez a lehetőség jóval sokoldalúbb. A standard csomagkészlet mellett kódolással testreszabhatja a telemetriát, vagy elküldheti saját telemetriáját. Naplózhat konkrét tevékenységeket vagy rögzíthet eseményeket alkalmazástartománya szemantikájának megfelelően. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Futási idő kialakítása az Application Insights segítségével
-Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriságát a rendszer már figyeli. Az Application Insights hozzáadásával további figyelési funkciók érhetők el, például a válaszidők figyelése, a függőségek hívásainak figyelése, az intelligens észlelés és a hatékony Log Analytics lekérdezési nyelv. 
+Melyeket már használ egy app Service-ben az Azure-ban, ha már kap bizonyos figyelőket: kérés és a hibák gyakoriságát. Az Application Insights hozzáadásával további figyelési funkciók érhetők el, például a válaszidők figyelése, a függőségek hívásainak figyelése, az intelligens észlelés és a hatékony Log Analytics lekérdezési nyelv. 
 
-1. Webappja Azure-kezelőpaneljén válassza az **Application Insights** elemet.
+1. **Válassza az Application Insights** az app service az Azure Vezérlőpultján.
 
     ![A beállítások területen válassza az Application Insights](./media/azure-web-apps/settings-app-insights.png)
 
    * Válassza ki, hozzon létre egy új erőforrást, kivéve, ha korábban már beállított egy Application Insights-erőforrást ehhez az alkalmazáshoz. 
 
     > [!NOTE]
-    > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást a web app alkalmazásban is ezzel **kezdeményezzen újraindítást a webalkalmazás**. 
+    > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást az app service-ben is ezzel **újra kell indítani az app service-trigger**. 
 
     ![Webapp kialakítása](./media/azure-web-apps/create-resource.png)
 
@@ -46,7 +46,7 @@ Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriság
 
     ![Válassza a beállítások platformonként](./media/azure-web-apps/choose-options.png)
 
-3. **Alakítsa ki webappját** az Application Insights telepítése után.
+3. **Alakítsa ki az app service** Application Insights telepítése után.
 
    **Engedélyezze az ügyféloldali figyelést** a lapmegtekintések és a felhasználók telemetriai adatainak gyűjtéséhez.
 
@@ -95,6 +95,17 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED okoz NET CORE-webalkalmazások hiányos HTML-válaszban.
+
+App Services Javascript engedélyezése okozhat a html-válaszok csonkolva.
+
+- 1. megkerülő megoldás: APPINSIGHTS_JAVASCRIPT_ENABLED Alkalmazásbeállítás "false" értékűre, vagy távolítsa el teljesen, és indítsa újra a
+- 2. megkerülő megoldás: hozzáadhatja az sdk-kód-n keresztül, és távolítsa el a bővítményt (Ez a konfiguráció nem Profiler és a pillanatkép-hibakereső)
+
+Mi a probléma nyomon követ [Itt](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)
 
 ## <a name="next-steps"></a>További lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](../../azure-monitor/app/profiler.md)

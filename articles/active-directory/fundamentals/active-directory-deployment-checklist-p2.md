@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078235"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064712"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Az Azure Active Directory Premium P2 licencelési szolgáltatás ellenőrzőlista
 
@@ -75,7 +75,7 @@ Ez az útmutató feltételezi, hogy az Azure AD Premium P2 licenccel, Enterprise
    - [Használati forgatókönyvek és az Azure AD-csatlakozás telepítési szempontjai](../devices/azureadjoin-plan.md)
 - [Kezelheti Windows Hello for Business a szervezetben](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization)
 
-## <a name="plan-and-deploy-day-90-and-beyond"></a>Tervezése és üzembe helyezése: 90 nap és azt követően
+## <a name="plan-and-deploy-day-90-and-beyond"></a>Tervezése és üzembe helyezése: Nap-90 és azt követően
 
 - [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)
    - [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](../privileged-identity-management/pim-how-to-change-default-settings.md)
@@ -84,7 +84,7 @@ Ez az útmutató feltételezi, hogy az Azure AD Premium P2 licenccel, Enterprise
 - A felhasználói életciklus azok alkalmazásfüggőségeit kezelése
    - Az Azure AD identitás-életciklus kezelésének megközelítése rendelkezik
    - Jogosulatlan hozzáférés elkerülése érdekében távolítsa el az alkalmazott fiók életciklusa, manuális lépések:
-      - Az Azure AD a forrásból (HR-rendszerbe) hiteles identitások szinkronizálásával. mutató hivatkozást a HR-rendszerekkel támogatott)
+      - Az Azure AD a forrásból (HR-rendszerbe) hiteles identitások szinkronizálásával.
       - [Dinamikus csoportok használatával automatikusan felhasználók attribútumaik HR (vagy a forrásból hiteles), például a részleg, cím, régió, és egyéb attribútumok alapján csoportokhoz rendelhetők hozzá.](../users-groups-roles/groups-dynamic-membership.md)
       - [Használja a Csoportalapú hozzáférés-felügyeleti kiépítés automatikusan az SaaS-alkalmazások üzembe helyezése felhasználók számára.](../manage-apps/what-is-access-management.md)
 

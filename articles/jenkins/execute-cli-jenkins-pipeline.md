@@ -3,17 +3,17 @@ title: Az Azure CLI végrehajtása Jenkins használatával
 description: Megtudhatja, hogyan használhatja az Azure CLI-t egy Java-webalkalmazás üzembe helyezéséhez az Azure-ban Jenkins-folyamat részeként
 ms.service: jenkins
 keywords: jenkins, azure, devops, app service, cli
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
-ms.openlocfilehash: b9ca8848da543bbfb27246109c3a4ab97eb6bc58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 05e21083b060e00602f58e1a17f52f40ced7d34e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974918"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075209"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Üzembe helyezés az Azure App Service-ben a Jenkinsszel és az Azure CLI használatával
 Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI-t egy [Jenkins-folyamatban](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
@@ -26,7 +26,7 @@ Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI
 > * Jenkins-folyamat létrehozása
 > * A folyamat futtatása és a webalkalmazás ellenőrzése
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

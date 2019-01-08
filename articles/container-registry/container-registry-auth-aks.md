@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752537"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078779"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Az Azure Kubernetes Service-ből az Azure Container Registry a hitelesítéshez
 
@@ -44,7 +44,7 @@ az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Hozzáférés a Kubernetes titkos kulcs
 
-Bizonyos esetekben előfordulhat, hogy nem kell a szükséges szerepkör hozzárendelése az automatikusan létrehozott AKS szolgáltatás egyszerű hozzáférést, az ACR-be. Például a szervezet biztonsági modell, mert nincs elegendő jogosultsága a az Azure AD-címtárát az AKS által létrehozott szolgáltatásnév, szerepkör hozzárendelése. Ebben az esetben hozzon létre egy új egyszerű szolgáltatást, majd hozzáférést, a container registry-Kubernetes kép lekérési titkos kulcs használatával.
+Bizonyos esetekben előfordulhat, hogy nem kell a szükséges szerepkör hozzárendelése az automatikusan létrehozott AKS szolgáltatás egyszerű hozzáférést, az ACR-be. Például miatt a szervezet biztonsági modellt, akkor előfordulhat, hogy nem jogosult az AKS által létrehozott szolgáltatásnév, szerepkör hozzárendelése az Azure Active Directory-bérlőben. Szerepkört rendel egy egyszerű szolgáltatást kell az Azure AD-fiókot az Azure AD-bérlő írási engedéllyel kell rendelkeznie. Ha nem rendelkezik engedéllyel, hozzon létre egy új egyszerű szolgáltatást, majd hozzáférést, a container registry-Kubernetes kép lekérési titkos kulcs használatával.
 
 A következő parancsfájl használatával hozzon létre egy új egyszerű szolgáltatást (fogja használni a saját hitelesítő adatait a kép lekérési Kubernetes titkos). Módosítsa a `ACR_NAME` változó a környezetnek a parancsfájl futtatása előtt.
 

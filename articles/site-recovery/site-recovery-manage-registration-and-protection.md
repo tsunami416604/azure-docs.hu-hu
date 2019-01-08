@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 43394be7acc4c561147ffc86744f2daf0d751788
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844566"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074988"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -138,7 +138,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 
 1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
 2. A **tiltsa le a replikációt** lapra, jelölje be az alábbi lehetőségek egyikét:
-    - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A konfigurációs kiszolgáló replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva.
+    - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A konfigurációs kiszolgáló replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva. Vegye figyelembe, hogy ez a beállítás csak akkor használható, ha a konfigurációs kiszolgálót csatlakoztatott állapotban van.
     - **Távolítsa el** – Ez a beállítás kellene használni, csak ha a forráskörnyezetet törölték, vagy nem érhető el (nem csatlakozik). Ezzel eltávolítja a replikált elemet az Azure Site Recovery (a számlázás megáll). A konfigurációs kiszolgálón replikációs konfiguráció **nem lesz** törlődnek. 
 
 > [!NOTE]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 93757c9f589ec1a6d5065d32740831dac922a015
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013236"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079068"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
 
@@ -39,11 +39,6 @@ Az Advisor-javaslatok az Azure-erőforrások egységes, összevont nézetének b
 
 Az SQL Database Advisor kapcsolatos további információkért lásd: [az SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Javíthatja az Azure Cache Redis teljesítmény és megbízhatóság
-
-Redis-példány, ahol teljesítményét negatívan befolyásolhatja a magas memóriahasználat, a kiszolgáló terhelését, a hálózati sávszélesség vagy a ügyfélkapcsolatok nagy számú Azure Cache Advisor azonosítja. Az Advisor is gyakorlati tanácsokat javaslatok kapcsolatos lehetséges problémák elkerülése érdekében. A Redis javaslatok Azure Cache kapcsolatos további információkért lásd: [Azure Cache redis Cache Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
-
-
 ## <a name="improve-app-service-performance-and-reliability"></a>Az App Service teljesítményének és megbízhatóságának javítása
 
 Az Azure Advisor integrálja, ajánlott eljárásait az App Services élmény javítása és a megfelelő platform képességei felderítése. Példák az App Services ajánlások a következők:
@@ -52,6 +47,16 @@ Az Azure Advisor integrálja, ajánlott eljárásait az App Services élmény ja
 
 App Services javaslatok kapcsolatos további információkért lásd: [ajánlott eljárások az Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Felügyelt lemezek használata a lemez i/o szabályozásának megelőzése érdekében
+
+Az Advisor azonosítja, amely eléri-e méretezhetőségi célértékét tárfiókhoz tartozó virtuális gépek. Így ki vannak téve az i/o-szabályozásra. Az Advisor javasolni fogja, hogy ezek a virtuális gépek felügyelt lemezeket használni teljesítményromlás megelőzése érdekében.
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>A teljesítmény és a virtuálisgép-lemezek megbízhatóságának javítása a Premium Storage segítségével
+
+Advisor azonosít, amelyek nagy mennyiségű transations, a tárfiók a standard szintű lemezek, virtuális gépeket, és javasolja, hogy prémium szintű lemezek telepítse. 
+
+Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokat futtató virtuális gépek tesz lehetővé. Premium storage-fiókok használó virtuálisgép-lemezek tartós állapotú meghajtókhoz (SSD-kkel) adatokat tárolja. Az alkalmazás a legjobb teljesítmény érdekében javasoljuk, hogy a virtuális gép lemezei a premium storage magas iops-t igénylő telepített át.
+
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Döntés az SQL data warehouse-tábla lekérdezési teljesítmény érdekében az adatok eltávolítása
 
 Adatok torzulása szükségtelen adatok mozgását vagy az erőforrás szűk keresztmetszeteket okozhat, a számítási feladatok futtatásakor. Az Advisor észleli terjesztési adatok tevékenységdiagramon nagyobb, mint 15 %, és javasoljuk, hogy az adatok újraterjesztése, és nyissa meg újra az a tábla terjesztési kulcs beállításokat. További információk azonosítása és torzulása eltávolításával kapcsolatban lásd: [hibaelhárítási torzulása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
@@ -59,6 +64,14 @@ Adatok torzulása szükségtelen adatok mozgását vagy az erőforrás szűk ker
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Az SQL data warehouse-tábla lekérdezési teljesítmény érdekében az elavult tábla statisztikák létrehozása vagy frissítése
 
 Az Advisor azonosítja, amelyek nem rendelkeznek naprakész táblák [táblastatisztikák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) és táblastatisztikák javasolja létrehozása vagy frissítése. Az SQL data warehouse-optimalizáló naprakész ukazatelé segítségével megbecsülheti a számosság vagy a lekérdezés eredményét, amely lehetővé teszi a lekérdezésoptimalizáló hozhat létre kiváló minőségű lekérdezésterv a leggyorsabb teljesítmény sorainak lekérdezés.
+
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikális felskálázás a lekérdezési teljesítmény érdekében az SQL Data Warehouse tábláiba gyorsítótár a kihasználtság optimalizálása
+
+Az Azure Advisor észleli az SQL Data Warehouse-e magas gyorsítótár használt százalékos aránya, és a egy alacsony találati százalékot. Ez azt jelzi, hogy magas gyorsítótár kiürítési, ami hatással lehet az SQL Data Warehouse teljesítményét. Az Advisor javasolja, hogy az SQL Data Warehouse biztosításához lefoglalni elegendő gyorsítótár kapacitás a számítási feladatok vertikális.
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Replikált táblák lekérdezési teljesítmény érdekében az SQL Data Warehouse-táblákat átalakítása
+
+Az Advisor táblákat, amelyek nem szerepelnek a replikált táblák, de kiaknázhatják a konvertálás azonosítja, és javasolja, hogy ezek a táblázatok konvertálása. Javaslatok a replikált tábla méretét, az oszlopok, tábla terjesztési típust és az SQL Data Warehouse-tábla partícióinak száma száma alapulnak. További heurisitics az ajánlás környezet áll rendelkezésre. Hogyan határozza meg, ez a javaslat kapcsolatos további információkért lásd: [SQL Data Warehouse javaslatok](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>A Tárfiók migrálása az Azure Resource Managerhez való csatlakoztatásával minden, a legújabb Azure-funkciók
 

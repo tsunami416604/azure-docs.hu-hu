@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039428"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062944"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -59,6 +59,24 @@ Ha a kiválasztott munkaterület nincs Automation-fiók van csatolva, látni fog
 
 ![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
+Ha engedélyezte a megoldásokat, csak bizonyos régiókban támogatottak egy Log Analytics-munkaterületet és Automation-fiók összekapcsolása.
+
+Az alábbi táblázat bemutatja a támogatott leképezések:
+
+|**Log Analytics-munkaterület régiója**|**Az Azure Automation-régió**|
+|---|---|
+|Délkelet-Ausztrália|Délkelet-Ausztrália|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|USA keleti régiója|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|Régiója|Régiója|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+
 Kapcsolja ki bármelyik virtuális gépet, amely nem szeretné engedélyezni, jelölőnégyzetét. Virtuális gépek, amelyek nem lehet engedélyezni a rendszer már sincs kijelölve.
 
 Kattintson a **engedélyezése** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
@@ -80,13 +98,13 @@ Miután eltávolítja ezeket a megoldásokat, az Automation-fiók leválasztása
 
 1. Az Azure Portalról nyissa meg az Automation-fiókját, és a az Automation-fiók oldalon válassza ki **csatolt munkaterület** a szakaszában **kapcsolódó erőforrások** a bal oldalon.
 
-1. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
+2. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
 
    ![Munkaterület oldalán leválasztása](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    A rendszer felkéri, hogy erősítse meg, valóban folytani kívánja-e.
 
-1. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
+3. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
 Az Update Management megoldás használata esetén igény szerint, előfordulhat, hogy el kívánja távolítani a következő elemek, amelyek a megoldás eltávolítása után már nem szükséges.
 
@@ -108,7 +126,7 @@ Amikor bevezetése több gépet, előfordulhat, hogy azt mutatják be, mint gép
 
 **OK**: Ez a hiba azt mutatja, hogy a virtuális gép, amely egy másik munkaterülethez előkészítése jelentések kívánt.
 
-**Megoldás**: kattintson a **konfiguráció használható** a megcélzott Automation-fiók és a Log Analytics-munkaterületen módosíthatja.
+**Megoldás**: Kattintson a **konfiguráció használható** a megcélzott Automation-fiók és a Log Analytics-munkaterületen módosíthatja.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM-jelentést a munkaterület, amely nem érhető el ebben az előfizetésben
 
@@ -118,25 +136,25 @@ Amikor bevezetése több gépet, előfordulhat, hogy azt mutatják be, mint gép
 * Már nem létezik, vagy
 * Egy erőforráscsoportban található, nem rendelkezik a hozzáférési engedélyek
 
-**Megoldás**: keresse meg az automation-fiókhoz társítva, amely a virtuális gép a jelentéseket a munkaterületen, és előkészítheti a virtuális gép a hatókör-konfiguráció módosításával.
+**Megoldás**: Keresse meg az automation-fiók társítva, amely a virtuális gép a jelentéseket a munkaterületen, és előkészítheti a virtuális gép a hatókör-konfiguráció módosításával.
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Virtuális gép operációs rendszer verziója vagy a disztribúció nem támogatott
 
-**OK:** a megoldás az összes Linux-disztribúciók vagy a Windows összes verziója nem támogatott.
+**OK:** A megoldás az összes Linux-disztribúciók vagy a Windows összes verziója nem támogatott.
 
-**Megoldás:** tekintse meg a [támogatott ügyfelek listáját](automation-update-management.md#clients) a megoldáshoz.
+**Megoldás:** Tekintse meg a [támogatott ügyfelek listáját](automation-update-management.md#clients) a megoldáshoz.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klasszikus virtuális gépeket nem lehet engedélyezni.
 
-**OK**: a klasszikus üzemi modellt használó virtuális gépek nem támogatottak.
+**OK**: A klasszikus üzemi modellt használó virtuális gépek nem támogatottak.
 
-**Megoldás**: a virtuális gép áttelepítése a resource manager-alapú üzemi modellbe. Ezzel kapcsolatban lásd: [klasszikus üzemi modell erőforrások áttelepítése](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Megoldás**: A virtuális gép áttelepítése a resource manager-alapú üzemi modellbe. Ezzel kapcsolatban lásd: [klasszikus üzemi modell erőforrások áttelepítése](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuális gép leállt. (felszabadítva)
 
 **OK**: A virtuális gép nem található egy **futó** állapota.
 
-**Megoldás**: annak érdekében, hogy készítse elő egy megoldást a virtuális gép virtuális Gépen kell futnia. Kattintson a **VM indítása** szövegbeli hivatkozást anélkül szeretné elindítani a virtuális gép a lapra navigál.
+**Megoldás**: Annak érdekében, hogy készítse elő egy megoldást a virtuális gép virtuális Gépen kell futnia. Kattintson a **VM indítása** szövegbeli hivatkozást anélkül szeretné elindítani a virtuális gép a lapra navigál.
 
 ## <a name="next-steps"></a>További lépések
 

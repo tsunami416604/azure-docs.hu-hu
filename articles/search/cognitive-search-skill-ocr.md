@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 097fd93955a4ca3fd96ae6452fa3b503b029ffc3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b07c71a9365fca3a2e5d7c837acf689af980afdd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313224"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075821"
 ---
 # <a name="ocr-cognitive-skill"></a>Optikai Karakterfelismerés cognitive szakértelem
 
@@ -44,7 +44,7 @@ A paraméterei a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | detectOrientation | Lehetővé teszi, hogy a kép tájolásának autodetection. <br/> Érvényes értékek: true / false (hamis).|
-|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódja. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (francia) <br/>  Németország (németországi) <br/>el (görög) <br/> hu (magyar) <br/> azt (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> csendes-óceáni idő (portugál) <br/>  a kérelemegység (orosz) <br/>  a gen (spanyol) <br/>  SV (svéd) <br/>  tr (török) <br/> ar (arab) <br/> ro (Románia) <br/> az SR-Cyrl (SerbianCyrillic) <br/> az SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  UNK (ismeretlen) <br/><br/> Ha a nyelvi kód nincs megadva vagy null értékű, a nyelv az hálózati kártya automatikus észlelése. </p> |
+|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódja. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (francia) <br/>  Németország (németországi) <br/>el (görög) <br/> hu (magyar) <br/> azt (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> csendes-óceáni idő (portugál) <br/>  a kérelemegység (orosz) <br/>  a gen (spanyol) <br/>  SV (svéd) <br/>  tr (török) <br/> ar (arab) <br/> ro (Románia) <br/> az SR-Cyrl (SerbianCyrillic) <br/> az SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  UNK (ismeretlen) <br/><br/> Ha a nyelvi kód nincs megadva vagy null értékű, a nyelv az angol nyelvű lesz beállítva. Ha a nyelv explicit módon "unk" értékre van állítva, a nyelv nem automatikusan észleli. </p> |
 | textExtractionAlgorithm | "nyomtatott" vagy "kézírásos". A "kézírásos" szöveg felismerése OCR algoritmus jelenleg előzetes verzióban érhető el, és csak angol nyelven. |
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek

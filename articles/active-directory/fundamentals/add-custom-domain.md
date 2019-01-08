@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 14035fe9061af98b10b822c3b7b9213cdda3fbbd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3fdbbd1d3cf27172ed9ba5c5087ffc331e01ccf9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098297"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076807"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
 Minden új Azure AD-bérlőt egy kezdeti tartománynevet tartalmaz *domainname*. onmicrosoft.com. Nem módosítható, és a kezdeti tartománynév törlése, de a szervezet neveket adhat hozzá a listában. Egyéni tartománynevek hozzáadása segítségével hozhat létre, amely számára is felismerhetők a felhasználók számára, például felhasználóneveket *alain@contoso.com*.
@@ -63,7 +63,7 @@ Miután létrehozta a címtárban, az egyéni tartománynevet is hozzáadhat.
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>A DNS-adatokat hozzáadni a tartományregisztráló
 Az egyéni tartománynév hozzáadása az Azure ad-hez, után térjen vissza a tartományregisztrálónál, és adja hozzá az Azure AD DNS-információkat a másolt TXT-fájlból. Létrehozás a txt típusú rekordot a tartományra vonatkozóan "ellenőrzi a" a tartománynév tulajdonjogát.
 
--  Lépjen vissza a tartományregisztrálónál, hozzon létre egy új txt típusú rekordot, a tartomány alapján a másolt DNS-adatokat, állítsa a **TTL** (élő az idő) és 60 perc, majd mentse az adatokat.
+-  Lépjen vissza a tartományregisztrálónál, hozzon létre egy új txt típusú rekordot, a tartomány alapján a másolt DNS-adatokat, állítsa a **TTL** (élő az idő) 3600 másodperc (60 perc), majd mentse az adatokat.
 
     >[!Important]
     >A kívánt számú tartománynevek regisztrálhat. Azonban minden egyes tartományhoz lekérdezi a saját txt típusú rekordot az Azure ad-ből. Ügyeljen arra, hogy a txt típusú fájl adatait, a tartományregisztráló megadásakor. Ha nem a megfelelő adja meg, vagy véletlenül ismétlődő információt, kell Várjon, amíg a TTL időtúllépés (60 perc), mielőtt újra próbálkozhat.
@@ -98,10 +98,10 @@ Miután regisztrálta az egyéni tartománynevet, meg kell róla, hogy érvénye
 
 ## <a name="next-steps"></a>További lépések
 
-- Egy másik globális rendszergazda hozzáadása a címtárhoz. További információkért lásd: [szerepkörök és a Rendszergazdák hozzárendelése](active-directory-users-assign-role-azure-portal.md)
+- Egy másik globális rendszergazda hozzáadása a címtárhoz. További információkért lásd: [szerepkörök és a Rendszergazdák hozzárendelése](active-directory-users-assign-role-azure-portal.md).
 
-- Felhasználók hozzáadása a tartományhoz, lásd: [hozzáadása vagy a felhasználók törlése](add-users-azure-active-directory.md)
+- Felhasználók hozzáadása a tartományhoz, lásd: [hozzáadása vagy törlése a felhasználók](add-users-azure-active-directory.md).
 
-- Kezelheti a tartomány nevét adatait az Azure ad-ben. További információkért lásd: [egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md)
+- Kezelheti a tartomány nevét adatait az Azure ad-ben. További információkért lásd: [egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
 
 - Ha rendelkezik a helyszíni verzióját, amelyet szeretne használhatja az Azure Active Directory mellett, a Windows Server [a helyszíni címtárak integrálása az Azure Active Directory](../connect/active-directory-aadconnect.md).

@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: d67b53d80b74d0a6ad3c4264a55a5e277acffd20
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ddf4763b8f5abb81c7d884d9d978c85843410ccb
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083903"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064946"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése, és nyisson egy támogatási jegyet az Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetés-támogatás az Azure Active Directory (Azure AD) biztosít. Támogatás online és telefonon a fizetős Microsoft Azure és a próba-előfizetések is érhető el. Telefonos és online számlázási támogatás más nyelveken érhetők el. 
@@ -51,7 +51,7 @@ Ha nem találja a választ önsegítő erőforrások segítségével, online tá
    
 4. A **szolgáltatás**válassza **Azure Active Directory**, majd válassza ki **tovább**.
 
-5. Az a **probléma** panelen válassza ki a [súlyossági](https://azure.microsoft.com/support/plans/response/)).
+5. Az a **probléma** panelen válassza ki a [súlyossági](https://azure.microsoft.com/support/plans/response/).
   
 6. Válassza ki egy **Problem type**, majd válassza ki a **kategória** erre. Ezen a ponton azt is rendelkezésre állnak az önsegítő információkat a probléma kategóriája.
   
@@ -68,9 +68,9 @@ Ha nem találja a választ önsegítő erőforrások segítségével, online tá
 
 1. Jelentkezzen be a [az Office 365 felügyeleti központban](https://portal.office.com) egy olyan fiókkal, amely egy Enterprise Mobility + Security (EMS) licenccel rendelkezik.
 
-2. Az a **támogatási** csempéről válassza **új szolgáltatáskérés**: ![Office 365-portál képernyőképe](./media/active-directory-troubleshooting-support-howto/office-portal.png)
+2. Az a **támogatási** csempéről válassza **új szolgáltatáskérés**: ![Az Office 365-portál képernyőképe](./media/active-directory-troubleshooting-support-howto/office-portal.png)
 
-3. A a **támogatja az Áttekintés** lapon jelölje be **Identitáskezelés** vagy **felhasználó-és tartományi**: ![az Azure AD-támogatás kategóriák képernyőképe](./media/active-directory-troubleshooting-support-howto/select-identity.png)
+3. Az a **a terméktámogatás áttekintése** lapon jelölje be **Identitáskezelés** vagy **felhasználó-és tartományi**: ![Az Azure AD támogatási kategóriák képernyőképe](./media/active-directory-troubleshooting-support-howto/select-identity.png)
 
 4. A **funkció**, válassza ki az Azure AD-funkció, amelynek támogatási kívánja.
 

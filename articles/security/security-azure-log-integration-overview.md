@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/07/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: f20da4ab60eeec3e9c353445f6bc20449b9c1cb6
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e9b547b6b582e38a51196815522132dd807c971b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584479"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079034"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Bevezetés az Azure-naplók integrációja
 
@@ -29,7 +29,7 @@ ms.locfileid: "53584479"
 
 Az Azure Log Integration volt elérhetővé egyszerűsítheti a integrálása az Azure naplói a helyszíni biztonságiadat- és eseménykezelés (SIEM) rendszerbe.
 
- Az ajánlott módszer az Azure-naplók integráló, hogy az SIEM szállítói s összekötőkhöz. Az Azure Monitor lehetővé teszi a naplók streamelése az event hubsba, és a SIEM-beszállítót írhat összekötők további integrálásához az eseményközpontból származó naplókat a siem-be.  Hogyan is működik mindez leírását, kövesse a [figyelési adatok az event hubs figyelő-adatfolyam](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). A cikk felsorolja az siem-EK, amelyhez közvetlen Azure-összekötők már rendelkezésre állnak.  
+ Az ajánlott módszer az Azure-naplók integráló, hogy a SIEM gyártója által biztosított összekötőkkel. Az Azure Monitor lehetővé teszi a naplók streamelése az event hubsba, és a SIEM-beszállítót írhat összekötők további integrálásához az eseményközpontból származó naplókat a siem-be.  Hogyan is működik mindez leírását, kövesse a [figyelési adatok az event hubs figyelő-adatfolyam](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). A cikk felsorolja az siem-EK, amelyhez közvetlen Azure-összekötők már rendelkezésre állnak.  
 
 > [!IMPORTANT]
 > Ha elsődleges érdeklődését gyűjti a virtuális gépek naplóinak, a legtöbb SIEM-beszállítót adni ezt a lehetőséget a megoldásban. Az SIEM gyártója által biztosított összekötő használata mindig az előnyben részesített megoldás.

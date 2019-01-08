@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 4653803623ed0c847fa63663204b5842f7a03d08
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584207"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063913"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Az Azure Log Integration-oktatóanyag: Az Azure Key Vault események feldolgozása az Event Hubs használatával
 
@@ -25,13 +25,13 @@ ms.locfileid: "53584207"
 
 Használhatja az Azure Log Integration naplózott események beolvasásához, és elérhetővé teheti azokat a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszer. Ez az oktatóanyag azt szemlélteti, hogyan Azure Log Integration használható-e feldolgozni az Azure Event Hubs keretében beszerzett naplókat.
 
-Az előnyben részesített módja az Azure-naplók integrálása a SIEM szállítói s Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Azonban a SIEM szállítói adatforgalmi-t az Azure monitornak biztosítani egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (Ha a siem-nek az Azure Log Integration) mindaddig, amíg elérhető ilyen egy összekötőt.
+Az előnyben részesített módja az Azure-naplók integrálása a SIEM gyártója által biztosított Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Azonban a SIEM gyártója által biztosított az Azure monitornak nem biztosít egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (ha az Azure Log Integration támogatja a siem-nek) mindaddig, amíg elérhető ilyen egy összekötőt.
 
  
-Ebben az oktatóanyagban használatával leckén keresztül az Azure Log Integration és az Event Hubs együttműködésének példa lépések, és hogyan támogatja az egyes lépések a a megoldás ismertetése. Kipróbálhatja milyen, ve tanult Itt hozhat létre saját lépéseket a vállalat s egyedi igényeinek támogatásához.
+Ebben az oktatóanyagban használatával leckén keresztül az Azure Log Integration és az Event Hubs együttműködésének példa lépések, és hogyan támogatja az egyes lépések a a megoldás ismertetése. Kipróbálhatja a tanultak Itt hozhat létre a saját vállalata egyedi igényeinek támogatásához lépéseket.
 
 >[!WARNING]
-A lépéseket, és ebben az oktatóanyagban szereplő parancsok nem tartozhat másolni és beilleszteni. Még csak példák. Ne használja a PowerShell-parancsok, mivel az élő környezetben. Kell testre szabnia egyedi környezete alapján.
+A lépéseket, és ebben az oktatóanyagban szereplő parancsok nem tartozhat másolni és beilleszteni. Még csak példák. Az élő környezetben ne használja az "adott állapotában" PowerShell-parancsokat. Kell testre szabnia egyedi környezete alapján.
 
 
 Ez az oktatóanyag végigvezeti egy eseményközpontba naplózza az Azure Key Vault tevékenység elkészítéséhez, és elérhetővé JSON-fájlok formájában a SIEM rendszerhez. Konfigurálhatja a SIEM-rendszerbe, a JSON-fájlok feldolgozására.
@@ -80,7 +80,7 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
 ## <a name="create-supporting-infrastructure-elements"></a>Támogató infrastruktúra-elemek létrehozása
 
 1. Nyisson meg egy rendszergazda jogú PowerShell-ablakban, majd **C:\Program Files\Microsoft Azure Log Integration**.
-1. Importálja a AzLog parancsmagok a LoadAzLogModule.ps1 szkript futtatásával. Adja meg a `.\LoadAzLogModule.ps1` parancsot. (Közlemény a. \ a parancsban.) Ennek nagyjából a következőképpen kell kinéznie:</br>
+1. Importálja a AzLog parancsmagok a LoadAzLogModule.ps1 szkript futtatásával. Adja meg a `.\LoadAzLogModule.ps1` parancsot. (Közlemény a ". \" , hogy a parancsban.) Ennek nagyjából a következőképpen kell kinéznie:</br>
 
    ![A betöltött modulok listája](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
 
    ![PowerShell-ablakban](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. Hozzon létre változókat a értékeket, amelyeket később fogja használni. Adja meg a következő PowerShell-parancsokat minden egyes. Előfordulhat, hogy a értékeit, hogy megfeleljenek a környezet módosítani kell.
-    - ```$subscriptionName = �Visual Studio Ultimate with MSDN�``` (Az előfizetés neve eltérő lehet. Tekintheti meg az előző parancs részeként.)
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Az előfizetés neve eltérő lehet. Tekintheti meg az előző parancs részeként.)
     - ```$location = 'West US'``` (Ezt a változót használja át a helyet, ahol erőforrásokat kell létrehozni. Módosíthatja ezt a változót kell bármely tetszőleges helyre.)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (A neve bármi lehet, de ez csak kisbetűket és számokat kell tartalmaznia.)

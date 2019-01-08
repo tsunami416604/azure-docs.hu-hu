@@ -4,17 +4,17 @@ description: Linux rendszerű virtuális gép létrehozása egy terheléseloszt�
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtuális gép, hálózat, modulok
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667600"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075352"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
 
@@ -62,7 +62,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. A Terraform-változók fájlját szokás a `terraform.tfvars` néven elnevezni, mivel a Terraform automatikusan betölti a `terraform.tfvars` (vagy a `*.auto.tfvars` mintát követő) nevű fájlt, ha az aktuális könyvtárban található ilyen fájl. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy cserélje le a helyőrzőket a következőképpen: A `subscription_id`, használja az Azure-előfizetés azonosítója futtatásakor megadott `az account set`. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
   ```tf
   subscription_id = "<azure-subscription-id>"

@@ -14,41 +14,35 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 01/07/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0508e6418a5095ed9ee27baf045f655d66ea9b58
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d3256fcf33a9ad1eb34ec5dbb0c701c8166a49e2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435344"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075175"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure használatához és az SAP munkaterhelés-forgatókönyvek
 
-A Microsoft Azure-t a SAP felhőalapú partner kiválasztásával Ön megbízhatóan futtathatja az üzletmenet szempontjából kritikus fontosságú SAP számítási feladatok és a forgatókönyvek egy skálázható, kompatibilis és vállalati környezetekben kipróbált platformon.  Használja ki az Azure kínálta skálázhatóságot, rugalmasságot és költségtakarékosságot. Között a Microsoft és az SAP kiterjesztett partneri futtatható SAP-alkalmazások az Azure - fejlesztési-tesztelési és éles környezetekben, és mindehhez teljes körű támogatást. Az SAP Netweavertől az SAP S4/HANA, SAP BI, Windows, Linux, SAP HANA, SQL kell, hogy kielégítünk.
+A Microsoft Azure kiválasztásával Ön megbízhatóan futtathatja az üzletmenet szempontjából kritikus fontosságú SAP számítási feladatok és a forgatókönyvek egy skálázható, kompatibilis és vállalati környezetekben kipróbált platformon.  Használja ki az Azure kínálta skálázhatóságot, rugalmasságot és költségtakarékosságot. Között a Microsoft és az SAP kiterjesztett partneri futtatható SAP-alkalmazások az Azure - fejlesztési-tesztelési és éles környezetekben, és mindehhez teljes körű támogatást. Az SAP Netweavertől az SAP S4/HANA, SAP BI, Windows, Linux, SAP HANA, SQL kell, hogy kielégítünk.
 
-Amellett, hogy a különböző DBMS Azure-beli SAP NetWeaver forgatókönyvekre üzemelteti, különböző üzemeltethető más SAP munkaterhelés-forgatókönyvek, például az SAP bi-ban az Azure-ban. SAP NetWeaver üzembe helyezéseket, az Azure-beli natív virtuális gépek vonatkozó dokumentáció itt található a következő szakaszban: "Az SAP NetWeaver az Azure-beli virtuális gépek."
+Amellett, hogy a különböző DBMS Azure-beli SAP NetWeaver forgatókönyvekre üzemelteti, különböző üzemeltethető más SAP munkaterhelés-forgatókönyvek, például az SAP bi-ban az Azure-ban. 
 
-Az egyedi-e az Azure az SAP Hana-hoz egy egyedi ajánlat, amely Azure verseny szereplőkkel. Ahhoz, hogy több memóriát és CPU-erőforrás erőforrás-igényes forgatókönyveket az SAP az SAP HANA, az Azure üzemeltetési az ügyfél-használatát, dedikált operációs rendszer nélküli hardveres, akár 20 TB-ig (60 TB-os horizontális felskálázás) memóriát igénylő SAP HANA-telepítések futtatása céljából S/4HANA vagy egyéb SAP HANA számítási feladatot. SAP Hana az Azure-ban (nagyméretű példányok) az egyedi Azure-megoldás lehetővé teszi az alkalmazásrétegre SAP vagy a számítási feladatok szoftverek középső réteg natív Azure Virtual Machines szolgáltatásban üzemeltetett dedikált operációs rendszer nélküli hardveren SAP HANA futtatása. Ez a megoldás leírása itt található több dokumentumot a következő szakaszban: "Az SAP HANA az Azure-ban (nagyméretű példányok)."   
+Az egyedi-e az SAP Hana Azure-ajánlat, amely Azure verseny szereplőkkel. Ahhoz, hogy több memóriát és CPU-erőforrás erőforrás-igényes forgatókönyveket az SAP az SAP HANA, az Azure üzemeltetési az ügyfél-használatát, dedikált operációs rendszer nélküli hardver futó SAP HANA üzemelő példánya, amely akár 24 TB (120 TB horizontális felskálázás) memória szükséges céljából S/4HANA vagy egyéb SAP HANA számítási feladatot. SAP Hana az Azure-ban (nagyméretű példányok) az egyedi Azure-megoldás lehetővé teszi az alkalmazásrétegre SAP vagy a számítási feladatok szoftverek középső réteg natív Azure Virtual Machines szolgáltatásban üzemeltetett dedikált operációs rendszer nélküli hardveren SAP HANA futtatása. Ez a megoldás leírása itt található több dokumentumot a következő szakaszban: "Az SAP HANA az Azure-ban (nagyméretű példányok)."   
 
 SAP munkaterhelés-forgatókönyvek az Azure-beli futtató is hozhat létre identitásintegráció és egyszeri bejelentkezés használata az Azure Active Directory különböző SAP-összetevők és az SAP SaaS követelményeinek vagy PaaS kínál. Az ilyen integrációt és az Azure Active Directory (AAD) és az SAP entitások Single-Sign-On forgatókönyvek listája leírt, és a szakaszban leírt "AAD SAP-Identitásintegráció és egyszeri bejelentkezést."
 
 ## <a name="latest-changes"></a>Legutóbbi módosítások
+
+Kiadása [SAP számítási feladatok tervezési és telepítési ellenőrzőlista](sap-deployment-checklist.md)
 
 Használati és konfigurációja pontosítása [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) a késés kritikus fontosságú kommunikáció elérési útjaiban az SAP-rendszerek:
 
 - [Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 - [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
-Az Azure-beli virtuális gépek Rétegezést SAP HANA dinamikus körül dokumentációja
-
-- [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#sap-hana-dynamic-tiering-20-for-azure-virtual-machines)
-
-SAP HANA horizontális felskálázás az Azure virtuális gép M128s körül dokumentáció lett hozzáadva:
-
-- [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out)
-- [SAP HANA rendelkezésre állási egy Azure-régióban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
 
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA az SAP HANA az Azure-ban (nagyméretű példányok)

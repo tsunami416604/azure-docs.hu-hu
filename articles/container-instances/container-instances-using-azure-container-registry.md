@@ -5,29 +5,29 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bbdf9a88c19e8006ffa9669b0c6d95d85506b256
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854456"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064644"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Az Azure Container Instances szolgáltatásban az Azure Container Registry üzembe helyezése
 
-Az Azure Container Registry egy Azure-alapú privát regisztrációs adatbázis Docker-tárolórendszerképekhez. Ez a cikk azt ismerteti, hogyan helyezhet üzembe az Azure Container Instances szolgáltatásban az Azure container registryben tárolt rendszerképeket.
+[Az Azure Container Registry](../container-registry/container-registry-intro.md) egy privát Docker-tárolók rendszerképeinek tárolására szolgáló Azure-alapú, felügyelt tárolóregisztrációs adatbázis-szolgáltatás. Ez a cikk azt ismerteti, hogyan helyezhet üzembe az Azure Container Instances szolgáltatásban az Azure container registryben tárolt rendszerképeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Az Azure Container Registry**: szüksége van egy Azure container registry – és legalább egy tárolórendszerképet a beállításjegyzék – ebben a cikkben szereplő lépések végrehajtásához. Ha a beállításjegyzék van szüksége, tekintse meg [hozzon létre egy tároló-beállításjegyzéket az Azure CLI-vel](../container-registry/container-registry-get-started-azure-cli.md).
+**Az Azure container registry**: Egy Azure container registry – és legalább egy tárolórendszerképet a beállításjegyzék – ebben a cikkben szereplő lépések végrehajtásához szükséges. Ha a beállításjegyzék van szüksége, tekintse meg [hozzon létre egy tároló-beállításjegyzéket az Azure CLI-vel](../container-registry/container-registry-get-started-azure-cli.md).
 
 **Az Azure CLI**: A parancssori példák a jelen cikk használja a [Azure CLI-vel](/cli/azure/) és a Bash felületen vannak formázva. Is [az Azure CLI telepítése](/cli/azure/install-azure-cli) helyileg, vagy használja a [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="configure-registry-authentication"></a>Regisztrációs adatbázis hitelesítésének konfigurálása
 
-A semmilyen éles telepítési forgatókönyvhöz egy Azure container registrybe hozzáférést kell biztosítani a [egyszerű szolgáltatások](../container-registry/container-registry-auth-service-principal.md). A szolgáltatásnevek lehetővé teszik a szerepköralapú hozzáférés-vezérlés biztosítását a tárolórendszerképek számára. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
+A semmilyen éles telepítési forgatókönyvhöz egy Azure container registrybe hozzáférést kell biztosítani a [egyszerű szolgáltatások](../container-registry/container-registry-auth-service-principal.md). Az egyszerű szolgáltatások lehetővé teszik, hogy [szerepköralapú hozzáférés-vezérlés](../container-registry/container-registry-roles.md) , a tárolórendszerképeket. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
 Ebben a szakaszban egy Azure key vault és a egy egyszerű szolgáltatás létrehozásához, és a szolgáltatásnév hitelesítő adatainak tárolása a tárolóban.
 
@@ -35,7 +35,7 @@ Ebben a szakaszban egy Azure key vault és a egy egyszerű szolgáltatás létre
 
 Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](/azure/key-vault/), hozzon létre egyet az Azure CLI alábbi parancsaival.
 
-Frissítés a `RES_GROUP` az erőforráscsoport, amelyben létrehozza a key vault nevű változó és `ACR_NAME` a tárolóregisztrációs adatbázis nevére. Adjon meg egy nevet az új kulcstartó `AKV_NAME`. Azure-on belül egyedinek kell lennie, és 3 – 24 alfanumerikus karakterből kell állnia a tároló neve hosszabb, betűvel, betűvel vagy számjeggyel, végződnie, és nem tartalmazhat egymást követő kötőjelet.
+Frissítés a `RES_GROUP` változót egy meglévő erőforráscsoportot, amelyben létrehozza a kulcstároló nevével és `ACR_NAME` a tárolóregisztrációs adatbázis nevére. Adjon meg egy nevet az új kulcstartó `AKV_NAME`. Azure-on belül egyedinek kell lennie, és 3 – 24 alfanumerikus karakterből kell állnia a tároló neve hosszabb, betűvel, betűvel vagy számjeggyel, végződnie, és nem tartalmazhat egymást követő kötőjelet.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -57,14 +57,14 @@ az keyvault secret set \
   --vault-name $AKV_NAME \
   --name $ACR_NAME-pull-pwd \
   --value $(az ad sp create-for-rbac \
-                --name $ACR_NAME-pull \
+                --name http://$ACR_NAME-pull \
                 --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
-                --role reader \
+                --role acrpull \
                 --query password \
                 --output tsv)
 ```
 
-Az előző parancs `--role` argumentuma a *reader* (olvasó) szerepkörrel konfigurálja a szolgáltatásnevet, amely csak lekérési jogosultságot biztosít a regisztrációs adatbázishoz. Ha lekérési és leküldési jogosultságot egyaránt biztosítani kíván, módosítsa a `--role` argumentum értékét a *contributor* (közreműködő) értékre.
+A `--role` argumentum az előző parancsban szereplő konfigurálja az egyszerű szolgáltatások a *acrpull* szerepkört, amely hozzáférést biztosít, lekéréses a beállításjegyzékben. Leküldéses és lekéréses hozzáférést biztosítson, módosítsa a `--role` argumentumának *acrpush*.
 
 Ezután tárolja a szolgáltatásnév *appId* a tárolóban, azaz a **felhasználónév** adja át az Azure Container Registrybe a hitelesítéshez.
 
@@ -78,8 +78,8 @@ az keyvault secret set \
 
 Létrehozott egy Azure Key Vault-tárolót, és eltárolt benne két titkos kulcsot:
 
-* `$ACR_NAME-pull-usr`: A szolgáltatásnév azonosítója, amely a tárolóregisztrációs adatbázis **felhasználóneveként** szolgál.
-* `$ACR_NAME-pull-pwd`: A szolgáltatásnév jelszava, amely a tárolóregisztrációs adatbázis **jelszavaként** szolgál.
+* `$ACR_NAME-pull-usr`: A szolgáltatásnév-Azonosítót, a tároló-beállításjegyzék használható **felhasználónév**.
+* `$ACR_NAME-pull-pwd`: Az egyszerű szolgáltatás jelszava, a tároló-beállításjegyzék használható **jelszó**.
 
 Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy az alkalmazások és szolgáltatások rendszerképeket kérnek le a regisztrációs adatbázisból.
 
@@ -87,14 +87,20 @@ Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy a
 
 Most, hogy az egyszerű szolgáltatás hitelesítő adatai az Azure Key Vault titkos kulcsok vannak tárolva, az alkalmazások és szolgáltatások használatával őket a privát tárolójegyzék eléréséhez.
 
+Először kérje le a tárolójegyzék bejelentkezési kiszolgálójának nevét használatával a [az acr show] [ az-acr-show] parancsot. A bejelentkezési kiszolgáló nevét az összes kis- és hasonló `myregistry.azurecr.io`.
+
+```azurecli
+ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
+```
+
 A következő [az container create][az-container-create] parancs végrehajtásával helyezzen üzembe egy tárolópéldányt. A parancs az egyszerű szolgáltatás hitelesítő adatait az Azure Key Vaultban tárolt használja a hitelesítéshez a tárolóregisztrációs adatbázisba, és feltételezi, hogy már korábban feltöltötte a [aci-helloworld](container-instances-quickstart.md) rendszerképet a tárolójegyzékbe. Frissítés a `--image` értékét, ha a regisztrációs adatbázisból egy másik képet használni szeretne.
 
 ```azurecli
 az container create \
     --name aci-demo \
     --resource-group $RES_GROUP \
-    --image $ACR_NAME.azurecr.io/aci-helloworld:v1 \
-    --registry-login-server $ACR_NAME.azurecr.io \
+    --image $ACR_LOGIN_SERVER/aci-helloworld:v1 \
+    --registry-login-server $ACR_LOGIN_SERVER \
     --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) \
     --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) \
     --dns-name-label aci-demo-$RANDOM \
@@ -104,7 +110,7 @@ az container create \
 A `--dns-name-label` egyedi értékkel kell Azure-ban, így az előző parancs egy véletlenszerű számot fűz a tároló DNS-névcímke. A parancs kimenete a tároló teljes tartománynevét jeleníti meg, például:
 
 ```console
-$ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_NAME.azurecr.io/aci-helloworld:v1 --registry-login-server $ACR_NAME.azurecr.io --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
+$ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_LOGIN_SERVER/aci-helloworld:v1 --registry-login-server $ACR_LOGIN_SERVER --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
 "aci-demo-25007.eastus.azurecontainer.io"
 ```
 
@@ -158,6 +164,7 @@ Azure Container Registry-hitelesítéssel kapcsolatos további információkért
 [cloud-shell-powershell]: https://shell.azure.com/powershell
 
 <!-- LINKS - Internal -->
+[az-acr-show]: /cli/azure/acr#az-acr-show
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-container-create]: /cli/azure/container#az-container-create
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: b870383634412c5b095738e2a7f79b9cf4dcf78a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 72cfdd2188a0ba53757a1ac7106099eb7b85fb46
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018211"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073475"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -126,4 +126,4 @@ A kiszolgálói teljesítményről gyűjtött adatokhoz hasonlóan az Applicatio
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan hozhat létre riasztásokat a hibákhoz.
 
 > [!div class="nextstepaction"]
-> [Alkalmazásállapot-riasztás](app-insights-tutorial-alert.md)
+> [Alkalmazásállapot-riasztás](../azure-monitor/learn/tutorial-alert.md)

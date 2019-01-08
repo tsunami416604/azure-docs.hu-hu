@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 01/04/2019
 ms.author: danlep
-ms.openlocfilehash: a1644f68465cffa8cce27257bb91100c111af8a1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b18638057def03a02024200edb157e5caf08a669
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857771"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065171"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Az Azure Container Registry a tárolólemezképek törlése
 
@@ -24,7 +24,7 @@ Törölheti a kép adatait a különféle módokon, mert fontos tudni, hogyan be
 
 Egy tároló *beállításjegyzék* egy szolgáltatás, amely tárolja, és elosztja a tárolórendszerképeket. A docker Hub egy nyilvános Docker-tárolójegyzék, amíg az Azure Container Registry biztosítja magán Docker tároló-beállításjegyzékek az Azure-ban.
 
-## <a name="repository"></a>Tárház
+## <a name="repository"></a>Adattár
 
 Tároló-beállításjegyzékek kezelése *tárházak*, ugyanazzal a névvel, de eltérő címkéket a tárolólemezképeket gyűjteményei. Az alábbi három lemezképek például a "acr-helloworld" tárház szerepelnek:
 
@@ -60,7 +60,7 @@ Például az Azure Container Registry olyan privát beállításjegyzékbe a ren
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
 ```
 
-Ajánlott eljárások címkézés rendszerképen, lásd: a [Docker címkézés: ajánlott eljárások a docker-rendszerképek címkézése és verziókezelését] [ tagging-best-practices] blogbejegyzés az MSDN Webhelyén.
+Ajánlott eljárások címkézés rendszerképen, lásd: a [Docker címkézés: Ajánlott eljárások a docker-rendszerképek címkézése és verziókezelését] [ tagging-best-practices] blogbejegyzés az MSDN Webhelyén.
 
 ### <a name="layer"></a>Réteg
 
@@ -129,9 +129,9 @@ $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea
 
 Rendszerkép-adatok többféle módon a tárolóregisztrációs adatbázisból törölheti:
 
-* Törölje a [tárház](#delete-repository): törli az összes rendszerkép és rendszerképréteg minden egyedi réteg.
-* Törölje [címke](#delete-by-tag): egy képet, a címke, a lemezkép által hivatkozott összes egyedi réteget és az összes többi címke a lemezképhez hozzárendelt törli.
-* Törölje [jegyzékfájl kivonatoló](#delete-by-manifest-digest): egy képet, a lemezkép által hivatkozott összes egyedi réteg és a lemezképhez hozzárendelt összes címke törlése.
+* Törölje a [tárház](#delete-repository): Az összes rendszerkép és rendszerképréteg minden egyedi réteg törlése.
+* Törölje [címke](#delete-by-tag): Törli a képet, a címke, a lemezkép által hivatkozott összes egyedi réteget és az összes többi címke a lemezképhez hozzárendelt.
+* Törölje [jegyzékfájl kivonatoló](#delete-by-manifest-digest): Kép, a lemezkép által hivatkozott összes egyedi réteg és a lemezképhez hozzárendelt összes címke törlése.
 
 ## <a name="delete-repository"></a>Adattár törlése
 
@@ -239,20 +239,20 @@ Említetteknek megfelelően az [jegyzékfájl kivonatoló](#manifest-digest) sza
      },
      {
        "digest": "sha256:d2bdc0c22d78cde155f53b4092111d7e13fe28ebf87a945f94b19c248000ceec",
-       "tags": null,
+       "tags": [],
        "timestamp": "2018-07-11T21:32:21.1400513Z"
      }
    ]
    ```
 
-Amint láthatja, hogy a feladatütemezés utolsó lépése kimenetében, nincs-e most egy árva manifest azon `"tags"` tulajdonság `null`. A jegyzékfájl továbbra is megtalálható a beállításjegyzék minden általa hivatkozott egyedi réteg adatokkal együtt. **Árva törölni, például a képek és a réteg adataikat, törölnie kell a jegyzékfájl kivonatoló**.
+Amint láthatja, hogy a feladatütemezés utolsó lépése kimenetében, nincs-e most egy árva manifest azon `"tags"` tulajdonság egy üres tömb. A jegyzékfájl továbbra is megtalálható a beállításjegyzék minden általa hivatkozott egyedi réteg adatokkal együtt. **Árva törölni, például a képek és a réteg adataikat, törölnie kell a jegyzékfájl kivonatoló**.
 
 ### <a name="list-untagged-images"></a>Címkézetlen lemezképek listázása
 
 A tárházban, a következő Azure CLI-paranccsal listázhatja az összes címkézetlen rendszerkép. Cserélje le `<acrName>` és `<repositoryName>` válasszon a környezetének megfelelő értékekkel.
 
 ```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName>  --query "[?tags==null].digest"
+az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?!(tags[?'*'])].digest"
 ```
 
 ### <a name="delete-all-untagged-images"></a>Törölje az összes címkézetlen lemezképet
@@ -283,7 +283,7 @@ REPOSITORY=myrepository
 # Delete all untagged (orphaned) images
 if [ "$ENABLE_DELETE" = true ]
 then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags==null].digest" -o tsv \
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?!(tags[?'*'])].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
     echo "No data deleted. Set ENABLE_DELETE=true to enable image deletion."
@@ -310,7 +310,7 @@ $registry = "myregistry"
 $repository = "myrepository"
 
 if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags==null].digest" -o tsv `
+    az acr repository show-manifests --name $registry --repository $repository --query "[?!(tags[?'*'])].digest" -o tsv `
     | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
 } else {
     Write-Host "No data deleted. Set `$enableDelete = `$TRUE to enable image deletion."

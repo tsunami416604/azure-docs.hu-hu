@@ -3,7 +3,7 @@ title: Készítse elő és tesztelje ajánlatát az Azure piactéren való üzem
 description: Részletes útmutatást nyújtó tartalom marketing, díjcsomagok konfigurálása és tesztelése az ajánlat az Azure piactéren való üzembe helyezés előtt.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: f1e6e779731564f714cc100d25a53da8732dca74
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714959"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075991"
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Végezze el a marketinganyagot az ajánlat létrehozása
 Ebben a lépésben a közzétételi folyamat kell bizonyos marketinganyagot, és az ajánlat és/vagy az Azure piactéren elérhető termékváltozatok részleteit. Ha például fog adjon meg egy leírást a termék, vállalati emblémát, ár tervek, tervek részleteit és más információkat, amelyek szükségesek az ajánlat és/vagy a Termékváltozat leküldése átmeneti. Ez az információ lesz marketinganyagot az Azure Portalon. Megkezdődik a folyamatot a [közzétételi portál][link-pubportal].
 
 ## <a name="step-1-provide-marketplace-marketing-content"></a>1. lépés: Adja meg a Marketplace-en marketing-tartalom
-**Angol az alapértelmezett és egyetlen támogatott nyelv.** Győződjön meg arról, hogy a mezők minden adatot angol nyelven. Az átmeneti üzem megkezdéséig az adatokat bármikor módosíthatja.
+*Angol az alapértelmezett és egyetlen támogatott nyelv.*  Ellenőrizze, hogy a mezők minden adatot angol nyelven. Az átmeneti üzem megkezdéséig az adatokat bármikor módosíthatja.
 
 1. Nyissa meg a közzétételi portál [ https://publish.windowsazure.com ](https://publish.windowsazure.com).
 2. A bal oldali menüben kattintson a **Marketing** fülre.
@@ -78,8 +79,8 @@ A közzétételi portálon feltöltött összes emblémák kövesse az alábbi i
 **További útmutatást a Hero embléma ikon (nem kötelező)**
 
 * A Hero embléma megadása nem kötelező. A közzétevő nem szeretné Hero emblémát tölthet fel. **Azonban Miután feltöltött a hero ikon nem lehet törölni a közzétételi portálon. Ugyanakkor a partner kell kövesse a Azure Marketplace-en Hero ikonok másnak az ajánlat nem hagyható jóvá az éles környezetbe.**
-* A közzétevő megjelenített neve, csomag cím és az ajánlat hosszú összegzése fehér a betűk színe megjelenik. Ezért kerülje a Hero ikon a háttérben gondoskodik a bármely világos szín. Fekete, fehér és átlátható háttér nem engedélyezett a Hero-ikonokat.
-* A közzétevő megjelenített neve, csomag cím, az ajánlat hosszú összegzése és a Létrehozás gombra vannak beágyazva programozott módon a Hero embléma után kerül az ajánlat felsorolt. Így nem szöveg kell adnia, a Hero embléma tervezésekor. Ne változtassa meg üres területet a jobb oldalon, mert a szöveget (pl. közzétevő megjelenítési név, terv cím, az ajánlat hosszú összegzése) szerepelni fognak programozott módon, van ott. Az üres helyet a szöveg legyen 415 x 100, a jobb oldali (és a balról 370px ellensúlyozza,).
+* A közzétevő megjelenített neve, csomag cím és az ajánlat hosszú összegzése fehér a betűk színe megjelenik. Ezért kerülje a Hero ikon a háttérben gondoskodik a bármely világos szín. Fekete, a fehér és a transzparens háttér nem engedélyezett a Hero-ikonokat.
+* A közzétevő megjelenített neve, csomag cím, az ajánlat hosszú összegzése és a Létrehozás gombra vannak beágyazva programozott módon a Hero embléma után kerül az ajánlat felsorolt. Így nem szöveg kell adnia, a Hero embléma tervezésekor. Ne változtassa meg üres területet a jobb oldalon, mert a szöveget (azt jelenti, közzétevő megjelenítési név, terv cím, az ajánlat hosszú összegzése) szerepelni fognak programozott módon, van ott. Az üres helyet a szövegnek kell lennie a 415 x 100, a jobb oldalon (és 370 ellensúlyozza, a balról képpont).
   
   ![rajz](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
@@ -104,7 +105,7 @@ Az a **jogi** lapra, adja meg a házirendek és használati feltételekre mutat�
 
 ![rajz](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
-**Megjegyzés:** virtuálisgép-ajánlat esetén, miután egy ajánlat/SKU elő van készítve az Azure Portalon nem módosítható a mezőket az alábbi:
+**Megjegyzés:** Virtuálisgép-ajánlat után egy ajánlat/SKU elő van készítve az Azure Portalon nem módosítható az alábbi mezőket:
 
 * **Ajánlat azonosítója:** [közzétételi portál -> virtuális gépek -> az ajánlat Virtuálisgép-rendszerképek -> lapon-ajánlat azonosítója >]
 * **Termékváltozat-azonosító:** [közzétételi portál -> virtuális gépek -> Válassza ki az ajánlat -> lap -> termékváltozatok adjon hozzá egy Termékváltozatot]
@@ -121,11 +122,11 @@ Virtuálisgép-ajánlat után az ajánlat/SKU szerepel az Azure Marketplace-en, 
 * **A listán szereplő termékváltozat(ok) árának meghatározását régiók számlázási eltávolítása**
 * **Az adatlemezek száma a listán termékváltozat(ok) árának meghatározását módosítása**
 
-## <a name="step-2-set-your-prices"></a>2. lépés: Az árak megadása
+## <a name="step-2-set-your-prices"></a>2. lépés: Az árak megadása
 ### <a name="pricing-models"></a>Díjszabási modellel
 | Díjszabási modell | Leírás |
 | --- | --- |
-| Alapszintű |Vásárláskor fizetett havi átalánydíj például 10 USD havonta. |
+| Alapszintű |Vásárláskor fizetett havi átalánydíj Ha például 10 USD havonta. |
 | Használat (más néven) használat, a mérőszámok) |Fizetés, az ajánlat közzétevője által definiált. Kerettúllépés nem definiálható Munkaállomásonként / felhasználó, stb., mivel nem lett egy felhasználó vagy a funkció díjalap ehhez töredékéért fogalma nem. Használat a partner által jelentett óránként. Ügyfél fizet az a havi számlázási ciklusban, meghozni hasonló havi csomagok helyett. |
 | Ingyenes próbaidőszak |Ügyfél lehet, hogy használata ingyenes, korlátozott ideig, és ezután normál díját kell megfizetni ezt követően. |
 | Ingyenes szint |Csomag, mindig ingyenes. |
@@ -144,15 +145,15 @@ Virtuálisgép-ajánlat után az ajánlat/SKU szerepel az Azure Marketplace-en, 
 | Fejlesztői szolgáltatás |Igen |Igen |Igen |
 
 ### <a name="21-set-your-vm-prices"></a>2.1. A VM árak
-Jelenleg a virtuális gépek esetében van a következő **3 típusú számlázási modellek:**
+Jelenleg a virtuális gépek esetében van a következő **háromféle számlázási modellek:**
 
-* **Óránkénti:** ügyfelek által a kiadók a Virtuálisgép-méretek a díjszabási táblázat alapján óránkénti alapon kell fizetnie. Az **óradíjas** modell a termékváltozatok teljes költsége a szoftver költségét a közzétevő alapján számítjuk fel, a infrastruktúra díjat számítunk fel a Microsoft által a háttéradatok lesz. A teljes költség jelenik meg az ügyfél egy óránkénti és havi díja, a vásárlás kiválasztásakor (lásd az alábbi képernyőképen). **Közzétevő kap 80 %-át szoftver őket alapján számítjuk fel.** Ezért kérjük, ennek megfelelően beállítása előtt a számítási díjakat a termékváltozatok esetében ellenőrizze.
+* **Óránkénti:** Ügyfelek által a kiadók a Virtuálisgép-méretek a díjszabási táblázat alapján óránkénti alapon kell fizetnie. Az **óradíjas** modell a termékváltozatok teljes költsége a szoftver költségét a közzétevő alapján számítjuk fel, a infrastruktúra díjat számítunk fel a Microsoft által a háttéradatok lesz. A teljes költség jelenik meg az ügyfél egy óránkénti és havi díja, a vásárlás kiválasztásakor (lásd az alábbi képernyőképen). **Közzétevő kap 80 %-át szoftver őket alapján számítjuk fel.** Ezért győződjön meg arról, a számítás ennek megfelelően a termékváltozatok árak megadása előtt.
   
     ![rajz](media/marketplace-publishing-push-to-staging/img2.1-01.png)
-* **Ingyenes próba:** Ez az egy másik íz óradíjas modell. Itt az ügyfélnek nem kell fizetnie az első 30 days(Free) szoftver költsége a virtuális gép üzembe helyezése után. 30days után akkor kell fizetnie az óradíjas modellben a kiadók által meghatározott díjszabás alapján óránkénti alapon.
-* **Bring-Your-saját licenc (használata BYOL):** a kiadók kezelheti a virtuális gépen futó szoftver licencelése.
+* **Ingyenes próbaverzió:** Ez a beállítás akkor egy másik íz óradíjas modell. Itt az ügyfélnek nem kell fizetnie az első 30 days(Free) szoftver költsége a virtuális gép üzembe helyezése után. 30 nap letelte után akkor kell fizetnie az óradíjas modellben a kiadók által meghatározott díjszabás alapján óránkénti alapon.
+* **Bring-Your-saját licenc (használata BYOL):** A kiadók kezelheti a virtuális gépen futó szoftver licencelése.
 
-**Fontos:** után az ajánlat/SKU szerepel az Azure piactéren, az alább megadott mezők nem módosítható.
+**Fontos:** Miután az ajánlat/SKU szerepel az Azure piactéren, az alább megadott mezők nem módosítható.
 
 * **Felsorolt termékváltozat(ok) árának meghatározását díjszabás módosítása**
 * **Számlázási modell módosítás felsorolt termékváltozat(ok) árának meghatározását**
@@ -174,22 +175,22 @@ Alaposan gondolja át, ahol elérhetővé a termékváltozatok kell. Egyes orsz�
 > 
 > 
 
-### <a name="211-how-to-setup-hourly-pricing-model-for-a-sku"></a>2.1.1 hogyan állíthatja be a termékváltozat óránkénti díjszabási modell
-A telepítő óránként díjszabási modell Termékváltozat esetében az alábbiakban megadott lépéseket követve:
+### <a name="211-how-to-set-up-hourly-pricing-model-for-a-sku"></a>2.1.1 hogyan állítható be óránként díjszabási modell egy termékváltozat
+Díjszabási modell egy termékváltozat óránként beállításához az alábbiakban megadott lépéseket követve:
 
 1. Jelentkezzen be a [közzétételi portál](https://publish.windowsazure.com).
 2. Keresse meg a **virtuális gépek** lapra, és válassza az ajánlatot.
 3. A bal oldali menüben kattintson a **Termékváltozatok** fülre.
 4. Győződjön meg arról, hogy a Termékváltozat "Óránkénti számlázási modell" van megjelölve. Ha nem, majd kattintson a a **szerkesztése** gombra a a számlázási modellt. Megnyílik egy ablak. Törölje a jelet a jelölőnégyzetből "számlázási és licencelési történik külsőleg (más néven a saját licenc használatát) Azure-ból", és mentse a módosításokat.
-5. Ha szeretné engedélyezni, a Termékváltozat üzembe helyezés az első 30days próbaverziójára, majd válassza ki a kérdés a "" egy "Month" beállítás "Érhető el egy ingyenes próbaverzióra?" Ellenkező esetben válassza a "Nem próbaverzió". Most már kövesse az alábbi lépéseket.
+5. A Termékváltozat központi telepítés az első 30 napban ingyenes próbaverzió engedélyezni szeretné, ha a választhatja "" egy "Month" a kérdést a "Érhető el egy ingyenes próbaverzióra?" Ellenkező esetben válassza a "Nem próbaverzió". Most már kövesse az alábbi lépéseket.
 6. A bal oldali menüben kattintson a **DÍJSZABÁSI** fülre.
 7. Válassza ki az alapszintű régiót.
    
    ![rajz](media/marketplace-publishing-push-to-staging/img2.1.1_07.png)
-8. Állítsa be az összes magon árak. **Meg kell adnia ára az összes mag, a Termékváltozat akkor is, ha a Termékváltozat nem támogatja ezt.**
+8. Állítsa be az összes magon árak. *Adja meg a díj az összes mag, a Termékváltozat akkor is, ha a Termékváltozat nem támogatja ezt.*
    
     ![rajz](media/marketplace-publishing-push-to-staging/img2.1.1_08.png)
-9. Manuálisan állítsa be az árak a többi régió esetében, vagy a AUTOPRICE varázsló segítségével állítsa be az árak egyéb régiók, az alap régió alapján. A AUTOPRICE varázslóban kattintson a gombra használandó **AUTOPRICE egyéb piacok alapú ON árak az Egyesült Államok.** **Megjegyzés:** a gomb címkéje a kiválasztott régió függően eltérő lehet. Mivel ez a dokumentum létrehozása során azt kiválasztott Egyesült Államok, ezért a gomb címkéje "Automatikus díjszabása más piacokon, az Egyesült Államokban díjak alapján" az alábbi képernyőfelvételen látható módon.
+9. Manuálisan állítsa be az árak a többi régió esetében, vagy a AUTOPRICE varázsló segítségével állítsa be az árak egyéb régiók, az alap régió alapján. A AUTOPRICE varázslóban kattintson a gombra használandó **AUTOPRICE egyéb piacok alapú ON árak az Egyesült Államok.** **Megjegyzés:** A gomb címkéje a kiválasztott régiójától függően eltérő lehet. Mivel ez a dokumentum létrehozása során azt kiválasztott Egyesült Államok, ezért a gomb címkéje "Automatikus díjszabása más piacokon, az Egyesült Államokban díjak alapján" az alábbi képernyőfelvételen látható módon.
    
    ![rajz](media/marketplace-publishing-push-to-staging/img2.1.1_09.png)
 10. Az automatikus ár varázsló nyílik meg. Az első oldal megjelenítik a kiválasztható alap piacra. Győződjön meg a szakaszt, és a "->" gombra kattintva léphet a következő lapra.
@@ -198,13 +199,13 @@ A telepítő óránként díjszabási modell Termékváltozat esetében az aláb
 11. A beállítás kiválasztásakor a magok és a tervek 2 oldalon jelennek meg. Válassza ki a kívánt csomagokat, és kattintson a "->" gombra. Kattintson a **váltógomb összes** gombra kattintva válassza ki az összes a **szolgáltatási csomagok** és **mérőszámok** vagy manuálisan ellenőrizheti a jelölőnégyzeteket. **Meg kell adnia ára az összes mag, a Termékváltozat akkor is, ha a Termékváltozat nem támogatja ezt.** Ezért győződjön meg arról, hogy az összes mag méretek vannak-e jelölve.
     
     ![rajz](media/marketplace-publishing-push-to-staging/img2.1.1_11.png)
-12. 3. oldal megjeleníti a piacok és régióban. Kattintson a **váltógomb összes** gombra, válassza ki az összes régióban, vagy manuálisan jelölőnégyzetekből régióhoz. Kattintson a "->" gombra kattintva léphet a következő lapra. **Megjegyzés:** szimbólum például egy adott Microsoft adó elengedik országok jelöli. További részletekért tekintse meg a szakasz "értékesítési" ország ezt oldal a termékváltozat.
+12. 3. oldal megjeleníti a piacok és régióban. Kattintson a **váltógomb összes** gombra, válassza ki az összes régióban, vagy manuálisan jelölőnégyzetekből régióhoz. Kattintson a "->" gombra kattintva léphet a következő lapra. **Megjegyzés:** A Microsoft adó elengedik országok szimbólum például egy adott jelöli. További részletekért tekintse meg a szakasz "értékesítési" ország ezt oldal a termékváltozat.
     
     ![rajz](media/marketplace-publishing-push-to-staging/img2.1.1_12.png)
 13. 4. oldal megjeleníti az átváltási árfolyamok. Kattintson a Befejezés gombra a lépések végrehajtásához.
 
-### <a name="212-how-to-setup-byol-pricing-model-for-a-sku"></a>2.1.2 a telepítő BYOL díjszabási modellje a Termékváltozat hogyan
-A BYOL díjszabási modell egy termékváltozat állíthatja be az alábbiakban megadott lépéseket követve:
+### <a name="212-how-to-set-up-byol-pricing-model-for-a-sku"></a>2.1.2 hogyan állítható be BYOL modell a Termékváltozat díjszabása
+BYOL modell a Termékváltozat díjszabása beállításához az alábbiakban megadott lépéseket követve:
 
 1. Jelentkezzen be a [közzétételi portál](https://publish.windowsazure.com).
 2. Keresse meg a **virtuális gépek** lapra, és válassza az ajánlatot.
@@ -216,12 +217,12 @@ A BYOL díjszabási modell egy termékváltozat állíthatja be az alábbiakban 
 6. Válassza ki a kiindulási régiót, és elérhetővé a Termékváltozat a régióban EXTERNALLY-LICENSED (BYOL) Termékváltozat rendelkezésre ÁLLÁSI csoportban a Termékváltozat be a ellenőrzésével (lásd az alábbi képernyőképen).
    
    ![rajz](media/marketplace-publishing-push-to-staging/img2.1.2_06.png)
-7. Győződjön meg arról, a Termékváltozat érhető el a más régiókban manuálisan, vagy a AUTOPRICE varázslót használhatja erre a célra. Tekintse meg a pontok #9, #13 (amely azt ismerteti, hogy a AUTOPRICE varázsló használata) szakaszában **"2.1.1 óránként díjszabási modell esetében a Termékváltozat-telepítés"** ezt oldal.
+7. Győződjön meg arról, a Termékváltozat érhető el a más régiókban manuálisan, vagy a AUTOPRICE varázslót használhatja erre a célra. Tekintse meg a pontok #9, #13 (amely azt ismerteti, hogy a AUTOPRICE varázsló használata) szakaszában **"2.1.1 díjszabási modell egy termékváltozat óránként beállítása"** ezt oldal.
 
 ### <a name="22-set-your-developer-service-prices"></a>2.2. A fejlesztői szolgáltatás árak
 Csomagok alap + felhasználás, ahol alapja a havi díjak pedig kerettúllépési a használatalapú fizetés ár tetszőleges kombinációja lehet. (Lásd alább a részleteket.)
 
-**Példa:** Contoso fejlesztői szolgáltatásajánlat
+**Példa**  Contoso fejlesztői szolgáltatásajánlat
 
 | Felkészülés | Ár | Tartalmazza | Áttelepítés |
 | --- | --- | --- | --- |
@@ -242,7 +243,7 @@ A kapcsolattartási adatait csak a partner és a Microsoft belső kommunikáció
 4. Adja meg a támogatási URL-CÍMÉT.
 
 ## <a name="step-4-choose-azure-marketplace-categories"></a>4. lépés: Válassza ki az Azure Marketplace-kategóriák
-A **kategóriák** lap tartalmaz beállításokat tömbjét. Az ajánlat előfordulhat, hogy alkalmazásának megfelelő, és legfeljebb öt kategóriák választhat.
+A **kategóriák** lap tartalmaz beállításokat tömbjét. Legfeljebb öt kategóriák választhat.
 
 ## <a name="how-your-marketing-will-appear"></a>Hogyan jelenik meg a marketing
 Hogyan használja fel az ajánlatra, marketing-információ részletes nézete az alábbi, az a [Azure Marketplace webhelyén](https://azure.microsoft.com/marketplace/) és a a [az Azure portal](https://portal.azure.com).
@@ -278,7 +279,7 @@ Most, hogy a Marketplace-tartalom betöltése hozzunk folytatná az ajánlat tes
 * [A megoldás sablon ajánlat tesztelése az átmeneti állapotában](marketplace-publishing-solution-template-test-in-staging.md)
 
 ## <a name="see-also"></a>Lásd még
-* [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
+* [Első lépések: Ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-map-acom]:media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg
 [img-map-portal]:media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg

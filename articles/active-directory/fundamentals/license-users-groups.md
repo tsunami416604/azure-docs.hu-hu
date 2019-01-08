@@ -13,12 +13,12 @@ ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0d3f417b5a169b3d8d91d85b5f47496064c8f5f3
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077461"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063352"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Rendelje hozzá, vagy távolítsa el a licencek használata az Azure Active Directory portálon
 Számos Azure Active Directory (Azure AD) szolgáltatás az adott termék szükséges, hogy aktiválja az Azure AD-termékre, és a felhasználók vagy csoportok (és társított tagok) minden egyes licenc. Csak az aktív licenccel rendelkező felhasználók hozzáférhetnek, és a licencelt használata az Azure AD-szolgáltatások.
@@ -57,7 +57,8 @@ Megtekintheti az elérhető termékek, többek között az egyes licencek ellen�
 ## <a name="assign-licenses-to-users-or-groups"></a>Licencek hozzárendelése a felhasználókhoz vagy csoportokhoz
 Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure AD szolgáltatás rendelkezik a megfelelő licenccel. Arra, hogy adja hozzá a licencelési jogokat, egyéni felhasználók számára vagy egy teljes csoport szeretné.
 
->! [Megjegyzés] Csoportalapú licencelés nyilvános előzetes verziójú funkció az Azure AD és az összes rendelkezésre álló fizetős Azure AD-licenccsomag. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [hozzáadása vagy törlése az Azure Active Directory felhasználók](add-users-azure-active-directory.md). Csoportok létrehozása és tagok hozzáadása kapcsolatos részletes információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
+>[!Note]
+>Csoportalapú licencelés nyilvános előzetes verziójú funkció az Azure AD és az összes rendelkezésre álló fizetős Azure AD-licenccsomag. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [hozzáadása vagy törlése az Azure Active Directory felhasználók](add-users-azure-active-directory.md). Csoportok létrehozása és tagok hozzáadása kapcsolatos részletes információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>Licenc hozzárendelése egy adott felhasználó
 1. Az a **termékek** lapon, válassza ki a nevét, a felhasználóhoz rendelni kívánt kiadást. Ha például _Azure Active Directory Premium 2. csomag_.

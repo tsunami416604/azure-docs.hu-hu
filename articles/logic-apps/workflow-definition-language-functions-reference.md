@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 31c4268522ca373ca0b467c13dd83500e18ef8e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890942"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065885"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -102,6 +102,7 @@ Gyűjtemények, általában tömbök, karakterláncok és egyes esetekben szót�
 | [üres](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Ellenőrizze, hogy egy gyűjtemény üres. | 
 | [első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Az első elem visszaadása egy gyűjteményt. | 
 | [Metszet](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között. | 
+| [Elem](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. | 
 | [csatlakozás](../logic-apps/workflow-definition-language-functions-reference.md#join) | Adja vissza, amely rendelkezik *összes* elemet a tömb a megadott karakter választja el. | 
 | [utolsó](../logic-apps/workflow-definition-language-functions-reference.md#last) | Az utolsó elem visszaadása egy gyűjteményt. | 
 | [Hossza](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. | 
@@ -265,7 +266,7 @@ Egységes erőforrás-azonosítók (URI-k) és az URI-k különböző tulajdons�
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>Adatkezelési függvények: JSON & XML-FÁJLJA
+## <a name="manipulation-functions-json--xml"></a>Adatkezelési függvények: JSON- &AMP; XML-FÁJLJA
 
 JSON-objektumok és az XML-csomópontnak dolgozni, ezek a műveletek függvényei használhatja. Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend szerinti lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
@@ -752,9 +753,9 @@ and(false, false)
 
 És ezeket az eredményeket adja vissza:
 
-* Első példa: mindkét kifejezés igaz, ezért adja vissza `true`. 
-* Második példa: egy kifejezés false (hamis), ezért adja vissza `false`.
-* Harmadik példában: mindkét kifejezés false (hamis), az így adja vissza `false`.
+* Első. példa: Mindkét kifejezés igaz, ezért adja vissza `true`. 
+* Második példa: Egy kifejezés false (hamis), ezért adja vissza `false`.
+* Harmadik. példa: Mindkét kifejezés false (hamis), az így adja vissza `false`.
 
 *2. példa*
 
@@ -768,9 +769,9 @@ and(equals(1, 2), equals(1, 3))
 
 És ezeket az eredményeket adja vissza:
 
-* Első példa: mindkét kifejezés igaz, ezért adja vissza `true`. 
-* Második példa: egy kifejezés false (hamis), ezért adja vissza `false`.
-* Harmadik példában: mindkét kifejezés false (hamis), az így adja vissza `false`.
+* Első. példa: Mindkét kifejezés igaz, ezért adja vissza `true`. 
+* Második példa: Egy kifejezés false (hamis), ezért adja vissza `false`.
+* Harmadik. példa: Mindkét kifejezés false (hamis), az így adja vissza `false`.
 
 <a name="array"></a>
 
@@ -1646,8 +1647,8 @@ empty('abc')
 
 És ezeket az eredményeket adja vissza: 
 
-* Első példa: üres karakterlánc, továbbítja, így a függvény `true`. 
-* Második példa: továbbítja a "abc", a karakterlánc, a függvény `false`. 
+* Első. példa: Üres karakterlánc, továbbítja, így a függvény `true`. 
+* Második példa: Adja át a karakterlánc "abc", így a függvény `false`. 
 
 <a name="endswith"></a>
 
@@ -1721,8 +1722,8 @@ equals('abc', 'abcd')
 
 És ezeket az eredményeket adja vissza: 
 
-* Első példa: mindkét értéket egyenértékűek, így a függvény `true`.
-* Második példa: mindkét értéket nem egyenértékű, így a függvény `false`.
+* Első. példa: Mindkét értéket egyenértékűek, így a függvény `true`.
+* Második példa: Mindkét értéket nem egyenértékű, így a függvény `false`.
 
 <a name="first"></a>
 
@@ -2725,7 +2726,7 @@ not(true)
 
 És ezeket az eredményeket adja vissza:
 
-* Első példa: A kifejezés hamis, nem, így a függvény `true`.
+* Első. példa: A kifejezés hamis, nem, így a függvény `true`.
 * Második példa: A kifejezés értéke igaz, hogy vissza a függvény `false`.
 
 *2. példa*
@@ -2739,7 +2740,7 @@ not(equals(1, 1))
 
 És ezeket az eredményeket adja vissza:
 
-* Első példa: A kifejezés hamis, nem, így a függvény `true`.
+* Első. példa: A kifejezés hamis, nem, így a függvény `true`.
 * Második példa: A kifejezés értéke igaz, hogy vissza a függvény `false`.
 
 <a name="or"></a>
@@ -2773,8 +2774,8 @@ or(false, false)
 
 És ezeket az eredményeket adja vissza:
 
-* Első példa: legalább egy kifejezés értéke igaz, hogy vissza a függvény `true`.
-* Második példa: mindkét kifejezés false (hamis),, így a függvény `false`.
+* Első. példa: Legalább egy kifejezés értéke igaz, hogy vissza a függvény `true`.
+* Második példa: Mindkét kifejezés false (hamis),, így a függvény `false`.
 
 *2. példa*
 
@@ -2787,8 +2788,8 @@ or(equals(1, 2), equals(1, 3))
 
 És ezeket az eredményeket adja vissza:
 
-* Első példa: legalább egy kifejezés értéke igaz, hogy vissza a függvény `true`.
-* Második példa: mindkét kifejezés false (hamis),, így a függvény `false`.
+* Első. példa: Legalább egy kifejezés értéke igaz, hogy vissza a függvény `true`.
+* Második példa: Mindkét kifejezés false (hamis),, így a függvény `false`.
 
 <a name="parameters"></a>
 

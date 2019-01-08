@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1a64749b7218fccfdad6b6eeebfac39a44aa0522
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2b1aca07fe60a328dac9d3724454a21835026a53
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687771"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063845"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Hozzon létre egy IoT hub (.NET) az Azure Resource Manager-sablon használatával
 
@@ -23,7 +23,7 @@ ms.locfileid: "38687771"
 Használhatja az Azure Resource Manager hozhat létre, és az Azure IoT hubs programozással felügyelheti. Az oktatóanyag bemutatja, hogyan hozzon létre egy IoT hubra a C#-program Azure Resource Manager-sablon használatával.
 
 > [!NOTE]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk ismerteti az Azure Resource Manager üzemi modell használatával.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Az Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk ismerteti az Azure Resource Manager üzemi modell használatával.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -203,6 +203,7 @@ Most egy IoT hubra C#-program az Azure Resource Manager-sablon használatával t
 
 * Olvassa el a képességeit a [az IoT Hub erőforrás-szolgáltató REST API-val][lnk-rest-api].
 * Olvasási [Azure Resource Manager áttekintése] [ lnk-azure-rm-overview] további információ ezekről a képességekről az Azure Resource Manager.
+* A JSON-szintaxist és a sablonok tulajdonságait: [Microsoft.Devices erőforrástípusok](/azure/templates/microsoft.devices/iothub-allversions).
 
 Az IoT Hub fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

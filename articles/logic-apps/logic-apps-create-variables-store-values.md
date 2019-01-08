@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231627"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063216"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Mentés és kezelése az Azure Logic Appsben értékek változók létrehozása
 
@@ -28,7 +28,10 @@ Az adattípusok, például az egész szám, lebegőpontos, logikai érték, kara
 * Rendeljen egy másik értéket a változóhoz.
 * Helyezze be vagy *hozzáfűzése* a változó értéke a legutóbbi alkalommal tömb vagy karakterlánc.
 
-Változók és azok globális csak belül a logikaialkalmazás-példányt, amely létrehozza őket. Emellett azok kivonatuk bármely ciklus ismétléseinek belül egy logikaialkalmazás-példányt. Ha egy változóra hivatkozik, használja a változó nevét a jogkivonatot, nem a művelet neve, amely a szokásos módon való hivatkozáshoz egy műveleti kimenetek.
+Változók és azok globális csak belül a logikaialkalmazás-példányt, amely létrehozza őket. Emellett azok kivonatuk bármely ciklus ismétléseinek belül egy logikaialkalmazás-példányt. Ha egy változóra hivatkozik, használja a változó nevét a jogkivonatot, nem a művelet neve, amely a szokásos módon való hivatkozáshoz egy műveleti kimenetek. 
+
+> [!IMPORTANT]
+> Alapértelmezés szerint a "Foreach" hurkot a könyvtárfában párhuzamosan futnak. Hurkok változókat használ, futtassa a hurok [egymás után](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) változók kiszámítható eredményt ad vissza. 
 
 Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>. 
 
@@ -38,7 +41,7 @@ Ez a cikk követéséhez az alábbiakban szükséges elemek:
 
 * A logikai alkalmazás, ahol szeretné változó létrehozása 
 
-  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás első lépéseként 
 
@@ -58,7 +61,7 @@ Hozzon létre egy változót, és az adattípus és a kezdeti érték – egy m�
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Művelet felvétele](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd ez után **művelet hozzáadása**.
@@ -195,7 +198,7 @@ Növelheti vagy *növekmény* egy változót egy állandó értékkel adja hozz�
 
    Például a logikai alkalmazás már rendelkezik egy eseményindítót és a egy műveletet, amely egy változó létrehozva. Adjunk hozzá egy új művelet a következő lépéseket:
 
-   ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
+   ![Művelet felvétele](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
    Meglévő lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, hogy a plusz jelre (+) jelenik meg. Válassza a plusz jelre, majd ez után **művelet hozzáadása**.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c3381ac2dcc3755bb0aedb5f36e398ebc5842959
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 57c0b930982f3a8b82ef7c077bfcdae6dfa23aac
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53798110"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077113"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET-hez készült Application Insights konzolon alkalmazások
 [Az Application Insights](../../application-insights/app-insights-overview.md) figyelni, webalkalmazása rendelkezésre állását, teljesítményét és használatát.
@@ -27,7 +27,7 @@ Az előfizetés kell [Microsoft Azure](https://azure.com). Jelentkezzen be Micro
 
 ## <a name="getting-started"></a>Első lépések
 
-* [Hozzon létre egy Application Insights-erőforrást](../../application-insights/app-insights-create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza **általános**.
+* [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza **általános**.
 * Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a **Essentials** legördülő az új erőforrás létrehozása. 
 * Telepítse a legújabb [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomagot.
 * Állítsa be a rendszerállapotkulcsot a kódban semmilyen telemetriai adatot követése előtt (vagy állítani az APPINSIGHTS_INSTRUMENTATIONKEY környezeti változó beállítása). Ezt követően meg kell tudni manuálisan nyomon követheti a telemetriai adatokat, és nézze meg az Azure Portalon

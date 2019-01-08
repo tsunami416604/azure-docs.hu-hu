@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.date: 01/02/2019
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963249"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065545"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -22,17 +22,17 @@ Az Azure Storage a Microsoft felhőalapú tárolási megoldása a modern adattá
 - **Tartós és magas rendelkezésre állású.** A redundancia biztosítja az adatok biztonságát átmeneti hardverhiba esetén. Az adatközpontok vagy földrajzi helyek adatait replikálhatja is a helyi vagy természeti katasztrófák elleni további védelem érdekében. Az így replikált adatok magas rendelkezésre állásúak maradnak váratlan meghibásodás esetén is. 
 - **Biztonságos.** A szolgáltatás titkosítja az Azure Storage tárterületre írt összes adatot. Az Azure Storage használatával részletesen szabályozhatja, hogy ki férhet hozzá az adatokhoz.
 - **Skálázható.** Az Azure Storage nagymértékben skálázható, hogy megfeleljen a mai alkalmazások adattárolási és teljesítménybeli igényeinek. 
-- **Felügyelt.** A karbantartást és a kritikus problémák kezelését a Microsoft Azure végzi el Ön helyett.
+- **Felügyelt.** A Microsoft Azure hardverkarbantartás, a frissítések és a kritikus fontosságú problémáit kezeli az Ön számára.
 - **Hozzáférhető.** Az Azure Storage tárterületen lévő adatok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A Microsoft számos nyelven (például .NET, Java, Node.js, Python, PHP, Ruby és Go) nyújt SDK-kat az Azure Storage-hoz, valamint egy kifinomult REST API-t is biztosít. Az Azure Storage támogatja az Azure PowerShell és az Azure CLI szkriptjeit. Az Azure Portal és az Azure Storage Explorer emellett egyszerű vizuális megoldásokat nyújt az adatok használatához.  
 
 ## <a name="azure-storage-services"></a>Azure Storage-szolgáltatások
 
 Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza: 
 
-- [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló szöveges és bináris adatokhoz.
-- [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányokhoz.
-- [Azure Queues](../queues/storage-queues-introduction.md): Az alkalmazások összetevői között megbízható üzenetkezelést biztosító üzenettároló. 
-- [Azure Tables](../tables/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
+- [Azure-Blobok](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló a szöveges és bináris adatokat.
+- [Az Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányok.
+- [Az Azure-üzenetsorok](../queues/storage-queues-introduction.md): Alkalmazás-összetevők közötti megbízható üzenetküldést üzenetküldési tárolóban. 
+- [Azure-táblák](../tables/table-storage-overview.md): NoSQL-alapú tárolót a strukturált adatok séma nélküli tárolására.
 
 Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-quickstart-create-account.md).
 
@@ -89,30 +89,9 @@ Az Azure Storage emellett a virtuális gépek által használt felügyelt és ne
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
-Ez a táblázat a tárfiókok típusait és az egyes típusokkal használható objektumokat mutatja be.
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|**Tárfiók típusa**|**Általános célú standard**|**Általános célú prémium**|**Blob Storage, a gyakran és a ritkán használt adatok tárolási rétegei**|
-|-----|-----|-----|-----|
-|**Támogatott szolgáltatások**| Blob, File, Queue és Table szolgáltatás | Blob szolgáltatás | Blob szolgáltatás|
-|**Támogatott blobtípusok**|Blokkblobok, lapblobok és hozzáfűző blobok | Lapblobok | Blokkblobok és hozzáfűző blobok|
-
-### <a name="general-purpose-storage-accounts"></a>Általános célú tárfiókok
-
-Kétféle általános célú tárfiók létezik.
-
-#### <a name="standard-storage"></a>Standard szintű Storage
-
-A legszélesebb körben használt tárfiók a standard tárfiók, amely bármilyen típusú adathoz használható. A standard szintű tárfiókok az adatokat mágneses adathordozókon tárolják.
-
-#### <a name="premium-storage"></a>Prémium szintű Storage
-
-A prémium szintű tárfiók nagy teljesítményű tárolást biztosít a lapblobokhoz, amelyek elsősorban VHD-fájlokhoz használatosak. A prémium szintű tárfiókok az adatokat SSD meghajtókon tárolják. A Microsoft minden virtuális gépéhez a prémium szintű Storage szolgáltatást ajánlja.
-
-### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
-
-A Blob Storage-fiók egy specializált tárfiók blokkblobok és hozzáfűző blobok tárolásához. Az ilyen fiókokban nem lehet lapblobokat tárolni, így VHD-fájlokat sem. Ezekben a fiókokban beállíthatja a hozzáférési szintet (gyakran vagy ritkán használt adatok). Ez a szint bármikor módosítható.
-
-A gyakran használt adatok hozzáférési szintje a gyakran elérni kívánt adatok tárolására szolgál – a tárolási költségek magasabbak, a blobok hozzáférési költsége azonban sokkal alacsonyabb. A ritkán használt adatok hozzáférési szintjén tárolt blobok hozzáférési költsége magasabb, a tárolási költség azonban sokkal alacsonyabb.
+Storage-fióktípusok kapcsolatos további információkért lásd: [az Azure storage-fiók áttekintése](storage-account-overview.md). 
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>A blobok, fájlok és üzenetsorok elérése
 
@@ -161,16 +140,7 @@ A vészhelyreállítással kapcsolatos információk: [What to do if an Azure St
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage-ba és az Azure Storage-ból
 
-Az AzCopy parancssori segédprogrammal blob- és fájladatokat másolhat egy tárfiókon belül vagy tárfiókok között. Segítségért lásd a következők cikkek valamelyikét:
-
-* [Transfer data with AzCopy for Windows](storage-use-azcopy.md) (Adatok áthelyezése az AzCopy segédprogrammal Windows rendszeren)
-* [Transfer data with AzCopy for Linux](storage-use-azcopy-linux.md) (Adatok áthelyezése az AzCopy segédprogrammal Linux rendszeren)
-
-Az AzCopy az [Azure Adatátviteli könyvtárra](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) épül, amelynek jelenleg az előzetes verziója érhető el.
-
-Az Azure Import/Export szolgáltatás használatával nagy mennyiségben importálhat és exportálhat blobadatokat a tárfiókjába/tárfiókjából. Készítse elő és küldje el postán az adatokat tartalmazó merevlemezeket valamely Azure adatközpontnak, ahol az adatokat átmásolják a merevlemezekről/merevlemezekre, majd visszaküldik azokat az Ön számára. További információ az Import/Export szolgáltatásról: [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage](../storage-import-export-service.md) (A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage-ba).
-
-Ha nagy mennyiségű blobadatot szeretne gyorsan, olcsón és megbízható módon importálni a tárfiókjában, használhatja az Azure Data Box Disk szolgáltatást is. A Microsoft legfeljebb 5 darab, egyenként 40 TB kapacitású titkosított SSD-lemezt küld az Ön adatközpontjába egy regionális szállítóval. Ön gyorsan konfigurálhatja a lemezeket, USB-kapcsolaton átmásolhatja az adatokat, majd visszaküldheti a lemezeket az Azure-hoz. Az Azure-adatközpontban az adatok automatikusan feltöltődnek a meghajtókról a felhőbe. További információ a megoldásról: [Az Azure Data Box Disk áttekintése](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Adatok áthelyezése vagy onnan máshová az Azure Storage számos lehetősége van. Lehetőséget választja, az adatkészlet és a hálózati sávszélesség méretétől függ. További információkért lásd: [válasszon egy Azure-megoldás az adatátvitelhez](storage-choose-data-transfer-solution.md).
 
 ## <a name="pricing"></a>Díjszabás
 

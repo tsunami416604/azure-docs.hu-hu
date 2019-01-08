@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 6d0524471ddc62e1ff6285bd0c80049917e726a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d103061289991fb149b7c8d76430b37a6b385f80
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014947"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064372"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
 > * [1-es verzió](v1/data-factory-scheduling-and-execution.md)
 > * [Aktuális verzió](concepts-pipeline-execution-triggers.md)
 
-A _folyamatfuttatás_ egy folyamat-végrehajtás egy példányát határozza meg az Azure Data Factoryben. Tegyük fel például, hogy rendelkezik egy délelőtt 8:00-kor, 9:00-kor és 10:00-kor végbemenő folyamattal. Ebben az esetben három külön folyamatfuttatás lesz. Minden folyamathoz tartozik egy egyedi folyamatfuttatási azonosító. A futtatási azonosító az adott folyamatfuttatást egyedien meghatározó GUID. 
+A _folyamatfuttatás_ egy folyamat-végrehajtás egy példányát határozza meg az Azure Data Factoryben. Tegyük fel például, hogy rendelkezik egy délelőtt 8:00-kor, 9:00-kor és 10:00-kor végbemenő folyamattal. Ebben az esetben három külön folyamatfuttatás lesz. Minden folyamathoz tartozik egy egyedi folyamatfuttatási azonosító. A futtatási azonosító az adott folyamatfuttatást egyedien meghatározó GUID.
 
 A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyamatban meghatározott paraméterekhez történő továbbításával történik. A folyamatok manuálisan vagy egy _eseményindító_ használatával hajthatók végre. A cikk részletesen ismerteti a folyamatok végrehajtásának mindkét módját.
 
@@ -84,7 +84,7 @@ A következő módszerek egyikével manuálisan futtathatja a folyamatot:
 - Python SDK
 
 ### <a name="rest-api"></a>REST API
-A következő mintaparancs bemutatja, hogyan futtathatja manuálisan a folyamatot a REST API használatával:  
+A következő mintaparancs bemutatja, hogyan futtathatja manuálisan a folyamatot a REST API használatával:
 
 ```
 POST
@@ -175,7 +175,7 @@ Az ütemezési eseményindító egy időpontalapú ütemezés szerint futtatja a
 Példák és további információ az ütemezési triggerekről: [Ütemezési trigger létrehozása](how-to-create-schedule-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Ütemezési eseményindító meghatározása
-Amikor létrehoz egy ütemezési eseményindítót, a JSON-definíció segítségével megadhatja az ütemezést és az ismétlődést. 
+Amikor létrehoz egy ütemezési eseményindítót, a JSON-definíció segítségével megadhatja az ütemezést és az ismétlődést.
 
 Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába foglalja bele az adott folyamat referenciáját. A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is.
 
@@ -292,7 +292,7 @@ Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan ir�
 
 Tekintsünk meg egy példát arról, hogy mi történik, ha a kezdő időpont egy múltbeli időpont, ismétlődéssel, de ütemezés nélkül. Tegyük fel, hogy az aktuális időpont 2017-04-08 13:00, a kezdési idő 2017-04-07 14:00, és a művelet kétnaponta ismétlődik. (A **recurrence** értéke a **frequency** tulajdonság „day” értékre és az **interval** tulajdonság 2 értékre történő állításával adható meg.) Figyelje meg, hogy a **startTime** értéke múltbeli időpont, és az aktuális időpont elé esik.
 
-Ezen feltételek mellett az első végrehajtási időpont 2017-04-09 14:00. Az ütemezőmotor a kezdési időpont alapján kiszámítja a végrehajtási alkalmakat. A múltbéli időpontokat a rendszer elveti. A motor az első jövőbeli alkalmat használja. Tehát ebben a forgatókönyvben a kezdő időpont 2017-04-07 14:00. A következő alkalom két napra esik ettől, azaz 2017-04-09 14:00.
+Ezen feltételek mellett az első végrehajtási időpont 2017-04-09 14:00-kor. Az ütemezőmotor a kezdési időpont alapján kiszámítja a végrehajtási alkalmakat. A múltbéli időpontokat a rendszer elveti. A motor az első jövőbeli alkalmat használja. Tehát ebben a forgatókönyvben a kezdő időpont 2017-04-07 14:00. A következő alkalom két napra esik ettől, azaz 2017-04-09 14:00.
 
 Az első végrehajtási időpont akkor is ez, ha a **startTime** értéke 2017-04-05 14:00 vagy 2017-04-01 14:00. Az első végrehajtás után a rendszer a következő végrehajtási időpontokat az ütemezés alapján számítja ki. Ezért a további végrehajtások a következő időpontokban történnek: 2017-04-11 14:00, 2017-04-13 14:00, majd 2017-04-15 14:00 és így tovább.
 
@@ -312,7 +312,7 @@ A következő táblázat részletesen ismerteti a **schedule** elemeit:
 | **minutes** | Az óra azon perce, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje|
 | **hours** | A nap azon órái, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje|
 | **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg.|<br />– Hétfő<br />– Kedd<br />– Szerda<br />– Csütörtök<br />– Péntek<br />– Szombat<br />– Vasárnap<br />– Nap értékek tömbje (a tömb maximális mérete 7)<br /><br />A nap értékek nem tesznek különbséget a kis- és nagybetű között|
-| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. |– Tömbje **monthlyOccurrence** objektumok: `{ "day": day,  "occurrence": occurrence }`<br />– A **day** attribútum a hét azon napja, amelyen a trigger fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.<br />– Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.|
+| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. |– Tömbje **monthlyOccurrence** objektumok: `{ "day": day, "occurrence": occurrence }`<br />– A **day** attribútum a hét azon napja, amelyen a trigger fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.<br />– Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.|
 | **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. |– Bármilyen érték -1 és -31 között<br />– Bármilyen érték 1 és 31 között<br />– Értékek tömbje|
 
 ## <a name="tumbling-window-trigger"></a>Átfedésmentes ablakos eseményindító
@@ -372,7 +372,7 @@ Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az üte
 | **Újrapróbálkozási képesség** | Támogatott. A sikertelen folyamatfuttatások alapértelmezett újrapróbálkozási szabályzata 0, vagy a felhasználó által az eseményindító definíciójában megadott szabályzat. Automatikusan újrapróbálkozik, ha a folyamatfuttatás egyidejűségi/kiszolgálói/szabályozási korlátok miatt meghiúsul (azaz állapotkódok 400: Felhasználói hiba, a 429-es: Túl sok kérelmet, és 500-as: Belső kiszolgálóhiba). | Nem támogatott. |
 | **Párhuzamosság** | Támogatott. A felhasználók explicit módon adhatják meg az eseményindító egyidejűségi korlátját. 1 és 50 közötti egyidejű aktivált folyamatfuttatást engedélyez. | Nem támogatott. |
 | **Rendszerváltozók** | Támogatja a **WindowStart** és **WindowEnd** rendszerváltozók használatát. A felhasználók hozzáférhetnek a `triggerOutputs().windowStartTime` és `triggerOutputs().windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` és `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nem támogatott. |
-| **Folyamat–trigger kapcsolat** | Támogatja az egy-az-egyhez kapcsolatot. Csak egy folyamat indítható el. | Támogatja a több-a-többhöz kapcsolatokat. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is. | 
+| **Folyamat–trigger kapcsolat** | Támogatja az egy-az-egyhez kapcsolatot. Csak egy folyamat indítható el. | Támogatja a több-a-többhöz kapcsolatokat. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is. |
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi oktatóanyagokat:

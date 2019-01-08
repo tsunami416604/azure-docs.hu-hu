@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 458b615ea872b62a412a71cbbb0b3827ccb4d9b8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580926"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064474"
 ---
 # <a name="azure-log-integration-faq"></a>Az Azure Log Integration – gyakori kérdések
 
@@ -31,7 +31,7 @@ Ebben a cikkben megválaszolunk Azure Log Integration kapcsolatos gyakori kérd�
 
 Az Azure Log Integration szolgáltatása egy Windows operációs rendszer, amellyel az Azure-erőforrások nyers naplóinak integrálása a helyszíni biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszerek. Ez az integráció az egységesített irányítópult kínál az összes eszközt, a helyszíni vagy a felhőben. Ezután összesíteni, összekapcsolását, elemzése, és az alkalmazásokkal kapcsolatos biztonsági események a riasztást.
 
-Az előnyben részesített módja az Azure-naplók integrálása a SIEM szállítói s Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Azonban a SIEM szállítói adatforgalmi-t az Azure monitornak biztosítani egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (Ha a siem-nek az Azure Log Integration) mindaddig, amíg elérhető ilyen egy összekötőt.
+Az előnyben részesített módja az Azure-naplók integrálása a SIEM gyártója által biztosított Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Azonban a SIEM gyártója által biztosított az Azure monitornak nem biztosít egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (ha az Azure Log Integration támogatja a siem-nek) mindaddig, amíg elérhető ilyen egy összekötőt.
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Az Azure Log Integration szoftver ingyenes?
 

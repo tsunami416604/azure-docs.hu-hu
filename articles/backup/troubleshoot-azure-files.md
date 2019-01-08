@@ -8,12 +8,12 @@ ms.author: raynew
 ms.date: 10/23/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4806ca77bda1d380d3c5f1d958a335bceddc7f16
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 56daf1bd8d0ab7752b74463759f25441924b52d2
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787443"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064117"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
 Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure-fájlmegosztások biztonsági mentése közben fellépő problémákat és hibákat.
@@ -36,7 +36,7 @@ A Storage-fiókok az Azure-fájlmegosztások biztonsági mentési [zónaredundá
 ## <a name="configuring-backup"></a>Biztonsági mentés konfigurálása
 Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához használható:
 
-| Biztonsági mentés konfigurálása | Megkerülő vagy megoldási tippek |
+| Hibaüzenetek | Megkerülő vagy megoldási tippek |
 | ------------------ | ----------------------------- |
 | Nem találom a tárfiókom az Azure-fájlmegosztás biztonsági mentésének konfigurálásához | <ul><li>Várjon, amíg a felderítés befejeződik. <li>Ellenőrizze, hogy egy másik helyreállítási tár védi-e már bármelyik fájlmegosztást a tárfiókból. **Megjegyzés**: Storage-fiókban lévő összes fájlmegosztás védelme csak a helyreállítási tárral. <li>Győződjön meg arról, hogy a fájlmegosztás nincs jelen egyik nem támogatott tárfiókban sem.|
 | A portál hibája azt jelenti, hogy a tárfiókok felderítése sikertelen volt. | Ha az előfizetése partneri (CSP-engedélyezett), hagyja figyelmen kívül a hibát. Ha az előfizetés nem engedélyezi a CSP-t, a tárfiókok pedig nem deríthetők fel, forduljon az ügyfélszolgálathoz.|
@@ -64,6 +64,14 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | A visszaállítási művelet sikertelen volt, mert a célfájlmegosztás megtelt. | Növelje meg a célfájlmegosztás méretkvótáját, hogy az képes legyen fogadni a visszaállítási adatokat, majd ismételje meg a műveletet. |
 | A visszaállítási művelet sikertelen volt, mivel hiba történt a File Sync szolgáltatás a célfájlmegosztással társított erőforrásain végrehajtott visszaállítás előtti műveletek során. | Később próbálkozzon újra, és ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
 | Egy vagy több fájlt nem sikerült helyreállítani. További információkért ellenőrizze a hibás fájlok listáját a fent megadott elérési úton. | <ul> <li> A helyreállítási hibák okai megtalálhatók a fájlban (az elérési utat a feladat részletei tartalmazzák). Vizsgálja ki az okokat, majd ismételje meg a visszaállítási műveletet csak a hibás fájlokra vonatkozóan. <li> A fájlvisszaállítási hibák leggyakoribb okai a következők: <br/> – Győződjön meg arról, hogy a hibás fájlok jelenleg nincsenek használatban. <br/> – Egy, a hibás fájlokkal megegyező nevű könyvtár található a szülőkönyvtárban. |
+
+
+## <a name="modify-policy"></a>Házirend módosítása
+| Hibaüzenetek | Megkerülő vagy megoldási tippek |
+| ------------------ | ----------------------------- |
+| Egy másik védelemkonfigurálási művelet van folyamatban az elemhez kapcsolódóan. | Várjon, amíg az előző módosítása házirend művelet befejeződését, és némi várakozás után próbálkozzon újra.|
+| A kijelölt elemen folyamatban van egy másik művelet. | Várjon, amíg a másik a folyamatban lévő művelet befejeződik, majd némi várakozás után próbálkozzon újra |
+
 
 ## <a name="see-also"></a>Lásd még:
 Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos további információk:

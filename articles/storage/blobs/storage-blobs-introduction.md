@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/19/2018
+ms.date: 01/03/2019
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7628260efff34b52ca7d4bd4c35cce279d5474b3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 516ce9d9a6fcc73b543c7db584afebf71c2293ca
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965410"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064994"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
 
@@ -33,7 +33,7 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 ### <a name="storage-accounts"></a>Tárfiókok
 
-Storage-fiók az adatok az Azure-ban egy egyedi névteret biztosít. Az Azure Storage-ban minden egyes objektum, amely tartalmazza az egyedi fióknevet címmel rendelkezik. A fiók nevét és az Azure Storage-szolgáltatásvégpont kombinációja képezi a tárfiók végpontjait.
+Storage-fiók az adatok az Azure-ban egy egyedi névteret biztosít. Az Azure Storage-ban minden egyes objektum, amely tartalmazza az egyedi fióknevet címmel rendelkezik. A fiók nevét és az Azure Storage-blob végpont kombinációja a tárfiókban lévő objektumok základní adresa képezi.
 
 Például, ha a tárfiók neve *mystorageaccount*, akkor az alapértelmezett végpont a Blob Storage:
 
@@ -56,7 +56,7 @@ Az Azure Storage háromféle blobot támogatja:
 
 * **Blokkblobok** legfeljebb nagyjából 4,7 TB szöveges és bináris adatok tárolására. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
 * **Hozzáfűző blobok** blokkokból épülnek fel, mint a blokkblobok használatát támogatják, de vannak optimalizálva műveletek hozzáfűzésére. A hozzáfűző blobok ideálisak például a virtuális gépek adatainak naplózásához és hasonló forgatókönyvekhez.
-* **Lapblobok** store véletlenszerű elérésű fájlok tárolhatók legfeljebb 8 TB méretű. A lapblobok a virtuális merevlemez (VHD) fájlok állnak az Azure-beli virtuális gépek lemezeinek tárolóban. Fore lapblobok kapcsolatos további információkért lásd: (.. / articles/storage/blobs/storage-blob-pageblob-overview.md)
+* **Lapblobok** store véletlenszerű elérésű fájlok tárolhatók legfeljebb 8 TB méretű. A lapblobok a virtuális merevlemez (VHD) fájlok állnak az Azure-beli virtuális gépek lemezeinek tárolóban. Fore lapblobok kapcsolatos további információkért lásd: [áttekintése az Azure-lapblobokkal](storage-blob-pageblob-overview.md)
 
 Blobok különböző típusaival kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 

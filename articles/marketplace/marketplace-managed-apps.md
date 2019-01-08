@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c8ead3dc34faefce0f113dee2074960fddfa11a1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: ae50562a9354b9c1e5b2711e5bbeec7b1e0fbbb8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144591"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078796"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Az Azure-alkalmazások: A felügyelt alkalmazásra vonatkozó ajánlat közzétételi útmutató
+# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Az Azure-alkalmazások: Felügyelt alkalmazás az ajánlat közzétételi útmutató
 
 Felügyelt alkalmazás a fő módon lehet a megoldás a piactéren közzétett egyike. Ez az útmutató segítségével áttekinteni a követelményeket, ezt az ajánlatot. 
 
@@ -41,7 +41,7 @@ Használja az Azure-alkalmazás: az ajánlat alkalmazástípus kezelése, ha az 
 |Az ügyfél az Azure-előfizetés keretében üzembe | Felügyelt alkalmazásokat telepíteni kell az ügyfél-előfizetés és felügyelhetik a 3. fél | 
 |Számlázással és méréssel    |  Az erőforrások lesznek üzembe helyezve, az ügyfél Azure-előfizetésében. Használatalapú fizetés (ÁTTÉRÉSHEZ) virtuális gépek lesz feldolgozva, Microsoft, az ügyfél az Azure-előfizetés (ÁTTÉRÉSHEZ) keresztül a számlázás az ügyfélnél 
 Esetén bring-your-saját licenc míg infrastrukturális költségeit az ügyfél-előfizetés a Microsoft ki, fog transact a szoftverlicenc-díjak, az ügyfél közvetlenül        |
-|Azure-kompatibilis virtuális merevlemez (VHD)    |   Windows vagy Linux rendszerű virtuális gépek kell épül.<ul> <li>Linux rendszerű virtuális Merevlemezek létrehozásával kapcsolatos további információkért látogasson el az Azure-kompatibilis VHD-t (Linux-alapú) szakaszban található létrehozása [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2- Create-an-Azure-Compatible-VHD-Linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Windows virtuális Merevlemezek létrehozásával kapcsolatos további információkért látogasson el az Azure-kompatibilis VHD-t (Windows-alapú) szakaszban található létrehozása [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3- Create-an-Azure-Compatible-VHD-Windows-Based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul>      |
+|Azure-kompatibilis virtuális merevlemez (VHD)    |   Windows vagy Linux rendszerű virtuális gépek kell épül.<ul> <ul> <li>Linux rendszerű virtuális Merevlemezek létrehozásával kapcsolatos további információkért lásd: [az Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Windows virtuális Merevlemezek létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy Azure-kompatibilis virtuális Merevlemezt](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |
 
 >[!NOTE]
 > Felügyelt alkalmazások a Marketplace-en keresztül telepíthető kell lennie. Ha az ügyfél-kommunikáció fontos, majd meg az elérhető érdeklődőnek megosztó érdeklődő engedélyezése után.  
@@ -50,8 +50,8 @@ Esetén bring-your-saját licenc míg infrastrukturális költségeit az ügyfé
 ## <a name="next-steps"></a>További lépések
 Ha ezt még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
 
 Ha regisztrálva van és a egy új ajánlat létrehozása vagy egy meglévő, dolgozik
 
-- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot
+- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.

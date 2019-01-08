@@ -10,18 +10,18 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229417"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061057"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Az Azure Logic Apps és az Azure Functions streamelési customer insights irányítópult létrehozása
 
-Az Azure kiszolgáló nélküli eszközöket kínál, amelyek segítségével gyorsan hozhat létre és alkalmazásokat a felhőben, nem kell foglalkoznia infrastruktúra. Ebben az oktatóanyagban létrehozhat egy irányítópultot, amely elindítja az ügyfelek visszajelzései alapján elemzi a machine learning visszajelzés és elemzéseket tesz közzé egy forrás, például a Power bi-ban vagy az Azure Data Lake.
+Azure-ajánlatok [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) eszközök, amelyek segítségével gyorsan alkalmazásfejlesztést és a felhőben anélkül, hogy az infrastruktúrával foglalkoznia kellene. Ebben az oktatóanyagban létrehozhat egy irányítópultot, amely elindítja az ügyfelek visszajelzései alapján elemzi a machine learning visszajelzés és elemzéseket tesz közzé egy forrás, például a Power bi-ban vagy az Azure Data Lake.
 
-Ebben a megoldásban a legfontosabb Azure-összetevőket használata kiszolgáló nélküli alkalmazások: [Azure Functions](https://azure.microsoft.com/services/functions/) és [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Ebben a megoldásban a legfontosabb Azure-összetevőket kiszolgáló nélküli alkalmazásokat használhat: [Az Azure Functions](https://azure.microsoft.com/services/functions/) és [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Az Azure Logic Apps biztosít egy kiszolgáló nélküli munkafolyamat-motor a felhőben, így a vezénylések létrehozásához a kiszolgáló nélküli összetevői között, és több mint 200 services és API-hoz csatlakozhat. A biztosít az Azure Functions kiszolgáló nélküli számítási feladatokat a felhőben. Ez a megoldás az Azure Functions használ megjelölése ügyfél tweetek előre megadott kulcsszavak alapján.
 
 Ebben a forgatókönyvben egy logikai alkalmazást fog létrehozni, amely visszajelzés keresi az ügyfelektől. Egyes összekötők, hogy az ügyfelek visszajelzései alapján válaszol súgó tartalmazzák Outlook.com-os, az Office 365-höz, a felmérés alfaja, Twitter, és a egy [HTTP-kérelem egy webes űrlap](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). A munkafolyamat, amely létrehoz egy, a Twitteren hashtag figyeli.
@@ -34,7 +34,7 @@ Is [a Visual Studióban a teljes megoldás létrehozásához](../logic-apps/quic
 
    Ha most ismerkedik a logic apps, tekintse át a [az Azure Portalon a rövid útmutató](../logic-apps/quickstart-create-first-logic-app-workflow.md) vagy a [rövid útmutató a Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-2. Logic App Designerben keresse meg és adja hozzá a Twitter-eseményindítót, amely rendelkezik ezzel a művelettel: **egy új tweet közzétételekor**
+2. Logic App Designerben keresse meg és adja hozzá a Twitter-eseményindítót, amely rendelkezik ezzel a művelettel: **Egy új tweet közzétételekor**
 
 3. Állítsa be az eseményindító figyelni a tweetek kulcsszó vagy hashtaggel alapján.
 
@@ -60,10 +60,10 @@ A hangulat felismerése valamilyen szöveget mögött, használhatja [Azure Cogn
 
 Miután a tweet adatait információival és a Twitter-üzenetet kap, számos más releváns összekötők és a lépések most már használhatja:
 
-* **Power BI - Streamelési adatkészletet sorok hozzáadása**: bejövő tweetek megtekintése a Power BI-irányítópulton.
-* **Az Azure Data Lake - fájl hozzáfűzése**: hozzáadása az Azure Data Lake-adatkészlet az analytics-feladatok közé tartozik a vásárlói adatokat.
-* **SQL - sorok hozzáadása**: data Store adatbázisban a későbbi beolvasásához.
-* **Slack - üzenet küldése**: értesítés a negatív visszajelzés küldésére, beavatkozást igénylő Slack csatorna.
+* **Power BI - Streamelési adatkészlet sorok hozzáadása**: Bejövő tweetek megtekintése a Power BI-irányítópulton.
+* **Az Azure Data Lake - fájl hozzáfűzése**: Adja hozzá az Azure Data Lake-adatkészlet az analytics-feladatok közé tartozik a vásárlói adatokat.
+* **SQL - sorok hozzáadása**: Data Store adatbázisban a későbbi beolvasásához.
+* **Slack - üzenet küldése**: Értesítés a negatív visszajelzés küldésére, beavatkozást igénylő Slack csatorna.
 
 Is létrehozhat, és a egy Azure működik, hogy egyéni feldolgozási végezheti el az adatokat. 
 

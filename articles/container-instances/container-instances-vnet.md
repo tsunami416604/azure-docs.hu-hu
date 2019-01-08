@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 172ddd11cb956ab6d74e1ce870e2378205dd1613
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993290"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077471"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -33,26 +33,28 @@ Egy Azure-beli virtuális hálózatban üzembe helyezett tárolócsoportok olyan
 
 Bizonyos korlátozások érvényesek, amikor üzembe helyezi a tárolócsoportok egy virtuális hálózatot.
 
-* Windows-tárolók nem támogatottak.
 * Tárolócsoportok telepíteni egy alhálózathoz, az alhálózat nem tartalmazhat más erőforrástípusok. Az összes meglévő erőforrások eltávolítása előtt tárolócsoportok hozzá egy meglévő alhálózatot, vagy hozzon létre egy új alhálózatot.
 * Tárolócsoportok üzembe helyezni egy virtuális hálózatban jelenleg nem támogatják nyilvános IP-címe vagy DNS-név címke.
 * További hálózati erőforrás, mert egy tárolócsoport telepítése egy virtuális hálózathoz általában némileg lassabb, mint a standard szintű tárolópéldány üzembe helyezése.
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások érvényesek a példányok üzembe helyezésekor tárolót egy virtuális hálózathoz.
+Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások érvényesek a példányok üzembe helyezésekor tárolót egy virtuális hálózathoz. 
 
-**Támogatott** régiók:
+**Támogatott régiók és erőforráskorlátok**
 
-* Észak-Európa (northeurope)
-* Nyugat-Európa (westeurope)
-* USA nyugati RÉGIÓJA (westus)
-* USA keleti RÉGIÓJA (USA keleti régiója)
+| Hely | Operációs rendszer | CPU | Memória (GB) |
+| -------- | :---: | :---: | :-----------: |
+| Nyugat-Európa | Linux | 4 | 14 |
+| USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA | Linux | 2 | 3.5 |
+| Kelet-Ausztrália, Észak-Európa | Linux | 1 | 1.5 |
 
-**Nem támogatott** hálózati erőforrások:
+Tároló erőforráskorlátok ezekben a régiókban nem hálózati container Instances korlátok eltérhet. Ez a funkció jelenleg csak Linux-tárolók támogatják. Windows támogatási tervezünk.
 
-* Hálózati biztonsági csoport
+**Nem támogatott hálózati erőforrások és szolgáltatások**
+
 * Azure Load Balancer
+* Társviszony létesítése virtuális hálózatok között
 
 **Hálózati erőforrás törlése** igényel [további lépéseket](#delete-network-resources) után tárolócsoportok helyezte a virtuális hálózathoz.
 

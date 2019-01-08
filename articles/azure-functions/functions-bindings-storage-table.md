@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bd85214efc3c8f67d41563e3ca46a1e2278c4868
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999534"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062673"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -779,7 +779,7 @@ A Table storage kimeneti kötés támogatja a következő esetekben:
 
   A C# és a C#-szkript, eléréséhez a kimeneti tábla entitás parametr metody használatával `out T paramName` vagy a függvény visszatérési értéke. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. `T` lehet bármilyen szerializálható típust, ha a partíciókulcs és a sorkulcs által biztosított a *function.json* fájl vagy a `Table` attribútum. Ellenkező esetben `T` tartalmazó típusnak kell lennie `PartitionKey` és `RowKey` tulajdonságait. Ebben a forgatókönyvben `T` általában valósít meg `ITableEntity` vagy származó `TableEntity`, de nem kell.
 
-* **Egy vagy több sor írása C# vagy a C#**
+* **Írja be egy vagy több sor C# vagy C# parancsfájl**
 
   A C# és a C#-szkript, elérni a kimeneti tábla entitás parametr metody `ICollector<T> paramName` vagy `IAsyncCollector<T> paramName`. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. `T` Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származó `TableEntity` vagy valósít meg `ITableEntity`, de nem kell. A partíciókulcs és a sor a kulcsértékek *function.json* vagy a `Table` attribútum konstruktorának nem szerepel ebben a forgatókönyvben.
 

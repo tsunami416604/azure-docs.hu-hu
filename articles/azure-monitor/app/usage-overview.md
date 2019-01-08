@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 45db2d02a434f2d7e7f3187c0d87c0b68ecf5235
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6d8570c78fcf28a236374579a9cb85c7c27f6ec8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052002"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076977"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -30,7 +30,7 @@ A legjobb élményt az Application Insights telepítésével az alkalmazáskód 
 
 1. **Kiszolgálóoldali kódban:** A megfelelő moduljának telepítése a [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../application-insights/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), vagy [más](../../azure-monitor/app/platforms.md) alkalmazás.
 
-    * *Nem szeretné telepíteni a kiszolgálói kód? Csak [hozzon létre egy Azure Application Insights-erőforrást](../../application-insights/app-insights-create-new-resource.md).*
+    * *Nem szeretné telepíteni a kiszolgálói kód? Csak [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
 
 2. **Weblap-kódot:** Adja hozzá a következő szkriptet a weblapra a Bezárás előtt ``</head>``. Cserélje le a megfelelő értéket, az Application Insights-erőforrás kialakítási kulcsát:
 
@@ -47,7 +47,7 @@ A legjobb élményt az Application Insights telepítésével az alkalmazáskód 
     ```
     A webhelyek monitorozásával kapcsolatos speciális konfigurációkról a [JavaScript SDK API-referenciáiban](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md) olvashat.
 
-3. **Mobilalkalmazás-kód:** Az App Center SDK segítségével eseményeinek gyűjtése az alkalmazásból, majd elküldi ezeket az eseményeket az Application Insights által végzett elemzéshez [ezt az útmutatót](../../application-insights/app-insights-mobile-center-quickstart.md).
+3. **Mobilalkalmazás-kód:** Az App Center SDK segítségével eseményeinek gyűjtése az alkalmazásból, majd elküldi ezeket az eseményeket az Application Insights által végzett elemzéshez [ezt az útmutatót](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 4. **Máris:** A projekt hibakeresési módban futtatja a néhány percet, és keresse meg az Application Insights áttekintő paneljén eredményez.
 

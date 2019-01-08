@@ -1,6 +1,6 @@
 ---
-title: Az első munkafolyamat létrehozása és automatizálása – Azure Logic Apps | Microsoft Docs
-description: Rövid útmutató a feladatokat, folyamatokat és munkafolyamatokat automatizáló első logikai alkalmazás létrehozásához az Azure Logic Apps használatával. Logikai alkalmazások létrehozása rendszerei és felhőszolgáltatásai rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásaihoz
+title: Rövid útmutató – létrehozása és automatizálhatja első munkafolyamatát – Azure Logic Apps |} A Microsoft Docs
+description: Hozzon létre az első logikai alkalmazását, amely automatizálja a feladatokat, folyamatokat és munkafolyamatokat az Azure Logic Apps. Logikai alkalmazások létrehozása rendszerei és felhőszolgáltatásai rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásaihoz
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fe2ca48c1cab3789f2bb501eaf00aeb9cd866b8c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233684"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065188"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rövid útmutató: Az első automatizált munkafolyamat létrehozása az Azure Logic Apps használatával – Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Gyors útmutató: Az első automatizált munkafolyamat létrehozása az Azure Logic Apps – Azure portal
 
 Ez a rövid útmutató bemutatja, hogyan állíthatja össze első automatizált munkafolyamatát az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) segítségével. Ebben a cikkben egy olyan logikai alkalmazást fog létrehozni, amely rendszeresen ellenőrzi egy webhely RSS-hírcsatornájában lévő új elemeket. Ha új elemeket talál, a logikai alkalmazás mindegyikről e-mailt küld. Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz hasonlít:
 
@@ -38,7 +38,7 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
    ![Logikai alkalmazás létrehozása](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás részleteit az itt látható módon. Ha elkészült, válassza a **Rögzítés az irányítópulton** > **Létrehozás** lehetőséget.
+3. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás részleteit az itt látható módon. Miután elkészült, válassza ki **létrehozás**.
 
    ![A logikai alkalmazás részleteinek megadása](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -61,9 +61,9 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
 
 ## <a name="check-rss-feed-with-a-trigger"></a>RSS-hírcsatorna ellenőrzése eseményindítóval
 
-1. A tervezőben írja be az „rss” kifejezést a keresőmezőbe. Válassza ki a következő eseményindítót: **RSS – Művelet hírcsatornaelem közzétételekor**.
+1. A tervezőben írja be az „rss” kifejezést a keresőmezőbe. Ez az eseményindító kiválasztása: **RSS - hírcsatornaelem közzétételekor**
 
-   ![Eseményindító kiválasztása: „RSS – Művelet hírcsatornaelem közzétételekor”](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
+   ![Trigger kiválasztása: "RSS - hírcsatornaelem közzétételekor"](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
 
 2. Adja meg az eseményindító információit az itt ismertetett módon: 
 
@@ -91,13 +91,13 @@ A logikai alkalmazás most már működőképes, de mindössze annyit csinál, h
 
 Adjunk meg egy olyan [műveletet](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely e-mailt küld, ha új elem jelenik meg az RSS-hírcsatornában. 
 
-1. A **Művelet hírcsatornaelem közzétételekor** eseményindítónál válassza az **+ Új lépés** > **Művelet hozzáadása** lehetőséget.
+1. Alatt a **egy új hírcsatornaelem közzétételekor** aktiválhat, válassza a **új lépés**.
 
    ![Művelet hozzáadása](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. A **Válasszon műveletet** területen szűrőként írja be az „send an email” (e-mail küldése) szöveget. A műveletek listájáról válassza a „send an email” (e-mail küldése) műveletet a kívánt levelezési szolgáltatóhoz. 
+2. A **válasszon ki egy műveletet**, adja meg az "e-mail küldése" kifejezést a keresőmezőbe. A keresőmező alatt válassza ki a **összes**. A műveletek listájáról válassza a „send an email” (e-mail küldése) műveletet a kívánt levelezési szolgáltatóhoz. 
 
-   ![Válassza ezt a műveletet: „Office 365 Outlook – e-mail küldése”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+   ![Ez a művelet kiválasztása: "Az office 365 Outlook – e-mail küldése"](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
    Ha a műveletek listáját meghatározott alkalmazásra vagy szolgáltatásra szeretné szűkíteni, először válassza ki az adott alkalmazást vagy szolgáltatást:
 

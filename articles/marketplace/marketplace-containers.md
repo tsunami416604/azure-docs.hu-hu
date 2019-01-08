@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5eb30c65032332825d05097f86d0275b015a8929
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6b02714c3a62e8d11512c1cc2dfc7a75a422441d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059423"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076382"
 ---
 # <a name="containers-offer-publishing-guide"></a>Tárolók az ajánlat közzétételi útmutató
 
@@ -40,7 +40,7 @@ A Microsoft jelenleg támogatja az ingyenes és a bring-your-saját licenc (hasz
 |:--- |:--- |  
 | Számlázással és méréssel | Támogatja a vagy az ingyenes vagy BYOL számlázási modellt. |  
 | A docker-fájlban létrehozott rendszerképet | Tárolólemezképeket a Docker-rendszerkép specifikáció alapján kell, és a egy Docker-fájlból kell elkészíteni.<ul> <li>Docker-rendszerképek létrehozásával kapcsolatos további információkért látogasson el a használati szakaszban található [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
-| Az ACR üzemeltetése | Tárolórendszerképek az Azure Container Registry (ACR) tárházban kell elhelyezni.<ul> <li>Munka az ACR-REL kapcsolatos további információkért látogasson el a rövid útmutató: az Azure portal oldalán található segítségével a tároló-beállításjegyzék létrehozása [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Az ACR üzemeltetése | Tárolórendszerképek az Azure Container Registry (ACR) tárházban kell elhelyezni.<ul> <li>Az ACR-REL kapcsolatos további információkért látogasson el a rövid útmutató: Hozzon létre egy tároló-beállításjegyzéket az Azure portal oldalán található használatával [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
 | Képcímkézés | Tárolórendszerképek tartalmaznia kell legalább 1 címke (maximális címkék: 16).<ul> <li>Kép címkézéssel kapcsolatos további információkért látogasson el a helyen található docker-címke lap [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 
@@ -48,8 +48,9 @@ A Microsoft jelenleg támogatja az ingyenes és a bring-your-saját licenc (hasz
 
 Ha ezt még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
 
 Ha regisztrálva van és a egy új ajánlat létrehozása vagy egy meglévő, dolgozik
 
-- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot
+- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
+- Lásd: [tárolók](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) további információt.

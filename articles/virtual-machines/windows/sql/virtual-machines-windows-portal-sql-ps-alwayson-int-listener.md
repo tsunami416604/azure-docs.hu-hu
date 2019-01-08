@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: ee7b403c2ebdc590bd428eff880769ae83632585
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 76ebdc85db2c65b1ad99c1e7abe5e697f1c1284c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228215"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063998"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelője – erőforrás-kezelő konfigurálása
 Ez a témakör bemutatja, hogyan lehet:
@@ -176,7 +176,7 @@ A kapcsolat teszteléséhez:
 1. Használat **sqlcmd** segédprogram a kapcsolat teszteléséhez. Például hozza létre a következő parancsfájl egy **sqlcmd** kapcsolatot az elsődleges replika, a figyelő a Windows-hitelesítés használatával:
    
     ```
-    sqlmd -S <listenerName> -E
+    sqlcmd -S <listenerName> -E
     ```
    
     Ha a figyelő nem az alapértelmezett portot használ portot (1433), adja meg a portot a kapcsolati karakterláncban. A következő sqlcmd parancsot például egy figyelő 1435 porton csatlakozik: 

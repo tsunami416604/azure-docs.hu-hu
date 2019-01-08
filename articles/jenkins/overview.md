@@ -3,17 +3,17 @@ title: A Jenkins és az Azure áttekintése
 description: Helyezze üzembe a Jenkins-buildet és az automatizálási kiszolgálót az Azure-ban, majd az Azure számítási és tárolási erőforrásai segítségével bővítse ki a folyamatos integrációs és üzembehelyezési (CI-/CD-) folyamatokat.
 ms.service: jenkins
 keywords: jenkins, azure, devops, áttekintés
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: 93185483a2c5a1ddb308cc2fc9fd918c539b5e3d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f09e1711cbbbd8f05a982e620b1e09184320d13
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602329"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078966"
 ---
 # <a name="azure-and-jenkins"></a>Az Azure és a Jenkins
 

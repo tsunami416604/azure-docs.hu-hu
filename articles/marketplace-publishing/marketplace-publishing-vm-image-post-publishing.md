@@ -3,7 +3,7 @@ title: A virtuálisgép-lemezképet az Azure Marketplace-en kezelése |} A Micro
 description: Részletes útmutató az első közzététele után a virtuálisgép-lemezképet az Azure Marketplace-en kezelése
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
@@ -14,28 +14,29 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7aea357c22a928d8af96791bf9cb4bd3c94f37b4
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252972"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077062"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Az Azure piactéren virtuálisgép-ajánlat utáni üzemi útmutató
 Ez a cikk bemutatja, hogyan frissíthet egy élő virtuálisgép-ajánlat az Azure piactéren. Végigvezeti egy vagy több új termékváltozatok ad egy meglévő ajánlatra. Azt is végigvezeti a folyamat egy élő virtuálisgép-ajánlat vagy Termékváltozat eltávolításával a piactérről.
 
 Miután egy ajánlat/SKU elő van készítve a a [az Azure portal](http://portal.azure.com), nem módosítható a következő szövegmezők:
 
-* **Ajánlat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **ajánlat azonosítója**.
-* **Termékváltozat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adjon hozzá egy Termékváltozatot**.
-* **Közzétevő Namespace**: az a közzétételi portálon lépjen a **virtuális gépek** > **forgatókönyv** > **ossza meg velünk a kapcsolatot kapcsolatban a vállalati**("Lépés 2 regisztrálni a vállalat" alatt található) > **közzétevő Namespace** > **Namespace**.
+* **Ajánlat azonosítója**: A közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **ajánlat azonosítója**.
+* **Termékváltozat azonosítója**: A közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adjon hozzá egy Termékváltozatot**.
+* **Közzétevő Namespace**: A közzétételi portálon lépjen a **virtuális gépek** > **forgatókönyv** > **ossza meg velünk a kapcsolatot kapcsolatban a vállalati** (alatt található "2. lépés regisztrálása a Vállalati") > **közzétevő Namespace** > **Namespace**.
 
 Az ajánlat/SKU szerepel-e után a [Marketplace](https://azure.microsoft.com/marketplace), nem módosítható a következő szövegmezők:
 
-* **Ajánlat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **ajánlat azonosítója**.
-* **Termékváltozat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adjon hozzá egy Termékváltozatot**.
-* **Közzétevő Namespace**: az a közzétételi portálon lépjen a **virtuális gépek** > **forgatókönyv** > **ossza meg velünk a kapcsolatot kapcsolatban a vállalati**("Lépés 2 regisztrálása" alatt található) **közzétevő Namespace** > **Namespace**.
-* **Portok**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **nyitott portok**.
+* **Ajánlat azonosítója**: A közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **ajánlat azonosítója**.
+* **Termékváltozat azonosítója**: A közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adjon hozzá egy Termékváltozatot**.
+* **Közzétevő Namespace**: A közzétételi portálon lépjen a **virtuális gépek** > **forgatókönyv** > **ossza meg velünk a kapcsolatot kapcsolatban a vállalati** ("Lépés 2 regisztrálása" alatt található) **Közzétevő Namespace** > **Namespace**.
+* **Portok**: A közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **nyitott portok**.
 * **Díjszabás felsorolt termékváltozat(ok) árának meghatározását módosítása**
 * **Számlázási modell módosítás felsorolt termékváltozat(ok) árának meghatározását**
 * **A listán szereplő termékváltozat(ok) árának meghatározását régiók számlázási eltávolítása**
@@ -310,7 +311,7 @@ A számlázási modellt éles értékek visszaállításához kövesse az alább
 
 2. Nyissa meg a **virtuális gépek** lapra, és válassza az ajánlatot.
 3. A bal oldali menüben kattintson a **Termékváltozatok** fülre.
-4. Kattintson a **szerkesztése** gombra a a számlázási modellt. A megnyíló ablakban jelölje be vagy törölje a **számlázási és licencelési történik együtt a külsőleg (más néven a saját licenc használatát) Azure-ból** jelölőnégyzetet.
+4. Kattintson a **szerkesztése** gombra a a számlázási modellt. Az ablak megnyílik, válassza ki, vagy törölje a jelet a **számlázási és licencelési történik együtt a külsőleg (más néven a saját licenc használatát) Azure-ból** jelölőnégyzetet.
 
     ![A számlázás szerkesztése](media/marketplace-publishing-vm-image-post-publishing/img09-04.png)
 5. Kövesse a "Revert termelési értékekkel a listaelem ár" Ebben a cikkben.
@@ -336,4 +337,4 @@ Az éles értéket egy listán szereplő SKU láthatóságának beállítását 
 * [A Marketplace-en közzétételi gyakori problémáinak elhárítása](marketplace-publishing-support-common-issues.md)
 * [Támogatás kérése a közzétevő](marketplace-publishing-get-publisher-support.md)
 * [A helyszíni Virtuálisgép-lemezkép létrehozása](marketplace-publishing-vm-image-creation-on-premise.md)
-* [Az Azure betekintő portálon Windows rendszerű virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Az Azure Portalon Windows rendszerű virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

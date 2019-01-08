@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993815"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074527"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -674,6 +674,10 @@ C# és az egyéb .NET nyelven, használhatja az imperatív kötés minta, ellent
 ## <a name="functionjson-file-schema"></a>Function.JSON fájlt séma
 
 A *function.json* sémáját mindig elérhető legyen [ http://json.schemastore.org/function ](http://json.schemastore.org/function).
+
+## <a name="testing-bindings"></a>Tesztelési kötések
+
+A függvények helyi fejlesztésekor a kötések, a Visual Studio 2017 vagy Visual Studio Code segítségével tesztelheti. További tudnivalókért lásd: [stratégiát a kódot tesztelés az Azure Functions](functions-test-a-function.md). -HTTP kötések REST API-k használatával is hívhat. További tudnivalókért lásd: [manuális futtatása egy nem HTTP által aktivált függvény](functions-manually-run-non-http.md).
 
 ## <a name="handling-binding-errors"></a>Kötési hibák kezelése
 

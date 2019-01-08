@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 18416f4208a77c27290b7e524b207fc681f06fdb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2387af0ddd9f6f3ecbe91afaaca66d89f070c036
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050812"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076042"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -58,7 +58,7 @@ Javítás:
 * Ellenőrizze, hogy a megfelelő Azure-fiókot a megadott bejelentkezési hitelesítő adataival. 
 * A böngészőben, ellenőrizze, hogy van-e a hozzáférést a [az Azure portal](https://portal.azure.com). Nyissa meg a beállításokat, majd e korlátozás.
 * [Application Insights hozzáadása a meglévő projekt](../../azure-monitor/app/asp-net.md): A Megoldáskezelőben kattintson a jobb gombbal a projekt, és válassza az "Add Application Insights."
-* Ha ez még mindig nem működik, kövesse a [manuális eljárást](../../application-insights/app-insights-windows-services.md) , adjon hozzá egy erőforrást a portálon, majd adja hozzá az SDK-t a projekthez. 
+* Ha ez még mindig nem működik, kövesse a [manuális eljárást](../../azure-monitor/app/windows-services.md) , adjon hozzá egy erőforrást a portálon, majd adja hozzá az SDK-t a projekthez. 
 
 ## <a name="emptykey"></a>"Kialakítási kulcsot nem lehet üres" hibaüzenetet kapok
 Úgy tűnik, probléma merült fel, míg az Application Insights vagy talán egy naplózási adapter telepíti.

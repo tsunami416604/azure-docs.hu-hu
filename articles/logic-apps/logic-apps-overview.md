@@ -11,16 +11,16 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: f5b39b428b894fcf5dddc0a7435353d174d83b78
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231202"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065271"
 ---
 # <a name="what-is-azure-logic-apps"></a>Mi az Azure Logic Apps?
 
-Az [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) egy olyan felhőszolgáltatás, amely segít a feladatok, üzleti folyamatok és [munkafolyamatok](#logic-app-concepts) automatizálásában és összehangolásában, amikor integrálja az alkalmazásokat, adatokat, rendszereket és szolgáltatásokat a vállalatokkal és szervezetekkel. A Logic Apps egyszerűvé teszi a méretezhető megoldások tervezését és létrehozását az alkalmazások, adatok és rendszerek integrációja, a vállalati alkalmazásintegráció (EAI), valamint a vállalatok közötti (B2B) kommunikáció céljából – a felhőben és a helyszínen egyaránt.
+Az [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) egy olyan felhőszolgáltatás, amely segít a feladatok, üzleti folyamatok és [munkafolyamatok](#logic-app-concepts) automatizálásában és összehangolásában, amikor integrálja az alkalmazásokat, adatokat, rendszereket és szolgáltatásokat a vállalatokkal és szervezetekkel. A Logic Apps egyszerűvé, hogyan tervezhet és alkalmazás méretezhető megoldásokat hozhat létre [integrációs](https://azure.microsoft.com/product-categories/integration/), Adatintegráció, rendszerintegráció, Vállalati alkalmazásintegráció (EAI) és vállalatközi (B2B) kommunikáció, hogy található-e a felhőben, a helyszínen egyaránt.
 
 A logikai alkalmazásokkal többek között a következő munkafolyamatok automatizálhatók:
 
@@ -41,7 +41,7 @@ A Logic Apps-motor a trigger minden elindulásakor létrehoz egy logikaialkalmaz
 
 ![Logic Apps Designer – példa egy logikai alkalmazásra](./media/logic-apps-overview/overview.png)
 
-Logikai alkalmazásait vizuálisan hozhatja létre a Logic Apps Designer segítségével, amely a böngészőn keresztül az Azure Portalon, illetve a Visual Studióban érhető el. További egyéni logikai alkalmazásokért létrehozhat vagy szerkeszthet JavaScript Object Notation (JSON) logikaialkalmazás-definíciókat a „kódnézet” szerkesztő alkalmazásával. Bizonyos feladatokat Azure PowerShell-parancsokkal és az Azure Resource Manager-sablonokkal is elvégezhet. A logikai alkalmazások az Azure felhőjében üzemelnek és futnak. Részletesebb bevezetésért tekintse meg a következő videót: [Az Azure vállalati integrációs szolgáltatások használata felhőalkalmazások futtatásához ipari méretekben](https://channel9.msdn.com/Events/Connect/2017/T119/)
+Logikai alkalmazásait vizuálisan hozhatja létre a Logic Apps Designer segítségével, amely a böngészőn keresztül az Azure Portalon, illetve a Visual Studióban érhető el. További egyéni logikai alkalmazásokért létrehozhat vagy szerkeszthet JavaScript Object Notation (JSON) logikaialkalmazás-definíciókat a „kódnézet” szerkesztő alkalmazásával. Bizonyos feladatokat Azure PowerShell-parancsokkal és az Azure Resource Manager-sablonokkal is elvégezhet. A logikai alkalmazások az Azure felhőjében üzemelnek és futnak. Egy részletesebb bevezetésért tekintse meg ezt a videót: [Azure vállalati integrációs szolgáltatások használata felhőalkalmazások futtatásához ipari méretekben](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
 ## <a name="why-use-logic-apps"></a>Miért érdemes a Logic Apps-et használni?
 
@@ -116,15 +116,15 @@ Többet tudhat meg a Logic Apps szolgáltatásról az alábbi bevezető videókb
 
 ## <a name="key-terms"></a>Fontos kifejezések:
 
-* **Munkafolyamat**: Üzleti folyamatok lépésenként való vizualizálása, megtervezése, létrehozása, automatizálása és üzembe helyezése.
+* **A munkafolyamat**: Megjelenítheti, tervezését, létrehozását, automatizálása és üzembe helyezése az üzleti folyamatok lépésenként.
 
-* **Felügyelt összekötők**: A logikai alkalmazásoknak hozzá kell férniük az adatokhoz, szolgáltatásokhoz és rendszerekhez. Használhatja a Microsoft által felügyelt, előre létrehozott összekötőket, amelyek az adatok eléréséhez, hozzáféréséhez és használatához készültek. Lásd: [Az Azure Logic Apps összekötői](../connectors/apis-list.md)
+* **Felügyelt összekötők**: A logic apps adatokat, szolgáltatásokat és rendszereket hozzá kell férniük. Használhatja a Microsoft által felügyelt, előre létrehozott összekötőket, amelyek az adatok eléréséhez, hozzáféréséhez és használatához készültek. Lásd: [Az Azure Logic Apps összekötői](../connectors/apis-list.md)
 
-* **Eseményindítók**: Számos, a Microsoft által felügyelt összekötő tartalmaz eseményindítókat, amelyek akkor aktiválódnak, ha egy esemény vagy valamilyen új adat megfelel egy bizonyos feltételnek. Például ilyen esemény lehet egy e-mail érkezése vagy változtatások észlelése az Ön Azure Storage-tárfiókjában. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy új logikaialkalmazás-példányt, amely futtatja a munkafolyamatot.
+* **Eseményindítók**: Számos, a Microsoft által felügyelt összekötők eseményindítókat biztosítanak, amelyek értesíti, ha az eseményeket, illetve új adat megfelel egy bizonyos feltételnek. Például ilyen esemény lehet egy e-mail érkezése vagy változtatások észlelése az Ön Azure Storage-tárfiókjában. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy új logikaialkalmazás-példányt, amely futtatja a munkafolyamatot.
 
-* **Műveletek**: A műveletek mindazon lépések, amelyek az eseményindító aktiválása után végbemennek. Általában minden művelet egy másik művelethez vezet, amelyet egy felügyelt összekötő, egy egyéni API vagy egy egyéni összekötő határoz meg.
+* **Műveletek**: A műveletek olyan fordulhat elő, az eseményindító aktiválása után minden lépést. Általában minden művelet egy másik művelethez vezet, amelyet egy felügyelt összekötő, egy egyéni API vagy egy egyéni összekötő határoz meg.
 
-* **Enterprise Integration Pack** – A további speciális integrálási forgatókönyvek megvalósítása érdekében a Logic Apps BizTalk Server-képességeket is tartalmaz. Az Enterprise Integration Pack csomag olyan összekötőket tartalmaz, amelyek megkönnyítik a logikai alkalmazások számára az érvényesítés, az átalakítás és egyéb műveletek végrehajtását.
+* **Enterprise Integration Pack**: További speciális integrálási forgatókönyvek, a Logic Apps BizTalk Server-képességeket is tartalmaz. Az Enterprise Integration Pack csomag olyan összekötőket tartalmaz, amelyek megkönnyítik a logikai alkalmazások számára az érvényesítés, az átalakítás és egyéb műveletek végrehajtását.
 
 ## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Miben más a Logic Apps, mint a Functions, a WebJobs vagy a Flow?
 

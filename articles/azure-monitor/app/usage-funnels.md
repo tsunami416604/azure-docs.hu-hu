@@ -13,12 +13,12 @@ ms.date: 07/17/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: cc2a21999bdbaef956c0cc6424bb46a93072a6cd
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049979"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076280"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Fedezze fel, ügyfeleink miként használják alkalmazását az Application Insights tölcsérek
 
@@ -44,7 +44,7 @@ A következő képernyőképen látható egy példa, hogy milyen típusú adatok
 ### <a name="funnels-features"></a>Tölcsérek funkciók
 Az előző képernyőképen látható öt kiemelt területet foglal magában. Ezek a tölcsérek funkcióját. Az alábbi lista további ismerteti a képernyőképen látható minden egyes megfelelő terület:
 1. Ha az alkalmazás feladata, látni fogja a mintavételi fejléc. Kontextuspanel, azzal az információval mintavételi kikapcsolása szalagcím kiválasztásával megnyílik. 
-2. Exportálhatja a tölcsér [Power BI](../../application-insights/app-insights-export-power-bi.md).
+2. Exportálhatja a tölcsér [Power BI](../../azure-monitor/app/export-power-bi.md ).
 3. Válasszon egy lépést, amely további részleteket a jobb oldalon. 
 4. A konvertálási előzményadatok grafikonja az átváltási árfolyamok az elmúlt 90 napban. 
 5. Ismerje meg a felhasználók jobb a felhasználók eszköz elérésével. Minden egyes lépésének szűrőket is használhatja. 
@@ -55,5 +55,5 @@ Az előző képernyőképen látható öt kiemelt területet foglal magában. Ez
   * [Megőrzés](usage-retention.md)
   * [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
   * [Adja hozzá a felhasználói környezet](usage-send-user-context.md)
-  * [Power BI-exportálás](../../application-insights/app-insights-export-power-bi.md)
+  * [Power BI-exportálás](../../azure-monitor/app/export-power-bi.md )
 

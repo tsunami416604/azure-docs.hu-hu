@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2940e1d8328ffaea799ddff4afc9669aaa85a2f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255762"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065630"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -23,33 +23,13 @@ Ismerje meg, hogyan hozhat létre egy Azure storage-fiókot, lásd: [hozzon lét
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
-Az Azure Storage három típusú tárfiókok biztosít. Egyes támogatja a különböző funkciókat, és rendelkezik a saját díjszabási modell. Milyen típusú fiókot, amely a legjobb alkalmazásait a tárfiók létrehozása előtt, fontolja meg a különbségeket. A tárfiókok típusai a következők:
-
-* **[Általános célú v2 fiókok](#general-purpose-v2-accounts)**  (a legtöbb forgatókönyvek esetén ajánlott)
-* **[Általános célú v1-fiókok](#general-purpose-v1-accounts)**
-* **[BLOB storage-fiókok](#blob-storage-accounts)** 
-
-A következő táblázat a tárfiókok típusait és azok képességeinek:
-
-| Tárfiók típusa | Támogatott szolgáltatások                       | Támogatott teljesítményszintek | Támogatott elérési szint               | Replikációs beállítások                                                | Üzemi modell<sup>1</sup>  | Titkosítási<sup>2</sup> |
-|----------------------|------------------------------------------|-----------------------------|--------------------------------------|--------------------------------------------------------------------|-------------------|------------|
-| Általános célú V2   | BLOB, fájl, várólista, tábla és lemez       | Standard, prémium szintű           | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager | Titkosított  |
-| Általános célú V1   | BLOB, fájl, várólista, tábla és lemez       | Standard, prémium szintű           | –                                  | LRS, GRS, RA-GRS                                                   | Resource Manager, klasszikus  | Titkosított  |
-| Blob Storage         | BLOB (blokkblobok és hozzáfűző blobok csak) | Standard                    | Gyakori és ritka elérésű, archív<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Resource Manager  | Titkosított  |
-
-<sup>1</sup>ajánlott az Azure Resource Manager üzemi modell használatával. Storage-fiókok a klasszikus üzemi modell használatával továbbra is hozhatja létre az egyes helyeken, és a létező klasszikus fiók továbbra is támogatottak. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapotának ismertetése](../../azure-resource-manager/resource-manager-deployment-model.md).
-
-<sup>2</sup>összes storage-fiók használatával történő Storage Service Encryption (SSE) inaktív adatok titkosítását. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](storage-service-encryption.md).
-
-<sup>3</sup>az archív szinten érhető el, csak egy egyedi BLOB szintjén nem a storage-fiók szintjén. Csak blokkblobok és hozzáfűző blobok archiválhatók. További információkért lásd: [Azure Blob storage: gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
-
-<sup>4</sup>zónaredundáns tárolás (ZRS) csak a standard szintű, általános célú v2-tárfiókok esetén érhető el. A ZRS kapcsolatos további információkért lásd: [zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md). Más replikációs beállításokkal kapcsolatos további információkért lásd: [Azure Storage replikáció](storage-redundancy.md).
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
 ### <a name="general-purpose-v2-accounts"></a>Általános célú v2-fiókok
 
 Általános célú v2-tárfiókok a legújabb Azure Storage-szolgáltatások támogatásához, és építse be az összes funkcióját, általános célú v1 és Blob storage-fiókok. Általános célú v2 fiókok kapacitás árak nyújthat a legalacsonyabb gigabájtonkénti az Azure Storage, valamint iparági versenyképes tranzakciós. Általános célú v2-tárfiókok ezeket az Azure tárolási szolgáltatások támogatják:
 
-- Blobok (összes típusa: blokkolás, Hozzáfűzés, oldal)
+- Blobok (összes típusa: Letilthatja, hozzáfűzése, oldal)
 - Fájlok
 - Lemezek
 - Üzenetsorok
@@ -98,7 +78,7 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 Általános célú tárfiókok esetében az alábbi teljesítményszintek valamelyike konfigurálható:
 
 * Standard teljesítményszint blobok, fájlok, táblák, üzenetsorok és Azure virtuális gépek lemezeinek tárolására.
-* A premium teljesítményszint csak Azure-beli virtuálisgép-lemezek tárolására. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
+* A premium teljesítményszint csak Azure-beli virtuálisgép-lemezek tárolására. Lásd: [a Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md) for a Premium storage részletesebb áttekintéséért.
 
 ## <a name="access-tiers-for-block-blob-data"></a>A blokkblobok adataival elérési szint
 
@@ -114,7 +94,7 @@ A rendelkezésre álló hozzáférési szintek a következők:
 * A **archív** szint, amely csak egyedi blokkblobokhoz érhető el. Az archív szinten az adatokat, amelyeket lekérés több órás késése legalább 180 napig maradnak az archív szinten van optimalizálva. Az archív szinten adatok tárolására szolgáló a leginkább költséghatékony lehetőséget, de az adatok elérése drágább, mint a gyors vagy lassú elérésű szint adatainak elérése. 
 
 
-Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: prémium szintű (előzetes verzió), gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: Prémium (előzetes verzió), gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
 > Egy meglévő tárfiókot vagy blob esetében a hozzáférési szint módosítása további díjakat vonhat. További információkért lásd: a [szakasz számlázási tárfiók](#storage-account-billing).
@@ -157,9 +137,9 @@ Felé irányuló a storage-fiók összes kérelmet kell engedélyezni. A szolgá
 
 A következő módszerek bármelyikével a tárfiókban lévő biztosíthat hozzáférést az adatokhoz:
 
-- **Az Azure Active Directory:** használata az Azure Active Directory (Azure AD) hitelesítő adatait, a felhasználó, csoport vagy más identitást a következő blob és üzenetsor adatokhoz (előzetes verzió) való hozzáférés hitelesítéséhez. Ha az identitás a hitelesítés sikeres, az Azure AD engedélyezése a kérést az Azure Blob storage és Queue storage használata egy tokent ad vissza. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
-- **Megosztott kulcs engedélyezési:** a fiók tárelérési kulcs használatával hozhat létre egy kapcsolati karakterláncot, amely az alkalmazás használ futtatáskor az Azure Storage eléréséhez. Az értékeket a kapcsolati karakterlánc segítségével hozza létre a *engedélyezési* fejlécet, amely az Azure Storage átadott. További információkért lásd: [konfigurálása az Azure Storage kapcsolati karakterláncok](storage-configure-connection-string.md).
-- **Közös hozzáférésű jogosultságkód:** közös hozzáférésű jogosultságkódot használja a tárfiókban lévő erőforrásokhoz való hozzáférés delegálására, ha nem használja az Azure AD-hitelesítés. Közös hozzáférésű jogosultságkód egy jogkivonatot, amely magában foglalja az összes az Azure Storage, az URL-címet a kérelem engedélyezéséhez szükséges információkat. Megadhatja a tárolási erőforrások, jogosultságaitól és az időközt, amely fölött a engedélyek érvényesek a közös hozzáférésű jogosultságkód részeként. További információkért lásd: [a közös hozzáférésű jogosultságkód (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Az Azure Active Directory:** Az Azure Active Directory (Azure AD) hitelesítő adatait használja a felhasználó, csoport vagy más identitást a következő blob és üzenetsor adatokhoz (előzetes verzió) való hozzáférés hitelesítéséhez. Ha az identitás a hitelesítés sikeres, az Azure AD engedélyezése a kérést az Azure Blob storage és Queue storage használata egy tokent ad vissza. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
+- **Megosztott kulcs engedélyezése:** A fiók tárelérési kulcs használatával hozhat létre egy kapcsolati karakterláncot, amely az alkalmazás használ futtatáskor az Azure Storage eléréséhez. Az értékeket a kapcsolati karakterlánc segítségével hozza létre a *engedélyezési* fejlécet, amely az Azure Storage átadott. További információkért lásd: [konfigurálása az Azure Storage kapcsolati karakterláncok](storage-configure-connection-string.md).
+- **Közös hozzáférésű jogosultságkód:** Ha nem használja az Azure AD-hitelesítés használata a közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrásokhoz való hozzáférés delegálására. Közös hozzáférésű jogosultságkód egy jogkivonatot, amely magában foglalja az összes az Azure Storage, az URL-címet a kérelem engedélyezéséhez szükséges információkat. Megadhatja a tárolási erőforrások, jogosultságaitól és az időközt, amely fölött a engedélyek érvényesek a közös hozzáférésű jogosultságkód részeként. További információkért lásd: [a közös hozzáférésű jogosultságkód (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. 

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: c37676a32dd1fb58c1ac03640ff0bbfbdc3f7d8f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2467da8d5a87a3a9325b807aec48c584ab0197cb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972891"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079102"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
 
@@ -64,18 +64,6 @@ Az oktatóanyag elvégzéséhez:
 - Győződjön meg arról, hogy a replikálni kívánt gépek megfelelnek-e a [replikált gépek támogatása](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
-## <a name="create-a-vault"></a>Tároló létrehozása
-
-[!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
-
-## <a name="choose-a-protection-goal"></a>Védelmi cél kiválasztása
-
-Válassza ki a replikálás, és replikálja, hogy hol mi.
-
-1. Kattintson a **Site Recovery** > **infrastruktúra előkészítése** > **védelmi cél**.
-2. Válassza ki **helyreállítási helyre** > **Igen, a VMware vSphere Hipervizorral**. Ezután kattintson az **OK** gombra.
-3. A **Scout beállítása**, töltse le az InMage Scout 8.0.1 GA szoftvert, és a regisztrációs kulccsal. A telepítési fájlokat az összes összetevő megtalálhatók a letöltött zip-fájlt.
-
 ## <a name="download-and-install-component-updates"></a>Töltse le és telepítse az összetevő-frissítései
 
  Tekintse át, és telepítse a legújabb [frissítések](#updates). A következő sorrendben kiszolgálók frissítéseket kell telepíteni:
@@ -86,6 +74,108 @@ Válassza ki a replikálás, és replikálja, hogy hol mi.
 4. A fő célkiszolgáló kiszolgálók
 5. vContinuum-kiszolgáló
 6. Forráskiszolgáló (Windows és Linux-kiszolgálók)
+
+A frissítések a következőképpen telepítheti:
+
+> [!NOTE]
+>Minden a Scout összetevőinek fájl frissítési verziója nem lehet ugyanaz a frissítés .zip-fájlban. A régebbi verziót azt jelzik, hogy nem történik változás az összetevő a frissítés az előző frissítés óta.
+
+Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt. A fájl tartalmazza az összes, az alap bináris fájljait és összegző frissítés bináris fájljait a következő összetevők: 
+  - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
+  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.GZ
+  - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
+  - InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
+  - InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
+  - InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
+  - InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
+1. Bontsa ki a .zip fájlokat.
+2. **RX kiszolgáló**: Másolás **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** a RX kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
+3. **Konfigurációs kiszolgáló és a folyamatkiszolgáló**: Másolás **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** a konfigurációs kiszolgáló és a folyamatkiszolgáló. Kattintson duplán a futtatáshoz.<br>
+4. **Windows fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** a kiszolgálóhoz. Kattintson duplán a futtatáshoz. Ugyanebben a fájlban a friss telepítés is használható. Az azonos egységes ügynök frissítése akkor is alkalmazható a forráskiszolgálón.
+  A frissítést nem szükséges a alkalmazni a fő cél az előkészített **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** , ez az új GA telepítő a legújabb módosításokkal.
+5. **vContinuum-kiszolgáló**:  Másolás **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** a kiszolgálóhoz.  Győződjön meg arról, hogy bezárt a vContinuum varázslóját. Kattintson duplán a fájlra a futtatáshoz.
+6. **Linux rendszerű fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** a Linuxos fő célkiszolgáló, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
+7. **A forráskiszolgáló Windows**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** a forráskiszolgálón. Kattintson duplán a fájlra a futtatáshoz. 
+8. **Linux-forráskiszolgálón**: Az egyesített ügynök frissítése, másolja az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálón, és csomagolja. A kibontott mappát, futtassa a **/Install**.  Példa: Az RHEL 6.7 server 64 bites, a másolási **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
+9. A fent említett telepítők a konfigurációs kiszolgáló, Folyamatkiszolgáló és RX kiszolgáló frissítés után a PHP és MySQL-kódtárakat a lépéseket manuálisan kell frissíteni kell a [szakasz](#manual-upgrade-for-php-and-mysql-on-cs-ps-and-rx).
+
+## <a name="enable-replication"></a>A replikáció engedélyezése
+
+1. Beállítja a replikációt a forrás között, és célozhat meg VMware-webhelyek.
+2. További információ a telepítés, védelem és helyreállítás a következő dokumentumokban talál:
+
+   * [Kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes)
+   * [Kompatibilitási mátrix](https://aka.ms/asr-scout-cm)
+   * [Felhasználói útmutató](https://aka.ms/asr-scout-user-guide)
+   * [RX felhasználói útmutató](https://aka.ms/asr-scout-rx-user-guide)
+   * [Gyors telepítési útmutató](https://aka.ms/asr-scout-quick-install-guide)
+   * [MYSQL és PHP-kódtárak frissítése](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)
+
+## <a name="updates"></a>Frissítések
+
+### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 7. frissítés 
+Frissítve: 2018. december 31-ig töltse le [Scout frissítés 7](https://aka.ms/asr-scout-update7).
+Scout frissítés 7 el egy teljes telepítő, amely feltárhatja, hogy frissítse a meglévő ügynökök/MT korábbi frissítéseket (frissítési 1 – 6. frissítés) tartoznak, valamint friss telepítéséhez használható. 6. frissítés és az új javítások és fejlesztések az alábbiakban az 1. frissítés minden javításokat tartalmaz.
+ 
+#### <a name="new-features"></a>Új funkciók
+* PCI-megfelelőség
+* A TLS 1.2-es verzió támogatása
+
+#### <a name="bug-and-security-fixes"></a>És a biztonsági javítások
+* Kijavítva: Windows-fürt/önálló gépek helytelen IP-konfiguráció esetén a helyreállítási/működéseinek rendelkezik.
+* Kijavítva: Néha hozzáadás lemez művelet sikertelen lesz, V2V fürt számára.
+* Kijavítva: vContinuum varázsló elakad helyreállítási fázis során a fő célkiszolgálón a Windows Server 2016 esetén
+* Kijavítva: Biztonsági kérdések MySQL hivatottak MySQL 5.7.23 verziójára való frissítését
+
+#### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>A PHP és MySQL CS, PS és RX manuális frissítése
+A konfigurációs kiszolgáló, Folyamatkiszolgáló és RX kiszolgáló 7.2.10 verzió a PHP-parancsfájl-kezelési platform kell frissíteni.
+Konfigurációs kiszolgáló, Folyamatkiszolgáló és RX Server verziója 5.7.23 kell frissíteni a MySQL-adatbázis-kezelő rendszer.
+Megadott manaual lépések végrehajtásával a [rövid telepítési útmutatót](https://aka.ms/asr-scout-quick-install-guide) a PHP és MySQL-verziók frissítésére.
+
+### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 frissítése 6 
+Frissítve: 2017. október 12.
+
+Töltse le [Scout 6. összesített frissítéssel](https://aka.ms/asr-scout-update6).
+
+6. összesített frissítéssel Scout az összesítő frissítés. Az 1. frissítés Update 5 és az új javítások és fejlesztések az alább ismertetett összes javításokat tartalmaz. 
+
+#### <a name="new-platform-support"></a>Új eszközplatform-támogatás
+* Támogatási hozzá van adva forrás a Windows Server 2016-hoz
+* A következő Linux operációs rendszerek már támogatja:
+    - Red Hat Enterprise Linux (RHEL) 6.9.
+    - CentOS 6.9.
+    - Oracle Linux 5.11.
+    - Oracle Linux 6.8
+* Már támogatja a VMware Center 6.5
 
 A frissítések a következőképpen telepítheti:
 
@@ -111,34 +201,6 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip-fájlt. A fá
     Nem kell a frissítés 5-ügynök telepítése a forráskiszolgálón, ha már frissítették Update 4 vagy a forrás-ügynök telepítve van a legújabb kiinduló installer **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
 8. **Linux-forráskiszolgálón**: Az egyesített ügynök frissítése, másolja az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálón, és csomagolja. A kibontott mappát, futtassa a **/Install**.  Példa: Az RHEL 6.7 server 64 bites, a másolási **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 
-## <a name="enable-replication"></a>A replikáció engedélyezése
-
-1. Beállítja a replikációt a forrás között, és célozhat meg VMware-webhelyek.
-2. További információ a telepítés, védelem és helyreállítás a következő dokumentumokban talál:
-
-   * [Kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes)
-   * [Kompatibilitási mátrix](https://aka.ms/asr-scout-cm)
-   * [Felhasználói útmutató](https://aka.ms/asr-scout-user-guide)
-   * [RX felhasználói útmutató](https://aka.ms/asr-scout-rx-user-guide)
-   * [Gyors telepítési útmutató](https://aka.ms/asr-scout-quick-install-guide)
-
-## <a name="updates"></a>Frissítések
-
-### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 frissítése 6 
-Frissítve: 2017. október 12.
-
-Töltse le [Scout 6. összesített frissítéssel](https://aka.ms/asr-scout-update6).
-
-6. összesített frissítéssel Scout az összesítő frissítés. Az 1. frissítés Update 5 és az új javítások és fejlesztések az alább ismertetett összes javításokat tartalmaz. 
-
-#### <a name="new-platform-support"></a>Új eszközplatform-támogatás
-* Támogatási hozzá van adva forrás a Windows Server 2016-hoz
-* A következő Linux operációs rendszerek már támogatja:
-    - Red Hat Enterprise Linux (RHEL) 6.9.
-    - CentOS 6.9.
-    - Oracle Linux 5.11.
-    - Oracle Linux 6.8
-* Már támogatja a VMware Center 6.5
 
 > [!NOTE]
 > * Alap Agent(UA) egyesített telepítő Windows lett frissítve a támogatási szolgálatának a Windows Server 2016-ban. Az új telepítő **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva (**InMage_Scout_Standard_8.0.1 a GA-Oct17.zip**). Az azonos telepítő minden támogatott Windows-verzió lesz használható. 

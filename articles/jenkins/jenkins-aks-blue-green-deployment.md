@@ -3,17 +3,17 @@ title: Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a k�
 description: Útmutató az Azure Kubernetes Service-be (AKS) való üzembe helyezéshez a Jenkins és a kék/zöld üzembehelyezési minta használatával.
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, kék zöld üzembehelyezés, folyamatos kézbesítés, cd
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387384"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073883"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
@@ -31,11 +31,11 @@ Ebben az oktatóanyagban a következőket sajátíthatja el:
 > * Jenkins-feladat létrehozása és futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [GitHub-fiók](https://github.com): A mintaadattár klónozásához szüksége lesz egy GitHub-fiókra.
-- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): A Kubernetes-fürt létrehozásához az Azure CLI 2.0-t használja.
-- [Chocolatey](https://chocolatey.org): A kubectl telepítéséhez használt csomagkezelő.
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Egy parancssori felület, amelyen a Kubernetes-fürtök parancsait futtatja.
-- [jq](https://stedolan.github.io/jq/download/): Egy egyszerű, parancssori JSON-feldolgozó.
+- [GitHub-fiók](https://github.com) : A minta tárház klónozásához egy GitHub-fiók szükséges.
+- [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) : Az Azure CLI 2.0 használatával a Kubernetes-fürt létrehozása.
+- [Chocolatey](https://chocolatey.org): Egy Csomagkezelő, használja a kubectl telepítéséhez.
+- [a kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Olyan parancssori felületet használhat parancsok futtatása a Kubernetes-fürtök ellen.
+- [jq](https://stedolan.github.io/jq/download/): Egy egyszerűsített, parancssori JSON feldolgozó.
 
 ## <a name="clone-the-sample-app-from-github"></a>Klónozza a mintaalkalmazást a GitHubról.
 
@@ -259,7 +259,7 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
 
 ## <a name="run-the-job"></a>A feladat futtatása
 
-1. Ellenőrizze, hogy a projekt sikeresen fut-e a helyi környezetben. Ezzel kapcsolatos tudnivalókat [a projekt helyi gépen való futtatását](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) ismertető cikkben olvashat.
+1. Ellenőrizze, hogy a projekt sikeresen fut-e a helyi környezetben. Ezt a következőképpen teheti meg: [Projekt futtatása helyi gépen](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
 
 1. Futtassa a Jenkins-feladatot. Amikor első alkalommal futtatja a feladatot, a Jenkins üzembe helyezi a todo alkalmazást a kék környezetben, amely alapértelmezés szerint az inaktív környezet. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4e4ca1ca4878a2a405b12413e4378a2cb79aef6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999118"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077453"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Docker-alkalmazások figyelése az Application insights szolgáltatásban
 
@@ -36,9 +36,9 @@ Futtatásakor a [Application Insights-lemezkép](https://hub.docker.com/r/micros
 
 ## <a name="set-up-your-application-insights-resource"></a>Az Application Insights-erőforrás beállítása
 
-1. Jelentkezzen be a [Microsoft Azure-portálon](https://azure.com) , és nyissa meg az alkalmazás; Application Insights-erőforrás vagy [hozzon létre egy új](../../application-insights/app-insights-create-new-resource.md). 
+1. Jelentkezzen be a [Microsoft Azure-portálon](https://azure.com) , és nyissa meg az alkalmazás; Application Insights-erőforrás vagy [hozzon létre egy új](../../azure-monitor/app/create-new-resource.md ). 
    
-    *Melyik erőforrást kell használnom?* Ha valaki más által kifejlesztett az alkalmazásokat, amelyek a gazdagép futtat, akkor kell [hozzon létre egy új Application Insights-erőforrást](../../application-insights/app-insights-create-new-resource.md). Ez a, melyen megtekintheti és elemezheti a telemetriát. (Válasszon "Általános" az alkalmazástípushoz.)
+    *Melyik erőforrást kell használnom?* Ha valaki más által kifejlesztett az alkalmazásokat, amelyek a gazdagép futtat, akkor kell [hozzon létre egy új Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ). Ez a, melyen megtekintheti és elemezheti a telemetriát. (Válasszon "Általános" az alkalmazástípushoz.)
    
     De ha az alkalmazások a fejlesztők, akkor Reméljük, hogy [hozzáadja az Application Insights SDK](../../azure-monitor/app/java-live.md) hozzájuk. Ha az összes valóban egyetlen üzleti alkalmazások összetevői, akkor előfordulhat, hogy konfigurálja azokat, hogy telemetriát küldjön egy erőforrás, és ugyanazt az erőforrást fog használni a Docker-életciklus-kezelés és a teljesítmény adatok megjelenítése. 
    

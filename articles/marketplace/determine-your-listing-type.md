@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4abed1718d77c93e864fe5bb1d39aba5e5272f10
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081540"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074470"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi lehetőség meghatározása
 Az Ön által választott az ajánlat közzétételi lehetőség közvetlenül kapcsolódik a jogosultsági követelményeknek és a piactér GTM előnyeit. Ami még fontosabb a közzététel lehetőséget és ajánlat írja be a Cloud Partner portálra a választott határozza meg, hogyan működjön együtt a marketplace-ajánlat felhasználók.
@@ -44,7 +44,7 @@ A közzététel lehetőséget választja, mielőtt fontos megérteni a jogosults
 
 **Az Azure Marketplace-en** technikai "építőelem" megoldásokat készített a vagy beépített for Azure az alkalmazások legyenek. Az Azure Marketplace tanácsadási szolgáltatásokat ajánlatok, amelyek segítségével az ügyfelek – első lépések professzionális szolgáltatások vagy gyorsítsa fel az Azure használatát.
 
-**Appsource-ban** üzleti megoldásokat is lehet beépített – az Azure-ban, amely az alkalmazások legyenek vagy beépített a: Dynamics 365, az Office 365-höz, a Power bi vagy a Power Apps. Appsource-ban tanácsadási szolgáltatások professzionális szolgáltatások ajánlatok, amelyek segítségével az ügyfelek használatának első lépései, vagy gyorsítsa fel a Dynamics 365 és a Power bi-ban.
+**Appsource-ban** üzleti megoldásokat is lehet beépített – az Azure-ban, amely az alkalmazások legyenek vagy beépített számára: Dynamics 365, az Office 365, Power bi vagy a Power Apps. Appsource-ban tanácsadási szolgáltatások professzionális szolgáltatások ajánlatok, amelyek segítségével az ügyfelek használatának első lépései, vagy gyorsítsa fel a Dynamics 365 és a Power bi-ban.
 
 Egyszer már regisztrált a közzétevő és a kapott létrehozására, a Cloud Partner portálra való hozzáférés konfigurálása, és a közzététel a marketplace-ajánlatok:
 
@@ -62,12 +62,12 @@ Azure Marketplace-en és/vagy az appsource-ban, ahol az ajánlat megjelenik, meg
 
 ## <a name="choose-a-publishing-option"></a>A közzétételi lehetőség kiválasztása
 
-Közzétételi lehetőségekről differenciált vásárlói engagement, miközben ajánlat potenciális ügyfelek megosztása a hozzáférést és [piaci megjelenést előnyökkel](https://partner.microsoft.com/en-US/reach-customers/gtm). Három lehetséges közzétételi beállítások használatával a Cloud Partner portálra, a marketplace-ajánlat létrehozása előtt válasszon ki. Vegye figyelembe a hívások-az-műveletet, amely a közzétételi lehetőség felel meg:
+Közzétételi lehetőségekről differenciált vásárlói engagement, miközben ajánlat potenciális ügyfelek megosztása a hozzáférést és [piaci megjelenést előnyökkel](https://partner.microsoft.com/reach-customers/gtm). Három lehetséges közzétételi beállítások használatával a Cloud Partner portálra, a marketplace-ajánlat létrehozása előtt válasszon ki. Vegye figyelembe a hívások-az-műveletet, amely a közzétételi lehetőség felel meg:
 
 | **Közzétételi lehetőség**    | **Leírás**  |
 | :------------------- | :-------------------|
 | **List** | Egyszerű listája az alkalmazás vagy szolgáltatás, amely lehetővé teszi a marketplace-felhasználót, hogy el az eszközt az ügyfél-n keresztül kapcsolódni a **kapcsolatfelvételi** hívás-művelet. |
-| **Próbaverzió** | Médiaindexelés, és automatikus üzembe helyezés, az alkalmazás próbaverziója, leendő felhasználók általi a SaaS, IaaS, vagy a Microsoft az alkalmazáson belüli felhasználói élményt költségek nélkül vásárolnak előtt korlátozott ideig-piactér használatával. A hívások-az-művelet a próbaverziós közzétételi lehetőség használt kiadásokhoz: **ingyenes próba** vagy **Test Drive**. |
+| **Próbaverzió** | Médiaindexelés, és automatikus üzembe helyezés, az alkalmazás próbaverziója, leendő felhasználók általi a SaaS, IaaS, vagy a Microsoft az alkalmazáson belüli felhasználói élményt költségek nélkül vásárolnak előtt korlátozott ideig-piactér használatával. A hívások-az-művelet a próbaverziós közzétételi lehetőség használatos a következők egyikét: **Az ingyenes próbaidőszak** vagy **Test Drive**. |
 | **Transact** | Az alkalmazás az Azure-on fut, és bővítheti erőforrásai közvetlenül az ügyfél Azure-előfizetésben helyezi az ügyfél választja ki a Get, most művelet meghívása során. A szoftverlicencdíjakat igény szerint is vásárolt és keresztül az ügyfél választott fizetési eszközt és kifejezések díjszabása, és Ön kiválaszthatja, időkorlátos hozzáférést nyújtani a **a szoftver ingyenes próbaverziója** (csak érhető el az Azure-hoz Marketplace-en.) |
 
 >[!Note]

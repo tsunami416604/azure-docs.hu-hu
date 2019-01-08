@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969930"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063867"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon Simple Storage szolgáltatásból az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Aktuális verzió](connector-amazon-simple-storage-service.md)
 
@@ -31,7 +31,7 @@ Az Amazon S3 adatokat másolja bármely támogatott fogadó adattárba. A másol
 Pontosabban, az Amazon S3-összekötő támogatja a fájlok másolása,-elemzési a fájlokat, vagy a [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Az Amazon S3-összekötő segítségével adatokat másolni **bármely S3-kompatibilis tárolási szolgáltatók** például [Google Cloud Storage](#copy-from-google-cloud-storage). Adja meg a megfelelő URL-címe a társított szolgáltatás konfigurációjában.
+>Az Amazon S3-összekötő segítségével adatokat másolni **bármely S3-kompatibilis tárolási szolgáltatók** például [Google Cloud Storage](connector-google-cloud-storage.md). Adja meg a megfelelő URL-címe a társított szolgáltatás konfigurációjában.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -212,35 +212,6 @@ Adatok másolása az Amazon S3, állítsa be a forrás típusaként a másolási
         }
     }
 ]
-```
-
-## <a name="copy-from-google-cloud-storage"></a>A Google Cloud Storage-ból
-
-Mivel a Google Cloud Storage S3-kompatibilis együttműködési, Amazon S3-összekötő használható adatokat másol a Google Cloud Storage bármelyik [támogatott fogadó adattárakba](copy-activity-overview.md#supported-data-stores-and-formats). 
-
-Annak az adott Google Cloud Storage-bejegyzést a katalógusban ADF szerzői műveletekhez részben felhasználói felület összekötő, amely automatikusan kitölti a szolgáltatás URL-cím `https://storage.googleapis.com`. A hozzáférési kulcs és titkos kulcs találja, **Google Cloud Storage** > **beállítások** > **együttműködési**. Tekintse meg a cikk részletes áttekintést, S3-összekötő használatával az adatok másolása az elejétől.
-
-**Példa a társított szolgáltatást:**
-
-```json
-{
-    "name": "GoogleCloudStorageLinkedService",
-    "properties": {
-        "type": "AmazonS3",
-        "typeProperties": {
-            "accessKeyId": "<access key id>",
-            "secretAccessKey": {
-                "type": "SecureString",
-                "value": "<secret access key>"
-            },
-            "serviceUrl": "https://storage.googleapis.com"
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
 ```
 
 ## <a name="next-steps"></a>További lépések

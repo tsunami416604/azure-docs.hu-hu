@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 1/4/2019
 ms.author: twhitney
-ms.openlocfilehash: 5432266bd042b527156852aaf30fef09f3bf8c72
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: e02acb0d283257658d4466295e3be323072210b5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053296"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062366"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -193,7 +193,7 @@ A megfelelő formátumban adja meg a portleképezést. Ez a cikk meg kell adnia 
    </ServiceManifestImport>
 ``` 
 
-Azt javasoljuk, hogy titkosítani az adattár jelszavát, tekintse meg [ titkosított titkos kulcsokat, a Service Fabric-alkalmazások kezelése](service-fabric-application-secret-management.md)
+Azt javasoljuk, hogy titkosítsa az adattár jelszavát. Tekintse meg [ kezelése a Service Fabric-alkalmazásokat a titkosított titkos kulcsok](service-fabric-application-secret-management.md) útmutatást.
 
 ### <a name="configure-cluster-wide-credentials"></a>Fürtre kiterjedő hitelesítő adatainak konfigurálása
 Tekintse meg [itt található dokumentáció](

@@ -3,7 +3,7 @@ title: Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki el
 description: Ismerje meg a követelményeknek, létrehozásának és üzembe helyezése virtuálisgép-lemezkép megvásárlásához mások számára az Azure piactéren.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 79fb9869b37e82df3f41a50e4425e7c0cd08c841
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1fdf945645b2d5c89d7f3750ec836595adb90b06
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255268"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077079"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki előfeltételei
 A folyamat megkezdése előtt figyelmesen olvassa el, és megismerheti, hogy hol és miért érdemes minden egyes lépést. Amennyire csak lehetséges, meg kell a vállalati adatok és egyéb adatok előkészítése, töltse le a szükséges eszközök, illetve műszaki összetevőket hozhat létre a ajánlat létrehozásának megkezdése előtt. Ezeket az elemeket, ez a cikk áttekintésével egyértelműen meg kell határozni.  
@@ -50,6 +51,6 @@ Az Azure-alapú virtuális gépek Windows vagy Linux rendszeren is fejleszthet. 
 Azure virtuális merevlemezeket a felhőalapú vagy helyszíni fejleszthet:
 
 * Felhőalapú fejlesztési azt jelenti, hogy minden fejlesztési lépést mennek végbe távolról rezidens Azure-beli virtuális Merevlemezt.
-* A helyszíni fejlesztési van szükség a virtuális merevlemez letöltésére, valamint a helyszíni infrastruktúra fejlesztése. Bár ez nem lehetséges, ezt nem javasoljuk. Vegye figyelembe, hogy fejleszti a Windows- vagy SQL helyszíni szükséges hozzá, a helyszíni megfelelő licenckulcsot. Nem tartalmazza, és az SQL Server telepítése egy virtuális gép létrehozása után. Az ajánlat is a jóváhagyott SQL-lemezképet az Azure Portalon kell alapozni. Ha úgy dönt, hogy a helyszíni fejlesztés, eltérően Ha Ön is a felhőben való fejlesztés néhány lépést kell végrehajtania. A megfelelő információkat [egy a helyszíni virtuális gép rendszerképének létrehozása](marketplace-publishing-vm-image-creation-on-premise.md).
+* A helyszíni fejlesztési van szükség a virtuális merevlemez letöltésére, valamint a helyszíni infrastruktúra fejlesztése. Bár ez a megközelítés akkor lehetséges, ezt nem javasoljuk. A helyi Windows- vagy SQL fejleszti megköveteli, hogy rendelkezik a megfelelő helyi licenckulcsot. Nem tartalmazza, és az SQL Server telepítése egy virtuális gép létrehozása után. Az ajánlat is a jóváhagyott SQL-lemezképet az Azure Portalon kell alapozni. Ha úgy dönt, hogy a helyszíni fejlesztés, eltérően Ha Ön is a felhőben való fejlesztés néhány lépést kell végrehajtania. A megfelelő információkat [egy a helyszíni virtuális gép rendszerképének létrehozása](marketplace-publishing-vm-image-creation-on-premise.md).
 
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md

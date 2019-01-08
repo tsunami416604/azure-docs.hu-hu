@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 06c6d2935358650eb9f7ef1cda55d5292e203daf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019928"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076246"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure digitális Twins
 
@@ -73,15 +73,17 @@ A JSON-törzse:
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
-A matchers létrehozása után töltse fel a függvény kódrészletet a következő hitelesített többrészes HTTP POST kérés:
+Egy felhasználó által definiált függvény létrehozása az Azure digitális Twins felügyeleti API-k a többrészes HTTP-kérelmek végrehajtása foglalja magában.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+A matchers létrehozása után töltse fel a következő hitelesített többrészes HTTP POST kérés, a függvény kódrészlet:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Használja a következő JSON-törzse:
+Használja a következő törzse:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY

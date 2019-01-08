@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/11/2018
+ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 9085bea06553bcb2b8cf871153ddd1fb767c04f4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277743"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077657"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: Vizsgálata és elemzése a költségeket a költségelemzés
 
@@ -49,7 +49,7 @@ A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.mic
 
 A költségek költségelemzés használatával való megtekintéséhez az Azure Portalon lépjen a **Költségkezelés + Számlázás**&gt;**Költségkezelés**&gt;**Hatókör megváltoztatása** területre, majd válassza ki a hatókört, és kattintson a **Kiválasztás** lehetőségre.
 
-A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a Költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett egy magasabb szintű hatókört választ ki, amely alá több alacsonyabb szintű hatókör is tartozik, és szűrő alkalmazásával keresi meg a kívánt adatokat. Ez azért fontos, mert nem minden személy rendelkezhet hozzáféréssel egy szülőhatókörhöz, amely több gyermekhatókört is magába foglal.
+A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a Költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett válassza ki, amely akár mások állítja, és majd, szűrő válassza ki, hogy milyen nagyobb hatókör. Ez azért fontos tudni, mert vannak, akik annak egy szülőhatóköréhez gyermek hatókörök akár összegző nem rendelkezik hozzáféréssel.
 
 Kattintson a **Költségelemzés megnyitása** lehetőségre.
 
@@ -86,7 +86,11 @@ Emellett a **napi** nézet használatával az egyes napok költségeit is megtek
 
 ![Az aktuális hónapra például napi költségek megjelenítő napi megtekintése](./media/quick-acm-cost-analysis/daily-view.png)
 
-A **Csoportosítás** használatával csoportkategóriák közül választhat, és módosítja, mely adatok jelenjenek meg a felső összes költség terület diagramjában. A csoportosítás megfigyelhessük, hogyan költségeit kategorizálta gyakori erőforrás- és használati tulajdonságai, például az erőforráscsoport vagy erőforrás-címkék teszi lehetővé. Címkék szerint kell csoportosítani, válassza ki a címke kulcs szerint kell csoportosítani kívánt, és láthatja, hogy minden egyes, amely a címke értéke az erőforrások, amelyekre vonatkozóan nincs engedélyezve a alkalmazni a címkét egy extra szegmens szerinti bontásban költségeket. Vegye figyelembe a Cost Management csak a dátum, a címkék közvetlenül az erőforrás érvényesek az erőforráscímkék támogatja. Erőforráscímkék csoport jelenleg nem támogatottak. Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
+A **Csoportosítás** használatával csoportkategóriák közül választhat, és módosítja, mely adatok jelenjenek meg a felső összes költség terület diagramjában. A csoportosítás megfigyelhessük, hogyan költségeit kategorizálta gyakori erőforrás- és használati tulajdonságai, például az erőforráscsoport vagy erőforrás-címkék teszi lehetővé. Címkék szerint kell csoportosítani, válassza ki a címke kulcs szerint kell csoportosítani szeretné. Láthatja, hogy minden értékét az erőforrások, amelyek nem rendelkeznek a alkalmazni a címkét egy extra szegmens, amely a címke szerinti bontásban költségeket.
+
+A legtöbb [Azure-erőforrások támogatja a címkézést](../azure-resource-manager/tag-support.md), azonban az egyes címkék nem Költségkezelés szerepel a számlázási. Ezenkívül a csoport az erőforráscímkék nem támogatottak. A Cost Management csak a dátum, a címkék közvetlenül az erőforrás érvényesek az erőforráscímkék támogatja.
+
+Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
 
 ![Csoportosított napi halmozott nézet-példa az Azure szolgáltatási költségei teszik a múlt hónapban](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
@@ -96,9 +100,9 @@ Kimutatásdiagramok a fő diagram megjelenítése különböző csoportosításo
 
 Az előző képen az erőforráscsoportok nevei olvashatóak. Címke megtekintéséhez a teljes költség / címke szerint csoportosíthatja, amíg nem érhető el cost analysis nézetek megtekintése az erőforrás vagy erőforráscsoport összes címkéjét.
 
-Ha a költségeket egy adott attribútum szerint csoportosítja, csökkenő sorrendben megjelenik a tíz legfontosabb költségelem. Ha tíznél több ilyen csoport van, akkor a kilenc legfontosabb költségelem mellett megjelenik egy **Egyéb** csoport is, amelyben az összes többi csoport együttesen szerepel. Csoportosítás címkék szerint, amikor is megjelenhetnek egy **Untagged** csoportot ehhez a költségeket, amelyek nem rendelkeznek a alkalmazni a címkekulcs. **Címkézetlen** mindig utolsó, akkor is, ha nincsenek további címkézetlen költségek, mint a címkézett költségek. Ha legalább 10 címkeértékeket, címkézetlen költségek része lesz **mások**.
+Ha a költségeket egy adott attribútum szerint csoportosítja, csökkenő sorrendben megjelenik a tíz legfontosabb költségelem. Ha több mint tíz csoportok, a felső kilenc közreműködőkkel jelennek meg. Van is látható, mint egy **mások** csoport, amely magában foglalja az összes többi csoport együtt. Csoportosítás címkék szerint, amikor is megjelenhetnek egy **Untagged** csoport tagjai, amelyek nem rendelkeznek a alkalmazni címkekulcs költségeket. **Címkézetlen** mindig utolsó, akkor is, ha nincsenek további címkézetlen költségek, mint a címkézett költségek. Ha tíz vagy több címke értékek, a címkézetlen költségek része lesz **mások**.
 
-A *Klasszikus* típusba sorolt (Azure Service Management vagy ASM rendszerű) virtuális gépek, hálózatkezelési és tárolási erőforrások megosztások nem osztanak meg részletes számlázási adatokat. Ezek a költségek csoportosításakor a **Klasszikus szolgáltatások** csoportba kerülnek.
+*Klasszikus* (az Azure Service Management vagy ASM) virtuális gép, hálózati és tárolási erőforrások nem adjuk ki a részletes számlázási adatok. Ezek van egyesítve **klasszikus szolgáltatások** Ha csoportosítási költségeket.
 
 
 ## <a name="download-cost-analysis-data"></a>Költségelemzési adatok letöltése

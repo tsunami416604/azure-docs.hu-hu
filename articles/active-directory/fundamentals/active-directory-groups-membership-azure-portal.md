@@ -12,12 +12,12 @@ ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13be8cbe9c05b9dcf513588825a22722c66e529
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104271"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061895"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Adja hozzá, vagy távolítsa el egy csoport egy másik csoportot az Azure Active Directoryval
 Ez a cikk segít hozzáadhat és eltávolíthat egy csoportot az Azure Active Directory használatával egy másik csoportot.
@@ -29,7 +29,7 @@ Ez a cikk segít hozzáadhat és eltávolíthat egy csoportot az Azure Active Di
 Hozzáadhat egy meglévő biztonsági csoport egy másik meglévő biztonsági csoport (más néven beágyazott csoportok), a tag létrehozása (alcsoport) csoport és a egy szülőcsoportot. A tagcsoportnak örökli az attribútumokat és a tulajdonságokat a szülőcsoporthoz, így konfigurációs időt takarít meg.
 
 >[!Important]
->Jelenleg nem támogatottak:<ul><li>Csoportok hozzáadása a helyszíni Active Directoryval szinkronizált csoporthoz</li><li>Biztonsági csoportok hozzáadása az Office 365-csoportok</li><li>Biztonsági csoportok vagy más Office 365-csoportokat az Office 365-csoportok hozzáadása</li><li>Alkalmazások hozzárendelése a beágyazott csoportok</li><li>Beágyazott csoportok licencek alkalmazása</li></ul>
+>Jelenleg nem támogatottak:<ul><li>Csoportok hozzáadása a helyszíni Active Directoryval szinkronizált csoporthoz.</li><li>Biztonsági csoportok hozzáadása az Office 365-csoportok.</li><li>Biztonsági csoportok vagy más Office 365-csoportok hozzáadása az Office 365-csoportok.</li><li>Alkalmazások hozzárendelése beágyazott csoportokat.</li><li>Licencek alkalmazása beágyazott csoportokat.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Egy másik csoport tagjaként csoport hozzáadása
 

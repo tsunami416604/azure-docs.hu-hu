@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ff3ca665382efc9133a4c4ce3f3fde25c03c5e52
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ad22f1944d3fe9a088b66da4cf4df7136db497f7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810959"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075338"
 ---
 <a name="make-your-virtual-machine-offer-live-on-azure-marketplace"></a>Az ajánlat élő Azure Marketplace-en a virtuális gép
 =========================================================
@@ -51,13 +51,13 @@ Vegyük végig a közzétételi lépéseket minden egyes, ismertetjük, hogy mi 
 
 Ha "Közzététel" gombra kattint, egy automatikus ellenőrzést annak érdekében, hogy, miután feltöltötte az ajánlat az összes kötelező mezőt vesz igénybe. Ha mezőket nincsenek feltöltve adattal, egy figyelmeztetés fog megjelenni a mező mellett, és töltheti fel azt pontosan kell majd kattintson a "Közzététel" újra.
 
-Miután végzett ezzel a lépéssel megfelelően, egy előugró ablak jelenik meg amely rákérdez, hogy e-mail-címet. Ez az az e-mailt, amelyhez a közzétételi folyamat fennmaradó közzétételi állapot értesítéseket fog kapni. Miután az e-mail-címét, ez a lépés befejeződött.
+Miután végzett ezzel a lépéssel megfelelően, egy előugró ablak felszólítja egy e-mail címet. Ez az az e-mailt, amelyhez a közzétételi folyamat fennmaradó közzétételi állapot értesítéseket fog kapni. Miután az e-mail-címét, ez a lépés befejeződött.
 
 ![Az ajánlat Go Live feladatütemezési 4 – az ajánlat közzététele](./media/cloud-partner-portal-offer-go-live-azure-marketplace/publishyouroffer.png)
 
 **Hitelesítésszolgáltató (\<5 nap)**
 
-Ez a lépés nem, ahol futtatás, a Virtuálisgép-lemezkép megfelel-e a követelményeknek, az Azure Certified számos tesztet. Győződjön meg arról, át kell adnia a minősítési követelményeknek kell minden útmutatást is [Itt](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites).
+Ez a lépés nem, ahol futtatás, a Virtuálisgép-lemezkép megfelel-e a követelményeknek, az Azure Certified számos tesztet. Győződjön meg arról, át kell adnia a minősítési követelményeknek kell minden útmutatást is [Itt](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md).
 
 Mivel ez a lépés több napig is eltarthat, a Cloud Partner portálra is kijelentkezik. Küldünk e-mailben értesítést ha bármely címre igénylő hibák. Ha minden rendben halad, sikeres, a folyamat automatikusan áthelyezi a kiépítési lépéssel.
 
@@ -75,11 +75,11 @@ Emellett ha konfigurálta az Érdeklődők generálása funkció, Microsoft elle
 
 Kap egy értesítő e-mailt, hogy az ajánlat sikeresen befejeződött az előzetes verzióban érhető el az ajánlatot eléréséhez szükséges lépéseket. Ezzel a lépéssel kell az ajánlat kipróbálásához, és ellenőrizze, hogy mindent úgy tűnik, kell lennie, és a virtuális gép megfelelően átmeneti környezetben üzembe helyezi.
 
-**Csak az engedélyezett előfizetések teheti meg ezt az ellenőrzést.**\*
+*Csak az engedélyezett előfizetések teheti meg ezt az ellenőrzést.*
 
 **Közzétevő jóváhagyás**
 
-Miután ellenőrizte, hogy minden helyesnek tűnik, és jól működik-e előzetes verzióban érhető el, készen áll az élő esemény indításra. Ehhez kattintson a Go Live állapot lapra, és hogy lépéseket, hogy az ajánlat elkezdi élő, éles környezetben, és a webhelyen. Általában igénybe vesz néhány órát is várhatnak az élő gombra kattint, és élő a webhelyen az ajánlat esetén. Küldünk e-mailben értesítést után az ajánlat hivatalosan élő a webhelyen.
+Miután ellenőrizte, hogy minden helyesnek tűnik, és jól működik-e előzetes verzióban érhető el, készen áll az élő esemény indításra. Kattintson a **élő** alatt a **állapot** fülre, és megkezdődik a lépéseket, hogy az ajánlat élő, éles környezetben, és a webhelyen. Általában igénybe vesz néhány órát is várhatnak az élő gombra kattint, és élő a webhelyen az ajánlat esetén. Küldünk e-mailben értesítést után az ajánlat hivatalosan élő a webhelyen.
 
 ![Nyissa meg az élő feladatütemezési 5 ajánlat – az élő esemény indításra](./media/cloud-partner-portal-offer-go-live-azure-marketplace/golive.png)
 
@@ -94,7 +94,7 @@ A közzétételi folyamat során hiba merülhetnek fel. Ha hiba lép fel, amely 
 
 ![Nyissa meg az élő feladatütemezési 6 – hibaüzenet ajánlat](./media/cloud-partner-portal-offer-go-live-azure-marketplace/errormessage.png)
 
-Ha hibákat észlel a közzétételi folyamat során, akkor szükségesek, hárítsa el ezeket, majd kattintson a "Közzététel" indítsa újra a folyamatot. Ha bármilyen hiba javítása után újból közzéteszi el kell indítania az Előfeltételek ellenőrzése a közzétételi lépéseket kezdetén.
+Ha hibákat észlel a közzétételi folyamat során, akkor szükségesek megoldhatja ezeket a problémákat, majd kattintson a "Közzététel" indítsa újra a folyamatot. Amikor közzéteszi Itt bármilyen hiba javítása után el kell indítania az Előfeltételek ellenőrzése a közzétételi lépéseket kezdetén.
 
 Ha a hiba elhárítása problémák merülnek fel, meg kell nyisson egy támogatási kérelmet, kérjen segítséget a támogatási.
 

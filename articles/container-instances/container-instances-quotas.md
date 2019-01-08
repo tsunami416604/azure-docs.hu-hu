@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602392"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075498"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances-kvóták és -régiók rendelkezésre állása
 
@@ -24,7 +24,7 @@ Minden Azure-szolgáltatás tartalmaz az erőforrásokra és a funkciókra vonat
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az Azure Container Instances a következő régiókban érhető el a megadott processzor- és memóriakorlátokkal. Értékek: jelenlegi időpontjában aktuálisak. Naprakész információkat a [szolgáltatásai](/rest/api/container-instances/listcapabilities/listcapabilities) API-t.
+Az Azure Container Instances a következő régiókban érhető el a megadott processzor- és memóriakorlátokkal. Értékek: jelenlegi időpontjában aktuálisak. Naprakész információkat a [szolgáltatásai](/rest/api/container-instances/listcapabilities/listcapabilities) API-t. Rendelkezésre állás és erőforrás-korlátok eltérőek lehetnek, ha az Azure Container Instances használatával egy [virtuális hálózat](container-instances-vnet.md) (előzetes verzió) vagy [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió).
 
 | Hely | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |

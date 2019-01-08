@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 0355b8cf19209509dca2f3cac93c7abb92a63990
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 10cc8007c4f54808b5d7eb41ad2caa008b5c7107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323320"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079000"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése 
 
@@ -124,7 +124,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>A .NET-hez a Microsoft.Azure.Services.AppAuthentication kódtár használatával egy token beszerzése
 
-A .NET-alkalmazások és funkciók a legegyszerűbb módja a felügyelt identitások az Azure-erőforrások használata a a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI-vel](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory beépített hitelesítést. Ebben a könyvtárban a helyi fejlesztési lehetőségek, lásd: [Microsoft.Azure.Services.AppAuthentication hivatkozás]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
+A .NET-alkalmazások és funkciók a legegyszerűbb módja a felügyelt identitások az Azure-erőforrások használata a a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI-vel](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory beépített hitelesítést. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban, tekintse meg a [Microsoft.Azure.Services.AppAuthentication referencia](/azure/key-vault/service-to-service-authentication). Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
 
 1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok az alkalmazáshoz.
 

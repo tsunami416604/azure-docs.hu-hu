@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: dacd2e0d43f2c7711539896b88838adb85542963
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051730"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074206"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése Ha...
@@ -94,7 +94,7 @@ Néhány megfontolandó szempont:
 * A [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md), a diagram testreszabásához, és kedvencként mentheti. Az Azure-irányítópulton rögzítheti is.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Az adatokat más forrásokból és Application Insights irányítópult
-* [Telemetria exportálása a Power bi-bA](../../application-insights/app-insights-export-power-bi.md).
+* [Telemetria exportálása a Power bi-bA](../../azure-monitor/app/export-power-bi.md ).
 
 Vagy
 

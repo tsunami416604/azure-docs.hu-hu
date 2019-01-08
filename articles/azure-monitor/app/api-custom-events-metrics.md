@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7422e7145acfece9c9da3277c8d92c949220dbab
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: bbb849b19d523c315e192110ce71c4f382e04657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039316"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077912"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -1076,7 +1076,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-ikey"></a> A dinamikus kialakítási kulcs
 
-A fejlesztési, tesztelési és éles környezetek származó telemetriai adatok mentése keverése elkerüléséhez is [külön Application Insights-erőforrások létrehozása](../../application-insights/app-insights-create-new-resource.md) és azok kulcsait a környezettől függően módosítsa.
+A fejlesztési, tesztelési és éles környezetek származó telemetriai adatok mentése keverése elkerüléséhez is [külön Application Insights-erőforrások létrehozása](../../azure-monitor/app/create-new-resource.md ) és azok kulcsait a környezettől függően módosítsa.
 
 Helyett a kialakítási kulcs lekérése a konfigurációs fájlban, beállíthatja a kódban. A kulcsot meg például az ASP.NET-szolgáltatások Global.aspx.cs osztályból, egy inicializálási metódust:
 
@@ -1170,7 +1170,7 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
     Nincs. Nem kell őket try-catch záradékok wrap funkciót. Ha az SDK problémákat észlel, üzenetek naplózza a hibakeresési konzol kimeneteként és – ha az üzeneteket kaphat – a diagnosztikai keresésben.
 * *Van egy REST API-t az adatok beszerzése a portálról?*
 
-    Igen, a [adathozzáférési API](https://dev.applicationinsights.io/). Más módokon is gyűjthet ki adatokat tartalmaznak [Analytics exportálhat a Power bi-bA](../../application-insights/app-insights-export-power-bi.md) és [a folyamatos exportálás](../../azure-monitor/app/export-telemetry.md).
+    Igen, a [adathozzáférési API](https://dev.applicationinsights.io/). Más módokon is gyűjthet ki adatokat tartalmaznak [Analytics exportálhat a Power bi-bA](../../azure-monitor/app/export-power-bi.md ) és [a folyamatos exportálás](../../azure-monitor/app/export-telemetry.md).
 
 ## <a name="next"></a>Következő lépések
 

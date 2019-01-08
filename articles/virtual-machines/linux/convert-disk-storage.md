@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 0d777b5dcebfba7dbff7c9ea1f4fedad12b3cf1a
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0ed4becee5eeab258585eb7d9b406dd66d79c9ff
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283813"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077878"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva
 
-A felügyelt lemezek három tárolási lehetőséget kínál az: [prémium szintű SSD](../windows/premium-storage.md), Standard SSD(Preview) és [Standard HDD](../windows/standard-storage.md). Lehetővé teszi a teljesítmény igények alapján minimális állásidővel lehetőségek közötti egyszerű váltást. Nem felügyelt lemezek esetén ez nem támogatott. De könnyen [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) egyszerűen a lemeztípusok közötti váltáshoz.
+A felügyelt lemezek ajánlatok három tárolási lehetőségek: [Prémium szintű SSD](../windows/premium-storage.md), Standard SSD és [Standard HDD](../windows/standard-storage.md). Lehetővé teszi a teljesítmény igények alapján minimális állásidővel lehetőségek közötti egyszerű váltást. Nem felügyelt lemezek esetén ez nem támogatott. De könnyen [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) egyszerűen a lemeztípusok közötti váltáshoz.
 
 Ez a cikk bemutatja a felügyelt lemezek konvertálása a standard, prémium szintű, és fordítva az Azure parancssori felület használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli). 
 

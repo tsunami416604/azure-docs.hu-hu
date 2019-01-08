@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435276"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078524"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
@@ -70,6 +70,14 @@ Ellenőrizze, vagy módosítani az intelligens zárolás értékeket a szervezet
 > Ha az első bejelentkezés után is sikertelen, a zárolás, a fiók bejelentkezzenek újra. Egy fiók ismételten zárolja, ha növeli a Zárolás időtartama.
 
 ![Szabja testre az Azure AD az intelligens zárolási házirendet az Azure Portalon](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Annak megállapítása, hogy a Smartlockout funkció működik-e, vagy nem
+
+A smartlockout küszöbértéket akkor aktiválódik, amikor a következő üzenetet kap, amíg a fiók zárolva van:
+
+**Fiókja jogosulatlan használatának megakadályozása érdekében ideiglenesen zárolva van. Próbálkozzon újra később, és ha továbbra sem tud bejelentkezni, forduljon a rendszergazdához.**
+
+
 ## <a name="next-steps"></a>További lépések
 
 [Ismerje meg, hogyan lehet a szervezet Azure AD-vel rossz jelszavak letiltása.](howto-password-ban-bad.md)

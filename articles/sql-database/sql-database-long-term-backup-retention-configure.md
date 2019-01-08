@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: ed3203cde8bad8c506bacf3607faecfbcde2cd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6be0603c8332a6d1bd6c965a167b14f5a22362e6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606860"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064219"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
@@ -33,7 +33,7 @@ A következő szakaszok bemutatják, hogyan a hosszú távú megőrzésének kon
 
 Konfigurálhatja az SQL Database [automatikus biztonsági másolatok megőrzésére](sql-database-long-term-retention.md) szolgáltatásszint megőrzési idejénél hosszabb időtartamra. 
 
-1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **biztonsági másolatok kezelése**. Az a **szabályzatok konfigurálása** lapra, jelölje be a adatbázis, amelyre vagy módosíthatja a hosszú távú biztonsági mentés megőrzési házirendeket.
+1. Az Azure Portalon válassza ki az SQL Servert, és kattintson a **biztonsági másolatok kezelése**. Az a **szabályzatok konfigurálása** lapon *jelölje be az adatbázist, amelyen szeretné, vagy módosíthatja a hosszú távú biztonsági mentés megőrzési házirendeket a*. Ha az adatbázis jelölőnégyzetét nincs bejelölve, a módosítások a házirend nem alkalmazandó, hogy az adatbázis.  
 
    ![biztonsági másolatokat kapcsolat kezelése](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 

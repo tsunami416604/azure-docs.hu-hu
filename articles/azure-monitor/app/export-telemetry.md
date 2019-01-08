@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6323a4b8243791cc7a9f847c7d08e5bd5946e96
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025266"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076773"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -27,7 +27,7 @@ A folyamatos exportálás beállítása előtt van néhány más érdemes figyel
 * Metrikák vagy Keresés a panel tetején az Exportálás gomb lehetővé teszi a táblákat át, és a egy Excel-táblázatban a diagram.
 
 * [Analytics](../../azure-monitor/app/analytics.md) egy hatékony lekérdezési nyelvet biztosít a telemetriai adatokat. Exportálhatja eredményeket is.
-* Ha szeretne [feltárhatja az adatait a Power bi-ban](../../application-insights/app-insights-export-power-bi.md), azt megteheti a folyamatos exportálás használata nélkül.
+* Ha szeretne [feltárhatja az adatait a Power bi-ban](../../azure-monitor/app/export-power-bi.md ), azt megteheti a folyamatos exportálás használata nélkül.
 * A [adatelérési REST API](https://dev.applicationinsights.io/) a telemetriai adatok programozott módon hozzáférhet.
 * A telepítő is elérhető [Powershellen keresztül a folyamatos exportálás](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 

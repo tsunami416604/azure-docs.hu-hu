@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3c2212ba0216949d3ca7dbcedb5e086bc3e43b97
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: af7f3b42aad41f103be6c86da84db2ff230ff226
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406636"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065220"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rövid útmutató: Linux-alapú virtuális gép létrehozása az Azure CLI használatával
+# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Gyors útmutató: Linux virtuális gép létrehozása az Azure CLI-vel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure CLI segítségével Linux rendszerű virtuális gépeket (VM-eket) az Azure-ban. Ebben az oktatóanyagban az Ubuntu 16.04 LTS-t fogjuk telepíteni. A virtuális gép működés közbeni bemutatásához SSH-val fog csatlakozni hozzá, és az NGINX-webkiszolgálót fogja telepíteni.
 
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal.
 
-A következő példa létrehoz egy *myVM* nevű virtuális gépet, és hozzáad egy *azureuser* nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter az SSH-kulcs automatikus létrehozására, és a kulcs alapértelmezett helyére (*~/.ssh*) történő mentésére szolgál. Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
+A következő példa létrehoz egy *myVM* nevű virtuális gépet, és hozzáad egy *azureuser* nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter használható automatikusan, SSH-kulcs, és tegye a kulcsok alapértelmezett helyén (*~/.ssh*). Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
 
 ```azurecli-interactive
 az vm create \

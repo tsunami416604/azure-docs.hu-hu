@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602171"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077742"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -36,10 +36,8 @@ Az összes szükséges ügyfél-használati tesznek elérhetővé; ilyenek [mego
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 
-Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resource Manager-sablonok használatával. Ha rendelkezik egy Resource Manager-sablon, amely elérhető a Githubon, vagy a rövid útmutatóban az Azure piactéren, nagyon egyszerű a folyamat módosításához a sablonhoz, amelyekkel engedélyezheti az új követési módszert kell lennie. Ha nem használja az Azure Resource Manager-sablonok, az alábbiakban néhány hivatkozások segítségével jobban megismerheti a Resource Manager-sablonok, és hogyan hozhat létre egyet: 
+Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resource Manager-sablonok használatával. Ha rendelkezik egy Resource Manager-sablon, amely elérhető a Githubon, vagy a rövid útmutatóban az Azure piactéren, nagyon egyszerű a folyamat módosításához a sablonhoz, amelyekkel engedélyezheti az új követési módszert kell lennie. További információkért lásd: [hozzon létre és helyezhet üzembe az első Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
 
-*   [Létre és helyezhet üzembe az első Resource Manager-sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [Megoldássablon létrehozásához az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>Adjon hozzá egy GUID Azonosítót a sablonhoz
 
@@ -270,11 +268,15 @@ A Microsoft partnereinek ügyfél központi telepítései insights, valamint a s
 
 **Akik GUID adhat hozzá egy sablont?**
 
-A nyomon követési erőforrás célja az ügyfél Azure-használat a partnermegoldás csatlakozni. A használati adatok egy partner Microsoft Partner Network-azonosító (MPN-azonosító) van kötve. 
+A nyomon követési erőforrás célja az ügyfél Azure-használat a partnermegoldás csatlakozni. A használati adatok egy partner Microsoft Partner Network-azonosító (MPN-azonosító) van kötve. Jelentéskészítés a CPP partnerei számára érhető el.
 
 **Miután hozzáadott egy GUID Azonosítót, akkor módosítható?**
  
 Igen, egy ügyfél vagy megvalósítási partnere előfordulhat, hogy a sablon testreszabásához, és módosíthatja vagy eltávolítja a globálisan egyedi Azonosítót. Javasoljuk, hogy a partnerek proaktív módon írja le a szerepkört az erőforrás és GUID GUID követési eltávolítása és a módosítások megelőzése érdekében az ügyfelek és partnerek számára. A GUID módosítása hatással van, csak a új, nem meglévő üzemelő példányok és erőforrások.
+
+**Amikor jelentéskészítési rendelkezésre áll?**
+
+Jelentéskészítés béta verzióját kell hamarosan közzétesszük. Jelentéskészítés integráljuk a CPP.
 
 **Sablonok üzembe helyezett egy nem Microsoft-adattárból, például a Githubból tudja követni?**
 

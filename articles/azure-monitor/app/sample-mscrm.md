@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 9028d682d7807b8b153153840356e2e37b082b27
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12b4a4639991628265a19a5d45f3abdef590efcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028530"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077929"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Forgatókönyv: Telemetria engedélyezése a Microsoft Dynamics CRM Online Application Insights használatával
 Ez a cikk bemutatja, hogyan küldött telemetriai adatok lekérése [Microsoft Dynamics CRM Online](https://www.dynamics.com/) használatával [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Végigvezetjük a teljes folyamat az Application insights eszközt ad hozzá az alkalmazás adatokat, és az adatvizualizációról rögzítése.
@@ -127,7 +127,7 @@ Kattintson a diagram részletesebb megjelenítéséhez:
 [Keresse meg a mintakód](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="power-bi"></a>Power BI
-Lehetőség van még mélyebb elemzésre, ha Ön [exportálja az adatokat a Microsoft Power bi-bA](../../application-insights/app-insights-export-power-bi.md).
+Lehetőség van még mélyebb elemzésre, ha Ön [exportálja az adatokat a Microsoft Power bi-bA](../../azure-monitor/app/export-power-bi.md ).
 
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>A Microsoft Dynamics CRM megoldást
 [Itt látható a minta megoldás a Microsoft Dynamics CRM-ben megvalósított](https://dynamicsandappinsights.codeplex.com/).

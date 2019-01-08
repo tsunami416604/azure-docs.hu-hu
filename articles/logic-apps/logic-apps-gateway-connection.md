@@ -1,6 +1,6 @@
 ---
 title: A helyszíni adatforrások elérése az Azure Logic Apps |} A Microsoft Docs
-description: Hozzon létre, és állítsa be a helyszíni adatátjáró, hogy hozzáférhessen a helyszíni adatforrásokhoz a logikai alkalmazásokból
+description: Csatlakozhat a helyszíni adatok források a logikai alkalmazásokból létrehozásával egy helyszíni adatátjáró
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,19 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413706"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064066"
 ---
-# <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Azure Logic Apps csatlakoztatása a helyszíni adatforrásokhoz a helyszíni adatátjáróval
+# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>A helyszíni adatforrásokhoz kapcsolódik az Azure Logic Apps
 
-Hozzáférni az adatforrásokhoz a helyszínen, a logic apps, létrehozhat egy data gateway-erőforrás Azure-ban, hogy a logic apps segítségével a [helyszíni összekötők](../logic-apps/logic-apps-gateway-install.md#supported-connections). Ez a cikk bemutatja, hogyan hozhat létre az Azure-átjáró erőforrás *után* , [töltse le és telepítse az átjárót a helyi számítógépen](../logic-apps/logic-apps-gateway-install.md). 
+Hozzáférni az adatforrásokhoz a helyszínen, a logic apps, az Azure Portalon egy helyszíni data gateway-erőforrás létrehozásához. A logic apps használhatja a [helyszíni összekötők](../logic-apps/logic-apps-gateway-install.md#supported-connections). Ez a cikk bemutatja, hogyan hozhat létre az Azure-átjáró erőforrás *után* , [töltse le és telepítse az átjárót a helyi számítógépen](../logic-apps/logic-apps-gateway-install.md). 
+
+> [!TIP]
+> Csatlakozás az Azure virtuális hálózatokhoz, érdemes lehet létrehozni egy [ *integrációs szolgáltatás környezet* ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) helyette. 
 
 Az átjáró más szolgáltatásokkal való használatával kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
@@ -65,7 +68,7 @@ Miután telepítette az átjárót a helyi számítógépen, majd létrehozhat e
    | **Name (Név)** | Az átjáró-erőforrás neve | 
    | **Előfizetés** | A logikai alkalmazás azonos előfizetéshez kell lennie az Azure-előfizetés neve. Az alapértelmezett előfizetést az Azure-fiókkal való bejelentkezéshez használt alapul. | 
    | **Erőforráscsoport** | A nevet a [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a kapcsolódó erőforrások rendszerezéséhez | 
-   | **Hely** | Azure korlátozza az ezen a helyen ugyanabban a régióban, amely esetében az átjáró felhőszolgáltatása során kiválasztott [kapcsolódásiátjáró-telepítés](../logic-apps/logic-apps-gateway-install.md). <p>**Megjegyzés:**: Győződjön meg arról, hogy az átjáró-erőforrás helye megegyezik az átjáró felhőalapú szolgáltatás helyét. Ellenkező esetben az átjáró telepítése nem jelenhet meg, hogy a következő lépésben válassza ki a telepített átjárók listáját. Különböző régiókban is használhatja, az átjáró-erőforrás és a logikai alkalmazás. | 
+   | **Hely** | Azure korlátozza az ezen a helyen ugyanabban a régióban, amely esetében az átjáró felhőszolgáltatása során kiválasztott [kapcsolódásiátjáró-telepítés](../logic-apps/logic-apps-gateway-install.md). <p>**Megjegyzés**: Ellenőrizze, hogy az átjáró-erőforrás helye megegyezik az átjáró felhőalapú szolgáltatás helyét. Ellenkező esetben az átjáró telepítése nem jelenhet meg, hogy a következő lépésben válassza ki a telepített átjárók listáját. Különböző régiókban is használhatja, az átjáró-erőforrás és a logikai alkalmazás. | 
    | **Telepítés neve** | Ha az átjáró telepítése még nincs kiválasztva, válassza ki a korábban telepített átjáróhoz. | 
    | | | 
 

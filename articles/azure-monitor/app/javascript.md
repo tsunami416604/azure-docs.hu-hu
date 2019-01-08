@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: be7cb2e602f1c8c0c8471c866d68c28e0ec37498
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 79801ba7a7b50d751cd105a4c8bcd39bb6681c54
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042342"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075350"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](../../application-insights/app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -44,7 +44,7 @@ Ha nincs erőforrása, hozza létre azt:
 
 ![Válassza az Új, Fejlesztői szolgáltatások, Application Insights lehetőséget.](./media/javascript/01-create.png)
 
-*Máris kérdései vannak?* [További információk erőforrások létrehozásáról](../../application-insights/app-insights-create-new-resource.md).
+*Máris kérdései vannak?* [További információk erőforrások létrehozásáról](../../azure-monitor/app/create-new-resource.md ).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Az SDK-szkript hozzáadása az alkalmazáshoz vagy weblapokhoz
 

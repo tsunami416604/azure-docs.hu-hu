@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6bb1709d10a406d88378189cd68b9a36abed2c8d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9abf1eebe8174160bd671d83086ed641708b98eb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017566"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073951"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
 Blobok strukturálatlan ábrázolása a gyakori fájltípusokból, mint például a képek és a naplók legyenek. Blobok nyomon követheti, hogy milyen típusú adatokat képviselik MIME-típus használatával (például: "image/jpeg") és a metaadatokat (név, leírás, típusa és stb).
 
-Az Azure digitális Twins támogatja a blobok csatolása eszköz, a tárolóhelyek és a felhasználó számára. Blobok hozhat létre egy profilhoz tartozó fotó egy felhasználó, eszköz fényképet, egy videót, térképet vagy a napló számára.
+Az Azure digitális Twins támogatja a blobok csatolása eszköz, a tárolóhelyek és a felhasználó számára. Blobok jelenthetik a profilképét, a felhasználó, eszköz fénykép, videó, térkép, egy belső vezérlőprogram zip, JSON-adatokat, egy napló, stb.
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
@@ -32,7 +32,7 @@ Használhatja a több részből álló kéréseket az eszközspecifikus végpont
 
 ### <a name="blob-metadata"></a>Blob metaadatai
 
-Mellett **Content-Type** és **tartalomtípus-szabályozó**, többrészes kérelmek meg kell adnia a megfelelő JSON-törzse. Melyik JSON-törzse elküldése zajlik HTTP-kérési művelet típusától függ.
+Mellett **Content-Type** és **tartalomtípus-szabályozó**, az Azure digitális Twins többrészes blobkérelmek meg kell adnia a megfelelő JSON-törzse. Melyik JSON-törzse elküldése zajlik HTTP-kérési művelet típusától függ.
 
 A négy fő JSON-sémák a következők:
 
@@ -48,12 +48,15 @@ Ismerje meg, olvassa el a dokumentációja használatáról [hogyan generáljon 
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Győződjön meg arról, hogy egy **POST** kérelmet, amely egy szöveges fájlt blobként tölt fel, és társítja azt egy-egy szóközzel:
+Töltsön fel egy szöveges fájlt blobként, és társíthatja azt egy szóközt, győződjön meg arról, hogy hitelesített HTTP POST-kérelmet:
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
-Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/spaces/blobs
+```
 
+A következő szervezethez:
+
+```plaintext
 --USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
@@ -96,6 +99,16 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
+Mindkét példák:
+
+1. Győződjön meg arról, hogy a fejlécek belefoglalása: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Győződjön meg arról, hogy a szervezet többrészes:
+
+   - Az első rész tartalmazza a szükséges blob metaadatait.
+   - A második rész a szöveges fájl tartalmaz.
+
+1. Győződjön meg arról, hogy a szöveges fájl van megadva `Content-Type: text/plain`.
+
 ## <a name="api-endpoints"></a>API-végpontok
 
 A következő szakaszok ismertetik a core blobbal kapcsolatos API-végpontokat és azok a funkciók.
@@ -106,7 +119,7 @@ Blobok eszközöket csatlakoztathat. Az alábbi képen látható a Swagger-dokum
 
 ![Eszköz blobok][2]
 
-Például frissítése vagy blob létrehozása és csatolása a blob egy eszközön, győződjön meg arról, egy **javítására** kérelmet:
+Ha például frissítése vagy blob létrehozása és csatolása a blob egy eszközön, győződjön meg arról, egy hitelesített JAVÍTANI a HTTP-kérést:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -132,7 +145,7 @@ Blobok csatlakoztathat szóközöket is. Az alábbi képen végpontjai terület 
 
 ![Lemezterület-blobok][3]
 
-Például adja vissza egy blob egy szóközzel csatolt, győződjön meg arról, egy **első** kérelmet:
+Például adja vissza egy blob egy szóközzel csatolt, győződjön meg arról, egy hitelesített HTTP GET kérést:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -142,7 +155,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | A kívánt blob azonosítója |
 
-Így egy **javítására** egyazon végpont irányuló kérelem lehetővé teszi, hogy frissítse a metaadatok leírását, és hozzon létre egy új verziója a blob. A HTTP-kérelem keresztül történik a **javítására** módszer, bármilyen szükséges meta és többrészes űrlapadatok együtt.
+Egyazon végpont a PATCH-kérés metaadatok leírását frissíti, és hozza létre a blob új verzióit. A HTTP-kérelem a PATCH metódust, bármilyen szükséges meta és többrészes űrlapadatok keresztül történik.
 
 Sikeres műveletek visszaadása egy **SpaceBlob** objektum, amely megfelel a következő sémának. Visszaadott adatok felhasználásához használhatja azt.
 
@@ -157,7 +170,7 @@ Blobok csatlakoztathat felhasználói modellek (például társítása a profilk
 
 ![Felhasználói blobok][4]
 
-Például beolvasni egy blob egy felhasználó csatlakozik, ügyeljen a **első** űrlap adatokkal rendelkező kérelem:
+Például beolvasni egy blob egy felhasználó csatlakozik, győződjön meg arról, az űrlap adat egy hitelesített HTTP GET kérés:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID

@@ -3,7 +3,7 @@ title: Útmutató a megoldás a sablonok létrehozása a Marketplace-en |} A Mic
 description: Részletes útmutató bemutatja, hogyan hozhat létre, tanúsítása és a egy virtuális gépre kiterjedő kép Megoldássablon telepítése az Azure piactéren megvásárolt.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 4a72f11b55d1c315a9dce62de3e6d23c340baa51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 914dece4ba064af00c5b2c34d43dedbb1d62e2e2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232861"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073741"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Útmutató a megoldássablon létrehozásához az Azure Marketplace-en
 1. lépés befejezése után [fióklétrehozás és a regisztrációs][link-acct-creation], hogy interaktív, egy Azure-kompatibilis megoldás sablon létrehozásakor [létrehozására vonatkozó technikai Előfeltételek egy a megoldássablon](marketplace-publishing-solution-template-creation-prerequisites.md). Most végigvezetjük meg létrehozni egy megoldássablon több virtuális gép a lépéseket a [közzétételi portál] [ link-pubportal] az Azure Marketplace-en.
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>A megoldás sablon ajánlat létrehozása a közzétételi portálon
-Lépjen a [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Amikor első alkalommal való bejelentkezés a [közzétételi portál](https://publish.windowsazure.com/), használja a fiókot az értékesítői profilra a vállalat regisztrálva lett. Később mint a közzétételi portálon társadminisztrátorként bármely alkalmazott a vállalati is hozzáadhat.
+Lépjen a [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Amikor első alkalommal való bejelentkezés a [közzétételi portál](https://publish.windowsazure.com/), használja a fiókot az értékesítői profilra a vállalat regisztrálva lett. Később mint egy a közzétételi portálon társfelügyeletű bármely alkalmazott a vállalati is hozzáadhat.
 
 ### <a name="1-select-solution-templates"></a>1. Válassza ki a "Megoldássablonok"
   ![rajz][img-pubportal-menu-sol-templ]
@@ -44,7 +45,7 @@ A megoldássablon az összes hozzá tartozó topológia „szülőeleme”. Egy 
 * Adjon hozzá egy új verziót.
 
 ### <a name="4-get-your-topology-versions-certified"></a>4. Beszerzése a certified topológia verziók
-Töltse fel, hogy a topológia adott verziójának kiépítése az összes szükséges fájlokat tartalmazó zip-fájlt. A zip-fájl a következőket kell tartalmaznia:
+Töltse fel, hogy a topológia adott verziójának kiépítése az összes szükséges fájlokat tartalmazó zip-fájlt. A zip-fájlt kell tartalmaznia a következő fájlokat:
 
 * *mainTemplate.json* és *createUiDefinition.json* fájlt a gyökérkönyvtárban.
 * Minden hivatkozott sablonok és az összes szükséges szkriptek.
@@ -55,14 +56,14 @@ Töltse fel, hogy a topológia adott verziójának kiépítése az összes szük
   >
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy a megoldássablon létrehozott és feltöltött zip-fájl, kérjük, kövesse az utasításokat a [Marketplace marketing content útmutató](marketplace-publishing-push-to-staging.md) , mielőtt leküldené az ajánlat átmeneti üzembe helyezéséhez. A cikkek közzététele piactér teljes körű megtekintéséhez keresse fel [első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md).
+Most, hogy a megoldássablon létrehozott és feltöltött zip-fájl, kövesse az utasításokat a [Marketplace marketing content útmutató](marketplace-publishing-push-to-staging.md) , mielőtt leküldené az ajánlat átmeneti üzembe helyezéséhez. A cikkek közzététele piactér teljes körű megtekintéséhez keresse fel [első lépések: Ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md).
 
 Akkor is hasznos lehet a kapcsolódó cikkek:
 
-* Virtuálisgép-rendszerképek: [kapcsolatos virtuálisgép-lemezképek az Azure-ban](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* A Virtuálisgép-bővítmények: [Azure Virtuálisgép-bővítmények és szolgáltatások](../virtual-machines/extensions/features-windows.md)
-* Az Azure Resource Manager: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [egyszerű sablon példák](https://github.com/rjmax/ArmExamples)
-* Storage-fiók szabályozza: [figyelése a Storage-fiók szabályozási](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) és [prémium szintű storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
+* Virtuálisgép-rendszerképek: [Tudnivalók az Azure-beli virtuálisgép-lemezképek](https://msdn.microsoft.com/library/azure/dn790290.aspx)
+* A Virtuálisgép-bővítmények: [Az Azure Virtuálisgép-bővítmények és szolgáltatások](../virtual-machines/extensions/features-windows.md)
+* Az Azure Resource Manager: [Az Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [egyszerű sablon példák](https://github.com/rjmax/ArmExamples)
+* Szabályozza a Storage-fiók: [Storage-fiók szabályozási figyelése](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) és [prémium szintű storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

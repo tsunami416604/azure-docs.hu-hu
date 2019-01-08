@@ -14,12 +14,12 @@ ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 42568a6da6cb8994fa8804f294cf67b30fada4fb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050149"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078762"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Az Azure Application Insights használati bővítsék azonosítók felhasználói környezet küldése
 
@@ -38,7 +38,7 @@ Nyomon követheti, mi a felhasználó időbeli végrehajtja, az Application Insi
 - Munkamenetek: Tartalmazza a munkamenet-azonosítót.
 
 > [!NOTE]
-> Ez a speciális cikk sbalování a manuális lépéseket az Application insights segítségével a felhasználói tevékenység nyomon követése. Számos webes alkalmazások **ezeket a lépéseket nem feltétlenül szükséges**, mint az alapértelmezett kiszolgálóoldali SDK-k együtt a [/böngésző ügyféloldali JavaScript SDK](../../application-insights/app-insights-website-monitoring.md), általában automatikusan követésére felhasználói tevékenység. Ha még nem konfigurálta [az ügyféloldali figyelés](../../application-insights/app-insights-website-monitoring.md) mellett a kiszolgálóoldali SDK-t, először hajtsa végre, és ellenőrizze, hogy ha a felhasználói viselkedés elemzőeszközök elvárt.
+> Ez a speciális cikk sbalování a manuális lépéseket az Application insights segítségével a felhasználói tevékenység nyomon követése. Számos webes alkalmazások **ezeket a lépéseket nem feltétlenül szükséges**, mint az alapértelmezett kiszolgálóoldali SDK-k együtt a [/böngésző ügyféloldali JavaScript SDK](../../azure-monitor/app/website-monitoring.md ), általában automatikusan követésére felhasználói tevékenység. Ha még nem konfigurálta [az ügyféloldali figyelés](../../azure-monitor/app/website-monitoring.md ) mellett a kiszolgálóoldali SDK-t, először hajtsa végre, és ellenőrizze, hogy ha a felhasználói viselkedés elemzőeszközök elvárt.
 
 ## <a name="choosing-user-ids"></a>Felhasználók kiválasztása
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846470"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077555"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -80,7 +80,7 @@ Marketplace-en csapat fogja ellenőrizni a piactér-beli regisztrációs részle
 Használhatja a [Cloud Partner Portalon](https://cloudpartner.azure.com) szeretne létrehozni, közzététele és kezelése a marketplace-ajánlat. Miután a jóváhagyó üdvözlő e-mailt kap, akkor azonnal be tud jelentkezni a [Cloud Partner Portalon](https://cloudpartner.azure.com) eléréséhez további műszaki információt Marketplace-en való közzététel és az ajánlat létrehozása Microsoft-fiókkal. 
 *   További információ a Cloud Partner portálra, használatával [látogasson el az első lépések a cikk további részében](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). A Cloud Partner portálra el az alábbi adatokat kell bejelentkeznie.
 *   Ha kérdése van vagy lenne például ütemezzen egy előkészítési áttekintése hívás, tekintse át más kiadó útmutató cikkek, vagy hozzon létre egy támogatási kérést probléma típusa alatt > belül a Cloud Partner portálra a Marketplace-en bevezetése.
-*   Ha nem kapta meg az üdvözlő e-mailt, ellenőrizze a Levélszemét mappát egy e-mailek, a tárgysorban a "Üdvözli a Microsoft Marketplace!." Nincs e-mail nem található a Levélszemét mappát, ha [forduljon a Microsoft ügyfélszolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). A támogatási oldalon válasszon ki: Problem Type > piactér bevezetése.  Csapat Marketplace Publisher forduljon hozzánk, és a lekérdezések elvégzésében segítségére lesz. 
+*   Ha nem kapta meg az üdvözlő e-mailt, ellenőrizze a Levélszemét mappát egy e-mailek, a tárgysorban a "Üdvözli a Microsoft Marketplace!." Nincs e-mail nem található a Levélszemét mappát, ha [forduljon a Microsoft ügyfélszolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). A támogatási oldalon válasszon ki: Probléma típusa > piactér bevezetése.  Csapat Marketplace Publisher forduljon hozzánk, és a lekérdezések elvégzésében segítségére lesz. 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Regisztráljon a fejlesztői központban (közzétételi lehetőség csak Transact) 
@@ -97,15 +97,15 @@ Az egyes regisztrálása [Dev Center](https://developer.microsoft.com/store/regi
 Befejezése után a [Dev Center](https://developer.microsoft.com/store/register) regisztrációs, összekapcsolása a Cloud Partner profilja az a [Dev Center](https://developer.microsoft.com/store/register) fiókra (lásd a részletes lépéseket). Ebben a lépésben a transact-ajánlat közzététele előtt kell elvégezni. 
 
 >[!Note]
->A $99 fejlesztői központ-regisztráció díj elengedni, végezze el a [marketplace regisztrációs űrlap](https://azuremarketplace.microsoft.com/en-us/sell/signup) és a egy a promóciós kódot tartalmazó e-mailt fog kapni. 
+>A $99 fejlesztői központ-regisztráció díj elengedni, végezze el a [marketplace regisztrációs űrlap](https://azuremarketplace.microsoft.com/sell/signup) és a egy a promóciós kódot tartalmazó e-mailt fog kapni. 
 
 >[!Important]
 >Mielőtt létrehozna egy Dev Center a Microsoft-fiókot, győződjön meg arról, hogy a szervezete még nem rendelkezik a fejlesztői központban lévő fiókjához ismétlődő fiókok elkerülése érdekében. További információért látogasson el a [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/register-dev-center) szakaszban.
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a Marketplace-en kirakattípus: [összehasonlítása appsource-ban és az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* Ismerje meg a Marketplace-en kirakattípus: [Appsource-ban és az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+*   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
 ---  

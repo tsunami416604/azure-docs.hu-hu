@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9200b3b8cd85bfd94bbc4c66cccb35b78a97aaff
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554690"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062655"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Time Series Insights-erőforrások létrehozása
 
@@ -34,6 +34,7 @@ A Resource Manager-sablon egy JSON-fájlt, amely meghatározza az infrastruktúr
 
 - [Az Azure Resource Manager áttekintése – sablon telepítése](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)
+- [Microsoft.TimeSeriesInsights erőforrástípusok](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 A [201-timeseriesinsights-környezet-a-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) gyorssablont a Githubon közzétett. Ez a sablon létrehoz egy Time Series Insights környezetet, a gyermek eseményforrás úgy konfigurálva, hogy az Eseményközpontban lévő események felhasználásához és hozzáférési házirendek, amelyek hozzáférést biztosítani a környezeti adatok. Ha egy meglévő Eseményközponton nincs megadva, az egyik való üzembe helyezéséhez létrejön.
 

@@ -3,7 +3,7 @@ title: Egy a helyszíni virtuális gép rendszerképének létrehozása az Azure
 description: Ismerje meg, és hajtsa végre a lépéseket egy a helyszíni virtuális gép rendszerképének létrehozása és üzembe helyezése az Azure piactéren, mások számára meg kell vásárolnia.
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: e5571a0933284a52d5567db0505ecaced6c6c336
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9fbb2f50905b1b80a092ba13f860f30cb9423a9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253499"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077793"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Egy a helyszíni virtuális gép rendszerképének fejlesztése az Azure Marketplace-en
 Javasoljuk, hogy az Azure virtuális merevlemezeket (VHD) közvetlenül a felhőben fejleszteni az RDP protokoll. Azonban meg kell, hogy lehetővé teszi a virtuális merevlemez letöltése és fejleszthetők a helyszíni infrastruktúra használatával.  
@@ -144,7 +145,7 @@ Használja a [Add-AzureVhd](https://msdn.microsoft.com/library/dn495173.aspx) pa
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
 ### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>VHD feltöltése a Macre és Linuxra készült parancssori eszközzel
-Az a [Linux parancssori eszköz](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2), használja a következő: az azure virtuálisgép-lemezkép létrehozása <image name> --hely <Location of the data center> – operációs rendszer Linux <LocationOfLocalVHD>
+Az a [Linux parancssori eszköz](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2), használja a következő parancsot: `azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>`
 
 ## <a name="see-also"></a>Lásd még
 * [Egy virtuálisgép-rendszerképet hoz létre a Marketplace-en](marketplace-publishing-vm-image-creation.md)

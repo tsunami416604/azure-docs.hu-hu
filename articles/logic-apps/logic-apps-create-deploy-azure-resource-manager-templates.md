@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 274fa3153f6a354b121b7fd8338d8e0d2d94f4f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 52aea4e47473d4dd27519ae53322b0e72d93f20e
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230812"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062893"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Logikai alkalmazások az Azure Resource Manager-sablonok létrehozását és telepítését
 
-Az Azure Logic Apps biztosít az Azure Resource Manager-sablonok, amelyet használhat, nem csak automatizálhatja a munkafolyamatokat logikai alkalmazásokat hozhat létre, hanem az erőforrásokat és üzembe helyezéshez használt paraméterek meghatározására. Ez a sablon használata a saját üzleti forgatókönyvek esetén, vagy testre szabhatja a sablont az igényeknek. Tudjon meg többet a [Resource Manager-sablon a logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) és [Azure Resource Manager-sablonok szerkezetének és szintaxisának](../azure-resource-manager/resource-group-authoring-templates.md).
+Az Azure Logic Apps biztosít az Azure Resource Manager-sablonok, amelyet használhat, nem csak automatizálhatja a munkafolyamatokat logikai alkalmazásokat hozhat létre, hanem az erőforrásokat és üzembe helyezéshez használt paraméterek meghatározására. Ez a sablon használata a saját üzleti forgatókönyvek esetén, vagy testre szabhatja a sablont az igényeknek. Tudjon meg többet a [Resource Manager-sablon a logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) és [Azure Resource Manager-sablonok szerkezetének és szintaxisának](../azure-resource-manager/resource-group-authoring-templates.md). JSON-szintaxist és a Tulajdonságok [Microsoft.Logic erőforrás-típus](/azure/templates/microsoft.logic/allversions).
 
 ## <a name="define-the-logic-app"></a>Adja meg a logikai alkalmazás
 

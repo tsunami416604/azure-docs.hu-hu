@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c73c846db4b22d8c19ccdaa2ec99a3fe7fdadf78
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832683"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076705"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>"Azure piactér" és "Az AppSource" közzétevő profil kezelése
 
@@ -45,12 +45,12 @@ Ha a vállalati felhő-partnerként még nem regisztrált, [első lépések a cl
 
 ![Közzétevő profil adatai - közzétevő profil részletei](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledetails.png)
 
-**A fejlesztői központban lévő fiókjához hivatkozás**: a közzétevő profil, a Cloud Partner portálra szóló is hozzárendelhet a meglévő fejlesztői központban lévő fiókjához.
+**A fejlesztői központ-fiókot**: A közzétevő profil, a Cloud Partner portálra szóló is hozzárendelhet a meglévő fejlesztői központban lévő fiókjához.
 Először jelentkezzen be a portálra a fejlesztői központban lévő fiókjához regisztrálásához használt azonos e-mail-címmel rendelkező. Ezután a közzétevő profillapján jeleníti meg, a Dev Center fiókjának állapotát, a fejlesztői központ fiók tulajdonosának e-mail címe és a fejlesztői központ-fiók neve.
 
 >[!NOTE]
 >A fejlesztői központban lévő fiókjához regisztrációs megadása kötelező a fizetős termékváltozatok piactér közzétételre.
 
-Ha nem rendelkezik egy [fejlesztői központban lévő fiókjához](~/articles/marketplace-publishing/marketplace-publishing-accounts-creation-registration.md), létrehozhat egy fiókot. Majd adja hozzá a regisztrált e-mail címre a Cloud Partner portálra, az ajánlat a tulajdonosai. Tulajdonos csak adhat hozzá a regisztrált e-mail címre a közzétételi profilt a **felhasználói** szakaszban. Ezután jelentkezzen be a portálra ugyanazt az e-mail címet, és a fejlesztői központ-fiókot.
+Ha nem rendelkezik egy [fejlesztői központban lévő fiókjához](./cloud-partner-portal-dev-center-accounts-registration.md), létrehozhat egy fiókot. Majd adja hozzá a regisztrált e-mail címre a Cloud Partner portálra, az ajánlat a tulajdonosai. Tulajdonos csak adhat hozzá a regisztrált e-mail címre a közzétételi profilt a **felhasználói** szakaszban. Ezután jelentkezzen be a portálra ugyanazt az e-mail címet, és a fejlesztői központ-fiókot.
 
 ![Közzétevő profil adatai - közzétevő profil leírása](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

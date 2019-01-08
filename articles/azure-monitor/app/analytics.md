@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52b18f3f6f1166650fb13694f3eed54c28bbc0a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c41444f94e4685d246de225500c8a5beefc74944
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731389"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065613"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
 Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](../../application-insights/app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](../../azure-monitor/app/app-insights-dashboards.md).
@@ -48,7 +48,7 @@ Azt, majd száma országonként rekordok száma (, hogy az oszlopban található
 A nyelv számos vonzó funkciókkal rendelkezik:
 
 * [Szűrő](/azure/kusto/query/whereoperator) a nyers alkalmazás telemetriai adatainak mezőket, beleértve az egyéni tulajdonságok és metrikák alapján.
-* [Csatlakozás](/azure/kusto/query/joinoperator) több tábla kérések korrelációját, ha az oldalmegtekintéseket, a függőségi hívások, a kivételek és a nyomkövetési naplók.
+* [Csatlakozás](/azure/kusto/query/joinoperator) több táblák - correlate kéréseket a lapmegtekintéseket, a függőségi hívások, a kivételek és a nyomkövetési naplók.
 * Hatékony statisztikai [összesítések](/azure/kusto/query/summarizeoperator).
 * Azonnali és sokoldalú vizualizációkat.
 * [REST API-val](https://dev.applicationinsights.io/) használható lekérdezések futtatása programozott módon, például a Powershellből.

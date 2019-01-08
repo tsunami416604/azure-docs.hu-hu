@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2237d523b8023c0a6551515f9a2740e92e7beb3f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a5943c1d2e6b04564e1de732b8f3924a67393753
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548922"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065681"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -104,7 +104,7 @@ Egy virtuális hálózat biztonsági eszközének Előfordulhat például, a vir
 
 [Kényszerített bújtatás](https://www.petri.com/azure-forced-tunneling) olyan mechanizmus segítségével győződjön meg arról, hogy a szolgáltatások nem engedélyezett az internethez csatlakozó eszközökről való kapcsolatot kezdeményez. Vegye figyelembe, hogy ez eltér a bejövő kapcsolatok fogadását, és ezután válaszol rájuk. Előtér-webkiszolgálók kell válaszolni a kérelmekre internet gazdagépekről, és így internetes forráskódú forgalom engedélyezve van, a következő webes kiszolgálókhoz bejövő és reagálni a webkiszolgálók engedélyezettek.
 
-Nincsenek t szeretné engedélyezése egy kimenő kérelem kezdeményezéséhez egy előtér-webkiszolgálón. Ilyen kérelmeket reprezentálhatja biztonsági kockázatot jelent, mivel ezek a kapcsolatok kártevő szoftverek letöltésére is használható. Akkor is, ha szeretné, hogy előtér-kiszolgálók kezdeményezheti a kimenő kérelmeket az interneten, érdemes haladhat végig a helyileg üzemeltetett webes proxykat őket. Ez lehetővé teszi, hogy az URL-címe, szűrés és a naplózási előnyeit.
+Egy kimenő kérelem kezdeményezéséhez előtér-webkiszolgálóra, hogy nem szeretné nem. Ilyen kérelmeket reprezentálhatja biztonsági kockázatot jelent, mivel ezek a kapcsolatok kártevő szoftverek letöltésére is használható. Akkor is, ha szeretné, hogy előtér-kiszolgálók kezdeményezheti a kimenő kérelmeket az interneten, érdemes haladhat végig a helyileg üzemeltetett webes proxykat őket. Ez lehetővé teszi, hogy az URL-címe, szűrés és a naplózási előnyeit.
 
 Ehelyett érdemes használni a kényszerített bújtatás elkerüléséhez. Ha engedélyezi a kényszerített bújtatás, az internet felé irányuló összes kapcsolatot a helyszíni átjárón keresztül kényszerítve. Konfigurálhatja a kényszerített bújtatás udr-EK kihasználásával.
 
@@ -127,7 +127,7 @@ Ha például a biztonsági követelmények a következők lehetnek:
 * Alkalmazás-hozzáférés-vezérlés
 * További DDoS elleni védelem (fent a DDoS protection az Azure-hálót, saját maga által biztosított)
 
-Következő nagyobb hálózati biztonsági funkciók érhetők el az egy Azure-partneri megoldás használatával. Annak a legújabb Azure-partneri hálózati biztonsági megoldások meglátogatják a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/), és a biztonság és hálózati biztonság keresése.
+Következő nagyobb hálózati biztonsági funkciók érhetők el az egy Azure-partneri megoldás használatával. Annak a legújabb Azure-partneri hálózati biztonsági megoldások meglátogatják a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/), és keressen a "security" és "hálózati biztonság."
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -171,7 +171,7 @@ További információ:
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>A helyszíni hálózat csatlakoztatása egy virtuális hálózat VPN-nel
 
-Érdemes lehet, hogy a teljes vállalati hálózaton, vagy egyes részeiből, csatlakoztatása virtuális hálózathoz. Ez a hibrid informatikai gyakori forgatókönyvek, ahol szervezetek [kiterjesztése a helyszíni adatközpontját az Azure-bA](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). Sok esetben szervezetek üzemeltethet az Azure és helyszíni részek szolgáltatás részei. Például előfordulhat, hogy ehhez a egy megoldás magában foglalja a előtér-webkiszolgálók, az Azure-ban, és a háttér-helyszíni adatbázisok. Ilyen típusú létesítmények közötti kapcsolatok is győződjön meg arról, felügyeleti található Azure-erőforrások biztonságának, és felhasználási helyzetek kiterjesztése az Active Directory-tartományvezérlőket az Azure-bA.
+Érdemes lehet, hogy a teljes vállalati hálózaton, vagy egyes részeiből, csatlakoztatása virtuális hálózathoz. Ez a hibrid informatikai gyakori forgatókönyvek, ahol szervezetek [kiterjesztése a helyszíni adatközpontját az Azure-bA](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). Sok esetben szervezetek üzemeltethet az Azure és helyszíni részek szolgáltatás részei. Például előfordulhat, hogy ehhez a egy megoldás magában foglalja a előtér-webkiszolgálók, az Azure-ban, és a háttér-helyszíni adatbázisok. Ilyen típusú "" kapcsolatokat is győződjön meg arról, felügyeleti található Azure-erőforrások biztonságának, és felhasználási helyzetek kiterjesztése az Active Directory-tartományvezérlőket az Azure-bA.
 
 Egyik módszer elvégzéséhez ezt, hogy használjon egy [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). A site-to-site VPN és a egy pont – hely VPN közötti különbség, hogy az utóbbi kapcsolódik egy adott eszköz a virtuális hálózathoz. Site-to-site VPN (például a helyszíni hálózat) teljes hálózathoz csatlakozik egy virtuális hálózatot. Virtuális hálózat és egy helyek közötti VPN-eket a rendkívül biztonságos IPsec-alagút módú VPN protokollt használja.
 
@@ -199,7 +199,7 @@ További információ:
 
 A központi telepítések számos virtuális hálózatot használandó lehetőség. Vannak, előfordulhat, hogy miért ez különböző okok miatt. Érdemes lehet leegyszerűsítheti a felügyeletet, vagy érdemes nagyobb biztonság. A különböző virtuális hálózatokon lévő erőforrások üzembe motiváció, függetlenül is azt szeretné, minden való csatlakozáshoz egymással a hálózaton lévő erőforrások.
 
-Az egyik lehetőség van a szolgáltatásokhoz való csatlakozáshoz szolgáltatások egy másik virtuális hálózattal az interneten keresztül visszairányító hurkolás egy virtuális hálózaton. A kapcsolat elindítja egy virtuális hálózaton, az interneten keresztül halad, és ezután visszatér a cél virtuális hálózat. Ez a beállítás a biztonsági problémák rejlő minden olyan internetes kommunikációs kapcsolat tesz elérhetővé.
+Az egyik lehetőség van a szolgáltatásokhoz való csatlakozáshoz szolgáltatások egy másik virtuális hálózattal, "hurkolás vissza" egy virtuális hálózaton az interneten keresztül. A kapcsolat elindítja egy virtuális hálózaton, az interneten keresztül halad, és ezután visszatér a cél virtuális hálózat. Ez a beállítás a biztonsági problémák rejlő minden olyan internetes kommunikációs kapcsolat tesz elérhetővé.
 
 Jobb megoldás lehet, amely összeköti a két virtuális hálózat között helyek közötti VPN létrehozása. Ezt a módszert használja, azonos [IPSec-alagút módú](https://technet.microsoft.com/library/cc786385.aspx) a létesítmények közötti site-to-site VPN-kapcsolat a fent említett-protokoll.
 
@@ -213,7 +213,7 @@ Egy másik módja a virtuális hálózatok [virtuális hálózatok közötti tá
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Rendelkezésre állás bármilyen biztonsági program egyik fő összetevője. Ha a felhasználók és rendszerek is t éri el a számukra éppen szükséges hálózati hozzáféréssel, a szolgáltatás lehessen venni sérült a biztonsága. Azure hálózatkezelési technológiákat, amelyek támogatják az alábbi magas rendelkezésre állású mechanizmusok rendelkezik:
+Rendelkezésre állás bármilyen biztonsági program egyik fő összetevője. Ha a felhasználók és rendszerek nem sikerül elérnie mit eléréséhez szükséges a hálózaton keresztül, a szolgáltatás lehessen venni sérült a biztonsága. Azure hálózatkezelési technológiákat, amelyek támogatják az alábbi magas rendelkezésre állású mechanizmusok rendelkezik:
 
 * HTTP-alapú terheléselosztási
 * Hálózati szintű terheléselosztás
@@ -222,7 +222,7 @@ Rendelkezésre állás bármilyen biztonsági program egyik fő összetevője. H
 Load balancing szolgáltatás egyenlő arányban terjeszteni a kapcsolatokat, többek között a több eszközre tervezett mechanizmus. A terheléselosztás céljai a következők:
 
 * Elérhetőség növeléséhez. Egyenleg kapcsolatok betölteni a több eszközre, amikor egy vagy több olyan eszközt is elérhetetlenné válik a szolgáltatás veszélyeztetése nélkül. A fennmaradó online eszközökön futó szolgáltatások továbbra is a szolgáltatás a tartalmat szolgálnak ki.
-* Teljesítmény növelése érdekében. Betöltésekor egyenleg kapcsolatok több eszközön, egy adott eszköz adatforgalmi nincs minden feldolgozás kezelésére. Ehelyett a feldolgozás és a memória a növekvő igények szerint, de a tartalom van elosztva több eszközön.
+* Teljesítmény növelése érdekében. Egyenleg kapcsolatok betölteni a több eszközre, amikor egy adott eszköz nincs minden feldolgozás kezelésére. Ehelyett a feldolgozás és a memória a növekvő igények szerint, de a tartalom van elosztva több eszközön.
 
 ### <a name="http-based-load-balancing"></a>HTTP-alapú terheléselosztási
 
@@ -231,7 +231,7 @@ Szervezetek számára, amelyek gyakran webes szolgáltatások futtatásához ren
 Az Azure Application Gateway HTTP-alapú terheléselosztást biztosít a webes szolgáltatásokhoz. Az Application Gateway támogatja:
 
 * Cookie-alapú munkamenet-affinitás. Ez a funkció gondoskodik arról, hogy a terheléselosztó mögött a kiszolgálóhoz létesített kapcsolatok változatlan marad, az ügyfél és kiszolgáló közötti marad. Ez biztosítja, hogy a tranzakció stabilitását.
-* SSL-alapú kiszervezés. Amikor egy ügyfél kapcsolódik a terheléselosztóval való, hogy munkamenet a HTTPS (SSL) protokoll használatával titkosítja. Azonban annak érdekében, hogy a teljesítmény növelése érdekében használhatja (titkosítatlanul) HTTP protokollal csatlakozni a terheléselosztó és a terheléselosztó mögött a webkiszolgáló között. Erre hivatkozik, SSL alapú kiszervezést, mert a webkiszolgálók, a load balancer kikapcsolásához mögött élmény a processzor terhelését a titkosítással kapcsolatos. A webkiszolgálók is ezért szolgáltatáskérések időnél gyorsabban van szüksége.
+* SSL-alapú kiszervezés. Amikor egy ügyfél kapcsolódik a terheléselosztóval való, hogy munkamenet a HTTPS (SSL) protokoll használatával titkosítja. Azonban annak érdekében, hogy a teljesítmény növelése érdekében használhatja (titkosítatlanul) HTTP protokollal csatlakozni a terheléselosztó és a terheléselosztó mögött a webkiszolgáló között. Ezt nevezik "SSL-alapú kiszervezést,", mert a webkiszolgálók, a terheléselosztó mögött a processzor terhelését a titkosítással kapcsolatos nem működik. A webkiszolgálók is ezért szolgáltatáskérések időnél gyorsabban van szüksége.
 * URL-alapú tartalom-útválasztás. Ez a funkció megfontoltabb döntéseket hozhat, ha a továbbítási kapcsolatok a célként megadott URL-cím alapján, hogy a terheléselosztó lehetővé teszi. Ez a megoldást kínál, amellyel betölteni a IP-címeken alapuló terheléselosztás döntésekhez, mint sokkal nagyobb rugalmasságot nyújt.
 
 További információ:
@@ -256,7 +256,7 @@ További információ:
 
 ### <a name="global-load-balancing"></a>Terhelés globális kiegyenlítéséhez
 
-Egyes szervezetek szeretnék a legmagasabb szintű rendelkezésre állást lehetséges. Egyik módja a cél eléréséhez az alkalmazások üzemeltetését a globálisan elosztott adatközpontokban. Ha egy alkalmazás a világ számos részén található adatközpontokban üzemeltetett, egy teljes geopolitikai régió elérhetetlenné válik, és továbbra is az alkalmazást, majd futtassa az s.
+Egyes szervezetek szeretnék a legmagasabb szintű rendelkezésre állást lehetséges. Egyik módja a cél eléréséhez az alkalmazások üzemeltetését a globálisan elosztott adatközpontokban. Egy alkalmazás a világ számos részén található adatközpontokban üzemeltetett, esetén lehetséges egy teljes geopolitikai régió elérhetetlenné válik, és továbbra is az alkalmazás és futnak.
 
 Ez a terheléselosztó stratégia költségmegtakarítással járhat az teljesítmény előnyeit. A szolgáltatás számára az adatközpontot, amelyben azt az eszközt, hogy a kérés küldője kérelmek irányíthatók.
 
@@ -268,11 +268,11 @@ További információ:
 
 ## <a name="name-resolution"></a>Névfeloldás
 
-Névfeloldás, akkor egy kritikus fontosságú függvény üzemeltetése az Azure-szolgáltatásokhoz. Biztonsági szempontból a név feloldása függvény biztonságának sérüléséhez vezethet a helyek egy támadó s helyre kérelmeinek átirányítása egy támadó. Biztonságos névfeloldás az összes üzemeltetett felhőalapú szolgáltatás működik.
+Névfeloldás, akkor egy kritikus fontosságú függvény üzemeltetése az Azure-szolgáltatásokhoz. Biztonsági szempontból a a név feloldása függvény biztonságának sérüléséhez vezethet a támadó helyre a helyekről kérések átirányítása a támadó. Biztonságos névfeloldás az összes üzemeltetett felhőalapú szolgáltatás működik.
 
 Teljesítendő névfeloldás két típusa van:
 
-* Belső névfeloldást. Ez a virtuális hálózatok, a helyszíni hálózat vagy mindkettő szolgáltatások használják. Belső névfeloldást használt nevek nem érhetők el az interneten keresztül. Az optimális biztonság biztosítása hogy s fontos, hogy a belső név feloldása séma nem érhető el a külső felhasználók számára.
+* Belső névfeloldást. Ez a virtuális hálózatok, a helyszíni hálózat vagy mindkettő szolgáltatások használják. Belső névfeloldást használt nevek nem érhetők el az interneten keresztül. Az optimális biztonság biztosítása érdekében fontos, hogy a belső név feloldása séma nem érhető el a külső felhasználók számára.
 * Külső név feloldása. Ezt használja a helyszíni hálózatok és virtuális hálózatok kívüli személyekkel és eszközökkel. Ezek azok a nevek, látható az internethez, és a felhőalapú szolgáltatásokhoz való kapcsolat irányíthatók.
 
 Belső névfeloldást két lehetősége van:
@@ -292,7 +292,7 @@ Külső névfeloldás két lehetősége van:
 
 Számos nagyméretű szervezet saját DNS kiszolgálók a helyszíni gazdagépekre. Ehhez a hálózati szakértelemmel és a globális jelenlét ehhez mert.
 
-A legtöbb esetben azt s jobb üzemeltessen saját DNS-nevet egy szolgáltatónál névfeloldási szolgáltatást. Ezek a szolgáltatók rendelkezik a hálózati szakértelemmel és a globális jelenlét a névfeloldási szolgáltatást nagyon magas rendelkezésre állásának biztosításához. Rendelkezésre állási elengedhetetlen a DNS-szolgáltatások esetében, mert ha meghibásodik a névfeloldási szolgáltatást, senki nem tudja elérni az internetkapcsolattal rendelkező szolgáltatások.
+A legtöbb esetben érdemes futtatni a DNS-névfeloldási szolgáltatást egy szolgáltatónál. Ezek a szolgáltatók rendelkezik a hálózati szakértelemmel és a globális jelenlét a névfeloldási szolgáltatást nagyon magas rendelkezésre állásának biztosításához. Rendelkezésre állási elengedhetetlen a DNS-szolgáltatások esetében, mert ha meghibásodik a névfeloldási szolgáltatást, senki nem tudja elérni az internetkapcsolattal rendelkező szolgáltatások.
 
 Az Azure biztosít egy magas rendelkezésre állású, nagy teljesítményű külső DNS-megoldás az Azure DNS formájában. Ez a külső megoldás a megoldás a világszerte az Azure DNS-infrastruktúra kihasználja. Ez lehetővé teszi, hogy üzemeltessen saját tartományt az Azure-ban, azonos hitelesítő adatokkal, API-kkal, eszközökkel és az egyéb Azure-szolgáltatások számlázási információkkal. Az Azure részeként a platform erős biztonsági ellenőrzéseket is örökli.
 
@@ -303,7 +303,7 @@ További információ:
 
 ## <a name="perimeter-network-architecture"></a>Szegélyhálózat-alapú hálózati architektúra
 
-Számos nagyméretű szervezet szegmentálása azok hálózatok peremhálózatokon használja, és az internet és szolgáltatásaik között puffer-zóna létrehozása. A hálózati peremhálózati részének számít egy alacsony biztonsági szintű zónában, és nem nagy értékű eszközök kerülnek, a hálózati szegmenst. Ön ll általában tekintse meg a hálózati biztonsági eszközök a szegélyhálózat-alapú hálózati szegmensen hálózati adapter. Egy másik hálózati adapter csatlakoztatva van egy hálózathoz, amelyen a virtuális gépek és szolgáltatások, amelyek fogadják az internetről bejövő kapcsolatokat.
+Számos nagyméretű szervezet szegmentálása azok hálózatok peremhálózatokon használja, és az internet és szolgáltatásaik között puffer-zóna létrehozása. A hálózati peremhálózati részének számít egy alacsony biztonsági szintű zónában, és nem nagy értékű eszközök kerülnek, a hálózati szegmenst. Általában látni fog egy hálózati adaptert a szegélyhálózat-alapú hálózati szegmensen rendelkező hálózati biztonsági eszközöket. Egy másik hálózati adapter csatlakoztatva van egy hálózathoz, amelyen a virtuális gépek és szolgáltatások, amelyek fogadják az internetről bejövő kapcsolatokat.
 
 Számos különböző módon a szegélyhálózat is tervezhet. A döntést, üzembe helyezéséhez a szegélyhálózaton, majd peremhálózati milyen típusú hálózati használhat, ha úgy dönt, hogy használja, attól függ, hogy a hálózati biztonsági követelmények teljesítéséhez.
 
@@ -313,7 +313,7 @@ További információ:
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb rendelkezésreállási és biztonsági kockázatot jelentik az olyan felhasználók számára, akik alkalmazásaikat a felhőbe helyezik át. A DDoS-támadások próbál lefoglalhat egy alkalmazás s erőforrásokat, így az alkalmazás nem érhető el a jogosult felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
+Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb rendelkezésreállási és biztonsági kockázatot jelentik az olyan felhasználók számára, akik alkalmazásaikat a felhőbe helyezik át. A DDoS-támadások próbál lefoglalhat egy alkalmazás-erőforrások, így az alkalmazás nem érhető el a jogosult felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
 A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platform részeként. Ez díjmentesen érhető el, és mindig tartalmazza a figyelési és valós idejű csökkenti a közös hálózati szintű támadásoktól. Mellett a védelmet, a DDoS protection részét képező **alapszintű** engedélyezheti a **Standard** lehetőséget. A DDoS Protection Standard funkciók:
 
 * **A platform natív integráció:** Natív módon integrálva az Azure-bA. Az Azure Portalon keresztül konfigurációit is beleértve. A DDoS Protection Standard tisztában van azzal erőforrásait és erőforrás-konfigurációhoz.
@@ -321,10 +321,10 @@ A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platfo
 * **Mindig forgalomfigyelést:** Az alkalmazás forgalmi minták figyelhetők 24 óránként, naponta, hetente, 7 nap DDoS-támadások kijelzőjét keres. Kockázatcsökkentési alkalmazásvédelmi szabályzatok túllépése esetén történik.
 * **Kockázatcsökkentési jelentések támadási** támadási kockázatcsökkentési jelentések összesített hálózati forgalmi adatai segítségével az erőforrások irányuló támadások részletes információkat tartalmaznak.
 * **Kockázatcsökkentési Flow naplók támadási** támadási kockázatcsökkentési Flow naplók lehetővé teszi, hogy tekintse át az eldobott forgalomhoz továbbított forgalom és a más támadási adatainak közel valós időben aktív DDoS-támadás során.
-* **Adaptív hangolás:** Intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás s forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával. Réteg 3-7. rétegbeli védelem: Teljes verem DDoS elleni védelem, biztosít a webalkalmazás-tűzfal együtt használva.
+* **Adaptív hangolás:** Intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával. Réteg 3-7. rétegbeli védelem: Teljes verem DDoS elleni védelem, biztosít a webalkalmazás-tűzfal együtt használva.
 * **Széles körű kockázatcsökkentési beosztás:** Több mint 60 különböző támadási típusok enyhíthető, globális kapacitással, a legnagyobb ismert DDoS-támadásokkal szembeni védelem érdekében.
 * **A támadás metrikák:** Minden támadástól összesített mérőszámok Azure monitoron keresztül érhetők el.
-* **A támadás riasztás:** Riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás s időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
+* **A támadás riasztás:** Riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
 * **A Cost garancia:**  Adatátvitel – és az alkalmazás horizontális felskálázás szolgáltatásokhoz biztosított kreditek a dokumentált DDoS-támadások.
 * **DDoS gyors, rugalmas** DDoS Protection Standard használó ügyfelek mostantól hozzáférhet a Rapid Response team aktív támadás során. A támadás vizsgálat során egy támadás és a támadás utáni elemzés egyéni megoldások DRR segíthet.
 

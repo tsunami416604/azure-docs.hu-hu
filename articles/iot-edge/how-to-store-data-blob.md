@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 287f67ff9eb0ecc214bd8e8fd3c27660cea185c7
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b5dcc4295467aee82547bc2a0894320bd110998f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055064"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065817"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -86,7 +86,7 @@ Az Azure piactér biztosít az IoT Edge modulok, amelyek közvetlenül az IoT Ed
       >[!IMPORTANT]
       >Az Azure IoT Edge egy kis-és nagybetűket, hívásokat modulokat, és a Storage SDK alapértelmezés szerint a kisbetűs. Annak érdekében, hogy a kapcsolatok az Azure Blob Storage az IoT Edge-modul nem szakad, adjon meg egy kis nevet. 
 
-   2. Az alapértelmezett **tároló létrehozása beállítások** a port-kötéseket, amely a tárolóra van szüksége, de Ön is hozzá kell adnia a storage-fiók adatait és a egy kötést a tároló könyvtár az eszközön. Írja felül a JSON-t a portál az alábbi JSON-ban:
+   2. Az alapértelmezett **tároló létrehozása beállítások** a port-kötéseket, amely a tárolóra van szüksége, de Ön is hozzá kell adnia a storage-fiók adatait és a egy kötést a tároló könyvtár az eszközön. Írja felül a JSON-t a portálon az alábbi JSON-ra:
     
       ```json
       {
@@ -121,7 +121,7 @@ Az Azure piactér biztosít az IoT Edge modulok, amelyek közvetlenül az IoT Ed
    4. Kattintson a **Mentés** gombra.
 
 4. Válassza ki **tovább** a varázsló a következő lépéssel folytatja.
-5. Az a **útvonalak megadása** , a varázsló elkészült **tovább**.
+5. Az a **útvonalak megadása** . lépés a varázslóban válassza a **tovább**.
 6. Az a **áttekintése telepítési** . lépés a varázslóban válassza a **küldés**.
 7. Miután az üzembe helyezés elküldött, akkor térjen vissza a **IoT Edge** az IoT hub oldalon. Válassza ki az IoT Edge-eszköz célként való üzembe helyezéséhez, hogy megnyissa annak részletes adatait. 
 8. Az eszköz részletek győződjön meg arról, hogy a blob storage-modulban is szerepel a listán **központi telepítésben megadott** és **eszköz által jelentett**. A modul elindult az eszközön, és ezután jelentett vissza az IoT hub egy kis ideig is eltarthat. Frissítse az oldalt, hogy a frissített állapotot. 

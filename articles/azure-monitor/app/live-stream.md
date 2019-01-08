@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73dc8c2217a0f4eecd5d5b0f934624d9491055a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 99a8ac29167db4619d68cfa51de6a747d5ae9a51
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040234"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079170"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
@@ -38,7 +38,7 @@ Az élő Stream metrikák a következőket teheti:
 
 ## <a name="get-started"></a>Bevezetés
 
-1. Ha még nem [telepítve van az Application Insights](../../azure-monitor/app/asp-net.md) az ASP.NET-webalkalmazásban vagy [Windows server alkalmazás](../../application-insights/app-insights-windows-services.md), most tegye meg. 
+1. Ha még nem [telepítve van az Application Insights](../../azure-monitor/app/asp-net.md) az ASP.NET-webalkalmazásban vagy [Windows server alkalmazás](../../azure-monitor/app/windows-services.md), most tegye meg. 
 2. **A legújabb verzióra való frissítés** az Application Insights-csomag. A Visual Studióban kattintson jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**. Nyissa meg a **frissítések** lapon jelölje **előzetes verzió**, és válassza ki a Microsoft.ApplicationInsights.*-csomagokat.
 
     Helyezze ismét üzembe alkalmazását.

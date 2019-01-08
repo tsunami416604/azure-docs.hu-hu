@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: d3dca1d7247a822720d32e32fe959053fb80ddd1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0135f3ab79852e55187874ce1d5a0695238de207
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052479"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074835"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
 Miután [Application Insights beállítása a projektben](../../application-insights/app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
@@ -113,10 +113,10 @@ Az Áttekintés panelen az alkalmazással kapcsolatos további információkat a
 * [**Keresés** ](../../azure-monitor/app/diagnostic-search.md) - specifikus példányai, például kérések, kivételek, események vizsgálata vagy a nyomkövetési naplók.
 * [**Analytics** ](../../azure-monitor/app/analytics.md) – hatékony telemetriai lekérdezéseket hajthat végre a.
 * **Időtartomány** – állítsa be a a panelen a diagramok szerint jelenik meg.
-* **Törlés** – az alkalmazás Application Insights-erőforrás törlése. Meg kell is vagy távolítsa el az Application Insights-csomagokat a kód, vagy szerkesztheti a [kialakítási kulcs](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) közvetlen telemetriai adatokat a különböző Application Insights-erőforrást az alkalmazásban.
+* **Törlés** – az alkalmazás Application Insights-erőforrás törlése. Meg kell is vagy távolítsa el az Application Insights-csomagokat a kód, vagy szerkesztheti a [kialakítási kulcs](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) közvetlen telemetriai adatokat a különböző Application Insights-erőforrást az alkalmazásban.
 
 ### <a name="essentials-tab"></a>Alapvető erőforrások lapján
-* [Rendszerállapotkulcs](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
+* [Rendszerállapotkulcs](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
 
 ### <a name="app-navigation-bar"></a>Alkalmazás navigációs sáv
 ![Bal oldali navigációs sávon](./media/app-insights-dashboards/app-left-nav-bar.png)

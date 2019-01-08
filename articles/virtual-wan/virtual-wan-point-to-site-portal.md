@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 01/07/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9d5533932ef9ab521b623c18a0c3a27b663c56f8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261808"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077402"
 ---
-# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Oktatóanyag: Pont–hely kapcsolat létrehozása az Azure Virtual WAN (előzetes verzió) használatával
+# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Oktatóanyag: Hozzon létre egy pont – hely kapcsolattal az Azure virtuális WAN (előzetes verzió)
 
 Ez az oktatóanyag bemutatja, hogyan kapcsolódhat a Virtual WAN használatával az Azure-ban lévő erőforrásaihoz IPsec/IKE (IKEv2) vagy OpenVPN VPN-kapcsolaton keresztül. Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámítógépen. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="register"></a>A funkció regisztrálása
 
-Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához az Azure Cloud Shell használatával.
+Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához az Azure Cloud Shell használatával. Ha a PowerShell helyi inkább futtatná, győződjön meg arról, a legújabb verzióval rendelkezik, és jelentkezzen be a **Connect-AzureRmAccount** és **Select-AzureRmSubscription** parancsokat.
 
 >[!NOTE]
 >Ha nem regisztrálja a funkciót, nem használhatja, és nem jelenik meg a portálon sem.
@@ -149,7 +149,7 @@ A letöltött profillal konfigurálhatja a távelérésű ügyfeleket. Az eljár
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Töltse le az OpenVPN-ügyfelet a hivatalos webhelyről, majd telepítse.
-2.  Töltse le az átjáró VPN-profilját. Ezt az Azure Portal Point-to-site configurations (Pont–hely konfigurációk) lapján, vagy a PowerShell New-AzureRmVpnClientConfiguration parancsával teheti meg.
+2.  Töltse le az átjáró VPN-profilját. Ez a pont – hely konfigurációk fülre az Azure Portalon vagy a PowerShell New-AzureRmVpnClientConfiguration teheti meg.
 3.  Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
 4.  Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Itt tekintheti meg, hogyan szerezheti meg a kódolt nyilvános kulcsot a tanúsítvány exportálásával.
 5.  Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Itt tekintheti meg a titkos kulcs kinyerésének a módját.
@@ -168,7 +168,7 @@ A letöltött profillal konfigurálhatja a távelérésű ügyfeleket. Az eljár
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Töltsön le egy OpenVPN-ügyfelet, például a Tunnelblicket (innen tölthető le: https://tunnelblick.net/downloads.html), majd telepítse. 
-2.  Töltse le az átjáró VPN-profilját. Ezt az Azure Portal Pont–hely konfigurációk lapján, vagy a PowerShell New-AzureRmVpnClientConfiguration parancsával teheti meg.
+2.  Töltse le az átjáró VPN-profilját. Ez a pont – hely konfiguráció lapon az Azure Portalon vagy a PowerShell New-AzureRmVpnClientConfiguration teheti meg.
 3.  Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
 4.  Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Itt tekintheti meg, hogyan szerezheti meg a kódolt nyilvános kulcsot a tanúsítvány exportálásával.
 5.  Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Itt tekintheti meg a titkos kulcs kinyerésének a módját.

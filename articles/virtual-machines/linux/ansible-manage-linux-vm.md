@@ -3,17 +3,17 @@ title: Linux rendszerű virtuális gép felügyelete az Azure-ban az Ansible has
 description: Megtudhatja, hogyan felügyelhet Linux rendszerű virtuális gépeket az Azure-ban az Ansible használatával
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, bash
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 14e675097a23b50c8ff193c69c377ac8edfb989f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ef19043465cb67401786cddec4972f67231995bb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317262"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077810"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép felügyelete az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti az Azure-beli virtuális gépeket, ahogy azt bármely más erőforrással tenné. Ez a cikk bemutatja, hogyan használhatja az Ansible-forgatókönyveket Linux rendszerű virtuális gépek indítására és leállítására. 

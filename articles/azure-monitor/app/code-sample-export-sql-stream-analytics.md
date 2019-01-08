@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8ed645066eef93ae02722858381af77854d7d1eb
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 4d5e235fd9c2bdcf9f3091e9f78449246fd639c7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001882"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075890"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Forgatókönyv: SQL-exportálás a Stream Analytics használatával az Application Insights
 Ez a cikk bemutatja, hogyan helyezheti át a küldött telemetriai adatok [Azure Application Insights] [ start] be egy Azure SQL database használatával [folyamatos exportálás] [ export] és [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -249,7 +249,7 @@ Néhány perc múlva lépjen vissza az SQL Server felügyeleti eszközeit, és f
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Exportálás a Stream Analytics használatával Power bi-bA](../../application-insights/app-insights-export-power-bi.md)
+* [Exportálás a Stream Analytics használatával Power bi-bA](../../azure-monitor/app/export-power-bi.md )
 * [Részletes adatmodell-referencia a tulajdonság típusát és értékét.](../../azure-monitor/app/export-data-model.md)
 * [A folyamatos Exportálás az Application insights szolgáltatásban](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)

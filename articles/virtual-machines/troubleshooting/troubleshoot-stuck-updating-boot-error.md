@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 2d42d2014432b72f35e9b0d9543fe499a6ab721b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355488"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063660"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure virtuális gép indítási megakadt Windows update
 
 Ez a cikk segít megoldani a problémát, ha a virtuális gép (VM) a Windows Update szakaszban elakadt indítása során. 
 
 > [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
 
  ## <a name="symptom"></a>Jelenség
 
@@ -47,16 +47,16 @@ Frissítések, amelyekre a számától függően telepítve, vagy biztonsági á
 
 1. Pillanatkép készítése az operációsrendszer-lemez az érintett virtuális gépek biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md). 
 2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
-3. Miután az operációsrendszer-lemez a helyreállítási virtuális Géphez van csatolva, nyissa meg a **logikailemez-kezelő** , és győződjön meg arról, hogy **ONLINE**. Jegyezze fel a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez a \windows mappát tároló van rendelve. Ha a lemez titkosítva vannak, visszafejteni a lemez ebben a dokumentumban a következő lépések végrehajtása előtt.
+3. Miután az operációsrendszer-lemez a helyreállítási virtuális Géphez van csatolva, futtassa **diskmgmt.msc** nyissa meg a Lemezkezelés eszközben, és győződjön meg arról, a csatlakoztatott lemez **ONLINE**. Jegyezze fel a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez a \windows mappát tároló van rendelve. Ha a lemez titkosítva vannak, visszafejteni a lemez ebben a dokumentumban a következő lépések végrehajtása előtt.
 
-3. A csatlakoztatott operációsrendszer-lemez a frissítési csomagok listájának lekérése:
+4. Nyissa meg a rendszergazda jogú parancssort (Futtatás rendszergazdaként). A következő parancsot a csatlakoztatott operációsrendszer-lemez a frissítési csomagok listájának beolvasása:
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
     Például ha a csatlakoztatott operációsrendszer-lemez meghajtó F, futtassa a következő parancsot:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-4. Nyissa meg a C:\temp\Patch_level.txt fájlt, és ezután olvassa el, a lista aljáról. Keresse meg a frissítést, amely a **telepítés függőben** vagy **függőben lévő eltávolítása** állapota.  Az alábbiakban látható a frissítés állapotának mintáira érvényesek:
+5. Nyissa meg a C:\temp\Patch_level.txt fájlt, és ezután olvassa el, a lista aljáról. Keresse meg a frissítést, amely a **telepítés függőben** vagy **függőben lévő eltávolítása** állapota.  Az alábbiakban látható a frissítés állapotának mintáira érvényesek:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -64,7 +64,7 @@ Frissítések, amelyekre a számától függően telepítve, vagy biztonsági á
     Release Type : Security Update
     Install Time :
     ```
-5. Távolítsa el a frissítést, amelyiket okozta a problémát:
+6. Távolítsa el a frissítést, amelyiket okozta a problémát:
     
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
@@ -72,10 +72,10 @@ Frissítések, amelyekre a számától függően telepítve, vagy biztonsági á
     Példa: 
 
     ```
-    dism /Image:F:\ /Remove-Package /Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
+    dism /Image:F:\ /Remove-Package /PackageName:Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     ```
 
     > [!NOTE] 
     > A csomag méretétől függően a a DISM eszköz eltarthat egy ideig, az eltávolítási feldolgozásához. Általában a folyamat 16 percen belül befejeződik.
 
-6. Az operációsrendszer-lemez leválasztása, majd [építse újra a virtuális Gépet az operációsrendszer-lemez használatával](troubleshoot-recovery-disks-portal-windows.md). 
+7. [Az operációsrendszer-lemez leválasztása, és hozza létre újra a virtuális gép](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Ezután ellenőrizze, hogy a probléma megoldódott-e.

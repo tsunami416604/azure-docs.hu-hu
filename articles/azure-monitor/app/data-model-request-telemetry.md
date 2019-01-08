@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91f6254fe756f256a2c88429fb4d96156867ef4a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1f9a108a91a2fa917ec58e6cff487c6dca71130f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001906"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076399"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelmek telemetriai adatai: Application Insights-adatmodell
 
@@ -63,9 +63,9 @@ Maximális hossz: 1024 karakternél
 
 ## <a name="success"></a>Sikeres
 
-A sikeres vagy sikertelen hívás megjelölése. Ezt a mezőt kötelező kitölteni. Ha nincs beállítva az explicit módon `false` -kérelem sikeres kell tekinteni. Ez az érték `false` Ha művelet kivétel által megszakított vagy a következő eredmény hibakódot adta vissza.
+A sikeres vagy sikertelen hívás megjelölése. Ezt a mezőt kötelező kitölteni. Ha nincs beállítva az explicit módon `false` -kérelem sikeres számít. Ez az érték `false` Ha művelet kivétel által megszakított vagy a következő eredmény hibakódot adta vissza.
 
-A webalkalmazások esetén a Application Insights kérelem meghatározása, mert sikertelen volt, amikor a válaszkód kisebb a `400` vagy egyenlő `401`. Azonban előfordulhatnak olyan esetek, amikor az alapértelmezett leképezés nem egyezik a kérelem a szemantikai. Válaszkód `404` utalhat a "nincs rekordok" rendszeres folyamat része lehet. Azt is jelentheti egy megszakadt hivatkozás. A hibás hivatkozást talál még akkor is Megvalósíthat az összetettebb logika. Csak akkor, ha a hivatkozások URL-cím hivatkozó elemzésével ugyanazon a helyen található kódhibáiként jelölheti meg hibás hivatkozást talál. Vagy hibák során érhető el, amely a vállalat mobilalkalmazás megjelölni. Hasonlóképpen `301` és `302` azt jelzi, hogy a hiba, amikor az ügyfél, amely nem támogatja az átirányítási érik el.
+A webalkalmazások esetén az Application Insights meghatározni egy kérelmet, a sikeres a válaszkód esetén kevesebb mint `400` vagy egyenlő `401`. Azonban előfordulhatnak olyan esetek, amikor az alapértelmezett leképezés nem egyezik a kérelem a szemantikai. Válaszkód `404` utalhat a "nincs rekordok" rendszeres folyamat része lehet. Azt is jelentheti egy megszakadt hivatkozás. A hibás hivatkozást talál még akkor is Megvalósíthat az összetettebb logika. Csak akkor, ha a hivatkozások URL-cím hivatkozó elemzésével ugyanazon a helyen található kódhibáiként jelölheti meg hibás hivatkozást talál. Vagy hibák során érhető el, amely a vállalat mobilalkalmazás megjelölni. Hasonlóképpen `301` és `302` azt jelzi, hogy a hiba, amikor az ügyfél, amely nem támogatja az átirányítási érik el.
 
 Részlegesen elfogadta a tartalom `206` előfordulhat, hogy egy átfogó kérelem sikertelenségét jelzik. Például az Application Insights-végpont telemetriai kötegelt egyetlen kérést kap. Adja vissza, `206` mikor a kötegben lévő egyes elemek nem sikerült feldolgozni. Növekvő mértékű `206` , meg kell vizsgálni kapcsolatos problémát jelez. Hasonló a logika vonatkozik `207` több állapota, ahol sikeres lehet, hogy külön válaszkódok legrosszabb.
 

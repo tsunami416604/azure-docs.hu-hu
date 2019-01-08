@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c86fd2affa08999ae574f55315c6a0b32fa58fca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723671"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076790"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -127,7 +127,7 @@ Kapcsolat egy normál fürt használatával egy [Apache Ambari](https://ambari.a
 
 1. Nyissa meg a parancskatalógust kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: Egy fürtöt**.
 2. Válassza ki **általános Livy végpont**.
-3. Adja meg az általános Livy-végpont, például: http://10.172.41.42:18080.
+3. Adja meg az általános Livy-végpont, például: http\:/ / 10.172.41.42:18080.
 4. Válassza ki **alapszintű** mikor van szükség az általános Livy-végpont, egyébként, engedélyezési válassza **None**.
 5. A bemeneti felhasználónév válassza **alapszintű** step4 a.
 6. Be a jelszót, ha a select **alapszintű** step4 a.

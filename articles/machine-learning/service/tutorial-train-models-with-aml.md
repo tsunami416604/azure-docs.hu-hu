@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 117934c83d54cb5454f476ffb3b1a1437c0fd30b
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811477"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075940"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
 Az oktatóanyag során egy gépi tanulási modellt fog betanítani helyi és távoli számítási erőforrások használatával. Python Jupyter notebook az Azure Machine Learning szolgáltatás a képzés és az üzembe helyezést megvalósító munkafolyamat használja. Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
 
-Ebben az oktatóanyagban egy egyszerű logisztikai regressziós betanítja használatával a [MNIST](https://yann.lecun.com/exdb/mnist/) adatkészlet és [scikit-további](https://scikit-learn.org) Azure Machine Learning szolgáltatással. Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Minden egyes képe 28 x 28 képpont, egy számot jelölő nine nulláról kézírásos számjegy. A cél, azonosíthatja a számokat a megadott lemezkép multiclass besorolás létrehozása jelöli. 
+Ebben az oktatóanyagban egy egyszerű logisztikai regressziós betanítja használatával a [MNIST](http://yann.lecun.com/exdb/mnist/) adatkészlet és [scikit-további](https://scikit-learn.org) Azure Machine Learning szolgáltatással. Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Minden egyes képe 28 x 28 képpont, egy számot jelölő nine nulláról kézírásos számjegy. A cél, azonosíthatja a számokat a megadott lemezkép multiclass besorolás létrehozása jelöli. 
 
 További információ a következő műveleteket:
 
