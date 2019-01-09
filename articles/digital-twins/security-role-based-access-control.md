@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: c1e48f6cb7ca4f26b8cafc31605bc9441ed047d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 94217deace731f6650db8003d2e1e3c6c63dcb66
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807601"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121022"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Szerepköralapú hozzáférés-vezérlés az Azure digitális Twins
 
@@ -83,4 +83,4 @@ Egy címzettnek engedélyeket, szerepkör-hozzárendelés létrehozása. Visszav
 
 ## <a name="next-steps"></a>További lépések
 
-További információk létrehozása és kezelése az Azure digitális Twins szerepkör-hozzárendeléseket, olvassa el [létrehozása és kezelése a szerepkör-hozzárendelések](./security-create-manage-role-assignments.md).
+- További információk létrehozása és kezelése az Azure digitális Twins szerepkör-hozzárendeléseket, olvassa el [létrehozása és kezelése a szerepkör-hozzárendelések](./security-create-manage-role-assignments.md).

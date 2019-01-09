@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: bb240437870ce5457e40e8dcc3b31f3909b546fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607132"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103366"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
 Az Azure diagnosztikai metrikák és naplók gyűjtésére felhőalapú szolgáltatások virtuális gépeken (VM) és az eredmények átvitele az Azure Storage rugalmas megoldásokat kínál. A 2016. március (SDK 2.9) időkereten belül kezdődően Diagnostics küldése az vlastní zdroje dat és adatátvitel gyakori elérésű útvonal másodpercek használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -316,7 +316,7 @@ namespace EventHubListener
     Először győződjön meg arról, hogy az event hubot és a konfigurációs adatok megfelelő, korábban leírtak. Egyes esetekben a **PrivateConfig** alaphelyzetbe áll egy központi telepítési frissítés. A javasolt javítás szükséges összes módosításokat egy *.wadcfgx* a projektet, majd leküldéses egy teljes alkalmazás frissítése. Ha ez nem lehetséges, győződjön meg róla, hogy a diagnosztikai frissítés teljes leküldések **PrivateConfig** , amely tartalmazza az SAS-kulcsot.  
 * Megpróbáltam a javaslatok, és az event hubs még mindig nem működik.
 
-    Nézzük meg az Azure Storage-táblába, maga az Azure diagnosztikai naplók és a hibákat tartalmazó: **WADDiagnosticInfrastructureLogsTable**. Az egyik lehetőség például egy eszközzel [Azure Storage Explorer](http://www.storageexplorer.com) csatlakozni ehhez a tárfiókhoz, tekintse meg ezt a táblázatot, és adjon hozzá egy lekérdezést az időbélyeg az elmúlt 24 órában. Az eszköz segítségével egy .csv-fájlba exportálni, és nyissa meg például a Microsoft Excel alkalmazásban. Az Excel megkönnyíti a keresendő karakterláncok kártya, például **EventHubs**, milyen hibaüzenet megtekintéséhez.  
+    Nézzük meg az Azure Storage-táblába, maga az Azure diagnosztikai naplók és a hibákat tartalmazó: **WADDiagnosticInfrastructureLogsTable**. Az egyik lehetőség például egy eszközzel [Azure Storage Explorer](https://www.storageexplorer.com) csatlakozni ehhez a tárfiókhoz, tekintse meg ezt a táblázatot, és adjon hozzá egy lekérdezést az időbélyeg az elmúlt 24 órában. Az eszköz segítségével egy .csv-fájlba exportálni, és nyissa meg például a Microsoft Excel alkalmazásban. Az Excel megkönnyíti a keresendő karakterláncok kártya, például **EventHubs**, milyen hibaüzenet megtekintéséhez.  
 
 ## <a name="next-steps"></a>További lépések
 • [További információ az Event Hubs](https://azure.microsoft.com/services/event-hubs/)
