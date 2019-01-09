@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 3239cbc957d2a79c7a5411604759f86f0268bd70
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976307"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103689"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -307,6 +307,7 @@ A `host` parancs csak szükséges verzió 1.x.
 | **`--password`** | A jelszó vagy egy fájlt, amely a jelszót a .pfx fájl tartalmazza. Csak a felhasznált `--cert`. Verzió csak 2.x. |
 | **`--port -p`** | A helyi port figyelésére. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | Mielőtt kilépne a folyamat szüneteltetéséhez további adatokat. Csak akkor, ha a Core Tools elindítása egy integrált fejlesztési környezetből (IDE) használja.|
+| **`--script-root --prefix`** | Itt adhatja meg, amely kell futtatni, vagy üzembe helyezett függvényalkalmazás a gyökér elérési útját. Ez szolgál, amely a projektfájlok almappáiba lefordított projektekhez. Például ha hoz létre egy C# osztálytár projektet, a host.json, local.settings.json és function.json fájlok jönnek létre a egy *legfelső szintű* elérési úttal rendelkező almappát, például `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben állítsa be az előtagja, mint `--script-root MyProject/bin/Debug/netstandard2.0`. Erre a függvényalkalmazás a gyökér, ha az Azure-ban. |
 | **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
 

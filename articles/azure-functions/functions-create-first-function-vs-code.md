@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce887c6d9e4e625d8fe08ee3acfc179cd903d187
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054061"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104522"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Az első függvény létrehozása a Visual Studio Code használatával
 
@@ -93,7 +93,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
     ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. A hibakeresés leállításához nyomja le a Shift + F1 billentyűkombinációt.
+1. A hibakeresés leállításához nyomja le a Shift + F5 billentyűkombinációt.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 

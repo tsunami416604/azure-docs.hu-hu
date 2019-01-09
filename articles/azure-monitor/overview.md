@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: bwren
-ms.openlocfilehash: f1125c9d0ce543984393c99d70d511a3a162041e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b499f6e1b05e42c7af71dedd81fd15bc7574b0aa
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975185"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118847"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -66,10 +66,10 @@ Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használat
 
 
 ## <a name="insights"></a>Insights
-Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számítási környezet a műveletet. Az Azure Monitor számos funkciókat és eszközöket, amelyek az alkalmazások és más erőforrások függenek ezek értékes betekintést nyújtson tartalmazza. [Figyelési megoldások](insights/solutions.md) és a szolgáltatások, például a [Application Insights](../application-insights/app-insights-overview.md) és Container Insights nyújt betekintést az alkalmazás és az adott Azure-szolgáltatások különböző aspektusait. 
+Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számítási környezet a műveletet. Az Azure Monitor számos funkciókat és eszközöket, amelyek az alkalmazások és más erőforrások függenek ezek értékes betekintést nyújtson tartalmazza. [Figyelési megoldások](insights/solutions.md) és a szolgáltatások, például a [Application Insights](../azure-monitor/app/app-insights-overview.md) és Container Insights nyújt betekintést az alkalmazás és az adott Azure-szolgáltatások különböző aspektusait. 
 
 ### <a name="application-insights"></a>Application Insights
-[Az Application Insights](../application-insights/app-insights-overview.md) figyeli a rendelkezésre állási, teljesítmény és a webalkalmazások használatának a felhőben vagy a helyszínen tárolva van-e. A hatékony elemzési platform az Azure monitorban nyújt betekintést az alkalmazás-műveletek és hibák diagnosztizálása egy felhasználó jelenti azokat várakozás nélkül a modul. Application Insights kapcsolódási pontok számos különböző fejlesztői eszközöket tartalmaz, és integrálja a Visual Studiót, DevOps-folyamataiba támogatásához.
+[Az Application Insights](../azure-monitor/app/app-insights-overview.md) figyeli a rendelkezésre állási, teljesítmény és a webalkalmazások használatának a felhőben vagy a helyszínen tárolva van-e. A hatékony elemzési platform az Azure monitorban nyújt betekintést az alkalmazás-műveletek és hibák diagnosztizálása egy felhasználó jelenti azokat várakozás nélkül a modul. Application Insights kapcsolódási pontok számos különböző fejlesztői eszközöket tartalmaz, és integrálja a Visual Studiót, DevOps-folyamataiba támogatásához.
 
 ![App Insights](media/overview/app-insights.png)
 

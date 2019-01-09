@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: d74f552395a80509c76adf70aef0581260126b49
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019697"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105846"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Adatok megőrzését egy prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Ez a cikk ismerteti egy prémium szintű Azure Cache Redis-példányt az adatmegőrzés konfigurálása.
@@ -130,7 +130,7 @@ Az RDB-fájlba való és a AOF megőrzése:
 
 * Ha méretezte egy nagyobb méretű, ez nincs hatással.
 * Ha méretezte egy kisebb méretű, és a egy egyéni rendelkezik [adatbázisok](cache-configure.md#databases) beállítás értéke nagyobb, mint a [adatbázisok korlát](cache-configure.md#databases) az új méret ezeket az adatbázisokat a adatainak visszaállítása nem. További információkért lásd: [saját egyéni adatbázisok méretezése során érintett beállítás?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Ha méretezte egy kisebb méretű, és nincs elég hely a kisebb méretű az utolsó biztonsági adatok tárolására, kulcsok ki lesz zárva a visszaállítás során, általában a [allkeys-lru](http://redis.io/topics/lru-cache) kiürítési szabályzatot.
+* Ha méretezte egy kisebb méretű, és nincs elég hely a kisebb méretű az utolsó biztonsági adatok tárolására, kulcsok ki lesz zárva a visszaállítás során, általában a [allkeys-lru](https://redis.io/topics/lru-cache) kiürítési szabályzatot.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Módosíthatom a RDB-fájlba való biztonsági mentés gyakoriságát, a gyorsítótár létrehozása után?
 Igen, módosíthatja a biztonsági mentés gyakorisága RDB-fájlba való megőrzésre a **Redis-adatmegőrzés** panelen. Útmutatásért lásd: [megőrzése a redis Cache](#configure-redis-persistence).

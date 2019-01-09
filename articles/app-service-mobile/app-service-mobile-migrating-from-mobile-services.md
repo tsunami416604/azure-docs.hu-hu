@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714321"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118992"
 ---
 # <a name="article-top"></a>A meglévő Azure Mobile Service migrálása az Azure App Service
 Az a [az Azure App Service általános elérhetősége], az Azure Mobile Services-webhelyek könnyen migrálhatók helyi kihasználásához az Azure App Service összes funkcióját.  Ez a dokumentum leírja, mi történik, ha telepítheti át webhelyét az Azure Mobile Services az Azure App Service-ben.
@@ -374,7 +374,7 @@ Most, hogy az alkalmazás az App Service szolgáltatásba való áttelepítése,
 
 <!-- Links -->
 [App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
-[Application Insights]: ../application-insights/app-insights-overview.md
+[Application Insights]: ../azure-monitor/app/app-insights-overview.md
 [Automatikus vertikális felskálázás]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/overview.md
 [Klasszikus Azure portál]: https://manage.windowsazure.com
