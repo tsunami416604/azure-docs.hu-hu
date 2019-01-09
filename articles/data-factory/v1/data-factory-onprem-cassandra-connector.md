@@ -1,4 +1,4 @@
----
+﻿---
 title: Adatok áthelyezése a Data Factory segítségével a Cassandra |} A Microsoft Docs
 description: Tudnivalók az adatok áthelyezése egy Azure Data Factory használatával a helyszíni Cassandra-adatbázisból.
 services: data-factory
@@ -21,7 +21,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54015644"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni Cassandra-adatbázis
-> [!div class="op_single_selector" title1="Seleziona la versione del servizio Data Factory che stai utilizzando:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-cassandra-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-cassandra.md)
 
