@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: ee76d71f89fb94c8c05c6a733dac241a9e4fa13c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: 790a8bfed693f03cdadd036cab17eb94dee1c1ed
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965138"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119291"
 ---
 # <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek.*
+*Vonatkozik: Az Azure Stackkel integrált rendszerek.*
 
 Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb. 
 
@@ -99,18 +99,18 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy ha minden para
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték | 
 | --- | --- | --- | 
-| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Szükséges_ | 
-| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat az Azure Stack üzembe helyezéséhez használt. | _Szükséges_ | 
-| **VMLocalCredential** |Az SQL-erőforrás-szolgáltató virtuális gép helyi rendszergazdai fiókjának hitelesítő adatait. | _Szükséges_ | 
-| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Szükséges_ | 
+| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Kötelező_ | 
+| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat az Azure Stack üzembe helyezéséhez használt. | _Kötelező_ | 
+| **VMLocalCredential** |Az SQL-erőforrás-szolgáltató virtuális gép helyi rendszergazdai fiókjának hitelesítő adatait. | _Kötelező_ | 
+| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Kötelező_ | 
 | **AzureEnvironment** | Az Azure-környezethez az Azure Stack üzembe helyezéséhez használt szolgáltatás-rendszergazdai fiókot. Kizárólag az Azure AD központi telepítések esetén szükséges. Támogatott környezeti nevek **AzureCloud**, **AzureUSGovernment**, vagy a China Azure AD-ben való használatakor **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) | 
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ | 
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Kötelező_ | 
 | **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 | 
 | **RetryDuration** | Az időkorlát között eltelő időt másodpercben mérve. | 120 | 
 | **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és az összes társított erőforrást (lásd az alábbi megjegyzések). | Nem | 
 | **DebugMode** | Megakadályozza, hogy hiba esetén az automatikus tisztítás. | Nem | 
-| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
  
 
 ## <a name="next-steps"></a>További lépések

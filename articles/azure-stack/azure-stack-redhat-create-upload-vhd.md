@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 932b4c80912fa516a08c18cd581f96b5ea91e1dc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 397f07c23d1c272e540741a339b57a8e1bcce198
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232307"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104012"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Red Hat-alapú virtuális gép előkészítése az Azure Stackhez
 
 Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép előkészítése az Azure Stack használata. Az RHEL, amely ebben a cikkben ismertetett verziói 7.1 +. Előkészítésekor a hipervizorok, amelyekre ez a cikk a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware rendszer.
 
-Red Hat Enterprise Linux-támogatás információkért tekintse meg a [Red Hat és az Azure Stack: gyakran ismételt kérdések](https://access.redhat.com/articles/3413531).
+Red Hat Enterprise Linux-támogatás információkért tekintse meg a [Red Hat és az Azure Stack: Gyakori kérdések](https://access.redhat.com/articles/3413531).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>A Hyper-V Manager Red Hat-alapú virtuális gép előkészítése
 
@@ -347,7 +347,7 @@ Ez a szakasz azt feltételezi, hogy már rendelkezik egy ISO-fájlt, a Red Hat-w
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Red Hat-alapú virtuális gép előkészítése a VMware-ből
 
-Ez a szakasz azt feltételezi, hogy már telepítve van egy RHEL virtuális gép VMware-ben. VMware-ben az operációs rendszer telepítésével kapcsolatos részletekért lásd: [VMware vendég operációs rendszer telepítési útmutató](http://partnerweb.vmware.com/GOSIG/home.html).
+Ez a szakasz azt feltételezi, hogy már telepítve van egy RHEL virtuális gép VMware-ben. VMware-ben az operációs rendszer telepítésével kapcsolatos részletekért lásd: [VMware vendég operációs rendszer telepítési útmutató](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * A Linux operációs rendszer telepítésekor azt javasoljuk, hogy standard partíciók helyett használ LVM, amelyek gyakran sok telepítés az alapértelmezett érték. LVM neve nem felel meg a klónozott virtuális gép, ezáltal elkerülhető, különösen, ha az operációsrendszer-lemez minden eddiginél kell hibaelhárítási egy másik virtuális géphez csatlakoztatható. LVM vagy RAID is használható adatlemezek beküldésére.
 * Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. Konfigurálhatja a Linux-ügynök az ideiglenes erőforrás lemezen a lapozófájl létrehozásához. További információ található a szükséges.

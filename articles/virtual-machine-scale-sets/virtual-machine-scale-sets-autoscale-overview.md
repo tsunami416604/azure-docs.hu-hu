@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322039"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117435"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési csoport automatikus méretezés áttekintése
 Egy Azure-beli virtuálisgép-méretezési csoportot automatikusan növelheti vagy csökkentheti az alkalmazást futtató Virtuálisgép-példányok számát. Az automatikus és rugalmas viselkedést csökkenti a kezelési megfigyelése és optimalizálása az alkalmazás teljesítményét. Létrehozhat szabályokat, amelyek meghatározzák az elfogadható teljesítményt egy pozitív felhasználói élmény. Teljesülnek a meghatározott küszöbértékeket, az automatikus skálázási szabályok beletelhet művelet a méretezési csoport kapacitásának módosításához. Események automatikusan növelhető vagy csökkenését, a méretezési készlet kapacitásának rögzített többször is ütemezheti. Ez a cikk áttekintést, amelyek metrikák érhetők el, és milyen műveletek automatikus méretezési funkciójával hajthat végre.
@@ -122,7 +122,7 @@ További információt az Azure diagnosztikai bővítmény [Linux virtuális gé
 ## <a name="application-level-metrics-with-app-insights"></a>Alkalmazás-szintű metrikákat az App insights segítségével
 Az alkalmazások teljesítményét, a további információhoz juthat, az Application Insights is használhatja. Telepít egy kis méretű kialakítási csomagot az alkalmazásban, amely figyeli az alkalmazást, és telemetriai adatokat küld az Azure-bA. Figyelheti a mérőszámokat, például az alkalmazás, a lapbetöltés teljesítménye, a válaszok gyorsaságát, és a munkamenetek számlálják. Alkalmazás metrikák az automatikus skálázási szabályok létrehozása a részletes és beágyazott szintjén indít el a gyakorlatban is használható, amely hatással lehet a felhasználói élmény szabályokat mivel használható.
 
-Az App Insights programmal kapcsolatos további információért lásd: [Mi az Application Insights?](../application-insights/app-insights-overview.md).
+Az App Insights programmal kapcsolatos további információért lásd: [Mi az Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 
 ## <a name="scheduled-autoscale"></a>Ütemezett automatikus méretezési funkció

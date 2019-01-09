@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 7184a5e1e9b41653cfe23aa863f8e4e4ea86c620
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409241"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104998"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](../../azure-monitor/platform/itsmc-overview.md).
@@ -222,9 +222,9 @@ Az alábbi eljárással hozhat létre egy ServiceNow-csatlakoztatás:
 | **Kapcsolat neve**   | Adja meg a servicenow összekapcsolása ITSMC kívánt nevét.  Ez a név később a Log Analytics használni, amikor az ITSM munkadarabok konfigurálása, / részletes a log analytics megtekintéséhez. |
 | **Partner típusa**   | Válassza ki **ServiceNow**. |
 | **Felhasználónév**   | Írja be a integrációs felhasználónevet, a ServiceNow alkalmazás ITSMC kapcsolat támogatásához létrehozott. További információ: [A ServiceNow alkalmazás felhasználói szerepkör létrehozása](#create-integration-user-role-in-servicenow-app).|
-| **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés:**: Felhasználónév és jelszó csak a hitelesítési tokenek létrehozásához használhatók, és nem tárolja el bárhol a ITSMC szolgáltatás.  |
+| **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés**: Felhasználónév és jelszó csak a hitelesítési tokenek létrehozásához használhatók, és nem tárolja el bárhol a ITSMC szolgáltatás.  |
 | **Kiszolgáló URL-címe**   | Írja be az URL-címét, amelyhez csatlakozni kíván ITSMC ServiceNow-példány. |
-| **Ügyfél-azonosító**   | Írja be az OAuth2-hitelesítéshez, amely a korábban létrehozott használni kívánt ügyfél-azonosító.  További információ az ügyfél-azonosító és titkos kulcs létrehozásához:   [OAuth telepítését](http://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+| **Ügyfél-azonosító**   | Írja be az OAuth2-hitelesítéshez, amely a korábban létrehozott használni kívánt ügyfél-azonosító.  További információ az ügyfél-azonosító és titkos kulcs létrehozásához:   [OAuth telepítését](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Titkos Ügyfélkód**   | Írja be a titkos ügyfélkulcsot, jön létre a azonosítóval.   |
 | **Adatszinkronizálás hatóköre**   | Válassza ki a ServiceNow-munkaelemek szinkronizálása az Azure Log Analyticshez a ITSMC keresztül kívánt.  A kiválasztott értékek is importálja a log analytics.   **Beállítások:**  Incidensek és Változáskérések.|
 | **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |

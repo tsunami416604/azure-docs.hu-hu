@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: 443a697a576aa26fe352d8ad47d9e61214c3fcf3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024110"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119968"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Több-bérlős alkalmazásokban az Azure digitális Twins engedélyezése
 
@@ -41,7 +41,7 @@ Ebben az esetben fontolja meg a fejlesztők az Azure digitális Twins megoldás 
 A problémát:
 
 - Amikor **ügyfél** bejelentkezik **fejlesztői**az alkalmazást, az alkalmazás nem tudta beolvasni a tokenek számára **ügyfél**a felhasználóknak a hitelesítést az Azure digitális Twins felügyeleti API-kkal.
-- Kivétel adják ki az Azure Active Directoryban jelzi, hogy az Azure digitális Twins belül nem felismert **ügyfél**a könyvtárban.
+- Kivétel jelenik meg az Azure Active Directoryban jelzi, hogy az Azure digitális Twins belül nem felismert **ügyfél**a könyvtárban.
 
 ## <a name="problem-solution"></a>A probléma megoldáshoz
 

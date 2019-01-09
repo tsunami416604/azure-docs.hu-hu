@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: 45c06afd0d298c467d8f0a3a42b68bf1948c6ed3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726746"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106290"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Az Azure Monitor az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Ez a cikk az Azure Stack az Azure Monitor szolgáltatás áttekintése. A művelet az Azure monitor és a további információk az Azure Monitor használata az Azure Stack tárgyalja. 
 
@@ -126,7 +126,7 @@ Néhány vizualizációs módszer:
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Platformfüggetlen parancssori Interface(CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
- - [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+ - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>További lépések
 

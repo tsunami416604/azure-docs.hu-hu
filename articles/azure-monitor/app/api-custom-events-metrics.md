@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: bbb849b19d523c315e192110ce71c4f382e04657
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: aac5010ca6b0ed958a849bf203f1d2f80bcdb81c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077912"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119822"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
-Helyezze be néhány sornyi kóddal az alkalmazásban, ismerje meg, milyen felhasználók általi használatát, vagy a problémák diagnosztizálásához. Eszköz- és asztali alkalmazások, a webes ügyfelektől és a webkiszolgálók telemetriai adatokat küldhet. Használja a [Azure Application Insights](../../application-insights/app-insights-overview.md) core API-t telemetria küldése egyéni események és metrikák és a saját normál telemetriai verziói. Az API-t az azonos API a standard Application Insights-adatgyűjtők használó.
+Helyezze be néhány sornyi kóddal az alkalmazásban, ismerje meg, milyen felhasználók általi használatát, vagy a problémák diagnosztizálásához. Eszköz- és asztali alkalmazások, a webes ügyfelektől és a webkiszolgálók telemetriai adatokat küldhet. Használja a [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) core API-t telemetria küldése egyéni események és metrikák és a saját normál telemetriai verziói. Az API-t az azonos API a standard Application Insights-adatgyűjtők használó.
 
 > [!NOTE]
 > `TrackMetric()` már nem az előnyben részesített módja a .NET-keretrendszerhez készült egyéni mérőszámok küldése-alapú alkalmazások. A [2.60 – beta 3-as verziójú](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) , az Application Insights .NET SDK egy új módszer [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) jelent meg. Az Application Insights .NET SDK-tól [verzió 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) ezt a funkciót már stabil kiadásában.

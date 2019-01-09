@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a3a4039e8b9c372212655718a40a57fedcfa188d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075787"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117265"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -34,7 +34,7 @@ Ahhoz, hogy kapjon observability környezete egészében, a webes alkalmazások 
 - [Az Azure DevOps Projects](../devops-project/overview.md) biztosítanak a meglévő kódot és a Git-tárház egy egyszerűsített élményt, vagy létrehoz egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-bA mintaalkalmazásból közül választhat.
 - [Folyamatos figyelés a DevOps-kiadási folyamatok](../azure-monitor/app/continuous-monitoring.md) lehetővé teszi, hogy kapu vagy visszaállítani az üzembe helyezett szolgáltatáspéldányt a figyelési adatok.
 - [Az állapotfigyelő](../azure-monitor/app/monitor-performance-live-website-now.md) lehetővé teszi, hogy a Windows az Azure Application Insights élő .NET-alkalmazás kialakítása módosítása vagy a kód ismételt telepítése nélkül.
-- Ha az alkalmazás rendelkezik hozzáféréssel a kódot, majd engedélyezze a teljes körű figyelési [Application Insights](../application-insights/app-insights-overview.md) az Azure Monitor készült Application Insights SDK telepítésével [.NET](../azure-monitor/learn/quick-monitor-portal.md), [Java ](../azure-monitor/learn/java-quick-start.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md), vagy [bármely más programnyelv](../azure-monitor/app/platforms.md). Ez lehetővé teszi, hogy adja meg az egyéni eseményeket, metrikákat vagy lapmegtekintés, amely az alkalmazás és a cége a.
+- Ha az alkalmazás rendelkezik hozzáféréssel a kódot, majd engedélyezze a teljes körű figyelési [Application Insights](../azure-monitor/app/app-insights-overview.md) az Azure Monitor készült Application Insights SDK telepítésével [.NET](../azure-monitor/learn/quick-monitor-portal.md), [Java ](../azure-monitor/learn/java-quick-start.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md), vagy [bármely más programnyelv](../azure-monitor/app/platforms.md). Ez lehetővé teszi, hogy adja meg az egyéni eseményeket, metrikákat vagy lapmegtekintés, amely az alkalmazás és a cége a.
 
 
 
@@ -85,7 +85,7 @@ Arról, hogy a fejlesztési és operatív rendelkezik-e a hozzáférést ugyanaz
 ## <a name="continuously-optimize"></a>Folyamatos optimalizálást végezhet
  Figyelés az egyik Összefoglalásul népszerű Build mérték további filozófia, amely javasolja folyamatosan nyomon követheti a KPI-k és a felhasználói viselkedés mérőszámok, és ezután mindent megtesz tervezési ismétlések segítségével optimalizálja őket. Az Azure Monitor segítséget nyújt a metrikák és a megfelelő, az üzleti és szükség szerint a következő központi telepítésben lévő új adatpontok hozzáadása naplóinak összegyűjtésére.
 
-- Az Application Insights eszközzel [nyomon követheti a végfelhasználói viselkedés és engagement](../application-insights/app-insights-tutorial-users.md).
+- Az Application Insights eszközzel [nyomon követheti a végfelhasználói viselkedés és engagement](../azure-monitor/learn/tutorial-users.md).
 - Használat [hatáselemzés](../azure-monitor/app/usage-impact.md) segítséget rangsorolhatja mely területek kiemelten fontos KPI-k meghajtót be.
 
 

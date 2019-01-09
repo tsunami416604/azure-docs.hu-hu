@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b9997fb1fe86d8ffdb67e74fc053773997fb113
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 6a3a15e8b80983a8df29dd6fe8d13b94c1d3c3a1
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816480"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118915"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon
+# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: Windowsos virtuális gép létrehozása az Azure Portalon
 
 Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek és a társított erőforrások létrehozásához. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure Portal segítségével Windows Server 2016 rendszerű virtuális gépeket (VM-eket) az Azure-ban. A virtuális gép működésének ellenőrzéséhez ezután RDP-kapcsolaton keresztül csatlakozzon a géphez, és telepítse az IIS-webkiszolgálót.
 
@@ -39,7 +39,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. Az Azure Marketplace-erőforrások fölött lévő keresési mezőben keressen a **Windows Server 2016 Datacenter** elemre, és válassza ki, majd válassza a **Létrehozás** lehetőséget.
 
-1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Nevezze el így: *myResourceGroup*. 
+1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Típus *myResourceGroup* neve. 
 
     ![Új erőforráscsoport létrehozása virtuális géphez](./media/quick-create-portal/project-details.png)
 

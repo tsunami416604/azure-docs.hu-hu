@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 08ad8964fee2d94677832fa664ed2e18cb9f772c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551448"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104981"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -83,7 +83,7 @@ Diagnosztikai naplók gyűjtésének engedélyezhető [erőforrás létrehozása
 
 Erőforrás létrehozása vagy egy adott erőforrás zárolását, vagy az Azure Monitor után gyűjteménye, erőforrás-diagnosztikai naplók az Azure Portalon engedélyezheti. Ennek engedélyezéséhez az Azure Monitor-n keresztül:
 
-1. Az a [az Azure portal](http://portal.azure.com), keresse meg az Azure Monitor, majd kattintson a **diagnosztikai beállítások**
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg az Azure Monitor, majd kattintson a **diagnosztikai beállítások**
 
     ![Az Azure Monitor figyelési szakasza](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 

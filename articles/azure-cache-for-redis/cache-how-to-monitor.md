@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b6264d47c7627d72b8746c79e7e050fd468171de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582711"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105117"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>A Redis Azure Cache figyelése
 Az Azure Cache Redis felhasználásra [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biztosít a cache-példány figyelése számos lehetőség közül választhat. Meg is metrikákat tekinthet meg, rögzítheti a kezdőpulton mérőszámdiagramok, testre szabhatja a dátum- és időtartományt figyelési diagramok, hozzáadása és metrikák eltávolítása a diagramok és riasztásokat állíthat be adott feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure Cache Redis-példány és a gyorsítótárazás alkalmazások kezeléséhez segítségért állapotának monitorozásához.
 
-A Redis-példány az Azure Cache metrikákat gyűjt a Redis használatával [INFO](http://redis.io/commands/info) parancs körülbelül kétszer / perces, és automatikusan tárolt 30 napig (lásd: [gyorsítótár-metrikák exportálása](#export-cache-metrics) konfigurálása egy a különböző megőrzési házirend) ahhoz, hogy a mérőszámdiagramok jelenik meg, illetve riasztási szabályok szerint értékeli ki. Minden egyes gyorsítótár metrika használt különböző INFO értékek kapcsolatos további információkért lásd: [rendelkezésre álló metrikák és a jelentéskészítés időközök](#available-metrics-and-reporting-intervals).
+A Redis-példány az Azure Cache metrikákat gyűjt a Redis használatával [INFO](https://redis.io/commands/info) parancs körülbelül kétszer / perces, és automatikusan tárolt 30 napig (lásd: [gyorsítótár-metrikák exportálása](#export-cache-metrics) konfigurálása egy a különböző megőrzési házirend) ahhoz, hogy a mérőszámdiagramok jelenik meg, illetve riasztási szabályok szerint értékeli ki. Minden egyes gyorsítótár metrika használt különböző INFO értékek kapcsolatos további információkért lásd: [rendelkezésre álló metrikák és a jelentéskészítés időközök](#available-metrics-and-reporting-intervals).
 
 <a name="view-cache-metrics"></a>
 
@@ -98,7 +98,7 @@ Mindegyik metrikát két verzióját tartalmazza. Egy metrika méri a teljesítm
 
 | Metrika | Leírás |
 | --- | --- |
-| Gyorsítótárbeli találatok |A megadott jelentési időszak során sikeres kulcs keresések száma. Ez leképezhető `keyspace_hits` a redis [INFO](http://redis.io/commands/info) parancsot. |
+| Gyorsítótárbeli találatok |A megadott jelentési időszak során sikeres kulcs keresések száma. Ez leképezhető `keyspace_hits` a redis [INFO](https://redis.io/commands/info) parancsot. |
 | Gyorsítótár késés (előzetes verzió) | A késés, a gyorsítótár ki a csomópontok késés, a gyorsítótár alapján számítja ki. Ez a metrika mikroszekundumban mérik, és három dimenziója van: "Átlagos", "Minimum" és "Max", amelyek a gyorsítótár átlagos, minimális és maximális késés rendre tartalmazzák a megadott jelentési időszak során. |
 | Gyorsítótárbeli tévesztések |A megadott jelentési időszak során sikertelen kulcs keresések száma. Ez leképezhető `keyspace_misses` a Redis INFO parancsát. Gyorsítótárbeli nem jelenti a gyorsítótár probléma van. Például a programozási gyorsítótár-feltöltési minta használatával, egy alkalmazás jelenik meg először egy elemet a gyorsítótárban. Ha az elem nem létezik (gyorsítótár-tévesztés), a cikk az adatbázisból lekért és a következő alkalomra hozzáadja a gyorsítótárhoz. Gyorsítótárbeli a programozási gyorsítótár-feltöltési minta normál viselkedése. Ha a gyorsítótár-tévesztések száma a vártnál magasabb, vizsgálja meg az alkalmazás logikáját, és beolvassa a gyorsítótárból tölti fel. Ha elemek ürülnek folyamatban van a gyorsítótár memóriaigény miatti kiürítése, majd előfordulhat, hogy néhány gyorsítótárbeli, de figyeli, hogy a rendelkezésre álló memória mennyisége jobb metrikát lenne `Used Memory` vagy `Evicted Keys`. |
 | Gyorsítótár-olvasás |Adatok mennyisége (MB) a gyorsítótár / másodperc (MB/s) a megadott jelentési időszak során olvasni. Ez az érték a hálózati kártyák, amelyek támogatják a virtuális gép, amely üzemelteti a gyorsítótárban, és nem adott Redis származik. **Ez az érték megfelel a gyorsítótár által használt hálózati sávszélesség. Ha szeretné a kiszolgálóoldali hálózati sávszélesség korlátja riasztásokat állíthat be, majd hozza létre ezt a `Cache Read` számlálót. Lásd: [Ez a táblázat](cache-faq.md#cache-performance) tarifacsomagok és méretek különböző gyorsítótár megfigyelt sávszélesség korlátait.** |

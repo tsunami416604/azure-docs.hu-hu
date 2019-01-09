@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: c55a80749506b0a03af2f8c5f0179b67c8a78d15
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016742"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106824"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista kapcsolatban
@@ -47,6 +47,7 @@ WSDL-fájlt a SOAP átmenő API-k készítése vagy folyamatában SOAP – REST 
 * **A WCF wsHttpBinding** -SOAP-szolgáltatások a Windows Communication Foundation létrehozott használjon basicHttpBinding – wsHttpBinding nem támogatott.
 * **Zprávy MTOM** – zprávy MTOM használó szolgáltatások <em>előfordulhat, hogy</em> működik. Hivatalos támogatási jelenleg nem érhető el.
 * **Rekurze** -típusokat, amelyek meghatározott rekurzív módon (például lásd tömbjét magukat) APIM által nem támogatott.
+* **Több névteret** – több névteret sémát is használható, de csak a célnévtér részeket meghatározására használható. Más bemeneti vagy kimeneti elemek definiálják, amely eltérő a céltól névterek nem maradnak meg. Bár az ilyen a WSDL-dokumentum importálhatók, az exportálás minden üzenet részére lesz a WSDL célnévtér.
 
 ## <a name="wadl"> </a>WADL
 Jelenleg nincsenek nem WADL-importálási ismert problémák.

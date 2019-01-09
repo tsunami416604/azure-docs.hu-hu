@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 06a9cf124708984444bc2bc19f2529a3c0f75283
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4115ec5add9ac523852b4c60c4f9d750bc430a37
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074359"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121447"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insights a HockeyApp-adatok feltárása
 
 > [!NOTE]
 > Új alkalmazások hockeyapp szolgáltatással már nem érhető el. HockeyApp meglévő telepítések továbbra is működni fog. A Visual Studio App Center mostantól a Microsoft ajánlott szolgáltatása új mobile Apps-alkalmazások figyelésére. [Ismerje meg, hogyan állítható be az alkalmazásokat az App Center és az Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
-[A HockeyApp](https://azure.microsoft.com/services/hockeyapp/) egy szolgáltatás élő asztali és mobil alkalmazások figyelésére. A HockeyApp-küldhet egyéni és nyomkövetési telemetriai használat monitorozása és diagnosztizálása (mellett összeomlási adatok beolvasása) segítik. Ez az adatfolyam telemetria kérdezhetők a nagy teljesítményű [Analytics](../../azure-monitor/app/analytics.md) funkcióját [Azure Application Insights](../../application-insights/app-insights-overview.md). Emellett akkor is [exportálja az egyéni és nyomkövetési telemetriai](export-telemetry.md). Ahhoz, hogy ezeket a funkciókat, beállíthatja, hogy az Application Insights a HockeyApp egyéni adatokat közvetítenek hidat.
+[A HockeyApp](https://azure.microsoft.com/services/hockeyapp/) egy szolgáltatás élő asztali és mobil alkalmazások figyelésére. A HockeyApp-küldhet egyéni és nyomkövetési telemetriai használat monitorozása és diagnosztizálása (mellett összeomlási adatok beolvasása) segítik. Ez az adatfolyam telemetria kérdezhetők a nagy teljesítményű [Analytics](../../azure-monitor/app/analytics.md) funkcióját [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Emellett akkor is [exportálja az egyéni és nyomkövetési telemetriai](export-telemetry.md). Ahhoz, hogy ezeket a funkciókat, beállíthatja, hogy az Application Insights a HockeyApp egyéni adatokat közvetítenek hidat.
 
 ## <a name="the-hockeyapp-bridge-app"></a>A HockeyApp Bridge alkalmazás
 A HockeyApp Bridge alkalmazás funkciója a core, az egyéni HockeyApp és az Application Insights – híváslánc-telemetria hozzáférhet az elemzési és a folyamatos exportálás funkciók révén. A HockeyApp Bridge alkalmazás létrehozása után a HockeyApp által gyűjtött nyomkövetési és egyéni események ezeket a funkciókat elérhető lesz. Nézzük meg, hogyan állítható be egy híd alkalmazásokat.

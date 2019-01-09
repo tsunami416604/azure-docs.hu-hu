@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: ebb8d5d141dab39e73297342907d4439b30a9fbf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042478"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107429"
 ---
 # <a name="about-azure-vm-backup"></a>Azure virtuális gépek biztonsági mentéséről
 
@@ -30,7 +30,7 @@ Itt látható, hogyan Azure Backup befejeződött a biztonsági mentés az Azure
     - A bővítmény telepítve van a virtuális gép első biztonsági mentés során.
     - A bővítmény telepítéséhez a virtuális Gépen kell futnia.
     - Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
-4. A biztonsági mentési bővítményt a tárolási szint, az alkalmazáskonzisztens pillanatkép vesz igénybe.
+4. A biztonsági mentési bővítményt pillanatképet tárolási szintű összeomlási konzisztens/fájlkonzisztens.
 5. A pillanatkép elkészítésének után az adatok átkerülnek a tárolóba. Maximális hatékonyság érdekében a szolgáltatás azonosítja és továbbítja, amelyek az előző (különbözeti) biztonsági mentés óta változtak csak azokat az adatblokkokat.
 5. Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, és létrehoz egy helyreállítási pontot.
 

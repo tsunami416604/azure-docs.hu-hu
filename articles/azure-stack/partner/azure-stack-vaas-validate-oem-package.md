@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e3b0de577186cb7eb032a2042d234a0ffa2e3bb9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261802"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105543"
 ---
 # <a name="validate-oem-packages"></a>OEM-csomagok érvényesítése
 
@@ -56,7 +56,7 @@ Hozzon létre egy tárolót a storage-fiókban csomag blobok számára. Ez a tá
 
 Amikor létrehozza a **csomag** munkafolyamat a VaaS portálon, meg kell adnia a csomagot tartalmazó Azure Storage blob URL-címe.
 
-#### <a name="option-1-generating-an-account-sas-url"></a>1. lehetőség: A fiók SAS URL-cím generálása
+#### <a name="option-1-generating-an-account-sas-url"></a>1. lehetőség: Egy fiók SAS URL-cím generálása
 
 1. Az a [az Azure portal](https://portal.azure.com/)nyissa meg a tárfiók, és keresse meg a .zip a csomagot tartalmazó
 
@@ -70,7 +70,7 @@ Amikor létrehozza a **csomag** munkafolyamat a VaaS portálon, meg kell adnia a
 
 Használja **a Blob SAS URL-cím** mikor indítása egy új **csomag** munkafolyamat a VaaS portálon.
 
-#### <a name="option-2-using-public-read-container"></a>2. lehetőség: A nyilvános olvasási tároló használatával
+#### <a name="option-2-using-public-read-container"></a>2. lehetőség: Nyilvános olvasási tároló használatával
 
 > [!CAUTION]
 > Ezzel a beállítással megnyílik a névtelen olvasási hozzáférés a tároló.
@@ -113,9 +113,23 @@ Használja **a Blob SAS URL-cím** mikor indítása egy új **csomag** munkafoly
 
 ## <a name="run-package-validation-tests"></a>Csomag Érvényesítési tesztek futtatásához
 
-Az a **ellenőrző tesztek összefoglaló csomag** lapon látni fogja a szükséges érvényesítési teszteket listáját. A munkafolyamat-futtatási körülbelül 24 órán keresztül tesztjét.
+1. Az a **csomag Érvényesítési tesztek összefoglalása** lapon látni fogja a szükséges érvényesítési teszteket listáját. A munkafolyamat-futtatási körülbelül 24 órán keresztül tesztjét.
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+    Az érvényesítés munkafolyamatokban **ütemezés** egy tesztet a munkafolyamat-szintű gyakori paramétereket, a munkafolyamat létrehozása során megadott használja (lásd: [az Azure Stack érvényesítésiszolgáltatásáltalánosmunkafolyamat-paraméterek](azure-stack-vaas-parameters.md)). Ha bármelyik teszt paraméterértékek érvénytelenné válik, meg kell resupply őket a utasításai [munkafolyamat-paraméterek módosítása](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+
+    > [!NOTE]
+    > Teszt ütemezés egy meglévő példányát keresztül fog létrehozni a régi példány helyett egy új példányt a portálon. A régi példány naplók megőrzi a rendszer, de nem érhetők el a portálon.  
+    Egy teszt sikeres végrehajtása után a **ütemezés** művelet le lesz tiltva.
+
+2. Válassza ki az ügynök, amely a teszt fog futni. Információ hozzáadása helyi végrehajtási tesztügynökök, lásd: [üzembe helyezése a helyi ügynök](azure-stack-vaas-local-agent.md).
+
+3. A következő ellenőrzés mindegyike esetében lépés négy és az öt:
+    - OEM-bővítmény csomag ellenőrzése
+    - Felhőbeli szimuláció motor
+
+4. Válassza ki **ütemezés** nyissa meg a tevékenységütemezést a test-példány ehhez a helyi menüből.
+
+5. Tekintse át a teszt paramétereket, majd **küldés** ütemezni a teszt végrehajtásához.
 
 Az összes teszt sikeresen befejeződött, küldése nevét a VaaS megoldás és a csomag érvényességi [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) lekérni a csomag aláírása.
 

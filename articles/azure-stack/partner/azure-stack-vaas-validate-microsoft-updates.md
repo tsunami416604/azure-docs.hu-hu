@@ -10,21 +10,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8e0009bf0fc34d3e0d22755d93d941b85db62ffd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c90b81cdb6df5477d658d53dc93d0c3bbc47c1ff
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334465"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106443"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>A Microsoft szoftverfrissítések ellenőrzése
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-A Microsoft rendszeresen frissítéseket az Azure Stack szoftver. Ezek a frissítések állnak rendelkezésre az Azure Stack közös mérnöki partnerek előtt kerül sor nyilvánosan elérhető, így azok elleni megoldásaikat a frissítések ellenőrzése és visszajelzés küldése a Microsoftnak.
+A Microsoft rendszeresen frissítéseket az Azure Stack szoftver. Ezek a frissítések állnak rendelkezésre az Azure Stack coengineering partnerek. A nyilvánosan elérhető előzetes frissítésekkel. A frissítések keresése a megoldás szemben, és visszajelzést a Microsoftnak.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
@@ -34,11 +34,15 @@ A Microsoft rendszeresen frissítéseket az Azure Stack szoftver. Ezek a frissí
 
 ## <a name="create-a-workflow"></a>Munkafolyamat létrehozása
 
-Frissítés-ellenőrzések használja ugyanabban a munkafolyamatban, **csomag**. Kövesse az utasításokat, [csomag érvényesítése munkafolyamat létrehozása](azure-stack-vaas-validate-oem-package.md#create-a-package-validation-workflow).
+Frissítés-ellenőrzések használja ugyanabban a munkafolyamatban, **megoldás érvényesítési**.
 
 ## <a name="run-tests"></a>Tesztek futtatása
 
-Frissítés-ellenőrzések használja ugyanabban a munkafolyamatban, **csomag**. Kövesse az utasításokat, [hajtsa végre a csomag Érvényesítési tesztek](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests).
+1. Frissítés-ellenőrzések használja ugyanabban a munkafolyamatban, **megoldás érvényesítési**. 
+
+2. Kövesse az utasításokat, [futtatása megoldás Érvényesítési tesztek](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). Ehelyett válassza ki a következő ellenőrzés:
+    - Az Azure Stack havi frissítés-ellenőrzés
+    - Felhőbeli szimuláció motor
 
 Nem kell igényelnie a csomag aláírása a frissítés-ellenőrzések.
 

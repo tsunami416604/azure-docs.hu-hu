@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 85541d649a0b2720e3d33b98cea7883b3725f609
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025147"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120665"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetria adatmodell
 
-[Az Azure Application Insights](../../application-insights/app-insights-overview.md) telemetriai adatokat küld a webalkalmazásból az Azure Portalra, így elemezheti a teljesítményét és használatát az alkalmazás. A telemetriai adatok modell szabványosított, hogy lehet létrehozni a platform és a figyelés nyelvtől független legyen. 
+[Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetriai adatokat küld a webalkalmazásból az Azure Portalra, így elemezheti a teljesítményét és használatát az alkalmazás. A telemetriai adatok modell szabványosított, hogy lehet létrehozni a platform és a figyelés nyelvtől független legyen. 
 
 Az Application Insights által gyűjtött adatokat a jellemző végrehajtási alkalmazásminta modellek:
 

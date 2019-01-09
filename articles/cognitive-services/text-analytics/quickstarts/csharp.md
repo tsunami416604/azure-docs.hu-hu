@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 4b772d4251ec2017a4ff0d4abfa3f54b58e9bebe
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/02/2019
+ms.author: assafi
+ms.openlocfilehash: 7c26117c9c36b3004df0d85b1a739fcebd9a1e4e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050370"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119407"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Használatával C# a Text Analytics kognitív szolgáltatás hívásához
 <a name="HOLTop"></a>
@@ -28,15 +28,15 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
+A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell.
 
 
-## <a name="install-the-nuget-sdk-package"></a>A NuGet SDK csomag telepítése
+## <a name="install-the-nuget-sdk-package"></a>Az NuGet SDK-csomag telepítése
 1. Hozzon létre egy új konzolmegoldást a Visual Studióban.
 1. Kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) parancsra.
 1. Jelölje be az **Include Prerelease** (Előzetes verzió is) jelölőnégyzetet.
 1. Válassza ki a **Browse** (Tallózás) lapot, majd keressen rá a **Microsoft.Azure.CognitiveServices.Language.TextAnalytics** szövegre.
-1. Válassza ki a Nuget-csomagot, és telepítse.
+1. Válassza ki a NuGet-csomagot, és telepítse.
 
 > [!Tip]
 >  Bár a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül C#-ból is meg lehet hívni, a Microsoft.Azure.CognitiveServices.Language SDK jelentősen megkönnyíti a szolgáltatás meghívását, mivel nem kell a JSON szerializálásával és deszerializálásával foglalkozni.
@@ -47,9 +47,9 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
 
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>A Text Analytics API meghívása az SDK használatával
-1. Cserélje le a Program.cs fájl tartalmát az alábbi kódra. A program három szakaszban (nyelv kinyerése, kulcskifejezések kinyerése és hangulatelemzés) mutatja be a Text Analytics API képességeit.
+1. Cserélje le a Program.cs fájl tartalmát az alábbi kódra. Ez a program a szövegelemzési API három szakaszra (nyelv kinyerés, kulcs-kifejezések kinyerése és hangulatelemzés) képességeit mutatja be.
 1. Az `Ocp-Apim-Subscription-Key` fejléc értékét cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-1. Cserélje le az `Endpoint` helyét a regisztrált végpontra. A végpontot az Azure Portal-erőforrásban találja. A végpont jellemzően így kezdődik: https://[régió].api.cognitive.microsoft.com. Kérjük, hogy csak a protokollt és a gazdanevet foglalja bele.
+1. Cserélje le az `Endpoint` helyét a regisztrált végpontra. A végpontot Azure-portál erőforrás található. A végpont általában "https://[region].api.cognitive.microsoft.com" előtaggal kezdődik, és itt csak tartalmazza a protokollt és az állomásnév.
 1. Futtassa a programot.
 
 ```csharp
@@ -68,13 +68,14 @@ namespace ConsoleApp1
     {
         /// <summary>
         /// Container for subscription credentials. Make sure to enter your valid key.
-        static string subscriptionKey = ""; //Insert your Text Anaytics subscription key
+        private const string SubscriptionKey = ""; //Insert your Text Anaytics subscription key
+
         /// </summary>
         class ApiKeyServiceClientCredentials : ServiceClientCredentials
         {
             public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                request.Headers.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
                 return base.ProcessHttpRequestAsync(request, cancellationToken);
             }
         }
@@ -104,7 +105,7 @@ namespace ConsoleApp1
             // Printing language results.
             foreach (var document in result.Documents)
             {
-                Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
+                Console.WriteLine($"Document ID: {document.Id} , Language: {document.DetectedLanguages[0].Name}");
             }
 
             // Getting key-phrases
@@ -122,13 +123,13 @@ namespace ConsoleApp1
             // Printing keyphrases
             foreach (var document in result2.Documents)
             {
-                Console.WriteLine("Document ID: {0} ", document.Id);
+                Console.WriteLine($"Document ID: {document.Id} ");
 
                 Console.WriteLine("\t Key phrases:");
 
                 foreach (string keyphrase in document.KeyPhrases)
                 {
-                    Console.WriteLine("\t\t" + keyphrase);
+                    Console.WriteLine($"\t\t{keyphrase}");
                 }
             }
 
@@ -149,7 +150,7 @@ namespace ConsoleApp1
             // Printing sentiment results
             foreach (var document in result3.Documents)
             {
-                Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
+                Console.WriteLine($"Document ID: {document.Id} , Sentiment Score: {document.Score:0.00}");
             }
 
 
@@ -166,13 +167,13 @@ namespace ConsoleApp1
             // Printing entities results
             foreach (var document in result4.Documents)
             {
-                Console.WriteLine("Document ID: {0} ", document.Id);
+                Console.WriteLine($"Document ID: {document.Id} ");
 
                 Console.WriteLine("\t Entities:");
 
                 foreach (EntityRecordV2dot1 entity in document.Entities)
                 {
-                    Console.WriteLine("\t\t" + entity.Name);
+                    Console.WriteLine($"\t\t{entity.Name}\t\t{entity.WikipediaUrl}\t\t{entity.Type}\t\t{entity.SubType}");
                 }
             }
 
@@ -187,8 +188,7 @@ namespace ConsoleApp1
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
- [A Text Analytics áttekintése](../overview.md)  
- [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
+ [Text Analytics áttekintése](../overview.md) [– gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
 

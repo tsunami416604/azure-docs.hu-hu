@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 79d78faa53962ea72178281d75cef3c2f61320b1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a3703133e5dc5f0525638562fab98f9416bcf26e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971504"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104658"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató hozzáadása az AD FS által védett kapcsolat nélküli Azure Stack-környezet
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]
 > Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt.
@@ -88,7 +88,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     >
     
     3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
-    4. Kattintson a **Tovább** gombra.
+    4. Kattintson a **tovább**.
 
     ![Az App Service-telepítő][4]
 
@@ -116,7 +116,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     2. Az a **identitás alkalmazástanúsítvány-fájlja** mezőben adja meg (vagy keresse meg a) a tanúsítvány-fájl helyét.
     3. Az a **identitás alkalmazástanúsítványának jelszava** mezőbe írja be a jelszót a tanúsítványhoz. Ez a jelszó pedig végzett jegyezze fel, ha a parancsfájl a tanúsítványok létrehozásához használt.
     4. Az a **Azure Resource Manager-főtanúsítványfájl** mezőben adja meg (vagy keresse meg a) a tanúsítvány-fájl helyét.
-    5. Kattintson a **Tovább** gombra.
+    5. Kattintson a **tovább**.
 
     ![Az App Service-telepítő][10]
 
@@ -171,12 +171,12 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     > [!NOTE]
     > **A Windows Server 2016 Core nem támogatott platform rendszerképe az Azure App Service az Azure Stacken használható.  Ne használjon értékelési rendszerképek éles környezetekben üzemelő példányok.  Az Azure App Service az Azure Stacken szükséges, hogy az 3.5.1 SP1 Microsoft.Net aktiválva van-e a központi telepítéshez használt lemezkép.   Hírcsatorna-piactéren a Windows Server 2016 lemezképek nem rendelkezik a szolgáltatás nincs engedélyezve, ezért kell létrehozni, és a Windows Server 2016-rendszerkép használata az előre engedélyezett.**
 
-14. Az a **Platformlemezkép kiválasztása** válassza ki a központi telepítés a Windows Server 2016 virtuális gép rendszerképének azoktól, akik az App Service-felhő számítási erőforrás-szolgáltató érhető el. Kattintson a **Tovább** gombra.
+14. Az a **Platformlemezkép kiválasztása** válassza ki a központi telepítés a Windows Server 2016 virtuális gép rendszerképének azoktól, akik az App Service-felhő számítási erőforrás-szolgáltató érhető el. Kattintson a **tovább**.
 
 15. A következő oldalon:
      1. Adja meg a feldolgozói szerepkör virtuális gép rendszergazdai felhasználónevet és jelszót.
      2. Adja meg az egyéb szerepköröket virtuális gép rendszergazdai felhasználónevet és jelszót.
-     3. Kattintson a **Tovább** gombra.
+     3. Kattintson a **tovább**.
 
     ![Az App Service-telepítő][16]
 
@@ -203,15 +203,15 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
 
 > [!NOTE]
 > Ha úgy döntött, hogy egy meglévő virtuális hálózatot és a egy belső IP-címet szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó alhálózat és a fájlkiszolgáló között SMB-forgalom engedélyezése.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
-> * Forrás: összes
+> * Forrás: Bármelyik
 > * Forrás porttartomány: *
 > * Cél: IP-címek
 > * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgáló számára
-> * Cél porttartomány: 445-ös
+> * Cél porttartomány: 445
 > * Protokoll: TCP
-> * Művelet: engedélyezése
+> * Művelet: Engedélyezés
 > * Prioritás: 700
-> * Name: Outbound_Allow_SMB445
+> * Név: Outbound_Allow_SMB445
 >
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Az Azure Stack App Service kipróbálása
@@ -257,9 +257,9 @@ Is kipróbálhatja más [platform platformszolgáltatási (PaaS) szolgáltatáso
 - [MySQL típusú erőforrás-szolgáltató](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
-[Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
+[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
+[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-create-package.png

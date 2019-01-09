@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 23400331db3bd63eeeb843c9772604fabf5a87d1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043770"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107735"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Az Azure Cosmos-adatbázisok, tárolók és elemek használata
 
@@ -45,7 +45,7 @@ Egy Azure Cosmos database, az Azure Cosmos következő API-k használatával kez
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-tárolók
 
-Egy Azure Cosmos-tárolóhoz méretezhetőséget biztosít a kiosztott átviteli egység és tárolási elemeket. Egy tároló vízszintesen particionált, és több régióra replikált majd. A cikkeket, hogy ad hozzá a tároló és az átviteli sebességet, hogy üzembe rajta is automatikusan a partíciókulcs alapján logikai partíciók egy halmazában elosztva. Particionálás és a partíciókulcs kapcsolatos további információkért lásd: [logikai partíció](partition-data.md) cikk. 
+Egy Azure Cosmos-tárolóhoz méretezhetőséget biztosít a kiosztott átviteli egység és tárolási elemeket. Egy tároló vízszintesen particionált, és több régióra replikált majd. Adja hozzá a tároló és az átviteli sebesség, a rajta üzembe helyezi az elemek automatikusan a partíciókulcs alapján logikai partíciók egy halmazában vannak elosztva. Particionálás és a partíciókulcs kapcsolatos további információkért lásd: [logikai partíció](partition-data.md) cikk. 
 
 Egy Azure Cosmos-tároló létrehozásakor átviteli konfigurálja a következő módok egyikében:
 

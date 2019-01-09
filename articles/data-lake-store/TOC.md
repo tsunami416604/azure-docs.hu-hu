@@ -92,6 +92,7 @@
 ## [Python (Fiókkezelés)](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python (Fájlrendszer-kezelés)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [Resource Manager-sablon](/azure/templates/microsoft.datalakestore/allversions)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # További források

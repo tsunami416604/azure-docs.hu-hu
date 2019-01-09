@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 170ba8e85318ab3774aef95b0a62e452bc2c5e24
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c47a4d853ba6360fb7f8017b7ad9a59e10040401
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077861"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120852"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -237,11 +237,11 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Servi
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../application-insights/app-insights-overview.md
+[azure]: ../../azure-monitor/app/app-insights-overview.md
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
 [qna]: ../../azure-monitor/app/troubleshoot-faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../application-insights/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md 

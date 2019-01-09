@@ -1,37 +1,33 @@
 ---
-title: Az Azure AD egyszeri bejelentkezés beállítása az alkalmazásokhoz |} A Microsoft Docs
-description: Ismerje meg, hogyan csatlakozzon önkiszolgáló SAML- és jelszóalapú egyszeri bejelentkezés használata az Azure Active Directory-alkalmazások
+title: Egyszeri bejelentkezés – katalógusban nem szereplő alkalmazások – Azure Active Directory |} A Microsoft Docs
+description: Egyszeri bejelentkezés (SSO) a katalógusban nem szereplő alkalmazásokhoz az Azure Active Directoryban (Azure AD) konfigurálása
 services: active-directory
 author: barbkess
-documentationcenter: na
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2018
+ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: bb2fcbad3d415a8ac7a8e0c3237fcb97042defd7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408126"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121345"
 ---
-# <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazások az Azure Active Directory konfigurálása
 
-Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nincs jelen az Azure Active Directory alkalmazásgyűjtemény tárgya *kódírás nélkül*. Ez a szolgáltatás 2015. November 18. a technical Preview-ban való fel lett oldva, és szerepel a [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md). Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
+Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nincs jelen az Azure Active Directory alkalmazásgyűjtemény tárgya *kódírás nélkül*. Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
 
 Az Azure Active Directory alkalmazáskatalógusában felsorolja a alkalmazások ismert támogatja az egyszeri bejelentkezés az Azure Active Directoryval, az űrlap leírtak szerint [Ez a cikk](what-is-single-sign-on.md). Ha (a egy informatikai specialistája vagy támaszkodva a szervezetben) megtalálta az alkalmazást, amelyhez csatlakozni, az egyszeri bejelentkezés engedélyezése az Azure Portalon megjelenő részletes utasításokat követve kezdheti.
 
-Az ügyfelek [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) licenc is beszerezheti a további képességek:
+Ezek a képességek is elérhetők, a licencszerződésben. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/active-directory/) olvasható. 
 
-* Önkiszolgáló integrációja bármilyen alkalmazás, amely támogatja az SAML 2.0 identitásszolgáltató (SP által kezdeményezett vagy identitásszolgáltató által kezdeményezett)
-* Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso)
+- Önkiszolgáló integrációja bármilyen alkalmazás, amely támogatja az SAML 2.0 identitásszolgáltató (SP által kezdeményezett vagy identitásszolgáltató által kezdeményezett)
+- Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso)
 * A felhasználókiépítés az SCIM-protokollt használó alkalmazások önkiszolgáló kapcsolat ([az itt leírtak szerint](use-scim-to-provision-users-and-groups.md))
 * Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sso)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 55cb1eee1c0319f9b1037476da208de377e0c47b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971171"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120835"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -139,7 +139,7 @@ Alapértelmezés szerint az Azure Load Balancer több virtuálisgép-példány k
 
 ### <a name = "internalloadbalancer"></a> Belső Load Balancer
 
-A belső Load Balancer csak a virtuális hálózaton belüli, vagy az Azure-infrastruktúrát VPN-en keresztül elérő erőforrások felé irányítja a forgalmat. Ebből a szempontból egy belső Load Balancer eltér a nyilvános Load Balancertől. Az Azure-infrastruktúra korlátozza egy virtuális hálózat elosztott terhelésű előtérbeli IP-címeihez való hozzáférést. Az előtérbeli IP-címek és virtuális hálózatok sohasem kerülnek közvetlen kapcsolatba egy internetes végponttal. A belső üzletági alkalmazások az Azure-ban futnak, és csak az Azure-ból vagy a helyszíni erőforrásokból érhetők el.
+A belső Load Balancer csak a virtuális hálózaton belüli, vagy az Azure-infrastruktúrát VPN-en keresztül elérő erőforrások felé irányítja a forgalmat. Ebből a szempontból egy belső Load Balancer eltér a nyilvános Load Balancertől. Az Azure-infrastruktúra korlátozza egy virtuális hálózat elosztott terhelésű előtérbeli IP-címeihez való hozzáférést. előtérbeli IP-címek és virtuális hálózatok közvetlenül soha nem érhetők el egy internet-végponthoz. A belső üzletági alkalmazások az Azure-ban futnak, és csak az Azure-ból vagy a helyszíni erőforrásokból érhetők el.
 
 Egy belső Load Balancer a következő típusú terheléselosztásokat teszi lehetővé:
 

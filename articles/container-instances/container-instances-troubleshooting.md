@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 01/08/2019
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820358"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119050"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
@@ -48,7 +48,7 @@ Ha olyan lemezképet, amely nem támogatja az Azure Container Instances, adja me
 
 Ez a hiba a rendszer leggyakrabban észlelt, amikor üzembe helyezése Windows-rendszerképek a féléves csatorna (SAC) alapuló kiadási. Például Windows verziók 1709-es és 1803 SAC kiadások, és ezt követően a központi telepítési hiba jön létre.
 
-Az Azure Container Instances támogatja a Windows-rendszerképek alapján csak hosszú távú karbantartási csatorna (LTSC). Ha Windows-tárolók üzembe helyezése a probléma megoldásához, mindig üzembe LTSC-alapú rendszerképekhez.
+Az Azure Container Instances jelenleg csak a-alapú Windows-rendszerképeket támogatja a **Windows Server 2016 hosszú távú karbantartási csatorna (LTSC)** kiadás. A probléma megoldásához, ha a Windows-tárolók üzembe helyezése, mindig telepítse a Windows Server 2016 LTSC-alapú rendszerképekhez. A Windows Server 2019 (LTSC) alapú lemezképek nem támogatottak.
 
 A Windows LTSC és SAC verzióival kapcsolatos részletekért lásd: [áttekintése a Windows Server féléves csatorna][windows-sac-overview].
 

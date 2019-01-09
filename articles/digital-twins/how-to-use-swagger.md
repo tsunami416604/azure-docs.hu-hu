@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 0e325de3a9a28d824ea9a6bfb7b3346bf9285e58
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033315"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120954"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
@@ -55,7 +55,7 @@ Kiválaszthatja, hogy minden egyes listázott hálózatiobjektum-modellt fő jel
 
 ![Swagger-modell][3]
 
-A generált Swagger objektummodellt kényelmesek, tekintse meg az összes elérhető az Azure digitális Twins [objektumok és az API-k](./concepts-objectmodel-spatialgraph.md). A fejlesztők győződjön meg arról is, ha ezek a megoldások létrehozását az Azure digitális Twins az erőforrás használja.
+A generált Swagger objektummodellt kényelmesek, tekintse meg az összes elérhető az Azure digitális Twins [objektumok és az API-k](./concepts-objectmodel-spatialgraph.md). A fejlesztők használhatják ehhez az erőforráshoz, amikor ezek a megoldások létrehozását az Azure digitális Twins.
 
 ## <a name="endpoint-summary"></a>A végpont összegzése
 
@@ -79,7 +79,7 @@ Miután egy adott végpontnak választja, megjelenik **kipróbálás**.
 
 ![Próbálja meg swagger][5]
 
-Bontsa ki a szakaszt viszi, megjelenik minden szükséges és választható paraméter beviteli mezőket. Ennek megfelelően adja meg az értékeket, és válassza ki **Execute**.
+Bontsa ki a szakaszt viszi, megjelenik minden szükséges és választható paraméter beviteli mezőket. Adja meg a megfelelő értékeket, és válassza ki **Execute**.
 
 ![Kísérlet történt a swagger][6]
 

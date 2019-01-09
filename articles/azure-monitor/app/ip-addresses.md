@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4efd4622745a4a86c691cec32f5b93225715930a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6e2621103e79e201a6f3a9d45350e3b71d15f47c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974374"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119611"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
-A [Azure Application Insights](../../application-insights/app-insights-overview.md) szolgáltatást használ egy IP-címek számát. Előfordulhat, hogy szeretne, ezeket a címeket, ha az alkalmazás, figyelt tűzfal mögött található.
+A [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatást használ egy IP-címek számát. Előfordulhat, hogy szeretne, ezeket a címeket, ha az alkalmazás, figyelt tűzfal mögött található.
 
 > [!NOTE]
-> Bár ezek a címek statikus, akkor lehet, hogy módosítania kell őket időről időre.
+> Bár ezek a címek statikus, akkor lehet, hogy módosítania kell őket időről időre. Minden Application Insights-forgalmat a kimenő forgalom kivételével rendelkezésre állásának figyelésére szolgáló és a webhookok, bejövő tűzfalszabályokat igénylő jelöli.
 > 
 > 
 

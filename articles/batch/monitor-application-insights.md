@@ -11,16 +11,16 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 69ba67eb74333e8316b739fc2f264434643cab95
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 986a05dab29226ff492269587ab6c0f49585cef6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075141"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119907"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Figyelheti és hibakeresése az Azure Batch .NET-alkalmazás, az Application insights segítségével
 
-[Az Application Insights](../application-insights/app-insights-overview.md) elegáns és hatékony megoldást kínál a fejlesztők számára üzembe helyezett Azure-szolgáltatások figyelése és hibakeresési alkalmazásokat. Application insights szolgáltatás segítségével figyelő teljesítményszámlálók és kivételeket, valamint az eszköz a kód egyéni metrikákkal és nyomon követését. Az Application Insights integrációja az Azure Batch-alkalmazás lehetővé teszi viselkedések mélyebb betekintést, és közel valós időben problémák kivizsgálásában.
+[Az Application Insights](../azure-monitor/app/app-insights-overview.md) elegáns és hatékony megoldást kínál a fejlesztők számára üzembe helyezett Azure-szolgáltatások figyelése és hibakeresési alkalmazásokat. Application insights szolgáltatás segítségével figyelő teljesítményszámlálók és kivételeket, valamint az eszköz a kód egyéni metrikákkal és nyomon követését. Az Application Insights integrációja az Azure Batch-alkalmazás lehetővé teszi viselkedések mélyebb betekintést, és közel valós időben problémák kivizsgálásában.
 
 Ez a cikk bemutatja, hogyan adhat hozzá és Application Insights-könyvtár konfigurálása az Azure Batch .NET-megoldásba, és alakítsa ki az alkalmazás kódjában. Azt is bemutatja, monitorozhatók az alkalmazások az Azure Portalon, és egyéni irányítópultokat hozhat létre. Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../azure-monitor/app/platforms.md).
 
@@ -342,7 +342,7 @@ Az éles környezetben futó Azure Batch-alkalmazások nagyméretű jellege miat
 
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [Application Insights](../application-insights/app-insights-overview.md).
+* Tudjon meg többet [Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 * Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../azure-monitor/app/platforms.md).
 

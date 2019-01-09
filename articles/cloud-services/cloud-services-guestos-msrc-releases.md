@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/14/2018
+ms.date: 1/7/2019
 ms.author: raiye
-ms.openlocfilehash: 94cf90dbc41533b8f5d41a0bdb18e5cdcb7be474
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 154b925cc173a1a8fac697e347759764807a3052
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541030"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107905"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
 ## <a name="december-2018-guest-os"></a>A 2018 december vendég operációs rendszer
-
->[!NOTE]
->A December vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A December vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |

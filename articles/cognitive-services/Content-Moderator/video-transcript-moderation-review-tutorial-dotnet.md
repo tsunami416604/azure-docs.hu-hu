@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Videók és átiratok moderálása a .NET-ben – Content Moderator'
+title: 'Oktatóanyag: Mérsékelt videók és a .NET - Content Moderator szövegekben'
 titlesuffix: Azure Cognitive Services
 description: A Content Moderator használata videók és átiratok moderálásához a .NET-ben.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: d156c481e3c16105ad85cbc793d93306a310d5ef
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567111"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118574"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
+# <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: A videó és a szöveges moderálása
 
 A Content Moderator video API-jaival az emberi vizsgálóeszközben moderálhat videókat és hozhat létre videoértékeléseket. 
 
@@ -530,7 +530,7 @@ Az átirat AMS-eszközként lesz közzétéve. Az átirat kifogásolható tartal
         }
         catch
         {   //TODO:  Logging
-            Console.WriteLine("Exception occured while generating index for video.");
+            Console.WriteLine("Exception occurred while generating index for video.");
             throw;
         }
     }

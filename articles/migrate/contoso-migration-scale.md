@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: ca7d565c020e8ac4510c7a65745a9e052b69551d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063180"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104233"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – méretezési csoport egy áttelepítés az Azure-bA
 
@@ -289,7 +289,7 @@ Döntse el, hogyan helyezhet üzembe ezeket az összetevőket, a kapacitás szem
 --- | ---
 **Maximális napi adatváltozási sebesség** | A folyamat egyetlen kiszolgáló képes kezelni a napi módosítási gyakorisága 2 TB-ig. Mivel egy virtuális Gépet csak használhat egy folyamatkiszolgáló, a maximális napi adatváltozási sebesség replikált virtuális gép esetén támogatott, 2 TB-os.
 **Maximális átviteli sebesség** | Standard szintű Azure storage-fiók képes kezelni másodpercenként 20 000 kérelem legfeljebb, és ezt a korlátot bemeneti/kimeneti műveletek száma másodpercenként (IOPS) egy replikáló virtuális gép között kell lennie. Például ha egy virtuális gép 5 lemezzel rendelkezik, és egyes lemezek 120 IOPS (8 KB a mérete) a virtuális gépen hoz létre, majd lesz a lemez IOPS-korlát az 500-as Azure-ban.<br/><br/> Vegye figyelembe, hogy a szükséges tárfiókok száma megegyezik-e osztva a 20 000 teljes forrásgépen IOPS. A replikált gép csak egyetlen tárfiókra az Azure-ban is tartozhat.
-**Konfigurációs kiszolgáló** | A Contoso 100 = 200 replikálása becslése alapján együtt, virtuális gépek és a [konfigurációs kiszolgáló méretezési követelmények](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-along-with-in-built-process-server), Contoso-becslésére igényeinek megfelelően a konfigurációs kiszolgáló gép a következőképpen történik:<br/><br/> CPU: 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @)<br/><br/> Memória: 32 GB<br/><br/> Gyorsítótárlemez: 1 TB<br/><br/> A módosult adatok aránya: 1 TB-os 2 TB-ig.<br/><br/> A méretezési követelmények mellett Contoso kell ügyeljen arra, hogy a konfigurációs kiszolgáló optimális található, az ugyanazon a hálózaton és a LAN-szegmens, mert a virtuális gépek, amely át lesz telepítve.
+**Konfigurációs kiszolgáló** | A Contoso 100 = 200 replikálása becslése alapján együtt, virtuális gépek és a [konfigurációs kiszolgáló méretezési követelmények](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server), Contoso-becslésére igényeinek megfelelően a konfigurációs kiszolgáló gép a következőképpen történik:<br/><br/> CPU: 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @)<br/><br/> Memória: 32 GB<br/><br/> Gyorsítótárlemez: 1 TB<br/><br/> A módosult adatok aránya: 1 TB-os 2 TB-ig.<br/><br/> A méretezési követelmények mellett Contoso kell ügyeljen arra, hogy a konfigurációs kiszolgáló optimális található, az ugyanazon a hálózaton és a LAN-szegmens, mert a virtuális gépek, amely át lesz telepítve.
 **Folyamatkiszolgáló** | Contoso 100 – 200 – virtuális gépek replikálhatók a különálló dedikált folyamatkiszolgáló üzembe helyezése:<br/><br/> CPU: 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @)<br/><br/> Memória: 32 GB<br/><br/> Gyorsítótárlemez: 1 TB<br/><br/> A módosult adatok aránya: 1 TB-os 2 TB-ig.<br/><br/> A folyamatkiszolgáló munkát nehéz lesz, és mint ilyen kell elhelyezni, az ESXi-gazdagépen, amely képes kezelni, a lemez i/o, a hálózati forgalom és a CPU, a replikációhoz szükséges. Contoso erre a célra egy dedikált gazdagéppel figyelembe veszi. 
 **Hálózat** | Contoso tekintse át az aktuális site-to-site VPN-infrastruktúrát, és úgy döntött, hogy az Azure ExpressRoute megvalósításához. A megvalósítás fontos, mivel csökkentheti a késést, és növelheti a sávszélességet a Contoso elsődleges East US 2 Azure-régió.<br/><br/> **Figyelés**: Contoso kell kísérje figyelemmel az adatoknak a folyamatkiszolgálóról. Ha az adatok beáll-e a hálózati sávszélesség figyelembe veszi a Contoso [a folyamat a kiszolgáló sávszélesség szabályozása](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Azure Storage** | Az áttelepítéshez a Contoso azonosítani kell a megfelelő típusú és számú cél Azure-tárfiókot.  A Site Recovery az Azure storage virtuális gépek adatait replikálja.<br/><br/> A Site Recovery standard vagy prémium szintű (SSD) tárfiókok bA végezhet replikálást.<br/><br/> Annak eldöntéséhez, tárolás, a Contoso át kell néznie [tárhelykorlátok](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage), és idővel várható növekedésének és a használat során megnövekedett vennie. Adja meg a sebességet és áttelepítések prioritását, Contoso döntött, hogy prémium szintű storage-fiókok használatához.<br/><br/> Akkor hozzon létre, és több tárfiókot újra az áttelepítési folyamat során.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 58afbdf3488850a643e7d4b8979bf860f93141df
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 34a3b00fdc0644294a97272be7b3a06715c029a1
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014114"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121328"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -292,7 +292,7 @@ namespace SampleApp
 Ha szeretné az alsóbb rétegbeli tevékenység stdout.txt tartalmának felhasználására, beszerezheti a fájl elérési útját a stdout.txt kifejezésben "\@activity('MyCustomActivity').output.outputs [0]". 
 
   > [!IMPORTANT]
-  > - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön. 
+  > - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön. 
   > - A társított szolgáltatások, amelyek a helyi Integration Runtime a bizalmas adatokat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime annak biztosítása érdekében a hitelesítő adatok marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges. 
 
 ## <a name="pass-outputs-to-another-activity"></a>Pass egy másik tevékenység kimenete

@@ -1,6 +1,6 @@
 ---
-title: Összegyűjtheti és elemezheti az Azure monitorban teljesítményszámlálók |} A Microsoft Docs
-description: Az Azure Monitor, elemezheti a teljesítményt, a Windows és Linux-ügynökök által gyűjtött teljesítményszámlálók.  Ez a cikk ismerteti mind a Windows teljesítményszámláló-gyűjtemény konfigurálása és a Linux-ügynökök, azok részleteit a munkaterületet, és hogyan elemezheti őket az Azure Portalon lesznek tárolva.
+title: Összegyűjtheti és elemezheti a teljesítményszámlálók a Log Analyticsben |} A Microsoft Docs
+description: A Windows és Linux-ügynökök teljesítményének elemzése a Log Analytics által gyűjtött teljesítményszámlálók.  Ez a cikk ismerteti mind a Windows teljesítményszámláló-gyűjtemény konfigurálása és a Linux-ügynökök, azok részleteit a munkaterületet, és hogyan elemezheti őket az Azure Portalon lesznek tárolva.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018l
 ms.author: magoedte
-ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8359dda2521773145f9e3e870c3c21db1546004b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438370"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103706"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások
-Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  Az Azure Monitor teljesítményszámlálók gyűjthet a teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzéshez gyakori időközönként.
+# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Log Analytics Windows és Linux rendszerű teljesítmény adatforrások
+Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A log Analytics képes teljesítményszámlálók gyűjtése gyakori időközönként teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzés céljából.
 
 ![Teljesítményszámlálók](media/data-sources-performance-counters/overview.png)
 
@@ -88,7 +88,7 @@ Ez az elem a paramétereket az alábbi táblázatban ismertetett.
 | interval | A gyakoriság, amellyel a rendszer az objektum számlálókat gyűjti. |
 
 
-A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése](data-sources-linux-applications.md).
+A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése](data-sources-linux-applications.md).
 
 | Objektumnév | Számláló neve |
 |:--|:--|
@@ -182,7 +182,7 @@ Következő teljesítmény-mérőszámok az alapértelmezett konfigurációjána
     </source>
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Az Azure Monitor adatokat gyűjt az összes megadott teljesítményszámlálók a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesítve, és a nyers adatok érhető el az összes napló lekérdezési nézeteket az előfizetés által megadott időtartama alatt.
+A log Analytics adatokat gyűjt az összes megadott teljesítményszámlálók a megadott minta időközönként minden számláló telepített rendelkező ügynököknek.  Az adatok nem összesítve, és a nyers adatok érhető el az összes napló lekérdezési nézeteket az előfizetés által megadott időtartama alatt.
 
 ## <a name="performance-record-properties"></a>Teljesítmény rekord tulajdonságai
 Teljesítményrekordot rendelkezik olyan típusú **Teljesítményoptimalizált** , és a tulajdonságait az alábbi táblázatban.

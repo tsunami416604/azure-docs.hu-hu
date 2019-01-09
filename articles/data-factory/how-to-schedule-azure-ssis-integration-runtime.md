@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 1/8/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5920ec5ec8e864b5bdb986544a3cdc259e7344da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c1dfc4ed969735be26ae075900cd850e016afffa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053636"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107582"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Elindítása és leállítása az Azure-SSIS integrációs modul ütemezés szerint
 Ez a cikk ismerteti a indítása és leállítása az Azure-SSIS integrációs modul (IR) ütemezése az Azure Data Factory (ADF) használatával. Az Azure-SSIS integrációs modul az ADF számítási erőforrás dedikált SQL Server Integration Services (SSIS) csomagjainak végrehajtásához. Rendszert futtató Azure-SSIS integrációs modul rendelkezik egy hozzá társított költségek. Ezért általában szeretné futtatni az integrációs modul csak akkor, amikor szüksége van leállítása az integrációs modul helyének, ha Ön már nincs rájuk szükség, és az SSIS-csomagok végrehajtása az Azure-ban. Használhatja az ADF felhasználói felületének (UI) / alkalmazás vagy az Azure PowerShell használatával [manuálisan indítása vagy leállítása az integrációs modul helyének](manage-azure-ssis-integration-runtime.md)).
@@ -54,7 +54,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
  
    Az ADF neve globálisan egyedinek kell lennie. A következő hibaüzenet jelenik meg, ha az ADF (például Sajátnevemyazuressisdatafactoryra) nevének módosítása, és próbálkozzon újra a létrehozással. Lásd: [Data Factory elnevezési szabályait](naming-rules.md) a cikkben megismerheti az ADF-összetevők elnevezési szabályait.
   
-   `Data factory name �MyAzureSsisDataFactory� is not available`
+   `Data factory name MyAzureSsisDataFactory is not available`
       
 4. Jelölje ki az Azure **előfizetés** alapján, amelyeket szeretne létrehozni az ADF. 
 5. Az **Erőforráscsoportban** hajtsa végre a következő lépések egyikét:
@@ -86,23 +86,21 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
    
 2. A **tevékenységek** eszközkészletben bontsa ki a **általános** & legördülő menüben, és húzza a **webes** tevékenység alakzatot a folyamat tervezőfelületére. A **általános** lapon, a tevékenység tulajdonságok ablakában módosítsa a tevékenység nevét a **startMyIR**. Váltson **beállítások** lapra, és a következő műveleteket hajthatja végre.
 
-    1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, amely elindítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján a IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`.
+    1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, amely elindítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján a IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Azt is megteheti, is is másolja és illessze be az erőforrás-azonosítója a figyelési oldaláról az integrációs modul helyének ADF felhasználói felületén vagy alkalmazás cserélje le a fenti URL-cím a következő részét: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
     
-    Azt is megteheti, is is másolja és illessze be az erőforrás-azonosítója a figyelési oldaláról az integrációs modul helyének ADF felhasználói felületén vagy alkalmazás cserélje le a fenti URL-cím a következő részét: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
-    
-   ![ADF-SSIS integrációs modul az erőforrás-azonosító](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+       ![ADF-SSIS integrációs modul az erőforrás-azonosító](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
     2. A **metódus**válassza **POST**. 
     3. A **törzs**, adja meg `{"message":"Start my IR"}`. 
     4. A **hitelesítési**válassza **MSI** az ADF a felügyelt identitást használja, lásd: [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) cikkben további információkat.
-    5. A **erőforrás**, adja meg `https://management.azure.com/`. 
+    5. A **erőforrás**, adja meg `https://management.azure.com/`.
     
-   ![Az ADF webes tevékenység ütemezés SSIS integrációs modul](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       ![Az ADF webes tevékenység ütemezés SSIS integrációs modul](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
 3. Az első folyamat létrehozása egy másikat, a tevékenység nevének módosítása klónozása **stopMyIR** , és cserélje le a következő tulajdonságokat.
 
     1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, hogy leállítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján a IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
-  
+    
     2. A **törzs**, adja meg `{"message":"Stop my IR"}`. 
 
 4. Hozzon létre egy harmadik folyamatot, áthúzással egy **SSIS-csomag végrehajtása** tevékenységet **tevékenységek** alakzatot a folyamattervezőben eszközkészlet tervezőfelületére, és konfigurálja a következő témakör utasításait követve [ Az SSIS-csomag végrehajtása tevékenység az ADF-ben egy SSIS-csomagok meghívásához](how-to-invoke-ssis-package-ssis-activity.md) cikk.  Másik lehetőségként használhatja egy **tárolt eljárás** tevékenység inkább utasításait követve konfigurálja és [az ADF-ben tárolt eljárási tevékenység használatával egy SSIS-csomagok meghívásához](how-to-invoke-ssis-package-stored-procedure-activity.md) cikk.  Ezután összekapcsolja az SSIS-csomag/tárolt eljárás végrehajtása tevékenység két webes tevékenység, amely indítása és leállítása az integrációs modul, ezek webes tevékenység az első/s folyamatokban hasonló között.

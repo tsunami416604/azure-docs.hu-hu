@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581249"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104675"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache Redis konfigurálása
 Ez a témakör ismerteti az Azure Cache a Redis-példány érhető el a konfigurációkat. Ez a témakör ismerteti a Redis server az alapértelmezett konfigurációjának for Azure Cache Redis-példány is.
@@ -147,7 +147,7 @@ A **Maxmemory házirend**, **maxmemory fenntartott**, és **maxfragmentationmemo
 * `volatile-ttl`
 * `noeviction`
 
-További információ `maxmemory` házirendek, lásd: [kiürítési szabályzat](http://redis.io/topics/lru-cache#eviction-policies).
+További információ `maxmemory` házirendek, lásd: [kiürítési szabályzat](https://redis.io/topics/lru-cache#eviction-policies).
 
 A **maxmemory fenntartott** beállítással memória mennyisége (MB), nem gyorsítótárazási műveletek, például a replikáció, feladatátvétel során tart fenn. Ha az érték lehetővé teszi, hogy a Redis kiszolgáló egységesebb, ha változik a terhelés. Ez az érték nagyobb számítási feladatokhoz, hogy van írási (nagy erőforrásigényű) kell állítani. Memória ilyen műveletek számára van fenntartva, ha nem érhető el a gyorsítótárazott adatok tárolására.
 
@@ -170,7 +170,7 @@ Kulcstér értesítések be vannak állítva, a redis a **speciális beállítá
 > 
 > 
 
-További információkért lásd: [Kulcstérértesítések Redis](http://redis.io/topics/notifications). A mintakódot, tekintse meg a [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) fájlt a [Helló, világ](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta.
+További információkért lásd: [Kulcstérértesítések Redis](https://redis.io/topics/notifications). A mintakódot, tekintse meg a [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) fájlt a [Helló, világ](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta.
 
 
 <a name="recommendations"></a>
@@ -406,7 +406,7 @@ Kattintson a **új támogatási kérelem** , nyisson egy támogatási kérelmet 
 | `maxmemory-samples` |3 |A memóriahasználat a LRU és a minimális TTL algoritmusok helyett pontos algoritmusok közelítő algoritmusok is. Alapértelmezés szerint a Redis-ellenőrzések három kulcsot, és kiválasztja azt, amelyik utoljára kevésbé használt. |
 | `lua-time-limit` |5000 |Maximális végrehajtási ideje (MS) egy Lua-parancsprogram. Ha eléri a maximális végrehajtási időt, a Redis naplózza, hogy egy parancsfájl továbbra is a végrehajtási, a maximális engedélyezett idő után, és elindítja egy hiba miatt lekérdezések megválaszolására. |
 | `lua-event-limit` |500 |Parancsfájl esemény üzenetsor maximális méretét. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 032mb, 8 MB méretű 60 0 |Az ügyfél kimeneti puffer korlátok használható leválasztásának az ügyfelek, amelyek a rendszer nem történő adatkiolvasás elég gyors a kiszolgáló valamilyen okból (gyakori oka az, hogy egy Pub/Sub-ügyfél nem tudja fogadni üzenetek a lehető leghamarabb a közzétevő hozhatnak, azokat) kényszerítése. Tovább információ: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 032mb, 8 MB méretű 60 0 |Az ügyfél kimeneti puffer korlátok használható leválasztásának az ügyfelek, amelyek a rendszer nem történő adatkiolvasás elég gyors a kiszolgáló valamilyen okból (gyakori oka az, hogy egy Pub/Sub-ügyfél nem tudja fogadni üzenetek a lehető leghamarabb a közzétevő hozhatnak, azokat) kényszerítése. Tovább információ: [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>maximális `databases` minden egyes Azure Cache redis tarifacsomag esetében eltérő, és a gyorsítótár létrehozásakor állítható. Ha nincs `databases` beállítás meg van adva gyorsítótár létrehozása során, az alapértelmezett érték 16.
@@ -424,7 +424,7 @@ Kattintson a **új támogatási kérelem** , nyisson egy támogatási kérelmet 
   * P2 (13 GB - 130 GB) – legfeljebb 32 adatbázisok
   * P3 (26 GB – 260 GB) – legfeljebb 48 adatbázisok
   * P4 (53 GB - 530 GB) – legfeljebb 64 adatbázisok
-  * Redis-fürttel kompatibilis – minden prémium gyorsítótárak a Redis-fürttel csak támogatja 0-adatbázis használatát tehát a `databases` korlátozása minden prémium szintű gyorsítótár engedélyezve van a Redis-fürttel hatékonyan értéke 1 és a [kiválasztása](http://redis.io/commands/select) parancs nem engedélyezett. További információkért lásd: [van a fürtszolgáltatás használandó ügyfélalkalmazásomnak semmilyen módosítást?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Redis-fürttel kompatibilis – minden prémium gyorsítótárak a Redis-fürttel csak támogatja 0-adatbázis használatát tehát a `databases` korlátozása minden prémium szintű gyorsítótár engedélyezve van a Redis-fürttel hatékonyan értéke 1 és a [kiválasztása](https://redis.io/commands/select) parancs nem engedélyezett. További információkért lásd: [van a fürtszolgáltatás használandó ügyfélalkalmazásomnak semmilyen módosítást?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Adatbázisokkal kapcsolatos további információkért lásd: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases)
 
@@ -473,14 +473,14 @@ Adatbázisokkal kapcsolatos további információkért lásd: [Mik azok a Redis-
 > 
 > 
 
-A Redis-parancsokkal kapcsolatos további információkért lásd: [ http://redis.io/commands ](http://redis.io/commands).
+A Redis-parancsokkal kapcsolatos további információkért lásd: [ https://redis.io/commands ](https://redis.io/commands).
 
 ## <a name="redis-console"></a>Redis konzol
 Az Azure Cache a Redis-példány használatával biztonságosan kiadhat parancsokat a **Redis konzol**, gyorsítótár minden szint esetében az Azure Portalon elérhető.
 
 > [!IMPORTANT]
 > - A Redis-konzol nem működik a [VNET](cache-how-to-premium-vnet.md). Ha a gyorsítótár része virtuális Hálózatnak, csak a virtuális hálózaton lévő ügyfelek hozzáférhet a gyorsítótárban. Redis konzol fut a helyi böngészőben, amely a virtuális hálózaton kívülről, mert azt nem lehet csatlakozni a gyorsítótár.
-> - Nem minden Redis parancsok a Redis Azure Cache-ben támogatottak. Redis parancsok, amelyek le vannak tiltva az Azure Cache redis listáját lásd az előző [redis Cache a redis Azure Cache-ben nem támogatott parancsok](#redis-commands-not-supported-in-azure-cache-for-redis) szakaszban. A Redis-parancsokkal kapcsolatos további információkért lásd: [ http://redis.io/commands ](http://redis.io/commands).
+> - Nem minden Redis parancsok a Redis Azure Cache-ben támogatottak. Redis parancsok, amelyek le vannak tiltva az Azure Cache redis listáját lásd az előző [redis Cache a redis Azure Cache-ben nem támogatott parancsok](#redis-commands-not-supported-in-azure-cache-for-redis) szakaszban. A Redis-parancsokkal kapcsolatos további információkért lásd: [ https://redis.io/commands ](https://redis.io/commands).
 > 
 > 
 

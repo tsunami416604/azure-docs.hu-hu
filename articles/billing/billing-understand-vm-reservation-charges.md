@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 096cf8e7a03f00cd5854ac4ce9569b14fe4b761b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: cdcb4e06afab2cccff7baa92989ccf904f42cf88
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581476"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118013"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt a virtuális gépek
 
@@ -52,6 +52,10 @@ Ismertetése és használati jelentések számlázási megtekintheti az alkalmaz
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Windows virtuális gépek foglalási kedvezményt alkalmazását
 
 Ha Windows Virtuálisgép-példányokat futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows-beli virtuális gépek a virtuális gép infrastrukturális költségek foglalási ugyanaz, mint a nem - Windows rendszerű virtuális gépek. Díjkötelesek külön vCPU / alapon Windows szoftverek. Lásd: [Windows szoftverek díjait a foglalások](https://go.microsoft.com/fwlink/?linkid=862756). A Windows licencelési költségek lefedheti [Azure Hybrid Benefit a Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
+
+## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>Különböző méretű példány mérete rugalmasan vonatkozik kedvezmény
+
+Vásárlásakor a fenntartott VM-példány, ha **optimalizált**: **példány mérete rugalmasan**, a kedvezmény lefedettség választja virtuális gép méretétől függ. A Foglalás az azonos méretű adatsorozat-csoport a virtuális gépek (VM)-méretek is alkalmazhat. További információkért lásd: [virtuális gép mérete rugalmasan Reserved VM Instances](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 ## <a name="next-steps"></a>További lépések
 

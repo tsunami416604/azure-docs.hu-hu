@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: a0bf8543338043d9a1990fd2be33a65a478af721
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fd5e62138d47622417bde658bf0d05308594d64e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019654"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104148"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
 Ez a cikk nyújt útmutatást a következő kategóriákba tartozó Azure Cache Redis-hibák elhárítása.
@@ -142,7 +142,7 @@ Rendelkezésre álló memória mennyisége a kiszolgáló oldalán teljesítmén
 2. A redis kapja a magas memória töredezettségét – általában az okozza, nagy objektumok tárolásával (Redis optimalizált egy kis méretű objektumok – Lásd: a [Mi az az ideális érték mérettartománya redis? Túl nagy érték 100 KB? ](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) közzététele részletekért). 
 
 #### <a name="measurement"></a>Mérés
-A redis mutatja a két mérőszám, amely segít azonosítani a probléma. Az első `used_memory` és más `used_memory_rss`. [Ezek a metrikák](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) érhetők el az Azure Portalon vagy az a [Redis INFO](http://redis.io/commands/info) parancsot.
+A redis mutatja a két mérőszám, amely segít azonosítani a probléma. Az első `used_memory` és más `used_memory_rss`. [Ezek a metrikák](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) érhetők el az Azure Portalon vagy az a [Redis INFO](https://redis.io/commands/info) parancsot.
 
 #### <a name="resolution"></a>Megoldás:
 Van több lehetséges hogy végzett módosítások is annak érdekében, hogy kifogástalan memóriahasználat:
@@ -227,9 +227,9 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
    
    * Ha Ön első nézve kötelezőnek ismeri CPU az ügyfélen, amelyek miatt a kérelem feldolgozása nem lehetséges belül ellenőrizzük a `synctimeout` időköz, ami az időtúllépés miatt. Egy ügyfél nagyobb méretű áthelyezése vagy elosztja a terhelést segítségével szabályozhatja a probléma. 
    * Ellenőrzés, ha a CPU-figyelési szolgáltatás által a kiszolgálón kötve. a `CPU` [gyorsítótárazzák a teljesítmény-mérőszám](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). CPU kötött pedig a Redis érkező kérések okozhat, ezeket a kérelmeket időkorlátja. Oldja meg ezt az állapotot, a prémium szintű gyorsítótár több szegmens között oszthatja el a terhelést, vagy váltson egy nagyobb méretű vagy tarifacsomagot. További információkért lásd: [kiszolgáló oldalán a sávszélesség túllépte](#server-side-bandwidth-exceeded).
-5. Vannak-e a kiszolgálón feldolgozása hosszú időt vesz igénybe parancsok? Hosszú ideig futó parancsok, amelyek a redis-kiszolgáló feldolgozása hosszú ideig tart az időtúllépések okozhat. Néhány példa a hosszú ideig futó parancsokat `mget` kulcsok, nagy számú `keys *` vagy rosszul írt lua-szkriptek. Csatlakozás az Azure Cache a Redis-példányt a redis-cli ügyfél használatával, vagy használja a [Redis konzol](cache-configure.md#redis-console) , és futtassa a [SlowLog](http://redis.io/commands/slowlog) paranccsal tekintheti meg, hogy vannak-e kérések a vártnál tovább tart. Redis-kiszolgáló és a StackExchange.Redis kevesebb nagy kérelmeket, hanem sok kisebb kérelem vannak optimalizálva. Az adatok felosztása szeletekre javíthatja a dolgok itt. 
+5. Vannak-e a kiszolgálón feldolgozása hosszú időt vesz igénybe parancsok? Hosszú ideig futó parancsok, amelyek a redis-kiszolgáló feldolgozása hosszú ideig tart az időtúllépések okozhat. Néhány példa a hosszú ideig futó parancsokat `mget` kulcsok, nagy számú `keys *` vagy rosszul írt lua-szkriptek. Csatlakozás az Azure Cache a Redis-példányt a redis-cli ügyfél használatával, vagy használja a [Redis konzol](cache-configure.md#redis-console) , és futtassa a [SlowLog](https://redis.io/commands/slowlog) paranccsal tekintheti meg, hogy vannak-e kérések a vártnál tovább tart. Redis-kiszolgáló és a StackExchange.Redis kevesebb nagy kérelmeket, hanem sok kisebb kérelem vannak optimalizálva. Az adatok felosztása szeletekre javíthatja a dolgok itt. 
    
-    Az Azure Cache Redis SSL-végpont használatával a redis-cli és a stunnel csatlakozásról információkért lásd: a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis az előzetes kiadásban](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést. További információkért lásd: [SlowLog](http://redis.io/commands/slowlog).
+    Az Azure Cache Redis SSL-végpont használatával a redis-cli és a stunnel csatlakozásról információkért lásd: a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis az előzetes kiadásban](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést. További információkért lásd: [SlowLog](https://redis.io/commands/slowlog).
 6. Magas Redis-kiszolgáló terhelése okozhatja időtúllépések. A kiszolgáló terhelése figyelemmel figyelése a `Redis Server Load` [gyorsítótárazzák a teljesítmény-mérőszám](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). A kiszolgáló terhelését, 100 (maximális értéke) azt jelzi, hogy, a redis-kiszolgáló már foglalt, az üresjárati idővel, a kérelmek feldolgozásához. Ha bizonyos kérelmek igényelnek a kiszolgálói funkció az összes megtekintéséhez futtassa a SlowLog parancs az előző bekezdésben ismertetett módon. További információkért lásd: [magas CPU-használat / kiszolgáló terhelése](#high-cpu-usage-server-load).
 7. Történt más esemény, amely egy hálózati blip-oka lehetett az ügyféloldalon? Ellenőrizze az ügyfélen (webes, feldolgozói szerepkör vagy egy Iaas-beli virtuális Gépen), ha olyan esemény, például az ügyfél-példányok számának méretezése felfelé vagy lefelé történt, vagy az ügyfél vagy az automatikus méretezés új verziójának telepítése engedélyezve van? A tesztelés található, az automatikus méretezés, vagy a vertikális felskálázásával, vagy le is OK kimenő hálózati kapcsolat elveszhet néhány másodpercig. StackExchange.Redis kódot képes legyen ellenállni a ilyen események és újracsatlakozik. Ebben az időszakban az újracsatlakozás bármilyen kérelmeket az üzenetsorban is időtúllépés.
 8. Történt megelőző több kis kérést az Azure Cache redis túllépte az időkorlátot, big Data típusú kérelmet? A paraméter `qs` a hibás üzenet közli Önnel, hogy hány kérésnek az ügyfélről a kiszolgálónak küldött, de még nem dolgozott választ. Ezt az értéket is folyamatosan növekvő, mert StackExchange.Redis egyetlen TCP-kapcsolatot használ, és egyszerre csak egy választ csak olvasható. Annak ellenére, hogy az első művelet túllépte az időkorlátot, nem állítja le az adatokat küld a rendszer és-tárolókról a kiszolgálón, és más kérelmek le vannak tiltva, amíg a nagy méretű kérelem nem fejeződött időtúllépéssel okozza. Egy megoldás, hogy időtúllépések esélyét annak biztosítása, hogy a gyorsítótár mérete elegendő a számítási feladatok és a nagy értékek felosztása szeletekre. Egy másik lehetséges megoldás az, hogy a készlet használata `ConnectionMultiplexer` az ügyfél az objektumok, és válassza a legkevésbé betöltött `ConnectionMultiplexer` új kérelem küldése során. Ezzel akadályozhatja meg egyetlen időtúllépés küldött egyéb kérések számára is időtúllépés miatt.

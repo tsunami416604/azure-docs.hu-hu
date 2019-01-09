@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 0a9444c4abce9845efeca808b24264ba7b135aa9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1400fbf7b3fd3fb582654f7d3ec0803f113a6a41
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357223"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118047"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Összevont egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
@@ -66,7 +66,7 @@ Konfigurálása egyszeri bejelentkezéshez, amely nem szerepel az Azure AD katal
 
    1. Az alkalmazás identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést, konfigurálását, adja meg a válasz URL-cím és az azonosító.
 
-   2. **Választható lehetőség:** SP által kezdeményezett egyszeri Bejelentkezést, a bejelentkezési URL-t az alkalmazás konfigurálása a szükséges érték.
+   2. **Nem kötelező:** Az alkalmazás konfigurálásához az SP által kezdeményezett egyszeri Bejelentkezést, a bejelentkezési URL-t kötelező értéke.
 
 12. Az a **felhasználói attribútumok**, válassza ki a felhasználók az egyedi azonosítója a **felhasználóazonosító** legördülő listából.
 
@@ -104,7 +104,8 @@ Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói att
 
 8.  Alatt a **felhasználói attribútumok** területen válassza ki a felhasználók az egyedi azonosítója a **felhasználóazonosító** legördülő listából. A kiválasztott beállítást meg kell felelnie a várt értékkel, az alkalmazás a felhasználó hitelesítéséhez.
 
- >[! Megjegyzés:} Azure ad-ben válassza a NameID attribútum (felhasználóazonosító) a kiválasztott érték alapján vagy formátumban a SAML AuthRequest az alkalmazás által kért. További részletekért látogasson el a cikk [egyszeri bejelentkezéses SAML-protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy szakaszban.
+ >[!NOTE]
+ >Kiválasztott Azure AD válassza ki a formátumot a NameID-attribútum (felhasználóazonosító) érték alapján, vagy formátumát az SAML AuthRequest az alkalmazás által kért. További részletekért látogasson el a cikk [egyszeri bejelentkezéses SAML-protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy szakaszban.
  >
  >
 
@@ -168,7 +169,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+12. **Nem kötelező:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
 13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 

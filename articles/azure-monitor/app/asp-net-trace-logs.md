@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2afed85c0c86e541c281f579294676fa889d4f27
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041441"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118795"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Ismerkedés a .NET hívásláncnaplók megtekintése az Application Insights
 Ha NLog, a log4Net, vagy a System.Diagnostics.trace keretrendszert használja, az ASP.NET-alkalmazás diagnosztikai nyomkövetés rendelkezhet a küldött naplók [Azure Application Insights][start], ahol tallózása és keresés őket. A naplók fogja egyesíthető az alkalmazásból érkező, hogy a karbantartási minden egyes felhasználói kéréshez társított nyomkövetési azonosításához, és összefüggésbe hozva azokat az egyéb események és a kivételekről szóló jelentések egyéb telemetriai adatokat.
@@ -207,4 +207,4 @@ Ha az alkalmazása sok adatot küld, és az Application Insights SDK-t az ASP.NE
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
 [qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: eba66d4abf84603f1fdb5761d3ea1987983908de
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607030"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118234"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe elosztott deep learning az Azure HDInsight Spark használata
 
@@ -89,7 +89,7 @@ A második lépéseként, az átjárócsomópont Caffe buildet, és a lefordíto
 
     #compile CaffeOnSpark
     pushd ${CAFFE_ON_SPARK}
-    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
+    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2"
     make clean 
     #the build step usually takes 20~30 mins, since it has a lot maven dependencies
     make build 
@@ -120,7 +120,7 @@ Szükség lehet nagyobb, mint CaffeOnSpark a dokumentáció szerint. A változá
 
 Amikor először próbálja CaffeOnSpark összeállítása, néha ugyanakkor
 
-    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
+    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2
 
 Tisztítsa meg a kódtárat a "tiszta ellenőrizze", majd az futtatási "márka build", a probléma megoldásához, mindaddig, amíg a megfelelő függőségekkel rendelkezik.
 

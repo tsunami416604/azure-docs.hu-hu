@@ -1,5 +1,5 @@
 ---
-title: Linux-alkalmazások teljesítménye az Azure monitorban gyűjtése |} A Microsoft Docs
+title: Linux-alkalmazások teljesítménye, a Log Analytics gyűjtése |} A Microsoft Docs
 description: Ez a cikk részletes adatokat biztosít a teljesítményszámlálók adatainak összegyűjtése, a MySQL és az Apache HTTP Server Linuxhoz készült Log Analytics-ügynök konfigurálása.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 824d3f2402861ed8a54a29c9571654cc581e4c5e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434630"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104845"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése 
+# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Ez a cikk részletesen konfigurálásához a [Linuxhoz készült Log Analytics-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) az adott alkalmazásokra vonatkozó teljesítményszámlálók gyűjtése a Azure Monitor naplóira.  Az ebben a cikkben szereplő alkalmazások a következők:  
+Ez a cikk részletesen konfigurálásához a [Linuxhoz készült Log Analytics-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) az adott alkalmazásokra vonatkozó teljesítményszámlálók gyűjtése a Log analyticsbe.  Az ebben a cikkben szereplő alkalmazások a következők:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -114,7 +114,7 @@ Ezeket a jogosultságokat a következő grant-parancsok futtatásával is megadh
 
 ### <a name="define-performance-counters"></a>Teljesítményszámlálók definiálása
 
-Ha megfelelően konfigurált adatokat küldeni az Azure Monitor Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
+Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
 
 | Objektumnév | Számláló neve |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Teljesítményszámlálók definiálása
 
-Ha megfelelően konfigurált adatokat küldeni az Azure Monitor Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
+Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
 
 | Objektumnév | Számláló neve |
 |:--|:--|

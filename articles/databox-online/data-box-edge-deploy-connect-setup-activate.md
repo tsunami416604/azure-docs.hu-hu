@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: f4ca513e3c2e2345dc0005b95ddb7927c0164ffe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383017"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121617"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Oktatóanyag: Csatlakozás, beállítása és aktiválni az Azure Data Box Edge (előzetes verzió) 
 
@@ -85,7 +85,10 @@ Az irányítópulton jeleníti meg a különböző beállítások konfigurálás
     - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Az IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendelve.
     - Ha nincs engedélyezve a DHCP, hozzárendelheti statikus IP-címek, szükség esetén.
     - A hálózati adapter IPv4-t konfigurálhatja.
-   
+
+    >[!NOTE] 
+    > Javasoljuk, hogy nem váltson át a helyi IP-cím a hálózatot felület statikusról DCHP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adpaters, az IP-címek a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
+
 1. (Nem kötelező) A bal oldali panelen válassza ki a **webalkalmazás-proxy beállításai**, majd konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, ha olyan webproxyt használ, csak ezen az oldalon konfigurálható.
    
    ![A "Webproxy beállításai" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)

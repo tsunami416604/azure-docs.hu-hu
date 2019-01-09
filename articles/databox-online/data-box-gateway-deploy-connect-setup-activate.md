@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5e83eb46a4d62c6aaf0862d4bb1aa046c5d64dde
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166746"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120513"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway (előzetes verzió) 
 
@@ -84,7 +84,10 @@ Ekkor a számítógép a **irányítópult** eszköze.
     - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Ezért egy IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendeli.
     - Ha a DHCP nem engedélyezett, hozzárendelheti statikus IP-címek, szükség esetén.
     - A hálózati adapter IPv4-t konfigurálhatja.
-   
+
+    >[!NOTE] 
+    > Javasoljuk, hogy nem váltson át a helyi IP-cím a hálózatot felület statikusról DCHP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adpaters, az IP-címek a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
+
 4. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt.
    
    ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)

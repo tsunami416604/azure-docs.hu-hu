@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3a8b0ecefe9e314e8056c941c9ef4ce32d1cbb75
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965376"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119373"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -318,7 +318,7 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 </set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Példa a szervezettől a JObject eléréséhez. Vegye figyelembe, hogy mivel a Microsoft nem tart fenn az eredeti kérelemtörzsbe egypéldányú, a folyamat későbbi részében kivételt eredményez.
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Példa a szervezettől a JObject eléréséhez. Vegye figyelembe, hogy azt az eredeti kérelem törzse nem tart fenn, mert fér hozzá a folyamat későbbi részében fogja eredményezni kivételt.
 
 ```xml
 <set-body> 
@@ -334,7 +334,7 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 ```
 
 #### <a name="filter-response-based-on-product"></a>A termék választ szűrése
- Ez a példa bemutatja, hogyan hajthat végre, tartalomszűrés adatelem távolítsa el a válasz érkezett a háttérszolgáltatás használata esetén a `Starter` termék. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30 előretekerés. Áttekintést a 31:50 kezdőpont [a sötét Sky előrejelzési API](https://developer.forecast.io/) a bemutatóhoz használt.
+ Ez a példa bemutatja, hogyan hajthat végre, tartalomszűrés adatelem távolítsa el a válasz érkezett a háttérszolgáltatás használata esetén a `Starter` termék. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30 előretekerés. Áttekintést a 31:50 kezdőpont [a sötét Sky előrejelzési API](https://developer.forecast.io/) a bemutatóhoz használt.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -469,7 +469,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>Környezeti információk a háttérszolgáltatáshoz továbbítása
- Ez a példa bemutatja, hogyan alkalmazhatja a szabályzatot a háttérszolgáltatáshoz környezeti információkat adhat meg az API szintjén. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 10:30. 12:10: Nincs művelet meghívása a fejlesztői portálon, ahol megtekintheti a szabályzatot a munkahelyi bemutatóját.
+ Ez a példa bemutatja, hogyan alkalmazhatja a szabályzatot a háttérszolgáltatáshoz környezeti információkat adhat meg az API szintjén. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 10:30. 12:10: Nincs művelet meghívása a fejlesztői portálon, ahol megtekintheti a szabályzatot a munkahelyi bemutatóját.
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->
@@ -543,7 +543,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>Környezeti információk a háttérszolgáltatáshoz továbbítása
- Ez a példa bemutatja, hogyan alkalmazhatja a szabályzatot a háttérszolgáltatáshoz környezeti információkat adhat meg az API szintjén. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 10:30. 12:10: Nincs művelet meghívása a fejlesztői portálon, ahol megtekintheti a szabályzatot a munkahelyi bemutatóját.
+ Ez a példa bemutatja, hogyan alkalmazhatja a szabályzatot a háttérszolgáltatáshoz környezeti információkat adhat meg az API szintjén. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 10:30. 12:10: Nincs művelet meghívása a fejlesztői portálon, ahol megtekintheti a szabályzatot a munkahelyi bemutatóját.
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9aa77caa690bfb51dd0e5d43e15d246614f1cc71
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8536cce8de79f396b5d60058dd41f733d2627c87
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050183"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119135"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
 
@@ -46,7 +46,7 @@ Csak akkor kell elvégeznie egyszer Azure DevOps-szolgáltatásokkal szervezete 
 
 Kell külön API-kulcs az egyes Azure DevOps-szolgáltatásokkal a kiadásban sablonok beszerzése.
 
-1. Jelentkezzen be a [a Microsoft Azure Portal](https://portal.azure.com) , és nyissa meg az Application Insights-erőforrást, amely az alkalmazás figyelésére. (Vagy [hozzon létre egyet most](../../application-insights/app-insights-overview.md), ha még nem tette,.)
+1. Jelentkezzen be a [a Microsoft Azure Portal](https://portal.azure.com) , és nyissa meg az Application Insights-erőforrást, amely az alkalmazás figyelésére. (Vagy [hozzon létre egyet most](../../azure-monitor/app/app-insights-overview.md), ha még nem tette,.)
 2. Nyissa meg **API-hozzáférés**, **Application Insights azonosító**.
    
     ![A Portal.Azure.com címen nyissa meg az Application Insights-erőforrást, és kattintson a beállítások. Nyissa meg az API-hozzáférés. Az Alkalmazásazonosító másolása](./media/annotations/20.png)

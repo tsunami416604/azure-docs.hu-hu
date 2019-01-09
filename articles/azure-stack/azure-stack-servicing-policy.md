@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 49d49553a9375baa92160d9d9a89936acc7dd461
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632789"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102618"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure Stack karbantartási szabályzat
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a karbantartási szabályzat az Azure Stack integrált rends
 
 A Microsoft közzéteszik egyaránt teljes havi csomagok, valamint a gyorsjavítás csomagok konkrét problémáinak megoldására. 
 
-Havi csomagok egy biztonságos Azure-végpont a üzemelnek. Letöltheti őket manuálisan a [Azure Stack frissítéseinek letöltési segédprogramja eszköz](http://aka.ms/azurestackupdatedownload). Ha a skálázási egység csatlakoztatva van, a frissítés automatikusan megjelenik a felügyeleti portálon, **frissítés érhető el**. Teljes havonta frissítési csomagokat is szerepelnek, az egyes kiadások. Minden kiadással kapcsolatos további információkért kattintson bármelyik-esről a [frissítési csomag kiadási ütem](#update-package-release-cadence) című szakaszát.
+Havi csomagok egy biztonságos Azure-végpont a üzemelnek. Letöltheti őket manuálisan a [Azure Stack frissítéseinek letöltési segédprogramja eszköz](https://aka.ms/azurestackupdatedownload). Ha a skálázási egység csatlakoztatva van, a frissítés automatikusan megjelenik a felügyeleti portálon, **frissítés érhető el**. Teljes havonta frissítési csomagokat is szerepelnek, az egyes kiadások. Minden kiadással kapcsolatos további információkért kattintson bármelyik-esről a [frissítési csomag kiadási ütem](#update-package-release-cadence) című szakaszát.
 
 A gyorsjavítás csomagok ugyanazt az Azure biztonságos végpontját üzemelnek. Letöltheti őket segítségével manuálisan a beágyazott hivatkozásokat az egyes a megfelelő gyorsjavítás; KB-cikkek Ha például [Azure Stack gyorsjavítás 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). A teljes, a havi csomagok hasonlóan az Azure Stack-operátorok is .xml, .bin és az .exe fájlok letöltésére és importálhatja őket a leírtak [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md). Csatlakoztatott skálázási egység az Azure Stack-operátoroknak jelenik meg a gyorsjavításokat, automatikusan megjelenik a rendszergazdai portálon üzenettel **frissítés érhető el**.
 

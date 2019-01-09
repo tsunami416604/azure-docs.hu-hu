@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0135f3ab79852e55187874ce1d5a0695238de207
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074835"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117077"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
-Miután [Application Insights beállítása a projektben](../../application-insights/app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
+Miután [Application Insights beállítása a projektben](../../azure-monitor/app/app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
 
 ## <a name="find-your-telemetry"></a>A telemetria keresése
 Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az alkalmazás számára létrehozott Application Insights-erőforrás.
@@ -34,7 +34,7 @@ Az Áttekintés panelen (oldal) az alkalmazás számára az alkalmazás fő diag
 A diagramok és táblázatok bármely, és rögzítheti őket az irányítópulton. Ezzel a módszerrel összeállíthatók a legfontosabb telemetriát a különböző alkalmazások egy központi irányítópulton.
 
 ## <a name="dashboards"></a>Irányítópultok
-Először is látja a bejelentkezés után a [Microsoft Azure-portálon](https://portal.azure.com) egy irányítópult szerepel. Itt összeállíthatók a legfontosabb, Önnek az Azure-erőforrások, beleértve a használati adatok gyűjtése a különböző diagramok [Azure Application Insights](../../application-insights/app-insights-overview.md).
+Először is látja a bejelentkezés után a [Microsoft Azure-portálon](https://portal.azure.com) egy irányítópult szerepel. Itt összeállíthatók a legfontosabb, Önnek az Azure-erőforrások, beleértve a használati adatok gyűjtése a különböző diagramok [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Egy testreszabott irányítópulttal.](./media/app-insights-dashboards/31.png)
 

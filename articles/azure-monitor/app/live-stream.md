@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 99a8ac29167db4619d68cfa51de6a747d5ae9a51
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079170"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119233"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
-Az élő metrikák Stream segítségével a valós idejű, éles webes alkalmazások válnak küldetése mintavételi [Application Insights](../../application-insights/app-insights-overview.md). Válassza ki, és szűrje a mérőszámokhoz és a teljesítményszámlálókhoz valós időben, anélkül, hogy a szolgáltatás megzavarását megtekintéshez. Vizsgálja meg a minta sikertelen kérések és kivételek hívásláncait. A [Profiler](../../azure-monitor/app/profiler.md), [pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md), és [Teljesítménytesztelés](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), élő metrikák Stream nem invazív, és hatékony diagnosztikai eszközt biztosít az élő webes Ezen a webhelyen.
+Az élő metrikák Stream segítségével a valós idejű, éles webes alkalmazások válnak küldetése mintavételi [Application Insights](../../azure-monitor/app/app-insights-overview.md). Válassza ki, és szűrje a mérőszámokhoz és a teljesítményszámlálókhoz valós időben, anélkül, hogy a szolgáltatás megzavarását megtekintéshez. Vizsgálja meg a minta sikertelen kérések és kivételek hívásláncait. A [Profiler](../../azure-monitor/app/profiler.md), [pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md), és [Teljesítménytesztelés](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), élő metrikák Stream nem invazív, és hatékony diagnosztikai eszközt biztosít az élő webes Ezen a webhelyen.
 
 Az élő Stream metrikák a következőket teheti:
 

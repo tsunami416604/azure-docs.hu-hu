@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: b996d42e5c543235d09b46d29889bc5eaeafd52a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413890"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118975"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Gyakori hibaüzenetek ismertetése, ha Ön kezeli az Azure virtual machines
 
@@ -108,7 +108,7 @@ Ez a szakasz ismerteti a Gyakori hibaüzenetek jelentkezhetnek, ha a virtuális 
 |  InvalidParameter  |  A megadott lemezkép-hivatkozásban már definiált lemezek nem bírálhatók felül felhasználói lemezképekkel.  |
 |  InvalidParameter  |  Egy lemez neve "{0}" már használja az ugyanazon virtuális merevlemez URL-cím {1}.  |
 |  InvalidParameter  |  A megadott tartalék tartományok száma {0} tartományba kell esnie {1} való {2}.  |
-|  InvalidParameter  |  A licenc típusa {0} je neplatná. Érvényes licenctípusok a következők: Windows_Client vagy Windows_Server, kis-és nagybetűket.  |
+|  InvalidParameter  |  A licenc típusa {0} je neplatná. Az érvényes licenctípusok a következők: Windows_Client vagy Windows_Server, kis-és nagybetűket.  |
 |  InvalidParameter  |  Linux gazdagép neve nem lehet hosszabb {0} karakter hosszúságúnak és nem tartalmazhatja a következő karaktereket: {1}.  |
 |  InvalidParameter  |  Nyilvános Ssh-kulcsokat a cél elérési út jelenleg csak az alapértelmezett értékére {0} a Linux-telepítőügynök ismert hibája miatt.  |
 |  InvalidParameter  |  A lemez LUN {0} már létezik.  |
@@ -171,14 +171,14 @@ Ez a szakasz ismerteti a Gyakori hibaüzenetek jelentkezhetnek, ha a virtuális 
 |  OperationNotAllowed  |  Nem sikerült átméretezni a virtuális Gépet, mert a kért méret {0} nem érhető el a fürt, ahol a rendelkezésre állási csoport jelenleg lefoglalt. Az elérhető méretek a következők: {1}. Információ a virtuális gépek átméretezésének stratégiájával címen olvasható https://aka.ms/azure-resizevm.  |
 |  OperationNotAllowed  |  Nem sikerült átméretezni a virtuális Gépet, mert a kért méret {0} nem érhető el a fürt, ahol a virtuális gép jelenleg lefoglalt. A virtuális gép átméretezése {1} szabadítsa fel (Ez a leállítási művelet az Azure Portalon), és próbálkozzon újra az átméretezés. Információ a virtuális gépek átméretezésének stratégiájával címen olvasható https://aka.ms/azure-resizevm.  |
 |  OSProvisioningClientError  |  Virtuális gép operációs rendszerének kiépítése nem sikerült "{0}", mert a vendég operációs rendszer kiépítése folyamatban van.  |
-|  OSProvisioningClientError  |  Virtuális gép operációs rendszerének kiépítése "{0}" nem sikerült. A hiba részletei: {1} győződjön meg arról, hogy a lemezkép megfelelően lett előkészítve (általánosítva). <ul><li>Windows utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  Virtuális gép operációs rendszerének kiépítése "{0}" nem sikerült. Hiba részletei: {1} Győződjön meg arról, hogy a lemezkép megfelelően lett előkészítve (általánosítva). <ul><li>Windows utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
 |  OSProvisioningClientError  |  SSH-állomáskulcs létrehozása nem sikerült. A hiba részletei: {0}. Oldja meg a probléma ellenőrizze-e ha Linux-ügynök megfelelően van-e beállítva. <ul><li>Ellenőrizheti a webhelyen található utasításokat: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  A virtuális Géphez megadott felhasználónév érvénytelen ezen Linux-disztribúció. A hiba részletei: {0}.  |
 |  OSProvisioningInternalError  |  Virtuális gép operációs rendszerének kiépítése nem sikerült "{0}" belső hiba miatt.  |
 |  OSProvisioningTimedOut  |  Virtuális gép operációs rendszerének kiépítése "{0}" a megengedett időn belül nem fejeződött be. Előfordulhat, hogy a virtuális gép továbbra is be a sikeres kiépítés. Ellenőrizze később a telepítés állapotát.  |
 |  OSProvisioningTimedOut  |  Virtuális gép operációs rendszerének kiépítése "{0}" a megengedett időn belül nem fejeződött be. Előfordulhat, hogy a virtuális gép továbbra is be a sikeres kiépítés. Ellenőrizze később a telepítés állapotát. Ellenőrizzük, hogy a lemezkép megfelelően lett előkészítve (általánosítva).   <ul><li>Windows utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Útmutatás Linux rendszerhez: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OSProvisioningTimedOut  |  Virtuális gép operációs rendszerének kiépítése "{0}" a megengedett időn belül nem fejeződött be. Azonban a virtuális gép vendégügynökének futó volt észlelhető. Ez azt sugallja, hogy a vendég operációs rendszer nem lett megfelelően előkészített Virtuálisgép-lemezképként kell használni (a CreateOption = FromImage). A probléma megoldásához, vagy használjon a virtuális Merevlemezt, mert createoption = Attach vagy készítse elő megfelelően képként való használathoz:   <ul><li>Windows utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Útmutatás Linux rendszerhez: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OverConstrainedAllocationRequest  |  A virtuális gép előírt mérete jelenleg nem érhető el a kijelölt helyszínen.  |
+|  OverConstrainedAllocationRequest  |  A virtuális gép előírt mérete jelenleg nem áll rendelkezésre a kiválasztott helyen.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Erőforrás platform folyamatban lévő frissítése miatt jelenleg nem lehet frissíteni. Később próbálja meg újra.  |
 |  StorageAccountLimitation  |  Storage-fiók "{0}" nem támogatja a lapblobokat, melyek szükségesek a lemezek létrehozásához.  |
 |  StorageAccountLimitation  |  Storage-fiók "{0}" processzorhasználata túllépte a számára lefoglalt kvótát.  |

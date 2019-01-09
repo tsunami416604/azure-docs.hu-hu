@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: wesmc
-ms.openlocfilehash: 21f6f729cef6478c190c9e8b872723e4ae67fb1e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: da99d446da1451c2b05f6ecab8ba19eaa1e2bfa3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019107"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104947"
 ---
-# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
+# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Az ASP.NET egy gyorsítótár-feltöltési ranglista létrehozása
 
 Ebben az oktatóanyagban frissíteni a *ContosoTeamStats* ASP.NET web app alkalmazásban létrehozott a [ASP.NET a rövid útmutató az Azure Cache redis](cache-web-app-howto.md)is tartalmaz, amely egy ranglistát a [gyorsítótár-feltöltési a minta](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) az Azure redis Cache. A mintaalkalmazás a csoportstatisztikák adatbázisból származó listáját jeleníti meg, és tárolására, és az adatok lekérése a gyorsítótárból, a teljesítmény javítása a Redis Azure Cache használatának különböző módjait mutatja be. Amikor befejezte az oktatóanyag egy olyan futó webalkalmazással, amely olvasási és írási egy adatbázisba, az Azure Cache Redis optimalizált, és az Azure-ban üzemeltetett rendelkezik.
 
@@ -520,7 +520,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
@@ -544,7 +544,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)

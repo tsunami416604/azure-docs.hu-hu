@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dc78c8794923a180264058fc984a58aa29171c58
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b992947245175803f8f2f8c6a5aba70fe13bde2c
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978853"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084021"
 ---
 Az optimalizált Virtuálisgép-méretek ajánlat egy magas memória – Processzor aránya, amelyek ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélességet az ennél a csoportosításnál méreteire vonatkoztatva számát. 
 
@@ -32,14 +32,14 @@ Az optimalizált Virtuálisgép-méretek ajánlat egy magas memória – Process
 
 ACU: 160-190 <sup>1</sup>
 
-A Premium Storage: támogatott
+Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazási: támogatott
+Prémium szintű Storage gyorsítótárazást:  Támogatott
 
 Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) processzoron alapulnak, amelynek az órajele akár 3,5 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával, valamint prémium szintű tárolás használatára is képes. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
 
 
-| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_E2s_v3 | 2      | 16          | 32             | 4              | 4,000 / 32 (50)                                                       | 3,200 / 48                                | 2 / 1,000                                   |
 | Standard_E4s_v3&nbsp;<sup>2</sup> | 4      | 32          | 64             | 8              | 8,000 / 64 (100)                                                      | 6,400 / 96                                | 2 / 2,000                                   |
@@ -60,18 +60,18 @@ Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) pr
 
 ## <a name="ev3-series"></a>Ev3-sorozat 
 
-ACU: 160-190 <sup>1</sup>
+ACU: 160 - 190 <sup>1</sup>
 
-A Premium Storage: Nem támogatott.
+Prémium szintű Storage:  Nem támogatott
 
-Prémium szintű Storage gyorsítótárazási: Nem támogatott
+Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
 Az Ev3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) processzoron alapulnak, amelynek az órajele akár 3,5 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
 
 Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához ESv3-méreteket vegyen igénybe. Az Esv3-méretek díjszabása és számlázási mérőszámai megegyeznek az Ev3-sorozatéval. 
 
 
-| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_E2_v3  | 2         | 16          | 50             | 4              | 3000/46/23                                               | 2 / 1,000                 |
 | Standard_E4_v3  | 4         | 32          | 100            | 8              | 6000/93/46                                               | 2 / 2,000                 |
@@ -93,13 +93,13 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 
 ACU: 160-180 <sup>1</sup>
 
-A Premium Storage: támogatott
+Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazási: támogatott
+Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-Írásgyorsító: [támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Írásgyorsító:  [Támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
 | Standard m8ms&nbsp;<sup>3</sup>    | 8  | 218.75 | 256  | 8  | 10 000 vagy 100 (793)  | 5000 / 125 | 4 / 2000 |
 | Standard m16ms&nbsp;<sup>3</sup>   | 16 | 437.5  | 512  | 16 | 20 000 / 200-as (1,587) | 10,000 / 250 | 8 / 4000 |
@@ -109,7 +109,7 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 | Standard m64s  | 64 | 1,024   | a 2048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 16,000          |
 | Standard m64ls  | 64 | 512    | a 2048 | 64 | 80,000 / 800 (6,348) | 40,000 / 1,000 | 8 / 16,000 |
 | Standard m 64 MS&nbsp;<sup>3</sup>  | 64   | 1,792 | a 2048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 16,000          |
-| Standard m 128 s&nbsp;<sup>2,&nbsp;3</sup> | 128  | a 2048        | 4096  | 64 | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
+| Standard m 128 s&nbsp;<sup>2</sup> | 128  | a 2048        | 4096  | 64 | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
 | Standard m 128 MS&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3,892  | 4096 | 64 | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
 | Standard_M64   | 64  | 1,024 | 7,168  | 64 | 80,000 / 800 (1,228) | 40,000 / 1,000 | 8 / 16,000 |
 | Standard_M64m  | 64  | 1,792 | 7,168  | 64 | 80,000 / 800 (1,228) | 40,000 / 1,000 | 8 / 16,000 |
@@ -120,7 +120,7 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 
 <sup>1</sup> M-sorozatú virtuális gépek szolgáltatás Intel® Hiperszálkezelési technológiát
 
-<sup>2</sup> több mint 64 vCPU esetében a támogatott vendég operációs rendszerek egyikét: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 és Red Hat Enterprise Linux, CentOS 7.3 vagy Oracle Linux 7.3 + lis 4.2.1.
+<sup>2</sup> több mint 64 vCPU esetében a támogatott vendég operációs rendszerek egyikét: A Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 és Red Hat Enterprise Linux, CentOS 7.3 vagy Oracle Linux 7.3 + lis 4.2.1.
 
 <sup>3</sup> core elérhető méretek korlátozott.
 
@@ -129,13 +129,13 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 
 ## <a name="gs-series"></a>GS sorozat 
 
-ACU: 180-240 <sup>1</sup>
+ACU: 180 - 240 <sup>1</sup>
 
-A Premium Storage: támogatott
+Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazási: támogatott
+Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_GS1 |2 |28 |56 |8 |10,000 / 100 (264) |5,000 / 125 |2 / 2000 |
 | Standard_GS2 |4 |56 |112 |16 |20,000 / 200 (528) |10,000 / 250 |2 / 4000 |
@@ -143,7 +143,7 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 | Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80,000 / 800 (2,112) |40,000 / 1,000 |8 / 16000 |
 | Például a Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160,000 / 1,600 (4,224) |80,000 / 2,000 |8 / 20000 |
 
-<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) és a GS sorozatú virtuális gépek előfordulhat, hogy lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket. 
+<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) és a GS sorozatú virtuális gépek előfordulhat, hogy lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége. További információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md). 
 
 <sup>2</sup> példány elkülönítve egyetlen ügyfél számára dedikált hardveren üzemel.
 
@@ -153,13 +153,13 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 
 ## <a name="g-series"></a>G-sorozat
 
-ACU: 180–240
+ACU: 180 - 240
 
-A Premium Storage: Nem támogatott.
+Prémium szintű Storage:  Nem támogatott
 
-Prémium szintű Storage gyorsítótárazási: Nem támogatott
+Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8x500                       | 2 / 2000                     |
 | Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 16 / 16 x 500                       | 2 / 4000                     |
@@ -175,11 +175,11 @@ Prémium szintű Storage gyorsítótárazási: Nem támogatott
 
 ACU: 210 – 250 <sup>1</sup>
 
-A Premium Storage: támogatott
+Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazási: támogatott
+Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8,000 / 64 (72) |6,400 / 96 |2 / 1500 |
 | Standard_DS12_v2&nbsp;<sup>3</sup> |4 |28 |56 |16 |16,000 / 128 (144) |12,800 / 192 |4 / 3000 |
@@ -188,7 +188,7 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 | Standard_DS15_v2&nbsp;<sup>2</sup> |20 |140 |280 |64 |80,000 / 640 (720) |64,000 / 960 |8 / 25000&nbsp;<sup>4</sup>
 
 
-<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) DSv2-sorozatba virtuális gép is lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége.  Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket.
+<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) DSv2-sorozatba virtuális gép is lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége.  További információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md).
 
 <sup>2</sup> példány elkülönítve egyetlen ügyfél számára dedikált hardveren üzemel.
 
@@ -200,13 +200,13 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 
 ## <a name="dv2-series-11-15"></a>A Dv2 sorozat 11. 15.
 
-ACU: 210–250
+ACU: 210 – 250
 
-A Premium Storage: Nem támogatott.
+Prémium szintű Storage:  Nem támogatott
 
-Prémium szintű Storage gyorsítótárazási: Nem támogatott
+Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret              | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret              | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |

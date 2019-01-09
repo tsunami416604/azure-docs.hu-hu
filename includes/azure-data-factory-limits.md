@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 1/8/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 856d702bcf1f566d0cc455cdd2676e6c2e23d179
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 203168f27e06d58c192bc5009db077461738011a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53326487"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122785"
 ---
 Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértelmezett korlátozások, hogy az ügyfél-előfizetések védettek, a többi összes számítási feladatokat a helyen. A korlátok számos egyszerűen kiváltható az előfizetéséhez, a maximális korlátig lépjen kapcsolatba az ügyfélszolgálattal.
 
@@ -23,7 +23,7 @@ Data factory az olyan több-bérlős szolgáltatás, amely az alábbi alapértel
 | -------- | ------------- | ------------- |
 | Az Azure-előfizetés adat-előállítók | 50 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Adat-előállító entitások (Pipeline, adatkészletek, eseményindítók, társított szolgáltatásokat, integrációs modulok) teljes száma | 5000 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Egy előfizetéshez tartozó Azure-SSIS integrációs Runtime(s) teljes Processzormagok | 128 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egy előfizetéshez tartozó Azure-SSIS integrációs Runtime(s) teljes Processzormagok | 256 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egyidejű folyamatfuttatások száma a data factory (előállító összes folyamatok között megosztott) | 10,000  | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maximális tevékenységek / folyamat (beleértve a belső tevékenységek tárolók) | 40 | 40 |
 | Egy folyamat maximális paraméterek | 50 | 50 |

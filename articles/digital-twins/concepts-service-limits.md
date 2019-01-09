@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 7d9686b9bcc6cb89fabf4fdaa79bf5b8c6c45ddc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1e7b6ed7c401bed741142dfc02efc7990cf67f6e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020625"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118814"
 ---
 # <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
@@ -74,4 +74,4 @@ Az alábbi korlátozások költségplafont, az eszközök küldhet az Azure digi
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az Azure digitális Twins minta, nyissa meg [rövid útmutatóban elérhető teremkeresés](./quickstart-view-occupancy-dotnet.md).
+- Próbálja ki az Azure digitális Twins minta, nyissa meg [rövid útmutatóban elérhető teremkeresés](./quickstart-view-occupancy-dotnet.md).

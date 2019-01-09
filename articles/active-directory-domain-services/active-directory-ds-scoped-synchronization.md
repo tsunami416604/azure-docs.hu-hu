@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory Domain Services: A szinkronizálási hatóköre |} A Microsoft Docs'
+title: 'Az Azure Active Directory tartományi szolgáltatások: Szinkronizálás hatóköre |} A Microsoft Docs'
 description: A felügyelt tartományok az Azure ad-ből hatókörön belüli szinkronizálás konfigurálása
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ae51151bd20d2c715d868e916f7bc633040efa40
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442981"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121530"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>A felügyelt tartomány Azure AD-ből a hatókörön belüli szinkronizálás konfigurálása
 Ez a cikk bemutatja, hogyan konfigurálása csak adott felhasználói fiókokat, az Azure AD-címtár szinkronizálható az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.
@@ -62,8 +62,8 @@ A következő lépéseket a felügyelt tartományra a hatókörön belüli szink
   * [2. feladat: A szükséges szolgáltatásnév létrehozása az Azure AD-címtárban](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
   * [3. feladat: Hozzon létre és konfigurálja a "AAD DC rendszergazdák" csoportot](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
   * [4. feladat: Az Azure AD tartományi szolgáltatások erőforrás-szolgáltató regisztrálása](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
-  * [5. feladat: Erőforráscsoport létrehozása](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
-  * [6. feladat: Hozzon létre, és konfigurálja a virtuális hálózat](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
+  * [5. feladat: Hozzon létre egy erőforráscsoportot](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
+  * [6. feladat: Hozzon létre és konfigurálja a virtuális hálózat](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
 
 2. Válassza ki a csoportokat szeretne szinkronizálni, és szeretné szinkronizálni a felügyelt tartományra a csoportok megjelenített nevét.
 
@@ -79,7 +79,7 @@ A következő lépéseket a felügyelt tartományra a hatókörön belüli szink
   > Az "AAD DC rendszergazdák" csoportba szerepelnie kell a konfigurált hatókörbe tartozó szinkronizálási csoportok listája. Ha nem adja meg az ehhez a csoporthoz, a felügyelt tartomány használhatatlan lesz.
   >
 
-4. Ezzel a felügyelt tartomány létrehozása és engedélyezése a felügyelt tartományhoz tartozó hatókörrel rendelkező szinkronizálási csoport-alapú. Tulajdonság ```"filteredSync" = "Enabled"``` a a ```Properties``` paraméter. Például lásd a következő parancsfájl-töredék, másolt [feladat 7: kiépítése az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
+4. Ezzel a felügyelt tartomány létrehozása és engedélyezése a felügyelt tartományhoz tartozó hatókörrel rendelkező szinkronizálási csoport-alapú. Tulajdonság ```"filteredSync" = "Enabled"``` a a ```Properties``` paraméter. Például lásd a következő parancsfájl-töredék, másolt [feladat 7: Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban üzembe](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
 
   ```powershell
   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -173,7 +173,7 @@ foreach ($id in $newGroupIds)
     }
     catch
     {
-        Write-Error "Exception occured assigning Object-ID: $id. Exception: $($_.Exception)."
+        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
     }
 }
 

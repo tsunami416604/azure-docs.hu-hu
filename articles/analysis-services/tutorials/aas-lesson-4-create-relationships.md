@@ -1,5 +1,5 @@
 ---
-title: 'Azure Analysis Services oktatóanyag – 4. lecke: Kapcsolatok létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 4. lecke: Kapcsolatok létrehozása |} A Microsoft Docs'
 description: A lecke a kapcsolatok létrehozását ismerteti az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d37b30708e3817460e5aa01f045c1e9f9032532e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428490"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117741"
 ---
 # <a name="create-relationships"></a>Kapcsolatok létrehozása
 
 Ebben a leckében ellenőrzi az adatok importálásakor automatikusan létrehozott kapcsolatokat, és új kapcsolatokat vesz fel a különböző táblák között. Az ilyen két tábla közti kapcsolatok az adott táblák adatainak korrelációját határozzák meg. Például a DimProduct és a DimProductSubcategory táblák kapcsolatának alapja, hogy mindegyik termék valamely alkategóriába tartozik. További tudnivalókért lásd a [kapcsolatokat](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular) ismertető cikket.
   
-A lecke elvégzésének várható időtartama: **10 perc**.  
+Becsült idő a lecke elvégzéséhez: **10 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([3. lecke: Megjelölés dátumtáblaként](../tutorials/aas-lesson-3-mark-as-date-table.md)). 
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [3. lecke: Megjelölés dátumtáblázatként](../tutorials/aas-lesson-3-mark-as-date-table.md). 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Meglévő kapcsolatok áttekintése és új kapcsolatok létrehozása  
-Amikor az Adatok lekérése utasítás használatával importálta az adatokat, hét táblát hozott létre az AdventureWorksDW2014 adatbázisból. Általában amikor relációs forrásból importál adatokat, a meglévő kapcsolatok automatikusan importálva lesznek az adatokkal együtt. Ahhoz, hogy az Adatok lekérése automatikusan létrehozza a kapcsolatokat az adatmodellben, az adatforrásban is kapcsolatoknak kell fennállnia a táblák között.
+Amikor az Adatok lekérése utasítás használatával importálta az adatokat, hét táblát hozott létre az AdventureWorksDW2014 adatbázisból. Általában amikor relációs forrásból importál adatokat, a meglévő kapcsolatok automatikusan importálva lesznek az adatokkal együtt. Adatok lekérése automatikusan létrehozza a kapcsolatokat az adatmodellben sorrendben kell kapcsolatok között táblák az adatforrásban.
 
 Mielőtt folytatná a modell elkészítését, ellenőriznie kell, hogy a táblák közötti kapcsolatok megfelelően lettek-e létrehozva. Ebben az oktatóanyagban emellett három új kapcsolatot is fel fog venni.  
 
@@ -60,7 +60,7 @@ Mielőtt folytatná a modell elkészítését, ellenőriznie kell, hogy a tábl�
     |Igen|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |Igen|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Ha bármelyik kapcsolat hiányzik, ellenőrizze, hogy a modell tartalmazza-e a következő táblákat: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory és FactInternetSales. Ha egyazon adatforrásból különböző időpontokban importál táblákat, az adott táblák közötti kapcsolatok nem lesznek létrehozva, és manuálisan kell létrehozni azokat. Ha nem láthatók kapcsolatok, ez azt jelenti, hogy az adatforrásban sincsenek. Manuálisan létrehozhatja őket az adatmodellben.
+    Ha bármelyik kapcsolat hiányzik, ellenőrizze a modell a következő táblákat tartalmazza: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory és FactInternetSales. Ha egyazon adatforrásból különböző időpontokban importál táblákat, az adott táblák közötti kapcsolatok nem lesznek létrehozva, és manuálisan kell létrehozni azokat. Ha nem láthatók kapcsolatok, ez azt jelenti, hogy az adatforrásban sincsenek. Manuálisan létrehozhatja őket az adatmodellben.
 
 ### <a name="take-a-closer-look"></a>Közelebbi vizsgálat
 A Diagramnézetben észrevehet egy nyilat, egy csillagot és egy számot a táblák közötti kapcsolatokat mutató vonalakon.
@@ -95,7 +95,7 @@ Egyes esetekben további kapcsolatokat kell létrehozni a modell táblái közö
      ![aas-lesson4-newinactive](../tutorials/media/aas-lesson4-newinactive.png)
   
 ## <a name="whats-next"></a>A következő lépések
-[5. lecke: Számított oszlopok létrehozása](../tutorials/aas-lesson-5-create-calculated-columns.md)
+[5. lecke: Számított oszlopok létrehozása](../tutorials/aas-lesson-5-create-calculated-columns.md).
   
   
   

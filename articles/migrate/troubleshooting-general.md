@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9bf445b54ab6ac2d3edf53fcc4bbcc39ee475a81
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259154"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119101"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -136,7 +136,7 @@ Az Azure Migrate collector PowerCLI letölti és telepíti azt a készüléket. 
 2. Nyissa meg a könyvtár C:\ProgramFiles\ProfilerService\VMWare\Scripts\
 3. Futtassa a szkriptet InstallPowerCLI.ps1
 
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Unhandledexception hiba történt: System.IO.FileNotFoundException
+### <a name="error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception"></a>Unhandledexception hiba történt: System.IO.FileNotFoundException
 
 A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma miatt. Kövesse az alábbi lépéseket a probléma megoldásához:
 

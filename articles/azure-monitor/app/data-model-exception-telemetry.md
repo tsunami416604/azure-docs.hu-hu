@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 5800bbc71158da42bc0baf21a4219be3ce54b22b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: efd7ad43ee9a2206f474621612eca7dfe5079f99
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000523"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117096"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetria. kivétel: Application Insights-adatmodell
 
-A [Application Insights](../../application-insights/app-insights-overview.md), kivétel példányát jelöli egy kezelt vagy nem kezelt kivétellel, hogy a figyelt alkalmazásban végrehajtása közben lépett fel.
+A [Application Insights](../../azure-monitor/app/app-insights-overview.md), kivétel példányát jelöli egy kezelt vagy nem kezelt kivétellel, hogy a figyelt alkalmazásban végrehajtása közben lépett fel.
 
 ## <a name="problem-id"></a>Probléma azonosítója
 

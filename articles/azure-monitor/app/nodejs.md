@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8414633ae90cccdf4496826bee673e82e3c80460
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 075f08f89e0bbdefa76623a284971f46a1b3966a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035542"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119798"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
-Az üzembe helyezést követően a háttérszolgáltatásokat az [Azure Application Insights](../../application-insights/app-insights-overview.md) felügyeli, hogy segítsen [felderíteni és gyorsan diagnosztizálni a teljesítménnyel kapcsolatos és más jellegű problémákat](../../azure-monitor/app/detect-triage-diagnose.md). Az Application Insights használható bármilyen Node.js-szolgáltatáshoz, amely futhat az adatközpontban, egy Azure-beli virtuális gépen vagy webalkalmazáson, vagy akár egy nyilvános felhőn is.
+Az üzembe helyezést követően a háttérszolgáltatásokat az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) felügyeli, hogy segítsen [felderíteni és gyorsan diagnosztizálni a teljesítménnyel kapcsolatos és más jellegű problémákat](../../azure-monitor/app/detect-triage-diagnose.md). Az Application Insights használható bármilyen Node.js-szolgáltatáshoz, amely futhat az adatközpontban, egy Azure-beli virtuális gépen vagy webalkalmazáson, vagy akár egy nyilvános felhőn is.
 
 A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építse be az SDK-t a programkódba, majd állítson be egy megfelelő Application Insights-erőforrást az Azure-ban. Az SDK ennek az erőforrásnak küldi az adatokat további elemzés és vizsgálat céljából.
 

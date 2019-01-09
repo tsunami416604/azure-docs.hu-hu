@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: a3d27e7be97901c6757ca6991a7404f3b00f21e7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 241227270aeede93b74d3d94c782dfe7eaf1fbf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605568"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121702"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Tegye közzé az aktív, betanított alkalmazást egy átmeneti és éles végpontot
 
@@ -56,11 +56,9 @@ Hangulatelemzés lehetővé teszi, hogy a LUIS integrálása [Szövegelemzés](h
 
 Nem kell adnia a Text Analytics kulcsot, és nem jár költségekkel számlázási ezt a szolgáltatást az Azure-fiókjába. Ha bejelöli ezt a beállítást, az állandó. 
 
-Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket.
+Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket. Vélemények címkéjének `positive`, `neutral`, és `negative` támogatott kulturális környezet történik. Jelenleg csak angol nyelvű támogatja a vélemény címkék. 
 
 A JSON-végpont választ véleményelemzéssel kapcsolatos további információkért lásd: [hangulatelemzés](luis-concept-data-extraction.md#sentiment-analysis)
-
-
 
 ## <a name="next-steps"></a>További lépések
 

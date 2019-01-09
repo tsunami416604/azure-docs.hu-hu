@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 923ba21574cce201c7b073b3078145239dd8c0ec
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617417"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121600"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -51,8 +51,8 @@ A Reliable Actors használatának elsajátításához csak néhány alapfogalomm
 * **Aktorillesztő**. Az aktor illesztője határozza meg az aktor erős típusmegadású nyilvános illesztőjét. A Reliable Actor modellterminológiában az aktor illesztője határozza meg azt, hogy az aktor milyen típusú üzeneteket képes értelmezni és feldolgozni. Az aktor illesztőjét használják a további aktorok és ügyfélalkalmazások, hogy üzeneteket „küldjenek” (aszinkron módon) az aktor felé. A Reliable Actors több illesztőt is képes implementálni.
 * **ActorProxy-osztály**. Az ActorProxy-osztály használatával hívják meg az ügyfélalkalmazások az aktor illesztőjén keresztül közzétett metódusokat. Az ActorProxy-osztály két fontos funkciót lát el:
   
-  * Névfeloldás: Képes megállapítani az aktor helyét a fürtben (megtalálja a fürt azon csomópontját, ahol az aktor található).
-  * Hibakezelés: Képes újra megpróbálkozni a metódusok meghívásával, majd újra feloldani az aktor helyét például olyan esetben, ha egy hiba miatt az aktort át kellett helyezni a fürt egy másik csomópontjára.
+  * Névfeloldás: Milyen pontossággal képes megállapítani az aktor helyét a fürtben (megtalálja a fürt hol található a csomópont).
+  * Tevékenységhibák kezelése: Képes újra megpróbálkozni és újra feloldani az aktor helyét például a fürt egy másik csomópont át kellett helyezni az aktort hiba után.
 
 Az aktorok illesztőivel kapcsolatban a következő szabályokat érdemes megemlíteni:
 
@@ -179,7 +179,7 @@ public static void main(String[] args) throws Exception {
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
             Thread.sleep(Long.MAX_VALUE);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception occured", e);
+            logger.log(Level.SEVERE, "Exception occurred", e);
             throw e;
         }
     }

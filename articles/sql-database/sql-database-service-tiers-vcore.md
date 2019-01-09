@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 01/02/2019
-ms.openlocfilehash: f756f043a7ab3c9086b21b8bdb88a5a6a7ed60df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6a5902b8c442d83c86142bad516b862febd6522c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001600"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118200"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -66,6 +66,10 @@ Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyako
 A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjszabást kínál az SQL Database-adatbázishoz a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
 
 ![díjszabás](./media/sql-database-service-tiers/pricing.png)
+
+Ha szeretné a helyszíni SQL Server meglévő licenceinek felhasználása, fizethet a szolgáltatásért csak az alapszintű díjakból az alapul szolgáló Azure-infrastruktúra (például Azure virtuális Gépen az adatbázist futtató kiszolgáló) közben a az SQL Server Database engine licenc nem szerepel a számlán. Egy bizonyos időn mind az SQL Server és az Azure SQL Database a helyszíni licencét is használhatja. Ellenkező esetben az SQL Server adatbázismotor-licenc költségei szerepelni fog az adatbázis vagy példány díja. Ha a PowerShell vagy az Azure CLI létrehozni vagy frissíteni az adatbázis vagy -példányt használ, kétféle díjszabási választhat:
+- **BasePrice** azt jelenti, hogy egy érvényes részeként használni kívánt SQL Server-licencét [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) és, hogy szeretné-e kell azonban fizetnie csak az alapszintű infrastruktúra költségeit.
+- **LicenseIncluded** azt jelenti, hogy Ön nem rendelkezik a helyszíni SQL Server-licencét, vagy nem szeretné a helyszíni licence használatához adatbázis vagy a felügyelt példány számára. Ebben az esetben az SQL Server-licenc fog szerepelni a számlán. 
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Áttelepítés a DTU-modellből Virtuálismag-modell
 

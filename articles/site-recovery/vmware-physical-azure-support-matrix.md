@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: a66917f1ab4e554dbb5a8cd1fb9013e111970714
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999815"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107498"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -169,7 +169,7 @@ Vendég-kiszolgáló titkosított lemez | Nem
 Vendég-kiszolgáló NFS | Nem
 Vendég-kiszolgáló SMB 3.0-s | Nem
 Vendég-kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
-Vendég-kiszolgáló > 1 TB-os lemez | Igen<br/><br/>Legfeljebb 4095 GB-ig
+Vendég-kiszolgáló > 1 TB-os lemez | Igen<br/><br/>Legfeljebb 4095 GB-ig<br/><br/> Lemez 1024 MB-nál nagyobbnak kell lennie.
 Vendég-kiszolgáló, 4K fizikai logikai és a 4 k szektormérete lemez | Igen
 Vendég/server 4K logikai lemez és 512 bájtos fizikai szektorméretet | Igen
 Csíkozott lemez a Vendég/kiszolgáló kötet > 4 TB-ig <br/><br/>Logikaikötet-kezelő (LVM)| Igen

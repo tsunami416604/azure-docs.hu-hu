@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 947e5d4004565fd10e81e703111daf26fce10368
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d33f50239f6385dc1e331aa44fe5a62e02dac1db
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973519"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107038"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
 
@@ -68,11 +68,12 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Tárolás** > **Backup és Site Recovery (OMS)** lehetőséget.
-2. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
-3. Az **Erőforráscsoport** mezőben a **contosoRG** értéket használjuk.
-4. A **Hely** mezőben a **Nyugat-Európa** beállítást használjuk.
-5. Ha szeretne gyorsan hozzáférni az új tárolóhoz az irányítópultról, válassza a **Rögzítés az irányítópulton** > **Létrehozás** elemet.
+1. Az Azure Portalon kattintson a **+ erőforrás létrehozása**, és keressen a piactéren **a Recovery services**.
+2. Kattintson a **Backup és Site Recovery (OMS)**, és a Backup és Site Recovery lapon kattintson **létrehozás**. 
+1. A **Recovery Services-tároló** > **neve**, adjon meg egy, a tárolót azonosító rövid nevet. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
+2. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban használunk **contosoRG**.
+3. A **hely**, válassza ki a régiót, amelyben a tároló kell lennie. a **Nyugat-Európa** beállítást használjuk.
+4. Ha szeretne gyorsan hozzáférni az új tárolóhoz az irányítópultról, válassza a **Rögzítés az irányítópulton** > **Létrehozás** elemet.
 
    ![Új tároló létrehozása](./media/tutorial-prepare-azure/new-vault-settings.png)
 

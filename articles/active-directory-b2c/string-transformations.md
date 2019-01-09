@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce2ad3e699b930f801ad47083d6cfcf6a7937a5c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: f2823ec32b6658aa22c38294c09c9738c9121c39
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433446"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121583"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc jogcím-átalakítás
 
@@ -31,7 +31,7 @@ Hasonlítsa össze a két jogcímeket, és ha azok nem egyenlő a megadott össz
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | inputClaim1 | sztring | Első jogcím típusa, amelyet össze kell hasonlítani. |
 | Bemeneti jogcím | inputClaim2 | sztring | Második jogcím típusa, ami kell összehasonlítani. |
-| InputParameter | stringComparison | sztring | karakterlánc-összehasonlítási, az értékek egyike: sorszámát, OrdinalIgnoreCase. |
+| InputParameter | stringComparison | sztring | adatkarakterlánc-összehasonlítás, az értékek egyikét: Sorszámát, OrdinalIgnoreCase. |
 
 A **AssertStringClaimsAreEqual** jogcímek átalakítását a rendszer mindig futtatja a egy [ellenőrzési technikai profil](validation-technical-profile.md) , hívja meg a [önálló kiszolgáló által megerősített technikai profil](self-asserted-technical-profile.md). A **UserMessageIfClaimsTransformationStringsAreNotEqual** önellenőrzött technikai profil metaadataiban szabályozza a hibaüzenet a felhasználó számára látható.
 
@@ -115,7 +115,7 @@ Bármilyen karakterlánc takar csökkentheti, vagy a nagybetűs módosításáho
 - A bemeneti jogcímek:
     - **e-mailek**: SomeOne@contoso.com
 - Bemeneti paraméterek:
-    - **toCase**: ALACSONYABB
+    - **toCase**: LOWER
 - Kimeneti jogcímek:
     - **e-mailek**: someone@contoso.com
 
@@ -144,9 +144,9 @@ A jogcím-átalakítás való használatát egy karakterlánc takar érték beá
 ### <a name="example"></a>Példa
 
 - A bemeneti paraméter:
-    - **érték**: Contoso használati feltételei...
+    - **Érték**: Contoso használati feltételei...
 - Kimeneti jogcímek:
-    - **createdClaim**: A TOS takar a "Contoso használati szolgáltatás..." értéket tartalmaz.
+    - **createdClaim**: A távközlési takar a "Contoso használati szolgáltatás..." értéket tartalmaz.
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -184,7 +184,7 @@ A jogcím-átalakítás annak ellenőrzéséhez, hogy a jogcím megegyezik egy m
     - **inputClaim1**: someone@contoso.com
     - **inputClaim2**: someone@outlook.com
 - Bemeneti paraméterek:
-    - **operátor**: nem egyenlő
+    - **Operátor**:  NEM EGYENLŐ
     - **ignoreCase**: igaz
 - Kimeneti jogcímek:
     - **kimeneti jogcím**: igaz
@@ -197,7 +197,7 @@ Meghatározza, hogy a jogcím értéke megegyezik a bemeneti paraméter értéke
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | inputClaim1 | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
 | InputParameter | Operátor | sztring | A lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
-| InputParameter | compareto metódus végrehajtása | sztring | karakterlánc-összehasonlítási, az értékek egyike: sorszámát, OrdinalIgnoreCase. |
+| InputParameter | compareto metódus végrehajtása | sztring | adatkarakterlánc-összehasonlítás, az értékek egyikét: Sorszámát, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | logikai | Itt adhatja meg, hogy ez az összehasonlítás figyelmen kívül hagyja a kis-és a két összehasonlított karakterlánc. |
 | kimeneti jogcím | kimeneti jogcím | logikai | Az a jogcím-átalakítás után előállított takar meghívása. |
 
@@ -223,8 +223,8 @@ Használhatja a jogcím-átalakítás, ellenőrizze, hogy egy jogcímet a megado
 - A bemeneti jogcímek:
     - **inputClaim1**: v1
 - Bemeneti paraméterek:
-    - **compareto metódus végrehajtása**: V1
-    - **operátor**: egyenlő 
+    - **Compareto metódus végrehajtása**: 1. verzió
+    - **Operátor**: EGYENLŐ 
     - **ignoreCase**: igaz
 - Kimeneti jogcímek:
     - **kimeneti jogcím**: igaz
@@ -238,7 +238,7 @@ Létrehoz egy véletlenszerű karakterlánc a véletlenszám-generátor használ
 | InputParameter | randomGeneratorType | sztring | Adja meg a generált, véletlenszerű értéket `GUID` (globálisan egyedi azonosító) vagy `INTEGER` (szám). |
 | InputParameter | stringFormat | sztring | [Opcionális] A véletlenszerű értéket formátumban. |
 | InputParameter | Base64 | logikai | [Opcionális] A véletlenszerű értéket átalakítása base64. Ha karakterláncként van érvényben, az érték karakterlánc-formátum után kódolása base64. |
-| InputParameter | maximumNumber | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg az maximute. |
+| InputParameter | maximumNumber | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg a maximális számát. |
 | InputParameter | Kezdőérték  | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg a kezdőérték véletlenszerű értéket. Megjegyzés: az azonos kezdőérték poskytne véletlenszerű számból álló ugyanabban a sorrendben. |
 | kimeneti jogcím | kimeneti jogcím | sztring | Az a jogcím-átalakítás után előállított ClaimTypes meghívása. A véletlenszerű értéket. |
 
@@ -280,7 +280,7 @@ Alábbi példa egy egész számot 0 és 1000 közötti véletlenszerű értéket
 ### <a name="example"></a>Példa
 
 - Bemeneti paraméterek:
-    - **randomGeneratorType**: egész szám
+    - **randomGeneratorType**: EGÉSZ SZÁM
     - **maximumNumber**: 1000
     - **stringFormat**: OTP_{0}
     - **Base64**: False (hamis)
@@ -392,7 +392,7 @@ A jogcímek átalakításáról kikeresi az elem szövegét, és annak értéké
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -402,7 +402,7 @@ A jogcímek átalakításáról kikeresi az elem szövegét, és annak értéké
 - A bemeneti jogcímek:
     - **mapFromClaim**: B2C_V1_90001
 - Kimeneti jogcímek:
-    - **restrictionValueClaim**: átállítást jelentkezzen be, mert Ön egy kisebb.
+    - **restrictionValueClaim**: Akkor tud bejelentkezni, mert Ön egy kisebb.
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -415,7 +415,7 @@ A jogcím értéke keresnie egy másik jogcím értéke alapján értékek list�
 | InputParameter | errorOnFailedLookup | logikai | Annak szabályozása, hogy hibát ad vissza, ha nincs egyező keresési. |
 | kimeneti jogcím | inputParameterId | sztring | Az a jogcím-átalakítás után előállított ClaimTypes meghívása. Az egyező azonosító értékét |
 
-Az alábbi példában szereplő egyik inpuParameters gyűjtemény keres. A jogcímek átalakítását a tartomány nevét az azonosító és az értékét (az alkalmazás azonosítója) visszaadása.
+Az alábbi példában szereplő egyik inputParameters gyűjtemény keres. A jogcímek átalakítását a tartomány nevét az azonosító és az értékét (az alkalmazás azonosítója) visszaadása.
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -465,7 +465,7 @@ A jogcím-átalakítást használatával távolítsa el a jogcímek tulajdonság
 ```
 
 - A bemeneti jogcímek:
-    - **kimeneti jogcím**: üdvözli a Contoso-alkalmazást. Ha továbbra is megkeresheti, és használja ezt a webhelyet, elfogadja megfelelnek, és a következő feltételek kötelezőek...
+    - **kimeneti jogcím**: Üdvözli a Contoso-alkalmazást. Ha továbbra is megkeresheti, és használja ezt a webhelyet, elfogadja megfelelnek, és a következő feltételek kötelezőek...
 - Kimeneti jogcímek:
     - **kimeneti jogcím**: NULL
 
@@ -538,13 +538,13 @@ Használhatja a jogcím-átalakítás, ellenőrizze, hogy egy jogcímet a megado
 - A bemeneti jogcímek:
     - **bemeneti jogcím**: v1
 - Bemeneti paraméterek:
-    - **matchTo**: V1
+    - **matchTo**: 1. verzió
     - **stringComparison**: ordinalIgnoreCase 
-    - **stringMatchMsg**: B2C_V1_90005
-    - **stringMatchMsgCode**: v2 verzióra frissíti a TOS
+    - **stringMatchMsg**:  B2C_V1_90005
+    - **stringMatchMsgCode**:  A távközlési v2 frissítése
 - Kimeneti jogcímek:
     - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: v2 verzióra frissíti a TOS
+    - **outputClaim2**: A távközlési v2 frissítése
     - **stringCompareResultClaim**: igaz
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
@@ -582,11 +582,11 @@ Például a következő jogcím-e átalakítási ellenőrzések Ha értékét **
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **claimToMatch**: kisebb
+    - **claimToMatch**: Kiskorú
 - Bemeneti paraméterek:
-    - **matchTo**: kisebb
+    - **matchTo**: Kiskorú
     - **stringComparison**: ordinalIgnoreCase 
-    - **outputClaimIfMatched**: B2C_V1_90001
+    - **outputClaimIfMatched**:  B2C_V1_90001
 - Kimeneti jogcímek:
     - **isMinorResponseCode**: B2C_V1_90001
     - **isMinor**: igaz

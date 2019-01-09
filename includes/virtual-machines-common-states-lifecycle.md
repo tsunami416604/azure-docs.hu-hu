@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035447"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122802"
 ---
 Azure-beli virtuális gépek (VM) halad át, amely osztályozhatók állapotot *kiépítés* és *power* állapotok. Ez a cikk célja be ezeket az állapotokat, és kifejezetten kiemelés, ha az ügyfelek a számlázás például használat. 
 
@@ -108,7 +108,7 @@ Példány használati számlázás
  ]</code><br>
 </td>
 <td>
-<p><b>Nem számítunk fel díjat&#42;</b></p>
+<p><b>A számlázás&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -151,7 +151,7 @@ Példány használati számlázás
 </table>
 
 
-&#42;Egyes Azure-erőforrások, például a lemezek és a hálózatkezelés, a példány állapota függetlenül díjkötelesek. 
+&#42;Egyes Azure-erőforrások, például a lemezek és a hálózatkezelés, a költségek. Szoftverek licenceit a példányon nem díjkötelesek.
 
 ## <a name="provisioning-states"></a>Kiépítési állapotok
 
@@ -244,7 +244,7 @@ A platform elfogadta a felhasználó által kezdeményezett művelet után az al
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>Megjegyzés:</b>: operációs rendszer telepítése váltáshoz **sikertelen** Ha egy operációs rendszer hibája, vagy az operációs rendszer telepítése nem időben. Ügyfeleink az infrastruktúra a központilag telepített virtuális gép díját felszámítjuk.</p>
+<p><b>Megjegyzés</b>: Operációs rendszer telepítése váltáshoz **sikertelen** Ha egy operációs rendszer hibája, vagy az operációs rendszer telepítése nem időben. Ügyfeleink az infrastruktúra a központilag telepített virtuális gép díját felszámítjuk.</p>
 </td>
 </tr>
 </table>
@@ -287,7 +287,7 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
 
 API példányait tartalmazó nézetet biztosít a virtuális gép fut-állapot információt. További információkért lásd: a [virtuálisgép - példányokat tartalmazó nézet](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API dokumentációja.
 
-Az Azure erőforrás-kezelő egy egyszerű felhasználói Felületet biztosít a virtuális gép futó állapotban megtekintése: [erőforrás-kezelő](https://resources.azure.com/).
+Az Azure erőforrás-kezelő egy egyszerű felhasználói Felületet biztosít a virtuális gép futó állapotban megtekintése: [Az erőforrás-kezelő](https://resources.azure.com/).
 
 Kiépítési állapotok a virtuális gép tulajdonságait, és példányait tartalmazó nézet látható. Virtuális gép példányait tartalmazó nézet energiaállapotok érhetők el. 
 

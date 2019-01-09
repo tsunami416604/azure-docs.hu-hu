@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fe4a3a4c5bbb1954fb44bd94d33d108b81ba3893
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 898f0974a6a29abde5c84d611adc8d50c3873141
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057073"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121071"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
 Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos telemetria-eseményeinek időbeli változásait, ezzel segítve a problémák és hibák gyors azonosítását. Azáltal, hogy részletesebb diagnosztikai információhoz ad hozzáférést, a Trends segíthet az alkalmazás teljesítményének növelésében, a kivételek okának megtalálásában, valamint az egyéni eseményeire vonatkozó háttérismeretek feltárásában.
@@ -29,7 +29,7 @@ Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos tel
 
 ## <a name="configure-your-web-app-for-application-insights"></a>A webapp konfigurálása az Application Insightshoz
 
-Ha még nem tette meg, [konfigurálja a webappot az Application Insightshoz](../../application-insights/app-insights-overview.md). Ez lehetővé teszi a webapp számára, hogy telemetriát küldjön az Application Insights portálra. A Trends eszköz innen olvassa be a telemetriát.
+Ha még nem tette meg, [konfigurálja a webappot az Application Insightshoz](../../azure-monitor/app/app-insights-overview.md). Ez lehetővé teszi a webapp számára, hogy telemetriát küldjön az Application Insights portálra. A Trends eszköz innen olvassa be a telemetriát.
 
 Az Application Insights Trends a Visual Studio 2015 Update 3 és újabb verziókban érhető el.
 
@@ -69,7 +69,7 @@ Ezután kattintson az **Analyze Telemetry** (Telemetria elemzése) lehetőségre
 Navigáció a képi megjelenítésben található buborékok között:
 
 * Kattintson egy buborék kiválasztásához. Ezzel frissíti az ablak alján található szűrőket, csak azokat az eseményeket összegezve, amelyekre egy adott időszakban került sor.
-* Kattintson duplán egy buborékra a Search eszköz eléréséhez és azoknak az egyéni telemetriaeseményeknek a megtekintéséhez, amelyek az adott időszakban következtek be.
+* Kattintson duplán egy buborékra a Search eszköz és az egyéni telemetriaeseményeknek adott időintervallumban bekövetkezett összes
 * Nyomja le a CTRL billentyűt, és kattintson egy buborékra, ha meg szeretné szüntetni a kijelölését a képi megjelenítésben.
 
 > [!TIP]
@@ -94,7 +94,7 @@ Szűrő visszavonásához kattintson a **Remove selected filters and query again
 ![Több szűrő](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Rendellenességek keresése
-A Trends eszköz képes kiemelni azon események buborékait, amelyek az ugyanazon idősorozatban található buborékokkal összehasonlítva rendellenesnek mutatkoznak. A View Type (Nézettípus) legördülő menüben válassza a **Counts in time bucket (highlight anomalies)** (Időtartamra vonatkozó számérték – rendellenességek kiemelése) vagy a **Percentages in time bucket (highlight anomalies)** (Időtartamra vonatkozó százalékérték – rendellenességek kiemelése) lehetőséget. A piros buborékok rendellenesek. A rendellenességek olyan szám- vagy százalékértékkel rendelkező buborékok, amelyek 2,1-szeresen meghaladják a számok/százalékok elmúlt két időtartományra jellemző standard szórását (48 óra, ha az utolsó 24 órát nézi stb.).
+A Trends eszköz képes kiemelni azon események buborékait, amelyek az ugyanazon idősorozatban található buborékokkal összehasonlítva rendellenesnek mutatkoznak. A View Type (Nézettípus) legördülő menüben válassza a **Counts in time bucket (highlight anomalies)** (Időtartamra vonatkozó számérték – rendellenességek kiemelése) vagy a **Percentages in time bucket (highlight anomalies)** (Időtartamra vonatkozó százalékérték – rendellenességek kiemelése) lehetőséget. A piros buborékok rendellenesek. Rendellenesek azok a buborékok/százalékos arányok 2.1-es szórásának a múltban lezajlott számok/százalékok a két időintervallumban (48 óra, ha látja az utolsó 24 óra stb.).
 
 ![A színes pontok rendellenességeket jeleznek.](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

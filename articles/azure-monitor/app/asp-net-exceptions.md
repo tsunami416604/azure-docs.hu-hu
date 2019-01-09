@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6f534858194719a0d3059808073ae057f150b599
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021016"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116986"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása
-Az élő webalkalmazását kivételek által jelentett [Application Insights](../../application-insights/app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.
+Az élő webalkalmazását kivételek által jelentett [Application Insights](../../azure-monitor/app/app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.
 
 ## <a name="set-up-exception-reporting"></a>Kivétel jelentéskészítés beállítása
 * A kiszolgálóalkalmazás által jelentett kivételek rendelkezik:

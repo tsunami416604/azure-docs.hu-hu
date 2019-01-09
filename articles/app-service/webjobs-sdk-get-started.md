@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: d9f3685e0a3961631f1577827cc415cb91d38a15
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 913b23946f70500ace7ab7e4ff7b5cd2858492fc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074240"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121661"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az eseményvezérelt háttérben történő feldolgozás az Azure WebJobs SDK használatának első lépései
 
@@ -292,7 +292,7 @@ Ebben a szakaszban Ön hozhat létre, és a projekt helyi futtatása, majd aktiv
 
 ## <a name="add-application-insights-logging"></a>Adja hozzá az Application Insights-naplózás
 
-A projekt az Azure-ban fut, amikor a függvény végrehajtása nem tud figyelni a konzolkimenet megtekintésével. A figyelési megoldást, azt javasoljuk, hogy a rendszer [Application Insights](../application-insights/app-insights-overview.md). További információkért lásd: [figyelése az Azure Functions](../azure-functions/functions-monitoring.md).
+A projekt az Azure-ban fut, amikor a függvény végrehajtása nem tud figyelni a konzolkimenet megtekintésével. A figyelési megoldást, azt javasoljuk, hogy a rendszer [Application Insights](../azure-monitor/app/app-insights-overview.md). További információkért lásd: [figyelése az Azure Functions](../azure-functions/functions-monitoring.md).
 
 Ebben a szakaszban a következő feladatokat állíthat be az Application Insights-naplózás az Azure-ban üzembe helyezése előtt hajtsa végre:
 

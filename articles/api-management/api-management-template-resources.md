@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cfbb04ea56eacfd859b6ce520da5396ad91d9abf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970331"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121294"
 ---
 # <a name="azure-api-management-template-resources"></a>Az Azure API Management-sablon erőforrásainak
 Az Azure API Management biztosít a következő típusú erőforrásokat használja, a fejlesztői portál sablonjainak.  
@@ -108,7 +108,7 @@ Az Azure API Management biztosít a következő típusú erőforrásokat haszná
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Biztos, hogy eltávolítja az alkalmazást?|  
 |WebDevelopersAppNotPublished|Nincs közzétéve|  
-|WebDevelopersAppNotSubminted|Nincs elküldve|  
+|WebDevelopersAppNotSubmitted|Nincs elküldve|  
 |WebDevelopersAppTableCategoryHeader|Kategória|  
 |WebDevelopersAppTableNameHeader|Name (Név)|  
 |WebDevelopersAppTableStateHeader|Állapot|  
@@ -155,7 +155,7 @@ Az Azure API Management biztosít a következő típusú erőforrásokat haszná
 |PasswordTooManyRepetitions|Túl sok ismétlődés|  
 |PasswordSequenceFound|A jelszó szekvenciákat tartalmaz|  
 |PagerLabelPageSize|Oldalméret|  
-|CurtainLabelLoading|Betöltés...|  
+|CurtainLabelLoading|Betöltés…|  
 |TablePlaceholderNothingToDisplay|A kijelölt időszakban és hatókörben nincsenek adatok|  
 |ButtonLabelClose|Bezárás|  
   

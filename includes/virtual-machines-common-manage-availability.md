@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035268"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084055"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Azure-beli virtuális gép szolgáló három forgatókönyv: nem tervezett hardverkarbantartás, váratlan állásidő és tervezett karbantartás.
@@ -32,7 +32,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 
 * [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]
 * [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]
-* [Ütemezett események segítségével proaktív módon érintő események VM válasz ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Használja a virtuális gép érintő események proaktív módon választ az ütemezett események](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása]
 * [Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]
 * [Szolgáltatói adatközpontok meghibásodásai elleni rendelkezésre állási zónák használata]
@@ -65,6 +65,10 @@ Ha a virtuális gépeit [nem felügyelt lemezeken](../articles/virtual-machines/
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
 2. **Tekintse át a Storage-fiókokban lévő nem felügyelt lemezekre vonatkozó [korlátokat](../articles/storage/common/storage-scalability-targets.md),** mielőtt további virtuális merevlemezeket adna hozzá egy tárfiókhoz.
 3. **Használjon külön tárfiókot minden egyes virtuális géphez a rendelkezésre állási csoportban.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. Storage-fiókok megosztásához, ha a fenti ajánlott eljárások a különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható legyen ![nem felügyelt lemezek tartalék tartományok között](./media/virtual-machines-common-manage-availability/umd-updated.png)
+
+## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Az ütemezett események segítségével proaktív módon reagálhat érintő események VM
+
+Szolgáltatásra való előfizetéskor [ütemezett események](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), a virtuális gép értesült a közelgő karbantartásokról események, amelyek hatással lehetnek a virtuális gép. Ha az ütemezett események engedélyezve vannak, a virtuális gép egy minimális időtartama a karbantartási tevékenység végrehajtása előtt van megadva. Például, ami hatással lehet a virtuális gép gazda operációs rendszer frissítéseinek várólistára kerülnek, adja meg a hatást eseményeket, valamint egy időpontot, amikor a karbantartás történik, ha nem tesz. Ütemezés események is várólistára, ha az Azure-hoz közeli hardverhiba, ami hatással lehet a virtuális gép, amely lehetővé teszi, hogy Ön döntheti el, ha a javítás kell végrehajtani. Ügyfelek átadni a feladatokat a másodlagos előtt a karbantartási feladatok végrehajtásához például állapotmentést, az eseményt használja, és így tovább. Miután elvégezte a logikai szabályosan kezeléséhez a karbantartási események, jóváhagyhatja a szálankénti függőben lévő Ütemezett esemény, hogy a platform karbantartási folytatásához.
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása
 Ha a virtuális gépek majdnem azonosak, és ugyanaz a rendeltetésük az alkalmazásban, javasoljuk, hogy konfiguráljon egy rendelkezésre állási csoportot az alkalmazás mindegyik rétegéhez.  Ha két különböző réteget ugyanabba a rendelkezésre állási csoportba helyez, az ugyanabban az alkalmazásrétegben lévő mindegyik virtuális gép egyszerre indítható újra. Ha legalább két virtuális gépet konfigurál az egyes rendelkezésre állási csoportokba minden egyes réteghez, ezzel garantálja, hogy minden egyes rétegben legalább egy virtuális gép elérhető lesz.

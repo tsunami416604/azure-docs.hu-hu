@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1f772e1a3e5b3e121b968d358166e9018c80d573
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b95a9b2243dda83be7de67802a8b6678419e335f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192692"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102584"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -30,7 +30,7 @@ Ha a fentiek egyikével sem működik, a következő támogatási csatornákat i
 * Az Azure támogatási szerződés rendelkező ügyfelek is nyisson egy támogatási kérést [az Azure Portalon](https://manage.windowsazure.com/?getsupport=true).
 * Az OMI a következő problémák diagnosztizálása a [OMI – hibaelhárítási útmutató](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
 * Fájl egy [GitHub-problémát](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* A Log Analytics visszajelzési oldalán tekintse át a beküldött ötletekre és hibák [ http://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) vagy egy új fájlt.  
+* A Log Analytics visszajelzési oldalán tekintse át a beküldött ötletekre és hibák [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) vagy egy új fájlt.  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Fontos a naplók helye és a naplógyűjtő eszköz
 

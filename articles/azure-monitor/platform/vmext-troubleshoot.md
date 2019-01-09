@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 72a24175b93057bf774810517f4d6c5e4b6c41eb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f2f50144e188a297468ac8ea8fc8891d2e4ec145
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183318"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106490"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>A Log Analytics Virtuálisgép-bővítmény hibáinak elhárítása
 Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a Microsoft Azure platformon futó Windows és Linux rendszerű virtuális gépekhez a Log Analytics Virtuálisgép-bővítmény, és azok megoldását lehetséges megoldásokat javasol.
 
 A bővítmény állapotának ellenőrzéséhez hajtsa végre az alábbi lépéseket az Azure Portalról.
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **virtuális gépek**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **virtuális gépek**.
 3. A virtuális gépek listáját keresse meg és jelölje ki azt.
 3. A virtuális gépen kattintson **bővítmények**.

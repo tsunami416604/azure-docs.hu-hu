@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 8f76c53964d062db76ea7d40cdb0ced2d015fc79
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716010"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120733"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -25,10 +25,10 @@ Az Azure Active Directory (Azure AD) egy alkalmazásproxy-szolgáltatás, amely 
 Ez az oktatóanyag:
 
 > [!div class="checklist"]
-> * Megnyílik a portokat a kimenő forgalom számára, és lehetővé teszi a hozzáférést az adott URL-címek
-> * A telepítő az összekötőt a Windows-kiszolgálón, és regisztrálja azt a proxyval
-> * Ellenőrzi az összekötő telepítve van és megfelelően regisztrálva
-> * Hozzáad egy helyszíni alkalmazást az Azure AD-bérlővel
+> * Megnyílik a portokat a kimenő forgalom számára, és lehetővé teszi, hogy adott URL-címek elérését.
+> * A telepítő az összekötőt a Windows-kiszolgálón, és regisztrálja azt a proxyval.
+> * Ellenőrzi az összekötő telepítve van és megfelelően regisztrálva.
+> * Hozzáad egy helyszíni alkalmazást, az Azure AD-bérlővel.
 > * Ellenőrzi, hogy egy tesztfelhasználót bejelentkezhetnek az alkalmazás egy Azure AD-fiók használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek

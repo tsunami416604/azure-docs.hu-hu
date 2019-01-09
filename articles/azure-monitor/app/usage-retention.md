@@ -13,16 +13,16 @@ ms.date: 05/03/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 4b21632f936093c0a48abf2d13389f22306045cc
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052904"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121362"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Adatmegőrzési felhasználóelemzés webes alkalmazásokhoz az Application insights segítségével
 
-Az adatmegőrzési funkció [Azure Application Insights](../../application-insights/app-insights-overview.md) segít, elemzése, hogy hány felhasználó térjen vissza az alkalmazást, és milyen gyakran adott feladatok elvégzéséhez, vagy célok eléréséhez. Ha egy játék helyhez futtat, például sikerült felhasználók, akik játékfejlesztőknek, amelynek a szám elvesztése után térjen vissza a hely utáni winning visszaadása, akik a számok összehasonlítása. Ennek segítségével növelheti a felhasználói élmény és az üzleti stratégia is.
+Az adatmegőrzési funkció [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) segít, elemzése, hogy hány felhasználó térjen vissza az alkalmazást, és milyen gyakran adott feladatok elvégzéséhez, vagy célok eléréséhez. Ha egy játék helyhez futtat, például sikerült felhasználók, akik játékfejlesztőknek, amelynek a szám elvesztése után térjen vissza a hely utáni winning visszaadása, akik a számok összehasonlítása. Ennek segítségével növelheti a felhasználói élmény és az üzleti stratégia is.
 
 ## <a name="get-started"></a>Bevezetés
 

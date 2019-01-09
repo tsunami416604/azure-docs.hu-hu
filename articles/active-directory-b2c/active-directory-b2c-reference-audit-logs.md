@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 31f0517cd4d61fa324072eae954404c899451cc3
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320237"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117401"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 
@@ -68,7 +68,7 @@ Auditnaplók más tevékenységek azonos folyamatra számára közzétett Azure 
 ### <a name="prerequisites"></a>Előfeltételek
 Az Azure ad reporting API hitelesítésére először kell regisztrálni egy alkalmazást. Ügyeljen arra, hogy kövesse a [az Azure AD reporting API elérésének előfeltételeit](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
 
-### <a name="accesing-the-api"></a>Az API-t egypéldányú
+### <a name="accessing-the-api"></a>Az API elérése
 Az API-n keresztül az Azure AD B2C-naplók letöltéséhez, a naplók szűrése szeretné a **B2C** kategória. Szűrés kategória szerint, használja a lekérdezési karakterlánc paramétereként az Azure AD reporting API-végpont hívásakor, ahogy az alábbi:
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`

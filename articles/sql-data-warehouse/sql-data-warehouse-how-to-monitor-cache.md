@@ -5,17 +5,17 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
+ms.component: performance
 ms.topic: how-to
-ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2a0504ae0e5c3dbf70ad84526176beae52f55870
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385532"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103128"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
 A tároló-architektúra Gen2 automatikusan rétegezi a leggyakrabban lekérdezett oszlopcentrikus szegmensek egy gyorsítótárban levő NVMe SSD-k alapján készült Gen2 data warehouse-adattárházak. Nagyobb teljesítmény van adatmegfelelőség, ha a lekérdezések beolvasása szegmenset, amely a gyorsítótárban levő vannak. Ez a cikk bemutatja, hogyan monitorozást és hibaelhárítást végezhet a lassú lekérdezések teljesítményének meghatározása, hogy a számítási feladatok optimális kihasználása a Gen2-gyorsítótár.  
@@ -39,15 +39,15 @@ A mátrix az alábbi forgatókönyvek a gyorsítótár-metrikák értékei alapj
 | **Felhasznált gyorsítótár nagy százalékban** |          1. forgatókönyv           |          2. forgatókönyv          |
 | **Felhasznált gyorsítótár alacsony százalékos aránya**  |          3. forgatókönyv           |          4. forgatókönyv          |
 
-**1. forgatókönyv:** optimálisan használja a gyorsítótárat. [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul.
+**1. forgatókönyv:** A gyorsítótár optimálisan használja. [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul.
 
-**2. forgatókönyv:** az aktuális adatok munkakészletének nem fér el őket a gyorsítótárhoz, amely egy alacsony gyorsítótár találati százaléka fizikai olvasások miatt. Érdemes felskálázni az teljesítményi szinthez, és futtassa újra a számítási feladatok, a gyorsítótár feltöltése miatt.
+**2. forgatókönyv:** Az aktuális adatok munkakészletének nem fér el őket a gyorsítótárhoz, amely egy alacsony gyorsítótár találati százaléka fizikai olvasások miatt. Érdemes felskálázni az teljesítményi szinthez, és futtassa újra a számítási feladatok, a gyorsítótár feltöltése miatt.
 
-**3. forgatókönyv:** valószínű, hogy a lekérdezés lassan fut, a gyorsítótár nem okok miatt. [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul. Emellett érdemes lehet [vertikális leskálázást a példány](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) csökkentése érdekében a gyorsítótár méretét a költségek csökkentése érdekében. 
+**3. forgatókönyv:** Valószínű, hogy a lekérdezés lassan fut, a gyorsítótár nem okok miatt. [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul. Emellett érdemes lehet [vertikális leskálázást a példány](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) csökkentése érdekében a gyorsítótár méretét a költségek csökkentése érdekében. 
 
-**4. forgatókönyv:** kellett egy ritkán használt gyorsítótár, amely lehet az oka, miért érdemes a lekérdezés lassú volt. Vegye figyelembe, hogy a lekérdezés ismételt módon működő adatkészlet most már a gyorsítótárba kerüljenek. 
+**4. forgatókönyv:** Kellett egy ritkán használt gyorsítótár, amely lehet az oka, miért érdemes a lekérdezés lassú volt. Vegye figyelembe, hogy a lekérdezés ismételt módon működő adatkészlet most már a gyorsítótárba kerüljenek. 
 
-**Fontos: Ha a gyorsítótár találati százaléka, vagy a számítási feladat újrafuttatása után nem frissíti a használt gyorsítótár százalékos aránya, a munkakészletének is már kell levő a memóriában. Megjegyzés: csak fürtözött oszlopcentrikus táblák lettek gyorsítótárazva.**
+**Fontos: Ha a gyorsítótár találati százaléka, vagy a számítási feladat újrafuttatása után nem frissíti a használt gyorsítótár százalékos aránya, a munkakészletének már a memóriában is található. Megjegyzés: csak fürtözött oszlopcentrikus táblák lettek gyorsítótárazva.**
 
 ## <a name="next-steps"></a>További lépések
 Általános lekérdezési teljesítmény hangolása további információkért lásd: [lekérdezések futtatása figyelhető](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).

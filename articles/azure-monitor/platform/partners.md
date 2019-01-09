@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 95e4140125f064d4e279c90f60b390c4762e8cf8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6ed8bae2e1571722f7a9a0030a48e64c4f7fbc60
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580212"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106664"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
 | Partnerek |  |  |
@@ -126,7 +126,7 @@ PagerDuty, a vezető incidenskezelés megoldás biztosított kiváló támogatá
 [Nyissa meg a dokumentációt.][pagerduty-doc]
 
 ## <a name="qradar"></a>QRadar
-A Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](http://www.ibm.com/support). Is [további információ az integráció itt az Azure-ral][qradar-doc].
+A Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](https://www.ibm.com/support). Is [további információ az integráció itt az Azure-ral][qradar-doc].
 
 ## <a name="sciencelogic"></a>ScienceLogic
 ScienceLogic tesz lehetővé a következő generációs informatikai szolgáltatás frissítési garanciát biztosító platform, minden olyan technológia, bárhol kezeléséhez. ScienceLogic kézbesíti, a méretezés, a biztonsági, az automatizálást és a rugalmasság szükséges, a feladatok informatikai erőforrások, szolgáltatások és alkalmazások kezelésének leegyszerűsítése érdekében. A ScienceLogic platform Azure API-k a Microsoft Azure-felületet használja. ScienceLogic az Azure-szolgáltatások és erőforrások valós idejű betekintést nyújt. Így biztos, hogy amikor valami nem működik, és gyorsabban megoldhatja. Az Azure a más felhőkben és data center rendszerek és szolgáltatásokkal együtt is kezelheti.
@@ -230,8 +230,8 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric bemutatása."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
-[cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix bemutatása."
-[datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadoggal dokumentációját."
+[cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix bemutatása."
+[datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadoggal dokumentációját."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentáció a dynatrace-szel."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic dokumentációjában."
 [grafana-doc]: ./grafana-plugin.md "Az Azure Monitor Grafana integráció."

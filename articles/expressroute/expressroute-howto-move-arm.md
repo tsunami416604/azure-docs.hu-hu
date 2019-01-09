@@ -1,19 +1,19 @@
 ---
-title: 'Kapcsolatcsoportok módosítása klasszikusról helyezze át a Resource Manager - ExpressRoute: PowerShell: Azure |} A Microsoft Docs'
+title: 'Helyezze át Kapcsolatcsoportok a klasszikusból a Resource Manager - ExpressRoute: PowerShell: Azure |} A Microsoft Docs'
 description: Ezen a lapon azt ismerteti, miként helyezhetők át klasszikus expressroute-kapcsolatcsoporthoz a PowerShell-lel Resource Manager-alapú üzemi modellbe.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/07/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: fae5ad4a9045115c0e7a68b0164593f639824073
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141499"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106766"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból Resource Manager-alapú üzemi modellbe PowerShell-lel
 
@@ -29,7 +29,7 @@ Szeretne használni egy ExpressRoute-kapcsolatcsoportot a klasszikus és Resourc
 
 ## <a name="move-an-expressroute-circuit"></a>ExpressRoute-Kapcsolatcsoportok áthelyezése
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>1. lépés: Kapcsolat részleteinek gyűjtsön a klasszikus üzemi modellben
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>1. lépés: A klasszikus üzemi modellből gyűjtse össze a kapcsolatcsoport részletei
 
 Jelentkezzen be a klasszikus Azure-környezet, és a kulcs összegyűjtése.
 
@@ -48,8 +48,8 @@ Jelentkezzen be a klasszikus Azure-környezet, és a kulcs összegyűjtése.
 3. A PowerShell-modulok importálása az Azure és az ExpressRoute számára.
 
   ```powershell
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
-  Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+  Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
   ```
 
 4. Az alábbi parancsmag használatával minden az ExpressRoute-Kapcsolatcsoportok a szolgáltatás-kulcsok beolvasása. A kulcsok beolvasása után másolja a **Szolgáltatáskulcs** a kapcsolatcsoport, amely szeretné helyezni a Resource Manager-alapú üzemi modellbe.
@@ -58,7 +58,7 @@ Jelentkezzen be a klasszikus Azure-környezet, és a kulcs összegyűjtése.
   Get-AzureDedicatedCircuit
   ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>2. lépés: Bejelentkezés, és hozzon létre egy erőforráscsoportot
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>2. lépés: Jelentkezzen be, és hozzon létre egy erőforráscsoportot
 
 Jelentkezzen be a Resource Manager-környezetben, és hozzon létre egy új erőforráscsoportot.
 

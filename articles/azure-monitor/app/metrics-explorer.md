@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6341ffe33984a7f40f9d4120ca6726a082463474
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 752f28eed3a6be5f7f136999c66e405bf7785a42
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039707"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120971"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Az Application Insightsban a metrikák felfedezése
 A metrikák [Application Insights] [ start] mért értékek és az eseményszámok az alkalmazásból küldött telemetriai adatokat a rendszer. Ezek segítenek teljesítménybeli problémák észlelése, és tekintse meg az alkalmazás használatának trendjei. Standard mérőszámok széles skáláját, és a saját egyéni metrikákkal és eseményekkel is létrehozhat.
@@ -193,7 +193,7 @@ Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvas
 
     Ha azt szeretné, a különböző szűrőivel beállíthatja a különböző diagramok különböző paneljein hozzon létre őket, mentse azokat, külön Kedvencek. Ha azt szeretné, is rögzítheti őket az irányítópulton, hogy tekintheti meg őket egymással párhuzamosan.
 * Ha olyan tulajdonságot, amely nincs meghatározva a metrikát a diagram csoportosítás, majd kell semmi a diagramra. Törölje a "Csoportosítás", vagy válasszon egy különböző csoportosítási tulajdonságot.
-* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Azure Cloud Services](../../application-insights/app-insights-overview.md). Nem Azure-webhelyekhez érhető el.
+* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Nem Azure-webhelyekhez érhető el.
 
 ## <a name="video"></a>Videó
 
@@ -206,5 +206,5 @@ Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvas
 <!--Link references-->
 
 [alerts]: ../../azure-monitor/app/alerts.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md

@@ -13,16 +13,16 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a2917ebeeb8e5c3da649e2416894cd2a81f4a3a1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053942"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119867"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése az Application insights szolgáltatásban
 
-Ismerje meg, amikor a felhasználók használják a webalkalmazásokat, milyen lapok, leginkább érdeklő, ahol a felhasználók is található, és milyen böngészőket és operációs rendszerek használata. Üzleti és a használati adatokat elemezhet [Azure Application Insights](../../application-insights/app-insights-overview.md).
+Ismerje meg, amikor a felhasználók használják a webalkalmazásokat, milyen lapok, leginkább érdeklő, ahol a felhasználók is található, és milyen böngészőket és operációs rendszerek használata. Üzleti és a használati adatokat elemezhet [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Application Insights felhasználók képernyőképe](./media/usage-segmentation/0001-users.png)
 

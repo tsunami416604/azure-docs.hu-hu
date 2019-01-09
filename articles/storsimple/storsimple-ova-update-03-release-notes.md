@@ -1,6 +1,6 @@
 ---
-title: A StorSimple virtuális tömb frissítések kibocsátási megjegyzései |} Microsoft Docs
-description: A StorSimple virtuális tömb 0,3 Update futtatása kritikus megnyitott problémák és megoldásuk ismertetése
+title: A StorSimple Virtual Array frissítések kibocsátási megjegyzések |} A Microsoft Docs
+description: A StorSimple Virtual Array a 0.3 futó kritikus megoldatlan problémák és megoldásaik ismerteti.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: fe9d4f6b232e9abcf1fe9fc5657044b6c72fedb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 635b5f4edf5d403c569b4957540fc105997b3e8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875514"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117673"
 ---
-# <a name="storsimple-virtual-array-update-03-release-notes"></a>A StorSimple virtuális tömb frissítés 0,3 kibocsátási megjegyzései
+# <a name="storsimple-virtual-array-update-03-release-notes"></a>A StorSimple Virtual Array frissítés 0,3 kibocsátási megjegyzései
 ## <a name="overview"></a>Áttekintés
-Az alábbi kibocsátási megjegyzések a kritikus megnyitott problémák és a Microsoft Azure StorSimple virtuális tömb frissítéseket megoldott problémák azonosításához.
+A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problémák és a Microsoft Azure StorSimple Virtual Array frissítések megoldott problémák azonosításához.
 
-A kibocsátási megjegyzések folyamatosan frissülnek, és megoldást igénylő kritikus fontosságú problémáit ismertté hozzáadásuk után. A StorSimple virtuális tömb telepítése előtt gondosan tekintse át a kibocsátási megjegyzésekben található információkat.
+A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté kritikus problémák adódnak. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-Frissítés 0,3 megfelel-e a szoftververzió **10.0.10288.0**.
+A 0.3 felel meg a szoftververzió **10.0.10288.0**.
 
 > [!NOTE]
-> Frissítések zavaró, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz azt eredményezi azok, háromszorosa a leállás.
+> Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást.
 > 
 > 
 
 ## <a name="whats-new-in-the-update-03"></a>A frissítés 0,3 újdonságai
-Frissítés 0,3 elsősorban hibajavítás build. Ebben a verzióban több hibák, ami azt eredményezi, a korábbi verziók egyikében biztonsági mentési hibák rendelkezik foglalkoztak.
+A 0.3 elsősorban hibajavítás build. Ebben a verzióban a korábbi verzióban biztonsági mentési hibák eredményez több hibák elhárítása.
 
 ## <a name="issues-fixed-in-the-update-03"></a>A frissítés 0,3 megoldott problémák
-A következő táblázat az ebben a kiadásban javított összegzését tartalmazza.
+Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
 | Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
-| 1 |Biztonsági másolatok |Probléma fordult elő a korábbi verzióban, ahol a biztonsági mentés sikertelen lesz a fájlmegosztás befejezéséhez. Ha a probléma lépett fel, a biztonsági mentési feladat sikertelen lesz, és a kritikus riasztás kiadását okozó értesítsék a felhasználót a StorSimple Manager szolgáltatásban. A probléma nem érintett az adatokat a megosztásokat vagy a férhetnek hozzá az adatokhoz. Az alapvető ok lett azonosította, és ebben a kiadásban megoldotta. <br></br> A javítás nem vonatkozik visszamenőleges által már azért jelent meg a probléma. Az ügyfelek, akik azért jelent meg a probléma a kell először 0,3 frissítést, majd kérje a Microsoft Support teljes rendszer biztonsági mentést készíteni a probléma megoldásához. Lépjen kapcsolatba az Microsoft Support, helyett az ügyfelek is visszaállíthatja új megosztás egy megfelelő biztonsági másolatból, az érintett megosztások. |
-| 2 |iSCSI |Probléma fordult elő a korábbi kiadás, ahol a kötetek eltűnik a StorSimple virtuális tömb kötetein adatok másolásakor. A probléma javítását a ebben a kiadásban. <br></br> A javítások érvénybe kizárólag a az újonnan létrehozott kötetek. A javítások nem vonatkoznak a visszamenőleges kötetek, amelyek már azért jelent meg a probléma. Az ügyfelek végigvitelével az érintett kötetek online a klasszikus Azure portálon keresztül, készítsen biztonsági mentést készíteni ezekhez a kötetekhez, és új kötetek majd visszaállítja ezeket a köteteket. |
+| 1 |Biztonsági másolatok |A problémát jelent a korábbi kiadásokban, ahol a biztonsági mentés sikertelen lenne egy fájlmegosztás esetében. Ha a probléma lépett fel, a biztonsági mentési feladat sikertelen lesz, és a egy kritikus riasztás megjelent a StorSimple Manager szolgáltatás értesíti a felhasználót. A probléma nem érintette a megosztások vagy az adatokhoz való hozzáférés található adatokat. Az alapvető ok lett azonosítva, és javítva a kiadásban. <br></br> A javítás nem érvényes visszamenőlegesen a megosztásokat, amely már jelent meg a probléma. Ügyfelek, akik azért jelent meg a probléma kell először a alkalmazni a 0.3, majd Microsoft Support teljes rendszer biztonsági mentését, hogy a probléma megoldásához. Helyett kapcsolatba lépne a Microsoft Support, ügyfelek is helyreállíthatja az új megosztásra az érintett megosztások megfelelő biztonsági. |
+| 2 |iSCSI |A korábbi kiadásokban a kötetek eltűnik, ha másol adatokat egy olyan kötetre a StorSimple Virtual Array a problémát jelent. A probléma lett javítva a kiadásban. <br></br> A javítások érvénybe csak az újonnan létrehozott kötetek. A javításokat nem visszamenőlegesen alkalmazni köteteket, amelyek már jelennek meg a probléma. Ügyfelek végigvitelével az érintett kötetek online a klasszikus Azure portálon keresztül, készítsen biztonsági mentést ezekhez a kötetekhez, és állítsa vissza az új kötetek ezeket a köteteket. |
 
-## <a name="known-issues-in-the-update-03"></a>A frissítés 0,3 ismert problémák
-A következő táblázat összefoglalja az ismert problémákról a StorSimple virtuális tömb, és a problémák kiadás jelezve a korábbi verzióiról tartalmazza. 
+## <a name="known-issues-in-the-update-03"></a>A frissítés 0,3 ismert problémái
+Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza. 
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
-| **1.** |Frissítések |A virtuális eszközök előzetes létrehozott támogatott általánosan rendelkezésre álló verziója nem frissíthető. |A virtuális eszközök használata a vész-helyreállítási munkafolyamat általános rendelkezésre állási kiadásának kell feladatátvételt. |
-| **2.** |Kiépített adatlemez |Ha a megadott méretű adatlemezt ellátta, és a megfelelő StorSimple virtuális eszköz létrehozása kell nem bontsa ki, vagy a adatlemez zsugorítani. Kísérlet történt egy elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye. | |
-| **3.** |Csoportházirend |Ha egy eszköz a tartományhoz, a Csoportházirend alkalmazása kedvezőtlen hatással lehet az eszköz műveletet. |Győződjön meg arról, hogy a virtuális tömb saját szervezeti egységben (OU) az Active Directory és nem a csoportházirend-objektumok (GPO) vonatkoznak rá. |
-| **4.** |Helyi webes felhasználói felület |A fokozott biztonság funkció engedélyezése az Internet Explorerben (IE ESC), előfordulhat, hogy egyes helyi felhasználói felület weboldalak például hibaelhárítás vagy karbantartási nem működik megfelelően. Gombok ezeken a lapokon nem is működnek. |Kapcsolja ki az Internet Explorer fokozott biztonsági funkciók. |
-| **5.** |Helyi webes felhasználói felület |A Hyper-V virtuális gépen a hálózati adapterek, a webes felhasználói felületén jelennek meg, 10 GB/s felületeihez. |Ez a viselkedés a Hyper-V tükre. Hyper-V mindig látható a virtuális hálózati adapterek 10 GB/s. |
-| **6.** |Rétegzett kötetek vagy megosztások |A rétegzett kötetek nem támogatott StorSimple együtt használható alkalmazások zárolást bájttartomány. Ha bájt tartomány zárolás engedélyezve van, nem StorSimple rétegezéséhez működik. |Ajánlott mértékeket tartalmazza: <br></br>Kapcsolja ki a bájttartomány zárolás a az alkalmazás logikáját.<br></br>Válassza ki az alkalmazás adatokat a rétegzett kötetek figyelésekor helyileg rögzített kötetekhez kell.<br></br>*Ismeret*: Ha engedélyezve van az bájt tartomány zárolás használatával helyileg rögzített kötetek, a helyileg rögzített kötet lehet online még a visszaállítás befejezése előtt. Ezekben az esetekben ha a helyreállítás van folyamatban, majd meg kell várnia a visszaállítás befejeződését. |
-| **7.** |Rétegzett megosztások |Nagy fájlok használata a kimenő lassú réteg eredményezheti. |Amikor olyan nagy fájlok, azt javasoljuk, hogy a legnagyobb fájl a fájlmegosztás méretének % 3-nál kisebb. |
-| **8.** |Használható kapacitás megosztások |Előfordulhat, hogy látja fogyasztás megosztani, ha nincs adat a megosztáson. Ennek oka az, a használt kapacitás megosztások metaadatokat tartalmaz. | |
-| **9.** |Vészhelyreállítás |Csak a vész-helyreállítási ugyanahhoz a tartományhoz, amely a forráseszközt fájlkiszolgáló végezheti el. A céleszközön egy másik tartományban való katasztrófa utáni helyreállítás nem támogatott ebben a kiadásban. |Ez egy későbbi kiadásban van megvalósítva. |
-| **10.** |Azure PowerShell |A StorSimple virtuális eszköz az Azure PowerShell ebben a kiadásban nem kezelhetők. |A virtuális eszközök minden felügyeleti a klasszikus Azure portálra, és a helyi webes felhasználói felületen keresztül kell végezni. |
-| **11.** |A jelszó módosítása |A virtuális tömb eszköz konzol csak en-US billentyűzet formátumú bemenetet fogad el. | |
-| **12.** |CHAP |CHAP hitelesítő adatok létrehozása után nem lesznek eltávolítva. Emellett ha CHAP hitelesítő adatok módosításához módosítania a kötetek offline állapotba, és hogy azok online, a változtatás érvénybe léptetéséhez. |Ezzel a problémával egy későbbi kiadásban. |
-| **13.** |az iSCSI-kiszolgáló |A "használt tárolási" az iSCSI-kötet jelenik meg a StorSimple Manager szolgáltatás és az iSCSI-gazdagép eltérőek lehetnek. |Az iSCSI-gazdagép a fájlrendszer nézet tartozik.<br></br>Az eszköz látja, ha a kötet maximális méret lefoglalt blokkok. |
-| **14.** |Fájlkiszolgáló |Ha egy fájlt egy mappában van egy alternatív Data Stream (ADS) társítva, a HIRDETÉSEK nem biztonsági mentése vagy visszaállítása vész-helyreállítási, a Klónozás és az elem szintű helyreállítás. | |
+| **1.** |Frissítések |Az előzetes kiadásban létrehozott virtuális eszközre nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális eszközök feladatátvételt kell végrehajtani a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
+| **2.** |Kiépített adatlemez |Miután ellátta bizonyos megadott méretű adatlemez és a megfelelő virtuális StorSimple-eszközt hozott létre, meg kell nem tartalomtól az adatlemezt. Elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye kísérletet. | |
+| **3.** |Csoportházirend |Ha egy eszköz a tartományhoz, a Csoportházirend alkalmazása kedvezőtlen hatással lehet az eszköz műveletet. |Győződjön meg arról, hogy a virtuális tömb a saját szervezeti egység (OU) az Active Directory, és nem a csoportházirend-objektumok (GPO) beállítva rajta. |
+| **4.** |Helyi webes felhasználói felületen |Ha az Internet Explorer (IE ESC) engedélyezve vannak a fejlett biztonsági funkcióknak, előfordulhat, hogy néhány helyi webes felhasználói Kezelőfelületi lapok például hibaelhárítás vagy karbantartási nem működik megfelelően. Gombok ezeken a lapokon is előfordulhat, hogy nem működik. |Kapcsolja ki az Internet Explorer fokozott biztonsági funkciók. |
+| **5.** |Helyi webes felhasználói felületen |Hyper-V virtuális gépen a hálózati adapterek, a webes felhasználói felületén jelennek meg, 10 GB/s felületeihez. |Ez a viselkedés a Hyper-V egy másolatát. A Hyper-V a virtuális hálózati adapterek 10 GB/s mindig látható. |
+| **6.** |Rétegzett kötetek vagy megosztások |A rétegzett kötetek nem támogatott. a StorSimple együtt használható alkalmazások zárolása bájttartományt. Ha bájt tartomány zárolás engedélyezve van, nem StorSimple rétegezést működik. |Ajánlott a mértékeket tartalmazza: <br></br>Kapcsolja ki az alkalmazáslogika a zárolás bájttartományt.<br></br>Válassza ki az alkalmazáshoz tartozó adatokat a rétegzett kötetek ellentétben a gyors helyi kötetek kell.<br></br>*Ismeret*: Ha engedélyezve van az bájt tartomány zárolás használatával helyileg rögzített kötetekről, a helyileg rögzített kötet lehet online még a visszaállítás befejezése előtt. Ezekben az esetekben ha a visszaállítás van folyamatban, majd meg kell várnia a visszaállítás befejeződését. |
+| **7.** |Rétegzett megosztás |Nagy fájlok használata lassú réteg felskálázása eredményezhet. |Ha nagy méretű fájlok dolgozik, azt javasoljuk, hogy a megosztás méretének % 3-nál kisebb-e a legnagyobb fájlt. |
+| **8.** |Használt kapacitás megosztások |Látni fogyasztás megoszthatja, amikor nem szerepel megjeleníthető adat a megosztáson. Ennek oka az, a felhasznált kapacitás megosztások metaadatokat tartalmaz. | |
+| **9.** |Vészhelyreállítás |Csak az ugyanahhoz a tartományhoz, mint a forráseszközt a fájlkiszolgáló vész-helyreállítási hajtható végre. Ebben a kiadásban nem támogatott a vész-helyreállítási cél eszközhöz egy másik tartományban található. |Ez egy későbbi kiadástól kezdve van megvalósítva. |
+| **10.** |Azure PowerShell |A StorSimple virtuális eszközre nem kezelhető ebben a kiadásban az Azure Powershellen keresztül. |A virtuális eszközök a management a klasszikus Azure portálra, és a helyi webes felületén keresztül kell elvégezni. |
+| **11.** |Jelszó módosítása |A virtuális tömb eszköz konzol csak en-US billentyűzet formátumú bemeneti fogad el. | |
+| **12.** |CHAP |A CHAP hitelesítő adatok ezután nem lehet eltávolítani. Emellett ha módosítja a CHAP hitelesítő adatokat, meg kell le a köteteket, és hogy azok online, a módosítás érvénybe léptetéséhez. |Ezzel a problémával egy későbbi kiadástól kezdve. |
+| **13.** |iSCSI server |A "használt tárolási" az iSCSI-kötet jelenik meg a StorSimple Manager szolgáltatás és az iSCSI-gazdagép eltérő lehet. |Az iSCSI-gazdagép rendelkezik a fájlrendszer nézetet.<br></br>Az eszköz látja, ha a kötet volt a maximális méret lefoglalt blokkok. |
+| **14.** |Fájlkiszolgáló |Ha egy fájl egy mappában van egy másik Data Stream (ADS) társítva, a HIRDETÉSEK nem biztonsági mentése vagy visszaállítása vész-helyreállítási, klónozás és az elemszintű helyreállítás. | |
 
 ## <a name="next-step"></a>Következő lépés
-[A frissítés 0,3](storsimple-ova-install-update-01.md) a StorSimple virtuális tömbben.
+[Telepítse a 0.3](storsimple-ova-install-update-01.md) az a StorSimple Virtual Array.
 
 ## <a name="references"></a>Referencia
 Egy régebbi kiadási Megjegyzés keres? Ugrás: 
 
-* [A StorSimple virtuális tömb frissítés 0,1 és 0,2 kibocsátási megjegyzései](storsimple-ova-update-01-release-notes.md)
-* [A StorSimple virtuális tömb általános rendelkezésre állási kibocsátási megjegyzései](storsimple-ova-pp-release-notes.md)
+* [A StorSimple Virtual Array frissítés 0.1, 0.2-es és kibocsátási megjegyzések](storsimple-ova-update-01-release-notes.md)
+* [A StorSimple Virtual Array általános rendelkezésre állási kibocsátási megjegyzései](storsimple-ova-pp-release-notes.md)
 

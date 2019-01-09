@@ -1,18 +1,17 @@
 ---
-title: URL-alapú tartalom átirányításának áttekintése | Microsoft Docs
-description: Ez az oldal áttekintés nyújt az Application Gateway URL-alapú tartalom-útválasztási lehetőségeiről, az UrlPathMap-konfigurációról és a PathBasedRouting szabályról.
+title: Azure Application Gateway URL-alapú tartalom-útválasztás áttekintése
+description: Ez az oldal az Azure Application Gateway URL-alapú tartalom-útválasztás, UrlPathMap-konfigurációról és a PathBasedRouting szabály áttekintést nyújt.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: d5d8ed09da2b05de079bc1b62066bb4008a659d8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218423"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118367"
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
@@ -20,7 +19,7 @@ Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-c
 
 Az egyik lehetőség az, hogy a különböző típusú tartalmakra vonatkozó kéréseket a megfelelő háttér-kiszolgálókészlethez irányítja.
 
-Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja ki a VideoServerPool, az ImageServerPool és a DefaultServerPool háttér-kiszolgálókészlettel.
+A következő példában az Application Gateway szolgálja ki a három háttér kiszolgálókészlettel contoso.com forgalom például: Kérések a VideoServerPool, az ImageServerPool és a DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
@@ -62,8 +61,37 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 }]
 ```
 
-> [!NOTE]
-> PathPattern: ez a beállítás tartalmazza az elérésiút-minták listáját. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első után? vagy #, és ezek a karakterek itt nem megengedettek. Ellenkező esetben egy URL-CÍMBEN szereplő bármely karakter PathPattern engedélyezettek.
+### <a name="pathpattern"></a>PathPattern
+
+PathPattern az elérésiút-minták listája. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első után? vagy #, és ezek a karakterek itt nem megengedettek. Ellenkező esetben egy URL-CÍMBEN szereplő bármely karakter PathPattern engedélyezettek.
+
+A támogatott minták attól függenek, amelyre e telepít az Application Gateway v1 vagy v2-es:
+
+#### <a name="v1"></a>V1
+
+Elérésiút-szabályok nem különbözteti meg.
+
+|V1 elérésiút-minta  |Támogatott?  |
+|---------|---------|
+|`/images/*`     |igen|
+|`/images*`     |nem|
+|`/images/*.jpg`     |nem|
+|`/*.jpg`     |nem|
+|`/Repos/*/Comments/*`     |nem|
+|`/CurrentUser/Comments/*`     |igen|
+
+#### <a name="v2"></a>v2
+
+Elérésiút-szabályok a kis-és nagybetűket.
+
+|v2 elérésiút-minta  |Támogatott?  |
+|---------|---------|
+|`/images/*`     |igen|
+|`/images*`     |igen|
+|`/images/*.jpg`     |nem|
+|`/*.jpg`     |nem|
+|`/Repos/*/Comments/*`     |nem|
+|`/CurrentUser/Comments/*`     |igen|
 
 További információért tekintse át az [URL-alapú átirányításhoz készült Resource Manager-sablonokat](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7b0e3bc14c97c874b9d5936c025f4534665a461e
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: adac498b2f1e3331497c08f41558575c06b5823c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752622"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102941"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Batch-előrejelzések futó nagy méretű adatkészleteket az Azure Machine Learning szolgáltatással
 
@@ -185,7 +185,7 @@ model = Model.register(
 ## <a name="write-your-scoring-script"></a>A pontozó szkript írása
 
 >[!Warning]
->Az alábbi kód látható csak egy minta mi található a [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) használják a [minta notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb). A forgatókönyvnek a saját pontozó szkript létrehozása kell.
+>Az alábbi kód látható csak egy minta mi található a [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) használják a [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). A forgatókönyvnek a saját pontozó szkript létrehozása kell.
 
 A `batch_score.py` parancsfájl bemeneti képekhez fogadja *dataset_path*, imagenet modellek *model_dir,* , és arcokhoz *eredmények-label.txt* , *output_dir*.
 

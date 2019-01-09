@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 46f94a512ea78016a327357a3d0ee25a91ad607e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019689"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105202"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>A Redis az Azure Cache méretezése
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatások a kiválasztott biztosítanak. Gyorsítótár létrehozása után skálázhatja mérete és a gyorsítótár a tarifacsomagot, ha az alkalmazás a követelmények változnak. Ez a cikk bemutatja, hogyan méretezzünk át a gyorsítótár az Azure portal és az eszközök, például az Azure PowerShell-lel és az Azure CLI használatával.
@@ -136,7 +136,7 @@ Nem, a gyorsítótár nevének és a kulcsok nem változik a skálázási művel
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>Elveszítek adatokat a gyorsítótárból való méretezése során?
 * Ha egy **alapszintű** gyorsítótár van méretezve, hogy az új méretét, az összes adat elvesztését, és a gyorsítótár nem érhető el, a skálázási művelet során.
 * Ha egy **alapszintű** gyorsítótár van méretezve, hogy egy **Standard** gyorsítótár, a gyorsítótárban lévő adatok általában a rendszer megőrzi.
-* Ha egy **Standard** gyorsítótár van méretezve, hogy egy nagyobb méretű vagy szint, vagy egy **prémium** gyorsítótár van méretezve, hogy nagyobb méretű, az összes adat általában a rendszer megőrzi. Vertikális egy **Standard** vagy **prémium** gyorsítótár le egy kisebb méretet, az adatok elveszhetnek során az erőforrások méretezése pedig ettől kapcsolatos új mérete a gyorsítótárban van adatok mennyiségétől függően. Adatvesztés esetén vertikális, kulcsok kizárt használatával vannak a [allkeys-lru](http://redis.io/topics/lru-cache) kiürítési szabályzatot. 
+* Ha egy **Standard** gyorsítótár van méretezve, hogy egy nagyobb méretű vagy szint, vagy egy **prémium** gyorsítótár van méretezve, hogy nagyobb méretű, az összes adat általában a rendszer megőrzi. Vertikális egy **Standard** vagy **prémium** gyorsítótár le egy kisebb méretet, az adatok elveszhetnek során az erőforrások méretezése pedig ettől kapcsolatos új mérete a gyorsítótárban van adatok mennyiségétől függően. Adatvesztés esetén vertikális, kulcsok kizárt használatával vannak a [allkeys-lru](https://redis.io/topics/lru-cache) kiürítési szabályzatot. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Az egyéni adatbázisok érintett beállítás méretezése során?
 Ha konfigurálta az egyéni értéket a `databases` beállítás gyorsítótár létrehozása során, ne feledje, hogy néhány árképzési szintek rendelkezik másik [adatbázisok korlátai](cache-configure.md#databases). Ebben a forgatókönyvben vertikális az alábbiakban néhány szempontot:

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b6640e4ef9751e235c0310b0d725cd7e27ff2b40
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53746066"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101921"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -230,7 +230,7 @@ Vissza kell vonnia a végzett módosítások a aktivált válságtervet részek�
 Ha a szervezet az felhasználónkénti MFA örökölt házirendek, akkor érdemes lehet a következő helyett:
 
 1. Ha a vállalati hálózat kimenő IP-cím, a megbízható IP-címek csak a vállalati hálózathoz való hitelesítés engedélyezése, felveheti őket.
- 2. Ha nincs leltár készíthető a kimenő IP-címek, vagy, engedélyezze a hozzáférést a vállalati hálózaton kívül és belül kell, a teljes IPv4-címtér is hozzáadhat, a megbízható IP-címeket a CIDR-jelölésrendszerben (például 192.168.1.1/24).
+ 2. Ha nincs leltár készíthető a kimenő IP-címek, vagy, engedélyezze a hozzáférést a vállalati hálózaton kívül és belül kell, hozzáadhat a teljes IPv4-címtérhez, megbízható IP-címek 0.0.0.0/1 és 128.0.0.0/1 megadásával.
 
 >[!IMPORTANT]
  > Ha megváltoztatja a megbízható IP-címek hozzáférés feloldása, IP-címek (például lehetetlen odautazás vagy ismeretlen helyről) társított kockázati események nem jön létre.

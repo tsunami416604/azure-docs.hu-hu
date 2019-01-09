@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 6fe7152e43640a809ab9f4de39b1c6b599975a20
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ced306b00a5761ae096e918b43a8e67e649580dd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969947"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106018"
 ---
 # <a name="common-questions---azure-to-azure-replication"></a>Gyakori kérdések – Azure-Azure közötti replikáció
 
@@ -62,7 +62,7 @@ Nem, a Site Recovery nem igényel internet kapcsolat, de a Site Recovery URL-cí
 ## <a name="replication-policy"></a>Replikációs házirend
 
 ### <a name="what-is-a-replication-policy"></a>Mi a replikációs szabályzat?
-Azt határozza meg a helyreállítási pont megőrzési előzményekkel és alkalmazáskonzisztens pillanatkép készítésének gyakorisága beállításait. Alapértelmezés szerint az Azure Site Recovery egy új replikációs házirendet hoz beállítás alapértelmezett 24 órányi a helyreállítási pont megőrzése és az "60 percben az alkalmazáskonzisztens pillanatkép gyakorisága.
+Azt határozza meg a helyreállítási pont megőrzési előzményekkel és alkalmazáskonzisztens pillanatkép készítésének gyakorisága beállításait. Alapértelmezés szerint az Azure Site Recovery egy új replikációs házirendet hoz beállítás alapértelmezett 24 órányi a helyreállítási pont megőrzése és az "60 percben az alkalmazáskonzisztens pillanatkép gyakorisága. [További](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings) replikációs szabályzat konfigurálásának]
 
 ### <a name="what-is-crash-consistent-recovery-point"></a>Mi az összeomlás-konzisztens helyreállítási pont?
 Összeomlás-konzisztens helyreállítási pont a lemezen lévő adatok jelöli, mintha a virtuális gép leállt, vagy a tápkábel felhasználásával lett létrehozva a kiszolgálóról a pillanatkép időpontjában. Nem tartalmazza, amelyeket volt, a memória, ha a pillanatkép. Napjainkban a legtöbb alkalmazás helyreállíthatja jól összeomlás-konzisztens pillanatképekkel. Összeomlás-konzisztens helyreállítási pont az általában elég a nincs adatbázis operációs rendszerek és alkalmazások, mint a fájlkiszolgálók, a DHCP-kiszolgálók, a nyomtatókiszolgálók és így tovább.
@@ -96,6 +96,24 @@ Esetén a kezdeti replikáció a első helyreállítási pont, amely lekérdezi 
 
 ### <a name="does-increasing-recovery-points-retention-windows-increases-the-storage-cost"></a>Nem, növelje a helyreállítási pontok megőrzési ideje növeli a tárolási költségek?
 Igen, ha növeli a megőrzési időtartam 24 óra, 72 óra és a Site Recovery menti a helyreállítási pontok is 48 óra, amely merülnek fel, a tárterületért. Például ha egyetlen helyreállítási pont rendelkezik az új módosításokkal, 10 GB-os és a gigabájtonkénti van 0,16 $ / hó, majd $ 1.6-os * 48 további díjak havi lenne.
+
+## <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia 
+
+### <a name="what-is-multi--vm-consistency"></a>Mi az virtuális gépre kiterjedő konzisztencia?
+Ez azt jelenti, hogy így arról, hogy a helyreállítási pont konzisztens az összes a replikált virtuális gépek között.
+A Site Recovery "Virtuális gépre kiterjedő konzisztencia" lehetőséget biztosít amikor kiválasztott replikációs csoport összes gépek együttes replikálásához a csoport részét képező létrehozása.
+A virtuális gépek feladatátvételkor összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokra lesz megosztott.
+Olvassa el az oktatóanyag [engedélyezése "virtuális gépre kiterjedően"](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
+
+### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Feladatátvételi egyetlen virtuális gépen belüli konzisztencia "Virtuális gépre kiterjedő" replikációs csoport lehetőségeket?
+"Több virtuális gépre kiterjedő konzisztencia" lehetőség kiválasztásával, vannak feltüntetve, hogy az alkalmazás maga csoportban lévő összes virtuális gépet. Ezért egyetlen virtuális gép feladatátvétele nem engedélyezett. 
+
+### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-multi-vm-consistency-replication-group"></a>Hány virtuális gépet replikálhatok "Virtuális gépre kiterjedő" konzisztencia replikációs csoport részeként?
+16 virtuális gép együtt, egy replikációs csoportban replikálhatja.
+
+### <a name="when-should-i-enable-multi-vm-consistency-"></a>Mikor kell engedélyezni a virtuális gépre kiterjedő konzisztencia?
+Több virtuális gépre kiterjedő konzisztencia engedélyezése hatással lehet a számítási feladatok teljesítményére (a CPU-igényes szó), és csak használandó, ha a gépek ugyanazt a számítási feladatot futtat, és több gép közötti konzisztenciára van szükség. Például 2 sql-kiszolgálók és a egy alkalmazást, majd 2 webkiszolgálóján, ha az sql-kiszolgálók "Virtuális gépre kiterjedő" konzisztencia kell rendelkeznie.
+
 
 ## <a name="failover"></a>Feladatátvétel
 

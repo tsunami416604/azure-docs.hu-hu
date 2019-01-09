@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725320"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118183"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure Operational Security – ajánlott eljárások
 Az Azure operational security hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök az Azure-ban. Az Azure operational security olyan keretrendszer, amely magában foglalja a Microsoft, egyedi képességek vizsgálatából épül, többek között a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl), a [Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) programot, és a kiberbiztonsági fenyegetések világának.
@@ -87,7 +87,7 @@ Használhat [Azure Resource Manager](https://azure.microsoft.com/documentation/a
 - Győződjön meg arról, hogy az alkalmazás képes kezelni a következő indítási vagy marketing kampány forgalmát.
 
 **Ajánlott eljárás**: Alkalmazások teljesítményének figyelése.  
-**Részletes**: [Az Azure Application Insights](../application-insights/app-insights-overview.md) van egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az Application Insights segítségével figyelheti az élő webalkalmazását. Automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja az analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit felhasználók valójában hogyan használják az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
+**Részletes**: [Az Azure Application Insights](../azure-monitor/app/app-insights-overview.md) van egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az Application Insights segítségével figyelheti az élő webalkalmazását. Automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja az analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit felhasználók valójában hogyan használják az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Csökkentése és a DDoS elleni védelem
 Az elosztott szolgáltatásmegtagadásos (DDoS-) olyan támadás, amely megkísérli az alkalmazás-erőforrások felhasználta rendelkezésére. A cél, hogy az alkalmazás rendelkezésre állásának és történő jogos kérelmek kezelése hatással van. Ezeket a támadásokat egyre több kifinomult és a méretét és a hatása nagyobb. Bármely, amely az interneten keresztül nyilvánosan elérhető végponton célozhatják.

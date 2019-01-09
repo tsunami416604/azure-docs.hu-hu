@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 333fec5b9459979d7735f0dd292d7367d86353fe
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7c5bfa96e7f9ef7812b8487c479b34d926633287
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326158"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105916"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0-konfigurációs séma
 > [!NOTE]
@@ -25,7 +25,7 @@ Egyéb Microsoft-diagnosztika termékek, mint az Azure Monitor az Application In
 
 Az Azure Diagnostics-konfigurációs fájl határozza meg a diagnosztikai figyelő inicializálása használt értékeket. Ez a fájl inicializálása a diagnosztikai beállításokat a diagnosztikai figyelő indításakor szolgál.  
 
- Alapértelmezés szerint a fájl az Azure Diagnostics konfigurációs van telepítve a `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` könyvtár. Cserélje le `<version>` telepített verziójának a [Azure SDK](http://www.windowsazure.com/develop/downloads/).  
+ Alapértelmezés szerint a fájl az Azure Diagnostics konfigurációs van telepítve a `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` könyvtár. Cserélje le `<version>` telepített verziójának a [Azure SDK](https://www.windowsazure.com/develop/downloads/).  
 
 > [!NOTE]
 >  A diagnosztika konfigurációs fájl jellemzően a diagnosztikai adatok gyűjtésére, a rendszerindítási folyamat korábbi szakaszában igénylő indítási feladatok. Azure Diagnostics használatával kapcsolatos további információkért lásd: [naplózási adatok gyűjtése az Azure Diagnostics használatával](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  

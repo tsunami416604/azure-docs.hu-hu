@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a39d497c90f49f8699b9d27be175e501973804c5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811511"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118387"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -26,7 +26,7 @@ Az Azure Monitor hozzáférni az összes monitorozási adatai az Azure-környeze
 Az Azure-környezet van több "csomag" figyelési adatok, és a metódus az adathozzáférés az egyes szintekről-sablonoktól. Általában ezek a rétegek írható le:
 
 - **Alkalmazás figyelési adatok:** Adatait a teljesítményének és funkcionalitásának írásos engedélye szükséges, és az Azure-ban futtatja a kódot. Alkalmazásfigyelési adatok közé a teljesítmény-nyomkövetés, alkalmazásnaplókat és telemetriai felhasználói. Alkalmazásfigyelési adatokat általában a következő módokon gyűjti:
-  - Alakíthatja ki például a kód egy SDK-val a [Application Insights SDK](../../application-insights/app-insights-overview.md).
+  - Alakíthatja ki például a kód egy SDK-val a [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md).
   - A monitorozási ügynök, amely figyeli az új alkalmazás-naplókat a gépen futó az alkalmazás futtatásának, mint például a [Windows Azure diagnosztikai ügynök](./../../azure-monitor/platform/diagnostics-extension-overview.md) vagy [Linux Azure diagnosztikai ügynök](../../virtual-machines/extensions/diagnostics-linux.md).
 - **A vendég operációs rendszer monitorozási adatok:** Az operációs rendszer, amelyen fut az alkalmazás adatait. Példák a vendég operációs rendszer monitorozási adatok lenne a Linux rendszernaplójából vagy a Windows rendszer eseményeket. Ilyen típusú adatok gyűjtéséhez, például ügynököt telepíteni kell a [Windows Azure diagnosztikai ügynök](./../../azure-monitor/platform/diagnostics-extension-overview.md) vagy [Linux Azure diagnosztikai ügynök](../../virtual-machines/extensions/diagnostics-linux.md).
 - **Azure-erőforrás monitorozási adatai:** Egy Azure-erőforrás a művelet adatait. Egyes Azure-erőforrástípus, például a virtuális gépek van egy vendég operációs rendszereket és figyelése, hogy az Azure szolgáltatáson belüli alkalmazások. Más Azure-erőforrások, például a hálózati biztonsági csoportok az erőforrás monitorozási adatok legmagasabb szintű rendelkezésre álló adatok (mivel az nem áll fenn a vendég operációs rendszer vagy alkalmazás ezeket az erőforrásokat futtató). Ezeket az adatokat lehessen gyűjteni használatával [erőforrás diagnosztikai beállításait](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
@@ -98,7 +98,7 @@ A [Windows Azure diagnosztikai ügynök](./../../azure-monitor/platform/diagnost
 
 ## <a name="application-monitoring-data"></a>Alkalmazás figyelési adatok
 
-Alkalmazásfigyelési adatokat igényel, hogy a kód kialakítva az SDK-t, ezért nincs útválasztási alkalmazásfigyelési adatokat egy eseményközpontba, az Azure-beli általános célú megoldást. Azonban [Azure Application Insights](../../application-insights/app-insights-overview.md) egy olyan szolgáltatás, amely használható az Azure alkalmazásszintű adatok gyűjtésére. Ha az Application Insights használatával figyelési adatokat egy eseményközpontba streamelheti az alábbiak szerint:
+Alkalmazásfigyelési adatokat igényel, hogy a kód kialakítva az SDK-t, ezért nincs útválasztási alkalmazásfigyelési adatokat egy eseményközpontba, az Azure-beli általános célú megoldást. Azonban [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) egy olyan szolgáltatás, amely használható az Azure alkalmazásszintű adatok gyűjtésére. Ha az Application Insights használatával figyelési adatokat egy eseményközpontba streamelheti az alábbiak szerint:
 
 1. [Állítsa be a folyamatos exportálás](../../azure-monitor/app/export-telemetry.md) , az Application Insights-adatok a storage-tárfiókba.
 
@@ -108,7 +108,7 @@ Alkalmazásfigyelési adatokat igényel, hogy a kód kialakítva az SDK-t, ezér
 
 A figyelési adatok útválasztást egy eseményközpontba, és az Azure Monitor lehetővé teszi könnyen integrálhatja a partneri SIEM és figyelési eszközöket. A legtöbb eszközök az eseményközpont kapcsolati karakterláncával és bizonyos engedélyeket adatokat olvasni az event hubs az Azure-előfizetés szükséges. Íme az Azure Monitorral integrált eszközök nem kizárólagos listája:
 
-* **Az IBM QRadar** – a Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](http://www.ibm.com/support). További információkat [az Azure-ral való integrációról itt talál](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **Az IBM QRadar** – a Microsoft Azure DSM-et és a Microsoft Azure Event Hub protokoll is letölthető [az IBM-támogatási webhely](https://www.ibm.com/support). További információkat [az Azure-ral való integrációról itt talál](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk** -Splunk konfigurációtól függően kétféleképpen:
     1. [Az Azure Monitor bővítmény Splunk](https://splunkbase.splunk.com/app/3534/) Splunkbase és a egy nyílt forráskódú projekt érhető el. [Dokumentáció az itt](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Ha kiegészítő szolgáltatást nem lehet telepíteni a Splunk-példány (például) Ha proxyt használ, vagy a Splunk-felhőben futó), ezeket az eseményeket a Splunk HTTP Eseménygyűjtő történő továbbítás [ezt az eseményközpontban lévő üzenetek által aktivált függvény](https://github.com/Microsoft/AzureFunctionforSplunkVS).

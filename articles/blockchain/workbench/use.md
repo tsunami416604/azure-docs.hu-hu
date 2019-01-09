@@ -1,25 +1,33 @@
 ---
 title: Alkalmazások használata az Azure Blockchain Workbench használatával
-description: Alkalmazás használata az Azure Blockchain Workbench alkalmazásban szerződések.
+description: Alkalmazás használatát ismertető szerződések, az Azure Blockchain Workbench alkalmazásban.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fe6f164882ffce7bf22ec0c0b94107abcf6a20e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b43b125f7e96ac58a9094fc1e0e18b38f10d3e2f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243139"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107072"
 ---
-# <a name="using-applications-in-azure-blockchain-workbench"></a>Alkalmazások használata az Azure Blockchain Workbench használatával
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: Alkalmazások használata az Azure Blockchain Workbench használatával
 
 Blockchain Workbench használatával hozzon létre, és a műveletek végrehajtása a szerződések. Megtekintheti például állapota és a tranzakciós előzmények szerződést kötöttek.
+
+A következőket fogja megtanulni:
+
+> [!div class="checklist"]
+> * Hozzon létre egy új szerződést
+> * Egy művelet végrehajtása a szerződés
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +44,7 @@ Jelentkezzen be a Blockchain Workbenchet tagjaként kell. Ha nincsenek a felsoro
 
 Hozzon létre egy új szerződést, meg kell lennie egy szerződés, a megadott tag **kezdeményező**. Alkalmazás-szerepkörök és a szerződés kezdeményezők információkért lásd: [munkafolyamatok a konfigurálása – áttekintés](configuration.md#workflows). A tagok hozzárendelése alkalmazás-szerepkörök további információkért lásd: [alkalmazást adhat hozzá olyan tagot](manage-users.md#add-member-to-application).
 
-1. A Blockchain Workbench alkalmazás szakaszban válassza ki az alkalmazás csempe, amely tartalmazza a létrehozandó szerződést. Egy aktív szerződések listája megjelenik.
+1. A Blockchain Workbench alkalmazás szakaszban válassza ki az alkalmazás csempe, amely tartalmazza a létrehozandó szerződést. Aktív szerződések listája jelenik meg.
 
 2. Hozzon létre egy új szerződést, jelölje be **új szerződést**.
 
@@ -82,4 +90,4 @@ Hozzon létre egy új szerződést, meg kell lennie egy szerződés, a megadott 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hogyan háríthatók el az Azure Blockchain Workbench használatával](troubleshooting.md)
+> [Az Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md)

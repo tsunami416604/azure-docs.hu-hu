@@ -1,6 +1,6 @@
 ---
-title: DMZ példa – összeállítása a tűzfal és az NSG-alkalmazások védelmét DMZ |} Microsoft Docs
-description: A tűzfal és a hálózati biztonsági csoportokkal (NSG) DMZ összeállítása
+title: Szegélyhálózat (DMZ) Példa – semleges védheti alkalmazásait egy tűzfallal és NSG-k |} A Microsoft Docs
+description: Semleges zóna kialakítása a tűzfallal és hálózati biztonsági csoportok (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,234 +14,234 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fdc4885c079a3659d394517f0a10394eff0720c8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23885125"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119153"
 ---
-# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>2 – példa egy tűzfal és az NSG-alkalmazások védelmét DMZ összeállítása
-[A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]
+# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>2 – példa semleges védheti alkalmazásait egy tűzfallal és NSG-k
+[Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
 
-Ebben a példában a DMZ hozzon létre egy tűzfal, négy windows Server-kiszolgálók és hálózati biztonsági csoportok. Azt is haladhat végig a megfelelő parancsok bemutatják az egyes lépések, adja meg. Is van a forgalom forgatókönyv részt, hogy egy részletesebb lépésenkénti hogyan forgalom halad keresztül a Szegélyhálózaton lévő védelmi réteget. Végezetül a hivatkozások szakasz: a teljes kód látható, míg utasítás ebben a környezetben, teszteléséhez, és a különböző forgatókönyvekben kísérletezhet létrehozásához. 
+Ebben a példában egy DMZ-t hoz létre tűzfalat, négy windows-kiszolgálók és hálózati biztonsági csoportok. Azt is végigvezetik az adja meg az egyes lépések jobban megértheti a megfelelő parancsokat. Emellett van egy forgalom forgatókönyv részt, hogy egy részletes részletes hogyan halad a forgalom a rétege a DMZ-n keresztül. Végül az hivatkozások szakaszban, a teljes kódját és utasítás összeállításához, teszteléséhez, és kísérletezzen a különböző forgatókönyvekben ebben a környezetben. 
 
-![NVA és NSG bejövő DMZ][1]
+![Szegélyhálózat (DMZ) az nva-t és az NSG bejövő][1]
 
 ## <a name="environment-description"></a>Környezet leírása
-Ebben a példában nincs olyan előfizetést, amelyet a következőket tartalmazza:
+Ebben a példában van egy előfizetést, amely a következőket tartalmazza:
 
-* A felhőalapú szolgáltatások két: "FrontEnd001" és "BackEnd001"
-* A virtuális hálózati "CorpNetwork", két alhálózattal rendelkező: "Előtér" és "Háttér"
+* Cloud services két: "FrontEnd001" és "BackEnd001"
+* Virtuális hálózat "CorpNetwork", két alhálózattal: "Előtér" és "Háttér"
 * Mindkét alhálózat alkalmazott egyetlen hálózati biztonsági csoport
-* Ebben a példában a Barracuda NextGen tűzfal, a hálózati virtuális készülék a Frontend alhálózathoz csatlakozik.
-* A Windows Server egy webalkalmazás-kiszolgáló ("IIS01") jelölő
-* Két windows Server kiszolgálókon, amelyek megfelelnek az alkalmazás biztonsági end-kiszolgálók ("AppVM01", "AppVM02")
+* Ebben a példában a Barracuda NextGen tűzfal, egy hálózati virtuális berendezésen az előtérben levő alhálózathoz csatlakozik.
+* A Windows Server, amely egy webalkalmazás-kiszolgáló ("IIS01") jelöli.
+* Vissza az alkalmazást képviselő két windows-kiszolgálók záró kiszolgálók ("AppVM01", "AppVM02")
 * A Windows server DNS-kiszolgáló ("DNS01") jelölő
 
 > [!NOTE]
-> Bár ebben a példában Barracuda NextGen tűzfalat használ, a másik virtuális hálózati berendezések számos ehhez a példához is használható.
+> Bár ebben a példában a Barracuda NextGen tűzfal, a különböző hálózati virtuális berendezések számos ebben a példában használható.
 > 
 > 
 
-Az alábbi hivatkozások részben van egy PowerShell-parancsfájlt, amely a fent leírt környezetben a legtöbb fog létrehozni. A virtuális gépek és virtuális hálózatok, bár a példaként megadott parancsfájlt, által végzett dokumentum nem ismerteti a jelen dokumentum részletesen.
+Az alábbi references szakaszában van egy PowerShell-parancsprogram, amely a fent leírt környezetben a legtöbb fog létrehozni. A virtuális gépek és virtuális hálózatok létrehozásához kell elvégeznie a példaszkript, bár nem ismerteti a jelen dokumentum részletesen.
 
 A környezet létrehozásához:
 
-1. Mentse a hálózati konfigurációs XML-fájlt a references szakaszában szereplő (frissítődik nevét, helyét és IP-címeket az adott forgatókönyv esetén)
-2. A felhasználói változók a parancsfájl felel meg a parancsfájl-hoz (előfizetések, service nevét stb.) kell futtatni a környezet frissítése
-3. A parancsfájl végrehajtása a PowerShellben
+1. Mentse a hálózati konfigurációs xml-fájlt a references szakaszában szereplő (frissített nevét, helyét és IP-címeket az adott esethez)
+2. Frissítse a felhasználói változók a parancsfájl felel meg a környezetben, a parancsfájl az, hogy futtatni (előfizetés, szolgáltatásnevek stb.)
+3. Hajtsa végre a szkriptet a PowerShellben
 
-**Megjegyzés:**: A régió, a PowerShell-parancsfájl esetében meg kell egyeznie a hálózati konfigurációs XML-fájl esetében.
+**Megjegyzés**: A régió, a PowerShell-parancsfájl esetében meg kell egyeznie a hálózati konfigurációs xml-fájl esetében.
 
-Miután a parancsfájl sikeresen fut a következő utáni parancsfájl lépések tehetők:
+A szkript sikeres futtatása után a következő utáni lépéseket lehet tenni:
 
-1. Állítsa be a tűzfalszabályok, ezzel kapcsolatban lásd: című részt az alábbi: tűzfalszabályokat.
-2. Opcionálisan a references szakaszában vannak két parancsfájlok állíthat be a webkiszolgáló és egy egyszerű webes alkalmazás tesztelése a DMZ-konfiguráció engedélyezése az alkalmazások kiszolgálói.
+1. A tűzfalszabályok beállítása, ez foglalkozik című szakaszt az alábbi: Tűzfalszabály.
+2. Igény szerint a hivatkozások szakaszban két parancsfájlt a webkiszolgáló és a egy egyszerű webalkalmazást, hogy a tesztelés a DMZ-konfigurációval rendelkező alkalmazáskiszolgáló beállításához vannak.
 
-Az alábbi szakasz ismerteti a legtöbb hálózati biztonsági csoportok viszonyítva parancsfájlok utasítás.
+Az alábbi szakasz ismerteti a legtöbb olyan hálózati biztonsági csoportok viszonyított parancsfájlok utasítás.
 
 ## <a name="network-security-groups-nsg"></a>Hálózati biztonsági csoportok (NSG)
-Az ebben a példában egy NSG-csoport összeállítása és hat szabályokkal majd betölteni. 
+Ebben a példában egy NSG-csoport beépített, és aztán betölti a hat szabályokkal. 
 
 > [!TIP]
-> Általánosságban véve az "Engedélyezés" speciális szabályok először hozzon létre, és majd a általánosabbá "Deny" szabályok utolsó. A prioritási megkövetel amelyek szabályokat első értékeli ki. Forgalom kiderül, hogy egy adott szabály vonatkozik, ha nincsenek további szabályok kiértékelése. NSG-szabályok egyaránt (az alhálózati szempontjából) a bejövő vagy kimenő irányban is alkalmazhat.
+> Általánosan fogalmazva az "Engedélyezés" szabályainak először hozzon létre, és ezután az "Elutasítás" általánosabb érvényűvé szabályok utolsó. A hozzárendelt prioritásokkal azt határozza meg szabályokat, amelyek az első értékeli ki. Forgalom kiderül, hogy egy adott szabály vonatkozik, ha nincsenek további szabályok értékeli ki. Az NSG-szabályok vagy (az alhálózat szempontjából) a bejövő vagy kimenő irányban is érvényesek.
 > 
 > 
 
-Deklaratív módon a bejövő forgalom beépített folyamatban a következő szabályokat:
+Deklaratív a következő szabályok beépített folyamatban van a bejövő forgalmat:
 
-1. Belső DNS-forgalom (53-as port) engedélyezve van
-2. RDP-forgalmát (3389-es port) az internetről bármely virtuális géphez engedélyezett
-3. Engedélyezett HTTP-forgalom (80-as port) az internethez az NVA (tűzfal)
-4. Minden forgalmat (minden porthoz) IIS01 AppVM1 engedélyezett
-5. Az összes bejövő forgalom (minden porthoz) az internetről a teljes virtuális hálózatot (alhálózatok mindkét) megtagadva
-6. Az összes bejövő forgalom (minden porthoz) a Frontend alhálózatból a Backend alhálózathoz megtagadva
+1. Belső DNS-forgalmat (53-as port)
+2. RDP-forgalmat (3389-es port) az internetről bármely virtuális géphez
+3. HTTP-forgalmat (80-as port) az internetről érkező, az nva-n (tűzfal)
+4. Minden újabb forgalmát (minden porthoz) IIS01 AppVM1 engedélyezett
+5. Virtuális hálózat (mindkét alhálózat) bármely (minden porthoz) az internetről forgalmat a teljes megtagadva
+6. Az összes bejövő forgalom (minden porthoz) a felhasználói réteg alhálózatáról a háttérrendszer alhálózatának megtagadva
 
-A következő szabályok kötött alhálózatok, ha a HTTP-kérelem a webkiszolgálón, 3 szabályokat is az internetről bejövő (engedélyezése) és 5 (megtagadni) szeretné alkalmazni, de mivel a szabály 3 egy magasabb prioritással bír, csak azt csak akkor vonatkozik, és 5 szabály nem lesz play kerülhet. A HTTP-kérelem így szeretné tenni, hogy a tűzfal. Ha ugyanaz a forgalom próbál elérni az DNS01 kiszolgálót, szabály 5 (Megtagadás) lenne az első alkalmazni, és szeretné, hogy a kiszolgáló nem engedélyezett a forgalmat. 6 (Megtagadás) szabály blokkolja a Frontend alhálózathoz van szó, a Backend alhálózathoz (kivéve a engedélyezett forgalom szabályokban 1 és 4) a, ez védelmet nyújt a háttér hálózathoz, abban az esetben, ha egy támadó biztonság sérüléseinek előtér, a támadó a webalkalmazás volna korlátozott hozzáféréssel a háttérrendszer "védett" hálózaton (csak a AppVM01 kiszolgálón kitett erőforrások).
+A következő szabályok kötött mindegyik olyan alhálózatban, ha a webkiszolgálón, 3 szabályokat is az internetről bejövő HTTP-kérés (engedélyezése) és 5 (nem engedélyezi a) a alkalmazni szeretne, de mivel a szabály 3 egy magasabb prioritással bír, csak a alkalmazni, és szabály 5 lenne nem jut. Így a HTTP-kérelem szeretné engedélyezni a tűzfalon. Ha ugyanaz a forgalom próbál elérni az DNS01 kiszolgálót, 5 (Megtagadás) szabály lenne a alkalmazni az első, és szeretne átadni a kiszolgálónak nem engedélyezi a forgalmat. 6 (Megtagadás) szabály blokkolja az előtérben levő alhálózathoz (kivéve az 1. és 4 szabályok engedélyezett forgalom) a háttérrendszer alhálózatának léptünk, ez védelmet biztosít a háttérrendszer-hálózat, abban az esetben, ha egy támadó feltörések előtér, a támadó a webalkalmazás lenne korlátozott hozzáféréssel a háttérrendszer "védett" hálózat (csak az erőforrások elérhetővé tett a AppVM01 kiszolgálón).
 
-Nincs olyan alapértelmezett kimenő szabály, amely lehetővé teszi, hogy a kimenő forgalom az internethez. Ebben a példában a Microsoft most átengedi a kimenő forgalmat, és nem módosítja az egyetlen kimenő szabályok. A forgalom zárolását, mindkét irányban, a felhasználó definiált útválasztási szükség, ez van írja le egy másik példa is található a [fő biztonsági határ dokumentum][HOME].
+Nincs olyan alapértelmezett kimenő szabály, amely lehetővé teszi, hogy az internetre irányuló forgalom. Ebben a példában folyamatban van lehetővé teszi a kimenő forgalom és nem módosítja a kimenő szabályok. Való zárolását, így a forgalom mindkét irányban, felhasználói meghatározott útválasztás szükség, ez van egy másik példa, amely is szerepel a megvizsgálta a [fő biztonsági határ dokumentum][HOME].
 
-A fent tárgyaltuk NSG-szabályok nagyon hasonlóak az NSG-szabályok [1 -. példa az NSG-ket egy egyszerű DMZ Build][Example1]. Tekintse át az egyes NSG-szabályokat és az attribútumok részletes tekintse meg a dokumentum a NSG leírását.
+A fent tárgyaltuk NSG-szabályok nagyon hasonlóak az NSG-szabályokat a [1. példa – hozhat létre egy egyszerű Szegélyhálózat NSG-k][Example1]. Tekintse át a nevezett dokumentum részletes át az egyes NSG-szabály és a hozzá tartozó attribútumok az NSG-t leírása.
 
 ## <a name="firewall-rules"></a>Tűzfalszabályok
-A kezelési ügynök a számítógépen a tűzfal felügyeletéhez, és a szükséges konfigurációk létrehozásához telepíteni kell. A dokumentáció a tűzfal (vagy más NVA) szállítójával tekintse meg az eszközök felügyelete. Ez a szakasz többi magát, a tűzfal a szállító felügyeleti ügyfél (azaz nem az Azure portál vagy PowerShell) keresztül lesz konfigurálását.
+A tűzfal kezelése és a szükséges konfigurációk létrehozásához a számítógépen telepíteni kell egy kezelési ügyfél. Tekintse át a dokumentáció a tűzfalon (vagy más NVA) szállító az eszköz kezelésére. Ez a szakasz további része, a tűzfal a szállító felügyeleti ügyfél (tehát nem az Azure Portalon vagy a PowerShell) keresztül lesz konfigurálását.
 
-Ügyfél letöltése és az ebben a példában használt Barracuda kapcsolódás itt található: [Barracuda NG rendszergazda](https://techlib.barracuda.com/NG61/NGAdmin)
+Ügyfél letöltése és csatlakozik a Barracuda, ebben a példában használt vonatkozó utasítások itt található: [Barracuda NG rendszergazda](https://techlib.barracuda.com/NG61/NGAdmin)
 
-A tűzfalon szabályok továbbítási kell létrehozni. Ebben a példában csak az internetes forgalmat az adathoz kötött a tűzfal, majd a webkiszolgáló irányítja, mert csak egy továbbító NAT-szabály van szükség. A Barracuda NextGen tűzfalon használt ebben a példában a szabály lenne egy cél NAT-szabály ("nyári időszámítás NAT") továbbítani a forgalmat.
+A tűzfalon továbbítási szabályokat kell létrehozni. Ebben a példában csak az internetes forgalmat a kötött a tűzfal, majd a webkiszolgáló irányítja, mivel csak egy továbbító NAT-szabályhoz van szükség. Az ebben a példában használt, a Barracuda NextGen tűzfal a szabály lenne egy cél NAT-szabály ("nyári időszámítás NAT") adja át a forgalmat.
 
-Hozza létre a következő szabályt (vagy ellenőrizze a meglévő alapértelmezett szabályok), a Barracuda NG felügyeleti ügyfél irányítópultról indítása a konfiguráció lapjának megjelenítéséhez, a működési konfigurációs szakaszban kattintson szabálykészletben. A rács nevű, "Main szabályok" jelennek meg a meglévő aktív és inaktív szabályok a tűzfalon. A rács jobb felső sarkában a kisméretű, zöld "+" gombra, ide kattintva hozzon létre egy új szabályt (Megjegyzés: a tűzfal "zárolva" a változásokat, ha a gomb "Lock" megjelölve, és nem tudja létrehozni vagy szabályok szerkesztése, kattintson erre a gombra kattintva "zárolásának feloldásához" a ruleset és Szerkesztés engedélyezése). Meglévő szabály szerkesztése, válassza ki, hogy a szabály, kattintson a jobb gombbal és válassza ki a szabály szerkesztése.
+Hozza létre a következő szabályt (vagy ellenőrizze a meglévő alapértelmezett szabályok), a Barracuda NG rendszergazdai ügyfél irányítópultján, kezdve a konfiguráció lapjának megjelenítéséhez, az üzemeltetési konfiguráció szakaszban kattintson a Ruleset. A rács nevű, "Main szabályok" jelennek meg a meglévő aktív és inaktív szabályok a tűzfalon. A jobb felső sarkában található a rács van egy kis méretű, zöld "+" gombra kattint, ide kattintva hozzon létre egy új szabályt (Megjegyzés: a tűzfal "zárolva" a módosításokat, ha egy gombot "Zárolási" jelölésű, és nem lehet létrehozni vagy szabályok szerkesztése, kattintson erre a gombra kattintva a "feloldásához" a szabálykészletben és Szerkesztés engedélyezése). Ha szeretné szerkeszteni a meglévő szabályokat, válassza ki azt a szabályt, jobb gombbal, majd válassza a szabály szerkesztése.
 
 Hozzon létre egy új szabályt, és adjon meg egy nevet, például a "WebTraffic". 
 
-A cél NAT-szabály ikon néz ki: ![cél NAT ikon][2]
+A cél NAT-szabály ikonra a következőhöz hasonló: ![Cél NAT ikon][2]
 
-A szabály maga hasonló ehhez hasonló lenne:
+A szabály maga kellene kinéznie:
 
 ![Tűzfalszabály][3]
 
-Itt a bejövő címet, amely a tűzfal találatok elérni HTTP (80-as vagy a HTTPS-hez a 443-as port) fog kell elküldését a tűzfal "DHCP1 helyi IP-címe" illesztőfelület és átirányítja a Web Server 10.0.1.5 IP-címét. Mivel a forgalom 80-as porton várható, és továbblép a webkiszolgálónak a 80-as port nem port módosítása volt szükség. Azonban a cél lista sikerült lett 10.0.1.5:8080 Ha így fordítása a bejövő 80-as port a tűzfalon a webkiszolgálón a 8080-as a bejövő portot a 8080-as porton figyel a webkiszolgálón.
+Itt minden bejövő címet, amely eléri a tűzfal megpróbálják elérni az HTTP (80-as vagy 443-as HTTPS-port) fog kell elküldését a tűzfal "A helyi IP-DHCP1" kapcsolat és átirányítja a webkiszolgáló a 10.0.1.5 IP-címét. Mivel a forgalmat 80-as porton érkező és a webalkalmazás-kiszolgáló 80-as portot fogja port változatlan volt szükség. Azonban a cél lista lehetett volna 10.0.1.5:8080, ha a webkiszolgáló így fordítja le a bejövő 80-as portra a tűzfalon a webkiszolgálón a bejövő portot 8080-as, 8080-as porton figyel.
 
 A kapcsolódás módját kell is lehet szereplő, az internetről, a cél szabály "Dinamikus SNAT" legmegfelelőbb. 
 
-Habár egyetlen szabály jött létre fontos, hogy helyesen van-e állítva a hozzá tartozó prioritás. Ha a szabályok a tűzfalon az új szabály van alján (alatt a "BLOCKALL" szabály) a rácsban soha nem érkezni fog szerepet. Győződjön meg arról, a webes forgalomban az újonnan létrehozott szabály a BLOCKALL szabály felett van.
+Habár egyetlen szabály létrejött fontos, hogy helyesen van-e megadva a hozzá tartozó prioritás. Ha a tűzfal összes szabály, az új szabály be van kapcsolva az alsó (alább a "BLOCKALL" szabály) a rácsban, rendszer soha nem jut. Győződjön meg arról, a webes forgalmat az újonnan létrehozott szabály a BLOCKALL szabály felett van.
 
-Ha a szabály jön létre, kell leküldeni a tűzfalat, és majd aktiválni, ha ez nem történik a szabály módosítása nem lépnek érvénybe. A leküldéses és az aktiválási folyamat a következő szakaszban ismertetett.
+Ha a szabályt létrehozza, kell leküldeni a tűzfalat, és majd aktiválása, ha ez nem történik a szabályt úgy módosítják nem lépnek érvénybe. A leküldéses és az aktiválási folyamat a következő szakaszban leírt.
 
-## <a name="rule-activation"></a>A szabály aktiválás
-A ruleset módosíthatja, hogy ez a szabály hozzáadása, az a ruleset kell feltölthetők a tűzfalhoz és aktiválva.
+## <a name="rule-activation"></a>A szabály az aktiválás
+A szabálykészletben Ez a szabály hozzáadása módosítás, az a szabálykészletben kell feltölteni a tűzfal és aktiválva.
 
 ![Tűzfal szabály aktiválás][4]
 
-A felügyeleti ügyfél jobb felső sarkában található egy fürt gombok vannak. A módosított szabályok és a tűzfalon küldendő a "Küldési módosítások" gombra, majd kattintson az "Aktiválás" gombra.
+A jobb felső sarokban a felügyeleti ügyfél gombok fürtben vannak. A "Módosítások küldése" gombra kattintva a módosított szabályok küldeni a tűzfal, majd kattintson az "Aktiválás" gombra.
 
-Az az aktiválás, a tűzfal szabálykészletben ez példa környezet build befejeződött. Szükség esetén a References szakaszában, a feladás egy vagy több build parancsfájlok futtatásával hozzáadhat egy alkalmazást ebben a környezetben tesztelheti a forgalom forgatókönyvek alatt.
+Az aktiválás, a tűzfal szabálykészletben Ez a példa környezet build elkészült. Szükség esetén a post build parancsfájlokat a hivatkozások szakaszban hozzáadása teszteléséhez használandó alkalmazást erre a környezetre lehet futtatni a forgalom forgatókönyvek alatt.
 
 > [!IMPORTANT]
-> Nagyon fontos, hogy rendszer nem kattint a webkiszolgáló közvetlenül megvalósításához. Ha egy böngészőben kér FrontEnd001.CloudApp.Net egy HTTP-lap, a HTTP-végpont (80-as port) továbbítja a forgalmat a tűzfal nem a webkiszolgálón. A tűzfal, majd a szabály megfelelően a fenti létrehozott, a webkiszolgáló kérő NAT.
+> Vegye figyelembe, hogy Ön nem eléri a webalkalmazás-kiszolgáló közvetlenül rendkívül fontos. Ha egy böngészőben kér FrontEnd001.CloudApp.Net egy HTTP-lap, a HTTP-végpontot (80-as port) továbbítja a forgalmat a tűzfal nem a webkiszolgáló. A tűzfal, majd a szabálya szerint fent létrehozott, a webkiszolgálónak kérő NAT.
 > 
 > 
 
 ## <a name="traffic-scenarios"></a>Forgalom forgatókönyvek
-#### <a name="allowed-web-to-web-server-through-firewall"></a>(Engedélyezett) Webes a webkiszolgáló tűzfalon keresztül
-1. Internetes felhasználói kérelmek HTTP oldal FrontEnd001.CloudApp.Net (Internet Facing Felhőszolgáltatás)
-2. Felhőalapú szolgáltatás fázisok forgalmat a 80-as port a helyi tűzfal megfelelő felületéről 10.0.1.4:80 nyitott végpontok keresztül
-3. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-   1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-   2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-   3. NSG 3. szabály (Internet tűzfalhoz) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-4. Forgalom találatok belső IP-címet a tűzfal (10.0.1.4)
-5. Továbbító tűzfalszabály tekintse meg a 80-as portot a forgalom, irányítja át a webkiszolgáló IIS01
-6. IIS01 figyeli a webes forgalom, ezt a kérelmet kap, és elindítja a kérés feldolgozása
-7. IIS01 az SQL Server a AppVM01 adatokat kéri
-8. Nincs kimenő szabályok Frontend alhálózaton, forgalom engedélyezve van
-9. A Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-   1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-   2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-   3. NSG 3. szabály (Internet tűzfalhoz) nem teljesül, a közvetkező szabályának áthelyezése
-   4. NSG 4. szabály (a AppVM01 IIS01) teljesül, a forgalom engedélyezve van, akkor állítsa le a szabály feldolgozása
-10. AppVM01 dokumentálásáért és az SQL-lekérdezést kap
-11. A válasz engedélyezett, mert nincsenek meg a Backend alhálózathoz kimenő szabályok
-12. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-    1. Nincs érvényes bejövő szabály NSG a Frontend alhálózathoz, így nincs az NSG-szabályok vonatkoznak a Backend alhálózathoz-forgalom
-    2. A alapértelmezett rendszerszintű szabály, amely lehetővé teszi az alhálózatok közötti forgalmat lehetővé tenné a forgalmat, a forgalom engedélyezve van.
-13. Az IIS-kiszolgálót az SQL-válasz fogadása és a HTTP-válasz befejezése és a kérelmező küld
-14. Mivel ez a tűzfal NAT munkamenetének, a válasz a cél (kezdetben) nem a tűzfal
-15. A válasz fogadása a webkiszolgáló a tűzfalat, és továbbítja azokat a Internet felhasználónak
-16. Mivel nincsenek a Frontend alhálózaton a válasz nem kimenő szabályok engedélyezett, és az internetes felhasználói kap, a kért weblap.
+#### <a name="allowed-web-to-web-server-through-firewall"></a>(Engedélyezett) Webes a webkiszolgáló-tűzfalon keresztül
+1. Internetes felhasználói kérések HTTP lapot FrontEnd001.CloudApp.Net (Internet Facing Felhőszolgáltatás)
+2. Cloud service pass forgalmat a 80-as porton a tűzfal megfelelő felületéről helyi 10.0.1.4:80 nyitott végpontok
+3. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (Internet tűzfalhoz) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+4. Forgalom eléri a tűzfal (10.0.1.4 cím – ez) belső IP-címe
+5. Továbbítás tűzfalszabály tekintse meg a forgalom a 80-as porton, irányítja át a webkiszolgáló IIS01
+6. IIS01 figyeli a webes forgalmat, ezt a kérelmet kap, és elindítja a kérés feldolgozása
+7. IIS01 kéri az SQL Server a AppVM01 információk
+8. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
+9. A háttérrendszer alhálózatának bejövő szabály feldolgozása kezdődik:
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (Internet tűzfalhoz) nem vonatkoznak, helyezze át a következő szabály
+   4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
+10. AppVM01 az SQL-lekérdezést kap, és válaszol
+11. Mivel nincsenek a háttérbeli alhálózat kimenő szabályok engedélyezve van-e a válasz
+12. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+    1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+    2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
+13. Az IIS-kiszolgálón az SQL-válasz fogadása és befejezése a HTTP-válasz és küld a kérelmezőnek
+14. Mivel ez a tűzfal NAT munkamenetének, a válasz cél (először) van tűzfal
+15. A tűzfal a válasz fogadása a webkiszolgáló, és továbbítja a internetes felhasználó számára
+16. Mivel ebben az esetben az előtérbeli alhálózat a válasz nem kimenő szabályok engedélyezve van, és az internetes felhasználó kapja meg a kért weblap.
 
-#### <a name="allowed-rdp-to-backend"></a>(Engedélyezett) RDP háttérrendszeréhez
-1. Server Admin interneten kérelmek AppVM01 BackEnd001.CloudApp.Net:xxxxx, ahol xxxxx az RDP számára (a hozzárendelt port található az Azure-portál vagy a PowerShell segítségével) AppVM01 véletlenszerűen hozzárendelt portszámot az RDP-munkamenetet
-2. A tűzfalon csak a FrontEnd001.CloudApp.Net címet figyeli, mivel nem részt vesz a forgalom áramlását az
-3. Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-   1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-   2. NSG szabály 2 (RDP) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-4. A nem kimenő szabályokat alapértelmezett szabályokat alkalmazni, és a forgalom engedélyezve van
-5. RDP-munkamenetbe engedélyezve van
-6. Felhasználói nevének jelszavának megadását kéri az AppVM01
+#### <a name="allowed-rdp-to-backend"></a>(Engedélyezett) Háttérbeli RDP-vel
+1. Kiszolgáló-rendszergazdai interneten kérelmek AppVM01 BackEnd001.CloudApp.Net:xxxxx, ahol xxxxx-e az RDP-vel (a hozzárendelt port találhatók az Azure Portal vagy a Powershellen keresztül) AppVM01 véletlenszerűen hozzárendelt portszámot az RDP-munkamenetet
+2. A tűzfal csak az FrontEnd001.CloudApp.Net címet figyeli, mivel nem vesz a forgalom flow-val
+3. Háttérbeli alhálózatot bejövő szabály feldolgozása kezdődik:
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+4. Kimenő szabályok, az alapértelmezett szabályok a alkalmazni, és a visszatérő forgalom engedélyezve van
+5. RDP-munkamenet engedélyezve van
+6. AppVM01 felkéri a felhasználónév jelszó
 
-#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Engedélyezett) Web Server DNS-címkeresés DNS-kiszolgálón
-1. Webalkalmazás-kiszolgálón, IIS01, egy adatcsatorna www.data.gov: igényeinek, de a címek feloldására igényeinek.
-2. A hálózati konfigurációt a VNet listák DNS01 (a háttér alhálózaton 10.0.2.4) elsődleges DNS-kiszolgálóként, IIS01 küld a DNS-kérelem DNS01
-3. Nincs kimenő szabályok Frontend alhálózaton, forgalom engedélyezve van
-4. Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-   1. NSG szabály 1 (DNS) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-5. DNS-kiszolgáló a kérelmet kap.
-6. DNS-kiszolgáló nem rendelkezik a gyorsítótárazott címmel és egy legfelső szintű DNS-kiszolgáló kéri az interneten
-7. Nincs kimenő szabályok a Backend alhálózathoz forgalom engedélyezve van
-8. Internetes DNS-kiszolgáló válaszol, mivel ehhez a munkamenethez belső kezdeményezett, a válasz engedélyezett
-9. DNS-kiszolgáló gyorsítótárazza a választ, és a kezdeti kérés vissza IIS01 válaszol
-10. Nincs kimenő szabályok a Backend alhálózathoz forgalom engedélyezve van
-11. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-    1. Nincs érvényes bejövő szabály NSG a Frontend alhálózathoz, így nincs az NSG-szabályok vonatkoznak a Backend alhálózathoz-forgalom
-    2. A alapértelmezett rendszerszintű szabály, amely lehetővé teszi az alhálózatok közötti forgalmat lehetővé tenné a forgalmat, így a forgalom engedélyezve van
-12. IIS01 megkapja válaszát DNS01
+#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Engedélyezett) A DNS-kiszolgáló kiszolgálói DNS-címkeresés webes
+1. A Web Server, IIS01, egy adatcsatorna www.data.gov, igényeinek megfelelően, de igények címének feloldására.
+2. A hálózati konfigurációt a virtuális hálózatok közötti listák DNS01 (a háttérbeli alhálózat 10.0.2.4 cím), az elsődleges DNS-kiszolgáló, IIS01 küld a DNS-kérelem DNS01
+3. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
+4. Háttérbeli alhálózatot bejövő szabály feldolgozása kezdődik:
+   1. NSG-szabály 1 (DNS) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+5. DNS-kiszolgáló a kérést kap
+6. DNS-kiszolgáló nem rendelkezik a címmel a gyorsítótárba, és az interneten egy DNS-gyökérkiszolgáló kéri
+7. Nincs kimenő szabályok a háttérbeli alhálózat forgalom engedélyezve van
+8. Internetes DNS-kiszolgáló válaszol, mivel ez a munkamenet indított belső, a válasz engedélyezett
+9. DNS-kiszolgáló gyorsítótárazza a választ, és reagáljon a biztonsági IIS01 irányuló első kérelem
+10. Nincs kimenő szabályok a háttérbeli alhálózat forgalom engedélyezve van
+11. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+    1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+    2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van
+12. IIS01 DNS01 kap a válasz
 
-#### <a name="allowed-web-server-access-file-on-appvm01"></a>(Engedélyezett) Server-hozzáférés fájl AppVM01
-1. IIS01 kér AppVM01 fájlba
-2. Nincs kimenő szabályok Frontend alhálózaton, forgalom engedélyezve van
-3. A Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-   1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-   2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-   3. NSG 3. szabály (Internet tűzfalhoz) nem teljesül, a közvetkező szabályának áthelyezése
-   4. NSG 4. szabály (a AppVM01 IIS01) teljesül, a forgalom engedélyezve van, akkor állítsa le a szabály feldolgozása
-4. AppVM01 a kérelmet kap, és válaszol, a fájl (feltéve, hogy van engedélyezve)
-5. A válasz engedélyezett, mert nincsenek meg a Backend alhálózathoz kimenő szabályok
-6. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-   1. Nincs érvényes bejövő szabály NSG a Frontend alhálózathoz, így nincs az NSG-szabályok vonatkoznak a Backend alhálózathoz-forgalom
-   2. A alapértelmezett rendszerszintű szabály, amely lehetővé teszi az alhálózatok közötti forgalmat lehetővé tenné a forgalmat, a forgalom engedélyezve van.
-7. Az IIS-kiszolgálót kap a fájl
+#### <a name="allowed-web-server-access-file-on-appvm01"></a>(Engedélyezett) Kiszolgáló-hozzáférés fájlt AppVM01
+1. IIS01 AppVM01 fájlt kéri
+2. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
+3. A háttérrendszer alhálózatának bejövő szabály feldolgozása kezdődik:
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (Internet tűzfalhoz) nem vonatkoznak, helyezze át a következő szabály
+   4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
+4. AppVM01 dokumentálásáért fájllal (feltéve, hogy a hozzáférés engedélyezett), és a kérést kap
+5. Mivel nincsenek a háttérbeli alhálózat kimenő szabályok engedélyezve van-e a válasz
+6. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+   1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+   2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
+7. Az IIS-kiszolgáló fogadja a fájl
 
-#### <a name="denied-web-direct-to-web-server"></a>(Megtagadva) Közvetlenül a webkiszolgálón webalkalmazás
-Mivel a webkiszolgálón, IIS01 és a tűzfalon az azonos felhőalapú szolgáltatás nyilvános felé néző IP-cím-os osztoznak. Így minden HTTP-forgalom volna átirányítja a tűzfalon. A kérelem sikeresen kiszolgálta lenne, amíg nem tud közvetlenül lépni a webkiszolgáló, az átadott, úgy tervezték, a tűzfalon keresztül először. Ebben a szakaszban a forgalom áramlását az első forgatókönyvben talál.
+#### <a name="denied-web-direct-to-web-server"></a>(Tiltott) Web-direct webkiszolgáló
+Mivel a webkiszolgáló IIS01 és a tűzfal az ugyanazon a Felhőszolgáltatáson osztoznak az azonos nyilvános IP-cím. Így bármilyen HTTP-forgalom akkor átirányítja a tűzfalon. A kérelem sikeresen kiszolgált lenne, amíg nem tud közvetlenül lépni a webkiszolgáló, azt átadott, zavartalan a tűzfalon keresztül először. Tekintse meg az első forgatókönyv szerint ebben a szakaszban az adatforgalmat.
 
-#### <a name="denied-web-to-backend-server"></a>(Megtagadva) Webes háttérkiszolgálóra
-1. Internetes felhasználó megpróbál hozzáférni egy fájl AppVM01 a BackEnd001.CloudApp.Net szolgáltatáson keresztül
-2. Mivel nincsenek nyissa meg a fájlmegosztás nincsenek végpontok, ez nem lenne továbbítja a felhőalapú szolgáltatás, és így elérni a kiszolgálót
-3. Ha valamilyen okból a végpontok nyitott, NSG szabály 5 (Internet virtuális hálózatba) blokkolná-e a forgalom
+#### <a name="denied-web-to-backend-server"></a>(Tiltott) Webes háttérkiszolgálóra
+1. Az Internet felhasználó megpróbál hozzáférni egy fájlt a AppVM01 a BackEnd001.CloudApp.Net szolgáltatáson keresztül
+2. Mivel ebben az esetben végpontok nyissa meg a fájlmegosztás, ez a Felhőszolgáltatás nem kellene átadnia, és a kiszolgáló nem érhető el.
+3. Ha valamilyen okból a végpontok volt megnyitva, NSG-szabály (Internet, virtuális hálózatok közötti) 5 le fog állni a forgalmat
 
-#### <a name="denied-web-dns-lookup-on-dns-server"></a>(Megtagadva) Webes DNS-címkeresés DNS-kiszolgálón
-1. Internetes felhasználó megpróbálja megkeresni az egy belső DNS-rekordot a DNS01 a BackEnd001.CloudApp.Net szolgáltatáson keresztül
-2. Mivel nincsenek végpontok nyissa meg a DNS, ez nem lenne továbbítja a felhőalapú szolgáltatás, és így elérni a kiszolgálót
-3. Ha valamilyen okból a végpontok nyitott, NSG szabály 5 (Internet virtuális hálózatba) blokkolná-e a forgalom (Megjegyzés: csak akkor nem vonatkozik két okból szabály 1 (DNS), először a forrás címe az interneten, ez a szabály csak a helyi virtuális hálózat, mint a forrás vonatkozik Ez a egy olyan engedélyezési szabály, akkor soha nem letiltsa a forgalom)
+#### <a name="denied-web-dns-lookup-on-dns-server"></a>(Tiltott) A DNS-kiszolgáló DNS-címkeresés webes
+1. Az Internet felhasználó megpróbálja megkeresni egy belső DNS-rekordját DNS01 a BackEnd001.CloudApp.Net szolgáltatáson keresztül
+2. Nincsenek nyissa meg a DNS-végpontok, mivel ez a Felhőszolgáltatás nem kellene átadnia, és a kiszolgáló nem érhető el.
+3. Ha valamilyen okból a végpontok volt megnyitva, NSG-szabály (Internet, virtuális hálózatok közötti) 5 le fog állni a forgalmat (Megjegyzés: a szabály 1 (DNS) két okból nem alkalmazhatók, először a forrás címe az interneten, ez a szabály csak a helyi virtuális hálózat, mint a forrás vonatkozik Ez a egy olyan engedélyezési szabály, ezért soha nem lenne megtagadják a forgalmat)
 
-#### <a name="denied-web-to-sql-access-through-firewall"></a>(Megtagadva) Webes SQL-hozzáférés tűzfalon keresztül
-1. Internetes felhasználó SQL adatokat kér a FrontEnd001.CloudApp.Net (Internet Facing Felhőszolgáltatás)
-2. Mivel nincsenek végpontok nyissa meg az SQL, ez nem lenne továbbítja a felhőalapú szolgáltatás, és a tűzfal nem tudnák elérni
-3. Ha valamilyen okból végpontok voltak nyitva, a Frontend alhálózathoz megkezdi a bejövő szabály feldolgozása:
-   1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-   2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-   3. NSG 2. szabály (Internet tűzfalhoz) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-4. Forgalom találatok belső IP-címet a tűzfal (10.0.1.4)
-5. Tűzfal SQL nincs továbbítási szabályaik rendelkezik, és a forgalom esik
+#### <a name="denied-web-to-sql-access-through-firewall"></a>(Tiltott) Webalkalmazás SQL-hozzáférés tűzfalon keresztül
+1. Internetes felhasználói SQL adatokat kér FrontEnd001.CloudApp.Net (Internet Facing Felhőszolgáltatás)
+2. Végpontleképzőben nincs nyitott meg SQL esetén, mivel ez a Felhőszolgáltatás nem kellene átadnia, és a tűzfal nem érhető el.
+3. Ha valamilyen okból végpontok volt megnyitva, az előtérben levő alhálózathoz megkezdi a bejövő szabály feldolgozása:
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG-t 2. szabály (Internet tűzfalhoz) vonatkozik, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+4. Forgalom eléri a tűzfal (10.0.1.4 cím – ez) belső IP-címe
+5. Tűzfal nem tartozik továbbítási szabály meg SQL esetén, csökken a forgalom
 
 ## <a name="conclusion"></a>Összegzés
-Ez viszonylag egyszerű módja az alkalmazás egy tűzfal védi, és a háttér-alhálózathoz, a bejövő forgalom elkülönítésére.
+Ez viszonylag egyszerű módja az alkalmazás egy tűzfal védelmének, és a háttér-alhálózatot, bejövő forgalom elkülönítése.
 
-További példákat és a hálózati biztonsági határokat egy áttekintést talál [Itt][HOME].
+További példákat és a hálózati biztonsági határok áttekintését találja [Itt][HOME].
 
 ## <a name="references"></a>Referencia
-### <a name="main-script-and-network-config"></a>Fő parancsfájlt és a hálózati konfiguráció
-A teljes parancsfájl menthető egy olyan PowerShell-parancsfájlt. A hálózati konfiguráció mentése "NetworkConf2.xml" fájlba.
-Szükség szerint módosítsa a felhasználó által definiált változókat. Futtassa a parancsfájlt, majd kövesse a tűzfal szabály beállítása a fenti.
+### <a name="main-script-and-network-config"></a>Fő parancsfájlba, és a hálózati konfiguráció
+Mentse a teljes szkriptet egy PowerShell-parancsfájlt. Mentse a hálózati konfiguráció "NetworkConf2.xml" nevű fájl.
+Szükség szerint módosítsa a felhasználó által definiált változókat. Futtassa a parancsfájlt, majd az útmutatást követve tűzfal szabály beállítása a fenti.
 
-#### <a name="full-script"></a>Teljes körű parancsfájl
-Ez a parancsfájl lesz, a felhasználó által definiált változóknak alapján:
+#### <a name="full-script"></a>Teljes szkript
+Ez a szkript lesz, a felhasználó által definiált változóknak alapján:
 
 1. Csatlakozás Azure-előfizetéshez
 2. Új tárfiók létrehozása
-3. Hozzon létre egy új virtuális hálózat és a hálózati konfigurációs fájljában definiált két alhálózat
-4. 4 a windows server virtuális gépek létrehozása
-5. Adja meg, beleértve az NSG:
-   * Egy NSG létrehozása
-   * Azt a szabályoknak feltöltése
-   * Az NSG kötése a megfelelő alhálózatokat
+3. Hozzon létre egy új virtuális hálózat és két alhálózatot a hálózati konfigurációs fájlban meghatározott
+4. 4 a windows server rendszerű virtuális gépek létrehozása
+5. Konfigurálja az NSG-t többek között:
+   * Létrehozni egy NSG-t
+   * Ez a szabályoknak feltöltése
+   * Az NSG-t a megfelelő alhálózatokat kötése
 
-A PowerShell parancsfájl fusson helyben egy internethez csatlakoztatott PC vagy a kiszolgáló.
+Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számítógépen vagy kiszolgálón.
 
 > [!IMPORTANT]
-> Ezt a parancsfájlt, amikor előfordulhat figyelmeztetések vagy a PowerShellben pop más tájékoztató üzeneteit. Piros csak hibaüzenetek aggodalomra.
+> Ez a szkript futtatásakor a lehetséges, hogy figyelmeztetéseket vagy más tájékoztató üzeneteket, amely a pop a PowerShellben. Csak hibaüzenetek vörös színnel adhatnak okot.
 > 
 > 
 
@@ -427,7 +427,7 @@ A PowerShell parancsfájl fusson helyben egy internethez csatlakoztatott PC vagy
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
@@ -535,7 +535,7 @@ A PowerShell parancsfájl fusson helyben egy internethez csatlakoztatott PC vagy
 
 
 #### <a name="network-config-file"></a>Hálózati konfigurációs fájl
-Az XML-fájl mentése frissített hellyel rendelkező, és a hivatkozás hozzáadása ehhez a fájlhoz a $NetworkConfigFile változó a parancsfájlban.
+Mentse az xml-fájlt a hely frissítve, és adja hozzá a hivatkozás ehhez a fájlhoz, a szkriptben $NetworkConfigFile változó.
 
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
@@ -567,11 +567,11 @@ Az XML-fájl mentése frissített hellyel rendelkező, és a hivatkozás hozzáa
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
 
-#### <a name="sample-application-scripts"></a>Alkalmazás mintaparancsfájlok
-Szeretne telepíteni egy mintaalkalmazás ezzel és más DMZ példák, ha egy adtak meg, a következő hivatkozásra: [minta alkalmazás-parancsfájl][SampleApp]
+#### <a name="sample-application-scripts"></a>Mintaszkriptek alkalmazás
+Ha szeretne egy mintaalkalmazás telepítése ezzel és más DMZ példák, egy, a következő hivatkozás lett megadva: [A Példaszkript alkalmazás][SampleApp]
 
 <!--Image References-->
-[1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Az NSG bejövő DMZ"
+[1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "NSG bejövő Szegélyhálózat"
 [2]: ./media/virtual-networks-dmz-nsg-fw-asm/dstnaticon.png "Cél NAT ikon"
 [3]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallrule.png "Tűzfalszabály"
 [4]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallruleactivate.png "Tűzfal szabály aktiválás"

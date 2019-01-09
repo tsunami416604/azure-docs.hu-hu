@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 40ee4fe15b2fde917c1d056a1454b95b9655b465
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999730"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103766"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -44,6 +44,9 @@ Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikál�
 
 Replikálja, és a virtuális gépek helyreállítása ugyanazon a földrajzi fürtön belül bármely két régió között. Földrajzi fürtök és az adatok szem vannak meghatározva.
 
+>[!NOTE]
+>Ha nem tud egy fürt földrajzi régióban lásd: a replikáció engedélyezése során, majd ellenőrizze, hogy az előfizetés virtuális gép létrehozása az adott régióban hozzáféréssel rendelkezik. Ha nem, mint a "Probléma típusa" előfizetéshez tartozó támogatási kérelmet előléptetése.
+>
 **Földrajzi fürt** | **Azure-régiók**
 -- | --
 Az Amerikai | Kelet-Kanada, Kanada középső, déli középső RÉGIÓJA, USA nyugati középső RÉGIÓJA, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső RÉGIÓJA

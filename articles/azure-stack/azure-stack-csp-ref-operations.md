@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6d28eea434b081602f0e2455b22fcc58022a800e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343843"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117113"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Az Azure Stack bérlő regisztrációs kezelése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
+*Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Ez a cikk a regisztráció műveletek részleteit tartalmazza. Ezeket a műveleteket, használhatja:
 - Bérlő regisztrációk kezelése
@@ -51,7 +51,7 @@ Az Azure Stacket és API-profilokkal kapcsolatos további információkért lás
 |---                         | --- |
 | registrationSubscriptionID | Az Azure-előfizetés, amely a kezdeti regisztráció lett megadva. |
 | customerSubscriptionID     | Az Azure-előfizetést (nem az Azure Stack) regisztrálni kell az ügyfélhez tartozó. Létre kell hozni a Felhőszolgáltató (CSP) szerződéssel Partner Centeren keresztül. Ha egy ügyfél egynél több bérlőhöz, létrehozott egy előfizetést, jelentkezzen be az Azure Stack a bérlő rendelkezik. |
-| Erőforráscsoport              | Az erőforráscsoport az Azure-ban, amely tárolja a regisztrációt. |
+| resourceGroup              | Az erőforráscsoport az Azure-ban, amely tárolja a regisztrációt. |
 | registrationName           | Az Azure Stack-regisztrációk neve. Az Azure-ban tárolt objektum. A név általában az űrlap azurestack-CloudID, ahol CloudID-e az Azure Stack üzembe helyezés a Felhőbeli azonosító van. |
 
 > [!Note]  
@@ -59,7 +59,7 @@ Az Azure Stacket és API-profilokkal kapcsolatos további információkért lás
 
 ### <a name="powershell"></a>PowerShell
 
-A New-AzureRmResource-parancsmag használatával a regisztrációs erőforrás frissítése. Jelentkezzen be az Azure-ba (`Add-AzureRmAccount`) a kezdeti regisztráció során használt fiókkal. A következő példa bemutatja, hogyan adja hozzá a bérlőt:
+A New-AzureRmResource-parancsmag használatával a regisztrációs erőforrás frissítése. A következő példa bemutatja, hogyan adja hozzá a bérlőt:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -70,8 +70,8 @@ A New-AzureRmResource-parancsmag használatával a regisztrációs erőforrás f
 **A művelet**: PUT  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Válasz**: 201-es létrehozása  
-**Választörzs**: üres  
+**Válasz**: 201 Created  
+**Választörzs**: Üres  
 
 ## <a name="list-all-registered-tenants"></a>Az összes regisztrált bérlők a listában
 
@@ -85,7 +85,7 @@ Egyetlen bérlő számára, amely egy regisztrációs lettek hozzáadva listáj�
 | Paraméter                  | Leírás          |
 |---                         | ---                  |
 | registrationSubscriptionId | Az Azure-előfizetés, amely a kezdeti regisztráció lett megadva.   |
-| Erőforráscsoport              | Az erőforráscsoport az Azure-ban, amely tárolja a regisztrációt.    |
+| resourceGroup              | Az erőforráscsoport az Azure-ban, amely tárolja a regisztrációt.    |
 | registrationName           | Az Azure Stack-regisztrációk neve. Az Azure-ban tárolt objektum. A név általában formájában **azurestack**-***CloudID***, ahol ***CloudID*** Cloud az Azure Stack üzemelő példány azonosítója.   |
 
 ### <a name="powershell"></a>PowerShell
@@ -100,7 +100,7 @@ A Get-AzureRmResource parancsmaggal listázhatja az összes regisztrált bérlő
 
 A GET művelettel az összes bérlő leképezés listát kap
 
-**A művelet**: beolvasása  
+**A művelet**: GET  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
@@ -135,7 +135,7 @@ Egy bérlő, amely hozzá van adva egy regisztrációs távolíthatja el. A bér
 | Paraméter                  | Leírás          |
 |---                         | ---                  |
 | registrationSubscriptionId | A regisztráció előfizetés-azonosítója.   |
-| Erőforráscsoport              | Az erőforráscsoport, a regisztráció.   |
+| resourceGroup              | Az erőforráscsoport, a regisztráció.   |
 | registrationName           | A regisztráció neve.  |
 | customerSubscriptionId     | Az ügyfél-előfizetés azonosítóját.  |
 
@@ -149,12 +149,12 @@ Egy bérlő, amely hozzá van adva egy regisztrációs távolíthatja el. A bér
 
 Bérlő leképezések a törlési művelet használatával távolíthatja el.
 
-**A művelet**: törlése  
+**A művelet**: DELETE  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **Válasz**: 204 Nincs tartalom  
-**Választörzs**: üres
+**Választörzs**: Üres
 
 ## <a name="next-steps"></a>További lépések
 

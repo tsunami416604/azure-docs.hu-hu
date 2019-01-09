@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f4f7546efca0bd69fd71418116142acacb927604
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31dc45dbe8d7e3ed9b701f8623fd4e1425320316
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970899"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció, a G Suite-tal
 
@@ -51,29 +51,29 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-1. **KÉRDÉS: Ez az integráció támogatja a Google Cloud Platform SSO-integráció az Azure ad-vel?**
+1. **K: Ez az integráció támogatja a Google Cloud Platform SSO-integráció az Azure ad-vel?**
 
-    VÁLASZ: Igen. Google Cloud Platform és a Google Apps ossza meg ugyanazt a hitelesítési platformot. Így a GCP integrálni kell a Google Apps az egyszeri bejelentkezés konfigurálásához.
+    V: Igen. Google Cloud Platform és a Google Apps ossza meg ugyanazt a hitelesítési platformot. Így a GCP integrálni kell a Google Apps az egyszeri bejelentkezés konfigurálásához.
 
-2. **KÉRDÉS: Kompatibilisek Chromebooks és egyéb Látványelem eszközök az Azure AD egyszeri bejelentkezés?**
+2. **K: Kompatibilisek Chromebooks és egyéb Látványelem eszközök az Azure AD egyszeri bejelentkezés?**
   
-    VÁLASZ: Igen, a felhasználók is jelentkezhetnek be az Azure AD hitelesítő adataikkal Chromebook eszközeiket. Ez [G Suite-támogatási cikk](https://support.google.com/chrome/a/answer/6060880) információ arról, hogy miért felhasználók lehet kérni a hitelesítő adatokat kétszer.
+    V: Igen, a felhasználók is jelentkezhetnek be az Azure AD hitelesítő adataikkal Chromebook eszközeiket. Ez [G Suite-támogatási cikk](https://support.google.com/chrome/a/answer/6060880) információ arról, hogy miért felhasználók lehet kérni a hitelesítő adatokat kétszer.
 
-3. **KÉRDÉS: Ha egyszeri bejelentkezés engedélyezése felhasználók tudják használata az Azure AD hitelesítő adataikkal jelentkezhetnek be minden olyan Google-termék, például a Google tanterem szolgáltatásbeli, GMail, Google drive-on, YouTube, és így tovább?**
+3. **K: Ha egyszeri bejelentkezés engedélyezése felhasználók tudják használata az Azure AD hitelesítő adataikkal jelentkezhetnek be minden olyan Google-termék, például a Google tanterem szolgáltatásbeli, GMail, Google drive-on, YouTube, és így tovább?**
 
-    VÁLASZ: Igen, attól függően, [melyik G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) úgy dönt, hogy engedélyezi vagy letiltja a szervezet számára.
+    V: Igen, attól függően, [melyik G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) úgy dönt, hogy engedélyezi vagy letiltja a szervezet számára.
 
-4. **KÉRDÉS: Is engedélyezhető az egyszeri bejelentkezés csak a G Suite felhasználók egy részhalmaza számára?**
+4. **K: Is engedélyezhető az egyszeri bejelentkezés csak a G Suite felhasználók egy részhalmaza számára?**
 
-    VÁLASZ: Nem, ne tudják bekapcsolni a egyszeri bejelentkezés azonnal minden felhasználótól megköveteli a a G Suite hitelesítéséhez az Azure AD-beli hitelesítő. A G Suite nem támogatja több identitásszolgáltató kellene, mert az identitásszolgáltató a G Suite környezetének lehet az Azure AD vagy a Google –, de nem mindkettőt egyszerre.
+    V: Nem, ne tudják bekapcsolni a egyszeri bejelentkezés azonnal minden felhasználótól megköveteli a a G Suite hitelesítéséhez az Azure AD-beli hitelesítő. A G Suite nem támogatja több identitásszolgáltató kellene, mert az identitásszolgáltató a G Suite környezetének lehet az Azure AD vagy a Google –, de nem mindkettőt egyszerre.
 
-5. **KÉRDÉS: Ha van bejelentkezett felhasználó Windows keresztül, azok automatikusan hitelesítéshez és a G Suite nélkül első kéri a jelszót?**
+5. **K: Ha van bejelentkezett felhasználó Windows keresztül, azok automatikusan hitelesítéshez és a G Suite nélkül első kéri a jelszót?**
 
-    VÁLASZ: Ez a forgatókönyv engedélyezésének két lehetőség van. Első lépésként felhasználók sikerült bejelentkezni a Windows 10-es eszközök [Azure Active Directory Joinon](../device-management-introduction.md). Azt is megteheti, sikerült jelentkeznek be, amely tartományhoz van csatlakoztatva egy helyszíni Active Directoryban, amely engedélyezve van az egyszeri bejelentkezés az Azure AD-n keresztül történő Windows-eszközök egy [Active Directory összevonási szolgáltatások (AD FS)](../hybrid/plan-connect-user-signin.md) központi telepítés. Mindkét módszerhez szükség, hogy hajtsa végre a lépéseket a következő oktatóanyaggal, engedélyezze az egyszeri bejelentkezés az Azure AD között és a G Suite-tal.
+    V: Ez a forgatókönyv engedélyezésének két lehetőség van. Első lépésként felhasználók sikerült bejelentkezni a Windows 10-es eszközök [Azure Active Directory Joinon](../device-management-introduction.md). Azt is megteheti, sikerült jelentkeznek be, amely tartományhoz van csatlakoztatva egy helyszíni Active Directoryban, amely engedélyezve van az egyszeri bejelentkezés az Azure AD-n keresztül történő Windows-eszközök egy [Active Directory összevonási szolgáltatások (AD FS)](../hybrid/plan-connect-user-signin.md) központi telepítés. Mindkét módszerhez szükség, hogy hajtsa végre a lépéseket a következő oktatóanyaggal, engedélyezze az egyszeri bejelentkezés az Azure AD között és a G Suite-tal.
 
-6. **KÉRDÉS: Mit tegyek, ha egy "érvénytelen e-mail" hibaüzenet?**
+6. **K: Mit tegyek, ha egy "érvénytelen e-mail" hibaüzenet?**
 
-    VÁLASZ: A telepítő az e-mailek attribútum szükség a felhasználók tudják jelentkezik be. Ez az attribútum nem állítható be kézzel.
+    V: A telepítő az e-mailek attribútum szükség a felhasználók tudják jelentkezik be. Ez az attribútum nem állítható be kézzel.
 
     Az e-mailek attribútum töltve egy érvényes Exchange-licenccel rendelkező bármelyik felhasználó számára. Levelezési a felhasználó nem áll, ha ez a hiba fog kapni, mint az alkalmazás meg kell kapnia a hozzáférést, hogy ez az attribútum.
 
@@ -153,8 +153,8 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [G Suite ügyfél-támogatási csapatának](https://www.google.com/contact/) beolvasni ezeket az értékeket.
@@ -203,7 +203,7 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
 ### <a name="configure-g-suite-single-sign-on"></a>A G Suite egyszeri bejelentkezés konfigurálása
 
-1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzol](http://admin.google.com/) a rendszergazdai fiók használatával.
+1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzol](https://admin.google.com/) a rendszergazdai fiók használatával.
 
 2. Kattintson a **biztonsági**. Ha a hivatkozás nem jelenik meg, akkor előfordulhat, hogy elrejtve a **további vezérlők** menü a képernyő alján.
 

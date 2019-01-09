@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515828"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121175"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványok ellenőrzése
 
-A jelen cikkben ismertetett Azure Stack készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz segítségével ellenőrizze, hogy a [generált PKI-tanúsítványokat](azure-stack-get-pki-certs.md) központi telepítés előtti kiválóan alkalmasak. Ha elegendő időt, tesztelheti és szükség esetén a tanúsítványok, adja ki újból ellenőriznie kell a tanúsítványokat.
+A jelen cikkben ismertetett Azure Stack készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz segítségével ellenőrizze, hogy a [generált PKI-tanúsítványokat](azure-stack-get-pki-certs.md) központi telepítés előtti kiválóan alkalmasak. Ha elegendő időt, tesztelheti és szükség esetén a tanúsítványok, adja ki újból tanúsítványok érvényesítésére.
 
 A készenléti-ellenőrző eszköz tanúsítványt hoz létre hajtja végre:
 
 - **Olvassa el a PFX**  
-    Ellenőrzi, hogy érvényes PFX-fájl helyes jelszót, és figyelmezteti, ha nyilvános információt nem védi a jelszót. 
+    Ellenőrzi, hogy érvényes PFX-fájl helyes jelszót, és e a nyilvános információkat a jelszóval nem védett. 
 - **Aláírási algoritmus**  
     Ellenőrzi, hogy az aláírási algoritmus nem SHA1.
 - **Titkos kulcs**  
@@ -86,8 +86,8 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
     
      - A tanúsítvány(ok) jelölje be a megfelelő könyvtárakat az előző lépésben létrehozott. Példa:  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
+        - `c:\certificates\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\ARM Admin\CustomerCertificate.pfx`
 
 3. A PowerShell-ablakban módosítsa az értékét **RegionName** és **FQDN** az Azure Stack környezettel való megfelelő, és futtassa a következő:
 
@@ -145,9 +145,9 @@ Invoke-AzsCertificateValidation Completed
 
 ### <a name="known-issues"></a>Ismert problémák
 
-**Jelenség**: a rendszer kihagyja tesztek
+**Jelenség**: A rendszer kihagyja tesztek
 
-**OK**: AzsReadinessChecker kihagyja bizonyos teszteket, ha egy függőség nem teljesül:
+**Ok**: AzsReadinessChecker kihagyja bizonyos teszteket, ha egy függőség nem teljesül:
 
  - Ha a tanúsítványlánc nem sikerül, a rendszer kihagyja többi tanúsítvány.
 
@@ -172,7 +172,7 @@ Invoke-AzsCertificateValidation Completed
     Invoke-AzsCertificateValidation Completed
     ```
 
-**Feloldási**: minden egyes tanúsítvány tesztek minden készlete a részletek szakaszában az eszköz útmutatót követve.
+**Megoldás**: Minden egyes tanúsítvány tesztek minden készlete a részletek szakaszában az eszköz útmutatót követve.
 
 ## <a name="perform-platform-as-a-service-certificate-validation"></a>Platform végrehajtott egy szolgáltatási tanúsítvány érvényesítése
 

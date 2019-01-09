@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 32554b3bf88318dd8d775022369e2673d4e51a0f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cfc5779768ccd1efdc406da6b2701b52f2ab81cf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435633"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121464"
 documentType: LandingData
-title: Az Azure SQL Database - önálló adatbázis
+title: 'Az Azure SQL Database: Önálló adatbázis'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Az Azure SQL Database dokumentációja – oktatóanyagok és API-referencia
@@ -21,14 +21,14 @@ metadata:
   ms.date: 12/01/2018
   ms.author: jovanpop-msft
 abstract:
-  description: Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. SQL Database egy olyan nagy teljesítményű, könnyen használható, megbízható, és segítségével hozhat létre új alkalmazások, webhelyek és az Ön által választott programozási nyelven mikroszolgáltatások anélkül, hogy az infrastruktúra felügyelete biztonságos adatbázisban. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+  description: Az Azure SQL Database egy relációs adatbázis (DBaaS) szolgáltatás a Microsoft SQL Server adatbázismotor legújabb stabil verziója alapján. SQL-adatbázis nem egy nagy teljesítményű, könnyen használható, megbízható és biztonságos adatbázis, amely segítségével hozhat létre új alkalmazások, webhelyek és az Ön által választott programozási nyelven mikroszolgáltatás-alapú infrastruktúra kezelése nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
       width: 250
-    title: Egyetlen SQL-adatbázis létrehozása az Azure-ban. (3:12)
+    title: Egy SQL-adatbázis létrehozása az Azure-ban (3:12)
     href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
@@ -45,50 +45,50 @@ sections:
         src: media/index/i_elasticpool.svg
     - title: A logikai kiszolgáló
       href: /azure/sql-database/sql-database-logical-servers
-      html: <p>A logikai kiszolgálók olyan biztonsági, tunning, biztonsági mentési szabályzat és egyéb konfigurációs tulajdonságok konfigurálása a kiszolgálón lévő adatbázisok egy készletét a központi felügyeleti pontot.</p>
+      html: <p>A logikai kiszolgálók olyan biztonsági, hangolása, biztonsági mentési szabályzat és egyéb konfigurációs tulajdonságaiban konfigurálja a kiszolgálón lévő adatbázisok egy készletét központi felügyeleti pontot.</p>
       image:
         src: media/index/i_mi.svg
-    - title: Ár-/szolgáltatásszintek
+    - title: Ár és a szolgáltatási szint
       href: /azure/sql-database/sql-database-service-tiers
-      html: <p>A kedvező árú havi 5 dollárostól a nagy teljesítményű 80 magos adatbázisokig terjedő rugalmas szolgáltatásszintekkel igény szerint módosíthatja az ár-teljesítmény arányt.</p>
+      html: <p>Az ár/teljesítmény arány igény szerinti rugalmas szolgáltatási szintek, amelyek egy kedvező díjszabású 5 USD havi a hatékony 80-as-core-adatbázisokhoz a testre szabni.</p>
       image:
         src: media/index/i_perftier.svg
     - title: Méretezhetőség
       href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Az adatbázis a szükségleteinek, az alkalmazás teljesítményének növelése könnyen méretezhető.</p>
+      html: <p>Könnyen méretezhető másolatot az adatbázisról, az alkalmazás teljesítményének javítása érdekében.</p>
       image:
         src: media/index/i_scale.svg
-    - title: Szolgáltatásként nyújtott platform
+    - title: Platformszolgáltatás
       href: /azure/sql-database/sql-database-paas
-      html: <p>A beépített magas rendelkezésre állás, az automatikus biztonsági másolatok és a georeplikáció megakadályozza a karbantartási műveletek, illetve infrastruktúra- vagy hardverhibák okozta üzleti leállásokat.</p>
+      html: <p>Beépített magas rendelkezésre állású, automatikus biztonsági másolatokat és georeplikáció útján segít a karbantartási műveleteket, infrastruktúra vagy a hardveres hibák esetén megakadályozza az üzleti leállítása.</p>
       image:
         src: media/index/gear.svg
     - title: Magas szintű biztonság
       href: /azure/sql-database/sql-database-security-index
-      html: <p>Gondoskodjon adatbázisa védelméről Azure AD-hitelesítéssel, virtuális hálózatokkal, tűzfalakkal és Always Encrypted-kapcsolatokkal. A beépített biztonsági funkciókkal azonosíthatja a fenyegetéseket és a sebezhető pontokat.</p>
+      html: <p>Az adatbázist az Azure AD-hitelesítés, a virtuális hálózatok, a tűzfalak és az Always Encrypted kapcsolatok biztonságossá tétele. A beépített biztonsági funkciókkal azonosíthatja a fenyegetéseket és a sebezhető pontokat.</p>
       image:
         src: media/index/i_security.svg
 - title: Új és előzetes verziójú funkciók
   items:
   - type: paragraph
-    text: 'Folyamatosan fejleszteni az SQL Database új funkciókkal és az alábbi új szolgáltatásokkal kapcsolatos visszajelzését hallani szeretnénk:'
+    text: 'Folyamatosan folyamatosan fejlesztjük az SQL Database új funkciókkal és az alábbi új szolgáltatásokkal kapcsolatos visszajelzését hallani szeretnénk:'
   - type: list
     style: unordered
     items:
     - html: (Előzetes verzió) <a href="sql-database-service-tier-hyperscale">Nagy kapacitású</a> szint, amely legfeljebb 100 TB méretű adatbázisokhoz, és több olvasható replika.
     - html: (Előzetes verzió) Új SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">intelligens lekérdezés-feldolgozás</a> funkciók, például <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">táblaváltozót késleltetve fordítási</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">kötegelt mód sortárindex táblákon</a>, és <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> skaláris UDF inlining</a>.
-    - html: (Előzetes verzió) Új Transact-SQL nyelvi funkciókat, például <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT összesítés</a> és <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">TÖMEGES IMPORTÁLÁS az Azure Blob storage</a>.
-    - html: (Előzetes verzió) Új SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">összeállítása</a> , és építse újra a FÜRTÖZÖTT OSZLOPCENTRIKUS index műveleteket.
-- title: 5 perces gyors útmutatók
+    - html: (Előzetes verzió) Új Transact-SQL nyelvi funkciókat, például <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT összesítés</a> és <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">tömeges importálás az Azure Blob storage-ból</a>.
+    - html: (Előzetes verzió) Új SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">összeállítása</a> , és építse újra a fürtözött oszlopcentrikus index műveleteket.
+- title: Öt perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatok egyszerű ellátását az Azure Portal, az Azure CLI és az Azure PowerShell segítségével. Az alábbi rövid útmutatókból megtudhatja, hogyan végezhetők el különböző alapszintű felügyeleti feladatok:'
+    text: 'Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatokat végezhet az Azure Portalon, az Azure CLI-vel és az Azure PowerShell használatával. Ismerje meg, hogyan hajthat végre alapszintű felügyeleti feladatokat a következő rövid minták használatával:'
   - type: table
     style: dataMatrix
     columns:
     - image:
         src: media/index/portal.svg
-      title: Az Azure Portal
+      title: Azure Portal
     - image:
         src: media/index/cli.svg
       title: Azure CLI
@@ -111,13 +111,13 @@ sections:
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: Database méretezése
+    - title: Egy adatbázis-méretezési csoport
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
       - href: 
-    - title: Rugalmas készlet skálázása
+    - title: Rugalmas készlet méretezése
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
@@ -125,15 +125,15 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre, kezelhet és telepíthet át adatbázisokat az SQL DB használatával
+    text: Megtudhatja, hogyan hozhatja létre, kezelheti és adatbázisok migrálása az Azure SQL Database használatával.
   - type: list
     style: ordered
     items:
-    - html: Egy új SQL-adatbázis sémájának létrehozása és megtervezése az <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> vagy a <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> használatával
-    - html: Létező adatbázis áttelepítése Azure-bA <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> vagy <a href="/azure/sql-database/sql-database-import">BACPAC importálási</a>
-    - html: <a href="/azure/sql-database/sql-database-security-tutorial">Az SQL Database adatbázis védelme</a>
-    - html: Globális adatterjesztés <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">földrajzilag elosztott adatbázis</a> segítségével
-    - html: További információ <a href="sql-database-howto-single-database.md">útmutató végigvezeti a</a> , amelyek alapján beállíthatja az adatbázis.
+    - html: Létrehozása és megtervezése az új SQL-adatbázist a séma használatával <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> vagy <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>.
+    - html: Létező adatbázis áttelepítése az Azure használatával <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> vagy <a href="/azure/sql-database/sql-database-import">BACPAC importálási</a>.
+    - html: <a href="/azure/sql-database/sql-database-security-tutorial">Az SQL-adatbázis védelme</a>.
+    - html: Terjesztheti az adatait globálisan használatával egy <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">földrajzilag elosztott adatbázis</a>.
+    - html: További információ <a href="sql-database-howto-single-database.md">útmutatók</a> , amelyek alapján beállíthatja az adatbázis.
 - title: Példák
   items:
   - type: paragraph

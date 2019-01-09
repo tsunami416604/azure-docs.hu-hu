@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0bc44dc31de4a45127468b956d01d7c3f8d92985
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53594305"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54122819"
 ---
-A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/application-insights/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
+A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="diagnostics-and-metrics"></a>Diagnosztika és metrikák 
 

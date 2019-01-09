@@ -47,11 +47,11 @@ items:
   - name: Alkalmazások futásidejű kivételeinek keresése
     href: learn/tutorial-runtime-exceptions.md
   - name: Alkalmazások teljesítményproblémáinak keresése
-    href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-performance.md
   - name: Alkalmazásállapot-riasztás
     href: learn/tutorial-alert.md
   - name: Az alkalmazásfelhasználók megismerése
-    href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-users.md
   - name: Egyéni irányítópultok létrehozása
     href: learn/tutorial-app-dashboards.md
 - name: Példák
@@ -93,7 +93,7 @@ items:
     - name: Application Insights
       items:
       - name: Áttekintés
-        href: ../application-insights/app-insights-overview.md?toc=/azure/azure-monitor/toc.json
+        href: app/app-insights-overview.md
       - name: DevOps
         href: app/detect-triage-diagnose.md
       - name: Elosztott nyomkövetés
@@ -161,7 +161,7 @@ items:
     - name: Alkalmazások figyelése
       items:
       - name: Webalkalmazások és szolgáltatások részletes diagnosztikája
-        href: ../application-insights/app-insights-devops.md?toc=/azure/azure-monitor/toc.json
+        href: app/devops.md
       - name: Webalkalmazások teljesítményének monitorozása
         href: app/web-monitor-performance.md
       - name: A fejlesztési, tesztelési és éles környezetek elkülönítése
@@ -342,7 +342,7 @@ items:
         - name: Szűrőtelemetria
           href: app/java-filter-telemetry.md
         - name: Mikrométeres metrikák
-          href: ../application-insights/micrometer-java.md?toc=/azure/azure-monitor/toc.json
+          href: app/micrometer-java.md
       - name: Node.js-alkalmazások
         items:
         - name: Node.js
@@ -907,7 +907,7 @@ items:
     - name: Telemetriai korreláció
       href: app/correlation.md
     - name: NuGet-csomagok
-      href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
+      href: app/nuget.md
     - name: Platformtámogatás
       href: app/platforms.md
   - name: Application Insights-adatmodell
@@ -1005,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: daba9eb12d568e3eb49a7aa4d21f1d2eaa367ab8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 02748b429bf7122dd0f1531d45c8af1217ceaa43
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074614"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120925"

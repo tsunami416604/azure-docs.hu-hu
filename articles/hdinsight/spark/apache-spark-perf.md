@@ -8,13 +8,13 @@ ms.author: maxluk
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/08/2019
+ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653730"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117860"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Az Apache Spark-feladatok optimalizálása
 
@@ -24,7 +24,7 @@ A következő szakaszok ismertetik a Spark-feladat közös optimalizálása és 
 
 ## <a name="choose-the-data-abstraction"></a>Válassza ki az adatok absztrakciós
 
-Spark-1.x használt rdd-kként absztrakt adatokat, majd a Spark 2.x bevezetett adatkerettípusokat jelölhet, és adatkészletek. Vegye figyelembe a következő relatív érdemi:
+A Spark a korábbi rdd-k segítségével absztrakt az adatokat, a Spark 1.3 és 1.6-os bevezetett DataFrames és adatkészleteket, illetve. Vegye figyelembe a következő relatív érdemi:
 
 * **DataFrames**
     * A legtöbb esetben a legjobb választás.
@@ -42,7 +42,7 @@ Spark-1.x használt rdd-kként absztrakt adatokat, majd a Spark 2.x bevezetett a
     * Globális Katalógus magas terhelés.
     * Egész szakaszból álló kódgenerálás működésképtelenné válik.
 * **RDDs**
-    * A Spark 2.x, nincs szüksége rdd-k, kivéve, ha egy új egyéni RDD létrehozásához szükséges.
+    * Nem kell használni az rdd-k, kivéve, ha egy új egyéni RDD létrehozásához szükséges.
     * Nincs lekérdezés optimalizálása katalizáló keresztül.
     * Nem egész szakaszból álló kódgenerálás.
     * Globális Katalógus magas terhelés.

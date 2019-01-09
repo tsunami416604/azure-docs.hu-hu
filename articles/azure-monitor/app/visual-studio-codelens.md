@@ -15,15 +15,15 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: ee075ac9c2dda2972fa2eeb731d28cf09ec98d6d
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 9ad3484e9134f1ff96823968b65d7b6dc45c7539
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057092"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120903"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetria a Visual Studio CodeLensben
-A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti az [Azure Application Insights-t](../../application-insights/app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](https://msdn.microsoft.com/library/dn269218.aspx) – az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő neve vagy egyéb hasznos információk jelentek meg.
+A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti az [Azure Application Insights-t](../../azure-monitor/app/app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](https://msdn.microsoft.com/library/dn269218.aspx) – az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő neve vagy egyéb hasznos információk jelentek meg.
 
 ![CodeLens](./media/visual-studio-codelens/codelens-overview.png)
 

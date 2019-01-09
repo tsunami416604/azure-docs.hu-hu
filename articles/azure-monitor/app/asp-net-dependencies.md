@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: de260560f141691fc1a7c0dd3bfad262d2d79598
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 48e20df61844d83deb8ac992f783cf227e658aaf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025572"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119985"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
-A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](../../application-insights/app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
+A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
 
 A-a-beépített függőségi figyelő jelenleg az ilyen típusú függőségek hívásainak jelentések:
 

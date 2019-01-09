@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612788"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104726"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
 Ismerje meg, hogyan hozhatja létre első Azure Resource Manager-sablonját az Azure Portal használatával, és hogy hogyan szerkesztheti és helyezheti üzembe az Azure Portalról. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. A jelen oktatóanyag útmutatója alapján Azure Storage-fiókot fog létrehozni. Ugyanezzel a folyamattal más Azure-erőforrásokat is létre lehet hozni.
 
@@ -97,7 +97,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "location": {
@@ -145,9 +145,9 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
     - **Erőforráscsoport**: adjon egy egyedi nevet az erőforráscsoportnak.
     - **Hely**: válasszon egy helyet az erőforráscsoportnak.
     - **Hely**: válasszon egy helyet a tárfióknak.  Választhatja ugyanazt a helyet is, amelyet az erőforráscsoportnál megadott.
-    - **Fiók típusa**: Ennél az útmutatónál adja meg a **Standard_LRS** nevet.
-    - **Típus**: Ennél a rövid útmutatónál a **StorageV2** típust adja meg.
-    - **Hozzáférési szint**: Ennél a rövid útmutatónál a **Hot** (Gyors elérésű) szintet adja meg.
+    - **Fiók típusa**: Adja meg **Standard_LRS** ebben a rövid útmutatóban.
+    - **Milyen**: Adja meg **StorageV2** ebben a rövid útmutatóban.
+    - **Hozzáférési szint**: Adja meg **interaktív** ebben a rövid útmutatóban.
     - **Csak HTTPS-forgalom engedélyezett**.  Ennél a rövid útmutatónál válassza a **true** (igaz) értéket.
     - **Elfogadom a fenti feltételeket és kikötéseket**: (kiválasztás)
 
@@ -164,7 +164,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 
     ![Azure Resource Manager-sablonok üzembehelyezési erőforráscsoportja](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    Láthatja, hogy az üzembe helyezés állapota sikeres, és csak egyetlen tárfiók található az erőforráscsoportban. A tárfiók neve egy, a sablon által létrehozott egyedi sztring. Az Azure-tárfiókokkal kapcsolatos további információkért lásd: [Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md).
+    Láthatja, hogy az üzembe helyezés állapota sikeres, és csak egyetlen tárfiók található az erőforráscsoportban. A tárfiók neve egy, a sablon által létrehozott egyedi sztring. Az Azure storage-fiókok használatával kapcsolatos további tudnivalókért lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és listát az Azure portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

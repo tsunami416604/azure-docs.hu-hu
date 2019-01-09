@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002212"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102975"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az az elosztott nyomkövetési?
 
-A modern felhőalapú megjelenésével és [mikroszolgáltatások](http://azure.com/microservices) architektúrák növekedését egyszerű, függetlenül üzembe helyezhető szolgáltatások, amelyek segítségével csökkentheti a költségeket a rendelkezésre állási és az átviteli sebesség növelése mellett. Azonban amíg ezek áthelyezések száma – az egyes szolgáltatások végzett megérteni a teljes, igazi érdeme, átfogó rendszerek nehezebb kapcsolatos okból és a hibakereséshez.
+A modern felhőalapú megjelenésével és [mikroszolgáltatások](https://azure.com/microservices) architektúrák növekedését egyszerű, függetlenül üzembe helyezhető szolgáltatások, amelyek segítségével csökkentheti a költségeket a rendelkezésre állási és az átviteli sebesség növelése mellett. Azonban amíg ezek áthelyezések száma – az egyes szolgáltatások végzett megérteni a teljes, igazi érdeme, átfogó rendszerek nehezebb kapcsolatos okból és a hibakereséshez.
 
 A monolitikus architektúrák közben használtunk a hívási hibakereséséről. Hívási azok ragyogó eszközök megjelenítéséhez, a folyamat-végrehajtás (módszer A hívott metódus B, c. módszer neve), valamint a részletek és a paraméterek egyes ezeket a hívásokat. Ez a nagyszerű kódtömbök vagy egyetlen folyamat futó szolgáltatások esetén, de hogyan tegye azt debug mikor a hívás nem egy folyamat határán, nem csak a helyi veremben hivatkozást? 
 
@@ -59,4 +59,4 @@ A OpenCensus webhely fenntartja API referenciadokumentációt tartalmaz a [Pytho
 
 * [OpenCensus Python – használati útmutató](https://opencensus.io/api/python/trace/usage.html)
 * [Alkalmazástérkép](./../../azure-monitor/app/app-map.md)
-* [Teljes körű alkalmazásteljesítmény-figyelés](./../../application-insights/app-insights-tutorial-performance.md)
+* [Teljes körű alkalmazásteljesítmény-figyelés](./../../azure-monitor/learn/tutorial-performance.md)

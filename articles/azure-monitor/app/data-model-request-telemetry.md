@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 1f9a108a91a2fa917ec58e6cff487c6dca71130f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076399"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117146"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelmek telemetriai adatai: Application Insights-adatmodell
 
-A kérelemben szereplő telemetriai elem (a [Application Insights](../../application-insights/app-insights-overview.md)) az alkalmazás külső kérelem által kiváltott végrehajtás logikai sorrendben jelöli. Minden kérelem végrehajtásának azonosítja egyedi `ID` és `url` tartalmazó összes végrehajtás paramétert. Kérelmek logikai szerint csoportosíthatók `name` , és meghatározhatja a `source` , ezt a kérelmet. Végrehajtás eredményezhet `success` vagy `fail` és a egy bizonyos rendelkezik `duration`. Mind a sikeres és Sikertelen végrehajtások csoportosíthatók további korlátozásokat `resultCode`. Kezdési ideje a kérelmek telemetriai adatai, meghatározott boríték szintjén.
+A kérelemben szereplő telemetriai elem (a [Application Insights](../../azure-monitor/app/app-insights-overview.md)) az alkalmazás külső kérelem által kiváltott végrehajtás logikai sorrendben jelöli. Minden kérelem végrehajtásának azonosítja egyedi `ID` és `url` tartalmazó összes végrehajtás paramétert. Kérelmek logikai szerint csoportosíthatók `name` , és meghatározhatja a `source` , ezt a kérelmet. Végrehajtás eredményezhet `success` vagy `fail` és a egy bizonyos rendelkezik `duration`. Mind a sikeres és Sikertelen végrehajtások csoportosíthatók további korlátozásokat `resultCode`. Kezdési ideje a kérelmek telemetriai adatai, meghatározott boríték szintjén.
 
 Telemetria támogatja a standard szintű bővíthetőségi modell segítségével egyéni kérelem `properties` és `measurements`.
 

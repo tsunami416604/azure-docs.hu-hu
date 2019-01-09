@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599859"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103791"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Oktatóanyag: Az Azure SignalR Service-hitelesítés
 
@@ -547,7 +547,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
-1. Nyissa meg a [http://github.com](http://github.com) webhelyet egy böngészőben, majd lépjen a fiókja **Settings (Beállítások)** > **Developer settings (Fejlesztői beállítások)** > **Oauth Apps (OAuth-alkalmazások)** elemére.
+1. Nyissa meg a [https://github.com](https://github.com) webhelyet egy böngészőben, majd lépjen a fiókja **Settings (Beállítások)** > **Developer settings (Fejlesztői beállítások)** > **Oauth Apps (OAuth-alkalmazások)** elemére.
 
 2. Kattintson a hitelesítő alkalmazásra, és a frissítse a **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságát a lent látható módon:
 

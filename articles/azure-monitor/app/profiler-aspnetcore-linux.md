@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: bfd6f59ca61d14bc8187aa7c56c29ac44b40b8e9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074281"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118489"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Az ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler-profil
 
 Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
-Ismerje meg, hogy mennyi időt vesz igénybe az egyes módszerek az élő webalkalmazásának használatakor [Application Insights](../../application-insights/app-insights-overview.md). Application Insights Profiler már elérhető az Azure App Service Linux rendszeren futó ASP.NET Core web Apps. Ez az útmutató részletes útmutatás a Profiler nyomkövetések hogyan gyűjthetők össze az ASP.NET Core Linuxos webalkalmazásokat.
+Ismerje meg, hogy mennyi időt vesz igénybe az egyes módszerek az élő webalkalmazásának használatakor [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler már elérhető az Azure App Service Linux rendszeren futó ASP.NET Core web Apps. Ez az útmutató részletes útmutatás a Profiler nyomkövetések hogyan gyűjthetők össze az ASP.NET Core Linuxos webalkalmazásokat.
 
 Ez az útmutató befejeztével az alkalmazás például a képen látható a nyomkövetés Profiler-nyomkövetések képes összegyűjteni. Ebben a példában a Profiler nyomkövetést azt jelzi, hogy egy bizonyos webes kérés lassú várakozással töltött idő miatt. A *gyakori elérésű útvonal* egy személy ikon jelöli, amelyet a rendszer lassítása az alkalmazást. A **kapcsolatos** metódus az a **HomeController** szakaszban van a webalkalmazás lassítása, mert a metódust hívja a **Thread.Sleep** függvény.
 

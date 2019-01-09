@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 01/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6cf415112f245421b3225c2e2ccb07a7bbf9332
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098296"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103165"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -72,6 +72,9 @@ Hálózati biztonsági csoport beállításai alkalmazott továbbra is engedély
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault tűzfal mögött
 A virtuális gép részére egy kulcstartó eléréséhez képesnek kell lennie. Tekintse meg a hozzáférést a key vault tűzfal mögül útmutatást, amely a [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) csapat kezeli. 
+
+### <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás 
+A virtuális gép eléréséhez képesnek kell lennie a [Azure Instance Metadata szolgáltatás](../virtual-machines/windows/instance-metadata-service.md) végpontot, amely jól ismert nem átirányítható IP-címet használ (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Linux-csomagkezelés tűzfal mögött
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4832a48489a043493639bdedd6c6adf3c828de11
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3eaa5de1b1378ba78a7c57172fd0a155f72cd6c5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434698"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102516"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Egyszeres vezénylők a tartós függvények (az Azure Functions)
 
@@ -91,7 +91,7 @@ Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott G
 > A JavaScript fejlesztésének helyileg, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>`, például. `localhost:7071` a módszer használatához `DurableOrchestrationClient`. Ezzel a követelménnyel kapcsolatban további információkért lásd: a [GitHub-problémát](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 > [!NOTE]
-> Ez a példa egy lehetséges versenyhelyzet szerepel. Ha két példánya **HttpStartSingle** hajtható végre párhuzamosan, az eredmény két különböző létrehozható az egyedülálló, gyakorlatilag felülírja a másik egy példányát. A követelményeitől függően ez lehet a nem kívánt mellékhatásokkal. Ezért fontos győződjön meg arról, hogy nincsenek két kérelmek egyidejűleg futtathatja az eseményindító függvény.
+> Ez a példa egy lehetséges versenyhelyzet szerepel. Ha két példánya **HttpStartSingle** egyidejűleg hajtsa végre, mindkét függvényhívások jártak, de csak egy vezénylési példány ténylegesen indul el. A követelményeitől függően ez lehet a nem kívánt mellékhatásokkal. Ezért fontos győződjön meg arról, hogy nincsenek két kérelmek egyidejűleg futtathatja az eseményindító függvény.
 
 Az orchestrator-függvény a gyakorlati kivitelezés részleteinek ténylegesen nem számít. Lehet, hogy az orchestrator szokásos függvény, amely indulásakor és befejezésekor, vagy lehet egy örökre futtató (azaz egy [külső Vezénylési](durable-functions-eternal-orchestrations.md)). A fontos pontot, hogy minden eddiginél csak egy példány egy időben futnak.
 

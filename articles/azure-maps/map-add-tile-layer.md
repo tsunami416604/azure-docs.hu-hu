@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 57cde41bf65c370f86ebc57a39e917b95721ca81
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: a9decacc3b22676d94726e3cf979198b3486d270
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892308"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104641"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Térkép egy mozaikréteg hozzáadása
 
@@ -24,7 +24,7 @@ Egy csempe réteg betöltése a csempék a kiszolgálóról. Ezek a lemezképek 
 
 * X, Y, nagyítás jelöléssel - nagyítási szint alapján, x az oszlop, y pedig sor pozícióját a csempe a csempe rácsban.
 * Quadkey jelöléssel - kombináció x, y, nagyítás információkból egy egyetlen karakterláncérték, amely egy csempéhez egyedi azonosítója.
-* Határolókeret – határolókeret koordinátái használható a következő formátumban adja meg a kép `{west},{south},{east},{north}` által gyakran használt [webes leképezési szolgáltatások (WMS)](http://www.opengeospatial.org/standards/wms).
+* Határolókeret – határolókeret koordinátái használható a következő formátumban adja meg a kép `{west},{south},{east},{north}` által gyakran használt [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) kiválóan alkalmas nagy méretű adatkészleteket a térképen megjelenítése. Nem csak egy mozaikréteg létrehozható egy rendszerképből, de vektoros adatait is megjeleníthetők-e egy csempe rétegként túl. A térkép vezérlőelem szerint egy csempe rétegként vektoros adatait renderelése, csak kell betöltenie a csempéket, amelynek sokkal kisebb lehet a fájlméret, mint a vektoros adatait képviselik. Számos jelennek meg a térképen adatsorokat millons kell ezt a módszert használja.
@@ -38,9 +38,9 @@ A csempe URL-cím egy mozaikréteg átadott kell lennie egy http/https URL-CÍM�
 * `{bbox-epsg-3857}` -A határoló box karakterlánc a következő formátumban `{west},{south},{east},{north}` a rendszerben EPSG 3857 térbeli hivatkozást.
 * `{subdomain}` -A helyőrző, ahova a rendszer hozzáadja az altartomány értékeket, ha meg van adva.
 
-## <a name="add-a-tile-layer"></a>Egy mozaikréteg hozzáadása
+## <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
 
- Ez a minta bemutatja, hogyan hozzon létre egy csempe réteget, amely az csempék jelennek meg az x, y, nagyítás mozaik rendszert használó mutat. Ez a csempe réteg forrását egy időjárási ilyesmire területre a a [Iowa környezeti Mesonet, Iowa State Universityn](http://mesonet.agron.iastate.edu/ogc/).
+ Ez a minta bemutatja, hogyan hozzon létre egy csempe réteget, amely az csempék jelennek meg az x, y, nagyítás mozaik rendszert használó mutat. Ez a csempe réteg forrását egy időjárási ilyesmire területre a a [Iowa környezeti Mesonet, Iowa State Universityn](https://mesonet.agron.iastate.edu/ogc/).
 
 <br/>
 

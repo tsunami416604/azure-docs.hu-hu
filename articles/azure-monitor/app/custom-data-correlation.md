@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 892342dfa4407a7ed138ffb004e7854c0cd07b4a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d034bf130440fdb5b783db41161ab5a21a306478
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797988"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103112"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Vlastní zdroje dat az Application Insights-adatok korrelálásához
 
@@ -28,7 +28,7 @@ Bizonyos esetekben érdemes lehet egyéni adatok a következők:
 
 - Adatbővítés vagy -keresési adattáblák: például kiegészítik a tulajdonos, a kiszolgáló és a tesztkörnyezet helyét, amelyben megtalálhatók a kiszolgáló neve 
 - Az Application Insights-adatforrások korrelációs: például egy webes áruházi meghatározni, hogy pontos becslése a szállítási időt a beszerzési-teljesítési service adataival a vásárlás összevetését adatait is 
-- Teljesen egyéni adatok: számos ügyfelünk kedvelt a lekérdezési nyelvet és a Log Analytics data platform, amely az Application Insights teljesítményét, és azt szeretné használni, amely egyáltalán nem kapcsolódik az Application Insights adatokat lekérdezni. Ha például egy intelligens otthoni telepítés részeként a napkollektorok teljesítményének nyomon követéséhez vázolt [Itt]( http://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
+- Teljesen egyéni adatok: számos ügyfelünk kedvelt a lekérdezési nyelvet és a Log Analytics data platform, amely az Application Insights teljesítményét, és azt szeretné használni, amely egyáltalán nem kapcsolódik az Application Insights adatokat lekérdezni. Ha például egy intelligens otthoni telepítés részeként a napkollektorok teljesítményének nyomon követéséhez vázolt [Itt]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Hogyan lehet egyéni adatait az Application Insights-adatok 
 

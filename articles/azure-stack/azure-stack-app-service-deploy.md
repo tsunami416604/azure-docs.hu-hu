@@ -1,5 +1,5 @@
 ---
-title: 'Üzembe helyezése az App Services: Az Azure Stack |} A Microsoft Docs'
+title: 'Helyezze üzembe az App Services: Az Azure Stack |} A Microsoft Docs'
 description: Részletes útmutatást az Azure Stack App Service üzembe helyezése
 services: azure-stack
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635373"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104760"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ez a cikk az útmutató segítségével üzembe helyezése az Azure Stack App Service-ben.
 
@@ -204,15 +204,15 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
     Ha Ön üzembe helyezése meglévő virtuális hálózattal és belső IP-cím használatával szeretne csatlakozni a fájlkiszolgáló, hozzá kell adnia egy kimenő biztonsági szabályt. Ez a szabály lehetővé teszi a feldolgozó alhálózat és a fájlkiszolgáló között SMB-forgalom.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
 
-    - Forrás: összes
+    - Forrás: Bármelyik
     - Forrás porttartomány: *
     - Cél: IP-címek
     - Cél IP-címtartomány: IP-címtartományt a fájlkiszolgáló számára
-    - Cél porttartomány: 445-ös
+    - Cél porttartomány: 445
     - Protokoll: TCP
-    - Művelet: engedélyezése
+    - Művelet: Engedélyezés
     - Prioritás: 700
-    - Name: Outbound_Allow_SMB445
+    - Név: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Az Azure Stack App Service kipróbálása
 
@@ -260,9 +260,9 @@ Is kipróbálhatja más [platform platformszolgáltatási (PaaS) szolgáltatáso
  - [MySQL típusú erőforrás-szolgáltató](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
-[Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
+[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
+[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy/app-service-installer.png

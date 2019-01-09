@@ -11,12 +11,12 @@ ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
-ms.openlocfilehash: 369bdba063f8582b8343682dcbbc990d2f63e21a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a1f89ca6e9dc2d05180df14ff0f4dc52729a7e03
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078065"
+ms.locfileid: "54107837"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Hozzon létre és ismétlődő feladatok és a munkafolyamatok futtatásához az Azure Logic Apps
 
@@ -39,7 +39,7 @@ Az eseményindító támogatja az sok mintát, például:
 
 Minden alkalommal, amikor az ismétlődési eseményindító indulásakor a Logic Apps hoz létre, és a egy új példányát a logikai alkalmazás munkafolyamatának futtatása. 
 
-A logikai alkalmazás azonnal elindításához és az ismétlődés nélkül egyetlen alkalommal fussanak [Futtatás feladat csak egyszer](#run-once) jelen témakör későbbi részében.
+A logikai alkalmazás elindításához és a jövőben csak egyetlen alkalommal fussanak: [Futtatás feladat csak egyszer](#run-once) jelen témakör későbbi részében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -141,8 +141,8 @@ Ezeket a tulajdonságokat az ismétlődési eseményindító konfigurálhatja.
 
 <a name="run-once"></a>
 
-**KÉRDÉS:** Mi történik, ha szeretnék futtatni azonnal, és a egy alkalommal csak egy logikai alkalmazást? </br>
-**VÁLASZ:** A logikai alkalmazás azonnal elindításához, és futtassa egyszer ismétlődés nélkül, használhatja a **Scheduler: Egyszeri futtatás feladatok** sablont. Új logikai alkalmazás létrehozása után, de a Logic Apps Designerben a megnyitása előtt a **sablonok** szakaszban, az a **kategória** listáról válassza ki **ütemezés**, majd válassza ki a sablon:
+**KÉRDÉS:** Mi történik, ha szeretnék futtatni egy logikai alkalmazást a későbbiekben csak egyszer? </br>
+**VÁLASZ:** A logikai alkalmazás elindításához, és futtassa egyszer ismétlődés nélkül, használhatja a **Scheduler: Egyszeri futtatás feladatok** sablont. Új logikai alkalmazás létrehozása után, de a Logic Apps Designerben a megnyitása előtt a **sablonok** szakaszban, az a **kategória** listáról válassza ki **ütemezés**, majd válassza ki a sablon:
 
 ![Válassza "a Scheduler: Feladatok futtatása után"sablon](./media/connectors-native-recurrence/choose-run-once-template.png)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 34ced37213ddb585b382965cf73c454d4c9f93e9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 76348ef6984585856565ff39bfa707f1319477bb
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014046"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107209"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>A sablon üzembe helyezése az Azure Stack PowerShell-lel
 
@@ -35,7 +35,7 @@ Ez a példa **AzureRM** a Githubon tárolt PowerShell-parancsmagok és a egy sab
 >[!NOTE]
 >Előtt meg ebben a példában, győződjön meg arról, hogy [PowerShell konfigurált](azure-stack-powershell-configure-user.md) az Azure Stack felhasználói számára.
 
-1. Lépjen a [ http://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) , és keresse meg a **101-egyszerű-windows-vm** sablont. A sablon mentése ezen a helyen: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
+1. Lépjen a [ https://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) , és keresse meg a **101-egyszerű-windows-vm** sablont. A sablon mentése ezen a helyen: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Nyisson meg egy rendszergazda jogú PowerShell-parancssort.
 3. Cserélje le `username` és `password` az a felhasználónév és jelszó és futtassa a parancsfájlt a következő parancsfájlt:
 

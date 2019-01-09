@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999577"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117605"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
-Minden logikai művelet mikroszolgáltatásokhoz világában alatt a szolgáltatás különböző összetevői szükségesek. Ezek az összetevők mindegyike külön használatával figyelhető [Application Insights](../../application-insights/app-insights-overview.md). A webes alkalmazás-összetevő hitelesítési szolgáltató összetevőt felhasználói fiók hitelesítő adatainak érvényesítéséhez, és az API összetevővel való adatbeolvasás a Vizualizáció kommunikál. A kapcsolja be az API-összetevő más szolgáltatások adatokat kérdezhet le és használja a gyorsítótár-szolgáltató összetevőinek és értesítés a hívás a számlázási összetevő. Application Insights támogatja az elosztott telemetriai korreláció. Lehetővé teszi, hogy melyik összetevő felelős hibák vagy a teljesítmény romlását észlelése.
+Minden logikai művelet mikroszolgáltatásokhoz világában alatt a szolgáltatás különböző összetevői szükségesek. Ezek az összetevők mindegyike külön használatával figyelhető [Application Insights](../../azure-monitor/app/app-insights-overview.md). A webes alkalmazás-összetevő hitelesítési szolgáltató összetevőt felhasználói fiók hitelesítő adatainak érvényesítéséhez, és az API összetevővel való adatbeolvasás a Vizualizáció kommunikál. A kapcsolja be az API-összetevő más szolgáltatások adatokat kérdezhet le és használja a gyorsítótár-szolgáltató összetevőinek és értesítés a hívás a számlázási összetevő. Application Insights támogatja az elosztott telemetriai korreláció. Lehetővé teszi, hogy melyik összetevő felelős hibák vagy a teljesítmény romlását észlelése.
 
 Ez a cikk ismerteti az adatmodellbe, több összetevő által küldött telemetriai adatainak az Application Insights segítségével. Ez fedezi a környezet propagálás módszerek és protokollok. Emellett ismerteti a különböző nyelveken és platformokon korrelációs fogalmak megvalósítását.
 

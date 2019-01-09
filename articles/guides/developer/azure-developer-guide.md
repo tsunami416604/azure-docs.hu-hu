@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c4eefa09f0a70d42601a5b1fe8694500b5c6be2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714355"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118251"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -178,7 +178,7 @@ Az alkalmazás mentése és az Azure-ban fut, a, kell figyelje a teljesítmény�
 
 -   **A Visual Studio Application Insights**: Egy Azure-ban üzemeltetett bővíthető elemzési szolgáltatás, amely integrálható a Visual Studio segítségével az élő webalkalmazások figyeléséhez. Biztosít az adatok, amelyek kell folyamatosan javíthassa a teljesítményt és a használhatóságot alkalmazását, hogy azok már üzemel az Azure-ban, vagy nem.
 
-    >**Első lépések**: Kövesse a [Application Insights oktatóanyag](../../application-insights/app-insights-overview.md).
+    >**Első lépések**: Kövesse a [Application Insights oktatóanyag](../../azure-monitor/app/app-insights-overview.md).
 
 -   **Az Azure Monitor**: Egy szolgáltatás, amely segít a megjelenítése, a lekérdezések, irányíthatja a, archív tárolási szint, és reagálhat rájuk a metrikák és az Azure-infrastruktúra és az erőforrások által létrehozott naplók. A figyelő az adatnézetek, tekintse meg az Azure Portalon, és a egy Azure-erőforrások figyelése egyetlen forrás biztosít.
  

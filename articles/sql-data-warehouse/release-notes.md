@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: b702d375f7a66843918a960ca3783c078eac541e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579724"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118438"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 
@@ -23,6 +23,7 @@ Az Azure SQL Data Warehouse egy felhőalapú vállalati adatok adattárház (EDW
 
 Kattintson az alábbi hivatkozásokra kattintva további információk az új funkciók és fejlesztések, amelyek az Azure SQL Data Warehouse legújabb verzióját. Ezek a szolgáltatásfrissítések fogadásához az azonosított karbantartási ütemezés során várható.
 
+- [A 2018. december](./release-notes-december-2018.md)
 - [2018. október](./release-notes-october-2018.md)
 - [2018. szeptember](./release-notes-september-2018.md)
 - [2018. augusztus](./release-notes-august-2018.md)
@@ -38,7 +39,7 @@ Ellenőrizze, hogy melyik kiadás lett, az adattárház lett alkalmazva. Csatlak
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Példa a kimenetre: ![SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
+Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
 
 A dátum, győződjön meg arról, melyik kiadás telepítve van az Azure SQL Data Warehouse azonosított használja. 
 

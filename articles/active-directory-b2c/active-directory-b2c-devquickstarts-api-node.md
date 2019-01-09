@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847660"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117911"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Védelem biztosítása webes API-k számára a Node.js segítségével
+# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Az Azure AD B2C: Biztonságos webes API-k számára a Node.js segítségével
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Az Azure Active Directory (Azure AD) B2C segítségével védetté tehet egy webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával. Ezek a jogkivonatok engedélyezik az Azure AD B2C-t alkalmazó ügyfélalkalmazások számára az API hitelesítését. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan „feladatlista” API-t, amelyben a felhasználók megjeleníthetik a listát és új feladatokat adhatnak hozzá. A webes API-t az Azure AD B2C látja el védelemmel, így csak a hitelesített felhasználók kezelhetik a feladatlistájukat.
@@ -263,11 +263,11 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="required-values"></a>Kötelező értékek
-`clientID`: A webes API-alkalmazás ügyfél-azonosítója.
+`clientID`: A webes API-alkalmazás ügyfél-azonosító.
 
-`IdentityMetadata`: a `passport-azure-ad` itt fogja keresni az identitásszolgáltatóra vonatkozó konfigurációs adatokat, továbbá a JSON webes jogkivonatainak érvényesítéséhez szükséges kulcsokat is.
+`IdentityMetadata`: Ekkor nyernek `passport-azure-ad` keres az identitásszolgáltató konfigurációs adataihoz. továbbá a JSON webes jogkivonatainak érvényesítéséhez szükséges kulcsokat is.
 
-`audience`: A hívást indító alkalmazást azonosító portál URI-ja.
+`audience`: Az egységes erőforrás-azonosítója (URI) a portálról, amely a hívó alkalmazás azonosítja.
 
 `tenantName`: A bérlő neve (például **contoso.onmicrosoft.com**).
 
@@ -341,9 +341,9 @@ Ez a sémamodell egyszerű. Ez azt is jelenti, hogy szükség esetén könnyedé
 
 `Text`: Maga a feladat. Ez egy **sztring**.
 
-`date`: A feladat határideje. Ez egy **datetime** (dátum és idő) típusú objektum.
+`date`: A dátum, a feladat határideje. Ez egy **datetime** (dátum és idő) típusú objektum.
 
-`completed`: Azt jelzi, hogy a feladat elkészült-e. Ez egy **logikai** típusú objektum.
+`completed`: Ha a feladat már befejeződött. Ez egy **logikai** típusú objektum.
 
 ### <a name="create-the-schema-in-the-code"></a>A séma kódjának megírása
 A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
@@ -549,7 +549,7 @@ A Restify és az Express mélyreható konfigurációs funkciókat biztosítanak 
 
 
 var server = restify.createServer({
-    name: "Microsoft Azure Active Directroy TODO Server",
+    name: "Microsoft Azure Active Directory TODO Server",
     version: "2.0.1"
 });
 

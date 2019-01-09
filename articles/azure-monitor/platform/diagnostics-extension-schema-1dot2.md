@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 322cd75fe9198bae459e7c22bed794f583d13363
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 69caec10c1be067cf9e8fc7ad83c8daeaced2bda
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326199"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106690"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Az Azure Diagnostics 1.2-es konfigurációs séma
 > [!NOTE]
@@ -109,12 +109,12 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|Kötelező. Nem kötelező attribútumok a következők:<br /><br /> -                     **overallQuotaInMB** – Azure Diagnostics által gyűjtött lehet használni a diagnosztikai adatok különböző típusú helyi lemezterület maximális mennyisége. Az alapértelmezett érték 5120MB.<br /><br /> -                     **useProxyServer** – a proxykiszolgáló beállításait használatára beállított, az Internet Explorer beállításainak konfigurálása az Azure Diagnostics.|  
 |**CrashDumps**|Összeomlási memóriaképek gyűjtésének engedélyezéséhez. Nem kötelező attribútumok a következők:<br /><br /> -                     **containerName** – az összeomlási memóriaképek tárolásához használt Azure Storage-fiókját a blobtároló nevét.<br /><br /> -                     **crashDumpType** – Azure Diagnostics konfigurálja a gyűjtendő Mini vagy teljes összeomlási memóriaképek.<br /><br /> -                     **directoryQuotaPercentage**– konfigurálja a százalékos arányát **overallQuotaInMB** kell lefoglalni, az összeomlási memóriaképek a virtuális gépen.|  
-|**DiagnosticInfrastructureLogs**|Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezéséhez. A diagnosztikai infrastruktúra naplói hasznosak hibáinak elhárítása a diagnosztikai rendszer magát. Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – konfigurálja a gyűjtött naplók minimális súlyossági szintje.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**Címtárak**|Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**DiagnosticInfrastructureLogs**|Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezéséhez. A diagnosztikai infrastruktúra naplói hasznosak hibáinak elhárítása a diagnosztikai rendszer magát. Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – konfigurálja a gyűjtött naplók minimális súlyossági szintje.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**Címtárak**|Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|Konfigurálja az ETW-események az eseményforrás gyűjteménye, illetve az ETW-jegyzékfájl-alapú szolgáltatók.|  
 |**Metrikák**|Ez az elem lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. Minden egyes megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja. Kötelező attribútum:<br /><br /> **erőforrás-azonosító** – Ez az erőforrás-Azonosítóját a virtuális gép az Azure Diagnostics telepítésekor. Első a **resourceID** származó a [az Azure portal](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, és másolja az értéket a **azonosító** mező.|  
-|**PerformanceCounters**|Lehetővé teszi a teljesítményszámláló-gyűjtemény. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**WindowsEventLog**|Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**PerformanceCounters**|Lehetővé teszi a teljesítményszámláló-gyűjtemény. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**WindowsEventLog**|Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>CrashDumps elem  
  Lehetővé teszi az összeomlási memóriaképek gyűjteménye. A következő táblázat ismerteti a gyermekelemek:  
@@ -154,8 +154,8 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az osztály nevét az EventSource esemény.<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
-|**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **szolgáltató** -esemény szolgáltatójának a GUID-azonosító<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az osztály nevét az EventSource esemény.<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **szolgáltató** -esemény szolgáltatójának a GUID-azonosító<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). A következő táblázat ismerteti a gyermekelemek:  
@@ -178,7 +178,7 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**MetricAggregation**|Kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**MetricAggregation**|Kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](https://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters elem  
  Lehetővé teszi a teljesítményszámláló-gyűjtemény. A következő táblázat ismerteti a gyermekelemek:  

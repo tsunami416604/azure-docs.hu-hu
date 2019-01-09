@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: ca924494231f422d6edc8990ef851c9ef454cd1d
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971997"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120002"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Az Azure Stackben a MySQL erőforrás-szolgáltató üzembe helyezése
 
-A MySQL-kiszolgáló erőforrás-szolgáltató használatával teszi közzé a MySQL-adatbázisok Azure Stack szolgáltatásként. A MySQL erőforrás-szolgáltató szolgáltatásként fut, a Windows Server 2016 Server Core virtuális gépeken (VM).
+A MySQL Server erőforrás-szolgáltatóval Azure Stack-szolgáltatásként tehet közzé MySQL-adatbázisokat. A MySQL erőforrás-szolgáltató szolgáltatásként fut, a Windows Server 2016 Server Core virtuális gépeken (VM).
 
 > [!IMPORTANT]
 > Konfigurációelemek létrehozása a kiszolgálókon, a fogadó SQL vagy MySQL csak az erőforrás-szolgáltató támogatott. A gazdagép-kiszolgálón létrehozott elemek nem az erőforrás-szolgáltató által létrehozott egy nem megfelelő állapot eredményezhet.
@@ -45,6 +45,7 @@ Nincsenek számos előfeltételt kell lennie a helyen, az Azure Stack MySQL erő
 
   |Azure Stack minimális verziója|MySQL-RP-verzió|
   |-----|-----|
+  |Verzió 1811 (1.1811.0.101)|[MySQL-RP 1.1.33.0 verzió](https://aka.ms/azurestackmysqlrp11330)|  
   |Verzió 1808 (1.1808.0.97)|[MySQL-RP 1.1.30.0 verzió](https://aka.ms/azurestackmysqlrp11300)|
   |Verzió 1804 (1.0.180513.1)|[MySQL-RP 1.1.24.0 verzió](https://aka.ms/azurestackmysqlrp11240)
   |     |     |
@@ -86,18 +87,18 @@ Ezeket a paramétereket a parancssorból is megadhat. Ha nem, vagy ha minden par
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
 | --- | --- | --- |
-| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
-| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja az Azure Stack üzembe helyezéséhez használt hitelesítő adatokkal. | _Szükséges_ |
-| **VMLocalCredential** | A MySQL erőforrás-szolgáltató virtuális Gépet, a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
-| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Szükséges_ |
+| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Kötelező_ |
+| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja az Azure Stack üzembe helyezéséhez használt hitelesítő adatokkal. | _Kötelező_ |
+| **VMLocalCredential** | A MySQL erőforrás-szolgáltató virtuális Gépet, a helyi rendszergazdai fiók hitelesítő adatait. | _Kötelező_ |
+| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Kötelező_ |
 | **AzureEnvironment** | Az Azure-környezethez az Azure Stack üzembe helyezéséhez használt szolgáltatás-rendszergazdai fiókot. Kizárólag az Azure AD központi telepítések esetén szükséges. Támogatott környezeti nevek **AzureCloud**, **AzureUSGovernment**, vagy a China Azure AD-ben való használatakor **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | A csak integrált rendszerek a tanúsítvány .pfx fájlját ebben a könyvtárban kell elhelyezni. Töltse le a leválasztott enviroments [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) ebben a könyvtárban. Szükség esetén egy Windows Update MSU csomag itt másolhatja. | _Nem kötelező_ (_kötelező_ integrált rendszerek vagy kapcsolat nélküli környezetben) |
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Kötelező_ |
 | **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 |
 | **RetryDuration** | Az időkorlát között eltelő időt másodpercben mérve. | 120 |
 | **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és az összes társított erőforrást (lásd az alábbi megjegyzések). | Nem |
 | **DebugMode** | Megakadályozza, hogy hiba esetén az automatikus tisztítás. | Nem |
-| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html> | |
+| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html> | |
 
 ## <a name="deploy-the-mysql-resource-provider-using-a-custom-script"></a>A MySQL erőforrás-szolgáltató egy egyéni parancsfájl használata központi telepítése
 

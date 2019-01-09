@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: af002035bb0ab56a985e38d02ad374b23d177583
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 300f0ddc8b738b5fd8578ed0b33cc15000c1098a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081093"
+ms.locfileid: "54101785"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>A figyelő és az Azure Application Insights alkalmazásállapot-riasztás
 
@@ -94,4 +94,4 @@ További információ a Logic Apps-alkalmazás létrehozása az Application Insi
 Most, hogy bemutattuk, hogyan lehet a problémák riasztást, folytassa a következő oktatóanyaggal, elemezhetők a felhasználók hogyan használja az alkalmazását.
 
 > [!div class="nextstepaction"]
-> [A felhasználók megismerése](../../application-insights/app-insights-tutorial-users.md)
+> [A felhasználók megismerése](../../azure-monitor/learn/tutorial-users.md)

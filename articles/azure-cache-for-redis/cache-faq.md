@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971528"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104063"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis.
@@ -90,7 +90,7 @@ Többféleképpen is kezdheti az Azure Cache redis.
 
 * Az elérhető oktatóanyagokban majd megtekinthet [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), és [Python](cache-python-get-started.md).
 * Megtekinthet [hogyan hozhat létre nagy teljesítményű alkalmazások használata a Microsoft Azure Cache redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Megtekinthet az ügyfelek, amelyek megfelelnek a fejlesztői nyelvek a projekthez, hogy hogyan használhatja a Redis-ügyfél dokumentációját. Nincsenek redis használható az Azure Cache számos Redis-ügyfelek. A Redis-ügyfelek listáját lásd: [ http://redis.io/clients ](http://redis.io/clients).
+* Megtekinthet az ügyfelek, amelyek megfelelnek a fejlesztői nyelvek a projekthez, hogy hogyan használhatja a Redis-ügyfél dokumentációját. Nincsenek redis használható az Azure Cache számos Redis-ügyfelek. A Redis-ügyfelek listáját lásd: [ https://redis.io/clients ](https://redis.io/clients).
 
 Ha még nem rendelkezik Azure-fiók, akkor:
 
@@ -210,7 +210,7 @@ Az alapértelmezett értékeket, az ügyfél általában elegendő. Finomhangolh
       * Ez az útmutató további eredményezhet hatékonyabbá műveletenként késést `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Milyen Azure Cache a Redis-ügyfelek használhatok?
-A Redis kapcsolatos nagyszerű dolog, hogy nincsenek-e számos különböző programozási nyelvet támogató ügyfelek számát. Az ügyfelek aktuális listáját lásd: [Redis ügyfelek](http://redis.io/clients). Mind a több különböző nyelv és az ügyfelek számára oktatóanyagokkal, lásd: [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) , és kattintson a kívánt nyelvet, a nyelv váltó a cikk elején.
+A Redis kapcsolatos nagyszerű dolog, hogy nincsenek-e számos különböző programozási nyelvet támogató ügyfelek számát. Az ügyfelek aktuális listáját lásd: [Redis ügyfelek](https://redis.io/clients). Mind a több különböző nyelv és az ügyfelek számára oktatóanyagokkal, lásd: [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) , és kattintson a kívánt nyelvet, a nyelv váltó a cikk elején.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -236,12 +236,12 @@ Azure Cache redis nem helyi emulátor van, de a redis-server.exe MSOpenTech verz
         }
 
 
-Igény szerint konfigurálható egy [redis.conf](http://redis.io/topics/config) fájlt, hogy jobban illeszkedjenek a [alapértelmezett gyorsítótárazási beállításai](cache-configure.md#default-redis-server-configuration) az online Azure Cache redis, ha szükséges.
+Igény szerint konfigurálható egy [redis.conf](https://redis.io/topics/config) fájlt, hogy jobban illeszkedjenek a [alapértelmezett gyorsítótárazási beállításai](cache-configure.md#default-redis-server-configuration) az online Azure Cache redis, ha szükséges.
 
 <a name="cache-commands"></a>
 
 ### <a name="how-can-i-run-redis-commands"></a>Hogyan futtathatok Redis parancsok?
-A webhelyen felsorolt parancsok bármelyikét használhatja [Redis parancsok](http://redis.io/commands#) kivételével a webhelyen felsorolt parancsok [redis Cache a redis Azure Cache-ben nem támogatott parancsok](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Redis parancsok futtatásához több lehetősége van.
+A webhelyen felsorolt parancsok bármelyikét használhatja [Redis parancsok](https://redis.io/commands#) kivételével a webhelyen felsorolt parancsok [redis Cache a redis Azure Cache-ben nem támogatott parancsok](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Redis parancsok futtatásához több lehetősége van.
 
 * Ha egy Standard vagy prémium szintű gyorsítótár, a Redis-parancsok használatával futtathatja a [Redis konzol](cache-configure.md#redis-console). A Redis-konzol biztonságos megoldást nyújt a Redis-parancsok futtatásához az Azure Portalon.
 * A Redis parancssori eszközöket is használhat. Használja őket, hajtsa végre az alábbi lépéseket:
@@ -257,7 +257,7 @@ A webhelyen felsorolt parancsok bármelyikét használhatja [Redis parancsok](ht
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Miért nem rendelkezik Azure Cache redis-MSDN osztálytár-referenciát néhány a más Azure-szolgáltatásokhoz hasonlóan?
-A Microsoft Azure Cache a Redis alapul a népszerű nyílt forrás az Azure Cache redis és elérhetők, számos különböző [Redis ügyfelek](http://redis.io/clients) számos programozási nyelvet. Minden ügyfél rendelkezik a saját API-t, a Redis-példány használatával az Azure Cache-hívást hajt végre [Redis parancsok](http://redis.io/commands).
+A Microsoft Azure Cache a Redis alapul a népszerű nyílt forrás az Azure Cache redis és elérhetők, számos különböző [Redis ügyfelek](https://redis.io/clients) számos programozási nyelvet. Minden ügyfél rendelkezik a saját API-t, a Redis-példány használatával az Azure Cache-hívást hajt végre [Redis parancsok](https://redis.io/commands).
 
 Mivel az egyes ügyfelek különböző, az MSDN-en nem egy központosított osztályhivatkozása van, és minden egyes ügyfél kezeli a saját dokumentációjában. A segédanyagok kívül számos oktatóprogram: Ismerkedés az Azure Cache a Redis használatával különböző nyelvekhez és gyorsítótár-ügyfelek hogyan. Ezekben az oktatóanyagokban eléréséről, lásd a [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) , és kattintson a kívánt nyelvet, a nyelv váltó a cikk tetején.
 
@@ -310,7 +310,7 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért lásd: a [hogyan
 * Működik legjobban a kisebb értékek a redis Cache, ezért érdemes a nagyobb méretű adatok több kulcsokból darabolás. A [Redis vitafórumban](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb nagy számít. Olvasási [Ez a cikk](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) egy példa a probléma, amely a nagy értékek okozhatja.
 * Konfigurálja a [szálkészlet beállítások](#important-details-about-threadpool-growth) időtúllépések elkerülése érdekében.
 * Használja legalább az alapértelmezett connectTimeout 5 másodperc. Ez az időtartam alatt StackExchange.Redis elegendő időt, így újra létrehozza a kapcsolatot a hálózati blip esetén tenné.
-* Vegye figyelembe a különböző műveleteket futtat teljesítmény költségeket. Például a `KEYS` parancs O(n) művelet, és el kell kerülni. A [redis.io hely](http://redis.io/commands/) idő összetettségét, amely támogatja az egyes műveletek körüli részleteket is tartalmaz. Kattintson az egyes paranccsal megtekintheti az egyes műveletek bonyolultsága.
+* Vegye figyelembe a különböző műveleteket futtat teljesítmény költségeket. Például a `KEYS` parancs O(n) művelet, és el kell kerülni. A [redis.io hely](https://redis.io/commands/) idő összetettségét, amely támogatja az egyes műveletek körüli részleteket is tartalmaz. Kattintson az egyes paranccsal megtekintheti az egyes műveletek bonyolultsága.
 
 #### <a name="configuration-and-concepts"></a>Konfigurációs és fogalmak
 * Használja a Standard vagy prémium szintű éles rendszerek esetén. Az alapszintű csomag egyetlen csomópont rendszer nincs adatreplikáció és nem biztosítunk szolgáltatói szerződést. Ezenkívül legalább C1 gyorsítótárak használatát. C0 csomag gyorsítótárak jellemzően egyszerű fejlesztési és tesztelési célra használják.
@@ -329,7 +329,7 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért lásd: a [hogyan
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Mik a szempontok gyakori Redis parancsok használatakor?
 * Egyes Redis-parancsokat, időbe telik végrehajtásához, ezek a parancsok hatásának ismerete nélkül nem futhat.
-  * Ha például nem futnak a [kulcsok](http://redis.io/commands/keys) parancs éles környezetben, mint egy hosszú időt adja vissza a kulcsokat számától függően eltarthat. A redis egy olyan egyszálas kiszolgáló és a egy időben feldolgozza a parancsokat egy. Ha más kulcsok után kiadott parancsok, akkor nem fogja feldolgozni mindaddig, amíg a Redis dolgozza fel a kulcsok parancsot. A [redis.io hely](http://redis.io/commands/) idő összetettségét, amely támogatja az egyes műveletek körüli részleteket is tartalmaz. Kattintson az egyes paranccsal megtekintheti az egyes műveletek bonyolultsága.
+  * Ha például nem futnak a [kulcsok](https://redis.io/commands/keys) parancs éles környezetben, mint egy hosszú időt adja vissza a kulcsokat számától függően eltarthat. A redis egy olyan egyszálas kiszolgáló és a egy időben feldolgozza a parancsokat egy. Ha más kulcsok után kiadott parancsok, akkor nem fogja feldolgozni mindaddig, amíg a Redis dolgozza fel a kulcsok parancsot. A [redis.io hely](https://redis.io/commands/) idő összetettségét, amely támogatja az egyes műveletek körüli részleteket is tartalmaz. Kattintson az egyes paranccsal megtekintheti az egyes műveletek bonyolultsága.
 * Kulcsméretek - kell használnom kis kulcs/érték vagy nagy méretű kulcs/érték? Általában attól függ, a forgatókönyvet. A forgatókönyv nagyobb kulcsra van szükség, ha a ConnectionTimeout beállítása és ismételje meg az értékeket, és állítsa be az újrapróbálkozási logikája. A Redis-kiszolgáló szempontjából a jobb teljesítményt, a kisebb értékek jelennek meg.
 * Ezeket a szempontokat nem jelenti azt, hogy a Redis; nem lehet tárolni a nagyobb értékek az alábbi szempontokat figyelembe kell lennie. Késések magasabb lesz. Ha egy adatkészletet, amely nagyobb, és a egy kisebb, ConnectionMultiplexer több példányt is használhat, minden más-más időtúllépési és az újrapróbálkozási értékek leírtak szerint konfigurálta az előző [a StackExchange.Redis mire konfigurációs beállítások tegye](#cache-configuration) szakaszban.
 

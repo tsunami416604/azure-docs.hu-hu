@@ -13,22 +13,22 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 6d8570c78fcf28a236374579a9cb85c7c27f6ec8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076977"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118523"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
-A webes vagy mobilalkalmazásának szolgáltatásaitól legnépszerűbb? Tegye a felhasználók a kitűzött célokat az alkalmazással? Hajtsa végre, drop adott időpontokban, és tegye vissza később?  [Az Azure Application Insights](../../application-insights/app-insights-overview.md) segítséget nyújt a felhasználók miként használják alkalmazását hatékony elemzéseket készíthet. Minden alkalommal, amikor frissíti az alkalmazást, mérje fel arról, hogy működik a felhasználók számára. Ezt a tudást teheti az adatvezérelt döntések kapcsolatban a következő fejlesztési ciklusokat.
+A webes vagy mobilalkalmazásának szolgáltatásaitól legnépszerűbb? Tegye a felhasználók a kitűzött célokat az alkalmazással? Hajtsa végre, drop adott időpontokban, és tegye vissza később?  [Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) segítséget nyújt a felhasználók miként használják alkalmazását hatékony elemzéseket készíthet. Minden alkalommal, amikor frissíti az alkalmazást, mérje fel arról, hogy működik a felhasználók számára. Ezt a tudást teheti az adatvezérelt döntések kapcsolatban a következő fejlesztési ciklusokat.
 
 ## <a name="send-telemetry-from-your-app"></a>Telemetria küldése az alkalmazásból
 
 A legjobb élményt az Application Insights telepítésével az alkalmazáskód kiszolgáló, mind a weblapok kapjuk meg. Az alkalmazás ügyfél- és összetevői telemetriát küldjön az Azure Portalon elemzés céljából.
 
-1. **Kiszolgálóoldali kódban:** A megfelelő moduljának telepítése a [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../application-insights/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), vagy [más](../../azure-monitor/app/platforms.md) alkalmazás.
+1. **Kiszolgálóoldali kódban:** A megfelelő moduljának telepítése a [ASP.NET](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md), vagy [más](../../azure-monitor/app/platforms.md) alkalmazás.
 
     * *Nem szeretné telepíteni a kiszolgálói kód? Csak [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
 

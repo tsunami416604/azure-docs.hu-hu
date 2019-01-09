@@ -1,6 +1,6 @@
 ---
-title: Összegyűjtheti és elemezheti a Windows-eseménynaplók az Azure Monitor |} A Microsoft Docs
-description: Ismerteti, hogyan konfigurálhatja a gyűjtemény Azure figyelő Windows Eseménynapló és hozhatnak létre a rekordok részleteit.
+title: Összegyűjtheti és elemezheti a Windows eseménynaplóit a Log Analytics Rendszereben |} A Microsoft Docs
+description: Windows-eseménynaplók Log Analytics által gyűjteményét és hoznak létre a rekordok részleteit ismerteti.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: a8c08eb222595b1531eef850667d3834d568b166
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a60c5c41c3f7f0c26788aa9f986af076d9e82c2f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435803"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102601"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások az Azure monitorban
+# <a name="windows-event-log-data-sources-in-log-analytics"></a>Windows Eseménynapló-adatforrások a Log Analyticsben
 Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](agent-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
 
 ![Windows-események](media/data-sources-windows-events/overview.png)     
@@ -28,17 +28,17 @@ Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](agent-da
 ## <a name="configuring-windows-event-logs"></a>Windows eseménynaplók konfigurálása
 A Windows eseménynaplók konfigurálása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources).
 
-Az Azure Monitor csak a Windows Eseménynapló beállításaiban megadott eseményeket gyűjti.  Írja be a napló nevét, majd kattintson az Eseménynapló is hozzáadhat **+**.  Az egyes naplókhoz csak a kiválasztott súlyossági szint esetén csak az események összegyűjtése.  Ellenőrizze a súlyossági szint esetén csak az adott napló, amely szeretne gyűjteni.  További feltételeket az események szűrése nem tud biztosítani.
+A log Analytics csak az a beállítások a megadott Windows-eseménynapló eseményeit gyűjti.  Írja be a napló nevét, majd kattintson az Eseménynapló is hozzáadhat **+**.  Az egyes naplókhoz csak a kiválasztott súlyossági szint esetén csak az események összegyűjtése.  Ellenőrizze a súlyossági szint esetén csak az adott napló, amely szeretne gyűjteni.  További feltételeket az események szűrése nem tud biztosítani.
 
-Írja be az Eseménynapló nevét, az Azure Monitor közös Eseménynapló nevének javaslatokat biztosít. Ha a hozzáadni kívánt napló nem jelenik meg a listában, továbbra is hozzáadhat, írja be a naplófájl teljes neve. Az Eseménynapló használatával is megtalálhatja a naplófájl teljes neve. Nyissa meg az eseménynaplóban a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes fájlvisszaállítási név* mező.
+Az Eseménynapló neve beírása a Log Analytics Eseménynapló köznapi nevek vonatkozó javaslatokat biztosít. Ha a hozzáadni kívánt napló nem jelenik meg a listában, továbbra is hozzáadhat, írja be a naplófájl teljes neve. Az Eseménynapló használatával is megtalálhatja a naplófájl teljes neve. Nyissa meg az eseménynaplóban a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes fájlvisszaállítási név* mező.
 
 ![Windows-események konfigurálása](media/data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Az Azure Monitor gyűjt minden eseményt, amely megfelel a kiválasztott súlyossági egy figyelt az eseménynaplóból, az esemény jön létre.  Az ügynök a helyére az összegyűjtő minden eseménynaplóban rögzíti.  Ha az ügynököt egy ideig offline állapotba kerül, majd azt eseményeit gyűjti, ahol utolsó abbamaradtak, akkor is, ha az események jöttek létre, miközben az ügynök offline állapotban volt.  Lehetőség van, nem lesznek összegyűjtve, ha az ügynök nélküli állapotában felülírásra elveszne eseményekkel rendelkező burkolja az Eseménynapló ezeket az eseményeket.
+A log Analytics gyűjt minden eseményt az esemény létrehozása egy kiválasztott súlyossága a figyelt eseménynaplóban a megfelelő.  Az ügynök a helyére az összegyűjtő minden eseménynaplóban rögzíti.  Ha az ügynököt egy ideig offline állapotba kerül, majd azt eseményeit gyűjti, ahol utolsó abbamaradtak, akkor is, ha az események jöttek létre, miközben az ügynök offline állapotban volt.  Lehetőség van, nem lesznek összegyűjtve, ha az ügynök nélküli állapotában felülírásra elveszne eseményekkel rendelkező burkolja az Eseménynapló ezeket az eseményeket.
 
 >[!NOTE]
->Az Azure Monitor nem gyűjt be a forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* , amely tartalmazza a kulcsszavak - azonosítójú 18453 *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
+>A log Analytics nem gyűjt be a forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* , amely tartalmazza a kulcsszavak - azonosítójú 18453 *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Windows-esemény rekordok tulajdonságai
@@ -73,6 +73,6 @@ Az alábbi táblázat példákat különböző Windows-esemény lekérő log lek
 
 
 ## <a name="next-steps"></a>További lépések
-* Egyéb gyűjtésére az Azure Monitor konfigurálása [adatforrások](agent-data-sources.md) elemzés céljából.
+* Konfigurálja a gyűjtendő más Log Analytics [adatforrások](agent-data-sources.md) elemzés céljából.
 * Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Konfigurálása [teljesítményszámláló-gyűjtemény](data-sources-performance-counters.md) a Windows-ügynököktől.

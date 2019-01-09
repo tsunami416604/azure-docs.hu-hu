@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 01/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837171"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121192"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
-Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" regisztráció kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
+Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" a szolgáltatás regisztrációs kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Annak eldöntése, hogyan szeretné egy nem felügyelt könyvtár átvétele
 A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](../fundamentals/add-custom-domain.md) című cikkben leírt módon bizonyíthatja tulajdonjogát. A következő szakaszok részletesen ismertetik a rendszergazdai feladatokat, amelyek összegzése itt olvasható:
@@ -41,7 +41,7 @@ Egyes termékek, amelyek tartalmazzák a SharePoint és onedrive vállalati verz
 
 3. A megerősítő e-mailben a Power bi-BÓL, válassza ki a **Igen, én**.
 
-4. Jelentkezzen be a [Office 365 felügyeleti központban](https://portal.office.com/adminportal/Home) a Power BI felhasználói fiókkal. Megjelenik az üzenet, amely arra utasítja, hogy **váljon rendszergazdává** a tartomány neve, amely már megtörtént a nem felügyelt bérlőt. Válassza ki **Igen, szeretnék lenni a rendszergazda**.
+4. Jelentkezzen be a [Office 365 felügyeleti központban](https://portal.office.com/admintakeover) a Power BI felhasználói fiókkal. Megjelenik az üzenet, amely arra utasítja, hogy **váljon rendszergazdává** a tartomány neve, amely már megtörtént a nem felügyelt bérlőt. Válassza ki **Igen, szeretnék lenni a rendszergazda**.
   
   ![a rendszergazda legyen az első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -53,9 +53,9 @@ Ha a DNS txt típusú rekordok, a tartománynév regisztrálójánál az megtör
 
 Amikor végzett a fenti lépéseket, Ön mostantól az Office 365-ben a negyedik kávé bérlő globális rendszergazdája. A tartománynév integrálása más Azure-szolgáltatások, távolítsa el az Office 365-ből, és adja hozzá a különböző felügyelt bérlőre, az Azure-ban.
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>A tartománynév hozzáadását felügyelt bérlőre az Azure ad-ben 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>A tartománynév hozzáadását felügyelt bérlőre az Azure ad-ben
 
-1. Nyissa meg a [Office 365 felügyeleti központban](https://portal.office.com/adminportal/Home).
+1. Nyissa meg a [Office 365 felügyeleti központban](https://portal.office.com/admintakeover).
 2. Válassza ki **felhasználók** lapra, és hozzon létre egy új felhasználói fiókot vagy hasonló néven *user@fourthcoffeexyz.onmicrosoft.com* , amely nem használja az egyéni tartomány nevét. 
 3. Győződjön meg arról, hogy az új felhasználói fiók rendelkezik-e az Azure AD-bérlő globális rendszergazdai jogosultságokkal.
 4. Nyissa meg **tartományok** lapra az Office 365 felügyeleti központot, válassza ki a tartomány nevét, és válassza **eltávolítása**. 

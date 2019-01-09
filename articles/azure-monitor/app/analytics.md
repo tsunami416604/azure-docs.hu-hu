@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c41444f94e4685d246de225500c8a5beefc74944
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065613"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120886"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
-Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](../../application-insights/app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](../../azure-monitor/app/app-insights-dashboards.md).
+Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](../../azure-monitor/app/app-insights-dashboards.md).
 
 ![Portal.Azure.com címen nyissa meg, nyissa meg az Application Insights-erőforrást, és kattintson az Analytics.](./media/analytics/001.png)
 

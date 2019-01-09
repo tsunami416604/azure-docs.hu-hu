@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: da84d6361d80db8aea797827ed3d7bc612e2eda3
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2c8edd73a287d5bca2f3deb68448ba951b7a3367
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999050"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106562"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
@@ -76,7 +76,7 @@ Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elk�
 
 Az aktivált conda-környezetben telepítse az SDK-t. Ez a kód telepíti a Machine Learning SDK alapvető összetevőit. A Jupyter Notebook server a conda-környezetben is telepíti. A telepítés befejezéséhez a számítógép konfigurációja alapján néhány percet vesz igénybe.
 
-```sh
+```shell
 # Install Jupyter
 conda install nb_conda
 
@@ -86,7 +86,7 @@ pip install azureml-sdk[notebooks]
 
 További kulcsszavak segítségével más összetevők az SDK telepítése:
 
-```sh
+```shell
 # Install the base SDK and auto ml components
 pip install azureml-sdk[automl]
 
@@ -97,13 +97,8 @@ pip install azureml-sdk[explain]
 pip install azureml-sdk[contrib]
 ```
 
-Az Azure Databricks a környezetben használja az alábbi telepítési parancsot:
-
-```
-# Install the base SDK and automl components in the Azure Databricks environment.
-# For more information, see https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks.
-pip install azureml-sdk[databricks]
-```
+Az Azure Databricks a környezetben, használja a [Databricks telepítési lépéseket](how-to-configure-environment.md#azure-databricks
+) helyette.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -143,11 +138,7 @@ pip install azureml-sdk[databricks]
 
 Mentse a munkaterület adatait egy konfigurációs fájlt az aktuális könyvtár. A fájl neve *aml_config\config.json*.  
 
-A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti. 
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
-
-A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális könyvtárban. A *config.json* fájl tartalmazza a következő parancsfájlt:
+A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális könyvtárban. A *config.json* fájl tartalmazza a következőket:
 
 ```json
 {
@@ -156,6 +147,12 @@ A `write_config()` API-hívás létrehozza a konfigurációs fájlt az aktuális
     "workspace_name": "myworkspace"
 }
 ```
+
+A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti. 
+
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+
+
 
 ## <a name="use-the-workspace"></a>A munkaterület használata
 
@@ -190,7 +187,7 @@ A kód használata a Machine Learning szolgáltatássaé kapcsolatos oktatóanya
 
 1. Zárja be a jegyzetfüzetet a böngészőben.
 1. A parancssori ablakban válassza ki a Ctrl + C billentyűkombinációval, a Jupyter Notebook server leállítása.
-1. A további csomagokat telepíteni.
+1. A további csomagokat telepíteni.  Ha nem telepít `azureml-sdk[automl]` fent, győződjön meg arról, hogy tegye meg most.
 
     ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy

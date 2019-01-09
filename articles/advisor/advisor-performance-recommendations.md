@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 93757c9f589ec1a6d5065d32740831dac922a015
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 963960657fb8c16307dbf062c0b16cd74a4a7b3f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079068"
+ms.locfileid: "54101717"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
 
@@ -53,7 +53,7 @@ Az Advisor azonosítja, amely eléri-e méretezhetőségi célértékét tárfi�
 
 ## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>A teljesítmény és a virtuálisgép-lemezek megbízhatóságának javítása a Premium Storage segítségével
 
-Advisor azonosít, amelyek nagy mennyiségű transations, a tárfiók a standard szintű lemezek, virtuális gépeket, és javasolja, hogy prémium szintű lemezek telepítse. 
+Advisor azonosít, amelyek nagy mennyiségű tranzakciót a tárfiók a standard szintű lemezek, virtuális gépeket, és javasolja, hogy prémium szintű lemezek telepítse. 
 
 Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokat futtató virtuális gépek tesz lehetővé. Premium storage-fiókok használó virtuálisgép-lemezek tartós állapotú meghajtókhoz (SSD-kkel) adatokat tárolja. Az alkalmazás a legjobb teljesítmény érdekében javasoljuk, hogy a virtuális gép lemezei a premium storage magas iops-t igénylő telepített át.
 
@@ -71,7 +71,7 @@ Az Azure Advisor észleli az SQL Data Warehouse-e magas gyorsítótár használt
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Replikált táblák lekérdezési teljesítmény érdekében az SQL Data Warehouse-táblákat átalakítása
 
-Az Advisor táblákat, amelyek nem szerepelnek a replikált táblák, de kiaknázhatják a konvertálás azonosítja, és javasolja, hogy ezek a táblázatok konvertálása. Javaslatok a replikált tábla méretét, az oszlopok, tábla terjesztési típust és az SQL Data Warehouse-tábla partícióinak száma száma alapulnak. További heurisitics az ajánlás környezet áll rendelkezésre. Hogyan határozza meg, ez a javaslat kapcsolatos további információkért lásd: [SQL Data Warehouse javaslatok](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
+Az Advisor táblákat, amelyek nem szerepelnek a replikált táblák, de kiaknázhatják a konvertálás azonosítja, és javasolja, hogy ezek a táblázatok konvertálása. Javaslatok a replikált tábla méretét, az oszlopok, tábla terjesztési típust és az SQL Data Warehouse-tábla partícióinak száma száma alapulnak. További heurisztika az ajánlás környezet áll rendelkezésre. Hogyan határozza meg, ez a javaslat kapcsolatos további információkért lásd: [SQL Data Warehouse javaslatok](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>A Tárfiók migrálása az Azure Resource Managerhez való csatlakoztatásával minden, a legújabb Azure-funkciók
 

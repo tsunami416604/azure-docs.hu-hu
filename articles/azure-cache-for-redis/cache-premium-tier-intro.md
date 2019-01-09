@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0978e906467fd5b16f25bd2e053980dda4510127
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 906ab6c433df7cf452d1f5ab4660abce8d4674fc
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019742"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107514"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Bevezetés az Azure Cache redis Cache prémium szint
 A Redis Azure Cache olyan elosztott, felügyelt gyorsítótár, amely segítséget nyújt az adatok a villámgyors adathozzáférésnek köszönhetően gyors és hatékonyan méretezhető alkalmazások készítését. 
@@ -34,7 +34,7 @@ Az új prémium szintű egy nagyvállalati igényekre szabott szint, amely tarta
 Méret, teljesítmény és a sávszélesség a prémium gyorsítótárak kapcsolatos további információkért lásd: [Azure Cache a redis Cache – gyakori kérdések](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="redis-data-persistence"></a>Redis-adatmegőrzés
-A prémium szintű csomag segítségével megőrizheti a gyorsítótárazza az adatokat egy Azure Storage-fiókot. Az alapszintű és Standard gyorsítótár csak a memóriában tárolt összes adatot. Alapul szolgáló infrastruktúra esetén nincs problémák lehetséges adatvesztéssel is lehet. Azt javasoljuk, hogy a Redis adatmegőrzési funkció használatát a prémium szintű az adatvesztéssel szembeni ellenálló-képesség növelésére. Az Azure Cache redis RDB-fájlba való és (hamarosan) AOF lehetőséget kínál a [Redis-adatmegőrzés](http://redis.io/topics/persistence). 
+A prémium szintű csomag segítségével megőrizheti a gyorsítótárazza az adatokat egy Azure Storage-fiókot. Az alapszintű és Standard gyorsítótár csak a memóriában tárolt összes adatot. Alapul szolgáló infrastruktúra esetén nincs problémák lehetséges adatvesztéssel is lehet. Azt javasoljuk, hogy a Redis adatmegőrzési funkció használatát a prémium szintű az adatvesztéssel szembeni ellenálló-képesség növelésére. Az Azure Cache redis RDB-fájlba való és (hamarosan) AOF lehetőséget kínál a [Redis-adatmegőrzés](https://redis.io/topics/persistence). 
 
 Útmutatás az adatmegőrzés konfigurálásához: [egy prémium szintű Azure Cache megőrzése a Redis konfigurálása](cache-how-to-premium-persistence.md).
 

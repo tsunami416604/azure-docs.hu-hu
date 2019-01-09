@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 32da4ad6f35d8fd5585135a71572e0ad4fa41499
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5daf0944212dc4b8040a39e6efbf5bb25f7f39f0
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082910"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117231"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az Azure Application Insights a Microsoft Azure-ban jeleníti meg az alkalmazással kapcsolatos adatok *erőforrás*. Ezért részét képezi egy új erőforrás létrehozását [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben egy erőforrás létrehozását teheti meg automatikusan az ide. De bizonyos esetekben egy erőforrást manuálisan létrehozott – például számára elkülönített erőforrások fejlesztési és éles környezetben hoz létre az alkalmazás.
@@ -79,5 +79,5 @@ Ha több adatot vár, kattintson a **frissítése** néhány másodperc múlva.
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 

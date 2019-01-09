@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d4760eb6490ce458e699ad9bc59a57cb473ef6d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189897"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104122"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -128,9 +128,9 @@ A következő példa telepíti a 64 bites ügynök, azonosítja a `URI` értéke
 
 Az ügynök csomag az 32 bites és 64 bites verziója eltérő termékkódok és kiadott új verziói is rendelkeznek egy egyedi értéket.  A termékkód egy GUID Azonosítót, amely az alkalmazás vagy termék egyszerű azonosítása és a Windows telepítő által jelölt **ProductCode** tulajdonság.  A `ProductId` értékét a **MMAgent.ps1** parancsfájl meg kell egyeznie a kódot a 32 bites vagy 64 bites ügynök telepítőcsomagból.
 
-Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, használhatja a Orca.exe a [Windows SDK összetevői a Windows Installer-fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , amely a Windows Software Development Kitet részét képező vagy használata A következő PowerShell- [példaszkript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) írt által a Microsoft MVP elismert kiváló szakember ().  Mindkét módszert használja, először szüksége kibontásához a **MOMagent.msi** MMASetup telepítőcsomagból fájlt.  Ez a szakasz első lépése a korábbi látható [ügynök telepítése a parancssor használatával](#install-the-agent-using-the-command-line).  
+Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, használhatja a Orca.exe a [Windows SDK összetevői a Windows Installer-fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , amely a Windows Software Development Kitet részét képező vagy használata A következő PowerShell- [példaszkript](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) írt által a Microsoft MVP elismert kiváló szakember ().  Mindkét módszert használja, először szüksége kibontásához a **MOMagent.msi** MMASetup telepítőcsomagból fájlt.  Ez a szakasz első lépése a korábbi látható [ügynök telepítése a parancssor használatával](#install-the-agent-using-the-command-line).  
 
-1. Modul importálása a xPSDesiredStateConfiguration DSC [ http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) az Azure Automationbe.  
+1. Modul importálása a xPSDesiredStateConfiguration DSC [ https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) az Azure Automationbe.  
 2.  Hozzon létre az Azure Automation változó adategységek a *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEY*. Állítsa be *OPSINSIGHTS_WS_ID* a Log Analytics-munkaterület Azonosítójára és a set *OPSINSIGHTS_WS_KEY* az elsődleges kulcsot a munkaterületet.
 3.  Másolja a szkriptet, és mentse MMAgent.ps1.
 

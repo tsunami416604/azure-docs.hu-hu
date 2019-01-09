@@ -1,33 +1,35 @@
 ---
 title: A blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával
-description: A blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával hogyan lehet.
+description: Arra vonatkozó útmutató, hogyan hozhat létre a blockchain-alkalmazások az Azure Blockchain Workbench alkalmazásban.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 1/8/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: a7ca3f42874bc844bc0036e37a790ffebdc5f8d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 570d7a51bd6796a6360a4e52e637e1621a29deea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243133"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104386"
 ---
-# <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>A blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával
+# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Oktatóanyag: A blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával
 
 Azure Blockchain Workbench használatával hozzon létre a blockchain-alkalmazások, amelyek több résztvevős munkafolyamatok konfigurációs és intelligens szerződés kód határozza meg.
 
-Az alábbiak végrehajtásának módját ismerheti meg:
+A következőket fogja megtanulni:
 
 > [!div class="checklist"]
 > * A blockchain-alkalmazások konfigurálása
 > * Hozzon létre egy intelligens szerződés kód fájlt
 > * Blockchain Workbenchet blockchain alkalmazás hozzáadása
 > * Tagok hozzáadása a blockchain-application
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -236,56 +238,17 @@ Adja hozzá a következő verzió pragma tetején `HelloBlockchain.sol` intellig
   pragma solidity ^0.4.20;
   ```
 
-### <a name="base-class"></a>Alaposztály
-
-**WorkbenchBase** alaposztály lehetővé teszi a Blockchain Workbenchet létrehozni és frissíteni a szerződést. Az alaposztály alaposztályát Blockchain Workbenchet adott intelligens szerződés kód szükség. A szerződés kell öröklik a **WorkbenchBase** alaposztály.
-
-A `HelloBlockchain.sol` szerződés kódfájl intelligens, adja hozzá a **WorkbenchBase** osztály elején annak a fájlnak. 
-
-```
-contract WorkbenchBase {
-    event WorkbenchContractCreated(string applicationName, string workflowName, address originatingAddress);
-    event WorkbenchContractUpdated(string applicationName, string workflowName, string action, address originatingAddress);
-
-    string internal ApplicationName;
-    string internal WorkflowName;
-
-    function WorkbenchBase(string applicationName, string workflowName) internal {
-        ApplicationName = applicationName;
-        WorkflowName = workflowName;
-    }
-
-    function ContractCreated() internal {
-        WorkbenchContractCreated(ApplicationName, WorkflowName, msg.sender);
-    }
-
-    function ContractUpdated(string action) internal {
-        WorkbenchContractUpdated(ApplicationName, WorkflowName, action, msg.sender);
-    }
-}
-```
-Az osztály két fontos funkciót tartalmazza:
-
-|Alaposztály függvény  | Cél  | Mikor legyen meghívva  |
-|---------|---------|---------|
-| ContractCreated() | Értesíti a Blockchain Workbenchet szerződés létrehozása | Mielőtt kilépne a szerződés konstruktor |
-| ContractUpdated() | Értesíti a Blockchain Workbenchet szerződés állapotba frissítve lett | Mielőtt kilépne a szerződés függvény |
-
 ### <a name="configuration-and-smart-contract-code-relationship"></a>A kód kapcsolat konfigurációs és intelligens szerződés
 
 Blockchain Workbenchet a konfigurációs fájlt, és intelligens szerződés kódfájl használja a blockchain-alkalmazások létrehozásához. A konfigurációban és a kódot az intelligens szerződésben meghatározott közötti kapcsolat áll fenn. Podrobnosti o kontraktu, függvények, paraméterek és típusok felel meg az alkalmazás létrehozásához szükségesek. Blockchain Workbenchet ellenőrzi az alkalmazás létrehozása előtt fájlokat. 
 
 ### <a name="contract"></a>Szerződés
 
-A Blockchain Workbenchet, szerződések kell öröklik a **WorkbenchBase** alaposztály. A szerződés deklarálásakor kell argumentumként adja meg az alkalmazás nevét és a munkafolyamat nevét.
-
-Adja hozzá a **szerződés** fejlécet a `HelloBlockchain.sol` intelligens szerződés kódfájlt. 
+Adja hozzá a **szerződés** fejlécet a `HelloBlockchain.sol` intelligens szerződés kódfájlt.
 
 ```
-contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') {
+contract HelloBlockchain {
 ```
-
-A szerződés kell öröklik a **WorkbenchBase** alaposztály, és adja át a paramétereket **ApplicationName** és a munkafolyamat **neve** a konfigurációban meghatározott a fájl. Ebben az esetben az alkalmazás és a munkafolyamat nevét megegyeznek.
 
 ### <a name="state-variables"></a>Állapot változók
 
@@ -312,8 +275,6 @@ A konstruktor bemeneti paramétereket a munkafolyamat új intelligens szerződé
 
 A konstruktor függvényben bármely üzleti logika írását a szerződés létrehozása előtt végrehajtására vonatkozó szándékát. Például inicializálni az állapot változói az értékek indítása.
 
-A konstruktor függvény kilép, mielőtt hívja a `ContractCreated()` függvény. Ez a függvény létrejött szerződést Blockchain Workbenchet értesíti.
-
 A konstruktor függvény hozzáadása a szerződés a `HelloBlockchain.sol` intelligens szerződés kódfájlt. 
 
 ```
@@ -323,9 +284,6 @@ A konstruktor függvény hozzáadása a szerződés a `HelloBlockchain.sol` inte
         Requestor = msg.sender;
         RequestMessage = message;
         State = StateType.Request;
-    
-        // call ContractCreated() to create an instance of this workflow
-        ContractCreated();
     }
 ```
 
@@ -334,8 +292,6 @@ A konstruktor függvény hozzáadása a szerződés a `HelloBlockchain.sol` inte
 A függvények olyan végrehajtható a szerződés belüli üzleti logikai egységeket. A függvény kötelező paraméterei függvény paraméterei a konfigurációs fájlban vannak meghatározva. A szám, sorrend és paraméterek típusú egyeznie kell mindkét fájlban. Függvények társítva átmenetek Blockchain Workbenchet munkafolyamatban a konfigurációs fájlban. Áttérés a következő szintre a szerződés határoz meg egy alkalmazás a munkafolyamat végrehajtott művelet.
 
 Bármely üzleti logika írását a függvényben végrehajtására vonatkozó szándékát. Például módosítása egy állam változó értékét.
-
-Mielőtt kilépne a függvényt, hívja a `ContractUpdated()` függvény. A függvény értesíti a Blockchain Workbenchet szerződés állapot frissült. Ha azt szeretné, a függvény végrehajtott állapot módosítások visszavonásához, hívja meg revert(). Visszaállítás elvetések állapot ContractUpdated() előző hívása óta végzett módosításokat.
 
 1. A következő funkciók hozzáadni a szerződést a `HelloBlockchain.sol` intelligens szerződés kódfájlt. 
 
@@ -347,12 +303,8 @@ Mielőtt kilépne a függvényt, hívja a `ContractUpdated()` függvény. A füg
             {
                 revert();
             }
-    
             RequestMessage = requestMessage;
             State = StateType.Request;
-    
-            // call ContractUpdated() to record this action
-            ContractUpdated('SendRequest');
         }
     
         // call this function to send a response
@@ -360,10 +312,8 @@ Mielőtt kilépne a függvényt, hívja a `ContractUpdated()` függvény. A füg
         {
             Responder = msg.sender;
     
-            // call ContractUpdated() to record this action
             ResponseMessage = responseMessage;
             State = StateType.Respond;
-            ContractUpdated('SendResponse');
         }
     }
     ```

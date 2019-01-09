@@ -1,19 +1,19 @@
 ---
-title: 'ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása – a párhuzamos telephelyközi: PowerShell: Azure |} A Microsoft Docs'
+title: 'ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása – egyszerre használható: PowerShell: Azure |} A Microsoft Docs'
 description: Konfigurálja az ExpressRoute- és egy helyek közötti VPN-kapcsolat, amelyek párhuzamosan használhatók a PowerShell használatával a Resource Manager-modellben.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 01/07/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb5ca447a3058962483b640f742e4a7ec4a414
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a35bde6e89290fd2282ba6ec829f46cb4c6fc225
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104033"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103315"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell-lel ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -43,6 +43,7 @@ Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépés
 * **A Basic SKU-átjáró nem támogatott.** Nem Basic SKU-átjárót kell használnia [ExpressRoute-](expressroute-about-virtual-network-gateways.md) és [VPN-átjáróként](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * **Kizárólag az útvonalalapú VPN-átjáró támogatott.** Útvonalalapú [VPN-átjárót](../vpn-gateway/vpn-gateway-about-vpngateways.md) kell használnia.
 * **A VPN-átjáróhoz statikus útvonalat kell konfigurálni.** Ha a helyi hálózat az ExpressRoute-hoz és a helyek közötti VPN-hez is csatlakozik, konfigurálnia kell egy statikus útvonalat a helyi hálózaton a helyek közötti VPN-kapcsolat a nyilvános internetre történő átirányításához.
+* **VPN-átjáró ASN 65515 alapértelmezés szerint ha nincs megadva.** Az Azure VPN Gateway támogatja a BGP útválasztási protokollt. Megadhatja az ASN (AS-szám) egy virtuális hálózat hozzáadja az - Asn kapcsolót. Ha nem adja meg ezt a paramétert, az alapértelmezett 65515 számot-JÉBE. A konfiguráció bármely ASN-t is használhat, de 65515 nem választ ki, ha a beállítás érvénybe léptetéséhez az átjáró alaphelyzetbe kell állítania.
 
 ## <a name="configuration-designs"></a>Konfigurációs tervek
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Helyek közötti VPN konfigurálása feladatátvételi útvonalként az ExpressRoute számára

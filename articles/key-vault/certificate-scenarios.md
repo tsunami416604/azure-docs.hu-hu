@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: d3adeb2e9fab22d1e9c10b2deb4591c29ccff748
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1441e16e141bd33acfdfe4087f74afbc7b47bc77
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074393"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118285"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -57,7 +57,7 @@ Tanúsítványok épülnek fel, a Key Vault-tanúsítvánnyal; egymáshoz kapcso
 
      Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](https://aka.ms/kvcertsblog).  
 
-**3.1. lépés** - beállítás [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
+**3.1. lépés** -beállítása [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
 
 Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.  
 

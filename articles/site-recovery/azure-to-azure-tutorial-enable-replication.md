@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc6a1bcbcc4de455597eabc4d793656770c3a6dc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038721"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103516"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -172,7 +172,8 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 
 5. A **Testreszabás**válassza **Igen** a virtuális gépre kiterjedő konzisztencia, ha azt szeretné, hogy virtuális gépeket ad hozzá egy új vagy meglévő replikációs csoporthoz. hogy a virtuális gépek egy replikációs csoport része. Ezután kattintson az **OK** gombra.
 
-    - A feladatátvételkor a replikációs csoportba tartozó összes gép megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkezik majd. A több virtuális gépre kiterjedő konzisztencia hatással lehet a számítási feladatok teljesítményére, és csak akkor javasolt a használata, ha a gépeken ugyanaz a számítási feladat fut, és több gép közötti konzisztenciára van szükség.
+    - A feladatátvételkor a replikációs csoportba tartozó összes gép megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkezik majd. Több virtuális gépre kiterjedő konzisztencia engedélyezése hatással lehet a számítási feladatok teljesítményére (a CPU-igényes szó), és csak akkor, ha a gépek ugyanazt a számítási feladatot futtat, és több gép közötti konzisztenciára van szükség.
+    - Kiválaszthatja, hogy legfeljebb 16 virtuális gépek egy replikációs csoportban.
     - Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással. Ellenőrizze, hogy nem blokkolja-e tűzfal a virtuális gépek között a 20004-es porton keresztül zajló belső kommunikációt. Ha Linux rendszerű virtuális gépeket szeretne egy replikációs csoport részévé tenni, győződjön meg arról, hogy a 20004-es port esetében a kimenő adatforgalom manuális megnyitása megtörtént-e az adott Linux-verzió útmutatásainak megfelelően.
 
 ### <a name="configure-encryption-settings"></a>Titkosítási beállítások konfigurálása

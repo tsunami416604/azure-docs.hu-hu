@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: a6245472f0fc3f65dcbeebdf251387efed5f02b8
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333018"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106273"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Kibocsátási megjegyzések a szolgáltatás érvényesítése
 
@@ -49,7 +49,7 @@ Ez a cikk a kibocsátási megjegyzéseket tartalmaz az Azure Stack érvényesít
 
 - VaaS Előfeltételek és a VHD-frissítések
 
-    `Install-VaaSPrerequisites` Mostantól csak felhőalapú rendszergazdai hitelesítő adatok a probléma megoldására csomag érvényesítése során. A dokumentációban a [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a következőre frissült:
+    `Install-VaaSPrerequisites` Mostantól csak felhőalapú rendszergazdai hitelesítő adatok a probléma megoldására megoldás érvényesítése során. A dokumentációban a [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a következőre frissült:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -76,7 +76,7 @@ Ez a cikk a kibocsátási megjegyzéseket tartalmaz az Azure Stack érvényesít
 
   - Csomagaláíró értesítések
 
-    A csomag érvényesítése munkafolyamat részeként egy számítógép-Gyártói testreszabási csomag elküldésekor a csomag formátuma érvényesíti annak érdekében, hogy követi-e a közzétett specifikációnak. Ha a csomag nem felel meg, a futtatás sikertelen lesz. A bérlő regisztrált az Azure Active Directory kapcsolattartó e-mail-címre a e-mail értesítéseket küldeni szeretné.
+    A megoldás Szűrőérvényesítési munkafolyamat részeként egy számítógép-Gyártói testreszabási csomag elküldésekor a csomag formátuma érvényesíti annak érdekében, hogy követi-e a közzétett specifikációnak. Ha a csomag nem felel meg, a futtatás sikertelen lesz. A bérlő regisztrált az Azure Active Directory kapcsolattartó e-mail-címre a e-mail értesítéseket küldeni szeretné.
 
   - Interaktív vizsgálati kategória
 

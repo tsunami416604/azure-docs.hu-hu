@@ -8,18 +8,19 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 32c56a2ac3df9f386300a6ee8207a76c8031ab10
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 824c0caf0d54e8484093304c39c9f5dc05c83298
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016715"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117519"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
-Ez a cikk bemutatja, hogyan kezelhetik és az Azure digitális Twins felügyeleti API-k tesztelése a Postman REST-ügyfél konfigurálásához.
+Ez a cikk bemutatja, hogyan kezelhetik és az Azure digitális Twins felügyeleti API-k tesztelése a Postman REST-ügyfél konfigurálásához. Pontosabban a ismerteti:
 
-A cikk bemutatja, hogyan konfigurálása Azure Active Directory-alkalmazás, az OAuth 2.0 típusú implicit engedélyezés folyamat használata. Emellett bemutatja, hogyan lehet az, hogy jogkivonat hordozó HTTP-kéréseket a felügyeleti API-k Postman REST-ügyfél konfigurálásához.
+* hogyan konfigurálható az Azure Active Directory-alkalmazás, az OAuth 2.0 típusú implicit engedélyezés folyamat használata.
+* hogyan lehet, hogy jogkivonat hordozó HTTP-kéréseket a felügyeleti API-k a Postman REST-ügyfél konfigurálásához.
 
 ## <a name="postman-summary"></a>Postman-összefoglaló
 
@@ -88,7 +89,11 @@ Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Po
 
 ## <a name="next-steps"></a>További lépések
 
-Hitelesítés a felügyeleti API-kkal kapcsolatos további információkért olvassa el a [hitelesítés API-kkal](./security-authenticating-apis.md).
+- A digitális Twins felügyeleti API-k, és a használatukkal kapcsolatos további információkért olvassa el a [digitális Twins Azure felügyeleti API-k használata](how-to-navigate-apis.md).
+
+- Hitelesítés a felügyeleti API-kkal kapcsolatos további információkért olvassa el a [hitelesítés API-kkal](./security-authenticating-apis.md). 
+
+
 
 <!-- Images -->
 [1]: media/how-to-configure-postman/implicit-flow.png

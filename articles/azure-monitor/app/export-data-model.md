@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/21/2016
+ms.date: 01/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c906f313ae367fcc660d1ce1df0b3d667c7f04a3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016117"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119272"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights exportálási Data Model
-Ez a táblázat által küldött telemetriát tulajdonságait a [Application Insights](../../application-insights/app-insights-overview.md) SDK-k a portálra.
+Ez a táblázat által küldött telemetriát tulajdonságait a [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK-k a portálra.
 Láthatja, hogy ezeket a tulajdonságokat az adatkimenet bármilyen [folyamatos exportálás](export-telemetry.md).
 Is megjelennek a tulajdonságszűrők [Metrikaböngésző](../../azure-monitor/app/metrics-explorer.md) és [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md).
 
@@ -130,9 +130,11 @@ Az összes típusú telemetriát környezet szakasz egészül ki. Ezek a mezők 
 | Context.Device.Locale |sztring |de-DE, en-GB, az... |
 | Context.Device.Network |sztring | |
 | context.device.oemName |sztring | |
+| Context.Device.os |sztring | |
 | context.device.osVersion |sztring |Gazda operációs rendszer |
 | context.device.roleInstance |sztring |Kiszolgáló állomás azonosítója |
 | context.device.roleName |sztring | |
+| context.device.screenResolution |sztring | |
 | Context.Device.Type |sztring |Számítógép esetén a böngészőben... |
 | Context.Location |objektum |Ügyfélip származik. |
 | Context.location.City |sztring |Ha az ismert ügyfélip, származik |
@@ -146,10 +148,13 @@ Az összes típusú telemetriát környezet szakasz egészül ki. Ezek a mezők 
 | Context.Session.ID |sztring |Az azonos forrásból érkező műveletek egy csoportját azonosítója. Egy műveletet anélkül 30 percig jeleket a munkamenet végén. |
 | context.session.isFirst |logikai | |
 | context.user.accountAcquisitionDate |sztring | |
+| context.user.accountId |sztring | |
 | context.user.anonAcquisitionDate |sztring | |
 | context.user.anonId |sztring | |
 | context.user.authAcquisitionDate |sztring |[Hitelesített felhasználó](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |sztring | |
 | context.user.isAuthenticated |logikai | |
+| context.user.storeRegion |sztring | |
 | internal.data.documentVersion |sztring | |
 | Internal.Data.ID |sztring | Ha egy elem betöltött Application Insights hozzárendelt egyedi azonosítója |
 
@@ -347,6 +352,6 @@ Előre összesítése metrikák helyett használhat [mintavételi](../../azure-m
 Azzal a különbséggel, jelezve, időtartamok tized-mikromásodperces jelennek meg, hogy 10000000.0 azt jelenti, hogy 1 másodperc.
 
 ## <a name="see-also"></a>Lásd még
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [A folyamatos exportálás](export-telemetry.md)
 * [Kódminták](export-telemetry.md#code-samples)

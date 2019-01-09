@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 0186882183ed0848fd8b14d186b55ad1a5ff58ea
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019709"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105236"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Kezelheti az Azure Cache a Redis az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Ez a témakör bemutatja, hogyan hajtsa végre a gyakori feladatok például lé
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-A klasszikus üzemi modellel kapcsolatos további információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapotának ismertetése](../azure-resource-manager/resource-manager-deployment-model.md).
+A klasszikus üzemi modellel kapcsolatos további információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha már telepítette az Azure PowerShell-lel, rendelkeznie kell Azure PowerShell-lel 1.0.0-s verziójának vagy újabb. Ellenőrizheti az Azure PowerShell, amelyen telepítve van a következő paranccsal, az Azure PowerShell-parancssorba verzióját.
@@ -128,16 +128,16 @@ Az alábbi táblázat a tulajdonságok és amikor létrehozásába és kezelés�
 | Name (Név) |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | ResourceGroupName |Erőforráscsoport neve, amelyben a gyorsítótár létrehozása | |
-| Méret |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0 csomag, C1, C2, C3, C4, C5 csomag, C6 csomag, 250 MB-os, 1 GB-os, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Méret |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0 CSOMAG, C1, C2, C3, C4, C5 CSOMAG, C6 CSOMAG, 250 MB-OS, 1 GB-OS, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Hozzon létre egy prémium szintű gyorsítótár létrehozásakor a fürtözés engedélyezve van a szegmensek száma. Érvényes értékek a következők: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| SKU |Adja meg a gyorsítótár-Termékváltozat. Érvényes értékek a következők: alapszintű, Standard, prémium szintű |Standard |
+| SKU |Adja meg a gyorsítótár-Termékváltozat. Érvényes értékek a következők: Alap, Normál, Prémium |Standard |
 | RedisConfiguration |Itt adhatja meg a Redis-konfigurációs beállításokat. További információ az egyes beállítások: a következő [RedisConfiguration tulajdonságok](#redisconfiguration-properties) tábla. | |
 | EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL port. |False (Hamis) |
 | MaxMemoryPolicy |Ez a paraméter elavult, – használja helyette a RedisConfiguration. | |
 | StaticIP |Tárolásához a gyorsítótár egy virtuális hálózaton, adja meg egy egyedi IP-cím az alhálózat, a gyorsítótár. Ha nincs megadva, az egyik van kiválasztva, az alhálózatról. | |
 | Alhálózat |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. | |
 | VirtualNetwork |A gyorsítótár egy virtuális hálózaton tárolásához, a virtuális hálózat, melyben szeretné üzembe helyezni a gyorsítótár erőforrás Azonosítóját határozza meg. | |
-| KeyType |Itt adhatja meg, melyik hívóbetű újragenerálni a hozzáférési kulcsok megújításakor. Érvényes értékek a következők: elsődleges, másodlagos | |
+| KeyType |Itt adhatja meg, melyik hívóbetű újragenerálni a hozzáférési kulcsok megújításakor. Érvényes értékek a következők: Elsődleges, másodlagos | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration tulajdonságai
 | Tulajdonság | Leírás | Árképzési szintek |
@@ -148,11 +148,11 @@ Az alábbi táblázat a tulajdonságok és amikor létrehozásába és kezelés�
 | maxmemory-reserved |Konfigurálja a [szolgáltatás számára fenntartott memória](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) nem gyorsítótárazási folyamatok |Standard és Prémium |
 | a maxmemory-házirend |Konfigurálja a [kiürítési szabályzatot](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Az összes tarifacsomag |
 | értesítés-kulcstér-események |Konfigurálja a [kulcstérértesítések](cache-configure.md#keyspace-notifications-advanced-settings) |Standard és Prémium |
-| hash-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
-| hash-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
-| set-max-intset-bejegyzések |Konfigurálja a [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
-| zset-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
-| zset-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| hash-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| hash-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| set-max-intset-bejegyzések |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| zset-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| zset-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | adatbázisok |Konfigurálja az adatbázisok száma. Ez a tulajdonság csak a cache létrehozásakor konfigurálható. |Standard és Prémium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>A redis Azure Cache létrehozása
@@ -237,7 +237,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Az alapértelmezett paraméterek gyorsítótár létrehozásához futtassa az alábbi parancsot.
 
@@ -317,7 +317,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 A `Set-AzureRmRedisCache` tulajdonságok frissítéséhez, mint például a parancsmag is használható `Size`, `Sku`, `EnableNonSslPort`, és a `RedisConfiguration` értékeket. 
 
@@ -421,7 +421,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Az aktuális előfizetésben gyorsítótárait kapcsolatos információkat ad vissza, futtassa `Get-AzureRmRedisCache` paraméterek nélkül.
 
@@ -488,7 +488,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 A gyorsítótár a kulcsok lekéréséhez hívja meg a `Get-AzureRmRedisCacheKey` parancsmag paraméterével be a gyorsítótár nevét, amely tartalmazza a gyorsítótárat az erőforráscsoport nevét.
 
@@ -533,7 +533,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 Hozza létre újra az elsődleges vagy másodlagos kulcsot a gyorsítótárhoz, hívja meg a `New-AzureRmRedisCacheKey` parancsmagot, és adja meg a nevet, az erőforráscsoportot, és adja meg `Primary` vagy `Secondary` számára a `KeyType` paraméter. A következő példában a Cache-gyorsítótárhoz a másodlagos hozzáférési kulcs újbóli létrehozása.
 
@@ -584,7 +584,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 A következő példában a cache nevű `myCache` törlődik.
 
@@ -648,7 +648,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 A következő parancsot a blobból elválasztani az SAS URI-t az Azure Cache redis importálja az adatokat.
@@ -707,7 +707,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 A következő parancs adatokat exportál egy Azure Cache a Redis-példányt a tárolóba, a megadott SAS URI-t.
@@ -768,7 +768,7 @@ A paramétereket, és a hozzájuk tartozó leírások listájának megtekintés�
             This cmdlet supports the common parameters: Verbose, Debug,
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
-            about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+            about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 A következő parancsot a megadott gyorsítótár mindkét csomópont újraindul.
@@ -781,9 +781,9 @@ A következő parancsot a megadott gyorsítótár mindkét csomópont újraindul
 A Windows PowerShell-lel az Azure-ral kapcsolatos további információkért lásd a következőket:
 
 * [Az Azure Cache a Redis parancsmag MSDN-dokumentációja](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
-* [Az Azure Resource Manager parancsmagjainak](https://go.microsoft.com/fwlink/?LinkID=394765): ismerje meg, a parancsmagok használatához az Azure Resource Manager modulban.
-* [Erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-template-deploy-portal.md): ismerje meg, hogyan hozhat létre és kezelheti az erőforráscsoportok az Azure Portalon.
-* [Azure-blogban](https://azure.microsoft.com/blog/): az Azure-ban új szolgáltatásainak megismerése.
-* [Windows PowerShell-blog](https://blogs.msdn.com/powershell): a Windows PowerShell új szolgáltatásainak megismerése.
-* ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): valós tippeket és trükköket lekérése a Windows PowerShell-Közösségtől.
+* [Az Azure Resource Manager parancsmagjainak](https://go.microsoft.com/fwlink/?LinkID=394765): Ismerje meg, a parancsmagok használatához az Azure Resource Manager modulban.
+* [Erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-template-deploy-portal.md): Ismerje meg, hogyan hozhat létre és kezelheti az erőforráscsoportok az Azure Portalon.
+* [Azure-blogban](https://azure.microsoft.com/blog/): Az Azure-ban új szolgáltatásainak megismerése.
+* [Windows PowerShell-blog](https://blogs.msdn.com/powershell): A Windows PowerShell új szolgáltatásainak megismerése.
+* ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): A Windows PowerShell-Közösség valós tippeket és trükköket le.
 

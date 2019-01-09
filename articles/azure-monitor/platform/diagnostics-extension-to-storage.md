@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.component: diagnostic-extension
-ms.openlocfilehash: 616738b60f4a26b15c8245136860692f84349cc4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f0d1a51a3c787bd4d9602eeaad9ac92eda7bacb7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326195"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103740"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
 Diagnosztikai adatok nem tartósan tárolja, ha azt át a Microsoft Azure storage emulator vagy az Azure storage. Egyszer a storage szolgáltatással, azt is megtekinthetők a számos elérhető eszközök egyikét.
@@ -75,7 +75,7 @@ Storage követően az adatok megtekintéséhez számos eszközök érhetők el. 
 
 * Server Explorerben a Visual Studio - Ha telepítette az Azure-eszközöket a Microsoft Visual Studio segítségével az Azure Storage-csomópont a Server Explorerben csak olvasható blobok és táblák adatainak megtekintése az Azure storage-fiókok. Helyi emulátor tárfiókban lévő adatokat megjelenítheti és is a storage-fiókok számára létrehozott Azure. További információkért lásd: [böngészés és tárolási erőforrások kezelése a Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [A Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, os x és Linux rendszereken.
-* [Az Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) magában foglalja az Azure Diagnostics Managert, amely lehetővé teszi, hogy a megtekintése, letöltése és kezelése az Azure-ban futó alkalmazások által gyűjtött diagnosztikai adatok.
+* [Az Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) magában foglalja az Azure Diagnostics Managert, amely lehetővé teszi, hogy a megtekintése, letöltése és kezelése az Azure-ban futó alkalmazások által gyűjtött diagnosztikai adatok.
 
 ## <a name="next-steps"></a>További lépések
 [A Cloud Services-alkalmazás az Azure Diagnostics segítségével folyamatot nyomon követése](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)

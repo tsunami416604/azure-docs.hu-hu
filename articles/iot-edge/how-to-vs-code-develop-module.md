@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5eb896978e9b04a6ad87fe1f669d9155e9cc1433
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 463ab617051bf97bb3b1c38ed431c4b6936a9c90
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053211"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118693"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -241,13 +241,17 @@ A fejlesztői gépen akkor kezdhet egy IoT Edge-szimulátor helyett az IoT Edge 
 >
 > Írt modulok C#, beleértve az Azure Functions, ebben a példában, a hibakeresési verzió alapján `Dockerfile.amd64.debug`, amely tartalmazza a .NET Core parancssori hibakereső (VSDBG) a tároló rendszerképének összeállítása során. Miután hibakeresése a C# modulok, azt javasoljuk, hogy közvetlenül használja a docker-fájl nélkül VSDBG éles használatra kész IoT Edge-modulok.
 
-## <a name="debug-a-module-with-iot-edge-runtime-python-c"></a>Az IoT Edge-futtatókörnyezet (Python, C) modul hibakeresése
+## <a name="debug-a-module-with-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet modul hibakeresése
 
 Minden modul mappában nincsenek különböző tároló esetében több Docker-fájlok. E célból kiterjesztésű fájlokat használjon **.debug** hozhat létre a teszteléshez modul.
 
-Python- és C modulok támogatása hibakeresés jelenleg csak a Linux-tárolók amd64.
+Hibakeresés az IoT Edge-futtatókörnyezet modulok, amikor a modulok IoT Edge-futtatókörnyezet felett futtatja. Az IoT Edge-eszköz és a VS Code lehet ugyanarra a gépre, vagy több általában a következők a különböző gépeken (a VS Code a fejlesztői gépen, és egy másik fizikai számítógépen futó IoT Edge-futtatókörnyezet és a modulok). Az alábbi lépéseket kell végrehajtani a hibakeresési munkamenet a VS Code-ban.
 
-### <a name="build-and-deploy-your-module"></a>Készíthet és helyezhet üzembe a modul
+- Állítsa be az IoT Edge-eszközt, és hozzon létre az IoT Edge modul(ok) a **.debug** docker-fájlt, és üzembe helyezése IoT Edge-eszközön. 
+- Tegye elérhetővé az IP és port a modul a hibakereső csatolni.
+- Frissítés `launch.json` fájlt úgy, hogy a VS Code lehet kapcsolódni a távoli gépen a tároló a folyamat.
+
+### <a name="build-and-deploy-your-module-and-deploy-to-iot-edge-device"></a>Hozhat létre és a modul üzembe helyezése és üzembe helyezése IoT Edge-eszközön
 
 1. A Visual Studio Code-ban nyissa meg a `deployment.debug.template.json` fájl, amely tartalmazza a hibakeresési verzió, a modul képek a megfelelő `createOptions` beállított értékeket.
 
@@ -294,7 +298,17 @@ Python- és C modulok támogatása hibakeresés jelenleg csak a Linux-tárolók 
 
 Látni fogja az üzembe helyezés sikeresen létrehozott egy központi telepítési azonosítót, az integrált terminálon.
 
-A tároló állapota a Visual Studio Code Docker nézetben vagy futtatásával ellenőrizheti a `docker ps` parancsot a terminálon.
+A tároló állapotának ellenőrzéséhez futtassa a `docker ps` parancsot a terminálon. Ha ugyanazon a számítógépen futtatja a VS Code és az IoT Edge-futtatókörnyezet, az állapota a Visual Studio Code Docker nézetben is ellenőrizheti.
+
+### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger-to-attach"></a>Tegye elérhetővé az IP és port a modul a hibakereső csatolása
+
+Ha ugyanarra a gépre, a VS Code a modulok futnak. Localhost csatolni a tárolót használja, és már rendelkezik a megfelelő port beállítása a **.debug** docker-fájlban, a modul tároló CreateOptions, és `launch.json`. Ezt a szakaszt kihagyhatja. Ha a modulok és a VS Code külön gépeken futnak, hajtsa végre az alábbi lépéseket az egyes nyelvekhez.
+
+  - **C#, C# Függvény**: [Konfigurálja az SSH-csatorna a fejlesztési számítógép és az IoT Edge-eszköz](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes), Szerkesztés `launch.json` fájlt csatolni.
+  - **NODE.js**: Ellenőrizze, hogy a modul készen áll a ladicí programy csatolni, 9229 a port pedig a vizsgálandó programmal gép kívülről. Ezt ellenőrizheti megnyitásával [http://%3cdebuggee-machine-IP%3e:9229/json] http:// < vizsgált program gép – az IP->: a hibakeresőt gépen 9229/json. Az URL-címet kell indítja el a Node.js adatainak megjelenítéséhez. Majd hibakereső gépén, nyissa meg a VS Code, szerkessze a `launch.json` fájlt úgy, hogy oldja meg a "< modulnév > távoli hibakeresés (Node.js)" profil értékét ("< modulnév > távoli hibakeresés (Node.js Windows-tárolóban)" Ha a modul futtató profilt, vagy egy Windows-tároló) az IP-címét a vizsgált program gép.
+  - **Java**: Hozhat létre egy ssh vezető alagút a peremhálózati eszköz futtatásával `ssh -f <username>@<edgedevicehost> -L 5005:127.0.0.1:5005 -N`, majd szerkessze a `launch.json` fájlt csatolni. További tudnivalók a beállításokról [Itt](https://code.visualstudio.com/docs/java/java-debugging). 
+  - **Python**: A kód `ptvsd.enable_attach(('0.0.0.0', 5678))`, 0.0.0.0 módosítsa az IoT Edge-eszköz IP-címét. Hozhat létre, küldje le és telepítse újra az IoT Edge-modulok. A `launch.json` a fejlesztői gépén való frissítése `"host"` `"localhost"` módosítása `"localhost"` a távoli IoT Edge-eszköz nyilvános IP-címmel.
+
 
 ### <a name="debug-your-module"></a>A modul hibakeresése
 
@@ -303,6 +317,9 @@ A Visual Studio Code tartja a hibakeresés konfigurációs információinak egy 
 1. A Visual Studio Code Debug nézetben válassza ki a hibakeresési konfigurációs fájlt a modul. A hibakeresési beállítás neve legyen hasonló  ***&lt;a modulnév&gt;* távoli hibakeresése**
 
 1. Nyissa meg a kívánt modulfájlt fejlesztési nyelvű, és adjon hozzá egy töréspontot:
+   - **C#, C# Függvény**: Nyissa meg a fájlt `Program.cs` , és adjon hozzá egy töréspontot.
+   - **NODE.js**: Nyissa meg a fájlt `app.js` és a egy breakpont hozzáadása.
+   - **Java**: Nyissa meg a fájlt `App.java` , és adjon hozzá egy töréspontot.
    - **Python**: Nyissa meg `main.py` , és adjon hozzá egy töréspontot a visszahívási metódus, amelyikhez hozzáadta a `ptvsd.break_into_debugger()` sor.
    - **C**: Nyissa meg a fájlt `main.c` , és adjon hozzá egy töréspontot.
 

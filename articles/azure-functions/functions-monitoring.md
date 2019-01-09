@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 62ee1c880987d0f9ad358f1a0d31af4a73263725
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017973"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121226"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
-[Az Azure Functions](functions-overview.md) biztosít beépített integráció [Azure Application Insights](../application-insights/app-insights-overview.md) funkciók figyelésre. Ez a cikk bemutatja, hogyan konfigurálhatja a rendszer által létrehozott naplófájlok küldeni az Application Insights funkciók.
+[Az Azure Functions](functions-overview.md) biztosít beépített integráció [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) funkciók figyelésre. Ez a cikk bemutatja, hogyan konfigurálhatja a rendszer által létrehozott naplófájlok küldeni az Application Insights funkciók.
 
 ![Application Insights Metrikaböngésző](media/functions-monitoring/metrics-explorer.png)
 
@@ -414,7 +414,7 @@ Például, ha a naplózó metódus meghívása az előző példához hasonlóan 
 A parancsfájl C#-függvények, használhatja a `LogMetric` metódust a `ILogger` hozhat létre egyéni metrikákat az Application Insightsban. Íme egy példa a metódushívás:
 
 ```csharp
-logger.LogMetric("TestMetric", 1234); 
+logger.LogMetric("TestMetric", 1234);
 ```
 
 Ez a kód hívása helyett a `TrackMetric` használatával [a .NET-hez készült Application Insights API](#custom-telemetry-in-c-functions).
@@ -429,10 +429,10 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="logging-custom-metrics"></a>Egyéni metrikák naplózása  
 
-A Node.js-függvények, használhatja a `context.log.metric` metódussal hoz létre egyéni metrikákat az Application Insights. Íme egy példa a metódushívás:
+Az [verzió 1.x](functions-versions.md#creating-1x-apps) a Functions-futtatókörnyezet, a Node.js-függvény használható a `context.log.metric` metódussal hoz létre egyéni metrikákat az Application Insights. Ez a módszer jelenleg nem támogatott verzió a 2.x. Íme egy példa a metódushívás:
 
 ```javascript
-context.log.metric("TestMetric", 1234); 
+context.log.metric("TestMetric", 1234);
 ```
 
 Ez a kód hívása helyett a `trackMetric` használatával [az Application insights Node.js SDK](#custom-telemetry-in-javascript-functions).

@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 1f9d5325522f8ec40af99059651a00f6cdc0e8e0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7a744520fe2a3b53b1306d4c80a5eca7d86258a7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089623"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104539"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Csatlakozás Azure Stack PowerShell-kezelőként
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack, például az ajánlatok, tervek, kvóták és riasztások létrehozása-erőforrások kezelése a PowerShell segítségével konfigurálhatja. Ez a témakör segít az üzemeltető környezet konfigurálásához.
 
@@ -36,9 +36,12 @@ Futtassa a következő előfeltételek vonatkoznak, az a [development Kitet](./a
 
 ## <a name="connect-with-azure-ad"></a>Az Azure AD Connect
 
-Az Azure Stack-üzemeltető környezet konfigurálása a PowerShell használatával. Futtassa az alábbi parancsfájlok egyikét: az Azure Active Directory (Azure AD) tenantName és Azure Resource Manager-végpont értékeket cserélje le a saját környezetének konfigurációját. <!-- GraphAudience endpoint -->
+Az Azure Stack-üzemeltető környezet konfigurálása a PowerShell használatával. Futtassa az alábbi parancsfájlok egyikét: Az Azure Active Directory (Azure AD) tenantName és Azure Resource Manager-végpont értékeket cserélje le a saját környezetének konfigurációját. <!-- GraphAudience endpoint -->
 
 ```PowerShell  
+    # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
+Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+
     # Set your tenant name
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"

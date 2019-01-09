@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 12b4a4639991628265a19a5d45f3abdef590efcd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077929"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121159"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Forgatókönyv: Telemetria engedélyezése a Microsoft Dynamics CRM Online Application Insights használatával
 Ez a cikk bemutatja, hogyan küldött telemetriai adatok lekérése [Microsoft Dynamics CRM Online](https://www.dynamics.com/) használatával [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Végigvezetjük a teljes folyamat az Application insights eszközt ad hozzá az alkalmazás adatokat, és az adatvizualizációról rögzítése.
@@ -133,6 +133,6 @@ Lehetőség van még mélyebb elemzésre, ha Ön [exportálja az adatokat a Micr
 [Itt látható a minta megoldás a Microsoft Dynamics CRM-ben megvalósított](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="learn-more"></a>Részletek
-* [Mi az Application Insights?](../../application-insights/app-insights-overview.md)
+* [Mi az Application Insights?](../../azure-monitor/app/app-insights-overview.md)
 * [Application Insights weblapokhoz](../../azure-monitor/app/javascript.md)
-* [További minták és útmutatók](../../application-insights/app-insights-overview.md)
+* [További minták és útmutatók](../../azure-monitor/app/app-insights-overview.md)

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 2467da8d5a87a3a9325b807aec48c584ab0197cb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079102"
+ms.locfileid: "54105185"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
 
@@ -80,7 +80,7 @@ A frissítések a következőképpen telepítheti:
 > [!NOTE]
 >Minden a Scout összetevőinek fájl frissítési verziója nem lehet ugyanaz a frissítés .zip-fájlban. A régebbi verziót azt jelzik, hogy nem történik változás az összetevő a frissítés az előző frissítés óta.
 
-Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt. A fájl tartalmazza az összes, az alap bináris fájljait és összegző frissítés bináris fájljait a következő összetevők: 
+Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt, és a [MySQL és PHP frissítése](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) konfigurációs fájlokat. A frissítés .zip-fájlban található az összes, az alap bináris fájljait és összegző frissítés bináris fájljait a következő összetevők: 
   - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
   - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.GZ
   - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
@@ -126,7 +126,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt. A fá
 6. **Linux rendszerű fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** a Linuxos fő célkiszolgáló, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 7. **A forráskiszolgáló Windows**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** a forráskiszolgálón. Kattintson duplán a fájlra a futtatáshoz. 
 8. **Linux-forráskiszolgálón**: Az egyesített ügynök frissítése, másolja az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálón, és csomagolja. A kibontott mappát, futtassa a **/Install**.  Példa: Az RHEL 6.7 server 64 bites, a másolási **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
-9. A fent említett telepítők a konfigurációs kiszolgáló, Folyamatkiszolgáló és RX kiszolgáló frissítés után a PHP és MySQL-kódtárakat a lépéseket manuálisan kell frissíteni kell a [szakasz](#manual-upgrade-for-php-and-mysql-on-cs-ps-and-rx).
+9. A fent említett telepítők a konfigurációs kiszolgáló, Folyamatkiszolgáló és RX kiszolgáló frissítés után a PHP és MySQL-kódtárak 7.4 szakaszában leírt lépéseket az manuálisan frissíteni kell a [rövid telepítési útmutatót](https://aka.ms/asr-scout-quick-install-guide).
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 

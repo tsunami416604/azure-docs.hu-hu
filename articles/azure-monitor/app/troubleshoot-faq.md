@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: cb2383ee8a921aa2c9c4e3b536edc203dd883200
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0ad9179c5a6589df1168c5cebc3dcbd5496b9870
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074444"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121124"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -25,7 +25,7 @@ ms.locfileid: "54074444"
 *Hiba történt a beállítás lépett saját:*
 
 * [.NET-alkalmazás](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
-* [Egy már futó alkalmazás](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
+* [Egy már futó alkalmazás](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)
 * [Az Azure diagnostics](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Java webalkalmazások](../../azure-monitor/app/java-troubleshoot.md)
 
@@ -300,5 +300,5 @@ A legtöbb Application Insights-adatok egy késését 5 percen belül van. Bizon
 
 [data]: ../../azure-monitor/app/data-retention-privacy.md
 [platforms]: ../../azure-monitor/app/platforms.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 [windows]: app-insights-windows-get-started.md

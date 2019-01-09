@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
-ms.openlocfilehash: 1d30ddfb97b065d0d2fdf3bf91a73d3f7eb1b70f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a10314d4c396298f018459e56252d0d0d1656f08
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110068"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107786"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Application gateway létrehozása a HTTP – HTTPS átirányításról, az Azure portal használatával
 
@@ -65,7 +65,7 @@ Export-PfxCertificate `
 
 Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális hálózaton van szükség. Ebben a példában két alhálózatot hozunk létre: egyet az alkalmazásátjáróhoz, egy másikat pedig a háttérkiszolgálókhoz. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat.
 
-1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portal bal felső sarkában kattintson az **Erőforrás létrehozása** gombra.
 3. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 4. Adja meg a következő értékeket az alkalmazásátjáróhoz:

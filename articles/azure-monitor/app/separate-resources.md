@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 592efa5cc6a4918c03680e9785f85792eaa90099
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2e9c599c12ed10327d352baee02500d2284d98d8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045908"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121481"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztja a fejlesztési, tesztelési és éles környezetben
 
-Fejleszt egy webalkalmazást a következő verziójára, ha nem szeretne összekeveri a [Application Insights](../../application-insights/app-insights-overview.md) az új és a már kiadott verziója származó telemetriai adatok. A félreértések elkerülése végett a telemetriát küld külön Application Insights-erőforrást a különböző kialakítási kulcsokat (erőforráskulcsot) különböző fejlesztési szakaszban. Könnyebb a kialakítási kulcsot módosítani, mert egy verzió egy lépésben hajtaná helyez át egy másik, hasznos lehet, állítsa be a rendszerállapotkulcsot a kódban, hanem a konfigurációs fájlban. 
+Fejleszt egy webalkalmazást a következő verziójára, ha nem szeretne összekeveri a [Application Insights](../../azure-monitor/app/app-insights-overview.md) az új és a már kiadott verziója származó telemetriai adatok. A félreértések elkerülése végett a telemetriát küld külön Application Insights-erőforrást a különböző kialakítási kulcsokat (erőforráskulcsot) különböző fejlesztési szakaszban. Könnyebb a kialakítási kulcsot módosítani, mert egy verzió egy lépésben hajtaná helyez át egy másik, hasznos lehet, állítsa be a rendszerállapotkulcsot a kódban, hanem a konfigurációs fájlban. 
 
 (Ha a rendszer egy Azure-Felhőszolgáltatás, nincs [külön erőforráskulcsot beállítása egy másik módszer](../../azure-monitor/app/cloudservices.md).)
 

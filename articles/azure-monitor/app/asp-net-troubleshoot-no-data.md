@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2387af0ddd9f6f3ecbe91afaaca66d89f070c036
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 690822848fa2c6524f98c9bbd32e6d2890e4a9c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076042"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118762"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -34,7 +34,7 @@ ms.locfileid: "54076042"
 
 *E [telepített állapotfigyelő](../../azure-monitor/app/monitor-performance-live-website-now.md) a meglévő alkalmazások figyelése a webkiszolgálón. Nem látható az eredményt.*
 
-* Lásd: [Állapotfigyelőt hibaelhárítási](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights). 
+* Lásd: [Állapotfigyelőt hibaelhárítási](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot). 
 
 ## <a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual studióban
 *Ha a jobb gombbal egy meglévő projektben a Megoldáskezelőre, az Application Insights-beállításokat nem látható.*
@@ -154,7 +154,7 @@ Az adatok a weboldalakon parancsfájlok származik.
 Lásd: [– függőségi telemetria](../../azure-monitor/app/asp-net-dependencies.md) és [kivételtelemetria](asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Teljesítményadatok
-Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](../../azure-monitor/app/java-collectd.md), [Windows asztali alkalmazások](../../azure-monitor/app/windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Az azure Cloud Services](../../application-insights/app-insights-overview.md). a beállítások kiszolgálók találhat.
+Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](../../azure-monitor/app/java-collectd.md), [Windows asztali alkalmazások](../../azure-monitor/app/windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md), és [Az azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). a beállítások kiszolgálók találhat.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Nincs (kiszolgáló) adat, mivel az alkalmazás közzétett kiszolgálóhoz
 * Ellenőrizze, hogy ténylegesen kimásolt minden Microsoft. A kiszolgálóval együtt Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights dll-EK

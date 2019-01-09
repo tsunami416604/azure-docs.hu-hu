@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: a37575e6e6e8902dc2dd89a26011031c2e1419c4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6f6e680f7ce613d7a6d9f227765ce599c537e2d3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557257"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106511"
 ---
 # <a name="azure-stack-capacity-planner"></a>Az Azure Stack Capacity Planner
 Az Azure Stack Capacity Planner egy táblázatot, használja az Azure Stack resource kapacitástervezés. A capacity planner lehetőséget nyújt a számítási erőforrások különböző hozzárendelések tervezéséhez, és tekintse meg, hogyan ezek lenne elférjenek hardver ajánlatok kijelölés. Az Azure Stack Számológép használatára vonatkozó részletes útmutatást az alábbiakban találhatók.
 
 ## <a name="worksheet-descriptions"></a>Munkalap leírása
-Az alábbiakban röviden összefoglalja a munkalapok az Azure Stack Capacity Planner-táblázatot, amely letölthető a található, a [ http://aka.ms/azstackcapacityplanner ](https://aka.ms/azstackcapacityplanner):
+Az alábbiakban röviden összefoglalja a munkalapok az Azure Stack Capacity Planner-táblázatot, amely letölthető a található, a [ https://aka.ms/azstackcapacityplanner ](https://aka.ms/azstackcapacityplanner):
 
 |Lap neve|Leírás|
 |-----|-----|

@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 93894f9c45ac8b2cfcec23cf6a9ccd4d8e6f6824
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140506"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121723"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Oktatóanyag: Kezelési e-maileket és mellékleteket az Azure Logic Apps automatizálása
 
@@ -145,7 +145,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    | **Szolgáltatási csomag** | Használatalapú csomag | Ez a beállítás határozza meg az erőforrások, például a számítási teljesítmény lefoglalásának és méretezésének módját a függvényalkalmazás futtatásához. Lásd a [szolgáltatási csomagok összehasonlítását](../azure-functions/functions-scale.md). | 
    | **Hely** | USA nyugati régiója | A korábban is használt régió | 
    | **Tárolás** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a tárfiók a függvényalkalmazást tartalmazza, és a korábban létrehozott storage-fiók e-mail-mellékletek eltér. | 
-   | **Application Insights** | Ki | Bekapcsolja az [Application Insights](../application-insights/app-insights-overview.md) alkalmazásmonitorozását, de ehhez az oktatóanyaghoz válassza a **kikapcsolva** beállítást. | 
+   | **Application Insights** | Ki | Bekapcsolja az [Application Insights](../azure-monitor/app/app-insights-overview.md) alkalmazásmonitorozását, de ehhez az oktatóanyaghoz válassza a **kikapcsolva** beállítást. | 
    |||| 
 
    Ha a függvényalkalmazás az üzembe helyezést követően nem nyílik meg automatikusan, az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a> találja meg. Az Azure főmenüjéből válassza az **Függvényalkalmazások** lehetőséget, majd válassza ki a függvényalkalmazását. 

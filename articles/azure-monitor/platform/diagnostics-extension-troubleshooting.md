@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1ddadcf17a5733767e24505b970b2ac21c8d7fa8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326131"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103944"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).
@@ -118,7 +118,7 @@ Diagnosztikai beállítás összegyűjtendő adatok egy adott típusú vonatkoz�
 #### <a name="is-the-host-generating-data"></a>A gazdagép adatokat generáló?
 - **Teljesítményszámlálók**: Nyissa meg a Teljesítményfigyelőt, és ellenőrizze a számlálót.
 
-- **Nyomkövetési naplók**:  Távoli hozzáférés a virtuális géppel, és egy TextWriterTraceListener hozzáadásához az alkalmazás konfigurációs fájlban.  Lásd: http://msdn.microsoft.com/library/sk36c28t.aspx állíthatja be a szöveget figyelő.  Győződjön meg arról, hogy a `<trace>` elemnek `<trace autoflush="true">`.<br />
+- **Nyomkövetési naplók**:  Távoli hozzáférés a virtuális géppel, és egy TextWriterTraceListener hozzáadásához az alkalmazás konfigurációs fájlban.  Lásd: https://msdn.microsoft.com/library/sk36c28t.aspx állíthatja be a szöveget figyelő.  Győződjön meg arról, hogy a `<trace>` elemnek `<trace autoflush="true">`.<br />
 Ha nem látja a nyomkövetési naplók generált, [további információ a nyomkövetési naplók hiányzó](#more-about-trace-logs-missing).
 
 - **ETW-nyomkövetések**: Távoli hozzáférés a virtuális gép, és telepítse a PerfView.  A PerfView, futtassa a **fájl** > **felhasználói parancs** > **etwprovder1 figyelésére** > **etwprovider2**, és így tovább. A **figyelésére** parancs kis-és nagybetűket, és nem lehetnek szóközök közötti ETW-szolgáltatók vesszővel elválasztott listája. Ha a parancs futása sikertelen, kiválaszthatja a **Log** gombra a jobb alsó részén a Perfview eszköz mit próbált meg futni, és milyen eredmény megtekintéséhez.  Feltéve, hogy helyesek-e a bemeneti, egy új ablakban jelenik meg. Néhány másodperc alatt megkezdheti a ETW-nyomkövetések jelent meg.
@@ -217,9 +217,9 @@ Azt is megteheti a gép, és tekintse meg az Azure Diagnostics konfigurációs f
 
 Mindkét esetben keressen **Microsoft.Azure.Diagnostics**, majd a **xmlCfg** vagy **WadCfg** mező.
 
-Ha a keresett virtuális gépen, és a **WadCfg** mező szerepel, ez azt jelenti, hogy a konfigurációs JSON formátumban vannak. Ha a **xmlCfg** mező szerepel, az azt jelenti, hogy a konfigurációs XML-ben pedig base64-kódolású. Kell [dekódolni a](http://www.bing.com/search?q=base64+decoder) Diagnostics által betöltött XML-kód megtekintéséhez.
+Ha a keresett virtuális gépen, és a **WadCfg** mező szerepel, ez azt jelenti, hogy a konfigurációs JSON formátumban vannak. Ha a **xmlCfg** mező szerepel, az azt jelenti, hogy a konfigurációs XML-ben pedig base64-kódolású. Kell [dekódolni a](https://www.bing.com/search?q=base64+decoder) Diagnostics által betöltött XML-kód megtekintéséhez.
 
-A cloud service szerepkörhöz, a konfiguráció a lemezről, válasszon ki az adatok is, ha base64-kódolású, ezért meg kell [dekódolni a](http://www.bing.com/search?q=base64+decoder) Diagnostics által betöltött XML-kód megtekintéséhez.
+A cloud service szerepkörhöz, a konfiguráció a lemezről, válasszon ki az adatok is, ha base64-kódolású, ezért meg kell [dekódolni a](https://www.bing.com/search?q=base64+decoder) Diagnostics által betöltött XML-kód megtekintéséhez.
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Az Azure Diagnostics beépülő modul kilépési kódok
 A beépülő modul a következő kilépési kódokat ad vissza:

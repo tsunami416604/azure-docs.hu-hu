@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 11/05/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9f5f3c4ce08cde81c883bfdac87012dcfd80b8a4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036597"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119730"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stackben akkor is elérhetővé virtuálisgép-rendszerképek a felhasználók számára. Ezek a lemezképek hivatkozhat az Azure Resource Manager-sablonokkal, vagy felveheti őket az Azure Marketplace felhasználói felületén, a Piactéri elem. Vagy egy lemezkép-űrlap használata a globális Azure Marketplace-en, vagy adja hozzá a saját egyéni rendszerképét. Hozzáadhat egy virtuális Gépet a portálon vagy a Windows PowerShell használatával.
 
@@ -48,7 +48,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
    * Jegyezze fel a blob Storage URI, amikor feltölti a lemezképet. A blob storage URI azonosító formátuma a következő: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
 
-   * Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint is inkább a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként. Ez a lépés biztosítja, hogy a blob hozzáadhatja ezt képként használandó érhető el. Ha a blob nem érhető el névtelenül, a Virtuálisgép-lemezkép létrejön a hibás állapotban.
+   * Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként. Ez a lépés biztosítja, hogy a blob hozzáadhatja ezt képként használandó érhető el. Ha a blob nem érhető el névtelenül, a Virtuálisgép-lemezkép létrejön a hibás állapotban.
 
    ![Ugrás a storage-fiók BLOB](./media/azure-stack-add-vm-image/image1.png)
 
@@ -154,7 +154,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
 3. Jelentkezzen be az Azure Stack kezelőként. Útmutatásért lásd: [jelentkezzen be az Azure Stack-kezelőként](azure-stack-powershell-configure-admin.md).
 
-4. Hozzon létre egy tárfiókot a globális Azure-ban tárolja az egyéni Virtuálisgép-rendszerképet. Útmutatásért lásd: [a rövid útmutató: blobok feltöltése, letöltése, és listát az Azure portal használatával](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+4. Hozzon létre egy tárfiókot a globális Azure-ban tárolja az egyéni Virtuálisgép-rendszerképet. Útmutatásért lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és listát az Azure portal használatával](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 5. Készítse elő a VHD formátum (nem VHDX) a Windows vagy Linux operációs rendszer lemezképét, a Rendszerkép feltöltése a storage-fiók és az URI-t, amelyben a Virtuálisgép-lemezkép lekérhetők a PowerShell első.  
 

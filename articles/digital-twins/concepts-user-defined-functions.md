@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 915c57033209ff982946163c408cf8557515e2f5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999203"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106841"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -102,6 +102,15 @@ Felhasználó által definiált függvények használata Javascriptben csak írh
 - Graph-metaadatok csatolása az érzékelő olvasása előtt értesítés küldésére.
 
 További információkért lásd: [felhasználó által definiált függvények használata](./how-to-user-defined-functions.md).
+
+
+#### <a name="examples"></a>Példák
+
+A [GitHub-adattárat a digitális Twins a C# minta](https://github.com/Azure-Samples/digital-twins-samples-csharp/) tartalmaz néhány példát a felhasználó által definiált függvények:
+- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) szén-dioxid-mozgásban lévő adatoknak egyaránt és hőmérsékleti értékek meghatározásához a szoba elérhető-e ezekkel az értékekkel tartományban keresi. A [digitális Twins számára oktatóanyagokkal](tutorial-facilities-udf.md) ismerje meg a függvény a további részleteket. 
+- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) több mozgásban lévő adatoknak egyaránt érzékelőadatok keres adatokat, és megállapítja, hogy a hely érhető el, ha bármely mozgásfelismerés egyiket sem. A felhasználó által definiált függvény vagy a használt egyszerűen lecserélheti a [a rövid útmutató](quickstart-view-occupancy-dotnet.md), vagy a [oktatóanyagok](tutorial-facilities-setup.md), azáltal, hogy a módosítások a fájl a Megjegyzések szakaszban említett. 
+
+
 
 ### <a name="role-assignment"></a>Szerepkör-kijelölés
 

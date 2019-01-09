@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: f6f804ea9121d1728e31f1e694280e841f4b7f4e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9683eb8cbfcabb946f8b364ac9cc8aeeb167d023
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946544"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120291"
 ---
-# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Rövid útmutató: Webes API védelme az Azure Active Directoryval
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Gyors útmutató: Védelem biztosítása webes API-t az Azure Active Directoryval
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -106,9 +106,9 @@ Az egyéni konfigurációs beállításokról a [passport-azure-ad](https://gith
 
 ### <a name="implement-the-server"></a>A kiszolgáló megvalósítása
 
-A [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul két hitelesítési stratégiát tartalmaz: az [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és a [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiát. A cikkben megvalósított kiszolgáló a tulajdonosi stratégiát használja az API-végpont védelmére.
+A [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul két hitelesítési stratégiák funkciók: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiák. A cikkben megvalósított kiszolgáló a tulajdonosi stratégiát használja az API-végpont védelmére.
 
-### <a name="step-1-import-dependencies"></a>1. lépés: Függőségek importálása
+### <a name="step-1-import-dependencies"></a>1. lépés: Importálja a függőségeket
 
 Hozzon létre egy új fájlt `app.js` néven, és illessze be a következő szöveget:
 
@@ -132,7 +132,7 @@ Ebben a kódszakaszban:
 - A rendszer létrehoz egy tömböt az `authenticatedUserTokens` számára, amely a felhasználói jogkivonatokat tárolja a védett végpontoknak való átadáskor.
 - A `serverPort` a feldolgozó környezet portjából vagy a konfigurációs fájlból lesz meghatározva.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2. lépés: A hitelesítési stratégia példányosítása
+### <a name="step-2-instantiate-an-authentication-strategy"></a>2. lépés: Hitelesítési stratégia vezérlőként
 
 Amikor beállítja egy végpont védelmét, meg kell adnia egy stratégiát, amely meghatározza, hogy a jelenlegi kérés hitelesített felhasználótól származik-e. Az `authenticatonStrategy` változó itt a `passport-azure-ad` `BearerStrategy` osztályának egyik példánya. Adja hozzá a következő kódot a `require` utasítások után.
 
@@ -161,19 +161,19 @@ Ha létrejön a stratégia egy új példánya, továbbítsa a Passportnak a `use
 passport.use(authenticationStrategy);
 ```
 
-### <a name="step-3-server-configuration"></a>3. lépés: Kiszolgáló konfigurálása
+### <a name="step-3-server-configuration"></a>3. lépés: Kiszolgálókonfiguráció
 
 Ha meghatározta a hitelesítési stratégiát, beállíthatja a Restify kiszolgálót néhány alapvető beállítással, és azt is beállíthatja, hogy a Passportot használja a védelemhez.
 
 ```JavaScript
-const server = restify.createServer({ name: 'Azure Active Directroy with Node.js Demo' });
+const server = restify.createServer({ name: 'Azure Active Directory with Node.js Demo' });
 server.use(restifyPlugins.authorizationParser());
 server.use(passport.initialize());
 server.use(passport.session());
 ```
 Ez a kiszolgáló inicializálva van, és úgy konfigurálták, hogy elemezze az engedélyeztetési fejléceket, majd beállítsa a Passport használatát.
 
-### <a name="step-4-define-routes"></a>4. lépés: Útvonalak meghatározása
+### <a name="step-4-define-routes"></a>4. lépés: Útvonalak megadása
 
 Most már meghatározhat útvonalakat, és eldöntheti, hogy melyeket védje az Azure AD-vel. Ez a projekt két olyan útvonalat tartalmaz, ahol a gyökérszint nyitva van, az `/api` útvonal pedig úgy van beállítva, hogy hitelesítést igényeljen.
 
@@ -221,7 +221,7 @@ Ha megfelelően konfigurálta a kiszolgálót, a válasz az alábbihoz hasonlóa
 
 ```shell
 HTTP/1.1 200 OK
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 Content-Type: application/json
 Content-Length: 49
 Date: Tue, 10 Oct 2017 18:35:13 GMT
@@ -240,7 +240,7 @@ Ha megfelelően konfigurálta a kiszolgálót, akkor a kiszolgáló `Unauthorize
 
 ```shell
 HTTP/1.1 401 Unauthorized
-Server: Azure Active Directroy with Node.js Demo
+Server: Azure Active Directory with Node.js Demo
 WWW-Authenticate: token is not found
 Date: Tue, 10 Oct 2017 16:22:03 GMT
 Connection: keep-alive

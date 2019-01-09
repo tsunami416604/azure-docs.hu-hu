@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 04566009ba7b71b48cf3dfc7d51cbbdcd596dc0e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186537"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104709"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -33,7 +33,7 @@ Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Micros
 
 Alapértelmezés szerint a Log Analytics a processzor, a memória, a lemezek és a hálózat teljesítményadatait naplózza a Windows és Linux beépített számlálóival, valamint további, szabadon megadható teljesítményszámlálók segítségével. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
-Ha már használta az [sFlow](http://www.sflow.org/)-t vagy valamilyen egyéb szoftvert a [Cisco NetFlow protokolljával](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a Wire Data statisztikái és adatai már ismerősek lesznek.
+Ha már használta az [sFlow](http://www.sflow.org/)-t vagy valamilyen egyéb szoftvert a [Cisco NetFlow protokolljával](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a Wire Data statisztikái és adatai már ismerősek lesznek.
 
 A beépített naplókeresési lekérdezések néhány típusa:
 

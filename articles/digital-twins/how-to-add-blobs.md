@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9abf1eebe8174160bd671d83086ed641708b98eb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 36f4caac38f2f4891af6f61b78b55c7eff15eae4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073951"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116738"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -202,7 +202,7 @@ Gyakori hiba, hogy a megfelelő fejléc-információkat tartalmazza:
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure digitális Twins Swagger dokumentációja kapcsolatos további információkért olvassa el [használata az Azure digitális Twins Swagger](how-to-use-swagger.md).
+- Az Azure digitális Twins Swagger dokumentációja kapcsolatos további információkért olvassa el [használata az Azure digitális Twins Swagger](how-to-use-swagger.md).
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG

@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001787"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121549"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
 
@@ -48,7 +48,7 @@ Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, h
 
 A szolgáltatás irányítópultján szakaszok bemutatják, hogy hány indexek, indexelők és adatforrások már rendelkezik. 
 
-! [Az indexek, indexelők és adatforrások listája] [media/search-get-started-portal/tiles-indexers-datasources2.png]
+![Indexek, indexelők és adatforrások listája](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a> Index létrehozása és az adatok betöltése
 
@@ -124,9 +124,13 @@ A portál a lap frissítése néhány percet vesz igénybe, de kell megjelennie 
 
 ## <a name="view-the-index"></a>Az index megtekintése
 
-A **indexek** lista mutatja azokat a meglévő indexeket, beleértve a *realestate-us-sample* a varázsló az újonnan létrehozott indexben.
+A fő szolgáltatás oldalát az Azure Search szolgáltatáshoz létrehozott erőforrásokat mutató hivatkozásokat tartalmaz.  Az újonnan létrehozott indexben megtekintéséhez kattintson **indexek** hivatkozások listájában. 
 
-Ebből a listából az indexséma megtekintheti, és ha szükséges, hozzáadhat új mezőket, de nem módosíthatja a meglévő mezőket. A meglévő mezők fizikailag vannak jelölve az Azure Searchben, és így nem módosíthatók, még a kódban sem. Alapvető változást existující Pole, hozzon létre egy új index, az eredeti elvetését.
+   ![A szolgáltatás irányítópultján indexek listája](media/search-get-started-portal/indexes-list.png)
+
+Ebből a listából, kattintson a a *realestate-us-sample* index imént hozta létre, megtekintheti az indexsémát. és ha szükséges, hozzáadhat új mezőket. 
+
+A **mezők** lapon látható az indexsémát. Adjon meg egy új mezőt a lista alján görgessen. A legtöbb esetben a meglévő mezők nem módosítható. A meglévő mezők fizikailag vannak jelölve az Azure Searchben, és így nem módosíthatók, még a kódban sem. Alapvető változást existující Pole, hozzon létre egy új index, az eredeti elvetését.
 
    ![példa indexdefinícióra](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +141,8 @@ Annak érdekében, hogy jól átlássa az indextervezés során szerkeszthető �
 ## <a name="query-index"></a> Lekérdezés a keresési ablak használatával
 
 Továbblépve most már rendelkezünk egy keresési indexszel, amely készen áll a lekérdezésre a beépített [**Keresési ablak**](search-explorer.md) lekérdezési lappal. Ez egy keresőmezőt biztosít, amellyel tesztelheti a tetszőleges lekérdezési sztringeket.
+
+**A keresési ablak** csak rendelkezik a [REST API-kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents), de szintaxist is fogad el [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és [teljes Lucene lekérdezéselemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), Ezen kívül elérhető összes keresési paramétert [Search dokumentum REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) műveleteket.
 
 > [!TIP]
 > Az [Azure Search szolgáltatás áttekintő videója](https://channel9.msdn.com/Events/Connect/2016/138) a következő lépéseket mutatja be 6 perc 8 másodperctől kezdve.
@@ -150,11 +156,9 @@ Továbblépve most már rendelkezünk egy keresési indexszel, amely készen ál
 
    ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. A keresősávba írja be az alábbi lekérdezési sztringeket, majd kattintson a **Keresés** gombra.
+3. A keresősávba, illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **keresési**.
 
-    > [!NOTE]
-    > **A keresési ablak** csak rendelkezik a [REST API-kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents). Elfogadja az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene lekérdezéselemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) szintaxisát is, továbbá a [Dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) műveletekben elérhető összes keresési paramétert.
-    >
+   ![Lekérdezési karakterlánc és a Keresés gomb](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>Példa a lekérdezésekre
 

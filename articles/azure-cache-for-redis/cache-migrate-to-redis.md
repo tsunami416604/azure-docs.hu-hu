@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 5a1febb80b5d3aaf0e5da2620f1b0a35d5d1144b
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 27c8fce8c8eac936708dbac72ca60a1c0af286ea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556798"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106137"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service szolgáltatásból át az Azure Cache redis
 Az alkalmazások, amelyek használják az Azure Managed Cache Service az Azure Cache redis migrálása az alkalmazását, az gyorsítótárazási alkalmazása által használt Managed Cache Service funkcióktól függően legfeljebb minimális változtatásokra is elvégezhető. Míg a API-k nem pontosan ugyanaz hasonló, és legfeljebb minimális változtatásokra nagy része a meglévő kódot, amely a gyorsítótár elérésére használja a Managed Cache Service szolgáltatáshoz felhasználhatók. Ez a cikk bemutatja, hogyan javíthatja a szükséges konfigurációs és alkalmazások áttelepítése a Managed Cache Service-alkalmazások Azure Cache a Redis használata módosítja, és bemutatja, hogyan Azure Cache redis funkcióit használható működésének megvalósítása a Managed Cache Service gyorsítótár.
@@ -53,7 +53,7 @@ Az Azure Managed Cache Service és a Redis gyorsítótár hasonlóak, de egyes h
 | Helyi gyorsítótár |Tárolja a gyorsítótárazott objektumok helyileg extra gyors hozzáférés az ügyfélen. |Ügyfélalkalmazások megvalósítása a funkció használatával egy szótárt és hasonló adatszerkezetből kellene. |
 | Kiürítési szabályzat |Nincs vagy LRU. Az alapértelmezett szabályzat az LRU. |Az Azure Cache a redis támogatja a következő kiürítési szabályzat: ideiglenes-lru, allkeys-lru, ideiglenes véletlenszerű, allkeys-véletlen ideiglenes ttl, noeviction. Az alapértelmezett házirend ideiglenes-lru. További információkért lásd: [kiszolgálókonfiguráció Redis alapértelmezett](cache-configure.md#default-redis-server-configuration). |
 | Elévülési szabályzatot |Az alapértelmezett elévülési szabályzatot abszolút pedig az alapértelmezett lejárati időközét 10 perc. Késleltetett, és soha házirendek is elérhetők. |Alapértelmezés szerint a gyorsítótárban lévő elemek nem járnak le, de egy lejárati konfigurálható a gyorsítótár beállított túlterheléssel használatával / írási történik. |
-| Régiók és címkézése |Régiók csak az alcsoportok gyorsítótárazott elemek. Régió is támogatja a gyorsítótárazott elemek jegyzet címkéket további leíró karakterláncot tartalmazó. Régió támogatja a keresési műveletek végrehajtása a bármilyen címkével ellátott elemek az adott régióban. Egy adott régión belül minden elem a gyorsítótár-fürt egyetlen csomóponton belül találhatók. |az Azure Cache redis áll egyetlen csomópont (kivéve, ha engedélyezve van a Redis-fürttel), a Managed Cache Service régiók fogalma nem vonatkozik. Kulcsok beolvasása közben, így leíró címkéket a kulcsnevek beágyazva, és később lekérheti az elemeket a redis támogatja a keresést és helyettesítő karakterekre vonatkozó műveletek. Egy példa egy címkézési megoldást a Redis használatával végrehajtási: [címkézés a Redis gyorsítótár megvalósítása](http://stackify.com/implementing-cache-tagging-redis/). |
+| Régiók és címkézése |Régiók csak az alcsoportok gyorsítótárazott elemek. Régió is támogatja a gyorsítótárazott elemek jegyzet címkéket további leíró karakterláncot tartalmazó. Régió támogatja a keresési műveletek végrehajtása a bármilyen címkével ellátott elemek az adott régióban. Egy adott régión belül minden elem a gyorsítótár-fürt egyetlen csomóponton belül találhatók. |az Azure Cache redis áll egyetlen csomópont (kivéve, ha engedélyezve van a Redis-fürttel), a Managed Cache Service régiók fogalma nem vonatkozik. Kulcsok beolvasása közben, így leíró címkéket a kulcsnevek beágyazva, és később lekérheti az elemeket a redis támogatja a keresést és helyettesítő karakterekre vonatkozó műveletek. Egy példa egy címkézési megoldást a Redis használatával végrehajtási: [címkézés a Redis gyorsítótár megvalósítása](https://stackify.com/implementing-cache-tagging-redis/). |
 | Szerializálási |Managed Cache NetDataContractSerializer BinaryFormatter és egyéni objektumszerializáló használatát támogatja. Az alapértelmezett érték NetDataContractSerializer. |A feladata az ügyfélalkalmazás, mielőtt azokat a gyorsítótárba, akár az ügyféloldali alkalmazás fejlesztője a szerializáló kiválasztása a .NET-objektumokká szerializálásához. További információk és mintakód: [.NET-objektumok használata a gyorsítótárban](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
 | Gyorsítótár-emulátor |Managed Cache biztosít a helyi gyorsítótár-emulátoron. |Az Azure Redis gyorsítótár nem rendelkezik az emulátor, de Ön is [helyileg történő futtatása a redis-server.exe MSOpenTech build](cache-faq.md#cache-emulator) emulátor biztosít. |
 

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/08/2018
 ms.author: tulasim
-ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ec26e7ab535084fa5d8f52c11c671212eeab0f13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035232"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119833"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>A tudásbázist másokkal közös használatához
 
@@ -35,7 +35,7 @@ A következő lépésekkel másokkal a QnA Maker szolgáltatást:
 
     ![A QnA Maker IAM hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. Válassza ki a **tulajdonosa** vagy a **közreműködői** szerepkör.
+4. Válassza ki a **tulajdonosa** vagy a **közreműködői** szerepkör. Csak olvasható hozzáférést szerepköralapú hozzáférés-vezérlés használatával nem tudja biztosítani. Tulajdonos és közreműködő szerepkörrel rendelkezik olvasási és írási hozzáférése közvetlenül a QnA Maker szolgáltatást.
 
     ![A QnA Maker IAM-szerepkör hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 

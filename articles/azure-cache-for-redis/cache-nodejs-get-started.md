@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: cff742688c307becf4bf87cced15036b25fa10c8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f47b1d35ada061601233506222903742393c6830
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554622"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101751"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: Az Azure Cache használata a Node.js redis
 
@@ -42,7 +42,7 @@ Telepítse a [node_redis](https://github.com/mranney/node_redis) ügyfelet:
 
     npm install redis
 
-Ez az oktatóanyag a [node_redis](https://github.com/mranney/node_redis) ügyfelet használja. Az egyéb Node.js-ügyfeleket használó példákért tekintse meg az egyes Node.js-ügyfelek dokumentációját a [Node.js Redis-ügyfeleket](http://redis.io/clients#nodejs) felsoroló weblapon.
+Ez az oktatóanyag a [node_redis](https://github.com/mranney/node_redis) ügyfelet használja. Az egyéb Node.js-ügyfeleket használó példákért tekintse meg az egyes Node.js-ügyfelek dokumentációját a [Node.js Redis-ügyfeleket](https://redis.io/clients#nodejs) felsoroló weblapon.
 
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
@@ -77,7 +77,7 @@ Ne hozzon létre új kapcsolatokat a kód minden műveletéhez. Ehelyett a lehet
 
 Hozzon létre egy *redistest.js* nevű új szkriptfájlt.
 
-Adja hozzá a következő példa JavaScriptet a fájlhoz. Ez a kód bemutatja, hogyan csatlakozhat egy Azure Cache a Redis-példányt a gyorsítótár-állomás nevének és a kulcs környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. További példák a Redis használatára a [node_redis](https://github.com/mranney/node_redis) ügyféllel: [http://redis.js.org/](http://redis.js.org/).
+Adja hozzá a következő példa JavaScriptet a fájlhoz. Ez a kód bemutatja, hogyan csatlakozhat egy Azure Cache a Redis-példányt a gyorsítótár-állomás nevének és a kulcs környezeti változók használatával. A kód emellett tárolja és lekéri gyorsítótár egyik sztringértékét. A rendszer a `PING` és a `CLIENT LIST` parancsot is végrehajtja. További példák a Redis használatára a [node_redis](https://github.com/mranney/node_redis) ügyféllel: [https://redis.js.org/](https://redis.js.org/).
 
 ```js
 var redis = require("redis");

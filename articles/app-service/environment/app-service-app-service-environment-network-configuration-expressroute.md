@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: a9af97bcd85833a140d6c668fe4c757c85d7447a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 23faf3b88584f8031b4a2fdbc6d94ac2ae861431
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337172"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104454"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei az App Service-környezet a powerapps szolgáltatásra, az Azure ExpressRoute használatával
 
@@ -108,7 +108,7 @@ Hozzon létre egy útválasztási táblázatot nevű **DirectInternetRouteTable*
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>2. lépés: A tábla útvonalak létrehozása
+### <a name="step-2-create-routes-in-the-table"></a>2. lépés: A tábla útvonalak létrehozása
 
 Adja hozzá az útvonalakat az útvonaltáblához kimenő internet-hozzáférés engedélyezéséhez.  
 
@@ -156,7 +156,7 @@ Ismerkedés az App Service Environment-környezet a PowerApps, lásd: [App Servi
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md
 [networkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-<!-- Old link -- [UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: [AzureDownloads] app-service-web-how-to-create-an-app-service-environment.md: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
+<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: [AzureDownloads] app-service-web-how-to-create-an-app-service-environment.md: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]: [NewPortal] app-service-app-service-environment-intro.md:  https://portal.azure.com
 
 

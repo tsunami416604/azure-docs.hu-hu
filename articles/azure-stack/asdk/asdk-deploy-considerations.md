@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4bcb71829b2fb5f35398f36dee36d4e98c5a609b
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726541"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106733"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Tervezési megfontolások az Azure Stack üzemelő példányához
 Az Azure Stack Development Kit (ASDK), üzembe helyezése előtt győződjön meg arról, a fejlesztői csomag fogadó számítógép megfelel-e az ebben a cikkben ismertetett követelményeknek.
@@ -82,7 +82,7 @@ Ha az AD FS lehetőség használatával telepíti, újra kell telepítenie az Az
 ### <a name="azure-active-directory-accounts"></a>Az Azure Active Directory-fiókok
 Az Azure Stack üzembe helyezése egy Azure AD-fiókkal, el kell készítenie az Azure AD-fiókot, az üzembe helyezés PowerShell-parancsfájl futtatása előtt. Ezt a fiókot az Azure AD-bérlő számára a globális rendszergazdája lesz. Üzembe helyezhető, és delegálja az alkalmazások és az egyszerű szolgáltatások Azure Stack-szolgáltatásokhoz, amelyek együttműködnek az Azure Active Directory és a Graph API használatos. Az alapértelmezett szolgáltatója előfizetést (ez később módosíthatja) tulajdonosaként is használható. Bejelentkezhet az Azure Stack rendszer rendszergazdai portál e fiók használatával.
 
-1. Hozzon létre egy Azure AD-fiókot, amely a címtár-rendszergazdája legalább egy Azure AD-hez. Ha már rendelkezik ilyen fiókkal, használhatja azt. Ellenkező esetben létrehozhat egy ingyenes [ https://azure.microsoft.com/free/ ](https://azure.microsoft.com/pricing/free/) (Kínából <http://go.microsoft.com/fwlink/?LinkID=717821> helyett). Ha azt tervezi, hogy később [regisztrálása az Azure Stack az Azure-ral](asdk-register.md), rendelkeznie kell egy előfizetés az újonnan létrehozott fiók.
+1. Hozzon létre egy Azure AD-fiókot, amely a címtár-rendszergazdája legalább egy Azure AD-hez. Ha már rendelkezik ilyen fiókkal, használhatja azt. Ellenkező esetben létrehozhat egy ingyenes [ https://azure.microsoft.com/free/ ](https://azure.microsoft.com/pricing/free/) (Kínából <https://go.microsoft.com/fwlink/?LinkID=717821> helyett). Ha azt tervezi, hogy később [regisztrálása az Azure Stack az Azure-ral](asdk-register.md), rendelkeznie kell egy előfizetés az újonnan létrehozott fiók.
    
     Mentse ezeket a hitelesítő adatokat a szolgáltatás-rendszergazdaként. Ez a fiók konfigurálhatja és kezelheti a erőforrásfelhőket, felhasználói fiókokat, bérlői csomagokat, kvótákat és díjszabás. A portálon létrehozhatnak felhőket webhelyhez, magánfelhőket virtuális géphez, csomagokat, és kezelhetik a felhasználói előfizetéseket.
 1. Hozzon létre legalább egy tesztfelhasználói fiókja az Azure AD-ben, így bejelentkezhet bérlőként development Kit.

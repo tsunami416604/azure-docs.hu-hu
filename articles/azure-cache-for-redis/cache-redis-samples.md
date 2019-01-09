@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e14e76be50fc71738779e0196b2034ca4f8e0097
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744989"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103881"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis-minták
 Ez a témakör az Azure Cache Redis-minták kiterjedő forgatókönyvek, például egy cache olvasása és írása adat- és a gyorsítótárból való kapcsolódással és az Azure Cache gyorsítótárral az ASP.NET a Redis-szolgáltatók listája. A minták néhány letölthető projektek, és néhány tartalmaz részletes útmutatást és kódrészletek tartalmazza, de ne csatolja egy letölthető projektet.
@@ -47,7 +47,7 @@ További információkért lásd: a [StackExchange.Redis](https://github.com/Sta
 [.NET-objektumok használata a gyorsítótárban](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache) adjuk meg a .NET-objektumokká szerializálásához így írja őket, és olvassa el őket egy Azure-gyorsítótárból a Redis-példányt. 
 
 ## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>Használja az Azure Cache redis egy horizontális felskálázási csatlakozópanel meghibásodása ASP.NET SignalR
-A [használata Azure Cache redis egy horizontális felskálázási csatlakozópanel meghibásodása, az ASP.NET SignalR](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) a minta azt ismerteti, hogyan használhatja az Azure Cache redis egy SignalR-csatlakozópanel meghibásodása. Csatlakozópanel meghibásodása kapcsolatos további információkért lásd: [SignalR horizontális Felskálázás a Redis](http://www.asp.net/signalr/overview/performance/scaleout-with-redis).
+A [használata Azure Cache redis egy horizontális felskálázási csatlakozópanel meghibásodása, az ASP.NET SignalR](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane) a minta azt ismerteti, hogyan használhatja az Azure Cache redis egy SignalR-csatlakozópanel meghibásodása. Csatlakozópanel meghibásodása kapcsolatos további információkért lásd: [SignalR horizontális Felskálázás a Redis](https://www.asp.net/signalr/overview/performance/scaleout-with-redis).
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Az Azure Cache Redis ügyfél lekérdezés minta
 Ez a minta bemutatja a összehasonlítja teljesítménye között gyorsítótár származó adatok egységes elérésével és az adatok elérése az adatmegőrzés storage-ból. Ez a példa két projektet tartalmaz.

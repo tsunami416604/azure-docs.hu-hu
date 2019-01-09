@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: af4e9d0ec90c203a83acf142dd9c81494fe5bc47
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e008a53ce71a55b344dfc3a76bdb4ae39b954c46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081105"
+ms.locfileid: "54104879"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -167,4 +167,4 @@ Mivel az Azure Applications Insights Analytics egy külön szolgáltatás, meg k
 Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekintse át az Application Insights dokumentációját, amely egy esettanulmányt is tartalmaz.
 
 > [!div class="nextstepaction"]
-> [Részletes diagnosztika](../../application-insights/app-insights-devops.md)
+> [Részletes diagnosztika](../../azure-monitor/app/devops.md)

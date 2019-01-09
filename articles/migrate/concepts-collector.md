@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/08/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255975"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104209"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -63,7 +63,7 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
     - Válassza a az Azure globális, ha az Azure kereskedelmi felhőben át kíván.
     - A felhőben az itt megadott alapján, a berendezés küld felderített metaadatokat a megfelelő végpontok.
 - **Ellenőrizze az internetkapcsolatot**: A gyűjtő kapcsolódhatnak közvetlenül az internethez, vagy egy proxyn keresztül.
-    - Az előfeltétel-ellenőrzés ellenőrzi a kapcsolatot a [szükséges és választható URL-címek](#connect-to-urls).
+    - Az előfeltétel-ellenőrzés ellenőrzi a kapcsolatot a [szükséges és választható URL-címek](#urls-for-connectivity).
     - Ha közvetlenül kapcsolódik az internethez, az adott semmit nem szükséges, eltérő gondoskodik róla, hogy, hogy a gyűjtő elérje a szükséges URL-címek.
     - Ha egy proxyn keresztül csatlakozik, vegye figyelembe a [kapcsolatos követelményeiről alább](#connect-via-a-proxy).
 - **Időszinkronizálás ellenőrzése**: A gyűjtő kell szinkronizálva az internetes időkiszolgálóval hitelesíti a kérelmeket a szolgáltatás biztosításához.
@@ -105,7 +105,7 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
 
 
 
-### <a name="connect-to-urls"></a>Csatlakozhat az URL-címek
+### <a name="urls-for-connectivity"></a>URL-címeket a hálózati kapcsolatot
 
 A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét.
 

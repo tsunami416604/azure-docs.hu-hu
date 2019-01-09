@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: c7b9485d9a7da6479e65689fbcab67e10dec5cb2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d5cba3b21ff6099a4132a7ebfab38d1ead9afded
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052274"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118082"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
-Az [Application Insights](../../application-insights/app-insights-overview.md) segítségével könnyen megtekintheti az alkalmazása teljesítményét és használatát működés közben. Probléma esetén értesíti Önt, valamint segít a következmények felmérésében és az ok meghatározásában.
+Az [Application Insights](../../azure-monitor/app/app-insights-overview.md) segítségével könnyen megtekintheti az alkalmazása teljesítményét és használatát működés közben. Probléma esetén értesíti Önt, valamint segít a következmények felmérésében és az ok meghatározásában.
 
 Lássunk egy beszámolót egy webalkalmazásokat fejlesztő csapattól:
 
@@ -230,6 +230,6 @@ Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Vál
 * [ASP.NET-es webalkalmazás](../../azure-monitor/app/asp-net.md)
 * [Java-webalkalmazás](../../azure-monitor/app/java-get-started.md)
 * [Node.js-webalkalmazás](../../azure-monitor/app/nodejs.md)
-* Már üzembe helyezett, az [IIS](../../azure-monitor/app/monitor-web-app-availability.md)-ben, [J2EE](../../azure-monitor/app/java-live.md)-ben vagy [Azure](../../application-insights/app-insights-overview.md)-ban működő alkalmazások.
+* Már üzembe helyezett, az [IIS](../../azure-monitor/app/monitor-web-app-availability.md)-ben, [J2EE](../../azure-monitor/app/java-live.md)-ben vagy [Azure](../../azure-monitor/app/app-insights-overview.md)-ban működő alkalmazások.
 * [Weblapok](../../azure-monitor/app/javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.

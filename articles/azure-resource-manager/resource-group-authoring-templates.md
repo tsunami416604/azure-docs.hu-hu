@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 96dcb584ac23a2298463524add1aeb971f29e24b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d6b942ea8b2bf61bee472811648e5089f280354
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725881"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102414"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll. Sablonok létrehozásának részletes útmutató: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
@@ -28,7 +28,7 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
@@ -40,7 +40,7 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
-| $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvének verziója helye.<br><br> Erőforráscsoportok üzemelő példányainak, használja a `http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Előfizetések üzemelő példányai használja a `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvének verziója helye.<br><br> Erőforráscsoportok üzemelő példányainak, használja a `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Előfizetések üzemelő példányai használja a `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Igen |A sablon (például 1.0.0.0) verziója. Bármilyen értéket megadhat ehhez az elemhez. A dokumentum jelentős változásokat ezt az értéket használja a sablonban. A sablon használatával erőforrások üzembe helyezésekor, ezt az értéket segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
 | paraméterek |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
 | Változók |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
@@ -52,7 +52,7 @@ Minden elem is megadhatja a tulajdonságokkal rendelkezik. Az alábbi példa bem
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "",
     "parameters": {  
         "<parameter-name>" : {

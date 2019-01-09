@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 07f77a8390edcde1128a7381a54d622611637d78
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257376"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118302"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -27,7 +27,7 @@ Az alábbi táblázat a két identitás lehetőségek közötti különbségeket
 |Számlázás|Kapacitás kell lennie.<br> Nagyvállalati Szerződés (EA) csak|Kapacitás vagy a fizetési mint-akkor-használható<br>Nagyvállalati szerződés vagy a Cloud Solution Provider (CSP)|
 |Identitás|Az AD FS kell lennie.|Az Azure AD vagy az AD FS|
 |Piactér |Támogatott<br>BYOL-licencelés|Támogatott<br>BYOL-licencelés|
-|Regisztráció|Javasoljuk, cserélhető adathordozóra van szükség<br> és a egy különálló csatlakoztatott eszközön.|Automatikus|
+|Regisztráció|Szükséges, cserélhető adathordozóra van szükség<br> és a egy különálló csatlakoztatott eszközön.|Automatikus|
 |A javítások és frissítések|Szükséges, cserélhető adathordozóra van szükség<br> és a egy különálló csatlakoztatott eszközön.|Frissítési csomag közvetlenül letölthető<br> az Azure Stack az internetről.|
 
 > [!IMPORTANT]
