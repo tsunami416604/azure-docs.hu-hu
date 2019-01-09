@@ -120,10 +120,16 @@ items:
       href: job-state-events-cli-how-to.md
   - name: Tartalom védelme
     items:
-    - name: AES-128-cal – .NET
+    - name: AES-128 dinamikus titkosítás – .NET
       href: protect-with-aes128.md
-    - name: DRM-mel – .NET
+    - name: DRM dinamikus titkosítás – .NET
       href: protect-with-drm.md
+    - name: Offline FairPlay iOS-hez
+      href: offline-fairplay-for-ios.md
+    - name: Offline Widevine Androidhoz
+      href: offline-widevine-for-android.md
+    - name: Offline PlayReady Windows 10-hez
+      href: offline-plaready-streaming-for-windows-10.md
   - name: Szűrők létrehozása
     items:
     - name: .NET-tel
@@ -192,9 +198,9 @@ items:
     href: release-notes.md
   - name: GYIK
     href: frequently-asked-questions.md
-ms.openlocfilehash: 2ea45acd19909c6bcdcca7a68b9dce45fa272f08
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c168b5d2097e8fe1d6e79e271f8ff84af48cb049
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034981"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121634"
