@@ -21,7 +21,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54015134"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése az Azure Data Factory másolási tevékenység használatával DB2
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-onprem-db2-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-db2.md)
 
