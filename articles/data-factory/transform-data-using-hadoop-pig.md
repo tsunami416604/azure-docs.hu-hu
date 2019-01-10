@@ -19,7 +19,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54014709"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Pig-tevékenység használatával az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-pig-activity.md)
 > * [Aktuális verzió](transform-data-using-hadoop-pig.md)
 
