@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d33f50239f6385dc1e331aa44fe5a62e02dac1db
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107038"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159009"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
 
@@ -69,7 +69,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 1. Az Azure Portalon kattintson a **+ erőforrás létrehozása**, és keressen a piactéren **a Recovery services**.
-2. Kattintson a **Backup és Site Recovery (OMS)**, és a Backup és Site Recovery lapon kattintson **létrehozás**. 
+2. Kattintson a **Backup és Site Recovery (OMS)**, a Backup és Site Recovery oldalon kattintson **létrehozás**. 
 1. A **Recovery Services-tároló** > **neve**, adjon meg egy, a tárolót azonosító rövid nevet. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
 2. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban használunk **contosoRG**.
 3. A **hely**, válassza ki a régiót, amelyben a tároló kell lennie. a **Nyugat-Európa** beállítást használjuk.

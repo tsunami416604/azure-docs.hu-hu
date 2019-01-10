@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 031cb10e476ba068f7e3d7baf3b19f7703caf170
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580045"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159927"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Tárolási pillanatképeken alapuló biztonsági mentés SAP HANA-hoz
 
@@ -52,7 +52,7 @@ A lemezen a pillanatkép megjelenik-e a SAP HANA adatkönyvtárat.
 
 Egy rendelkezik, győződjön meg arról, hogy a fájlrendszer-konzisztencia is garantáltan futtatása a storage-pillanatkép, amíg a pillanatkép-előkészítés módja van az SAP HANA előtt. Lásd: _SAP HANA adatkonzisztencia, amikor a pillanatképeket tároló_ a kapcsolódó cikkben [biztonsági mentési útmutató az SAP Hana az Azure Virtual Machinesben](sap-hana-backup-guide.md).
 
-Miután megtörtént a storage-pillanatkép, rendkívül fontos erősítse meg az SAP HANA pillanatképe. Nincs a megfelelő SQL-utasítás futtatása: biztonsági MENTÉSI adatok Bezárás PILLANATKÉP (lásd: [biztonsági MENTÉSI adatok Bezárás SNAPSHOT utasítás (biztonsági mentés és helyreállítás)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
+Miután megtörtént a storage-pillanatkép, rendkívül fontos erősítse meg az SAP HANA pillanatképe. Nincs megfelelő SQL-utasítás futtatása: Biztonsági MENTÉSI adatok Bezárás PILLANATKÉP (lásd: [biztonsági MENTÉSI adatok Bezárás SNAPSHOT utasítás (biztonsági mentés és helyreállítás)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
 > Erősítse meg a HANA pillanatképe. Miatt &quot;másolási Módosításkori,&quot; SAP HANA szükség lehet további lemezterületet a pillanatkép-előkészítése módban, és nem kezdődhet új biztonsági mentések mindaddig, amíg az SAP HANA pillanatképe ellenőrzése.

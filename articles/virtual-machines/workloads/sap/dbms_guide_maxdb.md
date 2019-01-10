@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 408d43f07179f9f18c05f22fdd4ea36a3a90cb49
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076113"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157309"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache és a webtartalom-kiszolgáló üzembe helyezés az Azure virtuális gépekhez
 
@@ -331,7 +331,7 @@ A frissített listáját SAP MaxDB dokumentációjában találhatja az alábbi S
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB beállítási útmutatója az Azure-beli virtuális gépeken SAP-telepítések
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tárolási konfiguráció
-Az Azure storage ajánlott eljárások az SAP MaxDB hajtsa végre a fejezet az említett általános javaslatok [struktúra egy relációsadatbázis-kezelő rendszer központi telepítésének][dbms-guide-2].
+Az Azure storage ajánlott eljárások az SAP MaxDB hajtsa végre a fejezet az említett általános javaslatok [RDBMS-környezetekben virtuális gépek tárolószerkezet](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
 > Más adatbázisok, például SAP MaxDB adat és naplófájl is van. Azonban az SAP MaxDB terminológiája megfelelő kifejezés "kötete" (nem "file"). Például nincsenek SAP MaxDB adatköteteket és naplózási köteteket. Ne keverje össze ezeket az operációsrendszer-lemez kötetek. 
@@ -458,7 +458,7 @@ Itt két lehetősége van:
 
 1. **Ügyfél egy olyan háttérrendszer SAP-rendszer** egy háttérrendszer SAP az SAP webtartalom-kiszolgáló eléréséhez van konfigurálva, a SAP-rendszer-e egy ügyfél. SAP-rendszerhez és a webtartalom-kiszolgáló SAP vannak üzembe helyezve az azonos Azure-régióban, az azonos Azure-adatközpontban, azok fizikailag közel egymással. Így hiba esetén nem kell egy dedikált SAP gyorsítótár-kiszolgáló. SAP felhasználói felület ügyfelek (SAP grafikus felhasználói felületének vagy a webes böngészőben) a közvetlen elérés az SAP-rendszerhez, és az SAP-rendszer beolvassa a dokumentumok a SAP-kiszolgálóhoz.
 2. **Ügyfél egy helyszíni webböngésző** az SAP-tartalom kiszolgáló beállítható úgy, hogy közvetlenül a böngésző számára legyen elérhető. Ebben az esetben egy webböngészőben a helyszínen futó egy ügyfél, a SAP-kiszolgálóhoz. Helyszíni adatközpont és az Azure-adatközpont (ideális esetben közeli egymással) különböző fizikai helyen vannak elhelyezve. A helyszíni adatközpont Azure-t az Azure Site-to-Site VPN vagy az ExpressRoute segítségével csatlakozik. Bár mindkét lehetőséget kínálnak biztonságos VPN-kapcsolattal az Azure-ba, helyek közötti hálózati kapcsolat nem vonatkozik a hálózati sávszélesség és késés SLA-t a helyszíni adatközpont és az Azure-adatközpont között. Gyorsabb dokumentumokhoz való hozzáférést, a következők egyikét teheti:
-   1. Helyszíni SAP-gyorsítótár-kiszolgáló telepíthető, zárja be a webböngészőt a helyszíni (beállítást [ez] [ dbms-guide-900-sap-cache-server-on-premises] . ábra)
+   1. Telepítse az SAP-gyorsítótár-kiszolgálót a helyszínen, közel a helyi böngésző (az alábbi ábra beállítása)
    2. Azure ExpressRoute lehetőséget kínál a nagy sebességű és kis késleltetésű dedikált hálózati kapcsolat a helyszíni adatközpont és az Azure-adatközpont között, amelyek konfigurálásához.
 
 ![Helyszíni SAP-gyorsítótár-kiszolgáló telepítését.](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)

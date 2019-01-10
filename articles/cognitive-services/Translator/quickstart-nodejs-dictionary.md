@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások lekérése, Node.js – Translator Text API'
+title: 'Gyors útmutató: Kétnyelvű szótár, node.js-szel – Translator Text API szavak'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan kereshet alternatív fordításokat és használati példákat egy adott szöveghez a Node.js és a Translator Text REST API használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: f7f779ccd10eeffc9ddfcba5dbb9abde00e1f735
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035628"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160012"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>Rövid útmutató: A Translator Text API használata alternatív fordítások lekérésére a Node.js-sel
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban Node.js használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kereshet alternatív fordításokat és használati példákat egy adott szöveghez a Node.js és a Translator Text REST API használatával.
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 A kérelemmodulon keresztül elérhető `request()` metódus lehetővé teszi a HTTP-metódus, az URL-cím, a kérelemparaméterek, a fejlécek és a JSON-törzs `options` objektumként való átadását. Az alábbi kódrészletben a kérelmet fogjuk konfigurálni:
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információkért lásd a [Translator Text API 3.0 keresési funkcióját](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) ismertető témakört.
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Szótár keresési](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ```javascript
 let options = {

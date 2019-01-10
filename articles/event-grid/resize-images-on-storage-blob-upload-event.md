@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: MT
+ms.openlocfilehash: 7c3a37ede07f98174191c8a4847c8a3d9075b21a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753948"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156306"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -170,8 +170,8 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
     | **Előfizető típusa** |  automatikusan létrehozott |  Előre meg van határozva webhookként. |
     | **Előfizető végpontja** | automatikusan létrehozott | Használja a rendszer által létrehozott végpont URL-címét. | 
     | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. | 
-
-4. Kattintson a **Létrehozás** gombra az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely aktiválja az `imageresizerfunc` függvényt, amikor a *képek* tárolóba bekerül egy blob. A függvény átméretezi a képeket, és hozzáadja őket a *miniatűrök* tárolóhoz.
+4. *Nem kötelező:* Abban az esetben további tárolók létrehozása az ugyanezen a blobtárolón belül más célra a jövőben van szüksége, használhat **szűrése tulajdonos** funkcióit **szűrők** részletesebb hajthatja végre a BLOB lap annak biztosítása érdekében a függvényalkalmazás események neve csak akkor, ha a blobok vesznek **lemezképek** tároló kifejezetten. 
+5. Kattintson a **Létrehozás** gombra az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely aktiválja az `imageresizerfunc` függvényt, amikor a *képek* tárolóba bekerül egy blob. A függvény átméretezi a képeket, és hozzáadja őket a *miniatűrök* tárolóhoz.
 
 Most, hogy konfigurálta a háttérszolgáltatásokat, tesztelni fogja a képátméretezési funkciót a minta-webalkalmazásban. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138585"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159166"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ez a cikk ismerteti a méretezhetőségi és teljesítménycéljai Azure Files és az Azure File Sync.
@@ -39,11 +39,11 @@ Az Azure File Sync rendelkezik megpróbáltuk lehető legnagyobb mértékben ter
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-performance-metrics"></a>Az Azure File Sync teljesítmény-mérőszámok
-Az Azure File Sync ügynök fut, amely csatlakozik az Azure-fájlmegosztások Windows kiszolgáló gépen, mivel a hatékony teljesítményt attól függ, hogy az infrastruktúra tényező: Windows Server és az alapul szolgáló lemez konfigurációját a hálózati sávszélesség a kiszolgáló és az Azure storage között a fájl méretével, a teljes adatkészlet méretét, és a tevékenység az adatkészlethez. Mivel az Azure File Sync a fájlok szintjén működik, a teljesítményjellemzők az Azure File Sync-alapú megoldás jobban mérik a másodpercenként feldolgozott (fájlok és könyvtárak) objektumok száma. 
+Az Azure File Sync ügynök fut, amely csatlakozik az Azure-fájlmegosztások Windows kiszolgáló gépen, mivel a hatékony szinkronizálási teljesítmény számos tényezőtől, az infrastruktúra függ: A Windows Server és az alapul szolgáló lemez konfigurációját, a kiszolgáló és az Azure storage között a hálózati sávszélesség a fájl mérete, a teljes adatkészlet méretét és a tevékenység az adatkészlethez. Mivel az Azure File Sync a fájlok szintjén működik, a teljesítményjellemzők az Azure File Sync-alapú megoldás jobban mérik a másodpercenként feldolgozott (fájlok és könyvtárak) objektumok száma. 
  
 Az Azure File Sync, a teljesítmény fontos két szakaszban végzik:
-1. **Kezdeti egyszeri kiépítés**: kezdeti kiépítéstől a teljesítmény optimalizálása érdekében tekintse meg [bevezetése az Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) az optimális üzembe helyezés részleteiről.
-2. **Folyamatban lévő szinkronizálás**: után az adatok kezdetben áttöltésekor, az Azure-fájlmegosztások, az Azure File Sync tartja több végpontot szinkronizálva.
+1. **Kezdeti egyszeri kiépítés**: A kiinduló telepítéstől a teljesítmény optimalizálása érdekében tekintse meg [bevezetése az Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) az optimális üzembe helyezés részleteiről.
+2. **Folyamatban lévő szinkronizálás**: Miután az adatok kezdetben áttöltésekor, az Azure-fájlmegosztások, az Azure File Sync biztosítja, hogy több végpontot szinkronizálva.
 
 Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbiakban az eredmények figyelhetők egy konfigurációs rendszereken belső tesztelése során
 
@@ -59,9 +59,9 @@ Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbi
 |-|-|
 | Objektumok száma | 10 millió objektumok | 
 | Adatkészlet mérete| ~ 4 Tib-ra |
-| Átlagos mérete | Körülbelül 500 KiB (legnagyobb fájlt: 100 GiB) |
-| Töltse fel az átviteli sebesség | másodpercenként 15 objektumok |
-| Namespace letöltési átviteli * | 350 objektumokat, másodpercenként |
+| Átlagos mérete | Körülbelül 500 KiB (legnagyobb fájlt: 100 GB) |
+| Töltse fel az átviteli sebesség | másodpercenként 20 objektumok |
+| Namespace letöltési átviteli * | másodpercenként 400 objektumok |
  
 Ha a kiszolgáló új végpont létrehozása az Azure File Sync ügynök nem töltse le a fájl tartalma. Először szinkronizálja a teljes névterét és a majd eseményindítók háttér-e letölteni a fájlokat, akár teljes egészében visszaírási, vagy ha, felhőbeli rétegezés engedélyezve van, a kiszolgálói végpont beállított felhőalapú rétegzési szabályzat.
 
@@ -70,8 +70,8 @@ Ha a kiszolgáló új végpont létrehozása az Azure File Sync ügynök nem tö
 | Szinkronizált objektumok száma| 125,000 objektumok (~ 1 %-os forgalom) | 
 | Adatkészlet mérete| 50 GB |
 | Átlagos mérete | Körülbelül 500 KiB |
-| Töltse fel az átviteli sebesség | másodpercenként 20 objektumok |
-| Teljes átviteli sebesség * | másodpercenként 30 objektumok |
+| Töltse fel az átviteli sebesség | másodpercenként 30 objektumok |
+| Teljes átviteli sebesség * | másodpercenként 60 objektumok |
  
 * Ha felhőbeli rétegezés engedélyezve van, akkor valószínű, hogy tekintse át az adatokat a rendszer letölti a fájlt csak néhány jobb teljesítményt. Az Azure File Sync csak letölti az adatokat a gyorsítótárban tárolt fájlok, a végpontok bármelyikét, módosításakor. Rétegzett vagy újonnan létrehozott fájlokhoz az ügynök nem tölti le a fájl adatait, és inkább csak szinkronizálja a névtér összes kiszolgálói végpontot. Az ügynök is támogatja a részleges letöltés rétegzett fájlok, a felhasználó által elért. 
  

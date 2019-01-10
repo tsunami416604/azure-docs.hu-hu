@@ -6,27 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 874142df31d96de36b2b5be81a863c2f31317c52
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229611"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158040"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk? (Előzetes verzió)
+# <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
 A Microsoft Azure Data Box Disk megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi helyszíni adatot az Azure-ba. A biztonságos adatátvitel gyorsaságáról 1-5 SSD-lemez küldésével gondoskodunk. Ezeket a 8 TB-os titkosított lemezeket egy regionális szállító szolgáltatóval küldjük el az Ön adatközpontjába. 
 
 Az Azure Portalon a Data Box szolgáltatás segítségével gyorsan konfigurálhatja, csatlakoztathatja és feloldhatja ezeket a lemezeket. Az adatokat a lemezekre másolhatja, és elküldheti őket az Azure-ba. Az Azure adatközpontjában adatait a lemezekről automatikusan feltöltjük a felhőbe egy gyors magánhálózati feltöltési hivatkozást használva.
-
-
-> [!IMPORTANT]
-> - A Data Box Disk szolgáltatás előzetes verzióban érhető el. A szolgáltatás telepítése előtt tekintse meg az [Azure előzetes verzióra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - A szolgáltatásra regisztrálnia kell. A feliratkozáshoz keresse fel az [Előzetes verzió portálját](https://aka.ms/azuredataboxfromdiskdocs).
-> - Az előzetes verzió ideje alatt a Data Box Disk az USA és az Európai Unió területére szállítható ki. További információt a [Regionális elérhetőség](#region-availability) témakörben talál.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -95,7 +89,7 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az előzetes verzió ideje alatt a Data Box Disk használatával az alábbi Azure-régiókba lehet adatokat áthelyezni:
+Jelenleg Data Box-lemezek adatokat adhatnak át a következő Azure-régiókhoz:
 
 
 |Azure-régió  |Azure-régió  |
@@ -112,7 +106,7 @@ Az előzetes verzió ideje alatt a Data Box Disk használatával az alábbi Azur
 
 ## <a name="pricing"></a>Díjszabás
 
-Az árképzésről az [előzetes verzió díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/storage/databox/disk/) tájékozódhat.
+Díjszabási információkért látogasson el a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 12ef6447e53ba0da3fbd3d56749d7798c49a2cfe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993928"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157139"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Az Azure portal használatával egy webalkalmazási tűzfallal rendelkező application gateway létrehozása
 
@@ -119,7 +119,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 ### <a name="add-backend-servers"></a>Háttérkiszolgálók hozzáadása
 
 1. Kattintson a **összes erőforrás**, és kattintson a **myAppGateway**.
-2. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson a **appGateayBackendPool**.
+2. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson az **appGatewayBackendPool** lehetőségre.
 3. Kattintson a **Hozzáadás cél** minden Ön által létrehozott virtuális gép hozzáadásához a háttérkészlethez.
 
     ![Háttérkiszolgálók hozzáadása](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)

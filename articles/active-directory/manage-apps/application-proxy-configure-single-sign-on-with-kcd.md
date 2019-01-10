@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 26b0bd3c6bec2427cd95deb05cc19c4dd3b22aa3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136246"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159536"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -66,13 +66,15 @@ Az Active Directory konfigurálása az Application Proxy connector és az alkalm
 1. Tartományok közötti Kerberos használatának előfeltételeit, lásd: [tartományok közötti Kerberos általi korlátozott delegálás](https://technet.microsoft.com/library/hh831477.aspx).
 2. Használja a `principalsallowedtodelegateto` tulajdonsága az engedélyezése a Connector-kiszolgáló delegálása az alkalmazásproxy-összekötő kiszolgálója. Az alkalmazáskiszolgáló `sharepointserviceaccount` és a felhatalmazó kiszolgáló `connectormachineaccount`. Windows 2012 R2 használata esetén ezt a kódot használja példaként:
 
-        $connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+```powershell
+$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
 
-        Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-        Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+```
 
-Sharepointserviceaccount a Szervizcsomagok számítógép fiókja vagy egy szolgáltatás a Szervizcsomagok alkalmazáskészlet van futtató fiók is lehet.
+`sharepointserviceaccount` a Szervizcsomagok számítógépfiók vagy egy szolgáltatás a Szervizcsomagok alkalmazáskészlet van futtató fiók lehet.
 
 ## <a name="configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása 
 1. Közzéteheti az alkalmazását a szakaszban ismertetett utasításoknak megfelelően [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-add-on-premises-application.md). Ügyeljen arra, hogy válassza ki, hogy **Azure Active Directory** , a **előhitelesítést metódus**.

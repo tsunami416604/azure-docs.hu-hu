@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3b2264817dce63885ce0c428fe4df8427f7cdde6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 090c6c2d20bf169a3b3362cc796f6fc5c04b3c83
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049244"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155031"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Törölt Office 365-csoport visszaállítása az Azure Active Directoryban
 
@@ -73,7 +73,7 @@ Az Office 365-csoport visszaállításának sikerességét a `Get-AzureADGroup �
 
 - A csoport megjelenik az Exchange bal oldali navigációs sávján.
 - A csoportra vonatkozó terv megjelenik a Planner alkalmazásban.
-- Elérhetővé válnak a SharePoint-webhelyek és azok tartalmai.
+- Minden olyan SharePoint webhelyet, és a tartalom mindegyikét érhetők el
 - A csoport elérhető lesz bármelyik Exchange-végpontról, illetve az Office 365-csoportokat támogató egyéb Office 365 számítási feladatokból.
 
 ## <a name="next-steps"></a>További lépések

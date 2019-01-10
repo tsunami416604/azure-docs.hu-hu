@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako;johndeu
-ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233463"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159740"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -28,7 +28,7 @@ A **Media Services Operations REST** API létrehozása a projektek, eszközök, 
 
 Media Services JSON vagy a atom + XML formátumú pub elfogadó REST API-t biztosít. A Media Services REST API-t adott HTTP-fejléceket, amely minden egyes ügyfélnek el kell küldenie a Media Services, valamint egy nem kötelező fejlécek készletét való csatlakozáskor szükséges. A következő szakaszok ismertetik a fejlécek és használhatja, amikor HTTP-műveletek kérések létrehozásához és a válaszfogadás a Media Services szolgáltatásból.
 
-A Media között REST API-hitelesítést az Azure Active Directory-hitelesítést, amelyet a cikk a fügvényekkel [eléréséhez az Azure Media Services API REST-tel az Azure AD-hitelesítés](media-services-rest-connect-with-aad.md)
+A Media Services REST API-hitelesítést az Azure Active Directory-hitelesítést, amelyet a cikk a fügvényekkel [eléréséhez az Azure Media Services API REST-tel az Azure AD-hitelesítés](media-services-rest-connect-with-aad.md)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -58,9 +58,9 @@ Minden hívás választja ki a Media Services szolgáltatásba szerepelnie kell 
 | Fejléc | Típus | Érték |
 | --- | --- | --- |
 | Engedélyezés |Tulajdonosi |Tulajdonosi az egyetlen elfogadott engedélyezési mechanizmusa. Az értéket is tartalmaznia kell az Azure Active Directory által biztosított jogkivonat. |
-| x-ms-version |tizedes tört |2.17 (vagy a legújabb verzió)|
-| Dataserviceversion s |tizedes tört |3.0 |
-| MaxDataServiceVersion |tizedes tört |3.0 |
+| x-ms-version |Tizedes tört |2.17 (vagy a legújabb verzió)|
+| Dataserviceversion s |Tizedes tört |3.0 |
+| MaxDataServiceVersion |Tizedes tört |3.0 |
 
 > [!NOTE]
 > A Media Services OData használatával teszi közzé a REST API-k, mert a dataserviceversion s és MaxDataServiceVersion fejlécek szerepelnie kell az összes kérelem; azonban ha nem, majd jelenleg a Media Services feltételezi, hogy a használati dataserviceversion s érték 3.0.
@@ -73,7 +73,7 @@ A következő olyan opcionális fejlécek:
 | --- | --- | --- |
 | Dátum |RFC 1123 dátuma |A kérelem időbélyege |
 | Elfogadás |Tartalom típusa |A kért tartalom típusa a válaszhoz, például a következő:<p> – az application/json; odata részletes =<p> – application/atom + xml<p> Válaszok különböző tartalom típusa, például egy blob fetch előfordulhat, ahol a sikeres válasz tartalmazza a blob adatfolyamot, a hasznos. |
-| Fogadja el-kódolás |A gzip, deflate |A GZIP- és a DEFLATE kódolást, ha alkalmazható. Megjegyzés: A nagyméretű erőforrásokra, a Media Services előfordulhat, hogy figyelmen kívül hagyhatja ezt a fejlécet és noncompressed adatokat adja vissza. |
+| Fogadja el-kódolás |A gzip, deflate |A GZIP- és a DEFLATE kódolást, ha alkalmazható. Megjegyzés: A nagyméretű erőforrásokra a Media Services figyelmen kívül hagyhatja ezt a fejlécet és noncompressed adatokat adja vissza. |
 | Fogadja el nyelv |"en", "es" és így tovább. |Adja meg a kívánt nyelvet a válaszhoz. |
 | Fogadja el karakterkészlet |Például a "UTF-8" karakterkészlet típusa |Alapértelmezett érték az UTF-8. |
 | X-HTTP-metódus |HTTP-metódus |Lehetővé teszi az ügyfelek vagy a tűzfalakat, amelyek nem támogatják a HTTP-metódusok például PUT vagy DELETE ezen módszerek bújtatott keresztül egy GET hívást kell. |

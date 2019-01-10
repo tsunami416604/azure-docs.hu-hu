@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d716a27cc2b4879451a8d5edbca46ca1bbfeaf40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 96b0c44ff36dac3832e518deeed7f07b11e78c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968987"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160046"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
@@ -208,7 +208,7 @@ SAP HANA futtatásához a virtuális gépek telepítésekor a virtuális gépek 
 
 Azonban, amelyek támpontul telepítések esetén szeretne létrehozni egy virtuális adatközpont hálózati architektúra az Azure-ban. Ez az architektúra az Azure virtuális hálózat átjáró, amely csatlakozik egy külön Azure vnetbe helyszíni szétválasztása javasolja. A virtuális hálózattal külön kell futtatni a forgalmat, hogy helyszíni vagy vagy az interneten. Ez a megközelítés lehetővé teszi a vizsgálati és naplózási forgalmat, amely a virtuális adatközpont belép az Azure-ban a külön agyi virtuális hálózat szoftvereket telepíthet. Ezért kell egy virtuális hálózat, amelyen a szoftverek és konfigurációk, hogy az Azure-alapú in - és kimenő adatforgalom vonatkozik.
 
-A cikkek [Azure Virtual Datacenter: A hálózati nézőpont](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) és [Azure Virtual Datacenter és a vállalati Vezérlősík](https://docs.microsoft.com/azure/architecture/vdc/) a virtual datacenter megközelítésével a további információkat és a kapcsolódó Az Azure VNet-Tervező.
+A cikkek [Azure Virtual Datacenter: A hálózati nézőpont](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) és [Azure Virtual Datacenter és a vállalati Vezérlősík](https://docs.microsoft.com/azure/architecture/vdc/) adjon további információ a virtual datacenter megközelítésével és a kapcsolódó Azure-beli virtuális Tervező.
 
 
 >[!NOTE]
@@ -403,8 +403,8 @@ További információ az Azure gyorsított hálózatkezelés [Itt](https://docs.
 
 Megfelelően DT 2.0 ajánlott eljárásokkal kapcsolatos útmutatás a lemez i/o-teljesítmény minimális 50 MB/s fizikai magonként kell lennie. A specifikációja DT 2.0 egyik támogatott két Azure-beli Virtuálisgép-típusok Hibaoldal a maximális lemez IO-átviteli sebességhatár a virtuális gép jelenik meg:
 
-- E32sv3: 768 MB/mp (nem gyorsítótárazott), ami azt jelenti, hogy 48 MB/mp / fizikai mag arány
-- M64-32ms: 1000 MB/mp (uncached) ami azt jelenti, hogy fizikai magonként 62,5 MB/mp-es
+- E32sv3:   768 MB/mp (nem gyorsítótárazott), ami azt jelenti, hogy 48 MB/mp / fizikai mag arány
+- M64-32MS:  1000 MB/mp (nem gyorsítótárazott), ami azt jelenti, hogy a fizikai magonként 62,5 MB/mp-es
 
 Szükség van, több Azure-lemezek csatolása a DT 2.0-s virtuális gép, és hozzon létre egy szoftverfrissítési raid (csíkozást) az operációs rendszer szintjén adatátviteli sebességet maximális korlátját eléréséhez. Egyetlen Azure lemez nem biztosítja az átviteli sebesség érhető el ebben a tekintetben a virtuális gép maximumértéket. Az Azure Premium storage szolgáltatás kötelező DT 2.0-val. 
 

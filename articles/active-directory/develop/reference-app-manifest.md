@@ -17,12 +17,12 @@ ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: a971806b453d34aa8459cb30090024bfca96d342
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d89a80ac6d6e81fd9cc68e1dc04d4461691994fd
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631188"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157972"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 
@@ -47,12 +47,9 @@ Az alkalmazásjegyzék konfigurálása:
 > [!NOTE]
 > Ha nem látja a **példaérték** oszlop után a **leírás**, állítsa teljes méretre a böngészőablakot, és görgessen/pöccintsen, amíg megjelenik a **példaérték** oszlop.
 
->[!div class="mx-tdBreakAll"]
->[!div class="mx-tdCol2BreakAll"]
-
 | Kulcs  | Érték típusa | Leírás  | Példaérték |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Nullázható Int32 | Adja meg az elfogadott hozzáférési token verzió a jelenlegi API-erőforrásban. A lehetséges értékek: 1, 2, NULL értékű. Az alapértelmezett érték null, amely 2, lesznek kezelve. | `2` |
+| `accessTokenAcceptedVersion` | Nullázható Int32 | Adja meg a hozzáférési jogkivonat verziót az erőforrás által várt. A verzió változik, és a JWT formátumát előállítása független a végpontot, illetve a hozzáférési jogkivonat kéréséhez használt ügyfél.<br/><br/>A használt végpont, 1.0-s verzió vagy 2.0-s verziójú, az ügyfél által van kiválasztva, és csak hatással van a id_tokens verzióját. Erőforrásokhoz kell explicit módon konfigurálása `accesstokenAcceptedVersion` jelzi a támogatott hozzáférési jogkivonat formátuma.<br/><br/>Lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy null értékű. Ha az érték null, ez alapértelmezett értéke 1, amely megfelel az 1.0-s verziójú végpont. | `2` |
 | `allowPublicClient` | logikai | A tartalék alkalmazás típusát határozza meg. Az Azure AD alapértelmezés szerint az alkalmazás típusát, a replyUrlsWithType kikövetkezteti. Vannak bizonyos helyzetekben, ahol az Azure AD nem tudja megállapítani az ügyféloldali alkalmazás típusa (pl. [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) HTTP-kérelem egy URL-átirányítás nélkül történik, ahol a folyamat). Ezekben az esetekben az Azure AD fog értelmezni az alkalmazás típusát, ez a tulajdonság értéke alapján. Ha ezt az értéket a tartalék alkalmazástípus igaz értékre van beállítva, például mobileszközön futó telepített alkalmazás nyilvános ügyfél van beállítva. Az alapértelmezett érték: false ami azt jelenti, hogy a tartalék alkalmazástípus bizalmas ügyfél, például webes alkalmazás. | `false` |
 | `appId` | Azonosító karakterlánc | Itt adhatja meg az alkalmazás-alkalmazásokba az Azure AD által hozzárendelt egyedi azonosítója. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | A tömb típusa | Itt adhatja meg, hogy egy alkalmazás deklarálhat szerepkörök gyűjteménye. Ezeket a szerepköröket rendelhet felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokat. További példákat és info [alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |

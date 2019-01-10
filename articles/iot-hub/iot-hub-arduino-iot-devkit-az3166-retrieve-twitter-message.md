@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060135"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158924"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy tweetet rázza meg – az Azure Functions Twitter-üzenet lekérdezése
 
@@ -118,7 +118,7 @@ Most a kapcsolati karakterlánc beállítása, azt ellenőrzi, és feltölti az 
 
 2. A fejlesztői készlet újraindul, és elindítja a kód futtatása.
 
-Előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag" hibaüzenet jelenik meg. Ez a hiba akkor fordul elő, ha a tábla csomagindexet nem frissül megfelelően. A probléma elhárítása érdekében ellenőrizze a ["Ismeretlen csomag" hiba a IoT DevKit – gyakori kérdések a](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+Előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag"hibaüzenet jelenik meg. Ez a hiba akkor fordul elő, ha a tábla csomagindexet nem frissül megfelelően. A probléma elhárítása érdekében ellenőrizze a ["Ismeretlen csomag" hiba a IoT DevKit – gyakori kérdések a](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
@@ -157,7 +157,7 @@ Alkalmazás inicializálása, után kattintson a gombra A kiadási, majd óvatos
 
 Az Arduino rajz eseményt küld az Azure IoT hubra. Ezt az eseményt akkor indítja az Azure Functions-alkalmazás. Az Azure Functions-alkalmazás a Twitter API-hoz csatlakozhat, és beolvasni egy tweetet logikát tartalmaz. Azt a C2D, majd burkolja a tweet szövege (felhőből az eszközre irányuló) üzenet, és küld vissza az eszközön.
 
-## <a name="optional-use-your-own-twitter-bearer-token"></a>Választható lehetőség: A saját Twitter-tulajdonosi jogkivonat használata
+## <a name="optional-use-your-own-twitter-bearer-token"></a>Nem kötelező: A saját Twitter-tulajdonosi jogkivonat használata
 
 A mintaprojekt tesztelési célokra használja az előre konfigurált Twitter tulajdonosi jogkivonattal. Van azonban egy [sávszélesség-korlátjának](https://dev.twitter.com/rest/reference/get/search/tweets) minden Twitter-fiók. Ha azt szeretné, érdemes megfontolnia a saját token használatát, kövesse az alábbi lépéseket:
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: 6a5902b8c442d83c86142bad516b862febd6522c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.date: 01/08/2019
+ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118200"
+ms.locfileid: "54156816"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -67,9 +67,28 @@ A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjsza
 
 ![díjszabás](./media/sql-database-service-tiers/pricing.png)
 
-Ha szeretné a helyszíni SQL Server meglévő licenceinek felhasználása, fizethet a szolgáltatásért csak az alapszintű díjakból az alapul szolgáló Azure-infrastruktúra (például Azure virtuális Gépen az adatbázist futtató kiszolgáló) közben a az SQL Server Database engine licenc nem szerepel a számlán. Egy bizonyos időn mind az SQL Server és az Azure SQL Database a helyszíni licencét is használhatja. Ellenkező esetben az SQL Server adatbázismotor-licenc költségei szerepelni fog az adatbázis vagy példány díja. Ha a PowerShell vagy az Azure CLI létrehozni vagy frissíteni az adatbázis vagy -példányt használ, kétféle díjszabási választhat:
-- **BasePrice** azt jelenti, hogy egy érvényes részeként használni kívánt SQL Server-licencét [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) és, hogy szeretné-e kell azonban fizetnie csak az alapszintű infrastruktúra költségeit.
-- **LicenseIncluded** azt jelenti, hogy Ön nem rendelkezik a helyszíni SQL Server-licencét, vagy nem szeretné a helyszíni licence használatához adatbázis vagy a felügyelt példány számára. Ebben az esetben az SQL Server-licenc fog szerepelni a számlán. 
+Az Azure Hybrid benefittel lehet váltani, csak az alapul szolgáló Azure infrastruktúra az SQL-adatbázismotor magát a meglévő SQL Server-licenc használatával kell fizetnie (**BasePrice**) vagy az alapul szolgáló infrastruktúra kell fizetnie, és az SQL Server-licenc (**LicenseIncluded**). Válassza ki, vagy módosítsa a licencelési modellt, az Azure portal használatával, vagy a következő API-k egyikével.
+
+- Állítsa be, vagy frissítse a PowerShell-lel licenc típusa:
+
+  - [Új AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [Új AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+
+- Állítsa be, vagy frissítse az Azure CLI-vel licenc típusa:
+
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [az sql buszpéldány létrehozása](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [az sql-buszpéldány frissítés](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+
+- Állítsa be, vagy frissíteni a licenc típusa, a REST API-val:
+
+  - [-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [Adatbázis - frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [Felügyelt példányok – létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Áttelepítés a DTU-modellből Virtuálismag-modell
 

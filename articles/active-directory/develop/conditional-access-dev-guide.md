@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337920"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157073"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
 
@@ -92,11 +92,11 @@ A következő részekben bemutatjuk a gyakori forgatókönyvek összetettebb. A 
 
 ## <a name="scenario-app-accessing-microsoft-graph"></a>Forgatókönyv: Az alkalmazás a Microsoft Graph elérése
 
-Ebben a forgatókönyvben megtudhatja, hogyan webes alkalmazás a Microsoft Graph hozzáférést kér. A feltételes hozzáférési szabályzat ebben az esetben sikerült hozzárendelni a SharePoint, Exchange vagy egy másik megoldás lehet a Microsoft Graphon keresztül elérhető szolgáltatásban. Ebben a példában feltételezzük még nincs a Sharepoint online-on a feltételes hozzáférési szabályzat.
+Ebben a forgatókönyvben megtudhatja, hogyan webes alkalmazás a Microsoft Graph hozzáférést kér. A feltételes hozzáférési szabályzat ebben az esetben sikerült hozzárendelni a SharePoint, Exchange vagy egy másik megoldás lehet a Microsoft Graphon keresztül elérhető szolgáltatásban. Ebben a példában feltételezzük még nincs a SharePoint online-on a feltételes hozzáférési szabályzat.
 
 ![Az alkalmazás elérése Microsoft Graph folyamatábrája](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
 
-Microsoft Graph elérése a feltételes hozzáférés nélkül egy alsóbb rétegbeli munkaterhelés igénylő engedélyezési először kér az alkalmazás. A kérelem sikeres bármely házirend meghívása nélkül, és az alkalmazás a Microsoft Graph jogkivonatokat kap. Ezen a ponton az alkalmazás felhasználhatja a hozzáférési jogkivonatot a tulajdonosi kérelem a végpont a kért. Az alkalmazás, például a Sharepoint online-hoz a Microsoft Graph, végpont elérésére van szüksége: `https://graph.microsoft.com/v1.0/me/mySite`
+Microsoft Graph elérése a feltételes hozzáférés nélkül egy alsóbb rétegbeli munkaterhelés igénylő engedélyezési először kér az alkalmazás. A kérelem sikeres bármely házirend meghívása nélkül, és az alkalmazás a Microsoft Graph jogkivonatokat kap. Ezen a ponton az alkalmazás felhasználhatja a hozzáférési jogkivonatot a tulajdonosi kérelem a végpont a kért. Az alkalmazás, például a SharePoint online-hoz a Microsoft Graph, végpont elérésére van szüksége: `https://graph.microsoft.com/v1.0/me/mySite`
 
 Az alkalmazás már rendelkezik a Microsoft Graph, érvényes jogkivonatot, így anélkül, hogy folyamatban van egy új jogkivonatot állít ki az új kérelem végrehajtása. A kérelem meghiúsul, és a Microsoft Graph egy HTTP 403 Tiltott az formájában kiadott jogcímeket kihívást egy ```WWW-Authenticate``` kérdés.
 
@@ -108,7 +108,7 @@ error=insufficient_claims
 www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
 ```
 
-A jogcímek kihívás belül van a ```WWW-Authenticate``` fejléc, a program értelmezni tudja a jogcímek paraméter a következő kérelmet kibontásához. Amint azt a rendszer hozzáfűzi az új kérés, Azure ad-ben tudja, hogy a feltételes hozzáférési házirend kiértékeléséhez, amikor a felhasználó bejelentkezik, és az alkalmazás most már nem felelnek meg a feltételes hozzáférési szabályzat. Ismételje meg a Sharepoint Online-végpontra a kérés sikeres lesz.
+A jogcímek kihívás belül van a ```WWW-Authenticate``` fejléc, a program értelmezni tudja a jogcímek paraméter a következő kérelmet kibontásához. Amint azt a rendszer hozzáfűzi az új kérés, Azure ad-ben tudja, hogy a feltételes hozzáférési házirend kiértékeléséhez, amikor a felhasználó bejelentkezik, és az alkalmazás most már nem felelnek meg a feltételes hozzáférési szabályzat. Ismételje meg a SharePoint Online-végpontra a kérés sikeres lesz.
 
 A ```WWW-Authenticate``` fejléc egy egyedi struktúrával rendelkeznek, és nem triviális elemezni értékek kinyerése érdekében. Itt látható egy rövid metódus segítségével.
 

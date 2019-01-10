@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5debc14a6a20c42b62b9a7b2c524e36e94302221
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b2f8a299dfc52bcc1f2eaa17e658b841d27bf62c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792866"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154929"
 ---
-# <a name="azure-data-box-disk-system-requirements-preview"></a>Az Azure Data Box-lemezek rendszerkövetelmények (előzetes verzió)
+# <a name="azure-data-box-disk-system-requirements"></a>Az Azure Data Box-lemezek rendszerkövetelményei
 
 Ez a cikk a Microsoft Azure Data Box-lemezek megoldás és a kapcsolódó ügyfelek számára a Data Box-lemezek fontos rendszerkövetelményeit ismerteti. Azt javasoljuk, hogy tekintse át az információkat gondosan előtt a Data Box-lemezek üzembe helyezése, majd tekintse át biztonsági, szükség szerint a telepítési és az ezt követő művelet során.
-
-> [!IMPORTANT]
-> Data Box-lemezek az előzetes verzióban. A megoldás üzembe helyezése előtt kérjük tekintse át az [előzetes verziókra vonatkozó használati feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 A rendszerkövetelmények lemezek, a támogatott tárfiókok és a tárolási típusok csatlakozó ügyfelek által támogatott platformok közé tartoznak.
 

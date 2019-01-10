@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997813"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156867"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Külső tábla kötésének az Azure Functions szolgáltatáshoz (kísérleti funkció)
 
-Ez a cikk ismerteti, hogyan dolgozhat tabulált SaaS-szolgáltatók, például a Sharepoint és a Dynamics, az Azure Functions szolgáltatásban. Az Azure Functions támogatja a bemeneti és kimeneti kötések külső táblák esetén.
+Ez a cikk ismerteti, hogyan dolgozhat tabulált SaaS-szolgáltatók, például a SharePoint és a Dynamics, az Azure Functions szolgáltatásban. Az Azure Functions támogatja a bemeneti és kimeneti kötések külső táblák esetén.
 
 > [!IMPORTANT]
 > A külső tábla kötésének kísérleti, és előfordulhat, hogy soha nem érik el az általánosan elérhető (GA) állapotát. Csak az Azure-ban benne lesz 1.x, és nem is tervezzük az Azure Functions hozzáadandó 2.x. Az SaaS-szolgáltatók adatokhoz való hozzáférést igénylő forgatókönyvek esetén fontolja meg [logikai alkalmazásokat, amelyek hívásokat indítani olyan funkciók](functions-twitter-email.md).
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Google táblázatok-adatforrás
 
-Az ebben a példában a Google Docs használandó tábla létrehozásához hozzon létre egy táblázatot a nevű `Contact`. Az összekötő a számolótábla megjelenített név nem használható. A belső neve (félkövér) kell használható dataSetName, például: `docs.google.com/spreadsheets/d/` **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** adja hozzá az oszlopok neveit `Id`, `LastName`, `FirstName` az első sorba, majd adatok feltöltése a további sorokat.
+Az ebben a példában a Google Docs használandó tábla létrehozásához hozzon létre egy táblázatot a nevű `Contact`. Az összekötő a számolótábla megjelenített név nem használható. A belső neve (félkövér) kell használható dataSetName, például: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** Adja hozzá az oszlopok neveit `Id`, `LastName`, `FirstName` az első sorba, majd töltse ki az adatokat a következő sorokban.
 
 ### <a name="salesforce"></a>Salesforce
 

@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Függvényreferencia |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: Hivatkozási függvények |} A Microsoft Docs'
 description: Az Azure AD Connect szinkronizálási deklaratív kiépítés kifejezéseinek hivatkozása.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425693"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157479"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Az Azure AD Connect szinkronizálása: Functions – referencia
 Az Azure AD Connectben a funkciók a szinkronizálás során egy attribútumérték módosítására szolgálnak.  
@@ -146,7 +146,7 @@ A CDate függvény egy UTC dátum/idő karakterláncot adja vissza. Dátum és i
 **Szintaxis:**  
 `dt CDate(str value)`
 
-* Érték: Egy karakterlánc egy dátum, idő és igény szerint időzóna
+* Érték: Egy karakterláncot egy dátum, idő és igény szerint időzóna
 
 **Megjegyzés:**  
 (UTC) mindig van a visszaadott karakterláncban.
@@ -166,7 +166,7 @@ A kritikus fontosságú Extensions tanúsítvány objektum Oid-értékeit adja e
 
 **Szintaxis:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certformat"></a>CertFormat
@@ -175,7 +175,7 @@ A X.509v3 tanúsítványt formátumát a nevét adja vissza.
 
 **Szintaxis:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certfriendlyname"></a>CertFriendlyName
@@ -184,7 +184,7 @@ A társított tanúsítvány-alias adja vissza.
 
 **Szintaxis:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certhashstring"></a>CertHashString
@@ -193,7 +193,7 @@ A hexadecimális karakterlánc a X.509v3 tanúsítványt SHA1 kivonatot érték�
 
 **Szintaxis:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certissuer"></a>CertIssuer
@@ -202,7 +202,7 @@ A X.509v3 tanúsítványt kiállító hitelesítésszolgáltató nevét adja vis
 
 **Szintaxis:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certissuerdn"></a>CertIssuerDN
@@ -211,7 +211,7 @@ A tanúsítvány kiállítójának megkülönböztető nevét adja vissza.
 
 **Szintaxis:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certissueroid"></a>CertIssuerOid
@@ -220,7 +220,7 @@ Az objektumazonosító, a tanúsítvány kiállítójának adja vissza.
 
 **Szintaxis:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
@@ -229,7 +229,7 @@ A X.509v3 tanúsítványt algoritmus információkat karakterláncként adja vis
 
 **Szintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
@@ -238,7 +238,7 @@ A X.509v3 tanúsítványt algoritmus paramétereinek Hexadecimális karakterlán
 
 **Szintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certnameinfo"></a>CertNameInfo
@@ -247,7 +247,7 @@ Adja vissza a tárgy és a kiállító nevét a tanúsítványból.
 
 **Szintaxis:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 *   X509NameType: A tulajdonos X509NameType értékét.
 *   includesIssuerName: kiállító neve; is igaz esetén pedig FALSE érték.
 
@@ -258,7 +258,7 @@ Helyi idő, amelyet követően a tanúsítvány már nem érvényes a dátumot a
 
 **Szintaxis:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certnotbefore"></a>CertNotBefore
@@ -267,7 +267,7 @@ Helyi idő, amelyen a tanúsítvány érvényessé válik a dátumot adja vissza
 
 **Szintaxis:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
@@ -276,7 +276,7 @@ Az objektumazonosító a nyilvános kulcs a X.509v3 tanúsítványt adja vissza.
 
 **Szintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
@@ -285,7 +285,7 @@ Az objektumazonosító a nyilvános kulcs paramétereit a X.509v3 tanúsítvány
 
 **Szintaxis:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certserialnumber"></a>CertSerialNumber
@@ -294,7 +294,7 @@ A X.509v3 tanúsítvány sorozatszámát adja eredményül.
 
 **Szintaxis:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
@@ -303,7 +303,7 @@ Az objektumazonosító, a tanúsítvány aláírásának létrehozására haszn�
 
 **Szintaxis:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certsubject"></a>CertSubject
@@ -312,7 +312,7 @@ Egy tanúsítványt a tulajdonos megkülönböztető nevének beolvasása.
 
 **Szintaxis:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
@@ -321,7 +321,7 @@ Egy tanúsítványt a tulajdonos megkülönböztető nevét adja vissza.
 
 **Szintaxis:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
@@ -330,7 +330,7 @@ Egy tanúsítványt az objektumazonosító, a tulajdonos nevét adja vissza.
 
 **Szintaxis:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certthumbprint"></a>certThumbprint
@@ -339,7 +339,7 @@ A tanúsítvány ujjlenyomatát adja vissza.
 
 **Szintaxis:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="certversion"></a>CertVersion
@@ -348,7 +348,7 @@ A tanúsítvány X.509 formátumú verziója adja vissza.
 
 **Szintaxis:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 
 - - -
 ### <a name="cguid"></a>CGuid
@@ -393,8 +393,8 @@ A ConvertFromBase64 függvény a megadott base64-kódolású érték konvertál 
 `str ConvertFromBase64(str source)` -feltételezi, hogy a Unicode Encoding  
 `str ConvertFromBase64(str source, enum Encoding)`
 
-* Forrás: Base64 kódolású karakterlánc  
-* Kódolást:, Unicode és ASCII, UTF8
+* Forrás: Base64-kódolású karakterlánc  
+* Kódolás: UTF8, Unicode és ASCII,
 
 **Példa**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
@@ -485,7 +485,7 @@ A CStr függvény egy karakterlánc adattípus alakítja.
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* érték: egy számértéket, hivatkozási attribútum vagy logikai érték lehet.
+* Érték: Egy számértéket, hivatkozási attribútum vagy logikai érték lehet.
 
 **Példa**  
 `CStr([dn])`  
@@ -499,7 +499,7 @@ Egy dátumot tartalmazó, amelyhez hozzá lett adva egy adott időtartam dátumo
 **Szintaxis:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* időköz: karakterlánc-kifejezés, amely az alapidőponthoz hozzáadandó. A karakterlánc a következő értékek egyikét kell rendelkeznie:
+* időköz: A karakterlánc-kifejezés, amely az alapidőponthoz hozzáadandó. A karakterlánc a következő értékek egyikét kell rendelkeznie:
   * ÉÉÉÉ év
   * q negyedév
   * m hónap
@@ -510,8 +510,8 @@ Egy dátumot tartalmazó, amelyhez hozzá lett adva egy adott időtartam dátumo
   * h óra
   * n percben
   * s második
-* érték: A hozzáadni kívánt egységek számát. (Az első jövőbeli dátumokat) pozitív vagy negatív, (az elmúlt dátumok megszerezni) lehet.
-* dátum: DateTime jelölő dátum, amelyhez az időközt ad hozzá.
+* Érték: A hozzáadandó egységek száma. (Az első jövőbeli dátumokat) pozitív vagy negatív, (az elmúlt dátumok megszerezni) lehet.
+* dátum: Dátum és idő jelölő dátum, amelyhez az időközt ad hozzá.
 
 **Példa**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
@@ -539,7 +539,7 @@ A DNComponent függvény bal azzal adott DN összetevő értékét adja vissza.
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * DN: a hivatkozási attribútum értelmezése
-* ComponentNumber: A visszaadandó megkülönböztető az összetevő
+* ComponentNumber: A visszaadandó megkülönböztető összetevő
 
 **Példa**  
 `DNComponent(CRef([dn]),1)`  
@@ -600,7 +600,7 @@ A FormatDateTime függvény segítségével egy karakterláncot egy dátum és i
 * formátum: a formátum konvertálása képviselő karakterláncot.
 
 **Megjegyzés:**  
-A lehetséges értékek a formátum itt található: [felhasználó által megadott dátum/idő-formátumok (Format függvény)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+A lehetséges értékek a formátum itt található: [Egyéni dátum és idő a FORMAT függvény formátumok](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Példa**  
 
@@ -714,7 +714,7 @@ Igaz értéket ad eredményül, ha a nyers adatok .NET X509Certificate2 tanúsí
 
 **Szintaxis:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
+*   certificateRawData: Egy X.509 tanúsítvány bájt tömb ábrázolása. A bajtového Pole lehet (DER) kódolású bináris vagy Base64-kódolású X.509-adatokat.
 - - -
 ### <a name="isempty"></a>IsEmpty
 **Leírás:**  
@@ -852,8 +852,8 @@ Illesztési függvényhez egy többértékű karakterláncot vesz fel, és a egy
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attribútum: tartalmazó karakterláncokat kell összefűzni többértékű attribútum.
-* elválasztó karakter: a visszaadott karakterláncban a karakterláncrész különálló használt bármilyen karakterlánc. Ha nincs megadva, a szóköz karaktert ("") használja. Ha elválasztó egy nulla hosszúságú karakterlánc (""), illetve semmi sem, a listában szereplő összes rendszer összefűzéséhez nincs elválasztó.
+* attribútum: Többértékű attribútumot tartalmazó karakterláncokat kell összefűzni.
+* elválasztó karakter: A visszaadott karakterláncban a karakterláncrész különálló használt bármilyen karakterlánc. Ha nincs megadva, a szóköz karaktert ("") használja. Ha elválasztó egy nulla hosszúságú karakterlánc (""), illetve semmi sem, a listában szereplő összes rendszer összefűzéséhez nincs elválasztó.
 
 **Megjegyzések**  
 A csatlakozás és a Split függvény között paritásos van. Az illesztési függvényhez egy diagnosztikakonfigurációs tömböt foglal karakterláncok, és csatlakoztatja azokat egyetlen karakterláncot egy elválasztó sztring használatával. A Split függvény egy karakterláncot vesz fel, és elválasztja a: a kivonni kívánt a karakterláncok tömbjét adja vissza. A fő különbség azonban nem, hogy a Join is az összefűzés bármely elválasztó karakterlánccal, a felosztás csak elkülönítheti a karakterláncok egy egyetlen karaktert elválasztó segítségével.
@@ -982,8 +982,8 @@ A PadLeft függvény bal-dolgozniuk egy karakterláncot egy megadott Kitöltő k
 `str PadLeft(str string, num length, str padCharacter)`
 
 * karakterlánc: kitölti a karakterláncot.
-* hossz: egy egész számot jelölő karakterlánc kívánt hosszát.
-* padCharacter: egy karaktert a kitöltő karakterként használandó karakterlánc
+* hossz: Egy egész számot jelölő karakterlánc kívánt hosszát.
+* padCharacter: A kitöltő karakterként használata egy karaktert tartalmazó karakterlánc
 
 **Megjegyzés:**
 
@@ -1007,8 +1007,8 @@ A PadRight függvény jobb-dolgozniuk egy karakterláncot egy megadott Kitöltő
 `str PadRight(str string, num length, str padCharacter)`
 
 * karakterlánc: kitölti a karakterláncot.
-* hossz: egy egész számot jelölő karakterlánc kívánt hosszát.
-* padCharacter: egy karaktert a kitöltő karakterként használandó karakterlánc
+* hossz: Egy egész számot jelölő karakterlánc kívánt hosszát.
+* padCharacter: A kitöltő karakterként használata egy karaktert tartalmazó karakterlánc
 
 **Megjegyzés:**
 
@@ -1077,9 +1077,9 @@ A csere függvény egy karakterlánc egy másik karakterláncra összes előford
 **Szintaxis:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* karakterlánc: egy karakterláncot cserélje le az értékeket.
+* Karakterlánc: Egy karakterláncot cserélje le az értékeket.
 * OldValue: A karakterlánc keresése, és cserélje le.
-* Új érték: A lecserélendő karakterlánc való.
+* Új érték: A cserélendő karakterláncot.
 
 **Megjegyzés:**  
 A függvény felismeri a következő különleges monikerek:
@@ -1100,7 +1100,7 @@ A ReplaceChars függvény ReplacePattern karakterláncban található karakterek
 **Szintaxis:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* karakterlánc: egy karakterlánc karaktereinek helyett.
+* Karakterlánc: Egy karakterlánc karaktereinek helyett.
 * ReplacePattern: cserélendő karakterek egy szótár tartalmazó karakterlánc.
 
 {Source1} formátuma: {target1}, {source2}: {target2}, {sourceN}, {targetN} ahol forrása a karakter található, és célozhat meg a cserélendő karakterláncot.
@@ -1172,7 +1172,7 @@ A folyamat a megadott függvény alapján minden értékeket a többértékű at
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* elem: olyan elemet a többértékű attribútum
+* elem: A többértékű attribútum egy elemének felel meg
 * attribútum: a többértékű attribútum
 * kifejezés: egy kifejezés, amely értékek gyűjteményét adja vissza
 * feltétel: az attribútum az elem feldolgozására képes függvényeket
@@ -1222,8 +1222,8 @@ A kapcsoló függvény segítségével értékelt feltételek alapján egyetlen 
 **Szintaxis:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* kifejezés: változat kifejezés szeretne értékelni.
-* érték: érték, a megfelelő kifejezés igaz-e.
+* kifejezés: Variant kifejezés szeretne értékelni.
+* Érték: A visszaadandó megfelelő kifejezés igaz-e értéket.
 
 **Megjegyzés:**  
 A kapcsoló függvény argumentumlista kifejezések és érték párokat tartalmaz. A kifejezések kiértékelése balról jobbra, és a társított az első kifejezés kiértékelése igaz értéket ad vissza. Ha nincsenek megfelelően párosítva a részeit, a futásidejű hiba történik.
@@ -1279,7 +1279,7 @@ Meghatározott feltétel alapján többértékű attribútum (vagy egy kifejezé
 **Szintaxis:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* elem: olyan elemet a többértékű attribútum
+* elem: A többértékű attribútum egy elemének felel meg
 * attribútum: a többértékű attribútum
 * feltétel: bármely kifejezés kiértékelése igaz vagy hamis
 * kifejezés: egy kifejezés, amely értékek gyűjteményét adja vissza
@@ -1295,9 +1295,9 @@ A With funkciót biztosít arra, hogy egyszerűbben összetett kifejezést egy v
 
 **Szintaxis:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* a változó: a alkifejezés jelöli.
+* változó: A alkifejezés jelöli.
 * alkifejezés: alkifejezés változót jelöli.
-* complexExpression: egy összetett kifejezésben.
+* complexExpression: Összetett kifejezést.
 
 **Példa**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
@@ -1335,5 +1335,5 @@ Adna vissza "tartalmaz"
 
 ## <a name="additional-resources"></a>További források
 * [Deklaratív kiépítés kifejezéseinek ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Az Azure AD Connect-szinkronizálás: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

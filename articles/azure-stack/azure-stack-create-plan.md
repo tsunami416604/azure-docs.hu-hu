@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6399e1838b00fc533ab42a76e4f1f1667e3a434a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077562"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159519"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Csomag létrehozása az Azure Stackben
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A [Csomagok](azure-stack-key-features.md) egy vagy több szolgáltatás csoportjai. Szolgáltatóként a felhasználóknak kínált terveket is létrehozhat. Ezután a felhasználók előfizethetnek azokra a a csomagok és szolgáltatások tartoznak. Ez a példa bemutatja, hogyan hozzon létre egy csomagot, amely tartalmazza a számítási, hálózati és tárolási erőforrás-szolgáltatókat. Ez a csomag virtuális gépek lehetővé teszi az előfizetők számára.
 
-1. Jelentkezzen be az Azure Stack rendszergazdai portálon (https://adminportal.local.azurestack.external).
+1. Jelentkezzen be a [Azure Stack rendszergazdai portál](https://adminportal.local.azurestack.external).
 
-2. Csomag és ajánlat, amely a felhasználók előfizethetnek létrehozásához válassza **+ erőforrás létrehozása** > **ajánlatok és csomagok** > **terv**.
+2. Csomag és ajánlat, amely a felhasználók előfizethetnek létrehozásához válassza **+ erőforrás létrehozása**, majd **ajánlatok és csomagok**, majd **terv**.
   
    ![Csomag kiválasztása](media/azure-stack-create-plan/select-plan.png)
 
@@ -72,4 +72,4 @@ A [Csomagok](azure-stack-key-features.md) egy vagy több szolgáltatás csoportj
 
 ## <a name="next-steps"></a>További lépések
 
-[Ajánlat létrehozása](azure-stack-create-offer.md)
+* [Ajánlat létrehozása](azure-stack-create-offer.md)

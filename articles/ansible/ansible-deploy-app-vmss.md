@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: fc6b1484d43d0798f9ff70049017c8d360f027d4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050404"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156544"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible használatával üzembe helyezheti alkalmazásait az Azure-ban. Ez a cikk bemutatja, hogyan helyezhet gyorsan üzembe Java-alkalmazást egy Azure-beli virtuálisgép-méretezési csoportban (VMSS).  
@@ -150,7 +150,7 @@ Az Ansible-forgatókönyvben szereplő alábbi szakasz telepíti a (JRE) Java-fu
 Az előző Ansible-mintaforgatókönyvet mentheti `vmss-setup-deploy.yml` néven, vagy [letöltheti a teljes forgatókönyvet](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss). 
 
 Ha az ssh kapcsolattípust szeretné használni jelszavakkal, telepítenie kell az sshpass programot. 
-  - Ubuntu 16.04 esetén futtassa az `apt-get install sshpass` parancsot.
+  - Az Ubuntu 16.04, futtassa a parancsot `apt-get install sshpass`.
   - CentOS 7.4 esetén futtassa a `yum install sshpass` parancsot.
 
 A következőhöz hasonló hibaüzenet jelenhet meg: **SSH-jelszó használata kulcs helyett nem lehetséges, mert a gazdagépkulcsok ellenőrzése engedélyezve van, és ezt az sshpass nem támogatja. A gazdagép kezeléséhez adja hozzá a gazdagép ujjlenyomatát a „known_hosts” nevű fájlhoz.** Ha ezt a hibaüzenetet látja, letilthatja a gazdagépkulcsok ellenőrzését, ha az alábbi sort hozzáadja a `/etc/ansible/ansible.cfg` vagy a `~/.ansible.cfg` fájlhoz:

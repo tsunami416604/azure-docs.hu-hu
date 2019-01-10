@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 27fd02503881ef1f0587ccb0301f8490101d5bcb
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e4131bc8f038957e52b914937b2d45e670be8f5f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720645"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157275"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack titkos kulcsainak rotálása
 
@@ -27,29 +27,32 @@ ms.locfileid: "53720645"
 
 Az Azure Stack különböző titkos kódok kezelése az Azure Stack-infrastruktúra-erőforrások és szolgáltatások közötti biztonságos kommunikációhoz használ.
 
-- **Belső titkos kulcsok**  
-Az összes a tanúsítványok, jelszavak, biztonságos karakterláncok és kulcsok az Azure Stack-infrastruktúra az Azure Stack-operátorokról beavatkozása nélkül használják. 
+- **Belső titkos kulcsok**
 
-- **Külső titkos kódok**  
-Infrastruktúra-szolgáltatás tanúsítványok kívülre irányuló szolgáltatások, az Azure Stack – operátor által biztosított. Ez magában foglalja a tanúsítványokat, a következő szolgáltatásokat: 
-  - Adminisztrátori portál  
-  - Nyilvános portálra  
-  - Rendszergazda az Azure Resource Manager  
-  - Globális Azure Resource Manager  
-  - Rendszergazdai Keyvault  
-  - Keyvault  
-  - Rendszergazdai kiterjesztés gazdagép  
-  - Az ACS-(beleértve a blob, table és queue storage)  
-  - AD FS *  
-  - Graph *  
+Az összes a tanúsítványok, jelszavak, biztonságos karakterláncok és kulcsok az Azure Stack-infrastruktúra az Azure Stack-operátorokról beavatkozása nélkül használják.
+
+- **Külső titkos kódok**
+
+Infrastruktúra-szolgáltatás tanúsítványok kívülre irányuló szolgáltatások, az Azure Stack – operátor által biztosított. Ez magában foglalja a tanúsítványokat, a következő szolgáltatásokat:
+
+- Adminisztrátori portál
+- Nyilvános portálra
+- Rendszergazda az Azure Resource Manager
+- Globális Azure Resource Manager
+- Rendszergazdai KeyVault
+- KeyVault
+- Rendszergazdai kiterjesztés gazdagép
+- Az ACS-(beleértve a blob, table és queue storage)
+- AD FS *
+- Graph *
 
 \* Csak alkalmazható, ha a környezet identitásszolgáltató Active Directory összevonási szolgáltatásokban (AD FS).
 
-> [!Note]  
-> Bármely más biztonságos kulcsokat és a karakterláncokat, beleértve a BMC, és váltson a jelszavak, a rendszergazda manuálisan is frissíti a felhasználói és rendszergazdai fiókok jelszavait. 
+> [!Note]
+> Bármely más biztonságos kulcsokat és a karakterláncokat, beleértve a BMC, és váltson a jelszavak, a rendszergazda manuálisan is frissíti a felhasználói és rendszergazdai fiókok jelszavait.
 
-> [!Note]  
-> Azure Stack 1811 kiadástól kezdve, titkos Elforgatás belső és külső tanúsítványok lett elválasztva. 
+> [!Important]
+> Azure Stack 1811 kiadástól kezdve, titkos Elforgatás belső és külső tanúsítványok lett elválasztva.
 
 Az Azure Stack-infrastruktúra biztonságának fenntartása, operátorok rendszeres időközönként elforgatásának az infrastruktúra titkos kódok, amelyek a szervezeti biztonsági követelményeknek való következetes frekvencia kell.
 
@@ -73,109 +76,190 @@ Az Azure Stack egy új tanúsítvány hitelesítésszolgáltató (CA) származó
 
 ## <a name="alert-remediation"></a>Riasztás szervizelése
 
-Ha a titkos kulcsok érvényessége 30 napon belül, a következő riasztások jönnek létre a felügyeleti portálon: 
+Ha a titkos kulcsok érvényessége 30 napon belül, a következő riasztások jönnek létre a felügyeleti portálon:
 
-- Függőben levő fiók jelszólejárat 
-- Függőben lévő belső tanúsítvány lejárata 
-- Függőben lévő külső tanúsítvány lejárata 
+- Függőben levő fiók jelszólejárat
+- Függőben lévő belső tanúsítvány lejárata
+- Függőben lévő külső tanúsítvány lejárata
 
 Az alábbi utasításokat követve titkos Elforgatás futó fog kijavítani ezeket a riasztásokat.
 
-> [!Note]  
-> Az Azure Stack-környezetekben előtti-1811 verzióin függőben lévő belső tanúsítvány vagy titkos lejárhat riasztások jelenhet meg. Ezek a riasztások helytelenek, és figyelmen kívül lehet hagyni belső titkos Elforgatás futtatása nélkül. Pontatlan belső titkos kód lejáratáról riasztások egy ismert probléma, amely el nem hárul 1811 – belső titkos kódok nem járnak le, ha a környezet két évig használtak. 
+> [!Note]
+> Az Azure Stack-környezetekben előtti-1811 verzióin függőben lévő belső tanúsítvány vagy titkos lejárhat riasztások jelenhet meg.
+> Ezek a riasztások helytelenek, és figyelmen kívül lehet hagyni belső titkos Elforgatás futtatása nélkül.
+> Pontatlan belső titkos kód lejáratáról riasztások egy ismert probléma, amely el nem hárul 1811 – belső titkos kódok nem járnak le, ha a környezet két évig használtak.
 
 ## <a name="pre-steps-for-secret-rotation"></a>Titkos elforgatás előtti lépések
 
-   > [!IMPORTANT]  
-   > Ha a titkos Elforgatás már végre az Azure Stack környezettel majd frissítenie kell a rendszer 1811 vagy titkos Elforgatás újra végre, mielőtt újabb verzióra. Titkos Elforgatás keresztül szerint kell végrehajtani a [kiemelt végponthoz](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) és az Azure Stack-operátorokról hitelesítő adatokra van szüksége. Ha a környezet az Azure Stack üzemeltetőinek nem tudja-e az adott környezet titkos Elforgatás futtatása, frissítse 1811 újra titkos Elforgatás végrehajtása előtt.
+   > [!IMPORTANT]
+   > Ha a titkos Elforgatás már végre az Azure Stack környezettel majd frissítenie kell a rendszer 1811 vagy titkos Elforgatás újra végre, mielőtt újabb verzióra.
+   > Titkos Elforgatás keresztül szerint kell végrehajtani a [kiemelt végponthoz](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) és az Azure Stack-operátorokról hitelesítő adatokra van szüksége.
+   > Ha a környezet az Azure Stack üzemeltetőinek nem tudja-e az adott környezet titkos Elforgatás futtatása, frissítse 1811 újra titkos Elforgatás végrehajtása előtt.
 
 1. Azt javasoljuk, hogy az Azure Stack-példány 1811 verzióra frissíti.
 
     > [!Note] 
     > Előre-1811 verziók nem kell bővítmény gazdagép tanúsítványok hozzáadása a titkos kulcsok rotálására. Kövesse a cikkben lévő utasítások [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md) bővítmény gazdagép tanúsítványok hozzáadása.
 
-2.  Operátorok Észreveheti a riasztások megnyitásához, és automatikusan zárja be az Azure Stack titkos kódok rotációja során.  Ez az elvárt viselkedés, és a riasztások figyelmen kívül hagyható.  Operátorok futtatásával ellenőrizni tudja érvényességét, ezek a riasztások **Test-AzureStack**.  Az operátorok figyelése SCOM használatával Azure Stack-rendszereket, karbantartási módba helyezi el a rendszer megakadályozza, hogy ezek a riasztások éri el az ITSM-rendszerekkel, de továbbra is riasztás, ha az Azure Stack rendszer elérhetetlenné válik. 
+2. Operátorok Észreveheti a riasztások megnyitásához, és automatikusan zárja be az Azure Stack titkos kódok rotációja során.  Ez az elvárt viselkedés, és a riasztások figyelmen kívül hagyható.  Operátorok futtatásával ellenőrizni tudja érvényességét, ezek a riasztások **Test-AzureStack**.  Az operátorok figyelése SCOM használatával Azure Stack-rendszereket, karbantartási módba helyezi el a rendszer megakadályozza, hogy ezek a riasztások éri el az ITSM-rendszerekkel, de továbbra is riasztás, ha az Azure Stack rendszer elérhetetlenné válik.
+
 3. A felhasználók értesítése a karbantartási műveleteket. Normál karbantartási időszakokat, a lehető legnagyobb mértékben, során munkaidőn kívüli ütemezése. Karbantartási műveletek hatással lehet a felhasználó számítási feladatok és a webportálos műveletek.
 
-    > [!Note]  
+    > [!Note]
     > A következő lépések csak akkor alkalmazható, ha az Azure Stack külső titkos kódok elforgatása.
 
 4. Futtatás **[Test-AzureStack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** és győződjön meg róla az összes teszt kimenetek előtt titkok Elforgatás kifogástalan állapotú.
-5. Készítse el új helyettesítési külső tanúsítványok. Az új készlet a tanúsítvány előírásoknak megfelel a [Azure Stack PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs). Tanúsítvány-aláírási kérelem (CSR) is létrehozhat vásárol, és létrehozhatja az új tanúsítványokat, az ismertetett lépéseket követve [PKI-tanúsítványok létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-get-pki-certs) és készítse elő azokat az Azure Stack környezettel lépéseivel használatra[ Készítse elő az Azure Stack PKI-tanúsítványokat](https://docs.microsoft.com/azure/azure-stack/azure-stack-prepare-pki-certs). Ellenőrizze a tanúsítványok, az ismertetett lépéseket követve készítse elő [PKI-tanúsítványok ellenőrzése](https://docs.microsoft.com/azure/azure-stack/azure-stack-validate-pki-certs). 
-6.  A biztonsági mentés rotációs biztonsági mentési biztonságos helyen használt tanúsítványok Store. Az elforgatás fut, és akkor sikertelen lesz, ha cserélje le a tanúsítványokat a fájlmegosztásban a biztonsági másolatokat előtt, futtassa újra a elforgatási. Vegye figyelembe, a biztonsági másolatok megőrzése a biztonsági mentési biztonságos helyen.
-7.  Hozzon létre egy fájlmegosztást a ERCS virtuális gépeken érhető el. A fájlmegosztás olvasható és írható a kell lennie. a **CloudAdmin** identitás.
-8.  Nyisson meg egy PowerShell ISE-ben konzolt egy olyan számítógépről, ahol hozzáférhet a fájlmegosztáson. Keresse meg a fájlmegosztás. 
-9.  Futtatás **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** a szükséges könyvtárak a külső tanúsítványok létrehozásához.
+5. Készítse el új helyettesítési külső tanúsítványok. Az új készlet a tanúsítvány előírásoknak megfelel a [Azure Stack PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs). Tanúsítvány-aláírási kérelem (CSR) is létrehozhat vásárol, és létrehozhatja az új tanúsítványokat, az ismertetett lépéseket követve [PKI-tanúsítványok létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-get-pki-certs) és készítse elő azokat az Azure Stack környezettel lépéseivel használatra[ Készítse elő az Azure Stack PKI-tanúsítványokat](https://docs.microsoft.com/azure/azure-stack/azure-stack-prepare-pki-certs). Ellenőrizze a tanúsítványok, az ismertetett lépéseket követve készítse elő [PKI-tanúsítványok ellenőrzése](https://docs.microsoft.com/azure/azure-stack/azure-stack-validate-pki-certs).
+6. A biztonsági mentés rotációs biztonsági mentési biztonságos helyen használt tanúsítványok Store. Az elforgatás fut, és akkor sikertelen lesz, ha cserélje le a tanúsítványokat a fájlmegosztásban a biztonsági másolatokat előtt, futtassa újra a elforgatási. Vegye figyelembe, a biztonsági másolatok megőrzése a biztonsági mentési biztonságos helyen.
+7. Hozzon létre egy fájlmegosztást a ERCS virtuális gépeken érhető el. A fájlmegosztás olvasható és írható a kell lennie. a **CloudAdmin** identitás.
+8. Nyisson meg egy PowerShell ISE-ben konzolt egy olyan számítógépről, ahol hozzáférhet a fájlmegosztáson. Keresse meg a fájlmegosztás.
+9. Futtatás **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** a szükséges könyvtárak a külső tanúsítványok létrehozásához.
+
+> [!IMPORTANT]
+> A mappastruktúrát, amely csak a CertDirectoryMaker parancsfájl hozza létre:
+>
+> **.\Certificates\AAD** vagy ***.\Certificates\ADFS*** függően az identitásszolgáltató használja az Azure Stackhez
+>
+> Kiemelkedő fontosságú, amely a mappaszerkezetet végződik **AAD** vagy **ADFS** e szerkezetéhez belül vannak mappák és annak összes alkönyvtárát ellenkező esetben **Start-SecretRotation**fog kapja meg:
+> ```PowerShell
+> Cannot bind argument to parameter 'Path' because it is null.
+> + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
+> + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Test-Certificate
+> + PSComputerName        : xxx.xxx.xxx.xxx
+> ```
+>
+> Amint láthatja a hiba masszírozó azt jelzi, hogy a fájlmegosztás eléréséhez probléma merül fel, de a valóságban a mappastruktúrát, amely itt van érvényben.
+> További információ található a Microsoft AzureStack készültségi ellenőrző - [PublicCertHelper modul](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1)
+>
+> Emellett az is fontos, hogy a fileshare mappastruktúra kezdődik **tanúsítványok** mappa egyébként az érvényesítés is meghiúsul.
+> Fájlmegosztás csatlakoztatása hasonlóan kell kinéznie **\\ \\ \<IP-cím >\\\<ShareName >\\** mappába kell tartalmaznia, és  **Certificates\AAD** vagy **Certificates\ADFS** belül.
+>
+> Példa:
+> - Fájlmegosztás =  **\\ \\ \<IP-cím >\\\<ShareName >\\**
+> - CertFolder = **Certificates\AAD**
+> - FullPath =  **\\ \\ \<IP-cím >\\\<ShareName > \Certificates\AAD**
 
 ## <a name="rotating-external-secrets"></a>Külső titkos kódok elforgatása
 
 Külső titkos kódok rotálása:
 
-1. Az újonnan létrehozott belül **/tanúsítványok** az üzem előtti lépésben létrehozott directory helyezze a külső tanúsítványok cseréje új készletét a könyvtárstruktúra szerint kötelező tanúsítványok szakaszában formátuma az a [Azure Stack PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
+1. Az újonnan létrehozott belül **\Certificates\\\<IdentityProvider >** az üzem előtti lépésben létrehozott directory helyezze a külső tanúsítványok cseréje új készletét a könyvtárstruktúra szerint a a kötelező tanúsítványok szakaszában formátum a [Azure Stack PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
+
+    Példa a mappastruktúra az AAD identitásszolgáltató számára:
+    ```PowerShell
+        <ShareName>
+        │   │
+        │   ├───Certificates
+        │   └───AAD
+        │       ├───ACSBlob
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───ACSQueue
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───ACSTable
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───Admin Extension Host
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───Admin Portal
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───ARM Admin
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───ARM Public
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───KeyVault
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───KeyVaultInternal
+        │       │       <CertName>.pfx
+        │       │
+        │       ├───Public Extension Host
+        │       │       <CertName>.pfx
+        │       │
+        │       └───Public Portal
+        │               <CertName>.pfx
+
+    ```
+
 2. Hozzon létre egy PowerShell-munkamenetet a [kiemelt végponthoz](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) használatával a **CloudAdmin** fiókját, és tárolja a munkamenetek változóként. Ezt a változót a következő lépésben paraméterként fogja használni.
 
     > [!IMPORTANT]  
     > Adja meg a munkamenet, ne tárolja a munkamenet változóként.
-    
-3. Futtatás  **[invoke-command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-5.1)**. Adja át, a kiemelt végponthoz PowerShell munkamenet-változó a **munkamenet** paraméter. 
+
+3. Futtatás  **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**. Adja át, a kiemelt végponthoz PowerShell munkamenet-változó a **munkamenet** paraméter.
+
 4. Futtatás **Start-SecretRotation** a következő paraméterekkel:
     - **PfxFilesPath**  
     Adja meg a korábban létrehozott tanúsítványok címtár hálózati elérési útját.  
     - **PathAccessCredential**  
-    Egy PSCredential objektumot, a hitelesítő adatokat a megosztáshoz. 
+    Egy PSCredential objektumot, a hitelesítő adatokat a megosztáshoz.
     - **CertificatePassword**  
     A jelszót az összes létrehozott pfx-tanúsítvány fájlokat egy biztonságos karakterláncot.
-4. Várjon, amíg a titkos kulcsok elforgatása. Külső titkos Elforgatás általában körülbelül egy órát vesz igénybe. Titkos kód Elforgatás sikeres befejeződése után a konzol megjeleníti **összesített művelet állapota: Sikeres**. 
-    > [!Note]  
-    > Ha titkos elforgatás nem sikerül, kövesse a hibaüzenet a, és futtassa újra a **start-secretrotation** az a **-ismétlés** paraméter. 
 
-    ```PowerShell  
-    Start-SecretRotation -Rerun
+5. Várjon, amíg a titkos kulcsok elforgatása. Külső titkos Elforgatás általában körülbelül egy órát vesz igénybe.
+
+    Titkos kód Elforgatás sikeres befejeződése után a konzol megjeleníti **összesített művelet állapota: Sikeres**.
+
+    > [!Note]
+    > Ha titkos elforgatás nem sikerül, kövesse a hibaüzenet a, és futtassa újra a **Start-SecretRotation** az a **-ismétlés** paraméter.
+
+    ```PowerShell
+    Start-SecretRotation -ReRun
     ```
     Forduljon az ügyfélszolgálathoz tapasztal titkos Elforgatás hibák ismétlődik.
-5. Titkos elforgatásának szögét a sikeres telepítést követően távolítsa el a tanúsítványokat az üzem előtti. lépésében létrehozott megosztás, és azok biztonságos biztonsági mentési helyen tárolja őket. 
+
+6. Titkos elforgatásának szögét a sikeres telepítést követően távolítsa el a tanúsítványokat az üzem előtti. lépésében létrehozott megosztás, és azok biztonságos biztonsági mentési helyen tárolja őket.
 
 ## <a name="walkthrough-of-secret-rotation"></a>Titkos kód elforgatásának szögét forgatókönyv
 
 A következő PowerShell-példa bemutatja a parancsmagokat és futtatni kell a titkos kulcsok elforgatása paraméterek.
 
-```powershell
-#Create a PEP Session
-winrm s winrm/config/client '@{TrustedHosts= "<IPofERCSMachine>"}'
-$PEPCreds = Get-Credential 
-$PEPsession = New-PSSession -computername <IPofERCSMachine> -Credential $PEPCreds -ConfigurationName PrivilegedEndpoint 
+```PowerShell
+# Create a PEP Session
+winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
+$PEPCreds = Get-Credential
+$PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
-#Run Secret Rotation
-$CertPassword = ConvertTo-SecureString "Certpasswordhere" -Force
-$CertShareCred = Get-Credential 
-$CertSharePath = "<NetworkPathofCertShare>"
-Invoke-Command -session $PEPsession -ScriptBlock { 
-Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }
+# Run Secret Rotation
+$CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
+$CertShareCreds = Get-Credential
+$CertSharePath = "<NetworkPathOfCertShare>"
+Invoke-Command -Session $PEPSession -ScriptBlock {
+    Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+}
 Remove-PSSession -Session $PEPSession
 ```
 
 ## <a name="rotating-only-internal-secrets"></a>Csak a belső titkok elforgatása
 
-> [!Note]  
-> Belső titkos elforgatás csak akkor ajánlott végrehajtani, ha azt gyanítja, egy belső titkos kulcs egy rosszindulatú entitás biztonsága sérült, vagy ha kapott egy belső tanúsítványok lejárnak jelző riasztás (a build 1811 vagy újabb). Az Azure Stack-környezetekben előtti-1811 verzióin függőben lévő belső tanúsítvány vagy titkos lejárhat riasztások jelenhet meg. Ezek a riasztások helytelenek, és figyelmen kívül lehet hagyni belső titkos Elforgatás futtatása nélkül. Pontatlan belső titkos kód lejáratáról riasztások egy ismert probléma, amely el nem hárul 1811 – belső titkos kódok nem járnak le, ha a környezet két évig használtak.
-
-Csak az Azure Stack belső titkos kulcsok rotálására:
+> [!Note]
+> Belső titkos elforgatás csak akkor ajánlott végrehajtani, ha azt gyanítja, egy belső titkos kulcs egy rosszindulatú entitás biztonsága sérült, vagy ha kapott egy belső tanúsítványok lejárnak jelző riasztás (a build 1811 vagy újabb).
+> Az Azure Stack-környezetekben előtti-1811 verzióin függőben lévő belső tanúsítvány vagy titkos lejárhat riasztások jelenhet meg.
+> Ezek a riasztások helytelenek, és figyelmen kívül lehet hagyni belső titkos Elforgatás futtatása nélkül.
+> Pontatlan belső titkos kód lejáratáról riasztások egy ismert probléma, amely el nem hárul 1811 – belső titkos kódok nem járnak le, ha a környezet két évig használtak.
 
 1. Hozzon létre egy PowerShell-munkamenetet a [kiemelt végponthoz](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 2. A kiemelt végponthoz-munkamenetben futtassa **Start-SecretRotation – belső**.
 
-    > [!Note]  
+    > [!Note]
     > Az Azure Stack-környezetekben előtti-1811 verzióin nem szükséges a **– belső** jelzőt. **Start-SecretRotation** elforgatása a csak belső titkos kulcsok.
 
-3. Várjon, amíg a titkos kulcsok elforgatása.  
-Titkos kód Elforgatás sikeres befejeződése után a konzol megjeleníti **összesített művelet állapota: Sikeres**. 
-    > [!Note]  
-    > Ha a titkos elforgatás nem sikerül, kövesse a hibaüzenet a, és futtassa újra **start-secretrotation** az a **– belső** és **-futtassa újra a** paraméterek.  
+3. Várjon, amíg a titkos kulcsok elforgatása.
 
-    ```PowerShell  
-    Start-SecretRotation -Internal -Rerun
-    ```
-    Forduljon az ügyfélszolgálathoz tapasztal titkos Elforgatás hibák ismétlődik.
+Titkos kód Elforgatás sikeres befejeződése után a konzol megjeleníti **összesített művelet állapota: Sikeres**.
+    > [!Note]
+    > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **–Internal** and **-ReRun** parameters.  
+
+```PowerShell
+Start-SecretRotation -Internal -ReRun
+```
+
+Forduljon az ügyfélszolgálathoz tapasztal titkos Elforgatás hibák ismétlődik.
 
 ## <a name="start-secretrotation-reference"></a>Start-SecretRotation referencia
 
@@ -185,75 +269,100 @@ A titkos kulcsok az Azure Stack rendszer forog. Az Azure Stack kiemelt végponth
 
 #### <a name="for-external-secret-rotation"></a>A külső titkos rotációja
 
-```Powershell  
-Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredential> [-CertificatePassword <SecureString>]  
+```PowerShell
+Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential <PSCredential>] [-CertificatePassword <SecureString>]  
 ```
 
-#### <a name="for-internal-secret-rotation"></a>A belső titkos rotációja 
+#### <a name="for-internal-secret-rotation"></a>A belső titkos rotációja
 
-```Powershell  
+```PowerShell
 Start-SecretRotation [-Internal]  
 ```
 
-#### <a name="for-external-secret-rotation-rerun"></a>A külső, futtassa újra a titkos rotációja 
+#### <a name="for-external-secret-rotation-rerun"></a>A külső, futtassa újra a titkos rotációja
 
-```Powershell  
-Start-SecretRotation [-Rerun]
+```PowerShell
+Start-SecretRotation [-ReRun]
 ```
 
-#### <a name="for-internal-secret-rotation-rerun"></a>A belső, futtassa újra a titkos rotációja 
+#### <a name="for-internal-secret-rotation-rerun"></a>A belső, futtassa újra a titkos rotációja
 
-```Powershell  
-Start-SecretRotation [-Rerun] [-Internal]
+```PowerShell
+Start-SecretRotation [-ReRun] [-Internal]
 ```
+
 ### <a name="description"></a>Leírás
 
-A **Start-SecretRotation** parancsmag a infrastruktúra titkos kulcsok az Azure Stack rendszer forog. Alapértelmezés szerint csak a külső hálózat összes infrastruktúra-végpontokra tanúsítványokat forog. Ha a - belső belső jelző használt infrastruktúra titkok lesznek elforgatva. Elforgatás külső hálózati infrastruktúra-végpontokra, ha **Start-SecretRotation** kell futtatni egy **Invoke-Command** az Azure Stack környezettel való parancsprogram-blokkot a rendszerjogosultságú végpont munkamenet az átadott munkamenet paraméterként.
- 
+A **Start-SecretRotation** parancsmag a infrastruktúra titkos kulcsok az Azure Stack rendszer forog. Alapértelmezés szerint csak a külső hálózat összes infrastruktúra-végpontokra tanúsítványokat forog. Ha a - belső belső jelző használt infrastruktúra titkok lesznek elforgatva. Elforgatás külső hálózati infrastruktúra-végpontokra, ha **Start-SecretRotation** kell futtatni egy **Invoke-Command** az Azure Stack környezettel való parancsprogram-blokkot a rendszerjogosultságú végpont munkamenet az átadott, a **munkamenet** paraméter.
+
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Típus | Szükséges | Pozíció | Alapértelmezett | Leírás |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Karakterlánc  | False (Hamis)  | nevű  | None  | A fájlmegosztás elérési útját a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok és az összes titkos elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
-| CertificatePassword | SecureString | False (Hamis)  | nevű  | None  | A jelszó - PfXFilesPath megadott összes tanúsítvány esetében. Kötelező érték, ha PfxFilesPath biztosított belső és külső titkos kódok vannak-e forgatni. |
+| PfxFilesPath | Karakterlánc  | False (Hamis)  | nevű  | None  | A fájlmegosztás elérési útját a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
+| CertificatePassword | SecureString | False (Hamis)  | nevű  | None  | A jelszó - PfXFilesPath megadott összes tanúsítvány esetében. Kötelező érték, ha PfxFilesPath biztosított külső titkos kódok vannak-e forgatni. |
 | Belső | Karakterlánc | False (Hamis) | nevű | None | Belső jelző bármikor belső infrastruktúra titkos kulcsok rotálására felhasználja az Azure Stack operátorait kell használni. |
-| PathAccessCredential | PSCredential | False (Hamis)  | nevű  | None  | A fájlmegosztáson az PowerShell hitelesítő adatait a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok és az összes titkos elforgatása.  |
-| Újrafuttatás | SwitchParameter | False (Hamis)  | nevű  | None  | Bármikor titkos Elforgatás van reattempted sikertelen próbálkozások után futtassa újra kell használni. |
+| PathAccessCredential | PSCredential | False (Hamis)  | nevű  | None  | A fájlmegosztáson az PowerShell hitelesítő adatait a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok elforgatása.  |
+| Futtassa újra | SwitchParameter | False (Hamis)  | nevű  | None  | Bármikor titkos Elforgatás van reattempted sikertelen próbálkozások után futtassa újra kell használni. |
 
 ### <a name="examples"></a>Példák
- 
+
 #### <a name="rotate-only-internal-infrastructure-secrets"></a>Csak a belső infrastruktúra titkok elforgatása
 
 Ez az Azure Stack-n keresztül kell futtatni [környezet a rendszerjogosultságú végpont](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
-```powershell  
-PS C:\> Start-SecretRotation  -Internal
+```PowerShell
+PS C:\> Start-SecretRotation -Internal
 ```
 
-Ezzel a paranccsal az összes Azure Stack belső hálózaton vannak kitéve, az infrastruktúra titkos kulcsok forog. 
+Ezzel a paranccsal az összes Azure Stack belső hálózaton vannak kitéve, az infrastruktúra titkos kulcsok forog.
 
 #### <a name="rotate-only-external-infrastructure-secrets"></a>Csak a külső infrastruktúra titkok elforgatása  
 
-```powershell  
-PS C:\> Invoke-Command -session $PEPSession -ScriptBlock {  
+```PowerShell
+# Create a PEP Session
+winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
+$PEPCreds = Get-Credential
+$PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
-Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }  
-
+# Create Credentials for the fileshare
+$CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
+$CertShareCreds = Get-Credential
+$CertSharePath = "<NetworkPathOfCertShare>"
+# Run Secret Rotation
+Invoke-Command -Session $PEPSession -ScriptBlock {  
+    Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+}
 Remove-PSSession -Session $PEPSession
 ```
 
-Ez a parancs az Azure Stack külső hálózati infrastruktúra-végpontokra használt TLS-tanúsítványok elforgatása.   
+Ez a parancs az Azure Stack külső hálózati infrastruktúra-végpontokra használt TLS-tanúsítványok elforgatása.
 
-**Belső és külső infrastruktúra titkok elforgatása**
-  
-```powershell
-PS C:\> Invoke-Command -session $PEPSession -ScriptBlock { 
-Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword } 
+#### <a name="rotate-internal-and-external-infrastructure-secrets-pre-1811-only"></a>Belső és külső infrastruktúra titkok elforgatása (**előtti-1811** csak)
+
+> [!IMPORTANT]
+> Ez a parancs csak akkor az Azure Stackhez **előtti-1811** , elforgatási felosztott belső és külső tanúsítványok.
+>
+> **A *1811 +* nem forgathatók el mind a belső és külső tanúsítványok bármilyen más!!!**
+
+```PowerShell
+# Create a PEP Session
+winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
+$PEPCreds = Get-Credential
+$PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+
+# Create Credentials for the fileshare
+$CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
+$CertShareCreds = Get-Credential
+$CertSharePath = "<NetworkPathOfCertShare>"
+# Run Secret Rotation
+Invoke-Command -Session $PEPSession -ScriptBlock {
+    Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
+}
 Remove-PSSession -Session $PEPSession
 ```
 
 Ezzel a paranccsal az összes Azure Stack belső hálózaton vannak kitéve, az infrastruktúra titkos kulcsok, valamint az Azure Stack külső hálózati infrastruktúra-végpontokra használt TLS-tanúsítványok elforgatása. Start-SecretRotation forog verem által létrehozott összes titkos, és a tanúsítványok szolgálnak, mert külső végpont tanúsítványokat is rotációja.  
-
 
 ## <a name="update-the-baseboard-management-controller-bmc-credential"></a>Az alaplapi felügyeleti vezérlőnek (BMC) hitelesítő adatok frissítése
 
@@ -261,39 +370,40 @@ Az alaplapi felügyeleti vezérlőnek (BMC) figyeli a fizikai kiszolgálókhoz. 
 
 1. Frissítés az Azure Stack fizikai kiszolgálókon található bmc-k az OEM utasításai szerint. A felhasználói fiók nevét és jelszavát minden egyes BMC környezetében azonos kell lennie.
 2. Nyisson meg egy emelt szintű végpontot az Azure Stack-munkamenetekben. Útmutatásért lásd: [a rendszerjogosultságú végpont használata az Azure Stackben](azure-stack-privileged-endpoint.md).
-3. Után a PowerShell parancssort változott **[IP-cím vagy ERCS virtuális gép neve]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezet futtatása `Set-BmcCredemtial` futtatásával `invoke-command`. Paraméterként adja át a kiemelt végponthoz munkamenet-változó. Példa:
+3. Után a PowerShell parancssort változott **[IP-cím vagy ERCS virtuális gép neve]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezet futtatása `Set-BmcCredential` futtatásával `Invoke-Command`. Paraméterként adja át a kiemelt végponthoz munkamenet-változó. Példa:
 
-    ```powershell
+    ```PowerShell
     # Interactive Version
-    $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
-    $PECred = Get-Credential "<Domain>\CloudAdmin" -Message "PE Credentials" 
-    $NewBMCpwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
-    $NewBMCuser = Read-Host -Prompt "Enter New BMC user name"
+    $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
+    $PEPCreds = Get-Credential "<Domain>\CloudAdmin" -Message "PEP Credentials"
+    $NewBmcPwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
+    $NewBmcUser = Read-Host -Prompt "Enter New BMC user name"
 
-    $PEPSession = New-PSSession -ComputerName $PEip -Credential $PECred -ConfigurationName "PrivilegedEndpoint" 
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        # Parameter BMCPassword is mandatory, while the BMCUser parameter is optional.
-        Set-Bmccredential -bmcpassword $using:NewBMCpwd -bmcuser $using:NewBMCuser
+        # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
+        Set-BmcCredential -BmcPassword $using:NewBmcPwd -BmcUser $using:NewBmcUser
     }
     Remove-PSSession -Session $PEPSession
     ```
-    
-    A statikus PowerShell-verzió adódnak a Jelszavaival, kódsorok is használhatja:
-    
-    ```powershell
-    # Static Version
-    $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
-    $PEUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
-    $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -Force
-    $PECred = New-Object System.Management.Automation.PSCredential ($PEUser, $PEpwd) 
-    $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -Force
-    $NewBMCuser = "<New BMC User name>" 
 
-    $PEPSession = New-PSSession -ComputerName $PEip -Credential $PECred -ConfigurationName "PrivilegedEndpoint" 
+    A statikus PowerShell-verzió adódnak a Jelszavaival, kódsorok is használhatja:
+
+    ```PowerShell
+    # Static Version
+    $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
+    $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
+    $PEPPwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
+    $PEPCreds = New-Object System.Management.Automation.PSCredential ($PEPUser, $PEPPwd)
+    $NewBmcPwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force
+    $NewBmcUser = "<New BMC User name>"
+
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
-        Set-Bmccredential -bmcpassword $using:NewBMCpwd -bmcuser $using:NewBMCuser
+        # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
+        Set-BmcCredential -BmcPassword $using:NewBmcPwd -BmcUser $using:NewBmcUser
     }
     Remove-PSSession -Session $PEPSession
     ```

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: f18af40c67195ee2e1e74c04c0834eea06fb14d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1f5eb085239ac985aa3355b1e91dac9639827339
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191954"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155081"
 ---
 # <a name="contoso-migration-overview"></a>Contoso áttelepítése: Áttekintés
 
@@ -39,7 +39,7 @@ A felhőbe való migrálásra stratégiák négy tág kategóriába sorolhatók:
 **Áthelyezési** | Gyakran nevezik "lift-and-shift" áttelepítés. Ezt a beállítást nem szükséges módosítania a kódot, és tekintsük át meglévő alkalmazásait az Azure-ban gyorsan. Egyes alkalmazások áttelepítése, amíg az, a kockázata és költsége társított a programkód módosítása nélkül, a felhő előnyeinek. | Ha szeretne gyorsan helyezhet alkalmazásokat a felhőbe.<br/><br/> Ha szeretné helyezni az alkalmazás azt módosítása nélkül.<br/><br/> Amikor kihasználására tervezett alkalmazások, hogy használhatnak olyan [Azure IaaS](https://azure.microsoft.com/overview/what-is-iaas/) méretezhetőség az áttelepítés után.<br/><br/> Ha alkalmazások az Ön számára fontos, de Alkalmazásfunkciók azonnali módosításai nem szükséges.
 **Újrabontása** | Más néven "újracsomagolás", újrabontás minimális módosítását igényli az alkalmazásokhoz, úgy, hogy csatlakozhassanak [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/), és a felhőalapú megoldások használata.<br/><br/> Például áttelepítheti a meglévő alkalmazások Azure App Service vagy az Azure Kubernetes Service (AKS).<br/><br/> Vagy beállítások, például Azure SQL Database felügyelt példányába, Azure Database for MySQL, Azure Database for PostgreSQL, és az Azure Cosmos DB-be lehetett refaktorovat a relációs és nem relációs adatbázisok. | Ha az alkalmazás egyszerűen lehet újracsomagolják működjön az Azure-ban.<br/><br/> Ha a alkalmazni kívánt innovatív DevOps-eljárások az Azure által biztosított, vagy szeretne áttérni a információ a Devopsról stratégiát használ a számítási feladatokhoz.<br/><br/> A újrabontás, gondolja át a meglévő kódbázis, és a rendelkezésre álló fejlesztési szakismeretek hordozhatóságát kell.
 **Újratervezése** | Az áttelepítéshez átszervezése módosításával, és kiterjeszti a alkalmazás funkcióit és optimalizálhatja a felhő méretezhetőségére vonatkozó alkalmazásarchitektúra kódbázis összpontosít.<br/><br/> Ha például érvénytelenítheti a monolitikus alkalmazásokat felbonthatja egy csoportja, amelyek együttműködése az könnyedén méretezheti a rendszert le.<br/><br/> Vagy egy teljes körűen felügyelt DBaaS megoldások, például az Azure SQL Database felügyelt példányába, Azure Database for MySQL, Azure Database for PostgreSQL, és az Azure Cosmos DB a relációs és nem relációs adatbázisok, sikerült újratervezése. | Amikor az alkalmazásokat kell főbb verziók új lehetőségeket építhetnek be, vagy egy felhőalapú platform hatékonyan dolgozhat.<br/><br/> Ha bármit alkalmazás használni kívánt, méretezhetőségi követelményeinek, innovatív Azure DevOps-eljárások vonatkoznak, és kis méretű virtuális gépek használata.
-**Újraépítése** | Építse újra a lépés egy dolgot tovább csökkenthetők az Azure felhőalapú technológiákat használó teljesen új alkalmazás újraépítését vesz igénybe.<br/><br/> Ha például is létrehozhatja zöldmezős natív felhőalapú technológiákkal, mint például az Azure Functions, Azure mesterséges Intelligencia, Azure SQL Database felügyelt példányába és Azure Cosmos DB-alkalmazások. | Ha azt szeretné, hogy a gyors fejlesztést, és a meglévő alkalmazások korlátozottan funkcionalitása és élettartama.<br/><br/> Amikor elkészült, gyorsíthatja fel az üzleti innováció (beleértve az Azure által biztosított fejlesztési és üzemeltetési eljárások), natív felhőalapú technológiákat használó új alkalmazásokat hozhat létre, és előnyökön mesterséges Intelligencia, a Blokkláncok és az IoT előnyeit.
+**Újraépítése** | Építse újra a lépés egy dolgot tovább csökkenthetők az Azure felhőalapú technológiákat használó teljesen új alkalmazás újraépítését vesz igénybe.<br/><br/> Ha például sikerült zöldmezős alkalmazásokat fejleszthet [natív](http://azure.com/cloudnative) technológiák, például az Azure Functions, Azure mesterséges Intelligencia, Azure SQL Database felügyelt példányába és Azure Cosmos DB-hez. | Ha azt szeretné, hogy a gyors fejlesztést, és a meglévő alkalmazások korlátozottan funkcionalitása és élettartama.<br/><br/> Amikor elkészült, gyorsíthatja fel az üzleti innováció (beleértve az Azure által biztosított fejlesztési és üzemeltetési eljárások), natív felhőalapú technológiákat használó új alkalmazásokat hozhat létre, és előnyökön mesterséges Intelligencia, a Blokkláncok és az IoT előnyeit.
 
 ## <a name="migration-articles"></a>Migrálásról szóló cikksorozat
 

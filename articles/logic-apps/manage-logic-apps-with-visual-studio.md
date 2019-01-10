@@ -3,20 +3,20 @@ title: A Visual Studio használatával – Azure Logic Apps logikai alkalmazáso
 description: A logic apps és a Visual Studio Cloud Explorer más Azure-objektumok kezelése
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: dbb38336f0521f8f8e526ad3f5e13829075e7cca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445643"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158145"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások Visual studióval kezelése
 
@@ -62,10 +62,10 @@ A Visual Studióban található összes a logic Apps alkalmazásokat az Azure-el
 
 2. E keresett által alapján **erőforráscsoportok** vagy **erőforrástípusok**, kövesse az alábbi lépéseket:
 
-   * **Erőforráscsoportok**: az Azure-előfizetéshez Cloud Explorer mutatja az adott előfizetéshez tartozó összes erőforráscsoport. 
+   * **Erőforráscsoportok**: Az Azure-előfizetéshez Cloud Explorer mutatja az adott előfizetéshez tartozó összes erőforráscsoport. 
    Bontsa ki az erőforráscsoportot, amely tartalmazza a logikai alkalmazást, majd válassza ki a logikai alkalmazást.
 
-   * **Erőforrástípusok**: bontsa ki az Azure-előfizetésben **Logic Apps**. Miután Cloud Explorer azt mutatja, az előfizetéséhez tartozó összes üzembe helyezett logikai alkalmazáshoz, válassza ki a logikai alkalmazás.
+   * **Erőforrástípusok**: Bontsa ki az Azure-előfizetésben **Logic Apps**. Miután Cloud Explorer azt mutatja, az előfizetéséhez tartozó összes üzembe helyezett logikai alkalmazáshoz, válassza ki a logikai alkalmazás.
 
 <a name="open-designer"></a>
 
@@ -171,7 +171,14 @@ A logikai alkalmazás törlése az Azure Portalról, a Cloud Explorerben nyissa 
 ![A logikai alkalmazás törlése](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
 
 > [!NOTE]
-> Ha töröl egy logikai alkalmazást, nincsenek új futtatások példányosítása. Az összes folyamatban lévő és a függőben lévő futtatásának törölve lesznek. Ha több ezer futtatások, megszakítás jelentős időt vehet igénybe. 
+> Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat. 
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+A logic app projektet a Logic Apps Designerben nyit meg, előfordulhat, hogy nem kap a az Azure-előfizetés kiválasztására szolgáló lehetőség. Ehelyett a logikai alkalmazás megnyílik, amely nem egy használni kívánt Azure-előfizetéssel. Ez a viselkedés akkor fordul elő, mert Miután megnyitotta a logikai alkalmazás .JSON kiterjesztésű fájlt, a Visual Studio gyorsítótárazza az első kijelölt előfizetést későbbi használatra. Ez a probléma megoldása érdekében próbálkozzon az alábbi lépéseket:
+
+* Nevezze át a logikai alkalmazás .JSON kiterjesztésű fájlt. Az előfizetés gyorsítótár attól függ, hogy a fájl nevét. 
+* Eltávolítja a korábban kiválasztott előfizetések *összes* a logic apps, a megoldás törlése a *rejtett* .vs mappát a megoldás könyvtárban. Ezen a helyen az előfizetés adatait tárolja. 
 
 ## <a name="next-steps"></a>További lépések
 

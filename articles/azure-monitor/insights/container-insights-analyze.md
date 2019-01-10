@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185426"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159655"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -98,6 +98,8 @@ A teljesítmény diagramon négy teljesítmény-mérőszámait jeleníti meg:
 - **Csomópontok száma**: A csomópontok száma és a Kubernetes állapota. A fürtcsomópontok jelölt állapotok a *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy együtt a választó a diagram felett a. 
 - **Tevékenységnapló-pod száma**: A pod száma és a Kubernetes állapota. A podok jelöli az állapotok a *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy együtt a a a diagram felett választó. 
 
+A balra vagy jobbra nyíl billentyűk használatával válthat a PERCENTILIS vonalak kulcsok a diagram és a felfelé és lefelé mutató nyílra, az az egyes válthat.
+
 Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen.  Azt mutatja, beleértve való Kubernetes-objektumokat rendszerezése címkék, kijelölt elem tulajdonságainak. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen.  
 
 ![Példa Kubernetes perspektívák tulajdonságait tartalmazó ablaktáblán](./media/container-insights-analyze/perspectives-preview-pane-01.png)
@@ -129,7 +131,7 @@ Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, 
 
 ![Az adatok szűrésének. percentilis kiválasztása](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-Amikor egérmutatót alatt az oszlopdiagram a **Trend** oszlop, minden egyes sávon látható, vagy a CPU, vagy a memória kihasználtsága, attól függően, amelyek metrika van kijelölve, 15 percen belül minta.  
+Amikor egérmutatót alatt az oszlopdiagram a **Trend** oszlop, minden egyes sávon látható, vagy a CPU, vagy a memória kihasználtsága, attól függően, amelyek metrika van kijelölve, 15 percen belül minta. Miután kiválasztotta a trend diagram keresztül billentyűzet, az Alt + Page Up vagy Alt + PAGE DOWN billentyűkkel kulcsok segítségével sávok külön-külön válthat, és az azonos részleteinek beolvasása, mint egy rámutatásra.
 
 ![Sáv diagram rámutatáskor példa trend](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 

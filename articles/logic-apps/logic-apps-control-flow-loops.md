@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 728152c8f9e7d4cceb4b1c8165bbf087927f58e8
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063318"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159485"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
 
@@ -42,7 +42,7 @@ Ha a "Foreach" ciklusokkal az alábbiakban néhány szempontot:
 
 * Beágyazott hurkok, az ismétlések mindig egymás után futnak, nem párhuzamosan. Párhuzamos beágyazott ismétlődő elemek műveletek futtatásához, hozzon létre és [gyermek logikai alkalmazások hívása](../logic-apps/logic-apps-http-endpoint.md).
 
-* A változók a hurkok műveletek kiszámíthatóság lekéréséhez futtassa egymás után ezeket a hurkok.
+* Műveletek változói az egyes hurok iteráció során kiszámíthatóság lekéréséhez futtassa egymás után ezeket a hurkok. Például egyidejűleg zajló véget ér, a növekményes, a csökkentési ikonjához, és változó műveletek hozzáfűzése kiszámíthatóság adja vissza. Azonban minden egyes ismétléskor az egyidejűleg zajló hurokba került, során ezeket a műveleteket előfordulhat, hogy vissza kiszámíthatatlan következményekkel járhat. 
 
 * Műveletek a "Foreach" ciklus használata a [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 kifejezés hivatkozik, és a tömbben található minden elem feldolgozására. Ha nem a tömbben adatok adja meg, a logikai alkalmazás munkafolyamata sikertelen lesz. 
@@ -130,9 +130,9 @@ Alapértelmezés szerint a "Foreach" hurkot a könyvtárfában párhuzamosan fut
 
    ![A "Foreach" ciklus, válassza a "..." > "Beállítások"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. Kapcsolja be a **egyidejűség-vezérlés** beállítás. Helyezze át a **mértékét a párhuzamosság** csúszkát a **1**, és válassza **kész**.
+1. A **egyidejűség-vezérlés**, kapcsolja be a **egyidejűség-vezérlés** beállítást **a**. Helyezze át a **mértékét a párhuzamosság** csúszkát a **1**, és válassza **kész**.
 
-   ![Kapcsolja be a "Egyidejűség-vezérlés" beállítás](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![Egyidejűség-vezérlés bekapcsolása](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
 Ha dolgozik a logikai alkalmazás JSON-definícióját, akkor használhatja a `Sequential` hozzáadásával a beállítás a `operationOptions` paramétert, például:
 

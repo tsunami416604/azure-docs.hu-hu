@@ -1,6 +1,6 @@
 ---
 title: Távoli hozzáférést a helyszíni alkalmazások – Azure Active Directory-alkalmazásproxyval |} A Microsoft Docx
-description: Az Azure Active Directory Application Proxy a helyi webes alkalmazásokhoz való biztonságos távoli hozzáférést biztosít. Egy egyszeri bejelentkezés az Azure ad-hez, miután felhasználók hozzáférhessenek felhő- és a helyszíni alkalmazásokhoz egy külső URL-cím vagy egy belső alkalmazás portálon keresztül. Például az alkalmazásproxy biztosíthat távoli hozzáférést és egyszeri bejelentkezést, a távoli asztal, a Sharepoint, a Teams, a Tableau, a Qlik és a üzletági (LOB) alkalmazások.
+description: Az Azure Active Directory Application Proxy a helyi webes alkalmazásokhoz való biztonságos távoli hozzáférést biztosít. Egy egyszeri bejelentkezés az Azure ad-hez, miután felhasználók hozzáférhessenek felhő- és a helyszíni alkalmazásokhoz egy külső URL-cím vagy egy belső alkalmazás portálon keresztül. Például az alkalmazásproxy biztosíthat távoli hozzáférést és egyszeri bejelentkezést, a távoli asztal, a SharePoint, a Teams, a Tableau, a Qlik és a üzletági (LOB) alkalmazások.
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 21e11575fc90e761f748af4bf9c89dd4614c986e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 94330c9d53b69d86ff05fe2f0164cb7559e9d389
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078898"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159128"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés a helyszíni alkalmazások Azure Active Directory Application Proxy használatával 
 
-Az Azure Active Directory Application Proxy a helyi webes alkalmazásokhoz való biztonságos távoli hozzáférést biztosít. Egy egyszeri bejelentkezés az Azure ad-hez, miután felhasználók hozzáférhessenek felhő- és a helyszíni alkalmazásokhoz egy külső URL-cím vagy egy belső alkalmazás portálon keresztül. Például az alkalmazásproxy biztosíthat távoli hozzáférést és egyszeri bejelentkezést, a távoli asztal, a Sharepoint, a Teams, a Tableau, a Qlik és a üzletági (LOB) alkalmazások.
+Az Azure Active Directory Application Proxy a helyi webes alkalmazásokhoz való biztonságos távoli hozzáférést biztosít. Egy egyszeri bejelentkezés az Azure ad-hez, miután felhasználók hozzáférhessenek felhő- és a helyszíni alkalmazásokhoz egy külső URL-cím vagy egy belső alkalmazás portálon keresztül. Például az alkalmazásproxy biztosíthat távoli hozzáférést és egyszeri bejelentkezést, a távoli asztal, a SharePoint, a Teams, a Tableau, a Qlik és a üzletági (LOB) alkalmazások.
 
 Az Azure AD-alkalmazásproxy van:
 

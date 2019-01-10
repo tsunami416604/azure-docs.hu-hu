@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1c2f7b46daf7b96d3a6f47dac647d5ed90461e8e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633010"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156255"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -121,7 +121,7 @@ Konfigurálhatja a felhasználói felületének testreszabását, másolja a **C
 3. Nyissa meg a kiterjesztésű fájlt. Ha például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 4. Illessze be a teljes tartalmát a **ContentDefinitions** gyermekeként kimásolt elem a **BuildingBlocks** elemet. 
 5. Keresse meg a **ContentDefinition** tartalmazó `Id="api.signuporsignin"` XML-másolta.
-6. Módosítsa az értéket a **LoadUri** URL-címét a tárolóba feltöltött HTML-fájl. Például: https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html.
+6. Módosítsa az értéket a **LoadUri** URL-címét a tárolóba feltöltött HTML-fájl. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
     
     Az egyéni házirendet a következőhöz hasonlóan kell kinéznie:
 

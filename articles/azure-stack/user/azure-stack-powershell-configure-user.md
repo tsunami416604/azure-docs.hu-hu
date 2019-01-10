@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: 75b942ea99dace60b3c086b84e3b3e2157f8b821
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf0d0f5bb87d1a7750775d3e22c8c50dcd8cf24d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093726"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159434"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Csatlakozás a PowerShell-lel az Azure Stack felhasználói
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A cikk ismerteti a lépéseket az Azure Stack-példányhoz való csatlakozáshoz. Csatlakoznia kell a PowerShell-lel az Azure Stack-erőforrások kezeléséhez. Ha például a PowerShell használatával is előfizethetnek azokra, virtuális gépek létrehozása és üzembe helyezése Azure Resource Manager-sablonok. PowerShell-parancsmagok végrehajtásához.
 
@@ -50,6 +50,7 @@ Győződjön meg arról, hogy a következő parancsfájl-változókat cserélje 
 ## <a name="connect-with-azure-ad"></a>Az Azure AD Connect
 
 ```PowerShell  
+    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
     # Set your tenant name
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"

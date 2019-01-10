@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c7eaecf74f56035c39267407e6a965c57897b1ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015440"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159026"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -85,10 +85,10 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| Az eseményindító egyidejűségi | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti egy időben, vagy a párhuzamosan futtatható logic app-példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maximális várakozási futtatások | 100 | Az alapértelmezett érték 10. Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát 0 és 100 közötti értéket szélsőértékeket is beleértve, lásd: [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Foreach-elemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
-| Foreach-párhuzamosság | 50 | Az alapértelmezett érték 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Az alapértelmezett korlát a egy értéke 1 és 50 között szélsőértékeket is beleértve, című témakör nyújt [módosítása "for each" egyidejűségi](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Az eseményindító egyidejűségi | Ha az egyidejűség korlátozza 50 | Az eseményindító egyidejűségi vezérlő bekapcsolása, ha az alapértelmezett korlát: 25. Ez a korlátozás ismerteti egy időben, vagy a párhuzamosan futtatható logic app-példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi korlátját](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximális várakozási futtatások | Ha az egyidejűség korlátozza 100 | Az eseményindító egyidejűségi vezérlő bekapcsolása, ha az alapértelmezett korlát a 10. Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát 0 és 100 közötti értéket szélsőértékeket is beleértve, lásd: [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Foreach tömbelemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
+| Foreach-párhuzamosság | Ha az egyidejűség korlátozza 50 | Ha bekapcsolja a hurok az egyidejűség-vezérlés, az alapértelmezett korlát a 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Módosítsa az alapértelmezett korlát 1 és 50 között egy értékre szélsőértékeket is beleértve, lásd: [módosítása "for each" egyidejűségi korlát](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | SplitOn-elemek | 100 000 | | 
 | UNTIL-iterációk | 5000 | | 
 |||| 
@@ -119,9 +119,9 @@ Nyissa meg a fenti ezeket a korlátokat, a normál feldolgozása, vagy futtassa 
 
 | Name (Név) | Korlát | Megjegyzések |
 |------|-------|-------|
-| FTP | 50 MB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
-| SFTP | 50 MB | Ezt a korlátot, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md) , vagy tekintse meg [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
-| AZ SFTP-SSH | 1 GB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+| FTP | 50 MB | Túllépi ezt a határt, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+| SFTP | 50 MB | Túllépi ezt a határt, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md) vagy [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+| AZ SFTP-SSH | 1 GB | Túllépi ezt a határt, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
 |||| 
 
 <a name="request-limits"></a>

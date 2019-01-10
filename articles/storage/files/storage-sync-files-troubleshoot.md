@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 7aa5ccb402bf8648668a5eb00d6a740caf7bf3d4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055149"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157632"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -553,6 +553,16 @@ Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol sz
 
 Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten található, és nem újraelemzési pont vagy meglévő kiszolgálói végpont.
 
+<a id="-2134375817"></a>**A szinkronizálás nem sikerült, mert a szűrő-illesztőprogram verziója nem kompatibilis az ügynök verziója**  
+| | |
+|-|-|
+| **HRESULT** | 0x80C80277 |
+| **HRESULT (decimális)** | -2134375817 |
+| **Hibakarakterlánc** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
+| **Szervizelés szükséges** | Igen |
+
+Ez a hiba oka, hogy a Felhőbeli Rétegezés szűrő illesztőprogram (StorageSync.sys) betöltött verziója nem kompatibilis a Storage Sync-ügynök (FileSyncSvc) szolgáltatás. Ha az Azure File Sync ügynök frissítve lett, indítsa újra a kiszolgálót, hogy a telepítés befejezéséhez. Ha a hiba továbbra is fennáll, az ügynök eltávolítása, indítsa újra a kiszolgálót, majd telepítse újra az Azure File Sync ügynök.
+
 <a id="-2134376373"></a>**A szolgáltatás jelenleg nem érhető el.**  
 | | |
 |-|-|
@@ -875,5 +885,5 @@ Ha a probléma továbbra is fennáll, futtassa a AFSDiag eszköz:
 
 ## <a name="see-also"></a>Lásd még
 - [Az Azure Files – gyakori kérdések](storage-files-faq.md)
-- [A Windows Azure Files-problémák hibaelhárítása](storage-troubleshoot-windows-file-connection-problems.md)
+- [Azure Files-problémák hibaelhárítása Windowson](storage-troubleshoot-windows-file-connection-problems.md)
 - [A Linux Azure Files-problémák hibaelhárítása](storage-troubleshoot-linux-file-connection-problems.md)

@@ -1,25 +1,25 @@
 ---
-title: Fenyegetések észlelése – az Azure SQL Database felügyelt példány |} A Microsoft Docs
+title: Fenyegetések észlelése – konfigurálása az Azure SQL Database felügyelt példány |} A Microsoft Docs
 description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések a felügyelt példány az adatbázishoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: c59d0ea489343dbf748412910c4f759f601de0e2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042376"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158669"
 ---
-# <a name="azure-sql-database-managed-instance-threat-detection-preview"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési funkciójának (előzetes verzió)
+# <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési funkciójának (előzetes verzió) konfigurálása
 
 Az Azure SQL [Fenyegetésészlelés](sql-database-threat-detection-overview.md) a [SQL Database felügyelt példányain](sql-database-managed-instance-index.yml) észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A Fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [Fenyegetésészlelési riasztásokat](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
 

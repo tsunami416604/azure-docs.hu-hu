@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091487"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159689"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai (előzetes verzió)
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Az Azure Data Box-lemezek biztonsági és adatvédelmi
 
 A cikk az Azure Data Box Disk biztonsági szolgáltatásait ismerteti, amelyekkel biztosítható a Data Box megoldás összetevőinek és bennük tárolt adatoknak a védelme. 
-
-> [!IMPORTANT]
-> A Data Box Disk előzetes verzióban érhető el. A megoldás üzembe helyezése előtt tekintse át [az Azure az előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="data-flow-through-components"></a>Az adatok áramlása az összetevők között
 

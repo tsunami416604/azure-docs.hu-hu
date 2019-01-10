@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: 7afa628ea455aa28f1717de8da66b631baeee4f1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a93a3db3010fb9e9d2270414cadeae86b70bb8d0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870453"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157462"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurálja az SSL-szabályzat verziók és az Application Gateway-titkosítócsomagjai
 
@@ -106,7 +106,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Egyéni SSL-szabályzat konfigurálása
 
-Egyéni SSL-szabályzat konfigurálásakor adja meg a következő paramétereket: PolicyType, MinProtocolVersion, CipherSuite és ApplicationGateway. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway. 
+Egyéni SSL-szabályzat konfigurálásakor adja át a következő paraméterekkel: PolicyType, MinProtocolVersion, CipherSuite és ApplicationGateway. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway. 
 
 Az alábbi példa egy application gateway beállítása egy egyéni SSL-szabályzat. Azt állítja be a minimális protokoll verziója `TLSv1_1` , és lehetővé teszi az alábbi titkosító csomagok:
 
@@ -139,7 +139,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Hozzon létre egy application gateway egy előre meghatározott SSL-szabályzat
 
-Egy előre megadott SSL-szabályzat konfigurálásakor adja meg a következő paramétereket: PolicyType, PolicyName és ApplicationGateway. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway.
+Egy előre megadott SSL-szabályzat konfigurálásakor adja át a következő paraméterekkel: PolicyType, PolicyName és ApplicationGateway. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway.
 
 Az alábbi példa egy új alkalmazásátjárót hoz létre egy előre meghatározott SSL-szabályzat.
 
@@ -196,7 +196,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName $rg.Re
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Meglévő application gateway egy előre meghatározott SSL-szabályzat frissítése
 
-Egyéni SSL-szabályzat beállításához át a következő paramétereket: **PolicyType**, **MinProtocolVersion**, **CipherSuite**, és **ApplicationGateway**. Egy előre megadott SSL-szabályzat beállításához át a következő paramétereket: **PolicyType**, **PolicyName**, és **ApplicationGateway**. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway.
+Egyéni SSL-szabályzat beállításához adja át a következő paraméterekkel: **PolicyType**, **MinProtocolVersion**, **CipherSuite**, és **ApplicationGateway**. Egy előre megadott SSL-szabályzat beállításához adja át a következő paraméterekkel: **PolicyType**, **PolicyName**, és **ApplicationGateway**. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway.
 
 Az alábbi példában nincsenek egyéni házirend és a házirend az előre meghatározott Kódminták. Állítsa vissza a használni kívánt házirendet.
 
@@ -207,7 +207,7 @@ $RG = "YourResourceGroupName"
 
 $AppGw = get-azurermapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 
-# Choose either custom policy or prefedined policy and uncomment the one you want to use.
+# Choose either custom policy or predefined policy and uncomment the one you want to use.
 
 # SSL Custom Policy
 # Set-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256" -ApplicationGateway $AppGw

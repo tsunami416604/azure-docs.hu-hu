@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 1fce5b98d9e12ad373a4ca9d851fb717b3f47045
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250356"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154810"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>PowerShell-lel a klasszikus üzemi modellben végponti hozzáférés-vezérlési listák felügyelete
 Hozzon létre, és kezelheti a hálózati hozzáférés-vezérlési listák (ACL) végpontok Azure PowerShell-lel vagy a felügyeleti portálon. Ebben a témakörben eljárásokat találhat a gyakori feladatokhoz ACL, amely a PowerShell használatával is elvégezheti. A lista az Azure PowerShell parancsmagok megtekintéséhez [Azure Management Cmdlets](https://go.microsoft.com/fwlink/?LinkId=317721). ACL-lel kapcsolatos további információkért lásd: [Mi az a hálózati hozzáférés-vezérlési lista (ACL)?](virtual-networks-acl.md). Ha azt szeretné, a hozzáférés-vezérlési listák felügyelete a felügyeleti portál használatával, lásd: [hogyan állítsa be végpontok egy virtuális géphez](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -58,7 +58,7 @@ Az alábbi példában látható létrehozhat egy új ACL-t olyan szabályokat ta
         $acl1 = New-AzureAclConfig
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
-            –Description "Sharepoint ACL config"
+            –Description "SharePoint ACL config"
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"

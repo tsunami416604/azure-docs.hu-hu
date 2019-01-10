@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2017
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 8603ccf4643d7b1abd977cc372cde3fe24f98e07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: e4cb22866fa2885208b912c88d56243ac7826480
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724866"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159247"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure portal használatával
 
@@ -49,12 +49,12 @@ category | Ez a tulajdonság nem mindig **ServiceHealth**.
 resourceId | Az érintett erőforrás erőforrás-Azonosítóját.
 Properties.Title | A honosított címe Ehhez a kommunikációhoz. Angol az alapértelmezett érték.
 Properties.Communication | A HTML-kód kommunikációt honosított részleteit. Angol az alapértelmezett érték.
-Properties.incidentType | A következő értékek egyikét: **Beavatkozás szükséges**, **információk**, **incidens**, **karbantartási**, vagy **biztonsági**.
+Properties.incidentType | A következő értékek egyikét: **Beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartási**, vagy **biztonsági**.
 Properties.trackingId | Az incidens, amelyhez ez az esemény társítva. Ezzel az incidenshez kapcsolódó események összekapcsolását.
 Properties.impactedServices | Az escape-karakterrel megjelölt JSON-blobját, amely ismerteti a szolgáltatások és régiók az incidens által érintett. A tulajdonság magában foglalja a szolgáltatások listáját, amelyek mindegyike rendelkezik egy **ServiceName**, és az érintett régiók listája, amelyek mindegyike rendelkezik egy **RegionName**.
 Properties.defaultLanguageTitle | A kommunikáció, angol nyelven.
 Properties.defaultLanguageContent | A kommunikáció egyszerű szöveges vagy HTML-kód angol nyelven.
-Properties.Stage | A lehetséges értékei **incidens**, és **biztonsági** vannak **aktív,** **Megoldva** vagy **RCA**. A **beavatkozás szükséges** vagy **információk** az egyetlen érték **aktív.** A **karbantartási** vannak: **Aktív**, **tervezett**, **InProgress**, **meg lett szakítva**, **Újraütemezte**, **megoldott**, vagy **teljes**.
+Properties.Stage | A lehetséges értékei **incidens**, és **biztonsági** vannak **aktív,** **Megoldva** vagy **RCA**. A **beavatkozás szükséges** vagy **tájékoztató** az egyetlen érték **aktív.** A **karbantartási** vannak: **Aktív**, **tervezett**, **InProgress**, **meg lett szakítva**, **Újraütemezte**, **megoldott**, vagy **teljes**.
 Properties.communicationId | A kommunikáció, amelyhez ez az esemény társítva.
 
 ### <a name="details-on-service-health-level-information"></a>A Szolgáltatásállapot-szintű adatok részletei
@@ -71,7 +71,7 @@ Properties.communicationId | A kommunikáció, amelyhez ez az esemény társítv
             <dd>Standard tervezett karbantartás</dd>
         </dl>
     </li>
-    <li><b>Információk</b> (properties.incidentType információk ==) <dl>
+    <li><b>Információk</b> (properties.incidentType tájékoztató ==) <dl>
             <dt>Tájékoztató</dt>
             <dd>Rendszergazda szükség lehet a meglévő szolgáltatások gyakorolt hatás megakadályozása</dd>
         </dl>

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások keresése, PHP – Translator Text API'
+title: Szavak kétnyelvű szótárban, a PHP – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és PHP használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 4d48ab8d0178b2d3fbcba2ee631ee97b30518f88
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: ff1f0a97667260fa19c46bec6901113ff696aaab
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649766"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156884"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-php"></a>Rövid útmutató: Alternatív fordítások keresése a Translator Text REST API (PHP) használatával
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban, a PHP használatával
 
 Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
 

@@ -5,15 +5,15 @@ ms.service: ansible
 keywords: az ansible, azure, devops, bash, forgatókönyv, méretezhető, automatikus skálázási, virtuális gép, virtuálisgép-méretezési csoportot, vmss
 author: tomarchermsft
 manager: jeconnoc
-ms.author: yuwzho, kyliel
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.openlocfilehash: b573eecb2f5c67014901f0006cf1087a261cf9c4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7721dba37131616122f8a5a902e3c63de5c7157f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049945"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157054"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Az Azure-ban az Ansible beállítása egy virtuálisgép-méretezési csoport automatikus méretezése
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti a virtuálisgép-méretezési csoportokat (VMSS) az Azure-ban, ahogy azt bármely más Azure-erőforrással tenné. 
@@ -29,7 +29,7 @@ Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuál
 > Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. 
 
 ## <a name="auto-scale-based-on-a-schedule"></a>Ütemezés alapján automatikus skálázás   
-Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezekkel a korlátokkal szabályozhatja a költségeket a virtuálisgép-példányok folyamatos létrehozásának mellőzésével, valamint megtalálhatja az egyensúlyt az elfogadható teljesítményt és a horizontális leskálázási események során fennmaradó példányok minimális száma között. 
+Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségek Virtuálisgép-példányok nem folyamatosan létrehozásával, és elosztja a elfogadható teljesítményt, mely egy horizontális leskálázási esemény is példányok minimális száma. 
 
 Méretezhető és méretezheti az ismétlődő ütemezés szerint vagy egy adott dátum szerint a Virtual Machine Scale Sets ki. Ez a szakasz bemutatja egy minta az Ansible-forgatókönyv, amely létrehoz egy automatikus skálázási beállítás, amely növeli a három, a méretezési csoportokban, 10:00 csendes-óceáni időzóna minden hétfőn, a Virtuálisgép-példányok számát. 
 

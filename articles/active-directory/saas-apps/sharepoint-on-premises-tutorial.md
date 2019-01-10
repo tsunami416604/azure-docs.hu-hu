@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 2fc81cc06063c0fee0a4f875b4b0f8bd1343cf85
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 789f58699f39f4b7eac453f4cf79ea55a5bfc8d3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810457"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Az Azure Active Directory-integráció a helyszíni SharePoint
 
@@ -111,14 +111,14 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a helyszíni SharePoint, haj
     c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [helyszíni SharePoint-ügyfél-támogatási csapatának](https://support.office.com/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-azonosító és válasz URL-cím. Kapcsolattartó [helyszíni SharePoint-ügyfél-támogatási csapatának](https://support.office.com/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
     > [!Note]
-    > Vegye le a fájl elérési útját, amelyre letöltötte a tanúsítványfájl használata később a PowerShell-parancsfájlt a konfigurációhoz szükség szerint.
+    > Megjegyzés: a fájl elérési útja, amelybe letöltötte a tanúsítványfájlt. Később a PowerShell-parancsfájlt a fájl a konfiguráció szükséges.
 
 6. Az a **beállítása a helyszíni SharePoint-** területén másolja megfelelően a követelmény a megfelelő URL-címe. A **egyszeri bejelentkezési szolgáltatás URL-cím**, az érték a következő mintának: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
@@ -175,7 +175,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a helyszíni SharePoint, haj
     ![A hitelesítésszolgáltató konfigurálása](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > A külső felhasználók némelyike nem képes az egyszeri bejelentkezés integráció egyszerű lesz összekeveredett értéket az alábbihoz hasonló módon lesz `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Hamarosan a Microsoft lehetővé teszi az ügyfeleknek alkalmazáskonfigurációról hogyan kezeli az egyszerű felhasználónév a felhasználó típusától függően. Ezt követően a vendégfelhasználók egyszeri Bejelentkezéssel a szervezeti alkalmazottak zökkenőmentesen adatokként képesnek kell lennie.
+    > Néhány külső felhasználók nem tudják Felhasználónevük lesz összekeveredett értékének például az egyszeri bejelentkezés integráció használandó `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Hamarosan lehetővé teszi a Microsoft egyéni alkalmazáskonfigurációjából kezeli az egyszerű felhasználónév a felhasználó típusától függően. Ezt követően a vendégfelhasználók egyszeri Bejelentkezéssel a szervezeti alkalmazottak zökkenőmentesen adatokként képesnek kell lennie.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

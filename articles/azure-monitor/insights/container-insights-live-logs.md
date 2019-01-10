@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: da11bb0669bf6bde2c65b2a7a0badaa1ae35abda
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: MT
+ms.openlocfilehash: 27368ec1f41553950ab1689f8b37c15d14d29808
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189123"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156663"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Tároló naplók valós időben az Azure Monitor szolgáltatással tárolók (előzetes verzió) megtekintése
 Ez a szolgáltatás, amely jelenleg előzetes verzióban érhető el, az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) valós idejű betekintést biztosít a kubectl-parancsok futtatása nélkül. Ezt a beállítást, ha új panelen megjelenik a tárolók teljesítmény adattábla alább a **tárolók** megtekintése, valamint élő naplózás valós időben kapcsolatos hibák elhárítása További segítség a tároló motor által generált mutatja.  
@@ -65,7 +65,7 @@ Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a
 2. A fürt szabály kötést létrehozni a következő parancs futtatásával: `kubectl create -f LogReaderRBAC.yaml`. 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Az AKS konfigurálása az Azure Active Directoryval
-Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ha első alkalommal konfigurál, [integrálása az Azure Active Directory és az Azure Kubernetes Service](../../aks/aad-integration.md). A lépések létrehozása során a [ügyfélalkalmazás](../../aks/aad-integration.md#create-client-application) , és adja meg a **átirányítási URI-**, másik URI hozzáadása a listához kell ** https://ininprodeusuxbase.microsoft.com/x.  
+Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ha első alkalommal konfigurál, [integrálása az Azure Active Directory és az Azure Kubernetes Service](../../aks/aad-integration.md). A lépések létrehozása során a [ügyfélalkalmazás](../../aks/aad-integration.md#create-client-application) , és adja meg a **átirányítási URI-**, másik URI hozzáadása a listához kell `https://ininprodeusuxbase.microsoft.com/*`.  
 
 >[!NOTE]
 >Az egyszeri bejelentkezést az Azure Active Directory konfigurálása hitelesítési csak egy új AKS-fürt kezdeti telepítése során is elvégezhető. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be.  

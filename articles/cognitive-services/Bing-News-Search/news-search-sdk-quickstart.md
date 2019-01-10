@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258763"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156799"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>Gyors útmutató: Hajtsa végre egy hírkeresés a Bing News Search SDK esetében azC#
 
@@ -35,14 +35,14 @@ A [NuGet News Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.
 * Newtonsoft.Json
 
 ## <a name="news-search-client"></a>News Search-ügyfél
-A `NewsSearchAPI` ügyfél egy példányának létrehozásához adja hozzá a using parancsot:
+Hozzon létre egy példányt, a `NewsSearchClient`, adja hozzá a direktíva használatával:
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
 Ezután példányosítsa az ügyfelet:
 ```
-var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
@@ -56,7 +56,7 @@ Elemezze az előző lekérdezés eredményeiben visszaadott híreket:
 ```
 if (newsResults.Value.Count > 0)
 {
-    var firstNewsResult = newsResults.Value.First();
+    var firstNewsResult = newsResults.Value[0];
 
     Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
     Console.WriteLine($"News result count: {newsResults.Value.Count}");
@@ -64,7 +64,7 @@ if (newsResults.Value.Count > 0)
     Console.WriteLine($"First news url: {firstNewsResult.Url}");
     Console.WriteLine($"First news description: {firstNewsResult.Description}");
     Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
+    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
 }
 
 else
@@ -88,7 +88,7 @@ namespace NewsSrchSDK
     {
         static void Main(string[] args)
         {
-            var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -141,7 +141,7 @@ namespace NewsSrchSDK
 ## <a name="recent-news-freshness-and-sortby-parameters"></a>Friss hírek, freshness és sortBy paraméterek
 A következő kód megkeresi a legfrissebb híreket az „Artificial Intelligence” kifejezésre a `freshness` és a `sortBy` paraméterekkel. A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat következő értékeit: `totalEstimatedMatches`, `name`, `url`, `description`, `published time` és a szolgáltató `name` értéke.
 ```
-        public static void NewsSearchWithFilters(NewsSearchAPI client)
+        public static void NewsSearchWithFilters(NewsSearchClient client)
         {
             try
             {
@@ -184,7 +184,7 @@ A következő kód megkeresi a legfrissebb híreket az „Artificial Intelligenc
 ## <a name="category-news-safe-search"></a>Kategóriák szerinti hírek, biztonságos keresés
 A következő kód kategóriák szerint keres mozis vagy televíziós szórakozással kapcsolatos híreket biztonságos keresés használatával.  A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat következő értékeit: `category`, `name`, `url`, `description`, `published time` és a szolgáltató `name` értéke.
 ```
-        public static void NewsCategory(NewsSearchAPI client)
+        public static void NewsCategory(NewsSearchClient client)
         {
             try
             {
@@ -226,7 +226,7 @@ A következő kód kategóriák szerint keres mozis vagy televíziós szórakoz�
 ## <a name="trending-topics"></a>Népszerű témakörök
 A következő kód népszerű témakörök szerint keres híreket a Bingen. A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat `name`, `text of query`, `webSearchUrl`, `newsSearchUrl` és `image.Url` értékét.
 ```
-        public static void TrendingTopics(NewsSearchAPI client)
+        public static void TrendingTopics(NewsSearchClient client)
         {
             try
             {

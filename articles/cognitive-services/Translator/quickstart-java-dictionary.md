@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Másodlagos fordításokat, a Java - Get a Translator Text API'
+title: 'Gyors útmutató: Szavak kétnyelvű szótárban, a Java - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebből a gyorsútmutatóból megtudhatja, hogyan alternatív fordítások beolvasni egy kifejezést, és is ezek használati példák az eredetitől eltérő fordításokat, Java és a Translator Text API használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 2c5517b470e46423631f6a63a24ceccf5de0a919
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 001aa2a813816562cdc5e95a00b858d8958a6756
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888824"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157819"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-java"></a>Rövid útmutató: Java használatával alternatív fordítások beolvasása a Translator Text API használatával
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban, a Java használatával
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan alternatív fordítások beolvasni egy kifejezést, és is ezek használati példák az eredetitől eltérő fordításokat, Java és a Translator Text API használatával.
 

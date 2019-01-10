@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: de98387b0c7d5eb3c5ca99f9aa31619397e2aadf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4aa62319ee37b2f82455d1a3c7ad2d224988d93e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944579"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160063"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack hálózati szempontjai
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack-hálózatok számos, az Azure-hálózatok által kínált szolgáltatásokkal rendelkezik. Vannak azonban néhány fontos különbség, hogy az Azure Stack hálózat üzembe helyezése előtt tisztában kell lennie.
 
 Ez a cikk az Azure Stack hálózati és annak szolgáltatásait egyedi szempontjai áttekintést nyújt. Azure Stack és az Azure magas szintű különbségeit kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
-## <a name="cheat-sheet-networking-differences"></a>Hasznos tanácsok: hálózatkezelés különbségek
+## <a name="cheat-sheet-networking-differences"></a>Hasznos tanácsok: Hálózatkezelés különbségek
 
 | Szolgáltatás | Szolgáltatás | Azure (globális) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,7 +54,6 @@ Ez a cikk az Azure Stack hálózati és annak szolgáltatásait egyedi szempontj
 |  | Alapértelmezett átjáró hely | Az Azure támogatja az alapértelmezett hely konfigurációs a kényszerített bújtatás. | Még nem támogatott. |
 |  | Átjáró átméretezése | Az Azure támogatja az átjáró átméretezése az üzembe helyezés után. | Újra méretezése nem támogatott. |
 |  | Aktív-aktív konfiguráció | Támogatott | Még nem támogatott. |
-|  | Az IPSec/IKE-házirendek | Az Azure által támogatott egyéni IPSec szabályzatkonfiguráció. | Még nem támogatott. |
 |  | UsePolicyBasedTrafficSelectors | Az Azure támogatja a szabályzatalapú forgalomválasztóinak útvonalalapú átjárót kapcsolatokkal. | Még nem támogatott. |
 | Terheléselosztó | SKU | Alapszintű és Standard Load Balancer Terheléselosztók támogatottak. | Csak az alapszintű Load Balancer használata támogatott.  Az SKU tulajdonság nem támogatott. |
 |  | Zóna | Rendelkezésre állási zónák használata támogatott. | Még nem támogatott |
@@ -65,11 +64,9 @@ Ez a cikk az Azure Stack hálózati és annak szolgáltatásait egyedi szempontj
 |  | Hatékony hozzáférés-vezérlési listák beolvasása | Támogatott | Még nem támogatott. |
 |  | Gyorsított hálózatkezelés engedélyezéséhez | Támogatott | Még nem támogatott. |
 |  | IP-továbbítás | Alapértelmezés szerint le van tiltva.  Engedélyezhető. | Ezzel a beállítással vizualizációtól nem támogatott.  Az alapértelmezés szerint. |
-|  | Több IP-konfiguráció illesztőnként | Támogatott | Még nem támogatott. |
 |  | Alkalmazásbiztonsági csoportok | Támogatott | Még nem támogatott. |
 |  | Belső DNS-névcímke | Támogatott | Még nem támogatott. |
 |  | Magánhálózati IP-cím verziója | Az IPv6 és IPv4 használata támogatott. | Kizárólag az IPv4 használata támogatott. |
-|  | Elsődleges IP-konfiguráció | Támogatott. Azonosítja a adapter elsődleges IP-konfigurációja. | Még nem támogatott. |
 | Network Watcher | Network Watcher bérlői hálózathoz figyelési képességek | Támogatott | Még nem támogatott. |
 | Tartalomkézbesítési hálózat (CDN) | Content Delivery Network-profilok | Támogatott | Még nem támogatott. |
 | Alkalmazásátjáró | 7. rétegbeli terheléselosztási | Támogatott | Még nem támogatott. |

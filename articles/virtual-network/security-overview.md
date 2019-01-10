@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: b6b3111928baf7fa52a5d87d818e15302b96e790
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025895"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159060"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -71,15 +71,18 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
 * **MicrosoftContainerRegistry** (csak Resource Manager): Ez a címke a Microsoft Container Registry szolgáltatás címelőtagjait. Ha a *MicrosoftContainerRegistry* értéket adja meg, a MicrosoftContainerRegistry felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést a MicrosoftContainerRegistry szolgáltatáshoz, a régiót a MicrosoftConainerRegistry.[régió neve] formátumban adhatja meg. 
 * **AzureContainerRegistry** (csak Resource Manager): Ez a címke az Azure Container Registry szolgáltatás címelőtagjait. Ha az *AzureContainerRegistry* értéket adja meg, az AzureContainerRegistry felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AzureContainerRegistry szolgáltatáshoz, a régiót az AzureConainerRegistry.[régió neve] formátumban adhatja meg. 
 * **Az App Service** (csak Resource Manager): Ez a címke az Azure App Service szolgáltatás címelőtagjait. Ha az *AppService* értéket adja meg, az AppService szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AppService szolgáltatáshoz, a régiót az AppService.[régió neve] formátumban adhatja meg. 
-* **AppServiceManagement** (csak Resource Manager): Ez a címke az Azure App Service Management szolgáltatás címelőtagjait. Ha az *AppServiceManagement* értéket adja meg, az AppServiceManagement szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AppServiceManagement szolgáltatáshoz, a régiót az AppServiceManagement.[régió neve] formátumban adhatja meg. 
-* **Az ApiManagement** (csak Resource Manager): Ez a címke az Azure Api Management szolgáltatás címelőtagjait. Ha az *ApiManagement* értéket adja meg, az ApiManagement szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az ApiManagement szolgáltatáshoz, a régiót az ApiManagement.[régió neve] formátumban adhatja meg. 
+* **AppServiceManagement** (csak Resource Manager): Ez a címke az Azure App Service Management szolgáltatás címelőtagjait. Ha az *AppServiceManagement* értéket adja meg, az AppServiceManagement szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. 
+* **Az ApiManagement** (csak Resource Manager): Ez a címke az Azure Api Management szolgáltatás címelőtagjait. Ha az *ApiManagement* értéket adja meg, az ApiManagement szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható.  
 * **AzureConnectors** (csak Resource Manager): Ez a címke az Azure-összekötő szolgáltatás címelőtagjait. Ha az *AzureConnectors* értéket adja meg, az AzureConnectors szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AzureConnectors szolgáltatáshoz, a régiót az AzureConnectors.[régió neve] formátumban adhatja meg. 
-* **GatewayManager** (csak Resource Manager): Ez a címke az Azure-átjáró Manager szolgáltatás címelőtagjait. Ha a *GatewayManager* értéket adja meg, a GatewayManager szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést a GatewayManager szolgáltatáshoz, a régiót a GatewayManager.[régió neve] formátumban adhatja meg. 
+* **GatewayManager** (csak Resource Manager): Ez a címke az Azure-átjáró Manager szolgáltatás címelőtagjait. Ha a *GatewayManager* értéket adja meg, a GatewayManager szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható.  
 * **AzureDataLake** (csak Resource Manager): Ez a címke az Azure Data Lake szolgáltatás címelőtagjait. Ha az *AzureDataLake* értéket adja meg, az AzureDataLake szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. 
 * **AzureActiveDirectory** (csak Resource Manager): Ez a címke az AzureActiveDirectory szolgáltatás címelőtagjait. Ha az *AzureActiveDirectory* értéket adja meg, az AzureActiveDirectory szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható.  
+* **AzureMonitor** (csak Resource Manager): Ez a címke a AzureMonitor szolgáltatás címelőtagjait. Ha megad *AzureMonitor* értékénél, engedélyezett vagy tiltott forgalmat a AzureMonitor. 
+* **ServiceFabric** (csak Resource Manager): Ez a címke a ServiceFabric-szolgáltatás címelőtagjait. Ha megad *ServiceFabric* értékénél, engedélyezett vagy tiltott forgalmat ServiceFabric való. 
+* **AzureMachineLearning** (csak Resource Manager): Ez a címke a AzureMachineLearning szolgáltatás címelőtagjait. Ha megad *AzureMachineLearning* értékénél, engedélyezett vagy tiltott forgalmat a AzureMachineLearning. 
 
 > [!NOTE]
-> Az Azure-szolgáltatások szolgáltatáscímkék címelőtagjait használja a megadott felhőből. A regionális szolgáltatáscímkék a nemzeti felhők esetén nem támogatottak, csak a globális formátum esetén. Például *Storage* és *Sql*.
+> Az Azure-szolgáltatások szolgáltatáscímkék címelőtagjait használja a megadott felhőből. 
 
 > [!NOTE]
 > Ha egy [virtuális hálózati szolgáltatásvégpontot](virtual-network-service-endpoints-overview.md) implementál egy szolgáltatáshoz, például az Azure Storage-hoz vagy az Azure SQL Database-hez, az Azure hozzáad egy [útvonalat](virtual-networks-udr-overview.md#optional-default-routes) a szolgáltatás virtuális hálózatának alhálózatához. Az útvonal címelőtagjai ugyanazok a címelőtagok vagy CIDR-tartományok lesznek, mint a megfelelő szolgáltatáscímke.

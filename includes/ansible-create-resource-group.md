@@ -1,25 +1,25 @@
 ---
-author: tomarcher
+author: tomarchermsft
 ms.service: ansible
 ms.topic: include
 ms.date: 08/09/2018
 ms.author: tarcher
-ms.openlocfilehash: fa1f7fe0b4b70aae4f9165197d5d1463df1f2e3b
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fe995535cd42571ad96f192883e48f4b6ea1eb0e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40026962"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160403"
 ---
-1. A Cloud Shellben hozzon létre egy fájlt `rg.yml`.
+1. Hozzon létre egy `rg.yml` nevű fájlt a Cloud Shellben.
 
     ```bash
     vi rg.yml
     ```
 
-1. Adja meg a Beszúrás mód kiválasztásával a **I** kulcsot.
+1. Az **I** billentyű lenyomásával lépjen beszúrási módba.
 
-1. Illessze be a következő kódot a szerkesztőbe:
+1. Másolja az alábbi kódot a szerkesztőbe:
 
    ```yaml
    ---
@@ -35,9 +35,9 @@ ms.locfileid: "40026962"
            var: rg
    ```
 
-1. Kilépés insert módból a **Esc** kulcsot.
+1. A beszúrás módból az **Esc** billentyűvel léphet ki.
 
-1. Mentse a fájlt, és zárja be a vi szerkesztőt a következő parancs beírásával:
+1. Mentse a fájlt, és lépjen ki a VI-szerkesztőből a következő parancs megadásával:
 
     ```bash
     :wq

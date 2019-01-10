@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fe134591a979569048072877632260ea9728b4fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653900"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159757"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben
 
@@ -108,7 +108,7 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban használt Maven konfigurált Java-alkalmazás létrehozása a [Azure Web Appshez készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezi a linuxon futó App Service web archive csomagolt Java-alkalmazás. Tekintse meg az alábbi oktatóanyagok és útmutatók további információ a Linuxon futó App Serivce Java-alkalmazások futtatására.
+Ez a rövid útmutatóban használt Maven konfigurált Java-alkalmazás létrehozása a [Azure Web Appshez készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezi a linuxon futó App Service web archive csomagolt Java-alkalmazás. Tekintse meg az alábbi oktatóanyagok és útmutatók további információk az App Service Linux rendszeren Java-alkalmazások futtatására.
 
 - [Oktatóanyag: Üzembe helyezése egy Java vállalati alkalmazás-és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 - [A Tomcat-adatforrás konfigurálása](app-service-linux-java.md#connecting-to-data-sources)

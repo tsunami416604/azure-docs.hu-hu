@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c6472b824eefdd1954f3645c69090d1fb5455de
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fb1ac992f174327d08a606549da7b2b094a7a88e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754458"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157989"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -26,8 +26,7 @@ A folyamatok létrehozása az Azure Machine Learning szolgáltatás tagjai szám
 
 A folyamatok távoli számítási célnak kiszámításához és a köztes és végső adatokat, hogy a folyamat társított tárolására használja. A folyamatok olvasható és írható adat- és támogatott [Azure Storage](https://docs.microsoft.com/azure/storage/) helyeket.
 
->[!Note]
->Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -101,35 +100,138 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="set-up-compute"></a>Számítási beállítása
+## <a name="set-up-compute-target"></a>Állítsa be a számítási célnak
 
-Az Azure Machine Learning az előfizetési időszak *számítási* (vagy *számítási célt*) a gépek vagy fürtök, amelyek a machine learning folyamatban, a számítási lépésekkel vonatkozik. Létrehozhat például egy Azure Machine Learning compute futtatásához a lépéseket.
+Az Azure Machine Learning az előfizetési időszak __számítási__ (vagy __számítási célt__) a gépek vagy fürtök, amelyek a machine learning folyamatban, a számítási lépésekkel vonatkozik.   Lásd: [számítási céljainak modell betanítása](how-to-set-up-training-targets.md) számítási célnak, és hogyan hozhat létre, és csatolja őket a munkaterület teljes listáját.  A létrehozásához, és vagy egy számítási célnak csatolása ugyanúgy történik, függetlenül attól, hogy a modell tanítása vagy egy folyamat lépés futtatása. Miután hoz létre, és csatolja a számítási célnak, a `ComputeTarget` objektumának a [folyamat lépés](#steps).
+
+Az alábbiakban példákat létrehozása és csatlakoztatása a számítási célokhoz:
+
+* Az Azure Machine Learning Compute
+* Azure Databricks 
+* Azure Data Lake Analytics
+
+### <a name="azure-machine-learning-compute"></a>Az Azure Machine Learning Compute
+
+Létrehozhat egy Azure Machine Learning compute futtatásához a lépéseket.
+
+    ```python
+    compute_name = "aml-compute"
+     if compute_name in ws.compute_targets:
+        compute_target = ws.compute_targets[compute_name]
+        if compute_target and type(compute_target) is AmlCompute:
+            print('Found compute target: ' + compute_name)
+    else:
+        print('Creating a new compute target...')
+        provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                    min_nodes = 1, 
+                                                                    max_nodes = 4)
+         # create the compute target
+        compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+        
+        # Can poll for a minimum number of nodes and for a specific timeout. 
+        # If no min node count is provided it will use the scale settings for the cluster
+        compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+        
+         # For a more detailed view of current cluster status, use the 'status' property    
+        print(compute_target.status.serialize())
+    ```
+
+### <a id="databricks"></a>Az Azure Databricks
+
+Az Azure Databricks egy Apache Spark-alapú környezetben az Azure-felhőben. Az Azure Machine Learning-folyamat számítási célként használható.
+
+Az Azure Databricks-munkaterület létrehozása a használat előtt. Ezek az erőforrás létrehozásához tekintse meg a [Spark-feladatok futtatása Azure Databricksen](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) dokumentumot.
+
+Csatlakoztassa az Azure Databricks, egy számítási célnak, a következő információkat biztosítja:
+
+* __Databricks számítási neve__: A számítási erőforrás hozzárendelni kívánt nevét.
+* __Databricks-munkaterület neve__: Az Azure Databricks-munkaterület neve.
+* __Databricks-hozzáférési jogkivonat__: A hozzáférési jogkivonatot az Azure databricks hitelesítéséhez. Hozzáférési jogkivonat létrehozásához, tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentumot.
+
+A következő kód bemutatja, hogyan csatlakoztathat Azure Databricks, egy számítási célnak, az Azure Machine Learning SDK mutat be:
 
 ```python
-compute_name = "aml-compute"
- if compute_name in ws.compute_targets:
-    compute_target = ws.compute_targets[compute_name]
-    if compute_target and type(compute_target) is AmlCompute:
-        print('Found compute target: ' + compute_name)
-else:
-    print('Creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
-                                                                min_nodes = 1, 
-                                                                max_nodes = 4)
-     # create the compute target
-    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+import os
+from azureml.core.compute import ComputeTarget, DatabricksCompute
+from azureml.exceptions import ComputeTargetException
+
+databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_workspace_name = os.environ.get("AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get("AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
+databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
+    print('databricks_access_token {}'.format(databricks_access_token))
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
+                                                           workspace_name = databricks_workspace_name,
+                                                           access_token = databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+             ws,
+             databricks_compute_name,
+             attach_config
+         )
     
-    # Can poll for a minimum number of nodes and for a specific timeout. 
-    # If no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    databricks_compute.wait_for_completion(True)
+```
+### <a id="adla"></a>Az Azure Data Lake Analytics
+
+Az Azure Data Lake Analytics egy big data-elemzési platform az Azure-felhőben. Az Azure Machine Learning-folyamat számítási célként használható.
+
+Használat előtt egy Azure Data Lake Analytics-fiók létrehozása. Ez az erőforrás létrehozásához tekintse meg a [Ismerkedés az Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentumot.
+
+Csatlakoztassa a Data Lake Analytics számítási célként, az Azure Machine Learning SDK, és adja meg a következő információkat:
+
+* __Számítási neve__: A számítási erőforrás hozzárendelni kívánt nevét.
+* __Erőforráscsoport__: A Data Lake Analytics-fiókot tartalmazó erőforráscsoportot.
+* __Fiók neve__: A Data Lake Analytics-fiók nevét.
+
+A következő kód bemutatja, hogyan csatlakoztathat a Data Lake Analytics számítási célként mutat be:
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, AdlaCompute
+from azureml.exceptions import ComputeTargetException
+
+
+adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_group = os.environ.get("AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get("AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
+                                                     account_name = adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+             ws,
+             adla_compute_name,
+             attach_config
+         )
     
-     # For a more detailed view of current cluster status, use the 'status' property    
-    print(compute_target.status.serialize())
+    adla_compute.wait_for_completion(True)
 ```
 
-## <a name="construct-your-pipeline-steps"></a>Hozza létre a folyamat lépései
+> [!TIP]
+> Az Azure Machine Learning-folyamatokat a Data Lake Analytics-fiók az alapértelmezett data store-ban tárolt adatokkal folytatott csak működik. Ha adatokat kell a munkahelyi egy nem alapértelmezett tároló, használhat egy [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) képzési előtt az adatok másolásához.
 
-Most már készen áll egy folyamat lépés meghatározásához. Nincsenek elérhető az Azure Machine Learning SDK segítségével számos beépített lépéseket. Az alábbi lépéseket a legtöbb alapszint egy `PythonScriptStep`, amely egy Python-szkriptet futtat egy adott számítási célnak.
+## <a id="steps"></a>Hozza létre a folyamat lépései
+
+Hozzon létre, és a egy számítási célnak a munkaterülethez csatolja, készen áll egy folyamat lépés meghatározásához. Nincsenek elérhető az Azure Machine Learning SDK segítségével számos beépített lépéseket. Az alábbi lépéseket a legtöbb alapszint egy [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), amely egy Python-szkriptet futtat egy adott számítási célnak.
 
 ```python
 trainStep = PythonScriptStep(
@@ -155,13 +257,36 @@ compareModels = [trainStep, extractStep, compareStep]
 pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
 ```
 
+Az alábbi példa a korábban létrehozott Azure Databricks számítási célnak használja: 
+
+```python
+dbStep = DatabricksStep(
+    name="databricksmodule",
+    inputs=[step_1_input],
+    outputs=[step_1_output],
+    num_workers=1,
+    notebook_path=notebook_path,
+    notebook_params={'myparam': 'testparam'},
+    run_name='demo run name',
+    databricks_compute=databricks_compute,
+    allow_reuse=False
+)
+# List of steps to run
+steps = [dbStep]
+
+# Build the pipeline
+pipeline1 = Pipeline(workspace=ws, steps=steps)
+```
+
 ## <a name="submit-the-pipeline"></a>Küldje el a folyamat
 
 A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az egyes lépések a függőségeket, és feltölti a megadott forráskönyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve.
 
+
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
+pipeline_run.wait_for_completion()
 ```
 
 Ha először futtatja a folyamatot, az Azure Machine Learning:

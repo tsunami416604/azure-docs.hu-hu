@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: cf43dd5e0dde2a878d2668e8de27414f0bbe507a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9b57dfcd6ecd00f9f1bb8ec752e0996ee52305db
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078932"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159043"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault Azure parancssori felületével
 
@@ -43,7 +43,7 @@ További információ a parancssori felület bejelentkezési lehetőségeivel ve
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehoz egy *ContosoResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli
-az group create --name 'ContosoResourceGroup' --location eastus
+az group create --name "ContosoResourceGroup" --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
@@ -55,7 +55,7 @@ Azután létrehoz egy Key Vaultot abban az erőforráscsoportban, amelyet az el�
 - Hely: **USA keleti régiója**.
 
 ```azurecli
-az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGroup' --location eastus
+az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
 ```
 
 Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott Key Vault tulajdonságait. Jegyezze fel az alábbi két tulajdonságot:
@@ -72,7 +72,7 @@ Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést
 Írja be az alábbi parancsokat, ha a Key Vaultban titkos kódot szeretne létrehozni **ExamplePassword** névvel, amely tárolni fogja a **Pa$$w0rd** értékét:
 
 ```azurecli
-az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --value 'Pa$$w0rd'
+az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "Pa$$w0rd"
 ```
 
 Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivatkozhat. A jelenlegi verzió beszerzéséhez használja a következőt: **https://ContosoVault.vault.azure.net/secrets/ExamplePassword**. 
@@ -80,7 +80,7 @@ Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivat
 A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 
 ```azurecli
-az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
+az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 ```
 
 Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.

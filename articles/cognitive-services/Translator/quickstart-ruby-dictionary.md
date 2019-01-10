@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások keresése, Ruby – Translator Text API'
+title: 'Gyors útmutató: Kétnyelvű szótár szavak Ruby – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és Ruby használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: c9e33fd4be80c8bb95248e8be34f9540d9cd69ea
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4574c07f3dfa98c0264d70c08a5ee4feff075bee
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649618"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157088"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-ruby"></a>Rövid útmutató: Alternatív fordítások keresése a Translator Text REST API (Ruby) használatával
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-ruby"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban, a Ruby használatával
 
 Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
 

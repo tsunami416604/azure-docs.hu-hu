@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190645"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157173"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -101,7 +101,7 @@ A *levélszemét* oszlop olvasta egész számként, de ez valójában egy katego
 
     data$spam <- as.factor(data$spam)
 
-Feltáró jellegű elemzést végezni, használja a [ggplot2](http://ggplot2.org/) csomag, az R, amely már telepítve van a virtuális gép egy népszerű adatbejegyzéssel könyvtár. Vegye figyelembe, az összesítő adatok jelennek meg a korábban, az összefoglaló statisztikák rendelkezünk felkiáltójel karakter gyakoriságát. Nézzük megjeleníteni ezeket gyakoriságot itt az alábbi parancsokkal:
+Feltáró jellegű elemzést végezni, használja a [ggplot2](https://ggplot2.tidyverse.org/) csomag, az R, amely már telepítve van a virtuális gép egy népszerű adatbejegyzéssel könyvtár. Vegye figyelembe, az összesítő adatok jelennek meg a korábban, az összefoglaló statisztikák rendelkezünk felkiáltójel karakter gyakoriságát. Nézzük megjeleníteni ezeket gyakoriságot itt az alábbi parancsokkal:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)

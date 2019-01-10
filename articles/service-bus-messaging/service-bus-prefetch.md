@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c88ea7433232b62c006c908cd2768d318d36d43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 292f8ae1821cdcc4fd6274808b53454ec51eaea0
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854048"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157399"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus-üzenetek előzetes betöltése
 
@@ -50,7 +50,7 @@ Ha a zárolást a lehívott pufferben csendes lejár, az üzenet félbeszakadtk�
 
 Üzenetfeldolgozás szüksége lesz egy magas szintű megbízhatóság, és jelentős mennyiségű munkával jár, és az idő a feldolgozásra kerül, javasoljuk, hogy konzervatív módon vegyen figyelembe vagy egyáltalán nem használja a előzetes betöltési szolgáltatását.
 
-Ha magas egész kell, és gyakran olcsó üzenetfeldolgozást, előzetes betöltési poskytne jelentős átviteli sebesség előnyeit.
+Ha a nagy átviteli sebességű van szüksége, és gyakran olcsó üzenetfeldolgozást, előzetes betöltési poskytne jelentős átviteli sebesség előnyeit.
 
 A lehívott maximális száma és a Zárolás időtartama a várólista vagy az előfizetés konfigurált kell lehet átgondolni, hogy a zárolási időtúllépést legalább meghaladja az összegző várható üzenet feldolgozási ideje az előzetes betöltési puffer maximális méretét, valamint egy üzenetet. Egy időben, a lezárás időkorlátja túl hosszú, hogy üzeneteket is haladja meg a maximális, hogy nem kell kerülnie [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) véletlenül eldobásakor, amikor az így igénylő a zárolás folyamatban újbóli kézbesítése után.
 

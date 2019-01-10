@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 227e09ad087f1ac06f0dbb5b731c68f7c0a6980e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001938"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159774"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy application gateway-alapú útválasztási szabályok az Azure portal használatával
 
@@ -123,7 +123,7 @@ Ebben a példában az application gateway használható háttérkiszolgálóiké
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttérkészletek a virtuális gépek létrehozása
 
 1. Kattintson a **összes erőforrás** majd **myAppGateway**.
-2. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson a **appGateayBackendPool**.
+2. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson az **appGatewayBackendPool** lehetőségre.
 3. Kattintson a **Hozzáadás cél** hozzáadása *myVM1* appGatewayBackendPool való.
 
     ![Háttérkiszolgálók hozzáadása](./media/create-url-route-portal/application-gateway-backend.png)

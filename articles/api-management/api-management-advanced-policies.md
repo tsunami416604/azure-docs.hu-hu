@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 478b1352d0bf2eec9af62e519b50e61dea6cc8fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584876"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158431"
 ---
 # <a name="api-management-advanced-policies"></a>Az API Management speciális szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -103,7 +103,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 ```
 
 #### <a name="example"></a>Példa
- Ez a példa bemutatja, hogyan hajthat végre, tartalomszűrés adatelem távolítsa el a válasz érkezett a háttérszolgáltatás használata esetén a `Starter` termék. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30 előretekerés. Áttekintést a 31:50 kezdőpont [a sötét Sky előrejelzési API](https://developer.forecast.io/) a bemutatóhoz használt.
+ Ez a példa bemutatja, hogyan hajthat végre, tartalomszűrés adatelem távolítsa el a válasz érkezett a háttérszolgáltatás használata esetén a `Starter` termék. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 34:30 előretekerés. Áttekintést a 31:50 kezdőpont [a sötét Sky előrejelzési API](https://developer.forecast.io/) a bemutatóhoz használt.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -449,7 +449,7 @@ status code and media type. If no example or schema found, the content is empty.
 > [!NOTE]
 >  Ha csak a `interval` meg van adva, **rögzített** újrapróbálkozások időköze el kell végezni.
 > Ha csak a `interval` és `delta` meg van adva, egy **lineáris** időköz újrapróbálkozási algoritmust használja, amennyiben az újrapróbálkozások közötti várakozási idő számítják ki a következő képlet - megfelelően `interval + (count - 1)*delta`.
-> Ha a `interval`, `max-interval` és `delta` meg van adva, **exponenciális** időköz újrapróbálkozási algoritmust alkalmazza, ahol a várakozási idő a próbálkozások közötti exponenciálisan értékét a `interval` , az érték `max-interval` megfelelően a következő forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
+> Ha a `interval`, `max-interval` és `delta` meg van adva, **exponenciális** időköz újrapróbálkozási algoritmust alkalmazza, ahol a várakozási idő a próbálkozások közötti exponenciálisan értékét a `interval` , az érték `max-interval` megfelelően a következő képlet - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Használat
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Vegye figyelembe, hogy gyermek házirend használattal kapcsolatos korlátozások örökli ezt a házirendet.
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|
 |---------------|-----------------|--------------|-------------|
 |mód = "string"|Meghatározza, hogy ez egy új kérelmet, vagy egy másolatot a jelenlegi kérelem. A kimenő mód mód = másolása nem sikerült inicializálni a kérelem törzsében.|Nem|Új|
-|response-variable-name="string"|Környezeti változó, amelyek megkapják a válasz objektum neve. Ha a változó nem létezik, a házirend sikeres végrehajtása után létrejön, és keresztül érhető el lesz [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) gyűjtemény.|Igen|–|
+|response-variable-name="string"|Környezeti változó, amelyek megkapják a válasz objektum neve. Ha a változó nem létezik, akkor a házirend sikeres végrehajtása után jön létre, és -en keresztül elérhető lesz [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) gyűjtemény.|Igen|–|
 |timeout="integer"|Az időkorlát másodpercben az URL-cím hívása előtt sikertelen lesz.|Nem|60|
 |hagyja figyelmen kívül – hiba|Ha igaz, és hiba történt a kérés eredményeket:<br /><br /> – Ha a válasz-változóhoz-name tartalmazni fog a null érték lett megadva.<br />– Ha a válasz-változó-neve nincs megadva, az összefüggésben. Kérelem nem fog frissülni.|Nem|false|
 |név|A fejléc kell beállítani a nevét adja meg.|Igen|–|
@@ -959,7 +959,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 
 |Attribútum|Leírás|Szükséges|Alapértelmezett|
 |---------------|-----------------|--------------|-------------|
-|a következőhöz:|Meghatározza, hogy a `wait` házirend megvárja, amíg az összes közvetlenül alárendelt szabályzatok befejezett vagy egyszerűen az egy. Engedélyezett értékek a következők:<br /><br /> -   `all` -minden közvetlenül alárendelt szabályzat befejezéséhez várjon<br />-bármely – amíg bármilyen közvetlenül alárendelt házirend végrehajtásához. Az első közvetlenül alárendelt házirend befejezését követően a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|összes|
+|időtartam:|Meghatározza, hogy a `wait` házirend megvárja, amíg az összes közvetlenül alárendelt szabályzatok befejezett vagy egyszerűen az egy. Engedélyezett értékek a következők:<br /><br /> -   `all` -minden közvetlenül alárendelt szabályzat befejezéséhez várjon<br />-bármely – amíg bármilyen közvetlenül alárendelt házirend végrehajtásához. Az első közvetlenül alárendelt házirend befejezését követően a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|összes|
 
 ### <a name="usage"></a>Használat
 

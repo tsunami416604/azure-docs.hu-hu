@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: e86e1d862644aa143046045e74ec994d42a5598e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3445974cf832b7ed594f704615482e1d9b0e351c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050166"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159366"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Az Azure Stack felügyelt lemezek: különbségek és szempontok
 
@@ -29,7 +29,7 @@ Ez a cikk összefoglalja, ismert [Azure Stack-Managed Disks](azure-stack-manage-
 A felügyelt lemezek leegyszerűsítik a Lemezkezelés IaaS virtuális gépekhez, mivel kezeli az [tárfiókok](../azure-stack-manage-storage-accounts.md) társított Virtuálisgép-lemezek.
 
 > [!Note]  
-> Felügyelt lemezek az Azure Stacken kiadást 1808 érhető el.
+> Felügyelt lemezek az Azure Stacken 1808 frissítés érhető el. Ez alapértelmezés szerint engedélyezve van az Azure Stack portálon 1811 Update használó virtuális gépek létrehozásakor.
   
 
 ## <a name="cheat-sheet-managed-disk-differences"></a>Hasznos tanácsok: Felügyelt lemez különbségek
@@ -67,7 +67,7 @@ Az Azure Stack felügyelt lemezek a következő API-verziókat támogatja:
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Alkalmazása után a [1811 frissítése](../azure-stack-update-1811.md), előfordulhat, hogy a következő problémák akadnának felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
+1808 után a frissítések alkalmazása, után, a következő problémák léphetnek ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
 
 - Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
    1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.

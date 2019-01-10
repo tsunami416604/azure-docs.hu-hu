@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f971a1bed0391e809e19ff5bb0508d153319faf4
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 357fa8a34afc8b426d308940462e22895130169f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094003"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158771"
 ---
-# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Oktatóanyag: Azure Data Box Disk visszaküldése, majd az Azure-ba történő adatfeltöltés ellenőrzése
+# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box-lemezek, és ellenőrizze az adatok feltöltése az Azure-bA
 
-Ez az Azure Data Box Disk üzembe helyezését ismertető sorozat utolsó oktatóanyaga. Az oktatóanyag során a következőket fogja elsajátítani:
+Ez az a sorozat utolsó oktatóanyaga: Helyezze üzembe az Azure Data Box-lemezek. Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * A Data Box Disk elküldése a Microsoftnak
@@ -27,7 +27,7 @@ Ez az Azure Data Box Disk üzembe helyezését ismertető sorozat utolsó oktat�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt hozzákezd, győződjön meg arról, hogy elvégezte az [adatok az Azure Data Box Diskre történő másolását, majd azok ellenőrzését ismertető oktatóanyagot](data-box-disk-deploy-copy-data.md).
+Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a [oktatóanyag: Adatok másolása az Azure Data Box-lemezek, és ellenőrizze](data-box-disk-deploy-copy-data.md).
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk visszaküldése
 

@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a67a20beff306cd23b08e1d651ab5dc4c779fd2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: MT
+ms.openlocfilehash: a43481bf6d9c95efdb9c4bc38ed400c5fe782c17
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742762"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157513"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -271,85 +271,7 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
 
 Egy új, frissített verzióját az Azure Machine Learning: További információ az ebben a kiadásban: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
-## <a name="older-notes-sept-2017---jun-2018"></a>Régebbi megjegyzések: Szeptembertől 2017 – 2018. június
-### <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
-
-Ebben a kiadásban az Azure Machine Learning segítségével:
-+ Szabadkézi lemezképek ResNet-50, kvantált verziójával betanításához besorolás alapján ezeket a szolgáltatásokat, és [egy FPGA, az Azure-ban, hogy a modell rendszerbe állítása](../service/how-to-deploy-fpga-web-service.md) ultramagas közel valós idejű következtetési számára.
-
-+ Gyorsan hozhat létre és rendkívül pontos gépi tanulási és deep learning-modellek használatával [egyéni Azure Machine Learning-csomagok](../desktop-workbench/reference-python-package-overview.md)
-
-### <a name="2018-03-sprint-4"></a>2018-03 (sprint 4)
-**Verziószám**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([a verzió megkereséséhez](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Számos, a következő frissítéseket a visszajelzés közvetlenül eredményként történik. Újévi fogadalmunk!
-
-**Jelentős új szolgáltatásaival és módosításaival**
-
-- A szkriptek távoli Ubuntu virtuális gépeken futó natív módon a saját környezetében mellett távoli docker-támogatás a végrehajtás alapján.
-- A Workbench alkalmazásban új környezet felület lehetővé teszi, hogy hozhat létre a számítási célokhoz, és futtassa a CLI-alapú élményen mellett konfigurációk.
-![Környezetek lap](media/azure-machine-learning-release-notes/environment-page.png)
-- Futtatási előzmények testre szabható jelentéseket ![korábbi jelentések új Futtatás képe](media/azure-machine-learning-release-notes/new-run-history-reports.png)
-
-**Részletes frissítések**
-
-Az alábbiakban olyan részletes frissítések az Azure Machine Learning a sprint a minden összetevő területen.
-
-#### <a name="workbench-ui"></a>A Workbench felhasználói felület
-- Futtatási előzmények testre szabható jelentéseket
-  - Továbbfejlesztett diagram konfigurációját, a futtatási előzmények jelentésekhez
-    - A használt belépési pontok is módosítható.
-    - Legfelső szintű szűrők hozzáadható és módosított ![szűrők hozzáadása](media/azure-machine-learning-release-notes/add-filters.jpg)
-    - Diagramok és -statisztikák hozzáadnak vagy módosítanak (és fogd és vidd áthelyeztünk).
-    ![Új diagram létrehozása](media/azure-machine-learning-release-notes/configure-charts.png)
-
-  - Futtatási előzmények jelentések CRUD-MŰVELETEKKEL
-  - Áthelyezett minden meglévő futtatási előzmények listanézetet konfigurációs fájlokat a kiszolgálóoldali jelentést, amely úgy működik, mint a kiválasztott bejegyzéshez hozzárendelni kívánt pontokról futtatások folyamatok.
-
-- Környezetek lap
-  - Egyszerűen adja hozzá az új számítási célnak, és futtassa a konfigurációs fájlokat a projekthez ![új számítási célt](media/azure-machine-learning-release-notes/add-new-environments.png)
-  - Felügyelje és frissítse a konfigurációs fájlokat, egy egyszerű, az űrlap-alapú felhasználói felület használatával
-  - A végrehajtási környezet előkészítése az új gomb
-
-- Teljesítménnyel kapcsolatos fejlesztések a listához, mivel az oldalsáv
-
-#### <a name="data-preparation"></a>Adatok előkészítése 
-- Az Azure Machine Learning Workbench most már lehetővé teszi, rákereshet egy oszlop használatával egy ismert oszlop neve.
-
-
-#### <a name="experimentation"></a>Kísérletezés
-- Az Azure Machine Learning Workbench most már támogatja a parancsprogramok natív módon fut a saját python- vagy pyspark környezetében. Ez a funkció a felhasználó hoz létre, és felügyeli a saját környezetet, a távoli virtuális gépen, és azok a parancsprogramok futtatásához az adott cél Azure Machine Learning Workbench használata. Lásd: [konfigurálása az Azure Machine Learning-kísérletezés szolgáltatás](../desktop-workbench/experimentation-service-configuration.md) 
-
-#### <a name="model-management"></a>Modellkezelés
-- Az üzembe helyezett tárolók testreszabása támogatása: lehetővé teszi, hogy a tároló rendszerképét testreszabása azáltal, hogy külső kódtárak használatával az apt-get paranccsal, és így tovább telepítési. Már nem korlátozott pip telepíthető könyvtárakhoz. Tekintse meg a [dokumentáció](../desktop-workbench/model-management-custom-container.md) további információ.
-  - Használja a `--docker-file myDockerStepsFilename` jelzőt és a fájl nevét a jegyzékfájl, kép vagy szolgáltatás-létrehozási parancsokat.
-  - Az alap rendszerképet Ubuntu, és nem módosítható.
-  - A példában szereplő parancs: 
-  
-    ```shell
-    $ az ml image create -n myimage -m mymodel.pkl -f score.py --docker-file mydockerstepsfile
-    ```
-
-### <a name="2018-01-sprint-3"></a>2018-01-es (sprint 3) 
-**Verziószám**: 0.1.1712.18263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([a verzió megkereséséhez](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-A frissítések és a sprint fejlesztései az alábbiak. A frissítések sok esetben jönnek létre, a felhasználói visszajelzések közvetlen következménye. 
-
-### <a name="2017-12-sprint-2"></a>2017-12 (sprint 2)
-**Verziószám**: 0.1.1711.15263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([a verzió megkereséséhez](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Ebben a kiadásban a harmadik frissítés az Azure Machine Learning. Ez a frissítés a workbench alkalmazás a parancssori felület (CLI) és a háttér-szolgáltatásaihoz tartalmaz fejlesztéseket. Köszönjük, hogy nagyon küldése a smiles és frowns. Számos, a következő frissítéseket a visszajelzés közvetlenül eredményként történik. 
-
-### <a name="2017-11-sprint-1"></a>2017-11 (sprint 1) 
-**Verziószám**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([a verzió megkereséséhez](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Ebben a kiadásban biztonsági, stabilitás és a workbench alkalmazás, a parancssori felület és a háttér-szolgáltatásaikhoz réteg Karbantarthatóság kapcsolatos fejlesztéseket végeztünk. 
-
-### <a name="2017-10-sprint-0"></a>2017-10-es (sprint 0) 
-**Verziószám**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([a verzió megkereséséhez](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
-
-Ebben a kiadásban az az első frissítés az Azure Machine Learning Workbench a következő a kezdeti nyilvános előzetes verziója a Microsoft Ignite 2017 konferencián. Ebben a kiadásban a fő frissítések állnak, megbízhatóságát és stabilizált javítja. 
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el az [Azure Machine Learning](../service/overview-what-is-azure-ml.md) áttekintését.
+Olvassa el a áttekintése [Azure Machine Learning szolgáltatás](../service/overview-what-is-azure-ml.md).

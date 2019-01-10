@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ed3d21719908a4c16b92d610b8ac75ac0b235ec1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4a9ffdd9f81a7d46d3476f3395a4456dea6c0341
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968707"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156731"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Új Azure API Management-szolgáltatáspéldány létrehozása
 
@@ -69,12 +69,12 @@ Ha már nincs rájuk szükség, eltávolíthatja az erőforráscsoportot és az 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet.
 2. A keresőmezőbe írja be a `resource groups` kifejezést, és kattintson a találatra.
 
-    ![Navigáció az erőforráscsoportok között](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+    ![Erőforrás-csoportok navigációja](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
 3. Keresse meg az erőforráscsoportot, és kattintson rá.
 4. Kattintson az **Erőforráscsoport törlése** lehetőségre.
 
-    ![Navigáció az erőforráscsoportok között](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+    ![Erőforrás-csoportok navigációja](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
 5. A törlés megerősítéséhez adja meg az erőforráscsoport nevét.
 6. Kattintson a **Törlés** gombra.

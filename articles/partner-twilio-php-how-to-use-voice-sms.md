@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 50613e4ba244403c61d711927f1e809accbcebeb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421708"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158074"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz php
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
@@ -44,15 +44,15 @@ Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művele
 
 Az alábbiakban látható egy Twilio-műveletek listájához. Ismerje meg az egyéb műveletek és funkciókat [Twilio Markup Language dokumentáció](https://www.twilio.com/docs/api/twiml).
 
-* **&lt;Tárcsázás&gt;**: a hívó kapcsolódik egy másik telefonszámot.
-* **&lt;Gyűjtse össze&gt;**: összegyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: ér véget a hívást.
-* **&lt;Play&gt;**: fájlból játszik le egy hangfájlt.
-* **&lt;Felfüggesztés&gt;**: Csendes megvárja a megadott számú másodperc.
-* **&lt;Rekord&gt;**: a hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Átirányítási&gt;**: átadja a vezérlést a hívást vagy SMS a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: a Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
-* **&lt;Tegyük fel, hogy&gt;**: alakíthatók át egymásba szöveg-beszéd átalakítás, amely a hívást.
+* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;**: A hívás véget ér.
+* **&lt;Play&gt;**: Hang lejátszása.
+* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Rekord&gt;**: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Átirányítási&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;**: A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
+* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
 * **&lt;SMS&gt;**: SMS üzenetet küld.
 
 ### <a id="TwiML"></a>TwiML
@@ -75,7 +75,7 @@ Amikor készen áll a Twilio-fiók létrehozása, regisztráció: [próbálja me
 Amikor regisztrál egy Twilio-fiók, kap egy fiók Azonosítóját és a egy hitelesítési tokent. Mindkét lesz szükség a Twilio API-hívásokat. Fiókja a jogosulatlan hozzáférés megakadályozása érdekében, hogy a hitelesítési jogkivonat biztonságának megőrzése. A fiók Azonosítóját és a hitelesítési jogkivonat teljesítményobjektumok, a [Twilio-fiók oldalán][twilio_account], a címkével ellátott mezőket **fiók SID** és **hitelesítési JOGKIVONATÁT**, illetve.
 
 ## <a id="create_app"></a>PHP-alkalmazás létrehozása
-PHP-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-ban fut-e semmiben nem különbözik bármely más PHP-alkalmazások a Twilio-szolgáltatást használ. Bár a Twilio-szolgáltatások REST-alapú, és nem hívható meg a PHP számos módon, ez a cikk a Twilio-szolgáltatások használata összpontosít [Twilio kódtára a PHP, a Githubról][twilio_php]. A php-hez a Twilio-könyvtár használatával kapcsolatos további információkért lásd: [ https://readthedocs.org/docs/twilio-php/en/latest/index.html ] [ twilio_lib_docs].
+PHP-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-ban fut-e semmiben nem különbözik bármely más PHP-alkalmazások a Twilio-szolgáltatást használ. Bár a Twilio-szolgáltatások REST-alapú, és nem hívható meg a PHP számos módon, ez a cikk a Twilio-szolgáltatások használata összpontosít [Twilio kódtára a PHP, a Githubról][twilio_php]. A php-hez a Twilio-könyvtár használatával kapcsolatos további információkért lásd: [ https://www.twilio.com/docs/libraries/php ] [ twilio_lib_docs].
 
 Részletes utasításokat és az Azure-bA Twilio/PHP-alkalmazások telepítése esetén érhető el [hogyan végezze el az Azure-ban PHP-alkalmazások a telefonhívás használatával Twilio][howto_phonecall_php].
 
@@ -96,7 +96,7 @@ Miután telepítette a Twilio-könyvtár a php-hez, majd hozzáadhat egy **requi
 
 További információkért lásd: [ https://github.com/twilio/twilio-php/blob/master/README.md ] [ twilio_github_readme].
 
-## <a id="howto_make_call"></a>Hogyan: végezhet
+## <a id="howto_make_call"></a>kézikönyv: Végezhet
 A következőket mutatja be, hogy egy kimenő hívás használatával a **Services_Twilio** osztály. Ez a kód is egy Twilio által biztosított helyet használ a Twilio Markup Language (TwiML) választ adja vissza. Helyettesítse be a saját értékeit a **a** és **való** telefonszámai, és győződjön meg arról, hogy ellenőrizze a **a** telefonszám a Twilio-fiók, a kód futtatása előtt.
 
     // Include the Twilio PHP library.
@@ -140,9 +140,9 @@ A következőket mutatja be, hogy egy kimenő hívás használatával a **Servic
 
 Ahogy már említettük, ez a kód egy Twilio által biztosított hely használatával TwiML a választ adja. Ehelyett használhatja a saját hely adja meg a TwiML válasz; További információkért lásd: [hogyan TwiML válaszokat biztosít a saját webhelyről](#howto_provide_twiml_responses).
 
-* **Megjegyzés:**: SSL-tanúsítvány érvényesítési hibák elhárításához lásd: [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Megjegyzés**: SSL-tanúsítvány érvényesítési hibák elhárításához lásd: [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
-## <a id="howto_send_sms"></a>Útmutató: az SMS-üzenet küldése
+## <a id="howto_send_sms"></a>kézikönyv: Küldjön SMS-t
 A következő példa használatával SMS üzenet küldése a **Services_Twilio** osztály. A **a** száma az SMS-üzenetek küldéséhez a próbafiókokon Twilio által biztosított. A **való** száma a Twilio-fiók, a kód futtatása előtt ellenőrizni kell.
 
     // Include the Twilio PHP library.
@@ -173,7 +173,7 @@ A következő példa használatával SMS üzenet küldése a **Services_Twilio**
         echo 'Error: ' . $e->getMessage();
     }
 
-## <a id="howto_provide_twiml_responses"></a>Hogyan: Adja meg a saját webhelyén TwiML válaszok
+## <a id="howto_provide_twiml_responses"></a>kézikönyv: Adja meg a saját webhelyén TwiML válaszok
 Amikor az alkalmazás a Twilio API-hívást kezdeményez, Twilio, küldjön TwiML választ vár egy URL-címet a kérelmet küld. A fenti példában a Twilio-megadott URL-címet használ [ https://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használatra szolgál a Twilio, megtekintheti az informatikai a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres `<Response>` elem; másik példaként kattintson [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]megtekintéséhez egy `<Response>` elem, amely tartalmazza a `<Say>` elem.)
 
 Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját hely által visszaadott HTTP-válaszok is létrehozhat. A hely bármilyen nyelven, amely visszaadja az XML-válaszok; hozhat létre Ez a témakör azt feltételezi, hogy fogja használni a PHP a TwiML létrehozásához.
@@ -228,7 +228,7 @@ Miután a PHP-oldalt állított TwiML válaszokat nyújt, használja az URL-cím
 
 Az Azure-ban PHP Twilio használatával kapcsolatos további információkért lásd: [hogyan végezze el az Azure-ban PHP-alkalmazások a telefonhívás használatával Twilio][howto_phonecall_php].
 
-## <a id="AdditionalServices"></a>How to: további Twilio-szolgáltatások használata
+## <a id="AdditionalServices"></a>kézikönyv: További Twilio-szolgáltatások használata
 Itt látható példák, mellett Twilio kínál a webes API-kat használhatja az Azure-alkalmazásból további Twilio funkciói kihasználhatók. További részletek: a [Twilio API-dokumentáció][twilio_api_documentation].
 
 ## <a id="NextSteps"></a>Következő lépések
@@ -241,7 +241,7 @@ Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hiva
 * [Beszéljen a Twilio-támogatás][twilio_support]
 
 [twilio_php]: https://github.com/twilio/twilio-php
-[twilio_lib_docs]: https://readthedocs.org/docs/twilio-php/en/latest/index.html
+[twilio_lib_docs]: https://www.twilio.com/docs/libraries/php
 [twilio_github_readme]: https://github.com/twilio/twilio-php/blob/master/README.md
 [ssl_validation]: https://www.twilio.com/docs/api/errors
 [twilio_api_service]: https://api.twilio.com

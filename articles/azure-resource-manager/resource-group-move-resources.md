@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7734ff6c5992ebb27ff63c0329afa03e5bf96a2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995082"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158856"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
-Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-előfizetés és a egy előfizetésen belül egy másik erőforráscsoportot. Az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API használatával helyezhetők át erőforrások. 
+Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-előfizetés és a egy előfizetésen belül egy másik erőforráscsoportot. Az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API használatával helyezhetők át erőforrások.
 
 Mind a forrás és a cél csoport írásvédett az áthelyezési művelet során. Írási és törlési műveletek az áthelyezés befejezéséig az erőforráscsoportok elakad. A zárolás azt jelenti, hogy a nem hozzáadása, frissítése vagy törlése az erőforráscsoportok erőforrásaihoz, de ez nem jelenti azt, az erőforrások szüneteltetve legyenek. Ha például egy SQL Server és az adatbázis áthelyezése egy új erőforráscsoportot, ha nem az adatbázist használó alkalmazások teljesen állásidő nélkül. Továbbra is olvasni és írni az adatbázisba.
 
@@ -98,7 +98,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
-* Recovery Services-tároló – kell regisztrálni egy privát előzetes verzióban érhető el. Lásd: [Recovery Servicesre vonatkozó korlátozásokat](#recovery-services-limitations).
+* Recovery Services-tároló – hogy regisztrálva legyenek az olyan [korlátozott nyilvános előzetes verzió](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
@@ -135,7 +135,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Data Box
 * Fejlesztői tárolóhelyek
 * Dynamics LCS
-* Express Route
+* ExpressRoute
 * Kubernetes Service
 * A Lab Services – áthelyezése új erőforráscsoportba ugyanahhoz az előfizetéshez engedélyezve van, de az előfizetés közötti áthelyezése nem engedélyezett.
 * Felügyelt alkalmazások
@@ -305,9 +305,9 @@ A művelet több percig futtathatnak.
 
 ### <a name="recovery-services-limitations"></a>Recovery Services-korlátozások
 
-Recovery Services-tároló áthelyezéséhez regisztrálnia kell egy privát előzetes verzióban érhető el. Próbálja ki, hogy írni AskAzureBackupTeam@microsoft.com.
+Recovery Services-tároló áthelyezéséhez regisztrálnia kell a [korlátozott nyilvános előzetes verzió](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
-Jelenleg áthelyezheti egy Recovery Services-tárolót, régiónként, egyszerre. Tárolók, amelyek biztonsági mentése az Azure Files, az Azure File Sync vagy az SQL IaaS virtuális gépek nem helyezhetők át. 
+Jelenleg áthelyezheti egy Recovery Services-tárolót, régiónként, egyszerre. Tárolók, amelyek biztonsági mentése az Azure Files, az Azure File Sync vagy az SQL IaaS virtuális gépek nem helyezhetők át.
 
 Ha egy virtuális gép nem helyezi át a tárolóval, az aktuális virtuális gép helyreállítási pontjait a tárolóban marad, amíg le nem járnak. A virtuális gép áthelyezése a tárolóval, vagy sem, hogy a virtuális gép visszaállíthatja a korábbi biztonsági másolatok a tárolóban.
 

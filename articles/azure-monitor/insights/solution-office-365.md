@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 54fda4852e986749499b7fc8717308edf81915b2
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a97a3330ff99cada3921f98b76cf08ed7a464bcc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338490"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156561"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -308,7 +308,7 @@ Az utolsó lépés, hogy az alkalmazás a Log Analytics-munkaterület előfizet�
                                     'office365TenantID': '" + $OfficeTennantId + "',
                                     'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
                                     'office365AdminUsername': '" + $OfficeUsername + "',
-                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.Sharepoint'
+                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.SharePoint'
                                   },
                     'etag': '*',
                     'kind': 'Office365',
@@ -554,7 +554,7 @@ Ezek a rekordok módosítása vagy hozzáadása az Azure Active Directory-objekt
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | A felhasználó, amely a (művelet tulajdonság által azonosított) műveletet hajtott végre. |
-| Aktor | A felhasználó vagy szolgáltatás, amely a műveletet. |
+| Szereplő | A felhasználó vagy szolgáltatás, amely a műveletet. |
 | ActorContextId | A szervezet, amely tagja az aktor GUID Azonosítóját. |
 | ActorIpAddress | Az aktor IP-cím IPV4 vagy IPv6-cím formátumú. |
 | InterSystemsId | A GUID, a műveletek nyomon követése a különböző összetevők az Office 365 szolgáltatásban. |

@@ -11,12 +11,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 2ab583a2cdef5df3816f6da7e0a57ee20f087a49
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043141"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158703"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – a felhasználói felület létrehozása az Angular
 
@@ -417,7 +417,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 2. A Visual Studio Code-ban váltson vissza a **heroes.components.ts** fájlra. Láthatja, hogy a `constructor(private heroService: HeroService) {}` sorban (13. sor), a `HeroService` egy piros vonallal alá van húzva. Kattintson a `HeroService` elemre, és a kódblokk bal oldalán megjelenik a villanykörte ikon. Kattintson a villanykörtére, majd a **HeroService importálása a „./hero.service” fájlból** vagy a **HeroService importálása az „app/hero.service” fájlból** lehetőségre.
 
-    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sor az /app/hero.service mappára hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero.service). A 2. sornak így kell kinéznie:
+    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sornak a /app/hero.service mappára hivatkozik, módosítsa, hogy a helyi mappából a hero fájl hivatkozik (. / hero.service). A 2. sornak így kell kinéznie:
     
     ```javascript
     import { HeroService } from "./hero.service"

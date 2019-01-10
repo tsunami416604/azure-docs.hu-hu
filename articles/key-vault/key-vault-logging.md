@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: e4d5004deeff43e83406ecb5d06b2857817531c6
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074282"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159961"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -38,11 +38,11 @@ Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával, a t�
 > [!NOTE]
 > Az oktatóanyag nem tartalmazza a kulcstárolók, a kulcsok és titkos kulcsok létrehozásának lépéseit. Ezekről a [Get started with Azure Key Vault](key-vault-get-started.md) (Bevezetés az Azure Key Vault használatába) című cikkben találhat információt. A platformfüggetlen parancssori felületre vonatkozó utasításokat megtekintheti [ebben a megfelelő oktatóanyagban](key-vault-manage-with-cli2.md).
 >
-> Az Azure Key Vault jelenleg nem konfigurálható az Azure-portálon. Ehelyett kövesse ezeket az Azure PowerShell-utasításokat.
+> Ez a cikk az Azure PowerShell-utasításokat a diagnosztikai naplózás frissítéséhez. Azonban azonos engedélyezhető az Azure Portalon az Azure Monitor használatával a **diagnosztikai naplók** szakaszban. 
 >
 >
 
-Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az az Azure Key Vault?) című cikkben találhat.
+Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az Azure Key Vault?) című cikkben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

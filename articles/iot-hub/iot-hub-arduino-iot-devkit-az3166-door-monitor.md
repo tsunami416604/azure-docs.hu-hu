@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597820"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156238"
 ---
 # <a name="door-monitor"></a>Ajtó figyelője          
 
@@ -66,13 +66,13 @@ Most már láthatók a SendGrid jelentkezési lapot.
 
 Töltse ki a regisztrációs űrlapot:
 
-   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-portal.md).
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-portal.md).
 
-   * **Név**: A SendGrid-szolgáltatás nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
+   * **Név**: A SendGrid-szolgáltatás neve. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
 
    * **Jelszó**: A szolgáltatás megköveteli a jelszót, amely nem használható ebben a projektben bármit.
 
-   * **E-mailek**: A SendGrid szolgáltatás ellenőrzési küld erre a címre.
+   * **e-mailek**: A SendGrid szolgáltatás ellenőrzési küld erre a címre.
 
 Ellenőrizze a **rögzítés az irányítópulton** lehetőséget, hogy könnyebben megtalálja a későbbiekben ezt az alkalmazást, majd kattintson a **beszerzési** elküldeni a bejelentkezési űrlapot.
  
@@ -106,11 +106,11 @@ A regisztrációs képernyő jelenik meg.
 
 Töltse ki a mezőket a bejelentkezési űrlap.
 
-   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-portal.md).
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás üzemeltetéséhez, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-portal.md).
 
-   * **IOT Hub nevére**: az IoT hub nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
+   * **Az IOT Hub nevét**: Az IoT hub nevét. Válasszon egy egyedi nevet, más szolgáltatások lehet eltérő.
 
-   * **IOT Hub-termékváltozat**: F1 (legfeljebb előfizetésenként egyet) díjmentes. Az árazással kapcsolatos láthatja a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-hub/).
+   * **Az IOT Hub-termékváltozat**: (Legfeljebb előfizetésenként egyet) F1 díjmentes. Az árazással kapcsolatos láthatja a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    * **E-mailből**: Ez a mező a SendGrid szolgáltatás beállítása során használt azonos e-mail-címre kell lennie.
 
@@ -162,7 +162,7 @@ Ezután töltse fel a kódot az eszközhöz.
 
 #### <a name="macos"></a>macOS
 
-1. A fejlesztői készlet konfigurációs módba: tartsa lenyomva A gombra, majd leküldéses és -kiadási a Visszaállítás gombra. A képernyőn megjelenik a "Konfiguráció".
+1. A fejlesztői készlet elhelyezi a konfigurációs mód: A gombot lenyomva, majd küldje le, és engedje a Visszaállítás gombra. A képernyőn megjelenik a "Konfiguráció".
 
 2. Kattintson a `Cmd+P` futtatásához `task device-upload`.
 
@@ -177,7 +177,7 @@ A VS Code, majd elindul, ellenőrzi, és töltse fel az Arduino vázlat, a fejle
 A fejlesztői készlet újraindul, és elindítja a kód futtatása.
 
 > [!NOTE]
-> Bizonyos esetekben előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag" hibaüzenet jelenik meg. Ez akkor fordul elő, ha a tábla csomagindexet nem megfelelően frissül. Ez a hiba elhárításához tekintse meg a [IoT DevKit gyakori kérdések a fejlesztési szakaszban](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Bizonyos esetekben előfordulhat, hogy kap egy "hiba: AZ3166: Ismeretlen csomag"hibaüzenet jelenik meg. Ez akkor fordul elő, ha a tábla csomagindexet nem megfelelően frissül. Ez a hiba elhárításához tekintse meg a [IoT DevKit gyakori kérdések a fejlesztési szakaszban](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
@@ -185,9 +185,9 @@ A program először inicializálja a DevKit zajok mellett egy stabil mágneses m
 
 Az inicializálás után `Door closed` a képernyő jelenik meg. A mágneses mezőben változás történik, ha az állapot változik `Door opened`. Minden alkalommal, amikor az ajtó állapotváltozásait, e-mailben értesítést kap. (A ezen e-mailek fogadását akár öt percig is eltarthat.)
 
-![Az érzékelő közeli mágnesek: ajtaja zárva](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "közel az érzékelő mágnesek: ajtaja zárva")
+![Az érzékelő közeli mágnesek: Lezárva az ajtó](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "mágnesek közel az érzékelő: Ajtaja zárva")
 
-![Mágneses érzékelő mozdítani: ajtó megnyitott](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "mágneses érzékelő mozdítani: ajtó megnyitása")
+![A mágneses érzékelő el: A nyomtató ajtaja megnyitott](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "mágneses érzékelő mozdítani: Ajtó megnyitása")
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 

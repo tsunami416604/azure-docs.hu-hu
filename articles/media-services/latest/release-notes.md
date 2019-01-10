@@ -1,5 +1,5 @@
 ---
-title: Az Azure Media Services v3 kibocsátási megjegyzései |} A Microsoft Docs
+title: Újdonságok Kibocsátási megjegyzések – Azure Media Services v3 |} A Microsoft Docs
 description: A legújabb fejlemények az naprakész információkat, ez a cikk az Azure Media Services v3 legújabb frissítéseit.
 services: media-services
 documentationcenter: ''
@@ -7,18 +7,18 @@ author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
-ms.workload: ''
+ms.workload: na
 ms.topic: article
 ms.date: 11/21/2018
 ms.author: juliako
-ms.openlocfilehash: 598587a0fe726ccf65f062833f84b352ca03c077
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4db84deb344921d329e81e0f0c9c3a97923430f3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315528"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156493"
 ---
-# <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései 
+# <a name="whats-new-in-azure-media-services-v3"></a>Az Azure Media Services v3 újdonságai?
 
 Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
@@ -26,7 +26,6 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
-* Módosítások tervek
 
 ## <a name="known-issues"></a>Ismert problémák
 

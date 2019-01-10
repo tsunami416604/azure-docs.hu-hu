@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 1/09/2019
 ms.author: jeffgilb
 ms.reviewer: georgel
-ms.openlocfilehash: 7bcec2d17f61345986c1676d13011946a0036666
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5cbbc3c1c2371264e3e29028d4b9d68533cc59ff
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164728"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154946"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL erőforrás-szolgáltató 1.1.30.0 kibocsátási megjegyzései
 
@@ -81,7 +81,10 @@ Az Azure Stack SQL erőforrás-szolgáltató ezen verziója tartalmazza a követ
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
+- **SQL típusú erőforrás-szolgáltató nem sikerül hozzáadni az SQL Server Always On figyelő**. Az SQL Server Always figyelője figyelő IP-címének használata esetén az SQL-erőforrás-szolgáltató virtuális gép nem oldható fel a figyelő gazdagép nevét.
 
+    **Megkerülő megoldás**: Győződjön meg arról, hogy DNS megfelelően működik, és oldja fel a figyelő IP-címet figyelő gazdagép nevét.
+    
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Azure Stack működő felhő rendszergazdái számára ismert problémák
 A dokumentáció a [Azure Stack kibocsátási megjegyzések](azure-stack-servicing-policy.md).
 

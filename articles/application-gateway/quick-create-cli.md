@@ -3,22 +3,17 @@ title: Első lépések – A webes forgalom irányítása az Azure Application G
 description: Megtudhatja, hogyan hozhat létre az Azure CLI-vel egy Azure Application Gatewayt, amellyel egy háttérkészlet virtuális gépeibe irányíthatja a webes forgalmat.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: azurecli
 ms.topic: quickstart
-ms.workload: infrastructure-services
-ms.date: 12/13/2018
+ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 59c7781efa8aaa6405ef3cb021ca2123d94ad61b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d14b8c9c752c9d41a42f092662c5f3aa88840dc5
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035491"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157717"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure CLI-vel
 
@@ -42,7 +37,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Amikor egy virtuális hálózatot hoz létre, az application gateway kommunikálhatnak más erőforrásokkal. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Ebben a példában két alhálózattal hoz létre: egyet az application gateway, a másik pedig a virtuális gépek. 
+Amikor egy virtuális hálózatot hoz létre, az application gateway kommunikálhatnak más erőforrásokkal. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Ebben a példában két alhálózattal hoz létre: egyet az application gateway, a másik pedig a virtuális gépek. Az application gateway alhálózatának csak az application Gateway-átjárókon is tartalmazhat. Egyéb erőforrások nem engedélyezettek.
 
 A virtuális hálózatot és alhálózatot létrehozni, használjon [az network vnet létrehozása](/cli/azure/network/vnet#az-network-vnet-create). Futtatás [az network public-ip létrehozása](/cli/azure/network/public-ip#az-public-ip-create) nyilvános IP-cím létrehozásához.
 

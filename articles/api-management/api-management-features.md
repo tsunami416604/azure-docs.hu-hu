@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: a00328608c582dcd28dbc78b5b56829f9d1ab500
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: eae36aa6e60e3da03c59952a1d9e035e6a773d2d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585555"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156697"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management csomagjairól szolgáltatásalapú összehasonlítása
 
@@ -29,7 +29,7 @@ Minden API Management [tarifacsomag](https://aka.ms/apimpricing) kínál külön
 | Az Azure AD-integrációs<sup>1</sup>                                                             | Nem                            | Igen            | Nem             | Igen            | Igen            |
 | Virtual Network (VNet) támogatása                                                               | Nem                            | Igen            | Nem             | Nem             | Igen            |
 | Többrégiós üzembe helyezés                                                                      | Nem                            | Nem             | Nem             | Nem             | Igen            |
-| Több egyéni tartománynevek                                                                 | Nem                            | Nem             | Nem             | Nem             | Igen            |
+| Több egyéni tartománynév                                                                 | Nem                            | Nem             | Nem             | Nem             | Igen            |
 | Fejlesztői portál<sup>2</sup>                                                                 | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Beépített gyorsítótár                                                                               | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Beépített elemzési                                                                           | Nem                            | Igen            | Igen            | Igen            | Igen            |
@@ -42,7 +42,7 @@ Minden API Management [tarifacsomag](https://aka.ms/apimpricing) kínál külön
 | Az Azure Monitor-naplók és mérőszámok                                                               | Nem<sup>5</sup>                | Igen            | Igen            | Igen            | Igen            |
 
 <sup>1</sup> lehetővé teszi az Azure ad-ben használható (és az Azure AD B2C-t) a felhasználó bejelentkezik a fejlesztői portálon Identitásszolgáltatóként.<br/>
-<sup>2</sup> kapcsolódó funkciókat többek között például felhasználók, csoportok, problémák, applicationsn és e-mail sablonok és értesítések.<br/>
+<sup>2</sup> kapcsolódó funkciókat többek között például felhasználók, csoportok, problémák, alkalmazások és az e-mail-sablonok és értesítések.<br/>
 <sup>3</sup> ezen a szinten külső gyorsítótár támogatása hamarosan elérhető lesz.<br/>
 <sup>4</sup> ügyféltanúsítvány-alapú hitelesítés bekerül a Használatalapú csomag az általános rendelkezésre állás előtt.<br/>
 <sup>5</sup> teljes Azure Monitor fogja támogatni a fogyasztás szintre.

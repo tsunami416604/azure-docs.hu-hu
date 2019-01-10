@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/17/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57136ac267af078068f33df6ee85dfccd287606a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537698"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156510"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -67,12 +67,10 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Azure PowerShell telepítése (nem kötelező) a helyi gépen használatra: 
 1. Kövesse a hivatkozásokat az operációs rendszer, majd folytassa, ha az alábbi lépéseket a többi.      
-    - [Telepítse és konfigurálja a Windows Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+    - [Telepítse és konfigurálja a Windows Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0). 
         - A PowerShellGet, Azure PowerShell telepítése és az AzureRM-modul betöltéséhez. 
-    - [Telepítse és konfigurálja az Azure Powershell macOS és Linux rendszeren](/powershell/azure/install-azurermps-maclinux).
-        -  A PowerShell Core, .NET Core, az Azure PowerShell telepítése és a Az modul betöltésére.
 
-2. Az AzureRM-modul telepített verzióinak ellenőrzése. Ha szükséges, [frissítése az Azure PowerShell-modul](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
+2. Az AzureRM-modul telepített verzióinak ellenőrzése. Ha szükséges, [frissítése az Azure PowerShell-modul](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module).
     -  Az AzureRM-modul verziószáma 6.0.0 vagy annál magasabb legyen.
     - Az AzureRM modul legújabb verziója használata javasolt.
 

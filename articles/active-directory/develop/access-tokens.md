@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 164fc42d905c9354a58ea6f66a739ea05f12e601
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979233"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157768"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Az Azure Active Directory hozzáférési jogkivonatok
 
@@ -38,7 +38,7 @@ Az alábbi részekből megtudhatja, hogyan erőforrás ellenőrzése és belül 
 
 ## <a name="sample-tokens"></a>Minta jogkivonatok
 
-1.0-s és 2.0-s verziójú jogkivonatok nagyon hasonló, és számos, ugyanazon jogcímeket tartalmaznak. Az egyes például itt.
+1.0-s és 2.0-s verziójú jogkivonatok hasonlóan néz ki, és számos, ugyanazon jogcímeket tartalmaznak. Az egyes például itt.
 
 ### <a name="v10"></a>1.0-s verzió
 
@@ -79,7 +79,7 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 | `nonce` | Karakterlánc | Ismétlésének támadások elleni védelmére szolgáló egyedi azonosítója. Az erőforrást rögzítheti replays elleni védelem érdekében ezt az értéket. |
 | `alg` | Karakterlánc | Azt jelzi, hogy a jogkivonat, például a "RS256" aláírásához használt algoritmust |
 | `kid` | Karakterlánc | Adja meg a nyilvános kulcsot, amely a token aláírásához használt ujjlenyomatát. Hozzáférési jogkivonatok az 1.0-s verziója és a v2.0 rendelkezésre. |
-| `x5t` | Karakterlánc | Működik (a használati és érték) ugyanaz, mint `kid`. Ez az örökölt jogcím csak kompatibilitási célból 1.0-s verziójú jogkivonatot bocsásson ki. |
+| `x5t` | Karakterlánc | Működik (a használati és érték) ugyanaz, mint `kid`. `x5t` örökölt jogcím bocsásson ki csak az 1.0-s verziójú hozzáférési jogkivonatok kompatibilitási célból. |
 
 ### <a name="payload-claims"></a>Hasznos adat jogcímek
 
@@ -121,7 +121,7 @@ A következő jogcímek 1.0-s verziójú jogkivonatok, ha van ilyen fog szerepel
 | Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 | `ipaddr`| Karakterlánc | Az IP-cím a felhasználó hitelesítést hajtottak végre. |
-| `onprem_sid`| A karakterlánc [biztonsági azonosító formátuma](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, ahol a felhasználó rendelkezik-e egy a helyszíni hitelesítéshez ezt az igényt a SID biztosít. Ez az örökölt alkalmazások engedélyezési is használható. |
+| `onprem_sid`| A karakterlánc [biztonsági azonosító formátuma](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, ahol a felhasználó rendelkezik-e egy a helyszíni hitelesítéshez ezt az igényt a SID biztosít. Használhat `onprem_sid` engedélyezési az örökölt alkalmazások számára. |
 | `pwd_exp`| int, a UNIX-időbélyege | Azt jelzi, ha a felhasználó jelszava lejár. |
 | `pwd_url`| Karakterlánc | Egy URL-címet, ahol a felhasználók visszaállíthatják a jelszavukat küldhető. |
 | `in_corp`|logikai | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a a jogcím lehetőség nem része. |
@@ -200,7 +200,7 @@ Az alkalmazás üzleti logikája szabja meg ezt a lépést, néhány gyakori hit
 * A meghívó ügyfél használatával hitelesítés állapotának ellenőrzésére `appidacr` – nem lehet 0 Ha nyilvános ügyfelek nem jogosultak az API-t.
 * Ellenőrizze az listájában múltbeli `nonce` ellenőrzése a jogkivonat nem folyamatban visszajátszani jogcímeket.
 * Ellenőrizze, hogy a `tid` megegyezik a bérlő egy van engedélyezve, az API meghívásához.
-* Használja a `acr` ellenőrizze, hogy a felhasználó végrehajtotta az MFA jogcímet. Vegye figyelembe, hogy ez kell kikényszeríteni használatával [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+* Használja a `acr` ellenőrizze, hogy a felhasználó végrehajtotta az MFA jogcímet. Ez lehet kényszerítése az [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 * Ha a kért a `roles` vagy `groups` a hozzáférési jogkivonat jogcímeiben győződjön meg arról, hogy a felhasználó szerepel-e a csoport hajthatja végre ezt a műveletet.
   * A jogkivonatokat az implicit folyamatot használja, valószínűleg kell lekérdezni a [Microsoft Graph](https://developer.microsoft.com/graph/) ezen adatok esetében, mert gyakran túl nagy ahhoz, hogy illeszkedjen a jogkivonatban. 
 
@@ -225,7 +225,7 @@ Frissítési jogkivonatok érvénytelenítve, vagy bármikor, számos okból vis
 
 ### <a name="revocation"></a>Visszavont tanúsítványok
 
-|   | Jelszóalapú cookie-k | Jelszóalapú jogkivonat | A nem jelszó-alapú cookie-k | Nem-jelszó alapján jogkivonat | Bizalmas ügyfél jogkivonat| 
+|   | Jelszó-alapú cookie-k | Jelszavas tokent | Nem-jelszó-alapú cookie-k | Nem – jelszavas tokent | Bizalmas ügyfél jogkivonat| 
 |---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
 | Jelszó lejárata | Aktív marad| Aktív marad | Aktív marad | Aktív marad | Aktív marad |
 | Felhasználó jelszavát | Visszavonva | Visszavonva | Aktív marad | Aktív marad | Aktív marad |

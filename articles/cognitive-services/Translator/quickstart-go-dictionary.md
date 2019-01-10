@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások keresése, Go – Translator Text API'
+title: 'Gyors útmutató: Kétnyelvű szótár szavak Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és Go használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: bcda716d143bd675f9510b1ecf5974ab9c28a394
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000593"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158567"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-go"></a>Gyors útmutató: A Translator Text API használatával beszerzése a Go használatával alternatív fordítások
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban a Go használatával
 
 Ez a rövid útmutatóban megismerheti, hogyan alternatív fordítások és használati példákat találhat a Go és a Translator Text REST API használatával egy adott szöveges lesz.
 
@@ -102,7 +102,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információkért lásd a [Translator Text API 3.0 keresési funkcióját](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) ismertető témakört.
+> Végpontok, útvonalak és a kérelem paramétereinek kapcsolatos további információkért lásd: [Translator Text API 3.0: Szótár keresési](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Egy struct a kérés törzsének létrehozása
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276359"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156680"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>ILB ASE létrehozása Azure Resource Manager-sablonokkal
 
@@ -42,7 +42,7 @@ Egy példa az Azure Resource Manager-sablon és a kapcsolódó paramétereket ta
 
 A paraméterek a legtöbb a *azuredeploy.parameters.json* fájl akkor is ILB ASE, valamint egy nyilvános virtuális IP-CÍMEK kötött ASE létrehozása.  Hívások különösen fontos paraméterek meg az alábbi listán, vagy, amelyek egyediek, az ILB ASE létrehozása során:
 
-* *interalLoadBalancingMode*:  A legtöbb esetben készlet ezt 3, ami azt jelenti, HTTP/HTTPS-forgalmat a 80-as/443-as portokon, mind a control-adatok a csatornát, az ASE az FTP-szolgáltatás által figyelt portok, a társítani kívánt ILB lefoglalt virtuális hálózat belső cím.  Ha ehelyett Ez a tulajdonság értéke 2, csak az FTP-szolgáltatás kapcsolatos, portok (egyaránt vezérlési és csatornák) társítani kívánt ILB-címmel, amíg változatlan marad a HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím.
+* *internalLoadBalancingMode*:  A legtöbb esetben készlet ezt 3, ami azt jelenti, HTTP/HTTPS-forgalmat a 80-as/443-as portokon, mind a control-adatok a csatornát, az ASE az FTP-szolgáltatás által figyelt portok, a társítani kívánt ILB lefoglalt virtuális hálózat belső cím.  Ha ehelyett Ez a tulajdonság értéke 2, csak az FTP-szolgáltatás kapcsolatos, portok (egyaránt vezérlési és csatornák) társítani kívánt ILB-címmel, amíg változatlan marad a HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím.
 * *DNS-utótagja*:  Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely hozzá lesz rendelve az ASE-t.  Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*.  Azonban mivel az ILB ASE egy ügyfél virtuális hálózatán belüli, akkor nem értelme használata a nyilvános service alapértelmezett legfelső szintű tartományt.  Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül.  Egy kitalált, Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* feloldható és elérhető-e a Contoso virtuális hálózaton belül csak nem igénylő alkalmazások számára. 
 * *ipSslAddressCount*:  Ez a paraméter automatikus alapértelmezés szerint a 0 értéket, a *azuredeploy.json* fájlhoz, mert az ILB ASE egy ILB-címmel rendelkezik.  Nincsenek explicit IP-SSL címek az ILB ASE környezetben, és ezért az IP SSL-címkészletet az ILB ASE nulla értékre kell állítani, ellenkező esetben egy üzembe helyezési hiba történik. 
 

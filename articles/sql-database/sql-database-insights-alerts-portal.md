@@ -1,28 +1,31 @@
 ---
-title: Az SQL Database-riasztások létrehozása az Azure portal használatával |} A Microsoft Docs
+title: Riasztások és az Azure portal használatával értesítések beállítása |} A Microsoft Docs
 description: Az Azure portal használatával hozzon létre SQL Database-riasztást, amelyek is indíthat értesítések vagy az automation az Ön által megadott feltételek teljesülése esetén.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634609"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156902"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan állítható be az Azure portal használatával Azure SQL Database és az adatraktár riasztások. Ez a cikk a riasztási időszakok beállítása ajánlott eljárásokat is tartalmaz.    
+Ez a cikk bemutatja, hogyan állítható be az Azure portal használatával Azure SQL Database és az adatraktár riasztások. Riasztásokat is küldjön egy e-mailt vagy egy webhook hívása, amikor bizonyos mérőszám (például adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket. Ez a cikk a riasztási időszakok beállítása ajánlott eljárásokat is tartalmaz.    
+
+> [!IMPORTANT]
+> Ez a funkció még nem áll rendelkezésre a felügyelt példány. Alternatív megoldásként az SQL Agent segítségével küld e-mail riasztást bizonyos metrikák alapján [dinamikus felügyeleti nézetek](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
 A figyelési metrikákat, vagy eseményeket, az Azure-szolgáltatások alapuló riasztást kaphat.
 

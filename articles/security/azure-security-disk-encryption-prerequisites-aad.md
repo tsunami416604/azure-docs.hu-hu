@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/17/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4bc66c3b17dbaf2d011bd0f4b6f355df3d1b50a3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 071f07e9d485a5fab5f2ce3d23a383e974001143
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547762"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158021"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -80,11 +80,10 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
 [Az Azure PowerShell](/powershell/azure/overview) használó parancsmagok készletét nyújtja a [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) modell az Azure-erőforrások kezeléséhez. Használhatja a böngészőjében az [Azure Cloud Shell](../cloud-shell/overview.md), vagy használhatja bármely PowerShell-munkamenetben az alábbi utasítások segítségével a helyi gépen telepítheti. Ha már nincs telepítve a helyi számítógépen, győződjön meg arról, hogy a legújabb Azure PowerShell SDK-verzió használatával konfigurálja az Azure Disk Encryption. Töltse le a legújabb verzióját [Azure PowerShell kiadás](https://github.com/Azure/azure-powershell/releases).
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Azure PowerShell telepítése (nem kötelező) a helyi gépen használatra:  
-1. Kövesse a hivatkozásokat az operációs rendszer, majd folytassa, ha az alábbi lépéseket a többi.      
-    - [Telepítse és konfigurálja a Windows Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+1. Kövesse a hivatkozásokat az operációs rendszer, majd folytassa, ha az alábbi lépéseket a többi.
+    - [Telepítse és konfigurálja a Windows Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0). 
         - A PowerShellGet, Azure PowerShell telepítése és az AzureRM-modul betöltéséhez. 
-    - [Telepítse és konfigurálja az Azure Powershell macOS és Linux rendszeren](/powershell/azure/install-azurermps-maclinux).
-        -  A PowerShell Core, .NET Core, az Azure PowerShell telepítése és a Az modul betöltésére.
+
 2. Telepítse a [Azure Active Directory PowerShell-modul](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
 
      ```powershell

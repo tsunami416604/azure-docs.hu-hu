@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/8/2019
+ms.date: 1/9/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: c1dfc4ed969735be26ae075900cd850e016afffa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9f1ee309156a39078ffdfeed2c75d86476ac8b48
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107582"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158652"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Elindítása és leállítása az Azure-SSIS integrációs modul ütemezés szerint
 Ez a cikk ismerteti a indítása és leállítása az Azure-SSIS integrációs modul (IR) ütemezése az Azure Data Factory (ADF) használatával. Az Azure-SSIS integrációs modul az ADF számítási erőforrás dedikált SQL Server Integration Services (SSIS) csomagjainak végrehajtásához. Rendszert futtató Azure-SSIS integrációs modul rendelkezik egy hozzá társított költségek. Ezért általában szeretné futtatni az integrációs modul csak akkor, amikor szüksége van leállítása az integrációs modul helyének, ha Ön már nincs rájuk szükség, és az SSIS-csomagok végrehajtása az Azure-ban. Használhatja az ADF felhasználói felületének (UI) / alkalmazás vagy az Azure PowerShell használatával [manuálisan indítása vagy leállítása az integrációs modul helyének](manage-azure-ssis-integration-runtime.md)).
@@ -86,7 +86,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
    
 2. A **tevékenységek** eszközkészletben bontsa ki a **általános** & legördülő menüben, és húzza a **webes** tevékenység alakzatot a folyamat tervezőfelületére. A **általános** lapon, a tevékenység tulajdonságok ablakában módosítsa a tevékenység nevét a **startMyIR**. Váltson **beállítások** lapra, és a következő műveleteket hajthatja végre.
 
-    1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, amely elindítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján a IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Azt is megteheti, is is másolja és illessze be az erőforrás-azonosítója a figyelési oldaláról az integrációs modul helyének ADF felhasználói felületén vagy alkalmazás cserélje le a fenti URL-cím a következő részét: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
+    1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, amely elindítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján az integrációs modul számára: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Azt is megteheti, is is másolja és illessze be az erőforrás-azonosítója a figyelési oldaláról az integrációs modul helyének ADF felhasználói felületén vagy alkalmazás cserélje le a fenti URL-cím a következő részét: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![ADF-SSIS integrációs modul az erőforrás-azonosító](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
@@ -99,7 +99,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
   
 3. Az első folyamat létrehozása egy másikat, a tevékenység nevének módosítása klónozása **stopMyIR** , és cserélje le a következő tulajdonságokat.
 
-    1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, hogy leállítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján a IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
+    1. A **URL-cím**, adja meg a következő URL-címet REST API-hoz, hogy leállítja az Azure-SSIS integrációs Modult, és cserélje le `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`, és `{integrationRuntimeName}` tényleges értéke alapján az integrációs modul számára: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. A **törzs**, adja meg `{"message":"Stop my IR"}`. 
 

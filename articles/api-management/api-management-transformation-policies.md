@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 3a8b0ecefe9e314e8056c941c9ef4ce32d1cbb75
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119373"
+ms.locfileid: "54159791"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -353,7 +353,7 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 ```
 
 ### <a name="using-liquid-templates-with-set-body"></a>A törzs beállítása Liquid-sablonok használatával
-A `set-body` házirend használatára konfigurálható a [Liquid](https://shopify.github.io/liquid/basics/introduction/) sablonalapú nyelvet és a egy kérelem vagy válasz törzsében transfom. Ez nagyon hatékony, ha az üzenet formátumát bármilyen módon van szüksége lehet.
+A `set-body` házirend használatára konfigurálható a [Liquid](https://shopify.github.io/liquid/basics/introduction/) sablonalapú nyelvi átalakítja a kérés törzsében. Ez nagyon hatékony, ha az üzenet formátumát bármilyen módon van szüksége lehet.
 
 > [!IMPORTANT]
 > Folyékony megvalósítása a használt a `set-body` szabályzat van konfigurálva, a "C# mód". Ez akkor különösen fontos, ha például a szűrés dologra. Tegyük fel, a dátum szűrő használatával szükséges Pascal kis-és és a C# dátum formázása, például:

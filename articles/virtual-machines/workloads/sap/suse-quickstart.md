@@ -3,8 +3,8 @@ title: A Microsoft Azure SUSE Linux rendszerű virtuális gépek SAP NetWeaver t
 description: Az SAP NetWeaver tesztelése Microsoft Azure-beli SUSE Linux-alapú virtuális gépeken
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermanndms
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,17 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
-ms.author: hermannd
-ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: juergent
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 032ab2a221f64d01af25056a4eff3ee3384de0c3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950046"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157224"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Az SAP NetWeaver futtatása Microsoft Azure-beli SUSE Linux-alapú virtuális gépeken
-Ez a cikk ismerteti a különböző dolgot figyelembe kell venni a Microsoft Azure SUSE Linux rendszerű virtuális gépek (VM) az SAP NetWeaver futtatja. 2016. május 19 SAP NetWeaver SUSE Linux rendszerű virtuális gépek az Azure-ban hivatalosan támogatott. Linux-verziók, SAP-kernel-verzióknál és egyéb előfeltételeket minden részletei találhatók SAP Megjegyzés 1928533 "SAP-alkalmazások az Azure-on: támogatott termékek és Azure virtuális gépek típusai".
-SAP használata Linux rendszerű virtuális gépek kapcsolatos további dokumentáció itt található: [az SAP használata Linux rendszerű virtuális gépek (VM)](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ez a cikk ismerteti a különböző dolgot figyelembe kell venni a Microsoft Azure SUSE Linux rendszerű virtuális gépek (VM) az SAP NetWeaver futtatja. 2016. május 19 SAP NetWeaver SUSE Linux rendszerű virtuális gépek az Azure-ban hivatalosan támogatott. Linux-verziók, SAP-kernel-verzióknál és egyéb előfeltételeket minden részletei találhatók SAP Megjegyzés 1928533 "Azure-beli SAP-alkalmazások: Támogatott termékek és Azure-beli Virtuálisgép-típusok ".
+SAP használata Linux rendszerű virtuális gépek kapcsolatos további dokumentáció itt található: [SAP használata Linux rendszerű virtuális gépek (VM)](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 A következő információk segítségére néhány nehézségek elkerülése érdekében.
 
@@ -75,7 +76,7 @@ Az ügynök WALinuxAgent nevű az Azure piactéren elérhető SLES képek rész�
 * [SUSE](https://www.suse.com/communities/blog/suse-linux-enterprise-server-configuration-for-windows-azure/)
 
 ## <a name="sap-enhanced-monitoring"></a>SAP "enhanced monitoring"
-SAP "enhanced monitoring" kötelező futtatásának előfeltétele, hogy az SAP az Azure-ban. Ellenőrizze a részleteket az SAP vegye figyelembe, hogy 2191498 "SAP a Linux az Azure: Enhanced Monitoring".
+SAP "enhanced monitoring" kötelező futtatásának előfeltétele, hogy az SAP az Azure-ban. Ellenőrizze a részleteket az SAP-ben, vegye figyelembe 2191498 "az SAP az Azure Linux rendszeren: A kibővített figyelési".
 
 ## <a name="attaching-azure-data-disks-to-an-azure-linux-vm"></a>Azure-adatlemezek csatolása az Azure Linux VM
 Soha nem csatlakoztatási Azure adatlemezeket az Azure Linux VM segítségével az eszköz azonosítójával. Ehelyett használja a univerzálisan egyedi azonosítót (UUID). Legyen óvatos az adatlemezek csatlakoztatása az Azure, a grafikus eszközök például használatakor. A bejegyzések a /etc/fstab ellenőrizni.
@@ -125,7 +126,7 @@ Az Azure klasszikus parancssori felület és Azure Resource Managerrel kapcsolat
 A hivatalos SAP Azure-beli hitelesítésre egy új mechanizmust alapján számítja ki az SAP az SAP-licenccel használt hardverkulcsra váltásával jelent meg. Győződjön meg arról, hogy módosítani kell a korábban az SAP-kernel, az új algoritmust használja. Linux-SAP kernel korábbi verziók nem tartalmazta a kód megváltoztatására. Ezért, bizonyos esetekben (például az Azure virtuális gép átméretezése), az SAP hardverkulcsra váltásával megváltozott, és az SAP-licenc volt már nem érvényes. A megoldás az újabb SAP Linux-kernelek vannak van megadva.  A részletes SAP kernel javítások SAP-jegyzetnek 1928533 vannak dokumentálva.
 
 ## <a name="suse-sapconf-package--tuned-adm"></a>SUSE sapconf csomag / lehetőségeire adm
-SUSE "sapconf", amely kezeli az SAP-specifikus beállítások készletét nevű csomagot biztosít. Ez a csomag leírása, és hogyan telepítheti, és kapcsolatos további információkért lásd: [sapconf segítségével készíti elő a SUSE Linux Enterprise Server, SAP-rendszerek futtatása](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/) és [sapconf mi vagy előkészítése a SUSE Linux Enterprise Az SAP-rendszert futtató kiszolgáló? ](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems).
+SUSE "sapconf", amely kezeli az SAP-specifikus beállítások készletét nevű csomagot biztosít. Ez a csomag leírása, és hogyan telepítheti, és kapcsolatos további információkért lásd:  [Készítse elő a SUSE Linux Enterprise Server, SAP-rendszerek futtatása sapconf segítségével](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/) és [sapconf mi vagy a SUSE Linux Enterprise Server előkészítése az SAP-rendszerek?](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems).
 
 Addig is van egy új eszközt, amely "sapconf - lehetőségeire adm" váltja fel. Ez az eszköz két hivatkozásokon további információ található egyik:
 
