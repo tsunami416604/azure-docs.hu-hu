@@ -19,7 +19,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54025612"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatok átalakítása a Spark-tevékenység használatával az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-spark.md)
 > * [Aktuális verzió](transform-data-using-spark.md)
 
