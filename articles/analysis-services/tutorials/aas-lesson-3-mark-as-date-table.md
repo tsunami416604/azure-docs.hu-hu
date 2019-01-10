@@ -1,23 +1,23 @@
 ---
-title: 'Azure Analysis Services oktatóanyag – 3. lecke: Megjelölés dátumtáblaként | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 3. lecke: Megjelölés dátumtáblaként |} A Microsoft Docs'
 description: A lecke a dátumtáblák megjelölését ismerteti az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9cbbf8c5ea05915293c785028bdd0a47ba081036
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4c383fe30b8a6be3a5915f3cc1c0f5e5712ab328
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426022"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188997"
 ---
 # <a name="mark-as-date-table"></a>Megjelölés dátumtáblázatként
 
-A 2. leckében (Az adatok beszerzése) importálta a DimDate nevű táblát. Ha a modellben ennek a táblának DimDate a neve, *Dátumtábla* néven is szokás nevezni, mivel ez tartalmazza a dátum- és időadatokat.  
+A 2. lecke: Adatok lekérése importálta a DimDate nevű táblát. Ha a modellben ennek a táblának DimDate a neve, *Dátumtábla* néven is szokás nevezni, mivel ez tartalmazza a dátum- és időadatokat.  
   
 A DAX időintelligenciára vonatkozó funkcióinak használatakor, például ha a mértékegységeket később hozza létre, meg kell határoznia egy *Dátumtáblát* és egy egyedi azonosító *Dátumoszlopot* a táblában.
   
@@ -25,10 +25,10 @@ Ebben a leckében megjelöli a DimDate táblát *Dátumtáblaként* és a Date o
 
 Mielőtt megjelölné a dátumtáblát és dátumoszlopot, érdemes lehet rendbe tenni a modellt, hogy könnyebben értelmezhető legyen. A DimDate táblában figyelje meg a **FullDateAlternateKey** elnevezésű oszlopot. Ez az oszlop egy-egy sort tartalmaz a táblában lévő mindegyik naptári naphoz. Ezt az oszlopot sokat fogja használni a mértékegységképletekben és jelentésekben. A FullDateAlternateKey elnevezés azonban nem túl jól azonosítja az oszlop funkcióját. Ha átkereszteli **Date** névre, könnyebb lesz azonosítania és felhasználnia a képletekben. Amikor lehetséges, érdemes átneveznie a különféle objektumokat, azaz a táblákat és oszlopokat, hogy könnyebben azonosíthatók legyenek az SSDT-ben és az ügyfelek jelentési rendszereiben, például a Power BI-ba és az Excelben. 
   
-A lecke elvégzésének várható időtartama: **3 perc**.  
+Becsült idő a lecke elvégzéséhez: **3 percenként, majd**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([2. lecke: Az adatok beszerzése](../tutorials/aas-lesson-2-get-data.md)). 
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [2. lecke: Adatok lekérése](../tutorials/aas-lesson-2-get-data.md). 
 
 ### <a name="to-rename-the-fulldatealternatekey-column"></a>A FullDateAlternateKey oszlop átnevezése
 
@@ -49,5 +49,5 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 
 ## <a name="whats-next"></a>A következő lépések
-[4. lecke: Kapcsolatok létrehozása](../tutorials/aas-lesson-4-create-relationships.md)
+[4. lecke: Kapcsolatok létrehozása](../tutorials/aas-lesson-4-create-relationships.md).
   

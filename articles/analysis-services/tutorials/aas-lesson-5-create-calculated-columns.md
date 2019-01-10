@@ -1,19 +1,19 @@
 ---
-title: 'Az Azure Analysis Services oktatóanyaga – 5. lecke: Számított oszlopok létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 5. lecke: Számított oszlopok létrehozása |} A Microsoft Docs'
 description: A lecke azt ismerteti, hogyan hozhat létre számított oszlopokat az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bb0a17d4b7e11dd83439d943abf0bdd34ef915ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428130"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187450"
 ---
 # <a name="create-calculated-columns"></a>Számított oszlopok létrehozása
 
@@ -23,10 +23,10 @@ Ebben a leckében számított oszlopok hozzáadásával hozhat létre adatokat a
 
 Ez a lecke lesz az első, ahol a DAX (Data Analysis Expressions) nyelvet használja. A DAX egy speciális nyelv, amellyel nagymértékben testre szabható képletkifejezéseket hozhat létre táblázatos modellekhez. Ebben az oktatóanyagban a DAX használatával hozhat létre számított oszlopokat, mértékeket és szerepkörszűrőket. További tudnivalók: [DAX a táblázatos modellekben](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular). 
   
-A lecke elvégzésének várható időtartama: **15 perc**.  
+Becsült idő a lecke elvégzéséhez: **15 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([4. lecke: Kapcsolatok létrehozása](../tutorials/aas-lesson-4-create-relationships.md)). 
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [4. lecke: Kapcsolatok létrehozása](../tutorials/aas-lesson-4-create-relationships.md). 
   
 ## <a name="create-calculated-columns"></a>Számított oszlopok létrehozása  
   
@@ -42,7 +42,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
     A rendszer beszúr egy **Számított oszlop 1** nevű oszlopot a **CalendarQuarter** oszlop bal oldalára.  
   
-4.  A tábla feletti képletsávban gépelje be a következő DAX-képletet: Az automatikus kiegészítés segít az oszlopok és táblák teljes nevének beírásában, és felsorolja a rendelkezésre álló függvényeket.  
+4.  A tábla feletti képletsávban írja be a következő DAX-képletet: Az automatikus kiegészítés segít az oszlopok és táblák teljes nevét, és felsorolja a rendelkezésre álló függvényeket.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  

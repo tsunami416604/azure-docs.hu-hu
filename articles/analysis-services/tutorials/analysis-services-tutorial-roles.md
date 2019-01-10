@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: a1e6e04c4019086d56cc0eb25176a507e514c477
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000642"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188776"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
@@ -144,5 +144,5 @@ Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfióko
 Ebben az oktatóanyagban megtanult csatlakozni Azure AS-kiszolgálójához, megismerkedett az adventureworks minta-modelladatbázissal és annak tulajdonságaival az SSMS-ben. Elsajátította az SSMS és a TMSL-szkriptek használatát felhasználók vagy csoportok meglévő vagy új szerepkörökhöz adására. Most, hogy konfigurálta a kiszolgáló és a minta-modelladatbázis felhasználói engedélyeit, Önnel együtt mások is csatlakozhatnak ahhoz olyan ügyfélalkalmazások használatával, mint a Power BI. További tudnivalók a következő oktatóanyagban. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Csatlakozás a Power BI Desktoppal](analysis-services-tutorial-pbid.md)
+> [Oktatóanyag: Csatlakozás a Power BI Desktopban](analysis-services-tutorial-pbid.md)
 

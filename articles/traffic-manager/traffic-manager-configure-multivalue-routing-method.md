@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 521a9dd49abee8fdeaa42b1ea8c13b9a648f1875
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d4a51551fb0f9067929df1fdf074e7286938004b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187367"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187705"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>A Traffic Manager többértékű útválasztási mód konfigurálása
 
@@ -47,9 +47,9 @@ Hozzon létre egy Traffic Manager-profilt, amely irányítja a felhasználói ad
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza ki *myResourceGroupTM1*. |
     | Hely                | Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
-    
+   |        |           | 
   
-    ![Traffic Manager-profil létrehozása](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
+  ![Traffic Manager-profil létrehozása](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 
@@ -69,7 +69,7 @@ Két IP-címet, külső végpontok hozzáadása típushoz Traffic Manager-profil
 4. Ismételje meg a 2. és 3-nevű másik végpont hozzáadása *myEndpoint2*, a **teljesen minősített tartománynevét (FQDN) vagy IP-**, adja meg a nyilvános IP-címét a második végpontnak.
 5.  Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
-    ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
+   ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
 ## <a name="next-steps"></a>További lépések
 

@@ -1,23 +1,23 @@
 ---
-title: 'Az Azure Analysis Services oktatóanyaga – 11. lecke: Szerepkörök létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 11. lecke: Szerepkörök létrehozása |} A Microsoft Docs'
 description: A lecke azt ismerteti, hogyan hozhat létre szerepköröket az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1a9ecea835e42c90ce7d71617666d210182fe465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b89051cab7e89f79a2b62a392173e6dc234e48d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428903"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189745"
 ---
 # <a name="create-roles"></a>Szerepkörök létrehozása
 
-Ebben a leckében szerepköröket hozhat létre. A szerepkörök biztonságot nyújtanak a modelladatbázis objektumai és adatai számára, mert csak a szerepkör tagjai számára biztosítanak hozzáférést. Minden szerepkör egyetlen engedéllyel van definiálva: Nincs, Olvasás, Olvasás és feldolgozás, Feldolgozás vagy Rendszergazda. A szerepkörök a Szerepkörkezelő használatával definiálhatók a modell létrehozása során. A modell üzembe helyezése után az SQL Server Management Studio (SSMS) használatával kezelheti a szerepköröket. További információkért lásd: [Szerepkörök](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
+Ebben a leckében szerepköröket hozhat létre. A szerepkörök biztonságot nyújtanak a modelladatbázis objektumai és adatai számára, mert csak a szerepkör tagjai számára biztosítanak hozzáférést. Minden szerepkör egyetlen engedéllyel van definiálva: Nincs, Olvasás, Olvasás és folyamat, folyamat vagy rendszergazda. A szerepkörök a Szerepkörkezelő használatával definiálhatók a modell létrehozása során. A modell üzembe helyezése után az SQL Server Management Studio (SSMS) használatával kezelheti a szerepköröket. További információkért lásd: [Szerepkörök](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
   
 > [!NOTE]  
 > A szerepkörök létrehozása nem kötelező a jelen oktatóanyag elvégzéséhez. Alapértelmezés szerint a fiók, amellyel jelenleg be van jelentkezve, rendszergazdai jogosultságokkal rendelkezik a modellben. Ahhoz azonban, hogy a szervezet többi felhasználója is tallózhasson egy jelentéskészítő ügyféllel, létre kell hoznia legalább egy olvasási engedéllyel rendelkező szerepkört, és hozzá kell adnia a felhasználókat tagokként.  
@@ -30,12 +30,12 @@ Három szerepkört kell létrehoznia:
   
 -   **Rendszergazda** – Ez a szerepkör azon felhasználókat tartalmazhatja, akiket rendszergazdai engedélyekkel kíván ellátni. Ezek korlátlan hozzáférést és engedélyeket biztosítanak, amelyekkel felügyeleti feladatok hajthatók végre a modelladatbázison.  
   
-Mivel a szervezetben található Windows-felhasználói és csoportfiókok egyediek, a saját cégéből is hozzáadhat fiókokat tagokként. A jelen oktatóanyag esetében azonban üresen is hagyhatja a tagokat. Az egyes szerepkörök hatásait a 12., Elemzés az Excelben című lecke során tesztelheti.  
+Mivel a szervezetben található Windows-felhasználói és csoportfiókok egyediek, a saját cégéből is hozzáadhat fiókokat tagokként. A jelen oktatóanyag esetében azonban üresen is hagyhatja a tagokat. Minden szerepkör hatásának tesztelése később a 12. lecke: Elemzés az Excelben.  
   
-A lecke elvégzésének várható időtartama: **15 perc**.  
+Becsült idő a lecke elvégzéséhez: **15 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A jelen leckében foglalt feladatok végrehajtása előtt be kell fejeznie az előző leckét ([10. lecke: Partíciók létrehozása](../tutorials/aas-lesson-10-create-partitions.md)).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [10. lecke: Partíciók létrehozása](../tutorials/aas-lesson-10-create-partitions.md).  
   
 ## <a name="create-roles"></a>Szerepkörök létrehozása  
   
@@ -51,7 +51,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 
     ![aas-lesson11-new-role](../tutorials/media/aas-lesson11-new-role.png) 
   
-5.  Opcionális: Kattintson a **Tagok** lapra, majd a **Hozzáadás** parancsra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz.  
+5.  Nem kötelező: Kattintson a **Tagok** lapra, majd a **Hozzáadás** gombra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz.  
   
 #### <a name="to-create-a-sales-analyst-us-user-role"></a>Értékesítési elemző – USA felhasználói szerepkör létrehozása  
   
@@ -70,7 +70,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     A Sorszűrő képlet eredményének logikai (IGAZ/HAMIS) értéknek kell lennie. Ezzel a képlettel azt adja meg, hogy csak azon sorok legyenek láthatók a felhasználó számára, amelyek Ország-/régiókód értéke „US” (Egyesült Államok).  
     ![aas-lesson11-role-filter](../tutorials/media/aas-lesson11-role-filter.png) 
   
-6.  Opcionális: Kattintson a **Tagok** lapra, majd a **Hozzáadás** parancsra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz.  
+6.  Nem kötelező: Kattintson a **Tagok** lapra, majd a **Hozzáadás** gombra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz.  
   
 #### <a name="to-create-an-administrator-user-role"></a>Rendszergazdai felhasználói szerepkör létrehozása  
   
@@ -80,7 +80,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 3.  Adjon **Rendszergazda** engedélyt a szerepkörnek.  
   
-4.  Opcionális: Kattintson a **Tagok** lapra, majd a **Hozzáadás** parancsra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz. 
+4.  Nem kötelező: Kattintson a **Tagok** lapra, majd a **Hozzáadás** gombra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz. 
   
   
 ## <a name="whats-next"></a>A következő lépések

@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services oktatóanyag – kiegészítő lecke: Dinamikus biztonság | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag – kiegészítő lecke: A dinamikus biztonság |} A Microsoft Docs'
 description: Ismerteti a dinamikus biztonság sorszűrőkkel való használatát az Azure Analysis Services oktatóanyagban.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1908d655064a4a320191695c048271246951c29c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235923"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187484"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Kiegészítő lecke – Dinamikus biztonság
 
@@ -21,11 +21,11 @@ Ebben a kiegészítő leckében további, dinamikus biztonságot megvalósító 
   
 A dinamikus biztonság megvalósítása érdekében hozzáadhat egy táblázatot az azon felhasználók felhasználóneveit tartalmazó modellhez, akik csatlakozhatnak a modellhez, és kereshetnek a modell objektumai és adatai között. Az ezen oktatóanyag segítségével létrehozott modell az Adventure Works környezetében található; azonban a lecke elvégzéséhez a saját tartományából származó felhasználókat tartalmazó táblázatot kell hozzáadnia. Nincs szükség a hozzáadott felhasználónevekhez tartozó jelszavakra. EmployeeSecurity tábla létrehozásához, amely a saját tartományából tartalmaz néhány felhasználót példaként, használhatja a Beillesztés funkciót, amellyel alkalmazotti adatokat illeszthet be egy Excel-táblázatból. A valós forgatókönyvekben a felhasználóneveket tartalmazó táblázat általában egy adatforrásként szolgáló valódi adatbázisból származna, például egy valódi DimEmployee táblából.  
   
-A dinamikus biztonság beállításához két DAX-függvényt használhat: [USERNAME függvény (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) és [LOOKUPVALUE függvény (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Ezek a függvények a sorszűrő képletben alkalmazva egy új szerepkörben vannak meghatározva. A LOOKUPVALUE függvény használatával a képlet az EmployeeSecurity táblából ad meg egy értéket. Ezután a képlet továbbadja az értéket a USERNAME függvénynek, amely megadja az ehhez a szerepkörhöz tartozó, bejelentkezett felhasználó felhasználónevét. A felhasználó ezután csak a szerepkör sorszűrői által megadott adatokat böngészheti. Ebben a forgatókönyvben megadhatja, hogy az értékesítési alkalmazottak csak olyan értékesítési területek internetes értékesítési adatai között kereshetnek, amelyben tagok.  
+A dinamikus biztonság megvalósítása két DAX-függvényt használja: [USERNAME függvény (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) és [LOOKUPVALUE függvény (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Ezek a függvények a sorszűrő képletben alkalmazva egy új szerepkörben vannak meghatározva. A LOOKUPVALUE függvény használatával a képlet az EmployeeSecurity táblából ad meg egy értéket. Ezután a képlet továbbadja az értéket a USERNAME függvénynek, amely megadja az ehhez a szerepkörhöz tartozó, bejelentkezett felhasználó felhasználónevét. A felhasználó ezután csak a szerepkör sorszűrői által megadott adatokat böngészheti. Ebben a forgatókönyvben megadhatja, hogy az értékesítési alkalmazottak csak olyan értékesítési területek internetes értékesítési adatai között kereshetnek, amelyben tagok.  
   
 Azok a feladatok, amelyek erre az Adventure Work táblázatos modellezési forgatókönyvre jellemzők, de nem feltétlenül vonatkoznak egy valós forgatókönyvre, ilyenként meg vannak jelölve. Mindegyik feladat a feladat célját leíró, kiegészítő információkat is tartalmaz.  
   
-A lecke elvégzésének várható időtartama: **30 perc**.  
+Becsült idő a lecke elvégzéséhez: **30 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
 Ez a kiegészítőlecke-témakör a táblázatos modellezésről szóló oktatóanyag része, amelyet sorrendben kell elvégezni. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét.  
@@ -37,7 +37,7 @@ A dinamikus biztonság beállításához ehhez az Adventure Works-forgatókönyv
   
 1.  A Táblázatos modelltallózó **Adatforrások** szakaszában kattintson a jobb gombbal a kapcsolatra, majd kattintson az **Új táblázatok importálása** gombra.  
 
-    Ha megjelenik a Megszemélyesítési hitelesítő adatok párbeszédpanel, írja be a 2., Adatok hozzáadása című leckében használt megszemélyesítési hitelesítő adatokat.
+    Ha megjelenik a megszemélyesítési hitelesítő adatok párbeszédpanel, írja be a használt megszemélyesítési hitelesítő 2. lecke: Adatok hozzáadása.
   
 2.  A Kezelőben válassza a **DimSalesTerritory** táblát, majd kattintson az **OK** lehetőségre.    
   
@@ -107,7 +107,7 @@ Ebben a feladatban elrejtheti az EmployeeSecurity táblát, ezzel megakadályozv
 Ebben a feladatban egy felhasználói szerepkört hozhat létre. Ez a szerepkör egy olyan sorszűrőt tartalmaz, amely meghatározza, hogy a DimSalesTerritory tábla mely sorait láthatják a felhasználók. A szűrő ezután alkalmazva lesz az egy-a-többhöz típusú kapcsolati irányban minden egyéb, a DimSalesTerritoryhoz kapcsolódó táblázathoz. Egy olyan szűrőt is alkalmazhat, amely az egész EmployeeSecurity táblát lekérdezhetetlenné teszi azon felhasználók számára, akik tagjai a szerepkörnek.  
   
 > [!NOTE]  
-> Az ebben a leckében létrehozott Területenkénti értékesítési alkalmazottak szerepkör azt a korlátozást tartalmazza, hogy a tagok csak arról az értékesítési területről kereshetnek (vagy kérdezhetnek le) értékesítési adatokat, amelybe tartoznak. Ha olyan felhasználót ad hozzá tagként a Területenkénti értékesítési alkalmazottak szerepkörhöz, aki már tagja egy, a [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md) részben létrehozott szerepkörnek, akkor az engedélyek kombinációját kapja. Ha a felhasználó egyszerre több szerepkörnek is tagja, akkor az engedélyek és az egyes szerepkörökhöz meghatározott sorszűrők összeadódnak. Ez azt jelenti, hogy a felhasználó a szerepkörök kombinációja által megadott nagyobb engedélyekkel rendelkezik.  
+> Az ebben a leckében létrehozott Területenkénti értékesítési alkalmazottak szerepkör azt a korlátozást tartalmazza, hogy a tagok csak arról az értékesítési területről kereshetnek (vagy kérdezhetnek le) értékesítési adatokat, amelybe tartoznak. Ha ad hozzá egy felhasználót, amelynek értékesítési alkalmazottak területén szerepkör, amely egy szerepkör tagja a létrehozott már [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md), az engedélyek kombinációját kapja. Ha a felhasználó egyszerre több szerepkörnek is tagja, akkor az engedélyek és az egyes szerepkörökhöz meghatározott sorszűrők összeadódnak. Ez azt jelenti, hogy a felhasználó a szerepkörök kombinációja által megadott nagyobb engedélyekkel rendelkezik.  
   
 #### <a name="to-create-a-sales-employees-by-territory-user-role"></a>Területenkénti értékesítési alkalmazottak felhasználói szerepkör létrehozásának módja  
   

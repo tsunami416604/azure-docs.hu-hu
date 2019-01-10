@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést |} A Microsoft Docs'
+title: 'Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést |} A Microsoft Docs'
 description: Ez a témakör ismerteti az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést, és hogyan teszi lehetővé vállalati asztali gépek felhasználóinak a vállalati hálózaton belüli valódi egyszeri bejelentkezést biztosít.
 services: active-directory
 keywords: Mi az Azure AD Connect, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b74cf533c0fe59a0967b7063791df2cfc9a7a77
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c0533f0609539645c462c9e6f5b514a82f1162a1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913931"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187569"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 
@@ -60,7 +60,7 @@ Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkroni
 - Egy ingyenes szolgáltatás, és nem kell minden fizetős kiadásban az Azure AD használatát.
 - A webes böngésző alapú ügyfelek és az Office-ügyfelek, amelyek támogatják a támogatott [modern hitelesítést](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) platformon és böngészők képes a Kerberos-hitelesítés:
 
-| OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|igen\*|Nem|Igen|igen\*\*\*|–
 |Windows 8.1|igen\*|–|Igen|igen\*\*\*|–

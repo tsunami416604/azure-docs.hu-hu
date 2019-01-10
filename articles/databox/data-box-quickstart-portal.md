@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 10/04/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385842"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188555"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rövid útmutató: Az Azure Data Box üzembe helyezése az Azure Portal használatával
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box az Azure portal használatával
 
 A rövid útmutató az Azure Data Box az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan csatlakoztathatja a kábelekkel, és hogyan konfigurálhatja a Data Boxot, majd másolhatja rá az adatokat az Azure-ba való feltöltésükhöz. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
 
-A részletes üzembehelyezési és nyomkövetési utasításokért lásd az [Azure Data Box megrendelését ismertető oktatóanyagot](data-box-deploy-ordered.md).
+Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Az Azure Data Box sorrend](data-box-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,6 @@ Előkészületek:
 - Győződjön meg róla, hogy a Data Box szolgáltatáshoz használt előfizetés a következő típusok valamelyikébe tartozik:
     - Microsoft nagyvállalati szerződés (EA). További információk az [EA-előfizetésekről](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Felhőszolgáltató (CSP). További információk az [Azure CSP programjáról](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Használat – használatalapú fizetés. További információk az Azure [használatalapú előfizetéseiről](https://azure.microsoft.com/offers/ms-azr-0003p/).
     - Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - A Data Box-rendelések létrehozásához tulajdonosi vagy közreműködői jogosultsággal kell rendelkeznie az előfizetésen.

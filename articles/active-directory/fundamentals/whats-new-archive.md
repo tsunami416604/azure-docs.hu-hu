@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d727c9c3a9add701263e799dba778b37e637adef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194283"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191921"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Újdonságok archívuma? az Azure Active Directoryban
 
@@ -438,7 +438,7 @@ További információkért lásd:
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Alkalmazásproxy  
-**A termék szolgáltatás:** Access Control
+**A termék szolgáltatás:** Hozzáférés-vezérlés
  
 Alkalmazásproxy parancsmagok támogatása már általánosan elérhető a Powershell-modult az! Ehhez szükség, hogy legyen naprakész a Powershell-modulok – Ha Ön több mint egy év mögött, egyes parancsmagok leállhat. 
 
@@ -857,7 +857,7 @@ A saját alkalmazások webböngésző-bővítmény már elérhető kényelmes es
 - Lehetővé teszi a közvetlenül bejelentkezni jelszó SSO-alapú alkalmazások az alkalmazás bejelentkezési lapján
 - Indítsa el minden olyan alkalmazást kész keresési funkciója
 - A bővítmény a legutóbb használt alkalmazások parancsikonjai
-- A bővítmény az Edge, Chrome és a Firefox érhető el.
+- A bővítmény a Microsoft Edge, Chrome és a Firefox érhető el.
  
 További információkért lásd: [saját alkalmazások biztonságos bejelentkezési bővítménye](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 

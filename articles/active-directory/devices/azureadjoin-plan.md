@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b891995fab9e7def4b9b72f8bd8630d6b7e11d27
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023857"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189513"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -167,7 +167,7 @@ Az alábbi szakaszok tartalmazzák a különböző típusú alkalmazások és er
 
 ### <a name="cloud-based-applications"></a>Felhőalapú alkalmazások
 
-Egy alkalmazás az Azure AD-alkalmazásgyűjtemény ad hozzá, ha a felhasználók egyszeri Bejelentkezéssel keresztül az Azure AD-csatlakoztatott eszközök kapnak. További konfiguráció nélkül nem szükséges. Felhasználók get egyszeri Bejelentkezést is, az Edge és a Chrome böngészőben. A Chrome, üzembe kell helyeznie a [Windows 10-es fiókok bővítmény](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
+Egy alkalmazás az Azure AD-alkalmazásgyűjtemény ad hozzá, ha a felhasználók egyszeri Bejelentkezéssel keresztül az Azure AD-csatlakoztatott eszközök kapnak. További konfiguráció nélkül nem szükséges. Egyszeri bejelentkezés a Microsoft Edge és a Chrome böngészők is, a felhasználók kapnak. A Chrome, üzembe kell helyeznie a [Windows 10-es fiókok bővítmény](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
 
 Win32-alkalmazások, amelyek:
 

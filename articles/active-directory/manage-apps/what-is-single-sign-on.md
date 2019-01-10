@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: b7e75753f8d7a9316dd1cc644dc22c42ef284736
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322704"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190072"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 Ismerje meg, hogyan válassza ki a legmegfelelőbb egyszeri bejelentkezési módszer, ha alkalmazások konfigurálása az Azure Active Directoryban (Azure AD). 
@@ -79,7 +79,7 @@ Használat jelszóalapú egyszeri bejelentkezés mikor:
 Jelszavas egyszeri bejelentkezés bármely felhőalapú alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal támogatott. A felhasználó az alábbi böngészők bármelyike használható:
 
 - Az Internet Explorer 11 Windows 7-es vagy újabb
-- Edge a Windows 10 Évfordulós kiadása vagy újabb 
+- A Microsoft Edge a Windows 10 Évfordulós kiadása vagy újabb 
 - Chrome, a Windows 7 vagy újabb, és a MacOS X rendszeren vagy újabb
 - Firefox 26.0 vagy újabb, Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb
 

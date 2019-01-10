@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 14f74c26822ac1dc9e781ada82809bf3a4166f18
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971307"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190901"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -188,7 +188,7 @@ Az F12 nyomkövetés rögzítése a két lehetősége van:
 3. Ellenőrizze, hogy a **hálózati** lap van kijelölve, és válassza a zöld **lejátszása** gombra.
 4. Hajtsa végre a lépéseket, hogy reprodukálnia a hibát.
 5. Válassza ki a piros **leállítása** gombra.
-6. Válassza ki a **mentése** (lemez ikon) gombra, és mentse a HAR-fájl (az Internet Explorer és a peremhálózati) *vagy* kattintson a jobb gombbal a HAR-fájlt, és válassza **Mentés másként HAR tartalommal** (a Chrome-ban).
+6. Válassza ki a **mentése** (lemez ikon) gombra, és mentse a HAR-fájlt (az Internet Explorer és Microsoft Edge) *vagy* kattintson a jobb gombbal a HAR-fájlt, és válassza **Mentés másként HARtartalommal**(a Chrome-ban).
 
 ### <a name="f12-console-output"></a>F12 billentyű konzolkimenet
 

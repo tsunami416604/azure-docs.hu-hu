@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958669"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189553"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API-val aszinkron Adatfrissítés
+
 Bármely más REST-hívásokat támogató programnyelv használatával az Azure Analysis Services rendszerbeli táblázatos modellek az aszinkron Adatfrissítés műveleteket hajthat végre. Ez magában foglalja a lekérdezések kiterjesztése kibővítése csak olvasható replikák szinkronizálása. 
 
 Adatfrissítés műveletek számos tényező befolyásolja, többek között az adatmennyiség, szintű optimalizálást használatával a partíció, és így tovább függően hosszabb időt is igénybe vehet. Ezek a műveletek hagyományosan meghívása rendelkezik meglévő módszerrel például használatával [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (táblázatos objektummodell), [PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) parancsmagokról, vagy [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (táblázatos modell Scripting Language). Ezek a módszerek azonban gyakran megbízhatatlan, hosszan futó HTTP-kapcsolatokat is szükséges.
@@ -94,6 +95,7 @@ A szervezet előfordulhat, hogy a következőhöz hasonlóan:
 ```
 
 ### <a name="parameters"></a>Paraméterek
+
 Paraméterek megadása nem kötelező. Alapértelmezés szerint a rendszer alkalmazza.
 
 |Name (Név)  |Típus  |Leírás  |Alapértelmezett  |
@@ -184,11 +186,11 @@ A szinkronizálási művelet állapotának ellenőrzéséhez használja a GET-ve
 
 Értékei `syncstate`:
 
-- 0: replikálásához. Adatbázisfájlok replikálva egy célmappát.
-- 1: rehidratálása. Az adatbázis csak olvasható server-példány a van folyamatban rehydrated.
-- 2: befejeződött. A szinkronizálási művelet sikeresen befejeződött.
-- 3: nem sikerült. A szinkronizálási művelet sikertelen volt.
-- 4: véglegesítése. A szinkronizálási művelet befejeződött, de működik-e törléshez szükséges lépéseket.
+- 0: Replikálás alatt. Adatbázisfájlok replikálva egy célmappát.
+- 1: Rehidratálása. Az adatbázis csak olvasható server-példány a van folyamatban rehydrated.
+- 2: Elkészült. A szinkronizálási művelet sikeresen befejeződött.
+- 3: Sikertelen. A szinkronizálási művelet sikertelen volt.
+- 4: Véglegesítése. A szinkronizálási művelet befejeződött, de működik-e törléshez szükséges lépéseket.
 
 ## <a name="code-sample"></a>Kódminta
 

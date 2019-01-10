@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: b4229ca7ff96a9806ac82cf9452de496d858f6b4
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705684"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191036"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Hozzáférés és a MyApps portálról hibáinak elhárítása
 
@@ -49,7 +49,7 @@ A MyApps portálról kell egy böngészőben, amely támogatja a JavaScript és 
 
 Ellenőrizze, hogy győződjön meg arról, hogy teljesíti-e vannak a következő webböngészőkre vonatkozó követelmények:
 
-- **Edge**: a Windows 10 Évfordulós kiadása vagy újabb.
+- **A Microsoft Edge**: a Windows 10 Évfordulós kiadása vagy újabb.
 - **Chrome**: Windows 7-es vagy újabb, és a Mac OS x-en vagy újabb.
 - **Firefox 26.0 vagy újabb**: a Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
 - **Az Internet Explorer 11**: Windows 7 vagy újabb (korlátozott támogatást).
@@ -90,7 +90,7 @@ Ha a bővítmény telepítve van, és továbbra is problémákat tapasztal, amik
        Már használta az utolsó három alkalmazások megjelennek a **a legutóbb használt** helyi listát.
 
 > [!NOTE]
-> Ezek a beállítások csak az Edge, Chrome és a Firefox érhetők el.
+> Ezek a beállítások csak a Microsoft Edge, Chrome és a Firefox érhetők el.
 
 ## <a name="how-do-i-add-a-new-app"></a>Hogyan adhatok hozzá egy új alkalmazást?
 

@@ -5,17 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7673b115a3ad2e6ca7aec34b1cfabfb38d2a16f4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428419"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191360"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
+
 Az Azure Analysis Services az Azure Active Directory (Azure AD) identity management és a felhasználói hitelesítés. Bármely felhasználó létrehozása, kezelése vagy csatlakozhat egy Azure Analysis Services kiszolgálói rendelkeznie kell egy érvényes felhasználói identitás egy [Azure AD-bérlő](../active-directory/fundamentals/active-directory-administer.md) ugyanabban az előfizetésben.
 
 Az Azure Analysis Services támogatja a [Azure AD B2B együttműködés](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md). B2B, a szervezeten kívüli felhasználók is hívható meg az Azure AD-címtár vendégfelhasználókat. Vendégek lehet az Azure AD-bérlő egy másik címtárban vagy bármilyen érvényes e-mail címet. Egyszer meghívót, és a felhasználó elfogadja a meghívó által küldött e-mailt az Azure-ban, a felhasználói identitás bekerül a bérlő címtárát. Ezeket az identitásokat a biztonsági csoportok és a egy kiszolgálói rendszergazda vagy az adatbázis-szerepkör tagjai is hozzáadhatók.
@@ -23,6 +24,7 @@ Az Azure Analysis Services támogatja a [Azure AD B2B együttműködés](../acti
 ![Az Azure Analysis Services hitelesítési architektúra](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>Hitelesítés
+
 Az összes ügyfél alkalmazások és eszközök használatához legalább egy, az Analysis Services [klienskódtárak](analysis-services-data-providers.md) (AMO, MSOLAP, ADOMD) szeretne csatlakozni egy kiszolgálóhoz. 
 
 Mindhárom ügyfélkódtárat mind az Azure AD interaktív flow és a nem interaktív hitelesítési módszereket támogatja. A két nem interaktív módok, az Active Directory-jelszó és a Active Directory integrált hitelesítési módszerek AMOMD és MSOLAP-alkalmazásokban használható. Két módszer közül a felugró párbeszédpanel soha nem eredményez.
@@ -36,6 +38,7 @@ A Power BI Desktop, az SSDT és SSMS támogatja az Active Directory univerzális
 Ha nincs kiválasztva egy Windows-fiókot és univerzális hitelesítéssel vagy érhető el (Excel), az Azure-bA bejelentkezik [Active Directory összevonási szolgáltatások (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) megadása kötelező. Az összevonási, az Azure AD és Office 365-felhasználók a helyszíni hitelesítő adatok használatával hitelesített, és az Azure-erőforrások eléréséhez.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
+
 Azure Analysis Services szolgáltatásai támogatják a érkező kapcsolatokat [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és újabb Windows-hitelesítés, Active Directory jelszavas hitelesítést és az Active Directory univerzális hitelesítéssel. Általában javasoljuk, használja az Active Directory univerzális hitelesítéssel, mivel:
 
 *  Interaktív és a nem interaktív hitelesítési módszereket támogatja.
@@ -45,12 +48,15 @@ Azure Analysis Services szolgáltatásai támogatják a érkező kapcsolatokat [
 *  Támogatja a többtényezős hitelesítés (MFA). Az Azure MFA segít biztonságosabb a hozzáférés az adatokhoz és alkalmazásokhoz az ellenőrzési lehetőségek: telefonhívás, szöveges üzenet, intelligens kártyák PIN-kód vagy mobilalkalmazásbeli értesítés. Interaktív, az Azure AD MFA egy felugró párbeszédpanel érvényesítéshez eredményezhet.
 
 ### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+
 Az SSDT Active Directory univerzális hitelesítéssel az MFA-támogatással az Azure Analysis Services csatlakozik. Jelentkezzen be az első üzembe helyezés az Azure-bA a rendszer kéri. Felhasználók az Azure-bA egy olyan fiókkal rendelkező kiszolgáló-rendszergazdai engedélyek a kiszolgálón telepíti, be kell jelentkeznie. Bejelentkezés az Azure-bA az első alkalommal, amikor egy token van hozzárendelve. Az SSDT gyorsítótárazza a jogkivonat memórián belüli a jövőbeli újrakapcsolódások száma.
 
 ### <a name="power-bi-desktop"></a>A Power BI Desktopban
+
 A Power BI Desktop csatlakozik az Azure Analysis Services használata az Active Directory univerzális hitelesítéssel az MFA-támogatással. Jelentkezzen be az első kapcsolat az Azure-bA a rendszer kéri. Felhasználók jelentkezzen be az Azure-bA egy olyan fiókkal, amely egy kiszolgáló-rendszergazda vagy az adatbázis-szerepkör része.
 
 ### <a name="excel"></a>Excel
+
 Az Excel-felhasználók egy Windows-fiókot, egy szervezet azonosítója (e-mail-cím), vagy egy külső e-mail-cím használatával is csatlakozni egy kiszolgálóhoz. Az Azure AD egy külső e-mail-identitások léteznie kell.
 
 ## <a name="user-permissions"></a>Felhasználói engedélyek
@@ -65,15 +71,12 @@ Az Excel-felhasználók egy Windows-fiókot, egy szervezet azonosítója (e-mail
 
 Ezen a szinten szerepkörök vonatkozik a felhasználók vagy fiókok, amelyek feladatokat kell elvégeznie, elvégezhető a portálon vagy az Azure Resource Manager-sablonok használatával. További tudnivalókért lásd: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md). 
 
-
 ## <a name="database-roles"></a>Adatbázis-szerepkörök
 
  Egy táblázatos modell definiált szerepkörök választhatók: adatbázis-szerepkörökhöz. Amelyek a szerepkör tartalmaz tagokat álló Azure AD-felhasználók és biztonsági csoportokból, amelyekre konkrét engedélyeket, amelyek meghatározzák a művelet a tagon egy modelladatbázissal hajthatja végre. A rendszer az adatbázis-szerepkört külön objektumként hozza létre az adatbázisban, és csak arra az adatbázisra vonatkozik, amelyben az adott szerepkör létre lett hozva.   
   
  Alapértelmezés szerint egy új táblázatosmodell-projekt létrehozásakor a jelentésmodell-projekt nem rendelkezik minden olyan szerepkörhöz. Szerepkörök a szerepkörkezelő párbeszédpanel az SSDT használatával lehet definiálni. Ha szerepkörök modell projekt tervezése során vannak definiálva, csak a modell munkaterület-adatbázis az alkalmazásuk. A modell üzembe lett helyezve, amikor a rendszer alkalmazza ugyanezeket a szerepköröket az üzembe helyezett modell. A modell üzembe helyezését követően server és adatbázis-rendszergazdák kezelheti szerepkörök és a tagok az SSMS használatával. További tudnivalókért lásd: [adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md).
   
-
-
 ## <a name="next-steps"></a>További lépések
 
 [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory-csoportokkal](../active-directory/fundamentals/active-directory-manage-groups.md)   

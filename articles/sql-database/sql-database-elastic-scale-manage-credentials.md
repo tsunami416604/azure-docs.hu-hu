@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 87a46a0b6d5dda9f59e49a3b052dc7528df7410f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e6c7d682d9b16266208baeeff14168b3da157251
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039962"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186622"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyfélkódtár eléréséhez használt hitelesítő adatokat
 
@@ -31,7 +31,7 @@ Lásd még: [adatbázisok és bejelentkezések Azure SQL Database kezelése](sql
 
 ## <a name="about-management-credentials"></a>Tudnivalók a felügyeleti hitelesítő adatok
 
-Felügyeleti hitelesítő adatok segítségével hozzon létre egy **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) objektumot az alkalmazásokat, amelyek szegmenstérképet módosítására. (Lásd a [hozzáadása a rugalmas Adatbáziseszközök használatáról szegmensek](sql-database-elastic-scale-add-a-shard.md) és [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md)). A felhasználó, a rugalmas méretezésű ügyfélkódtárral hoz létre az SQL-felhasználók és az SQL-bejelentkezésekben, és biztosítja, hogy minden egyes az olvasási/írási engedélyek a globális szegmenstérkép-adatbázis és az összes bontott adatbázisokat is kapnak. Ezek a hitelesítő adatok segítségével a globális szegmenstérkép és a helyi szegmenstérképet fenntartása, amikor a módosítások a szilánkleképezésbe menjenek végbe. Használja például a felügyeleti hitelesítő adatokat a szegmensek térkép manager-objektum létrehozása (használatával **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)):
+Felügyeleti hitelesítő adatok segítségével hozzon létre egy **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) objektumot az alkalmazásokat, amelyek szegmenstérképet módosítására. (Lásd a [hozzáadása a rugalmas Adatbáziseszközök használatáról szegmensek](sql-database-elastic-scale-add-a-shard.md) és [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md)). A felhasználó, a rugalmas méretezésű ügyfélkódtárral hoz létre az SQL-felhasználók és az SQL-bejelentkezésekben, és biztosítja, hogy minden egyes az olvasási/írási engedélyek a globális szegmenstérkép-adatbázis és az összes bontott adatbázisokat is kapnak. Ezek a hitelesítő adatok segítségével a globális szegmenstérkép és a helyi szegmenstérképet fenntartása, amikor a módosítások a szilánkleképezésbe menjenek végbe. Használja például a felügyeleti hitelesítő adatokat a szegmensek térkép manager-objektum létrehozása (használatával **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
 
 ```java
 // Obtain a shard map manager.
@@ -59,7 +59,7 @@ Vegye figyelembe a használatát a **smmReadOnlyConnectionString** a különböz
 
 ## <a name="connection-credentials"></a>Kapcsolat hitelesítő adatait
 
-További hitelesítő adatok szükségesek a használatakor a **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)) módszer olyan szegmenskulcsot társított szegmensek eléréséhez. Ezeket a hitelesítő adatokat kell megadnia a csak olvasási hozzáférést a szegmens a helyi szegmens térkép táblázatokra vonatkozó engedélyek. Erre azért van szükség, a kapcsolat-ellenőrzéshez Adatfüggő útválasztás a szegmensben lévő. Ez a kódrészlet lehetővé teszi, hogy adatelérési Adatfüggő útválasztásnak környezetében:
+További hitelesítő adatok szükségesek a használatakor a **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) módszer olyan szegmenskulcsot társított szegmensek eléréséhez. Ezeket a hitelesítő adatokat kell megadnia a csak olvasási hozzáférést a szegmens a helyi szegmens térkép táblázatokra vonatkozó engedélyek. Erre azért van szükség, a kapcsolat-ellenőrzéshez Adatfüggő útválasztás a szegmensben lévő. Ez a kódrészlet lehetővé teszi, hogy adatelérési Adatfüggő útválasztásnak környezetében:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))

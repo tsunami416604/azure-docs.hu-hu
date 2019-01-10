@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 84bd1283020492ef6724aabd7daad4e153b11717
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce5ba5f827b790e4ca91d1aed91dfad47cedac4e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043685"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191394"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Teljesítményszámlálók a szilánkleképezés-kezelőhöz
 
@@ -34,7 +34,7 @@ Számlálók teljesítményének nyomon követésére használt [Adatfüggő út
 
 ## <a name="create-performance-category-and-counters"></a>Teljesítmény kategória és -számlálók létrehozása
 
-A számlálók létrehozásához hívja CreatePerformanceCategoryAndCounters módszer a [ShardMapManagementFactory osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Csak a rendszergazda hajthat végre a metódus:
+A számlálók létrehozásához hívja CreatePerformanceCategoryAndCounters módszer a [ShardMapManagementFactory osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory). Csak a rendszergazda hajthat végre a metódus:
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
@@ -42,7 +42,7 @@ Is [ez](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-
 A metódus létrehozza a következő teljesítményszámlálókkal:  
 
 * **Gyorsítótárazott leképezések**: A gyorsítótárban a szegmenstérkép hozzárendelések száma.
-* **Adatfelderítési rekordok művelet/mp**: Az útválasztási függő műveletek esetében a szegmenstérkép sebessége. Ez a számláló akkor frissül, amikor a hívás [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) a cél szegmenshez a sikeres kapcsolat eredményez.
+* **Adatfelderítési rekordok művelet/mp**: Az útválasztási függő műveletek esetében a szegmenstérkép sebessége. Ez a számláló akkor frissül, amikor a hívás [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) a cél szegmenshez a sikeres kapcsolat eredményez.
 * **Keresési gyorsítótár-találatok száma/mp-leképezés**: A horizontális skálázási térképet leképezések sikeres gyorsítótár keresési műveletek száma.
 * **Keresési gyorsítótár-tévesztések száma/mp-leképezés**: A horizontális skálázási térképet leképezések sikertelen gyorsítótár keresési műveletek száma.
 * **Leképezések, vagy a gyorsítótár/mp-ben frissített**: A sebesség, mely leképezések vannak a hozzáadása vagy frissítése a szegmenstérkép-gyorsítótárban.
@@ -54,7 +54,7 @@ Teljesítményszámlálók minden gyorsítótárazott szegmenstérkép folyamato
 
 A következő események aktiválja a teljesítményszámlálók létrehozása:  
 
-* Inicializálása a [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) a [eager betöltése](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), ha a ShardMapManager bármely szegmenstérképet tartalmaz. Ezek közé tartozik a [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) és a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) módszereket.
+* Inicializálása a [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) a [eager betöltése](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy), ha a ShardMapManager bármely szegmenstérképet tartalmaz. Ezek közé tartozik a [GetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) és a [TryGetSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) módszereket.
 * Horizontálispartíció-térkép, sikerült keresési (használatával [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) vagy [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)).
 * Horizontális skálázási térképet használ CreateShardMap() sikeres létrejöttéről.
 

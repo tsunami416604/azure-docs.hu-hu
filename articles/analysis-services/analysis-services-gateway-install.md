@@ -5,20 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa089db385995f6c44ea2238c91a3ac59946daae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407656"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190374"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
+
 Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgálót a helyszíni adatforrásokhoz kapcsolódik, egy helyszíni adatátjáróra szükség. Az átjáró kapcsolatos további információkért lásd: [a helyszíni adatátjáró](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 **Rendszerkövetelmények:**
 
 * .NET 4.5-ös keretrendszer
@@ -44,6 +46,7 @@ Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgál�
 
 
 ## <a name="download"></a>Töltse le
+
  [Töltse le az átjárót](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Telepítése
@@ -62,6 +65,7 @@ Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgál�
    > Egy tartományi fiókkal jelentkezik be, ha azt lesz leképezve a szervezeti fiókjával az Azure ad-ben. A szervezeti fiók lesz az átjáró rendszergazdájához.
 
 ## <a name="register"></a>Regisztráció
+
 Annak érdekében, hogy az átjáró erőforrás létrehozása az Azure-ban, regisztrálnia kell a telepítést az átjáró Felhőszolgáltatása a helyi példány. 
 
 1.  Válassza ki **ezen a számítógépen új átjáró regisztrálása**.
@@ -77,6 +81,7 @@ Annak érdekében, hogy az átjáró erőforrás létrehozása az Azure-ban, reg
 
 
 ## <a name="create-resource"></a>Hozzon létre egy Azure-átjáró-erőforrást
+
 Telepítve van, és az átjáró regisztrálása után kell átjáró erőforrás létrehozása az Azure-előfizetésében. Jelentkezzen be az Azure-ban a fiók is, ha az átjáró regisztrálása.
 
 1. Az Azure Portalon, kattintson a **erőforrás létrehozása** > **integrációs** > **a helyszíni adatátjáró**.
@@ -85,15 +90,15 @@ Telepítve van, és az átjáró regisztrálása után kell átjáró erőforrá
 
 2. A **kapcsolódási átjáró létrehozása**, adja meg ezeket a beállításokat:
 
-    * **Név**: Adjon meg egy nevet az átjáró-erőforrás. 
+    * **Név**: Adja meg az átjáró-erőforrás nevét. 
 
-    * **Előfizetés**: válassza ki az Azure-előfizetés társítása az átjáró-erőforrás. 
+    * **Előfizetés**: Válassza ki az Azure-előfizetés társítása az átjáró-erőforrás. 
    
       Az alapértelmezett előfizetést az Azure-fiókkal való bejelentkezéshez használt alapul.
 
     * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
 
-    * **Hely**: válassza ki a régiót az átjárót a regisztrált.
+    * **Hely**: Válassza ki a régiót az átjárót a regisztrált.
 
     * **Telepítés neve**: Ha az átjáró telepítése még nincs kiválasztva, válassza ki az átjáró regisztrálva. 
 
@@ -115,6 +120,7 @@ Telepítve van, és az átjáró regisztrálása után kell átjáró erőforrá
 Ennyi az egész. Ha a portok megnyitásához, vagy tegye hibaelhárításra van szüksége, tekintse meg kell [a helyszíni adatátjáró](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>További lépések
+
 * [Analysis Services kezelése](analysis-services-manage.md)   
 * [Adatok lekérése az Azure Analysis Services](analysis-services-connect.md)   
 * [Átjáró használata az adatforrásokhoz egy Azure-beli virtuális hálózaton](analysis-services-vnet-gateway.md)

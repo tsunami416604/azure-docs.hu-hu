@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238879"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189796"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
 
@@ -45,7 +45,7 @@ Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és 
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**Egyik sem**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
+    |**Nincsenek**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
     |**Olvasás**|A tagok lekérdezheti az adatokat (Sorszűrők alapján), de nem módosíthatja a modellsémát.|  
     |**Olvasás és feldolgozás**|Tagok (alapján sorszintű szűrők) adatok és a futtatási folyamat és a folyamat minden műveletek lekérdezheti, de nem módosítható a modellsémát.|  
     |**Folyamat**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
@@ -63,6 +63,7 @@ Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és 
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Adja hozzá, vagy kezelheti a szerepköröket és a felhasználók az ssms-ben
+
 Szerepkörök és a felhasználók hozzáadása egy üzembe helyezett modellű adatbázisához, akkor kapcsolódnia kell a kiszolgáló kiszolgáló-rendszergazdaként vagy a rendszergazda engedélyekkel rendelkező adatbázis-szerepkör már.
 
 1. Az objektum Exporer, kattintson a jobb gombbal **szerepkörök** > **új szerepkör**.
@@ -83,6 +84,7 @@ Szerepkörök és a felhasználók hozzáadása egy üzembe helyezett modellű a
 5. Ha a szerepkör létrehozásakor olvasási engedéllyel rendelkezik, a Sorszűrők DAX-képlet használatával is hozzáadhat. Kattintson a **Sorszűrők**, válasszon ki egy táblát, és írja be egy DAX-képletet a a **DAX-szűrő** mező. 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és a felhasználók hozzáadása a TMSL-parancsfájl használatával
+
 Az XMLA-ablak az ssms-ben vagy a PowerShell használatával is futtathatja a TMSL-parancsfájl. Használja a [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) parancsot, és a [szerepkörök](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objektum.
 
 **A példaszkript TMSL**
@@ -116,6 +118,7 @@ Ebben a példában egy külső B2B-felhasználó és csoport hozzáadva a SalesB
 ```
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és a felhasználók hozzáadása a PowerShell használatával
+
 A [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) a modul adja meg a feladat-specifikus adatbázis felügyeleti parancsmagok és az általános célú Invoke-ASCmd parancsmag, amely egy táblázatos modell parancsnyelv (TMSL) lekérdezést vagy parancsfájlt. A következő parancsmagok használhatók, adatbázis-szerepkörök és felhasználók kezeléséhez.
   
 |Parancsmag|Leírás|
@@ -125,6 +128,7 @@ A [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) a modul adja meg
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Hajtsa végre a TMSL-parancsfájlt.|
 
 ## <a name="row-filters"></a>Sorszűrők  
+
 Sorszűrők határozza meg, hogy mely sorokat egy táblában egy adott szerepkör tagjai által kérhető le. Sorszűrők határozzák meg a modellben minden táblához DAX-képletek használatával.  
   
 Sorszűrők definiálható csak olvasható, és olvasási szerepkörökhöz tartozó és a folyamat engedélyeket. Alapértelmezés szerint ha egy adott tábla nincs definiálva a sorszűrőt tagok lekérdezheti a tábla összes sorát, ha egy másik tábla keresztszűrés vonatkozik.
@@ -144,6 +148,7 @@ A megadott sort és a hozzá tartozó sorok Sorszűrők vonatkoznak. A tábla t�
  Használhatja a szűrő *=FALSE()*, egy egész tábla összes sorát hozzáférését.
 
 ## <a name="next-steps"></a>További lépések
+
   [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)   
   [A PowerShell-lel az Azure Analysis Services kezelése](analysis-services-powershell.md)  
   [Táblázatos modell parancsfájl-kezelési (TMSL) nyelvi referencia](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

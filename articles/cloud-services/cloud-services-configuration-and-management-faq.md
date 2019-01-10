@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386995"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191428"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services: Gyakori kérdések (GYIK)
 
@@ -208,7 +208,7 @@ Ezeket a lépéseket sikerült automatikus egy indítási feladaton keresztül, 
 Miután ez megtörtént, ellenőrizheti a HTTP/2 engedélyezve van-e, vagy nem a következő módszerek egyikével:
 
 - Engedélyezi az IIS-naplók protokoll verziója, és keresse meg az IIS-naplók. HTTP/2 megjelenik a naplókban. 
-- F12 fejlesztői eszközét az Internet Explorer vagy Edge engedélyezze, és váltson a hálózat lapon ellenőrizze a protokollt. 
+- Engedélyezze a F12 fejlesztői eszközét, az Internet Explorer és Microsoft Edge-ben, és váltson a hálózat lapon ellenőrizze a protokollt. 
 
 További információkért lásd: [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2).
 

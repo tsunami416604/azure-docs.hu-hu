@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: juliako
-ms.openlocfilehash: f9ad7fcf414e90acc40ee5cd42e322a3b9e47f17
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381178"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190728"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Hozzon létre egy miniatűr sprite 
 
@@ -70,7 +70,7 @@ Például:
 
 1.  Már nem a rendszerképek egyetlen sor sprite képek létrehozása (SpriteColumn = 1 eredmények egy oszloppal a kép).
 2.  A közepesen méretű JPEG-képek sprite rendszerképet darabolás még nem támogatott. Ezért ügyelni kell a miniatűrök és azok méretét, számát úgy, hogy a eredő stitched miniatűr Sprite körül 8 M képpont vagy annál kisebb.
-3.  Az Azure Media Player sprites Edge, Chrome és a Firefox böngésző használatát támogatja. Az IE11 VTT elemzés nem támogatott.
+3.  Az Azure Media Player sprites támogatja a Microsoft Edge, Chrome és a Firefox böngészőben. Az IE11 VTT elemzés nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

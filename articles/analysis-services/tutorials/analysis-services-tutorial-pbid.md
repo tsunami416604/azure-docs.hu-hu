@@ -5,17 +5,17 @@ manager: kfile
 description: Ismerje meg, hogyan csatlakozhat az Azure Analysis Services a Power BI Desktopban.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0025655b3df8ddfb91857bbd56c04507ac6bca5e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993982"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188810"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktoppal
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktopban
 
 Ebben az oktatóanyagban a Power BI Desktopot fogja használni arra, hogy csatlakozzon az adventureworks minta-modelladatbázishoz a kiszolgálóján. A végrehajtandó feladat azt szimulálja, ahogyan egy felhasználó jellemzően csatlakozik a modellhez és létrehoz egy egyszerű jelentést a modelladatok alapján.
 

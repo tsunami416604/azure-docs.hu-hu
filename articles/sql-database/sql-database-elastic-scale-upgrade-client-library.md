@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 63671b38c952f5297be88f7b50ad9d6f9341fc72
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 395aff83c8983c4f61ca0b1fd1da276de17ec98b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034420"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190066"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Alkalmazás használata a legújabb rugalmas adatbázis ügyfélkönyvtárának frissítése
 
@@ -55,7 +55,7 @@ Ezek a lépések végrehajtása sorrendben biztosítja, hogy az ügyféloldali k
 
 ***2. lehetőség: Frissítse a metaadatok használatávalC#***
 
-Alternatív megoldásként hozzon létre egy Visual Studio alkalmazás, amely megnyitja a ShardMapManager, minden szegmensre ismétel, és a metaadat-frissítést végez a metódusok meghívásával [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore.aspx) és [UpgradeGlobalStore ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore.aspx) ebben a példában látható módon:
+Alternatív megoldásként hozzon létre egy Visual Studio alkalmazás, amely megnyitja a ShardMapManager, minden szegmensre ismétel, és a metaadat-frissítést végez a metódusok meghívásával [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) és [UpgradeGlobalStore ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) ebben a példában látható módon:
 
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager

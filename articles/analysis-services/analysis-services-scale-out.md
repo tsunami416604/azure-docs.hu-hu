@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/13/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321274"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190831"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -74,15 +74,19 @@ A **áttekintése** > modell > **Synchronize modell**.
 ![Horizontális felskálázás csúszka](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
+
 Használja a **szinkronizálási** műveletet.
 
 #### <a name="synchronize-a-model"></a>A modell szinkronizálása   
+
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>Szinkronizálási állapotának beolvasása  
+
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
+
 PowerShell-lel, mielőtt [telepítése vagy frissítése a legújabb AzureRM-modul](https://github.com/Azure/azure-powershell/releases). 
 
 Lekérdezési replikák száma beállításához használja [Set-azurermanalysisservicesserver parancsmagban](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Adja meg a választható `-ReadonlyReplicaCount` paraméter.
@@ -101,9 +105,9 @@ Az ssms-ben, az SSDT és kapcsolati karakterláncokat a PowerShell, Azure-függv
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-**Probléma:** felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
+**A probléma leírása:** Felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
 
-**Megoldás:** kiválasztásakor a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül: rw) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen csatlakozás tiltása, hogy nem szeretné a feldolgozó kiszolgáló, a lekérdezési készlettől külön addig, amíg a horizontális felskálázást és a szinkronizálási művelet befejeződött. A memória és a QPU mérőszámok segítségével szinkronizálási állapotának figyelése.
+**Megoldás:** Amikor kiválasztja a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül: rw) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen csatlakozás tiltása, hogy nem szeretné a feldolgozó kiszolgáló, a lekérdezési készlettől külön addig, amíg a horizontális felskálázást és a szinkronizálási művelet befejeződött. A memória és a QPU mérőszámok segítségével szinkronizálási állapotának figyelése.
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

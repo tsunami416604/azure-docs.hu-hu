@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
-ms.openlocfilehash: db33deaa9bb0bf9a4c3f766fbae883df4075c431
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 554fd9c32c9831d45a40c62a871e3a8d5f8d7cb9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323371"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191751"
 ---
-# <a name="azure-stack-customer-journey"></a>Az Azure Stack felhasználói interakciósorozat
+# <a name="azure-stack-datacenter-integration"></a>Az Azure Stack adatközpont integrációja
 
 Ez a cikk ismerteti a teljes körű Azure Stack felhasználói élmény a vásárlási keresztül a helyszíni üzembe helyezés sikerességét megoldásszolgáltató által integrált megoldást. Ezen információk használatával megkönnyítése érdekében juthat, és segítségével ismertetheti az elvárásokat a milyen Ön, mint az Azure Stack-ügyfél, amikor integrálják az Azure Stack adatközpontban várhatóan.
 

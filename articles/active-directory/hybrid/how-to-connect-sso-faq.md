@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – gyakori kérdések |} A Microsoft Docs'
+title: 'Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – gyakori kérdések |} A Microsoft Docs'
 description: Tudnivalók az Azure Active Directory zökkenőmentes egyszeri bejelentkezés gyakran feltett kérdésekre adott válaszokat.
 services: active-directory
 keywords: Mi az Azure AD Connect, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e47dcda90682bd1f83dbb5fdc6a106f80853d2d0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0672fc06130ce58ae3155672c66ac06ae96bc7b9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424833"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190635"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
+# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyakori kérdések
 
 Ebben a cikkben azt cím kapcsolatos Azure Active Directory zökkenőmentes egyszeri bejelentkezés (közvetlen egyszeri bejelentkezés) kapcsolatos gyakori kérdésekre. Vissza az új tartalom megtartása ellenőrzése.
 
@@ -65,7 +65,7 @@ Igen. Támogatja a közvetlen egyszeri bejelentkezés `Alternate ID` konfigurál
 
 ## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>Mi a különbség a között az egyszeri bejelentkezéses élményben beállítója [az Azure AD Join](../active-directory-azureadjoin-overview.md) és közvetlen egyszeri bejelentkezés?
 
-[Az Azure AD Join](../active-directory-azureadjoin-overview.md) egyszeri Bejelentkezést biztosít a felhasználók számára, ha az eszközeik regisztrálva vannak az Azure AD. Ezek az eszközök nem feltétlenül kell a tartományhoz. Egyszeri bejelentkezés használatával biztosított *elsődleges frissítési biztonsági jogkivonat* vagy *PRTs*, és a Kerberos-nem. A felhasználói élmény a Windows 10 rendszerű eszközökön optimális. Egyszeri bejelentkezés automatikusan megtörténik a Microsoft Edge böngészőt. Azt is működik a Chrome webböngésző-bővítmény használatával.
+[Az Azure AD Join](../active-directory-azureadjoin-overview.md) egyszeri Bejelentkezést biztosít a felhasználók számára, ha az eszközeik regisztrálva vannak az Azure AD. Ezek az eszközök nem feltétlenül kell a tartományhoz. Egyszeri bejelentkezés használatával biztosított *elsődleges frissítési biztonsági jogkivonat* vagy *PRTs*, és a Kerberos-nem. A felhasználói élmény a Windows 10 rendszerű eszközökön optimális. Egyszeri bejelentkezés a Microsoft Edge böngésző automatikusan történik. Azt is működik a Chrome webböngésző-bővítmény használatával.
 
 Használhatja az Azure AD Join és közvetlen egyszeri bejelentkezés a bérlő. Ezen két funkció egymást egészítik ki. Ha mindkét funkciók be vannak kapcsolva, majd egyszeri Bejelentkezést az Azure AD Join elsőbbséget élvez közvetlen egyszeri bejelentkezés.
 

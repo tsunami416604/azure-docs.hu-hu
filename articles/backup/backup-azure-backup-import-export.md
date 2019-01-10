@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d91ccd04ed06fb6c256a2d9911202d7df6d08a5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974437"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188300"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható az offline biztonsági mentési adatok feltöltése az Azure-bA.
@@ -109,7 +109,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a SATA meghajtókat a
     * A másolási számítógép érhető el az előkészítési hely offline áttöltést munkafolyamat hálózati elérési útját lett megadva a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat.
     * A BitLocker engedélyezve van a Másolás számítógépen.
     * Az Azure PowerShell 3.7.0 telepítve van.
-    * A legújabb kompatibilis böngészők (Edge vagy az Internet Explorer 11) van telepítve, és a JavaScript engedélyezve van. 
+    * A legújabb kompatibilis böngészők (a Microsoft Edge vagy az Internet Explorer 11) van telepítve, és a JavaScript engedélyezve van. 
     * A másolási számítógép hozzáférhessen az Azure Portalon. Szükség esetén a másolási számítógép lehet ugyanaz, mint a forrásszámítógépen.
     
     > [!IMPORTANT] 

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 1a0bf0e6057f26fd8d38dadde5689e41b4f1e165
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017276"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191785"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -161,7 +161,7 @@ A titkos kulcsok kezeléséhez két módja van:
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynök
-Az Azure Key Vault-tevékenység az első alkalommal a hozzáférés megtagadva hiba miatt sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal az Azure-folyamatok ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
+Az Azure Key Vault feladat sikertelen lehet a hozzáférés megtagadva hiba fIntegration Runtimest időben. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal az Azure-folyamatok ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Aktív eseményindítók frissítéséhez szüksége manuális állítják őket, és indítsa el őket az üzembe helyezés után. Erre a célra az Azure PowerShell-lel feladat adhat hozzá az alábbi példában látható módon:
@@ -183,7 +183,7 @@ Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Akt�
 Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Trigger` függvény) a telepítést követően újraindítható az eseményindítók.
 
 > [!IMPORTANT]
-> A folyamatos integrációt és üzembe helyezési forgatókönyvek ugyanaz a saját üzemeltetésű integrációs típusát különböző környezetek között kell lennie. Például, ha rendelkezik egy *saját üzemeltetésű* Integration Runtime (IR) a fejlesztési környezetben, ugyanezt az integrációs Modult típusúnak kell lennie *saját üzemeltetésű* más, például a tesztelési és éles környezetekben is. Hasonlóképpen, ha az integrációs modulok között több szakaszt, hogy az IRS-nek, konfigurálnia *saját üzemeltetésű társított* összes környezetekben, például fejlesztési, tesztelési és éles környezetben.
+> A folyamatos integrációt és üzembe helyezési forgatókönyvek ugyanaz a saját üzemeltetésű integrációs típusát különböző környezetek között kell lennie. Például, ha rendelkezik egy *saját üzemeltetésű* Integration Runtime (IR) a fejlesztési környezetben, ugyanezt az integrációs Modult típusúnak kell lennie *saját üzemeltetésű* más, például a tesztelési és éles környezetekben is. Hasonlóképpen, ha az integrációs modulok között több szakaszt, hogy az integrációs modulok, konfigurálnia *saját üzemeltetésű társított* összes környezetekben, például fejlesztési, tesztelési és éles környezetben.
 
 ## <a name="sample-deployment-template"></a>A mintasablon üzembe helyezés
 
@@ -853,7 +853,7 @@ A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik eg
 
 Az alábbiakban néhány irányelv használatához az egyéni paraméterfájl runboookok létrehozásakor. A a szintaxisra vonatkozó példákat lásd a következő szakaszban [egyéni paraméterek mintafájl](#sample).
 
-1. Tömb a szolgáltatásdefiníciós fájlban adja meg, ha azt jelzi, hogy az egyező tulajdonság a sablonban egy tömb. A Data Factory végighalad a tömb első objektumban megadott definíció használatával a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
+1. Tömb a szolgáltatásdefiníciós fájlban adja meg, ha azt jelzi, hogy az egyező tulajdonság a sablonban egy tömb. A Data Factory végighalad a tömb fIntegration Runtimest objektumban megadott definíció használatával a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
 
     ```json
     ...
@@ -977,7 +977,7 @@ Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referen
 
 ## <a name="linked-resource-manager-templates"></a>A csatolt Resource Manager-sablonok
 
-Ha beállította a folyamatos integráció és készregyártás (CI/CD) esetében az adat-előállítók, azt megfigyelheti, hogy nagyobb méretű az előállító növekedésével tapasztal a Resource Manager sablon korlátok, például az erőforrások vagy a maximálisan megengedett adattartalom-erőforrásban maximális száma Manager-sablon. Például ezek együtt egy Factory teljes Resource Manager-sablon létrehozása a Data Factory is hoz létre a társított Resource Manager-sablonok. Ennek eredményeképpen rendelkezik az egész gyár tartalom oszthatók több fájlt, hogy azokat az említett korlátozások nem futtatható.
+Ha beállította a folyamatos integráció és készregyártás (CI/CD) esetében az adat-előállítók, azt megfigyelheti, hogy nagyobb méretű az előállító növekedésével tapasztal a Resource Manager sablon korlátok, például a maximális számát erőforrásokhoz vagy az erőforrás a maximálisan megengedett adattartalom Manager-sablon. Például ezek együtt egy Factory teljes Resource Manager-sablon létrehozása a Data Factory is hoz létre a társított Resource Manager-sablonok. Ennek eredményeképpen rendelkezik az egész gyár tartalom oszthatók több fájlt, hogy azokat az említett korlátozások nem futtatható.
 
 Ha van konfigurálva, a Git, a hivatkozott sablonok jönnek létre és menti a teljes Resource Manager-sablonok mellett a `adf_publish` ág nevű új mappa alatt `linkedTemplates`.
 
@@ -988,3 +988,23 @@ A csatolt Resource Manager-sablonok általában rendelkeznek egy fő sablont és
 Ne felejtse el hozzáadni a Data Factory-parancsfájlok a CI/CD-folyamat, előtt és után a központi telepítési feladatot.
 
 Ha nincs konfigurálva a Git, a hivatkozott sablonok keresztül érhető el a **exportálása ARM-sablon** kézmozdulat.
+
+## <a name="best-practices-for-cicd"></a>Ajánlott eljárások a CI/CD
+
+Ha a Git-integrációval együtt az adat-előállító használ, és a egy CI/CD folyamatot, amely a helyezi át a módosításokat a fejlesztési, tesztelési és éles rendelkezik, a következő gyakorlati tanácsok javasoljuk:
+
+-   **Git-integrációval**. Csak a fejlesztése a data factory konfigurálása a Git-integrációval rendelkező szükségesek. Tesztelési és éles módosításai telepítve vannak a CI/CD-n keresztül, és nincs szükségük van a Git-integráció.
+
+-   **Data Factory CI/CD parancsfájl**. A CI/CD a Resource Manager üzembe helyezési lépés előtt meg kell átadniuk, többek között az eseményindítók és a különböző típusú gyári karbantartása leállítása. Azt javasoljuk, [Ez a szkript](#sample-script-to-stop-and-restart-triggers-and-clean-up) , akkor ezeknek a dolgoknak gondoskodik. Futtassa a szkriptet, miután az üzembe helyezés előtt és után egyszer, használja a megfelelő jelzőkkel.
+
+-   **Integrációs modulok és a megosztási**. Integrációs modulok tartoznak az adat-előállítóban az infrastrukturális összetevőket, amelyek kevésbé gyakran változásokon és hasonlók a CI/CD összes szakaszai között. Ennek eredményeképpen a Data Factory vár, hogy ugyanazt a nevet és ugyanolyan típusú integrációs modulok között a CI/CD valamennyi fázisában. Ha arra kíváncsi, integrációs modulok megosztása minden szakaszában – például a helyi integrációs modulok – megosztani egy úgy, hogy a helyi integrációs modul egy Ternáris előállítóban, és a megosztott integrációs modulok tartalmazó az üzemeltetés. Ezután használhatja azokat a fejlesztési/tesztelési vagy éles társított integrációs modul típusként.
+
+-   **Key Vault**. Az ajánlott használatakor az Azure Key Vault-alapú társított szolgáltatásokat, a fejlesztési/tesztelési vagy éles külön kulcstartók potenciálisan tartja az előnyök egy szinttel további is igénybe vehet. Beállíthatja a külön jogosultsági szintek mindegyikük számára. Nem érdemes a termelési titkos kódokhoz való engedélyekkel kell rendelkeznie a munkacsoportja többi tagjával. Azt javasoljuk, hogy az azonos titkos kód nevét keresztül valamennyi tartsa. Ha ugyanazokat a neveket, nem kell módosul a Resource Manager-sablonok a CI/CD, mivel az, hogy módosítani kell a kulcstartó nevét, amely az egyik a Resource Manager-sablon paraméterei.
+
+## <a name="unsupported-features"></a>Nem támogatott szolgáltatások
+
+-   Az egyes erőforrások nem tehető közzé, mert a data factory-entitások egymástól függenek. Eseményindítók folyamatok függnek, a folyamatok függnek az adatkészletek és más adatcsatornákat stb. Változó függőségek követése nem könnyű feladat. Ha sikerült válassza ki az erőforrásokat manuálisan közzétenni, válassza ki a teljes készletet módosításait, amelyeket közzététel után nem várt viselkedést dolgot vezetne csak egy részhalmazát is lenne.
+
+-   Nem tehet közzé a saját ágak.
+
+-   A bitbucket-alapú projektek nem tárolható.

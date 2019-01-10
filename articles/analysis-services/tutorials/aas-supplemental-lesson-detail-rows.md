@@ -1,25 +1,25 @@
 ---
-title: 'Azure Analysis Services oktatóanyag – kiegészítő lecke: Részletsorok | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag – kiegészítő lecke: Részletes információkat talál a sorok |} A Microsoft Docs'
 description: Ismerteti a részletsor-kifejezés létrehozását az Azure Analysis Services oktatóanyagban.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ed4ba27332123d41a9e031f221eedb57fa228b9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f52d6ebf4a65a6a182b24017d652693c6f5e4072
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425971"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190238"
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Kiegészítő lecke – Részletsorok
 
 Ebben a kiegészítő leckében a DAX-szerkesztőt használhatja egy egyéni részletsor-kifejezés megadására. A részletsor-kifejezés egy mérték egy olyan tulajdonsága, amely további információkat nyújt a végfelhasználóknak a mérték aggregált eredményeiről. 
   
-A lecke elvégzésének várható időtartama: **10 perc**.  
+Becsült idő a lecke elvégzéséhez: **10 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
 Ez a kiegészítő lecke a táblázatos modellezésről szóló oktatóanyag része. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét, vagy rendelkeznie kell egy befejezett Adventure Works internetes értékesítési minta modellprojekttel.  

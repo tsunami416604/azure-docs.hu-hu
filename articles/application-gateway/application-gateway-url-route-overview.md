@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: d5d8ed09da2b05de079bc1b62066bb4008a659d8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118367"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188759"
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
@@ -65,7 +65,7 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 
 PathPattern az elérésiút-minták listája. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első után? vagy #, és ezek a karakterek itt nem megengedettek. Ellenkező esetben egy URL-CÍMBEN szereplő bármely karakter PathPattern engedélyezettek.
 
-A támogatott minták attól függenek, amelyre e telepít az Application Gateway v1 vagy v2-es:
+A támogatott minták attól függnek, hogy telepít az Application Gateway v1 vagy v2-es:
 
 #### <a name="v1"></a>V1
 

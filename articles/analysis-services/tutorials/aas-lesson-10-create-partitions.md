@@ -1,28 +1,28 @@
 ---
-title: 'Az Azure Analysis Services oktatóanyaga – 10. lecke: Partíciók létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 10. lecke: Partíciók létrehozása |} A Microsoft Docs'
 description: A lecke a partíciók létrehozását ismerteti az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aaaee6f9a69f9cb619935f18f614d7572a755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429695"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191836"
 ---
 # <a name="create-partitions"></a>Partíciók létrehozása
 
 Ebben a leckében partíciókat hoz létre a FactInternetSales tábla kisebb logikai részekre való felosztásához, amelyek a többi partíciótól függetlenül dolgozhatók fel (frissíthetők). Alapértelmezés szerint a modellekben foglalt táblák mindegyike egy partícióval rendelkezik, amely az adott tábla összes oszlopát és sorát tartalmazza. A FactInternetSales tábla esetében az adatokat éves bontásban szeretnénk kezelni, a táblában szereplő mind az öt év esetében évenként egy-egy partícióban. Ezután mindegyik partíció egymástól függetlenül kezelhető. További tudnivalókért lásd a [partíciókat](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular) ismertető cikket. 
   
-A lecke elvégzésének várható időtartama: **15 perc**.  
+Becsült idő a lecke elvégzéséhez: **15 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([9. lecke: Hierarchiák létrehozása](../tutorials/aas-lesson-9-create-hierarchies.md)).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [9. lecke: Hierarchiák létrehozása](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Partíciók létrehozása  
   
@@ -40,7 +40,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  A Sorok szűrése párbeszédpanelen, a **Sorok mutatása, ahol: OrderDate** mezőnél hagyja meg az **ez utáni vagy egyenlő** beállítást, majd a dátummezőben adja meg az **1/1/2010** értéket. Hagyja az **És** operátort kiválasztva, majd válassza a **korábbi a következőnél** beállítást, a dátummezőben adja meg az **1/1/2011** értéket, és kattintson az **OK** gombra.
+6.  A sorok szűrése párbeszédpanelen a **sorok mutatása, ahol: OrderDate**, hagyja **ez utáni vagy egyenlő**, majd a dátummezőben adja meg **1/1/2010**. Hagyja az **És** operátort kiválasztva, majd válassza a **korábbi a következőnél** beállítást, a dátummezőben adja meg az **1/1/2011** értéket, és kattintson az **OK** gombra.
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
@@ -109,4 +109,4 @@ A partíciókezelőben láthatja, hogy az egyes létrehozott partíciók **Utolj
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>A következő lépések
-Tovább a következő leckére: [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md). 
+Nyissa meg a következő leckére: [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md). 

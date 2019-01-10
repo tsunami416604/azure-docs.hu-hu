@@ -1,19 +1,19 @@
 ---
-title: 'Konfigurálja az ExpressRoute - Kapcsolatcsoportok társviszony-létesítést: Azure |} A Microsoft Docs'
+title: 'Adja meg az ExpressRoute - kapcsolatcsoport társviszony-létesítést: Azure |} A Microsoft Docs'
 description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5c42b54cf41eed3df9ffe1fbd082ac6c27035769
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2ed6d23d9fe89715e41c8a40f70534f5edc44236
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139078"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189983"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 
@@ -29,6 +29,7 @@ Ez a cikk segítséget nyújt a létrehozása, és a Resource Manager üzemi mod
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
+Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) is konfigurálhatja egy adott ExpressRoute-kapcsolatcsoportban. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [Kapcsolatcsoportok és társviszony-létesítéseket](expressroute-circuit-peerings.md).
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
@@ -42,8 +43,6 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 > A szolgáltatásfelügyeleti portálon jelenleg nem hirdetünk szolgáltatók által konfigurált társviszony-létesítéseket. Dolgozunk azon, hogy hamarosan bevezethessük ezt a képességet. Ellenőrizze a szolgáltatónál, mielőtt konfigurálná a BGP társviszony-létesítéseket.
 > 
 > 
-
-Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) is konfigurálhatja egy adott ExpressRoute-kapcsolatcsoportban. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [ExpressRoute útválasztási tartományok](expressroute-circuit-peerings.md).
 
 ## <a name="msft"></a>Microsoft társviszony-létesítés
 
@@ -66,8 +65,8 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
   * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha azt tervezi, az előtagok megadni, küldhet egy vesszővel tagolt lista. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
-  * **Nem kötelező –** ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-szám, megadhatja az AS-számot, amelyre regisztrálva vannak.
-  * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
+  * **Nem kötelező –** ügyfél ASN-ként: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-szám, megadhatja az AS-számot, amelyre regisztrálva vannak.
+  * Útválasztási jegyzék neve: Megadhatja az RIR / IRR jegyzék nevét, amely az AS-szám és az előtagok regisztrálva vannak.
   * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 3. Kiválaszthatja, hogy a társviszonyt szeretne beállítani, az alábbi példában látható módon. Válassza ki a Microsoft társviszony-létesítés sorát.
 

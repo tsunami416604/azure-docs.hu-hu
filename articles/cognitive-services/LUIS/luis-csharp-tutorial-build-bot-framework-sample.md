@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 951a202f8d57c736af8c17af91859ce89e9efc7d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4e2feb1f5b0cad9a05f796d160a0a641622d6b59
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717959"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189219"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A LUIS-robot C# a Bot keretrendszer 3.x és az Azure Web app bot
 
@@ -161,6 +161,8 @@ Tudjon meg többet [Bot Framework](https://dev.botframework.com/) és a [3.x](ht
 ## <a name="next-steps"></a>További lépések
 
 Adja hozzá a LUIS-leképezések és a Bot service párbeszédpanelek kezelésére vonatkozó **súgó**, **Mégse**, és **üdvözlőszöveget** szándék fog vonatkozni. Ne felejtse el, betanítását és tehet közzé, és [hozhat létre](#build-the-bot) a web app bot. A LUIS, mind a robot a azonos leképezések kell rendelkeznie.
+
+Még több [minták](https://github.com/Microsoft/AI) a természetes nyelvi robotokat. 
 
 > [!div class="nextstepaction"]
 > [Leképezések hozzáadása](./luis-how-to-add-intents.md)

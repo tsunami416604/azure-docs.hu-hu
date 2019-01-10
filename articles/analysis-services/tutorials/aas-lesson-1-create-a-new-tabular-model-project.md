@@ -1,25 +1,25 @@
 ---
-title: 'Azure Analysis Services-oktatóanyag – 1. lecke: Új táblázatosmodell-projekt létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 1. lecke: Új táblázatosmodell-projekt létrehozása |} A Microsoft Docs'
 description: A lecke az új Azure Analysis Services-oktatóprojektek létrehozását ismerteti.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3291721847d34b0fa9a6259bfeb6ec6fa06ed2b5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058411"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188011"
 ---
 # <a name="create-a-tabular-model-project"></a>Táblázatosmodell-projekt létrehozása
 
 Ebben a leckében használhatja a Visual Studio az Analysis Services-projektek vagy SQL Server Data Tools (SSDT) hozzon létre egy új táblázatosmodell-projektet az 1400-as kompatibilitási szinten. A projekt létrehozása után megkezdheti az adatok hozzáadását és a modell létrehozását. Ez a lecke röviden bemutatja a Visual Studio táblázatosmodell-létrehozási környezetét is.  
   
-A lecke elvégzésének várható időtartama: **10 perc**.  
+Becsült idő a lecke elvégzéséhez: **10 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag első leckéje. A lecke elvégzéséhez néhány előfeltételnek teljesülnie kell. További információ: [Azure Analysis Services – Adventure Works-oktatóanyag](../tutorials/aas-adventure-works-tutorial.md).  
@@ -74,7 +74,7 @@ Fedezze fel a táblázatos modellek létrehozásával kapcsolatos különféle f
   
 
 ## <a name="whats-next"></a>A következő lépések
-[2. lecke: Az adatok beszerzése](../tutorials/aas-lesson-2-get-data.md).
+[2. lecke: Adatok lekérése](../tutorials/aas-lesson-2-get-data.md).
 
   
   

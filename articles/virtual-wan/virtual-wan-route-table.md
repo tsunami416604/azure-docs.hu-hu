@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321443"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190170"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>A forgalom hálózati virtuális berendezésre figyelmeztetik virtuális központ útválasztási táblázat létrehozása
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan figyelmeztetik egy virtuális központtal forgalmát
 
 ![A Virtual WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
-Ebben a cikkben megtudhatja, hogyan lehet:
+Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 * WAN létrehozása
 * Elosztó létrehozása
@@ -43,7 +43,7 @@ Győződjön meg arról, hogy a következő feltételek teljesüléséről:
 
 ## <a name="signin"></a>1. Bejelentkezés
 
-Ellenőrizze, hogy a Resource Manager PowerShell-parancsmagok legújabb verzióját telepíti. A PowerShell-parancsmagok telepítéséről további információt a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című témakörben talál. Ez azért fontos, mert a parancsmagok korábbi verziói nem tartalmazzák a feladatok elvégzéséhez szükséges aktuális értékeket.
+Ellenőrizze, hogy a Resource Manager PowerShell-parancsmagok legújabb verzióját telepíti. A PowerShell-parancsmagok telepítéséről további információt a [How to install and configure Azure PowerShell](/powershell/azure/azurerm/overview) (Az Azure PowerShell telepítése és konfigurálása) című témakörben talál. Ez azért fontos, mert a parancsmagok korábbi verziói nem tartalmazzák a feladatok elvégzéséhez szükséges aktuális értékeket. A modulok az ezekkel a következő példák az Azure-RM. Ez a cikk a későbbiekben fog frissülni Azure Az.
 
 1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és jelentkezzen be az Azure-fiókjával. Ez a parancsmag bejelentkezési hitelesítő adatokat kér. Bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell-lel.
 

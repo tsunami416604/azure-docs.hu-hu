@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 146467ef50c605f730fe6f65c349fc8a3a1fd045
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 92bab3e6dcea0b6b234d361a346698be15088fc0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426243"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191513"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Adventure Works-oktatóanyag
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 -   Egy [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) adattárház, amely rendelkezik az **AdventureWorksDW mintaadatbázissal** vagy egy SQL Server Data Warehouse, [Adventure Works mintaadatbázissal](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 
-    **Fontos:** Ha egy helyszíni SQL Server Data Warehouse adattárházba telepíti a mintaadatbázist, és egy Azure Analysis Services-kiszolgálón helyezi üzembe a modellt, akkor szükség van egy [helyszíni adatátjáróra](../analysis-services-gateway.md).
+    **Fontos:** Ha telepíti a mintaadatbázist, egy helyszíni SQL Server Data Warehouse, és egy Azure Analysis Services-kiszolgálón helyezi üzembe a modellt egy [a helyszíni adatátjáró](../analysis-services-gateway.md) megadása kötelező.
 
 -   Az [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) for Visual Studio legújabb verziója.
 
@@ -93,7 +93,7 @@ Ezek a leckék nem kötelezők az oktatóanyag elvégzéséhez, de hasznosak leh
 
   
 ## <a name="next-steps"></a>További lépések  
-Az első lépéseket lásd: [1. lecke: Új táblázatosmodell-projekt létrehozása](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Első lépésként lásd [1. lecke: Hozzon létre egy új táblázatos modellprojekt](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   
   

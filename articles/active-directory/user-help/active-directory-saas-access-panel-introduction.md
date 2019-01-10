@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f51fb1d92fdec93fdb57fd25f8ca1cbaeb4fc46
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834706"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188929"
 ---
 # <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
@@ -45,7 +45,7 @@ Hozzáférhet a MyApps portálról a `https://myapps.microsoft.com`.
 
 Ha a bejelentkezési lapon konfigurált egyéni márkajelzési, az URL-címet a szervezet tartományához hozzáfűzésével márkajelzési betöltheti (például `https://myapps.microsoft.com/<your domain>.com`).
 
-Minden aktív vagy ellenőrzött tartomány nevét az Azure Portalon konfigurált itt látható módon használható: ![Wingtip Toys címtárra tartománynév][2]  
+Minden aktív vagy ellenőrzött tartomány nevét az Azure Portalon konfigurált is használhatja, ahogy az itt látható: ![A Wingtip Toys címtárra tartománynév][2]  
 
 Az URL-cím minden felhasználó számára jelentkezzen be az Azure ad-vel integrált alkalmazások terjesztése.
 
@@ -65,7 +65,7 @@ A telepítő architektúra-specifikus. Ha a letöltési hivatkozásra kattint, a
 
 
 A MyApps portálbővítmény szolgáltatás jelenleg érhető el:
-- **Edge**: a Windows 10 Évfordulós kiadása vagy újabb. 
+- **A Microsoft Edge**: a Windows 10 Évfordulós kiadása vagy újabb. 
 - **Chrome**: Windows 7-es vagy újabb, és a MacOS X rendszeren vagy újabb.
 - **Firefox 26.0 vagy újabb**: a Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
 - **Az Internet Explorer 11**: Windows 7 vagy újabb (korlátozott támogatást).
@@ -79,7 +79,7 @@ A jelszóalapú egyszeri bejelentkezés, a kiterjesztést kell használnia. A b�
 - Használhatja a belső vállalati URL-címek, miközben keresztül távoli [alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
-> További funkciók csak az Edge, Chrome és a Firefox érhetők el.
+> További funkciók csak a Microsoft Edge, Chrome és a Firefox érhetők el.
 >
 A bővítmény letöltheti közvetlenül a következő helyekről:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)

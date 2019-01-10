@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 27368ec1f41553950ab1689f8b37c15d14d29808
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 1a51e9b636e15f178de072af8372404af1dc47e2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156663"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187994"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Tároló naplók valós időben az Azure Monitor szolgáltatással tárolók (előzetes verzió) megtekintése
-Ez a szolgáltatás, amely jelenleg előzetes verzióban érhető el, az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) valós idejű betekintést biztosít a kubectl-parancsok futtatása nélkül. Ezt a beállítást, ha új panelen megjelenik a tárolók teljesítmény adattábla alább a **tárolók** megtekintése, valamint élő naplózás valós időben kapcsolatos hibák elhárítása További segítség a tároló motor által generált mutatja.  
+Ez a szolgáltatás, amely jelenleg előzetes verzióban érhető el, az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) valós idejű betekintést biztosít a kubectl-parancsok futtatása nélkül. Ezt a beállítást, ha új panelen megjelenik a tárolók teljesítmény adattábla alább a **tárolók** megtekintése.  További segítség valós időben kapcsolatos hibák elhárítása a tároló motor által generált élő naplózási jeleníti meg.  
 
 Élő naplók által támogatott három különböző módszereket a naplók elérése:
 
@@ -31,7 +31,7 @@ Ez a szolgáltatás, amely jelenleg előzetes verzióban érhető el, az Azure K
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-fürt nélkül RBAC engedélyezve
  
-Ha egy Kubernetes-fürtöt, amely nincs beállítva a Kubernetes RBAC-hitelesítés vagy az Azure AD egyszeri bejelentkezéses integrálva van, nem kell az alábbi lépésekkel. Kubernetes-engedélyezési a kube-API-t használja, mert csak olvasható engedélyek megadása kötelező.
+Ha egy Kubernetes-fürtöt, amely nincs beállítva a Kubernetes RBAC-hitelesítés vagy az Azure AD egyszeri bejelentkezéses integrálva van, nem kell az alábbi lépésekkel. Mivel a Kubernetes engedélyezési a kube-API-t használ, csak olvasható engedélyek szükségesek.
 
 ## <a name="kubernetes-rbac-authorization"></a>Kubernetes RBAC-hitelesítés
 Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a fürt szerepkör-kötés. A következő példa lépései bemutatják, hogyan konfigurálhatja a fürt szerepkör-kötés yaml konfigurációs sablon alapján.   
@@ -39,27 +39,27 @@ Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a
 1. Másolja és illessze be a yaml-fájlt, és mentse LogReaderRBAC.yaml.  
 
    ```
-   kind: ClusterRole 
    apiVersion: rbac.authorization.k8s.io/v1 
-   metadata:   
+   kind: ClusterRole 
+   metadata: 
       name: containerHealth-log-reader 
    rules: 
-      - apiGroups: [""]   
-        resources: ["pods/log"]   
+      - apiGroups: [""] 
+        resources: ["pods/log"] 
         verbs: ["get"] 
    --- 
-   kind: ClusterRoleBinding 
    apiVersion: rbac.authorization.k8s.io/v1 
-   metadata:   
+   kind: ClusterRoleBinding 
+   metadata: 
       name: containerHealth-read-logs-global 
-   subjects:   
-      - kind: User     
-        name: clusterUser
-        apiGroup: rbac.authorization.k8s.io 
-    roleRef:   
-       kind: ClusterRole
-       name: containerHealth-log-reader
+   roleRef: 
+       kind: ClusterRole 
+       name: containerHealth-log-reader 
        apiGroup: rbac.authorization.k8s.io 
+   subjects: 
+      - kind: User 
+        name: clusterUser 
+        apiGroup: rbac.authorization.k8s.io 
    ```
 
 2. A fürt szabály kötést létrehozni a következő parancs futtatásával: `kubectl create -f LogReaderRBAC.yaml`. 

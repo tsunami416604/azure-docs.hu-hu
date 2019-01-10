@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 42850cc5f8280b29811f9607557f38507262694a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1fff32896ef794a26f223cae4ae491a2995d9acf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034403"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191139"
 ---
 # <a name="working-with-javascript-language-integrated-query-api-with-azure-cosmos-db"></a>A JavaScript nyelvintegrált lekérdezések az Azure Cosmos DB API használata
 
@@ -64,7 +64,7 @@ Az alábbi táblázat bemutatja a különböző SQL-lekérdezések és a kapcsol
 
 További fogalmakat és útmutató írási és tárolt eljárások, eseményindítók és felhasználó által definiált függvények használata az Azure Cosmos DB:
 
-- [Tárolt eljárások és eseményindítók használatával a Javascript API-lekérdezés írása](how-to-write-javascript-query-api.md#)
+- [Tárolt eljárások és eseményindítók használatával a Javascript API-lekérdezés írása](how-to-write-javascript-query-api.md)
 - [Azure Cosmos DB-vel működő tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)
 - [Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók, felhasználó által definiált függvények használata](how-to-use-stored-procedures-triggers-udfs.md)
 - [Az Azure Cosmos DB a JavaScript kiszolgálóoldali API-referencia](https://azure.github.io/azure-cosmosdb-js-server)

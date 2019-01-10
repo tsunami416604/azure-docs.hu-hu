@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services oktatóanyag - 6. lecke: Mértékek létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 6. lecke: Mértékek létrehozása |} A Microsoft Docs'
 description: A lecke a mértékek létrehozását ismerteti az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ce38cac7a0b175004fbb670069ddbeefb53e96e7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0e9f798917b557d99259ece4773cce0853b15237
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428572"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191683"
 ---
 # <a name="create-measures"></a>Mértékek létrehozása
 
@@ -25,10 +25,10 @@ Mérték létrehozásához kattintson a mérték rács egy üres cellájára, ma
   
 Ebben a leckében mértékeket hoz létre DAX-képletek megadásával a szerkesztőlécben vagy az AutoSzum függvény használatával.  
   
-A lecke elvégzésének várható időtartama: **30 perc**.  
+Becsült idő a lecke elvégzéséhez: **30 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([5. lecke: Számított oszlopok létrehozása](../tutorials/aas-lesson-5-create-calculated-columns.md)).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [5. lecke: Számított oszlopok létrehozása](../tutorials/aas-lesson-5-create-calculated-columns.md).  
   
 ## <a name="create-measures"></a>Mértékek létrehozása  
   
@@ -122,6 +122,6 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 A FactInternetSales táblához létrehozott mértékek használatával elemezhetők az olyan kiemelten fontos információk, mint az értékesítések, a költségek és nyereségek a felhasználó által kiválasztott szűrőben meghatározott tételekhez.  
   
 ## <a name="whats-next"></a>A következő lépések
-[7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
+[7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
 
   

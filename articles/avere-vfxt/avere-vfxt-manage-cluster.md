@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999063"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189609"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
@@ -63,11 +63,11 @@ A **FXT csomópontok** beállítások lapon a vezérlők az egyes csomópontok k
 > [!NOTE] 
 > IP-címek előfordulhat, hogy helyezze át a fürt csomópontjai között, ha az aktív csomópontok számát.
 
-Olvasási [fürt > csomópontok FXT](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>) a Avere fürt beállítások útmutató további információt.
+Olvasási [fürt > csomópontok FXT](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) a Avere fürt beállítások útmutató további információt.
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Állítsa le és indítsa újra a fürtöt a következővel Avere Vezérlőpult
 
-A **rendszer karbantartása** beállítások lapon a parancsok a fürt szolgáltatások újraindítása, a fürt újraindítása vagy biztonságosan tárolóház le a fürtöt. Olvasási [felügyelet > rendszer-karbantartási](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>) (a Avere a fürt beállítások útmutatója) részletekért.
+A **rendszer karbantartása** beállítások lapon a parancsok a fürt szolgáltatások újraindítása, a fürt újraindítása vagy biztonságosan tárolóház le a fürtöt. Olvasási [felügyelet > rendszer-karbantartási](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (a Avere a fürt beállítások útmutatója) részletekért.
 
 Ha egy fürtöt leállítás fázisában van, az állapotjelző üzenetek tesznek közzé a **irányítópult** első lapján. Néhány pillanat múlva a Vezérlőpult Avere munkamenet nem válaszol, ami azt jelenti, hogy a fürt le lett állítva.
 
@@ -83,7 +83,7 @@ Például Avere Vezérlőpulton vfxt.py operations próbálja meg ellenőrizze, 
 
 vfxt.PY előre telepítve van a virtuális gép fürt vezérlőn. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-Egy teljes vfxt.py használati útmutató a Githubon érhető el: [vfxt.py a fürt Felhőfelügyelet](https://github.com/azure/averesdk/blob/master/docs/README.md)
+Egy teljes vfxt.py használati útmutató a Githubon érhető el: [Fürt felhőfelügyeletet vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Vfxt.py a fürtcsomópontok hozzáadása
 

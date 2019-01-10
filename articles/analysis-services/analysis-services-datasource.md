@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7d8bde6beeb4bd0c6234d7c5aa63be9e150953f5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427246"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188402"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -85,7 +85,7 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 
 ## <a name="specifying-a-different-provider"></a>Adjon meg egy másik szolgáltató
 
-Az Azure Analysis Services adatmodellek szükség lehet különböző adatszolgáltatók bizonyos adatforrásokhoz való kapcsolódáskor. Bizonyos esetekben a táblázatos modellek használatával natív szolgáltatók, például az SQL Server Native Client (SQLNCLI11) adatforráshoz csatlakozik hibát adhat vissza. Ha natív szolgáltatók eltérő SQLOLEDB használja, hibaüzenet jelenik: **"SQLNCLI11.1" nincs regisztrálva a szolgáltató**. Vagy, ha egy DirectQuery-modell helyszíni adatforráshoz csatlakozik, és natív szolgáltató használata, hibaüzenet jelenik: **hiba történt a OLE DB sor készlet létrehozásakor. Helytelen szintaxis közelében "LIMIT"**.
+Az Azure Analysis Services adatmodellek szükség lehet különböző adatszolgáltatók bizonyos adatforrásokhoz való kapcsolódáskor. Bizonyos esetekben a táblázatos modellek használatával natív szolgáltatók, például az SQL Server Native Client (SQLNCLI11) adatforráshoz csatlakozik hibát adhat vissza. Ha natív szolgáltatók eltérő SQLOLEDB használja, hibaüzenet jelenhet meg: **A szolgáltató nincs regisztrálva a "SQLNCLI11.1"**. Vagy, ha egy DirectQuery-modell helyszíni adatforráshoz csatlakozik, és natív szolgáltató használata, hibaüzenet jelenik: **Hiba történt a létrehozásakor OLE DB sorban állítsa be. Helytelen szintaxis közelében "LIMIT"**.
 
 Egy helyszíni SQL Server Analysis Services táblázatos modell az Azure Analysis Services áttelepítésekor lehet módosítania kell a szolgáltatót.
 

@@ -1,33 +1,33 @@
 ---
-title: 'Az Azure Analysis Services oktatóanyaga – 2. lecke: Az adatok beszerzése | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 2. lecke: Adatok beolvasása |} A Microsoft Docs'
 description: A lecke az adatok beszerzését és importálását ismerteti az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7aaadb6237a3b16d166d3bc931fddc70fb4a792
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6643d0851be1ad9d2827f51af3662a469020654c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427620"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189320"
 ---
 # <a name="get-data"></a>Adatok lekérése
 
 Ebben a leckében az SSDT Adatok lekérése utasításával csatlakozik az Adventure Works mintaadatbázishoz, kiválasztja az adatokat, megtekinti az előnézetüket, és szűri őket, majd importálja az adatokat a modell munkaterületére.  
   
-Az Adatok lekérése használatával olyan források széles választékából importálhatók adatok mint: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, fájlok és egyéb lehetőségek. Az adatok emellett lekérdezhetők Power Query M-képletekkel is.
+Adatok lekérése használatával importálhatja a különféle forrásokból származó adatokat: Az Azure SQL Database, Oracle, Sybase, OData-csatornához, Teradata, fájlok és több. Az adatok emellett lekérdezhetők Power Query M-képletekkel is.
 
 > [!NOTE]
 > Az oktatóanyag feladatai és rendszerképei egy helyszíni kiszolgálón található AdventureWorksDW2014 adatbázishoz való csatlakozást mutatnak be. Egyes esetekben az Azure Adventure Works adatbázisa ettől eltérő lehet.
   
-A lecke elvégzésének várható időtartama: **10 perc**.  
+Becsült idő a lecke elvégzéséhez: **10 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([1. lecke: Új táblázatos modellprojekt létrehozása](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [1. lecke: Hozzon létre egy új táblázatos modellprojekt](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
 ## <a name="create-a-connection"></a>Kapcsolat létrehozása  
   
@@ -52,7 +52,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 5.  A Kezelőben válassza ki az **AdventureWorksDW2014** adatbázist, majd kattintson az **OK** gombra. Így létrehozza a kapcsolatot az adatbázissal. 
   
-6.  A kezelőben válassza ki a következő táblák jelölőnégyzetét: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, és **FactInternetSales**, és kattintson a **szerkesztése**.
+6.  A kezelőben válassza ki a következő táblák jelölőnégyzetét: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**,  **DimProductSubcategory**, és **FactInternetSales**, és kattintson a **szerkesztése**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
@@ -151,7 +151,7 @@ Fontos, hogy gyakran mentse a modellprojektet.
 -   Kattintson a **Fájl** > **Az összes mentése** elemre.  
   
 ## <a name="whats-next"></a>A következő lépések
-[3. lecke: Megjelölés dátumtáblaként](../tutorials/aas-lesson-3-mark-as-date-table.md)
+[3. lecke: Megjelölés dátumtáblázatként](../tutorials/aas-lesson-3-mark-as-date-table.md).
 
   
   

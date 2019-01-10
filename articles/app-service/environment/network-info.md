@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630461"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191598"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -131,7 +131,7 @@ Ha az ILB ASE tartománynév *contoso.net* és az alkalmazás neve *testapp*, az
 
 ## <a name="functions-and-web-jobs"></a>Functions és Webjobs-feladatok ##
 
-Funkciók és a webes feladatok az SCM helyet függ, de akkor is, ha alkalmazásait az ILB ASE, mindaddig, amíg a böngésző elérheti az SCM helyet a portál használata támogatott.  Ha önaláírt tanúsítványt használ az ILB ASE környezetnek, szüksége lesz ahhoz, hogy a böngészőben, hogy bízzon meg a tanúsítvány.  Az Internet Explorer és a peremhálózati, amely azt jelenti, hogy a tanúsítvány nem megbízható számítógép tárolójában lehet.  Ha a Chrome böngészőt használ, akkor azt jelenti, hogy Ön elfogadta a tanúsítványt a böngészőben korábban elvileg lenyomásával közvetlenül az scm helyet.  A legjobb megoldás, ha szerepel a böngészője megbízhatósági láncának egyik kereskedelmi tanúsítványát használja.  
+Funkciók és a webes feladatok az SCM helyet függ, de akkor is, ha alkalmazásait az ILB ASE, mindaddig, amíg a böngésző elérheti az SCM helyet a portál használata támogatott.  Ha önaláírt tanúsítványt használ az ILB ASE környezetnek, szüksége lesz ahhoz, hogy a böngészőben, hogy bízzon meg a tanúsítvány.  Az Internet Explorer és Microsoft Edge, amely azt jelenti, hogy a tanúsítvány nem megbízható számítógép tárolójában lehet.  Ha a Chrome böngészőt használ, akkor azt jelenti, hogy Ön elfogadta a tanúsítványt a böngészőben korábban elvileg lenyomásával közvetlenül az scm helyet.  A legjobb megoldás, ha szerepel a böngészője megbízhatósági láncának egyik kereskedelmi tanúsítványát használja.  
 
 ## <a name="ase-ip-addresses"></a>ASE IP-címek ##
 

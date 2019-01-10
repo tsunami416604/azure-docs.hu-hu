@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753489"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191241"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel 
 
@@ -51,7 +51,7 @@ Az alábbi táblázat foglalja össze a különböző platformokon a natív DRM-
 | **Ügyfélplatform** | **Natív DRM** | **AZ EME** |
 | --- | --- | --- | --- |
 | **Okostévére vezérléséhez** | A PlayReady, Widevine és/vagy egyéb | Beágyazott böngésző/EME a PlayReady és/vagy Widevine|
-| **Windows 10** | PlayReady | A PlayReady MS Edge/IE11|
+| **Windows 10** | PlayReady | A Microsoft Edge/IE11 a PlayReady|
 | **Android-eszközök (telefonon, táblagépen, TV)** |Widevine |A Widevine Chrome |
 | **iOS** | FairPlay | A fairplay rendszerhez Safari (óta 11,2 iOS) |
 | **macOS** | FairPlay | A fairplay rendszerhez (óta a Safari 9 és a Mac OS X 10.11 El Capitan) Safari|

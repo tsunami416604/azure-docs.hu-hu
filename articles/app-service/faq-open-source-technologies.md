@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3057368ca76a0a9ad90c3c1890cffd139b6b13a2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159808"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191445"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákat az Azure Web Apps vonatkozó gyakori kérdések
 
@@ -219,4 +219,4 @@ Miután meggyőződött arról, hogy – alkalmazáson belüli MySQL fut-e, pró
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Amikor importálása és exportálása az alkalmazáson belüli MySQL-adatbázis PHPMyadmin használatával a HTTP 403-as hibaüzenetet kapok. Hogyan oldhatom fel ez?
 
-Ha egy régebbi verziója Chrome használ, akkor tapasztalt egy ismert hiba. A probléma megoldásához frissítse a Chrome egy újabb verziója. Emellett próbálja meg egy másik böngészővel, például az Internet Explorer vagy Edge, ahol a hiba nem történik meg.
+Ha egy régebbi verziója Chrome használ, akkor tapasztalt egy ismert hiba. A probléma megoldásához frissítse a Chrome egy újabb verziója. Emellett próbálja meg egy másik böngészővel, például az Internet Explorer vagy a Microsoft Edge, ahol a hiba nem történik meg.

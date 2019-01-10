@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: aa0602ec0ecb97e9174fe6ef552b88fc30900d09
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 46f1d49e210a483b8e7645d7eba84ad21ed477da
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356675"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190518"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel böngészőbővítményének használatánál telepítése
 
@@ -36,7 +36,7 @@ A hozzáférési panel a böngészőben, amely támogatja a JavaScript szükség
 
 Jelszavas egyszeri bejelentkezéshez az alábbi böngészők bármelyike használhatja:
 
-- **Edge**: a Windows 10 Évfordulós kiadása vagy újabb. 
+- **A Microsoft Edge**: a Windows 10 Évfordulós kiadása vagy újabb. 
 - **Chrome**: Windows 7-es vagy újabb, és a MacOS X rendszeren vagy újabb.
 - **Firefox 26.0 vagy újabb**: a Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
 
@@ -59,10 +59,10 @@ A hozzáférési panel böngészőbővítményének használatánál telepítés
 
 7.  Jelentkezzen be a hozzáférési panelen, és megtekintheti, hogy elkezdheti a jelszóalapú egyszeri bejelentkezés alkalmazásokhoz.
 
-A bővítmény is letöltheti a Chrome és a peremhálózati közvetlenül a következő helyek:
+A bővítmény is letöltheti a Chrome és a Microsoft Edge közvetlenül a következő helyeken:
 
 - [Chrome-bővítményt](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge-bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [A Microsoft Edge-bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Használja a saját alkalmazások biztonságos bejelentkezési bővítménye
 * Ha nem használ egy saját alkalmazások URL-cím `https://myapps.microsoft.com`, az alapértelmezett URL-cím konfigurálása a következő tevékenységek végrehajtásával:
@@ -93,7 +93,7 @@ A bővítmény is letöltheti a Chrome és a peremhálózati közvetlenül a kö
     4. Most megnyithatja a belső vállalati URL-cím távoli közben is
 
 > [!NOTE]
-> Az előző beállítások csak az Edge, Chrome és a Firefox érhetők el.
+> Az előző beállítások csak a Microsoft Edge, Chrome és a Firefox érhetők el.
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>A csoportházirend beállítása az Internet Explorer
 
@@ -112,7 +112,7 @@ A Csoportházirend konfigurálásával, és a felhasználók számára történ�
 Hozzáférés egy diagnosztikai eszköz és az Internet Explorer a bővítmény konfigurálásáról, tekintse meg a [a hozzáférési panel bővítmény hibaelhárítása az Internet Explorer](manage-access-panel-browser-extension.md).
 
 > [!NOTE]
-> Az Internet Explorer korlátozott támogatás, és többé nem kap új szoftverfrissítéseket. Edge egy ajánlott a böngészőben.
+> Az Internet Explorer korlátozott támogatás, és többé nem kap új szoftverfrissítéseket. Microsoft Edge böngészőben ajánlott.
 
 ## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Ha a fenti lépések nem oldják meg a probléma
 

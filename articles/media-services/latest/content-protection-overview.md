@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 09c8b63cddde547b0dc42cf1f15a8ac5002d0a3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725138"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187977"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -60,7 +60,7 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
 
     A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
 
-    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. Válassza ki a megfelelő böngészőt másik DRMs teszteléséhez szüksége: Chrome/Opera/Firefox Widevine, MS Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
+    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. Válassza ki a megfelelő böngészőt másik DRMs teszteléséhez szüksége: Chrome/Opera/Firefox Widevine, a Microsoft Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
 
 3. A biztonságos jogkivonat-szolgáltatás (STS), amely JSON webes jogkivonat (JWT), a hozzáférési jogkivonatot az háttérbeli erőforrások eléréséhez. Az AMS licenctovábbítási szolgáltatások a háttérerőforrásra is használhatja. Az STS szolgáltatással rendelkezik, az alábbiak megadásához:
 

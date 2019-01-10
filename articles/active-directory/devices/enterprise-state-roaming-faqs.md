@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247296"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189388"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgáltatással kapcsolatos kérdésekre ad választ.
@@ -31,13 +31,13 @@ Ez a cikk rendszergazdák lehet beállításai és alkalmazás data Sync szolgá
 
 * *Téma*, amely magában foglalja a szolgáltatások, például asztali téma- és tálcán beállítások.
 * *Az Internet Explorer beállításainak*, beleértve a legutóbb megnyitott lapokat és a Kedvencek közé.
-* *Böngésző beállításainak él*, például a Kedvencek közé, és olvassa.
+* *A Microsoft Edge böngésző beállításai*, például a Kedvencek közé, és olvassa.
 * *Jelszavak*, többek között internetes jelszavakat, a Wi-Fi profilok és mások.
 * *Nyelvi beállítások*, amely tartalmazza a billentyűzetkiosztás, rendszer nyelve, dátum és idő és további beállításait.
 * *Könnyű hozzáférés funkciók*, például a Narrátor, Nagyító és a kontrasztos téma.
 * *Egyéb Windows-beállítások*, például az egér beállításait.
 
-**Alkalmazásadatok**: univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és minden ebbe a mappába írt adatok automatikusan szinkronizálja. Fontos az egyéni alkalmazás fejlesztőjénél, ez a funkció kihasználásához alkalmazásokat. Egy univerzális Windows-alkalmazást, amely központi fejlesztésével kapcsolatos további részletekért lásd: a [appdata storage API-JÁNAK](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [fejlesztői blog barangolás Windows 8 appdata](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Alkalmazásadatok**: Univerzális Windows-alkalmazások beállításainak adatokat írhatna központi mappába, és minden ebbe a mappába írt adatok automatikusan szinkronizálja. Fontos az egyéni alkalmazás fejlesztőjénél, ez a funkció kihasználásához alkalmazásokat. Egy univerzális Windows-alkalmazást, amely központi fejlesztésével kapcsolatos további részletekért lásd: a [appdata storage API-JÁNAK](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [fejlesztői blog barangolás Windows 8 appdata](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Milyen fiókot szolgál szinkronizálási beállítások?
 Windows 8.1, a szinkronizálási beállítások mindig használja a fogyasztói Microsoft-fiókok. Vállalati felhasználó számára lehetővé teszi egy Microsoft-fiók csatlakozni az Active Directory tartományi fiók a szinkronizálási beállítások eléréséhez rendelkezett. A Windows 10 csatlakozik egy elsődleges és másodlagos fiók keretrendszer helyére, a funkciók Microsoft-fiókjával.
@@ -63,7 +63,7 @@ Ha tartományhoz csatlakozik az Active Directory-tartománynak Windows 8.1 rends
 
 Ha a helyszíni Active Directory-tartomány az Azure AD connect, az eszköz megkísérli beállítások segítségével a csatlakoztatott szinkronizálása az Azure AD-fiókot. Ha az Azure AD-rendszergazda nem engedélyezi a vállalati Állapothordozás, a csatlakoztatott Azure AD-fiókot a beállítások szinkronizálása leáll. Ha a Windows 10-felhasználók és jelentkezik be egy Azure AD identity, hozzákezdhet windows-beállítások szinkronizálása, amint a rendszergazda engedélyezi a beállítások szinkronizálása az Azure AD-n keresztül.
 
-Ha személyes adatok tárolása a céges eszközét a történik, érdemes figyelembe, hogy Windows operációs rendszer és az alkalmazásadatok megkezdődik az Azure AD szinkronizálása. Ez rendelkezik a következő szempontokat:
+Ha személyes adatok tárolása a céges eszközét a történik, érdemes figyelembe, hogy Windows operációs rendszer és az alkalmazásadatok megkezdődik az Azure AD szinkronizálása. Ez a következőkkel jár:
 
 * A személyes Microsoft-Fiókbeállítások konfigurációsodródás szereplőkkel a beállításokat a munkahelyi vagy iskolai fiókok Azure ad-ben lesz. Ennek oka, hogy a Microsoft-fiók és az Azure AD-beállítások szinkronizálása. most már külön fiókokat használnak.
 * Személyes adatok, például a WiFi-jelszavakat, webes hitelesítő adatok és az Internet Explorer Kedvencek összekapcsolt Microsoft-fiók használatával korábban szinkronizált Azure AD-n keresztül lesznek szinkronizálva.

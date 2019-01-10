@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e92e86f59058f1f226c67f873530cd9c06b5d5fc
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c26da5d047a1e904510f96b44d81632b6e98689e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428334"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190969"
 ---
 # <a name="create-perspectives"></a>Perspektívák létrehozása
 
@@ -23,10 +23,10 @@ Az ebben a leckében létrehozott internetes értékesítés perspektíva nem ta
   
 A lecke célja annak leírása, hogyan hozható létre perspektíva, illetve a táblázatos modell-létrehozási eszköz bemutatása. Ha a későbbiekben kibővíti ezt a modellt, hogy további táblázatokat tartalmazzon, létrehozhat további perspektívákat, amelyek a modell különböző szempontjait határozzák meg, például a leltárt és az értékesítést.  
   
-A lecke elvégzésének várható időtartama: **5 perc**.  
+Becsült idő a lecke elvégzéséhez: **Öt perc alatt**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Az ebben a leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét: [7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
   
 ## <a name="create-perspectives"></a>Perspektívák létrehozása  
   

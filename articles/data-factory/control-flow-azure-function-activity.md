@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 1b9821a0115aba96f4588049273bd7a157121ded
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156629"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188640"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure-függvény tevékenység az Azure Data Factoryban
 
@@ -25,7 +25,7 @@ Az Azure-függvény tevékenység futtatását teszi [Azure Functions](../azure-
 
 ## <a name="azure-function-linked-service"></a>Azure-függvény társított szolgáltatás
 
-Az Azure-függvény visszatérési típusa nem egy érvényes JObject lehet. (Vegye figyelembe, hogy [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) van *nem* a JObject.) Bármi más sikertelen lesz, és az általános felhasználói hiba lép fel a *hiba hívó végpont*.
+Az Azure-függvény visszatérési típusával van, úgy, hogy érvényes `JObject`. (Vegye figyelembe, hogy [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) van *nem* egy `JObject`.) Más, a visszatérési típus `JObject` sikertelen lesz, és az általános felhasználói hiba lép fel a *hiba hívó végpont*.
 
 | **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |

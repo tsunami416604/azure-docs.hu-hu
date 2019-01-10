@@ -8,16 +8,22 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 830deb7569772b610b7e6abde649830b7ad67a92
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047519"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54192125"
 ---
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
+
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+
 ## <a name="before-you-begin"></a>Előkészületek
 
-A példában ez a cikk a végrehajtásához egy általánosított virtuális gép egy meglévő felügyelt rendszerkép kell rendelkeznie. További információkért lásd: [oktatóanyag: Azure virtuális gép egyéni rendszerképének létrehozása az Azure CLI 2.0 használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
+A példában ez a cikk a végrehajtásához egy általánosított virtuális gép egy meglévő felügyelt rendszerkép kell rendelkeznie. További információkért lásd: [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure CLI 2.0 használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
 
 ## <a name="preview-register-the-feature"></a>Előzetes verzió: A funkció regisztrálása
 

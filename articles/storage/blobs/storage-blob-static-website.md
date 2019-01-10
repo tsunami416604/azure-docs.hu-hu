@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 8f88bf6b0de8296de14dccd51b38ee6ca480f059
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065086"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191819"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
@@ -21,16 +21,16 @@ Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, Ja
 Statikus webhelyüzemeltetésre szakembereket szerveroldali kódot támaszkodó dinamikus webhelyek legjobb üzemeltetik [Azure App Service](/azure/app-service/overview).
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
-Statikus webhely engedélyezésekor a tárfiókot, a üzemeltetési, válassza ki az alapértelmezett fájl nevét, és megadhat egy egyéni 404-es oldal elérési útját. A szolgáltatás engedélyezve van, mert egy tároló nevű *$web* jön létre, ha még nem létezik. 
+Statikus webhely engedélyezésekor a tárfiókot, a üzemeltetési, válassza ki az alapértelmezett fájl nevét, és megadhat egy egyéni 404-es oldal elérési útját. A szolgáltatás engedélyezve van, mert egy tároló nevű *$web* jön létre, ha még nem létezik.
 
 A fájlok a *$web* tárolóban vannak:
 
 - Névtelen hozzáférés kérelmeket szolgált
 - csak olvasási műveletek objektumon keresztül érhető el
 - kis-és nagybetűket
-- az ezt a mintát a következő nyilvános interneten érhető el: 
+- az ezt a mintát a következő nyilvános interneten érhető el:
     - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
-- Ezt a mintát a következő Blob storage-végponton keresztül érhető el: 
+- Ezt a mintát a következő Blob storage-végponton keresztül érhető el:
     - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
 Fájlok feltöltése a Blob storage-végpont használatával történik. Ha például ezen a helyen feltölteni a fájlt:
@@ -100,7 +100,7 @@ az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEn
 Töltse fel az objektumok a *$web* tároló forráskönyvtárból. Ügyeljen arra, hogy megfelelően escape-mutató hivatkozást a *$web* a parancsot a tároló. Például ha a cloud Shell az Azure CLI-vel használ az Azure Portalon, karakterpárt a *$web* tároló látható módon:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d `$web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Környezet
@@ -120,7 +120,7 @@ Ahhoz, hogy a statikus webhely lapjain a metrikák, kattintson a **beállításo
 
 Metrikai adatok történetének más érdekes mérőszám API-k alapján jönnek létre. A portál csak annak érdekében, hogy csak összpontosíthat tagokat, amelyeket vissza adatokat egy adott időszakon belül használt API-t a tagok jeleníti meg. Annak érdekében, hogy ellenőrizze, hogy tud a válassza a szükséges API-t, az első lépéseként időkeretet kibontásához.
 
-Kattintson az időkeret gombra, és válassza ki **az elmúlt 24 órából** majd **alkalmaz** 
+Kattintson az időkeret gombra, és válassza ki **az elmúlt 24 órából** majd **alkalmaz**
 
 ![Az Azure Storage-statikus webhelyek kiszolgálására metrikák időtartomány](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

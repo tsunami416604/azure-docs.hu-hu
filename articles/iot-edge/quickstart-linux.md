@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: af95c2a5182a8adca9aeb40f047c7767413b9b1c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dcfbc014eaa191c7992a2da195f9bcd10b44194f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973672"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191482"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Gyors útmutató: Az első IoT Edge-modul x64 Linux rendszerű eszközre telepítéséhez
 
@@ -238,7 +238,9 @@ Azure IoT Edge-eszközeit kezelheti a felhőből, és üzembe helyezhet egy olya
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és telepítette rajta az IoT Edge-futtatókörnyezetet. Ezután az Azure Portal segítségével úgy futtatta az IoT Edge-modult az eszközön, hogy magát az eszközt nem kellett módosítania. Ebben az esetben az Ön által továbbított modul az oktatóanyagokhoz használható környezeti adatokat hoz létre.
+Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és telepítette rajta az IoT Edge-futtatókörnyezetet. Az Azure Portalon, majd az eszköz maga az eszköz módosításához nélkül futtathat egy IoT Edge-modul telepítéséhez használt. 
+
+Ebben az esetben a modul, amely a leküldött teszteléshez használható mintaadatokat hoz létre. A szimulált hőmérsékleti érzékelő modul újabb teszteléséhez használható környezeti adatok állít elő. A szimulált érzékelő által figyelt, a gép körül a környezet és a egy gép. Az érzékelő Előfordulhat például, egy kiszolgáló szobában, egy gyárban, vagy egy szélturbina sürgősségi. Az üzenet tartalmazza a környezeti hőmérséklet és páratartalom, gép hőmérséklet és nyomás és a egy időbélyegző. Az IoT Edge-oktatóanyagok a Tesztadatok elemzéshez, a modul által létrehozott adatokat használja.
 
 Nyissa meg újra a parancssort az IoT Edge-eszközön. Győződjön meg arról, hogy a felhőből üzembe helyezett modul fut az IoT Edge-eszközön:
 
@@ -258,8 +260,6 @@ A hőmérséklet-érzékelő modul küldött üzenetek megjelenítése:
    >IoT Edge-parancsok modulneveket kontextusban való megnevezésekor nagybetűk között.
 
    ![A modulból származó adatok megtekintése](./media/quickstart-linux/iotedge-logs.png)
-
-A hőmérséklet-érzékelő modul vár az Edge Hub csatlakozni, ha az utolsó sor jelenik meg a napló **átviteli Mqtt_Tcp_Only használatával**. Próbálja ki a modul leállítása, és lehetővé teszi az Edge Agent, indítsa újra. A paranccsal állíthatja le `sudo docker stop SimulatedTemperatureSensor`.
 
 Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény). 
 
@@ -285,20 +285,6 @@ Távolítsa el az IoT Edge-futtatókörnyezetet.
 
    ```bash
    sudo apt-get remove --purge iotedge
-   ```
-
-Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
-
-   ```bash
-   sudo docker ps -a
-   ```
-
-Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. 
-
-   ```bash
-   sudo docker rm -f SimulatedTemperatureSensor
-   sudo docker rm -f edgeHub
-   sudo docker rm -f edgeAgent
    ```
 
 Távolítsa el a tároló-futtatókörnyezetet.

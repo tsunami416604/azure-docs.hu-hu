@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e5bf7cc199fc8a439b5071faa89cce2e3ed47a75
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e115db18770ef304d823ff9c35d7d2cf302d5ccf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724315"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187762"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C a nyelvi testreszabás
 
@@ -26,7 +26,7 @@ Milyen nyelveken érhető el a felhasználói folyamat kiválasztása a nyelvi t
 
 Milyen nyelveket, az ügyfél látja, hogy szintű nincs szüksége lehet. Ha nem ad meg egy `ui_locales` paramétert, a felhasználói élmény szabja meg a böngésző beállításait.  Továbbra is szabályozhatja, hogy a felhasználói folyamat fordítja le egy támogatott nyelvre úgy nyelveket. Ha a felhasználó böngészőben megjelenítése nyelv, amelyet szeretne támogatására van beállítva, akkor ehelyett alapértelmezés szerint a támogatott kulturális környezetek a kiválasztott nyelv jelenik meg.
 
-- **felhasználói felület – területi beállításokhoz megadott nyelvi**: Miután engedélyezte a nyelvi testreszabás, a felhasználói folyamat az itt megadott nyelvre lefordították.
+- **felhasználói felület – területi beállításokhoz megadott nyelvi**: Miután engedélyezte a nyelvi testreszabás, a felhasználói folyamatot az itt megadott nyelv fordítja le.
 - **Böngésző által kért nyelv**: Ha nincs `ui_locales` paraméter van megadva, a felhasználói folyamat fordítja le a böngésző által kért nyelv *, ha a nyelv támogatott*.
 - **A házirend alapértelmezett nyelve**: Ha a böngésző nem adja meg a nyelvet, vagy adja meg, amely nem támogatott, a felhasználói folyamatot a felhasználó flow alapértelmezett nyelvét fordítja le.
 
@@ -175,7 +175,7 @@ A Microsoft jelenleg nem biztosít támogatást jobbról balra író nyelveket. 
 ### <a name="social-identity-provider-translations"></a>Közösségi szolgáltató fordítások
 A Microsoft biztosít a `ui_locales` közösségi bejelentkezések OIDC paramétert. De néhány közösségi identitásszolgáltató, többek között a Facebookhoz és a Google, ne fogadja el őket. 
 ### <a name="browser-behavior"></a>Böngésző viselkedés
-Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyelvre, mielőtt az alapértelmezett jelenik meg. Edge jelenleg nem kér egy nyelvet, és rögtön az alapértelmezett nyelv kerül.
+Chrome és a Firefox beállított nyelvet is kérhetnek. Ha egy támogatott nyelvre, mielőtt az alapértelmezett jelenik meg. A Microsoft Edge jelenleg nem kér egy nyelvet, és rögtön az alapértelmezett nyelv kerül.
 
 ### <a name="supported-languages"></a>Támogatott nyelvek
 

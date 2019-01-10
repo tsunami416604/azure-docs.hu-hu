@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 830fc1d96825e28aad41aac9afee499b9bc1f7ae
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 02aa4eb37437861d428c6f361b3ff21def56b49b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357329"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189830"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>A hozzáférési panelen alkalmazáshoz való bejelentkezésnél
 
@@ -68,7 +68,7 @@ A jelszóalapú egyszeri bejelentkezés a végfelhasználó böngészők lehet:
 
 -   Az Internet Explorer 8, 9, 10, 11 – a Windows 7 vagy újabb
 
--   Edge a Windows 10 Évfordulós kiadása vagy újabb
+-   A Microsoft Edge a Windows 10 Évfordulós kiadása vagy újabb
 
 -   Chrome – A Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb
 
@@ -92,11 +92,11 @@ A hozzáférési Panel webböngésző-bővítmény telepítéséhez kövesse az 
 
 7.  Jelentkezzen be a hozzáférési panelre, és tekintse meg, ha a **indítsa el a** a jelszó-SSO-alkalmazások
 
-Az alábbi közvetlen hivatkozások közül a Chrome és a peremhálózaton is letöltheti a bővítmény:
+Az alábbi közvetlen hivatkozások a Chrome és a Microsoft Edge is letöltheti a bővítményt:
 
 -   [Chrome-hozzáférési Panel bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Edge-hozzáférési Panel bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+-   [A Microsoft Edge-hozzáférési Panel bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
 ## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Összevont egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazásba konfigurálása
 
@@ -285,7 +285,7 @@ Konfigurálása egyszeri bejelentkezéshez, amely nem szerepel az Azure AD katal
 
   1. Az alkalmazás identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést, konfigurálását, adja meg a válasz URL-cím és az azonosító.
 
-  2. **Választható lehetőség:** SP által kezdeményezett egyszeri Bejelentkezést az alkalmazás konfigurálása, a bejelentkezési URL-kötelező értéke.
+  2. **Nem kötelező:** Az alkalmazás konfigurálása SP által kezdeményezett egyszeri Bejelentkezést, a bejelentkezési URL-értéke szükséges.
 
 12. Az a **felhasználói attribútumok**, válassza ki a felhasználók az egyedi azonosítója a **felhasználóazonosító** legördülő listából.
 
@@ -500,7 +500,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+12. **Nem kötelező:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
 13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 

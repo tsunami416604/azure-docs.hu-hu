@@ -5,30 +5,29 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 14453a1603eb414441008ef1381800009f4268e4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5c46d4e4d23744cf07ccf7857a33990bf405a6a1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994432"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189014"
 ---
 # <a name="connect-with-excel"></a>Csatlakozás az Excellel
 
 Miután létrehozott egy kiszolgálót, és üzembe helyezett egy táblázatos modellhez, az ügyfelek csatlakozhat és megkezdje az adatok. 
 
 ## <a name="before-you-begin"></a>Előkészületek
+
 A fiók, akkor jelentkezzen be a modell az adatbázis-szerepkörhöz kell tartoznia, legalább olvasási engedéllyel. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md). 
 
 ## <a name="connect-in-excel"></a>Az Excel csatlakoztatása
 
-Kapcsolódás az Excel-kiszolgálóhoz az Excel 2016 adatok lekérése használatával támogatott. Tábla importálása varázsló segítségével a Power Pivotban kapcsolódó nem támogatott. 
+Kapcsolódás az Excel-kiszolgálóhoz támogatja az adatok lekérése, az Excel 2016 vagy újabb. Tábla importálása varázsló segítségével a Power Pivotban kapcsolódó nem támogatott. 
 
-**Csatlakozás az Excel 2016-ban**
-
-1. Az Excel 2016-ban a **adatok** menüszalagra, majd **külső adatok beolvasása** > **egyéb forrásokból származó** > **Analysis Services** .
+1. Az Excel a a **adatok** menüszalagra, majd **külső adatok beolvasása** > **egyéb forrásokból származó** > **az Analysis Services**.
 
 2. Az Adatkapcsolat varázsló a **kiszolgálónév**, adja meg a kiszolgáló nevét, többek között a protokoll és URI-t. Ha például asazure://westcentralus.asazure.windows.net/advworks. Ezt követően a **bejelentkezési adatok**válassza **használja a következő felhasználónév és jelszó**, majd írja be a szervezeti felhasználó nevét, például nancy@adventureworks.com, és a jelszót.
 
@@ -43,6 +42,7 @@ Kapcsolódás az Excel-kiszolgálóhoz az Excel 2016 adatok lekérése használa
 
 
 ## <a name="see-also"></a>Lásd még
+
 [Ügyfélkódtárak](analysis-services-data-providers.md)   
 [Kiszolgáló kezelése](analysis-services-manage.md)     
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 419160ea8a91672d9c948c57b9c3ffd70180ab66
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9502c0b5c3ea4b25b7a49448b75fdd43ff28762a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187721"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186988"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Hogyan diagram teljesítmény és az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek több fő teljesítménymutatók (KPI-k) segítségével eldöntheti, milyen jól a virtuális gép működik-e a cél teljesítménydiagramok készletét tartalmazza. A diagramok megjelenítése az erőforrás-használatot egy időszakon belül, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy váltson át az egyes gépek megtekintése a kiválasztott metrika alapján erőforrás-használat listázása egy perspektíva. Bár vannak számos elemet kell figyelembe venni, amikor foglalkoznak, teljesítmény, a virtuális gépek az Azure Monitor összpontosít az operációs rendszer keresztül a processzor, memória, hálózati adapterek és lemezek, ahogy. Teljesítmény egészíti ki a állapotát a figyelési funkció, és tegye elérhetővé a problémákat, amelyek jelzik, hogy egy lehetséges rendszer összetevő hibája, támogatási finomhangolása és optimalizálási hatékonyság elérése érdekében, vagy támogatja a kapacitástervezés segít.  

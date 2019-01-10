@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.openlocfilehash: 84e2eb6a16ce9ee4889eacbf394754c5c2544f7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9026cab0651cd5f8433f9a8a7db0366a6ab13464
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245307"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190255"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hibrid DRM subsystem(s) kialakítása
 
@@ -68,8 +68,8 @@ Egy átfogó felhőalapú videoplatformok részeként az Azure Media Services DR
 
 ### <a name="drm-license-delivery"></a>DRM-licenckézbesítés
 
-* Az AMS: DRM-licenckiszolgáló AMS licenctovábbítási szolgáltatása érkeznek.
-* Külső: DRM-licenckiszolgáló kézbesíti a rendszer egy külső DRM-licenckiszolgáló kívül AMS által.
+* AZ AMS: DRM-licenckiszolgáló AMS licenctovábbítási szolgáltatása hozta.
+* Külső: DRM-licenckiszolgáló egy külső DRM-licenckiszolgáló AMS-en kívül hozta.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Konfigurálja a hibrid forgatókönyvek alapján
 
@@ -102,7 +102,7 @@ Az előző szakaszban a magyarázatokat alapján, az alábbi öt hibrid forgató
 |AMS|Külső|Külső|Nem|Nem|4. példa|
 |Külső|Külső|AMS|Igen|Nem|    
 
-A minták a PlayReady-védelmet a DASH és smooth Streaming formátumba esetében működik. A Videó URL-címek az alábbi olyan smooth streaming URL-címeket. A megfelelő DASH URL-címek lekérése, csak hozzáfűzése "(formátum = mpd-time-csf)". Használhatja a [az azure media player tesztelése](https://aka.ms/amtest) ellenőrzéséhez egy böngészőben. Lehetővé teszi a streamelési protokoll szeretne használni, mely technológiai területen konfigurálja. IE11 és a Windows 10 MS Edge támogatja a PlayReady eme. További információkért lásd: [a vizsgálati eszköz részleteit](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+A minták a PlayReady-védelmet a DASH és smooth Streaming formátumba esetében működik. A Videó URL-címek az alábbi olyan smooth streaming URL-címeket. A megfelelő DASH URL-címek lekérése, csak hozzáfűzése "(formátum = mpd-time-csf)". Használhatja a [az azure media player tesztelése](https://aka.ms/amtest) ellenőrzéséhez egy böngészőben. Lehetővé teszi a streamelési protokoll szeretne használni, mely technológiai területen konfigurálja. IE11 és a Microsoft Edge a Windows 10-es támogatja a PlayReady eme. További információkért lásd: [a vizsgálati eszköz részleteit](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>1. példa
 

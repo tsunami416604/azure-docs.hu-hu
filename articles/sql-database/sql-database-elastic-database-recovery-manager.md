@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: f6c289c87f4f58fdad8950bdf61fa68016fe8d3e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d5bb914de1cded7c70516bfb4bfdaa93c83fe0e4
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042070"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188674"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
 
-A [RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) osztály teszi lehetővé az ADO.Net-alkalmazások könnyen észlelheti és javíthatja a a globális szegmenstérkép (GSM) és a egy szilánkokra osztott adatbázis-környezetet a helyi szegmenstérkép (LSM) közötti inkonzisztenciákat.
+A [RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) osztály teszi lehetővé az ADO.Net-alkalmazások könnyen észlelheti és javíthatja a a globális szegmenstérkép (GSM) és a egy szilánkokra osztott adatbázis-környezetet a helyi szegmenstérkép (LSM) közötti inkonzisztenciákat.
 
 A GSM és LSM nyomon követheti a leképezést a horizontálisan skálázott környezetben az egyes adatbázisok. Alkalmanként szünet következik be, a GSM és a LSM között. Ebben az esetben a RecoveryManager osztály használatával észleli és megjavítja a szünet.
 
@@ -49,7 +49,7 @@ Az Azure SQL Database Elastic Database-eszközök, a georeplikáció és a vissz
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Egy ShardMapManager RecoveryManager lekérése
 
-Az első lépéseként RecoveryManager példányt hoz létre. A [GetRecoveryManager metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) adja vissza a helyreállítás-kezelő a jelenlegi [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) példány. Oldja meg a szegmenstérkép mindennemű inkonzisztenciáját, először le kell kérnie a RecoveryManager az adott horizontális skálázási térképet.
+Az első lépéseként RecoveryManager példányt hoz létre. A [GetRecoveryManager metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) adja vissza a helyreállítás-kezelő a jelenlegi [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) példány. Oldja meg a szegmenstérkép mindennemű inkonzisztenciáját, először le kell kérnie a RecoveryManager az adott horizontális skálázási térképet.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
@@ -83,7 +83,7 @@ Feltételezzük, hogy az adatbázis-törlési szándékos volt, mert az utolsó 
 
 ## <a name="to-detect-mapping-differences"></a>Leképezés eltérések észlelését
 
-A [DetectMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) kiválasztása és hiteles forrásaként a szegmenstérképet (helyi vagy globális) egyikét adja vissza, és összehangolja ezzel leképezése mindkét szegmenstérképet (GSM és LSM).
+A [DetectMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) kiválasztása és hiteles forrásaként a szegmenstérképet (helyi vagy globális) egyikét adja vissza, és összehangolja ezzel leképezése mindkét szegmenstérképet (GSM és LSM).
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
@@ -94,19 +94,19 @@ A [DetectMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/micr
 
 ## <a name="to-resolve-mapping-differences"></a>A leképezés különbségek feloldása
 
-A [ResolveMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) kiválaszt közülük egyet a szegmenstérképet (helyi vagy globális) hiteles forrásaként, és összehangolja leképezése mindkét szegmenstérképet (GSM és LSM).
+A [ResolveMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) kiválaszt közülük egyet a szegmenstérképet (helyi vagy globális) hiteles forrásaként, és összehangolja leképezése mindkét szegmenstérképet (GSM és LSM).
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
 * A *RecoveryToken* paraméter enumerálása a leképezéseket a GSM és a LSM számára az adott szegmens közötti különbségeket.
-* A [MappingDifferenceResolution enumerálás](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) jelzi az a különbség a szilánkleképezés-leképezések megoldásának módszere.
+* A [MappingDifferenceResolution enumerálás](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) jelzi az a különbség a szilánkleképezés-leképezések megoldásának módszere.
 * **MappingDifferenceResolution.KeepShardMapping** ajánlott, ha a LSM tartalmaz a pontos leképezést, és ezért a szegmensben leképezést kell használni. Ez általában az az eset, ha feladatátvitel történik: a szegmens már található egy új kiszolgálón. A szegmens először el kell távolítani a GSM (RecoveryManager.DetachShard mód használatával), mert a leképezés már nem létezik, a GSM a. Ezért a LSM ismételt létrehozása a szilánkleképezés-leképezést kell használható.
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Szilánk csatolása a ShardMap szegmensek visszaállítását követően
 
-A [AttachShard metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) csatolja az adott szegmens horizontális skálázási térképet. Ezután minden szegmensben térkép észlel, és frissíti az f:\ megfelelően a szegmens a szilánkleképezés-visszaállítás ponton kell megadni. Azt feltételezzük, hogy az adatbázis is átnevezve, hogy az eredeti adatbázis nevét (mielőtt a szegmens vissza lett állítva), mivel az a pont – az adott visszaállítás az alapértelmezett hozzáfűzi az időbélyeg az új adatbázist.
+A [AttachShard metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) csatolja az adott szegmens horizontális skálázási térképet. Ezután minden szegmensben térkép észlel, és frissíti az f:\ megfelelően a szegmens a szilánkleképezés-visszaállítás ponton kell megadni. Azt feltételezzük, hogy az adatbázis is átnevezve, hogy az eredeti adatbázis nevét (mielőtt a szegmens vissza lett állítva), mivel az a pont – az adott visszaállítás az alapértelmezett hozzáfűzi az időbélyeg az új adatbázist.
 
    ```java
    rm.AttachShard(location, shardMapName)

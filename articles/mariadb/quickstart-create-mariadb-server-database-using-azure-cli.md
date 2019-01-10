@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538744"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190337"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -71,6 +71,10 @@ A következő példában létrehozunk egy **mydemoserver** nevű kiszolgálót a
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
 ```
+
+> [!NOTE]
+> Fontolja meg az alapszintű díjcsomag kis számítási és i/o-e megfelelő, a számítási feladatok számára. Vegye figyelembe, hogy a kiszolgálók, az alapszintű tarifacsomagban létrehozott később nem lehet az általános célú és memóriahasználatra optimalizált skálázhatók. Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/mariadb/) további információt.
+> 
 
 ## <a name="configure-a-firewall-rule"></a>Tűzfalszabály konfigurálása
 

@@ -9,14 +9,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 113e5769ee6a58785a46182064684bea5825c12c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d233f1df40d9580edfaaeb6b819c014952ad3b0c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138928"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189274"
 ---
 # <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A LUIS-robot C# a Bot keretrendszer 4.x-es és az Azure Web app bot
 A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
@@ -301,6 +301,7 @@ Az Azure Bot Service a Bot Framework SDK-t használja. További információk az
 
 Létrehozott egy Azure Bot Service-szolgáltatást, kimásolta a robot titkos kódját, valamint a `.bot`-fájl elérési útját, és letöltötte a kódot tartalmazó zip-fájlt. Hozzáadta az előre összeállított HomeAutomation-tartományt az új Azure Bot Service részeként létrehozott LUIS-apphoz, majd ismét betanította és közzétette az alkalmazást. Kibontotta a kódprojektet, létrehozott egy környezeti fájlt (`.env`), és beállította a robot titkos kódját, valamint a `.bot`-fájl elérési útját. A bot.js fájlban hozzáadta a két új szándék kezeléséhez szükséges kódot. Majd letesztelte a robotot a Bot Emulatorral, hogy láthassa az új szándékok egyikéhez tartozó kimondott szövegre adott LUIS-választ. 
 
+Még több [minták](https://github.com/Microsoft/AI) a természetes nyelvi robotokat. 
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány létrehozása a LUIS-ban](luis-quickstart-intents-only.md)

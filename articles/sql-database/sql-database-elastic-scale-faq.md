@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: f1047d5ad17afbac55b5ea9215ce592d36918174
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f3192aafb6f19695bc99310dd980382510bc633b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042580"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188114"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Elastic database-eszközök – gyakori kérdések (GYIK)
 
@@ -39,7 +39,7 @@ Ne használja a hitelesítő adatok formájában "felhasználói azonosító =us
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Van a Szilánkleképezés-kezelő létre és tölthet fel a szegmensek, minden indításakor alkalmazásaimat
 
-Nem – létrehozása a Szilánkleképezés-kezelővel (például [ShardMapManagerFactory.CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)) egy egyszeri művelet.  Az alkalmazás használ a hívás [ShardMapManagerFactory.TryGetSqlShardMapManager()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) indítási időpontban.  Nem kell application tartományonként csak egy ilyen hívást.
+Nem – létrehozása a Szilánkleképezés-kezelővel (például [ShardMapManagerFactory.CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) egy egyszeri művelet.  Az alkalmazás használ a hívás [ShardMapManagerFactory.TryGetSqlShardMapManager()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) indítási időpontban.  Nem kell application tartományonként csak egy ilyen hívást.
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Elastic database-eszközök használatával kapcsolatos kérdése van, hogyan érhetők el válaszok
 

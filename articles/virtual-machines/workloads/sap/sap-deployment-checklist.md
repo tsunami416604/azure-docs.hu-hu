@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd28e071fca37b120349ec3b471662909b323a0c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082954"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189150"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista 
 
@@ -84,7 +84,7 @@ A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan fu
 
 1.  Optimalizálja Azure-ba való adatátvitel. Nagymértékben függ a felhasználói esetek átviteli keresztül [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) helyszíni volt leggyorsabb, ha az Express kapcsolatcsoport rendelkezett elegendő sávszélesség. Más ügyfelekkel interneten keresztül szükséges a gyorsabb
 2.  Egy SAP esetén heterogén adatplatform migrálását követően, amely magában foglalja az exportálás és az adatbázis az adatok importálása, teszteléséhez, és exportálási optimalizálása, és importálja a fázisok. Nagy áttelepítések használata esetén az SQL Server, a cél-platformként, javaslatok található [Itt](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). A figyelő/SWPM áttelepítési módszert is igénybe vehet, abban az esetben nem kell egy kombinált kiadásban frissítést vagy [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) feldolgozni az áttelepítés egy SAP kiadásban frissítést egyesítése és bizonyos forrás- és adatbázis-kezelő platform teljesítése kombináció, például a dokumentált [adatbázis áttelepítési beállítás (DMO) a SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872). 
-    1.  Exportálás exportálási fájl feltöltése az Azure és az importálási teljesítmény exportálja.  Az exportálás és importálás közötti átfedés maximalizálása
+    1.  Exportálja a forrás, exportálási fájl feltöltése az Azure és az importálási teljesítmény.  Az exportálás és importálás közötti átfedés maximalizálása
     2.  Kiértékelni között ahhoz, hogy tükrözze az infrastruktúra méretezése a cél- és cél platform adatbázis mérete    
     3.  Ellenőrizze és időzítési optimalizálása 
 3.  Műszaki érvényesítést 

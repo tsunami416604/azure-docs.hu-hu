@@ -1,28 +1,28 @@
 ---
-title: 'Azure Analysis Services oktatóanyag – 7. lecke: Fő teljesítménymutatók létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 7. lecke: Fő teljesítménymutatók létrehozása |} A Microsoft Docs'
 description: Ismerteti a Fő teljesítménymutatók létrehozását az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1e7fc5cd684610a5d96b5986f5c169741055c9b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d238b3bf159a5e540eb9c72ecbcee188bd357b05
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426818"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186532"
 ---
 # <a name="create-key-performance-indicators"></a>Fő teljesítménymutatók létrehozása
 
 Ebben a leckében fő teljesítménymutatókat (KPI-k) hozhat létre. A KPI-k az *Alapmérték* által meghatározott érték teljesítményének és szintén egy mérték, vagy egy abszolútérték által meghatározott *Célérték* összehasonlítására használhatók. A jelentéskészítő ügyfélalkalmazásokban a KPI-k segítségével az üzleti szakemberek gyorsan és egyszerűen ismerhetik meg az üzleti sikerek összegzését vagy állapíthatják meg a tendenciákat. További tudnivalókért lásd: [KPI-k](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular)
   
-A lecke elvégzésének várható időtartama: **15 perc**.  
+Becsült idő a lecke elvégzéséhez: **15 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Az ebben a leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét: [6. lecke: Mértékek létrehozása](../tutorials/aas-lesson-6-create-measures.md).   
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [6. lecke: Mértékek létrehozása](../tutorials/aas-lesson-6-create-measures.md).   
   
 ## <a name="create-key-performance-indicators"></a>Fő teljesítménymutatók létrehozása  
   

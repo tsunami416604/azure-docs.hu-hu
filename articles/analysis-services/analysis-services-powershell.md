@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b4aec7ff560b0695175a18c9c7e429a8ab733345
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9e7683883963db2cf1911405225fcdbf289de2bb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633708"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187538"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>A PowerShell-lel az Azure Analysis Services kezelése
 
@@ -22,11 +22,13 @@ Ez a cikk ismerteti az Azure Analysis Services-kiszolgáló és adatbázis-kezel
 Server felügyeleti feladatokat, mint a létrehozásakor vagy törölni a kiszolgálót, felfüggesztése vagy folytatása a kiszolgálói műveletek vagy módosítása a szolgáltatási szint (réteg) használata Azure Resource Manager (erőforrás) parancsmagok és az Analysis Services (kiszolgáló) parancsmagok. Az adatbázis-kezelés egyéb feladatok, például hozzáadása vagy eltávolítása a szerepkör tagjai, feldolgozása, illetve a particionálás használata modulok parancsmagjaival együtt az azonos SQL Server, SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Engedélyek
-A legtöbb PowerShell-feladatok szükséges rendszergazdai jogosultságokkal rendelkezik a kezelt Analysis Services-kiszolgálón. Felügyelet nélküli műveletek, amelyek ütemezett PowerShell-feladatok. Az ütemező futtató fiók vagy szolgáltatás elve szerint az Analysis Services-kiszolgálóhoz rendszergazdai jogosultsággal kell rendelkeznie. 
+
+A legtöbb PowerShell-feladatok szükséges rendszergazdai jogosultságokkal rendelkezik a kezelt Analysis Services-kiszolgálón. Felügyelet nélküli műveletek, amelyek ütemezett PowerShell-feladatok. A fiók vagy szolgáltatásnév futtatja az ütemezőt, rendszergazdai jogosultságokkal kell rendelkeznie az Analysis Services-kiszolgálóhoz. 
 
 Kiszolgálói műveletek AzureRm-parancsmagok használatával, a fiókját vagy az ütemező futtató fiók is szerepkörhöz kell tartoznia a tulajdonos erőforráshoz tartozó [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="resource-management-operations"></a>Erőforrás-kezelési műveletek 
+
 Modul - [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices)
 
 |Parancsmag|Leírás| 

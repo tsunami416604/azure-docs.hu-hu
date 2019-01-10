@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory Connect: Zökkenőmentes egyszeri bejelentkezést hibaelhárítása |} A Microsoft Docs'
+title: 'Az Azure Active Directory Connect: Közvetlen egyszeri bejelentkezés hibaelhárítása |} A Microsoft Docs'
 description: Ez a témakör ismerteti az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 308623b4643724d95777d7e21d1138f808e9c1c9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055900"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190425"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 
@@ -27,7 +27,7 @@ Ez a cikk hibaelhárítási információkat a vonatkozó Azure Active Directory 
 
 - Néhány esetben közvetlen egyszeri bejelentkezés engedélyezése eltarthat akár 30 percig.
 - Ha letiltja, és engedélyezze újra a közvetlen egyszeri bejelentkezés a bérlő, felhasználók, hogy lejárt a gyorsítótárazott Kerberos jegyek általában érvényes 10 órát, amíg nem az egyszeri bejelentkezés használatát fognak kapni.
-- Microsoft Edge böngésző támogatása nem érhető el.
+- A Microsoft Edge böngésző támogatása nem érhető el.
 - Közvetlen egyszeri bejelentkezés sikeres, ha a felhasználó nem rendelkezik ki **bejelentkezve szeretnék maradni**. Ez a viselkedés miatt [SharePoint és onedrive vállalati verzió leképezés forgatókönyvek](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nem működnek.
 - Office 365 Win32-ügyfelek (Outlook, Word, Excel és mások) vagy újabb verzió 16.0.8730.xxxx rendelkező nem interaktív folyamat használatával támogatott. Egyéb verziói nem támogatottak; Ezen verziók felhasználók megadnia a felhasználónevek, de nem jelszavak jelentkezik be. A onedrive-on, aktiválnia kell a [OneDrive csendes config funkció](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) csendes bejelentkezési élményt.
 - Közvetlen egyszeri bejelentkezés privát böngészési módban, a Firefox nem működik.
@@ -36,23 +36,23 @@ Ez a cikk hibaelhárítási információkat a vonatkozó Azure Active Directory 
 - Ha egy felhasználó az Active Directory túl sok csoport része, a felhasználó Kerberos-jegye nagy valószínűséggel el fog feldolgozni túl nagy, és ennek hatására a közvetlen egyszeri bejelentkezés meghiúsul. Az Azure AD-HTTPS-kérelmek fejlécek 50 KB; maximális mérettel rendelkezhet Kerberos-jegyet kell ezt a korlátot, például a cookie-k más Azure AD-összetevők (általában 2 – 5 KB) befogadásához kisebbnek kell lennie. Azt javasoljuk, hogy csökkentse a felhasználói csoporttagságok, majd próbálkozzon újra.
 - Ha 30 vagy több Active Directory-erdők már szinkronizálást, nem engedélyezhető a közvetlen egyszeri bejelentkezés az Azure AD Connecten keresztül. Áthidaló megoldásként is [manuális módszerrel engedélyezze](#manual-reset-of-the-feature) a funkció a bérlőn.
 - Az Azure AD szolgáltatás URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) a megbízható helyek zónához helyett a helyi intranetes zóna *letiltja a felhasználók bejelentkezésének*.
-- Közvetlen egyszeri bejelentkezés használja a **RC4_HMAC_MD5** Kerberos titkosítási típus. Használatának letiltása a **RC4_HMAC_MD5** az Active Directory-beállítások a titkosítási típus megszakítja a közvetlen egyszeri bejelentkezés. A Csoportházirendkezelés-szerkesztő eszközben ellenőrizze, hogy a házirend értékét **RC4_HMAC_MD5** alatt **számítógép konfigurációja -> Windows-beállítások -> biztonsági beállítások -> helyi házirendek -> biztonsági beállítások - > "Hálózati biztonság: a Kerberos használható titkosítási típusok konfigurálása"** van **engedélyezve**. Arról, hogy a közvetlen egyszeri bejelentkezés továbbá nem használhatja más titkosítási típusok, ezért győződjön meg arról, hogy azok **le van tiltva**.
+- Közvetlen egyszeri bejelentkezés használja a **RC4_HMAC_MD5** Kerberos titkosítási típus. Használatának letiltása a **RC4_HMAC_MD5** az Active Directory-beállítások a titkosítási típus megszakítja a közvetlen egyszeri bejelentkezés. A Csoportházirendkezelés-szerkesztő eszközben ellenőrizze, hogy a házirend értékét **RC4_HMAC_MD5** alatt **számítógép konfigurációja -> Windows-beállítások -> biztonsági beállítások -> helyi házirendek -> biztonsági beállítások - > "Hálózati biztonság: A Kerberos használható titkosítási típusok konfigurálása"** van **engedélyezve**. Arról, hogy a közvetlen egyszeri bejelentkezés továbbá nem használhatja más titkosítási típusok, ezért győződjön meg arról, hogy azok **le van tiltva**.
 
 ## <a name="check-status-of-feature"></a>A szolgáltatás állapotának ellenőrzése
 
 Győződjön meg arról, hogy a közvetlen egyszeri bejelentkezés funkció továbbra is **engedélyezve** a bérlő. Ellenőrizheti az állapotot a a **az Azure AD Connect** ablaktábláján a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
 
-![Az Azure Active Directory felügyeleti központ: az Azure AD Connect panel](./media/tshoot-connect-sso/sso10.png)
+![Azure Active Directory felügyeleti központ: Az Azure AD Connect panel](./media/tshoot-connect-sso/sso10.png)
 
 Kattintson végig, amelyeken engedélyezve van a közvetlen egyszeri bejelentkezés az összes AD-erdőkkel megtekintéséhez.
 
-![Az Azure Active Directory felügyeleti központ: közvetlen egyszeri bejelentkezés panel](./media/tshoot-connect-sso/sso13.png)
+![Azure Active Directory felügyeleti központ: Zökkenőmentes egyszeri bejelentkezés panel](./media/tshoot-connect-sso/sso13.png)
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Bejelentkezési hibák okai az Azure Active Directory felügyeleti központban (prémium licencre van szükség)
 
 Ha a bérlő az Azure AD Premium licenccel rendelkezik, akkor is megjeleníthető a [bejelentkezési tevékenységek jelentésének](../reports-monitoring/concept-sign-ins.md) a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
 
-![Az Azure Active Directory felügyeleti központ: bejelentkezések jelentés](./media/tshoot-connect-sso/sso9.png)
+![Azure Active Directory felügyeleti központ: Bejelentkezések jelentés](./media/tshoot-connect-sso/sso9.png)
 
 Keresse meg a **Azure Active Directory** > **bejelentkezések** a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/), majd válassza ki egy adott felhasználó bejelentkezési tevékenységet. Keresse meg a **bejelentkezési hiba kódja** mező. A mező értékét leképezése a hiba oka és a megoldás a következő táblázat használatával:
 
@@ -110,12 +110,12 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 2. Keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
 3. A zökkenőmentes egyszeri bejelentkezési PowerShell-modul importálása a következő paranccsal: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2. lépés: Listájának megtekintéséhez, amelyen a közvetlen egyszeri bejelentkezés engedélyezve van az Active Directory-erdők
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2. lépés: Listájának megtekintéséhez, amelyen a közvetlen egyszeri bejelentkezés engedélyezve van az Active Directory-erdők
 
 1. Futtassa a Powershellt rendszergazdaként. A PowerShellben hívás `New-AzureADSSOAuthenticationContext`. Amikor a rendszer kéri, adja meg a bérlő globális rendszergazdai hitelesítő adatokkal.
 2. Hívás `Get-AzureADSSOStatus`. Ez a parancs biztosít az Active Directory-erdők, (tekintse meg a "Tartományok" listája) listája a, amelyhez ez a funkció engedélyezve van.
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3. lépés: Minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatás közvetlen egyszeri bejelentkezés letiltása
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3. lépés: Minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást a közvetlen egyszeri bejelentkezés letiltása
 
 1. Hívás `$creds = Get-Credential`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
 
@@ -125,7 +125,7 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 2. Hívás `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ezzel a paranccsal eltávolítható az `AZUREADSSOACCT` az adott erdő Active Directory a helyszíni tartományvezérlő számítógépfiókja.
 3. Ismételje meg a fenti lépéseket minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást.
 
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: Minden egyes Active Directory-erdő közvetlen egyszeri bejelentkezés engedélyezése
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: Közvetlen egyszeri bejelentkezés engedélyezése az Active Directory erdőhöz
 
 1. Hívás `Enable-AzureADSSOForest`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
 

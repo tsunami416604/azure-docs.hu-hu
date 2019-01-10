@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 0aaa912a06136edbe04e6956d86faa47cf88136f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 41e2eee491141be3a7e39a70bccf8440890e2982
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116640"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186498"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Létrehozhat és használhat megosztott rendszerképek virtuálisgép-méretezési csoportokhoz az Azure CLI 2.0 használatával
 
@@ -32,7 +32,6 @@ Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a vi
 > * Megosztott kép definíciójának létrehozása
 > * Hozzon létre egy megosztott lemezkép verziója
 > * Virtuális gép létrehozása egy megosztott rendszerképből
-> * Egy erőforrás törlése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

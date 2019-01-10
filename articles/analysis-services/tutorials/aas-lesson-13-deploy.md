@@ -1,28 +1,28 @@
 ---
-title: 'Az Azure Analysis Services oktatóanyaga – 13. lecke: Üzembe helyezés | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag – 13. lecke: Üzembe helyezése |} A Microsoft Docs'
 description: A lecke az oktatóanyag projektjének az Azure Analysis Services szolgáltatásban való üzembe helyezését ismerteti.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0528af5f3a6b7309d81c36ca5bc7a3faccfa293
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427112"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188385"
 ---
 # <a name="deploy"></a>Üzembe helyezés
 
 Ebben a leckében az üzembehelyezési tulajdonságokat fogja konfigurálni: megad egy Azure Analysis Services-kiszolgálót, amelyen az üzembe helyezést végzi, majd elnevezi a modellt. Ezután üzembe helyezi a modellt az adott példányon. Miután a modell üzembe lett helyezve, a felhasználók egy jelentéskészítő ügyfélalkalmazás segítségével csatlakozhatnak hozzá. További információkért lásd [az Azure Analysis Servicesben történő üzembe helyezést](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy) ismertető cikket.  
   
-A lecke elvégzésének várható időtartama: **5 perc**  
+Becsült idő a lecke elvégzéséhez: **5 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a cikk a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A jelen leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét ([12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md)).  
+Ez a cikk a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md).  
 
 > [!IMPORTANT]  
 > Ahhoz, hogy üzembe helyezést végezhessen a távoli Analysis Services-kiszolgálón, [rendszergazdai jogosultságokkal](../analysis-services-server-admins.md) kell rendelkeznie.  

@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-oktatóanyag – 12. lecke: Elemzés az Excelben | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 12. lecke: Elemzés az Excelben |} A Microsoft Docs'
 description: A lecke azt ismerteti, hogyan használható az Elemzés az Excelben az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 425c3a351c75c63cb07df66d6122f4d900b4932e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e5ac04c7bd8174f823cacc67401af8a98b3d8170
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429762"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186481"
 ---
 # <a name="analyze-in-excel"></a>Elemzés az Excelben
 
@@ -21,10 +21,10 @@ Ebben a leckében az Elemzés az Excelben használatával megnyitja a Microsoft 
   
 A lecke elvégzéséhez az Excelnek és a Visual Studiónak ugyanazon a számítógépen kell telepítve lennie.
   
-A lecke elvégzésének várható időtartama: **5 perc**.  
+Becsült idő a lecke elvégzéséhez: **Öt perc alatt**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md)).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md).  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Tallózás az alapértelmezett és az Internetes értékesítés perspektíva használatával  
 Ezekben az első feladatokban az összes modellobjektumot tartalmazó alapértelmezett perspektíva, valamint a korábban létrehozott Internetes értékesítés perspektíva használatával tallózhat a modellben. Az Internetes értékesítés perspektíva nem tartalmazza a Customer (Ügyfél) táblaobjektumot.  
@@ -69,7 +69,7 @@ A szerepkörök minden táblázatos modell fontos részét képezik. Ha nincs le
 3.  Zárja be az Excelt a munkafüzet mentése nélkül.  
   
 ## <a name="whats-next"></a>A következő lépések
-Tovább a következő leckére: [13. lecke: Üzembe helyezés](../tutorials/aas-lesson-13-deploy.md).
+Nyissa meg a következő leckére: [13. lecke: Üzembe helyezése](../tutorials/aas-lesson-13-deploy.md).
 
   
   

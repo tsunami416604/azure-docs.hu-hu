@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: c225761f18a89539ea4966fab620104a25d1270e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 45bf554e457e48704684fe8ac3b32c29f3f646b2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50098047"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189282"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
@@ -44,15 +44,15 @@ A következő beállítások csoportok szinkronizálását a Windows 10-es eszk�
 
 * Téma: asztali háttérkép, felhasználói csempe, tálca pozícióját, stb. 
 * Az Internet Explorer beállításainak: böngészési előzményeket beírt URL-címeket, a Kedvencek, stb. 
-* Jelszavak: Windows hitelesítőadat-kezelő, beleértve a Wi-Fi profilok 
+* Jelszó: Windows hitelesítőadat-kezelő, beleértve a Wi-Fi profilok 
 * Nyelvi beállítások: helyesírás-ellenőrzés szótárban, a rendszer nyelvi beállítások 
 * Könnyű elérés: Narrátor, Nagyító, képernyő-billentyűzet 
 * Egyéb Windows-beállítások: tekintse meg a Windows-beállítások részletei
-* Böngészőbeállítások él: a Microsoft Edge-beli Kedvencek, olvassa és egyéb beállítások
+* A Microsoft Edge böngésző beállításai: A Microsoft Edge-beli Kedvencek, olvassa és egyéb beállítások
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
-Edge böngésző beállítás (Kedvencek, olvassa) csoportszinkronizálását is engedélyezhető vagy letiltható a végfelhasználók számára – Microsoft Edge böngésző beállításainak menüpont.
+A Microsoft Edge-böngészőbeállítások (Kedvencek, olvassa) csoportszinkronizálását is engedélyezhető vagy letiltható a végfelhasználók számára – Microsoft Edge böngésző beállításainak menüpont.
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
@@ -74,8 +74,8 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Az alkalmazásadatok**: egyéni alkalmazásokat is szinkronizálja az adatokat |szinkronizálási biztonsági mentés |szinkronizálási biztonsági mentés |Belső |
 | **Alkalmazáslista**: a telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
 | **Bluetooth**: az összes Bluetooth-beállítások |X |X | |
-| **Parancssor**: parancssor "Alapértelmezett" beállításai |Szinkronizálás |X |Belső |
-| **Hitelesítő adatok**: hitelesítő adatok Széfjének |Szinkronizálás |Szinkronizálás |jelszó |
+| **Parancssor**: Parancsot a parancssorba "Alapértelmezett" beállítások |Szinkronizálás |X |Belső |
+| **hitelesítő adatok**: Hitelesítő adatok Széfjét |Szinkronizálás |Szinkronizálás |jelszó |
 | **Dátum, idő és régióját**: automatikus idő (Internet idő szinkronizálása) |Szinkronizálás |Szinkronizálás |language |
 | **Dátum, idő és régióját**: 24 órás formátumban |Szinkronizálás |X |language |
 | **Dátum, idő és régióját**: dátum és idő |Szinkronizálás |X |language |
@@ -93,23 +93,23 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Asztal személyre szabása**: tálca beállítások (pozícióját, automatikus elrejtése, stb.) |Szinkronizálás |X |Téma |
 | **Asztal személyre szabása**: start képernyő elrendezése |X |biztonsági mentés | |
 | **Eszközök**: megosztott nyomtatókhoz, kapcsolódik |X |X |egyéb |
-| **Microsoft Edge böngésző**: könyvjelzőkhöz |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: Kedvencek |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: az első hely <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: beírt URL-címek <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: Kedvencek sáv beállítások <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: a kezdőlap gombjának megjelenítése <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: előugró ablakok letiltása <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: Mit tegyen az egyes letöltési kérdezzen <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: elérhetővé teheti a jelszavak mentése egyszerű <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: küldési kérelmek nyomon követése nem <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: űrlap bejegyzéseinek mentése <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: keresés és a hely javaslatok megjelenítése a szöveg beírása közben <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: cookie-kat szabályozó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: lehetővé teszik a védett médiafájlok licencek mentse az eszköz helyek <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Microsoft Edge böngésző**: beállítás képernyőolvasó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Kontrasztos**: be- vagy kikapcsolása |Szinkronizálás |X |könnyű elérés |
-| **Kontrasztos**: témák beállításai |Szinkronizálás |X |könnyű elérés |
+| **A Microsoft Edge böngésző**: könyvjelzőkhöz |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: Kedvencek |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: az első hely <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: beírt URL-címek <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: Kedvencek sáv beállítások <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: a kezdőlap gombjának megjelenítése <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: előugró ablakok letiltása <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: Mit tegyen az egyes letöltési kérdezzen <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: elérhetővé teheti a jelszavak mentése egyszerű <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: küldési kérelmek nyomon követése nem <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: űrlap bejegyzéseinek mentése <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: keresés és a hely javaslatok megjelenítése a szöveg beírása közben <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: cookie-kat szabályozó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: lehetővé teszik a védett médiafájlok licencek mentse az eszköz helyek <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **A Microsoft Edge böngésző**: beállítás képernyőolvasó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
+| **Kontrasztos**: Be- vagy kikapcsolása |Szinkronizálás |X |könnyű elérés |
+| **Kontrasztos**: Témák beállításai |Szinkronizálás |X |könnyű elérés |
 | **Az Internet Explorer**: Nyissa meg a lapok (URL-cím és cím) |Szinkronizálás |Szinkronizálás |Internet Explorer |
 | **Az Internet Explorer**: könyvjelzőkhöz |Szinkronizálás |Szinkronizálás |Internet Explorer |
 | **Az Internet Explorer**: beírt URL-címek |Szinkronizálás |Szinkronizálás |Internet Explorer |
@@ -122,7 +122,7 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Billentyűzet**: kapcsolja be a kiemelt Igen (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
 | **Billentyűzet**: kapcsolja be a szűrő kulcsok (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
 | **Billentyűzet**: kapcsolja be az állapotjelző (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Az Internet Explorer**: tartomány nyelvi: kínai (CHS) QWERTY - engedélyezése helyi tanulási |Szinkronizálás |X |Nyelv |
+| **Az Internet Explorer**: tartomány nyelv: Kínai (CHS) QWERTY - engedélyezése helyi tanulási |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS QWERTY - enable dinamikus jelölt rangsorolása |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS QWERTY - char-set egyszerűsített kínai |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS QWERTY - char-set kínai (hagyományos) |Szinkronizálás |X |Nyelv |
@@ -131,14 +131,14 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Nyelvi**: CHS QWERTY – teljes átírhatók |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS QWERTY - dupla átírhatók |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS QWERTY - olvasó automatikus javítás |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY.-C/E kapcsoló kulcsot, a SHIFT billentyűt |Szinkronizálás |X |Nyelv |
+| **Nyelvi**: CHS QWERTY - C/E kapcsoló kulcsot, a SHIFT billentyűt |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS QWERTY - C/E kapcsoló kulcs, Ctrl |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS WUBI – egyetlen karakter beviteli mód |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHS WUBI - megjelenítése a fennmaradó kódolási pályázó |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: 4 kódolási érvénytelen CHS WUBI - hangjelzés |Szinkronizálás |X |Nyelv |
+| **Nyelvi**: CHS WUBI – 4 kódolási érvénytelen hangjelzés |Szinkronizálás |X |Nyelv |
 | **Nyelvi**: CHT Bopomofo - CJK Ext-A belefoglalása |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: a japán nyelvű Írásjegybevivő – prediktív beírásával és az egyéni szavakat |Szinkronizálás |Szinkronizálás |Nyelv |
-| **Nyelvi**: koreai (KOR) időpontja |X |X |Nyelv |
+| **Nyelvi**: A japán nyelvű Írásjegybevivő – prediktív beírásával és az egyéni szavakat |Szinkronizálás |Szinkronizálás |Nyelv |
+| **Nyelvi**: Koreai (KOR) időpontja |X |X |Nyelv |
 | **Nyelvi**: a kézírás-felismerés |X |X |Nyelv |
 | **Nyelvi**: nyelv profil |Szinkronizálás |biztonsági mentés |Nyelv |
 | **Nyelvi**: helyesírás-ellenőrzés – az automatikus javítás és a kiemelés elírások |Szinkronizálás |biztonsági mentés |Nyelv |

@@ -5,15 +5,15 @@ author: dkamstra
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2017
+ms.date: 4/12/2018
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: e4cb22866fa2885208b912c88d56243ac7826480
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159247"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190697"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure portal használatával
 
@@ -58,43 +58,27 @@ Properties.Stage | A lehetséges értékei **incidens**, és **biztonsági** van
 Properties.communicationId | A kommunikáció, amelyhez ez az esemény társítva.
 
 ### <a name="details-on-service-health-level-information"></a>A Szolgáltatásállapot-szintű adatok részletei
-  <ul>
-    <li><b>Szükséges művelet</b> (properties.incidentType == beavatkozás szükséges) <dl>
-            <dt>Tájékoztató</dt>
-            <dd>Rendszergazdai beavatkozás szükséges, hogy a hatása a meglévő szolgáltatások</dd>
-        </dl>
-    </li>
-    <li><b>Karbantartási</b> (properties.incidentType karbantartási ==) <dl>
-            <dt>Figyelmeztetés</dt>
-            <dd>karbantartási<dd>
-            <dt>Tájékoztató</dt>
-            <dd>Standard tervezett karbantartás</dd>
-        </dl>
-    </li>
-    <li><b>Információk</b> (properties.incidentType tájékoztató ==) <dl>
-            <dt>Tájékoztató</dt>
-            <dd>Rendszergazda szükség lehet a meglévő szolgáltatások gyakorolt hatás megakadályozása</dd>
-        </dl>
-    </li>
-    <li><b>Biztonsági</b> (properties.incidentType biztonsági ==) <dl>
-            <dt>Hiba történt</dt>
-            <dd>Eléréséhez több szolgáltatás több régióban, széles körű problémák vannak hatással az ügyfelek széles körét.</dd>
-            <dt>Figyelmeztetés</dt>
-            <dd>Egyes szolgáltatások és/vagy adott régiók hozzáférni ügyfelek egy részhalmazát vannak hatással.</dd>
-            <dt>Tájékoztató</dt>
-            <dd>Felügyeleti műveletek és/vagy a késés, nem negatív hatással a szolgáltatás rendelkezésre állását érintő problémákat.</dd>
-        </dl>
-    </li>
-    <li><b>Szolgáltatási problémák</b> (properties.incidentType incidens ==) <dl>
-            <dt>Hiba történt</dt>
-            <dd>Eléréséhez több szolgáltatás több régióban, széles körű problémák vannak hatással az ügyfelek széles körét.</dd>
-            <dt>Figyelmeztetés</dt>
-            <dd>Egyes szolgáltatások és/vagy adott régiók hozzáférni ügyfelek egy részhalmazát vannak hatással.</dd>
-            <dt>Tájékoztató</dt>
-            <dd>Felügyeleti műveletek és/vagy a késés, nem negatív hatással a szolgáltatás rendelkezésre állását érintő problémákat.</dd>
-        </dl>
-    </li>
-  </ul>
+
+**Szükséges művelet** (properties.incidentType == beavatkozás szükséges)
+    - Tájékoztató - rendszergazda, további lépésekre van szükség a meglévő szolgáltatások gyakorolt hatás megakadályozása
+    
+**Karbantartási** (properties.incidentType karbantartási ==)
+    - Figyelmeztetés – karbantartási
+    - Tájékoztató – standard tervezett karbantartás
+
+**Információk** (properties.incidentType információk ==)
+    - Tájékoztató - rendszergazda szükség lehet a meglévő szolgáltatások gyakorolt hatás megakadályozása
+
+**Biztonsági** (properties.incidentType biztonsági ==)
+    - Hiba – eléréséhez több szolgáltatás több régióban, széles körű problémák vannak hatással a ügyfelek széles körét.
+    - Figyelmeztetés – problémák adott szolgáltatások elérésére és/vagy adott régióban vannak hatással az ügyfelek egy részhalmazát.
+    - Tájékoztató - felügyeleti műveletek és/vagy a késés, érintő problémákat nem negatív hatással a szolgáltatás rendelkezésre állása.
+
+**Szolgáltatási problémák** (properties.incidentType incidens ==)
+    - Hiba – eléréséhez több szolgáltatás több régióban, széles körű problémák vannak hatással a ügyfelek széles körét.
+    - Figyelmeztetés – problémák adott szolgáltatások elérésére és/vagy adott régióban vannak hatással az ügyfelek egy részhalmazát.
+    - Tájékoztató - felügyeleti műveletek és/vagy a késés, érintő problémákat nem negatív hatással a szolgáltatás rendelkezésre állása.
+
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>A szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
 1.  Az a [az Azure portal](https://portal.azure.com)válassza **figyelő**.

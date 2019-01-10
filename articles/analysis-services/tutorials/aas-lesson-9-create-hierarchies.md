@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services oktatóanyag – 9. lecke: Hierarchiák létrehozása | Microsoft Docs'
+title: 'Az Azure Analysis Services oktatóanyag 9. lecke: Hierarchiák létrehozása |} A Microsoft Docs'
 description: Hozzon létre hierarchiákat a táblázatos modellt ismerteti.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e6591dc25ab498b496f6abff1041e448240896d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f34b2fd2ba5f6e3e1433fb8dac04d931a36920d0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426057"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188963"
 ---
 # <a name="create-hierarchies"></a>Hierarchiák létrehozása
 
@@ -21,10 +21,10 @@ Ebben a leckében hierarchiákat hozhat létre. A hierarchiák szintekbe rendeze
   
 Hierarchiák létrehozásához használja a modelltervezőt *Diagramnézetben*. A hierarchiák létrehozása és kezelése Adatnézetben nem támogatott.  
   
-A lecke elvégzésének várható időtartama: **20 perc**.  
+Becsült idő a lecke elvégzéséhez: **20 perc alatt**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Az ebben a leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét: [8. lecke: Perspektívák létrehozása](../tutorials/aas-lesson-8-create-perspectives.md).  
+Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Előtt ebben a leckében található feladatok végrehajtása, el kell végeznie az előző leckét: [8. lecke: Perspektívák létrehozása](../tutorials/aas-lesson-8-create-perspectives.md).  
   
 ## <a name="create-hierarchies"></a>Hierarchiák létrehozása  
   

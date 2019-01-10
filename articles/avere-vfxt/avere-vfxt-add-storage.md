@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001971"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190846"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -38,7 +38,7 @@ Ezek a lépések a Avere Vezérlőpult használják. Olvasási [a vFXT fürt el�
 
 ## <a name="create-a-core-filer"></a>Hozzon létre egy alapvető filer
 
-"Core filer" kifejezés vFXT egy háttérrendszer tárolórendszer. A storage lehetnek például a NetApp vagy Isilon hardver NAS készülékek, vagy egy felhőalapú objektum tárolót. További információ a core kiemelik található [a Avere a fürt beállítások útmutató](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers).
+"Core filer" kifejezés vFXT egy háttérrendszer tárolórendszer. A storage lehetnek például a NetApp vagy Isilon hardver NAS készülékek, vagy egy felhőalapú objektum tárolót. További információ a core kiemelik található [a Avere a fürt beállítások útmutató](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
 Egy mag filer hozzáadásához válassza ki a core kiemelik két fő objektumtípusok egyike:
 
@@ -70,7 +70,7 @@ Az alábbi lépéseket egy NAS core filer hozzáadása:
   
    * Kattintson a **tovább** , és válassza ki a gyorsítótár-szabályzatot. 
    * Kattintson a **Filer hozzáadása**.
-   * Részletesebb információkért, tekintse meg [hozzáadása egy új NAS alapvető filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) a Avere a fürt beállítások útmutatója.
+   * Részletesebb információkért, tekintse meg [hozzáadása egy új NAS alapvető filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) a Avere a fürt beállítások útmutatója.
 
 Ezután folytassa [hozzon létre egy elágazás](#create-a-junction).  
 
@@ -133,7 +133,7 @@ A fürt létrehozását követően a Blob storage hozzáadásához kövesse az a
    | Előfizetés | előfizetés-azonosító |
    | Tárelérési kulcs | Az Azure storage-fiókkulcs (az előző lépésben másolt) | 
 
-   Kattintson a **elküldése**.
+   Kattintson a **Submit** (Küldés) gombra.
 
    ![Felhőbeli hitelesítő űrlap Avere Vezérlőpult](media/avere-vfxt-new-credential-submit.png)
 
@@ -151,12 +151,12 @@ A fürt létrehozását követően a Blob storage hozzáadásához kövesse az a
    * Állítsa be **tartalma gyűjtőhöz** való **üres**
    * Változás **tanúsítvány-ellenőrzési** való **letiltva**
    * Változás **tömörítési mód** való **None**  
-   * Kattintson a **Tovább** gombra.
+   * Kattintson a **tovább**.
    * A tároló nevét adja meg a negyedik oldal az **gyűjtőbe neve** , *tárfiók_neve*/*container_name*.
    * Beállíthatja **titkosítási típus** való **None**.  Az Azure Storage alapértelmezés szerint titkosítva van.
    * Kattintson a **Filer hozzáadása**.
 
-  Részletes információkat, olvassa el a [hozzáadása egy új felhőalapú core filer](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>) a fürt konfiguráció Avere útmutatóban. 
+  Részletes információkat, olvassa el a [hozzáadása egy új felhőalapú core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) a fürt konfiguráció Avere útmutatóban. 
 
 Az oldal frissül, vagy frissítheti a lap az új core filer megjelenítéséhez.
 
@@ -168,7 +168,7 @@ A szinkronizációs pont egy elérési utat hoz létre az ügyfelek számára. A
 
 Hozzon létre például `/avere/files` leképezése a NetApp core filer `/vol0/data` exportálása és a `/project/resources` alkönyvtárat.
 
-További információ a elhelyezni pontokra megtalálható a [Avere fürt konfigurációs útmutató névtér szakasza](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html).
+További információ a elhelyezni pontokra megtalálható a [Avere fürt konfigurációs útmutató névtér szakasza](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 Kövesse az alábbi lépéseket a Avere Vezérlőpult-beállítások felületen:
 
@@ -176,7 +176,7 @@ Kövesse az alábbi lépéseket a Avere Vezérlőpult-beállítások felületen:
 * Adjon meg egy névtér elérési út kezdetű / (perjel), például ``/avere/data``.
 * Válassza ki a core filer.
 * Válassza ki az alapvető filer exportálás.
-* Kattintson a **Tovább** gombra.
+* Kattintson a **tovább**.
 
   ![A szinkronizációs pont, a core filer és az exportálás befejeződött mezőkkel "Új szinkronizációs pont hozzáadása" oldalát bemutató képernyőkép](media/avere-vfxt-add-junction.png)
 

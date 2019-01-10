@@ -10,12 +10,12 @@ ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 07f77a8390edcde1128a7381a54d622611637d78
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118302"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188896"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -278,7 +278,7 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
    > [!IMPORTANT]  
    > Kell használnia az AD FS beépülő MMC-modulban a Kiállításengedélyezési szabályok konfigurálása a Windows Server 2012 vagy 2012 R2 AD FS használata esetén.
 
-4. Azure Stack eléréséhez használt Internet Explorer vagy a Microsoft Edge böngészőt, amikor token kötések, kell figyelmen kívül. Ellenkező esetben a bejelentkezési kísérlet sikertelen. Az AD FS-példány vagy farm tagja futtassa a következő parancsot:
+4. Használatakor az Internet Explorer vagy a Microsoft Edge böngésző el az Azure Stack, jogkivonat-kötések kell figyelmen kívül. Ellenkező esetben a bejelentkezési kísérlet sikertelen. Az AD FS-példány vagy farm tagja futtassa a következő parancsot:
 
    > [!note]  
    > Ez a lépés nem alkalmazható, ha a Windows Server 2012 vagy 2012 R2 AD FS használatával. Hagyja ki ezt a parancsot, és folytassa az integráció biztonságos legyen.

@@ -4,7 +4,7 @@ description: Percek alatt üzembe helyezheti első Hello World Node.js-alkalmaz�
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/07/2017
+ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c739aa4fb510bd5ebe9e3ffff67f93a2dd49cf0c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b3c57a9a8912f44dbe7e9261549d034e99356547
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631532"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190578"
 ---
 # <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Node.js-alkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -37,22 +37,6 @@ Ezt a rövid útmutatót a Cloud Shellben végezzük el, a parancsok azonban hel
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-web-app-extension-for-cloud-shell"></a>A Cloud Shell webalkalmazás-bővítményének telepítése
-
-A rövid útmutató elvégzéséhez az [az web app extension](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) hozzáadása szükséges. Ha a bővítmény már telepítve van, frissítse a legújabb verzióra. A webalkalmazás-bővítmény frissítéséhez írja be az `az extension update -n webapp` parancsot.
-
-A webalkalmazás-bővítmény telepítéséhez futtassa az alábbi parancsot:
-
-```bash
-az extension add -n webapp
-```
-
-A bővítmény telepítése után a Cloud Shell az alábbi példához hasonló információkat jelenít meg:
-
-```bash
-The installed extension 'webapp' is in preview.
-```
 
 ## <a name="download-the-sample"></a>A minta letöltése
 

@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 6750276cf31d0c804b38cdf3ea6e41a4505c93f1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971818"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187417"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
 
 HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vagy válasz további információkat. Ezek HTTP fejlécek segít, például a biztonsági fejléc számos fontos forgatókönyv újraírását mezők, például HSTS / X-XSS-védelmet, vagy válasz üzenetfejlécének mezői eltávolítása, amely felfedhet bizalmas adatokat, például a háttér-kiszolgáló nevét.
 
-Az Application Gateway mostantól támogatja a bejövő HTTP-kéréseket, valamint a kimenő HTTP-válaszok fejlécek újraírási képessége. Lesz hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek, amíg a kérelem/válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Módosíthatja is a standard (meghatározott [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) valamint a nem szabványos üzenetfejlécének mezői.
+Az Application Gateway mostantól támogatja a bejövő HTTP-kéréseket, valamint a kimenő HTTP-válaszok fejlécek újraírási képessége. Lesz hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek, amíg a kérelem/válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Mind a standard szintű, valamint az olyan nem szabványos üzenetfejlécének mezői is újraírása.
 
 > [!NOTE] 
 >
@@ -84,7 +84,11 @@ Módosíthatja a fejlécek értékét:
 
 - A fenti kombinációját.
 
-A kiszolgáló a fent említett értékek a változókat, amelyek a kiszolgálókkal kapcsolatos információkat, a kapcsolat az ügyfél és a kapcsolat a jelenlegi kérelem. Ez a funkció a következő kiszolgálói változó átírása fejlécek támogatja:
+## <a name="server-variables"></a>Kiszolgálói változók
+
+Kiszolgálói változók hasznos információkat tárolja egy webkiszolgálón. Ezeket a változókat a kiszolgáló, a kapcsolat az ügyfél és az aktuális kérelem információt nyújtanak a kapcsolaton, például az ügyfél IP-cím vagy webes böngésző típusa. Dinamikusan módosulnak, például egy új oldal betöltésekor, vagy az űrlap közzétételekor.  A változók a próbafelhasználók állíthatók be kérelemfejlécek, valamint a válaszfejlécek. 
+
+Ez a funkció a következő kiszolgálói változó átírása fejlécek támogatja:
 
 | Támogatott kiszolgálói változók | Leírás                                                  |
 | -------------------------- | :----------------------------------------------------------- |
@@ -100,7 +104,7 @@ A kiszolgáló a fent említett értékek a változókat, amelyek a kiszolgáló
 | http_status                | munkamenet-állapot, például: 200-as, 400, 403-as stb.                       |
 | http_version               | kérelem protokoll, általában "HTTP 1.0", "HTTP/1.1" vagy "HTTP és 2.0-s" |
 | QUERY_STRING               | a lista a változó értékének párok olvashat a "?" a kért URL-címben. |
-| received_byte              | kérés hossza (beleértve a kérelem-sor, a fejlécet és a kérelem törzsében) |
+| received_bytes             | kérés hossza (beleértve a kérelem-sor, a fejlécet és a kérelem törzsében) |
 | request_query              | a kérelem-sor argumentumai                                |
 | request_scheme             | kérelem séma, "http" vagy "https"                            |
 | request_uri                | teljes eredeti kérelem URI-t (argumentumok)                   |

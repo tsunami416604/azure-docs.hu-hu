@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9bf445b54ab6ac2d3edf53fcc4bbcc39ee475a81
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119101"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189496"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -245,14 +245,14 @@ Esemény nyomkövetése for Windows gyűjteni, tegye a következőket:
 2. Nyomja le az F12 billentyűt a fejlesztői eszközök elindítása. Ha szükséges, törölje a jelet a beállítás **navigációs bejegyzések törlése**.
 3. Kattintson a **hálózati** lapra, és indítsa el a hálózati forgalom rögzítése:
  - Válassza ki a Chrome-ban, **Preserve log**. A rögzítés automatikusan elindul. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha nem jelenik meg, kattintson a fekete körre indítása
- - Az Edge/IE rögzítés automatikusan elindul. Ha nem, kattintson a zöld lejátszás gombra.
+ - A Microsoft Edge/IE, a rögzítés automatikusan elindul. Ha nem, kattintson a zöld lejátszás gombra.
 4. Próbálja meg reprodukálni a hibát.
 5. Korábban észlelt rögzítése közben a hiba, miután Rögzítés leállítása, és mentse a rögzített tevékenység másolatát:
  - A Chrome-ban, kattintson a jobb gombbal, és kattintson a **Mentés másként HAR tartalommal**. Ez zips alkalmazást, és exportálja a naplók .har fájl.
- - Az Edge/IE, kattintson a **exportálási rögzített forgalom** ikonra. Ez tömörít, és exportálja a naplót.
+ - A Microsoft Edge/IE, kattintson a **exportálási rögzített forgalom** ikonra. Ez tömörít, és exportálja a naplót.
 6. Keresse meg a **konzol** lapot, és ellenőrizze az összes figyelmeztetést és hibát. A konzol naplófájljának mentése:
  - A Chrome-ban kattintson a jobb gombbal bárhol a konzol naplóban. Válassza ki **Mentés másként**, hogy az exportálás és a napló zip.
- - Az Edge/IE, kattintson a jobb gombbal a hibákat, és válassza **másolhatja az összes**.
+ - A Microsoft Edge/IE, kattintson a jobb gombbal a hibákat, és válassza **másolhatja az összes**.
 7. Zárja be a fejlesztői eszközöket.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Gyűjtő hibakódok és ajánlott műveletek

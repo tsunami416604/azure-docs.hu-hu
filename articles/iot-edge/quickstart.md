@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2295ed6d3d1b22d70f95d0c9ac4542b59c7ddc09
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e0ad51bd2370cd8b7569d76e5d91b606928eea6d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972090"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189354"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors útmutató: Az első IoT Edge-modul az Azure Portalon, egy Windows-eszköz üzembe helyezése – előzetes verzió
 
@@ -113,7 +113,7 @@ IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök f
 Telepítse az Azure IoT Edge-futtatókörnyezetet az IoT Edge-eszközön, és a konfigurálást eszközkapcsolati sztring használatával végezze el.
 ![Diagram - indítása a futtatókörnyezet az eszközön](./media/quickstart/start-runtime.png)
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A **IoT Edge biztonsági démon** minden alkalommal, amikor egy IoT Edge-eszköz indul el, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával kezdődik. A **IoT Edge-ügynök** kezeli a központi telepítési és a modulok IoT Edge-eszközön, beleértve az IoT Edge hubot a figyelését. A **IoT Edge hubot** modulok az IoT Edge-eszköz között, és az eszköz és az IoT Hub közötti kommunikációt kezeli.
 
 A telepítési parancsfájlt is tartalmaz, amely kezeli a tárolórendszerképeket az IoT Edge-eszközön Moby nevű container-motor. 
 
@@ -175,14 +175,16 @@ Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben ü
 
 ## <a name="deploy-a-module"></a>Modul üzembe helyezése
 
-Azure IoT Edge-eszközeit kezelheti a felhőből, és üzembe helyezhet egy olyan modult, amely telemetriaadatokat küld az IoT Hubra.
+Az Azure IoT Edge-eszköz felügyelete a felhőből, üzembe helyezéséhez a modul, amely telemetriai adatokat küld az IoT hubnak.
 ![Diagram - eszközre a felhőből modul üzembe helyezése](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és telepítette rajta az IoT Edge-futtatókörnyezetet. Ezután az Azure Portal segítségével úgy futtatta az IoT Edge-modult az eszközön, hogy magát az eszközt nem kellett módosítania. Ebben az esetben az Ön által továbbított modul az oktatóanyagokhoz használható környezeti adatokat hoz létre.
+Ebben a rövid útmutatóban IoT Edge-eszköz regisztrálása, és az IoT Edge-futtatókörnyezet telepíthető. Az Azure Portalon, majd az eszköz maga az eszköz módosításához nélkül futtathat egy IoT Edge-modul telepítéséhez használt. 
+
+Ebben az esetben a modul, amely a leküldött teszteléshez használható mintaadatokat hoz létre. A szimulált hőmérsékleti érzékelő modul újabb teszteléséhez használható környezeti adatok állít elő. A szimulált érzékelő által figyelt, a gép körül a környezet és a egy gép. Az érzékelő Előfordulhat például, egy kiszolgáló szobában, egy gyárban, vagy egy szélturbina sürgősségi. Az üzenet tartalmazza a környezeti hőmérséklet és páratartalom, gép hőmérséklet és nyomás és a egy időbélyegző. Az IoT Edge-oktatóanyagok a Tesztadatok elemzéshez, a modul által létrehozott adatokat használja.
 
 Győződjön meg arról, hogy a felhőből üzembe helyezett modul fut az IoT Edge-eszközön.
 
@@ -204,6 +206,7 @@ iotedge logs SimulatedTemperatureSensor -f
    ![A modulból származó adatok megtekintése](./media/quickstart/iotedge-logs.png)
 
 Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a [Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT-eszközkészlet bővítmény). 
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -230,26 +233,9 @@ Távolítsa el az IoT Edge-futtatókörnyezetet. Ha az IoT Edge újratelepítés
    Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
    ```
 
-Ha eltávolította az IoT Edge-futtatókörnyezetet, az általa létrehozott tárolók leállnak, de továbbra is ott lesznek az eszközön. Tekintse meg az összes tárolót.
-
-   ```powershell
-   docker -H npipe:////./pipe/iotedge_moby_engine ps -a
-   ```
-
-   >[!TIP]
-   >A **-H** (gazdagép) jelzőt a docker-parancsokat a mutasson a moby motor, amely az IoT Edge-futtatókörnyezettel együtt lett telepítve. Ugyanazon a gépen a docker és a moby használatakor, a gazdagép jelző lehetővé teszi, hogy adjon meg egy adott parancs használata a motor. Ha csak szeretné használni a moby, beállíthatja a **DOCKER_HOST** környezeti változót, hogy npipe:///./pipe/iotedge_moby_engine mutasson.
-
-Törölje azokat a tárolókat, amelyeket az IoT Edge-futtatókörnyezet hozott létre az eszközén. 
-
-   ```powershell
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f SimulatedTemperatureSensor
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeHub
-   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeAgent
-   ```
-   
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és az Azure IoT Edge felhőalapú felülettel kódot telepített az eszközre. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
+Ebben a rövid útmutatóban létrehozott egy IoT Edge-eszközön, és az eszközre kód üzembe helyezése az Azure IoT Edge felhőalapú interfésze használt. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 
 Továbbléphet bármely másik oktatóanyagra, és megtudhatja, hogyan alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 

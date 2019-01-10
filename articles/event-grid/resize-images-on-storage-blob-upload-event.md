@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 7c3a37ede07f98174191c8a4847c8a3d9075b21a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 4d35ab9df17055b798207aafd0e0bdf3b17426fb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156306"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188470"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag a Storage oktatóanyag-sorozat második része. Kibővíti az
 
 Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési funkciót egy meglévő képfeltöltő alkalmazáshoz.
 
-![Közzétett webalkalmazás a Microsoft Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Közzétett webalkalmazás az Microsoft Edge böngésző](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -183,7 +183,7 @@ Kattintson a **Fényképek feltöltése** területre egy fájl kiválasztásáho
 
 Figyelje meg, hogy miután a feltöltött kép eltűnik, a feltöltött kép másolata megjelenik a **Létrehozott miniatűrök** nevű forgó képválasztón. A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
 
-![Közzétett webalkalmazás a Microsoft Edge böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Közzétett webalkalmazás az Microsoft Edge böngésző](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>További lépések
 

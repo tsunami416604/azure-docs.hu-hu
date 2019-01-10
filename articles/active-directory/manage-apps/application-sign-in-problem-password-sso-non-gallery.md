@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ef981686143299b41960e81cf827459493c868f6
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ca41f209cab6d2f8d3b4930d3a464fb6a9421132
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357341"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191853"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>A jelszavas egyszeri bejelentkezésre beállított, az Azure AD katalógusából származó alkalmazásba történő bejelentkezésnél
 
@@ -41,7 +41,7 @@ A jelszóalapú egyszeri bejelentkezés a végfelhasználó böngészők lehet:
 -   A Firefox 26.0 vagy később – a Windows XP SP2 vagy újabb, és a Mac OS X 10,6 vagy újabb
 
 >[!NOTE]
->A jelszóalapú egyszeri bejelentkezés bővítményt az Edge-hez a Windows 10-ben elérhetővé válnak böngészőbővítmények lesz támogatott az Edge-hez.
+>A jelszóalapú egyszeri bejelentkezés bővítmény a Microsoft Edge a Windows 10-ben elérhetővé válnak böngészőbővítmények a Microsoft Edge válnak támogatottá.
 >
 >
 
@@ -77,7 +77,7 @@ Az Előfeltételek a következők:
 
 -   Beállított [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és a felhasználók gépek csatlakozott a tartományhoz.
 
--   A csoportházirend-objektumot (GPO) szerkesztését a "Beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai ezzel az engedéllyel rendelkeznek: a tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [További információk](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   A csoportházirend-objektumot (GPO) szerkesztését a "Beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek a ezt az engedélyt: A tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [További információk](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
 Az oktatóanyag [a hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) részletes útmutatást a csoportházirend konfigurálásához és üzembe helyezéséhez, a felhasználók számára.
 
@@ -171,7 +171,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+12. **Nem kötelező:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
 13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 

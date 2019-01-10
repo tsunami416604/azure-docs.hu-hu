@@ -5,17 +5,17 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a492085984eba165bc7cfc5839fa4e1705e823c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78b309336b21c3b6a58a37b1729f675db111c5d0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001646"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190544"
 ---
-# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag: Mintamodell hozzáadása a portálról
 
 Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modelladatbázist adhat hozzá kiszolgálójához. A mintamodell az Adventure Works Internet Sales (1200) minta-adatmodell kiegészített változata. A mintamodellek a modellkezelés, az eszközökhöz és ügyfélalkalmazásokhoz való kapcsolódás és a modelladatok lekérdezése tesztelésekor hasznosak. Ez az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
@@ -74,6 +74,6 @@ Egy modell a következő lépések alapján törölhető egy kiszolgálóról az
 Ebben az oktatóanyagban azt tanulhatta meg, hogyan adhat hozzá egyszerű mintamodellt kiszolgálójához. Most, hogy már rendelkezik modelladatbázissal, csatlakozhat hozzá az SQL Server Management Studióból, és hozzáadhat felhasználói szerepköröket. További tudnivalókat talál a következő oktatóanyagban.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása](analysis-services-database-users.md)
+> [Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása](analysis-services-database-users.md)
 
 

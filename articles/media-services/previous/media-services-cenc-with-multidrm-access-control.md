@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: c94c88aa088745a2ed421bff43c8d87382564a43
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c19b43f652b490ceb86606633f543f4e455b6116
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141475"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189303"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>A hozzáférés-vezérlés az Azure Media Services content protection rendszer tervezése
 
@@ -60,7 +60,7 @@ Az alábbi táblázat foglalja össze a natív platform-/ natív alkalmazás és
 | **Ügyfélplatform** | **Natív digitális Jogkezelés támogatása** | **Böngésző-és alkalmazástelepítés** | **Adatfolyam-továbbítási formátumokba** |
 | --- | --- | --- | --- |
 | **Okostévére operátor vezérléséhez, OTT vezérléséhez** |A PlayReady, elsősorban és/vagy Widevine és/vagy egyéb |Linux rendszerű, Opera, a WebKit, egyéb |Különböző formátumok |
-| **Windows 10 rendszerű eszközökhöz (Windows-számítógép, Windows rendszerű táblagépek, Windows Phone, Xbox)** |PlayReady |MS Edge/IE11/EME<br/><br/><br/>Univerzális Windows-platform |DASH (HLS, a PlayReady nem támogatott)<br/><br/>DASH, Smooth Streaming (HLS, a PlayReady nem támogatott) |
+| **Windows 10 rendszerű eszközökhöz (Windows-számítógép, Windows rendszerű táblagépek, Windows Phone, Xbox)** |PlayReady |A Microsoft Edge/IE11/EME<br/><br/><br/>Univerzális Windows-platform |DASH (HLS, a PlayReady nem támogatott)<br/><br/>DASH, Smooth Streaming (HLS, a PlayReady nem támogatott) |
 | **Android-eszközök (telefonon, táblagépen, TV)** |Widevine |Chrome/EME |DASH, HLS |
 | **iOS (iPhone és iPad), OS X-ügyfelek és az Apple TV** |FairPlay |Safari 8 +/ EME |HLS |
 
@@ -130,11 +130,11 @@ Miért fontosak ezeket a szempontokat?
 
 Ha licencekkel történő kézbesítés használ a nyilvános felhő, állandó és nem állandó licencek közvetlen hatást license delivery költséget. A következő két különböző kialakítási esetben műveletek mutatja be:
 
-* Havi előfizetés: állandó licenc és 1-a-többhöz tartalom kulcs eszköz hozzárendelést. Például a gyermekek filmekhez, használjuk egy egyetlen titkosítási tartalomkulcsot. Ebben az esetben:
+* Havi előfizetés: Használjon egy állandó licenc és az 1-a-többhöz tartalom kulcs eszköz hozzárendelést. Például a gyermekek filmekhez, használjuk egy egyetlen titkosítási tartalomkulcsot. Ebben az esetben:
 
     Lekéri az összes gyerek filmek/eszköz licencek teljes száma = 1
 
-* Havi előfizetés: nonpersistent licenc és az 1-1 leképezés tartalomkulcs és eszköz közötti. Ebben az esetben:
+* Havi előfizetés: Használja a nonpersistent licenc és 1-1 leképezés tartalomkulcs és eszköz közötti. Ebben az esetben:
 
     Lekéri az összes gyerek filmek/eszköz licencek teljes száma = [nézte filmek száma] x [munkamenetek száma]
 
@@ -335,7 +335,7 @@ Regisztrálta és konfigurálta az egérmutatót alkalmazást az Azure ad-ben, a
 
 2. Adjon hozzá egy új kulcsot az erőforrás-alkalmazás számára.
 
-3. Az alkalmazás-jegyzékfájl frissítése, hogy groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
+3. Az alkalmazás-jegyzékfájl frissítése, így groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
 
 4. Az Azure AD-alkalmazás, amely a lejátszó web app, a szakaszban szereplő **egyéb alkalmazások engedélyei**, adja hozzá az erőforrás-alkalmazás, amely az 1. lépésben lett hozzáadva. A **delegált engedély**válassza **hozzáférés [resource_name]**. Ez a beállítás hozzáférést biztosít a webes alkalmazás létrehozásához szükséges engedéllyel hozzáférési jogkivonatok, amelyek az erőforrás-alkalmazás elérésére. Erre a webalkalmazás helyi és a telepített verziójához, ha a Visual Studio és az Azure-webalkalmazás fejlesztése.
 
@@ -367,13 +367,13 @@ Egy egyéni STS használata esetén két módosításokat kell végrehajtani:
 
 Biztonsági kulcsok két típusa van:
 
-* Szimmetrikus kulcs: ugyanazt a kulcsot létrehozni, és ellenőrizheti a jwt-t használja.
-* Aszimmetrikus kulcs: egy nyilvános-titkos kulcspárt egy X509 a tanúsítványt használja, a titkos kulcs titkosításához/készítése a jwt-t és ellenőrizni a jogkivonatot a nyilvános kulccsal.
+* Szimmetrikus kulcs: Ugyanazt a kulcsot létrehozni, és ellenőrizheti a jwt-t használja.
+* Az aszimmetrikus kulcs: Egy nyilvános-titkos kulcspárt egy X509 a tanúsítványt használja, a titkos kulcs titkosításához/készítése a jwt-t és ellenőrizni a jogkivonatot a nyilvános kulccsal.
 
 > [!NOTE]
 > Ha .NET-keretrendszer / C#, a fejlesztési platform, a X509 az aszimmetrikus kulcs használt tanúsítványnak rendelkeznie kell legalább 2048 bites kulcshosszt használ. Ez az osztály a .NET-keretrendszer System.IdentityModel.Tokens.X509AsymmetricSecurityKey mindenképpen szükséges. Ellenkező esetben a következő kivétel történt:
 > 
-> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" aláíráshoz nem lehet kisebb, mint "2048" bits.
+> IDX10630: Az aláíráshoz "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" nem lehet kisebb, mint "2048" bits.
 
 ## <a name="the-completed-system-and-test"></a>A befejezett rendszer és a teszt
 Ez a szakasz végigvezeti a következő esetekben a befejezett rendszerben teljes körű, hogy viselkedésének általános képet előtt megjelenik egy bejelentkezési fiókot használhat:
@@ -407,7 +407,7 @@ Egy fiók létrehozásakor vagy hozzáadva, hogy a szerzők bármelyikét fordul
 
 Az alábbi képernyőfelvételnek megfelelően eltérő bejelentkezési lapok ugyanaz a tartományi fiókok által használt megjelenítése:
 
-**Egyéni Azure AD-bérlő tartományi fiók**: A testreszabott bejelentkezési oldala, az egyéni Azure AD-bérlői tartomány.
+**Egyéni Azure AD-bérlő tartományi fiók**: A testre szabott bejelentkezési oldala, az egyéni Azure AD bérlői tartomány.
 
 ![Egyéni Azure AD-bérlő tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
@@ -415,7 +415,7 @@ Az alábbi képernyőfelvételnek megfelelően eltérő bejelentkezési lapok ug
 
 ![Egyéni Azure AD-bérlő tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-fiók**: a fogyasztók számára a Microsoft-fiók bejelentkezési oldalán.
+**Microsoft-fiók**: A bejelentkezési oldal a Microsoft-fiók a fogyasztók számára.
 
 ![Egyéni Azure AD-bérlő tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 

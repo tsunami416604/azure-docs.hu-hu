@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/7/2018
+ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: afaa5ae622f962dcffec52dbdbea8a754ba260ab
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025385"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188494"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -76,17 +76,17 @@ A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcso
 
 ![A UX szerzői kód tárház beállításainak konfigurálása](media/author-visually/configure-repo-2.png)
 
-## <a name="use-a-different-azure-active-directory-tenant"></a>Egy másik Azure Active Directory-bérlő használata
+### <a name="use-a-different-azure-active-directory-tenant"></a>Egy másik Azure Active Directory-bérlő használata
 
 Létrehozhat egy Azure-Adattárakkal Git-tárház egy másik Azure Active Directory-bérlőben található. Egy másik Azure AD-bérlővel, rendelkeznie kell Azure-előfizetést használ, rendszergazdai jogosultságokkal.
 
-## <a name="use-your-personal-microsoft-account"></a>Személyes Microsoft-fiókjával
+### <a name="use-your-personal-microsoft-account"></a>Személyes Microsoft-fiókjával
 
 Személyes Microsoft-fiókkal használandó Git-integrációval, kapcsolat a személyes Azure tárházban a szervezet Active Directory.
 
 1. A személyes Microsoft-fiók hozzáadása a szervezet Active Directory vendégként. További információ: [hozzáadása az Azure Active Directory B2B együttműködési felhasználókat az Azure Portalon](../active-directory/b2b/add-users-administrator.md).
 
-2. Jelentkezzen be az Azure Portalra, a személyes Microsoft-fiókjával. Ezután váltson a szervezet Active Directory.
+2. Jelentkezzen be az Azure Portalon, a személyes Microsoft-fiókjával. Ezután váltson a szervezet Active Directory.
 
 3. Nyissa meg az Azure DevOps szakaszhoz, ahol most már láthatók a személyes tárházban. Válassza ki a tárházat, és az Active Directory connect.
 
@@ -94,7 +94,7 @@ Ezeket a konfigurációs lépéseket a személyes tárházban érhető el a Data
 
 További információ a szervezet Active Directory Azure-Adattárakkal való csatlakozással kapcsolatban lásd: [Azure DevOps-szervezet csatlakozhat az Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
-## <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
+### <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
 
 Váltson át egy másik Git-adattár, keresse meg a ikonra a Data Factory – Áttekintés lap jobb felső sarokban az alábbi képernyőképen látható módon. Ha nem látja a ikonra, törölje a helyi böngésző gyorsítótárát. Válassza ki a ikonra kattintva távolítsa el az aktuális tárház a hozzárendelését.
 
@@ -102,7 +102,7 @@ Miután eltávolítja a társítást az aktuális tárház, konfigurálhatja a G
 
 ![Távolítsa el a hozzárendelését az aktuális Git-adattár](media/author-visually/remove-repo.png)
 
-## <a name="use-version-control"></a>Használja a verziókövetés
+### <a name="use-version-control"></a>Használja a verziókövetés
 Verziókövető rendszereket (más néven _verziókövetés_) lehetővé teszik a fejlesztőknek, kód és nyomon követésére helyadatbázisokban végrehajtott módosításokat a kód alap másokkal közös használatához. Verziókövetés fontos több fejlesztési projektek eszközzel.
 
 Minden egyes Azure-Adattárakkal Git-tárházba az adat-előállító társított együttműködési ág rendelkezik. (`master` alapértelmezett együttműködési ág). Felhasználók is létrehozhat a szolgáltatás ágak kattintva **+ új ág** és végezze el a szolgáltatás ágak fejlesztés.
@@ -113,7 +113,7 @@ Amikor készen áll a funkció fejlesztéséhez a szolgáltatás ágban, kattint
 
 ![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
 
-## <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
+### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
 A publish - ág konfigurálása, a Resource Manager-sablonok tároló - ág hozzáadása egy `publish_config.json` fájlt az együttműködés ág gyökérmappájába. A Data Factory beolvassa ezt a fájlt, a mező keres `publishBranch`, és (Ha még nem létezik) létrehoz egy új ágat a megadott érték. Az összes Resource Manager-sablonok majd a megadott helyre írja. Példa:
 
@@ -131,13 +131,39 @@ Közzététel felkínálásával új ág megadása esetén a Data Factory nem t�
 
 A Data Factory csak olvassa be a `publish_config.json` fájlt, amikor betölti az előállító. Ha már rendelkezik az előállító, a portál betöltése, frissítse a böngészőben, hogy a módosítások érvénybe léptetéséhez.
 
-## <a name="publish-code-changes"></a>Kód módosítások közzététele
+### <a name="publish-code-changes"></a>Kód módosítások közzététele
 Rendelkezik sikeresen összevonta a együttműködési ág módosításai után (`master` az alapértelmezett beállítás), jelölje be **közzététel** , manuálisan tegye közzé a kódmódosításokat a főágban, a Data Factory szolgáltatásban.
 
 ![Módosítások mentése a Data Factory szolgáltatásban](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > Nem áll a Data Factory szolgáltatásban üzembe helyezett képviselő a master ággal. A főág *kell* manuálisan tehetők közzé a Data Factory szolgáltatásban.
+
+### <a name="advantages-of-git-integration"></a>Git-integráció előnyei
+
+-   **Verziókövetés**. A data factory számítási feladatok egyre rendkívül fontos, szeretné integrálni szeretné a gyári git használatával kihasználhatja az olyan forrás vezérlő előnyöket a következőhöz hasonló:
+    -   Változások követése/naplózási képesség.
+    -   Lehetővé teszi a hibák bevezetett módosítások visszaállítása.
+-   **Részleges menti**. Változtatással egy időben sok módosítást az előállító, akkor lesz vegye figyelembe, hogy a normál élő módban nem lehet a módosítások mentése vázlatként, mert nem áll készen, vagy Ön nem szeretné elveszteni a módosításokat, abban az esetben, ha a számítógép összeomlik. A Git-integrációval továbbra is a módosítások mentése növekményes, és csak akkor, amikor készen áll az előállító közzététele. Git a munkáját, egy átmeneti helyen funkcionál, amíg nem ellenőrizte a módosításokat az megfelelően.
+-   **Együttműködés és a vezérlő**. Ha több csoport tagjai azonos factoryhoz résztvevő, szüksége lehet ahhoz, hogy a csapattársai együtt tudjanak működni egymással a kódvizsgálati folyamattal keresztül. Akkor is állíthatja az előállító úgy, hogy nem minden közreműködő factoryhoz van engedélye az előállító üzembe helyezése. Csapat tagjai csak a módosításokat a Git használatával engedélyezni, de csak bizonyos személyeknek a csapat "Közzététel" számára engedélyezett a módosítások az előállító.
+-   **Eltérések megjelenítő**. A Git módban egy nagyszerű diff a tartalom, amely arra készül, hogy kap, a gyári közzé. A diff látható összes erőforrások vagy entitás, amely rendelkezik a módosított/hozzáadni vagy törölni az előállító közzétett legutóbbi indítása óta. A diff alapján, vagy továbbra is a további közzétételi, vagy lépjen vissza és a módosítások ellenőrzése, majd térjen vissza később.
+-   **CI/CD jobb**. Ha Git módot használ, konfigurálhatja a kibocsátási folyamat nem annyi fejlesztési előállító végzett módosítások automatikusan indítható. Érhet el az előállító, a Resource Manager-sablonban szereplő paraméterekkel rendelkezésre álló tulajdonságok személyre szabásához. Csak a szükséges tulajdonságkészlettel paraméterekként tartani, és minden más esetben nehéz kódolt hasznos lehet.
+-   **Jobb teljesítmény**. Egy átlagos gyári betölti a 10 x alkalommal gyorsabb Git módban, mint a rendszeres élő módban, mert az erőforrásokat a Git használatával letöltődnek.
+
+### <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a Git-integráció
+
+-   **Engedélyek**. Általában nem szeretné frissíteni az előállító engedélyeket is biztosítani csapattagok.
+    -   Az összes csoport tagjai kell Olvasás engedéllyel rendelkezik az adat-előállítóban.
+    -   Személyek csak egy kiválasztott csoportja factoryhoz és az, hogy a "Data Factory-közreműködő" szerepkört az adat-előállítóval részeként kell közzé kell tenni.
+    -   A bevált gyakorlatok a forrás-vezérlő egyik is teszi lehetővé az együttműködést ággal való közvetlen-ellenőrzéshez. Ez a követelmény megakadályozza, hogy a hibák, minden egyes halad végig egy Pull-kérési folyamat.
+-   **Váltás az üzemmódok**.
+    -    Miután a Git módban van, nem ajánlott oda-vissza élő üzemmódba válthat elsősorban, mert az nem látható az élő módban végzett módosításokat mikor váltson vissza a Git. Próbálja meg magát a Git módban hajtsa végre a módosításokat, és tegye közzé őket a felhasználói felületen keresztül.
+    -   Hasonlóképpen ne használjon Data factory powershell-parancsmagok vagy, ugyanezt a hatást által közvetlenül a megadott módosítások alkalmazása az élő előállítóval érnek.
+-   **Használja az Azure Key vault jelszavak**.
+    -   Javasoljuk, hogy bármely kapcsolati karakterláncok vagy a DataFactory társított szolgáltatások jelszavak tárolása azurekeyvault értékre van használatával.
+    -   Nem tároljuk bármely ilyen titkos információk git (biztonsági okokból), így minden társított szolgáltatások módosításai azonnal közzétett élő factoryhoz. Ez azonnali közzététele néha nem megfelelő, mivel előfordulhat, hogy a módosítások nem közben teszteltük, amely defeats Git célját.
+    -   Ennek eredményeképpen az összes ilyen titkos adatokat kell beolvasni társított szolgáltatásokat, amelyek használják az Azure Key Vault-alapú.
+    -   A Key vault, a többi előnyöket nyújtja az, hogy ez megkönnyíti a CI/CD, azáltal, hogy nem, adja meg titkos adatokat során a Resource Manager sablon telepítése.
 
 ## <a name="author-with-github-integration"></a>Felügyeleti csomagok készítése a GitHub-integráció
 

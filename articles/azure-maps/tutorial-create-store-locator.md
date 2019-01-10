@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6a9b8e25b8c64d39606ee5c2582098839e349630
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317908"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189762"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
 
@@ -109,7 +109,7 @@ A projekt létrehozásához használhatja [Visual Studio](https://visualstudio.m
 
 A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
 
-1. Adja hozzá a következő `meta` -címkék a `head` , *index.html*. A címkék meghatározása a karakterkészletet (UTF-8), ossza meg az Internet Explorer és az Edge, a böngésző legújabb verziókat használhatja, és adja meg a nézőpont, amely jól működik a rugalmas elrendezés.
+1. Adja hozzá a következő `meta` -címkék a `head` , *index.html*. A címkék megadása a karakterkészletet (UTF-8), ossza meg az Internet Explorer és a Microsoft Edge böngésző legújabb használandó, és adja meg a nézőpont, amely jól működik a rugalmas elrendezés.
 
     ```HTML
     <meta charset="utf-8" /> 

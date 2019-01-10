@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 83b3a271006df38744b9de49ed6350bea3aeef4d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159383"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191700"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Az Azure Data Box-lemezek hibáinak elhárítása
 
@@ -86,7 +86,76 @@ A tevékenységnaplók 90 napon keresztül érhetők el. Bármilyen dátumtartom
 |[Információ] A célfájl vagy -könyvtár neve túllépte az NTFS fájlrendszerre érvényes hosszkorlátot. |Ezt az üzenetet akkor kapja, ha át kellett nevezni a célfájlt, mert túl hosszú volt a fájl elérési útja.<br> Ezt a viselkedést a `config.json` fájl diszponálási beállításánál módosíthatja.|
 |[Hiba] Kivétel lépett fel: Hibás JSON escape-szekvencia. |Ezt az üzenetet akkor kapja, ha a config.json fájl érvénytelen formátumot használ. <br> A fájl mentése előtt ellenőrizze a `config.json` fájlt a [JSONlint](https://jsonlint.com/) eszközzel.|
 
+## <a name="deployment-issues-for-linux"></a>Üzembe helyezési problémák Linux rendszeren
 
+Ebben a szakaszban egy Linux-ügyfél használata az adatok másolása a Data Box-lemezek üzembe helyezése során szembesülnek kapcsolatos leggyakoribb hibák némelyike részletezi.
+
+### <a name="issue-drive-getting-mounted-as-read-only"></a>Probléma: Írásvédett meghajtóként első csatlakoztatott meghajtó
+ 
+**OK** 
+
+Ezt okozhatja egy kernelverziója fájlrendszer. 
+
+- Data Box-lemezek egy meghajtó olvasottként szolgáltatással nem működik. Ez a forgatókönyv nem támogatott meghajtókkal dislocker visszafejteni. 
+- Olvasási és írási, szolgáltatással nem működik. Előfordulhat, hogy rendelkezik sikerült csatlakoztatni az eszköz a következő paranccsal: 
+
+    `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
+
+   Bár a szolgáltatással sikeres volt, az adatok nem megmaradnak.
+
+**Felbontás**
+
+Ha a fenti hibaüzenetet jelenik meg, próbálkozzon az alábbi megoldások valamelyikét:
+
+- Telepítse [ `ntfsfix` ](https://linux.die.net/man/8/ntfsfix) (elérhető `ntfsprogs` csomag), majd futtassa a megfelelő partíció ellen.
+
+- Ha rendelkezik hozzáféréssel a Windows rendszerhez
+
+    - Töltse be a meghajtón a Windows rendszer.
+    - Nyisson meg egy parancssort rendszergazdai jogosultságokkal. Futtatás `chkdsk` a köteten.
+    - Biztonságosan távolítsa el a kötetet, és próbálkozzon újra.
+ 
+### <a name="issue-error-with-data-not-persisting-after-copy"></a>Probléma: Hiba történt az adatok másolása után nem megőrzése
+ 
+**OK** 
+
+Ha látja, hogy a meghajtó nem rendelkezik adatokkal után, leválasztani (bár az adatok másolta azt), akkor lehetséges, csak olvasható a meghajtó csatlakoztatása után ismét csatolva legyen olvasási és írási egy meghajtón.
+
+**Felbontás**
+ 
+Ha ez a helyzet, nézzék meg a [írásvédett meghajtóként első csatlakoztatott meghajtók](#issue-drive-getting-mounted-as-read-only).
+
+Ha, amely nem volt a helyzet, [diagnosztikai naplók letöltéséhez](#download-diagnostic-logs) rendszerről és [forduljon a Microsoft Support](data-box-disk-contact-microsoft-support.md).
+
+## <a name="deployment-issues-for-windows"></a>Windows központi telepítési problémái
+
+Ez a szakasz részletesen a Data Box-lemezek üzembe helyezése során szembesülnek egy Linux-ügyfél használata az adatok másolása leggyakoribb problémák
+
+### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Probléma: A BitLocker meghajtó nem zárolásának feloldása.
+ 
+**OK** 
+
+A BitLocker párbeszédpanelen használta a jelszavát, és meghajtók párbeszédpanelen keresztül a Bitlockert a lemez zárolásának feloldásához próbál zárolásának feloldásához. Ez nem működik. 
+
+**Felbontás**
+
+A Data Box-lemezek zárolásának feloldásához meg kell a Data Box lemez zárolásának feloldásához eszközzel, és adja meg a jelszót az Azure Portalról.
+ 
+### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Probléma: Nem zárolásának feloldásához, vagy ellenőrizze az egyes kötetek. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
+ 
+**OK** 
+
+Előfordulhat, hogy tekintse meg a következő hiba történt a hibanapló, és nem, feloldhatja és ellenőrzése néhány kötet.
+
+`Exception System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.`
+ 
+Ez azt jelzi, hogy valószínűleg hiányzik a Windows PowerShell megfelelő verziója a Windows-ügyfélen.
+
+**Felbontás**
+
+Telepíthet [Windows PowerShell-v 5.0](https://www.microsoft.com/download/details.aspx?id=54616) , majd próbálja megismételni a műveletet.
+ 
+Ha továbbra sem tudja oldania a kötetek zárolását [forduljon a Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>További lépések
 

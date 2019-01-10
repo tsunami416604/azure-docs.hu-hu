@@ -1,5 +1,5 @@
 ---
-title: Az Azure Monitor (előzetes verzió) virtuális gépek naplóinak lekérdezése |} A Microsoft Docs
+title: Hogyan lekérdezés naplók az Azure Monitor-beli virtuális gépek (előzetes verzió) |} A Microsoft Docs
 description: Virtuális gépek megoldás az Azure Monitor továbbítja a metrikák és a naplóadatok a Log Analytics, és ez a cikk ismerteti a rekordokat, és mintalekérdezéseket tartalmaz.
 services: azure-monitor
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 676baa6947eaf8b3842b0100657f42a1e6438061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9e00dd9d05ff7339a6b5fd93e86bae61fbbf5ee
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184882"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188429"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
