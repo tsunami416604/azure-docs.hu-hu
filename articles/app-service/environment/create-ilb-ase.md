@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: edea614065d67bab23de29e5cef3b56c69905a90
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629883"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188609"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -188,7 +188,7 @@ Az ILB ASE támogatja a Functionst és a WebJobs-feladatokat is, de ahhoz, hogy 
 
 Az Azure Functions ILB ASE környezetben történő használatakor az alábbi hibaüzenet jelenhet meg: „Nem sikerült beolvasni a függvényeket. Próbálkozzon újra később.” Ez a hiba azért fordul elő, mert a Functions felhasználói felülete az SCM helyet használja a HTTPS helyett, és a főtanúsítványt nem tartalmazza a böngésző megbízhatósági lánca. A WebJobs-feladatok hasonló problémába ütköznek. A probléma elkerülése érdekében tegye a következők egyikét:
 
-- Vegye fel a tanúsítványt a megbízható tanúsítványok tárolójába. Ez megszünteti az Edge és az Internet Explorer blokkolását.
+- Vegye fel a tanúsítványt a megbízható tanúsítványok tárolójába. Ez feloldja a Microsoft Edge és az Internet Explorer.
 - A Chrome-ban először keresse fel az SCM helyet, fogadja el a nem megbízható tanúsítványt, majd menjen a portálra.
 - Használja böngészője megbízhatósági láncának egyik kereskedelmi tanúsítványát.  Ez a legjobb lehetőség.  
 
