@@ -1,5 +1,5 @@
 ---
-title: Az Azure Monitor a virtuális gépek előzetes üzembe helyezése |} A Microsoft Docs
+title: Virtuális gépek (előzetes verzió) üzembe helyezése az Azure Monitor |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan telepíti, és az Azure Monitor konfigurálása a virtuális gépek, így ismertetése, hogyan működik az elosztott alkalmazás és milyen állapotbeli problémák azonosított.
 services: azure-monitor
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 3d408c2a2f9de69d8a12a394df68acff8f3d0bf7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 3c1caa2485437768781ada2c7271445ccd3c19e1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121657"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190328"
 ---
-# <a name="deploy-azure-monitor-for-vms-preview"></a>Az Azure Monitor a virtuális gépek előzetes üzembe helyezése
-Ez a cikk ismerteti, hogyan állítható be az Azure Monitor-beli virtuális gépek. A szolgáltatás figyeli az Azure-beli virtuális gépek (VM) és a virtuálisgép-méretezési csoportok és a környezetében a virtuális gépek operációs rendszer állapotát. A monitorozás tartalmaz, a felderítés és az alkalmazás függőségekkel is üzemelhet őket leképezése.
+# <a name="deploy-azure-monitor-for-vms-preview"></a>Üzembe helyezése az Azure Monitor-beli virtuális gépek (előzetes verzió)
+Ez a cikk ismerteti, hogyan állítható be az Azure Monitor-beli virtuális gépek. A szolgáltatás figyeli az Azure-beli virtuális gépek (VM) és a virtuálisgép-méretezési csoportok és a környezetében a virtuális gépek operációs rendszer állapotát. A monitorozás tartalmaz, a felderítés és az alkalmazás függőségekkel is üzemelhet őket leképezése. 
 
 Engedélyezi az Azure Monitor-beli virtuális gépek a következő módszerek egyikével:
 
