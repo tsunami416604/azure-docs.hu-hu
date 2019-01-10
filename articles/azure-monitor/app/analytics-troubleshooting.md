@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5459786ccf69c51fec1630d612fd37b1b78c36c9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017004"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189932"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights-elemzési](analytics.md)? Itt érdemes kezdenie. Analytics az Azure Application Insights hatékony keresési eszközben.
 
 ## <a name="limits"></a>Korlátok
 * Jelenleg a lekérdezési eredmények korlátozva, csak egy adott héten múltbeli adatok.
-* Teszteljük a böngészők: Chrome, a peremhálózati és az Internet Explorer legújabb kiadása.
+* Teszteljük a böngészők: Chrome, a Microsoft Edge és az Internet Explorer legújabb kiadása.
 
 ## <a name="known-incompatible-browser-extensions"></a>Nem kompatibilis böngésző ismert kiterjesztések
 * Ghostery
@@ -54,7 +54,7 @@ Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáfér�
 2. Kedvenc, könyvjelző vagy mentett hivatkozás használatával próbált hozzáférni az Analytics portálhoz? Más hitelesítő adatokkal jelentkezett be, mint amikor mentette a hivatkozást?
 3. Próbáljon privát/inkognitó módban lévő böngészőablakot használni (a többi hasonló ablak bezárása után). Meg kell adnia hitelesítő adatait. 
 4. Nyisson meg egy másik (hagyományos) böngészőablakot, és nyissa meg [Azure](https://portal.azure.com). Jelentkezzen ki. Ezután nyissa meg a hivatkozást, és jelentkezzen be a helyes hitelesítő adatokkal.
-5. Az Microsoft Edge és az Internet Explorer felhasználói akkor is láthatják ezt a hibát, ha a rendszer nem támogatja a megbízható zóna beállításait.
+5. A Microsoft Edge és az Internet Explorer felhasználók is is ez a hibaüzenet, ha a megbízható zóna beállításait nem támogatottak.
    
     Győződjön meg arról is [Analytics-portál](https://portal.azure.com) és [Azure Active Directory portálon](https://portal.azure.com) azonos biztonsági zónában található:
    
