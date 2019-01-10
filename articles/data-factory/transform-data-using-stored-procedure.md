@@ -19,7 +19,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54025725"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryban az SQL Server tárolt eljárási tevékenység használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-stored-proc-activity.md)
 > * [Aktuális verzió](transform-data-using-stored-procedure.md)
 
