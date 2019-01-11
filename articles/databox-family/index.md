@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: fcda4fba376fbe1f527d60aa5a27f7e7f0713e3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977706"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157105"
 ---
 <h1>Azure Data Box</h1>
 <p>Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi (TB) adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.</p>
@@ -35,7 +35,7 @@ ms.locfileid: "46977706"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk <SUP>előzetes verzió</SUP></b> 40 TB alatti adatmennyiséghez. A Microsoft 1–5 titkosított SSD meghajtót postáz Önnek, amelyeket Ön az adatok átmásolását követően visszaküld.</p>
+                            <p><b>Data Box Disk</b> 40 TB alatti adatmennyiséghez. A Microsoft 1–5 titkosított SSD meghajtót postáz Önnek, amelyeket Ön az adatok átmásolását követően visszaküld.</p>
                         </div>
                     </div>
                 </div>
