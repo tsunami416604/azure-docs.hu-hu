@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 768a9d930314882f88eab630365475d69aa5f83b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134828"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213722"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Az Application Proxy-alkalmazások használata esetén "Nem tud hozzáférni a vállalati alkalmazás" hiba
 
@@ -29,9 +29,9 @@ Ez a cikk segít az Azure AD-alkalmazásproxy-alkalmazáshoz a "Vállalati alkal
 ## <a name="overview"></a>Áttekintés
 Ezt a hibaüzenetet, ha a hiba lapon keresse meg az állapotkódot. Ezt a kódot, valószínűleg az egyik, a következő állapotkódok:
 
--   **Átjáró időtúllépése**: az alkalmazásproxy-szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában azt jelzi, hogy az összekötő hozzárendelés, összekötő, a probléma, vagy a hálózati szabályok az összekötő körül.
+-   **Átjáró időtúllépése**: Az alkalmazásproxy-szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában azt jelzi, hogy az összekötő hozzárendelés, összekötő, a probléma, vagy a hálózati szabályok az összekötő körül.
 
--   **Hibás átjáróval**: az összekötő nem tudja elérni a háttéralkalmazás. Ez a hiba oka lehet az alkalmazás egy hibás.
+-   **Hibás átjáróval**: Az összekötő nem tudja elérni a háttéralkalmazás. Ez a hiba oka lehet az alkalmazás egy hibás.
 
 -   **Tiltott**: A felhasználó nem jogosult az alkalmazás eléréséhez. Ez a hiba akkor fordulhat elő, ha a felhasználó nincs hozzárendelve az alkalmazáshoz az Azure Active Directoryban, vagy ha a háttérkiszolgálón a felhasználónak nincs engedélye az alkalmazás eléréséhez.
 
@@ -62,7 +62,7 @@ A hibás átjáró hiba azt jelzi, hogy az összekötő nem érhető el a hátt�
 
 A tiltott hibát látja, ha a felhasználó nincs hozzárendelve az alkalmazáshoz. Ez a hiba lehet az Azure Active Directoryban vagy a háttéralkalmazás.
 
-Felhasználók hozzárendelése az Azure-ban az alkalmazás kapcsolatban lásd: a [konfigurációs dokumentációt](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user).
+Felhasználók hozzárendelése az Azure-ban az alkalmazás kapcsolatban lásd: a [konfigurációs dokumentációt](application-proxy-add-on-premises-application.md#test-the-application).
 
 Ha Ön kijelenti, hogy a felhasználó hozzá van rendelve az alkalmazás az Azure-ban, ellenőrizze a háttéralkalmazás az felhasználó konfigurációját. Ha a Kerberos által korlátozott delegálás vagy integrált Windows-hitelesítést használ, lásd a KCD hibaelhárítása vonatkozó irányelveket.
 
@@ -82,11 +82,11 @@ Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsopor
 
 4.  Itt van néhány módon lehet további:
 
-  * Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, az összekötő áthelyezheti a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
+  * Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, továbbléphet az összekötő a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
 
-  * Az adott csoporthoz új összekötő letöltéséhez: ezen a lapon megtekintheti a hivatkozásra kattintva [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Typicall, az összekötő ugyanarra a kiszolgálóra, az alkalmazás telepítve van. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
+  * Az adott csoporthoz új összekötő letöltéséhez: A hivatkozásra kattintva megjelenik ezen az oldalon [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Typicall, az összekötő ugyanarra a kiszolgálóra, az alkalmazás telepítve van. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
 
-  * Vizsgálja meg az inaktív csatlakozó: egy összekötő akkor jeleníti meg inaktívként, ha nem tudja elérni a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át a "Ellenőrizze minden szükséges port szerepel az engedélyezési listán."
+  * Az inaktív csatlakozó vizsgálata: Egy összekötő akkor jeleníti meg inaktívként, ha az nem érhető el a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át a "Ellenőrizze minden szükséges port szerepel az engedélyezési listán."
 
 Használata után ezeket a lépéseket, az alkalmazás hozzá van rendelve egy csoport használata összekötők, hogy tesztelje újból az alkalmazást. Ha nem továbbra is működik, továbbra is a következő szakaszban.
 

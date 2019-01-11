@@ -1,7 +1,7 @@
 ---
-title: Hozzon létre egy Standard Load Balancer zónaszintű előtérbeli IP-cím – Azure portal
+title: Load Balancer létrehozása a zónaszintű előtér - az Azure Portalon
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zónaszintű nyilvános előtérbeli IP-Címmel cím az Azure portal használatával
+description: Ismerje meg, hogyan hozhat létre egy Standard Load Balancer az Azure Portallal zónaszintű előtér
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: e109504fe8657436d73870cc022ed4bc81c559f5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2cbfa0232421bf6b0673ed87b4541564eb588979
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095336"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200472"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-public-ip-address-frontend-using-azure-portal"></a>Zónaszintű nyilvános előtérbeli IP-Címmel cím Azure portal használatával egy nyilvános Load Balancer Standard létrehozása
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Standard Load Balancer létrehozása az Azure portal használatával zónaszintű frontend
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) a zónaszintű időtúllépést. Hogyan működnek a rendelkezésre állási zónák a Standard Load Balancer ismertetése: [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md). 
+Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) zónaszintű előtérbeli IP-konfigurációhoz. Hogyan működnek a rendelkezésre állási zónák a Standard Load Balancer ismertetése: [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -48,7 +48,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 7. A **erőforráscsoport**, kattintson a **új létrehozása**, majd írja be **myResourceGroupZLB** az erőforráscsoport neveként.
 8. A **hely**válassza **Nyugat-Európa**, és kattintson a **OK**. Ekkor elindul a terheléselosztó üzembe helyezése, ami néhány perc alatt sikeresen befejeződik.
 
-    ![zónaredundáns Load Balancer Standard létrehozása az Azure Portalon](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
+    ![zónaredundáns Standard Load Balancer létrehozása az Azure portal használatával](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 
 
 ## <a name="next-steps"></a>További lépések

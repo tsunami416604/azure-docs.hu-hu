@@ -1,6 +1,7 @@
 ---
-title: Az Azure CLI-vel zónaszintű előtér egy nyilvános Load Balancer Standard létrehozása |} A Microsoft Docs
-description: Az Azure CLI-vel zónaszintű előtér egy nyilvános Load Balancer Standard létrehozása
+title: A zónaszintű előtérbeli – Azure CLI-vel rendelkező Load Balancer létrehozása
+titlesuffix: Azure Load Balancer
+description: Ismerje meg, hogyan hozhat létre egy Standard Load Balancer az Azure CLI-vel zónaszintű frontend
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -11,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 3a0fc37b8e2865163ae6c55813d145a568d796e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 466fa37b8ed7a182eb8bd6bc4fe68e0715056398
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414482"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200875"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Az Azure CLI-vel zónaszintű előtér egy nyilvános Load Balancer Standard létrehozása
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Standard Load Balancer létrehozása az Azure CLI-vel zónaszintű frontend
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) a zónaszintű időtúllépést. A zónaszintű előtérbeli azt jelenti, hogy az egy régióban egy zóna által kiszolgált bármelyik kimenő vagy bejövő folyamathoz kellene. Létrehozhat egy terheléselosztót zónaszintű előtérbeli az előtér-konfigurációban zónaszintű Standard nyilvános IP-cím használatával. Hogyan működnek a rendelkezésre állási zónák a Standard Load Balancer ismertetése: [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md). 
+Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) a zónaszintű időtúllépést. A zónaszintű előtérbeli azt jelenti, hogy az egy régióban egy zóna által kiszolgált bármelyik kimenő vagy bejövő folyamathoz kellene. Létrehozhat egy terheléselosztót zónaszintű előtérbeli az előtér-konfigurációban zónaszintű Standard nyilvános IP-cím használatával. Hogyan működnek a rendelkezésre állási zónák a Standard Load Balancer ismertetése: [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -50,7 +51,7 @@ az network public-ip create --resource-group myResourceGroupZLB --name myPublicI
 
 ## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
-A Standard nyilvános IP-címmel, amely a következő parancsot az előző lépésben létrehozott egy nyilvános Load Balancer Standard létrehozása:
+Hozzon létre egy nyilvános Standard Load Balancer a Standard nyilvános IP-cím a következő parancsot az előző lépésben létrehozott:
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroupZLB --name myLoadBalancer --public-ip-address myPublicIPZonal --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool --sku Standard

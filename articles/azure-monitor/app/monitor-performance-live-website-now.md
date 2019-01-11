@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1558d8e8392ff49e2661e9f8bc41e41c5bbc6dd5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189848"
+ms.locfileid: "54199385"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -96,14 +96,14 @@ Ezek a néhány lépést is végrehajthat, győződjön meg arról, hogy a telep
 - Győződjön meg arról, hogy az applicationInsights.config fájlt a cél alkalmazás könyvtárban található, és tartalmazza a rendszerállapotkulcsot.
 
 - Ha azt gyanítja, hogy az adatok hiányzik egy egyszerű lekérdezést futtathatja [Analytics](../log-query/get-started-portal.md) minden jelenleg a telemetriai adatokat küldenek a felhőalapú szerepkörök listáját.
-
 ```Kusto
 union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ```
 
 - Ha meg kell erősítenie, hogy van-e az Application Insights sikeresen csatolta futtathatja [Sysinternals leíró](https://docs.microsoft.com/sysinternals/downloads/handle) egy IIS-ablakban győződjön meg arról, hogy applicationinsights.dll betöltötte.
-
-`handle.exe /p w3wp.exe`
+```cmd
+handle.exe /p w3wp.exe
+```
 
 
 ### <a name="cant-connect-no-telemetry"></a>Nem tud csatlakozni? Nem működik a telemetria?
@@ -113,17 +113,17 @@ union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ### <a name="unable-to-login"></a>Nem sikerült a bejelentkezés
 
 * Ha állapotfigyelője nem lehet bejelentkezni, tegye a parancssori telepítés helyett. Jelentkezzen be a rendszerállapotkulcsot gyűjtése megpróbál Állapotfigyelőt, de adhat meg ez a parancs segítségével manuálisan: 
-```
+```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
 
 ### <a name="could-not-load-file-or-assembly-systemdiagnosticsdiagnosticsource"></a>Nem sikerült betölteni a fájlt vagy a szerelvény "System.Diagnostics.DiagnosticSource"
 
-Előfordulhat, hogy megjelenik a hibaüzenet Alkalmazásvé Insights engedélyezése után. Ennek oka az, a telepítő a DLL-re, a bin könyvtárban váltja fel.
+Az Application Insights engedélyezése után előfordulhat, hogy megjelenik a hibaüzenet. Ennek oka az, a telepítő a DLL-re, a bin könyvtárban váltja fel.
 Megoldásához frissítse a web.config:
 
-```
+```xml
 <dependentAssembly>
     <assemblyIdentity name="System.Diagnostics.DiagnosticSource" publicKeyToken="cc7b13ffcd2ddd51"/>
     <bindingRedirect oldVersion="0.0.0.0-4.*.*.*" newVersion="4.0.2.1"/>

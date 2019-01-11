@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 17ca5430a0fdba0bf11d7c2caecd19ec0a402c0e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b9f3561155038e91bc278f5d7ddc995adb53ad78
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556696"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197997"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -106,7 +106,7 @@ Használhatja az Azure Time Series Insight-hitelesítést az alkalmazás Azonos�
 
 ## <a name="next-steps"></a>További lépések
 - Lásd: a Time Series Insights API-mintakód [adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md).
-- API-referencia információkért lásd: [lekérdezési API-referencia](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+- API-referencia információkért lásd: [lekérdezési API-referencia](/rest/api/time-series-insights/ga-query-api).
 
 > [!div class="nextstepaction"]
 > [Szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md)

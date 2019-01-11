@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: adgera
-ms.openlocfilehash: 824c0caf0d54e8484093304c39c9f5dc05c83298
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 705d96225c699c6e9824dadbd7fa1272ba5ddb2d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117519"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213280"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
@@ -52,7 +52,7 @@ Az Azure Active Directory-alkalmazások, az OAuth 2.0 típusú implicit engedél
 
 Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Postman konfigurálása. Ezt követően hajtsa végre egy hitelesített HTTP-kérelem Azure digitális Twins beszerzett token használatával:
 
-1. Lépjen a [www.getpostman.com]([https://www.getpostman.com/) letölteni az alkalmazást.
+1. Lépjen a [www.getpostman.com](https://www.getpostman.com/) letölteni az alkalmazást.
 1. Ellenőrizze, hogy a **engedélyezési URL-címet** helyes-e. A formátum kell vennie:
 
     ```plaintext

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b5d931225edce92590b9c2b7f28ad39630362e6d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721835"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213824"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -26,7 +26,27 @@ Az SQL Data Sync egy szolgáltatás, amely az Azure SQL Database, amely lehetőv
 > [!IMPORTANT]
 > Az Azure SQL Data Sync does **nem** támogatja az Azure SQL Database felügyelt példánya jelenleg.
 
-## <a name="architecture-of-sql-data-sync"></a>Az SQL Data Sync architektúrája
+## <a name="when-to-use-data-sync"></a>Mikor érdemes használni az adatok szinkronizálása
+
+Adatszinkronizálás esetekben hasznos, ahol adatokat kell több Azure SQL Database-adatbázisok vagy SQL Server-adatbázisok között naprakészen kell tartani. Az alábbiakban a fő használati esetek Data Sync számára:
+
+-   **Hibrid adatok szinkronizálása:** Az adatszinkronizálás beállíthatja, hogy a helyszíni adatbázisok és a hibrid alkalmazások az Azure SQL-adatbázisok között szinkronizált adatok. Ez a képesség is konfigurálja, hogy a ügyfelek, akik használatát fontolgatja a felhőre, és szeretné helyezni néhány alkalmazását az Azure-ban.
+
+-   **Az elosztott alkalmazások:** Sok esetben akkor előnyös, ha különböző számítási feladatok egymástól a különböző adatbázisok között. Például ha olyan nagy méretű éles adatbázist, de szükség erre az egy jelentésben vagy elemzési számítási feladatok futtatásához, hasznos ahhoz, hogy a további számítási második adatbázis. Ez a megközelítés minimálisra csökkenti a éles számítási feladatokra gyakorolt hatást. Használhatja a Data Syncet, hogy a két adatbázis szinkronizálva.
+
+-   **Globálisan elosztott alkalmazások:** Számos vállalat span számos régióban, és még több országban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
+
+Adatok szinkronizálása nem az előnyben részesített megoldás a következő forgatókönyvekhez:
+
+| Forgatókönyv | Néhány ajánlott megoldásokat |
+|----------|----------------------------|
+| Vészhelyreállítás | [Az Azure georedundáns biztonsági mentés](sql-database-automated-backups.md) |
+| Olvassa el a méretezési csoport | [Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)](sql-database-read-scale-out.md) |
+| ETL (OLTP, OLAP) | [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| Migrálás a helyszíni SQL Serverről az Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+|||
+
+## <a name="overview-of-sql-data-sync"></a>Az SQL Data Sync áttekintése
 
 Data Sync szinkronizálási csoport fogalma köré alapul. Szinkronizálási csoport, a szinkronizálni kívánt adatbázisok egy csoportját.
 
@@ -49,26 +69,6 @@ Szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 -   A **szinkronizálási időköz** azt ismerteti, hogy milyen gyakran a szinkronizálás történik.
 
 -   A **ütközésfeloldási házirend** -szintű szabályzat, amely lehet van *Hub wins* vagy *tag wins*.
-
-## <a name="when-to-use-data-sync"></a>Mikor érdemes használni az adatok szinkronizálása
-
-Adatszinkronizálás esetekben hasznos, ahol adatokat kell több Azure SQL Database-adatbázisok vagy SQL Server-adatbázisok között naprakészen kell tartani. Az alábbiakban a fő használati esetek Data Sync számára:
-
--   **Hibrid adatok szinkronizálása:** Az adatszinkronizálás beállíthatja, hogy a helyszíni adatbázisok és a hibrid alkalmazások az Azure SQL-adatbázisok között szinkronizált adatok. Ez a képesség is konfigurálja, hogy a ügyfelek, akik használatát fontolgatja a felhőre, és szeretné helyezni néhány alkalmazását az Azure-ban.
-
--   **Az elosztott alkalmazások:** Sok esetben akkor előnyös, ha különböző számítási feladatok egymástól a különböző adatbázisok között. Például ha olyan nagy méretű éles adatbázist, de szükség erre az egy jelentésben vagy elemzési számítási feladatok futtatásához, hasznos ahhoz, hogy a további számítási második adatbázis. Ez a megközelítés minimálisra csökkenti a éles számítási feladatokra gyakorolt hatást. Használhatja a Data Syncet, hogy a két adatbázis szinkronizálva.
-
--   **Globálisan elosztott alkalmazások:** Számos vállalat span számos régióban, és még több országban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
-
-Adatok szinkronizálása nem az előnyben részesített megoldás a következő forgatókönyvekhez:
-
-| Forgatókönyv | Néhány ajánlott megoldásokat |
-|----------|----------------------------|
-| Vészhelyreállítás | [Az Azure georedundáns biztonsági mentés](sql-database-automated-backups.md) |
-| Olvassa el a méretezési csoport | [Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)](sql-database-read-scale-out.md) |
-| ETL (OLTP, OLAP) | [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
-| Migrálás a helyszíni SQL Serverről az Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
-|||
 
 ## <a name="how-does-data-sync-work"></a>Hogyan működik az adatok szinkronizálása? 
 

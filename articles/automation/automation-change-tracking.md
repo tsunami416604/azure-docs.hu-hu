@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408918"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213212"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -51,15 +51,14 @@ A következő Linux-disztribúciók hivatalosan támogatott. A Linux-ügynök az
 * Debian GNU/Linux 8. és 9
 * Ubuntu Linux 14.04 LTS és 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
+## <a name="onboard"></a>A Change Tracking és az Inventory engedélyezése
 
-Változások követése a kezdéshez, engedélyeznie kell a Change Tracking and Inventory megoldás az Automation-fiókhoz tartozó.
+Változások követése a kezdéshez, engedélyeznie kell a Change Tracking and Inventory megoldást. A Change Tracking and Inventory gépek előkészítésének számos módja van. A következő az ajánlott és támogatott üzembe helyezési lehetőség a megoldást.
 
-1. Az Azure Portalon lépjen az Automation-fiók
-2. Válassza ki **Change Tracking** alatt **konfigurációs**.
-3. Válasszon egy meglévő Log analytics-munkaterületet, vagy **új munkaterület létrehozása** kattintson **engedélyezése**.
-
-Ez lehetővé teszi, hogy a megoldás az automation-fiók. A megoldás engedélyezése akár 15 percet is igénybe vehet. A kék szalagcím értesíti, amikor a megoldás engedélyezve lett. Lépjen vissza a **Change Tracking** lapon kezelheti a megoldást.
+* [A virtuális gépről](automation-onboard-solutions-from-vm.md)
+* [A több gép tallózása](automation-onboard-solutions-from-browse.md)
+* [Az Automation-fiók](automation-onboard-solutions-from-automation-account.md)
+* [Az Azure Automation-runbook](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>A Change Tracking és Inventory konfigurálása
 

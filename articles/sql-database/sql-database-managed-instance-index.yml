@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7251ec6e20dcbc9169c2dab2247386ff500760e7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2e251e534e0c79feb995fd181d6bb207873e4fdb
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033876"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212583"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -132,7 +132,7 @@ sections:
     items:
     - html: Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">hardverjellemzők és korlátozások</a> és <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL nyelv különbségek</a>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálása</a> Azure virtuális hálózat, ahol a felügyelt példány üzembe helyezve.
-    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration.md#modify-an-existing-virtual-network-for-managed-instances">Érvényesítése</a> , hogy a meglévő Azure virtuális hálózat a felügyelt példányok üzembe helyezéséhez használható.
+    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">Érvényesítése</a> , hogy a meglévő Azure virtuális hálózat a felügyelt példányok üzembe helyezéséhez használható.
     - html: Csatlakozzon a példány <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.
     - html: Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">adatok áttelepítési Asisstant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.
     - html: Felügyelt példány használatával az adatbázisok életre <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítási</a> vagy <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.

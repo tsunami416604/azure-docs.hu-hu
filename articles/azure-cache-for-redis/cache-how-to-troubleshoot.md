@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: fd5e62138d47622417bde658bf0d05308594d64e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 154f5200872dbc06550f396717cb215f3db4f7dd
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104148"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199578"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
 Ez a cikk nyújt útmutatást a következő kategóriákba tartozó Azure Cache Redis-hibák elhárítása.
@@ -231,9 +231,9 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
    
     Az Azure Cache Redis SSL-végpont használatával a redis-cli és a stunnel csatlakozásról információkért lásd: a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis az előzetes kiadásban](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést. További információkért lásd: [SlowLog](https://redis.io/commands/slowlog).
 6. Magas Redis-kiszolgáló terhelése okozhatja időtúllépések. A kiszolgáló terhelése figyelemmel figyelése a `Redis Server Load` [gyorsítótárazzák a teljesítmény-mérőszám](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). A kiszolgáló terhelését, 100 (maximális értéke) azt jelzi, hogy, a redis-kiszolgáló már foglalt, az üresjárati idővel, a kérelmek feldolgozásához. Ha bizonyos kérelmek igényelnek a kiszolgálói funkció az összes megtekintéséhez futtassa a SlowLog parancs az előző bekezdésben ismertetett módon. További információkért lásd: [magas CPU-használat / kiszolgáló terhelése](#high-cpu-usage-server-load).
-7. Történt más esemény, amely egy hálózati blip-oka lehetett az ügyféloldalon? Ellenőrizze az ügyfélen (webes, feldolgozói szerepkör vagy egy Iaas-beli virtuális Gépen), ha olyan esemény, például az ügyfél-példányok számának méretezése felfelé vagy lefelé történt, vagy az ügyfél vagy az automatikus méretezés új verziójának telepítése engedélyezve van? A tesztelés található, az automatikus méretezés, vagy a vertikális felskálázásával, vagy le is OK kimenő hálózati kapcsolat elveszhet néhány másodpercig. StackExchange.Redis kódot képes legyen ellenállni a ilyen események és újracsatlakozik. Ebben az időszakban az újracsatlakozás bármilyen kérelmeket az üzenetsorban is időtúllépés.
+7. Történt más esemény, amely egy hálózati blip-oka lehetett az ügyféloldalon? Ellenőrizze az ügyfélen (webes, feldolgozói szerepkör vagy egy IaaS-beli virtuális Gépen), ha olyan esemény, például az ügyfél-példányok számának méretezése felfelé vagy lefelé történt, vagy az ügyfél vagy az automatikus méretezés új verziójának telepítése engedélyezve van? A tesztelés található, az automatikus méretezés, vagy a vertikális felskálázásával, vagy le is OK kimenő hálózati kapcsolat elveszhet néhány másodpercig. StackExchange.Redis kódot képes legyen ellenállni a ilyen események és újracsatlakozik. Ebben az időszakban az újracsatlakozás bármilyen kérelmeket az üzenetsorban is időtúllépés.
 8. Történt megelőző több kis kérést az Azure Cache redis túllépte az időkorlátot, big Data típusú kérelmet? A paraméter `qs` a hibás üzenet közli Önnel, hogy hány kérésnek az ügyfélről a kiszolgálónak küldött, de még nem dolgozott választ. Ezt az értéket is folyamatosan növekvő, mert StackExchange.Redis egyetlen TCP-kapcsolatot használ, és egyszerre csak egy választ csak olvasható. Annak ellenére, hogy az első művelet túllépte az időkorlátot, nem állítja le az adatokat küld a rendszer és-tárolókról a kiszolgálón, és más kérelmek le vannak tiltva, amíg a nagy méretű kérelem nem fejeződött időtúllépéssel okozza. Egy megoldás, hogy időtúllépések esélyét annak biztosítása, hogy a gyorsítótár mérete elegendő a számítási feladatok és a nagy értékek felosztása szeletekre. Egy másik lehetséges megoldás az, hogy a készlet használata `ConnectionMultiplexer` az ügyfél az objektumok, és válassza a legkevésbé betöltött `ConnectionMultiplexer` új kérelem küldése során. Ezzel akadályozhatja meg egyetlen időtúllépés küldött egyéb kérések számára is időtúllépés miatt.
-9. Ha használ `RedisSessionStateprovider`, ellenőrizze az újrapróbálkozási időkorlátnak az újrapróbálkozási megfelelően. `retrytimeoutInMilliseconds` érdemes lehet magasabb, mint `operationTimeoutinMilliseonds`, ellenkező esetben fordulhat elő, nem az újrapróbálkozásokat. Az alábbi példában `retrytimeoutInMilliseconds` 3000 értékre van állítva. További információkért lásd: [ASP.NET munkamenetállapot-szolgáltatóját Azure Cache redis](cache-aspnet-session-state-provider.md) és [munkamenetállapot-szolgáltató és a kimeneti gyorsítótár-szolgáltatóját a konfigurációs paraméterek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+9. Ha használ `RedisSessionStateProvider`, ellenőrizze az újrapróbálkozási időkorlátnak az újrapróbálkozási megfelelően. `retryTimeoutInMilliseconds` érdemes lehet magasabb, mint `operationTimeoutInMilliseconds`, ellenkező esetben fordulhat elő, nem az újrapróbálkozásokat. Az alábbi példában `retryTimeoutInMilliseconds` 3000 értékre van állítva. További információkért lásd: [ASP.NET munkamenetállapot-szolgáltatóját Azure Cache redis](cache-aspnet-session-state-provider.md) és [munkamenetállapot-szolgáltató és a kimeneti gyorsítótár-szolgáltatóját a konfigurációs paraméterek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     <add
       name="AFRedisCacheSessionStateProvider"

@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1a341bf36842e49faf8e39f4056232c97cc4232c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b2c0dbfbf474cccdf2d1253b77869c59fd449591
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197035"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214555"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows Rendszerfelügyeleti webszolgáltatások HTTPS protokollon
 
 Ez a szakasz ismerteti, hogyan konfigurálhatja egy Azure-ban üzemeltetett, a Windows-alapú virtuális gép, úgy, hogy, kezelhető és a PowerShell használatával távolról üzembe helyezve.  PowerShell távoli eljáráshívás engedélyezéséhez a cél virtuális Gépen a Windows Rendszerfelügyeleti (webszolgáltatások WinRM) HTTPS-végpontokat kell közzétennie.  PowerShell-táveléréssel kapcsolatos további információkért lásd: [távoli parancsok futtatása](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Winrm szolgáltatásokkal kapcsolatos további információkért lásd: [Windows távoli felügyeleti](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Ha létrehozott egy virtuális Gépet, a "klasszikus" Azure megközelítések egyikének használatával – az Azure Service Manager portál vagy az elavult [Azure Service Management API] (https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)–, majd automatikusan van konfigurálva a WinRM-végponthoz.  Azonban egy virtuális Gépet hoz létre "modern" Azure megközelíti a következő használatával, akkor a virtuális gép fog *nem* konfigurálni a winrm HTTPS-kapcsolaton keresztül.  
+Ha létrehozott egy virtuális Gépet, a "klasszikus" Azure megközelítések egyikének használatával – az Azure Service Manager portál vagy az elavult [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))–, majd automatikusan van konfigurálva a WinRM-végponthoz.  Azonban egy virtuális Gépet hoz létre "modern" Azure megközelíti a következő használatával, akkor a virtuális gép fog *nem* konfigurálni a winrm HTTPS-kapcsolaton keresztül.  
 
 - Használatával a [az Azure portal](https://portal.azure.com/), általában egy jóváhagyott alap, a szakaszban leírtak szerint a [hozzon létre egy Azure-kompatibilis virtuális Merevlemezt.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
 - [Az Azure Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)

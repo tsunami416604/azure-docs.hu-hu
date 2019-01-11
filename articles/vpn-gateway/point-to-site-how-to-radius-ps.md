@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: b5d69b8f9f004da93e5bed05b86e46f6e4214d63
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bd74aca180d291042e597ba6893009c38aa22555
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847354"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200904"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS-hitelesítés virtuális hálózat pont – hely kapcsolat konfigurálása: PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS-hitelesítés használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Vnetet a RADIUS-hitelesítést használó pont – hely kapcsolattal. Ez a konfiguráció csak a Resource Manager üzemi modell érhető el.
 
@@ -64,28 +64,28 @@ Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs A
 
 ### <a name="sign-in"></a>Bejelentkezés
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ### <a name="example"></a>Példaértékek
 
 A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. Megteheti, hogy lépésről lépésre végighalad az eljáráson, és módosítás nélkül ezeket az értékeket használja, de módosíthatja is őket, hogy megfeleljenek a saját környezetének.
 
-* **Név: VNet1**
-* **Címtartomány: 192.168.0.0/16** és **10.254.0.0/16**<br>Ez a példa egynél több címtartományt használ annak szemléltetésére, hogy ez a konfiguráció több címtartománnyal is működik. Azonban nem kötelező több címtartományt megadni ehhez a konfigurációhoz.
-* **Alhálózat neve: FrontEnd**
+* **név: VNet1**
+* **Címtér: 192.168.0.0/16** és **10.254.0.0/16**<br>Ez a példa egynél több címtartományt használ annak szemléltetésére, hogy ez a konfiguráció több címtartománnyal is működik. Azonban nem kötelező több címtartományt megadni ehhez a konfigurációhoz.
+* **Alhálózat neve: Előtér**
   * **Alhálózati címtartomány: 192.168.1.0/24**
-* **Alhálózat neve: BackEnd**
+* **Alhálózat neve: Háttér**
   * **Alhálózati címtartomány: 10.254.1.0/24**
-* **Alhálózat neve: GatewaySubnet**<br>Ennek az alhálózatnak kötelező a *GatewaySubnet* nevet adni, ellenkező esetben nem működik a VPN-átjáró.
-  * **Átjáró-alhálózat címtartománya: 192.168.200.0/24** 
-* **VPN-ügyfelek címkészlete: 172.16.201.0/24**<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, a VPN-ügyfél címkészletből kapnak IP-címet.
-* **Előfizetés:** Ha több előfizetése is van, ellenőrizze, hogy a megfelelőt használja-e.
+* **Alhálózat neve: Átjáró-alhálózat**<br>Ennek az alhálózatnak kötelező a *GatewaySubnet* nevet adni, ellenkező esetben nem működik a VPN-átjáró.
+  * **Átjáróalhálózat címtartománya: 192.168.200.0/24** 
+* **VPN-ügyfélcímkészlet: 172.16.201.0/24**<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, a VPN-ügyfél címkészletből kapnak IP-címet.
+* **Előfizetés:** Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy a megfelelőt használja-e.
 * **Erőforráscsoport: TestRG**
-* **Hely: East US**
+* **Hely: USA keleti RÉGIÓJA**
 * **DNS-kiszolgáló: IP-cím** a névfeloldáshoz virtuális hálózatához használni kívánt DNS-kiszolgáló. (nem kötelező)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
-* **VPN típusa: RouteBased** 
+* **VPN típusa: Útvonalalapú** 
 
 ## 1. <a name="vnet"></a>Az erőforráscsoport, a virtuális hálózat és a nyilvános IP-cím létrehozása címe
 

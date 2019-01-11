@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 1521d18ab94c647aebf303b660574afe6612474d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fa858ffbae5c1a37851ea114efd0fbc9cf010e68
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250512"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200802"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel
 ## <a name="overview"></a>Áttekintés
@@ -30,7 +30,7 @@ Munkafolyamatok ügyfél döntési logikát tartalmazhatnak, és a bemeneti forr
 
 A példában a munkafolyamatok hozhatja létre a következők:
 
-* Döntési-alapú munkafolyamatok, amelyek névfeloldási forrása tartalmának vizsgálata, és csak a kívánt kimeneti számok kódolása.  Ez a helfpul az elpazarolt nyomon követi a forrás-tartalom elírás upscaling szerint fognak létrejönni kiküszöbölése révén.
+* Döntési-alapú munkafolyamatok, amelyek névfeloldási forrása tartalmának vizsgálata, és csak a kívánt kimeneti számok kódolása.  Ez hasznos, mivel az elpazarolt nyomon követi a forrás-tartalom elírás upscaling szerint fognak létrejönni.
 * Több bemeneti fájllal a feliratok, átfedések és való együttes tartalom használható. 
 
 Ezzel az eszközzel is használható, módosíthatja a [munkafolyamatok közzétett](media-services-workflow-designer.md#existing_workflows). 

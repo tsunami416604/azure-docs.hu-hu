@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: alkarche
-ms.openlocfilehash: 042d41e9125e5d4fa0af04fd6edeba5f0b33123a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1140c23a0aa5344119c35434316ec73cc3918f90
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001589"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198371"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Függvényalkalmazás integrálása az Azure-beli virtuális hálózathoz
 A részletes oktatóanyag bemutatja, hogyan csatlakozhat egy Azure virtuális Hálózatban található erőforrások az Azure Functions használatával. 
@@ -117,7 +117,7 @@ A Függvényalkalmazás az internetről és a virtuális hálózat is kapcsolód
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Functions futtatása az App Service-csomagok ugyanazt a szolgáltatást, a web Apps alkalmazások futnak, így az összes a Web Apps documnention lesz a alkalmazni dedikált funkciók.
+Az Azure Functions futtatása az App Service-csomagok ugyanazt a szolgáltatást, a web Apps alkalmazások futnak, így teljes dokumentáció a Web Apps lesz a alkalmazni dedikált funkciók.
 
 1. [További tudnivalók a VNET-integráció az App Service szolgáltatással / ide-függvények](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 1. [További információ az Azure-beli virtuális hálózatok](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)

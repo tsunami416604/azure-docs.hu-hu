@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b96a00fb5dbf96a7b57adbaaacf24af319d86950
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718962"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215388"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -156,7 +156,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 Minden naplóadatokat az Azure Monitor használatával lekéri a [naplólekérdezés](../log-query/log-query-overview.md) -készült a [adatkezelő lekérdezési nyelv](../log-query/get-started-queries.md), amely lehetővé teszi, hogy gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használat [Log Analytics](../log-query/portals.md) fejlesztésére és tesztelésére a lekérdezések az Azure Portalon. Eredmények interaktív használatához, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Naplók segítségével is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
-> Az Application Insights adatait egy külön partíciót, mint a többi naplóadatokat az Azure monitorban tárolódik. Ez ugyanazokat a funkciókat, mint más naplóadatok támogatja, de kell használnia a [Application Insights-konzol](/azure-monitor/app/analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) alkalmazás adatok és más naplóadatok elemzéséhez.
+> Az Application Insights adatait egy külön partíciót, mint a többi naplóadatokat az Azure monitorban tárolódik. Ez ugyanazokat a funkciókat, mint más naplóadatok támogatja, de kell használnia a [Application Insights-konzol](../app/analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) alkalmazás adatok és más naplóadatok elemzéséhez.
 
 ![Logs](media/data-collection/logs.png)
 

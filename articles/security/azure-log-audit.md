@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 36c16cd48ffba704b9cc8b0884491c3b92543b5c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874566"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215490"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-naplózás
 
@@ -187,9 +187,9 @@ A Storage Analytics naplók a következő típusú hitelesített és névtelen k
 ### <a name="azure-networking-logs"></a>Az Azure hálózati naplók
 A hálózati naplózás és figyelés az Azure-ban átfogó, és két tág kategóriába ismerteti:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): forgatókönyv-alapú hálózatfigyelési van megadva a Network Watcher funkciókat. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Forgatókönyv-alapú hálózatfigyelési biztosítunk a Network Watcher funkciókat. A szolgáltatás része, csomagrögzítés, következő ugrási, IP-folyamat ellenőrzése, a biztonsági csoport nézet NSG-Folyamatnaplók. Forgatókönyv szintű monitorozása biztosítja a teljes körű képet szakembereket egyes hálózati erőforrások monitorozása a hálózati erőforrásokhoz.
 
-* [Erőforrások monitorozása](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): erőforrás-szolgáltatói figyelése magában foglalja, négy funkciók, diagnosztikai naplók, metrikák, hibaelhárítási és a resource health. Ezek a szolgáltatások beépített a hálózati erőforrás szintjén.
+* [Erőforrások monitorozása](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Erőforrás-szolgáltatói figyelése magában foglalja a négy funkciók, diagnosztikai naplók, metrikák, hibaelhárítási és a resource health. Ezek a szolgáltatások beépített a hálózati erőforrás szintjén.
 
 ![Az Azure hálózati naplók](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -219,19 +219,19 @@ A Network Watcher biztosít a diagnosztikai naplók megtekintése. Ez a nézet a
 
 
 A korábban említett naplózási képességek mellett a Network Watcher jelenleg a következő képességekkel rendelkezik:
-- [Topológia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): lehetővé teszi a hálózati szintű, amely megjeleníti az egyes csatlakozás és a egy erőforráscsoportba tartozó hálózati erőforrások egymáshoz rendelését.
+- [Topológia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Lehetővé teszi a hálózati szintű, amely megjeleníti az egyes csatlakozás és a egy erőforráscsoportba tartozó hálózati erőforrások egymáshoz rendelését.
 
-- [Változó csomagrögzítés](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): rögzíti a csomagadatok adataikkal egy virtuális gépet. Maximálja a sokoldalúságot speciális szűrési beállítások és finomhangolási vezérlők, például idő - és méretének korlátozása beállításait, adja meg. A csomag adatokat tárolhatja a blob-tárolóban, vagy a helyi lemezen lévő *.cap* fájlformátum.
+- [Változó csomagrögzítés](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Rögzíti a csomagadatok adataikkal egy virtuális gépet. Maximálja a sokoldalúságot speciális szűrési beállítások és finomhangolási vezérlők, például idő - és méretének korlátozása beállításait, adja meg. A csomag adatokat tárolhatja a blob-tárolóban, vagy a helyi lemezen lévő *.cap* fájlformátum.
 
-* [IP-folyamat ellenőrzése](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): ellenőrzi, hogy egy csomag engedélyezett vagy tiltott (azt jelenti, cél IP-cím, forrásoldali IP-cím, Célport, forrásoldali portszám és protokoll) folyamat információk 5-ször több csomag paraméterei alapján. A csomagot a rendszer megtagadja egy biztonsági csoport is, ha a szabály és a csoportot, amely a csomagot ad vissza.
+* [IP-folyamat ellenőrzése](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Ellenőrzi, hogy egy csomag engedélyezett vagy tiltott (azt jelenti, cél IP-cím, forrásoldali IP-cím, Célport, forrásoldali portszám és protokoll) folyamat információk 5-ször több csomag paraméterei alapján. A csomagot a rendszer megtagadja egy biztonsági csoport is, ha a szabály és a csoportot, amely a csomagot ad vissza.
 
-* [Következő Ugrás](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): meghatározza, hogy a következő ugrás a csomagok irányítása az Azure-beli hálózati hálóban, így diagnosztizálhatja a bármely helytelenül van konfigurálva, felhasználó által megadott útvonalakat.
+* [A következő Ugrás](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Bármely helytelenül konfigurált felhasználó által megadott útvonalak diagnosztizálhatja, hogy meghatározza, hogy a következő ugrás a csomagok irányítása az Azure-beli hálózati hálóban.
 
-* [Biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): beolvassa a hatékony és alkalmazott biztonsági szabályok, amelyek érvényesek a virtuális gép.
+* [Biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): A hatékony és alkalmazott biztonsági szabályok, amelyek érvényesek a virtuális gép beolvasása.
 
-* [Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): segítenek elhárítani a virtuális hálózati átjárók és kapcsolatok.
+* [Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Segít a virtuális hálózati átjárók és kapcsolatok hibaelhárítása.
 
-* [Hálózati előfizetési korlátozásait](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): lehetővé teszi a hálózati erőforrás-használati korlátozások megtekintését.
+* [Hálózati előfizetési korlátozásait](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Lehetővé teszi, hogy a hálózati erőforrás-használati korlátozások megtekintése.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -245,25 +245,25 @@ Az alkalmazások számos különböző platformokról, többek között a .NET, 
 
 A fejlesztőcsapatoknak készült Application Insights segít az adott alkalmazás teljesítményének megismerésében, valamint abban, hogy a felhasználók miként használják az alkalmazást. A szolgáltatás az alábbiakat figyeli:
 
-* **Kérelem értékek, válaszidők és hibaarányok**: ismerje meg, hogy mely lapok töltődnek legnépszerűbb, mely napszakokban, és hol találhatók a felhasználók. Megtekintheti, hogy mely lapok teljesítenek a legjobban. Ha a válaszidők és hibaarányok go magas, ha vannak további kérelmek, előfordulhat, hogy problémába resourcing.
+* **Kérelem értékek, válaszidők és hibaarányok**: Ismerje meg, hogy mely lapok töltődnek legnépszerűbb, mely napszakokban, és hol találhatók a felhasználók. Megtekintheti, hogy mely lapok teljesítenek a legjobban. Ha a válaszidők és hibaarányok go magas, ha vannak további kérelmek, előfordulhat, hogy problémába resourcing.
 
-* **Függőségi értékek, válaszidők és hibaarányok**: ismerje meg, hogy külső szolgáltatások okoznak lassulást.
+* **Függőségi értékek, válaszidők és hibaarányok**: Ismerje meg, hogy külső szolgáltatások okoznak lassulást.
 
-* **Kivételek**: elemezheti az összesített statisztikákat, vagy konkrét példányok, és részletesen a hívásláncot és a kapcsolódó kéréseket. A kiszolgálói és a böngészői kivételekről egyaránt készül jelentés.
+* **Kivételek**: Elemezheti az összesített statisztikákat, vagy konkrét példányok, és részletesen a hívásláncot és a kapcsolódó kéréseket. A kiszolgálói és a böngészői kivételekről egyaránt készül jelentés.
 
-* **Lapmegtekintések és betöltési teljesítmény**: a felhasználók böngészőinek jelentések lekérése.
+* **Lapmegtekintések és betöltési teljesítmény**: Jelentések lekérése a felhasználók böngészőinek.
 
-* **AJAX-hívások**: weblap értékek, válaszidők és hibaarányok beolvasása.
+* **AJAX-hívások**: Weblap-értékek, válaszidők és hibaarányok beolvasása.
 
 * **Felhasználók és munkamenetek száma**.
 
-* **Teljesítményszámlálók**: adatok lekérése a Windows vagy Linux rendszerű kiszolgálói gépekről származó, például a Processzor, memória, és a hálózati használati.
+* **Teljesítményszámlálók**: Adatok lekérése a Windows vagy Linux rendszerű kiszolgálói gépekről származó, például a Processzor, memória és a hálózati forgalom.
 
-* **Gazdadiagnosztika**: adatok lekérése a Docker vagy az Azure.
+* **Gazdadiagnosztika**: Adatok lekérése a Docker vagy az Azure.
 
-* **Diagnosztikai nyomkövetési naplók**: adatok beolvasása az alkalmazásból, hogy a nyomkövetési események összehasonlíthatja a kérésekkel.
+* **Diagnosztikai nyomkövetési naplók**: Adatok beolvasása az alkalmazásból, hogy a nyomkövetési események összehasonlíthatja a kérésekkel.
 
-* **Egyéni események és mérőszámok**: magát az ügyfél vagy kiszolgáló kódjában, és ezáltal üzleti eseményeket követhet, például eladott tételek vagy megnyert játékok írt adatok lekérése.
+* **Egyéni események és mérőszámok**: Adatok, amelyeket Ön írt az ügyfél vagy kiszolgáló kódjában, és ezáltal üzleti eseményeket követhet, például eladott tételek vagy megnyert játékok beolvasása.
 
 A következő táblázat sorolja fel, és ismerteti az integrációs forgatókönyveket:
 
@@ -271,9 +271,9 @@ A következő táblázat sorolja fel, és ismerteti az integrációs forgatókö
 | --------------------- | :---------- |
 |[Alkalmazástérkép](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Az alkalmazás összetevői, alapvető metrikákkal és riasztásokkal.||
 |[Diagnosztikai keresés például adatok](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Események keresése és szűrése, például kérések, kivételek, függőségi hívások, naplókivonatok és lapmegtekintések.||
-|[Összesített adatok Metrikaböngészője](https://docs.microsoft.com/azure/application-insights/app-insights-metrics-explorer)|Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása.||
+|[Összesített adatok Metrikaböngészője](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása.||
 |[Irányítópultok](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén.||
-|[Live Metrics Stream](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)|Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e.||
+|[Live Metrics Stream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e.||
 |[Elemzés](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|A hatékony lekérdezési nyelvnek köszönhetően válaszokat kaphat az alkalmazás teljesítményére és használatára vonatkozó legégetőbb kérdésekre.||
 |[Automatikus és manuális riasztások](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|Automatikus értesítést az alkalmazás normál telemetriai utaló alkalmazkodni és jelzik, ha valami kívül a szokásos minta. Riasztásokat állíthat be az egyéni vagy normál metrikák adott szintjeire is.||
 |[Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|A kód teljesítményadatainak megjelenítéséhez. A hívásláncokból a kódba ugorhat.||
@@ -288,11 +288,11 @@ Az Azure Security Center fenyegetésészlelése úgy, hogy automatikusan összeg
 
 A Security Center olyan fejlett biztonsági elemzéseket alkalmaz, amelyek messze túlmutatnak az aláírás-alapú megközelítéseken. A nagy mennyiségű adat vívmányok vonatkozik, és [gépi tanulás](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technológiák ki az események között a teljes felhőalapú hálóban. Ily módon a lehetetlen volna azonosítani manuális módszerekkel és a támadások fejlődésének előrejelzésére szolgáló észlel. Ezek a biztonsági elemzések a következők:
 
-* **Integrált fenyegetésészlelési intelligencia**: az ismert úgy tűnik, a Microsoft-termékek és szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft Security Response Center (MSRC), és külső hírcsatornák globális fenyegetésészlelési intelligencia alkalmazásával.
+* **Integrált fenyegetésészlelési intelligencia**: Megkeresi az ismert, a Microsoft-termékek és szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft Security Response Center (MSRC), és külső hírcsatornák globális fenyegetésészlelési intelligencia alkalmazásával.
 
-* **Viselkedéselemzés**: ismert minták alapján deríti fel a rosszindulatú működést alkalmazza.
+* **Viselkedéselemzés**: Ismert minták alapján deríti fel a rosszindulatú működést alkalmazza.
 
-* **Anomáliadetektálás**: statisztikai adatokon alapuló profilok használatával összeállít egy kiinduló alapkonfigurációt. Jelzi a meghatározott alapkonfigurációktól való olyan eltéréseket, amelyek potenciális támadásként értelmezhetők.
+* **anomáliadetektálás**: Statisztikai adatokon alapuló profilok használatával összeállít egy kiinduló alapkonfigurációt. Jelzi a meghatározott alapkonfigurációktól való olyan eltéréseket, amelyek potenciális támadásként értelmezhetők.
 
 Számos biztonsági műveletek és az incidensmegoldási csapat támaszkodik egy SIEM-megoldás kiindulási pontként sorolása és kivizsgálása biztonsági riasztásokat. Az Azure Log Integration szinkronizálhatja a Security Center riasztásainak és a virtuális gép biztonsági eseményekről, az Azure diagnosztikai és vizsgálati naplókat, a közel valós időben a Log Analytics vagy az SIEM-megoldás által összegyűjtött.
 
@@ -367,24 +367,24 @@ Napló integrációja jelenleg támogatja az Azure-Tevékenységnaplók integrá
 |Diagnosztikai naplók (erőforrás-naplók)|  Igen|
 |Virtuális gépek naplóinak|   Igen, és nem a JSON keresztül továbbított események|
 
-[Ismerkedés az Azure Log Integration](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started): Ez az oktatóanyag végigvezeti az Azure Log Integration telepítése és integrálása az Azure storage-ból naplók, Azure-Tevékenységnaplók, az Azure Security Center riasztásainak és az Azure AD auditnaplóinak.
+[Ismerkedés az Azure Log Integration](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started): Ez az oktatóanyag végigvezeti az Azure Log Integration telepítése, és integrálja az Azure storage-ból naplók, Azure-Tevékenységnaplók, az Azure Security Center riasztásainak és az Azure AD auditnaplóinak.
 
 SIEM integrációs forgatókönyvek:
 
 * [Partner-konfigurációs lépések](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): Ebben a blogbejegyzésben bemutatja, hogyan konfigurálja az Azure Log Integration partnermegoldások Splunk, HP ArcSight és az IBM QRadar dolgozhat.
 
-* [Az Azure Log Integration – gyakori kérdések](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad választ.
+* [Gyakori kérdések az Azure Log Integration](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad választ.
 
-* [A Security Center riasztásainak integrálása az Azure Log Integration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): Ez a cikk ismerteti, hogyan lehet szinkronizálni a Security Center riasztásait, virtuális gép biztonsági események Azure-beli diagnosztikai naplók, által gyűjtött és az Azure vizsgálati naplók a Log Analytics vagy az SIEM megoldás.
+* [A Security Center riasztásainak integrálása az Azure Log Integration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): Ez a cikk ismerteti, hogyan lehet szinkronizálni a Security Center riasztásait, virtuális gép biztonsági események Azure-beli diagnosztikai naplók, által gyűjtött, és az Azure vizsgálati naplók a Log Analytics vagy az SIEM-megoldással.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A vizsgálati és naplózási](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): fenntartásával látható-e, és gyorsan válaszol a megfelelő időben a biztonsági riasztások az adatok védelme.
+- [A vizsgálati és naplózási](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): Láthatóság fenntartásával, és gyorsan válaszol a megfelelő időben a biztonsági riasztások az adatok védelmére.
 
-- [Biztonsági naplózás és a napló gyűjtemény Azure-ban](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Győződjön meg arról, hogy az Azure-példányain a megfelelő biztonsági és vizsgálati naplókat gyűjti a beállítások kényszerítéséhez.
+- [Biztonsági naplózás és a napló gyűjtemény Azure-ban](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Győződjön meg arról, hogy az Azure-példányain a megfelelő biztonsági és vizsgálati naplókat gyűjti ezeket a beállításokat kényszeríthetnek.
 
-- [Egy naplózási beállítások konfigurálása](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Ha Ön egy helygyűjtemény rendszergazdája, beolvasása, az egyes felhasználók műveletek előzményeit és a egy adott dátumtartományban alatt végrehajtott műveleteket előzményeit. 
+- [Egy naplózási beállítások konfigurálása](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Ha Ön egy helygyűjtemény rendszergazdája, beolvasni az egyes felhasználók műveletek előzményeit és a egy adott dátumtartományban alatt végrehajtott műveleteket előzményeit. 
 
-- [Naplókeresés az Office 365 biztonsági és megfelelőségi központban](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): az Office 365 Security & Compliance Centerben használatával egységes Naplókeresés, és megtekintheti a felhasználói és rendszergazdai tevékenységeket a szervezet Office 365-höz.
+- [Naplókeresés az Office 365 biztonsági és megfelelőségi központban](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Az Office 365 Security & Compliance Centerben használatával egységes Naplókeresés, és megtekintheti a felhasználói és rendszergazdai tevékenységeket a szervezet Office 365-höz.
 
 

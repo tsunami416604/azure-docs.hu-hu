@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 0112853bf36c6b7b594400d303234d204b2ea24a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108292"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198643"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>A gyakori feladatokhoz az Azure digitális Twins API-k lekérdezése
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja a lekérdezési minták segítséget nyújtanak az Azure dig
 
 Ez a szakasz bemutatja a lekérdezés a kiépített tárolóhelyek további információt szeretne kapni. Győződjön meg a mintalekérdezések, és cserélje le a helyőrzőket a telepítő a értékekkel rendelkező hitelesített első HTTP-kérelmekre. 
 
-- Gyökércsomópontokat beolvasása.
+- Tárolóhelyek, amelyek gyökércsomópontokat beolvasása.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
@@ -38,7 +38,7 @@ Ez a szakasz bemutatja a lekérdezés a kiépített tárolóhelyek további info
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Tárolóhelyek szülővel az adott helyet azonosító lekérése, és függőségeket tartalmaznak. 
+- Tárolóhelyek és a saját eszköz/érzékelőitől, szülővel az adott hely azonosítója, és amely szinten 2 – 5 [képest az adott hely](how-to-navigate-apis.md#api-navigation). 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
@@ -91,7 +91,7 @@ Ez a szakasz bemutatja az egyes lekérdezések szerepkörök és hozzárendelés
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-device-management"></a>Lekérdezések eszközkezeléshez
+## <a name="queries-for-devices"></a>Lekérdezések eszközökhöz
 
 Ez a szakasz bemutatja, hogyan használhatja a felügyeleti API-k információkat lehet lekérni az eszközökre vonatkozó példákat. Minden API-hívást kell hitelesített első HTTP-kérelmekre.
 
@@ -167,7 +167,7 @@ Ez a szakasz bemutatja, hogyan használhatja a felügyeleti API-k információka
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Az IoT hub kapcsolati karakterlánc lekérése egy adott eszközt.
+- Az eszközt az IoT Hub eszköz kapcsolati karakterláncának lekérése.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: aa09183d1dbb78822b6c46333dada3ed7f54811a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c076d425a7740bd0eb6398e6b8720fa873f2fc30
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554571"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201261"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Hogyan formázhatja a JSON-lekérdezési teljesítmény maximalizálása 
 
@@ -200,4 +200,4 @@ Ha egy tulajdonság lehetséges értékek nagy számú, célszerű különböző
 
 ## <a name="next-steps"></a>További lépések
 
-Ezeket az irányelveket a gyakorlatba, tekintse meg [Azure Time Series Insights-lekérdezés szintaxisa](/rest/api/time-series-insights/time-series-insights-reference-query-syntax) további információ a lekérdezés szintaxisa a TSI adatelérési REST API számára.
+Ezeket az irányelveket a gyakorlatba, tekintse meg [Azure Time Series Insights-lekérdezés szintaxisa](/rest/api/time-series-insights/ga-query-syntax) további információ a lekérdezés szintaxisa a TSI adatelérési REST API számára.

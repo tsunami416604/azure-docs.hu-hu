@@ -1,5 +1,5 @@
 ---
-title: Az Azure Traffic Manager – gyakori kérdések |} A Microsoft Docs
+title: Az Azure Traffic Manager – gyakori kérdések
 description: Ez a cikk ismerteti a Traffic Managerrel kapcsolatos gyakori kérdésekre adott válaszok
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963572"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200047"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -437,8 +437,8 @@ Nincs nem negatív, a beágyazott profilok használata díjköteles.
 
 A TRAFFIC Manager díjszabása két részből áll: endpoint állapot-ellenőrzések és több millió DNS-lekérdezések
 
-* Végpont állapot-ellenőrzések: semmilyen díjat nem egy gyermek profil-végpontként egy szülő-profil konfigurálásakor. A gyermek-profilban a végpontok figyelése a szokásos módon történik.
-* DNS-lekérdezések: minden egyes lekérdezés csak egyszer tranzakciónak. A szülő-profil csak egy lekérdezést a szülő-profilt, amely adja vissza egy végpontot egy gyermek profil beleszámít.
+* Végpont állapot-ellenőrzések: Nem jár egy gyermek profil-végpontként egy szülő-profil konfigurálásakor. A gyermek-profilban a végpontok figyelése a szokásos módon történik.
+* DNS-lekérdezéseket: Minden egyes lekérdezés csak egyszer akkor számít. A szülő-profil csak egy lekérdezést a szülő-profilt, amely adja vissza egy végpontot egy gyermek profil beleszámít.
 
 További részletek: a [díjszabását ismertető lapon a Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 

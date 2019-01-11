@@ -12,12 +12,12 @@ ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c1ebcae04b51fbf18da22872e3e4160a37a7e2fe
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408000"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201159"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Batch AI-feladat bemenete és kimenete az Azure Storage Store
 
@@ -79,7 +79,7 @@ Egy feladat az Azure CLI-vel létrehozott egy Azure Storage kötet csatlakoztat�
 - < FILE_SHARE_NAME > - a fájlmegosztás neve
 - < BLOB_CONTAINER_NAME > - a Blob-tároló nevét.
 
-Az Azure Batch AI SDK-k az Azure Storage kötet csatlakoztatása, állítsa be a `mount_volumes` (Python) vagy `MountVolumes` (C#, Java) tulajdonságának `JobCreateParameters`. Meg kell adnia a tárfiók hitelesítő adatait, amikor az Azure Batch AI SDK-t tartalmazó kötet. A kötetek csatlakoztatása a sémáinak megtekintése [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python), [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet), és [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai._mount_volumes?view=azure-java-stable).
+Az Azure Batch AI SDK-k az Azure Storage kötet csatlakoztatása, állítsa be a `mount_volumes` (Python) vagy `MountVolumes` (C#, Java) tulajdonságának `JobCreateParameters`. Meg kell adnia a tárfiók hitelesítő adatait, amikor az Azure Batch AI SDK-t tartalmazó kötet. A kötetek csatlakoztatása a sémáinak megtekintése [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python), [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet), és [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai.mountvolumes?view=azure-java-stable).
 
 ### <a name="mount-volumes-to-a-cluster"></a>A fürt csatlakoztatott köteteit
 

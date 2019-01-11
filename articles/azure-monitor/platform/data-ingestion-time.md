@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: d8d8e344ce9ee317a7f864492514162b1dc085f9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882688"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213127"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>A Log Analytics Data betöltési idő
 Az Azure Log Analytics egy nagy méretű szolgáltatás az Azure monitorban ellátó – több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küld a. Gyakran előfordulnak az adatokat a begyűjtésük után válnak elérhetővé a Log Analytics szükséges idő kapcsolatos kérdésekre. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
@@ -46,7 +46,7 @@ Az ügynökök és felügyeleti megoldásokat különböző stratégiák segíts
 Annak érdekében, hogy a Log Analytics-ügynök egy egyszerűsített, az ügynök puffereli a naplókat, és rendszeres időközönként feltölt azokat a Log Analytics szolgáltatásba. Töltse fel gyakorisága 30 másodperc és az adatok típusától függően 2 perc közé esik. A legtöbb adatfeltöltés 1 perc alatt. Hálózati körülmények hátrányosan befolyásolhatják a késést az adatok Log Analytics Adatbetöltési pont eléréséhez.
 
 ### <a name="azure-logs-and-metrics"></a>Az Azure-naplók és mérőszámok 
-Tevékenységnapló adatainak elérhetővé a Log Analytics körülbelül 5 percet igénybe vehet. Diagnosztikai naplók és a metrikák adatait a válnak elérhetővé, attól függően, az Azure-szolgáltatás 1 – 5 percet is igénybe vehet. Ezután egy további 30 – 60 másodpercre naplók és mérőszámok az adatok 3 percenként, a Log Analytics Adatbetöltési pont küldendő vesz igénybe.
+Tevékenységnapló adatainak elérhetővé a Log Analytics körülbelül 5 percet igénybe vehet. Diagnosztikai naplók és mérőszámok adatait percet is igénybe vehet 1 – 15 válnak elérhetővé a feldolgozás, attól függően, az Azure-szolgáltatás. Ha elérhető, majd egy további 30 – 60 másodpercre naplók és mérőszámok az adatok 3 percenként, a Log Analytics Adatbetöltési pont küldendő vesz igénybe.
 
 ### <a name="management-solutions-collection"></a>Felügyeleti megoldások gyűjtemény
 Egyes megoldások ne gyűjtsön adataikat az ügynök, és előfordulhat, hogy a módszert egy gyűjtemény, amely további késleltetést. Egyes megoldások adatgyűjtést rendszeres időközönként közel valós idejű gyűjtemény kísérlet nélkül. Példák a következők:
@@ -73,22 +73,60 @@ Ez a folyamat jelenleg körülbelül 5 percet vesz igénybe esetén adatok menny
 
 
 ## <a name="checking-ingestion-time"></a>Betöltési idő ellenőrzése
-Használhatja a **szívverés** becsléséhez késés, adatok ügynököktől származó tábla. Mivel szívverés egyszer küld egy perc, a különbség az aktuális idő és az utolsó szívverés rekord ideális lesz egy percet, minél közelebb.
+Betöltési idő eltérőek lehetnek a különböző körülmények között különböző erőforrásokat. Napló lekérdezések segítségével azonosíthatja a környezet konkrét viselkedését.
 
-Használja a következő lekérdezést a legmagasabb késéssel rendelkező azon számítógépek listázásához.
+### <a name="ingestion-latency-delays"></a>Adatbetöltési késés késések
+Egy adott rekord késését eredményét összehasonlításával mérni tudja az [ingestion_time()](/azure/kusto/query/ingestiontimefunction) függvény a _TimeGenerated_ mező. Ezeket az adatokat a különböző összesítések használható található Adatbetöltési késés működését. Vizsgálja meg az egyes PERCENTILIS visszaadása a betöltési időt nyerhet a nagy mennyiségű adat. 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | top 50 by IngestionTime asc
+Például a következő lekérdezés bemutatják, hogy mely számítógépek volt a legnagyobb feldolgozási idő az aktuális nap során: 
 
+``` Kusto
+Heartbeat
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc  
+```
  
-Használja a következő lekérdezést a nagy méretű környezetekben a késés, az összes számítógép eltérő százalékos foglalják össze.
+Ha szeretne részletes elemzést egy időszakon belül egy adott számítógép betöltési időt, használja a következő lekérdezés az adatok egy Graph ábrázoló: 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | summarize percentiles(IngestionTime, 50,95,99)
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart  
+```
+ 
+Számítógép betöltési idő megjelenítése az ország, találhatók az IP-címüket alapuló használja a következő lekérdezést: 
 
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+```
+ 
+Az ügynök származó különböző adattípusok különböző Adatbetöltési késés idő, előfordulhat, így az előző lekérdezésekhez más típusú is használható. Vizsgálja meg a különböző Azure-szolgáltatások betöltési ideje használja a következő lekérdezést: 
 
+``` Kusto
+AzureDiagnostics 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+```
+
+### <a name="resources-that-stop-responding"></a>Erőforrások, amelyek nem válaszol 
+Bizonyos esetekben egy erőforrást sikerült nem küld adatokat. Szeretné megtudni, ha egy erőforrás adatokat küld-e, tekintse meg a legutóbbi rekord, amely segítségével azonosítható a standard _TimeGenerated_ mező.  
+
+Használja a _szívverés_ táblázat, amelyben ellenőrizni egy virtuális gép rendelkezésre állását, mivel szívverést az ügynök által küldött percenként egyszer. Használja a következő lekérdezés az aktív számítógépek, amelyek még nem jelentettek szívverés nemrég listázásához: 
+
+``` Kusto
+Heartbeat  
+| where TimeGenerated > ago(1d) //show only VMs that were active in the last day 
+| summarize NoHeartbeatPeriod = now() - max(TimeGenerated) by Computer  
+| top 20 by NoHeartbeatPeriod desc 
+```
 
 ## <a name="next-steps"></a>További lépések
 * Olvassa el a [szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) Log Analytics.

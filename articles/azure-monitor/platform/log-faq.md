@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107227"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214742"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -63,7 +63,7 @@ V: Virtuális gépek naplóinak megtekintéséhez meg kell olvasási engedéllye
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>K. Miért a saját munkaterület OMS-portál eléréséhez lehet, de jelenik meg a hiba "van nincs hozzáférés" az Azure Portalon?  
 
-V: A munkaterület az Azure-ban hozzárendelt Azure-engedélyeket kell rendelkeznie. Vannak bizonyos esetekben, ahol nem lehetséges, hogy rendelkezik megfelelő hozzáférési engedélyekkel. Ezekben az esetekben a rendszergazda kell biztosítania, az engedélyeket a Azure.See [Azure-bA az OMS-portálon](/../../azure-monitor/platform/oms-portal-transition.md) további információt.
+V: A munkaterület az Azure-ban hozzárendelt Azure-engedélyeket kell rendelkeznie. Vannak bizonyos esetekben, ahol nem lehetséges, hogy rendelkezik megfelelő hozzáférési engedélyekkel. Ezekben az esetekben a rendszergazda kell biztosítania, az engedélyeket a Azure.See [Azure-bA az OMS-portálon](oms-portal-transition.md) további információt.
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>K. Miért nem nem látok adatforrásnézet-tervezőből belépési naplók? 
 V: Nézettervező csak naplók rendelkező közreműködői engedélyekkel rendelkező vagy újabb verziója érhető el.

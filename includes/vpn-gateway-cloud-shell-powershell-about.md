@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/25/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6a0ea318f2e9b8f392ac7c0a1f1091c062c59d41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d0f43a4e031ccd24ced5bc66ea33564e3a0e44c3
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852356"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193391"
 ---
 Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. A **Másolás** gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz. Néhány módszer a Cloud Shell indításához:
 
@@ -26,4 +26,4 @@ Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja
 
 Ha nem szeretné használni az Azure Cloud Shellt, telepíthet PowerShell helyileg helyette. Ha a helyi telepítése és használata PowerShell választja, mindenképpen telepítse a legújabb verzióját, az Azure Resource Manager PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez.
 
-Helyileg futó PowerShell verziója található, használja a 'Get-Module - ListAvailable AzureRM' parancsmagot. Frissítéséhez lásd [Azure PowerShell-modul telepítéséhez](/powershell/azure/install-azurerm-ps). További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+Helyileg futó PowerShell verziója található, használja a 'Get-Module - ListAvailable AzureRM' parancsmagot. Frissítéséhez lásd [Azure PowerShell-modul telepítéséhez](/powershell/azure/azurerm/install-azurerm-ps). További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/azurerm/overview) foglalkozó témakörben talál.

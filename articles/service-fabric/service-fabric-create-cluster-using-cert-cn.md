@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 191471d3538a9151827ee24a5887aa559383345b
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 78812f7bcce82090802672e3e232e713f0d047d1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785664"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214113"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Ujjlenyomat helyett a tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Tanúsítvány köznapi nevek a fürtök teszi tanúsítványok kezelése sokkal egyszerűbb. Ez a cikk ismerteti, hogyan helyezhet üzembe Service Fabric-fürt helyett a tanúsítvány ujjlenyomata a tanúsítvány köznapi nevét használni.
  
 ## <a name="get-a-certificate"></a>A tanúsítvány beszerzése
-Először kérje le a tanúsítványt egy [hitelesítésszolgáltatói (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevével kell lennie a fürt állomásneve.  Például "myclustername.southcentralus.cloudapp.azure.com."  
+Először kérje le a tanúsítványt egy [hitelesítésszolgáltatói (CA)](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevével kell lennie az egyéni tartomány, a saját és a tartomány a tartományregisztrálótól vásárolt. Például "azureservicefabricbestpractices.com;" azok, amelyek nem Microsoft-alkalmazottak számára, akikkel nem építhető ki tanúsítványainak MS tartományok, ezért nem használhatja az LB-vagy Traffic Manager DNS-nevek a tanúsítvány köznapi nevek, és üzembe kell egy [Azure DNS-zóna](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) Ha egyéni az Azure feloldható legyen a tartományhoz. Érdemes azt is, az Ön tulajdonában, a fürt "felügyeleti végpont", ha azt szeretné, hogy az egyéni tartomány alias a fürt portal egyéni tartomány deklarálható.
 
 Tesztelési célokra, ingyenes és nyílt hitelesítésszolgáltatójától lehetett beolvasni egy hitelesítésszolgáltató által aláírt tanúsítvány.
 
 > [!NOTE]
-> Önaláírt tanúsítványokat, beleértve a jönnek létre, ha az Azure Portalon, a Service Fabric-fürt üzembe helyezése nem támogatott.
+> Önaláírt tanúsítványokat, beleértve a jönnek létre, ha az Azure Portalon, a Service Fabric-fürt üzembe helyezése nem támogatott. 
 
 ## <a name="upload-the-certificate-to-a-key-vault"></a>Töltse fel a tanúsítványt a key vault
 Az Azure-ban egy Service Fabric-fürtöt helyezünk üzembe egy virtuálisgép-méretezési csoportot a.  Töltse fel a tanúsítványt a key vault.  Amikor üzembe helyezi a fürtöt, a tanúsítvány telepítése a virtuális gép méretezési csoportot, amely a fürt fut, a.

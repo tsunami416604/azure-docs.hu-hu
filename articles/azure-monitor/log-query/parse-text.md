@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185783"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214130"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>A Log Analytics szöveges adatok elemzése
 Egyes Log Analytics által gyűjtött adatok egy-egy tulajdonság több információt tartalmazni fogja. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Reguláris kifejezések
-Ha az adatok egy reguláris kifejezéssel azonosíthatók, használhatja [reguláris kifejezéseket használó függvények](/azure/kusto/query/re2) egyéni értékeket kibontásához. Az alábbi példában [kinyerése](/kusto/query/extractfunction) kezdetét vette az a _UPN_ mezőt _AzureActivity_ rögzíti, és visszatér a különböző felhasználók.
+Ha az adatok egy reguláris kifejezéssel azonosíthatók, használhatja [reguláris kifejezéseket használó függvények](/azure/kusto/query/re2) egyéni értékeket kibontásához. Az alábbi példában [kinyerése](/azure/kusto/query/extractfunction) kezdetét vette az a _UPN_ mezőt _AzureActivity_ rögzíti, és visszatér a különböző felhasználók.
 
 ```Kusto
 AzureActivity

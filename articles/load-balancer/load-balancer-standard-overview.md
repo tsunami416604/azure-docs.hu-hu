@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2d4808aaccd704f4c54d44cfe7d45ddd84cf0e17
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438761"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198677"
 ---
-# <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer Standard áttekintése
+# <a name="azure-standard-balancer-overview"></a>Az Azure standard szintű Balancer áttekintése
 
 Az Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozása. Load Balancer bejövő, valamint a kimenő forgatókönyveket is használható, és alacsony késleltetésű, nagy átviteli sebességet, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető. 
 
@@ -89,12 +89,12 @@ A standard Load Balancer többdimenziós metrikák az Azure monitoron keresztül
 
 | Metrika | Leírás |
 | --- | --- |
-| Virtuális IP-cím elérhetősége | Load Balancer Standard folyamatosan gyakorol az adatok útvonalat egy adott régión belül a terheléselosztó előtérrendszerét, egészen az SDN-verem, amely támogatja a virtuális Géphez való. Kifogástalan állapotú példányok továbbra is, a mérés követi az alkalmazás elosztott terhelésű forgalmat az adott elérési úton. Az adatok elérési útja, az ügyfelek által használt is ellenőrzi. A mérték az alkalmazás számára, és nem ütközik más műveleteket.|
-| Dedikált IP-CÍMMEL rendelkezésre állása | Load Balancer Standard használ egy elosztott Állapotfigyelő szolgáltatás, amely figyeli az alkalmazás végponti állapotát a konfigurációs beállításoknak megfelelően-tesztelés. Ez a metrika összesítést tartalmaz, vagy egy végpont szűrt-nézetben minden egyes példány végpont a terheléselosztóban tárolókészlet.  Láthatja, hogyan a Load Balancer megtekinti a állapot-mintavételi konfigurációban aszinkronitást az alkalmazás állapotát.
-| Szinkronizálás a mi csomagok | Load Balancer Standard nem TCP-kapcsolatok leáll vagy TCP vagy UDP packet flow interakcióba. Folyamatok és azok kézfogások mindig a forrás- és a Virtuálisgép-példány között vannak. A TCP protokoll forgatókönyvek hatékonyabb elhárításához végezhet SZIN felhasználása csomagok számlálók tudni, hogy hány TCP-kapcsolat kísérletet tesz. A metrika a fogadott TCP SZIN csomagok számát jelenti.|
-| SNAT-kapcsolatok | Load Balancer Standard előtérbeli nyilvános IP-címre van masqueraded kimenő folyamatok számát jelenti. SNAT portjait egy kimeríthető erőforrást. Ez a metrika biztosíthat az arra utalhat, hogy hogyan érdemes az alkalmazás van szüksége az SNAT a kimenő folyamatokhoz.  Sikeres és sikertelen kimenő SNAT folyamatok számlálói készül jelentés, és használható ismertetünk az elhárításukkal és a kimenő forgalom állapotának ismertetése.|
-| Bájt számlálók | Load Balancer Standard jelentések az előtér-feldolgozott adatokat.|
-| Csomag-számlálók | Load Balancer Standard a jelentés a feldolgozott előtér-csomagokat.|
+| Virtuális IP-cím elérhetősége | A standard Load Balancer folyamatosan gyakorol az adatok útvonalat egy adott régión belül a terheléselosztó előtérrendszerét, egészen az SDN-verem, amely támogatja a virtuális Géphez való. Kifogástalan állapotú példányok továbbra is, a mérés követi az alkalmazás elosztott terhelésű forgalmat az adott elérési úton. Az adatok elérési útja, az ügyfelek által használt is ellenőrzi. A mérték az alkalmazás számára, és nem ütközik más műveleteket.|
+| Dedikált IP-CÍMMEL rendelkezésre állása | A standard Load Balancer egy elosztott Állapotfigyelő szolgáltatás, amely figyeli az alkalmazás végponti állapotát a konfigurációs beállításoknak megfelelően tesztelés használ. Ez a metrika összesítést tartalmaz, vagy egy végpont szűrt-nézetben minden egyes példány végpont a terheléselosztóban tárolókészlet.  Láthatja, hogyan a Load Balancer megtekinti a állapot-mintavételi konfigurációban aszinkronitást az alkalmazás állapotát.
+| Szinkronizálás a mi csomagok | A standard Load Balancer nem TCP-kapcsolatok leáll, és TCP vagy UDP packet flow interakcióba. Folyamatok és azok kézfogások mindig a forrás- és a Virtuálisgép-példány között vannak. A TCP protokoll forgatókönyvek hatékonyabb elhárításához végezhet SZIN felhasználása csomagok számlálók tudni, hogy hány TCP-kapcsolat kísérletet tesz. A metrika a fogadott TCP SZIN csomagok számát jelenti.|
+| SNAT-kapcsolatok | A standard Load Balancer előtérbeli nyilvános IP-címre van masqueraded kimenő folyamatok számát jelenti. SNAT portjait egy kimeríthető erőforrást. Ez a metrika biztosíthat az arra utalhat, hogy hogyan érdemes az alkalmazás van szüksége az SNAT a kimenő folyamatokhoz.  Sikeres és sikertelen kimenő SNAT folyamatok számlálói készül jelentés, és használható ismertetünk az elhárításukkal és a kimenő forgalom állapotának ismertetése.|
+| Bájt számlálók | A standard Load Balancer az adatokat egy előtér-feldolgozott jelentések.|
+| Csomag-számlálók | A standard Load Balancer jelentés a feldolgozott előtér-csomagokat.|
 
 Felülvizsgálat [Standard Load Balancer diagnosztikai veszik górcső alá részletes](load-balancer-standard-diagnostics.md).
 
@@ -202,7 +202,7 @@ SKU-k, amelyek nem módosítható. Kövesse az ebben a szakaszban egy erőforrá
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Load Balancer Standard érhető el jelenleg az összes nyilvános régióban.
+A standard Load Balancer jelenleg nyilvános felhő minden régióban.
 
 ## <a name="sla"></a>SLA
 

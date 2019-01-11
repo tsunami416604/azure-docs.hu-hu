@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67d81387a347bb2061457bfd24553f304e965f38
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107429"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198762"
 ---
 # <a name="about-azure-vm-backup"></a>Azure virtuális gépek biztonsági mentéséről
 
@@ -132,11 +132,10 @@ A visszaállítási művelet áll két fő feladat: adatok másolása a kiválas
 
 Javasoljuk, hogy ezeket a gyakorlatokat a virtuális gép biztonsági mentéseinek konfigurálása során a következő:
 
-- Frissítse az azonnali helyreállítási pont Védettként tárolók. Tekintse át a [előnyöket](backup-upgrade-to-vm-backup-stack-v2.md), [szempontok](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), majd folytassa a következő frissítési [utasításokat](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
 - Érdemes lehet módosítani az alapértelmezett házirend idő megadott (az ex. Ha az alapértelmezett házirend idő 12:00 -kor, érdemes lehet növekszik, a percek) amikor a pillanatképet készíteni az adatokról biztosításához optimálisan használja az erőforrásokat.
 - Prémium szintű virtuális gép biztonsági mentése nem azonnali RP-szolgáltatásról körülbelül 50 %-a teljes tárterület fiók foglal le. A biztonsági mentési szolgáltatás ezen a területen, a pillanatkép másolása ugyanazt a tárfiókot, és áthelyezte azt a tárolót igényel.
 - A virtuális gépek visszaállítása egy helyen elérheti, erősen ajánlott különböző használandó [v2-tárfiókok](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) annak érdekében, hogy a célként megadott tárfiók nem leszabályozza. Minden virtuális gép például különböző storage-fiókot (ha 10-es virtuális gépek visszaállítását végzi, akkor fontolja meg 10 különböző storage-fiókok) kell rendelkeznie.
-- 1. szintű tárolási réteg (Pillanatkép) a visszaállítások befejeződik a percek alatt (mivel ez ugyanazt a tárfiókot) szemben a 2. szintű tárolási réteget (tároló), amely órát is igénybe vehet. Azt javasoljuk, hogy használjon [azonnali helyreállítási pont Védettként](backup-upgrade-to-vm-backup-stack-v2.md) funkció a gyorsabb visszaállítás esetekhez, hol érhetők el az adatok 1. szintű (kell-e az adatokat a tároló lehet visszaállítani, akkor időt vesz igénybe).
+- 1. szintű tárolási réteg (Pillanatkép) a visszaállítások befejeződik a percek alatt (mivel ez ugyanazt a tárfiókot) szemben a 2. szintű tárolási réteget (tároló), amely órát is igénybe vehet. Azt javasoljuk, hogy használjon [azonnali visszaállítása](backup-instant-restore-capability.md) funkció a gyorsabb visszaállítás esetekhez, hol érhetők el az adatok 1. szintű (kell-e az adatokat a tároló lehet visszaállítani, akkor időt vesz igénybe).
 - Lemezek száma a határérték képest hogyan nehéz a lemezek IaaS virtuális gépen futó alkalmazások által használt. Győződjön meg arról, ha több lemez egy tárfiókban lévő üzemeltetett. Általános megoldás, ha 5-10 lemezeket vagy több megtalálható az egy tárfiókban, a terhelés kiegyenlítése helyezi el a storage-fiókok egyes lemezek.
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek

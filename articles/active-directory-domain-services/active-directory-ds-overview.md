@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
+ms.date: 01/10/2019
 ms.author: ergreenl
-ms.openlocfilehash: c424ae1865a710593e509372dc2424c0b8b516a0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: ed89954836fe262ba60f7401bd7b040e87b60101
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155167"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215184"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Az Azure Active Directory (AD) Domain Servicesben
 ## <a name="overview"></a>Áttekintés
@@ -65,10 +65,10 @@ A felügyelt tartományhoz az Azure AD tartományi szolgáltatások által üzem
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Az Azure AD tartományi szolgáltatások hibrid cégekhez és vállalkozásokhoz
 A hibrid informatikai infrastruktúrával rendelkező szervezeteknek felhőbeli erőforrásokat és a helyszíni erőforrások felhasználását. Az ilyen szervezeteknek szinkronizálja a azonosító adatok a helyszíni címtárból az Azure AD-bérlővel. Hibrid szervezetek hely több áttelepíteni, a felhőbe, különösen a régi címtáralapú alkalmazások, a helyszíni alkalmazásaikat az Azure AD tartományi szolgáltatások őket hasznos lehet.
 
-Telepítve van az litware Corporation [az Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), hogy szinkronizálja a azonosító adatok a helyszíni címtárból az Azure AD-bérlővel. Az azonosító adatokat szinkronizált felhasználói fiókok, a hitelesítési adatok kivonatait hitelesítés (jelszó-szinkronizálás) és a csoporttagságok tartalmazza.
+Telepítve van az litware Corporation [az Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), hogy szinkronizálja a azonosító adatok a helyszíni címtárból az Azure AD-bérlővel. Az azonosító adatokat szinkronizált felhasználói fiókok, a hitelesítési adatok kivonatait, a hitelesítéshez (Jelszókivonat-szinkronizálás) és a csoporttagságok tartalmazza.
 
 > [!NOTE]
-> **A jelszó-szinkronizálás használata kötelező a hibrid Azure AD tartományi szolgáltatásokat használó szervezetek**. Ez a követelmény oka, hogy a felhasználói hitelesítő adatok szükségesek a felügyelt tartomány Azure AD tartományi szolgáltatások által biztosított NTLM vagy Kerberos-hitelesítési módszerek a felhasználók hitelesítéséhez.
+> **A Jelszókivonat-szinkronizálás használata kötelező a hibrid Azure AD tartományi szolgáltatásokat használó szervezetek**. Ez a követelmény oka, hogy a felhasználói hitelesítő adatok szükségesek a felügyelt tartomány Azure AD tartományi szolgáltatások által biztosított NTLM vagy Kerberos-hitelesítési módszerek a felhasználók hitelesítéséhez.
 >
 >
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634422"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213229"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Az Azure Queue storage műveleteket az Azure PowerShell használatával
 
@@ -77,7 +77,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Az alábbi példában először kapcsolatot hoz létre az Azure Storage a tárfiók környezetét, amely tartalmazza a tárfiók nevét és a hozzáférési kulcs használatával. Ezután meghívja [New-AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue) parancsmaggal hozzon létre egy "queuename" nevű üzenetsor.
+Az alábbi példában először kapcsolatot hoz létre az Azure Storage a tárfiók környezetét, amely tartalmazza a tárfiók nevét és a hozzáférési kulcs használatával. Ezután meghívja [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) parancsmaggal hozzon létre egy "queuename" nevű üzenetsor.
 
 ```powershell
 $queueName = "howtoqueue"
@@ -88,7 +88,7 @@ Információ az elnevezési konvenciók Azure Queue szolgáltatás: [elnevezési
 
 ## <a name="retrieve-a-queue"></a>Egy üzenetsor beolvasása
 
-Lekérdezés és a egy konkrét várólistába vagy a Storage-fiókban lévő összes üzenetsor listájának lekéréséhez. Az alábbi példák bemutatják, hogyan kérheti le a storage-fiókban lévő összes üzenetsor, és a egy konkrét várólistába; mindkét parancsot használja a [Get-AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue) parancsmagot.
+Lekérdezés és a egy konkrét várólistába vagy a Storage-fiókban lévő összes üzenetsor listájának lekéréséhez. Az alábbi példák bemutatják, hogyan kérheti le a storage-fiókban lévő összes üzenetsor, és a egy konkrét várólistába; mindkét parancsot használja a [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) parancsmagot.
 
 ```powershell
 # Retrieve a specific queue

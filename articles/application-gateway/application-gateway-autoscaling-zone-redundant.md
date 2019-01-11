@@ -1,37 +1,31 @@
 ---
-title: Automatikus skálázás és zónaredundáns Application Gateway az Azure-ban (nyilvános előzetes verzió) |} A Microsoft Docs
+title: Automatikus skálázás és zónaredundáns Application Gateway az Azure-ban (nyilvános előzetes verzió)
 description: Ez a cikk információkat tartalmaz, a webes alkalmazás tűzfal kérelem méretbeli korlátokat és kizárási listák az Application Gateway az Azure portal használatával.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 09/26/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 8fb3dce108b59b8df0d330ec642365d2487eae35
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f5885fd2ac76550990c9a56a1d200bbe11555918
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085461"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213756"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
 Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Termékváltozatot kínál a nagyobb teljesítmény és a kritikus fontosságú új funkciók, például a statikus virtuális IP-címek támogatása, az automatikus skálázás és a zone redudancy támogatásának hozzáadása a nyilvános előzetes verziója mostantól elérhetők. Az általánosan elérhető Termékváltozat a meglévő szolgáltatás néhány kivételtől eltekintve ismert korlátozások szakaszban felsorolt támogatott az új v2 szintű Termékváltozatot, az továbbra is. Új v2 SKU-ja a következő fejlesztéseket tartalmazza:
 
-- **Az automatikus skálázás**: az automatikus skálázás Termékváltozat méretezhetők felfelé vagy lefelé alapján módosítja a forgalmat az Application Gateway vagy WAF üzembe helyezésekre a minták betöltése. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ezért a Termékváltozatot kínál valódi rugalmassága. Az új termékváltozatban az Application Gateway működhet, mind a rögzített kapacitás (az automatikus skálázás le van tiltva), valamint automatikus skálázás engedélyezése mellett módban. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös, amelyeket a nagy mennyiségű eltérések az alkalmazás forgalmának az alkalmazásokban.
+- **Az automatikus skálázás**: Az automatikus skálázás Termékváltozat az Application Gateway vagy WAF üzembe helyezésekre alapuló forgalmi terhelés minták módosítása vagy is méretezhetők. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ezért a Termékváltozatot kínál valódi rugalmassága. Az új termékváltozatban az Application Gateway rögzített kapacitás (az automatikus skálázás le van tiltva) és az automatikus skálázás engedélyezése mellett módban is működhet. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös, amelyeket a nagy mennyiségű eltérések az alkalmazás forgalmának az alkalmazásokban.
    
    > [!NOTE]
    > Az automatikus skálázás jelenleg nem áll rendelkezésre a WAF Termékváltozat. WAF konfigurálása rögzített kapacitás üzemmódot, az automatikus skálázási mód helyett.
-- **A redundancia zóna**: egy Application Gateway vagy WAF üzembe helyezés több rendelkezésre állási zónában üzembe helyezhető, és minden zónában egy Traffic Manager külön Application Gateway-példány üzembe szükségtelenné is kiterjedhetnek. Egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, így biztosítása hiba zónarugalmasságot választhat. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
-- **Nagyobb teljesítmény**: az automatikus skálázás Termékváltozat kínál akár 5 X jobb SSL kiszervezési teljesítmény az általánosan elérhető Termékváltozat képest.
+- **A redundancia zóna**: Egy Application Gateway vagy WAF üzembe helyezés több rendelkezésre állási zónában, minden zónában egy Traffic Manager üzembe helyezése és léptetéses külön Application Gateway-példány eltávolítása is kiterjedhetnek. Egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, így biztosítása hiba zónarugalmasságot választhat. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
+- **Nagyobb teljesítmény**: Az automatikus skálázás Termékváltozatot kínál legfeljebb 5 X nagyobb SSL kiszervezheti a teljesítmény az általánosan elérhető Termékváltozat képest.
 - **Központi telepítési és frissítési gyorsabb** az automatikus skálázás Termékváltozat biztosít, mint a korábban megszokott Termékváltozat általánosan elérhető üzembe helyezési és frissítési gyorsabb.
-- **Statikus virtuális IP-CÍMEK**: az application gateway virtuális IP-CÍMEK mostantól támogatja a virtuális IP-cím statikus típusa kizárólag. Így biztosítható, hogy az Application Gatewayhez társított virtuális IP-cím újraindítást követően se módosuljon.
+- **Statikus virtuális IP-CÍMEK**: Az application gateway virtuális IP-CÍMEK mostantól támogatja a statikus VIP típusa kizárólag. Így biztosítható, hogy az Application Gatewayhez társított virtuális IP-cím újraindítást követően se módosuljon.
 
 > [!IMPORTANT]
 > Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -39,10 +33,10 @@ Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Te
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
-Az automatikus skálázás Termékváltozat érhető el az USA keleti RÉGIÓJA 2, USA középső régiója, USA 2. nyugati régiója, közép-Franciaország, Nyugat-Európa és Délkelet-Ázsia.
+Az automatikus skálázás Termékváltozat az USA keleti RÉGIÓJA 2, USA középső régiója, USA 2. nyugati régiója, USA északi középső Régiója, USA nyugati RÉGIÓJA, USA déli középső Régiója, közép-Franciaország, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Délkelet-Ázsia és kelet-Japánban érhető el.
 
 ## <a name="pricing"></a>Díjszabás
-Az előzetes időszakban nem jár költségekkel. Díjköteles az erőforrások eltérő Alkalmazásátjáró, például a Key Vault, a virtuális gépek stb. 
+Az előzetes időszakban nem jár költségekkel. Alkalmazásátjáró, például a Key Vault, a virtuális gépeket, és így tovább naplóátvitelen kívüli egyéb erőforrásokra számlázzuk ki. 
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 

@@ -1,19 +1,19 @@
 ---
 title: Képek feltöltése az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
 description: A jelentéskészítő, megtudhatja, hogyan készítheti elő és képek feltöltése az Azure IoT Central alkalmazáshoz.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: b55b9929129b882f893b1fea58b7061131daffb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+manager: philmea
+ms.openlocfilehash: 9d4de2a8be13718f7989f064b76b586407ca3a48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005138"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198609"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan, mint szerkesztő, szabhatja testre az Azure IoT Cen
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT Central alkalmazáshoz. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
+1. Azure IoT Central alkalmazáshoz. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 1. Egy eszköz méretezés és képfájlok átméretezése.
 
 ## <a name="choose-where-to-use-custom-images"></a>Válassza ki, hogy egyéni lemezképeket használ
@@ -56,10 +56,10 @@ Az összes négy helyszínen PNG, GIF, vagy JPEG-képek is használhatja.
 
 A következő táblázat összefoglalja a lemezkép mérete is használhatja:
 
-| Földrajzi egység | Méretek |
+| Hely | Méretek |
 | -------- | ------ |
-| Alkalmazás-kezelő | 268 x 160 px |
-| Eszköz-sablon | 64 x 64 képpont |
+| Alkalmazáskezelő | 268 x 160 px |
+| Eszközsablon | 64 x 64 képpont |
 | Kezdőlap és irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
 
 A legjobb megjelenítés az alkalmazásban létre kell hoznia a lemezképek, amelyek megfelelnek a dimenziók az előző táblázatban látható.
@@ -86,7 +86,7 @@ Konfigurálása kép alatt kattintson a lemezkép csempére, és töltse fel az 
 
 **Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Kattintson a **kész** befejezésekor. 
 
-### <a name="device-template"></a>Eszköz-sablon
+### <a name="device-template"></a>Eszközsablon
 
 Töltsön fel egy képet, az eszköz sablonból, navigáljon a **Device Explorer**, válassza ki az eszköz sablont, majd egy eszközt. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 

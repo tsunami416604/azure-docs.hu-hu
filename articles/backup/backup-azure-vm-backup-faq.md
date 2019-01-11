@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ec7de756a5b3c8e713fa8e73c18cebee32b83e28
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041288"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201312"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Gyakori kérdések – Azure Backup
 
@@ -57,14 +57,13 @@ Ha zárolja az erőforráscsoport, az Azure Backup szolgáltatás a régebbi hel
 Nem. A dátum és idő a helyi számítógépen a alkalmazni aktuális nyári időszámítás helyi. Ütemezett biztonsági mentések beállított ideje a helyi idő nyári Időszámítás miatt eltérhetnek.
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Hány adatlemez csatolható a virtuális gép biztonsági mentése az Azure Backup?
-Az Azure Backup legfeljebb 16 lemez a biztonsági mentést virtuális gépeket. 16 lemez támogatási szolgáltatását az a [legújabb verzió](backup-upgrade-to-vm-backup-stack-v2.md) V2 veremterület az Azure virtuális gépek biztonsági mentését.
+Az Azure Backup legfeljebb 16 lemez a biztonsági mentést virtuális gépeket. 16 lemez támogatása megtalálható a [azonnali visszaállítása](backup-instant-restore-capability.md).
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Biztosítja az Azure támogatja a biztonsági mentést standard SSD felügyelt lemez?
-Az Azure Backup támogatja [SSD standard szintű felügyelt lemezek](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD felügyelt lemezeket az Azure virtuális gépek tartós tárolási egy új típusú adja meg. SSD felügyelt lemezek támogatása megtalálható a [legújabb verziója](backup-upgrade-to-vm-backup-stack-v2.md) V2 veremterület az Azure virtuális gépek biztonsági mentését.
+Az Azure Backup támogatja [SSD standard szintű felügyelt lemezek](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD felügyelt lemezeket az Azure virtuális gépek tartós tárolási egy új típusú adja meg. SSD felügyelt lemezek támogatása megtalálható a [azonnali visszaállítása](backup-instant-restore-capability.md).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Hogy készíthető lemez írási gyorsító WA-kompatibilis virtuális gépek?
-Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból. Lemez kizárása a virtuális gépek WA-kompatibilis lemezek csak Azure virtuális gép biztonsági mentési vermének v2 verziójára frissített előfizetések esetén támogatott. Az Azure virtuális gép biztonsági mentési vermének v2 verziójára frissíti, ez látható [cikk](backup-upgrade-to-vm-backup-stack-v2.md). Ez a funkció már érhető el japán keleti régiójában, Észak-Európa, Délkelet-Ázsia, USA keleti RÉGIÓJA, USA 2. nyugati régiója, Nyugat-Európa és 2. keleti régiója.
-
+Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból. Lemez kizárása a virtuális gépek WA-kompatibilis lemezek csak azonnali visszaállítása frissített előfizetések esetén támogatott.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Írási gyorsító (CS) lemezekkel rendelkező virtuális gép van, és az SAP HANA telepítve. Hogyan készíthetek biztonsági másolatot?
 Az Azure Backup a WA-kompatibilis lemez nem készíthető, de lehet kizárni, biztonsági másolatból. Azonban a biztonsági mentés módszer nem biztosítja adatbázis-konzisztencia, mert a WA-kompatibilis lemezen lévő adatokat nem készül. Ez a konfiguráció lemezek készíthető, ha azt szeretné, operációsrendszer-lemez biztonsági mentés, és a lemezek, amelyek nem WA-kompatibilis.
@@ -104,7 +103,7 @@ Igen. Akkor is, ha törli a virtuális gép, megfelelő biztonsági mentési lé
 Felügyelt lemez Azure virtuális gép az a rendelkezésre állási csoportok visszaállítása engedélyezve van azáltal, hogy egy beállítást a sablonban, felügyelt lemezek visszaállítása során. Ez a sablon rendelkezik a bemeneti paraméter nevű **rendelkezésre állási csoportok**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Hogyan be gyorsabb helyreállítási teljesítmény?
-A gyorsabb visszaállítás teljesítmény érdekében javasoljuk, hogy a virtuális gép biztonsági mentési vermének v2 verziójára használatával pedig [azonnali helyreállítási pont Védettként funkció](backup-upgrade-to-vm-backup-stack-v2.md).
+A gyorsabb visszaállítás teljesítmény, hogy költöznek [azonnali visszaállítása](backup-instant-restore-capability.md) képesség.
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

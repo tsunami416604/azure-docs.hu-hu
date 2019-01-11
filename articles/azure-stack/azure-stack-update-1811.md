@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/11/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055166"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214589"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -82,9 +82,9 @@ Az Azure Stack rendszeresen gyorsjavításait. Ne felejtse el telepíteni a [leg
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    Miután a kötelező kiterjesztés gazdagép tanúsítványok helyesen importálta, a felügyeleti portálról 1811 frissítés folytathatja. Azure Stack-operátorok, a skálázási egység karbantartási módba a frissítési folyamat alatt a Microsoft azt ajánlja, amíg egy hiba miatt a hiányzó bővítmény gazdagép tanúsítványok nem érinti meglévő számítási feladatok vagy szolgáltatások.  
+    Miután a kötelező kiterjesztés gazdagép tanúsítványok helyesen importálta, a felügyeleti portálról 1811 frissítés folytathatja. Azure Stack-operátorok karbantartási időszak ütemezése a frissítési folyamat alatt a Microsoft azt ajánlja, amíg egy hiba miatt a hiányzó bővítmény gazdagép tanúsítványok nem érinti meglévő számítási feladatok vagy szolgáltatások.  
 
-    Ez a frissítés telepítése során az Azure Stack felhasználói portálon nem érhető el amíg folyamatban van a bővítmény állomás konfigurálása. A bővítmény gazdagép a konfiguráció legfeljebb 5 órát is igénybe vehet. Ez idő alatt a frissítés állapotának ellenőrzése, vagy indítsa el a sikertelen frissítés telepítési használatával [Azure Stack rendszergazdai PowerShell-lel vagy a kiemelt végponthoz](azure-stack-monitor-update.md).
+    Ez a frissítés telepítése során az Azure Stack felhasználói portálon nem érhető el amíg folyamatban van a bővítmény állomás konfigurálása. A bővítmény gazdagép a konfiguráció legfeljebb 5 órát is igénybe vehet. Ez idő alatt ellenőrizheti a frissítés állapotát, vagy folytathatja egy frissítés sikertelen telepítését az [Azure Stack rendszergazdai PowerShell vagy a kiemelt végpont](azure-stack-monitor-update.md) használatával.
 
 ## <a name="new-features"></a>Új funkciók
 
@@ -195,7 +195,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 - Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md), ha a **AzsInfraRoleSummary** vagy a **AzsPortalApiSummary** teszt sikertelen, a rendszer felszólítja a Futtatás  **Test-AzureStack** együtt a `-Repair` jelzőt.  Ha ezt a parancsot futtatta, a következő hibaüzenettel meghiúsul:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  A probléma egy későbbi kiadásban lesz kijavítva.
 
-- A 1811 frissítés telepítése során az Azure Stack portálon nem érhető el amíg folyamatban van a bővítmény állomás konfigurálása. A bővítmény gazdagép a konfiguráció legfeljebb 5 órát is igénybe vehet. Ez idő alatt a frissítés állapotának ellenőrzése, vagy indítsa el a sikertelen frissítés telepítési használatával [Azure Stack rendszergazdai PowerShell-lel vagy a kiemelt végponthoz](azure-stack-monitor-update.md). 
+- A 1811 frissítés telepítése során az Azure Stack portálon nem érhető el amíg folyamatban van a bővítmény állomás konfigurálása. A bővítmény gazdagép a konfiguráció legfeljebb 5 órát is igénybe vehet. Ez idő alatt ellenőrizheti a frissítés állapotát, vagy folytathatja egy frissítés sikertelen telepítését az [Azure Stack rendszergazdai PowerShell vagy a kiemelt végpont](azure-stack-monitor-update.md) használatával. 
 
 - A 1811 frissítés telepítése során előfordulhat, hogy a felhasználói portál irányítópultján nem érhető el, és lehet, hogy a testreszabások elveszett. Az irányítópult visszaállíthatja az alapértelmezett beállítás a portálbeállítások megnyitásával, majd válassza a frissítés befejezése után **alapértelmezett beállítások visszaállítása**.
 
@@ -254,6 +254,12 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 ### <a name="compute"></a>Compute
 
 - Amikor létrehozza az új Windows virtuális gép (VM), a **beállítások** panel megköveteli, hogy a folytatáshoz válassza ki a nyilvános bejövő port. 1811 Ez a beállítás megadása kötelező, de nem lesz hatása. Ennek az oka a funkció működéséhez az Azure-tűzfal, amely az Azure Stackben není implementována. Választhat **nem nyilvános bejövő portok**, vagy az egyéb beállításokat a virtuális gép létrehozásának folytatásához. A beállítás nem lesz hatása.
+
+- Amikor egy új Windows virtuális gép (VM) hoz létre, a következő hiba jelenhet meg:
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   A hiba akkor fordul elő, ha a virtuális gép rendszerindítási diagnosztika engedélyezése, de a rendszerindítás-diagnosztikai tárfiók törlése. A probléma megkerüléséhez hozza létre újból a tárfiókot, a korábban használt azonos néven.
 
 <!-- 3235634 – IS, ASDK -->
 - Virtuális gépek telepítéséhez tartalmazó méretű egy **v2** utótag; például **Standard_A2_v2**, adja meg, mint az utótag **Standard_A2_v2** (kis v). Ne használjon **Standard_A2_V2** (nagybetűs V). Ez a globális Azure-ban működik, és az Azure Stacken inkonzisztencia.

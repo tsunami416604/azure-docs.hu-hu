@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 7ba1c4e0f358a2168c06ab9172229525cd4c136c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016137"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214504"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop MapReduce-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,9 +25,9 @@ ms.locfileid: "54016137"
 
 A HDInsight MapReduce-tevékenység az adat-előállító [folyamat](concepts-pipelines-activities.md) hívja meg a MapReduce-programot a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése.
 
-Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory bemutatását](introduction.md) és végezze el az oktatóanyag: [Oktatóanyag: adatok átalakítása](tutorial-transform-data-spark-powershell.md) Ez a cikk elolvasása előtt. 
+Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory bemutatását](introduction.md) és végezze el az oktatóanyag: [Oktatóanyag: adatok átalakítása](tutorial-transform-data-spark-powershell.md) Ez a cikk elolvasása előtt.
 
-Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using-hadoop-hive.md) Pig/Hive futtatásával kapcsolatos részleteket egy HDInsight-szkriptek a fürt egy folyamatból HDInsight Pig- és Hive-tevékenység használatával. 
+Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using-hadoop-hive.md) Pig/Hive futtatásával kapcsolatos részleteket egy HDInsight-szkriptek a fürt egy folyamatból HDInsight Pig- és Hive-tevékenység használatával.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -49,10 +49,10 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
         "getDebugInfo": "Failure",
         "arguments": [
-          "-SampleHadoopJobArgument1"
+            "-SampleHadoopJobArgument1"
         ],
         "defines": {
-          "param1": "param1Value"
+            "param1": "param1Value"
         }
     }
 }
@@ -79,7 +79,7 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
 ## <a name="example"></a>Példa
 A HDInsight MapReduce-tevékenység segítségével bármely MapReduce jar-fájlt egy HDInsight-fürtön futtathat. Az alábbi példa JSON-definíciójában folyamat a HDInsight-tevékenység futtatni egy Mahout JAR van konfigurálva.
 
-```json   
+```json
 {
     "name": "MapReduce Activity for Mahout",
     "description": "Custom MapReduce to generate Mahout result",
@@ -113,7 +113,7 @@ A HDInsight MapReduce-tevékenység segítségével bármely MapReduce jar-fájl
 A MapReduce programhoz tartozó argumentumokat is megadhat a **argumentumok** szakaszban. Futásidőben, néhány további argumentumok láthatja (például: mapreduce.job.tags), a MapReduce keretrendszer. Az argumentumok a MapReduce argumentumokkal megkülönböztetéséhez, fontolja meg a beállítás és az értéket argumentumként a következő példában látható módon (- s használata esetén – azonnal követ értékekre bemeneti, a--output stb., opció).
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 
+Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon:
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
 * [Hive-tevékenység](transform-data-using-hadoop-hive.md)

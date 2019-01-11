@@ -1,7 +1,7 @@
 ---
 title: Terheléselosztó zónaredundáns virtuális gépek Azure CLI használatával
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zóna redundáns előtérbeli Azure CLI használatával
+description: Az Azure CLI-vel zóna redundáns előtérbeli nyilvános Standard Load Balancer létrehozása
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 82bb0387d8f1603b4b436bfe70d75d19b88f28b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250807"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197793"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Virtuális gépek terhelésének elosztásához az Azure CLI használatával az összes rendelkezésre állási zónák között
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) a zónaredundáns időtúllépést használata több DNS-rekord zóna redundancia érdekében. Egyetlen előtér-IP-cím automatikus zónaredundáns.  A terheléselosztó egyetlen IP-címmel egy zóna redundáns előtérbeli használatával most már elérheti egy virtuális hálózat ugyanabban a régióban, amely minden rendelkezésre állási zónában lévő összes virtuális gép. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
+Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) a zónaredundáns időtúllépést használata több DNS-rekord zóna redundancia érdekében. Egyetlen előtér-IP-cím automatikus zónaredundáns.  A terheléselosztó egyetlen IP-címmel egy zóna redundáns előtérbeli használatával most már elérheti egy virtuális hálózat ugyanabban a régióban, amely minden rendelkezésre állási zónában lévő összes virtuális gép. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
 A rendelkezésre állási zónák a Standard Load Balancerrel való használatáról bővebben a [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md) című cikkben tájékozódhat.
 
@@ -60,7 +60,7 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Az Azure Load Balancer Standard létrehozása
+## <a name="create-azure-standard-load-balancer"></a>Az Azure Standard Load Balancer létrehozása
 Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
 - a terheléselosztón a bejövő hálózati forgalmat fogadó előtérbeli IP-címkészlet;
 - a háttér-IP-címkészlet, ahová az előtérkészlet küldi az elosztott terhelésű hálózati forgalmat;

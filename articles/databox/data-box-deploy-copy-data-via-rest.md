@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 88880fbfe0f6020a0a982c42b6df0e9eb71b2fc9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550580"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215286"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
 
@@ -154,7 +154,7 @@ Az első lépéseként hozzon létre egy tárolót, mert blobok minden esetben a
 
    ![Místní nabídka objektu blob tárolók létrehozása](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. Szövegmező alatt megjelenik a **Blobtárolók** mappát. Adja meg a blobtároló nevét. Tekintse meg a [hozza létre a tárolót, valamint engedélyeket állíthat be](/articles/storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) információ a blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat.
+4. Szövegmező alatt megjelenik a **Blobtárolók** mappát. Adja meg a blobtároló nevét. Tekintse meg a [hozza létre a tárolót, valamint engedélyeket állíthat be](../storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) információ a blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat.
 5. Nyomja meg **Enter** billentyűt a blobtároló létrehozásához vagy **Esc** megszakítja. Ha a blob-tároló sikeresen létrejött, megjelenik a **Blobtárolók** a kiválasztott tárfiókhoz tartozó mappában.
 
    ![Létrehozott BLOB-tárolóba](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)

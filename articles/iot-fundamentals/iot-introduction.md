@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792526"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199277"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Mi az Azure Internet of Things (IoT)?
 
@@ -34,6 +34,8 @@ Eszközök általában épülnek fel a kapcsolatcsoport üzenőfal a csatlakozta
 * szoba jelenlét érzékelők
 
 Prototípus-készítés gyakran használt két eszközök lesznek az alapszintű MX lapka IoT Devkit a Microsoft és a Raspberry PI eszközökről. Az MX-lapkához Devkit hőmérséklet, nyomás, páratartalom, valamint egy Giroszkóp és érzékelőből, egy magnetométer és a Wi-Fi-lapkához beépített érzékelők rendelkezik. Raspberry PI egy IoT-eszköz, amelyhez is csatlakoztatható érzékelők, számos különböző típusú, ezért kiválaszthatja, hogy pontosan mit kell a forgatókönyvhöz. 
+
+Rendelkezésre álló IoT-eszközökkel kapcsolatos további információkért tekintse meg az iparág legnagyobb [certified for IoT-eszközök katalógus](https://catalog.azureiotsolutions.com/alldevices).
 
 A [IoT eszközoldali SDK-k](../iot-hub/iot-hub-devguide-sdks.md) lehetővé teszi olyan alkalmazások fordítása, az eszközök futtatása a szükséges feladatok elvégzéséhez. Az SDK-k telemetriát küldjön az IoT hubhoz, üzenetek és a frissítések fogadása az IoT hubról, és így tovább.
 

@@ -1,8 +1,7 @@
 ---
-title: Mérőszámok és riasztások az Azure Traffic Managerben |} A Microsoft Docs
+title: Mérőszámok és riasztások az Azure Traffic Managerben
 description: Ez a cikk ismerteti a metrikák elérhető a Traffic Managerhez az Azure-ban.
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,28 +10,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: bb7817b082da11de3071925d01a3402902410a6f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437969"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200190"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>A TRAFFIC Manager-mérőszámok és riasztások
 
-A TRAFFIC Manager DNS-alapú terheléselosztási funkcióval, amely magában foglalja a több útválasztási módszerek és megfigyelési lehetőségek végpontot biztosít. Ez a cikk ismerteti a metrikák és a kapcsolódó riasztásokat, amelyek az ügyfelek számára érhető el. 
+A TRAFFIC Manager a DNS-alapú terheléselosztást, amely tartalmazza a több útválasztási módszerek és megfigyelési lehetőségek végpontot biztosít. Ez a cikk ismerteti a metrikák és a kapcsolódó riasztásokat, amelyek az ügyfelek számára érhető el. 
 
 ## <a name="metrics-available-in-traffic-manager"></a>A Traffic Managerben elérhető metrikák 
 
-A TRAFFIC Manager profilonként ügyfelek számára, hogy a Traffic manager használatát és azok végpontjait, hogy a profilhoz állapotát is felhasználhatnak, amely az a következő metrikákat biztosítja.  
+A TRAFFIC Manager profilonként, amelyek lehetővé teszik a Traffic manager használatát és azok végpontjait, hogy a profilhoz állapotát meg a következő metrikákat biztosítja.  
 
 ### <a name="queries-by-endpoint-returned"></a>Lekérdezések által visszaadott végpont
-Használat [Ez a metrika](../azure-monitor/platform/metrics-supported.md) megtekintése egy meghatározott időtartamon belül a Traffic Manager-profil által feldolgozott lekérdezések száma. Egy végpont szintű részletességig, valamit megismerheti, hogyan sokszor egy végpontot a lekérdezésekre adott válaszok a Traffic Manager a visszaadott, ugyanazokat az információkat is megtekintheti.
+Használat [Ez a metrika](../azure-monitor/platform/metrics-supported.md) , amely a Traffic Manager-profil egy meghatározott időtartamon belül feldolgozza a lekérdezések számának megtekintése. Egy végpont szintű részletességig, valamit megismerheti, hogyan sokszor egy végpontot a lekérdezésekre adott válaszok a Traffic Manager a visszaadott, ugyanazokat az információkat is megtekintheti.
 
-Az alábbi példában az 1. ábra jelenik meg a Traffic Manager-profil által visszaadott összes lekérdezés választ. 
+A következő példában az 1. ábra, amely a Traffic Manager-profil adja vissza minden lekérdezési válasz jeleníti meg. 
 
   
-![A TRAFFIC Manager mérőszámai – összes lekérdezés összesített nézete](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
+![Az összes lekérdezés összesített nézete](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
 *1. ábra: Az összes lekérdezés összesített nézet*
   
@@ -44,10 +43,10 @@ Az alábbi példában az 1. ábra jelenik meg a Traffic Manager-profil által vi
 
 ## <a name="endpoint-status-by-endpoint"></a>Végpont végpont állapota
 Használat [Ez a metrika](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) tudni, hogy a profil a végpontok állapotát. Két érték szükséges:
- - használjon **1** , ha a végpont működik.
+ - használjon **1** a végpont működik, ha.
  - használjon **0** Ha a végpont nem működik.
 
-Ez a metrika jeleníthetnek meg, vagy a mérőszámok (3. ábra) állapotát jelző összesített értékként, vagy azt oszthatók fel (lásd a 4. ábra) a meghatározott végpontokhoz állapotának megjelenítése. A korábbi, ha az összesítési szinten van kiválasztva esetén **átlagos**, az érték a metrika az összes végpontok állapotát aritmetikai átlagát. Például ha egy profil rendelkezik két végpontot, és csak az egyiket kifogástalan állapotban, ez a mérőszám lesz érték **0,50** a 3. ábrán látható módon. 
+Ez a metrika jeleníthetnek meg, vagy a mérőszámok (3. ábra) állapotát jelző összesített értékként, vagy azt oszthatók fel (lásd a 4. ábra) a meghatározott végpontokhoz állapotának megjelenítése. Ha a korábbi, ha az összesítési szinten van kiválasztva **átlagos**, ez a mérőszám értéke az összes végpontok állapotát aritmetikai átlagát. Például ha egy profil rendelkezik két végpontot, és csak az egyiket állapota kifogástalan, majd ez a mérőszám értéke **0,50** a 3. ábrán látható módon. 
 
 
 ![A TRAFFIC Manager metrikák - végpont állapota összetett nézete](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
@@ -66,4 +65,4 @@ Feldolgozása és a Traffic Managerből metrikák megjelenítése mellett az Azu
 
 ## <a name="next-steps"></a>További lépések
 - Tudjon meg többet [Azure Monitor szolgáltatásban](../azure-monitor/platform/metrics-supported.md)
-- Ismerje meg, hogyan [hozzon létre egy új diagramot, az Azure Monitor használatával](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)
+- Ismerje meg, hogyan [Azure Monitor használatával diagram létrehozása](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

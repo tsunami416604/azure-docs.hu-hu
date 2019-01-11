@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: d42b6b857f04c191ebdfb1687c8ee2adcad95d26
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054286"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214300"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység az Azure Data Factoryban
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára.
@@ -115,7 +115,7 @@ Adja meg a PFX-fájlok és a jelszó base64-kódolású tartalmát.
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-Adja meg az erőforrás URI azonosítója, amelyhez a hozzáférési jogkivonatot fog kérni a data Factory a felügyelt identitások használatával. Az Azure Resource Management API meghívása, használja a `https://management.azure.com/`.
+Adja meg az erőforrás URI azonosítója, amelyhez a hozzáférési jogkivonatot fog kérni a data Factory a felügyelt identitások használatával. Az Azure Resource Management API meghívása, használja a `https://management.azure.com/`. További információ a felügyelt identitások működéséről, tekintse meg a [felügyelt Azure-erőforrások áttekintőlapján identitásainak](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {

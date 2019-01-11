@@ -3,17 +3,17 @@ title: Alkalmazások létrehozásához és kezeléséhez az Azure IoT Central eg
 description: A kriptográfiai Szolgáltató, hogyan hozhat létre az ügyfél nevében egy Azure IoT Central alkalmazáshoz.
 services: iot-central
 ms.service: iot-central
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/29/2018
 ms.topic: conceptual
-manager: peterpr
-ms.openlocfilehash: b72b2183cb796602f05a0a6858d4de108d3cc2c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+manager: philmea
+ms.openlocfilehash: 73c3c57df215a66d914f5ea75475f74eff05a1f0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964798"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200292"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
 
@@ -43,7 +43,7 @@ Az Azure IoT központi alkalmazás létrehozása, kattintson a **új alkalmazás
 
 Csak egy CSP-hez mint használatalapú fizetés alkalmazásokat hozhat létre. Az ügyfelek az Azure IoT Central bemutatására külön létrehozhat egy próbaverziós alkalmazás. A próbaverzió utólagosan, és alkalmazások tájékozódhat a [Azure IoT Central díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-central/).
 
-## <a name="application-name"></a>Alkalmazás neve
+## <a name="application-name"></a>Alkalmazásnév
 
 Az alkalmazás neve jelenik meg a **alkalmazáskezelő** lapot, és minden egyes Azure IoT Central alkalmazáshoz. Kiválaszthatja, hogy bármilyen nevet az Azure IoT Central alkalmazáshoz. Válasszon egy nevet, amely logikus Ön és mások számára a szervezetben.
 

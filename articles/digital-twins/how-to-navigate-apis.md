@@ -2,18 +2,18 @@
 title: Keresse meg az Azure digitális Twins API-k |} A Microsoft Docs
 description: Ismerje meg, hogyan lehet gyakori mintáinak lekérdezése az Azure digitális Twins felügyeleti API-k.
 author: dsk-2015
-manager: bertvanhoof
+manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 2221e8b22450a353da42564e5b93342a11e59f71
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108320"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200955"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Az Azure digitális Twins felügyeleti API-k használata
 
@@ -25,11 +25,11 @@ Az alábbi lista a digitális Twins API-k összetevői láthatók.
 
 * [/ tárolóhelyek](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Ezen API-k a fizikai helyeken és a telepítő dolgozhat. Ezek segítenek létrehozása, törlése és a fizikai helyek formájában a digitális leképezések kezelésére egy [térbeli graph](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
 
-* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Ezen API-k segítségével állítsa be az erőforrások, például egy IoT hubot, a digitális Twins példány.
-
 * [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Ezen API-k a telepítő az eszközök kezelése. Ezek az eszközök egy vagy több érzékelők kezelheti. Például egy eszköz sikerült kell a telefonra, vagy a Raspberry Pi érzékelő podot, vagy a-val készült Lora-átjáró, és így tovább.
 
 * [/Sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Ezen API-k segítségével az érzékelők, az eszközök és a fizikai helyek társított folytatott kommunikációhoz. Az érzékelők jegyezze fel, és küldje el környezeti értékek, amelyek ezután felhasználhatók a térbeli környezet módosítására.  
+
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Ezen API-k segítségével állítsa be az erőforrások, például egy IoT hubot, a digitális Twins példány.
 
 * [/ típusokat](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Ezen API-k lehetővé teszik a kiterjesztett típusok társítani a digitális Twins objektumok különböző jellemzőket hozzá azokat az objektumokat. Ezek a típusok egyszerű szűrési és az objektumok a felhasználói felület és az egyéni függvények, amelyek a telemetriai adatok feldolgozása a csoportosítás lehetővé teszi. Néhány példa a kiterjesztett típusok *megtalált*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType* , *SpaceBlobType*, *SpaceResourceType*, és így tovább.
 

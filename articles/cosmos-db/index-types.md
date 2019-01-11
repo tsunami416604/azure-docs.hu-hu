@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034087"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199068"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Az Azure Cosmos DB index típusa
 
@@ -29,6 +29,9 @@ Az Azure Cosmos DB támogatja a kivonat index és tartományindexszel minden el�
 
 - **Kivonatoló index** hatékony egyenlőség és JOIN lekérdezéseket támogat. A legtöbb használati esetek kivonatindexek pontossága nagyobb, mint az alapértelmezett érték 3 bájt nem szükséges. Az adattípus karakterlánc vagy szám lehet.
 
+  > [!NOTE]
+  > Azure Cosmos-tárolók támogatják a egy új index elrendezést, amely már nem használ a kivonat index típusa. Ha megad egy kivonatot index szolgálhat a az indexelési házirendet, a CRUD-kérések a tárolón csendes figyelmen kívül hagyja az index típusa és a tárolóban csak válaszban tartomány index típusa. Az összes új Cosmos-tároló alapértelmezés szerint az új index elrendezés használják. 
+  
 - **Tartományindexszel** támogatja hatékony egyenlőség lekérdezéseket, a lekérdezések (használatával >, <>, =, < =,! =), és ORDER BY lekérdezések. Alapértelmezés szerint az ORDER By lekérdezések maximális pontosság (-1) is szükséges. Az adattípus karakterlánc vagy szám lehet.
 
 - **Térbeli index** támogatja a hatékony térbeli (belül és a távolság) lekérdezéseket. Az adattípus lehet pont, Polygon vagy LineString. Az Azure Cosmos DB is támogatja a térbeli index típusa minden elérési utat, amely a terjesztési pontok, Polygon, valamint LineString adattípusok adható meg. A megadott elérési úton értéke nem lehet például egy érvényes GeoJSON töredék {"type": "Pont", "koordináták": [0.0, 10.0]}. Az Azure Cosmos DB támogatja az automatikus indexelését, LineString, pontot és sokszög adattípusokat.
@@ -58,6 +61,9 @@ Példa a lekérdezéseket, amelyek kivonata, tartomány, és a térbeli indexek 
 - A térbeli indexek mindig használja az alapértelmezett index pontosság (pont, LineString és sokszög) minden alkalmazástípus esetében. Az alapértelmezett index pontosság a térbeli indexek nem lehet felülírni.
 
 Az Azure Cosmos DB hibát ad vissza, ha a lekérdezés ORDER BY használja, de nem rendelkezik a legnagyobb pontosságú lekérdezett elérési elleni tartomány indexszel.
+
+> [!NOTE]
+> Azure Cosmos-tárolók támogatják a egy új index elrendezést, amely már nem igényli a legnagyobb pontosságú value(-1) eltérő egyéni index pontossága. Ezzel a módszerrel elérési utak mindig a legnagyobb pontosságú indexelt. Ha megad egy pontossági értéknek a az indexelési házirendet, a CRUD-kérelmekre, a a tárolók csendes figyelmen kívül hagyja a pontosság és a válasz a tároló csak a legnagyobb pontosságú value(-1) tartalmazza.  Az összes új Cosmos-tároló alapértelmezés szerint az új index elrendezés használják.
 
 ## <a name="next-steps"></a>További lépések
 

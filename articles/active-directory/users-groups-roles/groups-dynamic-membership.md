@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a64f92df7592b4df419e5f70a32f631ca0504c6c
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994215"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214641"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -348,7 +348,7 @@ A következő eszköz attribútumokat is használható.
  accountEnabled | IGAZ, hamis | (device.accountEnabled - eq true)
  displayName | bármilyen karakterlánc típusú értéket |(device.displayName - eq "Rob Iphone")
  deviceOSType | bármilyen karakterlánc típusú értéket | (vagy device.deviceOSType - eq "iPad") – vagy (vagy device.deviceOSType - eq "iPhone")
- deviceOSVersion | bármilyen karakterlánc típusú értéket | (eszköz. OSVersion - eq "9.1")
+ deviceOSVersion | bármilyen karakterlánc típusú értéket | (device.deviceOSVersion - eq "9.1")
  deviceCategory | egy érvényes eszközkategória-név | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")
  deviceModel | bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad Air")

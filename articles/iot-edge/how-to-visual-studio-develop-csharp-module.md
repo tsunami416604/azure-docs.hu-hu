@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 01/10/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8fec963dfce8c55cc618f2ce6877d4d591a9cf27
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054923"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215218"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Fejlesztés és az Azure IoT Edge (előzetes verzió) C# modul hibakeresése a Visual Studio 2017 használatával
 
@@ -27,8 +27,11 @@ Az Azure IoT Edge Tools for Visual Studio az alábbi előnyöket nyújtja:
 - Az Azure IoT-modulok a C#-kód során a Visual Studio fejlesztési előnyeit a teljes.
 - Kezelheti az Azure IoT Edge-eszközök és a modulok felhasználói felületen keresztül.
 
-Ez a cikk bemutatja, hogyan fejleszthet a C# IoT Edge-modulok az Azure IoT Edge Tools for Visual Studio 2017 használatával. Azt is megtudhatja, hogyan a projekt telepítése az Azure IoT Edge-eszköz.
+Ez a cikk bemutatja, hogyan fejleszthet a C# IoT Edge-modulok az Azure IoT Edge Tools for Visual Studio 2017 használatával. Azt is megtudhatja, hogyan a projekt telepítése az Azure IoT Edge-eszköz. 
 
+  > [!TIP]
+  > A Visual Studio által létrehozott IoT Edge-projektstruktúra nem ugyanaz, mint a Visual Studio Code-ot.
+  
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk feltételezi, hogy egy számítógép vagy a Windows rendszerű fejlesztői gépen, virtuális gép használja. Az IoT Edge-eszközt egy másik fizikai eszköz lehet.

@@ -1,5 +1,5 @@
 ---
-title: 'Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell | Microsoft Docs'
+title: 'Számítógép csatlakoztatása egy Azure virtuális hálózat pont – hely és az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell |} A Microsoft Docs'
 description: Windows- vagy Mac OS X-ügyfelek biztonságos csatlakoztatása Azure-beli virtuális hálózathoz, a pont–hely kapcsolat és önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványok használatával. Ebben a cikkben a PowerShellt fogjuk használni.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: c579bb32fdd43c95f027e6c9f5a6ef656d059d60
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f688c0e277f807ff27731c103ca407807052c9d3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847405"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199748"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
 Ez a cikk ahhoz nyújt segítséget, hogyan lehet biztonságosan csatlakoztatni Windowst vagy Mac OS X-et futtató egyedi ügyfeleket egy Azure-beli virtuális hálózathoz. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
 
@@ -39,22 +39,22 @@ Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs A
 
 A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. A változókat a cikk [1](#declare). szakaszában állítjuk be. Megteheti, hogy lépésről lépésre végighalad az eljáráson, és módosítás nélkül ezeket az értékeket használja, de módosíthatja is őket, hogy megfeleljenek a saját környezetének.
 
-* **Név: VNet1**
-* **Címtartomány: 192.168.0.0/16** és **10.254.0.0/16**<br>Ez a példa egynél több címteret használ annak szemléltetésére, hogy ez a konfiguráció több címtérrel is működik. Azonban nem kötelező több címtartományt megadni ehhez a konfigurációhoz.
-* **Alhálózat neve: FrontEnd**
+* **név: VNet1**
+* **Címtér: 192.168.0.0/16** és **10.254.0.0/16**<br>Ez a példa egynél több címteret használ annak szemléltetésére, hogy ez a konfiguráció több címtérrel is működik. Azonban nem kötelező több címtartományt megadni ehhez a konfigurációhoz.
+* **Alhálózat neve: Előtér**
   * **Alhálózati címtartomány: 192.168.1.0/24**
-* **Alhálózat neve: BackEnd**
+* **Alhálózat neve: Háttér**
   * **Alhálózati címtartomány: 10.254.1.0/24**
-* **Alhálózat neve: GatewaySubnet**<br>Ennek az alhálózatnak kötelező a *GatewaySubnet* nevet adni, ellenkező esetben nem működik a VPN-átjáró.
-  * **Átjáró-alhálózat címtartománya: 192.168.200.0/24** 
-* **VPN-ügyfelek címkészlete: 172.16.201.0/24**<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, a VPN-ügyfél címkészletből kapnak IP-címet.
-* **Előfizetés:** Ha több előfizetése is van, ellenőrizze, hogy a megfelelőt használja-e.
+* **Alhálózat neve: Átjáró-alhálózat**<br>Ennek az alhálózatnak kötelező a *GatewaySubnet* nevet adni, ellenkező esetben nem működik a VPN-átjáró.
+  * **Átjáróalhálózat címtartománya: 192.168.200.0/24** 
+* **VPN-ügyfélcímkészlet: 172.16.201.0/24**<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, a VPN-ügyfél címkészletből kapnak IP-címet.
+* **Előfizetés:** Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy a megfelelőt használja-e.
 * **Erőforráscsoport: TestRG**
-* **Hely: East US**
-* DNS-kiszolgáló: Annak a DNS-kiszolgálónak az **IP-címe**, amelyet névfeloldásra kíván használni. (nem kötelező)
+* **Hely: USA keleti RÉGIÓJA**
+* **DNS-kiszolgáló: IP-cím** a névfeloldáshoz használni kívánt DNS-kiszolgáló. (nem kötelező)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
-* **VPN típusa: RouteBased** 
+* **VPN típusa: Útvonalalapú** 
 
 ## <a name="declare"></a>1. Jelentkezzen be, és a változók beállítása
 
@@ -62,7 +62,7 @@ Ebben a szakaszban jelentkezzen be, és ehhez a konfigurációhoz használt ért
 
 ### <a name="sign-in"></a>Bejelentkezés
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ### <a name="declare-variables"></a>Változók deklarálása
 
@@ -399,4 +399,4 @@ Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez tör
 ## <a name="next-steps"></a>További lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
 
-A pont–hely hibaelhárítási információiért tekintse át az [Azure pont–hely kapcsolatok hibaelhárításával](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) foglalkozó cikket.
+P2S hibaelhárítási információkért [hibaelhárítás: Az Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: df7f3dfa525c59ff8862c3b1a46f70be53a93a32
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437265"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198745"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Az Azure Metadata szolgáltatás: A Linux rendszerű virtuális gépeken ütemezett események
 
@@ -74,7 +74,7 @@ Az ütemezett eseményekről szolgáltatás nem rendszerverzióval ellátott. Ve
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - | 
-| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek Iaas virtuális gépekhez<br><li>Metaadatok fejléc követelmény irányuló kérések kényszerítése | 
+| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek IaaS virtuális gépekhez<br><li>Metaadatok fejléc követelmény irányuló kérések kényszerítése | 
 | 2017-03-01 | Előzetes verzió | Összes | <li>Kezdeti kiadás
 
 

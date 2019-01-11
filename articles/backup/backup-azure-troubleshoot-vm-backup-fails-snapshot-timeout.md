@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2c4c2982febf1d81aaaa81bb9c894785b860503b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789857"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200086"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -52,7 +52,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 * A probléma is előfordulhat, ha naponta több biztonsági mentése esetén. Jelenleg javasoljuk, hogy csak egy biztonsági mentés azonnali RPs 7 napig maradnak, naponta, és csak 18 azonnali RPs társítható egy virtuális Gépet egy adott időpontban. <br>
 
 Javasolt művelet:<br>
-A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, a virtuális gép, és próbálja megismételni a műveletet kiváltó karbantartási. 
+A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, a virtuális gép, és próbálja megismételni a műveletet kiváltó karbantartási.
 > [!NOTE]
     > A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállításipont-gyűjtemény tárolásához. Ügyfelek, a Backup szolgáltatás használni létrehozott erőforráscsoportot zárolása nem végigvitelével. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>` működtek az adatbázisok: AzureBackupRG_northeurope_1
 
@@ -105,14 +105,14 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **Hibakód:**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Az Azure Backup jelenleg nem támogatja az 1023 GB-nál nagyobb adatlemezeket <br>
 
-A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az Azure virtuális gép biztonsági mentési vermének v2 verziójára az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azure VM Backup frissítését stack V2 biztosít akár 4 TB-os támogatja. Tekintse át a [előnyöket](backup-upgrade-to-vm-backup-stack-v2.md), [szempontok](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), majd folytassa a következő frissítési [utasításokat](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az azonnali visszaállítása az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azonnali visszaállítása frissítése biztosít akár 4 TB-os támogatja, ez [cikk](backup-instant-restore-capability.md).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – a jelenleg az Azure Backup nem támogatja a Standard SSD-lemez
 
 **Hibakód:**: UserErrorStandardSSDNotSupported <br>
 **Chybová zpráva**: Jelenleg az Azure Backup nem támogatja a Standard SSD-lemez <br>
 
-Az Azure Backup jelenleg csak a tárolók az Azure virtuális gép biztonsági mentési vermének v2 verziójára frissített támogatja a Standard SSD-lemezeket. Tekintse át a [előnyöket](backup-upgrade-to-vm-backup-stack-v2.md), [szempontok](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), majd folytassa a következő frissítési [utasításokat](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
+Jelenleg az Azure Backup támogatja Standard SSD-lemezeket csak a frissített tárak [azonnali visszaállítása](backup-instant-restore-capability.md).
 
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait

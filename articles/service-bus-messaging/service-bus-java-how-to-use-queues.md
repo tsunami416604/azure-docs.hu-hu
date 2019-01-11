@@ -13,12 +13,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 804e0dd4b510b40c1ebbc5790308a429c2715724
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8d168e4171c96441162f1090a215cab8a70b7d1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573314"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198694"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Service Bus-üzenetsorok használata javával
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -109,13 +109,13 @@ public void run() throws Exception {
 
 ```
 
-Küldi az üzeneteket, és a Service Bus kapott példányai a [üzenet](/java/api/com.microsoft.azure.servicebus._message?view=azure-java-stable) osztály. Üzenet objektumok egy szabványos tulajdonságkészlettel (például a címke és a TimeToLive) rendelkeznek, egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy tetszőleges alkalmazásadatokból álló törzzsel. Az alkalmazás beállíthatja az üzenet törzse bármilyen szerializálható objektumnak a üzenet konstruktorának való átadásával, és a megfelelő szerializáló ezután a rendszer használja az objektumot. Másik lehetőségként megadhat egy **java. IO. InputStream** objektum.
+Küldi az üzeneteket, és a Service Bus kapott példányai a [üzenet](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) osztály. Üzenet objektumok egy szabványos tulajdonságkészlettel (például a címke és a TimeToLive) rendelkeznek, egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy tetszőleges alkalmazásadatokból álló törzzsel. Az alkalmazás beállíthatja az üzenet törzse bármilyen szerializálható objektumnak a üzenet konstruktorának való átadásával, és a megfelelő szerializáló ezután a rendszer használja az objektumot. Másik lehetőségként megadhat egy **java. IO. InputStream** objektum.
 
 
 A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
-Üzenetek fogadása egy üzenetsorból elsődleges módja egy **ServiceBusContract** objektum. A fogadott üzenetek használható két különböző módban: **ReceiveAndDelete** és **PeekLock**.
+Üzenetek fogadása egy üzenetsorból elsődleges módja egy **ServiceBusContract** objektum. A fogadott üzenetek két különböző módban tudnak működni: **ReceiveAndDelete** és **PeekLock**.
 
 Használatakor a **ReceiveAndDelete** mód, kap egy egylépéses művelet –, amelyek a Service Bus egy üzenetsorban lévő üzenet egy olvasási kérést kap, amikor azt jelöli meg az üzenetet, és visszaadja az alkalmazásnak. **ReceiveAndDelete** módban (amely az alapértelmezett mód) a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt.
 Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
@@ -179,7 +179,7 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 Emellett van egy zárolva van, az üzenetsorban lévő üzenethez társított időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet, mielőtt a zárolás időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet, és lehetővé teszi elérhető az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a **deleteMessage** kérés kiadása, akkor az üzenet újbóli kézbesítése az alkalmazáshoz, amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*; azaz minden üzenetet legalább egyszer dolgozza fel, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el használatával a **getMessageId** metódus az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a **deleteMessage** kérés kiadása, akkor az üzenet újbóli kézbesítése az alkalmazáshoz, amikor újraindul. Ezt a módszert gyakran *Legalább egyszeri feldolgozásnak* nevezik. Ez azt jelenti, hogy minden üzenet legalább egyszer fel lesz dolgozva, de bizonyos helyzetekben előfordulhat ugyanazon üzenet újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el használatával a **getMessageId** metódus az üzenet, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Service Bus-üzenetsorok alapjait, [üzenetsorok, témakörök és előfizetések] [ Queues, topics, and subscriptions] további információt.

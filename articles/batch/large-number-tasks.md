@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 3c683b24db2899ee680988c7bedc760d6bb8ec73
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a3327c2c6f9684efe0d86b0cf923886f7310e1b0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053432"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199784"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladatot egy Batch-feladat elküldése
 
@@ -45,7 +45,7 @@ A feladat-gyűjteményt, amely egyetlen hívással is hozzáadhat maximális mé
 * A következő API-kat támogatja sokkal nagyobb a feladat-gyűjtemények – csak a RAM-MAL rendelkezésre állás, a küldő ügyfél által korlátozott. Ezen API-k átlátható módon kezelni a feladat-gyűjtemény "adattömbökbe" az alacsonyabb szintű API-k és az újrapróbálkozások osztani, ha a feladatok hozzáadása nem sikerül.
 
     * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
-    * [Java API](/java/api/com.microsoft.azure.batch.protocol._tasks.addcollectionasync?view=azure-java-stable)
+    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
     * [Az Azure Batch CLI-bővítmény](batch-cli-templates.md) a Batch parancssori felületi sablonjainak
     * [Python SDK-bővítmény](https://pypi.org/project/azure-batch-extensions/)
 
@@ -61,7 +61,7 @@ Nagyméretű tevékenységek gyűjteményei, például hozzá egy feladat - ném
 
 * **HTTP-kapcsolat korlátai** – HTTP egyidejű kapcsolatok száma képes szabályozni a Batch-ügyfél teljesítményét, amikor a bővíti a feladatok nagy számú. A HTTP-kapcsolatok száma az egyes API-kkal korlátozódik. Ha a fejlesztés a .NET API-t, például a a [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) tulajdonság értéke 2, alapértelmezés szerint. Azt javasoljuk, hogy növelje az értéket egy közeli vagy nagyobb, mint a párhuzamos műveletek számát.
 
-## <a name="example-batch-net"></a>Példa: A Batch .NET
+## <a name="example-batch-net"></a>Példa: Batch .NET
 
 Az alábbi C# kódrészletek bemutatják a beállítások konfigurálása a feladatokat a Batch .NET API használatával nagy számú hozzáadásakor.
 
@@ -85,7 +85,7 @@ await batchClient.JobOperations.AddTaskAsync(jobId, tasksToAdd, parallelOptions)
 ```
 
 
-## <a name="example-batch-cli-extension"></a>Példa: Batch CLI-bővítmény
+## <a name="example-batch-cli-extension"></a>Példa: A Batch CLI-bővítmény
 
 Az Azure Batch CLI bővítményekkel [Batch parancssori felületi sablonjainak](batch-cli-templates.md), hozzon létre egy feladatot a sablon JSON-fájlt, amely tartalmaz egy [feladat gyári](https://github.com/Azure/azure-batch-cli-extensions/blob/master/doc/taskFactories.md). A feladat gyári konfigurálja egy adott feladat meghatározása a kapcsolódó feladatok gyűjteménye.  
 

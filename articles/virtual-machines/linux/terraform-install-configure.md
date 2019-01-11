@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: echuvyrov
-ms.openlocfilehash: 0943bd1bffb3df7beda97ea0619f1aced4ca3a41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 71cf07b227a75e53119f2f35e79ccd7926b551e7
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946782"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200700"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Virtuális gépek és egyéb infrastruktúra kiépítéséhez az Azure-bA Terraform telepítése és konfigurálása
  
@@ -59,7 +59,7 @@ A kijelölt előfizetésben használatához állítsa a munkamenet az előfizet�
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-Használja az egyszerű szolgáltatás most már a terraform használatával hozhat létre. Használata [az ad sp create-for-rbac]/cli/azure/ad/sp#az-ad-sp-create-for-rbac), és állítsa be a *hatókör* az előfizetéshez, az alábbiak szerint:
+Használja az egyszerű szolgáltatás most már a terraform használatával hozhat létre. Használat [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac), és állítsa be a *hatókör* az előfizetéshez, az alábbiak szerint:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"

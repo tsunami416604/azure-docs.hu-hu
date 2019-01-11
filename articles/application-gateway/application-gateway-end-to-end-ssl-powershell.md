@@ -2,30 +2,25 @@
 title: Végpontok közötti SSL konfigurálása az Azure Application Gatewayen
 description: Ez a cikk bemutatja, hogyan végpontok közötti SSL konfigurálása az Azure Application Gatewayen a PowerShell használatával
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945331"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214062"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Application Gateway támogatja a forgalom végpontok közötti titkosítást. Az Application Gateway leállítja az SSL-kapcsolatot az application gatewayben. Az átjáró ezután alkalmazza az útválasztási szabályokat a forgalomra, a csomag reencrypts, és továbbítja azt a megfelelő háttér-kiszolgáló a megadott útválasztási szabályok alapján. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz.
+Az Azure Application Gateway támogatja a forgalom végpontok közötti titkosítást. Az Application Gateway leállítja az SSL-kapcsolatot az application gatewayben. Az átjáró ezután alkalmazza az útválasztási szabályokat a forgalomra, újratitkosítja a csomagot, és továbbítja azt a megfelelő háttér-kiszolgáló a megadott útválasztási szabályok alapján. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz.
 
-Az Application Gateway támogatja az egyéni SSL-beállítások meghatározása. Ezenkívül támogatja a következő verziójú címprotokollokhoz letiltása: **TLSv1.0**, **TLSv1.1**, és **TLSv1.2**, valamint melyik titkosító csomagok használatához és preferencia sorrendje . SSL konfigurálható beállításokkal kapcsolatos további tudnivalókért tekintse meg a [SSL-házirend áttekintése](application-gateway-SSL-policy-overview.md).
+Az Application Gateway támogatja az egyéni SSL-beállítások meghatározása. Emellett támogatja a következő verziójú címprotokollokhoz letiltása: **TLSv1.0**, **TLSv1.1**, és **TLSv1.2**, valamint melyik titkosító csomagok használatához és a sorrend figyelembe vételével. SSL konfigurálható beállításokkal kapcsolatos további tudnivalókért tekintse meg a [SSL-házirend áttekintése](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > Az SSL 2.0 és az SSL 3.0 alapértelmezés szerint le vannak tiltva, és nem lehet engedélyezni. Azok a nem biztonságos tekinti, és nem használható az Application Gateway szolgáltatással.
@@ -45,9 +40,9 @@ Ebben a forgatókönyvben lesz:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Végpontok közötti SSL konfigurálása az application gateway szolgáltatással, egy tanúsítvány szükséges az átjáró és a háttér-kiszolgálók számára tanúsítványokra szükség. Az átjáró tanúsítványa titkosítása és visszafejtése az SSL-en keresztül küldött szolgál. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé.
+Végpontok közötti SSL konfigurálása az application gateway szolgáltatással, egy tanúsítvány szükséges az átjáró és a háttér-kiszolgálók számára tanúsítványokra szükség. Az átjáró tanúsítványa egy szimmetrikus kulcsot, az SSL protokoll specifikációja alapján az használható. A szimmetrikus kulcs majd használható titkosításához és visszafejtéséhez az átjáró küldött forgalmat. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé.
 
-A végpontok közötti SSL-titkosítás a háttéralkalmazás az Alkalmazásátjáró engedélyezési listán kell lennie. A háttér-kiszolgálók a nyilvános tanúsítvány feltöltése az application gateway kell. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
+A végpontok közötti SSL-titkosítás a háttéralkalmazás az Alkalmazásátjáró engedélyezési listán kell lennie. A háttér-kiszolgálók a nyilvános tanúsítvány feltöltése az application gatewayhez. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
 
 A konfigurációs folyamat a következő szakaszokban ismertetett.
 
@@ -258,7 +253,7 @@ Az előző lépések végrehajtásának egy alkalmazás létrehozásának teljes
 
    ```
 
-   3. Végül frissítse az átjárót. Vegye figyelembe, hogy az utolsó lépés egy hosszan futó feladatot. Amikor kész van, az application gateway teljes körű SSL van konfigurálva.
+   3. Végül frissítse az átjárót. Az utolsó lépéseként egy hosszan futó feladatot. Amikor kész van, az application gateway teljes körű SSL van konfigurálva.
 
    ```powershell
    $gw | Set-AzureRmApplicationGateway

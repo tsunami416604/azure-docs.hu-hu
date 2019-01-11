@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: b8ff482f2aec406ef4c1c545db7844a861317518
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 1/9/2019
+ms.openlocfilehash: b11eb08a960e81ab938a9b15a1153c44706231c5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994419"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198287"
 ---
 # <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Database létrehozása az Azure Portalon
 
 Az Azure SQL Database egy *adatbázis--szolgáltatásként* , amely lehetővé teszi a felhőbeli magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet. Ez a rövid útmutató bemutatja, hogyan hoz létre, és a egy Azure SQL database, az Azure portal használatával majd lekérdezi a kezdéshez. 
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 Ebben a rövid útmutatóban minden lépéseiért jelentkezzen be a [az Azure portal](https://portal.azure.com/).
 
@@ -35,36 +35,36 @@ Az AdventureWorksLT mintaadatokat tartalmazó SQL-adatbázis létrehozása:
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
    
-1. Válassza ki **adatbázisok**, majd válassza ki **SQL Database**.
+1. Válassza ki **adatbázisok** majd **SQL Database**.
    
-1. Az a **SQL Database** űrlapon adja meg a következő értékeket: 
+1. Az a **SQL-adatbázis létrehozása** űrlapon adja meg a következő értékeket: 
    
-   - **Adatbázis neve**: Típus *mySampleDatabase*.
-   - **Előfizetés**: Legördülő lista, és válassza ki a megfelelő előfizetés, ha nem jelenik meg.  
+   - **Adatbázis neve**: Adja meg *mySampleDatabase*.
+   - **Előfizetés**: Legördülő lista, és válassza ki a megfelelő előfizetés, ha nem jelenik meg.
    - **Erőforráscsoport**: Válassza ki **új létrehozása**, típus *myResourceGroup*, és válassza ki **OK**. 
-   - **Forrás kiválasztása**: Legördülő listára, és válassza ki **minta (AdventureWorksLT)**. 
-   
-   >[!IMPORTANT]
-   >Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatait ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók követheti. 
-   
+   - **Forrás kiválasztása**: Legördülő listára, és válassza ki **minta (AdventureWorksLT)**.
+    
+    >[!IMPORTANT]
+    >Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatait ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók követheti.
+  
    ![Az Azure SQL Database adatbázis létrehozása](./media/sql-database-get-started-portal/create-database-1.png)
    
-1. Válassza ki **kiszolgáló**, majd válassza ki **hozzon létre egy új kiszolgálót**. 
+1. A **kiszolgáló**válassza **új létrehozása**. 
    
 1. Az a **új kiszolgáló** űrlapon adja meg a következő értékeket: 
    
-   - **Kiszolgálónév**: Típus *mysqlserver*.
+   - **Kiszolgálónév**: Adja meg *mysqlserver*.
    - **Kiszolgáló-rendszergazdai bejelentkezés**: Típus *azureuser*. 
-   - **Jelszó**: Típus *Azure1234567*. 
+   - **Jelszó**: Adja meg *Azure1234567*. 
    - **Jelszó megerősítése**: Írja be újra a jelszót.
    - **Hely**: Legördülő lista, és válassza ki az egyik érvényes helyen sem.  
    
    >[!IMPORTANT]
-   >Jegyezze meg vagy jegyezze fel a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, így bejelentkezhet a kiszolgáló és az adatbázisok ennél és a többi rövid útmutató. Ha elfelejti a bejelentkezéshez vagy a jelszavát, kérje le a bejelentkezési nevét, vagy alaphelyzetbe állíthatja a jelszót a a **az SQL server** lapot. Megnyitásához a **az SQL server** lapra, jelölje be a kiszolgáló nevét, az adatbázis **áttekintése** lap az adatbázis létrehozása után.
+   >Jegyezze fel a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, így bejelentkezhet a kiszolgáló és az adatbázisok ennél és a többi rövid útmutató. Ha elfelejti a bejelentkezéshez vagy a jelszavát, kérje le a bejelentkezési nevét, vagy alaphelyzetbe állíthatja a jelszót a a **az SQL server** lapot. Megnyitásához a **az SQL server** lapra, jelölje be a kiszolgáló nevét, az adatbázis **áttekintése** lap az adatbázis létrehozása után.
    
-1. Válassza ki **kiválasztása**.
-   
-   ![Kiszolgáló létrehozása](./media/sql-database-get-started-portal/create-database-server.png)
+    ![Kiszolgáló létrehozása](./media/sql-database-get-started-portal/create-database-server.png)
+
+1. Válassza a **Kiválasztás** lehetőséget
    
 1. Az a **SQL Database** kattintson képernyő **tarifacsomag**. Fedezze fel a dtu-k és az egyes szolgáltatásszinteken elérhető tárhely mennyiségét.
    
@@ -92,9 +92,9 @@ Most, hogy létrehozott egy Azure SQL database, használja a beépített lekérd
 
 1. Az a **SQL Database** az adatbázisra, válassza a lap **Lekérdezésszerkesztő (előzetes verzió)** a bal oldali menüben. 
    
-   ![Jelentkezzen be a Lekérdezésszerkesztő](./media/sql-database-get-started-portal/query-editor-login.png)
+   ![Jelentkezzen be a szerkesztő lekérdezése](./media/sql-database-get-started-portal/query-editor-login.png)
    
-1. Írja be a bejelentkezési adatait, és válassza ki **OK**.
+1. Adja meg a bejelentkezési adatait, és válassza ki **OK**.
    
 1. Adja meg a következő lekérdezést a **Lekérdezésszerkesztő** ablaktáblán.
    
@@ -113,18 +113,18 @@ Most, hogy létrehozott egy Azure SQL database, használja a beépített lekérd
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Tartsa meg az erőforráscsoport, az SQL server és SQL database, ha szeretne belépni [további lépések](#next-steps) , és megtudhatja, hogyan kapcsolódás és lekérdezés az adatbázis számos különböző módszer használatával. 
+Tartsa meg az erőforráscsoport, az SQL server és SQL database, ha szeretné nyissa meg a [további lépések](#next-steps). A következő lépések bemutatják, hogyan történő csatlakozásról és lekérdezésről különböző módszereket használ az adatbázis. 
 
 Ha elkészült, használja ezeket az erőforrásokat, törölheti őket a következő:
 
 1. Az Azure Portal bal oldali menüből válassza ki a **erőforráscsoportok**, majd válassza ki **myResourceGroup**.
 1. Az erőforráscsoport lapján, válassza ki a **erőforráscsoport törlése**. 
-1. Típus *myResourceGroup* a mezőt, és válassza ki a **törlése**.
+1. Adja meg *myResourceGroup* a mezőt, és válassza ki a **törlése**.
 
 ## <a name="next-steps"></a>További lépések
 
-- Létre kell hoznia egy kiszolgálószintű tűzfalszabályt, amely az Azure SQL database csatlakozhat a helyszíni vagy távoli eszközök. További információkért lásd: [hozzon létre egy kiszolgálószintű tűzfalszabályt](sql-database-get-started-portal-firewall.md).
-- Miután létrehozott egy kiszolgálószintű tűzfalszabályt, [csatlakozásról és lekérdezésről](sql-database-connect-query.md) számos különböző eszközöket és nyelveket használ az adatbázis. 
+- Csatlakozás az Azure SQL database a helyszíni vagy távoli eszközök kiszolgálószintű tűzfalszabály létrehozásához. További információkért lásd: [hozzon létre egy kiszolgálószintű tűzfalszabályt](sql-database-get-started-portal-firewall.md).
+- Miután létrehozott egy kiszolgálószintű tűzfalszabályt [csatlakozásról és lekérdezésről](sql-database-connect-query.md) számos különböző eszközöket és nyelveket használ az adatbázis. 
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Azure CLI használatával Azure SQL-adatbázisok létrehozásához lásd: [Azure CLI-minták](sql-database-cli-samples.md).

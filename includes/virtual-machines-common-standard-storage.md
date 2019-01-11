@@ -5,15 +5,15 @@ services: storage
 author: yuemlu
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264088"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193392"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Költséghatékony Standard Storage és a nem felügyelt és felügyelt Azure-beli Virtuálisgép-lemezek
 
@@ -25,7 +25,7 @@ Ez a cikk foglalkozik, a standard szintű SSD és HDD-lemezek használatát. Blo
 
 A standard szintű lemezek létrehozása az Azure virtuális gépek két módja van:
 
-**Nem felügyelt lemezek**: A lemez típusát a eredeti módszer kezelheti az, hogy a Virtuálisgép-lemezek megfelelnek a VHD-fájlok tárolására szolgáló tárfiókot. VHD-fájlokat a storage-fiókok lap blobként vannak tárolva. Nem felügyelt lemezek minden olyan Azure virtuális gép méretét, beleértve a virtuális gépeket, amelyek bevételszerzésre használják a Premium Storage, a DSv2 és GS-sorozat például lehet rendelni. Az Azure virtuális gépek támogatják a több standard szintű lemezek csatolása lehetővé teszi a tárhelyet a maximális hossz 256 Tib-ra. Ha az előzetes verzió lemezméretek használ, legfeljebb körülbelül 2 PiB tárhelyet rendelkezhet.
+**Nem felügyelt lemezek**: Az ilyen típusú lemez a eredeti módszer, amellyel kezelheti a VHD-fájlokat, amelyek megfelelnek a virtuális gépek lemezeihez használt tárfiókok. VHD-fájlokat a storage-fiókok lap blobként vannak tárolva. Nem felügyelt lemezek minden olyan Azure virtuális gép méretét, beleértve a virtuális gépeket, amelyek bevételszerzésre használják a Premium Storage, a DSv2 és GS-sorozat például lehet rendelni. Az Azure virtuális gépek támogatják a több standard szintű lemezek csatolása lehetővé teszi a tárhelyet a maximális hossz 256 Tib-ra. Ha az előzetes verzió lemezméretek használ, legfeljebb körülbelül 2 PiB tárhelyet rendelkezhet.
 
 [**Az Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ez a funkció az Ön számára a virtuális gépek lemezeihez használt tárfiókok kezeli. A (prémium szintű SSD, Standard SSD vagy Standard HDD) típusát és méretét adja meg lemez van szüksége, és az Azure létrehozza és felügyeli a lemezt Ön helyett. Nem kell aggódnia a tárfiókok méretezhetőségének korlátai belül marad – az Azure végzi, amely az Ön számára biztosítása érdekében helyezi el a lemezek több tárfiókon keresztül.
 
@@ -42,15 +42,15 @@ A felügyelt lemezekkel rendelkező virtuális gép létrehozása információk�
 
 Vessünk egy pillantást a standard szintű Storage funkcióit. További részletekért tekintse meg [Azure Storage bemutatása](../articles/storage/common/storage-introduction.md).
 
-**Standard szintű Storage**: Azure standard szintű tárolást támogatja az Azure Disks, Azure-Blobok, az Azure Files, Azure-táblák és Azure-üzenetsorok. Standard szintű Storage szolgáltatás használatához kezdje [hozzon létre egy Azure Storage-fiók](../articles/storage/common/storage-quickstart-create-account.md).
+**Standard szintű Storage**: Az Azure standard szintű Storage támogatja az Azure Disks, Azure-Blobok, az Azure Files, Azure-táblák és Azure-üzenetsorok. Standard szintű Storage szolgáltatás használatához kezdje [hozzon létre egy Azure Storage-fiók](../articles/storage/common/storage-quickstart-create-account.md).
 
-**Standard SSD-lemez:** Standard SSD-lemez, mint a standard szintű HDD lemezek megbízhatóbb teljesítményt nyújtanak, és jelenleg elérhető. Standard SSD-lemez régiók rendelkezésre állása kapcsolatos további információkért lásd: [régiók rendelkezésre állása Standard SSD-lemez](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**Standard SSD-lemezeket:** Standard SSD-lemezeket, mint a standard szintű HDD lemezek megbízhatóbb teljesítményt nyújtanak, és jelenleg érhetők el. Standard SSD-lemez régiók rendelkezésre állása kapcsolatos további információkért lásd: [régiók rendelkezésre állása Standard SSD-lemez](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
-**A standard szintű HDD-lemezek:** HDD standard szintű lemezek többek között például a DSv2 és GS-sorozat a Premium Storage használt mérete sorozatú virtuális gépek Azure virtuális gépekhez lehet csatolni. Standard HDD lemez csak egy virtuális géphez csatolható. Azonban egy vagy több ezeket a lemezeket is csatlakoztatható egy virtuális géphez, akár a Virtuálisgép-méret definiált lemezek maximális száma. A standard szintű Storage méretezhetőségi és Teljesítménycéljai a következő szakaszban ismertetünk, az előírások részletesebben.
+**A standard szintű HDD-lemezek:** A standard szintű HDD lemezek többek között például a DSv2 és GS-sorozat a Premium Storage használt mérete sorozatú virtuális gépek az Azure virtuális gépekhez csatolható. Standard HDD lemez csak egy virtuális géphez csatolható. Azonban egy vagy több ezeket a lemezeket is csatlakoztatható egy virtuális géphez, akár a Virtuálisgép-méret definiált lemezek maximális száma. A standard szintű Storage méretezhetőségi és Teljesítménycéljai a következő szakaszban ismertetünk, az előírások részletesebben.
 
-**Standard szintű lapblob**: standard szintű lapblobok, amely tárolja az állandó lemezt a virtuális gépek használják, és közvetlenül a REST, például a más típusú Azure-Blobok keresztül is elérhető. [Lapblobok](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) véletlenszerű olvasási és írási műveletekhez optimalizált 512 bájtos oldalak gyűjteményei. 
+**Standard szintű lapblob**: Standard szintű lapblobok, amely tárolja az állandó lemezt a virtuális gépek használják, és közvetlenül a REST, például a más típusú Azure-Blobok keresztül is elérhető. [Lapblobok](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) véletlenszerű olvasási és írási műveletekhez optimalizált 512 bájtos oldalak gyűjteményei. 
 
-**Tárreplikáció:** a legtöbb olyan régióban, Standard szintű storage-fiókban lévő adatok lehet helyileg replikált vagy georeplikált egyszerre több adatközpontban. A négy típusú replikácó a helyileg redundáns tárolás (LRS), a Zónaredundáns tárolás (ZRS), a Georedundáns tárolás (GRS) és az írásvédett Georedundáns tárolás (RA-GRS). Felügyelt lemezek a standard szintű Storage jelenleg támogatja a helyileg redundáns tárolás (LRS) csak. További információkért tekintse meg [Tárreplikáció](../articles/storage/common/storage-redundancy.md).
+**Tárreplikáció:** A legtöbb olyan régióban standard szintű storage-fiókban lévő adatok lehet helyileg replikált vagy georeplikált egyszerre több adatközpontban. A négy típusú replikácó a helyileg redundáns tárolás (LRS), a Zónaredundáns tárolás (ZRS), a Georedundáns tárolás (GRS) és az írásvédett Georedundáns tárolás (RA-GRS). Felügyelt lemezek a standard szintű Storage jelenleg támogatja a helyileg redundáns tárolás (LRS) csak. További információkért tekintse meg [Tárreplikáció](../articles/storage/common/storage-redundancy.md).
 
 ## <a name="scalability-and-performance-targets"></a>Méretezhetőségi és teljesítménycélok
 
@@ -75,15 +75,7 @@ Ha az alkalmazása igényeit meghaladja a skálázhatósági célokat, az egy t�
 
 ### <a name="standard-disks-limits"></a>A standard szintű lemezek korlátok
 
-A bemeneti/kimeneti műveletek másodpercenként (IOPS) és a standard szintű lemezek (sávszélesség) átviteli ellentétben a prémium szintű lemezek, nincs kiépítve. A standard szintű lemezek teljesítménye a Virtuálisgép-méretet, a lemez csatolva van, hogy a lemez mérete nem függ. A teljesítmény az alábbi táblázatban felsorolt korlátig elérése sikerült várt.
-
-**A standard szintű lemezek korlátait (felügyelt és nem felügyelt)**
-
-| **Virtuálisgép-réteg**            | **Alapszintű VM** | **Standard szintű VM** |
-|------------------------|-------------------|----------------------|
-| Lemez max. mérete          | – 32 767 giB           | – 32 767 giB        |
-| Maximum 8 KB IOPS lemezenként | Legfeljebb 2000         | Legfeljebb 2000        |
-| Lemezenkénti maximális sávszélesség | Legfeljebb 500 MB/s     | Legfeljebb 500 MB/s      |
+A bemeneti/kimeneti műveletek másodpercenként (IOPS) és a standard szintű lemezek (sávszélesség) átviteli ellentétben a prémium szintű lemezek, nincs kiépítve. A standard szintű lemezek teljesítménye művelettől függ, a virtuális gép méretét, hogy a lemez csatolva, és a lemez kívánt méretét.
 
 Ha a számítási feladatok nagy teljesítményű, kis késleltetésű lemeztámogatás van szüksége, érdemes a Premium Storage tárolást használ. Prémium szintű Storage további előnyei ismeri, a Microsoft [nagy teljesítményű Premium Storage és Azure Virtuálisgép-lemezek](../articles/virtual-machines/windows/premium-storage.md).
 
@@ -117,22 +109,22 @@ Standard szintű Storage használata esetén az alábbi számlázási szempontok
 * Kimenő adatforgalom
 * Tranzakciók
 
-**Nem felügyelt tárolási adatok és a lemez mérete:** nem felügyelt lemezek és egyéb adatok (blobok, táblák, üzenetsorok és fájlok) esetén számítunk fel díjat csak mennyiségének területet használ. Például ha egy virtuális gép rendelkezik 127 GB, de a virtuális gép, amelynek lapblob kiépítése valójában csak 10 GB-nyi területet használja, fizetnie 10 GB lemezterület. Standard szintű storage akár támogatjuk 8191 GB, és a standard szintű nem felügyelt lemezek legfeljebb 4095 GB-ig. 
+**Nem kezelt adatok és a lemez mérete:** A nem felügyelt lemezek és egyéb adatok (blobok, táblák, üzenetsorok és fájlok) a számlázás a csak mennyiségének területet használ. Például ha egy virtuális gép rendelkezik 127 GB, de a virtuális gép, amelynek lapblob kiépítése valójában csak 10 GB-nyi területet használja, fizetnie 10 GB lemezterület. Standard szintű storage akár támogatjuk 8191 GB, és a standard szintű nem felügyelt lemezek legfeljebb 4095 GB-ig. 
 
-**A felügyelt lemezek:** standard szintű managed disks díjszabása a kiépített a lemez mérete függ. Azure maps-a kiépítési méret (kerekítve) a legközelebbi Managed Disks beállítás, az alábbi táblázatban megadott módon. Minden egyes felügyelt lemezéhez vannak leképezve a támogatott kiosztott méretek egyikét, és ennek megfelelően történik. Például ha standard szintű felügyelt lemez létrehozása, és adja meg a 200 GB kiosztott méretét, számítjuk fel a díjszabás a S15 lemez típusa alapján.
+**Felügyelt lemezek:** A standard szintű felügyelt lemezek díjszabása a kiépített a lemez mérete függ. Azure maps-a kiépítési méret (kerekítve) a legközelebbi Managed Disks beállítás, az alábbi táblázatban megadott módon. Minden egyes felügyelt lemezéhez vannak leképezve a támogatott kiosztott méretek egyikét, és ennek megfelelően történik. Például ha standard szintű felügyelt lemez létrehozása, és adja meg a 200 GB kiosztott méretét, számítjuk fel a díjszabás a S15 lemez típusa alapján.
 
 Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
 
 | **Felügyelt standard HDD <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16,385 giB (16 TiB) | 32 767 giB (32 TiB) |
+| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,385 giB (16 TiB) | 32 767 giB (32 TiB) |
 
 
-**A pillanatképek**: a megnövelt kapacitás, a pillanatképek által használt standard szintű lemezek pillanatképei számlázzuk ki. A pillanatképek információkért lásd: [létrehozása egy pillanatképet egy Blobról](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+**A pillanatképek**: Standard szintű lemezek pillanatképei a megnövelt kapacitás, a pillanatképek által használt számlázzuk ki. A pillanatképek információkért lásd: [létrehozása egy pillanatképet egy Blobról](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 **Kimenő adatforgalom**: [kimenő adatforgalom](https://azure.microsoft.com/pricing/details/data-transfers/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
 
-**Tranzakció**: Azure 0.0036 $ / 100 000 tranzakció standard szintű tárolóra vonatkozó díjak. Tranzakciónak számít az adatok tárolóba írása és tárolóból való olvasása is.
+**Tranzakció**: Azure 0.0036 $ / 100 000 tranzakció standard szintű tárolóra vonatkozó költségek. Tranzakciónak számít az adatok tárolóba írása és tárolóból való olvasása is.
 
 A standard szintű Storage, a virtuális gépek és a Managed Disks díjszabása részletes információkért lásd:
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994963"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215269"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Ajánlott eljárásokat, és állítsa be a hálózati, számítási feladatok migrálása az Azure-bA
 
@@ -185,7 +185,7 @@ A site-to-site VPN beállításakor, tegye a következőket:
 **tudj meg többet:**
 
 - [Felülvizsgálat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) kompatibilis a helyszíni VPN-eszközök.
-- [Áttekintés](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway) VPN-átjárók.
+- [Áttekintés](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) VPN-átjárók.
 - [Ismerje meg](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable) magas rendelkezésre állású VPN-kapcsolatok.
 - [Ismerje meg](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) tervezésekor és kialakításakor a VPN-átjáró.
 - [Felülvizsgálat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) a VPN gateway beállításairól.

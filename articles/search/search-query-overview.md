@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 03ec588b1627b82a01021a9b71958e9d66aab0ce
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315587"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214827"
 ---
 # <a name="query-types-and-composition-in-azure-search"></a>Lekérdezés típusa és létrehozása az Azure Search
 
@@ -94,7 +94,7 @@ queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$
 A teljes Lucene-elemzőt használja ugyanazt a lekérdezést a "ranch", amely felgyorsíthatók a keresési besorolás az eredmények a keresett kifejezést tartalmazó mezőt a terhelésétől értelmezi.
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
 ```
 
 <a name="types-of-queries"></a>

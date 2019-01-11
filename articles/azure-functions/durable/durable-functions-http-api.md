@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340778"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215405"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -96,9 +96,9 @@ Minden HTTP API-k megvalósítva a végezze el a bővítményt a következő par
 | taskHub    | Lekérdezési sztring    | Neve a [feladat hub](durable-functions-task-hubs.md). Ha nincs megadva, a rendszer feltételezi a jelenlegi függvényalkalmazás feladat eseményközpont neve. |
 | kapcsolat | Lekérdezési sztring    | A **neve** a tárfiók kapcsolati karakterlánca. Ha nincs megadva, a rendszer feltételezi a függvényalkalmazás alapértelmezett kapcsolati karakterláncára. |
 | systemKey  | Lekérdezési sztring    | A hitelesítési kulcs az API meghívásához szükséges. |
-| showInput  | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `false`, a végrehajtás nem fog szerepelni a válasz-adattartalomra adjon meg.|
-| showHistory| Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
-| showHistoryOutput| Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a tevékenység kimenete fog szerepelni a vezénylési futtatási előzményei.|
+| showInput  | Lekérdezési sztring    | Nem kötelező paraméter; csak egy példányban – a kérést. Ha beállítása `false`, a végrehajtás nem fog szerepelni a válasz-adattartalomra adjon meg.|
+| showHistory| Lekérdezési sztring    | Nem kötelező paraméter; csak egy példányban – a kérést. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
+| showHistoryOutput| Lekérdezési sztring    | Nem kötelező paraméter; csak egy példányban – a kérést. Ha beállítása `true`, a tevékenység kimenete fog szerepelni a vezénylési futtatási előzményei.|
 | createdTimeFrom  | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
 | createdTimeTo    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
 | runtimeStatus    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott-példányok listájának alapján szűri a futásidejű állapot. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
@@ -146,7 +146,7 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** és **HTTP 202** esetben egy 
 | output          | JSON      | A példány JSON-kimenetét. Ez a mező `null` , ha a példány nem egy befejezett állapotban van. |
 | createdTime     | sztring    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
 | lastUpdatedTime | sztring    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
-| historyEvents   | JSON      | A vezénylési végrehajtási előzményeket tartalmazó JSON-tömböt. Ez a mező `null` , kivéve, ha a `showHistory` lekérdezési karakterlánc paraméterének értéke `true`.  |
+| historyEvents   | JSON      | A vezénylési végrehajtási előzményeket tartalmazó JSON-tömböt. Ez a mező `null` , kivéve, ha a `showHistory` lekérdezési karakterlánc paraméterének értéke `true`. |
 
 Íme egy példa válasz a tartalmat, beleértve a vezénylési futtatási előzmények és tevékenység kimenetek (az olvashatóság érdekében formázva):
 

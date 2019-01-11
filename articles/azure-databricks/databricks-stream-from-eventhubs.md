@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 16095dabb0e5e3e303e82126c7f57cb4ff3fe8dd
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707146"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200922"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -168,7 +168,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks-munkaterületen 
 
 ## <a name="send-tweets-to-event-hubs"></a>Tweetek küldése az Event Hubsnak
 
-Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és a helyőrzőket cserélje le a korábban létrehozott Event Hubs-névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
+Az a **SendTweetsToEventHub** jegyzetfüzetbe illessze be az alábbi kódot, és a helyőrzőket cserélje le az Event Hubs-névtér és Twitter-alkalmazás, amely a korábban létrehozott értékeket. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 ```scala
     import java.util._
@@ -384,4 +384,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan végezhet hangulatelemzést a streamelt adatokon az Azure Databricks és a [Microsoft Cognitive Services API](../cognitive-services/text-analytics/overview.md) használatával.
 
 > [!div class="nextstepaction"]
->[Streamelt adatok hangulatelemzése az Azure Databricks használatával](databricks-sentiment-analysis-cognitive-services.md)
+>[Hangulatelemzést a streamelt adatokon az Azure Databricks használatával ](databricks-sentiment-analysis-cognitive-services.md)

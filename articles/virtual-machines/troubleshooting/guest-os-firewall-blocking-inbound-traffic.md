@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134437"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213111"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Az Azure virtuális gép vendég operációs rendszer tűzfal blokkolja a bejövő forgalom
 
@@ -112,8 +112,8 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
     > [!Note]
     > A tűzfal-házirendet, attól függően, hogyan állítsa be a következőkre vonatkoznak:
-    >    * *BlockInbound*: minden bejövő forgalom le lesz tiltva, ha nincsenek érvényben, amely lehetővé teszi, hogy a forgalmat egy szabályt.
-    >    * *BlockInboundAlways*: figyelmen kívül az összes tűzfalszabályt, és minden forgalom le lesz tiltva.
+    >    * *BlockInbound*: Minden bejövő forgalom le lesz tiltva, kivéve, ha egy szabály érvényben, amely lehetővé teszi, hogy a forgalmat.
+    >    * *BlockInboundAlways*: Figyelmen kívül az összes tűzfalszabályt, és minden forgalom le lesz tiltva.
 
 2.  Szerkessze a *DefaultInboundAction* , ha szeretné ezeket a profilokat **engedélyezése** forgalmat. Ehhez futtassa a következő parancsot:
 
@@ -142,7 +142,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 #### <a name="mitigation-1"></a>1. megoldás
 
-Lásd: [hogyan engedélyezzen vagy tiltson le egy tűzfal, a vendég operációs rendszer DOC a szabály]().
+Lásd: [hogyan engedélyezzen vagy tiltson le egy tűzfal, a vendég operációs rendszeren szabály](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>2. megoldás
 

@@ -1,5 +1,5 @@
 ---
-title: Több IP-konfiguráció az Azure-ban a terheléselosztás
+title: Több IP-konfiguráció – Azure CLI-vel a terheléselosztás
 titlesuffix: Azure Load Balancer
 description: Terheléselosztás több elsődleges és másodlagos IP-konfigurációkban.
 services: load-balancer
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: cdfb374bf9245d055c86974debc9a6eb8f0fefd6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 18d5bbd6b4b4c48fee2e01c70dfe696a0c10834a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164211"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201007"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráció PowerShell-lel
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 18ca854f1e04127a900c1b753245ed6e2a331d68
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b98b42be170c37710435d1aad61707a4ed01851f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628168"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214420"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Tárolók törlése a nevük előtagja alapján
 
@@ -49,8 +49,8 @@ A szkript a következő parancsokat használja a tárolók a nevük előtagja al
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Lekérdezi a megadott tárfiók vagy egy erőforráscsoport vagy előfizetés tárfiókok mindegyikét. |
-| [Get-AzStorageContainer](/powershell/module/azure.storage/get-AzStoragecontainer) | A storage-fiókhoz társított storage-tárolók listája. |
-| [Remove-AzStorageContainer](/powershell/module/azure.storage/remove-AzStoragecontainer) | Eltávolítja a megadott tároló. |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | A storage-fiókhoz társított storage-tárolók listája. |
+| [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | Eltávolítja a megadott tároló. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,22 +1,22 @@
 ---
 title: Új eszköztípus definiálása az Azure IoT Centralban | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust az Azure IoT Central alkalmazásban. Meghatározza a típus telemetriáját, állapotát, tulajdonságait és beállításait.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+manager: philmea
+ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963595"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199969"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköztípus definiálása az Azure IoT Central-alkalmazásban
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
 
 Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust egy eszközsablon használatával a Microsoft Azure IoT Central alkalmazásban. Az eszközsablon határozza meg az eszköztípus telemetriáját, állapotát, tulajdonságait és beállításait.
 
@@ -405,7 +405,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Cím        | Hőmérséklet |
+    | Beosztás        | Hőmérséklet |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | hőmérséklet (válassza a **hőmérséklet** melletti **Láthatóság** lehetőséget) |
 
@@ -417,7 +417,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Cím        | Események |
+    | Beosztás        | Események |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | Ventilátormotor-hiba (válassza a **Ventilátormotor-hiba** melletti **Láthatóság** lehetőséget) |
 
@@ -429,7 +429,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Cím        | Ventilátor mód |
+    | Beosztás        | Ventilátor mód |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek | Ventilátor mód (válassza a **Ventilátor mód** melletti **Láthatóság** lehetőséget) |
 
@@ -445,7 +445,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás                 | Érték         |
     | ----------------------- | ------------- |
-    | Cím                   | Megadott célhőmérséklet |
+    | Beosztás                   | Megadott célhőmérséklet |
     | Beállítások és tulajdonságok | Megadott hőmérséklet |
 
     A korábban a Beállítások és tulajdonságok oldalain meghatározott beállítások és tulajdonságok az Elérhető oszlopok területen jelennek meg. 
@@ -462,7 +462,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás                 | Érték         |
     | ----------------------- | ------------- |
-    | Cím                   | Sorozatszám |
+    | Beosztás                   | Sorozatszám |
     | Beállítások és tulajdonságok | Sorozatszám |
 
     ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings5.png)
@@ -477,7 +477,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     | Beállítás                 | Érték            |
     | ----------------------- | ---------------- |
-    | Cím                   | Belső vezérlőprogram verziója |
+    | Beosztás                   | Belső vezérlőprogram verziója |
     | Beállítások és tulajdonságok | Belső vezérlőprogram verziója |
 
     ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings6.png)

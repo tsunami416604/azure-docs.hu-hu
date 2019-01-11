@@ -1,19 +1,19 @@
 ---
 title: Egy általános Node.js ügyfél-alkalmazás csatlakoztatása az Azure IoT Central |} A Microsoft Docs
 description: Eszköz fejlesztőként egy általános Node.js-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 9d97b14d52a33d6879ee92b38993f4526823c4a0
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963989"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198082"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők egy általános Node.js-al
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT Central alkalmazáshoz. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
+1. Azure IoT Central alkalmazáshoz. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 1. A fejlesztői gépen való [Node.js](https://nodejs.org/) 4.0.0-s verzió vagy újabb verziója szükséges. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="create-a-device-template"></a>Egy eszköz-sablon létrehozása

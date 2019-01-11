@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a9decacc3b22676d94726e3cf979198b3486d270
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b61602d221c71fd756a23f338f2817561e9f5d09
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104641"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215082"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Térkép egy mozaikréteg hozzáadása
 
@@ -68,7 +68,7 @@ További információ az osztályok és módszerek a cikk ezt használja:
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayeroptions?view=azure-iot-typescript-latest)
+> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
 Tekintse meg a további Kódminták a maps hozzá az alábbi cikkeket:
 

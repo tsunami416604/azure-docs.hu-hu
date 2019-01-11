@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: dc1de1bb43295d2ff9f260613ae568cdd2fbe6ae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103499"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198779"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
 Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.
@@ -164,6 +164,18 @@ Használjuk a lekérdezést *típus = MyApp_CL* összegyűjtött napló minden r
 Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, és *üzenet* mezőket, és láthatja a rekordok közötti különbség a lekérdezés által visszaadott, amely.
 
 ![Egyéni mezőkkel naplólekérdezés](media/data-sources-custom-logs/query-02.png)
+
+## <a name="alternatives-to-custom-logs"></a>Egyéni naplók alternatívái
+Egyéni naplók hasznosak, ha az adatok a kapcsolatos felsorolt feltételeknek megfelelő, de előfordulhatnak olyan esetek, például a következő közben hol kell egy másik olyan stratégia:
+
+- Az adatok nem fér el a szükséges struktúrára, például az időbélyeg kellene más formátumban.
+- A naplófájl nem felelnie a követelmények például a fájl kódolása vagy egy nem támogatott mappastruktúra.
+- Az adatok előfeldolgozása, vagy előtti gyűjtemény szűrést van szükség. 
+
+Azokban az esetekben, ahol az adatok nem gyűjthetők be az egyéni naplókat vegye figyelembe a következő alternatív stratégiák:
+
+- Egyéni parancsfájl vagy más módszerrel segítségével adatokat írhat [Windows-események](data-sources-windows-events.md) vagy [Syslog](data-sources-syslog.md) amely Log Analytics által gyűjtött. 
+- Az adatok küldése közvetlenül a Log Analytics használatával [HTTP-adatgyűjtő API](data-collector-api.md). Az Azure Automation-runbookok használatával például a [gyűjthet adatokat a Log Analytics az Azure Automation-runbook](runbook-datacollect.md).
 
 ## <a name="next-steps"></a>További lépések
 * Lásd: [elemzése a Log Analytics szöveges adatok](../log-query/parse-text.md) elemezni az egyes módszerek importált naplóbejegyzés több tulajdonságot be.

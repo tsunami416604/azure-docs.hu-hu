@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: bb7a0b8c2d0511088282e180a108f8d925f0e4e8
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 059c227f9a5a5701e3fceca94b643c30d006ce67
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055097"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199952"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell használatával
 
@@ -63,7 +63,7 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Hálózati tulajdonságok
+### <a name="network-properties"></a>Hálózat tulajdonságai
 A következő változók használatával adja meg a hálózati adapterhez, a TCP/IP-kiosztási módszer, a virtuális hálózat neve, a virtuális alhálózat neve, az IP-címtartományt a virtuális hálózat, az IP-címtartományt az alhálózat és a nyilvános tartomány neve felirat a virtuális gép a hálózat által használt.
 
 Igény szerint módosíthatja, és ezután hajtsa végre az alábbi parancsmagot, ezek a változók inicializálása.

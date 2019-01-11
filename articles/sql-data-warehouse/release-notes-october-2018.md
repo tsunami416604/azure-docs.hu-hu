@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966823"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213689"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Mi az új Azure SQL Data warehouse? 2018. október
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek 2018. október.
@@ -41,7 +41,7 @@ Speciális hangolási Azure SQL Data warehouse-hoz (az SQL DW) csak van további
 Az Azure SQL Data Warehouse a gyorsított adatbázis helyreállítási (ADR) már nyilvános előzetes verzióban érhető el. Automatikus központi telepítési szabály egy új SQL Server-motor, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen a hosszú ideig futó tranzakció, a jelenléte szerint teljesen újratervezése másolatot a jelenlegi helyreállítási folyamatot az alapoktól. Automatikus központi telepítési szabály elsődleges előnyei a következők: a gyors és következetes adatbázis-helyreállítás és azonnali tranzakció visszaállítása.
 
 ## <a name="azure-monitor-diagnostics-logs"></a>Az Azure Monitor-diagnosztikai naplók
-Az SQL Data warehouse-ba (az SQL DW) most már lehetővé teszi a bővített elemzéseket kaphat elemzési számítási feladatok közvetlenül az Azure Monitor-diagnosztikai naplók integrálásával. Ez a lehetőség lehetővé teszi a fejlesztők számára, hogy a lekérdezés-optimalizálási vagy a kapacitás felügyeleti elemzi a számítási feladatok viselkedését egy hosszú időn keresztül és megalapozottabb döntéseket hozhat. Most már bevezettük a egy külső naplózási folyamatot [diagnosztikai naplók az Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , amely az adatraktár-számítási feladat további betekintést nyújtson. Egyetlen kattintással gomb, most már áll konfigurálhatja a diagnosztikai naplók hibaelhárítási lehetőségek használatával előzmény lekérdezési teljesítményre [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Az Azure Monitor-diagnosztikai naplók testre szabható megőrzési időtartamú támogatási menti a naplókat a tárfiókhoz tartozó naplózási célokra, teszi, hogy a naplók streamelése az event hubs segítségével közel valós idejű telemetriai insights és a Log Analytics használatával naplók elemzéséhez a [lekérdezések naplózását](). A diagnosztikai naplók az adattárház olyan telemetriai nézeteiből állnak, amelyek egyenértékűek az SQL Data Warehouse teljesítményproblémáinak elhárításához leggyakrabban használt DMV lekérdezésekkel. A kezdeti kiadás engedélyeztük a következő rendszer dinamikus felügyeleti nézetek nézeteket:
+Az SQL Data warehouse-ba (az SQL DW) most már lehetővé teszi a bővített elemzéseket kaphat elemzési számítási feladatok közvetlenül az Azure Monitor-diagnosztikai naplók integrálásával. Ez a lehetőség lehetővé teszi a fejlesztők számára, hogy a lekérdezés-optimalizálási vagy a kapacitás felügyeleti elemzi a számítási feladatok viselkedését egy hosszú időn keresztül és megalapozottabb döntéseket hozhat. Most már bevezettük a egy külső naplózási folyamatot [diagnosztikai naplók az Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , amely az adatraktár-számítási feladat további betekintést nyújtson. Egyetlen kattintással gomb, most már áll konfigurálhatja a diagnosztikai naplók hibaelhárítási lehetőségek használatával előzmény lekérdezési teljesítményre [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Az Azure Monitor-diagnosztikai naplók testre szabható megőrzési időtartamú támogatási menti a naplókat a tárfiókhoz tartozó naplózási célokra, teszi, hogy a naplók streamelése az event hubs segítségével közel valós idejű telemetriai insights és a Log Analytics használatával naplók elemzéséhez napló lekérdezésekkel. A diagnosztikai naplók az adattárház olyan telemetriai nézeteiből állnak, amelyek egyenértékűek az SQL Data Warehouse teljesítményproblémáinak elhárításához leggyakrabban használt DMV lekérdezésekkel. A kezdeti kiadás engedélyeztük a következő rendszer dinamikus felügyeleti nézetek nézeteket:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)

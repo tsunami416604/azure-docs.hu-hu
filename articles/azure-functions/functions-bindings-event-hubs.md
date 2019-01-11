@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a5154d8d3a4922dead686c3d5002eaae818ff5a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002154"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201363"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -59,9 +59,9 @@ Ha a függvény első engedélyezve van, nincs a függvény csak egy példánya.
 
 * **Nincs szükség új függvény példányok**: `Function_0` a függvények skálázási logika lép működésbe, mielőtt az összes 1000 esemény feldolgozására képes. Ebben az esetben az összes 1000 üzenetek dolgozza fel `Function_0`.
 
-* **Egy további függvény példány kerül hozzáadásra**: logikai méretezés a Functions határozza meg, amely `Function_0` rendelkezik a további üzeneteket, mint amennyit fel tud dolgozni. Az ebben az esetben egy új funkció-példányt (`Function_1`) jön létre, valamint egy új [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példány. Az Event Hubs észleli, hogy új gazdagép-példány megpróbálja az üzenetek olvasásakor. Event Hubs elosztja a partíciók között a saját példányait üzemeltetni. Ha például a partíciók 0 és 4 közötti rendelhetők hozzá `Function_0` és 5 – 9, particionálja `Function_1`.
+* **Egy további függvény példány kerül hozzáadásra**: Az funkciók logic skálázás határozza meg, amely `Function_0` rendelkezik a további üzeneteket, mint amennyit fel tud dolgozni. Az ebben az esetben egy új funkció-példányt (`Function_1`) jön létre, valamint egy új [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példány. Az Event Hubs észleli, hogy új gazdagép-példány megpróbálja az üzenetek olvasásakor. Event Hubs elosztja a partíciók között a saját példányait üzemeltetni. Ha például a partíciók 0 és 4 közötti rendelhetők hozzá `Function_0` és 5 – 9, particionálja `Function_1`.
 
-* **N példányt. a funkció további. Adja hozzá**: logikai méretezés a Functions határozza meg, amely mindkét `Function_0` és `Function_1` további üzenetek feldolgozására képes, mint. Új függvény alkalmazáspéldány `Function_2`... `Functions_N` jönnek létre, ahol `N` nagyobb, mint az event hub-partíciók száma. Ebben a példában az Event Hubs újra elosztja a terhelést a partíciók ebben az esetben a példányok között `Function_0`... `Functions_9`.
+* **További függvény példányt adja hozzá N**: Az funkciók logic skálázás határozza meg, amely mindkét `Function_0` és `Function_1` további üzenetek feldolgozására képes, mint. Új függvény alkalmazáspéldány `Function_2`... `Functions_N` jönnek létre, ahol `N` nagyobb, mint az event hub-partíciók száma. Ebben a példában az Event Hubs újra elosztja a terhelést a partíciók ebben az esetben a példányok között `Function_0`... `Functions_9`.
 
 Vegye figyelembe, hogy amikor funkciók méretezhető `N` példányok, ami egy szám nagyobb, mint az event hub-partíciók száma. Ez azért történt, győződjön meg róla, hogy az mindig [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) példányig beszerzése a partíciók zárolását, amint a többi példány elérhetővé válnak. Ön csak az erőforrások díjkötelesek használatos, ha végrehajtja a függvényt példány; nem terheli a fölösleges üzembe.
 
@@ -452,7 +452,7 @@ A [host.json](functions-host-json.md#eventhub) fájl az Event Hubs eseményindí
 
 Az Event Hubs-kimeneti kötését beírni az eseményeket az eseménystream használata. Eseményeket írni egy eseményközpontba küldési engedéllyel kell rendelkeznie.
 
-Győződjön meg arról, a szükséges csomag hivatkozások vannak érvényben: [1.x függvények](#packages---functions-1.x) vagy [2.x függvények](#packages---functions-2.x)
+Ellenőrizze, hogy a szükséges csomag hivatkozást a rendszer: [Függvények 1.x](#packages---functions-1.x) vagy [2.x függvények](#packages---functions-2.x)
 
 ## <a name="output---example"></a>Kimenete – példa
 
@@ -659,7 +659,7 @@ public String sendTime(
  }
  ```
 
-Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@EventHubOutput` jegyzet paraméterekkel, amelynek az értéke lenne poublished az Eseményközpontba.  A paraméter típusúnak kell lennie `OutputBinding<T>` , ahol a T egy pojo-vá vagy bármilyen natív Java-típus.
+Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@EventHubOutput` jegyzet paraméterekkel, amelynek az értéke kívánják közzétenni az Eseményközpontba.  A paraméter típusúnak kell lennie `OutputBinding<T>` , ahol a T egy pojo-vá vagy bármilyen natív Java-típus.
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 

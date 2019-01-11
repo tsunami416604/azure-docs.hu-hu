@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957694"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215116"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások-beli virtuális gépen nem indítása
 
 Ez a cikk ismerteti a problémák elhárításához, ha csatlakozik egy Azure virtuális gép (VM) és a távoli asztali szolgáltatások vagy TermService, nem indítása, vagy nem indul el.
 
 > [!NOTE]  
-> Az Azure két különböző üzemi modellek létrehozását és használatát erőforrásokkal rendelkezik: [Azure Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). A cikk a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
+> Az Azure két különböző üzemi modellek létrehozását és használatát erőforrásokkal rendelkezik: [Az Azure Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). A cikk a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
 
 ## <a name="symptoms"></a>Probléma
 
@@ -37,14 +37,14 @@ Ha egy virtuális Géphez való csatlakozáshoz próbál, a következő esetekbe
 
 - Ön távolról tekintse meg az eseménynaplókat a virtuális gépen az Eseménynapló használatával. Láthatja, hogy a távoli asztali szolgáltatások, TermService, nem indítása, vagy nem indul el. A következő naplófájl a következő egy minta:
 
-    **Naplófájl neve**: rendszer </br>
-    **Forrás**: szolgáltatásvezérlő kezelője </br>
-    **Dátum**: 12/16/2017-11:19:36 AM</br>
-    **Eseményazonosító**: 7022</br>
-    **Feladat kategóriája**: nincs</br>
-    **Szint**: hiba</br>
-    **A kulcsszavak**: klasszikus</br>
-    **Felhasználói**: N/A</br>
+    **Naplófájl neve**:      Rendszer </br>
+    **forrás**:        Szolgáltatásvezérlő kezelője </br>
+    **Dátum**:          12/16/2017 11:19:36 AM</br>
+    **Eseményazonosító**:      7022</br>
+    **Feladat kategóriája**: None</br>
+    **Szint**:         Hiba</br>
+    **A kulcsszavak**:      Klasszikus</br>
+    **Felhasználói**:          –</br>
     **Számítógép**: vm.contoso.com</br>
     **Leírás**: A távoli asztali szolgáltatások szolgáltatás indításkor lefagyott. 
 
@@ -112,7 +112,7 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt
 
-1. Csatlakozás [soros konzol](serial-console-windows.md#) , és nyissa meg egy PowerShell-példány.
+1. Csatlakozás [soros konzol](serial-console-windows.md) , és nyissa meg egy PowerShell-példány.
 2. Töltse le a folyamat figyelője eszközt a következő szkript futtatásával:
 
    ```

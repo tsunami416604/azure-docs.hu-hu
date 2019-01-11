@@ -1,7 +1,7 @@
 ---
-title: Hozzon létre egy Standard Load Balancer zónaredundáns előtérbeli IP-címet az Azure CLI használatával
+title: Zónaredundáns előtérbeli – Azure CLI-vel rendelkező Load Balancer létrehozása
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím az Azure CLI használatával
+description: Zónaredundáns nyilvános előtérbeli IP-Címmel cím az Azure CLI-vel rendelkező nyilvános Standard Load Balancer létrehozása
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 8c396e72a8c8471be4214bf1b461210e2e61a805
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f10dfa7d834e24b558f3361a8d83fbbf8d22ddb9
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138925"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198150"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Standard Load Balancer létrehozása az Azure CLI-vel zónaredundáns frontend
 

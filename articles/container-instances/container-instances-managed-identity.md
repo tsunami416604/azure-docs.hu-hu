@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 1f93a186db7685f7e4e159ae1796c4287de74373
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578671"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213058"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances szolgáltatásban
 
@@ -80,7 +80,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 Folytassa a következő példák eléréséhez a Key Vault használatával a felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitás, az Azure Container Instances szolgáltatásban.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>1. példa: Felhasználó által hozzárendelt identitás használatára az Azure Key Vault elérése
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>1. példa: Az Azure Key Vault elérése érdekében a felhasználó által hozzárendelt identitás használatára
 
 ### <a name="create-an-identity"></a>Hozzon létre egy azonosítót
 
@@ -134,7 +134,7 @@ A `identity` hasonlít a kimeneti szakaszának a következőhöz megjelenítése
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Felhasználó által hozzárendelt identitás-hozzáférési jogot a Key Vault
 
-Futtassa a következő [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot egy hozzáférési házirendet a Key vaulttal. Az alábbi példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vault titkos kódok lekéréséhez:
+Futtassa a következő [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)(/ cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot a Key Vault hozzáférési házirend beállítása. Az alábbi példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vault titkos kódok lekéréséhez:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -179,7 +179,7 @@ A válasz a következőhöz hasonlóan néz ki a titkos kulcs megjelenítése. A
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>2. példa: A rendszer által hozzárendelt identitás használatára az Azure Key Vault elérése érdekében
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>2. példa Azure Key Vault elérése érdekében a rendszer által hozzárendelt identitás használatára
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>A tárolócsoport egy rendszer által hozzárendelt identitás engedélyezése
 
@@ -216,7 +216,7 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Tároló csoport hozzáférési jogot a Key Vault
 
-Futtassa a következő [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot egy hozzáférési házirendet a Key vaulttal. Az alábbi példa lehetővé teszi, hogy a rendszer által felügyelt identitás a Key vault titkos kódok lekéréséhez:
+Futtassa a következő [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot egy hozzáférési házirendet a Key vaulttal. Az alábbi példa lehetővé teszi, hogy a rendszer által felügyelt identitás a Key vault titkos kódok lekéréséhez:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get

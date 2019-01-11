@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f940170168147e4e778714e947ab6b558cb2bd5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3afe60e7a00cb4fc4aca5046da8e26aaf3c77a29
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076671"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198813"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption Iaas virtuális gépekhez – gyakori kérdések
+# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
 Ez a cikk az Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek kapcsolatos gyakori kérdések (GYIK) választ ad. Ezzel a szolgáltatással kapcsolatos további információkért lásd: [Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek](azure-security-disk-encryption-overview.md).
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b45284f8fe4bd7fb45e89eeecf13ae7b9b2969b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2a469864a7b4a693ecc908fda360da1b82e8c5f3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016681"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200445"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Salesforce Marketing Cloud
 
@@ -31,6 +31,9 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Da
 Adatok átmásolhatja a Salesforce Marketing Cloud, bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
+
+>[!NOTE]
+>Ez az összekötő nem támogatja az egyéni objektumok vagy egyéni kiterjesztések beolvasása.
 
 ## <a name="getting-started"></a>Első lépések
 

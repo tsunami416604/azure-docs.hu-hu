@@ -1,7 +1,7 @@
 ---
 title: Standard Load Balancer létrehozása az Azure CLI-vel zónaszintű frontend
 titlesuffix: Azure Load Balancer
-description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zónaszintű nyilvános előtérbeli IP-Címmel cím az Azure CLI használatával
+description: Ismerje meg, hogyan hozzon létre egy nyilvános Standard Load Balancer zónaszintű nyilvános előtérbeli IP-Címmel cím az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: f1a6777a99c2237fc4d201fa5c87eaea88117866
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 813f11dae31261b4211480570a4801de19e74437
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185630"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199205"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Az Azure CLI-vel zónaszintű előtér egy nyilvános Load Balancer Standard létrehozása
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Standard Load Balancer létrehozása az Azure CLI-vel zónaszintű frontend
 
-Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) és a egy zónaszintű frontend-IP szabványos nyilvános cím segítségével. Ennek a forgatókönyvnek a követésével meg fog adni egy meghatározott zónát az előtér- és háttérpéldányokhoz, hogy hozzáigazíthassa az adatkapcsolatot és erőforrásokat a meghatározott zónához.
+Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) és a egy zónaszintű frontend-IP szabványos nyilvános cím segítségével. Ennek a forgatókönyvnek a követésével meg fog adni egy meghatározott zónát az előtér- és háttérpéldányokhoz, hogy hozzáigazíthassa az adatkapcsolatot és erőforrásokat a meghatározott zónához.
 
 A rendelkezésre állási zónák a Standard Load Balancerrel való használatáról bővebben a [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md) című cikkben tájékozódhat.
 
@@ -61,7 +61,7 @@ az network public-ip create \
 --zone 1
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Az Azure Load Balancer Standard létrehozása
+## <a name="create-azure-standard-load-balancer"></a>Az Azure Standard Load Balancer létrehozása
 Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
 - a terheléselosztón a bejövő hálózati forgalmat fogadó előtérbeli IP-címkészlet;
 - a háttér-IP-címkészlet, ahová az előtérkészlet küldi az elosztott terhelésű hálózati forgalmat;
@@ -69,7 +69,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 - terheléselosztási szabály, amely megadja, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között.
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
-A Standard load balancer létrehozása [az network lb létrehozása](/cli/azure/network/lb#az-network-lb-create). A következő példában létrehozunk egy nevű terheléselosztót *myLoadBalancer* és hozzárendeli a *myPublicIP* címet az előtérbeli IP-konfigurációhoz.
+A Standard Load Balancer létrehozása [az network lb létrehozása](/cli/azure/network/lb#az-network-lb-create). A következő példában létrehozunk egy nevű terheléselosztót *myLoadBalancer* és hozzárendeli a *myPublicIP* címet az előtérbeli IP-konfigurációhoz.
 
 ```azurecli-interactive
 az network lb create \

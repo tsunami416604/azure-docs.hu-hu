@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808117"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212498"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Adatátvitel az AzCopy v10 (előzetes verzió)
 
@@ -55,7 +55,7 @@ Az AzCopy v10 nem igényel a telepítés. Nyisson meg egy előnyben részesítet
 
 AzCopy v10 lehetővé teszi, hogy az Azure Storage hitelesítésekor a következő beállításokat:
 - **[A Blob és ADLS Gen2 támogatott] az Azure Active Directory**. Használat ```.\azcopy login``` bejelentkezni az Azure Active Directory használatával.  A felhasználóknak rendelkezniük kell ahhoz ["Storage-Blobadatok Közreműködője" szerepkörrel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) írni a Blob storage, Azure Active Directory-hitelesítéssel.
-- **SAS-tokeneket [támogatott a Blobok és fájlok szolgáltatás]**. A SAS-jogkivonat hozzáfűzése a blob elérési útja a parancssorban a használatára. Az Azure-portált használja, SAS-jogkivonatot [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **SAS-tokeneket [támogatott a Blobok és fájlok szolgáltatás]**. A SAS-jogkivonat hozzáfűzése a blob elérési útja a parancssorban a használatára. Az Azure-portált használja, SAS-jogkivonatot [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 ## <a name="getting-started"></a>Első lépések
 

@@ -1,90 +1,83 @@
 ---
-title: 'Töltse le a VPN-eszköz konfigurációs parancsfájlokat S2S VPN-kapcsolatok: Azure Resource Manager |} Microsoft Docs'
-description: Ez a cikk bemutatja, hogyan letöltése VPN eszköz konfigurációs parancsfájlokat S2S VPN-kapcsolatok az Azure VPN Gatewayek Azure Resource Manager használatával.
+title: 'Töltse le a VPN-eszközök konfigurációs szkriptjeinek S2S VPN-kapcsolatok: Az Azure Resource Manager |} A Microsoft Docs'
+description: Ez a cikk végigvezeti az Azure Resource Manager használatával Azure VPN-átjárókkal VPN-eszközök konfigurációs szkriptjeinek S2S VPN-kapcsolatok letöltése.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30317772"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200523"
 ---
-# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Töltse le a VPN-eszköz konfigurációs parancsfájlokat S2S VPN-kapcsolatokhoz
+# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Töltse le a VPN-eszközök konfigurációs szkriptjeinek S2S VPN-kapcsolatok
 
-Ez a cikk bemutatja, hogyan letöltése VPN eszköz konfigurációs parancsfájlokat S2S VPN-kapcsolatok az Azure VPN Gatewayek Azure Resource Manager használatával. Az alábbi ábrán látható, a magas szintű munkafolyamat.
+Ez a cikk végigvezeti az Azure Resource Manager használatával Azure VPN-átjárókkal VPN-eszközök konfigurációs szkriptjeinek S2S VPN-kapcsolatok letöltése. Az alábbi ábrán látható, a magas szintű munkafolyamat.
 
-![parancsfájllal](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+![parancsfájl-letöltése](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 
 A következő eszközökön a parancsfájlokat van:
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>VPN-eszköz konfigurációs parancsfájlok
+## <a name="about"></a>Tudnivalók a VPN-eszközkonfigurációs szkriptek
 
-A létesítmények közötti VPN-kapcsolat az Azure VPN gateway, egy a helyszíni VPN-eszköz és az IPsec S2S VPN-alagút összekötő áll. A tipikus munkafolyamata a következő lépésekből áll:
+Létesítmények közötti VPN-kapcsolatot az Azure VPN gateway, egy a helyszíni VPN-eszköz és a egy IPsec S2S VPN-alagutat a két összekötő áll. A szokásos munkahelyi folyamat a következő lépésekből áll:
 
-1. Hozza létre és konfigurálja az Azure VPN-átjáró (virtuális hálózati átjáró)
-2. Létrehozhat és konfigurálhat egy Azure helyi hálózati átjáró, amely a helyszíni hálózat és a VPN-eszköz jelöli
-3. Hozza létre és konfigurálja az Azure VPN kapcsolatot az Azure VPN gateway és a helyi hálózati átjáró
-4. A helyszíni VPN-eszközön, a tényleges, az Azure VPN gateway az S2S VPN csatornát szeretne létrehozni a helyi hálózati átjáró által képviselt konfigurálása
+1. Létrehozása és konfigurálása az Azure VPN gateway (virtuális hálózati átjáró)
+2. Létrehozhat és konfigurálhat egy Azure helyi hálózati átjáró, amely a helyszíni hálózat és VPN-eszköz
+3. Hozzon létre, és az Azure VPN gateway és a helyi hálózati átjáró közötti Azure VPN-kapcsolat konfigurálása
+4. Az Azure VPN gateway a tényleges S2S VPN-alagutat létesíteni a helyi hálózati átjáró által képviselt a helyszíni VPN-eszköz konfigurálása
 
-Című témakör 1 – 3 az Azure használatával hajthatja végre [portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md), vagy [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Az utolsó lépés a helyszíni VPN-eszközök Azure-on kívüli konfigurálását jelenti. Ez a funkció lehetővé teszi letölteni egy konfigurációs parancsfájl esetében a VPN-eszköz a megfelelő értékekkel, az Azure VPN gateway, virtuális hálózati és a helyszíni hálózati címelőtagokat, és VPN-kapcsolat tulajdonságait, már kitöltötte stb. A parancsfájllal kiindulási pontként, vagy közvetlenül a helyszíni VPN-eszközök a konfigurációs konzolon keresztül alkalmazza a parancsfájlt.
+1 – az Azure 3 lépést is elvégezheti [portál](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md), vagy [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Az utolsó lépés a helyszíni VPN-eszközök Azure-on kívül konfigurálását igényli. Ez a funkció lehetővé teszi, hogy töltse le a konfigurációs parancsfájlt a VPN-eszközhöz, a megfelelő értékekkel, az Azure VPN-átjáró, a virtuális hálózathoz, és a helyszíni hálózat címelőtagokat, és VPN-kapcsolat tulajdonságait, már kitöltött stb. A parancsfájlt használhatja kiindulási pontként, vagy a parancsfájl vonatkoznak közvetlenül a konfigurációs konzolon keresztül a helyszíni VPN-eszközök.
 
 > [!IMPORTANT]
-> * Minden egyes VPN-eszköz konfigurációs parancsprogram szintaxisa a következő különböző, és nagymértékben függ a modellek és belső vezérlőprogramjának következő verziójával. Nagy figyelmet fordítani az eszköz modellt és verziót adatokat a rendelkezésre álló sablonok ellen.
-> * Néhány paraméterértékeket az eszköz egyedinek kell lennie, és nem lehet megállapítani az eszköz elérése nélkül. Az Azure által létrehozott parancsfájlokat előre töltse ki ezeket az értékeket, de győződjön meg arról, a megadott értékek érvényesek az eszközön. Példák:
+> * Minden egyes VPN-eszközkonfigurációs szkript szintaxisa különböző, és a modellek és belső vezérlőprogrammal nagymértékben függ. A modell és verzió eszközadatokat ellen a rendelkezésre álló sablonok külön figyelmet szentelnie.
+> * Néhány paraméterértékeket az eszköz egyedinek kell lennie, és nem lehet megállapítani az eszköz való hozzáférés nélkül. Az Azure által létrehozott konfigurációs szkripteket előre adja meg ezeket az értékeket, de győződjön meg arról, a megadott értékek érvényesek az eszközön. Példák:
 >    * Csatoló számok
 >    * Ellenőrző lista telefonszámok
->    * Házirend neve vagy számok, stb.
-> * Keresse meg a kulcsszó "**cseréje**" beágyazott keresse meg a paramétert, a parancsfájl alkalmazása előtt ellenőrizze a parancsfájl.
-> * Néhány-sablonjai tartalmazzák a "**tisztítás**" szakaszban, távolítsa el a konfigurációkat alkalmazhat. A Lemezkarbantartó szakaszok jelenleg megjegyzésként szerepelnek alapértelmezés szerint.
+>    * A házirend nevét, vagy számokat, stb.
+> * Keresse meg a kulcsszó "**cserélje le**" beágyazott a parancsfájlban keresse meg a paramétert, a szkript alkalmazása előtt ellenőriznie kell.
+> * Bizonyos sablonok tartalmaznak egy "**karbantartása**" szakasz távolítja el a konfigurációkat alkalmazhat. A Lemezkarbantartó szakaszok jelenleg megjegyzésként szerepelnek alapértelmezés szerint.
 
-## <a name="download-the-configuration-script-from-azure-portal"></a>A konfigurációs parancsprogram letöltése Azure-portálon
+## <a name="download-the-configuration-script-from-azure-portal"></a>A konfigurációs parancsfájl letöltése az Azure Portal használatával
 
-Hozzon létre egy Azure VPN gateway, a helyi hálózati átjáró és az összekötő kapcsolat erőforrás. A következő lap végigvezeti a lépéseken:
+Az Azure VPN gateway, a helyi hálózati átjáró és a egy összekötő kapcsolati erőforrás létrehozásához. A következő oldalon végigvezeti a lépéseken:
 
-* [Pont-pont kapcsolat létrehozása az Azure-portálon](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Helyek közötti kapcsolat létrehozása az Azure Portalon](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
-Ha létrejött a kapcsolati erőforrást, kövesse az utasításokat az alábbi töltse le a VPN-eszköz konfigurációs parancsfájlokat:
+A kapcsolati erőforrás létrehozása után kövesse az alábbi utasításokat, hogy a VPN-eszközök konfigurációs szkriptjeinek letöltése:
 
-1. Egy böngészőből keresse meg a [Azure-portálon](http://portal.azure.com) és szükség esetén jelentkezzen be az Azure-fiókjával
-2. Nyissa meg a létrehozott kapcsolat-erőforráshoz. A lista az összes kapcsolat erőforrás található "Az összes szolgáltatás", majd a "Hálózat" majd "Kapcsolatokat."
+1. Egy böngészőből keresse fel a [az Azure portal](http://portal.azure.com) , és ha szükséges, jelentkezzen be az Azure-fiókkal
+2. Nyissa meg a létrehozott kapcsolat-erőforrást. Megtalálhatja az összes kapcsolat erőforrások listájában kattintson "Az összes szolgáltatás", majd a "Hálózat" és a "Kapcsolatok."
 
-    ![kapcsolat-lista](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
+    ![kapcsolat-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
 
-3. Kattintson a konfigurálni kívánt kapcsolat.
+3. Kattintson a konfigurálni kívánt kapcsolatot.
 
-    ![kapcsolat-áttekintés](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
+    ![kapcsolat – áttekintés](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
 
-4. A kapcsolat – áttekintés lapon; pirossal kiemelt mint "Konfigurációs letöltése" hivatkozásra kattintva Ekkor megnyílik a "Letöltés konfiguráció" lapot.
+4. Kattintson a "Konfiguráció letöltése" hivatkozásra, kiemelve a vörös színnel; a kapcsolat – áttekintés oldalra Ekkor megnyílik a "Letöltés konfiguráció" oldala.
 
-    ![download-script-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
+    ![letöltési-szkript – 1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
 
 5. Válassza ki a VPN-eszköz modell termékcsalád és a belső vezérlőprogram verzióját, majd kattintson a "Letöltés konfiguráció" gombra.
 
-    ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
+    ![download66-szkript – 2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
 
-6. Mentse a letöltött parancsfájlt (szövegfájlba) a böngészőből kéri.
-7. Miután letöltötte a konfigurációs parancsfájl, nyissa meg szövegszerkesztőben és keressen rá a "REPLACE" kulcsszó azonosításához, és vizsgálja meg a paramétereket, előfordulhat, hogy le kell cserélni kell.
+6. Mentse a letöltött szkript (szövegfájl) böngészőből történő kéri.
+7. Miután letöltötte a konfigurációs parancsfájl, nyissa meg egy szövegszerkesztőben és keresse meg a "REPLACE" kulcsszó azonosíthatók és megvizsgálhatók a paramétereket, előfordulhat, hogy kell helyettesíteni.
 
-    ![Szerkesztés-parancsfájl](./media/vpn-gateway-download-vpndevicescript/editscript.png)
+    ![parancsfájl-szerkesztése](./media/vpn-gateway-download-vpndevicescript/editscript.png)
 
-## <a name="download-the-configuration-script-using-azure-powershell"></a>A konfigurációs parancsprogram használata az Azure PowerShell letöltése
+## <a name="download-the-configuration-script-using-azure-powershell"></a>Az Azure PowerShell-lel konfigurációs parancsfájl letöltése
 
-Emellett letöltheti a konfigurációs parancsfájl használata az Azure PowerShell, a következő példában látható módon:
+A konfigurációs parancsfájl Azure PowerShell használatával is letöltheti, az alábbi példában látható módon:
 
 ```azurepowershell-interactive
 $RG          = "TestRG1"
@@ -98,10 +91,10 @@ Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupN
 Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -ResourceGroupName $RG -DeviceVendor Juniper -DeviceFamily Juniper_SRX_GA -FirmwareVersion Juniper_SRX_12.x_GA
 ```
 
-## <a name="apply-the-configuration-script-to-your-vpn-device"></a>A konfigurációs parancsfájl alkalmazása a VPN-eszköz
+## <a name="apply-the-configuration-script-to-your-vpn-device"></a>A konfigurációs parancsfájl alkalmazni a VPN-eszköz
 
-Miután letöltött és a konfigurációs parancsfájl érvényesítése, a következő lépés a parancsfájl alkalmazhat a VPN-eszköz. A tényleges eljárás attól függően változik, a VPN-eszköz teszi és -modellek. A művelet laborútmutatókkal vagy utasítás oldalak olvassa el a VPN-eszközök.
+Miután letöltötte és a konfigurációs parancsfájl érvényesítve, a következő lépés a alkalmazni a parancsfájl a VPN-eszköz. A tényleges eljárás a VPN-eszköz megkönnyíti és a modellek függően változik. Tekintse át a VPN-eszközök a művelet szoftverhez vagy a utasítás lapokon.
 
 ## <a name="next-steps"></a>További lépések
 
-További konfigurálásához a [pont-pont kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Konfigurálás folytatása a [helyek közötti kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-portal.md).

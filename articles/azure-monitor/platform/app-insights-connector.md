@@ -11,21 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121413"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199650"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
 ![Application Insights szimbólum](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> A támogatási [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md), már nem szükséges az Application Insights-összekötő felügyeleti megoldást, és később elavulttá fog. Július kezdve nem lesz új Application Insights-erőforrások összekapcsolása a Log Analytics-munkaterületeket. Meglévő kapcsolatokat, és az irányítópultok továbbra is működik. November 2018-ig. További információkért lásd: [Azure-bA az OMS-portálon](../../azure-monitor/platform/oms-portal-transition.md).
+> A támogatási [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md) és [több Azure Monitor az Application Insights-erőforrások megtekintése](../log-query/unify-app-resource-data.md), az Application Insights-összekötő felügyeleti megoldást nem lesz szükség. Az Application Insights-összekötő fog elavult, és törli az Azure piactéren elérhető OMS portál elavulásának hivatalosan eltávolítása 2019. január 15. az Azure kereskedelmi felhőben és az Azure US Government cloud együtt, hivatalosan kivezetjük a március 30, 2019. A meglévő kapcsolatok továbbra is működnek, amíg 2019. június 30. Az OMS-portál elavulásának nincs lehetőség a konfigurálását, és távolítsa el a meglévő kapcsolatok a portálról. Ez támogatott lesz, amely a január 2019 elérhető REST API használatával, és a egy értesítési közzéteszi a rendszer a [Azure-frissítések](https://azure.microsoft.com/updates/). További információkért lásd: [Azure-bA az OMS-portálon](../../azure-monitor/platform/oms-portal-transition.md).
 
 A Applications Insights Connector megoldás segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémák, és megismerheti, mit a felhasználók az alkalmazását, amikor a figyelhető [Application Insights](../../azure-monitor/app/app-insights-overview.md). Az ugyanazon alkalmazás telemetriát az Application Insightsban a fejlesztőknek nézet áll rendelkezésre a Log Analyticsben. Azonban az Application Insights-alkalmazások integrálása a Log Analytics-szel, az alkalmazások láthatóságát emelkedett üzemeltetési és alkalmazásadatokat létesíteni egy helyen. Az azonos nézetek kellene megismerheti, hogyan működhet együtt az alkalmazásfejlesztőknek. Az Általános nézetek segítségével csökkentheti az időt, és oldja meg az alkalmazás és a platformmal.
 

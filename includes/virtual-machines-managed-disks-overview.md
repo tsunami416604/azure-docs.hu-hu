@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264187"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54211853"
 ---
 # <a name="azure-managed-disks-overview"></a>Az Azure Managed Disks – áttekintés
 
@@ -37,7 +37,7 @@ Felügyelt lemezek nagyobb megbízhatóságot biztosít a rendelkezésre állás
 
 ### <a name="highly-durable-and-available"></a>Tartós és magas rendelkezésre állású
 
-Az Azure Disks 99,999%-os elérhetőséggel büszkélkedhet. Nyugodtan alhat, hogy három replika adatait, amely jelentős tartósságot garantál. Ha egy vagy két replika meghibásodik, a fennmaradó replikák azok feladatátvételével garantálják az adatok megőrzését és a magas fokú hibatűrő képességet. Ezzel a kialakítással az Azure rendszeresen vállalati szintű tartósságot nyújthat az IaaS-lemezeknek, iparágvezető NULLA %-os Éves Hibaszázalékkal. 
+Az Azure Disks 99,999%-os elérhetőséggel büszkélkedhet. Nyugodtan alhat, hogy három replika adatait, amely jelentős tartósságot garantál. Ha egy vagy két replika meghibásodik, a fennmaradó replikák azok feladatátvételével garantálják az adatok megőrzését és a magas fokú hibatűrő képességet. Ezzel a kialakítással az Azure rendszeresen vállalati szintű tartósságot nyújthat az IaaS-lemezeknek, iparágvezető NULLA %-os Éves Hibaszázalékkal.
 
 ### <a name="granular-access-control"></a>Részletes hozzáférés-vezérlés
 
@@ -45,7 +45,7 @@ Használhat [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles
 
 ### <a name="azure-backup-service-support"></a>Az Azure Backup szolgáltatás támogatása
 
-A Managed Disks Azure Backup szolgáltatás használatával hozzon létre egy biztonsági mentési feladat idő-alapú biztonsági mentések, könnyű VM-helyreállítás és a biztonsági másolatok megőrzési házirendeket. A felügyelt lemezek csak helyileg redundáns tárolás (LRS) támogatja a következő replikálási beállítás. Az adatok három példányban őrzi meg egy adott régión belül. A regionális vészhelyreállítás, biztonsági másolatot kell készíteni a Virtuálisgép-lemezek be egy másik régióban [Azure Backup szolgáltatás](../articles/backup/backup-introduction-to-azure-backup.md) és a egy biztonsági mentési tár GRS társzolgáltatás fiókját. Az Azure Backup jelenleg legfeljebb 4 TB-os lemez adatlemez-méretet támogatja. Kell [frissítési virtuális gép biztonsági másolat verem v2](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md) 4 TB-os lemezek támogatásához. További információkért lásd: [használata az Azure Backup szolgáltatás a felügyelt lemezekkel rendelkező virtuális gépek](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+A Managed Disks Azure Backup szolgáltatás használatával hozzon létre egy biztonsági mentési feladat idő-alapú biztonsági mentések, könnyű VM-helyreállítás és a biztonsági másolatok megőrzési házirendeket. A felügyelt lemezek csak helyileg redundáns tárolás (LRS) támogatja a következő replikálási beállítás. Az adatok három példányban őrzi meg egy adott régión belül. A regionális vészhelyreállítás, biztonsági másolatot kell készíteni a Virtuálisgép-lemezek be egy másik régióban [Azure Backup szolgáltatás](../articles/backup/backup-introduction-to-azure-backup.md) és a egy biztonsági mentési tár GRS társzolgáltatás fiókját. Jelenleg az Azure Backup támogatja legfeljebb 4 TB-os lemezek a lemezméretet, lásd: [azonnali visszaállítása](../articles/backup/backup-instant-restore-capability.md) 4 TB-os lemezek támogatásához. További információkért lásd: [használata az Azure Backup szolgáltatás a felügyelt lemezekkel rendelkező virtuális gépek](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
@@ -63,35 +63,35 @@ Managed Disks használata esetén az alábbi számlázási szempontok érvényes
 
 Vizsgáljuk meg közelebbről ezeket a beállításokat.
 
-**Tárolás típusa:** Managed Disks 3 teljesítményszint kínálja: [Standard HDD](../articles/virtual-machines/windows/standard-storage.md), [Standard SSD](../articles/virtual-machines/windows/disks-standard-ssd.md), és [prémium](../articles/virtual-machines/windows/premium-storage.md). Felügyelt lemez a számlázás a a lemez kiválasztott tárolási típustól függ.
+**Tárolás típusa:** A felügyelt lemezek ajánlatok 3 teljesítményszint: [Standard HDD](../articles/virtual-machines/windows/standard-storage.md), [Standard SSD](../articles/virtual-machines/windows/disks-standard-ssd.md), és [prémium](../articles/virtual-machines/windows/premium-storage.md). Felügyelt lemez a számlázás a a lemez kiválasztott tárolási típustól függ.
 
-**Lemezméret**: felügyelt lemezek díjszabása a kiépített a lemez mérete függ. Azure maps-a kiépítési méret (kerekítve) a legközelebbi Managed Disks beállítás, az alábbi táblázatban megadott módon. Minden egyes felügyelt lemezéhez vannak leképezve a támogatott kiosztott méretek egyikét, és ennek megfelelően történik. Például ha standard szintű felügyelt lemez létrehozása, és adja meg a 200 GB kiosztott méretét, számítjuk fel a díjszabás a S15 lemez típusa alapján.
+**Lemezméret**: A felügyelt lemezek díjszabása a kiépített a lemez mérete függ. Azure maps-a kiépítési méret (kerekítve) a legközelebbi Managed Disks beállítás, az alábbi táblázatban megadott módon. Minden egyes felügyelt lemezéhez vannak leképezve a támogatott kiosztott méretek egyikét, és ennek megfelelően történik. Például ha standard szintű felügyelt lemez létrehozása, és adja meg a 200 GB kiosztott méretét, számítjuk fel a díjszabás a S15 lemez típusa alapján.
 
 Itt érhetők el a lemezméretek a prémium szintű felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
 | **Prémium szintű SSD felügyelt <br>lemez típusa** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **A P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
+| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
 Itt érhető el, az egy standard SSD-Tárolóeszközön lemezméretek felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
 | **Standard SSD-felügyelt <br>lemez típusa** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Lemezméret        | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
+| Lemezméret        | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
 Itt érhető el egy standard HDD lemezméretek felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
 | **Felügyelt standard HDD <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | A 2048 giB (2 Tib-ra) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
+| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
-**A tranzakciók**: a standard szintű felügyelt lemez végrehajtott tranzakciók száma számlázzuk ki.
+**A tranzakciók**: A tranzakciók, amely tartalmazza a standard szintű felügyelt lemez számlázzuk ki.
 
 Standard SSD-lemez i/o-egység mérete 256 KB-os használja. Ha az átvitt adatok kisebb, mint 256 KB-os, akkor számít 1 i/o-egységek. Nagyobb méretű i/o-méretek számítanak több i/o-méret 256 KB. Ha például egy 1100 KB i/o öt i/o-egységek számítanak.
 
 Nincs tranzakció a prémium szintű felügyelt lemez számára ingyenesen.
 
-**Kimenő adatforgalom**: [kimenő adatforgalom](https://azure.microsoft.com/pricing/details/data-transfers/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
+**Kimenő adatforgalom**: [Kimenő adatforgalom](https://azure.microsoft.com/pricing/details/data-transfers/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
 
 A Managed Disks díjszabása a részletes információkért lásd: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
 

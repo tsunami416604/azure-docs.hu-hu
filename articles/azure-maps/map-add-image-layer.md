@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d36179685e2098455e00186827d35e6de18bf975
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 8d0ad34496963c32c842033e81bdffb375a27412
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892304"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214674"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>A térkép kép réteg hozzáadása
 
@@ -29,9 +29,9 @@ Ez a cikk bemutatja, hogyan lehet keverni a koordináták a térképen rögzíte
 > [!TIP]
 > Egy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) gyors van egy egyszerű módja annak átfedi a képet a térképen. Azonban ha a kép túl nagy, a böngészőben is kihívást jelent a betölti azt. Ebben az esetben érdemes lehet ossza a rendszerképet csempék és betöltenie őket a térképen, mint egy [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
-## <a name="add-an-image-layer"></a>Kép réteg hozzáadása
+## <a name="add-an-image-layer"></a>Rendszerképréteg hozzáadása
 
-Ez a példa bemutatja, hogyan átfedő képe egy [1922 zártuk New Jersey leképezésből]((https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)) a térképen.
+Ez a példa bemutatja, hogyan átfedő képe egy [1922 zártuk New Jersey leképezésből](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) a térképen.
 
 <br/>
 

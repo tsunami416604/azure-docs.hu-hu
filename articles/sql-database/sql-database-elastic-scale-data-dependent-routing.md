@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 2a862a6f1165b0cdd4dfe46e638dc6b10eae9ee5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191326"
+ms.locfileid: "54201108"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Adatfüggő útválasztás irányíthatja a megfelelő adatbázis-lekérdezés használata
 
@@ -68,7 +68,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * A **kulcs** paraméter keresési kulcsként a szegmenstérkép be meghatározására szolgál a kéréshez a megfelelő adatbázishoz.
 * A **connectionString** be csak a felhasználó hitelesítő adatait a kívánt kapcsolatot. Nincs adatbázis vagy a kiszolgáló neve tartalmazza a jelen *connectionString* óta a módszer az adatbázis és a kiszolgáló használatával határozza meg a **ShardMap**.
-* A **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) értékre kell állítani **ConnectionOptions.Validate** Ha olyan környezetben, ahol szilánkleképezések május változás- és sorok más adatbázisok felosztása és egyesítése műveletek miatt előfordulhat, hogy át. Ellenőrzés magában foglalja a cél helyi horizontális skálázási térképet rövid lekérdezés adatbázis (nem a globális szegmenstérkép), mielőtt megkapná a kapcsolatot az alkalmazás.
+* A **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) értékre kell állítani **ConnectionOptions.Validate** Ha olyan környezetben, ahol szilánkleképezések május változás- és sorok más adatbázisok felosztása és egyesítése műveletek miatt előfordulhat, hogy át. Ellenőrzés magában foglalja a cél helyi horizontális skálázási térképet rövid lekérdezés adatbázis (nem a globális szegmenstérkép), mielőtt megkapná a kapcsolatot az alkalmazás.
 
 Ha a helyi szegmenstérkép sémaellenőrzésen sikertelen (azt jelzi, hogy a gyorsítótár nem megfelelő), a Szilánkleképezés-kezelővel lekérdezi a globális szegmenstérkép szerezze be az új megfelelő érték a kereséshez, frissítse a gyorsítótárat, és szerezze be és adja vissza a megfelelő adatbázis-kapcsolat .
 

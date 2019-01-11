@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f7d5fcf1905200bc214a3ff42db9b7b511768dd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628340"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214895"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Az Azure-PowerShell-lel független felhőkben tárolás kezelése
 
@@ -37,7 +37,7 @@ Példák Azure PowerShell modul Az 0,7 vagy újabb verziójára lesz szükség. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Futtassa a [Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) parancsmaggal ellenőrizheti az elérhető Azure-környezetek:
+Futtassa a [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) parancsmaggal ellenőrizheti az elérhető Azure-környezetek:
    
 ```powershell
 Get-AzEnvironment
@@ -71,7 +71,7 @@ Az egyes ezekben a környezetekben a végpont utótagja eltér az Azure-beli nyi
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Használja a Get-AzEnvironment végpont 
 
-Lekérdezni a végpont utótagja használatával [Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment). A végpont a *StorageEndpointSuffix* tulajdonság a környezet. Az alábbi kódtöredékek bemutatják, hogyan ehhez. Ezek a parancsok mindegyike adja vissza valami például a "core.cloudapp.net" vagy "core.cloudapi.de", stb. Ez hozzáfűzése a társzolgáltatás az adott szolgáltatás eléréséhez. Például "queue.core.cloudapi.de" hozzá fog férni a queue szolgáltatás német felhőben.
+Lekérdezni a végpont utótagja használatával [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). A végpont a *StorageEndpointSuffix* tulajdonság a környezet. Az alábbi kódtöredékek bemutatják, hogyan ehhez. Ezek a parancsok mindegyike adja vissza valami például a "core.cloudapp.net" vagy "core.cloudapi.de", stb. Ez hozzáfűzése a társzolgáltatás az adott szolgáltatás eléréséhez. Például "queue.core.cloudapi.de" hozzá fog férni a queue szolgáltatás német felhőben.
 
 Ez a kódrészlet lekérdezi az összes környezet és a végpont utótagja minden egyes.
 

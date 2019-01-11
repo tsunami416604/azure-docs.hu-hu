@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 13e42ae9b25c769a468a8c9839fd1aaf0abf2787
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191700"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213144"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Az Azure Data Box-lemezek hibáinak elhárítása
 
@@ -96,12 +96,11 @@ Ebben a szakaszban egy Linux-ügyfél használata az adatok másolása a Data Bo
 
 Ezt okozhatja egy kernelverziója fájlrendszer. 
 
-- Data Box-lemezek egy meghajtó olvasottként szolgáltatással nem működik. Ez a forgatókönyv nem támogatott meghajtókkal dislocker visszafejteni. 
-- Olvasási és írási, szolgáltatással nem működik. Előfordulhat, hogy rendelkezik sikerült csatlakoztatni az eszköz a következő paranccsal: 
+Data Box-lemezek írási-olvasási egy meghajtón szolgáltatással nem működik. Ez a forgatókönyv nem támogatott meghajtókkal dislocker visszafejteni. Előfordulhat, hogy rendelkezik sikerült csatlakoztatni az eszköz a következő paranccsal: 
 
     `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
 
-   Bár a szolgáltatással sikeres volt, az adatok nem megmaradnak.
+Bár a szolgáltatással sikeres volt, az adatok nem megmaradnak.
 
 **Felbontás**
 
@@ -125,11 +124,11 @@ Ha látja, hogy a meghajtó nem rendelkezik adatokkal után, leválasztani (bár
  
 Ha ez a helyzet, nézzék meg a [írásvédett meghajtóként első csatlakoztatott meghajtók](#issue-drive-getting-mounted-as-read-only).
 
-Ha, amely nem volt a helyzet, [diagnosztikai naplók letöltéséhez](#download-diagnostic-logs) rendszerről és [forduljon a Microsoft Support](data-box-disk-contact-microsoft-support.md).
+Amely nem másolja a naplókat az a mappa, amely a Data Box lemez zárolásának feloldásához eszköz és [forduljon a Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="deployment-issues-for-windows"></a>Windows központi telepítési problémái
 
-Ez a szakasz részletesen a Data Box-lemezek üzembe helyezése során szembesülnek egy Linux-ügyfél használata az adatok másolása leggyakoribb problémák
+Ez a szakasz részletesen a Data Box-lemezek üzembe helyezése során szembesülnek, amikor a Windows-ügyfél használatával az adatok másolása leggyakoribb problémák
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Probléma: A BitLocker meghajtó nem zárolásának feloldása.
  
@@ -139,7 +138,7 @@ A BitLocker párbeszédpanelen használta a jelszavát, és meghajtók párbesz�
 
 **Felbontás**
 
-A Data Box-lemezek zárolásának feloldásához meg kell a Data Box lemez zárolásának feloldásához eszközzel, és adja meg a jelszót az Azure Portalról.
+A Data Box-lemezek zárolásának feloldásához meg kell a Data Box lemez zárolásának feloldásához eszközzel, és adja meg a jelszót az Azure Portalról. További információért ugorjon [oktatóanyag: Csomagolja ki, csatlakozzon, és az Azure Data Box-lemezek feloldásához](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Probléma: Nem zárolásának feloldásához, vagy ellenőrizze az egyes kötetek. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
  
@@ -155,7 +154,7 @@ Ez azt jelzi, hogy valószínűleg hiányzik a Windows PowerShell megfelelő ver
 
 Telepíthet [Windows PowerShell-v 5.0](https://www.microsoft.com/download/details.aspx?id=54616) , majd próbálja megismételni a műveletet.
  
-Ha továbbra sem tudja oldania a kötetek zárolását [forduljon a Microsoft Support](data-box-disk-contact-microsoft-support.md).
+Ha még mindig nem tudja feloldani a kötetek nem ismeri, a naplók másolása a mappában, amely a Data Box lemez zárolásának feloldásához eszközzel rendelkezik, és [forduljon a Microsoft Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f5663842a4d861ed6eb76de859b870aa7114cb04
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3968b05f119227552f88a50e96d3acbce6a19143
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063641"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199119"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -397,7 +397,7 @@ Néhány általános oka, hogy egy modul előfordulhat, hogy nem sikerült impor
 * A struktúra nem felel meg az Automation kell a struktúra.
 * A modul szolgáltatás, amely még nem lett telepítve az Automation-fiók egy másik modul függ.
 * A modul hiányzó függőségeit a mappában.
-* A `New-AzureRmAutomationModule` parancsmag a modult, és have't, megadva a teljes elérési útja feltöltéséhez használja, vagy a modul még nincs betöltve egy nyilvánosan elérhető URL-cím használatával.
+* A `New-AzureRmAutomationModule` parancsmagot használják, hogy a modul feltöltése és a teljes elérési útja nem végezték el, vagy a modul még nincs betöltve egy nyilvánosan elérhető URL-cím használatával.
 
 #### <a name="resolution"></a>Megoldás:
 

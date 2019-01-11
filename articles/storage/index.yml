@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77d3bdd755e7c8d68115e12c6bee318fda652b09
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 38f20f74f8c553c134a6ef91151aa49b99ad45b5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972201"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213501"
 documentType: LandingData
 title: Azure Storage-dokumentáció
 metadata:
@@ -67,9 +67,9 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
     - title: 2. generációs Data Lake Storage
       values:
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-the-azure-portal
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-powershell
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-azure-cli
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-azure-cli
       - href: 
       - href: 
       - href: 
@@ -83,7 +83,7 @@ sections:
     - title: Blobok
       html: <p>Rendszerképadatok feltöltése és feldolgozása felhőben</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Az Azure Functions aktiválása a blobok feldolgozásához</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Az alkalmazásadatok védelme</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Tárterület figyelése és hibaelhárítása</a></li></ul><p>Magas rendelkezésre állású alkalmazás tervezése</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Az alkalmazásadatok magas rendelkezésre állásúvá tétele</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Strukturálatlan adatok keresése az Azure Storage-ban</a></p>
     - title: 2. generációs Data Lake Storage
-      html: <p><a href="/azure/storage/blobs/handle-data-using-databricks">Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Hozzáférés a 2. generációs Azure Data Lake Storage adataihoz a Databricks és a Spark használatával</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával</a></p>
+      html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Hozzáférés a 2. generációs Azure Data Lake Storage adataihoz a Databricks és a Spark használatával</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával</a></p>
 - title: Példák
   items:
   - type: paragraph

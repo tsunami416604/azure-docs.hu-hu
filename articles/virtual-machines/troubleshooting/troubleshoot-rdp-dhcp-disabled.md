@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138160"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213450"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nem lehet RDP az Azure Virtual Machines, mert a DHCP-ügyfél szolgáltatás le van tiltva
 
@@ -30,14 +30,14 @@ Ez a cikk ismerteti a problémát, amelyben nem lehet a távoli asztal az Azure 
 
 Nem lehet RDP-kapcsolatok egy virtuális Gépet az Azure-ban a DHCP-ügyfél szolgáltatás le van tiltva, a virtuális gépen. Amikor ellenőrizheti a képernyőképen a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) az Azure Portalon, megjelenik a virtuális gép indul el megfelelően, és a hitelesítő adatokat a bejelentkezési képernyőn vár. Ön távolról tekintse meg az eseménynaplókat a virtuális gépen az Eseménynapló használatával. Láthatja, hogy a DHCP-ügyfél szolgáltatás nincs elindítva vagy nem indul el. A következő egy minta jelentkezzen be:
 
-**Naplófájl neve**: rendszer </br>
-**Forrás**: szolgáltatásvezérlő kezelője </br>
+**Naplófájl neve**: Rendszer </br>
+**forrás**: Szolgáltatásvezérlő kezelője </br>
 **Dátum**: 12/16/2015 11:19:36 AM </br>
 **Eseményazonosító**: 7022 </br>
-**Feladat kategóriája**: nincs </br>
-**Szint**: hiba </br>
-**A kulcsszavak**: klasszikus</br>
-**Felhasználói**: N/A </br>
+**Feladat kategóriája**: None </br>
+**Szint**: Hiba </br>
+**A kulcsszavak**: Klasszikus</br>
+**Felhasználói**: – </br>
 **Számítógép**: myvm.cosotos.com</br>
 **Leírás**: A DHCP-ügyfél szolgáltatás indításkor lefagyott.</br>
 
@@ -62,7 +62,7 @@ A probléma megoldásához, soros vezérlőelem használatával engedélyezze a 
 
 ### <a name="use-serial-control"></a>Soros vezérlőelem használata
 
-1. Csatlakozás [soros konzolon és a nyílt CMD-példány](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+1. Csatlakozás [soros konzolon és a nyílt CMD-példány](serial-console-windows.md#use-cmd-or-powershell-in-serial-console).
 ). Ha a soros konzol nincs engedélyezve a virtuális Gépen, [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md).
 2. Ellenőrizze, hogy ha a DHCP a hálózati adapter le van tiltva:
 
@@ -95,7 +95,7 @@ A probléma megoldásához, soros vezérlőelem használatával engedélyezze a 
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>DHCP-ügyfél szolgáltatás a hozzáférés megtagadva hiba miatt leállt
 
-1. Csatlakozás [soros konzol](serial-console-windows.md#) , és nyissa meg egy PowerShell-példány.
+1. Csatlakozás [soros konzol](serial-console-windows.md) , és nyissa meg egy PowerShell-példány.
 2. Töltse le a folyamat figyelője eszközt a következő szkript futtatásával:
 
    ```

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5ba596a85abbb529990efdf7b15ac50515de011b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117265"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214453"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -47,7 +47,7 @@ Alkalmazások csak olyan megbízható, mint hogy az alapul szolgáló infrastruk
 - Adjon hozzá [figyelési megoldások](insights/solutions-inventory.md) különböző alkalmazások és szolgáltatások a környezetben.
 
 
-[Infrastruktúra mint kód](/devops/learn/what-is-infrastructure-as-code) leíró modelleket, beleértve az azonos versioning használatával fejlesztési és üzemeltetési csapatok forráskód használatát az infrastruktúra felügyeleti. Ez a megbízhatóság és méretezhetőség ad hozzá a környezetben, és lehetővé teszi, hogy az alkalmazások kezelésére szolgáló hasonló folyamatokat.
+[Infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code) leíró modelleket, beleértve az azonos versioning használatával fejlesztési és üzemeltetési csapatok forráskód használatát az infrastruktúra felügyeleti. Ez a megbízhatóság és méretezhetőség ad hozzá a környezetben, és lehetővé teszi, hogy az alkalmazások kezelésére szolgáló hasonló folyamatokat.
 
 -  Használat [Resource Manager-sablonok](platform/template-workspace-configuration.md) figyelés és riasztások konfigurálása keresztül erőforrások nagy készletét.
 - Használat [Azure Policy](../governance/policy/overview.md) a különböző szabályok kényszerítenek ki az erőforrásokat. Ez biztosítja, hogy ezek az erőforrások megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek maradjon. 
@@ -63,7 +63,7 @@ Folyamatos integráció / folyamatos üzembe helyezés lehetővé teszi, hogy au
 
 
 - Használat [Azure folyamatok](/azure/devops/pipelines) folyamatos üzembe helyezés implementálását és automatizálását a CI/CD-tesztek alapján éles kód véglegesítésétől a teljes folyamatot.
-- Használat [minőségi kapuk](/devops/pipelines/release/approvals/gates) integrálható a központi telepítés előtti vagy utáni figyelést. Ez biztosítja, hogy a kulcs egészségügyi/teljesítmény-mérőszámokat (KPI-k) a megfelel, az alkalmazások éles és az infrastruktúra-környezetben a különbségeket válthatnak fejlesztési vagy a méretezési csoport nem negatív negatív hatással van a KPI-ket.
+- Használat [minőségi kapuk](/azure/devops/pipelines/release/approvals/gates) integrálható a központi telepítés előtti vagy utáni figyelést. Ez biztosítja, hogy a kulcs egészségügyi/teljesítmény-mérőszámokat (KPI-k) a megfelel, az alkalmazások éles és az infrastruktúra-környezetben a különbségeket válthatnak fejlesztési vagy a méretezési csoport nem negatív negatív hatással van a KPI-ket.
 - [Különálló figyelési példány karbantartása](../azure-monitor/app/separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../azure-monitor/platform/metrics-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések a Log Analytics](log-query/cross-workspace-query.md).
 
 

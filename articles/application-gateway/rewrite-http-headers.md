@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187417"
+ms.locfileid: "54198525"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
 
@@ -116,8 +116,6 @@ Ez a funkció a következő kiszolgálói változó átírása fejlécek támoga
 ## <a name="limitations"></a>Korlátozások
 
 - HTTP-fejlécek újraírási képessége jelenleg csak Azure PowerShell, az Azure API és az Azure SDK keresztül érhető el. Portál és az Azure CLI-n keresztül támogatása hamarosan elérhető lesz.
-
-- Ha alkalmaz egy fejléce módosítsa úgy az Application Gateway-en, ne használjon a portálon az későbbi módosításait tételére, hogy az Application Gateway, amíg a funkció a portálon támogatott. A portál használatával módosíthatja az Application Gateway-átírási szabály alkalmazása után, ha a fejléc újraírási szabályt. Továbbra is az Azure PowerShell, az Azure API-k vagy az Azure SDK-t használva módosításokat.
 
 - A HTTP-fejléc újraírási támogatása csak az új Termékváltozat esetében támogatott [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). A funkció nem fog támogatni a régi Termékváltozat.
 

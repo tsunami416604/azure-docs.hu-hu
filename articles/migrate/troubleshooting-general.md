@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: cb97725d61f899f2408dbb44d052c1dd4e6bc561
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189496"
+ms.locfileid: "54201295"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -28,6 +28,18 @@ A folyamatos felderítési berendezés csak az folyamatosan teljesítményadatok
    ![Felderítés leállítása](./media/troubleshooting-general/stop-discovery.png)
 
 - Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Az Azure Migrate projektek és társított Log Analytics-munkaterület törlése
+
+Azure Migrate-projekt törlésekor törli a migrálási projekt, valamint a csoportok és értékelések. Azonban ha egy Log Analytics-munkaterületet a projekthez, azt nem törli automatikusan a Log Analytics-munkaterületet. Ennek az oka lehet szükség a Log Analytics-munkaterületnek több használati esetek. Ha szeretné, valamint a Log Analytics-munkaterület törlése kell tennie azt manuálisan.
+
+1. Keresse meg a Log Analytics-munkaterületet a projekthez.
+   a. Ha még nem törölt a migrálási projekt, megtalálhatja a hivatkozás a munkaterületet a projekt áttekintő oldaláról az Essentials szakaszban.
+   
+   ![LA munkaterület](./media/troubleshooting-general/LA-workspace.png)
+
+   b. Ha már törölte a migrálási projekt, kattintson a **erőforráscsoportok** az Azure Portalon, és nyissa meg az erőforráscsoport, amelyben a munkaterület létrejött, és keresse meg azt a bal oldali panelen.
+2. Kövesse az utasításokat [ebben a cikkben](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) a munkaterület törlése.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Migrálási projekt létrehozása nem sikerült hiba *kérelmek felhasználó identitást meghatározó fejléceket kell tartalmaznia.*
 
@@ -80,7 +92,7 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
 
    ![Projekt helye](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>Naplógyűjtők hibái
+## <a name="collector-issues"></a>Gyűjtő kapcsolatos problémák
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a következő hibával: Érvénytelen a megadott jegyzékfájl: OVF jegyzékfájl bejegyzés érvénytelen.
 
@@ -156,6 +168,17 @@ Ha a probléma továbbra is történik a legújabb verzió, annak oka az lehet, 
 2. Ha az 1. lépés meghiúsul, próbáljon meg az IP-címen keresztül csatlakozni a vCenter-kiszolgálóhoz.
 3. Adja meg a megfelelő portszámot a vCenterhez történő csatlakozáshoz.
 4. Végezetül pedig ellenőrizze, hogy a vCenter-kiszolgáló fut-e.
+
+### <a name="antivirus-exclusions"></a>Víruskereső – kizárások
+
+Az Azure Migrate berendezés felvértezni, a készülék az alábbi mappák kizárása a víruskeresővel való ellenőrzésekből kell:
+
+- Az Azure Migrate szolgáltatás a bináris fájlokat tartalmazó mappa. Zárja ki az összes alárendelt mappát.
+  %ProgramFiles%\ProfilerService  
+- Az Azure Migrate webes hatóságuknál. Zárja ki az összes alárendelt mappát.
+  %SystemDrive%\inetpub\wwwroot
+- Helyi gyorsítótár az adatbázis és naplófájlok. Az Azure migrate szolgáltatás ezt a mappát RW lemezt hozzá kell férnie.
+  %SYSTEMDRIVE%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>Függőségek képi megjelenítés kapcsolatos problémák
 

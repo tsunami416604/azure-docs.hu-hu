@@ -2,8 +2,7 @@
 title: Rövid útmutató – Traffic Manager-profil létrehozása az Azure Portal használatával az alkalmazások magas rendelkezésre állásának biztosításához
 description: A rövid útmutató bemutatja, hogyan hozhat létre Traffic Manager-profilokat magas rendelkezésre állású webalkalmazások készítéséhez.
 services: traffic-manager
-documentationcenter: ''
-author: kumudd
+dauthor: kumudd
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: 5520b78ce3899c39167663ac426fa6702369c944
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f24bcebb04c3cb17b5e0420695504541c54e88f3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634778"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198219"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Rövid útmutató: Traffic Manager-profil létrehozása magas rendelkezésre állású webalkalmazásokhoz
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Gyors útmutató: Magas rendelkezésre állású webalkalmazás számára a Traffic Manager-profil létrehozása
 
 Ebben a rövid útmutató egy Traffic Manager-profilt, amely a webalkalmazás magas rendelkezésre állást nyújt.
 

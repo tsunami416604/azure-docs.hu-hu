@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A képet az Azure REST API és a Java arcok észlelése'
+title: 'Gyors útmutató: Arcfelismerés a az Azure REST API és a Java-kép'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid, használatával az Azure Face REST API javával arcok észlelése a képet.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 7656d8247cfb16df9989638b7e8ad2ffd3ff445f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2c035734d443eba01af6f167681ae289401dbcb4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851670"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212872"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Java használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a Java használatával
 
 Ebben a rövid, használatával az Azure Face REST API a Javával emberi arcok észlelése a képet.
 
@@ -31,8 +31,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="create-the-java-project"></a>A Java-projekt létrehozása
 
 Hozzon létre egy új parancssori Java-alkalmazást az IDE-ben, és adjon hozzá egy **fő** osztály használatával egy **fő** metódust. Ezután töltse le a következő globális könyvtárak a Maven tárházból való a `lib` könyvtárat a projekthez:
-* `org.apache.httpcomponents:httpclient:4.2.4`
+* `org.apache.httpcomponents:httpclient:4.5.6`
+* `org.apache.httpcomponents:httpcore:4.4.10`
 * `org.json:json:20170516`
+* `commons-logging:commons-logging:1.1.2`
 
 ## <a name="add-face-detection-code"></a>Arcok észlelése kód hozzáadása
 
@@ -54,7 +56,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -92,7 +94,7 @@ private static final String faceAttributes =
 Adja hozzá a következő metódust a **fő** metódust. Akkor hoz létre REST-hívást a Face API, arcfelismerési kapcsolatos információk észleléséhez a távoli kép (a `faceAttributes` karakterláncot adja meg, melyik face attribútumok beolvasni). Ezután egy JSON-karakterláncot ír a kimeneti adatokat.
 
 ```Java
-HttpClient httpclient = new DefaultHttpClient();
+HttpClient httpclient = HttpClientBuilder.create().build();
 
 try
 {

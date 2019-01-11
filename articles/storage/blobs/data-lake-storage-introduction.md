@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 898080f445c54c93543a481bdd0487c70e772160
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994334"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214395"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió
 
@@ -51,7 +51,7 @@ Az Azure Storage szolgáltatás elvárt méretezhető, Data Lake Storage Gen2- v
 
 ### <a name="cost-effectiveness"></a>Költséghatékonyság
 
-Létrehozásához, Data Lake Storage Gen2 épülő Azure Blob storage számos előnyének egyike az alacsony költségű tárolási kapacitás és a tranzakciók. Ellentétben más felhőalapú tárolási szolgáltatásokról Data Lake Storage Gen2-ban tárolt adatokkal, nem szükséges áthelyezését vagy elemzése előtt alakította át. Díjszabással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása]((https://azure.microsoft.com/pricing/details/storage)).
+Létrehozásához, Data Lake Storage Gen2 épülő Azure Blob storage számos előnyének egyike az alacsony költségű tárolási kapacitás és a tranzakciók. Ellentétben más felhőalapú tárolási szolgáltatásokról Data Lake Storage Gen2-ban tárolt adatokkal, nem szükséges áthelyezését vagy elemzése előtt alakította át. Díjszabással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage).
 
 Továbbá szolgáltatások, például a a [hierarchikus névtér](data-lake-storage-namespace.md) jelentősen növelhető az analytics-feladatok általános teljesítményét. Ez a teljesítmény fokozása azt jelenti, hogy megkövetelése kevesebb számítási teljesítmény az azonos mennyiségű adatot fel, ami a teljes körű analytics-feladat egy alacsonyabb teljes birtoklási költség.
 

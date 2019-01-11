@@ -2,7 +2,6 @@
 title: Az Azure Traffic Manager végpont figyelése |} A Microsoft Docs
 description: Ez a cikk azt segítenek megérteni, hogyan Traffic Manager segítségével végpont monitorozása és feladatátvétele automatikus végpont magas rendelkezésre állású alkalmazások üzembe helyezése az Azure-ügyfelek
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 923c2aae6d426e736e34c06fc84025ca98fe4f48
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890347"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199630"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -31,17 +30,17 @@ Konfigurálja a végpontot, figyelés, a következő beállításokat kell megad
 * **Elérési út**. A konfigurációs beállítás értéke csak érvényes a HTTP és HTTPS protokollok, mely az elérési út megadását az beállítás megadása kötelező. Ezt a beállítást, a TCP protokoll hibát eredményez figyelési biztosítása. HTTP és HTTPS-protokoll esetében adja meg a következő relatív elérési és a képernyőn látható weblapon vagy a fájlt, amely hozzáfér a figyelési nevét. Perjellel (/) egy relatív elérési út érvényes bejegyzés. Ez az érték azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
 * **Egyéni fejlécbeállítások** a konfigurációs beállítás segítségével adhat meghatározott HTTP-fejlécek állapotát ellenőrzi, hogy a Traffic Manager elküldi végpontokat a profilhoz. Az egyéni fejlécek egy profil szintjén is alkalmazható a profilt minden végponthoz and / or egy végpont csak az adott végpontra alkalmazandó szintjén adható meg. Egyéni fejlécek is használhatja, hogy az állapot-ellenőrzések egy több-bérlős környezetben végpontokra átirányíthatók megfelelően a rendeltetési állomásfejléc megadásával. Egyedi fejlécek, amelyek segítségével azonosíthatja a Traffic Manager adja meg a HTTP (S) kérések hozzáadásával is használhatja ezt a beállítást, és eltérően feldolgozza azokat.
 * **A várt állapotkód-tartományok állapot** Ez a beállítás lehetővé teszi, hogy több sikeres tartományok 200-299, a 301-301 formátumban adja meg. Ha ezek állapotkódok vannak érkezett válasz a végpont állapot-ellenőrzése elindításakor, a Traffic Manager ezekre a végpontokra kifogástalan állapotúként jelöli meg. Legfeljebb 8 kód tartományt is megadhat. Ez a beállítás akkor alkalmazható, csak a HTTP és HTTPS protokoll és az összes végpontra. Ezzel a beállítással a Traffic Manager-profil szintjén, és alapértelmezés szerint a 200-as értéket számít, ha a sikeres állapot kódja.
-* **Mintavételi időköz**. Ez az érték határozza meg, milyen gyakran a rendszer ellenőrzi a végpont a Traffic Manager ellenőrzési ügynököket az állapotát. Megadhatja, hogy itt a két érték: 30 másodperc (normál tesztelés) és 10 másodperc (gyors tesztelés). Ha nincs érték van megadva, a profil egy alapértelmezett érték 30 másodperc állítja be. Látogasson el a [Traffic Manager díjszabási](https://azure.microsoft.com/pricing/details/traffic-manager) gyors ellenőrzési díjszabással kapcsolatos további tudnivalókért lapra.
+* **Mintavételi időköz**. Ez az érték határozza meg, milyen gyakran a rendszer ellenőrzi a végpont a Traffic Manager ellenőrzési ügynököket az állapotát. Két érték Itt adhatja meg: 30 másodperces (normál tesztelés) és 10 másodperc (gyors tesztelés). Ha nincs érték van megadva, a profil egy alapértelmezett érték 30 másodperc állítja be. Látogasson el a [Traffic Manager díjszabási](https://azure.microsoft.com/pricing/details/traffic-manager) gyors ellenőrzési díjszabással kapcsolatos további tudnivalókért lapra.
 * **Hibák száma megengedhető**. Ezt az értéket megadja egy ellenőrzési Traffic Manager-ügynököt, hogy a végpont nem kifogástalanként való megjelölése előtt eltűr hány sikertelen. Az érték 0 és 9 közötti tartományba. Egy érték 0, egy egyetlen figyelési hiba okozhatja, hogy a végpont állapotúként lesz megjelölve. Ha nem ad meg értéket, használja az alapértelmezett érték a 3-ból.
 * **Mintavétel időkorlátja**. Ez a tulajdonság határozza meg, mennyi ideig az ellenőrzési Traffic Manager-ügynök várnia kell, mielőtt a mérlegeli, hogy ellenőrizze a hiba, ellenőrizze állapotmintát a végponthoz való elküldésekor. Ha a tesztelés időköz értéke 30 másodperc, majd beállíthatja a időtúllépési értéket 5-10 másodperc között. Ha nem ad meg értéket, egy alapértelmezett érték 10 másodperces használ. Ha a tesztelés időköze 10 másodpercet, majd beállíthatja a időtúllépési értéket 5 és 9 másodperc között. Ha nincs időtúllépési érték van megadva, 9 másodperc, az alapértelmezett érték használ.
 
     ![Traffic Manager végpont figyelése](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Ábra: A Traffic Manager végpont figyelése**
+    **Ábra:  Traffic Manager végpont figyelése**
 
 ## <a name="how-endpoint-monitoring-works"></a>Végpont-monitorozás működése
 
-A monitorozási protokoll HTTP vagy HTTPS van beállítva, ha az ellenőrzési Traffic Manager-ügynök a végpontra a protokoll, port és a megadott relatív elérési úton a GET kérelmet küld. Ha visszakap egy 200-OK válasz, vagy a válaszok bármelyikét konfigurált a **várt állapotkód: \*címtartományok**, majd, hogy a végpont kifogástalan számít. Ha a válasz egy másik értéket, vagy ha nem kap választ adva, majd a Traffic Manager-ügynököt újra megkísérli a hibák száma megengedhető (nincs újból megkísérli történik, ha a beállítás értéke 0) megfelelően tesztelés az időkorláton belül. Ha egymást követő hibák száma nagyobb, mint a hibák száma megengedhető beállítást, majd, hogy a végpont, nem kifogástalannak van jelölve. 
+A monitorozási protokoll HTTP vagy HTTPS van beállítva, ha az ellenőrzési Traffic Manager-ügynök a végpontra a protokoll, port és a megadott relatív elérési úton a GET kérelmet küld. Ha visszakap egy 200-OK válasz, vagy a válaszok bármelyikét konfigurált a ** várt állapotkód: * címtartományok **, majd, hogy a végpont kifogástalan számít. Ha a válasz egy másik értéket, vagy ha nem kap választ adva, majd a Traffic Manager-ügynököt újra megkísérli a hibák száma megengedhető (nincs újból megkísérli történik, ha a beállítás értéke 0) megfelelően tesztelés az időkorláton belül. Ha egymást követő hibák száma nagyobb, mint a hibák száma megengedhető beállítást, majd, hogy a végpont, nem kifogástalannak van jelölve. 
 
 Ha a monitorozási protokoll TCP, az ellenőrzési Traffic Manager-ügynök használatával a megadott port TCP-kapcsolati kérelmekre indítja el. Ha a végpont válaszol a kérésre választ ad a kapcsolat létrehozásához, adott állapot-ellenőrzése sikeres van megjelölve, és az ellenőrzési Traffic Manager-ügynök alaphelyzetbe állítja a TCP-kapcsolatot. Ha a válasz egy másik értéket, vagy ha nem érkezik válasz a határidőn belül megadva, a Traffic Manager-ügynököt újra megkísérli a hibák száma megengedhető (nincs újból megkísérli történik, ha a beállítás értéke 0) megfelelően tesztelés. Ha egymást követő hibák száma nagyobb, mint a hibák száma megengedhető beállítást, majd, hogy a végpont nem kifogástalannak van jelölve.
 
@@ -112,7 +111,7 @@ Az alábbi ábrán az ütemterv a Traffic Manager-végpontot, amely a következ�
 
 ![A TRAFFIC Manager végpont feladatátvétel és feladat-visszavétel feladatütemezési](./media/traffic-manager-monitoring/timeline.png)
 
-**Ábra: Traffic manager végpont feladatátvételének és helyreállításának feladatütemezési**
+**Ábra:  Traffic manager végpont feladatátvételének és helyreállításának feladatütemezési**
 
 1. **ELSŐ**. A Traffic Manager rendszer figyelése minden végpont végez egy GET kéréssel figyelési beállítások a megadott elérési út.
 2. **200 OK vagy egyéni tartomány megadott figyelési beállítások Traffic Manager-profil** . A monitorozási rendszer vár egy HTTP 200 OK vagy az egyéni tartomány megadott figyelési beállítások üzenet 10 másodpercen belül Traffic Manager-profil vagy. Ha ezt a választ kap, észleli, hogy a szolgáltatás érhető el.

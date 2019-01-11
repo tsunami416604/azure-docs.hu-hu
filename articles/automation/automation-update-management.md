@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631855"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214997"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -125,6 +125,15 @@ Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további inf
 > [!NOTE]
 > Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
 
+## <a name="onboard"></a>Az Update Management engedélyezése
+
+Ha szeretné elkezdeni a rendszer, az Update Management megoldás engedélyeznie kell. Az Update Management a gépek előkészítésének számos módja van. A következő az ajánlott és támogatott üzembe helyezési lehetőség a megoldást:
+
+* [A virtuális gépről](automation-onboard-solutions-from-vm.md)
+* [A több gép tallózása](automation-onboard-solutions-from-browse.md)
+* [Az Automation-fiók](automation-onboard-solutions-from-automation-account.md)
+* [Az Azure Automation-runbook](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Győződjön meg róla, hogy nem Azure-beli gépek előkészítve
 
 Győződjön meg arról, hogy közvetlenül csatlakoztatott gépek kommunikál a Log Analytics, néhány perc múlva futtathatja egyet a következő naplókeresési mintákat.

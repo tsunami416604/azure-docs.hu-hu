@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52dc78b03a1be73763b5a3c494404f4d439d04ca
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139024"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198031"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
@@ -73,11 +73,11 @@ Alkalmazások hálózatokban, amelyek nem részei a fő vállalati hálózat leh
 
 Igénybe vehet egy olyan szervezet, amely több, saját IaaS csatlakozó virtuális gépek virtuális hálózati üzemeltetett példaként. Ahhoz, hogy az alkalmazottak ezek az alkalmazások használatát, e magánhálózatok site-to-site VPN használatát a vállalati hálózathoz csatlakozik. Jó élményt biztosít az alkalmazottak, amelyek a helyszínen található. Azonban nem lehet ideális megoldás a távoli alkalmazottak számára, mert a szükséges további helyszíni infrastruktúra irányíthatja a hozzáférést, ahogy az az alábbi ábrán látható:
 
-![Azure ad Iaas hálózati](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Azure ad IaaS hálózati](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Az Azure AD Application Proxy connector csoportok egy közös szolgáltatást, hogy az alkalmazások biztonságos elérését minden további függőség létrehozása a vállalati hálózaton nélkül engedélyezheti:
 
-![Azure ad Iaas több Felhőszolgáltatóknak](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure ad IaaS több Felhőszolgáltatóknak](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Többerdős – különböző összekötőcsoportok az egyes erdőkhöz
 

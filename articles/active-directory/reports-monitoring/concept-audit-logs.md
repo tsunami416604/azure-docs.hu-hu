@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1a2ec0e0513e0bcdcc3427a9e24385dc415ae651
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624658"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215031"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -45,7 +45,7 @@ Ez a cikk áttekintést, a naplózási jelentésben.
 
 ## <a name="audit-logs"></a>Naplók
 
-Az Azure AD naplózási naplók, adja meg a megfelelőség a rendszertevékenységek rekordjait. A naplózási jelentések eléréséhez, válassza ki a **Auditnaplók** a a **tevékenység** szakaszában **Azure Active Directory**. 
+Az Azure AD naplózási naplók, adja meg a megfelelőség a rendszertevékenységek rekordjait. A naplózási jelentések eléréséhez, válassza ki a **Auditnaplók** a a **tevékenység** szakaszában **Azure Active Directory**. Vegye figyelembe, hogy auditnaplók előfordulhat, hogy egy legfeljebb egy órát, késését, is igénybe vehet, hogy hosszú, és naplózási adatok megjelennek a portálon, a feladat befejezése után.
 
 ![Naplók](./media/concept-audit-logs/61.png "Naplók")
 

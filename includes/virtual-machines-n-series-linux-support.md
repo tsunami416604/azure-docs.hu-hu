@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: df7d8815eeb588e4e99041844642b6721e25dad7
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a1200494eac2d60083a6608d1af91379d8298070
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585723"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201499"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Támogatott disztribúciók és illesztőprogramok
 
@@ -26,7 +26,7 @@ NVIDIA CUDA illesztőprogramjait NC, NCv2, az NCv3, ND és NDv2-sorozat virtuál
 
 | Disztribúció | Illesztőprogram |
 | --- | -- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.4 vagy a 7.3<br/><br/> CentOS-alapú 7.3-as és 7.4-es, CentOS-alapú 7.4-es HPC | NVIDIA CUDA 10.0, illesztőprogram-ág R410 |
+| Ubuntu 16.04 LTS, 18.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3, 7.4, 7.5, 7.6<br/><br/> CentOS-alapú 7.3, 7.4, 7.5, 7.6, CentOS-alapú 7.4-es HPC | NVIDIA CUDA 10.0, illesztőprogram-ág R410 |
 
 ### <a name="nvidia-grid-drivers"></a>Az NVIDIA GRID illesztőprogramok
 
@@ -34,7 +34,7 @@ A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők NV és 
 
 | Disztribúció | Illesztőprogram |
 | --- | -- |
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.4 vagy a 7.3<br/><br/>CentOS-alapú 7.3 vagy 7.4 | Az NVIDIA GRID 7, illesztőprogram-ág R410|
+| Ubuntu 16.04 LTS, 18.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3, 7.4, 7.5, 7.6<br/><br/>CentOS-alapú 7.3, 7.4, 7.5, 7.6 | Az NVIDIA GRID 7, illesztőprogram-ág R410|
 
 > [!WARNING] 
 > A külső gyártótól származó szoftverek Red Hat termékekre történő telepítése befolyásolhatja a Red Hat támogatási feltételeit. Tekintse meg a vonatkozó [cikket a Red Hat tudásbázisában](https://access.redhat.com/articles/1067).

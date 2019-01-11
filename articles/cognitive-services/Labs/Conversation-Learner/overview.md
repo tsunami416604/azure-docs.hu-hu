@@ -10,18 +10,18 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 63d13235ec7244978193ed97aac8d11b2ff65eeb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790775"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198133"
 ---
 # <a name="what-is-conversation-learner"></a>Mi a Beszélgetéstanuló?
 
 Beszélgetéstanuló lehetővé teszi, hogy hozhat létre, és ismerje meg az a példában interakciók párbeszédfelületeket tanít. 
 
-Ellentétben a hagyományos megközelítés Beszélgetéstanuló figyelembe veszi a párbeszéd válaszokat és vonzóbb felhasználói élményeket nyújthat teljes körű keretében. Átfedés feladatközpontú a különböző használati esetek, Beszélgetéstanuló vonatkozik a machine learning a robotok és intelligens ügynököket kevésbé valószínű, hogy a felhasználók meghiúsítja, további ügyfél-szolgáltatási költségei teszik a háttérben, és további termékpiacokon több intuitív interakciók.
+Ellentétben a hagyományos megközelítés Beszélgetéstanuló figyelembe veszi a párbeszéd válaszokat és vonzóbb felhasználói élményeket nyújthat teljes körű keretében. A különböző feladatközpontú átfedés használati esetek, Beszélgetéstanuló vonatkozik a machine learning robotokat és intelligens ügynököket kevésbé valószínű, hogy a felhasználók meghiúsítja, további ügyfél-szolgáltatás költségekkel és intuitívabb interakciók termékpiacokon a háttérben.
 
 A fejlesztők modellezheti szeretnének prototípusos párbeszédpanelek beírásával indítsa el. A modell további párbeszédpanelek megadott módon tanul. Miután a modell jól működik, a robot is üzembe helyezhetők a végfelhasználók számára. Beszélgetéstanuló beszélgetések naplózza a felhasználókkal, és a fejlesztői tekintheti át őket. Ha a rendszer pedig a hibák pöttyös, teheti, hogy a fejlesztő egy a helyszíni javítás, és a modell retrained és használható azonnal.
 

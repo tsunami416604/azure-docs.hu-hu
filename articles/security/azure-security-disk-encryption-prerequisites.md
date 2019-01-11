@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9a36859a2c6f42e02dccb76a514f09a705f37f56
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156510"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200428"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -35,7 +35,7 @@ Az Azure Disk Encryption a következő operációs rendszereken támogatott:
 - Az Azure Disk Encryption, csak a meghatározott Azure-katalógus-alapú Linux-kiszolgáló disztribúciók és verziók. A jelenleg támogatott verziók listájáért tekintse meg a [Azure Disk Encryption – gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 - Az Azure Disk Encryption megköveteli, hogy a kulcstartó és a virtuális gépek található az ugyanazon Azure-régióban és az előfizetés. Az erőforrások konfigurálását külön régiókban okoz a az Azure Disk Encryption engedélyezésével.
 
-## <a name="bkmk_LinuxPrereq"></a> Linux rendszerű Iaas virtuális gépek további Előfeltételek 
+## <a name="bkmk_LinuxPrereq"></a> Linux rendszerű IaaS virtuális gépek további Előfeltételek 
 
 - Az Azure Disk Encryption for Linux 7 GB RAM a virtuális gép operációs rendszer lemeztitkosítás engedélyezve a szükséges [által támogatott lemezképek](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Az operációs rendszer lemez titkosítási folyamat befejeződése után a virtuális gép futtatása kevesebb memóriával konfigurálható.
 - Titkosítás engedélyezése előtt titkosítani az adatlemezek kell /etc/fstab megfelelően szerepel. Ez a bejegyzés állandó blokk eszköz nevét a "/ dev/sdX" formátumban nevek nem támaszkodnak társítani kell ugyanazon a lemezen újraindítások, különösen akkor, ha a rendszer titkosítást alkalmaz eszközként használja. Ezt a viselkedést a további részletekért lásd: [Hibaelhárítás a Linux rendszerű virtuális gép eszköznév módosítása](../virtual-machines/linux/troubleshoot-device-names-problems.md)

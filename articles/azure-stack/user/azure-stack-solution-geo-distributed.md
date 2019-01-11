@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 917f9a5ff2f6f9f6101b19dccee05fe5ab25c5a9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714848"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214776"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben
 
@@ -106,7 +106,7 @@ Frissítse a DNS zóna fájl foCreate web apps és a tartomány publishr. Az Azu
 Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD beállítása és automatikus ügyfélleküldéses mindkét felhőben változtatásait.
 
 > [!Note]  
-> Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció "[az App Service-ben az Azure Stack használatának megkezdése előtt](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" szakaszban az Azure Stack-operátorokról.
+> Az Azure Stack megfelelő képekkel hírcsatorna-futtassa (Windows Server és SQL) és az App Service-környezet szükség. Tekintse át az App Service – dokumentáció [az App Service-ben az Azure Stack használatának megkezdése előtt](../azure-stack-app-service-before-you-get-started.md) szakaszban az Azure Stack-operátorokról.
 
 #### <a name="add-code-to-azure-repos"></a>Adja hozzá a kódot az Azure-Adattárakkal
 

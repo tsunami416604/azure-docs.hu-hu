@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d322a0027f786be0603e7147eb3ba24341dd7fbf
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653356"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214861"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -44,7 +44,7 @@ Ez a témakör a bejelentkezések jelentés áttekintést nyújt.
 * Emellett bármely (nem rendszergazda jogosultságú) felhasználó hozzáférhet-e a saját bejelentkezések 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
-* A bérlőnek rendelkeznie kell egy társított az összes bejelentkezési tevékenység jelentésének megtekintéséhez prémium szintű Azure AD-licenc. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
+* A bérlőnek rendelkeznie kell egy társított az összes bejelentkezési tevékenység jelentésének megtekintéséhez prémium szintű Azure AD-licenc. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése. Vegye figyelembe, hogy a frissítés előtt tevékenységek adatokat nem rendelkezett, ha igénybe vesz néhány nap alatt az adatok megjelennek a jelentések prémium licencre történő frissítés után.
 
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
@@ -54,7 +54,7 @@ A felhasználói bejelentkezésekre biztosítja az alábbi kérdésekre kaphat v
 * Hány felhasználó jelentkezett be egy adott héten?
 * Milyen állapotúak ezek a bejelentkezések?
 
-A bejelentkezések jelentés kiválasztásával érheti **bejelentkezések** a a **tevékenység** szakaszában a **Azure Active Directory** paneljén a [AzurePortalon](https://portal.azure.com).
+A bejelentkezések jelentés kiválasztásával érheti **bejelentkezések** a a **tevékenység** szakaszában a **Azure Active Directory** paneljén a [AzurePortalon](https://portal.azure.com). Vegye figyelembe, hogy legfeljebb néhány megjelenjen a portál a bejelentkezési rekord két óráig is eltarthat.
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/61.png "Sign-in activity")
 

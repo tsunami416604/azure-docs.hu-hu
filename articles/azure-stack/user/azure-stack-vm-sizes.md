@@ -10,21 +10,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 5127b748111f993f95f940f4add81c42a032e038
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ad38bdf30d04f309bedaf9a7cc8b3d5b1aad6df7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722088"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215065"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Az Azure Stackben támogatott virtuálisgép-méretek
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ez a cikk a virtuális gép (VM) méretek az Azure Stackben elérhető sorolja fel.
+
+Lemez iops-t (bemeneti/kimeneti műveletek másodpercenként) az Azure Stacken helyett a lemez típusát a virtuális gép méretének a függvénye. Ez azt jelenti, hogy Standard_Fs sorozat virtuális gép, függetlenül attól, hogy SSD vagy HDD a lemez típusát a további adatokat lemez IOPS-korlátját 2300 IOPS. Az IOPS-korlátok bevezetett (a lehető legnagyobb mértékű) zajos szomszédok elkerülése érdekében. Már nem az iops-érték, amely megjelenik az adott virtuális gép mérete által garantált.
 
 ## <a name="general-purpose"></a>Általános célú
 
@@ -35,7 +37,7 @@ Ez a cikk a virtuális gép (VM) méretek az Azure Stackben elérhető sorolja f
 > [!NOTE]
 > *Alapszintű A* virtuálisgép-méretek esetében kivezettük [virtuálisgép-méretezési csoportok létrehozása](../azure-stack-compute-add-scalesets.md) (VMSS) a portálon keresztül. Ez a méret a VMSS létrehozásához, használja a PowerShell vagy a sablont.
 
-|Méret – méret\név |vCPU     |Memory (Memória) | Ideiglenes lemez max. mérete | Az operációs rendszer maximális adatátviteli sebességet: (IOPS) | Ideiglenes tárterület maximális teljesítménye (IOPS) | Adatlemezek max. teljesítménye (IOPS) | Hálózati adapterek maximális száma |    
+|Méret – méret\név |vCPU     |Memory (Memória) | Ideiglenes lemez max. mérete | Maximális operációsrendszer-lemez átviteli sebesség: (IOPS) | Ideiglenes tárterület maximális teljesítménye (IOPS) | Adatlemezek max. teljesítménye (IOPS) | Hálózati adapterek maximális száma |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |
 |**A1\Basic_A1**  |1    |1,75 GB  | 40 GB   |300  | 300  |2 / 2x300  |1   |
@@ -149,7 +151,7 @@ A memória optimalizált Virtuálisgép-méretek adja meg a magas memória – P
 ### <a name="mo-d"></a>A D-sorozat
 |Méret     |vCPU     |Memória (GiB) | Ideiglenes tárhely (GB)  | Az operációs rendszer maximális lemezteljesítményét (IOPS) | Ideiglenes tárterület maximális teljesítménye (IOPS) | Adatlemezek max. száma / átviteli sebesség (IOPS) | Hálózati adapterek maximális száma / várt hálózati sávszélesség (Mbps) |
 |------------------|---|----|----|--------|------|------------|---------|
-|**Standard_D11**  |2  |14  |100 |500     |6000  |8 / 8x500   |2 / 1000 |
+|**Standard_F1s**  |2  |14  |100 |500     |6000  |8 / 8x500   |2 / 1000 |
 |**Standard_D12**  |4  |28  |200 |500     |12000 |16 / 16x500 |4 / 2000 |
 |**Standard_D13**  |8  |56  |400 |500     |24000 |32 / 32x500 |8 / 4000 |
 |**Standard_D14**  |16 |112 |800 |500     |48000 |64 / 64x500 |8 / 8000 |

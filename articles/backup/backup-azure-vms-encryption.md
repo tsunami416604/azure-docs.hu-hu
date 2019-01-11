@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6793a83002029c009e3d4e124b4386feabecd5f8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583068"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201074"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással
 Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a virtuális gépek (VM) az Azure Backup használatával. A következő többi hibaeseteket támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépéseket részletesen is ismerteti.
@@ -128,6 +128,8 @@ Az alábbi lépések segítségével adja meg a megfelelő engedélyekkel a kulc
 Miután sikeresen biztosított engedélyeket, folytathatja a biztonsági mentés engedélyezése a titkosított virtuális gépek számára.
 
 ## <a name="restore-an-encrypted-vm"></a>Egy titkosított virtuális gép visszaállítása
+Az Azure Backup mostantól támogatja a visszaállítás [Azure titkosított virtuális gép az Azure AD nélkül](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad) mellett az előző visszaállítási elérhető támogatás az Azure-bA titkosított virtuális Gépet az Azure ad-ben.<br>
+
 Egy titkosított virtuális gép visszaállításához a "Biztonsági másolat lemezek visszaállítása" című szakaszának lépéseit követve először állítsa vissza a lemezeket [válasszon egy Virtuálisgép-konfiguráció visszaállítása](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Ezt követően az alábbi lehetőségek egyikét használhatja:
 
 * Kövesse a lépéseket a PowerShell [hozzon létre egy virtuális gép helyreállított lemezekből](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) teljes virtuális gép létrehozása a helyreállított lemezek alapján.

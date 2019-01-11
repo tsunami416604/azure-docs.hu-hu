@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ae21dbe675d78c663fc9d05364d91eca3288dd46
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9130bf5c2708f7eecf6fc1b5db2ffbb3c2fffc30
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435412"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201278"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Az Azure Metadata szolgáltatás: Windows virtuális gépeken ütemezett események
 
@@ -64,7 +64,7 @@ Az ütemezett események szolgáltatás nem rendszerverzióval ellátott. Verzi�
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - |
-| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek Iaas virtuális gépekhez<br><li>Metaadat-fejléc követelmény irányuló kérések kényszerítése | 
+| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek IaaS virtuális gépekhez<br><li>Metaadat-fejléc követelmény irányuló kérések kényszerítése | 
 | 2017-03-01 | Előzetes verzió | Összes |<li>Kezdeti kiadás
 
 > [!NOTE] 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/5/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 2a29cae6e7f391dfee75e89ea91525268db3fa62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4bb27959bb57f3d59621e5bbbfaba9aa0c331432
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971963"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200683"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogramjának Windows-bővítmény
 
@@ -37,7 +37,7 @@ Ez a bővítmény a következő nyílt forráskódú támogatja:
 
 | Disztribúció | Verzió |
 |---|---|
-| Windows 10 | Mag |
+| Windows 10 rendszerű (akár 1803 verzió)| Mag |
 | Windows Server 2016 | Mag |
 | Windows Server 2012R2 | Mag |
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | A művelet sikeres |
 | 1 | A művelet sikeres. Újraindításra van szükség. |
-| 100 | A művelet nem támogatott vagy nem fejeződött be. | Lehetséges okok: PowerShell-verzió nem támogatott, Virtuálisgép-méret nem egy az N sorozatú virtuális gépek, adatok letöltése sikertelen. Ellenőrizze a naplófájlokat a hiba okának megállapításához. |
+| 100 | A művelet nem támogatott vagy nem fejeződött be. | Lehetséges okok: PowerShell-verzió nem támogatott, virtuális gép mérete nem egy az N sorozatú virtuális gépek, adatok letöltése sikertelen. Ellenőrizze a naplófájlokat a hiba okának megállapításához. |
 | 240, 840 | A művelet időkorlátja. | Próbálja megismételni a műveletet. |
 | -1 | Kivétel történt. | Ellenőrizze a naplófájlokat a kivételek okának meghatározásához. |
 | – 5 x | A művelet függőben lévő újraindítás miatt megszakadt. | Indítsa újra a virtuális gép. A telepítés újraindítás után folytatódik. Távolítsa el manuálisan lehet meghívni. |

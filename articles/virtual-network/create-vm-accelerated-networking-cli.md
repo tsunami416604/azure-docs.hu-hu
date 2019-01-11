@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990960"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214487"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű
 
@@ -33,12 +33,12 @@ Gyorsított hálózatkezelés nélkül a-ból a virtuális gép minden hálózat
 
 Gyorsított hálózatkezeléssel, a hálózati forgalom szolgáltatáshoz érkezik, a virtuális gép hálózati adapteréhez (NIC), és továbbítja a virtuális Gépet. Minden hálózati házirendek, amelyekre vonatkozik a virtuális kapcsoló most kiszervezett és hardver a alkalmazni. A hardver házirend alkalmazása lehetővé teszi, hogy a hálózati Adaptert a hálózati forgalom közvetlenül az a virtuális Gépet, a gazdagép és a virtuális kapcsolót, megkerülése, alkalmazza a gazdagép minden házirend fenntartásával.
 
-A gyorsított hálózatkezelés előnyeit csak a virtuális gép, amely engedélyezve van a vonatkoznak. A legjobb eredmények érdekében ideális engedélyezze ezt a funkciót, legalább két virtuális gépet az azonos Azure Virtual Network (VNet). Való kommunikációhoz, virtuális hálózatok közötti vagy helyszíni összekötő, ez a funkció csak minimális befolyással van a teljes késést.
+A gyorsított hálózatkezelés előnyeit csak a virtuális gép, amely engedélyezve van a vonatkoznak. A legjobb eredmények érdekében ideális engedélyezze ezt a funkciót, legalább két virtuális gépet az azonos Azure virtuális hálózat (VNet). Való kommunikációhoz, virtuális hálózatok közötti vagy helyszíni összekötő, ez a funkció csak minimális befolyással van a teljes késést.
 
 ## <a name="benefits"></a>Előnyök
-* **Rövidebb válaszidőt / magasabb szintű csomag / másodperc (pps):** a virtuális kapcsoló eltávolítása a datapath eltávolítja a csomagok töltött idő a gazdagép a csoportházirend feldolgozása, és növeli a dolgozhatók fel a virtuális gép csomagok száma.
-* **Alacsonyabb jitter:** virtuális kapcsoló feldolgozása a szabályzatot, amely a alkalmazni mennyiségét és a munkaterhelés, a CPU, amely a feldolgozási függ. A házirend betartatása hardverre tehermentesítést eltávolítja az adott változékonyságát azáltal, hogy a csomagok közvetlenül a virtuális gép eltávolítása a gazdagépet a virtuális gép kommunikációs és az összes szoftver megszakítások és környezeti kapcsolók a.
-* **Csökkent a CPU-kihasználtság:** kevesebb hálózati forgalom feldolgozása CPU-felhasználást eredményez a virtuális kapcsoló a gazdagép megkerülésével.
+* **Rövidebb válaszidőt / magasabb szintű csomag / másodperc (pps):** A virtuális kapcsoló eltávolítása a datapath eltávolítja a csomagok töltött idő a gazdagép a csoportházirend feldolgozása, és növeli a dolgozhatók fel a virtuális gép csomagok száma.
+* **Végrehajtását alacsonyabb jitter:** Virtuáliskapcsoló-feldolgozó a szabályzatot, amely a alkalmazni mennyiségét és a munkaterhelés, a CPU, amely a feldolgozási függ. A házirend betartatása hardverre tehermentesítést eltávolítja az adott változékonyságát azáltal, hogy a csomagok közvetlenül a virtuális gép eltávolítása a gazdagépet a virtuális gép kommunikációs és az összes szoftver megszakítások és környezeti kapcsolók a.
+* **Csökkent a CPU-kihasználtság:** A virtuális kapcsoló a gazdagép megkerülésével kevesebb hálózati forgalom feldolgozása tekintetében CPU-kihasználtság vezet.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 A következő disztribúciók az Azure katalógusából beépített támogatottak: 
@@ -53,17 +53,18 @@ A következő disztribúciók az Azure katalógusából beépített támogatotta
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
 ### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
-Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat: D/DSv2 és az F/Fs
+Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat a következők: D/DSv2 és az F/Fs
 
-Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat: a DSv3/D, E/ESv3, Fsv2 és Ms és Mms.
+Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat a következők: A DSv3/D, E/ESv3, Fsv2 és Ms és Mms.
 
 További információ a Virtuálisgép-példányokon: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="regions"></a>Régiók
 Elérhető minden nyilvános Azure-régióban, valamint az Azure Government felhőben.
 
-### <a name="network-interface-creation"></a>Hálózati adapter létrehozása 
-Gyorsított hálózatkezelés csak akkor engedélyezhető, egy új hálózati adapteren. Nem engedélyezhető az egy meglévő hálózati adapteren.
+<!-- ### Network interface creation 
+Accelerated networking can only be enabled for a new NIC. It cannot be enabled for an existing NIC.
+removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>A futó virtuális gép gyorsított hálózatkezelés engedélyezése
 Gyorsított hálózatkezelés engedélyezett nélkül támogatott virtuális gép mérete legfeljebb a funkció engedélyezve van a leállítása és felszabadítása.  
 ### <a name="deployment-through-azure-resource-manager"></a>Üzembe helyezés Azure Resource Manager használatával

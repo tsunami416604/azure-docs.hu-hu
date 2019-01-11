@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302313"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212549"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse táblák tervezése
 
@@ -103,7 +103,7 @@ Particionált tábla tárolja, és a táblázat sorait az adattartomány alapjá
 ## <a name="columnstore-indexes"></a>Oszlopcentrikus indexek
 Alapértelmezés szerint az SQL Data Warehouse tárolja egy tábla egy fürtözött oszlopcentrikus indexet. Az ilyen típusú adatok tárolási éri el a magas az adattömörítés és a lekérdezési teljesítmény nagy táblák.  A fürtözött oszlopcentrikus index általában a legjobb választás, de bizonyos esetekben egy fürtözött index, vagy egy halommemóriában a megfelelő tárolási struktúra.
 
-Oszlopcentrikus szolgáltatások listáját lásd: [Újdonságok az oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-whats-new). Tekintse meg az oszlopcentrikus indexet a teljesítmény javítása érdekében [sorcsoport minőségi az oszlopcentrikus indexek maximalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Oszlopcentrikus szolgáltatások listáját lásd: [Újdonságok az oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Tekintse meg az oszlopcentrikus indexet a teljesítmény javítása érdekében [sorcsoport minőségi az oszlopcentrikus indexek maximalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statisztika
 A lekérdezésoptimalizáló oszlopszintű statisztikai használja, amikor létrehozza a lekérdezést végrehajtó tervezése. Lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a egyes oszlopain, különösen a lekérdezés alkalmazásban használt oszlopokat. Statisztikák létrehozása és frissítése nem történik meg automatikusan. [Statisztika létrehozása](/sql/t-sql/statements/create-statistics-transact-sql) , tábla létrehozása után. Statisztika frissítése után jelentős számú sort is vehetők fel vagy módosíthatók. Ha például a betöltés után statisztika frissítése. További információkért lásd: [statisztika útmutatást](sql-data-warehouse-tables-statistics.md).
@@ -133,7 +133,7 @@ Az SQL Data Warehouse számos támogatja, de nem az összes, a tábla funkciók 
 - [Az indexelt nézetek](/sql/relational-databases/views/create-indexed-views)
 - [Feladatütemezés](/sql/t-sql/statements/create-sequence-transact-sql)
 - [Ritka oszlop](/sql/relational-databases/tables/use-sparse-columns)
-- [Kulcsok helyettesítő](). Valósíthatók meg [identitás](sql-data-warehouse-tables-identity.md).
+- Helyettes kulcs. Valósíthatók meg [identitás](sql-data-warehouse-tables-identity.md).
 - [A szinonimák](/sql/t-sql/statements/create-synonym-transact-sql)
 - [Eseményindítók](/sql/t-sql/statements/create-trigger-transact-sql)
 - [Egyedi indexek](/sql/t-sql/statements/create-index-transact-sql)

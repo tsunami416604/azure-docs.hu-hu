@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b5a129c2a92c18b979a3b0c2eeea7fa19791551c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633765"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214045"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Az Azure AD identity használata a parancssori felület vagy a PowerShell (előzetes verzió) az Azure Storage eléréséhez
 
@@ -84,7 +84,7 @@ Azure PowerShell használatával jelentkezzen be az Azure AD identitás:
    Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
    ```
 1. Zárja be és nyissa meg ismét a PowerShell-ablakban.
-1. Hívja a [New-AzStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext) parancsmag segítségével hozzon létre egy környezetet, és tartalmazza a `-UseConnectedAccount` paraméter. 
+1. Hívja a [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) parancsmag segítségével hozzon létre egy környezetet, és tartalmazza a `-UseConnectedAccount` paraméter. 
 1. Meghívnak egy parancsmagot, az Azure AD-identitásnak, hogy az újonnan létrehozott környezet átadása a parancsmaghoz.
 
 Az alábbi példa bemutatja, hogyan az Azure PowerShell tárolóban lévő blobok listázásához az Azure AD-identitás használatával. Ügyeljen arra, hogy cserélje le a helyőrző fiók és a tároló nevét a saját értékeire: 

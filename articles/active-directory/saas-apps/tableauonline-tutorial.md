@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a Tableau Online |} A Microsoft Docs'
+title: 'Oktatóanyag: A Tableau Online az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Tableau Online között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 10b82a6c51f8fc31b5b6f4b8c661f764fc6b309d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421731"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198830"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: Azure Active Directory-integráció a Tableau online-nal
+# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: A Tableau Online az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Tableau Online az Azure Active Directoryval (Azure AD).
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Tableau Online, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Tableau Online egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Tableau Online konfigurálásához hozzá kell Table
 
 **Adja hozzá a Tableau Online a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -154,7 +154,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
    ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/attributesection2.png)
 
-    f. Másolja a névtér értékeit az e-mailek és a Vezetéknév kövesse a fenti lépéseket.
+    f. Másolja ki a névteret értékeit az e-mailek és a Vezetéknév kövesse a fenti lépéseket.
 
     g. Váltson a Tableau Online alkalmazást, majd állítsa be a **Tableau online-hoz attribútumait** szakasz az alábbiak szerint:
      * E-mail cím: **mail** vagy **userprincipalname**

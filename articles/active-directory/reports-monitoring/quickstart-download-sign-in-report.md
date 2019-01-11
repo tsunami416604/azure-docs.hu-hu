@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3e20af1c90f0e8a7a582d2d01dc4218a14496c40
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ce242066df427163048a2ef51e79ffd98eadbc7d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653288"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214912"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával jelentkezzen be jelentés letöltése
 
@@ -31,7 +31,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan lehet az elmúlt 24 órára vo
 
 A következők szükségesek:
 
-* Azure Active Directory-bérlő prémium licenccel a bejelentkezési tevékenységek jelentésének megtekintéséhez. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
+* Azure Active Directory-bérlő prémium licenccel a bejelentkezési tevékenységek jelentésének megtekintéséhez. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése. Vegye figyelembe, hogy a frissítés előtt tevékenységek adatokat nem rendelkezett, ha igénybe vesz néhány nap alatt az adatok megjelennek a jelentések prémium licencre történő frissítés után.
 * A felhasználó, aki az a **biztonsági rendszergazda**, **biztonsági olvasó**, **jelentés olvasó** vagy **globális rendszergazdai** szerepkör a bérlő számára. Ezen felül a bérlő minden felhasználója elérheti a magára vonatkozó bejelentkezéseket.
 
 ## <a name="quickstart-download-a-sign-in-report"></a>Gyors útmutató: Bejelentkezési jelentés letöltése

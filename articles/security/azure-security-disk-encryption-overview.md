@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1674a54ea78e7fea2cc39cb26fefc52b8764bc4c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093284"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200853"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Az Azure Disk Encryption IaaS virtuális gépekhez
 
-A Microsoft Azure számára fontos, hogy az adatvédelem és az adatok elkülönítése. Az Azure segítségével szabályozható a titkosítása, szabályozhatja és titkosítási kulcsokat, és az adatok ellenőrzésére és hozzáférés kezelése a fejlett technológiák számos Azure-ban tárolt adatait. Ez a vezérlő biztosít az Azure-ügyfelek rugalmasan választhatja ki a saját üzleti igényeinek leginkább megfelelő megoldást. Ez a cikk bemutatja a technológiai megoldásokat: "Az Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek (VM)." Ez a technológia segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. 
+A Microsoft Azure számára fontos, hogy az adatvédelem és az adatok elkülönítése. Az Azure segítségével szabályozható a titkosítása, szabályozhatja és titkosítási kulcsokat, és az adatok ellenőrzésére és hozzáférés kezelése a fejlett technológiák számos Azure-ban tárolt adatait. Ez a vezérlő biztosít az Azure-ügyfelek rugalmasan választhatja ki a saját üzleti igényeinek leginkább megfelelő megoldást. Ez a cikk bemutatja a technológiai megoldásokat: "Az azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek (VM)." Ez a technológia segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -81,7 +81,7 @@ A megoldás a következő forgatókönyvek, szolgáltatások és technológiák 
 
 * Alapszintű csomag IaaS virtuális gépeket.
 * Linux rendszerű IaaS virtuális gépek egy operációs rendszer meghajtójának titkosításának letiltása.
-* Adatmeghajtók titkosításának letiltása, ha az operációs rendszer meghajtójának Linux rendszerű Iaas virtuális gépek titkosítva van.
+* Adatmeghajtók titkosításának letiltása, ha az operációs rendszer meghajtójának Linux rendszerű IaaS virtuális gépek titkosítva van.
 * IaaS virtuális gépek jönnek létre a klasszikus virtuális gép létrehozási módszer használatával.
 * Az ügyfél Linux rendszerű IaaS virtuális gépek egyéni rendszerképek titkosítást.
 * Integráció a helyszíni kulcskezelő rendszerrel.

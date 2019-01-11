@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2cdeea546e7153c63cb1edfbc53f3644facc4f2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 847adc9f304e9da62129948616f0a3485b33ee7b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743901"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199527"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Készítsen biztonsági másolatot, és virtuális gépek visszaállítása a PowerShell használatával
 
@@ -72,7 +72,7 @@ A kezdéshez:
 6. Ellenőrizheti, hogy a szolgáltatók regisztrálása sikeresen befejeződött, a következő parancsokkal:
     ```powershell
     Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    ``` 
+    ```
     A parancs kimenetében a **RegistrationState** kell módosítani a **regisztrált**. Ha nem, egyszerűen csak futtatnia kell a **[Register-AzureRmResourceProvider](https://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** újra a parancsmagot.
 
 A PowerShell használatával automatizálható a következő feladatokat:
@@ -185,7 +185,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 Miután meghatározta a védelmi házirend, továbbra is engedélyeznie kell a házirendet egy elem esetében. Használat **[Enable-AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)** kívánja engedélyezni a védelmet. Két objektum – az elemet, és a szabályzat védelem engedélyezéséhez szükséges. Ha a házirend társítva a tárolóhoz, a biztonsági mentési munkafolyamat akkor aktiválódik, a házirend-ütemezés meghatározott időben.
 
-Az alábbi példák engedélyezni a védelmet a cikkhez, V2VM, NewPolicy házirendet használja. A példák a virtuális gép titkosított attól függően eltérőek lehetnek, és milyen típusú titkosítás. 
+Az alábbi példák engedélyezni a védelmet a cikkhez, V2VM, NewPolicy házirendet használja. A példák a virtuális gép titkosított attól függően eltérőek lehetnek, és milyen típusú titkosítás.
 
 A védelem engedélyezése a **nem titkosított Resource Manager virtuális gépek**:
 
@@ -457,7 +457,7 @@ A következő szakaszban azok "VMConfig" fájlt használó virtuális gép létr
        }
        ```
 
-   * **A nem felügyelt és a titkosított virtuális gépek (csak a blokktitkosítási kulcsot)** – nem felügyelt, titkosított virtuális gépek (rendelkeznek BEk-KEL csak használatával titkosított), vissza kell állítania a titkos kulcsot a key vaulthoz, mielőtt lemez is csatlakoztatható. További információkért lásd: a cikk [egy titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). A következő minta bemutatja a titkosított virtuális gépekhez tartozó operációsrendszer- és adatlemezek csatolása. Az operációsrendszer-lemez beállításakor győződjön meg arról, ha a megfelelő operációs rendszer típusa.
+   * **A nem felügyelt és a titkosított virtuális gépek az Azure ad-vel (csak a blokktitkosítási kulcsot)** – nem felügyelt, titkosított virtuális gépek az Azure ad-vel (rendelkeznek BEk-KEL csak használatával titkosított), vissza kell állítania a titkos kulcsot a key vaulthoz, mielőtt lemez is csatlakoztatható. További információkért lásd: a [egy titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). A következő minta bemutatja a titkosított virtuális gépekhez tartozó operációsrendszer- és adatlemezek csatolása. Az operációsrendszer-lemez beállításakor győződjön meg arról, ha a megfelelő operációs rendszer típusa.
 
       ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -469,13 +469,8 @@ A következő szakaszban azok "VMConfig" fájlt használó virtuális gép létr
        $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
       ```
-      A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
 
-      ```powershell
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -VolumeType Data
-      ```
-
-   * **A nem felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)** – nem felügyelt, titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL és kek-KEL), a kulcs és titkos kulcs visszaállítása a key vaulthoz a lemezek csatolása előtt. További információkért lásd: a cikk [egy titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). A következő minta bemutatja a titkosított virtuális gépekhez tartozó operációsrendszer- és adatlemezek csatolása.
+   * **A nem felügyelt és a titkosított virtuális gépek az Azure ad-vel (rendelkeznek BEk-KEL és KEK)** – nem felügyelt, titkosított virtuális gépek az Azure AD (rendelkeznek BEk-KEL és kek-KEL használatával titkosítva), a kulcs és titkos kulcs visszaállítása a key vaulthoz a lemezek csatolása előtt. További információkért lásd: [egy titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). A következő minta bemutatja a titkosított virtuális gépekhez tartozó operációsrendszer- és adatlemezek csatolása.
 
       ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -484,34 +479,100 @@ A következő szakaszban azok "VMConfig" fájlt használó virtuális gép létr
       Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
       foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-       }
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+     }
       ```
 
-      A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
+   * **A nem felügyelt és a titkosított virtuális gépek anélkül, hogy az Azure AD (kizárólag a blokktitkosítási kulcsot)** – nem felügyelt, titkosított virtuális gépek anélkül, hogy az Azure AD (titkosítva rendelkeznek BEk-KEL csak), ha forrás **keyVault vagy titkos kódja nem érhető el** állítsa vissza a titkos kulcsok a key vaulttal az eljárás segítségével [egy nem titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). Ezután hajtsa végre az alábbi parancsfájlok a visszaállított operációs rendszer blob (Ez a lépés nem kötelező adatokat a BLOB) titkosítási adatok beállítása. A visszaállított kulcstartóból a $dekurl lehet beolvasni.<br>
+
+   Az alábbi szkriptet kell végrehajtani, csak akkor, ha a forrás keyVault vagy titkos kódja nem érhető el.
 
       ```powershell
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
+      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+      $osBlob = Get-AzureStorageBlob -Container $containerName -Blob $osBlobName
+      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+      $osBlob.ICloudBlob.SetMetadata()
       ```
 
-   * **Felügyelt és nem titkosított virtuális gépek** – felügyelt nem titkosított virtuális gépek esetén a visszaállított felügyelt lemezt. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
+    Miután a **titkok érhetők el** és a titkosítási adatok is lehet megadni az operációs rendszer Blob, csatlakoztassa a lemezeket, az alábbi parancsfájl használatával.<br>
 
-   * **Felügyelt és a titkosított virtuális gépek (csak a blokktitkosítási kulcsot)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL csak), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
-
-     A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
-
-       ```powershell
-       Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
-       ```
-
-   * **Felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL és kek-KEL), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
-
-      A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
+    Ha a forrás keyVault vagy titkos kódokkal már rendelkezésre állnak, majd a fenti szkript kell nem hajtható végre.
 
       ```powershell
-      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+      {
+      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+      }
       ```
+
+   * **A nem felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK) az Azure AD nélkül** – nem felügyelt, titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL és KEK), az Azure AD nélkül Ha forrás **keyVault/kulcsa vagy titkos kódja nem érhetők el** kulcs helyreállítása és hajtsa végre az eljárást, a kulcstartó titkos kódok [egy nem titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). Ezután hajtsa végre az alábbi parancsfájlok a visszaállított operációs rendszer blob (Ez a lépés nem kötelező adatokat a BLOB) titkosítási adatok beállítása. A visszaállított kulcstartóból a $dekurl és $kekurl lehet beolvasni.
+
+   Az alábbi szkriptet kell végrehajtani, csak akkor, ha a forrás keyVault/kulcsa vagy titkos kódja nem érhető el.
+
+    ```powershell
+      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
+      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+      $osBlob = Get-AzureStorageBlob -Container $containerName -Blob $osBlobName
+      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+      $osBlob.ICloudBlob.SetMetadata()
+      ```
+   Miután a **kulcs vagy titkos kódokkal érhetők el** és a titkosítási adatok vannak beállítva az operációs rendszer BLOB, csatlakoztassa a lemezeket, az alábbi parancsfájl használatával.
+
+    Ha a forrás keyVault vagy kulcs vagy titkos kódokkal érhetők el, majd a fenti szkript kell nem hajtható végre.
+
+    ```powershell
+      Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+      {
+      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+      }
+      ```
+
+  * **Felügyelt és nem titkosított virtuális gépek** – felügyelt nem titkosított virtuális gépek esetén a visszaállított felügyelt lemezt. Részletes információkért lásd: [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Felügyelt és a titkosított virtuális gépek az Azure ad-vel (csak a blokktitkosítási kulcsot)** – az Azure AD (rendelkeznek BEk-KEL csak használatával titkosított), felügyelt, titkosított virtuális gépek csatlakoztatása a visszaállított felügyelt lemezeket. Részletes információkért lásd: [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Felügyelt és a titkosított virtuális gépek az Azure ad-vel (rendelkeznek BEk-KEL és KEK)** – az Azure AD (rendelkeznek BEk-KEL és kek-KEL használatával titkosítva), felügyelt, titkosított virtuális gépek csatlakoztatása a visszaállított felügyelt lemezeket. Részletes információkért lásd: [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Felügyelt és a titkosított virtuális gépek anélkül, hogy az Azure AD (kizárólag a blokktitkosítási kulcsot)** -felügyelt, titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL csak), az Azure AD nélkül Ha a forrás **keyVault vagy titkos kódja nem érhetők el** állítsa vissza a titkos kulcsok a key vault használatával a az eljárás [egy nem titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). Ezután hajtsa végre az alábbi parancsfájlok a visszaállított operációsrendszer-lemez (Ez a lépés nem kötelező adatlemez) titkosítási adatok beállítása. A visszaállított kulcstartóból a $dekurl lehet beolvasni.
+
+    Az alábbi szkriptet kell végrehajtani, csak akkor, ha a forrás keyVault vagy titkos kódja nem érhető el.  
+
+    ```powershell
+      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+      $diskupdateconfig = New-AzureRmDiskUpdateConfig -EncryptionSettingsEnabled $true
+      $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
+      Update-AzureRmDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+      ```
+
+    Miután érhetők el a titkos kulcsok és a titkosítási adatok vannak megadva az operációsrendszer-lemez, csatlakoztassa a visszaállított felügyelt lemezeket, lásd: [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
+
+  * **Felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK) az Azure AD nélkül** – felügyelt, titkosított virtuális gépek nélkül (titkosítását a rendelkeznek BEk-KEL és KEK) az Azure AD, ha forrás **keyVault/kulcsa vagy titkos kódja nem érhetők el** a kulcs és titkos kulcs visszaállítása hajtsa végre az eljárást, a tároló [egy nem titkosított virtuális gépek visszaállítása az Azure Backup helyreállítási pontokról](backup-azure-restore-key-secret.md). Ezután hajtsa végre az alábbi parancsfájlok a visszaállított operációsrendszer-lemez (Ez a lépés nem kötelező adatlemez) titkosítási adatok beállítása. A visszaállított kulcstartóból a $dekurl és $kekurl lehet beolvasni.
+
+  Az alábbi szkriptet kell végrehajtani, csak akkor, ha a forrás keyVault/kulcsa vagy titkos kódja nem érhető el.
+
+  ```powershell
+     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+     $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+     $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+     $diskupdateconfig = New-AzureRmDiskUpdateConfig -EncryptionSettingsEnabled $true
+     $diskupdateconfig = Set-AzureRmDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
+     $diskupdateconfig = Set-AzureRmDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $kekUrl -SourceVaultId $keyVaultId  
+     Update-AzureRmDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+    ```
+
+    Miután a kulcs vagy titkos kódokkal érhetők el, és a titkosítási adatok vannak megadva az operációsrendszer-lemez, csatlakoztassa a visszaállított felügyelt lemezeket, lásd: [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
 
 5. Állítsa be a hálózati beállításokat.
 
@@ -525,11 +586,44 @@ A következő szakaszban azok "VMConfig" fájlt használó virtuális gép létr
     $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName "test" -Location "WestUS" -SubnetId $vnet.Subnets[$subnetindex].Id -PublicIpAddressId $pip.Id
     $vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
     ```
+
 6. Hozza létre a virtuális gépet.
 
     ```powershell  
     New-AzureRmVM -ResourceGroupName "test" -Location "WestUS" -VM $vm
     ```
+
+7. A leküldéses ADE bővítmény.
+
+  * **Virtuális gép az Azure ad-vel** – a következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek  
+
+    **Csak a blokktitkosítási kulcsot**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      ```
+
+    **Rendelkeznek BEk-KEL és kek-KEL**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      ```
+
+  * **Virtuális gép az Azure AD nélkül** – a következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
+
+    Ha a sémanév AADClientID, kéri a parancs végrehajtása közben, akkor kell frissíteni az Azure Powershellt.
+
+    **Csak a blokktitkosítási kulcsot**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      ```
+
+      **Rendelkeznek BEk-KEL és kek-KEL**
+
+      ```powershell  
+      Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      ```
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Fájlok visszaállítása egy Azure virtuális gép biztonsági mentése
 
@@ -614,4 +708,4 @@ Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>További lépések
 
-Ha inkább a powershellel való részvétel wi th az Azure-erőforrásokat, olvassa el a PowerShell, [üzembe helyezés és a Windows Server biztonsági mentés kezelése](backup-client-automation.md). Ha Ön kezeli a DPM biztonsági mentések, ismertető cikkben [üzembe helyezés és a DPM a biztonsági mentés kezelése](backup-dpm-automation.md). Az alábbi cikkek is szükséges a Resource Manager-telepítésekhez és a klasszikus üzembe helyezéssel.  
+Ha inkább a érhet el az Azure-erőforrások PowerShell-lel, tekintse meg a PowerShell a cikkben [üzembe helyezés és a Windows Server biztonsági mentés kezelése](backup-client-automation.md). Ha Ön kezeli a DPM biztonsági mentések, ismertető cikkben [üzembe helyezés és a DPM a biztonsági mentés kezelése](backup-dpm-automation.md). Az alábbi cikkek is szükséges a Resource Manager-telepítésekhez és a klasszikus üzembe helyezéssel.  

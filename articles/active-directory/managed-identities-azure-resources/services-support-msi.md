@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 3fdbac019849bc97e8d336b75f26a8fe0a05c449
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ca7ce29adb0b83215b64065ef83ff476025b8e81
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713114"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199714"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitást támogató szolgáltatások
 
-Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Egy felügyelt identitás használata esetén elvégezheti a hitelesítést minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítés hitelesítő adatok nélkül a kódban. Jelenleg is zajlik integráló felügyelt identitások Azure-erőforrások és az Azure AD-hitelesítés, Azure-ban. Ellenőrizze gyakran frissítéseit.
+Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást adja meg. Egy felügyelt identitás használata esetén elvégezheti a hitelesítést minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítés hitelesítő adatok nélkül a kódban. Jelenleg is zajlik integráló felügyelt identitások Azure-erőforrások és az Azure AD-hitelesítés, Azure-ban. Ellenőrizze gyakran frissítéseit.
 
 > [!NOTE]
 > Az Azure-erőforrások felügyelt identitásai a Managed Service Identity (MSI) szolgáltatás új neve.
@@ -27,28 +27,125 @@ Felügyelt identitások az Azure-erőforrások Azure-szolgáltatásokat az Azure
 
 Az alábbi Azure-szolgáltatások támogatják a felügyelt identitások az Azure-erőforrások:
 
-| Szolgáltatás | Alapértelmezett állapot | felhasználó által hozzárendelt állapota| Konfigurálás | Egy token beszerzése |
-| ------- | ------ | ---- | --------- | ----------- |
-| Azure-alapú virtuális gépek | Elérhető | Előzetes verzió | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Virtual Machine Scale Sets | Elérhető | Előzetes verzió | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Az Azure Resource Manager-sablonok](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure App Service | Windows: Elérhető <br> Linux: Előzetes verzió | Előzetes verzió | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell)  |
-| Azure Functions | Elérhető | Előzetes verzió | [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell) |
-| Azure Logic Apps | Elérhető | Nem érhető el | [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#deployment-template) |  |
-| Azure Data Factory V2 | Elérhető | Nem érhető el | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | Elérhető | Nem érhető el | [Azure Resource Manager-sablon](/azure/api-management/api-management-howto-use-managed-service-identity) |
-| Azure Container Instances | Linux: Előzetes verzió<br>Windows: Nem érhető el | Linux: Előzetes verzió<br>Windows: Nem érhető el | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Azure Resource Manager-sablon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
+### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
+
+|Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Előzetes verzió | Előzetes verzió | Előzetes verzió | Előzetes verzió |
+| Felhasználóhoz rendelt | Előzetes verzió | Előzetes verzió | Előzetes verzió | Előzetes verzió | Előzetes verzió
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure Virtual Machines (régióban, ha elérhetők):
+
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-virtual-machine-scale-sets"></a>Az Azure Virtual Machine Scale Sets
+
+|Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Előzetes verzió | Előzetes verzió | Előzetes verzió |
+| Felhasználóhoz rendelt | Előzetes verzió | Előzetes verzió | Előzetes verzió | Előzetes verzió
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure Virtual Machine Scale Sets (régióban, ha elérhetők):
+
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-app-service"></a>Azure App Service
+
+|Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Elérhető | Elérhető | Elérhető |
+| Felhasználóhoz rendelt | Előzetes verzió | Nem érhető el | Nem érhető el | Nem érhető el
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure App Service-ben (régióban, ha elérhetők):
+
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-functions"></a>Azure Functions
+
+Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Elérhető | Elérhető | Elérhető |
+| Felhasználóhoz rendelt | Előzetes verzió | Nem érhető el | Nem érhető el | Nem érhető el
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure Functions (régióban, ha elérhetők):
+
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-logic-apps"></a>Azure Logic Apps
+
+Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Elérhető | Elérhető | Elérhető |
+| Felhasználóhoz rendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure Logic Apps (régióban, ha elérhetők):
+
+- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#deployment-template)
+
+### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
+
+Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
+| Felhasználóhoz rendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure Data Factory V2 (régióban, ha elérhetők):
+
+- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)
+- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk)
+
+### <a name="azure-api-management"></a>Azure API Management
+
+Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Elérhető | Elérhető | Nem érhető el | Nem érhető el |
+| Felhasználóhoz rendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure API Management (régióban, ha elérhetők):
+
+- [Azure Resource Manager-sablon](/azure/api-management/api-management-howto-use-managed-service-identity)
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Felügyelt identitás típusa |  Általánosan elérhető<br>Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Rendszerhez rendelt | Linux: Előzetes verzió<br>Windows: Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
+| Felhasználóhoz rendelt | Linux: Előzetes verzió<br>Windows: Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el
+
+Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure Container Instances (régióban, ha elérhetők):
+
+- [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
+- [Azure Resource Manager-sablon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés
 
 A következő szolgáltatásokat az Azure AD-hitelesítés támogatásához, és az Azure-erőforrások felügyelt identitást használó ügyfél szolgáltatások teszteltük.
 
-| Szolgáltatás | Erőforrás-azonosító | status | Dátum | Hozzáférés hozzárendelése |
+| Szolgáltatás | Erőforrás-azonosító | status | Hozzáférés hozzárendelése |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | `https://management.azure.com/` | Elérhető | 2017. szeptember | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Azure Resource Manager-sablon](../../role-based-access-control/role-assignments-template.md) |
-| Azure Key Vault | `https://vault.azure.net` | Elérhető | 2017. szeptember | |
-| Azure Data Lake | `https://datalake.azure.net/` | Elérhető | 2017. szeptember | |
-| Azure SQL | `https://database.windows.net/` | Elérhető | 2017. október | |
-| Azure Event Hubs | `https://eventhubs.azure.net` | Előzetes verzió | 2017. december | |
-| Azure Service Bus | `https://servicebus.azure.net` | Előzetes verzió | 2017. december | |
-| Azure Storage | `https://storage.azure.com/` | Előzetes verzió | 2018. május | |
+| Azure Resource Manager | `https://management.azure.com/` | Elérhető | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Azure Resource Manager-sablon](../../role-based-access-control/role-assignments-template.md) |
+| Azure Key Vault | `https://vault.azure.net` | Elérhető |  
+| Azure Data Lake | `https://datalake.azure.net/` | Elérhető |
+| Azure SQL | `https://database.windows.net/` | Elérhető |
+| Azure Event Hubs | `https://eventhubs.azure.net` | Előzetes verzió |
+| Azure Service Bus | `https://servicebus.azure.net` | Előzetes verzió |
+| Azure Storage | `https://storage.azure.com/` | Előzetes verzió |

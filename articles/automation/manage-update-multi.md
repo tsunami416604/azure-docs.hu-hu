@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679529"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214028"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -82,9 +82,9 @@ Miután engedélyezte a Frissítéskezelést a gépek, adatai kiválasztásával
 
 Számítógépek nemrég lett engedélyezve az Update Management, előfordulhat, hogy nem felmérését még. Azon számítógépek esetén a megfelelőségi állapot állapota **nincs értékelve**. Ez egy lista a megfelelőségi állapot a lehetséges értékek:
 
-- **Megfelelő**: számítógépek, amelyről nem hiányzik kritikus vagy biztonsági frissítések.
+- **Megfelelő**: A számítógépek, amelyről nem hiányzik kritikus vagy biztonsági frissítések.
 
-- **Nem megfelelő**: számítógépek, amelyek hiányzik legalább egy kritikus vagy biztonsági frissítés.
+- **Nem megfelelő**: Számítógép, amelyen nincs legalább egy kritikus vagy biztonsági frissítés.
 
 - **Nincs értékelve**: A frissítés kiértékelésének adatai nem érkeztek időkereten belül a számítógépről. A Linux rendszerű számítógépek esetében a várt időtartamon az elmúlt 3 órában van. A Windows-számítógépek esetében az elmúlt 12 órában időkereten van.
 
@@ -113,7 +113,11 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
-Felügyelt Windows-számítógépek esetében naponta kétszer fut vizsgálat. 15 percenként, a Windows API hívása az utolsó frissítésének időpontját, hogy módosultak-e az állapot meghatározására a lekérdezéshez. Ha az állapot megváltozik, megfelelőségi vizsgálatot kezdeményez. Linux-számítógépek 3 óránként fut vizsgálat.
+A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat, tömegesen az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
+
+A frissítés megfelelőségi vizsgálat ütemezett vizsgálatokat mellett az MMA újraindítja, frissítés telepítése előtt, és a frissítés telepítése után legfeljebb 15 perccel kezdeményezik.
+
+Linux rendszerű számítógépen a megfelelőségi vizsgálat három óránként történik alapértelmezés szerint. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
 
 30 perc és a felügyelt számítógépekből származó frissített adatok megjelennek az irányítópulton 6 óráig is eltarthat.
 
@@ -126,13 +130,13 @@ Egy új frissítéstelepítést egy vagy több virtuális gépet, a ütemezése 
 Az a **új frissítéstelepítés** panelen adja meg a következő információkat:
 
 - **Név**: Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
-- **Operációs rendszer**: válasszon **Windows** vagy **Linux**.
-- **Frissítendő csoportok (előzetes verzió)**: Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
-- **Frissítendő gépek**: válassza ki, mentett keresést, importált csoporthoz, vagy válassza ki a gépeket, válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
+- **Operációs rendszer**: Válassza ki **Windows** vagy **Linux**.
+- **A csoportok frissítése (előzetes verzió)**: Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
+- **Frissítendő gépek**: Jelöljön ki egy mentett keresési importált csoporthoz, vagy gépek számára, hogy válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
 
   ![Új frissítés üzembe helyezési panel](./media/manage-update-multi/update-select-computers.png)
 
-- **Frissítési besorolás**: válassza ki a szoftver szerepeljenek a központi telepítési típusokat. A választható besorolási típusok leírását lásd: [frissítési besorolások](automation-update-management.md#update-classifications). A választható besorolási típusok a következők:
+- **Frissítési besorolás**: A frissítéstelepítés foglalandó szoftvertípusok kiválasztása. A választható besorolási típusok leírását lásd: [frissítési besorolások](automation-update-management.md#update-classifications). A választható besorolási típusok a következők:
   - Kritikus frissítések
   - Biztonsági frissítések
   - Kumulatív frissítések
@@ -144,13 +148,13 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 
 - **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a belefoglalás menetéről: [Belefoglalási viselkedés](automation-update-management.md#inclusion-behavior)
 
-- **Ütemezési beállítások**: Elfogadhatja az alapértelmezett időpontot, amely a 30 perccel az aktuális idő utáni időpont, Megadhat egy másik időpontot is.
+- **Ütemezési beállítások**: Elfogadhatja az alapértelmezett dátumot és időpontot, amely a 30 perccel az aktuális idő utáni időpont. Megadhat egy másik időpontot is.
 
    Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődjön. Egy ismétlődő ütemezés beállításához a **ismétlődési**válassza **ismétlődő**.
 
    ![Ütemezési beállítások párbeszédpanel](./media/manage-update-multi/update-set-schedule.png)
 
-- **Előkészítő szkriptek és utólagos szkriptek**: Válassza ki, mely szkripteket szeretné futtatni az üzembe helyezés előtt, illetve után. További információ: [Előkészítő és utólagos szkriptek kezelése](pre-post-scripts.md).
+- **Előre parancsfájlok + utáni parancsfájlok**: Válassza ki a parancsfájlok futtatása előtt és után a központi telepítés. További információ: [Előkészítő és utólagos szkriptek kezelése](pre-post-scripts.md).
 - **Karbantartási időszak (perc)**: Adja meg azt az időszakot, hogy azt szeretné, hogy a frissítés telepítése megtörténjen. Ez a beállítás biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
 
 - **Indítsa újra a vezérlő** – Ez a beállítás azt határozza meg, hogyan kezelje a központi telepítési újraindítások.
@@ -183,7 +187,7 @@ A **frissítés eredményei** ablaktábla megjeleníti azokat a frissítéseket 
 
 - **Nem lett megkísérelve**: A frissítés nem lett telepítve, mert nincs elég ideje volt elérhető a megadott karbantartási időszak alapján.
 - **Sikeres**: A frissítés sikeres volt.
-- **Sikertelen**: A frissítés sikertelen volt.
+- **Nem sikerült**: A frissítés sikertelen volt.
 
 A telepítés által létrehozott összes naplóbejegyzés megtekintéséhez válassza a **Minden napló** elemet.
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753132"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214470"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
 
@@ -40,6 +40,18 @@ Ebben a cikkben megismerkedhet a különböző tevékenységre vonatkozó jelent
 
 - **Azonnal** – Ha már dolgozott a jelentések az Azure Portalon.
 - **2 órán belül** – Ha nem kapcsolta a jelentéskészítés az Azure Portalon.
+
+---
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Hogy mikor is tevékenységek adatainak megtekintéséhez prémium licencre első után?
+
+Ha már rendelkezik az ingyenes licenc tevékenységek adatokat, majd tekintheti meg azonnal a frissítés. Ha nem rendelkezik semmilyen adatot, majd vesz igénybe egy vagy két napot megjelenjen a jelentésekben, prémium licencre történő frissítés után az adatok.
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Ha prémium szintű Azure AD-licenccel is láthatók múlt havi adatokat?
+
+Ha nemrég egy prémium szintű verzió (beleértve a próbaverzió) váltott, látható adatok mentése és 7 nap kezdetben. Amikor gyűlnek az adatok, láthatja a adatok az elmúlt 30 nap során.
 
 ---
 

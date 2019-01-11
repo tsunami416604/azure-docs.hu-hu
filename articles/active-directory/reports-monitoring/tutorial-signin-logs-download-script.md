@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8b9097a62ca4bfa67fb5eb35e06f7834df6691e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 07239e3411bc8df06cdff731343649867b59a3c9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622805"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213094"
 ---
-# <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Oktatóanyag: Hogyan töltse le és parancsfájl használatával jelentkezzen be a naplók elérése
+# <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Oktatóanyag: Töltse le és parancsfájl használatával jelentkezzen be a naplók elérése
 
 Letöltheti a bejelentkezési tevékenységek adatait, ha az Azure Portalon kívül szeretné használni őket. A **letöltése** lehetőség az Azure Portalon hoz létre egy CSV-fájlt a legutóbbi 5000 rekordok. Ha nagyobb rugalmasságot, például egyszerre több mint 5000 rekordok letöltése vagy ütemezett időközönként, a naplók letöltéséhez használhatja az **parancsfájl** adatok letöltése a PowerShell-szkriptet gombra.
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy parancsfájl
 
 szükséged van
 
-* Az Azure Active Directory-bérlő prémium verzió (P1 vagy P2) licenccel. 
+* Az Azure Active Directory-bérlő prémium verzió (P1 vagy P2) licenccel. Vegye figyelembe, hogy a frissítés előtt tevékenységek adatokat nem rendelkezett, ha igénybe vesz néhány nap alatt az adatok megjelennek a jelentések prémium licencre történő frissítés után. 
 * A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó** vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
 * Ha azt szeretné, a Windows 10-es gépen a letöltött szkript futtatásához [beállítva a végrehajtási házirendet és az AzureRM-modul](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 

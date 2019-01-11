@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 519fd063e52d1e202ea76db0fd4be15ebd117cd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001616"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214929"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális gép a portál használatával 
 Ez a cikk bemutatja, hogyan új és meglévő lemez csatlakoztatása Linux rendszerű virtuális gép az Azure Portalon keresztül. Emellett [adatlemez csatolása az Azure Portalon Windows virtuális gép](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan új és meglévő lemez csatlakoztatása Linux rends
 Előtt a virtuális Géphez csatolt lemezek, tekintse át a következő tippeket:
 
 * A virtuális gép méretét szabályozza, hány adatlemez csatolható. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* A Premium storage használatához van szüksége egy DS vagy GS sorozatú virtuális gépet. Ezek a virtuális gépek Premium és standard szintű lemezek is használható. A Premium storage bizonyos régiókban érhető el. További információkért lásd: [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* A Premium storage használatához van szüksége egy DS vagy GS sorozatú virtuális gépet. Ezek a virtuális gépek Premium és standard szintű lemezek is használható. A Premium storage bizonyos régiókban érhető el. További információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * A virtuális gépekhez csatolt lemezek, valójában az Azure-ban tárolt .vhd fájlok. További információkért lásd: [lemezek és virtuális merevlemezek, virtuális gépek](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * A lemez csatolása, miután kell [segítségével csatlakoztassa az új lemezt a Linux rendszerű virtuális gép csatlakozni](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
@@ -96,7 +96,12 @@ A kimenet a következő példához hasonló:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Itt *sdc* a lemezt, amelyet meg szeretnénk. Particionálja a lemezt a `fdisk`legyen egy elsődleges lemez a partíció 1 és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatát */dev/sdc*:
+Itt *sdc* a lemezt, amelyet meg szeretnénk. 
+
+### <a name="partion-a-new-disk"></a>Új lemez partion
+Ha egy meglévő adatokat tartalmazó lemezt használ, akkor ugorjon csatlakoztatni a lemezt. Ha egy új lemezt való csatlakoztatás, akkor particionálja a lemezt.
+
+Használat `fdisk` particionálja a lemezt, hogy legyen egy elsődleges lemez a partíció 1, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatát */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
@@ -176,8 +181,8 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-
-Most hozzon létre egy könyvtárat, a fájl rendszer használatával csatlakoztassa `mkdir`. A következő példában létrehozunk egy könyvtárban található */datadrive*:
+### <a name="mount-the-disk"></a>Csatlakoztassa a lemezt
+Hozzon létre egy könyvtárat a fájl rendszer használatával csatlakoztassa `mkdir`. A következő példában létrehozunk egy könyvtárban található */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
