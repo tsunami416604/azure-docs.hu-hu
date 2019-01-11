@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 84a495274ffadfe816ced21cd095f7a5e18d7f89
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049694"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199544"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -40,9 +40,9 @@ Ha azt szeretné, lépjen a [– az első lépések Mac](service-fabric-get-star
 Ismerkedés a Reliable Services szolgáltatással, akkor csak kell néhány alapvető fogalmak megismerése:
 
 * **Szolgáltatás típusa**: Ez a szolgáltatás megvalósítása. Azt határozza meg az osztályt, írása, amely kibővíti `StatelessService` és más kód vagy függőségeket, egy nevet és a egy verziószámot együtt használni.
-* **Szolgáltatáspéldány nevű**: a szolgáltatás futtatásához hoz létre a típusú szolgáltatás elnevezett példányok sokkal például osztálytípus figyelőobjektum-példányok létrehozása. Szolgáltatás példányai valójában az írást szolgáltatásosztály megvalósításokkal objektum.
-* **Szolgáltatásgazda**: egy gazdagépen belül futtatni kell a megnevezett szolgáltatáspéldányok hoz létre. A szolgáltatásgazda az csak az egy folyamatot, ahol a szolgáltatás példányát futtathatja.
-* **Eszközregisztrációs szolgáltatás**: regisztráció magában foglal minden. A szolgáltatás típusának futtatásához egy gazdagépet a szolgáltatás példányainak, Service Fabric lehetővé teszi a Service Fabric-futtatókörnyezet regisztrálva kell lennie.  
+* **Szolgáltatáspéldány nevű**: A szolgáltatás futtatásához hoz létre a típusú szolgáltatás elnevezett példányok sokkal például osztálytípus figyelőobjektum-példányok létrehozása. Szolgáltatás példányai valójában az írást szolgáltatásosztály megvalósításokkal objektum.
+* **Szolgáltatásgazda**: A nevesített szolgáltatáspéldány létrehozása egy gazdagépen belül futtatnia kell. A szolgáltatásgazda az csak az egy folyamatot, ahol a szolgáltatás példányát futtathatja.
+* **Eszközregisztrációs szolgáltatás**: Regisztrációs magában foglal minden. A szolgáltatás típusának futtatásához egy gazdagépet a szolgáltatás példányainak, Service Fabric lehetővé teszi a Service Fabric-futtatókörnyezet regisztrálva kell lennie.  
 
 ## <a name="create-a-stateless-service"></a>Állapotmentes szolgáltatás létrehozása
 Először hozzon létre egy Service Fabric-alkalmazás. A Linuxhoz készült Service Fabric SDK tartalmaz egy Yeoman generátor át az állapotmentes szolgáltatás a Service Fabric-alkalmazás a keret létrehozásához adjon meg. Indítsa el a következő Yeoman futtatásával parancsot:
@@ -201,7 +201,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) szótár megvalósítása, amely segítségével megbízhatóan tárolja az állapot a szolgáltatásban. A Service Fabric és a megbízható HashMaps adatokat közvetlenül a szolgáltatásban egy külső állandó tároló nélkül tárolhatja. Megbízható HashMaps legyen az adatok magas rendelkezésre állású. A Service Fabric úgy hajtja ezt végre létrehozása és kezelése több *replikák* a szolgáltatás az Ön számára. Egy API, amely a kezelésével járó összetettséget, e replikák és az állapotváltozási adat áramlik kódbázis is tartalmazza.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) szótár megvalósítása, amely segítségével megbízhatóan tárolja az állapot a szolgáltatásban. A Service Fabric és a megbízható HashMaps adatokat közvetlenül a szolgáltatásban egy külső állandó tároló nélkül tárolhatja. Megbízható HashMaps legyen az adatok magas rendelkezésre állású. A Service Fabric úgy hajtja ezt végre létrehozása és kezelése több *replikák* a szolgáltatás az Ön számára. Egy API, amely a kezelésével járó összetettséget, e replikák és az állapotváltozási adat áramlik kódbázis is tartalmazza.
 
 A Reliable Collections képes tárolni bármilyen Java, beleértve az egyéni típusok, mindössze pár korlátozásokkal:
 

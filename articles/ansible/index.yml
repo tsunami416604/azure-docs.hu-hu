@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5e2b31671a8f08bae1cba66e05d6ae72f960cf9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7225fece81672e539858567039e1ff086d97c2c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050931"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197725"
 documentType: LandingData
 title: Ansible az Azure-ban – dokumentáció
 metadata:
@@ -53,6 +53,9 @@ sections:
     - html: <a href="./ansible-deploy-app-vmss">Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban.</a>
     - html: <a href="./ansible-create-configure-aks">Azure Kubernetes Service fürtök létrehozása és kezelése.</a>
     - html: <a href="./ansible-create-configure-application-gateway">Webes forgalom kezelése Azure Application Gateway használatával.</a>
+    - html: <a href="./ansible-auto-scale-vmss">Virtuálisgép-méretezési csoport automatikus méretezése az Azure-ban Ansible használatával.</a>
+    - html: <a href="./ansible-scale-azure-web-apps">Azure App Service-webalkalmazások méretezése az Ansible használatával.</a>
+    - html: <a href="./ansible-create-configure-route-table">Azure-beli útválasztási táblázat létrehozása, módosítása vagy törlése az Ansible használatával.</a>
 - title: Referencia
   items:
   - type: list

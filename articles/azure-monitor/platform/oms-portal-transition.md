@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119214"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214001"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -92,7 +92,7 @@ A riasztási felügyeleti megoldások (riasztás típussal rendelkező rekordok)
 Az OMS mobilalkalmazást lesz sunsetted együtt az OMS-portálon. Helyett az OMS mobilalkalmazást az informatikai infrastruktúra, irányítópultok és mentett lekérdezések eléréséhez keresztül elérhető az Azure Portalon közvetlenül a böngészőből a mobil eszközére. Értesítéseket kaphat, konfigurálnia kell [Azure Action Groups általi](../../azure-monitor/platform/action-groups.md) értesítések fogadásához, SMS vagy hanghívás formájában
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-összekötő és megoldás
-[Application Insights-összekötő](../../azure-monitor/platform/app-insights-connector.md) lehetővé teszi a Belefoglalás az Application Insights-adatok Log Analytics-munkaterület. Az adatdeduplikáció volt szükség infrastruktúra és az alkalmazás adatok láthatóságának engedélyezése. Az adatok megőrzési támogatása a március 2019 kiterjesztett Application Insights és a hajthatnak végre [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md), nem kell az Application Insights-erőforrások adatainak duplikálása, és küldje el a Log Analytics szolgáltatásba. Ezenkívül az összekötő az alkalmazások tulajdonságok egy részének küld a Log Analytics, amíg az erőforrások közötti lekérdezések biztosít, fokozott rugalmasságot biztosít.  
+[Application Insights-összekötő](../../azure-monitor/platform/app-insights-connector.md) lehetővé teszi a Belefoglalás az Application Insights-adatok Log Analytics-munkaterület. Az adatdeduplikáció volt szükség infrastruktúra és az alkalmazás adatok láthatóságának engedélyezése. Az adatok megőrzési támogatása a március 2019 kiterjesztett Application Insights és a hajthatnak végre [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md) mellett [több Azure Monitor az Application Insights-erőforrások megtekintése ](../log-query/unify-app-resource-data.md), nem kell az Application Insights-erőforrások adatainak duplikálása, és küldje el a Log Analytics szolgáltatásba. Ezenkívül az összekötő az alkalmazások tulajdonságok egy részének küld a Log Analytics, amíg az erőforrások közötti lekérdezések biztosít, fokozott rugalmasságot biztosít.  
 
 Ezért Application Insights-összekötő elavult lesz, és törli az Azure Marketplace-ről együtt OMS portál elavulásának a 2019. március 30., míg a meglévő kapcsolatok továbbra is működnek, amíg 2019. június 30. Az OMS-portál elavulásának nincs lehetőség a konfigurálását, és távolítsa el a meglévő kapcsolatok a portálról. Ez támogatott lesz, amely a január 2019 elérhető REST API használatával, és a egy értesítési közzéteszi a rendszer a [Azure-frissítések](https://azure.microsoft.com/updates/). 
 
