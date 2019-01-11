@@ -19,7 +19,7 @@ ms.lasthandoff: 01/11/2019
 ms.locfileid: "54214711"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [Aktuális verzió](transform-data-using-machine-learning.md)
 
