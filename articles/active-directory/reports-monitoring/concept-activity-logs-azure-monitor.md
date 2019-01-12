@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 298d4a7a003963e3466b595243c294679f581346
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b8051ea7f8e7c188e4ed287db626f2a989def619
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582191"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231751"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-tevékenységnaplók az Azure Monitorban (előzetes verzió)
 
@@ -101,37 +101,43 @@ A Log Analytics-munkaterület felügyeletével kapcsolatos költségek áttekint
 
 Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsolatos gyakori kérdéseket válaszolja meg, és ismerteti az ismert problémákat.
 
-**KÉRDÉS: Mely naplók tartoznak?**
+**K: Mely naplók tartoznak?**
 
 **A**: A bejelentkezési tevékenységeket tartalmazó naplók és a vizsgálati naplók mindkét lehetőség elérhető ez a funkció útválasztás Bár a B2C-vel kapcsolatos naplózási eseményeket jelenleg nem szerepelnek. Ha szeretné megtudni, hogy jelenleg milyen naplótípusok és mely szolgáltatásalapú naplók támogatottak, olvassa el [az auditnaplók sémáját](reference-azure-monitor-audit-log-schema.md) és [a bejelentkezési naplók sémáját](reference-azure-monitor-sign-ins-log-schema.md) ismertető cikkeket. 
 
 ---
 
-**KÉRDÉS: Művelet után mennyi idővel a hozzá tartozó naplók jelennek meg az eseményközpont?**
+**K: Művelet után mennyi idővel a hozzá tartozó naplók jelennek meg az eseményközpont?**
 
 **A**: A naplók meg kell jelennie az eseményközpont a művelet elvégzése után 2 – 5 percen belül. Az Event Hubsról a [Mi az Azure Event Hubs?](../../event-hubs/event-hubs-about.md) című cikkben talál további információt.
 
 ---
 
-**KÉRDÉS: Művelet után mennyi idővel a hozzá tartozó naplók megjelennek a storage-fiókomat?**
+**K: Művelet után mennyi idővel a hozzá tartozó naplók megjelennek a storage-fiókomat?**
 
 **A**: Az Azure storage-fiókok esetében a késés az bárhol 5 eszközről 15 perc, a művelet elvégzése után.
 
 ---
 
-**KÉRDÉS: Ez mennyibe kerül tárolja az adataimat?**
+**K: Mi történik, ha egy rendszergazdai módosítja a diagnosztikai beállítást megőrzési időtartama?**
+
+**A**: Az új adatmegőrzési házirend a naplókhoz gyűjtött a váltás után lépnek érvénybe. Összegyűjtött naplók, mielőtt szabályzatának módosítása nem érinti.
+
+---
+
+**K: Ez mennyibe kerül tárolja az adataimat?**
 
 **A**: A tárolási költségeket attól függ, hogy mindkét mérete a naplók és a megőrzési időszak választja. A bérlőkhöz tartozó, a létrehozott naplók mennyiségétől függő hozzávetőleges becsült költségekért lásd a [Tevékenységnaplók tárterületméretéről](#storage-size-for-activity-logs) szóló szakaszt.
 
 ---
 
-**KÉRDÉS: Ez mennyibe kerül az adatokat egy eseményközpontba való?**
+**K: Ez mennyibe kerül az adatokat egy eseményközpontba való?**
 
 **A**: A streamelési költségek percenkénti kapott üzenetek száma függenek. Ez a cikk ismerteti a költségek kiszámításának módját, és felsorolja az üzenetek száma alapján kiszámított költségbecsléseket. 
 
 ---
 
-**KÉRDÉS: Hogyan integrálhatja az Azure AD tevékenységnaplókat az SIEM-rendszeremmel?**
+**K: Hogyan integrálhatja az Azure AD tevékenységnaplókat az SIEM-rendszeremmel?**
 
 **A**: Ezt kétféleképpen teheti meg:
 
@@ -141,25 +147,25 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 ---
 
-**KÉRDÉS: Milyen SIEM eszközöket jelenleg támogatottak?** 
+**K: Milyen SIEM eszközöket jelenleg támogatottak?** 
 
 **A**: Jelenleg az Azure Monitor által támogatott [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar, és [Sumo logikai](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory). Az összekötők működéséről [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ismertető cikkben talál további információt.
 
 ---
 
-**KÉRDÉS: Milyen Azure AD integrálása saját Splunk példánnyal tevékenységeket tartalmazó naplók?**
+**K: Milyen Azure AD integrálása saját Splunk példánnyal tevékenységeket tartalmazó naplók?**
 
 **A**: Először [útvonal az Azure AD-Tevékenységnaplók eseményközpontba](quickstart-azure-monitor-stream-logs-to-event-hub.md), majd hajtsa végre a lépéseket [tevékenységeket tartalmazó naplók integrálása Splunk](tutorial-integrate-activity-logs-with-splunk.md).
 
 ---
 
-**KÉRDÉS: Hogyan integrálhatja az Azure AD Sumo logikával tevékenységeket tartalmazó naplók?** 
+**K: Hogyan integrálhatja az Azure AD Sumo logikával tevékenységeket tartalmazó naplók?** 
 
 **A**: Először [útvonal az Azure AD-Tevékenységnaplók eseményközpontba](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), majd hajtsa végre a lépéseket [telepítse az Azure AD-alkalmazást, és az irányítópultok megtekintése a SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards).
 
 ---
 
-**KÉRDÉS: Érhetem el az adatokat az eseményközpontból külső SIEM eszköz használata nélkül?** 
+**K: Érhetem el az adatokat az eseményközpontból külső SIEM eszköz használata nélkül?** 
 
 **A**: Igen. Az [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
 

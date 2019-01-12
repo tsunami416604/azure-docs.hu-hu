@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 790a8bfed693f03cdadd036cab17eb94dee1c1ed
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: jiahan
+ms.openlocfilehash: 9f53dbd3546fcd3f761338664179b42fce5be200
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119291"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246024"
 ---
 # <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
 *Vonatkozik: Az Azure Stackkel integrált rendszerek.*
 
-Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb. 
+Egy új MySQL erőforrás-szolgáltató adapter előfordulhat, hogy szabadul fel, ha az Azure Stack-buildek frissülnek. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb. 
 
-> [!IMPORTANT]
-> A már kiadott sorrendben frissítéseket telepíteni kell. Verziók nem hagyhatja ki. A verziók listáját lásd [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+A MySQL erőforrás-szolgáltató 1.1.33.0. verzió kiadását kezdve frissítések összesítettek, és nem kell telepíteni a sorrendben, ahol azok jelentek meg; mindaddig, amíg Ön kezdődően 1.1.24.0 verzió vagy újabb verziója. Például ha a MySQL erőforrás-szolgáltató 1.1.24.0 verzióját futtatja, majd frissítheti 1.1.33.0 verzióra, vagy később anélkül, hogy először a 1.1.30.0 verzió telepítése. Tekintse át az elérhető erőforrás-szolgáltató verziói és az Azure Stack támogatottak a verzióját, a verziók listáját [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Frissítés a MySQL erőforrás-szolgáltató adapter (csak az integrált rendszerek)
-
-Azure Stack-buildek frissítésekor előfordulhat, hogy elérhető egy új SQL erőforrás-szolgáltató adapter. A meglévő adapter továbbra is működik, javasoljuk, hogy frissítse a legújabb buildre minél hamarabb.  
- 
 Frissíteni az erőforrás-szolgáltatót használ, a **UpdateMySQLProvider.ps1** parancsfájlt. A folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a folyamat hasonlít a [az erőforrás-szolgáltató üzembe helyezése](#deploy-the-resource-provider) című szakaszát. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi. 
+
+ > [!IMPORTANT]
+ > Az erőforrás-szolgáltató a frissítés előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
+
+## <a name="update-script-processes"></a>Frissítési parancsfájl folyamatok
 
 A **UpdateMySQLProvider.ps1** parancsfájl egy új virtuális Gépet hoz létre az erőforrás-szolgáltató legújabb kódját, és a beállításokat áttelepíti a régi virtuális gépről az új virtuális gépre. A beállításokat, amelyeket át közé tartozik az adatbázis és az üzemeltetési kiszolgáló adatait, és a szükséges DNS-bejegyzést. 
 
@@ -43,7 +43,27 @@ A **UpdateMySQLProvider.ps1** parancsfájl egy új virtuális Gépet hoz létre 
 
 A szkript a DeployMySqlProvider.ps1 parancsfájl ismertetett argumentumokkal használatát igényli. A tanúsítvány itt is biztosítanak.  
 
-Az alábbiakban egy példát a a *UpdateMySQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorban futtathatja. Ügyeljen arra, hogy a fiók- és igény szerint módosíthatja:  
+
+## <a name="update-script-parameters"></a>Parancsprogram paramétereinek frissítése 
+Megadhatja az alábbi paramétereket a parancssorból való futtatásakor a **UpdateMySQLProvider.ps1** PowerShell-parancsfájlt. Ha nem, vagy ha minden paraméter ellenőrzése sikertelen, kéri, hogy adja meg a szükséges paramétereket. 
+
+| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Kötelező_ | 
+| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat az Azure Stack üzembe helyezéséhez használt. | _Kötelező_ | 
+| **VMLocalCredential** |Az SQL-erőforrás-szolgáltató virtuális gép helyi rendszergazdai fiókjának hitelesítő adatait. | _Kötelező_ | 
+| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Kötelező_ | 
+| **AzureEnvironment** | Az Azure-környezethez az Azure Stack üzembe helyezéséhez használt szolgáltatás-rendszergazdai fiókot. Kizárólag az Azure AD központi telepítések esetén szükséges. Támogatott környezeti nevek **AzureCloud**, **AzureUSGovernment**, vagy a China Azure AD-ben való használatakor **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) | 
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Kötelező_ | 
+| **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 | 
+| **RetryDuration** | Az időkorlát között eltelő időt másodpercben mérve. | 120 | 
+| **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és az összes társított erőforrást (lásd az alábbi megjegyzések). | Nem | 
+| **DebugMode** | Megakadályozza, hogy hiba esetén az automatikus tisztítás. | Nem | 
+| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+
+## <a name="update-script-example"></a>Példaszkript frissítése
+Az alábbiakban egy példát a a *UpdateMySQLProvider.ps1* parancsfájl, amely futtatható az emelt szintű PowerShell-konzolon. Ügyeljen arra, hogy szükség szerint változtassa meg a változó adatainak és jelszavak:  
 
 > [!NOTE] 
 > A frissítési folyamat csak integrált rendszerek vonatkozik. 
@@ -92,26 +112,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 -DefaultSSLCertificatePassword $PfxPass ` 
 -DependencyFilesLocalPath $tempDir\cert ` 
 -AcceptLicense 
-``` 
- 
-### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 paraméterek 
-Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy ha minden paraméter ellenőrzése sikertelen, a rendszer kéri, adja meg a szükséges paramétereket. 
-
-| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték | 
-| --- | --- | --- | 
-| **CloudAdminCredential** | A felhő rendszergazdájához, a kiemelt végponthoz eléréséhez szükséges hitelesítő adatait. | _Kötelező_ | 
-| **AzCredential** | Az Azure Stack szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat az Azure Stack üzembe helyezéséhez használt. | _Kötelező_ | 
-| **VMLocalCredential** |Az SQL-erőforrás-szolgáltató virtuális gép helyi rendszergazdai fiókjának hitelesítő adatait. | _Kötelező_ | 
-| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végponthoz DNS-nevét. |  _Kötelező_ | 
-| **AzureEnvironment** | Az Azure-környezethez az Azure Stack üzembe helyezéséhez használt szolgáltatás-rendszergazdai fiókot. Kizárólag az Azure AD központi telepítések esetén szükséges. Támogatott környezeti nevek **AzureCloud**, **AzureUSGovernment**, vagy a China Azure AD-ben való használatakor **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) | 
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Kötelező_ | 
-| **MaxRetryCount** | Többször ismételje meg minden művelet, ha sikertelen egy kívánt száma.| 2 | 
-| **RetryDuration** | Az időkorlát között eltelő időt másodpercben mérve. | 120 | 
-| **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és az összes társított erőforrást (lásd az alábbi megjegyzések). | Nem | 
-| **DebugMode** | Megakadályozza, hogy hiba esetén az automatikus tisztítás. | Nem | 
-| **AcceptLicense** | A rendszer kéri, fogadja el a GPL-licenc kihagyja.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
- 
+```  
 
 ## <a name="next-steps"></a>További lépések
 [MySQL típusú erőforrás-szolgáltató kezelése](azure-stack-mysql-resource-provider-maintain.md)

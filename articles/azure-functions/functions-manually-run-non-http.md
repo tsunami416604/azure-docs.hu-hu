@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406930"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247112"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
@@ -51,19 +51,20 @@ Miután átmásolta a fő kulcsot, kattintson a függvény nevét, térjen vissz
 
 Nyissa meg a Postmant, és kövesse az alábbi lépéseket:
 
-1. Adja meg a **kérnek az URL-címe szövegmezőbe helyet**. 
-2. **Kattintson a** a a **fejlécek** fülre.
-3. Adja meg **x-functions-key** az első is **kulcs** , és illessze be a master key (a vágólapról) a **érték** mezőbe.
-4. Adja meg **Content-Type** , a második **kulcs** , és adja meg **application/json** , a **érték**.
+1. Adja meg a **kérnek az URL-címe szövegmezőbe helyet**.
+2. Ellenőrizze a HTTP-metódus beállítása **POST**.
+3. **Kattintson a** a a **fejlécek** fülre.
+4. Adja meg **x-functions-key** az első is **kulcs** , és illessze be a master key (a vágólapról) a **érték** mezőbe.
+5. Adja meg **Content-Type** , a második **kulcs** , és adja meg **application/json** , a **érték**.
 
     ![Postman-fejlécek beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-5. **Kattintson a** a a **törzs** fülre.
-6. Adja meg **{"bemeneti": "teszt"}** a kérelem törzsében.
+6. **Kattintson a** a a **törzs** fülre.
+7. Adja meg **{"bemeneti": "teszt"}** a kérelem törzsében.
 
     ![Postman-törzs beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-7. Kattintson a **küldése**.
+8. Kattintson a **küldése**.
 
     ![A postman használatával egy kérelem küldése](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 

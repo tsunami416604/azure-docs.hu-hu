@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994946"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247257"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése az Azure App Service-ben
 [Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített monitorozási funkciókat biztosít a webes, mobil háttérrendszerek, és az API-alkalmazások a [az Azure portal](https://portal.azure.com).
@@ -72,7 +72,7 @@ Az alkalmazás a rendelkezésre álló metrikák a következők:
 | Metrika | Leírás |
 | --- | --- |
 | **Átlagos válaszidő** | Az átlagos idő ezredmásodpercben kiszolgálni a kérelmeket, az alkalmazás. |
-| **Átlagos memória-munkakészlet** | Az átlagos mebibytes (MiB) az alkalmazás által használt memória mennyisége. |
+| **Átlagos memória-munkakészlet** | Az átlagos felhasznált memóriamennyiség (MB) (MiB), az alkalmazás által. |
 | **CPU-idő** | Másodpercek alatt az alkalmazás által felhasznált CPU mennyisége. Ez a metrika kapcsolatos további információkért lásd: [idő vs CPU processzorhasználat](#cpu-time-vs-cpu-percentage). |
 | **Az adatok** | Az alkalmazást, a MiB által felhasznált bejövő sávszélesség mennyiségét. |
 | **Kimenő adatforgalom** | Az alkalmazást, a MiB használja fel a kimenő sávszélesség mennyiségét. |
@@ -141,14 +141,12 @@ További információk a metrikákról, lásd: [Monitorozza a szolgáltatások m
 ## <a name="alerts-and-autoscale"></a>Riasztások és az automatikus méretezés
 Egy alkalmazás vagy az App Service-csomag metrikáinak riasztásokat is lehet csatolja. További információ: [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Riasztások fogadása).
 
-App Service-ben a Basic, Standard vagy prémium szintű App Service-ben csomagok támogatási automatikus skálázási üzemeltetett alkalmazások. Az Automatikus méretezéssel beállíthatja a szabályokat, amelyek az App Service-csomag metrikái figyelése. Szabályok növelheti vagy csökkentheti a példányok száma, ami lehetővé teszi további erőforrások, igény szerint. Szabályok segítségével pénzt takaríthat meg, ha az alkalmazás fölösleges van kiépítve. 
+App Service-ben a Basic, Standard vagy prémium szintű App Service-ben csomagok támogatási automatikus skálázási üzemeltetett alkalmazások. Az Automatikus méretezéssel beállíthatja a szabályokat, amelyek az App Service-csomag metrikái figyelése. Szabályok növelheti vagy csökkentheti a példányok száma, ami lehetővé teszi további erőforrások, igény szerint. Szabályok segítségével pénzt takaríthat meg, ha az alkalmazás fölösleges van kiépítve.
 
 Automatikus skálázási kapcsolatos további információkért lásd: [méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md) és [ajánlott eljárások az Azure Monitor automatikus skálázásához](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
-
-
 
 <!-- Images. -->
 [http403]: ./media/web-sites-monitor/http403.png

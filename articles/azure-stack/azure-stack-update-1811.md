@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214589"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247622"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -40,9 +40,9 @@ Az Azure Stack 1811 frissítés buildszáma **1.1811.0.101**.
 Az Azure Stack rendszeresen gyorsjavításait. Ne felejtse el telepíteni a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) a 1809 1811 Azure Stack frissítése előtt.
 
 > [!TIP]  
-> Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:
-> - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
-> - Az Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
+> Fizessen elő a következő *RSS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:
+> - [AZ RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Az Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Az Azure Stack-gyorsjavítások
 
@@ -162,7 +162,7 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
 
 - A BitLocker helyreállítási kulcsok lekéréséhez a meglévő EGP parancsmag 1811, a Get-AzsCsvsRecoveryKeys a Get-AzsRecoveryKeys átnevezése. A BitLocker helyreállítási kulcsok lekéréséhez, hogy miként további információkért lásd: [útmutatást nyújt a kulcsok lekéréséhez](azure-stack-security-bitlocker.md).
 
-## <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
+## <a name="common-vulnerabilities-and-exposures"></a>Gyakori biztonsági rések és besorolási
 
 Ez a frissítés a következő biztonsági frissítéseket telepíti:  
 
@@ -260,6 +260,8 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
 
    A hiba akkor fordul elő, ha a virtuális gép rendszerindítási diagnosztika engedélyezése, de a rendszerindítás-diagnosztikai tárfiók törlése. A probléma megkerüléséhez hozza létre újból a tárfiókot, a korábban használt azonos néven.
+
+- Létrehozásakor egy [Dv2 sorozatú virtuális gépek](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 virtuális gépek hozhatók létre 4, 8, 16 és 32 adatlemezek jelölik. Azonban a create VM panelen látható, 8, 16, 32 és 64 adatlemez.
 
 <!-- 3235634 – IS, ASDK -->
 - Virtuális gépek telepítéséhez tartalmazó méretű egy **v2** utótag; például **Standard_A2_v2**, adja meg, mint az utótag **Standard_A2_v2** (kis v). Ne használjon **Standard_A2_V2** (nagybetűs V). Ez a globális Azure-ban működik, és az Azure Stacken inkonzisztencia.

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.reviewer: unknown
+ms.openlocfilehash: 754a0002aca52462910abe50825cff0254a7068f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127482"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244154"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Az Azure Stackben szolgáltatásajánlások áttekintése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 [A Microsoft Azure Stack](azure-stack-poc.md) egy hibrid felhőplatform, amely lehetővé teszi szolgáltatások továbbítására az adatközpontból. Szolgáltatóként a szolgáltatások elérhetővé teheti a bérlők számára. Egy adott üzleti vagy kormányzati szerv helyszíni szolgáltatások elérhetővé teheti az alkalmazottak. 
 
@@ -47,11 +47,11 @@ Ezek a szolgáltatások biztosításához, a felhasználók számára, létre ke
 
 Ha tervezi az ajánlatok, vegye figyelembe a következőket:
 
-**Próbaverziós**: próbaverziós segítségével szerezzen új felhasználók, akik további szolgáltatásokat, majd frissítheti. A próbaverziós ajánlat, hozzon létre egy kis [ALAPCSOMAG](azure-stack-plan-offer-quota-overview.md#base-plan) és a egy választható nagyobb kiegészítő csomag.
+**Próbaverziós**: Próbaverziós segítségével szerezzen új felhasználók, akik további szolgáltatásokat, majd frissítheti. A próbaverziós ajánlat, hozzon létre egy kis [ALAPCSOMAG](azure-stack-plan-offer-quota-overview.md#base-plan) és a egy választható nagyobb kiegészítő csomag.
 
-**Kapacitástervezés**: Előfordulhat, hogy a felhasználók, erőforrások és a rendszer az összes felhasználó eltömődés nagy mennyiségű helyezésre. Teljesítmény érdekében is [konfigurálása a csomagok kvótái](azure-stack-plan-offer-quota-overview.md#plans) maximális kihasználtsága.
+**Kapacitástervezés**: Előfordulhat, hogy az érintett felhasználókkal, erőforrások és a rendszer az összes felhasználó eltömődés nagy mennyiségű helyezésre. Teljesítmény érdekében is [konfigurálása a csomagok kvótái](azure-stack-plan-offer-quota-overview.md#plans) maximális kihasználtsága.
 
-**Delegált szolgáltatók**: mások biztosítani képes létrehozni az ajánlatok a környezetben. Például ha Ön a szolgáltató, akkor [delegálása](azure-stack-delegated-provider.md) a viszonteladók ezt a lehetőséget. Vagy, ha egy szervezet, delegálhatja más szakaszainak körvonalszínét leányvállalatai.
+**Delegált szolgáltatók**: Mások képes létrehozni kínál biztosíthat a környezetben. Például ha Ön a szolgáltató, akkor [delegálása](azure-stack-delegated-provider.md) a viszonteladók ezt a lehetőséget. Vagy, ha egy szervezet, delegálhatja más szakaszainak körvonalszínét leányvállalatai.
 
 ## <a name="next-steps"></a>További lépések
 

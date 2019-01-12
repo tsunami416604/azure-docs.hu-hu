@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 1f93a186db7685f7e4e159ae1796c4287de74373
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b46539758d88fe7a0e27799b5da581255fa5f075
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213058"
+ms.locfileid: "54229332"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances szolgáltatásban
 
@@ -134,7 +134,7 @@ A `identity` hasonlít a kimeneti szakaszának a következőhöz megjelenítése
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Felhasználó által hozzárendelt identitás-hozzáférési jogot a Key Vault
 
-Futtassa a következő [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)(/ cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot a Key Vault hozzáférési házirend beállítása. Az alábbi példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vault titkos kódok lekéréséhez:
+Futtassa a következő [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot egy hozzáférési házirendet a Key vaulttal. Az alábbi példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vault titkos kódok lekéréséhez:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971716"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243678"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Fedezze fel, és a minta notebookok használata
 
@@ -33,7 +33,7 @@ Ismerje meg, szeretné jegyzetfüzet azonosítása, után az alábbiakban néhá
 
 - [Azure notebookok alapszintű készlet](https://notebooks.azure.com/#sample-redirect) tartalmazza a Python, R, tudnivalókra és F#, bemutatásához az adatok elérése, az Azure Machine Learning-szolgáltatások és néhány data science gyakorlatok notebookok együtt.
 - [Bevezetés a Jupyter notebookok](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Bevezetés a Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) Jake Vanderplas szerint.
+- [Bevezetés a Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) Jake Vanderplas szerint.
 - [Érdekes notebookok galériája](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projekt a Githubon)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Az utasítás-fizika a [fizika részleg Londonban angolszász College](https://notebooks.azure.com/cvanbreu/libraries)

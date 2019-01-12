@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6d6a06af90c02dee0a7711d7362d0604018cb4a5
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043039"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246585"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
@@ -33,15 +33,15 @@ Az Azure AD önkiszolgáló jelszó-visszaállítás van licenccel rendelkezniü
 * Önkiszolgáló jelszóátállítás felhőfelhasználók számára
    * Én vagyok egy **csak felhőalapú felhasználói** és elfelejtette a jelszót.
       * Szeretném, ha **alaphelyzetbe** valami tudom a jelszavam.
-   * Ez a funkció az alapszintű Azure AD, prémium P1 vagy P2 kiadás része.
+   * Ez a funkció az Azure AD alapszintű, prémium P1 vagy P2 vagy a Microsoft 365 vállalati tartalmazza.
 
 * Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás **a helyszíni visszaírással**
    * Én vagyok egy **hibrid felhasználói** saját helyszíni Active Directory felhasználói fiók szinkronizálva van az Azure AD-fiókot az Azure AD Connect használatával. Szeretnék saját jelszó módosítása, elfelejti a jelszót, vagy zárolva lett.
       * Szeretném, ha a jelszó módosítása vagy visszaállítása, valami I ismeri, vagy saját fiók feloldása **és** , hogy szinkronizálja vissza módosítása a helyi Active Directoryban.
-   * Ez a funkció Azure AD Premium P1 vagy Premium P2 kiadás tartalmazza.
+   * Ez a funkció Azure AD Premium P1 vagy P2, vagy a Microsoft 365 vállalati tartalmazza.
 
 > [!WARNING]
-> Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* és szükség van egy csomagra, amely tartalmazza az Azure AD Premium P1, vagy az ezt a funkciót a Premium P2 kiadás működik.
+> Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* és szükség van egy csomagra, amely tartalmazza ennek az Azure AD Premium P1, prémium P2 szintű vagy a Microsoft 365 vállalati a funkció működéséhez.
 >
 
 További licencelési információk, beleértve a költségek, a következő lapokon található:
@@ -50,6 +50,7 @@ További licencelési információk, beleértve a költségek, a következő lap
 * [Az Azure Active Directory funkciók és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
+* [A Microsoft 365 vállalati szolgáltatás leírása](/office365/servicedescriptions/microsoft-365-business-service-description.md)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Engedélyezze a csoport- vagy felhasználói alapú licencelése
 

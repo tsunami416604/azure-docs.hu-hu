@@ -1,6 +1,6 @@
 ---
-title: Az Azure biztonsági MVP Program |} Microsoft Docs
-description: A cikk áttekintést nyújt az Azure biztonsági hozzájárulás terület az MVP program.
+title: Azure biztonsági MVP Program |} A Microsoft Docs
+description: A cikk az Azure Security közreműködői területet az MVP Program áttekintése.
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,23 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: ebe6a6ffec094d535ec38d471ff6036b7379fcb8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5329dcaeb20087412a693d3ebef935fafd6a2b7d
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180742"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246041"
 ---
-# <a name="azure-security-mvp-program"></a>Az Azure biztonsági MVP Program
+# <a name="azure-security-mvp-program"></a>Azure biztonsági MVP Program
 
-Microsoft legtöbb értékes szakemberek (MVP) közösségi vezetők, akik segítséget nyújt a mások használja a Microsoft-technológiák a használatát ki a következő kötelezettséget mutat. A közösségi és a Microsoft a golgotavirág valós tudásuk és technikai segítséget osztoznak.
+Microsoft Most Valuable Professionals (MVP) közösségi vezetőktől kérdezhet, akik segítenek másokat büntetés kötelezettséget mutat. MVP-k engedélyezése másoknak a legtöbbet Microsoft-technológiák szerzett tapasztalataikról. A Közösséggel, és a Microsoft saját szenvedélyét, való életből vett ismeretek és technikai szakértelmet osztoznak.
 
-A Microsoft Azure jelenleg az Azure biztonsági ismer fel közösségi szakértők különleges szakértői. A Microsoft Azure az Azure biztonsági hozzájárulás területen MVP is Microsoft MVPs oda.
+Microsoft Azure jelenleg az Azure security ismer fel speciális szakértelmet Közösség szakembereivel. Az Azure Security közreműködői területén a Microsoft Azure-ban az MVP is Microsoft MVPs oda.
 
-![Microsoft MVP](./media/azure-security-mvp/azure-security-mvp-fig1.png)
+![A Microsoft MVP](./media/azure-security-mvp/azure-security-mvp-fig1.png)
 
-Során van egy MVP részben csatlakozás, mert ez függ a technológia nem javasolt, és életciklus-, a feltételek közül néhány magában foglalja a Microsoft Answers, a TechNet és az MSDN; például online fórumok egy kijelölt személy hozzájárulások gyakorolt hatása wikikre és online tartalom; Konferencia- és felhasználói csoportok; podcastok, webhelyek, blogok és közösségi; és a cikkek és -könyvekkel.
+Nincs az MVP váljon a teljesítményteszt van. Ennek oka az egészben, eltérő technológia és élettartama során. A feltételek közül néhány a következőket tartalmazza:
 
-Az Azure biztonsági szakértő folytatja? Tudja, aki? Majd [jelöl ki a saját magának vagy valaki más](https://mvp.microsoft.com/Nomination/nominate-an-mvp) legyen, az Azure biztonsági MVP ma!
+- A hatás egy kijelölt személy közreműködések, például a Microsoft Answers, TechNet és MSDN online fórumok
+- Wikit és online tartalom
+- Konferenciákon, és felhasználói csoportok
+- Podcastok, webhelyek, blogok és közösségi média
+- Cikkek és könyveket.
+
+Az Azure biztonsági szakértői Ön? Tudta, hogy valaki, aki? Majd [jelöl ki a saját magának vagy valaki más](https://mvp.microsoft.com/Nomination/nominate-an-mvp) az Azure biztonsági MVP válik még ma!

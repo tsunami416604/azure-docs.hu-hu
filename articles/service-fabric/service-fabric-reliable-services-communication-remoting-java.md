@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eb991df64f0454fa6103c9104e5c0e9991503a43
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 686d736798a4d949e3590d988f399d7da82d4fee
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198269"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231988"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Java Reliable Services és a szolgáltatás távelérésének lehetővé tétele
 > [!div class="op_single_selector"]
@@ -91,8 +91,8 @@ A távoli eljáráshívás keretrendszer tölti ki az ügyfélnek a szolgáltat�
 ServiceProxy létrehozása egy könnyen használható művelet, így annyi igény szerint hozhat létre. Szolgáltatási Proxy példányok felhasználhatók, amennyiben azok szükségesek. A távoli eljáráshívás kivételt jelez, ha továbbra is felhasználhatja a proxy-példányt. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. Vzdálená volání meghívása, során annak megállapításához, hogy a kommunikáció ügyfél érvényes belső ellenőrzések elvégzése. Ezen ellenőrzés eredménye alapján a szükség esetén újból a a kommunikációt ügyfél. Ezért, ha kivétel történik, akkor nem kell hozza létre újra `ServiceProxy`.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory Lifetime
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabric_service_proxy_factory) van egy másik távoli eljáráshívás adapterek proxy létrehozó gyári. Ha az API-val `ServiceProxyBase.create` proxy létrehozására, majd keretrendszer létrehoz egy `FabricServiceProxyFactory`.
-Akkor hasznos, hozzon létre egyet manuálisan Ha felül kell bírálnia [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.service_remoting_client_factory) tulajdonságait.
+[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) van egy másik távoli eljáráshívás adapterek proxy létrehozó gyári. Ha az API-val `ServiceProxyBase.create` proxy létrehozására, majd keretrendszer létrehoz egy `FabricServiceProxyFactory`.
+Akkor hasznos, hozzon létre egyet manuálisan Ha felül kell bírálnia [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) tulajdonságait.
 Gyári drága művelet. `FabricServiceProxyFactory` gyorsítótár-ügyfelek kommunikációt kezeli.
 Ajánlott eljárás, hogy a gyorsítótár `FabricServiceProxyFactory` , amíg.
 
@@ -102,7 +102,8 @@ A távoli kivétel szolgáltatás API-ja által okozott RuntimeException vagy Fa
 ServiceProxy kezeli a szolgáltatás-partíció létrehozása az összes feladatátvételi kivétel. Ha feladatátvételi Exceptions(Non-Transient Exceptions) újra megoldja a végpontok és a hívást a megfelelő végpontra való próbálkozások. A feladatátvételi kivétel újrapróbálkozások számát kötelező befejezésére való határozatlan idejű.
 TransientExceptions, esetén csak újrapróbálkozik a hívást.
 
-Alapértelmezett újrapróbálkozási paraméterei a következők szerint [OperationRetrySettings] paramétert. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operation_retry_settings) OperationRetrySettings objektum ServiceProxyFactory konstruktorának való átadásával konfigurálhatja ezeket az értékeket.
+Alapértelmezett újrapróbálkozási paraméterek a következők szerint paramétert [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+Ezeket az értékeket konfigurálhatja OperationRetrySettings objektum ServiceProxyFactory konstruktorának való átadásával.
 
 ## <a name="next-steps"></a>További lépések
 * [Kommunikáció a Reliable Services](service-fabric-reliable-services-secure-communication-java.md)

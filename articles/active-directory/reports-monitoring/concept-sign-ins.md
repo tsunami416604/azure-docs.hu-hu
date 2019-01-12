@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d322a0027f786be0603e7147eb3ba24341dd7fbf
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214861"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245089"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -233,6 +233,12 @@ Az alkalmazáshasználati grafikon egyik napjára kattintva részletes listát k
 A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési eseményének teljes körű áttekintését biztosítja.
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/11.png "Sign-in activity")
+
+## <a name="office-365-activity-logs"></a>Az Office 365-Tevékenységnaplók
+
+Az Office 365-Tevékenységnaplók is megtekintheti a [Office 365 felügyeleti központ](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Annak ellenére, hogy az Office 365-Tevékenységnaplók és az Azure AD tevékenység naplók a könyvtár-erőforrások jelentős részén osztoznak, csak az Office 365 felügyeleti központban az Office 365-Tevékenységnaplók teljes nézetét jeleníti meg. 
+
+Az Office 365 tevékenységeket tartalmazó naplók programozott módon használatával is elérheti a [Office 365 felügyeleti API-k](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139686"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243882"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő törlése
+
 A bérlő törlése esetén a bérlőn található összes erőforrás is törlődik. Elő kell készítenie a bérlő törlése előtt az összes kapcsolódó erőforrás termékeikkel. Csak egy Azure Active Directory (Azure AD) globális rendszergazda törölheti az Azure AD-bérlő a portálról.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>A bérlő előkészítése törléshez
@@ -59,17 +60,17 @@ Előfizetés állapota | Adatok | Adatokhoz való hozzáférés
 Aktív (próbaverzió 30 nap)  | Az összes elérhető adat    | <li>Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<li>Rendszergazdák rendelkeznek Office 365 felügyeleti központ és az erőforrásokhoz való hozzáférési 
 Lejárt (30 nap)   | Az összes elérhető adat    | <li>Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<li>Rendszergazdák rendelkeznek Office 365 felügyeleti központ és az erőforrásokhoz való hozzáférési
 Le van tiltva (30 nap) | Csak rendszergazda számára elérhető adatok  | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák az Office 365 felügyeleti központ eléréséhez, de nem szükséges licencek kiosztása vagy felhasználók frissítése
-Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más szolgáltatások is automatikusan törölve) | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák hozzáférhetnek az Office 365 felügyeleti központban vásárolhat és más előfizetések kezelése 
+Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más szolgáltatások is automatikusan törölve) | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák hozzáférhetnek az Office 365 felügyeleti központban vásárolhat és más előfizetések kezelése
 
 Az előfizetés helyezheti egy **Deprovisoned** állapot használatával a Microsoft Store for Business felügyeleti központban 3 nap múlva törlődnek. Ez a funkció hamarosan elérhető lesz az Office 365 felügyeleti központban.
 
 1. Jelentkezzen be a [Microsoft Store for Business felügyeleti központban](https://businessstore.microsoft.com/manage/) egy olyan fiókkal, amely a bérlő globális rendszergazdája lesz. Ha a "Contoso" bérlőt, amelyhez a contoso.onmicrosoft.com-ot a kezdeti alapértelmezett tartomány törölni próbál, jelentkezzen be egy egyszerű felhasználónév például admin@contoso.onmicrosoft.com.
 
-2. Nyissa meg a **kezelés** lapot, és válasszon **termékek és szolgáltatások**, majd válassza ki az előfizetést, szeretné visszavonni. Miután rákattintott **Mégse**, frissítse az oldalt.
+2. Nyissa meg a **kezelés** lapra, és válassza **termékek és szolgáltatások**, majd válassza ki az előfizetést, szakítsa meg és válassza ki a kívánt **törlése**.
   
   ![Előfizetés törlése a hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
   
-3. Válassza ki **törlése** törölni az előfizetést, és fogadja el a feltételeket és kikötéseket. Minden adat véglegesen törlődik három napon belül. Ha megváltoztatja döntését újraaktiválhatja az előfizetés a 3 napos időszakban.
+3. Válassza ki **előfizetés törlése** fogadja el a feltételeket és kikötéseket, és törölni az előfizetést. Összes adat véglegesen törlődik a három napon belül. Ha meggondolja magát az előfizetés a következő három napban újraaktiválhatja.
   
   ![feltételek és kikötések](./media/directory-delete-howto/delete-terms.png)
 

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 57624133b249a8ec2ece90eac4a64729e4d15151
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: anajod
+ms.openlocfilehash: d2bdb351b72c9280a223381b62c01fff7ca5ca00
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968203"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244732"
 ---
-# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: Több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral
+# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ismerje meg, hogyan hozhat létre a több felhőre kiterjedő megoldásokat biztosít egy manuálisan aktivált folyamatot az Azure Stackkel való váltás futtatott webalkalmazás, egy Azure-ban üzemeltetett web Apps és az automatikus skálázást annak biztosítása, rugalmas és skálázható felhőalapú segédprogram terhelés alatt, a traffic manager-n keresztül.
 
@@ -273,7 +273,7 @@ Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microso
 
 #### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Önálló webes alkalmazás üzembe helyezése az App Services létrehozása az mindkét felhőben
 
-1.  Szerkessze a **WebApplication.csproj** fájlt: válassza ki **Runtimeidentifier** majd adja hozzá a win10-x64. További információkért lásd: [önálló telepítés](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációját.
+1.  Szerkessze a **WebApplication.csproj** fájlt: Válassza ki **Runtimeidentifier** majd adja hozzá a win10-x64. További információkért lásd: [önálló telepítés](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentációját.
 
 2.  Ellenőrizze a kódot az Azure-kódtárak a Team Explorer használatával.
 

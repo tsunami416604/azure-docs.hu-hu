@@ -1,5 +1,5 @@
 ---
-title: Az Azure Portalon az Azure Search – az indexek lekérdezése a keresési ablak
+title: Az Azure portal – Azure Search adatok lekérdezése a keresési explorer eszköz
 description: Az Azure portal-eszközök például a keresési ablak a lekérdezés indexek használata az Azure Search szolgáltatásban. Adja meg a keresési kifejezéseket, vagy teljesen minősített keresőkifejezések speciális szintaxissal.
 manager: cgronlun
 author: HeidiSteen
@@ -9,48 +9,25 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2aa372d1f917608de753007cc75ab0d608cafbba
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85e574a56380384b10d0916385a8816fd26c2eeb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188725"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244800"
 ---
-# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Az Azure Search lekérdezési indexeket a keresési ablak használatával 
+# <a name="search-explorer-for-querying-data-in-azure-search"></a>Az Azure Search adatok lekérdezése a keresési ablak 
 
-Ez a cikk bemutatja, hogyan kérdezhet le egy meglévő Azure Search-indexeket a **keresési ablak** az Azure Portalon. A keresési ablak használatával nyújt egyszerű vagy teljes Lucene lekérdezési karakterláncokat küldhet bármely meglévő index a szolgáltatásban.
-
-## <a name="start-search-explorer"></a>Indítsa el a keresési ablak
-
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a search szolgáltatás oldalát az irányítópultról vagy [keresse meg a szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a szolgáltatások listájában.
-
-2. A szolgáltatás áttekintés oldalán kattintson **keresési ablak**.
+Ez a cikk bemutatja, hogyan kérdezhet le egy meglévő Azure Search-indexeket a **keresési ablak** az Azure Portalon. A keresési ablak használatával nyújt egyszerű vagy teljes Lucene lekérdezési karakterláncokat küldhet bármely meglévő index a szolgáltatásban. 
 
    ![Keresési ablak parancs portálon](./media/search-explorer/search-explorer-cmd2.png "keresési ablak parancs portálon")
 
-3. Válassza ki az indexet, lekérdezéséhez.
 
-   ![Válassza ki az indexet a lekérdezés](./media/search-explorer/search-explorer-changeindex-se2.png "válassza ki az indexet")
-
-4. Beállíthatja az API-verziót. Alapértelmezés szerint az aktuális általánosan elérhető API-verziót választja, de választhat egy előzetes verziójú vagy régebbi API, ha használni szeretné a szintaxist verzióspecifikus.
-
-5. Miután az index és API-verzió van jelölve, adja meg a keresési kifejezéseket, vagy teljesen minősített lekérdezési kifejezések a keresősávba, és kattintson a **keresési** végrehajtásához.
-
-   ![Írjon be keresési kifejezéseket, és kattintson a Keresés](./media/search-explorer/search-explorer-query-string-example.png "Enter keresési feltételeit, és kattintson a Keresés gombra")
-
-Tippek a kereséshez **keresési ablak**:
-
-+ A rendszer eredményeket ad a részletes JSON-dokumentumok formájában, hogy a dokumentum szerkezeti és a tartalom, megtekintheti az teljes egészében. Lekérdezési kifejezések, mely mezők visszaadott korlátot, a példákban szemléltetett módon használhatja.
-
-+ Dokumentumok épülnek fel, minden mező megjelölve **lekérhető** az indexben. A portálon az indexattribútumok megtekintéséhez, kattintson a *realestate-us-sample* a a **indexek** a keresési áttekintése lapon lévő listából.
-
-+ Szabad formátumú lekérdezéseket, hasonlóan egy kereskedelmi webböngészőben, előfordulhat, hogy meg egy végfelhasználói élmény teszteléséhez hasznos. Például ha a beépített minta ingatlanindex, "Bérbe lake Washington állambeli Seattle" adja meg, és ezután használja a Ctrl-F használati feltételeket a keresési eredmények között található. 
-
-+ Az Azure Search által támogatott szintaxist kell kell csuklós lekérdezési és szűrési kifejezésekben. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de lehetősége van [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) hatékonyabb lekérdezések. [Szűrés kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData-szűrőszintaxis vannak.
+Az első lépésekhez segítséget talál [indítsa el a keresési ablak](#start-search-explorer).
 
 ## <a name="basic-search-strings"></a>Alapszintű keresőkifejezések
 
-A következő példák azt feltételezik, hogy a beépített minta ingatlanindex. Ez az index létrehozásához további információkért lásd: [a rövid útmutató: Importálás, index és lekérdezése az Azure Portalon](search-get-started-portal.md).
+A következő példák azt feltételezik, hogy a beépített minta ingatlanindex. Ez az index létrehozását lásd [a rövid útmutató: Importálás, index és lekérdezése az Azure Portalon](search-get-started-portal.md).
 
 ### <a name="example-1---empty-search"></a>1. példa – üres keresés
 
@@ -128,6 +105,37 @@ Adjon hozzá **$orderby** kattintva rendezheti az eredményeket a keresési pont
    ![OrderBy kifejezés](./media/search-explorer/search-explorer-example-ordery.png "a rendezési sorrend módosítása")
 
 Mindkét **$filter** és **$orderby** kifejezések OData építmények. További információk: [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+
+<a name="start-search-explorer"></a>
+
+## <a name="how-to-start-search-explorer"></a>A keresési ablak elindítása
+
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a search szolgáltatás oldalát az irányítópultról vagy [keresse meg a szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a szolgáltatások listájában.
+
+2. A szolgáltatás áttekintés oldalán kattintson **keresési ablak**.
+
+   ![Keresési ablak parancs portálon](./media/search-explorer/search-explorer-cmd2.png "keresési ablak parancs portálon")
+
+3. Válassza ki az indexet, lekérdezéséhez.
+
+   ![Válassza ki az indexet a lekérdezés](./media/search-explorer/search-explorer-changeindex-se2.png "válassza ki az indexet")
+
+4. Beállíthatja az API-verziót. Alapértelmezés szerint az aktuális általánosan elérhető API-verziót választja, de választhat egy előzetes verziójú vagy régebbi API, ha használni szeretné a szintaxist verzióspecifikus.
+
+5. Miután az index és API-verzió van jelölve, adja meg a keresési kifejezéseket, vagy teljesen minősített lekérdezési kifejezések a keresősávba, és kattintson a **keresési** végrehajtásához.
+
+   ![Írjon be keresési kifejezéseket, és kattintson a Keresés](./media/search-explorer/search-explorer-query-string-example.png "Enter keresési feltételeit, és kattintson a Keresés gombra")
+
+Tippek a kereséshez **keresési ablak**:
+
++ A rendszer eredményeket ad a részletes JSON-dokumentumok formájában, hogy a dokumentum szerkezeti és a tartalom, megtekintheti az teljes egészében. Lekérdezési kifejezések, mely mezők visszaadott korlátot, a példákban szemléltetett módon használhatja.
+
++ Dokumentumok épülnek fel, minden mező megjelölve **lekérhető** az indexben. A portálon az indexattribútumok megtekintéséhez, kattintson a *realestate-us-sample* a a **indexek** a keresési áttekintése lapon lévő listából.
+
++ Szabad formátumú lekérdezéseket, hasonlóan egy kereskedelmi webböngészőben, előfordulhat, hogy meg egy végfelhasználói élmény teszteléséhez hasznos. Például ha a beépített minta ingatlanindex, "Bérbe lake Washington állambeli Seattle" adja meg, és ezután használja a Ctrl-F használati feltételeket a keresési eredmények között található. 
+
++ Az Azure Search által támogatott szintaxist kell kell csuklós lekérdezési és szűrési kifejezésekben. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de lehetősége van [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) hatékonyabb lekérdezések. [Szűrés kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData-szűrőszintaxis vannak.
+
 
 ## <a name="next-steps"></a>További lépések
 

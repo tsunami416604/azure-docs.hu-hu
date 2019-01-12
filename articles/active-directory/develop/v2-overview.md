@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88904b27e114c27dc7b1051c755d3c831c90554f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286690"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232469"
 ---
 # <a name="about-v20"></a>A 2.0-s verzió bemutatása
 
@@ -30,13 +30,13 @@ A 2.0-s verziójú végpont és platform eddig előzetes verzióban voltak elér
 > [!NOTE]
 > Az MSAL Android-, iOS- és .NET-alapú verzióinak bizonyos funkciói továbbra is fejlesztés alatt állnak. Ezeket is használhatja alkalmazások létrehozásához, majd visszajelzéseket küldhet nekünk.
 
-Az Azure Portal fejlesztői élménye jelentősen frissült: mostantól az összes, ADAL vagy MSAL használatával készült alkalmazást tartalmazza, és könnyebben használható.
+Az Azure Portalon [alkalmazásregisztrációk (előzetes verzió)](quickstart-register-app.md) élmény jelentősen frissült, mostantól tartalmazza az összes, az adal-t vagy az MSAL használatával készült alkalmazásokat, és a használhatóság javítása érdekében.
 
 Korábban, ha a fejlesztők azt akarták, hogy az alkalmazásuk a személyes Microsoft-fiókokat és a munkahelyi Azure Active Directory (Azure AD)-fiókokat is, akkor ehhez két külön rendszert kellett integrálniuk. A 2.0-s verziójú végpont és platform egy olyan hitelesítési API-verziót biztosít, amely leegyszerűsíti ezt a folyamatot. Egyetlen integrációval lehetővé teszi a bejelentkezést mindkét fajta fiók használatával. A 2.0-s végpontot használó alkalmazások [Microsoft Graph API](https://developer.microsoft.com/graph) REST API-jait is használhatják bármelyik típusú fiókkal.
 
 ## <a name="getting-started"></a>Első lépések
 
-Válassza ki a kedvenc platformját az alábbi listából, és hozzon létre egy alkalmazást a Microsoft nyílt forráskódtáraival és keretrendszereivel. Az OAuth 2.0 és az OpenID Connect protokollt is használhatja protokollüzenetek közvetlen küldéséhez és fogadásához, hitelesítési kódtár használata nélkül.
+Válassza ki kedvenc platformjának használatával a Microsoft egy olyan alkalmazás létrehozásához az alábbi listáról nyissa meg a forrás-kódtárai és keretrendszerei:
 
 [!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
 
@@ -46,14 +46,12 @@ Ismerkedjen meg részletesebben az Azure AD 2.0-s verziójú végpont által kí
 
 * Ismerje meg, [milyen típusú alkalmazásokat hozhat létre az Azure AD 2.0-s verziójú végponttal](v2-app-types.md).
 * Ismerje meg az Azure AD 2.0-s verziójú végpont [korlátozásait és megkötéseit](active-directory-v2-limitations.md).
-* Tekintse meg ezt a videót az Azure AD 2.0-s verziójú végpont áttekintéséhez:
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
 
 ## <a name="additional-resources"></a>További források
 
 Részletes információk a 2.0-s verzióról:
 
+* [Tudnivalók a Microsoft identity platform](about-microsoft-identity-platform.md)
 * [A 2.0-s verzió protokolljainak referenciája](active-directory-v2-protocols.md)
 * [Hozzáférési jogkivonatok referenciája](access-tokens.md)
 * [Azonosító jogkivonatok referenciája](id-tokens.md)

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549632"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232889"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -65,7 +65,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ProcessingPoolIdleIOJobThreads|Szálak: Feldolgozási készlet – üresjárati i/o feladat szálak|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatok üresjárati szálak száma.|ServerResourceType|
 |ProcessingPoolIdleNonIOThreads|Szálak: Feldolgozási készlet a nem I/o feladat üresjárati szálai|Darabszám|Átlag|A feldolgozási szálkészletben nem I/o feladatok számára kijelölt üresjárati szálak száma.|ServerResourceType|
 |QueryPoolIdleThreads|Szálak: Lekérdezési készlet – üresjárati szálak|Darabszám|Átlag|A feldolgozási szálkészletben I/O feladatok üresjárati szálak száma.|ServerResourceType|
-|QueryPoolJobQueueLength|Szálak: Lekérdezési készlet – feladat üzenetsorának hossza|Darabszám|Átlag|Az a lekérdezési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
+|QueryPoolJobQueueLength|Szálak: Lekérdezési készlet feladat-várólistájának hossza|Darabszám|Átlag|Az a lekérdezési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
 |ShortParsingBusyThreads|Szálak: Rövid elemzés a foglalt szálak|Darabszám|Átlag|A rövid elemzési szálkészletben lévő foglalt szálak száma.|ServerResourceType|
 |ShortParsingIdleThreads|Szálak: Rövid elemzési üresjárati szálak|Darabszám|Átlag|A rövid elemzési szálkészletben az üresjárati szálak száma.|ServerResourceType|
 |ShortParsingJobQueueLength|Szálak: Rövid elemzési feladat üzenetsorának hossza|Darabszám|Átlag|A a rövid elemzési szálkészlet üzenetsorában található feladatok száma.|ServerResourceType|
@@ -119,12 +119,12 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |PoolResizeCompleteEvent|Készlet átméretezése kész események|Darabszám|Összes|Befejezett készlet átméretezi száma összesen|Nincs dimenzió|
 |PoolDeleteStartEvent|Készlet törlésének indítása események|Darabszám|Összes|Teljes száma, amelyek elindultak készlet törlése|Nincs dimenzió|
 |PoolDeleteCompleteEvent|Készlet törlése kész események|Darabszám|Összes|Befejezett készlet törlések száma összesen|Nincs dimenzió|
-|JobDeleteCompleteEvent|Feladat befejezése események törlése|Darabszám|Összes|Sikeresen törölve lett feladatok teljes száma.|Nincs dimenzió|
+|JobDeleteCompleteEvent|Feladat befejezése események törlése|Darabszám|Összes|Sikeresen törölt feladatok teljes száma.|Nincs dimenzió|
 |JobDeleteStartEvent|Feladat kezdő-események törlése|Darabszám|Összes|A törlendő kérő feladatok teljes száma.|Nincs dimenzió|
-|JobDisableCompleteEvent|Feladat letiltása befejeződött esemény|Darabszám|Összes|Amely már le van tiltva sikeresen feladatok teljes száma.|Nincs dimenzió|
+|JobDisableCompleteEvent|Feladat letiltása befejeződött esemény|Darabszám|Összes|Sikerült letiltani feladatok teljes száma.|Nincs dimenzió|
 |JobDisableStartEvent|Feladat letiltása indítási események|Darabszám|Összes|Kért, le kell tiltani feladatok teljes száma.|Nincs dimenzió|
-|JobStartEvent|Feladat indítása esemény|Darabszám|Összes|Teljes száma a feladatokat, amelyeket sikeresen elindult.|Nincs dimenzió|
-|JobTerminateCompleteEvent|Feladat leállítása befejeződött esemény|Darabszám|Összes|Amely már sikeresen befejeződött feladatok teljes száma.|Nincs dimenzió|
+|JobStartEvent|Feladat indítása esemény|Darabszám|Összes|Sikeresen elindult feladatok teljes száma.|Nincs dimenzió|
+|JobTerminateCompleteEvent|Feladat leállítása befejeződött esemény|Darabszám|Összes|Sikerült leállítani feladatok teljes száma.|Nincs dimenzió|
 |JobTerminateStartEvent|Feladat leállítása indítása esemény|Darabszám|Összes|Kért, megszakítandó feladatok teljes száma.|Nincs dimenzió|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
@@ -816,7 +816,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ClusterDataCapacityFactor|Gyorsítótár-kihasználtság|Százalék|Átlag|A fürt hatókörében kihasználtsága|Nincs dimenzió|
 |QueryDuration|Lekérdezések időtartama|Ezredmásodperc|Átlag|A lekérdezések időtartama másodpercben|QueryStatus|
 |IngestionsLoadFactor|Adatbetöltési kihasználtsága|Százalék|Átlag|A fürtben használt adatfeldolgozási pontok aránya|Nincs dimenzió|
-|IsEngineAnsweringQuery|Életben tartási|Darabszám|Átlag|Megerősítést jelölőnégyzet azt jelzi, hogy a fürt respondes lekérdezések|Nincs dimenzió|
+|IsEngineAnsweringQuery|Életben tartási|Darabszám|Átlag|Megerősítést jelölőnégyzet azt jelzi, hogy a fürt lekérdezéseire|Nincs dimenzió|
 |IngestCommandOriginalSizeInMb|Adatbetöltési kötet (megabájtban)|Darabszám|Összes|A fürthöz (megabájtban) a feldolgozott adatok teljes mennyisége|Nincs dimenzió|
 |EventAgeSeconds|Adatbetöltési késés (másodpercben)|másodperc|Átlag|A betöltési idő másodpercben a fürthöz a forrás (pl. üzenet jelenik meg az EventHub)|Nincs dimenzió|
 |EventReceivedFromEventHub|(Az Event Hubs) feldolgozott események|Darabszám|Összes|Ha az Event Hubs fürtjét a fürt által feldolgozott események száma|Nincs dimenzió|

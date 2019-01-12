@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b61602d221c71fd756a23f338f2817561e9f5d09
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8e18822fff852a82b367acfa45e3d55048b4e54c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215082"
+ms.locfileid: "54232600"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Térkép egy mozaikréteg hozzáadása
 
@@ -27,7 +27,7 @@ Egy csempe réteg betöltése a csempék a kiszolgálóról. Ezek a lemezképek 
 * Határolókeret – határolókeret koordinátái használható a következő formátumban adja meg a kép `{west},{south},{east},{north}` által gyakran használt [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) kiválóan alkalmas nagy méretű adatkészleteket a térképen megjelenítése. Nem csak egy mozaikréteg létrehozható egy rendszerképből, de vektoros adatait is megjeleníthetők-e egy csempe rétegként túl. A térkép vezérlőelem szerint egy csempe rétegként vektoros adatait renderelése, csak kell betöltenie a csempéket, amelynek sokkal kisebb lehet a fájlméret, mint a vektoros adatait képviselik. Számos jelennek meg a térképen adatsorokat millons kell ezt a módszert használja.
+> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) kiválóan alkalmas nagy méretű adatkészleteket a térképen megjelenítése. Nem csak egy mozaikréteg létrehozható egy rendszerképből, de vektoros adatait is megjeleníthetők-e egy csempe rétegként túl. A térkép vezérlőelem szerint egy csempe rétegként vektoros adatait renderelése, csak kell betöltenie a csempéket, amelynek sokkal kisebb lehet a fájlméret, mint a vektoros adatait képviselik. Ezzel a technikával számos, akiknek szükség van az adatok a térképen sorok millióinak előállítására használja.
 
 A csempe URL-cím egy mozaikréteg átadott kell lennie egy http/https URL-CÍMÉT egy TileJSON erőforrás vagy egy csempe URL-cím sablon, amely a következő paramétereket használja: 
 

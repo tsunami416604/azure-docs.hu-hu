@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 971d0181cb8e38b952c3dd3dd1d7e5e1cbec5128
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720133"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244649"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Lista létrehozása, törlése vagy szerepkör hozzárendelése a felügyelt felhasználó által hozzárendelt identitás az Azure portal használatával
 
@@ -41,10 +41,10 @@ A felügyelt felhasználó által hozzárendelt identitás létrehozása, a fió
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal társított Azure-előfizetés létrehozása a felhasználó által hozzárendelt felügyelt identitás.
 2. A Keresés mezőbe írja be a *felügyelt identitások*, majd a **szolgáltatások**, kattintson a **felügyelt identitások**.
 3. Kattintson a **Hozzáadás** , és adja meg az értékeket az alábbi mezőket a **hozzárendelt felhasználó létrehozása felügyelt** identitás panelen:
-   - **Erőforrás neve**: a felhasználó által hozzárendelt felügyelt identitás, például UAI1 neve.
-   - **Előfizetés**: válassza ki az előfizetést, amelyben létrehozza a felhasználó által hozzárendelt felügyelt identitás alatt
-   - **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, a felhasználó által hozzárendelt felügyelt identitást tartalmaz, vagy válasszon **meglévő** hozhat létre a felhasználó által hozzárendelt felügyelt identitás egy meglévő erőforráscsoportot.
-   - **Hely**: válassza ki azt a helyet, például üzembe helyezése felügyelt felhasználó által hozzárendelt identitások **USA nyugati RÉGIÓJA**.
+   - **Erőforrás neve**: Ez az a felhasználó által hozzárendelt felügyelt identitás, például UAI1 nevét.
+   - **Előfizetés**: Válassza ki az előfizetést, amelyben létrehozza a felhasználó által hozzárendelt felügyelt identitás alatt
+   - **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, a felhasználó által hozzárendelt felügyelt identitást tartalmaz, vagy válasszon **meglévő** hozhat létre a felhasználó által hozzárendelt felügyelt identitás egy meglévő erőforráscsoportot.
+   - **Hely**: Válassza ki azt a helyet, például üzembe helyezése felügyelt felhasználó által hozzárendelt identitások **USA nyugati RÉGIÓJA**.
 4. Kattintson a **Create** (Létrehozás) gombra.
 
 ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
@@ -62,6 +62,8 @@ A felhasználó által hozzárendelt felügyelt identitás lista/Olvasás, a fi�
 ## <a name="delete-a-user-assigned-managed-identity"></a>Egy felhasználó által hozzárendelt felügyelt identitás törlése
 
 Ha törölni szeretné egy felhasználó által hozzárendelt felügyelt identitás, a fióknak rendelkeznie kell a [felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelés.
+
+A felhasználóhoz hozzárendelt identitás törlése nem távolítja el azt a virtuális gép vagy a hozzá rendelt erőforrás.  A felhasználóhoz hozzárendelt identitás eltávolítása egy virtuális gép lásd [távolítsa el a felügyelt identitás felhasználó által hozzárendelt virtuális gép](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal az Azure-előfizetéshez társított törli egy felhasználó által hozzárendelt felügyelt identitás.
 2. Válassza ki a felhasználó által hozzárendelt felügyelt identitást, és kattintson a **törlése**.

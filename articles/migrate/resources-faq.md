@@ -4,14 +4,14 @@ description: A címek az Azure Migrate kapcsolatos gyakori kérdések
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 0d01715922286743b9442ae1c656b34c37a7d795
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201193"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230764"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -53,6 +53,7 @@ Az Azure Migrate Európa, Egyesült Államok és az Azure Government jelenleg a 
 **Régiócsoport** | **Metaadatok tárolási helye**
 --- | ---
 Azure Government | USA-beli államigazgatás – Virginia
+Ázsia | Délkelet-Ázsia
 Európa | Észak-Európában és Nyugat-Európa
 Több egység állapotok | USA nyugati középső RÉGIÓJA, USA keleti RÉGIÓJA
 
@@ -63,6 +64,17 @@ A kapcsolat az interneten keresztül vagy az ExpressRoute használata a nyilván
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Felvértezni a virtuális gép az OVA-sablon beállítása is?
 
 Mindaddig, amíg a kommunikációs és a tűzfal az Azure Migrate berendezés működéséhez szükséges szabályok van hátra, mert további összetevők (például víruskereső) hozzáadható az OVA sablonba be.   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Az Azure Migrate-készülék, Mik azok a víruskereső (Víruskereső) ajánlott kivételeket mobileszközcsoportra?
+
+Az alábbi mappák a készülék a víruskeresővel való ellenőrzésekből kizárni kívánt szüksége:
+
+- Az Azure Migrate szolgáltatás a bináris fájlokat tartalmazó mappa. Zárja ki az összes alárendelt mappát.
+  %ProgramFiles%\ProfilerService  
+- Az Azure Migrate webes hatóságuknál. Zárja ki az összes alárendelt mappát.
+  %SystemDrive%\inetpub\wwwroot
+- Helyi gyorsítótár az adatbázis és naplófájlok. Az Azure migrate szolgáltatás ezt a mappát RW lemezt hozzá kell férnie.
+  %SYSTEMDRIVE%\Profiler
 
 ## <a name="discovery"></a>Detektálás
 
@@ -136,16 +148,6 @@ Ha a bérlők között megosztott környezet, és nem szeretné, hogy egy bérl�
 
 Felfedezheti, hogy egyetlen migrálási projekt 1500 virtuális gépet. Ha több gépet a helyszíni környezetben, [további](how-to-scale-assessment.md) kapcsolatos is találhat meg az Azure Migrate nagy méretű környezet.
 
-### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Az Azure Migrate-készülék, Mik azok a víruskereső (Víruskereső) ajánlott kivételeket mobileszközcsoportra?
-
-Az alábbi mappák a készülék a víruskeresővel való ellenőrzésekből kizárni kívánt szüksége:
-
-- Az Azure Migrate szolgáltatás a bináris fájlokat tartalmazó mappa. Zárja ki az összes alárendelt mappát.
-  %ProgramFiles%\ProfilerService  
-- Az Azure Migrate webes hatóságuknál. Zárja ki az összes alárendelt mappát.
-  %SystemDrive%\inetpub\wwwroot
-- Helyi gyorsítótár az adatbázis és naplófájlok. Az Azure migrate szolgáltatás ezt a mappát RW lemezt hozzá kell férnie.
-  %SYSTEMDRIVE%\Profiler
 
 ## <a name="assessment"></a>Értékelés
 

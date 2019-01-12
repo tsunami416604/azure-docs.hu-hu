@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: d6e293b80df1ab227a3100040a54b189f48d8027
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 541095ddff19f16e3050d79846a339d4e5bad2b8
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102809"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244290"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamelés az Apache Kafkához készült Event Hubsba
 Ez a rövid útmutató bemutatja, hogyan streamelhet a Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Megtudhatja, hogyan érheti el egy egyszerű konfigurációmódosítással az alkalmazásokban, hogy az előállítók és a fogyasztók kommunikáljanak a Kafka-kompatibilis Event Hubsszal. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
@@ -34,13 +34,13 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
 
-1. Jelentkezzen be az [Azure Portalra][Azure Portalra], és kattintson az **Erőforrás létrehozása** gombra a képernyő bal felső részén.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
 
 2. Keressen rá az Event Hubsra, és válassza az itt látható lehetőségeket:
     
     ![Event Hubs keresése a portálon](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a **Create** (Létrehozás) gombra.
+3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a **Create** (Létrehozás) gombra. Megjegyzés: Az Event Hubs a kafka csak támogatott a standard és a dedikált Event Hubs szint. Alapszintű Event Hubs válaszul Kafka műveleteket a témakör engedélyezési hibaüzenetet ad vissza.
     
     ![Névtér létrehozása](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  

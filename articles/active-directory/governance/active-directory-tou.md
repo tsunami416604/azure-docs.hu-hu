@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/20/2018
+ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188425"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229472"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -87,9 +87,7 @@ A használati feltételek dokumentum véglegesítése után a hozzáadáshoz kö
 
 1. A végfelhasználóknak megtekinteni a használati feltételeket, mielőtt elfogadhatnák őket, állítsa **bontsa ki a használati feltételeket, hogy a felhasználók** való **a**.
 
-1. A végfelhasználók számára, hogy fogadja el a használati feltételeket minden eszközön érnek el a szükséges, állítsa be **kérése a felhasználóktól minden eszközön jóváhagyást** való **a**.
-
-    Ha nem látja a **kérése a felhasználóktól minden eszközön jóváhagyást** beállításnál azért van, mert ez a funkció még nem vezette a régióhoz. Ez a szolgáltatás várhatóan korai január 2019 teljes mértékben üzembe lehet helyezni. További információkért lásd: [eszközönkénti használati feltételeit](#per-device-terms-of-use).
+1. A végfelhasználók számára, hogy fogadja el a használati feltételeket minden eszközön érnek el a szükséges, állítsa be **kérése a felhasználóktól minden eszközön jóváhagyást** való **a**. További információkért lásd: [eszközönkénti használati feltételeit](#per-device-terms-of-use).
 
 1. Ha szeretne érvényessége lejár használati feltételeket tartalmazó fájl jóváhagy egy ütemezés szerint, és állítsa **címtárbérlőhöz lejár** való **a**. Érték beállítása a esetén két további beállítások jelennek meg.
 
@@ -254,9 +252,6 @@ Az alábbi eljárás ismerteti, hogyan lehet a használati feltételek használa
 
 A **kérése a felhasználóktól minden eszközön jóváhagyást** beállítás lehetővé teszi, hogy a végfelhasználók számára, hogy fogadja el a használati feltételeket minden eszközön érnek el a szükséges. A felhasználó köteles csatlakoztassák az eszközüket az Azure ad-ben. Amikor az eszköz tartományhoz csatlakozik, az eszköz azonosítója segítségével kényszerítése a használati feltételeket minden eszközön.
 
-> [!NOTE]
-> Ha nem látja a **kérése a felhasználóktól minden eszközön jóváhagyást** beállítást, ha egy új használati feltételek létrehozása esetén azért van, mert ez a funkció még nem vezette a régióhoz. Ez a szolgáltatás várhatóan korai január 2019 teljes mértékben üzembe lehet helyezni.
-
 Íme a támogatott platformokról és a szoftverek listáját.
 
 > [!div class="mx-tableFixed"]
@@ -382,5 +377,5 @@ V: Ha konfigurálta is az Azure AD használati feltételek és [Intune használa
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyors útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](../conditional-access/require-tou.md)
+- [Rövid útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](../conditional-access/require-tou.md)
 - [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](../conditional-access/best-practices.md)

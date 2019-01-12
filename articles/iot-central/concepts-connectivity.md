@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960096"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247673"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -54,17 +54,16 @@ Egy eszköz csatlakozik az IoT-központ SAS használatával egyszerűen, mindös
 
     Az alábbiakban a hivatkozások más nyelven, akkor érdemes használni.
 
-    *   **C nyelvi:** C használja, hajtsa végre a [a minta C ügyfél](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md) egy minta-eszközt. A minta használja a következő beállításokat.   
+    *   **C nyelv:** Ha C használ, kövesse az [a minta C ügyfél](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) egy minta-eszközt. A minta használja a következő beállításokat.   
 
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
-         
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
 
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
 
-    *   **NODE.js:** Ha használható a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
+    *   **NODE.js:**  Ha szeretné használni a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
 
 
 
@@ -81,7 +80,7 @@ Nagy mennyiségű eszközt az IoT Centrallal SAS használatával csatlakozhat, m
 
 A nagy mennyiségű eszköz csatlakoztatása az Azure IoT Central alkalmazásnak ajánlatok tömeges importáló eszközöket egy CSV-fájlt. 
 
-CSV-fájl követelmények: A CSV-fájl a következő oszlopokat (és a fejlécek) kell rendelkeznie.
+CSV-fájl követelmények: A CSV-fájlt a következő oszlopokat (és a fejlécek) kell rendelkeznie.
 1.  IOTC_DeviceID  **<span style="color:Red">(a kis kell lennie)</span>**
 1.  IOTC_DeviceName (nem kötelező)
 
@@ -102,7 +101,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 1.  Jelölje ki az eszközöket, amelyeket szeretne exportálni, majd kattintson a **exportálása** művelet.
 1.  Az exportálás befejezése után a sikert jelző üzenet jelenik meg együtt egy hivatkozás a létrehozott fájl letöltéséhez.
 1.  Kattintson a letölteni a fájlt egy helyi mappába a lemezen a sikert jelző üzenet.
-1.  Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **eszköz azonosítója, az eszköz neve, a eszköz elsődleges és másodlagos kulcsok és a elsődleges és másodlagos tanúsítvány-ujjlenyomatai**
+1.  Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **Eszköz azonosítója, az eszköz neve, a eszköz elsődleges és másodlagos kulcsok és a elsődleges és másodlagos tanúsítvány-ujjlenyomatai**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -118,14 +117,14 @@ Ha használja a **MxChip** való kapcsolódáshoz kövesse az eszköz [részlete
 
 Az alábbiakban a hivatkozások más nyelven, akkor érdemes használni.
 
-   *   **C nyelvi:** C kövesse használatakor [a minta C ügyfél](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md) egy minta-eszközt. A minta használja a következő beállításokat.   
+   *   **C nyelv:** Ha használ C kövesse [a minta C ügyfél](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) egy minta-eszközt. A minta használja a következő beállításokat.   
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
-    * **NODE.js:** Ha használható a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
+    * **NODE.js:**  Ha szeretné használni a Node.js [részletes utasításokat itt használhassa](tutorial-add-device.md#prepare-the-client-code), indítsa el a szakaszban leírt **előkészítése az Ügyfélkód**.
 
 
 ## <a name="connect-devices-using-x509-certificates"></a>Csatlakoztatásához X509 használatával tanúsítványok
@@ -138,13 +137,13 @@ Csatlakoztatni az eszközöket az IoT-X509 használatával központi tanúsítv�
     *   **Adja hozzá a X509 legfelső szintű vagy köztes tanúsítványt** a levél eszköztanúsítványok létrehozásához használ. Nyissa meg a felügyelet > eszköz kapcsolat > tanúsítványok. 
     
         ![Kapcsolati beállítások](media/concepts-connectivity/connection-settings.PNG)
-    *   **Tanúsítvány-ellenőrzés:** ellenőrzése a tanúsítvány tulajdonosa biztosítja, hogy a tanúsítvány titkos kulcs birtokában van a tanúsítvány feltöltése. A tanúsítvány
+    *   **Tanúsítvány-ellenőrzés:** Tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítvány titkos kulcs birtokában van a tanúsítvány feltöltése. A tanúsítvány
         *  Ellenőrző kód létrehozása, a gombra kattintva az ellenőrző kód mezőben az ellenőrző kód létrehozása mellett. 
         *  Hozzon létre egy X.509-hitelesítési tanúsítvány az ellenőrzőkódot, mentse el a tanúsítványt egy .cer fájlba. 
         *  Töltse fel az aláírt hitelesítési tanúsítványt, és kattintson ellenőrizze.
 
         ![Kapcsolati beállítások](media/concepts-connectivity/verify-cert.png)
-    *   **Másodlagos tanúsítvány:** szeretné visszaállítani a tanúsítványokat kell az IoT-megoldás élettartama során. Két fő oka a működés közbeni tanúsítványok lenne a biztonsági incidensek és a tanúsítvány lejárhat. Másodlagos tanúsítványok segítségével csökkenthető a leállások a megfelelő eszközök kiépítése az elsődleges tanúsítvány frissítése során.
+    *   **Másodlagos tanúsítvány:** Az IoT-megoldás élettartama során kell visszaállítani a tanúsítványokat. Két fő oka a működés közbeni tanúsítványok lenne a biztonsági incidensek és a tanúsítvány lejárhat. Másodlagos tanúsítványok segítségével csökkenthető a leállások a megfelelő eszközök kiépítése az elsődleges tanúsítvány frissítése során.
 
     **CSAK TESZTELÉSI CÉLRA** 
     
@@ -160,7 +159,7 @@ Csatlakoztatni az eszközöket az IoT-X509 használatával központi tanúsítv�
 
 1. **Eszközök regisztrálása** importálja azokat az IoT-központ be CSV-fájl használatával.
 
-1. **Eszközbeállítások** : a feltöltött legfelső szintű tanúsítvány használatával levél tanúsítványainak előállításához. Győződjön meg arról, hogy használja a **Eszközazonosító** , a levél a CNAME-tanúsítványok és **kisbetűs**. Íme egy [parancssori eszköz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) levél/eszköz tanúsítványainak előállításához **csak tesztelési célokra**.
+1. **Eszközbeállítások** : A feltöltött legfelső szintű tanúsítvány használatával levél tanúsítványainak előállításához. Győződjön meg arról, hogy használja a **Eszközazonosító** , a levél a CNAME-tanúsítványok és **kisbetűs**. Íme egy [parancssori eszköz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) levél/eszköz tanúsítványainak előállításához **csak tesztelési célokra**.
 
     A program az eszközt a kiépítési szolgáltatás információkat lehetővé teszi a lekérése a kapcsolat adatait, és az IoT-központ alkalmazás-hozzárendelés, ha be van kapcsolva.    
 
@@ -186,12 +185,12 @@ Alább van a flow csatlakoztatni az eszközöket a szolgáltatással
 Kövesse a lépéseket, az Ön által választott eszköz hitelesítési sémát (X509/SAS-) alapú
 
 1. **Kapcsolati beállítások** 
-    * **X509 tanúsítványok:** [hozzáadása, és ellenőrizze a legfelső szintű vagy köztes tanúsítványt](#connect-devices-using-x509-certificates) , amellyel az eszköztanúsítványok létrehozásához a következő lépésben.
-    * **SAS:** másolja az elsődleges kulcsot (ezt a kulcsot nem a csoport az IoT Central alkalmazáshoz tartozó SAS-kulcsot), és ezzel hozzon létre az eszköz SAS-kulcsokat, a következő lépésben. 
+    * **Tanúsítványok X509:** [Adja hozzá és ellenőrizze a legfelső szintű vagy köztes tanúsítványt](#connect-devices-using-x509-certificates) , amellyel az eszköztanúsítványok létrehozásához a következő lépésben.
+    * **SAS:** Másolja az elsődleges kulcsot (ezt a kulcsot nem a csoport az IoT Central alkalmazáshoz tartozó SAS-kulcsot), és ezzel hozzon létre az eszköz SAS-kulcsokat, a következő lépésben. 
 ![Kapcsolatbeállítások SAS](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **Eszköz hitelesítő adatok előállítása** 
-    *   **Tanúsítványok X509:** az eszközöket a legfelső szintű vagy köztes tanúsítványt az alkalmazáshoz hozzáadott segítségével levél-tanúsítványainak előállításához. Győződjön meg arról, hogy használja a **Eszközazonosító** , egy olyan CNAME rekordot a levél tanúsítványok és  **<span style="color:Red">(kell lennie a kisbetűs)</span>**. Íme egy [parancssori eszköz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) tesztelés levél/eszköz tanúsítványainak előállításához.
+    *   **Tanúsítványok X509:** Az eszközöket a legfelső szintű vagy köztes tanúsítványt az alkalmazáshoz hozzáadott segítségével levél-tanúsítványainak előállításához. Győződjön meg arról, hogy használja a **Eszközazonosító** , egy olyan CNAME rekordot a levél tanúsítványok és  **<span style="color:Red">(kell lennie a kisbetűs)</span>**. Íme egy [parancssori eszköz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) tesztelés levél/eszköz tanúsítványainak előállításához.
     *   **SAS** eszköz SAS-kulcsok használatával Ez hozható [parancssori eszköz](https://www.npmjs.com/package/dps-keygen). Használja az elsődleges SAS-kulcsot (csoport SAS-kulcs) az előző lépésben. Győződjön meg arról, hogy az eszköz azonosítója  **<span style="color:Red">kisbetű szerepel</span>**.
 
         Használja az alábbi utasítások végrehajtásával eszköz SAS-kulcs létrehozása           
@@ -210,13 +209,13 @@ Kövesse a lépéseket, az Ön által választott eszköz hitelesítési sémát
     
      Az eszközt az Flash **hatókör azonosítója, az eszköz azonosítója, a eszköz tanúsítvány/SAS-kulcsának** majd kapcsolja be az eszköz IoT Central alkalmazáshoz csatlakozhat.
 
-1. **Eszköz csatlakoztatása az IoT-központ:** egyszer be van kapcsolva az eszközök csatlakoznak a DPS/IoT Central a regisztrációhoz.
+1. **Eszköz csatlakoztatása az IoT-központ:** Ha be van kapcsolva az eszközök csatlakoznak a DPS/IoT Central a regisztrációhoz.
 
-1. **Eszköz társítása a sablonhoz:** a csatlakoztatott eszközre alatt jelennek meg **társítatlan eszközök** a **Device Explorer**. Az eszköz kiépítési állapot **regisztrált**. **Társítsa** az eszköz számára a megfelelő eszköz sablont, és hagyja jóvá az eszköz csatlakoztatása az IoT Central alkalmazáshoz. Az eszköz lekérdezi a megadott kapcsolatot információk az IoT-központ, kapcsolódik, és elindítja az adatok küldése. Eszköz provioning befejeződött, és a *előkészítési állapotát* kerül, **kiépített**.
+1. **Eszköz társítása a sablonhoz:** A csatlakoztatott eszközre alatt jelennek meg **társítatlan eszközök** a **Device Explorer**. Az eszköz kiépítési állapot **regisztrált**. **Társítsa** az eszköz számára a megfelelő eszköz sablont, és hagyja jóvá az eszköz csatlakoztatása az IoT Central alkalmazáshoz. Az eszköz lekérdezi a megadott kapcsolatot információk az IoT-központ, kapcsolódik, és elindítja az adatok küldése. Eszköz provioning befejeződött, és a *előkészítési állapotát* kerül, **kiépített**.
 
 ## <a name="device-provisioning-status"></a>Eszköz kiépítési állapota
 Replikálásában van lépések sorozatát valós eszköz csatlakozik az Azure IoT Central 
-1. **Regisztrált**: az eszköz az első **regisztrált**, ami azt jelenti, az eszköz jön létre az IoT-központ és az eszköz azonosítója, az eszköz rendelkezik.
+1. **Regisztrált**: Az eszköz az első **regisztrált**, ami azt jelenti, az eszköz jön létre az IoT-központ és az eszköz azonosítója, az eszköz rendelkezik.
 Eszköz Registeretd során  
     *   Új valós eszköz bekerül a **Explorer**
     *   Eszközök készlete segítségével hozzáadott **importálás** a **Explorer**
@@ -226,7 +225,7 @@ Eszköz Registeretd során
 
 1. **Üzembe helyezett**: A következő lépés akkor, ha az eszköz kapcsolódik, érvényes hitelesítő adatokat az IoT-központ fejezheti be a létesítési lépés (az eszköz létrehozásakor az IoT Hub). Majd visszaadja a kapcsolati karakterlánc csatlakozzon, és adatokat küldjön az eszközre. Az eszköz *előkészítési állapotát* most bekapcsolja a **regisztrált** való **kiépített**.
 
-1.  **Blokkolt**: az operátor is letiltja az eszköz, ha egy eszköz le van tiltva, nem adatokat küldeni IoT-központ rendelkeznek, és alaphelyzetbe kell állítani. Kitiltott eszközök rendelkeznek a *előkészítési állapotát* , **letiltott**. Az operátor is feloldhatja az eszköz. Az eszköz egyszer feloldva *előkészítési állapotát* lépjen vissza az előző *előkészítési állapotát* (regisztrálva, vagy kiépített). 
+1.  **Blokkolt**: Az operátor is letiltja az eszköz, ha egy eszköz le van tiltva, nem adatokat küldeni IoT-központ rendelkeznek, és alaphelyzetbe kell állítani. Kitiltott eszközök rendelkeznek a *előkészítési állapotát* , **letiltott**. Az operátor is feloldhatja az eszköz. Az eszköz egyszer feloldva *előkészítési állapotát* lépjen vissza az előző *előkészítési állapotát* (regisztrálva, vagy kiépített). 
 
 ## <a name="getting-device-connection-string"></a>Eszköz kapcsolati karakterláncának beolvasása
 Iot hub eszköz kapcsolati karakterláncát az Azure IoT Hub használatával lekérheti az alábbi lépéseket 
@@ -271,7 +270,7 @@ A következő táblázat összefoglalja, hogyan Azure IoT Central eszközfunkci�
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Mérési: Telemetria | Eszközről-a-felhőbe üzenetkezelés |
+| Mérték: Telemetria | Eszközről-a-felhőbe üzenetkezelés |
 | Eszköztulajdonságok | Ikereszköz jelentett tulajdonságait |
 | Beállítások | Ikereszköz kívánt és a jelentett tulajdonságok |
 

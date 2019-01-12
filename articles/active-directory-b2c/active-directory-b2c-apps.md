@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5d90e9440758f457aca591e5c2792c6670868685
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721969"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245480"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
 Az Azure Active Directory (Azure AD) B2C számos a modern alkalmazásarchitektúráknak, támogatja a hitelesítést. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ez a dokumentum ismerteti, milyen típusú alkalmazásokat hozhat létre, a nyelvtől és platformtól független inkább. Emellett segít jobban megérteni a magas szintű forgatókönyveket, mielőtt elkezdené az alkalmazások létrehozásához.
 
-Minden Azure AD B2C-t használó alkalmazást regisztrálni kell a [Azure AD B2C-bérlő](active-directory-b2c-get-started.md) használatával a [az Azure Portal](https://portal.azure.com/). Az alkalmazás regisztrációs folyamatának gyűjt, és hozzárendeli az értékeket, például:
+Minden Azure AD B2C-t használó alkalmazást regisztrálni kell a [Azure AD B2C-bérlő](active-directory-b2c-get-started.md) használatával a [az Azure portal](https://portal.azure.com/). Az alkalmazás regisztrációs folyamatának gyűjt, és hozzárendeli az értékeket, például:
 
 * Egy **Alkalmazásazonosító** , amely egyedileg azonosítja az alkalmazást.
 * A **válasz URL-cím** , amely közvetlen válaszokhoz az alkalmazáshoz használható.
@@ -41,7 +41,7 @@ Ezeket a lépéseket készít alkalmazás típusától függően némileg eltér
 
 ## <a name="web-applications"></a>Webalkalmazások
 
-Webes alkalmazások (beleértve a .NET, PHP, Java, Ruby, Python és Node.js), amelyek a kiszolgálón futtatott és böngészőn keresztül elért, az Azure AD B2C-t támogatja a [OpenID Connect](active-directory-b2c-reference-protocols.md) összes felhasználói élmény esetében. Ide tartozik a bejelentkezés, a regisztráció és a profilkezelés is. OpenID Connect Azure AD B2C-vel végrehajtásában a webes alkalmazások különböző felhasználói élményeket az Azure ad Szolgáltatásba küldött hitelesítési kérések alapján indítja el. A kérés eredménye egy `id_token`. Ez a biztonsági jogkivonat tartalmazza a felhasználó identitását. Ezenfelül jogcímek formájában információkat nyújt a felhasználóról is:
+Webes alkalmazások (beleértve a .NET, PHP, Java, Ruby, Python és Node.js), amelyek a kiszolgálón futtatott és böngészőn keresztül elért, az Azure AD B2C-t támogatja a [OpenID Connect](active-directory-b2c-reference-protocols.md) összes felhasználói élmény esetében. OpenID Connect Azure AD B2C-vel végrehajtásában a webes alkalmazások felhasználói élményt az Azure ad Szolgáltatásba küldött hitelesítési kérések alapján indítja el. A kérés eredménye egy `id_token`. Ez a biztonsági jogkivonat tartalmazza a felhasználó identitását. Ezenfelül jogcímek formájában információkat nyújt a felhasználóról is:
 
 ```
 // Partial raw id_token
@@ -68,7 +68,7 @@ Egy webalkalmazás, minden egyes végrehajtása a egy [házirend](active-directo
 6. A `id_token` érvényesítése és a egy munkamenetcookie-t be van állítva.
 7. A felhasználónak egy biztonságos lap küld vissza.
 
-A felhasználó identitásának ellenőrzéséhez elegendő az Azure AD-tól kapott nyilvános aláírókulcs segítségével ellenőrizni a `id_token`érvényességét. Ezzel egyúttal beállít egy munkamenetcookie-t is, amely a következő lapkérések során azonosítja a felhasználót.
+A felhasználó identitásának ellenőrzéséhez elegendő az Azure AD-tól kapott nyilvános aláírókulcs segítségével ellenőrizni a `id_token`érvényességét. Ez a folyamat egy munkamenetcookie-t, amely segítségével azonosítható a felhasználó lapkérések állítja be.
 
 Ebben a forgatókönyvben működés közben látni, próbálja meg a webes alkalmazás bejelentkezést kódmintái a egyikét a [kezdeti lépéseket bemutató cikkből](active-directory-b2c-overview.md).
 
@@ -124,58 +124,18 @@ Bár az ügyfél-hitelesítő adat flow jelenleg nem támogatott az Azure AD B2C
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Webes API-láncok (meghatalmazásos folyamat)
 
-Számos architektúrában szerepelnek olyan webes API-k, amelyek más, alsóbb rétegbeli webes API-kat hívnak meg, és mindkét API biztonságát az Azure AD B2C garantálja. Ez gyakori a webes API-háttérrel rendelkező natív ügyfelek esetében. Ez aztán meghív egy Microsoft online szolgáltatást, például az Azure AD Graph API-t.
+Számos architektúrában szerepelnek olyan webes API-k, amelyek más, alsóbb rétegbeli webes API-kat hívnak meg, és mindkét API biztonságát az Azure AD B2C garantálja. Ez a forgatókönyv gyakori a webes API-háttérrel rendelkező natív ügyfelek esetében a, és a egy Microsoft online szolgáltatáshoz, például az Azure AD Graph API-hívások.
 
 Ez a láncolatba fűzött webes API-megoldás az OAuth 2.0 JWT tulajdonosi hitelesítő adatok megadásával (vagy más néven a meghatalmazásos folyamat) segítségével valósítható meg.  A meghatalmazásos folyamatot azonban még nem implementáltuk az Azure AD B2C-be.
 
-### <a name="reply-url-values"></a>Válasz URL-címértékekre
-
-Az Azure AD B2C-vel regisztrált alkalmazások jelenleg csak meghatározott válasz URL-címértékekre korlátozódnak. A webalkalmazások és -szolgáltatások válasz URL-címének a `https`-sémával kell kezdődnie, és valamennyi válasz URL-címértéknek egyetlen DNS-tartományba kell tartoznia. Például nem regisztrálhat olyan webalkalmazást, amely az alábbi URL-címek egyikével rendelkezik:
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-A regisztrációs rendszer összehasonlítja a meglévő válasz URL-cím teljes DNS-nevét a hozzáadni kívánt válasz URL-cím DNS-nevével. A DNS-név hozzáadására vonatkozó kérést nem lehet teljesíteni, ha az alábbi körülmények valamelyike fennáll:
-
-- Az új válasz URL-cím teljes DNS-neve nem egyezik meg a meglévő válasz URL-cím DNS-nevével.
-- Az új válasz URL-cím teljes DNS-neve nem tartozik a meglévő válasz URL-cím altartományába.
-
-Ha például az alkalmazás válasz URL-címe a következő:
-
-`https://login.contoso.com`
-
-A következő módon adhatja hozzá:
-
-`https://login.contoso.com/new`
-
-Ebben az esetben a DNS-név pontosan egyezik. Esetleg a következőt teheti meg:
-
-`https://new.login.contoso.com`
-
-Ebben az esetben a login.contoso.com egyik DNS-altartományára hivatkozik. Ha azt szeretné, hogy az alkalmazás a login-east.contoso.com vagy a login-west.contoso.com válasz URL-címmel rendelkezzen, ezeket a válasz URL-címeket az alábbi sorrendben kell hozzáadnia:
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Hozzáadhatja az utóbbi kettőt, mivel az első válasz URL-cím, a contoso.com altartományába tartoznak. 
-
-Mobil-/ natív alkalmazás létrehozásakor megadhat egy **átirányítási URI-t** helyett egy **visszajátszását URL-cím**. Két szempontot fontos átirányítási URI-t kiválasztásakor:
-
-- **Egyedi**: Az átirányítási URI sémájának minden alkalmazás esetén egyedinek kell lennie. A példában `com.onmicrosoft.contoso.appname://redirect/path`, `com.onmicrosoft.contoso.appname` a séma. Ezt a mintát kell követnie. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó kap egy **válassza ki az alkalmazás** párbeszédpanel. Ha a felhasználó helytelenül választ, a bejelentkezés meghiúsul.
-- **Teljes**: Az átirányítási URI-nak sémával és elérési útvonallal kell rendelkeznie. Az elérési utat a tartomány után legalább egy perjelet tartalmaznia kell. Ha például `//contoso/` működik és `//contoso` sikertelen lesz. Győződjön meg arról, nincsenek különleges karakterek például aláhúzásjeleket az átirányítási URI-t.
-
 ### <a name="faulted-apps"></a>Hibás alkalmazások
 
-Az Azure AD B2C-alkalmazások nem szerkeszthetők:
+Ne szerkessze az Azure AD B2C-alkalmazásokat a következő lehetőségeket biztosítva:
 
 - Egyéb alkalmazáskezelési portálokon, például a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
 - Graph API-t vagy a PowerShell használatával.
 
-Ha szerkeszti az Azure AD B2C-alkalmazás az Azure Portalon kívül, hibás alkalmazás válik, és már nem használható az Azure AD B2C-vel. Az alkalmazást ekkor törölnie kell, és újra létre kell hoznia.
+Ha szerkeszti az Azure AD B2C-alkalmazás az Azure Portalon kívül, hibás alkalmazás válik, és már nem használható az Azure AD B2C-vel. Törölje az alkalmazást, és újra létre kell hoznia.
 
 Az alkalmazás törléséhez lépjen a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/) és törölheti az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 

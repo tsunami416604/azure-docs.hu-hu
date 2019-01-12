@@ -13,15 +13,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2018
 ms.author: borisb
-ms.openlocfilehash: f178ac06b4ebfeef534233c2782423a7358f0c10
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719629"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229574"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
-Ez a cikk ismerteti a kiosztási és megőrzési szabályzatokkal együtt az Azure piactéren elérhető Red Hat Enterprise Linux (RHEL) rendszerképek
+Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
+
+Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
 
 ## <a name="images-available-in-the-ui"></a>A felhasználói felületen hozzáférhető lemezképeket
 Keressen a "Red Hat" a Marketplace-en, vagy az Azure portal felhasználói felületén hozzon létre egy erőforrást, amikor látni fogja a rendelkezésre álló RHEL-lemezképek és a kapcsolódó Red Hat-termékek egy része. Mindig az elérhető Virtuálisgép-rendszerképek használata az Azure CLI és PowerShell vagy az API teljes körű szerezheti be.
@@ -108,3 +110,4 @@ Az aktuális házirendet, hogy az összes korábban közzétett rendszerképek t
 
 ## <a name="next-steps"></a>További lépések
 * További információ az Azure Red Hat frissítési infrastruktúrához [Itt](https://aka.ms/rhui-update).
+* Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.

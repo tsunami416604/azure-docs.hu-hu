@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 01/09/2019
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 196435a8bd260c7f1679c06127610aeee29c0fe3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 3f863d0d5d0a7ee30ff7cfdfd55f0b656d487ed0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843242"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54242356"
 ---
-| Mobil- és natív alkalmazások | Webalkalmazások és webes API-k | Közvetlen integráció a protokollokkal |
+| Mobil- és natív alkalmazások | A Web apps és gyógyfürdők | Webes API-k |
 | --- | --- | --- |
-| [Bejelentkezés felvétele iOS-alkalmazásokba](../articles/active-directory/develop/tutorial-v2-ios.md) | [Bejelentkezés felvétele JavaScript egyoldalas alkalmazásba (SPA-ba)](../articles/active-directory/develop/tutorial-v2-javascript-spa.md) |[Egy alkalmazás regisztrálása](../articles/active-directory/develop/quickstart-v2-register-an-app.md) |
-| [Bejelentkezés felvétele Android-alkalmazásokba](../articles/active-directory/develop/tutorial-v2-android.md) | [Bejelentkezés felvétele ASP.NET-alkalmazásokba](../articles/active-directory/develop/tutorial-v2-asp-webapp.md) |[OAuth 2.0 protokollt használó mobilalkalmazások](../articles/active-directory/develop/v2-oauth2-auth-code-flow.md) |
-| [Bejelentkezés felvétele asztali Windows-alkalmazásokba](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  [Bejelentkezés felvétele ASP.NET Core-webalkalmazásokba](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [OpenID Connect protokollt használó webalkalmazások](../articles/active-directory/develop/v2-protocols-oidc.md) |
-| [Bejelentkezés felvétele többplatformos Xamarin-alkalmazásokba](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| [Bejelentkezés felvétele Node js-webalkalmazásokba](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) |[OpenID Connect protokollt használó JavaScript egyoldalas alkalmazások](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) |
-|  | [Az ASP.NET webes API-k védelme](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet) | [Az OAuth 2.0-ügyfél hitelesítési folyamatát használó démonalkalmazások](../articles/active-directory/develop/v2-oauth2-client-creds-grant-flow.md) |
-|  | [Az ASP.NET Core webes API-k védelme](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) | |
+|<img width="40" role="presentation" alt="iOS" src="../articles/active-directory/develop/media/index/logo_ios.svg" data-linktype="relative-path" /><br/>[Bejelentkezés és a egy iOS-alkalmazásokból származó jogkivonat beszerzése](../articles/active-directory/develop/quickstart-v2-ios.md) | <img width="40" role="presentation" alt="JavaScript" src="../articles/active-directory/develop/media/index/logo_js.svg"/><br/>[Bejelentkezés és a egy JavaScript SPA származó jogkivonat beszerzése](../articles/active-directory/develop/quickstart-v2-javascript.md) |<img width="40" role="presentation" alt="ASP.NET Web API" src="../articles/active-directory/develop/media/index/logo_net.svg" /><br/> [Az ASP.NET webes API-k védelme](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)  |
+|<img width="40" role="presentation" alt="Android" src="../articles/active-directory/develop/media/index/logo_android.svg" /><br/>[Bejelentkezés és a egy Android-alkalmazásokból származó jogkivonat beszerzése](../articles/active-directory/develop/quickstart-v2-android.md) | <img width="40" role="presentation" alt="ASP.NET" src="../articles/active-directory/develop/media/index/logo_net.svg" /><br/>[Bejelentkezés felvétele ASP.NET-alkalmazásokba](../articles/active-directory/develop/quickstart-v2-aspnet-webapp.md) |<img width="40" role="presentation" alt="ASP.NET Core Web API" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/>[Az ASP.NET Core webes API-k védelme](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) |
+|<img width="40" role="presentation" alt="Windows Desktop" src="../articles/active-directory/develop/media/index/logo_windows.svg" /><br/>[Bejelentkezés és a egy Windows asztali alkalmazásból származó jogkivonat beszerzése](../articles/active-directory/develop/quickstart-v2-windows-desktop.md) | <img width="40" role="presentation" alt=".NET Core" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [Bejelentkezés felvétele ASP.NET Core-webalkalmazásokba](../articles/active-directory/develop/quickstart-v2-aspnet-core-webapp.md) | |
+|<img width="40" role="presentation" alt="Xamarin" src="../articles/active-directory/develop/media/index/logo_xamarin.svg" /><br/> [Bejelentkezés felvétele többplatformos Xamarin-alkalmazásokba](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| <img width="40" role="presentation" alt="Node.js" src="../articles/active-directory/develop/media/index/logo_nodejs.svg" /><br/>[Bejelentkezés felvétele Node js-webalkalmazásokba](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+|<img width="40" role="presentation" alt="Universal Windows Platform" src="../articles/active-directory/develop/media/index/logo_windows.svg" /><br/> [Bejelentkezés és a egy UWP-alkalmazás származó jogkivonat beszerzése](../articles/active-directory/develop/quickstart-v2-uwp.md)| | |
+|<img width="40" role="presentation" alt=".NET Core Daemon" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [Nem interaktív .NET Core-alkalmazásból származó jogkivonat beszerzése](../articles/active-directory/develop/quickstart-v2-netcore-daemon.md)| | |

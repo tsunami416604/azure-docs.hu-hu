@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890381"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246364"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -236,7 +236,7 @@ A szolgáltatások az alkalmazás-erőforrás tulajdonságaiként vannak megszab
   },
   "resources": [
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "MyMeshApplication",
       "type": "Microsoft.ServiceFabricMesh/applications",
       "location": "[parameters('location')]",
@@ -319,7 +319,7 @@ A szolgáltatások az alkalmazás-erőforrás tulajdonságaiként vannak megszab
       }
     },
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "ServiceAVolume",
       "type": "Microsoft.ServiceFabricMesh/volumes",
       "location": "[parameters('location')]",
@@ -375,7 +375,7 @@ Ez az információ származik a ```outputs``` az ARM-sablon részében. Ahogy az
 ```json
   "outputs": {
     "publicIPAddress": {
-      "value": "[reference('helloWorldGateway').ipAddress]",
+      "value": "[reference('todolistappGateway').ipAddress]",
       "type": "string"
     }
   }
@@ -386,7 +386,7 @@ Ez az információ származik a ```outputs``` az ARM-sablon részében. Ahogy az
 Az alkalmazás sikeres üzembe helyezése után kérje le a szolgáltatásvégpont nyilvános IP-címét. Az üzembe helyezési parancs lekéri a szolgáltatásvégpont nyilvános IP-címét. Igény szerint a hálózati erőforráson végzett lekérdezéssel is megkeresheti a szolgáltatásvégpont nyilvános IP-címét. Az alkalmazás hálózati erőforrásának neve `todolistappNetwork`; a következő paranccsal lekérheti a hozzá tartozó információkat. 
 
 ```azurecli
-az mesh network show --resource-group myResourceGroup --name todolistappNetwork
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 Nyissa meg az IP-címet egy webböngészőben.

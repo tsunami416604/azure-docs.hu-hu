@@ -1,9 +1,10 @@
 ---
-title: Alhálózati forgalom útválasztási módszerének konfigurálása az Azure Traffic Managerrel | Microsoft Docs
+title: Alhálózat forgalom-útválasztási módszer az Azure Traffic Manager konfigurálása
 description: Ez a cikk ismerteti a Traffic Manager konfigurálása a forgalom irányítására az adott alhálózatok.
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 624bbb9fa8841b0c43800f318e83c54d6d408a09
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e3a3a9fdc2ab7f03db2d3a646eaeec7a02f88692
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987440"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231546"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
 
@@ -102,7 +103,7 @@ Ebben a szakaszban telepíti az IIS-kiszolgálót a két virtuális gépen (*myI
     #Add custom htm file
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from my test website server - " + $env:computername)
     ```
-8. Zárja be a RDP-kapcsolatot *myIISVMEastUS*.
+8. Szüntesse meg az RDP-kapcsolatot a *myIISVMEastUS* virtuális géppel.
 9. Ismételje meg az 1 – 6 a lépéseket és a virtuális gép RDP-kapcsolatok létrehozásával *myIISVMWEurope* belül a *myResourceGroupTM2* erőforráscsoportot, amelybe az IIS telepítése és testre szabhatja a saját alapértelmezett weblapot.
 10. Launch-Windows PowerShell a *myIISVMWEurope* és telepítése az IIS-kiszolgálón, és frissíti az alapértelmezett htm-fájl az alábbi parancsok használatával.
     ```powershell-interactive
@@ -118,12 +119,12 @@ Ebben a szakaszban telepíti az IIS-kiszolgálót a két virtuális gépen (*myI
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>Az IIS-t futtató virtuális gépek DNS-neveinek konfigurálása
 
-A Traffic Manager a szolgáltatásvégpontok DNS-neve alapján irányítja a felhasználói forgalmat. Ebben a szakaszban konfigurálni az IIS-kiszolgálók – DNS-neveit *myIISVMEastUS* és *myIISVMWEurope*.
+A Traffic Manager a szolgáltatásvégpontok DNS-neve alapján irányítja a felhasználói forgalmat. Ebben a szakaszban konfigurálja az IIS-kiszolgálók (*myIISVMEastUS* és *myIISVMWEurope*) DNS-neveit.
 
-1. Kattintson a **összes erőforrás** válassza a bal oldali menüben, majd az erőforrások listájában, *myIISVMEastUS* található a *myResourceGroupTM1* erőforráscsoportot.
+1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd válassza a *myResourceGroupTM1* erőforráscsoportban található *myIISVMEastUS* elemet az erőforrások listájában.
 2. Az **Áttekintés** lap **DNS-név** területén válassza a **Konfigurálás** lehetőséget.
 3. A **Konfiguráció** lap DNS-név címkéje alatt adjon hozzá egy egyedi nevet, majd válassza a **Mentés** lehetőséget.
-4. Ismételje meg az 1-3 lépéseket nevű virtuális gép *myIISVMWEurope* található a *myResourceGroupTM1* erőforráscsoportot.
+4. Ismételje meg az 1–3. lépést a *myResourceGroupTM1* erőforráscsoportban található *myIISVMWEurope* virtuális géppel is.
 
 ### <a name="create-test-vms"></a>Virtuális tesztgépek létrehozása
 
@@ -191,7 +192,7 @@ Adja hozzá a két virtuális gép fut az IIS-kiszolgálók – *myIISVMEastUS* 
     | Típus                    | Azure-végpont                                   |
     | Name (Név)           | myTestWebSiteEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
-    | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. A **erőforrás**, válassza ki a nyilvános IP-címet *myIISVMEastUS-ip*. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
+    | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|
     |  Alhálózat útválasztási beállításai    |   Az IP-cím hozzáadásához *myVMEastUS* tesztelése a virtuális gép. A virtuális gépről származó felhasználói lekérdezés a rendszer átirányítja a *myTestWebSiteEndpoint*.    |
 
 4. Ismételje meg a 2. és 3-nevű másik végpont hozzáadása *myProductionEndpoint* a nyilvános IP-cím *myIISVMWEurope-ip* az IIS-kiszolgálón nevű virtuális Géphez társított *myIISVMWEurope* . A **alhálózat útválasztási beállítások**, a teszt virtuális gép – IP-cím hozzáadásához *myVMWestEurope*. Ez a teszt virtuális Gépet a rendszer átirányítja a végpont - bármely felhasználó lekérdezése *myProductionWebsiteEndpoint*.
@@ -220,12 +221,12 @@ A Traffic Manager-profil DNS-nevét a következőképp határozhatja meg:
 ### <a name="view-traffic-manager-in-action"></a>A Traffic Manager megtekintése működés közben
 Ebben a szakaszban megtekintheti a Traffic Managert működés közben. 
 
-1. Válassza ki **összes erőforrás** a bal oldali menüben, majd az erőforrások listájában kattintson *myVMEastUS* található a *myResourceGroupTM1* erőforráscsoportot.
+1. Válassza a **Minden erőforrás** elemet a bal oldali menüben, majd az erőforrások listájában a *myResourceGroupTM1* erőforráscsoportban található *myVMEastUS* elemet.
 2. Az **Áttekintés** lapon kattintson a **Csatlakozás** lehetőségre, majd a **Csatlakozás virtuális géphez** területen válassza az **RDP-fájl letöltése** elemet. 
 3. Nyissa meg a letöltött rdp-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. 
 4. Kattintson az **OK** gombra.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához. 
-1. Egy webböngészőben a virtuális gép *myVMEastUS*, írja be a Traffic Manager-profil megtekintéséhez a webhely DNS-nevét. Mivel a virtuális gép *myVMEastUS* IP-cím társítva a végpont *myIISVMEastUS*, a böngésző elindítja a Test-webhely kiszolgálójának - *myIISVMEastUS*.
+1. A *myVMEastUS* virtuális gépen egy webböngészőben adja meg a Traffic Manager-profil DNS-nevét a webhely megtekintéséhez. Mivel a virtuális gép *myVMEastUS* IP-cím társítva a végpont *myIISVMEastUS*, a böngésző elindítja a Test-webhely kiszolgálójának - *myIISVMEastUS*.
 
    ![Traffic Manager-profil tesztelése](./media/traffic-manager-subnet-routing-method/test-traffic-manager.png)
 

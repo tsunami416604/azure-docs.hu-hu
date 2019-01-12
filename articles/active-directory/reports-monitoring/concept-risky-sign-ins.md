@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623859"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244715"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -85,12 +85,11 @@ Ez a jelentés is nyújt lehetőséget:
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/93.png)
 
-
 ## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Az Azure AD prémium kiadásaiban a kockázatos bejelentkezések jelentés
 
 Az Azure AD prémium kiadásaiban a kockázatos bejelentkezések jelentés a következőket tartalmazza:
 
-- Összesített adatok az észlelt [kockázati események típusairól](concept-risk-events.md)
+- Összesített adatok a [kockázati események típusairól](concept-risk-events.md) észlelt. Az a **Azure AD Premium P1 edition**, a kockázati esemény jelenik meg, amelyek nem tartoznak a licenc **bejelentkezési további észlelt kockázattal rendelkező**. Az a **Azure AD Premium P2 kiadás**, a legrészletesebb információkat minden mögöttes észlelés kap.
 
 - Lehetőség a jelentés letöltésére
 

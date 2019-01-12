@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: overview
-ms.date: 10/26/2018
+ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 5e8e675b32bfd4c741b82b1ab341a80adbb0529d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: d9b5473e87d83912dd2f33c00e983e346226e4aa
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741640"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242947"
 ---
 # <a name="what-is-azure-custom-vision"></a>Mi az az Azure Custom Vision?
 
@@ -27,7 +27,7 @@ A Custom Vision Service a képek osztályozásához egy gépi tanulási algoritm
 
 ### <a name="classification-and-object-detection"></a>Osztályozás és objektumészlelés
 
-A Custom Vision funkciói két szolgáltatásra oszlanak. A **Képosztályozás** az egyes képekhez egy osztályozáseloszlást rendel hozzá. Az **Objektumészlelés** hasonló, azonban visszaadja a kép által tartalmazott koordinátákat is, ahol az alkalmazott címkék találhatók.
+A Custom Vision funkciói két szolgáltatásra oszlanak. A **Képosztályozás** az egyes képekhez egy osztályozáseloszlást rendel hozzá. Osztályú (képenként egy címke) és is multilabel (bármely képenként címkék száma) a besorolás modellek támogatottak. **Észlelési objektum** multilabel besorolás, hasonló, de azt is koordinátáit adja vissza a képen az alkalmazott címkék találhatók.
 
 ### <a name="optimization"></a>Optimalizálás
 
@@ -39,6 +39,10 @@ Emellett a Custom Vision-algoritmus számos változata közül választhat, amel
 A Custom Vision Service natív SDK-k készleteként is elérhető egy webalapú felületen a [Custom Vision kezdőlapján](https://customvision.ai/). Az egyik vagy mindkét felületen létrehozhat, tesztelhet és betaníthat egy modellt.
 
 ![Custom Vision-kezdőlap egy Chrome-böngészőablakban](media/browser-home.png)
+
+## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
+
+Mint az összes, a Cognitive Services a Custom Vision service segítségével a fejlesztők célszerű tisztában lennie a házirendek a Microsoft-vásárlói adatokat. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések
 

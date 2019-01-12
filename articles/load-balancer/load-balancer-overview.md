@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e66acd6a94b891ac3f727fddb7a88a9c56f465d3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120835"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246568"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -153,7 +153,13 @@ Egy belső Load Balancer a következő típusú terheléselosztásokat teszi leh
 *Ábra: Terheléselosztás a többrétegű alkalmazások nyilvános, mind a belső Load Balancer használatával*
 
 ## <a name="pricing"></a>Díjszabás
-A Standard Load Balancer használatának árát a beállított terheléselosztási szabályok száma, valamint a kimenő és bejövő adatok feldolgozott mennyisége határozza meg. A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](https://azure.microsoft.com/pricing/details/load-balancer/) ismertető oldalon talál további információt.
+
+Standard Load Balancerhez használati díjat számítunk fel.
+
+- Száma beállított terheléselosztási és kimenő szabályok szabályok (bejövő NAT-szabályok nem számítanak bele a szabályok teljes száma)
+- Adatok mennyisége a bejövő és kimenő függetlenül szabály feldolgozása. 
+
+A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](https://azure.microsoft.com/pricing/details/load-balancer/) ismertető oldalon talál további információt.
 
 Az Alapszintű Load Balancer használata ingyenes.
 

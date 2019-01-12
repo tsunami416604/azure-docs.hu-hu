@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/22/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: e9365008c47c2aac71d3983a16db37b0c5ea62ea
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: unknown
+ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648105"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246228"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Csatlakozás Azure Stack az Azure ExpressRoute használatával
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ez a cikk bemutatja, hogyan csatlakozhat az Azure Stack virtuális hálózat Azure-beli virtuális hálózathoz egy [a Microsoft Azure ExpressRoute](/azure/expressroute/) közvetlen kapcsolat.
 
@@ -134,7 +134,7 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 1. A hálózati erőforrások listájában válassza a **Virtuális hálózati átjáró** elemet.
 1. Az a **neve** írja be a következőt **GW1**.
-1. Válassza ki **virtuális hálózati**.
+1. Válassza ki a **Virtuális hálózatot**.
 1. Válassza ki **Tenant1VNet1** a legördülő listából.
 1. Válassza ki **nyilvános IP-cím**, majd **nyilvános IP-cím választása**, és kattintson a **új létrehozása**.
 1. Az a **neve** mezőbe írja be a **GW1-PiP**, és kattintson a **OK**.

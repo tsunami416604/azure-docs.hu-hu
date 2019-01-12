@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 0b232ed8bacfeb896fd5ee6ff9e2a58b71dc1517
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 92c493a59cc14d61b09e59bdf0fa23be72b7137a
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162971"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232549"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Milyen hitelesítési módszerek érhetők el?
 
 A hírekben folyamatosan azt lehet hallani, hogy a jelszavakat ellopják, és az identitásokat feltörik. A jelszó mellett egy második hitelesítési tényező megkövetelése azonnal növeli a vállalat biztonságát. A Microsoft Azure Active Directory (Azure AD) különféle szolgáltatásaival, mint az Azure Multi-Factor Authentication (Azure MFA) és az új Azure AD-jelszó önkiszolgáló kérése (SSPR) a rendszergazdák kiegészítő hitelesítési módszerekkel gondoskodhatnak a vállalat és a felhasználók védelméről.
 
-Ha egy felhasználó egy érzékeny alkalmazáshoz szerezne hozzáférni, új jelszót kér, vagy engedélyezné a Windows Hellót, a rendszer további azonosítással ellenőrzi, hogy valóban az-e, akinek mondja magát.
+Számos olyan tartalmazó: bejelentkezés egy alkalmazásba, új engedélyezése a Windows Hello, és a jelszó, a felhasználók felkérheti további ellenőrzésének biztosításához, hogy mondják, akik azok.
 
 A további azonosítás különféle hitelesítési módszerekkel történhet, például a következőkkel:
 
@@ -42,9 +42,9 @@ Az új jelszó önkiszolgáló kérésével a felhasználók a rendszergazda bea
 
 Az új jelszó önkiszolgáló kérése a következőkből áll:
 
-* **Jelszó módosítása:** Tudom a jelszavam, de szeretném módosítani.
-* **Új jelszó kérése:** Nem tudok bejelentkezni, és szeretnék új jelszót kérni egy vagy több jóváhagyott hitelesítési módszer használatával.
-* **Fiók zárolásának feloldása:** Nem tudok bejelentkezni, mivel a fiókom zárolva lett, és szeretném feloldani a zárolást egy vagy több jóváhagyott hitelesítési módszer használatával.
+* **Jelszó módosítása:** Tudom a jelszavam, de új módosítani szeretné.
+* **Jelszó-visszaállítás:** Nem lehet jelentkezzen be és alaphelyzetbe állítja a jelszó legalább egy jóváhagyott hitelesítési módszerek használatával.
+* **Fiók zárolásának feloldása:** Nem tudok bejelentkezni, mert a fiók zárolva van, és szeretném zárolásának feloldásához, egy vagy több jóváhagyott hitelesítési módszerek használatával.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -56,6 +56,6 @@ Következő lépésként konfiguráljuk az új jelszó önkiszolgáló kérésé
 
 Az új jelszó önkiszolgáló kérése használatának megkezdéséhez tekintse meg [az SSPR engedélyezését bemutató rövid útmutató cikket](quickstart-sspr.md).
 
-Az új jelszó önkiszolgáló kérésével kapcsolatos további információkért tekintse meg [az új Azure AD-jelszó önkiszolgáló kérésének működését bemutató](concept-sspr-howitworks.md) cikket.
+További információ az önkiszolgáló jelszó-visszaállítást a cikkben, [működését: Az Azure AD önkiszolgáló jelszó-visszaállítás](concept-sspr-howitworks.md)
 
-Az Azure Multi-Factor Authenticationnel kapcsolatos további információkért tekintse meg [az Azure Multi-Factor Authentication működését bemutató](concept-mfa-howitworks.md) cikket.
+A cikk az Azure multi-factor Authentication többet [működését: Az Azure multi-factor Authentication](concept-mfa-howitworks.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186497"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232923"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
@@ -269,7 +269,7 @@ A **gépi biztonsági** panelen a kiválasztott kiszolgálóhoz tartozó a bizto
 ![Gép biztonsági panel](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>Frissítések integráció
-Az Update Management Service Map integrációs akkor automatikus, ha mindkét megoldás engedélyezve van, és a napló Anlaytics munkaterületen konfigurált.
+Az Update Management Service Map integrációs akkor automatikus, ha mindkét megoldás engedélyezve van, és a Log Analytics-munkaterületen konfigurált.
 
 A **Machine-frissítések** ablaktábla a kijelölt kiszolgálón az Update Management megoldás adatait jeleníti meg. A panelen a kiválasztott időtartományban sorolja fel a kiszolgáló hiányzó frissítésekkel összegzését.
 

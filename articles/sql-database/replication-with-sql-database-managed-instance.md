@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 4a272b028e1e3ef2778227f259c0b1b980af885d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/11/2019
+ms.openlocfilehash: 5db9e1f348fed9592d33e9240180db7f2667bb56
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547594"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244545"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>A replikáció az SQL Database felügyelt példánya
 
@@ -87,7 +87,7 @@ A következőket támogatja:
 
    Cserélje le az alábbi parancsfájlpéldákat `<Publishing_DB>` e adatbázis nevére.
 
-4. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Látható, [adatbázis-felhasználók létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Használjon biztonságos jelszót.
+4. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Használjon biztonságos jelszót.
 
    Használja az alábbi parancsfájlpéldákat `<SQL_USER>` és `<PASSWORD>` az SQL Server-fiók adatbázis-felhasználót és a jelszót.
 

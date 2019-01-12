@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257265"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244783"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>A StorSimple Virtual Array üzembe helyezése – előkészítése az Azure Portalon
 
@@ -43,7 +43,7 @@ A StorSimple Virtual Array üzembe helyezéséhez a az előírt feladatütemezé
 | **#** | **Ebben a lépésben** | **Ezt megteheti...** | **És ezeket a dokumentumokat.** |
 | --- | --- | --- | --- |
 | 1. |**Állítsa be az Azure Portalon** |Létrehozhat és konfigurálhat egy StorSimple Virtual Array kiépítése előtt a StorSimple-Eszközkezelő szolgáltatáshoz. |[A portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**A virtuális tömb** |A Hyper-V üzembe helyezése, és csatlakozzon a StorSimple Virtual Array állomás operációs rendszert futtató Hyper-V Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. <br></br> <br></br> VMware-ről üzembe helyezése, és csatlakozzon a StorSimple Virtual Array a gazdagép operációs rendszert futtató VMware ESXi 5.0-s, 5.5 és 6.0.<br></br> |[A Hyper-V virtuális tömb létrehozása](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Virtuális tömb létrehozása VMware-ben](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**A virtuális tömb** |A Hyper-V üzembe helyezése, és csatlakozzon a StorSimple Virtual Array állomás operációs rendszert futtató Hyper-V Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. <br></br> <br></br> VMware-ről üzembe helyezése, és a StorSimple Virtual Array a gazdagép operációs rendszert futtató VMware ESXi 5.0-, 5.5-ös, 6.0-s vagy 6.5-ös csatlakozni.<br></br> |[A Hyper-V virtuális tömb létrehozása](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Virtuális tömb létrehozása VMware-ben](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**Állítsa be a virtuális tömb** |A fájlkiszolgáló hajtsa végre a kezdeti beállítás, Regisztráljon a StorSimple fájlkiszolgáló és az eszköz beállításának befejezése. Ezután üzembe helyezheti az SMB-megosztásokat. <br></br> <br></br> Az iSCSI-kiszolgáló hajtsa végre a kezdeti beállítás, a StorSimple iSCSI-kiszolgáló regisztrálása és az eszköz beállításának befejezése. Az iSCSI-kötet helyezhet majd. |[Állítsa be a virtuális tömb fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Állítsa be a virtuális tömb iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Most megkezdheti az Azure Portal beállítását.
@@ -71,7 +71,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 Mielőtt telepít egy virtuális tömböt, ellenőrizze, hogy:
 
-* A Hyper-V a Windows Server 2008 R2 vagy újabb rendszerű gazdagép rendszere vagy VMware-alapú (ESXi 5.0-s, 5.5 és 6.0-s), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
+* A Hyper-V a Windows Server 2008 R2 vagy újabb rendszerű gazdagép rendszere vagy VMware-alapú (ESXi 5.0-s, 5.5-ös, 6.0-s vagy 6.5-ös), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
 * A gazdagép rendszere viszont rendelnie a virtuális tömb telepítéséhez a következőket:
   
   * Legalább 4 mag.
@@ -92,7 +92,7 @@ Használja az alábbi részletes útmutatás a portál előkészítése a StorSi
 
 ## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
 
-A StorSimple-Eszközkezelő szolgáltatás egyetlen példánya több StorSimple Virtual Arrayt kezelheti. Az alábbi lépések végrehajtásával hozza létre a StorSimple-eszközkezelő szolgáltatás egy példányát. Ha rendelkezik egy meglévő StorSimple-Eszközkezelő szolgáltatás kezelése a virtuális tömböket, kihagyhatja ezt a lépést, és folytassa [2. lépés: Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key).
+A StorSimple-Eszközkezelő szolgáltatás egyetlen példánya több StorSimple Virtual Arrayt kezelheti. Az alábbi lépések végrehajtásával hozza létre a StorSimple-eszközkezelő szolgáltatás egy példányát. Ha rendelkezik egy meglévő StorSimple-Eszközkezelő szolgáltatás kezelése a virtuális tömböket, kihagyhatja ezt a lépést, és folytassa [2. lépés: A Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -100,11 +100,11 @@ A StorSimple-Eszközkezelő szolgáltatás egyetlen példánya több StorSimple 
 > Ha nem engedélyezte a tárfiók automatikus létrehozását a szolgáltatással, akkor legalább egy tárfiókot létre kell hoznia, miután sikeresen létrehozott egy szolgáltatást.
 > 
 > * Ha nem hozott létre automatikusan egy tárfiókot, a részletes utasításokat az [Új tárfiók konfigurálása a szolgáltatáshoz](#optional-step-configure-a-new-storage-account-for-the-service) című szakaszban tekintheti meg.
-> * Ha engedélyezte a tárfiók automatikus létrehozását, folytassa a [2. lépés: Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key) című szakasszal.
+> * Ha engedélyezte a tárfiók automatikus létrehozását, folytassa a [2. lépés: A Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
+## <a name="step-2-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
 
 Ha a StorSimple-eszközkezelő szolgáltatás működik és elérhető, le kell kérnie a szolgáltatásregisztrációs kulcsot. Ezzel a kulccsal regisztrálhatja és csatlakoztathatja StorSimple eszközét a szolgáltatáshoz.
 
@@ -137,10 +137,10 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
    
    * VHDX Hyper-v a Windows Server 2012 és újabb verziók
    * VHD Hyper-v a Windows Server 2008 R2 és újabb verziók
-   * VMDK a VMWare ESXi 5.0-s, 5.5-ös vagy 6.0
+   * VMDK a VMWare ESXi 5.0-s, 5.5-ös, 6.0-s vagy 6.5-ös
 5. Töltse le a fájlt egy helyi meghajtóra, csomagolja ki, és jegyezze fel, hol található a kicsomagolt fájl.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Nem kötelező lépés: a szolgáltatás egy új tárfiók konfigurálása
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Nem kötelező lépés: Új tárfiók konfigurálása a szolgáltatáshoz
 
 Ez a lépés nem kötelező, és csak akkor, ha nem engedélyezte a tárfiók automatikus létrehozását a szolgáltatással kell végrehajtani.
 

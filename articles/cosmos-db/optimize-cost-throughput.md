@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 279f029dee9e49985805a383fb4fefb82a4f4ebd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 476e39d0ced465d75e44098b9508472b87b0e7b8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038330"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230169"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB átviteli költségek optimalizálása
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon ezt a választ a tényleges, a kiszolgáló által megadott retry-after fejléccel tiszteletben, és ismételje meg a kérelmet. A fiók egyidejűleg több ügyfél által elérhető, kivéve a következő újrapróbálkozás sikeres lesz.
 
-Ha egynél több ügyfél összesítve van folyamatosan működő fent a kérések aránya az alapértelmezett újrapróbálkozások jelenleg, amely a jelenleg beállított 9 bot elegendő lehet. Ebben az esetben az ügyfél jelez egy `DocumentClientException` állapotú code 429-es az alkalmazáshoz. Az alapértelmezett újrapróbálkozások beállításával módosítható a `RetryOptions` ConnectionPolicy-példányon. Alapértelmezés szerint a 429-es állapotkód DocumentClientException adja vissza egy halmozódó várakozási idő pedig 30 másodperc után, ha a kérés továbbra is működőképes fent a kérések aránya. Ez akkor fordul elő, még ha az aktuális újrapróbálkozások nem éri el az újrapróbálkozások maximális számát, legyen az alapértelmezett 9 vagy egy felhasználó által definiált értéket. 
+Ha egynél több ügyfél felett a kérések mennyisége következetesen összesítve működő, az alapértelmezett újrapróbálkozások jelenleg, amely a jelenleg beállított 9 nem minden esetben. Ebben az esetben az ügyfél jelez egy `DocumentClientException` állapotú code 429-es az alkalmazáshoz. Az alapértelmezett újrapróbálkozások beállításával módosítható a `RetryOptions` ConnectionPolicy-példányon. Alapértelmezés szerint a 429-es állapotkód DocumentClientException adja vissza egy halmozódó várakozási idő pedig 30 másodperc után, ha a kérés továbbra is működőképes fent a kérések aránya. Ez akkor fordul elő, még ha az aktuális újrapróbálkozások nem éri el az újrapróbálkozások maximális számát, legyen az alapértelmezett 9 vagy egy felhasználó által definiált értéket. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) értéke 3, így ebben az esetben, ha egy kérés művelet meghaladja a fenntartott átviteli sebesség ahhoz a gyűjteményhez, korlátozza a sebességét a kért művelet újrapróbálkozik háromszor kivétel előtt a Kivétel történt az alkalmazáshoz.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 értékre van állítva, tehát ebben az esetben, ha az összesített újrapróbálkozási ideig várakozik az első óta eltelt másodpercek alatt kérelem meghaladja a 60 másodperc, a kivétel történt.
 

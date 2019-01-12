@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584445"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232753"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Oktatóanyag: Állítson össze egy rendszerképet, alkalmazás - C feldolgozása&#35;
 
@@ -97,9 +97,6 @@ Futtathatja a mintaalkalmazást, megtekintéséhez, hogy milyen hatással, és a
    |Ismeri fel a szöveget (optikai Karakterfelismerés) | Használja a [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) felismerése és kinyerése művelet nyomtatott szöveg egy rendszerképből. Válassza ki a használni kívánt nyelvet, vagy lehetővé teszik a Computer Vision automatikusan észlelje a nyelvet. |
    |Ismeri fel a szöveg V2 (angol nyelven) | Használja a [szöveg felismerése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és [első ismeri fel a szöveg művelet eredményének](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) műveletek aszinkron módon ismeri fel, és nyomtatott vagy kézzel írt szöveg kinyerése egy képet. |
    |Miniatűr beolvasása | Használja a [miniatűr beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) művelet végrehajtásával létrehozott egy helyi vagy távoli kép miniatűrjét. |
-
-   > [!IMPORTANT]
-   > A Microsoft a képek feltöltéséhez, és felhasználhatja őket az Computer Vision API-és kapcsolódó kap. Egy kép elküldésekor megerősíti, hogy betartotta a [Fejlesztői magatartási kódexet](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
 
    Az alábbi képernyőfelvételen látható az oldal, a kép elemzése a forgatókönyvben egy képet elemzése után megadott mutatja be.
    ![Az elemzés kép oldalát bemutató képernyőkép](../Images/Analyze_Image_Example.PNG)

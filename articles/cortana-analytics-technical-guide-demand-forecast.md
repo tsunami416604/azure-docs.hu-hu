@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427063"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231172"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technikai útmutató a Cortana Intelligence Megoldássablon igény szerint az energiaellátás előrejelzése
 ## <a name="overview"></a>**Áttekintés**
@@ -163,8 +163,8 @@ A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics
 
 1. Adja hozzá a Power BI-kimenet az Azure Stream Analytics (ASA).
 
-   * Kövesse a kell [Azure Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok a valós idejű streamelési adatok láthatóságának](stream-analytics/stream-analytics-power-bi-dashboard.md) állíthatja be a kimenet az Azure Stream Analytics-feladat, a Power BI-irányítópulton .
-   * Keresse meg a stream analytics-feladat a [az Azure portal](https://portal.azure.com). A feladat a névnek kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
+   * Kövesse a kell [Azure Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok a valós idejű streamelési adatok láthatóságának](stream-analytics/stream-analytics-power-bi-dashboard.md) állíthatja be a kimenet az Azure Stream Analytics-feladat, a Power BI-irányítópulton.
+   * Keresse meg a stream analytics-feladat a [az Azure portal](https://portal.azure.com). A feladat nevét kell lennie: YourSolutionName + "streamingjob" + véletlenszerű szám + "asapbi" (azaz demostreamingjob123456asapbi).
    * Adjon hozzá egy Power bi az ASA-feladat kimenetét. Állítsa be a **kimeneti Alias** , **"PBIoutput"**. Állítsa be a **adatkészlet neve** és **táblanév** , **"EnergyStreamData"**. Miután hozzáadta a kimenetet, kattintson a **"Start"** a Stream Analytics-feladat indítása az oldal alján. Érdemes kap egy megerősítő üzenetet (például "kezdő stream analytics-feladat sikeres myteststreamingjob12345asablob").
 2. Jelentkezzen be [online a Power bi-ban](https://www.powerbi.com)
 
@@ -185,7 +185,7 @@ A következő lépések végigvezetik hogyan jelenítheti meg a Stream Analytics
 A ritka elérésű útvonal adatfolyamatok alapvető célja az, hogy minden egyes régió kereslet-előrejelzés. Power BI adatforrásként, az előrejelzési eredményeket tároló Azure SQL Database-adatbázishoz kapcsolódik.
 
 > [!NOTE]
-> 1) Elég előrejelzési eredményeket az irányítópult gyűjtéséhez néhány órát vesz igénybe. Azt javasoljuk, hogy a folyamat 2-3 óra után, az adatgenerálást delek megkezdéséhez. 2.) ebben a lépésben a szükséges előfeltétel, hogy töltse le és telepítse az ingyenes szoftvereket [Power BI desktop](https://powerbi.microsoft.com/desktop).
+> 1.) néhány órát vesz gyűjtése az irányítópult elég előrejelzési eredményeket. Azt javasoljuk, hogy a folyamat 2-3 óra után, az adatgenerálást delek megkezdéséhez. 2.) ebben a lépésben a szükséges előfeltétel, hogy töltse le és telepítse az ingyenes szoftvereket [Power BI desktop](https://powerbi.microsoft.com/desktop).
 >
 >
 
@@ -200,7 +200,7 @@ A ritka elérésű útvonal adatfolyamatok alapvető célja az, hogy minden egye
 2. Az adatforrás a ritka elérésű útvonal a Power BI-fájl frissítése
 
    * Győződjön meg arról, hogy telepítette a legújabb [Power BI desktop](https://powerbi.microsoft.com/desktop).
-   * Az a **"DemandForecastingDataGeneratorv1.0"** letöltött mappát, kattintson duplán a **"Power BI Template\DemandForecastPowerBI.pbix"** fájlt. A kezdeti Vizualizációk helyőrző adatokon alapulnak. **Megjegyzés:** hibaüzenet jelenik meg, ha győződjön meg arról, hogy telepítette a Power BI Desktop legújabb verzióját.
+   * Az a **"DemandForecastingDataGeneratorv1.0"** letöltött mappát, kattintson duplán a **"Power BI Template\DemandForecastPowerBI.pbix"** fájlt. A kezdeti Vizualizációk helyőrző adatokon alapulnak. **Megjegyzés:** Ha megjelenik egy hibaüzenet, győződjön meg arról, hogy telepítette a Power BI Desktop legújabb verzióját.
 
      Kattintson a megnyitott, a fájl felső részén, **lekérdezések szerkesztése**. A kiugró ablakban kattintson duplán **"Forrás"** a jobb oldali panelen.
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)

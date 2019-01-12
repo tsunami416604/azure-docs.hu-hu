@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/11/2018
+ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 6badfabb3ad20b5c17b3bb2bf09ae13f63568d05
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 21aac318542f9d30cb44d940392d05367f1f7b9f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714749"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246466"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -78,7 +78,7 @@ Például `http://contoso.com/video/*` iránti kérelmek VideoServerPoolba, míg
 
 ## <a name="multiple-site-hosting"></a>Több hely üzemeltetése
 
-A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ezzel a funkcióval hatékonyabb topológiát konfigurálhat telepítéseihez, mivel akár 20 webhelyet is hozzáadhat egyetlen Application Gatewayhez. Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
+A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ez a funkció lehetővé teszi, hogy egy application gateway akár 100 webhelyek hozzáadása a hatékonyabb topológiát beállításához. Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
@@ -118,6 +118,6 @@ Az nyilvános előzetes funkcióval kapcsolatos további információkért lásd
 
 Az igényeitől és a környezetétől függően az Azure Portallal, az Azure PowerShellel vagy az Azure CLI-vel hozhat létre egy Application Gateway-tesztet:
 
-- [Gyors útmutató: Az Azure Application Gatewayjel – Azure portal webes forgalom irányítása](quick-create-portal.md).
-- [Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure PowerShell-lel](quick-create-powershell.md)
-- [Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure CLI-vel](quick-create-cli.md)
+- [Rövid útmutató: Az Azure Application Gatewayjel – Azure portal webes forgalom irányítása](quick-create-portal.md).
+- [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure PowerShell-lel](quick-create-powershell.md)
+- [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure CLI-vel](quick-create-cli.md)

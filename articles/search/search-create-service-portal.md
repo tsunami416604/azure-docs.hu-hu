@@ -9,22 +9,22 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002637"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230526"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
-Az Azure Search egy használt keresési funkciókat adhat hozzá egyéni alkalmazások önálló erőforrásként. Azure Search egyszerűen integrálható számos Azure-szolgáltatásokat, bár használhatja önmagában, a hálózati kiszolgálókon lévő üzemeltetett alkalmazások vagy más felhőplatformon futó szoftvert. 
+Az Azure Search egy olyan önálló erőforrás, az egyéni alkalmazások keresési funkciókat beépülő modul segítségével. Azure Search egyszerűen integrálható más Azure-szolgáltatásokat, bár használhatja önmagában, alkalmazások hálózati kiszolgálókon, vagy más felhőplatformon futó szoftvert. 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Search-erőforrást a [az Azure portal](https://portal.azure.com/). 
 
 ![A portál Azure Search-erőforrás](media/search-create-service-portal/azure-search-resource-label.png)
 
-Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekhez az [Azure Search szolgáltatás kezelése a PowerShell használatával](search-manage-powershell.md) című cikkben ismertetett háttérinformációk nyújtanak segítséget.
+Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekhez segítséget talál [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md).
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 

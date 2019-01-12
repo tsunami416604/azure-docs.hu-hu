@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a2c45807f846dbe9d1c6bd91ce8c87958949ab17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344295"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231325"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -153,7 +153,7 @@ A művelet által megadott erőforrás két típusa van a **típus** tulajdonsá
 Riasztási műveletek az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
 
-```
+```json
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -290,7 +290,7 @@ A Webhook művelet erőforrás tulajdonságait az alábbi táblázatok ismerteti
 |:--|:--|:--|
 | type | Igen | A művelet típusa.  Ez a **Webhook** webhook-műveletek esetében. |
 | név | Igen | A művelet megjelenítendő nevét.  Ez nem jelenik meg a konzolon. |
-| wehookUri | Igen | A webhook URI azonosítója. |
+| WebhookUri | Igen | A webhook URI azonosítója. |
 | customPayload | Nem | A webhook küldendő egyéni adattartalom. Mi a webhookot, a várt formátumban függ. |
 
 
@@ -304,7 +304,7 @@ Következő látható egy minta olyan megoldás, amely a következő forrásokat
 
 A példa [standard megoldás paraméterek]( solutions-solution-file.md#parameters) változókat gyakran használni kívánt figyelésekor az erőforrás-definíciókban hardcoding értékek-megoldásban.
 
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -462,7 +462,7 @@ A példa [standard megoldás paraméterek]( solutions-solution-file.md#parameter
 ```
 
 A következő paraméterfájl minták értékeket biztosítja a megoldás.
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",

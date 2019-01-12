@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/11/2019
+ms.lastreviewed: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 035284e23d3b600cbf1cbd5500a9821c2c628b05
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: ea8669189b5fc8d797fc03f579ea52e7c11a7078
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156204"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246959"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Az SQL Server erőforrás-szolgáltató az Azure Stack üzembe helyezése
 
@@ -59,8 +60,11 @@ _Csak az integrált rendszerek telepítés_. Meg kell adnia az SQL PaaS PKI-tan�
 
 ## <a name="deploy-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató üzembe helyezése
 
-Után minden előfeltétel telepítve van, futtassa a **DeploySqlProvider.ps1** üzembe helyezése erőforrás-szolgáltató az SQL-szkript. A DeploySqlProvider.ps1 parancsfájlt a SQL erőforrás-szolgáltató bináris letöltött az Azure Stack verziójának részeként ki kell olvasni.
+Minden előfeltétel telepítése után futtathatja a **DeploySqlProvider.ps1** üzembe helyezése erőforrás-szolgáltató az SQL-szkript. A DeploySqlProvider.ps1 parancsfájlt a SQL erőforrás-szolgáltató bináris letöltött az Azure Stack verziójának részeként ki kell olvasni.
 
+ > [!IMPORTANT]
+ > Az erőforrás-szolgáltató üzembe helyezése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
+ 
 Az SQL erőforrás-szolgáltató üzembe helyezése, nyissa meg a **új** emelt szintű PowerShell-ablakot (nem a PowerShell ISE), és módosítsa azt a könyvtárat, amelyben kibontotta az SQL resource provider bináris fájlokat. Azt javasoljuk, egy új PowerShell-ablakot a már betöltött PowerShell-modulok által okozott problémák elkerülése érdekében.
 
 Futtassa a DeploySqlProvider.ps1 parancsfájlt, amely a következő feladatokat hajtja végre:
@@ -133,6 +137,10 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Clear the existing login information from the Azure PowerShell context.
+Clear-AzureRMContext -Scope CurrentUser -Force
+Clear-AzureRMContext -Scope Process -Force
 
 # Change to the directory folder where you extracted the installation files. Do not provide a certificate on ASDK!
 . $tempDir\DeploySQLProvider.ps1 `

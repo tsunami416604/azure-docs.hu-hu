@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a20e4d713440ca6fe1adaf5b89bff347a8fd0bde
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ed720b0db68a11c573a763c4269349db97977eff
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744088"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231070"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
 
@@ -99,6 +99,25 @@ Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konf
 
 Nagyvállalati szerződéssel rendelkező ügyfelek 2018. július 1-aláírását, és akik már létrehozott Log Analytics-munkaterület az előfizetéshez, akkor továbbra is hozzáférhetnek a a *ingyenes* tervet. Ha az előfizetés nem kötődik meglévő EA-regisztrációhoz, a *ingyenes* szint nem érhető el, amikor egy új előfizetést a 2018. április 2. után hozzon létre egy munkaterületet.  7 napos megőrzés az adatok korlátozódik a *ingyenes* szint.  Az örökölt *önálló* vagy *Csomópontonkénti* rétegek, valamint a jelenlegi 2018 egyetlen tarifacsomagban a gyűjtött adatok érhető el az elmúlt 31 napra vonatkozó. A *ingyenes* csomag esetében a napi korlátja 500 MB-ot a betöltési, és ha rendszeresen túllépi az engedélyezett mennyiségi összegek, a munkaterület módosíthatja az adatgyűjtés meghaladja ezt a határt egy másik csomaghoz. 
 
+> [!NOTE]
+> Az OMS E1 csomag, OMS E2 csomagot vagy a System Center OMS bővítményének megvásárlásából származó jogosultságok használatához válassza a Log Analytics *Csomópontonkénti* tarifacsomag.
+
+## <a name="changing-pricing-tier"></a>A tarifacsomag módosítása
+
+Ha a Log Analytics-munkaterület hozzáfér az örökölt tarifacsomagok között örökölt tarifacsomag módosítása:
+
+1. Az Azure Portalon a Log Analytics-előfizetések panelen válasszon ki egy munkaterületet.
+
+2. A munkaterület ablaktáblán alatt **általános**válassza **tarifacsomag**.  
+
+3. A **tarifacsomag**válassza ki a tarifacsomagot, majd kattintson a **kiválasztása**.  
+    ![A kijelölt tarifacsomag](media/manage-cost-storage/workspace-pricing-tier-info.png)
+
+A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha szeretné [módosítása az előfizetés figyelése az Azure monitorban díjszabási modell](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model) amelyek módosulnak, az adott előfizetésben minden munkaterület tarifacsomagját.
+
+> [!NOTE]
+> Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
+
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>A Log Analytics már nem gyűjt adatokat okozó hibák elhárítása
 Ha a régi ingyenes tarifacsomagban és a egy nap alatt több mint 500 MB mennyiségű adatot küldő adatgyűjtés leáll, a többi, a nap. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  A log Analytics művelet típusú eseményt hoz létre, amikor adatgyűjtés indítása és leállítása. A keresés, ellenőrizze, hogy vannak napi korlát elérése és adatok hiányoznak a következő lekérdezés futtatásával: 
@@ -136,22 +155,55 @@ Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az
 
 ### <a name="nodes-sending-data"></a>Adatokat küldő csomópontok
 
-A jelentési adatok az elmúlt hónapban a csomópontok számát undersand, használja a
+Szeretné megtudni, minden nap az utolsó hónapban adatokat küldő számítógépek (csomópontok) számát, használata
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-A számítógép betöltött események száma használja
+A küldő számítógépek listájának lekérése **adattípusok számlázzuk** (egyes adattípusok olyan ingyenes), használhatja a `_IsBilled` tulajdonság:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+
+E `union withsource = tt *` , különböző adatok adatok typres keresésekre végrehajtása költséges takarékosan kérdezi le. 
+
+Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránkénti száma számlázzuk adattípusok:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+
+Megtekintheti a **mérete** számlázható események betöltött számítógépenként, használja a `_BilledSize` -tulajdonsággal, amely biztosítja a mérete (bájt):
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+Ez a lekérdezés a lekérdezés ezt a használati adatok típusa a régi módja váltja fel. 
+
+Megtekintheti a **száma** számítógép betöltött események használata
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Ez a lekérdezés, költséges hajtható végre, mert megtörhetik a cikk folytonosságát használja. Ha azt szeretné, megtekintheti, mely adattípusok sendng az adatokat egy adott számítógép használja:
+A számítógép betöltött számlázható események száma használja 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot küldenek, adott számítógéphez, használja:
 
 `union withsource = tt *
-| where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 > [!NOTE]
 > Néhány, a használati adatok típusú mezőt közben továbbra is a séma elavultak, értékeik már fel van töltve lesz. Ezek a **számítógép** valamint Adatbetöltési kapcsolódó mezőket (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** és **AverageProcessingTimeMs**.

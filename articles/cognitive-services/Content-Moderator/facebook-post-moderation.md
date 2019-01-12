@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2b655e488b15b4520bc1de24b730f97269bddb4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255431"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231801"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Oktatóanyag: A Content Moderator tartalom Facebook-jóváhagyás
 
@@ -152,10 +152,6 @@ A megoldás a Facebook-oldalon közzétett összes képet és szöveget elküldi
 ## <a name="license"></a>Licenc
 
 Az összes Microsoft Cognitive Services SDK és -minta licencelése MIT-licenccel történik. További információ: [LICENC](https://microsoft.mit-license.org/).
-
-## <a name="developer-code-of-conduct"></a>Fejlesztői magatartási kódex
-
-A Cognitive Servicest (beleértve a jelen ügyfélkódtárat és mintát is) használó fejlesztőknek követniük kell a Microsoft Cognitive Services fejlesztőire vonatkozó magatartási kódexben foglaltakat. A dokumentum ezen a címen érhető el: http://go.microsoft.com/fwlink/?LinkId=698895.
 
 ## <a name="next-steps"></a>További lépések
 

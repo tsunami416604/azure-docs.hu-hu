@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: a16360fe74efe7394c061118bc4e6fa34e484858
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: bf80f78cc464fe274e83eca2f8afa420c2a8c453
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198542"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229956"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -33,6 +33,15 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 > Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-sdk), CLI-t, vagy valamelyik támogatott SDK-k.
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="december-2018"></a>2018. december
+
+Az általánosan elérhető kiadás V3 API-frissítések a következők:
+       
+* A **PresentationTimeRange** tulajdonságai nem lesznek "szükséges" **AssetFilters** és **AccountFilters**. 
+* A $skip és $top lekérdezési beállítások **feladatok** és **alakítja át** el lettek távolítva, és $orderby hozzá lett adva. Részeként az új rendezési funkció hozzáadása a rendszer észlelte, hogy a $skip és a $top beállításokat kellett véletlenül megnyílt korábban annak ellenére, hogy azok není implementována.
+* Enumerálás bővíthetőség újraengedélyezése. Ez a funkció az SDK előzetes verziók engedélyezve lett, és véletlenül az előfizetésemet letiltották a GA verzióban.
+* Két előre definiált adatfolyam-továbbítási szabályzat kaptak. **SecureStreaming** mostantól **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** mostantól **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>A 2018. november
 

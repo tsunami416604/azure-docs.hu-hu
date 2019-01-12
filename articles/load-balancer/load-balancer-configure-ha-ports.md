@@ -5,6 +5,7 @@ description: Ismerje meg, hogyan használható a magas rendelkezésre állású 
 services: load-balancer
 documentationcenter: na
 author: rdhillon
+manager: narayan
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: d104fd8a88a55af75faa2a0958733442c083451c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d4464f6188efb479f21a23bf936a8222061d9987
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084566"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244137"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Magas rendelkezésre állású portok konfigurálása belső terheléselosztó
 
 Ez a cikk magas rendelkezésre állású portok telepítését bemutató példát biztosít egy belső terheléselosztón. Konfigurációk hálózati virtuális berendezések (nva-k) vonatkozó további információkért tekintse meg a megfelelő szolgáltató webhelyeket.
 
 >[!NOTE]
->Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk ismerteti a Standard Load Balancer. Alapszintű Load Balancer kapcsolatos további információkért lásd: [Load Balancer áttekintése](load-balancer-overview.md).
+>Az Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk ismerteti a Standard Load Balancer. Alapszintű Load Balancer kapcsolatos további információkért lásd: [Load Balancer áttekintése](load-balancer-overview.md).
 
 Az ábrán látható az ebben a cikkben leírt üzembe helyezési példában a következő konfigurációt:
 

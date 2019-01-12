@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f64331c2b75df84f44486f192e17a744b43fcf9b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040659"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244902"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: Jelszóvisszaíró konfigurálása
 
@@ -52,6 +52,7 @@ A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a 
 * A Microsoft 365 E3 vagy A3
 * A Microsoft 365 E5 vagy a5 csomag
 * Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.

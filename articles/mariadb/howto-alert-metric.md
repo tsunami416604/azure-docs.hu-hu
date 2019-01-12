@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 9cc08920c5b8814a3e4b649f4518dce78c7cb38e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160598"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244239"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Riasztásokat állíthat be mérőszámok az Azure Database for MariaDB az Azure portal használatával
 
@@ -25,10 +25,9 @@ A következő műveleteket hajthatja végre, amikor elindítja riasztásokat leh
 * Webhook meghívása
 
 Konfigurálhatja és riasztási szabályok használatával kapcsolatos információk lekérése:
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Parancssori felület (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
-* [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Az Azure Monitor REST API-val](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Egy riasztási szabályt létrehozni egy metrika
 1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for MariaDB kiszolgáló figyelni szeretné.
@@ -49,7 +48,7 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
    
    ![Metrika kiválasztása](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. Konfigurálja a riasztási logika többek között a **feltétel** (például. "Nagyobb"), **küszöbérték** (például. 85 %-os), **idő összesítése**, **időszak** idő a metrikaszabály kell biztosítani a riasztási eseményindítók (például előtt "Keresztül az elmúlt 30 percben", és **gyakorisága**.
+7. Konfigurálja a riasztási logika többek között a **feltétel** (például. "Nagyobb"), **küszöbérték** (például. 85 %-os), **idő összesítése**, **időszak** idő a metrikaszabály kell biztosítani a riasztási eseményindítók (például előtt "Keresztül az elmúlt 30 percben") és **gyakorisága**.
    
    Válassza ki **kész** teljes.
 

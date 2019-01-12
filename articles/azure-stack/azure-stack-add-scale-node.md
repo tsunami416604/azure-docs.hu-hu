@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982997"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232872"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Kiegészítő skálázási egység csomópontok hozzáadása az Azure Stackben
 
@@ -105,6 +105,7 @@ A skálázási egység és a skálázási egység csomópontok állapota lehet b
 
 ### <a name="status-for-the-add-node-operation"></a>A Hozzáadás csomópont művelet állapota 
 **A skálázási egység:**
+
 |status               |Leírás  |
 |---------------------|---------|
 |Fut              |A skálázási egység aktívan résztvevő összes csomópontot.|
@@ -115,6 +116,7 @@ A skálázási egység és a skálázási egység csomópontok állapota lehet b
 
 
 **Egy méretezési egység csomópont:**
+
 |status                |Leírás  |
 |----------------------|---------|
 |Fut               |A csomópont tevékenyen részt vesz a skálázási egység.|
@@ -128,16 +130,16 @@ A skálázási egység és a skálázási egység csomópontok állapota lehet b
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Az alábbiakban a leggyakoribb problémáinak csomópont hozzáadásakor. 
 
-**1. forgatókönyv:** a Hozzáadás skálázási egység csomópont művelet sikertelen lesz, de egy vagy több csomópont szereplő Leállítva állapotú.  
-- Szervizelési: Egy vagy több csomópont használata a javítási művelet. Csak egyetlen javítási művelet is futtatható egyszerre.
+**1. forgatókönyv:**  A Hozzáadás skálázási egység csomópont művelet sikertelen lesz, de egy vagy több csomópont leállítva állapottal láthatók.  
+- Szervizelési: A javítási művelet használatával javítsa ki egy vagy több csomópontot. Csak egyetlen javítási művelet is futtatható egyszerre.
 
-**2. forgatókönyv:** egy vagy több skálázási egység csomópont már hozzá lett adva, de a tárolási bővítése nem sikerült. Ebben a forgatókönyvben a skálázási egység csomópont objektum állapotjelentést fut, de a tárolás konfigurálása a feladat nincs elindítva.  
+**2. forgatókönyv:** Egy vagy több skálázási egység csomópont már hozzá lett adva, de a tárolási bővítése nem sikerült. Ebben a forgatókönyvben a skálázási egység csomópont objektum állapotjelentést fut, de a tárolás konfigurálása a feladat nincs elindítva.  
 - Szervizelési: A kiemelt végponthoz segítségével áttekintheti az storage a következő PowerShell-parancsmag futtatásával:
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
-**3. forgatókönyv:** , amely azt jelzi, hogy a horizontális felskálázás feladat nem sikerült riasztást kapott.  
+**3. forgatókönyv:** Azt jelzi, hogy a horizontális felskálázás feladat nem sikerült riasztást kapott.  
 - Szervizelési: Ebben az esetben a tároló konfigurációs feladat nem sikerült. Ez a probléma megköveteli, hogy forduljon az ügyfélszolgálathoz.
 
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d7c8aa73f72f6db93c6ef78c333c36e1d26b74e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 805df837d5d33c5f21799e39145c62e71afdb4b5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995065"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231393"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat.
@@ -73,6 +73,8 @@ Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Sto
 | Felhasználónév | A felhasználónév, amely hozzáfér a írni az adatbázisba. Stream Analytics csak az SQL-hitelesítést támogatja. |
 | Jelszó | A jelszó az adatbázishoz való csatlakozáshoz. |
 | Tábla | A tábla neve, ahol a kimeneti íródik. A tábla neve a kis-és nagybetűket, és ez a tábla sémája pontosan a kívánt mezőket és azok típusát, a feladat kimenetének által generált egyeznie kell. |
+|Partícióséma öröklése| Ez lehetővé teszi, hogy a particionálási séma az előző lekérdezés lépés ahhoz, hogy az a tábla több írók teljes párhuzamos topológia öröklik. További információkért lásd: [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md).|
+|Egyezés kötegek száma| Rekordok küldi el minden tömeges javasolt felső határ száma szúrja be a tranzakció.|
 
 > [!NOTE]
 > Jelenleg a Stream Analytics-feladat kimenete az Azure SQL Database-ajánlat esetén támogatott. Azonban egy Azure virtuális gépet csatolt adatbázist tartalmazó SQL Server szoftvert futtató nem támogatott. Ez a jövőbeni kiadásokban változhat.
@@ -330,7 +332,7 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 
-> [Gyors útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
+> [Rövid útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

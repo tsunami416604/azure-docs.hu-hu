@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f1ebbc10109563b771c5417a0449efec12138526
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967691"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246245"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -48,7 +48,7 @@ A [szabályzatok](../policy/overview.md) olyan alapértelmezett engedélyezési 
 
 Ha a tervekbe belefoglal egy szabályzatot, lehetővé teszi a megfelelő minta vagy kialakítás létrehozását a terv hozzárendelésekor. A szabályzat belefoglalásával azt is biztosíthatja, hogy a környezeten csak jóváhagyott vagy várt módosításokat lehessen végrehajtani, így folyamatosan megfeleljen a terv által kijelölt rendeltetési célnak.
 
-A szabályzat a tervdefinícióban szereplő számos _tervelem_ egyike lehet. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
+Egy házirend is meg lehet adni egy számos _összetevők_ tervezet-definícióban. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
 
 ## <a name="blueprint-definition"></a>Tervdefiníció
 

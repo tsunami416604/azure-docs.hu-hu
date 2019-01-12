@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 1dbfd668c2d233d299ee673da92ca203e72942fe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: unknown
+ms.openlocfilehash: af959507fc2e0d1b68f547d2856eb7020d3ed5c6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957418"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247576"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker parancsmag-referencia
 
@@ -169,7 +169,7 @@ A **Start-AzsReadinessChecker** parancsmag ellenőrzi a tanúsítványokat, Azur
 
 ## <a name="examples"></a>Példák
 
-### <a name="example-generate-certificate-signing-request"></a>Példa: A tanúsítvány-aláírási kérelem létrehozása
+### <a name="example-generate-certificate-signing-request"></a>Példa: Tanúsítvány-aláírási kérelem létrehozása
 
 ```PowerShell
 $regionName = 'east'
@@ -180,7 +180,7 @@ Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -s
 
 Ebben a példában a Start-AzsReadinessChecker állít elő, több tanúsítvány-aláírási kérelem (CSR) a megfelelő ADFS Azure Stack üzembe helyezésének nevű régió "keleti régiója" tanúsítványok és a egy külső Tartományneve "azurestack.contoso.com"
 
-### <a name="example-validate-certificates"></a>Példa: A tanúsítványok ellenőrzése
+### <a name="example-validate-certificates"></a>Példa: Tanúsítványok ellenőrzése
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
@@ -189,7 +189,7 @@ Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $passwor
 
 Ebben a példában a PFX-jelszót kell megadnia a biztonságos, és a Start-AzsReadinessChecker ellenőrzi a relatív mappa "Tanúsítványok" tanúsítványok "keleti régiója" és "azurestack.contoso.com" külső Tartományneve régiónévhez együtt AAD telepítési érvényes
 
-### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>Példa: Az üzembe helyezési adatok (üzembe helyezés és támogatás) tanúsítványok érvényesítésére
+### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>Példa: Az üzembe helyezési adatok (üzembe helyezés és támogatás) tanúsítványok ellenőrzése
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
@@ -198,7 +198,7 @@ Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $passwor
 
 A központi telepítés és a támogatás a példában a PFX-jelszót kell megadnia a biztonságos és a Start-AzsReadinessChecker relatív mappa "Tanúsítványok" a tanúsítványok érvényes a telepítéshez, ahol identitás, a régiót és a külső FQDN olvassa a rendszer ellenőrzi a üzembe helyezési adatok JSON-fájl jön létre a központi telepítés. 
 
-### <a name="example-validate-paas-certificates"></a>Példa: PaaS tanúsítványok ellenőrzése
+### <a name="example-validate-paas-certificates"></a>Példa: PaaS-tanúsítványok ellenőrzése
 
 ```PowerShell
 $PaaSCertificates = @{
@@ -258,7 +258,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 Ebben a példában az előfizetés tulajdonosa hitelesítő adatait kéri a biztonságos és Start-AzsReadinessChecker végez az adott fiókhoz sémaellenőrzésen, és győződjön meg arról, hogy az előfizetés is használható az Azure Stack-regisztráció. 
 
-### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Példa: Központi adatokat (a telepítési csapat) az Azure-regisztráció ellenőrzése
+### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Példa: Üzembe helyezés adatokkal (a telepítési csapat) Azure-regisztráció ellenőrzése
 
 ```PowerShell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
@@ -268,7 +268,7 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 Ebben a példában az előfizetés tulajdonosa hitelesítő adatait kéri a biztonságos és Start-AzsReadinessChecker végez az adott fiókhoz sémaellenőrzésen, és győződjön meg arról, hogy az előfizetés is használható az Azure Stack-regisztráció hol tárolja a rendszer további részletei a központi telepítési adatok JSON-fájl jön létre a központi telepítés olvasni.
 
-### <a name="example-importexport-pfx-package"></a>Példa: PFX importálási/exportálási csomag
+### <a name="example-importexport-pfx-package"></a>Példa: Importálási/exportálási PFX-csomag
 
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
@@ -277,7 +277,7 @@ Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx
 
 Ebben a példában a PFX-jelszót a rendszer biztonságosan. A ssl.pfx fájl lesznek importálva a helyi gép tanúsítványtárolójába, és ugyanazt a jelszót újra exportálva és ssl_new.pfx elmentve.  Ez az eljárás akkor használatra, ha a tanúsítványok ellenőrzését, hogy a titkos kulcs nem rendelkezik a helyi gép attribútumkészletet, a tanúsítványlánc megszakad, irreleváns tanúsítványok találhatók a PFX vagy a nem megfelelő sorrendben szerepel a tanúsítványlánc megjelölt.
 
-### <a name="example-view-validation-report-deployment-support"></a>Például: Ellenőrzési jelentés megjelenítése (üzembe helyezés támogatás)
+### <a name="example-view-validation-report-deployment-support"></a>Példa: Ellenőrzési jelentés megjelenítése (üzembe helyezés támogatás)
 
 ```PowerShell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
@@ -285,7 +285,7 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
 
 Ebben a példában az üzembe helyezés vagy a támogatási csapat a készültségi jelentést kap a vásárlói (Contoso), és a Start-AzsReadinessChecker használja, az ellenőrzés céljából Contoso végrehajtott művelet állapotának megtekintéséhez.
 
-### <a name="example-view-validation-report-summary-for-certificate-validation-only-deployment-and-support"></a>Például: Ellenőrzési jelentés összefoglaló tanúsítvány érvényesítési csak (üzembe helyezés és támogatás) megtekintése
+### <a name="example-view-validation-report-summary-for-certificate-validation-only-deployment-and-support"></a>Példa: Tanúsítvány érvényesítése csak (üzembe helyezés és támogatás) összefoglaló ellenőrzési jelentés megjelenítése
 
 ```PowerShell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSections Certificate -Summary

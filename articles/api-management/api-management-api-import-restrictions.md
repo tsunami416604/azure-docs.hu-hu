@@ -14,27 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a4f9147008ceb0de32e0f5879a194b45bd4c6421
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106824"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245395"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista kapcsolatban
 API importálásakor, előfordulhat, hogy bizonyos korlátozások bővítményeként vagy azonosíthatja a problémákat, amelyek sikeresen importálása előtt kell-e javítani kell. Ez a cikk dokumentumok, ezek szerint vannak rendezve az API-formátuma.
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-Ha az OpenAPI-dokumentumok importálása hibák azért küldtük Önnek, győződjön meg arról, ellenőrzése –, vagy a Tervező használatával az Azure Portalon (- előtér - Tervező OpenAPI-specifikáció szerkesztője), vagy egy külső gyártótól származó eszköz például <a href="https://editor.swagger.io">Swagger Editor</a>.
 
-* Csak az az OpenAPI JSON formátum támogatott.
-* Elérési út és a lekérdezési paramétereket egyedi névvel kell rendelkezniük. (Az OpenAPI-paraméter neve csak egyedinek kell lennie egy helyen, például az elérési út, lekérdezés, fejléc.  Azonban az API Management lehetővé tesszük műveletek legyen hátrányos megkülönböztetés elérési út és a lekérdezési paraméterek (amely nem támogatja a OpenAPI). Ezért szükség van a teljes URL-cím sablonon belül egyedinek kell lennie a paraméterek nevei.)
-* Sémák használatával hivatkozott **$ref** tulajdonságai nem tartalmazhatnak más **$ref** tulajdonságait.
+Az OpenAPI-dokumentumok importálása hibák azért küldtük Önnek, hogy előzetesen ellenőrizte. Ehhez vagy a Tervező használatával az Azure Portalon (- előtér - Tervező OpenAPI-specifikáció szerkesztője), vagy egy külső eszközzel például <a href="https://editor.swagger.io">Swagger Editor</a>.
+
+### <a name="open-api-general"> </a>Általános
+
+* Elérési út és a lekérdezési paramétereket egyedi névvel kell rendelkezniük. (Az OpenAPI-paraméter neve csak egyedinek kell lennie egy helyen, például az elérési út, lekérdezés, fejléc. Azonban az API Management lehetővé tesszük műveletek legyen hátrányos megkülönböztetés elérési út és a lekérdezési paraméterek (amely nem támogatja az OpenAPI). That's miért szükséges paraméterek nevei a teljes URL-cím sablonon belül egyedinek kell lennie.)
 * **$ref** mutatók nem hivatkozhatnak külső fájlok.
 * **x-ms-elérési utak** és **x-kiszolgálók** csak támogatott bővítmények.
-* Egyéni bővítmények rendszer figyelmen kívül hagyja az importálás és a nem mentett vagy megőrzi az exportálás.
-* **A rekurzió** -definíciókat definiált rekurzív módon (például tekintse meg magukat) APIM által nem támogatott.
+* Egyéni bővítmények rendszer figyelmen kívül hagyja az importálás és nem mentett, vagy megőrzi az exportálás.
+* **A rekurzió** – API Management nem támogatja a megadott rekurzív módon (például önmagukra hivatkozó).
+* Forrás fájl URL-címe (ha elérhető) érvényes relatív URL-eket.
+
+### <a name="open-api-v2"> </a>OpenAPI 2-es verzió
+
+* Csak a JSON-formátum támogatott.
+
+### <a name="open-api-v3"> </a>OpenAPI 3-as verzió
+
+* Ha sok **kiszolgálók** meg van adva, az API Management megpróbálja válassza ki az első HTTPs URL-címet. Ha nincs semmilyen HTTPs URL – az első HTTP URL-címet. Ha nincs minden HTTP URL-címek – a kiszolgáló URL-címe üres lesz.
+* **Példák** nem támogatott, de **példa** van.
+* **Multipart/form-data** nem támogatott.
 
 > [!IMPORTANT]
 > Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.
@@ -45,7 +57,7 @@ WSDL-fájlt a SOAP átmenő API-k készítése vagy folyamatában SOAP – REST 
 * **WSDL** – Ez az attribútum nem támogatott. Ügyfeleink a import kell egyesítése egy dokumentumot.
 * **A több részből üzenetek** – az ilyen típusú üzenetek nem támogatottak.
 * **A WCF wsHttpBinding** -SOAP-szolgáltatások a Windows Communication Foundation létrehozott használjon basicHttpBinding – wsHttpBinding nem támogatott.
-* **Zprávy MTOM** – zprávy MTOM használó szolgáltatások <em>előfordulhat, hogy</em> működik. Hivatalos támogatási jelenleg nem érhető el.
+* **Zprávy MTOM** – zprávy MTOM használó szolgáltatások <em>előfordulhat, hogy</em> működik. Hivatalos támogatási jelenleg nem kínáljuk.
 * **Rekurze** -típusokat, amelyek meghatározott rekurzív módon (például lásd tömbjét magukat) APIM által nem támogatott.
 * **Több névteret** – több névteret sémát is használható, de csak a célnévtér részeket meghatározására használható. Más bemeneti vagy kimeneti elemek definiálják, amely eltérő a céltól névterek nem maradnak meg. Bár az ilyen a WSDL-dokumentum importálhatók, az exportálás minden üzenet részére lesz a WSDL célnévtér.
 

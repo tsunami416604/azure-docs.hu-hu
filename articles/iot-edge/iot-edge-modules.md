@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 976b46a26d95b5e252b0df2383ea94b4dd280d24
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094185"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229625"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
 
@@ -30,7 +30,7 @@ Az Azure IoT Edge lehetővé teszi, hogy központi telepítésére és felügyel
 IoT Edge-modul lemezképek szerepelnek, felügyeleti, biztonsági és az IoT Edge-futtatókörnyezet, kommunikációs szolgáltatások előnyeit. Fejlesszen saját modul rendszerképét, vagy exportálhatja egy támogatott Azure-szolgáltatás, például az Azure Stream Analytics közül.
 A képek a felhőben található, és azok frissíthetők, megváltozott, és különböző megoldások üzembe helyezve. Például egy modul által használt gépi tanulás segítségével megkönnyíti a gyártósor kimeneti létezik egy modul által használt számítógépes látástechnológiai egy drónt szabályozhatja, mint egy különálló lemezképet. 
 
-Minden alkalommal, amikor egy modul rendszerképének központi telepítése egy eszközön, és az IoT Edge-futtatókörnyezet használatának lépései egy adott modul új példányát jön létre. A világ különböző részein két eszközt használhatja ugyanazt a modul lemezképet; azonban minden egyes kellene saját modulpéldány a modul indításakor az eszközön. 
+Minden alkalommal, amikor egy modul rendszerképének központi telepítése egy eszközön, és az IoT Edge-futtatókörnyezet használatának lépései egy adott modul új példányát jön létre. A világ különböző részein két eszközt használhatja ugyanazt a modul a lemezképet. Azonban minden egyes eszköz áll a saját modulpéldány a modul indításakor az eszközön. 
 
 ![Diagram - modul képek a felhőben, a modul példányok az eszközökön](./media/iot-edge-modules/image_instance.png)
 
@@ -53,7 +53,7 @@ Természetesen forgatókönyvek üzembe kell helyeznie egy modul rendszerképén
 
 Minden egyes modul példány is rendelkezik egy megfelelő ikermodul, amely a modul példány konfigurálásához használhatja. A példány és az ikereszköz kapcsolódnak egymással a modul identitás keresztül. 
 
-Egy ikermodul egy JSON-dokumentum, amely a modul információkat és konfigurációs tulajdonságok tárolja. A fogalom a parallels a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) koncepció az IoT hubról. Egy ikermodul struktúrája megegyezik pontosan egy ikereszközt. Az API-kat, és mindkét típusú twins kommunikációhoz használható is ugyanezek. Az egyetlen különbség a kettő között az identitásnak az hozza létre az ügyfél-SDK. 
+Egy ikermodul egy JSON-dokumentum, amely a modul információkat és konfigurációs tulajdonságok tárolja. A fogalom a parallels a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) koncepció az IoT hubról. Egy ikermodul struktúrája megegyezik az ikereszközök. Az API-kat, és mindkét típusú twins kommunikációhoz használható is ugyanezek. Az egyetlen különbség a kettő között az identitásnak az hozza létre az ügyfél-SDK. 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -73,9 +73,9 @@ Az Azure IoT Edge az IoT Edge-eszközök offline műveleteket támogatja. Most e
 IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hosszabb ideig offline állapotban lehet: 
 
 * **Üzenet time-to-live (Élettartam TTL) nem járt le**. Üzenet Élettartama alapértelmezett értéke két óra, de módosított magasabb vagy alacsonyabb lehet a Store az és továbbítási konfiguráció az IoT Edge-ben a hub beállításai. 
-* **Modulok hitelesítse magát újra, az offline állapotban az IoT Edge hub nem kell**. Modulok csak hitelesítheti az Edge hub, amely az IoT hub-aktív internetkapcsolat. Modulok kell újra hitelesíteni kell, ha azok bármilyen okból újra lesz indítva. Modulok továbbra is küldhet üzeneteket az Edge hub követően a SAS-token érvényessége lejárt. Amikor visszatér a kapcsolatot, ha az Edge hub egy új jogkivonatot kér a modult, és érvényesíti azt az IoT hubbal. Sikeres művelet esetén az Edge hub továbbítja a modul üzeneteket tárolt, még a üzeneteinek során a modul jogkivonat lejárt. 
-* **A modul közben az üzeneteket küldő offline esetén továbbra is működőképes kapcsolat folytatja**. Után az IoT hubhoz való csatlakozáshoz, az Edge hub kell érvényesítenie modul új jogkivonatot (Ha egy korábbi lejárt) előtt továbbíthatja a modul üzeneteket. Ha a modul nem érhető el új jogkivonatot biztosítani, az Edge hub tárolt üzenetek a modul nem cselekedhet. 
-* **Az Edge hub az üzenetek tárolására lemezterülettel rendelkezik**. Alapértelmezés szerint üzeneteket az Edge hub tároló fájlrendszer vannak tárolva. Nincs olyan konfigurációs beállítást adja meg az üzenetek tárolására helyette egy csatlakoztatott kötetre. Mindkét esetben szükség van a késleltetett kézbesítéséhez az IoT Hub az üzenetek tárolásához rendelkezésre álló terület.  
+* **Modulok hitelesítse magát újra, az offline állapotban az IoT Edge hub nem kell**. Modulok csak hitelesítheti az IoT hub-aktív kapcsolattal rendelkező IoT Edge-hubs. Modulok kell hitelesítse magát újra, ha azok bármilyen okból újra lesz indítva. Modulok továbbra is küldhet üzeneteket az IoT Edge hubot követően a SAS-token érvényessége lejárt. Amikor visszatér a kapcsolatot, ha az IoT Edge hubot egy új jogkivonatot kér a modul, és érvényesíti azt az IoT hubbal. Ha sikeres, az IoT Edge hubon tárolt modul üzeneteket továbbít, még a során a modul jogkivonat lejárt küldött üzeneteket. 
+* **A modul közben az üzeneteket küldő offline esetén továbbra is működőképes kapcsolat folytatja**. Után az IoT hubhoz való csatlakozáshoz, az IoT Edge hubot kell érvényesítenie modul új jogkivonatot (Ha egy korábbi lejárt) előtt továbbíthatja a modul üzeneteket. A modul nem érhető el új jogkivonatot biztosítani, ha az IoT Edge hubon tárolt üzenetek a modul nem cselekedhet. 
+* **Az üzenetek tárolására lemezterülettel rendelkezik-e az IoT Edge hubot**. Alapértelmezés szerint üzeneteket az IoT Edge hubot tároló fájlrendszer vannak tárolva. Nincs olyan konfigurációs beállítást adja meg az üzenetek tárolására helyette egy csatlakoztatott kötetre. Mindkét esetben szükség van a késleltetett kézbesítéséhez az IoT Hub az üzenetek tárolásához rendelkezésre álló terület.  
 
 További offline funkciók is elérhetők a nyilvános előzetes verzióban érhető el. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: cb97725d61f899f2408dbb44d052c1dd4e6bc561
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: a018740a44424fd138b787b86b0f527d897f4188
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201295"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230543"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -35,7 +35,7 @@ Azure Migrate-projekt törlésekor törli a migrálási projekt, valamint a csop
 
 1. Keresse meg a Log Analytics-munkaterületet a projekthez.
    a. Ha még nem törölt a migrálási projekt, megtalálhatja a hivatkozás a munkaterületet a projekt áttekintő oldaláról az Essentials szakaszban.
-   
+
    ![LA munkaterület](./media/troubleshooting-general/LA-workspace.png)
 
    b. Ha már törölte a migrálási projekt, kattintson a **erőforráscsoportok** az Azure Portalon, és nyissa meg az erőforráscsoport, amelyben a munkaterület létrejött, és keresse meg azt a bal oldali panelen.

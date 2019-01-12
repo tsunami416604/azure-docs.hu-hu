@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 26b7e92bf8fa6c42320f604643bc996794ed52ca
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/11/2019
+ms.openlocfilehash: a999553d7ba26daba674534b1656e90ad0de4f5f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540724"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243967"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Riasztásokat állíthat be mérőszámok az Azure Database for postgresql-hez az Azure portal használatával 
 
@@ -25,48 +25,54 @@ A következő műveleteket hajthatja végre, amikor elindítja riasztásokat leh
 * Webhook meghívása.
 
 Konfigurálhatja és riasztási szabályok használatával kapcsolatos információk lekérése:
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
-* [Parancssori felület (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Az Azure Monitor REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Hozzon létre egy riasztási szabályt a metrika az Azure Portalról
 1. Az a [az Azure portal](https://portal.azure.com/), válassza ki az Azure Database for PostgreSQL-kiszolgálóhoz szeretné figyelni.
 
-2. Alatt a **figyelés** oldalsávon válassza szakaszában **riasztási szabályok** látható módon:
+2. Alatt a **figyelés** oldalsávon válassza szakaszában **riasztások** látható módon:
 
-   ![Válassza ki a riasztási szabályok](./media/howto-alert-on-metric/1-alert-rules.png)
+   ![Válassza ki a riasztási szabályok](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. Válassza ki **metrikariasztás hozzáadása** (+ ikon). 
+3. Válassza ki **metrikariasztás hozzáadása** (+ ikon).
 
-4. A **szabály felvétele** lap, melyen alább látható módon.  Töltse ki a szükséges adatokat:
+4. A **létrehozás szabály** lap, melyen alább látható módon. Töltse ki a szükséges adatokat:
 
-   ![Metrikaalapú riasztás űrlap hozzáadása](./media/howto-alert-on-metric/2-add-rule-form.png)
+   ![Metrikaalapú riasztás űrlap hozzáadása](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-   | Beállítás | Leírás  |
-   |---------|---------|
-   | Name (Név) | Adja meg a riasztási szabály nevét. Ez az érték a riasztási értesítések e-mailek küldése. |
-   | Leírás | Adjon meg egy rövid leírást a riasztási szabályt. Ez az érték a riasztási értesítések e-mailek küldése. |
-   | Riasztás: | Válasszon **metrikák** az ilyen típusú riasztás. |
-   | Előfizetés | Ez a mező az előfizetéshez, amelyen az Azure-adatbázis PostgreSQL-hez előre van töltve. |
-   | Erőforráscsoport | Ebben a mezőben előre van töltve az erőforráscsoport az Azure database for postgresql-hez. |
-   | Erőforrás | Ebben a mezőben előre van töltve olyan neve az Azure Database for postgresql-hez. |
-   | Metrika | Válassza ki a riasztással a kívánt metrikát. Ha például **tárolási százalékos**. |
-   | Állapot | Válassza ki azt a feltételt, a metrika az össze kell hasonlítani. Ha például **nagyobb, mint**. |
-   | Küszöbérték | Küszöbérték a mérőszám, például 85 (százalék). |
-   | Időszak | Az az időtartam, a metrikaszabály kell biztosítani a riasztási eseményindítók előtt. Ha például **az elmúlt 30 perc**. |
+5. Belül a **feltétel** szakaszban jelölje be **feltétel hozzáadása**.
 
-   A példa alapján, a riasztás keres tárolási százalékos 85 % felett egy 30 perces időszak alatt. A riasztást aktivál, ha a tárolási átlagos százalékos 30 percig 85 % felett volt. Az első eseményindító akkor fordul elő, ha elindítja újra amikor az átlagos tárolási százalékos értéke 85 % alatt több mint 30 perc.
+6. Válassza ki egy metrikát a listából, riasztást kap a jelek. Ebben a példában válassza a "Storage százaléka".
+   
+   ![Metrika kiválasztása](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-5. Válassza ki az értesítési módszer a riasztási szabály használni szeretne. 
+7. Konfigurálja a riasztási logika többek között a **feltétel** (például. "Nagyobb"), **küszöbérték** (például. 85 %-os), **idő összesítése**, **időszak** idő a metrikaszabály kell biztosítani a riasztási eseményindítók (például előtt "Keresztül az elmúlt 30 percben") és **gyakorisága**.
+   
+   Válassza ki **kész** teljes.
 
-   Ellenőrizze **E-mail-tulajdonosoknak, közreműködőknek és olvasóknak** beállítást, ha azt szeretné, hogy az előfizetés rendszergazdái és társadminisztrátorai a riasztás akkor aktiválódik, ha e-mail üzenetben.
+   ![Metrika kiválasztása](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-   Ha azt szeretné, további e-mail értesítést kapnak, ha a riasztás akkor aktiválódik, adja hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek -  *email@contoso.com;email2@contoso.com*
+8. Belül a **Műveletcsoportok** szakaszban jelölje be **hozzon létre új** , hozzon létre egy új csoportot a riasztás az értesítések fogadásához.
 
+9. Adja meg a nevét, rövid név, előfizetés és erőforráscsoport "Műveleti csoport hozzáadása" űrlapján.
+
+10. Konfigurálja egy **e-mailek és SMS és leküldéses/Hangvétel** művelet típusa.
+    
+   Válassza az "E-mailt az Azure Resource Manager szerepkör" jelölje be az előfizetés-tulajdonosokat, közreműködőknek és olvasóknak értesítések fogadásához.
+   
    Szükség esetén adja meg az érvényes URI-t a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
 
-6. Válassza ki **OK** a riasztás létrehozásához.
+   Válassza ki **OK** befejezésekor.
+
+   ![Műveletcsoport](./media/howto-alert-on-metric/10-action-group-type.png)
+
+11. Adjon meg egy riasztási szabály neve, leírása és súlyosság.
+
+   ![Műveletcsoport](./media/howto-alert-on-metric/11-name-description-severity.png) 
+
+12. Válassza ki **riasztási szabály létrehozása** a riasztás létrehozásához.
 
    Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 

@@ -6,27 +6,30 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/10/2019
 ms.author: adgera
-ms.openlocfilehash: 705d96225c699c6e9824dadbd7fa1272ba5ddb2d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a5d0b6abdee44bdd1e174fa2c8551fbeac768e5d
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213280"
+ms.locfileid: "54232634"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
 Ez a cikk bemutatja, hogyan kezelhetik és az Azure digitális Twins felügyeleti API-k tesztelése a Postman REST-ügyfél konfigurálásához. Pontosabban a ismerteti:
 
 * hogyan konfigurálható az Azure Active Directory-alkalmazás, az OAuth 2.0 típusú implicit engedélyezés folyamat használata.
-* hogyan lehet, hogy jogkivonat hordozó HTTP-kéréseket a felügyeleti API-k a Postman REST-ügyfél konfigurálásához.
+* A felügyeleti API-k használata a Postman REST-ügyféllel, hogy a jogkivonat hordozó HTTP kérelmeket.
+* Hogyan használható a Postman, hogy több részből álló POST kéréseket a felügyeleti API-k.
 
 ## <a name="postman-summary"></a>Postman-összefoglaló
 
 Bevezetés az Azure digitális Twins egy REST-ügyféleszköz segítségével [Postman](https://www.getpostman.com/) készítse elő a helyi tesztelési környezetét. A Postman-ügyfél segítségével gyorsan létrehozhat összetett HTTP-kérelmekre. Töltse le a Postman-ügyfél asztali verzióját a [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[Postman](https://www.getpostman.com/) REST teszteli, amely megkeresi a legfontosabb HTTP kérés funkciói egy hasznos, asztali és a grafikus felhasználói Felülettel beépülő modul-alapú eszköz. A Postman-ügyfélen keresztül megoldások fejlesztők adhatja meg a HTTP-kérelem típusú (*POST*, *első*, *frissítés*, *javítására*, és  *Törlés*), API-végpont meghívására, valamint az SSL használatát. Postman is támogatja a HTTP-kérelmek fejléceinek hozzáadását, paraméterek, űrlapadatokból és szervek.
+[Postman](https://www.getpostman.com/) REST teszteli, amely megkeresi a legfontosabb HTTP kérés funkciói egy hasznos, asztali és a grafikus felhasználói Felülettel beépülő modul-alapú eszköz. 
+
+A Postman-ügyfélen keresztül megoldások fejlesztők adhatja meg a HTTP-kérelem típusú (*POST*, *első*, *frissítés*, *javítására*, és  *Törlés*), API-végpont meghívására, valamint az SSL használatát. Postman is támogatja a HTTP-kérelmek fejléceinek hozzáadását, paraméterek, űrlapadatokból és szervek.
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Az Azure Active Directory is használhassa azt az OAuth 2.0 típusú implicit engedélyezés konfigurálása
 
@@ -46,9 +49,9 @@ Az Azure Active Directory-alkalmazások, az OAuth 2.0 típusú implicit engedél
 
       ![Az Azure Active Directory-válasz URL-címe][2]
 
-1. Másolja ki és tartsa a **Alkalmazásazonosító** az Azure Active Directory-alkalmazás. Alább szolgál.
+1. Másolja ki és tartsa a **Alkalmazásazonosító** az Azure Active Directory-alkalmazás. A következő lépések használatban van.
 
-### <a name="configure-the-postman-client"></a>A Postman-ügyfél konfigurálása
+## <a name="obtain-an-oauth-20-token"></a>Az OAuth 2.0 jogkivonat beszerzése
 
 Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Postman konfigurálása. Ezt követően hajtsa végre egy hitelesített HTTP-kérelem Azure digitális Twins beszerzett token használatával:
 
@@ -69,33 +72,58 @@ Ezután állítsa be, és a egy Azure Active Directory-jogkivonat beszerzése Po
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
     | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
-    | Hitelesítési URL-cím | Használja a **engedélyezési URL-címet** a fenti 2. lépésben |
+    | Hitelesítési URL-cím | Használja a **engedélyezési URL-címet** a 2. lépés |
     | Ügyfél-azonosító | Használja a **Alkalmazásazonosító** létrehozott vagy az előző szakaszban azt egy megváltozott célra az Azure Active Directory-alkalmazás |
     | Hatókör | Hagyja üresen |
     | Állapot | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |
 
-1. Az ügyfél hasonlóan kell kinéznie:
+1. Az ügyfélnek meg kell jelennie mint:
 
    ![Postman-ügyfél példa][3]
 
 1. Válassza ki **jogkivonat kérelmezéséhez**.
 
-    >[!NOTE]
+    >[!TIP]
     >Ha a hibaüzenetet kapja, "OAuth 2 nem lehet befejezni a", megpróbálkozhat a következőkkel:
     > * Postman, zárja be és nyissa meg újra, és próbálkozzon újra.
   
 1. Görgessen lefelé, és válassza ki **használható jogkivonat**.
 
+<div id="multi"></div>
+
+## <a name="make-a-multipart-post-request"></a>Több részből álló POST kérés
+
+Az előző lépések végrehajtását követően, hogy egy hitelesített többrészes HTTP-POST kérelem Postman konfigurálása:
+
+1. Alatt a **fejléc** lapon maradva adja hozzá egy HTTP-kérelem fejléc kulcs **Content-Type** értékkel `multipart/mixed`.
+
+   ![Tartalom típusa multipart/mixed][4]
+
+1. Nem szöveges adatok szerializálása fájlokba. JSON-adatok JSON-fájlként menti.
+1. Alatt a **törzs** lapon maradva adja hozzá az egyes fájlok hozzárendelésével egy **kulcs** név kiválasztása `file` vagy `text`.
+1. Ezután válassza ki a fájlt keresztül a **fájl kiválasztása** gombra.
+
+   ![Postman-ügyfél példa][5]
+
+   >[!NOTE]
+   > * A Postman-ügyfél nem igényel, rendelkezik-e manuálisan hozzárendelt többrészes adattömbök **Content-Type** vagy **tartalomtípus-szabályozó**.
+   > * Nem kell ezeket a fejléceket minden olyan részére.
+   > * Ki kell választania `multipart/mixed` vagy egy másik megfelelő **Content-Type** a kérelmet.
+
+1. Végül kattintson a **küldése** a többrészes HTTP POST-kérelmet küldeni.
+
 ## <a name="next-steps"></a>További lépések
 
 - A digitális Twins felügyeleti API-k, és a használatukkal kapcsolatos további információkért olvassa el a [digitális Twins Azure felügyeleti API-k használata](how-to-navigate-apis.md).
 
-- Hitelesítés a felügyeleti API-kkal kapcsolatos további információkért olvassa el a [hitelesítés API-kkal](./security-authenticating-apis.md). 
+- Használja a több részből álló kéréseket [blobok hozzáadása az Azure digitális Twins' entitások](./how-to-add-blobs.md).
 
-
+- Hitelesítés a felügyeleti API-kkal kapcsolatos további információkért olvassa el a [hitelesítés API-kkal](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/how-to-configure-postman/implicit-flow.png
 [2]: media/how-to-configure-postman/reply-url.png
 [3]: media/how-to-configure-postman/postman-oauth-token.png
+[4]: media/how-to-configure-postman/content-type.png
+[5]: media/how-to-configure-postman/form-body.png

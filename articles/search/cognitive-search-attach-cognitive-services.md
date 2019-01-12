@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 509125e7c93f34b9ce28c58cb1ec96db1074d995
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 315e050f9ff8768cfeb8ff5417834e8e163ce334
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119645"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231427"
 ---
 # <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Cognitive Services-erőforrás társítása az Azure Search egy indexmezők 
 
-Az AI-algoritmusokat vezetési [cognitive search](cognitive-search-concept-intro.md) strukturálatlan adatok feldolgozására folyamatok alapuló [ **Cognitive Services-erőforrások**](https://azure.microsoft.com/services/cognitive-services/). Erőforrások, például a [ **Computer Vision** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) képelemzés és optikai karakterfelismerés (OCR) szöveg- és képfájlokat, kívül struktúra kibontása közben [ **szöveg Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) biztosít a természetes nyelvi feldolgozás, például az entitások felismerése és kulcskifejezések, hogy néhányat említsünk.
+Az AI-algoritmusokat vezetési [cognitive search folyamatok](cognitive-search-concept-intro.md) strukturálatlan adatok feldolgozására alapulnak [ **Cognitive Services-erőforrások**](https://azure.microsoft.com/services/cognitive-services/). Erőforrások, például a [ **Computer Vision** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) képelemzés és optikai karakterfelismerés (OCR) nyújt szöveg- és képfájlokat, kívül struktúra kibontása közben [ **szöveg Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) biztosít a természetes nyelvi feldolgozás, például az entitások felismerése és kulcskifejezések, hogy néhányat említsünk.
 
-Dokumentumok korlátozott számú ingyenes bővítheti, vagy csatolhat a Cognitive Services-számlázható erőforrás, nagyobb és gyakoribb számítási feladatokhoz. Ebből a cikkből elsajátíthatja a Cognitive Services-erőforrás társítása az indexelés során adatokat feldúsítani a kognitív képességek alkalmazási lehetőségét.
+Dokumentumok korlátozott számú ingyenes bővítését, vagy nagyobb és gyakoribb számítási feladatok Cognitive Services-számlázható erőforrás csatolása. Ebből a cikkből elsajátíthatja a Cognitive Services-erőforrás társítása az indexelés során adatokat feldúsítani a kognitív képességek alkalmazási lehetőségét.
 
 Ha a folyamat kizárólag áll [egyéni képesség](cognitive-search-create-custom-skill-example.md), nem kell csatolni a Cognitive Services-erőforrás.
 

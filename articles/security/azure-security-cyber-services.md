@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: eed545c88b840f942ad763793595ef5b9c3cd19d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 69c4f08d93ee87a93d575d60e12890a0aebb1807
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233694"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244919"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>A Microsoft Kiberbiztonsági szolgáltatások
 
-Biztonság, identitás- és kiberbiztonsági átfogó módszert biztosít a Microsoft Services. A Microsoft Services stratégia, tervezési, végrehajtását és a folyamatos támogatás lehetővé teszi az biztonsági és Identitásszolgáltatások tömbjét. Ezek a szolgáltatások segítségével a vállalati felhasználók teljes körű biztonsági megoldásokat, amelyek igazodnak a stratégiai célok megvalósításához.
+Biztonság, identitás- és kiberbiztonsági átfogó módszert biztosít a Microsoft Services. Biztonsági és Identitásszolgáltatások tömbjét stratégia, tervezési, végrehajtását és a folyamatos támogatás tartalmazzák. Ezek a szolgáltatások segítségével a vállalati felhasználók biztonsági megoldásokat, amelyek igazodnak a stratégiai célok megvalósításához.
 
-A közvetlen hozzáférést a termék fejlesztői csapatok azt is integrált megoldásokat hozhat létre, és javítják a legújabb biztonsági és identitáskezelési funkciókat termékeink és ügyfeleinek üzleti és elősegítheti az innovációt védelme érdekében.
+Microsoft-szolgáltatások integrált megoldásokat hozhat létre, és javítják a legújabb biztonsági és identitáskezelési funkciókat termékeink segít megvédeni az üzleti és elősegítheti az innovációt.
 
-Útmutatás nyújtása a védelmet, és a világ legnagyobb szervezetek megbízott, a műszaki szakembereknek különféle csoportja áll magas betanított szakértők webhelyen elérhető biztonsági és identitáskezelési megoldást kínál.
+Csapatunk műszaki szakembereknek webhelyen elérhető biztonsági és identitáskezelési megoldást kínál magas betanított szakértők áll.
 
 További tudnivalók a Microsoft Services által kínált szolgáltatások:
 

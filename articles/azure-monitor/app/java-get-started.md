@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/10/2019
 ms.author: lagayhar
-ms.openlocfilehash: b662f5c4baa9c4c6e7689f3f463761dbd456f33f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: eb44c7d3e605f3d9cfc5cc30cd5cbcc8e9c1ae42
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074176"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230985"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -358,6 +358,14 @@ Adatok és más kivételek gyűjtésére két lehetősége van:
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Metódushívások és külső függőségek megfigyelése
 [Telepítse a Java ügynököt](java-agent.md) a megadott belső módszerek és a JDBC-n keresztül végzett hívások naplózásához, időzítési adatokkal.
+
+## <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetést
+
+Az Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést](https://w3c.github.io/trace-context/).
+
+A bejövő SDK konfigurációját és a foglalkozó további kifejtett [korrelációs](correlation.md#w3c-distributed-tracing).
+
+Kimenő SDK konfigurációs van definiálva a [AI-Agent.xml](java-agent.md) fájlt.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 Nyissa meg a **Beállítások**, **Kiszolgálók** elemet, ahol láthatja a teljesítményszámlálók készletét.

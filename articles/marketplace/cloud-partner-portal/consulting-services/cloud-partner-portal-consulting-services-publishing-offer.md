@@ -14,35 +14,41 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b90f35da2176e890d6ec6fd4277cc32e02d156a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e543c24a8e3549bc53d6074c7008f3d01fcc96c4
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346078"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228759"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Az Azure és a Dynamics 365 tanácsadási szolgáltatás
 
-Ez a szakasz ismerteti, hogyan tehet közzé egy tanácsadási szolgáltatási ajánlat vagy a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace-en</a> vagy a <a href="https://appsource.microsoft.com">az AppSource piactérről</a>. Megoldások a Microsoft alapján <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, és <a href="https://powerapps.microsoft.com">PowerApps</a> jogosultak arra, hogy az appsource-ban lévő listán. Más Microsoft-alapján más ajánlatokra <a href="https://azure.microsoft.com/services">Azure-szolgáltatások</a> is jogosult, ha az Azure Marketplace-en.
+Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadási szolgáltatási ajánlat vagy a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace-en</a> vagy <a href="https://appsource.microsoft.com">AppSource</a>. A Microsoft alapuló megoldások <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, és <a href="https://powerapps.microsoft.com">PowerApps</a> szerepelhet az AppSource-on. Más Microsoft-alapján más ajánlatokra <a href="https://azure.microsoft.com/services">Azure-szolgáltatások</a> is listázva lehet az Azure piactéren.
 
 ## <a name="publishing-benefits"></a>Közzétételi lehetőségekről
 
-Vagy a Microsoft piacterein való közzététel jelentős előnyökkel jár:
+Vagy a Microsoft piacterein való közzététel a következő előnyökkel jár:
 
 - A vállalat előléptetése a Microsoft márka kihasználva.
-- Potenciálisan elérje a több mint 100 millió Office 365 és Dynamics 365-felhasználókat az appsource-ban; érjen el több mint 200 ezer szervezetek Azure Marketplace-en keresztül.
+- Vélhetően az appsource-ban több mint 100 millió Office 365 és Dynamics 365-felhasználót érhet el, és az Azure piactéren több mint 200 000 szervezetek számára érhető el.
 - Kiváló minőségű érdeklődők le ezeket a piactér.
 - A szolgáltatások által a Microsoft a mező és telefonos értékesítést csapat előléptetett beolvasása.
 
 ## <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
 
-Ez a szakasz ismerteti az elemek egy tanácsadási szolgáltatási ajánlat közzétételének. Közzététel a következő fő részeket osztva:
+Ez a szakasz ismerteti az elemek egy tanácsadási szolgáltatási ajánlat közzétételének. Közzététel a következő fő részre oszlik:
 
-1. [Tanácsadási szolgáltatás Előfeltételek](./cpp-consulting-service-prerequisites.md) -közzététel tanácsadási szolgáltatás követelményei ajánlat listák **Dynamics 365 for Customer Engagement**, **Dynamics 365 for Finance és Operations** , **Dynamics 365 Business Central**, **Power bi-ban**, és **PowerApps**.
-1. [Hozzon létre egy új ajánlat](./cpp-consulting-service-create-offer.md) -használatával a Cloud Partner portálra tanácsadási szolgáltatási ajánlat bejegyzés létrehozásához szükséges lépéseket.
-    1. [Az ajánlat beállításainak megadása](./cpp-consulting-service-define-offer-settings.md)
-    1. [Adja meg, storefront részleteit, és hogy tegye közzé az Azure Marketplace-en vagy az appsource-ban.](./cpp-consulting-service-storefront-details.md)
-1. [Az ajánlat közzététele](./cpp-consulting-service-publish-offer.md) – hogyan lehet elküldeni az ajánlat közzététele.
+- [Tanácsadási szolgáltatás Előfeltételek](./cpp-consulting-service-prerequisites.md) listák ajánlat közzététel tanácsadási szolgáltatás követelményei:
+ 
+    - Dynamics 365 for Customer Engagement 
+    - Dynamics 365 for Finance és Operations 
+    - Dynamics 365 Business Central 
+    - Power BI 
+    - PowerApps
+- [Hozzon létre egy új ajánlat](./cpp-consulting-service-create-offer.md) tanácsadási szolgáltatási ajánlat bejegyzés létrehozása a Cloud Partner portálra használatával szükséges lépéseket tartalmazza:
+    - [Az ajánlat beállításainak megadása](./cpp-consulting-service-define-offer-settings.md).
+    - [Adja meg, storefront részletei, és tegye közzé az Azure Marketplace-en vagy az appsource-on-e.](./cpp-consulting-service-storefront-details.md)
+- [Az ajánlat közzététele](./cpp-consulting-service-publish-offer.md) azt ismerteti, hogyan lehet elküldeni az ajánlat közzététele.
 
 ## <a name="next-steps"></a>További lépések
 

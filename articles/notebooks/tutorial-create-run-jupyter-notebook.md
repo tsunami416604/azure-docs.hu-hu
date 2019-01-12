@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106675"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244584"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: létrehozása és futtatása a Jupyter notebook Python használatával
 
@@ -40,7 +40,7 @@ A befejezett notebook találhatók [GitHub - jegyzetfüzetek minták Azure](http
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-    - **Projektnév**: lineáris regressziós példa – Cricket utánzó rendszerhangokat
+    - **Projektnév**: Lineáris regresszió példa – Cricket utánzó rendszerhangokat
     - **A projekt Azonosítóját**: lineáris regressziós – példa
     - **Nyilvános projekt**: (törölve)
     - **Hozzon létre egy README.md**: (törölve)
@@ -411,17 +411,13 @@ Ha elkészült, a jegyzetfüzet, használja a **fájl** > **Bezárás és halt**
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Hibakeresés a Visual Studio Code notebookok
 
-A kód cellák a jegyzetfüzet nem a várt módon működni, ha lehet kódhibák vagy más hibák. Azonban más, az `print` utasítások Jupyter notebook nem biztosít semmilyen hibakeresési létesítményekben változók, értéket jeleníti meg.
+A kód cellák a jegyzetfüzet nem a várt módon működni, ha lehet kódhibák vagy más hibák. Azonban más, az `print` utasításokat egy tipikus Jupyter-környezet nem biztosít semmilyen hibakeresési létesítményekben változók, értéket jeleníti meg.
 
-Szerencsére a Python-bővítmény a Visual Studio Code közvetlenül importálhat egy Jupyter notebookot a Markdown cellák megjegyzéseiben egyetlen fájlba. Ezután futtathatja a Visual Studio Code hibakereső végighaladhat a kódot, állítson be töréspontokat, vizsgálja meg az állapot és így tovább. 
+Szerencsére a letöltheti a notebook *.ipynb* fájlt, majd nyissa meg a Visual Studio Code a Python-bővítmény használatával. A bővítmény közvetlenül importálja egy jegyzetfüzetet egyetlen fájlként, megőrizve a Markdown cellák megjegyzéseket. A notebook importálása után a Visual Studio Code hibakereső segítségével végighaladhat a kódot, állítson be töréspontokat, vizsgálja meg az állapot és így tovább. Után korrigálás kell a kódot, majd exportálja a *.ipynb* fájlt a Visual Studio Code-ból, és töltse fel újra az Azure-jegyzetfüzetek üzembe.
 
-Miután a kód végrehajtott javítások, mentse a *.ipynb* fájlt, majd töltse fel az Azure-jegyzetfüzeteket.
+További információkért lásd: [Jupyter notebook Debug](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) a Visual Studio Code dokumentáció.
 
-További információkért tekintse meg a Visual Studio Code dokumentáció a következő cikkeket:
-
-- [A Jupyter notebookok a VS Code-ban – áttekintés](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Python-oktatóprogram - állíthat be és futtathat a hibakereső](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [Szerkesztő – Jupyter kód cellák](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+Is [Visual Studio Code - Jupyter támogatási](https://code.visualstudio.com/docs/python/jupyter-support) Jupyter notebookokhoz Visual Studio Code, további funkciók.
 
 ## <a name="next-steps"></a>További lépések
 

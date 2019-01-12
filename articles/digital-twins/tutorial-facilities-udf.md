@@ -6,14 +6,14 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/26/2018
+ms.date: 12/27/2018
 ms.author: dkshir
-ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 465dd2a69ad42b8b6a88268eb35a1aa7d8d922c5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556101"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229396"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Oktatóanyag: Üzembe helyezheti a létrehozása és használata az Azure digitális Twins feltételek figyelése
 
@@ -30,6 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag feltételezi, hogy [befejeződött az Azure digitális Twins telepítő](tutorial-facilities-setup.md). Mielőtt továbblépne, győződjön meg arról, hogy rendelkezik a következőkkel:
+
 - Egy [Azure-fiók](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy futó Digital Twins-példány. 
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp). 
@@ -37,6 +38,7 @@ Ez az oktatóanyag feltételezi, hogy [befejeződött az Azure digitális Twins 
 - [Visual Studio Code](https://code.visualstudio.com/) a mintakód vizsgálatához. 
 
 ## <a name="define-conditions-to-monitor"></a>A monitorozni kívánt feltételek meghatározása
+
 Meghatározhat adott feltételkészleteket, az eszköz vagy az érzékelőadatok adatok, nevű figyelése *matchers*. Megadhatja, melynek neve *felhasználó által definiált függvények*. Felhasználó által definiált függvények adatokon, a tárolóhelyek és az eszközök, előre a matchers által megadott feltételek esetén hajtsa végre az egyéni logikát. További információkért olvassa el [adatfeldolgozás és a felhasználó által definiált függvények](concepts-user-defined-functions.md). 
 
 Az a **foglaltsága-quickstart** projekt minta, nyissa meg a fájlt **src\actions\provisionSample.yaml** Visual Studio Code-ban. Figyelje meg a **megfeleltetők** típussal kezdődő szakaszt. Minden ilyen típusú bejegyzést hoz létre egy megfeleltetőben megadott a megadott **neve**. A megfeleltetőben megadott figyelni fogja az érzékelő típusú **dataTypeValue**. Figyelje meg, hogy miként kapcsolódik a nevű terület *fókusz szoba A1*, amely rendelkezik egy **eszközök** néhány érzékelők tartalmazó csomópont. Üzembe helyez egy megfeleltetőben megadott érzékelőktől egyik követő, győződjön meg arról, hogy a **dataTypeValue** megegyezik az érzékelő **dataType**. 
@@ -48,14 +50,15 @@ Adja hozzá a következő megfeleltetőben megadott, a meglévő matchers alatt.
         dataTypeValue: Temperature
 ```
 
-Ez megfeleltetőben megadott fogja követni az SAMPLE_SENSOR_TEMPERATURE érzékelő, amelyet a [első oktatóanyaga](tutorial-facilities-setup.md). Ezek a sorok is megtalálhatók a *provisionSample.yaml* ellátva kibővített sorok fájlt. Akkor is távolítsa el őket eltávolításával a `#` karakter minden sor elé. 
+Ez megfeleltetőben megadott fogja követni az SAMPLE_SENSOR_TEMPERATURE érzékelő, amelyet a [első oktatóanyaga](tutorial-facilities-setup.md). Ezek a sorok is megtalálhatók a *provisionSample.yaml* ellátva kibővített sorok fájlt. Akkor is távolítsa el őket eltávolításával a `#` karakter minden sor elé.
 
-<a id="udf" />
+<a id="udf"></a>
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
+
 Felhasználó által definiált függvények segítségével testre szabhatja a feldolgozást az érzékelők adatstreamének felhasználásával. Azok az egyéni JavaScript-kódot, az Azure digitális Twins példány futtathat, amikor megadott események leírtak szerint a matchers történnek. Matchers és felhasználó által definiált függvények minden érzékelő, amely a figyelni kívánt hozhat létre. További információkért olvassa el [adatfeldolgozás és a felhasználó által definiált függvények](concepts-user-defined-functions.md). 
 
-A minta provisionSample.yaml fájlban keresse meg egy szakaszt, azzal a típussal kezdődő **userdefinedfunctions**. Ez a szakasz építi ki a felhasználó által definiált függvény és egy adott **neve**. Az UDF-ben kezelje alatt matchers listájának **matcherNames**. Figyelje meg, hogy megadhatja **szkriptként** a saját JavaScript-fájlját a felhasználó által meghatározott függvényhez. 
+A minta provisionSample.yaml fájlban keresse meg egy szakaszt, azzal a típussal kezdődő **userdefinedfunctions**. Ez a szakasz építi ki a felhasználó által definiált függvény és egy adott **neve**. Az UDF-ben kezelje alatt matchers listájának **matcherNames**. Figyelje meg, hogy megadhatja **szkriptként** a saját JavaScript-fájlját a felhasználó által meghatározott függvényhez.
 
 A **roleassignments** nevű szakaszt is figyelje meg. A hely rendszergazdai szerepkört rendel a felhasználó által definiált függvényt. Ez a szerepkör lehetővé teszi, hogy hozzáférjen az események, amelyek a kiosztott tárolóhelyek bármelyikét származnak. 
 
@@ -188,7 +191,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. A hely rendszergazdai szer
 > [!TIP]
 > Ha hibaüzenetet hasonló "az i/o-művelet megszakadt egy hozzászóláslánc kilépési vagy adott alkalmazáskérelem miatt" a kiépítés közepén, próbálja meg újra futtatni a parancsot. Ez akkor fordulhat elő, ha a HTTP-alapú hálózati probléma, az időkorlátot.
 
-<a id="simulate" />
+<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>Az érzékelőadatok szimulálása
 
@@ -202,7 +205,7 @@ Ebben a szakaszban nevű projekt használatával *eszközkapcsolattal* a mintáb
     dotnet restore
     ```
 
-1. Nyissa meg a **appSettings.json** fájlt a szerkesztőben, majd szerkessze a következő értékeket:
+1. Nyissa meg a [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) fájlt a szerkesztőben, majd szerkessze a következő értékeket:
 
    a. **DeviceConnectionString**: Az értéket `ConnectionString` a kimeneti ablakban az előző szakaszban. Másolja ezt a karakterláncot teljesen, idézőjelek, így a szimulátor megfelelően csatlakozhatnak az IoT hubbal.
 
@@ -233,6 +236,7 @@ Ebben a szakaszban nevű projekt használatával *eszközkapcsolattal* a mintáb
    > A szimuláció minta nem kommunikálnak közvetlenül a digitális Twins példányt, mert nem igényel hitelesítést.
 
 ## <a name="get-results-of-the-user-defined-function"></a>A felhasználó által definiált függvény eredményeinek beolvasása
+
 A felhasználó által meghatározott függvény mindig fut, amikor a példány eszköz- és érzékelőadatokat fogad. Ez a szakasz lekérdezi a felhasználó által definiált függvény eredményeinek lekérése az Azure digitális Twins-példány. Látni fogja közel valós időben, amikor egy hely áll rendelkezésre, hogy a levegőben friss és hőmérséklet a legmegfelelőbb. 
 
 1. Nyissa meg a parancsablakot, amellyel hozhat létre a mintát, vagy egy új parancsablakot, és nyissa meg a **foglaltsága-quickstart\src** mappát a minta újra.

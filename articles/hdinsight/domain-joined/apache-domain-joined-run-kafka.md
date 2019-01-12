@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 753be2b1738e57d5dcef033f8e51043c7ab37eb2
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438608"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247418"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache Kafka-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
 
@@ -50,7 +50,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A [HDInsight-fürt létrehozása az Enterprise Security Package csomaggal](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster) oktatóanyag ismerteti a **sales_user** és **marketing_user** tartományi felhasználók létrehozását. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
 
-## <a name="create-ranger-policy"></a>Ranger-házirend létrehozása 
+## <a name="create-ranger-policy"></a>Ranger-házirend létrehozása
 
 Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** felhasználókhoz.
 
@@ -74,7 +74,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
    ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE]   
+   >[!NOTE]
    >Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
 
 4. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
@@ -94,17 +94,15 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Témakörök létrehozása egy Kafka-fürtön az ESP-vel
 
-Hozzon létre két témakört **salesevents** és **marketingspend** néven:
+Két témakör létrehozásához `salesevents` és `marketingspend`:
 
 1. A következő paranccsal nyisson meg egy SSH-kapcsolatot a fürttel:
 
    ```bash
-   ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net
+   ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Cserélje le az `SSHUSER` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát. Az `scp` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) találhat.
-
-   Éles forgatókönyvekben a fürt létrehozása során konfigurált tartományfelhasználók SSH használatával is bejelentkezhetnek a fürtre.
+   Cserélje le `DOMAINADMIN` során konfigurált-fürthöz tartozó rendszergazdai felhasználóval [fürtlétrehozás](https://docs.microsoft.com/en-us/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-hdinsight-cluster-with-esp), és cserélje le `CLUSTERNAME` a fürt nevére. Ha a rendszer kéri, adja meg a jelszót a rendszergazdai felhasználói fiókkal. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) találhat.
 
 2. Használja az alábbi parancsokat a fürtnév változóként való mentéséhez és egy JSON-elemző segédprogram, a `jq` telepítéséhez. Ha a rendszer kéri, adja meg a Kafka-fürt nevét.
 
@@ -113,14 +111,15 @@ Hozzon létre két témakört **salesevents** és **marketingspend** néven:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. A következő parancsokat használja, a Kafka-közvetítő gazdagépek és az Apache Zookeeper-gazdagépeket. Ha a rendszer kéri, adja meg a fürt rendszergazdai fiókjának jelszavát.
+3. A következő parancsok használatával a Kafka-közvetítő gazdagépek beolvasása. Ha a rendszer kéri, adja meg a fürt rendszergazdai fiókjának jelszavát.
 
    ```bash
-   export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]  
-> Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További információkért lásd ezeket [a beállítási utasításokat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+
+   > [!Note]  
+   > Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További részletekért lásd: [beállítási utasítások](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
 1. Kövesse a lépéseket 2. és 3 alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
@@ -132,13 +131,9 @@ Hozzon létre két témakört **salesevents** és **marketingspend** néven:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE]   
-   >Csak a Kafka szolgáltatás folyamattulajdonosa, például a root írhat a `/config/topics` Zookeeper znode-csomópontokra. A Ranger-házirendeket nem kényszeríti ki a rendszer, ha egy nem kiemelt jogosultságú felhasználó hoz létre egy üzenettémakört. Ennek oka az, hogy a `kafka-topics.sh` szkript közvetlenül a Zookeeperrel kommunikál a témakör létrehozásához. A rendszer bejegyzéseket ad hozzá a Zookeeper-csomópontokhoz, amit a közvetítő oldalon a figyelők monitoroznak, és ennek megfelelően hoznak létre témaköröket. A hitelesítés nem végezhető el a Ranger beépülő modulon keresztül, a fenti parancs pedig a `sudo` használatával, a Kafka-közvetítőn keresztül lesz végrehajtva.
-
-
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
 
-A konfigurált Ranger-házirendek szerint a **sales_user** felhasználó létrehozhat és felhasználhat tartalmakat a **salesevents** témakörben, a **marketingspend** témakörben azonban nem. Ezzel szemben a **marketing_user** létrehozhat és felhasználhat a **marketingspend** témakörben, de a **salesevents** témakörben nem.
+Konfigurálva, a Ranger-házirendek alapján **sales_user** termék/felhasználhat a témakör `salesevents` , de nem témakör `marketingspend`. Ezzel szemben **marketing_user** termék/felhasználhat a témakör `marketingspend` , de nem témakör `salesevents`.
 
 1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. Az alábbi paranccsal jelentkezzen be mint **sales_user1**:
 
@@ -152,59 +147,51 @@ A konfigurált Ranger-házirendek szerint a **sales_user** felhasználó létreh
    export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
    ```
 
-3. Használja az előző szakaszban ismertetett közvetítő és Zookeper-neveket az alábbi környezeti változók beállításához:
+3. Az előző szakaszban az átvitelszervező-nevek használatával a következő környezeti változót:
 
    ```bash
-   export KAFKABROKERS=<brokerlist>:9092 
+   export KAFKABROKERS=<brokerlist>:9092
    ```
 
    Például: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
+4. Hajtsa végre a 3. lépés alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) annak érdekében, hogy a `kafka-producer-consumer.jar` is rendelkezésre áll **sales_user**.
+
+5. Ellenőrizze, hogy **sales_user1** hozhatnak, témakörbe `salesevents` futtassa az alábbi parancsot:
+
    ```bash
-   export KAFKAZKHOSTS=<zklist>:2181
+   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-   Például: `export KAFKAZKHOSTS=zk1-khdicl.contoso.com:2181,zk2-khdicl.contoso.com:2181`
-
-4. Ellenőrizze, hogy a **sales_user1** létrehozhat-e tartalmakat a **salesevents** témakörben.
-   
-   A következő paranccsal indítsa el a **salesevents** témakör létrehozó konzolját:
+6. Futtassa a következő parancsot a témakörből lefoglalhatja `salesevents`:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic salesevents --security-protocol SASL_PLAINTEXT
+   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
-   Írjon be néhány üzenetet a konzolon. A **Ctrl + C** billentyűkombinációval lépjen ki a létrehozó konzolból.
+   Győződjön meg arról, hogy Ön tudja olvasni az üzeneteket.
 
-5. Futtassa a következő parancsot a **salesevents** témakör tartalmainak felhasználásához:
-
-   ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic salesevents --security-protocol PLAINTEXTSASL --from-beginning
-   ```
- 
-6. Győződjön meg róla, hogy megjelennek az előző lépésben beírt üzenetek, valamint hogy a **sales_user1** felhasználó nem tud tartalmakat létrehozni a **marketingspend** témakörben.
-
-   A fentebb említett SSH-ablakban futtassa a következő parancsot a **marketingspend** témakörben való tartalomlétrehozáshoz:
+7. Ellenőrizze, hogy a **sales_user1** témakörbe nem tud `marketingspend` az alábbiak végrehajtásával ugyanazon ssh ablakban:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic marketingspend --security-protocol SASL_PLAINTEXT
+   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
-   Engedélyezési hiba történik, amely figyelmen kívül hagyható. 
+   Engedélyezési hiba történik, amely figyelmen kívül hagyható.
 
-7. Figyelje meg, hogy **marketing_user1** nem tudja felhasználni a **salesevents** témakör tartalmait.
+8. Figyelje meg, hogy **marketing_user1** nem tudja fogadni a témakör `salesevents`.
 
-   Ismételje meg a fenti 1–3. lépést, ám ezúttal a **marketing_user1** felhasználóként bejelentkezve.
+   Ismételje meg az 1 – 4 lépéseket fölött, de ezúttal, **marketing_user1**.
 
-   Futtassa a következő parancsot a **salesevents** témakör tartalmainak felhasználásához:
+   Futtassa a következő parancsot a témakörből lefoglalhatja `salesevents`:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic marketingspend --security-protocol PLAINTEXTSASL --from-beginning
+   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    A korábbi üzenetek nem láthatók.
 
-8. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
+9. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
 
    ![A Ranger felhasználói felület házirendnaplózása](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 

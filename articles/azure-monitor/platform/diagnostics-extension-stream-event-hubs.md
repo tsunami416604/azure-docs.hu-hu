@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ddef3ba2f1fa14445b0a06670d8f18abe76911ab
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103366"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230356"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
 Az Azure diagnosztikai metrikák és naplók gyűjtésére felhőalapú szolgáltatások virtuális gépeken (VM) és az eredmények átvitele az Azure Storage rugalmas megoldásokat kínál. A 2016. március (SDK 2.9) időkereten belül kezdődően Diagnostics küldése az vlastní zdroje dat és adatátvitel gyakori elérésű útvonal másodpercek használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan Azure Diagnostics konfigurálása az Event Hubs telj
 * A kapcsolat hibaelhárítása  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Event Hubs receieving Azure Diagnostics adatait a Cloud Services, a virtuális gépek, a Virtual Machine Scale Sets és a kezdődően az Azure SDK 2.9- és a megfelelő Azure-eszközök Visual Studióhoz készült Service Fabric használata támogatott.
+Az Event Hubs Azure Diagnostics fogadó adatait a Cloud Services, a virtuális gépek, a Virtual Machine Scale Sets és a kezdődően az Azure SDK 2.9- és a megfelelő Azure-eszközök Visual Studióhoz készült Service Fabric támogatott.
 
 * Az Azure Diagnostics bővítmény 1.6-os ([Azure SDK for .NET 2.9 használatát, vagy később](https://azure.microsoft.com/downloads/) célozza ez alapértelmezés szerint)
 * [A Visual Studio 2013-as vagy újabb](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)

@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ab8841e2c5cb01e28264edc2b5ab3306d611a9c7
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969131"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232073"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -38,6 +38,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
     **Régiócsoport** | **Tárolási hely**
     --- | ---
     Azure Government | USA-beli államigazgatás – Virginia
+    Ázsia | Délkelet-Ázsia
     Európa | Észak-Európában és Nyugat-Európa
     Több egység állapotok | USA keleti RÉGIÓJA és USA nyugati középső RÉGIÓJA
 

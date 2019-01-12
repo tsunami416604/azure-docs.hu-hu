@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: overview
 ms.date: 10/22/2018
 ms.author: sajagtap
-ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: fabbbace7aeefd708a58a0874f9bbfa316d2b3f2
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209589"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230805"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -57,6 +57,9 @@ A Content Moderator szolgáltatás webalapú [emberi felülvizsgálati eszközt]
 ![A Content Moderator emberi felülvizsgálati eszköz kezdőlapja](images/homepage.PNG)
 
 A felülvizsgálati API-k segítségével állíthatja be a szövegek, képek és videótartalmak csapat általi felülvizsgálatát a megadott szűrők alapján. Ezt követően az emberi moderátorok hozhatják meg a végső moderátori döntéseket. Az emberi bevitel nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgáló csapatok együttes munkája lehetővé teszi, hogy a fejlesztők megfelelő egyensúlyt érjenek el a hatékonyság és a pontosság között.
+
+## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
+Az összes a Cognitive Services, a Content Moderator szolgáltatással a fejlesztők célszerű tisztában lennie a vásárlói adatokat a Microsoft házirendeket. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések
 

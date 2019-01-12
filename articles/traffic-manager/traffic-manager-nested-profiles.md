@@ -1,9 +1,11 @@
 ---
-title: Beágyazott Traffic Manager-profilok |} A Microsoft Docs
+title: Beágyazott Traffic Manager-profilok az Azure-ban
+titlesuffix: Azure Traffic Manager
 description: Ez a cikk ismerteti a beágyazott profilok funkció az Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648598"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228826"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Beágyazott Traffic Manager-profilok
 
@@ -26,9 +28,9 @@ Minden egyes Traffic Manager-profil megadja egy forgalom-útválasztási módsze
 
 Az alábbi példák bemutatják, hogyan beágyazott Traffic Manager-profilok használatához különböző helyzetekben.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>1. példa: Kombinálásával "Teljesítmény" és "Súlyozott" forgalom-útválasztást
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>1. példa: "Teljesítmény" és "Súlyozott" forgalom-útválasztást kombinálása
 
-Tegyük fel, hogy telepített egy alkalmazást a következő Azure-régiókban: USA nyugati RÉGIÓJA, Nyugat-Európa és Kelet-Ázsia. Traffic Manager "Teljesítmény" forgalom-útválasztási módszer használatával a felhasználó legközelebb eső régiót forgalom elosztása.
+Tegyük fel, hogy telepített egy alkalmazást a következő Azure-régióban: USA nyugati RÉGIÓJA, Nyugat-Európa és Kelet-Ázsia. Traffic Manager "Teljesítmény" forgalom-útválasztási módszer használatával a felhasználó legközelebb eső régiót forgalom elosztása.
 
 ![Egy Traffic Manager-profil][4]
 
@@ -44,7 +46,7 @@ Ebben a konfigurációban a szülő profil keresztül irányított forgalom elos
 
 Amikor a szülő-profilt a "Teljesítmény" forgalom-útválasztási módszert használja, minden végpont hozzá kell rendelni egy helyre. A hely van hozzárendelve, amikor konfigurálja a végpontot. Válassza ki a legközelebb áll az üzembe helyezés az Azure-régióban. Az Azure-régiók értékei helyét az interneten késés tábla által támogatott. További információkért lásd: [Traffic Manager "Teljesítmény" forgalom-útválasztási módszer](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>2. példa:-Végpont monitorozása a beágyazott profilok
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>2. példa Végpont-monitorozás a beágyazott profilok
 
 Traffic Manager folyamatosan figyeli az egyes Szolgáltatásvégpontok állapotát. A végpont állapota nem kifogástalan, ha a Traffic Manager arra utasítja a felhasználók alternatív végpontokat a szolgáltatás rendelkezésre állásának fenntartása. Ez a végpont monitorozása és feladatátvétele viselkedés vonatkozik az összes forgalom-útválasztási módszer. További információkért lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md). Végpont-monitorozás eltérően működik a beágyazott profilok. A beágyazott profilok a szülő-profil nem állapotellenőrzéseket hajthat végre az alárendelt közvetlenül. Ehelyett a gyermek profil végpontok állapotát rendszer kiszámítja a gyermek profil általános állapotát. Az egészségügyi információk propagálja felfelé a beágyazott profilhierarchiában. A szülő-profil az összesített állapota határozza meg, hogy a gyermek profil forgalmat használ. Tekintse meg a [– gyakori kérdések](traffic-manager-FAQs.md#traffic-manager-nested-profiles) szolgáltatásállapot-figyelést a beágyazott profilok teljes részleteiért.
 
@@ -73,7 +75,7 @@ A Nyugat-Európa-végpont, mint az USA nyugati RÉGIÓJA végpont magasabb prior
 
 Minden régió esetében ismételje meg az ezt a mintát. Cserélje le a szülő-profilban szereplő összes három végpontok három alárendelt profilok, minden egyes biztosít egy rangsorolt feladatátvételi sorrendjét.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>4. példa: A "Teljesítmény" forgalom ugyanabban a régióban több végpontok közötti útválasztás vezérlése
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>4. példa: "Teljesítmény" forgalom ugyanabban a régióban több végpontok közötti útválasztás vezérlése
 
 Tegyük fel, hogy a "teljesítmény" forgalom-útválasztási módszer egy profilt, amely egy adott régióban több végpont már használatban van. Alapértelmezés szerint a régióhoz irányított forgalom egyenletesen legyen elosztva az összes elérhető végpontok az adott régióban.
 
@@ -83,7 +85,7 @@ Több végpont hozzáadása a Nyugat-Európában, helyett azokat a végpontokat 
 
 !["Teljesítmény" forgalom-útválasztási az egyéni régión belüli forgalomelosztás][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>5. példa:-Endpoint figyelési beállítások
+## <a name="example-5-per-endpoint-monitoring-settings"></a>5. példa: Végpont figyelési beállítások
 
 Tegyük fel, hogy a Traffic Manager segítségével zökkenőmentesen áttelepítése egy örökölt érkező forgalmat a helyszíni webhely egy új, Azure-ban üzemeltetett felhőalapú verzióra. A régi helyhez használni kívánt a kezdőlap URI hely állapotának figyeléséhez. De az új felhőalapú verzió valósít meg egy egyéni monitorozási oldal (elérési út "/ monitor.aspx"), amely tartalmaz további ellenőrzéseket.
 

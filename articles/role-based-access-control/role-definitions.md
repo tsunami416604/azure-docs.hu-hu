@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1c8af3e0d3d5d29531a2ba81abc745fcdca5fb08
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715770"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231903"
 ---
 # <a name="understand-role-definitions"></a>A szerepkör-definíciók ismertetése
 
@@ -173,6 +173,10 @@ Megtekintheti és az üzemeltetés, az eszközök és SDK-kkal megfelelő verzi�
 | [Pythonhoz készült Azure](/python/azure) | 0.40.0 vagy újabb |
 | [Rubyhoz készült Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 vagy újabb |
 
+Az Azure Portalon is lehetővé teszi a felhasználóknak megkeresheti és felügyelheti a várólisták és a Blob tartalmát felületének előzetese tárolók az Azure AD-n keresztül. Megjelenítheti és kezelheti a várakozási sorban vagy Blobban tároló tartalmának kattintson a hivatkozásra "Intéző adatok az Azure AD preview rendszert használó" a storage-fiók áttekintése.
+
+![Ismerkedés az üzenetsorok és a Blob-tárolók használatával az Azure AD-előzetes verzió](./media/role-definitions/rbac-dataactions-browsing.png)
+
 ## <a name="actions"></a>Műveletek
 
 A `Actions` engedélyt megadja a szerepkör lehetővé teszi, hogy a végrehajtandó felügyeleti műveleteket. Művelet karakterláncok, amelyek azonosítják az Azure-erőforrás-szolgáltatók biztonságos műveletek egy gyűjteménye. Íme néhány példa a felügyeleti műveleteket is használható `Actions`.
@@ -185,7 +189,7 @@ A `Actions` engedélyt megadja a szerepkör lehetővé teszi, hogy a végrehajta
 | `Microsoft.Compute/virtualMachines/*` | Engedélyezi a hozzáférést az összes műveletet a virtuális gépeket, és annak gyermek erőforrástípusok.|
 | `microsoft.web/sites/restart/Action` | Webalkalmazást indíthat újra hozzáférést biztosít.|
 
-## <a name="notactions"></a>notActions
+## <a name="notactions"></a>Nem műveletek
 
 A `NotActions` engedélyt megadja a felügyeleti műveleteket, amelyek ki vannak zárva az engedélyezett a `Actions`. Használja a `NotActions` engedélyt, ha engedélyezni szeretné műveletkészletet könnyebben megadva korlátozott műveletek kizárásával. A szerepkör (hatályos engedélyek) által biztosított hozzáférést számított kivonásával történik a `NotActions` műveleteket az a `Actions` műveleteket.
 

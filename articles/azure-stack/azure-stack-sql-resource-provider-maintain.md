@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364095"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244987"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL erőforrás-szolgáltatói karbantartási műveletek
 
@@ -32,16 +32,6 @@ Az erőforrás-szolgáltató az SQL Azure Stack részeként nem szervizelt, bőv
 ### <a name="provider-virtual-machine"></a>Szolgáltató virtuális gép
 
 Mivel az erőforrás-szolgáltatót futtat egy *felhasználói* virtuális gép, alkalmaznia kell a szükséges javítások és frissítések már kiadásakor. A javítási és frissítési ciklus részeként a Windows update csomagok biztosított használatával frissítések alkalmazása a virtuális géphez.
-
-## <a name="backuprestoredisaster-recovery"></a>Biztonsági mentés és helyreállítás/vész-helyreállítási
-
- Mivel a szolgáltatás egy kiegészítő összetevő, az erőforrás-szolgáltató az SQL nem biztonsági mentése az Azure Stack üzleti folytonossági katasztrófa utáni helyreállítás (BCDR) folyamat részeként. Parancsfájlok biztosítjuk a következő műveleteket:
-
-- Biztonsági másolat állapotadatokat (az Azure Stack tárfiókok tárolni.)
-- Az erőforrás-szolgáltató visszaállítása, ha egy teljes verem helyreállítására olyankor szükség.
-
->[!NOTE]
->Ha a helyreállítás végrehajtásához, adatbázis-kiszolgálók helyre kell az erőforrás-szolgáltató helyreáll.
 
 ## <a name="updating-sql-credentials"></a>SQL-hitelesítő adatok frissítése
 
@@ -122,7 +112,7 @@ Ha az SQL- és MySQL erőforrás-szolgáltatók használata az Azure Stack integ
 
 ### <a name="known-issues"></a>Ismert problémák
 
-**A probléma**: titkos kódok rotációja naplókat.<br>
+**A probléma**: Titkos kódok rotációja naplókat.<br>
 A titkos kódok rotációja naplókat automatikusan nem gyűjt, ha a titkos Elforgatás egyéni parancsfájl futtatásakor sikertelen.
 
 **Megkerülő megoldás**:<br>

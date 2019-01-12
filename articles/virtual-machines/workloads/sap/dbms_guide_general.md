@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e514f35567f4be0932c7bcc591cbd0f05cd9814
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606758"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246874"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -133,7 +133,11 @@ Azure-adatlemez IOPS kvóta kényszeríti. Az Azure Standard Storage és a Premi
 
 > [!NOTE]
 > Annak érdekében, hogy az Azure előnyeit a egyedi [egyetlen virtuális gép SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) csatolt összes lemezt kell lennie az Azure Premium Storage, beleértve az alap virtuális merevlemez típusú.
->
+
+
+> [!NOTE]
+> A gazdagép fő adatbázis fájlok (adat- és naplófájlok) SAP-adatbázisok az Azure-adatközpontokhoz szomszédos közös elhelyezésű harmadik féltől származó adatközpontokban található tárolóhardveres nem támogatott. Az SAP számítási feladatok csak tárolási natív Azure jelölt szolgáltatás az adatok és a tranzakciós naplófájlok az SAP-adatbázisok esetében támogatott.
+> 
 
 Az elhelyezési az adatbázisfájlokat és a napló vagy visszaállíthatja a fájlokat és a használt, az Azure Storage IOPS, késés és a teljesítménybeli követelmények lehet definiálni. Annak érdekében, hogy van elég iops-t, előfordulhat, hogy kényszerített több lemez használhatja, vagy használjon nagyobb prémium szintű Storage-lemez. Esetén több lemezt használ, a lemezeken, amelyeket az adatfájlokat tartalmaz, vagy a napló vagy visszaállíthatja a fájlokat szoftver teríti volna létre. Ezekben az esetekben az IOPS és az adatátviteli sebességet SLA-k az alapul szolgáló Premium Storage-lemez vagy a maximális elérhető iops-t az Azure standard szintű Storage-lemezeket is halmozódnak az eredményül kapott stripe-készlet.
 

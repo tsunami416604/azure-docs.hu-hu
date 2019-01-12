@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/18/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e4da34be5b1e9eb2675f540fe4069cfd3dc1d056
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.reviewer: anajod
+ms.openlocfilehash: 95fcb98e9ca6ff85e37ee88d5a5122ffa6887bb4
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49410117"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245208"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack egy hibrid felhőmegoldás üzembe helyezése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy hibrid felhőmegoldás, amely az Azure nyilvános felhő és az Azure Stack magánfelhő használ.
 
@@ -79,11 +79,11 @@ Ebben az oktatóanyagban a Kezdés előtt győződjön meg arról is megfeleljen
 
     ![Auzure Stack piactéren](media/azure-stack-solution-hybrid-cloud/image1.png)
 
-3. A **Marketplace**válassza **számítási**, és válassza a **további**. A **további**, jelölje be a **ingyenes SQL Server-licenc: SQL Server 2017 Developer, a Windows Server** kép.
+3. A **Marketplace**válassza **számítási**, és válassza a **további**. A **további**, jelölje be a **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer, a Windows Server** kép.
 
     ![Válassza ki a virtuálisgép-lemezkép](media/azure-stack-solution-hybrid-cloud/image2.png)
 
-4. A **ingyenes SQL Server-licenc: SQL Server 2017 Developer, a Windows Server** kiválasztása **létrehozás**.
+4. A **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer, a Windows Server** kiválasztása **létrehozás**.
 
 5. A **alapjai > konfigurálja az alapbeállításokat**, adjon meg egy **neve** a virtuális gép (VM), egy **felhasználónév** számára az SQL Server-rendszergazdai és a egy **jelszó** az SA.  Az a **előfizetés** legördülő listára, válassza ki az előfizetést, amelyhez végzi. A **erőforráscsoport**, használjon **válasszon egy meglévő** és helyezze a virtuális gép ugyanazt az erőforráscsoportot az Azure Stack-webalkalmazásként.
 
@@ -194,7 +194,7 @@ App Service-ben együttműködéséről az Azure virtuális hálózatok kapcsola
 
 A helyi hálózati átjárót, az Azure Stack virtuális hálózatban kell konfigurálni kell a forgalom az App Service-végpont és telephely-címtartományból.
 
-1. Az Azure Stack, lépjen **helyi hálózati átjáró**. A **beállítások**válassza **konfigurációs**.
+1. Az Azure Stack, lépjen **helyi hálózati átjáró**. A **Beállítások** területen válassza a **Konfiguráció** elemet.
 
     ![Átjáró konfigurációs beállítás](media/azure-stack-solution-hybrid-cloud/image14.png)
 

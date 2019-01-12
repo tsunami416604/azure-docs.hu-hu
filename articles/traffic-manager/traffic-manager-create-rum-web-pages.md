@@ -4,6 +4,7 @@ description: Valós felhasználói mérések küldése a Traffic Manager a webla
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 19a641ba86333047b90c36cef242d524ccad5fe1
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138177"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232005"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Valós felhasználói mérések küldése az Azure Traffic Manager weblapok használata
 
@@ -35,13 +36,13 @@ Az Azure portal használatával RUM kulcs beszerzése:
  
   ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **1. ábra: A valós felhasználói mérések kulcs létrehozása**
+   **1. ábra: Valós felhasználói mérések kulcs létrehozása**
 
 5. A panel most hozza létre a RUM kulcsot és a egy JavaScript kódrészletet, amelyet a HTML-oldalt beilleszthető jeleníti meg.
  
     ![Valós felhasználói mérések kulcsát a JavaScript-kódot](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    **2. ábra: A valós felhasználói mérések kulcsának és a mérési JavaScript**
+    **2. ábra: Valós felhasználói mérések kulcsának és a mérési JavaScript**
  
 6.  Kattintson a **másolási** gombra, hogy a JavaScript-kódot. 
 
@@ -57,7 +58,7 @@ Ha beszerezte a az kulcsot, a következő lépés az a másolt JavaScript beágy
  
     ![Javascript-kód beágyazza a weblap a valós felhasználói mérések](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    **3. ábra: A beágyazott valós felhasználói mérések JavaScript egyszerű HTML**
+    **3. ábra: Valós felhasználói mérések beágyazott JavaScript egyszerű HTML**
 
 3.  Mentse a HTML-fájl és a gazdagép, a webkiszolgáló csatlakozik az internethez. 
 4. Ezen a lapon jelenik meg a böngészőben, amikor legközelebb letölti a hivatkozott JavaScript, és a szkriptet fogja végrehajtani, a mérés és jelentéskészítési műveletek.

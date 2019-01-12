@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: c0478b320afca1b82a79fa43e7b60c29a2cb2e7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ceab5152d6dc6db573a7fea8c673157068009ebe
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997928"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228809"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kivételek kivétel történt, és metódus végrehajtási időpontok a Java-webalkalmazások monitorozása
 
@@ -89,6 +89,32 @@ Hozzon létre egy fájlt `AI-Agent.xml` és helyezze ugyanabba a mappába, az ü
 Jelentések kivétel- és az egyes módszerek metódus időzítési engedélyeznie kell.
 
 Alapértelmezés szerint `reportExecutionTime` IGAZ és `reportCaughtExceptions` false (hamis).
+
+### <a name="spring-boot-agent-additional-config"></a>A Spring Boot ügynök további konfigurációs
+
+`java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
+
+> [!NOTE]
+> AI-Agent.xml és az ügynök jar-fájlt ugyanebben a mappában kell lennie. Ezek gyakran kerülnek együtt a `/resources` mappát a projekt. 
+
+#### <a name="enable-w3c-distributed-tracing"></a>W3C elosztott nyomkövetést engedélyezése
+
+Adja hozzá a következő AI-Agent.xml:
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> Előző verziókkal való kompatibilitási mód alapértelmezés szerint engedélyezve van, és a enableW3CBackCompat paraméter nem kötelező, és csak akkor, ha szeretné kikapcsolni használható. 
+
+Az eset ideális esetben ez akkor lehet, ha minden szolgáltatás SDK-k W3C protokollt támogató újabb verzióra frissítve lett-e. Azt javasoljuk, minél hamarabb helyezze át a W3C-támogatással rendelkező SDK-k újabb verzióra.
+
+Győződjön meg arról, hogy **mindkét [bejövő](correlation.md#w3c-distributed-tracing) és kimenő (ügynök) konfigurációk** pontosan megegyezik.
 
 ## <a name="view-the-data"></a>Az adatok megtekintése
 Összesített távoli függőség- és metódus végrehajtási időpontok jelenik meg az Application Insights-erőforrást [alatt a teljesítmény csempéje][metrics].

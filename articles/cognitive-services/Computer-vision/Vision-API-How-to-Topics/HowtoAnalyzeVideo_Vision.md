@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 140e45270cf29eec48df260efa29b8aacac2d855
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cb8964bdbdfe575630f6e65a79d53aac76a76d45
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580467"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232107"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Videók valós idejű elemzése
 Ez az útmutató azt ismerteti, hogyan végezhet közel valós idejű elemzést egy élő videó-adatfolyam képkockáin. Az ilyen rendszerek alapvető összetevői:
@@ -194,15 +194,9 @@ A minta használatához hajtsa végre az alábbi lépéseket:
     - A LiveCameraSample esetében a kulcsokat az alkalmazás Settings (Beállítások) panelén kell megadni. A kulcsokat a rendszer felhasználói adatként a munkamenetek közt is megőrzi.
         
 
-Ha készen áll a integrációra, **egyszerűen hivatkozzon saját projektjéből a VideoFrameAnalyzer könyvtárra.** 
+Amikor készen áll az integrációra, **egyszerűen hivatkozzon a VideoFrameAnalyzer kódtárra a projektjeiben.** 
 
-
-
-## <a name="developer-code-of-conduct"></a>Fejlesztői magatartási kódex
-Mint valamennyi Cognitive Services-szolgáltatás esetében, az API-jainkat használó fejlesztőknek követniük kell a "[Microsoft Cognitive Services Fejlesztői magatartási kódex](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)" iránymutatásait. 
-
-
-A VideoFrameAnalyzer kép-, hang-, videó- és szövegértelmező funkciói a Azure Cognitive Services-szolgáltatásokat használják. A feltöltött képeket, hangokat, videókat és egyéb adatokat a Microsoft fogadja (az alkalmazáson keresztül), és a szolgáltatás fejlesztése céljával azokat felhasználhatja. Szükségünk van az Ön közreműködésére az alkalmazás által az Azure Cognitive Services szolgáltatásba küldött adatok tulajdonosainak védelmében. 
+A VideoFrameAnalyzer kép-, hang-, videó- és szövegfelismerési képességei az Azure Cognitive Servicesen alapulnak. A feltöltött képeket, hangokat, videókat és egyéb adatokat a Microsoft fogadja (az alkalmazáson keresztül), és a szolgáltatás fejlesztése céljával azokat felhasználhatja. Szükségünk van az Ön közreműködésére az alkalmazás által az Azure Cognitive Services szolgáltatásba küldött adatok tulajdonosainak védelmében. 
 
 
 ## <a name="summary"></a>Összegzés

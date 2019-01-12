@@ -14,30 +14,30 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb3730718c366cbf3fe9caecceeb4e65855ac8c4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dae86dcdd3ada10164be0120b49a8f5f7b642ccd
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346378"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231631"
 ---
-# <a name="publish-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat közzététele
+# <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
 
-Befejezése után a **ajánlat beállítások**, **kirakat részletek**, és **névjegyek**, jelölje be **közzététel** , és adjon meg egy e-mail címet. Ha készen áll az ajánlat közzététele a Microsoft, kapni fog egy e-mailt az előzetes verzióra, mielőtt élő kerül. A portálon ellenőrizheti az állapotot az Ön ajánlatát időpontban bármikor visszatérhet.
+Befejezése után **ajánlat beállítások**, **kirakat részletek**, és **névjegyek**, jelölje be **közzététel** , és adjon meg egy e-mail címet. Ha készen áll az ajánlat közzététele a Microsoft, kap egy e-mailt az előzetes verzióra, mielőtt élő kerül. A portálon ellenőrizheti az állapotot az Ön ajánlatát bármikor visszatérhet.
 
-Ajánlatok jelenhet meg a "Közzététel megszakítva" vagy "Közzététel sikertelen" állapotot a közzétételi folyamat során. Ez az állapot a szokásos részét, és lehetővé teszi a Microsoft az ajánlat szerkesztenie. Ha megjelenik a "Közzététel megszakítva", az ajánlat hagyja az adott állapotban.
+Ajánlatok jelenhet meg a "Közzététel megszakítva" vagy "Közzététel sikertelen" állapotot a közzétételi folyamat során. Ezek megjelöléseket a folyamat normál részét képezik, és lehetővé teszi, hogy a módosítások az ajánlatra a Microsoft. Ha az ajánlat "Közzététel megszakítva" jelenik meg, hagyja meg ez az állapot.
 
-**Cél vezethet**
+## <a name="lead-destination"></a>Cél vezethet
 
-Kiválaszthat egy CRM-rendszerrel, az érdeklődő tárolásához. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit.
+Kiválaszthat egy CRM-rendszerrel, az érdeklődők adatait tároló. A CRM-rendszerrel, itt, ahol a felhasználók, akik kipróbálják az alkalmazását az appsource-on információ írunk.
 
-Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt
+A megfelelő URL-cím alapján úgy dönt, a CRM-rendszerrel, válassza ki a részleteiért töltse ki a következő mezőket az alábbi listából.
 
-* Válassza ki [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Ha rendelkezik ilyennel, a következő CRM rendszereket: A Salesforce, a Marketo, a Microsoft Dynamics CRM. 
+Válassza ki [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Ha rendelkezik ilyennel, a következő CRM rendszereket:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [A Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
-**Következő lépések**
+## <a name="next-steps"></a>További lépések
 
-Folytassa a közzététel kínálnak.
+Továbbra is a megtudhatja, hogyan teheti közzé az ajánlatot.

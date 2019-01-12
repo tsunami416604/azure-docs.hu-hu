@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248727"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231138"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics szolgáltatásban
 
@@ -24,7 +24,7 @@ Közösségi média elemzőeszközök megkönnyíti a szervezetek számára a n�
 
 Twitter-trendek valós idejű elemzése egy remek példa egy elemzőeszköz azért a hashtag előfizetési modell lehetővé teszi meghatározott kulcsszavakat (hashtageket) figyelésére és a hírcsatorna hangulatelemzés fejlesztése.
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Forgatókönyv: Közösségimédia-hangulatelemzés valós időben
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Forgatókönyv: Közösségi média vélemények elemzése valós időben
 
 A vállalat, amely rendelkezik egy sajtóbeli híradásoknál webhely olyan így versenytársai használhatóságát teljes tartalmát, amely közvetlenül kapcsolódik az olvasók által iránt. A vállalati közösségimédia-elemzés, amely a olvasók, Twitter-adatok valós idejű hangulatelemzés végrehajtásával témakörök használja.
 
@@ -36,7 +36,7 @@ Ebben az oktatóanyagban, amely kapcsolódik a Twitteren, és a tweeteket, amely
 * Azure-előfizetés
 * Twitter-fiók 
 * Twitter-alkalmazás és a [OAuth-jogkivonat](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) az adott alkalmazáshoz. Később egy Twitter-alkalmazás létrehozása magas szintű útmutatást biztosítunk.
-* A TwitterWPFClient alkalmazás, amely beolvassa a Twitter-hírcsatorna. Ez az alkalmazás első, töltse le a [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) GitHub-fájlt, majd csomagolja ki a csomagot egy mappába a számítógépen. Ha meg szeretné tekinteni a kódot, és futtassa az alkalmazást a hibakeresőt a forrás, beszerezheti a forráskódot a [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* A TwitterWPFClient alkalmazás, amely beolvassa a Twitter-hírcsatorna. Ez az alkalmazás első, töltse le a [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) GitHub-fájlt, majd csomagolja ki a csomagot egy mappába a számítógépen. Ha meg szeretné tekinteni a kódot, és futtassa az alkalmazást a hibakeresőt a forrás, beszerezheti a forráskódot a [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient). 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>A Stream Analytics beviteli eseményközpont létrehozása
 
@@ -214,13 +214,13 @@ Most, hogy a tweet események vannak twitteren valós idejű streamelési, áll�
 
 2. Az a **bemenetek** panelen kattintson a  **+ &nbsp;Hozzáadás** , majd töltse ki a panel ezekkel az értékekkel:
 
-    * **Bemeneti áljel**: a nevet használja `TwitterStream`. Ha más nevet használ, jegyezze fel a, mert később szüksége.
-    * **Forrás típusa**: válasszon **adatfolyam**.
-    * **Forrás**: válasszon **eseményközpont**.
-    * **Importálási beállítás**: válasszon **használható event hubs aktuális előfizetésből**. 
-    * **Service bus-névtér**: válassza ki a korábban létrehozott eseményközpont-névtér (`<yourname>-socialtwitter-eh-ns`).
-    * **Event hubs**: válassza ki a korábban létrehozott event hubs (`socialtwitter-eh`).
-    * **Eseményközpont szabályzatának neve**: válassza ki a korábban létrehozott hozzáférési házirend (`socialtwitter-access`).
+    * **Bemeneti áljel**: A nevet használja `TwitterStream`. Ha más nevet használ, jegyezze fel a, mert később szüksége.
+    * **Forrás típusa**: Válassza ki **adatfolyam**.
+    * **forrás**: Válassza ki **eseményközpont**.
+    * **Importálási beállítás**: Válassza ki **használható event hubs aktuális előfizetésből**. 
+    * **Service bus-névtér**: Válassza ki a korábban létrehozott eseményközpont-névtér (`<yourname>-socialtwitter-eh-ns`).
+    * **Event hubs**: Válassza ki a korábban létrehozott event hubs (`socialtwitter-eh`).
+    * **Eseményközpont szabályzatának neve**: Válassza ki a korábban létrehozott hozzáférési házirend (`socialtwitter-access`).
 
     ![Hozzon létre új bemeneti Stream Analytics-feladat](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
@@ -297,9 +297,9 @@ Ebben az oktatóanyagban írása az összesített tweet eseményeket a feladat l
 
 2. Az a **kimenetek** panelen kattintson a  **+ &nbsp;Hozzáadás** , majd töltse ki a panel ezekkel az értékekkel:
 
-    * **Kimeneti alias**: a nevet használja `TwitterStream-Output`. 
-    * **Fogadó**: válasszon **a Blob storage-**.
-    * **Importálási beállítások**: válasszon **a blob storage aktuális előfizetésből**.
+    * **Kimeneti alias**: A nevet használja `TwitterStream-Output`. 
+    * **Fogadó**: Válassza a **Blob Storage** lehetőséget.
+    * **Importálási beállítások**: Válassza ki **a blob storage aktuális előfizetésből**.
     * **Storage-fiók**. Válassza ki **hozzon létre egy új tárfiókot.**
     * **Storage-fiók** (második mezőben). Adja meg `YOURNAMEsa`, ahol `YOURNAME` a nevét, vagy egy másik egyedi karakterlánc. Használhatja, hogy a név csak kisbetűket és számokat, és az Azure-ban egyedinek kell lennie. 
     * **Tároló**. Írja be a `socialtwitter` (igen) kifejezést.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040744"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230594"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
@@ -36,6 +36,19 @@ A log Analytics engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a K
     * Hozzon létre egy munkaterületet van szüksége, ha adjon meg egy nevet, egy erőforráscsoportot és egy helyen.
 1. Az elérhető naplóit, jelölje ki az engedélyezni kívánt naplók. Alapértelmezés szerint a *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező* naplói engedélyezve vannak. Például engedélyezheti a további naplók *kube-naplózási* és *fürt-méretező*. Lépjen vissza, és az összegyűjtött naplók módosítani, ha a Log Analytics engedélyezve vannak.
 1. Ha elkészült, válassza ki a **mentése** a kiválasztott naplók gyűjtésének engedélyezéséhez.
+
+> [!NOTE]
+> Az AKS csak rögzíti a vizsgálati naplók létrehozása vagy frissítése után a szolgáltatás jelző engedélyezve van az előfizetés fürtök esetében. Regisztrálja a *AKSAuditLog* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> Várjon, amíg az állapot megjeleníthető *regisztrált*. A regisztrációs állapot használatával ellenőrizheti a [az szolgáltatáslistát] [ az-feature-list] parancsot:
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> Ha elkészült, frissítse az AKS erőforrás-szolgáltató használatával a regisztrációját a [az provider register] [ az-provider-register] parancsot:
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban, majd létrehozhat egy Log Analytics-munkaterület:
 
@@ -133,3 +146,6 @@ Ebben a cikkben megtanulta, hogyan engedélyezheti és a naplók a Kubernetes az
 [analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

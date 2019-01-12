@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1916aa94dcf7528ce898ef37eac29c1017f03f15
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633461"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231886"
 ---
 # <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
 
@@ -72,10 +72,14 @@ További információ a személyazonosítással kapcsolatban: [Identify API](htt
 
 Az alábbi mintaalkalmazások a Face API használatának néhány módját mutatják be.
 
-- [Microsoft Face API: Windows-ügyfélkódtár és -minta](https://github.com/Microsoft/Cognitive-Face-Windows) – Az arcfelismerés, -elemzés és -azonosítás több forgatókönyvét bemutató WPF-alkalmazás.
+- [A Microsoft Face API: Windows-Klienskódtár és a minta](https://github.com/Microsoft/Cognitive-Face-Windows) – a WPF-alkalmazás azt mutatja be, számos forgatókönyv Face észlelési, elemzési és azonosítása.
 - [FamilyNotes UWP-alkalmazás](https://github.com/Microsoft/Windows-appsample-familynotes) – Univerzális Windows Platform-alkalmazás (UWP-alkalmazás), amely a beszédfelismerés, Cortana, a szabadkézi bevitel és a kamera használata mellett arcazonosítást alkalmaz egy családi üzenetmegosztási forgatókönyvben.
+
+## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
+
+Csakúgy, mint a Cognitive Services összes az Arcfelismerés szolgáltatással a fejlesztők célszerű tisztában lennie a vásárlói adatokat a Microsoft házirendeket. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések
 
 Kövesse egy egyszerű arcfelismerési forgatókönyv kóddal történő implementálásának rövid útmutatóját.
-- [Rövid útmutató: Arcfelismerés egy képen a .NET SDK és a C# használatával](quickstarts/csharp.md) (más nyelvek is elérhetők)
+- [Rövid útmutató: Arcfelismerés a képet a .NET SDK használatával C# ](quickstarts/csharp.md) (más nyelvek esetén érhető el)

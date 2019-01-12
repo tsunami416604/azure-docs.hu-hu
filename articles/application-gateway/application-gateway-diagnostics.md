@@ -1,23 +1,18 @@
 ---
-title: Hozzáférés a naplókhoz, a Teljesítménynaplók, a háttérrendszer állapota és a metrikák figyelése az Application Gateway számára
-description: Ismerje meg, hogyan engedélyezheti és kezelheti a naplók elérése és a Teljesítménynaplók az Application Gateway számára
+title: Hozzáférés a naplókhoz, a Teljesítménynaplók, a háttérrendszer állapota és a metrikák figyelése az Azure Application Gateway számára
+description: Ismerje meg, hogyan engedélyezheti és kezelheti a naplók elérése és a Teljesítménynaplók az Azure Application Gateway számára
 services: application-gateway
-author: amitsriva
-manager: rossort
-tags: azure-resource-manager
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: 45a13bca32593895e51fa7fe3c5bd7ce1ba547e6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6cd21448742778b0a2a27aea41f7940b1a216cdc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437469"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231104"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -98,7 +93,7 @@ Az alábbi kódrészletben látható egy példa a válasz:
 Segítségével különböző típusú naplók az Azure-ban felügyelet és hibaelhárítás az application Gateway átjárókkal. Ezen naplók egy része a portálról érhető el. Az összes napló ki kell olvasni az Azure Blob storage-ból, és a különböző eszközök, például a megtekintett [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excel és a Power bi-ban. További információ a különböző típusú naplók az alábbi listából:
 
 * **Tevékenységnapló**: Használhat [Azure-Tevékenységnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (nevén műveleti naplók és a vizsgálati naplók) minden művelet, amely elküldi az Azure-előfizetéshez, és azok állapotának megtekintése. A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
-* **Hozzáférési napló**: Ez a napló használatával az Application Gateway hozzáférési minták megtekintése és elemzése a fontos információkat, többek között a hívó IP, kért URL-cím, válasz késése, visszatérési kód és bájt be és ki. Egy hozzáférési napló 300 másodpercenként gyűjti. Ez a napló az Application Gateway-példányonként több rekordot tartalmaz. Az Application Gateway-példány segítségével azonosítható a instanceId tulajdonság.
+* **Hozzáférési napló**: Ez a napló használatával az Application Gateway hozzáférési minták megtekintése és elemzése a fontos információkat. Ez magában foglalja a hívó IP, kért URL-cím, válasz késése, visszatérési kód és bájt be és ki. Egy hozzáférési napló 300 másodpercenként gyűjti. Ez a napló az Application Gateway-példányonként több rekordot tartalmaz. Az Application Gateway-példány a instanceId tulajdonság alapján azonosítja.
 * **Teljesítménynaplóban**: Ez a napló segítségével megtekintheti, hogyan Application Gateway-példány működését. Ez a napló rögzíti minden példány esetében, beleértve, kiszolgált kérések teljes átviteli sebesség (bájt) teljesítményadatok, a kiszolgált kérések teljes, a sikertelen kérések száma, és a megfelelő és nem kifogástalan állapotú háttér-példányok száma. A teljesítménynaplóban gyűjtött minden 60 másodpercben.
 * **Tűzfal naplója**: Ez a napló segítségével, amelynek része a webalkalmazási tűzfallal rendelkező application gateway az észlelésük vagy a megelőzési módban a rendszer naplózza a kérések megtekintését.
 
@@ -217,7 +212,7 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte, az összes Ap
 |healthyHostCount     | A háttér-készlet kifogástalan állapotú gazdagépek száma.        |
 |unHealthyHostCount     | A háttér-készlet nem megfelelő állapotú gazdagépek száma.        |
 |RequestCount     | Kiszolgált kérések száma.        |
-|késés | A példány érkező kéréseket a háttér, amely kiszolgálja a kérések késése (ezredmásodpercben). |
+|késés | Átlagos késése (ezredmásodpercben), amely a kérések szolgál a háttér a példány érkező kérelmeket. |
 |failedRequestCount| Sikertelen kérelmek száma.|
 |Átviteli sebesség| Átlagos átviteli bájt / másodpercben mért utolsó naplóban óta.|
 

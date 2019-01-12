@@ -5,6 +5,7 @@ description: Ez a rövid útmutató ismerteti, hogyan hozhat létre és felügye
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: I want to create and Standard Load balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76d7f0b959037808c3358c2b78b837a783117457
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c22f69764447ffd4f8b67e9162fd8b45b40b175b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260004"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230033"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: Terhelésének elosztása az internetes forgalmat a virtuális gépekhez az Azure portal használatával
 
@@ -195,7 +196,7 @@ Előfordulhat, hogy karbantartás kell végeznie az alkalmazást futtató virtu�
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a háttérkészlet listájában kattintson a **myBackendPool** elemre.
 3. A **myBackendPool** lap **Célhálózat IP-konfigurációja** területén kattintson a **Virtuális gép: myVM1** melletti törlés ikonra a *VM1* a háttérből való eltávolításához
 
-Most, hogy a *myVM1* már nincs a címkészletben, bármilyen karbantartási feladatot elvégezhet a *myVM1* gépen, például telepíthet szoftverfrissítéseket. A * VM1 ** nélkül a terhelés most a *myVM2* és a *myVM3* között van elosztva. 
+Most, hogy a *myVM1* már nincs a címkészletben, bármilyen karbantartási feladatot elvégezhet a *myVM1* gépen, például telepíthet szoftverfrissítéseket. A *VM1** nélkül a terhelés most a *myVM2* és a *myVM3* között van elosztva. 
 
 Ha újra hozzá szeretné adni a *myVM1* virtuális gépet a háttérkészlethez, kövesse jelen cikk *Virtuális gépek hozzáadása a háttérkészlethez* szakaszát.
 

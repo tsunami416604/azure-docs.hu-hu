@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fda0f600fa7cb130511f2bd8b53543acfbcc7759
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 87096e1507c080f68652ea27b368364d9ac7952a
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054296"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232498"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
@@ -27,7 +27,19 @@ Ebből a cikkből megtudhatja, különböző módszerekkel, amelyen az adatok be
 * Típus-átalakítás következtetésekhez használatával fájl betöltése közben
 * MS SQL Server és az Azure Data Lake Storage kapcsolat támogatása
 
-## <a name="load-text-line-data"></a>Szöveg sor adatok betöltése 
+## <a name="load-data-automatically"></a>Automatikusan az adatok betöltése
+
+Adatok betöltése automatikusan a fájl típusa megadása nélkül, használja a `auto_read_file()` függvény. A fájl- és a olvasásához szükséges argumentumok típusú automatikusan vannak következtetni.
+
+```python
+import azureml.dataprep as dprep
+
+dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+```
+
+Ez a funkció akkor hasznos, ha a fájl típusa nem explicit módon ismert. Egy példa a használatra egy több száz, az adatfolyam objektumok alkalmazássá alakításra különböző típusú fájlokat tartalmazó könyvtárra. Minden fájl elérési útja iterálás és hívó `auto_read_file()` lehetővé teszi, hogy a könyvtárban található fájlok feldolgozását az adatfolyamot objektumok listája.
+
+## <a name="load-text-line-data"></a>Szöveg sor adatok betöltése
 
 Egyszerű szöveges adatot olvas be egy adatfolyamot, használja a `read_lines()` választható paraméterek megadása nélkül.
 
@@ -188,7 +200,7 @@ dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 Az SDK-t is betölthet adatokat az SQL-forrás. Jelenleg csak a Microsoft SQL Server támogatott. SQL-kiszolgáló adatainak beolvasása, hozzon létre egy `MSSQLDataSource` objektum, amely tartalmazza a kapcsolat paramétereit. A password paramétert, `MSSQLDataSource` fogad egy `Secret` objektum. Titkos objektum kétféle módon hozhat létre:
 
-* Regisztrálja a végrehajtó motor a titkos kulcsot és annak értékét. 
+* Regisztrálja a végrehajtó motor a titkos kulcsot és annak értékét.
 * Csak a titkos kód létrehozása egy `id` (Ha a titkos érték már regisztrálva van a végrehajtási környezet) használatával `dprep.create_secret("[SECRET-ID]")`.
 
 ```python
@@ -232,7 +244,7 @@ az account show --query tenantId
 dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Ha a felhasználói fiók több Azure-bérlő tagjai, AAD URL-cím állomásnév formában adja meg a bérlő van szükség.
 
 ### <a name="create-a-service-principal-with-the-azure-cli"></a>Egyszerű szolgáltatás létrehozása az Azure CLI-vel
@@ -256,7 +268,7 @@ Az ACL-t az Azure Data Lake Storage fájlrendszer konfigurálásához használja
 az ad sp show --id "8dd38f34-1fcb-4ff9-accd-7cd60b757174" --query objectId
 ```
 
-Konfigurálása `Read` és `Execute` hozzáférés az Azure Data Lake Storage fájlrendszer, konfigurálnia az ACL-t a fájlok és mappák esetében külön-külön. Ez az az oka, hogy az az alapul szolgáló HDFS Hozzáférésvezérlésilista-modell nem támogatja az öröklést. 
+Konfigurálása `Read` és `Execute` hozzáférés az Azure Data Lake Storage fájlrendszer, konfigurálnia az ACL-t a fájlok és mappák esetében külön-külön. Ez az az oka, hogy az az alapul szolgáló HDFS Hozzáférésvezérlésilista-modell nem támogatja az öröklést.
 
 ```azurecli
 az dls fs access set-entry --account dpreptestfiles --acl-spec "user:e37b9b1f-6a5e-4bee-9def-402b956f4e6f:r-x" --path /

@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 6a14a806b48b30d84b021a84a1ef0a2f4318ea94
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ROBOTS: NOINDEX
+ms.openlocfilehash: d5b0c15fe5e4740a06af5de8a47b79c6d7528a2c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106471"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243814"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Mint szolgáltatásra kulcs érvényesítése
 
@@ -52,7 +53,7 @@ További információ a munkafolyamat-típusok: [szolgáltatását az Azure Stac
 
 1. A megoldás irányítópultján egy új megoldás létrehozása, vagy válasszon ki egy meglévőt. Ez frissíti, és lehetővé teszi, hogy a munkafolyamat csempék.
 2. Új munkafolyamat létrehozásához válassza a **Start** bármely csempén. Minden egyes munkafolyamat vonatkozó információkért lásd: a következő cikkeket:
-    - Tesztmenetek: [Gyors útmutató: Az érvényesítés használja egy portált, az első vizsgálat ütemezése](azure-stack-vaas-schedule-test-pass.md)
+    - Tesztmenetek: [Rövid útmutató: Az érvényesítés használja egy portált, az első vizsgálat ütemezése](azure-stack-vaas-schedule-test-pass.md)
     - Megoldás-érvényesítés: [Egy új Azure Stack megoldás ellenőrzése](azure-stack-vaas-validate-solution-new.md)
     - Megoldás-érvényesítés: [A Microsoft szoftverfrissítések ellenőrzése](azure-stack-vaas-validate-microsoft-updates.md)
     - Megoldás-érvényesítés: [OEM-csomagok érvényesítése](azure-stack-vaas-validate-oem-package.md)

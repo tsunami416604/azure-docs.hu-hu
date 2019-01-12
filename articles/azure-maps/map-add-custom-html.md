@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 21689cf7fe3df7ca7e362ba49824fadd5daaa3ea
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888767"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231734"
 ---
 # <a name="add-html-markers-to-the-map"></a>A térkép HTML jelölők hozzáadása
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan például egy képfájlt egy egyéni HTML hozzáadá
 > HTML jelölők nem csatlakozhat adatforrásokhoz. Ehelyett pozíció adatokat közvetlenül a jelölő kerül, és a jelölő bekerül a maps `markers` tulajdonság, amely egy [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
 
 > [!IMPORTANT]
-> Ellentétben a legtöbb rétegeinek az Azure Maps webes vezérlő vagy a Web GL használó renderelést HTML jelölők használata a hagyományos DOM-elemek Renderelés. Mint ilyen a további HTML jelölők hozzáadva egy oldal, a további DOM-elemek vannak. Néhány hundered HTML jelölők hozzáadása után a teljesítmény csökken. Nagyobb adatkészletekhez fontolja meg az adatok fürtszolgáltatás, vagy egy szimbólum vagy egy körre réteg használatával.
+> Ellentétben a legtöbb rétegeinek az Azure Maps webes vezérlő vagy a Web GL használó renderelést HTML jelölők használata a hagyományos DOM-elemek Renderelés. Mint ilyen a további HTML jelölők hozzáadva egy oldal, a további DOM-elemek vannak. Néhány száz HTML jelölők hozzáadása után a teljesítmény csökken. Nagyobb adatkészletekhez fontolja meg az adatok fürtszolgáltatás, vagy egy szimbólum vagy egy körre réteg használatával.
 
 ## <a name="add-an-html-marker"></a>Egy HTML-mutató hozzáadása
 

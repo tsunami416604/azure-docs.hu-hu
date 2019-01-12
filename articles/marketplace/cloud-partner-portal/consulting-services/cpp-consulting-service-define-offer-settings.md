@@ -14,48 +14,49 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972171"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231937"
 ---
 # <a name="offer-settings-tab"></a>Az ajánlat (beállítások) lapján
 
 Az a **új ajánlat** képernyő, az első lépése, hogy az ajánlat identitás létrehozása. Az ajánlat identitás három részből áll: **Ajánlat azonosítója**, **közzétevő-azonosító**, és **neve**. A következő szakaszok ezeket a részeket mindegyike foglalkozik.
 
-![Egy új tanácsadási szolgáltatási ajánlat létrehozása - ajánlat (beállítások) lapján](media/consultingoffer-settings-tab.png)
+![Hozzon létre egy új, tanácsadási szolgáltatási ajánlat - ajánlat (beállítások) lapján](media/consultingoffer-settings-tab.png)
 
-*Ajánlat azonosítója*
+### <a name="offer-id"></a>Ajánlat azonosítója
 
-Ezt az azonosítót hoz létre, amikor először küld az ajánlat egyedi neve. Csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak, kell állnia. A **Ajánlatazonosító** meg fognak jelenni az URL-címet, és hatások keresési összetevő motorjának eredménye. Ha például *yourcompanyname_exampleservice*
+Ezt az azonosítót hoz létre, amikor először küld az ajánlat egyedi neve. Csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak, kell állnia. A **Ajánlatazonosító** látható az URL-címet, és hatással van a keresőmotorok találatai között. Például *yourcompanyname_exampleservice*.
 
-A példában látható módon a **ajánlat azonosítója** lekérdezi hozzáfűzi a Gyártóazonosítóval hozhat létre egy egyedi azonosítója. Ez lehet lefoglalt és indexelik a keresőprogramok állandó hivatkozásként van közzétéve.
+A példában látható módon a **Ajánlatazonosító** rendszer hozzáfűzi a Gyártóazonosítóval hozhat létre egy egyedi azonosítója. Ez az egyedi azonosító, amely képes terhére és indexelik a keresőprogramok állandó kapcsolat üzemállapottal érhető el.
 
-*Miután egy ajánlatot az élő, annak azonosítója nem lehet frissíteni.*
+>[!Note]
+>Miután egy ajánlatot az élő, annak azonosítója nem lehet frissíteni.
 
-*Közzétevő azonosítója*
+### <a name="publisher-id"></a>Közzétevő azonosítója
 
-Ez az azonosító van a fiókjával kapcsolatban. Ha a munkahelyi fiókjával jelentkezzen be a **közzétevő** azonosítója megjelenik a legördülő menüből.
+Ez az azonosító van a fiókjával kapcsolatban. Miután a szervezeti fiókkal jelentkezik be a **közzétevő-azonosító** megjelenik-e a legördülő menüből.
 
-*Name (Név)*
+### <a name="name"></a>Name (Név)
 
-Ez a karakterlánc, mi az appsource-on vagy az Azure Marketplace-en ajánlat nevét jeleníti meg. A *neve* mező kitöltése legfeljebb 50 karakter hosszúságú lehet.  A felülvizsgáló szükség lehet, hogy a Hozzáfűzés időtartamát az ajánlat nevét a cím szerkesztése és a csomag típusa.
+Ez a karakterlánc az appsource-on vagy az Azure piactéren az ajánlat nevét jeleníti meg. A **neve** mező el legfeljebb 50 karakter hosszúságú lehet. A felülvizsgáló szükség lehet a cím fűzze hozzá a időtartama és írja be az ajánlat neve a szerkesztése.
 
-Edgewater Fullscope szerint a következő példa bemutatja, hogyan van-e összeállítva ajánlat nevét. Az ajánlat neve jelenik meg:
+Az alábbi példa bemutatja, hogyan van-e összeállítva ajánlat nevét. 
 
-![Egy új, tanácsadási szolgáltatási ajánlat létrehozása](media/cppsampleconsultingoffer.png)
+![Hozzon létre egy új, tanácsadási szolgáltatási ajánlat](media/cppsampleconsultingoffer.png)
 
 Az ajánlat neve négy részből áll:
 
--   **Időtartam:** – az a **kirakat részletek** a szerkesztő lapján. Időtartam órában, napban vagy hétben a jelöl.
--   **Szolgáltatás típusa:** – meghatározva a **kirakat részletek** a szerkesztő lapján. A szolgáltatások típusok a következők `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, és `Workshop`.
--   **Preposition:** – a véleményező beszúrva
--   **Név:** – az a **ajánlat beállítások** lap.
+-   **Időtartam:** A meghatározott a **kirakat részletek** a szerkesztő lapján. Időtartam órában, napban vagy hétben a jelöl.
+-   **Szolgáltatás típusa:** A meghatározott a **kirakat részletek** a szerkesztő lapján. A szolgáltatások típusok a következők `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, és `Workshop`.
+-   **Preposition:** Szúrja be a felülvizsgáló.
+-   **név:** A meghatározott a **ajánlat beállítások** lapot.
 
 >[!Note]
->A név mező kitöltése legfeljebb 50 karakter hosszúságú lehet. A neve, küld el kell szerkesztheti a felülvizsgáló idejére engedélyezéséhez és ajánlattípus hozzáfűzni kívánt nevét.
+>A **neve** mező el legfeljebb 50 karakter hosszúságú lehet. A felülvizsgáló szükség lehet a cím fűzze hozzá a időtartama és írja be az ajánlat neve a szerkesztése.
 
 Az alábbi lista tartalmazza a több jól elnevezett ajánlat neve:
 
@@ -71,8 +72,8 @@ Az alábbi lista tartalmazza a több jól elnevezett ajánlat neve:
 -   CRM rövid útmutató: 1 napos Workshop
 -   Dynamics 365 for Sales: Értékelés 2 nap
 
-Befejezése után a **ajánlat beállítások** lapon mentheti a beküldött elemet. Az ajánlat neve megjelenik a szerkesztő felett, és visszaállítja az összes kínál található.
+Után töltse ki a **ajánlat beállítások** lapon mentse a beküldött elemet. Az ajánlat neve megjelenik a szerkesztő felett, és annak a **összes kínál**.
 
-**Következő lépések**
+## <a name="next-steps"></a>További lépések
 
-Most már megadhat [kirakat részleteit, és határozza meg, hogy tegye közzé az Azure Marketplace-en vagy az appsource-ban](./cpp-consulting-service-storefront-details.md).
+Most már megadhat [kirakat részleteit, és határozza meg, hogy tegye közzé az Azure Marketplace-en vagy az appsource-on](./cpp-consulting-service-storefront-details.md).

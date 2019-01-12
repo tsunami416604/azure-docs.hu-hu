@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713607"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246211"
 ---
 # <a name="overview-of-azure-notebooks"></a>Az Azure notebookok áttekintése
 
@@ -57,7 +57,7 @@ Röviden az Azure-jegyzetfüzetek segítségével munkája hatékonyabbá és í
 
 Azure notebookok szolgáltatás ingyenes, de a 4 GB memória- és 1 GB-os adatok visszaélések megelőzése érdekében minden projekt. Ezeket a korlátokat keretet túllépő legitim felhasználók továbbra is fut a notebookok a Captcha kihívást lásd:.
 
-A kiadás minden korlátokat, társítsa a fiókját az Azure-előfizetéssel, amely lehetővé teszi, hogy válassza ki a prémium szintű számítási szintek.
+Minden korlátokat feloldásához jelentkezzen be Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók). Ha a fiókhoz társított Azure-előfizetés, használhatja az Azure adatelemzési virtuális gép számítási szinten.
 
 ## <a name="available-kernels-and-environments"></a>Notebookokhoz elérhető kernelek és környezetek
 

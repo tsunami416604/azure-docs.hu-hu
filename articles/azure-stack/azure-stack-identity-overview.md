@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/09/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: 1bc4fcda360a899fb2f58e2ac26270d160227a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: unknown
+ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902841"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245684"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Az Azure stack-identitás – áttekintés
 
@@ -33,8 +33,8 @@ A kiválasztott Azure AD vagy az AD FS határozza meg, az Azure Stack üzembe m�
 
 További információ a lehetőségeket, amelyek függnek az Azure Stack környezettel, tekintse meg a következő cikkeket:
 
-- Az Azure Stack and deployment kit: [identitás szempontok](azure-stack-datacenter-integration.md#identity-considerations).
-- Az Azure Stack integrált rendszerek: [üzembe helyezési, tervezési megfontolások az Azure Stack integrált rendszerek](azure-stack-deployment-decisions.md).
+- Az Azure Stack and deployment kit: [Identitás szempontok](azure-stack-datacenter-integration.md#identity-considerations).
+- Az Azure Stackkel integrált rendszerek: [Üzembe helyezési, tervezési megfontolások az Azure Stack integrált rendszerek](azure-stack-deployment-decisions.md).
 
 ## <a name="common-concepts-for-identity"></a>Közös fogalmait identitás
 
@@ -80,17 +80,17 @@ Az Azure AD vagy AD FS-alkalmazások regisztrálását, és ezután kínálnak a
 
 Alkalmazások a következők:
 
-- **Webes alkalmazás**: ilyenek például az Azure portal és az Azure Resource Manager. Támogatják a webes API-hívások.
-- **Natív ügyfél**: ilyenek például az Azure PowerShell, a Visual Studio és az Azure parancssori felület.
+- **Webes alkalmazás**: Ilyenek például az Azure portal és az Azure Resource Manager. Támogatják a webes API-hívások.
+- **Natív ügyfél**: Ilyenek például az Azure PowerShell, a Visual Studio és az Azure parancssori felület.
 
 Alkalmazások bérlős két típusú támogatják:
 
-- **Egybérlős**: támogatja a felhasználók és a szolgáltatások csak az ugyanabban a könyvtárban, ahol az alkalmazás regisztrálva van-e.
+- **Egybérlős**: Támogatja a felhasználók és a szolgáltatások csak az ugyanabban a könyvtárban, ahol az alkalmazás regisztrálva van-e.
 
   > [!NOTE]
   > Mivel az AD FS támogatja a csak egyetlen címtárban, alkalmazások hoz létre egy AD FS-topológia olyan, a kialakításból fakadóan egybérlős alkalmazások.
 
-- **Több-bérlős**: felhasználók és a könyvtárban, ahol az alkalmazás regisztrálva van-e és a bérlői további címtárak szolgáltatásai által használatát támogatja. Több-bérlős alkalmazások, a felhasználók egy másik bérlőben (egy másik Azure AD-bérlő) könyvtárat is, jelentkezzen be az alkalmazást. 
+- **Több-bérlős**: Felhasználók és a könyvtárban, ahol az alkalmazás regisztrálva van-e és a bérlői további címtárak szolgáltatásai által használatát támogatja. Több-bérlős alkalmazások, a felhasználók egy másik bérlőben (egy másik Azure AD-bérlő) könyvtárat is, jelentkezzen be az alkalmazást. 
 
   Több-bérlős kapcsolatos további információkért lásd: [több bérlős üzemmód engedélyezése](azure-stack-enable-multitenancy.md).
 
@@ -98,9 +98,9 @@ Alkalmazások bérlős két típusú támogatják:
 
 Amikor regisztrál egy alkalmazás, hozzon létre két objektum:
 
-- **Alkalmazásobjektum**: az alkalmazás az összes bérlőre kiterjedő globális ábrázolása. Ezt a kapcsolatot egy az egyhez típusú szoftverek alkalmazásával és létezik csak a könyvtárban, ahol az alkalmazás regisztrálva van.
+- **Alkalmazásobjektum**: Az alkalmazás az összes bérlőre kiterjedő globális ábrázolása. Ezt a kapcsolatot egy az egyhez típusú szoftverek alkalmazásával és létezik csak a könyvtárban, ahol az alkalmazás regisztrálva van.
 
-- **Szolgáltatásnév-objektum**: a könyvtárban, ahol az alkalmazás regisztrálva van egy alkalmazás számára létrehozott hitelesítő adatokat. Egy egyszerű szolgáltatást is jön létre a címtárban, az egyes további bérlők, ahol az alkalmazás szolgál. Ez a kapcsolat egy-a-többhöz rendelkező a szoftver alkalmazás lehet.
+- **Szolgáltatásnév-objektum**: A könyvtárban, ahol az alkalmazás regisztrálva van egy alkalmazás számára létrehozott hitelesítő adatokat. Egy egyszerű szolgáltatást is jön létre a címtárban, az egyes további bérlők, ahol az alkalmazás szolgál. Ez a kapcsolat egy-a-többhöz rendelkező a szoftver alkalmazás lehet.
 
 Alkalmazás és egyszerű szolgáltatási objektumok kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -155,10 +155,10 @@ Alkalmazások és felhasználók számára az Azure Stack-architektúra négy r�
 
 Az identitásszolgáltató a hitelesítéshez, és megjelenik egy JSON Web Token, a következő információkat kell rendelkeznie:
 
-1. **Az identitás rendszerhez (szolgáltató) URL-cím**: az URL-cím, amelyen az identitásszolgáltató érhető el. Például: *https://login.windows.net*.
-2. **Alkalmazásazonosító URI-t az Azure Resource Manager**: az Azure Resource Manager, amely regisztrálva van az identitásszolgáltató az egyedi azonosítója. Emellett akkor is csak az egyes Azure Stack-telepítés.
-3. **Hitelesítő adatok**: A hitelesítő adatokat az identitásszolgáltatónál történő hitelesítésre használható.
-4. **URL-cím az Azure Resource Manager**: az URL-címet az a hely, az Azure Resource Manager-szolgáltatás. Ha például *https://management.azure.com* vagy *https://management.local.azurestack.external*.
+1. **Az identitás rendszerhez (szolgáltató) URL-cím**: Az URL-cím, amelyen az identitásszolgáltató érhető el. Például: *https://login.windows.net*.
+2. **Alkalmazásazonosító URI-t az Azure Resource Manager**: Egyedi azonosítója az Azure Resource Manager, amely regisztrálva van az identitásszolgáltatóval. Emellett akkor is csak az egyes Azure Stack-telepítés.
+3. **hitelesítő adatok**: A hitelesítő adatokat az identitásszolgáltatónál történő hitelesítésre használható.
+4. **URL-cím az Azure Resource Manager**: Az URL-címet az a hely az Azure Resource Manager-szolgáltatás. Ha például *https://management.azure.com* vagy *https://management.local.azurestack.external*.
 
 Amikor egy egyszerű (egy ügyfél, alkalmazás vagy felhasználó) hitelesítési kérelmet egy erőforráshoz való hozzáféréshez, a kérésnek tartalmaznia kell:
 

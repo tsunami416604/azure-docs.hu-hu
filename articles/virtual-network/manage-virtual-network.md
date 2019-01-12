@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: ea78176b9e35643698acf3901b30520b7c7be3c2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214392"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247826"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy egy virtuális hálózat törlése
 
@@ -101,9 +101,9 @@ Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa v�
 
 Adja hozzá, és távolítsa el a virtuális hálózat címtartományát. Címtartományt a CIDR-jelölésrendszerben kell megadni, és ugyanazon a virtuális hálózaton lévő más címtartományok nem lehet átfedésben. Meghatározhatja a címtartomány nyilvános vagy privát (RFC 1918) lehet. A címtartomány nyilvános vagy privát határozza meg, hogy a címtartomány érhető el csak a virtuális hálózaton belül, összekapcsolt virtuális hálózatok, és a virtuális hálózathoz csatlakozó bármely helyszíni hálózatokról. 
 
-<!-- You can decrease the address range for a given virtual network if you don't have any subnets associated with it. Otherwise, you can only extend the address range; for example, changing a /16 to /8 is possible. We recommend that you begin with a small address range, and then extend it later or add additional ranges.
+Ha nem rendelkezik alhálózatokkal társított virtuális hálózat címtartománya csökkenthető. Ellenkező esetben csak kiterjesztheti a címtartomány, például egy /8 /16 történő módosítása. Később sikerült egy kis címtartományt kezdődnie, és később kiterjesztése vagy további címtartományok hozzáadásával.
 
-the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 Nem adhat hozzá a következő-címtartományokat:
 

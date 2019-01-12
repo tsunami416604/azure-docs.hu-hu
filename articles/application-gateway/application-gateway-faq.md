@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/6/2018
+ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994858"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247503"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -25,7 +25,7 @@ Az Azure Application Gateway-példány egy alkalmazás Vezérlőszolgáltatást 
 
 ### <a name="what-features-does-application-gateway-support"></a>Milyen funkciókat támogatja az Application Gateway?
 
-Az Application Gateway támogatja az automatikus skálázás, SSL-kiürítés és teljes körű SSL, a webalkalmazási tűzfal, cookie-alapú munkamenet-affinitást, URL-cím-alapú útválasztás, többhelyes üzemeltetés és mások. Támogatott szolgáltatások teljes listáját lásd: [Application Gateway bemutatása](application-gateway-introduction.md).
+Az Application Gateway támogatja az automatikus skálázás, SSL-kiürítés és teljes körű SSL, webalkalmazási tűzfal, cookie-alapú munkamenet-affinitást, URL-cím-alapú útválasztást, többhelyes üzemeltetési és mások. Támogatott szolgáltatások teljes listáját lásd: [Application Gateway bemutatása](application-gateway-introduction.md).
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>Mi a különbség az Application Gateway és az Azure Load Balancer?
 
@@ -53,7 +53,7 @@ Háttérkészletek összeállítható a hálózati adapterek, a virtual machine 
 
 ### <a name="what-regions-is-the-service-available-in"></a>Mely régiókban érhető el a szolgáltatást?
 
-Az Application Gateway az Azure globális minden régióban érhető el. Érhető el is [Azure China](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/overview/clouds/government/)
+Az Application Gateway az Azure globális minden régióban érhető el. Érhető el is [Azure China 21Vianet](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/overview/clouds/government/)
 
 ### <a name="is-this-a-dedicated-deployment-for-my-subscription-or-is-it-shared-across-customers"></a>Ez egy dedikált üzemelő példánya az előfizetésem vagy azt közösen használja ügyfelek?
 
@@ -126,7 +126,7 @@ Nem, de telepítheti az alhálózat más alkalmazásátjárók.
 
 Hálózati biztonsági csoportok (NSG-k) az application gateway alhálózatának a következő korlátozásokkal támogatottak:
 
-* Kivételek kell elhelyezni, bejövő forgalom a portokon 65503 – 65534 az Application Gateway v1 Termékváltozatot és portok 65200 – 65535 v2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók nem lesz a végpontokra módosításokat kezdeményezhetnek.
+* Kivételek kell elhelyezni, bejövő forgalom a portokon 65503 – 65534 az Application Gateway v1 Termékváltozatot és portok 65200 – 65535 v2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók kihasználására nem képes a végpontokra módosításokat kezdeményezni.
 
 * Kimenő internetkapcsolattal nem lehet blokkolni.
 
@@ -137,6 +137,8 @@ Hálózati biztonsági csoportok (NSG-k) az application gateway alhálózatának
 Mindaddig, amíg nem módosítja a kérelem/válasz végpontok közötti kommunikáció az application gateway alhálózatának, felhasználó által megadott útvonalak (udr-EK) támogatottak.
 
 Például beállíthat egy UDR az application gateway alhálózatának az, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson, de győződjön meg arról, hogy a csomag elérje a kívánt rendeltetési post ellenőrzés. Ezt a nem megfelelő állapot vizsgálatok és a forgalom útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat a virtuális hálózat ExpressRoute vagy VPN-átjárók propagálása.
+
+Az application gateway alhálózatának az udr-EK vannak **nem** a v2 termékváltozat esetén támogatott. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations).
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Mik azok a korlátok Application Gateway-en? Növelheti ezeket a korlátokat?
 
@@ -206,7 +208,7 @@ Igen, az Application Gateway v2 szintű Termékváltozatot támogatja az automat
 
 ### <a name="does-manual-scale-updown-cause-downtime"></a>Manuális skálázás történik, felfelé és lefelé OK állásidő?
 
-Nem jár, a példányok frissítési és tartalék tartományok között oszlanak meg.
+Nem jár. Példányok frissítési és tartalék tartományok között oszlanak meg.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Az Application Gateway támogatja a kapcsolat kiürítése?
 
@@ -292,7 +294,7 @@ Igen, [titkosító csomag használatát konfigurációs](application-gateway-ssl
 
 ### <a name="how-many-ssl-certificates-are-supported"></a>Hány SSL-tanúsítványok támogatottak?
 
-Legfeljebb 20 SSL tanúsítványok használata támogatott.
+Legfeljebb 100 SSL tanúsítványok használata támogatott.
 
 ### <a name="how-many-authentication-certificates-for-backend-re-encryption-are-supported"></a>Hány hitelesítési tanúsítványokat a háttérrendszer újbóli titkosítására támogatottak?
 
@@ -374,13 +376,13 @@ Igen, az Application Gateway támogatja a riasztásokat. Riasztások a metrikák
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hogyan elemezheti a forgalom statisztikák az Application Gateway?
 
-Megtekintheti és keresztül mechanizmusokkal, mint például az Azure Log Analytics, az Excel, a Power BI stb számos hozzáférés-naplók elemzése.
+Megtekintheti, és több mechanizmust, például az Azure Log Analytics, az Excel, a Power BI stb keresztül hozzáférési naplók elemzése.
 
 A Resource Manager-sablon, amely telepíti és futtatja a népszerű Microsoft közzétette is [GoAccess](https://goaccess.io/) analyzer keresse meg a Application Gateway-hozzáférési naplók. GoAccess értékes olyan HTTP-forgalom statisztikáit, például egyedi látogatóinak, a kért fájlokat, a gazdagépek, a operációs rendszerek, a böngészők, HTTP-állapotkódok és egyéb biztosít. További részletekért tekintse meg a [a Resource Manager-sablon mappája a Githubon található információs fájlt](https://aka.ms/appgwgoaccessreadme).
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Háttérkiszolgáló állapotadatainak adja vissza a állapota ismeretlen, Mi ez az állapot okozza?
 
-A leggyakoribb oka a háttérrendszer a hozzáférést egy NSG-t vagy az egyéni DNS-megjelenítését blokkolják. Lásd: [háttérrendszer állapota, diagnosztikai naplózás és mérőszámok az Application Gateway](application-gateway-diagnostics.md) további.
+A leggyakoribb oka a háttérrendszerhez való hozzáférés le lesz tiltva, az NSG-t vagy az egyéni DNS. Lásd: [háttérrendszer állapota, diagnosztikai naplózás és mérőszámok az Application Gateway](application-gateway-diagnostics.md) további.
 
 ## <a name="next-steps"></a>További lépések
 

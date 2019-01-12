@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4c952c847aa56b385065a878b664b3d1d98763f4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cd4eca669936a206241069f1f8a8d9440f45be33
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584020"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229778"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -69,6 +69,10 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 - A fájlméret nem érheti el a 4 megabájtot (MB)
 - A képnek nagyobbnak kell lennie, mint 50 x 50 képpont  
   Az OCR használatához a kép méretének 50 x 50 és 4200 x 4200 képpont között kell lennie.
+
+## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
+
+Mint az összes, a Cognitive Services a Computer Vision service segítségével a fejlesztők célszerű tisztában lennie a házirendek a Microsoft-vásárlói adatokat. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések
 

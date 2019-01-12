@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1605fdc5e49d2b8e95a2876dea8dff378ee33e2e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51238075"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232277"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
 
@@ -296,7 +296,7 @@ Most már készen áll az alábbi lépéseket követve rendelkezésre állási c
 
     ![Új rendelkezésre állási csoport varázsló kezdeti adatszinkronizálás kiválasztása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Az a **kezdeti adatszinkronizálás kiválasztása** lapra, jelölje be **teljes** , és adja meg egy megosztott hálózati helyre. A helyet használja a [létrehozott biztonsági másolatok megosztásáról](#backupshare). A példában volt **\\\\\<első SQL-kiszolgáló\>\Backup\**. Kattintson a **tovább**.
+8. Az a **kezdeti adatszinkronizálás kiválasztása** lapra, jelölje be **teljes** , és adja meg egy megosztott hálózati helyre. A helyet használja a [létrehozott biztonsági másolatok megosztásáról](#backupshare). A példában volt  **\\ \\ \<első SQL-kiszolgáló\>\Backup\\**. Kattintson a **tovább**.
 
    >[!NOTE]
    >Teljes szinkronizálás teljes biztonsági másolatot készít az adatbázis az SQL Server első példányát, és visszaállítja a második példány. A nagy méretű adatbázisok esetében a teljes szinkronizálás nem javasolt, mert hosszú ideig is eltarthat. Most manuálisan az adatbázis biztonsági mentése és visszaállítása, az csökkentheti `NO RECOVERY`. Ha az adatbázis már visszaállítva a `NO RECOVERY` válassza ki a második SQL Serveren a rendelkezésre állási csoport konfigurálása előtt **csak összekapcsolás**. Ha szeretné venni a biztonsági mentés a rendelkezésre állási csoport konfigurálása után, válassza a **kezdeti adatszinkronizálás kihagyása**.
