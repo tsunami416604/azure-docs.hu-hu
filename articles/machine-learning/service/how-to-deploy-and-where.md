@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b656a82bab9be6f6c24ba0d418df9142a6a6c117
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2c71b0abd5069aeb00b63fde8b76e5bb0fc0beda
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199765"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246432"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -354,8 +354,8 @@ Azt is megteheti, követheti a lépések a [üzembe helyezése az Azure IoT Edge
 > [!NOTE]
 > Ha még nem ismeri az Azure IoT, a szolgáltatás első lépésekről lásd: a következő dokumentumokban talál:
 >
-> * [Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön](../../iot-edge/quickstart-linux.md)
-> * [Gyors útmutató: Helyezze üzembe az első IoT Edge-modul a Windows-eszköz](../../iot-edge/quickstart.md)
+> * [Rövid útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön](../../iot-edge/quickstart-linux.md)
+> * [Rövid útmutató: Helyezze üzembe az első IoT Edge-modul a Windows-eszköz](../../iot-edge/quickstart.md)
 
 
 ## <a name="testing-web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez tesztelése
@@ -410,3 +410,4 @@ A regisztrált modell törléséhez használja `model.delete()`.
 * [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)
 * [Hogyan futtathat batch-előrejelzés](how-to-run-batch-predictions.md)
+* [Az Azure Machine Learning szolgáltatás használata az Azure Virtual Network szolgáltatással](how-to-enable-virtual-network.md)
