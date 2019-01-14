@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1ae0be44be524e4cb4e8d446e2279a1bfd800a04
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055081"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231614"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -40,7 +40,7 @@ Nincsenek _eszközoldali SDK-k_ érhető el, amelyek lehetővé teszik, hogy hoz
 ## <a name="azure-iot-service-sdks"></a>Azure IoT service SDKs
 Nincsenek _szolgáltatási SDK-k_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [háttéralkalmazásokat](#back-end-app) , amely az IoT hub-interakciót. Az IoT Hub oktatóanyagok bemutatják, hogyan ezen szolgáltatási SDK-k használatához. A Forráskód és a szolgáltatási SDK-k kapcsolatos további információkat a Githubon találhatja [tárház](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-tools"></a>Az Azure IoT-eszközök
+## <a name="azure-iot-tools"></a>Azure IoT-eszközök
 A [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy platformfüggetlen, nyílt forráskódú Visual Studio Code bővítmény, amely segít kezelése az Azure IoT Hub és az eszközök a VS Code-ban. Az Azure IoT-eszközök IoT a fejlesztők egyszerűen fejleszteni IoT-projektet a VS Code-ban.
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -59,7 +59,7 @@ A [Microsoft Azure-portálon](https://portal.azure.com) egy központi felület, 
 [Az Azure Storage](../storage/common/storage-introduction.md) egy felhőalapú tárolási megoldás. Ez magában foglalja a Blob Storage szolgáltatás strukturálatlan adatok tárolására használható. Egyes IoT Hub oktatóanyagok a blob storage használata.
 
 ## <a name="back-end-app"></a>Háttéralkalmazás
-Kontextusában [az IoT Hub](#iot-hub), a háttéralkalmazás egy, a szolgáltatás felé néző végpontok egy IoT hubhoz csatlakozó alkalmazást. Például egy háttéralkalmazás kérelmeihez [eszközről a felhőbe](#device-to-cloud)üzeneteket, vagy kezelheti a [eszközidentitás-jegyzék](#identity-registry). Általában egy háttér-alkalmazást a felhőben fut, de sok oktatóanyagok a háttér-alkalmazások a helyi fejlesztői gépen futó konzolalkalmazással.
+Kontextusában [az IoT Hub](#iot-hub), a háttéralkalmazás egy, a szolgáltatás felé néző végpontok egy IoT hubhoz csatlakozó alkalmazást. Például egy háttéralkalmazás kérelmeihez [eszközről a felhőbe](#device-to-cloud) üzeneteket, vagy kezelheti a [eszközidentitás-jegyzék](#identity-registry). Általában egy háttér-alkalmazást a felhőben fut, de sok oktatóanyagok a háttér-alkalmazások a helyi fejlesztői gépen futó konzolalkalmazással.
 
 ## <a name="built-in-endpoints"></a>Beépített végpontok
 Minden IoT hub tartalmaz egy beépített [végpont](iot-hub-devguide-endpoints.md) , amely Event Hub-kompatibilis. Minden olyan mechanizmus, amely együttműködik a erről a végpontról eszköz a felhőbe irányuló üzenetek olvasásához az Event Hubs is használhatja.

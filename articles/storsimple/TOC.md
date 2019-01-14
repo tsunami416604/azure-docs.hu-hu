@@ -109,7 +109,7 @@
 ##### [Tárfiókok kezelése](storsimple-8000-manage-storage-accounts.md)
 ##### [Kötettárolók kezelése](storsimple-8000-manage-volume-containers.md)
 ##### [Kötetek kezelése – aktuális](storsimple-8000-manage-volumes-u2.md)
-###### [Gyakori kérdések a helyileg rögzített kötetekről](storsimple-8000-local-volume-faq.md)
+###### [GYIK: Helyileg rögzített kötetek](storsimple-8000-local-volume-faq.md)
 ##### [Szerepköralapú hozzáférés-vezérlés](storsimple-8000-role-based-access-control.md)
 ##### [ACR-ek kezelése](storsimple-8000-manage-acrs.md)
 ##### [Sávszélességsablonok kezelése](storsimple-8000-manage-bandwidth-templates.md)
@@ -209,7 +209,7 @@
 ## Referencia
 ### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [StorSimple-höz készült Windows PowerShell-parancsmagok](https://technet.microsoft.com/library/dn688168.aspx)
-
+### [Resource Manager-sablon](/azure/templates/microsoft.storsimple/allversions)
 
 # StorSimple Data Manager
 
@@ -235,7 +235,7 @@
 ## Kibocsátási megjegyzések
 ### [A StorSimple kibocsátási megjegyzései](https://aka.ms/storsimple-virtual-array-latest-relnote)
 ### [A CSP kibocsátási megjegyzései](https://partner.microsoft.com/Support/whats-new)
-### [StorSimple CSP-hez: gyakori kérdések](storsimple-partner-csp-faq.md)
+### [StorSimple CSP-hez: GYIK](storsimple-partner-csp-faq.md)
 
 # Kapcsolódó témakörök
 ## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
