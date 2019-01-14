@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54019622"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása DB2 az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-onprem-db2-connector.md)
 > * [Aktuális verzió](connector-db2.md)
 
