@@ -1,23 +1,21 @@
 ---
-title: Algoritmusok kiválasztása az Azure Machine Learning Studióban |} A Microsoft Docs
+title: Algoritmusok kiválasztása
+titleSuffix: Azure Machine Learning Studio
 description: Hogyan lehet felügyelt és nem felügyelt tanítás Learning az Azure Machine Learning Studio algoritmusok kiválasztása a fürtözés, a besorolási vagy regressziós kísérletekben.
 services: machine-learning
-author: ericlicoding
-ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.author: amlstudiodocs
-editor: cgronlun
-tags: ''
-ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 20debfe2a1f3cf92e1a90867ca2b3a01852f7f9c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256927"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267351"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -144,7 +142,7 @@ Néhány tanulási algoritmusok győződjön meg az adatok vagy a kívánt eredm
 | **Anomáliadetektálás** | | | | | |
 | [tartóvektor-gép](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Nagyméretű szolgáltatások számára különösen hasznos |
 | [PCA-alapú anomáliadetektálás](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
-| [K-közép](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Egy csoportosítási algoritmus |
+| [K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Egy csoportosítási algoritmus |
 
 **Algoritmus tulajdonságai:**
 

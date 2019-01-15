@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
+ms.date: 12/21/2018
 ms.author: jroth
-ms.openlocfilehash: 6c8751bdfd0a9d1c49a2d759f3674b17562513e5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 313f77481025f0851fb1fd09033dc198072b2190
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199306"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259449"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Gyors útmutató: SQL Servert futtató, Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával
 
@@ -47,11 +47,11 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
    Connect-AzureRmAccount
    ```
 
-1. Ekkor meg kell jelennie egy bejelentkezési képernyőnek, amely a hitelesítő adatainak megadását kéri. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
+1. Megjelenik egy képernyő, amely a hitelesítő adatainak megadását. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-1. Adjon meg egy változót egy egyedi erőforráscsoport-névvel. A gyors útmutató további részének egyszerűbbé tétele érdekében a többi parancs ezt a nevet veszi alapul az egyéb erőforrásnevekhez.
+1. Adjon meg egy változót egy egyedi erőforráscsoport-névvel. Ez a rövid útmutató a többi leegyszerűsítése a többi parancs ezt a nevet alapjaként használja az egyéb erőforrásnevekhez.
 
    ```PowerShell
    $ResourceGroupName = "sqlvm1"
@@ -122,11 +122,11 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 
 ## <a name="create-the-sql-vm"></a>Az SQL virtuális gép létrehozása
 
-1. Adja meg a hitelesítő adatait a virtuális gépre való bejelentkezéshez. A felhasználónév az „azureadmin”. Gondoskodjon a jelszómódosításról a parancs futtatása előtt.
+1. Adja meg a bejelentkezési adatait, jelentkezzen be a virtuális Gépet. A felhasználónév az "azureadmin". Ellenőrizze, hogy módosítja \<jelszó > a parancs futtatása előtt.
 
    ``` PowerShell
    # Define a credential object
-   $SecurePassword = ConvertTo-SecureString 'Change.This!000' `
+   $SecurePassword = ConvertTo-SecureString '<password>' `
       -AsPlainText -Force
    $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
    ```
@@ -136,7 +136,7 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13 | `
+   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
       Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
       Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
       Add-AzureRmVMNetworkInterface -Id $Interface.Id
@@ -150,7 +150,7 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 
 ## <a name="install-the-sql-iaas-agent"></a>Az SQL IaaS-ügynök telepítése
 
-A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni kell az [SQL Server IaaS-ügynök bővítményt](virtual-machines-windows-sql-server-agent-extension.md). Az ügynök az új virtuális gépen való telepítéséhez futtassa a következő parancsot a gép létrehozása után.
+A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni kell az [SQL Server IaaS-ügynök bővítményt](virtual-machines-windows-sql-server-agent-extension.md). Telepítse az ügynököt az új virtuális gép, futtassa a következő parancsot a virtuális gép létrehozása után.
 
    ```PowerShell
    Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
@@ -158,37 +158,37 @@ A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni 
 
 ## <a name="remote-desktop-into-the-vm"></a>Távoli asztal a virtuális gépen
 
-1. A következő paranccsal kérje le az új virtuális gép nyilvános IP-címét.
+1. Használja a következő parancsot az új virtuális gép nyilvános IP-cím lekéréséhez.
 
    ```PowerShell
    Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. A visszaadott IP-címet a parancssorban az **mstsc** parancs paramétereként megadva elindíthat egy távoli asztali munkamenetet az új virtuális gépen.
+1. A visszaadott IP-címet adja át a parancssori paramétereként **mstsc** , indítson el egy távoli asztali munkamenetet az új virtuális gépen.
 
    ```
    mstsc /v:<publicIpAddress>
    ```
 
-1. Amikor a rendszer a hitelesítő adatokat kéri, válassza egy másik fiók hitelesítő adatainak megadását. Adja meg a felhasználónevet egy fordított perjel előtaggal (például `\azureadmin`, és az ebben a rövid útmutatóban korábban megadott jelszót.
+1. Amikor a rendszer a hitelesítő adatokat kéri, válassza egy másik fiók hitelesítő adatainak megadását. Adja meg a felhasználónevét és a egy fordított perjel (például `\azureadmin`), és az ebben a rövid útmutatóban korábban megadott jelszót.
 
 ## <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 
-1. Miután bejelentkezett a távoli asztali munkamenetbe, indítsa el a Start menüből az **SQL Server Management Studio 2017** alkalmazást.
+1. Miután bejelentkezett a a távoli asztali munkamenetbe, indítsa el a **SQL Server Management Studio 2017** a start menüből.
 
-1. A **Connect to Server** (Kapcsolódás kiszolgálóhoz) párbeszédpanelen tartsa meg az alapértelmezett értékeket. A kiszolgáló neve a virtuális gép neve. A Hitelesítés értéke **Windows Authentication** (Windows-hitelesítés). Kattintson a **Connect** (Csatlakozás) gombra.
+1. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen hagyja változatlanul az alapértelmezett értékeket. A kiszolgáló neve a virtuális gép neve. A Hitelesítés értéke **Windows Authentication** (Windows-hitelesítés). Kattintson a **Csatlakozás** gombra.
 
-Ezzel helyileg csatlakozott az SQL Serverhez. Ha távolról kíván csatlakozni, [konfigurálja a kapcsolatot](virtual-machines-windows-sql-connect.md) a portálon vagy manuálisan.
+Most már csatlakozott az SQL Server helyi. Ha távolról kapcsolódni szeretne, akkor kell [-kapcsolat konfigurálása](virtual-machines-windows-sql-connect.md) a portálról, vagy manuálisan.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem szükséges, hogy a virtuális gép folyamatosan fusson, a szükségtelen költségeket elkerülendő leállíthatja az épp használaton kívüli gépet. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
+Ha már nincs szüksége a virtuális gép folyamatosan fusson, a szükségtelen díjak elkerüléséhez leállításával, amikor nincs használatban. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
 
 ```PowerShell
 Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Emellett véglegesen is törölheti a virtuális géppel társított erőforrásokat a **Remove-AzureRmResourceGroup** paranccsal. Ez véglegesen törli magát a virtuális gépet is, ezért ezt a parancsot körültekintően alkalmazza.
+Emellett véglegesen is törölheti a virtuális géppel társított erőforrásokat a **Remove-AzureRmResourceGroup** paranccsal. Ezzel véglegesen törli a virtuális gépet is, ezért ezt a parancsot körültekintően.
 
 ## <a name="next-steps"></a>További lépések
 

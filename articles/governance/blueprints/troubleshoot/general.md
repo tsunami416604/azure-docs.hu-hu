@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan hoz létre, és tervek hibáinak elhárítása
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 04c038eb11cc40cec3552feff183bea55b22bb57
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315526"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261927"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure-tervek használatával kapcsolatos hibák elhárítása
 
@@ -52,6 +52,20 @@ Egy házirend ütközést idézhet elő a központi telepítés a számos oka:
 #### <a name="resolution"></a>Megoldás:
 
 Módosítsa a tervezet, így nem ütközik az a hiba részleteit a szabályzatokat. Ha ez a módosítás nem lehetséges, a másik lehetséges, hogy a szabályzat-hozzárendelés megváltozott, így a tervezet már nem ütközik a szabályzat hatóköre.
+
+### <a name="escape-function-parameter"></a>Forgatókönyv: Tervrajz paraméter függvény
+
+#### <a name="issue"></a>Probléma
+
+Tervezet paramétereinek megadása, amelyek a functions dolgozza fel előbb átadódik az összetevők.
+
+#### <a name="cause"></a>Ok
+
+Tervezet paraméter átadásával, amely függvényt tartalmaz, például `[resourceGroup().tags.myTag]`, az összetevőt a függvény helyett a dinamikus függvény összetevő történő beállítása feldolgozott eredményét eredményez.
+
+#### <a name="resolution"></a>Megoldás:
+
+Egy alkalmazáson keresztül működjön paraméterként átadni a teljes karakterláncot escape `[` úgy, hogy néz ki a tervezetparaméter `[[resourceGroup().tags.myTag]`. Az escape-karaktert hatására tervezetek kezelni az érték egy karakterláncot a a tervezet feldolgozásakor. Tervezetek majd helyezi a függvény az összetevőben, lehetővé téve, hogy a várt módon dinamikus.
 
 ## <a name="next-steps"></a>További lépések
 

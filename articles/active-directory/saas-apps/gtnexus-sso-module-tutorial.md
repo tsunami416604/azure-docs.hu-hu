@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező rugalmas globális nézet |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és rugalmas globális nézet között.
+title: 'Oktatóanyag: GTNexus egyszeri Bejelentkezéses rendszert az Azure Active Directory-integráció |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés GTNexus egyszeri Bejelentkezéses rendszert és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: ae466dc4bce6ab7068622272651c22d70fc84fff
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 646c9b1c3a1f10cae678e6788379eb6bbd144e78
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54068891"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263492"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flex-global-view"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező rugalmas globális nézet
+# <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Oktatóanyag: GTNexus egyszeri Bejelentkezéses rendszert az Azure Active Directory-integráció
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan változik globális nézet integrálása az Azure Active Directory (Azure AD).
-Globális nézet rugalmas integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja, hogyan GTNexus egyszeri Bejelentkezéses rendszert integrálása az Azure Active Directory (Azure AD).
+Egyszeri Bejelentkezéses rendszert GTNexus integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, ki férhet hozzá a globális Nézetig rugalmas Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett rugalmas globális nézetbe (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozhatja, ki férhet hozzá GTNexus egyszeri Bejelentkezéses rendszert az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezve GTNexus egyszeri Bejelentkezéses rendszert (egyszeri bejelentkezés) az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,22 +35,22 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a globális Nézetig rugalmas, a következőkre van szükség:
+GTNexus egyszeri Bejelentkezéses rendszert az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Rugalmas globális nézet egyetlen bejelentkezési engedélyezett előfizetés
+* Egyszeri Bejelentkezéses rendszert GTNexus egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* Globális nézet által támogatott rugalmas **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Támogatja az egyszeri Bejelentkezéses rendszert GTNexus **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="adding-flex-global-view-from-the-gallery"></a>Rugalmas globális nézet hozzáadása a katalógusból
+## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>Egyszeri Bejelentkezéses rendszert GTNexus hozzáadása a katalógusból
 
-Konfigurálása az Azure AD integrálása a globális Nézetig rugalmas, hozzá kell rugalmas globális nézet a galériából a felügyelt SaaS-alkalmazások listájára.
+Konfigurálhatja az Azure AD integrálása a GTNexus egyszeri Bejelentkezéses rendszert, hozzá kell GTNexus egyszeri Bejelentkezéses rendszert a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Rugalmas globális nézet hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Egyszeri Bejelentkezéses rendszert GTNexus hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
@@ -64,31 +64,31 @@ Konfigurálása az Azure AD integrálása a globális Nézetig rugalmas, hozzá 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **rugalmas globális nézet**, jelölje be **rugalmas globális nézet** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **GTNexus egyszeri Bejelentkezéses rendszert**válassza **GTNexus egyszeri Bejelentkezéses rendszert** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Globális nézet változik a találatok listájában](common/search-new-app.png)
+     ![Az eredmények listájában GTNexus egyszeri Bejelentkezéses rendszert](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapuló rugalmas globális nézet **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és rugalmas globális nézet a kapcsolódó felhasználó hivatkozás kapcsolatának kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés alapján nevű tesztfelhasználó GTNexus SSO rendszerrel **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó GTNexus egyszeri Bejelentkezéses rendszert a hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezés és rugalmas globális nézet tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az egyszeri Bejelentkezéses rendszert GTNexus tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Rugalmas globális nézet egyszeri bejelentkezés konfigurálása](#configure-flex-global-view-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[GTNexus SSO rendszer egyszeri bejelentkezés konfigurálása](#configure-gtnexus-sso-system-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre globális nézet rugalmas tesztfelhasználót](#create-flex-global-view-test-user)**  – egy megfelelője a Britta Simon rugalmas globális nézet, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre GTNexus egyszeri Bejelentkezéses rendszert tesztfelhasználót](#create-gtnexus-sso-system-test-user)**  – egy megfelelője a Britta Simon GTNexus egyszeri Bejelentkezéses rendszert, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés rugalmas globális nézetbe, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GTNexus egyszeri Bejelentkezéses rendszert, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **rugalmas globális nézet** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **GTNexus egyszeri Bejelentkezéses rendszert** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés rugalmas globális n
 
     ![image](common/browse-upload-metadata.png)
 
-    c. A metaadatfájl sikeres feltöltését követően a **azonosító** és **válasz URL-cím** értékek lekérése a globális Nézetig rugalmas szakasz szövegmezőben automatikusan:
+    c. A metaadatfájl sikeres feltöltését követően a **azonosító** és **válasz URL-cím** értékeket automatikusan GTNexus egyszeri Bejelentkezéses rendszert szakasz szövegmezőben lekérése:
 
     ![image](common/idp-intiated.png)
 
@@ -121,9 +121,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés rugalmas globális n
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-### <a name="configure-flex-global-view-single-sign-on"></a>Globális nézet rugalmas egyszeri bejelentkezés konfigurálása
+### <a name="configure-gtnexus-sso-system-single-sign-on"></a>Rendszer GTNexus SSO egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **rugalmas globális nézet** oldalon kell küldenie a **összevonási metaadatainak XML** való [globális nézet rugalmas támogatási csapatának](mailto:support@gtnexus.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **GTNexus egyszeri Bejelentkezéses rendszert** oldalon kell küldenie a **összevonási metaadatainak XML** való [GTNexus egyszeri Bejelentkezéses rendszert támogatási csapatának](mailto:support@gtnexus.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -152,15 +152,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon rugalmas globális nézetbe való hozzáférés biztosítása az Azure egyszeri bejelentkezésre használja.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés GTNexus egyszeri Bejelentkezéses rendszert Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **rugalmas globális nézet**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **GTNexus egyszeri Bejelentkezéses rendszert**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **rugalmas globális nézet**.
+2. Az alkalmazások listájában jelölje ki a **GTNexus egyszeri Bejelentkezéses rendszert**.
 
-    ![A rugalmas globális megtekintése hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![Az alkalmazások listáját a GTNexus egyszeri Bejelentkezéses rendszert hivatkozás](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -176,15 +176,15 @@ Ebben a szakaszban engedélyezze Britta Simon rugalmas globális nézetbe való 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-flex-global-view-test-user"></a>Globális nézet rugalmas tesztfelhasználó létrehozása
+### <a name="create-gtnexus-sso-system-test-user"></a>Egyszeri Bejelentkezéses rendszert GTNexus tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy rugalmas globális nézetben Britta Simon nevű felhasználó létrehozásához. Együttműködve [globális nézet rugalmas támogatási csapatának](mailto:support@gtnexus.com) a felhasználók hozzáadása a globális Nézetig rugalmas platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű GTNexus egyszeri Bejelentkezéses rendszert hoz létre. Együttműködve [GTNexus egyszeri Bejelentkezéses rendszert támogatási csapatának](mailto:support@gtnexus.com) a felhasználók hozzáadása az egyszeri Bejelentkezéses rendszert GTNexus platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a globális Nézetig rugalmas csempére kattint, akkor kell automatikusan megtörténik a globális rugalmas nézetre, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a GTNexus egyszeri Bejelentkezéses rendszert csempére kattint, meg kell lehet automatikusan bejelentkezett a GTNexus egyszeri Bejelentkezéses rendszert, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

@@ -1,6 +1,7 @@
 # Áttekintés
-## [Információ a virtuális gépekről](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-## [GYIK](faq-classic.md)
+## [Virtuálisgép-bővítmények](agents-and-extensions-classic.md)
+## [Rendelkezésre állás](configure-availability-classic.md)
+## [Gyakori kérdések](faq-classic.md)
 
 # Bevezetés
 ## [Virtuális gép létrehozása az Azure Portalon](tutorial-classic.md)
@@ -29,20 +30,17 @@
 ### [Karbantartás](planned-maintenance-schedule-classic.md)
 
 ## Kezelés
-### [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-deep-dive)
 ### [Virtuális gépek kezelése az Azure PowerShell-lel](manage-psh-classic.md)
 ### [További információk a virtuálisgép-ügynökről és -bővítményekről](agents-and-extensions-classic.md)
 ### [Virtuálisgép-bővítmények kezelése](manage-extensions-classic.md)
 
 ## Számítási feladatok kezelése
-### [Nagy teljesítményű feldolgozás (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
+### Nagy teljesítményű feldolgozás (HPC)
 #### [Erőforrások automatikus méretezése](hpcpack-cluster-node-autogrowshrink.md)
 #### [Számítási csomópontok kezelése](hpcpack-cluster-node-manage.md)
 #### [Fürt létrehozása](hpcpack-cluster-powershell-script.md)
 #### [Fürt beállítása MPI-alkalmazások futtatására](hpcpack-rdma-cluster.md)
-#### [Excel és SOA típusú számítási feladatok futtatása](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Marketplace-ről származó rendszerképet használó átjárócsomópont létrehozása](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
-#### [Helyszíni feladatok küldése az Azure-ba](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Tomcat](java-run-tomcat-app-server.md)
 
@@ -57,7 +55,6 @@
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
-## [Resource Manager-sablonok készítése](../../../resource-group-authoring-templates.md)
 ## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates)
 ## [Számítási REST](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [Hálózati REST](https://msdn.microsoft.com/library/jj157182.aspx)

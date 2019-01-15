@@ -1,28 +1,10 @@
 ---
-title: Egyszerű kísérlet – az Azure Machine Learning Studióban |} A Microsoft Docs
-description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
-keywords: kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cgronlun
-ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 03/20/2017
-ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262418"
+Cím: Egyszerű kísérlet titleSuffix: Azure Machine Learning Studio description: Ez a Machine Learning-oktatóanyag egy egyszerű adatelemezési kísérletet mutat be. Egy regressziós algoritmus használatával fogjuk előre megbecsülni egy autó árát.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: az oktatóanyag
+
+Szerző: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
 ---
+
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
 Ha korábban még soha nem használta az **Azure Machine Learning Studiót**, ez az oktatóanyag Önnek szól.
@@ -40,7 +22,7 @@ Ebben az oktatóanyagban végigvezetjük azon, hogyan hozhat létre egy gépi ta
 - [A Machine Learning alapjai algoritmus példákkal](basics-infographic-with-algorithm-examples.md) – Ez az infografika hasznos lehet, ha többet szeretne megtudni a Machine Learning Studióban elérhető különféle gépi tanulási algoritmusokról.
 - [Gépi tanulási útmutató](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1) – Ez az útmutató hasonló információkat tartalmaz, mint a fenti infografika, de interaktív formában.
 - [Gépi tanulási algoritmus-adatlap](algorithm-cheat-sheet.md) és [Algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md) – Ez a letölthető poszter és a kísérő cikk mélységükben tárgyalják a Studio algoritmusait.
-- [A Machine Learning Studio: Algoritmus és a modul súgójában](https://msdn.microsoft.com/library/azure/dn905974.aspx) – Ez az összes Studio referenciaanyaga, beleértve a gépi tanulási algoritmusok teljes referenciája
+- [Machine Learning Studio: Algoritmus és a modul súgójában](https://msdn.microsoft.com/library/azure/dn905974.aspx) – Ez az összes Studio referenciaanyaga, beleértve a gépi tanulási algoritmusok teljes referenciája
 
 
 
@@ -123,7 +105,7 @@ Ebben a minta adatkészletben minden autópéldány külön sorban szerepel, az 
 
 A jobb felső sarokban látható „**x**” gombra kattintva zárja be a képi megjelenítési ablakot.
 
-## <a name="step-2-prepare-the-data"></a>2. lépés: Az adatok előkészítése
+## <a name="step-2-prepare-the-data"></a>2. lépés: Az adatok előkészítése
 
 Az adathalmazok elemzése előtt általában némi előfeldolgozás szükséges. Talán észrevette például, hogy az oszlopok számos sorából hiányoznak az értékek. Ahhoz, hogy a modell elemezni tudja az adatokat, el kell távolítani a hiányzó értékeket. Ebben az esetben törölni fogjuk azokat a sorokat, amelyekből értékek hiányoznak. A **normalized-losses** (normalizált veszteségek) című oszlopból ráadásul rendkívül sok érték hiányzik, ezért ezt az oszlopot teljesen kizárjuk a modellből.
 

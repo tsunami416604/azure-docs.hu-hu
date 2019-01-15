@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/10/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 47f66fc61fdd397350efb934bf21f488960a27a2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54233059"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267732"
 ---
 > [!NOTE]
 > Több részből álló kérelmeket általában a művelethez három adatra van szükség:
@@ -26,11 +26,11 @@ ms.locfileid: "54233059"
 >
 > **A Content-Type** és **tartalomtípus-szabályozó** használat forgatókönyvének függően változhat.
 
-Több részből álló kéréseket programozott módon lehet tenni (keresztül C#), egy REST-ügyféllel, vagy az eszköz, például [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Előfordulhat, hogy a REST-ügyféleszköz különböző szintű összetett többrészes kérelmek támogatása. Ellenőrizze, hogy melyik eszköz számára az igényeinek a leginkább megfelelő-e.
+Több részből álló kéréseket programozott módon lehet tenni (keresztül C#), egy REST-ügyféllel, vagy az eszköz, például [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). Előfordulhat, hogy a REST-ügyféleszköz különböző szintű összetett többrészes kérelmek támogatása. Konfigurációs beállítások is eltérőek lehetnek némileg az eszköz az eszköz. Ellenőrizze, hogy melyik eszköz számára az igényeinek a leginkább megfelelő-e.
 
 > [!IMPORTANT]
 > Több részből álló érkező kérelmeket az Azure digitális Twins felügyeleti API-k általában van két részből áll:
-> * BLOB metaadatai (például egy kapcsolódó MIME-típus), amely nem deklarál **Content-Type** és **tartalom-törlése**
+> * BLOB metaadatai (például egy kapcsolódó MIME-típus), amely nem deklarál **Content-Type** és/vagy **tartalom-törlése**
 > * BLOB tartalmát, többek között a strukturálatlan tartalmát egy feltölteni kívánt fájlt
 >
 > A két részből egyike sem nem szükséges **javítására** kérelmeket. Mindkettő szükséges **POST** vagy -létrehozási műveletek.

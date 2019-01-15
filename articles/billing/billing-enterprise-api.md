@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579430"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265634"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k áttekintése
 A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati és számlázási adatok programozott módon lekérni az előnyben részesített adatok elemzésére szolgáló eszközöket. A vállalati felhasználók regisztráltak- [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral az egyeztetett pénzügyi kötelezettségvállalások és egyéni díjszabás az Azure-erőforrásokhoz való hozzáférést.
@@ -58,7 +58,7 @@ A válasz a fenti API az ETag lesznek visszaadva. Etag módosítása azt jelzi, 
 |401| Nem engedélyezett| API-kulcs nem található, érvénytelen, lejárt stb.|
 |404| Nem elérhető| A jelentés a végpont nem található|
 |400| Hibás kérelem| Érvénytelen paraméterek – dátumtartományokat, nagyvállalati szerződéssel rendelkező számokat stb.|
-|500| Kiszolgálóhiba| Unexoected hiba a kérelem feldolgozása| 
+|500| Kiszolgálóhiba| Váratlan hiba történt a kérelem feldolgozása| 
 
 
 

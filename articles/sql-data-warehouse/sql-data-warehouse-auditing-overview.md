@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d35ac7cac5c14a7bd57913046e8f4c09a22f177a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260380"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267436"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -107,7 +107,7 @@ Naplózási ellenőrzés naplózás használata előtt egy ["Alacsonyabb szintű
 
 5. Kattintson a **OK** gombra a részletek tárolókonfiguráció mentéséhez.
 6. A **esemény NAPLÓZÁSA által**, kattintson a **sikeres** és **hiba** összes esemény naplózása, vagy válassza ki az egyes kategóriák.
-7. Ha naplózási adatbázis konfigurál, szükség lehet a kapcsolati karakterláncot, az ügyfél ellenőrizze a megfelelő rögzített adatok naplózását, az megváltoztatására. Ellenőrizze a [módosíthatja a kiszolgáló teljes Tartománynevet a kapcsolati karakterláncban](sql-data-warehouse-auditing-downlevel-clients.md) a témakör korábbi verziójú ügyfél-kapcsolatokhoz.
+7. Ha naplózási adatbázis konfigurál, szükség lehet a kapcsolati karakterláncot, az ügyfél ellenőrizze a megfelelő rögzített adatok naplózását, az megváltoztatására. Ellenőrizze a [Server teljes Tartományneve módosíthatja a kapcsolati karakterláncban](sql-data-warehouse-auditing-downlevel-clients.md) a témakör korábbi verziójú ügyfél-kapcsolatokhoz.
 8. Kattintson az **OK** gombra.
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
@@ -196,7 +196,7 @@ Bármely ügyfél megvalósító TDS 7.4 is támogatnia kell a átirányítást.
 * JDBC (JDBC támogatja a TDS 7.4, míg a TDS-átirányítási funkció nem teljes mértékben támogatott)
 * Fárasztó (a node.js-ben)
 
-**Megjegyzés:** az előző kiszolgáló FQDN módosítása egy SQL Server szint naplózási házirend alkalmazása nélkül szükséges konfiguráció. lépés: az egyes adatbázisokban (ideiglenes megoldás) számára is hasznos lehet.     
+**Megjegyzés:** Az előző kiszolgáló teljes Tartományneve módosítása nélkül az egyes adatbázisokban (ideiglenes megoldás) egy konfigurációs lépésben szüksége egy SQL Server szint naplózási házirend alkalmazása esetén is hasznos lehet.     
 
 
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5e83eb46a4d62c6aaf0862d4bb1aa046c5d64dde
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 02780a9e9702a41f677595d74b9861ea6a51b572
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120513"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260435"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway (előzetes verzió) 
 
@@ -86,7 +86,7 @@ Ekkor a számítógép a **irányítópult** eszköze.
     - A hálózati adapter IPv4-t konfigurálhatja.
 
     >[!NOTE] 
-    > Javasoljuk, hogy nem váltson át a helyi IP-cím a hálózatot felület statikusról DCHP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adpaters, az IP-címek a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
+    > Javasoljuk, hogy nem váltson át a helyi IP-címét a hálózati adaptert a statikus DHCP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adpaters, az IP-címek a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
 
 4. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt.
    
@@ -94,7 +94,7 @@ Ekkor a számítógép a **irányítópult** eszköze.
    
    Az a **webalkalmazás-proxy** oldalon:
    
-   1. Adja meg a **webalkalmazás-proxy URL-címe** a következő formátumban: *http://&lt;gazdagép IP-cím vagy FQDN&gt;: portszám*. Vegye figyelembe, hogy HTTPS URL-címek nem támogatottak.
+   1. Adja meg a **webalkalmazás-proxy URL-címe** a következő formátumban: *http://&lt;gazdagép IP-cím vagy teljes tartománynév&gt;: portszám*. Vegye figyelembe, hogy HTTPS URL-címek nem támogatottak.
    2. Adja meg **hitelesítési** , **alapszintű** vagy **None**.
    3. Hitelesítés használata esetén is kell adnia egy **felhasználónév** és **jelszó**.
    4. Kattintson az **Alkalmaz** gombra. Ezzel ellenőrzése és a konfigurált webes proxykiszolgáló beállításait a alkalmazni.

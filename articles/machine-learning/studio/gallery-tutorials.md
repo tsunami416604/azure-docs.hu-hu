@@ -1,26 +1,8 @@
 ---
-title: Az Azure AI-katalógusban oktatóanyagokat – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Fedezze fel, és megoszthatja oktatóanyagok az Azure AI-katalógusban. Nemrég hozzáadott és népszerű oktatóanyagok listáját jeleníti meg.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: 5dcc8f497a8498b41e6ff7e802fc6e3d80935505
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274870"
+Cím: Az Azure AI-katalógusban oktatóanyagok titleSuffix: Azure Machine Learning Studio description: Fedezze fel, és megoszthatja oktatóanyagok az Azure AI-katalógusban. Nemrég hozzáadott és népszerű oktatóanyagok listáját jeleníti meg.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/31/2017
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Felfedezheti és megoszthatja oktatóanyagok az Azure AI-katalógusban
 

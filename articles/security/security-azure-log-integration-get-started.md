@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bf39e22c0edc23d2e452d96103c8933e0a47af9e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602188"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304410"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Az Azure diagnosztikai naplózás és a Windows-eseménytovábbítás Azure Log Integration
 
 
 >[!IMPORTANT]
-> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. 2018. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Csak használja az Azure log integration Ha egy [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) összekötő nem érhető el a biztonsági incidens- és eseménykezelés (SIEM) gyártójától.
 
@@ -85,7 +85,7 @@ A teljesítmény javítása érdekében lehetősége is van vertikális felskál
 
 ## <a name="install-azure-log-integration"></a>Telepítse az Azure-naplók integrációja
 
-Telepítse az Azure Log Integration, töltse le a [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324) telepítési fájlt. A beállítási folyamat befejezéséhez. Döntse el, hogy adja meg a telemetriai adatokat a Microsoftnak.
+Haladjon végig a létrehozott rutin. Döntse el, hogy adja meg a telemetriai adatokat a Microsoftnak.
 
 Az Azure Log Integration szolgáltatás telemetriai adatokat gyűjt a gép, amelyen telepítve van.  
 
@@ -116,7 +116,7 @@ Miután végzett az alapszintű, készen áll a telepítés utáni és ellenőrz
   ![Képernyőkép a LoadAzlogModule.ps1 parancs kimenete](./media/security-azure-log-integration-get-started/loaded-modules.png)
 3. Ezután konfigurálja az Azure Log Integration egy adott Azure-környezet használata. Egy *Azure-környezet* típusa, amelyet fel szeretne dolgozni az Azure felhőbeli adatközpontra. Bár vannak jelenleg több Azure-környezetek, a vonatkozó beállítások vagy **AzureCloud** vagy **AzureUSGovernment**. Futtatja a Powershellt rendszergazdaként, győződjön meg arról, hogy a C:\Program Files\Microsoft Azure Log Integration\ áll. Ezután futtassa a parancsot:
 
-  `Set-AzlogAzureEnvironment -Name AzureCloud` (a **AzureCloud**)
+  `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
   
   Ha szeretné használni a US Government Azure-felhő, **AzureUSGovernment** a a **-név** változó. Más Azure-felhőket jelenleg nem támogatottak.  
 
@@ -245,7 +245,6 @@ Megnyithatja a [támogatási kérelem](../azure-supportability/how-to-create-azu
 
 Azure Log Integration kapcsolatos további információkért tekintse meg a következő cikkeket: Mielőtt megkísérli a jelen cikkben ismertetett lépések, tekintse át a Get lépéseket bemutató cikkben, és hajtsa végre a lépéseket van.
 
-* [Az Azure-naplók az Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324). A letöltőközpontból tartalmazza a részleteket, a rendszerkövetelmények és telepítési utasításokat az Azure Log Integration.
 * [Bevezetés az Azure Log Integration](security-azure-log-integration-overview.md). Ez a cikk bemutatja, Azure Log Integration, annak főbb funkcióit és működését.
 * [Partner-konfigurációs lépések](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Ebben a blogbejegyzésben bemutatja, hogyan konfigurálja az Azure Log Integration partnermegoldások Splunk, HP ArcSight és az IBM QRadar dolgozhat. Az aktuális útmutató leírja a SIEM-összetevők konfigurálásával kapcsolatos. Ellenőrizze a SIEM gyártója által biztosított további részleteket.
 * [Az Azure Log Integration – gyakori kérdések (GYIK)](security-azure-log-integration-faq.md). Ez a GYIK az Azure Log Integration kapcsolatos általános kérdéseket válaszol.

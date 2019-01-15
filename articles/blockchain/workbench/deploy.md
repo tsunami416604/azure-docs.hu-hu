@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102992"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266587"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -30,7 +30,7 @@ Blockchain Workbenchet lehetővé teszi a blockchain Főkönyv megfelelő Azure 
 * 1 event Grid-témakör
 * 1 Service Bus-Namespace
 * 1 az application Insights
-* 1 SQL-adatbázis (Standard S0)
+* 1 SQL Database (Standard S0)
 * 2 app Services (szokásos)
 * 2 azure-Kulcstartók
 * 2 azure Storage-fiókok (Standard-LRS)
@@ -150,7 +150,7 @@ A Blockchain Workbenchet központi telepítésének befejezése után egy új er
 
 6. Az App Service-ben **Essentials** területén másolja a **URL-cím** érték, amely az üzembe helyezett Blockchain Workbenchet a webes URL-címet jelöli.
 
-    ![App service alapjai](media/deploy/app-service.png)
+    ![App service essentials](media/deploy/app-service.png)
 
 Egyéni tartománynév társítandó Blockchain Workbenchet, lásd: [webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, Traffic Managert használva a](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
@@ -240,7 +240,7 @@ Ezután meg kell módosítania a jegyzékfájl az alkalmazás-szerepkörök hasz
     > [!IMPORTANT]
     > Az érték **rendszergazda** Blockchain Workbench használatával a rendszergazdák azonosításához szükséges.
 
-4. A jegyzékfájlban is módosíthatja a **Oauth2AllowImplictFlow** értéket a következőre **igaz**.
+4. A jegyzékfájlban is módosíthatja a **Oauth2AllowImplicitFlow** értéket a következőre **igaz**.
 
     ``` json
     "oauth2AllowImplicitFlow": true,

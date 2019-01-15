@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e6f284b2a3483b21901dc4ad26bff83b8fcd8848
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f2d3c40352d60d3cc7366aca6f38a8255a7a629
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843019"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302391"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Bevezetés a FreeBSD Azure-on
 Ez a cikk a FreeBSD virtuális gépek Azure-ban futó áttekintést nyújt.
@@ -42,7 +42,6 @@ FreeBSD jövőbeli verzióiban, mint a stratégia az, hogy legyen naprakész, é
 FreeBSD virtuális gép üzembe helyezése egy olyan egyszerű folyamat, az Azure Portalról az Azure Marketplace-lemezkép használatával:
 
 - [FreeBSD 10.4 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11.1 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 - [FreeBSD 11,2 az Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Az Azure CLI-n keresztül FreeBSD virtuális gép létrehozása a FreeBSD
@@ -134,4 +133,4 @@ Igény szerint szerezheti be a legfelső szintű rendszerhéj használatával `s
 A [Azure VM-Vendégügynök](https://github.com/Azure/WALinuxAgent/) verzió 2.2.2 rendelkezik egy [ismert hiba](https://github.com/Azure/WALinuxAgent/pull/517) , amelynek hatására a kiépítés sikertelen a FreeBSD virtuális géphez az Azure-ban. A javítás verziók által rögzített [Azure VM-Vendégügynök](https://github.com/Azure/WALinuxAgent/) 2.2.3 verzió vagy újabb. 
 
 ## <a name="next-steps"></a>További lépések
-* Lépjen a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111) FreeBSD virtuális gép létrehozásához.
+* Lépjen a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) FreeBSD virtuális gép létrehozásához.

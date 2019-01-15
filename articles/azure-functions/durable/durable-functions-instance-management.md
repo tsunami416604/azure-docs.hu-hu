@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8dbf7b6f6741998972070234d90e87baca1154a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 19abd905bbc5e8ab724f7a2f25cb6da90db82841
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042461"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262642"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Az Azure-ban Durable Functions-példányok kezelése
 
@@ -23,7 +23,7 @@ ms.locfileid: "54042461"
 
 ## <a name="starting-instances"></a>-Példányok indítása
 
-A [StartNewAsync] (https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metódust a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) vagy `startNew` a a `DurableOrchestrationClient` (JavaScript) elindít egy orchestrator-függvényt egy új példányát. Ez az osztály példányainak használatával lehet lekérni a `orchestrationClient` kötést. Belsőleg, a metódus enqueues vezérlő várakozási, majd elindít egy függvény a megadott névvel, amely használja a start üzenetet a `orchestrationTrigger` kötés aktiválásához.
+A [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metódust a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) vagy `startNew` a a `DurableOrchestrationClient` (JavaScript) elindít egy orchestrator-függvényt egy új példányát. Ez az osztály példányainak használatával lehet lekérni a `orchestrationClient` kötést. Belsőleg, a metódus enqueues vezérlő várakozási, majd elindít egy függvény a megadott névvel, amely használja a start üzenetet a `orchestrationTrigger` kötés aktiválásához.
 
 Az aszinkron művelet befejeződik, a vezénylési folyamat ütemezése sikeresen megtörtént. A vezénylési folyamat 30 másodpercen belül el kell indulnia. Ha ez hosszabb időt vesz igénybe, egy `TimeoutException` fordul elő.
 

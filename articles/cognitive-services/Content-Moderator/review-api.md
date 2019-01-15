@@ -1,23 +1,23 @@
 ---
 title: Jóváhagyás feladatok és emberi hurok felülvizsgálatok - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: A legjobb eredmény gépi támogatású képmoderálás emberi vonatkoznak.
+description: Gépi támogatású képmoderálás emberi hurok képességekkel rendelkező egyesítése a legjobb eredmények elérése érdekében az üzleti lekérése az Azure Content Moderator felülvizsgálati API használatával.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 1/21/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a348b18d1ecc9c0e4405c54a8e554d932781ec92
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223255"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265345"
 ---
-# <a name="moderation-jobs-and-reviews"></a>Jóváhagyás feladatok és értékelések
+# <a name="content-moderation-jobs-and-reviews"></a>Tartalom-jóváhagyás feladatok és értékelések
 
 Az Azure Content Moderator a gépi támogatású képmoderálás emberi hurok képességekkel rendelkező egyesítése [felülvizsgálati API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) beolvasni a legjobb eredmények elérése érdekében a vállalkozása számára.
 
@@ -55,12 +55,12 @@ Használja a `Job.Get` művelet és a feladat azonosító lekérése egy futó v
 
 A bemeneteket az alábbi információkat:
 
-- A felülvizsgálati csoport azonosítója: az előző művelet által visszaadott feladat azonosítója
+- A felülvizsgálati csoport azonosítója: Az előző művelet által visszaadott feladat azonosítója
 
 A válasz tartalmazza a következő információkat:
 
 - A létrehozott felülvizsgálat azonosítója. (Ezt az Azonosítót használja a végleges ellenőrzésig eredmények eléréséhez.)
-- A feladat (befejezett és folyamatban) állapotát: A hozzárendelt moderálás címkék (kulcs-érték párok).
+- A feladat (befejezett és folyamatban) állapota: A hozzárendelt moderálás címkék (kulcs-érték párok).
 - A feladat-végrehajtási jelentés.
  
  
@@ -110,7 +110,7 @@ A válasz tartalmazza a következő információkat:
             ]
         }
  
-![Az emberi moderátorok kép áttekintése](images/ocr-sample-image.PNG)
+![Képek felülvizsgálata emberi moderátorok által](images/ocr-sample-image.PNG)
 
 ## <a name="review-operations"></a>Műveletek áttekintése
 

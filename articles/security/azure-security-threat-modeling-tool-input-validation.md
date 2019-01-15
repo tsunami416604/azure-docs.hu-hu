@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: da2e742f0dde0cb4b98bfb107d18eca779d10021
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234595"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266914"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: Bemeneti ellenőrzés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -27,7 +27,7 @@ ms.locfileid: "51234595"
 | **Webalkalmazás** | <ul><li>[XSLT-szkriptek használata a nem megbízható stíluslapok összes átalakítások letiltása](#disable-xslt)</li><li>[Győződjön meg arról, hogy minden felhasználó ellenőrizhető tartalmat sikerült tartalmazó lapon hibajelentéseket a Microsoft automatikus MIME-elemzése](#out-sniffing)</li><li>[Felvértezni vagy XML-entitás tiltása](#xml-resolution)</li><li>[Http.sys használó alkalmazások URL-cím kanonikussá tétele ellenőrzés végrehajtása](#app-verification)</li><li>[Győződjön meg, hogy a megfelelő vezérlők vannak érvényben, amikor a felhasználók fájlokat elfogadása](#controls-users)</li><li>[Győződjön meg arról, hogy típus környezetben is biztonságos paraméterek használ a webes alkalmazás adatelérési](#typesafe)</li><li>[Használjon külön modell kötése osztályok vagy kötési szűrő listázza az MVC tömeges hozzárendelés biztonsági rések elkerülése érdekében](#binding-mvc)</li><li>[Nem megbízható webes kimeneti előtti renderelési kódolása](#rendering)</li><li>[Bemenet-ellenőrzést és a szűrést az összes karakterlánc típusú modell tulajdonságai](#typemodel)</li><li>[Tisztító űrlap mezőit, amely fogadja el az összes karaktert, például:, rich text szövegszerkesztőben a alkalmazni kell](#richtext)</li><li>[Ne rendeljen DOM-elemek, amelyek nem rendelkeznek a beépített kódolás fogadóként](#inbuilt-encode)</li><li>[Ellenőrizze az alkalmazáson belül átirányítások lezárt vagy biztonságosan kész](#redirect-safe)</li><li>[Az összes karakterlánc típusú paramétert fogadja el a vezérlő metódusokhoz bemenet-ellenőrzés végrehajtása](#string-method)</li><li>[Állítsa be, hogy a DoS miatt rossz reguláris kifejezések feldolgozása reguláris kifejezés felső korlátja időkorlátja](#dos-expression)</li><li>[A Razor-nézetekben Html.Raw használatának elkerülése](#html-razor)</li></ul> | 
 | **Adatbázis** | <ul><li>[Ne használjon dinamikus lekérdezéseiben a tárolt eljárások](#stored-proc)</li></ul> |
 | **Webes API** | <ul><li>[Győződjön meg arról, hogy a modell érvényesítése történik-e a webes API-metódusai](#validation-api)</li><li>[Bemenet-ellenőrzés végrehajtása az összes karakterlánc típusú paramétert fogadja el a webes API-metódusai](#string-api)</li><li>[Győződjön meg arról, hogy típus környezetben is biztonságos használt paraméterek webes API-t az adatok eléréséhez](#typesafe-api)</li></ul> | 
-| **Az Azure Document DB-ről** | <ul><li>[Paraméteres SQL-lekérdezések használata az Azure Cosmos DB](#sql-docdb)</li></ul> | 
+| **Azure Document DB** | <ul><li>[Paraméteres SQL-lekérdezések használata az Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[WCF-bemenet érvényesítési séma kötését keresztül](#schema-binding)</li><li>[WCF - bemenet-ellenőrzési paraméter vizsgálók keresztül](#parameters)</li></ul> |
 
 ## <a id="disable-xslt"></a>XSLT-szkriptek használata a nem megbízható stíluslapok összes átalakítások letiltása
@@ -35,11 +35,11 @@ ms.locfileid: "51234595"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [XSLT Security](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript Property](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **Lépések** | XSLT támogatja a parancsfájlok használatával stíluslapok belül a `<msxml:script>` elemet. Ez lehetővé teszi az XSLT-átalakítás használandó egyéni függvényekhez. A parancsfájl végrehajtása a környezetben a végrehajtása az átalakítási folyamat. XSLT-parancsfájl a nem megbízható környezet nem megbízható kód végrehajtásának elkerülése érdekében le kell tiltani. *Ha a .NET használatával:* XSLT parancsfájlok alapértelmezés szerint le van tiltva; azonban győződjön meg arról, hogy azt nem kifejezetten engedélyezett keresztül a `XsltSettings.EnableScript` tulajdonság.|
+| **Lépések** | XSLT támogatja a parancsfájlok használatával stíluslapok belül a `<msxml:script>` elemet. Ez lehetővé teszi az XSLT-átalakítás használandó egyéni függvényekhez. A parancsfájl végrehajtása a környezetben a végrehajtása az átalakítási folyamat. XSLT-parancsfájl a nem megbízható környezet nem megbízható kód végrehajtásának elkerülése érdekében le kell tiltani. *Ha a .NET használatával:* XSLT-parancsfájlok; alapértelmezés szerint le van tiltva azonban győződjön meg arról, hogy azt nem kifejezetten engedélyezett keresztül a `XsltSettings.EnableScript` tulajdonság.|
 
 ### <a name="example"></a>Példa 
 
@@ -67,7 +67,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [IE8 Biztonsági rész - alkalmazásvédelem](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
@@ -136,7 +136,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [XML-entitás bővítése](http://capec.mitre.org/data/definitions/197.html), [XML szolgáltatásmegtagadási támadások és a védelem](https://msdn.microsoft.com/magazine/ee335713.aspx), [MSXML biztonsági áttekintése](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [ajánlott eljárások az MSXML kód](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), [ NSXMLParserDelegate protokoll referenciája](http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [külső hivatkozások feloldása](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
@@ -198,18 +198,18 @@ Vegye figyelembe, hogy az MSXML6, ProhibitDTD true értékre van állítva (leti
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>A http.sys olyan alkalmazásokhoz kell tartaniuk az alábbi irányelveket:</p><ul><li>Korlátozza az URL-cím hossza legfeljebb 16 384 karakter (ASCII vagy Unicode). Ez az az abszolút URL-cím hosszabb az alapértelmezett az Internet Information Services (IIS) 6 beállítás alapján. Webhelyek törekedni kell egy rövidebb, mint ez a lehetőség</li><li>Szabványos .NET-keretrendszer fájl i/o-osztály (például a FileStream) használhatja a .NET FX végzi el ezeket a kanonikussá tétele szabályok előnyeit</li><li>Explicit módon hozhat létre egy ismert fájlnevek engedélyezése – lista</li><li>Kifejezetten elutasítás nem szolgálja, hogy UrlScan elutasítások ismert fájl típusai: exe, bat cmd, com, IDA, ida, idq, htr, idc, shtm [l], stm, nyomtató, ini, pol, dat-fájlok</li><li>Az alábbi kivételeket:<ul><li>System.ArgumentException (az eszköz nevét)</li><li>(A data-adatfolyamok) System.NotSupportedException</li><li>(A érvénytelen escape-karakterrel megjelölt fájlnevek) System.IO.FileNotFoundException</li><li>System.IO.DirectoryNotFoundException (a érvénytelen escape-karakterrel megjelölt könyvtárak)</li></ul></li><li>*Ne* Win32 fájl adatátviteli API-jain feliratozni. Az egy URL-címe érvénytelen szabályosan adja vissza egy 400-as hiba a felhasználó, és a valós hiba jelentkezik.</li></ul>|
+| **Lépések** | <p>A http.sys olyan alkalmazásokhoz kell tartaniuk az alábbi irányelveket:</p><ul><li>Korlátozza az URL-cím hossza legfeljebb 16 384 karakter (ASCII vagy Unicode). Ez az az abszolút URL-cím hosszabb az alapértelmezett az Internet Information Services (IIS) 6 beállítás alapján. Webhelyek törekedni kell egy rövidebb, mint ez a lehetőség</li><li>Szabványos .NET-keretrendszer fájl i/o-osztály (például a FileStream) használhatja a .NET FX végzi el ezeket a kanonikussá tétele szabályok előnyeit</li><li>Explicit módon hozhat létre egy ismert fájlnevek engedélyezése – lista</li><li>Kifejezetten elutasítás nem szolgálja, hogy UrlScan elutasítások ismert fájl típusai: exe, bat cmd, com, IDA, ida, idq, htr, idc, shtm [l], stm, nyomtató, ini, pol, dat-fájlok</li><li>Az alábbi kivételeket:<ul><li>System.ArgumentException (az eszköz nevét)</li><li>System.NotSupportedException (for data streams)</li><li>(A érvénytelen escape-karakterrel megjelölt fájlnevek) System.IO.FileNotFoundException</li><li>System.IO.DirectoryNotFoundException (a érvénytelen escape-karakterrel megjelölt könyvtárak)</li></ul></li><li>*Ne* Win32 fájl adatátviteli API-jain feliratozni. Az egy URL-címe érvénytelen szabályosan adja vissza egy 400-as hiba a felhasználó, és a valós hiba jelentkezik.</li></ul>|
 
 ## <a id="controls-users"></a>Győződjön meg, hogy a megfelelő vezérlők vannak érvényben, amikor a felhasználók fájlokat elfogadása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Fájl feltöltése unrestricted](https://www.owasp.org/index.php/Unrestricted_File_Upload), [aláírás-tábla](http://www.garykessler.net/library/file_sigs.html) |
@@ -325,7 +325,7 @@ A legutóbbi pont aláírás fájlformátumának érvényesítése kapcsolatban 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -355,7 +355,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Attribútumok metaadatai](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [nyilvános kulcs biztonsági biztonsági rések és kockázatcsökkentési](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [teljes körű útmutatót az ASP.NET mvc-ben háttértár-hozzárendelés](http://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [EF MVC használatával – első lépések](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
@@ -366,8 +366,8 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Általános, Web Forms-MVC5, MVC6 |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Generic, Web Forms, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az ASP.NET scripting többhelyes megakadályozása](https://msdn.microsoft.com/library/ms998274.aspx), [parancsfájlok](http://cwe.mitre.org/data/definitions/79.html), [(Adatbázisközi hely Scripting) XSS megelőzési Adatlap lap](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
 | **Lépések** | Az online services vagy bármely alkalmazás vagy összetevő a bemenetet a webes feldolgozó egy támadási vektor többhelyes parancsfájl-kezelési (gyakori rövidítése XSS). XSS biztonsági rések előfordulhat, hogy a támadó egy sebezhető webkiszolgáló alkalmazáson keresztül egy másik felhasználó gépen hajtsa végre a parancsfájlt. Rosszindulatú parancsfájlok ellopni a cookie-k és egyéb illetéktelenül módosítani a JavaScript használatával egy áldozat gép használható. XSS van ebben az esetben a felhasználói bevitel ellenőrzése, biztosítva van formázva és kódolást, mielőtt egy weblap jelenik meg. Bemenet-ellenőrzéshez és a kódolási kimeneti webes védelmi kódtár használatával elvégezhető. A felügyelt kód (C\#, VB.net, stb.), használjon egy vagy több megfelelő kódolási módszereket a webes védelem (kártevőirtó-XSS) könyvtárból, attól függően, a környezetet, ahol a felhasználói bevitel eszközében beolvasása:| 
@@ -391,8 +391,8 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Általános, MVC5, MVC6 |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Generic, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Érvényesítési hozzáadása](http://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [modellt az adatok az MVC alkalmazások](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [irányadó elvek, az ASP.NET MVC-alkalmazások](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **Lépések** | <p>A bemeneti paraméterek ellenőrizni kell, mielőtt győződjön meg arról, hogy az alkalmazás elleni rosszindulatú felhasználói bevitelek üzlettársaik használhatók az alkalmazásban. Ellenőrizze a bemeneti értékek reguláris kifejezés ellenőrzések használata engedélyezett érvényesítési stratégiát a kiszolgálói oldalon. Felhasználói bevitelek unsanitized / módszerek átadott paraméterek okozhat kód injektálási biztonsági rések felderítéséhez.</p><p>Webalkalmazások esetén belépési pontok is tartalmazhatnak, űrlap mezőit, sorolva, a cookie-k, HTTP-fejlécek és webszolgáltatás-paraméterek.</p><p>A következő bemenet-ellenőrzés ellenőrzése után modell kötése kell végrehajtani:</p><ul><li>A modell tulajdonságait kell feliratozva, a válaszban jegyzet, a megengedett karakterek és a maximális megengedett hossz fogadásához</li><li>A vezérlő metódusokhoz ModelState érvényességi hajtson végre.</li></ul>|
@@ -402,7 +402,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Nem biztonságos bemeneti kódolása](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML Sanitizer](https://github.com/mganss/HtmlSanitizer) |
@@ -413,7 +413,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -435,7 +435,7 @@ Ne használjon `innerHtml`; helyette használjon `innerText`. Hasonlóképpen, n
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az OAuth 2.0 engedélyezési keretrendszer - nyílt átirányító](http://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -446,8 +446,8 @@ Ne használjon `innerHtml`; helyette használjon `innerText`. Hasonlóképpen, n
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Általános, MVC5, MVC6 |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Generic, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Adatok modellezése az MVC alkalmazások ellenőrzése](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [irányadó elvek, az ASP.NET MVC-alkalmazások](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **Lépések** | Elfogadó csak primitív adattípust, és nem a modellek argumentumként módszerek reguláris kifejezés használata bemenet-ellenőrzést kell végezni. Itt Regex.IsMatch kell használni egy érvényes Reguláriskifejezés-minta. Ha a bemenet nem felel meg a meghatározott reguláris kifejezéssel, vezérlőelem kell nem folytatható, és egy megfelelő figyelmeztetés kapcsolatos érvényesítési hiba üzenetnek kell megjelennie.| 
@@ -457,8 +457,8 @@ Ne használjon `innerHtml`; helyette használjon `innerText`. Hasonlóképpen, n
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Általános, Web Forms-MVC5, MVC6  |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Generic, Web Forms, MVC5, MVC6  |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [DefaultRegexMatchTimeout Property ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
 | **Lépések** | Annak biztosítása érdekében a program rosszul szolgáltatásmegtagadási támadások ellen létrehozott reguláris kifejezések, sok meglátogassa okozó beállítása az alapértelmezett globális időtúllépés. A feldolgozási idő, mint a megadott felső határ hosszabb időt vesz igénybe, ha azt egy időtúllépési kivételt jelez. Semmi nem történik meg, ha az időkorlát végtelen lesz.| 
@@ -475,7 +475,7 @@ Például a következő konfigurációt kivételt fogja kijelezni egy RegexMatch
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -500,7 +500,7 @@ Ne használjon `Html.Raw()` , kivéve, ha meg kell jelenítenie a jelölés. Ez 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -560,7 +560,7 @@ AS
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Modell érvényesítése az ASP.NET webes API-k ](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -617,7 +617,7 @@ namespace MyApi.Controllers
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, MVC 5, 6 MVC |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Adatok modellezése az MVC alkalmazások ellenőrzése](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [irányadó elvek, az ASP.NET MVC-alkalmazások](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -628,7 +628,7 @@ namespace MyApi.Controllers
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -658,7 +658,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB-ről | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure Cosmos DB SQL-paraméterezés bejelentése](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -669,7 +669,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, 3. NET-keretrendszer |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
@@ -680,7 +680,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, 3. NET-keretrendszer |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 928fb5421297fedbffabc45db35a89a74026477e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839508"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305071"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Az Advisor magas rendelkezésre állás – javaslatok
 
@@ -35,20 +35,16 @@ Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a v
 
 Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egy egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportok azonosítja, és javasolja, hogy egy vagy több virtuális gép hozzáadása. Ez a konfiguráció biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető, és megfelel-e az Azure-beli virtuálisgép-SLA. Kiválaszthatja a virtuális gép létrehozása vagy meglévő virtuális gép hozzáadása a rendelkezésre állási csoporthoz.  
 
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatok megbízhatóságának javítása érdekében
+A rendelkezésre állási csoport tárfiókokat vagy tárolási skálázási egységeket használó lemezekkel rendelkező virtuális gépek esetén nem hibatűrőek az egyetlen skálázási egységek hibáival leállások idején. Az Advisor azonosítja azokat a ezeket a rendelkezésre állási csoportok és javasoljuk, hogy az Azure Managed Disks-ba való migrálás. Ez biztosítja, hogy a rendelkezésre állási csoportban a különböző virtuális gépek lemezei hibapontok elkerülése érdekében a hibaérzékeny pont. 
+
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Application gateway hibatűrő képesség biztosítása
+
 Az az üzletmenet folytonosságának biztosítása az alapvető fontosságú alkalmazások, amelyek az application Gateway átjárók által, az Advisor azonosítja az application gateway-példány hibatűrése nem konfigurált, és azt sugallja, hogy elvégezhető javítási műveleteket. Az Advisor azonosítja a közepes vagy nagy egy példányban – az application Gateway átjárók, és legalább egy további példányok hozzáadása javasolja. Egyetlen vagy több instance kis application Gateway átjárókon azonosítja és a közepes vagy nagy SKU-ba való migrálás javasolja. Ezeket a műveleteket, ellenőrizze, hogy az application gateway-példány megfelelnek a jelenlegi SLA ezekhez az erőforrásokhoz javasol.
-
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>A teljesítmény és a virtuálisgép-lemezek megbízhatóságának javítása
-
-Az Advisor azonosít, a standard szintű lemezek virtuális gépekhez, és javasolja, hogy prémium szintű lemezek telepítse.
- 
-Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokat futtató virtuális gépek tesz lehetővé. Premium storage-fiókok használó virtuálisgép-lemezek tartós állapotú meghajtókhoz (SSD-kkel) adatokat tárolja. Az alkalmazás a legjobb teljesítmény érdekében javasoljuk, hogy a virtuális gép lemezei a premium storage magas iops-t igénylő telepíti át. 
-
-A lemezek nem igényelnek magas iops értéket, ha standard szintű tárolóban megőrzése őket korlátozhatja költségeket. Standard szintű tárolás virtuálisgép-lemez adatokat (merevlemezes HDD) meghajtók helyett SSD-k tárolja. Kiválaszthatja, hogy a virtuális gép lemezeinek migrálása a prémium szintű lemezek. A legtöbb virtuális gépek azon Termékváltozatai támogatja a prémium szintű lemezeket. Azonban bizonyos esetekben ha azt szeretné használni a prémium szintű lemezek, előfordulhat, hogy frissíteni szeretne a virtuális gépek azon Termékváltozatai is.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>A virtuális gép adatainak véletlen törlés elleni védelem
 
-Virtuális gépek biztonsági mentésének beállításához az üzleti szempontból kritikus fontosságú adatok rendelkezésre állását biztosítja, és véletlen törlés és adatsérülések elleni védelmet nyújt.  Az Advisor azonosítja a virtuális gépek, ahol a biztonsági mentés nem engedélyezett, és javasolja a biztonsági mentés engedélyezése. 
+Virtuális gépek biztonsági mentésének beállításához az üzleti szempontból kritikus fontosságú adatok rendelkezésre állását biztosítja, és véletlen törlés és adatsérülések elleni védelmet nyújt. Az Advisor azonosítja a virtuális gépek, ahol a biztonsági mentés nem engedélyezett, és javasolja a biztonsági mentés engedélyezése. 
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ellenőrizze, hogy szakértői Azure-felhőben való hozzáférést, ha szükséges
 
@@ -69,6 +65,10 @@ Ha a Traffic Manager-profil földrajzi útválasztásra van konfigurálva, majd 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Használjon helyreállítható törlési a mentéséhez és helyreállításához véletlen felülírása vagy törlése esetén az Azure Storage-fiók
 
 Engedélyezése [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a tárfiókon, hogy a blobok átmenet helyreállíthatóan törölt állapotból helyett folyamatban véglegesen törölve törölve. Amikor a rendszer felülírja azok adatait egy helyreállíthatóan törölt pillanatkép menteni az állapotot a felülírt adatok jön létre. Ez lehetővé teszi, hogy a véletlen törlés esetén helyre, vagy felülírja. Az Advisor azonosítja az Azure Storage-fiókok, amelyek nem rendelkeznek engedélyezhető a helyreállítható törlés, és javasolja azt engedélyezni.
+
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurálja a VPN-átjáró aktív-aktív, a kapcsolat rugalmassága
+
+Aktív-aktív konfigurációban a VPN-átjáró mindkét példányát meghatározzák az S2S VPN-alagutat a helyszíni VPN-eszközre. Ha egy tervezett karbantartási esemény vagy nem tervezett esemény történik az egyik átjárópéldány, forgalom fognak váltani a másik aktív IPsec-alagút automatikusan. Az Azure Advisor azonosítja azokat, amelyek nem aktív-aktív VPN-átjárók és javasolt a magas rendelkezésre állásra konfigurálja.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állás – javaslatok az Advisor elérése
 

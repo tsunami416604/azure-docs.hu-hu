@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb72de7e9a61c874d4449a5b9c0422c787a7bdc0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c841fb8676cff8d15f54384aac84721bc8fb163b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728448"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267521"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -33,28 +33,28 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.AAD/domainServices/delete | Tartományi szolgáltatás törlése |
+> | Műveletek | Microsoft.AAD/domainServices/delete | Delete Domain Service |
 > | Műveletek | Microsoft.AAD/domainServices/oucontainer/delete | Szervezeti egység tároló törlése |
 > | Műveletek | Microsoft.AAD/domainServices/oucontainer/read | Olvassa el a szervezeti egység tárolók |
 > | Műveletek | Microsoft.AAD/domainServices/oucontainer/write | Szervezeti egységek tárolójához írása |
-> | Műveletek | Microsoft.AAD/domainServices/read | Olvassa el a tartományi szolgáltatások |
-> | Műveletek | Microsoft.AAD/domainServices/write | Tartományi szolgáltatások írása |
+> | Műveletek | Microsoft.AAD/domainServices/read | Read Domain Services |
+> | Műveletek | Microsoft.AAD/domainServices/write | Write Domain Service |
 > | Műveletek | Microsoft.AAD/locations/operationresults/read |  |
 > | Műveletek | Microsoft.AAD/Operations/read |  |
-> | Műveletek | Microsoft.AAD/register/action | Tartományi szolgáltatás regisztrálása |
-> | Műveletek | Microsoft.AAD/unregister/action | Tartományi szolgáltatás regisztrációjának törlése |
+> | Műveletek | Microsoft.AAD/register/action | Register Domain Service |
+> | Műveletek | Microsoft.AAD/unregister/action | Unregister Domain Service |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.aadiam/diagnosticsettings/DELETE | Diagnosztikai beállítás törlése |
-> | Műveletek | Microsoft.aadiam/diagnosticsettings/Read | Diagnosztikai beállítás beolvasása |
-> | Műveletek | Microsoft.aadiam/diagnosticsettings/Write | Diagnosztikai beállítás írása |
+> | Műveletek | microsoft.aadiam/diagnosticsettings/delete | Diagnosztikai beállítás törlése |
+> | Műveletek | microsoft.aadiam/diagnosticsettings/read | Diagnosztikai beállítás beolvasása |
+> | Műveletek | microsoft.aadiam/diagnosticsettings/write | Diagnosztikai beállítás írása |
 > | Műveletek | Microsoft.aadiam/diagnosticsettingscategories/Read | A diagnosztikai beállítás kategóriák olvasása |
 
-## <a name="microsoftaddons"></a>Mirosoft.addons
+## <a name="microsoftaddons"></a>Microsoft.Addons
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
@@ -77,7 +77,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/configuration/read | Az erdő szolgáltatás konfigurációjának beolvasása. Példa - erdő neve, működési szintet, tartomány-kiosztási főkiszolgáló műveleti Főkiszolgálói szerepkörének, séma-főkiszolgáló műveleti Főkiszolgálói szerepkör stb. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/delete | Szolgáltatás törlése és azt a kiszolgálók egészségügyi adatokkal együtt. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/dimensions/read | Tartományok és helyek részleteinek beolvasása az erdő számára. Példa-állapot, aktív riasztások, megoldott riasztások, a tulajdonságokat, mint a tartomány működési szintjét, erdő, infrastruktúra-főkiszolgáló, elsődleges tartományvezérlő, relatív azonosítókat kezelő főkiszolgáló stb.  |
-> | Műveletek | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Az erdő felhasználói szabályozó beállításának beolvasása.<br>Példa – például ldapsuccessfulbinds, ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches MetricCounterName.<br>Beállításai, a felhasználói felület diagramok stb. |
+> | Műveletek | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Az erdő felhasználói szabályozó beállításának beolvasása.<br>Example- MetricCounterName like ldapsuccessfulbinds, ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches.<br>Beállításai, a felhasználói felület diagramok stb. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | Erdő például erdő neve, ebben az erdőben a tartományok, helyek és a helyek részletek stb száma az adott erdőben összefoglaló beolvasása. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Lekérdezi a támogatott mérőszámok listája egy adott szolgáltatáshoz.<br>A példában a fiók zárolásának extranetes, összes sikertelen kérelem, szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), jogkivonat-kérelmeket/sec AD FS szolgáltatás stb.<br>Az NTLM-hitelesítések/mp, LDAP sikeres kötések/mp, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomainService a.<br>Futtassa a profil késés, a TCP-kapcsolatok létrehozott, Insights Agent a saját memória, exportálási statisztikák az Azure AD-hez ADSync szolgáltatás. |
 > | Műveletek | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | Adja meg a szolgáltatás, az API-t lekéri a metrikák adatait.<br>Például az API segítségével kapcsolatos információk: Extranetes a fiók zárolásának összes sikertelen kérelem szálankénti függőben lévő jogkivonat-kérelmeket (Proxy), a jogkivonat-kérelmeket/sec ADFederation szolgáltatás stb.<br>NTLM-hitelesítések/mp, LDAP sikeres kötések/mp-ben, LDAP-kötés idő, aktív szálak LDAP, Kerberos-hitelesítések/mp stb ATQ szálak teljes ADDomain szolgáltatás.<br>Profil késés, a TCP-kapcsolatok létrehozása Insights Agent a saját memória, Exportálás futtatása statisztikák az Azure AD szinkronizálási szolgáltatás. |
@@ -1087,7 +1087,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Compute/locations/capsOperations/read | Aszinkron Caps művelet állapotának beolvasása |
 > | Műveletek | Microsoft.Compute/locations/diskOperations/read | Lemez aszinkron művelet állapotát olvassa be |
 > | Műveletek | Microsoft.Compute/locations/logAnalytics/getRequestRateByInterval/action | Naplók létrehozása a kérelmek összesített számának időintervallum szerinti megjelenítéséhez a szabályozási diagnosztika támogatása érdekében. |
-> | Műveletek | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Naplók létrehozása a szabályozott kérelmek erőforrásnév, műveletnév vagy az alkalmazott szabályozási szabályzat szerint csoportosított összesítéseinek megjelenítéséhez. |
+> | Műveletek | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Naplók létrehozása a szabályozott kérelmek erőforrásnév, műveletnév vagy az alkalmazott szabályozási szabályzat szerint csoportosított aggregátumainak megjelenítéséhez. |
 > | Műveletek | Microsoft.Compute/locations/operations/read | Egy aszinkron művelet állapotát olvassa be |
 > | Műveletek | Microsoft.Compute/locations/publishers/artifacttypes/offers/read | Platformlemezképet tartalmazó ajánlat tulajdonságainak beolvasása |
 > | Műveletek | Microsoft.Compute/locations/publishers/artifacttypes/offers/skus/read | Platformlemezképet tartalmazó termékváltozat tulajdonságainak beolvasása |
@@ -1833,7 +1833,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/Read | A tanúsítvány beolvasása |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/verify/Action | Ellenőrizze az erőforrás-tanúsítvány |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/Write | Hozzon létre vagy tanúsítványának frissítése |
-> | Műveletek | Microsoft.Devices/iotHubs/Delete | IotHub-erőforrás törlése |
+> | Műveletek | Microsoft.Devices/iotHubs/Delete | Delete IotHub Resource |
 > | Műveletek | Microsoft.Devices/IotHubs/diagnosticSettings/read | Az erőforrás diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft.Devices/IotHubs/diagnosticSettings/write | Az erőforrás diagnosztikai beállításainak létrehozása vagy frissítése |
 > | Műveletek | Microsoft.Devices/iotHubs/eventGridFilters/Delete | Event Grid-szűrő törlése |
@@ -1875,7 +1875,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Devices/provisioningServices/metricDefinitions/read | A kiépítési szolgáltatás elérhető metrikáinak beolvasása. Megjegyzés: Előfordulhat, hogy kell `Microsoft.Insights/metricDefinitions/read` is |
 > | Műveletek | Microsoft.Devices/provisioningServices/operationresults/Read | A DPS művelet eredményének beolvasása |
 > | Műveletek | Microsoft.Devices/provisioningServices/Read | IotDps erőforrás lekérése |
-> | Műveletek | Microsoft.Devices/provisioningServices/skus/Read | Érvényes IotDps termékváltozatok beolvasása |
+> | Műveletek | Microsoft.Devices/provisioningServices/skus/Read | Get valid IotDps Skus |
 > | Műveletek | Microsoft.Devices/provisioningServices/Write | IotDps erőforrás létrehozása |
 > | Műveletek | Microsoft.Devices/register/action | Az IotHub erőforrás-szolgáltató előfizetésének regisztrálása és az IotHub-erőforrások létrehozásának engedélyezése |
 > | Műveletek | Microsoft.Devices/register/action | Az IotHub erőforrás-szolgáltató előfizetésének regisztrálása és az IotHub-erőforrások létrehozásának engedélyezése |
@@ -1913,7 +1913,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DevTestLab/labs/customImages/delete | Egyéni rendszerképek törlése. |
 > | Műveletek | Microsoft.DevTestLab/labs/customImages/read | Olvassa el az egyéni lemezképek. |
 > | Műveletek | Microsoft.DevTestLab/labs/customImages/write | Hozzáadása vagy módosítása az egyéni lemezképek. |
-> | Műveletek | Microsoft.DevTestLab/labs/delete | Törölje a labs. |
+> | Műveletek | Microsoft.DevTestLab/labs/delete | Delete labs. |
 > | Műveletek | Microsoft.DevTestLab/labs/ExportResourceUsage/action | A lab erőforrás-használat exportálja a storage-fiókra |
 > | Műveletek | Microsoft.DevTestLab/labs/formulas/delete | Törölje a képletek. |
 > | Műveletek | Microsoft.DevTestLab/labs/formulas/read | Olvassa el a képletek. |
@@ -2043,7 +2043,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/usages/read | Beolvassa az adatbázist fiók használatokban. |
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/write | Egy adatbázis-fiók frissítéséhez. |
 > | Műveletek | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/action | Microsoft.DocumentDB értesíti, hogy virtuális hálózat vagy alhálózat törlése folyamatban van |
-> | Műveletek | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/operationResults/read | Olvassa el a deleteVirtualNetworkOrSubnets állapotát aszinkron művelet |
+> | Műveletek | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/operationResults/read | Read Status of deleteVirtualNetworkOrSubnets asynchronous operation |
 > | Műveletek | Microsoft.DocumentDB/operationResults/read | Az aszinkron művelet állapotának olvasása |
 > | Műveletek | Microsoft.DocumentDB/operations/read | A Microsoft documentdb elérhető műveletek beolvasása  |
 > | Műveletek | Microsoft.DocumentDB/register/action |  Az előfizetés a Microsoft a DocumentDB erőforrás-szolgáltató regisztrálása |
@@ -2528,7 +2528,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.IoTCentral/checkNameAvailability/action | Ellenőrzi, hogy az IoT központi alkalmazás nevét érhető el |
-> | Műveletek | Microsoft.IoTCentral/checkSubdomainAvailability/action | Ellenőrzi, hogy egy IoT központi alkalmazás altartomány érhető el |
+> | Műveletek | Microsoft.IoTCentral/checkSubdomainAvailability/action | Checks if an IoT Central Application subdomain is available |
 > | Műveletek | Microsoft.IoTCentral/IoTApps/delete | Egy IoT-központ alkalmazások törlése |
 > | Műveletek | Microsoft.IoTCentral/IoTApps/read | Egyetlen IoT központi alkalmazás beolvasása |
 > | Műveletek | Microsoft.IoTCentral/IoTApps/write | Létrehoz vagy frissít egy IoT-központ alkalmazások |
@@ -2550,26 +2550,26 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.KeyVault/checkNameAvailability/read | Annak ellenőrzése, hogy érvényes-e a kulcstartónév, és nincs-e használatban |
+> | Műveletek | Microsoft.KeyVault/checkNameAvailability/read | Ellenőrzi, hogy a kulcstartó neve érvényes, és azt nem használja |
 > | Műveletek | Microsoft.KeyVault/deletedVaults/read | Helyreállíthatóan törölt kulcstartók tulajdonságainak megtekintése |
 > | Műveletek | Microsoft.KeyVault/hsmPools/delete | HSM-készlet törlése |
-> | Műveletek | Microsoft.KeyVault/hsmPools/joinVault/action | Kulcstartó HSM-készlethez való csatlakoztatása |
+> | Műveletek | Microsoft.KeyVault/hsmPools/joinVault/action | Csatlakoztassa a key vault HSM-készlet |
 > | Műveletek | Microsoft.KeyVault/hsmPools/read | A HSM-készlet tulajdonságainak megtekintése |
-> | Műveletek | Microsoft.KeyVault/hsmPools/write | Új HSM-készlet létrehozása vagy egy meglévő HSM-készlet tulajdonságainak frissítése |
+> | Műveletek | Microsoft.KeyVault/hsmPools/write | Hozzon létre egy új HSM-készlet frissítése egy meglévő HSM-készlet tulajdonságait |
 > | Műveletek | Microsoft.KeyVault/locations/deletedVaults/purge/action | Helyreállíthatóan törölt kulcstartó végleges törlése |
 > | Műveletek | Microsoft.KeyVault/locations/deletedVaults/read | Helyreállíthatóan törölt kulcstartó tulajdonságainak megtekintése |
-> | Műveletek | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | A Microsoft.KeyVault értesítése arról, hogy virtuális hálózat vagy alhálózat törlése folyamatban van |
+> | Műveletek | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | A Microsoft.keyvault értesítése, hogy egy virtuális hálózat vagy alhálózat törlése folyamatban van |
 > | Műveletek | Microsoft.KeyVault/locations/operationResults/read | Hosszú futtatású művelet eredményének ellenőrzése |
 > | Műveletek | Microsoft.KeyVault/operations/read | A Microsoft.KeyVault erőforrás-szolgáltató elérhető műveleteinek listázása |
 > | Műveletek | Microsoft.KeyVault/register/action | Az előfizetés regisztrálása |
 > | Műveletek | Microsoft.KeyVault/unregister/action | Előfizetés regisztrációjának törlése |
-> | Műveletek | Microsoft.KeyVault/vaults/accessPolicies/write | Egyesítéssel vagy cserével frissíthet egy meglévő hozzáférési szabályzatot, vagy létrehozhat egy új hozzáférési szabályzatot a tárolóban. |
+> | Műveletek | Microsoft.KeyVault/vaults/accessPolicies/write | Egy meglévő hozzáférési szabályzat frissítése az egyesítés vagy cseréje, vagy vegyen fel egy új hozzáférési szabályzat egy tárolóba. |
 > | Műveletek | Microsoft.KeyVault/vaults/delete | Kulcstároló törlése |
-> | Műveletek | Microsoft.KeyVault/vaults/deploy/action | A kulcstartóban található titkos kódokhoz való hozzáférés engedélyezése Azure-erőforrások üzembe helyezésekor |
+> | Műveletek | Microsoft.KeyVault/vaults/deploy/action | Ha az Azure-erőforrások üzembe helyezése key vault titkos kulcsainak való hozzáférés engedélyezése |
 > | Műveletek | Microsoft.KeyVault/vaults/read | A kulcstartó tulajdonságainak megtekintése |
-> | Műveletek | Microsoft.KeyVault/vaults/secrets/read | A titkos kód tulajdonságainak megtekintése, kivéve a kód értékét |
-> | Műveletek | Microsoft.KeyVault/vaults/secrets/write | Új titkos kód létrehozása, vagy meglévő titkos kód értékének módosítása |
-> | Műveletek | Microsoft.KeyVault/vaults/write | Új kulcstartó létrehozása, vagy meglévő kulcstartó tulajdonságainak módosítása |
+> | Műveletek | Microsoft.KeyVault/vaults/secrets/read | Egy titkos kulcsot, de nem az értékét tulajdonságainak megtekintése |
+> | Műveletek | Microsoft.KeyVault/vaults/secrets/write | Hozzon létre egy új titkos kulcsot, vagy meglévő titkos kód értékének módosítása |
+> | Műveletek | Microsoft.KeyVault/vaults/write | Hozzon létre egy új kulcstartót, vagy egy meglévő kulcstároló tulajdonságainak frissítése |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -2604,7 +2604,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.LabServices/labAccounts/galleryImages/write | Adja hozzá, vagy módosítsa a katalógus rendszerképeinek letöltéséhez. |
 > | Műveletek | Microsoft.LabServices/labAccounts/GetRegionalAvailability/action | Tesztkörnyezetfiók konfigurált mérete kategóriákhoz tartozó régiónkénti rendelkezésre állás információk lekérése |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/AddUsers/action | Felhasználók hozzáadása egy laborhoz |
-> | Műveletek | Microsoft.LabServices/labAccounts/labs/delete | Törölje a labs. |
+> | Műveletek | Microsoft.LabServices/labAccounts/labs/delete | Delete labs. |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/environmentSettings/ClaimAny/action | Egy véletlenszerű környezetet egy felhasználó egy környezeti beállítások a jogcímeket |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/environmentSettings/delete | Törölje a környezeti beállítás. |
 > | Műveletek | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Claim/action | A környezet jogcímek, és hozzárendeli a felhasználóhoz |
@@ -3008,7 +3008,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.ManagedLab/labAccounts/CreateLab/action | Labor létrehozása a lab-fiókokban. |
 > | Műveletek | Microsoft.ManagedLab/labAccounts/delete | Törölje a lab-fiókokban. |
-> | Műveletek | Microsoft.ManagedLab/labAccounts/labs/delete | Törölje a labs. |
+> | Műveletek | Microsoft.ManagedLab/labAccounts/labs/delete | Delete labs. |
 > | Műveletek | Microsoft.ManagedLab/labAccounts/labs/environmentSettings/delete | Törölje a környezeti beállítás. |
 > | Műveletek | Microsoft.ManagedLab/labAccounts/labs/environmentSettings/environments/delete | Környezetek törlése. |
 > | Műveletek | Microsoft.ManagedLab/labAccounts/labs/environmentSettings/environments/read | Környezetek olvasása. |
@@ -3230,10 +3230,10 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/checkTrafficManagerNameAvailability/action | A Traffic Manager relatív DNS-név rendelkezésre állását ellenőrzi. |
 > | Műveletek | Microsoft.Network/connections/delete | Deletes VirtualNetworkGatewayConnection |
 > | Műveletek | Microsoft.Network/connections/read | Gets VirtualNetworkGatewayConnection |
-> | Műveletek | Microsoft.Network/connections/sharedkey/action | VirtualNetworkGatewayConnection SharedKey beolvasása |
+> | Műveletek | Microsoft.Network/connections/sharedkey/action | Get VirtualNetworkGatewayConnection SharedKey |
 > | Műveletek | Microsoft.Network/connections/sharedKey/read | Gets VirtualNetworkGatewayConnection SharedKey |
 > | Műveletek | Microsoft.Network/connections/sharedKey/write | Létrehoz vagy frissít egy meglévő VirtualNetworkGatewayConnection SharedKey |
-> | Műveletek | Microsoft.Network/connections/vpndeviceconfigurationscript/action | Lekérdezi a VirtualNetworkGatewayConnection Vpn-eszköz konfigurálása |
+> | Műveletek | Microsoft.Network/connections/vpndeviceconfigurationscript/action | Gets Vpn Device Configuration of VirtualNetworkGatewayConnection |
 > | Műveletek | Microsoft.Network/connections/write | Létrehoz vagy frissít egy meglévő VirtualNetworkGatewayConnection |
 > | Műveletek | Microsoft.Network/ddosCustomPolicies/delete | Törlések egy DDoS, testre szabott házirend |
 > | Műveletek | Microsoft.Network/ddosCustomPolicies/read | Lekérdezi egy DDoS, testre szabott definíciója a szabályzat-definíció |
@@ -3251,31 +3251,31 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/dnszones/AAAA/read | Első típusú rekordhalmazok "AAAA", JSON formátumban. A rekordhalmaz rekordok, valamint az Élettartamot, a címkék és a etag listáját tartalmazza. |
 > | Műveletek | Microsoft.Network/dnszones/AAAA/write | Hozzon létre, vagy frissítse a DNS-zóna belül "AAAA" típusú rekordhalmazok. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
 > | Műveletek | Microsoft.Network/dnszones/all/read | Lekérdezi a DNS-rekordhalmazok típusok között |
-> | Műveletek | Microsoft.Network/dnszones/CAA/delete | Távolítsa el a rekordhalmaz megadott név, és írja be a DNS-zóna a "CAA". |
+> | Műveletek | Microsoft.Network/dnszones/CAA/delete | Remove the record set of a given name and type ‘CAA’ from a DNS zone. |
 > | Műveletek | Microsoft.Network/dnszones/CAA/read | Első típusú rekordhalmazok "CAA", JSON formátumban. A rekordhalmaz a TTL, címkék és etag tartalmazza. |
 > | Műveletek | Microsoft.Network/dnszones/CAA/write | Létrehozni vagy frissíteni a DNS-zóna belül "CAA" típusú rekordhalmazok. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
-> | Műveletek | Microsoft.Network/dnszones/CNAME/delete | Távolítsa el a rekordhalmaz megadott név, és írja be a DNS-zóna a "CNAME". |
+> | Műveletek | Microsoft.Network/dnszones/CNAME/delete | Remove the record set of a given name and type ‘CNAME’ from a DNS zone. |
 > | Műveletek | Microsoft.Network/dnszones/CNAME/read | Első típusú rekordhalmazok "CNAME", JSON formátumban. A rekordhalmaz a TTL, címkék és etag tartalmazza. |
 > | Műveletek | Microsoft.Network/dnszones/CNAME/write | Létrehozni vagy frissíteni a DNS-zóna belül "CNAME" típusú rekordhalmazok. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
-> | Műveletek | Microsoft.Network/dnszones/delete | Törölje a DNS-zóna JSON formátumban. A zóna tulajdonságai közé tartozik a címkéket, az etag, numberOfRecordSets és maxNumberOfRecordSets. |
-> | Műveletek | Microsoft.Network/dnszones/MX/delete | Távolítsa el a rekordhalmaz megadott név, és írja be az "MX" a DNS-zóna. |
+> | Műveletek | Microsoft.Network/dnszones/delete | Törölje a DNS-zóna JSON formátumban. The zone properties include tags, etag, numberOfRecordSets, and maxNumberOfRecordSets. |
+> | Műveletek | Microsoft.Network/dnszones/MX/delete | Remove the record set of a given name and type ‘MX’ from a DNS zone. |
 > | Műveletek | Microsoft.Network/dnszones/MX/read | Első típusú rekordhalmazok "MX", JSON formátumban. A rekordhalmaz rekordok, valamint az Élettartamot, a címkék és a etag listáját tartalmazza. |
-> | Műveletek | Microsoft.Network/dnszones/MX/write | Létrehozni vagy frissíteni a DNS-zóna belül az "MX" típusú rekordhalmazok. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
+> | Műveletek | Microsoft.Network/dnszones/MX/write | Create or update a record set of type ‘MX’ within a DNS zone. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
 > | Műveletek | Microsoft.Network/dnszones/NS/delete | A DNS-rekordhalmaz NS típusú törlése |
 > | Műveletek | Microsoft.Network/dnszones/NS/read | Gets DNS record set of type NS |
 > | Műveletek | Microsoft.Network/dnszones/NS/write | Létrehozza vagy frissíti a DNS NS típusú rekordhalmaz |
 > | Műveletek | Microsoft.Network/dnszones/PTR/delete | Távolítsa el a rekordhalmaz megadott név, és írja be a DNS-zóna a "PTR". |
 > | Műveletek | Microsoft.Network/dnszones/PTR/read | Első típusú rekordhalmazok "PTR", JSON formátumban. A rekordhalmaz rekordok, valamint az Élettartamot, a címkék és a etag listáját tartalmazza. |
 > | Műveletek | Microsoft.Network/dnszones/PTR/write | Létrehozni vagy frissíteni a DNS-zóna belül "PTR" típusú rekordhalmazok. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
-> | Műveletek | Microsoft.Network/dnszones/read | Első DNS-zónát, JSON formátumban. A zóna tulajdonságai közé tartozik a címkéket, az etag, numberOfRecordSets és maxNumberOfRecordSets. Vegye figyelembe, hogy ez a parancs nem kéri le a zónán belüli rekordhalmazok. |
+> | Műveletek | Microsoft.Network/dnszones/read | Első DNS-zónát, JSON formátumban. The zone properties include tags, etag, numberOfRecordSets, and maxNumberOfRecordSets. Vegye figyelembe, hogy ez a parancs nem kéri le a zónán belüli rekordhalmazok. |
 > | Műveletek | Microsoft.Network/dnszones/recordsets/read | Lekérdezi a DNS-rekordhalmazok típusok között |
 > | Műveletek | Microsoft.Network/dnszones/SOA/read | Gets DNS record set of type SOA |
 > | Műveletek | Microsoft.Network/dnszones/SOA/write | Létrehozza vagy frissíti a DNS-rekordhalmaz SOA típusú |
 > | Műveletek | Microsoft.Network/dnszones/SRV/delete | Távolítsa el a rekordhalmaz megadott név, és írja be a "SRV: a DNS-zóna. |
 > | Műveletek | Microsoft.Network/dnszones/SRV/read | Első típusú rekordhalmazok "SRV", JSON formátumban. A rekordhalmaz rekordok, valamint az Élettartamot, a címkék és a etag listáját tartalmazza. |
-> | Műveletek | Microsoft.Network/dnszones/SRV/write | Létrehozás vagy frissítés SRV típusú rekordhalmaz |
+> | Műveletek | Microsoft.Network/dnszones/SRV/write | Create or update record set of type SRV |
 > | Műveletek | Microsoft.Network/dnszones/TXT/delete | Távolítsa el a rekordhalmaz megadott név, és írja be a DNS-zóna a "TXT". |
-> | Műveletek | Microsoft.Network/dnszones/TXT/read | "TXT", az típusú rekordhalmazok első JSON formátumban. A rekordhalmaz rekordok, valamint az Élettartamot, a címkék és a etag listáját tartalmazza. |
+> | Műveletek | Microsoft.Network/dnszones/TXT/read | Get the record set of type ‘TXT’, in JSON format. A rekordhalmaz rekordok, valamint az Élettartamot, a címkék és a etag listáját tartalmazza. |
 > | Műveletek | Microsoft.Network/dnszones/TXT/write | Létrehozni vagy frissíteni a DNS-zóna belül "TXT" típusú rekordhalmazok. A megadott rekordok lecseréli a jelenlegi a rekordhalmaz-rekordokat. |
 > | Műveletek | Microsoft.Network/dnszones/write | Hozzon létre, vagy frissítse a DNS-zóna egy erőforráscsoporton belül.  Frissítse a DNS-zóna erőforrásai a címkék segítségével. Vegye figyelembe, hogy ez a parancs nem használható létrehozni vagy frissíteni a zónán belüli rekordhalmazok. |
 > | Műveletek | Microsoft.Network/expressRouteCircuits/authorizations/delete | Az expressroute-kapcsolatcsoport sávszélességének engedély törlése |
@@ -3309,10 +3309,10 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/expressRouteGateways/expressRouteConnections/write | Az Express Route-kapcsolat létrehozása vagy meglévő Express Route-kapcsolat frissítése |
 > | Műveletek | Microsoft.Network/expressRouteGateways/join/action | Egy Expressroute-átjáró csatlakozik. |
 > | Műveletek | Microsoft.Network/expressRouteGateways/read | Expressroute-átjáró |
-> | Műveletek | Microsoft.Network/expressRoutePorts/delete | ExpressRoutePorts törlése |
-> | Műveletek | Microsoft.Network/expressRoutePorts/join/action | ExpressRoutePorts csatlakozik |
-> | Műveletek | Microsoft.Network/expressRoutePorts/links/read | ExpressRouteLink beolvasása |
-> | Műveletek | Microsoft.Network/expressRoutePorts/read | ExpressRoutePorts beolvasása |
+> | Műveletek | Microsoft.Network/expressRoutePorts/delete | Deletes ExpressRoutePorts |
+> | Műveletek | Microsoft.Network/expressRoutePorts/join/action | Joins ExpressRoutePorts |
+> | Műveletek | Microsoft.Network/expressRoutePorts/links/read | Gets ExpressRouteLink |
+> | Műveletek | Microsoft.Network/expressRoutePorts/read | Gets ExpressRoutePorts |
 > | Műveletek | Microsoft.Network/expressRoutePorts/write | Létrehozza vagy frissíti a ExpressRoutePorts |
 > | Műveletek | Microsoft.Network/expressRoutePortsLocations/read | Get Express Route-portok helyek |
 > | Műveletek | Microsoft.Network/expressRouteServiceProviders/read | Express Route-szolgáltatók beolvasása |
@@ -3363,8 +3363,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/loadBalancers/read | Load balancer definici beolvasása |
 > | Műveletek | Microsoft.Network/loadBalancers/virtualMachines/read | Lekéri az összes virtuális gépet egy terheléselosztó alatt mutató hivatkozások |
 > | Műveletek | Microsoft.Network/loadBalancers/write | Load balancer létrehozása vagy frissítése egy meglévő terheléselosztóhoz |
-> | Műveletek | Microsoft.Network/localnetworkgateways/delete | Törli a LocalNetworkGateway |
-> | Műveletek | Microsoft.Network/localnetworkgateways/read | Lekérdezi a LocalNetworkGateway |
+> | Műveletek | Microsoft.Network/localnetworkgateways/delete | Deletes LocalNetworkGateway |
+> | Műveletek | Microsoft.Network/localnetworkgateways/read | Gets LocalNetworkGateway |
 > | Műveletek | Microsoft.Network/localnetworkgateways/write | Létrehoz vagy frissít egy meglévő LocalNetworkGateway |
 > | Műveletek | Microsoft.Network/locations/availableDelegations/read | Rendelkezésre álló delegálásokat beolvasása |
 > | Műveletek | Microsoft.Network/locations/bareMetalTenants/action | Foglalja le vagy ellenőrzi a bérlő egy operációs rendszer nélküli |
@@ -3458,7 +3458,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik |
 > | Műveletek | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
 > | Műveletek | Microsoft.Network/publicIPAddresses/write | Nyilvános Ip-cím létrehozása vagy frissítése egy meglévő nyilvános Ip-címet.  |
-> | Műveletek | Microsoft.Network/publicIPPrefixes/delete | Töröl egy nyilvános Ip-előtag |
+> | Műveletek | Microsoft.Network/publicIPPrefixes/delete | Deletes A Public Ip Prefix |
 > | Műveletek | Microsoft.Network/publicIPPrefixes/join/action | Egy PublicIPPrefix csatlakozik |
 > | Műveletek | Microsoft.Network/publicIPPrefixes/read | Egy nyilvános Ip-előtag-definíció beolvasása |
 > | Műveletek | Microsoft.Network/publicIPPrefixes/write | Egy nyilvános Ip-előtag létrehoz vagy frissít egy meglévő nyilvános Ip-előtag |
@@ -3507,25 +3507,25 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/trafficManagerUserMetricsKeys/write | Létrehoz egy új előfizetés-szintű kulcsot, valós idejű felhasználói mérőszámok gyűjtemény használható. |
 > | Műveletek | Microsoft.Network/unregister/action | Az előfizetés regisztrációjának törlése |
 > | Műveletek | Microsoft.Network/virtualHubs/delete | Töröl egy virtuális központtal |
-> | Műveletek | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/delete | Töröl egy HubVirtualNetworkConnection |
-> | Műveletek | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/read | Egy HubVirtualNetworkConnection beolvasása |
+> | Műveletek | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/delete | Deletes a HubVirtualNetworkConnection |
+> | Műveletek | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/read | Get a HubVirtualNetworkConnection |
 > | Műveletek | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/write | Létrehozás vagy frissítés egy HubVirtualNetworkConnection |
 > | Műveletek | Microsoft.Network/virtualHubs/read | Egy virtuális központ beolvasása |
 > | Műveletek | Microsoft.Network/virtualHubs/write | Létrehozás vagy frissítés egy virtuális központtal |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/Connections/Read | Get VirtualNetworkGatewayConnection |
+> | Műveletek | microsoft.network/virtualnetworkgateways/connections/read | Get VirtualNetworkGatewayConnection |
 > | Műveletek | Microsoft.Network/virtualNetworkGateways/delete | Töröl egy virtuális hálózati átjárónak |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/generatevpnclientpackage/Action | A virtualNetworkGateway VPN-ügyfele csomagjának létrehozása |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/generatevpnprofile/Action | A VirtualNetworkGateway VpnProfile csomagjának létrehozása |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/getadvertisedroutes/Action | Lekérdezi a virtualNetworkGateway hirdetett útvonalakat |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/getbgppeerstatus/Action | Lekérdezi a virtualNetworkGateway bgp-társak állapotát |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/getlearnedroutes/Action | Lekérdezi a virtualnetworkgateway megtanult útvonalak |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/getvpnclientconnectionhealth/Action | A VirtualNetworkGateway / Vpn-ügyfél kapcsolat állapotának lekérése |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/getvpnclientipsecparameters/Action | VPN-ügyfele Ipsec paraméterek lekérése VirtualNetworkGateway P2S-ügyfél. |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/getvpnprofilepackageurl/Action | Az URL-címét egy előre létrehozott vpn-profil ügyfélcsomag beolvasása |
-> | Műveletek | Microsoft.Network/virtualNetworkGateways/read | Lekérdezi egy virtuális hálózati átjárónak |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/reset/Action | Alaphelyzetbe állítja a virtualNetworkGateway |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/resetvpnclientsharedkey/Action | Állítsa vissza a VPN-ügyfele a VirtualNetworkGateway P2S-ügyfél megosztott kulcsot. |
-> | Műveletek | Microsoft.Network/virtualnetworkgateways/setvpnclientipsecparameters/Action | Állítsa be a VPN-ügyfele Ipsec paraméterek VirtualNetworkGateway P2S-ügyfél. |
+> | Műveletek | microsoft.network/virtualnetworkgateways/generatevpnclientpackage/action | A virtualNetworkGateway VPN-ügyfele csomagjának létrehozása |
+> | Műveletek | microsoft.network/virtualnetworkgateways/generatevpnprofile/action | Generate VpnProfile package for VirtualNetworkGateway |
+> | Műveletek | microsoft.network/virtualnetworkgateways/getadvertisedroutes/action | Lekérdezi a virtualNetworkGateway hirdetett útvonalakat |
+> | Műveletek | microsoft.network/virtualnetworkgateways/getbgppeerstatus/action | Lekérdezi a virtualNetworkGateway bgp-társak állapotát |
+> | Műveletek | microsoft.network/virtualnetworkgateways/getlearnedroutes/action | Lekérdezi a virtualnetworkgateway megtanult útvonalak |
+> | Műveletek | microsoft.network/virtualnetworkgateways/getvpnclientconnectionhealth/action | A VirtualNetworkGateway / Vpn-ügyfél kapcsolat állapotának lekérése |
+> | Műveletek | microsoft.network/virtualnetworkgateways/getvpnclientipsecparameters/action | VPN-ügyfele Ipsec paraméterek lekérése VirtualNetworkGateway P2S-ügyfél. |
+> | Műveletek | microsoft.network/virtualnetworkgateways/getvpnprofilepackageurl/action | Az URL-címét egy előre létrehozott vpn-profil ügyfélcsomag beolvasása |
+> | Műveletek | Microsoft.Network/virtualNetworkGateways/read | Gets a VirtualNetworkGateway |
+> | Műveletek | microsoft.network/virtualnetworkgateways/reset/action | Alaphelyzetbe állítja a virtualNetworkGateway |
+> | Műveletek | microsoft.network/virtualnetworkgateways/resetvpnclientsharedkey/action | Állítsa vissza a VPN-ügyfele a VirtualNetworkGateway P2S-ügyfél megosztott kulcsot. |
+> | Műveletek | microsoft.network/virtualnetworkgateways/setvpnclientipsecparameters/action | Állítsa be a VPN-ügyfele Ipsec paraméterek VirtualNetworkGateway P2S-ügyfél. |
 > | Műveletek | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | Sorolja fel a támogatott Vpn-eszközök |
 > | Műveletek | Microsoft.Network/virtualNetworkGateways/write | Létrehozza vagy frissíti a VirtualNetworkGateway |
 > | Műveletek | Microsoft.Network/virtualNetworks/BastionHosts/action | Bástyagazdagép refrences lekérdezi egy virtuális hálózaton. |
@@ -3560,9 +3560,9 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/virtualWans/vpnSites/read | Az összes VPN-helyek hivatkozó virtuális Wan beolvasása. |
 > | Műveletek | Microsoft.Network/virtualWans/write | Létre vagy nem frissíthető virtuális Wan |
 > | Műveletek | Microsoft.Network/vpnGateways/delete | Törli a VPN-átjáróban. |
-> | Műveletek | Microsoft.Network/vpngateways/listvpnconnectionshealth/Action | Egy VPN-átjáró lekérdezi az összes kapcsolat állapota és a kapcsolatok egy részhalmazára |
+> | Műveletek | microsoft.network/vpngateways/listvpnconnectionshealth/action | Egy VPN-átjáró lekérdezi az összes kapcsolat állapota és a kapcsolatok egy részhalmazára |
 > | Műveletek | Microsoft.Network/vpnGateways/read | Lekérdezi egy VPN-átjáróban. |
-> | Műveletek | Microsoft.Network/vpngateways/reset/Action | Egy VPN-átjáró alaphelyzetbe állítása |
+> | Műveletek | microsoft.network/vpngateways/reset/action | Egy VPN-átjáró alaphelyzetbe állítása |
 > | Műveletek | microsoft.network/vpnGateways/vpnConnections/delete | Törli a VPN-kapcsolat. |
 > | Műveletek | microsoft.network/vpnGateways/vpnConnections/read | Lekérdezi egy VPN-kapcsolat. |
 > | Műveletek | microsoft.network/vpnGateways/vpnConnections/write | Egy VPN-kapcsolat használatával. |
@@ -3669,7 +3669,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.OperationalInsights/linkTargets/read | Felsorolja a meglévő fiókokat, amelyek nem tartoznak az Azure-előfizetéssel. Az Azure-előfizetés összekapcsolása egy munkaterületet, ennek a műveletnek a munkaterület létrehozása művelet ügyfél id tulajdonsága által visszaadott ügyfél-azonosítót használja. |
-> | Műveletek | Microsoft.operationalinsights/Operations/Read | Felsorolja a rendelkezésre álló az OperationalInsights Rest API-műveleteket. |
+> | Műveletek | microsoft.operationalinsights/operations/read | Felsorolja a rendelkezésre álló az OperationalInsights Rest API-műveleteket. |
 > | Műveletek | Microsoft.OperationalInsights/register/action | Előfizetés regisztrálása az erőforrás-szolgáltató. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/analytics/query/action | Új motor használatával való keresés. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/analytics/query/schema/read | V2 keresési séma lekérése. |
@@ -3686,7 +3686,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.OperationalInsights/workspaces/generateregistrationcertificate/action | Létrehoz egy regisztrációs tanúsítványt a munkaterülethez. Ezt a tanúsítványt a Microsoft System Center Operation Manager a munkaterülethez csatlakoztatandó szolgál. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/intelligencepacks/disable/action | Letiltja egy adott munkaterület intelligenciacsomagját. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/intelligencepacks/enable/action | Lehetővé teszi, hogy egy adott munkaterület intelligenciacsomagját. |
-> | Műveletek | Microsoft.OperationalInsights/workspaces/intelligencepacks/read | Felsorolja az adott munkaterületben látható intelligenciacsomagot, és felsorolja, hogy a csomag engedélyezett vagy letiltott az adott munkaterületben. |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/intelligencepacks/read | Felsorolja az adott munkaterületben látható egy adott munkaterület, és felsorolja, hogy a csomag engedélyezett vagy letiltott az adott munkaterületben. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/linkedServices/delete | Összekapcsolt szolgáltatások törlése az adott munkaterületen. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/linkedServices/read | Összekapcsolt szolgáltatások beolvasása az adott munkaterületen. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/linkedServices/write | Szolgáltatások létrehozása/frissítése társított az adott munkaterületen. |
@@ -3857,16 +3857,16 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | Adatok olvasása a WUDOStatus táblából |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/read | Lekér egy meglévő munkaterületet |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/regeneratesharedkey/action | A megadott munkaterület megosztott kulcs újragenerálása |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/Rules/Read | Minden riasztási szabályok beolvasása. |
+> | Műveletek | microsoft.operationalinsights/workspaces/rules/read | Minden riasztási szabályok beolvasása. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/savedSearches/delete | Töröl egy mentett keresési lekérdezést |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/savedSearches/read | Lekérdezi egy mentett keresési lekérdezést |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/Results/Read | Első mentett keresések eredményeit. Elavult |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/schedules/actions/DELETE | Törölje az ütemezett keresési műveleteket. |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/schedules/actions/Read | Ütemezett keresési műveletek beolvasása. |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/schedules/actions/Write | Hozzon létre vagy nem frissíthető az ütemezett keresési műveleteket. |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/schedules/DELETE | Ütemezett keresések törlése. |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/schedules/Read | Ütemezett keresések beolvasása. |
-> | Műveletek | Microsoft.operationalinsights/Workspaces/savedsearches/schedules/Write | Hozzon létre vagy ütemezett keresések frissítése. |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/results/read | Első mentett keresések eredményeit. Elavult |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/delete | Törölje az ütemezett keresési műveleteket. |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/read | Ütemezett keresési műveletek beolvasása. |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/write | Hozzon létre vagy nem frissíthető az ütemezett keresési műveleteket. |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/schedules/delete | Ütemezett keresések törlése. |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/schedules/read | Ütemezett keresések beolvasása. |
+> | Műveletek | microsoft.operationalinsights/workspaces/savedsearches/schedules/write | Hozzon létre vagy ütemezett keresések frissítése. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/savedSearches/write | Létrehoz egy mentett keresési lekérdezést |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/schema/read | Lekéri a munkaterület keresési sémáját.  Keresési séma tartalmazza a közzétett mezőket és azok típusát. |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/search/action | Végrehajt egy keresési lekérdezést |
@@ -4036,7 +4036,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/write | Létrehozás vagy frissítés bármely Hálózatleképezések |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/discoverProtectableItem/action | Védhető elem felderítése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/read | Olvassa el a alkalmazásvédelmi tárolókkal |
-> | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/remove/action | Védelmi tároló eltávolítása |
+> | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/remove/action | Remove Protection Container |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Védhető elemek olvasása |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Helyreállítási pont alkalmazása |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/delete | Minden védett elemek törlése |
@@ -4052,7 +4052,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Feladatátvételi teszt |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | A feladatátvételi teszt karbantartása |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | Feladatátvétel |
-> | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Mobilitási szolgáltatás frissítése |
+> | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Update Mobility Service |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/write | Minden védett cikkek létrehozása vagy frissítése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/delete | Bármely Védelmitároló-leképezések törlése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | Olvassa el a bármely Védelmitároló-leképezések |
@@ -4135,7 +4135,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Relay/namespaces/HybridConnections/authorizationRules/read |  HybridConnection engedélyezési szabályok listájának beolvasása |
 > | Műveletek | Microsoft.Relay/namespaces/HybridConnections/authorizationRules/regeneratekeys/action | Az erőforrás elsődleges vagy másodlagos kulcsának újragenerálása |
 > | Műveletek | Microsoft.Relay/namespaces/HybridConnections/authorizationRules/write | HybridConnection engedélyezési szabályok létrehozása és tulajdonságainak frissítése. Az engedélyezési szabályok hozzáférési jogosultságai frissíthetők. |
-> | Műveletek | Microsoft.Relay/namespaces/HybridConnections/Delete | HybridConnection erőforrás törlésére szolgáló művelet |
+> | Műveletek | Microsoft.Relay/namespaces/HybridConnections/Delete | Operation to delete HybridConnection Resource |
 > | Műveletek | Microsoft.Relay/namespaces/HybridConnections/read | HybridConnection erőforrás-leírások listájának beolvasása |
 > | Műveletek | Microsoft.Relay/namespaces/HybridConnections/write | Hozzon létre vagy frissítés HybridConnection tulajdonságai. |
 > | Műveletek | Microsoft.Relay/namespaces/messagingPlan/read | Beolvassa az egy névtérhez tartozó üzenetküldési Díjcsomag.<br>Ez az API elavult.<br>A MessagingPlan erőforráson keresztül elérhető tulajdonságok lettek helyezve (szülő) Namespace erőforrás API újabb verzióiban...<br>Ez a művelet nem támogatott az API 2017-04-01-es verzióját. |
@@ -4380,7 +4380,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.ServiceBus/namespaces/topics/authorizationRules/write | A témakör az engedélyezési szabályok létrehozása és tulajdonságainak frissítése. Az engedélyezési szabályok hozzáférési jogosultságai frissíthetők. |
 > | Műveletek | Microsoft.ServiceBus/namespaces/topics/Delete | A témakör erőforrás törlésére szolgáló művelet |
 > | Műveletek | Microsoft.ServiceBus/namespaces/topics/read | A témakör erőforrások leírásai listájának beolvasása |
-> | Műveletek | Microsoft.ServiceBus/namespaces/topics/subscriptions/Delete | TopicSubscription erőforrás törlésére szolgáló művelet |
+> | Műveletek | Microsoft.ServiceBus/namespaces/topics/subscriptions/Delete | Operation to delete TopicSubscription Resource |
 > | Műveletek | Microsoft.ServiceBus/namespaces/topics/subscriptions/read | TopicSubscription erőforrások leírásai listájának beolvasása |
 > | Műveletek | Microsoft.ServiceBus/namespaces/topics/subscriptions/rules/Delete | A szabály erőforrás törlésére szolgáló művelet |
 > | Műveletek | Microsoft.ServiceBus/namespaces/topics/subscriptions/rules/read | A szabály erőforrások leírásai listájának beolvasása |
@@ -4621,7 +4621,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Sql/servers/databases/maintenanceWindows/write | Karbantartási beállítja a windows-beállítások a kiválasztott adatbázishoz. |
 > | Műveletek | Microsoft.Sql/servers/databases/metricDefinitions/read | Návratové typy metrikák elérhető adatbázisok |
 > | Műveletek | Microsoft.Sql/servers/databases/metrics/read | Az adatbázisok visszatérési metrikák |
-> | Műveletek | Microsoft.Sql/servers/databases/move/action | Nevezze át az Azure SQL Database |
+> | Műveletek | Microsoft.Sql/servers/databases/move/action | Rename Azure SQL Database |
 > | Műveletek | Microsoft.Sql/servers/databases/operationResults/read | Adatbázis-művelet állapotát olvassa be. |
 > | Műveletek | Microsoft.Sql/servers/databases/operations/cancel/action | Azure SQL Database megszakítja a függőben lévő aszinkron művelet, amely még nem fejeződött be. |
 > | Műveletek | Microsoft.Sql/servers/databases/operations/read | A listát az adatbázison végrehajtott műveletek |
@@ -4644,7 +4644,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Sql/servers/databases/restorePoints/action | Új visszaállítási pont létrehozása |
 > | Műveletek | Microsoft.Sql/servers/databases/restorePoints/delete | Az adatbázis visszaállítási pont törlése. |
 > | Műveletek | Microsoft.Sql/servers/databases/restorePoints/read | A visszaállítási pontok az adatbázis értéket ad vissza. |
-> | Műveletek | Microsoft.Sql/servers/databases/resume/action | Az Azure SQL Datawarehouse-adatbázis folytatása |
+> | Műveletek | Microsoft.Sql/servers/databases/resume/action | Resume Azure SQL Datawarehouse Database |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/read | Sémák adatbázisok listájának lekérése |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Egy tábla oszlopait listájának lekérése |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Az érzékenységi címkét egy adott oszlop törlése |
@@ -5037,7 +5037,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.StorSimple/managers/storageDomains/write | Hozzon létre vagy a Storage-tartományok frissítése |
 > | Műveletek | Microsoft.StorSimple/managers/write | Létrehozás vagy frissítés Eszközkezelők |
 > | Műveletek | Microsoft.StorSimple/Managers/write | A tárlétrehozási művelettel vault típusú Azure-erőforrás hozható létre |
-> | Műveletek | Microsoft.StorSimple/register/action | Regisztrálja a szolgáltatót Microsoft.StorSimple |
+> | Műveletek | Microsoft.StorSimple/register/action | Register Provider Microsoft.StorSimple |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
@@ -5124,8 +5124,8 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | --- | --- | --- |
 > | Műveletek | Microsoft.VisualStudio/Account/Delete | Fiók törlése |
 > | Műveletek | Microsoft.VisualStudio/Account/Extension/Read | Olvassa el a fiók/bővítmény |
-> | Műveletek | Microsoft.VisualStudio/Account/Project/Read | Olvassa el a fiókot, projektgyűjtemény |
-> | Műveletek | Microsoft.VisualStudio/Account/Project/Write | Fiók és a projekt beállítása |
+> | Műveletek | Microsoft.VisualStudio/Account/Project/Read | Read Account/Project |
+> | Műveletek | Microsoft.VisualStudio/Account/Project/Write | Set Account/Project |
 > | Műveletek | Microsoft.VisualStudio/Account/Read | Fiók beolvasása |
 > | Műveletek | Microsoft.VisualStudio/Account/Write | Fiók beállítása |
 > | Műveletek | Microsoft.VisualStudio/Extension/Delete | Bővítmény törlése |
@@ -5141,44 +5141,44 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/apiacls/Read | Api Management-fiókok Apiacls beolvasása. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/apiacls/DELETE | Api Management-fiókok API-k Apiacls törlése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/apiacls/Read | Api Management-fiókok API-k Apiacls beolvasása. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/apiacls/Write | Api Management-fiókok API-k Apiacls frissítése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/connectionacls/Read | Api Management-fiókok API-k Connectionacls beolvasása. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/confirmconsentcode/Action | Erősítse meg a jóváhagyási kód Api-felügyeleti fiókok API-k kapcsolatok. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/connectionacls/DELETE | Api Management fiókok API-k kapcsolatok Connectionacls törlése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/connectionacls/Read | Api Management fiókok API-k kapcsolatok Connectionacls beolvasása. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/connectionacls/Write | Api Management fiókok API-k kapcsolatok Connectionacls frissítése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/DELETE | Api Management-fiókok API-k kapcsolatok törlése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/getconsentlinks/Action | Szerezze be a jóváhagyási hivatkozásainak az Api Management-fiókok API-k kapcsolatok. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/listconnectionkeys/Action | Lista kapcsolat kulcsok API-t felügyeleti fiókok API-k kapcsolatok. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/listsecrets/Action | Lista titkos Api felügyeleti fiókok API-k kapcsolatok. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/Read | Api Management-fiókok API-k kapcsolatok lekérése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Connections/Write | Frissítse az Api Management-fiókok API-k kapcsolatok. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/DELETE | Api Management-fiókok API-k törlése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/localizeddefinitions/DELETE | Törli az Api Management fiókok API-k honosított definíciókat. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/localizeddefinitions/Read | Az Api Management első fiókok API-k honosított definíciókat. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/localizeddefinitions/Write | Frissítés Api Management fiókok API-k honosított definíciókat. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Read | Api Management-fiókok API-k lekérése. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/APIs/Write | Frissítse az Api Management-fiókok API-kat. |
-> | Műveletek | Microsoft.Web/apimanagementaccounts/connectionacls/Read | Api Management-fiókok Connectionacls beolvasása. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apiacls/read | Api Management-fiókok Apiacls beolvasása. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/apiacls/delete | Api Management-fiókok API-k Apiacls törlése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/apiacls/read | Api Management-fiókok API-k Apiacls beolvasása. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/apiacls/write | Api Management-fiókok API-k Apiacls frissítése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connectionacls/read | Api Management-fiókok API-k Connectionacls beolvasása. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/confirmconsentcode/action | Erősítse meg a jóváhagyási kód Api-felügyeleti fiókok API-k kapcsolatok. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/connectionacls/delete | Api Management fiókok API-k kapcsolatok Connectionacls törlése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/connectionacls/read | Api Management fiókok API-k kapcsolatok Connectionacls beolvasása. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/connectionacls/write | Api Management fiókok API-k kapcsolatok Connectionacls frissítése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/delete | Api Management-fiókok API-k kapcsolatok törlése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/getconsentlinks/action | Szerezze be a jóváhagyási hivatkozásainak az Api Management-fiókok API-k kapcsolatok. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/listconnectionkeys/action | Lista kapcsolat kulcsok API-t felügyeleti fiókok API-k kapcsolatok. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/listsecrets/action | Lista titkos Api felügyeleti fiókok API-k kapcsolatok. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/read | Api Management-fiókok API-k kapcsolatok lekérése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/connections/write | Frissítse az Api Management-fiókok API-k kapcsolatok. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/delete | Api Management-fiókok API-k törlése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/localizeddefinitions/delete | Törli az Api Management fiókok API-k honosított definíciókat. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/localizeddefinitions/read | Az Api Management első fiókok API-k honosított definíciókat. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/localizeddefinitions/write | Frissítés Api Management fiókok API-k honosított definíciókat. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/read | Api Management-fiókok API-k lekérése. |
+> | Műveletek | microsoft.web/apimanagementaccounts/apis/write | Frissítse az Api Management-fiókok API-kat. |
+> | Műveletek | microsoft.web/apimanagementaccounts/connectionacls/read | Api Management-fiókok Connectionacls beolvasása. |
 > | Műveletek | Microsoft.Web/availablestacks/Read | Első elérhető implementációt. |
 > | Műveletek | Microsoft.Web/certificates/Delete | Egy meglévő tanúsítvány törlése. |
 > | Műveletek | Microsoft.Web/certificates/Read | Tanúsítványok listájának beolvasása. |
 > | Műveletek | Microsoft.Web/certificates/Write | Adjon hozzá egy új tanúsítványt, vagy frissítsen egy meglévőt. |
 > | Műveletek | Microsoft.Web/checknameavailability/Read | Ellenőrizze az erőforrás neve elérhető-e. |
-> | Műveletek | Microsoft.Web/classicmobileservices/Read | Klasszikus Mobile Services beszerzése. |
+> | Műveletek | microsoft.web/classicmobileservices/read | Klasszikus Mobile Services beszerzése. |
 > | Műveletek | Microsoft.Web/connectionGateways/Delete | A kapcsolódási átjáró törlése. |
 > | Műveletek | Microsoft.Web/connectionGateways/Join/Action | A kapcsolódási átjáró csatlakozik. |
 > | Műveletek | Microsoft.Web/connectionGateways/ListStatus/Action | A kapcsolódási átjáró állapotának listája. |
 > | Műveletek | Microsoft.Web/connectionGateways/Move/Action | A kapcsolódási átjáró helyezi. |
 > | Műveletek | Microsoft.Web/connectionGateways/Read | Kapcsolat átjárók listájának beolvasása. |
 > | Műveletek | Microsoft.Web/connectionGateways/Write | Létrehozza vagy frissíti a kapcsolódási átjáró. |
-> | Műveletek | Microsoft.Web/Connections/confirmconsentcode/Action | Erősítse meg a kapcsolatok jóváhagyási kódot. |
+> | Műveletek | microsoft.web/connections/confirmconsentcode/action | Erősítse meg a kapcsolatok jóváhagyási kódot. |
 > | Műveletek | Microsoft.Web/connections/Delete | Törli a kapcsolatot. |
 > | Műveletek | Microsoft.Web/connections/Join/Action | A kapcsolat csatlakozik. |
-> | Műveletek | Microsoft.Web/Connections/listconsentlinks/Action | Kapcsolatok listája jóváhagyási hivatkozásokat. |
+> | Műveletek | microsoft.web/connections/listconsentlinks/action | Kapcsolatok listája jóváhagyási hivatkozásokat. |
 > | Műveletek | Microsoft.Web/connections/Move/Action | A kapcsolat helyezi. |
 > | Műveletek | Microsoft.Web/connections/Read | A kapcsolatok listájának beolvasása. |
 > | Műveletek | Microsoft.Web/connections/Write | Létrehozza vagy frissíti a kapcsolatot. |
@@ -5190,338 +5190,338 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Web/customApis/Read | Egyéni API-t listájának beolvasása. |
 > | Műveletek | Microsoft.Web/customApis/Write | Létrehozza vagy frissíti egy egyéni API-t. |
 > | Műveletek | Microsoft.Web/deletedSites/Read | Törölt webalkalmazás tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/deploymentlocations/Read | Beolvasni a központi telepítési helyét. |
+> | Műveletek | microsoft.web/deploymentlocations/read | Beolvasni a központi telepítési helyét. |
 > | Műveletek | Microsoft.Web/geoRegions/Read | A földrajzi régiók listájának beolvasása. |
-> | Műveletek | Microsoft.Web/hostingenvironments/capacities/Read | Első üzemeltetési környezetek kapacitások. |
+> | Műveletek | microsoft.web/hostingenvironments/capacities/read | Első üzemeltetési környezetek kapacitások. |
 > | Műveletek | Microsoft.Web/hostingEnvironments/Delete | App Service-környezet törlése |
-> | Műveletek | Microsoft.Web/hostingenvironments/detectors/Read | Első üzemeltetési környezetek derítik fel. |
-> | Műveletek | Microsoft.Web/hostingenvironments/Diagnostics/Read | Első üzemeltetési környezetek diagnosztika. |
-> | Műveletek | Microsoft.Web/hostingenvironments/inboundnetworkdependenciesendpoints/Read | Az összes bejövő függőségek a hálózati végpont lekérése. |
-> | Műveletek | Microsoft.Web/hostingenvironments/metricdefinitions/Read | Első üzemeltetési környezetek Metrikadefinícióinak beolvasása. |
-> | Műveletek | Microsoft.Web/hostingenvironments/multirolepools/metricdefinitions/Read | Első üzemeltetési környezetek többcélú készletek Metrikadefinícióinak beolvasása. |
-> | Műveletek | Microsoft.Web/hostingenvironments/multirolepools/Metrics/Read | Első üzemeltetési környezetek többcélú készletek metrikákat. |
+> | Műveletek | microsoft.web/hostingenvironments/detectors/read | Első üzemeltetési környezetek derítik fel. |
+> | Műveletek | microsoft.web/hostingenvironments/diagnostics/read | Első üzemeltetési környezetek diagnosztika. |
+> | Műveletek | microsoft.web/hostingenvironments/inboundnetworkdependenciesendpoints/read | Az összes bejövő függőségek a hálózati végpont lekérése. |
+> | Műveletek | microsoft.web/hostingenvironments/metricdefinitions/read | Első üzemeltetési környezetek Metrikadefinícióinak beolvasása. |
+> | Műveletek | microsoft.web/hostingenvironments/multirolepools/metricdefinitions/read | Első üzemeltetési környezetek többcélú készletek Metrikadefinícióinak beolvasása. |
+> | Műveletek | microsoft.web/hostingenvironments/multirolepools/metrics/read | Első üzemeltetési környezetek többcélú készletek metrikákat. |
 > | Műveletek | Microsoft.Web/hostingEnvironments/multiRolePools/Read | App Service Environment-környezetben előtérbeli címkészlet tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/hostingenvironments/multirolepools/skus/Read | Első üzemeltetési környezetek többcélú készletek termékváltozatokat. |
-> | Műveletek | Microsoft.Web/hostingenvironments/multirolepools/usages/Read | Első üzemeltetési környezetek többcélú készletek Használatokban. |
+> | Műveletek | microsoft.web/hostingenvironments/multirolepools/skus/read | Első üzemeltetési környezetek többcélú készletek termékváltozatokat. |
+> | Műveletek | microsoft.web/hostingenvironments/multirolepools/usages/read | Első üzemeltetési környezetek többcélú készletek Használatokban. |
 > | Műveletek | Microsoft.Web/hostingEnvironments/multiRolePools/Write | Hozzon létre egy új előtérbeli címkészletet App Service Environment-környezetben, vagy egy meglévő frissítése |
-> | Műveletek | Microsoft.Web/hostingenvironments/Operations/Read | Első üzemeltetési környezetek műveleteket. |
-> | Műveletek | Microsoft.Web/hostingenvironments/outboundnetworkdependenciesendpoints/Read | A hálózati végpontok összes kimenő függőségi beolvasása. |
+> | Műveletek | microsoft.web/hostingenvironments/operations/read | Első üzemeltetési környezetek műveleteket. |
+> | Műveletek | microsoft.web/hostingenvironments/outboundnetworkdependenciesendpoints/read | A hálózati végpontok összes kimenő függőségi beolvasása. |
 > | Műveletek | Microsoft.Web/hostingEnvironments/Read | App Service-környezet tulajdonságainak beolvasása |
 > | Műveletek | Microsoft.Web/hostingEnvironments/reboot/Action | Az App Service-környezet összes gép újraindítása |
-> | Műveletek | Microsoft.Web/hostingenvironments/Resume/Action | Folytatódik a üzemeltetési környezetek. |
-> | Műveletek | Microsoft.Web/hostingenvironments/serverfarms/Read | Első üzemeltetési környezetek App Service-csomagok. |
-> | Műveletek | Microsoft.Web/hostingenvironments/Sites/Read | Első üzemeltetési környezetek webalkalmazásokat. |
-> | Műveletek | Microsoft.Web/hostingenvironments/suspend/Action | Felfüggesztheti az üzemeltetési környezetek. |
-> | Műveletek | Microsoft.Web/hostingenvironments/usages/Read | Első üzemeltetési környezetek Használatokban. |
-> | Műveletek | Microsoft.Web/hostingenvironments/workerpools/metricdefinitions/Read | Környezetek Workerpools Metrikadefiníciók beolvasása üzemeltetéséhez. |
-> | Műveletek | Microsoft.Web/hostingenvironments/workerpools/Metrics/Read | Első üzemeltetési környezetek Workerpools metrikákat. |
+> | Műveletek | microsoft.web/hostingenvironments/resume/action | Folytatódik a üzemeltetési környezetek. |
+> | Műveletek | microsoft.web/hostingenvironments/serverfarms/read | Első üzemeltetési környezetek App Service-csomagok. |
+> | Műveletek | microsoft.web/hostingenvironments/sites/read | Get Hosting Environments Web Apps. |
+> | Műveletek | microsoft.web/hostingenvironments/suspend/action | Felfüggesztheti az üzemeltetési környezetek. |
+> | Műveletek | microsoft.web/hostingenvironments/usages/read | Első üzemeltetési környezetek Használatokban. |
+> | Műveletek | microsoft.web/hostingenvironments/workerpools/metricdefinitions/read | Környezetek Workerpools Metrikadefiníciók beolvasása üzemeltetéséhez. |
+> | Műveletek | microsoft.web/hostingenvironments/workerpools/metrics/read | Első üzemeltetési környezetek Workerpools metrikákat. |
 > | Műveletek | Microsoft.Web/hostingEnvironments/workerPools/Read | App Service Environment-környezetben a Feldolgozókészletek tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/hostingenvironments/workerpools/skus/Read | Első üzemeltetési környezetek Workerpools termékváltozatokat. |
-> | Műveletek | Microsoft.Web/hostingenvironments/workerpools/usages/Read | Első üzemeltetési környezetek Workerpools Használatokban. |
+> | Műveletek | microsoft.web/hostingenvironments/workerpools/skus/read | Első üzemeltetési környezetek Workerpools termékváltozatokat. |
+> | Műveletek | microsoft.web/hostingenvironments/workerpools/usages/read | Első üzemeltetési környezetek Workerpools Használatokban. |
 > | Műveletek | Microsoft.Web/hostingEnvironments/workerPools/Write | Hozzon létre egy új Feldolgozókészlet App Service Environment-környezetben, vagy egy meglévő frissítése |
 > | Műveletek | Microsoft.Web/hostingEnvironments/Write | Egy új App Service Environment-környezet létrehozása vagy meglévő frissítése |
-> | Műveletek | Microsoft.Web/ishostingenvironmentnameavailable/Read | GET, ha az üzemeltetési környezet neve érhető el. |
-> | Műveletek | Microsoft.Web/ishostnameavailable/Read | Ellenőrizze, hogy a Hostname érhető el. |
-> | Műveletek | Microsoft.Web/isusernameavailable/Read | Ellenőrizze, hogy a felhasználónév érhető el. |
+> | Műveletek | microsoft.web/ishostingenvironmentnameavailable/read | GET, ha az üzemeltetési környezet neve érhető el. |
+> | Műveletek | microsoft.web/ishostnameavailable/read | Ellenőrizze, hogy a Hostname érhető el. |
+> | Műveletek | microsoft.web/isusernameavailable/read | Ellenőrizze, hogy a felhasználónév érhető el. |
 > | Műveletek | Microsoft.Web/listSitesAssignedToHostName/Read | Lekérése az állomásnév rendelt helyek nevét. |
-> | Műveletek | Microsoft.Web/Locations/apioperations/Read | Helyek API műveletek beolvasása. |
-> | Műveletek | Microsoft.Web/Locations/connectiongatewayinstallations/Read | Első helyek kapcsolódási átjáró telepítését. |
+> | Műveletek | microsoft.web/locations/apioperations/read | Helyek API műveletek beolvasása. |
+> | Műveletek | microsoft.web/locations/connectiongatewayinstallations/read | Első helyek kapcsolódási átjáró telepítését. |
 > | Műveletek | microsoft.web/locations/deleteVirtualNetworkOrSubnets/action | Virtuális hálózat vagy alhálózat törlése értesítés helyeket. |
-> | Műveletek | Microsoft.Web/Locations/extractapidefinitionfromwsdl/Action | Api-definíció kibontása WSDL-fájlból helyeket. |
-> | Műveletek | Microsoft.Web/Locations/listwsdlinterfaces/Action | Lista WSDL felületek helyeket. |
-> | Műveletek | Microsoft.Web/Locations/managedapis/apioperations/Read | Helyek felügyelt API-műveletek lekérése. |
+> | Műveletek | microsoft.web/locations/extractapidefinitionfromwsdl/action | Api-definíció kibontása WSDL-fájlból helyeket. |
+> | Műveletek | microsoft.web/locations/listwsdlinterfaces/action | Lista WSDL felületek helyeket. |
+> | Műveletek | microsoft.web/locations/managedapis/apioperations/read | Helyek felügyelt API-műveletek lekérése. |
 > | Műveletek | Microsoft.Web/locations/managedapis/Join/Action | Felügyelt API csatlakozik. |
-> | Műveletek | Microsoft.Web/Locations/managedapis/Read | Helyek felügyelt API-k lekérése. |
-> | Műveletek | Microsoft.Web/Operations/Read | Műveletek beolvasása. |
-> | Műveletek | Microsoft.Web/publishingusers/Read | Első közzététele a felhasználók. |
-> | Műveletek | Microsoft.Web/publishingusers/Write | A frissítés közzététele a felhasználók. |
+> | Műveletek | microsoft.web/locations/managedapis/read | Helyek felügyelt API-k lekérése. |
+> | Műveletek | microsoft.web/operations/read | Műveletek beolvasása. |
+> | Műveletek | microsoft.web/publishingusers/read | Első közzététele a felhasználók. |
+> | Műveletek | microsoft.web/publishingusers/write | A frissítés közzététele a felhasználók. |
 > | Műveletek | Microsoft.Web/recommendations/Read | Javaslatok az előfizetések listájának beolvasása. |
-> | Műveletek | Microsoft.Web/register/Action | Az előfizetés Microsoft.Web erőforrás-szolgáltató regisztrálásához. |
-> | Műveletek | Microsoft.Web/resourcehealthmetadata/Read | Resource Health metaadatainak beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/Capabilities/Read | Az App Service-csomagok képességek beolvasása. |
+> | Műveletek | microsoft.web/register/action | Az előfizetés Microsoft.Web erőforrás-szolgáltató regisztrálásához. |
+> | Műveletek | microsoft.web/resourcehealthmetadata/read | Resource Health metaadatainak beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/capabilities/read | Az App Service-csomagok képességek beolvasása. |
 > | Műveletek | Microsoft.Web/serverfarms/Delete | Egy meglévő App Service-csomag törlése |
-> | Műveletek | Microsoft.Web/serverfarms/firstpartyapps/Settings/DELETE | App Service-ben csomagok első nyilvános alkalmazások beállításainak törlése. |
-> | Műveletek | Microsoft.Web/serverfarms/firstpartyapps/Settings/Read | App Service-ben csomagok első nyilvános alkalmazások beállításainak beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/firstpartyapps/Settings/Write | Frissítés App Service-csomagok első parti alkalmazásokra vonatkozó beállítások. |
-> | Műveletek | Microsoft.Web/serverfarms/hybridconnectionnamespaces/relays/DELETE | App Service-ben csomagok hibrid kapcsolat névterek továbbítók törlése. |
+> | Műveletek | microsoft.web/serverfarms/firstpartyapps/settings/delete | App Service-ben csomagok első nyilvános alkalmazások beállításainak törlése. |
+> | Műveletek | microsoft.web/serverfarms/firstpartyapps/settings/read | App Service-ben csomagok első nyilvános alkalmazások beállításainak beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/firstpartyapps/settings/write | Frissítés App Service-csomagok első parti alkalmazásokra vonatkozó beállítások. |
+> | Műveletek | microsoft.web/serverfarms/hybridconnectionnamespaces/relays/delete | App Service-ben csomagok hibrid kapcsolat névterek továbbítók törlése. |
 > | Műveletek | Microsoft.Web/serverfarms/hybridconnectionnamespaces/relays/Read | App Service-ben csomagok hibrid kapcsolat névterek továbbítók beolvasása. |
 > | Műveletek | Microsoft.Web/serverfarms/hybridconnectionnamespaces/relays/Sites/Read | App Service-ben csomagok hibrid kapcsolat névterek továbbítók webes alkalmazások beszerzéséhez. |
-> | Műveletek | Microsoft.Web/serverfarms/hybridconnectionplanlimits/Read | App Service-ben csomagok hibrid kapcsolat szolgáltatáscsomag korlátja beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/hybridconnectionrelays/Read | App Service-ben csomagok hibrid kapcsolat továbbítók beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/metricdefinitions/Read | Az App Service-csomagok metrikai meghatározások beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/Metrics/Read | Az App Service-csomagok metrikáinak beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/operationresults/Read | Az App Service-csomagok művelet eredményeinek lekérése. |
+> | Műveletek | microsoft.web/serverfarms/hybridconnectionplanlimits/read | App Service-ben csomagok hibrid kapcsolat szolgáltatáscsomag korlátja beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/hybridconnectionrelays/read | App Service-ben csomagok hibrid kapcsolat továbbítók beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/metricdefinitions/read | Az App Service-csomagok metrikai meghatározások beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/metrics/read | Az App Service-csomagok metrikáinak beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/operationresults/read | Az App Service-csomagok művelet eredményeinek lekérése. |
 > | Műveletek | Microsoft.Web/serverfarms/Read | Az App Service-csomag tulajdonságainak beolvasása |
 > | Műveletek | Microsoft.Web/serverfarms/restartSites/Action | Indítsa újra az összes Web Apps az App Service-csomag |
-> | Műveletek | Microsoft.Web/serverfarms/Sites/Read | App Service-csomagok webalkalmazások beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/skus/Read | Az App Service-csomagok termékváltozatok beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/usages/Read | Az App Service-csomagok Usages beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/virtualnetworkconnections/Gateways/Write | Frissítse az App Service-ben csomagok virtuális hálózati kapcsolatok átjárót. |
-> | Műveletek | Microsoft.Web/serverfarms/virtualnetworkconnections/Read | Az App Service-csomagok virtuális hálózati kapcsolatok lekérése. |
-> | Műveletek | Microsoft.Web/serverfarms/virtualnetworkconnections/routes/DELETE | Törölje az App Service-ben csomagok virtuális hálózati kapcsolatok útvonalak. |
-> | Műveletek | Microsoft.Web/serverfarms/virtualnetworkconnections/routes/Read | App Service-ben csomagok virtuális hálózati kapcsolatok útvonalak beolvasása. |
-> | Műveletek | Microsoft.Web/serverfarms/virtualnetworkconnections/routes/Write | App Service-ben csomagok virtuális hálózati kapcsolatok az útvonalak frissítése. |
-> | Műveletek | Microsoft.Web/serverfarms/workers/reboot/Action | Indítsa újra az App Service-csomag feldolgozói. |
+> | Műveletek | microsoft.web/serverfarms/sites/read | App Service-csomagok webalkalmazások beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/skus/read | Az App Service-csomagok termékváltozatok beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/usages/read | Az App Service-csomagok Usages beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/virtualnetworkconnections/gateways/write | Frissítse az App Service-ben csomagok virtuális hálózati kapcsolatok átjárót. |
+> | Műveletek | microsoft.web/serverfarms/virtualnetworkconnections/read | Az App Service-csomagok virtuális hálózati kapcsolatok lekérése. |
+> | Műveletek | microsoft.web/serverfarms/virtualnetworkconnections/routes/delete | Törölje az App Service-ben csomagok virtuális hálózati kapcsolatok útvonalak. |
+> | Műveletek | microsoft.web/serverfarms/virtualnetworkconnections/routes/read | App Service-ben csomagok virtuális hálózati kapcsolatok útvonalak beolvasása. |
+> | Műveletek | microsoft.web/serverfarms/virtualnetworkconnections/routes/write | App Service-ben csomagok virtuális hálózati kapcsolatok az útvonalak frissítése. |
+> | Műveletek | microsoft.web/serverfarms/workers/reboot/action | Indítsa újra az App Service-csomag feldolgozói. |
 > | Műveletek | Microsoft.Web/serverfarms/Write | Hozzon létre egy új App Service-csomagot, vagy egy meglévő frissítése |
-> | Műveletek | Microsoft.Web/Sites/analyzecustomhostname/Read | Elemezze az egyéni állomásnevet. |
+> | Műveletek | microsoft.web/sites/analyzecustomhostname/read | Elemezze az egyéni állomásnevet. |
 > | Műveletek | Microsoft.Web/sites/applySlotConfig/Action | Webes alkalmazás tárolóhely tárolóhelyről származó konfiguráció cél egy aktuális webes alkalmazásban a alkalmazni |
 > | Műveletek | Microsoft.Web/sites/backup/Action | Hozzon létre egy új webes alkalmazás biztonsági mentése |
-> | Műveletek | Microsoft.Web/Sites/Backup/Read | Webalkalmazások biztonsági mentésének beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Backup/Write | Web Apps biztonsági másolat frissítéséhez. |
-> | Műveletek | Microsoft.Web/Sites/backups/Action | Felderíti az alkalmazás meglévő biztonsági másolatát, amely az Azure storage-ból. |
-> | Műveletek | Microsoft.Web/Sites/backups/DELETE | Delete Web Apps Backups. |
-> | Műveletek | Microsoft.Web/Sites/backups/List/Action | Lista webes alkalmazások biztonsági mentése. |
+> | Műveletek | microsoft.web/sites/backup/read | Webalkalmazások biztonsági mentésének beolvasása. |
+> | Műveletek | microsoft.web/sites/backup/write | Web Apps biztonsági másolat frissítéséhez. |
+> | Műveletek | microsoft.web/sites/backups/action | Felderíti az alkalmazás meglévő biztonsági másolatát, amely az Azure storage-ból. |
+> | Műveletek | microsoft.web/sites/backups/delete | Delete Web Apps Backups. |
+> | Műveletek | microsoft.web/sites/backups/list/action | Lista webes alkalmazások biztonsági mentése. |
 > | Műveletek | Microsoft.Web/sites/backups/Read | Egy webalkalmazás biztonsági mentése tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/Sites/backups/restore/Action | Web Apps biztonsági másolatokat állíthatja vissza. |
-> | Műveletek | Microsoft.Web/Sites/backups/Write | Frissítse a Web Apps biztonsági mentéseket. |
-> | Műveletek | Microsoft.Web/Sites/config/DELETE | Delete Web Apps Config. |
+> | Műveletek | microsoft.web/sites/backups/restore/action | Web Apps biztonsági másolatokat állíthatja vissza. |
+> | Műveletek | microsoft.web/sites/backups/write | Frissítse a Web Apps biztonsági mentéseket. |
+> | Műveletek | microsoft.web/sites/config/delete | Delete Web Apps Config. |
 > | Műveletek | Microsoft.Web/sites/config/list/Action | Webalkalmazás biztonsági bizalmas beállítások, például közzétételi hitelesítő adatok, az alkalmazásbeállítások és a kapcsolati karakterláncok listázása |
 > | Műveletek | Microsoft.Web/sites/config/Read | Webes alkalmazás konfigurációs beállításainak lekérése |
-> | Műveletek | Microsoft.Web/Sites/config/snapshots/Read | Web Apps Config pillanatképek beolvasása. |
+> | Műveletek | microsoft.web/sites/config/snapshots/read | Web Apps Config pillanatképek beolvasása. |
 > | Műveletek | Microsoft.Web/sites/config/Write | Webes alkalmazás konfigurációs beállításainak frissítése |
-> | Műveletek | Microsoft.Web/Sites/containerlogs/Action | Tároló naplóinak beolvasása zip webalkalmazás. |
-> | Műveletek | Microsoft.Web/Sites/continuouswebjobs/DELETE | Delete Web Apps Continuous Web Jobs. |
-> | Műveletek | Microsoft.Web/Sites/continuouswebjobs/Read | Webes alkalmazások folyamatos Webjobs-feladatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/continuouswebjobs/Start/Action | Indítsa el a Web Apps folyamatos Webjobs-feladatok. |
-> | Műveletek | Microsoft.Web/Sites/continuouswebjobs/STOP/Action | Webes alkalmazások folyamatos Webjobs-feladatok leállítása. |
+> | Műveletek | microsoft.web/sites/containerlogs/action | Tároló naplóinak beolvasása zip webalkalmazás. |
+> | Műveletek | microsoft.web/sites/continuouswebjobs/delete | Delete Web Apps Continuous Web Jobs. |
+> | Műveletek | microsoft.web/sites/continuouswebjobs/read | Get Web Apps Continuous Web Jobs. |
+> | Műveletek | microsoft.web/sites/continuouswebjobs/start/action | Indítsa el a Web Apps folyamatos Webjobs-feladatok. |
+> | Műveletek | microsoft.web/sites/continuouswebjobs/stop/action | Stop Web Apps Continuous Web Jobs. |
 > | Műveletek | Microsoft.Web/sites/Delete | Meglévő webes alkalmazás törlése |
-> | Műveletek | Microsoft.Web/Sites/Deployments/DELETE | Webes alkalmazások környezetet törli. |
-> | Műveletek | Microsoft.Web/Sites/Deployments/log/Read | Webes alkalmazások központi telepítések napló beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Deployments/Read | Web Apps üzemelő példányok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Deployments/Write | Web Apps frissítéstelepítések. |
-> | Műveletek | Microsoft.Web/Sites/detectors/Read | Web Apps érzékelők beolvasása. |
+> | Műveletek | microsoft.web/sites/deployments/delete | Webes alkalmazások környezetet törli. |
+> | Műveletek | microsoft.web/sites/deployments/log/read | Webes alkalmazások központi telepítések napló beolvasása. |
+> | Műveletek | microsoft.web/sites/deployments/read | Web Apps üzemelő példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/deployments/write | Web Apps frissítéstelepítések. |
+> | Műveletek | microsoft.web/sites/detectors/read | Web Apps érzékelők beolvasása. |
 > | Műveletek | microsoft.web/sites/diagnostics/analyses/execute/Action | Webes alkalmazások diagnosztikai elemzés futtatása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/analyses/Read | Webes alkalmazások diagnosztikai elemzési beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/analyses/read | Webes alkalmazások diagnosztikai elemzési beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/aspnetcore/Read | Szerezze be a webes alkalmazások diagnosztikai az ASP.NET Core-alkalmazást. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/autoheal/Read | Webes alkalmazások diagnosztikai automatikus javítás funkció beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/Deployment/Read | Webes alkalmazások diagnosztikai központi telepítő beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/Deployments/Read | Webes alkalmazások diagnosztikai üzemelő példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/autoheal/read | Webes alkalmazások diagnosztikai automatikus javítás funkció beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/deployment/read | Webes alkalmazások diagnosztikai központi telepítő beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/deployments/read | Webes alkalmazások diagnosztikai üzemelő példányok beolvasása. |
 > | Műveletek | microsoft.web/sites/diagnostics/detectors/execute/Action | Futtassa a Web Apps alkalmazások diagnosztikai detector használatával. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/detectors/Read | Webes alkalmazások diagnosztikai detector használatával kaphat. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/failedrequestsperuri/Read | Webes alkalmazások diagnosztikai sikertelen kérelmek száma az URI-t kaphat. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/frebanalysis/Read | Webes alkalmazások diagnosztikai sikertelen kérelmek Eseménytárolási elemzés lekérése. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/loganalyzer/Read | Webes alkalmazások diagnosztikai napló Analyzer beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/frebanalysis/read | Webes alkalmazások diagnosztikai sikertelen kérelmek Eseménytárolási elemzés lekérése. |
+> | Műveletek | microsoft.web/sites/diagnostics/loganalyzer/read | Webes alkalmazások diagnosztikai napló Analyzer beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/Read | Webes alkalmazások diagnosztikai kategóriák beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/runtimeavailability/Read | Webes alkalmazások diagnosztikai modul elérhetőségének beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/servicehealth/Read | Webes alkalmazások diagnosztikai szolgáltatás állapotának beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/sitecpuanalysis/Read | Webes alkalmazások diagnosztikai hely CPU elemzése beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/sitecrashes/Read | Webes alkalmazások diagnosztikai hely Szoftverleállások beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/runtimeavailability/read | Webes alkalmazások diagnosztikai modul elérhetőségének beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/servicehealth/read | Webes alkalmazások diagnosztikai szolgáltatás állapotának beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/sitecpuanalysis/read | Webes alkalmazások diagnosztikai hely CPU elemzése beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/sitecrashes/read | Webes alkalmazások diagnosztikai hely Szoftverleállások beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/sitelatency/Read | Webes alkalmazások diagnosztikai hely késés beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/sitememoryanalysis/Read | Webes alkalmazások diagnosztikai hely memória elemzés lekérése. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/siterestartsettingupdate/Read | Webes alkalmazások diagnosztikai webhely újraindítása beállítás frissítésének letöltése. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/siterestartuserinitiated/Read | Webes alkalmazások diagnosztikai webhely újraindítása felhasználó által kezdeményezett beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Diagnostics/siteswap/Read | Webes alkalmazások diagnosztikai hely felcserélés első. |
+> | Műveletek | microsoft.web/sites/diagnostics/sitememoryanalysis/read | Webes alkalmazások diagnosztikai hely memória elemzés lekérése. |
+> | Műveletek | microsoft.web/sites/diagnostics/siterestartsettingupdate/read | Webes alkalmazások diagnosztikai webhely újraindítása beállítás frissítésének letöltése. |
+> | Műveletek | microsoft.web/sites/diagnostics/siterestartuserinitiated/read | Webes alkalmazások diagnosztikai webhely újraindítása felhasználó által kezdeményezett beolvasása. |
+> | Műveletek | microsoft.web/sites/diagnostics/siteswap/read | Webes alkalmazások diagnosztikai hely felcserélés első. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/THREADCOUNT/Read | Első webes alkalmazások diagnosztikai szálak száma. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/workeravailability/Read | Webes alkalmazások diagnosztikai Workeravailability beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/Diagnostics/workerprocessrecycle/Read | Webes alkalmazások diagnosztikai feldolgozó folyamat újrahasznosítási beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/domainownershipidentifiers/Read | Web Apps tartomány tulajdonjogának azonosítók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/domainownershipidentifiers/Write | Frissítse a Web Apps tartomány tulajdonjogának azonosítók. |
-> | Műveletek | Microsoft.Web/Sites/Functions/Action | Functions-webalkalmazásokhoz. |
-> | Műveletek | Microsoft.Web/Sites/Functions/DELETE | Web Apps-függvényekre törlése. |
-> | Műveletek | Microsoft.Web/Sites/Functions/listsecrets/Action | Lista titkok Web Apps-függvényekre. |
-> | Műveletek | Microsoft.Web/Sites/Functions/masterkey/Read | Web Apps funkciók Masterkey beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Functions/Read | Web Apps-függvényekre beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Functions/token/Read | Get webes alkalmazások funkciók jogkivonat. |
-> | Műveletek | Microsoft.Web/Sites/Functions/Write | Frissítse a Web Apps-függvényekre. |
-> | Műveletek | Microsoft.Web/Sites/hostnamebindings/DELETE | Delete Web Apps Hostname Bindings. |
-> | Műveletek | Microsoft.Web/Sites/hostnamebindings/Read | Get Web Apps Hostname Bindings. |
-> | Műveletek | Microsoft.Web/Sites/hostnamebindings/Write | Update Web Apps Hostname Bindings. |
+> | Műveletek | microsoft.web/sites/domainownershipidentifiers/read | Web Apps tartomány tulajdonjogának azonosítók beolvasása. |
+> | Műveletek | microsoft.web/sites/domainownershipidentifiers/write | Frissítse a Web Apps tartomány tulajdonjogának azonosítók. |
+> | Műveletek | microsoft.web/sites/functions/action | Functions Web Apps. |
+> | Műveletek | microsoft.web/sites/functions/delete | Web Apps-függvényekre törlése. |
+> | Műveletek | microsoft.web/sites/functions/listsecrets/action | Lista titkok Web Apps-függvényekre. |
+> | Műveletek | microsoft.web/sites/functions/masterkey/read | Web Apps funkciók Masterkey beolvasása. |
+> | Műveletek | microsoft.web/sites/functions/read | Web Apps-függvényekre beolvasása. |
+> | Műveletek | microsoft.web/sites/functions/token/read | Get webes alkalmazások funkciók jogkivonat. |
+> | Műveletek | microsoft.web/sites/functions/write | Frissítse a Web Apps-függvényekre. |
+> | Műveletek | microsoft.web/sites/hostnamebindings/delete | Delete Web Apps Hostname Bindings. |
+> | Műveletek | microsoft.web/sites/hostnamebindings/read | Get Web Apps Hostname Bindings. |
+> | Műveletek | microsoft.web/sites/hostnamebindings/write | Update Web Apps Hostname Bindings. |
 > | Műveletek | Microsoft.Web/sites/hostruntime/host/_master/read | Függvényalkalmazás főkulcs felügyeleti műveletek beolvasása |
 > | Műveletek | Microsoft.Web/sites/hostruntime/host/action | Hajtsa végre a Függvényalkalmazás futásidejű művelet, például eseményindítók szinkronizálni, adja hozzá a functions, függvények meghívása, delete függvényeket stb. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnection/DELETE | Web Apps hibrid kapcsolat törlése. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnection/Read | Web Apps hibrid kapcsolat beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnection/Write | Webes alkalmazások hibrid kapcsolat frissítése. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/DELETE | Web Apps a hibrid kapcsolat névterek továbbítók törlése. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/listkeys/Action | Lista kulcsok Web Apps hibrid kapcsolat névterek továbbítók. |
+> | Műveletek | microsoft.web/sites/hybridconnection/delete | Web Apps hibrid kapcsolat törlése. |
+> | Műveletek | microsoft.web/sites/hybridconnection/read | Web Apps hibrid kapcsolat beolvasása. |
+> | Műveletek | microsoft.web/sites/hybridconnection/write | Webes alkalmazások hibrid kapcsolat frissítése. |
+> | Műveletek | microsoft.web/sites/hybridconnectionnamespaces/relays/delete | Web Apps a hibrid kapcsolat névterek továbbítók törlése. |
+> | Műveletek | microsoft.web/sites/hybridconnectionnamespaces/relays/listkeys/action | Lista kulcsok Web Apps hibrid kapcsolat névterek továbbítók. |
 > | Műveletek | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/Read | Web Apps a hibrid kapcsolat névterek továbbítók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnectionnamespaces/relays/Write | Frissítse a Web Apps a hibrid kapcsolat névterek továbbítók. |
-> | Műveletek | Microsoft.Web/Sites/hybridconnectionrelays/Read | Web Apps a hibrid kapcsolat továbbítók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Deployments/DELETE | Webes alkalmazások példányok környezetet törli. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Deployments/Read | Web Apps példányok üzemelő példányok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Extensions/log/Read | Web Apps példányok bővítmények napló beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Extensions/Read | Web Apps példányok kiterjesztések beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Processes/DELETE | Törölje a Web Apps példányok folyamatokat. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Processes/Read | Web Apps példányok folyamatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Processes/threads/Read | Web Apps példányok folyamatok szálat kap. |
-> | Műveletek | Microsoft.Web/Sites/Instances/Read | Web Apps-példány beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/listsyncfunctiontriggerstatus/Action | Lista szinkronizálási függvény Trigger állapota Web Apps. |
+> | Műveletek | microsoft.web/sites/hybridconnectionnamespaces/relays/write | Frissítse a Web Apps a hibrid kapcsolat névterek továbbítók. |
+> | Műveletek | microsoft.web/sites/hybridconnectionrelays/read | Web Apps a hibrid kapcsolat továbbítók beolvasása. |
+> | Műveletek | microsoft.web/sites/instances/deployments/delete | Webes alkalmazások példányok környezetet törli. |
+> | Műveletek | microsoft.web/sites/instances/deployments/read | Web Apps példányok üzemelő példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/instances/extensions/log/read | Web Apps példányok bővítmények napló beolvasása. |
+> | Műveletek | microsoft.web/sites/instances/extensions/read | Web Apps példányok kiterjesztések beolvasása. |
+> | Műveletek | microsoft.web/sites/instances/processes/delete | Törölje a Web Apps példányok folyamatokat. |
+> | Műveletek | microsoft.web/sites/instances/processes/read | Web Apps példányok folyamatok beolvasása. |
+> | Műveletek | microsoft.web/sites/instances/processes/threads/read | Web Apps példányok folyamatok szálat kap. |
+> | Műveletek | microsoft.web/sites/instances/read | Web Apps-példány beolvasása. |
+> | Műveletek | microsoft.web/sites/listsyncfunctiontriggerstatus/action | Lista szinkronizálási függvény Trigger állapota Web Apps. |
 > | Műveletek | Microsoft.Web/Sites/metricdefinitions/Read | Web Apps Metrikadefiníciók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/Metrics/Read | Webes alkalmazások metrikáinak beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/metricsdefinitions/Read | Web Apps metrikai meghatározások beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/migratemysql/Action | MySql Web Apps alkalmazások áttelepítése. |
-> | Műveletek | Microsoft.Web/Sites/migratemysql/Read | Első webes alkalmazások Migrálása a MySql. |
-> | Műveletek | Microsoft.Web/Sites/networktrace/Action | Hálózati nyomkövetési webalkalmazásokat. |
-> | Műveletek | Microsoft.Web/Sites/newpassword/Action | Newpassword Web Apps. |
-> | Műveletek | Microsoft.Web/Sites/operationresults/Read | Web Apps művelet eredményeinek lekérése. |
-> | Műveletek | Microsoft.Web/Sites/Operations/Read | Web Apps-műveletek lekérése. |
+> | Műveletek | microsoft.web/sites/metrics/read | Webes alkalmazások metrikáinak beolvasása. |
+> | Műveletek | microsoft.web/sites/metricsdefinitions/read | Web Apps metrikai meghatározások beolvasása. |
+> | Műveletek | microsoft.web/sites/migratemysql/action | Migrate MySql Web Apps. |
+> | Műveletek | microsoft.web/sites/migratemysql/read | Első webes alkalmazások Migrálása a MySql. |
+> | Műveletek | microsoft.web/sites/networktrace/action | Network Trace Web Apps. |
+> | Műveletek | microsoft.web/sites/newpassword/action | Newpassword Web Apps. |
+> | Műveletek | microsoft.web/sites/operationresults/read | Web Apps művelet eredményeinek lekérése. |
+> | Műveletek | microsoft.web/sites/operations/read | Web Apps-műveletek lekérése. |
 > | Műveletek | Microsoft.Web/Sites/perfcounters/Read | Web Apps teljesítményszámlálók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/premieraddons/DELETE | Web Apps a Premier szintű bővítmények törlése. |
-> | Műveletek | Microsoft.Web/Sites/premieraddons/Read | Web Apps a Premier szintű bővítmények beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/premieraddons/Write | Web Apps a Premier szintű bővítmények frissítése. |
-> | Műveletek | Microsoft.Web/Sites/privateaccess/Read | Kaphat privát hozzáférést lehetővé tétele és engedélyezett virtuális hálózatok, a hely eléréséhez. |
-> | Műveletek | Microsoft.Web/Sites/Processes/Read | Webes alkalmazásokat folyamatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/publiccertificates/DELETE | Web Apps nyilvános tanúsítványok törlése. |
-> | Műveletek | Microsoft.Web/Sites/publiccertificates/Read | Web Apps nyilvános tanúsítványok megszerzéséhez. |
-> | Műveletek | Microsoft.Web/Sites/publiccertificates/Write | Web Apps nyilvános tanúsítványok frissítése. |
+> | Műveletek | microsoft.web/sites/premieraddons/delete | Web Apps a Premier szintű bővítmények törlése. |
+> | Műveletek | microsoft.web/sites/premieraddons/read | Web Apps a Premier szintű bővítmények beolvasása. |
+> | Műveletek | microsoft.web/sites/premieraddons/write | Web Apps a Premier szintű bővítmények frissítése. |
+> | Műveletek | microsoft.web/sites/privateaccess/read | Kaphat privát hozzáférést lehetővé tétele és engedélyezett virtuális hálózatok, a hely eléréséhez. |
+> | Műveletek | microsoft.web/sites/processes/read | Webes alkalmazásokat folyamatok beolvasása. |
+> | Műveletek | microsoft.web/sites/publiccertificates/delete | Web Apps nyilvános tanúsítványok törlése. |
+> | Műveletek | microsoft.web/sites/publiccertificates/read | Web Apps nyilvános tanúsítványok megszerzéséhez. |
+> | Műveletek | microsoft.web/sites/publiccertificates/write | Web Apps nyilvános tanúsítványok frissítése. |
 > | Műveletek | Microsoft.Web/sites/publish/Action | A webalkalmazás közzététele |
 > | Műveletek | Microsoft.Web/sites/publishxml/Action | Közzétételi profil XML-fájlban egy webalkalmazás beolvasása |
-> | Műveletek | Microsoft.Web/Sites/publishxml/Read | Web Apps-alkalmazások közzététele XML beolvasása. |
+> | Műveletek | microsoft.web/sites/publishxml/read | Web Apps-alkalmazások közzététele XML beolvasása. |
 > | Műveletek | Microsoft.Web/sites/Read | Webes alkalmazás tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/Sites/recommendationhistory/Read | Web Apps javaslat előzmények beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/recommendations/disable/Action | Tiltsa le a Web Apps javaslatok. |
+> | Műveletek | microsoft.web/sites/recommendationhistory/read | Web Apps javaslat előzmények beolvasása. |
+> | Műveletek | microsoft.web/sites/recommendations/disable/action | Tiltsa le a Web Apps javaslatok. |
 > | Műveletek | Microsoft.Web/sites/recommendations/Read | A web app javaslatok listájának beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/RECOVER/Action | Recover Web Apps. |
+> | Műveletek | microsoft.web/sites/recover/action | Recover Web Apps. |
 > | Műveletek | Microsoft.Web/sites/resetSlotConfig/Action | Webalkalmazás konfigurációjának visszaállítása |
-> | Műveletek | Microsoft.Web/Sites/resourcehealthmetadata/Read | Web Apps-erőforrások állapotának metaadatainak beolvasása. |
+> | Műveletek | microsoft.web/sites/resourcehealthmetadata/read | Web Apps-erőforrások állapotának metaadatainak beolvasása. |
 > | Műveletek | Microsoft.Web/sites/restart/Action | Webalkalmazást indíthat újra |
-> | Műveletek | Microsoft.Web/Sites/restore/Read | Webes alkalmazások visszaállítása beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/restore/Write | Webes alkalmazások visszaállítása. |
-> | Műveletek | Microsoft.Web/Sites/restorefrombackupblob/Action | Webalkalmazás visszaállítása biztonsági mentési Blobból. |
-> | Műveletek | Microsoft.Web/Sites/restorefromdeletedwebapp/Action | Vissza a Web Apps, az alkalmazás törlése. |
-> | Műveletek | Microsoft.Web/Sites/restoresnapshot/Action | Állítsa vissza a Web Apps pillanatképeket. |
-> | Műveletek | Microsoft.Web/Sites/siteextensions/DELETE | Web Apps Webhelybővítmények törlése. |
+> | Műveletek | microsoft.web/sites/restore/read | Webes alkalmazások visszaállítása beolvasása. |
+> | Műveletek | microsoft.web/sites/restore/write | Webes alkalmazások visszaállítása. |
+> | Műveletek | microsoft.web/sites/restorefrombackupblob/action | Webalkalmazás visszaállítása biztonsági mentési Blobból. |
+> | Műveletek | microsoft.web/sites/restorefromdeletedwebapp/action | Vissza a Web Apps, az alkalmazás törlése. |
+> | Műveletek | microsoft.web/sites/restoresnapshot/action | Állítsa vissza a Web Apps pillanatképeket. |
+> | Műveletek | microsoft.web/sites/siteextensions/delete | Delete Web Apps Site Extensions. |
 > | Műveletek | Microsoft.Web/Sites/siteextensions/Read | Web Apps Webhelybővítmények beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/siteextensions/Write | Web Apps bővítmények frissítése. |
-> | Műveletek | Microsoft.Web/Sites/slots/analyzecustomhostname/Read | Első webes alkalmazások tárhelyek elemzése egyéni állomásnevet. |
+> | Műveletek | microsoft.web/sites/slots/analyzecustomhostname/read | Get Web Apps Slots Analyze Custom Hostname. |
 > | Műveletek | Microsoft.Web/sites/slots/applySlotConfig/Action | Webes alkalmazás tárolóhely tárolóhelyről származó konfiguráció cél a jelenlegi tárolóhelyen megadott a alkalmazni. |
 > | Műveletek | Microsoft.Web/sites/slots/backup/Action | Hozzon létre új webes alkalmazás tárolóhely biztonsági mentést. |
-> | Műveletek | Microsoft.Web/Sites/slots/Backup/Read | Webalkalmazások biztonsági mentésének pontok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Backup/Write | Webes alkalmazások tárhelyek biztonsági másolat frissítéséhez. |
-> | Műveletek | Microsoft.Web/Sites/slots/backups/Action | Web Apps tárhelyek biztonsági másolatok felderítése. |
-> | Műveletek | Microsoft.Web/Sites/slots/backups/DELETE | Web Apps tárhelyek biztonsági másolatainak törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/backups/List/Action | Lista webes alkalmazások pontok biztonsági mentése. |
+> | Műveletek | microsoft.web/sites/slots/backup/read | Webalkalmazások biztonsági mentésének pontok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/backup/write | Webes alkalmazások tárhelyek biztonsági másolat frissítéséhez. |
+> | Műveletek | microsoft.web/sites/slots/backups/action | Web Apps tárhelyek biztonsági másolatok felderítése. |
+> | Műveletek | microsoft.web/sites/slots/backups/delete | Web Apps tárhelyek biztonsági másolatainak törlése. |
+> | Műveletek | microsoft.web/sites/slots/backups/list/action | Lista webes alkalmazások pontok biztonsági mentése. |
 > | Műveletek | Microsoft.Web/sites/slots/backups/Read | A webalkalmazás tárolóhelyeinek biztonsági másolat tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/Sites/slots/backups/restore/Action | Web Apps tárhelyek biztonsági másolatokat állíthatja vissza. |
-> | Műveletek | Microsoft.Web/Sites/slots/config/DELETE | Törölje a Web Apps tárhelyek Config. |
+> | Műveletek | microsoft.web/sites/slots/backups/restore/action | Web Apps tárhelyek biztonsági másolatokat állíthatja vissza. |
+> | Műveletek | microsoft.web/sites/slots/config/delete | Törölje a Web Apps tárhelyek Config. |
 > | Műveletek | Microsoft.Web/sites/slots/config/list/Action | Webes alkalmazás tárolóhely biztonsági bizalmas beállítások, például közzétételi hitelesítő adatok, az alkalmazásbeállítások és a kapcsolati karakterláncok listázása |
 > | Műveletek | Microsoft.Web/sites/slots/config/Read | Webes alkalmazás a tárhely konfigurációja beállításainak beolvasása |
 > | Műveletek | Microsoft.Web/sites/slots/config/Write | Webes alkalmazás pont konfigurációs beállításainak frissítése |
-> | Műveletek | Microsoft.Web/Sites/slots/containerlogs/Action | Tároló naplóinak beolvasása zip webes alkalmazás üzembe helyezési pont. |
-> | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/DELETE | Web Apps tárhelyek folyamatos Webjobs-feladatok törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/Read | Web Apps tárhelyek folyamatos Webjobs-feladatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/Start/Action | Indítsa el a Web Apps tárhelyek folyamatos Webjobs-feladatok. |
-> | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/STOP/Action | Web Apps tárhelyek folyamatos Webjobs-feladatok leállítása. |
+> | Műveletek | microsoft.web/sites/slots/containerlogs/action | Tároló naplóinak beolvasása zip webes alkalmazás üzembe helyezési pont. |
+> | Műveletek | microsoft.web/sites/slots/continuouswebjobs/delete | Delete Web Apps Slots Continuous Web Jobs. |
+> | Műveletek | Microsoft.Web/Sites/slots/continuouswebjobs/Read | Get Web Apps Slots Continuous Web Jobs. |
+> | Műveletek | microsoft.web/sites/slots/continuouswebjobs/start/action | Indítsa el a Web Apps tárhelyek folyamatos Webjobs-feladatok. |
+> | Műveletek | microsoft.web/sites/slots/continuouswebjobs/stop/action | Web Apps tárhelyek folyamatos Webjobs-feladatok leállítása. |
 > | Műveletek | Microsoft.Web/sites/slots/Delete | Törölje a meglévő webes alkalmazás tárhelyek |
-> | Műveletek | Microsoft.Web/Sites/slots/Deployments/DELETE | Törölje a Web Apps tárolóhelyek központi telepítések. |
-> | Műveletek | Microsoft.Web/Sites/slots/Deployments/log/Read | Web Apps tárolóhelyek központi telepítések napló beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Deployments/Read | Web Apps tárhelyek üzemelő példányok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Deployments/Write | Web Apps tárhelyek frissítéstelepítések. |
-> | Műveletek | Microsoft.Web/Sites/slots/detectors/Read | Web Apps tárhelyek érzékelők beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/deployments/delete | Törölje a Web Apps tárolóhelyek központi telepítések. |
+> | Műveletek | microsoft.web/sites/slots/deployments/log/read | Web Apps tárolóhelyek központi telepítések napló beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/deployments/read | Web Apps tárhelyek üzemelő példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/deployments/write | Web Apps tárhelyek frissítéstelepítések. |
+> | Műveletek | microsoft.web/sites/slots/detectors/read | Web Apps tárhelyek érzékelők beolvasása. |
 > | Műveletek | microsoft.web/sites/slots/diagnostics/analyses/execute/Action | Web Apps tárhelyek diagnosztikai elemzés futtatása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/analyses/Read | Web Apps tárhelyek diagnosztikai elemzési beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/analyses/read | Web Apps tárhelyek diagnosztikai elemzési beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/aspnetcore/Read | Szerezze be a Web Apps tárhelyek diagnosztikai az ASP.NET Core-alkalmazás. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/autoheal/Read | Web Apps tárhelyek diagnosztika automatikus javítás funkció beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/Deployment/Read | Web Apps tárhelyek diagnosztikai központi telepítő beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/Deployments/Read | Web Apps tárhelyek diagnosztikai üzemelő példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/autoheal/read | Web Apps tárhelyek diagnosztika automatikus javítás funkció beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/deployment/read | Web Apps tárhelyek diagnosztikai központi telepítő beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/deployments/read | Web Apps tárhelyek diagnosztikai üzemelő példányok beolvasása. |
 > | Műveletek | microsoft.web/sites/slots/diagnostics/detectors/execute/Action | Futtassa a Web Apps tárhelyek diagnosztikai detector használatával. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/detectors/Read | Web Apps tárhelyek diagnosztikai detector használatával kaphat. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/frebanalysis/Read | Web Apps tárhelyek diagnosztikai sikertelen kérelmek Eseménytárolási elemzési beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/frebanalysis/read | Web Apps tárhelyek diagnosztikai sikertelen kérelmek Eseménytárolási elemzési beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/loganalyzer/Read | Webes alkalmazások tárhelyek diagnosztikai napló Analyzer beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/Read | Web Apps tárhelyek Diagnostics beszerzése. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/runtimeavailability/Read | Web Apps tárhelyek diagnosztikai modul elérhetőségének beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/servicehealth/Read | Webes alkalmazások tárhelyek diagnosztikai szolgáltatásállapot beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/sitecpuanalysis/Read | Webes alkalmazások tárhelyek diagnosztikai hely CPU elemzése beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/sitecrashes/Read | Web Apps tárhelyek diagnosztikai hely Szoftverleállások beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/runtimeavailability/read | Web Apps tárhelyek diagnosztikai modul elérhetőségének beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/servicehealth/read | Webes alkalmazások tárhelyek diagnosztikai szolgáltatásállapot beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/sitecpuanalysis/read | Webes alkalmazások tárhelyek diagnosztikai hely CPU elemzése beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/sitecrashes/read | Web Apps tárhelyek diagnosztikai hely Szoftverleállások beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/sitelatency/Read | Web Apps tárhelyek diagnosztikai hely késés beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/sitememoryanalysis/Read | Web Apps tárhelyek diagnosztikai hely memória Analysis beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/siterestartsettingupdate/Read | Webes alkalmazások tárhelyek diagnosztikai webhely újraindítása beállítás frissítésének letöltése. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/siterestartuserinitiated/Read | Webes alkalmazások tárhelyek diagnosztikai webhely újraindítása felhasználó által kezdeményezett beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/siteswap/Read | Web Apps tárhelyek diagnosztikai hely lapozófájl-kapacitás beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/sitememoryanalysis/read | Web Apps tárhelyek diagnosztikai hely memória Analysis beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/siterestartsettingupdate/read | Webes alkalmazások tárhelyek diagnosztikai webhely újraindítása beállítás frissítésének letöltése. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/siterestartuserinitiated/read | Webes alkalmazások tárhelyek diagnosztikai webhely újraindítása felhasználó által kezdeményezett beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/diagnostics/siteswap/read | Web Apps tárhelyek diagnosztikai hely lapozófájl-kapacitás beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/THREADCOUNT/Read | Első webes alkalmazások tárhelyek diagnosztikai szálak száma. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/workeravailability/Read | Web Apps tárhelyek diagnosztikai Workeravailability beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/Diagnostics/workerprocessrecycle/Read | Web Apps tárhelyek diagnosztikai munkavégző folyamat újrahasznosítását beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/domainownershipidentifiers/Read | Webes alkalmazások tárhelyek tartomány tulajdonjogának azonosítók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Functions/Read | Web Apps tárhelyek funkciók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/hostnamebindings/DELETE | Delete Web Apps Slots Hostname Bindings. |
-> | Műveletek | Microsoft.Web/Sites/slots/hostnamebindings/Read | Get Web Apps Slots Hostname Bindings. |
-> | Műveletek | Microsoft.Web/Sites/slots/hostnamebindings/Write | Update Web Apps Slots Hostname Bindings. |
-> | Műveletek | Microsoft.Web/Sites/slots/hybridconnection/DELETE | Web Apps tárhelyek hibrid kapcsolat törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/hybridconnection/Read | Web Apps tárhelyek hibrid kapcsolat beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/hybridconnection/Write | Webes alkalmazások tárhelyek hibrid kapcsolat frissítése. |
-> | Műveletek | Microsoft.Web/Sites/slots/hybridconnectionnamespaces/relays/DELETE | Web Apps tárhelyek hibrid kapcsolat névterek továbbítók törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/hybridconnectionnamespaces/relays/Write | Frissítse a Web Apps tárhelyek hibrid kapcsolat névterek továbbítók. |
-> | Műveletek | Microsoft.Web/Sites/slots/hybridconnectionrelays/Read | Web Apps tárhelyek hibrid kapcsolat továbbítók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Instances/Deployments/Read | Web Apps tárhelyek példányok üzemelő példányok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Instances/Processes/DELETE | Törölje a Web Apps tárhelyek példányok folyamatokat. |
-> | Műveletek | Microsoft.Web/Sites/slots/Instances/Processes/Read | Web Apps tárhelyek példányok folyamatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Instances/Read | Web Apps tárhelyek példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/domainownershipidentifiers/read | Webes alkalmazások tárhelyek tartomány tulajdonjogának azonosítók beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/functions/read | Web Apps tárhelyek funkciók beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/hostnamebindings/delete | Delete Web Apps Slots Hostname Bindings. |
+> | Műveletek | microsoft.web/sites/slots/hostnamebindings/read | Get Web Apps Slots Hostname Bindings. |
+> | Műveletek | microsoft.web/sites/slots/hostnamebindings/write | Update Web Apps Slots Hostname Bindings. |
+> | Műveletek | microsoft.web/sites/slots/hybridconnection/delete | Web Apps tárhelyek hibrid kapcsolat törlése. |
+> | Műveletek | microsoft.web/sites/slots/hybridconnection/read | Web Apps tárhelyek hibrid kapcsolat beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/hybridconnection/write | Webes alkalmazások tárhelyek hibrid kapcsolat frissítése. |
+> | Műveletek | microsoft.web/sites/slots/hybridconnectionnamespaces/relays/delete | Web Apps tárhelyek hibrid kapcsolat névterek továbbítók törlése. |
+> | Műveletek | microsoft.web/sites/slots/hybridconnectionnamespaces/relays/write | Frissítse a Web Apps tárhelyek hibrid kapcsolat névterek továbbítók. |
+> | Műveletek | microsoft.web/sites/slots/hybridconnectionrelays/read | Web Apps tárhelyek hibrid kapcsolat továbbítók beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/instances/deployments/read | Web Apps tárhelyek példányok üzemelő példányok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/instances/processes/delete | Törölje a Web Apps tárhelyek példányok folyamatokat. |
+> | Műveletek | microsoft.web/sites/slots/instances/processes/read | Web Apps tárhelyek példányok folyamatok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/instances/read | Web Apps tárhelyek példányok beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/metricdefinitions/Read | Web Apps tárhelyek metrikai meghatározások beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/Metrics/Read | Web Apps tárhelyek metrikáinak beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/migratemysql/Read | Első webes alkalmazások pontok áttelepítése a MySql. |
-> | Műveletek | Microsoft.Web/Sites/slots/networktrace/Action | Hálózati nyomkövetési Web Apps tárolóhelyek. |
-> | Műveletek | Microsoft.Web/Sites/slots/newpassword/Action | Newpassword Web Apps tárolóhelyek. |
-> | Műveletek | Microsoft.Web/Sites/slots/operationresults/Read | Web Apps tárhelyek művelet eredményeinek lekérése. |
-> | Műveletek | Microsoft.Web/Sites/slots/Operations/Read | Web Apps tárhelyek műveletek beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/perfcounters/Read | Web Apps tárhelyek teljesítményszámlálók beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/metrics/read | Web Apps tárhelyek metrikáinak beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/migratemysql/read | Első webes alkalmazások pontok áttelepítése a MySql. |
+> | Műveletek | microsoft.web/sites/slots/networktrace/action | Hálózati nyomkövetési Web Apps tárolóhelyek. |
+> | Műveletek | microsoft.web/sites/slots/newpassword/action | Newpassword Web Apps tárolóhelyek. |
+> | Műveletek | microsoft.web/sites/slots/operationresults/read | Web Apps tárhelyek művelet eredményeinek lekérése. |
+> | Műveletek | microsoft.web/sites/slots/operations/read | Web Apps tárhelyek műveletek beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/perfcounters/read | Web Apps tárhelyek teljesítményszámlálók beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/phplogging/Read | Web Apps tárhelyek Phplogging beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/premieraddons/DELETE | Web Apps tárhelyek Premier szintű bővítmények törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/premieraddons/Read | Web Apps tárhelyek Premier szintű bővítmények beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/premieraddons/Write | Web Apps tárhelyek Premier szintű bővítmények frissítése. |
-> | Műveletek | Microsoft.Web/Sites/slots/publiccertificates/DELETE | Webes alkalmazások tárolóhely nyilvános tanúsítványok törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/publiccertificates/Read | Webes alkalmazások tárolóhely nyilvános tanúsítványok megszerzéséhez. |
-> | Műveletek | Microsoft.Web/Sites/slots/publiccertificates/Write | Hozzon létre vagy nem frissíthető a Web Apps tárolóhely nyilvános tanúsítványokat. |
+> | Műveletek | microsoft.web/sites/slots/premieraddons/delete | Web Apps tárhelyek Premier szintű bővítmények törlése. |
+> | Műveletek | microsoft.web/sites/slots/premieraddons/read | Web Apps tárhelyek Premier szintű bővítmények beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/premieraddons/write | Web Apps tárhelyek Premier szintű bővítmények frissítése. |
+> | Műveletek | microsoft.web/sites/slots/publiccertificates/delete | Webes alkalmazások tárolóhely nyilvános tanúsítványok törlése. |
+> | Műveletek | microsoft.web/sites/slots/publiccertificates/read | Webes alkalmazások tárolóhely nyilvános tanúsítványok megszerzéséhez. |
+> | Műveletek | microsoft.web/sites/slots/publiccertificates/write | Hozzon létre vagy nem frissíthető a Web Apps tárolóhely nyilvános tanúsítványokat. |
 > | Műveletek | Microsoft.Web/sites/slots/publish/Action | A Web App tárolóhelyet közzététele |
 > | Műveletek | Microsoft.Web/sites/slots/publishxml/Action | Közzétételi profil XML-fájlban webes alkalmazás üzembe helyezési pont lekérése |
 > | Műveletek | Microsoft.Web/sites/slots/Read | A webes alkalmazás üzembe helyezési pont tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Web/Sites/slots/RECOVER/Action | Web Apps tárhelyek helyre. |
+> | Műveletek | microsoft.web/sites/slots/recover/action | Web Apps tárhelyek helyre. |
 > | Műveletek | Microsoft.Web/sites/slots/resetSlotConfig/Action | Webalkalmazás konfigurációjának tárolóhely alaphelyzetbe állítása |
-> | Műveletek | Microsoft.Web/Sites/slots/resourcehealthmetadata/Read | Webes alkalmazások tárhelyek Resource Health metaadatainak beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/resourcehealthmetadata/read | Webes alkalmazások tárhelyek Resource Health metaadatainak beolvasása. |
 > | Műveletek | Microsoft.Web/sites/slots/restart/Action | Indítsa újra a Web App tárolóhelyet |
-> | Műveletek | Microsoft.Web/Sites/slots/restore/Read | Web Apps tárhelyek visszaállítási beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/restore/Write | Webalkalmazások alkalmazások pontjainak visszaállítása. |
-> | Műveletek | Microsoft.Web/Sites/slots/restorefrombackupblob/Action | Web Apps Slot visszaállítani a biztonsági mentési Blob. |
-> | Műveletek | Microsoft.Web/Sites/slots/restorefromdeletedwebapp/Action | Webalkalmazás tárolóhelyeinek vissza az alkalmazás törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/restoresnapshot/Action | Állítsa vissza a Web Apps tárhelyek pillanatképeket. |
-> | Műveletek | Microsoft.Web/Sites/slots/siteextensions/DELETE | Web Apps tárhelyek Webhelybővítmények törlése. |
+> | Műveletek | microsoft.web/sites/slots/restore/read | Web Apps tárhelyek visszaállítási beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/restore/write | Webalkalmazások alkalmazások pontjainak visszaállítása. |
+> | Műveletek | microsoft.web/sites/slots/restorefrombackupblob/action | Web Apps Slot visszaállítani a biztonsági mentési Blob. |
+> | Műveletek | microsoft.web/sites/slots/restorefromdeletedwebapp/action | Webalkalmazás tárolóhelyeinek vissza az alkalmazás törlése. |
+> | Műveletek | microsoft.web/sites/slots/restoresnapshot/action | Állítsa vissza a Web Apps tárhelyek pillanatképeket. |
+> | Műveletek | microsoft.web/sites/slots/siteextensions/delete | Delete Web Apps Slots Site Extensions. |
 > | Műveletek | Microsoft.Web/Sites/slots/siteextensions/Read | Web Apps tárhelyek Webhelybővítmények beolvasása. |
 > | Műveletek | Microsoft.Web/Sites/slots/siteextensions/Write | Web Apps tárhelyek bővítmények frissítése. |
 > | Műveletek | Microsoft.Web/sites/slots/slotsdiffs/Action | Első konfiguráció web app és a tárhelyek közötti különbségek |
 > | Műveletek | Microsoft.Web/sites/slots/slotsswap/Action | Webalkalmazás üzembehelyezési pontok cseréje |
-> | Műveletek | Microsoft.Web/Sites/slots/snapshots/Read | Web Apps tárhelyek pillanatképek beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/snapshots/read | Web Apps tárhelyek pillanatképek beolvasása. |
 > | Műveletek | Microsoft.Web/sites/slots/sourcecontrols/Delete | Webes alkalmazás tárolóhely forrás a konfigurációs beállítások törlése |
 > | Műveletek | Microsoft.Web/sites/slots/sourcecontrols/Read | Webes alkalmazás tárolóhely verziókövetési konfiguráció beállításainak beolvasása |
 > | Műveletek | Microsoft.Web/sites/slots/sourcecontrols/Write | Webes alkalmazás tárolóhely forrás a konfigurációs beállítások frissítése |
 > | Műveletek | Microsoft.Web/sites/slots/start/Action | Indítsa el a Web App tárolóhelyet |
 > | Műveletek | Microsoft.Web/sites/slots/stop/Action | Állítsa le a webes alkalmazás tárolóhelyet |
-> | Műveletek | Microsoft.Web/Sites/slots/Sync/Action | Szinkronizálási Web Apps tárolóhelyek. |
-> | Műveletek | Microsoft.Web/Sites/slots/triggeredwebjobs/DELETE | Web Apps tárhelyek aktivált webjobs-feladatok törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/triggeredwebjobs/Read | Web Apps tárhelyek aktivált webjobs-feladatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/triggeredwebjobs/Run/Action | Web Apps tárhelyek aktivált webjobs-feladatok futtatásához. |
-> | Műveletek | Microsoft.Web/Sites/slots/usages/Read | Web Apps tárhelyek Usages beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/slots/virtualnetworkconnections/DELETE | Web Apps tárolóhelyek virtuális hálózati kapcsolatok törlése. |
-> | Műveletek | Microsoft.Web/Sites/slots/virtualnetworkconnections/Gateways/Write | Web Apps tárolóhelyek virtuális hálózati kapcsolatok átjárók frissítése. |
-> | Műveletek | Microsoft.Web/Sites/slots/virtualnetworkconnections/Read | Web Apps tárolóhelyek virtuális hálózati kapcsolatok lekérése. |
-> | Műveletek | Microsoft.Web/Sites/slots/virtualnetworkconnections/Write | Web Apps tárolóhelyek virtuális hálózati kapcsolatának frissítése. |
+> | Műveletek | microsoft.web/sites/slots/sync/action | Szinkronizálási Web Apps tárolóhelyek. |
+> | Műveletek | microsoft.web/sites/slots/triggeredwebjobs/delete | Web Apps tárhelyek aktivált webjobs-feladatok törlése. |
+> | Műveletek | microsoft.web/sites/slots/triggeredwebjobs/read | Web Apps tárhelyek aktivált webjobs-feladatok beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/triggeredwebjobs/run/action | Web Apps tárhelyek aktivált webjobs-feladatok futtatásához. |
+> | Műveletek | microsoft.web/sites/slots/usages/read | Web Apps tárhelyek Usages beolvasása. |
+> | Műveletek | microsoft.web/sites/slots/virtualnetworkconnections/delete | Web Apps tárolóhelyek virtuális hálózati kapcsolatok törlése. |
+> | Műveletek | microsoft.web/sites/slots/virtualnetworkconnections/gateways/write | Web Apps tárolóhelyek virtuális hálózati kapcsolatok átjárók frissítése. |
+> | Műveletek | microsoft.web/sites/slots/virtualnetworkconnections/read | Web Apps tárolóhelyek virtuális hálózati kapcsolatok lekérése. |
+> | Műveletek | microsoft.web/sites/slots/virtualnetworkconnections/write | Web Apps tárolóhelyek virtuális hálózati kapcsolatának frissítése. |
 > | Műveletek | Microsoft.Web/Sites/slots/webjobs/Read | Web Apps tárhelyek webjobs-feladatok beolvasása. |
 > | Műveletek | Microsoft.Web/sites/slots/Write | Webes alkalmazás új tárhely létrehozása vagy egy meglévő frissítése |
 > | Műveletek | Microsoft.Web/sites/slotsdiffs/Action | Első konfiguráció web app és a tárhelyek közötti különbségek |
 > | Műveletek | Microsoft.Web/sites/slotsswap/Action | Webalkalmazás üzembehelyezési pontok cseréje |
-> | Műveletek | Microsoft.Web/Sites/snapshots/Read | Web Apps pillanatképek beolvasása. |
+> | Műveletek | microsoft.web/sites/snapshots/read | Web Apps pillanatképek beolvasása. |
 > | Műveletek | Microsoft.Web/sites/sourcecontrols/Delete | Webes alkalmazás forrás a konfigurációs beállítások törlése |
 > | Műveletek | Microsoft.Web/sites/sourcecontrols/Read | Webes alkalmazás verziókövetési konfiguráció beállításainak beolvasása |
 > | Műveletek | Microsoft.Web/sites/sourcecontrols/Write | Webes alkalmazás forrás a konfigurációs beállítások frissítése |
 > | Műveletek | Microsoft.Web/sites/start/Action | Webalkalmazás indítása |
 > | Műveletek | Microsoft.Web/sites/stop/Action | Webalkalmazás leállítása |
-> | Műveletek | Microsoft.Web/Sites/Sync/Action | Sync Web Apps. |
-> | Műveletek | Microsoft.Web/Sites/syncfunctiontriggers/Action | A Web Apps szinkronizálása a függvény eseményindítóit. |
-> | Műveletek | Microsoft.Web/Sites/triggeredwebjobs/DELETE | Web Apps aktivált webjobs-feladatok törlése. |
+> | Műveletek | microsoft.web/sites/sync/action | Sync Web Apps. |
+> | Műveletek | microsoft.web/sites/syncfunctiontriggers/action | A Web Apps szinkronizálása a függvény eseményindítóit. |
+> | Műveletek | microsoft.web/sites/triggeredwebjobs/delete | Web Apps aktivált webjobs-feladatok törlése. |
 > | Műveletek | Microsoft.Web/Sites/triggeredwebjobs/history/Read | Web Apps aktivált webjobs-feladatok előzményeinek beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/triggeredwebjobs/Read | Web Apps aktivált webjobs-feladatok beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/triggeredwebjobs/Run/Action | Web Apps aktivált webjobs-feladatok futtatásához. |
-> | Műveletek | Microsoft.Web/Sites/usages/Read | Web Apps Usages beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/virtualnetworkconnections/DELETE | Web Apps virtuális hálózati kapcsolatok törlése. |
-> | Műveletek | Microsoft.Web/Sites/virtualnetworkconnections/Gateways/Read | Web Apps virtuális hálózati kapcsolatok átjárók beolvasása. |
-> | Műveletek | Microsoft.Web/Sites/virtualnetworkconnections/Gateways/Write | Web Apps virtuális hálózati kapcsolatok átjárók frissítése. |
-> | Műveletek | Microsoft.Web/Sites/virtualnetworkconnections/Read | Web Apps virtuális hálózati kapcsolatok lekérése. |
-> | Műveletek | Microsoft.Web/Sites/virtualnetworkconnections/Write | Web Apps virtuális hálózati kapcsolatának frissítése. |
+> | Műveletek | microsoft.web/sites/triggeredwebjobs/read | Web Apps aktivált webjobs-feladatok beolvasása. |
+> | Műveletek | microsoft.web/sites/triggeredwebjobs/run/action | Web Apps aktivált webjobs-feladatok futtatásához. |
+> | Műveletek | microsoft.web/sites/usages/read | Web Apps Usages beolvasása. |
+> | Műveletek | microsoft.web/sites/virtualnetworkconnections/delete | Delete Web Apps Virtual Network Connections. |
+> | Műveletek | microsoft.web/sites/virtualnetworkconnections/gateways/read | Web Apps virtuális hálózati kapcsolatok átjárók beolvasása. |
+> | Műveletek | microsoft.web/sites/virtualnetworkconnections/gateways/write | Web Apps virtuális hálózati kapcsolatok átjárók frissítése. |
+> | Műveletek | microsoft.web/sites/virtualnetworkconnections/read | Web Apps virtuális hálózati kapcsolatok lekérése. |
+> | Műveletek | microsoft.web/sites/virtualnetworkconnections/write | Web Apps virtuális hálózati kapcsolatának frissítése. |
 > | Műveletek | Microsoft.Web/Sites/webjobs/Read | Web Apps webjobs-feladatok beolvasása. |
 > | Műveletek | Microsoft.Web/sites/Write | Hozzon létre egy új webalkalmazást, vagy egy meglévő frissítése |
-> | Műveletek | Microsoft.Web/skus/Read | Termékváltozatok beolvasása. |
-> | Műveletek | Microsoft.Web/sourcecontrols/Read | Adatforrás-vezérlők beolvasása. |
-> | Műveletek | Microsoft.Web/sourcecontrols/Write | Frissítse az adatforrás-vezérlők. |
-> | Műveletek | Microsoft.Web/unregister/Action | Az előfizetés Microsoft.Web erőforrás-szolgáltató regisztrációját. |
-> | Műveletek | Microsoft.Web/Validate/Action | Ellenőrzése. |
-> | Műveletek | Microsoft.Web/verifyhostingenvironmentvnet/Action | Ellenőrizze az üzemeltetési környezet Vnet. |
+> | Műveletek | microsoft.web/skus/read | Termékváltozatok beolvasása. |
+> | Műveletek | microsoft.web/sourcecontrols/read | Adatforrás-vezérlők beolvasása. |
+> | Műveletek | microsoft.web/sourcecontrols/write | Frissítse az adatforrás-vezérlők. |
+> | Műveletek | microsoft.web/unregister/action | Az előfizetés Microsoft.Web erőforrás-szolgáltató regisztrációját. |
+> | Műveletek | microsoft.web/validate/action | Ellenőrzése. |
+> | Műveletek | microsoft.web/verifyhostingenvironmentvnet/action | Ellenőrizze az üzemeltetési környezet Vnet. |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 

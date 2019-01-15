@@ -1,21 +1,21 @@
 ---
-title: Tartalommoderálás, emberi ellenőrző segítségével az API-konzol - Content Moderator
+title: Az API-konzol - Content Moderator az emberi ellenőrző mérsékelt tartalom
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre az emberi ellenőrző a Content Moderator API-konzolon.
+description: Használja a tekintse át API tekintse át az operations emberi moderálás képet vagy szöveget felülvizsgálatának létrehozásához.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: bb95341a09f09ce8020f34476e720270fd401909
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9d2daad06ad6cb97fe562db98cab57c4ed970a60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219753"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260209"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Értékelések készítése az API-konzol
 
@@ -26,10 +26,10 @@ Miután egy emberi moderátor ellenőrzi a hozzárendelt címkék és előrejelz
 ## <a name="use-the-api-console"></a>Az API-konzol használata
 Próbálhatják ki őket az API-t az online konzol használatával, meg kell adnia a konzol néhány értékek van szükség:
 
-- **teamName**: A csoport nevére, a felülvizsgálati eszköz fiók beállításakor hozott létre. 
+- **teamName**: A felülvizsgálati eszköz fiók beállítása során létrehozott csoport neve. 
 - **ContentId**: Ez a karakterlánc az API-nak átadott és a visszahívás keresztül visszaadott. A ContentId hasznos belső azonosítók vagy metaadat társít egy moderálás feladat eredményét.
-- **Metaadatok**: az API-végpont egyéni kulcs-érték párok vissza a visszahívás során. Ha a kulcs egy rövid kód a vizsgálóeszközt definiált, egy címke jelenik meg.
-- **OCP-Apim-Subscription-Key**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- **metaadatok**: Egyéni kulcs-érték párok vissza az API-végpont a visszahívás során. Ha a kulcs egy rövid kód a vizsgálóeszközt definiált, egy címke jelenik meg.
+- **Ocp-Apim-Subscription-Key**: Található a **beállítások** fülre. További információkért lásd az [Áttekintést](overview.md).
 
 A legegyszerűbb módszer a tesztelési konzol eléréséhez, az a **hitelesítő adatok** ablak.
 

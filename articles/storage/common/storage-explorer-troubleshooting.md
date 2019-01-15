@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2434c04260c223fdcc03bc7f91a6fd147e1d8503
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616197"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264103"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -21,7 +21,7 @@ A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segí
 
 Ez az útmutató összefoglalja a Storage Explorer leggyakoribb problémáinak megoldásait.
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Chyba: Önaláírt tanúsítványt a tanúsítványlánc (és ehhez hasonló hibaüzenetek)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: Önaláírt tanúsítványt a tanúsítványlánc (és ehhez hasonló hibaüzenetek)
 
 Tanúsítvánnyal kapcsolatos hiba okozza a két alábbi helyzetek bármelyike:
 
@@ -100,7 +100,7 @@ Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett, pró
 Ha Ön nem távolítható el egy csatolt fiók vagy a tárolási erőforrás a felhasználói felületen, manuálisan törölheti az összes kapcsolódó erőforrás a következő mappák törlésével:
 
 * Windows: `%AppData%/StorageExplorer`
-* macOS: `/Users/<your_name>/Library/Applicaiton Support/StorageExplorer`
+* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
@@ -172,7 +172,7 @@ Ha véletlenül egy érvénytelen SAS URL-címet használó kapcsolt, és nem le
 ## <a name="linux-dependencies"></a>Linux-függőségek
 
 A Linux-disztribúciók Ubuntu 16.04 eltérő szükség lehet néhány függősége manuális telepítéséhez. Általában a következő csomagok szükségesek:
-* [A .NET core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libsecret`
 * `libgconf-2-4`
 * Naprakész GCC

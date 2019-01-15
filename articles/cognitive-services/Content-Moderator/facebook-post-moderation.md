@@ -1,25 +1,25 @@
 ---
 title: 'Oktatóanyag: Facebook tartalom-jóváhagyás – az Azure Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: A Content Moderator segítségével Facebook-oldalakat moderálhat.
+description: Ebben az oktatóanyagban megtudhatja, hogyan használható a machine learning-alapú Content Moderator mérsékelt Facebook-bejegyzések és megjegyzéseket.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 09/18/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2b655e488b15b4520bc1de24b730f97269bddb4b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 085ddaf757f2a11b4db4aadb22ad16009d29231e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231801"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260445"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Oktatóanyag: A Content Moderator tartalom Facebook-jóváhagyás
 
-Ez az oktatóanyag bemutatja, hogyan használható a gépi tanuláson alapuló Content Moderator a Facebook-bejegyzések és -hozzászólások moderálására.
+Ebben az oktatóanyagban megtudhatja, hogyan használható a machine learning-alapú Content Moderator mérsékelt Facebook-bejegyzések és megjegyzéseket.
 
 Az oktatóanyag a következő lépéseken vezeti végig:
 
@@ -35,7 +35,7 @@ Az alábbi ábrán a megoldás építőelemei láthatók.
 
 ## <a name="create-a-content-moderator-team"></a>Content Moderator-csapat létrehozása
 
-A [rövid útmutatóban](quick-start.md) szereplő lépéseket követve regisztráljon a Content Moderatorba, és hozzon létre egy csapatot.
+Tekintse meg a [próbálja ki a Content Moderator, a weben](quick-start.md) gyors útmutató a Content Moderator regisztráljon és hozzon létre egy csapatot.
 
 ## <a name="configure-image-moderation-workflow-threshold"></a>Képmoderálási munkafolyamat konfigurálása (küszöbérték)
 

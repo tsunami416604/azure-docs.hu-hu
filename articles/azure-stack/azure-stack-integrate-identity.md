@@ -10,12 +10,12 @@ ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ff7fb909e3f6e26846114c4b7bfdddccd07526ec
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188896"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263796"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -122,7 +122,7 @@ Az Azure Stackben Graph szolgáltatás a következő protokollok és portok seg�
 |---------|---------|---------|
 |LDAP|389|A TCP ÉS UDP|
 |LDAP SSL|636|TCP|
-|LDAP GLOBÁLIS KATALÓGUS|3268|TCP|
+|LDAP GC|3268|TCP|
 |LDAP GC SSL|3269|TCP|
 
 ## <a name="setting-up-ad-fs-integration-by-downloading-federation-metadata"></a>Az AD FS-integráció beállítása az összevonási metaadatok letöltésével
@@ -171,7 +171,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
 |CustomAdfsName|A jogcímeket szolgáltató neve. Ezzel a módszerrel a az AD FS kezdőlapja jelenik meg.|Contoso|
-|CustomADFSFederationMetadataFileContent|Metaadat-tartalom|$using: federationMetadataFileContent|
+|CustomADFSFederationMetadataFileContent|Metaadat-tartalom|$using:federationMetadataFileContent|
 
 ### <a name="create-federation-metadata-file"></a>Összevonási metaadatait tartalmazó fájl létrehozása
 
@@ -305,7 +305,7 @@ Egy egyszerű Szolgáltatásnevet létrehozásával kapcsolatos további inform�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="configuration-rollback"></a>Visszaállítási konfiguráció
+### <a name="configuration-rollback"></a>Configuration Rollback
 
 Ha hiba lép fel, amelyek a környezetet, akkor nem tudják hitelesíteni állapotban hagyja, a visszaállítási lehetőség érhető el.
 
@@ -319,7 +319,7 @@ Ha hiba lép fel, amelyek a környezetet, akkor nem tudják hitelesíteni állap
 2. Ezután futtassa a következő parancsmagot:
 
    ```PowerShell  
-   Reset-DatacenterIntegationConfiguration
+   Reset-DatacenterIntegrationConfiguration
    ```
 
    Miután a visszaállítási művelethez, az összes konfigurációs módosítás visszavonásra. Csak a beépített hitelesítés **CloudAdmin** felhasználói lehetőség.

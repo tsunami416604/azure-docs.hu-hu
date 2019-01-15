@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/14/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: d4c5def3cc61c1920ae99d5aa9f97b46cbda0045
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1b533c945fdcfc3d1072a7d8a513126ca3f1f72a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244494"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303584"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Főbb funkcióiról és koncepciójáról az Azure Stackben
 Ha most ismerkedik a Microsoft Azure Stack, ezeket a feltételeket és a szolgáltatások leírása akkor lehet hasznos.
@@ -129,23 +129,13 @@ Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások ö
 A KeyVault RP biztosít a felügyeleti és a titkos kulcsokat, például a jelszavak és tanúsítványok naplózását. Például egy bérlő segítségével a KeyVault RP rendszergazdai jelszavak vagy -kulcsok adja meg a virtuális gép üzembe helyezése során.
 
 ## <a name="high-availability-for-azure-stack"></a>Magas rendelkezésre állás az Azure Stackben
-*Vonatkozik: Az Azure Stack 1802-es vagy újabb verziók*
+Magas rendelkezésre állás az Azure-beli virtuális gépre kiterjedő éles rendszer, a virtuális gépek kerüljenek a egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , amely osztja el azokat több tartalék tartomány és frissítési tartományok között. Az Azure Stack kisebb mennyiségű egy tartalék tartományt egy rendelkezésre állási csoportba egy csomópontot a skálázási egységben van definiálva.  
 
-Magas rendelkezésre állás az Azure-beli virtuális gépre kiterjedő éles rendszer, a virtuális gépek kerülnek egy rendelkezésre állási csoportban, a azokat több tartalék tartomány és frissítési tartományok. Ezzel a módszerrel [a rendelkezésre állási csoportokban üzembe helyezett virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) fizikailag elkülönített egymással a különálló kiszolgálóra állványokon, hogy hiba rugalmasság, az alábbi ábrán látható módon:
-
-  ![Az Azure Stack magas rendelkezésre állás](media/azure-stack-key-features/high-availability.png)
-
-### <a name="availability-sets-in-azure-stack"></a>Rendelkezésre állási csoportok az Azure Stackben
 Azure Stack infrastruktúrája már hatással a meghibásodások, míg az alapul szolgáló technológiát (feladatátvételi fürtszolgáltatás) továbbra is leállást bizonyos virtuális gépek érintett fizikai kiszolgálón hardverhiba esetén. Az Azure Stack támogatja a rendelkezésre állási csoport, amely legfeljebb három tartalék tartományt az Azure-ral konzisztens kellene.
 
 - **Tartalék tartományok**. Virtuális gépeket egy rendelkezésre állási csoportot helyezett osztja szét őket lehető legegyenletesebben több tartalék tartomány (az Azure Stack-csomópontok) keresztül lesz fizikailag különítve egymástól. Hardverhiba esetén a sikertelen tartalék tartomány virtuális gépeket fogja indítani a többi tartalék tartományban, de, külön tartalék tartományokban, ha lehetséges, a más virtuális gépek ugyanazon rendelkezésre állási csoportban tartani. A hardver visszatér online állapotba, ha virtuális gépek fog rebalanced magas rendelkezésre állás fenntartása érdekében. 
  
 - **Frissítési tartományok**. Frissítési tartományok egy másik Azure demonstráció létrehozásában, amely a rendelkezésre állási csoportokat magas rendelkezésre állást biztosít. Frissítési tartomány, amelyek karbantartása egy időben is mennek keresztül alapul szolgáló hardver logikai csoportjai. Az azonos frissítési tartományban található virtuális gépek együtt tervezett karbantartás során újraindul. Bérlő virtuális gépek létrehozása rendelkezésre állási csoportban, mint az Azure platform automatikusan elosztja a virtuális gépek között ezek frissítési tartományok. Az Azure Stackben, virtuális gépek élő áttelepítése a fürt többi online gazdagép között, a mögöttes állomás frissítése előtt. A gazdagép frissítése közben nem bérlői jár, mivel a frissítési tartomány funkció az Azure Stacken csak létezik sablon kompatibilitás érdekében az Azure-ral. 
-
-### <a name="upgrade-scenarios"></a>Frissítési forgatókönyvek esetében 
-Virtuális gépek az Azure Stack 1802-es verzió kapnak egy alapértelmezett tartalék és frissítési tartományok száma előtt létrehozott rendelkezésre állási csoportok (1 és 1 jelölik). Magas rendelkezésre állás virtuális gépekhez a már meglévő rendelkezésre állási csoportokban, először törölnie kell a meglévő virtuális gépek, majd ezt követően telepítse újra azokat egy új rendelkezésre állási számokkal a megfelelő tartalék és frissítési tartomány leírtak szerint, [módosítása a Windows virtuális gép rendelkezésre állási](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
-
-Virtuálisgép-méretezési csoportokhoz tartozó rendelkezésre állási csoport jön létre belső egy alapértelmezett tartalék tartomány és frissítési tartományok száma (3. és 5 jelölik). Az 1802-es frissítés kerülnek egy rendelkezésre állási csoport előtt létrehozott bármely virtuális gép méretezési az alapértelmezett tartalék és frissítési tartomány száma (1 és 1 jelölik). Szeretné frissíteni a virtuális gép méretezési csoport példányaihoz újabb megállítását eléréséhez, horizontális felskálázás a virtuálisgép-méretezési csoportok, amelyek a jelen az 1802-es frissítés előtt voltak példányok száma alapján, és törölje a régebbi a virtuálisgép-méretezési csoportok példányai. 
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 Az RBAC használatával hozzáférést rendszer engedéllyel rendelkező felhasználók, csoportok és szolgáltatások egy előfizetés, erőforráscsoport vagy egyéni erőforrás szintjén szerepkörök hozzárendelésével. Minden egyes szerepkör a felhasználó, csoport vagy szolgáltatás rendelkezik a Microsoft Azure Stack-erőforrások hozzáférési szint határozza meg.

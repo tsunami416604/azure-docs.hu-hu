@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
+ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
-ms.translationtype: HT
+ms.openlocfilehash: 4ba55d58a24045141800efb97a0f523d2a9cd242
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078494"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304499"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -454,12 +454,7 @@ A következő lépésben két szolgáltatást fog összekapcsolni, majd beállí
 
 A Service Fabric teljes rugalmasságot biztosít a megbízható szolgáltatásokkal folytatott kommunikáció terén. Egy alkalmazáson belül előfordulhat, hogy TCP-n keresztül elérhető szolgáltatások vannak. Elképzelhető, hogy más szolgáltatások egy HTTP REST API-n keresztül, megint más szolgáltatások pedig webes szoftvercsatornákon keresztül érhetők el. A rendelkezésre álló lehetőségekről és azok kompromisszumairól a [szolgáltatásokkal folytatott kommunikációt](service-fabric-connect-and-communicate-with-services.md) ismertető részben találhat további információt.
 
-Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) használja, hogy a VotingWeb webes kezelőfelületi szolgáltatás kommunikálhasson a háttérbeli VotingData szolgáltatással. A fordított proxy alapértelmezés szerint a 19081-es port használatára van konfigurálva, és alkalmasnak kell lennie ehhez az oktatóanyaghoz. A portot a fürt beállítására használt ARM-sablonban kell beállítani. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonjában tudja megkeresni, illetve a fürtjegyzék HttpApplicationGatewayEndpoint elemében.
-
-> [!NOTE]
-> A fordított proxy csak Windows 8 vagy újabb, illetve Windows Server 2012 vagy újabb rendszeren futtatott fürtön támogatott.
-
-<u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort erőforrás</u>
+Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) használja, hogy a VotingWeb webes kezelőfelületi szolgáltatás kommunikálhasson a háttérbeli VotingData szolgáltatással. A fordított proxy alapértelmezés szerint a 19081-es port használatára van konfigurálva, és alkalmasnak kell lennie ehhez az oktatóanyaghoz. A fordított proxy portjával állítja be az Azure Resource Manager-sablon a fürt beállításához használt. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonblonjában tudja megkeresni: 
 
 ```json
 "nodeTypes": [
@@ -472,13 +467,10 @@ Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-
           }
         ],
 ```
-A HttpApplicationGatewayEndpoint elem megtekintése a helyi Service Fabric-fürtjegyzékben:
-1. Nyisson meg egy böngészőablakot, és navigáljon a http://localhost:19080 címre.
-2. Kattintson a **Jegyzék** gombra.
+Keresse meg a fordított proxy portjával, a helyi fejlesztési fürt használja, tekintse meg a **HttpApplicationGatewayEndpoint** elem található a helyi Service Fabric-fürt jegyzékfájl:
+1. Nyisson meg egy böngészőablakot, és navigáljon a http://localhost:19080 a Service Fabric Explorer eszköz megnyitásához.
+2. Válassza ki **fürt -> Manifest**.
 3. Jegyezze fel a HttpApplicationGatewayEndpoint elem portját. Ez alapértelmezés szerint a 19081-es port. Ha mégsem az, akkor módosítania kell a portot a következő VotesController.cs kód GetProxyAddress metódusában.
-
-
-
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
@@ -622,9 +614,9 @@ A Visual Studióban történő hibakeresés során egy helyi Service Fabric fejl
 
 Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a **VotingWeb\VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (63. sor).
+1. Nyissa meg a **VotingWeb\VotesController.cs** fájlt, és állítson be egy töréspontot a webes API-k **Put** metódus (72. sor).
 
-2. Nyissa meg a **VotingData\VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (53. sor).
+2. Nyissa meg a **VotingData\VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API-k **Put** metódus (54. sor).
 
 3. Nyomja le az **F5** billentyűt az alkalmazás hibakeresési módban való elindításához.
 

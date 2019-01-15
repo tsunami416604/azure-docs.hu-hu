@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: b5d931225edce92590b9c2b7f28ad39630362e6d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2afdd3f78a99d9aae5e84bc2fdf1b21cbdc150d2
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213824"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306386"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -79,6 +79,14 @@ Szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 -   **Ütközések feloldása:** Adatszinkronizálás két lehetőséget biztosít az ütközések feloldása, *Hub wins* vagy *tag wins*.
     -   Ha *Hub wins*, a módosításokat az agyban mindig felülírja a tag változásait.
     -   Ha *tag wins*, a felülírás módosításához az agyban változásait. Ha egynél több tagja van, a végső értéke attól függ, melyik tag először szinkronizálja.
+
+## <a name="compare-data-sync-with-transactional-replication"></a>Hasonlítsa össze a tranzakciós replikáció adatszinkronizálás
+
+| | Adatszinkronizálás | Tranzakciós replikáció |
+|---|---|---|
+| Előnyök | – Aktív-aktív támogatása<br/>Kétirányú a helyszíni és az Azure SQL Database között | -Kisebb késés<br/>-Tranzakció-konzisztencia<br/>-Felhasználhatja a meglévő topológiát migrálás után |
+| Hátrányai | -5 perc vagy több késés<br/>– Nincs tranzakció-konzisztencia<br/>-Nagyobb teljesítményre gyakorolt hatás | – Nem lehet közzétenni az Azure SQL Database önálló adatbázisok<br/>-Nagy karbantartás költsége |
+| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>Ismerkedés az SQL Data Sync szolgáltatással
 

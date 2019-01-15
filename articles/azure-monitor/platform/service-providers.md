@@ -1,6 +1,6 @@
 ---
 title: Log Analytics a szolgáltatók számára |} A Microsoft Docs
-description: A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok független szoftver szállítói (ISV-k) és az üzemeltetési szolgáltatók kiszolgálók kezelése és figyelése az ügyfél helyszíni vagy felhőalapú infrastruktúrában.
+description: A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és az üzemeltetési szolgáltatók kiszolgálók kezelése és figyelése az ügyfél helyszíni vagy felhőalapú infrastruktúrában.
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: ac34cc467cc8ff7d231551683da130c0f7565800
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340538"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264772"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
@@ -63,7 +63,7 @@ Ez az architektúra a hátrányai:
 * Rögzített adatokat az ügyfelek olyan egységes munkaterületre egyesítésekor között lehet. Ehhez az egyetlen jó módszer, hogy a számítógép teljesen minősített tartománynevét (FQDN) használja, vagy keresztül az Azure-előfizetés azonosítóját. 
 * Minden az ügyfelektől származó összes adatot ugyanabban a régióban, az egyetlen számlán és azonos megőrzési és konfigurációs beállítások tárolódik.
 * Az Azure fabric és a PaaS szolgáltatásokat, mint az Azure Diagnostics és az Azure-Auditnaplók a munkaterületet és az erőforrásnak ugyanabban a bérlőben így ezek nem küldi el a naplókat a központi munkaterület szükséges.
-* Minden ügyfél az összes Virtuálisgép-ügynökök hitelesítése a cental-munkaterülethez a azonos munkaterület Azonosítóját és kulcsát. Nincs más ügyfelek megszakítása nélkül naplók egy adott ügyfél blokkolása módszer.
+* Minden ügyfél az összes Virtuálisgép-ügynökök hitelesítése a közép-munkaterülethez a azonos munkaterület Azonosítóját és kulcsát. Nincs más ügyfelek megszakítása nélkül naplók egy adott ügyfél blokkolása módszer.
 
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hibrid - naplók az ügyfél-bérlőben található munkaterület tárolódnak, és közülük néhány egy központi helyen kéri le.

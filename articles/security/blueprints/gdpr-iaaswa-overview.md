@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5f04fdaa12c716b21bafcc0abccc719428fe791
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 08e078841a6fb7f43db6d052ecefca3aabec8687
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242075"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263373"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-gdpr"></a>Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás GDPR
 
@@ -23,10 +23,10 @@ Az általános adatvédelmi rendelet (GDPR) tartalmazza az információk gyűjt�
 A Microsoft Azure tervezett az iparágvezető biztonsági és adatvédelmi módszerek kidolgozásában adataihoz a felhőben, beleértve a kategóriákat, az általános adatvédelmi rendelet által azonosított a személyes adatok védelme érdekében. A Microsoft [szerződési feltételek](https://aka.ms/Online-Services-Terms) Microsoft véglegesítenie kell a processzorok követelményeinek.
 
 Az Azure biztonsági és megfelelőségi terv-infrastruktúra telepítése egy szolgáltatás (IaaS) megfelelő az internetre irányuló egyszerű webalkalmazások környezetként útmutatást nyújt. Ez a megoldás, amelyben ügyfeleink megfelel a GDPR meghatározott biztonsági és megfelelőségi követelményeinek módszereket mutatja be, és az ügyfelek létrehozása és konfigurálása saját IaaS webes alkalmazás megoldások az Azure-ban alapjaként szolgál. Ügyfelek Ez a referenciaarchitektúra használatához, és kövesse a Microsoft [négy lépésből álló folyamat](https://aka.ms/gdprebook) az adatvédelmi rendeletnek való megfelelőség útjuk:
-1. Észlelés: Azonosítsa, mely személyes adatok állnak rendelkezésre, és helyét.
-2. Kezelése: Hogyan személyes adatok szabályozása használt és elérhető.
-3. Védelme: Biztonsági vezérlők megelőzését, észlelését és válaszadás a biztonsági rések és az adatok hoz létre.
-4. Jelentés: Szükséges dokumentáció és kérelmek kezeléséhez, és illetéktelen behatolás értesítések.
+1. Fedezze fel: Azonosítsa, mely személyes adatok állnak rendelkezésre, és helyét.
+2. Kezelés: Hogyan személyes adatok szabályozása használt és elérhető.
+3. Védelem: Létesítsen megelőzését, észlelését és válaszadás a biztonsági rések és az adatok biztonsági vezérlők.
+4. Jelentés: Szükséges dokumentáció és a kérelmek kezelése és illetéktelen behatolás értesítések.
 
 Ez a referenciaarchitektúra társított megvalósítási útmutató és fenyegetések modellezése célja, hogy az ügyfelek számára az adott követelményekhez a felmerülő ismeretekkel szolgál, és nem használható-éles környezetben van. Vegye figyelembe a következőket:
 - Az architektúra egy alapkonfiguráció segítenek az ügyfeleknek a számítási feladatok üzembe helyezéséhez az Azure-bA a GDPR-kompatibilis módon biztosít.
@@ -35,7 +35,7 @@ Ez a referenciaarchitektúra társított megvalósítási útmutató és fenyege
 ## <a name="architecture-diagram-and-components"></a>Architektúra és összetevők
 Ez a megoldás az SQL Server-háttérrendszerét az IaaS-webalkalmazás referenciaarchitektúra üzembe helyezi. Az architektúra egy webes réteg, adatrétegbeli, Active Directory infrastruktúrával, az Application Gateway és terheléselosztó tartalmaz. A webes és az adatrétegekhez az üzembe helyezett virtuális gépek rendelkezésre állási csoportban vannak konfigurálva, és az SQL Server példányai vannak konfigurálva a magas rendelkezésre állás érdekében egy AlwaysOn rendelkezésre állási csoportban. Virtuális gépek tartományhoz csatlakoztatva, és az Active Directory-csoportházirendek segítségével érvényesíti a biztonsági és megfelelőségi konfigurációk az operációs rendszer szintjén. Felügyeleti bástyagazdagép biztonságos kapcsolatot biztosít a rendszergazdák számára a hozzáférés üzembe helyezett erőforrásokat. **Az Azure használatát javasolja, hogy a felügyeleti és az adatok importálása a referencia architektúra alhálózatában VPN vagy ExpressRoute-kapcsolat beállítása.**
 
-![Az általános adatvédelmi rendelet architekturális diagramja IaaS webes Applicaiton](images/gdpr-iaaswa-architecture.png?raw=true "IaaS webes Applicaiton az általános adatvédelmi rendelet architekturális diagramja")
+![IaaS-webalkalmazás GDPR architekturális diagramja](images/gdpr-iaaswa-architecture.png?raw=true "IaaS-webalkalmazás GDPR architekturális diagramja")
 
 Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helyezési architektúra részletek találhatók a [üzembe helyezési architektúrája](#deployment-architecture) szakaszban.
 
@@ -43,11 +43,11 @@ Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helye
     - (1) felügyeleti/megerősített (Windows Server 2016 Datacenter)
     - (2) az active Directory-tartományvezérlőhöz (Windows Server 2016 Datacenter)
     - (2) az SQL Server-fürt csomópontjának (Windows Server 2016-on futó SQL Server 2017)
-    - (2) webkiszolgáló és IIS (Windows Server 2016 Datacenter)
+    - (2) Web/IIS (Windows Server 2016 Datacenter)
 - Rendelkezésre állási csoportok
     - (1) az active Directory-tartományvezérlők
     - (1) az SQL-fürtcsomópont
-    - (1) webkiszolgáló és IIS
+    - (1) Web/IIS
 - Azure Virtual Network
     - ((1) /16 virtuális hálózatok
     - (5) /24 alhálózatok
@@ -56,7 +56,7 @@ Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helye
 - Azure Application Gateway
     - (1) WAF Application Gateway engedélyezve
         - Tűzfalmód: megelőzése
-        - Set-szabály: OWASP 3.0
+        - Szabálykészlet: OWASP 3.0
         - Figyelő: 443-as port
 - Azure Storage
     - (7) georedundáns storage-fiókok
@@ -71,7 +71,7 @@ Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helye
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 A következő szakaszt az üzembe helyezés és a megvalósítás elemek részletei.
 
-**Bástyagazdagép**: A bástyagazdagép a központi hely, amely lehetővé teszi a felhasználók hozzáférhessenek a környezetben telepített erőforrás. A bástyagazdagép üzembe helyezett erőforrásokhoz való biztonságos kapcsolatot nyújt azáltal, hogy csak nyilvános IP-címekről érkező távoli forgalmat a biztonságos elemek listájához. Távoli asztali (RDP) forgalmat lehetővé teszik, hogy a forgalom forrását kell definiálni a hálózati biztonsági csoport (NSG).
+**Bástyagazdagép**: A megerősített állomás bejegyzést, amely lehetővé teszi a felhasználóknak a ebben a környezetben üzembe helyezett erőforrásokhoz való hozzáférést a hibaérzékeny pont. A bástyagazdagép üzembe helyezett erőforrásokhoz való biztonságos kapcsolatot nyújt azáltal, hogy csak nyilvános IP-címekről érkező távoli forgalmat a biztonságos elemek listájához. Távoli asztali (RDP) forgalmat lehetővé teszik, hogy a forgalom forrását kell definiálni a hálózati biztonsági csoport (NSG).
 
 Ez a megoldás létrehoz egy virtuális gépet egy tartományhoz csatlakoztatott megerősített gazdagépként az alábbi konfigurációkkal:
 -   [A kártevőirtó bővítmény](https://docs.microsoft.com/azure/security/azure-security-antimalware)
@@ -101,11 +101,11 @@ Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés sze
 ### <a name="data-at-rest"></a>Inaktív adat
 Az architektúra használatával több mértéket, beleértve a titkosítást és -adatbázis naplózási szolgáltatásával az inaktív adatok védi.
 
-**Az Azure Storage**: rest-követelményeket, a titkosított adatok kielégítése érdekében minden [Azure Storage](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez segít a szervezeti biztonsági kötelezettségeit, és az általános adatvédelmi rendelet által meghatározott megfelelőségi követelmények támogatásához a személyes adatok biztonságos megőrzésében.
+**Az Azure Storage**: Rest-követelményeket, a titkosított adatok kielégítése érdekében minden [Azure Storage](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez segít a szervezeti biztonsági kötelezettségeit, és az általános adatvédelmi rendelet által meghatározott megfelelőségi követelmények támogatásához a személyes adatok biztonságos megőrzésében.
 
-**Az Azure Disk Encryption**: az Azure Disk Encryption Windows IaaS virtuális gépek lemezeinek titkosított szolgál. [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) az operációs rendszer és az adatlemezek kötettitkosítást biztosít a Windows BitLocker funkcióját használja. A megoldás integrálva van az Azure Key Vault segítségével szabályozhatja, és kezelhetik a lemeztitkosítási kulcsokat.
+**Az Azure Disk Encryption**: Az Azure Disk Encryption Windows IaaS virtuális gép titkosított lemezek segítségével. [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) az operációs rendszer és az adatlemezek kötettitkosítást biztosít a Windows BitLocker funkcióját használja. A megoldás integrálva van az Azure Key Vault segítségével szabályozhatja, és kezelhetik a lemeztitkosítási kulcsokat.
 
-**Az SQL Server**: az SQL Server-példányt használja a következő adatbázis biztonsági intézkedéseket:
+**SQL Server**: Az SQL Server-példányt használja a következő adatbázis biztonsági intézkedéseket:
 -   [AD-hitelesítés és engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) lehetővé teszi az identitáskezelést adatbázis-felhasználók és más Microsoft-szolgáltatások egyetlen központi helyen.
 -   [Az SQL database naplózási szolgáltatásával](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, egy Azure storage-fiókban.
 -   SQL-adatbázis használatára van konfigurálva [transzparens adattitkosítási (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), melyik teljesít valós időben titkosítja és fejti vissza az adatbázist, az azokhoz kapcsolódó biztonsági mentési, és a rest-tranzakciós naplófájlokat: adatok védelme érdekében. TDE biztosítja, hogy a személyes adatok tárolása nem lett bárki hozzáférhet.
@@ -114,7 +114,7 @@ Az architektúra használatával több mértéket, beleértve a titkosítást é
 -   [Mindig titkosított oszlopokat](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) győződjön meg arról, hogy bizalmas személyes adatok soha nem jelenik meg, mint belül az adatbázis-rendszer egyszerű szövegként. Adatok titkosításának engedélyezése után csak az ügyfélalkalmazások vagy alkalmazáskiszolgálók hozzáférést a kulcsokhoz hozzáférhet egyszerű szöveges adatokat.
 - A [Extended Properties](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addextendedproperty-transact-sql) szolgáltatás használható lemondásához a feldolgozást az érintettek, mivel lehetővé teszi a felhasználók egyéni tulajdonságokat adhat az adatbázis-objektumok és adatok megjelölheti "Kifutott" az, hogy az alkalmazáslogika támogatása a társított személyes adatok feldolgozását.
 - [Sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) lehetővé teszi a felhasználóknak a feldolgozási lemondásához adatokhoz való hozzáférés korlátozása a házirendek meghatározása érdekében.
-- [Az SQL Database dinamikus adatok maszkolása (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) által a nem kiemelt jogosultságú felhasználók vagy alkalmazások, adatok maszkolása korlátozza a bizalmas személyes adatok. DDM automatikusan potenciálisan bizalmas adatok felderítéséhez, és javasolja a alkalmazni lehessen a megfelelő maszkokkal. Ez segít a feltételeknek megfelelő GDPR védelemre, valamint a hozzáférés csökkentése, hogy azt nem létezik az adatbázis jogosulatlan hozzáférést, a személyes adatok azonosítását. **Megjegyzés: A felhasználók be kell tartaniuk az adatbázisséma DDM beállításait kell.**
+- [Az SQL Database dinamikus adatok maszkolása (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) által a nem kiemelt jogosultságú felhasználók vagy alkalmazások, adatok maszkolása korlátozza a bizalmas személyes adatok. DDM automatikusan potenciálisan bizalmas adatok felderítéséhez, és javasolja a alkalmazni lehessen a megfelelő maszkokkal. Ez segít a feltételeknek megfelelő GDPR védelemre, valamint a hozzáférés csökkentése, hogy azt nem létezik az adatbázis jogosulatlan hozzáférést, a személyes adatok azonosítását. **Megjegyzés: Ügyfelek kell igazodnia kell az adatbázis-séma DDM beállításait.**
 
 ### <a name="identity-management"></a>Identitáskezelés
 A következő technológiákat az Azure-beli személyes adatokhoz való hozzáférés kezeléséhez képességeket biztosítják:
@@ -136,13 +136,13 @@ A következő technológiákat az Azure-beli személyes adatokhoz való hozzáf�
 - A szükséges kapcsolatok engedélyezett titkosítási műveletek kulcsok korlátozódnak.
 - A megoldás integrálva van az Azure Key Vault IaaS virtuális gépek lemeztitkosítási kulcsokat és titkos kulcsok kezeléséhez.
 
-**Javítások kezelése**: Ez a referenciaarchitektúra részeként üzembe helyezett Windows virtuális gépek úgy vannak konfigurálva, az automatikusan frissítéseket kapjanak a Windows Update szolgáltatás alapértelmezés szerint. Ez a megoldás is magában foglalja a [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) szolgáltatást, amelyen frissített telepítések hozható létre a javítás virtuális gépekhez szükség esetén.
+**Javítások kezelése**: Ez a referenciaarchitektúra részeként üzembe helyezett Windows virtuális gépek automatikusan frissítéseket kapjanak a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is magában foglalja a [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) szolgáltatást, amelyen frissített telepítések hozható létre a javítás virtuális gépekhez szükség esetén.
 
-**Kártevők elleni védekezés**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) virtuális gépek számára biztosítja a valós idejű védelem funkció, amely alapján azonosíthatja, és távolítsa el a vírusok, kémprogramok és más, kártevő szoftverek, konfigurálható riasztásokkal Ha az ismert kártevő vagy nemkívánatos szoftverek megpróbálják telepíteni vagy futtatni védett virtuális gépeken.
+**Kártevők elleni védekezés**: [A Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) tartozó virtuális gépeket biztosít, amellyel a vírusok, kémprogramok és más kártevők azonosításában és valós idejű védelem funkció, konfigurálható riasztásokkal, ha ismert kártevő vagy nemkívánatos szoftver megkísérli Telepítse, vagy a védett virtuális gépek futtatásához.
 
-**Biztonsági riasztások**: [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) forgalom figyelésére, naplók gyűjtése és elemzése a fenyegetések adatforrások használatát teszi lehetővé. Ezenkívül az Azure Security Center fér hozzá az Azure-szolgáltatások konfigurációs és szolgáltatási javaslatok javíthatja biztonsági helyzetét, és a személyes adatok védelme érdekében a meglévő konfigurációt. Az Azure Security Center tartalmaz egy [fenyegetésfelderítési jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) a rendszer minden egyes észlelt fenyegetés, amelyek segítik az incidensmegoldás csapatokat a vizsgálatban és elhárításban.
+**Biztonsági riasztások**: [Az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) forgalom figyelésére, naplók gyűjtése és elemzése a fenyegetések adatforrások használatát teszi lehetővé. Ezenkívül az Azure Security Center fér hozzá az Azure-szolgáltatások konfigurációs és szolgáltatási javaslatok javíthatja biztonsági helyzetét, és a személyes adatok védelme érdekében a meglévő konfigurációt. Az Azure Security Center tartalmaz egy [fenyegetésfelderítési jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) a rendszer minden egyes észlelt fenyegetés, amelyek segítik az incidensmegoldás csapatokat a vizsgálatban és elhárításban.
 
-**Az Application Gateway**: az architektúra csökkenti a használatával az Application Gateway webalkalmazási tűzfal (WAF) a biztonsági réseket, és az OWASP szabálykészletben engedélyezve van. További képességek:
+**Az Application Gateway**: Az architektúra csökkenti a biztonsági réseket a webalkalmazási tűzfal (WAF) Application Gateway és az OWASP szabálykészletben engedélyezve van. További képességek:
 
 - [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - Engedélyezése [SSL-alapú Kiszervezéshez](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
@@ -164,26 +164,26 @@ A következő technológiákat az Azure-beli személyes adatokhoz való hozzáf�
 ### <a name="logging-and-auditing"></a>Naplózás és vizsgálat
 
 A log Analytics biztosít széles körű naplózását, a rendszer és a felhasználói tevékenységek, valamint a helyrendszer állapotát. A [Log Analytics](https://azure.microsoft.com/services/log-analytics/) megoldás gyűjti és elemzi az adatokat az Azure-erőforrások által létrehozott és a helyszíni környezetekben.
-- **A Tevékenységnaplók**: [tevékenységeket tartalmazó naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) adjon meg egy előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. A Tevékenységnaplók segítségével határozza meg a műveletet kezdeményező, az eseményt, és állapot ideje.
-- **Diagnosztikai naplók**: [diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott az összes napló tartalmazza. Ezek a naplók például a Windows rendszer-eseménynaplói, az Azure Storage-naplók, a Key Vault-naplók és az Application Gateway hozzáférés és a tűzfal a naplókat.
-- **Napló Archiválás**: minden diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. A megőrzési felhasználó által konfigurálható, mentése és 730 nap között, a megőrzési a szervezet konkrét követelményeinek. Ezek a naplók csatlakozhat Azure Log Analytics feldolgozási, tárolására és-irányítópult jelentéseit.
+- **A Tevékenységnaplók**: [A Tevékenységnaplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) adjon meg egy előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. A Tevékenységnaplók segítségével határozza meg a műveletet kezdeményező, az eseményt, és állapot ideje.
+- **Diagnosztikai naplók**: [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott az összes napló tartalmazza. Ezek a naplók például a Windows rendszer-eseménynaplói, az Azure Storage-naplók, a Key Vault-naplók és az Application Gateway hozzáférés és a tűzfal a naplókat.
+- **Napló Archiválás**: Az összes diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. A megőrzési felhasználó által konfigurálható, mentése és 730 nap között, a megőrzési a szervezet konkrét követelményeinek. Ezek a naplók csatlakozhat Azure Log Analytics feldolgozási, tárolására és-irányítópult jelentéseit.
 
 Ezenkívül a következő figyelési megoldások jelennek meg, ez az architektúra részeként:
--   [Az AD Assessmenthez](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): az Active Directory állapot-ellenőrzés megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját tartalmazza.
--   [Kártevőirtók felmérése](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): A kártevőirtó megoldás kártevő szoftverek, a fenyegetések és a védelem állapota kapcsolatos jelentések.
--   [Az Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): az Azure Automation megoldás tárolja, fut, és kezeli a runbookok.
+-   [Az AD Assessmenthez](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Az Active Directory állapotának ellenőrzése megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját tartalmazza.
+-   [Kártevőirtók felmérése](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): A kártevőirtó megoldás jelentések a kártevő szoftverek, a fenyegetések és a védelem állapota.
+-   [Az Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Az Azure Automation-megoldás tárolja, fut, és kezeli a runbookok.
 -   [Biztonság és auditálás](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): A biztonsági és auditálási irányítópultja az erőforrások biztonsági állapotát egy magas szintű betekintést nyújt a metrikák azáltal, hogy a biztonsági tartományok, a jelentős problémák, a észlelések, a fenyegetésekkel kapcsolatos Tudásbázis és a gyakori biztonsági lekérdezések.
--   [SQL-értékeléssel](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): az SQL Health Check megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és nyújt a felhasználók számára a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját.
--   [Frissítéskezelés](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): az Update Management megoldás lehetővé teszi, hogy az ügyfél felügyeleti operációs rendszer biztonsági frissítéseket, beleértve egy elérhető frissítések állapotát és a szükséges frissítések telepítése.
--   [Az ügynök állapota](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): az Agent Health megoldás hány ügynök van telepítve, és a földrajzi elosztás, valamint hány ügynök, amely nem válaszol és működési adatokat küld be, amely az ügynökök számát jelenti.
--   [Azure Tevékenységnaplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): az ügyfél az összes Azure-előfizetések az Azure-Tevékenységnaplók elemzésének segíti az Activity Log Analytics megoldás.
--   [A változáskövetés](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): A Change Tracking megoldás lehetővé teszi az ügyfelek számára, hogy könnyen azonosíthassa a változtatásokat a környezetben.
+-   [SQL-értékeléssel](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Az SQL Health Check megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és nyújt a felhasználók számára a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját.
+-   [Frissítéskezelés](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Az Update Management megoldás lehetővé teszi, hogy az ügyfél felügyeleti operációs rendszer biztonsági frissítéseket, beleértve egy elérhető frissítések állapotát és a szükséges frissítések telepítése.
+-   [Az ügynök állapota](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Az Agent Health megoldás hány ügynök van telepítve, és a földrajzi elosztás, valamint hány ügynök, amely nem válaszol és működési adatokat küld be, amely az ügynökök számát jelenti.
+-   [Azure-Tevékenységnaplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Az Activity Log Analytics megoldás az ügyfél az összes Azure-előfizetések az Azure-Tevékenységnaplók elemzésének segíti.
+-   [A változáskövetés](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): A Change Tracking megoldás lehetővé teszi, hogy az ügyfelek számára, hogy könnyen azonosíthassa a változtatásokat a környezetben.
 
 ## <a name="threat-model"></a>Fenyegetések modellezése
 
 A data folyamat diagramja (DFD) Ez a referenciaarchitektúra érhető el az [letöltése](https://aka.ms/gdprIaaSdfd) vagy alább találja. Ez a modell segítségével az ügyfelek megismerhetik a pontokat a rendszer infrastruktúra esetleges kockázat, ha a végzett módosítások.
 
-![Az általános adatvédelmi rendelet fenyegetések modellezése IaaS webes Applicaiton](images/gdpr-iaaswa-threat-model.png?raw=true "IaaS webes Applicaiton az általános adatvédelmi rendelet fenyegetések modellezése")
+![IaaS-webalkalmazás GDPR fenyegetések modellezése](images/gdpr-iaaswa-threat-model.png?raw=true "GDPR fenyegetések modellezése az IaaS-webalkalmazás")
 
 ## <a name="compliance-documentation"></a>Megfelelőségi dokumentációja
 

@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3a377441758fcd7dd91deefb5cae91579e881498
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007051"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261298"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Az Azure Security Centerben a biztonságos pontszám javítása
 
 
 Igen sok szolgáltatással biztonsági előnyöket kínál meglehetősen gyakran nehéz tudni, hogy milyen lépéseket kell tennie, hogy az első biztonságát, és a számítási feladat megerősítése. Az Azure biztonságos pontszám ellenőrzi a biztonsági javaslatok és, rangsorolja őket, így megtudhatja, mely ajánlások végrehajtásához először. Ezáltal könnyebben megtalálhat a legsúlyosabb biztonsági réseket, így rangsorolhatja a vizsgálatot. Biztonságos pontszám egy olyan eszköz, felmérheti a számítási feladatok biztonsági helyzetét.
-
-![Biztonságos pontszám irányítópult](./media/security-center-secure-score/secure-score-dashboard.png)
 
 ## <a name="secure-score-calculation"></a>Pontszám számítási biztonságossá tétele
 
@@ -43,11 +41,25 @@ Ellenőrizze, hogy mely ajánlások legtöbb befolyásolhatja a biztonságos pon
 
 A teljes biztonságos pontszám megtekintése:
 
-1. Az Azure irányítópultján kattintson **a Security Center** majd **javaslatok**.
-2. Tetején megjelenik a biztonságos pontszám, és a szabályzatok kiválasztott előfizetésenként kiszolgálónként pontszám jelöli. 
-2. Az alábbi táblázat, amely felsorolja a javaslatok, láthatja, hogy az egyes javaslatok van egy oszlop, amely jelöli az **pontszám hatás biztonságos**. A szám jelöli, mennyi a teljes biztonságos pontszám javítja, ha követi az ajánlások. Például az a képernyő, ha az alábbi, **tároló biztonsági konfigurációk a biztonsági rések**, a biztonságos pontszám 35 pontok nő.
+1. Az Azure irányítópultján kattintson **a Security Center** majd **biztonságos pontszám**.
+2. Tetején látható biztonságos pontozása emeli ki:
+   - A **teljes biztonságos pontszám** jelenti. a szabályzatok kiválasztott előfizetésenként kiszolgálónként pontszám
+   - **Pontszám biztonságos kategória szerint** azt mutatja be, mely erőforrásokat a legtöbb figyelmet igénylő
+   - **Leggyakoribb ajánlásokat, biztonságos pontszám hatás** biztosít, amely a biztonságos pontszám javulni fog a legtöbb, ha őket kijavítani a javaslatok listája.
+ 
+   ![biztonságos pontszám](./media/security-center-secure-score/secure-score-dashboard.png)
+
+3. Az alábbi táblázat az egyes láthatja minden egyes előfizetés és a teljes biztonságos pontszámot.
+
+   > [!NOTE]
+   > A biztonságos pontszám előfizetések összegét nem egyenlő a teljes biztonságos pontszámot. A biztonságos pontszám, a kifogástalan állapotú erőforrások és a teljes erőforrások száma javaslat, nem biztonságos pontszámokat több előfizetéshez összege aránya alapján. 
+   >
+4. Kattintson a **ajánlás megtekintése** , tekintse meg ezt az előfizetést, amely akkor javíthatja a biztonságos pontszám javítására vonatkozó javaslatok láthatók.
+4. A javaslatok listája, láthatja, hogy az egyes javaslatok van egy oszlop, amely jelöli az **pontszám hatás biztonságos**. A szám jelöli, mennyi a teljes biztonságos pontszám javítja, ha követi az ajánlások. Például az a képernyő, ha az alábbi, **tároló biztonsági konfigurációk a biztonsági rések**, a biztonságos pontszám 35 pontok nő.
 
    ![biztonságos pontszám](./media/security-center-secure-score/security-center-secure-score1.png)
+
+
 
 ## <a name="individual-secure-score"></a>Az egyes biztonságos pontszám
 
@@ -60,6 +72,12 @@ A **javaslatok hatás** lehetővé teszi, hogy tudja, milyen mértékben javítj
 A javaslat azt mutatja, hogy milyen fenyegetéseket a számítási feladat közvetlenül csatlakozik, ha a rendszer nem hajtja végre a hibaelhárítási lépéseket.
 
 ![az egyes javaslatok biztonságos pontszám](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatta fejlesztéséhez, a biztonsági rendszer kialakításához használatával **biztonságos pontszám** az Azure Security Centerben. A Security Centerrel kapcsolatos további tudnivalókért lásd:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 9d9f9d1e9a87802960fd2f004f3e19f47fdd3fe0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5be86017926e09b5db5fd08f1c33d316b9031bc4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971801"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264291"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Salesforce-szal
 
@@ -133,7 +133,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Salesforce-szal, hajtsa vé
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -180,7 +180,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Salesforce-szal, hajtsa vé
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-11. Az a **hitelesítési konfiguráció** szakaszt, ellenőrizze a **AzureSSO** , **hitelesítés hogyan listázhatja** a SAML SSO-konfigurációt, és kattintson a **mentése** .
+11. Az a **hitelesítési konfiguráció** szakaszt, ellenőrizze a **AzureSSO** , **hitelesítési szolgáltatás** a SAML SSO-konfigurációt, és kattintson a  **Mentés**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/salesforce-tutorial/sf-auth-config.png)
 

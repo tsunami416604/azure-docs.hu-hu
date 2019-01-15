@@ -1,22 +1,22 @@
 ---
-title: Rövid útmutató – Az Azure CLI és a Java használata az Azure Service Busszal való üzenetváltásra | Microsoft Docs
-description: Ebben a rövid útmutatóban megismerheti, hogyan küldhet és fogadhat Azure Service Bus-üzeneteket az Azure CLI és egy Java-mintaalkalmazás használatával
+title: Rövid útmutató – használja az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba |} A Microsoft Docs
+description: Ebben a rövid útmutatóban elsajátíthatja, hogyan használható az Azure CLI használatával creat egy Service Bus-üzenetsorba. Ezt követően használhatja egy Java-mintaalkalmazás, üzenetek küldéséhez és üzenetek fogadása az üzenetsorból.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 781bca5c3083df9db326e4dc71438c71a7c02bc3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998676"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258324"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Gyors útmutató: Azure CLI és a Java használatával üzenetek küldése és fogadása
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Gyors útmutató: Az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba
 
 A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását (az alkalmazásoknak nem kell egyidejűleg online állapotban lenniük), az állapot- vagy adatváltozások továbbítását, valamint az alkalmazások közötti üzenetküldést foglalja magában. 
 
@@ -24,7 +24,7 @@ Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vo
 
 ![üzenetsor](./media/service-bus-quickstart-cli/quick-start-queue.png)
 
-Ez a rövid útmutató azt ismerteti, hogyan küldhet és fogadhat üzeneteket a Service Busszal az Azure CLI és a Service Bus Java-kódtár használatával. Ha további technikai részletekre kíváncsi, olvassa el a mintakód fő elemeihez tartozó [magyarázatot](#understand-the-sample-code).
+Ebben a rövid útmutató üzenetek küldése és fogadása Service Bus szolgáltatással az Azure CLI és a Service Bus-Java-kódtár használatával. Ha további technikai részletekre kíváncsi, olvassa el a mintakód fő elemeihez tartozó [magyarázatot](#understand-the-sample-code).
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [ingyenes fiókot][].
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [i
 
 Az Azure Portal jobb felső sarkában található menüben kattintson a Cloud Shell gombra, majd a **Környezet kiválasztása** legördülő menüben válassza a **Bash** lehetőséget. 
 
-## <a name="use-cli-to-create-resources"></a>A parancssori felület használata erőforrások létrehozásához
+## <a name="use-the-azure-cli-to-create-resources"></a>Erőforrások létrehozása az Azure CLI használatával
 
 A Cloud Shellben a Bash parancssorból indítsa el az alábbi parancsokat a Service Bus-erőforrások kiépítéséhez. Ne felejtse el lecserélni az összes helyőrzőt a megfelelő értékre:
 
@@ -266,7 +266,7 @@ void registerReceiver(QueueClient queueClient) throws Exception {
 Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetfogadásra és -küldésre szolgáló kódok írásáról, lépjen tovább a Service Busról szóló oktatóanyagra:
 
 > [!div class="nextstepaction"]
-> [Leltár frissítése a parancssori felület és a Java használatával](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Leltár frissítése az Azure CLI-vel és a Java használatával](./service-bus-tutorial-topics-subscriptions-cli.md)
 
 [ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

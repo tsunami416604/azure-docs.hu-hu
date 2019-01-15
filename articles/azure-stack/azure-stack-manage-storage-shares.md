@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d4a40b07ef70d8dd43eb410ba396057551cd483
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249897"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304396"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ebben a cikkben található információk segítséget nyújt az Azure Stack felhő operátor figyelője és kezelése az Azure Stack üzemelő példányához tárolókapacitását. Az Azure Stack tárolási infrastruktúra foglalja le a teljes tárolási kapacitás használható az Azure Stack üzembe egy részhalmazát **tárolószolgáltatások**. A storage szolgáltatásokat a köteteken, amelyek megfelelnek a csomópontok a központi telepítési megosztás egy bérlők adatainak tárolása.
 
@@ -79,7 +79,7 @@ Használja a Powershellt vagy a felügyeleti portálon figyelése a megosztások
 
 ### <a name="use-powershell"></a>A PowerShell használata
 Felhő-felelősként, figyelemmel kísérheti a tárolási kapacitás, a PowerShell-lel megosztás **Get-AzsStorageShare** parancsmagot. A Get-AzsStorageShare parancsmag ad vissza, az egyes a megosztásokat az összes, a lefoglalt és a szabad lemezterület (bájt).   
-![Példa: Megosztások szabad terület adja vissza.](media/azure-stack-manage-storage-shares/free-space.png)
+![Példa: Szabad terület a megosztások visszaadása](media/azure-stack-manage-storage-shares/free-space.png)
 
 - **Teljes kapacitás** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
 - **Használt kapacitás** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
@@ -101,12 +101,12 @@ Ha a felügyeleti portál, megosztások, amelyek kevés a lemezterület kapcsola
 > [!IMPORTANT]
 > A felhő felelősnek megosztások megtartása teljes használat eléri. 100 %-os használt fel, a storage-megosztás esetén a szolgáltatás már nem használt megosztást a functions. Szabad hely helyreállítása és visszaállítási műveletek egy megosztáson, amely 100 %-os használt fel, forduljon a Microsoft ügyfélszolgálatához.
 
-**Figyelmeztetés**: amikor egy fájlmegosztás több mint 80 %-os használt fel, kap egy *figyelmeztetés* riasztás a felügyeleti portálon: ![példa: figyelmeztető riasztás](media/azure-stack-manage-storage-shares/alert-warning.png)
+**Figyelmeztetés**: Amikor egy fájlmegosztás több mint 80 %-os használt fel, kap egy *figyelmeztetés* riasztás a felügyeleti portálon: ![Példa: Figyelmeztető riasztás](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**Kritikus fontosságú**: amikor egy fájlmegosztás több mint 90 %-os használt fel, kap egy *kritikus* riasztás a felügyeleti portálon: ![példa: kritikus riasztás](media/azure-stack-manage-storage-shares/alert-critical.png)
+**Kritikus fontosságú**: Amikor egy fájlmegosztás több mint 90 %-os használt fel, kap egy *kritikus* riasztás a felügyeleti portálon: ![Példa: Kritikus riasztás](media/azure-stack-manage-storage-shares/alert-critical.png)
 
-**A részletek megtekintéséhez**: a felügyeleti portálon nyissa meg egy riasztás megtekintése a kockázatcsökkentési lehetőségek részleteit: ![példa: a riasztás részleteinek megtekintése](media/azure-stack-manage-storage-shares/alert-details.png)
+**A részletek megtekintéséhez**: A felügyeleti portálon nyissa meg egy riasztás megtekintése a kockázatcsökkentési lehetőségek részleteit: ![Példa: Riasztás részleteinek megjelenítése](media/azure-stack-manage-storage-shares/alert-details.png)
 
 
 ## <a name="manage-available-space"></a>Rendelkezésre álló hely kezelése
@@ -119,7 +119,7 @@ A törölt bérlő fiókok által használt kapacitás is visszaigényelhetők. 
 
 További információkért lásd: [kapacitás visszaigényléséhez](azure-stack-manage-storage-accounts.md#reclaim) a tárolási erőforrások kezelése.
 
-### <a name="migrate-a-container-between-volumes"></a>Egy tároló kötetek közötti migrálása
+### <a name="migrate-a-container-between-volumes"></a>Tároló áttelepítése kötetek között
 *Ez a beállítás csak a több csomópontos központi telepítések vonatkozik.*
 
 Bérlői használati mintákat, mert bérlői megosztások használja, mint a többi több helyet. Az eredmény egy futó alacsony előtti más a megosztások, viszonylag nem használt megosztást is lehet.
@@ -196,11 +196,11 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ````
 
-  ![Példa: Visszaállítási állapota](media/azure-stack-manage-storage-shares/rollback.png)
+  ![Példa: Visszaállítás állapota](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. A parancs a 6. lépés ismét futtathatja, amíg az állapot megerősíti, hogy az áttelepítési feladat **megszakított**:  
 
-    ![Példa: Megszakítva állapota](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![Példa: Megszakított állapota](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>Helyezze át a Virtuálisgép-lemezek
 *Ez a beállítás csak a több csomópontos központi telepítések vonatkozik.*

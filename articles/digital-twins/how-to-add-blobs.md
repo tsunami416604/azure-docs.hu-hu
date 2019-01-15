@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 8b17d1ce4ae0b9c37f6ce8d64ecebd25c5c70db3
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231189"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263067"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -24,7 +24,7 @@ Az Azure digitális Twins támogatja a blobok csatolása eszköz, a tárolóhely
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
-## <a name="uploading-blobs-an-overview"></a>Blobok feltöltése: áttekintés
+## <a name="uploading-blobs-overview"></a>Blobok – áttekintés feltöltése
 
 Használhatja a több részből álló kéréseket az eszközspecifikus végpontokat és a megfelelő funkciók blobok feltöltése.
 
@@ -38,13 +38,94 @@ A négy fő JSON-sémák a következők:
 
 ![JSON-sémáinak][1]
 
+JSON-blob metaadatainak megfelel a következő modellhez:
+
+```JSON
+{
+    "parentId": "00000000-0000-0000-0000-000000000000",
+    "name": "My First Blob",
+    "type": "Map",
+    "subtype": "GenericMap",
+    "description": "A well chosen description",
+    "sharing": "None"
+  }
+```
+
+| Attribútum | Típus | Leírás |
+| --- | --- | --- |
+| **parentId** | Karakterlánc | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
+| **name** |Karakterlánc | A blob emberi mobilbarát nevét |
+| **type** | Karakterlánc | Blob - típusa nem használható *típus* és *typeId*  |
+| **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
+| **Altípus** | Karakterlánc | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
+| **description** | Karakterlánc | A blob testre szabott leírása |
+| **megosztás** | Karakterlánc | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+
+BLOB metaadatainak mindig van megadva az első adatrészletben a **Content-Type** `application/json` vagy mint egy `.json` fájlt. A fájlokban tárolt adatokhoz a második adattömb van megadva, és bármely támogatott MIME-típusát.
+
 A Swagger-dokumentáció ezen modell sémák teljes részletesen ismerteti.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 Ismerje meg, olvassa el a dokumentációja használatáról [hogyan generáljon a swaggerrel](./how-to-use-swagger.md).
 
-### <a name="examples"></a>Példák
+<div id="blobModel"></div>
+
+### <a name="blobs-response-data"></a>Blobok válaszának adatai
+
+Külön-külön visszaadott blobok felelnek meg a következő JSON-séma:
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "string",
+  "parentId": "00000000-0000-0000-0000-000000000000",
+  "type": "string",
+  "subtype": "string",
+  "typeId": 0,
+  "subtypeId": 0,
+  "sharing": "None",
+  "description": "string",
+  "contentInfos": [
+    {
+      "type": "string",
+      "sizeBytes": 0,
+      "mD5": "string",
+      "version": "string",
+      "lastModifiedUtc": "2019-01-12T00:58:08.689Z",
+      "metadata": {
+        "additionalProp1": "string",
+        "additionalProp2": "string",
+        "additionalProp3": "string"
+      }
+    }
+  ],
+  "fullName": "string",
+  "spacePaths": [
+    "string"
+  ]
+}
+```
+
+| Attribútum | Típus | Leírás |
+| --- | --- | --- |
+| **id** | Karakterlánc | A BLOB egyedi azonosítója |
+| **name** |Karakterlánc | A blob emberi mobilbarát nevét |
+| **parentId** | Karakterlánc | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
+| **type** | Karakterlánc | Blob - típusa nem használható *típus* és *typeId*  |
+| **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
+| **Altípus** | Karakterlánc | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
+| **megosztás** | Karakterlánc | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **description** | Karakterlánc | A blob testre szabott leírása |
+| **contentInfos** | Tömb | Adja meg a strukturálatlan metaadat-információkat, beleértve a verzió |
+| **fullName** | Karakterlánc | A blob teljes neve |
+| **spacePaths** | Karakterlánc | A terület elérési útja |
+
+BLOB metaadatainak mindig van megadva az első adatrészletben a **Content-Type** `application/json` vagy mint egy `.json` fájlt. A fájlokban tárolt adatokhoz a második adattömb van megadva, és bármely támogatott MIME-típusát.
+
+### <a name="blob-multipart-request-examples"></a>BLOB többrészes kérelem példák
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -92,6 +173,7 @@ var metadataContent = new StringContent(JsonConvert.SerializeObject(metaData), E
 metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
 multipartContent.Add(metadataContent, "metadata");
 
+//MY_BLOB.txt is the String representation of your text file
 var fileContents = new StringContent("MY_BLOB.txt");
 fileContents.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
 multipartContent.Add(fileContents, "contents");
@@ -99,15 +181,27 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
-Mindkét példák:
+Végül [cURL](https://curl.haxx.se/) felhasználók is kérést többrészes űrlap azonos módon:
 
-1. Győződjön meg arról, hogy a fejlécek belefoglalása: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Győződjön meg arról, hogy a szervezet többrészes:
+![Eszköz blobok][5]
 
-   - Az első rész tartalmazza a szükséges blob metaadatait.
-   - A második rész a szöveges fájl tartalmaz.
+```bash
+curl
+ -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs"
+ -H "Authorization: Bearer YOUR_TOKEN"
+ -H "Accept: application/json"
+ -H "Content-Type: multipart/form-data"
+ -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "text=PATH_TO_FILE;type=text/plain"
+```
 
-1. Győződjön meg arról, hogy a szöveges fájl van megadva `Content-Type: text/plain`.
+| Érték | Csere erre |
+| --- | --- |
+| YOUR_TOKEN | Az érvényes OAuth 2.0 jogkivonat |
+| YOUR_SPACE_ID | A hely társításához a blob azonosítója |
+| PATH_TO_FILE | A szöveges fájl elérési útja |
+
+Egy sikeres bejegyzés az új azonosítója a blob (vörös színnel korábban) adja vissza.
 
 ## <a name="api-endpoints"></a>API-végpontok
 
@@ -129,15 +223,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | A kívánt blob azonosítója |
 
-Sikeres kérelem adja vissza egy **DeviceBlob** JSON-objektum a válaszban. **DeviceBlob** objektumok felelnek meg a következő JSON-séma:
-
-| Attribútum | Típus | Leírás | Példák |
-| --- | --- | --- | --- |
-| **DeviceBlobType** | Karakterlánc | Egy blob kategóriát, amelyek egy eszközhöz | `Model` és `Specification` |
-| **DeviceBlobSubtype** | Karakterlánc | Egy blob alkategória-nál több jellemző **DeviceBlobType** | `PhysicalModel`, `LogicalModel`, `KitSpecification`, és `FunctionalSpecification` |
-
-> [!TIP]
-> Az előző táblázatban használatával kezelni kérelem sikeresen visszaadott adatokat.
+Sikeres kérések vissza JSON-objektum, mint [fentebb leírt](#blobModel).
 
 ### <a name="spaces"></a>Szóközök
 
@@ -155,14 +241,9 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | A kívánt blob azonosítója |
 
-Egyazon végpont a PATCH-kérés metaadatok leírását frissíti, és hozza létre a blob új verzióit. A HTTP-kérelem a PATCH metódust, bármilyen szükséges meta és többrészes űrlapadatok keresztül történik.
+Sikeres kérések vissza JSON-objektum, mint [fentebb leírt](#blobModel).
 
-Sikeres műveletek visszaadása egy **SpaceBlob** objektum, amely megfelel a következő sémának. Visszaadott adatok felhasználásához használhatja azt.
-
-| Attribútum | Típus | Leírás | Példák |
-| --- | --- | --- | --- |
-| **SpaceBlobType** | Karakterlánc | Egy terület csatolható blob kategória | `Map` és `Image` |
-| **SpaceBlobSubtype** | Karakterlánc | Egy blob alkategória-nál több jellemző **SpaceBlobType** | `GenericMap`, `ElectricalMap`, `SatelliteMap`, és `WayfindingMap` |
+Egyazon végpont a PATCH-kérés metaadatok leírását frissíti, és létrehozza a blob verzióit. A HTTP-kérelem a PATCH metódust, bármilyen szükséges meta és többrészes űrlapadatok keresztül történik.
 
 ### <a name="users"></a>Felhasználók
 
@@ -180,16 +261,11 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | A kívánt blob azonosítója |
 
-A visszaküldött JSON (**UserBlob** objektumok) megfelel-e a következő JSON-modellek:
-
-| Attribútum | Típus | Leírás | Példák |
-| --- | --- | --- | --- |
-| **UserBlobType** | Karakterlánc | Egy felhasználó társítható blob kategória | `Image` és `Video` |
-| **UserBlobSubtype** |  Karakterlánc | Egy blob alkategória-nál több jellemző **UserBlobType** | `ProfessionalImage`, `VacationImage`, és `CommercialVideo` |
+Sikeres kérések vissza JSON-objektum, mint [fentebb leírt](#blobModel).
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-Gyakori hiba, hogy a megfelelő fejléc-információkat tartalmazza:
+Általános hiba magában foglalja a nem biztosítja a megfelelő fejléc-információkat:
 
 ```JSON
 {
@@ -199,6 +275,13 @@ Gyakori hiba, hogy a megfelelő fejléc-információkat tartalmazza:
     }
 }
 ```
+
+Ez a hiba elhárításához győződjön meg arról, hogy a teljes kérést rendelkezik egy megfelelő **Content-Type** fejléc:
+
+* `multipart/mixed`
+* `multipart/form-data`
+
+Azt is ellenőrizze, hogy egyes többrészes adattömbök rendelkezik egy megfelelő **Content-Type** igény szerint.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -211,3 +294,4 @@ Gyakori hiba, hogy a megfelelő fejléc-információkat tartalmazza:
 [2]: media/how-to-add-blobs/blobs-device-api.PNG
 [3]: media/how-to-add-blobs/blobs-space-api.PNG
 [4]: media/how-to-add-blobs/blobs-users-api.PNG
+[5]: media/how-to-add-blobs/curl.PNG

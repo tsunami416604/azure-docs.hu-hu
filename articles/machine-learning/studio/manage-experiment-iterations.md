@@ -1,26 +1,8 @@
 ---
-title: Kísérletismétlések kezelése a Machine Learning Studio – Azure |} A Microsoft Docs
-description: Hogyan kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban. A kísérletek az előző futtatásokat annak érdekében, hogy az ellenőrző kérdés, nyissa meg újra, és végső soron erősítse meg vagy finomíthatja a korábbi feltételezések bármikor tekintheti meg.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: ebcae3e8e8f13904936dbe122f285a01a2a71459
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270450"
+Cím: Kísérletismétlések kezelése a Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Hogyan kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban. A kísérletek az előző futtatásokat annak érdekében, hogy az ellenőrző kérdés, nyissa meg újra, és végső soron erősítse meg vagy finomíthatja a korábbi feltételezések bármikor tekintheti meg.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban
 Prediktív elemzési modellek fejlesztése iteratív folyamat - módosítása a különböző függvényeket és paramétereket a kísérlet, az eredmények közelítjük, amíg olyan nem egy betanított, hatékony modellel rendelkezünk. Ez a folyamat kulcs a kísérlet paraméterek és konfigurációkkal különböző ismétlésének nyomon követéséhez.

@@ -1,44 +1,44 @@
 ---
 title: Mérsékelt SMS-t egyéni kifejezéslisták - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: A Content Moderator API konzolon egyéni kifejezéslisták kipróbálhassák azt.
+description: A lista felügyeleti API-val a feltételek a moderálási API használata egyéni listák létrehozásához.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 99df9fda2cc56f169a61ec215a976de28fc13d27
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fea671df0609b9c4dca9eaae99d1bfe667616837
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220278"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259427"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Üzletmenetre gyakorolt közepes az egyéni kifejezéslisták az API-konzolon
 
-Az alapértelmezett globális listáját az Azure Content Moderator feltételeket is elegendő legtöbb tartalom moderálása igényei szerint. Azonban szüksége lehet a szervezet adott feltételek képernyőn. Érdemes például versenytárs címkenevek további ellenőrzésre. 
+Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
 Használja a [lista felügyeleti API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) egyéni listák a moderálási API használata a feltételek létrehozásához. A **szöveg – a képernyő** művelet megkeresi a trágárság cenzúrázása a szöveget, és megosztott és az egyéni feketelistákkal összeveti is összehasonlítja.
 
 > [!NOTE]
-> A maximális korlát **5 kifejezés sorolja fel** az egyes lista **nem haladhatja meg a 10 000 feltételek**.
+> A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
 >
 
 A lista Management API segítségével a következő feladatokat végezheti el:
-- Hozzon létre egy listát.
-- Feltételek hozzáadása a listához.
-- Képernyőn elleni egy lista a használati feltételeket.
-- Feltételek törlése egy listáról.
-- Egy lista törölhető.
-- Lista adatainak szerkesztése.
-- Frissítse az index, hogy a lista módosításainak egy új vizsgálatot szerepelnek.
+- Lista létrehozása.
+- Kifejezések hozzáadása egy listához.
+- Egy listán szereplő kifejezések szűrése.
+- Kifejezések törlése egy listából.
+- Lista törlése.
+- Listaadatok szerkesztése.
+- Frissítse az indexet, hogy az új beolvasások észleljék a lista módosításait.
 
 ## <a name="use-the-api-console"></a>Az API-konzol használata
 
-Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez a kulcs található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd: [áttekintése](overview.md).
+Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez a kulcs található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd az [Áttekintést](overview.md).
 
 ## <a name="refresh-search-index"></a>Frissítse a search-index
 
@@ -58,7 +58,7 @@ A kifejezéslista módosítása után frissítenie kell az index későbbi vizsg
 
   ![API - frissítés Search-Index konzol válasz tartalmú panelen Kifejezéslisták](images/try-terms-list-refresh-1.png)
 
-## <a name="create-a-term-list"></a>Hozzon létre egy kifejezéslista
+## <a name="create-a-term-list"></a>Kifejezéslista létrehozása
 1.  Nyissa meg a [kifejezés lista felügyeleti API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
 
   A **sorolja fel a kifejezés - létrehozása** lap megnyitásakor.
@@ -119,13 +119,13 @@ A kifejezéslista módosítása után frissítenie kell az index későbbi vizsg
  
 13. Adjon hozzá néhány további feltételeket. Most, hogy létrehozott egy egyéni neveinek listáját, próbálja meg [valamilyen szöveget vizsgálatának](try-text-api.md) egyéni kifejezés használatával. 
 
-## <a name="delete-terms-and-lists"></a>Listák szerződési feltételek törlése
+## <a name="delete-terms-and-lists"></a>Kifejezések és listák törlése
 
-Egy kifejezést vagy egy lista törlése nagyon egyszerű. Az API-t használja a következő feladatokat végezheti el:
+Egy kifejezés vagy egy lista törlése nagyon egyszerű. Az API-t használja a következő feladatokat végezheti el:
 
 - Egy kifejezés törlése. (**Távon – Törlés**)
-- A lista összes használati törlése a lista törlése nélkül. (**Távon – minden feltételek törlése**)
-- Törölje a listáját, és annak teljes tartalmát. (**Kifejezéslisták - törlési**)
+- Egy listán szereplő összes kifejezés törlése a lista törlése nélkül. (**Távon – minden feltételek törlése**)
+- Egy lista törlése annak teljes tartalmával együtt. (**Kifejezéslisták - törlési**)
 
 Ebben a példában egyetlen kifejezés törlése.
 

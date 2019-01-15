@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074716"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261145"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat közzétételi útmutató
 
@@ -40,7 +40,7 @@ SaaS-alkalmazások érhetők el mindkét Azure Kirakattípus a következő tábl
 | SaaS-alkalmazások ajánlat | Üzleti feltételek | Technikai követelmények |  
 | --- | --- | --- |  
 | **Kapcsolatfelvétel** | Igen | Nem |  
-| **A Power bi / Dynamics** | Igen | Igen (Azure AD-integráció) |  
+| **PowerBI / Dynamics** | Igen | Igen (Azure AD-integráció) |  
 | **SaaS-alkalmazások**| Igen | Igen (Azure AD-integráció) |     
 
 ## <a name="saas-list"></a>SaaS-lista
@@ -94,7 +94,7 @@ Videós oktatóanyagok tekintse át a következőket:
 * [Videók a Microsoft Azure Active Directory összpontosítanak.](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Ingyenes Azure Active Directory-képzés érhető el:  
-* [Microsoft Azure for IT Pros tartalom sorozat: Az Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [Microsoft Azure for IT Pros tartalom sorozat: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Emellett az Azure Active Directory biztosít egy hely szolgáltatás frissítései   
 * [Az Azure AD-szolgáltatásfrissítések](https://azure.microsoft.com/updates/?product=active-directory)
@@ -140,7 +140,7 @@ A Microsoft a kereskedelmi tranzakciót futtat. A Microsoft az Ön nevében az �
 | Követelmény | Részletek |  
 |:--- |:--- |  
 |Számlázással és méréssel | Az ajánlat havonta átalánydíjat díjszabása. Jelenleg nem támogatottak a használatalapú díjszabás és a használat alapú "igaz felfelé" képességeket. |  
-|Visszavonás | Az ajánlat bármikor visszavonható az ügyfélnek. |  
+|Megszakítás | Az ajánlat bármikor visszavonható az ügyfélnek. |  
 |Tranzakció kezdőlapja | Üzemeltetése egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és SaaS-szolgáltatás fiókjuk kezeléséhez. |   
 | Előfizetés API | Elérhetővé teszi egy szolgáltatás, amely az SaaS-előfizetés létrehozása, frissítése és egy felhasználói fiókot és a service-csomag törlése hatással lehet. Kritikus fontosságú API-módosítás támogatnia kell a 24 órán belül. A nem kritikus API-módosítás rendszeres időközönként kiadjuk. |  
 

@@ -1,23 +1,23 @@
 ---
 title: Lemezkép - moderálás a Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Közepes kívánatos képek képmoderálás használata
+description: Használja a Content Moderator gépi támogatású képmoderálás és emberi hurok felülvizsgálati eszköz mérsékelt képek a felnőtt és szexuális tartalom.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 952777af0a233f0233f14c749fe0ebfdeaa8344a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852707"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262931"
 ---
-# <a name="image-moderation"></a>Képmoderálás
+# <a name="learn-image-moderation-concepts"></a>Ismerje meg a lemezkép moderálás fogalmak
 
 Használja a Content Moderator a gépi támogatású képmoderálás és [emberi hurok vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) képek a felnőtt és szexuális tartalom mérsékelt. Szöveges tartalom kiszűrhető a szöveg kinyerése és arcok észlelése. Megfelelő lemezképek egyéni listájával, és további műveleteket végrehajtania.
 

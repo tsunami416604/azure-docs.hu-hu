@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253431"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260333"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Az Azure BizTalk Services – kibocsátási megjegyzések
 
@@ -35,10 +35,10 @@ A Microsoft Azure BizTalk Services – kibocsátási megjegyzések az ebben a ki
 ## <a name="update-history"></a>Frissítési előzmények
 ### <a name="october-update"></a>. Októberi frissítés
 * A szervezeti fiókokat támogatja:  
-  * **A forgatókönyv**: egy BizTalk-szolgáltatás telepítését, Microsoft-fiókkal regisztrált (például user@live.com). Ebben a forgatókönyvben a Microsoft Account felhasználók csak a BizTalk Service a BizTalk Services portáljának használata kezelheti. Szervezeti fiók nem használható.  
+  * **A forgatókönyv**: Egy BizTalk-szolgáltatás telepítését, Microsoft-fiókkal regisztrált (például user@live.com). Ebben a forgatókönyvben a Microsoft Account felhasználók csak a BizTalk Service a BizTalk Services portáljának használata kezelheti. Szervezeti fiók nem használható.  
   * **A forgatókönyv**: BizTalk-szolgáltatások üzembe helyezéséhez egy Azure Active Directory szervezeti fiókkal regisztrált (például user@fabrikam.com vagy user@contoso.com). Ebben a forgatókönyvben a csak az Azure Active Directory-felhasználók a szervezeten belül a BizTalk Service a BizTalk Services portáljának használata kezelheti. Microsoft-fiók nem használható.  
 * BizTalk-szolgáltatás létrehozása, amikor Ön automatikusan regisztrálva van a BizTalk Services portálon.
-  * **A forgatókönyv**: jelentkezik be, az Azure BizTalk-szolgáltatás létrehozása, és válassza **kezelés** Ez az első alkalommal. Amikor megnyílik a BizTalk Services portáljára, a BizTalk Service automatikusan regisztrálja, és készen áll a központi telepítések a.  
+  * **A forgatókönyv**: Az Azure-ba, BizTalk-szolgáltatás létrehozása, és válassza ki **kezelés** Ez az első alkalommal. Amikor megnyílik a BizTalk Services portáljára, a BizTalk Service automatikusan regisztrálja, és készen áll a központi telepítések a.  
     Lásd: [Regisztrálásán, illetve frissítésén BizTalk-szolgáltatások üzembe helyezéséhez a BizTalk Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
 ### <a name="august-14-update"></a>Augusztus 14-frissítés
@@ -87,7 +87,7 @@ Akár az EDI-üzenetfeldolgozást, és bármely korrelációs rögzítve lesznek
 A X12 beállítások küldhet és fogadhat ([hozzon létre egy X12 szerződés az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) a protokoll szakasz információkat tartalmaz.  
 
 ### <a name="update-agreement"></a>Szerződés frissítése
-A BizTalk Services portáljának lehetővé teszi a identitás minősítője módosíthatja, amikor egy van konfigurálva. Emiatt a inconsistence tulajdonságai. Például nincs ZZ:1234567 és ZZ:7654321 a minősítő egy szerződést. A BizTalk Services portáljának-profiljának beállításainál ZZ:1234567 01:ChangedValue kell módosítania. Megnyitja a szerződést, és 01:ChangedValue ZZ:1234567 helyett jelenik meg.
+A BizTalk Services portáljának lehetővé teszi a identitás minősítője módosíthatja, amikor egy van konfigurálva. Ez az inkonzisztens tulajdonságok eredményezheti. Például nincs ZZ:1234567 és ZZ:7654321 a minősítő egy szerződést. A BizTalk Services portáljának-profiljának beállításainál ZZ:1234567 01:ChangedValue kell módosítania. Megnyitja a szerződést, és 01:ChangedValue ZZ:1234567 helyett jelenik meg.
 A minősítő identitás módosítása, a szerződés törlése, frissíteni **identitások** a partner profilba, majd hozza létre újra a szerződést.  
 
 > AZURE-T. Ez a viselkedés figyelmeztetés hatással van a X12 és az AS2.  
@@ -97,7 +97,7 @@ A minősítő identitás módosítása, a szerződés törlése, frissíteni **i
 ### <a name="as2-attachments"></a>AS2-mellékletek
 Az AS2-üzenetek nem támogatottak a mellékletek küldeni vagy fogadni. Pontosabban a mellékletek csendes figyelmen kívül hagyja, és mint egy normál AS2-üzenet feldolgozása az üzenet törzse.  
 
-### <a name="resources-remembering-path"></a>Erőforrások: Elérési útját Megjegyezné
+### <a name="resources-remembering-path"></a>Erőforrások: Elérési útját megjegyezné
 Hozzáadásakor **erőforrások**, a párbeszédablak előfordulhat, hogy ne felejtse el az erőforrás hozzáadása a korábban használt elérési út. Ne feledje az előzőleg használt elérési utat, próbáljon meg a BizTalk Services portáljának webhely **megbízható helyek** az Internet Explorerben.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Nevezze át az entitás egy híd, és a projekt bezárása a módosítások mentése nélkül, ha az entitás újra megnyitni a hibát eredményez
@@ -178,13 +178,13 @@ Vegye figyelembe a következő esetekben:
 **1. forgatókönyv: Ujjlenyomat-alapú tanúsítványok használatával biztonságossá tételéhez egy végpontot egy hídról üzenetküldés**  
 Példaként vegyünk egy forgatókönyvet, ahol ujjlenyomat-alapú tanúsítványokat használ a BizTalk-szolgáltatás-projektben. A BizTalk Services Portáljára a tanúsítvány frissítése ugyanazzal a névvel, de egy másik ujjlenyomatot, de ennek megfelelően nem frissítik a BizTalk Service-projektet. Ilyen esetben a híd előfordulhat, hogy továbbra is az üzeneteket feldolgozni, mert a régebbi adatok továbbra is lehet a csatorna gyorsítótárban. Ezt követően a következő üzenet feldolgozása sikertelen lesz.  
 
-**Megkerülő megoldás**: a tanúsítvány a BizTalk-szolgáltatás projekt frissítése és ismételt üzembe helyezése a projekt.  
+**Megkerülő megoldás**: A BizTalk Service-projektet a tanúsítvány frissítése és ismételt üzembe helyezése a projekt.  
 
-**2. forgatókönyv:-Névalapú viselkedések segítségével egy végpontot egy hídról üzenetküldés biztonságossá tétele tanúsítványok azonosítása**
+**2. forgatókönyv: -Névalapú viselkedések használatával azonosíthatja a tanúsítványok védelmét biztosító üzenet átvitelét egy híd egy végpontot**
 
 Példaként vegyünk egy forgatókönyvet, ahol-névalapú viselkedések azonosítására használt tanúsítványok a BizTalk-szolgáltatás-projektben. A BizTalk Services Portáljára a tanúsítvány frissítése, de ennek megfelelően nem frissítik a BizTalk Service-projektet. Ilyen esetben a híd előfordulhat, hogy továbbra is az üzeneteket feldolgozni, mert a régebbi adatok továbbra is lehet a csatorna gyorsítótárban. Ezt követően a következő üzenet feldolgozása sikertelen lesz.  
 
-**Megkerülő megoldás**: a tanúsítvány a BizTalk-szolgáltatás projekt frissítése és ismételt üzembe helyezése a projekt.  
+**Megkerülő megoldás**: A BizTalk Service-projektet a tanúsítvány frissítése és ismételt üzembe helyezése a projekt.  
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Hidak folytatja az üzenetek feldolgozásához, még akkor is, ha az SQL-adatbázis offline állapotban
 A BizTalk Services hidak továbbra is üzenetek feldolgozása egy ideig, még akkor is, ha a Microsoft Azure SQL Database (amely tárolja a futó további információkat, például a telepített összetevőket és folyamatokat), offline állapotban van. Ennek az az oka a BizTalk Services használja a gyorsítótárazott összetevők és a híd konfigurációjához.
@@ -202,19 +202,19 @@ Nincs az EDI- vagy AS2-egyezményt aktív kötegek. Ha a BizTalk-szolgáltatás 
 * Hiba: A jogkivonat-szolgáltató nem tudta meg egy biztonsági jogkivonatot. Jogkivonat-szolgáltató következő üzenetet adta vissza: A távoli név nem oldható fel.
 * Batch-feladatok törölve lesznek.
 
-**Megkerülő megoldás**: után a BizTalk szolgáltatás frissítve lett az általánosan elérhető (GA), telepítse újra a szerződést.  
+**Megkerülő megoldás**: A BizTalk-szolgáltatás frissítése az általános elérhető (GA) után telepítse újra a szerződést.  
 
 ### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>FRISSÍTÉS: Eszközkészlet megjeleníti a régi híd ikonok a BizTalk Services SDK frissítése után
 Amikor frissít egy korábbi verzióját a BizTalk Services SDK, amelynek régi ikonjai a hidak volt, az eszközkészlet továbbra is a régi ikonokat találhat a hidak. Azonban BizTalk-szolgáltatás projekt tervezőfelületére hidat hozzá, ha a surface bemutatja az új ikonra.  
 
 **Megkerülő megoldás**. A probléma megoldásához használhatja az .tbd fájlokat alatt <system drive>: \Users\<felhasználó > \AppData\Local\Microsoft\VisualStudio\11.0.  
 
-### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>FRISSÍTÉS: BizTalk-portál frissítése előzetes verzióról a végleges verzió hibát jelzi, hogy a EDI funkció nem érhető el jeleníthet
+### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>FRISSÍTÉS: BizTalk-portál frissítése előzetes verzióról a végleges verzió előfordulhat, hogy megjelenítése egy hibaüzenet, hogy a EDI funkció nem érhető el
 Ha van bejelentkezve a BizTalk Services Portáljára, amíg a BizTalk Services általánosan frissítése az előzetes verzió, kaphat a következő hibát a portálon:  
 
 Ez a funkció nem érhető el a Microsoft Azure BizTalk Services jelen kiadásában részeként. Használja ezeket a képességeket váltson megfelelő kiadás.  
 
-**Feloldási**: a portálon, zárja be és nyissa meg a böngészőt, majd jelentkezzen be a portálra a kijelentkezési.  
+**Megoldás**: Jelentkezzen ki a portálról, zárja be, és nyissa meg a böngészőt, majd jelentkezzen be a portálra.  
 
 ### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>FRISSÍTÉS: Új címkövetési adatokat nem jelenik meg a BizTalk Services általánosan frissítése után
 Tegyük fel, a forgatókönyv, amelyben egy XML-hidat, a BizTalk Services előzetes előfizetésben üzembe helyezett. Üzeneteket küld a híd, és a kapcsolódó követési adatokat érhető el a BizTalk Services Portáljára. Mostantól a BizTalk Services Portáljára, és a BizTalk Services modul a bits általánosan elérhető verzióra frissíti, és a egy üzenet küldéséhez az azonos híd végpont korábban telepített, a nyomon követési adatok nem jelenik a frissítés után küldött üzeneteket.  

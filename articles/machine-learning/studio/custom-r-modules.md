@@ -1,26 +1,7 @@
 ---
-title: Adja meg az egyéni R-modulok – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 11/29/2017
-ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277930"
+Cím: Adja meg az egyéni R-modulok titleSuffix: Azure Machine Learning Studio description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 
@@ -149,7 +130,7 @@ Minden bemeneti, és előfordulhat, hogy a kimeneti portját egy nem kötelező 
 ### <a name="input-elements"></a>A bemeneti elemek
 A bemeneti portok adatokat adnak át az R függvény és a munkaterület teszi lehetővé. A **adattípusok** , amely a bemeneti portok a következők támogatottak: 
 
-**A DataTable:** Ez a típus, egy data.frame átadott az R-függvény. Tulajdonképpen bármely telepítéstípushoz (például CSV-fájlok vagy ARFF fájlok), amely a Machine Learning, és amely által támogatott kompatibilisek az **DataTable** egy data.frame automatikusan alakulnak. 
+**DataTable:** Ez a típus, egy data.frame átadott az R-függvény. Tulajdonképpen bármely telepítéstípushoz (például CSV-fájlok vagy ARFF fájlok), amely a Machine Learning, és amely által támogatott kompatibilisek az **DataTable** egy data.frame automatikusan alakulnak. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>

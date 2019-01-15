@@ -1,21 +1,21 @@
 ---
 title: Az API-konzol - Content Moderator a tartalom-jóváhagyás feladatok futtatása
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan tartalom-jóváhagyás feladatok futtatása az API-konzolon.
+description: A felülvizsgálati API-feladat műveletei segítségével teljes körű tartalom-jóváhagyás feladatokat az Azure Content Moderator vagy szöveges tartalom.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4d1f96cbf7a94c59476f077cc4e72a26ee9c8296
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227109"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259121"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>Az API-konzolról moderálás feladat indítása
 
@@ -33,8 +33,8 @@ Keresse meg a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.c
 Próbálhatják ki őket az API-t az online konzol használatával, meg kell adnia a konzol néhány értékek van szükség:
     
 - `teamName`: Használja a `Id` mezőt a vizsgálóeszköz hitelesítő adatok képernyőn. 
-- `ContentId`: Ez a karakterlánc az API-nak átadott és a visszahívás keresztül visszaadott. **ContentId** akkor hasznos, ha társítása moderálás feladat az eredmények belső azonosítók vagy metaadat- `Workflowname`: nevére a [létrehozott munkafolyamat](Review-Tool-User-Guide/Workflows.md) az előző szakaszban.
-- `Ocp-Apim-Subscription-Key`: Található meg a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- `ContentId`: Ez a karakterlánc az API-nak átadott és a visszahívás keresztül visszaadott. **ContentId** akkor hasznos, ha belső azonosítók vagy metaadat társít egy moderálás feladat eredményeinek.- `Workflowname`: Neve a [létrehozott munkafolyamat](Review-Tool-User-Guide/Workflows.md) az előző szakaszban.
+- `Ocp-Apim-Subscription-Key`: Található a **beállítások** fülre. További információkért lásd az [Áttekintést](overview.md).
 
 Az API-hozzáférés konzol származik a **hitelesítő adatok** ablak.
 

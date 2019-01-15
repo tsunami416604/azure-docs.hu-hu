@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0b0307d167485712e06966dd36fa94e24ef33aa1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 1e1bc16d32167d62d5f66f64bb383fcceeb79eb5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242489"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267147"
 ---
 # <a name="smart-contract-integration-patterns"></a>Az intelligens szerződés integrációs minták
 
@@ -58,7 +58,7 @@ Ez akkor fordul elő, ahol a folyamat, a fenti kitaláltak segítségével:
 
 Az Azure Blockchain Workbench REST API lehetővé teszi a hitelesített kéréseket küldjön be egy elosztott Főkönyv intelligens szerződés végrehajtásával kapcsolatos lekérdezés részletei.
 
-![Metaadatok lekérdezése](./media/integration-patterns/querying-metadata.png)
+![Querying metadata](./media/integration-patterns/querying-metadata.png)
 
 Ez akkor fordul elő, ahol a folyamat, a fenti kitaláltak segítségével:
 
@@ -180,7 +180,7 @@ Ebben a modellben, ahol egy szabványos formátumra nem küldhető közvetlenül
 
 Integrációs forgatókönyve a telemetriai adatok, érzékelők intelligens szerződés keretében történő felvételére. Érzékelők által továbbított adatok alapján, az intelligens szerződések sikerült megalapozott műveleteket és módosítsa a szerződés állapotát.
 
-Például ha egy orvoslás továbbítása teherautó 110 fokban megugrik a hőmérséklet, azt hatással lehet a orvoslás hatékonyságát és nyilvános biztonsági problémát okozhat, ha nem észlelt, és a az ellátási lánc. Ha egy illesztőprogram gyorsítani a autó óránként 100 mérföld, az eredményül kapott érzékelőitől válthatja ki a biztosítási a biztosítási szolgáltató által kezdeményezett megszüntetés. Ha az autó bérleti autót volt, a GPS-adatok esetleg jelzi, ha az illesztőprogram egy saját bérleti megállapodás hatálya alá tartozó térségen kívül történt, és egy napján belül pótdíj díja szerint számítjuk fel.
+Például ha egy orvoslás továbbítása teherautó 110 fokban megugrik a hőmérséklet, azt hatással lehet a orvoslás hatékonyságát és nyilvános biztonsági problémát okozhat, ha nem észlelt, és a az ellátási lánc. Egy illesztőprogram gyorsítani a autó óránként 100 mérföld, ha az eredményül kapott érzékelőitől válthatja ki a biztosítási szolgáltató biztosítási lemondás. Ha az autó bérleti autót volt, a GPS-adatok esetleg jelzi, ha az illesztőprogram egy saját bérleti megállapodás hatálya alá tartozó térségen kívül történt, és egy napján belül pótdíj díja szerint számítjuk fel.
 
 A kihívás abban áll, hogy érzékelőktől is lehet továbbítása adatok állandó történik, és nem célszerű minden adatot küld egy intelligens szerződést. Egy jellemző példán, hogy korlátozza az összes üzenet adatbáziscsoportok másodlagos áruházban a blockchain küldött üzenetek számát. Például a időszakonként csak állandó, például óránként egyszer, és ha tartalmazott értéket egy egyeztetett kívül esik a Beérkezett üzenetek továbbítására tartomány egy intelligens szerződés alapján. Tolerancia kívül eső értékeket ellenőrzése, biztosítja, hogy a szerződések üzleti logikát, vonatkozó adatokat fogadott, és végre. Az érték ellenőrzése a időközönként megerősíti, hogy az érzékelő még küld jelentést. Minden adatot megkap egy másodlagos kimutatási áruházban szélesebb körű jelentéskészítési, elemzési és gépi tanulási engedélyezéséhez. Például bár a érzékelőinek adatai a GPS-adatok lekérdezése nem szükséges egy intelligens szerződés percenként, nyújtani érdekesebb adatokat megjelölheti használható jelentések vagy hozzárendelési útvonalak.
 

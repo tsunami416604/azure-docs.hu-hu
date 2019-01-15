@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: e1575afde326875558cea437de775515b8606f01
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d3f8e5ac1f85483d04da99744809f4bc72295024
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980707"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266194"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Nyomkövetési naplók az Application Insights Java felfedezése
 Ha a Logback vagy Log4J használja (1.2-es verzió vagy 2.0-s verzió) nyomkövetés, az automatikusan elküldi az Application Insights, amelyen ismerje meg, és keresse meg azokat a nyomkövetési naplók rendelkezhet.
@@ -98,13 +98,13 @@ Ezután frissítse a projektfüggőségeket, hogy a Projektfüggőségek.
 ```
 
 #### <a name="otherwise-"></a>Egyéb esetben...
-Kövesse a manuálisan Application Insights Java SDK telepítése, töltse le a jar (miután Maven központi lapra jogokért letöltési szakaszban "jar" hivatkozásra kattintva) megfelelő naplóírói, és a letöltött naplóírói jar hozzáadása a projekthez.
+Kövesse a manuálisan az Application Insights Java SDK telepítése, töltse le a jar megfelelő naplóírói (után érkező Maven központi lapon kattintson a letöltés szakaszban "jar" hivatkozásra), és a letöltött naplóírói jar hozzáadása a projekthez.
 
 | Naplózó | Letöltés | Kódtár |
 | --- | --- | --- |
-| Logback |[Logback naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights – naplózás – logback |
+| Logback |[Logback naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Log4J v2 naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j 1.2-es verzió |[Log4J 1.2-es verzió naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Log4j v1.2 |[Log4J 1.2-es verzió naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Adja hozzá a naplóírót a naplózási keretrendszer
@@ -156,7 +156,7 @@ Az Application Insights appenders lehet rá hivatkozni bármely konfigurált nap
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>Prozkoumat trasování az Application Insights portálon
 Most, hogy konfigurálta a projekthez, hogy elküldheti az Application Insightsba, megtekintheti és az Application Insights portálon a nyomkövetések keresni a [keresési] [ diagnostic] panelen.
 
-Kivételek beküldésének keresztül másolása kivétel telemetriaként fog megjelenni a portálon.
+Kivételek másolása keresztül elküldött fog megjelenni a portálon kivétel telemetriaként.
 
 ![Az Application Insights portálon nyissa meg a keresés](./media/java-trace-logs/10-diagnostics.png)
 

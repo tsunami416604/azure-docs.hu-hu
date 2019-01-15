@@ -8,20 +8,20 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 790f49f0fae98162b3443c78d813b1070e4514a0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063913"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303887"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Az Azure Log Integration-oktatóanyag: Az Azure Key Vault események feldolgozása az Event Hubs használatával
 
 >[!IMPORTANT]
-> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. 2018. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Használhatja az Azure Log Integration naplózott események beolvasásához, és elérhetővé teheti azokat a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszer. Ez az oktatóanyag azt szemlélteti, hogyan Azure Log Integration használható-e feldolgozni az Azure Event Hubs keretében beszerzett naplókat.
 
@@ -56,21 +56,21 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
  
 1. A rendszer, amely megfelel a az Azure Log Integration telepítése internet-hozzáféréssel rendelkező. A rendszer a felhőalapú szolgáltatásként vagy a helyszínen üzemeltetett.
 
-1. [Az Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324) telepítve. A telepítéshez:
+1. Az Azure Log Integration telepítve. A telepítéshez:
 
    a. A távoli asztal használatával csatlakozhat a rendszer a 2. lépésben említett.   
-   b. Másolja a rendszer az Azure Log Integration telepítőt. Is [a telepítési fájlok letöltési](https://www.microsoft.com/download/details.aspx?id=53324).   
-   c. Indítsa el a telepítőt, és fogadja el a Microsoft szoftverlicenc-feltételeket.   
-   d. Telemetriai adatok fog megadása esetén hagyja meg a jelölőnégyzet be van jelölve. Ha szeretné inkább nem küld használati adatokat a Microsoft, törölje a jelölőnégyzet jelölését.
-   
+   b. Másolja a rendszer az Azure Log Integration telepítőt. c. Indítsa el a telepítőt, és fogadja el a Microsoft szoftverlicenc-feltételeket.
+
+1. Telemetriai adatok fog megadása esetén hagyja meg a jelölőnégyzet be van jelölve. Ha szeretné inkább nem küld használati adatokat a Microsoft, törölje a jelölőnégyzet jelölését.
+
    További információ az Azure Log Integration, és a telepítésének módjáról lásd: [Azure Log Integration az Azure diagnosztikai naplózás és a Windows-Eseménytovábbítást](security-azure-log-integration-get-started.md).
 
 1. A PowerShell legújabb verziója.
- 
+
    Ha Windows Server 2016 telepítve van, akkor legalább rendelkezik PowerShell 5.0-s. Ha Windows Server bármilyen más verziót használ, előfordulhat, hogy rendelkezik PowerShell telepítve van egy korábbi verzióját. A verzió ellenőrzéséhez írja be ```get-host``` egy PowerShell-ablakban. Ha még nincs telepítve a PowerShell 5.0, [letöltheti](https://www.microsoft.com/download/details.aspx?id=50395).
 
    Miután legalább PowerShell 5.0-, folytathatja a legfrissebb verzió telepítéséhez:
-   
+
    a. A PowerShell ablakban írja be a ```Install-Module Azure``` parancsot. A telepítési lépéseket.    
    b. Adja meg a ```Install-Module AzureRM``` parancsot. A telepítési lépéseket.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a50cb5dc204a209c2b9d899c50ae7def55f4deb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118166"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262583"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -29,7 +29,7 @@ Az Application Insights-adatok exportálása Power bi-hoz három módszer van:
 * [**A Power BI adapter**](#power-pi-adapter). A diagramok készletét parancspéldány előre definiált, de a más forrásokból is hozzáadhat a saját lekérdezéseket.
 
 > [!NOTE]
-> A Power BI-adaptert már **elavult**. Ez a megoldás az előre definiált diagramok statikus szakaszához lekérdezések fel van töltve. Nem rendelkezik a lekérdezések szerkesztése és az adatok bizonyos tulajdonságait függően lehetséges, a Power bi-ba, a sikeres kapcsolat, de nincs adat nem üres. Kizárási feltétel szoftveresen kötött a lekérdezés beállított okozza. Amíg ez a megoldás lehet, hogy továbbra is működni egyes ügyfelek számára, az adapter flexiblity hiánya miatt az ajánlott megoldás az, hogy használja a [ **exportálja az elemzési lekérdezés** ](#export-analytics-queries) funkciót.
+> A Power BI-adaptert már **elavult**. Ez a megoldás az előre definiált diagramok statikus szakaszához lekérdezések fel van töltve. Nem rendelkezik a lekérdezések szerkesztése és az adatok bizonyos tulajdonságait függően lehetséges, a Power bi-ba, a sikeres kapcsolat, de nincs adat nem üres. Kizárási feltétel szoftveresen kötött a lekérdezés beállított okozza. Amíg ez a megoldás lehet, hogy továbbra is működni egyes ügyfelek számára, rugalmasságát az adapter hiánya miatt az ajánlott megoldás az, hogy használja a [ **exportálja az elemzési lekérdezés** ](#export-analytics-queries) funkciót.
 
 ## <a name="export-analytics-queries"></a>Analytics-lekérdezések exportálása
 Ezt az útvonalat, vagy használati tölcsérek exportálhat bármely Analytics-lekérdezés írása, és teszi majd exportálja, amelyek a Power BI-irányítópultra. (Is hozzáadhat az irányítópulthoz, a csatoló által létrehozott.)

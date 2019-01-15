@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: 3b9c8ea3dba5fdbd3e25293873ab1ae6854b3b83
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5397ab76afa8c28623f1522ffa773b0895e19f02
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728108"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303938"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Mit kell tudni az Azure-erőforrások felügyelt identitásairól?
 
@@ -39,7 +39,7 @@ Az Azure-erőforrások felügyelt identitásai szolgáltatás ingyenesen haszná
 Az alábbi feltételek során a felügyelt identitások Azure-erőforrások dokumentációkészlet használhatók:
 
 - **Ügyfél-azonosító** – Azure ad-ben, amely a kezdeti kiépítés során kötve egy alkalmazás és egyszerű szolgáltatás által létrehozott egyedi azonosítója.
-- **Résztvevő-azonosító** – a felügyelt identitás, amellyel szerepköralapú hozzáférést biztosít az Azure-erőforrás szolgáltatásnév-objektum objektumazonosítója.
+- **Résztvevő-azonosító** – a felügyelt identitás, amellyel egy Azure-erőforrás szerepköralapú hozzáférést a szolgáltatásnév-objektum Objektumazonosítója.
 - **Az Azure példány metaadat szolgáltatás (IMDS)** – minden IaaS virtuális gépek számára elérhető egy REST-végpont létrehozása az Azure Resource Manageren keresztül. A végpont egy jól ismert nem átirányítható IP-címen (169.254.169.254), amely csak a virtuális gépen érhető el.
 
 ## Hogyan működik az Azure-erőforrások számára a felügyelt identitásokból?<a name="how-does-it-work"></a>

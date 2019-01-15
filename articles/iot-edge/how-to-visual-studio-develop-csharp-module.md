@@ -9,12 +9,12 @@ ms.date: 01/10/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8fec963dfce8c55cc618f2ce6877d4d591a9cf27
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 3091e53b47d85e3e58c32b255dc9dcebd54ab2c5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215218"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264937"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Fejlesztés és az Azure IoT Edge (előzetes verzió) C# modul hibakeresése a Visual Studio 2017 használatával
 
@@ -61,7 +61,7 @@ Miután készen áll a Visual Studio 2017, emellett kell a következő eszközö
 
 1. Az a **eszközök** menüjében válassza **bővítmények és frissítések**. Bontsa ki a **telepített > eszközök** és annak **Azure IoT Edge-eszközök** és **for Visual Studio Cloud Explorer**.
 
-1. Megjegyzés: a telepített verzió. Ez a verzió a legújabb verzióra a Visual Studio-piactér összehasonlíthatja ([Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS), [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge))
+1. Megjegyzés: a telepített verzió. Ez a verzió a legújabb verzióra a Visual Studio-piactér összehasonlíthatja ([Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS), [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools))
 
 1. Ha a verzió régebbi, mint mi érhető el a Visual Studio-piactér, frissítse az eszközök a Visual Studióban, a következő szakaszban látható módon.
 

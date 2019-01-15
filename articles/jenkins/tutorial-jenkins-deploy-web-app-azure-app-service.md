@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 786fc427e4cb631c4aedd0f795daebebd9fb15bc
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077436"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260124"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról Azure App Service-ben a Jenkins folyamatos integrációs és üzembe helyezés
 
@@ -100,7 +100,7 @@ Engedélyezni szeretné, hogy a Jenkins, GitHub figyelheti és reagálhat rájuk
 
 1. A **GitHub** területén adja meg a GitHub-kiszolgáló adatait. Az a **GitHub-kiszolgáló hozzáadása** listáról válassza ki **GitHub kiszolgáló**. 
 
-   ![GitHub-kiszolgáló hozzáadása](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Add GitHub server](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. Ha a **hurkokat kezelése** tulajdonság nincs kiválasztva, válassza ezt a tulajdonságot. Válasszon **speciális** adhatja meg egyéb beállításokat. 
 
@@ -148,7 +148,7 @@ Ellenőrizze, hogy használja az egyszerű szolgáltatásnév idézőjelek köz�
 > Ha megadta a szolgáltatás egyszerű értékek a hitelesítéshez, használja a `appId`, `password`, és `tenant` tulajdonságértékeket. 
 > Meglévő szolgáltatásnév keresésekor használja a `displayName` tulajdonság értéke.
 
-## <a name="add-service-principal-to-jenkins"></a>Szolgáltatásnév hozzáadása a Jenkinsben
+## <a name="add-service-principal-to-jenkins"></a>Add service principal to Jenkins
 
 1. A Jenkins fő oldalon válassza ki a **hitelesítő adatok** > **rendszer**. 
 
@@ -164,10 +164,10 @@ Ellenőrizze, hogy használja az egyszerű szolgáltatásnév idézőjelek köz�
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------| 
-   | **előfizetés-azonosító** | <*yourAzureSubscription-azonosító*> | A GUID azonosítót az Azure-előfizetés <p>**Tipp**: Ha nem ismeri az Azure előfizetés-azonosító, futtassa a következő Azure CLI-parancsot, vagy a parancssorból vagy a Cloud Shellben, és használja a `id` GUID-érték: <p>`az account list` | 
-   | **Ügyfél-azonosító** | <*yourAzureServicePrincipal-azonosító*> | A `appId` GUID érték, az Azure-szolgáltatás egyszerű korábban létrehozott | 
+   | **előfizetés-azonosító** | <*yourAzureSubscription-ID*> | A GUID azonosítót az Azure-előfizetés <p>**Tipp**: Ha nem ismeri az Azure előfizetés-azonosító, futtassa a következő Azure CLI-parancsot, vagy a parancssorból vagy a Cloud Shellben, és használja a `id` GUID-érték: <p>`az account list` | 
+   | **Ügyfél-azonosító** | <*yourAzureServicePrincipal-ID*> | A `appId` korábban létrehozott Azure a szolgáltatásnévhez tartozó GUID-érték | 
    | **Titkos Ügyfélkód** | <*yourSecurePassword*> | A `password` érték vagy a "secret" az Azure-szolgáltatás egyszerű megadott | 
-   | **Bérlő azonosítója** | <*yourAzureActiveDirectoryTenant-azonosító*> | A `tenant` GUID azonosítót az Azure Active Directory-bérlő | 
+   | **Bérlő azonosítója** | <*yourAzureActiveDirectoryTenant-ID*> | A `tenant` GUID azonosítót az Azure Active Directory-bérlő | 
    | **Azonosító** | <*yourAzureServicePrincipalName*> | A `displayName` az Azure-szolgáltatás egyszerű érték | 
    |||| 
 

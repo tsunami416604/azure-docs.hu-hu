@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Az Azure Portal használata az Azure Service Busszal való üzenetváltásra | Microsoft Docs
-description: Ebben a rövid útmutatóban megismerheti, hogyan küldhet és fogadhat Service Bus-üzeneteket az Azure Portal használatával
+title: Rövid útmutató – az Azure portal segítségével hozza létre a Service Bus-üzenetsorba |} A Microsoft Docs
+description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre a Service Bus-üzenetsorba az Azure portal használatával. Ezután használja a ügyfélalkalmazásra, üzenetek küldéséhez és üzenetek fogadása az üzenetsorból.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002671"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264020"
 ---
-# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Gyors útmutató: Az Azure portal és a .NET használatával üzenetek küldése és fogadása
-
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: A Service Bus-üzenetsor létrehozása az Azure portal használatával
 A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és teljes mértékben megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását, továbbá az állapot- vagy adatváltozások továbbítását foglalja magában. Ilyen esetekben előfordulhat, hogy több kötegelt feladatokat kell üzemeznie más alkalmazásokban vagy szolgáltatásokban, vagy pedig ki kell váltani a megrendelések teljesítését. Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vonatkozó adatait egy háttérrendszernek vagy egy regionális terjesztőközpontnak feltöltés vagy leltárfrissítés céljából. Ebben a forgatókönyvben az ügyfélalkalmazás üzeneteket küld és fogad egy Service Bus-üzenetsorból.  
 
 ![üzenetsor](./media/service-bus-quickstart-portal/quick-start-queue.png)

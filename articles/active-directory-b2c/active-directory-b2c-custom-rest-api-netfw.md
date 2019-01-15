@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557291"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304907"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
@@ -50,7 +50,7 @@ Ez az útmutató a .NET-keretrendszer webes API, a felhasználói bevitel érvé
 * A RESTful szolgáltatás használata a felhasználói interakciósorozatban szereplő.
 * A bemeneti jogcímek küldése és olvashatja őket a kód.
 * Ellenőrizze a felhasználó utónevét.
-* Küldjön vissza hűségprogramok használatán keresztül szám. 
+* Küldjön vissza hűségprogramok használatán keresztül szám.
 * Adja hozzá a hűségprogramok használatán keresztül számot, egy JSON webes jogkivonat (JWT).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -77,11 +77,11 @@ A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-dire
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>2. lépés: Készítse elő a REST API-végpont
 
 ### <a name="step-21-add-data-models"></a>2.1. lépés: Adatmodell hozzáadása
-A modellek felel meg a bemeneti jogcímek között, és a kimeneti jogcím-adatok a REST-alapú service-ben. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek között modell egy JSON-karakterlánc egy C#-objektumot (a modell) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok ezután ír a HTTP-válaszüzenet törzsében. 
+A modellek felel meg a bemeneti jogcímek között, és a kimeneti jogcím-adatok a REST-alapú service-ben. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek között modell egy JSON-karakterlánc egy C#-objektumot (a modell) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok ezután ír a HTTP-válaszüzenet törzsében.
 
 Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
 
-1. Ha Megoldáskezelőben még nem nyitott, válassza ki a **nézet** > **Megoldáskezelőben**. 
+1. Ha Megoldáskezelőben még nem nyitott, válassza ki a **nézet** > **Megoldáskezelőben**.
 2. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Models** (Modellek) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra.
 
     ![Modell hozzáadása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,7 +128,7 @@ Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
@@ -241,20 +241,20 @@ A `loyaltyNumber` jogcím még nem határozott meg a sémában. Adja hozzá bel�
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>5. lépés: A jogcímeket szolgáltató hozzáadása 
-Minden jogcím-szolgáltatói rendelkeznie kell egy vagy több technikai profilok, amelyek meghatározzák a végpontok és a jogcímszolgáltató folytatott kommunikációhoz szükséges protokollok. 
+## <a name="step-5-add-a-claims-provider"></a>5. lépés: A jogcímeket szolgáltató hozzáadása
+Minden jogcím-szolgáltatói rendelkeznie kell egy vagy több technikai profilok, amelyek meghatározzák a végpontok és a jogcímszolgáltató folytatott kommunikációhoz szükséges protokollok.
 
-Jogcím-szolgáltatóktól rendelkezhet több technikai profil különböző okok miatt. Például több technikai profil definiálhatók a jogcímszolgáltató több protokollt is támogat, végpontok különböző képességekkel is rendelkeznek, vagy hogy kiadásokban is tartalmazhat, amely számos különböző biztonsági szintek jogcímeket. Egy felhasználói interakciósorozatban szereplő, de nem a másik bizalmas jogcímeket kiadni elfogadható lehet. 
+Jogcím-szolgáltatóktól rendelkezhet több technikai profil különböző okok miatt. Például több technikai profil definiálhatók a jogcímszolgáltató több protokollt is támogat, végpontok különböző képességekkel is rendelkeznek, vagy hogy kiadásokban is tartalmazhat, amely számos különböző biztonsági szintek jogcímeket. Egy felhasználói interakciósorozatban szereplő, de nem a másik bizalmas jogcímeket kiadni elfogadható lehet.
 
 A következő XML-kódrészlet két technikai profil a jogcímeket szolgáltató csomópontot tartalmaz:
 
-* **TechnicalProfile Id = "REST-API-SignUp"**: A RESTful szolgáltatás határozza meg. 
-   * `Proprietary` ismertetjük a protokoll egy RESTful-alapú szolgáltató. 
-   * `InputClaims` határozza meg a jogcímeket küld az Azure AD B2C-ből a REST-szolgáltatást. 
+* **TechnicalProfile Id="REST-API-SignUp"**: A RESTful szolgáltatás határozza meg.
+   * `Proprietary` ismertetjük a protokoll egy RESTful-alapú szolgáltató.
+   * `InputClaims` határozza meg a jogcímeket küld az Azure AD B2C-ből a REST-szolgáltatást.
 
    Ebben a példában a tartalom a jogcím `givenName` küld a REST-szolgáltatás, mint `firstName`, a tartalom a jogcím `surname` küld a REST-szolgáltatás, mint `lastName`, és `email` , küld. A `OutputClaims` elem definiálja a jogcímek lekért RESTful szolgáltatás vissza az Azure AD B2C-t.
 
-* **TechnicalProfile Id = "LocalAccountSignUpWithLogonEmail"**: Egy ellenőrzési technikai profil hozzáadása egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára. 
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**: Egy ellenőrzési technikai profil hozzáadása egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára.
 
 Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő XML-részletet a `<ClaimsProviders>` csomópont:
 
@@ -329,7 +329,7 @@ Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz ha
 
 2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
 
-3. Nyissa meg **összes szabályzat**. 
+3. Nyissa meg **összes szabályzat**.
 
 4. Válassza ki **szabályzat feltöltése**.
 
@@ -354,7 +354,7 @@ Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz ha
 
     ![A házirend tesztelése](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").  
+4. Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").  
     Az Azure AD B2C a felhasználó regisztrál, és a egy loyaltyNumber és az alkalmazás továbbítja. Vegye figyelembe a JWT szereplő számot.
 
 ```
@@ -381,7 +381,7 @@ Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz ha
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(Nem kötelező) A teljes házirend fájlok és a kód letöltése
 * Miután elvégezte a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a forgatókönyv a saját egyéni házirend-fájlok használatával hozhat létre. Referenciaként adtunk meg [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
 * Letöltheti a teljes kódját [mintát a Visual Studio-megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
-    
+
 ## <a name="next-steps"></a>További lépések
 * [Biztonságos a RESTful API-címhez alapszintű hitelesítéssel (felhasználónév és jelszó)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [Az ügyféltanúsítványokat a RESTful API biztonságossá tétele](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

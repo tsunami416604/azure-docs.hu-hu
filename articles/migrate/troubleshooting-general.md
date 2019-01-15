@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: a018740a44424fd138b787b86b0f527d897f4188
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230543"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261230"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -36,7 +36,7 @@ Azure Migrate-projekt törlésekor törli a migrálási projekt, valamint a csop
 1. Keresse meg a Log Analytics-munkaterületet a projekthez.
    a. Ha még nem törölt a migrálási projekt, megtalálhatja a hivatkozás a munkaterületet a projekt áttekintő oldaláról az Essentials szakaszban.
 
-   ![LA munkaterület](./media/troubleshooting-general/LA-workspace.png)
+   ![LA Workspace](./media/troubleshooting-general/LA-workspace.png)
 
    b. Ha már törölte a migrálási projekt, kattintson a **erőforráscsoportok** az Azure Portalon, és nyissa meg az erőforráscsoport, amelyben a munkaterület létrejött, és keresse meg azt a bal oldali panelen.
 2. Kövesse az utasításokat [ebben a cikkben](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) a munkaterület törlése.
@@ -98,7 +98,7 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
 
 1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a következő [cikket](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonatérték ellenőrzéséhez. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
 2. Ha továbbra is sikertelen, és a VMware vSphere-ügyfelet használja az OVF telepítéséhez, próbálja meg a vSphere webes ügyfélen keresztül telepíteni. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
-3. Ha szeretne üzembe helyezni a vcenter Server 6.5-ös és a vSphere webes ügyféllel, próbálja meg az OVA közvetlenül az ESXi-gazdagép telepítése a következő az alábbi lépéseket:
+3. Az OVA közvetlenül az ESXi-gazdagép telepítése a következő próbálja vSphere webes ügyféllel, és szeretné telepíteni, a vCenter Server 6.5-ös vagy 6.7, ha az alábbi lépéseket:
   - Közvetlenül (vCenter-kiszolgáló) helyett az ESXi-gazdagép csatlakozik a webes ügyfél használata (https:// <*gazdagép IP-cím*> /ui)
   - Lépjen a kezdőlapra > leltár
   - Kattintson a fájl > telepítése OVF-sablon > keresse meg az OVA és a telepítés befejezéséhez
@@ -156,7 +156,7 @@ A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma 
 2. Ha már rendelkezik a gyűjtő legújabb, manuálisan telepítse [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) , és ellenőrizze, hogy megoldódott-e a problémát.
 3. Ha a fenti nem oldja meg a problémát, keresse meg a C:\Program Files\ProfilerService mappát és eltávolítása a VMware.dll és VimService65.dll fájlokat a mappában találhatók, és indítsa újra az "Az Azure Migrate Collector" a Windows-szolgáltatások kezelése (Nyissa meg a(z) Futtatás "és a"services.msc"típusú Windows-kezelő megnyitásához).
 
-### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer hiba
+### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 
 Nem lehet csatlakozni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: Hiba történt a nincs végpont a következő https://Servername.com:9443/sdk , amely fogadni tudta az üzenetet.
 
@@ -175,10 +175,10 @@ Az Azure Migrate berendezés felvértezni, a készülék az alábbi mappák kiz�
 
 - Az Azure Migrate szolgáltatás a bináris fájlokat tartalmazó mappa. Zárja ki az összes alárendelt mappát.
   %ProgramFiles%\ProfilerService  
-- Az Azure Migrate webes hatóságuknál. Zárja ki az összes alárendelt mappát.
+- Azure Migrate Web Applciation. Zárja ki az összes alárendelt mappát.
   %SystemDrive%\inetpub\wwwroot
 - Helyi gyorsítótár az adatbázis és naplófájlok. Az Azure migrate szolgáltatás ezt a mappát RW lemezt hozzá kell férnie.
-  %SYSTEMDRIVE%\Profiler
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>Függőségek képi megjelenítés kapcsolatos problémák
 
@@ -195,7 +195,7 @@ A Windows virtuális gépek:
 2. Nyissa meg a **Azure Log Analytics (OMS)** előugró MMA tulajdonságai lap
 3. Ügyeljen arra, hogy a **állapot** a munkaterület zöld érték.
 4. Ha az állapot nem zöld, próbálja meg a munkaterület eltávolítása és újbóli hozzáadásával az MMA.
-        ![Az MMA állapota](./media/troubleshooting-general/mma-status.png)
+        ![MMA Status](./media/troubleshooting-general/mma-status.png)
 
 Linux rendszerű virtuális gép győződjön meg arról, hogy sikeres volt-e az MMA és a függőségi ügynök telepítési parancsokat.
 

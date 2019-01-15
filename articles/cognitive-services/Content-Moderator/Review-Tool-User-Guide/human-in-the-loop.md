@@ -1,22 +1,23 @@
 ---
-title: Tartalom-jóváhagyás gépi támogatású és az emberi felülvizsgálatot a Content Moderator |} A Microsoft Docs
+title: Emberi ellenőrző beépítheti a tartalom-jóváhagyás - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Hogyan gépek és az emberek együtt biztosítja a legjobb eredmények elérése érdekében a tartalom-jóváhagyás
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 03/16/2018
+ms.date: 01/10/2019
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7d2e87ac5353f103e654f4dcb6656916e4b271ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854220"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264733"
 ---
-# <a name="review-tool-overview"></a>Tekintse át az eszköz – áttekintés
+# <a name="learn-about-the-review-tool"></a>Ismerje meg a felülvizsgálati eszköz
 
 És a gépek együttműködésekor közösen dolgozhatnak a tartalom-jóváhagyás küldése az a legjobb eredmények elérése érdekében. Gépek hatékonyan bővítésével emberi értékelések, ahol az előrejelzés megbízhatósági vannak eszközkapcsolat és mérsékelni a való világból bármit környezeten belül. Az eredmény az egy hibrid tartalom-jóváhagyás, amely jobb, mint hogy az emberek és a gépek önmagában is működik.
 

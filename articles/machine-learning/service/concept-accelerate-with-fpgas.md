@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313632"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306120"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>Mik azok FPGA-kban és Project Brainwave?
 
@@ -33,13 +33,13 @@ A következő ábra és táblázat bemutatják, hogyan FPGA-kban más feldolgoz�
 |Processzor||Leírás|
 |---|:-------:|------|
 |Alkalmazás-specifikus integrált Kapcsolatcsoportok|Az ASICs|Egyéni kapcsolatok, például a Google TensorFlow processzor egységek (TPU), adja meg a lehető legnagyobb hatékonysággal. A változó igényeknek megfelelő, nem állítható át.|
-|A mező-programmable gate arrays|FPGA-kban|FPGA-kban, például az Azure-ban elérhető közeli ASICs teljesítményt nyújtanak. Szerepelnek rugalmas és újrakonfigurálható új a logikát alkalmazzák, az idő múlásával.|
+|A mező-programmable gate arrays|FPGA-k|FPGA-kban, például az Azure-ban elérhető közeli ASICs teljesítményt nyújtanak. Szerepelnek rugalmas és újrakonfigurálható új a logikát alkalmazzák, az idő múlásával.|
 |Grafikai feldolgozóegységek|A GPU-k|AI-számítások népszerű választást. A GPU-k olyan funkciókat biztosítanak a párhuzamos feldolgozást, így gyorsabb processzorokat, mint a képrenderelés.|
 |Központi egység|CPU-k|Általános célú processzor, a teljesítmény, amelyek nem grafikus és Videofeldolgozás ideális.|
 
 ## <a name="project-brainwave-on-azure"></a>Project Brainwave az Azure-ban
 
-[A Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) egy hardver architektúra a Microsofttól. Intel FPGA-eszközök, amely adatkutatóknak és fejlesztőknek használatával felgyorsíthatja a valós idejű mesterséges Intelligencia számítások alapul. Ez az architektúra FPGA-kompatibilis teljesítményt, rugalmasságot és méretezhetőséget biztosít, és az Azure-ban érhető el.
+[A Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) egy hardver architektúra a Microsofttól. Intel FPGA-eszközök, amely adatkutatóknak és fejlesztőknek használatával felgyorsíthatja a valós idejű mesterséges Intelligencia számítások alapul. Ez az architektúra FPGA-kompatibilis teljesítményt, rugalmasságot és méretezhetőséget biztosít, és az Azure-ban érhető el.
 
 FPGA-kban közel valós idejű következtetési kérelmek eléréséhez lehetővé teszik. Nem szükségesek a aszinkron kérelmet (kötegelés). Kötegelés késés, okozhat, mert több adatot kell feldolgozni. Neurális feldolgozóegység Project Brainwave megvalósítása nem igénylik a kötegelés; ezért a késés lehet sokszor alacsonyabb Processzor és GPU processzorok képest.
 

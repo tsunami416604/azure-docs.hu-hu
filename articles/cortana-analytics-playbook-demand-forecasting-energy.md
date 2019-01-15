@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426254"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306488"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia
 ## <a name="executive-summary"></a>Vezetői összefoglaló
@@ -172,7 +172,7 @@ Sok esetben az ügyfél lehet egy adott alkalmazási helyzet, amelyben egy felh�
 
 Másrészről rendelkeznie kell egy jól ismerik az energia kereslet-előrejelzési (rövid vagy hosszú távú) működő üzleti értékét a. Valójában a fontos az üzleti értéket minden egyes előrejelzési művelet. Például pontosan előrejelzés power betöltése a következő 24 órában megakadályozhatja, hogy túltermelés vagy segít megakadályozni, hogy a rács túlterheléssel, és ez számszerűen kell naponta pénzügyi megtakarítások tekintetében.
 
-A pénzügyi előnyeit, igény szerint kiszámításának egyszerű képlet-előrejelzési megoldás az lenne: ![egyszerű képlet a pénzügyi előnyeit, igény szerint kiszámításának-előrejelzési megoldás](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+A pénzügyi előnyeit, igény szerint kiszámításának egyszerű képlet-előrejelzési megoldás az lenne: ![Egyszerű képlet a pénzügyi előnyeit, igény szerint kiszámításának-előrejelzési megoldás](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
 Cortana Intelligence Suite használatalapú díjszabási modellt biztosít, mivel nincs kellene ezt a képletet egy állandó költség összetevő nincs szükség. Ez a képlet napi, havi vagy éves alapján számítható ki.
 
@@ -269,7 +269,7 @@ Cortana Intelligence Suite is támogatja a CSV, TSV, JSON-t, mint a leggyakoribb
 ### <a name="data-ingestion"></a>Adatfeldolgozás
 Energia igény-előrejelzési folyamatosan és gyakori összegyűjtése várható, mivel azt biztosítania kell, hogy egy szilárd és megbízható Adatbetöltési folyamat útján áramlik a nyers adatokat. A betöltési folyamat biztosítania kell, hogy a nyers adatok érhető el az előrejelzési folyamat a szükséges időben. Ez azt jelenti, hogy az adatok betöltési gyakorisága előrejelzési gyakoriságát nagyobbnak kell lennie.
 
-Példa: Ha a kereslet-előrejelzési megoldás hoz létre egy új előrejelzés naponta 8:00 órakor, akkor győződjön meg arról, hogy mind az adatok az elmúlt 24 órában gyűjtött rendelkezik lett teljesen betöltött eddig a pont, és még rendelkezik tartalmaz-e az elmúlt órában a kell  adatok.
+Példa: Ha a kereslet-előrejelzési megoldás hoz létre egy új előrejelzés naponta 8:00 órakor majd kell, hogy minden az elmúlt 24 órában gyűjtött adatok teljesen betöltött és a pont, és még az adatok az elmúlt órában tartalmaznia.
 
 Annak érdekében, hogy ennek érdekében a Cortana Intelligence Suite egy megbízható Adatbetöltési folyamat támogatásához különféle lehetőségeket biztosít a. Ez további tárgyalja a **üzembe helyezési** szakasz ebben a dokumentumban.
 
@@ -287,7 +287,7 @@ Miután a nyers adatok keresztül a szervezetbe (lásd: **adatbetöltés**), és
 
 Ebben a szakaszban látható a közös adatok funkcióit, amelyek szerepelnek a felhasznált energia igény-előrejelzési modelleket.
 
-**Szolgáltatások driven idő:** ezeket a funkciókat a dátum/timestamp adatok származnak. Ezeket ki kell olvasni, konvertálva a kategorikus funkciók, például:
+**Szolgáltatások driven idő:** Ezeket a funkciókat a dátum/timestamp adatok származnak. Ezeket ki kell olvasni, konvertálva a kategorikus funkciók, például:
 
 * Idő nap – Ez az az a nap, amely értékek 0 és 23 óra
 * Nap hét – Ez a hét napját jelöli, és 1 közötti értékeket vesz igénybe (vasárnap) és 7 (szombat)
@@ -297,16 +297,16 @@ Ebben a szakaszban látható a közös adatok funkcióit, amelyek szerepelnek a 
 * Szünnap – Ez a bináris érték funkció, amely szükséges időt a 0 értéket egy szünnap rendszeres napi vagy 1-es
 * Fourier feltételek – Fourier feltételek, amelyek alapján történő küldés időbélyegzője legyen, és a szezonalitás értékének (cycles) rögzítéséhez használt súlyok az adatokat. Mivel az adatokban található több szezon talán van szükségünk előfordulhat, hogy több Fourier használati. Igény szerinti értékeket Előfordulhat például, éves, heti és napi szezon/ciklusok ami 3 Fourier feltételek eredményezi.
 
-**Független mérési funkciókat:** független szolgáltatásai közé tartozik a szeretnénk használja, mint a modellben előrejelzőket minden adatelemet. Itt Elzárkózunk a függő szolgáltatást, amely azt kellene előre jelezni.
+**Független mérési funkciókat:** A független szolgáltatások közé tartozik minden adatelemet, amely használja, mint a modellben előrejelzőket szeretnénk. Itt Elzárkózunk a függő szolgáltatást, amely azt kellene előre jelezni.
 
 * Késés szolgáltatás – ezek az ideje, hogy áttért a tényleges igény szerinti értékét. Lag 1 funkciók például tartsa a igény szerinti értékét az előző órában (óránkénti adatok feltételezve) az aktuális timestamp viszonyítva. Ehhez hasonlóan azt hozzáadása lag 2, 3, lag *stb*. Használt lag szolgáltatásai tényleges kombinációja határozza meg a modellezési fázis során a modell eredmények értékelése.
 * Hosszú távú felkapott – Ez a funkció igény szerinti év közötti lineáris növekedésének jelöli.
 
-**A függő szolgáltatás:** a függő lehetőség a oszlop, amelyeket szeretnénk előre jelezni a modell. A [felügyelt machine learning](https://en.wikipedia.org/wiki/Supervised_learning), a modellt, a szolgáltatások használatával (amely szintén nevezzük címkék) először be kell. Ez lehetővé teszi, hogy ismerje meg a mintákat a függő szolgáltatás társított adatokat a modell. Az előrejelzés energiaszükségletét általában szeretnénk előre jelezni a tényleges igény szerint, és így tudjuk használni, a függő szolgáltatás.
+**A függő szolgáltatás:** A függő szolgáltatás a oszlop, amelyeket szeretnénk előre jelezni a modell el. A [felügyelt machine learning](https://en.wikipedia.org/wiki/Supervised_learning), a modellt, a szolgáltatások használatával (amely szintén nevezzük címkék) először be kell. Ez lehetővé teszi, hogy ismerje meg a mintákat a függő szolgáltatás társított adatokat a modell. Az előrejelzés energiaszükségletét általában szeretnénk előre jelezni a tényleges igény szerint, és így tudjuk használni, a függő szolgáltatás.
 
-**Kezelési érték hiányzik:** az adat-előkészítési fázisban azt kellene kezelni a hiányzó értékek legjobb stratégiáját határozza meg. Ez főleg használatával hajtható végre a különféle statisztikai [imputálási metody dat](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). Esetén energia kereslet-előrejelzés, hogy általában imputálására hiányzó értékeket az előző elérhető adatpontok mozgóátlag használatával.
+**Kezelését a hiányzó értékeket:** Az adat-előkészítési fázisban kell szeretné kezelni a hiányzó értékek legjobb stratégiáját határozza meg. Ez főleg használatával hajtható végre a különféle statisztikai [imputálási metody dat](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). Esetén energia kereslet-előrejelzés, hogy általában imputálására hiányzó értékeket az előző elérhető adatpontok mozgóátlag használatával.
 
-**Adatok normalizálási:** adatok normalizálási az átalakítást, amely hasonló méretezési csoport összes numerikus adatok, mint a kereslet-előrejelzési beemelése használható egy másik típusa. Ez általában javítja a pontosság és a pontosság. Hogy általában ehhez a tényleges érték elosztjuk az adatok tartományán.
+**Adatok normalizálási:** Adatok normalizálási az átalakítást, amely hasonló méretezési csoport összes numerikus adatok, mint a kereslet-előrejelzési beemelése használható egy másik típusa. Ez általában javítja a pontosság és a pontosság. Hogy általában ehhez a tényleges érték elosztjuk az adatok tartományán.
 Ez lesz az eredeti érték vertikális leskálázás kisebb tartományba, általában 1 és 1 között.
 
 ## <a name="modeling"></a>Modellezés
@@ -320,21 +320,21 @@ Kereslet-előrejelzési biztosítjuk, esetén használja az előzményadatok, am
 Az elmúlt években a speciális algoritmusok fejlesztettek befogadásához idősorozat-előrejelzés és az előrejelzési pontosság növeléséhez. Röviden bemutatjuk, néhány őket itt.
 
 > [!NOTE]
-> Ez a szakasz nem célja, hogy egy machine learning és az előrejelzés – áttekintés, hanem inkább egy rövid kérdőív modellezési technikák, általában használt kereslet-előrejelzés használható. További információk és az oktatási anyagok kapcsolatos idősorozat-előrejelzés, erősen ajánlott az online könyv [előrejelzés: elvek és eljárás](https://www.otexts.org/book/fpp).
+> Ez a szakasz nem célja, hogy egy machine learning és az előrejelzés – áttekintés, hanem inkább egy rövid kérdőív modellezési technikák, általában használt kereslet-előrejelzés használható. További információk és az oktatási anyagok kapcsolatos idősorozat-előrejelzés, erősen ajánlott az online könyv [előrejelzés: elvek és eljárás](https://www.otexts.org/).
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (mozgóátlag)**](https://www.otexts.org/fpp/6/2)
+#### <a name="ma-moving-average"></a>**MA (mozgóátlag)**
 Mozgóátlag egyike az első elemzési módszereket, az idősorozat-előrejelzés használt, és továbbra is a legtöbb egyik leggyakrabban használt mai technikákat. Emellett akkor is alapját speciális technikák előrejelzéseket. A mozgó átlag azt is előrejelzési a következő adatpont által átlagosan kevesebb mint a K legutóbbi pontokat, ahol K azt jelzi, hogy a mozgó átlag sorrendje felett.
 
 A mozgó átlag technika simítás az előrejelzés hatásának rendelkezik, és emiatt előfordulhat, hogy nem kezeli a is nagy, az adatok változékonyságán.
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponenciális simítás)**](https://www.otexts.org/fpp/7/5)
-Exponenciális simítás (ETS) olyan különböző módszereket használó legutóbbi adatpontok súlyozott átlag annak érdekében, hogy a következő adatpont előrejelzése összessége. A cél, hogy nagyobb súly hozzárendelése a legújabb értékeket, és fokozatosan csökkentse a régebbi mért értékek súlya. Számos különböző módszerek és a termékcsalád, azokat közé tartoznak például az adatok szezonalitás kezelése [Holt-Winters szezonális metódus](https://www.otexts.org/fpp/7/5).
+#### <a name="ets-exponential-smoothing"></a>**ETS (exponenciális simítás)**
+Exponenciális simítás (ETS) olyan különböző módszereket használó legutóbbi adatpontok súlyozott átlag annak érdekében, hogy a következő adatpont előrejelzése összessége. A cél, hogy nagyobb súly hozzárendelése a legújabb értékeket, és fokozatosan csökkentse a régebbi mért értékek súlya. Számos különböző módszerek és a termékcsalád, azok néhány kezelését a szezonalitás Holt-Winters szezonális metódus például az adatok.
 
 Ezek a módszerek közül is figyelembe vennie a szezonalitás értékének az adatok.
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (automatikus regressziós integrált mozgóátlag)**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-average"></a>**ARIMA (automatikus regressziós integrált mozgóátlag)**
 Automatikus regressziós integrált mozgó átlag (ARIMA) idősor-előrejelzési gyakran használt módszerek egy másik család. Gyakorlatilag kombinálja automatikus regression módszerek mozgóátlaga. Automatikus regression módszerek tovább a sorozat előző időértékek regressziós modelleket annak érdekében, hogy a következő dátum pont számítási használja. ARIMA módszereket is érvényesek lesznek a különbséglemezek módszerek, például az adatpontok közötti különbség kiszámítása, és azok eredeti mért érték helyett használja. Végül ARIMA is használ a fent tárgyalt mozgó átlagos technikákat. Különböző módokon ezen módszerek mindegyike együttes használata, mit hoz létre a családba tartozó ARIMA módszerek.
 
 ETS és ARIMA széles körben használják még ma energia kereslet-előrejelzés és sok más előrejelzési problémákat. A legtöbb esetben ezek együttesen együtt, így gyorsabban nagyon pontos.

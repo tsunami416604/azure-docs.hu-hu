@@ -1,27 +1,8 @@
 ---
-title: A Machine Learning Studio-kísérletek létrehozása a példákból – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja a machine learning-példakísérleteket új kísérletek létrehozására az Azure AI-katalógusban, és az Azure Machine Learning Studióban.
-keywords: machine learning példák, mintakísérlet, machine learning minta, AI példák
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/05/2018
-ms.openlocfilehash: 6b2a07b105252ca1fb5eb37c2571601c3eb74179
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276434"
+Cím: A Machine Learning Studio-kísérletek létrehozása példák titleSuffix: Azure Machine Learning Studio description: Ismerje meg, hogyan használhatja a machine learning-példakísérleteket új kísérletek létrehozására az Azure AI-katalógusban, és az Azure Machine Learning Studióban.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: fogalmi
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/05/2018
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Az Azure Machine Learning Studio-kísérletek létrehozása munkapéldákból az Azure AI-katalógusban
 

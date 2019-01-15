@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2c71b0abd5069aeb00b63fde8b76e5bb0fc0beda
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3341dbc486ebd184979381fa6bef05ec9404aa98
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246432"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304101"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
 Az Azure Machine Learning szolgáltatás több módszert is telepíthet a betanított modell az SDK-t biztosít. Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT edge-eszközök.
+
+> [!IMPORTANT]
+> Eltérő eredetű erőforrások megosztása (CORS) jelenleg nem támogatott a modellt webszolgáltatásként üzembe helyezésekor.
 
 A következő számítási célnak modellek helyezhető üzembe:
 
@@ -31,41 +34,34 @@ A következő számítási célnak modellek helyezhető üzembe:
 | [Azure IoT Edge](#iotedge) | IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
 | [A mező-programmable gate array (FPGA)](#fpga) | Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
 
+A modell üzembe helyezését a minden számítási célokhoz hasonlít:
+
+1. Betanítása, és regisztrálja a modellt.
+1. Állítsa be, és regisztrálja a modellt használó kép.
+1. A rendszerkép üzembe helyezése számítási célt.
+1. Az üzemelő példány tesztelése
+
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Kwk3]
+
+
+Az üzembe helyezést megvalósító munkafolyamat a fogalmakat további információkért lásd: [kezelése, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+
 - Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [Azure Machine Learning a rövid útmutató – első lépések](quickstart-get-started.md).
 
-- Mindkét pickle a betanított modell (`.pkl`) vagy az ONNX (`.onnx`) formátumban. Ha nem rendelkezik a betanított modell, kövesse a [modelleket taníthat be a](tutorial-train-models-with-aml.md) oktatóanyag betanítására és regisztrálhat egy, az Azure Machine Learning szolgáltatással.
+- Betanított modell. Ha nem rendelkezik a betanított modell, kövesse a [modelleket taníthat be a](tutorial-train-models-with-aml.md) oktatóanyag betanítására és regisztrálhat egy, az Azure Machine Learning szolgáltatással.
 
-- A kód szakaszok feltételeztük, hogy `ws` hivatkozik a machine learning-munkaterület. Például: `ws = Workspace.from_config()`.
+    > [!NOTE]
+    > Bár az Azure Machine Learning szolgáltatás bármely általános modellt, amely tölthetők be a Python 3 dolgozhat, az ebben a dokumentumban szereplő példák tesztnek a modell pickle formátumban tárolja.
+    > 
+    > ONNX-modellekkel használatával kapcsolatos további információkért lásd: a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
 
-## <a name="deployment-workflow"></a>Telepítési munkafolyamat
+## <a id="registermodel"></a> Regisztrálja a betanított modell
 
-A modell üzembe helyezését a minden számítási célokhoz hasonlít:
-
-1. A modell betanításához.
-1. Regisztrálja a modellt.
-1. Hozzon létre egy rendszerképet konfigurációt.
-1. Hozza létre a rendszerképet.
-1. A rendszerkép üzembe helyezése számítási célt.
-1. Az üzemelő példány tesztelése
-1. (Nem kötelező) A törlés összetevőket.
-
-    * Amikor **webszolgáltatásként üzembe helyezése**, három üzembe helyezési lehetőség áll rendelkezésre:
-
-        * [Üzembe helyezése](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): Ha ezzel a módszerrel nem kell regisztrálja a modellt, vagy a kép létrehozásához. Azonban Ön nem határozhatja meg a modell vagy a kép neve vagy hozzárendelt címkék és leírások.
-        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): Ha ezzel a módszerrel nem kell hozzon létre egy rendszerképet. De nem rendelkezik a létrehozott lemezkép neve felett.
-        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): Regisztrálja a modellt, és ez a módszer használata előtt hozzon létre egy rendszerképet.
-
-        A példák a jelen dokumentum-használat `deploy_from_image`.
-
-    * Amikor **, IoT Edge-modul üzembe helyezése**, regisztrálja a modellt és a lemezkép létrehozásának kell.
-
-## <a name="register-a-model"></a>Regisztrálja a modellt
-
-Csak a betanított modellek is üzembe helyezhetők. A modell Azure Machine Learning, vagy egy másik szolgáltatás használatával kell betanítani. A modell fájlból regisztrálásához használja a következő kódot:
+A modell beállításjegyzék módja a tárolására és rendszerezheti a betanított modellek az Azure-felhőben. Modellek az Azure Machine Learning szolgáltatás munkaterületen vannak regisztrálva. A modell Azure Machine Learning, vagy egy másik szolgáltatás használatával kell betanítani. A modell fájlból regisztrálásához használja a következő kódot:
 
 ```python
 from azureml.core.model import Model
@@ -77,16 +73,15 @@ model = Model.register(model_path = "model.pkl",
                        workspace = ws)
 ```
 
-> [!NOTE]
-> A példa bemutatja, hogy egy modell pickle-fájlként tárolja, amíg is használt ONNX-modellekkel. ONNX-modellekkel használatával kapcsolatos további információkért lásd: a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
+**Becsült időtartam**: Körülbelül 10 másodperc.
 
 További információkért lásd: a dokumentáció a a [Model class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a id="configureimage"></a> Egy rendszerkép-konfiguráció létrehozása
+## <a id="configureimage"></a> Hozzon létre és regisztrálja a kép
 
 Üzembe helyezett modellnél képként vannak csomagolva. A rendszerkép tartalmazza a minta futtatásához szükséges függőségeket.
 
-A **Azure-Tárolópéldányon**, **Azure Kubernetes Service**, és **Azure IoT Edge** telepítések esetén a `azureml.core.image.ContainerImage` osztály egy rendszerkép-konfiguráció létrehozására szolgál. A rendszerkép-konfiguráció szolgál majd hozzon létre egy új Docker-rendszerképet. 
+A **Azure-Tárolópéldányon**, **Azure Kubernetes Service**, és **Azure IoT Edge** telepítések esetén a [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály egy rendszerkép-konfiguráció létrehozására szolgál. A rendszerkép-konfiguráció szolgál majd hozzon létre egy új Docker-rendszerképet. 
 
 A következő kód bemutatja, hogyan hozhat létre egy új rendszerkép-konfiguráció:
 
@@ -102,24 +97,101 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                  )
 ```
 
-Ebben a konfigurációban egy `score.py` át fájlt kéri, hogy a modell. Ez a fájl két függvényt tartalmazza:
+**Becsült időtartam**: Körülbelül 10 másodperc.
 
-* `init()`: Általában ez a függvény a modellben tölt be egy globális objektum. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
+Ebben a példában a következő táblázat ismerteti a fontos paramétereket:
 
-* `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. A futtatás bemenetei és kimenetei általában JSON-fájlokat használnak a szerializáláshoz vagy a deszerializáláshoz, de más formátumokat is támogatnak.
-
-Példa `score.py` fájlt, tekintse meg a [kép besorolási oktatóanyag](tutorial-deploy-models-with-aml.md#make-script). Például, hogy az ONNX-modellt használja, tekintse meg a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
-
-A `conda_file` paraméterrel adja meg a conda-környezet fájlt. Ez a fájl a conda-környezet üzembe helyezett modell határozza meg. Ez a fájl létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy környezetben fájlt (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file).
+| Paraméter | Leírás |
+| ----- | ----- |
+| `execution_script` | Itt adhatja meg, amely a szolgáltatásnak küldött kérések fogadására szolgál egy Python-szkriptet. Ebben a példában a parancsfájl tartalmazza a `score.py` fájlt. További információkért lásd: a [parancsfájl végrehajtási](#script) szakaszban. |
+| `runtime` | Azt jelzi, hogy a lemezképet használja-e a Python. A másik lehetőség `spark-py`, Apache Spark a Python melyik használ. |
+| `conda_file` | Adja meg a conda-környezet fájl segítségével. Ez a fájl a conda-környezet üzembe helyezett modell határozza meg. Ez a fájl létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy környezetben fájlt (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file). |
 
 További információkért lásd: a dokumentáció a [ContainerImage osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
 
-## <a id="createimage"></a> A lemezkép létrehozása
+### <a id="script"></a> A parancsfájl végrehajtása
 
-Miután létrehozta a rendszerkép-konfiguráció, a lemezképek létrehozására használhatja. Ez a rendszerkép a tárolójegyzékbe a munkaterület tárolja. Létrehozása után telepítheti a ugyanazt a lemezképet több szolgáltatásra.
+A végrehajtási parancsfájl egy üzembe helyezett rendszerképet elküldött adatokat fogad, és továbbítja azt a modellt. Ezután a modell által visszaadott válasz vesz igénybe, és adja vissza, amely az ügyfél számára. A parancsfájl csak a modell; ismernie kell az adatokat, amelyek a modellt vár, és adja vissza. A szkript általában két függvényt, amely betölteni, és futtassa a modell tartalmazza:
+
+* `init()`: Általában ez a függvény a modellben tölt be egy globális objektum. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
+
+* `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. Bemenetek és kimenetek a futtató szerializálást és deszerializálás általában használni JSON. Nyers bináris adatok is együttműködik. A modellhez való elküldése előtt, vagy az ügyfél való visszatérés előtt alakíthatja át az adatokat. 
+
+#### <a name="working-with-json-data"></a>JSON-adatok használata
+
+Az alábbiakban látható egy példa a parancsfájl, amely elfogadja és JSON-adatokat adja vissza. A `run` függvény olyan formátumra, hogy a modellt vár, és ezután alakítja át a JSON-válasz visszaküldés előtt alakítja át az adatok JSON-ból:
 
 ```python
-# Create the image from the image configuration
+# import things required by this script
+import json
+import numpy as np
+import os
+import pickle
+from sklearn.externals import joblib
+from sklearn.linear_model import LogisticRegression
+
+from azureml.core.model import Model
+
+# load the model
+def init():
+    global model
+    # retrieve the path to the model file using the model name
+    model_path = Model.get_model_path('sklearn_mnist')
+    model = joblib.load(model_path)
+
+# Passes data to the model and returns the prediction
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    return json.dumps(y_hat.tolist())
+```
+
+#### <a name="working-with-binary-data"></a>Bináris adatok használata
+
+Ha a modell fogad __bináris adatok__, használjon `AMLRequest`, `AMLResponse`, és `rawhttp`. Az alábbiakban látható egy példa egy parancsfájlt, amely elfogadja a bináris adatokat adja vissza a POST kérésekhez a fordított bájt. A GET-kérésekhez akkor a válasz törzsében a teljes URL-címet adja vissza:
+
+```python
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+# Accept and return binary data
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    # handle GET requests
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    # handle POST requests
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> A `azureml.contrib` névtér gyakran változik, dolgozunk a szolgáltatás fejlesztéséhez. Ezért semmit a névtérben lévő kell előzetes minősül, és nincs teljes egészében a Microsoft támogatja.
+>
+> Tesztelje a helyi fejlesztési környezetbe kell, ha az összetevőket telepíthet a `contrib` névtér a következő paranccsal: 
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+### <a id="createimage"></a> A lemezkép regisztrálása
+
+Miután létrehozta a rendszerkép-konfiguráció, a lemezkép regisztrálása használhatja. Ez a rendszerkép a tárolójegyzékbe a munkaterület tárolja. Létrehozása után telepítheti a ugyanazt a lemezképet több szolgáltatásra.
+
+```python
+# Register the image from the image configuration
 image = ContainerImage.create(name = "myimage", 
                               models = [model], #this is the model object
                               image_config = image_config,
@@ -133,7 +205,7 @@ Képek egyben a rendszerverzióval ellátott ugyanazzal a névvel több lemezké
 
 További információkért lásd: a dokumentáció a [ContainerImage osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
 
-## <a name="deploy-the-image"></a>A rendszerkép üzembe helyezése
+## <a id="deploy"></a> A rendszerkép üzembe helyezése
 
 Központi telepítés kap, a folyamat esetén úgy, hogy a számítási célnak függően némileg eltérnek. Az alábbi szakaszokban található információk segítségével megtudhatja, hogyan helyezhet üzembe:
 
@@ -141,6 +213,17 @@ Központi telepítés kap, a folyamat esetén úgy, hogy a számítási célnak 
 * [Az Azure Kubernetes-szolgáltatás](#aks)
 * [Project Brainwave (mező-programmable gate arrays)](#fpga)
 * [Az Azure IoT Edge-eszközök](#iotedge)
+
+> [!NOTE]
+> Amikor **webszolgáltatásként üzembe helyezése**, három üzembe helyezési módszert használhatja:
+>
+> | Módszer | Megjegyzések |
+> | ----- | ----- |
+> | [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) | Regisztrálja a modellt kell, és ez a módszer használata előtt hozzon létre egy rendszerképet. |
+> | [Üzembe helyezése](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) | Ha ezzel a módszerrel nem kell regisztrálja a modellt, vagy a kép létrehozásához. Azonban Ön nem határozhatja meg a modell vagy a kép neve vagy hozzárendelt címkék és leírások. |
+> | [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) | Ha ezzel a módszerrel nem kell hozzon létre egy rendszerképet. De nem rendelkezik a létrehozott lemezkép neve felett. |
+>
+> A példák a jelen dokumentum-használat `deploy_from_image`.
 
 ### <a id="aci"></a> Az Azure Container Instances szolgáltatásban való üzembe helyezése
 
@@ -179,75 +262,82 @@ Az Azure Kubernetes Service az alábbi képességeket biztosítja:
 * A modelladatok gyűjtésének
 * A webes szolgáltatások gyors válaszidők
 
-Azure Kubernetes Service-ben való üzembe helyezéséhez használja az alábbi lépéseket:
+#### <a name="create-a-new-cluster"></a>Új fürt létrehozása
 
-1. AKS-fürt létrehozásához használja a következő kódot:
+Az Azure Kubernetes Service-fürtöt létrehozni, használja a következő kódot:
 
-    > [!IMPORTANT]
-    > Az AKS-fürtöt hoz létre a rendszer egy folyamatot, amikor a munkaterülethez. Létrehozása után újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
-    > A [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), ha az élcsomópontba, győződjön meg arról, szorozva vm_size agent_count nagyobb vagy egyenlő 12 virtuális processzort válasszon agent_count és vm_size, egyéni értékeket. Például ha egy "Standard D3 v2", amelynek 4 virtuális CPU-vm_size majd ki kell választania egy agent_count 3 vagy nagyobb.
+> [!IMPORTANT]
+> Az AKS-fürtöt hoz létre a rendszer egy folyamatot, amikor a munkaterülethez. Létrehozása után újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
+> A [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), ha az élcsomópontba, győződjön meg arról, szorozva vm_size agent_count nagyobb vagy egyenlő 12 virtuális processzort válasszon agent_count és vm_size, egyéni értékeket. Például ha egy "Standard D3 v2", amelynek 4 virtuális CPU-vm_size majd ki kell választania egy agent_count 3 vagy nagyobb.
 
-    ```python
-    from azureml.core.compute import AksCompute, ComputeTarget
+```python
+from azureml.core.compute import AksCompute, ComputeTarget
 
-    # Use the default configuration (you can also provide parameters to customize this)
-    prov_config = AksCompute.provisioning_configuration()
+# Use the default configuration (you can also provide parameters to customize this)
+prov_config = AksCompute.provisioning_configuration()
 
-    aks_name = 'aml-aks-1' 
-    # Create the cluster
-    aks_target = ComputeTarget.create(workspace = ws, 
-                                        name = aks_name, 
-                                        provisioning_configuration = prov_config)
+aks_name = 'aml-aks-1' 
+# Create the cluster
+aks_target = ComputeTarget.create(workspace = ws, 
+                                    name = aks_name, 
+                                    provisioning_configuration = prov_config)
 
-    # Wait for the create process to complete
-    aks_target.wait_for_completion(show_output = True)
-    print(aks_target.provisioning_state)
-    print(aks_target.provisioning_errors)
-    ```
+# Wait for the create process to complete
+aks_target.wait_for_completion(show_output = True)
+print(aks_target.provisioning_state)
+print(aks_target.provisioning_errors)
+```
 
-    **Becsült időtartam**: Körülbelül 20 percet.
+**Becsült időtartam**: Körülbelül 20 percet.
 
-    > [!TIP]
-    > Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és 1.11-es verzió. *, használhatja a rendszerképének üzembe helyezéséhez. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő fürthöz a munkaterülethez mutat be:
-    >
-    > ```python
-    > from azureml.core.compute import AksCompute, ComputeTarget
-    > # Set the resource group that contains the AKS cluster and the cluster name
-    > resource_group = 'myresourcegroup'
-    > cluster_name = 'mycluster'
-    > 
-    > # Attatch the cluster to your workgroup
-    > attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-    >                                          cluster_name = cluster_name)
-    > aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
-    > 
-    > # Wait for the operation to complete
-    > aks_target.wait_for_completion(True)
-    > ```
+#### <a name="use-an-existing-cluster"></a>Használjon egy meglévő fürthöz
 
-2. A létrehozott rendszerképének üzembe helyezéséhez a [a lemezkép létrehozásának](#createimage) szakasz ebben a dokumentumban a következő kód használatával:
+Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és 1.11-es verzió. *, használhatja a rendszerképének üzembe helyezéséhez. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő fürthöz a munkaterülethez mutat be:
 
-    ```python
-    from azureml.core.webservice import Webservice, AksWebservice
+```python
+from azureml.core.compute import AksCompute, ComputeTarget
+# Set the resource group that contains the AKS cluster and the cluster name
+resource_group = 'myresourcegroup'
+cluster_name = 'mycluster'
 
-    # Set configuration and service name
-    aks_config = AksWebservice.deploy_configuration()
-    aks_service_name ='aks-service-1'
-    # Deploy from image
-    service = Webservice.deploy_from_image(workspace = ws, 
-                                                name = aks_service_name,
-                                                image = image,
-                                                deployment_config = aks_config,
-                                                deployment_target = aks_target)
-    # Wait for the deployment to complete
-    service.wait_for_deployment(show_output = True)
-    print(service.state)
-    ```
+# Attatch the cluster to your workgroup
+attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+                                         cluster_name = cluster_name)
+aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 
-    > [!TIP]
-    > Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+# Wait for the operation to complete
+aks_target.wait_for_completion(True)
+```
 
-További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py) osztályokat.
+**Becsült időtartam**: Körülbelül 3 perc.
+
+#### <a name="deploy-the-image"></a>A rendszerkép üzembe helyezése
+
+A létrehozott rendszerképének üzembe helyezéséhez a [a lemezkép létrehozásának](#createimage) szakasz ebben a dokumentumban az Azure Kubernetes-Server-fürt a következő kód használatával:
+
+```python
+from azureml.core.webservice import Webservice, AksWebservice
+
+# Set configuration and service name
+aks_config = AksWebservice.deploy_configuration()
+aks_service_name ='aks-service-1'
+# Deploy from image
+service = Webservice.deploy_from_image(workspace = ws, 
+                                            name = aks_service_name,
+                                            image = image,
+                                            deployment_config = aks_config,
+                                            deployment_target = aks_target)
+# Wait for the deployment to complete
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+**Becsült időtartam**: Körülbelül 3 perc.
+
+> [!TIP]
+> Ha üzembe helyezés során hibák, használja `service.get_logs()` az AKS szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+
+További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) osztályokat.
 
 ### <a id="fpga"></a> A mező-programmable gate arrays (FPGA) üzembe helyezése
 
@@ -375,7 +465,9 @@ prediction = service.run(input_data = test_sample)
 print(prediction)
 ```
 
-## <a name="update-the-web-service"></a>A web service frissítése
+A webszolgáltatás, egy REST API-t, így a ügyfélalkalmazások számos programozási nyelven hozhat létre. További információkért lásd: [ügyfél létrehozása alkalmazások felhasználhatják őket a problémák megoldásához segítséget](how-to-consume-web-service.md).
+
+## <a id="update"></a> A web service frissítése
 
 A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
 
@@ -397,6 +489,8 @@ print(service.state)
 > [!NOTE]
 > Amikor frissít egy képet, a webszolgáltatás nem frissül automatikusan. Minden egyes szolgáltatás, amely az új lemezképet használni kívánt manuálisan kell frissítenie.
 
+További információkért lásd: a dokumentáció a a [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály.
+
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
@@ -405,9 +499,14 @@ Kép törléséhez használja `image.delete()`.
 
 A regisztrált modell törléséhez használja `model.delete()`.
 
+További információkért lásd: a dokumentáció a [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), és [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+
 ## <a name="next-steps"></a>További lépések
 
 * [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)
 * [Hogyan futtathat batch-előrejelzés](how-to-run-batch-predictions.md)
+* [Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése](how-to-enable-app-insights.md)
+* [A modellek éles adatok gyűjtése](how-to-enable-data-collection.md)
+* [Azure Machine Learning service SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [Az Azure Machine Learning szolgáltatás használata az Azure Virtual Network szolgáltatással](how-to-enable-virtual-network.md)

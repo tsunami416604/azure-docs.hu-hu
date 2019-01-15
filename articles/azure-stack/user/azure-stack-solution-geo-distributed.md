@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 85400269be13295161aaff5936a6ae8c7d503b34
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: da6c9fa416d19916243860178d15619306aaf3c0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245871"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305315"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben
 
@@ -41,7 +41,7 @@ A földrajzilag elosztott mintával az alkalmazás régióban is átnyúlik. Is 
 
 #### <a name="scalability-considerations"></a>Méretezési szempontok
 
-A megoldás, ebben az oktatóanyagban felépítheti, nem az, hogy megfeleljen a méretezhetőséget. Azonban ha és más Azure-ban és a helyszíni technológiáival és megoldásaival együttes alkalmazásával úgy tud megfelelni méretezhetőségi követelményeinek. Információ a hyrbid megoldás létrehozása az automatikus skálázást keresztül traffic manager: [több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral](azure-stack-solution-cloud-burst.md).
+A megoldás, ebben az oktatóanyagban felépítheti, nem az, hogy megfeleljen a méretezhetőséget. Azonban ha és más Azure-ban és a helyszíni technológiáival és megoldásaival együttes alkalmazásával úgy tud megfelelni méretezhetőségi követelményeinek. A hibrid megoldás létrehozása az automatikus skálázást keresztül traffic manager további információkért lásd: [több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral](azure-stack-solution-cloud-burst.md).
 
 #### <a name="availability-considerations"></a>Rendelkezésre állási szempontok
 
@@ -93,7 +93,7 @@ Egy Azure-előfizetés és az Azure Stack-telepítés is szükséges.
 
 ### <a name="obtain-a-custom-domain-and-configure-dns"></a>Szerezze be az egyéni tartomány és a DNS konfigurálása
 
-Frissítse a DNS zóna fájl foCreate web apps és a tartomány publishr. Az Azure AD majd ellenőrizheti az egyéni tartománynév tulajdonjogát. Használja [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) az Azure vagy Office 365 és a külső DNS-rekordok Azure-ban, vagy adja hozzá a DNS-bejegyzést, [egy másik DNS-regisztráló webhelyén](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
+Frissítse a tartomány DNS-zónafájljában. Az Azure AD majd ellenőrizheti az egyéni tartománynév tulajdonjogát. Használja [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) az Azure vagy Office 365 és a külső DNS-rekordok Azure-ban, vagy adja hozzá a DNS-bejegyzést, [egy másik DNS-regisztráló webhelyén](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
 1. Egyéni tartomány regisztrálása egy nyilvános regisztrálójánál.
 
@@ -273,7 +273,7 @@ Frissítse a tartomány DNS-zónafájljában. Az Azure AD ellenőrzi, hogy az eg
 
 -   A tartomány DNS-zónafájljában frissítése az Azure AD által biztosított DNS-bejegyzés hozzáadásával.
 
-DNS-bejegyzések fornorthwindcloud.comand www.northwindcloud.com hozzáadásához például thenorthwindcloud.com gyökértartomány DNS-beállításainak konfigurálása.
+For example, to add DNS entries for northwindcloud.com and www.northwindcloud.com, configure DNS settings for the northwindcloud.com root domain.
 
 > [!Note]  
 >  A tartománynév alapján vásárolhatók a [az Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).  
@@ -302,7 +302,7 @@ A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat péld�
 
 2.  Adjon hozzá egy CNAME-rekordot le egy altartományt az alkalmazás alapértelmezett gazdagépnevére.
 
-  Ha www.northwindcloud.comdomain például adjon hozzá egy CNAME-rekordot, amely leképezi a namewwwto < alkalmazás\_neve >. azurewebsites.NET webhelyet.
+  A www.northwindcloud.com tartomány például vegyen fel egy CNAME-rekordot, amely leképezi a neve < alkalmazás\_neve >. azurewebsites.NET webhelyet.
 
 Miután hozzáadta a CNAME REKORDOT, a DNS-rekordok oldala a következő példához hasonlóan néz ki:
 
@@ -549,7 +549,7 @@ Válassza ki a webalkalmazás lapjának **SL beállítások**. Ezután a **HTTPS
 
 A művelet befejeződése után nyissa meg a HTTP URL-címek, amelyek az alkalmazás valamelyik. Példa:
 
--   http://<APP_NAME>.azurewebsites.NET
+-   http://<app_name>.azurewebsites.net
 -   http://northwindcloud.com
 -   <http://www.northwindcloud.com>
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/18/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 95fcb98e9ca6ff85e37ee88d5a5122ffa6887bb4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1629c4b62fb04e057c38261a33fd3bc759b279c1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245208"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267402"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack egy hibrid felhőmegoldás üzembe helyezése
 
@@ -64,7 +64,7 @@ Ebben az oktatóanyagban a Kezdés előtt győződjön meg arról is megfeleljen
   - A Windows Server 2016-lemezkép
   - A Microsoft SQL Server-rendszerképpel rendelkező Windows Server 2016
   - A megfelelő csomagok és ajánlatok típusa
- - A webalkalmazás tartomány nevét. Ha nincs is tartománynév vásároljon egyet egy tartományszolgáltatótól, például a GoDaddy, Bluehost és InMotion.
+ - A domain name for your web application. Ha nincs is tartománynév vásároljon egyet egy tartományszolgáltatótól, például a GoDaddy, Bluehost és InMotion.
 - A tartomány egy megbízható hitelesítésszolgáltatótól LetsEncrypt például SSL-tanúsítvány.
 - Egy webalkalmazást, amely egy SQL Server-adatbázis kommunikál, és támogatja az Application Insights. Letöltheti a [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) mintaalkalmazást a Githubról.
 - Hibrid hálózat egy Azure virtuális hálózat és az Azure Stack virtuális hálózat között. Részletes útmutatásért lásd: [hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stack](azure-stack-solution-hybrid-connectivity.md).
@@ -77,7 +77,7 @@ Ebben az oktatóanyagban a Kezdés előtt győződjön meg arról is megfeleljen
 
 2. Az a **irányítópult**válassza **Marketplace**.
 
-    ![Auzure Stack piactéren](media/azure-stack-solution-hybrid-cloud/image1.png)
+    ![Azure Stack Marketplace](media/azure-stack-solution-hybrid-cloud/image1.png)
 
 3. A **Marketplace**válassza **számítási**, és válassza a **további**. A **további**, jelölje be a **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer, a Windows Server** kép.
 
@@ -208,7 +208,7 @@ A több felhőre kiterjedő alkalmazások megfelelően konfigurálja a DNS, a fe
 
 Ebben az oktatóanyagban az Azure DNS használatával kezelheti a DNS-ben. (App Service-tartományok nem fog működni.)
 
-### <a name="create-subdomains"></a>Hozzon létre altartományt
+### <a name="create-subdomains"></a>Create subdomains
 
 A Traffic Manager DNS CNAME-rekordokat támaszkodik, mert egy altartomány megfelelően irányíthatja a forgalmat végpontok van szükség. További információ a DNS-rekordok és a tartomány-hozzárendelés: [tartományok leképezése a Traffic Managerrel](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager-custom-domain-name)
 
@@ -236,7 +236,7 @@ Konfigurálja az Azure és az Azure Stack webalkalmazásokat SSL-tanúsítványo
 
 Az SSL hozzáadása az Azure-bA:
 
-1. Győződjön meg arról, hogy az SSL-tanúsítványt, szerezze be a létrehozott altartomány érvényes. (Nem probléma, a helyettesítő tanúsítvány használatára.)
+1. Make sure that the SSL certificate you obtain is valid for the subdomain you created. (Nem probléma, a helyettesítő tanúsítvány használatára.)
 
 2. Az Azure-ban, kövesse az utasításokat a **a webalkalmazás előkészítése** és **az SSL-tanúsítvány kötése** szakaszai a [meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) cikkek. Válassza ki **SNI-alapú SSL** , a **SSL-típus**.
 

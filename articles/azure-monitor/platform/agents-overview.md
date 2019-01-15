@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438200"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265028"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
@@ -76,5 +76,5 @@ Ezeket az ügynököket a virtuális gép figyelése valamilyen kombinációját
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [áttekintése a Log Analytics-ügynököket](../../azure-monitor/platform/log-analytics-agent.md) követelmények és támogatott módszerek gépekhez az adatközpontban vagy egyéb felhőalapú környezetben üzemeltetett verziójától, az ügynök telepítése.
+- Lásd: [áttekintése a Log Analytics-ügynököket](../../azure-monitor/platform/log-analytics-agent.md) követelmények és támogatott módszerek telepítheti az ügynököt a gépek Azure-ban üzemeltetett, az adatközpontban vagy egyéb felhőalapú környezetben.
 

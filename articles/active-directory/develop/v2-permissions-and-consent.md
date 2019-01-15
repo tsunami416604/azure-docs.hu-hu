@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 5283782188eaebe3997b6de31b087da74cf10486
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: e118249cf2aaf07aeb4f337636a46d088102bca8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620132"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261179"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Engedélyek és jóváhagyás az Azure Active Directory v2.0-végpont
 
@@ -37,7 +37,7 @@ Alkalmazások, amelyek integrálhatók a Microsoft identity platform hajtsa vég
 
 A Microsoft identity platform valósítja meg a [OAuth 2.0](active-directory-v2-protocols.md) engedélyezési protokollt. OAuth 2.0 a egy módszer, amelyen keresztül egy harmadik féltől származó alkalmazások hozzáférhetnek a web-ban üzemeltetett erőforrásokhoz egy felhasználó nevében. Bármely webhelyen üzemeltetett erőforrás, amely integrálható a Microsoft identity platform rendelkezik egy erőforrás-azonosító, vagy *Alkalmazásazonosító URI-ja*. Ha például a Microsoft web-ban üzemeltetett erőforrások többek között:
 
-* A Microsoft Graph: `https://graph.microsoft.com`
+* Microsoft Graph: `https://graph.microsoft.com`
 * Az Office 365 Posta API: `https://outlook.office.com`
 * Az Azure AD Graph: `https://graph.windows.net`
 
@@ -145,7 +145,7 @@ Ha az alkalmazás a szervezetek hatóköreinek rendszergazdai korlátozott hozz�
 
 Ha az alkalmazás magas jogosultsági delegált engedélyeket és a egy rendszergazda e engedélyt ad a rendszergazdai jóváhagyás végponton keresztül, engedély a bérlő összes felhasználója esetében.
 
-Ha az alkalmazás által kért alkalmazás engedélyeit, és a rendszergazda engedélyezi ezeket az engedélyeket a rendszergazda keresztül hozzájárulás végpont, nem történik az engedélyhez bármely adott felhasználó nevében. Ehelyett az ügyfélalkalmazás jogosultságot *közvetlenül*. Az ilyen típusú engedélyek általában csak démon függőkártartalékát és más nem interaktív, a háttérben futó alkalmazások által használt.
+Ha az alkalmazás által kért alkalmazás engedélyeit, és a rendszergazda engedélyezi ezeket az engedélyeket a rendszergazda keresztül hozzájárulás végpont, nem történik az engedélyhez bármely adott felhasználó nevében. Ehelyett az ügyfélalkalmazás jogosultságot *közvetlenül*. Az ilyen típusú engedélyek általában csak démonszolgáltatásokat és más nem interaktív, a háttérben futó alkalmazások által használt.
 
 ## <a name="using-the-admin-consent-endpoint"></a>A rendszergazdai jóváhagyás végpont használatával
 
@@ -164,7 +164,7 @@ A lista az alkalmazás statikusan kért engedélyeket konfigurálása:
 2. Keresse meg a **Microsoft Graph-engedélyek** szakaszt, és adja hozzá az adott alkalmazáshoz szükséges engedélyeket.
 3. **Mentés** az alkalmazás regisztrációját.
 
-### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: Jelentkezzen be a felhasználót az alkalmazáshoz
+### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: Jelentkezzen be a felhasználó az alkalmazás
 
 Általában a rendszergazdai jóváhagyás végpontot használó alkalmazás létrehozását, ha az alkalmazás kell weblap vagy nézet, amelyben a rendszergazda jóváhagyhatja az Alkalmazásengedélyek. Ezen az oldalon az alkalmazás regisztrációs folyamat, az app-beállításokban, részei lehetnek, vagy egy dedikált "Csatlakozás" folyamat lehet. Sok esetben logikus jelenjen meg ez az alkalmazás "Csatlakozás" nézet csak akkor, ha egy felhasználó munkahelyi vagy iskolai Microsoft-fiókkal van bejelentkezve.
 
@@ -254,4 +254,4 @@ Az OAuth 2.0 protokollt és a hozzáférési tokenek beszerzése kapcsolatos tov
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha Ön vagy az alkalmazás váratlan hibák jelennek a jóváhagyási folyamat során, ebben a cikkben talál a hibaelhárítási lépéseket lásd: [váratlan hiba történt, amikor beleegyezést ad egy alkalmazás](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+Ha Ön vagy az alkalmazás váratlan hibák jelennek a jóváhagyási folyamat során, tekintse meg ebben a cikkben talál a hibaelhárítási lépéseket: [Váratlan hiba történt, amikor beleegyezést ad egy alkalmazás](../manage-apps/application-sign-in-unexpected-user-consent-error.md).

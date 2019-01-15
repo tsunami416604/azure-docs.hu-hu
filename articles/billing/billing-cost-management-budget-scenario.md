@@ -1,6 +1,6 @@
 ---
 title: Azure-elszámolással és a cost management költségvetési eset |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Azure automatation leállíthatja a virtuális gépeket külön költségvetési küszöbértékek alapján.
+description: Ismerje meg, hogyan használhatja az Azure automation leállíthatja a virtuális gépeket külön költségvetési küszöbértékek alapján.
 services: billing
 documentationcenter: ''
 author: Erikre
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0c67b100b0d44b539a37a8ea54954d58bba38cb5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094813"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267198"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
@@ -125,7 +125,7 @@ Az alábbi lépéseket, amelyek végrehajtják a fenti lépéseket a logikai alk
 
 Miután az Azure üzembe helyezte a logikai alkalmazást, a **Logic Apps Designerben** megnyílik, és megjeleníti a panel bemutató video- és a gyakran használt eseményindítókat. 
 
-### <a name="add-a-trigger"></a>Eseményindító hozzáadása
+### <a name="add-a-trigger"></a>Adjon hozzá egy triggert
 
 Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. A műveletek olyan fordulhat elő, az eseményindító aktiválása után minden lépést. 
 

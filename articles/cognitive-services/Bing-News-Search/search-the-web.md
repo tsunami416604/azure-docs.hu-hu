@@ -8,266 +8,52 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: overview
-ms.date: 06/21/2016
+ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 17383d38b1401149003ad9d1794b3e69284f9033
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 32c18508d07fc911366ffc77ebe347efd3c1b6fa
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253092"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261451"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
-A Bing News Search API a [Bing Hírekhez](https://www.bing.com/news) hasonló (de nem pontosan ugyanolyan) élményt nyújt. A Bing News Search API lehetővé teszi, hogy keresési lekérdezést küldjön a Bingnek, és egy ahhoz kapcsolódó híreket tartalmazó listát kapjon vissza.
+A Bing News Search API megkönnyíti a Bing cognitive news keresési képességek integrálása az alkalmazásokba. Az API-t a hasonló élményt nyújt [Bing hírek](https://www.bing.com/news), ami lehetővé teszi a keresési lekérdezéseket küldenek, és megfelelő hírcikkeket fogadásához.
 
-Ha keresési eredmények csak híreket tartalmazó oldalának létrehozásán dolgozik, amely a felhasználó keresési lekérdezéséhez kapcsolódó híreket keres, ezt az API-t hívja meg az általánosabb [Bing Web Search API](../bing-web-search/search-the-web.md) helyett. Ha híreket és egyéb típusú tartalmakat, például weboldalakat, képeket és videókat is szeretne keresni, akkor a Bing Web Search API-t hívja meg.
+Vegye figyelembe, hogy a Bing News Search API hírkeresési eredményeket csak biztosít-e. Használja a [Bing Web Search API](../bing-web-search/search-the-web.md), [Video Search API](../bing-video-search/search-the-web.md) és [Image Search API](../bing-image-search/overview.md) webes tartalmat más típusú.
 
-## <a name="suggesting--using-search-terms"></a>Keresési kifejezések javaslása és használata
+## <a name="bing-news-search-api-features"></a>A Bing News Search API-funkciók
 
-Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
+Bár a Bing News Search API elsősorban talál, és adja vissza a kapcsolódó hírek, számos funkciót biztosít a intelligens és összpontosítás hírek lekéréséhez a weben.
 
-Miután a felhasználó megadja a keresőkifejezést, kódolja azt URL-címként a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
+|Szolgáltatás  |Leírás  |
+|---------|---------|
+|[Javasolhat, és a keresési feltételek használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A keresési élmény javításához használatával a [a Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a javasolt keresési kifejezéseket, éppen gépelt megjelenítéséhez.         |
+|[Általános hírek](concepts/search-for-news.md#get-general-news)     | Hírek keresése egy keresési lekérdezést küld a Bing News Search API, és visszaállítani híreket cikkek listáját.           |
+|[A mai híreket](concepts/search-for-news.md#get-todays-top-news)      | Szerezze be a legfrissebb híreket a nap minden kategóriák között.       |
+|[Hírek kategória szerint](concepts/search-for-news.md)     | Adott kategóriákból hírek keresése.        | 
+|[Hírek](concepts/search-for-news.md)     | Keresse meg a főcímeket összes kategóriák között.         |
 
-## <a name="getting-general-news"></a>Általános hírek lekérése
+## <a name="workflow"></a>Munkafolyamat
 
-A felhasználó keresőkifejezéséhez kapcsolódó, az interneten megtalálható általános hírek lekéréséhez küldje el a következő GET kérést:
+A Bing News Search API egy olyan webes RESTful szolgáltatás, így könnyen hívása minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése. Használhatja a szolgáltatást vagy a REST API-t, vagy az SDK használatával.
 
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
+1. Hozzon létre egy Cognitive Services API-fiókot a Bing Search APIs a hozzáférést. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api).
 
-Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
+2. Egy érvényes keresési lekérdezéssel, az API-kérés küldése.
 
-Ha egy konkrét tartományban található híreket szeretne lekérni, használja a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
-```
-
-Az alábbiakban az előző lekérdezésre adott válasz látható. Az egyes cikkeket a válaszban kapott sorrendben kell megjelenítenie. Ha a cikkhez fürtözött cikkek tartoznak, jelezze, hogy vannak kapcsolódó cikkek, és jelenítse meg őket, ha a felhasználó ezt kéri.
-
-```json
-{
-    "_type" : "News",
-    "readLink" : "https:\/\/api.cognitive.microsoft.com\/bing\/v5\/news\/search?q=sailing+dinghies",
-    "totalEstimatedMatches" : 88400,
-    "value" : [{
-        "name" : "Sailing Vies for Four Trophies",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891FE99A72...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.9C23AA5...",
-                "width" : 650,
-                "height" : 341
-            }
-        },
-        "description" : "College Rankings, presented by Zim...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "contoso.com"
-        }],
-        "datePublished" : "2017-04-14T15:28:00"
-    },
-
-    ...
-
-    {
-        "name" : "Fabrikam Sailing Club to host Mirror Dinghy...",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891F...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.36...",
-                "width" : 448,
-                "height" : 300
-            }
-        },
-        "description" : "The sailing club that trained Olympian Ben...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "Contoso"
-        }],
-        "datePublished" : "2017-04-04T11:02:00",
-        "category" : "Sports"
-    }]
-}
-```
-
-A [news](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) válasz listázza a cikkeket, amelyeket a Bing a lekérdezéshez kapcsolódónak ítélt. A `totalEstimatedMatches` mező az összes megtekinthető cikk becsült számát adja meg. További információért a cikkek lapozásáról olvassa el a [hírek lapozását](./paging-news.md) ismertető cikket.
-
-A lista minden [cikke](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle) tartalmazza a cikk nevét, leírását és a cikket tartalmazó eredeti webhely URL-címét. Ha a cikk tartalmaz képet, az objektum tartalmazza a kép miniatűrjét. Használja a `name` és az `url` mezőket egy hivatkozás létrehozásához, amely átirányítja a felhasználót a cikkhez az eredeti webhelyen. Ha a cikk tartalmaz képet, tegye a képet kattinthatóvá az `url` használatával. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
-
-Ha a Bing meg tudja határozni a cikk kategóriáját, a cikk tartalmazza a `category` mezőt.
-
-## <a name="getting-todays-top-news"></a>A nap legfrissebb híreinek lekérése
-
-A nap legfrissebb híreinek lekéréséhez ugyanazt a kérést kell végrehajtania, mint az általános hírek lekérésénél, azzal a különbséggel, hogy a `q` mezőt nem kell beállítania.
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-A legfrissebb hírek lekérésére adott válasz majdnem ugyanolyan, mint az általános hírek lekérésénél. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
-
-## <a name="getting-news-by-category"></a>Hírek lekérése kategóriák szerint
-
-A hírek kategóriák szerinti (például a legfrissebb, sporttal vagy szórakozással kapcsolatos cikkek) lekéréséhez küldje el a Bingnek a következő GET kérést:
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news?category=sports&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-A [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) lekérdezési paraméter használatával adja meg a lekérendő cikkek kategóriáját. A lehetséges megadható hírkategóriák listájáért tekintse meg a [Hírkategóriák piac szerint](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market) című részt.
-
-A hírek kategóriák szerinti lekérésére adott válasz majdnem ugyanolyan, mint az általános hírek lekérésénél. A cikkek azonban mind a megadott kategóriába tartoznak.
-
-## <a name="getting-headline-news"></a>Fő hírek lekérése
-
-A fő hírek az összes hírkategóriából való lekéréséhez küldje el a Bingnek a következő GET kérést:
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news?mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-MSEdge-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-A [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) lekérdezési paramétert ne használja.
-
-A fő hírek lekérésére adott válasz majdnem ugyanolyan, mint a legfrissebb hírek lekérésénél. Ha a cikk egy vezércikk, a `headline` mező **true** értékre van állítva.
-
-Alapértelmezés szerint a válasz legfeljebb 12 vezércikket tartalmaz. A visszaadandó vezércikkek számának módosításához adja meg a [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount) lekérdezési paramétert. A válasz hírkategóriánként legfeljebb négy olyan cikket is tartalmaz, amely nem vezércikk.
-
-A válasz a fürtöket egy cikknek veszi. Mivel egy fürtbe számos cikk tartozhat, a válasz kategóriánként 12-nél több vezércikket és négynél több nem vezércikket is tartalmazhat.
-
-## <a name="getting-trending-news"></a>Népszerű hírek lekérése
-
-A közösségi hálózatokon népszerű hírtémakörök lekéréséhez küldje el a Bingnek a következő GET kérést:
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics?mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-X-MSAPI-UserState: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-> [!NOTE]
-> A Népszerű témakörök csak az amerikai (en-US) és a kínai (zh-CN) piacon érhetők el.
-
-Az alábbi JSON az előző kérésre adott választ mutatja. Minden népszerű hír tartalmaz egy kapcsolódó képet, egy friss hírek jelzőt és egy URL-címet, amely a cikkhez tartozó Bing keresési eredményekre mutat. Használja a `webSearchUrl` mezőben lévő URL-címet a felhasználó a Bing keresési eredményeinek oldalára való átirányításához. Használhatja a lekérdezési szöveget is a [Web Search API](../bing-web-search/search-the-web.md) meghívásához és a találatok megjelenítéséhez.
-
-```json
-{
-    "_type" : "TrendingTopics",
-    "value" : [{
-        "name" : "Canada pot measure",
-        "image" : {
-            "url" : "https:\/\/www.bing.com\/th?id=OPN.RTNews_hHD...",
-            "provider" : [{
-                "_type" : "Organization",
-                "name" : "Contoso Images"
-            }]
-        },
-        "webSearchUrl" : "https:\/\/www.bing.com\/cr?IG=070292D8CEDD...",
-        "isBreakingNews" : false,
-        "query" : {
-            "text" : "Canada marijuana"
-        }
-    },
-    {
-        "name" : "Down on Vegas move",
-        "image" : {
-            "url" : "https:\/\/www.bing.com\/th?id=OPN.RTNews_Bfbmg8h...",
-            "provider" : [{
-                "_type" : "Organization",
-                "name" : "Contoso"
-            }]
-        },
-        "webSearchUrl" : "https:\/\/www.bing.com\/cr?IG=070292D8CEDD...",
-        "isBreakingNews" : false,
-        "query" : {
-            "text" : "Marcus Appel Las Vegas"
-        }
-    },
-
-    ...
-
-    ]
-}
-```
-
-## <a name="getting-related-news"></a>Kapcsolódó hírek lekérése
-
-Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles) mezőt. Az alábbiakban egy fürtözött cikkekkel rendelkező cikk látható.
-
-```json
-    {
-        "name" : "Playoffs 2017: Betting lines, point spreads...",
-        "url" : "http:\/\/www.bing.com\/cr?IG=4B7056CEC271408997D115...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.D7B1...",
-                "width" : 700,
-                "height" : 393
-            }
-        },
-        "description" : "April 14, 2017 3:37pm EDT April 14, 2017 3:34pm...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "Contoso"
-        }],
-        "datePublished" : "2017-04-14T19:43:00",
-        "category" : "Sports",
-        "clusteredArticles" : [{
-            "name" : "Playoffs 2017: Betting odds, favorites to win...",
-            "url" : "http:\/\/www.bing.com\/cr?IG=4B7056CEC271408997D1159E...",
-            "description" : "April 14, 2017 3:30pm EDT April 14, 2017 3:27pm...",
-            "provider" : [{
-                "_type" : "Organization",
-                "name" : "Contoso"
-            }],
-            "datePublished" : "2017-04-14T19:37:00",
-            "category" : "Sports"
-        }]
-    },
-```
-
-## <a name="throttling-requests"></a>Kérelmek szabályozása
-
-[!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
+3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
 ## <a name="next-steps"></a>További lépések
 
-Annak érdekében, hogy gyorsan nekiláthasson az első kérelem létrehozásának, olvassa el az [első kérelem létrehozását bemutató](./quickstart.md) cikket.
+Először próbálja meg a [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/) a Bing News Search API számára. Ez a bemutató bemutatja, hogyan lehet gyorsan keresési lekérdezés testreszabása és hírek keresése a weben.
 
-Ismerkedjen meg a [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) referenciájával. A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne.
+Gyorsan elsajátíthatja az első API-kérelem, próbálja meg a gyors útmutató: a [REST API](quickstart.md) vagy az egyik a [SDK-k](sdk.md).
 
-A keresőmező felhasználói élményének fejlesztésére vonatkozó további tudnivalókért tekintse át a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) ismertetését. Ahogy a felhasználó megadja a lekérdezési kifejezést, meghívhatja ezt az API-t, hogy mások által használt kapcsolódó lekérdezési kifejezéseket jelenítsen meg.
+## <a name="see-also"></a>Lásd még
 
-Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](./useanddisplayrequirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.
+* A [Bing News Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) referenciaszakasz tartalmaz definíciókat és a végpontok, a fejlécek, az API-válaszok és a lekérdezési paraméterek segítségével kérelem lemezkép-alapú keresési eredmények információkat.
+
+* A [Bing használati és megjelenítési követelményei](./useanddisplayrequirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c6bcc5a7948e87a8b887bd0ebd3abc8fc3d3a517
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e31c957e9ef24079d6917109ec9c5f85928bfbd7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545314"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260975"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, a sémák és a kategóriákat, az Azure diagnosztikai naplók
 
@@ -93,11 +93,11 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|A végpont metrikáinak (például sávszélesség, kimenő forgalom, stb.) beolvasása|
 |Microsoft.ClassicNetwork/networksecuritygroups|Hálózati biztonsági csoportbeli szabályfolyamat-esemény|Hálózati biztonsági csoportbeli szabályfolyamat-esemény|
 |Microsoft.CognitiveServices/accounts|Naplózás|Naplók|
-|Microsoft.CognitiveServices/accounts|Operace RequestResponse|Kérelem- és válasznaplók|
+|Microsoft.CognitiveServices/accounts|RequestResponse|Kérelem- és válasznaplók|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API Server|
-|Microsoft.ContainerService/managedClusters|kube-tartományvezérlő-kezelő|Kubernetes Controller Manager|
-|Microsoft.ContainerService/managedClusters|fürt-méretező|Kubernetes Cluster Autoscaler|
-|Microsoft.ContainerService/managedClusters|kube-ütemező|Kubernetes Scheduler|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes Controller Manager|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Kubernetes Cluster Autoscaler|
+|Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes Scheduler|
 |Microsoft.ContainerService/managedClusters|alkalmazásőr|Authentication Webhook|
 |Microsoft.CustomerInsights/hubs|Listázásával|Listázásával|
 |Microsoft.DataFactory/factories|ActivityRuns|Folyamat tevékenységnapló-futtatások|
@@ -142,7 +142,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Logic/workflows|Kontejner Typu|Munkafolyamat futásidejű diagnosztikai eseményei|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Hálózati biztonsági csoport – esemény|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport a szabály számláló|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Network Security Group Rule Counter|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|A terheléselosztó figyelmeztetési események betöltése|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|A Load Balancer mintavételi egészségügyi állapota|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|A DDoS protection-értesítések|
@@ -200,12 +200,12 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Sql/managedInstances/databases|Hibák|Hibák|
 |Microsoft.StreamAnalytics/streamingjobs|Futtatási|Futtatási|
 |Microsoft.StreamAnalytics/streamingjobs|Szerzői műveletek|Szerzői műveletek|
-|Microsoft.Web/Sites|FunctionExecutionLogs|Függvény-végrehajtási naplók|
-|Microsoft.Web/Sites/slots|FunctionExecutionLogs|Függvény-végrehajtási naplók|
+|microsoft.web/sites|FunctionExecutionLogs|Függvény-végrehajtási naplók|
+|microsoft.web/sites/slots|FunctionExecutionLogs|Függvény-végrehajtási naplók|
 
 ## <a name="next-steps"></a>További lépések
 
 * [További információ a diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md)
 * [Az erőforrás-diagnosztikai naplók Stream **az Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
-* [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [A Log Analytics használatával az Azure storage-naplók elemzése](../../azure-monitor/platform/collect-azure-metrics-logs.md)

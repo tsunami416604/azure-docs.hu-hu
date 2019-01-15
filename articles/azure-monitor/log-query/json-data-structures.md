@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4262b5df4cbe9efe4b2ab1f8ef72ab175cde6f02
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 24f22d659ccfb6923ad2a038e12454716b2c5445
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882563"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263883"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>A JSON és használatához adatok struktúrák a Log Analytics-lekérdezések
 
@@ -64,7 +64,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Objektumok használata
 
 ### <a name="parsejson"></a>parsejson
-A json struktúrában több elemek eléréséhez egyszerűbb legyen a dinamikus objektumként férni. Használat `parsejson` szöveges adatot dinamikus-objektumba. Ha egy dinamikus típus konvertálva, további funkciók segítségével elemezheti az adatokat.
+Több olyan elemet, a json struktúrában eléréséhez, egyszerűbb legyen a dinamikus objektumként férni. Használat `parsejson` szöveges adatot dinamikus-objektumba. Ha egy dinamikus típus konvertálva, további funkciók segítségével elemezheti az adatokat.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');

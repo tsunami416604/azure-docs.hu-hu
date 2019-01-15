@@ -1,27 +1,8 @@
 ---
-title: Webalkalmazás-sablon – az Azure Machine Learning Studio-Studio-webszolgáltatás felhasználása |} A Microsoft Docs
-description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
-keywords: webszolgáltatás, operacionalizálás, REST API-t, a machine learning
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273884"
+Cím: Consume Studio web service with web app template titleSuffix: Azure Machine Learning Studio description: Az Azure Marketplace-en webalkalmazás-sablonok segítségével az Azure Machine Learning prediktív webszolgáltatás felhasználása.
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Az Azure Machine Learning Studio webszolgáltatás felhasználhatják a webalkalmazás-sablonok használatával
 

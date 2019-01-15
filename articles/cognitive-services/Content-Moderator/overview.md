@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/22/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: fabbbace7aeefd708a58a0874f9bbfa316d2b3f2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: f7fef00cfff9295036d7545470f86e27314e6451
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230805"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258698"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -63,4 +63,4 @@ Az összes a Cognitive Services, a Content Moderator szolgáltatással a fejlesz
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a Content Moderator használatának első lépéseiről szóló [rövid útmutatót](quick-start.md).
+Ismerkedés a Content Moderator szolgáltatás használatával a következő témakör utasításait követve [próbálja ki a Content Moderator, a weben](quick-start.md).

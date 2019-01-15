@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8023129bf700793447b63f0686acd22f6ac2b25c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973553"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265005"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -286,6 +286,39 @@ Nyissa meg a "Szolgáltatások" konzolt, és győződjön meg, hogy a "COM + Sys
 --- | --- | ---
 150172<br></br>**Üzenet**: Nem sikerült engedélyezni a védelmet, az a virtuális gép, mert (DiskName) méretű (DiskSize), amely kisebb, mint a minimális támogatott mérete 10 GB-ot. | – A lemez kisebb, mint 1024 MB-os támogatott méretet| Győződjön meg arról, hogy a lemezméretek a támogatott tartományon belül, és próbálja megismételni a műveletet. 
 
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Nem sikerült, mert a GRUB-konfiguráció (hibakód: 151126) UUID helyett az említett eszköznév védelem engedélyezése
 
-## <a name="next-steps"></a>További lépések
-[Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)
+**Lehetséges ok:** </br>
+A konfigurációs GRUB-fájlok ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" vagy "/ etc/alapértelmezett/grub") az értéket a paraméterek tartalmazhatja **legfelső szintű** és **folytatása** , a tényleges eszköznevek UUID helyett. A Site Recovery UUID megközelítés előírásoknak, módon eszközök név változhat között a virtuális gép újraindítása, a virtuális gép lehet, hogy nem érkeznek felfelé ugyanazzal a névvel feladatátvételi problémákat eredményez. Példa: </br>
+
+
+- A következő sort a GRUB-fájlból áll **/boot/grub2/grub.cfg**. <br>
+*Linux /boot/vmlinuz-3.12.49-11-default **= / dev/sda2 kiváltó** ${extra_cmdline} **= / dev/sda1 folytatása** beavatkozás nélküli, csendes showopts splash =*
+
+
+- A következő sort a GRUB-fájlból áll **/boot/grub/menu.lst**
+*kernel /boot/vmlinuz-3.0.101-63-default **= / dev/sda2 kiváltó** **= / dev/sda1 folytatása ** splash = beavatkozás nélküli crashkernel 256M-:128M showopts vga = = 0x314*
+
+Ha a fenti félkövér karakterlánc megfigyelte, grub-HIBÁT nevét is tartalmazza, tényleges eszközre a paramétereket "root" és "Folytatás" UUID helyett.
+ 
+**Hogyan háríthatja el:**<br>
+Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
+
+
+1. Az eszköz UUID található parancs végrehajtásával "blkid <device name>". Példa:<br>
+```
+blkid /dev/sda1 
+```<br>
+```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
+```blkid /dev/sda2```<br> 
+```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```<br>
+
+
+
+1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+
+## Next steps
+[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)

@@ -1,26 +1,8 @@
 ---
-title: '3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet – Azure |} A Microsoft Docs'
-description: 'Az a Develop egy prediktív megoldás bemutatója. 3. lépés: Hozzon létre egy új betanítási kísérlet Azure Machine Learning Studióban.'
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cgronlun
-ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260786"
+Cím: "3. lépés: Hozzon létre egy új Machine Learning Studio-kísérletet "titleSuffix: Azure Machine Learning Studio description: "A Develop egy prediktív megoldás bemutatója 3. lépés: Az Azure Machine Learning Studióban hozzon létre egy új betanítási kísérlet. "
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Az útmutató 3. lépés: Egy új Azure Machine Learning Studio-kísérlet létrehozása
 Ez a forgatókönyv harmadik lépésében a [az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
@@ -72,7 +54,7 @@ Használandó [metaadatainak szerkesztése][edit-metadata], először megadott o
    
    A kísérlet kell kinéznie ehhez hasonló:  
    
-   ![Szerkesztés metaadatok hozzáadása][1]
+   ![Adding Edit Metadata][1]
    
    A vörös felkiáltójelből azt jelzi, hogy azt még nem állítsa be a tulajdonságokat a modul még. Azt fogjuk tenni.
    

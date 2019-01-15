@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: df3222c361e4a8f6451326d967d574b1eb8eed1b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0e7d624c77447f537e6d47ea19d9054c1117d742
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157445"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263657"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Ruby használatával
 
@@ -90,7 +90,7 @@ Azure Ruby SDK használatához az Azure Stack használatával, adja meg a követ
 | Ügyfél-azonosító | AZURE_CLIENT_ID | A szolgáltatás egyszerű alkalmazást azonosító mentése az előző szakaszban Ez a dokumentum az egyszerű szolgáltatás létrehozásakor.  |
 | Előfizetés azonosítója | AZURE_SUBSCRIPTION_ID | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
 | Titkos ügyfélkulcs | AZURE_CLIENT_SECRET | A szolgáltatás egyszerű alkalmazás titkos kulcs mentése egyszerű szolgáltatás létrehozásakor. |
-| Resource Manager-végpont | ARM_ENDPOINT | Lásd: [az Azure Stack resource manager endpoin](#The-azure-stack-resource-manager-endpoint).  |
+| Resource Manager-végpont | ARM_ENDPOINT | Lásd: [az Azure Stack resource manager-végpont](#The-azure-stack-resource-manager-endpoint).  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Az Azure Stack resource manager-végpont
 
@@ -118,7 +118,7 @@ A metaadat-információkat is kérhet a Resource Manager-végpontot. A végpont 
 
 ### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-**A Microsoft Windows**  
+**Microsoft Windows**  
 A környezeti változók beállítása egy Windows parancssorban, használja a következő formátumot:  
 `set AZURE_TENANT_ID=<YOUR_TENANT_ID>`
 
@@ -136,7 +136,7 @@ A Azure_sdk összesítő gem a következő két profillal rendelkezik:
 
 Az Azure Stacket és API-profilokkal kapcsolatos további információkért lásd: a [összegzése az API-profilok](azure-stack-version-profiles.md#summary-of-api-profiles).
 
-## <a name="azure-ruby-sdk-api-profile-usage"></a>Azure Ruby SDK API-profil használata
+## <a name="azure-ruby-sdk-api-profile-usage"></a>Azure Ruby SDK API profile usage
 
 Az alábbi kód használatával hozza létre a profil ügyfél. Ez a paraméter csak akkor szükséges, az Azure Stack vagy egyéb privát felhők. Globális Azure alapértelmezés szerint ezek a beállítások már rendelkezik.
 

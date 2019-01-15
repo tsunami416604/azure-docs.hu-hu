@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6db4de61f84280b7e34f8a9d5c3290ff6d4f97ab
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200069"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267385"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: Az Azure virtuális gépeken és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás újratárolása
 
@@ -105,9 +105,9 @@ A megoldástervezési folyamat részeként a Contoso volt az Azure SQL Database 
 
 Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrányai listáját.
 
-**Szempontok** | **Részletek**
+**Consideration** | **Részletek**
 --- | ---
-**Szakemberek számára** | WEBVM átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Az SQL Server szint az SQL Server 2017-ben és a Windows Server 2016 fog futni. Így kikerül a jelenlegi Windows Server 2008 R2 operációs rendszer, és a Contoso technikai követelmények és célok futtató SQL Server 2017-ben támogatja. Informatikai 100 %-os kompatibilitást kínálja az SQL Server 2008 R2 távolabbi áthelyezés közben.<br/><br/> Contoso kihasználhatják a frissítési garanciával rendelkező, az Azure Hybrid Benefit használatával befektetése jelenti.<br/><br/> A magas rendelkezésre állású SQL Server telepítését bevezetésének hibatűrést biztosít az, hogy az alkalmazás adatrétegének már nem feladatátvételi hibaérzékeny pont.
+**Szakemberek számára** | WEBVM átkerül az Azure-bA sem kell módosítani, így egyszerű a migrálás.<br/><br/> Az SQL Server szint az SQL Server 2017-ben és a Windows Server 2016 fog futni. Így kikerül a jelenlegi Windows Server 2008 R2 operációs rendszer, és a Contoso technikai követelmények és célok futtató SQL Server 2017-ben támogatja. Informatikai 100 %-os kompatibilitást kínálja az SQL Server 2008 R2 távolabbi áthelyezés közben.<br/><br/> Contoso kihasználhatják a frissítési garanciával rendelkező, az Azure Hybrid Benefit használatával befektetése jelenti.<br/><br/> A magas rendelkezésre állású SQL Server-telepítés az Azure-ban hibatűrést biztosít, így az alkalmazás adatrétegének már nem feladatátvételi hibaérzékeny pont.
 **Hátrányai** | WEBVM Windows Server 2008 R2 fut. Az operációs rendszer egyes szerepkörök (2018 július) az Azure által támogatott. [További információk](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> A webes szint, az alkalmazás feladatátvételt egyetlen pont marad.</br><br/> Contoso kell továbbra is támogató Azure-beli virtuális gépként a webes szint, nem pedig egy felügyelt szolgáltatás, például az Azure App Service-ben való áthelyezése.<br/><br/> A kiválasztott megoldással a Contoso kell továbbra is a két SQL Server virtuális gépek kezelése a felügyelt platform, például az Azure SQL Database felügyelt példányába való helyett. Ezenkívül, frissítési garanciával rendelkező, Contoso sikerült exchange kedvezményes díjszabást kínál az Azure SQL Database felügyelt példánya a meglévő licenceit.
 
 
@@ -472,7 +472,7 @@ Contoso-rendszergazdák a következő tegye a következőket:
 8. Bejelentkeznek a gép újra, és a konfigurációs kiszolgáló felügyeleti varázslója automatikusan elindul.
 9. A varázsló, válassza ki a hálózati Adaptert replikációs forgalom fogadására. Ez a beállítás a konfigurálás után nem módosítható.
 10. Akkor válassza ki az előfizetést, erőforráscsoportot és a tároló, amelyben a konfigurációs kiszolgálót regisztrálja.
-        ![Tároló](./media/contoso-migration-rehost-vm-sql-ag/cswiz1.png) 
+        ![vault](./media/contoso-migration-rehost-vm-sql-ag/cswiz1.png) 
 
 10. Majd töltse le és telepítse a MySQL-kiszolgáló és a VMWare powercli-t. 
 11. Ellenőrzést hogy a vCenter-kiszolgáló vagy vSphere-gazdagép teljes Tartománynevét vagy IP-címét adja meg. Hagyja bejelölve az alapértelmezett portot, és adja meg a vCenter-kiszolgáló rövid nevét.
@@ -660,7 +660,7 @@ Feladatátvételi teszt futtatása gondoskodik arról, hogy minden a várt módo
 
 Az áttelepítési folyamat utolsó lépését, mint a Contoso rendszergazdák frissítse a kapcsolati karakterláncot, az alkalmazás a migrált adatbázis, a SHAOG figyelő futó mutasson. Ez a konfiguráció az Azure-ban már futó WEBVM a módosulnak.  Ez a konfiguráció a Web.config fájl az ASP-alkalmazás található. 
 
-1. Keresse meg a fájlban a következő C:\inetpub\SmartHotelWeb\web.config.  Módosítsa megfelelően a AOG teljes Tartománynevét a kiszolgáló nevét: shaog.contoso.com.
+1. Locate the file at C:\inetpub\SmartHotelWeb\web.config.  Módosítsa megfelelően a AOG teljes Tartománynevét a kiszolgáló nevét: shaog.contoso.com.
 
     ![Feladatátvétel](./media/contoso-migration-rehost-vm-sql-ag/failover4.png)  
 

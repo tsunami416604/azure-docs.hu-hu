@@ -1,5 +1,5 @@
 ---
-title: 'SaaS-alkalmazások: az Azure SQL-adatbázis georedundáns biztonsági mentések vész-helyreállítási |} A Microsoft Docs'
+title: 'SaaS-alkalmazások: Az Azure SQL-adatbázis georedundáns biztonsági mentések vész-helyreállítási |} A Microsoft Docs'
 description: Ismerje meg, hogyan használhatja az Azure SQL-adatbázis georedundáns biztonsági mentések egy több-bérlős SaaS-alkalmazás helyreállítása meghibásodás esetére
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352940"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264750"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Adatbázisok biztonsági mentése egy több-bérlős SaaS-alkalmazás helyreállítása geo-visszaállítás használatával
 
@@ -50,7 +50,7 @@ Ebben az oktatóanyagban a Kezdés előtt végezze el az alábbiakat:
 A vészhelyreállítás (DR) sok alkalmazás esetén fontos szempont a megfelelőségi okokból, vagy az üzletmenet folytonosságának. Hosszan tartó szolgáltatáskimaradás esetén egy jól felkészültnek Vészhelyreállítási terv minimalizálhatja az üzletmenet megszakadása. A Vészhelyreállítási terv alapján a geo-visszaállítás különböző célok kell elvégezni:
  * Győződjön meg arról, hogy legyen elérhető a bérlői adatbázisok visszaállítása a lehető leggyorsabban lefoglalni az összes szükséges kapacitás a kiválasztott helyreállítási régióban.
  * Egy tükrözött lemezképét helyreállítási környezet, amely tükrözi az eredeti készlet és az adatbázis-konfigurációt hoz létre. 
- * Lehetővé teszi a visszaállítási folyamat közben továbbított megszüntetésének, ha az eredeti régió visszatér online állapotba.
+ * Lehetővé teszi a visszaállítási folyamat közben továbbított megszakításának, ha az eredeti régió visszatér online állapotba.
  * Engedélyezze a bérlő kiépítésének gyorsan, így az új bérlő regisztrációs a lehető leghamarabb újraindíthatja.
  * Bérlők prioritási sorrendben visszaállítására lehet optimalizálni.
  * Párhuzamos lépések végrehajtásával, ahol gyakorlati minél hamarabb beolvasni a bérlők online optimalizálni.
@@ -114,7 +114,7 @@ Ebben a feladatban egy szinkronizálni a konfigurációt a bérlő-katalógusba 
 
 3. Állítsa be a következőt:
 
-    $DemoScenario = 1: start egy háttérfeladat, mely szinkronizálja a bérlői kiszolgálóhoz és a tárolókészlet konfigurációs adatait a katalógusba.
+    $DemoScenario = 1: Indítsa el a háttérfeladat, mely szinkronizálja a bérlői kiszolgálóhoz és a tárolókészlet konfigurációs adatait a katalógusba.
 
 4. A sync-szkript futtatásához válassza ki az F5 billentyűt. 
 
@@ -174,7 +174,7 @@ Képzelje el, szolgáltatáskimaradás van a régióban, amelyben az alkalmazás
 
 1. A PowerShell ISE-ben a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt, állítsa be a következő értéket:
 
-    $DemoScenario = 2: az alkalmazás helyreállítani egy helyreállítási régió szerint georedundáns biztonsági másolatokból való visszaállítással.
+    $DemoScenario = 2: Állítsa helyre az alkalmazás olyan helyreállítási régió szerint georedundáns biztonsági másolatokból való visszaállítással.
 
 2. A szkript futtatásához válassza ki az F5.  
 
@@ -209,7 +209,7 @@ Bérlői adatbázisok visszaállítását végzi, előtt is telepíthet az új b
 
 1. A PowerShell ISE-ben a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt, állítsa be a következő tulajdonság:
 
-    $DemoScenario = 3: a helyreállítási régióban új bérlő kiépítése.
+    $DemoScenario = 3: A helyreállítási régióban új bérlő kiépítése.
 
 2. A szkript futtatásához válassza ki az F5.
 
@@ -262,7 +262,7 @@ Ebben a feladatban frissítenie a visszaállított bérlői adatbázisok közül
 
 2. A PowerShell ISE-ben a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt, állítsa be a következő értéket:
 
-    $DemoScenario = 4: a helyreállítási régióban egy bérlő esemény törlése.
+    $DemoScenario = 4: Töröljön egy eseményt egy bérlő, a helyreállítási régióban.
 
 3. Hajtsa végre a parancsfájlt, válassza ki az F5.
 
@@ -320,13 +320,13 @@ Ha követte az oktatóanyag, a a parancsfájl azonnali újraaktiválja a Fabrika
   
 1. A PowerShell ISE-ben, a ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájl, a győződjön meg arról, hogy a katalógus szinkronizálási folyamat továbbra is fut a PowerShell-példányban. Szükség esetén indítsa újra beállításával:
 
-    $DemoScenario = 1: start a bérlői kiszolgálóhoz, készletek és adatbázis-konfigurációs adatainak szinkronizálása a katalógusba.
+    $DemoScenario = 1: Indítsa el a bérlői kiszolgálóhoz, készletek és adatbázis-konfigurációs adatainak szinkronizálása a katalógusba.
 
     A szkript futtatásához válassza ki az F5.
 
 2.  Ezután a hazatelepítési megkezdéséhez beállítása:
 
-    $DemoScenario = 5: települni az alkalmazás az eredeti régióba.
+    $DemoScenario = 5: Az alkalmazás települni az eredeti régióba.
 
     A helyreállítási szkript futtatásához egy új PowerShell-ablakban válassza ki az F5. Hazatelepítési több percet vesz igénybe, és a PowerShell-ablakban figyelhető.
 
@@ -352,7 +352,7 @@ A visszaállítási folyamat összes helyreállítási erőforrás létrehoz egy
 
 1. A PowerShell ISE-ben a szkriptben ...\Learning Modules\Business üzletmenet-folytonossági és vészhelyreállítási Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1, állítsa be:
     
-    $DemoScenario = 6: elavult erőforrások törlését a helyreállítási régióban.
+    $DemoScenario = 6: Törli az elavult erőforrást helyreállítási régióban.
 
 2. A szkript futtatásához válassza ki az F5.
 

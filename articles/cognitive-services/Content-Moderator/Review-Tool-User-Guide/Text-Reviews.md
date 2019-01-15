@@ -1,5 +1,5 @@
 ---
-title: Tekintse át az Azure Content Moderator szöveg |} A Microsoft Docs
+title: Az Azure Content Moderator – a Content Moderator felülvizsgálati szöveg
 description: Megtudhatja, hogyan tekintse át a szöveg a Content Moderator, a pontszám és címkék észlelt. Kiszűrni az adatokat használja, hogy megfelelő-e tartalmat.
 services: cognitive-services
 author: sanjeev3
@@ -7,16 +7,16 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 005e6ed853cbc6013d74e7ff479097dcbb0a1043
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852095"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259563"
 ---
-# <a name="review-text"></a>Szöveg felülvizsgálata
+# <a name="let-human-reviewers-review-text"></a>Emberi véleményezők szöveg felülvizsgálata
 
 Tekintse át a szöveges értékeket használatával az Azure Content Moderator használható, és címkék észlelt. Az információ használatával határozhatja meg, hogy-e megfelelő tartalom. 
 

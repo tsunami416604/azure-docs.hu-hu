@@ -1,5 +1,5 @@
 ---
-title: A nem kívánt tartalom videó tartalmakat elemezhetC#
+title: A nem kívánt tartalom videó tartalmakat elemezhet C# -Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Videó tartalmát Moderator tartalom SDK használatával a .NET-hez számos nem kívánt tartalom elemzése
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 80635354b228edc1a8c1334e5d59cf530a10083e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 70fe30e53635203d80aca2406c52b2ec08d0035c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008283"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265515"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>A nem kívánt tartalom videó tartalmakat elemezhetC#
 
@@ -24,7 +24,7 @@ Ez a cikk nyújt információt, és kódminták segítségével történő haszn
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Bármely kiadása [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/)
+- A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
 ## <a name="set-up-azure-resources"></a>Az Azure-erőforrások beállítása
 
@@ -55,18 +55,18 @@ Az Azure Media Services Explorer egy felhasználóbarát előtérrendszer AMS. S
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
 1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **VideoModeration**. 
-1. Ha más projektek a megoldásában, válassza ki ezt az eszközt egyetlen indítási projektként.
-1. A szükséges NuGet-csomagok beolvasása. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**; majd keresse meg és telepítse a következő csomagokat:
+1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
+1. Szerezze be a szükséges NuGet-csomagokat. A Solution Explorer (Megoldáskezelő) felületén kattintson a jobb gombbal a projektre és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget, majd keresse meg és telepítse a következő csomagokat:
     - windowsazure.mediaservices
-    - windowsazure.mediaservices.Extensions
+    - windowsazure.mediaservices.extensions
 
 ## <a name="add-video-moderation-code"></a>Videomoderálás kód hozzáadása
 
-Ezt követően kell másolnia, és ez az útmutató-kódokat illessze be egy alapszintű tartalom-jóváhagyás forgatókönyv megvalósításához a projektbe.
+Következő lépésként másolja és illessze be az ebben az útmutatóban található kódot a projektjébe egy alapszintű tartalommoderálási forgatókönyv megvalósításához.
 
 ### <a name="update-the-programs-using-statements"></a>A program „using” utasításainak frissítése
 
-Adja hozzá a következő `using` -utasítások használatával felső részén a _Program.cs_ fájlt.
+Adja hozzá az alábbi `using` utasításokat a _Program.cs_ fájl elejéhez.
 
 ```csharp
 using System;
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Erőforrás-hivatkozások beállítása
 
-Adja hozzá a következő statikus mezőket a **Program** osztály _Program.cs_. Ezek a mezők tartsa az információkat az AMS-előfizetés való kapcsolódáshoz szükséges. Töltse be a fenti lépések során kapott értékeket őket. Vegye figyelembe, hogy `CLIENT_ID` van a **Alkalmazásazonosító** értékét az Azure AD-alkalmazás és `CLIENT_SECRET` érték a "VideoModKey" az adott alkalmazáshoz létrehozott.
+Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők tartsa az információkat az AMS-előfizetés való kapcsolódáshoz szükséges. Töltse be a fenti lépések során kapott értékeket őket. Vegye figyelembe, hogy `CLIENT_ID` van a **Alkalmazásazonosító** értékét az Azure AD-alkalmazás és `CLIENT_SECRET` érték a "VideoModKey" az adott alkalmazáshoz létrehozott.
 
 ```csharp
 // declare constants and globals

@@ -1,25 +1,8 @@
 ---
-title: Excel-bővítmény a webszolgáltatások – az Azure Machine Learning Studióban |} A Microsoft Docs
-description: Hogyan használható az Azure Machine Learning Web services közvetlenül az Excelben kód írása nélkül.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 02/01/2018
-ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269495"
+Cím: Excel-bővítmény a web services titleSuffix: Azure Machine Learning Studio description: Hogyan használható az Azure Machine Learning Web services közvetlenül az Excelben kód írása nélkül.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-bővítmény az Azure Machine Learning Studio-webszolgáltatások
 Az Excel megkönnyíti a webszolgáltatások közvetlenül kód írása nélkül.

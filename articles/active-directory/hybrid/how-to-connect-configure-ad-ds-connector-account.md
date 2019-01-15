@@ -7,19 +7,19 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c7b1d74c7750a281f8c961789d39a7ae323f304e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809879"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304040"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
-Egy új PowerShell-modul nevű [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) jelent meg a build 1.1.880.0 (2018 augusztus jelent meg), amely segít a megfelelő Active Directory-engedélyek konfigurálása az Azure AD-parancsmagok egy gyűjteményét tartalmazza. Csatlakozás a központi telepítés. 
+A PowerShell-modul nevű [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) jelent meg a build 1.1.880.0 (2018 augusztus jelent meg), amely segít a megfelelő Active Directory-engedélyek konfigurálása az Azure AD-parancsmagok egy gyűjteményét tartalmazza. Csatlakozás a központi telepítés. 
 
 ## <a name="overview"></a>Áttekintés 
 A következő PowerShell-parancsmagok segítségével az AD DS-összekötő fiók Active Directory-engedélyek beállítása az egyes szolgáltatásokhoz, az Azure AD Connect engedélyezéséhez kiszűrésére. Esetleges problémák megelőzése érdekében meg kell előkészítenie, Active Directory-engedélyek előre, amikor az Azure AD Connect egyéni tartományi fiókkal az erdőhöz való csatlakozáshoz telepíteni kívánja. Ez a modul ADSyncConfig is használható engedélyek konfigurálása az Azure AD Connect telepítése után.
@@ -157,7 +157,7 @@ Ez a parancsmag állítja a következő engedélyekkel:
 
 |Típus |Name (Név) |Hozzáférés |Erre vonatkozik|
 |-----|-----|-----|-----| 
-|Engedélyezés|AD DS-összekötő fiók|Olvasási/írási tulajdonság|MS-DS-konzisztencia-Guid|Felhasználói a gyermekobjektumokat|
+|Engedélyezés|AD DS-összekötő fiók|Olvasási/írási tulajdonság|MS-DS-Consistency-Guid|Felhasználói a gyermekobjektumokat|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Jelszókivonat-szinkronizálási engedélyekkel 
 A Jelszókivonat-szinkronizálás használata esetén az AD DS-összekötő fiókhoz tartozó engedélyek beállításához futtassa: 
@@ -280,7 +280,7 @@ Példa:
 
 ``` powershell
 $credential = Get-Credential 
-Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
+Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
 Ez a parancsmag állítja a következő engedélyekkel: 
@@ -289,7 +289,7 @@ Ez a parancsmag állítja a következő engedélyekkel:
 |-----|-----|-----|-----| 
 |Engedélyezés |RENDSZER |Teljes hozzáférés |Ez az objektum 
 |Engedélyezés |Vállalati rendszergazdák |Teljes hozzáférés |Ez az objektum 
-|Engedélyezés |Tartományi rendszergazdák |Teljes hozzáférés |Ez az objektum 
+|Engedélyezés |Domain Admins |Teljes hozzáférés |Ez az objektum 
 |Engedélyezés |Rendszergazdák |Teljes hozzáférés |Ez az objektum 
 |Engedélyezés |Vállalati tartományvezérlők |Tartalom listázása |Ez az objektum 
 |Engedélyezés |Vállalati tartományvezérlők |Az összes tulajdonság olvasása |Ez az objektum 
@@ -299,7 +299,7 @@ Ez a parancsmag állítja a következő engedélyekkel:
 |Engedélyezés |Hitelesített felhasználók |Olvasási engedélyek |Ez az objektum 
 
 ## <a name="next-steps"></a>További lépések
-- [Az Azure AD Connect: Fiókok és engedélyek](reference-connect-accounts-permissions.md)
+- [Azure AD Connect: Fiókok és engedélyek](reference-connect-accounts-permissions.md)
 - [Az Expressz telepítés](how-to-connect-install-express.md)
 - [Egyéni telepítés](how-to-connect-install-custom.md)
 - [ADSyncConfig referencia](reference-connect-adsyncconfig.md)

@@ -1,26 +1,8 @@
 ---
-title: 'NET # Neurális hálózati – az Azure Machine Learning Studióban |} A Microsoft Docs'
-description: 'Szintaxisa a Net # Neurális hálózatok specifikációs nyelv együtt példa bemutatja, hogyan hozhat létre egy egyéni Neurális hálózat modell Net # az Azure Machine Learning Studio használatával.'
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: reference
-ms.date: 03/01/2018
-ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631125"
+Cím: Net# Neural Networks titleSuffix: Azure Machine Learning Studio description: Szintaxisa a Net # Neurális hálózatok specifikációs nyelv együtt példa bemutatja, hogyan hozhat létre egy egyéni Neurális hálózat modell Net # az Azure Machine Learning Studio használatával.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: referencia
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
@@ -374,7 +356,7 @@ A rövid űrlapot is használhatja, csak ha a rétegek szerepel a csomagban. Meg
 
 Ez a témakör néhány példát, hogyan használhatja a Net # rejtett réteget hozzáadásához adja meg a módon, hogy rejtett réteget egyéb biztonsági interaktívan, konvolúciós hálózatokat hozhat létre.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Adja meg egy egyszerű egyéni Neurális hálózat: A példában a "Hello World"
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Adja meg egy egyszerű egyéni Neurális hálózat: "Hello World" example
 
 Ebben az egyszerű példában bemutatja, hogyan hozhat létre, amely rendelkezik egy rejtett rétegben Neurális hálózat modell.
 

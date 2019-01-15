@@ -1,26 +1,8 @@
 ---
-title: A helyszíni SQL Server – az Azure Machine Learning Studióban |} A Microsoft Docs
-description: Az Azure Machine Learning Studio fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/13/2017
-ms.openlocfilehash: dccea7c5d7967af2e81ab4728704a5a104a007b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269287"
+Cím: A helyszíni SQL Server titleSuffix: Azure Machine Learning Studio description: Az Azure Machine Learning Studio fejlett elemzéseket végezzenek egy helyszíni SQL Server-adatbázis adatait használják.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/13/2017
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Hajtsa végre az analytics az Azure Machine Learning Studiót egy helyszíni SQL Server-adatbázisból
 
@@ -125,7 +107,7 @@ Most már készen áll a helyszíni adatok használatát.
 
 Hozzon létre, és állítsa be a Studióban minden munkaterülethez több átjárót. Például előfordulhat, hogy szeretne csatlakozni a fejlesztés során, a teszt adatforrások átjáró és a egy másik átjáró a termelési adatforrások. Az Azure Machine Learning lehetővé teszi több átjáró attól függően, hogy a vállalati környezet beállításához. Jelenleg nem oszthat meg egy átjárót a munkaterületek között, és csak egy átjáró telepíthető ugyanazon a számítógépen. További információkért lásd: [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md).
 
-### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2. lépés: Az átjáró használatára egy helyszíni adatforrásból származó adatokat olvasni.
+### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2. lépés: Az átjáró használatára egy helyszíni adatforrásból származó adatokat olvasni.
 Az átjáró beállítása után hozzáadhat egy **adatok importálása** modult egy, amely bemenetként az adatokat a helyszíni SQL Server-adatbázisból.
 
 1. A Machine Learning Studióban, válassza ki a **kísérletek** lapra, majd **+ új** a bal alsó sarokban, és válassza a **üres kísérlet** (vagy válassza ki az egyik több minta kísérletek érhető el).

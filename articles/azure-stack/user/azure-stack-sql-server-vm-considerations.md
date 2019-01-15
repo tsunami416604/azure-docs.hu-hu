@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: e784185cfc7f2c588db354bab1cfb36934b9c417
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8e577a95fc3cda3aafe1273cbc6b4e3c4fbb0317
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585866"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304358"
 ---
 # <a name="optimize-sql-server-performance"></a>Az SQL Server teljesítményének optimalizálásához
 
@@ -29,7 +29,7 @@ Ez a cikk nyújt útmutatást a Microsoft Azure Stack virtuális gépeken az SQL
 Az SQL Server-rendszerképeken létrehozásakor [fontolja meg az Azure Stack portálon a virtuális gépek kiépítése](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Töltse le az SQL IaaS-bővítményt a Marketplace-kezelés az Azure Stack felügyeleti portálon, és töltse le a választott SQL virtuális gép virtuális merevlemezek (VHD). Ezek közé tartozik a SQL2014SP2 SQL2016SP1 és SQL2017.
 
 > [!NOTE]  
-> A cikk azt ismerteti, hogyan helyezhet üzembe egy SQL Server virtuális gépet a globális Azure portal használatával, miközben az útmutatót is vonatkozik az Azure Stack a következő eltérésekkel: SSD az operációsrendszer-lemez nem érhető el, a felügyelt lemezeket nem áll rendelkezésre, és tárolási konfiguráció kisebb különbségek vannak.
+> A cikk azt ismerteti, hogyan helyezhet üzembe egy SQL Server virtuális gépet a globális Azure portal használatával, miközben az útmutatót is vonatkozik az Azure Stack a következő eltérésekkel: SSD az operációsrendszer-lemez nem érhető el, nem érhetők el a felügyelt lemezek és tárolási konfigurációt kisebb különbségek vannak.
 
 Bevezetés a *ajánlott* Azure Stack virtuális gépeken az SQL Server teljesítményének Ez a cikk a fókuszt. Ha a számítási feladatok nem szabadulnak, minden ajánlott optimalizálási nem feltétlenül igényelnek. A teljesítményigények és terhelési mintázatok megfontolnia, kiértékelheti, hogy ezekkel az ajánlásokkal.
 
@@ -57,7 +57,7 @@ Teljesítmény-és nagybetűket alkalmazások, a következő [virtuálisgép-mé
 
 - **Az SQL Server Enterprise edition:** DS3 vagy újabb
 
-- **Az SQL Server Standard edition és a Web edition:** DS2 vagy újabb
+- **SQL Server Standard edition és a Web edition:** DS2 vagy újabb
 
 Az Azure Stack a DS, DS_v2 és virtuális gép családi sorozat közötti teljesítménybeli különbségek nem.
 
@@ -76,11 +76,11 @@ Tárfiók létrehozása az Azure Stackben, ha a georeplikáció beállítás nem
 
 Az Azure Stack virtuális gépen három fő lemez típusa van:
 
-- **Operációsrendszer-lemez:** az Azure Stack-virtuális gép létrehozásakor a platform csatolja legalább egy lemezt (kerülhetnek a **C** meghajtó) az operációsrendszer-lemez a virtuális géphez. Ez a lemez egy storage-ban lapblobként tárolt VHD.
+- **Operációsrendszer-lemez:** Az Azure Stack-virtuális gép létrehozásakor a platform csatolja legalább egy lemezt (kerülhetnek a **C** meghajtó) az operációsrendszer-lemez a virtuális géphez. Ez a lemez egy storage-ban lapblobként tárolt VHD.
 
-- **Ideiglenes lemez:** Azure Stack virtuális gépeket tartalmazhat egy újabb lemezt az ideiglenes lemez neve (kerülhetnek a **D** meghajtó). Ez az egy lemezt a csomóponton, amelyek ideiglenes terület is használható.
+- **Ideiglenes lemez:** Az Azure Stack virtuális gépek tartalmazhat egy újabb lemezt az ideiglenes lemez neve (kerülhetnek a **D** meghajtó). Ez az egy lemezt a csomóponton, amelyek ideiglenes terület is használható.
 
-- **Adatlemezek:** csatlakoztathat további lemezeket a virtuális gép, adatlemez, és ezek a lemezek lapblobként storage szolgáltatásban tárolódnak.
+- **Adatlemezek:** Csatlakoztathat további lemezeket a virtuális gép, adatlemez, és ezek a lemezek lapblobként storage szolgáltatásban tárolódnak.
 
 A következő szakaszok ismertetik a különböző lemezek használatához.
 
@@ -101,7 +101,7 @@ Azt javasoljuk, hogy az egyes adatlemezek biztosít az adatok akár 2,300 Lemeze
 > [!NOTE]  
 > Amikor üzembe helyez egy SQL Server virtuális gépet a portálon, lehetősége van a tárolókonfiguráció szerkesztésekor. A konfigurációtól függően az Azure Stack egy vagy több lemezt konfigurál. Több lemez mostantól egyetlen tárolókészlet. Az adathoz és naplófájlhoz együtt találhatók ebben a konfigurációban.
 
-- **Lemez csíkozást:** nagyobb átviteli sebességet, további adatlemezek hozzáadhat és használhat a lemez szétosztottsága befolyásolhatja. A több adatlemez van szüksége, IOPS és sávszélesség szükséges a naplófájlok és az adatok és a TempDB-fájlok számának meghatározásához. Figyelje meg, hogy IOPS-korlátok egy adatlemezt a virtuális gép sorozatú alapul, és nem a virtuális gép mérete alapján. Hálózati sávszélesség-korlátozások, azonban a virtuális gép méretén alapulnak. Tekintse meg a táblák [virtuális gép méretét az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) további részleteket talál. Kövesse az alábbi irányelveket:
+- **Lemez szétosztottsága befolyásolhatja:** Nagyobb átviteli sebességet adjon hozzá további lemezeket, és használja a lemez szétosztottsága befolyásolhatja. A több adatlemez van szüksége, IOPS és sávszélesség szükséges a naplófájlok és az adatok és a TempDB-fájlok számának meghatározásához. Figyelje meg, hogy IOPS-korlátok egy adatlemezt a virtuális gép sorozatú alapul, és nem a virtuális gép mérete alapján. Hálózati sávszélesség-korlátozások, azonban a virtuális gép méretén alapulnak. Tekintse meg a táblák [virtuális gép méretét az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) további részleteket talál. Kövesse az alábbi irányelveket:
 
     - Windows Server 2012 vagy újabb, illetve használjon [tárolóhelyek](https://technet.microsoft.com/library/hh831739.aspx) az alábbi útmutatókat:
 
@@ -120,8 +120,8 @@ Azt javasoljuk, hogy az egyes adatlemezek biztosít az adatok akár 2,300 Lemeze
 
 - A betöltés elvárásainak alapuló tárolókészlet társított lemezek számát határozza meg. Ne feledje, hogy a különböző virtuálisgép-méretek lehetővé teszik a különböző számú csatlakoztatott adatlemezekkel. További információkért lásd: [virtuális gépek méretei az Azure Stackben támogatott](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
 - Annak érdekében, hogy a lehetséges maximális IOPS adatlemezek lekéréséhez a javaslat által támogatott az adatlemezek maximális száma hozzáadandó a [virtuálisgép-méret](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) és lemez szétosztottsága befolyásolhatja.
-- **NTFS foglalási egységek mérete:** az adatlemez formázásakor javasoljuk, hogy használja-e egy 64 KB-os foglalási egységek mérete az adatok és a naplófájlok, valamint a TempDB.
-- **Lemez gyakorlatok:** egy adatlemez eltávolítása, ha az SQL Server szolgáltatás leállítása módosítása során. Ezenkívül nem változnak a gyorsítótár beállításait a lemezeken, nem biztosít semmilyen teljesítménybeli javulást.
+- **NTFS foglalási egységek mérete:** Az adatlemez formázásakor javasoljuk, hogy használja-e egy 64 KB-os foglalási egységek mérete az adatok és a naplófájlok, valamint a TempDB.
+- **Lemez felügyeleti eljárások:** Amikor egy adatlemez eltávolítása, állítsa le az SQL Server szolgáltatás módosítása során. Ezenkívül nem változnak a gyorsítótár beállításait a lemezeken, nem biztosít semmilyen teljesítménybeli javulást.
 
 > [!WARNING]  
 > Ezek a műveletek során az SQL-szolgáltatás leállítása sikertelen adatbázis-sérülést okozhat.

@@ -1,26 +1,7 @@
 ---
-title: Szövegelemzési modellek – az Azure Machine Learning Studio létrehozása |} A Microsoft Docs
-description: Hogyan szövegelemzési modellek létrehozása az Azure Machine Learning Studióban szöveg előfeldolgozása, N-gramokat vagy a szolgáltatáskivonatolás modulok használata
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: ''
-ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2018
-ms.openlocfilehash: 11f4ad4ff1e8e2eab688596d393e63009f7e5624
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255482"
+Cím: Hozza létre a text analytics modellek titleSuffix: Azure Machine Learning Studio description: Szövegelemzési modellek létrehozása az Azure Machine Learning Studióban modulok használata az előfeldolgozási, N-gramokat szöveg vagy kivonatoló szolgáltatások funkció: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Szövegelemzési modellek létrehozása az Azure Machine Learning Studio használatával
 Az Azure Machine Learning segítségével hozhat létre és szövegelemzési modelleket. Ezek a modellek, például dokumentum besorolását vagy sentiment analysis problémák megoldásában is segítenek.
@@ -54,7 +35,7 @@ Mi történik, ha szeretné használni a listán szereplő áll? A nem kötelez�
 
 Az előfeldolgozási befejeződése után azt az adatok felosztása tanítási, és tesztelje a csoportok.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>2. lépés: Bontsa ki a numerikus funkció vektorok Előfeldolgozott szövegből
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>2. lépés: Bontsa ki a numerikus funkció vektorok Előfeldolgozott szövegből
 A modell egy szöveges adatok, általában akkor szabad formátumú szöveges konvertálása a numerikus funkció vektorok. Ebben a példában használjuk [N-Gram típusú szolgáltatások kinyerése szövegből](https://msdn.microsoft.com/library/azure/mt762916.aspx) modul átalakítja az ilyen formátumú szöveges adatokat. Ez a modul veszi tartalmazó oszlop, elválasztó karakter elválasztott szavakat, és kiszámítja az szókészletet tartalmazó vagy N-gramokat szó, amely az adatkészlet megjelenik. Ezt követően számolja hány alkalommal minden egyes szó, vagy N-gram, minden egyes rekord jelenik meg, és hozza létre a szolgáltatás vektorok azoktól, akik száma. Ebben az oktatóanyagban azt N-Gram típusú méretének beállítása 2, így a szolgáltatás vektorok önálló szavak és a két következő szavak kombinációi tartalmazza.
 
 ![Bontsa ki az N-gramokat](./media/text-analytics-module-tutorial/extract-ngrams.png)

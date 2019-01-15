@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 624dcae6cadefd27b663699552068b37e658d9bf
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: dadb645067a0f6cac436d638a829ac4c0937bd60
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198859"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304377"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Az Azure Functions Python fejlesztői útmutatója
 
@@ -317,7 +317,7 @@ The terminal process terminated with exit code: 1
 Automatikusan hozhat létre és konfigurálja a szükséges bináris fájlokat [telepítheti a Dockert](https://docs.docker.com/install/) a helyi gépre, és futtassa a következő parancsot a közzétenni a [Azure Functions Core Tools](functions-run-local.md#v2) (func). Ne felejtse el kicserélni `<app name>` az Azure-ban a függvényalkalmazás nevére. 
 
 ```bash
-func azure functionapp <app name> --build-native-deps
+func azure functionapp publish <app name> --build-native-deps
 ```
 
 A háttérben Core Tools használatával docker futtatása a [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) rendszerképet a helyi gépen tárolójaként. Ebben a környezetben használja, akkor Ezután létrehozhatja és forrás terjesztési, mielőtt végleges üzembe helyezés az Azure szolgáltatásra csomagolás őket az Azure a szükséges modulok telepítéséhez.

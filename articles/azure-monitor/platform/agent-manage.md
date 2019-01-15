@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 0680140d9f4f4e77b5029c30c37f4c531652c6f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119118"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262489"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelésével és karbantartásával a Log Analytics-ügynököket Windows és Linux rendszerekhez
 
@@ -175,7 +175,7 @@ A következő eljárások valamelyikével parancssori vagy a telepítő varázsl
 A letöltött fájlt az ügynök a csomag egy önálló telepítő IExpress hoztak létre. A telepítőprogram az ügynök és a fájlokat a csomagban található, és szeretne kinyerni annak érdekében, hogy megfelelően eltávolítsa a parancssorból az alábbi példában látható.
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
-2. Egy rendszergazda jogú parancssorból futtassa az ügynök telepítési fájljait, kibontásához `extract MMASetup-<platform>.exe` és a rendszer felkéri a elérési útján a fájlok kibontásához. Másik lehetőségként megadhatja az elérési út az argumentumoknak `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Az IExpress által támogatott parancssori swtiches további információkért lásd: [IExpress használható parancssori kapcsolók](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , majd frissítse a példát, hogy illeszkedjen az igényeihez.
+2. Egy rendszergazda jogú parancssorból futtassa az ügynök telepítési fájljait, kibontásához `extract MMASetup-<platform>.exe` és a rendszer felkéri a elérési útján a fájlok kibontásához. Másik lehetőségként megadhatja az elérési út az argumentumoknak `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. A parancssori kapcsolók IExpress által támogatott további információkért lásd: [IExpress használható parancssori kapcsolók](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , majd frissítse a példát, hogy illeszkedjen az igényeihez.
 3. A parancssorba írja be a `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Linux-ügynök

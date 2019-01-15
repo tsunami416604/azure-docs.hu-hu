@@ -1,26 +1,8 @@
 ---
-title: Használja a mintaként szolgáló adatkészletét – az Azure Machine Learning Studióban |} A Microsoft Docs
-description: A Machine Learning Studióban szereplő minta modellek használt adatkészletekhez leírása. A kísérletek ezek mintaadatkészletek is használhat.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
-ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270484"
+Cím: A mintául szolgáló adatkészletek titleSuffix használja: Azure Machine Learning Studio description: A Machine Learning Studióban szereplő minta modellek használt adatkészletekhez leírása. A kísérletek ezek mintaadatkészletek is használhat.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/19/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -101,7 +83,7 @@ Donor szerepel a hónap utolsó összeg egyeztetéséről óta), és a gyakoris�
 <p></p>
 <b>Használat:</b> A cél, hogy-e a donor szóló vér március 2007, ahol 1, 0 és a célként megadott időszak során ország nem ország előrejelzése besorolási keresztül. 
 <p></p>
-<b>Kapcsolódó Research:</b> Yeh, úgy, (2008). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi
+<b>Kapcsolódó Research:</b> Yeh, I.C., (2008). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi
 <p></p>
 Yeh, e-Cheng, Yang, King-Jang, és sítése, címke-PN-Roaming, "Knowledge discovery az RFM-modellben Bernoulli feladatütemezési,"szakértői rendszereket 2008, az alkalmazásokkal <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -180,7 +162,7 @@ Az adatkészlet az adott időszakban 2013. április október ismerteti. Mielőtt
   <li>Az adatkészlet az Egyesült Államok szárazföldi területén csak 70 legforgalmasabb repülőterek terjed ki lett szűrve</li>
   <li>Megszakított repülőjáratok legális, legfeljebb 15 perccel késleltetve vannak</li>
   <li>Forgalomelterelés repülőjáratok ki lett szűrve</li>
-  <li>A következő oszlopok kijelölve: Év, hónap, DayofMonth, DayOfWeek, szolgáltatója, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay ArrDel15, megszakítva</li>
+  <li>A következő oszlopok kijelölve: Year, Month, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Canceled</li>
 </ul>
 </td>
 </tr>
@@ -346,7 +328,7 @@ Az időjárási adatok repülőtér időjárási állomásokon, az adott idősza
 </tr>
 
 <tr>
-  <td>Wikipedia SP 500 adatkészlet</td>
+  <td>Wikipedia SP 500 Dataset</td>
   <td>
 Adatok Wikipedia származik (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) S & P 500-as vállalatok, XML-adatok tárolva cikkek alapján.
 <p></p>
@@ -403,7 +385,7 @@ Témakör-hozzárendelések RCV1-V2 Reuters hírek adatkészlet újságcikkek ke
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Az adatok származási a évi Versenysorozatából Cup 2010 tanulói teljesítmény kiértékelése kihívás (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">tanulói teljesítmény kiértékelése</a>). A használt adatokat a Algebra_2008_2009 gyakorlókészlethez (Stamper, J., Niculescu-Mizil, A., Ritter, s, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008 – 2009. Kérdés adatkészlethez az évi Versenysorozatából Cup 2010 oktatási Data Mining kérdés. Keresse meg a <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
+Az adatok származási a évi Versenysorozatából Cup 2010 tanulói teljesítmény kiértékelése kihívás (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">tanulói teljesítmény kiértékelése</a>). A használt adatokat a Algebra_2008_2009 gyakorlókészlethez (Stamper, J., Niculescu-Mizil, A., Ritter, s, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. Kérdés adatkészlethez az évi Versenysorozatából Cup 2010 oktatási Data Mining kérdés. Keresse meg a <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Az adatkészlet letöltötte és az Azure Blob storage szolgáltatásban tárolt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) és a egy diák oktatási a rendszer a naplófájlokat tartalmazza. A megadott szolgáltatásai a probléma azonosítója, és a rövid leírását, ő, időbélyegző és hány kísérletek a tanulói, a probléma megoldásához a megfelelő módon előtt. Az eredeti adathalmazból rendelkezik 8.9M rekordok; Ez az adatkészlet lett, le mintavételezés az első 100 ezer olyan sorokat. Az adatkészlet már 23 tabulátorokkal tagolt oszlopokban a különféle fenyegetési típusokat: numerikus, kategorikus, és az időbélyegző.
   </td>

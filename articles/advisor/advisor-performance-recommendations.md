@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 53571fa0c29c4b9bf5493a1e558356eba38fe617
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244416"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266745"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-teljesítményajánlások
 
@@ -77,7 +77,8 @@ Az Advisor táblákat, amelyek nem szerepelnek a replikált táblák, de kiakná
 
 Telepítse át a Storage-fiók üzembe helyezési modellben az Azure Resource Manager (ARM) sablon-üzembehelyezések, a további biztonsági beállításokat és a lehet majd frissíteni GPv2-fiókra kihasználtságát az Azure Storage a legújabb funkciók előnyeinek kihasználása érdekében. Az Advisor összes önálló tárfiókot a klasszikus üzemi modellt használó azonosítja, és javasolja, hogy az ARM-alapú üzemi modellbe való migrálás.
 
-Klasszikus riasztások az Azure monitorban kivonja a június 2019 bejelentéséig, javasoljuk, hogy frissítsen a klasszikus tárfiók ARM megőrzi a riasztási funkciók, az az új riasztások platformra. További információkért lásd: [klasszikus riasztások használatból való kivonást egyaránt](https://azure.microsoft.com/en-us/updates/classic-alerting-monitoring-retirement/).
+> [!NOTE]
+> Klasszikus riasztások az Azure monitorban kivonja a június 2019 bejelentéséig, javasoljuk, hogy frissítsen a klasszikus tárfiók ARM riasztási funkciók és az új platform megőrzéséhez. További információkért lásd: [klasszikus riasztások használatból való kivonást egyaránt](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Az Advisor teljesítményajánlásainak elérése
 

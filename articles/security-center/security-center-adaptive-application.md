@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
+ms.date: 12/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: b4023d45c3628df5006d076e01f32bb8f3aa80a6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846249"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262897"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
@@ -105,7 +105,7 @@ Miután a létrehozás lehetőséget választja, az Azure Security Center automa
 
   - **Név**: az előfizetés és a csoport neve
   - **VMs** (Virtuális gépek): a virtuális gépek száma a csoportban
-  - **Mód**: vizsgálati üzemmód naplózza alkalmazások; futtatására tett kísérletek Érvényesíti a rendszer nem engedélyezi az alkalmazások futtatásához
+  - **Mód**: Vizsgálati üzemmód naplózza alkalmazások; futtatására tett kísérletek Érvényesíti a rendszer nem engedélyezi az alkalmazások futtatásához
   - **Riasztások**: aktuális szabálysértések
 
 2. Kattintson a módosításokat a csoport a **Alkalmazásvezérlési szabályzat szerkesztése** lapot.
@@ -122,7 +122,7 @@ Miután a létrehozás lehetőséget választja, az Azure Security Center automa
    > - Amint azt fent említettük, az új alkalmazásvezérlési szabályzatok alapértelmezés szerint minden esetben *Felügyelet* módban lesznek konfigurálva. 
    >
 
-4. A **szabályzatbővítmény**, bármely alkalmazás elérési útja, amely számára engedélyezni is hozzáadhat. Elérési utak felvétele után a Security Center frissíti az whielisting házirend a kiválasztott virtuális gépek csoportján belül a virtuális gépeken, és ezekhez az alkalmazásokhoz, amelyek már érvényben lévő szabályok mellett a megfelelő szabályokat hoz létre.
+4. A **szabályzatbővítmény**, bármely alkalmazás elérési útja, amely számára engedélyezni is hozzáadhat. Elérési utak felvétele után a Security Center frissíti az engedélyezési házirend a kiválasztott virtuális gépek csoportján belül a virtuális gépeken, és ezekhez az alkalmazásokhoz, amelyek már érvényben lévő szabályok mellett a megfelelő szabályokat hoz létre.
 
 5. Tekintse át az aktuális szabálysértések szerepel a **legutóbbi riasztások** szakaszban. Átirányítja őket az egyes sorokra kattintva a **riasztások** belül az Azure Security Center lapon, és a kapcsolódó virtuális gépek az Azure Security Center által észlelt összes riasztás megtekintése.
   - **Riasztások**: naplózott szabálysértések.
@@ -130,9 +130,9 @@ Miután a létrehozás lehetőséget választja, az Azure Security Center automa
 
 6. A **közzétevő-engedélyezési szabályok**, **elérésiút-engedélyezési szabályok**, és **ujjlenyomat-engedélyezési szabályok** láthatja, hogy mely szabályok jelenleg alkalmazásengedélyezés a szabálygyűjtemény-típusok megfelelően konfigurálta a csoporton belüli virtuális gépeken. Az egyes szabályokhoz tekintheti meg:
 
-  - **A szabály**: A megadott paramétereket, amely alapján határozza meg, ha az alkalmazás futtatásához jogosult az AppLocker által megvizsgál egy alkalmazás.
-  - **Fájltípus**: fájltípusokat, amelyek egy adott szabály esnek. Ez a következő lehet: EXE, szkript, MSI vagy ezek bármely permutációkban kiválasztott fájltípusok.
-  - **Felhasználók**: nevét vagy számát a felhasználók, akik egy alkalmazás, amelyet egy alkalmazás-engedélyezési szabály jelez futtatásához.
+  - **A szabály**: Amely alapján határozza meg, ha az alkalmazás futtatásához jogosult az AppLocker által megvizsgál egy alkalmazás megadott paramétereket.
+  - **Fájltípus**: A fájltípusok, egy adott szabály alá esnek. Ez a következők bármelyike lehet: EXE, szkript, MSI vagy ezek bármely permutációkban kiválasztott fájl típusa.
+  - **Felhasználók**: Név vagy a felhasználók száma, akik egy alkalmazás, amelyet egy alkalmazás-engedélyezési szabály jelez futtatható.
 
    ![Engedélyezési szabályok](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 

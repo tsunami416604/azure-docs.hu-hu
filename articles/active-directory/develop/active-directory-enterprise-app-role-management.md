@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/07/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 2bb9d69487b8576cdae60a1a613a341898495f06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a354d5d0242bfdbb618eb325c8157a7bed3d3b64
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904346"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263672"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott szerepkörjogcím konfigurálása
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: A vállalati alkalmazásokhoz SAML-jogkivonatban kiadott szerepkörjogcím konfigurálása
 
 Azure Active Directory (Azure AD) segítségével testre szabhatja a jogcím típusa a szerepkör jogcím a válasz token kap, miután engedélyezi, hogy egy alkalmazás számára.
 
@@ -151,25 +151,29 @@ Ha az alkalmazás egyéni átadni egy SAML-válasz-szerepkörök vár, szükség
 
 8. Frissítés a **attribútumok** tábla egy testre szabott leképezés a szerepkör jogcím meghatározásához.
 
-9. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket.
+9. Az a **felhasználói attribútumok & jogcímek** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket.
 
     | Attribútum neve | Hodnota atributu |
     | -------------- | ----------------|
-    | Szerepkörnév  | User.assignedroles |
+    | Szerepkörnév  | user.assignedroles |
 
-    a. Válassza ki **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** ablaktáblán.
+    a. Kattintson a **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+
+      !["Attribútum hozzáadása" gomb](./media/active-directory-enterprise-app-role-management/editattribute.png)
+
+    b. Válassza ki **attribútum hozzáadása** megnyitásához a **kezelheti a felhasználói jogcímek** ablaktáblán.
 
       !["Attribútum hozzáadása" gomb](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
       !["Attribútum hozzáadása" panel](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. Az a **neve** mezőbe írja be azon attribútum nevét, igény szerint. Ez a példa **szerepkörnév** a jogcím neve.
-
-    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    c. Az a **neve** mezőbe írja be azon attribútum nevét, igény szerint. Ez a példa **szerepkörnév** a jogcím neve.
 
     d. Hagyja a **Namespace** mező üres.
 
-    e. Kattintson az **OK** gombra.
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+
+    f. Kattintson a **Mentés** gombra.
 
 10. Az alkalmazás teszteléséhez a egy egyszeri bejelentkezést az identitásszolgáltató által kezdeményezett, jelentkezzen be a [hozzáférési Panel](https://myapps.microsoft.com) és az alkalmazás csempe kiválasztásával. A hozzárendelt szerepkörök a jogcím neve, amely az adott felhasználó megtekintheti a SAML-jogkivonat.
 

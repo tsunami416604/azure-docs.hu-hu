@@ -1,21 +1,21 @@
 ---
 title: .NET - Content Moderator használatával videót felülvizsgálatok létrehozása
 titlesuffix: Azure Cognitive Services
-description: Hogyan hozhat létre a videó áttekinti a Content Moderator SDK használatával a .NET-hez
+description: Ez a cikk nyújt információt, és kódminták segítségével gyorsan a Content Moderator SDK-val használatának első lépései C# videót felülvizsgálatok létrehozásához.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e9fb82c864c721a9df2e3b31d04e68c824404f81
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219040"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262511"
 ---
 # <a name="create-video-reviews-using-net"></a>Hozzon létre videót felülvizsgálatok .NET használatával
 
@@ -33,22 +33,21 @@ Ez a cikk feltételezi, hogy [Metz a videó (lásd a rövid útmutató)](video-m
 
 Ez a cikk azt is feltételezi, hogy már ismeri a Visual Studio és C#.
 
-## <a name="sign-up-for-content-moderator"></a>Iratkozzon fel a Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Regisztráció a Content Moderatorba
 
-A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
-Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót. A Content Moderatorra történő előfizetéshez és az előfizetői azonosító beszerzéséhez kövesse a [Cognitive Services-fiók létrehozásával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kapcsolatos szakaszban található utasításokat.
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Ha nem végzi el az előző lépésben felülvizsgálati eszköz fiókot regisztráljon
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Fiók létrehozása a felülvizsgálati eszközhöz, ha az előző lépésben erre nem került sor
 
-Ha kapott a Content Moderator az Azure Portalon is [a felülvizsgálati eszköz fiók](https://contentmoderator.cognitive.microsoft.com/) , és tekintse át a csoport létrehozása. A csoport azonosítója, és indítsa el a feladatot, és tekintse meg az értékelések a vizsgálóeszközt, a felülvizsgálati API hívása a felülvizsgálati eszköz szükséges.
+Ha a Content Moderatort az Azure Portalon szerezte be, [hozzon létre egy fiókot a felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com/) is, és hozzon létre egy felügyeleti csapatot. Szüksége lesz a csapatazonosítóra és a felülvizsgálati eszközre, ha egy feladat elkezdéséhez meg szeretné hívni a felülvizsgálati API-t, illetve ha meg szeretné tekinteni a felülvizsgálatokat a felülvizsgálati eszközben.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Győződjön meg arról, az API-kulcs segítségével meghívhatja a felülvizsgálati API felülvizsgálat létrehozása
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Arról való gondoskodás, hogy az API-kulcs meg tudja hívni a felülvizsgálati API-t a felülvizsgálat létrehozásához
 
-Az előző lépések végrehajtását követően, előfordulhat, hogy végül két a Content Moderator kulcs Ha használatba az Azure Portalról. 
+Az előző lépések végrehajtása után elképzelhető, hogy két Content Moderator-kulcsa is lesz, ha az Azure Portalról indította el a folyamatot. 
 
-Ha azt tervezi, használja az Azure által biztosított API-kulcsot az SDK-minta, hajtsa végre a szereplő lépéseket a [a felülvizsgálati API-val az Azure key](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) szakaszban, hogy az alkalmazása a felülvizsgálati API-t, és létrehozni a felülvizsgálatok.
+Ha az Azure által biztosított API-kulcsot tervezi használni az SDK-mintában, kövesse az [Azure-kulcs felülvizsgálati API-val történő használatát](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) ismertető szakaszban szereplő lépéseket annak érdekében, hogy alkalmazása meghívhassa a felülvizsgálati API-t, és felülvizsgálatokat hozhasson létre.
 
-Ingyenes próba hozza létre a kulcsot a felülvizsgálati eszköz használatakor a felülvizsgálati eszköz fiók már ismer a kulcsot, és ezért semmilyen további lépésekre szükség.
+Ha a felülvizsgálati eszköz által létrehozott ingyenes próbakulcsot használja, a felülvizsgálati eszközhöz tartozó fiókja már tud a kulcsról, így nincs szükség további lépésekre.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Tekintse át a videót, és a videókban előkészítése
 
@@ -69,13 +68,13 @@ A videókban (képek) használja az alábbi lemezképek:
 | :---: | :---: | :---: |
 [1. képkocka](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [2. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [3. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
 
-## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
+## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
+1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet a megoldáshoz.
 
 1. Adja a projektnek **VideoReviews**.
 
-1. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
+1. Válassza ki ezt a projektet a megoldás egyedüli kezdőprojektjeként.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
@@ -86,7 +85,7 @@ A következő, a TermLists projekt NuGet-csomagok telepítése.
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
+### <a name="update-the-programs-using-statements"></a>A program „using” utasításainak frissítése
 
 Módosítsa a program a következő using utasításokat.
 
@@ -100,7 +99,7 @@ Módosítsa a program a következő using utasításokat.
     using Newtonsoft.Json;
 
 
-### <a name="add-private-properties"></a>Adja hozzá a saját tulajdonságai
+### <a name="add-private-properties"></a>Privát tulajdonságok hozzáadása
 
 Adja hozzá a következő privát tulajdonságok névtérhez VideoReviews, osztály Program.
 
@@ -168,7 +167,7 @@ Adja hozzá a következő definice metody névtér VideoReviews, osztály Progra
 
 ## <a name="create-a-video-review"></a>Létrehoz egy videó
 
-Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. További információkért lásd: a [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. További információkért lásd az [API-referenciát](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** a következő szükséges paraméterek:
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json." 
@@ -217,13 +216,13 @@ Adja hozzá a következő definice metody névtér VideoReviews, osztály Progra
     }
 
 > [!NOTE]
-> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemre, és ha túllépi a korlátot, az SDK kivételt 429 hibakód. 
+> A Content Moderator-szolgáltatáskulcs rendelkezik egy RPS-alapú (kérések másodpercenkénti száma) sebességkorláttal, amelyet ha túllép, az SDK egy 429-es hibakódú kivételt jelez. 
 >
-> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
 ## <a name="add-video-frames-to-the-video-review"></a>A videó felülvizsgálat videókban hozzáadása
 
-Hozzáadhat egy videó tekintse át a videókban **ContentModeratorClient.Reviews.AddVideoFrameUrl** (Ha a videókban online) vagy **ContentModeratorClient.Reviews.AddVideoFrameStream** () Ha a videókban helyileg). Ez a rövid útmutató feltételezi, hogy a videókban online üzemelnek, és ezért használja **AddVideoFrameUrl**. További információkért lásd: a [API-referencia](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
+Hozzáadhat egy videó tekintse át a videókban **ContentModeratorClient.Reviews.AddVideoFrameUrl** (Ha a videókban online) vagy **ContentModeratorClient.Reviews.AddVideoFrameStream** () Ha a videókban helyileg). Ez a rövid útmutató feltételezi, hogy a videókban online üzemelnek, és ezért használja **AddVideoFrameUrl**. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
 
 **AddVideoFrameUrl** a következő szükséges paraméterek:
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json."
@@ -237,7 +236,7 @@ Hozzáadhat egy videó tekintse át a videókban **ContentModeratorClient.Review
 - **Metaadatok**. IList<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Érvényes kulcsok a következők:
 - **reviewRecommended**. IGAZ, ha a videó keret elbírálni használata javasolt.
 - **adultScore**. A 0 érték 1, felnőtt tartalom súlyosságát értékeli a videó keretbe.
-- **egy**. IGAZ, ha a videó felnőtt tartalom található.
+- **a**. IGAZ, ha a videó felnőtt tartalom található.
 - **racyScore**. A 0 érték 1, amely a képkocka fajgyűlölő tartalom súlyosságát aránya.
 - **r**. IGAZ, ha a képkocka fajgyűlölő tartalom található.
 - **ReviewerResultTags**. IList<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás használhatja a címkéket videókban rendszerezéséhez.
@@ -373,7 +372,7 @@ Adja hozzá a következő definice metody névtér VideoReviews, osztály Progra
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>A teljes kép
+## <a name="putting-it-all-together"></a>Végső összeállítás
 
 Adja hozzá a **fő** metódus VideoReviews, névtér-definíciót a Program osztályhoz. Végül zárja be a Program osztályt, valamint a VideoReviews névteret.
 
@@ -407,7 +406,7 @@ Adja hozzá a **fő** metódus VideoReviews, névtér-definíciót a Program osz
         }
     }
 
-## <a name="run-the-program-and-review-the-output"></a>Futtassa a programot, és tekintse át a kimenetet
+## <a name="run-the-program-and-review-the-output"></a>A program futtatása és a kimenet áttekintése
 Az alkalmazás futtatásakor a látható kimenet a következő sorokat:
 
     Creating a video review.

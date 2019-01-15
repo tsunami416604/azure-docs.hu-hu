@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0cac5658d5f6f32795b5988008b3b895024ecc06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e89575323b87ba28ef4f062da098fea4f0e27035
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960534"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264054"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
@@ -75,7 +75,7 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 1. Válassza ki a kiszolgálót a legújabb verziója. A teljes verziószám, és győződjön meg arról, hogy a legújabb verzióval rendelkezik:
     - **Közzétevő**: Canonical
     - **Ajánlat**: UbuntuServer
-    - **Verzió**: 16.04.201806120
+    - **Verzió**: 16.04.201806120 (vagy újabb)
     - **TERMÉKVÁLTOZAT**: 16.04-LTS
 
 1. Válassza ki **letöltése.**
@@ -93,12 +93,12 @@ Adja hozzá a Kubernetes a Marketplace-ről:
 1. Írja be a `Custom Script for Linux` (igen) kifejezést.
 
 1. Válassza ki a parancsprogramot, a következő profilhoz:
-    - **Ajánlat**: 2.0 Linuxhoz készült egyéni parancsfájl
-    - **Verzió**: 2.0.6-os
-    - **Közzétevő**: a Microsoft vállalati
+    - **Ajánlat**: Egyéni parancsfájl 2.0 linuxhoz
+    - **Verzió**: 2.0.6-os (vagy újabb)
+    - **Közzétevő**: Microsoft Corp
 
     > [!Note]  
-    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a megfelelő verziót kell. A Kubernetes az elem pontos verziója szükséges.
+    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a cikk a legújabb verzióra kell.
 
 1. Válassza ki **letöltése.**
 
@@ -149,7 +149,5 @@ A Kubernetes-elem eltávolítása:
 ## <a name="next-steps"></a>További lépések
 
 [A Kubernetes az Azure Stack üzembe helyezése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-
-
 
 [Az Azure Stackben szolgáltatásajánlások áttekintése](azure-stack-offer-services-overview.md)

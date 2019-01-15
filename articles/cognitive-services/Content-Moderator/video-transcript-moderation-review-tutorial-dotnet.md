@@ -1,27 +1,27 @@
 ---
 title: 'Oktatóanyag: Mérsékelt videók és a .NET - Content Moderator szövegekben'
 titlesuffix: Azure Cognitive Services
-description: A Content Moderator használata videók és átiratok moderálásához a .NET-ben.
+description: Ez az oktatóanyag segítségével megismerheti, hogyan hozhat létre egy teljes videó és a szöveges moderálás megoldás a gépi támogatású képmoderálás és emberi hurok felülvizsgálat létrehozása.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6f5a6c6ac4bd125fd7aa6358fe92f9453a0314b1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118574"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266774"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: A videó és a szöveges moderálása
 
 A Content Moderator video API-jaival az emberi vizsgálóeszközben moderálhat videókat és hozhat létre videoértékeléseket. 
 
-Ez a részletes oktatóanyag segít megérteni, hogyan hozhat létre egy teljes körű, gépi támogatású moderálás és emberi tényezős értékeléskészítés funkciókkal rendelkező video- és átiratmoderálási megoldást.
+Ez az oktatóanyag segítségével megismerheti, hogyan hozhat létre egy teljes videó és a szöveges moderálás megoldás a gépi támogatású képmoderálás és emberi hurok felülvizsgálat létrehozása.
 
 Az oktatóanyaghoz töltse le a [C# konzolalkalmazást](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp). A konzolalkalmazás az SDK-val és a kapcsolódó csomagokkal végzi el a következő feladatokat:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Translator Speech API – C#'
+title: 'Gyors útmutató: Translator Speech APIC#'
 titlesuffix: Azure Cognitive Services
 description: Információ és kódminták segítségével ismerkedhet meg a Translator Speech API használatának alapjaival.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a05ab716c8aea958e13ebba0dc9ceb09bf3d7cce
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: b873dbd3132e549c529280400d5a9644174232f9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913529"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259022"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>Rövid útmutató: Translator Speech API és C# 
+# <a name="quickstart-translator-speech-api-with-c"></a>Gyors útmutató: Translator Speech API-C# 
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használhatja a Translator Speech API-t egy .wav fá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.) Ha Mac OS-t vagy Linuxot használ, a [Visual Studio Code] (https://code.visualstudio.com/Download) szövegszerkesztőt is használhatja alternatív megoldásként.
+A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.) Ha Mac OS- vagy Linux is használhatja a szövegszerkesztőben [Visual Studio Code](https://code.visualstudio.com/Download) alternatívájaként.
 
 A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie.
 

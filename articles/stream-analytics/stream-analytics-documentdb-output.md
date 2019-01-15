@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106566"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267130"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
 Stream Analytics célként [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenet, az adatok archiválás és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok engedélyezése. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
@@ -58,16 +58,17 @@ Rögzített Azure Cosmos DB-gyűjtemények a Stream Analytics lehetővé teszi a
 Több állandó tároló való írás hamarosan elavulttá válik, és nem az ajánlott módszer a horizontális felskálázás a Stream Analytics-feladatot. A cikk [particionálás és skálázás az, Cosmos DB](../cosmos-db/sql-api-partition-data.md) további részleteket tartalmaz.
 
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON-kimenet a cosmos DB beállításai
-Cosmos DB létrehozása a Stream Analytics kimenetként állít elő, információkat az alább látható módon egy parancssort. Ez a szakasz a Tulajdonságok definíció magyarázattal szolgál.
 
+Cosmos DB létrehozása a Stream Analytics kimenetként állít elő, információkat az alább látható módon egy parancssort. Ez a szakasz a Tulajdonságok definíció magyarázattal szolgál.
 
 ![a documentdb a stream analytics kimeneti képernyő](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-Mező           | Leírás 
--------------   | -------------
-Output Alias (Kimeneti alias)    | Ez a kimenet az ASA-lekérdezésekben hivatkozni alias   
-Fiók neve    | A név vagy a végpont URI-t az Azure Cosmos DB-fiók 
-Fiókkulcs     | Az Azure Cosmos DB-fiókot a megosztott elérési kulcsot
-Adatbázis        | Az Azure Cosmos DB-adatbázis neve
-Gyűjtemény neve | A gyűjtemény nevét, a gyűjtemény használható. `MyCollection` Példa érvényes bemenet - nevű egy gyűjtemény `MyCollection` léteznie kell.  
-Dokumentumazonosító     | Választható. A kimeneti eseményekben a melyik beszúrási vagy frissítési műveletek kell alapozni egyedi kulcsaként használt oszlopok neve. Ha üres, az összes esemény kerül beillesztésre, nincs frissítési lehetőség.
+|Mező           | Leírás|
+|-------------   | -------------|
+|Kimeneti alias    | Tekintse meg ezt az ASA-lekérdezés kimenete egy alias.|
+|Előfizetés    | Válassza ki az Azure-előfizetéséhez.|
+|Fiókazonosító      | A neve vagy URI-t az Azure Cosmos DB-fiók végpontját.|
+|Fiókkulcs     | A közös hozzáférési kulcs az Azure Cosmos DB-fiókot.|
+|Adatbázis        | Az Azure Cosmos DB-adatbázis nevét.|
+|Gyűjteménynévminta | A gyűjtemény nevét, a gyűjtemény használható. `MyCollection` Példa érvényes bemenet - nevű egy gyűjtemény `MyCollection` léteznie kell.  |
+|Dokumentumazonosító     | Választható. A kimeneti eseményekben a melyik beszúrási vagy frissítési műveletek kell alapozni egyedi kulcsaként használt oszlopok neve. Ha üres, az összes esemény kerül beillesztésre, nincs frissítési lehetőség.|

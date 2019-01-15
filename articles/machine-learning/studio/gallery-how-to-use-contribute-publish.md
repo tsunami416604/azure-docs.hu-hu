@@ -1,26 +1,8 @@
 ---
-title: Az Azure AI katalógus – az Azure Machine Learning Studióban |} A Microsoft Docs
-description: Fedezzen fel és analytics-erőforrásokat, és további, az Azure AI-katalógusban. Tanulhat a Közösségtől, és a saját cikkein a Közösséggel.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: c9acd902eb536bbd252f0aca6d162ff92d9e6e00
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270960"
+Cím: Az Azure AI-katalógusban titleSuffix: Azure Machine Learning Studio description: Fedezzen fel és analytics-erőforrásokat, és további, az Azure AI-katalógusban. Tanulhat a Közösségtől, és a saját cikkein a Közösséggel.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/31/2017
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Az Azure AI-katalógusban található erőforrások Fedezzen fel és
 

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5a5d052052be447ea2ccbd9231d3b03d38c7615c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420081"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266943"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Tomcat 7 beállítása az Azure-ban Linux rendszerű virtuális gépen
 Az Apache Tomcat (vagy egyszerűen, a Tomcat is korábbi nevén Dzsakarta Tomcat) egy nyílt forráskódú webkiszolgáló és az Apache Software Foundation (ASP) által kidolgozott szervlet tároló. Tomcat a Java Servlet és a JavaServer Pages (JSP) leírásokat a Sun Microsystems valósítja meg. Tomcat a Java-kód futtatására tiszta Java HTTP-web server környezetet biztosít. A legegyszerűbb konfiguráció, a Tomcat egyetlen operációs rendszer folyamatban fut. Ez a folyamat a Java-alapú virtuális gépeken (JVM) futtatja. Minden HTTP-kérelem a Tomcat közvetlenül a böngészőből, a Tomcat folyamat egy külön szál feldolgozása.  
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti, hogyan használható a klasszikus üzemi modellben. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja. Az Open JDK- és Tomcat egy Ubuntu virtuális gép üzembe helyezéséhez egy Resource Manager-sablon használatát ismerteti [Ez a cikk](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Az Azure Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti, hogyan használható a klasszikus üzemi modellben. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja. Az Open JDK- és Tomcat egy Ubuntu virtuális gép üzembe helyezéséhez egy Resource Manager-sablon használatát ismerteti [Ez a cikk](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Ez a cikk futó Tomcat7 telepítése Linux-rendszerképen, és telepítheti az Azure-ban.  
@@ -37,14 +37,14 @@ Az oktatóanyagban érintett témák köre:
 * Hogyan készülhet fel a virtuális gépen futó Tomcat7.
 * Hogyan telepítheti a tomcat 7.
 
-Azt feltételezzük, hogy már rendelkezik Azure-előfizetéssel.  Ha nem, akkor regisztráljon egy ingyenes próbaidőszakot [az Azure-webhelyen](https://azure.microsoft.com/). Ha rendelkezik MSDN-előfizetéssel, lásd: [a Microsoft Azure speciális díjszabás: MSDN, MPN és BizSpark-juttatások](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Azure-ral kapcsolatos további tudnivalókért lásd: [Mi az Azure?](https://azure.microsoft.com/overview/what-is-azure/).
+Azt feltételezzük, hogy már rendelkezik Azure-előfizetéssel.  Ha nem, akkor regisztráljon egy ingyenes próbaidőszakot [az Azure-webhelyen](https://azure.microsoft.com/). Ha rendelkezik MSDN-előfizetéssel, lásd: [a Microsoft Azure speciális díjszabás: Az MSDN, MPN és BizSpark-juttatások](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Azure-ral kapcsolatos további tudnivalókért lásd: [Mi az Azure?](https://azure.microsoft.com/overview/what-is-azure/).
 
 Ez a cikk azt feltételezi, hogy a Tomcat- és Linux alapszintű ismeretét.  
 
-## <a name="phase-1-create-an-image"></a>1. fázis: A rendszerkép létrehozása
+## <a name="phase-1-create-an-image"></a>1. fázis: Rendszerkép létrehozása
 Ebben a fázisban létrehozza a virtuális gépek használatával egy Linux-rendszerképek az Azure-ban.  
 
-### <a name="step-1-generate-an-ssh-authentication-key"></a>1. lépés: Hozzon létre SSH-hitelesítési kulcs
+### <a name="step-1-generate-an-ssh-authentication-key"></a>1. lépés: SSH hitelesítési kulcs létrehozásához
 Az SSH a rendszergazdák számára fontos eszköz. Hozzáférés-biztonságot, ember által meghatározott jelszó alapján konfigurálása azonban nem ajánlott. A rosszindulatú felhasználók is felosztása a rendszer a felhasználónév és a egy egyszerű jelszó alapján.
 
 A jó hír az, hogy nincs-e hagyja nyitva a távoli elérés, és nem kell foglalkoznia jelszavakat. Ez a módszer a hitelesítés az aszimmetrikus titkosítási áll. A felhasználó titkos kulcsát, amely engedélyezi a hitelesítést egy rendszer. Zárolhatja a felhasználó fiókját, hogy ne engedélyezze a jelszavas hitelesítést is.
@@ -64,7 +64,7 @@ Kövesse az alábbi lépéseket az SSH-hitelesítési kulcs létrehozásához.
 5. Válassza ki és másolja a nyilvános kulcsot, és mentse egy publicKey.pem nevű fájl. Ne kattintson **mentés nyilvános kulcs**, mert a mentett nyilvános kulcs fájl formátuma eltér a nyilvános kulcs szeretnénk.
 6. Kattintson a **titkos kulcs mentése**, és mentse egy privateKey.ppk nevű fájl.
 
-### <a name="step-2-create-the-image-in-the-azure-portal"></a>2. lépés: A rendszerkép létrehozása az Azure Portalon
+### <a name="step-2-create-the-image-in-the-azure-portal"></a>2. lépés: A rendszerkép létrehozása az Azure Portalon
 1. Az a [portál](https://portal.azure.com/), kattintson a **erőforrás létrehozása** rendszerkép létrehozásához a tálcán. Ezután válassza ki a Linux-rendszerképek igényei alapján. Az alábbi példa az Ubuntu 14.04-es rendszerképet használ.
 ![Képernyőkép a portálon, amely megjeleníti az új gombra][3]
 
@@ -98,7 +98,7 @@ Az Azure-ban végpontok TCP vagy UDP protokollt, valamint egy nyilvános és tit
       ![Képernyőkép a felhasználói felület, amely megjeleníti a Hozzáadás parancsot, nyilvános Port és magánhálózati Port][7]
 4. Kattintson a **OK** a végpont hozzáadása a virtuális gép.
 
-### <a name="step-2-connect-to-the-image-you-created"></a>2. lépés: A létrehozott lemezkép csatlakozni.
+### <a name="step-2-connect-to-the-image-you-created"></a>2. lépés: A létrehozott lemezkép csatlakozni
 Lehetősége van csatlakozni a virtuális gép egy SSH-eszközt. Ebben a példában használjuk a putty-kapcsolaton keresztül.  
 
 1. A virtuális gép DNS-név lekérése a portálról.
@@ -114,7 +114,7 @@ Lehetősége van csatlakozni a virtuális gép egy SSH-eszközt. Ebben a példá
 4. A letöltés után kattintson a végrehajtható fájl Putty.exe. A PuTTY konfigurációs az alapvető beállítások konfigurálása az állomásnévvel és a portszám kérhető le a virtuális gép tulajdonságai között.   
 ![Képernyőkép a PuTTY konfigurációs állomás neve és portszáma beállításai][9]
 
-5. A bal oldali ablaktáblán kattintson **kapcsolat** > **SSH** > **Auth**, és kattintson a **Tallózás** , adja meg a a privateKey.ppk fájl helyét. A privateKey.ppk fájl tartalmazza a titkos kulcsot, amely a PuTTYgen korábban a hozza létre az "1. fázis: rendszerkép létrehozása" című szakaszát.  
+5. A bal oldali ablaktáblán kattintson **kapcsolat** > **SSH** > **Auth**, és kattintson a **Tallózás** , adja meg a a privateKey.ppk fájl helyét. A privateKey.ppk fájl tartalmazza a titkos kulcsot, amely a PuTTYgen korábban a hozza létre az "1. fázis: Rendszerkép létrehozása"című szakaszát.  
 ![Képernyőkép a kapcsolat könyvtár-hierarchia és a Tallózás gomb][10]
 
 6. Kattintson az **Open** (Megnyitás) elemre. Előfordulhat, hogy, egy üzenet mezőbe által riasztást kap. Ha konfigurálta a DNS-nevet, és megfelelően portszám, kattintson a **Igen**.
@@ -123,10 +123,10 @@ Lehetősége van csatlakozni a virtuális gép egy SSH-eszközt. Ebben a példá
 7. Adja meg a felhasználónevet kéri.  
 ![Képernyőkép a helyét adja meg a felhasználónevet][12]
 
-8. Adja meg a felhasználónevet, amellyel a virtuális gép létrehozása az "1. fázis: hozzon létre egy rendszerképet" Ez a cikk korábbi szakaszában. Látni fogja a következőhöz hasonló:  
+8. Adja meg a felhasználónevet, amellyel a virtuális gép létrehozása az "1. fázis: Rendszerkép létrehozása"szakaszban Ez a cikk korábbi részében. Látni fogja a következőhöz hasonló:  
 ![A hitelesítési megerősítését bemutató képernyőkép][13]
 
-## <a name="phase-3-install-software"></a>3. fázis: A szoftver telepítése
+## <a name="phase-3-install-software"></a>3. fázis: Szoftver telepítése
 Ebben a fázisban telepíti, a Java-futtatókörnyezet, a tomcat 7 és az egyéb tomcat7 and Using összetevők.  
 
 ### <a name="java-runtime-environment"></a>Java-futtatókörnyezet
@@ -135,13 +135,13 @@ Tomcat a Java nyelven van megírva. Lásd: [Azure támogatott segítségével](h
 
 #### <a name="install-azure-supported-jdk"></a>Az Azure támogatott JDK telepítéséhez
 
-Kövesse a `apt-get` telepítési utasításokat a dokumentált a [Azul Zulu Enteprise Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) webhely.
+Kövesse a `apt-get` telepítési utasításokat a dokumentált a [Azul Zulu Enterprise Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) webhelyén.
 
 #### <a name="confirm-that-java-installation-is-successful"></a>Győződjön meg arról, hogy Java-telepítés sikeres
 A következőkhöz hasonló parancsot segítségével tesztelése amennyiben a Java-futtatókörnyezet megfelelően van-e telepítve:  
     Java-verzió  
 
-Egy üzenet, a következőhöz hasonló: ![sikeres openjdk csomagját telepítési üzenet][14]
+Egy üzenet a következőhöz hasonlóan kell megjelennie: ![A sikeres openjdk csomagját telepítési üzenet][14]
 
 
 ### <a name="install-tomcat7"></a>Tomcat 7 telepítése
@@ -164,7 +164,7 @@ Használja a **sudo apt-gyorsítótár keresési tomcat7 and using** paranccsal 
 
     sudo apt-get install tomcat7-user         #tools to create user instances  
 
-## <a name="phase-4-configure-tomcat7"></a>4. fázis: A tomcat7 and Using konfigurálása
+## <a name="phase-4-configure-tomcat7"></a>4. fázis: Configure Tomcat7
 Ebben a fázisban a Tomcat felügyeletéhez.
 
 ### <a name="start-and-stop-tomcat7"></a>Elindíthatja és leállíthatja a tomcat 7
@@ -212,7 +212,7 @@ Miután csatlakozott, megjelenik a következőhöz hasonló:
 
   * A Tomcat figyelési portja nem ugyanaz, mint a virtuális gép végpontjának a Tomcat-forgalmat a magánhálózati port.  
 
-     Ellenőrizze a nyilvános port és magánhálózati port végpont beállításait, és ellenőrizze, hogy a magánhálózati port ugyanaz, mint a Tomcat port figyelésére. Lásd: "1. fázis: rendszerkép létrehozása" című szakaszban talál útmutatást a virtuális gép végpontjainak konfigurálása.  
+     Ellenőrizze a nyilvános port és magánhálózati port végpont beállításait, és ellenőrizze, hogy a magánhálózati port ugyanaz, mint a Tomcat port figyelésére. Lásd: "1. fázis: Rendszerkép létrehozása"szakaszban Ez a cikk a virtuális gép végpontjainak konfigurálására vonatkozó utasításokat.  
 
      Annak megállapításához, a Tomcat figyelési portja, nyissa meg a /etc/httpd/conf/httpd.conf (Red Hat-kiadás), vagy /etc/tomcat7/server.xml (Debian kiadás). Alapértelmezés szerint a Tomcat figyelési portja a 8080-as. Például:  
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c01d911a59647956914518aa62a616823241ab3b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313241"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304924"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Az Azure Active Directory naplóinak integrálása
 
@@ -28,7 +28,7 @@ Az Azure Active Directory (Azure AD) naplózott események segít azonosítani a
 
 
 >[!IMPORTANT]
-> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018. június 27. letiltásra kerül. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/01/2019 elavulttá válik. 2018. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory integrálásának lépései auditnaplók
 
@@ -73,7 +73,7 @@ Megnyithatja a [támogatási kérelem](../azure-supportability/how-to-create-azu
 ## <a name="next-steps"></a>További lépések
 Az Azure Log Integration kapcsolatos további információkért lásd:
 
-* [A Microsoft Azure Log Integration az Azure-naplók](https://www.microsoft.com/download/details.aspx?id=53324): Töltse le a főoldalon nyújt részleteket, a rendszerkövetelmények és telepítési utasításokat az Azure Log Integration.
-* [Bevezetés az Azure Log Integration](security-azure-log-integration-overview.md): Ez a cikk bemutatja az Azure Log Integration, annak főbb funkcióit és működését.
-* [Az Azure Log Integration – gyakori kérdések](security-azure-log-integration-faq.md): Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad választ.
-* [Új funkciók az Azure Diagnostics és az Azure-auditnaplók](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ebben a blogbejegyzésben bemutatja Azure-auditnaplók és egyéb funkciókat, amelyek segítségével betekintést nyerhet az Azure-erőforrások műveleteit.
+* [A Microsoft Azure Log Integration az Azure-naplók](https://www.microsoft.com/download/details.aspx?id=53324): A letöltőközpontlapon nyújt részleteket, a rendszerkövetelmények és telepítési utasításokat az Azure Log Integration.
+* [Bevezetés az Azure Log Integration](security-azure-log-integration-overview.md): Ez a cikk bemutatja, Azure Log Integration, annak főbb funkcióit és működését.
+* [Gyakori kérdések az Azure Log Integration](security-azure-log-integration-faq.md): Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad választ.
+* [Új funkciók az Azure Diagnostics és az Azure-auditnaplók](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ebben a blogbejegyzésben bemutatja az Azure-auditnaplók, és más funkciók, amelyek segítségével betekintést nyerhet az Azure-erőforrások műveletei.

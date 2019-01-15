@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 52e034f9a0c11c2b27888d181304bc16c3369e4a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 69f36773b702d9f0059e0cd27dbb864ccd7f7b2b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390023"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262761"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Hogyan integrálható az Azure API Management az Azure Application insights segítségével
 
@@ -64,8 +64,10 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
 6. Ellenőrizze a **engedélyezése** mezőbe.
 7. Válassza ki a csatolt naplózó a a **cél** legördülő listából.
 8. Bemeneti **100** , **mintavételi (%)** osztásjelek és a **mindig hibák naplózása** jelölőnégyzetet.
-9. Bemeneti **1024** a a **szervezet első bájtok** mező.
-10. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Save** (Mentés) gombra.
+
+> [!WARNING]
+> Az alapértelmezett érték felülírva **0** a a **szervezet első bájtok** mező jelentősen csökkentheti az API-k teljesítményét.
 
 > [!NOTE]
 > A helyszín mögött egy [diagnosztikai](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate) "applicationinsights" nevű entitás jön létre az API szintjén.
@@ -76,12 +78,12 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
 | Cél                         | Az Azure Application Insights-naplózót | Adja meg a használandó Azure Application Insights naplózót                                                                                                                                                                                                                                                                                           |
 | Mintavételi (%)                        | tizedes tört                           | Értékek 0 és 100 (százalék). <br/> Itt adhatja meg, hány százaléka kéréseket az Azure Application Insights lesz naplózva. 0 %-os mintavételi azt jelenti, hogy a nulla kérelmeket naplózza, amíg a 100 %-os mintavételi azt jelenti, hogy naplózott összes kérelem. <br/> Ezzel a beállítással csökkenthető a teljesítményre gyakorolt hatása naplózási kérések az Azure Application Insights (lásd az alábbi szakaszt). |
 | Mindig naplózni a hibákat                   | logikai                           | Ha ez a beállítás be van jelölve, az összes sikertelen lesz naplózva az Azure Application insights szolgáltatásba, függetlenül attól, hogy a **mintavételi** beállítás.                                                                                                                                                                                                                  |
-| Alapszintű beállítások: a fejlécek              | lista                              | Meghatározza a fejléceket, amely a kérelmek és válaszok az Azure Application Insights lesz naplózva.  Alapértelmezés: nincs fejléceket a rendszer naplózza.                                                                                                                                                                                                             |
-| Alapszintű beállítások: Szervezet első bájtok száma  | egész szám                           | Itt adhatja meg, hány első bájtok a szervezet Azure Application Insights naplózza a kérelmeket és válaszokat.  Alapértelmezett érték: a törzs nem naplózza.                                                                                                                                                                                              |
-| Speciális beállítások: Előtérbeli kérelem  |                                   | Itt adhatja meg, hogyan *előtérbeli kérelmek* Azure Application insights lesz naplózva. *Előtérbeli kérelem* tulajdonképpen egy kérelem a bejövő és az Azure API Management szolgáltatást.                                                                                                                                                                        |
-| Speciális beállítások: Előtérbeli válasz |                                   | Itt adhatja meg, hogyan *előtérbeli válaszok* az Azure Application Insights lesz naplózva. *Előtérbeli válasz* választ, az Azure API Management szolgáltatás kimenő.                                                                                                                                                                   |
-| Speciális beállítások: Háttérrendszer kérelem   |                                   | Itt adhatja meg, hogyan *háttérrendszer kérelmek* Azure Application insights lesz naplózva. *Háttér-kérelem* egy kérelmet, az Azure API Management szolgáltatás kimenő.                                                                                                                                                                        |
-| Speciális beállítások: Háttérrendszer válasz  |                                   | Itt adhatja meg, hogyan *háttérrendszer válaszait* az Azure Application Insights lesz naplózva. *Háttér-válasz* van az Azure API Management szolgáltatás a bejövő válasz.                                                                                                                                                                       |
+| Alapszintű beállítások: Fejlécek              | lista                              | Meghatározza a fejléceket, amely a kérelmek és válaszok az Azure Application Insights lesz naplózva.  Alapértelmezés: nincs fejléceket a rendszer naplózza.                                                                                                                                                                                                             |
+| Alapszintű beállítások: Szervezet első bájtok  | egész szám                           | Itt adhatja meg, hány első bájtok a szervezet Azure Application Insights naplózza a kérelmeket és válaszokat.  Alapértelmezett érték: a törzs nem naplózza.                                                                                                                                                                                              |
+| Speciális beállítások: Előtér-kérelem  |                                   | Itt adhatja meg, hogyan *előtérbeli kérelmek* Azure Application insights lesz naplózva. *Előtérbeli kérelem* tulajdonképpen egy kérelem a bejövő és az Azure API Management szolgáltatást.                                                                                                                                                                        |
+| Speciális beállítások: Előtér-válasz |                                   | Itt adhatja meg, hogyan *előtérbeli válaszok* az Azure Application Insights lesz naplózva. *Előtérbeli válasz* választ, az Azure API Management szolgáltatás kimenő.                                                                                                                                                                   |
+| Speciális beállítások: Háttér-kérelem   |                                   | Itt adhatja meg, hogyan *háttérrendszer kérelmek* Azure Application insights lesz naplózva. *Háttér-kérelem* egy kérelmet, az Azure API Management szolgáltatás kimenő.                                                                                                                                                                        |
+| Speciális beállítások: Háttér-válasz  |                                   | Itt adhatja meg, hogyan *háttérrendszer válaszait* az Azure Application Insights lesz naplózva. *Háttér-válasz* van az Azure API Management szolgáltatás a bejövő válasz.                                                                                                                                                                       |
 
 > [!NOTE]
 > Különböző szinteken – egyetlen API-naplózót vagy az összes API-k egy naplózó másolása is megadhat.

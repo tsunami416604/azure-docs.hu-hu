@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6d6a06af90c02dee0a7711d7362d0604018cb4a5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 12c75d67d9c58dd80796caac04a6a57303675cba
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246585"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303347"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
@@ -50,7 +50,7 @@ További licencelési információk, beleértve a költségek, a következő lap
 * [Az Azure Active Directory funkciók és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
-* [A Microsoft 365 vállalati szolgáltatás leírása](/office365/servicedescriptions/microsoft-365-business-service-description.md)
+* [A Microsoft 365 vállalati szolgáltatás leírása](/office365/servicedescriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Engedélyezze a csoport- vagy felhasználói alapú licencelése
 

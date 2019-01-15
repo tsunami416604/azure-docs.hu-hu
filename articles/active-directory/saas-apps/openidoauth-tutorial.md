@@ -4,22 +4,22 @@ description: Az OpenID/OAuth-alkalmazás, az Azure AD-alkalmazásgyűjtemény a 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/25/2018
+ms.topic: tutorial
+ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 1215e0060662e0d5261d3aeac4874e5833131ba3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287438"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260839"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Az Azure AD-alkalmazásgyűjtemény egy OpenID/OAuth-alkalmazás konfigurálása
 
@@ -27,19 +27,19 @@ ms.locfileid: "51287438"
 
 1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**. 
 
-    ![Az Azure Active Directory-gomb](./media/openidoauth-tutorial/tutorial_general_01.png)
+    ![Az Azure Active Directory gomb](common/select-azuread.png))
 
 2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**.
 
-    ![Vállalati alkalmazások panelen](./media/openidoauth-tutorial/tutorial_general_02.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Válassza ki **új alkalmazás** a párbeszédpanel tetején.
 
-    ![Új alkalmazás gomb](./media/openidoauth-tutorial/tutorial_general_03.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
 4. A Keresés mezőbe írja be az alkalmazás nevét. Válassza ki a kívánt alkalmazást az eredmény panelen, és iratkozzon fel az alkalmazáshoz.
 
-    ![Alkalmazás felvétele](./media/openidoauth-tutorial/addfromgallery.png)
+    ![Az eredmények listájában Openid](common/search-new-app.png)
 
     > [!NOTE]
     > OpenID Connect és az OAuth-alkalmazások esetén a **Hozzáadás** gomb alapértelmezés szerint le van tiltva. Itt a bérlői rendszergazda kell választania a regisztráció gombra, és adja meg a hozzájárulás az alkalmazáshoz. Az alkalmazás ezután kerül az ügyfélbérlőn, ahol megteheti a konfigurációkat. Hiba esetén nem kell explicit módon hozzáadni az alkalmazást.

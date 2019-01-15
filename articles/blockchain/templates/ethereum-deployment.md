@@ -1,6 +1,6 @@
 ---
 title: Ethereum proof of work consortium megoldássablon
-description: A Etherereum Proof-az-munkahelyi Consortium megoldás sablon segítségével telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati
+description: Az Ethereum Proof-az-munkahelyi Consortium megoldás sablon segítségével telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231797"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260533"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum proof of work consortium megoldássablon
 
@@ -67,7 +67,7 @@ Ez a folyamat az Azure-előfizetés, amely támogathatja több virtuálisgép-m�
 
 Miután egy előfizetést védett, nyissa meg az Azure Portalon. Válassza ki **+ erőforrás létrehozása**, Marketplace-en (összes megjelenítése), és keressen rá a **Ethereum Proof-az-munkahelyi Consortium**.
 
-A sablon üzembe helyezéséhez végigvezeti az első tagtól erőforrás-igényű konfigurálása a hálózatban. Az üzembe helyezési folyamat öt lépést oszlik: alapjait, az Operations Management Suite, üzembe helyezési régiók, a hálózat méretétől és teljesítményt, Ethereum-beállítások.
+A sablon üzembe helyezéséhez végigvezeti az első tagtól erőforrás-igényű konfigurálása a hálózatban. Az üzembe helyezési folyamat öt lépést oszlik: Alapvető beállítások, az Operations Management Suite, üzembe helyezési régiók, a hálózat méretétől és teljesítményt, Ethereum-beállítások.
 
 ### <a name="basics"></a>Alapvető beállítások
 
@@ -78,11 +78,11 @@ A **alapjai**, megadhatja a környezethez, például az előfizetés, erőforrá
 Paraméter neve|Leírás| Megengedett értékek|Alapértelmezett értékek
 ---|---|---|---
 Hozzon létre egy új vagy meglévő hálózaton való csatlakozás?|Hozzon létre egy új hálózatot, vagy egy már meglévő consortium network csatlakoztatása|Hozzon létre új való csatlakozás meglévő|Új létrehozása
-Konzorcium része lesz a hálózat üzembe helyezése|Egy consortium network lehetővé teszi, hogy a későbbiekben ehhez a hálózathoz csatlakozni (látható, ha *hozzon létre új* felett van kiválasztva)|Önálló Consortium|Különálló
-Erőforrás-előtag |A karakterlánc elnevezéséhez alapként erőforrások (2 – 4 alfanumerikus karakter). Egyedi kivonattal karakterláncot az egyes erőforrásokat, kiegészített, amíg a rendszer hozzáfűzi erőforrás-specifikus információkat.|Hossza 2 – 4 alfanumerikus karakterek|NA
+Konzorcium része lesz a hálózat üzembe helyezése|Egy consortium network lehetővé teszi, hogy a későbbiekben ehhez a hálózathoz csatlakozni (látható, ha *hozzon létre új* felett van kiválasztva)|Standalone Consortium|Különálló
+Resource Prefix |A karakterlánc elnevezéséhez alapként erőforrások (2 – 4 alfanumerikus karakter). Egyedi kivonattal karakterláncot az egyes erőforrásokat, kiegészített, amíg a rendszer hozzáfűzi erőforrás-specifikus információkat.|Hossza 2 – 4 alfanumerikus karakterek|NA
 Virtuális gép felhasználóneve| Az egyes üzembe helyezett virtuális gépek (csak alfanumerikus karaktereket) a rendszergazdai jogosultságú felhasználónevet|1 – 64 karakter |gethadmin
 Hitelesítés típusa|A módszert a virtuális géphez. |Jelszó vagy SSH nyilvános kulcs|Jelszó
-Jelszó (hitelesítési típus = jelszó)|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3, a következő követelményeknek: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|NA
+Jelszó (hitelesítési típus = jelszó)|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3 az alábbi követelményeket: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|NA
 SSH-kulcs (hitelesítési típus = a nyilvános kulcs)|A secure shell-kulcsot a távoli bejelentkezéshez használt.|| NA
 Előfizetés| Az előfizetés, melyben szeretné üzembe helyezni a consortium network||NA
 Erőforráscsoport| Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network.||NA
@@ -125,12 +125,12 @@ A következő **méretének és teljesítményének hálózati** méretét, a co
 
 Paraméter neve |Leírás |Megengedett értékek| Alapértelmezett értékek
 ---|---|---|---
-Adatbányászati csomópontok száma|Egy régióban üzembe helyezett adatbányászati csomópontok száma|2. 15.| 2
+Adatbányászati csomópontok száma|Egy régióban üzembe helyezett adatbányászati csomópontok száma|2 - 15| 2
 Adatbányászati csomópont tároló-teljesítményre|A telepített adatbányászati csomópontok biztonsági felügyelt lemez típusa.|Standard vagy prémium szintű|Standard
-Adatbányászati csomópont virtuális gépének mérete|A virtuális gép mérete adatbányászati csomópontok használt.|Standard szintű, és <br />Standard D <br />Standard D v2 <br />Standard F sorozat <br />Standard DS-ben <br />és a Standard FS|Standard D1v2
-Elosztott terhelésű tranzakció csomópontok száma|A hálózat részét képező kiépítése tranzakció csomópontok számát.|1 – 5| 2
+Adatbányászati csomópont virtuális gépének mérete|A virtuális gép mérete adatbányászati csomópontok használt.|Standard A, <br />Standard D <br />Standard D-v2, <br />Standard F sorozat <br />Standard DS-ben <br />and Standard FS|Standard D1v2
+Elosztott terhelésű tranzakció csomópontok száma|A hálózat részét képező kiépítése tranzakció csomópontok számát.|1 - 5| 2
 Tranzakció csomópont tároló-teljesítményre|A telepített tranzakció csomópontok biztonsági felügyelt lemez típusa.|Standard vagy prémium szintű|Standard
-Tranzakció csomópont virtuális gépének mérete|A tranzakció csomópontok használt virtuális gép méretét.|Standard szintű, és <br />Standard D <br />Standard D v2 <br />Standard F sorozat <br />Standard DS-ben <br />és a Standard FS|Standard D1v2
+Tranzakció csomópont virtuális gépének mérete|A tranzakció csomópontok használt virtuális gép méretét.|Standard A, <br />Standard D <br />Standard D-v2, <br />Standard F sorozat <br />Standard DS-ben <br />and Standard FS|Standard D1v2
 
 ### <a name="ethereum-settings"></a>Ethereum-beállítások
 
@@ -141,14 +141,14 @@ A következő **Ethereum-beállítások**, Ethereum-konfigurációs beállítás
 Paraméter neve |Leírás |Megengedett értékek|Alapértelmezett értékek
 ---|---|---|---
 ConsortiumMember azonosítója|Minden tagja részt vesz a consortium network konfigurálhatók az IP-címterek ütközések elkerülése érdekében társított azonosítója. <br /><br />Tagazonosító egyedinek kell lennie a különböző szervezetek ugyanazon a hálózaton belül. Egy egyedi Tagazonosító van szükség, akkor is, ha több régióban telepít ugyanazon a szervezeten belül.<br /><br />Jegyezze meg a paraméter értékét óta kell megoszthatja más csatlakozó tagokat.|0 - 255
-Ethereum hálózati azonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve. Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója. Az adatbányászati csomópont korlátozott hálózati hozzáférést pedig továbbra is javasoljuk sok ütközések elkerülése érdekében.|5 – 999,999,999| 10101010
+Ethereum hálózati azonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve. Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója. Az adatbányászati csomópont korlátozott hálózati hozzáférést pedig továbbra is javasoljuk sok ütközések elkerülése érdekében.|5 - 999,999,999| 10101010
 Egyéni képződés letiltása|Lehetőség van automatikusan létrehozni egy képződés letiltása vagy adjon meg egy egyéni besorolás.|Igen/nem| Nem
 Ethereum-fiók jelszavát (egyéni képződés letiltása = nem)|A rendszergazda jelszavát, az egyes importált Ethereum-fiókhoz használt. A jelszónak tartalmaznia kell a következőket: 1 nagybetűt, 1 kisbetűt és 1 számot.|12 vagy több karaktert|NA
 Titkos kulcs jelszava Ethereum (egyéni képződés letiltása = nem)|Az ECC létrehozott alapértelmezett Ethereum-fiókhoz tartozó titkos kulcs létrehozásához használt jelszót. Egy előre létrehozott titkos kulcs nem kell explicit módon átadni.<br /><br />Fontolja meg egy jelszót az erős titkos kulcs és a másik consortium tagjaival nincs átfedés elegendő véletlenszerűségre azért. A hozzáférési kódot tartalmaznia kell legalább a következőket: 1 nagybetűt, 1 kisbetűt és 1 számot.<br /><br />Megjegyzés: Ha a két tagjára használja ugyanazt a jelszót a fiókokhoz létrehozott azonos lesz. Ugyanazt a jelszót akkor hasznos, ha egyetlen szervezet próbál régióban üzembe helyezheti, és szeretné osztani egy olyan fiók (alap érme) az összes csomópont.|12 vagy több karaktert|NA
 Képződés letiltása (egyéni képződés letiltása = Yes)|Egyéni képződés blokk jelölő JSON-karakterlánc. Egyéni hálózatok találhat további információt itt a képződés blokk formátumát.<br /><br />Ethereum fiók továbbra is jön létre egy egyéni képződés blokk megadásakor. Vegye figyelembe, hogy a képződés blokk, nem várja meg, adatbányászati egy prefunded Ethereum-fiók megadása.|Érvényes JSON |NA
 Megosztott kapcsolat kulcsa|Egy kapcsolat a virtuális hálózati átjáró között megosztott kulcs.| 12 vagy több karaktert|NA
-Consortium adatok URL-címe|A tag egy másik telepítés által biztosított megfelelő consortium adatok mutató URL-címe. <br /><br />Ezeket az adatokat egy már csatlakoztatott tag, aki rendelkezik a központi telepítés által biztosított. Ha a hálózat többi részétől helyezte üzembe, az URL-cím a sablon üzembe helyezési kimeneti nevű CONSORTIUM-adatokat.||NA
-Csatlakozás a virtuális hálózati átjáró|Az erőforrás elérési útja a VNet-átjáró, amelyhez kapcsolódni szeretne.<br />Ezeket az adatokat egy már csatlakoztatott tag, aki rendelkezik a központi telepítés által biztosított. Ha a hálózat többi részétől helyezte üzembe, az URL-cím sablon, üzembe helyezési CONSORTIUM_MEMBER_GATEWAY_ID nevű kimeneti van. Megjegyzés: Ugyanabban a tagban consortium adatok URL-CÍMÉT és a virtuális hálózati átjáró erőforrás kell használni.||NA
+Consortium Data URL|A tag egy másik telepítés által biztosított megfelelő consortium adatok mutató URL-címe. <br /><br />Ezeket az adatokat egy már csatlakoztatott tag, aki rendelkezik a központi telepítés által biztosított. Ha a hálózat többi részétől helyezte üzembe, az URL-cím a sablon üzembe helyezési kimeneti nevű CONSORTIUM-adatokat.||NA
+Csatlakozás a virtuális hálózati átjáró|Az erőforrás elérési útja a VNet-átjáró, amelyhez kapcsolódni szeretne.<br />Ezeket az adatokat egy már csatlakoztatott tag, aki rendelkezik a központi telepítés által biztosított. Ha a hálózat többi részétől helyezte üzembe, az URL-cím sablon, üzembe helyezési CONSORTIUM_MEMBER_GATEWAY_ID nevű kimeneti van. Megjegyzés: Ugyanaz a tag consortium adatok URL-CÍMÉT és a virtuális hálózati átjáró erőforrás kell használni.||NA
 Társ információk regisztráló végpontja|A megadott tag egy másik központi telepítési társ info végpont|Érvénytelen végpont consortium az első tag|NA
 Kulcs a társ információk regisztráló|Társ adatok elsődleges kulcs egy másik tag központi telepítés által biztosított|Érvényes elsődleges kulcs consortium az első tag|NA
 
@@ -215,9 +215,9 @@ Példa:
 
 Az Azure portal állomásnév| Tényleges állomásnév
 ---|---
-sloupec-ethwvu-reg1_0| sloupec-ethwvu-reg1000000
-sloupec-ethwvu-reg1_1 |sloupec-ethwvu-reg1000001
-sloupec-ethwvu-reg1_2 |sloupec-ethwvu-reg1000002
+mn-ethwvu-reg1_0| mn-ethwvu-reg1000000
+mn-ethwvu-reg1_1 |mn-ethwvu-reg1000001
+mn-ethwvu-reg1_2 |mn-ethwvu-reg1000002
 
 ## <a name="adding-a-new-consortium-member"></a>Új consortium tag hozzáadása
 
@@ -225,19 +225,19 @@ sloupec-ethwvu-reg1_2 |sloupec-ethwvu-reg1000002
 
 Az első olyan tag (vagy egy csatlakoztatott tag) konzorcium meg kell adnia a néhány információt más tagok ahhoz, hogy csatlakozzon, illetve a kapcsolatot. Konkrétan:
 
-1. **Megosztott Consortium konfigurációs adatok**: egy adatkészletet, amellyel előkészíthető a Ethereum-kapcsolat között két tagja van. A szükséges információkat, beleértve a képződés letiltása, consortium hálózati azonosító és rendszerindító csomópontokat, a tranzakció-csomópontokon a vezető vagy egy másik üzembe helyezett tag fájl íródik. Ez a fájl helyét a sablon üzembe helyezési nevű kimeneti paraméter szerepel **CONSORTIUM-adatok**.
-2. **Adatok végpont társviszonyt**: Ethereum hálózati a társ info regisztráló végpont lekérése az összes csomópont már csatlakozott a vezetői vagy egy másik tag központi telepítés. Egy sor minden csomópont kapcsolatos információkat a DB-tárolók kapcsolódik a hálózathoz, például csomópont állomásnév, privát IP-cím stb. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **PEER_INFO_ENDPOINT**.
-3. **Elsődleges kulcs adatai társviszonyt**: A társ info regisztráló elsődleges kulccsal kéri le a vezető vagy más tag társ elsődleges info-kulcshoz való hozzáférés. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **PEER_INFO_PRIMARY_KEY**.
+1. **Megosztott Consortium konfigurációs adatok**: Egy adatkészletet, amellyel előkészíthető a Ethereum-kapcsolat között két tagja van. A szükséges információkat, beleértve a képződés letiltása, consortium hálózati azonosító és rendszerindító csomópontokat, a tranzakció-csomópontokon a vezető vagy egy másik üzembe helyezett tag fájl íródik. Ez a fájl helyét a sablon üzembe helyezési nevű kimeneti paraméter szerepel **CONSORTIUM-adatok**.
+2. **Adatok végpont társviszonyt**: A társ info regisztráló végpont lekérése az összes csomópont már a vezetői vagy egy másik tag központi telepítés a Ethereum-hálózathoz csatlakozik. Egy sor minden csomópont kapcsolatos információkat a DB-tárolók kapcsolódik a hálózathoz, például csomópont állomásnév, privát IP-cím stb. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **PEER_INFO_ENDPOINT**.
+3. **Elsődleges kulcs adatai társviszonyt**: A társ info regisztráló elsődleges kulcs a vezető vagy más tag társ elsődleges info-kulcs elérésére szolgál. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **PEER_INFO_PRIMARY_KEY**.
 
 
-4. **Virtuális hálózati átjáró**: minden tagjának kapcsolatot hoz létre a teljes blockchain-hálózaton keresztüli meglévő tagjára. Csatlakoztassa a virtuális Hálózatot, a VNET-átjáró, amely kapcsolódik a tag erőforrás elérési útja kell. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
-5. **Megosztott kulcs**: egy előre meghatározott titkos consortium hálózati kapcsolatot létesít két tagja között. Ez az alfanumerikus karakterláncnak (1 és 128 karakter között), amely a központi telepítés keretében kívül egyeztetett. (Például **MySharedKeyAbc123**)
+4. **Virtuális hálózati átjáró**: Minden tag kapcsolatot hoz létre a teljes blockchain-hálózaton keresztüli meglévő tagjára. Csatlakoztassa a virtuális Hálózatot, a VNET-átjáró, amely kapcsolódik a tag erőforrás elérési útja kell. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
+5. **Megosztott kulcs**: Előre meghatározott titkos consortium hálózati kapcsolatot létesít két tagja között. Ez az alfanumerikus karakterláncnak (1 és 128 karakter között), amely a központi telepítés keretében kívül egyeztetett. (Például **MySharedKeyAbc123**)
 
 ### <a name="acceptance-of-new-member"></a>Új tag elfogadása
 
 Ebben a lépésben kell elvégezni, a csatlakozó tag van sikeres üzembe helyezését követően a hálózaton. Mielőtt tag csatlakozzon a hálózathoz és a tranzakciós forgalom jelenik meg, meglévő tagjára végső konfiguráció kell elvégeznie a VPN-átjáró fogadja el a kapcsolatot. Ez azt jelenti, hogy a csatlakozó tag Ethereum-csomópontok nem fog futni, amíg létrejön a kapcsolat. Ez a konfiguráció PowerShell és xPlat CLI-n keresztül teheti meg. A PowerShell modul, és az xPlat CLI-példaszkript a tranzakció csomóponton consortium adatok mellett is tárolt. A parancsprogram helye az üzembe helyezés a kimeneti paraméterek nevű **PÁR-ÁTJÁRÓ-PS-modul** és **PÁR-ÁTJÁRÓ – AZURE-CLISCRIPT**, illetve.
 
-**A telepítő PowerShell vagy a parancssori felületen**
+**PowerShell/CLI Setup**
 
 További információt az első lépések az Azure PowerShell-parancsmagok és Azure xPlat CLI Azure dokumentációjában találhatók.
 
@@ -249,7 +249,7 @@ Töltse le a PowerShell-modult, és helyileg tárolja. A PowerShell-modul helye 
 
 Ha még nincs engedélyezve, használja a **Set-ExecutionPolicy** parancsmagot, hogy az aláírás nélküli modul fut a helyi munkamenet.
 
-**Set-ExecutionPolicy Unrestricted CurrentUser tárolóba**
+**Set-ExecutionPolicy Unrestricted CurrentUser**
 
 Ezután jelentkezzen be az Azure-előfizetés, amelyben a vezető központi telepítés segítségével telepítve
 
@@ -261,24 +261,24 @@ Ezután importálja a modult:
 
 Végül futtassa a függvényt a megfelelő bemenet:
 
-- **MyGatewayResourceId:** a átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId:** a csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a sablon üzembe helyezési kimeneti paraméter a is neve **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **Kapcsolat neve:** azonosíthatja a Gateway-kapcsolat nevét.
-- **Megosztott kulcs:** két tagjai között a consortium network, amely kapcsolatot létesít az előre meghatározott titkos kulcsot.
+- **MyGatewayResourceId:** Az átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** A csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a sablon üzembe helyezési kimeneti paraméter a is neve **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **Kapcsolat neve:** Azonosítható a Gateway-kapcsolat nevét.
+- **Megosztott kulcs:** Az előre meghatározott titok két tagjai között a consortium network, amely kapcsolatot létesít.
 
 **CreateConnection** -MyGatewayResourceId <resource path of your Gateway> - OtherGatewayResourceId < a csatlakozó tag átjáró erőforrás elérési útja > - ConnectionName Sajátkapcsolat - SharedKey "MySharedKeyAbc123"
 
-**az xPlat CLI: kapcsolat létrehozása**
+**xPlat CLI: Kapcsolat létrehozása**
 
 Az Azure CLI-szkript letöltése, és helyileg tárolja. A sablon üzembe helyezési nevű paraméter megadott helyét, az Azure CLI-példaszkript **PÁR-ÁTJÁRÓ – AZURE-CLI-SZKRIPT**.
 
 Futtassa a parancsfájlt a megfelelő bemenet:
 
-- **MyGatewayResourceId:** a átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId:** a csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a központi telepítés is nevű sablonparaméter üzembe helyezési **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **Kapcsolat neve:** azonosíthatja a Gateway-kapcsolat nevét.
-- **Megosztott kulcs:** két tagjai között a consortium network, amely kapcsolatot létesít az előre meghatározott titkos kulcsot.
-- **Hely:** az Azure-régióban, az átjáró erőforrás üzembe van helyezve.
+- **MyGatewayResourceId:** Az átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** A csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a központi telepítés is nevű sablonparaméter üzembe helyezési **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **Kapcsolat neve:** Azonosítható a Gateway-kapcsolat nevét.
+- **Megosztott kulcs:** Az előre meghatározott titok két tagjai között a consortium network, amely kapcsolatot létesít.
+- **Hely:** Az Azure-régióban, az átjáró erőforrás üzembe van helyezve.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group

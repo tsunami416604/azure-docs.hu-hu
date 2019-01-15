@@ -1,27 +1,8 @@
 ---
-title: Rövid útmutató az R nyelvhez a Machine Learning Studio – Azure |} A Microsoft Docs
-description: Az R programozási oktatóanyag segítségével gyorsan az R nyelv-használatának az Azure Machine Learning Studio-előrejelzési megoldás létrehozásához.
-keywords: a rövid útmutató, az r nyelv, az r programozási nyelv, az r programozási oktatóanyag
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278661"
+Cím: Gyors üzembe helyezési oktatóanyag az R nyelv titleSuffix: Azure Machine Learning Studio description: Az R programozási oktatóanyag segítségével gyorsan az R nyelv-használatának az Azure Machine Learning Studio-előrejelzési megoldás létrehozásához.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/06/2017
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning Studióban
 

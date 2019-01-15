@@ -1,26 +1,8 @@
 ---
-title: Az Azure AI-katalógusban iparági megoldások – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Az Azure AI-katalógusban iparágak szakaszában magában foglal, kiskereskedelmi, gyártási, banki és egészségügyi ilyen iparágak különböző erőforrásokat.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-editor: cgronlun
-ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.custom: previous-ms.author=garye, previous-author=garyericson
-ms.author: amlstudiodocs
-ms.openlocfilehash: 4f9495027c7027f659f877930b6aabc72b361ae8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269328"
+Cím: Az Azure AI-katalógusban iparági megoldások titleSuffix: Azure Machine Learning Studio description: Az Azure AI-katalógusban iparágak szakaszában magában foglal, kiskereskedelmi, gyártási, banki és egészségügyi ilyen iparágak különböző erőforrásokat.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=garye, previous-author=garyericson ms.date: 03/31/2017
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Fedezze fel az iparág-specifikus megoldások az Azure AI-katalógusban
 

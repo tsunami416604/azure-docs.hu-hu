@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2a4343b036716e6c49f7a05a8a480c6e74463760
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 33607043e9b462c4611106c72192f41f1d56c0b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077997"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305910"
 ---
 # <a name="grow-your-business-with-appsource"></a>Vállalatfejlesztés az AppSource segítségével  
 Használja az appsource-ban, ha üzleti ügyfeleit keresése, próbálja ki, és le üzleti szoftvereket szolgáltatásként (SaaS) alkalmazások és szolgáltatások végrehajtása a meghajtó üzleti eredmények és csökkenteni a piacra értéket.  
@@ -67,7 +67,7 @@ Az alkalmazás-közzététel és a vonatkozó kötelezettségvállalást, ügyf�
 Az alábbi ellenőrzőlista marketing ajánlott eljárások és ajánlatok tehetők közzé az appsource-on való létrehozásakor megfontolandó erőforrásokat tartalmazza:  
 *   **Vegye figyelembe a Microsoft Trademark & márkanév-használati irányelveinek.**  
     Ha az alkalmazás elnevezésében és hivatkozó Microsoft védjegyeiről és a Microsoft-szoftverekhez, termékeket és szolgáltatásokat, kövesse a Trademark Microsoft jelen védjegyezési útmutatójának, valamint termékspecifikus vonatkozó irányelveket.  
-    *   A Microsoft védjegyeiről és a márkakezelés kapcsolatos további információkért látogasson el a Microsoft Trademark és a jelen védjegyezési útmutatójának oldalon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+    *   A Microsoft védjegyeiről és a márkakezelés kapcsolatos további információkért látogasson el a Microsoft Trademark és a jelen védjegyezési útmutatójának oldalon található [ https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/ ](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/).
 *   **Ingyenes próbaverziós ajánlat, most találkozik, get engedélyezze, vagy a meghajtó élmény az alkalmazás tesztelése.**  
     Az üzleti felhasználók szeretné az alkalmazás első kézből tapasztalható.  
 *   **Hozzon létre egy erős értékajánlatát.**  
@@ -104,7 +104,7 @@ Az alábbi táblázatok bemutatják, minden egyes az ajánlat lista mezőinek. l
 
 | Az ajánlat beállítás | Ajánlott eljárások | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Name (Név)** | **Az ajánlat elnevezése**<br />Olyan nevet adjon az alkalmazás egy fő döntési. Értékelemek-alapú nevek hatékonyabb, érthető nevekkel osztályozhatók, mint. Az alkalmazás nevére kell kommunikálnak, a core value-ügyfelek kapnak. Többek között a keresési kulcsszavak az alkalmazás címében is segít az alkalmazás újabb rangsorolni a keresőmotorok találatai között. Microsoft védjegyeiről és a Microsoft, szoftverekre, termékekre és szolgáltatásokra való megnevezésekor hajtsa végre a Trademark Microsoft jelen védjegyezési útmutatójának, valamint termékspecifikus vonatkozó irányelveket.<ul> <li>A Microsoft védjegyeiről és a márkakezelés kapcsolatos további információkért látogasson el a Microsoft Trademark és a jelen védjegyezési útmutatójának oldalon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Name (Név)** | **Az ajánlat elnevezése**<br />Olyan nevet adjon az alkalmazás egy fő döntési. Értékelemek-alapú nevek hatékonyabb, érthető nevekkel osztályozhatók, mint. Az alkalmazás nevére kell kommunikálnak, a core value-ügyfelek kapnak. Többek között a keresési kulcsszavak az alkalmazás címében is segít az alkalmazás újabb rangsorolni a keresőmotorok találatai között. Microsoft védjegyeiről és a Microsoft, szoftverekre, termékekre és szolgáltatásokra való megnevezésekor hajtsa végre a Trademark Microsoft jelen védjegyezési útmutatójának, valamint termékspecifikus vonatkozó irányelveket.<ul> <li>A Microsoft védjegyeiről és a márkakezelés kapcsolatos további információkért látogasson el a Microsoft Trademark és a jelen védjegyezési útmutatójának oldalon található [ https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/ ](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/).</li> </ul> |
 
 **Részletek storefront - ajánlat részletei**  
 
@@ -135,7 +135,7 @@ Az alábbi táblázatok bemutatják, minden egyes az ajánlat lista mezőinek. l
 ### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Az ajánlat az appsource-ban rendelkezésre állásának előléptetése  
 Ha az ajánlat az appsource-on, ezért megjelenítéséhez jobb a ***az appsource-on elérhető*** jelvényt a lapján. 
 
- ![Az AppSource-jelvény](./media/marketplace-appsource/appsourcebadge.png)
+ ![AppSource badge](./media/marketplace-appsource/appsourcebadge.png)
     
 Ez a jelvény ad hozzá a hely elősegíti, hogy az appsource-ban, és az ajánlat potenciális vevők közvetlen kapcsolat a ajánlatuk információs oldalán. Az appsource-ban jelvény három méretben érhető el. A jelvény együtt használja azt, hogyan töltheti [támogatása a Microsoft AppSource-ban az alkalmazás rendelkezésre állásának](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
 

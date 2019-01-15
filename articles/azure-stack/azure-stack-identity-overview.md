@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245684"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306539"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Az Azure stack-identitás – áttekintés
 
 Az Azure Stack az Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) identitás-szolgáltatóként az Active Directory által támogatott igényel. A szolgáltató, amely egy egyszeri döntés, hogy az első Azure Stack üzembe. A fogalmakat és engedélyezési részleteket ebben a cikkben segíthet a Identitásszolgáltatók közül választhat.
 
-A kiválasztott Azure AD vagy az AD FS határozza meg, az Azure Stack üzembe mód:
+A kiválasztott Azure AD vagy az AD FS az Azure Stack üzembe mód határozzák meg:
 
 - Amikor telepít egy csatlakoztatott módban, vagy az Azure AD vagy AD FS is használhatja.
 - Kapcsolat nélküli módban, az internethez, kapcsolat nélkül telepítésekor csak az AD FS használata támogatott.

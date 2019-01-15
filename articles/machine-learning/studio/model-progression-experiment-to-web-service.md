@@ -1,26 +1,8 @@
 ---
-title: Hogyan válik, a Machine Learning Studio-modell egy webes szolgáltatás – Azure |} A Microsoft Docs
-description: Beállítás esetén hogyan az Azure Machine Learning modell különböző fázisokon halad a fejlesztési experiment-szolgáltatáscsomagot Web Service áttekintése.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253867"
+Cím: Hogyan egy Machine Learning Studio-modell válik a web service titleSuffix: Azure Machine Learning Studio description: Beállítás esetén hogyan az Azure Machine Learning modell különböző fázisokon halad a fejlesztési experiment-szolgáltatáscsomagot Web Service áttekintése.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 03/20/2017
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy szolgáltatáscsomagot webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:

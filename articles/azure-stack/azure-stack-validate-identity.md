@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2cfa789b9817562eba5224257a365f8552cdf833
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245940"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267334"
 ---
 # <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése 
 Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használatával ellenőrizze, hogy az Azure Stack használatra készen áll-e az Azure Active Directory (Azure AD). Ellenőrizze az Azure identitáskezelési megoldás, az Azure Stack központi telepítésének megkezdése előtt.  
@@ -48,7 +48,7 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
 **Az Azure Active Directory-környezetet:**
  - Azonosítsa az Azure AD-fiókot fogja használni az Azure Stack és, hogy az Azure Active Directory globális rendszergazdája.
  - Azonosítsa az Azure AD-bérlő nevét. A bérlő nevének kell lennie a *elsődleges* tartománynév az Azure Active Directoryban. Ha például *contoso.onmicrosoft.com*. 
- - Azonosítsa a AzureEnvironement fogja használni. A környezet neve paraméter támogatott értékei a következők: AzureCloud, AzureChinaCloud vagy AzureUSGovernment attól függően, hogy mely Azure-előfizetést használ.
+ - Azonosítsa az AzureEnvironment fogja használni. A környezet neve paraméter támogatott értékei a következők: AzureCloud, AzureChinaCloud vagy AzureUSGovernment attól függően, hogy mely Azure-előfizetést használ.
 
 ## <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése 
 1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítéséhez:  
@@ -137,7 +137,7 @@ Invoke-AzsAzureIdentityValidation Completed
 ````
 **OK** – a fiók nem tud bejelentkezni a megadott Azure Active Directory (AADDirectoryTenantName). Ebben a példában *AzureChinaCloud* a következőként van megadva a *AzureEnvironment*.
 
-**Feloldási** -erősítse meg, hogy a fiók a megadott Azure-környezet esetében érvényes. A PowerShellben futtassa a következő ellenőrizni a fiók érvényességét, egy adott környezetben:   Login-AzureRmAccount-EnvironmentName AzureChinaCloud 
+**Feloldási** -erősítse meg, hogy a fiók a megadott Azure-környezet esetében érvényes. A PowerShellben futtassa a következő ellenőrizni a fiók érvényességét, egy adott környezetben:   Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>Fiók nem áll a rendszergazda 
  
 ````PowerShell

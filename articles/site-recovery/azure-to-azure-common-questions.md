@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 20311f904356f16b34f64d0aaf6ed438ba692857
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155150"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260464"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -74,10 +74,16 @@ Azt határozza meg a helyreállítási pontok megőrzési előzményeit és az a
 
 Napjainkban a legtöbb alkalmazás helyreállíthatja jól összeomlás-konzisztens pillanatképekkel. Összeomlás-konzisztens helyreállítási pont elég általában a nem adatbázis-operációs rendszerek és alkalmazások, például fájlkiszolgálókat, a DHCP-kiszolgálók és a nyomtatókiszolgálók.
 
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Mi az az összeomlás-konzisztens helyreállítási pont létrehozásának gyakorisága?
+A Site Recovery 5 percenként összeomlás-konzisztens helyreállítási pont létrehozása.
+
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Mi az az alkalmazáskonzisztens helyreállítási pontot? 
 Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens pillanatképek rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat. 
 
 Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb metódusa vesz, és tegye meg a legrégebb végrehajtásához. Azt javasoljuk, hogy az adatbázis operációs rendszerek és alkalmazások, például az SQL Server alkalmazáskonzisztens helyreállítási pontjait.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mi az a minimális gyakoriságot a alkalmazáskonzisztens helyreállítási pont létrehozásakor?
+A Site Recovery segítségével hoz létre egy alkalmazáskonzisztens helyreállítási pont egy minimális gyakoriság (1 óra).
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Hogyan helyreállítási pontok létrehozott és mentett?
 Szeretné megtudni, hogyan hoz létre a Site Recovery helyreállítási pontok, vessünk egy példát egy replikációs szabályzatot, amely a helyreállítási pontok adatmegőrzési időtartam 24 óra és a egy alkalmazás-konzisztens gyakoriság pillanatkép 1 óra.
@@ -153,6 +159,9 @@ A **utoljára feldolgozva** lehetőséget minden virtuális gépre a legújabb h
 
 ### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Ha a két Azure-régiók között végzek, mi történik, ha a elsődleges régiómban esetleges váratlan leállásakor?
 A feladatátvétel után a szolgáltatáskimaradás elhárítása után is indíthat. A Site Recovery nem követeli meg, hajtsa végre a feladatátvételt az elsődleges régióból.
+
+### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Mi az a virtuális gép feladatátvétel RTO?
+A Site Recovery rendelkezik egy [2 óra RTO szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Azonban az esetek többségében a Site Recovery virtuális gépek feladatátvétele percen belül. Kiszámíthatja az RTO nyissa meg a feladatátvételt feladatok, amely az időt jeleníti meg a virtuális Géphez csatlakozva tartottak. Helyreállítási terv az RTO, tekintse meg a szakasz alatt. 
 
 ## <a name="recovery-plan"></a>Helyreállítási terv
 

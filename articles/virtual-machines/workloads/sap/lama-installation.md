@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 17/07/2018
 ms.author: sedusch
-ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728225"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262580"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötő
 
@@ -54,7 +54,7 @@ Az alábbi SAP-megjegyzések kapcsolódnak a témakör az SAP-LaMa az Azure-ban:
 | Megjegyzés száma | Beosztás |
 | --- | --- |
 | [2343511] |A Microsoft Azure-összekötő az SAP-rendszeren, Management (LaMa) |
-| [2350235] |SAP fekvő felügyeleti 3.0 – Enterprise edition |
+| [2350235] |SAP Landscape Management 3.0 - Enterprise edition |
 
 Emellett olvassa el a [SAP súgó portál SAP LaMa](https://help.sap.com/viewer/p/SAP_LANDSCAPE_MANAGEMENT_ENTERPRISE).
 
@@ -99,24 +99,24 @@ Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szer
 Nyissa meg az SAP LaMa webhelyet, és keresse meg az infrastruktúrához. Nyissa meg felhőalapú kezelők lapot, és kattintson a Hozzáadás gombra. Válassza ki a Microsoft Azure felhőalapú adaptert, és kattintson a Tovább gombra. Adja meg a következő információkat:
 
 * Címke: Válassza ki az összekötő-példány nevét
-* Felhasználónév: Egyszerű szolgáltatás Alkalmazásazonosítója
+* Felhasználónév: Egyszerű szolgáltatás alkalmazásazonosítója
 * Jelszó: Egyszerű szolgáltatás kulcs vagy jelszó
-* URL-címe: Tartsa alapértelmezett https://management.azure.com/
-* Figyelési időköz (másodperc): Legalább 300 kell lennie
+* URL-cím: Alapértelmezett megtartása https://management.azure.com/
+* Figyelési időköz (másodperc): Legalább 300 kell lennie.
 * Előfizetés azonosítója: Azure-előfizetés azonosítója
-* Az Azure Active Directory-bérlő azonosítója: Az Active Directory-bérlő Azonosítóját
-* A proxyállomás: a proxyt, ha SAP LaMa kell az internethez való kapcsolódáshoz proxy állomásnevét
-* Proxy portja: TCP-port a proxy
+* Az Azure Active Directory-bérlő azonosítója: Az Active Directory-bérlő azonosítója
+* Proxyállomás: A proxy, ha SAP LaMa kell az internethez való kapcsolódáshoz proxy állomásnevét
+* Proxy portja: A proxy TCP-port
 
 Kattintson a konfiguráció ellenőrzése a. Megtekintheti az
 
-A sikeres kapcsolat: a Microsoft cloud sikerült csatlakozni. 7 erőforráscsoportok található (legfeljebb 10 csoportok kért)
+A sikeres kapcsolat: A Microsoft cloud sikerült csatlakozni. 7 erőforráscsoportok található (legfeljebb 10 csoportok kért)
 
 a webhely alján.
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>Új adaptív SAP-rendszerek kiépítése
 
-Manuálisan is üzembe új virtuális gépet, vagy használja az Azure-sablonok egyikét a [rövid tárház](https://github.com/Azure/azure-quickstart-templates). A sablonok tartalmaz [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [SAP NetWeaver alkalmazáskiszolgálók](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps), és a [adatbázis](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-db). Ezek a sablonok használatával új gazdagépek üzembe helyezése során a rendszer másolási/klón stb.
+Manuálisan is üzembe új virtuális gépet, vagy használja az Azure-sablonok egyikét a [rövid tárház](https://github.com/Azure/azure-quickstart-templates). A sablonok tartalmaz [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [SAP NetWeaver alkalmazáskiszolgálók](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps), és a [adatbázis](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database). Ezek a sablonok használatával új gazdagépek üzembe helyezése során a rendszer másolási/klón stb.
 
 Az összes virtuális gépet, hogy az SAP-LaMa kezelni szeretne, és ne használja a dinamikus IP-címek, hogy az IP cím "lopásának megjelölése" új virtuális gépek üzembe helyezésekor és SAP példányai nem előkészített egy külön alhálózat használatát javasoljuk.
 
@@ -133,15 +133,15 @@ SAP LaMa kommunikál a virtuális gépet az SAP gazdagép-ügynök használatáv
 
 Hozzon létre egy új virtuális gépet az egyik az SAP-Jegyzetnek felsorolt támogatott operációs rendszereken [2343511]. Adjon hozzá további, a SAP-példányok IP-konfigurációk. Minden példány IP-cím vagy újabb kell, és segítségével egy virtuális állomásnevet kell telepíteni.
 
-Az SAP NetWeaver ASCS példány /sapmnt/ van szüksége a lemezek\<SAPSID >, usr/sap/\<SAPSID >, és /usr/sap/transusr/sap/\<sapsid > adm. Az SAP NetWeaver alkalmazás kiszolgálóknak nem kell további lemezeket. Az SAP-példányhoz kapcsolódó összes elemet kell az ASCS tárolja és NFS keresztül van exportálva. Ellenkező esetben azt jelenleg nem lehet felvenni az SAP LaMa használatával további alkalmazáskiszolgálók.
+The SAP NetWeaver ASCS instance needs disks for /sapmnt/\<SAPSID>, /usr/sap/\<SAPSID>, /usr/sap/trans, and /usr/sap/\<sapsid>adm. Az SAP NetWeaver alkalmazás kiszolgálóknak nem kell további lemezeket. Az SAP-példányhoz kapcsolódó összes elemet kell az ASCS tárolja és NFS keresztül van exportálva. Ellenkező esetben azt jelenleg nem lehet felvenni az SAP LaMa használatával további alkalmazáskiszolgálók.
 
-![SAP NetWeaver ASCS Linux rendszeren](media/lama/sap-lama-ascs-app-linux.png)
+![SAP NetWeaver ASCS on Linux](media/lama/sap-lama-ascs-app-linux.png)
 
 #### <a name="manual-deployment-for-sap-hana"></a>Kézi telepítés az SAP Hana-hoz
 
 Új virtuális gép létrehozása egy, a támogatott operációs rendszereken az SAP Hana-hoz az SAP-Jegyzetnek felsorolt [2343511]. Adjon hozzá egy további IP-konfiguráció az SAP Hana-hoz és a egy HANA bérlőnként.
 
-SAP HANA van szüksége a lemezek /hana/shared, /hana/backup, /hana/data és /hana/log
+SAP HANA needs disks for /hana/shared, /hana/backup, /hana/data, and /hana/log
 
 ![Az SAP HANA Linux rendszeren](media/lama/sap-lama-db-hana.png)
 
@@ -182,45 +182,45 @@ Az összetevők a sablon üzembe helyezéséhez szükségesek. A legegyszerűbbe
 
 A sablonok a következő paraméterekkel rendelkezik:
 
-* sapSystemId: az SAP-rendszer azonosítója. A lemez elrendezése létrehozására használatos (példáulusr/sap/\<sapsid >).
+* sapSystemId: Az SAP-rendszer azonosítója. A lemez elrendezése létrehozására használatos (példáulusr/sap/\<sapsid >).
 
-* Számítógépnév: az új virtuális gép számítógépnevét. Ezt a paramétert is használja az SAP LaMa szerint. Használatakor ez a sablon egy új virtuális gép üzembe helyezése a rendszer másolatot részeként, a SAP LaMa megvárja, amíg a gazdagép, az ennél a számítógépnévnél érhető el.
+* Számítógépnév: Az új virtuális gép számítógépnevét. Ezt a paramétert is használja az SAP LaMa szerint. Használatakor ez a sablon egy új virtuális gép üzembe helyezése a rendszer másolatot részeként, a SAP LaMa megvárja, amíg a gazdagép, az ennél a számítógépnévnél érhető el.
 
-* osType: a telepíteni kívánt operációs rendszer típusát.
+* osType: A telepítendő operációs rendszer típusa.
 
-* DbType: az adatbázis típusát. Ez a paraméter segítségével határozza meg, hány további IP-konfigurációk hozzá kell adni, és hogy a lemez elrendezése hasonlóan kell kinéznie.
+* DbType: Az adatbázis típusa. Ez a paraméter segítségével határozza meg, hány további IP-konfigurációk hozzá kell adni, és hogy a lemez elrendezése hasonlóan kell kinéznie.
 
-* sapSystemSize: az SAP-rendszer számára telepíteni kívánja a méretét. Ez a virtuálisgép-példányok típusát és méretét meghatározására szolgál.
+* sapSystemSize: Az SAP-rendszer számára telepíteni kívánja a mérete. Ez a virtuálisgép-példányok típusát és méretét meghatározására szolgál.
 
-* adminUsername: a virtuális géphez tartozó felhasználónév.
+* adminUsername: A virtuális gép felhasználóneve.
 
-* adminPassword: a virtuális gép jelszavát. Az SSH nyilvános kulcs is megadhatja.
+* adminPassword: A virtuális gép jelszava. Az SSH nyilvános kulcs is megadhatja.
 
-* sshKeyData: a virtuális gépek nyilvános SSH-kulcsot. Csak Linux operációs rendszerek esetében támogatott.
+* sshKeyData: Nyilvános SSH-kulcsot a virtuális gépeket. Csak Linux operációs rendszerek esetében támogatott.
 
-* subnetId: az azonosító az alhálózat létrehozásához használni szeretne.
+* subnetId: A használni kívánt alhálózati azonosítója.
 
-* deployEmptyTarget: Ha azt szeretné, a virtuális gép használata a cél-példány áthelyezése vagy hasonló telepíthet egy üres céllal. Ebben az esetben nincs további lemezeket vagy IP-konfigurációk vannak csatolva.
+* deployEmptyTarget: Egy üres céllal telepíthet, ha azt szeretné, a virtuális gép használata a cél-példány áthelyezése vagy hasonló. Ebben az esetben nincs további lemezeket vagy IP-konfigurációk vannak csatolva.
 
-* sapcarLocation: A hely az sapcar alkalmazás, amely megegyezik az operációs rendszer központi telepítése. a többi paraméter meg archívum kibontása sapcar szolgál.
+* sapcarLocation: Az a hely az sapcar alkalmazás, amely megegyezik az operációs rendszer központi telepítése. a többi paraméter meg archívum kibontása sapcar szolgál.
 
-* sapHostAgentArchiveLocation: helyét, a gazdagép-ügynök az SAP-archívumot. SAP-gazdagép-ügynök van telepítve Ez a sablon központi telepítésének részeként.
+* sapHostAgentArchiveLocation: Az SAP-gazdagép-ügynök archívum helye. SAP-gazdagép-ügynök van telepítve Ez a sablon központi telepítésének részeként.
 
-* sapacExtLocation: az SAP adaptív bővítmények helyét. SAP-Jegyzetnek [2343511] sorolja fel az Azure-hoz szükséges minimálisan előírt biztonsági javítási szintet.
+* sapacExtLocation: Az SAP adaptív bővítmények helye. SAP-Jegyzetnek [2343511] sorolja fel az Azure-hoz szükséges minimálisan előírt biztonsági javítási szintet.
 
-* vcRedistLocation: helyét, a VC futtatókörnyezet, az SAP adaptív bővítmények telepítése szükséges. Ez a paraméter csak akkor szükséges Windows.
+* vcRedistLocation: A hely a VC-futtatókörnyezetet, az SAP adaptív bővítmények telepítéséhez szükséges. Ez a paraméter csak akkor szükséges Windows.
 
-* odbcDriverLocation: a telepíteni kívánt ODBC-illesztő helyét. Csak a Microsoft ODBC-illesztőprogram SQL Serverhez használata támogatott.
+* odbcDriverLocation: A telepíteni kívánt ODBC-illesztő helye. Csak a Microsoft ODBC-illesztőprogram SQL Serverhez használata támogatott.
 
-* sapadmPassword: a sapadm felhasználó jelszava.
+* sapadmPassword: A sapadm felhasználó jelszava.
 
-* sapadmId: A Linux sapadm felhasználó felhasználói azonosítója. A Windows nem szükséges.
+* sapadmId: A Linux felhasználói sapadm felhasználó azonosítója. A Windows nem szükséges.
 
-* sapsysGid: A Linux-csoport azonosítója a sapsys csoport. A Windows nem szükséges.
+* sapsysGid: A sapsys csoport Linux csoport azonosítója. A Windows nem szükséges.
 
-* _artifactsLocation: az alap URI-t, ahol a sablonhoz szükséges összetevők találhatók. A sablon a hozzájuk tartozó parancsprogramok használatával lett telepítve, ha egy privát helyen az előfizetés fogja használni, és ez az érték automatikusan létrejön. Csak akkor szükséges, ha nem telepíti a sablont a Githubból.
+* _artifactsLocation: Az alap URI, ahol a sablonhoz szükséges összetevők találhatók. A sablon a hozzájuk tartozó parancsprogramok használatával lett telepítve, ha egy privát helyen az előfizetés fogja használni, és ez az érték automatikusan létrejön. Csak akkor szükséges, ha nem telepíti a sablont a Githubból.
 
-* _artifactsLocationSasToken: a sasToken _artifactsLocation eléréséhez szükséges. A sablon a hozzájuk tartozó parancsprogramok használatával lett telepítve, amikor egy sasToken automatikusan jönnek létre. Csak akkor szükséges, ha nem telepíti a sablont a Githubból.
+* _artifactsLocationSasToken: A sasToken _artifactsLocation eléréséhez szükséges. A sablon a hozzájuk tartozó parancsprogramok használatával lett telepítve, amikor egy sasToken automatikusan jönnek létre. Csak akkor szükséges, ha nem telepíti a sablont a Githubból.
 
 ### <a name="sap-hana"></a>SAP HANA
 
@@ -360,7 +360,7 @@ Használat *as1-di-0* a a *szolgáltatói CÍMEI példány állomásnév* párbe
 
 * Kivétel a HDB userstore ellenőrzése aktiválása vált szükségessé.  
   * Tekintse meg a naplófájl-megjelenítő  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: kivétel az érvényesítési 'RuntimeHDBConnectionValidator' azonosítójú (érvényesítése: "VALIDATION_HDB_USERSTORE"): nem sikerült beolvasni a hdbuserstore  
+    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Kivétel történt a 'RuntimeHDBConnectionValidator' azonosítójú érvényesítő (érvényesítés: "VALIDATION_HDB_USERSTORE"): Nem sikerült beolvasni a hdbuserstore  
     HANA userstore nem szerepel a megfelelő helyre
   * Megoldás  
     Győződjön meg arról, hogy /usr/sap/AH1/hdbclient/install/installation.ini megfelelő
@@ -373,19 +373,19 @@ Használat *as1-di-0* a a *szolgáltatói CÍMEI példány állomásnév* párbe
     HANA rendszer forrás biztonsági másolatot az összes adatbázis is
 
 * Rendszer másolási lépés *Start* adatbázis-példány
-  * Gazdagép-ügynök művelete "000D3A282BC91EE8A1D76CF1F92E2944" nem sikerült (OperationException. FaultCode: "127", üzenet: "parancs végrehajtása nem sikerült. : [Microsoft] [ODBC SQL Server-illesztőprogram] [SQL Server] felhasználónak nincs engedélye az alter database "AS2", az adatbázis nem létezik, vagy az adatbázis nem olyan állapotban, amely lehetővé teszi a hozzáférés-ellenőrzéseket. ")
+  * Gazdagép-ügynök művelete "000D3A282BC91EE8A1D76CF1F92E2944" nem sikerült (OperationException. FaultCode: "127", üzenet: "Parancs végrehajtása nem sikerült. : [Microsoft] [ODBC SQL Server-illesztőprogram] [SQL Server] felhasználónak nincs engedélye az alter database "AS2", az adatbázis nem létezik, vagy az adatbázis nem olyan állapotban, amely lehetővé teszi a hozzáférés-ellenőrzéseket. ")
   * Megoldás  
     Győződjön meg arról, hogy *NT AUTHORITY\SYSTEM* férhet hozzá az SQL Server. Tekintse meg az SAP-Jegyzetnek [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Hibák és figyelmeztetések során a rendszer klónozott
 
 * Hiba történt a példány ügynök regisztrálásakor lépésben *kényszerített regisztrálása és a példány ügynök indítása* alkalmazáskiszolgáló vagy ASCS
-  * Hiba történt a példány ügynök regisztrálásakor. (RemoteException: "Nem sikerült betölteni a példányok adatait profilból"\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 ": nem érhető el profil"\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 ": nincs ilyen fájl vagy könyvtár.")
+  * Hiba történt a példány ügynök regisztrálásakor. (RemoteException: "Nem sikerült betölteni a példányok adatait profilból"\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 ":  Cannot access profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': Nincs ilyen fájl vagy könyvtár. ")
   * Megoldás  
    Győződjön meg arról, hogy az ASC/SCS sapmnt megosztást SAP_AS1_GlobalAdmin a teljes hozzáféréssel rendelkezik
 
 * Hiba történt a lépés *indítási védelem engedélyezése a klón*
-  * Nem sikerült megnyitni a fájlt a(z)\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 "OK: nincs ilyen fájl vagy könyvtár
+  * Nem sikerült megnyitni a fájlt a(z)\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 "OK: Nincs ilyen fájl vagy könyvtár
   * Megoldás  
     Az alkalmazáskiszolgáló számítógépfiókjának írási hozzáféréssel a profilhoz van szüksége.
 
@@ -409,36 +409,36 @@ Használat *as1-di-0* a a *szolgáltatói CÍMEI példány állomásnév* párbe
     Adja hozzá a ASCS ASCS HostAgent profil exportálja. Tekintse meg az SAP-Jegyzetnek [2628497]
 
 * A funkció nincs megvalósítva, amikor ASCS áthelyezésével
-  * A parancs kimenete: exportfs: állomás: / usr/sap/AX1: függvény nincs megvalósítva
+  * A parancs kimenete: exportfs: állomás: / usr/sap/AX1: A funkció nincs megvalósítva
   * Megoldás  
     Győződjön meg arról, hogy az NFS-kiszolgáló szolgáltatás engedélyezve van-e a cél virtuális gépen áthelyezése
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Hibák és figyelmeztetések alkalmazás kiszolgáló telepítése során
 
 * Hiba történt a végrehajtása SAPinst. lépés: getProfileDir
-  * Hiba: (utolsó lépés jelentett hiba: modul hívás történt ESAPinstException: lépés érvényesítő ' |} NW_DI |} ind |} ind |} ind |} ind |} 0 |} 0 |} NW_GetSidFromProfiles |} ind |} ind |} ind |} ind |} getSid |} 0 |} NW_readProfileDir |} ind |} ind |} ind |} ind |} readProfile |} 0 |} getProfileDir "hibát jelentett: csomópont \\\as1-ascs\sapmnt\AS1\SYS\profile nem létezik. A probléma megoldásához interaktív módban SAPinst kezdő)
+  * HIBA: (Utolsó lépés jelentett hiba: Kivétel történt ESAPinstException modul hívással: Lépés érvényesítő ' |} NW_DI |} ind |} ind |} ind |} ind |} 0 |} 0 |} NW_GetSidFromProfiles |} ind |} ind |} ind |} ind |} getSid |} 0 |} NW_readProfileDir |} ind |} ind |} ind |} ind |} readProfile |} 0 |} getProfileDir "hibát jelentett: Csomópont \\\as1-ascs\sapmnt\AS1\SYS\profile nem létezik. A probléma megoldásához interaktív módban SAPinst kezdő)
   * Megoldás  
     Győződjön meg arról, hogy SWPM fut-e egy felhasználóval, amely hozzáfér a profilt. Ez a felhasználó az alkalmazáskiszolgáló telepítése varázslóban konfigurálható
 
 * Hiba történt a végrehajtása SAPinst. lépés: askUnicode
-  * Hiba: (utolsó lépés jelentett hiba: modul hívás történt ESAPinstException: lépés érvényesítő ' |} NW_DI |} ind |} ind |} ind |} ind |} 0 |} 0 |} NW_GetSidFromProfiles |} ind |} ind |} ind |} ind |} getSid |} 0 |} NW_getUnicode |} ind |} ind |} ind |} ind |} unicode |} 0 |} askUnicode "hibát jelentett: Start SAPinst interaktív módban a probléma megoldásához)
+  * HIBA: (Utolsó lépés jelentett hiba: Kivétel történt ESAPinstException modul hívással: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error: A probléma megoldásához interaktív módban SAPinst kezdő)
   * Megoldás  
     Egy újabb SAP-rendszermag használatakor SWPM nem tudja megállapítani, hogy a rendszer egy rendszer unicode többé használatával a ascs rendszerbe fut be, a kiszolgáló. Tekintse meg az SAP-Jegyzetnek [2445033] további részletekért.  
     A probléma egy új támogatási csomag/patch SAP-LaMa javítja.  
     Állítsa be a profil paraméter OS_UNICODE = uc az alapértelmezett profilban a SAP-rendszer a probléma megoldásához.
 
 * Hiba történt a végrehajtása SAPinst. lépés: dCheckGivenServer
-  * Hiba történt a végrehajtása SAPinst. lépés: dCheckGivenServer "verzió ="1.0"hiba: (utolsó lépés jelentett hiba: \<p > telepítés a felhasználó megszakította. \</p >
+  * Error executing SAPinst step: dCheckGivenServer" version="1.0" ERROR: (Utolsó lépés jelentett hiba: \<p > telepítés a felhasználó megszakította. \</p>
   * Megoldás  
     Győződjön meg arról, hogy SWPM fut-e egy felhasználóval, amely hozzáfér a profilt. Ez a felhasználó az alkalmazáskiszolgáló telepítése varázslóban konfigurálható
 
 * Hiba történt a végrehajtása SAPinst. lépés: checkClient
-  * Hiba történt a végrehajtása SAPinst. lépés: checkClient "verzió ="1.0"hiba: (utolsó lépés jelentett hiba: \<p > telepítés a felhasználó megszakította. \</p >)
+  * Hiba történt a végrehajtása SAPinst. lépés: checkClient "verzió ="1.0"hiba: (Utolsó lépés jelentett hiba: \<p > telepítés a felhasználó megszakította. \</p>)
   * Megoldás  
     Győződjön meg arról, hogy az SQL Serverhez készült Microsoft ODBC-illesztőprogram telepítve van-e a virtuális gépen, amelyen szeretné telepíteni az alkalmazáskiszolgáló
 
 * Hiba történt a végrehajtása SAPinst. lépés: copyScripts
-  * Utolsó lépés jelentett hiba: nem sikerült a rendszerhívás. Részletek: 13 (0x0000000d) hiba (engedély megtagadva) végrehajtása során a rendszer hívása "fopenU" paraméterrel (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd w), sor (494) fájl (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/ src/syslib/FileSystem/syxxcfstrm2.cpp), trasování zásobníku:  
+  * A lépés által jelentett utolsó hiba: Rendszer-hívás sikertelen. DETAILS: Hiba (0x0000000d) 13 (engedély megtagadva) végrehajtása során a rendszer hívása "fopenU" paraméterrel (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd w), sor (494) fájl (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib / filesystem/syxxcfstrm2.cpp), trasování zásobníku:  
   CThrThread.cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
@@ -456,7 +456,7 @@ Használat *as1-di-0* a a *szolgáltatói CÍMEI példány állomásnév* párbe
     Győződjön meg arról, hogy SWPM fut-e egy felhasználóval, amely hozzáfér a profilt. Ez a felhasználó az alkalmazáskiszolgáló telepítése varázslóban konfigurálható
 
 * Hiba történt a végrehajtása SAPinst. lépés: askPasswords
-  * Utolsó lépés jelentett hiba: nem sikerült a rendszerhívás. Részletek: Hiba: 5 (0x00000005) (a hozzáférés megtagadva.) végrehajtása során a rendszer hívást "NetValidatePasswordPolicy" paraméterrel (...), sor (359) fájl (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), trasování zásobníku:  
+  * A lépés által jelentett utolsó hiba: Rendszer-hívás sikertelen. DETAILS: Hiba (0x00000005) 5 (a hozzáférés megtagadva.) végrehajtása során a rendszer hívást "NetValidatePasswordPolicy" paraméterrel (...), sor (359) fájl (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), trasování zásobníku:  
   CThrThread.cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
@@ -470,7 +470,7 @@ Használat *as1-di-0* a a *szolgáltatói CÍMEI példány állomásnév* párbe
   iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect::callMemberFunction (iastring konstans & név, args_t konstans & args)  
   iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect::validatePasswordPolicy (konstans args_t & _args)  
   iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,***) konstans)
+  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
   * Megoldás  
     Adjon hozzá egy gazdagépet a szabály lépésben *elkülönítési* engedélyezi a kommunikációt a virtuális gépről a tartományvezérlő
 

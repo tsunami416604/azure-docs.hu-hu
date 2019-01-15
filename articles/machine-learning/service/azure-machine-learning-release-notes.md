@@ -11,18 +11,36 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: a7a15e4cd8670e71e1000bc6b1827a4b9292302b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200615"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304097"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
 
-## <a name="2019-01-09"></a>a 2019-01-09
+## <a name="2019-01-14"></a>2019-01-14
+
+### <a name="azure-machine-learning-sdk-for-python-v108"></a>Az Azure Machine Learning SDK for Python v1.0.8
+
++ **SDK-referenciadokumentumok**: https://aka.ms/aml-sdk
+
++ **Hibajavítások**: Ez a kiadás többnyire tartalmaz kisebb hibajavítások
+
+### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.7
+
++ **SDK-referenciadokumentumok**: https://aka.ms/data-prep-sdk
+
++ **Új funkciók**
+  + Adattároló fejlesztései (dokumentált [adattárolója útmutatóval-to-útmutató](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
+    + Vertikális felskálázás az Azure-fájlmegosztás és ADLS-adattárainak írnak és onnan olvasnak új képessége.
+    + Adattárolók használatakor Data Prep mostantól támogatja a egyszerű szolgáltatásnév hitelesítése interaktív hitelesítés helyett.
+    + Támogatás hozzáadva a wasb és a wasbs URL-címeket.
+
+## <a name="2019-01-09"></a>2019-01-09
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.6
 
@@ -116,7 +134,7 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
   + Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md)
   + Ismerje meg, hogyan [batch előrejelzéseket folyamatok használatával futtassa](how-to-run-batch-predictions.md)
 + Az Azure Machine Learning számítási célnak
-  + [Mintafüzetek] (https://aka.ms/aml-notebooks) most frissülnek, hogy az új felügyelt számítási használja.
+  + [Notebookok minta](https://aka.ms/aml-notebooks) most frissülnek, hogy az új felügyelt számítási használja.
   + [Ismerje meg a számítási](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Az Azure portal: új funkciók
@@ -137,7 +155,7 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
 
 + **Használhatatlanná tévő változásai** 
   * *azureml.train.widgets* névtér át lett helyezve *azureml.widgets*.
-  * *azureml.core.compute.AmlCompute* a következő osztályok - helyteleníti *azureml.core.compute.BatchAICompute* és *azureml.core.compute.DSVMCompute*. Az utóbbi osztály törlődni fog a következő kiadásokban. A AmlCompute osztály mostantól könnyebben definícióval rendelkezik egyszerűen egy vm_size és a max_nodes van szüksége, és automatikus méretezése a max_nodes 0-tól a fürthöz, amikor a rendszer elküld egy feladatot. A [mintafüzetek] (https://github.com/Azure/MachineLearningNotebooks/tree/master/training) frissítve lett-e ezzel az információval, és adjon meg használati példák. Reméljük, mint például az egyszerűsítés és a egy későbbi kiadásban lesz több izgalmas funkciók számos!
+  * *azureml.core.compute.AmlCompute* a következő osztályok - helyteleníti *azureml.core.compute.BatchAICompute* és *azureml.core.compute.DSVMCompute*. Az utóbbi osztály törlődni fog a következő kiadásokban. A AmlCompute osztály mostantól könnyebben definícióval rendelkezik egyszerűen egy vm_size és a max_nodes van szüksége, és automatikus méretezése a max_nodes 0-tól a fürthöz, amikor a rendszer elküld egy feladatot. A [notebookok minta](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) frissítve lett-e ezzel az információval, és adjon meg használati példák. Reméljük, mint például az egyszerűsítés és a egy későbbi kiadásban lesz több izgalmas funkciók számos!
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.1 
 

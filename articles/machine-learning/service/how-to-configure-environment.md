@@ -1,7 +1,7 @@
 ---
 title: A Python fejlesztési környezet beállítása
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, a fejlesztési környezet konfigurálása az Azure Machine Learning szolgáltatáshoz való munka során. Ebből a cikkből megismerheti, hogyan Conda-környezetek használata, konfigurációs fájljainak létrehozása és konfigurálása a Jupyter Notebooks, Azure notebookok, ide-ket, kód szerkesztők és az adatelemző virtuális gép.
+description: Ismerje meg, a fejlesztési környezet konfigurálása az Azure Machine Learning szolgáltatáshoz való munka során. Ebből a cikkből megismerheti, hogyan Conda-környezetek használata, konfigurációs fájljainak létrehozása és konfigurálása a Jupyter notebookok, Azure notebookok, az Azure Databricks, ide-ket, kód szerkesztők és az adatelemző virtuális gép.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: 46a1872d2ac5d1670620148edf7ee273580826d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: db853be456dbf893163f53bbc797cf12172d38b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811273"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261094"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -110,7 +110,7 @@ Az Azure Machine Learning SDK-t a dsvm-hez, az Ubuntu vagy a Windows verziójáv
 
 2. Az Azure Machine Learning SDK-t a dsvm-hez már telepítve van. A Conda-környezet, amely tartalmazza az SDK-t használ, használja a következő parancsok egyikét:
 
-    * Az Ubuntu dsvm-hez:
+    * For Ubuntu DSVM:
 
         ```shell
         conda activate py36
@@ -242,9 +242,50 @@ Használhatja egy egyéni az Azure Machine Learning-SDK verziója: Azure Databri
 
 A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
-1. Hozzon létre egy [Databricks-fürt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) 4.x-es (előnyben részesített magas egyidejűségi) Databricks futtatókörnyezet verziójával rendelkező Python 3. 
+1. Hozzon létre egy [Databricks-fürt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) a következő beállításokkal:
 
-1. Telepítse, és csatlakoztassa az Azure Machine Learning SDK Pythonhoz készült `azureml-sdk[databricks]` PyPi csomagot a fürthöz, a [hozzon létre egy könyvtárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library).  
+    | Beállítás | Érték |
+    |----|---|
+    | Fürt neve | yourclustername |
+    | A Databricks futtatókörnyezete | Any non ML runtime (non ML 4.x, 5.x) |
+    | Python-verzió | 3 |
+    | Feldolgozók | 2-es vagy újabb |
+
+    Csak akkor, ha a Databricks automatizált gépi tanulási használni, használja ezeket a beállításokat:
+    
+    |   Beállítás | Érték |
+    |----|---|
+    | Munkavégző csomópont virtuális gépek típusai | Az optimalizált memóriájú virtuális gép előnyben részesített |
+    | Automatikus skálázás engedélyezése | Törölje a jelet |
+    
+    A Databricks-fürtben található munkavégző csomópontok számát a gépi tanulás automatikus beállítások egyidejű ismétlések maximális száma határozza meg.  
+
+    A fürt létrehozása néhány percet vesz igénybe. Várjon, amíg a fürt fut, mielőtt továbblépne.
+
+1. Telepítse, és csatolja a fürt az Azure Machine Learning-SDK csomagot.  
+
+    * [Hozzon létre egy könyvtárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) egy ezeket a beállításokat (az alábbi lehetőségek közül csak egyet választhat):
+    
+        * Az Azure Machine Learning-SDK telepítése nélkül automatizált machine learning-funkció:
+            | Beállítás | Érték |
+            |----|---|
+            |Forrás | Töltse fel a Python tojás vagy PyPI
+            |PyPi neve | azureml-sdk[databricks]
+    
+        * Az Azure Machine Learning-SDK telepítése az automatizált machine learning:
+            | Beállítás | Érték |
+            |----|---|
+            |Forrás | Töltse fel a Python tojás vagy PyPI
+            |PyPi neve | azureml-sdk[automl_databricks]
+    
+    * Ne válassza **automatikusan csatolja az összes fürt**
+
+    * Válassza ki **Attach** a fürt neve melletti
+
+    * Győződjön meg arról, hogy nincsenek hibák állapotra vált, amíg **csatolt**. Eltarthat néhány percig.
+
+    Ha régi SDK-verziója, kapcsolja ki azt a fürt telepített függvénytárak és a Kukába helyezni. Az új SDK-verzió telepítése, és indítsa újra a fürtöt. Ha ezt követően egy problémát, válassza le, és csatlakoztassa újból a fürthöz.
+
     Ha elkészült, a szalagtár van csatolva, az alábbi képen látható módon. Vegye figyelembe ezeket [Databricks gyakori problémák](resource-known-issues.md#databricks).
 
    ![SDK-t a Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
@@ -257,11 +298,10 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
    c. Az a **kódtárak** lapon jelölje be **indítsa újra a**.
 
-1. Töltse le a [Azure Databricks-vagy az Azure Machine Learning SDK notebook archívumfájl](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc).
+1. Töltse le a [Azure Databricks-vagy az Azure Machine Learning SDK notebook archívumfájl](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc).
 
    >[!Warning]
    > Számos mintafüzetek Azure Machine Learning szolgáltatással való használatra érhetők el. Csak [ezek mintafüzetek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) Azure Databricks működnek.
-   > 
 
 1.  [Az archív fájl importálása](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) be a Databricks-fürt, és kísérletez leírt a [Machine Learning notebookok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) lapot.
 
@@ -311,6 +351,6 @@ Háromféleképpen hozhat létre a konfigurációs fájlban:
 
 ## <a name="next-steps"></a>További lépések
 
-- [A MNIST-adatkészlet az Azure Machine Learning modell betanítása](tutorial-train-models-with-aml.md)
-- [Az Azure Machine Learning SDK a Pythonhoz](https://aka.ms/aml-sdk)
-- [Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)
+- [A modell betanítását](tutorial-train-models-with-aml.md) az Azure Machine Learning a MNIST adatkészlettel]
+- Nézet a [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) referencia
+- További információ a [az Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)

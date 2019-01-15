@@ -10,17 +10,17 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 6a52355360ef2c892cb45af77366e09864cd7837
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: f4657209dfda2b515e29b4d462368ae6b5c1eae7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611794"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302493"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
+# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Gyors útmutató: Az Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
 Útmutató Azure Resource Manager-sablonok létrehozásához és szerkesztéséhez a Visual Studio Code és az Azure Resource Manager Tools bővítmény használatával. Resource Manager-sablonokat a Visual Studio Code-ban a bővítmény nélkül is létrehozhat, a bővítmény azonban rendelkezik olyan automatikus kiegészítési szolgáltatásokkal, amelyek megkönnyítik a sablonok fejlesztését. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
 
@@ -55,7 +55,7 @@ Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard s
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-Ha meg szeretne ismerkedni a Visual Studio Code-dal történő sablonszerkesztéssel, fel kell venni egy további elemet az `outputs` szakaszba.
+Működik az szerkesztése a Visual Studio Code egy sablont, hozzá kell adnia egy további elem be a `outputs` szakasz megjelenítéséhez a tároló URI azonosítója.
 
 1. Egy további kimenet felvétele az exportált sablonba:
 
@@ -89,12 +89,12 @@ Ha meg szeretne ismerkedni a Visual Studio Code-dal történő sablonszerkeszté
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid útmutatóban az Azure Portal Azure Cloud Shellt fogja használni. A Cloud Shell az Azure CLI és az Azure PowerShell használatát is támogatja.
+A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid útmutatóban az Azure Portal Azure Cloud Shellt fogja használni. A Cloud shell egy webalkalmazás, amihez nincs szükség semmilyen konfigurációs. Támogatja az Azure parancssori felület és Azure PowerShell-lel.
 
 1. Jelentkezzen be az [Azure Cloud Shellbe](https://shell.azure.com).
 
     ![Azure Portal – Cloud Shell – Parancssori felület](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-2. A Cloud Shell bal felső sarkában vagy a **PowerShell**, vagy a **Bash** látható. A parancssori felület használatához Bash-munkamenetet kell megnyitnia. A PowerShell használatához PowerShell-munkamenetet kell megnyitnia. A Bash és a PowerShell közötti váltáshoz válassza a lefelé mutató nyilat. Lásd az előző képernyőképet. A váltáskor a felületet újra kell indítani.
+2. Válassza ki az Ön által preferált környezetben kiválasztásával vagy **PowerShell** vagy **Bash** a bal felső sarokban. A parancssori felület használatához Bash-munkamenetet kell megnyitnia. Azure PowerShell futtatásához, meg kell nyitnia egy PowerShell-munkamenetet. A Bash és a PowerShell közötti váltáshoz válassza a lefelé mutató nyilat. Lásd az előző képernyőképet. A váltáskor a felületet újra kell indítani.
 3. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre.
 
     # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
@@ -107,9 +107,9 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
     
     ---
 
-    Fel kell töltenie a sablonfájlt, mielőtt üzembe helyezhetné a felületről.
-5. Válassza ki a korábbi szakaszban mentett fájlt. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.
-6. A fájl sikeres feltöltésének ellenőrzéséhez futtassa az **ls** parancsot a Cloud Shellben. A **cat** paranccsal a sablon tartalmát is ellenőrizheti. Az alábbi képen a parancs Bashben történő futtatása látható.  Ugyanezeket a parancsokat használja a PowerShell-munkamenetben is.
+    Válassza ki a korábbi szakaszban mentett fájlt. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**. A sablonfájl a rendszerhéj elérhetőknek kell lenniük.
+
+    Lehetősége van a **ls** parancsot, és a **cat** paranccsal ellenőrizheti, hogy a fájl feltöltése sikeresen befejeződött. 
 
     # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
 
@@ -120,7 +120,7 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
     ![Azure Portal – Cloud Shell – Fájlok listázása](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
     
     ---
-7. Futtassa az alábbi parancsokat a Cloud Shellben. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez.
+4. Futtassa az alábbi parancsokat a Cloud Shellben. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez.
 
     # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
     ```azurecli
@@ -163,7 +163,7 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
 
     A képernyőképen a tárfiók neve és a tár URL-címe ki van emelve a kimeneti szakaszban. A tárfiók nevére szükség lesz a következő lépésben.
 
-7. Az alábbi parancssori felületi vagy PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott tárfiókot:
+5. Az alábbi parancssori felületi vagy PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott tárfiókot:
 
     # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
     ```azurecli
@@ -184,6 +184,8 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
     
     ---
 
+Az Azure storage-fiókok használatával kapcsolatos további tudnivalókért lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és listát az Azure portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md).
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
@@ -195,7 +197,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-A rövid útmutató elsősorban az Azure-gyorssablonok közül egy meglévő sablon a Visual Studio Code-dal történő szerkesztését mutatja be. Emellett azt is megismerte, hogyan helyezheti üzembe a sablont az Azure Cloud Shellben a parancssori felület vagy a PowerShell használatával. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A következő oktatóanyag azt mutatja be, hogyan keresheti meg a megfelelő információkat a sablonreferenciában titkosított Azure Storage-fiók létrehozásához.
+A rövid útmutató elsősorban az Azure-gyorssablonok közül egy meglévő sablon a Visual Studio Code-dal történő szerkesztését mutatja be. Azt is megtanulta, hogyan helyezheti üzembe a sablont az Azure Cloud shell a parancssori felület vagy a PowerShell használatával. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A következő oktatóanyag azt mutatja be, hogyan keresheti meg a megfelelő információkat a sablonreferenciában titkosított Azure Storage-fiók létrehozásához.
 
 > [!div class="nextstepaction"]
 > [Titkosított tárfiók létrehozása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

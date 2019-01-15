@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cfcb33f9586033db9f4197a341227365d43601cc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0a18bcf9f9e1217b674bda5f5ae698908f1911a8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232719"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262914"
 ---
 # <a name="publish-azure-application-offer"></a>Az Azure application ajánlat közzététele
 
@@ -70,7 +70,7 @@ Felülvizsgálat visszajelzés hivatkozott VSTS elemek megtekintéséhez, közz�
 1. Gyűjtse össze a következő információkat:
     - A közzétevő neve és azonosítója
     - Csomag típusa (Azure-alkalmazás), a neve, és az SKU-azonosítója
-    - A lekéréses kérelem hivatkozás, például `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/jfrog/pullrequest/<number>`.  Az URL-cím az értesítési üzenet vagy a 401-es választ lap címe lekérhetők.
+    - A lekéréses kérelem mutató hivatkozást, például: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  Az URL-cím az értesítési üzenet vagy a 401-es választ lap címe lekérhetők.
     - A közzétételi szervezet szeretne hozzáférést biztosítani, hogy a felhasználók e-mail-címeit.  Ezek a tulajdonos cím közzétevőként a Cloud Partner portálra a regisztráció során megadott tartalmaznia kell.
 2. Hozzon létre egy támogatási eseményt.  A címsorban látható, a Cloud Partner portálra, válassza ki a **súgó** gombra, majd válassza a **támogatási** a menüből.  Alapértelmezett web browser kell indítsa el, és nyissa meg a Microsoft új támogatási incidens lapot.  (Előfordulhat, hogy kell jelentkeznie.)
 3. Adja meg a **Problem type** , **marketplace bevezetési** és **kategória** , **hozzáférési probléma**, majd válassza ki **indítása kérelem**.
@@ -78,7 +78,7 @@ Felülvizsgálat visszajelzés hivatkozott VSTS elemek megtekintéséhez, közz�
     ![Támogatási jegy kategória](./media/support-incident1.png)
 
 4. A **1 / 2. lépés** lapon adja meg a kapcsolattartási adatokat, és válassza **Folytatás**.
-5. A **2. lépés 2** lapon adja meg az incidens címét, és adja meg az első (feljebb) lépésben az összegyűjtött információkat.  Olvassa el és fogadja el a szerződést, majd válassza ki **küldés**.
+5. A **2. lépés 2** csoportjában adja meg az incidens címe (például `Request VSTS access`), és adja meg az első (feljebb) lépésben az összegyűjtött információkat.  Olvassa el és fogadja el a szerződést, majd válassza ki **küldés**.
 
 Ha az incidens létrehozása sikeres volt, egy megerősítő oldal jelenik meg.  Mentse a megerősítő információkat referenciaként.  A Microsoft támogatási néhány munkanapon belül kell válaszolnia a hozzáférési kérelem.
 
