@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54025776"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Sybase
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-onprem-sybase-connector.md)
 > * [Aktuális verzió](connector-sybase.md)
 
