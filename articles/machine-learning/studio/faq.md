@@ -1,28 +1,10 @@
 ---
-title: A Machine Learning Studio – gyakori kérdések (GYIK) – Azure |} A Microsoft Docs
-description: 'Az Azure Machine Learning Studio: Gyakori kérdések számlázás, képességek és a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatás korlátozásai.'
-keywords: bevezetés a gépi tanulásba, prediktív modellezés, mi az a gépi tanulás
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/02/2017
-ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091288"
+Cím: A Machine Learning Studio – gyakori kérdések (GYIK) titleSuffix: Azure Machine Learning Studio description: 'Azure Machine Learning Studio: Számlázás, képességek és a zökkenőmentes prediktív modellezést támogató felhőalapú szolgáltatás korlátozásai GYIK. "
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: fogalmi
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
 ---
-# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning Studio – gyakori kérdések: Számlázás, képességek, korlátozások és támogatás
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio FAQ: A számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
 
 **Kérdése van, és nem találja meg itt?**
@@ -55,8 +37,8 @@ A Machine Learning webszolgáltatások illesztőfelületet biztosítanak az alka
 
 Az Azure Machine Learning két különböző típusú webszolgáltatást tud biztosítani:
 
-* Kérés-válasz szolgáltatás (RRS): alacsony késésű, nagy mértékben skálázható szolgáltatás, amely interfészt biztosít a Machine Learning Studióban létrehozott, és annak használatával üzembe helyezett állapot nélküli modellekhez.
-* Kötegelt végrehajtási szolgáltatás (BES): aszinkron szolgáltatás, amely adatrekordok szerint pontozza a kötegeket.
+* Kérés-válasz szolgáltatás (RRS): Egy alacsony késleltetésű, nagy mértékben skálázható szolgáltatás, amely interfészt létrehozott és a Machine Learning Studio használatával üzembe helyezett állapot nélküli modellekhez biztosít.
+* Kötegelt végrehajtási szolgáltatás (BES): Aszinkron szolgáltatás, amely adatrekordok batch.
 
 A REST API felhasználására, illetve a webszolgáltatás elérésére számos megoldás áll rendelkezésre. Írhat például egy alkalmazást C#, R vagy Python nyelven azzal a mintakóddal, amelyet a rendszer a webszolgáltatás üzembe helyezésekor hozott létre.
 
@@ -271,7 +253,7 @@ A néhány GB-nál nagyobb adatkészletek esetében a helyi fájlokból való k�
 
 **Létezik bármilyen korlátozás a vektorok méretét illetően?**
 
-A sorokra és oszlopokra mind a Maximális Int .NET korlátozás vonatkozik: 2, 147, 483, 647.
+Sorok és oszlopok a következők mindegyike korlátozott maximális int .NET korlátozás: 2,147,483,647.
 
 **Módosítható a webszolgáltatások futtatásához használt virtuális gép mérete?**
 
@@ -312,7 +294,7 @@ Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, 
 ## <a name="billing-questions"></a>Számlázással kapcsolatos kérdések
 **Milyen díjszámítási módszer vonatkozik a Machine Learning szolgáltatásra?**
 
-Az Azure Machine Learning két összetevőből áll: a Machine Learning Studióból és a Machine Learning-webszolgáltatásokból.
+Az Azure Machine Learning két összetevőből áll: Machine Learning Studio and Machine Learning web services.
 
 Amíg kipróbálja a Machine Learning Studiót, használhatja az ingyenes tarifacsomagot. Az Ingyenes szint lehetőséget kínál korlátozott kapacitású klasszikus webszolgáltatások üzembe helyezésére is.
 
@@ -438,7 +420,7 @@ Az új számlázási csomagok abban a három éles régióban érhetők el, amel
 
 Igen. A csomagok ára régiónként változik. Ha egy webszolgáltatást egy másik régióban is üzembe helyez, az adott régióhoz tartozó csomagot kell hozzárendelnie. További információért lásd a [régiónként elérhető termékeket]( https://azure.microsoft.com/regions/services/).
 
-### <a name="new-web-services-overages"></a>Új webszolgáltatások: Többletköltségek
+### <a name="new-web-services-overages"></a>Új webszolgáltatások: Túlhasználat
 **Hogyan tudom ellenőrizni, hogy túlléptem-e a webszolgáltatások használati keretét?**
 
 Az Azure Machine Learning webszolgáltatások portál Csomagok lapján az összes csomag által használt erőforrásokat megtekintheti. Jelentkezzen be a portálra, és kattintson a **Csomagok** menüpontra.
@@ -483,20 +465,20 @@ Az Azure Machine Learning API szolgáltatásnál a fizetendő összeget az hatá
 
 Az alábbi díjakat munkaterületenként összesítik az előfizetéshez kapcsolódóan.
 
-* Machine Learning-munkaterület előfizetés: a Machine Learning-munkaterület egy havi díjas előfizetés, amely hozzáférést biztosít egy Machine Learning Studio-munkaterülethez. Az előfizetés szükséges a kísérleteknek a Studióban történő futtatásához és az éles API-k használatához.
-* Studio-kísérletezési idő (óra): ez az érték a Machine Learning Studióban futtatott kísérletek, valamint az éles üzemi API-hívások átmeneti környezetben való futtatása során elvégzett számítási feladatokkal kapcsolatos díjakat összesíti.
+* Machine Learning-munkaterület előfizetés: A Machine Learning-munkaterület előfizetés egy havi díj, amely hozzáférést biztosít egy Machine Learning Studio-munkaterülethez. Az előfizetés szükséges a kísérleteknek a Studióban történő futtatásához és az éles API-k használatához.
+* Stúdiókísérleti órák: Ez a mérőszám az összes futó kísérletek a Machine Learning Studióban, és futó API-hívások átmeneti környezetben esedékes számítási díjakat összesíti.
 * Az adatokat elérheti a tanítási és pontozási modellekben egy SQL Servert futtató helyszíni kiszolgálóhoz való csatlakozással.
 * Klasszikus webszolgáltatásoknál:
-  * Számítási üzemidő éles üzemi API-n (óra): ez az érték az éles üzemben futó webszolgáltatásokért fizetendő számítási díjakat adja meg.
-  * Éles üzemi API-tranzakciók (ezer db): ez az érték az éles üzemi webszolgáltatás felé irányuló hívásonkénti díjakat adja meg.
+  * Éles üzemi API-számítási üzemóra: Vannak az éles környezetben futó webszolgáltatások által elhatárolt számítási díjakat tartalmazza.
+  * Éles üzemi API-tranzakciószám (1000 egység): Az éles üzemi webszolgáltatás felé hívásonkénti díjakat tartalmazza.
 
 A fenti díjakon kívül, a Resource Manager-alapú webszolgáltatás esetén a díjak a választott csomagban vannak összesítve:
 
-* Standard S1/S2/S3 API-csomag (egység): Ez az érték a Resource Manager-alapú webszolgáltatásokhoz kiválasztott példány típusát adja meg.
-* Standard S1/S2/S3 keretét túllépő API-számítási üzemóra: Ez az érték azt adja meg, hogy mennyi számítási feladatokkal kapcsolatos díj merült fel azt követően, hogy az éles üzemben futó Resource Manager-alapú webszolgáltatással felhasználta a meglévő példányokban elérhető szolgáltatási keretet. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
-* Standard S1/S2/S3 keretét túllépő API-tranzakciószám (1000-es egységekben): Ez az érték azt adja meg, hogy mennyi díj merült fel az éles üzemben futó Resource Manager-alapú webszolgáltatás felé irányuló hívásonként azt követően, hogy a meglévő példányokban elérhető szolgáltatási keret kimerült. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
-* Szolgáltatási keretbe foglalt API-számítási üzemóra: A Resource Manager-alapú webszolgáltatásoknál ez az érték jelzi a szolgáltatási keretbe foglalt API-számítási üzemórákat.
-* Szolgáltatási keretbe foglalt API-tranzakció (1000-es egységekben): A Resource Manager-alapú webszolgáltatásoknál ez az érték jelzi a szolgáltatási keretbe foglalt API-tranzakciókat.
+* Standard S1/S2/S3 API-csomag (egység): Ez az érték a Resource Manager-alapú webszolgáltatásokhoz kiválasztott példány típusát jelzi.
+* Standard S1/S2/S3 keretét túllépő API-számítási üzemóra: Ez az érték, amely után a meglévő példányok szolgáltatási keretét el is használta éles környezetben futó Resource Manager-alapú webes szolgáltatások vannak esedékes számítási díjakat tartalmazza. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
+* Standard S1/S2/S3 keretét túllépő API-tranzakciószám (1000 egység): Hívásonkénti az éles üzemben futó Resource Manager-alapú webszolgáltatással felhasználta a meglévő példányokban elérhető szolgáltatási keretet után díjakat tartalmazza. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
+* A szolgáltatási keretbe foglalt API-számítási üzemóra: Resource Manager-alapú webszolgáltatásoknál Ez az érték jelzi a szolgáltatási keretbe foglalt API-számítási üzemórákat.
+* Szolgáltatási keretbe foglalt API-tranzakciószám (1000 egység): Resource Manager-alapú webszolgáltatásoknál Ez érték jelzi a szolgáltatási keretbe foglalt API-tranzakciókat.
 
 **Hogy tudok regisztrálni az Azure Machine Learning Ingyenes szintjére?**
 

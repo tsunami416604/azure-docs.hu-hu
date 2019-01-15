@@ -10,34 +10,38 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f989a006251313a8439432861477dc133374af35
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104726"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304670"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
-Ismerje meg, hogyan hozhatja létre első Azure Resource Manager-sablonját az Azure Portal használatával, és hogy hogyan szerkesztheti és helyezheti üzembe az Azure Portalról. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. A jelen oktatóanyag útmutatója alapján Azure Storage-fiókot fog létrehozni. Ugyanezzel a folyamattal más Azure-erőforrásokat is létre lehet hozni.
+Ismerje meg, hogyan hozhat létre egy Resource Manager-sablon használata az Azure Portalon, és a szerkesztési és helyezi üzembe a sablont a portálról. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
+
+Az oktatóanyag befejezése után üzembe helyezése egy Azure Storage-fiókot. Ugyanez a folyamat más Azure-erőforrások üzembe helyezéséhez használható.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="generate-a-template-using-the-portal"></a>Sablon generálása az Azure Portal használatával
 
-Ebben a szakaszban tárfiókot fog létrehozni az Azure Portal használatával. A tárfiók üzembe helyezése előtt lehetősége lesz ellenőrizni a sablont, amelyet a Portal az Ön konfigurációja alapján generált. A sablont későbbi használatra mentheti is.
+A Resource Manager-sablon létrehozása előzmények nincs egyszerű feladat, különösen akkor, ha most ismerkedik az Azure-beli és a rendszer nem ismeri a JSON formátumban. Az Azure portal használatával, konfigurálhat egy erőforrás, például egy Azure Storage-fiókot. Mielőtt telepítené az erőforrást, exportálhatja a Resource Manager-sablon-konfigurációnak. A sablont későbbi használatra mentheti is.
+
+Számos sablon tapasztalt fejlesztők működő sablonjainak előállítása, amikor azok nem ismeri az Azure-erőforrások üzembe helyezése meg ezt a módszert.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók - blob, fájl, tábla, üzenetsor** elemet.
 
     ![Azure-tárfiókok létrehozása az Azure Portalon](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-3. Adja meg a következő információkat: 
+3. Adja meg a következő információkat:
 
-    - **Erőforráscsoport**: hozzon létre egy új Azure-erőforráscsoportot egy Ön által választott névvel. A képernyőképen az erőforráscsoport neve *mystorage1016rg*.
-    - **Név**: adjon meg egy egyedi nevet a tárfióknak. A képernyőképen ez a név a *mystorage1016*.
+    - **Erőforráscsoport**: Válassza ki **új létrehozása**, és adja meg a kiválasztott erőforráscsoport nevét. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Erőforráscsoport egy olyan tároló, az Azure-erőforrásokhoz. Erőforráscsoport megkönnyíti az Azure-erőforrások kezeléséhez.
+    - **Név**: Adjon meg egy egyedi nevet a tárfiók. A képernyőképen ez a név a *mystorage1016*.
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -46,14 +50,14 @@ Ebben a szakaszban tárfiókot fog létrehozni az Azure Portal használatával. 
     > [!NOTE]
     > Üzembe helyezés előtt egyes exportált sablonokat szerkeszteni szükséges.
 
-4. Válassza a képernyő alján a **Felülvizsgálat + létrehozás** lehetőséget. 
+4. Válassza a képernyő alján a **Felülvizsgálat + létrehozás** lehetőséget.
 5. Válassza az **Automatizációs sablon letöltése** lehetőséget a képernyő alján. A portál megjeleníti a létrehozott sablont:
 
     ![Sablon generálása a Portal használatával](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    A sablon a főoldalon látható. Ez egy JSON-fájl négy legfelső szintű elemmel: `schema`, `contentVersion`, `parameters` és `resources`. További információt az [Azure Resource Manager-sablonok struktúrája és szintaxisa](./resource-group-authoring-templates.md) című témakörben talál.
+    A sablon a főoldalon látható. Egy JSON-fájl négy legfelső szintű elemekkel - `schema`, `contentVersion`, `parameters`, `variables`, `resources`, és `output`. További információt az [Azure Resource Manager-sablonok struktúrája és szintaxisa](./resource-group-authoring-templates.md) című témakörben talál.
 
-    Hat paraméter van definiálva. Az egyikük neve **storageAccountName**. A második kiemelt rész mutatja be, hogyan használható ez a paraméter a sablonban. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
+    Hat paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kijelölt rész bemutatja, hogyan ebben a sablonban paraméterre hivatkozhatnak. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
 
     A sablonban egy Azure-erőforrás van definiálva. A típusa [Microsoft.Storage/storageAccounts]. Tekintse meg az erőforrás definiálásának módját és a definíció szerkezetét.
 6. Válassza a **Download** (Letöltés) lehetőséget. Mentse a **template.json** fájlt a letöltött csomagból a számítógépre. A következő szakaszban egy üzembehelyezési sablon eszközzel fogja szerkeszteni a sablont.
@@ -61,13 +65,13 @@ Ebben a szakaszban tárfiókot fog létrehozni az Azure Portal használatával. 
 
     ![Sablon generálása a Portal használatával](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    A sablon és a paraméterfájl együttes használatával létrehozható egy Azure-tárfiók.
+    A sablon és paraméterek fájlok együttes használatával, létrehozhat egy erőforrást, ebben az oktatóanyagban egy Azure storage-fiókot.
 
 ## <a name="edit-and-deploy-the-template"></a>Sablon szerkesztése és üzembe helyezése
 
-Az Azure Portal is használható egyes alapvető szerkesztési műveletekhez. Ebben a rövid útmutatóban a portál *Template deployment* nevű eszközét használjuk. Ha összetettebb sablont szeretne szerkeszteni, érdemes a [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)-ot használni, amely kiterjedtebb szerkesztési funkciókat kínál.
+Az Azure Portal is használható egyes alapvető szerkesztési műveletekhez. Ebben a rövid útmutatóban a portál *Template deployment* nevű eszközét használjuk. *Sablonalapú telepítés* a jelen oktatóanyagban használt, így az egész oktatóanyag egy felület – az Azure portal használatával is elvégezheti. Egy összetettebb sablon szerkesztése, érdemes lehet [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), amely gazdagabb Szerkesztés funkciókat biztosít.
 
-Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkezzen. Az üzembe helyezés meghiúsul, ha olyan tárfióknevet ad meg, amely már létezik. A hiba elkerülése érdekében a `uniquestring()` sablonfüggvényhívással egyedi tárfiókneveket hozhat létre.
+Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkezzen. A központi telepítés sikertelen lehet, ha a megadott tárfiók neve, amely már létezik. A probléma elkerülése érdekében módosítsa a sablon használatához egy sablon függvény hívásához szükséges `uniquestring()` létrehozni a tárfiók egyedi neve.
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.
 2. A **Keresés a Marketplace-en** mezőbe írja be a **template deployment** kifejezést, majd nyomja le az **ENTER** billentyűt.
@@ -84,7 +88,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
     ```
     ![Azure Resource Manager-sablonok](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    Itt két függvényt, a `concat()` és a `uniqueString()` függvényeket használjuk.
+    Két sablonokban használható függvények használhatók: `concat()` és `uniqueString()`.
 
 8. Távolítsa el az előző képernyőképen kiemelt **storageAccountName** paramétert.
 9. Frissítse a **Microsoft.Storage/storageAccounts** erőforrás név elemét, és a paraméter helyett használja az újonnan definiált változót:
@@ -142,9 +146,9 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 7. Kattintson a **Mentés** gombra.
 8. Írja be a következő értékeket:
 
-    - **Erőforráscsoport**: adjon egy egyedi nevet az erőforráscsoportnak.
-    - **Hely**: válasszon egy helyet az erőforráscsoportnak.
-    - **Hely**: válasszon egy helyet a tárfióknak.  Választhatja ugyanazt a helyet is, amelyet az erőforráscsoportnál megadott.
+    - **Erőforráscsoport**: válasszon **új létrehozása** és nevezze el az erőforráscsoport egyedi nevére.
+    - **Hely**: válasszon egy helyet az erőforráscsoportnak. Ha például **USA középső RÉGIÓJA**. 
+    - **Hely**: válasszon egy helyet a tárfióknak. Ha például **USA középső RÉGIÓJA**.
     - **Fiók típusa**: Adja meg **Standard_LRS** ebben a rövid útmutatóban.
     - **Milyen**: Adja meg **StorageV2** ebben a rövid útmutatóban.
     - **Hozzáférési szint**: Adja meg **interaktív** ebben a rövid útmutatóban.
@@ -156,7 +160,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
     ![Azure Resource Manager-sablonok üzembe helyezése](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-deploy.png)
 
 10. Válassza a **Beszerzés** lehetőséget.
-11. Az üzembe helyezés állapotát úgy nézheti meg, ha a képernyő felső részén kiválasztja a harang (értesítések) ikont. Várjon, amíg az üzembe helyezés befejeződik.
+11. Az üzembe helyezés állapotát úgy nézheti meg, ha a képernyő felső részén kiválasztja a harang (értesítések) ikont. Meg kell jelennie **üzembe helyezés folyamatban**. Várjon, amíg az üzembe helyezés befejeződik.
 
     ![Azure Resource Manager-sablonok üzembehelyezési értesítése](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
 

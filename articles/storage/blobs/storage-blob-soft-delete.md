@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 7f7071c9f87528eddbfe3d541cd85624e308948f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 77e0a9fc12519615765e1846ac8808bb3fbb27f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633385"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260651"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Helyreállítható Törlés az Azure Storage-BLOB
 Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
@@ -71,10 +71,10 @@ Az alábbi táblázat ismerteti a várt viselkedés, amikor egy helyreállíthat
 | REST API-művelet | Erőforrás típusa | Leírás | A viselkedés módosítása |
 |--------------------|---------------|-------------|--------------------|
 | [Törlés](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a tárfiókot, beleértve a tárolók és a benne található blobok.                           | Nincs változás. Tárolók és blobok a törölt fiók amelyek nem állítható helyre. |
-| [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve az összes benne található blobokat. | Nincs változás. Törölt tárolóban található blobokat, amelyek nem állítható helyre. |
+| [Delete Container](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve az összes benne található blobokat. | Nincs változás. Törölt tárolóban található blobokat, amelyek nem állítható helyre. |
 | [Put Blob](/rest/api/storageservices/put-blob) | Blokkolás, Hozzáfűzés, és Lapblobok | Létrehoz egy új blob vagy lecseréli a tárolóban lévő meglévő blobokhoz | Ha lecseréli a meglévő blobokhoz, automatikusan létrejött egy pillanatkép a blob állapot hívása előtt. Ez is vonatkozik egy korábban helyreállíthatóan törölt blob csak, ha egy blob (blokk, Hozzáfűzés vagy lap) azonos típusú váltotta fel. Ha egy blob egy másik típusú váltotta fel, az összes meglévő helyreállíthatóan törölt adatok véglegesen lejár. |
 | [Delete Blob](/rest/api/storageservices/delete-blob) | Blokkolás, Hozzáfűzés, és Lapblobok | Egy blob vagy a blob-pillanatkép törlésre jelöli meg. A blob vagy pillanatkép később törlése során szemétgyűjtés | Ha a blob-pillanatkép, a pillanatkép van megjelölve, a helyreállítható törlés törlése. Blobok törléséhez használatakor, hogy a blob van megjelölve, enyhe törölve. |
-| [Blob másolása](/rest/api/storageservices/copy-blob) | Blokkolás, Hozzáfűzés, és Lapblobok | Másolja át a forrás blob egy forrásblobot ugyanazt a tárfiókot vagy egy másik tárfiókba. | Ha lecseréli a meglévő blobokhoz, automatikusan létrejött egy pillanatkép a blob állapot hívása előtt. Ez is vonatkozik egy korábban helyreállíthatóan törölt blob csak, ha egy blob (blokk, Hozzáfűzés vagy lap) azonos típusú váltotta fel. Ha egy blob egy másik típusú váltotta fel, az összes meglévő helyreállíthatóan törölt adatok véglegesen lejár. |
+| [Copy Blob](/rest/api/storageservices/copy-blob) | Blokkolás, Hozzáfűzés, és Lapblobok | Másolja át a forrás blob egy forrásblobot ugyanazt a tárfiókot vagy egy másik tárfiókba. | Ha lecseréli a meglévő blobokhoz, automatikusan létrejött egy pillanatkép a blob állapot hívása előtt. Ez is vonatkozik egy korábban helyreállíthatóan törölt blob csak, ha egy blob (blokk, Hozzáfűzés vagy lap) azonos típusú váltotta fel. Ha egy blob egy másik típusú váltotta fel, az összes meglévő helyreállíthatóan törölt adatok véglegesen lejár. |
 | [PUT letiltása](/rest/api/storageservices/put-block) | Blokkblobok | Egy blokkblob véglegesítése új blokkot hoz létre. | Ha egy blob, amely aktív véglegesítse nem történik változás. Használja, hogy egy blobot, amely helyreállíthatóan törölt egy letiltása, ha egy új blob jön létre, és a helyreállíthatóan törölt blob állapotát, automatikusan létrejött egy pillanatkép. |
 | [PUT tiltólista](/rest/api/storageservices/put-block-list) | Blokkblobok | Egy blob véglegesíti a letiltása a blokkblob típusú alkotó azonosítók készletét megadásával. | Ha lecseréli a meglévő blobokhoz, automatikusan létrejött egy pillanatkép a blob állapot hívása előtt. Ez is vonatkozik egy korábban helyreállíthatóan törölt blob csak, ha egy Blokkblob típusú. Ha egy blob egy másik típusú váltotta fel, az összes meglévő helyreállíthatóan törölt adatok véglegesen lejár. |
 | [PUT lap](/rest/api/storageservices/put-page) | Lapblobok | Oldalak számos ír egy Lapblob. | Nincs változás. A rendszer felülírja, vagy nincs bejelölve, a művelet használatával Lapblob adatokat a rendszer nem menti és nem állítható helyre. |
@@ -198,7 +198,7 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
-A helyreállítható törlés currrent adatmegőrzési házirend megkereséséhez használja a következő parancsot:
+A helyreállítható törlés jelenlegi adatmegőrzési megkereséséhez használja a következő parancsot:
 
 ```azurepowershell-interactive
    $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount

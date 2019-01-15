@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 31e675b101d903af5dd4a07fee3bc56fbc3353d9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bb5d7306558f46f84d1f4a1b7a61332bf767479f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412788"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267045"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Kapcsolat nélküli az Azure virtuális gép helyi Windows-jelszó visszaállítása
 A virtuális gépek az Azure-ban a helyi Windows-jelszó alaphelyzetbe állíthatja a [az Azure portal vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) biztosított az Azure Vendég ügynök van telepítve. Ez a módszer az elsődleges módja egy Azure virtuális gép a jelszó alaphelyzetbe állítása. Ha problémák merülnek fel a az Azure Vendég ügynök nem válaszol, vagy egyéni kép feltöltése után telepítése meghiúsul, manuálisan egy Windows-jelszó alaphelyzetbe állítása. Ez a cikk részletesen bemutatja egy helyi fiók jelszavának alaphelyzetbe a forrás operációs rendszer virtuális lemez egy másik virtuális géphez való csatlakoztatásával. A jelen cikkben ismertetett lépések Windows rendszerű tartományvezérlők nem vonatkoznak. 
 
 > [!WARNING]
-> Csak végső megoldásként használja a ezt a folyamatot. Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) első.
+> Ezt a módszert csak végső megoldásként használja. Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) első.
 > 
 > 
 
@@ -37,6 +37,19 @@ A core lépések végrehajtásához a helyi jelszó-visszaállításra egy Windo
 * Válassza le a virtuális gép operációsrendszer-lemez a hibaelhárító virtuális gépről.
 * A Resource Manager-sablon használatával hozzon létre egy virtuális Gépet az eredeti virtuális lemez segítségével.
 * Az új virtuális gép elindul, amikor a létrehozott konfigurációs fájl frissítése a szükséges felhasználói jelszót.
+
+> [!NOTE]
+> A következő folyamatok automatizálása a segítségével:
+>
+> - A hibaelhárító virtuális gép létrehozása
+> - Az operációsrendszer-lemez csatolása
+> - Az eredeti virtuális gép ismételt létrehozása
+> 
+> Ehhez használja a [Azure virtuális gép helyreállítási parancsfájlok](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Ha az Azure virtuális gép helyreállítási parancsfájlok használatát választja, használhatja az alábbi eljárást a "Részletes lépések" szakaszban:
+> 1. Hagyja ki a 1. és 2 az érintett virtuális gép operációsrendszer-lemez egy helyreállítási virtuális Géphez csatolni a parancsfájlok használatával.
+> 2. 3 – 6. a tulajdonosaival lépésekkel.
+> 3. Hagyja ki a 7 – 9, építse újra a virtuális gép a parancsfájlok használatával.
+> 4. 10-es és 11 lépésekkel.
 
 ## <a name="detailed-steps"></a>Részletes lépések
 
@@ -112,7 +125,7 @@ Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure 
     net localgroup "remote desktop users" <username> /add
     ```
 
-    ![FixAzureVM.cmd létrehozása](./media/reset-local-password-without-agent/create_fixazure_cmd.png)
+    ![Create FixAzureVM.cmd](./media/reset-local-password-without-agent/create_fixazure_cmd.png)
    
     A virtuális géphez konfigurált összetettségi követelményeknek kell megfelelnie, az új jelszó meghatározásakor.
 7. Az Azure Portalon válassza le a lemezt a hibaelhárító virtuális gépről:
@@ -133,7 +146,7 @@ Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure 
      ![Lemez másolása URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Virtuális gép létrehozása a forrás virtuális gép operációsrendszer-lemez alapján:
    
-   Használata [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) virtuális gép létrehozása speciális virtuális merevlemezből. Kattintson a `Deploy to Azure` gombra kattintva nyissa meg az Azure Portalon a sablonalapú adatokkal feltöltve az Ön számára.
+   * Használata [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) virtuális gép létrehozása speciális virtuális merevlemezből. Kattintson a `Deploy to Azure` gombra kattintva nyissa meg az Azure Portalon a sablonalapú adatokkal feltöltve az Ön számára.
    * Ha meg szeretné őrizni a korábbi beállításokat a virtuális gép, jelölje be *szerkesztési sablon* biztosít a meglévő virtuális hálózat, alhálózat, hálózati adapter vagy nyilvános IP-cím.
    * Az a `OSDISKVHDURI` paraméter beviteli mező, illessze be az előző lépésben beszerzése a forrás virtuális merevlemez URI azonosítója:
      
@@ -142,7 +155,7 @@ Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure 
 11. Az új virtuális gépre a távoli munkamenet távolítsa el a következő fájlokat a környezet törlése:
     
     * A %windir%\System32
-      * Távolítsa el a FixAzureVM.cmd
+      * remove FixAzureVM.cmd
     * A %windir%\System32\GroupPolicy\Machine\
       * Távolítsa el a scripts.ini
     * A %windir%\System32\GroupPolicy

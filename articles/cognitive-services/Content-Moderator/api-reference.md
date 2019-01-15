@@ -1,7 +1,7 @@
 ---
 title: API-referencia - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: További információ a tartalom-jóváhagyás, és tekintse át a Content Moderator API-k.
+description: További információ a különböző tartalom-jóváhagyás, és tekintse át a Content Moderator API-k.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a64b2f7ce54d5ace26ad18c0ca1a9facb66245e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229747"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266961"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API-referencia
 
-Az Azure Content Moderator API-k révén elsajátíthatja a következőképpen: (is [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md).)
+A következő módokon Ismerkedés az Azure Content Moderator API-kat: (Lásd még: [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md).)
 
 - Az Azure Portalon [fizessen elő a Content Moderator API-k](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-- Regisztráljon a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/). Lásd: [rövid](quick-start.md).
+- Regisztráljon a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/). Lásd: [próbálja ki a Content Moderator, a weben](quick-start.md).
 
 ## <a name="moderation-apis"></a>Moderálási API-k
 

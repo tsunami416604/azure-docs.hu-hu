@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867898"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303318"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?
 
@@ -78,7 +78,7 @@ Az Azure-ban bevezettünk különféle adatműveleteket (ezek jelenleg előzetes
 
 ### <a name="scope"></a>Hatókör
 
-A *hatókör* az a határ, ameddig a hozzáférés terjed. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez hasznos lehet például, ha egy felhasználót [Webhelyek közreműködője](built-in-roles.md#website-contributor) szerepkörrel szeretne felruházni, de csak egyetlen erőforráscsoportra vonatkozóan.
+*Hatókör* , amelyekre vonatkozik a hozzáférési erőforrások készlete. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez hasznos lehet például, ha egy felhasználót [Webhelyek közreműködője](built-in-roles.md#website-contributor) szerepkörrel szeretne felruházni, de csak egyetlen erőforráscsoportra vonatkozóan.
 
 Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../azure-resource-manager/management-groups-overview.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
 
@@ -99,6 +99,12 @@ Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a p�
 ![Hozzáférés-vezérlés szerepkör-hozzárendeléssel](./media/overview/rbac-overview.png)
 
 Szerepkör-hozzárendeléseket az Azure Portal, az Azure CLI, az Azure PowerShell, az Azure SDK-k vagy REST API-k használatával hozhat létre. Mindegyik előfizetésben legfeljebb 2000 szerepkör-hozzárendeléssel rendelkezhet. Szerepkör-hozzárendelések létrehozásához és eltávolításához `Microsoft.Authorization/roleAssignments/*` engedély szükséges. Ez a [Tulajdonos](built-in-roles.md#owner) vagy a [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) szerepkörrel biztosítható.
+
+## <a name="multiple-role-assignments"></a>Több szerepkör-hozzárendelések
+
+Tehát mi történik, ha több átfedő szerepkör-hozzárendeléseket? RBAC-additív modell, így a a hatályos engedélyek a szerepkör-hozzárendeléseket is. Vegye figyelembe az alábbi példában, ahol a felhasználó kap a közreműködő szerepkört az előfizetésre, és a egy erőforráscsoportot az Olvasó szerepkör. A közreműködői engedélyekkel és az olvasói engedélyekkel lényegében a közreműködő szerepkört az erőforráscsoportnak. Ezért ebben az esetben az Olvasó szerepkör-hozzárendelés nem befolyásolja.
+
+![Több szerepkör-hozzárendelések](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Megtagadás-hozzárendelések
 
@@ -126,7 +132,7 @@ Az RBAC a következő főbb lépésekkel határozza meg, hogy Ön hozzáféréss
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure Portal használatával](quickstart-assign-role-user-portal.md)
+- [Rövid útmutató: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
 - [A különböző Azure-beli szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
-- [A nagyvállalati felhőmegoldások bevezetése: Erőforráshozzáférés-kezelés az Azure-ban](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)
+- [Enterprise Cloud Adoption: Erőforráshozzáférés-kezelés az Azure-ban](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

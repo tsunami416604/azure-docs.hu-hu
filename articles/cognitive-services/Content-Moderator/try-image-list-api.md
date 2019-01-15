@@ -1,42 +1,42 @@
 ---
-title: Egyéni listák segítségével az API-konzol - Content Moderator mérsékelt képek
+title: Az egyedi listákkal és az API-konzol - Content Moderator mérsékelt képek
 titlesuffix: Azure Content Moderator
-description: A Content Moderator API konzolon egyéni rendszerképlisták kipróbálhassák azt.
+description: A lista felügyeleti API-t az Azure Content Moderator, lemezképek egyéni listák létrehozásához használhatja.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e573262879b6a16e3cd530757900b86228ae299
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c42fdb037e1803db8255518f5c7ae7b2abd90c60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219957"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259359"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Az API-konzol az egyéni rendszerkép listákkal mérsékelt
 
 Használja a [lista felügyeleti API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) az Azure Content Moderator egyéni listák rendszerképek létrehozásához. Egyéni rendszerképek listáját használja a kép moderálási API-val. A lemezkép moderálás művelet kiértékeli a rendszerképet. Egyéni listák létrehozása, ha a művelet is összehasonlítja a képek az egyedi listákkal. Egyéni listák segítségével a kép engedélyezni vagy letiltani.
 
 > [!NOTE]
-> A maximális korlát **5 kép listák** az egyes lista **nem haladhatja meg a 10 000 lemezképek**.
+> A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 >
 
 A lista felügyeleti API-t használja a következő feladatokat végezheti el:
 
-- Hozzon létre egy listát.
+- Lista létrehozása.
 - Lemezképek hozzáadása a listához.
 - Képernyőképek egy listában található rendszerképek ellen.
 - Törölje a lemezképet a listából.
-- Egy lista törölhető.
-- Lista adatainak szerkesztése.
-- Frissítse az index, hogy a lista módosításainak egy új vizsgálatot szerepelnek.
+- Lista törlése.
+- Listaadatok szerkesztése.
+- Frissítse az indexet, hogy az új beolvasások észleljék a lista módosításait.
 
 ## <a name="use-the-api-console"></a>Az API-konzol használata
-Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd: [áttekintése](overview.md).
+Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd az [Áttekintést](overview.md).
 
 ## <a name="refresh-search-index"></a>Frissítse a search-index
 
@@ -121,7 +121,7 @@ Kép vagy lista törlése nagyon egyszerű. Az API-t használhatja a következő
 
 - Rendszerkép törlése. (**Kép – Törlés**)
 - Egy lista összes rendszerkép törlése a lista törlése nélkül. (**Kép – törli az összes rendszerkép**)
-- Törölje a listáját, és annak teljes tartalmát. (**Rendszerképlisták - törlési**)
+- Egy lista törlése annak teljes tartalmával együtt. (**Rendszerképlisták - törlési**)
 
 Ebben a példában egy lemezkép törlése:
 

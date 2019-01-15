@@ -1,59 +1,60 @@
 ---
-title: Összekötők használata az Azure Content moderátor más API-k elérésére |} Microsoft Docs
-description: Ismerje meg, hogyan férhet hozzá a tartalom moderátor munkafolyamatokat más API-k összekötők használatával.
+title: Más szolgáltatások csatlakoztatása a tartalom - Content Moderator moderálása
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan férhetnek hozzá a többi munkafolyamatait a Content Moderator API-k, összekötők használatával.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d8114457e7079ca8772cab830bd011dcddf372f5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 99d8b3603278a9c6c432ca32a1d85e9abe34e1da
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347019"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265583"
 ---
-# <a name="connectors"></a>Összekötők
+# <a name="connect-to-other-cognitive-services"></a>Csatlakozhat olyan cognitive services
 
-Az Azure Content moderátor munkafolyamatok használhatja más API mellett tartalom moderátor API-k. A tartalom moderátor összekötő használatával éri el a többi API-k. Az összekötő hivatkozást nyújt az egyéb API-kat.
+Az Azure Content Moderator munkafolyamatokat használhat más API-k, Content Moderator API-k mellett. Más API-k a Content Moderator az összekötő segítségével érhető el. Az összekötő egy hivatkozást a más API-kat biztosít.
 
-Tartalom moderátor az alapértelmezett összekötők tartalmazza:
+A Content Moderator alapértelmezett összekötőket tartalmaz:
 
 * Emotion API
 * Face API
-* PhotoDNA felhőalapú szolgáltatás
+* PhotoDNA Cloud Service
 
-![Tartalom moderátor rendelkezésre álló összekötők](images/connectors-1.png)
+![Content Moderator elérhető összekötők](images/connectors-1.png)
 
-## <a name="verify-your-credentials"></a>Ellenőrizze a hitelesítő adatokat 
+## <a name="verify-your-credentials"></a>A hitelesítő adatok ellenőrzéséhez 
 
-Definiálása előtt célszerű egy munkafolyamatot, győződjön meg arról, hogy rendelkezik-e az összekötő API-k, amely a használni kívánt érvényes hitelesítő adatokat:
+Megadhat egy munkafolyamatot, mielőtt győződjön meg arról, hogy érvényes hitelesítő adatokat használni kívánt API-összekötő:
 
-1.  Jelölje ki a felülvizsgálati eszköz irányítópult **beállítások** > **összekötők**.
+1.  Válassza ki a vizsgálóeszköz irányítópult **beállítások** > **összekötők**.
 
-  ![Tartalom moderátor válassza összekötők](images/connectors-2.png)
+  ![Content Moderator válassza összekötők](images/connectors-2.png)
 
-2.  Válassza ki a **szerkesztése** szimbólum mellett a megfelelő összekötőre, a hitelesítő adatok ellenőrzéséhez.
+2.  Válassza ki a **szerkesztése** mellett a hitelesítő adatait a kívánt összekötő található.
 
-  ![Tartalom moderátor jelölje ki a Szerkesztés szimbólumot](images/connectors-3.png)
+  ![A Content Moderator, válassza ki a szerkesztési szimbólum](images/connectors-3.png)
 
-3.  Az Előfizetés kulcs jelenik meg. Ha végezze el a módosításokat, jelölje be **mentése** befejezése után.
+3.  Az előfizetési kulcs jelenik meg. Ha módosítani szeretné, válassza ki a **mentése** befejezése után.
 
-  ![Tartalom szerkesztése összekötők moderátor lap](images/connectors-4-1.png)
+  ![Content Moderator szerkesztése összekötők lapon](images/connectors-4-1.png)
  
-## <a name="add-a-connector"></a>Összekötő hozzáadása
+## <a name="add-a-connector"></a>Adjon hozzá egy összekötőt
 
-1.  Összekötő hozzáadása előtt be kell egy előfizetési kulcsot. Jelölje ki a felülvizsgálati eszköz irányítópult **beállítások** > **hitelesítő adatok**. Jelölje ki és másolja az érték, amely a **Ocp-rendszergazda-előfizetés-kulcs** mezőbe.
+1.  Mielőtt hozzáad egy összekötőt, szüksége van egy előfizetési kulcsot. Válassza ki a vizsgálóeszköz irányítópult **beállítások** > **hitelesítő adatok**. Válassza ki, és másolja az értéket, amely szerepel a **Ocp-Admin-Subscription-Key** mezőbe.
 
-2.  Válassza ki **összekötők**. Válassza ki a rendelkezésre álló összekötők a felülvizsgálati eszköz irányítópulton megjelenített egyikét. Ezt követően válassza **Connect**. 
+2.  Válassza ki **összekötők**. Válassza ki a vizsgálóeszközt irányítópulton megjelenített elérhető összekötő közül. Ezután válassza ki **Connect**. 
 
-  ![Tartalom hozzáadása összekötő moderátor lap](images/connectors-5.png)
+  ![Content Moderator hozzáadása összekötő lap](images/connectors-5.png)
 
-3.  Az a **Ocp-rendszergazda-előfizetés-kulcs** mezőbe illessze be a másolt kulcsot. Ezt követően válassza a **Mentés** lehetőséget.
+3.  Az a **Ocp-Admin-Subscription-Key** mezőbe illessze be a másolt kulcsot. Ezt követően válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-* Összekötők használata [határozza meg az egyéni munkafolyamatokat](workflows.md).
+* Ismerje meg, hogyan használható az összekötők [meghatározása egyéni munkafolyamatokat](workflows.md).

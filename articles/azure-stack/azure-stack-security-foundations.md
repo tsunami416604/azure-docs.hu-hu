@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/9/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: fiseraci
+ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727089"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306454"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Az Azure Stack infrastruktúrájának biztonsági rendszer kialakításához
 
@@ -70,7 +71,7 @@ Az Azure Stackben (Hyper-V-gazdagépek és virtuális gépek) minden összetevő
 A csatlakoztatott esetben víruskereső definíció- és keresőmotor-frissítéseket érvényesek naponta több alkalommal. Kapcsolat nélküli esetekben használható, a kártevőirtó-frissítések alkalmazása a havi Azure Stack-frissítés részeként. További információkért lásd: [frissítése a Windows Defender víruskereső használható az Azure Stacken](azure-stack-security-av.md).
 
 ## <a name="constrained-administration-model"></a>Korlátozott adminisztrációs modell
-Az Azure Stackben felügyeleti szabályozza mindegyike adott célt három belépési pontok használatával: 
+Az Azure Stackben felügyeleti mindegyike adott célt három belépési pontok segítségével lehet szabályozni: 
 1. A [adminisztrátori portál](azure-stack-manage-portals.md) pont kattintással élményt nyújt a napi felügyeleti műveleteket.
 2. Az Azure Resource Manager a felügyeleti portál egy REST API, PowerShell és az Azure CLI által használt összes felügyeleti műveletet tesz elérhetővé. 
 3. Adott alacsony szintű műveletek, például data center integration vagy forgatókönyvek támogatása, Azure Stack egy nevű PowerShell-végpontot tesz közzé [kiemelt végponthoz](azure-stack-privileged-endpoint.md). Ezt a végpontot tesz elérhetővé, csak engedélyezési listához hozzáadni kívánt parancsmagok, és erősen ellenőrzi.

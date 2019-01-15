@@ -13,12 +13,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/29/2018
 ms.author: curtand
-ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9e0e1a70926127389101c79121ffab03e411f56a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210431"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265144"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben
 
@@ -32,7 +32,7 @@ A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az 
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>A csoporthoz rendelt terméklicencek megtekintése
 A [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) parancsmag segítségével kérje le a csoport objektumot, és ellenőrizze a *licencek* tulajdonság: jelenleg a csoporthoz hozzárendelt összes terméklicencek listázza.
-```
+```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
 ```
@@ -78,11 +78,11 @@ HTTP/1.1 200 OK
 ## <a name="get-all-groups-with-licenses"></a>Licenccel rendelkező összes csoport beolvasása
 
 A következő parancs futtatásával licenccel rendelkező összes csoport található:
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses}
 ```
 Mely termékek hozzárendelt kapcsolatos további részletekért szemlélteti:
-```
+```powershell
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
@@ -102,7 +102,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ## <a name="get-statistics-for-groups-with-licenses"></a>Megtekintheti a statisztikákat a licenccel rendelkező csoportok
 A licenccel rendelkező csoportok alapszintű statisztikákat jelentést. Az alábbi példában a parancsfájl az összes felhasználók száma, a csoport már hozzárendelt licenccel rendelkező felhasználók száma és a felhasználók, akiknek licencek nem sikerült hozzárendelni a csoport száma sorolja fel.
 
-```
+```powershell
 #get all groups with licenses
 Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $groupId = $_.ObjectId;
@@ -160,7 +160,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 
 ## <a name="get-all-groups-with-license-errors"></a>Az összes csoport beolvasása licenc hibákkal
 Néhány felhasználó, akinek licencek nem sikerült hozzárendelni tartalmazó csoportok kereséséhez:
-```
+```powershell
 Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
 Kimenet:
@@ -201,7 +201,7 @@ HTTP/1.1 200 OK
 
 Adja meg egy csoportot, amely tartalmaz néhány licenccel kapcsolatos hibákat, most listázhatja azokat a hibák által érintett összes felhasználó. A felhasználó túl lehet más csoportokhoz, a hibákat. Azonban az ebben a példában csak a hibák az adott csoportra vonatkozó, az eredmények modelljeként ellenőrzésével a **ReferencedObjectId** minden egyes tulajdonság **IndirectLicenseError** bejegyzést a felhasználóra.
 
-```
+```powershell
 #a sample group with errors
 $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 
@@ -209,7 +209,7 @@ $groupId = '11151866-5419-4d93-9141-0603bbf78b42'
 Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full information about user objects
     Get-MsolUser -ObjectId {$_.ObjectId} |
-    #filter out users without license errors and users with licenense errors from other groups
+    #filter out users without license errors and users with license errors from other groups
     Where {$_.IndirectLicenseErrors -and $_.IndirectLicenseErrors.ReferencedObjectId -eq $groupId} |
     #display id, name and error detail. Note: we are filtering out license errors from other groups
     Select ObjectId, `
@@ -252,7 +252,7 @@ A következő parancsfájl egy vagy több csoportot a licenc-hibákkal rendelkez
 > [!NOTE]
 > Ez a szkript a bérlő számára, amely nem feltétlenül optimális nagy méretű bérlők lévő összes felhasználó enumerálása.
 
-```
+```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
     $user = $_;
     $user.IndirectLicenseErrors | % {
@@ -278,7 +278,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 
 Íme a szkript, amely csak a licenc hibákat tartalmazó csoportok keresésre egy másik verziója. Előfordulhat, hogy több optimalizálható forgatókönyvekhez, ahol várhatóan problémák néhány csoporttal rendelkezik.
 
-```
+```powershell
 $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
@@ -296,7 +296,7 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
 A felhasználói objektum egy adott termék licence van hozzárendelve, a csoportból, vagy közvetlenül van hozzárendelve.
 
 A két minta az alábbi funkciók segítségével elemezheti az adott felhasználó-hozzárendelés típusa:
-```
+```powershell
 #Returns TRUE if the user has the license assigned directly
 function UserHasLicenseAssignedDirectly
 {
@@ -358,7 +358,7 @@ function UserHasLicenseAssignedFromGroup
 ```
 
 Ez a szkript végrehajtása ezekhez a függvényekhez bemenetként a Termékváltozat azonosítója alapján a bérlő felhasználói – ebben a példában azt érdeklik a licencét *Enterprise Mobility + Security*, ami a bérlő azonosítóval jelölt  *Contoso:EMS*:
-```
+```powershell
 #the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"
 
@@ -436,7 +436,7 @@ Ez a szkript az a célja, hogy szükségtelen közvetlen licencek visszavonása 
 > [!NOTE]
 > Fontos, hogy először ellenőrizze, hogy el kell távolítani a közvetlen licenc további service szolgáltatásokat, mint az örökölt licenceket nem engedélyezi. Ellenkező esetben a közvetlen licenc eltávolítása előfordulhat, hogy tiltsa le a felhasználók, szolgáltatások és az adatok hozzáférését. Ez jelenleg nem lehetséges a PowerShell segítségével ellenőrizheti, mely szolgáltatások engedélyezve vannak a közvetlen örökölt licenceket a vs-n keresztül. A parancsfájlban megadott tudjuk öröklődtek csoportokból, és ellenőrizze, hogy szolgáltatások minimális szintű ellen, győződjön meg arról, hogy a felhasználók nem váratlanul veszíti szolgáltatásokhoz való hozzáférés.
 
-```
+```powershell
 #BEGIN: Helper functions used by the script
 
 #Returns TRUE if the user has the license assigned directly

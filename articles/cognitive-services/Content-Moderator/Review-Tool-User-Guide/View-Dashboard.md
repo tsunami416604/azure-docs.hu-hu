@@ -1,23 +1,24 @@
 ---
-title: A tartalom moderátor irányítópult megtekintése |} Microsoft Docs
-description: A tartalom moderátor irányítópult minden olyan tartalomra, amelyet az eszköz rendelkezik-e ellenőrizni metrikákat jeleníti meg.
+title: A Content Moderator irányítópultjának megtekintése – a Content Moderator
+titlesuffix: Azure Cognitive Services
+description: A tartalom Moderator irányítópult minden tartalom, amely az eszköz megvizsgálta mérőszámait jeleníti meg.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 639bee6a4eb132a79fd9343bab1f0834406a2964
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 430c088462f8d90e36aeeb44a4d897bdc8fb5154
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346910"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262863"
 ---
-# <a name="view-dashboard"></a>Az irányítópult megtekintése #
+# <a name="view-dashboard"></a>Az irányítópult megtekintése
 
-Kattintson a **irányítópult** lapon történik az eszközön belüli tartalom véleményezésre metrikáit. A képek és szövegek teljes kész és folyamatban lévő értékelést tekintheti meg. Az alapértelmezett csoport és a subteams metrikák tekintheti meg.
+Kattintson a **irányítópult** FÜLRE, és az eszköz belül valósul meg az összes tartalom felülvizsgálatra fontosabb metrikákat. Láthatja az összes befejezett és folyamatban lévő felülvizsgálatának képek és szöveg. Az alapértelmezett csoport és az alcsoportok látható metrikák.
 
 ![Az irányítópult megtekintése](images/0-dashboard.png)

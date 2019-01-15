@@ -1,21 +1,21 @@
 ---
 title: Nyelvi támogatás - Content Moderator API
 titleSuffix: Azure Cognitive Services
-description: Content Moderator API által támogatott természetes nyelvek listáját.
+description: Ez a természetes nyelveket, amely a Content Moderator API támogatja.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5c170fd2871d0e487f705e1e7274fdfdda4049e6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 95e7f5ce52f4bcf45153b4e455c1427f7117641c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276376"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263662"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API
 
@@ -27,7 +27,7 @@ ms.locfileid: "52276376"
 
 | Nyelvfelismerés | Káromkodás   | OCR    | Automatikus javítás     |
 | -------------------- |-------------|--------|---------------------|
-| Arab (Romanized)   | afrikaans   | arab   | arab
+| Arabic (Romanized)   | afrikaans   | arab   | arab
 | Balinese | albán | kínai (egyszerűsített)    | dán
 | bengáli | amhara | kínai (hagyományos)     | holland
 | Buginese | arab | cseh                     | Angol
@@ -88,7 +88,7 @@ ms.locfileid: "52276376"
 | török | lao
 | Ugaritic | lett
 | üzbég (cirill betűs) | litván
-| özbeg (latin betűs) | luxemburgi
+| üzbég (latin betűs) | luxemburgi
 | Vai | macedón
 | ji | maláj
 | Zhuang, Chuang | malajálam
@@ -111,7 +111,7 @@ ms.locfileid: "52276376"
 | | kecsua (Peru)
 | | román
 | | orosz
-| | skóciai kelta
+| | skót gael
 | | szerb (cirill betűs)
 | | Szerb (cirill, Bosznia-Hercegovina)
 | | szerb (latin betűs)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 3984ac84271728b9066aba15a582065ea3121c76
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b199e10b1a70bc44065d422d32acd3bea182721
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581759"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302051"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>A QnA Maker kulcsok kezelése
 
@@ -42,7 +42,7 @@ Megtekintheti, és az előfizetési kulcsok az Azure Portalon, ahol létrehozta 
 
 Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
 
-1. Jelentkezzen be a [QnA Maker portal](https://qnamaker.ai), és nyissa meg **Szolgáltatásbeállítások**.
+1. Jelentkezzen be a [QnA Maker portal](https://qnamaker.ai), nyissa meg a profil, és kattintson **Szolgáltatásbeállítások**.
 
     ![Végponti kulcs](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e862a8b74339bc8dd1de6c0b231ddb15425974c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 672d801b9a6c45a8ab3eb9964b6e061eeee11f59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220941"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266824"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Hozzon létre videóátiratot felülvizsgálatok .NET használatával
 
@@ -31,22 +31,21 @@ Ez a cikk feltételezi, hogy [a videó Metz](video-moderation-api.md) és [a vid
 
 Ez a cikk azt is feltételezi, hogy már ismeri a Visual Studio és C#.
 
-## <a name="sign-up-for-content-moderator"></a>Iratkozzon fel a Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Regisztráció a Content Moderatorba
 
-A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
-Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót. A Content Moderatorra történő előfizetéshez és az előfizetői azonosító beszerzéséhez kövesse a [Cognitive Services-fiók létrehozásával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kapcsolatos szakaszban található utasításokat.
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Ha nem végzi el az előző lépésben felülvizsgálati eszköz fiókot regisztráljon
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Fiók létrehozása a felülvizsgálati eszközhöz, ha az előző lépésben erre nem került sor
 
-Ha kapott a Content Moderator az Azure Portalon is [a felülvizsgálati eszköz fiók](https://contentmoderator.cognitive.microsoft.com/) , és tekintse át a csoport létrehozása. A csoport azonosítója, és indítsa el a feladatot, és tekintse meg az értékelések a vizsgálóeszközt, a felülvizsgálati API hívása a felülvizsgálati eszköz szükséges.
+Ha a Content Moderatort az Azure Portalon szerezte be, [hozzon létre egy fiókot a felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com/) is, és hozzon létre egy felügyeleti csapatot. Szüksége lesz a csapatazonosítóra és a felülvizsgálati eszközre, ha egy feladat elkezdéséhez meg szeretné hívni a felülvizsgálati API-t, illetve ha meg szeretné tekinteni a felülvizsgálatokat a felülvizsgálati eszközben.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Győződjön meg arról, az API-kulcs segítségével meghívhatja a felülvizsgálati API (projekt létrehozása)
 
-Az előző lépések végrehajtását követően, előfordulhat, hogy végül két a Content Moderator kulcs Ha használatba az Azure Portalról. 
+Az előző lépések végrehajtása után elképzelhető, hogy két Content Moderator-kulcsa is lesz, ha az Azure Portalról indította el a folyamatot. 
 
-Ha azt tervezi, használja az Azure által biztosított API-kulcsot az SDK-minta, hajtsa végre a szereplő lépéseket a [a felülvizsgálati API-val az Azure key](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) szakaszban, hogy az alkalmazása a felülvizsgálati API-t, és létrehozni a felülvizsgálatok.
+Ha az Azure által biztosított API-kulcsot tervezi használni az SDK-mintában, kövesse az [Azure-kulcs felülvizsgálati API-val történő használatát](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) ismertető szakaszban szereplő lépéseket annak érdekében, hogy alkalmazása meghívhassa a felülvizsgálati API-t, és felülvizsgálatokat hozhasson létre.
 
-Ingyenes próba hozza létre a kulcsot a felülvizsgálati eszköz használatakor a felülvizsgálati eszköz fiók már ismer a kulcsot, és ezért semmilyen további lépésekre szükség.
+Ha a felülvizsgálati eszköz által létrehozott ingyenes próbakulcsot használja, a felülvizsgálati eszközhöz tartozó fiókja már tud a kulcsról, így nincs szükség további lépésekre.
 
 ## <a name="prepare-your-video-for-review"></a>Tekintse át a videó előkészítése
 
@@ -56,13 +55,13 @@ Adja hozzá az átiratot videót felülvizsgálatok. A videó online közzé kel
 
 - Másolás a **URL-cím** ezen [bemutató az Azure Media Services](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) lapját a jegyzékfájl URL-CÍMÉT.
 
-## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
+## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
+1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet a megoldáshoz.
 
 1. Adja a projektnek **VideoTranscriptReviews**.
 
-1. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
+1. Válassza ki ezt a projektet a megoldás egyedüli kezdőprojektjeként.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
@@ -73,7 +72,7 @@ A következő, a TermLists projekt NuGet-csomagok telepítése.
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
+### <a name="update-the-programs-using-statements"></a>A program „using” utasításainak frissítése
 
 Módosítsa a program a következő using utasításokat.
 
@@ -87,7 +86,7 @@ Módosítsa a program a következő using utasításokat.
     using Newtonsoft.Json;
 
 
-### <a name="add-private-properties"></a>Adja hozzá a saját tulajdonságai
+### <a name="add-private-properties"></a>Privát tulajdonságok hozzáadása
 
 Adja hozzá a következő privát tulajdonságok névtérhez VideoTranscriptReviews, osztály Program.
 
@@ -155,7 +154,7 @@ Adja hozzá a következő definice metody névtér VideoTranscriptReviews, oszt�
 
 ## <a name="create-a-video-review"></a>Létrehoz egy videó
 
-Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. További információkért lásd: a [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. További információkért lásd az [API-referenciát](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** a következő szükséges paraméterek:
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json." 
@@ -204,9 +203,9 @@ Adja hozzá a következő definice metody névtér VideoReviews, osztály Progra
     }
 
 > [!NOTE]
-> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemből. Ha túllépi a korlátot, akkor az SDK-t egy 429 hibakód kivételt jelez. 
+> A Content Moderator-szolgáltatáskulcs rendelkezik egy RPS-alapú (kérések másodpercenkénti száma) sebességkorláttal. Ha túllépi ezt a korlátot, az SDK 429-es hibakódú kivételt jelez. 
 >
-> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
 ## <a name="add-transcript-to-video-review"></a>Átirat hozzá Videós áttekintése
 
@@ -215,7 +214,7 @@ Ad hozzá egy átiratok a videó felülvizsgálat **ContentModeratorClient.Revie
 1. A videó felülvizsgálat azonosítója által visszaadott **CreateVideoReviews**.
 1. A **Stream** objektum, amely tartalmazza a szövegben.
 
-Az átirat WebVTT formátumban kell lennie. További információkért lásd: [WebVTT: A webes videó nyomon követi szövegformátum](https://www.w3.org/TR/webvtt1/).
+Az átirat WebVTT formátumban kell lennie. További információkért lásd: [WebVTT: A webes videó szöveg nyomon követi a formátum](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
 > A program egy minta szöveges VTT formátumban. A való életből vett megoldás használata az Azure Media Indexer szolgáltatás [hozzon létre egy szöveges](https://docs.microsoft.com/azure/media-services/media-services-index-content) egy videó hangjának.
@@ -240,7 +239,7 @@ Adja hozzá a következő definice metody névtér VideotranscriptReviews, oszt�
 
 ## <a name="add-a-transcript-moderation-result-to-video-review"></a>Egy szöveges moderálás eredményt ad hozzá Videós áttekintése
 
-Egy szöveges videót felülvizsgálatok hozzáadásán is hozzáadhat moderálása, átirat eredményét. Ekkor a **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. További információkért lásd: a [API-referencia](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
+Egy szöveges videót felülvizsgálatok hozzáadásán is hozzáadhat moderálása, átirat eredményét. Ekkor a **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
 
 **AddVideoTranscriptModerationResult** a következő szükséges paraméterek:
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json." 
@@ -252,7 +251,7 @@ Egy szöveges videót felülvizsgálatok hozzáadásán is hozzáadhat moderál�
 - **Kifejezés**. Az előfizetési időszak tartalmazó karakterlánc.
 - **Időbélyeg**. Tartalmazó, (másodpercben), az idő, amikor a használati találhatók a szöveges karakterláncot.
 
-Az átirat WebVTT formátumban kell lennie. További információkért lásd: [WebVTT: A webes videó nyomon követi szövegformátum](https://www.w3.org/TR/webvtt1/).
+Az átirat WebVTT formátumban kell lennie. További információkért lásd: [WebVTT: A webes videó szöveg nyomon követi a formátum](https://www.w3.org/TR/webvtt1/).
 
 Adja hozzá a következő definice metody névtér VideoTranscriptReviews, osztály Program. Ez a módszer egy, átirat elküldi a **ContentModeratorClient.TextModeration.ScreenText** metódust. Azt is fordítja le az eredmény IList<TranscriptModerationBodyItem>, és a helyrendszerekre **AddVideoTranscriptModerationResult**.
 
@@ -321,7 +320,7 @@ Adja hozzá a következő definice metody névtér VideoReviews, osztály Progra
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>A teljes kép
+## <a name="putting-it-all-together"></a>Végső összeállítás
 
 Adja hozzá a **fő** metódus VideoTranscriptReviews, névtér-definíciót a Program osztályhoz. Végül zárja be a Program osztályt, valamint a VideoTranscriptReviews névteret.
 
@@ -358,7 +357,7 @@ Adja hozzá a **fő** metódus VideoTranscriptReviews, névtér-definíciót a P
         }
     }
 
-## <a name="run-the-program-and-review-the-output"></a>Futtassa a programot, és tekintse át a kimenetet
+## <a name="run-the-program-and-review-the-output"></a>A program futtatása és a kimenet áttekintése
 
 Az alkalmazás futtatásakor a látható kimenet a következő sorokat:
 

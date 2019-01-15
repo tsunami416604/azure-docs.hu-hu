@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10c8c0043d04d99ad10e475f903979edb0ddcb70
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633954"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266897"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban
 
@@ -30,7 +30,7 @@ SAP HANA telepítése a feladata. Megkezdése után a kapcsolatot az Azure virtu
 > [!Note]
 > SAP szabályzatonként SAP Hana telepítése egy személy, aki a vizsgára Certified SAP technológia társítja, az SAP HANA-telepítés minősítő vizsga megfelelt, vagy az SAP-minősítéssel rendelkező rendszerintegrátor (SI) hajtható végre.
 
-Ha tervezi az HANA 2.0 telepítése, lásd: [SAP támogatási Megjegyzés #2235581 – SAP HANA: támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E) , győződjön meg arról, hogy az operációs rendszer támogatott, az SAP HANA kiadás, amely telepíti. A támogatott operációs rendszer HANA 2.0 szigorúbb korlátozások vonatkoznak, mint a támogatott operációs rendszer HANA 1.0. 
+Ha tervezi az HANA 2.0 telepítése, lásd: [SAP támogatási Megjegyzés #2235581 – SAP HANA: Támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E) , győződjön meg arról, hogy az operációs rendszer támogatott, az SAP HANA kiadás, amely telepíti. A támogatott operációs rendszer HANA 2.0 szigorúbb korlátozások vonatkoznak, mint a támogatott operációs rendszer HANA 1.0. 
 
 > [!IMPORTANT] 
 > II. típusú egységek, jelenleg csak a SLES 12 SP2 operációs rendszer verziója támogatott. 
@@ -66,7 +66,7 @@ Pontosabban a következő paramétereket, és végül állítsuk be:
 - net.core.wmem_default = 16777216
 - net.core.optmem_max = 16777216
 - net.ipv4.tcp_rmem = 65536 16777216 16777216
-- NET.IPv4.tcp_wmem 65536 16777216 16777216 =
+- net.ipv4.tcp_wmem = 65536 16777216 16777216
 
 SLES12 SP1 és a RHEL 7.2 kezdődően ezeket a paramétereket kell állítani a konfigurációs fájlban /etc/sysctl.d a címtárban. Ha például a 91 – NetApp-HANA.conf nevét egy konfigurációs fájl kell létrehozni. A régi SLES és RHEL kiadásokhoz ezek a paraméterek beállítása in/etc/sysctl.conf kell lennie.
 
@@ -87,14 +87,14 @@ A **ötödik lépés** etc/hosts ellenőrzése. A paneleket első gyorsítási �
 
 A lapozóterület a kézbesített operációsrendszer-lemezképek 2 GB értékre van állítva a [SAP támogatási Megjegyzés #1999997 – gyakori kérdések: SAP HANA memóriában](https://launchpad.support.sap.com/#/notes/1999997/E). Microsoft Ha azt szeretné, hogy egy másik beállítást be kell állítani saját magának.
 
-[SUSE Linux Enterprise Server 12 SP1 SAP-alkalmazások](https://www.suse.com/products/sles-for-sap/hana) az SAP Hana az Azure-ban (nagyméretű példányok) telepített Linux-disztribúció. Az adott terjesztési SAP-specifikus képességeket biztosít "kulcsrakész" (beleértve az előre beállított paraméterek SLES SAP hatékonyan futtatásával).
+[SUSE Linux Enterprise Server 12 SP1 SAP-alkalmazások](https://www.suse.com/products/sles-for-sap/download/) az SAP Hana az Azure-ban (nagyméretű példányok) telepített Linux-disztribúció. Az adott terjesztési SAP-specifikus képességeket biztosít "kulcsrakész" (beleértve az előre beállított paraméterek SLES SAP hatékonyan futtatásával).
 
 Lásd: [erőforrás könyvtár-/ tanulmányok](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) a SUSE-webhelyen, és [SAP SUSE-](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) meg az SAP közösségi hálózati Állapotváltozás-az SAP HANA az (beleértve a telepítési magas SLES telepítésével kapcsolatos néhány hasznos források rendelkezésre állás, a biztonság megerősítése, hogy kifejezetten az SAP-műveletek, és egyéb).
 
 A következő további és hasznos SAP SUSE – kapcsolódó hivatkozások a következő:
 
 - [SAP HANA az SUSE Linux-hely](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Ajánlott eljárások az SAP: sorba replikációs – az SAP NetWeaver SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [Ajánlott eljárások az SAP: Sorba replikációs – az SAP NetWeaver SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
 - [ClamSAP – elleni védelem SLES for SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (beleértve a SLES 12 rendszert az SAP-alkalmazások)
 
 SAP támogatási megjegyzések, amelyek a alkalmazni, amelyek segítenek a SAP HANA SLES 12 a következők:
@@ -102,7 +102,7 @@ SAP támogatási megjegyzések, amelyek a alkalmazni, amelyek segítenek a SAP H
 - [SAP támogatási Megjegyzés #1944799 – SAP HANA-útmutató a SLES operációs rendszer telepítése](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [SAP támogatási Megjegyzés #2205917 – SAP HANA-adatbázis ajánlott az operációs rendszer beállításait a SLES 12 rendszert SAP-alkalmazások](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [SAP támogatási Megjegyzés #1984787 – SUSE Linux Enterprise Server 12: telepítési jegyzetek](https://launchpad.support.sap.com/#/notes/1984787)
-- [SAP támogatási Megjegyzés #171356 – SAP-szoftverek Linux rendszeren: általános információk](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP támogatási Megjegyzés #171356 – SAP-szoftverek Linux rendszeren:  Általános információk](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP támogatási Megjegyzés #1391070 – Linux UUID-megoldások](https://launchpad.support.sap.com/#/notes/1391070)
 
 [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) van egy másik ajánlatra, a nagyméretű HANA-példányokon futó SAP HANA futtatásához. RHEL 6.7 és 7.2 kiadásaiban érhetők el. Vegye figyelembe, hogy helyett natív Azure virtuális gépek csak az RHEL 7.2 és újabb verziókban támogatott ahol, HANA nagyméretű példányok támogatja RHEL 6.7 is. Azt javasoljuk azonban, egy RHEL 7.x verzió használatával.
@@ -113,13 +113,13 @@ További hasznos SAP, a Red Hat kapcsolódó hivatkozások a következők:
 SAP támogatási megjegyzések érvényes SAP HANA végrehajtási Red hat a következők:
 
 - [SAP támogatási Megjegyzés #2009879 – SAP HANA-irányelvek Red Hat Enterprise Linux (RHEL) operációs rendszerhez](https://launchpad.support.sap.com/#/notes/2009879/E)
-- [SAP támogatási Megjegyzés #2292690 – SAP HANA-adatbázis: RHEL 7 operációs rendszer ajánlott beállítások](https://launchpad.support.sap.com/#/notes/2292690)
-- [SAP támogatási Megjegyzés #2247020 – SAP HANA-adatbázis: Ajánlott RHEL 6.7 operációs rendszer beállításai](https://launchpad.support.sap.com/#/notes/2247020)
+- [SAP támogatási Megjegyzés #2292690 – SAP HANA-adatbázis: RHEL 7 ajánlott az operációs rendszer beállításai](https://launchpad.support.sap.com/#/notes/2292690)
+- [SAP támogatási Megjegyzés #2247020 – SAP HANA-adatbázis: RHEL 6.7 ajánlott az operációs rendszer beállításai](https://launchpad.support.sap.com/#/notes/2247020)
 - [SAP támogatási Megjegyzés #1391070 – Linux UUID-megoldások](https://launchpad.support.sap.com/#/notes/1391070)
-- [SAP támogatási Megjegyzés 2228351 # – Linux: SAP HANA Database Szervizcsomagok 11 változat 110 (vagy magasabb) az RHEL 6-os vagy SLES 11](https://launchpad.support.sap.com/#/notes/2228351)
-- [SAP támogatási Megjegyzés #2397039 – gyakori kérdések: SAP-RHEL](https://launchpad.support.sap.com/#/notes/2397039)
-- [SAP támogatási Megjegyzés #1496410 – Red Hat Enterprise Linux 6.x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/1496410)
-- [SAP támogatási Megjegyzés #2002167 – Red Hat Enterprise Linux 7.x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/2002167)
+- [SAP támogatási Megjegyzés 2228351 # – Linux: Az SAP HANA Database Szervizcsomagok 11 változat 110 (vagy magasabb) az RHEL 6-os vagy SLES 11](https://launchpad.support.sap.com/#/notes/2228351)
+- [SAP támogatási Megjegyzés #2397039 – gyakori kérdések: Az RHEL SAP](https://launchpad.support.sap.com/#/notes/2397039)
+- [SAP támogatási Megjegyzés #1496410 – Red Hat Enterprise Linux 6.x: Telepítés és frissítés](https://launchpad.support.sap.com/#/notes/1496410)
+- [SAP támogatási Megjegyzés #2002167 – Red Hat Enterprise Linux 7.x: Telepítés és frissítés](https://launchpad.support.sap.com/#/notes/2002167)
 
 ### <a name="time-synchronization"></a>Időszinkronizálás
 
@@ -153,7 +153,7 @@ A tároló kötetek elnevezési szabályai az alábbi táblázatban láthatók:
 | HANA-adatok | /hana/data/SID/mnt0000<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
 | HANA-napló | /hana/log/SID/mnt0000<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA naplóalapú biztonsági mentés | /Hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
-| A megosztott HANA | /Hana/Shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
+| A megosztott HANA | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
 *Biztonsági azonosító* a HANA-példány azonosítóját a rendszer. 
@@ -177,7 +177,7 @@ Bevezetés az SAP HANA az Azure service management, során az ügyfél és adja 
 
 A tárolási szolgáltató javaslatok alapján, a következő csatlakoztatási lehetőségeket vannak konfigurálva az összes csatlakoztatott kötetek esetében (kivéve az rendszerindító LUN-t):
 
-- NFS-rw, vers = 4, nehéz, timeo = 600, rsize = 1048576, wsize = 1048576, megszakítás, noatime, zárolása 0 0
+- nfs    rw, vers=4, hard, timeo=600, rsize=1048576, wsize=1048576, intr, noatime, lock 0 0
 
 Ezek a csatlakoztatási pontok vannak konfigurálva a /etc/fstab, ahogyan az alábbi ábrák:
 
@@ -193,7 +193,7 @@ A tárolóvezérlő nagyméretű példány stampek csomópontok szinkronizálja 
 A Storage alatt használt optimalizálható a SAP HANA, állítsa be az alábbi SAP HANA-konfigurációs paramétereket:
 
 - max_parallel_io_requests 128
-- a async_read_submit
+- async_read_submit on
 - async_write_submit_active on
 - az összes async_write_submit_blocks
  
@@ -201,7 +201,7 @@ A SAP HANA 1.0-s verzió legfeljebb SPS12, ezeket a paramétereket állítható 
 
 A hdbparam keretrendszer használatával a SAP HANA-adatbázis telepítése után is konfigurálhatja a paramétereket. 
 
-Az SAP HANA 2.0-val a hdbparam keretrendszer elavult. Ennek eredményeképpen a paramétert kell beállítani az SQL-parancsok használatával. További információkért lásd: [SAP-jegyzetnek #2399079: HANA 2 hdbparam felszámolása](https://launchpad.support.sap.com/#/notes/2399079).
+Az SAP HANA 2.0-val a hdbparam keretrendszer elavult. Ennek eredményeképpen a paramétert kell beállítani az SQL-parancsok használatával. További információkért lásd: [SAP-jegyzetnek #2399079: A HANA 2 hdbparam felszámolása](https://launchpad.support.sap.com/#/notes/2399079).
 
 Tekintse meg [HLI támogatott forgatókönyvek](hana-supported-scenario.md) további információ a tárolási elrendezés az architektúrához.
 

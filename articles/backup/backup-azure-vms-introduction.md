@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 67d81387a347bb2061457bfd24553f304e965f38
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198762"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265413"
 ---
 # <a name="about-azure-vm-backup"></a>Azure virtuális gépek biztonsági mentéséről
 
@@ -55,6 +55,10 @@ A pillanatképek igénybe vehet, amíg alkalmazások futnak, az Azure Backup elk
         [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
         ""USEVSSCOPYBACKUP"="TRUE"
         ```
+        - Futtassa az alábbi parancsot (rendszergazdaként) emelt szintű parancssorból, a fenti beállításkulcs beállítása:
+          ```
+          REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f
+          ```
 - **Linux rendszerű virtuális gépek**: Győződjön meg arról, hogy a Linux rendszerű virtuális gépek alkalmazáskonzisztens-e az Azure Backup által készített pillanatképet, a Linux szkript előtti és utáni keretrendszerrel használható. Írhat saját egyéni parancsfájlok konzisztencia biztosításához, ha a virtuális gép pillanatképének elkészítése.
     -  Az Azure Backup csak meghívja az üzem előtti és utáni parancsfájlokat, Ön által írt.
     - A szkript előtti és utáni szkriptek végrehajtása sikertelen, ha az Azure Backup, alkalmazáskonzisztens helyreállítási pontot jelöli meg. Azonban Ön végső soron felelős az alkalmazáskonzisztencia egyéni parancsfájlok használata esetén.
@@ -65,11 +69,11 @@ A pillanatképek igénybe vehet, amíg alkalmazások futnak, az Azure Backup elk
 
 A következő táblázat ismerteti a különböző típusú konzisztencia.
 
-**pillanatkép** | **VSS alapú** | **Részletek** | **Helyreállítás**
+**Snapshot** | **VSS-based** | **Részletek** | **Helyreállítás**
 --- | --- | --- | ---
-**Alkalmazáskonzisztens** | Igen (csak Windows) | Alkalmazáskonzisztens biztonsági mentések memória a tartalom és a függőben lévő i/o-műveleteket rögzíti. Alkalmazáskonzisztens pillanatképek használja a VSS-író (vagy Linux-előkészítő/utólagos parancsfájl), amely az alkalmazás adatok konzisztenciájának biztosítása előtt a biztonsági másolat. | Az alkalmazáskonzisztens pillanatkép helyreállításakor a virtuális gép elindul. Nincs, adatvesztés vagy adatsérülés. Az alkalmazások konzisztens állapotban indítsa el.
+**Application-consistent** | Igen (csak Windows) | Alkalmazáskonzisztens biztonsági mentések memória a tartalom és a függőben lévő i/o-műveleteket rögzíti. Alkalmazáskonzisztens pillanatképek használja a VSS-író (vagy Linux-előkészítő/utólagos parancsfájl), amely az alkalmazás adatok konzisztenciájának biztosítása előtt a biztonsági másolat. | Az alkalmazáskonzisztens pillanatkép helyreállításakor a virtuális gép elindul. Nincs, adatvesztés vagy adatsérülés. Az alkalmazások konzisztens állapotban indítsa el.
 **Fájlrendszerkonzisztens** | Igen (csak Windows) |  Alkalmazáskonzisztens biztonsági másolatainak tartalmazó fájlokat alkalmazáskonzisztens biztonsági mentései szolgáltatása pillanatképének az összes fájl egyszerre.<br/><br/> Az Azure Backup helyreállítási pontok számára egységes fájl:<br/><br/> – Linux rendszerű virtuális gépek, amelyek nem rendelkeznek előtti és utáni parancsfájlokat, vagy ha biztonsági mentései parancsfájlt, amely nem sikerült.<br/><br/> – Windows virtuális gép biztonsági mentése, a VSS nem sikerült. | A fájlkonzisztens pillanatképek helyreállításakor a virtuális gép elindul. Nincs, adatvesztés vagy adatsérülés. Alkalmazások kell megvalósítani a saját "javítás felfelé" mechanizmus, amellyel győződjön meg arról, hogy a visszaállított adatok összhangban-e.
-**Összeomlás-konzisztens** | Nem | Az összeomlási konzisztencia gyakran akkor történik, ha egy Azure virtuális gép leáll a biztonsági mentés idején.  Csak azokat az adatokat, amely már létezik a lemezen a biztonsági mentés időpontjában rögzített, és biztonsági mentés.<br/><br/> Összeomlás-konzisztens helyreállítási pont létrehozása nem garantálja az operációs rendszer vagy az alkalmazás az adatok konzisztenciáját. | Nincsenek nem garantálja, de általában a virtuális gép indítása, és a egy lemezt a következőképpen ellenőrizze, hogy a sérülés hibák javítása. Memóriában lévő adatokat vagy írási, nem továbbított lemez elvesznek. Alkalmazás valósít meg saját adatainak ellenőrzése. Például egy adatbázis-alkalmazások esetén a tranzakciónapló olyan bejegyzéseket, amelyek nem szerepelnek az adatbázisban, ha az adatbázis-szoftver állapotfigyelőket amíg adatok nem konzisztens.
+**Crash-consistent** | Nem | Az összeomlási konzisztencia gyakran akkor történik, ha egy Azure virtuális gép leáll a biztonsági mentés idején.  Csak azokat az adatokat, amely már létezik a lemezen a biztonsági mentés időpontjában rögzített, és biztonsági mentés.<br/><br/> Összeomlás-konzisztens helyreállítási pont létrehozása nem garantálja az operációs rendszer vagy az alkalmazás az adatok konzisztenciáját. | Nincsenek nem garantálja, de általában a virtuális gép indítása, és a egy lemezt a következőképpen ellenőrizze, hogy a sérülés hibák javítása. Memóriában lévő adatokat vagy írási, nem továbbított lemez elvesznek. Alkalmazás valósít meg saját adatainak ellenőrzése. Például egy adatbázis-alkalmazások esetén a tranzakciónapló olyan bejegyzéseket, amelyek nem szerepelnek az adatbázisban, ha az adatbázis-szoftver állapotfigyelőket amíg adatok nem konzisztens.
 
 
 ## <a name="service-and-subscription-limits"></a>Szolgáltatás és az előfizetések korlátai

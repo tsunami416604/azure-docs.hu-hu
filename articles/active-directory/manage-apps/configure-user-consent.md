@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 991199747f51f379ee6f3efe8009ab9166c33ac7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 65ab6b62b1da925880b3197036f52407e868ece7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832006"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263595"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>A végfelhasználók beleegyezik abba, hogy egy alkalmazás az Azure Active Directoryban módszer konfigurálása
 Megtudhatja, hogyan konfigurálhatja a felhasználók engedélyt adjanak az Alkalmazásengedélyek módon. Egyszerűsítheti a felhasználói élmény azáltal, hogy biztosítja a rendszergazdai jóváhagyás. Ez a cikk a különböző módokon konfigurálhatja a felhasználói beleegyezés biztosít. A módszerek alkalmazni az Azure Active Directory (Azure AD) bérlő összes végfelhasználók számára. 
@@ -26,6 +26,8 @@ Az alkalmazások jóváhagyják további információkért lásd: [Azure Active 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Hozzájárulás a rendszergazda megköveteli, hogy jelentkezzen be globális rendszergazdai, egy alkalmazás-rendszergazda vagy egy felhőalkalmazás-rendszergazda.
+
+Alkalmazásokhoz való hozzáférés korlátozásához, meg kell felhasználó-hozzárendelés szükséges, és a felhasználók vagy csoportok rendelje hozzá az alkalmazáshoz.  További információkért lásd: [módszerek a felhasználók és csoportok hozzárendelése](methods-for-assigning-users-and-groups.md).
 
 ## <a name="grant-admin-consent-to-enterprise-apps-in-the-azure-portal"></a>Rendszergazdai jóváhagyás biztosítása a vállalati alkalmazások az Azure Portalon
 

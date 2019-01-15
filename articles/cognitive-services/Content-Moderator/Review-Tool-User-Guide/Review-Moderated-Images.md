@@ -1,22 +1,23 @@
 ---
-title: Tekintse át a rendszerképeket az Azure Content Moderator |} A Microsoft Docs
-description: A felülvizsgálati eszköz lehetővé teszi, hogy az emberi moderátorok tekintse át a képeket.
+title: Tekintse át a megcímkézett képek - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan a felülvizsgálati eszköz lehetővé teszi, hogy az emberi moderátorok egy web portal-rendszerképeket áttekintéséhez.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 08/06/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 655c4b6d142c9f792a3b16c6b20d53efef51ea5b
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 14bcac5a16baa5566525952d29111566583c7b84
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852826"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259223"
 ---
-# <a name="review-moderated-images"></a>Moderált rendszerképek felülvizsgálata
+# <a name="let-human-reviewers-review-images"></a>Emberi véleményezők rendszerképek felülvizsgálata
 
 Miután regisztrált a tartalom-jóváhagyás, és a egy előfizetési kulcsot kapott, kipróbálhatja a lemezkép felülvizsgálati funkciókat.
 

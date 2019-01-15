@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 6b73cf04d768381bcc0e27cc76b6c2a25d4d9a2c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341055"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265617"
 ---
 # <a name="azure-stack-telemetry"></a>Az Azure Stack-telemetria
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack-telemetria automatikusan tölt fel adatokat a rendszer a Microsoft csapatához, a kapcsolódó felhasználói élményt. A Microsoft teams használja az adatok, amelyek az Azure Stack telemetriai adatokat gyűjt a felhasználói élmény javítása érdekében. Ezeket az adatokat a biztonsági, egészségügyi, minőségi és Teljesítményelemzés is szolgál.
 
@@ -33,7 +33,7 @@ Az Azure Stack operátorait, a telemetriai nyújthat értékes betekintést az v
 > [!NOTE]
 > Azure Stack használati adatok továbbítása az Azure-bA a számlázási is konfigurálhatja. Ez azért szükséges, a több csomópontos Azure Stack ajánljuk, akik a számlázás használatalapú mint-akkor-használható. Használati jelentések szabályozott egymástól függetlenül telemetriai adatokból, és, nem szükséges, több csomópontos ajánljuk, akik a kapacitás modellt vagy az Azure Stack Development Kit felhasználókhoz. Ebben az esetben használati jelentések is ki legyen kapcsolva [a regisztrációs szkripttel](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting).
 
-A Windows Server 2016 csatlakoztatott felhasználói felület és a Telemetria összetevőt, amely használja az Azure Stack-telemetria alapján a [esemény-nyomkövetése Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technológia segítségével gyűjtse össze és tárolja az eseményeket és az adatok. Az Azure Stack-összetevők események és a nyilvános operációs rendszer eseménynaplózás és nyomon követése az API-k használatával gyűjtött adatokat közzé ugyanazt a technológiát használja. Az Azure Stack-összetevők közé tartoznak a szolgáltatók: hálózati erőforráshoz, Storage-erőforrások, Monitoring erőforrás és erőforrás frissítése. A csatlakoztatott felhasználói élmény és a Telemetria összetevő az adatok SSL használatával titkosítja, és használja a tanúsítvány rögzítését HTTPS-kapcsolaton keresztül adatokat továbbítson a Microsoft Data Management szolgáltatáshoz.
+A Windows Server 2016 csatlakoztatott felhasználói felület és a Telemetria összetevőt, amely használja az Azure Stack-telemetria alapján a [esemény-nyomkövetése Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technológia segítségével gyűjtse össze és tárolja az eseményeket és az adatok. Az Azure Stack-összetevők események és a nyilvános operációs rendszer eseménynaplózás és nyomon követése az API-k használatával gyűjtött adatokat közzé ugyanazt a technológiát használja. Az Azure Stack-összetevők közé e szolgáltatók: Hálózati erőforrás, a Storage-erőforrások, a Monitoring erőforrás és erőforrás frissítése. A csatlakoztatott felhasználói élmény és a Telemetria összetevő az adatok SSL használatával titkosítja, és használja a tanúsítvány rögzítését HTTPS-kapcsolaton keresztül adatokat továbbítson a Microsoft Data Management szolgáltatáshoz.
 
 > [!IMPORTANT]
 > Ahhoz, hogy a telemetria-adatfolyam, 443-as (HTTPS) nyitva a hálózaton kell lennie. A csatlakoztatott felhasználói élmény és a Telemetria összetevő csatlakozik a Microsoft adatkezelési szolgáltatás https://v10.vortex-win.data.microsoft.com. A csatlakoztatott felhasználói élmény és a Telemetria összetevő is csatlakozik https://settings-win.data.microsoft.com konfigurációs információk letöltése.
@@ -112,7 +112,7 @@ A Windows beállításjegyzék-szerkesztő segítségével állítsa be kézzel 
 A fejlesztői csomag gazdagépen az Azure Stack üzembe helyezése előtt indítsa el a CloudBuilder.vhdx, és futtassa a következő szkriptet egy emelt szintű PowerShell-ablakban:
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host

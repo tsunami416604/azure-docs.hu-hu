@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 809d892c6238441f5a0bd93382acd7a783a4f0e9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2bc6f14eeb974ded462b8dcaf65d5401cc35291d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260718"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262217"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -19,7 +19,7 @@ Az Azure Migrate rendelkezik a maximális hossza 1500 gépet projektenként, ez 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **VMware**: Az áttelepíteni kívánt virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.0-s vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
+- **VMware**: Az áttelepíteni kívánt virtuális gépeket egy 5.5-ös, 6.0-s, 6.5-ös vagy 6.7 verziójú vCenter Servernek kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.0-s vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
 - **vCenter-fióknak**: VCenter Server eléréséhez egy csak olvasható fiók szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter Server virtuális gép létrehozása az OVA formátumú fájl importálásával engedélyre van szükségük.
 - **Statisztikai beállítások**: Ez a követelmény nem csak a alkalmazni a [felderítés egyszeri felderítés modell](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) most már elavult. Felderítés egyszeri felderítés modell a vCenter Server statisztikai beállításait meg kell a 3. szintre történő telepítés megkezdése előtt. A statisztikai szint, hogy a nap, heti és havi adatgyűjtés minden állítható be a 3. Ha bármely három az adatgyűjtés szintje alacsonyabb, mint 3, a kiértékelés működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A javaslatok a méretekkel kapcsolatban alapjául a Processzor- és teljesítményadatokat, és a lemez és a hálózati adapterek konfigurációs adatait.
@@ -286,7 +286,7 @@ A gyűjtőberendezés gyűjti össze a következő teljesítményszámlálókkal
 
 **A számláló** |  **Értékelés gyakorolt hatás**
 --- | ---
-CPU.Usage.average | Javasolt Virtuálisgép-méretet és költség  
+cpu.usage.average | Javasolt Virtuálisgép-méretet és költség  
 mem.usage.average | Javasolt Virtuálisgép-méretet és költség  
 virtualDisk.read.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
 virtualDisk.write.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete

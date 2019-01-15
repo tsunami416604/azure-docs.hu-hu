@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3bcd752f14f5d43c8cb8f686534e016690c7c40
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 85c284c2a0e49d7fa20c0ec342878ffdf9d47387
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198065"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261162"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup használatával titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása
 Ez a cikk ismerteti visszaállításhoz, a titkosított Azure virtuális gépek Azure VM Backup használatával, ha a kulcs és titkos kulcs nem léteznek a key vaultban. Ezeket a lépéseket is használható, ha meg szeretné tartani a kulcs (kulcstitkosítási kulcs) és a titkos kulcs (BitLocker titkosítási kulcsot) egy külön példányát a visszaállított virtuális gép számára.
@@ -62,7 +62,7 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 
 ## <a name="restore-secret"></a>Titkos kulcs visszaállítása
 
-Ha az Azure AD nélkül az Azure virtuális gép titkosított rendelkeznek BEk-KEL használatával csak (a egyaránt Windows és Linux rendszerű virtuális gépek) készítése a titkos kód nevét és értékét keresztül fenti parancsokat, és szeretné beállítani a titkos parancsmag segítségével helyezze vissza a titkos kulcsot (blokktitkosítási kulcsot) a key vault-hírcsatorna.
+A titkos kód nevét és értékét, és továbbíthatja azt a fent létrehozott JSON-fájl használatával állítsa vissza a titok (rendelkeznek BEk-KEL) elhelyezése a key vault titkos parancsmag. Ezeket a parancsmagokat használja, ha a **virtuális GÉPE van titkosítva rendelkeznek BEk-KEL és kek-KEL**.
 
 **Ezeket a parancsmagokat használja, ha a Windows virtuális gép titkosítását a rendszer rendelkeznek BEk-KEL és kek-KEL.**
 
@@ -84,7 +84,7 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Ha az ad-vel az Azure virtuális gép **rendelkeznek BEk-KEL használatával csak titkosított**, hozzon létre a titkos kód fájlját a JSON-ból, és hírcsatorna, hogy a titkos kulcsot (rendelkeznek BEk-KEL) helyezi a key vaultban titkos parancsmag visszaállítása.
+A titkos kód nevét és értékét, és továbbíthatja azt a fent létrehozott JSON-fájl használatával állítsa vissza a titok (rendelkeznek BEk-KEL) elhelyezése a key vault titkos parancsmag. Ezeket a parancsmagokat használja, ha a **rendelkeznek BEk-KEL virtuális gép titkosítása** csak.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'

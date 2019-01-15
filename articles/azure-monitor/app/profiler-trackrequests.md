@@ -1,6 +1,6 @@
 ---
 title: Az Azure Application Insights kérelmek kód írása |} A Microsoft Docs
-description: Az Application Insights kérelmek nyomon követése, így a reqeusts profilok is igénybe kód írása
+description: Az Application Insights kérelmek nyomon követése, így a kérelmek profilok is igénybe kód írása
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 20f408d9dd32c3fd7a0e319e4051483e3aa54dd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: bdbca30d31febe37e6b568894179c88d834d3a83
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082925"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266688"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Az Application Insights kérelmek kód írása
 

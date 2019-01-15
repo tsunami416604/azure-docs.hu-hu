@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/14/2019
 ms.author: mstewart
 ms.custom: seodec18
-ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f94ec1a64108cde6ff69a572559960a988a1b7c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087864"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261281"
 ---
-# <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Rövid útmutató: Windows IaaS virtuális gép titkosítása az Azure PowerShell használatával
+# <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Gyors útmutató: Az Azure PowerShell használatával Windows IaaS virtuális gép titkosítása
 
 Az Azure Disk Encryption segítségével titkosíthatja Windows és Linux rendszerű IaaS virtuális gépeit. A megoldás integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. Az Azure Disk Encryption használatával gondoskodhat róla, hogy inaktív virtuális gépei biztonságban legyenek az iparági szabványoknak megfelelő titkosítási technológia használatával. Ebben a rövid útmutatóban egy Windows Server 2016-alapú virtuális gépet fog létrehozni, majd titkosítani fogja az operációsrendszer-lemezt.
 
@@ -30,9 +30,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Windows PowerShell integrált parancsprogram-kezelési környezet (ISE)
-- Telepítse vagy frissítsen az [Azure PowerShell legújabb verziójára](/powershell/azure/install-azurerm-ps)
+- Telepítse vagy frissítse a [az AzureRM PowerShell-modul legújabb verziója](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)
     - Az AzureRM-modul verziószáma 6.0.0 vagy annál magasabb legyen. `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
-- Az [Azure Disk Encryption előfeltétel-konfigurációs szkript](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1) egy példánya.
+- Az [Azure Disk Encryption előfeltétel-konfigurációs szkript](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1) egy példánya.
     - Ha már rendelkezik a szkripttel, töltsön le egy új példányt, mivel az a közelmúltban módosult. 
     - A teljes szöveg kijelöléséhez nyomja le a **CTRL-A** billentyűkombinációt, majd a kijelölt szöveg másolásához a Jegyzettömbbe nyomja le a **CTRL-C** kombinációt.
     - Mentse a fájlt **ADEPrereqScript.ps1** néven
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 1. Kattintson a jobb gombbal a **Windows PowerShell ISE** elemre, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
-1. Az **Administrator: Windows PowerShell ISE** ablakban kattintson a **View** (Megtekintés) elemre, majd a **Show Script Pane** (Parancsprogramablak megjelenítése) lehetőségre.
+1. Az a **rendszergazda: Windows PowerShell ISE-ben** ablakban kattintson a **nézet** majd **parancsfájl ablaktábla megjelenítése**.
 1. Írja a következő parancsmagot a szkriptpanelbe: 
 
      ```azurepowershell
@@ -55,7 +55,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="bkmk_PrereqScript"></a> Az Azure Disk Encryption előfeltétel-konfigurációs szkript futtatása
  Az **ADEPrereqScript.ps1** létrehoz egy erőforráscsoportot, egy kulcstartót és beállítja a kulcstartó hozzáférési szabályzatát. A szkript ezen kívül egy erőforrászárat is készít a kulcstartón, hogy megelőzhesse a véletlen törlést.  
 
-1. Az **Administrator: Windows PowerShell ISE** (Rendszergazda: Windows PowerShell ISE) ablakban kattintson a **File** (Fájl), majd kattintson az **Open** (Megnyitás) lehetőségre. Keresse meg az **ADEPrereqScript.ps1** fájlt, és kattintson rá duplán. A szkript a szkriptpanelen nyílik meg.
+1. Az a **rendszergazda: Windows PowerShell ISE-ben** ablakban kattintson **fájl** majd **nyílt**. Keresse meg az **ADEPrereqScript.ps1** fájlt, és kattintson rá duplán. A szkript a szkriptpanelen nyílik meg.
 2. Kattintson a zöld nyílra a **szkript futtatásához**, vagy a futtatásához használja az F5 billentyűt. 
 3. Adja meg az új **erőforráscsoport** és **kulcstartó** nevét. Ehhez a rövid útmutatóhoz ne használjon egy már meglévő erőforráscsoportot vagy kulcstartót, mert az erőforráscsoportot később törölni fogjuk. 
 4. Írja be a helyet, ahol létre szeretné hozni az erőforrásokat, például **EastUS**. A helyek listáját a következővel érheti el: `Get-AzureRMLocation`.
@@ -69,7 +69,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása 
 Létre kell hoznia egy virtuális gépet, hogy titkosíthassa a lemezét. A használt szkript egy 8 GB RAM-mal rendelkező Windows Server 2016-alapú virtuális gépet és egy 30 GB méretű operációs rendszer-lemezt hoz létre. 
 
-1. Másolja a szkriptet az **Administrator: Windows PowerShell ISE** (Rendszergazda: Windows PowerShell ISE) szkriptpanelre, majd változtassa meg a felső három változót. Az erőforráscsoportnak és a helynek ugyanannak kell lennie, mint amit az [előfeltétel-konfigurációs szkripthez](#bkmk_PrereqScript) használt.  
+1. Másolja be a parancsfájlt a **rendszergazda: Windows PowerShell ISE-ben** parancsfájl panelen és az első három változók módosításához. Az erőforráscsoportnak és a helynek ugyanannak kell lennie, mint amit az [előfeltétel-konfigurációs szkripthez](#bkmk_PrereqScript) használt.  
 
    ```azurepowershell
     # Variables for common values

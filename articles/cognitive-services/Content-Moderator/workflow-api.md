@@ -1,23 +1,23 @@
 ---
 title: Jóváhagyás-munkafolyamatok – a Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Munkafolyamatok használata a tartalom-jóváhagyás.
+description: Munkafolyamatok használata a felülvizsgálati API-feladat műveletei automatizálására emberi hurok felülvizsgálatok a tartalomszabályzat és küszöbértékek alapján.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/04/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 3de45c62eb208671cc2d1d4de5309d2f9d75adc9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3a3ff5ed325205c5ae17aaff053127f4e84504bf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226874"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262659"
 ---
-# <a name="moderation-workflows"></a>A munkafolyamatok moderálása
+# <a name="automate-moderation-reviews-with-workflows"></a>Jóváhagyás felülvizsgálatok a munkafolyamatok automatizálása
 
 A Content Moderator magában foglalja, eszközök és API-munkafolyamatok kezelése. Munkafolyamatok használata a [tekintse át API-feladat műveletei](review-api.md) automatizálhatja az emberi hurok felülvizsgálat létrehozása a tartalomszabályzat és küszöbértékek alapján.
 
@@ -41,7 +41,7 @@ Keresse meg a [tekintse át az eszköz által munkafolyamatok](Review-Tool-User-
 
 ### <a name="open-the-default-workflow"></a>Nyissa meg az alapértelmezett munkafolyamat
 
-Használja a **szerkesztése** a munkafolyamat szerkesztése oldal a következő képen látható módon nyithat: ![a Content Moderator alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
+Használja a **szerkesztése** beállítással nyissa meg a munkafolyamat szerkesztése oldal a következő képen látható módon: ![Content Moderator alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
 
 ### <a name="the-designer-view"></a>A Tervező nézetben
 
@@ -219,8 +219,8 @@ A [munkafolyamat-műveletek](https://westus.dev.cognitive.microsoft.com/docs/ser
 A **munkafolyamat-Get** műveletet az alábbi ráfordítások fogad el:
 
 - **csapat**: A csoport azonosítója, üzembe helyezésekor hozott létre a [tekintse át az eszköz fiók](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: a munkafolyamat nevét. Használat `default` először.
-- **OCP-Apim-Subscription-Key**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- **workflowname**: A munkafolyamat nevét. Használat `default` először.
+- **Ocp-Apim-Subscription-Key**: Található a **beállítások** fülre. További információkért lásd az [Áttekintést](overview.md).
 
 Ha a művelet sikeres, a **válasz állapota** van `200 OK` és a **válasz tartalma** be a munkafolyamat-definíció a JSON formátumban jeleníti meg.
 További tudnivalókért olvassa el a [munkafolyamat API a konzolhoz rövid](try-review-api-job.md).
@@ -232,8 +232,8 @@ A létrehozási és frissítési művelet lehetővé teszi, hogy a munkafolyamat
 A **munkafolyamat létrehozása vagy frissítése** műveletet az alábbi ráfordítások fogad el:
 
 - **csapat**: A csoport azonosítója, üzembe helyezésekor hozott létre a [tekintse át az eszköz fiók](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: a munkafolyamat nevét. Használat `default` először.
-- **OCP-Apim-Subscription-Key**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- **workflowname**: A munkafolyamat nevét. Használat `default` először.
+- **Ocp-Apim-Subscription-Key**: Található a **beállítások** fülre. További információkért lásd az [Áttekintést](overview.md).
 
 Ha a művelet sikeres, a **válasz állapota** van `200 OK` és a **válasz tartalma** mezőben az `true`. További információért [kipróbálása a `Create` művelet](try-review-api-job.md).
 

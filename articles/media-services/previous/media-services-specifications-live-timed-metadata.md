@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384683"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265890"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés időzített metaadatok jelzése az élő Streamelés
 
@@ -45,7 +45,7 @@ A kulcs szavak "kell", "Nem", "Kötelező", "SHALL", "NOT kell", "SHOULD", "NOT 
 | Forrás            | Az Azure Media adatfolyam-szolgáltatás                                                                                                                                                                                                |
 | Csatorna fogadó      | Az Azure Media élő adatfolyam-szolgáltatást                                                                                                                                                                                           |
 | HLS               | Apple HTTP Live Streaming protokoll                                                                                                                                                                                               |
-| KÖTŐJEL              | Dinamikus adaptív Streamelés HTTP-n keresztül                                                                                                                                                                                             |
+| DASH              | Dinamikus adaptív Streamelés HTTP-n keresztül                                                                                                                                                                                             |
 | Sima            | Zökkenőmentes Streamelési protokoll                                                                                                                                                                                                        |
 | MPEG2-TS          | MPEG-2 Transport Streams                                                                                                                                                                                                         |
 | RTMP              | Valós idejű multimédiás protokoll                                                                                                                                                                                                    |
@@ -76,7 +76,7 @@ Media Services RTMP egyszerű módban, egy AMF köteg üzenet a következő form
 
 ---------------------------
 
-### <a name="scte-35-mode"></a>SCTE – 35 mód
+### <a name="scte-35-mode"></a>SCTE-35 Mode
 
 | Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
@@ -89,7 +89,7 @@ Media Services RTMP egyszerű módban, egy AMF köteg üzenet a következő form
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 kerettúllépést és frissítések
+#### <a name="211-cancellation-and-updates"></a>2.1.1 megszakítás és frissítések
 
 Üzenetek megszakadt, vagy frissítette a több üzenetküldésre ilyen bemutató idő és azonosítóját. A bemutató idő és az azonosító egyedi azonosításához az eseményt, és az utolsó üzenet érkezett, amely megfelel az üzem előtti összegző megkötések meghatározott megjelenítési ideje, hogy van-e bírálni az üzenetet. A frissített esemény váltja fel a korábban fogadott üzeneteket. Az üzem előtti összegző pedig az négy másodperc. Legalább négy másodpercig bemutató időpontja előtt Beérkezett üzenetek intézkedni lesz.
 
@@ -157,7 +157,7 @@ A MediaDataBox (mdat) mezőben a következő formátumban kell rendelkeznie:
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 kerettúllépést és frissítések
+### <a name="224-cancellation-and-updates"></a>2.2.4 megszakítás és frissítések
 Üzenetek megszakadt, vagy frissítette a több üzenetküldésre ilyen bemutató idő és azonosítóját.  A bemutató idő és az azonosító az esemény egyedi azonosítására. Az utolsó üzenet érkezett, amely megfelel az üzem előtti összegző megkötések, adott bemutató ideig, hogy van-e bírálni az üzenetet. A frissített üzenetet minden korábban fogadott üzenetek váltja fel.  Az üzem előtti összegző pedig az négy másodperc. Legalább négy másodpercig bemutató időpontja előtt Beérkezett üzenetek intézkedni lesz. 
 
 
@@ -229,7 +229,7 @@ A Szegmens-lista egy egyéni M3U címkében időzített metaadatok az Apple HTTP
 | TÍPUS               | Idézett karakterlánc                 | Szükséges                                  | URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35] üzenetek esetében a típus a speciális értéket "scte35" vesz fel.                                                                                                                                |
 | ID (Azonosító)                 | Idézett karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                          |
 | IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartamát. Ismeretlen, ha az érték lehet 0. Egységek factional másodpercek alatt.                                                                                                                                                                                           |
-| ELTELT IDŐ            | decimális lebegőpontos szám | Nem kötelező, de szükség szerint eltoltan | A jel ismételt folyamatban van egy bemutató csúszóablakban támogatásához, ezt a mezőt a bemutatót, hogy mennyi ideig az esemény kezdete óta eltelt kell lennie. Egységek törtmásodpercek. Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens. |
+| ELAPSED            | decimális lebegőpontos szám | Nem kötelező, de szükség szerint eltoltan | A jel ismételt folyamatban van egy bemutató csúszóablakban támogatásához, ezt a mezőt a bemutatót, hogy mennyi ideig az esemény kezdete óta eltelt kell lennie. Egységek törtmásodpercek. Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens. |
 | TIME               | decimális lebegőpontos szám | Szükséges                                  | A bemutató az esemény időpontja. Egységek törtmásodpercek.                                                                                                                                                                                                                    |
 
 
@@ -392,7 +392,7 @@ Smooth Streaming betöltési megköveteli, hogy a Media Data Box (mdat) kell tar
 
 **[DASH]**  ISO/IEC 23009-1 2014 – információtechnológiai – dinamikus adaptív streamelés keresztül HTTP (DASH) – 1. rész: Bemutató média leírása és a szegmens formátum, 2. kiadás
 
-**[HLS]**  ["HTTP Live Streaming", draft-pantos-http-live-streaming-14, 2014. október 14-én](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
+**[HLS]** [“HTTP Live Streaming”, draft-pantos-http-live-streaming-14, October 14, 2014,](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
 **[MS-SSTR]**  ["A Microsoft Smooth Streaming protokoll", 2014. május 15.](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
@@ -400,7 +400,7 @@ Smooth Streaming betöltési megköveteli, hogy a Media Data Box (mdat) kell tar
 
 **[LIVE-FMP4]**  [Specifikáció: darabolt MP4 élő azure Media Services feldolgozása](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496 – 12]**  ISO/IEC 14496 – 12: Rész 12 ISO alap médiafájl-formátumban, a negyedik kiadása 2012-07-15.
+**[ISO-14496-12]** ISO/IEC 14496-12: Rész 12 ISO alap médiafájl-formátumban, a negyedik kiadása 2012-07-15.
 
 **[RTMP]**  ["Adobe valós idejű üzenetkezelő protokoll", 2012. December 21.](https://www.adobe.com/devnet/rtmp.html) 
 

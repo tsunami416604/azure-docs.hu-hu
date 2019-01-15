@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 41509c1f35d42a1e8558299b4244ad515c36ec17
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 607351718ddffbea5fa4dbbae333d81aac230f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816055"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258951"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - alacsonyabb szintű ügyfelek támogatása és a Táblanaplózás IP-végpontjainak módosítása
 
@@ -43,7 +43,7 @@ A kapcsolati karakterláncban a módosított kiszolgálói FQDN: <*kiszolgálón
 * JDBC (JDBC támogatja a TDS 7.4, míg a TDS-átirányítási funkció nem teljes mértékben támogatott)
 * Fárasztó (a node.js-ben)
 
-**Megjegyzés:** a fenti kiszolgáló FQDN módosítása egy SQL Server szint naplózási házirend alkalmazása nélkül szükséges konfiguráció. lépés: az egyes adatbázisokban (ideiglenes megoldás) számára is hasznos lehet.
+**Megjegyzés:** A fenti kiszolgáló teljes Tartományneve módosítása nélkül az egyes adatbázisokban (ideiglenes megoldás) egy konfigurációs lépésben szüksége egy SQL Server szint naplózási házirend alkalmazása esetén is hasznos lehet.
 
 ## <a id="subheading-2"></a>IP-végpontjainak módosítása a naplózás engedélyezése
 Vegye figyelembe, hogy engedélyezte a Táblanaplózás, az IP-végpontból az adatbázis is megváltoznak. Ha szigorú tűzfal beállításait, frissítse ezeket a tűzfal beállításainak megfelelően.

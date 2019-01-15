@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: a3327c2c6f9684efe0d86b0cf923886f7310e1b0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: fae5b9ee84c9352bbeb6f14b1f3a6006ce4804e8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199784"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261672"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladatot egy Batch-feladat elküldése
 
@@ -47,7 +47,7 @@ A feladat-gyűjteményt, amely egyetlen hívással is hozzáadhat maximális mé
     * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
     * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
     * [Az Azure Batch CLI-bővítmény](batch-cli-templates.md) a Batch parancssori felületi sablonjainak
-    * [Python SDK-bővítmény](https://pypi.org/project/azure-batch-extensions/)
+    * [Python SDK extension](https://pypi.org/project/azure-batch-extensions/)
 
 ## <a name="increase-throughput-of-task-submission"></a>Feladat küldése az átviteli sebesség növelése
 

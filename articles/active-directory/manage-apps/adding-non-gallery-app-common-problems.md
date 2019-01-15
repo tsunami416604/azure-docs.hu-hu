@@ -1,6 +1,6 @@
 ---
 title: A katalógusban nem szereplő alkalmazás hozzáadása során |} A Microsoft Docs
-description: Megismerheti a gyakori problémák személyek face egyéni katalógusban nem szereplő alkalmazások hozzáadásakor
+description: Gyakori problémák személyek face megismerheti egyéni katalógusban nem szereplő alkalmazások hozzáadásakor
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 290e68e8367570bee3497a039f98d140a8d3ffe1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 56cf9837bf67187f71eb94e73b516b613b8d6c6a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423626"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259886"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>A probléma nem katalógusból származó alkalmazás hozzáadása
 
@@ -83,7 +83,7 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 -   **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
 
-   *  Példa – **302fd775-3329-4670-a9f3-bea37004f0bc**
+   *  Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
 -   **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
 
@@ -117,7 +117,7 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 -   **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
 
-   *  Példa – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+   *  Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
 -   **Részletek** – a részletes Mi történt a művelet leírása
 

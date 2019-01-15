@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074002"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264682"
 ---
 # <a name="requirements-by-listing-type"></a>Típus listázásával követelmények  
 A technikai és marketinganyagokat tartalmi követelmények eltérőek lehetnek, storefront, ajánlat és lista típusa. Tekintse át a következő előírásoknak, a megfelelőség ellenőrzése.  
 1. Storefront-követelmények:  
-    *   [Appsource-ban](#storefront-requirements-appSource)  
+    *   [AppSource](#storefront-requirements-appSource)  
     *   [Az Azure Marketplace-en](#storefront-requirements-azure-marketplace)  
 2. Lista típusa és az ajánlat adattípus-követelményekkel:  
     *   Listaelem és ajánlat típusainak kapcsolatos további információkért látogasson el állapítsa meg az ajánlati típus for Your Solution oldalon található [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  
@@ -64,12 +64,12 @@ A listában, listázás, írja be a következő típusú a kirakattípus a tarta
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Tanácsadási szolgáltatások | AppSource | [Követelmények: Appsource-ban: Lista: Tanácsadási szolgáltatások](#requirements-appsource-list-consulting-services) |  
+| Tanácsadási szolgáltatások | AppSource | [Követelmények: AppSource: Lista: Tanácsadási szolgáltatások](#requirements-appsource-list-consulting-services) |  
 | Tanácsadási szolgáltatások | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Lista: Tanácsadási szolgáltatások](#requirements-azure-marketplace-list-consulting-services) |  
 | Kapcsolatfelvétel | AppSource | [](#) |  
-| Kapcsolatfelvétel | Azure Piactér | [Követelmények: Appsource-ban: Lista: Megkeresést kérek](#requirements-azure-marketplace-list-contact-me) |  
+| Kapcsolatfelvétel | Azure Piactér | [Követelmények: AppSource: Lista: Megkeresést kérek](#requirements-azure-marketplace-list-contact-me) |  
 
-#### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: Appsource-ban: Lista: Tanácsadási szolgáltatás  
+#### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: AppSource: Lista: Tanácsadási szolgáltatás  
 
 | Követelmények | Részletek |  
 |:--- |:--- |  
@@ -136,7 +136,7 @@ A listában, listázás, írja be a következő típusú a kirakattípus a tarta
 | Az Azure-alkalmazások: Felügyelt alkalmazás | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Az Azure-alkalmazások: Felügyelt alkalmazás](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
 | Az Azure-alkalmazások: Megoldássablon | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Az Azure-alkalmazások: Megoldássablon](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
 | Containers | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Tároló](#requirements-azure-marketplace-transact-container) |  
-| SaaS-alkalmazás  | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
+| SaaS app  | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
 | Virtuális gép | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
@@ -150,12 +150,12 @@ A listában, listázás, írja be a következő típusú a kirakattípus a tarta
 | Számlázással és méréssel | Támogatja a vagy az ingyenes vagy BYOL számlázási modellt. |  
 | Docker-alapú lemezkép | A tároló rendszerképét a Docker rendszerképformátuma kell alapulnia, és kell Azure Container Registry szolgáltatásból kell lekérni. |  
 
-#### <a name="requirements-azure-marketplace-transact-saas-app"></a>Követelmények: Az Azure Marketplace-en: Transact: SaaS-alkalmazás  
+#### <a name="requirements-azure-marketplace-transact-saas-app"></a>Követelmények: Az Azure Marketplace-en: Transact: SaaS app  
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
 | Számlázással és méréssel | Az ajánlat havonta átalánydíjat díjszabása. Használatalapú díjszabás és a használat alapú *igaz felfelé* beállítások jelenleg nem támogatottak. |  
-| Visszavonás | Az ajánlat bármikor visszavonható az ügyfélnek. |  
+| Megszakítás | Az ajánlat bármikor visszavonható az ügyfélnek. |  
 | Tranzakció kezdőlapja | A gazdagép egy Azure társmárkás tranzakció kezdőlapja. A kezdőlapja lehetővé teszi, hogy az ügyfelek hozhat létre és kezelhet az SaaS-szolgáltatás fiókjából. |  
 | SaaS-előfizetés API | Adjon meg egy olyan szolgáltatás, amely együttműködik a SaaS-előfizetés létrehozása, frissítése és egy felhasználói fiókot és a service-csomag törlése. Az összes kritikus fontosságú API-módosítás támogatnia kell a 24 órán belül. Minden nem kritikus fontosságú API-módosítás rendszeresen frissül. |  
 

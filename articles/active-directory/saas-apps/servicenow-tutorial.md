@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7201f2a5d2e1b3967bd84ddb78797debdf14aeb
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 29d99a6114f1a8dafa2e3a837fe807a1bbee1343
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065698"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260703"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Oktatóanyag: A servicenow segítségével az Azure Active Directory-integráció
 
@@ -133,7 +133,7 @@ A servicenow segítségével konfigurálja az Azure AD egyszeri bejelentkezés, 
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -214,7 +214,7 @@ A servicenow segítségével konfigurálja az Azure AD egyszeri bejelentkezés, 
         * Másolás **ServiceNow kezdőlap** értékét, illessze be a **bejelentkezési URL-** szövegmezőjébe **ServiceNow tartomány és URL-címek** szakaszban az Azure Portalon.
 
             > [!NOTE]
-            > A ServiceNow-példány kezdőlapjára összefűzésével a **ServieNow bérlői URL-cím** és **/navpage.do** (például:`https://fabrikam.service-now.com/navpage.do`).
+            > A ServiceNow-példány kezdőlapjára összefűzésével a **ServiceNow-bérlői URL-cím** és **/navpage.do** (például:`https://fabrikam.service-now.com/navpage.do`).
 
         * Másolás **Entitásazonosító / kibocsátó** értékét, illessze be a **azonosító** szövegmezőjébe **ServiceNow tartomány és URL-címek** szakaszban az Azure Portalon.
 
@@ -373,7 +373,7 @@ A servicenow segítségével konfigurálja az Azure AD egyszeri bejelentkezés, 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/servicenow-tutorial/ic7694982ex.png "egyszeri bejelentkezés konfigurálása")
 
-    a. Az a **neve** szövegmezőbe írja be a konfiguráció nevét (például: **SAML 2.0-S**).
+    a. Az a **neve** szövegmezőbe írja be a konfiguráció nevét (például: **SAML 2.0**).
 
     b. Az a **identitásszolgáltató szolgáltató URL-címe** mezőbe illessze be az értéket a **identitás Szolgáltatóazonosító**, az Azure Portalról másolt.
 

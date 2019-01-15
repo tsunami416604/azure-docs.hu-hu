@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2769b78632e1a7f776359f2a4d768154c224aab5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036239"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264614"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok
 
@@ -26,7 +26,7 @@ Ez a cikk az Azure Stack által használt minden egyes API-profil az erőforrás
 
 Az API-profil három elnevezési konvenciókat használja:
 
- - **legfrissebb**
+ - **latest**
  - **yyyy-mm-dd-hybrid**
  - **yyyy-mm-dd-profile**
 
@@ -37,13 +37,13 @@ Egy API-profilokat és verzió kiadási ütem az Azure Stack, ismertetését [ke
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>2018-03-01-hibrid áttekintése
 
-| Erőforrás-szolgáltató | API-verzió |
+| Erőforrás-szolgáltató | Api-version |
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-03-30 |
 | Microsoft.Network | 2017-10-01<br>VPN-átjáró lesz 2017-03-01 |
-| A Microsoft.Storage (Adatsík) | 2017-04-17-es |
-| A Microsoft.Storage (Vezérlősík) | 2016-01-01 |
-| A Microsoft. Web | 2016-08-01<br>Ez az a legújabb (jelen pillanatban) az Azure-ban |
+| Microsoft.Storage (Data Plane) | 2017-04-17 |
+| Microsoft.Storage (Control Plane) | 2016-01-01 |
+| Microsoft. Web | 2016-08-01<br>Ez az a legújabb (jelen pillanatban) az Azure-ban |
 | Microsoft.KeyVault | (Nem módosítása) 2016-10-01 |
 | Microsoft.Resources (Azure Resource Manager magát) | 2016-02-01 |
 | Microsoft.Authorization (házirend műveletek) | 2015-11-01 |
@@ -59,12 +59,12 @@ Több a szolgáltatók a API-profilban az egyes erőforrástípusok verzióját,
 
 ## <a name="overview-of-2018-03-01-hybrid"></a>A 2018-03-01-hibrid áttekintése
 
-| Erőforrás-szolgáltató | API-verzió |
+| Erőforrás-szolgáltató | Api-version |
 |------------------------------------------------|------------------------------|
 | Microsoft.Compute | 2016-03-30 |
 | Microsoft.Network | 2015-06-15 |
-| A Microsoft.Storage (Adatsík) | 2015-04-05  |
-| A Microsoft.Storage (Vezérlősík) | 2016-01-01   |
+| Microsoft.Storage (Data Plane) | 2015-04-05  |
+| Microsoft.Storage (Control Plane) | 2016-01-01   |
 | Microsoft.Websites | 2016-01-01 |
 | Microsoft.KeyVault | 2016-10-01<br>(Nem módosítása) |
 | Microsoft.Resources<br>(Az azure Resource Manager magát) | 2016-02-01 |
@@ -75,7 +75,7 @@ Több a szolgáltatók a API-profilban az egyes erőforrástípusok verzióját,
 | További források | 2016-02-01 |
 | Resources_Links | 2016-09-01 |
 | Resources_Locks | 2016-09-01 |
-| Előfizetések | 2016. 06. 1 |
+| Előfizetések | 2016-06-1 |
 
 A szolgáltatók a API-profilban az egyes erőforrástípusok verzióinak listájáért tekintse meg a következő szakaszban.
 
@@ -116,9 +116,9 @@ Az Azure Compute API-k, programozás alapú hozzáférést biztosít a virtuáli
 | Rendelkezésre állási csoportok | 2016-03-30 |
 | Helyek | 2016-03-30 |
 | Helyek és műveletek | 2016-03-30 |
-| Helyek-közzétevő | 2016-03-30 |
+| Locations/publishers | 2016-03-30 |
 | Helyek és használat | 2016-03-30 |
-| Helyek/vmSizes | 2016-03-30 |
+| Locations/vmSizes | 2016-03-30 |
 | Műveletek | 2016-03-30 |
 | Virtuális gépek | 2016-03-30 |
 | Virtuálisgép-bővítmények | 2016-03-30 |
@@ -126,7 +126,7 @@ Az Azure Compute API-k, programozás alapú hozzáférést biztosít a virtuáli
 | Virtual Machine Scale Sets/bővítmények | 2016-03-30 |
 | Virtual Machine Scale Sets/hálózati adapterek | 2016-03-30 |
 | Virtual Machine Scale Sets/virtuális gépek | 2016-03-30 |
-| Virtual Machines Scale Sets/virtuális gép/hálózati | 2016-03-30 |
+| Virtual Machines Scale Sets/virtualMachines/networkInterfaces | 2016-03-30 |
 
 ### <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -176,7 +176,7 @@ A műveleti hívás eredménye a rendelkezésre álló hálózati lista reprezen
 | Terheléselosztók | 2015-06-15 |
 | Helyi hálózati átjáró | 2015-06-15 |
 | Helyek | 2016-04-01 |
-| Hely/operationResults | 2016-04-01 |
+| Location/operationResults | 2016-04-01 |
 | Helyek és műveletek | 2016-04-01 |
 | Helyek és használat | 2016-04-01 |
 | Hálózati illesztők | 2015-06-15 |
@@ -200,7 +200,7 @@ Az Azure Resource Manager üzembe helyezése és kezelése az Azure-megoldások 
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Központi telepítés | 2016-09-01 |
 | Az operations központi telepítések | 2016-09-01 |
-| Bővítmény-metaadatok | 2015-01-01 |
+| Extensions Metadata | 2015-01-01 |
 | Hivatkozások | 2016-09-01 |
 | Helyek | 2015-01-01 |
 | Ajánlatok | 2015-01-01 |
@@ -229,7 +229,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Helyek | 2016-01-01 |
 | Helyek és kvóták | 2016-01-01 |
 | Műveletek | 2016-01-01 |
-| Tárfiókok | 2016-01-01 |
+| StorageAccounts | 2016-01-01 |
 | Használati listák | 2016-01-01 |
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>A 2018-03-01-hibrid részletei
@@ -254,9 +254,9 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Rendelkezésre állási csoportok | 2016-03-30 |
 | Helyek | 2016-03-30 |
 | Helyek és műveletek | 2016-03-30 |
-| Helyek-közzétevő | 2016-03-30 |
+| Locations/publishers | 2016-03-30 |
 | Helyek és használat | 2016-03-30 |
-| Helyek/vmSizes | 2016-03-30 |
+| Locations/vmSizes | 2016-03-30 |
 | Műveletek | 2016-03-30 |
 | Virtuális gépek | 2016-03-30 |
 | Virtuálisgép-bővítmények | 2016-03-30 |
@@ -264,7 +264,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Virtual Machine Scale Sets/bővítmények | 2016-03-30 |
 | Virtual Machine Scale Sets/hálózati adapterek | 2016-03-30 |
 | Virtual Machine Scale Sets/virtuális gépek | 2016-03-30 |
-| Virtual Machines Scale Sets/virtuális gép/hálózati | 2016-03-30 |
+| Virtual Machines Scale Sets/virtualMachines/networkInterfaces | 2016-03-30 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -275,7 +275,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Terheléselosztók | 2015-06-15 |
 | Helyi hálózati átjáró | 2015-06-15 |
 | Helyek | 2016-04-01 |
-| Hely/operationResults | 2016-04-01 |
+| Location/operationResults | 2016-04-01 |
 | Helyek és műveletek | 2016-04-01 |
 | Helyek és használat | 2016-04-01 |
 | Hálózati illesztők | 2015-06-15 |
@@ -297,7 +297,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Központi telepítés | 2016-09-01 |
 | Az operations központi telepítések | 2016-09-01 |
-| Bővítmény-metaadatok | 2015-01-01 |
+| Extensions Metadata | 2015-01-01 |
 | Hivatkozások | 2016-09-01 |
 | Helyek | 2015-01-01 |
 | Ajánlatok | 2015-01-01 |
@@ -312,7 +312,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Előfizetések vagy erőforráscsoportok | 2016-09-01 |
 | Előfizetés/resourceGroups/erőforrások | 2016-09-01 |
 | Az előfizetések és erőforrások | 2016-09-01 |
-| Subscriptiosn/tagNames | 2016-09-01 |
+| Előfizetések/tagNames | 2016-09-01 |
 | Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Bérlők | 2017-08-01 |
 
@@ -324,7 +324,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi, hogy a storage-fiók
 | Helyek | 2016-01-01 |
 | Helyek és kvóták | 2016-01-01 |
 | Műveletek | 2016-01-01 |
-| Tárfiókok | 2016-01-01 |
+| StorageAccounts | 2016-01-01 |
 | Használati listák | 2016-01-01 |
 
 ## <a name="next-steps"></a>További lépések

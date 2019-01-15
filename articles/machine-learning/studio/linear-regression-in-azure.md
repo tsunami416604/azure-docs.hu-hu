@@ -1,27 +1,7 @@
 ---
-title: Lineáris regresszió használata a Machine Learning Studióban – Azure |} A Microsoft Docs
-description: Az Excel és az Azure Machine Learning Studióban lineáris regressziós modellek összehasonlítása
-metakeywords: ''
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276679"
+Cím: Using linear regression in Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Az Excel és a szolgáltatások az Azure Machine Learning Studio lineáris regressziós modellek összehasonlítása: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Lineáris regresszió használata az Azure Machine Learning Studióban
 > *Kate Baroni* és *Ben Boatman* vannak a vállalati Microsoft Data Insights kiváló Center a megoldástervezők. Ebben a cikkben bemutatják egy meglévő regressziós elemzési suite egy felhőalapú megoldás segítségével az Azure Machine Learning-ba való migrálás tapasztalataikról. 
@@ -79,7 +59,7 @@ Problémába ütköztünk a folyamat és az eredmények és az adatelemzők ált
 ### <a name="mystery-solved"></a>Megoldott titokzatos!
 A javaslatok alkalmazásakor azt ugyanazon alapteljesítményének a Machine Learning Studióban, az Excel használatával érhető el: 
 
-|  | Excel | Studio (kezdeti) | Studio legkisebb négyzetek használatával |
+|  | Excel | Studio (Initial) | Studio legkisebb négyzetek használatával |
 | --- |:---:|:---:|:---:|
 | Címkézett érték |Tényleges (numerikus) |Azonos |Azonos |
 | Tanuló |Az Excel -> Data Analysis -> regresszió |Lineáris regresszió. |Lineáris regresszió |

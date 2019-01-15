@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fa1b043f94897e752f3aa6b638995d3c2aa1eae5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 74f6d5989d86cc92371b060caf164f895b75511f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197099"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263628"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS-alkalmazásra vonatkozó ajánlat
 
@@ -49,7 +49,7 @@ Ez a szakasz egy SaaS-ajánlat közzétételének-elemeket ismerteti, és célja
 
 - [Előfeltételek](./cpp-prerequisites.md) -létrehozása vagy egy SaaS-ajánlat közzététele előtt technikai és üzleti követelményeit. 
 - [Az ajánlat létrehozásához](./cpp-create-offer.md) – hozzon létre egy új SaaS ajánlat használatával a Cloud Partner portálra szükséges lépéseket biztosít. 
-- [Az ajánlat közzététele](./cpp-publish-offer.md) -Exlains hogyan lehet elküldeni az ajánlat az Azure piactéren való közzétételre. 
+- [Az ajánlat közzététele](./cpp-publish-offer.md) -ismerteti, hogyan lehet elküldeni az ajánlat az Azure piactéren való közzétételre. 
 
 ## <a name="saas-publishing-process"></a>SaaS-közzétételi folyamata 
 

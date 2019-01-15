@@ -1,26 +1,8 @@
 ---
-title: Webszolgáltatás - Azure Machine Learning Studio felhasználása |} A Microsoft Docs
-description: Machine learning-szolgáltatás üzembe helyezése az Azure Machine Learning Studióban, után a webes RESTFul szolgáltatás kötegelt végrehajtási szolgáltatásként vagy a valós idejű kérés-válasz szolgáltatás képes használni.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/02/2017
-ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273782"
+Cím: Consume web service titleSuffix: Azure Machine Learning Studio description: Machine learning-szolgáltatás üzembe helyezése az Azure Machine Learning Studióban, után a webes RESTFul szolgáltatás kötegelt végrehajtási szolgáltatásként vagy a valós idejű kérés-válasz szolgáltatás képes használni.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio webszolgáltatás használata
 

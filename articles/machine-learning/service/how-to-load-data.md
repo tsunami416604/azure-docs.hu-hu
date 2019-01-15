@@ -1,5 +1,5 @@
 ---
-title: 'Betöltés: adat-előkészítési Python SDK-t'
+title: 'Load: data prep Python SDK'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg az adatok Azure Machine Learning Data Prep SDK-val. Különböző típusú bemeneti adatok betöltése, adja meg a fájl adattípusok és a paraméterek, vagy az SDK az intelligens olvasó funkciók használatához automatikus észlelése a fájl típusa.
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87096e1507c080f68652ea27b368364d9ac7952a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2478a5dd3f5d685253ef9145bec0a68ff324c6c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232498"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263815"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
@@ -37,7 +37,13 @@ import azureml.dataprep as dprep
 dataflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
-Ez a funkció akkor hasznos, ha a fájl típusa nem explicit módon ismert. Egy példa a használatra egy több száz, az adatfolyam objektumok alkalmazássá alakításra különböző típusú fájlokat tartalmazó könyvtárra. Minden fájl elérési útja iterálás és hívó `auto_read_file()` lehetővé teszi, hogy a könyvtárban található fájlok feldolgozását az adatfolyamot objektumok listája.
+Ez a függvény akkor hasznos, ha automatikus észlelése a fájl típusa, a kódolási és a egy kényelmes belépési pontot egy elemzési argumentumok. A függvény automatikusan is gyakran hajtanak végre tagolt adatok betöltésekor a következő lépéseket hajtja végre:
+
+* Adatcsatornához és a elválasztó beállítása
+* A fájl elején üres rekordokat kihagyása
+* Adatcsatornához és a fejlécsor beállítása
+
+Azt is megteheti Ha tudja, hogy a fájlt, írja be a kívánt időben, és explicit módon szabályozhatja az elemzi azt szeretné, ez a cikk megtekintéséhez a Speciális függvények az SDK-t kínál a következő továbbra is.
 
 ## <a name="load-text-line-data"></a>Szöveg sor adatok betöltése
 

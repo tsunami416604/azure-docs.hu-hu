@@ -8,19 +8,19 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.date: 08/25/2018
-ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/13/2019
+ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232545"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264326"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozhat a helyszíni fájlrendszereket az Azure Logic Apps
 
 A fájlrendszer-összekötő és az Azure Logic Apps automatizált feladatokat hozhat létre, és a munkafolyamatok, amelyek hozzon létre és kezelhet fájlokat egy helyi fájlt oszt meg, például:  
 
-- Hozzon létre, beolvasása, Hozzáfűzés, frissítése és fájlok törlése
+- Hozzon létre, beolvasása, hozzáfűzése, frissítése és törlése a fájlokat.
 - Fájlok a mappákat vagy a gyökérmappák listája.
 - Fájl tartalom és metaadatok beolvasása.
 
@@ -28,13 +28,17 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja egy helyszíni fájlrendszerhez le
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Kövesse a példát, ezek az elemek szükségesek:
+
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
 * A logic apps csatlakozhat a helyszíni rendszerek, például a fájlkiszolgáló-rendszer, mielőtt kell [telepítése és beállítása egy helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md). Ezzel a módszerrel megadhatja, hogy az átjáró telepítése használja, a logikai alkalmazás a file system-kapcsolat létrehozásakor.
 
-* A [Drobox fiók](https://www.dropbox.com/) és a felhasználói hitelesítő adatait
+* A [Drobox fiók](https://www.dropbox.com/) és a fiók hitelesítő adatait. A dropbox szolgáltatásbeli hitelesítő adatokat a logikai alkalmazás és a Drobox-fiók közötti kapcsolat létrehozásához szükségesek. 
 
-  A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és a Drobox fiókjába. 
+* A fióknak a hitelesítő adatait a számítógép, amelyen a fájlrendszer el szeretne érni. Például ha a fájlrendszer ugyanazon a számítógépen telepíti az átjárót, majd szüksége a fiók hitelesítő adatait az adott számítógépen. 
+
+* A szolgáltatói, például az Office 365 Outlook, Outlook.com vagy Gmail a Logic Apps által támogatott e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a logikai alkalmazás Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet. 
 
 * Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ebben a példában szüksége lesz egy üres logikai alkalmazás.
 
@@ -44,7 +48,7 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja egy helyszíni fájlrendszerhez le
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-1. A keresőmezőbe írja be szűrőként "dropbox". A eseményindítók listáról válassza ki a következő eseményindítót: **egy fájl létrehozásakor** 
+1. A keresőmezőbe írja be szűrőként "dropbox". Az eseményindítók listában jelölje ki az eseményindító: **Amikor létrejön egy fájl** 
 
    ![Dropbox-trigger kiválasztása](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -56,7 +60,7 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja egy helyszíni fájlrendszerhez le
 
 ## <a name="add-actions"></a>Műveletek hozzáadása
 
-1. Az eseményindító területén válassza a **következő lépés**. A Keresés mezőbe írja be a "file system" szűrőként. Válassza ezt a műveletet a műveletek listájának: **fájl - fájlrendszer létrehozása**
+1. Az eseményindító területén válassza a **következő lépés**. A Keresés mezőbe írja be a "file system" szűrőként. A műveletek listából válassza a következő műveletet: **Hozzon létre fájlt - fájlrendszer**
 
    ![Keresse meg a fájlrendszer-összekötő](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -67,10 +71,10 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja egy helyszíni fájlrendszerhez le
    | Tulajdonság | Szükséges | Érték | Leírás | 
    | -------- | -------- | ----- | ----------- | 
    | **Kapcsolat neve** | Igen | <*kapcsolat neve*> | A kapcsolat nevét | 
-   | **Gyökérmappa** | Igen | <*legfelső szintű mappanév*> | Az a fájlrendszerben, például helyi mappába a számítógépen, ahol a helyszíni átjáró telepítve van, vagy egy hálózati megosztásra, amely a számítógép hozzáférhessen a mappa gyökérmappájába. <p>Például:`\\PublicShare\\DropboxFiles` <p>A legfelső szintű mappa nem a fő szülőmappa, amely relatív elérési utakat az összes fájl kapcsolatos műveletekhez használható. | 
+   | **Gyökérmappa** | Igen | <*root-folder-name*> | A fájlrendszer, például ha telepítette a helyszíni adatátjárót, például egy helyi mappába a számítógépen, ahol a helyszíni átjáró telepítve van, amely a gyökérmappában található vagy a mappát a számítógép által elérhető hálózati megosztásra. <p>Például:`\\PublicShare\\DropboxFiles` <p>A legfelső szintű mappa nem a fő szülőmappa, amely relatív elérési utakat az összes fájl kapcsolatos műveletekhez használható. | 
    | **Hitelesítés típusa** | Nem | <*a hitelesítési-típus*> | A fájl rendszer által használt, például hitelesítési típust **Windows** | 
-   | **Felhasználónév** | Igen | <*tartomány*>\\<*felhasználónév*> | A korábban telepített data gateway tartozó felhasználónév | 
-   | **Jelszó** | Igen | <*a jelszó*> | A korábban telepített data gateway jelszava | 
+   | **Felhasználónév** | Igen | <*tartomány*>\\<*felhasználónév*> | A számítógép, amelyekben a fájlrendszer tartozó felhasználónév | 
+   | **Jelszó** | Igen | <*a jelszó*> | A jelszó a számítógép, amelyekben a fájlrendszer | 
    | **Átjáró** | Igen | <*telepített átjáró-neve*> | A korábban telepített átjáró neve | 
    ||| 
 

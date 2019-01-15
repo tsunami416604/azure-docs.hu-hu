@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240715"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302714"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Az Azure Stack tárfiókok kezelése
 Ismerje meg, hogyan kezelheti a tárfiókok az Azure Stack keresése, helyreállítás és üzleti igényeinek megfelelően tárolási kapacitás visszaigényléséhez.
@@ -148,7 +148,7 @@ Explicit módon a megőrzési időszak felülbírálására PowerShell is haszn�
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-További információkért lásd: [Azure Stack PowerShell-dokumentáció.](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage)
+További információkért lásd: [Azure Stack PowerShell-dokumentáció](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
  
 
 ## <a name="next-steps"></a>További lépések

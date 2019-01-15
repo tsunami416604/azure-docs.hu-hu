@@ -16,12 +16,12 @@ ms.custom: ''
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 91ac75f3cb41f73ea18595138969dfb7b1444173
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037379"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263511"
 ---
 # <a name="redeploy-the-asdk"></a>Telepítse újra a ASDK
 Ebből a cikkből elsajátíthatja, hogyan ismételt üzembe helyezése az Azure Stack Development Kit (ASDK) egy nem éles környezetben. A ASDK frissítése nem támogatott, mivel teljesen ismételt üzembe helyezése áthelyezése egy újabb verzióra kell. Még csak át szeretné kezdje újra a folyamatot az alapoktól bármikor telepítse újra a ASDK.
@@ -32,7 +32,7 @@ Ebből a cikkből elsajátíthatja, hogyan ismételt üzembe helyezése az Azure
 ## <a name="remove-azure-registration"></a>Távolítsa el az Azure-regisztráció 
 Ha korábban már regisztrált az ASDK telepítése az Azure-ral, ismételt üzembe helyezése a ASDK előtt távolítsa el a regisztrációs erőforrás. Regisztrálja újra a ASDK engedélyezéséhez a piactéren elemek rendelkezésre állását a ASDK újbóli telepítése során. Ha nem korábban már regisztrált az ASDK az Azure-előfizetésében, kihagyhatja az ebben a szakaszban.
 
-A regisztrációs erőforrás eltávolításához használja a **Remove-AzsRegistration** regisztrációjának törlése az Azure Stack-parancsmagot. Ezután használja a **Remove-AzureRMRsourceGroup** parancsmagot, hogy az Azure Stack erőforráscsoport törlése az Azure-előfizetésből:
+A regisztrációs erőforrás eltávolításához használja a **Remove-AzsRegistration** regisztrációjának törlése az Azure Stack-parancsmagot. Ezután használja a **Remove-AzureRMResourceGroup** parancsmagot, hogy az Azure Stack erőforráscsoport törlése az Azure-előfizetésből:
 
 1. Nyisson meg egy PowerShell-konzolt olyan számítógépen, amelyen a kiemelt végponthoz való hozzáférést a rendszergazdaként. A ASDK Ez a fejlesztői csomag gazdaszámítógépen.
 

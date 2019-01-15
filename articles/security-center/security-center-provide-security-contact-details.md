@@ -12,19 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
+ms.date: 1/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1948cee033ecb8b50fdd75513a07766490568600
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3c2da9830a8ddbce842d959ba086bf4eb30d5fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337257"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258764"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Az Azure Security Center biztonsági kapcsolattartói adatok megadása
 Az Azure Security Center javasolni fogja, hogy Ön biztonsági kapcsolattartói adatok megadása az Azure-előfizetése, ha még nem tette. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. MSRC hajt végre, válassza ki a biztonsági figyelése az Azure-hálózat és az infrastruktúra, és harmadik felektől származó threat intelligence és visszaélések panaszok kap.
 
-Egy e-mailben értesítést küld a napi első előfordulása a riasztások, és csak a magas súlyossági szintű riasztások. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Egy előfizetésen belüli erőforráscsoportok örökli ezeket a beállításokat.
+Egy e-mailben értesítést küld a napi első előfordulása a riasztások, és csak a magas súlyossági szintű riasztások. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Egy előfizetésen belüli erőforráscsoportok örökli ezeket a beállításokat. 
+
+Riasztási e-mail értesítések küldését:
+- Csak a magas súlyossági szintű riasztások
+- Napi riasztások típus szerint a egyetlen e-mail címzettje számára  
+- Legfeljebb 3 e-mail-üzeneteket egyetlen fogadó érkeznek egy egyetlen nap alatt
+- Minden e-mailt egy riasztást, nem a riasztások összesítést tartalmaz
+ 
+Például egy RDP-támadás riasztást már küldött e-mailbe, esetén nem fog kapni egy másik e-mail-üzenet kapcsolatos ugyanazon a napon, egy RDP-támadás akkor is, ha egy másik a riasztás akkor aktiválódik. 
+ 
 
 > [!NOTE]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.

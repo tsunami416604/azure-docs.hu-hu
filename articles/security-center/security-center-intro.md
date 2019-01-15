@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 88aa9a9003363f86db9214c62adff962bbd345cf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1c948527c919ed8f81f16cf30a986591b414662
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344159"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263562"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -52,9 +52,11 @@ Emellett a Security Center védi a nem Azure-kiszolgálóknak és virtuális gé
 
 Az események gyűjtése az ügynökök és az Azure közötti kapcsolatot biztosít, személyre szabott javaslatok (szolgáltatáskorlátozása feladatokat), a biztonsági elemzési motor a kell, hogy a számítási feladatok biztonságos kövesse, valamint a fenyegetés-észlelési riasztás. Az ilyen riasztások, a lehető leghamarabb ellenőrizze, hogy a rosszindulatú támadások zajló nem található a számítási feladatok kell vizsgálni.
 
+Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, a Security Center kategória egy beépített kezdeményezés Azure Policy is megjelenik. A beépített kezdeményezés automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz. A Security Center-szabályzatok az Azure Policy kapcsolatos további információkért lásd: [biztonsági házirendek használata](tutorial-security-policy.md).
+
 ## <a name="strengthen-security-posture"></a>Biztonsági helyzet megerősítése
 
-Az Azure Security Center lehetővé teszi, hogy erősítse meg biztonsági állapotát. Ez azt jelenti, hogy segítséget azonosítása és hajtsa végre az ajánlott biztonsági eljárások az vezethet be feladatokat, és végrehajtja azokat a gépeket, adatokat szolgáltatások és alkalmazások között. Ez magában foglalja, kezelése és a biztonsági házirendeket alkalmazhat, és gondoskodik róla, hogy az Azure-beli virtuális gépek, nem Azure-kiszolgálók és Azure PaaS-szolgáltatások megfelelő. A Security Center a szüksége lesz egy Madártávlatból a számítási feladatok, a hálózati biztonsági hagyatéki a fókuszban lévő látható-e az eszközöket kínál.
+Az Azure Security Center lehetővé teszi, hogy erősítse meg biztonsági állapotát. Ez azt jelenti, hogy segítséget azonosítása és hajtsa végre az ajánlott biztonsági eljárások az vezethet be feladatokat, és végrehajtja azokat a gépeket, adatokat szolgáltatások és alkalmazások között. Ez magában foglalja, kezelése és a biztonsági házirendeket alkalmazhat, és gondoskodik róla, hogy az Azure-beli virtuális gépek, nem Azure-kiszolgálók és Azure PaaS-szolgáltatások megfelelő. A Security Center a szüksége lesz egy Madártávlatból a számítási feladatok, a hálózati biztonsági hagyatéki a fókuszban lévő látható-e az eszközöket kínál. 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Kezelheti a szervezet biztonsági házirend és megfelelőség
 

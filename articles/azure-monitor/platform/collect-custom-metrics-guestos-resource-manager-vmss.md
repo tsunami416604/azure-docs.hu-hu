@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 529a79fbc7b70ba6ea6a07a0ab6c523a193387a2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 1513ea1c212d526b7fe2659855d4a80eabc9949b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326115"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261706"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>A vendég operációs rendszer mérőszámok küldése az Azure Monitor metrika áruház egy Windows virtuálisgép-méretezési csoportot az Azure Resource Manager-sablon használatával
 
@@ -52,7 +52,7 @@ Nyissa meg a **azuredeploy.parameters.json** fájlt:
 - Adjon meg értéket a **adminUsername** és **adminPassword** a virtuálisgép-méretezési csoport. Ezeket a paramétereket távoli hozzáférést a méretezési csoportban lévő virtuális gépek használhatók. A virtuális gép eltérített, ne kelljen **nem** Ez a sablon a portokat használja. A robotok vizsgálati felhasználónevei és jelszavai a nyilvános GitHub-tárházakban az internethez. Azok, hogy találkozni ezeket az alapértelmezett értékeket a virtuális gépek tesztelését. 
 
 
-###  <a name="modify-azuredeployjson"></a>Azuredeploy.json módosítása
+###  <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
 Nyissa meg a **azuredeploy.json** fájlt. 
 
 Adjon hozzá egy változót, a storage-fiók adatait tartsa a Resource Manager-sablonban. Bármely naplók vagy a diagnosztika pluginconfig.JSON fájlban megadott teljesítményszámlálók írt a metrika az Azure Monitor-tároló és a tárfiók, itt is: 
@@ -89,7 +89,7 @@ A következő kódot az MSI-bővítményében is hozzáadja a diagnosztikai bőv
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed identites for Azure resources   
+            // Managed identities for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

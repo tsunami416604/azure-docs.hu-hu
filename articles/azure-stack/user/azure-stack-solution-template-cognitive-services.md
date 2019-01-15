@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.openlocfilehash: 5af508714b5eae5cdd23c940af0ae21300c0c5b8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bf056c162684c021e3a8408edfdf82fe4590be48
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194671"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260634"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Az Azure Stack üzembe helyezése az Azure Cognitive Services
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
-> Azure Cognitive Services az Azure Stacken az előzetes verzióban.
+> Az Azure Stack az Azure Cognitive Services előzetes verzióban van.
 
 Használhatja az Azure Cognitive Services-tároló támogatása az Azure Stacken. Tároló támogatása az Azure Cognitive Services lehetővé teszi, hogy az azonos API-k gazdag elérhető az Azure-ban. A tárolók használatát lehetővé teszi, hogy a rugalmasság a verziókban elérhető szolgáltatásokat üzembe helyezése és hol [Docker-tárolók](https://www.docker.com/what-container). Tárolótámogatás jelenleg érhető el az Azure Cognitive Services, beleértve egy részhalmazát előzetes verziójában [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview), és [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), és [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto) (LUIS).
 
@@ -41,7 +41,7 @@ Bontás a szoftverek terjesztéséhez, amelyben egy alkalmazás vagy szolgáltat
   Adja meg a felhasználók számára a verziót és frissítése, valamint a modellek üzembe helyezett megoldás.
 
 - **Hordozható architektúra**  
-  Engedélyezze a hordozható alkalmazásarchitektúra létrehozása, úgy, hogy a nyilvános felhőbe, a magánfelhő a-premesis, vagy a peremhálózaton is üzembe helyezheti megoldását. Telepítheti a tároló az Azure Kubernetes Service, Azure Container Instances, vagy az Azure Stack a Kubernetes-fürthöz. További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+  Egy hordozható alkalmazásarchitektúra létrehozásának engedélyezése, hogy a megoldás a nyilvános felhőben, magánfelhőben telepítheti a felhő helyszíni vagy a peremhálózaton. Telepítheti a tároló az Azure Kubernetes Service, Azure Container Instances, vagy az Azure Stack a Kubernetes-fürthöz. További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 
 - **Nagy átviteli sebességű és kis késése**  
    Adja meg az alkalmazás felhasználói adatforgalmának nagy átviteli sebességet és közel valós idejű a méretezhető. Engedélyezze a Cognitive Services futtatásához az Azure Kubernetes Service fizikailag közel az alkalmazáslogika és az adatokat.
@@ -140,10 +140,10 @@ Kulcsmezők részleteit:
 | Mező | Megjegyzések |
 | --- | --- |
 | replicaNumber | Meghatározza a kezdeti replika-példányok létrehozásához. Minden bizonnyal skálázhatja azt később az üzembe helyezés után. |
-| ImageLocation tulajdonságban | Azt jelzi, hogy a cognitive Services-szolgáltatás adott tárolórendszerképet az ACR helyét. Ha például az arcok szolgáltatás: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
+| ImageLocation | Azt jelzi, hogy a cognitive Services-szolgáltatás adott tárolórendszerképet az ACR helyét. Ha például az arcok szolgáltatás: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |A végpont URL-címe. lépésében feltüntetett [Azure-erőforrás létrehozása](#create-azure-resources) |
 | ApiKey | Az előfizetési kulcsot. lépésében feltüntetett [Azure-erőforrás létrehozása](#create-azure-resources) |
-| secretName | Název tajného kódu. lépésében feltüntetett [a privát tárolóregisztrációs adatbázis eléréséhez secrete létrehozása](#create-secrete-to-access-the-private-container-registry) |
+| SecretName | Název tajného kódu. lépésében feltüntetett [a privát tárolóregisztrációs adatbázis eléréséhez secrete létrehozása](#create-secrete-to-access-the-private-container-registry) |
 
 ## <a name="deploy-the-cognitive-service"></a>A cognitive Services-szolgáltatás üzembe helyezése
 

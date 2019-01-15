@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002654"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304839"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
@@ -58,6 +58,8 @@ SUS-t a megfelelő számú kiválasztásával kapcsolatban további információ
 A historikus (time-orientált) lekérdezés elemei a Stream Analytics által biztosított állapotalapú szereplők core készletét. Stream Analytics belsőleg a felhasználó nevében, ezeket a műveleteket állapotát kezeli a memóriát, a rugalmasság és a rendszerállapot-helyreállítás ellenőrzőpontok használata során szolgáltatásfrissítés kezelésével. Annak ellenére, hogy a Stream Analytics teljes körűen felügyeli az államok, számos ajánlásokat és tanácsokat, felhasználók figyelembe kell venni.
 
 Vegye figyelembe, hogy az összetett lekérdezések logikával feladat sikerült magas SU százalékos kihasználtsága akkor is, ha nem kap, folyamatosan bemeneti események. Ez akkor fordulhat elő, a bemeneti és kimeneti események egy hirtelen megugrás után. A feladat lehet, hogy továbbra is a memória-állapot karbantartásához, ha a lekérdezés túl összetett.
+
+SU százalékos kihasználtsága hirtelen dobhatja 0 előtt vissza hamarosan várható szinteket rövid ideig. Ez akkor fordul elő átmeneti hibák, illetve a rendszer által kezdeményezett frissítése miatt.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
 Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezen operátorok mindegyike megőrzi az állapotadatokat. Ezen lekérdezési elemek maximális ablak mérete hét nap. 

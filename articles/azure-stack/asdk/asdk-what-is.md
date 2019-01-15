@@ -16,12 +16,12 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d2e849b4a6101cd10ce17e52056efdfe2f903381
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961331"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267113"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Mi az az Azure Stack Development Kit?
 [A Microsoft Azure Stack integrált rendszerek](../azure-stack-poc.md) mérete 4 és 16 közötti csomópontjáról tartományt, és közösen egy hardver partner és a Microsoft által támogatott. Azure Stack integrált rendszerek használatával engedélyezhető az új forgatókönyvek használhatók a termelési számítási feladatokhoz. Ha Ön az Azure Stack operátorait, akik az integrált rendszerek infrastruktúrát felügyeli, és szolgáltatásokat kínál, tekintse meg a [operátori dokumentációja](https://docs.microsoft.com/azure/azure-stack).
@@ -48,7 +48,7 @@ Egy csomópontos ASDK központi telepítések érdemes figyelembe vennie, néhá
 |Leírás|ASDK|Több csomópontos az Azure Stack|
 |-----|-----|-----|
 |**Méretezés**|Az összes összetevő egy egycsomópontos kiszolgálói számítógépre van telepítve.|A 4 és 16 közötti csomópontok mérete terjedhet.|
-|**Rugalmasságának biztosításával**|Egy csomópontos konfigurációja nem biztosít magas rendelkezésre állás|[Magas rendelkezésre állásának](../azure-stack-key-features.md#high-availability-for-azure-stack) funkciót támogatnak.|
+|**Rugalmasságának biztosításával**|Egy csomópontos konfigurációja nem biztosít magas rendelkezésre állás|[Magas rendelkezésre állású](../azure-stack-key-features.md#high-availability-for-azure-stack) funkciót támogatnak.|
 |**Hálózat**|A ASDK nevű AzS-BGPNAT01 virtuális ASDK minden hálózati forgalmat útvonal használja. Nem vonatkoznak további kapcsoló követelmények.|A AzS-BGPNAT01 virtuális gép nem létezik a több csomópontos rendszerekhez. Összetettebb [hálózati útválasztási infrastruktúra](../azure-stack-network.md#network-infrastructure) szükséges, beleértve a Top-Of-Rack (TOR), alaplapi felügyeleti vezérlő (BMC) és kapcsolók szegély (adatközpont-hálózat).|
 |**Javítási és frissítési folyamat**|Helyezze át a ASDK új verziójára, ismét üzembe kell helyeznie a ASDK a development kit gazdagépen.|[Javítása és frissítése](../azure-stack-updates.md) a telepített Azure Stack-verzió frissítésére szolgáló folyamat.|
 |**Támogatás**|Fórum az MSDN Azure Stack. A Microsoft ügyfélszolgálata és a támogatási szolgálathoz (CSS) támogatás *nem* nem éles környezetekben érhető el.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) és teljes CSS támogatja.|

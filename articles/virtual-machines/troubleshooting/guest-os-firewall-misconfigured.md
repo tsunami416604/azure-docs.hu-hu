@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137837"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262285"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Az Azure virtuális gép vendég operációs rendszer tűzfala helytelenül van konfigurálva.
 
@@ -53,9 +53,9 @@ A következő szabályokat szerkesztheti vagy a hozzáférés a virtuális géph
 
 *   Windows Rendszerfelügyeleti webszolgáltatások (HTTP, bejövő): Ez a szabály lehetővé teszi, hogy csatlakozzon a virtuális Géphez a PowerShell, az Azure-ban, az ilyen típusú hozzáférés lehetővé teszi a távoli parancsfájl-kezelési és hibaelhárítási parancsfájl-kezelési aspektusa használja.
 
-*   Fájl- és nyomtatómegosztás (SMB, bejövő): Ez a szabály lehetővé teszi, hogy a hálózati megosztás eléréséhez hibaelhárítási beállításként.
+*   Fájl- és nyomtatómegosztás (SMB, bejövő): Ez a szabály hibaelhárítási lehetőségként lehetővé teszi a hálózati megosztás eléréséhez.
 
-*   Fájl- és nyomtatómegosztás (Echo kérés – ICMPv4-be): Ez a szabály lehetővé teszi, hogy a virtuális gép pingelje.
+*   Fájl- és nyomtatómegosztási (Echo kérés – ICMPv4-be): Ez a szabály lehetővé teszi a virtuális gép pingelje.
 
 A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális állapotát.
 
@@ -68,7 +68,7 @@ A soros konzolhoz példányban lekérdezheti a tűzfalszabályt az aktuális ál
 *   Lekérdezés az alkalmazás által használt helyi Port használatával:
 
     ```cmd
-    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICAITON PORT>)" -context 9,4 | more
+    netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
 *   Lekérdezés a az alkalmazás által használt helyi IP-cím használatával:

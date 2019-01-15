@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: f220aee3fa0d9a79723383fc31fec0eed2554bb4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833686"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261553"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
 
@@ -68,7 +68,7 @@ Keresse meg **Microsoft.Media** és **Microsoft.EventGrid**. Ha nem a "Regisztr�
 
     ![a Video Indexer csatlakoztatása az Azure-bA](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. Egy Azure-régiót választhat a támogatott helyek: USA nyugati RÉGIÓJA 2, Észak-Európában vagy Kelet-Ázsia.
+4. Válasszon egy Azure-régióban támogatott helyek: 2. nyugati RÉGIÓJA, Észak-Európában vagy Kelet-Ázsia.
 5. A **Azure Media Services-fiók**, válasszon egyet az alábbi lehetőségek közül:
 
     * Egy új Media Services-fiók létrehozásához válassza **hozzon létre új erőforráscsoportot**. Adja meg az erőforráscsoport nevét.
@@ -97,6 +97,9 @@ Keresse meg **Microsoft.Media** és **Microsoft.EventGrid**. Ha nem a "Regisztr�
 ## <a name="connect-to-azure-manually-advanced-option"></a>Csatlakozás az Azure-ban manuálisan (speciális beállítás)
 
 Nem sikerült kapcsolódni az Azure-ba, megpróbálhat manuálisan történő csatlakoztatásával a probléma elhárításához.
+
+> [!NOTE]
+> Erősen javasoljuk, hogy rendelkezik a következő három fiókoknak ugyanabban a régióban: a Video Indexer-fiókot, amely kapcsolódik a Media Services-fiók, valamint az Azure storage-fiók ugyanabban a Media Services-fiók csatlakozik.
 
 ### <a name="create-and-configure-a-media-services-account"></a>Egy Media Services-fiók létrehozása és konfigurálása
 
@@ -168,7 +171,7 @@ A következő Azure Media Services kapcsolódó szempontokat kell figyelembe ven
 
 ## <a name="next-steps"></a>További lépések
 
-Programozott módon kezelheti a próbaverziós fiókjához és/vagy a Video Indexer-fiókokkal, amelyek köti össze az Azure-ban utasításait követve: [használható API-khoz](video-indexer-use-apis.md).
+Programozott módon kezelheti a próbaverziós fiókjához és/vagy a Video Indexer-fiókokkal, amelyek köti össze az Azure-ban utasításait követve: [Az API-kkal](video-indexer-use-apis.md).
 
 Az azonos Azure AD-felhasználót az Azure-ba való kapcsolódáskor használt kell használnia.
 

@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ce8c25ce6bb728c9d3a365821b3606613e322c11
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2f16a8fdb124cd2ee69fbdef74f3999800b55157
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081296"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261996"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
 Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja webhelye rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az Application Insights kiszolgálóoldali és ügyfél-/böngészőoldali monitorozási képességeket is biztosít.
 
-Ez a rövid útmutató ismerteti, hogyan adhatja hozzá a [nyílt forráskódú Application Insights JavaScript SDK-t](https://github.com/Microsoft/ApplicationInsights-JS), amellyel felmérheti a webhely látogatóinak ügyfél-/böngészőoldali élményét.
+Ez a rövid útmutató végigvezeti a [nyílt forráskód az Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) amely lehetővé teszi, hogy jobban megismerhesse a webhely látogatói/böngésző ügyféloldali élményét.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

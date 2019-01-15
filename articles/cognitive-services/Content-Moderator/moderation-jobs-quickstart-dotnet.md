@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Moderálási feladatok indítása a .NET-es Content Moderatorral'
+title: 'Gyors útmutató: .NET - Content Moderator használatával moderálás feladatok indításához'
 titlesuffix: Azure Cognitive Services
 description: Moderálási feladatok kezdeményezése a .NET-hez készült Azure Content Moderator SDK-val.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: f55906aa9de6faa5979ecedbc3ef288f164fd6c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227432"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261945"
 ---
-# <a name="quickstart-start-moderation-jobs-using-net"></a>Rövid útmutató: Moderálási feladatok indítása a .NET használatával
+# <a name="quickstart-start-moderation-jobs-using-net"></a>Gyors útmutató: .NET-tel moderálás feladatok indításához
 
 Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a következő műveleteket a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) segítségével:
  
@@ -30,8 +30,7 @@ Ez a cikk feltételezi, hogy már ismeri a Visual Studiót és a C# nyelvet.
 
 ## <a name="sign-up-for-content-moderator"></a>Regisztráció a Content Moderatorba
 
-Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót.
-[Ebből a rövid útmutatóból](quick-start.md) megtudhatja, hogyan szerezheti be ezt az azonosítót.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót. A Content Moderatorra történő előfizetéshez és az előfizetői azonosító beszerzéséhez kövesse a [Cognitive Services-fiók létrehozásával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kapcsolatos szakaszban található utasításokat.
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Fiók létrehozása a felülvizsgálati eszközhöz, ha az előző lépésben erre nem került sor
 

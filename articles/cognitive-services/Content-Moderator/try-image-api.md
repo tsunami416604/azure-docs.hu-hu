@@ -1,28 +1,28 @@
 ---
 title: Az API-konzol - Content Moderator mérsékelt rendszerképek
 titlesuffix: Azure Cognitive Services
-description: A Content Moderator API konzolon képmoderálás kipróbálhassák azt.
+description: A kép moderálási API-t használja az Azure Content Moderator kép tartalmához munkafolyamatainak vizsgálat és felülvizsgálati jóváhagyás kezdeményezése.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: a88eb1e0fc91fb47a95c8b1fea84cfac32674266
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 154a7cd4855429bfe3274974a0f4ae5c8be841f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224964"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265940"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Az API-konzolról mérsékelt képek
 
 Használja a [Image moderálási API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) az Azure Content Moderator kezdeményezni, ellenőrzés és áttekintés moderálás munkafolyamatokat a kép tartalmához. A moderálás feladat megkeresi a trágárság cenzúrázása a tartalmat, és megosztott és az egyéni feketelistákkal összevetett.
 
 ## <a name="use-the-api-console"></a>Az API-konzol használata
-Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd: [áttekintése](overview.md).
+Az API az online konzolon is próbálhatják ki őket, meg kell az előfizetési kulcs. Ez található a **beállítások** lap a **Ocp-Apim-Subscription-Key** mezőbe. További információkért lásd az [Áttekintést](overview.md).
 
 1.  Lépjen a [kép moderálási API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c).
 

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ced6e2edb570e12b17d14e0552030902161b5d53
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725252"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302680"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek az Azure Stackben
 
@@ -60,7 +60,7 @@ Egy adott skálázási egység állapotának megtekintéséhez:
 | Fut | A csomópont tevékenyen részt vesz a skálázási egység. |
 | Leállítva | A csomópont nem érhető el. |
 | Hozzáadás | A csomópont aktívan ad hozzá a skálázási egység. |
-| Javítás | A csomópont aktívan javítása folyamatban van. |
+| Javítása | A csomópont aktívan javítása folyamatban van. |
 | Karbantartás | A csomópont fel van függesztve, és nincsenek aktív felhasználói munkaterhelés fut-e. |
 | Szervizelés szükséges | Hibát észlelt, amely megköveteli, hogy a csomópont nem működik helyesen. |
 
@@ -74,7 +74,7 @@ Megtekintheti a skálázási egység csomópont kapcsolatos információkat, pé
 
 A csomópont a működési állapota határozza meg, milyen beállítások érhetők el.
 
-Szüksége lesz az Azure Stack PowerShell-modulok telepítéséhez. A rendszer ezeket a parancsmagokat a **Azs.Fabric.Admin** modul. Telepítse, vagy az Azure Stack PowerShell telepítésének ellenőrzésének, lásd: [Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
+Azure Stack PowerShell-modulok telepítenie kell. A rendszer ezeket a parancsmagokat a **Azs.Fabric.Admin** modul. Telepítse, vagy az Azure Stack PowerShell telepítésének ellenőrzésének, lásd: [Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 
 ## <a name="stop"></a>Leállítás
 

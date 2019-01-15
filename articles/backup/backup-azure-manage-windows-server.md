@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 716ddcaf61c4d7db40821056dc759667f9376023
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871327"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261502"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -67,7 +67,7 @@ A társított menü megnyitásához kattintson a csempék (kivéve a biztonsági
 
 ![A kritikus riasztásokról szűrt biztonsági mentésekkel kapcsolatos riasztások menü](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-A biztonsági mentési riasztások menüből, a fenti képen szerint van szűrve: állapota aktív, súlyosság kritikus, és idő az azt megelőző 24 órához.
+A biztonsági mentési riasztások menüből, a fenti képen szerint van szűrve: Állapot: aktív, súlyosság kritikus és idő az azt megelőző 24 órához.
 
 ## <a name="manage-backup-alerts"></a>Biztonsági riasztások kezelése
 
@@ -85,8 +85,8 @@ A biztonsági mentési riasztások listájában a szűrt riasztások a kiválasz
 
 | Riasztási szint | Eseményeket, amelyek a riasztások generálására lehetőséget |
 | ----------- | ----------- |
-| Kritikus | Kap kritikus riasztást küld, amikor: biztonsági mentési feladat sikertelen, a helyreállítási feladat sikertelen, és amikor védelem leállítása a kiszolgálón, de megőrizni az adatokat.|
-| Figyelmeztetés | Figyelmeztető riasztást küld, amikor: biztonsági mentési feladatok elvégzéséhez, de figyelmeztetésekkel, például ha 100-nál kevesebb fájlok nem készül biztonsági másolat okozta problémák miatt, vagy ha több mint 1 000 000 fájlok sikeresen biztonsági mentése). |
+| Kritikus | Kap kritikus riasztást küld, ha: Biztonsági mentési feladat sikertelen, a helyreállítási feladat sikertelen, és amikor védelem leállítása a kiszolgálón, de megőrizni az adatokat.|
+| Figyelmeztetés | Figyelmeztető riasztást küld, ha: Biztonsági mentési feladatok elvégzéséhez, de figyelmeztetésekkel, például ha 100-nál kevesebb fájlok nem készül biztonsági másolat okozta problémák miatt, vagy ha több mint 1 000 000 fájlok sikeresen biztonsági mentése). |
 | Tájékoztató | jelenleg nincsenek tájékoztató riasztások használatban vannak. |
 
 ### <a name="viewing-alert-details"></a>Riasztás részleteinek megjelenítése
@@ -239,7 +239,7 @@ Minden állapota vagy egy tekintheti meg. Nem választhat ki két vagy három á
 * Megszakítva
 * Figyelmeztetésekkel fejeződött be
 
-#### <a name="start-time"></a>Kezdés időpontja
+#### <a name="start-time"></a>Kezdő időpont
 
 Dátumát és időpontját, amely a lekérdezés kezdődik. Az alapértelmezett érték egy 24 órás időszakban.
 
@@ -251,7 +251,7 @@ Dátumát és időpontját, amikor a lekérdezés vége.
 
 Használat **feladatok exportálása** , hozzon létre egy táblázatot tartalmazó feladatok menü kapcsolatos összes információ. A táblázat egy olyan lap, amely tartalmazza az összes feladat összegzését, és minden egyes lapjaihoz rendelkezik.
 
-Kattintson a feladatok adatok exportálására egy számolótáblába, **feladatok exportálása**. A szolgáltatás egy speadsheet a tároló és a dátum neve használatával hoz létre, de a nevet módosíthatja.
+Kattintson a feladatok adatok exportálására egy számolótáblába, **feladatok exportálása**. A szolgáltatás létrehoz egy táblázatot, a tároló és a dátum neve használatával azonban módosíthatja a nevet.
 
 ## <a name="monitor-backup-usage"></a>Biztonsági mentés használat monitorozása
 
@@ -267,11 +267,11 @@ A biztonsági mentési tár irányítópult-csempét jeleníti meg az Azure-ban 
 
 1. válasz Az Azure Portalon az Azure Backup szolgáltatás ügynöke feladat állapotát tükröző legfeljebb 15 perc is eltarthat.
 
-**2. NEGYEDÉVI. Amikor egy biztonsági mentési feladat sikertelen volt, mennyi ideig tart kell riasztást küldenie?**
+**Q2. Amikor egy biztonsági mentési feladat sikertelen volt, mennyi ideig tart kell riasztást küldenie?**
 
 2. válasz Riasztást hoz létre az Azure biztonsági mentési hiba 20 perc belül.
 
-**3. NEGYEDÉVI. Van egy esetet, ahol egy e-mailt nem küldhetők, ha értesítések be vannak állítva?**
+**Q3. Van egy esetet, ahol egy e-mailt nem küldhetők, ha értesítések be vannak állítva?**
 
 3. válasz Igen. Az alábbi esetekben nem kap értesítést.
 
@@ -281,9 +281,9 @@ A biztonsági mentési tár irányítópult-csempét jeleníti meg az Azure-ban 
 
 ## <a name="troubleshooting-monitoring-issues"></a>Figyelési kapcsolatos hibák elhárítása
 
-**Probléma:** feladatok és/vagy az Azure Backup ügynök származó riasztások nem jelennek meg a portálon.
+**A probléma leírása:** Feladatok és/vagy az Azure Backup ügynök származó riasztások nem jelennek meg a portálon.
 
-**Hibaelhárítási lépések:** a folyamat ```OBRecoveryServicesManagementAgent```, a feladat és riasztás adatokat küld az Azure Backup szolgáltatással. Egyes esetekben ez a folyamat letöltés állapottal vagy -leállítás.
+**Hibaelhárítási lépéseket:** A folyamat ```OBRecoveryServicesManagementAgent```, a feladat és riasztás adatokat küld az Azure Backup szolgáltatással. Egyes esetekben ez a folyamat letöltés állapottal vagy -leállítás.
 
 1. Annak ellenőrzéséhez, hogy a folyamat nem fut, nyissa meg a **Feladatkezelő**, és ellenőrizze ```OBRecoveryServicesManagementAgent``` fut-e.
 

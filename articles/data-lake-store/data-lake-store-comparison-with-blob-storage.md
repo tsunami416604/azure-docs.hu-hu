@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a6272f0a6da10075db299d0f8c87f0d748a7a946
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4bdebe415bcd86867bebeb7f03dc6dafa8480169
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996481"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259784"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Az Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
   >[!NOTE] 
-    >[Az Azure Data Lake Storage Gen2 előzetes verzió](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) nemrég bejelentettük. Data Lake Storage Gen2 előzetes verzió oka beépül a képességeit a két meglévő társzolgáltatások, Azure Blob Storage és az [Azure Data Lake Storage Gen1] (https://docs.microsoft.com/azure/data-lake-store/index). Fájlrendszer szemantikáját, például az Azure Data Lake Storage Gen1 funkciók fájlszintű biztonsági és méretezési csoport alacsony költségű, többrétegű tárolás, a magas rendelkezésre állás/vész-helyreállítási lehetőségei vannak kombinálva [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). <br> Kifejezetten ajánljuk, hogy indítsa el a Data Lake Storage Gen2 előzetes verzió használata alapjaként, amellyel a vállalat adattárakba rendezhetjük, és az Azure Blob Storage, valamint az Azure Data Lake Storage Gen1 előnyeit.
+    >[Az Azure Data Lake Storage Gen2 előzetes verzió](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) nemrég bejelentettük. Data Lake Storage Gen2 előzetes verzió oka beépül a két meglévő társzolgáltatások, Azure Blob Storage a képességeit és [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index). Fájlrendszer szemantikáját, például az Azure Data Lake Storage Gen1 funkciók fájlszintű biztonsági és méretezési csoport alacsony költségű, többrétegű tárolás, a magas rendelkezésre állás/vész-helyreállítási lehetőségei vannak kombinálva [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). <br> Kifejezetten ajánljuk, hogy indítsa el a Data Lake Storage Gen2 előzetes verzió használata alapjaként, amellyel a vállalat adattárakba rendezhetjük, és az Azure Blob Storage, valamint az Azure Data Lake Storage Gen1 előnyeit.
 
 Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozáshoz mentén az Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket foglalja össze. Az Azure Blob Storage egy általános célú, skálázható objektumtárolását, amely számos különböző adattárolási forgatókönyvekhez készült. Az Azure Data Lake Storage Gen1 egy nagy kapacitású adattár, amely a big data-elemzési számítási feladatokhoz van optimalizálva.
 
@@ -44,7 +44,7 @@ Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozásho
 | Adatműveletek – naplózás |Érhető el. Lásd: [Itt](data-lake-store-diagnostic-logs.md) információt. |Elérhető |
 | Az inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali</li> <ul><li>A szolgáltatás által kezelt kulcsok</li><li>Az ügyfél által felügyelt kulcsok az Azure-Kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali</li> <ul><li>A szolgáltatás által kezelt kulcsok</li><li>Az ügyfél által felügyelt kulcsok az Azure KeyVault (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
 | Felügyeleti műveletek (például fiók létrehozása) |[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) fiókok kezelése az Azure által biztosított (RBAC) |[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) fiókok kezelése az Azure által biztosított (RBAC) |
-| Fejlesztői SDK-k |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, a Ruby, PHP, Go, Android, iOS |
+| Fejlesztői SDK-k |.NET, Java, Python, Node.js |.Net, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |
 | Elemzési számítási feladat teljesítményére |Optimalizált teljesítménygyűjtési párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebességű és iops-t. |Optimalizált teljesítménygyűjtési párhuzamos elemzési számítási feladatokhoz. |
 | Blobméretének korlátjai |A fiókok méretének, a fájlok méretét vagy a fájlok száma korlátlan |Dokumentált konkrét korlátozások [Itt](../storage/common/storage-scalability-targets.md). Nagyobb fiók korlátozza kapcsolatba lép a [Azure-támogatás](https://azure.microsoft.com/support/faq/) |
 | Georedundancia |Helyileg redundáns (az adatok egy Azure-régióban. több példány) |Helyileg redundáns (LRS), a zónaredundáns (ZRS), globálisan georedundáns (GRS), az írásvédett globálisan redundáns (RA-GRS) zónáját. Lásd: [Itt](../storage/common/storage-redundancy.md) további információ |

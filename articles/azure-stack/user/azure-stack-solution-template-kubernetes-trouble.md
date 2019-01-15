@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e9eb3cc029e60acd18fc6611ca14817488a2d983
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956720"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266553"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>A Kubernetes az Azure Stack üzembe helyezés hibaelhárítása
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
@@ -45,10 +45,10 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
 1. Bemeneti paraméterek gyűjteni a Piactéri elemet.
 
     Adja meg az értékeket, akkor be kell állítania a Kubernetes-fürtöt, többek között:
-    -  **Felhasználónév**: A felhasználónevet, a Linux rendszerű virtuális gépek, amelyek a Kubernetes-fürt és a DVM részei.
+    -  **Felhasználónév**: A felhasználónév, a Linux rendszerű virtuális gépek, amelyek a Kubernetes-fürt és a DVM részei.
     -  **Nyilvános SSH-kulcs**: A kulcs, amely az összes Linux-számítógép, a Kubernetes-fürt és a DVM részeként létrehozott engedély szolgál.
-    -  **Egyszerű szolgáltatás**: az azonosító, amelyet a Kubernetes Azure felhőszolgáltató. Az ügyfél-azonosító az Alkalmazásazonosítót azonosította az eseményt, az egyszerű szolgáltatás létrehozásakor. 
-    -  **Titkos Ügyfélkód**: azok fő hozott létre, az egyszerű szolgáltatás létrehozásakor.
+    -  **Egyszerű szolgáltatás**: A Kubernetes Azure felhőszolgáltató által használt azonosítója. Az ügyfél-azonosító az Alkalmazásazonosítót azonosította az eseményt, az egyszerű szolgáltatás létrehozásakor. 
+    -  **Titkos Ügyfélkód**: Az egyszerű szolgáltatás létrehozásakor létrehozott kulcs azokat.
 
 2. Az üzemelő példány virtuális gép létrehozása és az egyéni szkriptek futtatására szolgáló bővítmény.
     -  Az üzembe helyezés Linux rendszerű virtuális gép létrehozása a marketplace Linux-rendszerképek használatával **Ubuntu Server 16.04-LTS**.
@@ -153,10 +153,10 @@ Naplók lekérése, hajtsa végre az alábbi lépéseket:
 4. Tekintse át a paramétereket, és állítsa az értékeket az adott környezet alapján.
     | Paraméter           | Leírás                                                                                                      | Példa                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i – identitás-fájlja | Az RSA titkos kulcs fájlját a Kubernetes fő virtuális gép csatlakozni. A kulcs kell kezdődnie `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.PEM                                                        |
-    | -h,--gazdagép          | A nyilvános IP-cím vagy a Kubernetes-fürt fő virtuális gép teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `k8s-master-`.                       | IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -i – identitás-fájlja | Az RSA titkos kulcs fájlját a Kubernetes fő virtuális gép csatlakozni. A kulcs kell kezdődnie `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.pem                                                        |
+    | -h, --host          | A nyilvános IP-cím vagy a Kubernetes-fürt fő virtuális gép teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `k8s-master-`.                       | IP-cím: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u: – a felhasználó          | A Kubernetes-fürt fő virtuális gép felhasználóneve. A Piactéri elem konfigurálásakor beállíthatja ezt a nevet.                                                                    | azureuser                                                                     |
-    | -d-,--vmdhost       | A nyilvános IP-cím vagy a DVM teljes Tartománynevét. A virtuális gép neve kezdődik `vmd-`.                                                       | IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -d, --vmdhost       | A nyilvános IP-cím vagy a DVM teljes Tartománynevét. A virtuális gép neve kezdődik `vmd-`.                                                       | IP-cím: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
 
    Amikor hozzáadja a paraméterértékeket, lehet például a következő kódot:
 
@@ -172,7 +172,7 @@ Naplók lekérése, hajtsa végre az alábbi lépéseket:
 4. A mappák, a parancs által létrehozott a naplók begyűjtéséről. A parancs létrehozza az új mappák és időbélyegzői őket.
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
-        - Acsengine – kubernetes-dvm.log
+        - Acsengine-kubernetes-dvm.log
 
 ## <a name="next-steps"></a>További lépések
 

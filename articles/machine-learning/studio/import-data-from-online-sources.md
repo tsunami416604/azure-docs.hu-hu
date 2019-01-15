@@ -1,27 +1,8 @@
 ---
-title: Adatok importálása online adatforrásokból – az Azure Machine Learning studióba |} A Microsoft Docs
-description: Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
-keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítási adatok importálása
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/29/2017
-ms.openlocfilehash: a81765620b31af8a23d70d35cf8f86fc4b8e0033
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256094"
+Cím: Adatok importálása online adatok források titleSuffix a Machine Learning studióba: Azure Machine Learning Studio description: Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Az Azure Machine Learning studióba online adatforrásokból származó adatok importálása 
 Ez a cikk bemutatja a támogatási online adatok importálása különböző forrásokból, és kísérletezzen az Azure Machine Learning studióba ezen forrásokból származó adatok áthelyezéséhez szükséges információkat.

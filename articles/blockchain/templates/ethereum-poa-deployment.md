@@ -1,6 +1,6 @@
 ---
-title: Ethereum koncepció jogosultság Consortium – Azure
-description: A Etherereum koncepció jogosultság Consortium megoldás használatával telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati
+title: Ethereum Proof-of-Authority Consortium - Azure
+description: A Ethereum koncepció jogosultság Consortium megoldás használatával telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati
 services: azure-blockchain
 keywords: ''
 author: CodyBorn
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974046"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260380"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
 
@@ -246,7 +246,7 @@ Egyes paraméterek részletes leírását a következő:
 
   Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
-  Elosztott terhelésű érvényesítő csomópontok száma|Az üzembe helyezni a hálózat részét képező érvényesítő csomópontok számát|2. 15.|2
+  Elosztott terhelésű érvényesítő csomópontok száma|Az üzembe helyezni a hálózat részét képező érvényesítő csomópontok számát|2-15|2
   Érvényesítési csomópont tároló-teljesítményre|A telepített érvényesítő csomópontok biztonsági felügyelt lemez típusa.|Standard SSD- vagy prémium|Standard SSD
   Érvényesítési csomópont virtuális gépének mérete|Az érvényesítő csomópontok használt virtuálisgép-méretet.|Standard A, Standard D, Standard D-v2, Standard F sorozat, Standard DS és a Standard FS|Standard D1 v2
 
@@ -273,7 +273,7 @@ Egyes paraméterek részletes leírását a következő:
   Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
 Consortium tag azonosítója|Minden tagja részt vesz a consortium network konfigurálhatók az IP-címterek ütközések elkerülése érdekében társított azonosítója. A privát hálózat esetén Tagazonosító egyedinek kell lennie különböző szervezetekhez ugyanazon a hálózaton keresztül.  Egy egyedi Tagazonosító van szükség, akkor is, ha több régióban telepít ugyanazon a szervezeten belül. Jegyezze meg a paraméter értékét, mivel annak biztosítására ne legyen semmilyen ütközési csatlakozó tagjaival ossza meg kell.|0-255|NA
-Hálózatazonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve.  Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója.|5 – 999,999,999|10101010
+Hálózatazonosító|A hálózati Azonosítót a consortium Ethereum hálózati üzembe helyezve.  Minden egyes Ethereum hálózati rendelkezik a saját hálózati azonosító, az 1 folyamatban van a nyilvános hálózat azonosítója.|5 - 999,999,999|10101010
 Rendszergazdai Ethereum-cím|Ethereum fiók címét, amely részt vesz a PoA cégirányítási szolgál.  Az Ethereum-cím generálásához MetaMask használatát javasoljuk.|0 x 42 alfanumerikus karakterek|NA
 Speciális beállítások|Speciális beállítások Ethereum-beállítások|Engedélyezése vagy letiltása|Letiltás
 Nyilvános IP-cím (Speciális beállítások = engedélyezés)|A hálózati virtuális hálózati átjáró mögött helyezi üzembe, és eltávolítja a társviszony-létesítési hozzáférés. Ha ezt a lehetőséget választja, minden tag kell használnia a kapcsolatot a virtuális hálózati átjáró kompatibilis.|Nyilvános IP-Címek privát virtuális hálózaton|Nyilvános IP-cím
@@ -314,7 +314,7 @@ Az üzembe helyezés befejezése után fogja tudni elérni a szükséges paramé
 
 -   Cégirányítási irányítópult URL-címe
 
--   Az Azure Monitor URL-címe
+-   Azure Monitor URL
 
 -   Adatok URL-címe
 
@@ -347,7 +347,7 @@ A nyilvános IP-alapú üzemelő példány használatával az első lépésekén
 
 1.  Az alábbi adatokat megoszthatja a csatlakozó tag. Ez az információ az üzembe helyezés utáni e-mailben vagy a portálon keresztüli üzembe helyezési kimenetében található.
 
-    -  Consortium adatok URL-címe
+    -  Consortium Data Url
 
     -  Már telepítette a csomópontok száma
 

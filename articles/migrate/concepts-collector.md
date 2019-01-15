@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104209"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262608"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -112,7 +112,7 @@ A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét
 **URL-cím** | **Részletek**  | **Az előfeltétel-ellenőrzés**
 --- | --- | ---
 *.portal.azure.com | Érvényes globális Azure-bA. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
-*. portal.azure.us | Csak az Azure Government alkalmazható. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
+*.portal.azure.us | Csak az Azure Government alkalmazható. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Töltse le a vCenter PowerCLI PowerShell modult használja. | Nem kötelező URL-címek elérését.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan kell.
 
 
@@ -126,12 +126,9 @@ A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét
 
 A gyűjtő a vCenter-kiszolgálóhoz csatlakozik, és lekérdezi a virtuális gépek metaadatait és a teljesítményszámlálók. Ez a kapcsolat szükséges.
 
-- Csak vCenter Server 5.5-ös, 6.0-s és 6.5-ös támogatja.
+- Csak vCenter Server 5.5-ös, 6.0-s, 6.5-ös és 6.7 támogatja.
 - A felderítés alább összefoglalt engedélyekkel egy csak olvasható fiók szükséges. A felderítés csak a fiók kódjával elérhető adatközpontok érhetők el.
 - Alapértelmezés szerint csatlakozik a vCenter Server-kiszolgáló teljes Tartománynevét vagy IP-címmel. Ha a vCenter-kiszolgáló egy másik porton figyel, kapcsolódik hozzá a képernyőn *IPAddress:Port_Number* vagy *FQDN:Port_Number*.
-- A tárolási és hálózatkezelési teljesítményadatok gyűjtése, vCenter statisztikai beállításait kiszolgáló kell beállítani a három szintre.
-- Ha szintje alacsonyabb, mint három, felderítésének működése, de a teljesítményadatok nem gyűjthetők. Néhány számlálót gyűjthető, de más nulla értékre lesz beállítva.
-- Nem gyűjti a teljesítményadatokat tárolási és hálózatkezelési, felmérési javaslatok a méretekkel kapcsolatban-e a CPU és memória és a lemez és a hálózati adapterek konfigurációs adatai alapján ügynökteljesítmény-adatokat.
 - A gyűjtő rendelkeznie kell egy hálózati üzemel a vCenter-kiszolgálóhoz.
 
 #### <a name="account-permissions"></a>Fiók engedélyei
@@ -152,7 +149,7 @@ A gyűjtő kommunikál a következő ábra és táblázat foglalja össze.
 --- | --- | ---
 Azure Migrate szolgáltatás | 443-as TCP | Gyűjtő SSL 443-as porton keresztül kommunikál az Azure Migrate szolgáltatással.
 vCenter Server | 443-as TCP | A gyűjtő képes kommunikálni a vCenter-kiszolgálóhoz kell lennie.<br/><br/> Alapértelmezés szerint csatlakozik a vCenter a 443-as porton.<br/><br/> Ha a vCenter-kiszolgáló egy másik porton figyel, erre a portra érhető el, a gyűjtő kimenő portként kell lennie.
-RDP | 3389-ES TCP |
+RDP | TCP 3389 |
 
 
 ## <a name="securing-the-collector-appliance"></a>A gyűjtőberendezés biztonságossá tétele
@@ -223,7 +220,7 @@ A gyűjtőberendezés minden virtuális géphez deríti fel a következő konfig
 
 **A számláló** |  **Értékelés gyakorolt hatás**
 --- | ---
-CPU.Usage.average | Javasolt Virtuálisgép-méretet és költség  
+cpu.usage.average | Javasolt Virtuálisgép-méretet és költség  
 mem.usage.average | Javasolt Virtuálisgép-méretet és költség  
 virtualDisk.read.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
 virtualDisk.write.average | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete

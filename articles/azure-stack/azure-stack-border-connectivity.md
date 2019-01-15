@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 12219e2df875d317aece73cabebdfb55115f7b41
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 51f9d2dbc8a0aef6dc84e76755a71eeb73149192
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021084"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262744"
 ---
 # <a name="border-connectivity"></a>Szegély kapcsolat 
 Hálózati integráció megtervezése egy fontos előfeltétel sikeres Azure Stackkel integrált rendszerek üzembe helyezés, a művelet és felügyeletéhez. Szegély kapcsolat tervezési kezdődik-e a border gateway protocol (BGP) dinamikus útválasztást használnak a kiválasztásával. A 16 bites BGP autonóm rendszer száma, (nyilvános vagy magán) hozzárendelése ehhez, vagy használja a statikus útválasztást, ahol az alapértelmezett statikus útvonal hozzá van rendelve a border eszközökhöz.
@@ -29,7 +29,7 @@ Hálózati integráció megtervezése egy fontos előfeltétel sikeres Azure Sta
 > Felső részén rack (TOR) kapcsoló szükséges a pont-pont típusú IP-címek a 3. rétegbeli kimenő kapcsolatok (/ 30 hálózatok) a fizikai adapteren konfigurált. 2. rétegbeli kimenő portok használata az Azure Stack műveleteket TOR-kapcsolók nem támogatott. 
 
 ## <a name="bgp-routing"></a>A BGP-Útválasztás
-Egy dinamikus útválasztási protokoll, mint a BGP használata garantálja, hogy a rendszer mindig ismeri a hálózati változásokat, és megkönnyíti a felügyeletet. Funkciójú biztonsági okokból jelszó lehet beállítani a BGP társviszony-létesítés a TOR és szegélye közötti. 
+Egy dinamikus útválasztási protokoll, mint a BGP használata garantálja, hogy a rendszer mindig ismeri a hálózati változásokat, és megkönnyíti a felügyeletet. A fokozott biztonság érdekében jelszó alapján lehet beállítani a BGP-t a TOR és szegélye közötti társviszony-létesítés. 
 
 Az alábbi ábrán látható, a privát IP-cím hirdetési a TOR-kapcsoló a hely le van tiltva előtag-lista használatával. Az előtagok listáját a hirdetés a privát hálózat megtagadja, és a TOR és szegélye közötti kapcsolat az útvonal-térkép alkalmazásának.
 

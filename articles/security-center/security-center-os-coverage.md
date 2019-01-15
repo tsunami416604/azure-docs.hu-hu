@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 1/9/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 98d2d29e7822d9ca97ba488fcf67298a0b40efbf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608834"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265464"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -74,10 +74,10 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 |Környezet|Azure|Nem Azure|Azure|Nem Azure|
 |VMBA fenyegetésészlelési riasztások|✔|✔|✔ (a támogatott verziók)|✔|
 |Hálózati fenyegetésészlelés riasztásai|✔|X|✔|X|
-|A Windows Defender ATP-integráció *|✔ (a támogatott verziók)|✔|X|X|
+|A Windows Defender ATP-integráció|✔ (a támogatott verziók)|✔|X|X|
 |Hiányzó javítások|✔|✔|✔|✔|
 |Biztonsági konfigurációk|✔|✔|✔|✔|
-|Kártevőirtó-programok|✔|✔|X|X|
+|Endpoint protection (Végpontok védelme)|✔|✔|X|X|
 |Virtuális gépek igény szerinti elérése|✔|X|✔|X|
 |Adaptív alkalmazásvezérlők|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
@@ -88,8 +88,27 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 |Hálózati térkép létrehozásához|✔|X|✔|X|
 |Az adaptív hálózati vezérlők|✔|X|✔|X|
 
-\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
 
+### <a name="supported-endpoint-protection-solutions"></a>Támogatott végpontvédelmi megoldások
+
+Az alábbi táblázat foglalja össze:
+ - Az Azure Security Center segítségével akár telepítheti Önnek az egyes megoldások.
+ - Melyik endpoint protection megoldásokat a Security Center képes felderíteni. Endpoint protection megoldást egyet felismernek, ha a Security Center nem ajánlott telepítését.
+
+| Endpoint Protection (Végpontok védelme)| Platformok | Security Center telepítése | Security Center felderítése |
+|------|------|-----|-----|
+| Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
+| System Center Endpoint Protection (Microsoft-kártevőirtó) | A Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
+| Trend Micro – Összes verzió | Windows Server termékcsalád  | Nem | Igen |
+| Symantec v12.1.1100+| Windows Server termékcsalád  | Nem | Igen |
+| McAfee v10+ | Windows Server termékcsalád  | Nem | Igen |
+| Kaspersky| Windows Server termékcsalád  | Nem | Nem  |
+| Sophos| Windows Server termékcsalád  | Nem | Nem  |
+
+> [!NOTE]
+> - System Center Endpoint Protection (SCEP) észlelése a Windows Server 2008 R2 virtuális gépeken szükséges SCEP után a PowerShell 3.0 (vagy egy felső verzió) kell telepíteni.
+>
+>
 
 ## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások 
 
@@ -97,8 +116,8 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 |Szolgáltatás|Javaslatok|Fenyegetések észlelése|
 |----|----|----|
 |SQL|✔| ✔|
-|PostGreSQL *|✔| ✔|
-|MySQL *|✔| ✔|
+|PostGreSQL*|✔| ✔|
+|MySQL*|✔| ✔|
 |Az Azure Blob storage fiókok *|✔| ✔|
 |App Services|✔| ✔|
 |Cloud Services|✔| X|
@@ -109,6 +128,8 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 |Előfizetés|✔| ✔|
 
 \* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat. 
+
+
 
 ## <a name="next-steps"></a>További lépések
 

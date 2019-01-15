@@ -1,26 +1,21 @@
 ---
-title: Elemzésekor vásárlók lemorzsolódásának – Azure Machine Learning Studióban |} A Microsoft Docs
+title: Vásárlók lemorzsolódásának elemzése
+titleSuffix: Azure Machine Learning Studio
 description: Esettanulmány fejlődő egy integrált modell és pontozása Azure Machine Learning Studio használatával, a vásárlók lemorzsolódásának elemzésére.
 services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
 ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: dbe853172c0f0e49408bd4a2dd630a69659421d3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272167"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260601"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
@@ -220,7 +215,7 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
 
 [2] Wikipedia-cikk: [Pontosság és a pontosság](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [SZÍNELOSZLÁS-DM 1.0-S: Részletes adatok adatbányászati útmutatója](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Részletes adatok adatbányászati útmutatója](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] [big Data típusú adatok Marketing: Az ügyfelek hatékonyabb megszólítása és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 

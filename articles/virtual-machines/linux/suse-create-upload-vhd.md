@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5aa998ef7af157f84a3985fdb458c2800f2575f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ecc29e9422c1d427dd76059f1a427f3d49da38f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249370"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262371"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -49,7 +49,7 @@ Ahelyett, hogy a saját virtuális merevlemez létrehozásához, mint SUSE is k�
         # sudo zypper update
 5. Az Azure Linux-ügynök telepítése a SLES adattárából:
    
-        # sudo zypper install WALinuxAgent
+        # sudo zypper install python-azure-agent
 6. Ha waagent értéke "on" felvétel chkconfig, és ha nem, akkor engedélyezze a autostart:
    
         # sudo chkconfig waagent on
@@ -91,7 +91,7 @@ Ahelyett, hogy a saját virtuális merevlemez létrehozásához, mint SUSE is k�
     
     Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), annak megfelelően módosítsa a következő paramétereket lévő /etc/waagent.conf:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa ezt a beállítást függetlenül kell legyen.
+     ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 15. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
     
         # sudo waagent -force -deprovision
@@ -140,7 +140,7 @@ Ahelyett, hogy a saját virtuális merevlemez létrehozásához, mint SUSE is k�
 7. Ajánlott a fájl szerkesztése "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Fontos:** "/ etc/sudoers", tegye megjegyzésbe, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
+8. **Fontos:** A "/ etc/sudoers" tegye megjegyzésbe, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
    
      Alapértelmezés szerint targetpw # kérje meg a jelszót a céloldali felhasználó pl. legfelső szintű összes ALL=(ALL) összes # figyelmeztetés! Csak ezzel együtt az 'Alapértelmezett targetpw'!
 9. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához.  Ez általában az alapértelmezett érték.
@@ -148,7 +148,7 @@ Ahelyett, hogy a saját virtuális merevlemez létrehozásához, mint SUSE is k�
     
     Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), annak megfelelően módosítsa a következő paramétereket lévő /etc/waagent.conf:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa ezt a beállítást függetlenül kell legyen.
+     ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 11. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
     
         # sudo waagent -force -deprovision

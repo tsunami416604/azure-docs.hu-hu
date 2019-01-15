@@ -11,24 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: ab61e1f892f46ad36df741b7a72afcfcbaa0ed87
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 26ce7139b856fc2f8d7d2cad549b3dd3c0f5e406
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376935"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304686"
 ---
 # <a name="manage-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés kezelése
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack egy felhasználó lehet egy olvasó, tulajdonos vagy közreműködő egy előfizetés, erőforráscsoport vagy szolgáltatás minden egyes példányánál. Például a felhasználó előfordulhat, hogy olvasó engedélye arra, hogy egy előfizetés, de a virtuális gép hét tulajdonosi engedélyekkel rendelkeznek.
 
- - Olvasó: A felhasználó, aki mindent megtekinthet, de nem módosíthatja.
- - Közreműködői: Felhasználói kivételével mindent felügyelhetnek erőforrásokhoz való hozzáférést.
+ - Olvasó: Felhasználó, aki mindent megtekinthet, de nem módosíthatja.
+ - Közreműködői: Felhasználók erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek.
  - Tulajdonos: Felhasználói mindent felügyelhetnek, beleértve az erőforrásokhoz való hozzáférést.
 
 ## <a name="set-access-permissions-for-a-user"></a>Egy felhasználó hozzáférési engedélyek beállítása

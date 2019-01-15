@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191071"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263356"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Hogyan tilthatja le a virtuális gépek figyelése és az Azure Monitor-beli virtuális gépek (előzetes verzió)
 
@@ -31,7 +31,7 @@ A virtuális gépek az Azure Monitor támaszkodik a felhasználói élményt ny�
 * Virtuális gépek és egyéb forrásokból gyűjtött Log Analytics-munkaterületet, amely tárolja a figyelési adatokat.
 * A munkaterületen, amely frissíti az összes virtuális gép figyelési konfiguráció beállítva teljesítményszámlálók gyűjtése a munkaterülethez csatlakozik.
 * A munkaterület - konfigurált két figyelési megoldások **InfrastructureInsights** és **ServiceMap**, amely a munkaterülethez kapcsolódó figyelési konfiguráció minden virtuális gépen.
-* Két Azure-beli virtuálisgép-bővítmények, a **MicrosoftMonitoringAgent** és a **DepenendencyAgent**, amelyek gyűjtése és adatokat küldeni a munkaterületen.
+* Két Azure-beli virtuálisgép-bővítmények, a **MicrosoftMonitoringAgent** és a **DependencyAgent**, amelyek gyűjtése és adatokat küldeni a munkaterületen.
 
 Ha letiltja a virtuális gépek figyelése és az Azure Monitor-beli virtuális gépek előkészítése, vegye figyelembe a következőket:
 
@@ -43,7 +43,7 @@ Ha letiltja a virtuális gépek figyelése és az Azure Monitor-beli virtuális 
 
 ## <a name="complete-removal-of-azure-monitor-for-vms"></a>Végezze el az Azure Monitor-beli virtuális gépek eltávolítása
 
-A következő lépések bemutatják, hogyan történő teljes eltávolításához az Azure Monitor-beli virtuális gépek, ha továbbra is szüksége van a Log Analytics-munkaterületet. Szeretné eltávolítani a **InfastructureInsights** és **ServiceMap** megoldások a munkaterületről.  
+A következő lépések bemutatják, hogyan történő teljes eltávolításához az Azure Monitor-beli virtuális gépek, ha továbbra is szüksége van a Log Analytics-munkaterületet. Szeretné eltávolítani a **InfrastructureInsights** és **ServiceMap** megoldások a munkaterületről.  
 
 >[!NOTE]
 >Ha a Service Map figyelési megoldás vissza az Azure Monitor engedélyezése virtuális gépekhez használja, és továbbra is használ, azt, ne távolítsa el ezt a megoldást alábbi 6. lépésben leírtak szerint.  

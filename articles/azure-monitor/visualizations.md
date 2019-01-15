@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 94769ea0ff05565ee11f7c167e28f239ca304d3d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: cea5cb924914cff1195520d6bd28a8b62fce8698
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213739"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264410"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
@@ -35,7 +35,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](../azure-monitor/platform/metrics-charts.md), [Log Analytics-lekérdezések](../azure-monitor/log-query/log-query-overview.md), és [térképek](../azure-monitor/app/app-map.md) és rendelkezésre állás az Application Insightsban.
 - Saját vagy megosztott irányítópultok beállítása. Az Azure-ral integrálva [szerepköralapú hitelesítést (RBAC)](../role-based-access-control/overview.md).
 - Automatikus frissítés. Metrikák frissítési időtartomány, legalább öt perc alatt függ. Naplók frissítése, egy perc.
-- Paraméteres metrikák irányítópultok időbélyeg és egyéni paraméterekkel.
+- A paraméteres metrikák irányítópultok időbélyeg és egyéni paraméterekkel.
 - Rugalmas elrendezés beállításai.
 - Teljes képernyős módban.
 

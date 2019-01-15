@@ -14,15 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5f6334f80b9c48832facba97b816d254baeb94bc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5cb1fe623062816955278da7b0a9e63cbc19254
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341303"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258475"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Az Azure Security Center tároló kapcsolatos javaslatok megértése
 
+A migrálás az monolit alkalmazások futtatása az alapvető fontosságú, tárolóalapú natív alkalmazások éles környezetben kihasználhatja a tárolók, beleértve az egyszerű és gyors üzembe helyezés és frissítés funkcióit. Üzembe helyezett tárolók száma továbbra is nő, ahogy biztonsági megoldásokat nyújt betekintést a tárolókat biztonsági állapotát, és azokat fenyegetésekkel szembeni hatékony védelmét biztosítani kell, kell.
+
+Az Azure Security Center segítségével biztosíthatja a tárolókat az alábbi képességeket biztosítja:
+
+- **IaaS-on üzemeltetett tárolók betekintést Linux rendszerű gépeken**<br>Az Azure Security Centerben a tárolók megjeleníti a docker használatával telepített összes virtuális gép. Ha a biztonsági problémák feltárása a virtuális gépen, a Security Center a gépet, mint például a Docker verziója és a gazdagépen futó képek száma a tárolókkal kapcsolatos további információkat biztosít.
+
+    ![tároló lap](./media/security-center-container-recommendations/docker-recommendation.png)
+
+
+- **Biztonsági javaslatok alapján CIS referenciaalap dockerhez**<br>A Security Center megvizsgálja a Docker-konfigurációk, és azáltal, hogy az összes sikertelen szabályok sikeresen vizsgált konfigurációs hibáinak betekintést nyújt. A Security Center segít a problémák gyors megoldásához, és ezzel időt takaríthat vonatkozó útmutatást tartalmazza. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és amelyről az állapotukat.
+
+    ![tároló lap](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+- **Valós idejű tároló fenyegetésészlelés**<br> A Security Center AuditD összetevővel Linuxos gépeken a tárolókhoz a valós idejű fenyegetésészlelés biztosít. A riasztások azonosítják a Docker gyanús tevékenységek például a gazdagépen, arra utalhat, hogy a Secure Shell (SSH) kiszolgáló belüli egy Docker-tárolót, vagy a titkosítási használja használatát egy emelt szintű tároló létrehozása. Ez az információ segítségével gyorsan biztonsági problémák elhárítására és a tárolók biztonságának fokozása érdekében.
+
+    ![tároló lap](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Javaslatok
 Használja az alábbi táblázatokban referenciaként segítenek megérteni a rendelkezésre álló tárolók üzemeltetett IaaS Linuxos gépeken és a biztonsági értékelése a Docker-konfigurációját.

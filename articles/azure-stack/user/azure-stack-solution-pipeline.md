@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 49f1d7e1fac1125984f7376cffdcaf2e60f5611b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 984f6713445b53429758d616945a6e64245b42bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247877"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263220"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
 
@@ -254,7 +254,7 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 2. A **beállítások**válassza **biztonsági**.
 3. A **Azure fejlesztési és üzemeltetési szolgáltatások csoportok**válassza **végpont alkotói**.
 
-    ![A létrehozók NorthwindCloud végpont](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
+    ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
 
 4. Az a **tagok** lapon jelölje be **Hozzáadás**.
 
@@ -264,7 +264,7 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 6. Válassza ki **módosítások mentése**.
 7. Az a **Azure fejlesztési és üzemeltetési szolgáltatások csoportok** listáról válassza ki **végpont rendszergazdák**.
 
-    ![A rendszergazdák NorthwindCloud végpont](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
+    ![NorthwindCloud Endpoint Administrators](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
 
 8. Az a **tagok** lapon jelölje be **Hozzáadás**.
 9. A **felhasználók és csoportok hozzáadása**, írjon be egy felhasználónevet, és válassza ki, hogy a felhasználó a felhasználók listájából.
@@ -283,13 +283,13 @@ Használatával a következő hozzárendelést szolgáltatás kapcsolatot hozhat
 | Name (Név) | Példa | Leírás |
 | --- | --- | --- |
 | Kapcsolat neve | Az Azure Stack Azure ad-ben | A kapcsolat neve. |
-| Környezet | 1.2.9-es | A környezet neve. |
+| Környezet | AzureStack | A környezet neve. |
 | Környezet URL-címe | `https://management.local.azurestack.external` | A felügyeleti végpontra. |
 | Hatókör szintjén | Előfizetés | A kapcsolat hatókörének. |
 | Előfizetés azonosítója | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Az Azure Stack felhasználói előfizetés azonosítója |
 | Előfizetés neve | name@contoso.com | Az Azure Stack felhasználói előfizetés neve |
-| Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-OS-93FC-C63E6E021D59 | A résztvevő-Azonosítóval [ez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben. |
-| Egyszerű szolgáltatásnév kulcsa | THESCRETGOESHERE = | A kulcs az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta). |
+| Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | A résztvevő-Azonosítóval [ez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben. |
+| Egyszerű szolgáltatásnév kulcsa | THESCRETGOESHERE= | A kulcs az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta). |
 | Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
 | Kapcsolat: | Nincs ellenőrizve | Ellenőrizze az egyszerű szolgáltatás kapcsolati beállításokat. |
 
@@ -308,12 +308,12 @@ Használatával a következő hozzárendelést szolgáltatás kapcsolatot hozhat
 | Name (Név) | Példa | Leírás |
 | --- | --- | --- |
 | Kapcsolat neve | Az Azure Stack ADFS | A kapcsolat neve. |
-| Környezet | 1.2.9-es | A környezet neve. |
+| Környezet | AzureStack | A környezet neve. |
 | Környezet URL-címe | `https://management.local.azurestack.external` | A felügyeleti végpontra. |
 | Hatókör szintjén | Előfizetés | A kapcsolat hatókörének. |
 | Előfizetés azonosítója | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Az Azure Stack felhasználói előfizetés azonosítója |
 | Előfizetés neve | name@contoso.com | Az Azure Stack felhasználói előfizetés neve |
-| Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-OS-93FC-C63E6E021D59 | Az egyszerű szolgáltatás ügyfél-Azonosítót hozott létre az AD FS-hez. |
+| Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Az egyszerű szolgáltatás ügyfél-Azonosítót hozott létre az AD FS-hez. |
 | Tanúsítvány | `<certificate>` |  A tanúsítványfájl konvertálása PFX PEM. Tanúsítvány PEM-fájl tartalmának illessze be ezt a mezőt. <br> PEM konvertálása PFX:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
 | Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
 | Kapcsolat: | Nincs ellenőrizve | Ellenőrizze az egyszerű szolgáltatás kapcsolati beállításokat. |
@@ -360,7 +360,7 @@ CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja.
 
 1. Jelentkezzen be a szervezet, amely egy build folyamatot hozhat létre az Azure DevOps-szolgáltatásokkal.
 
-2. Keresse meg a **hozhat létre webes Applicaiton** a projekt lapját.
+2. Keresse meg a **webes alkalmazás készítése** a projekt lapját.
 
 3. A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET használatával aktiválásához szükséges alapvető.
 

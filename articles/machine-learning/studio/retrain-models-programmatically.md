@@ -1,26 +1,8 @@
 ---
-title: Modellek újbóli betanítása Machine Learning Studio – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan programozott újratanítás PowerShell-modell használatával C# és a Machine Learning Batch Execution service.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257393"
+Cím: Teljesített kapcsolat-újraépítési Machine Learning Studio modellek titleSuffix: Azure Machine Learning Studio description: Ismerje meg, hogyan programozott újratanítás PowerShell-modell használatával C# és a Machine Learning Batch Execution service.
+szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Az Azure Machine Learning Studio-modellek újbóli betanítása
 Ebben a forgatókönyvben megtudhatja, hogyan való programozott újratanítás PowerShell használatával az Azure Machine Learning Studio webes szolgáltatás C# és a Machine Learning Batch Execution service.

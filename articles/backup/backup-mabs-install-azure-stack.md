@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: raynew
-ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 31052276f06c5afdf78bf094637b7f60be4acbec
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877167"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262727"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -35,15 +35,15 @@ Az Azure Backup Server védi az Azure Stack következő virtuális gépek szám�
 | --------------------- | ----------------------- |
 | A Windows Server félig féléves csatorna – Datacenter és Enterprise/Standard | Kötetek, fájlok, mappák |
 | A Windows Server 2016 – Datacenter és Enterprise/Standard | Kötetek, fájlok, mappák |
-| A Windows Server 2012 R2 – Datacenter és Enterprise/Standard | Kötetek, fájlok, mappák |
-| A Windows Server 2012 – Datacenter/Entprise/Standard | Kötetek, fájlok, mappák |
-| A Windows Server 2008 R2 – Datacenter és Enterprise/Standard | Kötetek, fájlok, mappák |
+| Windows Server 2012 R2 - Datacenter/Enterprise/Standard | Kötetek, fájlok, mappák |
+| Windows Server 2012 - Datacenter/Enterprise/Standard | Kötetek, fájlok, mappák |
+| Windows Server 2008 R2 - Datacenter/Enterprise/Standard | Kötetek, fájlok, mappák |
 | SQL Server 2016 | Adatbázis |
 | SQL Server 2014 | Adatbázis |
-| Az SQL Server 2012 SP1 | Adatbázis |
-| A SharePoint 2016 | Farm, adatbázis, előtér, webkiszolgáló |
+| SQL Server 2012 SP1 | Adatbázis |
+| SharePoint 2016 | Farm, adatbázis, előtér, webkiszolgáló |
 | SharePoint 2013 | Farm, adatbázis, előtér, webkiszolgáló |
-| A SharePoint 2010 | Farm, adatbázis, előtér, webkiszolgáló |
+| SharePoint 2010 | Farm, adatbázis, előtér, webkiszolgáló |
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Az Azure Backup Server környezetre vonatkozó Előfeltételek
 
@@ -90,7 +90,7 @@ Az Azure Backup Server virtuális gépet egy tartományhoz kell csatlakoznia. Re
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Az IaaS virtuális gépek használata az Azure Stackben
 
-Amikor kiválasztja, a kiszolgáló Azure Backup Server, indítsa el a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter katalógus-lemezkép. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), biztosít a virtuális gép javasolt – első lépések oktatóanyag. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell: két maggal és 3,5 GB RAM a Standard A2.
+Amikor kiválasztja, a kiszolgáló Azure Backup Server, indítsa el a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter katalógus-lemezkép. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), biztosít a virtuális gép javasolt – első lépések oktatóanyag. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell lennie: A2 méretű standard szintű két maggal és 3,5 GB RAM.
 
 Az Azure Backup Server számítási feladatok védelmét már sok apró sajátosságaival. A cikk [DPM telepítése Azure virtuális gépként](https://technet.microsoft.com/library/jj852163.aspx), segít ismertetik ezeket a vállalatánál. A gép üzembe helyezése előtt olvassa el ebben a cikkben teljesen.
 
@@ -217,7 +217,7 @@ Az Azure Backup Server a Data Protection Managerrel oszt meg a kódot. Látni fo
 
     ![Az Azure Backup Server – Üdvözöljük és az Előfeltételek ellenőrzése](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Ha a környezetben a szükséges előfeltételeket, látni fogja a egy üzenet jelzi, hogy a gép megfelel-e a követelményeknek. Kattintson a **Tovább** gombra.  
+    Ha a környezetben a szükséges előfeltételeket, látni fogja a egy üzenet jelzi, hogy a gép megfelel-e a követelményeknek. Kattintson a **tovább**.  
 
     ![Az Azure Backup Server – Előfeltételek ellenőrzésén](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -241,13 +241,13 @@ Az Azure Backup Server a Data Protection Managerrel oszt meg a kódot. Látni fo
 
 5. Az a **telepítési beállítások**, adja meg a Microsoft Azure Backup server-fájlok a telepítés helyét, és kattintson a **tovább**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
     Az ideiglenes hely szükséges biztonsági mentése az Azure-bA. Győződjön meg arról, az ideiglenes hely mérete az adatok biztonsági mentése az Azure-bA tervezett legalább 5 %-ával egyenlő. A lemezvédelem különböző lemezen a telepítés befejezése után konfigurálni kell. Tárolókészletek kapcsolatos további információkért lásd: [konfigurálhatók a tárolókészletek és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
 
 6. Az a **biztonsági beállítások** képernyőn adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, kattintson a **tovább**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
 7. Az a **a Microsoft Update Opt-In** képernyőn, adja meg, hogy a használni kívánt *Microsoft Update* keressen frissítéseket, és kattintson a **tovább**.
 
@@ -255,17 +255,17 @@ Az Azure Backup Server a Data Protection Managerrel oszt meg a kódot. Látni fo
    > Javasoljuk, hogy a Windows Update átirányítása a Microsoft Update szolgáltatásban, amely a biztonsági és fontos frissítéseket kínál a Windows- és egyéb termékek, mint a Microsoft Azure Backup Server.
    >
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. Tekintse át a *beállítások összefoglalása* kattintson **telepítése**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
     Befejeztével az Azure Backup Server telepítése a telepítő azonnal elindítja a Microsoft Azure Recovery Services ügynököt telepítő.
 
 9. A Microsoft Azure Recovery Services Agent telepítőjének megnyílik, és internetkapcsolat ellenőrzése. Internetkapcsolat érhető el, ha a telepítés folytatásához. Ha nincs kapcsolat, adja meg a proxy adatait az internethez való kapcsolódáshoz. A proxybeállítások megadása után kattintson a **tovább**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
 10. A Microsoft Azure Recovery Services Agent telepítéséhez kattintson **telepítése**.
 

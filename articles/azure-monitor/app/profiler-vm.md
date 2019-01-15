@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e8f80e7d19a961c22b4e1e88556ac165d2558034
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 764088e7f463f0c249f176514d485944d9c9d76e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082739"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264631"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Egy Azure virtuális gép vagy virtuálisgép-méretezési csoportot az Application Insights Profiler futó webalkalmazások profil
 Ezek a szolgáltatások az Application Insights profiler is telepítheti:
@@ -53,7 +53,7 @@ Ezen a lapon végigvezeti Önt a lépéseket szükség az Application Insights p
 
    A alkalmazni a módosításokat, általában magában foglalja egy teljes körű sablonalapú telepítés vagy a PowerShell-parancsmagok vagy a Visual Studio közzététel-alapú felhőszolgáltatás.  
 
-   A következő powershell-parancsok egy alternatív módszer meglévő virtuális gépek csak az Azure Diagnostics bővítmény érintő. Egyszerűen adja hozzá a Config a Get-AzureRmVMDiagnosticsExtension parancs által visszaadott a fentieknek megfelelően a ProfilerSink. Ezután adja meg a frissített konfiguráció a Set-AzureRmVMDiagnosticsExcension parancsot.
+   A következő powershell-parancsok egy alternatív módszer meglévő virtuális gépek csak az Azure Diagnostics bővítmény érintő. Egyszerűen adja hozzá a Config a Get-AzureRmVMDiagnosticsExtension parancs által visszaadott a fentieknek megfelelően a ProfilerSink. Ezután adja meg a frissített konfiguráció a Set-AzureRmVMDiagnosticsExtension parancsot.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()

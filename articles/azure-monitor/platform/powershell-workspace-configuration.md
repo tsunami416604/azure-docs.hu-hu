@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: b8b3b28d2bf7fc75b9f70d145290af1edf44c94f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: a77406fd6a466ed92f6eb3ed3401e987831e3da0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063181"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267292"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
 Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) parancssori vagy parancsfájl részeként különféle funkciók végrehajtásához a Log Analyticsben.  A PowerShell használatával is elvégezheti a feladatok közé:
@@ -173,7 +173,7 @@ New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupNam
 Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
-New-AzureRmOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernal syslog collection"
+New-AzureRmOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernel syslog collection"
 Enable-AzureRmOperationalInsightsLinuxSyslogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Windows Event
@@ -190,17 +190,17 @@ A fenti példában regexDelimiter van definiálva "\\n" az új sor. A napló elv
 
 | Formátum | JSON RegEx formátumot használ, két \\ számára minden \ standard reguláris kifejezést az, ha a tesztelés RegEx alkalmazásban csökkentheti \\ való \ |
 | --- | --- |
-| ÉÉÉÉ-HH-NN ÓÓ | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\ \\d)) \\ \\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| ÉÉÉÉ-HH-NN ÓÓ | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
 | H/ÉÉÉÉ ÓÓ: PP: MP DE/DU | (([0-1]\\\\d)\|[0-9]) / (([0 – 3]\\\\d)\|(\\\\d)) / ((\\\\d{2})\|() \\ \\d{4}))\\\\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])): [0 – 5] [0-9]: [ 0 – 5] [0-9]\\\\s (AM\|PM\|vagyok\|pm) |
 | nn/MMM/éééé óó | ((([0 – 3]\\\\d)\|(\\\\d)) / (Jan\|február\|március\|május\|Diagramhalmazban\|júliusban\|június\|Aug\|Oct\|Sep\|november\|DEC.\|jan\|február\|dát\|előfordulhat, hogy\|diagramhalmazban\|júliusban\|június\|aug\|oct\|sep\|november\|DEC.) / ((\\\\d{2})\|(\\\\d{4})) \\ \\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]) |
 | MMM nn-éééé óó | (((?: Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|Előfordulhat, hogy\|Jun(?:e)?\| JUL(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Szeptembertől\|Oct(?:o ismétlés)? \|Nov(?:ember)? \|Dec(?:ember)?)). *? ((?: (?: [0, 2]? \\ \\d{1})\|(?: [3] [01]{1}))) (?! [\\\\d]).* ? ((?: (?: [1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?: [2]{1} \\ \\d{3}))) (?! [\\\\d]). *? ((?: (?: [0-1][0-9])\|(?: [2][0-3])\|(?: [0-9])):(?:[0-5][0-9])(?::[0-5][0-9])? (?:\\\\s? (?: am\|AM\|pm\|PM))?)) |
-| ééhhnn óó | ([0-9]{2}([0] [1 – 9]\|[1][0-2]) ([0-2] [0-9]\|[3][0-1])\\\\s\\\\s? () [0-1]? [0-9] \|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
-| ddMMyy óó | (([0-2] [0-9]\|[3][0-1]) ([0] [1 – 9]\|[0-9] 1][0-2]){2}\\\\s\\\\s? () [0-1]? [0-9] \|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
+| ééhhnn óó | ([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
+| ddMMyy óó | (([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
 | MMM d óó | (Jan\|február\|március\|Diagramhalmazban\|előfordulhat, hogy\|június\|júliusban\|Aug\|Sep\|Oct\|november\|DEC.)\\ \\s\\\\s? () [0]? [1 – 9] \|[1 – 2] [0-9]\|[3][0-1])\\\\s ([0-1]? [ 0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9]) |
 | MMM d óó<br> MMM után két szóköz | (Jan\|február\|március\|Diagramhalmazban\|előfordulhat, hogy\|június\|júliusban\|Aug\|Sep\|Oct\|november\|DEC.)\\ \\s\\\\s ([0]? [ 1 – 9]\|[1 – 2] [0-9]\|[3][0-1])\\\\s ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
 | MMM d óó | (Jan\|február\|március\|Diagramhalmazban\|előfordulhat, hogy\|június\|júliusban\|Aug\|Sep\|Oct\|november\|DEC.)\\ \\s ([0]? [ 1 – 9]\|[1 – 2] [0-9]\|[3][0-1])\\\\s ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
 | nn/MMM/yyyy:HH:mm:ss + zzzz<br> hol van + + vagy a -<br> ahol zzzz idő eltolása | (([0-2] [1 – 9]\|[3][0-1])\\\\/ (Jan\|február\|március\|Diagramhalmazban\|május\|június\|júliusban\|Aug\|Sep \|Oct\|november\|DEC.)\\\\/((19\|20) [0-9] [0-9]): ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\ \\s [\\\\+\|\\\\-] [0-9]{4}) |
-| éééé-hh-nnTóó: pp:<br> A T T szövegkonstans betűvel | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\ \\d)) T ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| yyyy-MM-ddTHH:mm:ss<br> A T T szövegkonstans betűvel | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>A Log Analytics indexelése az Azure diagnostics konfigurálása
 Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrásokat az Azure diagnostics engedélyezni és konfigurálni a Log Analytics-munkaterület írni rendelkeznie kell. Ez a megközelítés elküldi az adatokat közvetlenül a Log Analyticshez, és nem szükséges egy tárfiókba írható adat. Támogatott erőforrások közé tartoznak:

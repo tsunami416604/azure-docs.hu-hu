@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 40e925fff9d87d8590ea3a83be9e7d93a84d6e26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865233"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266654"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Hozzon létre a tevékenységfüggőségek, amely más tevékenységektől függő feladatok
 
@@ -79,7 +79,7 @@ Három is használhatja az Azure Batch alapvető feladat függőségi forgatók�
 |:---:| --- | --- |
 |  [One-to-one](#one-to-one) |*taskB* függ *taskA* <p/> *taskB* a végrehajtása nem sikerült ütemezni *taskA* sikeresen befejeződött |![Ábra:-az-egyhez tevékenységfüggőség][1] |
 |  [-A-többhöz](#one-to-many) |A *taskC* a *taskA* és a *taskB* tevékenységtől is függ <p/> *taskC* végrehajtás, amíg nem sikerült ütemezni *taskA* és *taskB* sikeresen befejeződött |![Ábra: egy-a-többhöz tevékenységfüggőség][2] |
-|  [A feladat tartomány](#task-id-range) |*taskD* feladatok számos függ <p/> *taskD* az azonosítók a feladatok végrehajtása nem sikerült ütemezni *1* keresztül *10* sikeresen befejeződött |![Ábra: Feladat azonosítója tartomány függőség][3] |
+|  [A feladat tartomány](#task-id-range) |*taskD* feladatok számos függ <p/> *taskD* az azonosítók a feladatok végrehajtása nem sikerült ütemezni *1* keresztül *10* sikeresen befejeződött |![Ábra: Id tartomány tevékenységfüggőség][3] |
 
 > [!TIP]
 > Létrehozhat **több-a-többhöz** kapcsolatok, például a, C, D, E, és F egyes feladatok függ-e a és b feladatok Ez akkor hasznos, például a párhuzamos működésű előfeldolgozási forgatókönyvek, ahol a feladat függ-e több felsőbb rétegbeli tevékenység kimenetét.
@@ -123,7 +123,7 @@ A függőség létrehozása, adja meg az első és utolsó tevékenység-azonos�
 > [!IMPORTANT]
 > A függőségek tevékenység azonosítója címtartományok használatakor azonosítóit jelölő egész számok feladatok csak a tartomány által lesz kiválasztva. Ezért a tartomány `1..10` választ ki a feladatok `3` és `7`, azonban nem `5flamingoes`. 
 > 
-> Nullákat esetén nem áll funkcionalitás kiértékelése tartomány függőségeket, így a feladatokat a karakterlánc-azonosítók `4`, `04` és `004` lesz, minden *belül* , és a tartomány összes tekintendők feladat`4`, így az elsőt végrehajtásához eleget tesz a függőséget.
+> Nem jelentősek el nullákat, tartomány függőségek kiértékelésekor, így a feladatokat a karakterlánc-azonosítók `4`, `04` és `004` lesz, minden *belül* , és a tartomány összes tekintendők feladat`4`, így az elsőt végrehajtásához eleget tesz a függőséget.
 > 
 > A tartomány minden feladatot meg kell felelniük a függőség, folyamat sikeres végrehajtása vagy befejezése, amely le van képezve egy függőségi beállítású műveletet hibával **Satisfy**. Tekintse meg a [függőségi műveletek](#dependency-actions) című szakasz részletezi.
 >

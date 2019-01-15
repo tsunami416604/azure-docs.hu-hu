@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dd475c776a3cdb4f2281b9b5468968745024ac
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215167"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265209"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Használja őket egységes előtérrendszerként több Azure Monitor az Application Insights-erőforrást 
 Ez a cikk bemutatja, hogyan lekérdezéséhez és az összes Application Insights alkalmazás log adatok megtekintése az egyik helyen, akkor is, ha azokat az Azure-előfizetések, az Application Insights-összekötő elavulása helyettesítője.  
@@ -64,7 +64,7 @@ applicationsScoping //this brings data from Application Insights resources
 | where success == 'False' 
 | where duration > 1000 
 | union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics worspace 
+    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
     | where TimeGenerated < (datetime("2018-12-01") 
     | where RequestSuccess == 'False' 
     | where RequestDuration > 1000 
@@ -82,7 +82,7 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 
 | Log Analytics-munkaterület tulajdonságai| Application Insights erőforrás-tulajdonságok|
 |------------|------------| 
-| AnonUserId | a USER_ID paraméter értékét|
+| AnonUserId | user_id|
 | Alkalmazásazonosító | appId|
 | Alkalmazásnév | Alkalmazásnév|
 | ApplicationTypeVersion | application_Version |
@@ -97,7 +97,7 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | Város | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
-| Ország | a client_CountryOrRegion | 
+| Ország | client_CountryOrRegion | 
 | CustomEventCount | az elemek száma | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | név | 
@@ -107,13 +107,13 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
 | ExceptionType | type |
-| Műveletazonosító: | műveletazonosítója |
-| OperationName | opeation_Name | 
+| Műveletazonosító: | operation_id |
+| OperationName | operation_Name | 
 | Operációs rendszer | client_OS | 
 | PageViewCount | az elemek száma |
 | PageViewDuration | időtartam | 
 | PageViewName | név | 
-| ParentOpeartionID | operation_Id | 
+| ParentOperationID | operation_Id | 
 | RequestCount | az elemek száma | 
 | RequestDuration | időtartam | 
 | Kérelemazonosító: | id | 
@@ -122,7 +122,7 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | ResponseCode | Eredménykód | 
 | Szerepkör | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
-| munkamenet-azonosító | munkamenet-azonosítónak | 
+| munkamenet-azonosító | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
 | URL-cím | _url |

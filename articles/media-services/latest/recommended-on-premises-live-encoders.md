@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 12/14/2018
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d1110669bd0ca8c0ba0caf34ef41861c500bdd33
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4d25e4cd94fec35f31594544b619aa054a35d58d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790028"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302340"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő streamelési kódolók
 
@@ -40,8 +40,8 @@ A Media Services RTMP kimenetként rendelkező következő élő kódolók egyik
 - Az Adobe Flash Media Live Encoder 3.2-es verzióját
 - Haivision KB
 - Haivision Makito X HEVC
-- OBS-Studio
-- Környezetválasztó Studio (iOS)
+- OBS Studio
+- Switcher Studio (iOS)
 - Telestream Wirecast 8.1 +
 - Telestream Wirecast S
 - Teradek szelet 756
@@ -52,10 +52,10 @@ A Media Services RTMP kimenetként rendelkező következő élő kódolók egyik
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Élő kódolók képesek kimeneti töredékes MP4
 
-A Media Services a következő élő kódolók többféle sávszélességű Smooth Streaming (töredékes-MP4) kimenetként rendelkező egyikének használatát javasolja. A támogatott URL-sémák a `rtmp://` vagy `rtmps://`.
+A Media Services a következő élő kódolók többféle sávszélességű Smooth Streaming (töredékes-MP4) kimenetként rendelkező egyikének használatát javasolja. A támogatott URL-sémák a `http://` vagy `https://`.
 
-- Élő TITAN Ateme
-- Cisco digitális Media Encoder 2200
+- Ateme TITAN Live
+- Cisco Digital Media Encoder 2200
 - Elemental Live
 - Envivio 4Caster C4 csomag általános III.
 - Az Imagine Communications Selenio MCP3

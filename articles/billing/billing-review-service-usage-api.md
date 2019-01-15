@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: erikre
-ms.openlocfilehash: bddb72f2b76d6e652dd26f2e383b7d06fded881b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 297b1d5e683a8ad505a37c43ab74c8b888ec87f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395457"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265753"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Tekintse át az Azure erőforrás-használati REST API használatával
 
@@ -39,7 +39,7 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-A `{subscriptionGuid}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosító, amely az API-jogkivonat a hitelesítő adatok provieed használatával olvashatja. a `{reportName}`
+A `{subscriptionGuid}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosító, amely az API-jogkivonatot a megadott hitelesítő adatokkal is olvasható. a `{reportName}`
 
 A következő fejléceket szükség: 
 
@@ -146,7 +146,7 @@ A `Resource` dimenzió lehetővé teszi az erőforrások költségek jelentése.
 
 ### <a name="changing-timeframes"></a>Változó időkeretének meghatározása
 
-Állítsa be a `timeframe` definíciót `Custom` egy időkereten kívül a hét beállítani a dátumot és a hónap, dátum, a beállítások területen.
+Állítsa be a `timeframe` definíciót `Custom` dátumának hónap, dátum beépített beállításai és a egy időkereten kívül a hét beállítása.
 
 ```json
 "timeframe": "Custom",

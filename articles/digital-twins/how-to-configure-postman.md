@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: adgera
-ms.openlocfilehash: a5d0b6abdee44bdd1e174fa2c8551fbeac768e5d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 49b073952b0923b940204b19680dcc9a1ffa44b5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232634"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259274"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
@@ -102,7 +102,7 @@ Az előző lépések végrehajtását követően, hogy egy hitelesített többr�
 
 1. Nem szöveges adatok szerializálása fájlokba. JSON-adatok JSON-fájlként menti.
 1. Alatt a **törzs** lapon maradva adja hozzá az egyes fájlok hozzárendelésével egy **kulcs** név kiválasztása `file` vagy `text`.
-1. Ezután válassza ki a fájlt keresztül a **fájl kiválasztása** gombra.
+1. Ezután válassza ki az egyes fájlok keresztül a **fájl kiválasztása** gombra.
 
    ![Postman-ügyfél példa][5]
 

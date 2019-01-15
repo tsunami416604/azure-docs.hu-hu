@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5a9859fda2c6cac6acf08c8dcca3a0ce205d2e15
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379712"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302731"
 ---
 # <a name="tenant-resource-usage-api"></a>Bérlői erőforrás-használati API
 
@@ -82,9 +82,9 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | *subscriptionId* |Az Azure-felhasználó az előfizetés-azonosító |
 | *usageStartTime* |A használati gyűjtőhöz, amelyhez a használat összesítés tartozik, kezdete (UTC) |
 | *usageEndTime* |A használati gyűjtőhöz, amelyhez a használat összesítés tartozik befejezési időpontja (UTC) |
-| *instanceData* |Példány adatai (a új formátum) kulcs-érték párt:<br>  *resourceUri*: teljesen minősített erőforrás-azonosító, beleértve az erőforráscsoportok és a példány neve <br>  *hely*: a régió, amelyben ez a szolgáltatás volt futtatva <br>  *a címkék*: a felhasználó által az erőforráscímkék <br>  *További információ*: operációs rendszer verziója vagy a kép típusa a felhasznált, például az erőforrással kapcsolatos további részletek |
+| *instanceData* |Példány adatai (a új formátum) kulcs-érték párt:<br>  *resourceUri*: Teljesen minősített erőforrás-azonosító, beleértve az erőforráscsoportok és a példány neve <br>  *Hely*: Régió, amelyben ez a szolgáltatás volt futtatva <br>  *A címkék*: A felhasználó által az erőforráscímkék <br>  *additionalInfo*: Írja be a további részleteket az erőforrást a felhasznált, például az operációsrendszer-verzió vagy a kép |
 | *Mennyiség* |Ezen az időn a következő erőforrás-használat mennyisége |
-| *MeterId* |A felhasznált erőforrás egyedi azonosítója (más néven *ResourceID*) |
+| *meterId* |A felhasznált erőforrás egyedi azonosítója (más néven *ResourceID*) |
 
 
 ## <a name="next-steps"></a>További lépések
