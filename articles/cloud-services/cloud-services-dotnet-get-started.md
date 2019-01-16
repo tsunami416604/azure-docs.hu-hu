@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 59354b7f4a1a82d1fa2fd105bd743ecb73526434
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 966536b7129a91f4c6fd8dd7bf0270be660bdf81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716106"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332064"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -357,7 +357,7 @@ A megoldás létrehozása után áttekinti a felhőszolgáltatás-projektekre n�
 
 ### <a name="set-project-references"></a>A projekt hivatkozásainak beállítása
 1. A ContosoAdsWeb projektben állítson be egy hivatkozást a ContosoAdsCommon projektre. Kattintson a jobb gombbal a ContosoAdsWeb projektre, majd kattintson a **References** - **Add References** (Hivatkozások, Hivatkozások hozzáadása) elemre. A **Hivatkozáskezelő** párbeszédpanelen válassza a bal oldali ablaktáblában lévő **Megoldás – Projektek**, majd a **ContosoAdsCommon** lehetőséget, és végül kattintson az **OK** gombra.
-2. A ContosoAdsWorker projektben állítson be egy hivatkozást a ContosAdsCommon projektre.
+2. A ContosoAdsWorker projektben állítson be egy hivatkozást a ContosoAdsCommon projektre.
 
     A ContosoAdsCommon tartalmazza az Entity Framework-adatmodellt és a környezeti osztályt, amelyet az elő- és a háttéralkalmazás egyaránt használ.
 3. A ContosoAdsWorker projektben állítson be egy hivatkozást a következőre: `System.Drawing`.
@@ -380,7 +380,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 3. A ContosoAdsCloudService projektben a **Szerepkörök** területen kattintson a jobb gombbal a ContosoAdsWeb elemre, majd kattintson a **Tulajdonságok** elemre.
 
     ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. A **ConosoAdsWeb [Szerepkör]** tulajdonságok ablakában kattintson a **Beállítások** lapra, majd kattintson a **Beállítás hozzáadása** elemre.
+4. Az a **ContosoAdsWeb [szerepkör]** tulajdonságok ablakában kattintson a **beállítások** fülre, majd **beállítás hozzáadása**.
 
     A **Service Configuration** (Szolgáltatáskonfiguráció) **All Configurations** (Minden konfiguráció) értékét ne módosítsa.
 5. Adjon hozzá egy *StorageConnectionString* névvel ellátott beállítást. A **Típus** beállítása legyen *ConnectionString*, az **Érték** beállítása pedig *UseDevelopmentStorage=true*.
