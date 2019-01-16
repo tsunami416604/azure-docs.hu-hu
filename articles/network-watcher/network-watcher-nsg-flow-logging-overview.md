@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: addd901e1b3a9bb537278082763081a7e39b21da
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824285"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332302"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok csoportforgalom naplózása
 
@@ -33,10 +33,12 @@ A Folyamatnaplók cél NSG-k, amíg azok nem jelennek meg ugyanaz, mint a többi
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
- 
+Forgalmi naplók elemzése, és betekintést nyerhet a hálózati forgalom használatával [traffic analytics](traffic-analytics.md).
+
 Forgalmi naplók más naplók látható ugyanazon adatmegőrzési szabályzatok érvényesek. Napló adatmegőrzési 1 nap és 2147483647 nap beállítása. Ha nincs beállítva adatmegőrzési szabály, a naplók megőrzése korlátlan időre szól.
 
-Folyamatnaplók használatával is elemezheti [traffic analytics](traffic-analytics.md).
+> [!NOTE] 
+> A megőrzési házirend funkció használatát az NSG-t a Flow naplózási tárolási műveletek nagy mennyiségű és a kapcsolódó költségeket eredményezhet. Ha nincs szüksége a megőrzési házirend-szolgáltatás, azt javasoljuk, hogy ezt az értéket 0 értékre állítja.
 
 
 ## <a name="log-file"></a>Naplófájl
@@ -63,7 +65,7 @@ Forgalmi naplók az alábbi tulajdonságokat tartalmazzák:
                     * **Protokoll** – a folyamat által használt protokoll. Érvényes értékek a következők **T** TCP és **U** UDP-hez
                     * **Forgalom áramlása** -adatforgalmat irányát. Érvényes értékek a következők **I** a bejövő és **O** a kimenő.
                     * **Döntési forgalom** – akár engedélyezett vagy tiltott forgalmat. Érvényes értékek a következők **A** engedélyezett és **D** a megtagadva.
-                    * **A folyamat állapota - verzió 2 csak** – a folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: kezdje, ha egy folyamat jön létre. Statisztikák nem biztosított. **C**: egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: záró, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre.
+                    * **A folyamat állapota - verzió 2 csak** – a folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: Kezdődik, amikor egy folyamat jön létre. Statisztikák nem biztosított. **C**: Egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: Végződik, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre.
                     * **Cél - verzió 2 csak a forrás - csomagok** a legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomagok teljes száma.
                     * **Bájt lett elküldve – a forrás és a cél - verzió 2 csak** a legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomag bájtok teljes száma. Csomag bájt közé tartozik, a csomag fejlécének és adattartalmának bontása.
                     * **Csomagok - célt a forrás - verzió 2 csak** célhelyről küldött forrás legutóbbi frissítés óta TCP vagy UDP-csomagok teljes száma.
@@ -71,7 +73,7 @@ Forgalmi naplók az alábbi tulajdonságokat tartalmazzák:
 
 ## <a name="nsg-flow-logs-version-2"></a>NSG-Folyamatnaplók 2-es verzió
 > [!NOTE] 
-> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. Beállítási lehetőségek érhetők el az Azure Portal és a REST API-t. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez 1-es verziójú naplókat, a storage-fiókhoz használt kimeneti adattípus.
+> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez 1-es verziójú naplókat, a storage-fiókhoz használt kimeneti adattípus.
 
 2. verzióját a naplók vezet be a folyamat állapota. Konfigurálhatja a Folyamatnaplók melyik verzióját megjelenhet. A folyamat-naplók engedélyezésére, lásd: [engedélyezése NSG csoportforgalom naplózása](network-watcher-nsg-flow-logging-portal.md).
 
@@ -79,13 +81,19 @@ Folyamat állapota *B* keletkezik, amikor egy olyan folyamatot kezdeményez. Fol
 
 A folytatási *C* és a záró *E* flow-állapotokat bájt és csomagok számát is összesített számát az előző folyamat rekord rekord időpontból. Az előző példában beszélgetés hivatkozik, továbbított csomagok teljes száma a 1021 + 52 + 8005 + 47 = 9125. Az átvitt bájtok teljes száma a 588096 + 29952 + 4610880 + 27072 = 5256000.
 
-**Példa**: TCP 185.170.185.105:35370 és 10.2.0.4:23 közötti beszélgetés származó rekordokat tartalmazó folyamat:
+**Példa**: A folyamat rekordokat a TCP beszélgetés 185.170.185.105:35370 és 10.2.0.4:23 között:
 
 "1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
 A folytatási *C* és a záró *E* flow-állapotokat bájt és csomagok számát is összesített számát az előző folyamat rekord rekord időpontból. Az előző példában beszélgetés hivatkozik, továbbított csomagok teljes száma a 1021 + 52 + 8005 + 47 = 9125. Az átvitt bájtok teljes száma a 588096 + 29952 + 4610880 + 27072 = 5256000.
 
 A következő szöveget, amelyek egy folyamat napló. Amint láthatja, nincsenek az alábbi lista az előző szakaszban leírt több rekord.
+
+## <a name="nsg-flow-logging-considerations"></a>NSG-t Flow naplózási kapcsolatos szempontok
+
+**NSG-t Flow minden NSG-erőforrás csatlakoztatva naplózás engedélyezése**: Flow-naplózás az Azure-ban az NSG-erőforrás van konfigurálva. A folyamat csak hozzá lesz rendelve egy NSG-szabályt. Olyan esetekben, ahol több NSG-t használ, azt javasoljuk, hogy az NSG-t csoportforgalom naplózása engedélyezve van-e az összes NSG-ket egy erőforrás alhálózathoz vagy hálózati adapterhez győződjön meg arról, hogy minden forgalmat a rendszer rögzíti a alkalmazni. Lásd: [hogyan értékeli ki a forgalom](../virtual-network/security-overview.md#how-traffic-is-evaluated) bővebben a hálózati biztonsági csoportok. 
+
+**Flow naplózási költségek**: NSG csoportforgalom naplózása történik a létrehozott naplók a köteten. Nagy forgalmat kötet nagy flow naplózási kötet és a kapcsolódó költségeket eredményezhet. Hálózati biztonsági csoportok naplózási díjszabás nem tartalmazza az alapul szolgáló tárolási költség. A megőrzési házirend funkció használatát az NSG-t a Flow naplózási tárolási műveletek nagy mennyiségű és a kapcsolódó költségeket eredményezhet. Ha nincs szüksége a megőrzési házirend-szolgáltatás, azt javasoljuk, hogy ezt az értéket 0 értékre állítja. Lásd: [Network Watcher díjszabása](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) és [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/en-us/pricing/details/storage/) további részleteket.
 
 ## <a name="sample-log-records"></a>Minta rekordok naplózása
 

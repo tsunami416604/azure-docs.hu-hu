@@ -1,5 +1,5 @@
 ---
-title: Dinamikus csoporttagság, valamint a felhasználók automatikus hozzáadása és törlése az Azure Active Directoryban – oktatóanyag
+title: Dinamikus csoporttagság hozzáadása – oktatóanyag – Azure Active Directory felhasználók eltávolítása
 description: Az oktatóanyagban felhasználói tagsági szabályokkal rendelkező csoportokat használunk a felhasználók automatikus hozzáadásához és eltávolításához
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 08/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 6efb649142f43a98ea08c99ae853de0fc0c8ea3c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209179"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321262"
 ---
-# <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Csoporttagok automatikus hozzáadása és eltávolítása
+# <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Tagok hozzáadása vagy eltávolítása csoport automatikusan
 
 Az Azure Active Directory (Azure AD) szolgáltatásban automatikusan adhat hozzá vagy távolíthat el felhasználókat a biztonsági vagy Office 365-csoportokban, így ezt nem kell minden alkalommal manuálisan elvégeznie. Ha egy felhasználó vagy eszköz bármely tulajdonsága megváltozik, az Azure AD kiértékeli a dinamikus csoportokra vonatkozó összes szabályt a bérlőn, és ezáltal ellenőrzi, hogy a változás magával vonja-e tagok hozzáadását vagy eltávolítását.
 

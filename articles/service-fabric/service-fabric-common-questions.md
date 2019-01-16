@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537627"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320599"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -56,7 +56,7 @@ Az Azure-ban nem futtató fürtök esetén van [alkalmazás megadott](service-fa
 
 **Válasz rövid** – nem 
 
-**Mennyi ideig választ** – Bár a nagyméretű virtuálisgép-méretezési csoportok lehetővé teszik a virtuális gép méretezése méretezési csoport példányaihoz legfeljebb 1000 virtuális Gépet, akkor nem így az elhelyezési csoportra (PGs) segítségével történik. Tartalék tartományok és frissítési tartományok (frissítési) is csak tartalék és frissítési tartománnyal elhelyezési döntéseket a szolgáltatáspéldányok replikák/szolgáltatás az elhelyezési csoport Service fabric használja belül konzisztensek. Mivel a tartalék és frissítési tartománnyal összehasonlítható csak az elhelyezési csoporton belül, az SF használható. Például, ha a PG1 VM1 FD-topológiája = 0, és a PG2 VM9 FD-topológiája = 4, ez nem jelenti azt, hogy a VM1, VM2 és a két különböző hardver állványokon, ezért SF nem használható az FD-értékek ebben az esetben elhelyezési döntéseket.
+**Mennyi ideig választ** – Bár a nagyméretű virtuálisgép-méretezési csoportok lehetővé teszik a virtuális gép méretezése méretezési csoport legfeljebb 1000 Virtuálisgép-példányok, ezt úgy valósítja elhelyezési csoportra (PGs) használatát. Tartalék tartományok és frissítési tartományok (frissítési) is csak tartalék és frissítési tartománnyal elhelyezési döntéseket a szolgáltatáspéldányok replikák/szolgáltatás az elhelyezési csoport Service fabric használja belül konzisztensek. Mivel a tartalék és frissítési tartománnyal összehasonlítható csak az elhelyezési csoporton belül, az SF használható. Például, ha a PG1 VM1 FD-topológiája = 0, és a PG2 VM9 FD-topológiája = 4, ez nem jelenti azt, hogy a VM1, VM2 és a két különböző hardver állványokon, ezért SF nem használható az FD-értékek ebben az esetben elhelyezési döntéseket.
 
 Jelenleg más nagyméretű virtuálisgép-méretezési csoportokkal kapcsolatos problémák, például a 4. szint hiánya betölteni a terheléselosztási támogatását. További [részletei a nagy méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 

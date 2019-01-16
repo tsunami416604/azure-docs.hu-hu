@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ec7de756a5b3c8e713fa8e73c18cebee32b83e28
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201312"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332251"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Gyakori kérdések – Azure Backup
 
@@ -76,12 +76,12 @@ Rendelkezünk egy privát előzetes egy SAP HANA biztonsági mentés egy 15 perc
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Hogyan válasszak visszaállítása csak lemezek-e, vagy egy teljes virtuális Gépet?
 Úgy gondolja, hogy a virtuális gép visszaállítási mint gyors létrehozási lehetőséget egy Azure virtuális gép. Ez a beállítás módosítja a lemez nevét, a lemezek, a nyilvános IP-címek és a hálózati adapterek nevét által használt tárolókat. A módosítás megtartja az egyedi erőforrásokat egy virtuális gép létrehozásakor. A virtuális gép egy rendelkezésre állási csoport nem hozzá.
 
-A visszaállítási lemez lehetőséget, ha azt szeretné, hogy:
+A visszaállítási lemez lehetőséget is használhatja, ha azt szeretné, hogy:
   * Testre szabhatja a virtuális gép, amely létrejön. Például módosíthatja a méretét.
   * Adja hozzá a konfigurációs beállítások, amelyek nem létezik a biztonsági mentés idején
   * Vezérlő elnevezési létrehozott erőforrásokat.
   * A virtuális gép hozzáadása egy rendelkezésre állási csoporthoz.
-  * Adja hozzá a bármely más beállítás, amely a PowerShell vagy egy sablon használatával kell konfigurálni.  W
+  * Adja hozzá a bármely más beállítás, amely a PowerShell vagy egy sablon használatával kell konfigurálni.  w
 
 ### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>Vissza tudok állítani biztonsági nem felügyelt virtuális gépek lemezeinek biztonsági másolatait magasabb a managed Disks szolgáltatásba?
 Igen, használhatja a lemezek migrált felügyelt kódba előtt készített biztonsági másolatokat.

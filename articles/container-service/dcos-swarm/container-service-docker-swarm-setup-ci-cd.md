@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992549"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331435"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(ELAVULT) A teljes CI/CD-folyamat egy többtárolós alkalmazást az Azure Container Service Docker Swarm használatával az Azure DevOps-szolgáltatásokkal való üzembe helyezéséhez
 
@@ -107,7 +107,7 @@ Az utolsó előtt a CI/CD-folyamat az első lépésekre külső kapcsolatok a t�
 
 Minden konfiguráció a most történik. Az alábbi lépésekkel hoz létre a CI/CD folyamatot, amely az alkalmazás a Docker Swarm-fürt létrehozása és telepítése. 
 
-## <a name="step-2-create-the-build-pipeline"></a>2. lépés: A buildelési folyamat létrehozása
+## <a name="step-2-create-the-build-pipeline"></a>2. lépés: A létrehozási folyamat létrehozása
 
 Ebben a lépésben egy buildelési folyamat beállítása az Azure DevOps-szolgáltatásokkal projekt és a build munkafolyamat definiálása a tárolólemezképek
 
@@ -137,7 +137,7 @@ A következő lépéseket a build munkafolyamat határozza meg. Nincsenek hozhat
 * ProductsApi
 * Proxy
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * ShopFront
 
 Adjon hozzá két Docker lépéseket minden egyes képe, egyet a rendszerkép létrehozásához és a egy-a rendszerkép leküldése az Azure container registry a kell. 
@@ -168,11 +168,11 @@ Adjon hozzá két Docker lépéseket minden egyes képe, egyet a rendszerkép l�
 
     b. Ez a feladat csökken, a buildösszetevőt a frissített Compose-fájlt, így használhatók a kiadásban. Részleteket a következő képernyő jelenik meg.
 
-    ![Az Azure DevOps szolgáltatások – összeállítás közzététele fájl](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
+    ![Azure DevOps Services - Publish Compose file](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
 1. Kattintson a **mentése** és nevezze el a buildelési folyamat.
 
-## <a name="step-3-create-the-release-pipeline"></a>3. lépés: Hozzon létre a kiadási folyamathoz
+## <a name="step-3-create-the-release-pipeline"></a>3. lépés: A kibocsátási folyamat létrehozása
 
 Azure DevOps-szolgáltatás lehetővé teszi, hogy [kiadások kezelheti a környezeteket](https://www.visualstudio.com/team-services/release-management/). Győződjön meg arról, hogy az alkalmazás üzemel, a különböző környezetekben (például fejlesztési, tesztelési, éles üzem előtti vagy éles) zökkenőmentes módon való folyamatos üzembe helyezés is engedélyezheti. Létrehozhat egy új környezetet, amely az Azure Container Service Docker Swarm-fürt jelöli.
 

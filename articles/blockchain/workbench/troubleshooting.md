@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405484"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329735"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Hibaelhárítás az Azure Blockchain Workbench használatával
 
@@ -26,7 +26,7 @@ Egy PowerShell-parancsprogram érhető el, amelyek segítik a hibakeresést fejl
 * Application Insights
 * Azure Monitorozási (a Log Analytics)
 
-Az információk segítségével határozza meg a következő lépések és a problémák kiváltó okának meghatározásához. 
+Az információk segítségével határozza meg a következő lépések és a problémák kiváltó okának meghatározásához.
 
 ## <a name="troubleshooting-script"></a>Parancsfájl hibaelhárítása
 
@@ -75,4 +75,4 @@ A **metrikák** mappa rendszer különféle összetevők metrikáit tartalmazza 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure Blockchain Workbench-architektúra](architecture.md)
+> [Azure Blockchain Workbench Application Insights – hibaelhárítási útmutató](https://aka.ms/workbenchtroubleshooting)

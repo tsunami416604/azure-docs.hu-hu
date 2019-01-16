@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 1bfc97eb850cf81ff638f92bc628c856fa75681e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9ec183c55a74a2ab12c8accb8b3578ea530f1da2
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230662"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322078"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Az Azure Active Directory szolgáltatás üzembe helyezési útmutató
 
@@ -36,9 +36,9 @@ Licenceléssel kapcsolatos további információ található a következő lapok
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Az Azure AD B2B licencelési útmutató](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-foundation-of-security"></a>1. fázis: Biztonság alapjai
+## <a name="phase-1-build-a-foundation-of-security"></a>1. fázis: Biztonsági épít
 
-1. fázis, a rendszergazdák által engedélyezett alapkonfiguráció biztonsági funkciók az Azure AD, hogy importálni, vagy normál felhasználói fiókok létrehozása előtt hozzon létre egy biztonságos, és könnyen használható foundation. Ez a alapvető fázis, a kezdetektől biztonságosabb állapotban van, és, hogy a végfelhasználók csak kell bevezetni új fogalmakat egyszer biztosítja.
+Ebben a fázisban a rendszergazdák alapkonfiguráció biztonsági funkciók az Azure AD, hogy importálni, vagy normál felhasználói fiókok létrehozása előtt hozzon létre egy biztonságos, és könnyen használható foundation engedélyezése. Ez a alapvető fázis, a kezdetektől biztonságosabb állapotban van, és, hogy a végfelhasználók csak kell bevezetni új fogalmakat egyszer biztosítja.
 
 | Tevékenység | Részlet | Licenc szükséges |
 | ---- | ------ | ---------------- |
@@ -57,9 +57,9 @@ Licenceléssel kapcsolatos további információ található a következő lapok
 | [A multi-factor authentication és a jelszó módosítására a kockázati események használatával](../authentication/tutorial-risk-based-sspr-mfa.md) | Aktiválhat eseményeket, mint például a többtényezős hitelesítés, jelszó-visszaállítás és a bejelentkezési kockázat alapján blokkolásának-automatizálás engedélyezése. | Prémium szintű Azure AD P2 |
 | [A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure AD multi-factor Authentication (előzetes verzió) engedélyezése](../authentication/concept-registration-mfa-sspr-converged.md) | Lehetővé teszi a felhasználók regisztráljanak az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás egy közös élményének. | Prémium szintű Azure AD P1 |
 
-## <a name="phase-2-users-synchronization-and-devices"></a>2. fázis: Felhasználók, a szinkronizálás és az eszközök
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2. fázis: Felhasználók importálása, -szinkronizálás engedélyezése és eszközök kezelése
 
-A 2. fázis, a meghatározott 1. fázis importálása, hogy a felhasználók és engedélyezésével Foundation hozzáadjuk a szinkronizálás vendéghozzáférés tervezése és előkészítése további funkciók támogatásához.
+Ezután hozzáadjuk az alapítvány meghatározni 1. fázis importálása, hogy a felhasználók és engedélyezésével a szinkronizálás vendéghozzáférés tervezése és előkészítése további funkciók támogatásához.
 
 | Tevékenység | Részlet | Licenc szükséges |
 | ---- | ------ | ---------------- |
@@ -72,9 +72,9 @@ A 2. fázis, a meghatározott 1. fázis importálása, hogy a felhasználók és
 | [Döntse el, az eszközkezelési stratégiától](../devices/overview.md) | Döntse el, eszközökre vonatkozó teszi a szervezet. Vállalati megadott regisztrálása való csatlakozás, saját eszközök használata a vs vs. | |
 | [Windows Hello for Business a szervezetében üzembe helyezi](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Felkészülés a Windows Hello használata jelszó nélküli hitelesítése | |
 
-## <a name="phase-3-applications"></a>3. fázis: Alkalmazások
+## <a name="phase-3-manage-applications"></a>3. fázis: Alkalmazások kezelése
 
-3. fázis, a rendszergazdák az alkalmazások hozzáadása a folyamatban lévő folyamat megkezdéséhez.
+Továbbra is az előző fázisok épülnek, mint hogy áttelepítését és integrálását az Azure ad-vel jelölt alkalmazások azonosítása, és ezeknek az alkalmazásoknak a telepítés befejezéséhez.
 
 | Tevékenység | Részlet | Licenc szükséges |
 | ---- | ------ | ---------------- |
@@ -82,15 +82,15 @@ A 2. fázis, a meghatározott 1. fázis importálása, hogy a felhasználók és
 | [A katalógus támogatott SaaS-alkalmazások integrálása](../manage-apps/add-application-portal.md) | Az Azure AD egy katalógus, amely több ezer előre integrált alkalmazások rendelkezik. A szervezete az alkalmazások néhány valószínűleg a katalógusban elérhető közvetlenül az Azure Portalról. | Azure AD Free |
 | [Az alkalmazásproxy használatával a helyszíni alkalmazások integrálása](../manage-apps/application-proxy-add-on-premises-application.md) | Az alkalmazásproxy lehetővé teszi, hogy a felhasználók hozzáférhessenek a helyszíni alkalmazásokhoz bejelentkezik az Azure AD-fiókja. | Azure AD Basic |
 
-## <a name="phase-4-privileged-identities-access-reviews-and-user-lifecycle"></a>4. fázis: Felhasználói életciklus, emelt jogosultsági szintű identitásait és hozzáférési felülvizsgálatok
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>4. fázis: Emelt szintű identitások naplózása, a hozzáférési felülvizsgálat befejezése és a felhasználói életciklus kezelése
 
 4. fázis rendszergazdák kényszerítése a legalacsonyabb jogosultsági elveket, felügyeleti, az első a hozzáférési felülvizsgálatok elvégzése, illetve engedélyezni kívánja gyakori felhasználói életciklus-feladatok automatizálása megkeresheti.
 
 | Tevékenység | Részlet | Licenc szükséges |
 | ---- | ------ | ---------------- |
-| [Privileged Identity Management használatának kényszerítése](../privileged-identity-management/pim-configure.md) | Rendszergazdai szerepkörök eltávolítása átlagos napi felhasználói fiókokat. Jogosulttá a rendszergazda felhasználók a szerepkör használatához egy multi-factor authentication szolgáltatás-ellenőrzés sikeres, egy üzleti indoklás megadása vagy jóváhagyás kérése a kijelölt jóváhagyókat után. | Prémium szintű Azure AD P2 |
+| [Privileged Identity Management használatának kényszerítése](../privileged-identity-management/pim-security-wizard.md) | Rendszergazdai szerepkörök eltávolítása átlagos napi felhasználói fiókokat. Jogosulttá a rendszergazda felhasználók a szerepkör használatához egy multi-factor authentication szolgáltatás-ellenőrzés sikeres, egy üzleti indoklás megadása vagy jóváhagyás kérése a kijelölt jóváhagyókat után. | Prémium szintű Azure AD P2 |
 | [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat befejezése](../privileged-identity-management/pim-how-to-start-security-review.md) | Működik a biztonság és a vezetőség esetlegesen csapataival, tekintse át a szervezet szabályzatait alapuló felügyeleti hozzáférés hozzáférési felülvizsgálati házirend létrehozásához. | Prémium szintű Azure AD P2 |
-| [Alkalmazzon a dinamikus tagsági csoportházirendek](../users-groups-roles/groups-dynamic-membership.md) | Dinamikus csoportok használatával automatikusan felhasználók attribútumaik HR (vagy a forrásból hiteles), például a részleg, cím, régió, és egyéb attribútumok alapján csoportokhoz rendelhetők hozzá. |  |
+| [Dinamikus csoport tagsági házirendek megvalósítása](../users-groups-roles/groups-dynamic-membership.md) | Dinamikus csoportok használatával automatikusan felhasználók attribútumaik HR (vagy a forrásból hiteles), például a részleg, cím, régió, és egyéb attribútumok alapján csoportokhoz rendelhetők hozzá. |  |
 | [Csoport alapú alkalmazások üzembe helyezése megvalósítása](../manage-apps/what-is-access-management.md) | Használja a Csoportalapú hozzáférés-felügyeleti kiépítés automatikusan az SaaS-alkalmazások üzembe helyezése felhasználók számára. |  |
 | [Felhasználókiépítés és -megszüntetés automatizálása](../manage-apps/user-provisioning.md) | Távolítsa el manuális lépések az alkalmazott fiók életciklusa jogosulatlan hozzáférés elkerülése érdekében. Az Azure AD a forrásból (HR-rendszerbe) hiteles identitások szinkronizálásával. |  |
 

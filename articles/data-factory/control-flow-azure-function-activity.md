@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ee99733440d74424f98a2ed16de83c88bae53ff1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188640"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321789"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure-függvény tevékenység az Azure Data Factoryban
 
 Az Azure-függvény tevékenység futtatását teszi [Azure Functions](../azure-functions/functions-overview.md) a Data Factory-folyamatok. Szeretne futtatni egy Azure-függvényt, szeretne létrehozni egy társított szolgáltatás kapcsolatot és a egy tevékenységgel, amely meghatározza az Azure-függvény, amely azt tervezi, hogy hajtsa végre.
+
+Egy nyolc perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Run-Azure-Functions-from-Azure-Data-Factory-pipelines/player]
 
 ## <a name="azure-function-linked-service"></a>Azure-függvény társított szolgáltatás
 

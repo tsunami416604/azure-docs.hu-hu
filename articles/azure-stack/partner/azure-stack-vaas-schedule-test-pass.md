@@ -13,14 +13,14 @@ ms.topic: How to
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3021fafe7d74f71450eec9b3720c974b04ada224
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0e9ad89e504ce1cb86daad48bec9ffe9423e2cf1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426927"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319545"
 ---
-# <a name="schedule-your-first-test"></a>Az első vizsgálat ütemezése
+# <a name="scheduling-a-test"></a>A vizsgálat ütemezése
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -35,8 +35,8 @@ Míg a tesztelési fázisban munkafolyamat segítségével VaaS, beleértve a te
 Mielőtt Ez a rövid útmutató követéséhez befejeződik a következő elemek:
 
 - [A szolgáltatási erőforrások, az ellenőrzés beállítása](azure-stack-vaas-set-up-resources.md)
-- [A helyi ügynök telepítésének](azure-stack-vaas-local-agent.md) (ajánlott)
-- [Egy szolgáltatás fő fogalmait, érvényesítési](azure-stack-vaas-key-concepts.md) (ajánlott)
+- [A helyi ügynök telepítésének](azure-stack-vaas-local-agent.md) (kötelező)
+- [Egy szolgáltatás fő fogalmait, érvényesítési](azure-stack-vaas-key-concepts.md) (kötelező)
 
 ## <a name="start-a-workflow"></a>A munkafolyamat indításához
 

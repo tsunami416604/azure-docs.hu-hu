@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5f3e7164c0569422fe164283efaa8f282ccfe9f8
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790300"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318943"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
@@ -38,7 +38,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
-A kiválasztott tárfióktól függően a Data Box a következőket hozhatja létre:
+A kiválasztott tárfiók alapján a Data Box hoz létre, akár:
 - Három megosztás minden társított tárfiókhoz, GPv1-hez és GPv2-höz.
 - Egy megosztás a prémium vagy Blob Storage-fiók számára.
 

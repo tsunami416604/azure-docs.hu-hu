@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794243"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322095"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfiguráció ismertetése
 
@@ -45,7 +45,7 @@ Biztonsági mentési szabályzat az alábbi konfigurációk áll:
 
 * **Biztonsági mentés ütemezése**: Az időpont és ismétlődési gyakoriság, amellyel a rendszeres biztonsági másolatok készítése. Egy ismétlődő megadott időközönként vagy egy rögzített időpontban napi / heti biztonsági mentéseket ütemezhet.
 
-    1. **Biztonsági mentési ütemezés gyakoriságának-alapú**: Ez az ütemezés típusa használandó, ha szükség az adatok biztonsági mentésének érvénybe rögzített időközönként. Két egymást követő biztonsági mentések közötti kívánt időintervallum van definiálva, használjon ISO8601 formátumot. Biztonsági mentési ütemezés gyakoriságának-alapú időköz felbontása legfeljebb perc támogatja.
+    1. **Biztonsági mentési ütemezés gyakoriságának-alapú**: Ez az ütemezés típusa használandó, ha szükség az adatok biztonsági mentésének érvénybe rögzített időközönként. Két egymást követő biztonsági mentések közötti kívánt időintervallum van definiálva, használjon ISO8601 formátumot. Biztonsági mentési ütemezés gyakoriságának-alapú időköz megoldását, a percnek támogatja.
         ```json
         {
             "ScheduleKind": "FrequencyBased",

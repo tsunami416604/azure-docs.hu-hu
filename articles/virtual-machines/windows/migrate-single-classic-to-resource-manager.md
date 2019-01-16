@@ -1,6 +1,6 @@
 ---
-title: A klasszikus virtuális gépek áttelepítése egy ARM felügyelt lemezes virtuális gép |} Microsoft Docs
-description: Telepítse át egy Azure virtuális a klasszikus telepítési modellből felügyelt lemezeket a Resource Manager üzembe helyezési modellben.
+title: Klasszikus virtuális gép egy ARM felügyelt lemezes virtuális gép migrálása |} A Microsoft Docs
+description: Egyetlen Azure virtuális gép migrálása a klasszikus üzemi modellből a Managed Disks szolgáltatásba a Resource Manager-alapú üzemi modellben.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,165 +15,192 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943581"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329769"
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Manuális áttelepítésével egy klasszikus virtuális Gépet egy új ARM kezelt lemez virtuális géphez a virtuális merevlemezről 
+# <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Felügyelt lemez használata a klasszikus virtuális gép áttelepítése 
 
 
-Ez a szakasz segítséget nyújt a meglévő Azure virtuális gépek áttelepítéséhez a klasszikus telepítési modellből [kezelt lemezek](managed-disks-overview.md) a Resource Manager üzembe helyezési modellben.
+Ez a szakasz segítséget nyújt a meglévő Azure virtuális gépek áttelepítése a klasszikus üzemi modellből [Managed Disks](managed-disks-overview.md) a Resource Manager-alapú üzemi modellben.
 
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Felügyelt lemezek az áttelepítés megtervezése
+## <a name="plan-for-the-migration-to-managed-disks"></a>Tervezze meg a migrálás a Managed Disks szolgáltatásba
 
-Ez a szakasz segítséget nyújt a legjobb döntést a virtuális gép és a lemez típusok.
+Ez a szakasz segít, hogy a legjobb döntést a virtuális gép és a lemez típusa.
 
 
 ### <a name="location"></a>Hely
 
-Jelölje ki a helyet, ahol Azure felügyelt lemezek érhetőek el. Ha az áttelepítés prémium felügyelt lemezekre, is ellenőrizze, hogy prémium szintű storage elérhető a régióban, ahol szeretne áttelepíteni. Lásd: [Azure Services byRegion](https://azure.microsoft.com/regions/#services) elérhető helyről naprakész tájékoztatást.
+Jelöljön ki egy helyet, ha a Managed Disks rendelkezésre állnak. Ha az áttelepítés a Premium storage-alapú felügyelt lemezre, is győződjön meg arról, hogy a Premium storage az adott régióban érhető el. Lásd: [Azure-szolgáltatások byRegion](https://azure.microsoft.com/regions/#services) naprakész információk az elérhető helyek.
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete
 
-Ha áttelepítés prémium szintű felügyelt lemez, hogy frissítse a virtuális gép méretét prémium szintű Storage képes a rendelkezésre álló terület a régióban, ahol a virtuális gép. Tekintse át a Virtuálisgép-méretek, amelyek a prémium szintű Storage-kompatibilis. Az Azure virtuális gép mérete paramétereknek szereplő [virtuális gépek méretei](sizes.md).
-Tekintse át a virtuális gépek, amely együttműködik a prémium szintű Storage, és válassza ki a leginkább megfelelő virtuális gép méretét, amely a legjobban megfelel a számítási feladatok teljesítményétől. Győződjön meg arról, hogy nincs elegendő sávszélesség érhető el a virtuális Gépet, a lemez forgalom alapjául.
+Ha az áttelepítés a Premium Storage tárolást használ felügyelt lemezeket, akkor frissítse a virtuális gép méretét a Premium Storage képes a méret elérhető a régióban, ahol a virtuális gép is található. Tekintse át a Premium Storage képes a a Virtuálisgép-méretek. Az Azure virtuális gép mérete előírások felsorolt [virtuális gépek méretei](sizes.md).
+Tekintse át a teljesítményt nyújt, amely a Premium Storage működnek, és válassza ki a leginkább megfelelő Virtuálisgép-méretet a számítási feladathoz leginkább megfelelő virtuális gépek. Győződjön meg arról, hogy van-e elegendő sávszélesség érhető el a meghajtó a lemez forgalmat a virtuális gép.
 
 ### <a name="disk-sizes"></a>Lemezméretek
 
-**Prémium szintű felügyelt lemez**
+**Prémium**
 
-Hét különböző típusú premium felügyelt lemezek, amelyek együtt a virtuális Gépet, és mindegyik rendelkezik-e adott iops-érték és átviteli korlátok. Vegye figyelembe a működés felső korlátjának kiválasztása a prémium szintű lemez a virtuális gép a kapacitás, a teljesítmény, méretezhetőség az alkalmazás igényeinek megfelelően, és maximális tölti be.
+A Premium storage, amely a virtuális gép használható hét típusa van, mindegyik adott IOPs és átviteli sebesség korlátok. A virtuális gép kapacitását, teljesítmény, méretezhetőség tekintetében az alkalmazás igényeinek megfelelően a prémium szintű lemeztípus kiválasztásakor, vegye figyelembe ezeket a korlátokat, és csúcs tölti be.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 
+| Lemezméret           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS-érték lemezenként       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 
 
-**Standard szintű felügyelt lemez**
+**Standard**
 
-Standard szintű felügyelt lemez, amely a virtuális gép használható hét típusa van. Azok a különböző kapacitással rendelkeznek, de azonos IOPS és átviteli sebességének korlátai. Válassza ki a standard szintű felügyelt lemez az alkalmazás a kapacitásigények alapján.
+A standard szintű lemezek, amelyek használhatók a virtuális gép hét típusai vannak. Azok a más kapacitásokhoz de azonos IOPS- és feldolgozásisebesség-korlátait. Válassza ki a standard szintű Managed disks kapacitást az alkalmazás igényeinek megfelelően.
 
-| Standard lemez típusa  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+| Standard lemez típusa  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| IOPS-érték lemezenként       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| IOPS-érték lemezenként       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
 | Adattovábbítás lemezenként | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 60 MB / s | 
 
 
 ### <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend 
 
-**Prémium szintű felügyelt lemez**
+**Premium Managed Disks**
 
-Alapértelmezés szerint a gyorsítótárazási házirend lemez van *csak olvasható* prémium adatok lemezein, és *írható-olvasható* az a prémium szintű operációsrendszer-lemez csatolva a virtuális gép. A konfigurációs beállítás ajánlott az alkalmazás IOs rendszerhez az optimális teljesítmény eléréséhez. Írási műveleteket vagy a csak írható adatlemezek (köztük SQL Server) tiltsa le a lemezt gyorsítótárazás, hogy az alkalmazás jobb teljesítményt érhet el.
+Alapértelmezés szerint a lemez gyorsítótárazási házirend a *csak olvasható* minden a prémium szintű adatlemezek esetén és *olvasási és írási* a prémium szintű operációsrendszer-lemez a virtuális Géphez csatlakoztatva. Ezt a konfigurációs beállítást az optimális teljesítmény érdekében az alkalmazás IOs-hez javasolt. Írási vagy csak írási adatlemezek (például az SQL Server-naplófájlok) tiltsa le a lemezek gyorsítótárazása, így jobb alkalmazásteljesítményt érhet el.
 
 ### <a name="pricing"></a>Díjszabás
 
-Tekintse át a [kezelt lemezek árképzési](https://azure.microsoft.com/pricing/details/managed-disks/). Prémium szintű felügyelt lemez árképzési legyen, mint a nem felügyelt Premium lemezek. Azonban a standard szintű felügyelt lemez árképzési más nem felügyelt Standard lemezeknél.
+Tekintse át a [a felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). Prémium szintű felügyelt lemezek díjszabása megegyezik a nem felügyelt prémium szintű lemezek. Azonban a standard szintű felügyelt lemezek díjszabása eltér attól a standard szintű nem felügyelt lemezek.
 
 
-## <a name="checklist"></a>Feladatlista
+## <a name="checklist"></a>Ellenőrzőlista
 
-1.  Ha áttelepítés prémium szintű felügyelt lemez, feltétlenül érhető el a régió telepít át.
+1.  Ha az áttelepítés a Premium Managed Disks szolgáltatásba, róla, hogy elérhető a régióban végzi az áttelepítést.
 
-2.  Döntse el, az új Virtuálisgép-sorozat fog használni. A prémium szintű Storage képes kell, ha az áttelepítés prémium szintű felügyelt lemez.
+2.  Döntse el, az új Virtuálisgép-sorozatok fog használni. Ha az áttelepítés a Premium Managed Disks szolgáltatásba egy prémium szintű Storage képes a kell lennie.
 
-3.  Döntse el, a pontos Virtuálisgép-méretet fogja használni a régió telepít át a rendelkezésre álló. Virtuálisgép-méretet kell lennie, elég nagy legyen rendelkezik adatlemezek számának támogatásához. Például ha négy adatlemezek, a virtuális gép két vagy több maggal kell rendelkeznie. Fontolja meg is, a feldolgozási kapacitása, memória, és a hálózati sávszélesség igényeinek megfelelően.
+3.  Döntse el, a pontos virtuális gép mérete fogja használni az áttelepítés régióban érhető el. Virtuálisgép-méretet kell lennie, elég nagy legyen támogatja a több adatlemez van. Például ha négy adatlemezeket, a virtuális gép két vagy több mag kell rendelkeznie. Emellett érdemes feldolgozási, memória és a hálózati sávszélesség-igény.
 
-4.  Az aktuális virtuális gép adatai lesz szüksége, beleértve a megfelelő VHD-blobok és lemezek listáját rendelkezik.
+4.  Rendelkezik a kényelmes, beleértve a lemezek és a megfelelő VHD-blobok listáját az aktuális virtuális gép adatait.
 
-Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés végrehajtásához, akkor állítsa le a feldolgozás az aktuális rendszerben. Csak ezután beszerezheti a konzisztens állapotú. Ez az új platformon is áttelepíthetők. Állásidő időtartama áttelepítéséhez a lemezeken mennyiségétől függ.
+Az alkalmazás előkészítése az állásidő. Egy tiszta az áttelepítés végrehajtásához, akkor az összes feldolgozó leállítása a jelenlegi rendszerben. Csak ezután beszerezheti azt konzisztens állapotba, amelyhez áttelepíthet az új platformra. Állásidő időtartama attól függ, hogy áttelepíteni a lemezeken lévő adatok mennyisége.
 
 
 ## <a name="migrate-the-vm"></a>A virtuális gép áttelepítése
 
-Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés végrehajtásához, akkor állítsa le a feldolgozás az aktuális rendszerben. Csak ezután beszerezheti a konzisztens állapotú. Ez az új platformon is áttelepíthetők. Állásidő időtartama áttelepítéséhez a lemezeken mennyiségétől függ.
+Az alkalmazás előkészítése az állásidő. Egy tiszta az áttelepítés végrehajtásához, akkor az összes feldolgozó leállítása a jelenlegi rendszerben. Csak ezután beszerezheti azt áttelepítheti az új platformra a konzisztens állapotba. Állásidő időtartama attól függ, hogy áttelepíteni a lemezeken lévő adatok mennyisége.
 
-Ez a kijelző igényel az Azure PowerShell modul verziója 6.0.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Is kell futtatnia `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+Ez a rész az Azure PowerShell-modul verzióját 6.0.0 igényel vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
-1.  Első lépésként állítsa be a következő általános paramétereket:
+Az általános paraméterek változók létrehozása.
 
-    ```powershell
-    $resourceGroupName = 'yourResourceGroupName'
-    
-    $location = 'your location' 
-    
-    $virtualNetworkName = 'yourExistingVirtualNetworkName'
-    
-    $virtualMachineName = 'yourVMName'
-    
-    $virtualMachineSize = 'Standard_DS3'
-    
-    $adminUserName = "youradminusername"
-    
-    $adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
-    
-    $imageName = 'yourImageName'
-    
-    $osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-    
-    $dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
-    
-    $dataDiskName = 'dataDisk1'
-    ```
+```powershell
+$resourceGroupName = 'yourResourceGroupName'
 
-2.  Hozzon létre egy felügyelt operációsrendszer-lemez, a klasszikus virtuális gépről a virtuális merevlemez használatával.
+$location = 'your location' 
 
-    Győződjön meg arról, hogy megadta-e a teljes URI-azonosítója az operációs rendszer VHD-fájlt a $osVhdUri paraméter. Emellett adja meg **- AccountType** , **Premium_LRS** vagy **Standard_LRS** alapú lemezek (prémium és Standard) típusú végzi az áttelepítést.
+$virtualNetworkName = 'yourExistingVirtualNetworkName'
 
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
-    -ResourceGroupName $resourceGroupName
-    ```
+$virtualMachineName = 'yourVMName'
 
-3.  Az operációsrendszer-lemezképet csatlakoztatni az új virtuális Gépet.
+$virtualMachineSize = 'Standard_DS3'
 
-    ```powershell
-    $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
+$adminUserName = "youradminusername"
 
-4.  Felügyelt adatlemezt készíteni a VHD-fájlt, és adja hozzá az új virtuális Gépet.
+$adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
 
-    ```powershell
-    $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
-    -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
+$imageName = 'yourImageName'
+
+$osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
+
+$dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
+
+$dataDiskName = 'dataDisk1'
+```
+
+Hozzon létre egy felügyelt operációsrendszer-lemez a VHD-t a klasszikus virtuális gép használatával. Győződjön meg arról, hogy a teljes URI-ját a rendszert tartalmazó virtuális Merevlemezt $osVhdUri paraméteréhez megadott. Emellett adja meg **- AccountType** , **Premium_LRS** vagy **Standard_LRS** alapú lemezek (prémium vagy standard) típusú végzi az áttelepítést.
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreateOption Import '
+   -SourceUri $osVhdUri) '
+   -ResourceGroupName $resourceGroupName
+```
+
+Az operációsrendszer-lemez csatolása az új virtuális Gépet.
+
+```powershell
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+$VirtualMachine = Set-AzureRmVMOSDisk '
+   -VM $VirtualMachine '
+   -ManagedDiskId $osDisk.Id '
+   -StorageAccountType Premium_LRS '
+   -DiskSizeInGB 128 '
+   -CreateOption Attach -Windows
+```
+
+Hozzon létre egy felügyelt adatlemezre az adatokat VHD-fájlból, és adja hozzá az új virtuális Gépet.
+
+```powershell
+$dataDisk1 = New-AzureRmDisk '
+   -DiskName $dataDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreationOption Import '
+   -SourceUri $dataVhdUri ) '
+   -ResourceGroupName $resourceGroupName
     
-    $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
-    -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
-    ```
+$VirtualMachine = Add-AzureRmVMDataDisk '
+   -VM $VirtualMachine '
+   -Name $dataDiskName '
+   -CreateOption Attach '
+   -ManagedDiskId $dataDisk1.Id '
+   -Lun 1
+```
 
-5.  Az új virtuális gép létrehozása úgy, hogy nyilvános IP-, a virtuális hálózat és a hálózati adaptert.
+Hozzon létre az új virtuális gép nyilvános IP-Címek, virtuális hálózatot és hálózati beállításával
 
-    ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
-    -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+```powershell
+$publicIp = New-AzureRmPublicIpAddress '
+   -Name ($VirtualMachineName.ToLower()+'_ip') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -AllocationMethod Dynamic
     
-    $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+$vnet = Get-AzureRmVirtualNetwork '
+   -Name $virtualNetworkName '
+   -ResourceGroupName $resourceGroupName
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
-    -PublicIpAddressId $publicIp.Id
+$nic = New-AzureRmNetworkInterface '
+   -Name ($VirtualMachineName.ToLower()+'_nic') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -SubnetId $vnet.Subnets[0].Id '
+   -PublicIpAddressId $publicIp.Id
     
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+$VirtualMachine = Add-AzureRmVMNetworkInterface '
+   -VM $VirtualMachine '
+   -Id $nic.Id
     
-    New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
-    ```
+New-AzureRmVM -VM $VirtualMachine '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location
+```
 
 > [!NOTE]
->További lépésekre lehet szükség az alkalmazás, amely támogatja az útmutató nem vonatkoznak.
+>Előfordulhat, hogy további lépéseket, amely az alkalmazása támogatásához szükséges ez az útmutató nem vonatkoznak.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
 
-- Csatlakozzon a virtuális géphez. Útmutatásért lásd: [csatlakoztatása, és jelentkezzen be a Windowst futtató Azure virtuális gép](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Csatlakozzon a virtuális géphez. Útmutatásért lásd: [csatlakoztatása és bejelentkezés Windows rendszert futtató Azure virtuális gép](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

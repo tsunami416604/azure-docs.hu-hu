@@ -1,18 +1,18 @@
 ---
 title: Vészhelyreállítás beállítása egy többszintes Azure Site Recovery használatával az IIS-alapú webes alkalmazás fo |} A Microsoft Docs
 description: Ismerje meg, hogyan replikáljon az IIS webkiszolgáló farm virtuális gépek Azure Site Recovery használatával.
-author: nsoneji
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 49435665ae1e99dd2b9696e5e5bb048e438dcc4c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832956"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320497"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vészhelyreállítás beállítása a többrétegű az IIS-alapú webalkalmazás
 
@@ -94,7 +94,7 @@ További információkért lásd: [a helyreállítási terv testreszabása](site
 ### <a name="add-a-script-to-the-recovery-plan"></a>A helyreállítási terv parancsfájl hozzáadása
 Az IIS webfarm a megfelelő működéshez szüksége lehet bizonyos műveleteket az Azure-beli virtuális gépek feladatátvétel utáni, vagy tesztcélú feladatátvétel alatt. Egyes feladatátvétel utáni műveletek automatizálható. Például a DNS-bejegyzés frissítése, egy hely kötésének módosítása, vagy módosítsa a kapcsolati karakterlánc megfelelő parancsfájlokat hozzáadásával a helyreállítási tervbe. [A VMM-parancsfájl hozzáadása a helyreállítási terv](site-recovery-how-to-add-vmmscript.md) azt ismerteti, hogyan hozhatja létre automatizált feladatok parancsfájl használatával.
 
-#### <a name="dns-update"></a>A DNS-frissítés
+#### <a name="dns-update"></a>DNS update
 DNS dinamikus DNS-frissítési van konfigurálva, ha virtuális gépek általában a DNS frissítése az új IP-cím amikor elindítja. Ha szeretne hozzáadni a DNS frissítése az új IP-címei a virtuális gépek, adjon hozzá egy explicit lépés egy [DNS IP-parancsprogramot](https://aka.ms/asr-dns-update) műveletek a feladatátvétel utáni műveletek a helyreállítási terv csoportok.  
 
 #### <a name="connection-string-in-an-applications-webconfig"></a>Kapcsolati karakterláncát az alkalmazás web.config

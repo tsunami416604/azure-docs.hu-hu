@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: e03d913e1887bceb9267207e3a9abea93ab6d000
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 09d982c98e830b957be8db43974e3a44df505967
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568030"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321058"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
 A Microsoft Azure Data Box hibrid megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi adatot az Azure-ba egy átviteli eszköz segítségével. A gyakori kérdések a Data Box Azure Portalon történő használatával kapcsolatban esetlegesen felmerülő kérdésekre adnak választ. 
 
@@ -47,7 +47,7 @@ A. Ha 40 és 500 TB közötti mennyiségű adata van, amelyet szeretne átvinni 
 A. A Data Box 10 napig egy névleges díj fejében érhető el. Amikor az Azure Portalon egy rendelés létrehozásakor kiválaszt egy termékmodellt, megjelenik az eszköz ára. A szállítás is ingyenes, az Azure-tárhely azonban költségekkel jár. További információt [az Azure Data Box díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/databox/) talál. 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>K. Egyszerre legfeljebb mennyi adatot vihetek át a Data Box segítségével?
-A. A Data Box összes kapacitása 100 TB, használható kapacitása pedig 80 TB. A Data Box segítségével egyszerre legfeljebb 80 TB-nyi adat vihető át. Több adat átviteléhez több eszköz megrendelése szükséges.
+A. A Data Box összes kapacitása 100 TB, használható kapacitása pedig 80 TB. Az adatok Data Box akár 80 TB lehet átvinni. Több adat átviteléhez több eszköz megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box elérhető-e a régiómban? 
 A.  A Data Box az egyes országokban való elérhetőségéről további információt a [regionális elérhetőséget](data-box-overview.md#region-availability) ismertető témakörben talál.  
@@ -86,7 +86,7 @@ A. Lehetősége van klónozni az előző megrendelését. A klónozással létre
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>K. Hogyan oldhatom fel a Data Box zárolását? 
-A.  Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Eszköz részleteit**. Másolja ki a zárolásfeloldási jelszót. Jelentkezzen be ezzel a jelszóval a Data Box helyi webes felhasználói felületére. További információt [az Azure Data Box kicsomagolását, illetve a kábelek és az eszköz csatlakoztatását](data-box-deploy-set-up.md) ismertető oktatóanyagban talál.
+A.  Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Eszköz részleteit**. Másolja ki a zárolásfeloldási jelszót. Jelentkezzen be ezzel a jelszóval a Data Box helyi webes felhasználói felületére. További információért ugorjon [oktatóanyag: Kicsomagolása, kábelezése, csatlakozzon az Azure Data Box](data-box-deploy-set-up.md).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>K. Használhatok linuxos gazdaszámítógépet a Data Box csatlakoztatásához és az adatok másolásához?
 A.  Igen. A Data Box-eszközökkel SMB- és NFS-ügyfelekhez is csatlakozhat. További információkért tekintse meg a gazdaszámítógépre vonatkozó [Támogatott operációs rendszerek](data-box-system-requirements.md) listáját.
@@ -95,7 +95,7 @@ A.  Igen. A Data Box-eszközökkel SMB- és NFS-ügyfelekhez is csatlakozhat. To
 A.  A rendelést csak annak feladását követően, de még a feldolgozását megelőzően vonhatja vissza. Ha a Data Box-megrendelés feldolgozása már megtörtént, nem mondhatja le a rendelést. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>K. Csatlakoztathatok egy Data Boxot egyszerre több gazdaszámítógéphez adatátvitel céljából?
-A. Igen. Egy Data Boxhoz egyszerre több gazdaszámítógép is csatlakoztatható, és párhuzamosan több másolási feladat is futtatható. További információt [az adatok az Azure Data Boxra történő másolását](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
+A. Igen. Egy Data Boxhoz egyszerre több gazdaszámítógép is csatlakoztatható, és párhuzamosan több másolási feladat is futtatható. További információért ugorjon [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -129,7 +129,7 @@ A. Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Áttekint�
 ## <a name="migrate-data"></a>Adatok áttelepítése
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>K. Legfeljebb mekkora mennyiségű adat esetén használható a Data Box?  
-A.  A Data Box hasznos tárolókapacitása 80 TB. Egyetlen Data Box-eszközön 40 TB és 80 TB közti mennyiségű adatot tárolhat. Ennél nagyobb, de 500 TB-nál kisebb adatmennyiség esetén rendeljen több Data Box-eszközt. Az 500 TB-ot meghaladó adatmennyiségek esetén regisztráljon a Data Box Heavy szolgáltatásba.  
+A.  A Data Box hasznos tárolókapacitása 80 TB. Egyetlen Data Box-eszközön 40 TB és 80 TB közti mennyiségű adatot tárolhat. A nagyobb adathalmazokat akár 500 TB méretű rendezheti több Data Box-eszközre. Az 500 TB-ot meghaladó adatmennyiségek esetén regisztráljon a Data Box Heavy szolgáltatásba.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>K. Mekkora a Data Box-eszközökön támogatott legnagyobb blokkblob és lapblob mérete? 
 A.  A legnagyobb méreteket az Azure Storage tárhelykorlátai határozzák meg. A legnagyobb blokkblob mérete körülbelül 4,768 TiB, a legnagyobb lapblob mérete pedig 8 TiB. További információkért lásd: [Azure Storage Scalability and Performance Targets](../storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai). 
@@ -142,12 +142,12 @@ A.  Ha SMB-ügyfelet használ, az adatokat egy SMB-másolóeszköz, például a 
 
 Ha NFS-ügyfelet használ, akkor az [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy [Ultracopier](https://ultracopier.first-world.info/) alkalmazást használhatja. 
 
-További információt [az adatok az Azure Data Boxra történő másolását](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
+További információért ugorjon [oktatóanyag: Adatok másolása az Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A konkrét parancsokkal kapcsolatban további információt [az adatok az Azure Data Boxra másolását és ellenőrzését](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
+- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancsát további információért látogasson el [oktatóanyag: Adatok másolása az Azure Data Box, és ellenőrizze](data-box-deploy-copy-data.md).
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyhez a Data Boxot csatlakoztatja.
 - Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://bluestop.org/fio/), amellyel megmérheti a kiszolgáló hardverének teljesítményét.

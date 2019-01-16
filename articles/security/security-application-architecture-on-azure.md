@@ -12,30 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233735"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321415"
 ---
 # <a name="application-architecture-on-azure"></a>Alkalmazásarchitektúra az Azure-on
 Védelme érdekében a felhőalapú megoldások, Microsoft Azure-ban egy erős architekturális foundation, kritikus fontosságú. Tervezők, tervezők és a végrehajtók összes kihasználhatják a alkalmazások és szolgáltatások architektúra erős ismerete. Ezen alapvető ismeretek segítségével megismerheti a felhőalapú megoldások összetevőit, és megkönnyíti a biztonsági integrálhatók a tervezési és megvalósítási minden aspektusát.
 
 A következő segítséget nyújt az architekturális vizsgálatok és a tervek van:
 
-* Architekturális infografikák
 * Architektúrát szemléltető ábrák
 * Felhőalapú és nagyvállalati szimbólum beállítása
 * Tervrajz 3D Visio-sablon
-
-## <a name="architectural-infographics"></a>Architekturális infografikák
-A Microsoft számos architekturális kapcsolódó poszterek/infografikák tesz közzé. Ezek a következők:
-
-* [Valós felhőalapú alkalmazások létrehozása](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [A Cloud Services méretezése](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
 ## <a name="architectural-blueprints"></a>Architektúrát szemléltető ábrák
 A Microsoft tesz közzé egy készletét magas szintű [architektúrát szemléltető ábrák](https://aka.ms/azblueprints) : hogyan hozhat létre az adott típusú rendszerekbe a Microsoft-termékek.

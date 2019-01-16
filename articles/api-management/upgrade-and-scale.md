@@ -11,18 +11,18 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 1b681b4344512f26f1edc4a5264e718deac569ae
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ac8babf3a00c73b942ae64ac4cca00c7be7cfcfa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441689"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319860"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Frissítés és skálázás az Azure API Management-példány  
 
 Ügyfeleink az Azure API Management (APIM) példány méretezhetők egységek hozzáadásával vagy eltávolításával. A **egység** szintből áll, dedikált Azure-erőforrások és a egy bizonyos terhelés-hatással kapacitás kifejezett API számos hívások / hó. Ez a szám nem hívás korlátozva, de ahelyett, hogy a nyers kapacitásának tervezéséhez maximális átviteli sebesség értéket képvisel. Tényleges átviteli sebességgel és késéssel széles körben tényezők, például száma és sebessége, az egyidejű kapcsolatok, típusa és száma konfigurált szabályzatok, a kérelem és a válaszok méretétől és a háttéralkalmazás késése függően változnak.
 
-Kapacitás és az egyes egységek díj attól függ, a **szint** az egység létezik. Négy szinten közül választhat: **fejlesztői**, **alapszintű**, **Standard**, **prémium**. Ha növeli a kapacitást a szinten belüli szolgáltatásként van szüksége, hozzá kell adnia egy egységet. A jelenleg kiválasztott az APIM-példányra a réteg nem engedélyezi a több egység hozzáadása, a magasabb szintű csomagra frissíteni szeretne.
+Kapacitás és az egyes egységek díj attól függ, a **szint** az egység létezik. Négy szinten közül választhat: **Fejlesztői**, **alapszintű**, **Standard**, **prémium**. Ha növeli a kapacitást a szinten belüli szolgáltatásként van szüksége, hozzá kell adnia egy egységet. A jelenleg kiválasztott az APIM-példányra a réteg nem engedélyezi a több egység hozzáadása, a magasabb szintű csomagra frissíteni szeretne.
 
 Minden egység és a rendelkezésre álló funkciók (például a többrégiós üzembe helyezés) ára attól függ, hogy a szint, az APIM-példányra számára is választott. A [díjszabás](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) cikk mellett, az ár / egység és funkciónak, az egyes szintek ismerteti. 
 
@@ -45,9 +45,9 @@ Ez a cikk a lépések követéséhez a következőket kell tennie:
 
 ## <a name="upgrade-and-scale"></a>Frissítés és skálázás  
 
-Négy szinten közül választhat: **fejlesztői**, **alapszintű**, **Standard** és **prémium**. A **fejlesztői** szinten a szolgáltatás értékeléséhez használandó; ez nem használható éles üzemi környezetek részei. A **fejlesztői** szint nem rendelkezik SLA-t, és nem skálázhatja a csomag (egység hozzáadása/eltávolítása). 
+Négy szinten közül választhat: **Fejlesztői**, **alapszintű**, **Standard** és **prémium**. A **fejlesztői** szinten a szolgáltatás értékeléséhez használandó; ez nem használható éles üzemi környezetek részei. A **fejlesztői** szint nem rendelkezik SLA-t, és nem skálázhatja a csomag (egység hozzáadása/eltávolítása). 
 
-**Alapszintű**, **Standard** és **prémium** termelési szint, amelyek SLA-t és skálázhatók. A **alapszintű** szintje a legolcsóbb szint, amely rendelkezik SLA-t és a méretezett legfeljebb 2 egység, azok **Standard** számítógépréteg bővíthető legfeljebb négy. Tetszőleges számú egységeket is hozzáadhat a **prémium** szint.
+**Alapszintű**, **Standard** és **prémium** termelési szint, amelyek SLA-t és skálázhatók. A **alapszintű** szintje a legolcsóbb szint, amely rendelkezik SLA-t, és legfeljebb 2 egység skálázhatók **Standard** számítógépréteg bővíthető legfeljebb négy. Tetszőleges számú egységeket is hozzáadhat a **prémium** szint.
 
 A **prémium** szint lehetővé teszi, hogy egyetlen Azure API Management példány szét a kívánt Azure-régiók tetszőleges számú. Először létrehoz egy Azure API Management szolgáltatást, ha a példány csak egy egységet tartalmaz, és a egy adott Azure-régióban található. A kezdeti régió elsődlegesként lett megjelölve a **elsődleges** régióban. További régiók könnyedén adhat hozzá. Egy régióban hozzáadásakor meg kell adnia a hozzárendelni kívánt egységek számát. Például használhat egy egységet a **elsődleges** régió és más régióban öt egységek. Testre szabhatja a forgalomra, minden régióban van egységek száma. További információkért lásd: [egy Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md).
 

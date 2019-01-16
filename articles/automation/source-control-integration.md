@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342238"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330772"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
@@ -24,7 +24,7 @@ Az Azure Automation verziókövetés 3 típust támogat:
 
 * GitHub
 * Az Azure DevOps (Git)
-* Az Azure DevOps (TFVC)
+* Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
@@ -50,15 +50,18 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |Tulajdonság  |Leírás  |
 |---------|---------|
 |Forrás vezérlő neve     | Egy rövid nevet a verziókövetés        |
-|Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>Az Azure DevOps (Git)</br> Az Azure DevOps (TFVC)        |
+|Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>Az Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Adattár     | A tárház vagy projekt nevét. Ezt az értéket a vezérlő adattárból kéri le. Például: $/ ContosoFinanceTFVCExample         |
 |Ág     | Az ág forrásfájlok lekérni. Ág célzó nem áll rendelkezésre a TFVC verziókövetési típusa számára.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks         |
-|Automatikus szinkronizálása     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
+|Auto Sync     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
 |Runbook közzététele     | Ha beállítása **a**, miután a forráskezelőből azokat automatikusan közzéteszi a runbookok szinkronizálva lesznek.         |
 |Leírás     | További információkat egy szövegmező        |
 
 ![Forrás vezérlő összegzése](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> Győződjön meg arról, a megfelelő fiókkal van bejelentkezve, verziókövetési konfigurálásakor. Ha egy bizonytalan, nyisson meg egy új lapot a böngészőben, és visualstudio.com vagy a github.com jelentkezzen ki, és próbálkozzon újra a csatlakozó verziókövetés.
 
 ## <a name="syncing"></a>Szinkronizálás…
 
@@ -115,9 +118,9 @@ Verziókövetés személyes hozzáférési jogkivonatok egyes minimális engedé
 |Adattár: állapota     | Hozzáférés lefoglaltsági állapota         |
 |repo_deployment      | Hozzáférési telepítési állapota         |
 |public_repo     | Hozzáférés a nyilvános adattár         |
-|**Admin: repo_hook**     |         |
-|írás: repo_hook     | Tárház hurkokat írása         |
-|Olvasás: repo_hook|Olvassa el a tárházat hurkokat|
+|**admin:repo_hook**     |         |
+|write:repo_hook     | Tárház hurkokat írása         |
+|read:repo_hook|Olvassa el a tárházat hurkokat|
 
 ### <a name="azure-devops"></a>Azure DevOps
 

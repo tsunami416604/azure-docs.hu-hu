@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2f964ac77ade69f14692a337f17011e93f85f68c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025708"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331877"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a postgresql-hez az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-onprem-postgresql-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-postgresql.md)
 
@@ -31,7 +31,7 @@ ms.locfileid: "54025708"
 
 Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával helyezheti át egy helyszíni PostgreSQL-adatbázishoz. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
-A helyszíni PostgreSQL adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A Data factory jelenleg helyez át adatokat egy PostgreSQL-adatbázishoz pedig más adattárakban, de más adattárakból származó adatok áthelyezése a PostgreSQL-adatbázis esetében nem támogatja. 
+A helyszíni PostgreSQL adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A Data factory jelenleg helyez át adatokat egy PostgreSQL-adatbázishoz pedig más adattárakban, de más adattárakból származó adatok áthelyezése a PostgreSQL-adatbázis esetében nem támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,10 +46,10 @@ A Data Factory szolgáltatás támogatja a csatlakozást egy helyszíni PostgreS
 Adatkezelési átjáró csatlakozni a PostgreSQL-adatbázishoz, telepítse a [Ngpsql adatszolgáltató a PostgreSQL-hez készült](https://go.microsoft.com/fwlink/?linkid=282716) 2.0.12-es és az adatkezelési átjárót ugyanazon a rendszeren 3.1.9 közötti verziójával. PostgreSQL 7.4 verzió újabb támogatott.
 
 ## <a name="getting-started"></a>Első lépések
-Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni PostgreSQL adattárolókból más eszközök/API-k használatával is létrehozhat. 
+Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni PostgreSQL adattárolókból más eszközök/API-k használatával is létrehozhat.
 
-- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- A következő eszközök használatával hozzon létre egy folyamatot: 
+- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+- A következő eszközök használatával hozzon létre egy folyamatot:
     - Azure Portal
     - Visual Studio
     - Azure PowerShell
@@ -57,15 +57,15 @@ Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a hel
     - .NET API
     - REST API
 
-     Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+    Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
 1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli.
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni PostgreSQL adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob PostgreSQL](#json-example-copy-data-from-postgresql-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. A Data Factory-entitások, amely adatokat másol egy helyszíni PostgreSQL adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob PostgreSQL](#json-example-copy-data-from-postgresql-to-azure-blob) című szakaszát.
 
 Az alábbi szakaszok nyújtanak egy PostgreSQL-adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -104,14 +104,14 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza a PostgreSQL), 
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 > [!NOTE]
-> Séma-és tábla-és nagybetűk. Tegye őket a `""` (dupla idézőjel) a lekérdezésben.  
+> Séma-és tábla-és nagybetűk. Tegye őket a `""` (dupla idézőjel) a lekérdezésben.
 
 **Példa**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-példa: Adatok másolása az Azure Blob PostgreSQL
-Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a PostgreSQL-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
+Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a PostgreSQL-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 > [!IMPORTANT]
 > Ez a példa JSON-kódrészletek biztosít. Nem tartalmaz részletes útmutató az adat-előállító létrehozásához. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) részletesen ismertető cikket.
@@ -153,10 +153,10 @@ Első lépésként, állítsa be az adatkezelési átjárót. A rendszer az utas
 {
     "name": "AzureStorageLinkedService",
     "properties": {
-    "type": "AzureStorage",
-    "typeProperties": {
-        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"
-    }
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"
+        }
     }
 }
 ```
@@ -191,7 +191,7 @@ Beállítás `"external": true` a Data Factory szolgáltatás tájékoztatja, ho
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {

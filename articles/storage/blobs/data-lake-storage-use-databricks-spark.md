@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548986"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321806"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2 előzetes verzió az adatok elérhetők az Azure Databricks Spark használatával
 
@@ -36,12 +36,31 @@ Ez az oktatóanyag bemutatja, hogyan használhatja fel és kérdezheti le légit
 2. Válassza ki **letöltése** és mentheti az eredményeket a gépre.
 3. Jegyezze fel a fájl neve és elérési útját a letöltés; Ez egy későbbi lépésben információra van szüksége.
 
-Ez az oktatóanyag egy elemzési lehetőségeket a tárfiókra van szükség. Javasoljuk, hogy végrehajtása az [rövid](data-lake-storage-quickstart-create-account.md) annak érdekében, hogy hozzon létre egyet a tárgyban. Miután létrehozta, azt, keresse meg a storage-fiók konfigurációs beállítások lekéréséhez.
+Ez az oktatóanyag egy elemzési lehetőségeket a tárfiókra van szükség. Javasoljuk, hogy végrehajtása az [rövid](data-lake-storage-quickstart-create-account.md) annak érdekében, hogy hozzon létre egyet a tárgyban. 
 
-1. A **beállítások**válassza **hozzáférési kulcsok**.
-2. Válassza ki a **másolási** megjelenítő gombra **key1** másolása a kulcs értékét.
+## <a name="set-aside-storage-account-configuration"></a>Tárfiók-konfiguráció feljegyzése
 
-A fióknév és a kulcs egyaránt szükséges az oktatóanyag későbbi lépéseihez. Nyisson meg egy szövegszerkesztőt, és jegyezze fel a fióknevet és a kulcsot a későbbi felhasználáshoz.
+Szüksége lesz a tárfiók és a egy rendszer végpont URI nevét.
+
+A tárfiók nevének lekérése az Azure Portalon, válassza ki a **minden szolgáltatás** és a kifejezést a szűrő *tárolási*. Ezután válassza ki **tárfiókok** , és keresse meg a storage-fiókjában.
+
+A rendszer végpont URI lekéréséhez válassza **tulajdonságok**, és a Tulajdonságok panelen keresse meg az értékét a **ADLS rendszer elsődleges VÉGPONT** mező.
+
+Illessze be mindkettőt ezeket az értékeket egy szövegfájlba. Szüksége lesz rájuk hamarosan.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
+
+Ebben a témakörben található útmutatást követve hozzon létre egy egyszerű szolgáltatást: [Útmutató: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Van néhány konkrét dolgot, mivel ebben a cikkben hajtsa végre a lépéseket kell.
+
+:heavy_check_mark: A lépések végrehajtásakor a [Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) szakasz a cikk, ügyeljen arra, hogy állítsa be a **bejelentkezési URL-** mezőjében a **létrehozás** párbeszédpanel a végpont URI-t, hogy nemrég összegyűjtött.
+
+:heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy az alkalmazás hozzárendelése a **Blob Storage-közreműködői szerepkör**.
+
+:heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
 
 ## <a name="create-a-databricks-cluster"></a>Databricks-fürt létrehozása
 
@@ -63,22 +82,24 @@ A következő lépés, hogy hozzon létre egy Databricks-fürt adatok munkaterü
 14. Adjon meg egy nevet a választott a **neve** mezőt, és válassza **Python** nyelve.
 15. Az összes többi mező maradhat az alapértelmezett értéken.
 16. Kattintson a **Létrehozás** gombra.
-17. Illessze be az alábbi kódot a **Cmd 1** cella. Cserélje le a helyőrzőket a saját értékeire a minta zárójelben:
+17. Másolja és illessze be az alábbi kódblokkot az első olyan cellára, de még ne futtassa ezt a kódot.
 
-    ```scala
-    %python%
+    ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-        
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<application-id>",
+           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
     dbutils.fs.mount(
-        source = "abfss://dbricks@<account-name>.dfs.core.windows.net/folder1",
-        mount_point = "/mnt/flightdata",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
     ```
-18. A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.
+18. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket a [félretett storage-fiók konfigurációs](#config) és [egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak. Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
+
+19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 
 ## <a name="ingest-data"></a>Adatok betöltése
 

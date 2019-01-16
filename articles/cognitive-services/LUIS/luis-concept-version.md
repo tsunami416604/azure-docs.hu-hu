@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 522f1cff2d735081daecc8be6384badcd378fd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 547291fa5c4a49adff7a080db985388ef152d0b8
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599586"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319783"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Megismerheti, hogyan és mikor a LUIS-verzió használatához
 
-Verziók, LUIS, a verziók a hagyományos programozási hasonlóak. Minden egyes verziója egy pillanatképet az alkalmazás időben. Az alkalmazás módosítása előtt hozzon létre egy új verziója. Egyszerűbb legyen a lépjen vissza a pontos alkalmazást, majd próbálja meg unpeel és az alkalmazás szándéka és utterances korábbi állapotába. 
+Verziók, LUIS, a verziók a hagyományos programozási hasonlóak. Minden egyes verziója egy pillanatképet az alkalmazás időben. Az alkalmazás módosítása előtt hozzon létre egy új verziója. Lépjen vissza a pontos verzióra, majd próbálja meg eltávolítani a leképezések és a egy korábbi állapotba utterances könnyebbé válik.
 
 Ugyanezt az alkalmazást a különböző modellek létrehozásának eljárásait [verziók](luis-how-to-manage-versions.md). 
 

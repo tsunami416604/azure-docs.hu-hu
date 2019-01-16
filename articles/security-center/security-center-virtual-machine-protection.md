@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723229"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321590"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -44,7 +44,6 @@ A **számítás és alkalmazások**, a következő lap található:
 - **Felhőszolgáltatások**: a Security Center által figyelt összes webes és feldolgozói szerepkör listája.
 - **App services (előzetes verzió)**: az App service Environment-környezetek és az egyes aktuális biztonsági állapotának listája.
 - **Tárolók (előzetes verzió)**: az IaaS Linuxos gépeken és a biztonsági konfigurációk értékelése a saját Docker üzemeltetett tárolók listájában.
-- **Virtuálisgép-méretezési csoportok (előzetes verzió)**: a méretezési csoportok és javaslatokat tesz a megoldásukra.
 - **Számítási erőforrások (előzetes verzió)**: a számítási erőforrások, például a Service Fabric-fürtök és az Event hubs a javaslatok listája.
 
 A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforrás biztonsági hygeine**.
@@ -162,24 +161,6 @@ A listában szereplő ikon három típusa van:
 
     ![App Service-ben szervizelés](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets-preview"></a>Virtuálisgép-méretezési csoportok (előzetes verzió)
-A Security Center automatikusan felderíti az e csoportok skálázását követve rugalmasan méretezhető, és azt javasolja, hogy a Microsoft Monitoring Agent a méretezési csoportokon. 
-
-A Microsoft Monitoring Agent telepítése: 
-
-1. Válassza ki a javaslat **a monitorozási ügynök telepítése virtuálisgép-méretezési**. Nem figyelt méretezési csoportok listájának lekérése.
-2. Válasszon egy nem megfelelő állapotú méretezési csoportot. Kövesse az utasításokat követve telepítse a monitorozási ügynök használatával összeállított meglévő munkaterület, vagy hozzon létre egy újat. Állítsa be a munkaterület [tarifacsomag](security-center-pricing.md) Ha nincs beállítva.
-
- ![MMS telepítése](./media/security-center-virtual-machine-recommendations/install-mms.png)
-
-Ha szeretné állítani, új méretezési csoportok, automatikusan telepíteni a Microsoft Monitoring Agent:
-1. Nyissa meg az Azure Policy, és kattintson a **definíciók**.
-2. Keresse meg a szabályzat **Windows Virtuálisgép-méretezési csoportok üzembe helyezése a Log Analytics ügynök** , és kattintson rá.
-3. Kattintson a **Hozzárendelés** gombra.
-4. Állítsa be a **hatókör** és **Log Analytics-munkaterület** kattintson **hozzárendelése**.
-
-Ha beállítja az összes meglévő méretezési csoportok a Microsoft Monitoring Agent telepítése az Azure Policy, Ugrás **szervizelési** és a meglévő házirend alkalmazása a meglévő méretezési csoportok.
-
 
 ## <a name="compute-and-app-recommendations"></a>Számítási és az alkalmazás vonatkozó javaslatok
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
@@ -238,11 +219,7 @@ Ha beállítja az összes meglévő méretezési csoportok a Microsoft Monitorin
 |Gép|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
 |Gép|1|Virtuális gépek áttelepítése az új Azure Resource Manager-erőforrások|A virtuális gépek Azure Resource Manager használatával adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a titkos kulcsokat, a key vaulthoz való hozzáférés Az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése. |
 |Gép|30|Sebezhetőség-felmérési megoldás használatával a biztonsági rések|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
-|Virtuálisgép-méretezési csoport |4|A Virtual Machine Scale Sets diagnosztikai naplók engedélyezése|Naplók engedélyezése és megőrzi őket a legfeljebb egy évig. Ez lehetővé teszi, hogy hozza létre újra a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához. Ez akkor hasznos, ha egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Virtuálisgép-méretezési csoport|35|A biztonsági rések biztonsági beállításokkal a a virtual machine scale sets|Kijavíthatja a biztonsági réseket a virtuálisgép-méretezési csoportok biztonsági konfigurációjában, hogy megvédje őket a támadásoktól. |
-|Virtuálisgép-méretezési csoport|5|A virtual machine scale sets endpoint protection állapottal kapcsolatos hibák javítása|Kijavíthatja az Endpoint Protection állapotfigyelő hibáit a virtuálisgép-méretezési csoportokban a fenyegetések és biztonsági rések elleni védelem érdekében. |
-|Virtuálisgép-méretezési csoport|10|A virtual machine scale sets végpontvédelmi megoldás telepítése|Telepítse a végpontvédelmi megoldás a fenyegetések és biztonsági rések elleni védelem érdekében a virtuális gép méretezési csoportjai. |
-|Virtuálisgép-méretezési csoport|40|A virtual machine scale sets rendszerfrissítések telepítése|Hiányzó rendszerbiztonsági és kulcsfontosságú frissítéseket telepíthet a Windows és Linux rendszerű virtuálisgép-méretezési csoportjainak védelméhez. |
+
  
 
 

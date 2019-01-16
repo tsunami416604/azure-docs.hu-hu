@@ -6,22 +6,22 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7aeb9a9557694f8773af4fe67f47950bf82afe87
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d91a7ba8d2c05e2d24738764438ce91325743699
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621411"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330857"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Tanúsítványeszközök az Azure Automationben
 
 Tanúsítványok tárolhatók biztonságosan az Azure Automation, a runbook vagy DSC-konfigurációk használatával elérhető lesz a **Get-AzureRmAutomationCertificate** tevékenység az Azure Resource Manager-erőforrásokat. Ez a funkció lehetővé teszi, hogy hozzon létre a runbookokat és a DSC-konfigurációk, amelyek a tanúsítványokat használnak a hitelesítéshez, vagy hozzáadja őket az Azure-ban vagy külső erőforrások.
 
 >[!NOTE]
->Az Azure Automationben biztonságos eszközök tartalmazzák, hitelesítő adatok, tanúsítványok, kapcsolatok és a titkosított változókat. Ezek az eszközök titkosítottak és a létrehozott egyedi kulcs segítségével minden automation-fiókhoz tartozó Azure Automation tárolja. Ezt a kulcsot a Key Vaultban tárolt. A kulcs tárolása egy biztonságos objektumot, előtt betöltése a Key Vaultból és majd az eszköz titkosításához használt.
+>Az Azure Automationben biztonságos eszközök tartalmazzák, hitelesítő adatok, tanúsítványok, kapcsolatok és a titkosított változókat. Ezek az eszközök titkosítottak és a létrehozott egyedi kulcs segítségével minden automation-fiókhoz tartozó Azure Automation tárolja. Ezt a kulcsot tárolja a rendszer által felügyelt Key Vault. A kulcs tárolása egy biztonságos objektumot, előtt betöltése a Key Vaultból és majd az eszköz titkosításához használt. Ez a folyamat az Azure Automation felügyeli.
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
 Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése automation hitelesítő eszközök a Windows PowerShell használatával történik. Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető a Automation-runbookok és a DSC-konfigurációkat használhatnak.
@@ -57,7 +57,7 @@ A függvény a következő táblázat a tanúsítványokat a Python2-forgatókö
 
 ## <a name="creating-a-new-certificate"></a>Egy új tanúsítvány létrehozása
 
-Amikor létrehoz egy új tanúsítványt, az Azure Automationhöz feltölt egy .cer vagy .pfx fájlt. Ha a tanúsítvány megjelölése exportálhatóként, ezután már másolhatja azt ki az Azure Automation tanúsítványtárolójába. Ha nem exportálható, majd azt csak használható a runbook vagy DSC-konfiguráció az aláíráshoz. Az Azure Automation megköveteli, hogy a szolgáltató a tanúsítványt: **Microsoft Enhanced RSA és az AES kriptográfiai szolgáltató**.
+Amikor létrehoz egy új tanúsítványt, az Azure Automationhöz feltölt egy .cer vagy .pfx fájlt. Ha a tanúsítvány megjelölése exportálhatóként, ezután már másolhatja azt ki az Azure Automation tanúsítványtárolójába. Ha nem exportálható, majd azt csak használható a runbook vagy DSC-konfiguráció az aláíráshoz. Az Azure Automation a tanúsítványt, hogy a szolgáltató van szükség: **A Microsoft Enhanced RSA és az AES kriptográfiai szolgáltató**.
 
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Új tanúsítvány létrehozása az Azure portal használatával
 

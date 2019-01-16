@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e1fe5af1769a0a1a83a3ce849a7eb1874369ce9a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fb0448e5ad5bd91c63c2fcde9887ec23544bed3f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023368"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331350"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,15 +28,15 @@ ms.locfileid: "54023368"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a V2 folyamatai](../concepts-pipelines-activities.md).
 
-Ennek a cikknek a segítségével megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját adatáthelyezési és -feldolgozási forgatókönyveihez.  
+Ennek a cikknek a segítségével megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját adatáthelyezési és -feldolgozási forgatókönyveihez.
 
 > [!NOTE]
-> Ez a cikk feltételezi, hogy elvégezte [az Azure Data Factory bemutatását](data-factory-introduction.md). Részletezik-a-élmény-adat-előállítók létrehozásakor nem rendelkeznek, ha áthaladna [data transformation oktatóanyag](data-factory-build-your-first-pipeline.md) és/vagy [adatok mozgását útmutató](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) jobban megérthessék, ez a cikk segíthet.  
+> Ez a cikk feltételezi, hogy elvégezte [az Azure Data Factory bemutatását](data-factory-introduction.md). Részletezik-a-élmény-adat-előállítók létrehozásakor nem rendelkeznek, ha áthaladna [data transformation oktatóanyag](data-factory-build-your-first-pipeline.md) és/vagy [adatok mozgását útmutató](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) jobban megérthessék, ez a cikk segíthet.
 
 ## <a name="overview"></a>Áttekintés
-A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. A másolási tevékenység használatával például egy helyszíni SQL Serverből egy Azure Blob Storage-tárolóba másolhatja az adatokat. Ezt követően egy Hive-tevékenység segítségével futtasson egy Hive-szkriptet egy Azure HDInsight fürtön, amely a Blob Storage-ből származó adatokat feldolgozza vagy átalakítja a kimeneti adatok előállításához. Végül egy második másolási tevékenység használatával másolja át a kimeneti adatokat egy olyan Azure SQL Data Warehouse-ba, amelyre üzletiintelligencia-alapú (BI-) jelentéskészítési megoldások épülnek. 
+A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. A másolási tevékenység használatával például egy helyszíni SQL Serverből egy Azure Blob Storage-tárolóba másolhatja az adatokat. Ezt követően egy Hive-tevékenység segítségével futtasson egy Hive-szkriptet egy Azure HDInsight fürtön, amely a Blob Storage-ből származó adatokat feldolgozza vagy átalakítja a kimeneti adatok előállításához. Végül egy második másolási tevékenység használatával másolja át a kimeneti adatokat egy olyan Azure SQL Data Warehouse-ba, amelyre üzletiintelligencia-alapú (BI-) jelentéskészítési megoldások épülnek.
 
-Minden tevékenység nulla vagy több bemeneti [adatkészletet](data-factory-create-datasets.md) képes fogadni, és egy vagy több kimeneti [adatkészletet](data-factory-create-datasets.md) képes előállítani. Az alábbi ábrán a folyamat, a tevékenység és az adat-előállító adatkészlete közötti kapcsolat látható: 
+Minden tevékenység nulla vagy több bemeneti [adatkészletet](data-factory-create-datasets.md) képes fogadni, és egy vagy több kimeneti [adatkészletet](data-factory-create-datasets.md) képes előállítani. Az alábbi ábrán a folyamat, a tevékenység és az adat-előállító adatkészlete közötti kapcsolat látható:
 
 ![Folyamat, tevékenységek és adatkészletek közötti kapcsolat](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
 
@@ -61,7 +61,7 @@ További információkért tekintse meg az [adattovábbítási tevékenységekr�
 
 További információkért tekintse meg az [adatátalakítási tevékenységekről](data-factory-data-transformation-activities.md) szóló cikket.
 
-### <a name="custom-net-activities"></a>Egyéni .NET-tevékenységek 
+### <a name="custom-net-activities"></a>Egyéni .NET-tevékenységek
 Ha át kell helyeznie egy adatok tárolására, hogy a másolási tevékenység nem támogatja, vagy saját logika adatok átalakítása, hozzon létre egy **egyéni .NET-tevékenységet**. További információ az egyéni tevékenységek létrehozásával és használatával kapcsolatban: [Egyéni tevékenységek használata Azure Data Factory-folyamatban](data-factory-use-custom-activities.md).
 
 ## <a name="schedule-pipelines"></a>A folyamatok ütemezése
@@ -73,7 +73,7 @@ Nézzük meg közelebbről, hogyan történik egy folyamat JSON-formátumban val
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description" : "pipeline description",
         "activities":
@@ -85,7 +85,7 @@ Nézzük meg közelebbről, hogyan történik egy folyamat JSON-formátumban val
         "isPaused": true/false,
         "pipelineMode": "scheduled/onetime",
         "expirationTime": "15.00:00:00",
-        "datasets": 
+        "datasets":
         [
         ]
     }
@@ -96,7 +96,7 @@ Nézzük meg közelebbről, hogyan történik egy folyamat JSON-formátumban val
 | --- | --- | --- |
 | név |A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
 | leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. |Igen |
-| tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részleteit a következő szakaszban talál. | Igen |  
+| tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részleteit a következő szakaszban talál. | Igen |
 | start | Kezdő dátum-idő a folyamat. Kell [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601). Például: `2016-10-14T16:32:41Z`. <br/><br/>Adja meg a helyi időt, például egy becsült idő, lehetőség. Íme egy példa: `2016-02-27T06:00:00-05:00`", azaz 6 Órakor becsült<br/><br/>A kezdő és záró tulajdonságok együtt a a folyamat aktív időszakát határozzák meg. Kimeneti szeleteket csak előállítása az aktív ebben az időszakban. |Nem<br/><br/>Ha megad egy záró tulajdonság értéke, kezdő tulajdonság értékének kell megadnia.<br/><br/>A kezdési és befejezési idejének is lehet üres folyamat létrehozása. A folyamat futtatásához egy aktív időszak beállítása mindkét értéket meg kell adnia. Ha nem adja meg a kezdő és befejező időpontok egy folyamat létrehozásakor beállíthatja azokat később a Set-AzureRmDataFactoryPipelineActivePeriod parancsmaggal. |
 | vége | Záró dátum és időpont a folyamat. Ha meg van adva, ISO formátumban kell megadni. Például:`2016-10-14T17:32:41Z` <br/><br/>Adja meg a helyi időt, például egy becsült idő, lehetőség. Íme egy példa: `2016-02-27T06:00:00-05:00`, azaz 6 Órakor becsült<br/><br/>A folyamat határozatlan ideig történő futtatásához, adja meg a 9999-09-09 end tulajdonság értékeként. <br/><br/> A folyamat akkor aktív, csak a kezdő és befejező időpontja között. Nem hajtotta végre, a kezdési időpont előtt vagy után a Befejezés időpontja. A folyamat szüneteltetve van, ha azt nem végrehajtásra kerülhetnek attól függetlenül, a kezdési és befejezési idő. A folyamat futtatásához akkor kell szüneteltethető. Lásd: [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) , ütemezési és végrehajtási működésének megismerése az Azure Data Factoryban. |Nem <br/><br/>Ha megadja a (Kezdés) tulajdonság értékét, a végfelhasználók tulajdonság értéke kell megadnia.<br/><br/>Tekintse meg a megjegyzéseit a **start** tulajdonság. |
 | isPaused | Ha igaz értékű, a folyamat nem futtatható. A felfüggesztett állapotban van. Alapértelmezett érték = false. Ez a tulajdonság segítségével engedélyezheti vagy tilthatja le a folyamatot. |Nem |
@@ -110,10 +110,10 @@ A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatár
 ```json
 {
     "name": "ActivityName",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
-    "inputs":  "[]",
-    "outputs":  "[]",
+    "inputs": "[]",
+    "outputs": "[]",
     "linkedServiceName": "MyLinkedService",
     "typeProperties":
     {
@@ -142,7 +142,6 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 | szabályzat |Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ha nincs megadva, az alapértelmezett házirendek használhatók. |Nem |
 | a Scheduler | "a scheduler" tulajdonság a tevékenység kívánt ütemezés meghatározására szolgál. A altulajdonságok ugyanazok, mint az a [rendelkezésre állási tulajdonságot egy adatkészlet](data-factory-create-datasets.md#dataset-availability). |Nem |
 
-
 ### <a name="policies"></a>Házirendek
 Házirendek egy tevékenység futásidejű viselkedését befolyásolják, kifejezetten egy tábla a szelet feldolgozása során. Az alábbi táblázatban a részleteket.
 
@@ -157,7 +156,7 @@ Házirendek egy tevékenység futásidejű viselkedését befolyásolják, kifej
 | longRetryInterval |Időtartam |00:00:00 |Hosszú újrapróbálkozás kísérletek közötti késleltetés |
 
 ## <a name="sample-copy-pipeline"></a>Minta másolási folyamat
-Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás** típusú tevékenység található. Ebben a mintában a [másolási tevékenység](data-factory-data-movement-activities.md) adatokat másol egy Azure blobtárolóból egy Azure SQL-adatbázisba. 
+Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás** típusú tevékenység található. Ebben a mintában a [másolási tevékenység](data-factory-data-movement-activities.md) adatokat másol egy Azure blobtárolóból egy Azure SQL-adatbázisba.
 
 ```json
 {
@@ -199,19 +198,19 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás**
     "start": "2016-07-12T00:00:00Z",
     "end": "2016-07-13T00:00:00Z"
   }
-} 
+}
 ```
 
 Vegye figyelembe a következő szempontokat:
 
 * A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva.
-* A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**. Az adatkészletek JSON-fáljban történő meghatározását lásd az [Adatkészletek](data-factory-create-datasets.md) cikket. 
-* A **typeProperties** szakaszban forrástípusként a **BlobSource**, fogadótípusként pedig az **SqlSink** érték van megadva. Az a [adattovábbítási tevékenységek](#data-movement-activities) szakaszt, kattintson az adatok tárolására, hogy szeretné-e további információkhoz jusson/adattár egy forrás és a egy fogadó használhatók. 
+* A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**. Az adatkészletek JSON-fáljban történő meghatározását lásd az [Adatkészletek](data-factory-create-datasets.md) cikket.
+* A **typeProperties** szakaszban forrástípusként a **BlobSource**, fogadótípusként pedig az **SqlSink** érték van megadva. Az a [adattovábbítási tevékenységek](#data-movement-activities) szakaszt, kattintson az adatok tárolására, hogy szeretné-e további információkhoz jusson/adattár egy forrás és a egy fogadó használhatók.
 
-Ez a folyamat létrehozásának részletes útmutatást lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Ez a folyamat létrehozásának részletes útmutatást lásd: [oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="sample-transformation-pipeline"></a>Minta átalakítási folyamat
-Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **HDInsightHive** típusú tevékenység található. Ebben a mintában a [HDInsight Hive-tevékenység](data-factory-hive-activity.md) egy Azure blobtárolóból származó adatokat alakít át egy Hive-szkriptfájl Azure HDInsight Hadoop-fürtön történő futtatásával. 
+Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **HDInsightHive** típusú tevékenység található. Ebben a mintában a [HDInsight Hive-tevékenység](data-factory-hive-activity.md) egy Azure blobtárolóból származó adatokat alakít át egy Hive-szkriptfájl Azure HDInsight Hadoop-fürtön történő futtatásával.
 
 ```json
 {
@@ -258,39 +257,38 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **HDInsightHi
 }
 ```
 
-Vegye figyelembe a következő szempontokat: 
+Vegye figyelembe a következő szempontokat:
 
 * A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **HDInsightHive** értékre van beállítva.
 * A **partitionweblogs.hql** Hive-parancsfájl tárolása az Azure Storage-fiókban (az **AzureStorageLinkedService** nevű scriptLinkedService szolgáltatás által megadva), és az **adfgetstarted** tároló **script** mappájában történik.
 * A `defines` szakasz segítségével meghatározza a futásidő beállításait, a hive-parancsfájlnak átadott Hive konfigurációs értékekként (például: `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
-A **typeProperties** szakasz eltérő az egyes átalakítási tevékenységek esetében. Támogatott típustulajdonságokkal egy Adatátalakítási tevékenységgel kapcsolatos további információkért kattintson az adott átalakítási tevékenységre az [adat-átalakítási tevékenységeket](#data-transformation-activities) tábla. 
+A **typeProperties** szakasz eltérő az egyes átalakítási tevékenységek esetében. Támogatott típustulajdonságokkal egy Adatátalakítási tevékenységgel kapcsolatos további információkért kattintson az adott átalakítási tevékenységre az [adat-átalakítási tevékenységeket](#data-transformation-activities) tábla.
 
-Ez a folyamat létrehozásának részletes útmutatást lásd: [oktatóanyag: Hadoop-fürt használatával dolgozza fel az adatokat az első folyamat létrehozását](data-factory-build-your-first-pipeline.md). 
+Ez a folyamat létrehozásának részletes útmutatást lásd: [oktatóanyag: Hadoop-fürt használatával dolgozza fel az adatokat az első folyamat létrehozását](data-factory-build-your-first-pipeline.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Több tevékenység egy adott folyamatban
-Az előző két mintában a folyamatok csak egyetlen tevékenységet tartalmaztak. Egy folyamathoz azonban több tevékenység is tartozhat.  
+Az előző két mintában a folyamatok csak egyetlen tevékenységet tartalmaztak. Egy folyamathoz azonban több tevékenység is tartozhat.
 
-Ha több tevékenység egy folyamatban van, és egy tevékenység kimenetét, nem egy másik tevékenység bemeneti, a tevékenységek párhuzamosan is futtathatók a tevékenységek bemeneti adatszeletek készen állnak. 
+Ha több tevékenység egy folyamatban van, és egy tevékenység kimenetét, nem egy másik tevékenység bemeneti, a tevékenységek párhuzamosan is futtathatók a tevékenységek bemeneti adatszeletek készen állnak.
 
 A másik tevékenység bemeneti adatkészleteként egyik tevékenység kimeneti adatkészlete sablonkonfigurációkat összefűzhet két tevékenységet. A második tevékenység végrehajtása, csak ha az elsőre sikeresen befejeződik.
 
 ![Láncolási tevékenységek a azonos folyamat](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-Ebben a példában a folyamat két tevékenységet tartalmaz: Hogy az Activity1 és az Activity2. Az Activity1 bemenetként Dataset1 vesz igénybe, és a egy kimenetet Dataset2. A tevékenység bemeneteként Dataset2 vesz igénybe, és a egy kimenetet Dataset3. A kimenet az Activity1 óta (Dataset2) a runbook az Activity2, a runbook az Activity2 fut csak akkor, ha a tevékenység sikeresen befejeződik, és a Dataset2 szeletet előállító bemenetével. Ha nem állít elő a Dataset2 szelet az Activity1 valamilyen okból meghiúsul, a 2. tevékenység nem fut, hogy a szelet (például: 9 AM 10 kor). 
+Ebben a példában a folyamat két tevékenységet tartalmaz: Hogy az Activity1 és az Activity2. Az Activity1 bemenetként Dataset1 vesz igénybe, és a egy kimenetet Dataset2. A tevékenység bemeneteként Dataset2 vesz igénybe, és a egy kimenetet Dataset3. A kimenet az Activity1 óta (Dataset2) a runbook az Activity2, a runbook az Activity2 fut csak akkor, ha a tevékenység sikeresen befejeződik, és a Dataset2 szeletet előállító bemenetével. Ha nem állít elő a Dataset2 szelet az Activity1 valamilyen okból meghiúsul, a 2. tevékenység nem fut, hogy a szelet (például: 9 AM 10 kor).
 
 Emellett láncolhatja össze a különböző folyamatok a tevékenységek.
 
 ![Láncolási tevékenységek a két folyamatot](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
 
-Ebben a példában Pipeline1 csak egyetlen tevékenységgel rendelkezik, amely bemenetként Dataset1 tart, és állít elő kimenetként Dataset2. A Pipeline2 is csak egy tevékenységgel rendelkezik, amely Dataset2 veszi a bemenetnek és Dataset3 kimenetként. 
+Ebben a példában Pipeline1 csak egyetlen tevékenységgel rendelkezik, amely bemenetként Dataset1 tart, és állít elő kimenetként Dataset2. A Pipeline2 is csak egy tevékenységgel rendelkezik, amely Dataset2 veszi a bemenetnek és Dataset3 kimenetként.
 
-További információkért lásd: [ütemezési és végrehajtási](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
-
+További információkért lásd: [ütemezési és végrehajtási](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 ## <a name="create-and-monitor-pipelines"></a>Hozzon létre és folyamatok figyelése
-A következő eszközök és SDK-k használatával folyamatokat hozhat létre. 
+A következő eszközök és SDK-k használatával folyamatokat hozhat létre.
 
-- Másolás varázsló. 
+- Másolás varázsló.
 - Azure Portal
 - Visual Studio
 - Azure PowerShell
@@ -299,15 +297,14 @@ A következő eszközök és SDK-k használatával folyamatokat hozhat létre.
 - .NET API
 
 Tekintse meg a következő oktatóanyagok részletes útmutatás a folyamatok létrehozásához a következő eszközök és SDK-k használatával.
- 
+
 - [Adatátalakítási tevékenységgel rendelkező folyamat létrehozása](data-factory-build-your-first-pipeline.md)
 - [Adatok áthelyezése tevékenységgel rendelkező folyamat létrehozása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Ha egy folyamat létrehozott és telepített, felügyelheti, és -folyamatok figyelése az Azure portal paneljeinek vagy Monitor and Manage Appot használatával. Az alábbi témakörökben részletes útmutatásait. 
+Ha egy folyamat létrehozott és telepített, felügyelheti, és -folyamatok figyelése az Azure portal paneljeinek vagy Monitor and Manage Appot használatával. Az alábbi témakörökben részletes útmutatásait.
 
 - [Folyamatok figyelése és felügyelete az Azure portal paneljeinek használatával](data-factory-monitor-manage-pipelines.md).
 - [Folyamatok figyelése és felügyelete a Monitor and Manage Appot](data-factory-monitor-manage-app.md)
-
 
 ## <a name="onetime-pipeline"></a>Egyszeri folyamat
 Létrehozhat és ütemezhet egy folyamatot futtatása rendszeres időközönként (például: óránként vagy naponta) az a folyamat definíciójában megadott kezdési és befejezési idejének belül. Lásd: [tevékenységek ütemezése](#scheduling-and-execution) részleteiről. Létrehozhat egy folyamatot, amely csak egyszer fut le. Ehhez állítsa be a **pipelineMode** tulajdonság, a folyamat definíciójában **onetime** a következő JSON-mintában látható módon. Az alapértelmezett érték a tulajdonság **ütemezett**.
@@ -339,10 +336,10 @@ Létrehozhat és ütemezhet egy folyamatot futtatása rendszeres időközönkén
                     {
                         "name": "OutputDataset"
                     }
-                ]
+                ],
                 "name": "CopyActivity-0"
             }
-        ]
+        ],
         "pipelineMode": "OneTime"
     }
 }
@@ -351,13 +348,10 @@ Létrehozhat és ütemezhet egy folyamatot futtatása rendszeres időközönkén
 Vegye figyelembe a következőket:
 
 * **Indítsa el** és **záró** alkalommal a folyamathoz nincs megadva.
-* **Rendelkezésre állási** bemeneti és kimeneti adatkészleteket van megadva (**gyakorisága** és **időköz**), annak ellenére, hogy a Data Factory nem használja az értékeket.  
+* **Rendelkezésre állási** bemeneti és kimeneti adatkészleteket van megadva (**gyakorisága** és **időköz**), annak ellenére, hogy a Data Factory nem használja az értékeket.
 * Diagram nézet egyszeri folyamatok nem jeleníti meg. Ez a működésmód szándékos.
 * Egyszeri folyamatok nem lehet frissíteni. Egy egyszeri folyamat klónozza, nevezze át, tulajdonságainak frissítése és üzembe helyezése, hogy hozzon létre egy újat.
 
-
 ## <a name="next-steps"></a>További lépések
-- Az adatkészletek kapcsolatos további információkért lásd: [adatkészleteket hoz létre](data-factory-create-datasets.md) cikk. 
-- A folyamatok ütemezése és végrehajtott további információkért lásd: [ütemezés és végrehajtás az Azure Data Factoryban](data-factory-scheduling-and-execution.md) cikk. 
-  
-
+- Az adatkészletek kapcsolatos további információkért lásd: [adatkészleteket hoz létre](data-factory-create-datasets.md) cikk.
+- A folyamatok ütemezése és végrehajtott további információkért lásd: [ütemezés és végrehajtás az Azure Data Factoryban](data-factory-scheduling-and-execution.md) cikk.

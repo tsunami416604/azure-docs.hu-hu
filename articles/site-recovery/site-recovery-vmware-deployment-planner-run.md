@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: mayg
-ms.openlocfilehash: 5de8bc9acd97016b401bd1c2bcce46f5ab851430
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 210872a468f92f92edef9c8e29a26382c5646dae
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811562"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321551"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -90,7 +90,7 @@ A profilkészítés során lehetősége van átadni egy tárfióknevet és -kulc
 
 Az eszköz több példánya is futtatható egyszerre különböző virtuálisgép-csoportokon. Győződjön meg arról, hogy a virtuális gépek neve nem ismétlődik egyik profilkészítési csoportban sem. Ha például profilt készített tíz virtuális gépről (VM1–VM10), és néhány nap elteltével további öt virtuális gépről szeretne profilt készíteni (VM11–VM15), akkor a második csoporton (VM11–VM15) egy másik parancssori konzolról futtathatja az eszközt. Győződjön meg arról, hogy a második virtuálisgép-csoport nem tartalmaz olyan virtuálisgép-nevet, amely szerepel az első profilkészítési példányban, vagy a második futtatás esetében használjon eltérő kimeneti könyvtárat. Ha az eszköz két példánya ugyanazokról a virtuális gépekről készít profilt, és ugyanazt a kimeneti könyvtárat is használják, a létrehozott jelentés helytelen lesz.
 
-Alapértelmezés szerint az eszköz a profilhoz van beállítva, és legfeljebb 1000 virtuális géphez generál jelentéseket. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
+Alapértelmezés szerint az eszköz, és legfeljebb 1000 virtuális gépet jelentés készítése van beállítva. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -168,7 +168,7 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 |-OfferId|(Nem kötelező) Az adott előfizetéshez társított ajánlat. Az alapértelmezett az MS-AZR-0003P (használatalapú fizetés).|
 |-Currency|(Nem kötelező) A pénznem, amelyben a költségek megjelennek a létrehozott jelentésben. Az alapértelmezett az amerikai dollár ($), vagy a legutoljára használt pénznem.<br>Tekintse át a [támogatott pénznemek](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies) listáját.|
 
-Alapértelmezés szerint az eszköz a profilhoz van beállítva, és legfeljebb 1000 virtuális géphez generál jelentéseket. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
+Alapértelmezés szerint az eszköz a profilhoz, és legfeljebb 1000 virtuális gépet a jelentés létrehozásához. A korlát módosításához meg kell változtatni a MaxVMsSupported kulcs értékét az *ASRDeploymentPlanner.exe.config* fájlban.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>

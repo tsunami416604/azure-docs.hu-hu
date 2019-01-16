@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ebd9f2115116e8f9cf976c86e4914f0b7f6beb39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810814"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Oktatóanyag: A Jamf Pro az Azure Active Directory-integráció
 
@@ -155,7 +155,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Jamf Pro, hajtsa végre az
 
     e. Illessze be az értéket `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` a a **ATTRIBÚTUM CSOPORTNÉV** szövegmezőbe.
 
-7. A legfeljebb azonos lapon görgetve **IDENTITÁSSZOLGÁLTATÓ** alatt a **egyszeri bejelentkezés** szakaszt, és hajtsa végre az alábbi lépéseket:
+7. Az azonos oldalon görgessen a **IDENTITÁSSZOLGÁLTATÓ** alatt a **egyszeri bejelentkezés** szakaszt, és hajtsa végre az alábbi lépéseket:
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure3.png)
 

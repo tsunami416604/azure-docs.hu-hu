@@ -1,6 +1,6 @@
 ---
 title: A Cloud Foundry az Azure-ral együttműködéséről |} A Microsoft Docs
-description: Ismerteti, hogyan Cloud Foundry is utlize Azure-szolgáltatások a Enterprice élmény
+description: Ismerteti, hogyan képes használni a Cloud Foundry Azure-szolgáltatások a Enterprice élmény
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 908b7e40c0509d7034b86985ac0775635726a6b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406143"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329803"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) egy PaaS-platformra épülő felhőalapú szolgáltatók IaaS-platformon futó. A felhőszolgáltatók konzisztens alkalmazás központi telepítési élmény, kínál. Emellett is integrálható különböző Azure-szolgáltatásokat a magas rendelkezésre ÁLLÁSÚ, nagyvállalati szintű skálázhatóságot és költségek.
-Nincsenek [a Cloud Foundry 6 alrendszerek](https://docs.cloudfoundry.org/concepts/architecture/), amely lehet rugalmas méretezési online, többek között: Útválasztás, hitelesítés, alkalmazás-életciklus-kezelést, a Service management, üzenetkezelés és figyelése. Az alrendszerek mindegyike esetében konfigurálhatja úgy a Cloud Foundry kapcsolattartó Azure-szolgáltatás vehető igénybe. 
+Nincsenek [a Cloud Foundry 6 alrendszerek](https://docs.cloudfoundry.org/concepts/architecture/), amely lehet rugalmas méretezési online, többek között: Útválasztás, a hitelesítés, alkalmazás-életciklus-kezelést, a Service management, üzenetkezelés és figyelése. Az alrendszerek mindegyike esetében konfigurálhatja úgy a Cloud Foundry kapcsolattartó Azure-szolgáltatás vehető igénybe. 
 
 ![Cloud Foundry az Azure-beli integrációs architektúra](media/CFOnAzureEcosystem-colored.png)
 
 ## <a name="1-high-availability-and-scalability"></a>1. Magas rendelkezésre állás és méretezhetőség
-### <a name="managed-disk"></a>Felügyelt lemez
+### <a name="managed-disk"></a>Managed Disk
 Bosh lemez létrehozásához és törlése rutinok Azure CPI (Felhőbeli Provider Interface) használja. Alapértelmezés szerint nem felügyelt lemezeket használnak. Az ügyfél manuálisan storage-fiókok létrehozásához, majd konfigurálja a fiókokat a CF-hez jegyzékfájlok van szükség. Lemezek tárfiókonkénti számának korlátozása miatt nem lehetséges.
 Most már [Managed Disk](https://azure.microsoft.com/services/managed-disks/) érhető el, a virtuális gépek felügyelt biztonságos és megbízható lemezes tárolást kínál. Ügyfél már nem kell foglalkozni a tárfiókot, a méretezés és magas rendelkezésre ÁLLÁS. Az Azure automatikusan rendezi a lemezeket. Hogy egy új vagy meglévő környezet, az Azure CPI fogja kezelni, a létrehozás vagy az áttelepítés a felügyelt lemez egy CF üzembe helyezés során. A PCF 1.11 támogatott. Emellett megismerheti a nyílt forráskódú Cloud Foundry [Managed Disk útmutatást](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) referenciaként. 
-### <a name="availability-zone-"></a>Rendelkezésre állási zónában *
+### <a name="availability-zone-"></a>Availability Zone *
 Natív alkalmazásplatform, mint a Cloud Foundry célja a [négy magas szintű elérhetőséget](https://docs.pivotal.io/pivotalcf/2-1/concepts/high-availability.html). Szoftver hibák első három szintek magát a CF-rendszer tudja kezelni, miközben platform hibatűrés felhőszolgáltatók által biztosított. A legfontosabb CF összetevők egy felhőszolgáltató platform magas rendelkezésre ÁLLÁSÚ megoldás használatával kell védeni. Ez magában foglalja a GoRouters, Diego Brains, CF adatbázisának és csempék. Alapértelmezés szerint [Azure rendelkezésre állási csoport](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/deploy-cloudfoundry-with-availability-sets) egy adatközpontban, fürtök között a hibatűrés szolgál.
 Az új jó, [Azure rendelkezésre állási zónában](https://docs.microsoft.com/azure/availability-zones/az-overview ) akkor szabadul fel, a hibatűrést, a következő szintre, és közel valós idejű redundanciával adatközpontból.
 Azure rendelkezésre állási zónában éri el a magas rendelkezésre ÁLLÁSÚ virtuális gépek elhelyezését a 2 + data centers által, az egyes virtuálisgép redundáns más csoportjaihoz. Ha egy zóna nem működik, az egyéb csoportok továbbra is az élő, elkülönítve a vészhelyreállítási.
@@ -42,7 +42,7 @@ Azure rendelkezésre állási zónában éri el a magas rendelkezésre ÁLLÁSÚ
 
 ## <a name="2-network-routing"></a>2. Hálózati útválasztás
 Alapértelmezés szerint az Azure alapszintű load balancer bejövő CF API-alkalmazások kérelmek, továbbítja azokat a Gorouters szolgál. CF-összetevők, például a Diego agy, MySQL, ERT használatával is a terheléselosztó elosztja a forgalmat a magas rendelkezésre ÁLLÁS. Emellett az Azure teljes körűen felügyelt terheléselosztási megoldások ismertet. Ha a TLS jogcímei ("SSL-alapú kiszervezéshez") vagy HTTP/HTTPS Kérelemfeldolgozás application layer, fontolja meg az Application Gateway. Magas rendelkezésre állás és méretezhetőség terheléselosztási a 4. réteg fontolja meg a standard load balancer.
-### <a name="azure-application-gateway-"></a>Az Azure Application Gateway *
+### <a name="azure-application-gateway-"></a>Azure Application Gateway *
 [Az Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) különböző 7. rétegbeli terheléselosztási funkciókat, beleértve az SSL-kiürítés, teljes körű SSL, a webalkalmazási tűzfal, cookie-alapú munkamenet-affinitást és egyéb kínál. Is [nyílt forráskódú Cloud Foundry az Application Gateway konfigurálása](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). A PCF, ellenőrizze a [PCF 2.1 kibocsátási megjegyzések](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) a POC-tesztelése.
 
 ### <a name="azure-standard-load-balancer-"></a>Az Azure Standard Load Balancer *
@@ -78,7 +78,7 @@ Kattintson a [Itt](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-om
 ### <a name="cost-saving-for-devtest-environments"></a>Költségmegtakarítás a fejlesztési és tesztelési környezetek
 #### <a name="b-series-"></a>A B sorozat: *
 F és a D VM sorozat általában javasolt a Pivotal Cloud Foundry éles környezetben, amíg az új – "adatlöket-kezelés" [a B sorozat](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) új lehetőségeket biztosít. A B sorozat – adatlöket-kezelés virtuális gépek ideálisak a nagy számítási feladatokhoz, amelyek nem a teljes teljesítmény, a processzor folyamatos kell például a webkiszolgálók, kis méretű adatbázisokhoz, és a fejlesztési és tesztelési környezetek. Ezeket a feladatokat jellemzően rendelkeznek – adatlöket-kezelés teljesítményre vonatkozó követelmények. $ 0,05/óra (F1) képest $0.012%-a./nA/óra (B1), a teljes listájának megtekintéséhez [Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) és [árak](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) részleteiről. 
-#### <a name="managed-standard-disk"></a>Standard szintű lemezes felügyelt: 
+#### <a name="managed-standard-disk"></a>Managed Standard Disk: 
 Prémium szintű lemezeket is megbízható teljesítmény, éles környezetben ajánlott.  A [Managed Disk](https://azure.microsoft.com/services/managed-disks/), Standard szintű tárolást is biztosít hasonló megbízhatóságát, különböző teljesítmény. Amely nem teljesítményigényes számítási feladatokhoz, például fejlesztési, tesztelési vagy a nem kritikus fontosságú környezet a standard szintű felügyelt lemezek és az alacsonyabb költségek egy másik lehetőséget kínálnak.  
 ### <a name="cost-saving-in-general"></a>Az általános költségmegtakarítás 
 #### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Jelentős VM költsége mentése az Azure-foglalások: 

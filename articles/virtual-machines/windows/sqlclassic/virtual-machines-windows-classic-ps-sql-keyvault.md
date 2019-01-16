@@ -3,7 +3,7 @@ title: A Key Vault integrálható az SQL Server a Windows virtuális gépek (kla
 description: Megtudhatja, hogyan automatizálhatja a konfigurációját az Azure Key Vault használata az SQL Server titkosítását. Ez a témakör ismerteti az Azure Key Vault-integráció használata az SQL Server virtuális gépek létrehozása a klasszikus üzemi modellben.
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/17/2017
-ms.author: jroth
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5e156166ec9e085cf7a3c2dcb72aa9e87bbadf1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 3711277ca11346cf73ff37c37ef4185d8bfdf6b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244940"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329871"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (klasszikus)
 > [!div class="op_single_selector"]
@@ -56,8 +56,8 @@ Az alábbi táblázat a következő szakaszban a PowerShell-parancsfájl futtat�
 | **$akvURL** |**A kulcstároló URL-címe** |„https://contosokeyvault.vault.azure.net/” |
 | **$spName** |**Egyszerű szolgáltatásnév** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Egyszerű szolgáltatás titkos kulcs** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
-| **$credName** |**Hitelesítő adat neve**: Az AKV-integráció létrehoz egy hitelesítő adatot az SQL Serverben, amely hozzáférést biztosít a virtuális gépnek a Key Vaulthoz. Válasszon egy nevet ennek a hitelesítő adatnak. |"mycred1" |
-| **$vmName** |**A virtuális gép neve**: egy korábban létrehozott SQL virtuális gép nevét. |"myvmname" |
+| **$credName** |**Hitelesítő adat neve**: AKV-integráció az SQL Serverrel, így a virtuális Géphez a key vault eléréséhez hitelesítő adatot hoz létre. Válasszon egy nevet ennek a hitelesítő adatnak. |"mycred1" |
+| **$vmName** |**A virtuális gép neve**: Egy korábban létrehozott SQL virtuális gép nevét. |"myvmname" |
 | **$serviceName** |**Szolgáltatásnév**: A Felhőszolgáltatás neve, amely az SQL virtuális gép társítva van. |"mycloudservicename" |
 
 ### <a name="enable-akv-integration-with-powershell"></a>A PowerShell használatával az AKV-integráció engedélyezése

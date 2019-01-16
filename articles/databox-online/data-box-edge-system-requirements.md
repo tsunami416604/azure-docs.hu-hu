@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 01/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d6060c1774b2ad09c3b813bc107b73309dae801
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 05f6208788060459e67a787507a56adeed980e2d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020217"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318994"
 ---
 # <a name="azure-data-box-edge-system-requirements-preview"></a>Az Azure Data Box Edge rendszerkövetelmények (előzetes verzió)
 
@@ -62,9 +62,9 @@ Használja az alábbi táblázat port konfigurálása az Azure IoT Edge-futtató
 | Port nem. | És leskálázása | Port hatókör | Szükséges | Útmutatás |
 |----------|-----------|------------|----------|----------|
 | TCP 5671-ES (AMQP)| Ki       | WAN        | Igen      | Alapértelmezett kommunikációs protokollt az IoT Edge-hez. Meg kell nyitni, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy AMQP a kívánt kommunikációs protokollt. <br>az AMQP 5672 IoT Edge által nem támogatott. <br>Tiltsa le ezt a portot, ha az Azure IoT Edge használja egy másik IoT Hub protokoll támogatott. |
-| A TCP 443 (HTTPS)| Ki       | WAN        | Igen      | Kimenő nyissa meg az IoT Edge-kiépítés. Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell külső hálózatok csatlakoztatása az IoT hubhoz, vagy az Azure IoT Edge segítségével szolgáltatásokat nyújtanak az IoT Hub felé. Így a bejövő szabály csak a belső hálózatról bejövő megnyitni a korlátozott lehet. |
+| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | Kimenő nyissa meg az IoT Edge-kiépítés. Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell külső hálózatok csatlakoztatása az IoT hubhoz, vagy az Azure IoT Edge segítségével szolgáltatásokat nyújtanak az IoT Hub felé. Így a bejövő szabály csak a belső hálózatról bejövő megnyitni a korlátozott lehet. |
 | TCP 5671-ES (AMQP) | Eleme ennek        |            | Nem       | Bejövő kapcsolatok le kell tiltani.|
-| A TCP 443 (HTTPS) | Eleme ennek        |            | Bizonyos esetekben láthatja a megjegyzéseket | Csak a meghatározott forgatókönyvek meg kell nyitni a bejövő kapcsolatokat. Nem HTTP-protokollok, mint például az AMQP, MQTT nem konfigurálható, ha az üzenetek küldhetők a websockets protokoll 443-as porton. |
+| TCP 443 (HTTPS) | Eleme ennek        |            | Bizonyos esetekben láthatja a megjegyzéseket | Csak a meghatározott forgatókönyvek meg kell nyitni a bejövő kapcsolatokat. Nem HTTP-protokollok, mint például az AMQP, MQTT nem konfigurálható, ha az üzenetek küldhetők a websockets protokoll 443-as porton. |
 
 Teljes körű információkért látogasson el a [tűzfal és az IoT Edge üzembe helyezési konfigurációs portszabályok](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
@@ -78,17 +78,28 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok liberally fix IP-címei
 > - Az eszköz (forrás) IP-címek mindig a felhő-kompatibilis hálózati adaptereken értékre kell állítani.
 > - IP-címeket kell megadni a cél [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
+### <a name="url-patterns-for-gateway-feature"></a>Az átjáró szolgáltatás URL-minta
+
 |    Az URL-minta                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    Összetevő vagy funkció                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 |    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Az Azure Data Box Edge szolgáltatás<br>Azure Service Bus<br>Hitelesítési szolgáltatás                           |
-|    http://\*. backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    Eszköz aktiválása                                                                                    |
+|    http://\*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    Eszköz aktiválása                                                                                    |
 |    http://crl.microsoft.com/pki/\*<br>http://www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    Tanúsítvány-visszavonás                                                                               |
-|    https://\*.core.windows.net/\*<br>https://\*. data.microsoft.com<br>http://\*. msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Az Azure storage-fiókok és figyelés                                                                |
-|    http://windowsupdate.microsoft.com<br>http://\*. windowsupdate.microsoft.com<br>https://\*. windowsupdate.microsoft.com<br>http://\*. update.microsoft.com<br>https://\*. update.microsoft.com<br>http://\*. windowsupdate.com<br>http://download.microsoft.com<br>http://\*. download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://\*. ws.microsoft.com<br>https://\*. ws.microsoft.com<br>http://\*. mp.microsoft.com |    A Microsoft Update-kiszolgálók                                                                             |
+|    https://\*.core.windows.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Az Azure storage-fiókok és figyelés                                                                |
+|    http://windowsupdate.microsoft.com<br>http://\*.windowsupdate.microsoft.com<br>https://\*.windowsupdate.microsoft.com<br>http://\*.update.microsoft.com<br>https://\*.update.microsoft.com<br>http://\*.windowsupdate.com<br>http://download.microsoft.com<br>http://\*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://\*.ws.microsoft.com<br>https://\*.ws.microsoft.com<br>http://\*.mp.microsoft.com |    A Microsoft Update-kiszolgálók                                                                             |
 |    http://\*. deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                                          |    Akamai CDN                                                                                           |
 |    https://\*.partners.extranet.microsoft.com/\*                                                                                                                                                                                                                                                                                                                                                                                                                    |    Támogatási csomag                                                                                      |
-|    http://\*. data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                                     |    A Windows, a telemetriai szolgáltatás, tekintse meg a frissítést a felhasználói élmény és a telemetria diagnosztikája      |
+|    http://\*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                                     |    A Windows, a telemetriai szolgáltatás, tekintse meg a frissítést a felhasználói élmény és a telemetria diagnosztikája      |
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                         |
+
+
+### <a name="url-patterns-for-compute-feature"></a>Számítási szolgáltatás URL-minta
+
+| Az URL-minta                      | Összetevő vagy funkció                     |   |
+|----------------------------------|---------------------------------------------|---|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |   |
+| https://\*.azurecr.io                     | Személyes, mind a 3. fél tárolóregisztrációs adatbázis (nem kötelező) |   |
+| https://\*.azure-devices.net              | Az IoT Hub-hozzáférés (kötelező)                             |   |
 
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c52fcd544e22c274d0e9053da93d2b9dee0df695
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286632"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320361"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018. augusztus
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 augusztus.
@@ -23,9 +23,9 @@ Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti 
 ## <a name="automatic-intelligent-insights"></a>Automatikus Intelligent Insights
 A Microsoft vezetett be [automatikus intelligent insights](https://azure.microsoft.com/blog/automatic-intelligent-insights-to-optimize-performance-with-sql-data-warehouse/) az adatraktárhoz Automation felhőalapú megkönnyítse. Már nem figyelheti az adattárházat, az adatok torzulása és az optimálisnál rosszabb Táblastatisztika kell. További költségek nélkül az SQL Data Warehouse feltárásával intelligent insights összes Gen2-példánya számára. Integrálásával [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), automatikusan megkapja a aktív számítási feladatok teljesítményének javítása érdekében kapcsolatos bevált gyakorlatokat. Az SQL Data Warehouse a számítási feladatok, és felület javaslatokat, a használat alapján elemzi. Ez az elemzés történik napi lehetővé teszi a használati jelentések és javaslatok fejlesztései a számítási feladat figyeléséhez.
 
-A javaslatok az Advisor az Azure Portalon is megtekintheti: ![Azure Advisor portál javaslatokat az Azure SQL Data warehouse-hoz](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
+A javaslatok az Azure Advisor portálon tekintheti meg: ![Az Azure SQL Data warehouse portál az Azure Advisor-javaslatok](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
-Részletesen is megtekintheti az adott riasztásra vonatkozó javaslatok láthatók kategóriákhoz: ![Azure Advisor portál javaslat részletei az Azure SQL Data warehouse-hoz](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+Tekintse meg az adott riasztásra vonatkozó javaslatok láthatók legördülőmenü részletesen is: ![Az Azure SQL Data warehouse-hoz az Azure Advisor-portál javaslat részletei](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
 
 
 ## <a name="bug-fixes"></a>Hibajavítások

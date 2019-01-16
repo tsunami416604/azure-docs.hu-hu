@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: 5d7a16ebda088d0ed42021e9def20a398e914ad9
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 29672a75408e42fb9239e5d826784b46e7280805
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158126"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332268"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Létrehozása, módosítása vagy törlése az Azure útválasztási táblázatot az Ansible-lel
 Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálózatok közötti adatforgalom és a helyszíni hálózatokkal. Az Azure alapértelmezett útválasztását módosítani szeretné, ha mégis így hozzon létre egy [útvonaltábla](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
@@ -51,7 +51,7 @@ ansible-playbook route_table_create.yml
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 Egy alhálózat rendelkezhet, nulla vagy egy útvonaltábla társítható. Egy útválasztási táblázatot lehet nulla vagy egynél több alhálózat van társítva. Az útvonaltáblák nem lettek társítva a virtuális hálózatok, mivel társítania kell egy útválasztási táblázatot az egyes alhálózatokon azt szeretné, hogy a társított útvonaltáblába. Minden, az alhálózatot elhagyó forgalom útválasztási táblázatokat, belül létrehozott útvonalak alapján továbbítja [alapértelmezett útvonalakat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#default), és útvonalak propagálni egy a helyszíni hálózathoz, ha a virtuális hálózathoz csatlakoztatva van egy Azure virtuális hálózati átjáró () ExpressRoute vagy VPN-, VPN gateway a BGP használatakor). Csak egy útválasztási táblázatot a megegyező Azure-helyen és előfizetésen az útvonaltáblában lévő virtuális hálózatok alhálózataihoz társíthatja.
 
-Ez a szakasz bemutatja egy minta Ansible-forgatókönyvek, amely létrehoz egy virtuális hálózat és a egy küldés, majd hozzárendeli egy útválasztási táblázatot az alhálózathoz.
+Ez a szakasz bemutatja egy minta az Ansible-forgatókönyv, amely egy virtuális hálózatot és alhálózatot hoz létre, majd hozzárendeli egy útválasztási táblázatot az alhálózathoz.
 
 ```yml
 - hosts: localhost

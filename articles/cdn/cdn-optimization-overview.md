@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: magattus
-ms.openlocfilehash: 54979bdaab3d3d49ab3d3a08868dd28e27423e7e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 526f3522bff05618189ad4f8205fbb61afc47fdc
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091742"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320309"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Az Azure CDN tartalomkézbesítési típusú optimalizálása
 
@@ -83,7 +83,7 @@ A CDN-végpont az egyik ezeket a forgatókönyveket is optimalizálhatja.
 Egy tipikus webhely statikus és dinamikus tartalom tartalmazza. Statikus tartalom magában foglalja a képek, JavaScript-kódtárak és stíluslapok, amely a gyorsítótárba, és kézbesíti a különböző felhasználókhoz. Dinamikus tartalom adott felhasználó, például a news elemek, amelyek igazodnak a felhasználói profil személyre szabhatja. Dinamikus tartalom, például a bevásárlókocsi vásárlási tartalmát, mert mindegyik felhasználóhoz egyedi nincs gyorsítótárazva. Általános webes kézbesítés optimalizálhatja az egész webhely. 
 
 > [!NOTE]
-> Ha használ egy **Azure CDN Akamai Standard** profilt, válassza az optimalizálás típusa, ha az átlagos mérete 10 MB-nál kisebb. Válassza ki a Othewise, ha az átlagos mérete 10 MB-nál nagyobb **nagyméretű fájl letöltése** a a **optimalizált** legördülő listából válassza ki.
+> Ha használ egy **Azure CDN Akamai Standard** profilt, válassza az optimalizálás típusa, ha az átlagos mérete 10 MB-nál kisebb. Ellenkező esetben, ha az átlagos mérete 10 MB-nál nagyobb, válassza ki **nagyméretű fájl letöltése** származó a **optimalizált** legördülő listából.
 
 ### <a name="general-media-streaming"></a>Általános médiastreaming
 

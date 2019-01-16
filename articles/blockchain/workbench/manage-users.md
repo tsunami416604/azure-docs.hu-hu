@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: adb4b57ce304a3c6e369d6cc68dbb7c5857fb9fe
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a481f5b073b7e8db9135d7b10cf602168290738a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242510"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331367"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench használatával a felhasználók kezelése
 
@@ -49,7 +49,7 @@ Miután a felhasználók vannak hozzáadva a könyvtárba, a következő lépés
 Felhasználók hozzáadása a **rendszergazda** csoportot az Azure AD-címtárban:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2.  Ellenőrizze, hogy biztosan megfeleljen az a Blockchain Workbenchet a jobb felső sarokban válassza ki a fiók társított Azure AD-bérlővel.
+2.  Ellenőrizze, hogy biztosan megfeleljen az a Blockchain Workbenchet a jobb felső sarokban válassza ki a fiók társított Azure AD-bérlő.
 3.  Válassza ki **Azure Active Directory > Vállalati alkalmazások**.
 4.  Válassza ki az Azure ad-ben ügyfélalkalmazás Blockchain Workbench használatával
     

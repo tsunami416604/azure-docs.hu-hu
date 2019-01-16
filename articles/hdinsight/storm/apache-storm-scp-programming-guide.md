@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631821"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332098"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](https://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](https://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
@@ -42,7 +42,7 @@ Az SCP felett adatfeldolgozó alkalmazás létrehozása, több lépésre van sz�
 
 Ez a dokumentum néhány egyszerű példák bemutatják, hogyan hozhat létre a szolgáltatáskapcsolódási pont adatokat feldolgozó alkalmazást használ.
 
-## <a name="scp-plugin-interface"></a>Szolgáltatáskapcsolódási pont beépülő modul felület
+## <a name="scp-plugin-interface"></a>SCP Plugin Interface
 SCP beépülő modulok (vagy alkalmazásokat), amelyeket különálló exe is futtatható belül a Visual Studio fejlesztési fázisában, és a Storm-folyamat az éles üzembe helyezés után kell csatlakoztatni. A szolgáltatáskapcsolódási pont beépülő modul írása ugyanúgy mint bármely más szabványos Windows console-alkalmazások írására van. SCP.NET platform deklarálja spout vagy bolt néhány felületet, és a felhasználói beépülő modul kód valósítsa meg ezeket az adaptereket. A fő Ez a kialakítás célja, hogy a felhasználó koncentrálhat saját üzleti logics, változatlanul hagyása mellett további tevékenység következik, SCP.NET platformon kell kezelnie.
 
 A felhasználó beépülő modul kódot kell megvalósítania, a következőket felületek egyike, attól függ, hogy a topológia tranzakciós vagy nem tranzakciós-e, és hogy az összetevő adott spout vagy bolt.
@@ -204,7 +204,7 @@ Nem tranzakciós bolt ack támogató, az azt kell explicit módon `Ack()` vagy `
     public abstract void Ack(SCPTuple tuple);
     public abstract void Fail(SCPTuple tuple);
 
-### <a name="statestore"></a>Állapottárolója
+### <a name="statestore"></a>StateStore
 `StateStore` metaadat-szolgáltatások, a monoton sorozat mentén hozza. generációs és a várakozási ingyenes koordinációs biztosít. Elosztott feldolgozási magasabb szintű absztrakciók is épülő `StateStore`, beleértve az elosztott zárolásokat, elosztott várólisták, korlátok és tranzakciós szolgáltatások.
 
 Szolgáltatáskapcsolódási pont alkalmazások használhatják a `State` objektum bizonyos információkat is tartalmaz [Apache ZooKeeper](https://zookeeper.apache.org/), különösen a tranzakciós topológia. Ennek tranzakciós spout összeomlik, és indítsa újra, ha a szükséges adatok lekérését ZooKeeper, és indítsa újra a folyamat során.
@@ -228,7 +228,7 @@ A `StateStore` főként objektumnak ezen módszerek:
     /// <summary>
     /// Retrieve all states that were previously uncommitted, excluding all aborted states 
     /// </summary>
-    /// <returns>Uncommited States</returns>
+    /// <returns>Uncommitted States</returns>
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
@@ -249,7 +249,7 @@ A `StateStore` főként objektumnak ezen módszerek:
     /// List all the committed states
     /// </summary>
     /// <returns>Registries contain the Committed State </returns> 
-    public IEnumerable<Registry> Commited();
+    public IEnumerable<Registry> Committed();
 
     /// <summary>
     /// List all the Aborted State in the StateStore
@@ -354,13 +354,13 @@ SCP.NET-e hozzáadni a következő funkciók tranzakciós topológiák megadása
 
 | **Új funkciók** | **Paraméterek** | **Leírás** |
 | --- | --- | --- |
-| **Tx-topolopy** |topológia – név<br />spout-térkép<br />bolt-térkép |Adja meg a topológia nevét, a tranzakciós topológiákat &nbsp;spoutok definíció térkép és a boltok definíció térkép |
-| **SCP-tx-spout** |Exec-név<br />args<br />mezők |Adjon meg egy tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van |
-| **SCP-tx-batch-bolt** |Exec-név<br />args<br />mezők |Adjon meg egy tranzakciós Batch Bolt. Az alkalmazás futása ***exec-name*** használatával ***argumentum.***<br /><br />A mezők a bolt kimeneti mezőjét. |
-| **SCP-tx-commit-bolt** |Exec-név<br />args<br />mezők |Adjon meg egy tranzakciós véglegesítési bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van |
-| **nontx-topolopy** |topológia – név<br />spout-térkép<br />bolt-térkép |Adja meg a topológia nevét, a tranzakciós topológiákat&nbsp; spoutok definíció térkép és a boltok definíció térkép |
-| **SCP-spout** |Exec-név<br />args<br />mezők<br />paraméterek |Adjon meg egy nem tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
-| **SCP-bolt** |Exec-név<br />args<br />mezők<br />paraméterek |Adjon meg egy nem tranzakciós Bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
+| **Tx-topolopy** |topológia – név<br />spout-map<br />bolt-map |Adja meg a topológia nevét, a tranzakciós topológiákat &nbsp;spoutok definíció térkép és a boltok definíció térkép |
+| **scp-tx-spout** |exec-name<br />args<br />mezők |Adjon meg egy tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van |
+| **scp-tx-batch-bolt** |exec-name<br />args<br />mezők |Adjon meg egy tranzakciós Batch Bolt. Az alkalmazás futása ***exec-name*** használatával ***argumentum.***<br /><br />A mezők a bolt kimeneti mezőjét. |
+| **scp-tx-commit-bolt** |exec-name<br />args<br />mezők |Adjon meg egy tranzakciós véglegesítési bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van |
+| **nontx-topolopy** |topológia – név<br />spout-map<br />bolt-map |Adja meg a topológia nevét, a tranzakciós topológiákat&nbsp; spoutok definíció térkép és a boltok definíció térkép |
+| **scp-spout** |exec-name<br />args<br />mezők<br />paraméterek |Adjon meg egy nem tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
+| **scp-bolt** |exec-name<br />args<br />mezők<br />paraméterek |Adjon meg egy nem tranzakciós Bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
 
 SCP.NET van definiálva a következő kulcsszavakat:
 
@@ -369,8 +369,8 @@ SCP.NET van definiálva a következő kulcsszavakat:
 | **: név** |Határozza meg topológia nevét |
 | **: topológia** |Adja meg a topológia az előző függvények használatával, és készíthet azokról a. |
 | **: p** |Adja meg az egyes spout vagy bolt a párhuzamosság mutató. |
-| **: config** |Adja meg konfigurálja a paraméter vagy frissítse a meglévőket |
-| **: séma** |Adja meg a Stream sémáját. |
+| **:config** |Adja meg konfigurálja a paraméter vagy frissítse a meglévőket |
+| **:schema** |Adja meg a Stream sémáját. |
 
 És a gyakran használt paraméterek:
 
@@ -503,7 +503,7 @@ SCP összetevő is tartalmaz, a Java és a C\# oldalán. Annak érdekében, hogy
    
    A C deserialize felület\# ügyféloldali típusúként van definiálva:
    
-   nyilvános felülete ICustomizedInteropCSharpDeserializer
+   public interface ICustomizedInteropCSharpDeserializer
    
        public interface ICustomizedInteropCSharpDeserializer
        {
@@ -542,7 +542,7 @@ SCP összetevő is tartalmaz, a Java és a C\# oldalán. Annak érdekében, hogy
            public List<Object> Deserialize(List<ByteBuffer> dataList);
        }
 
-## <a name="scp-host-mode"></a>Szolgáltatáskapcsolódási pont állomás üzemmódban
+## <a name="scp-host-mode"></a>SCP Host Mode
 Ebben a módban a kódokat a dll-fájl összeállításához, és a felhasználónak topológia küldhetnek a szolgáltatáskapcsolódási pont által biztosított SCPHost.exe használatával. A konfigurációk fájlt ehhez a kódhoz hasonlóan néz ki:
 
     (scp-spout

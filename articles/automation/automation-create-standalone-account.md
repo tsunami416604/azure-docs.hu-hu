@@ -6,21 +6,21 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2e419da4ed84f3d202113f9616050c3e7c29f240
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958805"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322044"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Azure Automation-fiókot az Azure Portalon. A portál Automation-fiók segítségével értékelje ki és más felügyeleti megoldásokat vagy integrációs használata az Azure Log Analytics nélkül Automation ismertetése. Ezen felügyeleti megoldások hozzáadása vagy a Log Analytics szolgáltatással integrált speciális monitorozás bármikor runbook-feladatok a jövőben is.
 
-Az Automation-fiók runbookok hitelesítheti, mivel kezeli az erőforrások Azure Resource Manager vagy a klasszikus üzemi modellben. Egy Automation-fiók erőforrások is kezelhetők a régiók és a egy adott bérlő esetében az előfizetések között.
+Az Automation-fiók runbookok hitelesítheti, mivel kezeli az erőforrások Azure Resource Manager vagy a klasszikus üzemi modellben. Egy Automation-fiókkal egy adott bérlő több régiójában és előfizetésén is kezelhetők erőforrások.
 
 Ha egy Automation-fiókot hoz létre az Azure Portalon, ezek a fiókok automatikusan jönnek létre:
 
@@ -39,7 +39,7 @@ Létrehozni vagy frissíteni egy Automation-fiókot, és ebben a cikkben ismerte
 * Az Automation-fiók létrehozása az Azure AD-felhasználói fiókot hozzá kell adni egy szerepkörhöz a tulajdonosi szerepkörével egyenértékű engedélyekkel **Microsoft. Automation** erőforrásokat. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
 * Az Azure Portalon alatt **Azure Active Directory** > **kezelés** > **alkalmazásregisztrációk**, ha **alkalmazásregisztrációk**  értékre van állítva **Igen**, az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is [Active Directory-alkalmazások regisztrálását](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **alkalmazásregisztrációk** értékre van állítva **nem**, ezt a műveletet végző felhasználót az Azure AD globális rendszergazdának kell lennie.
 
-Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják az előfizetés globális rendszergazdai vagy coadministrator szerepkörhöz, akkor lesz hozzáadva az Active Directory vendégként. Ebben a forgatókönyvben a következő üzenet jelenik meg a **Automation-fiók hozzáadása** lap: "Nincs engedélye létrehozni."
+Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják az előfizetés globális rendszergazdai vagy coadministrator szerepkörhöz, akkor lesz hozzáadva az Active Directory vendégként. Ebben a forgatókönyvben a következő üzenet jelenik meg a **Automation-fiók hozzáadása** oldalon: "Nincs engedélye létrehozni."
 
 Ha egy felhasználó hozzá van rendelve a globális rendszergazdai vagy coadministrator szerepkör először, eltávolíthatja őket az előfizetéshez tartozó Active Directory-példányból, és majd szerepkörtagok őket az Active Directoryban a teljes felhasználói szerepkörhöz.
 
@@ -69,7 +69,7 @@ Az Azure Portalon egy Azure Automation-fiók létrehozásához hajtsa végre az 
   >
   > ![Automation-fiók figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Az a **Automation-fiók hozzáadása** ablaktáblán, a a **neve** adjon meg egy nevet az új Automation-fiók. Ez a név nem módosítható, miután akkor kell kiválasztani. *Automation-fióknevek minden régióban és erőforráscsoportban egyedi.*
+1. Az a **Automation-fiók hozzáadása** ablaktáblán, a a **neve** adjon meg egy nevet az új Automation-fiók. Ez a név nem módosítható, miután akkor kell kiválasztani. *Automation-fióknevek minden régióban és erőforráscsoportban egyedi. Törölt Automation-fiókok nevei nem lehet azonnal elérhetővé válik.*
 1. Ha több előfizetéssel rendelkezik, a a **előfizetés** mezőben adja meg az új fiókhoz használni kívánt előfizetést.
 1. A **erőforráscsoport**, adja meg, vagy válasszon ki egy új vagy meglévő erőforráscsoportot.
 1. A **hely**, válasszon ki egy Azure-adatközpontot.

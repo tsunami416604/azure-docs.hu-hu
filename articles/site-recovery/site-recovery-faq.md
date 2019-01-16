@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: bd5c3a6fc4a2d6f6a8b4f07154c02d7d29211ec9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1300ac9b6ba0eee8698e268fb9cc613955deb74e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078592"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321917"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk az Azure Site Recovery – gyakori kérdések tartalmazza. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -115,11 +115,11 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 Az LRS vagy GRS tárfiókra van szükség. Mi a GRS használatát javasoljuk, mivel ez akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében gondoskodik az adatok hibatűréséről. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. A Premium storage a VMware virtuális gépek, Hyper-V virtuális és fizikai kiszolgálók replikálásához, akkor támogatott, ha a Site Recovery üzembe helyezése az Azure Portalon.
 
 ### <a name="how-often-can-i-replicate-data"></a>Milyen gyakran replikálhatom az adatokat?
-* **A Hyper-V:** A Hyper-V virtuális gépek replikálhatók (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc. Ha SAN-replikálás beállítása replikációs szolgáltatása szinkron.
+* **Hyper-V:** A Hyper-V virtuális gépek replikálhatók (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc. Ha SAN-replikálás beállítása replikációs szolgáltatása szinkron.
 * **Az Azure virtuális gépek, VMware és fizikai kiszolgálók:** A replikáció gyakoriságának ezeknél nincs jelentősége. A replikálás folyamatos történik.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kiterjesztheti a replikáció már létező helyreállítási helyről egy másik harmadlagos helyhez?
-A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
+A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-replication-the-first-time-i-replicate-to-azure"></a>Végezhetek offline replikációt, amikor első alkalommal replikálok Azure-ba?
 Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).

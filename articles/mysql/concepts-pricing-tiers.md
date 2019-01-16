@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: 805f7844b144da1feb141a46080912790008f32e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 145273d48060955005f1d93f30e79014244cf4ba
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538771"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321381"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -20,10 +20,10 @@ Létrehozhat egy Azure Database for MySQL-kiszolgáló a másik három tarifacso
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | A gen 4, 5 általános | A gen 4, 5 általános | Gen 5 |
-| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32 vagy 64 |2, 4, 8, 16 és 32 |
+| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Memória / virtuális mag | 2 GB | 5 GB | 10 GB |
 | Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
-| Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági másolatainak megőrzési ideje | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
 Válasszon egy tarifacsomagot, használja az alábbi táblázat kiindulási pontként.
@@ -52,14 +52,14 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 | USA déli középső régiója | X | X |
 | USA nyugati régiója | X | X |
 | USA nyugati régiója, 2. |  | X |
+| Dél-Brazília | X | X |
 | Közép-Kanada | X | X |
 | Kelet-Kanada | X | X |
-| Dél-Brazília | X | X |
 | Észak-Európa | X | X |
 | Nyugat-Európa |  | X |
 | Közép-Franciaország |  | X |
-| Az Egyesült Királyság nyugati régiója |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
+| Az Egyesült Királyság nyugati régiója |  | X |
 | Kelet-Ázsia | X | X |
 | Délkelet-Ázsia | X | X |
 | Kelet-Ausztrália |  | X |
@@ -67,17 +67,22 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 | Ausztrália 2. középső régiója |  | X |
 | Délkelet-Ausztrália |  | X |
 | Közép-India | X | X |
-| Nyugat-India | X | X |
 | Dél-India |  | X |
+| Nyugat-India | X | X |
 | Kelet-Japán | X | X |
 | Nyugat-Japán | X | X |
 | Korea középső régiója |  | X |
 | Korea déli régiója |  | X |
+| Kelet-Kína 1 | X |  |
+| Kelet-Kína 2 |  | X |
+| Észak-Kína 1 | X |  |
+| Észak-Kína 2 |  | X |
 | Közép-Németország |  | X |
 | US DoD – Középső régió  | X |  |
 | US DoD – Kelet  | X |  |
 | USA-beli államigazgatás – Arizona |  | X |
 | USA-beli államigazgatás – Texas |  | X |
+| USA-beli államigazgatás – Virginia |  | X |
 
 ## <a name="storage"></a>Storage
 
@@ -85,10 +90,10 @@ A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azu
 
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
 | Növekmény tárméret | 1 GB | 1 GB | 1 GB |
-| IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Maximális 6000 iops-érték | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Maximális 6000 iops-érték |
+| IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS |
 
 Hozzáadhat további tárolókapacitás alatt és a kiszolgáló létrehozása után. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 

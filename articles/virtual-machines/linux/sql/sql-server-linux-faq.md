@@ -3,21 +3,22 @@ title: SQL Server on Linux Azure Virtual Machines – gyakori kérdések |} A Mi
 description: Ez a cikk a Linux Azure virtuális gépeken futó SQL Server kapcsolatos gyakori kérdésekre adott válaszokat ismerteti.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rothja
-manager: jhubbard
+author: MashaMSFT
+manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
-ms.author: jroth
-ms.openlocfilehash: e8297892c533f3b0126f925f81d3e9bc429828ef
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039955"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330432"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Gyakori kérdések az SQL Server Linux Azure Virtual Machines gépeken
 
@@ -60,7 +61,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
    RHEL és SLES virtuális gépek nem vonatkozik költségkeret, és a egy ellenőrzött fizetési mód (általában hitelkártya) az előfizetéshez tartozó előfizetés szükséges. A költségkeret eltávolítása nélkül üzembe egy RHEL vagy SLES VM, ha az előfizetése le lekérése tiltva, és minden virtuális gép vagy szolgáltatás leállt. Ha ebbe az állapotba, hogy az előfizetés újbóli engedélyezéséhez futtatásakor [el kell távolítania a költségkeretet](https://account.windowsazure.com/subscriptions). A fennmaradó kreditjeit visszaáll a az aktuális elszámolási időszakban, de ha úgy dönt, hogy indítsa újra, és folytatja annak futtatását egy RHEL vagy SLES VM kép felár kerül a hitelkártyáját terhelni.
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 1. **Hogyan telepíthetem saját licenccel rendelkező példány az SQL Server-beli virtuális gépen?**
 

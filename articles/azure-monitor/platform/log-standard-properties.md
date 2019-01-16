@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: d2db9d426da58b3783b07210165a55cc6ec27658
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185953"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321891"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>A Log Analytics-rekordok szabványos tulajdonságai
 Az adatok [Log Analytics](../log-query/log-query-overview.md) rekordkészletet, amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik van tárolva. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
@@ -51,7 +51,7 @@ search *
 | summarize count() by Type 
 ```
 
-## <a name="resourceid"></a>\_erőforrás-azonosító
+## <a name="resourceid"></a>\_ResourceId
 A  **\_ResourceId** a tulajdonság tárolja az erőforrást, amelyhez társítva van a rekord egyedi azonosítója. Ez lehetővé teszi a lekérdezés hatókörét, csak a rekordok egy adott erőforrásból, vagy a kapcsolódó adatok join több különböző táblázat standard tulajdonságot.
 
 Az Azure-erőforrásokhoz, értékét **_ResourceId** van a [Azure-erőforrást azonosító URL-cím](../../azure-resource-manager/resource-group-template-functions-resource.md). A tulajdonság jelenleg csak Azure-erőforrások, de például a helyi számítógépek Azure-on kívüli erőforrások terjeszteni.
@@ -84,6 +84,70 @@ AzureActivity
    | summarize LoggedOnAccounts = makeset(Account) by _ResourceId 
 ) on _ResourceId  
 ```
+
+## <a name="isbillable"></a>\_IsBillable
+A  **\_IsBillable** tulajdonság határozza meg, hogy a feldolgozott adatok számlázható. Az adatok  **\_IsBillable** egyenlő _hamis_ gyűjtött ingyenesen, és nem számítunk fel az Azure-fiókjával.
+
+### <a name="examples"></a>Példák
+Számlázott adattípusok küldő számítógépek listájának lekéréséhez használja a következő lekérdezést:
+
+> [!NOTE]
+> A lekérdezések használata `union withsource = tt *` takarékosan vizsgálatok különböző adattípusok adatok drágák végrehajtásához. 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
+
+Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránkénti száma számlázzuk adattípusok:
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
+
+## <a name="billedsize"></a>\_BilledSize
+A  **\_BilledSize** tulajdonság határozza meg a mérete (bájt), amelyek számítjuk fel az Azure-fiókjával, ha  **\_IsBillable** igaz.
+
+### <a name="examples"></a>Példák
+Számítógép betöltött üzenetnek méretének megtekintéséhez használja a `_BilledSize` -tulajdonsággal, amely biztosítja a mérete (bájt):
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
+```
+
+A számítógép betöltött események száma megtekintéséhez használja a következő lekérdezést:
+
+```Kusto
+union withsource = tt *
+| summarize count() by Computer | sort by count_ nulls last
+```
+
+A számítógép betöltött számlázható események száma megtekintéséhez használja a következő lekérdezést: 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last
+```
+
+Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot küldenek, adott számítógéphez, használja a következő lekérdezést:
+
+```Kusto
+union withsource = tt *
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last 
+```
+
 
 ## <a name="next-steps"></a>További lépések
 

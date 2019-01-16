@@ -3,7 +3,7 @@ title: Csatlakozás az SQL Server virtuális gép (klasszikus) Azure-on |} A Mic
 description: Ismerje meg, hogyan csatlakozhat az Azure-beli virtuális gépen futó SQL Server. Ez a témakör a klasszikus üzemi modellt használja. A forgatókönyvek eltér attól függően, a hálózati konfigurációt, és az ügyfél helyét.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.assetid: 416948af-454f-4cfe-8fd2-7cf971cbd3e9
@@ -13,14 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
-ms.author: jroth
+ms.author: mathoma
+ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: e986440edc0b683d1b1cd49207a355dac060c53d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 558606b6993aff2053dfbbf6adfd864cd827bbb1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "29398318"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54328980"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
 > [!div class="op_single_selector"]

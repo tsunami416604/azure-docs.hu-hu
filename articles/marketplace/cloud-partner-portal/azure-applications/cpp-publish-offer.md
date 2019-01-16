@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a18bcf9f9e1217b674bda5f5ae698908f1911a8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262914"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329990"
 ---
 # <a name="publish-azure-application-offer"></a>Az Azure application ajánlat közzététele
 
@@ -41,7 +41,7 @@ A következő táblázat sorolja fel és közzétételi lépésre ismerteti, és
 | Teszt meghajtó ellenőrzése          | < 2 óra   | (Nem kötelező) Ha jelen egy Test Drive, a Microsoft ellenőrzi, hogy azt telepíthető és replikálja.  |
 | Formátumokat támogató csomagolási és Érdeklődők generálása regisztráció | < 1 óra  | Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az átfutási rendszerek konfigurált és telepített. |
 |  Közzétevő jóváhagyás             |  Manuális    | Végső közzétevő áttekintése és az ajánlat élesíti előtt megerősítést. Az ajánlat már elérhető előzetes verzióban.  Az ajánlat (az ajánlat információk lépések) a kijelölt előfizetésekben telepíthet, hogy megfelelnek-e a szükséges összes követelmény.  Miután ellenőrizte az ajánlatot, válassza ki a **élő** , az ajánlat helyezheti át a következő lépéssel. |
-| A Microsoft áttekintése                | 7 – 14 nap * | A Microsoft azok alkalmazásfüggőségeit áttekinti az Azure-alkalmazásokat, és e-mailt küld, ha problémák.  * Csak ritkán ebben a lépésben hosszabb időt vehet igénybe 14 napnál, attól függően, hogy az alkalmazás és a felderített hibák bonyolultságát.  |
+| A Microsoft áttekintése                | 7 – 14 nap | A Microsoft azok alkalmazásfüggőségeit áttekinti az Azure-alkalmazásokat, és e-mailt küld, ha problémák.  Ebben a lépésben hossza attól függ, hogy az alkalmazást, a felderített hibák, és hogyan azonnal reagálhat rájuk bonyolultságát.  |
 | Élő                           | < 1 nap | Az ajánlat nyilvánosan, a megadott régióban replikálja, és nyilvánosan elérhetővé. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
  

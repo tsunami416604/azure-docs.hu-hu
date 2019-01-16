@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729720"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322027"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 
@@ -53,7 +53,7 @@ A következő táblázatban az App Service, a Cloud Services, a Virtual Machines
 | Horizontális felskálázás több példányra ismételt üzembe helyezés nélkül |X |X |X |X |A virtuális gépek képesek horizontálisan felskálázni több példányra, de a rajtuk futó szolgáltatásokat úgy kell megírni, hogy kezeljék a felskálázást. A terheléselosztót konfigurálni kell arra, hogy irányítsa a kérelmeket a gépek között, és gondoskodni kell arról, hogy a [rendelkezésre állási csoport](../virtual-machines/windows/manage-availability.md) egynél több virtuálisgép-példányt tartalmazzon. |
 | SSL-támogatás |X |X |X |X |App Service webalkalmazások esetén az egyéni tartományneveknél az SSL csak Alapszintű és Standard módban támogatott. További információkért az SSL webalkalmazásokkal történő használatáról lásd az [Azure webhelyek SSL-tanúsítványának konfigurálását](app-service-web-tutorial-custom-ssl.md) ismertető cikket. |
 | Visual Studio integráció |X |X |X |X | |
-| Távoli hibakeresés |X |X |X | | |
+| Távoli hibakeresés |X |X |X |X | |
 | Kód telepítése TFS használatával |X |X |X |X | |
 | Hálózatelkülönítés az [Azure Virtual Network](/azure/virtual-network/) használatával |X |X |X |X |Lásd még [a Virtual Network és az Azure Websites integrációját](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) ismertető cikket |
 | [Azure Traffic Manager](/azure/traffic-manager/) támogatása |X |X |X |X | |

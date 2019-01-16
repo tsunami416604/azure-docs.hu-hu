@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 10/31/2018
-ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 01/15/2019
+ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979097"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320786"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Figyelheti, létrehozása és kezelése az SFTP-fájlok az SSH és az Azure Logic Apps használatával
 
@@ -27,14 +27,14 @@ Automatizálhatja a feladatokat, amelyek figyelése, létrehozása, küldése é
 * Fájl tartalom és metaadatok beolvasása.
 * Mappák archívumok kibontása.
 
-Képest a [SFTP-összekötővel](../connectors/connectors-create-api-sftp.md), az SFTP-SSH-összekötő olvashatja vagy írhatja a fájlok akár *1 GB-os* mérete. 1 GB-nál nagyobb méretű fájlokhoz, használhatja az SFTP-SSH plusz összekötő [nagy üzenetkezelő darabolás](../logic-apps/logic-apps-handle-large-messages.md). További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](#comparison) a cikk későbbi részében.
+Képest a [SFTP-összekötővel](../connectors/connectors-create-api-sftp.md), az SFTP-SSH-összekötő olvashatja vagy írhatja a fájlok akár *1 GB-os* mérete. További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](#comparison) a cikk későbbi részében.
 
 Eseményindítókat, amelyek az SFTP-kiszolgálón lévő események figyelésére és egyéb műveletek számára elérhetővé tenni a kimeneti is használhatja. Műveleteket, amelyeket az SFTP-kiszolgáló a különböző feladatok elvégzésére is használhatja. Egyéb műveletek a logikai alkalmazás kimenetét a SFTP-műveletek használata is rendelkezhet. Például ha rendszeresen kérnek le fájlok az SFTP-kiszolgálóról, elküldheti e-mailes riasztásokhoz ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával.
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 <a name="comparison"></a>
 
-## <a name="compare-sftp-ssh-versus-sftp"></a>Az SFTP-SSH SFTP és összehasonlítása
+## <a name="compare-sftp-ssh-versus-sftp"></a>Compare SFTP-SSH versus SFTP
 
 Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, ahol az SFTP-SSH-összekötő rendelkezik-e ezek a képességek közötti fő különbségeket:
 
@@ -44,11 +44,11 @@ Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, 
   >
   > Az SFTP-SSH összekötő támogatja *csak* a titkos kulcsok, formátumok, algoritmusokat és ujjlenyomatok:
   > 
-  > * **Titkos kulcs formátumok**: RSA (egyeztetéséhez a Rivest-Shamir Adleman) és a DSA (Digital Signature Algorithm) kulcsokat OpenSSH és ssh.com formátumok
-  > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB DES-CBC, az AES-128-CBC, az AES-192-CBC és az AES-256-CBC
-  > * **Ujjlenyomattal történő**: MD5-tel
+  > * **Titkos kulcs formátumok**: RSA (egyeztetéséhez a Rivest-Shamir Adleman) és a DSA (Digital Signature Algorithm) kulcsot az OpenSSH-és a ssh.com
+  > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
+  > * **Ujjlenyomattal történő**: MD5
 
-* Olvas vagy ír a fájlok akár *1 GB-os* méretű képest az SFTP-összekötővel. 1 GB-nál nagyobb méretű fájlokhoz használja [nagy üzenetkezelő darabolás](../logic-apps/logic-apps-handle-large-messages.md). 
+* Olvas vagy ír a fájlok akár *1 GB-os* méretű képest az SFTP-összekötővel, de kezeli a darabokban 50 MB-ot, nem az 1 GB-os darab adatokat.
 
 * Itt a **mappa létrehozása** művelet, amely egy mappát hoz létre az SFTP-kiszolgáló a megadott elérési úton.
 
@@ -66,9 +66,9 @@ Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, 
   >
   > Az SFTP-SSH összekötő támogatja *csak* a titkos kulcs formátumok, algoritmusokat és ujjlenyomatok:
   > 
-  > * **Titkos kulcs formátumok**: RSA (egyeztetéséhez a Rivest-Shamir Adleman) és a DSA (Digital Signature Algorithm) kulcsokat OpenSSH és ssh.com formátumok
-  > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB DES-CBC, az AES-128-CBC, az AES-192-CBC és az AES-256-CBC
-  > * **Ujjlenyomattal történő**: MD5-tel
+  > * **Titkos kulcs formátumok**: RSA (egyeztetéséhez a Rivest-Shamir Adleman) és a DSA (Digital Signature Algorithm) kulcsot az OpenSSH-és a ssh.com
+  > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
+  > * **Ujjlenyomattal történő**: MD5
   >
   > Miután hozzáadta az SFTP-SSH eseményindítót vagy műveletet hoz létre a logikai alkalmazás, amikor szüksége az SFTP-kiszolgáló kapcsolati adatainak megadása. 
   > Ha a titkos SSH-kulcsot használ, győződjön meg arról, hogy ***másolási*** a kulcs az SSH megszerezné a titkos kulcsot, és ***illessze be*** a kulcs a kapcsolat részletek ***manuálisan nem adja meg vagy módosítsa a kulcsot***, így előfordulhat, hogy a kapcsolat sikertelen lesz. 
@@ -125,7 +125,7 @@ Az SFTP-SSH eseményindítók működnek az SFTP-fájlrendszer lekérdezésével
 | Az SFTP-ügyfél | Műveletek | 
 |-------------|--------| 
 | Winscp | Lépjen a **beállítások** > **beállítások** > **Transfer** > **szerkesztése**  >  **Időbélyeg megőrzése** > **letiltása** |
-| Filezillát | Lépjen a **Transfer** > **időbélyegeket átvitt fájlok megőrzéséhez** > **letiltása** | 
+| FileZilla | Lépjen a **Transfer** > **időbélyegeket átvitt fájlok megőrzéséhez** > **letiltása** | 
 ||| 
 
 Ha az eseményindító egy új fájlt talál, a trigger ellenőrzi, hogy az új fájl teljes és részlegesen írásos. Például egy fájl előfordulhat módosítások folyamatban, amikor a trigger ellenőriz a fájlkiszolgálón. Részlegesen írásos fájl visszaadó elkerüléséhez az eseményindító feljegyzi az időbélyeg, amely rendelkezik a legutóbbi módosítások, de nem ad vissza a fájlt közvetlenül a fájl. A trigger a fájl adja vissza, csak akkor, ha a kiszolgáló ismét lekérdezés. Egyes esetekben ez a viselkedés, amely legfeljebb kétszer az eseményindító a lekérdezési időköz késleltetés okozhatja. 
@@ -137,13 +137,13 @@ Fájl tartalmának kérésekor az eseményindító nem tölti le 50 MB-nál nagy
 
 ## <a name="examples"></a>Példák
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH-trigger: amikor felvesznek vagy módosítanak egy fájlt
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH aktiválása: Fájl hozzáadásakor és módosításakor
 
 Ez az eseményindító indul el a logikai alkalmazás munkafolyamata egy fájl hozzáadásakor vagy módosítja a SFTP-kiszolgálóra. Ha például egy feltételt, amely ellenőrzi a fájl tartalmát, és a tartalmat, hogy a tartalom megfelel-e a megadott feltétel alapján is hozzáadhat. Ezután hozzáadhat egy műveletet, amely a fájl tartalmának beolvasása, és ezt a tartalmat egy mappába az SFTP-kiszolgáló használatával. 
 
-**Példa vállalati**: a trigger használatával figyelheti a egy új megrendelések képviselő fájlok SFTP-mappába. Ezután használhatja az SFTP-művelet például **fájl tartalmának beolvasása** úgy, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, és a egy rendelési adatbázisba sorrendben tárolja.
+**Példa vállalati**: Ez az eseményindító használatával figyelheti az SFTP-mappába, új fájlok, amelyek a vevői rendelések jelölésére. Ezután használhatja az SFTP-művelet például **fájl tartalmának beolvasása** úgy, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, és a egy rendelési adatbázisba sorrendben tárolja.
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH művelet: tartalom lekérése
+### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH művelet: Tartalom lekérése
 
 Ez a művelet a tartalom olvas be egy fájl az SFTP-kiszolgálóra. Így például az előző példában és a egy feltételt, amely a fájl tartalmának meg kell felelnie az eseményindító is hozzáadhat. Ha a feltétel teljesül, a műveletet, amely lekérdezi a tartalmat futtathatja. 
 

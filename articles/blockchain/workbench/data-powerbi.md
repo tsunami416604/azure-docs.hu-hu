@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b1020389ef28c18c03536d686cd47ef0c65b9204
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e50a82f0f141fec266a8348c0a1a8b5fbdb38b45
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242465"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329854"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench-adatok használata a Microsoft Power BI-ban
 
@@ -25,9 +25,9 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Töltse le a [PowerBI Desktop](https://aka.ms/pbidesktopstore) alkalmazást.
+* Töltse le [Power BI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>A PowerBI csatlakoztatása az Azure Blockchain Workbench adataihoz
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench alkalmazásban adatokhoz való csatlakozásról a Power bi-ban
 
 1.  Nyissa meg a Power BI Desktop alkalmazást.
 2.  Válassza az **Adatok lekérése** lehetőséget.
@@ -49,7 +49,7 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
     ![Kezelő](./media/data-powerbi/navigator.png)
 
-7.  Jelölje ki a belefoglalni kívánt nézeteket. Itt mi példaként belefoglaljuk a **vwContractAction** nézetet, mely adatokat nyújt a szerződések egyikén végrehajtott összes műveletről.
+7.  Jelölje ki a belefoglalni kívánt nézeteket. Bemutatási célokból tartalmazza **vwContractAction**, amely részletesen került sor egy szerződés a műveleteket.
 
     ![Nézetek kiválasztása](./media/data-powerbi/select-views.png)
 

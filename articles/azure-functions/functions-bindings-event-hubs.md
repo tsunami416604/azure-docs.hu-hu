@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 5a5154d8d3a4922dead686c3d5002eaae818ff5a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1df948d2b3127ede7129d26401cd5f0c80e964fb
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201363"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331741"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -420,9 +420,10 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**name** | n/a | A függvénykód esemény elemet képviselő változó neve. |
 |**path** |**EventHubName** | Csak 1.x működik. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncot, ezt az értéket felülbírálja ezt a tulajdonságot, futásidőben. |
 |**eventHubName** |**EventHubName** | Csak a 2.x működik. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncot, ezt az értéket felülbírálja ezt a tulajdonságot, futásidőben. |
-|**a fogyasztói csoporttól** |**a fogyasztói csoporttól** | Egy nem kötelező tulajdonsággal, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) fizethet elő eseményekre az agyban használt. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. |
+|**consumerGroup** |**a fogyasztói csoporttól** | Egy nem kötelező tulajdonsággal, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) fizethet elő eseményekre az agyban használt. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. |
 |**számossága** | n/a | A Javascripthez. Állítsa be `many` , és engedélyezze a kötegelés.  Ha nincs megadva vagy `one`, függvénynek átadott egyetlen üzenetben. |
 |**kapcsolat** |**kapcsolat** | Az event hubs-névtér a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc másolása kattintva a **kapcsolatadatok** gombot a [névtér](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nem pedig maga az event hubs. Ez a kapcsolati karakterlánc legalább olvasás engedéllyel rendelkezik az eseményindító aktiválása.|
+|**path**|**EventHubName**|Az eseményközpont neve. Alkalmazásbeállítások keresztül lehet rá hivatkozni `%eventHubName%`|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

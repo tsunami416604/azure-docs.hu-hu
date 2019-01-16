@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: 9e153cca321e94233cfda2a03cf52ba85a0f6b02
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.date: 01/15/2019
+ms.openlocfilehash: e9f1b1a3df92c08b913a56aadc8eb8a9e80c7fdf
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102805"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320055"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 Az Azure Database Migration Service úgy tervezték, hogy különböző áttelepítési forgatókönyveinek (forrás – cél párok) kapcsolat nélküli módban is támogatja (egyszeri) és az online (folyamatos szinkronizálása) áttelepítéseket. Az Azure Database Migration Service által biztosított forgatókönyv lefedettséget idővel történő kiterjesztése. Új forgatókönyvek rendszeresen jelennek meg. Ez a cikk azonosítja az jelenleg támogatja az Azure Database Migration Service és az állapot-áttelepítési forgatókönyvek (privát [vagy korlátozott] Preview-ban, nyilvános előzetes és általánosan elérhető) vagy az egyes forgatókönyvek.
@@ -39,38 +39,38 @@ Az alábbi táblázat az Azure Database Migration Service támogatja az offline 
 
 | Cél  | Forrás | Támogatás |
 | ------------- | ------------- | :-------------: |
-| **Az Azure SQL DB**  | SQL Server | ✔ |
-|   | A TÁVOLI ASZTALI SZOLGÁLTATÁSOK SQL  |  ✔ |
+| **Azure SQL DB**  | SQL Server | ✔ |
+|   | RDS SQL  |  ✔ |
 |   | Oracle  |   |
-| **Az Azure SQL DB Buszpéldány**  | SQL Server  | ✔ |
-|   | A TÁVOLI ASZTALI SZOLGÁLTATÁSOK SQL  | ✔ |
+| **Azure SQL DB MI**  | SQL Server  | ✔ |
+|   | RDS SQL  | ✔ |
 |   | Oracle  | ✔  |
-| **Az Azure SQL virtuális gép**  | SQL Server  | ✔ |
+| **Az Azure SQL virtuális gép**  | SQL Server | ✔ |
 |   | Oracle  |   |
-| **Cosmos DB**  | MongoDB  | ✔ |
-| **MySQL-hez készült Azure DB**  | MySLQ  |  |
+| **Cosmos DB**  | MongoDB | ✔ |
+| **MySQL-hez készült Azure DB**  | MySQL |  |
 |   | RDS MySQL  |  |
 | **Azure DB for PostgresSQL**  | PostgreSQL |  |
-|  | A távoli asztali szolgáltatások PostgreSQL  |  |
+|  | RDS PostgreSQL  |  |
 
 ### <a name="online-continuous-sync-migration-support"></a>Online (folyamatos szinkronizálása) áttelepítés támogatása
 Az alábbi táblázat az Azure Database Migration Service támogatása online áttelepítéseket.
 
 | Cél  | Forrás | Támogatás |
 | ------------- | ------------- | :-------------: |
-| **Az Azure SQL DB**  | SQL Server | ✔ |
-|   | A TÁVOLI ASZTALI SZOLGÁLTATÁSOK SQL  |   |
+| **Azure SQL DB**  | SQL Server | ✔ |
+|   | RDS SQL  |   |
 |   | Oracle  |  ✔ |
-| **Az Azure SQL DB Buszpéldány**  | SQL Server  | ✔ |
-|   | A TÁVOLI ASZTALI SZOLGÁLTATÁSOK SQL  |  |
+| **Azure SQL DB MI**  | SQL Server  | ✔ |
+|   | RDS SQL  |  |
 |   | Oracle  | ✔  |
 | **Az Azure SQL virtuális gép**  | SQL Server  |   |
 |   | Oracle  | ✔  |
 | **Cosmos DB**  | MongoDB  | ✔ |
-| **MySQL-hez készült Azure DB**  | MySLQ  | ✔ |
+| **MySQL-hez készült Azure DB**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
 | **Azure DB for PostgresSQL**  | PostgreSQL | ✔ |
-|  | A távoli asztali szolgáltatások PostgreSQL  | ✔ |
+|  | RDS PostgreSQL  | ✔ |
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Database Migration Service és a régiónkénti rendelkezésre állás áttekintését lásd: a cikk [Mi az az Azure Database Migration Service](dms-overview.md). 

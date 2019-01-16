@@ -1,19 +1,19 @@
 ---
 title: Használja az InSpec megfelelőségi automatizálása az Azure-infrastruktúra
 description: Megtudhatja, hogyan észlelheti a problémákat az Azure-környezetek InSpec használatával
-keywords: az Azure, a chef, a devops, a virtuális gépek, a áttekintése, automatizálás, inspce
+keywords: az Azure, a chef, a devops, a virtuális gépek, a áttekintése, automatizálás, inspec
 ms.service: virtual-machines-linux
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 9256a4daf6564761553b495e559805a46e4eae32
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: e854b140c32773fc5d64e828e7dd40fab1f6ca8d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050727"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332370"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Használja az InSpec megfelelőségi automatizálása az Azure-infrastruktúra
 [InSpec](https://www.chef.io/inspec/) teszteléséhez és a naplózás az alkalmazások és infrastruktúra ingyenes és nyílt forráskódú keretrendszer. InSpec működik, a rendszer aktuális állapotával együtt a kívánt állapotban, amely könnyen olvasható és könnyen írási InSpec kódban, express összehasonlításával. InSpec szabálysértések észleli és jelentések formájában jeleníti meg csapatával az eredményeket, de helyezi, szervizelés irányítását. InSpec használhatja az Azure-ban futó virtuális gépek állapotának ellenőrzéséhez. Használhatja a InSpec vizsgálata, és erőforrásra és erőforráscsoportra belül egy előfizetés állapotának ellenőrzéséhez.

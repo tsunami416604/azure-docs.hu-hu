@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971103"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321568"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás készítése a Stream Analytics használatával
 
@@ -36,7 +36,7 @@ Ez a megoldás befejezéséhez az alábbi előfeltételek lesz szüksége:
 ## <a name="scenario-introduction-hello-toll"></a>A forgatókönyv bemutatása: "Hello, nem ingyenes!"
 Díjmentesen hívható állomás egy gyakori jelenség. Tapasztal őket a sok gyorsforgalmi, hidat és alagutak világszerte. Minden nem ingyenes állomás van több díjmentesen fülkéit foglalja magában. A manuális fülkéit foglalja magában le kell fizetnem a nem ingyenes egy kísérő. Automatizált fülkéit foglalja magában: minden egyes érzékelőadatainak felett érzékelő megvizsgálja az RFID-kártyán, hogy rögzíteni a szélvédőkeret a jármű méretét, ha a nem ingyenes érzékelőadatainak. Ezek nem ingyenes állomások járműveknek áthaladását megjelenítése az eseménystream, amelyen érdekes műveleteket is elvégezhető, könnyebbé vált.
 
-! [Nem ingyenes fülkéit foglalja magában: autó kép] (media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth .jpg)
+![Kép autó díjmentesen fülkéit foglalja magában:](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>A bejövő adatok
 Ez a megoldás két adatfolyamot együttműködik. Érzékelő telepítve van a be- és a nem ingyenes állomások hozhat létre az első stream. A második streamben egy statikus keresési adatkészletet, amely a vehicle regisztrációs adatokat.

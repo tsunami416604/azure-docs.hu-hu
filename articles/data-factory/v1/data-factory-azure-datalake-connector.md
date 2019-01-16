@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015539"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332625"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása és a Data Lake Storage Gen1 Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ A következő adattárakból származó adatokat másolja **az Azure Data Lake S
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 A Data Lake Store-összekötő ezeket a hitelesítési típusokat támogatja:
 * Egyszerű szolgáltatásnév hitelesítése
-* Felhasználói hitelesítő adatok (OAuth) hitelesítés 
+* Felhasználói hitelesítő adatok (OAuth) hitelesítés
 
 Azt javasoljuk, hogy használjon egyszerű szolgáltatásnév hitelesítése, különösen egy ütemezett példányt. Jogkivonat lejárati fordulhat elő a felhasználói hitelesítő adatok hitelesítéssel. További konfigurációs információkért lásd: a [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban.
 
@@ -58,12 +58,12 @@ A következő eszközök használatával hozzon létre egy folyamatot: **Az Azur
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
-1. Hozzon létre egy **adat-előállító**. Adat-előállító egy vagy több folyamattal is tartalmazhat. 
-2. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához. Például ha Ön adatokat másol egy Azure blob storage-ból egy Azure Data Lake Store, hoz létre az Azure storage-fiókot és az Azure Data Lake store összekapcsolása a data factory két társított szolgáltatást. Konkrétan az Azure Data Lake Store a társított szolgáltatás tulajdonságait, lásd: [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban. 
+1. Hozzon létre egy **adat-előállító**. Adat-előállító egy vagy több folyamattal is tartalmazhat.
+2. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához. Például ha Ön adatokat másol egy Azure blob storage-ból egy Azure Data Lake Store, hoz létre az Azure storage-fiókot és az Azure Data Lake store összekapcsolása a data factory két társított szolgáltatást. Konkrétan az Azure Data Lake Store a társított szolgáltatás tulajdonságait, lásd: [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban.
 2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. A példában az előző lépésben említett megadja a blobtárolót és a bemeneti adatokat tartalmazó mappát egy adatkészletet hoz létre. És a mappa és fájl elérési útját adja meg a Data Lake adattár, amely tárolja az adatokat a blob storage-tárhelyéből egy másik adatkészletet hoz létre. Az Azure Data Lake Store adott adatkészlet tulajdonságai, lásd: [adatkészlet tulajdonságai](#dataset-properties) szakaszban.
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. A példában azt korábban említettük használhat BlobSource a forrás-és AzureDataLakeStoreSink fogadóként a másolási tevékenység. Hasonlóképpen, az Azure Data Lake Store másolása az Azure Blob Storage, AzureDataLakeStoreSource és a használata BlobSink a másolási tevékenység. Másolási tevékenység tulajdonságai az Azure Data Lake Store jellemző, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. A forrás vagy a fogadó adattár használatát részletekért kattintson a hivatkozásra az adattár az előző szakaszban.  
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. A példában azt korábban említettük használhat BlobSource a forrás-és AzureDataLakeStoreSink fogadóként a másolási tevékenység. Hasonlóképpen, az Azure Data Lake Store másolása az Azure Blob Storage, AzureDataLakeStoreSource és a használata BlobSink a másolási tevékenység. Másolási tevékenység tulajdonságai az Azure Data Lake Store jellemző, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. A forrás vagy a fogadó adattár használatát részletekért kattintson a hivatkozásra az adattár az előző szakaszban.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amelyek és- tárolókról az Azure Data Lake Store az adatok másolása JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-data-lake-store) című szakaszát.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. A Data Factory-entitások, amelyek és- tárolókról az Azure Data Lake Store az adatok másolása JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-data-lake-store) című szakaszát.
 
 A következő szakaszok a Data Lake Store adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért.
 
@@ -80,7 +80,7 @@ A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Lét
 ### <a name="service-principal-authentication-recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)
 Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása az Azure Active Directory (Azure AD), és hozzáférést, a Data Lake Store. Részletes lépéseiért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
 * Alkalmazásazonosító
-* Alkalmazáskulcs 
+* Alkalmazáskulcs
 * Bérlőazonosító
 
 > [!IMPORTANT]
@@ -149,7 +149,7 @@ Felhasználói hitelesítő adatok hitelesítési segítségével azt is megtehe
 #### <a name="token-expiration"></a>Jogkivonat lejáratáról
 Az engedélyezési kódot, amely a használatával létrehozhat a **engedélyezés** gombra egy bizonyos idő elteltével lejár. A következő üzenet azt jelenti, hogy a hitelesítési jogkivonat lejárt:
 
-Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 időbélyeg: 2015. 12 – 15 21-09-31Z.
+Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z.
 
 Az alábbi táblázat a különböző típusú felhasználói fiókokat lejárati idejét jeleníti meg:
 
@@ -233,14 +233,14 @@ A Data Factory-osztályokat használja a kód kapcsolatos részletekért lásd: 
     ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Adjon meg egy Data Lake Store bemeneti adatokat képviselő adatkészlet, akkor állítsa a **típus** tulajdonság, az adatkészlet **AzureDataLakeStore**. Állítsa be a **linkedServiceName** tulajdonságot az adatkészlet nevét a Data Lake Store-beli társított szolgáltatást. JSON-szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Egy adatkészlet JSON szakaszait például **struktúra**, **rendelkezésre állási**, és **házirend**, hasonlóak az összes adatkészlet esetében (Azure SQL database, az Azure blob és az Azure table számára a példában). A **typeProperties** szakasz eltérő az egyes adatkészletet, és többek között a hely és az adattárban lévő adatok formátumát. 
+Adjon meg egy Data Lake Store bemeneti adatokat képviselő adatkészlet, akkor állítsa a **típus** tulajdonság, az adatkészlet **AzureDataLakeStore**. Állítsa be a **linkedServiceName** tulajdonságot az adatkészlet nevét a Data Lake Store-beli társított szolgáltatást. JSON-szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Egy adatkészlet JSON szakaszait például **struktúra**, **rendelkezésre állási**, és **házirend**, hasonlóak az összes adatkészlet esetében (Azure SQL database, az Azure blob és az Azure table számára a példában). A **typeProperties** szakasz eltérő az egyes adatkészletet, és többek között a hely és az adattárban lévő adatok formátumát.
 
 A **typeProperties** szakasz egy adatkészlet típusú **AzureDataLakeStore** a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **folderPath** |A tároló és a Data Lake Store-mappában elérési útja. |Igen |
-| **Fájlnév** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban kell adatokat. _GUID_.txt'. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
+| **fileName** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban kell adatokat. _GUID_.txt'. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
 | **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Használhatja a dinamikus elérési út és fájlnév idősorozat-adatok megadása. Ha például **folderPath** az adatok óránkénti rendelkeznek. Részletek és példák: [partitionedBy tulajdonság](#using-partitionedby-property). |Nem |
 | **Formátum** | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt **formátum** az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszát a [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) cikk. <br><br> Ha azt szeretné, a fájlok másolása a "as-van" közötti fájlalapú tárolók (bináris másolat), hagyja ki a `format` mindkét bemeneti és kimeneti adatkészlet-definíciók szakaszában. |Nem |
 | **A tömörítés** | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
@@ -264,14 +264,14 @@ Az alábbi példa, az év, hónap, nap és idején a `SliceStart` által haszná
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Az idősorozat-adatkészletek, ütemezési és szeletek további részletekért lásd: a [adatkészleteket az Azure Data Factoryban](data-factory-create-datasets.md) és [adat-előállító ütemezési és végrehajtási](data-factory-scheduling-and-execution.md) cikkeket. 
+Az idősorozat-adatkészletek, ütemezési és szeletek további részletekért lásd: a [adatkészleteket az Azure Data Factoryban](data-factory-create-datasets.md) és [adat-előállító ütemezési és végrehajtási](data-factory-scheduling-and-execution.md) cikkeket.
 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -285,12 +285,11 @@ A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenységek sz
 | --- | --- | --- | --- |
 | **recursive** |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. |(Alapértelmezett érték), true a False |Nem |
 
-
 **AzureDataLakeStoreSink** támogatja a következő tulajdonságok a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| **a copyBehavior** |Meghatározza a másolási viselkedés. |<b>PreserveHierarchy</b>: Megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><br/><b>FlattenHierarchy</b>: Minden fájl a forrásmappából az első szintjét a célmappában jönnek létre. A cél fájlok jönnek létre automatikusan létrehozott névvel.<br/><br/><b>MergeFiles</b>: Egy fájl összes fájlt a forrásmappából egyesíti. A fájl- vagy blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben a fájlnév formátuma automatikusan létrehozott. |Nem |
+| **copyBehavior** |Meghatározza a másolási viselkedés. |<b>PreserveHierarchy</b>: Megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><br/><b>FlattenHierarchy</b>: Minden fájl a forrásmappából az első szintjét a célmappában jönnek létre. A cél fájlok jönnek létre automatikusan létrehozott névvel.<br/><br/><b>MergeFiles</b>: Egy fájl összes fájlt a forrásmappából egyesíti. A fájl- vagy blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben a fájlnév formátuma automatikusan létrehozott. |Nem |
 
 ### <a name="recursive-and-copybehavior-examples"></a>a rekurzív és copyBehavior példák
 Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási művelet rekurzív és copyBehavior értékek különböző kombinációihoz.
@@ -308,7 +307,7 @@ Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási műve
 További információkért lásd: a [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md) cikk.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Az adatok másolása, és a Data Lake Store JSON-példák
-Az alábbi példák megadják példa JSON-definíciói. Ezeknek a definícióknak minta segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a Data Lake Store és az Azure Blob storage szolgáltatásba vagy onnan. Azonban az adatok átmásolhatók _közvetlenül_ bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md) cikk.  
+Az alábbi példák megadják példa JSON-definíciói. Ezeknek a definícióknak minta segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat a Data Lake Store és az Azure Blob storage szolgáltatásba vagy onnan. Azonban az adatok átmásolhatók _közvetlenül_ bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md) cikk.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Példa: Adatok másolása az Azure Blob Storage-ból az Azure Data Lake Store
 Ebben a szakaszban található példakód mutatja:
@@ -319,7 +318,7 @@ Ebben a szakaszban található példakód mutatja:
 * Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureDataLakeStore](#dataset-properties).
 * A [folyamat](data-factory-create-pipelines.md) egy másolási tevékenységgel, amely használja [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [AzureDataLakeStoreSink](#copy-activity-properties).
 
-A példák bemutatják, hogyan idősorozat-adatok Azure Blob Storage-ból a Data Lake Store minden órában másolva. 
+A példák bemutatják, hogyan idősorozat-adatok Azure Blob Storage-ból a Data Lake Store minden órában másolva.
 
 **Azure Storage társított szolgáltatás**
 
@@ -428,68 +427,67 @@ Az alábbi példa a Data Lake Store adatokat másolja. Az új adatok Data Lake S
 ```JSON
 {
     "name": "AzureDataLakeStoreOutput",
-      "properties": {
+    "properties": {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
         "typeProperties": {
             "folderPath": "datalake/output/"
         },
         "availability": {
-              "frequency": "Hour",
-              "interval": 1
+            "frequency": "Hour",
+            "interval": 1
         }
-      }
+    }
 }
 ```
-
 
 **Egy blob forrás és a egy Data Lake Store fogadó a folyamat másolási tevékenysége**
 
 A következő példában a folyamat egy másolási tevékenység, amely konfigurálva van használni a bemeneti és kimeneti adatkészleteket tartalmazza. A másolási tevékenység való óránkénti futásra van ütemezve. A folyamat JSON-definíciót a `source` típusa `BlobSource`, és a `sink` típusa `AzureDataLakeStoreSink`.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
     "properties":
-    {  
+    {
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline with copy activity",
         "activities":
-        [  
-              {
+        [
+            {
                 "name": "AzureBlobtoDataLake",
                 "description": "Copy Activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureBlobInput"
-                  }
+                    {
+                        "name": "AzureBlobInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureDataLakeStoreOutput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "BlobSource"
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "AzureDataLakeStoreSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
+            }
         ]
     }
 }
@@ -504,7 +502,7 @@ Ebben a szakaszban található példakód mutatja:
 * Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * A [folyamat](data-factory-create-pipelines.md) egy másolási tevékenységgel, amely használja [AzureDataLakeStoreSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-A kód idősorozat-adatokat másol Data Lake Store az Azure-blobba óránként. 
+A kód idősorozat-adatokat másol Data Lake Store az Azure-blobba óránként.
 
 **Az Azure Data Lake Store társított szolgáltatás**
 
@@ -547,7 +545,7 @@ Ebben a példában beállítás `"external"` való `true` a Data Factory szolgá
 ```json
 {
     "name": "AzureDataLakeStoreInput",
-      "properties":
+    "properties":
     {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
@@ -563,16 +561,16 @@ Ebben a példában beállítás `"external"` való `true` a Data Factory szolgá
         "external": true,
         "availability": {
             "frequency": "Hour",
-              "interval": 1
+            "interval": 1
         },
         "policy": {
-              "externalData": {
+            "externalData": {
                 "retryInterval": "00:01:00",
                 "retryTimeout": "00:10:00",
                 "maximumRetry": 3
-              }
+            }
         }
-      }
+    }
 }
 ```
 **Azure blobkimeneti adatkészlet**
@@ -640,47 +638,47 @@ A következő példában adatokat írt egy új blob minden órában (`"frequency
 A következő példában a folyamat egy másolási tevékenység, amely konfigurálva van használni a bemeneti és kimeneti adatkészleteket tartalmazza. A másolási tevékenység való óránkénti futásra van ütemezve. A folyamat JSON-definíciót a `source` típusa `AzureDataLakeStoreSource`, és a `sink` típusa `BlobSink`.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for copy activity",
-        "activities":[  
-              {
+        "activities":[
+            {
                 "name": "AzureDakeLaketoBlob",
                 "description": "copy activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureDataLakeStoreInput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureBlobOutput"
-                  }
+                    {
+                        "name": "AzureBlobOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "AzureDataLakeStoreSource",
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "BlobSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
-         ]
+            }
+        ]
     }
 }
 ```

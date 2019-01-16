@@ -3,7 +3,7 @@ title: Az SQL virtuális gépeken (Resource Manager) felügyeleti feladatok auto
 description: Ez a cikk ismerteti, hogyan kezelheti az adott SQL Server felügyeleti feladatokat automatizálja az SQL Server agent bővítmény. Ezek közé tartozik az automatikus biztonsági mentés, automatikus javítás és az Azure Key Vault-integráció.
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
-ms.author: jroth
-ms.openlocfilehash: 3d2873d83274e4f9bfd8aee7668162237083f452
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 1b5c32d79e3664caf18cfc81fca563b295574cf4
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303054"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329317"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Azure virtuális gépeken az SQL Server Agent bővítmény (Resource Manager) a felügyeleti feladatok automatizálása
 > [!div class="op_single_selector"]

@@ -11,18 +11,18 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079238"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321874"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan előkészíti az adatokat az regressziós modellezés az Azure Machine Learning Data Prep SDK használatával. Szűrését, és kombinálja a két különböző NYC taxi adatkészletek különféle átalakításokat futtat.  
 
-Ebben az oktatóanyagban a kétrészes oktatóanyag-sorozat része. Miután elvégezte az oktatóanyag-sorozat, akkor is alapján képes előre jelezni taxi belépőt költsége funkciókat az egy modell. Ezek a funkciók közé tartozik a felvételi nap és idő, számától és a felvétel helyére.
+Ez az oktatóanyag **egy kétrészes sorozat első része**. Miután elvégezte az oktatóanyag-sorozat, akkor is alapján képes előre jelezni taxi belépőt költsége funkciókat az egy modell. Ezek a funkciók közé tartozik a felvételi nap és idő, számától és a felvétel helyére.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

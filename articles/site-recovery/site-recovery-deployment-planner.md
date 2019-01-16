@@ -1,18 +1,18 @@
 ---
 title: Tudnivalók az Azure Site Recovery Deployment Planner a VMware virtuális gépek vészhelyreállítása az Azure-bA |} A Microsoft Docs
 description: További információ az Azure Site Recovery Deployment Planner a VMware virtuális gépek vészhelyreállítása az Azure-bA.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 58dc344cc7ab40218a122e34a9032276107a944c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.author: mayg
+ms.openlocfilehash: 9a9129d376c0a39c54f297fcae883f8d90016970
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964458"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320565"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner VMware – Azure
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -77,7 +77,7 @@ Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van
 
 | Kiszolgálókövetelmények | Leírás|
 |---|---|
-|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Windows Server 2016 vagy Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>VMware vCenter statisztikaszint-beállításait lehet 1 vagy magasabb szintű</li><li>Lehetővé teszi a vCenter-portot (443-as alapértelmezett érték): a Site Recovery Deployment Planner ezt a portot használja a vCenter kiszolgálóhoz/ESXi-gazdagéphez való kapcsolódáshoz</ul></ul>|
+|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: A Windows Server 2016 vagy Windows Server 2012 R2 rendszerben<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 Vcpu, 16 GB RAM, 300 GB HDD</li><li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>VMware vCenter statisztikaszint-beállításait lehet 1 vagy magasabb szintű</li><li>VCenter-portot (443-as alapértelmezett érték) engedélyezése: A Site Recovery Deployment Planner ezt a portot használja a vCenter kiszolgálóhoz/ESXi-gazdagéphez való kapcsolódáshoz</ul></ul>|
 | Jelentéskészítés | Windows PC vagy Windows Server, az Excel 2013 vagy újabb.<li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>[A VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) csak akkor adja át – a jelentés projektlétrehozási parancsot a virtuális gépek legutóbbi konfigurációs adatait a virtuális gépek beolvasása a felhasználó beállítás kötelező. A Depolyment Planner csatlakozik a vCenter-kiszolgáló. Engedélyezi a vCenter portot (443-as alapértelmezett érték) vCenter-kiszolgálóhoz való csatlakozáshoz.</li>|
 | Felhasználói engedélyek | Csak olvasási jogosultság a felhasználói fióknak a VMware vCenter/VMware vSphere ESXi kiszolgáló profilkészítés közben való hozzáféréséhez |
 
@@ -98,10 +98,10 @@ Az eszközt futtathatja Windows Server 2012 R2-ről, ha a kiszolgáló hálózat
 3. Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-    Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki.
-    Üzembe helyezés Planner_v2.3.zip E:\ASR
+    Példa: Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki.
+    E:\ASR Deployment Planner_v2.3.zip
 
-    Üzembe helyezés Planner_v2.3\ASRDeploymentPlanner.exe E:\ASR
+    E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Frissítés a Deployment Planner legújabb verziójára
 Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak egyikét:

@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ce54ad77893557b595f9777dfc82939aacf41608
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962579"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321517"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők az implicit folyamat használata
 
@@ -54,7 +54,7 @@ Az alábbi ábrán látható, hogy a teljes implicit bejelentkezési folyamat n�
 Kezdetben beléptetni a felhasználót az alkalmazásba, küldhet egy [OpenID Connect](v2-protocols-oidc.md) engedélyezési kérést és a get- `id_token` a v2.0-végpont a.
 
 > [!IMPORTANT]
-> Sikerült a kérelem egy azonosító jogkivonat, az alkalmazás regisztrációját a a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **Implicit folyamat engedélyezése** a webes ügyfél engedélyezve. Ha nincs engedélyezve, egy `unsupported_response` hiba adja vissza: **"response_type" bemeneti paraméter megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code"**
+> Egy azonosító jogkivonat, az alkalmazás regisztrációját a sikeres kérése a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **Implicit folyamat engedélyezése** engedélyezve van a webes ügyfél. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: **A bemeneti paraméter "response_type" megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code"**
 
 ```
 // Line breaks for legibility only
@@ -111,7 +111,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` |Belefoglalt if `response_type` tartalmaz `token`. Mindig `Bearer`. |
 | `expires_in`|Belefoglalt if `response_type` tartalmaz `token`. Azt jelzi, hogy a jogkivonat érvényes, a gyorsítótárazás célokra másodpercek számát. |
 | `scope` |Belefoglalt if `response_type` tartalmaz `token`. Azt jelzi, hogy a hatókörök, amelyhez a access_token lesz érvényes. Előfordulhat, hogy tartalmazza az összes a hatókörök kért, ha nem voltak érvényes a felhasználó (esetén csak AAD hatókörök, ha egy személyes fiók használatával jelentkezzen be a kért). |
-| `id_token` | Egy aláírt JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+| `id_token` | Egy aláírt JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** Csak a megadott if `openid` a kért hatókörhöz. |
 | `state` |Ha a kérelem tartalmazza a state paraméterben, ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak. |
 
 #### <a name="error-response"></a>Hiba történt a válasz
@@ -192,7 +192,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` | Mindig `Bearer`. |
 | `expires_in` | Azt jelzi, hogy a jogkivonat érvényes, a gyorsítótárazás célokra másodpercek számát. |
 | `scope` | Azt jelzi, hogy a hatókörök, amelyhez a access_token lesz érvényes. Előfordulhat, hogy tartalmazza az összes a hatókörök kért, ha nem voltak érvényes a felhasználó (esetén csak AAD hatókörök, ha egy személyes fiók használatával jelentkezzen be a kért). |
-| `id_token` | Egy aláírt JSON webes jogkivonat (JWT). Belefoglalt if `response_type` tartalmaz `id_token`. Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token` referencia](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+| `id_token` | Egy aláírt JSON webes jogkivonat (JWT). Belefoglalt if `response_type` tartalmaz `id_token`. Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token` referencia](id-tokens.md). <br> **Megjegyzés:** Csak a megadott if `openid` a kért hatókörhöz. |
 | `state` |Ha a kérelem tartalmazza a state paraméterben, ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak. |
 
 

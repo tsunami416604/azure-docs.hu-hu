@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044178"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331962"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezési méretezhető és Nagytejesítményű táblákat
 
@@ -213,7 +213,7 @@ A korábbi szakaszban [Azure Table service áttekintése](#overview) néhány, a
 * A második legjobb van egy ***Sortartomány-lekérdezés*** , amely használja a **PartitionKey** és a szűrők számos **rowkey tulajdonságok esetén** több entitást visszaadandó értékek. A **PartitionKey** érték azonosítja az adott partíciók és a **RowKey** az értékek azonosítják az adott partíció az entitásokat egy részét. Például: $filter = PartitionKey eq "Értékesítések és a rowkey tulajdonságok esetén a ge" és a rowkey tulajdonságok esetén lt sikerült "  
 * Harmadik legjobb van egy ***partíció beolvasása*** , amely használja a **PartitionKey** és a szűrők nem kulcs egy másik tulajdonságot, és hogy a több entitást adhatnak vissza. A **PartitionKey** érték azonosít egy adott partícióra, és a tulajdonság értékei válassza ki az entitásokat az adott partíció részéhez. Például: $filter PartitionKey eq "Értékesítés" és a Vezetéknév eq 'Smith' =  
 * A ***tábla beolvasása*** nem tartalmazza a **PartitionKey** és a nem hatékony, mivel a partíciók, viszont a táblázatot a megfelelő entitások alkotó összes keres. Függetlenül attól a szűrőt használ a táblázatbeolvasás hajtja végre a **RowKey**. Például: $filter = LastName eq "János"  
-* Több entitás visszaadó lekérdezések vissza rendezve **PartitionKey** és **RowKey** sorrendben. Válassza ki az entitásokat az ügyfél hibahivatkozások elkerüléséhez egy **RowKey** , amely meghatározza, hogy a leggyakrabban használt rendezés.  
+* Több entitás visszaadó Azure Table Storage lekérdezések vissza rendezve **PartitionKey** és **RowKey** sorrendben. Válassza ki az entitásokat az ügyfél hibahivatkozások elkerüléséhez egy **RowKey** , amely meghatározza, hogy a leggyakrabban használt rendezés. Lekérdezés eredményeit az Azure Table API az Azure Cosmso DB által visszaadott nem partíciós kulcs vagy a sorkulcs alapján vannak rendezve. Szolgáltatások közötti különbségekről részletes listájáért lásd: [Table API az Azure Cosmos DB és az Azure Table storage-ban közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Használatával egy "**vagy**" megadása alapján történő szűrés **RowKey** értéket partíció vizsgálat eredményeket, majd egy sortartomány-lekérdezés nem számít. Ezért kerülje például szűrőket használó lekérdezéseket: $filter = PartitionKey eq "Értékesítés" és a (RowKey eq "121" vagy RowKey eq "322")  
 
@@ -251,7 +251,13 @@ Számos tervek megfelel a követelményeknek, engedélyezéséhez keresési enti
 * [Index entitások minta](#index-entities-pattern) -karbantartása index entitások engedélyezése a hatékony keresést, hogy az entitások listáját adja vissza.  
 
 ### <a name="sorting-data-in-the-table-service"></a>A Table service szolgáltatásban az adatok rendezése
-A Table service adja vissza növekvő sorrendben alapján entitások **PartitionKey** , majd az **RowKey**. Ezek a kulcsok karakterlánc-értékek és annak érdekében, hogy numerikus értékek megfelelően rendezni, meg kell alakíthatja át őket egy rögzített hosszúságú és nullákkal kitölti őket. Például, ha az alkalmazott azonosító értéket használja a **rowkey tulajdonságok esetén** egy egész érték alkalmazott azonosítója alakítsuk **123** való **00000123**.  
+
+A rendszer által visszaadott lekérdezési eredményeket növekvő sorrendben alapján rendezve **PartitionKey** , majd az **RowKey**.
+
+> [!NOTE]
+> Lekérdezés eredményeit az Azure Table API az Azure Cosmso DB által visszaadott nem partíciós kulcs vagy a sorkulcs alapján vannak rendezve. Szolgáltatások közötti különbségekről részletes listájáért lásd: [Table API az Azure Cosmos DB és az Azure Table storage-ban közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+
+Kulcsok az Azure Storage-táblába karakterlánc-értékeket és annak érdekében, hogy numerikus értékek megfelelően rendezni, meg kell alakíthatja át őket egy rögzített hosszúságú és nullákkal kitölti őket. Például, ha az alkalmazott azonosító értéket használja a **rowkey tulajdonságok esetén** egy egész érték alkalmazott azonosítója alakítsuk **123** való **00000123**. 
 
 Számos alkalmazás követelményei eltérőek rendezett adatok használata: az alkalmazottak például rendezés, neve, vagy dátum csatlakoztatásával. A szakaszban a következő minták [Table tervezési minták](#table-design-patterns) cím az az eredetitől eltérő rendezési sorrend az entitások hogyan:  
 

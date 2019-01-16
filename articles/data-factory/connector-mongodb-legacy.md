@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ffd1b96e721707f69c47a7cbf11d60f17f3a7d2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105423"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320480"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Aktuális verzió](connector-mongodb.md)
 
@@ -54,7 +54,7 @@ Mongodb-hez társított szolgáltatás a következő tulajdonságok támogatotta
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type |A type tulajdonságot kell beállítani: **Mongodb-hez** |Igen |
+| type |A type tulajdonságot kell beállítani: **MongoDb** |Igen |
 | kiszolgáló |IP-cím vagy a gazdagép neve a MongoDB-kiszolgáló. |Igen |
 | port |A MongoDB-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem (alapértelmezés szerint a 27017) |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
@@ -104,7 +104,7 @@ Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját l�
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": {
@@ -205,14 +205,14 @@ Tekintse meg az adatok denormalizált adatokat az illesztőprogram, a valós tá
 
 Például ExampleTable itt egy MongoDB-tábla, amely rendelkezik egy oszlop minden cella – a számlákon, az objektumok egy tömbjét és a egy oszlopot a skaláris típusok – minősítési tömbjét.
 
-| _azonosítója | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123"-elem: "a toaster", ár: "456" kedvezményt: "0.2-es"}, {invoice_id: "124"-elem: "helyezzük", ár: "1235", kedvezmény: "0.2-es"}] |Silver |[5,6] |
+| 1111 |ABC |[{invoice_id: "123"-elem: "a toaster", ár: "456" kedvezményt: "0.2-es"}, {invoice_id: "124"-elem: "helyezzük", ár: "1235", kedvezmény: "0.2"}] |Silver |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", cikk: "fridge", ár: "12543" kedvezményt: "0.0"}] |Arany |[1,2] |
 
 Az illesztőprogram hoz létre több virtuális táblákat, amelyek ebben a táblázatban szerepelnek. Az első virtuális tábla az alaptábla nevű, "ExampleTable", a példában látható. Az alaptábla tartalmaz az eredeti tábla összes adatot, de a rendszer kihagyta a tömbök származó adatokat, és ki van bontva, a virtuális táblák.
 
-| _azonosítója | Ügyfél neve | Szolgáltatásszint |
+| _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Arany |
@@ -225,7 +225,7 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek a példába
 
 **"ExampleTable_Invoices". tábla:**
 
-| _azonosítója | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |a toaster |456 |0.2 |
 | 1111 |1 |124 |Helyezzük |1235 |0.2 |
@@ -233,13 +233,12 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek a példába
 
 **"ExampleTable_Ratings". tábla:**
 
-| _azonosítója | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
+| _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
 | 1111 |0 |5 |
 | 1111 |1 |6 |
 | 2222 |0 |1 |
 | 2222 |1 |2 |
-
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

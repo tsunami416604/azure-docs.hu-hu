@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 91dd0f262d1a7e661a6f9e0c4974087503dde3e1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 83c5e1405c402a1c6c98f9dbcaaf74891eb75e6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242493"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330636"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Az Azure Blockchain Workbench architektúrája
 
@@ -44,6 +44,8 @@ A webalkalmazás a jogosult felhasználók férhessenek a felügyeleti konzolon.
 * Telepítse a Microsoft által biztosított az intelligens szerződések népszerű forgatókönyvek esetén. Például egy eszköz átviteli forgatókönyvet.
 * Töltse fel, és üzembe helyezése saját smart contracts.
 * Felhasználói hozzáférés hozzárendelése a intelligens szerződés keretén belül egy adott szerepkörrel.
+
+További információkért lásd: a [Azure Blockchain Workbench minta a Githubon ügyfélalkalmazások](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client).
 
 ## <a name="gateway-service-api"></a>Átjáró szolgáltatás API
 

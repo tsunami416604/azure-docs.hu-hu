@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: a4b1b4a7e106ad9dcd1746030daac562d7f123bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041526"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330160"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Egyetlen vagy készletezett adatbázisok SQL-adatbázis-replikáció
 
@@ -34,8 +34,8 @@ SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett ad
 ## <a name="versions"></a>Verziók  
 
 - A közzétevő és a terjesztőn kell, hogy a következő verziók egyikét mutattuk be:  
-- Az SQL Server 2017 (14.x).
-- Az SQL Server 2016 (13.x)
+- SQL Server 2017 (14.x)
+- SQL Server 2016 (13.x)
 - Az SQL Server 2014 (12.x) SP1 CU3
 - Az SQL Server 2014 (12.x) RTM CU10
 - Az SQL Server 2012 (11.x) SP2 CU8 vagy SP3
@@ -57,7 +57,7 @@ SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett ad
 
 ## <a name="replication-architecture"></a>Replikáció architektúrája  
 
-![replikáció és az sql-adatbázisok](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Forgatókönyvek  
 
@@ -84,7 +84,7 @@ A következő beállítások nem támogatottak az Azure SQL Database-előfizeté
 - Másolja ki az alapértelmezett kötések  
 - A szabály kötések másolása  
 - Másolja ki a teljes szöveges indexek  
-- XML-XSD másolása  
+- Copy XML XSD  
 - Másolja az XML-indexek  
 - Engedélyek másolása  
 - A térbeli indexek másolása  
@@ -111,6 +111,7 @@ Hozzon létre egy kiadvány és a egy leküldéses előfizetés. További inform
 
 ## <a name="see-also"></a>Lásd még:  
 
+- [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md)
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [Replikáció típusa](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)

@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ed720b0db68a11c573a763c4269349db97977eff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231070"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332319"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
 
@@ -67,7 +66,7 @@ A következő lépések bemutatják, hogyan konfigurálása a Log Analytics lesz
 
 1. A munkaterületen válassza a **Felhasználás és becsült költségek** lehetőséget a bal oldali panelen.
 2. Az a **felhasználás és becsült költségek** a kijelölt munkaterület oldalára, kattintson **adatmennyiség-kezelés** az oldal tetején. 
-5. Napi korlát a következő **OFF** – alapértelmezés szerint kattintson **ON** az engedélyezéshez, és állítsa az mennyiségi korlát a GB/nap.<br><br> ![A log Analytics konfigurálása adatkorlát](media/manage-cost-storage/set-daily-volume-cap-01.png)
+3. Napi korlát a következő **OFF** – alapértelmezés szerint kattintson **ON** az engedélyezéshez, és állítsa az mennyiségi korlát a GB/nap.<br><br> ![A log Analytics konfigurálása adatkorlát](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>Riasztás, ha elérte a napi korlát
 Hogy jelen visual köteg az Azure Portalon, ha az adatok korlát küszöbértéket, amíg ez a viselkedés nem feltétlenül igazítás azonnali figyelmet igénylő működési problémák kezelése.  Az Azure Monitor riasztási értesítés fogadására, létrehozhat egy új riasztási szabály.  További tudnivalókért lásd: [létrehozása, megtekintése és kezelése a riasztások](alerts-metric.md).      
@@ -161,7 +160,7 @@ Szeretné megtudni, minden nap az utolsó hónapban adatokat küldő számítóg
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-A küldő számítógépek listájának lekérése **adattípusok számlázzuk** (egyes adattípusok olyan ingyenes), használhatja a `_IsBilled` tulajdonság:
+A küldő számítógépek listájának lekérése **adattípusok számlázzuk** (egyes adattípusok olyan ingyenes), használhatja a [_IsBillable](log-standard-properties.md#isbillable) tulajdonság:
 
 `union withsource = tt * 
 | where _IsBillable == true 

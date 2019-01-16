@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
-ms.date: 11/28/2018
-ms.openlocfilehash: 4b8c67cfff89b54b4776ebc8b4586cd8f52950b3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/15/2019
+ms.openlocfilehash: 201ba431a4382741815536db2bb4d08f0068be80
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342612"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329541"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Felügyelt Azure SQL Database-példány létrehozása
 
@@ -47,6 +47,7 @@ A következő lépések azt mutatják be, hogyan hozhat létre egy felügyelt p�
    |**Felügyelt példány neve**|Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
    |**Felügyelt példány rendszergazdai bejelentkezési neve**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a "serveradmin", mivel ez egy fenntartott kiszolgálói szintű szerepkört.|
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
+   |**Rendezés**|A rendezést, hogy a felügyelt példány használni kívánt|További információk a Rendezés: [rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations).|
    |**Hely**|Az a hely, ahol a felügyelt példányt létre szeretné hozni|A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket.|
    |**Virtuális hálózat**|Ezek közül bármelyikre **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózatot, és az alhálózatot.| Egy alhálózaton szürke esetén kell lennie [módosítani kell a hálózati követelményeknek megfelelő](sql-database-managed-instance-configure-vnet-subnet.md) kiválasztása előtt, célként az új felügyelt példány. A hálózati környezet konfigurálása a felügyelt példány számára vonatkozó követelményekkel kapcsolatos információkért lásd: [virtuális hálózat konfigurálása az Azure SQL Database felügyelt példányába](sql-database-managed-instance-connectivity-architecture.md). |
    |**Erőforráscsoport**|Egy új vagy létező erőforráscsoport|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|

@@ -7,19 +7,19 @@ ms.author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.openlocfilehash: c820d2172c3e38d9d744e645d7c0e8b4749b42cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/14/2019
+ms.openlocfilehash: 49039e742ebd4354f9a52572ffdc69e95bf7f85e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743374"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321211"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure portal használatával
 
-Ez a rövid útmutató bemutatja, hogyan futtathat az Azure Databricks használatával Apache Spark-feladatokat elemzések végrehajtásához az előzetes verziójú Azure Data Lake Storage Gen2-kompatibilis tárfiókban tárolt adatokon.
+Ez a rövid útmutató bemutatja, hogyan egy Azure Databricks használatával egy storage-fiókot, amelyen engedélyezve van az Azure Data Lake Storage Gen2 preview-ban tárolt adatokkal kapcsolatos elemzés végrehajtásához az Apache Spark-feladat futtatásához.
 
-A Spark-feladat részeként egy rádióadó előfizetési adatait elemezzük, hogy a demográfiai adatok alapján betekintést nyerjünk az ingyenes/fizetős használatba.
+A Spark-feladat részeként egy rádióadó előfizetési adatait betekintést ingyenes/fizetős használati demográfiája alapján lesz elemez.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -27,12 +27,31 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 - [Data Lake Storage Gen2-kompatibilis tárfiók létrehozása](data-lake-storage-quickstart-create-account.md)
 
+<a id="config"/>
+
 ## <a name="set-aside-storage-account-configuration"></a>Tárfiók-konfiguráció feljegyzése
 
-> [!IMPORTANT]
-> Az oktatóanyag során szüksége lesz a tárfiók nevére és hozzáférési kulcsára. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, és szűrjön a *tár* kifejezésre. Válassza a **Tárfiókok** lehetőséget, és keresse meg az oktatóanyaghoz létrehozott fiókot.
->
-> Az **Áttekintés** területről másolja be a tárfiók **nevét** egy szövegszerkesztőbe. Ezután válassza a **Hozzáférési kulcsok** lehetőséget, és másolja ki a **key1** értékét a szövegszerkesztőbe, mivel a későbbi parancsokhoz mindkét értékre szükség lesz.
+Szüksége lesz a tárfiók és a egy rendszer végpont URI nevét.
+
+A tárfiók nevének lekérése az Azure Portalon, válassza ki a **minden szolgáltatás** és a kifejezést a szűrő *tárolási*. Ezután válassza ki **tárfiókok** , és keresse meg a storage-fiókjában.
+
+A rendszer végpont URI lekéréséhez válassza **tulajdonságok**, és a Tulajdonságok panelen keresse meg az értékét a **ADLS rendszer elsődleges VÉGPONT** mező.
+
+Illessze be mindkettőt ezeket az értékeket egy szövegfájlba. Szüksége lesz rájuk hamarosan.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
+
+Ebben a témakörben található útmutatást követve hozzon létre egy egyszerű szolgáltatást: [Útmutató: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Van néhány konkrét dolgot, mivel ebben a cikkben hajtsa végre a lépéseket kell.
+
+:heavy_check_mark: A lépések végrehajtásakor a [Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) szakasz a cikk, ügyeljen arra, hogy állítsa be a **bejelentkezési URL-** mezőjében a **létrehozás** párbeszédpanel a végpont URI-t, hogy nemrég összegyűjtött.
+
+:heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy az alkalmazás hozzárendelése a **Blob Storage-közreműködői szerepkör**.
+
+:heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -58,7 +77,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     Válassza a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Létrehozás** gombra.
 
-3. A munkaterület létrehozása eltarthat néhány percig. A munkaterület létrehozása alatt a portál jobb oldalán megjelenik az **Üzembehelyezési kérés elküldése az Azure Databricksnek** csempe. Lehetséges, hogy jobbra kell görgetnie az irányítópulton, hogy megjelenjen a csempe. Megjelenik egy folyamatjelző is a képernyő tetejéhez közel. Mindkét területen nyomon követheti a folyamat előrehaladását.
+3. Egy kis időt a munkaterület létrehozásához vesz igénybe. A munkaterület létrehozása folyamatban van, míg a **üzemelő példány elküldése az Azure Databricks** csempe jobb oldalán. Megtekintheti a címet, akkor előfordulhat, hogy görgessen jobbra az irányítópulton. Egy folyamatjelző sávot a képernyő tetején megjelenő is van. Mindkét területen nyomon követheti a folyamat előrehaladását.
 
     ![Databricks üzembe helyezési csempe](./media/data-lake-storage-quickstart-create-databricks-account/databricks-deployment-tile.png "Databricks üzembe helyezési csempe")
 
@@ -77,7 +96,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
     * Adjon egy nevet a fürtnek.
-    * Hozzon létre egy fürtöt **5.1 béta** modul.
+    * Hozzon létre egy fürtöt **5.1** modul.
     * Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
 4. Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
@@ -100,49 +119,26 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
     Kattintson a **Létrehozás** gombra.
 
-4. Csatlakozzon a Databricks-munkaterület az ADLS Gen2 fiókjához. Ehhez három támogatott mechanizmussal: OAuth, a közvetlen hozzáférés az OAuth és a közvetlen hozzáférés használata a megosztott kulcsos csatlakoztatására. 
+4. Másolja és illessze be az alábbi kódblokkot az első olyan cellára, de még ne futtassa ezt a kódot.
 
-    Minden egyes mechanizmus az alábbi példában látható. Ha teszteli az példák, ne felejtse el cserélje le a zárójelben látható zárójelben a mintában a saját értékeire:
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
-    **Csatlakoztassa az OAuth használatával**     
-        
-    ```scala
-    %python%
-    configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-    
-    dbutils.fs.mount(
-        source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
-        mount_point = "/mnt/<mount-name>",
-        extra_configs = configs)
-    ```
+   ```
+ 
+    > [!NOTE]
+    > A kódblokk közvetlenül hozzáfér a Data Lake Gen2 végpont OAuth használatával, de más módon való csatlakozáshoz a Data Lake Storage Gen2-fiókot a Databricks-munkaterület. Például sikerült csatlakoztathatja a fájlrendszert az OAuth használatával, vagy egy közvetlen hozzáférés használata a megosztott kulcsot. <br>Ezek a módszerek példák, olvassa el a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) a cikk az Azure Databricks webhelyén.
 
-    **Közvetlen hozzáférés OAuth-val**
+5. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket a [félretett storage-fiók konfigurációs](#config) és [egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak.  Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
 
-    ```scala
-    spark.conf.set("fs.azure.account.auth.type.<account-name>.dfs.core.windows.net": "OAuth")
-    spark.conf.set("fs.azure.account.oauth.provider.type.<account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id.<account-name>.dfs.core.windows.net": "<service-client-id>")
-    spark.conf.set("fs.azure.account.oauth2.client.secret.<account-name>.dfs.core.windows.net": "<service-credentials>")
-    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net": "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-        
-    **Közvetlen hozzáférés a megosztott kulcs** 
-
-    ```scala    
-    spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-
-5. Írja be a kódot a első cellába, majd nyomja le az **SHIFT + ENTER** a futtatáshoz.
-
-Létrejön a fájlrendszer a tárfiókhoz.
+6. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 
 ## <a name="ingest-sample-data"></a>Mintaadatok betöltése
 
@@ -154,7 +150,7 @@ Mielőtt ehhez a szakaszhoz hozzáfogna, a következő előfeltételeknek kell e
 
 A cellába, nyomja le az ENTER **SHIFT + ENTER** a kód futtatásához.
 
-Most egy új cellába vtár alkönyvtára, adja meg a következő kódra, és cserélje le az értékeket zárójelben korábban használt ugyanazokat az értékeket:
+Most már alatti Ez egy új cellába, adja meg a következő kódot, és cserélje le az értékeket, amelyeket korábban használt ugyanazon értékekkel zárójelben jelennek meg:
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
 
@@ -172,7 +168,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
     )
     ```
 
@@ -214,7 +210,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha végzett a cikkel, leállíthatja a fürtöt. Az Azure Databricks-munkaterületen kattintson a **Fürtök** elemre, majd keresse meg a leállítani kívánt fürtöt. Vigye az egérmutatót a **Műveletek** oszlopban a három pont fölé, és kattintson a **Leállítás** ikonra.
+Miután végzett ezzel a cikkel, leállíthatja a fürtöt. Az Azure Databricks-munkaterületen kattintson a **Fürtök** elemre, majd keresse meg a leállítani kívánt fürtöt. Vigye az egérmutatót a **Műveletek** oszlopban a három pont fölé, és kattintson a **Leállítás** ikonra.
 
 ![Databricks-fürt leállítása](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 

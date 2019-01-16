@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 0571347b7b44d6f6836d4dec1ebcf9b752d8fa8f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 70d1e08b1b81fd3aba159e18de3ee8829bc36548
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634439"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331010"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Az Apache Zeppelin notebookok használata Azure HDInsight az Apache Spark-fürt
 
@@ -167,7 +167,7 @@ Ebben az esetben a következő lépéseket kell elvégeznie, feladatok futtatás
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
-* [Használja az IntelliJ IDEA HDInsight-eszközei beépülő létrehozásához és elküldéséhez moduljának használata Apache Spark Scala-alkalmazások](apache-spark-intellij-tool-plugin.md)
+* [Az IntelliJ IDEA HDInsight-eszközei beépülő segítségével létrehozhat, és küldje el az Apache Spark Scala-alkalmazások](apache-spark-intellij-tool-plugin.md)
 * [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)

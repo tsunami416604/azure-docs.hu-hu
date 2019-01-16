@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 29a6c7107a57babb5dc81fa22146897d3958f0f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 874aa2610ae1785e9f40841ed3c3279aac42d660
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036341"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321823"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Csatlakozási kódtárak és az SQL Server keretrendszerek
 
@@ -40,11 +40,11 @@ Az alábbi táblázatban láthatók példák objektum-objektumrelációs (ORM) k
 | Nyelv | Platform | ORM(s) |
 | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Az ENTITY Framework Core](https://docs.microsoft.com/ef/core/index) |
-| Java | Windows, Linux, macOS |[Hibernálásra ORM](http://hibernate.org/orm)|
+| Java | Windows, Linux, macOS |[Hibernálásra ORM](https://hibernate.org/orm)|
 | PHP | Windows, Linux, macOS | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
-| Node.js | Windows, Linux, macOS | [ORM sequelize](http://docs.sequelizejs.com) |
+| Node.js | Windows, Linux, macOS | [ORM sequelize](https://docs.sequelizejs.com) |
 | Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
-| Ruby | Windows, Linux, macOS | [A Ruby on Rails](http://rubyonrails.org/) |
+| Ruby | Windows, Linux, macOS | [A Ruby on Rails](https://rubyonrails.org/) |
 ||||
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d238e5e7c129241fc599e3b656d785d750b330c7
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044382"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332040"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -1051,7 +1051,7 @@ EXP (<numeric_expression>)
   
  A kitevő, egy szám az állandó **e** hatványára szám. Ha például EXP(1.0) = e ^ 1.0-s = 2.71828182845905 és EXP(10) = e ^ 10 = 22026.4657948067.  
   
- Az exponenciális egy szám természetes alapú logaritmus alapja az a szám maga: EXP (napló (n)) = n. Az exponenciális egy szám természetes algoritmusát az a szám, és maga: NAPLÓ (EXP (n)) = n.  
+ Az exponenciális egy szám természetes alapú logaritmus alapja az a szám maga: EXP (LOG (n)) = n. Az exponenciális egy szám természetes algoritmusát az a szám, és maga: LOG (EXP (n)) = n.  
   
  **Példák**  
   
@@ -1108,7 +1108,7 @@ LOG (<numeric_expression> [, <base>])
   
  A természetes alapú logaritmus alapja az alap-es alapú logaritmusa **e**, ahol **e** megegyezik egy irrational állandó körülbelül 2.718281828.  
   
- Az exponenciális egy szám természetes algoritmusát az a szám maga: NAPLÓ (EXP (n)) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP (napló (n)) = n.  
+ Az exponenciális egy szám természetes algoritmusát az a szám maga: LOG( EXP( n ) ) = n. Az exponenciális egy szám természetes alapú logaritmus alapja az a szám, és maga: EXP( LOG( n ) ) = n.  
   
  **Példák**  
   
@@ -2331,7 +2331,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
  **Syntax**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **Argumentumok**  
@@ -2342,7 +2342,7 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     Ez bármilyen érvényes numerikus kifejezés.  
+     Van bármilyen érvényes numerikus kifejezés jelölésére, a kezdő és záró karakter.    
   
  **Návratové Typy**  
   

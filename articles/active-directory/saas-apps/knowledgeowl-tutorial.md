@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az KnowledgeOwl |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező KnowledgeOwl |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és KnowledgeOwl között.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80d8d1664100cdfbbf6d537b41823c2db0204040
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446140"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318917"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Oktatóanyag: Azure Active Directory-integráció az KnowledgeOwl
+# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező KnowledgeOwl
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan KnowledgeOwl integrálása az Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 KnowledgeOwl az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy KnowledgeOwl egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az Azure AD integrálása a KnowledgeOwl konfigurálásához hozzá kell Knowled
 
 **KnowledgeOwl hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -150,7 +150,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az előző képen látható módon, és hajtsa végre az alábbi lépéseket:
     
-    | Attribútum neve | Attribútum értéke | Namespace|
+    | Attribútum neve | Attribútum értéke | Névtér|
     | ------------------- | -------------------- | -----|
     | ssoid | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
@@ -186,7 +186,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure1.png)
 
-1. Görgessen lefelé, legfeljebb a **SAML SSO-integráció** , és hajtsa végre az alábbi lépéseket:
+1. Görgessen a **SAML SSO-integráció** , és hajtsa végre az alábbi lépéseket:
     
     ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure2.png)
 
@@ -254,7 +254,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja KnowledgeOwl Britta Simon nevű felhasználó létrehozásához. KnowledgeOwl támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az KnowledgeOwl elérésére, ha még nem létezik tett kísérlet során.
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [KnowledgeOwl támogatási csapatának](mailto:support@knowledgeowl.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [KnowledgeOwl támogatási csapatának](mailto:support@knowledgeowl.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -286,7 +286,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

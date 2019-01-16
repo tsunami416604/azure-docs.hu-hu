@@ -1,6 +1,6 @@
 ---
 title: Folyamatos integráció Azure folyamat – a csoportos adatelemzési folyamat létrehozása
-description: 'Mesterséges intelligencia (AI) alkalmazások fejlesztési és üzemeltetési útmutatónk: folyamatos integrációs folyamat létrehozása az Azure-ban a Docker és a Kubernetes használatával'
+description: 'Fejlesztési és üzemeltetési mesterséges intelligencia (AI) alkalmazások esetén: Folyamatos integrációs folyamat létrehozása az Azure-ban a Docker és a Kubernetes használatával'
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: a3c570d3d22742afcbba86f35a9dd1f6a85c0b8f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bace951141ea1d437d102b11ac4f548beaf5c75e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134284"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329412"
 ---
-# <a name="creating-continous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Folyamatos integrációs folyamat létrehozása az Azure-ban a Docker, Kubernetes- és Python Flask-alkalmazás
+# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Folyamatos integrációs folyamat létrehozása az Azure-ban a Docker, Kubernetes- és Python Flask-alkalmazás
 AI-alkalmazások a munkahelyi, machine learning-modellek és az alkalmazás létrehozása és a végfelhasználók számára való használata adatokhoz hozzáférést biztosító alkalmazás-fejlesztők az Adatszakértők gyakran két adatfolyamot vannak. Ebben a cikkben bemutatjuk, hogyan valósíthat meg egy folyamatos integrációs (CI) / folyamatos kézbesítési (CD) folyamat AI-alkalmazáshoz. AI-alkalmazások beépítve imagenet machine learning (gépi tanulás) modell alkalmazáskód kombinációját. Ebben a cikkben azt is pretrained modell beolvasása a saját Azure blob storage-fiók, annak oka az AWS S3 szintű fiók is lehet. A cikk egy egyszerű python flask-webalkalmazás használjuk.
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: Neve az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) csoportházirend-beállítások |} A Microsoft Docs
-description: Office 365-csoportok az Azure Active Directoryban (előzetes verzió) lejárat beállítása
+title: Csoportházirend neve (előzetes verzió) – Office 365-csoportok – Azure Active Directory |} A Microsoft Docs
+description: Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportok elnevezési szabályzat beállítása
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1118be1c335d8f88171b359c9cd273cdd2923021
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275108"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321721"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése
 
@@ -208,7 +208,7 @@ Az Outlook iOS és Android-alkalmazás | Az Outlook alkalmazásokat létrehozott
 Csoportok mobilalkalmazás | A csoportok mobilalkalmazásban létrehozott csoportok megfeleljenek az elnevezési szabályzat. Csoportok mobilalkalmazás előzetes verziójának a kiosztási szabályzat nem jelenik meg, és nem ad vissza egyéni letiltott szó hibákat, amikor a felhasználó megadja a csoport nevét. De rendszer automatikusan alkalmazza a kiosztási szabályzat létrehozásakor vagy szerkesztésekor a csoport, és felhasználók egyike megfelelő hibák van-e a csoport nevét vagy aliasát egyéni letiltott szavakat.
 Planner | Planner a szabályzatnak megfelelő elnevezési. A csomagnév megadása Planner mutatja az elnevezési policy előzetes verziójára. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet jelenik meg a csomag létrehozásakor.
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement a szabályzatnak megfelelő elnevezési. Dynamics 365 a kiosztási szabályzat érvénybe léptetését neve jelenik meg, amikor a felhasználó egy csoport nevét vagy e-mail-alias. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet mellett látható a letiltott szó, a felhasználó távolíthatja el.
-A School Data Sync (SDS) | Az SDS segítségével létrehozott csoportok megfelelnek a kiosztási szabályzat, de a kiosztási szabályzat automatikusan nem alkalmazza. SDS rendszergazdák rendelkeznek az előtagok és utótagok hozzáfűzni kívánt osztály nevét, amelynek csoportokat kell létrehozni és SDS majd feltölteni. Csoport létrehozása vagy szerkesztése ellenkező esetben sikertelen lesz.
+School Data Sync (SDS) | Az SDS segítségével létrehozott csoportok megfelelnek a kiosztási szabályzat, de a kiosztási szabályzat automatikusan nem alkalmazza. SDS rendszergazdák rendelkeznek az előtagok és utótagok hozzáfűzni kívánt osztály nevét, amelynek csoportokat kell létrehozni és SDS majd feltölteni. Csoport létrehozása vagy szerkesztése ellenkező esetben sikertelen lesz.
 Az Outlook Customer Managerbe (OCM) | Az Outlook Customer Managerbe a szabályzatnak megfelelő elnevezési, amely a rendszer automatikusan alkalmazza az Outlook Customer Manager létrehozta a csoportot. Ha egyéni tiltott szót észlel, csoport létrehozása a OCM le van tiltva, és a felhasználó blokkolva van a OCM alkalmazással.
 Az osztályterem alkalmazás | Az osztályterem alkalmazással létrehozott csoportok megfelelnek a csoportelnevezési házirend, de a kiosztási szabályzat nem alkalmazza automatikusan, és az elnevezési policy előzetes verziójára nem jelenik meg a felhasználók számára a tanterem csoportnév beírása közben. A kényszerített osztályterem csoportnév előtagot és utótagot kell megadni. Ha nem, akkor az osztályterem-csoport létrehozása vagy szerkesztése a művelet sikertelen lesz, és a hibák.
 Power BI | A Power BI-munkaterületek megfeleljenek az elnevezési szabályzat.    

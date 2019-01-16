@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 58829bcd1b3c38b70929167beae5d8866483d616
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e1c5e4c3e4b40fd04ca9d48aba9b1e5194d4261
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716497"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330925"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a bejárati ajtóhoz
 Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartományt a Front Doorhoz. Amikor az Azure Front Door Service-t használja az alkalmazások szállítására, és azt szeretné, hogy a saját tartományneve látható legyen a végfelhasználói kérelemben, akkor egy egyéni tartománynévre van szükség. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is.
@@ -43,7 +43,7 @@ Ha az Azure-t használja a [DNS-tartományai](https://docs.microsoft.com/azure/d
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS-rekord létrehozása
 
-Mielőtt használhatna egy egyéni tartományt a Front Doorral, a tartományszolgáltatójával létre kell hoznia egy kanonikusnév- (CNAME) rekordot, amely a Front Door alapértelmezett előtérbeli gazdagépére mutat (mondjuk a contoso.azurefd.net címre). A CNAME rekord egy olyan DNS-rekordtípus, amellyel egy forrástartománynév leképezhető egy céltartománynévre. Az Azure Front Door Service esetében a forrástartománynév az Ön egyéni tartományneve, a céltartománynév pedig a Front Door alapértelmezett gazdagépneve. Miután a Front Door jóváhagyja a létrehozott CNAME rekordot, a forrásul szolgáló egyéni tartományba (pl. www.contoso.com) címzett forgalom a Front Door célként megadott alapértelmezett előtérbeli gazdagépére (pl. contoso.azurfd.net) lesz irányítva. 
+Egy egyéni tartományt a bejárati ajtó a használata előtt, tartományszolgáltatója átirányítása a bejárati ajtajának alapértelmezett előtérbeli állomás (pl. contoso.azurefd.net) először létre kell hoznia egy kanonikusnév-(CNAME) rekordot. A CNAME rekord egy olyan DNS-rekordtípus, amellyel egy forrástartománynév leképezhető egy céltartománynévre. Az Azure Front Door Service esetében a forrástartománynév az Ön egyéni tartományneve, a céltartománynév pedig a Front Door alapértelmezett gazdagépneve. Miután a Front Door jóváhagyja a létrehozott CNAME rekordot, a forrásul szolgáló egyéni tartományba (pl. www.contoso.com) címzett forgalom a Front Door célként megadott alapértelmezett előtérbeli gazdagépére (pl. contoso.azurfd.net) lesz irányítva. 
 
 Egy egyéni tartomány és annak altartománya egyszerre csak egy Front Doorral társítható. Azonban lehetséges egy egyéni tartomány több altartományának használata különböző Front Doorokhoz több CNAME rekord használatával. Emellett leképezhet egy különböző altartományokkal rendelkező egyéni tartományt is ugyanarra a Front Doorra.
 
@@ -90,9 +90,9 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - Gazdagép: Adja meg az egyéni tartományt szeretne használni, a afdverify altartomány nevével együtt. Például: afdverify.www.
 
-    - Szempontok: Adja meg az alapértelmezett bejárati ajtajának előtérbeli gazdagép, a afdverify altartomány nevével együtt. Például: afdverify.contoso.azurefd.net. 
+    - Points to: Adja meg az alapértelmezett bejárati ajtajának előtérbeli gazdagép, a afdverify altartomány nevével együtt. Például: afdverify.contoso.azurefd.net. 
 
-    - ÉLETTARTAM: Hagyja *1 óra* kiválasztott.
+    - TTL: Hagyja *1 óra* kiválasztott.
 
 6. Kattintson a **Mentés** gombra.
  
@@ -171,9 +171,9 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - Gazdagép: Adja meg az egyéni tartománya altartományát. Például: www vagy profile.
 
-    - Szempontok: Adja meg a bejárati ajtajának alapértelmezett gazdagép nevét. Például: contoso.azurefd.net. 
+    - Points to: Adja meg a bejárati ajtajának alapértelmezett gazdagép nevét. Például: contoso.azurefd.net. 
 
-    - ÉLETTARTAM: Hagyja *1 óra* kiválasztott.
+    - TTL: Hagyja *1 óra* kiválasztott.
 
 6. Kattintson a **Mentés** gombra.
  

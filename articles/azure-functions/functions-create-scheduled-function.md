@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4809c09b5aa7b8212981cc13589602a365a23a37
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: d82e80530d375a9d0f0a6d3f491d3070942ca02f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113614"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331911"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
 
@@ -43,15 +43,15 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-a-timer-triggered-function"></a>Időzítő által aktivált függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
-    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-scheduled-function/add-first-function.png)
+   ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
-2. A keresés mezőbe írja be a `timer` kifejezést, majd válassza ki a kívánt nyelvet az időzítő eseményindító sablonjához. 
+2. Válassza ki a **További sablonok**, majd a **Befejezés és sablonok megtekintése** lehetőséget.
 
-    ![Válassza ki az időzítő által aktivált függvényt.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. Az új eseményindító létrehozásához használja az ábra alatti táblázatban megadott beállításokat.
+3. A keresőmezőbe írja be a `timer` és az új eseményindítót konfigurálja az ábra alatti táblázatban megadott beállításokkal.
 
     ![Hozzon létre egy időzítő által aktivált függvényt az Azure Portalon.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
@@ -60,13 +60,13 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | **Name (Név)** | Alapértelmezett | Az időzítő által aktivált függvény nevét adja meg. |
     | **Ütemezés** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](functions-bindings-timer.md#cron-expressions), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
 
-2. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
+4. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
 
-3. Ellenőrizze a végrehajtást a naplókban gyűjtött nyomkövetési adatok áttekintésével.
+5. Ellenőrizze a végrehajtást a naplókban gyűjtött nyomkövetési adatok áttekintésével.
 
     ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-Most módosíthatja a függvény ütemezését, hogy ne percenként, hanem óránként egyszer fusson. 
+Most módosíthatja a függvény ütemezését, hogy ne percenként, hanem óránként egyszer fusson.
 
 ## <a name="update-the-timer-schedule"></a>Az időzítő ütemezésének módosítása
 

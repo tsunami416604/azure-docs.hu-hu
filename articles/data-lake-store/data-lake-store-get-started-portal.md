@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: fba62a7838ad4b8f349e233eef5e8d82450f1453
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949019"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320225"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Az Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával
 
@@ -46,7 +46,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
    * **Név**. Adjon meg egy egyedi nevet a Data Lake Storage Gen1 fiók.
    * **Előfizetés**. Válassza ki az előfizetést, amely alatt hozzon létre egy új Data Lake Storage Gen1 fiókot szeretne.
    * **Erőforráscsoport**. Válasszon ki egy meglévő erőforráscsoportot, vagy válassza a **Create new** (Új létrehozása) elemre, ha szeretne létrehozni egyet. Az erőforráscsoport egy tároló, amely alkalmazásokhoz kapcsolódó erőforrásokat tárol. További információk: [Erőforráscsoportok az Azure-ban](../azure-resource-manager/resource-group-overview.md#resource-groups).
-   * **Hely**: Válasszon ki egy helyet, ahol szeretné létrehozni a Data Lake Storage Gen1 fiókot.
+   * **Hely**: Válasszon egy helyet, ahol szeretné létrehozni a Data Lake Storage Gen1 fiókot.
    * **Titkosítási beállítások**. Három beállítás érhető el:
      
      * **A titkosítás letiltása**.
@@ -76,9 +76,9 @@ Ha konfigurálta a titkosítást a Data Lake Storage Gen1 fiók az Azure Key Vau
 
 > [!NOTE]
 > Egy Data Lake Storage Gen1 fiókot az Azure Resource Manager-sablonok használatával is létrehozhat. Ezek a sablonok az [Azure gyors üzembehelyezési sablonokból](https://azure.microsoft.com/resources/templates/?term=data+lake+store) érhetők el:
-    - Adattitkosítás nélkül: [üzembe helyezése az Azure Data Lake Storage Gen1 fiók adattitkosítás nélkül](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
-    - Adattitkosításának használatával a Data Lake Storage Gen1: [titkosítással (Data Lake) üzembe helyezése Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
-    - Az Azure Key Vaulttal adattitkosítás: [titkosítással (Key Vault) üzembe helyezése Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
+    - Adattitkosítás: nélkül [Üzembe helyezése adattitkosítás nélkül az Azure Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
+    - Adattitkosítás használatával a Data Lake Storage Gen1: [Üzembe helyezése titkosítással (Data Lake) a Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
+    - Az Azure Key Vaulttal adattitkosítás: [Üzembe helyezése titkosítással (Key Vault) a Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
 > 
 > 
 
@@ -95,7 +95,7 @@ A Data Lake Storage Gen1-adatok kezelésére és tárolására fiókjában mapp�
    
     ![Mappák létrehozása a Data Lake Storage Gen1 fiókban](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "mappák létrehozása a Data Lake Storage Gen1-fiókban")
    
-    Az újonnan létrehozott mappa megjelenik az **Adatkezelő** panelen lévő listában. Bármilyen szinten létrehozhat beágyazott mappákat.
+    Az újonnan létrehozott mappa megjelenik az **Adatkezelő** panelen lévő listában. Bármilyen szintű legfeljebb beágyazott mappákat hozhat létre.
    
     ![Mappák létrehozása a Data Lake-fiók](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "mappák létrehozása a Data Lake-fiók")
 

@@ -1,5 +1,5 @@
 ---
-title: Egy nem felügyelt címtár vagy egy árnyékmásolat-bérlő az Azure Active Directory rendszergazdai átvételt |} A Microsoft Docs
+title: Egy nem felügyelt címtár - rendszergazdája - átvételi Azure Active Directory |} A Microsoft Docs
 description: Hogyan vegye át az Azure Active Directoryban egy nem felügyelt címtár (árnyékmásolat-bérlő) egy DNS-tartománynevet.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 44fe3b54e2dfedb71b50a75befce96121ecebe05
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121192"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320242"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" a szolgáltatás regisztrációs kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](directory-self-service-signup.md)
@@ -124,7 +124,7 @@ A parancsmag | Használat
 `get-msoldomain` | A tartománynevek az aktuális bérlőhöz társított mutatja.
 `new-msoldomain –name <domainname>` | Hozzáadja a bérlő ellenőrzött (nem DNS-ellenőrzés elvégzése még), a tartomány nevét.
 `get-msoldomain` | A tartománynév már szerepel a felügyelt bérlőhöz társított tartománynevek listája, de állapottal **ellenőrzött**.
-`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Megadja az adatokat a tartományhoz tartozó új DNS txt típusú rekordot üzembe (MS = xxxxx). Ellenőrzési előfordulhat, hogy nem történik azonnal, mivel némi időre a txt típusú rekord propagálása, ezért vár néhány percet, mielőtt a mérlegeli a **- ForceTakeover** lehetőséget. 
+`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Provides the information to put into new DNS TXT record for the domain (MS=xxxxx). Ellenőrzési előfordulhat, hogy nem történik azonnal, mivel némi időre a txt típusú rekord propagálása, ezért vár néhány percet, mielőtt a mérlegeli a **- ForceTakeover** lehetőséget. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha továbbra is nem ellenőrzi a tartománynevet, folytathatja a **- ForceTakeover** lehetőséget. Ellenőrzi, hogy a TXT-rekord lett létrehozva, és az átvétel folyamat elindít.<li>A **- ForceTakeover** beállítás hozzá kell adni a parancsmag csak akkor, ha egy külső alá vonhatja rendszergazdai átvétellel, például ha a nem felügyelt bérlőt rendelkezik a Office 365-szolgáltatások blokkolja az átvétel kényszerítése.
 `get-msoldomain` | A tartományok listáját jeleníti meg most tartománynevet **ellenőrzött**.
 

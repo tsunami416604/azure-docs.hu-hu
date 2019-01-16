@@ -3,7 +3,7 @@ title: Kiépítési útmutató Windows SQL Server rendszerű virtuális gépekhe
 description: Ez az útmutató a Windows SQL Server 2017 virtuális gépekre az Azure Portalon történő lehetőségeit ismerteti.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
-ms.author: jroth
-ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: fd01fdd3f7f8803dc7221bd0bd6c993120a83d44
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704538"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330891"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Az Azure Portalon Windows SQL Server virtuális gép kiépítése
 
@@ -54,7 +55,7 @@ Az SQL Server virtuális gép létrehozásakor több előre konfigurált lemezk�
 
 1. Tekintse át az elérhető SQL Server-rendszerképeket. Minden rendszerkép egy SQL Server-verziót és egy operációs rendszert azonosít.
 
-1. Válassza az **Ingyenes SQL Server-licenc: Windows Server 2016-on futó SQL Server 2017 Developer** nevű rendszerképet.
+1. Válassza ki a rendszerkép **ingyenes SQL Server-licenc: SQL Server 2017 Developer Windows Server 2016 rendszeren**.
 
    > [!TIP]
    > A Developer edition egy teljes körű funkciókkal bíró, ingyenes SQL Server kiadása fejlesztési-tesztelési, mert ez az útmutató szolgál. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. Azonban Ön bármelyik, a forgatókönyv rendszerképet választhatja. Az elérhető rendszerképek, olvassa el a [SQL Server Windows Virtual Machines – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
@@ -249,7 +250,7 @@ A következő táblázat tartalmazza az Azure Key Vault-integráció konfigurál
 | **Key Vault URL** |A Key Vault helye. |https://contosokeyvault.vault.azure.net/ |
 | **Egyszerű név** |Az Azure Active Directory szolgáltatás egyszerű neve. Ezt a nevet ügyfél-azonosítónak is hívják. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Egyszerű titok** |Az Azure Active Directory szolgáltatás egyszerű titka. Ezt a titkot ügyféltitoknak is hívják. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
-| **Hitelesítő adat neve** |**Hitelesítő adat neve**: Az AKV-integráció létrehoz egy hitelesítő adatot az SQL Serverben, amely hozzáférést biztosít a virtuális gépnek a Key Vaulthoz. Válasszon egy nevet ennek a hitelesítő adatnak. |mycred1 |
+| **Hitelesítő adat neve** |**Hitelesítő adat neve**: AKV-integráció az SQL Serverrel, így a virtuális Géphez a key vault eléréséhez hitelesítő adatot hoz létre. Válasszon egy nevet ennek a hitelesítő adatnak. |mycred1 |
 
 További információkért lásd: [Configure Azure Key Vault Integration for SQL Server on Azure VMs](virtual-machines-windows-ps-sql-keyvault.md) Az Azure Key Vault-integráció konfigurálása az SQL Serverhez Azure virtuális gépeken.
 

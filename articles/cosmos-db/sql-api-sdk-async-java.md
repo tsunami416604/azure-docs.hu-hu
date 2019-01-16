@@ -1,19 +1,19 @@
 ---
-title: 'Az Azure Cosmos DB: SQL aszinkron Java API, SDK és -erőforrások'
+title: 'Az Azure Cosmos DB: SQL Async Java API, SDK & resources'
 description: Mindent megtudhat a SQL aszinkron Java API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB SQL aszinkron Java SDK minden verziója közötti végzett módosításokat.
 author: moderakh
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 1/15/2019
 ms.author: moderakh
-ms.openlocfilehash: e64820377421a3eae80d77d464e48979a3bb30a5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 760a54a09dd612cef93de0de1e8ac2fd59b04b26
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198626"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329378"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -50,6 +50,11 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* Javítások kezelése nagyon nagy lekérdezési válaszadás felgyorsítása érdekében.
+* Erőforrás-jogkivonat kezelési javítások hárítható el az ügyfél ([github #78](https://github.com/Azure/azure-cosmosdb-java/issues/78)).
+* Frissítve a sebezhető függőségi jackson-adatkötéséhez meg ([github #77](https://github.com/Azure/azure-cosmosdb-java/pull/77)).
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * Erőforrás adatszivárgást hibája kijavítva.
@@ -125,6 +130,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |2019. január 15.|--- |
 | [2.3.0](#2.3.0) |2018. november 29.|--- |
 | [2.2.2](#2.2.2) |2018. november 8.|--- |
 | [2.2.1](#2.2.1) |2018. november 2.|--- |

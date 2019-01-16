@@ -13,18 +13,35 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106273"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319648"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Kibocsátási megjegyzések a szolgáltatás érvényesítése
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Ez a cikk a kibocsátási megjegyzéseket tartalmaz az Azure Stack érvényesítési szolgáltatásként.
+
+## <a name="version-402"></a>Verzió 4.0.2
+
+2019. január 7
+
+Ha az Azure Stack havi frissítése ellenőrzési Munkafolyamat futtatja, és az OEM-frissítési csomag verziószáma nem 1810 vagy újabb, hiba kap, miután a számítógép-Gyártói frissítési lépést. Ez a hiba. A javítás fejlesztése folyamatban van. A kárenyhítési lépések a következők:
+
+1.  Futtassa az OEM frissítése a szokásos módon.
+2.  Hajtsa végre a Test-AzureStack csomag sikeres alkalmazás óta, és mentse a kimenetet.
+3.  A vizsgálat megszakítása
+4.  A mentett kimenetként VaaSHelp@microsoft.com a Futtatás eredményeit megadásának fogadásához.
+
+## <a name="version-402"></a>Verzió 4.0.2
+
+2018. November 30.
+
+- Belső hibajavítások
 
 ## <a name="version-401"></a>Verzió 4.0.1
 

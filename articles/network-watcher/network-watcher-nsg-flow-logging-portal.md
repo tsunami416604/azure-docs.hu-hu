@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ce2d69e26909231383f3538d51387f27d8202a43
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822466"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332472"
 ---
-# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
 A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek bejövő és kimenő forgalmának szűrését. A Network Watcher NSG-folyamatnaplózási funkciójával naplózhatja az egyes hálózati biztonsági csoportokon áthaladó hálózati forgalmat. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -38,7 +38,7 @@ A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!NOTE] 
-> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. Beállítási lehetőségek érhetők el az Azure portal és a REST API használatával. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez a tárfiókba mentett 1-es naplók.
+> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez 1-es verziójú naplókat, a storage-fiókhoz használt kimeneti adattípus.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -212,7 +212,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | T            | Protokoll               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
 | O            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
-| C            | A folyamat állapota **csak 2 verzió** | A folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: kezdje, ha egy folyamat jön létre. Statisztikák nem biztosított. **C**: egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: záró, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre. |
+| C            | A folyamat állapota **csak 2 verzió** | A folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: Kezdődik, amikor egy folyamat jön létre. Statisztikák nem biztosított. **C**: Egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: Végződik, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre. |
 | 30 | – Küldött csomagok forrás és a cél **csak verzió 2** | Legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomagok teljes száma. |
 | 16978 | Bájt lett elküldve – a forrás és a cél **csak verzió 2** | A legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomag bájtok száma. Csomag bájt közé tartozik, a csomag fejlécének és adattartalmának bontása. | 
 | 24 | – Küldött csomagok forrás-cél **csak verzió 2** | Legutóbbi frissítés óta forrás célhelyre küldött TCP vagy UDP-csomagok teljes száma. |

@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 2734021ffd55bb0d16d14e17ec0329e449aa86a0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ba82aeff1ce699efaa850e50d6840fa0d5483f20
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201346"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321092"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
 [Az Azure Functions](functions-overview.md) biztosít beépített integráció [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) funkciók figyelésre. Ez a cikk bemutatja, hogyan konfigurálhatja a rendszer által létrehozott naplófájlok küldeni az Application Insights funkciók.
 
-![Application Insights Metrikaböngésző](media/functions-monitoring/metrics-explorer.png)
+![Application Insights Metrics Explorer](media/functions-monitoring/metrics-explorer.png)
 
 Funkciók is rendelkezik [beépített monitorozást, amely nem használható az Application Insights](#monitoring-without-application-insights). Az Application Insights azt javasoljuk, mert több adat és hatékonyabb módon elemezheti az adatokat biztosít.
 
@@ -658,7 +658,7 @@ Az Azure CLI használatával az alábbi parancsok jelentkezzen be, válassza ki 
 ```azurecli
 az login
 az account list
-az account set <subscriptionNameOrId>
+az account set --subscription <subscriptionNameOrId>
 az webapp log tail --resource-group <resource group name> --name <function app name>
 ```
 

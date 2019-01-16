@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: bbe957d4327770daee51f8a46d90978373fed53a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317015"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330386"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
 
@@ -46,11 +46,11 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | InvalidAuthenticationTokenTenant | Hozzáférési jogkivonat beszerzése a megfelelő bérlő számára. A jogkivonat csak kérheti le a fiókjához tartozó bérlő. | |
 | InvalidContentLink | Nagy valószínűséggel próbált összekapcsolása egy beágyazott sablont, amely nem érhető el. Ellenőrizze a beágyazott sablon a megadott URI-t. Ha a sablon egy storage-fiók már létezik, győződjön meg arról, az URI-t érhető el. Szükség lehet a SAS-jogkivonatát adja át. | [Összekapcsolt sablonok](resource-group-linked-templates.md) |
 | InvalidParameter | Az erőforrás megadott értékek egyike nem egyezik a várt értékkel. Ezt a hibát okozhat például számos különböző feltételeket. Például lehet, hogy a jelszó nem elegendő, vagy lehet, hogy egy blob neve helytelen. A hibaüzenetben határozza meg, melyik értéket ki kell javítani kell. | |
-| InvalidRequestContent | Az üzembe helyezési értékeket tartalmaznak értékeket, amelyeket nem a várt, vagy hiányoznak az értékek szükséges. Erősítse meg az értékeket az erőforrástípushoz. | [Sablon hivatkozása](/azure/templates/) |
+| InvalidRequestContent | Az üzembe helyezési értékeket tartalmaznak értékeket, amelyeket nem a várt, vagy hiányoznak az értékek szükséges. Erősítse meg az értékeket az erőforrástípushoz. | [Sablonreferencia](/azure/templates/) |
 | InvalidRequestFormat | A hibakeresési naplózást engedélyező az üzembe helyezés végrehajtásakor, és ellenőrizze a kérelem tartalma. | [Hibakeresési naplózás](#enable-debug-logging) |
-| InvalidResourceNamespace | Ellenőrizze a megadott erőforrás névtere a **típus** tulajdonság. | [Sablon hivatkozása](/azure/templates/) |
+| InvalidResourceNamespace | Ellenőrizze a megadott erőforrás névtere a **típus** tulajdonság. | [Sablonreferencia](/azure/templates/) |
 | InvalidResourceReference | Az erőforrás még nem létezik, vagy helytelenül hivatkozott. Ellenőrizze, hogy hozzáadjon egy függőséget kell. Ellenőrizze, hogy használatára a **referencia** függvényt tartalmazza a szükséges paramétereket a forgatókönyvhöz. | [Függőségek feloldása](resource-manager-not-found-errors.md) |
-| InvalidResourceType | Ellenőrizze az erőforrás írja be az a **típus** tulajdonság. | [Sablon hivatkozása](/azure/templates/) |
+| InvalidResourceType | Ellenőrizze az erőforrás írja be az a **típus** tulajdonság. | [Sablonreferencia](/azure/templates/) |
 | InvalidSubscriptionRegistrationState | Regisztrálja az előfizetését az erőforrás-szolgáltatónál. | [Oldja meg a regisztráció](resource-manager-register-provider-errors.md) |
 | InvalidTemplate | Ellenőrizze a hibákat a sablon szintaxisát. | [Érvénytelen a sablon feloldása](resource-manager-invalid-template-errors.md) |
 | InvalidTemplateCircularDependency | Távolítsa el a felesleges függőségek. | [Körkörös függőségek feloldása](resource-manager-invalid-template-errors.md#circular-dependency) |
@@ -250,5 +250,7 @@ Vagy tegyük fel, amely Ön szerint nem megfelelően állítsa be a függősége
 
 
 ## <a name="next-steps"></a>További lépések
+
+* Nyissa meg a hibaelhárítás az oktatóanyagot, tekintse meg [oktatóanyag: Resource Manager-sablon üzembe helyezés hibaelhárítása](./resource-manager-tutorial-troubleshoot.md)
 * Naplózási műveletek kapcsolatos további információkért lásd: [auditálási műveletek a Resource Manager](resource-group-audit.md).
 * Üzembe helyezés során a hibák megállapításához műveleteivel kapcsolatos tudnivalókért lásd: [üzembehelyezési műveletek megtekintése](resource-manager-deployment-operations.md).

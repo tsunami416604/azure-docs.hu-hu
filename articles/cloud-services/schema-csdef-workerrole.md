@@ -13,12 +13,12 @@ caps.latest.revision: 55
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 2e487bd3fda787cf9f869cc352de4c97d5c1678b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002177"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331691"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services – definíciós WorkerRole séma
 Az Azure feldolgozói szerepkör egy szerepkör, amely akkor hasznos, ha általános fejlesztési, és előfordulhat, hogy végrehajtani a háttérben történő feldolgozás a webes szerepkör.
@@ -41,11 +41,11 @@ A szolgáltatásdefiníciós fájlt egy feldolgozói szerepkört tartalmazó ala
       <InputEndpoint name="<input-endpoint-name>" protocol="[http|https|tcp|udp]" localPort="<local-port-number>" port="<port-number>" certificate="<certificate-name>" loadBalancerProbe="<load-balancer-probe-name>" />
       <InternalEndpoint name="<internal-endpoint-name" protocol="[http|tcp|udp|any]" port="<port-number>">
          <FixedPort port="<port-number>"/>
-         <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>
+         <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>
       </InternalEndpoint>
      <InstanceInputEndpoint name="<instance-input-endpoint-name>" localPort="<port-number>" protocol="[udp|tcp]">
          <AllocatePublicPortFrom>
-            <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>
+            <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>
          </AllocatePublicPortFrom>
       </InstanceInputEndpoint>
     </Endpoints>
@@ -184,7 +184,7 @@ A következő táblázat ismerteti az attribútumai a `LocalStorage` elemet.
 | --------- | ---- | ----------- |
 |név|sztring|Kötelező. Egy egyedi nevet a helyi tárolóban.|
 |cleanOnRoleRecycle|logikai|Választható. Azt jelzi, hogy a helyi tárolóban meg kell tisztítani a szerepkör újraindítását követően. Alapértelmezett érték `true`.|
-|hogy a sizeinmb értéke|int|Választható. A kívánt mennyiségű tárterület lefoglalása a helyi tárolóhoz, MB-ban. Ha nincs megadva, a lefoglalt lemezterület alapértelmezett, 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete a virtuális gép mérete függ. További információkért lásd: [a Cloud Services virtuálisgép-méretek](cloud-services-sizes-specs.md).|
+|sizeInMb|int|Választható. A kívánt mennyiségű tárterület lefoglalása a helyi tárolóhoz, MB-ban. Ha nincs megadva, a lefoglalt lemezterület alapértelmezett, 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete a virtuális gép mérete függ. További információkért lásd: [a Cloud Services virtuálisgép-méretek](cloud-services-sizes-specs.md).|
 
 A neve annak a könyvtárnak a helyi tároló erőforráshoz van lefoglalva a name attribútum a megadott érték tartozik.
 
@@ -210,7 +210,7 @@ A következő táblázat ismerteti az attribútumai a `InputEndpoint` elemet.
 |port|int|Kötelező. A külső végpont portja. Bármely választja portszámot is megadhat, de a portszámokat, az egyes szerepkörökhöz a szolgáltatásban megadott egyedinek kell lennie.<br /><br /> A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).|
 |tanúsítvány|sztring|HTTPS-végpont szükséges. Egy által meghatározott tanúsítvány nevére a `Certificate` elemet.|
 |localPort|int|Választható. Adja meg a végpont belső kapcsolatokhoz használt port. A `localPort` attribútum a külső portot a végponton képez le egy belső portját szerepet. Ez akkor hasznos, ahol egy szerepkör közölnie kell egy belső összetevő egy porton, hogy eltérő, amely ki van téve külsőleg forgatókönyvekben.<br /><br /> Ha nincs megadva, az értékét `localPort` ugyanaz, mint a `port` attribútum. Állítsa az értékét `localPort` a "*" automatikusan hozzárendelni egy szabad portot, amely felderíthető a futtatókörnyezeti API használata.<br /><br /> A lehetséges értékek a tartomány 1 és 65535 közé, tartományba (az Azure SDK 1.7 vagy újabb verzió).<br /><br /> A `localPort` attribútum értéke csak elérhető az Azure SDK verzióval 1.3-as vagy újabb verziója.|
-|ignoreRoleInstanceStatus|logikai|Választható. Ha ez az attribútum értéke `true`, egy szolgáltatás állapotát a rendszer figyelmen kívül hagyja, és a végpont nem távolítja el a terheléselosztó által. Az érték `true` hasznos foglalt szolgáltatás példányai a hibakereséshez. Az alapértelmezett érték `false`. **Megjegyzés:** végpont is fogadhatja a forgalom még ha a szerepkör nem kész állapotú.|
+|ignoreRoleInstanceStatus|logikai|Választható. Ha ez az attribútum értéke `true`, egy szolgáltatás állapotát a rendszer figyelmen kívül hagyja, és a végpont nem távolítja el a terheléselosztó által. Az érték `true` hasznos foglalt szolgáltatás példányai a hibakereséshez. Az alapértelmezett érték `false`. **Megjegyzés:** A végpont továbbra is képes forgalom fogadására, még ha a szerepkör nem kész állapotú.|
 |loadBalancerProbe|sztring|Választható. A bemeneti végponthoz társított tartozó terheléselosztói szonda neve. További információkért lásd: [LoadBalancerProbe séma](schema-csdef-loadbalancerprobe.md).|
 
 ##  <a name="InternalEndpoint"></a> InternalEndpoint
@@ -310,7 +310,7 @@ A következő táblázat ismerteti az attribútumai a `Runtime` elem:
 | --------- | ---- | ----------- |
 |executionContext|sztring|Választható. Adja meg a környezetet, amelyben a szerepkör folyamat indul el. Az alapértelmezett környezet `limited`.<br /><br /> -   `limited` – Rendszergazdai jogosultságok nélkül a folyamat elindítása.<br />-   `elevated` – A folyamat elindítása rendszergazdai jogosultságokkal.|
 
-##  <a name="Environment"></a> Környezet
+##  <a name="Environment"></a> környezet
 A `Environment` elem írja le a feldolgozói szerepkör környezetiváltozó-beállításainak gyűjteménye. Az elem szülője a `Variable` elemet. Előfordulhat, hogy a szerepkör tetszőleges számú környezeti változók beállítása.
 
 ##  <a name="Variable"></a> A változó
@@ -362,7 +362,7 @@ A következő táblázat ismerteti az attribútumai a `ProgramEntryPoint` elemet
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|Parancssor|sztring|Kötelező. Az elérési út, a fájl neve és a parancssori argumentumokat a program végrehajtását. Az elérési út a mappán **%ROLEROOT%\Approot** (nem ad meg **%ROLEROOT%\Approot** commandLine, a rendszer feltételezi, hogy a). **A(z) % ROLEROOT %** egy környezeti változó az Azure által fenntartott és azt jelenti, hogy a legfelső szintű mappa helye a szerepkörhöz. A **%ROLEROOT%\Approot** mappát jelöli, a szerepkör az alkalmazás mappájában.<br /><br /> Ha a program befejeződik, a szerepkör rendszer újrahasznosít, ezért általában az a program folytatják a futást, folyamatban van egy programot, amely csak elindulása és a egy véges feladat futtatása helyett.|
+|commandLine|sztring|Kötelező. Az elérési út, a fájl neve és a parancssori argumentumokat a program végrehajtását. Az elérési út a mappán **%ROLEROOT%\Approot** (nem ad meg **%ROLEROOT%\Approot** commandLine, a rendszer feltételezi, hogy a). **A(z) % ROLEROOT %** egy környezeti változó az Azure által fenntartott és azt jelenti, hogy a legfelső szintű mappa helye a szerepkörhöz. A **%ROLEROOT%\Approot** mappát jelöli, a szerepkör az alkalmazás mappájában.<br /><br /> Ha a program befejeződik, a szerepkör rendszer újrahasznosít, ezért általában az a program folytatják a futást, folyamatban van egy programot, amely csak elindulása és a egy véges feladat futtatása helyett.|
 |setReadyOnProcessStart|logikai|Kötelező. Itt adhatja meg, e szerepkörpéldány megvárja, amíg a parancssor programot, hogy jelezze a elindul. Ezt az értéket kell beállítani `true` jelenleg. Az érték `false` későbbi használatra fenntartva.|
 
 ##  <a name="Startup"></a> Indítás
@@ -383,7 +383,7 @@ A következő táblázat ismerteti az attribútumai a `Task` elemet.
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|Parancssor|sztring|Kötelező. Egy szkript, például olyan CMD-fájl, amely tartalmazza a parancsokat. Indítási parancs és a batch-fájlokat ANSI formátumban kell menteni. Fájlformátum, amely a fájl elején a bájtsorrendjelző jelölő beállítása nem fogja megfelelően feldolgozni.|
+|commandLine|sztring|Kötelező. Egy szkript, például olyan CMD-fájl, amely tartalmazza a parancsokat. Indítási parancs és a batch-fájlokat ANSI formátumban kell menteni. Fájlformátum, amely a fájl elején a bájtsorrendjelző jelölő beállítása nem fogja megfelelően feldolgozni.|
 |executionContext|sztring|Adja meg a környezetet, amelyben a szkript futása.<br /><br /> -   `limited` [Alapértelmezés szerint] – azonos jogokkal rendelkeznek, mint a folyamatot futtató szerepkör futtatásához.<br />-   `elevated` – Rendszergazdai jogosultságokkal futtassa.|
 |taskType|sztring|A parancs végrehajtási viselkedésének megadása<br /><br /> -   `simple` [Alapértelmezett] – a rendszer vár, mielőtt egyéb tevékenységeket indult való kilépéshez pedig a feladathoz.<br />-   `background` – A rendszer nem várja meg a feladat való kilépéshez.<br />-   `foreground` – Hasonló háttér, azzal a különbséggel mindaddig, amíg az összes előtérben futó feladatok kilépéshez szerepkör nem indul újra.|
 

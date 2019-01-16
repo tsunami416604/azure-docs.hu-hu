@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: def99a1b98970c09f28e7bfc7f44084c0f5b3c6e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018398"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331234"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Data Warehouse az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "54018398"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben az Azure SQL Data Warehouse-összekötő](../connector-azure-sql-data-warehouse.md).
 
-Ez a cikk azt ismerteti, hogy a másolási tevékenység az Azure Data Factory használata adatok áthelyezéséhez és-tárolókról az Azure SQL Data Warehouse. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.  
+Ez a cikk azt ismerteti, hogy a másolási tevékenység az Azure Data Factory használata adatok áthelyezéséhez és-tárolókról az Azure SQL Data Warehouse. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
 > [!TIP]
 > A legjobb teljesítmény érdekében, az adatok betöltése az Azure SQL Data Warehouse a polybase szolgáltatást akkor használja. A [bA a PolyBase használatával az adatok betöltése az Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) szakasz részletesen. A használati esetek, olvassa [1 TB adat betöltése az Azure SQL Data Warehouse-bA az Azure Data Factoryvel 15 perc alatt](data-factory-load-sql-data-warehouse.md).
@@ -62,7 +62,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 3. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. A példában az előző lépésben említett megadja a blobtárolót és a bemeneti adatokat tartalmazó mappát egy adatkészletet hoz létre. És a egy másik tábla megadása az Azure SQL data warehouse, amely tárolja az adatokat a blob storage-tárhelyéből adatkészletet hoz létre. Az Azure SQL Data Warehouse adott adatkészlet tulajdonságai, lásd: [adatkészlet tulajdonságai](#dataset-properties) szakaszban.
 4. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. A példában azt korábban említettük használhat BlobSource a forrás-és SqlDWSink fogadóként a másolási tevékenység. Hasonlóképpen, az Azure SQL Data Warehouse-ból az Azure Blob Storage másolása, SqlDWSource és a használata BlobSink a másolási tevékenység. Másolási tevékenység tulajdonságai az Azure SQL Data Warehouse jellemző, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. A forrás vagy a fogadó adattár használatát részletekért kattintson a hivatkozásra az adattár az előző szakaszban.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amelyek és- tárolókról az Azure SQL Data Warehouse az adatok másolása JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-sql-data-warehouse) című szakaszát.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. A Data Factory-entitások, amelyek és- tárolókról az Azure SQL Data Warehouse az adatok másolása JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-sql-data-warehouse) című szakaszát.
 
 Az alábbi szakaszok nyújtanak az Azure SQL Data Warehouse adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -109,7 +109,7 @@ Másik lehetőségként megadhat egy tárolt eljárást megadásával a **sqlRea
 
 Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, az adatkészlet JSON struktúra szakaszában meghatározott oszlopokat futtatásához az Azure SQL Data Warehouse-lekérdezés összeállításához használja. Példa: `select column1, column2 from mytable`. Ha az adatkészlet definíciója nem rendelkezik a struktúrát, az összes oszlop ki van jelölve, a táblából.
 
-#### <a name="sqldwsource-example"></a>SqlDWSource példa
+#### <a name="sqldwsource-example"></a>SqlDWSource example
 
 ```JSON
 "source": {
@@ -132,9 +132,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -152,7 +152,7 @@ GO
 | rejectType |Itt adhatja meg, e a rejectValue kapcsoló Szövegkonstansérték vagy százalékban megadva. |Érték (alapértelmezett), százalékos aránya |Nem |
 | rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg. |1, 2, … |Igen, ha **rejectType** van **százalékos aránya** |
 | useTypeDefault |Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |TRUE, False (alapértelmezett) |Nem |
-| WriteBatchSize |Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10 000) |
+| WriteBatchSize |Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. |Időtartam<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink példa
@@ -194,29 +194,29 @@ Az SQL Data Warehouse PolyBase közvetlenül támogatja az Azure Blob- és az Az
 
 A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszavált az adatok áthelyezése a BULKINSERT mechanizmusa.
 
-1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **az egyszerű szolgáltatásnév hitelesítése AzureDataLakeStore**.  
+1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **az egyszerű szolgáltatásnév hitelesítése AzureDataLakeStore**.
 2. A **bemeneti adatkészlet** típusa: **Azure BLOB** vagy **AzureDataLakeStore**, és írja be a format `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **TextFormat** az alábbi konfigurációkkal:
 
-   1. `rowDelimiter` meg kell **\n**.
-   2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értékre van állítva **igaz**.
-   3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
-   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
-   5. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
+    1. `rowDelimiter` meg kell **\n**.
+    2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értékre van állítva **igaz**.
+    3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
+    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
+    5. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
     ```JSON
     "typeProperties": {
-       "folderPath": "<blobpath>",
-       "format": {
-           "type": "TextFormat",     
-           "columnDelimiter": "<any delimiter>",
-           "rowDelimiter": "\n",       
-           "nullValue": "",           
-           "encodingName": "utf-8"    
-       },
-       "compression": {  
-           "type": "GZip",  
-           "level": "Optimal"  
-       }  
+        "folderPath": "<blobpath>",
+        "format": {
+            "type": "TextFormat",
+            "columnDelimiter": "<any delimiter>",
+            "rowDelimiter": "\n",
+            "nullValue": "",
+            "encodingName": "utf-8"
+        },
+        "compression": {
+            "type": "GZip",
+            "level": "Optimal"
+        }
     },
     ```
 
@@ -234,7 +234,7 @@ Ha a forrásadatok nem felel meg az előző szakaszban bemutatott, másolhatja a
 Ez a funkció használatához hozzon létre egy [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) hivatkozik, amely az Azure Storage-fiókot, amely rendelkezik az átmeneti blob storage, majd adja meg a `enableStaging` és `stagingSettings` , ahogyan a másolási tevékenység tulajdonságai a következő kódot:
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity from SQL Server to SQL Data Warehouse via PolyBase",
     "type": "Copy",
@@ -281,7 +281,7 @@ Az alábbi táblázat példákkal szolgál, adja meg a **tableName** az adatkés
 | dbo |My.Table |[My.Table] vagy [dbo]. [My.Table] |
 | dbo1 |My.Table |[dbo1].[My.Table] |
 
-Ha a következő hibát látja, annak oka az lehet a tableName tulajdonsághoz megadott érték problémáját. Tekintse meg a táblázat tartalmazza a megfelelő módszer az adja meg az értékeket a tableName JSON-tulajdonságot.  
+Ha a következő hibát látja, annak oka az lehet a tableName tulajdonsághoz megadott érték problémáját. Tekintse meg a táblázat tartalmazza a megfelelő módszer az adja meg az értékeket a tableName JSON-tulajdonságot.
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
@@ -293,7 +293,7 @@ PolyBase szolgáltatás a Data Factory jelenleg csak az azonos számú oszlopot,
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
-Alapértelmezett érték formája értéke NULL. Ha az oszlop nullázható, a bemeneti adatokat (a blob) az adott oszlop üres lehet (nem hiányzik a bemeneti adatkészlet). A PolyBase NULL számukra az Azure SQL Data warehouse szúr be.  
+Alapértelmezett érték formája értéke NULL. Ha az oszlop nullázható, a bemeneti adatokat (a blob) az adott oszlop üres lehet (nem hiányzik a bemeneti adatkészlet). A PolyBase NULL számukra az Azure SQL Data warehouse szúr be.
 
 ## <a name="auto-table-creation"></a>Automatikus táblázat létrehozása
 Ha használja a másolás varázsló adatok másolása az SQL Server vagy az Azure SQL Database az Azure SQL Data Warehouse és a tábla, amely megfelel a forrástábla nem létezik a cél tárolójában, a Data Factory automatikusan létrehozhat a tábla az adatraktár által u a forrás-táblaséma folyamata.
@@ -312,7 +312,7 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | Lebegőpontos | Lebegőpontos |
 | költséget takaríthat meg | költséget takaríthat meg |
 | Real | Real |
-| Pénz | Pénz |
+| SmallMoney | SmallMoney |
 | Bináris | Bináris |
 | varbinary | Varbinary (legfeljebb 8000-es) |
 | Dátum | Dátum |
@@ -452,7 +452,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 ```
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
 {
@@ -515,13 +515,13 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A ma
 A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **SqlDWSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **SqlReaderQuery** tulajdonság kiválasztja az adatokat másolni az elmúlt órában.
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureSQLDWtoBlob",
         "description": "copy activity",
@@ -545,7 +545,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
             "type": "BlobSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -556,8 +556,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 > [!NOTE]
@@ -608,7 +608,7 @@ A minta másolatokat idősorozat-adatok (például óránként, naponta stb.) az
 ```
 **Azure blobbemeneti adatkészlet:**
 
-Adatok felülettől új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útjának év, hónap és nap részét a kezdési időpont és fájlnevet a kezdő időpontja óra részét használja. "external": "true" beállítással, hogy ez a táblázat a data factory a külső, és nem egy adat-előállító tevékenység által előállított arról tájékoztatja a Data Factory szolgáltatásban.
+Adatok felülettől új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útjának év, hónap és nap részét a kezdési időpont és fájlnevet a kezdő időpontja óra részét használja. "external": "true" beállítással, hogy ez a táblázat a data factory a külső, és nem egy adat-előállító tevékenység által előállított arról tájékoztatja a Data Factory szolgáltatásban.
 
 ```JSON
 {
@@ -699,13 +699,13 @@ A minta adatokat másol egy Azure SQL Data Warehouse "MyTable" nevű táblát. A
 A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **BlobSource** és **fogadó** típusa **SqlDWSink**.
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline with copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureBlobtoSQLDW",
         "description": "Copy Activity",
@@ -730,7 +730,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
             "allowPolyBase": true
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -741,8 +741,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
           "timeout": "01:00:00"
         }
       }
-      ]
-   }
+    ]
+  }
 }
 ```
 Egy bemutatóért lásd: a lásd [1 TB adat betöltése az Azure SQL Data Warehouse-bA az Azure Data Factoryvel 15 perc alatt](data-factory-load-sql-data-warehouse.md) és [adatok betöltése az Azure Data Factory](../../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) a cikk az Azure SQL Data Warehouse-dokumentáció.

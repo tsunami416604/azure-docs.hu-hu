@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021118"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331809"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -86,7 +86,7 @@ A saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő cso
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Telepítse és regisztrálja a letöltőközpontból saját üzemeltetésű integrációs modul
 
 1. Nyissa meg a [Microsoft integration runtime letöltési oldal](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Válassza ki **letöltése**, válassza ki a megfelelő verziót (**32 bites** vagy **64 bites**), és válassza ki **tovább**.
+2. Válassza ki **letöltése**, válassza ki a 64 bites verziót (32-bit-es nem támogatott), és válassza ki **tovább**.
 3. Közvetlenül, futtassa az MSI-fájlt, vagy mentse a merevlemezen, és futtathatja.
 4. Az a **üdvözlő** lapon válasszon egy nyelvet, és válassza **tovább**.
 5. Fogadja el a Microsoft szoftverlicenc-feltételeket, majd válassza ki **tovább**.

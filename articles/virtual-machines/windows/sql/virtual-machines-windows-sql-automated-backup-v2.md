@@ -3,7 +3,7 @@ title: Az SQL Server 2016-ra 2017/Azure virtuális gépek biztonsági mentési v
 description: Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL Server 2016 2017/virtuális gépek Azure-ban. Ez a cikk csak a virtuális gépek a Resource Manager használatával.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,19 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 432df6d73b2eaa42645fe25ad9c743b7fcef06a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246820"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331655"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Biztonsági mentési v2 automatikus az Azure virtuális gépeken (Resource Manager)
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
-> * [Az SQL Server 2016 és 2017.](virtual-machines-windows-sql-automated-backup-v2.md)
+> * [SQL Server 2016/2017](virtual-machines-windows-sql-automated-backup-v2.md)
 
 Automatikusan beállítja az automatikus biztonsági mentés v2 [Managed Backup a Microsoft Azure-bA](https://msdn.microsoft.com/library/dn449496.aspx) az összes meglévő és új adatbázis-beli virtuális gépen futó SQL Server 2016/2017 Standard, Enterprise és Developer kiadásainak. Ez lehetővé teszi, hogy az adatbázis rendszeres biztonsági mentések, amelyek ténylegesen használják a tartós az Azure blob storage-bA konfigurálása. Automatikus biztonsági mentés v2 függ a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
 
@@ -41,8 +42,8 @@ Automatikus biztonsági mentés v2 használja, tekintse át a következő előfe
 
 **Az SQL Server-verzióval vagy-kiadással**:
 
-- Az SQL Server 2016: Fejlesztői, Standard vagy Enterprise
-- Az SQL Server 2017: Fejlesztői, Standard vagy Enterprise
+- SQL Server 2016: Fejlesztői, Standard vagy Enterprise
+- SQL Server 2017: Fejlesztői, Standard vagy Enterprise
 
 > [!IMPORTANT]
 > Automatikus biztonsági mentés v2 működik az SQL Server 2016 vagy újabb verziója. Ha SQL Server 2014 használ, automatikus biztonsági mentés v1 használatával készítsen biztonsági másolatot az adatbázisokról. További információkért lásd: [automatikus biztonsági mentés az SQL Server 2014 az Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
@@ -73,7 +74,7 @@ A következő táblázat ismerteti az automatikus biztonsági mentés v2-ben kon
 
 | Beállítás | Címtartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
-| **Rendszer-adatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | Ha engedélyezve van, ez a funkció is adatbázisok biztonsági mentését a rendszer: Master, MSDB, valamint a modell. Az msdb adatbázisban és a modell adatbázisok esetén ellenőrizze, hogy azok teljes körű helyreállítási módban, ha azt szeretné, hogy a napló biztonsági másolat. Naplóalapú biztonsági mentések főkiszolgáló soha nem kerül. És a TempDB nem készült biztonsági másolat készít. |
+| **Rendszer-adatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | Ha engedélyezve van, ez a funkció is adatbázisok biztonsági mentését a rendszer: Master, MSDB, és modell. Az msdb adatbázisban és a modell adatbázisok esetén ellenőrizze, hogy azok teljes körű helyreállítási módban, ha azt szeretné, hogy a napló biztonsági másolat. Naplóalapú biztonsági mentések főkiszolgáló soha nem kerül. És a TempDB nem készült biztonsági másolat készít. |
 | **Biztonsági mentés ütemezése** | Manuális vagy automatikus (automatikus) | Alapértelmezés szerint a biztonsági mentési ütemezés automatikusan határozza meg a napló növekedése alapján. Manuális biztonsági mentés ütemezése a felhasználó adja meg a biztonsági mentések időtartományából. Ebben az esetben a biztonsági másolatok csak kerülhet sor, a megadott gyakorisággal és az adott napon az adott időszakban. |
 | **Teljes biztonsági mentés gyakorisága** | Napi/heti | Teljes biztonsági mentések gyakoriságát. Mindkét esetben teljes biztonsági mentés megkezdése a következő ütemezett időszakban. Heti kiválasztásakor a biztonsági mentések sikerült esetleg több napon, amíg az összes adatbázis sikeresen készített biztonsági másolatot. |
 | **Teljes biztonsági mentés kezdő időpontja** | 00:00 – 23:00 (01:00) | Indítsa el egy adott nap során, ami teljes biztonsági mentés akkor kerül sor. |
@@ -88,8 +89,8 @@ Van egy SQL Server virtuális Gépet, amely tartalmaz egy nagy méretű adatbáz
 
 Hétfő a következő beállításokkal engedélyezi az automatikus biztonsági mentés v2:
 
-- Biztonsági mentés ütemezése: **manuális**
-- Teljes biztonsági mentés gyakorisága: **hetente**
+- Biztonsági mentés ütemezése: **Manuális**
+- Teljes biztonsági mentés gyakorisága: **Hetente**
 - Teljes biztonsági mentés kezdő időpontja: **01:00**
 - Teljes biztonsági mentés időkerete: **1 óra**
 
@@ -101,13 +102,13 @@ Miután ismét eléri kedd, automatikus biztonsági mentés megkezdi az adatbáz
 
 Ebből a forgatókönyvből megtudhatja, hogy az automatikus biztonsági mentés csak akkor működik, a megadott időtartományon belül, és minden egyes adatbázis biztonsági mentését hetente egyszer. Ez is azt mutatja, hogy a biztonsági mentések esetleg több napon abban az esetben, ha már nem minden biztonsági mentés végrehajtásához egy egyetlen nap alatt.
 
-### <a name="scenario-2-daily-backups"></a>2. forgatókönyv: Napi biztonsági mentésekhez
+### <a name="scenario-2-daily-backups"></a>2. forgatókönyv: Napi biztonsági mentések
 Van egy SQL Server virtuális Gépet, amely tartalmaz egy nagy méretű adatbázisok száma.
 
 Hétfő a következő beállításokkal engedélyezi az automatikus biztonsági mentés v2:
 
-- Biztonsági mentés ütemezése: manuális
-- Teljes biztonsági mentés gyakorisága: naponta
+- Biztonsági mentés ütemezése: Manuális
+- Teljes biztonsági mentés gyakorisága: Napi
 - Teljes biztonsági mentés kezdő időpontja: 22:00
 - Teljes biztonsági mentés időkerete: 6 óra
 
@@ -331,7 +332,7 @@ Egy másik lehetőség, hogy az értesítések a beépített az adatbázisbeli l
 ## <a name="next-steps"></a>További lépések
 Automatikus biztonsági mentés v2 Azure virtuális gépek felügyelt biztonsági mentésének konfigurálása. Ezért fontos, hogy [felügyelt biztonsági mentés a dokumentációban](https://msdn.microsoft.com/library/dn449496.aspx) viselkedését és következményeiről.
 
-Megkeresheti a további biztonsági mentése és visszaállítása az SQL Server Azure virtuális gépeken a következő cikkben talál útmutatást: [biztonsági mentése és visszaállítása az SQL Server az Azure Virtual machines gépeken](virtual-machines-windows-sql-backup-recovery.md).
+Megkeresheti a további biztonsági mentése és visszaállítása az SQL Server Azure virtuális gépeken a következő cikkben talál útmutatást: [Biztonsági mentés és visszaállítás Azure-beli virtuális gépeken az SQL Serverhez](virtual-machines-windows-sql-backup-recovery.md).
 
 Más elérhető automation-feladatokkal kapcsolatos további információkért lásd: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 32606f988152b061fa1923c409207b2a650e64ba
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259783"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332455"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench-adatok használata az SQL Server Management Studióval
 
@@ -34,7 +34,7 @@ A Microsoft SQL Server Management Studio lehetővé teszi a gyors írása és te
 
 3. A **Connect to Server** (Csatlakozás kiszolgálóhoz) párbeszédpanelen adja meg az adatbázisa hitelesítő adatait.
 
-    Ha az Azure Blockchain Workbench telepítési folyamata során létrehozott hitelesítő adatokat használja, akkor a felhasználónév **dbadmin** lesz, a jelszó pedig a telepítés során megadott jelszó.
+    Ha az Azure Blockchain Workbench telepítési folyamata során létrehozott hitelesítő adatokat használja, akkor a felhasználónév **dbadmin**, a jelszó pedig a telepítés során megadott jelszó.
 
     ![SQL-adatbázis hitelesítő adatainak megadása](./media/data-sql-management-studio/sql-creds.png)
 
@@ -43,7 +43,7 @@ A Microsoft SQL Server Management Studio lehetővé teszi a gyors írása és te
     ![Adatbázisok listája](./media/data-sql-management-studio/db-list.png)
 
 5. Az adatbázisnézetekhez tartozó adatok megtekintéséhez automatikusan létrehozhat egy SELECT utasítást az alábbi lépések végrehajtásával.
-6. Kattintson a jobb gombbal egy tetszőleges adatbázisnézetre az Object Explorerben.
+6. Kattintson a jobb gombbal, az Object Explorer adatbázis nézetek.
 7. Válassza a **Script View as** (Megtekintési szkript) lehetőséget.
 8. Válassza a **SELECT to** (SELECT cél) lehetőséget.
 9. Válassza a **New Query Editor Window** (Új Lekérdezésszerkesztő ablak) lehetőséget.

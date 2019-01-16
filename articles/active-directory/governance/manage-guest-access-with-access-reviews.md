@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4d1a9696587ae128b35970414c6c8753179c3f81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385125"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332574"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -43,11 +43,11 @@ Vendégfelhasználók tekintse át a saját hozzáférését is kérhet. Minden 
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzon létre, és a vendégek hozzáférési felülvizsgálat végrehajtása
 
-Első lépésként engedélyezze a hozzáférési felülvizsgálatok megjelenítését a felülvizsgáló hozzáférési paneljein. Globális rendszergazdaként vagy felhasználói fiók adminisztrátoraként nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Először egy globális rendszergazdai vagy a felhasználóifiók-adminisztrátor, nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) annak biztosításához, hogy a hozzáférési felülvizsgálatok készen áll a szervezet számára. 
 
 Az Azure AD lehetővé teszi, hogy számos forgatókönyv esetében a vendégfelhasználók áttekintése.
 
-Válassza ki az alábbi lehetőségek közül:
+Áttekintheti a következők:
 
  - A csoport az Azure ad-ben, amely rendelkezik egy vagy több vendégek tagként.
  - Egy alkalmazás csatlakozik az Azure ad-ben, amely rendelkezik egy vagy több hozzárendelt vendég felhasználók. 
@@ -66,7 +66,7 @@ A hozzáférési felülvizsgálatok segítségével győződjön meg arról, hog
 
 3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](complete-access-review.md).
 
-4. Azok a felhasználók, akik a saját szüksége folyamatos hozzáférésre megtagadva, mellett is eltávolíthatja felhasználók, akik nem válaszolt. A nem válaszoló felhasználók vélhetően többé nem kapja meg e-mailt.
+4. Megtagadta a saját felhasználók kívül kell e folyamatos hozzáférésre, valamint eltávolíthatja a felhasználók, akik nem válaszolt. A nem válaszoló felhasználók vélhetően többé nem kapja meg e-mailt.
 
 5. Ha a csoport nem használható az hozzáférés-kezelés, is eltávolíthatja felhasználók, akik a ki nem választott a felülvizsgálatot részt, mivel azok nem fogadja el a meghívót. Nem fogad jelezheti, hogy a meghívott felhasználó e-mail címének elgépelte volt-e. Egy csoportot, terjesztési lista használata esetén akár néhány vendégfelhasználók ki nem választott részt venni, mivel korábban már kapcsolattartási objektumokat.
 
@@ -86,7 +86,7 @@ A hozzáférési felülvizsgálatok segítségével győződjön meg arról, hog
 
 1. Az alkalmazás hozzáférési felülvizsgálat indítása, jelölje be a felülvizsgálatot, csak a vendégek és, hogy a felhasználók a saját hozzáférés felülvizsgálata. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](create-access-review.md).
 
-2. Kérje meg az egyes vendég, tekintse át a saját hozzáférni az alkalmazáshoz. Alapértelmezés szerint minden Vendég, aki elfogadta a meghívást kap egy e-mailt egy hivatkozást az Azure AD-ből, a hozzáférési felülvizsgálatot, a szervezet hozzáférési panelen. Az Azure AD a vendégek utasításokat rendelkezik való [tekintse át a hozzáférésüket](perform-access-review.md).
+2. Kérje meg az egyes vendég, tekintse át a saját hozzáférni az alkalmazáshoz. Alapértelmezés szerint minden Vendég, aki elfogadta a meghívást kap egy e-mailt az Azure ad-ből. E-mailt a szervezet hozzáférési panel a hozzáférési felülvizsgálat mutató hivatkozást tartalmaz. Az Azure AD a vendégek utasításokat rendelkezik való [tekintse át a hozzáférésüket](perform-access-review.md).
 
 3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információkért lásd: [Hozzáférési felülvizsgálat befejezése](complete-access-review.md).
 
@@ -109,7 +109,7 @@ Egyes szervezetekben a vendégek nem feltétlenül csoporttagságok figyelembe.
 > [!NOTE]
 > Az Azure Portalon korábbi verziói nem lehetővé teszik a rendszergazdai hozzáférést a felhasználók a Vendég UserType. Bizonyos esetekben a címtár-rendszergazdája esetleg megváltoztak a Vendég UserType érték tag a PowerShell használatával. Ha ez a változás korábban történt a címtárban, az előző lekérdezés nem tartalmazhat minden vendég felhasználók, akik hagyományosan felügyeleti hozzáférési jogosultságokat. Ebben az esetben kell a Vendég UserType módosítsa, vagy kézzel felvenni a Vendég a csoport tagságát.
 
-1. Biztonsági csoport létrehozása az Azure AD-tagként, a Vendégek, ha egy megfelelő csoport már nem létezik. Például létrehozhat egy csoportot is vendégek karbantartott manuális tagság. Vagy létrehozhat egy nevet, például "Contoso vendégek" a Contoso bérlő rendelkező felhasználók számára a UserType attribútuma értékkel Vendég dinamikus csoportot.  Hatékonyságát hogy a csoport döntő többsége vendégek – ne válassza ki egy csoportot, amelynek a felhasználók, akik nem kell vizsgálni.
+1. Biztonsági csoport létrehozása az Azure AD-tagként, a Vendégek, ha egy megfelelő csoport már nem létezik. Például létrehozhat egy csoportot is vendégek karbantartott manuális tagság. Vagy létrehozhat egy nevet, például "Contoso vendégek" a Contoso bérlő rendelkező felhasználók számára a UserType attribútuma értékkel Vendég dinamikus csoportot.  Hatékonyságát hogy a csoport döntő többsége vendégek – egy csoportot, amelynek tagfelhasználó, ne válassza ki, mert nem tag felhasználók kell vizsgálni.  Ezenkívül vegye figyelembe, hogy látja-e a csoport más tagjai vendégfelhasználó, aki a csoport tagja.
 
 2. Hozzáférési felülvizsgálat az adott csoporthoz válassza a teszik a felülvizsgálók számára a csoporttagokat magukat. További információkért lásd: [Hozzáférési felülvizsgálat létrehozása](create-access-review.md).
 

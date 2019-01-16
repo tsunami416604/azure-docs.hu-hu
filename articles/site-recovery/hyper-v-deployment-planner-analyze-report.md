@@ -2,18 +2,18 @@
 title: A Hyper-V virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery Deployment Planner jelentés elemzése |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a Hyper-V virtuális gépek vészhelyreállítása az Azure-bA a létrehozott jelentés elemzése.
 services: site-recovery
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 4c857afb6fbec8501c1f5836935dd6e78f89e67d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: 5fbcfd102518dc231ad61c54e626c14381bf5a02
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847745"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321619"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
@@ -23,23 +23,23 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt a vizsgált Hyper-V-k
 
 ![Helyszíni összefoglalás](media/hyper-v-deployment-planner-analyze-report/on-premises-summary-h2a.png)
 
-**Start Date** és **End Date** (Kezdő dátum és záró dátum): Azon profilkészítési adatok kezdő és záró dátuma, amelyekről jelentést kíván készíteni. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek az adatok lehetnek a „StartDate” és „EndDate” értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
+**Kezdő dátum** és **befejező dátum**: A jelentés létrehozásához tekinthető profilkészítési adatok kezdő és záró dátuma. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek az adatok lehetnek a „StartDate” és „EndDate” értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
 
-**Total number of profiling days** (Profilkészítés napjainak teljes száma): A jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma.
+**Profilkészítési napok teljes száma**: A jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma.
 
-**Number of compatible virtual machines** (Kompatibilis virtuális gépek száma): Az olyan kompatibilis virtuális gépek teljes száma, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, valamint a szükséges tárfiókok és Azure-magok számát.
+**Kompatibilis virtuális gépek száma**: A kompatibilis virtuális gépek, amelyek a szükséges hálózati sávszélességet, a szükséges tárfiókok és Azure-magok számát a rendszer kiszámolta teljes száma.
 
-**Total number of disks across all compatible virtual machines** (Lemezek teljes száma az összes kompatibilis virtuális gépen): Az összes kompatibilis virtuális gépen található összes lemez.
+**Az összes kompatibilis virtuális gépre kiterjedően lemezek teljes számának**: Minden kompatibilis virtuális gépen lemezek teljes száma.
 
-**Average number of disks per compatible virtual machine** (Lemezek átlagos száma kompatibilis virtuális gépenként): Az összes kompatibilis virtuális gép alapján számított átlagos lemezszám.
+**Átlagos száma kompatibilis virtuális gépenként lemezek**: Minden kompatibilis virtuális gépen alapján számított átlagos száma.
 
-**Average disk size (GB)** (Átlagos lemezméret (GB)): Az összes kompatibilis virtuális gép alapján számított átlagos lemezméret.
+**Átlagos lemezméret (GB)**: Az átlagos alapján számított átlagos lemezméret az összes kompatibilis virtuális gépek.
 
-**Desired RPO (minutes)** (Kívánt RPO (perc)): A helyreállítási időkorlát alapértelmezett értéke vagy a jelentéskészítéskor a „DesiredRPO” paraméter számára a szükséges sávszélesség becslése érdekében megadott érték.
+**Desired RPO (perc)**: Vagy az alapértelmezett helyreállításipont-célkitűzés a értéke vagy a "DesiredRPO" paraméterhez szükséges sávszélesség becslése érdekében a jelentés elkészítésekor.
 
-**Desired bandwidth (Mbps)** (Kívánt sávszélesség (Mbps)): A jelentéskészítéskor az elérhető helyreállítási időkorlát (RPO) becslése érdekében a „Bandwidth” paraméter számára megadott érték.
+**Kívánt sávszélesség (Mbps)**: A megadott érték a "Bandwidth" paraméterhez a jelentéskészítéskor az elérhető helyreállítási időkorlát (RPO) becslése érdekében idején.
 
-**Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)): Az összes profilkészítési napon megfigyelt átlagos adatváltozás.
+**Megfigyelt átlagos adatváltozás naponta (GB)**: Az összes profilkészítési napon megfigyelt átlagos adatváltozás.
 
 ## <a name="recommendations"></a>Javaslatok 
 A Hyper-V – Azure jelentés javaslati táblázatában a következő részletek találhatók (a kiválasztott RPO szerint):
@@ -49,31 +49,31 @@ A Hyper-V – Azure jelentés javaslati táblázatában a következő részletek
 ### <a name="profile-data"></a>Profiladatok
 ![Profiladatok](media/hyper-v-deployment-planner-analyze-report/profile-data-h2a.png)
 
-**Profiled data period** (Profilkészítési adatok létrehozásának időtartama): A profilkészítés futtatásának időtartama. Az eszköz alapértelmezés szerint a profilkészítés során létrehozott minden adatot számításba vesz. Ha használta a StartDate és az EndDate lehetőséget a jelentés létrehozásakor, a rendszer a meghatározott időszakra vonatkozóan hozza azt létre. 
+**Ekkor a profiladatok időszak**: Az időtartam, ameddig a profilkészítés futtatásának. Az eszköz alapértelmezés szerint a profilkészítés során létrehozott minden adatot számításba vesz. Ha használta a StartDate és az EndDate lehetőséget a jelentés létrehozásakor, a rendszer a meghatározott időszakra vonatkozóan hozza azt létre. 
 
-**Number of Hyper-V servers profiled** (Vizsgált Hyper-V-kiszolgálók száma): Azon Hyper-V-kiszolgálók száma, amelyek virtuális gépeiről jelentés készül. Jelölje ki a számot a Hyper-V-kiszolgálók nevének megjelenítéséhez. Megnyílik a helyszíni tárolóra vonatkozó követelmények táblázata, amelyen minden kiszolgáló fel van sorolva a hozzájuk kapcsolódó tárolási követelményekkel. 
+**Hyper-V servers profiled száma**: Akkor jön létre, amelyek virtuális gépeiről jelentés Hyper-V kiszolgálók száma. Jelölje ki a számot a Hyper-V-kiszolgálók nevének megjelenítéséhez. Megnyílik a helyszíni tárolóra vonatkozó követelmények táblázata, amelyen minden kiszolgáló fel van sorolva a hozzájuk kapcsolódó tárolási követelményekkel. 
 
-**Desired RPO** (Kívánt RPO): Az üzembe helyezés kívánt helyreállítási időkorlátja. Alapértelmezés szerint a szükséges hálózati sávszélesség kiszámítása 15, 30 és 60 perces RPO értékkel történik. A kiválasztástól függően az eszköz frissíti az érintett értékeket a munkalapon. Ha használta a DesiredRPOinMin paramétert a jelentés elkészítése közben, akkor az az érték jelenik meg a kívánt helyreállítási időkorlát eredményei között.
+**Desired RPO**: A helyreállítási időkorlát az üzembe helyezéshez. Alapértelmezés szerint a szükséges hálózati sávszélesség kiszámítása 15, 30 és 60 perces RPO értékkel történik. A kiválasztástól függően az eszköz frissíti az érintett értékeket a munkalapon. Ha használta a DesiredRPOinMin paramétert a jelentés elkészítése közben, akkor az az érték jelenik meg a kívánt helyreállítási időkorlát eredményei között.
 
 ### <a name="profiling-overview"></a>Profilkészítés áttekintése
 ![Profilkészítés áttekintése](media/hyper-v-deployment-planner-analyze-report/profiling-overview-h2a.png)
 
-**Total Profiled Virtual Machines** (Minden virtuális gép, amelyről profil készült): Azon virtuális gépek teljes száma, amelyekről profil készült. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer ezeket figyelmen kívül hagyja a jelentéskészítés során, és nem számítja bele őket a profilkészítésben részt vevő virtuális gépek teljes számába.
+**Összesen a profilkészítés során létrehozott virtuális gépek**: Virtuális gépek, amelyek profilkészítés során létrehozott adatok érhetők el teljes száma. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer ezeket figyelmen kívül hagyja a jelentéskészítés során, és nem számítja bele őket a profilkészítésben részt vevő virtuális gépek teljes számába.
 
-**Compatible Virtual Machines** (Kompatibilis virtuális gépek): Azon virtuális gépek száma, amelyek az Azure-ban védhetők az Azure Site Recovery használatával. Az olyan kompatibilis virtuális gépek teljes száma, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, valamint a szükséges tárfiókok és Azure-magok számát. Az egyes kompatibilis virtuális gépek részletei elérhetők a „Compatible VMs” (Kompatibilis virtuális gépek) szakaszban.
+**Kompatibilis virtuális gépek**: Az Azure-bA az Azure Site Recovery használatával védhető virtuális gépek számát. Az olyan kompatibilis virtuális gépek teljes száma, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, valamint a szükséges tárfiókok és Azure-magok számát. Az egyes kompatibilis virtuális gépek részletei elérhetők a „Compatible VMs” (Kompatibilis virtuális gépek) szakaszban.
 
-**Incompatible Virtual Machines** (Nem kompatibilis virtuális gépek): Azon virtuális gépek száma, amelyekről profil készült, és amelyek nem védhetők Site Recoveryvel. Az inkompatibilitás okait a „Nem kompatibilis virtuális gépek” című szakaszban olvashatja. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer nem számítja bele őket a nem kompatibilis virtuális gépek számába. Az ilyen virtuális gépek az „Incompatible VMs” (Nem kompatibilis virtuális gépek) szakasz végén, „Data not found” (Nem található adat) megjelöléssel láthatók.
+**Nem kompatibilis virtuális gépek**: A profilkészítés során létrehozott virtuális gépek, amelyek nem védhetők Site recoveryvel száma. Az inkompatibilitás okait a „Nem kompatibilis virtuális gépek” című szakaszban olvashatja. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer nem számítja bele őket a nem kompatibilis virtuális gépek számába. Az ilyen virtuális gépek az „Incompatible VMs” (Nem kompatibilis virtuális gépek) szakasz végén, „Data not found” (Nem található adat) megjelöléssel láthatók.
 
-**Desired RPO**(Kívánt RPO): A kívánt helyreállítási időkorlát, percben megadva. Az eszköz három helyreállítási időkorlát értékről készít jelentést: 15 (alapértelmezett érték), 30 és 60 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található **Desired RPO** (Kívánt RPO) legördülő listából. Ha egyéni értékű -DesiredRPO paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a **Desired RPO** (Kívánt RPO) legördülő listában.
+**Desired RPO**: A kívánt helyreállítási pont célkitűzés, percek alatt. A jelentés három helyreállítási Időkorlát értékről jön létre: 15 (alapértelmezett), 30 és 60 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található **Desired RPO** (Kívánt RPO) legördülő listából. Ha egyéni értékű -DesiredRPO paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a **Desired RPO** (Kívánt RPO) legördülő listában.
 
 ### <a name="required-network-bandwidth-mbps"></a>Szükséges hálózati sávszélesség (Mbps)
 ![Szükséges hálózati sávszélesség](media/hyper-v-deployment-planner-analyze-report/required-network-bandwidth-h2a.png)
 
-**To meet RPO 100% of the time** (Az RPO betartása az idő 100%-ban): Az ajánlott sávszélesség (Mbps), amelyet ki kell osztania, ha mindig biztosan el kívánja érni a kívánt RPO-t. Ekkora sávszélességet kell kijelölnie az összes kompatibilis virtuális gép stabil állapotú változásreplikációjához, ha biztosan ki kívánja zárni a helyreállítási időkorlát megszegését.
+**Helyreállítási Időkorlát 100 %-os teljesítéséhez**: Az ajánlott sávszélesség (Mbps), amelyet ki a kívánt RPO az idő 100 százalékában betarthassa. Ekkora sávszélességet kell kijelölnie az összes kompatibilis virtuális gép stabil állapotú változásreplikációjához, ha biztosan ki kívánja zárni a helyreállítási időkorlát megszegését.
 
-**To meet RPO 90% of the time** (Az RPO betartása az idő 90%-ban): Előfordulhat, hogy a szélessávú kapcsolat díjszabása miatt vagy egyéb okból kifolyólag nincs lehetősége arra, hogy akkora sávszélességet állítson be, amellyel a kívánt RPO az idő 100 százalékában betartható. Ilyen esetben választhat egy alacsonyabb sávszélesség-beállítást, amellyel az idő 90 százalékában betarthatja a kívánt RPO-t. Az alacsonyabb sávszélesség-beállítás következményeinek áttekintéséhez a jelentés lehetőségelemzést biztosít elemzést a helyreállítási időkorlát várható megszegéseinek számáról és időtartamáról.
+**RPO 90 %-os teljesítéséhez**: Talán szélessávú díjszabás vagy más ok miatt nem állítható a sávszélességet a kívánt RPO az idő 100 százalékában. Ilyen esetben választhat egy alacsonyabb sávszélesség-beállítást, amellyel az idő 90 százalékában betarthatja a kívánt RPO-t. Az alacsonyabb sávszélesség-beállítás következményeinek áttekintéséhez a jelentés lehetőségelemzést biztosít elemzést a helyreállítási időkorlát várható megszegéseinek számáról és időtartamáról.
 
-**Achieved Throughput** (Elért átviteli sebesség): Az átviteli sebesség a GetThroughput parancs futtatásához használt kiszolgáló és a tárfióknak helyet adó Azure-régió között. Ez az átvitelisebesség-érték azt a becsült szintet jelöli, amely akkor érhető el, ha a kompatibilis virtuális gépeket a Site Recoveryvel védi. A Hyper-V-kiszolgáló tárolási és hálózati jellemzőinek meg kell egyezniük azon kiszolgálóéval, amelyen az eszközt futtatja.
+**Elért átviteli sebesség**: Az átviteli sebesség a kiszolgálón, amelyen futtatja a GetThroughput parancs, az Azure-régió a storage-fiókot. Ez az átvitelisebesség-érték azt a becsült szintet jelöli, amely akkor érhető el, ha a kompatibilis virtuális gépeket a Site Recoveryvel védi. A Hyper-V-kiszolgáló tárolási és hálózati jellemzőinek meg kell egyezniük azon kiszolgálóéval, amelyen az eszközt futtatja.
 
 A Site Recovery minden vállalati üzemelő példánya esetében az [ExpressRoute](https://aka.ms/expressroute) használata javasolt.
 
@@ -127,15 +127,15 @@ Az összefoglalás segít megismerni a tárolás, számítás, hálózat és lic
  
 A költségeket havi vagy éves bontásban tekintheti meg. További információkat olvashat a [támogatott célrégiókról](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions) és a [támogatott pénznemekről](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Összetevők szerinti költségek**: A vészhelyreállítás teljes költsége négy összetevőből áll: számítás, tárterület, hálózat és a Site Recovery licencköltségei. A költségeket a használat alapján számoljuk ki, amely költségek a replikáció során és a DR működési ideje során jelentkeznek. A számítás a számítási igény, a tárterület (prémium és standard), a helyszíni hely és az Azure között konfigurált ExpressRoute/VPN, valamint a Site Recovery-licenc figyelembe vételével történik.
+**Összetevők szerinti költségek**: A Vészhelyreállítás teljes költsége négy összetevőből áll: számítási, tárolási, hálózati és a Site Recovery licencköltségei. A költségeket a használat alapján számoljuk ki, amely költségek a replikáció során és a DR működési ideje során jelentkeznek. A számítás a számítási igény, a tárterület (prémium és standard), a helyszíni hely és az Azure között konfigurált ExpressRoute/VPN, valamint a Site Recovery-licenc figyelembe vételével történik.
 
-**Állapot szerinti költségek**: A vészhelyreállítás teljes költségeinek kategóriái két különböző állapoton alapulnak: replikáció és DR működése. 
+**Állapot szerinti költségek**: A vészhelyreállítás teljes költségeinek kategóriái két különböző állapoton alapulnak: replikáció és Dr. 
 
 **Replikáció költségei**: A replikáció során felmerülő költségek. Ez fedezi a tárolás, a hálózat és a Site Recovery-licenc költségeit. 
 
-**DR működés költségei**: A feladatátvételi tesztek során felmerülő költségek. A Site Recovery virtuális gépeket indít el a feladatátvételi tesztek során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik. 
+**Dr költsége**: A tesztek során felmerülő költségek. A Site Recovery virtuális gépeket indít el a feladatátvételi tesztek során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik. 
 
-**Az Azure Storage tárterület éves/havi költségei**: Ez az oszlopdiagram a tárterület teljes költségeit mutatja, amelyek a replikációhoz és a DR működésekor használt prémium és standard tárterület esetén merülnek fel. A virtuális gépenkénti részletes költségelemzést a [Költségbecslés](hyper-v-deployment-planner-cost-estimation.md) táblázatban tekintheti meg.
+**Az Azure Storage költsége / hónap/év**: A sávdiagram használt prémium és standard tárterület esetén a replikáció és Dr felmerülő tárterület teljes költségeit mutatja. A virtuális gépenkénti részletes költségelemzést a [Költségbecslés](hyper-v-deployment-planner-cost-estimation.md) táblázatban tekintheti meg.
 
 ### <a name="growth-factor-and-percentile-values-used"></a>A használt növekedési tényező és százalékértékek
 A munkalap alján található szakasz a profilkészítésben részt vevő virtuális gépek összes teljesítményszámlálójához használt százalékértéket (az alapértelmezett érték a 95. percentilis), valamint az összes számításban használt növekedési tényezőt (az alapértelmezett érték 30 százalék) mutatja.
@@ -152,17 +152,17 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 ## <a name="vm-storage-placement-recommendation"></a>Javaslat a virtuálisgép-tároló elhelyezésére 
 ![Virtuálisgép-tároló elhelyezése](media/hyper-v-deployment-planner-analyze-report/vm-storage-placement-h2a.png)
 
-**Disk Storage Type** (Lemezes tárolás típusa): A **VMs to Place**(Elhelyezendő virtuális gépek) oszlopban említett összes virtuális gép replikációjához használt standard vagy prémium szintű tárfiók.
+**Lemezes tárolás típusa**: Vagy standard vagy prémium szintű storage-fiók, amelyet említett összes megfelelő virtuális gépek replikálása az **VMs to Place** oszlop.
 
-**Suggested Prefix** (Javasolt előtag): A tárfiók elnevezéséhez javasolt háromkarakteres előtag. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](https://aka.ms/storage-performance-checklist).
+**A javasolt előtag**: A javasolt háromkarakteres előtag használható a storage-fiók elnevezéséhez. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](https://aka.ms/storage-performance-checklist).
 
-**Suggested Account Name** (Javasolt fióknév): A Storage-fiók neve, a javasolt előtag használata után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
+**Javasolt fióknév**: A storage-fiók neve, a javasolt előtag használata után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
 
-**Log Storage Account**(Naplótárolási fiók): Minden replikációs naplót egy standard szintű tárfiók tárol. A prémium szintű tárfiókokba replikált virtuális gépek esetében be kell állítani egy további standard szintű tárfiókot a naplók tárolására. Egyetlen standard szintű naplótárolási fiókot több prémium szintű replikációs tárfiók is használhat. A standard szintű tárfiókokba replikált virtuális gépek ugyanazt a tárfiókot használják a naplókhoz is.
+**Log Storage-fiók**: Minden replikációs naplót egy standard szintű tárfiókot vannak tárolva. A prémium szintű tárfiókokba replikált virtuális gépek esetében be kell állítani egy további standard szintű tárfiókot a naplók tárolására. Egyetlen standard szintű naplótárolási fiókot több prémium szintű replikációs tárfiók is használhat. A standard szintű tárfiókokba replikált virtuális gépek ugyanazt a tárfiókot használják a naplókhoz is.
 
-**Suggested Log Account Name** (Javasolt naplótárolási fióknév): A naplókat tároló tárfiók neve, a javasolt előtag használata után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
+**Tárfiók neve a javasolt**: A naplókat tároló tárfiók neve, a javasolt előtag használata után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
 
-**Placement Summary** (Elhelyezés összegzése): A tárfiókon található virtuális gépeknek a replikáció és feladatátvételi teszt vagy tényleges feladatátvétel során mért teljes terhelésének összegzése. Az összegzés a következőket tartalmazza:
+**Elhelyezés összegzése**: A teljes virtuális gépek összegzését betölteni a tárfiók a replikáció során, és a feladatátvételi teszt vagy tényleges. Az összegzés a következőket tartalmazza:
 
 * A tárfiókhoz rendelt virtuális gépek teljes számát. 
 * A tárfiókban elhelyezni kívánt összes virtuális gép összesített olvasási/írási IOPS-értékét.
@@ -170,16 +170,16 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 * Az összes lemez teljes beállítási méretét.
 * A lemezek teljes számát.
 
-**VMs to Place** (Elhelyezendő virtuális gépek): Az összes olyan virtuális gép listája, amelyet az optimális teljesítmény és használat érdekében az adott tárfiókon ajánlott elhelyezni.
+**VMs to Place**: Egy lista összes virtuális gép, amelyet az optimális teljesítmény és használat az adott tárfiókon ajánlott elhelyezni.
 
 ## <a name="compatible-vms"></a>Kompatibilis virtuális gépek
 A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden kompatibilis virtuális gépre vonatkozó részletet megtalál a „Compatible VMs” (Kompatibilis virtuális gépek) táblázatban.
 
 ![Kompatibilis virtuális gépek](media/hyper-v-deployment-planner-analyze-report/compatible-vms-h2a.png)
 
-**VM Name** (Virtuális gép neve): Jelentés létrehozásakor, a VMListFile-ban használt virtuálisgép-név. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
+**Virtuális gép neve**: A jelentés létrehozásakor a VMListFile-ban használt virtuális gép nevét. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. A **Yes**\* (Igen) azon példányokra vonatkozik, ahol a virtuális gép megfelel az [Azure Premium Storage-nak](https://aka.ms/premium-storage-workload). A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
+**VM Compatibility**: Értékek a következők **Igen** és **Igen**\*. A **Yes**\* (Igen) azon példányokra vonatkozik, ahol a virtuális gép megfelel az [Azure Premium Storage-nak](https://aka.ms/premium-storage-workload). A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15.
 * 256 GB és 512 GB között P20.
@@ -189,38 +189,38 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 
 Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vagy P30-as kategóriába tartozik, de a mérete alapján egy alacsonyabb prémium szintű tárolólemez-típusba kerül, az eszköz **Yes**\* (Igen) megjelöléssel látja el ezeket a virtuális gépeket. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
-**Storage Type** (Tároló típusa): Standard vagy Premium.
+**Tárolási típus**: Standard vagy prémium.
 
-**Suggested Prefix** (Javasolt előtag): A tárfiók három karakterből álló előtagja.
+**A javasolt előtag**: A tárfiók három karakterből álló előtagja.
 
-**Storage Account** (Tárfiók): A javasolt tárfiókelőtagot használó név.
+**Storage-fiók**: A javasolt tárfiókelőtagot használó név.
 
-**Peak R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS-csúcsérték (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (alapértelmezés szerint a 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték: 30%). Egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. A virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
+**R/W IOPS (növekedési tényezővel)-mel kiugró**: A maximális írási/olvasási iops-t a lemezen (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). Egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. A virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Peak Data Churn in MB/s (with Growth Factor)** (Maximális adatváltozás (MB/s) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. percentilis) a későbbi növekedési tényezővel (alapértelmezés szerint: 30%). A virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
+**Peak Data Churn MB/s (a növekedési tényezővel)**: A lemez adatváltozásának csúcsértéke (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). A virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
 
-**Azure VM Size** (Azure-beli virtuális gép mérete): Az Azure Cloud Services-beli hozzárendelt virtuális gép ideális mérete az adott helyszíni virtuális gép esetén. A hozzárendelés a helyszíni virtuális gép memóriáján, a lemezek/magok/hálózati adapterek számán és az olvasási/írási IOPS-értéken alapul. Mindig a legalacsonyabb, a helyszíni virtuális gép összes jellemzőjének megfelelő Azure-beli virtuálisgép-méretet ajánlott használni.
+**Az Azure Virtuálisgép-méret**: A helyszíni virtuális géphez hozzárendelt Azure Cloud Services Virtuálisgép-méretet a ideális. A hozzárendelés a helyszíni virtuális gép memóriáján, a lemezek/magok/hálózati adapterek számán és az olvasási/írási IOPS-értéken alapul. Mindig a legalacsonyabb, a helyszíni virtuális gép összes jellemzőjének megfelelő Azure-beli virtuálisgép-méretet ajánlott használni.
 
-**Number of Disks** (Lemezek száma): A virtuális gép lemezeinek (VHD-inek) teljes száma.
+**Lemezek száma**: A virtuális gép lemezeinek (VHD) a virtuális gép teljes száma.
 
-**Disk size (GB)** (Lemez mérete (GB)): A virtuális gép összes lemezének teljes mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**Lemezméret (GB)**: A virtuális gép összes lemezének teljes mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
 
-**Cores** (Magok): A virtuális gép processzormagjainak száma.
+**Magok**: A virtuális gép processzormagjainak száma.
 
-**Memory (MB)** (Memória (MB)): A virtuális gép fizikai memóriája (RAM).
+**Memória (MB)**: A virtuális gép RAM.
 
-**NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
+**Hálózati adapterek**: A virtuális gép hálózati adaptereinek száma.
 
-**Boot Type** (Rendszerindítás típusa): A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.
+**Rendszerindítás-típus**: A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.
 
 ## <a name="incompatible-vms"></a>Nem kompatibilis virtuális gépek
 A Site Recovery Deployment Planner által létrehozott Excel-jelentésben az összes, nem kompatibilis virtuális gépre vonatkozó részletet megtalálja az „Incompatible VMs” (Nem kompatibilis virtuális gépek) táblázatban.
 
 ![Nem kompatibilis virtuális gépek](media/hyper-v-deployment-planner-analyze-report/incompatible-vms-h2a.png)
 
-**VM Name** (Virtuális gép neve): Jelentés létrehozásakor, a VMListFile-ban használt virtuálisgép-név. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
+**Virtuális gép neve**: A jelentés létrehozásakor a VMListFile-ban használt virtuális gép nevét. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
 
-**VM Compatibility** (Virtuális gép kompatibilitása): Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép a Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél vannak megadva, és a közzétett [tárhelykorlátok](https://aka.ms/azure-storage-scalbility-performance) alapján a következők lehetnek:
+**VM Compatibility**: Azt jelzi, hogy miért az adott virtuális gép nem kompatibilis a Site Recoveryvel. Az indokok a virtuális gép minden nem kompatibilis lemezénél vannak megadva, és a közzétett [tárhelykorlátok](https://aka.ms/azure-storage-scalbility-performance) alapján a következők lehetnek:
 
 * A lemez mérete nagyobb 4095 GB-nál. Az Azure Storage jelenleg nem támogatja a 4095 GB-nál nagyobb adatlemez-méretet.
 
@@ -252,21 +252,21 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben az ös
 
 * A kiszámított pillanatkép-tároló mérete meghaladja a 10 TB-os támogatott méretet.
 
-**Peak R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS-csúcsérték (növekedési tényezővel)): A lemez IOPS-csúcsértéke (alapértelmezés szerint a 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték: 30%). A virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. A virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
+**R/W IOPS (növekedési tényezővel)-mel kiugró**: A lemez IOPS csúcs munkaterhelés (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). A virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. A virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Peak Data Churn (MB/s) (with Growth Factor)** (Maximális adatváltozás (MB/s) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. percentilis) a későbbi növekedési tényezővel (alapértelmezés szerint: 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
+**Peak Data Churn (MB/s) (a növekedési tényezővel)**: A lemez adatváltozásának csúcsértéke (az alapértelmezett érték 95. percentilis) a későbbi növekedési tényezővel (az alapértelmezett érték 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes virtuálisgép-lemezek adatváltozásának összegével. A virtuális gép maximális adatváltozása az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozások legmagasabb összege.
 
-**Number of Disks** (Lemezek száma): A virtuális gép VHD-inek teljes száma.
+**Lemezek száma**: A virtuális gép VHD-inek teljes száma.
 
-**Disk size (GB)** (Lemez mérete (GB)): A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**Lemezméret (GB)**: A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
 
-**Cores** (Magok): A virtuális gép processzormagjainak száma.
+**Magok**: A virtuális gép processzormagjainak száma.
 
-**Memory (MB)** (Memória (MB)): A virtuális gép fizikai memóriájának (RAM) mennyisége.
+**Memória (MB)**: A virtuális gép RAM mennyisége.
 
-**NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
+**Hálózati adapterek**: A virtuális gép hálózati adaptereinek száma.
 
-**Boot Type** (Rendszerindítás típusa): A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.
+**Rendszerindítás-típus**: A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.
 
 ## <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
 Az alábbi táblázat a Site Recovery korlátait tartalmazza. Ezek a korlátok teszteken alapulnak, azonban nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében, még az üzembe helyezés megtervezése után is alaposan tesztelje az alkalmazást feladatátvételi tesztek használatával, így valós képet kaphat az alkalmazás teljesítményéről.
@@ -296,15 +296,15 @@ A munkalapon szerepelnek a Hyper-V kiszolgálók (amelyeken a VHD-k megtalálhat
     Ha nincs elegendő szabad terület a naplófájlok tárolásához, a replikáció szünetel, a virtuális gép replikációja pedig „újraszinkronizálás szükséges” állapotúra vált.
 * Ha a hálózati sávszélesség nem elég a naplófájlok Azure-ba történő áthelyezéséhez, akkor azok a köteten halmozódnak fel. A legrosszabb esetben – amikor a naplófájlok mérete eléri a VHD méretének 50%-át – a virtuális gép replikációja „újraszinkronizálás szükséges” állapotúra változik. A legrosszabb esetben a VHD mérete 50%-ának megfelelő további szabad tárterületre van szükség a változásreplikációhoz.
 
-**Hyper-V host** (Hyper-V gazdagép): A vizsgált Hyper-V kiszolgálók listája. Ha egy kiszolgáló egy Hyper-V fürt részét képezi, az összes fürtcsomópont csoportosítva lesz.
+**A Hyper-V-gazdagép**: Profilkészítés Hyper-V kiszolgálók listája. Ha egy kiszolgáló egy Hyper-V fürt részét képezi, az összes fürtcsomópont csoportosítva lesz.
 
-**Volume (VHD path)** (Kötet (VHD-útvonal)): A Hyper-V gazdagép minden olyan kötete, ahol VHD-k vagy VHDX-ek találhatók. 
+**Volume (VHD útvonala)**: Minden olyan kötete, egy Hyper-V-gazdagép, ahol a VHD/vhdx-fájlokat találhatók. 
 
-**Free space available (GB)** (Elérhető szabad tárterület (GB)): A köteten lévő szabad tárterület.
+**Szabad hely (GB)**: A szabad terület a köteten.
 
-**Total storage space required on the volume (GB)** (Teljes szükséges tárterület a köteten (GB)): A sikeres kezdeti és változásreplikációhoz szükséges, teljes szabad tárterület a köteten. 
+**Teljes tárterület a köteten (GB) szükséges**: A teljes szabad tárterület a köteten a sikeres kezdeti és változásreplikációhoz szükséges. 
 
-**Total additional storage to be provisioned on the volume for successful replication (GB)** (A sikeres replikációhoz szükséges teljes kiépítendő tárterület a köteten (GB)): Javaslatot tesz a teljes további tárterületre, amelyet ki kell építeni a köteten a sikeres kezdeti és változásreplikációhoz.
+**Ki kell építeni a köteten a sikeres replikálás (GB) további tárterület teljes**: Azt javasolja, hogy a teljes további tárterületre, hogy ki kell építeni a köteten a sikeres kezdeti és változásreplikációhoz.
 
 ## <a name="initial-replication-batching"></a>Kezdeti replikáció kötegelése 
 
@@ -321,38 +321,38 @@ Ha minden kötet esetében megfelelt a javasolt helyszíni tárterület-követel
 ![Az IR-kötegelés további részletei](media/hyper-v-deployment-planner-analyze-report/ir-batching-for-rpo2-h2a.png)
 
 ### <a name="each-batch-provides-the-following-information"></a>Minden kötegben az alábbi információk találhatók meg 
-**Hyper-V host** (Hyper-V gazdagép): A levédendő virtuális gép Hyper-V gazdagépe.
+**A Hyper-V-gazdagép**: A Hyper-V gazdagép, a védeni kívánt virtuális gép.
 
-**Virtual machine** (Virtuális gép): A levédendő virtuális gép. 
+**Virtuális gép**: A védeni kívánt virtuális Gépet. 
 
-**Comments** (Megjegyzések): Ha egy virtuális gép egy meghatározott kötete esetében bármilyen műveletre van szükség, itt látható a vonatkozó megjegyzés. Ha például nem érhető el elegendő szabad terület egy köteten, akkor megjelenik az „Add additional storage to protect this VM” (Adjon hozzá további tárterületet a virtuális gép levédéséhez) megjegyzés.
+**Megjegyzések**: Ha bármilyen műveletre szükség egy virtuális gép egy meghatározott kötete esetében, az itt elérhető a megjegyzést. Ha például nem érhető el elegendő szabad terület egy köteten, akkor megjelenik az „Add additional storage to protect this VM” (Adjon hozzá további tárterületet a virtuális gép levédéséhez) megjegyzés.
 
-**Volume (VHD path)** (Kötet (VHD útvonala)): Azon kötet neve, amelyen a virtuális gép VHD-i találhatók. 
+**Volume (VHD útvonala)**: A kötet neve, a virtuális gép VHD-ket. 
 
-**Free space available on the volume (GB)** (Elérhető szabad tárterület a köteten (GB)): A virtuális géphez tartozó köteten lévő szabad lemezterület. A köteteken lévő elérhető szabad terület kiszámításakor a rendszer figyelembe veszi az előző kötegek virtuális gépei – amelyeknek a VHD-i egyazon köteten találhatók – változásreplikációja által felhasznált lemezterületet is. 
+**Szabad hely a köteten (GB)**: A virtuális Géphez tartozó köteten lévő szabad terület. A köteteken lévő elérhető szabad terület kiszámításakor a rendszer figyelembe veszi az előző kötegek virtuális gépei – amelyeknek a VHD-i egyazon köteten találhatók – változásreplikációja által felhasznált lemezterületet is. 
 
 Például tegyük fel, hogy a VM1, VM2 és VM3 virtuális gép egy köteten található (E:\VHDpath). A replikáció előtt a köteten 500 GB szabad terület van. A VM1 gép az 1. köteg része, a VM2 a 2. kötegé, a VM3 pedig a 3. kötegé. A VM1 által 500 GB szabad terület érhető el. A VM2 esetében a szabad terület 500 GB – ennyire van szükség a VM1 változásreplikációjához. Ha a VM1-nek 300 GB területre van szüksége a változásreplikációhoz, akkor a VM2 számára 500 GB - 300 GB = 200 GB szabad terület lesz elérhető. A VM2-nek hasonló módon 300 GB területre van szüksége a változásreplikációhoz. A VM3 számára 200 GB - 300 GB = -100 GB szabad terület lesz elérhető.
 
-**Storage required on the volume for initial replication (GB)** (A kezdeti replikációhoz szükséges tárterület a köteten (GB)): A virtuális gép kezdeti replikációjához szükséges szabad tárterület a köteten.
+**A köteten (GB). a kezdeti replikálás a szükséges tárhelyet**: Szabad tárterület a köteten a virtuális gép kezdeti replikációjához szükséges.
 
-**Storage required on the volume for delta replication (GB)** (A változásreplikációhoz szükséges tárterület a köteten (GB)): A virtuális gép változásreplikációjához szükséges szabad tárterület a köteten.
+**A köteten (GB) változásreplikációjához szükséges tárhelyet**: Szabad tárterület a köteten a virtuális gép változásreplikációjához szükséges.
 
-**Additional storage required based on deficit to avoid replication failure (GB)** A deficiten alapuló, további szükséges tárterület a köteten, amellyel elkerülhető a replikáció meghiúsulása (GB): A kötetre vonatkozó, a virtuális gép számára szükséges további tárterület-követelmény. Ez a maximális kezdeti replikációra és változásreplikációra vonatkozó tárterületi követelmények maximuma, levonva belőle a köteten elérhető szabad területet.
+**További tárterület szükséges deficit elkerülésére, hogy sikertelen replikáció (GB) alapuló**: További lemezterület a köteten a virtuális gép szükséges. Ez a maximális kezdeti replikációra és változásreplikációra vonatkozó tárterületi követelmények maximuma, levonva belőle a köteten elérhető szabad területet.
 
-**Minimum bandwidth required for initial replication (Mbps)** (A kezdeti replikációhoz szükséges minimális sávszélesség (Mbps)): A virtuális gép kezdeti replikációjához szükséges minimális sávszélesség.
+**A kezdeti replikációhoz (Mbps) szükséges minimális sávszélesség**: A virtuális gép kezdeti replikációjához szükséges minimális sávszélesség.
 
-**Minimum bandwidth required for delta replication (Mbps)** (A változásreplikációhoz szükséges minimális sávszélesség (Mbps)): A virtuális gép változásreplikációjához szükséges minimális sávszélesség.
+**A minimális sávszélesség (Mbps) változásreplikációjához szükséges**: A virtuális gép változásreplikációjához szükséges minimális sávszélesség.
 
 ### <a name="network-utilization-details-for-each-batch"></a>Az egyes kötegek hálózatfelhasználásának részletei 
 Minden kötegtáblázathoz tartozik egy összefoglalás az adott köteg hálózatfelhasználásáról.
 
-**Bandwidth available for Batch** (A köteg számára elérhető sávszélesség): A köteg számára elérhető sávszélesség az előző köteg változásreplikációjához szükséges sávszélesség figyelembe vételével.
+**Batch számára elérhető sávszélesség**: A batch az előző köteg változásreplikációjához szükséges sávszélesség figyelembe vételével rendelkezésre álló sávszélességet.
 
-**Approximate bandwidth available for initial replication of batch** (Hozzávetőleges elérhető sávszélesség a köteg kezdeti replikációjához): A köteg virtuális gépeinek kezdeti replikációja számára elérhető sávszélesség. 
+**Hozzávetőleges köteg kezdeti replikációjához elérhető sávszélesség**: A köteg virtuális gépeinek kezdeti replikációjához elérhető sávszélesség. 
 
-**Approximate bandwidth consumed for delta replication of batch** (A köteg változásreplikációja által felhasznált hozzávetőleges sávszélesség): A köteg virtuális gépeinek változásreplikációjához szükséges sávszélesség. 
+**Köteg változásreplikációjához felhasznált hozzávetőleges sávszélesség**: A köteg virtuális gépeinek változásreplikációjához szükséges sávszélesség. 
 
-**Estimated Initial Replication time for Batch (HH:MM)** (A köteg kezdeti replikációjának becsült ideje (ÓÓ:PP)): A kezdeti replikáció becsült ideje óra:perc formátumban.
+**Kezdeti replikálás time for batch (ÓÓ: PP) becsült**: A kezdeti replikáció becsült ideje óra: perc.
 
 
 

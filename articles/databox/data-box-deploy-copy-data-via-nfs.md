@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 7ba6bc2cf3cf5286719bc6da519aabb364302af3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 646acca7eeb2e811f8683a1d35ff8c6efae130da
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550540"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319011"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box NFS-n keresztül 
 
@@ -38,7 +38,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
-A kiválasztott tárfióktól függően a Data Box a következőket hozhatja létre:
+A kiválasztott tárfiók alapján a Data Box hoz létre, akár:
 - Három megosztás minden társított tárfiókhoz, GPv1-hez és GPv2-höz.
 - Egy megosztás a prémium vagy Blob Storage-fiók számára. 
 
@@ -47,9 +47,9 @@ A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, 
 Lásd az alábbi példát. 
 
 - Tárfiók: *Mystoracct*
-- Megoszthatja a blokkblobok: *Mystoracct_BlockBlob/my-tároló/blob*
-- Megoszthatja a lapblob: *Mystoracct_PageBlob/my-tároló/blob*
-- Megoszthatja a fájlt: *Mystoracct_AzFile/my-megosztás*
+- Megoszthatja a blokkblobok: *Mystoracct_BlockBlob/my-container/blob*
+- Megoszthatja a lapblob: *Mystoracct_PageBlob/my-container/blob*
+- Megoszthatja a fájlt: *Mystoracct_AzFile/my-share*
 
 Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigurálhatja a Data Boxot, hogy hozzáférést biztosítson az NFS-ügyelek számára.
 

@@ -11,24 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/16/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: e4e1b3cb823d08948c31aa6486c08a930a377dfa
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 147242e7d5d62204198360f580848cd997850d09
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161956"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332523"
 ---
-# <a name="report-azure-stack-usage-data-to-azure"></a>Az Azure-bA az Azure Stack-használati adatok jelentése 
+# <a name="report-azure-stack-usage-data-to-azure"></a>Az Azure-bA az Azure Stack-használati adatok jelentése
 
-Használati adatok, más néven a használati adatokat, a használt erőforrások mennyisége jelöli. 
+Használati adatok, más néven a használati adatokat, a használt erőforrások mennyisége jelöli.
 
 Használja a fogyasztás alapú számlázási modellt az Azure Stack több csomópontos rendszerek jelentse használati adatokat az Azure számlázási célból. Az Azure Stack-operátorok konfigurálnia kell az Azure Stack-példány jelentés használati adatokat az Azure-bA.
 
-> [!NOTE]
-> Használati adatok jelentése szükség a több csomópontos Azure Stack-felhasználókat, akik a Használatalapú mint-akkor-használható modellben licenc. Nem kötelező ügyfelek esetében, akik a kapacitás modellben licenc (lásd a [lap megvásárlása](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Az Azure Stack Development Kit a felhasználóknak az Azure Stack-operátorok használati adatokat, és tesztelheti a szolgáltatást. Azonban felhasználók nem kell fizetni keletkeznek használatot. 
+> [!IMPORTANT]
+> Minden számítási [kell rendelni a bérlő előfizetéseknél](#are-users-charged-for-the-infrastructure-vms) az Azure Stack licencelési feltételeit.
+
+Használati adatok jelentése szükség a több csomópontos Azure Stack-felhasználókat, akik a Használatalapú mint-akkor-használható modellben licenc. Nem kötelező ügyfelek esetében, akik a kapacitás modellben licenc (lásd a [lap megvásárlása](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Az Azure Stack Development Kit a felhasználóknak az Azure Stack-operátorok használati adatokat, és tesztelheti a szolgáltatást. Azonban felhasználók nem kell fizetni keletkeznek használatot.
 
 ![számlázási folyamat](media/azure-stack-usage-reporting/billing-flow.png)
 

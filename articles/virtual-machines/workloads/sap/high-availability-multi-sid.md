@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d7fb03cf5dbcd7455f0d4e8f4a69bb1c6d23a83
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0440d1b0c3045feb6d670dae2645590febfa5bc6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497094"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320157"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Az SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációjának létrehozása
 
@@ -471,7 +471,7 @@ A célja, hogy több SAP ABAP ASCS telepítse, vagy SAP Java SCS fürtözött p�
 >Egy WSFC-fürt SAP ASCS/SCS-példányok maximális száma megegyezik a minden Azure belső terheléselosztó magánhálózati előtérbeli IP-címek maximális számát.
 >
 
-Load balancer korlátok kapcsolatos további információkért lásd: "privát előtéri IP-Címek száma load balancer" a [hálózati korlátai: Azure Resource Manager][networking-limits-azure-resource-manager].
+Load balancer korlátok kapcsolatos további információkért lásd: "privát előtéri IP-Címek száma load balancer" a [hálózati korlátai: Az Azure Resource Manager][networking-limits-azure-resource-manager].
 
 A teljes fekvő két magas rendelkezésre állású SAP-rendszerek a következő lenne:
 
@@ -489,7 +489,7 @@ Az infrastruktúra előkészítése, egy további SAP ASCS/SCS-példányt is tel
 
 | Paraméter neve | Érték |
 | --- | --- |
-| AZ SAP ASCS/SCS BIZTONSÁGI AZONOSÍTÓJA |PR1-lb-ascs |
+| SAP ASCS/SCS SID |PR1-lb-ascs |
 | Az SAP DBMS belső load balancer | PR5 |
 | SAP virtuális állomás neve | pr5-sap-cl |
 | Az SAP ASCS/SCS virtuális gazdagép IP-cím (további Azure load balancer IP-cím) | 10.0.0.50 |
@@ -505,7 +505,7 @@ További SAP ASCS/SCS-példányok a meglévő WSFC-fürtben két csomópont tele
 
 | Virtuális gépi szerepkör | Virtuális gép állomásneve | Statikus IP-cím |
 | --- | --- | --- |
-| 1-től fürtcsomópont ASCS/SCS példányhoz |PR1-ascs-0 |10.0.0.10 |
+| 1-től fürtcsomópont ASCS/SCS példányhoz |pr1-ascs-0 |10.0.0.10 |
 | 2. fürtcsomópont ASCS/SCS példányhoz |PR1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz a DNS-kiszolgálón
@@ -607,7 +607,7 @@ foreach ($Port in $Ports) {
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 Miután a parancsfájl lefutott, az eredményeket az Azure Portalon jelennek meg az alábbi képernyőképen látható módon:
@@ -668,6 +668,6 @@ A magas szintű eljárás a következőképpen történik:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hálózatkezelési korlátok: az Azure Resource Manager][networking-limits-azure-resource-manager]
+- [Hálózatkezelési korlátok: Az Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több virtuális IP-címek az Azure Load Balancer][load-balancer-multivip-overview]
 - [Útmutató a magas rendelkezésre állású SAP NetWeaver Windows virtuális gépeken][sap-ha-guide]

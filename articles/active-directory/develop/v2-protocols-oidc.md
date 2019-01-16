@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 756d00786005fb6de26ff363d4e233fc28b48687
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 01d73d9c42f99dde02a801af9967430c9735932d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426842"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320956"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll
 
@@ -33,11 +33,11 @@ OpenID Connect nem épül, amely segítségével biztonságosan jelentkezzen be 
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokollt használja, mint egy *hitelesítési* protokoll, megteheti, hogy egyszeri bejelentkezés OAuth használatával. OpenID Connect bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító jogkivonat is lekéri a felhasználóval kapcsolatos főbb profiladatait. OpenID Connect kibővíti az OAuth 2.0, mert az alkalmazások biztonságos beszerezhető *hozzáférési jogkivonatokat*, által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics). A v2.0-végpontra is lehetővé teszi, hogy a külső alkalmazások, amelyek az Azure ad-vel védett erőforrások, például webes API-k számára a hozzáférési jogkivonatok kiállításához. Hogyan állítható be egy alkalmazás hozzáférési jogkivonatok kiállításához kapcsolatos további információkért lásd: [alkalmazás regisztrálása a v2.0-végponttal](quickstart-v2-register-an-app.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](v2-app-types.md#web-apps) , amelyet a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
 
-## <a name="protocol-diagram-sign-in"></a>Diagram protokoll: bejelentkezés
+## <a name="protocol-diagram-sign-in"></a>Diagram protokoll: Sign-in
 
 A legalapvetőbb bejelentkezési folyamat rendelkezik a lépéseket, a következő ábrán látható. Az egyes lépések Ez a cikk részletesen ismerteti.
 
-![OpenID Connect protokoll: bejelentkezés](./media/v2-protocols-oidc/convergence_scenarios_webapp.png)
+![OpenID Connect protokoll: Sign-in](./media/v2-protocols-oidc/convergence_scenarios_webapp.png)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Az OpenID Connect metaadat-dokumentum beolvasása
 
@@ -86,7 +86,7 @@ A webalkalmazás kell hitelesíteni a felhasználót, amikor azt a felhasználó
 * A kérésnek tartalmaznia kell a `nonce` paraméter.
 
 > [!IMPORTANT]
-> Ahhoz, hogy sikerült-azonosító jogkivonat, az alkalmazás regisztrációját a kérelem a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **[típusú Implicit engedélyezés](v2-oauth2-implicit-grant-flow.md)** a webes ügyfél engedélyezve. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: "a"response_type"bemeneti paraméter megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code" "
+> Annak érdekében, hogy egy azonosító jogkivonat, az alkalmazás regisztrációját a sikeres kérése a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **[típusú Implicit engedélyezés](v2-oauth2-implicit-grant-flow.md)** a webes ügyfél engedélyezve. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: "A"response_type"bemeneti paraméter megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code" "
 
 Példa:
 
@@ -167,7 +167,7 @@ A következő táblázat ismerteti azokat a hibakódokat, a visszaadható a `err
 | --- | --- | --- |
 | invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez az egy fejlesztési hiba, amely a kezdeti tesztelés során általában történt. |
 | unauthorized_client |Az ügyfélalkalmazás egy hozzáférési kód nem lehet kérni. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure ad-ben, vagy a felhasználó Azure AD-bérlő nem kerül. Az alkalmazás is kéri a felhasználót az utasításokat az alkalmazás telepítéséhez, és adja hozzá az Azure AD. |
-| ACCESS_DENIED |Az erőforrás tulajdonosa jóváhagyás elutasítva. |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem lehet folytatni, kivéve, ha a felhasználó. |
+| access_denied |Az erőforrás tulajdonosa jóváhagyás elutasítva. |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem lehet folytatni, kivéve, ha a felhasználó. |
 | unsupported_response_type |Az engedélyezési kiszolgáló nem támogatja a kód választípusához a kérésben. |Javítsa ki, és küldje el újra a kérelmet. Ez az egy fejlesztési hiba, amely a kezdeti tesztelés során általában történt. |
 | server_error |A kiszolgáló váratlan hibát észlelt. |Ismételje meg a kérelmet. Ezeket a hibákat okozhat az ideiglenes feltételek. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy átmeneti hiba miatt késik. |
 | temporarily_unavailable |A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése. |Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik. |
@@ -207,7 +207,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Amikor átirányítja a felhasználót, hogy a `end_session_endpoint`, a v2.0-végpont törlése a felhasználó munkamenetének a böngészőből. Azonban a előfordulhat, hogy továbbra is lehet bejelentkezett felhasználó egyéb alkalmazásokhoz, amelyek a Microsoft-fiókokat használnak a hitelesítéshez. Ahhoz, hogy ezek az alkalmazások aláírására a felhasználó ki egyszerre, a v2.0 végpont egy HTTP GET kérést küld a regisztrált `LogoutUrl` , a felhasználó jelenleg be van jelentkezve az alkalmazásokat. Alkalmazások válaszolnia kell ehhez a kérelemhez, amely azonosítja a felhasználói munkamenettől és visszaadó egy `200` választ. Ha szeretne támogatja az egyszeri kijelentkezéshez az alkalmazásban, meg kell valósítani például egy `LogoutUrl` az alkalmazás kódjában. Beállíthatja a `LogoutUrl` az alkalmazás regisztrációs portálon.
 
-## <a name="protocol-diagram-access-token-acquisition"></a>Protokoll ábra: a hozzáférési token beszerzése
+## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokoll: Hozzáférési token beszerzése
 
 Számos webes alkalmazás kell nem csak a felhasználó, de még a felhasználó nevében egy webszolgáltatás eléréséhez az OAuth használatával. Ebben a forgatókönyvben egyesíti a OpenID Connect-felhasználói hitelesítést az engedélyezési kódot, amellyel hozzáférési tokenekhez, az OAuth hitelesítési kódfolyamat használatakor egyidejűleg beolvasása közben.
 

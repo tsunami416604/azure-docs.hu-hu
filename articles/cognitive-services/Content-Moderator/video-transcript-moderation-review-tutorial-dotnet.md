@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6f5a6c6ac4bd125fd7aa6358fe92f9453a0314b1
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 45f1b4d16bd982e17b67d6fb337e0d917f635851
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266774"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332693"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: A videó és a szöveges moderálása
 
@@ -241,7 +241,7 @@ A kód a következő lépéseket hajtja végre:
 
 - Ellenőrzi, hogy az `App.config` konfigurációja minden szükséges adatot tartalmaz-e
 - Ellenőrzi, hogy az `ffmpeg` bináris jelen van-e
-- `_c.mp4` a fájl nevéhez való hozzáfűzésével létrehozza a kimeneti fájlnevet (például `Example.mp4` -> `E>xample_c.mp4`)
+- `_c.mp4` a fájl nevéhez való hozzáfűzésével létrehozza a kimeneti fájlnevet (például `Example.mp4` -> `Example_c.mp4`)
 - Létrehoz egy parancssori sztringet, amely elvégzi a konvertálást
 - Egy `ffmpeg`-folyamatot indít a parancssorral
 - Megvárja a videó feldolgozását

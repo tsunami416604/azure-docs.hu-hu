@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 064a9fc48ae60e530a11633b0823764a2f862811
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722396"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320021"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Az Azure Stack üzembe helyezése Kubernetes
 
@@ -139,7 +139,7 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a r
 
 1. Adja meg a **SSH Public Key** használt a hitelesítéshez a Kubernetes-fürt és a DVM részeként létrehozott összes Linux rendszerű gépen.
 
-1. Adja meg a **fő profil DNS-előtagja** , amely egyedi a régióban. Ez egy régió egyedi nevet, például kell lennie `k8s-12345`. Próbálja meg úgy döntött, hogy ugyanaz, mint az erőforráscsoport neve ajánlott eljárás.
+1. Adja meg a **fő profil DNS-előtagja** , amely egyedi a régióban. Ez egy régió egyedi nevet, például kell lennie `k8s-12345`. Próbálja ki, hogy ugyanaz, mint az erőforráscsoport nevének ajánlott eljárásként.
 
     > [!Note]  
     > Ha mindegyik fürthöz egy új és egyedi fő profil DNS-előtagot használja.
@@ -150,9 +150,9 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a r
 
 1. Válassza ki a **Kubernetes csomópontok készlet profil száma**. A száma a fürtben található ügynökök számát tartalmazza. 
 
-1. Válassza ki a **Tárolóprofil**. Választhat **Blob lemez** vagy **Managed Disk**. Azt határozza meg a virtuális gép méretét a Kubernetes csomópont azon virtuális gépeit. 
+1. Válassza ki a **Tárolóprofil**. Választhat **Blob lemez** vagy **Managed Disk**. 
 
-1. Adja meg a **szolgáltatásnév ClientId** ezt használja a Kubernetes Azure felhőszolgáltató. Az ügyfél-azonosító azonosította az eseményt az Alkalmazásazonosítót Ha az egyszerű szolgáltatás létrehozása.
+1. Adja meg a **szolgáltatásnév ClientId** ezt használja a Kubernetes Azure felhőszolgáltató. Az ügyfél-azonosító azonosított az Alkalmazásazonosítót, ha az egyszerű szolgáltatás létrehozása.
 
 1. Adja meg a **egyszerű szolgáltatás titkos Ügyfélkód** , hogy létrehozta az egyszerű szolgáltatás létrehozásakor.
 
@@ -160,7 +160,7 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a r
 
 ### <a name="3-summary"></a>3. Összegzés
 
-1. Válassza ki a összegzése. A panel a Kubernetes-fürt konfigurációk beállítások érvényesítése üzenetet jelenít meg.
+1. Válassza ki a összegzése. A panel a Kubernetes-fürt konfigurációs beállítások érvényesítése üzenetet jelenít meg.
 
     ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 

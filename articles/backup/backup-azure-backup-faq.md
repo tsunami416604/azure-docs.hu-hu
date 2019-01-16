@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: dd8e0950de6aae71dd123d21b59c6de591bd7f29
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a5619db18ef326b160bf9f4a1fbacbd6b3e9f012
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107716"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319460"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -24,7 +24,7 @@ Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad 
 Igen. Legfeljebb 500 Recovery Services-tárolók száma előfizetésenként az Azure Backup szolgáltatás, a támogatott régióban hozhat létre. Ha több tárolóra van szüksége, hozzon létre egy további előfizetést.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott?
-Legfeljebb 1000 Azure-beli virtuális gép tárolónként regisztrálhat. Ha a Microsoft Azure Backup ügynököt használ, legfeljebb 50 MAB-ügynökök tárolónként regisztrálhat. És regisztrálhatja az 50 MAB kiszolgálót/DPM-kiszolgálók egy tárolóba.
+Legfeljebb 1000 Azure-beli virtuális gép tárolónként regisztrálhat. Ha a Microsoft Azure Backup ügynököt használ, tárolónként 50 MAB-ügynökök is regisztrálhatja. És regisztrálhatja az 50 MAB kiszolgálót/DPM-kiszolgálók egy tárolóba.
 
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Ha a szervezetem egy tárolóval rendelkezik, hogyan tudom elszigetelni adat a tárolóban lévő különböző kiszolgálókról származó adatok visszaállításakor?
@@ -111,7 +111,7 @@ Az Azure Backup biztonsági mentését a fájlok és mappák és az Azure Backup
 **OS**| **Termékváltozat** |**Részletek**
 --- | --- | ---
 Munkaállomás | |
-A Windows 10-es 64 bites | Enterprise, Pro, Home | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
+Windows 10 64 bit | Enterprise, Pro, Home | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 8.1 64 bites | Enterprise, Pro | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 8 64 bites | Enterprise, Pro | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 7 64 bites | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
@@ -120,7 +120,7 @@ A Windows Server 2016 64 bites | Standard, Datacenter, Essentials | Rogramtelep�
 A Windows Server 2012 R2 64 bites | Standard, Datacenter, Foundation | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Server 2012 64 bites | Datacenter, Foundation, Standard | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Storage Server 2016 64 bites | Standard, Workgroup | A legújabb szolgáltatási csomagokat és frissítésekkel.
-A Windows Storage Server 2012 R2 64 bites | Standard, munkacsoporthoz tartozik, alapvető fontosságú | A legújabb szolgáltatási csomagokat és frissítésekkel.
+A Windows Storage Server 2012 R2 64 bites | Standard, Workgroup, Essential | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Storage Server 2012 64 bites | Standard, Workgroup | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Server 2008 R2 SP1, 64 bites | Standard, Enterprise, Datacenter, Foundation | A legújabb frissítésekkel.
 A Windows Server 2008 64 bites | Standard, Enterprise, Datacenter | Legújabb frissítéseit.

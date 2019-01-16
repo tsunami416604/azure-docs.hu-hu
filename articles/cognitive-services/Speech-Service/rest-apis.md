@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: bae4c0dccb0ce336c319fe94936be72ab6fc9a8e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230373"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330673"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -469,7 +469,10 @@ Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Micr
 
 ### <a name="request-body"></a>A kérés törzse
 
-Egy olyan HTTP törzseként One-time passcode `POST` kérelmet. Egyszerű szöveg (ASCII vagy UTF-8) lehet vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kéréseket a Speech Service alapértelmezett beszédfelismerési és nyelvi használja. SSML is megadhat a beszédfelismerési és nyelvi.
+A szervezet minden egyes `POST` kérelem érkezik [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md). SSML lehetővé teszi a hang- és a szöveg-hang transzformációs szolgáltatás által visszaadott szintetizált nyelvének kiválasztását. Támogatott beszédhangot teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
+
+> [!NOTE]
+> Ha egy egyéni beszédfelismerési használja, a kérelem törzsében elküldött pedig egyszerű szövegként (ASCII vagy UTF-8).
 
 ### <a name="sample-request"></a>Mintakérelem
 

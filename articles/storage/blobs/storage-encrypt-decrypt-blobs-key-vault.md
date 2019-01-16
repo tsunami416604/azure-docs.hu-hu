@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Storage-ban Azure Key Vault |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Key Vault használatával Azure Storage-blobok titkosítása és visszafejtése |} A Microsoft Docs'
 description: Hogyan titkosítása és visszafejtése az Azure Key Vault a Microsoft Azure Storage ügyféloldali titkosítás egy blobhoz.
 services: storage
 author: tamram
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 213190863702ec5a7f2ae764c8e2d892764740f9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233099"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332200"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Key Vault használatával a Microsoft Azure Storage-ban
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése
 ## <a name="introduction"></a>Bevezetés
 Ez az oktatóanyag bemutatja, hogyan javíthatja a storage ügyféloldali titkosítás az Azure Key Vault használata. Azt ismerteti, hogyan titkosításához és visszafejtéséhez egy konzolalkalmazást, ezeknek a technológiáknak a blobok.
 
-**Az oktatóanyag áttekintésének várható időtartama:** 20 perc
+**Becsült időtartama:** 20 perc
 
 Áttekintés az Azure Key Vault kapcsolatos információkért lásd: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md).
 
@@ -136,7 +136,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 > A Key Vault-ügyfélnek a REST API-val kommunikál, és tisztában van azzal, JSON Web kulcsok és titkos kulcsok a Key Vaultban lévő dolog kétféle.
 > 
-> A Key Vault-bővítmények olyan osztályok, úgy tűnik, az Azure Storage ügyféloldali titkosítás speciálisan létrehozott. Kulcsok (Rendszerállapotkulcsot) és a egy kulcs feloldó fogalma alapján osztályok illesztőfelületet tartalmaznak. Nincsenek a Rendszerállapotkulcsot, ismernie kell a két megvalósítását: RSAKey és SymmetricKey. Most már előfordulásuk egybeessen a Key Vaultban lévő dolog, de ezen a ponton azok független osztályok (így a kulcs és a Key Vault-ügyfél által beolvasott titkos kulcs nem implementálja a Rendszerállapotkulcsot).
+> A Key Vault-bővítmények olyan osztályok, úgy tűnik, az Azure Storage ügyféloldali titkosítás speciálisan létrehozott. Kulcsok (Rendszerállapotkulcsot) és a egy kulcs feloldó fogalma alapján osztályok illesztőfelületet tartalmaznak. Két megvalósításai, Rendszerállapotkulcsot, ismernie kell: RSAKey és SymmetricKey. Most már előfordulásuk egybeessen a Key Vaultban lévő dolog, de ezen a ponton azok független osztályok (így a kulcs és a Key Vault-ügyfél által beolvasott titkos kulcs nem implementálja a Rendszerállapotkulcsot).
 > 
 > 
 
@@ -191,7 +191,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ## <a name="use-key-vault-secrets"></a>A Key Vault titkos kulcsok használata
 A titkos kulcs használata ügyféloldali titkosítás módja a SymmetricKey osztállyal mert titkos kód lényegében egy szimmetrikus kulcsot. De a fentieknek megfelelően a Key Vaultban titkos kulcs nem feleltethető meg pontosan egy SymmetricKey. Néhány dolgot megismerése:
 
-* A kulcsot egy SymmetricKey azt kell egy rögzített hosszúságú: 128, 192, 256, 384 vagy 512 bites.
+* A kulcsot egy SymmetricKey a rögzített hosszúságú lehet, hogy rendelkezik: 128, 192, 256, 384 vagy 512 bites.
 * A kulcsot egy SymmetricKey a Base64-kódolású kell lennie.
 * A Key Vault titkos kulcsából, amely egy SymmetricKey lesz rendelkeznie kell egy "application/octet-stream" tartalomtípusa Key vaultban.
 
@@ -208,7 +208,7 @@ $enc = [System.Convert]::ToBase64String($b)
 $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 
 // Substitute the VaultName and Name in this command.
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
+$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
 A Konzolalkalmazás használhatja a azonos hívást, mielőtt beolvasni a titkos kód, mint egy SymmetricKey.

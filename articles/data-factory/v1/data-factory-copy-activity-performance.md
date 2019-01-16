@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 632e605a6f7c9885f3854ca1f7b69ed337a1eacc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025878"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331645"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 
@@ -108,7 +108,7 @@ A **a felhőbeli adatáthelyezési egység (DMU)** egy mérték, amely a Data Fa
 Ez az alapértelmezett felülbírálásához, adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **megengedett értékek** számára a **cloudDataMovementUnits** tulajdonság 2, 4, 8, 16 és 32. A **felhőalapú DMUs tényleges számát** egyenlő vagy kisebb, mint a beállított érték, a adatmintát attól függően, hogy a másolási művelet használ a futási időben. További információ a teljesítmény szintjét egy adott másolási forrásaként és fogadó további egységek konfigurálásakor kaphat,: a [teljesítményfigyelési](#performance-reference).
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -135,7 +135,7 @@ Ez az alapértelmezett felülbírálásához, adjon meg értéket a **cloudDataM
 ### <a name="parallelcopies"></a>parallelCopies
 Használhatja a **parallelCopies** tulajdonság, amely jelzi, amelyeket szeretne használni a másolási tevékenység párhuzamosságát. Ez a tulajdonság belül a másolási tevékenység, amely a forrásból olvashatja vagy írhatja, a fogadó adattárakba párhuzamos szálak maximális számának is felfoghatók.
 
-Minden egyes másolási tevékenység futtatási a Data Factory használatával adatokat másol a forrásadattárból adatokat tárolja, és a cél-adatok tárolására párhuzamos példányszám határozza meg. Az alapértelmezett példányszámot párhuzamos, amelyet használ a forrás- és fogadó használt függ.  
+Minden egyes másolási tevékenység futtatási a Data Factory használatával adatokat másol a forrásadattárból adatokat tárolja, és a cél-adatok tárolására párhuzamos példányszám határozza meg. Az alapértelmezett példányszámot párhuzamos, amelyet használ a forrás- és fogadó használt függ.
 
 | Forrás és fogadó | Alapértelmezett párhuzamos példányszám szolgáltatás határozza meg |
 | --- | --- |
@@ -146,7 +146,7 @@ Minden egyes másolási tevékenység futtatási a Data Factory használatával 
 Általában az alapértelmezett viselkedést adjon meg a legjobb teljesítményt. Azonban szabályozhatja, hogy az adatok üzemeltető gépek terhelését tárolja, vagy a másolási teljesítmény hangolására, dönthet úgy, hogy felülbírálhatja az alapértelmezett értéket, és adjon meg egy értéket a **parallelCopies** tulajdonság. Az érték 1 és 32 (mindkét határokat is beleértve) között kell lennie. Futási időben, a legjobb teljesítmény érdekében másolási tevékenység használja, amely kisebb vagy egyenlő az érték, Ön által beállított értéket.
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -176,7 +176,7 @@ Tudnivalók:
 >
 >
 
-A két tulajdonság jobb használatához, és az adatok mozgását átviteli sebesség növelése érdekében, tekintse meg a [alkalmazási minta](#case-study-use-parallel-copy). Nem szükséges konfigurálni **parallelCopies** kihasználásához az alapértelmezett viselkedést. Ha konfigurálja és **parallelCopies** túl kicsi, több felhő DMUs nem teljes kihasználását.  
+A két tulajdonság jobb használatához, és az adatok mozgását átviteli sebesség növelése érdekében, tekintse meg a [alkalmazási minta](#case-study-use-parallel-copy). Nem szükséges konfigurálni **parallelCopies** kihasználásához az alapértelmezett viselkedést. Ha konfigurálja és **parallelCopies** túl kicsi, több felhő DMUs nem teljes kihasználását.
 
 ### <a name="billing-impact"></a>A számlázás gyakorolt hatás
 Rendelkezik **fontos** ne feledje, hogy a másolási művelet teljes időtartama alapján díjkötelesek. Ha most négy felhőbeli egységgel 15 percet vesz igénybe, és egy másolási feladat egy órával tennie egy felhőbeli egységgel használják, akkor a teljes számlája összegét szinte változatlan marad. Ha például négy felhőbeli egység használhatja. Az első felhőbeli egység szintén 10-et, a második érték 10 perc, a harmadik egyet, 5 perc, és a negyedik, 5 perc, a egy másolási tevékenység az összes futtatásához. A Másolás (adatáthelyezés) teljes időpontot, amely 10 + 10 + 5 + 5 = 30 perc díjkötelesek. Használatával **parallelCopies** nem befolyásolják a számlázást.
@@ -216,7 +216,7 @@ Konfigurálja a **enableStaging** a másolási tevékenység beállítást adja 
 Íme egy példa definíciója a másolási tevékenység az előző táblázatban leírt tulajdonságokkal:
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity",
     "type": "Copy",
@@ -273,9 +273,9 @@ Javasoljuk, hogy ezen lépések a Data Factory szolgáltatás másolási tevéke
 3. **Bontsa ki a konfigurációt, a teljes adatkészletet**. Ha elégedett a eredményeit és a teljesítmény, kibonthatja a definíció- és adatcsatorna aktív időszakának ahhoz, hogy biztosítsák a teljes adatkészletet.
 
 ## <a name="considerations-for-data-management-gateway"></a>Az adatkezelési átjáró szempontjai
-**Átjáró telepítőjének**: Azt javasoljuk, hogy a gazdagép az adatkezelési átjáró egy dedikált gépre használja. Lásd: [adatkezelési átjáró használatának szempontjai](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
+**Átjáró telepítőjének**: Azt javasoljuk, hogy a gazdagép az adatkezelési átjáró egy dedikált gépre használja. Lásd: [adatkezelési átjáró használatának szempontjai](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Átjáró figyelési és felfelé vagy kibővített**: Egy vagy több átjáró csomópont egyetlen logikai átjáró több másolási tevékenység-végrehajtás szolgálhat egyidejűleg egy időben. Megtekintheti a közel valós idejű pillanatképét erőforrás-használat (CPU, memória, network(in/out), stb.) egy átjárót tartalmazó számítógépre, valamint tekintse meg a korlátot, az Azure Portalon, és futó párhuzamos feladatok száma [figyelő átjárót a portálon](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Ha hibrid adatáthelyezés nagyszámú egyidejű másolási tevékenység-végrehajtás vagy nagy mennyiségű adat másolása (nagy erőforrásigényű) szükség van, érdemes lehet [vertikális vagy horizontális felskálázás átjáró](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) üzembe helyezésére szolgáló vagy úgy, hogy jobban kihasználhassák az erőforrás További erőforrás megjelenő új példányt. 
+**Átjáró figyelési és felfelé vagy kibővített**: Egy vagy több átjáró csomópont egyetlen logikai átjáró több másolási tevékenység-végrehajtás szolgálhat egyidejűleg egy időben. Megtekintheti a közel valós idejű pillanatképét erőforrás-használat (CPU, memória, network(in/out), stb.) egy átjárót tartalmazó számítógépre, valamint tekintse meg a korlátot, az Azure Portalon, és futó párhuzamos feladatok száma [figyelő átjárót a portálon](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Ha hibrid adatáthelyezés nagyszámú egyidejű másolási tevékenység-végrehajtás vagy nagy mennyiségű adat másolása (nagy erőforrásigényű) szükség van, érdemes lehet [vertikális vagy horizontális felskálázás átjáró](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) üzembe helyezésére szolgáló vagy úgy, hogy jobban kihasználhassák az erőforrás További erőforrás megjelenő új példányt.
 
 ## <a name="considerations-for-the-source"></a>A forrás szempontjai
 ### <a name="general"></a>Általános kérdések
@@ -404,7 +404,7 @@ Ebben az esetben az adattömörítés bzip2 előfordulhat, hogy lehet lelassítj
 
 **A forgatókönyv II**: 500 MB-os 20 blobok másolása Blob storage-ból a Data Lake Store Analytics, és ezután a teljesítmény hangolására.
 
-**Elemzés és a teljesítmény-finomhangolási**: Ebben a forgatókönyvben a Data Factory a adatokat másol a Blob storage Data Lake Store egy másolási használatával (**parallelCopies** állítsa 1-re) és a egy a felhőbe irányuló adatáthelyezési egységek. Az átviteli sebességet, figyelje meg, amely közel leírását a [teljesítmény referenciaszakasz](#performance-reference).   
+**Elemzés és a teljesítmény-finomhangolási**: Ebben a forgatókönyvben a Data Factory a adatokat másol a Blob storage Data Lake Store egy másolási használatával (**parallelCopies** állítsa 1-re) és a egy a felhőbe irányuló adatáthelyezési egységek. Az átviteli sebességet, figyelje meg, amely közel leírását a [teljesítmény referenciaszakasz](#performance-reference).
 
 ![2. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-2.png)
 
@@ -418,8 +418,8 @@ Ebben az esetben az adattömörítés bzip2 előfordulhat, hogy lehet lelassítj
 Teljesítmény figyelése és hangolása hivatkozásokat a támogatott adattárak némelyikét a következők:
 
 * Az Azure Storage (beleértve a Blob storage és Table storage): [Az Azure Storage skálázhatósági célértékét](../../storage/common/storage-scalability-targets.md) és [Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista](../../storage/common/storage-performance-checklist.md)
-* Az Azure SQL Database: Is [figyelemmel kísérni a teljesítményét](../../sql-database/sql-database-single-database-monitor.md) , és ellenőrizze az adatbázis tranzakciós egységek (DTU) százalékos aránya
-* Az Azure SQL Data warehouse-bA: A funkció mérik az adattárházegységek (Dwu); Lásd: [kezelés számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure SQL Database: Is [figyelemmel kísérni a teljesítményét](../../sql-database/sql-database-single-database-monitor.md) , és ellenőrizze az adatbázis tranzakciós egységek (DTU) százalékos aránya
+* Azure SQL Data Warehouse: A funkció mérik az adattárházegységek (Dwu); Lásd: [kezelés számítási teljesítményt az Azure SQL Data Warehouse (áttekintés)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Az Azure Cosmos DB: [Az Azure Cosmos DB teljesítményszintek](../../cosmos-db/performance-levels.md)
 * A helyszíni SQL Server: [Figyelése és a teljesítmény hangolása](https://msdn.microsoft.com/library/ms189081.aspx)
 * A helyi fájlkiszolgáló: [Teljesítmény-finomhangolási fájlkiszolgálók](https://msdn.microsoft.com/library/dn567661.aspx)

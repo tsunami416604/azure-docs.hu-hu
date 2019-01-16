@@ -1,18 +1,18 @@
 ---
 title: Futtassa az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan futtathat az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 4aec31acf5a279f5ac887788d7e1554c31dfe342
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846623"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321177"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery deployment planner a Hyper-V vészhelyreállítás az Azure-bA
 
@@ -38,15 +38,15 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 |---|---|
 | -Művelet | GetVMList |
 | -Felhasználó | A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie.|
-| -ServerListFile | Azon kiszolgálók listáját tartalmazó fájl, amelyek a profillal ellátni kívánt virtuális gépeket tartalmazzák. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorának tartalmazza a következők egyikét:<ul><li>Hyper-V-gazdagép neve vagy IP-címe</li><li>Hyper-V-fürt neve vagy IP-címe</li></ul><br>**Például:** A ServerList.txt az alábbi kiszolgálókat tartalmazza:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
+| -ServerListFile | Azon kiszolgálók listáját tartalmazó fájl, amelyek a profillal ellátni kívánt virtuális gépeket tartalmazzák. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorának tartalmazza a következők egyikét:<ul><li>Hyper-V-gazdagép neve vagy IP-címe</li><li>Hyper-V-fürt neve vagy IP-címe</li></ul><br>**Példa** ServerList.txt az alábbi kiszolgálókat tartalmazza:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(Nem kötelező) Az univerzális elnevezési konvenciónak (UNC) megfelelő elérési út vagy azon helyi könyvtár elérési útja, ahol a művelet során létrehozott adatokat tárolni kívánja. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
 |-OutputFile| (Nem kötelező) A Hyper-V-kiszolgálókról lekért virtuális gépek listáját tartalmazó fájl mentése. Ha nincs megemlítve név, a részleteket a VMList.txt fájl tartalmazza.  A fájl használatával kezdje meg a profilkészítést, miután eltávolította azokat a virtuális gépeket, amelyekhez nem kíván profilt készíteni.|
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
 
 ### <a name="getvmlist-discovery"></a>GetVMList-felderítés
 
-- **Hyper-V-fürt**: A Hyper-V-fürt nevének a kiszolgálólista fájljában történő megadásakor az eszköz megkeresi a fürt összes Hyper-V-csomópontját, és megszerzi az egyes Hyper-V-gazdagépeken található virtuális gépeket.
-**Hyper-V-gazdagép**: A Hyper-V-gazdagép nevének megadásakor az eszköz ellenőrzi, hogy az fürthöz tartozik-e. Ha igen, az eszköz lekérdezi a fürthöz tartozó csomópontokat. Ezután lekéri a virtuális gépeket minden Hyper-V-gazdagéptől. 
+- **Hyper-V fürt**: Ha a Hyper-V-fürt neve nincs megadva a kiszolgáló kiszolgálólista fájljában, az eszköz megkeresi a fürt Hyper-V-csomópontját, és az egyes Hyper-V-gazdagépeken található virtuális gépeket lekérdezi.
+**A Hyper-V-gazdagép**: A Hyper-V-gazdagép nevének megadásakor, ha az eszköz először ellenőrzi, hogy az egy fürthöz tartozik. Ha igen, az eszköz lekérdezi a fürthöz tartozó csomópontokat. Ezután lekéri a virtuális gépeket minden Hyper-V-gazdagéptől. 
 
 Egy fájlba is listázhatja azon virtuális gépek rövid nevét vagy IP-címét, amelyeket manuálisan szeretne profillal ellátni.
 
@@ -87,7 +87,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |---|---|
 | -Művelet | StartProfiling |
 | -Felhasználó | A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie.|
-| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekhez profilt szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Például:** A VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekhez profilt szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Példa** VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-NoOfMinutesToProfile|A percek száma, ameddig a profilkészítés futni fog. A minimális érték 30 perc.|
 |-NoOfHoursToProfile|Az órák száma, ameddig a profilkészítés futni fog.|
 |-NoOfDaysToProfile |A napok száma, ameddig a profilkészítés futni fog. Javasoljuk, hogy legalább 7 napig futtassa a profilkészítést. Ez az időtartam biztosítja a számítási feladatok mintájának pontos megfigyelését a környezetben, amely alapján pontos javaslat adható.|
@@ -96,7 +96,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
 |-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 |-StorageAccountKey|(Nem kötelező) A tárfiók eléréséhez használt kulcs. Nyissa meg az Azure Portalt, és válassza a **Tárfiókok** > *Tárfiók neve* > **Beállítások** > **Hozzáférési kulcsok** > **1. kulcs** (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemet.|
-|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. A következő három érték egyike lehet: AzureCloud, AzureUSGovernment vagy AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha célrégióként az Azure US Government vagy az Azure China van megadva.|
+|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. Három érték egyike lehet: AzureCloud, AzureUSGovernment, or AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha célrégióként az Azure US Government vagy az Azure China van megadva.|
 
 Javasoljuk, hogy legalább 7 napig végezze a virtuális gépek profiljának készítését. Ha az adatváltozási minta egy hónapon belül változik, javasoljuk, hogy a héten akkor készítsen profilt, amikor a maximális változás tapasztalható. A legjobb megoldás, ha 31 nap alatt készíti el a profilt, így jobb javaslatokat kaphat. 
 
@@ -167,7 +167,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | Paraméter neve | Leírás |
 |---|---|
 | -Művelet | Jelentés készítése |
-|-VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt készített, és amelyekről jelentést szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Például:** A VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+|-VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt készített, és amelyekről jelentést szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Példa** VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Virtualization|A virtualizálás típusa (VMware vagy Hyper-V).|
 |-Directory|(Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
 | -Felhasználó | (Nem kötelező) A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie. A rendszer a felhasználó és a jelszó használatával kéri le a virtuális gépek legfrissebb konfigurációs adatait a jelentéshez (pl. lemezek, magok és hálózati adapterek száma). Ha ez nincs megadva, a rendszer a profilkészítéskor összegyűjtött konfigurációs adatokat használja fel.|
@@ -177,7 +177,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | (Nem kötelező) Kezdő dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. A StartDate és az EndDate paraméter megadása kötelező. Ha a StartDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -EndDate | (Nem kötelező) Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az EndDate és a StartDate paraméter megadása kötelező. Ha az EndDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -GrowthFactor | (Nem kötelező) A növekedési tényező százalékértékként megadva. Az alapértelmezett érték 30%. |
-| -UseManagedDisks | (Nem kötelező) UseManagedDisks: Igen/Nem. Az alapértelmezett érték az Igen. Az egy tárfiókban elhelyezhető virtuális gépek számát a rendszer az alapján határozza meg, hogy a virtuális gépek feladatátvételére, illetve feladatátvételi tesztjére nem felügyelt lemez helyett felügyelt lemezen kerül-e sor. |
+| -UseManagedDisks | (Optional) UseManagedDisks: Igen/nem. Az alapértelmezett érték az Igen. Az egy tárfiókban elhelyezhető virtuális gépek számát a rendszer az alapján határozza meg, hogy a virtuális gépek feladatátvételére, illetve feladatátvételi tesztjére nem felügyelt lemez helyett felügyelt lemezen kerül-e sor. |
 |-SubscriptionId |(Nem kötelező) Az előfizetés GUID azonosítója. A paraméter használatával létrehozhat egy költségbecslési jelentést a legújabb árakkal az előfizetése, az előfizetéséhez tartozó ajánlat és a célul szolgáló Azure-régió alapján, a megadott pénznemben.|
 |-TargetRegion|(Nem kötelező) A replikáció által megcélzott Azure-régió. Mivel az Azure költségei régiónként eltérőek, egy célul szolgáló adott Azure-régióra vonatkozó jelentés létrehozásához használja ezt a paramétert. Az alapértelmezett régió az USA 2. nyugati régiója vagy a legutoljára használt célrégió. Tekintse át a [támogatott célrégiók](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions) listáját.|
 |-OfferId|(Nem kötelező) Az előfizetéshez társított ajánlat. Az alapértelmezett az MS-AZR-0003P (használatalapú fizetés).|
@@ -278,8 +278,8 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 |-Directory|(Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és válassza a **Tárfiókok** > *Tárfiók neve* > **Beállítások** > **Hozzáférési kulcsok** > **1. kulcs** elemet.|
-| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Például:** A VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. A következő három érték egyike lehet: AzureCloud, AzureUSGovernment vagy AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként az Azure US Government vagy az Azure China van megadva.|
+| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Példa** VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. Három érték egyike lehet: AzureCloud, AzureUSGovernment, or AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként az Azure US Government vagy az Azure China van megadva.|
 
 ### <a name="example"></a>Példa
 ```

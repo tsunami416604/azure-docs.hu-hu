@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fd37c0c118812bb3554b19fec9bf5ae3f33a2fdc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122836"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54314104"
 ---
 GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva. 
 
@@ -109,8 +109,8 @@ NDv2 sorozatú virtuális gép egy újdonága a HPC, mesterséges Intelligencia 
 
 
 | Méret              | vCPU | GPU              | Memory (Memória)  | Hálózati adapterek (max) | Legfeljebb Lemezméret           | Legfeljebb az adatlemezeket (egyenként 1023 GB) | Maximális sávszélesség | 
-|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
-| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GB | 8          | Ideiglenes 1344 / 2948XIO | 32    | 24,000 MB/s             | 
+|-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
+| Standard_ND40s_v2 | 40   | 8 V100 (NVlilnk) | 672 GiB | 8          | Ideiglenes 1344 / 2948XIO | 32                             | 24,000 MB/s           |
 
 ## <a name="nd-series"></a>ND sorozat
 
@@ -129,7 +129,7 @@ Az ND sorozatú virtuális gépek, és a mesterséges Intelligencia, Deep Learni
 | Standard_ND6s |6 |112 | 736 | 1 | 24 | 12 | 4 |
 | Standard_ND12s |12 |224 | 1474 | 2 | 48 | 24 | 8 | 
 | Standard_ND24s |24 |448 | 2948 | 4 | 96 | 32 | 8 |
-| Standard_ND24rs * |24 |448 | 2948 | 4 | 96 | 32 | 8 |
+| Standard_ND24rs* |24 |448 | 2948 | 4 | 96 | 32 | 8 |
 
 1 GPU = egy P40 kártya.
 

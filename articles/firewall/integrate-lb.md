@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 1/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9d10383b84cbd1b85216cb9ae4582db4c7a10743
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54268080"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321772"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure tűzfal integrálása az Azure Standard Load Balancer
 
@@ -26,7 +26,7 @@ Nyilvános load balancer, az a load balancer nyilvános előtérbeli IP-címmel 
 
 ### <a name="asymmetric-routing"></a>Aszimmetrikus útválasztás
 
-Az aszimmetrikus útválasztás, ahol egy csomag vesz igénybe egy elérési útvonalat a cél és a egy másik elérési utat vesz igénybe, amikor visszatér a forrás. Probléma akkor fordulhat elő, ha egy alhálózathoz van a tűzfal magánhálózati IP-címet, és a egy nyilvános terheléselosztó az alapértelmezett útvonal. Ebben az esetben a load balancer bejövő forgalmat a nyilvános IP-címének keresztül érkezik, de a visszatérési elérési halad végig a tűzfal magánhálózati IP-címet. Mivel a tűzfal állapotalapú, a visszatérő csomag eldobja, mert a tűzfalon még nem ismeri az ilyen munkamenetet létesítenek.
+Az aszimmetrikus útválasztás, ahol egy csomag vesz igénybe egy elérési útvonalat a cél és a egy másik elérési utat vesz igénybe, amikor visszatér a forrás. Ez a probléma akkor fordul elő, ha egy alhálózathoz van a tűzfal magánhálózati IP-címet fog az alapértelmezett útvonal és a egy nyilvános terheléselosztó használ. Ebben az esetben a load balancer bejövő forgalmat a nyilvános IP-címének keresztül érkezik, de a visszatérési elérési halad végig a tűzfal magánhálózati IP-címet. Mivel a tűzfal állapotalapú, a visszatérő csomag eldobja, mert a tűzfalon még nem ismeri az ilyen munkamenetet létesítenek.
 
 ### <a name="fix-the-routing-issue"></a>Az útválasztási problémát
 

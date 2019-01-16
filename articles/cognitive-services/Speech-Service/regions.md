@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091645"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329507"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
 
@@ -46,11 +46,24 @@ A beszédfelismerés SDK érhető el ezekben a régiókban a **beszédfelismeré
 
 ### <a name="intent-recognition"></a>Szándékfelismerés
 
-**Szándékfelismerés** a Speech SDK megosztások régió támogatja az intelligens hangfelismerési szolgáltatással. Az elérhető régiók teljes listáját lásd: [régiók és a végpontok – intelligens HANGFELISMERÉSI közzététele](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
+Az elérhető régiók **szándékának felismerése** a Speech SDK-n keresztül tartoznak a következők:
 
-Választható régiók **szándékának felismerése** a Speech SDK-n keresztül jelennek meg a [Language Understanding szolgáltatásoldal régió](/azure/cognitive-services/luis/luis-reference-regions).
+ Globális régió | Régió | Beszéd SDK paraméter
+ ------|-------|--------
+ Ázsia | Kelet-Ázsia | `eastasia`
+ Ázsia | Délkelet-Ázsia | `southeastasia`
+ Ausztrália | Kelet-Ausztrália | `australiaeast`
+ Európa | Észak-Európa | `northeurope`
+ Európa | Nyugat-Európa | `westeurope`
+ Észak-Amerika | USA keleti régiója | `eastus`
+ Észak-Amerika | USA 2. keleti régiója | `eastus2`
+ Észak-Amerika | USA déli középső régiója | `southcentralus`
+ Észak-Amerika | USA nyugati középső régiója | `westcentralus`
+ Észak-Amerika | USA nyugati régiója | `westus`
+ Észak-Amerika | USA nyugati régiója, 2. | `westus2`
+ Dél-Amerika | Dél-Brazília | `brazilsouth`
 
-Minden felsorolt közzétételi régió, használja a megadott **API régió neve**. Például `westus` USA nyugati RÉGIÓJA számára.
+Ez a közzétételi által támogatott régiók részhalmazát a [hangfelismerési szolgáltatás (LUIS)](/azure/cognitive-services/luis/luis-reference-regions).
 
 ## <a name="rest-apis"></a>REST API-k
 

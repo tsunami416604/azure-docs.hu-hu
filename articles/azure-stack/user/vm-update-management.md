@@ -1,6 +1,6 @@
 ---
 title: Virtuális gép frissítése és kezelése az Azure Stack |} A Microsoft Docs
-description: Ismerje meg, az Update Management, Change Tracking és Inventory megoldásainak használata az Azure Automationben az Azure Stack üzembe helyezett Windows virtuális gépek kezeléséhez.
+description: Ismerje meg, az Update Management, Change Tracking és Inventory megoldásainak használata az Azure Automationben a Windows és Linux rendszerű virtuális gépek az Azure Stack üzembe helyezett kezeléséhez.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: be793fa5d346d05e6b7bd9f93f1108b7a3542fa6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b86a9a0cff397148b0632b3108f58a1977b518e9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959172"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332506"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Az Azure Stack VM update és kezelése
-A következő Azure Automation-megoldás funkciók segítségével Windows üzembe helyezett virtuális gépeket az Azure Stack használata kezelheti:
+A következő Azure Automation-megoldás funkciók segítségével kezelheti a Windows és Linux rendszerű virtuális gépek, amelyek az Azure Stack használatával helyezi üzembe:
 
-- **[Frissítéskezelés](https://docs.microsoft.com/azure/automation/automation-update-management)**. Az Update Management megoldással gyorsan felmérheti az elérhető frissítések minden ügynökszámítógépen állapotát és a folyamat szükséges frissítéseinek telepítése a Windows virtuális gépek kezeléséhez.
+- **[Frissítéskezelés](https://docs.microsoft.com/azure/automation/automation-update-management)**. Az Update Management megoldással gyorsan felmérheti az elérhető frissítések minden ügynökszámítógépen állapotát és a folyamat szükséges frissítéseinek telepítése ezen Windows és Linux rendszerű virtuális gépek kezeléséhez.
 
-- **[A változáskövetés](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Telepített szoftverek, a Windows-szolgáltatások, a Windows beállításjegyzék és a fájlokat a figyelt kiszolgálókról történő változásokat küldi el a Log Analytics szolgáltatás a felhőben a feldolgozáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
+- **[A változáskövetés](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a Log Analytics szolgáltatás a felhőben a feldolgozáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
 
-- **[Készlet](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. A leltár nyomon követése az Azure Stack Windows virtuális gépként és leltár konfigurálása egy böngészőalapú felhasználói felületet biztosít. 
+- **[Készlet](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. A leltár nyomon követése az Azure Stack virtuális gépként és leltár konfigurálása egy böngészőalapú felhasználói felületet biztosít. 
 
 > [!IMPORTANT]
-> Ezek a megoldások ugyanazok, mint az Azure virtuális gépek kezelésére szolgáló azokat. Az Azure és az Azure Stack Windows virtuális gépek felügyelt ugyanolyan módon, egy közös felületen, ugyanazokkal az eszközökkel. Az Azure Stack-beli virtuális gépek is díjszabása ugyanaz, mint az Azure virtuális gépek használatakor az Update Management, Change Tracking és Inventory megoldások az Azure Stack használatával.
+> Ezek a megoldások ugyanazok, mint az Azure virtuális gépek kezelésére szolgáló azokat. Az Azure és az Azure Stack virtuális gépek felügyelt ugyanolyan módon, egy közös felületen, ugyanazokkal az eszközökkel. Az Azure Stack-beli virtuális gépek is díjszabása ugyanaz, mint az Azure virtuális gépek használatakor az Update Management, Change Tracking és Inventory megoldások az Azure Stack használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Néhány előfeltételnek teljesülnie kell, mielőtt használja ezeket a funkciókat, frissítése és az Azure Stack Windows virtuális gépek kezelése. Ezek közé tartozik, amely kell tenni a lépéseket az Azure Portalon, valamint az Azure Stack felügyeleti portálon.
+Néhány előfeltételnek teljesülnie kell, mielőtt használja ezeket a funkciókat, frissítése és az Azure Stack virtuális gépek kezelése. Ezek közé tartozik, amely kell tenni a lépéseket az Azure Portalon, valamint az Azure Stack felügyeleti portálon.
 
 ### <a name="in-the-azure-portal"></a>Az Azure Portalon
-A készlet, a Change Tracking és a frissítés kezelése az Azure automation szolgáltatásokat az Azure Stack Windows virtuális gépek használatához, először engedélyeznie kell ezeket a megoldásokat az Azure-ban.
+A készlet, a Change Tracking és a frissítés kezelése az Azure automation szolgáltatásokat az Azure Stack-beli virtuális gépek használatához, először engedélyeznie kell ezeket a megoldásokat az Azure-ban.
 
 > [!TIP]
 > Ha már rendelkezik ezeket a funkciókat az Azure virtuális gépek engedélyezve van, használhatja a már meglévő LogAnalytics munkaterület hitelesítő adatait. Ha már rendelkezik egy LogAnalytics munkaterület azonosítója és az elsődleges kulcs, amelyet használni szeretne, ugorjon előre [a következő szakaszban](./vm-update-management.md#in-the-azure-stack-administration-portal). Ellenkező esetben továbbra is ebben a szakaszban egy új LogAnalytics munkaterületet és automation-fiók létrehozásához.
@@ -60,18 +60,18 @@ Ezt követően kell [Automation-fiók létrehozása](https://docs.microsoft.com/
    [![](media/vm-update-management/1-sm.PNG "Automation-fiók szolgáltatások engedélyezése")](media/vm-update-management/1-lg.PNG#lightbox)
 
 ### <a name="in-the-azure-stack-administration-portal"></a>Az Azure Stack felügyeleti portálon
-Miután engedélyezte az Azure Automation-megoldások az Azure Portalon, ezután kell bejelentkezni az Azure Stack felügyeleti portálon, a felhő rendszergazdájához, és töltse le a **Azure Update és a konfigurációkezelés** Azure bővítmény Piactéri elem stack. 
+Miután engedélyezte az Azure Automation-megoldások az Azure Portalon, ezután kell bejelentkezni az Azure Stack felügyeleti portálon, a felhő rendszergazdájához, és töltse le a **Azure Update és a konfigurációkezelés** és a  **Az Azure frissítési és konfigurációkezelés linuxos** kiterjesztése az Azure Stack piactéren elemek. 
 
    ![Az Azure frissítési és konfigurációs felügyeleti bővítmény Piactéri elem](media/vm-update-management/2.PNG) 
 
 ## <a name="enable-update-management-for-azure-stack-virtual-machines"></a>Az Update Management engedélyezése a virtuális gépek az Azure Stack
-Kövesse az alábbi lépéseket az Azure Stack Windows virtuális gépek az update management engedélyezése.
+Kövesse az alábbi lépéseket az Azure Stack-beli virtuális gépek az update management engedélyezése.
 
 1. Jelentkezzen be az Azure Stack felhasználói portálon.
 
-2. Az Azure Stack felhasználói portálon, nyissa meg a bővítmények panelt, a Windows, amelynek az ezekkel a megoldásokkal engedélyezéséhez kattintson a kívánt virtuális gépeknek **+ Hozzáadás**, jelölje be a **Azure Update és a konfigurációkezelés**bővítményt, majd kattintson **létrehozás**:
+2. Az Azure Stack felhasználói portálon, nyissa meg a bővítmények panelt, amelynek meg szeretné engedélyezze ezeket a megoldásokat, kattintson a virtuális gépek **+ Hozzáadás**, jelölje be a **Azure Update és a konfigurációkezelés** bővítmény, és kattintson **létrehozás**:
 
-   [![](media/vm-update-management/3-sm.PNG "Windows VM-bővítmény panel")](media/vm-update-management/3-lg.PNG#lightbox)
+   [![](media/vm-update-management/3-sm.PNG "VM-bővítmény panel")](media/vm-update-management/3-lg.PNG#lightbox)
 
 3. Adja meg a korábban létrehozott munkaterület azonosítója és az elsődleges kulcsot az ügynököt a LogAnalytics munkaterület összekapcsolása, és kattintson a **OK** a bővítmény telepítéséhez.
 
@@ -82,9 +82,9 @@ Kövesse az alábbi lépéseket az Azure Stack Windows virtuális gépek az upda
    [![](media/vm-update-management/5-sm.PNG "A munkaterület azonosítója és kulcsa")](media/vm-update-management/5-lg.PNG#lightbox) 
 
    > [!TIP]
-   > Ismételje meg ezt a lépést minden megoldás engedélyezése az Azure Stack Windows virtuális gépek, hogy a jelentés a munkaterülethez. 
+   > Ismételje meg ezt a lépést minden megoldás engedélyezése az Azure Stack-alapú virtuális gépek, hogy a jelentés a munkaterületre. 
   
-Az Azure-frissítés és a konfigurációkezelés bővítmény engedélyezése után történik vizsgálat naponta kétszer az egyes felügyelt Windows virtuális Gépekhez. A Windows API hívása az utolsó frissítésének időpontját, hogy módosultak-e az állapot meghatározására a lekérdezéshez 15 percenként. Ha a állapota megváltozott, a megfelelőségi vizsgálatot kezdeményez.
+Az Azure-frissítés és a konfigurációkezelés bővítmény engedélyezése után történik vizsgálat naponta kétszer minden felügyelt virtuális géphez. Az API neve 15 percenként az utolsó frissítésének időpontját, hogy módosultak-e az állapot meghatározására a lekérdezéshez. Ha a állapota megváltozott, a megfelelőségi vizsgálatot kezdeményez.
 
 Miután a virtuális gépek vizsgálata, ezek megjelennek a frissítéskezelési megoldás az Azure Automation-fiók: 
 
@@ -93,10 +93,10 @@ Miután a virtuális gépek vizsgálata, ezek megjelennek a frissítéskezelési
 > [!IMPORTANT]
 > 30 perc és a felügyelt számítógépekből származó frissített adatok megjelennek az irányítópulton 6 óráig is eltarthat.
 
-Az Azure Stack Windows virtuális gépek és Azure virtuális gépeken ütemezett frissítéstelepítések most már szerepelni.
+Az Azure Stack-beli virtuális gépek és Azure virtuális gépeken ütemezett frissítéstelepítések most már szerepelni.
 
 ## <a name="enable-update-management-using-a-resource-manager-template"></a>Resource Manager-sablon használatával az Update Management engedélyezése
-Ha az Azure Stack Windows virtuális gépek nagy számú, használhat [ezen Azure Resource Manager-sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) könnyebben üzembe helyezheti a megoldást, a Windows virtuális gépeken. A sablon üzembe helyezi a Microsoft Monitoring Agent bővítményt egy meglévő Windows virtuális Gépet, és hozzáadja azt a meglévő Azure LogAnalytics munkaterülethez.
+Ha az Azure Stack virtuális gépek nagy számú, használhatja [ezen Azure Resource Manager-sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) könnyebben üzembe helyezheti a megoldást, a virtuális gépeken. A sablon üzembe helyezi a Microsoft Monitoring Agent bővítményt egy meglévő Azure Stack virtuális Gépet, és hozzáadja azt a meglévő Azure LogAnalytics munkaterülethez.
  
 ## <a name="next-steps"></a>További lépések
 [Az SQL Server teljesítményének optimalizálásához](azure-stack-sql-server-vm-considerations.md)

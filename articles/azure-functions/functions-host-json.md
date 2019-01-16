@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413268"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331217"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
-> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futásidejének verzióját: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [1-es verzió](functions-host-json-v1.md)
 > * [2-es verzió](functions-host-json.md)
 
@@ -109,12 +109,15 @@ Szabályozza a [mintavételezés funkció az Application Insights](./functions-m
 }
 ```
 
+> [!NOTE]
+> Napló mintavételi okozhat egyes végrehajtás, nem jelenik meg az Application Insights monitor panelen.
+
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |isEnabled|true|Engedélyezi vagy letiltja a mintavétel.| 
 |maxTelemetryItemsPerSecond|5|A küszöbértéket, mely mintavételi kezdődik.| 
 
-## <a name="cosmosdb"></a>cosmos DB
+## <a name="cosmosdb"></a>cosmosDb
 
 Konfigurációs beállítás található [Cosmos DB-eseményindítók és kötések](functions-bindings-cosmosdb-v2.md#host-json).
 
@@ -172,7 +175,7 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 
-|counterThreshold|0,80|A küszöbérték, amely egy teljesítményszámláló minősülnek nem megfelelő állapotú.| 
+|counterThreshold|0.80|A küszöbérték, amely egy teljesítményszámláló minősülnek nem megfelelő állapotú.| 
 
 ## <a name="http"></a>http
 
@@ -200,7 +203,7 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Határozza meg, milyen szintű fájl naplózás engedélyezve van.  Lehetőségek a következők `never`, `always`, `debugOnly`. |
-|LogLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
+|logLevel|n/a|A szűrés az alkalmazás a Functions naplókategória definiáló objektum. Verzió 2.x követi az ASP.NET Core-elrendezés log kategóriához szűrésre. Ez lehetővé teszi az egyes funkciók naplózási szűrő. További információkért lásd: [napló szűrése](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) az ASP.NET Core dokumentációjában. |
 |konzol|n/a| A [konzol](#console) naplózási beállításokat. |
 |applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
@@ -228,7 +231,7 @@ Ez a beállítás nem gyermeke [naplózás](#logging). Azt szabályozza, hogy a 
 
 Konfigurációs beállítások található [tárolási üzenetsor eseményindítók és kötések](functions-bindings-storage-queue.md#host-json).  
 
-## <a name="sendgrid"></a>A SendGrid
+## <a name="sendgrid"></a>sendGrid
 
 Konfigurációs beállítás található [SendGrid eseményindítók és kötések](functions-bindings-sendgrid.md#host-json).
 

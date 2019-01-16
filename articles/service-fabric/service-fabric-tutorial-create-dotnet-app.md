@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4ba55d58a24045141800efb97a0f523d2a9cd242
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304499"
+ms.locfileid: "54321738"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -325,8 +325,6 @@ A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceM
 ```
 
 Az alkalmazás URL-címének tulajdonságértékét is frissítse a szavazási projektben, így a webböngésző a megfelelő portot nyitja meg, amikor hibakeresést hajt végre az alkalmazásban.  A Megoldáskezelőben válassza ki a **Voting** projektet, és frissítse az **Alkalmazás URL-címe** tulajdonságot **8080**-ra.
-
-![Alkalmazás URL-címe](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ### <a name="deploy-and-run-the-voting-application-locally"></a>A szavazóalkalmazás helyi üzembe helyezése és futtatása
 Most már futtathatja a szavazóalkalmazást a hibakereséshez. A Visual Studióban nyomja le az **F5** billentyűt, hogy hibakeresési módban üzembe helyezze az alkalmazást a helyi Service Fabric-fürtön. Az alkalmazást nem lehet majd futtatni, ha korábban nem **rendszergazdaként** nyitotta meg a Visual Studiót.

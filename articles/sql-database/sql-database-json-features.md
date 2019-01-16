@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/17/2018
-ms.openlocfilehash: bc4e27f45b905e00c1c809a781a5cf034a0da8ca
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 7e688abbe1b8188cb85e5762086009522b5b7d39
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543801"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332081"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database-ben JSON-funkciókkal
 Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](http://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben. Az alábbi JSON-forgatókönyvek az Azure SQL Database-ben érhetők el:
@@ -175,7 +175,7 @@ AS BEGIN
 
     insert into Orders(Number, Date, Customer, Quantity)
     select Number, Date, Customer, Quantity
-    OPENJSON (@orders)
+    FROM OPENJSON (@orders)
      WITH (
             Number varchar(200),
             Date datetime,

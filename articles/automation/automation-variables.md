@@ -1,45 +1,45 @@
 ---
-title: Az Azure Automationben változó eszközök
-description: Változó eszközök értékeket összes forgatókönyve és az Azure Automation DSC-konfiguráció számára elérhető.  Ez a cikk ismerteti a változók és a szöveges és a grafikus szerzői őket munkavégzés részleteit.
+title: Az Azure Automation változó adategységek
+description: Változó adategységek értékek, az összes runbookok és Azure Automation DSC-konfigurációk érhetők el.  Ez a cikk ismerteti a változók és hogyan dolgozhatnak velük a szöveges és a grafikus szerzői műveletek részleteit.
 services: automation
 ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea6aae349bfbec0d1b6538010df42e7a0fb22d8e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aaf8671ec4bfc4bcf6fecaa357f6ae983eb04499
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196100"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330518"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Az Azure Automationben változó eszközök
+# <a name="variable-assets-in-azure-automation"></a>Az Azure Automation változó adategységek
 
-Változó eszközök értékeket elérhető összes forgatókönyve és DSC-konfigurációk az automation-fiókban. Azok létrehozott, módosított, és lekérése az Azure-portálon, a Windows PowerShell és a runbookot vagy a DSC-konfiguráció. Automatizálási változók az alábbiak a következő esetekben lehet hasznos:
+Változó adategységek olyan értékek, amelyek elérhetők a runbookok és a DSC-konfigurációk az automation-fiókban. Azok létrehozott, módosított, és az Azure Portalon, a Windows PowerShell-lel, és a lekért runbookból vagy DSC-konfigurációból. Automation-változók hasznosak lehetnek a következő forgatókönyvekhez:
 
-- Ossza meg több runbookok vagy a DSC-konfigurációk közötti értéket.
+- Ossza meg egy érték elérhetővé tétele több runbook vagy DSC-konfigurációk.
 
-- Ossza meg a DSC-konfiguráció vagy ugyanaz a runbook több feladat közötti értéket.
+- Ossza meg egy érték elérhetővé tétele több feladat a ugyanaz a runbook vagy DSC-konfigurációból.
 
-- A portálon vagy a Windows PowerShell parancssorban forgatókönyvek vagy a DSC-konfigurációk, például a virtuális gép nevét, egy adott erőforráscsoportot, egy AD-tartomány nevét, stb például adott listáját általános konfigurációs elemek készlete által használt érték kezelése.  
+- Érték kezelése a portálon vagy a runbook vagy DSC-konfigurációk, például közös konfigurációelemek adott lista például egy virtuális gép neve, egy adott erőforráscsoportban, az AD tartománynevet, stb-készlete által használt Windows PowerShell-parancssorból.  
 
-Automatizálási változók megmaradnak, így azok továbbra is elérhetők, még akkor is, ha a runbookot vagy a DSC-konfiguráció nem sikerül. Ez egy runbookot, amely ezután történik egy másik, vagy használja a ugyanaz a runbook vagy a DSC-konfiguráció fut, amikor legközelebb által értéket is lehetővé teszi.
+Automation-változók megmaradnak, hogy azok továbbra is elérhetők, még akkor is, ha a runbook vagy DSC-konfiguráció nem sikerül. Ez lehetővé teszi egy runbookot, amely egy másik alapján, vagy használja a ugyanaz a runbook vagy DSC-konfiguráció fut a következő futtatáskor kell beállítani az értéket.
 
-Egy változó létrehozásakor megadhatja, hogy tárolt titkosított. Ha titkosított változó, az Azure Automation tárolja biztonságos helyen és az értéke nem lehet beolvasni a [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagot tartalmaz, az Azure PowerShell modul részét képezi. Származik, csak úgy lehetséges, hogy egy titkosított értéke lehet beolvasni a **Get-AutomationVariable** tevékenység egy runbookot vagy a DSC-konfiguráció.
+Egy változó létrehozásakor a megadhatja, hogy tárolja a titkosított. Ha titkosított változó, akkor lesz biztonságosan tárolva az Azure Automation és az érték nem lehet lekérdezni a [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagot, amely az Azure PowerShell-modul részeként. Titkosított érték beolvasásának egyetlen módja a rendszer a **Get-AutomationVariable** tevékenység a runbookból vagy DSC-konfigurációból.
 
 >[!NOTE]
->Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automationben létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot a Key Vault van tárolva. A kulcs tárolása biztonságos eszköz, mielőtt Key Vault betöltődnek és majd az eszköz titkosításához használt.
+>Az Azure Automationben biztonságos eszközök tartalmazzák, hitelesítő adatok, tanúsítványok, kapcsolatok és a titkosított változókat. Ezek az eszközök titkosítottak és a létrehozott egyedi kulcs segítségével minden automation-fiókhoz tartozó Azure Automation tárolja. Ezt a kulcsot tárolja a rendszer által felügyelt Key Vault. A kulcs tárolása egy biztonságos objektumot, előtt betöltése a Key Vaultból és majd az eszköz titkosításához használt. Ez a folyamat az Azure Automation felügyeli.
 
-## <a name="variable-types"></a>Változó típusa
+## <a name="variable-types"></a>Változótípusok
 
-Az Azure portállal egy változó létrehozásakor meg kell adni egy adatok a legördülő listából, a portál írja be a változó értékének megfelelő vezérlőket tudja megjeleníteni. A változó nem korlátozódik ezt az adattípust, de meg kell adni a változót a Windows PowerShell használatával, ha azt szeretné, hogy más típusú értéket. Ha megad **nincs definiálva**, a változó értékére állítja be **$null**, és meg kell adni az értéket a [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) parancsmag vagy **Set-AutomationVariable** tevékenység. Nem hozható létre, vagy módosítsa az értéket egy változó komplex típus a portálon, de megadhatja a Windows PowerShell használatával bármilyen típusú érték. Összetett típusok vissza, a [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
+Az Azure portal használatával hozzon létre egy változót, ha meg kell adnia a legördülő listából válassza ki az adattípust, így a portálon írja be a változó értékének megfelelő vezérlőket tudja megjeleníteni. A változó az adattípus nem korlátozódik, de a Windows PowerShell használatával, ha azt szeretné, adjon meg egy értéket egy eltérő típusú változót kell állítani. Ha megad **nincs definiálva**, majd a változó értéke **$null**, és be kell az értéket a [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) parancsmag vagy **Set-AutomationVariable** tevékenység. Nem hozható létre vagy módosítsa az értéket egy változó komplex típus a portálon, de megadhatja a Windows PowerShell segítségével bármilyen típusú érték. Komplexní typy mezeje egy [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
-Több érték változóhoz tömb vagy hashtable létrehozásával, és mentse a változó tárolhatja.
+Egy tömb vagy kivonattábla létrehozásával és mentésével, a változó változóhoz több érték is tárolhatja.
 
-A rendelkezésre álló Automation változó típusainak listáját a következők:
+Elérhető az Automation változó típusainak listáját a következők:
 
 * Karakterlánc
 * Egész szám
@@ -48,17 +48,17 @@ A rendelkezésre álló Automation változó típusainak listáját a következ�
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
-A következő táblázatban található parancsmagokkal AzureRM, létrehozását és kezelését az automatizálási hitelesítő eszközök a Windows PowerShell használatával történik. Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető Automation-forgatókönyveket és a DSC-konfigurációk.
+Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése automation hitelesítő eszközök a Windows PowerShell használatával történik. Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető a Automation-runbookok és a DSC-konfigurációkat használhatnak.
 
 | Parancsmagok | Leírás |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Egy létező változó értékét kérdezi le.|
-|[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Új változót hoz létre, és beállítja az értékét.|
-|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Eltávolít egy létező változó.|
+|[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Új változót hoz létre, és beállítja annak értékét.|
+|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Eltávolítja a meglévő változókat.|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Beállítja egy létező változó értékét.|
 
 ## <a name="activities"></a>Tevékenységek
-Az alábbi táblázatban a tevékenységek a runbookok és a DSC-konfigurációk hitelesítő adatok eléréséhez használt.
+Az alábbi táblázatban felsorolt tevékenységek a runbookok és a DSC-konfigurációk hitelesítő adatok elérésére használhatók.
 
 | Tevékenységek | Leírás |
 |:---|:---|
@@ -66,31 +66,31 @@ Az alábbi táblázatban a tevékenységek a runbookok és a DSC-konfigurációk
 |Set-AutomationVariable|Beállítja egy létező változó értékét.|
 
 > [!NOTE] 
-> Kerülendő a változók használata a – Name paraméterében **Get-AutomationVariable** a runbookot vagy a DSC-konfiguráció számára, mivel ez megnehezítheti a runbookok vagy a DSC-konfiguráció és az Automation-változók közti függőségek tervezési időben.
+> Kerülendő a változók használata a – Name paraméterében **Get-AutomationVariable** egy runbook vagy DSC-konfigurációja, mivel ez megnehezítheti a runbook vagy DSC-konfiguráció és automatizálás közti függőségek változók a tervezés során.
 
-Az alábbi táblázatban a funkciók eléréséhez és lekérni a Python2 runbookban található változók használhatók. 
+Az alábbi táblázat a functions elérni és beolvasni a Python2 runbookban található változók használhatók. 
 
-|Python2 funkciók|Leírás|
+|Python2-funkciók|Leírás|
 |:---|:---|
 |automationassets.get_automation_variable|Egy létező változó értékét kérdezi le. |
 |automationassets.set_automation_variable|Beállítja egy létező változó értékét. |
 
 > [!NOTE] 
-> A Python runbook tetején a "automationassets" modul kell importálnia az eszköz funkciók eléréséhez.
+> Importálnia kell a "automationassets" modul a Python-alapú runbook tetején az eszközintelligencia-funkciók eléréséhez.
 
 ## <a name="creating-a-new-automation-variable"></a>Új automatizálási változó létrehozása
 
-### <a name="to-create-a-new-variable-with-the-azure-portal"></a>Új változó létrehozása az Azure portállal
+### <a name="to-create-a-new-variable-with-the-azure-portal"></a>Új változó létrehozása az Azure portal használatával
 
-1. Az Automation-fiók, kattintson a **eszközök** csempe majd a a **eszközök** panelen válassza **változók**.
-2. Az a **változók** csempe, jelölje be **változó hozzáadása**.
-3. Végezze el a beállításokat a a **új változó** panel megnyitásához, és kattintson **létrehozása** az új változó mentéséhez.
+1. Az Automation-fiókjából, kattintson a **eszközök** csempére, majd a a **eszközök** panelen válassza ki **változók**.
+2. Az a **változók** csempéről válassza **változó hozzáadása**.
+3. Végezze el a beállításokat a a **új változó** panelre, és kattintson **létrehozás** az új változó mentéséhez.
 
-### <a name="to-create-a-new-variable-with-windows-powershell"></a>Új változó létrehozása a Windows PowerShell használatával
+### <a name="to-create-a-new-variable-with-windows-powershell"></a>Új változó létrehozása a Windows PowerShell-lel
 
-A [New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) parancsmag új változót hoz létre, és beállítja a kezdeti értékhez. Kérheti le a érték [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable). Ha az érték egy egyszerű típusú, majd, hogy ugyanolyan típusú adja vissza. Ha egy összetett típus, akkor egy **PSCustomObject** adja vissza.
+A [New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) parancsmag új változót hoz létre, és a kezdeti értéket. Az érték használatával lekérheti [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable). Ha az egyszerű típusú érték, majd, hogy ugyanolyan típusú adja vissza. Ha egy összetett típus akkor **PSCustomObject** adja vissza.
 
-Az alábbi Példaparancsok szemléltetik egy karakterlánc típusú változó létrehozása, és térjen vissza az értékét.
+Az alábbi mintaparancsok bemutatják, hogyan hozzon létre egy karakterlánc típusú változót, és visszatér az értékét.
 
     New-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" 
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable' `
@@ -98,7 +98,7 @@ Az alábbi Példaparancsok szemléltetik egy karakterlánc típusú változó l�
     $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 
-Az alábbi Példaparancsok szemléltetik egy összetett típus hozzon létre egy változót, és térjen vissza a tulajdonságait. Ebben az esetben a virtuális gépek objektum **Get-AzureRmVm** szolgál.
+Az alábbi mintaparancsok bemutatják, hogyan hozzon létre egy változót egy összetett típusú, és visszatér a tulajdonságait. Ebben az esetben a virtuális gépek objektum **Get-AzureRmVm** szolgál.
 
     $vm = Get-AzureRmVm -ResourceGroupName "ResourceGroup01" –Name "VM01"
     New-AzureRmAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
@@ -110,16 +110,16 @@ Az alábbi Példaparancsok szemléltetik egy összetett típus hozzon létre egy
 
 
 
-## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Egy változó a runbookot vagy a DSC-konfiguráció használata
+## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Egy változó egy runbook vagy DSC-konfiguráció használata
 
-Használja a **Set-AutomationVariable** automatizálási változó értékét állíthatja be a DSC-konfiguráció, vagy PowerShell-forgatókönyv tevékenység és a **Get-AutomationVariable** ennek lekéréséhez. Ne használja a **Set-AzureRMAutomationVariable** vagy **Get-AzureRMAutomationVariable** parancsmagok a runbookot vagy a DSC-konfiguráció számára, mert azok a munkafolyamat-tevékenységek-nél kevésbé hatékonyak. Akkor is nem lehet lekérdezni a biztonságos változókról, **Get-AzureRMAutomationVariable**. Hozzon létre egy új változót a runbookot vagy a DSC-konfiguráció csak úgy, hogy használja a [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) parancsmag.
+Használja a **Set-AutomationVariable** tevékenység és a egy automatizálási változó értékét állíthatja be egy PowerShell-runbook vagy DSC-konfiguráció, és a **Get-AutomationVariable** is lekérheti azt. Ne használja a **Set-AzureRMAutomationVariable** vagy **Get-AzureRMAutomationVariable** parancsmagok a runbookból vagy DSC-konfigurációból óta kevésbé hatékonyak, mint a munkafolyamat-tevékenységek. Emellett nem lehet beolvasni a biztonságos változók értékét **Get-AzureRMAutomationVariable**. Hozzon létre egy új változót a runbookból vagy DSC-konfigurációból belül csak úgy, hogy használja a [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) parancsmagot.
 
 
-### <a name="textual-runbook-samples"></a>Szöveges forgatókönyvként minták
+### <a name="textual-runbook-samples"></a>Szöveges runbook-minták
 
-#### <a name="setting-and-retrieving-a-simple-value-from-a-variable"></a>És egy egyszerű érték a változóból beolvasása
+#### <a name="setting-and-retrieving-a-simple-value-from-a-variable"></a>Beállítási és lekérési egyszerű érték a változóból
 
-Az alábbi Példaparancsok szemléltetik egy szöveges forgatókönyvként változó beolvasása és beállítása. A példában feltételezzük, hogy az egész szám típusú nevű *NumberOfIterations* és *NumberOfRunnings* és nevű, karakterlánc típusú változó *példában* már létre van hozva.
+Az alábbi mintaparancsok bemutatják, hogyan beállítása és lekérése egy változót, a szöveges runbookok. Ebben a példában azt feltételezzük, hogy az egész szám típusú nevű *NumberOfIterations* és *NumberOfRunnings* és nevű, karakterlánc típusú változót *példában feltételezzük* rendelkezik már létezik.
 
     $NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
     $NumberOfRunnings = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
@@ -132,14 +132,14 @@ Az alábbi Példaparancsok szemléltetik egy szöveges forgatókönyvként vált
     }
     Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>És egy összetett objektumot egy változóban beolvasása
+#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>Beállítás és a egy összetett objektumot egy változóban beolvasása
 
-Az alábbi mintakód bemutatja, hogyan szöveges forgatókönyvként összetett érték egy változó frissítése. Ez a példa egy Azure virtuális gépen a beolvasott **Get-AzureVM** és egy meglévő automatizálási változó mentve.  A [változó típusok](#variable-types), ez egy PSCustomObject tárolja.
+Az alábbi mintakód bemutatja, hogyan frissítheti egy változót egy összetett értéket képviselő szöveges runbookok. Ebben a példában az Azure virtuális gép kérhető le **Get-AzureVM** és a egy meglévő Automation változó mentve.  A [változótípusok](#variable-types), ez egy PSCustomObject van tárolva.
 
     $vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
     Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
 
-Az alábbi kódban értéke olvassa be a változót, és a virtuális gép indításához használt.
+Az alábbi kódban értékét olvassa be a változót, és a virtuális gép indításához használt.
 
     $vmObject = Get-AutomationVariable -Name "MyComplexVariable"
     if ($vmObject.PowerState -eq 'Stopped') {
@@ -147,14 +147,14 @@ Az alábbi kódban értéke olvassa be a változót, és a virtuális gép indí
     }
 
 
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>És egy gyűjtemény változóként beolvasása
+#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>Beállítás és a egy változóban gyűjtemény beolvasása
 
-Az alábbi mintakód bemutatja, hogyan használhat egy változót a szöveges forgatókönyvként összetett értékek gyűjteménye. Ez a példa több Azure virtuális gépeken a rendszer beolvassa **Get-AzureVM** és egy meglévő automatizálási változó mentve. A [változó típusok](#variable-types), ez PSCustomObjects gyűjteménye tárolja.
+Az alábbi mintakód bemutatja, hogyan használhat egy változót az összetett értékek a szöveges runbookok. Ebben a példában a több Azure-beli virtuális gépek a blobnevet **Get-AzureVM** és a egy meglévő Automation változó mentve. A [változótípusok](#variable-types), a tárolás PSCustomObjects gyűjteménye.
 
     $vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}     
     Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
 
-A következő kódrészlet a gyűjtemény olvassa be a változót, és minden virtuális gép indításához használt.
+Az alábbi kódot a gyűjtemény olvassa be a változót, és minden virtuális gép indításához használt.
 
     $vmValues = Get-AutomationVariable -Name "MyComplexVariable"
     ForEach ($vmValue in $vmValues)
@@ -164,8 +164,8 @@ A következő kódrészlet a gyűjtemény olvassa be a változót, és minden vi
        }
     }
     
-#### <a name="setting-and-retrieving-a-variable-in-python2"></a>És egy változó Python2 beolvasása
-Az alábbi mintakód bemutatja, hogyan használhat egy változót, egy változót, és egy nem létező változó egy Python2 runbook kivétel kezelése.
+#### <a name="setting-and-retrieving-a-variable-in-python2"></a>És a Python2-változó beolvasása
+Az alábbi mintakód bemutatja, hogyan változók használata, állítson be egy változót és a egy nem létező változó a Python2-forgatókönyvem kivétel kezeléséhez.
 
     import automationassets
     from automationassets import AutomationAssetNotFound
@@ -186,18 +186,18 @@ Az alábbi mintakód bemutatja, hogyan használhat egy változót, egy változó
         print "variable not found"
 
 
-### <a name="graphical-runbook-samples"></a>Grafikus forgatókönyv minták
+### <a name="graphical-runbook-samples"></a>Grafikus runbook-minták
 
-A grafikus runbookokban, vegye fel a **Get-AutomationVariable** vagy **Set-AutomationVariable** a változó a könyvtár ablaktáblán grafikus szerkesztő csomagot jobb gombbal, majd válassza a kívánt tevékenységet.
+A grafikus runbookokban, adja hozzá a **Get-AutomationVariable** vagy **Set-AutomationVariable** kattintson a jobb gombbal a változó a könyvtár ablaktáblán, a grafikus szerkesztő, és kiválasztja a tevékenységet, szeretné.
 
-![Vászonra változó hozzáadása](media/automation-variables/runbook-variable-add-canvas.png)
+![Adja hozzá a vászonhoz változót](media/automation-variables/runbook-variable-add-canvas.png)
 
-#### <a name="setting-values-in-a-variable"></a>A beállítás értéke egy változó
-Az alábbi ábrán egy változó frissíteni egy grafikus forgatókönyv egyszerű érték minta tevékenységeket. Ez a példa egy Azure virtuális gép a beolvasott **Get-AzureRmVM** és a számítógép nevét egy létező automatizálási változó karakterlánc típusú vannak mentve. Nem számít, hogy a [egy folyamat vagy feladatütemezési](automation-graphical-authoring-intro.md#links-and-workflow) óta csak egyetlen objektumot várt kimenet.
+#### <a name="setting-values-in-a-variable"></a>Egy változó értékeinek beállítása
+Az alábbi képen látható a minta tevékenységeket változó frissíteni egy grafikus runbook egyszerű értékkel. Ebben a példában egy Azure virtuális gépen kérhető le **Get-AzureRmVM** és a egy meglévő Automation változó karakterlánc típusú menti a számítógép nevét. Nem számít-e a [hivatkozás egy folyamat vagy egy feladatütemezési](automation-graphical-authoring-intro.md#links-and-workflow) mivel csak egyetlen objektumot várt a kimenetben.
 
 ![Egyszerű változó beállítása](media/automation-variables/runbook-set-simple-variable.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Tevékenységek összekapcsolása a grafikus szerzői kapcsolatos további információkért lásd: [grafikus szerzői hivatkozások](automation-graphical-authoring-intro.md#links-and-workflow)
+* Tevékenységek összekapcsolása a grafikus létrehozásról kapcsolatos további információkért lásd: [hivatkozások a grafikus létrehozásról](automation-graphical-authoring-intro.md#links-and-workflow)
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md). 
