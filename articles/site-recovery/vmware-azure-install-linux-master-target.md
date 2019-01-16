@@ -1,17 +1,19 @@
 ---
 title: Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez helyszíni helyhez |} A Microsoft Docs
 description: Ismerje meg, hogyan állítható be egy Linux-fő célkiszolgálót egy helyszíni helyre történő feladat-visszavétel VMware virtuális gépek vészhelyreállítása az Azure-ban az Azure Site Recovery során.
-author: nsoneji
+author: mayurigupta13
+services: site-recovery
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 09f4637c24b146394dc0299e60e729c07420150a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.author: mayg
+ms.openlocfilehash: befc979b84c5ace3b8c787b184e52f09ada9ea2b
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974373"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321408"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -50,8 +52,8 @@ A következő támogatott Ubuntu kernelekkel támogatottak.
 |Kernel-sorozat  |Legfeljebb  |
 |---------|---------|
 |4.4      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-Generic         |
-|4.10     |4.10.0-24-Generic        |
+|4.8      |4.8.0-56-generic         |
+|4.10     |4.10.0-24-generic        |
 
 
 ## <a name="deploy-the-master-target-server"></a>A fő célkiszolgáló telepítése
@@ -349,7 +351,7 @@ Látni fogja, hogy a **verzió** mező lehetővé teszi a fő célkiszolgáló v
 * A fő célkiszolgáló nem kell minden olyan pillanatképek a virtuális gépen. Ha pillanatképeket, feladat-visszavétele sikertelen lesz.
 
 * Egyes egyéni Hálózatiadapter-konfigurációk miatt a hálózati adapter le van tiltva, a rendszerindítás során, és a fő célkiszolgáló ügynököt nem lehet inicializálni. Győződjön meg arról, hogy a következő tulajdonságai megfelelően vannak-e beállítva. Ellenőrizze, hogy ezek a tulajdonságok a Ethernet kártya fájl /etc/sysconfig/network-scripts/ifcfg-eth *.
-    * BOOTPROTO = dhcp
+    * BOOTPROTO=dhcp
     * ONBOOT = Igen
 
 

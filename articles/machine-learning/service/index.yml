@@ -1,68 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: da46b78d764465d8b9e5ce438b0843e0b79e16a9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9fe3efba6cc18839f7d65d2f19dfb165bbdecc05
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271147"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331282"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
   title: Dokumentáció – Azure Machine Learning service – oktatóanyagok és API-referencia | Microsoft Docs
   description: Megtudhatja, hogyan építhet be intelligens algoritmusokat alkalmazásokba és webhelyekre. Scikit-learn, TensorFlow, Pytorch és egyéb Python-alapú keretrendszerek használata egy gépi tanulási modell létrehozásához és helyileg vagy a felhőben történő betanításához. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
   services: machine-learning
-  author: j-martens
-  manager: jhubbard
   ms.service: machine-learning
   ms.component: core
+  ms.topic: landing-page
+  manager: jhubbard
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 12/04/2018
+  ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/04/2018
-  ms.author: jmartens
-  ms.custom: seodec18
 abstract:
   description: Megtudhatja, hogyan építhet be intelligens algoritmusokat alkalmazásokba és webhelyekre. Scikit-learn, TensorFlow, Pytorch és egyéb Python-alapú keretrendszerek használata egy gépi tanulási modell létrehozásához és helyileg vagy a felhőben történő betanításához. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: Ismerkedés az Azure Machine Learning service-szel
-      href: /azure/machine-learning/service/overview-what-is-azure-ml
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/overview-what-is-azure-ml
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: Erőforrások beállítása az Azure Machine Learning szolgáltatáshoz.
+    text: 'A rövid útmutatók segítségével megismerheti, hogyan állíthatja be a munkaterületet és az erőforrásokat az Azure Machine Learning szolgáltatáshoz:'
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started.md">Első lépések az Azure Portalon </a>
-    - html: <a href="quickstart-create-workspace-with-python.md">Bevezetés a Python használatába </a>
+    - html: Bevezetés az <a href="quickstart-get-started">Azure Portal</a> használatába.
+    - html: Bevezetés a <a href="quickstart-create-workspace-with-python">Python</a> használatába.
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan állítson be egy kísérletet, illetve hogyan működtesse modelljeit.
-  - type: paragraph
-    text: <b>Képbesorolási oktatóanyag MNIST-adatokkal:</b>
+    text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan működtetheti gépi tanulási modelljeit:'
   - type: list
     style: unordered
     items:
-    - html: '1. rész: <a href="tutorial-train-models-with-aml">Saját gépi tanulási modell betanítása</a>'
-    - html: '2. rész: <a href="tutorial-deploy-models-with-aml">A modell üzembe helyezése</a>'
+    - html: <a href="tutorial-train-models-with-aml">Képbesorolási modellek betanítása és üzembe helyezése</a> (<b>kétrészes sorozat</b>).
+    - html: <a href="tutorial-data-prep">Adatok előkészítése és automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).<br>&nbsp;
   - type: paragraph
-    text: <b>Regressziós modellezési oktatóanyag NYC Taxi adataival:</b>
-  - type: list
-    style: unordered
-    items:
-    - html: '1. rész: <a href="tutorial-data-prep">NYC Taxi adatainak előkészítése modellezéshez</a>'
-    - html: '2. rész: <a href="tutorial-auto-train-models">Automatizált gépi tanulás használata modellek létrehozásához</a>'
-  - type: paragraph
-    text: '<b>Mintanotebookok</b>: Ismerkedjen meg a szolgáltatással ezekkel a <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://aka.ms/aml-notebooks">Jupyter-notebookokkal</a> a GitHubon.'
+    text: '<b>Minták</b>: Ismerkedjen meg a szolgáltatással ezekkel a <a href="https://aka.ms/aml-notebooks">Jupyter-notebookokkal</a> a GitHubon.'
 - title: Referencia
   items:
   - type: list

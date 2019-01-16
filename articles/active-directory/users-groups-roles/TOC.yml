@@ -23,14 +23,12 @@ items:
   items:
   - name: Azure AD rendszergazdai szerepkörök delegálása
     href: roles-concept-delegation.md
-  - name: A csoportalapú licencelés alapjai
-    href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
   - name: Alapértelmezett felhasználói engedélyek összehasonlítása
     href: /azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Azure és Azure AD rendszergazdai szerepkörök
+  - name: Az Azure és az Azure AD szerepköreinek összehasonlítása
     href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
-  - name: Szolgáltatási korlátozások
-    href: directory-service-limits-restrictions.md
+  - name: A csoportalapú licencelés alapjai
+    href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
   expanded: true
 - name: Útmutatók
   items:
@@ -96,6 +94,8 @@ items:
       href: groups-restore-deleted.md
     - name: Csoportbeállítások kezelése
       href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Önkiszolgáló működés beállítása csoport számára
+      href: groups-self-service-management.md
     - name: Dinamikus csoportok
       items:
       - name: Dinamikus csoport létrehozása
@@ -104,8 +104,6 @@ items:
         href: groups-dynamic-membership.md
       - name: Csoporttagság típusának módosítása
         href: groups-change-type.md
-    - name: Felhasználó által létrehozott csoportok beállítása
-      href: groups-self-service-management.md
   - name: Licencek hozzárendelése
     items:
     - name: Licencek hozzárendelése egy csoporthoz
@@ -120,7 +118,7 @@ items:
       href: licensing-group-advanced.md
     - name: Csoportalapú licencelés a PowerShell-lel
       href: licensing-ps-examples.md
-    - name: Termékek és szolgáltatási csomagok azonosítói
+    - name: Szolgáltatáscsomag-azonosítók licenckezeléshez
       href: licensing-service-plan-reference.md
   - name: az Azure AD-rendszergazdai szerepkörök összehasonlítása
     items:
@@ -161,9 +159,11 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell for Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: e2244b8058c53ff8d921bc54bfed71d6fe4d0df9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+  - name: Azure AD szolgáltatási korlátozások
+    href: directory-service-limits-restrictions.md
+ms.openlocfilehash: 5556185bfad0cebf409b5f95fa5c26f6779d5903
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133570"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329939"
