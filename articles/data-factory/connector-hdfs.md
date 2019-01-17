@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 01/16/2019
 ms.author: jingwang
-ms.openlocfilehash: a5df9d4d323158ee52c872b0122fdd28d9f74979
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 161683b48ae66edc621981142c538f8bce44a2b6
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019860"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352172"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HDFS-ből
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-hdfs-connector.md)
 > * [Aktuális verzió](connector-hdfs.md)
 
@@ -39,6 +39,9 @@ A HDFS-összekötőt, a következőket támogatja:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Adatokat másol egy HDFS, amely nem érhető el nyilvánosan, akkor be kell állítania egy helyi Integration Runtime. Lásd: [helyi Integration Runtime](concepts-integration-runtime.md) további részleteket a cikkben.
+
+> [!NOTE]
+> Ellenőrizze, hogy az integrációs modul el tud érni az **összes** a [name kiszolgáló]: [csomópont port name] és [csomópont]: [adatportot csomópont], a Hadoop-fürtön. Alapértelmezés szerint a [name csomópont port] 50070, és alapértelmezett [adatportot csomópont] 50075.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -111,7 +114,7 @@ Adatok másolása a HDFS-ből, állítsa be a type tulajdonság, az adatkészlet
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **Fájlmegosztás** |Igen |
+| type | A type tulajdonságot az adatkészlet értékre kell állítani: **FileShare** |Igen |
 | folderPath | A mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Például: mappát vagy almappát / |Igen |
 | fileName |  **Név vagy helyettesítő karaktert tartalmazó szűrő** az fájl(ok) a megadott "folderPath" alatt. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>Szűrő esetén engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használat `^` elkerülésére, ha a fájl tényleges nevét helyettesítő elemet vagy a escape karaktere belül. |Nem |
 | Formátum | Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha meg szeretné elemezni az adott formátumú fájlok, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszokat. |Nem (csak a bináris másolás esetén) |
@@ -243,8 +246,8 @@ Alább példaként szolgál a másolási tevékenység konfigurációs másolhat
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS-összekötő Kerberos-hitelesítés használata
 
 A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés használatát a HDFS-összekötőben két lehetőség van. Kiválaszthatja, hogy a legjobban az esetet.
-* 1. lehetőség: [Helyi integrációs modul gép csatlakozzon a Kerberos-tartomány](#kerberos-join-realm)
-* 2. lehetőség: [Windows-tartomány és a Kerberos-tartomány közötti kölcsönös megbízhatósági kapcsolat engedélyezése](#kerberos-mutual-trust)
+* Option 1: [Helyi integrációs modul gép csatlakozzon a Kerberos-tartomány](#kerberos-join-realm)
+* Option 2: [Windows-tartomány és a Kerberos-tartomány közötti kölcsönös megbízhatósági kapcsolat engedélyezése](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>1. lehetőség: Helyi integrációs modul gép csatlakozzon a Kerberos-tartomány
 
