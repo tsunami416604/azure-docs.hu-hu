@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 66f33dd0edc44a490c3ccaf989d6d9308e615bb0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 06a3ac4520a40369c095e57f8e92978fdb280b51
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246109"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359586"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -42,7 +42,7 @@ A jelszóvisszaíró biztosítja:
 * **Nincs szükség semmilyen bejövő tűzfalszabályokat**: A jelszóvisszaírás egy Azure Service Bus relay használja, mint az alapul szolgáló kommunikációs csatornát. Minden kommunikáció a 443-as porton keresztül akkor kimenő forgalomról beszélünk.
 
 > [!Note]
-> A jelszóvisszaíró található védett csoportok a helyszíni Active Directoryban lévő felhasználói fiókok nem használható. Védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok az Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+> A jelszóvisszaíró található védett csoportok a helyszíni Active Directoryban lévő felhasználói fiókok nem használható. Rendszergazdai fiókok belül található védett csoportok a helyszíni AD is használható a jelszóvisszaíró használata közben. Védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok az Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket

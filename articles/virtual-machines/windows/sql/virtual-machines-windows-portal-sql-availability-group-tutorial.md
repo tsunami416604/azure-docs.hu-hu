@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 1605fdc5e49d2b8e95a2876dea8dff378ee33e2e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232277"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359714"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
 
@@ -45,12 +45,15 @@ Az alábbi táblázat az oktatóanyag elkezdése előtt hajtsa végre az előfel
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | A fürt tanúsító fájlmegosztás |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Az SQL Server-szolgáltatásfiók | Tartományi fiók |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Az SQL Server Agent szolgáltatásfiók | Tartományi fiók |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Tűzfal portok megnyitása | -SQL kiszolgáló: **1433-as** alapértelmezett példány <br/> -Adatbázis-tükrözési végpont: **5022** vagy minden elérhető port <br/> – Rendelkezésre állási csoport terheléselosztó IP-cím állapotmintát betöltése: **59999** vagy minden elérhető port <br/> -Fürt core load balancer IP cím állapotadat-mintavétel: **58888** vagy minden elérhető port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Tűzfal portok megnyitása | - SQL Server: **1433-as** alapértelmezett példány <br/> -Adatbázis-tükrözési végpont: **5022** vagy minden elérhető port <br/> – Rendelkezésre állási csoport terheléselosztó IP-cím állapotmintát betöltése: **59999** vagy minden elérhető port <br/> -Fürt core load balancer IP cím állapotadat-mintavétel: **58888** vagy minden elérhető port |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Adja hozzá a Feladatátvételi fürtszolgáltatáshoz | Mindkét SQL-kiszolgálókat kell ezt a szolgáltatást |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Telepítési tartományi fiók | -Minden egyes SQL Server helyi rendszergazdája <br/> -SQL Server SysAdmin (rendszergazda) rögzített kiszolgálói szerepkör az SQL Server minden példányának tagság  |
 
 
 Az oktatóanyag elkezdéséhez kell [Always On rendelkezésre állási csoportok létrehozásához az Azure Virtual machines gépeken előfeltételeinek teljesítéséhez](virtual-machines-windows-portal-sql-availability-group-prereq.md). Ha már végrehajtotta az Előfeltételek is ugorhat [-fürt létrehozása](#CreateCluster).
+
+  >[!NOTE]
+  > A jelen oktatóanyagban szereplő lépések számos automatizálható az Azure gyorsindítási sablon használatával. További információkért lásd: [WSFC létrehozása, a figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép az Azure gyorsindítási sablonok](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -419,7 +422,7 @@ A terheléselosztó konfigurálásához szeretne egy háttérkészlet, a mintav�
    | **Protocol (Protokoll)** | Válassza a TCP |TCP |
    | **Port** | A port használata a rendelkezésre állási csoport figyelője | 1433 |
    | **Háttérport** | Ha a nem fix IP-értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 1433 |
-   | **Mintavétel** |A mintavétel megadott név | SQLAlwaysOnEndPointProbe |
+   | **Probe** |A mintavétel megadott név | SQLAlwaysOnEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Nincsenek** |
    | **Üresjárat időkorlátja** | A TCP-kapcsolat nyitva tartása perc | 4 |
    | **Nem fix IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |
@@ -459,7 +462,7 @@ A WSFC-IP-cím is kell lennie a terheléselosztón.
    | **Protocol (Protokoll)** | Válassza a TCP |TCP |
    | **Port** | A port használata a fürt IP-címét. Ez az egy szabad portot, amely nem szolgál a figyelő mintavételi portot. | 58888 |
    | **Háttérport** | Ha a nem fix IP-értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 58888 |
-   | **Mintavétel** |A mintavétel megadott név | WSFCEndPointProbe |
+   | **Probe** |A mintavétel megadott név | WSFCEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Nincsenek** |
    | **Üresjárat időkorlátja** | A TCP-kapcsolat nyitva tartása perc | 4 |
    | **Nem fix IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 48a0bf2a7209812af23c3dd9eec9703ec5826fa9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019571"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353010"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - függvények és rendszerváltozók
 > [!NOTE]
@@ -99,7 +99,7 @@ Az alábbi táblázatok sorolják fel az Azure Data Factoryban összes funkció 
 | Szöveg |Format(X) |X: Karakterlánc-változóhoz |Formázza a szöveget (használata `\\'` escape-kombinációt `'` karakter).|
 
 > [!IMPORTANT]
-> Egy másik függvényen belül a funkció használatakor nem kell használni **$$** a belső függvény előtag. Például: $$Text.Format ("PartitionKey eq \\" my_pkey_filter_value\\"és a rowkey tulajdonságok esetén ge \\" {0: éééé-hh-nn óó}\\'', Time.AddHours (SliceStart, -6)). Ebben a példában láthatja, hogy **$$** előtag nem használatos a **Time.AddHours** függvény. 
+> Egy másik függvényen belül a funkció használatakor nem kell használni **$$** a belső függvény előtag. For example: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). Ebben a példában láthatja, hogy **$$** előtag nem használatos a **Time.AddHours** függvény. 
 
 #### <a name="example"></a>Példa
 A következő példa a Hive-tevékenység bemeneti és kimeneti paraméterek használatával határozza a `Text.Format` függvény és a SliceStart rendszerváltozóhoz. 
@@ -153,7 +153,7 @@ A következő példában a dátum és idő paraméter a tárolt eljárási tevé
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample",
+                    "storedProcedureName": "usp_sample",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                     }

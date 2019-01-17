@@ -9,25 +9,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.custom: seodec2018
-ms.openlocfilehash: 40291b105eb39b44da0b0697f5808d819291e457
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5a39021367c2f51125876081e9174eb372d7b9c9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630213"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353158"
 ---
-# <a name="indexes-in-azure-search"></a>Indexek az Azure Search szolgáltatásban
-> [!div class="op_single_selector"]
-> * [Áttekintés](search-what-is-an-index.md)
-> * [Portál](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
+# <a name="indexes-and-indexing-overview-in-azure-search"></a>Indexek és az Azure Search szolgáltatásban az indexelő áttekintése
 
-Az Azure Search szolgáltatásban az *index* az Azure Search szolgáltatás által használt *dokumentumok* és egyéb szerkezetek állandó tárolója. A dokumentum az indexben lévő kereshető adatok egyedi egysége. Az elektronikus kereskedelemmel foglalkozó ügyfelek például minden egyes értékesített áru, egy hírközlő szervezet pedig minden egyes cikk esetében rendelkezhet dokumentumokkal. Ezen fogalmak ismertebb, adatbázisbeli megfelelőivel élve: az *index* koncepcionálisan egy *táblához* hasonlít, a *dokumentumok* pedig nagyjából a tábla *sorainak* felelnek meg.
+Az Azure Search- *index* állandó tárolója van *dokumentumok* és egyéb szerkezetek szűrt és a teljes szöveges keresés az Azure Search szolgáltatás használt. A dokumentum az indexben lévő kereshető adatok egyedi egysége. Az elektronikus kereskedelemmel foglalkozó ügyfelek például minden egyes értékesített áru, egy hírközlő szervezet pedig minden egyes cikk esetében rendelkezhet dokumentumokkal. Ezen fogalmak ismertebb, adatbázisbeli megfelelőivel élve: az *index* koncepcionálisan egy *táblához* hasonlít, a *dokumentumok* pedig nagyjából a tábla *sorainak* felelnek meg.
 
-Dokumentumok hozzáadásakor/feltöltésekor, illetve keresési lekérdezéseknek az Azure Search szolgáltatásba történő küldésekor a kérések a Search szolgáltatás adott indexének lesznek elküldve.
+Hozzáadásakor vagy dokumentumok feltöltése vagy keresési lekérdezéseknek az Azure Search küld kérelmeket az adott indexének a search szolgáltatás. Dokumentumok hozzáadása egy indexbe nevezzük *indexelő*.
 
 ## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Mezőtípusok és -attribútumok egy Azure Search-indexben
 A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.

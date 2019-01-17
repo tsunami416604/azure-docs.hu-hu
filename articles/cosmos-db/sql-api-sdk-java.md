@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: SQL Java API, SDK és -erőforrások'
+title: 'Az Azure Cosmos DB: SQL Java API, SDK & resources'
 description: Mindent megtudhat a SQL Java API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB SQL Java SDK minden verziója közötti végzett módosításokat.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: e62276debf121cc39fc5642ed8e5a9faf6b876ed
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039639"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352954"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Java SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -137,7 +137,7 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * Kijavítva a hiba, a kapcsolat-kezelés közvetlen kapcsolódás módban kapcsolat adatszivárgás megelőzése érdekében.
-* Kijavítva a hiba a felső lekérdezésben, ahol NullReferenece kivétel generálhat.
+* Kijavítva a hiba a felső lekérdezésben, ahol NullReference kivétel generálhat.
 * Továbbfejlesztett teljesítmény a belső gyorsítótárak esetében a hálózati hívások számának csökkentésével.
 * Új ügyfélállapotok kódjai, ActivityID és a kérelem URI-t DocumentClientException hibaelhárítást.
 

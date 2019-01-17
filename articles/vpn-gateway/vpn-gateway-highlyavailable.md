@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058387"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353277"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között
 Ez a cikk áttekintést nyújt a létesítmények közötti és a virtuális hálózatok közötti kapcsolatokra vonatkozó magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
@@ -49,7 +49,8 @@ Ez a konfiguráció több aktív alagutat biztosít ugyanabból az Azure-alapú 
 3. Ehhez a konfigurációhoz BGP szükséges. A VPN-eszközöknek megfelelő összes helyi hálózati átjáróhoz meg kell adnia egy egyedi BGP társ IP-címet a BgpPeerIpAddress tulajdonságban.
 4. Az egyes helyi hálózati átjárók AddressPrefix tulajdonságmezői nem lehetnek egymással átfedésben. A BgpPeerIpAddress tulajdonságot /32 CIDR formátumban kell megadnia az AddressPrefix mezőben, például így: 10.200.200.254/32.
 5. Az azonos helyszíni hálózatok előtagjait BGP használatával kell meghirdetnie az Azure-alapú VPN-átjárónak, hogy a forgalom továbbítása egyszerre történjen ezeken az alagutakon keresztül.
-6. Minden kapcsolat beleszámít az Azure-alapú VPN-átjáró alagútjainak maximális számába: 10 az alapszintű és standard, illetve 30 a HighPerformance termékváltozat esetében. 
+6. Azonos költségű több utas útválasztás (ECMP) kell használnia.
+7. Minden kapcsolat beleszámít az Azure-alapú VPN-átjáró alagútjainak maximális számába: 10 az alapszintű és standard, illetve 30 a HighPerformance termékváltozat esetében. 
 
 Ebben a konfigurációban az Azure-alapú VPN-átjáró továbbra is aktív-készenléti állapotban van, ezért a feladatátvétel és a rövid megszakítás továbbra is bekövetkezik a [fent](#activestandby) leírtak szerint. Ez a beállítás viszont védelmet nyújt a hibák vagy megszakítások ellen a helyszíni hálózat és a VPN-eszközök esetében.
 

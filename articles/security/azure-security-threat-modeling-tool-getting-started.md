@@ -3,9 +3,9 @@ title: Első lépések – Microsoft Threat Modeling Tool – Azure |} A Microso
 description: Ez a működés a Threat Modeling Tool kiemelése részletesebb áttekintése.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: jegeib
+ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096774"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359476"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool – első lépések
 
-A felhő- és vállalati eszközök a biztonsági csapat, amely a fenyegetések modellezése eszköz előzetes év korábbi részében egy szabad  **[kattintson-letöltési](https://aka.ms/tmtpreview)**. A kézbesítési mechanizmus a változás lehetővé teszi számunkra az küldje le a legújabb javítások és hibajavítások az ügyfelek számára minden alkalommal, amikor megnyitják az eszközt, így könnyebben karbantartásáról és használatáról.
+A Microsoft Threat Modeling eszköz 2018 jelent meg, a végleges verzió 2018 szeptember egy szabad  **[kattintson-letöltési](https://aka.ms/threatmodelingtool)**. A kézbesítési mechanizmus a változás lehetővé teszi számunkra az küldje le a legújabb javítások és hibajavítások az ügyfelek számára minden alkalommal, amikor megnyitják az eszközt, így könnyebben karbantartásáról és használatáról.
 Ez a cikk végigvezeti az első lépései a Microsoft SDL fenyegetés megközelítés modellezés, és bemutatja, hogyan fejleszthet nagyszerű modelljei a biztonsági folyamat egy vázaként eszközének használata.
 
 Ez a cikk a meglévő ismeretek a modellezés megközelítés SDL fenyegetés épül. Tekintse át, a **[Threat Modeling webalkalmazások](https://msdn.microsoft.com/library/ms978516.aspx)** és a egy archivált verzióját **[tárhat fel biztonsági hibára derült megközelítéssel a STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Az MSDN-cikkben 2006 közzé.
@@ -67,22 +67,22 @@ Ebben a szakaszban azt kövesse:
 
 Amelyben a folyamatot az első fenyegetések modellezése fejlesztéséhez.
 
-> Ricardo: Üdv mindenkinek Cristina, dolgoztam a fenyegetés modell diagramon, és győződjön meg arról, hogy kaptunk részleteit megfelelő. Segíthet nekem, tekintse át?
-> Cristina: feltétlenül. Tekintsük át.
+> Ricardo: Üdv mindenkinek Cristina, e, amelyeken dolgozott a fenyegetés modellek diagramja, és ezzel jobb fájt a részleteket. Segíthet nekem, tekintse át?
+> Cristina: Abszolút. Tekintsük át.
 > Ricardo megnyitja az eszközt, és megosztja a képernyő Cristina.
 
 ![Alapszintű fenyegetések modellezése](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok, könnyen érthető megjegyzésblokkok írására, úgy tűnik, de az is vezeti végig me azt?
-> Ricardo: róla! A következő táblázat összefoglalja:
+> Cristina: Rendben, megkeresi a havidíjba vannak foglalva, de is vezeti végig me azt?
+> Ricardo: Róla! A következő táblázat összefoglalja:
 > - Az emberi felhasználói megjelenítése egy külső entitásként – négyzet
 > - Ezek használt parancsok küldését ezen a webalkalmazás-kiszolgáló – a kör
 > - A webalkalmazás-kiszolgáló (két párhuzamos vonalak) adatbázis van tanácsadás
 
 Milyen Ricardo mutatott Cristina egy rövid a DFD  **[adatfolyam-Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. A Threat Modeling Tool lehetővé teszi, hogy a felhasználók számára a bizalmi kapcsolat határain mutatja, hogy hol különböző entitások vezérlőelem a piros pontozott vonal jelzi. Például a rendszergazdák igényelnek az Active Directory rendszer hitelesítés céljára, ezért az Active Directory a hatókörükön kívüli.
 
-> Cristina: Nekem megfelelő néz ki. Mi a helyzet a fenyegetések?
-> Ricardo: Én választom, megjelenítése.
+> Cristina: Úgy tűnik megfelelő a számomra. Mi a helyzet a fenyegetések?
+> Ricardo: Szeretnék, megjelenítése.
 
 ## <a name="analyzing-threats"></a>Fenyegetések elemzésével
 
@@ -111,7 +111,7 @@ A leírás miatt a fontosnak tartja meg, hogy a felhasználók hamisíthatók, h
 Ricardo került, a fenyegetések Információfelfedés alatt, mivel ő is felismerte, hogy a hozzáférés-vezérlési tervet a naplózás és jelentéskészítés céljából egyes csak olvasható-fiókok szükséges. Phil testreszabásakor nem tudta, hogy ez legyen az új fenyegetéseket, de kockázatcsökkentő is azonos, így ő külön jelezve a fenyegetés.
 Ő is egy kicsit részletesebben kapcsolatos információk felfedése úgy Gondoltuk, és a adatmegfelelőség, a biztonsági mentési szalagot a titkosítás, az üzemeltetési csapat egy feladatot kell is mellett.
 
-Nem alkalmazható a kialakítás miatt a meglévő megoldásokkal kapcsolatban, vagy a biztonsági fenyegetések garantálja, hogy módosítani lehet a "Nem alkalmazható" állapot legördülő listából. Nincsenek három egyéb lehetőségek: nem indult el – alapértelmezett kijelölést, kell vizsgálat – használt követéséhez elemek és Mitigated – után a rendszer teljes mértékben dolgozott.
+Nem alkalmazható a kialakítás miatt a meglévő megoldásokkal kapcsolatban, vagy a biztonsági fenyegetések garantálja, hogy módosítani lehet a "Nem alkalmazható" állapot legördülő listából. Nincsenek három egyéb lehetőségek: Nem indult el – alapértelmezett kijelölést, kell vizsgálat – segítségével nyomon követheti, és csak Mitigated – Miután teljes létrejön a.
 
 ## <a name="reports--sharing"></a>Jelentések és megosztása
 
@@ -143,4 +143,4 @@ A fenyegetés modellezés, hogy már itt bemutatott megközelítés lényegesen 
 
 ## <a name="next-steps"></a>További lépések
 
-Küldés a kérdéseit, megjegyzéseit, és problémákat tmtextsupport@microsoft.com. **[Töltse le](https://aka.ms/tmtpreview)**  a Threat Modeling Tool a kezdéshez.
+Küldés a kérdéseit, megjegyzéseit, és problémákat tmtextsupport@microsoft.com. **[Töltse le](https://aka.ms/threatmodelingtool)**  a Threat Modeling Tool a kezdéshez.

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 5eb04f30fd6766b8df65998b8a4d53797b8341ba
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 95ebdd74fa8be433c7a31f79ad36d4645bc57318
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053551"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354518"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 
 * Közvetlen/TCP átviteli diagnosztikai hozzáadott TransportException, egy belső kivétel típusa, az SDK-t. Kivétel üzenetek szerepelnek, ha ez a típus jelenít meg további információt az ügyfél kapcsolódási problémák elhárításához.
 
-* A hozzáadott új constuctor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
+* A hozzáadott új konstruktor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
 
 * Javításra ahol fejléc null értékű volt nem megfelelő kezelésének biztosítása érdekében.
 
@@ -121,7 +121,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
 * Rögzített KeyNotFoundException a partíció rendelés közötti esetekben a lekérdezések által.
-* Kijavítva a hiba, a select záradékban a LINQ-lekérdezések JsonPropery attribútum lett nem folyamatban figyelembe véve.
+* Kijavítva a hiba, a select záradékban a LINQ-lekérdezések JsonProperty attribútum lett nem folyamatban figyelembe véve.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 

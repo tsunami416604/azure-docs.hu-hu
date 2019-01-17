@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253074"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359833"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az Előfeltételek létrehozásához egy [SQL Server Always On rendelkezésre állási csoportot az Azure-beli virtuális gépek (VM)](virtual-machines-windows-portal-sql-availability-group-tutorial.md). Amikor végzett az előfeltételeket, van egy tartományvezérlő, a két SQL Server virtuális gépek és a egy tanúsító kiszolgáló egyetlen erőforráscsoportra.
 
-**Becsült időtartam**: eltarthat néhány óra múlva, hogy teljesítse az előfeltételeket. Ez idő töltött, virtuális gépekre.
+**Becsült időtartam**: Eltarthat néhány óra múlva, hogy teljesítse az előfeltételeket. Ez idő töltött, virtuális gépekre.
 
 Az alábbi ábra az oktatóanyag során létre.
 
@@ -108,7 +108,7 @@ Az új virtuális hálózat nevű alhálózattal rendelkezik **rendszergazdai**.
 
     Ha **SQL-magas rendelkezésre ÁLLÁS-RG** nem látható, megkereshetjük **erőforráscsoportok** és az erőforráscsoport neve alapján történő szűrést.
 2. Kattintson a **autoHAVNET** az erőforrások listájában. 
-3. Az a **autoHAVNET** virtuális hálózat, a **beállítások** , kattintson a **alhálózatok**.
+3. Az a **autoHAVNET** virtuális hálózat, a **beállítások** kiválasztása **alhálózatok**.
 
     Vegye figyelembe a már létrehozott alhálózat.
 
@@ -125,7 +125,7 @@ A következő táblázat összefoglalja a hálózati konfigurációs beállítá
 | --- | --- |
 | **Name (Név)** |**autoHAVNET** |
 | **Címtér** |Ez az érték attól függ, hogy az elérhető címtereket az előfizetésében. Egy tipikus értéke a 10.0.0.0/16. |
-| **Alhálózat neve** |**rendszergazda** |
+| **Alhálózat neve** |**admin** |
 | **Alhálózati címtartomány** |Ezt az értéket a rendelkezésre álló-címtartományokat az előfizetésében függ. Egy tipikus értéke a 10.0.0.0/24. |
 | **Alhálózat neve** |**sqlsubnet** |
 | **Alhálózati címtartomány** |Ezt az értéket a rendelkezésre álló-címtartományokat az előfizetésében függ. Egy tipikus értéke 10.0.1.0/24. |
@@ -186,10 +186,10 @@ Az alábbi táblázat ezek két gép beállításait:
 | **Méret** |DS1_V2 |
 | **Tárolás** | **Felügyelt lemezek használata** - **Igen** |
 | **Virtuális hálózat** |autoHAVNET |
-| **Alhálózat** |rendszergazda |
+| **Alhálózat** |admin |
 | **Nyilvános IP-cím** |*Neve megegyezik a virtuális gép* |
 | **Hálózati biztonsági csoport** |*Neve megegyezik a virtuális gép* |
-| **A rendelkezésre állási csoport** |adavailabilityset </br>**Tartalék tartományok**: 2</br>**Frissítési tartományok**: 2|
+| **A rendelkezésre állási csoport** |adavailabilityset </br>**Tartalék tartományok**: 2 </br>**Frissítési tartományok**: 2|
 | **Diagnosztika** |Engedélyezve |
 | **Storage-fiók diagnosztikája** |*Automatikusan létrehozott* |
 
@@ -234,7 +234,7 @@ Az alábbi lépésekkel, konfigurálja a **ad-elsődleges-tartományvezérlő** 
     | --- | --- |
     | **Központi telepítés konfigurálása** |**Új erdő hozzáadása**<br/> **Legfelső szintű tartománynév** = corp.contoso.com |
     | **Tartományvezérlő beállításai** |**Címtárszolgáltatás-javító mód jelszavát** = Contoso! 0000<br/>**Jelszó megerősítése** = Contoso! 0000 |
-14. Kattintson a **tovább** haladhat végig a varázsló többi lapján. Az a **szükséges előfeltételek ellenőrzése** lapon, győződjön meg arról, hogy a következő üzenetet látja: **az előfeltétel-ellenőrzés sikeresen lefutott**. Áttekintheti a alkalmazni figyelmeztető üzeneteket, de lehetséges, a telepítés folytatásához.
+14. Kattintson a **tovább** haladhat végig a varázsló többi lapján. Az a **szükséges előfeltételek ellenőrzése** lapon, győződjön meg arról, hogy a következő üzenet jelenik meg: **Az előfeltétel-ellenőrzés sikeresen lefutott**. Áttekintheti a alkalmazni figyelmeztető üzeneteket, de lehetséges, a telepítés folytatásához.
 15. Kattintson az **Install** (Telepítés) gombra. A **ad-elsődleges-tartományvezérlő** virtuális gép automatikusan újraindul.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Vegye figyelembe az elsődleges tartományvezérlő IP-címe
@@ -370,7 +370,7 @@ Ezután hozzon létre három virtuális gép – két SQL Server virtuális gép
 | Válassza ki a megfelelő Katalóguselem |**A Windows Server 2016 Datacenter** |**Az SQL Server 2016 SP1 Enterprise Windows Server 2016 rendszeren** |**Az SQL Server 2016 SP1 Enterprise Windows Server 2016 rendszeren** |
 | Virtuálisgép-konfiguráció **alapjai** |**Név** fürt-fsw =<br/>**Felhasználónév** tartományi rendszergazdai =<br/>**Jelszó** = Contoso! 0000<br/>**Előfizetés** = az előfizetés<br/>**Erőforráscsoport** SQL-magas rendelkezésre ÁLLÁS-RG =<br/>**Hely** = az Azure-beli hely |**Név** sqlserver – 0 =<br/>**Felhasználónév** tartományi rendszergazdai =<br/>**Jelszó** = Contoso! 0000<br/>**Előfizetés** = az előfizetés<br/>**Erőforráscsoport** SQL-magas rendelkezésre ÁLLÁS-RG =<br/>**Hely** = az Azure-beli hely |**Név** sqlserver-1 =<br/>**Felhasználónév** tartományi rendszergazdai =<br/>**Jelszó** = Contoso! 0000<br/>**Előfizetés** = az előfizetés<br/>**Erőforráscsoport** SQL-magas rendelkezésre ÁLLÁS-RG =<br/>**Hely** = az Azure-beli hely |
 | Virtuálisgép-konfiguráció **mérete** |**MÉRET** = DS1\_V2 (1 vCPU, 3,5 GB) |**MÉRET** = DS2\_V2 (2 vcpu-k, 7 GB)</br>Méretének támogatnia kell az SSD-tárolás (prémium szintű lemez támogatása. )) |**MÉRET** = DS2\_V2 (2 vcpu-k, 7 GB) |
-| Virtuálisgép-konfiguráció **beállításai** |**Tárolási**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet(10.1.1.0/24)<br/>**Nyilvános IP-cím** automatikusan generált.<br/>**Hálózati biztonsági csoport** = None<br/>**Figyelés, diagnosztika** = engedélyezve<br/>**Diagnosztikai tárfiók** = egy automatikusan létrehozott storage-fiók használata<br/>**A rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Tárolási**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet(10.1.1.0/24)<br/>**Nyilvános IP-cím** automatikusan generált.<br/>**Hálózati biztonsági csoport** = None<br/>**Figyelés, diagnosztika** = engedélyezve<br/>**Diagnosztikai tárfiók** = egy automatikusan létrehozott storage-fiók használata<br/>**A rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Tárolási**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet(10.1.1.0/24)<br/>**Nyilvános IP-cím** automatikusan generált.<br/>**Hálózati biztonsági csoport** = None<br/>**Figyelés, diagnosztika** = engedélyezve<br/>**Diagnosztikai tárfiók** = egy automatikusan létrehozott storage-fiók használata<br/>**A rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |
+| Virtuálisgép-konfiguráció **beállításai** |**Tárolási**: Felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet(10.1.1.0/24)<br/>**Nyilvános IP-cím** automatikusan generált.<br/>**Hálózati biztonsági csoport** = None<br/>**Figyelés, diagnosztika** = engedélyezve<br/>**Diagnosztikai tárfiók** = egy automatikusan létrehozott storage-fiók használata<br/>**A rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Tárolási**: Felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet(10.1.1.0/24)<br/>**Nyilvános IP-cím** automatikusan generált.<br/>**Hálózati biztonsági csoport** = None<br/>**Figyelés, diagnosztika** = engedélyezve<br/>**Diagnosztikai tárfiók** = egy automatikusan létrehozott storage-fiók használata<br/>**A rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Tárolási**: Felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet(10.1.1.0/24)<br/>**Nyilvános IP-cím** automatikusan generált.<br/>**Hálózati biztonsági csoport** = None<br/>**Figyelés, diagnosztika** = engedélyezve<br/>**Diagnosztikai tárfiók** = egy automatikusan létrehozott storage-fiók használata<br/>**A rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |
 | Virtuálisgép-konfiguráció **SQL Server-beállítások** |Nem alkalmazható |**SQL-kapcsolat** privát (virtuális hálózaton belül) =<br/>**Port** 1433-as =<br/>**SQL-hitelesítés** = Disable<br/>**Tárolási konfiguráció** általános =<br/>**Automatikus javítás** vasárnap = 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Az Azure Key Vault-integráció** = letiltva |**SQL-kapcsolat** privát (virtuális hálózaton belül) =<br/>**Port** 1433-as =<br/>**SQL-hitelesítés** = Disable<br/>**Tárolási konfiguráció** általános =<br/>**Automatikus javítás** vasárnap = 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Az Azure Key Vault-integráció** = letiltva |
 
 <br/>
@@ -463,6 +463,10 @@ Adja hozzá a Feladatátvételi fürtszolgáltatással, tegye mindkét SQL Serve
 
 Ismételje meg a más SQL Server virtuális gépen.
 
+  >[!NOTE]
+  > Ebben a lépésben együtt ténylegesen az SQL Server virtuális gépek csatlakoztatása a feladatátvevő fürt most már automatizálható a rövid útmutató az Azure-sablonnal. További információkért lásd: [WSFC létrehozása, a figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép Azure gyorsindítási sablonnal](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+
+
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> A tűzfal konfigurálása az egyes SQL Server virtuális Gépeken
 
 A megoldás a következő TCP-portok nyitva a tűzfalon van szükség:
@@ -487,7 +491,7 @@ A portok megnyitása módszer attól függ, hogy a tűzfal-megoldásnak megfelel
 
    ![SQL-tűzfal](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 
-5. Kattintson a **Tovább** gombra.
+5. Kattintson a **tovább**.
 6. Az a **művelet** lapon, hogy **engedélyezze a kapcsolatot** kiválasztva, és kattintson **tovább**.
 7. Az a **profil** lapon fogadja el az alapértelmezett beállításokat, és kattintson a **tovább**.
 8. Az a **neve** csoportjában adja meg a szabály nevét (például **Azure LB Probe**) az a **neve** szövegmezőbe, és kattintson **Befejezés**.

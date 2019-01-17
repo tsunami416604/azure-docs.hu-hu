@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 34ec22550106f03bc90c95b407af088327b7837f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6cdfa7492a9916cc3e2300ad71e21acfb68e3d30
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036171"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352240"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Egy Node.js Mongoose alkalmazást az Azure Cosmos DB csatlakoztatása
 
@@ -183,7 +183,7 @@ A Mongoose alapértelmezés szerint létrehoz egy MongoDB-gyűjteményt minden a
 
 1. Most belép az Azure Portalra, láthatja, hogy két gyűjtemény jött létre a Cosmos DB-ben.
 
-    ![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg több kiemelt nevű gyűjteménnyel – Node-adatbázis][mutiple-coll]
+    ![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg több kiemelt nevű gyűjteménnyel – Node-adatbázis][multiple-coll]
 
 1. Végezetül olvassa be az adatokat a Cosmos DB. Mivel az alapértelmezett Mongoose működési modellt használjuk, az olvasások megegyeznek bármely más Mongoose olvasással.
 
@@ -313,4 +313,4 @@ Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát, h
 - Ismerkedés a MongoDB [minták](mongodb-samples.md) az Azure Cosmos DB API a mongodb-hez.
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[mutiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

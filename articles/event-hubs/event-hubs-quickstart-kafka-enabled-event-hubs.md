@@ -1,6 +1,6 @@
 ---
 title: Stream Kafka-kompatibilis event hubs – Azure Event Hubs-eseményközpontba |} A Microsoft Docs
-description: Ez a cikk információ stream útmutatást az Azure Event Hubsba a Kafka protokoll és API-k használatával.
+description: Ez a cikk információt nyújt az adatfolyamot, az Azure Event Hubsba a Kafka protokoll és API-k használatával.
 services: event-hubs
 author: basilhariri
 ms.author: bahariri
@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: 541095ddff19f16e3050d79846a339d4e5bad2b8
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 19d903a4083c432ac3932189ad8a6890be9014fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244290"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354229"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamelés az Apache Kafkához készült Event Hubsba
 Ez a rövid útmutató bemutatja, hogyan streamelhet a Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Megtudhatja, hogyan érheti el egy egyszerű konfigurációmódosítással az alkalmazásokban, hogy az előállítók és a fogyasztók kommunikáljanak a Kafka-kompatibilis Event Hubsszal. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.

@@ -12,16 +12,23 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/08/2019
-ms.openlocfilehash: 1839ca0d2495a07f6fc734501540cddcdcb28e18
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d94173f9b1940613c26451658b90c956c71876fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332874"
+ms.locfileid: "54353243"
 ---
 # <a name="transactional-replication-with-azure-sql-logical-server-and-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL logikai kiszolgáló és az Azure SQL felügyelt példánya
 
 Tranzakciós replikáció funkciója egy Azure SQL Database, a felügyelt példány és, amely lehetővé teszi, hogy az adatok replikálása az Azure SQL Database egyik táblájában az SQL Server vagy SQL Server helyezi a távoli adatbázis tábláit. Ez a funkció lehetővé teszi több táblájából különböző adatbázisok szinkronizálása.
+
+## <a name="when-to-use-transactional-replication"></a>Tranzakciós replikáció használata
+
+Tranzakciós replikáció a következő esetekben hasznos:
+- Egy vagy több táblát egy adatbázisban végrehajtott módosítások közzététele, és terjessze azokat egy vagy több SQL Server- vagy Azure SQL-adatbázisok, amelyek a módosítások az előfizetett.
+- Ne több elosztott adatbázisok Szinkronizáltsági állapotával.
+- Adatbázisok migrálása SQL Server vagy a felügyelt példány egy másik adatbázisba folyamatosan tegye közzé a módosításokat.
 
 ## <a name="overview"></a>Áttekintés 
 A legfontosabb összetevők, a tranzakciós replikáció a következő képen látható:  
@@ -81,16 +88,19 @@ Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-d
 
 ![Gyártó és forgalmazó, egyetlen példány ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Gyártó és forgalmazó egyetlen felügyelt példány belül vannak konfigurálva. 
+Gyártó és forgalmazó egyetlen felügyelt példány-ban van konfigurálva, és közzéteszi a módosításokat más felügyelt példányra, önálló adatbázis vagy SQL Server helyszíni. Ebben a konfigurációban a felügyelt példánynak közzétevő/terjesztő nem konfigurálható a [georeplikációja és automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>A felügyelt példány a távoli terjesztőt közzétevő
+
+Ebben a konfigurációban egy felügyelt példány elhelyezett egy másik felügyelt példányt, amely képes több forrás felügyelt példány szolgál, és a felügyelt példányhoz, önálló adatbázis vagy SQL Server egy vagy több cél változásait terjesztheti a terjesztőhöz módosításokat tesz közzé.
 
 ![A közzétevő és a Terjesztőn különálló példány](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
 Gyártó és forgalmazó két felügyelt példány konfigurálása. Ebben a konfigurációban
 
 - Felügyelt példány is ugyanazon a virtuális hálózaton van.
-- Felügyelt példány is ugyanazon a helyen vannak. 
+- Felügyelt példány is ugyanazon a helyen vannak.
+- Felügyelt példányok üzemeltető közzétett és a terjesztő adatbázist nem lehet [georeplikált automatikus feladatátvételi-csoportok használatával](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-managed-instance-or-logical-server"></a>Gyártó és forgalmazó a helyszínen a felügyelt példány vagy logikai kiszolgálón található az előfizető 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3cf59db2e6f8fcffd9eefc38fcd22c25ba646456
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b65bcfa5252a150c8101322eaf6d84ce46eef755
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018636"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352291"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle felhőalapú
 
@@ -47,7 +47,7 @@ Társított Oracle Service felhőalapú szolgáltatás a következő tulajdonsá
 | type | A type tulajdonságot kell beállítani: **OracleServiceCloud** | Igen |
 | gazdagép | Az Oracle-szolgáltatás Cloud-példány URL-címe  | Igen |
 | felhasználónév | Oracle felhőalapú kiszolgáló hozzáféréséhez használt felhasználónév.  | Igen |
-| jelszó | A felhasználónév-kulcsot a megadott felhasználónév megfelelő jelszava. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
+| jelszó | A felhasználónév-kulcsot a megadott felhasználónév megfelelő jelszava. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |

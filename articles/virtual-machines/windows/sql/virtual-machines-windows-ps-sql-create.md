@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8282901dfcacb7ca0330274d114cd4c2990fdec1
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 321f6fc043147c0a1559c93fb5ada3d33d9e3dd9
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330450"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359969"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell használatával
 
@@ -101,9 +101,10 @@ $OSDiskName = $VMName + "OSDisk"
 ```
 
 ### <a name="choose-a-sql-server-image"></a>Válassza ki az SQL Server-lemezképet
-Adja meg az SQL Server-rendszerképet a virtuális gép használatához.
 
-1. Először listázza az SQL Server lemezkép típusú ajánlatok a **Get-AzureRmVMImageOffer** parancsot:
+A következő változók használatával adja meg az SQL Server-rendszerképet a virtuális gép használatához. 
+
+1. Először listázza ki az SQL Server lemezkép típusú ajánlatok mindegyike a `Get-AzureRmVMImageOffer` parancsot. Ez a parancs felsorolja a meglévő rendszerképek az Azure Portalon elérhető, és csak a PowerShell segítségével telepíthető régebbi rendszerképek:
 
    ```PowerShell
    Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'

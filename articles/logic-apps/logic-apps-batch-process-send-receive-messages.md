@@ -8,13 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
-ms.date: 08/19/2018
-ms.openlocfilehash: f60cb79324cad194877402203dbd1706727468d0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/16/2019
+ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330721"
+ms.locfileid: "54352512"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Küldés, fogadhatja és kötegelt feldolgozási üzenetek az Azure Logic Appsben
 
@@ -60,10 +60,17 @@ Kövesse az ebben a példában, ezek az elemek szükségesek:
    |----------|-------------|
    | **Kötegelt mód** | - **Inline**: Az a batch eseményindítón belül kiadási feltételek meghatározása <br>- **Integrációs fiók**: Több kiadási feltételek konfiguráció keresztül meghatározása egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Az integrációs fiókot akkor is fenntartható egy helyen, nem pedig külön logic appsben ezeket a konfigurációkat. | 
    | **Kötegnév** | A neve, amely "TestBatch" Ebben a példában, és csak a batch **beágyazott** kötegelt mód |  
-   | **Kiadási feltételek** | Csak **beágyazott** kötegelt módban, és kijelöli a feltételeket minden egyes köteg feldolgozása előtt kielégítése érdekében: <p>- **Message count alapú**: A kötegben, például gyűjthet 10 üzenetet üzenetek száma <br>- **Méretalapú**: A Köteg maximális mérete bájtban, például 10 MB-ot <br>- **Ütemezésalapú**: Az intervallum és a batch-kiadások, például 10 perc közötti gyakoriságot. A minimális ismétlődési 60 másodperc vagy 1 percre. Percenkénti kitalálva hatékonyan 1 percre van kerekítve. Adja meg a kezdő dátum és idő, válassza a **speciális beállítások megjelenítése**. <br>- **Válassza ki az összes**: A megadott feltételeknek megfelelő használja. | 
+   | **Kiadási feltételek** | Csak **beágyazott** kötegelt módban, és kijelöli a feltételeket minden egyes köteg feldolgozása előtt kielégítése érdekében: <p>- **Message count alapú**: Engedje el a batch, a batch által gyűjtött üzeneteket száma alapján. <br>- **Méretalapú**: Engedje el a köteg teljes mérete (bájt) számára, hogy a batch által gyűjtött üzeneteket alapján. <br>- **Ütemezés**: A batch-alapú egy ismétlődési ütemezést, amely egy időközét és gyakoriságát adja meg a kiadás. A Speciális beállítások is válassza ki az időzónát és adjon meg egy kezdő dátum és idő. <br>- **Válassza ki az összes**: A megadott feltételeknek megfelelő használja. | 
+   | **Üzenetek száma** | A kötegben, például gyűjthet 10 üzenetet üzenetek száma. A batch határértéke 8000 üzenet. | 
+   | **Köteg mérete** | A teljes mérete bájtban gyűjtéséhez a kötegben, például 10 MB-ot. Egy köteg maximális mérete 80 MB. | 
+   | **Ütemezés** | Az intervallum és a batch-kiadások, például 10 perc közötti gyakoriságot. A minimális ismétlődési 60 másodperc vagy 1 percre. Tört perc hatékonyan 1 percre van kerekítve. Válasszon időzónát vagy egy kezdési dátumot és időt adja meg, hogy **speciális beállítások megjelenítése**. | 
    ||| 
 
-   Ebben a példában jeleníti meg az összes feltételt, de a saját tesztelési, válassza ki azt a csak egy feltételt:
+   > [!NOTE]
+   > 
+   > Ha módosítja a kiadási feltételekben közben a trigger még mindig rendelkezik kötegelni azonban el nem küldött üzeneteket, az eseményindító a frissített kiadási feltételek használ a kézbesítetlen levelek kezelése. 
+
+   Ebben a példában látható az összes feltételt, de a saját tesztelési, próbálja meg egy feltételt:
 
    ![Adja meg a Batch a trigger részletei](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 

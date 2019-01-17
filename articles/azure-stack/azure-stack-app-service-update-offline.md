@@ -12,23 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: 740a3ce36dde953cb92c52a10cbebf12544adae0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 21c43bdd9f872841c3adaf5293177efe23fc3021
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968152"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358966"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Az Azure App Service az Azure Stacken offline frissítés
 
-*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
+*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]
-> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt.
->
->
+> 1809 frissítést a vagy később, az Azure Stackkel integrált rendszer, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt. -Az erőforrás-szolgáltató frissítése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
 
 Ez a cikk utasításait követve frissíthet a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) üzembe helyezve az Azure Stack-környezet, amely:
 
@@ -66,7 +64,7 @@ Leválasztott környezet frissítése az App Service-ben, akkor először létre
 
 2. Kattintson a **speciális** > **offline csomag létrehozása**
 
-    ![Speciális az App Service-telepítő][2]
+    ![App Service Installer Advanced][2]
 
 3. Az App Service-telepítő létrehoz egy offline frissítési csomagot, és elérési útja.  Kattinthat **mappa megnyitása** a mappa megnyitása a Fájlkezelőben.
 
@@ -85,7 +83,7 @@ Leválasztott környezet frissítése az App Service-ben, akkor először létre
 
 2. Kattintson a **speciális** > **hajtsa végre a kapcsolat nélküli telepítési vagy frissítési**.
 
-    ![Speciális az App Service-telepítő][2]
+    ![App Service Installer Advanced][2]
 
 3. Keresse meg a korábban létrehozott offline frissítési csomag a helyet, és kattintson a **tovább**.
 
@@ -95,7 +93,7 @@ Leválasztott környezet frissítése az App Service-ben, akkor először létre
 
 6. Győződjön meg arról, hogy az Azure Stack az Azure Resource Manager-végpontot, és az Active Directory-bérlő adatok helyességéről. Az alapértelmezett beállításokat használta az Azure Stack fejlesztői készletének üzembe helyezés során, ha elfogadhatja az alapértelmezett értékeket itt. Azonban ha testre szabta a beállításokat, az Azure Stack üzembe helyezésekor, szerkesztenie kell az értékek, ebben az ablakban. Ha például a tartományi utótag használata *mycloud.com*, az Azure Stack az Azure Resource Manager-végpontot kell módosítania *management.region.mycloud.com*. Miután meggyőződött a adatait, kattintson a **tovább**.
 
-    ![Az Azure Stack a felhőalapú információk][3]
+    ![Azure Stack Cloud Information][3]
 
 7. A következő oldalon:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a034e41f5b12ffb8f043f14d90284617316f18d2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e3022296dd1a3e1221bb44c94df787660df2a70
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723042"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359884"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Hozzáférés felhőbeli adatok történő használatát
 
@@ -69,7 +69,7 @@ A minta notebook blobok, beleértve a közös hozzáférésű jogosultságkódok
 Az Azure Cosmos DB egy teljes körűen indexelt nosql-alapú tárolót biztosít JSON-dokumentumok). A következő cikkek nyújtanak számos különböző módon működik a Cosmos DB használatával, a Python:
 
 - [Python használatával hozhat létre egy SQL API-alkalmazás](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Az Azure Cosmos DB egy Flask alkalmazást hozhat létre MongoDB API-ban](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [API-val az Azure Cosmos DB egy Flask-alkalmazás létrehozása a mongodb-hez](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [A Python és a Gremlin API gráfadatbázis létrehozása](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [A Python és az Azure Cosmos DB Cassandra alkalmazás felépítése](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [Egy táblát a Python és az Azure Cosmos DB API-alkalmazás létrehozása](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
@@ -81,11 +81,11 @@ Ha működik a Cosmos DB használatával, használhatja a [azure-cosmos DB-table
 Az Azure számos más adatbázistípusok használható. Ezeket az adatbázisokat a Python elérése útmutatást nyújtanak az az alábbi cikkeket:
 
 - [Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a Python használatával](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Gyors útmutató: Az Azure Redis Cache használata Pythonnal](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Rövid útmutató: Az Azure Redis Cache használata Pythonnal](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [Azure Database for MySQL-hez: Csatlakozás és adatlekérdezés a Python használatával](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Az Azure Data Factory másolás varázsló](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>További lépések
 
-- [kézikönyv: Soubory projektu adatok használata](work-with-project-data-files.md)
+- [Útmutató: Soubory projektu adatok használata](work-with-project-data-files.md)

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/07/2018
+ms.date: 01/16/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fd2c5c0aab9b9b9f2977b3a38b9e08c51e98d451
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9a63344df4aeea16aa89924b287a0dacafda4046
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973485"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352376"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Oktatóanyag: A csatolt Azure Resource Manager-sablonok létrehozása
 
@@ -158,7 +158,7 @@ Az összekapcsolt sablon létrehoz egy tárfiókot. Az összekapcsolt sablon maj
 
 ## <a name="upload-the-linked-template"></a>Az összekapcsolt sablon feltöltése
 
-A fő sablont és a hivatkozott sablonnak kell érhető el a telepítés futtatásához. Ebben az oktatóanyagban használt, használhatja a Cloud shell üzembe helyezési módszer [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md). A fő sablon (azuredeploy.json) a felületre lesz feltöltve. A hivatkozott sablonnak (linkedTemplate.json) kell lennie biztonságosan megosztott valahol. A következő PowerShell-szkript létrehoz egy Azure Storage-fiókot, feltölti a sablon a tárfiókba és majd létrehozza az SAS-jogkivonatát a sablonfájl csak korlátozott hozzáférést. Egyszerűen-oktatóanyag a parancsfájl tölt le egy befejezett hivatkozott sablonnak olyan megosztott helyre. Ha szeretné a csatolt sablonnal létrehozott, használja a [Cloud shell](https://shell.azure.com) töltse fel a társított sablont, és módosítsa a parancsfájl használata a saját hivatkozott sablonnak.
+A fő sablont és a hivatkozott sablonnak kell érhető el a telepítés futtatásához. Ebben az oktatóanyagban használt, használhatja a Cloud shell üzembe helyezési módszer [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md). A fő sablon (azuredeploy.json) a felületre lesz feltöltve. A hivatkozott sablonnak (linkedTemplate.json) kell lennie biztonságosan megosztott valahol. A következő PowerShell-szkript létrehoz egy Azure Storage-fiókot, feltölti a sablon a tárfiókba és majd létrehozza az SAS-jogkivonatát a sablonfájl csak korlátozott hozzáférést. Az oktatóanyag leegyszerűsítése a parancsfájl tölt le egy befejezett hivatkozott sablonnak olyan megosztott helyre. Ha szeretné a csatolt sablonnal létrehozott, használja a [Cloud shell](https://shell.azure.com) töltse fel a társított sablont, és módosítsa a parancsfájl használata a saját hivatkozott sablonnak.
 
 > [!NOTE]
 > A parancsfájl korlátozza a SAS-jogkivonat nyolc órán belül használható. Ha ez az oktatóanyag további időre van szüksége, növelje a lejárati időpont.

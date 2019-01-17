@@ -1,6 +1,6 @@
 ---
 title: Az Azure Application Insights kérelmek kód írása |} A Microsoft Docs
-description: Az Application Insights kérelmek nyomon követése, így a kérelmek profilok is igénybe kód írása
+description: Írja be a kódot, így profilok számára a kérelmek nyomon követéséhez a kérelmeket az Application insights segítségével.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,19 +12,20 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: bdbca30d31febe37e6b568894179c88d834d3a83
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 978f9a341eec2f16b9f6fe3d164e97805d7a8e93
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266688"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359638"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Az Application Insights kérelmek kód írása
 
-A Teljesítmény lapon látható az alkalmazás profilokat, az Application Insights kell lennie nyomon követése a kérelmeket az alkalmazás. Az Application Insights automatikusan nyomon követheti, hogy a rendszer már kiépített, mint például az ASP.net és az ASP.Net Core keretrendszereket beépített alkalmazások kéréseit. De a más alkalmazások, például az Azure-Felhőszolgáltatás munkavégző szerepköreit és a Service Fabric állapotmentes API-k, az kell, hogy az Application Insights, ahol a kérelmek kezdődik és ér véget kódot írni. Ez a kód többször kérelmek telemetriai adatokat küld az Application Insights és a teljesítmény oldalon láthatja a telemetriai adatokat és profilokat összegyűjtött ezeket a kérelmeket a korábban írt. 
+A teljesítmény oldalon profilok az alkalmazás megtekintéséhez az Azure Application Insights nyomon kell követni az alkalmazásra vonatkozó kérések. Az Application Insights automatikusan követheti a beépített keretrendszereket már kiépített alkalmazások kéréseit. Két példa olyan ASP.NET és az ASP.NET Core. 
 
-Önnek kell tennie a manuálisan a kérések nyomon követésére lépései a következők:
+Más alkalmazások, például az Azure Cloud Services feldolgozói szerepkörei és a Service Fabric állapotmentes API-k mondja el, ahol a kérelmek megkezdése az Application Insights és a záró kód írása kell. Miután ezt a kódot, kérelmek telemetriai adatokat küld az Application Insights. A Teljesítmény lapon megtekintheti a telemetriát, és a profilokat összegyűjtött ezeket a kérelmeket. 
 
+A manuális kérések nyomon követésére, tegye a következőket:
 
   1. Az alkalmazás élettartamának korai szakaszában adja meg a következő kódot:  
 
@@ -36,7 +37,7 @@ A Teljesítmény lapon látható az alkalmazás profilokat, az Application Insig
         ```
       A globális kialakítási kulcs konfigurálásával kapcsolatban további információkért lásd: [az Application Insights használata a Service Fabric](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. A bármely alakítsa ki, a hozzáadni kívánt kódrészleteket egy `StartOperation<RequestTelemetry>` **USING** utasítás körülötte, az alábbi példában látható módon:
+  1. A bármely alakítsa ki, a hozzáadni kívánt kódrészleteket egy `StartOperation<RequestTelemetry>` **használatával** utasítás körülötte, az alábbi példában látható módon:
 
         ```csharp
         using Microsoft.ApplicationInsights;

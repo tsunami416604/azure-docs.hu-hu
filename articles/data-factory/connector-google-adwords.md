@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b712b576e1dd47698de66889d4edf9dda026a16c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 65d6685947c5796a65985aff0b789223736df0b8
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017990"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354280"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Google AdWords
 
@@ -46,11 +46,11 @@ A következő tulajdonságok támogatottak a Google AdWords társított szolgál
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **GoogleAdWords** | Igen |
 | clientCustomerID | Az ügyfél ügyfél-azonosító, hogy a jelentés adatait beolvasni kívánt AdWords fiók.  | Igen |
-| developerToken | A fejlesztői token társított a-kezelői fiók, amellyel a AdWords API a hozzáférési jogot.  Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
+| developerToken | A fejlesztői token társított a-kezelői fiók, amellyel a AdWords API a hozzáférési jogot.  Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | authenticationType | Az OAuth 2.0 hitelesítési mechanizmust a hitelesítéshez használt. ServiceAuthentication csak akkor használható a saját üzemeltetésű <br/>Engedélyezett értékek a következők: **ServiceAuthentication**, **UserAuthentication** | Igen |
-| refreshToken | A Google szerzett AdWords való hozzáférést engedélyező UserAuthentication a frissítési jogkivonatot. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
-| clientId | A frissítési jogkivonat beszerzéséhez használt google alkalmazás ügyfél-azonosító. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
-| clientSecret | A titkos ügyfélkulcsot a frissítési jogkivonat beszerzéséhez használja a google-alkalmazás. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
+| refreshToken | A Google szerzett AdWords való hozzáférést engedélyező UserAuthentication a frissítési jogkivonatot. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
+| clientId | A frissítési jogkivonat beszerzéséhez használt google alkalmazás ügyfél-azonosító. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
+| clientSecret | A titkos ügyfélkulcsot a frissítési jogkivonat beszerzéséhez használja a google-alkalmazás. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
 | e-mail | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál, és csak akkor használható a saját üzemeltetésű  | Nem |
 | keyFilePath | A .p12 kulcsfájl, amely használatos a hitelesítés a szolgáltatási fiók e-mail címét, és csak akkor használható a saját üzemeltetésű teljes elérési útja  | Nem |
 | trustedCertPath | A .pem-fájlt tartalmazó ellenőrzésének folyamatát a kiszolgálón, ha SSL-kapcsolaton keresztül kapcsolódik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság csak akkor állítható, ha SSL-lel a saját üzemeltetésű Az alapértelmezett érték a telepített bemutathatja cacerts.pem fájlt:  | Nem |

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása, illetve az Azure Cosmos DB (MongoDB API-t) a Data Factory használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan másolhat adatokat a támogatott forrás adattárakból származó, vagy az Azure Cosmos DB (MongoDB API-t) támogatott fogadó-áruházak Data Factory használatával.
+title: Adatok másolása, illetve Azure Cosmos DB API a mongodb-hez készült Data Factory használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan másolhat adatokat támogatott forrás adattárakból származó, vagy az Azure Cosmos DB API a mongodb-hez támogatott fogadó-áruházak Data Factory használatával.
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: a28d0e819243810486179e7219ad3cb48487a299
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5d45e4cc8781f4c235c641c4c99f1720871d57fb
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107174"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359000"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-db-mongodb-api-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB (MongoDB API-t) az Azure Data Factory használatával
+# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Adatok másolása, illetve Azure Cosmos DB API a mongodb-hez készült Azure Data Factory használatával
 
-Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban másolhat adatokat, és az Azure Cosmos DB (MongoDB API-t). A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban másolhat adatokat, és az Azure Cosmos DB API a mongodb-hez. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
 
 >[!NOTE]
->Az összekötő podporují másolja az adatokat és a Cosmos DB MongoDB API. Az SQL API-t, tekintse meg a [Cosmos DB SQL API-összekötővel](connector-azure-cosmos-db.md). Más API-típusok most már nem támogatottak.
+>Az összekötő podporují másolja az adatokat és-tárolókról az Azure Cosmos DB API a mongodb-hez. Az SQL API-t, tekintse meg a [Cosmos DB SQL API-összekötővel](connector-azure-cosmos-db.md). Más API-típusok most már nem támogatottak.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Adatok másolása az Azure Cosmos DB (MongoDB API-t) a bármely támogatott fogadó adattárba, vagy bármely támogatott forrásadattárból adatok másolása az Azure Cosmos DB (MongoDB API-t). Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+Adatok másolása az Azure Cosmos DB API a mongodb-hez bármelyik támogatott fogadó adattárba, vagy adatok másolása az bármely támogatott forrásadattárból az Azure Cosmos DB API a mongodb-hez. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Használhatja az Azure Cosmos DB (MongoDB API-t)-összekötő:
+Használhatja az Azure Cosmos DB API a MongoDB-összekötőt:
 
-- Adatok másolása az Azure Cosmos DB és a [MongoDB API-val](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
+- Adatok másolása a kezdő és a a [Azure Cosmos DB MongoDB API-](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
 - Írni az Azure Cosmos DB **beszúrása** vagy **upsert**.
 - Importálás és exportálás JSON-dokumentumok,-, vagy másolja az adatokat, vagy egy táblázatos adatkészlethez. Ilyenek például egy SQL-adatbázis és a egy CSV-fájlt. Másolja ki a dokumentumok-, illetve a JSON-fájlok vagy az vagy egy másik Azure Cosmos DB-gyűjtemények, lásd: [importálás vagy exportálás JSON-dokumentumok](#importexport-json-documents).
 
@@ -40,16 +40,16 @@ Használhatja az Azure Cosmos DB (MongoDB API-t)-összekötő:
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok segítségével konkrétan az Azure Cosmos DB (MongoDB API-t) a Data Factory-entitások definiálása-tulajdonságokkal kapcsolatos részletekért.
+A következő szakaszok segítségével határozza meg a Data Factory-entitások, adott Azure Cosmos DB MongoDB API-tulajdonságokkal kapcsolatos részletekért.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az Azure Cosmos DB (MongoDB API-t) a társított szolgáltatás a következő tulajdonságok támogatottak:
+Az Azure Cosmos DB API a mongodb-hez társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **CosmosDbMongoDbApi**. | Igen |
-| kapcsolati Sztringje |Adja meg az Azure Cosmos DB MongoDB API kapcsolati karakterláncát. Azt az Azure Portal -> annak a Cosmos DB panel elsődleges vagy másodlagos kapcsolati karakterlánc, a minta -> `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| kapcsolati Sztringje |Adja meg a kapcsolati karakterláncot az Azure Cosmos DB API a mongodb-hez. Azt az Azure Portal -> annak a Cosmos DB panel elsődleges vagy másodlagos kapcsolati karakterlánc, a minta -> `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | adatbázis | Az elérni kívánt adatbázis nevét. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Használhatja az Azure integrációs modul és a egy saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -77,7 +77,7 @@ Az Azure Cosmos DB (MongoDB API-t) a társított szolgáltatás a következő tu
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). Azure Cosmos DB (MongoDB API-t) adatkészlet a következő tulajdonságok támogatottak:
+Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). Azure Cosmos DB API a MongoDB-adatkészlet a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -92,7 +92,7 @@ Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját l�
     "properties": {
         "type": "CosmosDbMongoDbApiCollection",
         "linkedServiceName":{
-            "referenceName": "<Azure Cosmos DB MongoDB API linked service name>",
+            "referenceName": "<Azure Cosmos DB's API for MongoDB linked service name>",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -104,11 +104,11 @@ Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját l�
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Ez a szakasz a tulajdonságok, amelyek támogatják az Azure Cosmos DB (MongoDB API-t) forrásaként és fogadó listáját tartalmazza.
+Ez a szakasz tulajdonságai az Azure Cosmos DB API a MongoDB-adatforrások és adatfogadók támogató listáját tartalmazza.
 
 Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md).
 
-### <a name="azure-cosmos-db-mongodb-api-as-source"></a>Az Azure Cosmos DB (MongoDB API-t) forrásként
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Az Azure Cosmos DB MongoDB API-forrásként
 
 A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
@@ -134,7 +134,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Cosmos DB MongoDB API input dataset name>",
+                "referenceName": "<Azure Cosmos DB's API for MongoDB input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -163,7 +163,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 ]
 ```
 
-### <a name="azure-cosmos-db-mongodb-api-as-sink"></a>Az Azure Cosmos DB (MongoDB API-val) pedig a fogadó
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Az Azure Cosmos DB MongoDB API-pedig a fogadó
 
 A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
 
@@ -221,7 +221,7 @@ Az ilyen sémafüggetlen másolási eléréséhez hagyja ki a "struktúra" (más
 
 ## <a name="schema-mapping"></a>Séma-hozzárendelés
 
-Adatokat másol a Cosmos DB MongoDB API-t a fogadó táblázatos, vagy tekintse meg a fordított irányú, [séma-hozzárendelés](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Adatok másolása az Azure Cosmos DB API a mongodb-hez a táblázatos fogadó, vagy tekintse meg a fordított irányú, [séma-hozzárendelés](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 Kifejezetten a összeállításakor az Cosmos DB-be, hogy a forrás adatokból, töltse ki a megfelelő Objektumazonosítóval rendelkező Cosmos DB például már rendelkezik egy "id" oszlop, SQL-adatbázistáblában és a MongoDB-ben a dokumentumazonosító értéke, amely a beszúrási/upsert használt , be kell állítania a MongoDB szigorú mód definíció szerint a megfelelő séma-hozzárendelés (`_id.$oid`) tegye a következőket:
 

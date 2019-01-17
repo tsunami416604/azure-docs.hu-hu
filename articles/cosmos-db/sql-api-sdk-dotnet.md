@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051951"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354578"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ ms.locfileid: "54051951"
 
 * Közvetlen/TCP átviteli diagnosztikai hozzáadott TransportException, egy belső kivétel típusa, az SDK-t. Kivétel üzenetek szerepelnek, ha ez a típus jelenít meg további információt az ügyfél kapcsolódási problémák elhárításához.
 
-* A hozzáadott új constuctor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
+* A hozzáadott új konstruktor túlterhelési egy HttpMessageHandler, egy HTTP-kezelő verem (pl. HttpClientHandler) HttpClient kérelmek küldéséhez használt foglalnak.
 
 * Javításra ahol fejléc null értékű volt nem megfelelő kezelésének biztosítása érdekében.
 
@@ -265,7 +265,7 @@ ms.locfileid: "54051951"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Többrégiós adatbázisfiókhoz támogatása.
 * Támogatás hozzáadva a próbálkozást az szabályozott kérelmeinek száma.  Felhasználó szabhatja testre az újrapróbálkozások számának és a maximális várakozási idő a ConnectionPolicy.RetryOptions tulajdonság beállításával.
-* Hozzáadott új IDocumentClient adaptert, amely meghatározza az összes DocumenClient tulajdonságok és metódusok az aláírások.  Ez a változás részeként is módosította, amely IQueryable és IOrderedQueryable létrehozása a metódusokhoz a DocumentClient osztály maga a bővítő metódusokat.
+* Hozzáadott új IDocumentClient adaptert, amely meghatározza az összes DocumentClient tulajdonságok és metódusok az aláírások.  Ez a változás részeként is módosította, amely IQueryable és IOrderedQueryable létrehozása a metódusokhoz a DocumentClient osztály maga a bővítő metódusokat.
 * A hozzáadott konfigurációs beállítást állítsa be a ServicePoint.ConnectionLimit egy adott Azure Cosmos DB végpont URI-t.  ConnectionPolicy.MaxConnectionLimit segítségével módosíthatja az alapértelmezett érték, amely 50 értékre van állítva.
 * Elavult IPartitionResolver és a megvalósítás.  IPartitionResolver támogatása elavult. Magasabb tárolási és átviteli sebesség particionált gyűjtemények használata ajánlott.
 
@@ -282,7 +282,7 @@ ms.locfileid: "54051951"
 * Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználó által definiált teljesítményszintek](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Rögzített]**  Lekérdezése az Azure Cosmos DB végpont jelez: "System.Net.Http.HttpRequestException: Hiba történt a tartalom másolása adatfolyamba ".
+* **[Rögzített]**  Lekérdezése az Azure Cosmos DB végpont jelez: 'System.Net.Http.HttpRequestException: Hiba történt a tartalom másolása adatfolyamba ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Kibontott LINQ támogatja a lapozófájl, a feltételes kifejezések új operátorokat, és a tartomány összehasonlítása.

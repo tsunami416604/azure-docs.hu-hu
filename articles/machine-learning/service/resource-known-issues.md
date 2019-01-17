@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 25131fdbc7a3633bf4ba9af05fdff9163f41f26b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e143c0c8ef09af49aed656d479bcad4dd35e2211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265107"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351798"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
  
@@ -44,12 +44,8 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 ## <a name="databricks"></a>Databricks
 
 Databricks és az Azure Machine Learning problémákat.
-
-1. Databricks-fürt javaslat:
-   
-   Az Azure Databricks-fürt létrehozása a Python 3 v4.x. Azt javasoljuk, hogy a nagy feldolgozási fürt.
  
-2. AML SDK databricksen telepítési hiba, amikor további csomagok telepítése.
+1. AML SDK databricksen telepítési hiba, amikor további csomagok telepítése.
 
    Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében fagyasztási lib verzió csomagok telepítéséhez. A probléma Databricks kapcsolatos, és nem kapcsolódik az Azure Machine Learning-SDK - fellépő, a többi libs túl. Példa:
    ```python
@@ -57,9 +53,10 @@ Databricks és az Azure Machine Learning problémákat.
    ```
    Azt is megteheti parancsprogramokkal init Ha, tartsa install Python libs kapcsolatos problémák. Ez a módszer nem hivatalosan támogatott megközelítést. Olvassa el [feljegyzett](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-3. Machine Learning automatizált és használatánál Databricks, ha lát `Import error: numpy.core.multiarray failed to import`
+2. Automatikus Machine Learning használata a Databricks, ha azt szeretné, egy Futtatás megszakítása, és futtatni egy új kísérlet indításához, indítsa újra az Azure Databricks-fürt.
 
-   Megkerülő megoldás: a Python-kódtár importálása `numpy==1.14.5` a databricks fürt használatával hozzon létre egy könyvtárat [telepítse, és csatolja](https://docs.databricks.com/user-guide/libraries.html#create-a-library).
+3. Az alkalmazások automatikus ml-beállítások, ha > 10 ismétlések állítsa be az show_output hamis értéket, a Futtatás elküldésekor.
+
 
 ## <a name="azure-portal"></a>Azure Portal
 Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a portálon megtekintheti, nem kell az előfizetési adatok normál Áttekintés lapján megtekintheti a bővítmény a. Még nem tud váltani egy másik munkaterületre. Megtekintheti egy másik munkaterülethez van szüksége, a megoldás-e közvetlenül a [az Azure portal](https://portal.azure.com) , és keresse meg a munkaterület nevét.

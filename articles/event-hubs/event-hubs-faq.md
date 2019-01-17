@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7308b122d878c225aa98a19a303bc9520f3201ef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcbb249c6cb3c886b94f8ad68dd668cb8858ac77
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088230"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354589"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 
@@ -65,7 +65,7 @@ Példa:
 
 bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule szükséges felhasználónév = "$ ConnectionString"password="Endpoint=sb://dummynamespace.servicebus.windows.net/; SharedAccessKeyName DummyAccessKeyName; = SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszer, található, amely segítségével a SASL-felhasználónevet és jelszót, és azokat használja helyette a konfigurációkat. Állítsa be a username $ConnectionString és a jelszót az Event Hubs kapcsolati karakterlánc.
+Megjegyzés: Ha sasl.jaas.config nem támogatott konfiguráció a keretrendszer, keresse meg a konfigurációk, amely segítségével a SASL-felhasználónevet és jelszót, és azokat használja helyette. Állítsa be a username $ConnectionString és a jelszót az Event Hubs kapcsolati karakterlánc.
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Mi az Event hubs Kafka-kompatibilis üzenet/esemény méretét?
 A Kafka-kompatibilis az Event Hubs számára engedélyezett maximális mérete 1MB.
@@ -181,6 +181,9 @@ Rögzítés, adja meg, ha engedélyezve van az eseményközpontban tárfiókot h
 Minden Event Hubs-kvótákról listáját lásd: [kvóták](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem tudok-névtér létrehozása egy másik előfizetésből törlését követően? 
+Ha egy névtér töröl egy előfizetést, várjon, amíg 4 óra, mielőtt újra egy másik előfizetésben található ugyanazzal a névvel. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Mik az Event Hubs és a javasolt lépések által előállított kivételeket?
 

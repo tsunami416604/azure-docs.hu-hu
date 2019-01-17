@@ -10,15 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117911"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354416"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Az Azure AD B2C: Biztonságos webes API-k számára a Node.js segítségével
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Biztonságos webes API-k számára a Node.js az Azure Active Directory B2C segítségével
 
 Az Azure Active Directory (Azure AD) B2C segítségével védetté tehet egy webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával. Ezek a jogkivonatok engedélyezik az Azure AD B2C-t alkalmazó ügyfélalkalmazások számára az API hitelesítését. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan „feladatlista” API-t, amelyben a felhasználók megjeleníthetik a listát és új feladatokat adhatnak hozzá. A webes API-t az Azure AD B2C látja el védelemmel, így csak a hitelesített felhasználók kezelhetik a feladatlistájukat.
 
@@ -36,7 +35,7 @@ Ennek a mintának az elvégzéséhez először az alábbiakat kell elvégeznie:
 3. Ügyfélalkalmazás konfigurálása a „feladatlista” webes API meghívására.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
-Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt.  A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket.  Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne.
+Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt.  A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket.  Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 Következő lépésként létre kell hoznia egy alkalmazást a B2C-címtárban, amely ellátja az Azure AD-t a biztonságos kommunikációhoz szükséges információkkal. Ebben az esetben az ügyfélalkalmazáshoz és a webes API-hoz egyetlen **alkalmazásazonosító** tartozik, mivel a két elem egyetlen logikai alkalmazás lesz. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre. Ügyeljen arra, hogy:
@@ -47,17 +46,13 @@ Következő lépésként létre kell hoznia egy alkalmazást a B2C-címtárban, 
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre az adatra később még szükség lesz.
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow) leírtak szerint.  A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Hozzon létre egy házirendet minden típusú van szüksége.  A szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * A regisztrációs szabályzatban adja meg a **Megjelenített név** értékét, illetve az egyéb regisztrációs attribútumokat.
 * Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet.  Ezenfelül más jogcímeket is használhat.
 * Az egyes szabályzatok létrehozását követően másolja a szabályzat **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A szabályzatok nevére később még szüksége lesz.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-A három szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
-
-Ha szeretné megismerni a szabályzatoknak az Azure AD B2C alatti működését, végezze el a [.NET-es webalkalmazások használatába bevezető oktatóanyagot](active-directory-b2c-devquickstarts-web-dotnet.md).
+A szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-code"></a>A kód letöltése
 Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). A minta menet közbeni létrehozásához [letöltheti a projektvázát tartalmazó .zip-fájlt](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). A vázprojektet klónozhatja is:

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: d47a90851777b3256474a88e5881afd8f52547f2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f4a1bf9e2fee9278713315c98f25dbc820a553a1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263322"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352410"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -134,7 +134,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse a legújabb Azure Stack gyorsjavítás 1808 1809 alkalmazása előtt. További információkért lásd: [KB-os 4481066 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/).
+- Telepítse a legújabb Azure Stack gyorsjavítás 1808 1809 alkalmazása előtt. További információkért lásd: [KB-os 4481066 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/). A Microsoft azt javasolja, hogy a legújabb gyorsjavítások érhető el, amíg a minimális megengedett 1809 telepítéséhez szükséges verziója 1.1808.5.110.
 
   > [!TIP]  
   > Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:

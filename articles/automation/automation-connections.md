@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/15/2019
+ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0bdf2d4e9c5ee659666eeb1a6e92c34c181ba805
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331792"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358830"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Kapcsolati objektumok az Azure Automationben
 
@@ -24,6 +24,16 @@ A kapcsolat létrehozásakor meg kell adnia egy *kapcsolattípus*. A kapcsolatt�
 
 >[!NOTE]
 >Az Azure Automationben biztonságos eszközök tartalmazzák, hitelesítő adatok, tanúsítványok, kapcsolatok és a titkosított változókat. Ezek az eszközök titkosítottak és a létrehozott egyedi kulcs segítségével minden automation-fiókhoz tartozó Azure Automation tárolja. Ezt a kulcsot tárolja a rendszer által felügyelt Key Vault. A kulcs tárolása egy biztonságos objektumot, előtt betöltése a Key Vaultból és majd az eszköz titkosításához használt. Ez a folyamat az Azure Automation felügyeli.
+
+## <a name="connection-types"></a>Kapcsolattípusok
+
+Nincsenek elérhető az Azure Automation három típusú beépített kapcsolatok:
+
+* **Azure** – Ez a kapcsolat a klasszikus erőforrások felügyeletére használható.
+* **AzureClassicCertificate** – ehhez a kapcsolathoz használja a **AzureClassicRunAs** fiókot.
+* **AzureServicePrincipal** – ehhez a kapcsolathoz használja a **AzureRunAs** fiókot.
+
+A legtöbb esetben nem szeretne létrehozni egy kapcsolati erőforrás létrehozása, amikor létrehoz egy [futtató fiók](manage-runas-account.md).
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-parancsmagok
 

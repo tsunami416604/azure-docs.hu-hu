@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: trinadhk
-ms.openlocfilehash: 64e012b84f863196592133da52b35736e486c9ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a0cbb8650a818c3ae6c839d69bbc9b94f8d080ca
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266921"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351396"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -55,14 +55,19 @@ A növekményes pillanatképek vannak a virtuális gép tárfiókban tárolja, a
 
 
 ## <a name="upgrading-to-instant-restore"></a>Az azonnali helyreállítás frissítése
-Ha használja az Azure Portalon, látni fogja értesítést a tároló irányítópultjának. Ezt az értesítést a nagyméretű lemezek támogatása és a biztonsági mentés és visszaállítás sebességének fejlesztései vonatkozik. Másik lehetőségként megnyithatja a tároló frissítési lehetősége tulajdonságok lapján.
 
+Ha használja az Azure Portalon, látni fogja értesítést a tároló irányítópultjának. Ezt az értesítést a nagyméretű lemezek támogatása és a biztonsági mentés és visszaállítás sebességének fejlesztései vonatkozik.
 
 ![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – értesítés a támogatás megszűnéséről biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png)
 
 Azonnali visszaállítani a frissítéskor képernyő megnyitásához, válassza ki a szalagcímet.
 
 ![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – biztonsági mentési feladat frissítése](./media/backup-azure-vms/instant-rp.png)
+
+Másik lehetőségként megnyithatja **tulajdonságok** beolvasni a tároló oldalán a **frissítése** lehetőség **virtuális gép biztonsági másolat verem**.
+
+![Biztonsági mentési feladat, a virtuális gép biztonsági másolat verem – Tulajdonságok lap](./media/backup-azure-vms/instant-restore-capability-properties.png)
+
 
 ## <a name="upgrade-to-instant-restore-using-powershell"></a>Frissítse az azonnali helyreállításához PowerShell-lel
 

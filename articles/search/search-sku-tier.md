@@ -7,32 +7,32 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315553"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354552"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
-Az Azure Search szolgáltatásban egy [szolgáltatást annak üzembe helyezése](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. Szolgáltatásszintek **ingyenes**, **alapszintű**, vagy **Standard**, ahol **Standard** érhető el a konfigurációkat és a kapacitást. A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a **Standard** fejlesztési és éles környezetekben. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search. 
+Az Azure Search szolgáltatásban egy [erőforrás létrehozása](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. Szolgáltatásszintek **ingyenes**, **alapszintű**, vagy **Standard**, ahol **Standard** több konfigurációk és -kapacitások érhető el. A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a **Standard** fejlesztési és éles környezetekben. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search. 
 
 Szint határozza meg a kapacitást nem szolgáltatásait, és különbözteti meg a:
 
 + Indexeket hozhat létre száma
 + Méretétől és sebességétől partíciók (fizikai tároló)
 
-Bár minden szint esetében, beleértve a **ingyenes** réteg, általában kínálnak funkcióparitás, nagyobb méretű számítási feladatokat is szabályozzák a magasabb szintű követelményei. Ha például [cognitive search](cognitive-search-concept-intro.md) indexelő rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet történik, nagyon kicsi.
+Bár minden szint esetében, beleértve a **ingyenes** réteg, általában kínálnak funkcióparitás, nagyobb méretű számítási feladatokat is szabályozzák a magasabb szintű követelményei. Ha például [cognitive search](cognitive-search-concept-intro.md) indexelő rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet kicsi történik.
 
 > [!NOTE] 
 > Funkcióparitás kivételt [indexelők](search-indexer-overview.md), amely nem áll rendelkezésre a S3HD.
 >
 
-A szinten belül is [módosíthatja a replika és a partíció erőforrások](search-capacity-planning.md) a teljesítmény finomhangolásának. Mivel előfordulhat, hogy először a kettő vagy három az egyes, a számítási teljesítménnyel (nagy erőforrásigényű) indexelési számítási ideiglenesen létrehozhat. Lehetővé teszi a szinten belüli erőforrásszintek hangolása növeli a rugalmasságot, de is némileg megnehezíti az elemzést. Előfordulhat, hogy talál-e egy alacsonyabb szintre magasabb erőforrások/replikákkal rendelkező kínál a nagyobb érték és a teljesítmény, mint az alacsonyabb szabályozásával magasabb szintre kísérletezést. Mikor és miért módosíthatja lenne a kapacitás kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
+A szinten belül is [módosíthatja a replika és a partíció erőforrások](search-capacity-planning.md) a teljesítmény finomhangolásának. Két vagy három az egyes kezdődhet, és átmenetileg emelni a indexelési számítási nagy számítási teljesítménnyel. Lehetővé teszi a szinten belüli erőforrásszintek hangolása növeli a rugalmasságot, de is némileg megnehezíti az elemzést. Előfordulhat, hogy talál-e egy alacsonyabb szintre magasabb erőforrások/replikákkal rendelkező kínál a nagyobb érték és a teljesítmény, mint az alacsonyabb szabályozásával magasabb szintre kísérletezést. Mikor és miért módosíthatja lenne a kapacitás kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
 
 <!---
 The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
@@ -40,23 +40,46 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 ## <a name="how-billing-works"></a>A számlázás működése
 
-Az Azure Search szolgáltatásban a legfontosabb számlázási megértéséhez koncepciójuk egy *keresési egység* (SU). Azure Search a replikák és partíciók függvényt is függ, mivel csak az egyik vagy másik számlázási nincs értelme. Ehelyett mindkét összetett számlázási alapul. 
+Az Azure Search szolgáltatásban többféleképpen négy Ön is a személy költségei a portálon egy keresési erőforrás létrehozásakor:
+
+* Megjelenik a replikák és partíciók rendszeres indexelés és a feladatok lekérdezése. Először egy a, de az egyik vagy mindkét adja hozzá a kapacitás növeléséhez kiválasztása vagy szabályozásával szintű kellene fizetnie. 
+* Kimenő adatforgalom díját az indexelés során. Ha az adatok lekérése egy Azure SQL Database vagy a Cosmos DB-adatforrásból, díjkategóriát alkalmazzuk a tranzakció a számlán, az erőforrásokhoz.
+* A [cognitive search](cognitive-search-concept-intro.md) csak, kép kibontása során dokumentumfeltörést alapján számítjuk fel a dokumentumok kinyert képek számát. Szövegkinyerés jelenleg díjmentes.
+* A [cognitive search](cognitive-search-concept-intro.md) csak végrehajtott információbeolvasás alapján [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás terhelve van. Végrehajtott információbeolvasás számlázása megegyező módon, ha végrehajtotta a Cognitive Services használatával közvetlenül a feladatot.
+
+Ha nem használ [cognitive search](cognitive-search-concept-intro.md) vagy [Azure Search-indexelők](search-indexer-overview.md), replikák és partíciók aktívan használnak, rendszeres indexelés és a lekérdezési számítási feladatokhoz kapcsolódó csak költségeit.
+
+### <a name="billing-for-general-purpose-indexing-and-queries"></a>Általános célú indexelés és a lekérdezések
+
+Az Azure Search-műveletek, a legfontosabb számlázási megértéséhez koncepciójuk egy *keresési egység* (SU). Azure Search a replikák és partíciók indexelést és lekérdezést is függ, mivel csak az egyik vagy másik számlázási nincs értelme. Ehelyett mindkét összetett számlázási alapul. 
 
 SU, a termék *replika* és *partíciók* a szolgáltatás által használt: **`(R X P = SU)`**
 
-Mindegyik szolgáltatás az a minimális 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák, illetve 3 partíció x 12 replikákat, hogy néhányat említsünk. 
-
-Kevesebb, mint a teljes kapacitás szokás. Például egy 3-replika, a 3-partition szolgáltatás 9 SUS-t számít. 
+Mindegyik szolgáltatás egy SU (egy másodpéldány egy partíciót megszorozza) kezdődik, az a minimális. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák, illetve 3 partíció x 12 replikákat, hogy néhányat említsünk. Kevesebb, mint a teljes kapacitás szokás. Például egy 3-replika, a 3-partition szolgáltatás 9 SUS-t számít. 
 
 A számlázási sebessége **óránkénti száma SU**, minden egyes kellene fokozatosan magasabb szinten. A magasabb szintű nagyobb és gyorsabb partíciókat, hozzájárul a magasabb, a teljes óránkénti elszámolása kapható. Értékeli az egyes szintek találhatók [díjszabása](https://azure.microsoft.com/pricing/details/search/). 
 
 A legtöbb ügyfél használata csak egy része online, a teljes kapacitás, a többi tulajdonában foglalás. A számlázási tekintetében, a partíciókat és -replikákat online, számított képlettel a SU, amely meghatározza a ténylegesen kell fizetnie óránként hozza a száma.
 
-### <a name="tips-for-reducing-costs"></a>Tippek a költségek csökkentése
+### <a name="billing-for-image-extraction-in-cognitive-search"></a>Kép kinyerése kognitív keresés díjszabása
+
+Ha egy folyamat indexelés kognitív keresés-fájlokból a képek kibontására, díjkötelesek művelet az Azure Search számla. A paraméter, amely elindítja a lemezkép kinyerési **imageAction** a egy [az indexelő konfigurációjának](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters). Ha **imageAction** értéke None (alapértelmezett), nem számítunk fel díjat a lemezkép kinyerési.
+
+A díjszabás változhat, de mindig dokumentációja a a [díjszabása](https://azure.microsoft.com/pricing/details/search/) oldal az Azure search. 
+
+### <a name="billing-for-built-in-skills-in-cognitive-search"></a>A számlázás a kognitív keresés beépített képességek
+
+-Felderítési bővítést folyamat beállításakor minden [beépített képességek](cognitive-search-predefined-skills.md) a folyamatban használt gépi tanulási modellek alapulnak. Ezek a modellek a Cognitive Services által biztosított. Használati minták indexelés során történik ugyanez a díjszabás, mintha közvetlenül az erőforrás kérte.
+
+Tegyük fel, hogy egy folyamatot, optikai karakterfelismerés (OCR) álló elleni beolvasott kép JPEG-fájlok, ahol az eredményül kapott szöveg leküldéssel kerülnek az Azure Search-index a szabad formátumú keresési lekérdezések esetében. Az indexelési folyamat magában foglalja az indexelőt a [OCR szakértelem](cognitive-search-skill-ocr.md), és a szakértelem lehet, hogy [Cognitive Services-erőforrás csatlakoztatva](cognitive-search-attach-cognitive-services.md). Az indexelő futtatásakor díjak OCR végrehajtási Cognitive erőforrások számlán jelennek meg.
+
+## <a name="tips-for-reducing-costs"></a>Tippek a költségek csökkentése
 
 Nem lehet leállítani a szolgáltatást, hogy csökkentse a számla. Dedikált erőforrások működési 24-7, a kizárólagos használatára, a szolgáltatás teljes élettartama lefoglalva. Csak úgy csökkentheti a számla a replikákat és partíciókat, hogy továbbra is a elfogadható teljesítményt biztosít alacsony szintű csökkentésével és [SLA megfelelőségi](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-A költségek csökkentésére egy szintje alacsonyabb óránkénti egy szintre megválasztása. S1 óradíjak alacsonyabbak, mint az S2 vagy S3 szintű díjszabás szerint. A betöltés leképezések alacsonyabb végén célzó szolgáltatás sikerült építhet ki. Ha a szolgáltatás akkor elszaporodó, hozzon létre egy második nagyobb többrétegű service, a második szolgáltatás az indexek újraépítése, és törölje a az elsőt. Ha elvégezte a kapacitástervezés helyi kiszolgálókon, tudja, hogy, hogy az általános "megvásárlása", hogy a tervezett növekedést is kezelni tudja. De a szolgáltatás egy felhőszolgáltatással, akkor is szerezni a költségmegtakarítást további agresszív mert, sok mindent megváltoztathat egy adott beszerzési. Egy újabb többrétegű szolgáltatás mindig váltson, ha a jelenlegi előfizetéssel nem elegendő.
+A költségek csökkentésére egy szintje alacsonyabb óránkénti egy szintre megválasztása. S1 óradíjak alacsonyabbak, mint az S2 vagy S3 szintű díjszabás szerint. Feltételezve, hogy a terhelés leképezések alacsonyabb végén célzó, ha Ön a szolgáltatás elszaporodó szolgáltatás hozza létre, akkor sikerült hozzon létre egy második nagyobb többrétegű service, a második szolgáltatás az indexek újraépítése, és törölje az elsőt. 
+
+Ha elvégezte a kapacitástervezés helyi kiszolgálókon, tudja, hogy, hogy az általános "megvásárlása", hogy a tervezett növekedést is kezelni tudja. De a szolgáltatás egy felhőszolgáltatással, akkor is szerezni a költségmegtakarítást további agresszív mert, sok mindent megváltoztathat egy adott beszerzési. Egy újabb többrétegű szolgáltatás mindig váltson, ha a jelenlegi előfizetéssel nem elegendő.
 
 ### <a name="capacity-drill-down"></a>Kapacitás kibontása
 
@@ -120,7 +143,7 @@ Egy megoldás kapacitásának becsléséhez a következővel kell kezdődnie, a 
 
 Feltéve, a minta képviselő, mind a teljes adatforrásra tíz százalékát, egy 30 MB index lesz kb. 300 MB Ha indexelt összes dokumentumot. Előzetes szám képességekkel, double 600 MB-os a tárolási követelmények összesen (fejlesztési és éles környezetben), két indexeket a költségvetéshez összeg lehet. Ez egyszerűen feltételfüggvényt a **alapszintű** tier, így hiba lép érvénybe.
 
-### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>2. lépés: Fejlesztés a számlázható szint szerint kalkuláljuk használatával állít elő a feldolgozott becslése
+### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>2. lépés: Fejlesztés a számlázható szint szerint kalkuláljuk használatával állít elő a feldolgozott becslése
 
 Egyes ügyfelek inkább a dedikált erőforrások, amelyek nagyobb mintavételi és feldolgozási időt, és ezután fejlesztése index mennyisége, mérete és a lekérdezés kötetek valósághű becslése a fejlesztés során történő indításához. Kezdetben a szolgáltatás ki van építve a legjobb-találgatásos becslés alapján, és majd, az alkalmazásfejlesztési projekt kiforrottá, teams általában tudja, hogy a meglévő szolgáltatás felett vagy alatt várható éles számítási kapacitást. 
 
@@ -143,9 +166,9 @@ Index számát és méretét alkalmazhatják az elemzés, mert maximális korlá
 
 **Lekérdezés kötet kapcsolatos szempontok**
 
-Lekérdezések másodpercenkénti (lekérdezési QPS) azt jelzi, amely kiemeli átveszi az során teljesítményhangolás, de általában nem szint veszi figyelembe, ha a kezdetben várhatóan nagyon jó lekérdezési kötet.
+Lekérdezések másodpercenkénti (lekérdezési QPS) azt jelzi, amely kiemeli átveszi az során teljesítményhangolás, de általában nem szint veszi figyelembe, ha a kezdetben a lekérdezési kötet várt.
 
-Replikák az egyensúlyt a standard csomag összes közvetíti partíciók, további replikán keresztül kiszolgálnia lekérdezést támogató betöltésére, terheléselosztás és további partíciók párhuzamos feldolgozásra. A teljesítmény finomhangolása a szolgáltatás kiépítése után.
+A standard szint az egyensúlyt a replikák közvetíti partíciók, további replikán keresztül kiszolgálnia lekérdezést támogató betöltésére, terheléselosztás és további partíciók párhuzamos feldolgozásra. A teljesítmény finomhangolása a szolgáltatás kiépítése után.
 
 Ügyfelek, akik strong kezdettől fogva kötetek érdemes megfontolnia a magasabb szintű, nagyobb teljesítményű hardver által támogatott lekérdezési megtartását. Ezután offline állapotba helyezése partíciókat és -replikákat, vagy még váltson egy alacsonyabb szintű szolgáltatást, ha a lekérdezés köteteket tényleges táblává alakíthatóak sikertelen. A lekérdezések átviteli sebességére kiszámításáról további információkért lásd: [Azure Search-teljesítmény és optimalizálás](search-performance-optimization.md).
 
@@ -158,7 +181,7 @@ A **ingyenes** szint és az előzetes funkciók nem tartoznak [szolgáltatói sz
 
 + Ismerje meg, hogyan hozhat létre hatékony indexeket, és mely frissítési módszerek a legalacsonyabb impactful. Javasoljuk, hogy [forgalmi elemzések keresése](search-traffic-analytics.md) az üzletvitelt a lekérdezés tevékenység számára.
 
-+ Lehetővé teszi a mérőszámok körül lekérdezéseket hozhat létre és használati minták (lekérdezések munkaidőben, amikor kevesen indexelő) adatokat gyűjthet, és tájékoztatja a jövőbeli szolgáltatás kialakítási döntéseket ezen adatok segítségével. Amíg nem gyakorlati óránkénti vagy napi szinten, a partíciók és erőforrások kezelésére lekérdezési kötetekről, vagy nem tervezett módosításokat, de a tartós módosítások Ha szintek tartsa elég hosszú garantálja a műveletek dinamikusan módosíthatja.
++ Lehetővé teszi a mérőszámok körül lekérdezéseket hozhat létre és használati minták (lekérdezések munkaidőben, amikor kevesen indexelő) adatokat gyűjthet, és tájékoztatja a jövőbeli szolgáltatás kialakítási döntéseket ezen adatok segítségével. Az óránkénti vagy napi kiadása ütemben történik, nem praktikus, míg a partíciók és erőforrások kezelésére lekérdezési kötetekről, vagy nem tervezett módosításokat, de a tartós módosítások Ha szintek tartsa elég hosszú garantálja a műveletek dinamikusan módosíthatja.
 
 + Ne feledje, hogy a csak a kiépítés alatt hátránya, hogy szükség lehet a üzemen egy szolgáltatás, ha a tényleges követelmények nagyobb a becsült. A szolgáltatáskimaradás elkerülése érdekében lenne hozzon létre egy új, magasabb szintű ugyanabban az előfizetésben, és azt egymás mellett futtassa addig, amíg az összes alkalmazás és a cél az új végpont.
 

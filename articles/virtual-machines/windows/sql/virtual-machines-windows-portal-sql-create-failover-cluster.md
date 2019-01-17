@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237964"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359935"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -71,8 +71,10 @@ Nincsenek néhány dolgot tudnia kell, és néhány dolgot, hogy a szükséges h
 ### <a name="what-to-know"></a>Tudnivalók a
 Rendelkeznie kell a következő technológiákat működési megismerése:
 
-- [Windows-fürttechnológiák](https://technet.microsoft.com/library/hh831579.aspx)
-- [SQL Server feladatátvevő fürt példányok](https://msdn.microsoft.com/library/ms189134.aspx).
+- [Windows-fürttechnológiák](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server feladatátvevő fürt példányok](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
+
+Egy fontos különbség az, hogy az Azure IaaS virtuális gépek Vendég feladatátvevő fürtöt, javasoljuk, hogy egyik hálózati Adapterre (fürtcsomópont) kiszolgáló és a egy önálló alhálózati száma. Az Azure-hálózatok rendelkezik fizikai redundanciát, így további hálózati adapterek és alhálózatok a szükségtelen az Azure IaaS virtuális gépek Vendég-fürtön. A fürt ellenőrzési jelentésében figyelmeztetést ad, hogy a csomópontok használata csak egyetlen hálózaton elérhető legyen, bár ez a figyelmeztetés figyelmen kívül hagyhatja biztonságosan Azure IaaS virtuális gépek Vendég feladatátvevő fürtökön. 
 
 Emellett rendelkeznie kell a következő technológiákat egy általános ismertetése:
 
@@ -111,12 +113,12 @@ Ezek az előfeltételek teljesülnek folytathatja a feladatátvevő fürt létre
    - Kattintson a **rendelkezésre állási csoport**.
    - Kattintson a **Create** (Létrehozás) gombra.
    - Az a **rendelkezésre állási csoport létrehozása** panelen állítsa be a következő értékeket:
-      - **Név**: a rendelkezésre állási csoport nevét.
-      - **Előfizetés**: az Azure-előfizetést.
+      - **Név**: A rendelkezésre állási csoport nevét.
+      - **Előfizetés**: Az Azure-előfizetése.
       - **Erőforráscsoport**: Ha egy meglévő csoportot szeretne, kattintson a **meglévő** és a legördülő listából válassza ki a csoportot. Ellenkező esetben válasszon **hozzon létre új** , és adja meg a csoport nevét.
-      - **Hely**: állítsa be annak helyét, ha azt tervezi, hogy a virtuális gépek létrehozásakor.
-      - **Tartalék tartományok**: használja az alapértelmezett (3).
-      - **Frissítési tartományok**: használja az alapértelmezett (5).
+      - **Hely**: Állítsa be a helyet, ha azt tervezi, hogy a virtuális gépek létrehozásakor.
+      - **Tartalék tartományok**: Használja az alapértelmezett (3).
+      - **Frissítési tartományok**: Használja az alapértelmezett (5).
    - Kattintson a **létrehozás** létrehozni a rendelkezésre állási beállítása.
 
 1. A virtuális gépek létrehozása rendelkezésre állási csoportban.
@@ -196,7 +198,7 @@ Ezek az előfeltételek teljesülnek folytathatja a feladatátvevő fürt létre
 
 Miután a virtuális gépek létrehozása és konfigurálása, konfigurálhatja a feladatátvevő fürt.
 
-## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>2. lépés: A Windows feladatátvevő fürt konfigurálása az S2D
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>2. lépés: Az S2D a Windows feladatátvevő fürt konfigurálása
 
 A következő lépés, hogy a feladatátvevő fürt konfigurálása az S2D-t. Ebben a lépésben a következő részlépések fogja végrehajtani:
 
@@ -237,14 +239,14 @@ A felhasználói felületen keresztül a fürt érvényesítésének, kövesse a
 
 1. A **Kiszolgálókezelő**, kattintson a **eszközök**, majd kattintson a **Feladatátvevőfürt-kezelőben**.
 1. A **Feladatátvevőfürt-kezelőben**, kattintson a **művelet**, majd kattintson a **konfiguráció ellenőrzése...** .
-1. Kattintson a **Tovább** gombra.
+1. Kattintson a **tovább**.
 1. A **kiszolgálók kiválasztása vagy a fürt**, mindkét virtuális gép nevét írja.
-1. A **tesztelési beállítások**, válassza a **csak a kijelölt tesztek futtatása**. Kattintson a **Tovább** gombra.
+1. A **tesztelési beállítások**, válassza a **csak a kijelölt tesztek futtatása**. Kattintson a **tovább**.
 1. A **kijelölés tesztelése**, például kivételével az összes teszt **tárolási**. Tekintse meg a következő képen látható:
 
    ![Vizsgálat ellenőrzése](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Kattintson a **Tovább** gombra.
+1. Kattintson a **tovább**.
 1. A **megerősítő**, kattintson a **tovább**.
 
 A **konfiguráció ellenőrzése varázsló** az ellenőrző teszteket futtat.
@@ -312,7 +314,7 @@ A lemezek az S2D-t kell üres és nem tartalmazhatnak partíciókat vagy más ad
 
    ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
-## <a name="step-3-test-failover-cluster-failover"></a>3. lépés: Feladatátvevő fürt feladatátvételi teszt
+## <a name="step-3-test-failover-cluster-failover"></a>3. lépés: A feladatátvevő fürt feladatátvételi teszt
 
 A Feladatátvevőfürt-kezelő, győződjön meg arról, hogy a tárolási erőforrások áthelyezheti a többi fürtcsomóponton. Ha a feladatátvevő fürt csatlakozhat **Feladatátvevőfürt-kezelőben** és a tárterület áthelyezését egyik csomópontról a másikra, készen áll az FCI konfigurálása.
 
@@ -345,7 +347,7 @@ Miután konfigurálta a feladatátvevő fürt és a fürt-összetevők, beleért
    >[!NOTE]
    >Ha az Azure Marketplace-en image z galerie használt SQL Server, SQL Server-eszközök szerepeltek a lemezképpel. Ha nem használja ezt a képet, az SQL Server-eszközök külön kell telepítenie. Lásd: [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-## <a name="step-5-create-azure-load-balancer"></a>5. lépés: Az Azure load balancer létrehozása
+## <a name="step-5-create-azure-load-balancer"></a>5. lépés: Azure-terheléselosztó létrehozása
 
 Az Azure virtual machines, a fürtök használja egy terheléselosztó, amely tárolja az IP-címet, amely egyszerre csak egy fürtcsomóponton kell. Ebben a megoldásban a terheléselosztó IP-címét tárolja az SQL Server FCI-hez.
 
@@ -363,14 +365,14 @@ A load balancer létrehozása:
 
 1. Az a load balancer konfigurálása:
 
-   - **Név**:, amely azonosítja a terheléselosztó nevét.
-   - **Típus**: lehet, hogy a terheléselosztó nyilvános vagy privát. Privát load balancer az egyazon vneten érhetők el. A legtöbb Azure-alkalmazások privát terheléselosztó használható. Ha az alkalmazásnak az SQL Server elérését kell közvetlenül az interneten keresztül, használja a nyilvános load balancer.
-   - **Virtuális hálózat**: a virtuális gépek ugyanazon a hálózaton.
-   - **Alhálózat**: a virtuális gépeket ugyanabban az alhálózatban.
-   - **Magánhálózati IP-cím**: az azonos IP-cím, amelyet az SQL Server FCI fürt hálózati erőforráshoz rendelt.
-   - **Előfizetés**: az Azure-előfizetést.
-   - **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot a virtuális gépek.
-   - **Hely**: használja az ugyanazon Azure-beli hely, a virtuális gépek.
+   - **Név**: Egy név, amely azonosítja a terheléselosztóhoz.
+   - **Típus**: A terheléselosztó a nyilvános vagy saját lehet. Privát load balancer az egyazon vneten érhetők el. A legtöbb Azure-alkalmazások privát terheléselosztó használható. Ha az alkalmazásnak az SQL Server elérését kell közvetlenül az interneten keresztül, használja a nyilvános load balancer.
+   - **Virtuális hálózat**: Ugyanazon a hálózaton a virtuális gépeket.
+   - **Alhálózat**: A virtuális gépek azonos alhálózatban.
+   - **Magánhálózati IP-cím**: Az azonos IP-cím, amelyet az SQL Server FCI fürt hálózati erőforráshoz rendelt.
+   - **Előfizetés**: Az Azure-előfizetése.
+   - **Erőforráscsoport**: A virtuális gépek ugyanazt az erőforráscsoportot használja.
+   - **Hely**: Használja az ugyanazon Azure-beli hely, a virtuális gépek.
    Tekintse meg a következő képen látható:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
@@ -395,9 +397,9 @@ A load balancer létrehozása:
 
 1. Az a **állapotadat-mintavétel hozzáadása** panelen <a name="probe"> </a>állapota Hálózatfigyelő paramétereinek a beállításához:
 
-   - **Név**: az állapotminta nevét.
+   - **Név**: Az állapotminta neve.
    - **Protokoll**: TCP.
-   - **Port**: elérhető TCP-port beállítása. Ezt a portot egy megnyitott tűzfallal portra van szüksége. Használja a [ugyanazt a portot](#ports) a tűzfal beállítása az állapotmintához.
+   - **Port**: Az elérhető TCP-port beállítása. Ezt a portot egy megnyitott tűzfallal portra van szüksége. Használja a [ugyanazt a portot](#ports) a tűzfal beállítása az állapotmintához.
    - **Intervallum**: 5 másodperc.
    - **Nem kifogástalan állapot küszöbértéke**: 2 egymást követő hibák.
 
@@ -411,19 +413,19 @@ A load balancer létrehozása:
 
 1. Állítsa be a terheléselosztási szabályok paraméterek:
 
-   - **Név**: a terheléselosztási szabályok nevét.
+   - **Név**: A terheléselosztási szabályok nevét.
    - **Előtérbeli IP-cím**: IP-címet használja az SQL Server FCI fürt hálózati erőforráshoz.
-   - **Port**: állítsa be az SQL Server FCI TCP-porton. Az alapértelmezett példány port az 1433-as.
-   - **Háttérport**: ezt az értéket használja ugyanazt a portot, mint a **Port** értéket, ha engedélyezi a **fix IP-(közvetlen kiszolgálói válasz)**.
-   - **Háttérkészlet**: használja a korábban konfigurált háttérkészlet neve.
-   - **Az állapotfigyelő mintavételező**: használja az állapotmintát korábban konfigurált.
-   - **Munkamenet megőrzését**: nincs.
+   - **Port**: Állítsa be az SQL Server FCI TCP-porton. Az alapértelmezett példány port az 1433-as.
+   - **Háttérport**: Ezt az értéket használja ugyanazt a portot, mint a **Port** értéket, ha engedélyezi a **fix IP-(közvetlen kiszolgálói válasz)**.
+   - **Háttérkészlet**: Használja a korábban konfigurált háttérkészlet neve.
+   - **Az állapotfigyelő mintavételező**: Használja az állapotmintát, korábban konfigurált.
+   - **Munkamenet megőrzését**: Nincs.
    - **Üresjárat időkorlátja (perc)**: 4.
-   - **Nem fix IP (közvetlen kiszolgálói válasz)**: engedélyezve
+   - **Nem fix IP (közvetlen kiszolgálói válasz)**: Engedélyezve
 
 1. Kattintson az **OK** gombra.
 
-## <a name="step-6-configure-cluster-for-probe"></a>6. lépés: A fürt mintavétel konfigurálása
+## <a name="step-6-configure-cluster-for-probe"></a>6. lépés: Fürt mintavétel konfigurálása
 
 Állítsa be a fürt mintavételi port paraméternek a PowerShellben.
 
@@ -442,7 +444,7 @@ Beállítása a fürt mintavételi port paraméternek, frissítse a változók a
 
 Az előző szkriptben a környezet értékeinek beállítását. Az alábbi lista részletesen ismerteti az értékeket:
 
-   - `<Cluster Network Name>`: A hálózat neve Windows Server feladatátvételi fürtben. A **Feladatátvevőfürt-kezelőben** > **hálózatok**, kattintson a jobb gombbal a hálózaton, és kattintson a **tulajdonságok**. A helyes érték alatt **neve** a a **általános** fülre. 
+   - `<Cluster Network Name>`: A Windows Server feladatátvevő fürt nevét a hálózaton. A **Feladatátvevőfürt-kezelőben** > **hálózatok**, kattintson a jobb gombbal a hálózaton, és kattintson a **tulajdonságok**. A helyes érték alatt **neve** a a **általános** fülre. 
 
    - `<SQL Server FCI IP Address Resource Name>`: Az SQL Server FCI IP-cím erőforrás neve. A **Feladatátvevőfürt-kezelőben** > **szerepkörök**, az SQL Server FCI szerepkör alatt a **kiszolgálónév**, kattintson a jobb gombbal az IP-cím erőforráshoz, majd kattintson a **Tulajdonságok**. A helyes érték alatt **neve** a a **általános** fülre. 
 
@@ -459,7 +461,7 @@ Miután beállította a fürt mintavétel láthatja az összes fürt paramétert
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 
-## <a name="step-7-test-fci-failover"></a>7. lépés: Tesztelje az FCI-feladatátvétel
+## <a name="step-7-test-fci-failover"></a>7. lépés: Az FCI feladatátvételi teszt
 
 Az FCI ellenőrzése a fürt funkció feladatátvételi tesztje. Kövesse az alábbi lépéseket:
 

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: db853be456dbf893163f53bbc797cf12172d38b7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261094"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353226"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -264,15 +264,15 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
 1. Telepítse, és csatolja a fürt az Azure Machine Learning-SDK csomagot.  
 
-    * [Hozzon létre egy könyvtárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) egy ezeket a beállításokat (az alábbi lehetőségek közül csak egyet választhat):
+    * [Hozzon létre egy könyvtárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) ezek a beállítások egyikével (_csak egyet az alábbi lehetőségek közül választhat_):
     
-        * Az Azure Machine Learning-SDK telepítése nélkül automatizált machine learning-funkció:
+        * Az Azure Machine Learning-SDK telepítése _nélkül_ automatikus machine learning-funkció:
             | Beállítás | Érték |
             |----|---|
             |Forrás | Töltse fel a Python tojás vagy PyPI
             |PyPi neve | azureml-sdk[databricks]
     
-        * Az Azure Machine Learning-SDK telepítése az automatizált machine learning:
+        * Az Azure Machine Learning-SDK telepítése _a_ automatikus gépi tanulás:
             | Beállítás | Érték |
             |----|---|
             |Forrás | Töltse fel a Python tojás vagy PyPI
@@ -286,9 +286,11 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
     Ha régi SDK-verziója, kapcsolja ki azt a fürt telepített függvénytárak és a Kukába helyezni. Az új SDK-verzió telepítése, és indítsa újra a fürtöt. Ha ezt követően egy problémát, válassza le, és csatlakoztassa újból a fürthöz.
 
-    Ha elkészült, a szalagtár van csatolva, az alábbi képen látható módon. Vegye figyelembe ezeket [Databricks gyakori problémák](resource-known-issues.md#databricks).
+    Ha elkészült, a szalagtár van csatolva, ahogyan az alábbi lemezképek. Vegye figyelembe ezeket [Databricks gyakori problémák](resource-known-issues.md#databricks).
 
-   ![SDK-t a Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+    * Ha telepítette az Azure Machine Learning-SDK _nélkül_ gépi tanulási automatikus ![SDK nélkül automatikus telepítve a Databricks gépi tanulás ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+
+    * Ha telepítette az Azure Machine Learning-SDK _a_ gépi tanulási automatikus ![SDK-val automatikus telepítve a Databricks gépi tanulás ](./media/how-to-configure-environment/automlonadb.jpg)
 
    Ha ez a lépés sikertelen, indítsa újra a fürtöt, az alábbiak szerint:
 

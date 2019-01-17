@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724859"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359493"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Csatlakozás a Cosmos DB az Azure Search indexelők használatával
 
@@ -38,7 +38,7 @@ Az alábbi videó az Azure Cosmos DB Programigazgatója Andrew Liu Azure Search-
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>Támogatott API-típusok
 
-Bár az Azure Cosmos DB támogatja a különböző adatmodellek és API-k, csak az SQL API Azure Search-indexelő terméktámogatást terjed ki. Az Azure Cosmos DB MongoDB API támogatása jelenleg nyilvános előzetes verzióban érhető el.  
+Bár az Azure Cosmos DB támogatja a különböző adatmodellek és API-k, csak az SQL API Azure Search-indexelő terméktámogatást terjed ki. Az Azure Cosmos DB API támogatása a mongodb-hez jelenleg nyilvános előzetes verzióban érhető el.  
 
 További API-k támogatása az azonnali. Annak érdekében, fontossági sorrendjének megállapításában, melyiket támogatja az első, leadott a szavazatát, a felhasználói visszajelzési webhelyen:
 
@@ -102,7 +102,7 @@ A kérés törzse tartalmazza az adatforrás-definíciót, amely a következő m
   
   * **connectionString**: Kötelező. A következő formátumban adja meg a kapcsolati adatokat az Azure Cosmos DB-adatbázishoz: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` MongoDB-gyűjtemény, vegye fel az **ApiKind = MongoDb** kapcsolati karakterláncot: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   Kerülje a végpont URL-címben portszámokat. Ha a port számát adja meg, az Azure Search nem tudja indexelése az Azure Cosmos DB-adatbázist.
-* **tároló**:
+* **container**:
   
   * **Név**: Kötelező. Adja meg az adatbázis-gyűjtemény indexelendő azonosítója.
   * **lekérdezés**: Választható. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására indexelésére használhatja az Azure Search egybesimított sémába. A MongoDB-gyűjtemények lekérdezések nem támogatottak. 

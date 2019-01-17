@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087282"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351849"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
@@ -118,7 +118,7 @@ A következő szkript használatával a kulcstartó létrehozása és hozzáadá
    ``` 
 
 
-További információkért lásd: [KeyVault kezelése az Azure Stackben a PowerShell-lel](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell).
+További információkért lásd: [KeyVault kezelése az Azure Stackben a PowerShell-lel](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-key-vault-manage-powershell).
 
 ## <a name="deploy-the-marketplace-item"></a>A Piactéri elem üzembe helyezése
 
@@ -138,8 +138,8 @@ További információkért lásd: [KeyVault kezelése az Azure Stackben a PowerS
 
    Az a *felügyeleti ügyfél tanúsítványának ujjlenyomata*, ujjlenyomatát adja meg a *rendszergazdai ügyfél tanúsítványa*. (Lásd a [Előfeltételek](#prerequisites).)
    
-   - A Key Vault forrás: Adja meg a teljes *keyVault azonosítója* karakterláncot, a szkriptek eredményeit. 
-   - Fürt tanúsítvány URL-címe: A teljes URL-címet adja meg a *titkos kód azonosítója* a parancsfájl eredmények közül. 
+   - A forrás Key Vaultnak:  Adja meg a teljes *keyVault azonosítója* karakterláncot, a szkriptek eredményeit. 
+   - Fürt tanúsítvány URL-címe: Adja meg a teljes URL-címet a *titkos kód azonosítója* a parancsfájl eredmények közül. 
    - Fürt tanúsítvány ujjlenyomata: Adja meg a *fürt tanúsítvány-ujjlenyomat* a parancsfájl eredmények közül.
    - Rendszergazdai ügyfél-tanúsítvány Ujjlenyomataival: Adja meg a *felügyeleti ügyfél tanúsítványának ujjlenyomata* létrehozott az előfeltételeket. 
 

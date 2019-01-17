@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: f7c8313e6216f10dccdfbb298bbf02036e21c138
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 03862f88bb5debc66940ebae5308771525f51b0b
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043005"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351646"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "54043005"
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-dokumentáció**|[Módosítsa a Változáscsatorna feldolgozói kódtár API dokumentációja](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Első lépések**|[A módosítási hírcsatorna processzor .NET SDK használatának első lépései](change-feed.md)|
-|**Aktuális támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [A Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Aktuális támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -68,15 +68,15 @@ ms.locfileid: "54043005"
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Új API-t, a feladat hozzáadott&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Ez a becsült munka beolvasni minden partíció esetében használható.
-* Támogatja a Microsoft.Azure.DocumentDB SDK 2.0-s. Microsoft.Azure.DocumentDB 2.0-s vagy újabb verziója szükséges.
+* Supports Microsoft.Azure.DocumentDB SDK 2.0. Microsoft.Azure.DocumentDB 2.0-s vagy újabb verziója szükséges.
 
-### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6-os
-* A hozzáadott ChangeFeedEventHost.HostName nyilvános tulajdonsága az v1 compativility.
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* Hozzáadott ChangeFeedEventHost.HostName nyilvános tulajdonság v1 való kompatibilitás érdekében.
 
 ### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
 * Rögzített versenyhelyzet partition split következik. Bérlet beszerzése azonnal során partition split elvesztése, és a versengés okoz a versenyhelyzet vezethet. Ebben a kiadásban a versenyhelyzet feltétel problémát megoldottuk.
 
-### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4-es
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
@@ -158,7 +158,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [2.2.5](#2.2.5) |2018. december 13. |--- |
-| [2.2.4](#2.2.4) |2018. november 29. |--- |
+| [2.2.4](#2.2.4) |November 29, 2018 |--- |
 | [2.2.3](#2.2.3) |2018. november 19. |--- |
 | [2.2.2](#2.2.2) |2018. október 31-ig. |--- |
 | [2.2.1](#2.2.1) |2018. október 24. |--- |

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034318"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359459"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>A JavaScript tartós függvény létrehozása
 
@@ -94,7 +94,7 @@ Hozzáadtunk egy orchestrator tevékenységfüggvényeket koordinálására. Mos
 
 ## <a name="create-an-activity-function"></a>Egy tevékenység függvény létrehozása
 
-1. Ismételje meg a használatával a HTTP-eseményindító sablonjához harmadik függvény létrehozásához az előző szakaszokban. De ezúttal adja a függvénynek `SayHello`.
+1. Ismételje meg a használatával a HTTP-eseményindító sablonjához harmadik függvény létrehozásához az előző szakaszokban. De ezúttal adja a függvénynek `E1_SayHello`.
 
 2. Nyissa meg az új függvény az index.js fájlt, és cserélje ki annak tartalmát az alábbira:
 
@@ -121,9 +121,11 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
     ![Az Azure helyi kimenete](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. Illessze be a HTTP-kérelem URL-CÍMÉT a böngésző címsorában, és a vezénylési állapotának megtekintéséhez.
+4. Cserélje le a `{functionName}` elemet a `OrchestratorFunction` kérdésre.
 
-5. A hibakeresés leállításához nyomja le a Shift + F1 billentyűkombinációt.
+5. Hasonló eszköz használatával [Postman](https://www.getpostman.com/) vagy [cURL](https://curl.haxx.se/), egy HTTP POST kérést küldhet az URL-végpontot.
+
+6. Hibakeresés leállításához nyomja le a Shift + F1 csomag a VS Code-ban.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 

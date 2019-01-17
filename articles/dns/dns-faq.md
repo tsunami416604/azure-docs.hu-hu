@@ -1,20 +1,20 @@
 ---
-title: Az Azure DNS – gyakori kérdések
+title: Azure DNS FAQ
 description: Az Azure DNS – gyakran ismételt kérdések
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880148"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352925"
 ---
-# <a name="azure-dns-faq"></a>Az Azure DNS – gyakori kérdések
+# <a name="azure-dns-faq"></a>Azure DNS FAQ
 
 ## <a name="about-azure-dns"></a>Az Azure DNS szolgáltatással kapcsolatos
 
@@ -42,9 +42,9 @@ További információkért lásd: a [Azure DNS SZOLGÁLTATÁSSZINT-szerződésü
 
 A tartomány egy egyedi nevet a tartománynévrendszerben. Például: contoso.com.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A contoso.com tartomány például számos DNS-rekordot tartalmazhatnak. A rekordok egy levelezési kiszolgálóhoz mail.contoso.com és a egy webhely www.contoso.com tartalmazhatnak. Ezeket a rekordokat a contoso.com DNS-zónában üzemelnek.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A contoso.com tartomány például számos DNS-rekordot tartalmazhatnak. A rekordok egy levelezési kiszolgálóhoz mail.contoso.com és a egy webhely www.contoso.com tartalmazhatnak. These records are hosted in the DNS zone contoso.com.
 
-Egy adott tartománynév *csak egy nevét*. DNS-zóna egy adatforrás, melyhez a tartománynév DNS-rekordokat tartalmazó. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. DNS névkiszolgálókat a DNS-lekérdezések választ az internetről is tartalmazza.
+Egy adott tartománynév *csak egy nevét*. A DNS zone is a data resource that contains the DNS records for a domain name. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. DNS névkiszolgálókat a DNS-lekérdezések választ az internetről is tartalmazza.
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Kell vásárolni az Azure DNS használatával DNS-tartománynevet? 
 
@@ -78,7 +78,7 @@ Nem. Az Azure DNS jelenleg nem támogatja a tartomány nevét rendszer biztonsá
 
 A DNSSEC szolgáltatást az Azure DNS várakozó fájlok számát a követi. Használja a visszajelzés hely [ennek a funkciónak a támogatási regisztrálása](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
 
-### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Az Azure DNS támogatja a zónaletöltések (AXFR és IXFR)?
+### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Does Azure DNS support zone transfers (AXFR/IXFR)?
 
 Nem. Az Azure DNS jelenleg nem támogatja a zónaletöltések. DNS-zónák lehet [importált az Azure DNS az Azure CLI-vel](dns-import-export.md). DNS-rekordok segítségével történik a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [ Parancssori eszköz](dns-operations-recordsets-cli.md).
 
@@ -94,7 +94,7 @@ Az URL-cím átirányítási funkció nyomon van az Azure DNS várakozó fájlok
 
 Igen. Az Azure DNS támogatja a kiterjesztett ASCII-set txt típusú rekordhalmazok kódolást. De az Azure REST API-k, SDK-k, PowerShell és a CLI legújabb verzióját kell használnia. 2017. október 1-nél régebbi verziók vagy SDK 2.1-es nem támogatják a kiterjesztett ASCII készletet. 
 
-Például egy felhasználó előfordulhat, hogy adjon meg egy karakterláncot értékeként egy txt típusú rekordot, amely rendelkezik a kiterjesztett ASCII karaktert \128. Ilyen például, "abcd\128efgh." Az Azure DNS belső ábrázolás ezt a karaktert, amely 128 bájt értékét használja. A DNS-feloldás időpontjában a bájtérték a választ adja vissza. Azt is vegye figyelembe, hogy "abc" és "\097\098\099" felcserélhetők feloldási illeti. 
+Például, előfordulhat, hogy adjon meg egy karakterláncot értékeként egy txt típusú rekordot, amely rendelkezik a kiterjesztett ASCII karaktert \128. Ilyen például, "abcd\128efgh." Az Azure DNS belső ábrázolás ezt a karaktert, amely 128 bájt értékét használja. A DNS-feloldás időpontjában a bájtérték a választ adja vissza. Azt is vegye figyelembe, hogy "abc" és "\097\098\099" felcserélhetők feloldási illeti. 
 
 Követjük [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna a fájl fő formátum escape txt típusú rekordok szabályait. Ha például `\` most ténylegesen lehet kilépni mindent az RFC száma. Ha megad `A\B` txt típusú rekord értékét jelöli, és egyszerűen megoldott `AB`. Ha a TXT-rekordot, hogy valóban szeretné `A\B` karaktert kell felbontású, a `\` újra. Tegyük fel, adja meg a `A\\B`.
 
@@ -114,7 +114,7 @@ A következő rekordtípusokhoz, az Azure DNS-zóna alias rekordhalmazok támoga
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Alias rekordhalmazok célként által támogatott?
 
-- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** Egy A vagy AAAA típusú rekordhalmaz létrehozása, és adja meg egy alias rekordhalmaz átirányítása nyilvános IP-erőforrást.
+- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
 - **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
 - **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Alias rekordok hivatkozhat, más azonos típusú rekordhalmazok. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
 
@@ -145,7 +145,7 @@ Bizonyosodjon meg róla, hogy mindkét DNS-szolgáltatók között a szinkronban
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Rendelkezik az összes négy Azure DNS névkiszolgálóit saját tartomány delegálása?
 
-Igen. Az Azure DNS minden DNS-zóna rendel a négy névkiszolgálói nevet. Ezzel az elrendezéssel fokozott olyan hibák elszigetelését és nagyobb rugalmasság. Ahhoz, hogy az Azure DNS – SLA, tartomány delegálása az összes négy névkiszolgálói nevet.
+Igen. Azure DNS assigns four name servers to each DNS zone. Ezzel az elrendezéssel fokozott olyan hibák elszigetelését és nagyobb rugalmasság. Ahhoz, hogy az Azure DNS – SLA, tartomány delegálása az összes négy névkiszolgálói nevet.
 
 ### <a name="what-are-the-usage-limits-for-azure-dns"></a>Milyen használati korlátok vonatkoznak az Azure DNS?
 
@@ -187,7 +187,7 @@ IDN formátumú tartománynevek (IDN) kódolása a DNS-név használatával [pun
 
 Konfigurálja az IDN formátumú tartománynevek az Azure DNS-ben, konvertálja a zóna nevét vagy a rekordhalmaz nevének a punycode. Az Azure DNS jelenleg nem támogatja a beépített átalakítás, illetve a punycode.
 
-## <a name="private-dns"></a>Privát DNS
+## <a name="private-dns"></a>Private DNS
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -195,7 +195,7 @@ Konfigurálja az IDN formátumú tartománynevek az Azure DNS-ben, konvertálja 
 
 Saját tartomány támogatása a saját zónák funkció segítségével van megvalósítva. Ez a funkció jelenleg nyilvános előzetes verzióban érhető el. Privát zónák jól ismert eszközökkel, mint az Azure DNS-zónák az internet felé néző kezeli. A megadott virtuális hálózaton belül csak a feloldható zajlik. További információkért lásd: a [áttekintése](private-dns-overview.md).
 
-Jelenleg a privát zónák az Azure Portalon nem támogatottak. 
+Az Azure Portal jelenleg privát zónák nem támogatottak.
 
 Információk az egyéb belső DNS-beállítások az Azure-ban: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -217,7 +217,7 @@ Igen. Ügyfelek társíthat legfeljebb 10 feloldási virtuális hálózatok csak
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Egy másik előfizetéshez tartozó virtuális hálózat lehet hozzáadni a feloldási virtuális hálózatot, egy privát zónák?
 
-Igen. A felhasználó kell írási engedélye a művelet a virtuális hálózatok és a privát DNS-zónát. Az írási engedély adható számos RBAC-szerepkört. Például a klasszikus hálózati közreműködő RBAC szerepkör rendelkezik írási engedéllyel a virtuális hálózatokhoz. További információ az RBAC-szerepkörök: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+Igen. A virtuális hálózatok és a privát DNS-zóna írási művelet engedéllyel kell rendelkeznie. Az írási engedély adható számos RBAC-szerepkört. Például a klasszikus hálózati közreműködő RBAC szerepkör rendelkezik írási engedéllyel a virtuális hálózatokhoz. További információ az RBAC-szerepkörök: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>A privát zónák automatikusan regisztrált virtuális gép DNS-rekordok automatikusan törölve lesznek az ügyfél által a virtuális gépek törlése esetén?
 
@@ -257,7 +257,7 @@ Igen. A nyilvános előzetes verzióban létezik a következő korlátozások vo
 * Ha meg van adva a regisztrációs virtuális hálózatot, a virtuális gépek a kiválasztott virtuális hálózatban, amelyek a saját zóna a DNS-rekordjait nem lehet megjeleníteni, vagy a PowerShell, a parancssori felület vagy az API-k lekérése. A virtuális gép rekordok vannak regisztrálva, és oldja meg a sikeresen megtörtént.
 * Fordított DNS működését csak a privát IP-címteret a regisztrációs virtuális hálózatban.
 * Fordított DNS egy magánhálózati IP-címet, amely nincs regisztrálva a saját zóna a "internal.cloudapp.net" DNS-utótagként adja vissza. Ennek az utótagnak nelze rozpoznat. Ilyen például, egy virtuális hálózatot, amely a feloldási virtuális hálózattal egy privát zónához van csatolva a virtuális gép magánhálózati IP-cím.
-* Egy virtuális hálózatnak nem lehet virtuális gépeket egy hálózati adapterhez csatlakoztatott, ha először a regisztrációs vagy feloldási virtuális hálózatként privát zónához hivatkozik. A virtuális hálózat más szóval üresnek kell lennie. A virtuális hálózat majd lehet nem üres, egy regisztrációs vagy feloldási virtuális hálózatot az egyéb privát zónák jövőbeli kapcsolásának. 
+* Virtuális hálózat üresnek kell lennie, ha először a regisztrációs vagy feloldási virtuális hálózatként privát zónához hivatkozik. A virtuális hálózat majd lehet nem üres, egy regisztrációs vagy feloldási virtuális hálózatot az egyéb privát zónák jövőbeli kapcsolásának.
 * Feltételes továbbítás nem támogatott például ahhoz, hogy a megoldás az Azure és helyszíni hálózat között. Ismerje meg, hogyan valósíthat meg ügyfelek is ez a forgatókönyv más mechanizmusok használatával. Lásd: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Bármely kvóták vagy zónák vagy a saját zónák rekordok vonatkozó korlátozások vannak-e?

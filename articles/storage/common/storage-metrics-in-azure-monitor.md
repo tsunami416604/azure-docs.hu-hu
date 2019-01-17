@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994436"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354601"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -332,54 +332,55 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetén, az összeg, a blob, table, fájl és várólista által használt kapacitás. A premium storage-fiókok és a Blob storage-fiókok hogy megegyezik a BlobCapacity. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
+| UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetén, az összeg, a blob, table, fájl és várólista által használt kapacitás. A premium storage-fiókok és a Blob storage-fiókok hogy megegyezik a BlobCapacity. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
-| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
-| ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
+| BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
+| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
+| ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| IndexCapacity     | Az ADLS Gen2 hierarchikus Index által felhasznált tárterület mérete <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="table-storage"></a>Table Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| TableCapacity | Használja a tárfiók Table storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
-| TableCount   | A tárfiókban lévő táblák száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
-| TableEntityCount | A storage-fiókban található táblaentitások száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
+| TableCapacity | Használja a tárfiók Table storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| TableCount   | A tárfiókban lévő táblák száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| TableEntityCount | A storage-fiókban található táblaentitások száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="queue-storage"></a>Queue Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| QueueCapacity | Használja a tárfiók Queue storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
-| QueueCount   | A tárfiókban lévő üzenetsorok számát. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
-| QueueMessageCount | A storage-fiók lejárt üzenetsorbeli üzenetek száma. <br/><br/>Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
+| QueueCapacity | Használja a tárfiók Queue storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| QueueCount   | A tárfiókban lévő üzenetsorok számát. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| QueueMessageCount | A storage-fiók lejárt üzenetsorbeli üzenetek száma. <br/><br/>Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="file-storage"></a>File Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| FileCapacity | Használja a tárfiók File storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
-| FileCount   | A storage-fiókban lévő fájlok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
-| FileShareCount | A tárfiókban lévő fájlmegosztások a száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Átlag <br/> Érték. példa: 1024 |
+| FileCapacity | Használja a tárfiók File storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| FileCount   | A storage-fiókban lévő fájlok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| FileShareCount | A tárfiókban lévő fájlmegosztások a száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ## <a name="transaction-metrics"></a>Tranzakció-mérőszámot
 
-Tranzakció-mérőszámot kapnak az Azure Storage-ból az Azure Monitor percenként. Összes tranzakció-mérőszámot szintjén fiók és a szolgáltatás (Blob storage, Table storage, Azure Files és Queue storage) érhetők el. Az aggregációs időköz határozza meg az időintervallum, amely metrikaértékek jelennek meg. A támogatott idő magok tartozó összes tranzakció-mérőszámot PT1H és PT1M.
+Tranzakció-mérőszámot is rendelkezésre halasztása minden kérelemnél storage-fiókba az Azure Monitor az Azure Storage-ból. Esetén nem volt tevékenység a tárfiókban lesz adatok nem a tranzakció-mérőszámot az időszakban. Összes tranzakció-mérőszámot szintjén fiók és a szolgáltatás (Blob storage, Table storage, Azure Files és Queue storage) érhetők el. Az aggregációs időköz határozza meg az időintervallum, amely metrikaértékek jelennek meg. A támogatott idő magok tartozó összes tranzakció-mérőszámot PT1H és PT1M.
 
 Az Azure Storage a következő tranzakció-mérőszámot az Azure monitorban biztosít.
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték. példa: 1024 |
-| Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Összesítés típusa: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Összesítés típusa: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Szervezeti egység: Százalék <br/> Összesítés típusa: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99,99 |
+| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték. példa: 1024 |
+| Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
+| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
+| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
+| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
+| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 

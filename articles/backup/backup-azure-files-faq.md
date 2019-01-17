@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 875eb20a05a96d094a17229699bb2d87b3377a62
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793512"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359901"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -64,7 +64,7 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - USA nyugati régiója (WUS)
 - USA nyugati középső régiója (WCUS)
 - USA 2. nyugati régiója (WUS 2)
-- USA Arizona állam (UGA)
+- US Gov Arizona (UGA)
 - USA-beli államigazgatás – Texas (UGT)
 - USA-beli államigazgatás – Virginia (UGV)
 
@@ -94,11 +94,14 @@ Igen. Ha a védelem leállításakor a **Biztonsági másolatok adatainak megőr
 
 ## <a name="manage-backup"></a>Biztonsági mentés kezelése
 
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Használható az Azure-fájlmegosztások biztonsági másolatainak konfigurálása és kezelése/visszaállítási PowerShell? <br/>
+Igen. Tekintse meg a részletes dokumentációt [Itt](backup-azure-afs-automation.md)
+
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Hozzáférhetek az Azure biztonsági mentések által készített pillanatképekhez és csatlakoztathatom azokat? <br/>
 Az Azure Backup által készített minden pillanatkép elérhető a portál Pillanatképek megtekintése részén, illetve a PowerShell vagy a parancssori felület segítségével. Az Azure Files megosztási pillanatképeiről információkért lásd: [Az Azure Files megosztási pillanatképeinek áttekintése (előzetes verzió)](../storage/files/storage-snapshots-files.md).
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>Mi a biztonsági mentésekhez konfigurálható megőrzés maximális száma? <br/>
-Az Azure-fájlmegosztások biztonsági mentése segítségével akár 120 napig is megőrizheti napi biztonsági mentéseit.
+Azure-fájlmegosztások biztonsági mentésének lehetőséget biztosít az adatmegőrzési szabályzatok konfigurálása mentése 180 nap. Használata azonban a ["igény szerinti biztonsági mentést" lehetőséget a PowerShellben](backup-azure-afs-automation.md#trigger-an-on-demand-backup), akár 10 évig is megőrzi a helyreállítási pont.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Mi történik, ha módosítom az Azure-fájlmegosztáshoz tartozó biztonsági mentési szabályzatot? <br/>
 Amikor új házirendet alkalmaznak a fájlmegosztáso(ko)n, az új szabályzat ütemezése és megőrzése érvényes. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.

@@ -11,20 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 01/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194232"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353039"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélkül
 Ez a dokumentum ismerteti az Azure Automation szolgáltatással kommunikáció konfigurálása és a Log Analytics használatával az a Log Analytics-átjáró, amikor közvetlen csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáférés.  A Log Analytics-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
 
 A Log Analytics-átjáró támogatja:
 
+* Legfeljebb négy azonos Naplóelemzési jelentéskészítési munkaterületek ügynökök alapjául szolgáló mögöttes van konfigurálva  
 * Az Azure Automation hibrid Runbook-feldolgozók  
 * A Log Analytics-munkaterülethez közvetlenül kapcsolódó Microsoft Monitoring Agent Windows-számítógépek
 * A Linuxhoz készült Log Analytics-ügynököt a Linux rendszerű számítógépek közvetlenül csatlakozik a Log Analytics-munkaterület  
@@ -32,15 +33,15 @@ A Log Analytics-átjáró támogatja:
 
 Ha az informatikai biztonsági szabályzatok nem teszi lehetővé a számítógépek csatlakozni az internethez, a terminálok (POS) eszközök vagy a kiszolgálók támogatása az IT-szolgáltatások, például a hálózat, de az Azure Automation és a Log Analytics kezelni és megfigyelni őket csatlakoztatni kell , a Log Analytics átjáró és a konfigurációs és a továbbítási adatok saját nevükben való közvetlen kommunikációhoz konfigurálható.  Ha ezek a számítógépek közvetlenül csatlakozhat a Log Analytics-munkaterületet a Log Analytics-ügynökkel rendelkező vannak konfigurálva, az összes számítógép inkább kommunikál a Log Analytics-átjáró.  Az átjáró átviszi az adatokat a az ügynököket a szolgáltatás közvetlenül, nem elemzi az adatokat átvitel közben.
 
-Ha az Operations Manager felügyeleti csoport integrálva van a Log Analytics, a felügyeleti kiszolgálók konfigurálható szeretne csatlakozni a Log Analytics-átjáró konfigurációs adatokat fogad és küld attól függően, a megoldás engedélyezte az összegyűjtött adatokat.  Operations Manager-ügynökök néhány adatot, például az Operations Manager riasztásokat, konfigurációelemzés, példányok és kapacitásadatait küldenek a felügyeleti kiszolgálónak. Egyéb nagy mennyiségű adatok, például az IIS-naplók, a teljesítmény és a biztonsági események közvetlenül a Log Analytics-átjáró érkeznek.  Ha egy vagy több Operations Manager átjáró kiszolgálók a DMZ-t vagy más elkülönített hálózat nem megbízható rendszerek figyeléséhez üzembe helyezett, egy Log Analytics-átjáró nem tud kommunikálni.  Az Operations Manager átjáró kiszolgálók csak jelenthetik a felügyeleti kiszolgálóra.  Ha az Operations Manager felügyeleti csoport van konfigurálva a Log Analytics-átjáróval folytatott kommunikációban, minden ügynök által felügyelt számítógépre, amely konfigurálva van még gyűjt adatokat a Log Analytics, a rendszer automatikusan továbbítja a proxy konfigurációs adatokat Ha a beállítás értéke üres.    
+Ha az Operations Manager felügyeleti csoport integrálva van a Log Analytics, a felügyeleti kiszolgálók konfigurálható szeretne csatlakozni a Log Analytics-átjáró konfigurációs adatokat fogad és küld attól függően, a megoldás engedélyezte az összegyűjtött adatokat.  Operations Manager-ügynökök néhány adatot, például az Operations Manager riasztásokat, konfigurációelemzés, példányok és kapacitásadatait küldenek a felügyeleti kiszolgálónak. Egyéb nagy mennyiségű adatok, például az IIS-naplók, a teljesítmény és a biztonsági események közvetlenül a Log Analytics-átjáró érkeznek.  Ha egy vagy több Operations Manager átjáró kiszolgálók a DMZ-t vagy más elkülönített hálózat nem megbízható rendszerek figyeléséhez telepített, a Log Analytics-átjáró nem tud kommunikálni.  Az Operations Manager átjáró kiszolgálók csak jelenthetik a felügyeleti kiszolgálóra.  Ha az Operations Manager felügyeleti csoport van konfigurálva a Log Analytics-átjáróval folytatott kommunikációban, minden ügynök által felügyelt számítógépre, amely konfigurálva van még gyűjt adatokat a Log Analytics, a rendszer automatikusan továbbítja a proxy konfigurációs adatokat Ha a beállítás értéke üres.    
 
 Magas rendelkezésre állás biztosításához közvetlenül csatlakoztatott vagy a Log Analytics-átjárón keresztül kommunikáló Operations Management csoport, használhatja a hálózati terheléselosztás és a forgalom elosztása több átjárókiszolgáló átirányításához.  Egy átjáró kiszolgáló leáll, ha a rendszer átirányítja a forgalmat egy másik csomópont érhető el.  
 
-A Log Analytics-ügynököket a számítógépen, ahhoz, hogy azonosítsa a Szolgáltatásvégpontok szükséges kommunikálni, és monitorozása a Log Analytics-átjáró a teljesítmény vagy események adatainak elemzése a Log Analytics-átjáró szükséges.
+A Log Analytics Windows-ügynök van szükség ahhoz, hogy nem csak azonosíthatja a Szolgáltatásvégpontok folytatott kommunikációhoz szükséges, hanem a jelentés a Log Analytics-átjáró ugyanazon a munkaterületek rendszert futtató számítógépen, amely az ügynökök és az Operations Manager a felügyeleti csoport az átjáró mögött van beállítva. Erre azért szükség, hogy kommunikáljon a hozzárendelt munkaterületet az átjáró. Az átjáró lehet, többhelyű legfeljebb négy munkaterületeket, mivel ez egy Windows-ügynökök által támogatott munkaterületek száma összesen.  
 
-Minden ügynök hálózati kapcsolat és az átjáró rendelkeznie kell, hogy az ügynökök automatikusan áthelyezhet adat és az átjáró. Az átjáró telepítése tartományvezérlőn nem ajánlott.
+Minden ügynök hálózati kapcsolat és az átjáró rendelkeznie kell, hogy az ügynökök automatikusan áthelyezhet adat és azt. Az átjáró telepítése tartományvezérlőn nem ajánlott.
 
-Az alábbi ábrán az adatfolyam a közvetlen ügynökök Azure Automation és a Log Analytics használatával az átjáró-kiszolgálót.  Ügynökök azok felel meg a Log Analytics-átjáró történő kommunikációra van beállítva, a szolgáltatás ugyanazt a portot proxykiszolgáló-konfigurációval kell rendelkeznie.  
+Az alábbi ábrán az adatfolyam a közvetlen ügynökök Azure Automation és a Log Analytics használatával az átjáró-kiszolgálót. Ügynökök azok ugyanazt a portot a Log Analytics-átjáró van konfigurálva, a megfelelő proxykiszolgáló-konfigurációval kell rendelkeznie.  
 
 ![közvetlen ügynökkommunikációhoz a szolgáltatások diagramja](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
@@ -56,7 +57,7 @@ A Log Analytics-átjáró futtatására kijelölését, ha a számítógép az a
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, Windows Server 2008
 * .NET-keretrendszer 4.5
 * Legalább egy 4 magos processzor- és 8 GB memóriát 
-* Log Analytics-ügynököket Windows 
+* [Log Analytics-ügynököket Windows](agent-windows.md) telepítve és konfigurálva ugyanazon a munkaterületen található, mint az átjárón keresztül kommunikáló ügynökök jelentést.  
 
 ### <a name="language-availability"></a>Nyelvi rendelkezésre állása
 
@@ -83,12 +84,12 @@ A Log Analytics-átjáró a következő nyelveken érhető el:
 A Log Analytics-átjáró csak a Transport Layer Security (TLS) 1.0, 1.1 és 1.2-es támogatja.  Nem támogatja a Secure Sockets Layer (SSL).  A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, azt javasoljuk, hogy az átjáró használatához legalább konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Támogatott ügynök-kapcsolatok száma
-Az alábbi táblázat az átjáró-kiszolgálóval való kommunikációhoz ügynökök támogatott száma emeli ki.  Ez a támogatás közel 200KB méretű adatot feltölteni 6 másodpercenként ügynökök alapul. Tesztelt ügynök / adatmennyiség naponta körülbelül 2.7-es GB.
+Az alábbi táblázat az átjáró-kiszolgálóval való kommunikációhoz ügynökök támogatott száma emeli ki.  Ez a támogatás közel 200 KB méretű adatot feltölteni 6 másodpercenként ügynökök alapul. Tesztelt ügynök / adatmennyiség naponta körülbelül 2.7-es GB.
 
 |Átjáró |Támogatott ügynökök száma KB.|  
 |--------|----------------------------------|  
-|-CPU: Intel XEON v3-as CPU E5-2660 \@ 2,6 GHz-es 2 mag<br> – Memória: 4 GB<br> -Hálózati sávszélességet: 1 Gbps| 600|  
-|-CPU: Intel XEON v3-as CPU E5-2660 \@ 2,6 GHz-es 4 mag<br> – Memória: 8 GB<br> -Hálózati sávszélességet: 1 Gbps| 1000|  
+|-CPU: Intel XEON v3-as CPU E5-2660 \@ 2,6 GHz-es 2 mag<br> – Memória: 4 GB<br> - Network Bandwidth: 1 Gbps| 600|  
+|-CPU: Intel XEON v3-as CPU E5-2660 \@ 2,6 GHz-es 4 mag<br> – Memória: 8 GB<br> - Network Bandwidth: 1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>A Log Analytics-átjáró letöltése
 
@@ -124,7 +125,8 @@ Az átjáró telepítéséhez hajtsa végre az alábbi lépéseket.  Ha egy kor�
 1. Ha nincs engedélyezve a Microsoft Update, a Microsoft Update lapon jelenik meg, ahol kiválaszthatja az engedélyezéshez. Jelölje ki, és kattintson a **tovább**. Ellenkező esetben folytassa a következő lépéssel.
 1. Az a **célmappa** lapon hagyja bejelölve az alapértelmezett mappa: C:\Program Files\OMS átjáró, vagy írja be a helyet, ahol szeretné telepíteni az átjárót, és kattintson a **tovább**.
 1. Az a **készen áll a telepítésre** kattintson **telepítése**. Felhasználói fiókok felügyeletének telepítése kér engedélyt jelenhet meg. Ha igen, kattintson a **Igen**.
-1. Kattintson a telepítés után **Befejezés**. Ellenőrizheti, hogy a szolgáltatás fut, nyissa meg a services.msc beépülő modult, és ellenőrizze, hogy **Log Analytics-átjáró** megjelenik a listán, a szolgáltatások, és azt állapota van **futó**.<br><br> ![Szolgáltatások – Log Analytics-átjáró](./media/gateway/gateway-service.png)  
+1. Kattintson a telepítés után **Befejezés**. Ellenőrizheti, hogy a szolgáltatás fut, nyissa meg a services.msc beépülő modult, és ellenőrizze, hogy **OMS-átjáró** megjelenik a listán, a szolgáltatások, és azt állapota van **futó**.<br><br> ![Szolgáltatások – Log Analytics-átjáró](./media/gateway/gateway-service.png)  
+
 
 ## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás beállítása 
 Beállíthatja, hogy az átjáró magas rendelkezésre álláshoz a hálózati terheléselosztás (NLB) a Microsoft hálózati terheléselosztás (NLB) vagy a hardveres terheléselosztók használatával.  A terheléselosztó forgalmat kezeli a csomópontok között a Log Analytics-ügynökök kért kapcsolatot, vagy az Operations Manager felügyeleti kiszolgálók átirányításával. Egy átjáró kiszolgáló leáll, ha más csomópontokhoz átirányítja a forgalmat.
@@ -133,14 +135,18 @@ Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 hálózati terhelés
 
 1. Jelentkezzen be a Windows server, amely tagja a rendszergazdák rendszergazdai fiókkal az NLB-fürt.  
 1. Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **a hálózati terheléselosztás kezelője**.
-1. A Microsoft Monitoring Agent telepítve van egy Log Analytics-átjáró kiszolgáló kapcsolódni, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz](./media/gateway/nlb02.png)<br> 
+1. A Log Analytics-átjáró kiszolgáló kapcsolódni a Microsoft Monitoring Agent telepítve van, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz](./media/gateway/nlb02.png)<br> 
 1. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne.<br><br> ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz: Kapcsolódás](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>Log Analytics-ügynököket és az Operations Manager felügyeleti csoport konfigurálása
 A következő szakasz tartalmazza a lépéseket, a közvetlenül csatlakoztatott Log Analytics-ügynökök, az Operations Manager felügyeleti csoport vagy az Azure Automation hibrid Runbook-feldolgozók konfigurálásáról a Log Analytics-átjáróval kommunikálni az Azure Automation és a Log Elemzés.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Önálló Log Analytics-ügynök konfigurálása
-Követelmények és lépések a Log Analytics-ügynök telepítése Windows-számítógépeket a Log Analytics szolgáltatásba való közvetlen csatlakozás ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](agent-windows.md) vagy a Linux rendszerű számítógépek lásd [ Linux rendszerű számítógépek csatlakoztatása a Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Helyett adja meg a proxykiszolgáló az ügynök telepítése közben, cserélje le ezt az értéket az IP-címét a Log Analytics-átjáró kiszolgáló vagy a port számát.  Ha hálózati terheléselosztót több átjárókiszolgáló telepített, akkor a Log Analytics proxykonfigurációjának a hálózati Terheléselosztás virtuális IP-címét.  
+Követelmények és a lépéseket, az átjáró és a Windows-számítógépeket a Log Analytics szolgáltatásba való közvetlen csatlakozás a Log Analytics-ügynök telepítése a ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](agent-windows.md) vagy Linux rendszerű számítógépek Lásd:[ Linux rendszerű számítógépek csatlakoztatása a Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Helyett adja meg a proxykiszolgáló az ügynök telepítése közben, cserélje le ezt az értéket az IP-címét a Log Analytics-átjáró kiszolgáló vagy a port számát. Ha hálózati terheléselosztót több átjárókiszolgáló telepített, akkor a Log Analytics proxykonfigurációjának a hálózati Terheléselosztás virtuális IP-címét.  
+
+Az átjáró kiszolgálón az ügynök telepítése után konfigurálhatja azt, hogy a munkaterületet, vagy a munkaterületek ügynökök az átjáró folytatott kommunikációra. A Log Analytics Windows-ügynök nincs telepítve az átjáróra, ha az esemény 300 íródik a **OMS-átjáró naplójába** eseménynaplójában arról, hogy az ügynök telepítve kell lennie. Ha az ügynök telepítve van, de nincs beállítva a jelentés ugyanazon a munkaterületen található, mint az ügynökök, és azt, események 105 figyelmezteti a jelentés ugyanazon a munkaterületen található, mint az ügynökök t folytatott kommunikációra konfigurálni kell az ügynököt az átjárón azonos eseménynaplóba írása He átjáró.
+
+A konfiguráció befejezése után újra kell indítania a **OMS-átjáró** szolgáltatást, a módosítások érvénybe léptetéséhez. Ellenkező esetben az átjáró el fogják utasítani próbál meg kommunikálni a Log Analytics és a jelentés eseményazonosító 105 az ügynökök a **OMS-átjáró naplójába** Eseménynapló. Ez is vonatkozik, ha hozzáad vagy eltávolít egy munkaterületet a az ügynök konfiguráció az átjárókiszolgálón.   
 
 Az Automation hibrid Runbook-feldolgozó kapcsolatos információkért lásd: [hibrid Runbook-feldolgozó üzembe helyezése](../../automation/automation-hybrid-runbook-worker.md).
 
@@ -149,18 +155,20 @@ Az Operations Manager hozzáadása az átjáró-kiszolgálót konfigurálja.  Az
 
 Az átjáró használatával támogatja az Operations Manager, kell rendelkeznie:
 
-* A Microsoft Monitoring Agent (ügynök verziója – **8.0.10900.0** vagy újabb verzió) az átjárókiszolgáló telepítve és konfigurálva a Log Analytics-munkaterületek, amellyel kommunikálni szeretne.
+* A Microsoft Monitoring Agent (ügynök verziója – **8.0.10900.0** vagy újabb verzió) az átjárókiszolgáló telepítve és konfigurálva ugyanaz a Log Analytics-munkaterületek, hogy a felügyeleti csoportban való jelentésre van konfigurálva.
 * Az átjáró rendelkeznie kell internetkapcsolattal, vagy egy proxykiszolgáló, amely csatlakozni.
 
 > [!NOTE]
 > Ha nem ad meg egy értéket az átjáró, üres értékeket az ügynökök kerüljenek.
 > 
 
-Ha ez az első alkalommal regisztrál a Log Analytics-munkaterület az Operations Manager felügyeleti csoportban, adja meg a proxykiszolgáló-konfigurációt a felügyeleti csoport lehetőség nem érhető az operatív konzolon.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Az integráció és a felügyeleti csoportba tartozó minden felügyeleti kiszolgáló konfigurálásához Netsh használatával frissítenie kell a rendszerproxy-konfigurációt a rendszeren, amelyiken az Operatív konzolt futtatja.  
+Ha első alkalommal regisztrál a Log Analytics-munkaterület az Operations Manager felügyeleti csoportban, adja meg a proxykiszolgáló-konfigurációt a felügyeleti csoport lehetőség nem érhető az operatív konzolon.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Az az operatív konzol futtatására való integrációt és az összes felügyeleti kiszolgáló konfigurálása a felügyeleti csoport frissítése a rendszer proxykonfigurációt, a rendszer Netsh használatával.  
 
 1. Nyisson meg egy emelt szintű parancssort.
-   a. Lépjen a **Start** , és írja be **cmd**.
-   b. Kattintson a jobb gombbal **parancssor** , és válassza ki futtató rendszergazda **.
+
+    a. Lépjen a **Start** , és írja be **cmd**.  
+    b. Kattintson a jobb gombbal **parancssor** válassza **Futtatás rendszergazdaként**.  
+
 1. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -288,7 +296,7 @@ Az alábbi táblázat bemutatja a eseményazonosítók és a Log Analytics-átj�
 | 103 |HTTP-csatlakozási parancsot kapott az ügyféltől |
 | 104 |Nem egy HTTP-csatlakozási parancs |
 | 105 |Célkiszolgáló nem szerepel az engedélyezési listán, vagy a céloldali port nem biztonságos portot (443) <br> <br> Győződjön meg arról, hogy az átjáró kiszolgálón az MMA-ügynök és az átjáróval kommunikáló ügynökök csatlakoztatva a Log Analytics munkaterületén. |
-| 105 |Hiba TcpConnection – érvénytelen ügyféltanúsítvány: CN = átjáró <br><br> Győződjön meg arról, hogy: <br>    <br> &#149;Az átjáró használata verziószám 1.0.395.0 vagy nagyobb. <br> &#149;Az MMA-ügynök az átjárókiszolgálón és az átjáróval kommunikáló ügynökök csatlakoznak a Log Analytics munkaterületén. |
+| 105 |Hiba TcpConnection – érvénytelen ügyféltanúsítvány: CN=Gateway <br><br> Győződjön meg arról, hogy: <br>    <br> &#149;Az átjáró használata verziószám 1.0.395.0 vagy nagyobb. <br> &#149;Az MMA-ügynök az átjárókiszolgálón és az átjáróval kommunikáló ügynökök csatlakoznak a Log Analytics munkaterületén. |
 | 106 |A Log Analytics-átjáró csak a TLS 1.0, TLS 1.1 és 1.2-es támogatja.  Nem támogatja az SSL. Minden nem támogatott a TLS/SSL protokoll verziója, a Log Analytics-átjáró event ID 106 állít elő.|
 | 107 |A TLS-munkamenet jóvá lett hagyva. |
 
@@ -307,7 +315,7 @@ Az alábbi táblázat a Log Analytics-átjáró esetében rendelkezésre álló 
 
 ## <a name="get-assistance"></a>Segítség kérése
 Ha be van jelentkezve az Azure Portalon, az a Log Analytics-átjáró vagy bármely más Azure-szolgáltatást a szolgáltatás segítséget kér hozhat létre.
-Segítségkérés, kattintson a kérdőjel a portál jobb felső sarkában található, és kattintson a **új támogatási kérelem**. Ezt követően fejezze be az új támogatási űrlap.
+Segítségkérés. Kattintson a kérdőjel a portál jobb felső sarkában, majd kattintson a **új támogatási kérelem**. Ezt követően fejezze be az új támogatási űrlap.
 
 ![Új támogatási kérelem](./media/gateway/support.png)
 

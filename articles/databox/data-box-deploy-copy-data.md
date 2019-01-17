@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 5f3e7164c0569422fe164283efaa8f282ccfe9f8
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 2b6db4977b585b50168c2fa523db9210ca031ff3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318943"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359289"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
@@ -85,9 +85,11 @@ Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lé
 
     Meg kell jelennie a megosztások, mappák.
     
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+
     **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *$root* mappát a storage-fiókban.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
+     
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
@@ -96,7 +98,11 @@ Miután csatlakozott a Data Box-megosztáshoz, a következő lépés az adatok m
 - Győződjön meg arról, hogy az adatok másolása megosztások, amelyek megfelelnek a megfelelő adatok formátuma. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Ha az adatok formátuma nem felel meg a megfelelő megosztási típusát, majd egy későbbi lépésben, az adatok feltöltése az Azure-bA sikertelen lesz.
 -  Adatok másolása során győződjön meg arról, hogy megfelel-e az adatok mérete a méretbeli korlátokat ismertetett a [az Azure storage és a Data Box-korlátok](data-box-limits.md).
 - Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
-- Azt javasoljuk, hogy nem használja az SMB és NFS is egyszerre vagy másolni ugyanazon adatok azonos teljes célra az Azure-ban. Ezekben az esetekben nem lehet megállapítani a végső eredményt.
+- Azt javasoljuk, hogy:
+    - Egy időben ne használja az SMB és NFS is.
+    - Azonos teljes cél Azure-beli ugyanazokat az adatokat másolja. 
+     
+  Ezekben az esetekben nem lehet megállapítani a végső eredményt.
 - Mindig hozzon létre egy mappát a fájlok másolása a megosztás alatt, és ezután másolja a fájlokat a mappában, melyet. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez az adatfeltöltés blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *$root* mappát a storage-fiókban.
 
 Miután csatlakozott az SMB-megosztás, megkezdheti az adatok másolását. Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt használhat (ilyen például a Robocopy). A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:

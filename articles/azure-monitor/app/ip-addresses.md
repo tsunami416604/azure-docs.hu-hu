@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e2621103e79e201a6f3a9d45350e3b71d15f47c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 24e11f186d9114fab5b21e8cfec6438178839550
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119611"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358541"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
 A [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatást használ egy IP-címek számát. Előfordulhat, hogy szeretne, ezeket a címeket, ha az alkalmazás, figyelt tűzfal mögött található.
@@ -37,7 +37,7 @@ Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy az Ap
 
 | Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
-| Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22 | 443 |
+| Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233 | 443 |
 | Élő metrikastream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Állapotmonitor
@@ -348,11 +348,11 @@ Megjegyzés: *. a Log Analytics fejlesztőcsapata loganalytics.io tartomány tul
 | Application Insights-bővítmény | stamp2.app.insightsportal.visualstudio.com | Dinamikus | 80,443 |
 | Application Insights-bővítmény CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | Dinamikus | 80,443 |
 
-## <a name="application-insights-sdks"></a>Application Insights SDK-k
+## <a name="application-insights-sdks"></a>Application Insights SDKs
 
 | Cél | URI | IP | Portok |
 | --- | --- | --- | --- |
-| Application Insights node.js SDK CDN | az416426.vo.msecnd.net | Dinamikus | 80,443 |
+| Application Insights JS SDK CDN | az416426.vo.msecnd.net | Dinamikus | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | Dinamikus | 80,443 |
 
 ## <a name="alert-webhooks"></a>Riasztási webhookok

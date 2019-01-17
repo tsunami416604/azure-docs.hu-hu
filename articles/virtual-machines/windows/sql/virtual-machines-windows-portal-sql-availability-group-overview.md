@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f8ae6d9138a7413b0cca4cca7bcc47c13212674
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239440"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358051"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek bemutatása #
 
@@ -33,6 +33,8 @@ Az ábra a teljes SQL Server rendelkezésre állási csoportot az Azure Virtual 
 ![Rendelkezésre állási csoport](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 A fő rendelkezésre állási csoporthoz az Azure Virtual machines gépeken különbség az, hogy szükséges-e az Azure-beli virtuális gépek egy [terheléselosztó](../../../load-balancer/load-balancer-overview.md). A terheléselosztó IP-címek esetében a rendelkezésre állási csoport figyelőjének tárolja. Ha egynél több rendelkezésre állási csoport minden egyes van szüksége egy figyelőt. Egy terheléselosztó több kérésfigyelőt is támogatja.
+
+Emellett az Azure IaaS virtuális gépek Vendég feladatátvevő fürtöt, javasoljuk, hogy egyik hálózati Adapterre (fürtcsomópont) kiszolgálónként és a egy önálló alhálózati. Az Azure-hálózatok rendelkezik fizikai redundanciát, így további hálózati adapterek és alhálózatok a szükségtelen az Azure IaaS virtuális gépek Vendég-fürtön. A fürt ellenőrzési jelentésében figyelmeztetést ad, hogy a csomópontok használata csak egyetlen hálózaton elérhető legyen, bár ez a figyelmeztetés figyelmen kívül hagyhatja biztonságosan Azure IaaS virtuális gépek Vendég feladatátvevő fürtökön. 
 
 Ha készen áll egy SQL Server rendelkezésre állási csoport létrehozása az Azure Virtual machines szolgáltatásban, tekintse meg ezekben az oktatóanyagokban.
 

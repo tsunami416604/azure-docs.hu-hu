@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c2d121106218c0965cd8f4e07776cf8d2578543f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651452"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354161"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
 
@@ -101,13 +101,45 @@ Ha a tartalomcsomag frissítése újabb verzióra szeretné:
 
 Miután meggyőződött arról, hogy a tartalomcsomag új verziója a várt módon működik-e, eltávolíthatja a régi verziót, ha az alapul szolgáló jelentések és a tartalomcsomaghoz tartozó adatkészletek törlésével szükséges.
 
-## <a name="still-having-issues"></a>Továbbra is problémákat tapasztal? 
+## <a name="troubleshoot-content-pack-errors"></a>Tartalomcsomag-hibák elhárítása
 
-Tekintse meg a [hibaelhárítási útmutatót](troubleshoot-content-pack.md). A Power BI-jal kapcsolatos általános útmutatásért tekintse meg ezeket a [súgótémaköröket](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+A tartalomcsomag az használatakor is lehet, hogy hibákba ütközik a következő: 
+
+- [A frissítés nem sikerült](#refresh-failed) 
+- [Az adatforrás hitelesítő adatainak frissítése sikertelen](#failed-to-update-data-source-credentials) 
+- [Adatok importálása túl sokáig tart](#data-import-is-too-slow) 
+
+A Power BI-jal kapcsolatos általános útmutatásért tekintse meg ezeket a [súgótémaköröket](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+
+### <a name="refresh-failed"></a>Nem sikerült a frissítés. 
+ 
+**Hogyan ezt a hibát az illesztett**: E-mailben a Power bi-ban vagy a frissítési előzmények sikertelen állapotát. 
+
+
+| Ok | Hogyan háríthatja el a |
+| ---   | ---        |
+| Frissítse a hibák is okozhatja, ha a hitelesítő adatait, a tartalomcsomag csatlakozó felhasználók új, de a kapcsolat beállításait a tartalomcsomag frissítése nem hiba. | A Power bi-ban keresse meg az adatkészlet, az Azure ad-ben Tevékenységnaplók irányítópultja megfelelő (**Azure Active Directory-Tevékenységnaplók**) válassza a frissítés ütemezése, majd adja meg az Azure AD hitelesítő adatait. |
+| Frissítés az alapul szolgáló tartalomcsomag az adatokkal kapcsolatos problémák miatt meghiúsulhat. | [Küldjön egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+ 
+### <a name="failed-to-update-data-source-credentials"></a>Az adatforrás hitelesítő adatainak frissítése sikertelen 
+ 
+**Hogyan ezt a hibát az illesztett**: A Power bi-ban, az Azure AD tevékenység naplók tartalomcsomaghoz való csatlakozáskor. 
+
+| Ok | Hogyan háríthatja el a |
+| ---   | ---        |
+| A kapcsolódó felhasználó nem globális rendszergazda vagy a biztonsági olvasó vagy biztonsági rendszergazda. | Egy globális rendszergazdai vagy biztonsági olvasói vagy egy rendszergazda eléréséhez a tartalomcsomagok olyan fiókot használjon. |
+| A bérlő nem egy Premium-bérlő, vagy nem rendelkezik a prémium szintű licenccel fájl legalább egy felhasználót. | [Küldjön egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+### <a name="data-import-is-too-slow"></a>Adatok importálása az túl lassú 
+ 
+**Hogyan ezt a hibát az illesztett**: A Power bi-ban, a tartalomcsomag csatlakoztatása után az importálási folyamat elindítja az irányítópulton előkészítése az Azure Active Directory naplói. A következő üzenet jelenik meg: **Adatok importálása...**  anélkül, hogy bármilyen további folyamatban van.  
+
+| Ok | Hogyan háríthatja el a |
+| ---   | ---        |
+| A bérlő méretétől függően ez a lépés sikerült eltarthat pár percet vagy akár 30 percig. | Ha az üzenet nem változik a megjelenítése az Irányítópulton egy órán belül [küldjön egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+  
 ## <a name="next-steps"></a>További lépések
 
 * [A Power BI-tartalomcsomag telepítése](quickstart-install-power-bi-content-pack.md).
-* [A tartalomcsomag hibáinak elhárítása](troubleshoot-content-pack.md).
 * [Mik az Azure AD-jelentések? ](overview-reports.md).

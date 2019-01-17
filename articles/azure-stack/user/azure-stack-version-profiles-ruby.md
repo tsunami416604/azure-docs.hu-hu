@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 0e7d624c77447f537e6d47ea19d9054c1117d742
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: aafeeab50a60116ac93cbfa8acb0375224453b03
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263657"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353991"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Ruby használatával
 
@@ -33,7 +33,7 @@ A Ruby SDK az Azure Stack Resource Manager biztosít eszközöket és az infrast
 Egy API-profilt az erőforrás-szolgáltatókat és szolgáltatásverziók kombinációját. Használhatja egy API-profilt egyesítheti a különböző erőforrástípusok.
 
 - Az összes szolgáltatást a legújabb verziókat használhatja a **legújabb** az Azure SDK összesítő gem profiljában.
-- Az Azure Stack kompatibilis szolgáltatások használatához a **V2017_03_09** az Azure SDK összesítő gem profiljában.
+- Az Azure Stack kompatibilis szolgáltatások használatához a **V2018_03_01** az Azure SDK összesítő gem profiljában.
 - A legújabb **api-version** egy szolgáltatást, használja a **legújabb** az adott gem profiljában. Például, ha szeretné, hogy a legújabb **api-version** számítási szolgáltatás önálló, használja a **legújabb** profiljának a **számítási** gem.
 - Egy adott használandó **api-version** egy szolgáltatást, használja az adott API-verziók a gem definiált.
 
@@ -72,12 +72,12 @@ Az Azure Resource Manager Ruby SDK előzetes verzióként érhető el, és való
 
 ## <a name="use-the-azuresdk-gem"></a>A azure_sdk gem használata
 
-A gem **azure_sdk**, a Ruby SDK az összes támogatott gems összesített van. A gem áll egy **legújabb** profilt, amely támogatja az összes szolgáltatást a legújabb verzióra. Azt mutatja be egy verzióval ellátott profil **V2017_03_09** profilt, amely az Azure Stack épül.
+A gem **azure_sdk**, a Ruby SDK az összes támogatott gems összesített van. A gem áll egy **legújabb** profilt, amely támogatja az összes szolgáltatást a legújabb verzióra. Azt mutatja be két verzióval ellátott profil **V2017_03_09** és **V2018_03_01** profilok, amelyek az Azure Stackhez készült.
 
 A következő paranccsal telepíthető a azure_sdk összesítő gem:  
 
 ```Ruby  
-gem install 'azure_sdk
+gem install 'azure_sdk'
 ```
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -127,11 +127,12 @@ A környezeti változók beállítása egy Windows parancssorban, használja a k
 
 ## <a name="existing-api-profiles"></a>Meglévő API-profilok
 
-A Azure_sdk összesítő gem a következő két profillal rendelkezik:
+A Azure_sdk összesítő gem a következő három profil van:
 
-1. **V2017_03_09**  
+1. **V2018_03_01** az Azure Stackhez készült profil. Használja ezt a profilt használó szolgáltatások az Azure Stackben elérhető legfrissebb verzióit.
+2. **V2017_03_09**  
   Az Azure Stackhez készült profil. Ez a profil szolgáltatások használatával lehet a leginkább kompatibilis az Azure Stack.
-2. **legfrissebb**  
+3. **legfrissebb**  
   Profil áll az összes szolgáltatás legújabb verzióit. Az összes szolgáltatást a legújabb verziókat használhatja.
 
 Az Azure Stacket és API-profilokkal kapcsolatos további információkért lásd: a [összegzése az API-profilok](azure-stack-version-profiles.md#summary-of-api-profiles).
@@ -158,7 +159,7 @@ options = {
 }
 
 # Target profile built for Azure Stack
-client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)
+client = Azure::Resources::Profiles::V2018_03_01::Mgmt::Client.new(options)
 ```
 
 A profil ügyfél segítségével egyéni erőforrás-szolgáltatók, például számítási, tárolási és hálózati hozzáférés:
@@ -172,7 +173,7 @@ purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 
 # Option 2: To access the models associated with Compute
 # Notice Namespace: Azure::Profiles::<Profile Name>::<Service Name>::Mgmt::Models::<Model Name>
-purchase_plan_obj = Azure::Profiles::V2017_03_09::Compute::Mgmt::Models::PurchasePlan.new
+purchase_plan_obj = Azure::Profiles::V2018_03_01::Compute::Mgmt::Models::PurchasePlan.new
 ```
 
 ## <a name="define-azure-stack-environment-setting-functions"></a>Azure Stack-környezet beállítás függvények definiálása
@@ -201,27 +202,27 @@ end
 
 A következő minták a Githubon található, mint a Ruby és az Azure Stack API profilok megoldások létrehozására szolgáló hivatkozások használhatja:
 
-- [Azure-erőforrások és -erőforráscsoportok kezelése Ruby használatával](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)
-- [A Ruby használata virtuális gépek kezelése](https://github.com/Azure-Samples/compute-ruby-manage-vm/tree/master/Hybrid)
-- [Üzembe helyezése ssh-t használó virtuális gép, a Ruby-sablonnal](https://github.com/Azure-Samples/resource-manager-ruby-template-deployment/tree/master/Hybrid)
+- [Azure-erőforrások és -erőforráscsoportok kezelése Ruby használatával](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)
+- [A Ruby használata virtuális gépek kezelése](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM)
+- [Üzembe helyezése ssh-t használó virtuális gép, a Ruby-sablonnal](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment)
 
 ### <a name="sample-resource-manager-and-groups"></a>Mintául szolgáló Resource Manager és a csoportok
 
 A minta futtatásához, győződjön meg arról, hogy telepítette a Rubyt. Ha a Visual Studio Code-ot használja, töltse le, valamint a Ruby SDK bővítmény.
 
 > [!NOTE]  
-> Akkor kaphat a tárházban, a minta "[Azure-erőforrások és -erőforráscsoportok Ruby használatával](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
+> Akkor kaphat a tárházban, a minta "[Azure-erőforrások és -erőforráscsoportok Ruby használatával](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)".
 
 1. A tárház klónozása:
 
    ```bash
-   git clone https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups.git
+   git clone https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups.git
    ```
 
 2. Telepítse a csomagot a függőségeket:
 
    ```Bash
-   cd resource-manager-ruby-resources-and-groups\Hybrid\
+   cd Hybrid-Resource-Manager-Ruby-Resources-And-Groups
    bundle install
    ```
 
@@ -269,7 +270,7 @@ A minta futtatásához, győződjön meg arról, hogy telepítette a Rubyt. Ha a
 7. Hozzon létre egy profilt ügyfél, amely az Azure Stack-profil célozza:
 
    ```ruby  
-   client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)
+   client = Azure::Resources::Profiles::V2018_03_01::Mgmt::Client.new(options)
    ```
 
 8. Az egyszerű szolgáltatás az Azure Stack használatával hitelesíteni, a végpontok használatával kell meghatározni **get_active_directory_settings()**. Ezt a módszert használja a **ARM_Endpoint** a környezeti változók létrehozásakor beállított környezeti változót:

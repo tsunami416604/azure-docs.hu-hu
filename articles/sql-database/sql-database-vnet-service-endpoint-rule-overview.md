@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 1/16/2019
+ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728125"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359850"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Az Azure SQL virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
@@ -118,8 +118,9 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció a következő 
 
 - A virtuális hálózati szabályok alkalmazása csak az Azure Resource Managerbeli virtuális hálózat; és ne [klasszikus üzemi modellben] [ arm-deployment-model-568f] hálózatok.
 
-- Ne tudják bekapcsolni a virtuális hálózati Szolgáltatásvégpontok az Azure SQL Database emellett lehetővé teszi a MySQL és PostgreSQL Azure szolgáltatás végpontjait. Azonban a végpontok ON, a MySQL, illetve PostgreSQL példányokhoz való csatlakozáshoz a végpontról, a kísérletek sikertelenek lesznek.
-  - Az alapul szolgáló oka, hogy a MySQL és a PostgreSQL nem jelenleg támogatják ACLing.
+- Ne tudják bekapcsolni a virtuális hálózati Szolgáltatásvégpontok az Azure SQL Database emellett lehetővé teszi a MySQL és PostgreSQL Azure szolgáltatás végpontjait. Azonban a végpontok ON, a MySQL, illetve PostgreSQL példányokhoz való csatlakozáshoz a végpontról, a kísérletek sikertelenek lehetnek.
+  - Az alapul szolgáló oka, hogy a MySQL és a PostgreSQL valószínűleg nem rendelkezik konfigurált virtuális hálózati szabályt. Konfigurálnia kell egy virtuális hálózati szabályt az Azure Database for MySQL-hez, és a PostgreSQL és a kapcsolat sikeres lesz.
+
 - A tűzfal IP-címtartományok alkalmazása a következő hálózati elemek, de a virtuális hálózati szabályok nem:
   - [Site-to-Site (S2S) virtuális magánhálózati (VPN)][vpn-gateway-indexmd-608y]
   - A helyszíni keresztül [ExpressRoute][expressroute-indexmd-744v]
@@ -159,7 +160,7 @@ Az Azure SQL Database Query-szerkesztő helyezünk üzembe az Azure-beli virtuá
 
 Jelenleg két módja van az SQL Database naplózás engedélyezéséhez. Táblanaplózás sikertelen lesz, miután engedélyezte a Szolgáltatásvégpontok az Azure SQL-kiszolgálón. Kockázatcsökkentési itt, hogy a blobnaplózást.
 
-### <a name="impact-on-data-sync"></a>Adatszinkronizálás gyakorolt hatás
+### <a name="impact-on-data-sync"></a>Impact on Data Sync
 
 Az Azure SQL Database a Data Sync szolgáltatást, amely csatlakozik az Azure IP-címek használatával adatbázisok rendelkezik. A Szolgáltatásvégpontok használatakor az valószínű, hogy Ön ki fog kapcsolni **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének** a logikai kiszolgálóhoz való hozzáférést. Ez megszakítja a Data Sync szolgáltatást.
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e9edf4cd9a1dd0a110e89187b2fca3f85745fe56
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 43305efc146151d131152e712869e283af65f0b2
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330484"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359765"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -82,6 +82,14 @@ A saját licenc használata, vagy átalakíthatja a meglévő fizetési-per-hasz
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
+
+Akkor lehet, amely nem érhető el az Azure Portal, PowerShell-lel az SQL Server egy régebbi rendszerképének üzembe helyezéséhez. Powershell-lel összes elérhető rendszerkép megtekintéséhez használja a következő parancsot:
+
+  ```PowerShell
+  Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
+  ```
+
+SQL Server virtuális gépek PowerShell-lel központi telepítésével kapcsolatos további információkért tekintse meg [hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell-lel](virtual-machines-windows-ps-sql-create.md).
 
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez

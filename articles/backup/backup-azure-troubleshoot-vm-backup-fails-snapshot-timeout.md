@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 2c4c2982febf1d81aaaa81bb9c894785b860503b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200086"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353962"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -54,7 +54,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 Javasolt művelet:<br>
 A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, a virtuális gép, és próbálja megismételni a műveletet kiváltó karbantartási.
 > [!NOTE]
-    > A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállításipont-gyűjtemény tárolásához. Ügyfelek, a Backup szolgáltatás használni létrehozott erőforráscsoportot zárolása nem végigvitelével. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>` működtek az adatbázisok: AzureBackupRG_northeurope_1
+    > A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállításipont-gyűjtemény tárolásához. Ügyfelek, a Backup szolgáltatás használni létrehozott erőforráscsoportot zárolása nem végigvitelével. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **1. lépés: [Távolítsa el a zárolást a visszaállítási pont erőforráscsoportból](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. lépés: [Visszaállításipont-gyűjtemény törlése](#clean_up_restore_point_collection)**<br>
@@ -122,33 +122,8 @@ A deployment követelmény száma a virtuális gép nincs internetkapcsolata. Va
 
 A megfelelő működéshez, a Backup bővítmény kapcsolódnia kell az Azure nyilvános IP-címeket. A bővítmény parancsokat küld a pillanatképek a virtuális gép kezelése az Azure storage végpont (HTTPs URL-cím). Ha a bővítmény nem fér hozzá a nyilvános interneten, biztonsági mentés idővel sikertelen.
 
-A virtuális gép forgalom irányítására egy proxykiszolgáló üzembe helyezéséhez lehetőség.
-##### <a name="create-a-path-for-https-traffic"></a>A HTTPs-forgalmat elérési utat hoz létre
-
-1. Ha hálózati korlátozások (például egy hálózati biztonsági csoportot) helyben, üzembe helyezése egy HTTPs-proxy kiszolgáló irányíthatja a forgalmat.
-2. Engedélyezi a hozzáférést az internethez, a HTTPs-proxy kiszolgáló, a szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
-
-Ismerje meg, hogyan állítható be a virtuális gép biztonsági mentéseinek egy HTTPs-proxyk, lásd: [Azure virtuális gépek biztonsági mentése a környezet előkészítése](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-
-Az Azure nyilvános IP-címek hozzáférésre van szüksége a biztonsági másolat a virtuális gép vagy a proxykiszolgálóhoz, amelyen keresztül az adatforgalmat
-
 ####  <a name="solution"></a>Megoldás
-A probléma megoldásához próbálja meg a következő módszerek egyikét:
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>Az Azure storage, amely megfelel a régióban való hozzáférés engedélyezése
-
-Használhat [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags) , hogy az adott régió storage kapcsolatokat. Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárfiókhoz magasabb prioritású, mint a szabály a blokkok internet-hozzáféréssel rendelkező.
-
-![Hálózati biztonsági csoport tárolási címkékkel régió](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-Szeretné megtudni, a részletes eljárást szolgáltatáscímkék konfigurálásához, tekintse meg a [ebben a videóban](https://youtu.be/1EjLQtbKm1M).
-
-> [!WARNING]
-> Tárolási szolgáltatáscímkék olyan előzetes verzióban érhető el. Elérhetők csak bizonyos régiókban. Régiók listáját lásd: [Szolgáltatáscímkéket Storage](../virtual-network/security-overview.md#service-tags).
-
-Az Azure Managed Disks szolgáltatást, ha szüksége lehet egy további port megnyitása (port 8443) a tűzfalat.
-
-Továbbá ha az alhálózat nem rendelkezik a kimenő internetes forgalmat útvonal, hozzá kell egy szolgáltatásvégpontot szolgáltatáscímke "Microsoft.Storage" és az alhálózathoz.
+A hálózati probléma elhárításához lásd: [hálózati kapcsolatot](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)
 
@@ -185,7 +160,7 @@ Legtöbb ügynök vagy bővítmény kapcsolatos hibák Linux rendszerű virtuál
 3. [Az automatikus újraindítás ügynök konfigurálása](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Egy új tesztelési biztonsági mentés futtatása. Ha a hiba továbbra is fennáll, gyűjtése a virtuális Gépet a következő naplók kapcsolódnak:
 
-   * /var/lib/waagent/*.XML
+   * /var/lib/waagent/*.xml
    * /var/log/waagent.log
    * /var/log/azure/*
 

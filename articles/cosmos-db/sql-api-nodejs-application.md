@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/10/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 8644b12acb1c6806c6e8c8a4242e6fc69724d681
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: fb0a2160991b3fd51b69822f3e3167b929581e50
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035032"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352342"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Egy Node.js-webalkalmazás létrehozása az Azure Cosmos DB SQL API-fiók kezelése a JavaScript SDK segítségével 
 
@@ -326,7 +326,7 @@ Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírj
      })
      .catch(err => {
        console.error(err);
-       console.error("Shutting down because there was an error settinig up the database.");
+       console.error("Shutting down because there was an error setting up the database.");
        process.exit(1);
      });
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: ad490630d3ce5d625bce05c75c20fa71a7aa2d29
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b9e9c0b141987f8af563944c8eee216b8218846c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014540"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352886"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL Database-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
@@ -135,7 +135,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 Az alábbi parancs futtatásával hozzon létre egy tárolt eljárást az SQL-adatbázisban:
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -302,7 +302,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket: 
 
-    1. A **tárolt eljárás neveként** válassza az **sp_write_watermark** lehetőséget. 
+    1. A **tárolt eljárás neveként**válassza **usp_write_watermark**. 
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez: 
 
         | Name (Név) | Típus | Érték | 

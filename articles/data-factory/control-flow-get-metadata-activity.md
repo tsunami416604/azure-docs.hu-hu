@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: e733b82e1b5870d98de5d65771bd621d9bffdf44
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024892"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354263"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység az Azure Data Factoryban
 GetMetadata tevékenység is lehet lekérni **metaadatok** minden adat, az Azure Data Factoryban. Ez a tevékenység a következő esetekben használhatók:
@@ -33,7 +33,7 @@ Az alábbi funkciókat átvitelvezérlés érhető el:
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, és kiírja a tevékenység kimeneti elérhető metaadat-információkat. Jelenleg az alábbi csatlakozók a megfelelő lekérhető meatadata támogatottak, és a maximális támogatott metaadatok mérete legfeljebb **1MB**.
+A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, és kiírja a tevékenység kimeneti elérhető metaadat-információkat. Jelenleg az alábbi csatlakozók megfelelő lekérhető metaadatokkal támogatottak, és a maximális támogatott metaadatok mérete legfeljebb **1MB**.
 
 >[!NOTE]
 >Ha egy helyi Integration Runtime GetMetadata tevékenység futtatja, a legújabb funkció támogatott 3.6-os verzióját vagy újabb. 
@@ -42,10 +42,10 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 
 **Fájltároló:**
 
-| Összekötő/metaadatok | Elemnév<br>(fájlok/mappák) | ItemType<br>(fájlok/mappák) | méret<br>(fájl) | létrehozva<br>(fájlok/mappák) | módosítás dátuma<br>(fájlok/mappák) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | Létezik<br>(fájlok/mappák) |
+| Összekötő/metaadatok | Elemnév<br>(fájlok/mappák) | itemType<br>(fájlok/mappák) | méret<br>(fájl) | létrehozva<br>(fájlok/mappák) | módosítás dátuma<br>(fájlok/mappák) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | Létezik<br>(fájlok/mappák) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
-| Azure-blob | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Azure-blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Fájlrendszer | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -71,7 +71,7 @@ A következő metaadat-típusok a GetMetadata tevékenység lekérdezni a mezől
 | Metaadat típusa | Leírás |
 |:--- |:--- |
 | Elemnév | A fájl vagy mappa neve. |
-| ItemType | A fájl vagy mappa típusú. Kimeneti érték `File` vagy `Folder`. |
+| itemType | A fájl vagy mappa típusú. Kimeneti érték `File` vagy `Folder`. |
 | méret | Fájl mérete a bájtban. Csak fájl alkalmazható. |
 | létrehozva | A fájl vagy mappa létrehozott datetime. |
 | módosítás dátuma | Utolsó módosítás a fájl vagy mappa datetime. |
@@ -130,7 +130,7 @@ Jelenleg a GetMetadata tevékenység lehet beolvasni a következő típusú meta
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
-Mezőlista | Felsorolja a szükséges metaadatokat adatokat. A részleteket a [metaadatok beállítások](#metadata-options) a támogatott metaadatok szakasz. | Igen 
+fieldList | Felsorolja a szükséges metaadatokat adatokat. A részleteket a [metaadatok beállítások](#metadata-options) a támogatott metaadatok szakasz. | Igen 
 Adatkészlet | A referencia-adatkészletnek amelynek metaadatok tevékenységet, GetMetadata tevékenység által lekérni. Lásd: [Supported capabilities](#supported-capabilities) támogatott összekötők a szakaszt, és hivatkozik adatkészlet szintaxis részleteinek összekötő témakör. | Igen
 
 ## <a name="sample-output"></a>Példa kimenet

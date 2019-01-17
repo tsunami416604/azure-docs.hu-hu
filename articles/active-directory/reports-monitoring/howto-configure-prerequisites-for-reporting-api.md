@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 03acd7c283fd1296af06dd19d0170a4b3c65eeb3
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621972"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352495"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API elérésének előfeltételeit
 
@@ -214,6 +214,42 @@ Az alkalmazás titkos ügyfélkulcsát lekéréséhez szüksége, hozzon létre 
 
     d. Másolja a kulcs értékét.
 
+## <a name="troubleshoot-errors-in-the-reporting-api"></a>A jelentéskészítő API hibáinak elhárítása
+
+Ez a szakasz ismerteti a Gyakori hibaüzenetek felmerülhet tevékenységre vonatkozó jelentések az MS Graph API-t és a lépések használatával a névfeloldáshoz elérése közben.
+
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500-as HTTP-belső hiba a Microsoft Graph V2 végpont használata közben
+
+Jelenleg nem támogatja a Microsoft Graph-v2 végpont – ellenőrizze, hogy a vizsgálati naplók használata a Microsoft Graph v1 végpont elérésére.
+
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Hiba: Nem sikerült beolvasni a felhasználói szerepköröket a AD Graph
+
+Ezt a hibaüzenetet kaphat bejelentkezések elérésére tett kísérlet során Graph Explorer használatával. Ellenőrizze, hogy jelentkezett be a fiókjába mind a bejelentkezési gomb a Graph Explorer felhasználói felületén, a következő képen látható módon. 
+
+![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
+
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Hiba: Az AD Graph premium licenc ellenőrzése nem sikerült 
+
+Ha ez a hibaüzenet bejelentkezések elérése közben Graph Explorer használatával, válassza a **módosítási hozzáférést** alul a bal oldali navigációs, és válassza a fiók **Tasks.ReadWrite** és **Directory.Read.All**. 
+
+![Felhasználói felület engedélyek módosítása](./media/troubleshoot-graph-api/modify-permissions.png)
+
+
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Hiba: Sem bérlő az B2C vagy a bérlő nem rendelkezik premium-licenc
+
+Egy Azure Active Directory premium 1 (P1) jelentkezzen be a jelentések eléréséhez szükséges licencet. Ha ez a hibaüzenet jelenik meg közben: bejelentkezések, ügyeljen arra, hogy a bérlő Azure AD P1 szintű licenccel rendelkezik licenccel.
+
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Hiba: Felhasználó nem szerepel az engedélyezett szerepkörök 
+
+Ha ezt a hibaüzenetet látja miközben megpróbált hozzáférni a naplókhoz és a bejelentkezések a API-val, győződjön meg arról, hogy a fiók tagja a **biztonsági olvasó** vagy **jelentés olvasó** szerepkört az Azure Active Directoryban bérlő. 
+
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Hiba: Az alkalmazás AAD "Címtáradatok olvasása" engedéllyel hiányzik 
+
+Kövesse a lépéseket a [az Azure Active Directory reporting API elérésének előfeltételeit](howto-configure-prerequisites-for-reporting-api.md) annak érdekében, hogy az alkalmazás fut, a megfelelő engedélyekkel együtt. 
+
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Hiba: Hiányzik az "Összes naplózási Teljesítménynapló-adatok olvasási" engedélyt MSGraph API alkalmazás
+
+Kövesse a lépéseket a [az Azure Active Directory reporting API elérésének előfeltételeit](howto-configure-prerequisites-for-reporting-api.md) annak érdekében, hogy az alkalmazás fut, a megfelelő engedélyekkel együtt. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: f6a6a1deb55bf16c65982c0d58cd6d92559596af
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a57161fd379269f69ce4e83730a29588d9028b7a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728276"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351611"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan készítse elő a környezetét a Microsoft Azure Ba
 >
 >
 
-Infrastruktúra-szolgáltatás (IaaS) számítási feladatok, például az Azure-beli virtuális gépek, is védheti.
+Egy Azure-beli virtuális gépen telepített MABS készíthet biztonsági másolatot a virtuális gép az Azure-ban, de azok a biztonsági mentési művelet engedélyezéséhez azonos tartományban kell lennie. Az Azure virtuális gép biztonsági folyamat továbbra is ugyanaz, mint a helyszíni virtuális gépek biztonsági mentésével, azonban üzembe helyezése az Azure-ban MABS vannak bizonyos korlátai. További információ a korlátozás: [DPM Azure virtuális gépként](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
 > Az Azure az erőforrások létrehozásához és használatához két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). A cikk a Resource Manager modellel üzembe helyezett virtuális gépek visszaállításához információkat és eljárásokat ismerteti.
@@ -43,7 +43,7 @@ Az Azure Backup Server a Data Protection Manager (DPM) örökli a számítási f
 Az Azure Backup Server és az első lépést, hogy állítsa be a Windows Server. A kiszolgáló Azure-ban vagy a helyszínen is lehet.
 
 ### <a name="using-a-server-in-azure"></a>Az Azure-kiszolgáló használatával
-Ha a kiszolgáló Azure Backup Server futtatásához, ajánlott a katalógus-lemezkép a Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter vagy Windows Server 2019 Datacenter megkezdése. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), nyújt segítséget a javasolt virtuális gép az Azure-ban – első lépések akkor is, ha soha nem használta az Azure-t. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell: két maggal és 3,5 GB RAM-MAL rendelkező Standard A2.
+Ha a kiszolgáló Azure Backup Server futtatásához, ajánlott a katalógus-lemezkép a Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter vagy Windows Server 2019 Datacenter megkezdése. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), nyújt segítséget a javasolt virtuális gép az Azure-ban – első lépések akkor is, ha soha nem használta az Azure-t. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell lennie: A2 méretű standard szintű két maggal és 3,5 GB RAM-MAL.
 
 Az Azure Backup Server számítási feladatok védelmét már sok apró sajátosságaival. A cikk [DPM telepítése Azure virtuális gépként](https://technet.microsoft.com/library/jj852163.aspx), segít ismertetik ezeket a vállalatánál. A gép üzembe helyezése előtt olvassa el ebben a cikkben teljesen.
 
@@ -186,12 +186,12 @@ Miután a kinyerési folyamat befejezése után, jelölje be a jelölőnégyzete
 
 4. A Microsoft Azure Backup server-fájlok a telepítés helyét adja meg, és kattintson a **tovább**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Az ideiglenes hely esetében történő biztonsági mentés Azure követelmény. Győződjön meg arról, az ideiglenes hely az adatok biztonsági mentése a felhőre tervezett legalább 5 %-át. A lemezvédelem különböző lemezen a telepítés befejezése után konfigurálni kell. Tárolókészletek kapcsolatos további információkért lásd: [konfigurálhatók a tárolókészletek és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
 5. Adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **tovább**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
 6. Válassza ki, hogy a használni kívánt *Microsoft Update* keressen frissítéseket, és kattintson a **tovább**.
 
    > [!NOTE]
@@ -199,10 +199,10 @@ Miután a kinyerési folyamat befejezése után, jelölje be a jelölőnégyzete
    >
    >
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. Tekintse át a *beállítások összefoglalása* kattintson **telepítése**.
 
-    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. A telepítés ciklusokban történik. Az első szakaszban a Microsoft Azure Recovery Services Agent telepítve van a kiszolgálón. A varázsló internetkapcsolattal is keres. Ha érhető el internetkapcsolat folytathatja a telepítést, ha nem, meg kell adnia a proxy adatait az internethez való kapcsolódáshoz.
 
     A következő lépés, hogy a Microsoft Azure Recovery Services Agent konfigurálása. A konfiguráció részeként akkor a tároló hitelesítő adatokat a gépet a helyreállítási tárban való regisztrálásához. Meg fog adni egy jelszót az adatok Azure-ban és a helyszíni eredetű között küldött titkosítási/visszafejtési. Automatikusan hozzon létre egy hozzáférési kódot, vagy adjon meg a saját legalább 16 karakterből álló jelszót. A varázsló folytatásához, amíg az ügynök úgy van beállítva.
@@ -263,7 +263,7 @@ Ha át kell helyeznie a MABS egy új kiszolgálóra a tároló megőrzése az al
 9. Az SQL állítsa vissza a dpmdb-t
 10. A rendszergazdai parancssorból az új kiszolgáló cd, a Microsoft Azure Backup telepítése a hely és a bin mappa
 
-Elérési út példa: C:\windows\system32 > cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+Elérési útját. példa: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
 az Azure backup futtassa a DPMSYNC-SYNC
 
 10) Futtassa a DPMSYNC-SYNC Megjegyzés felvett új lemezeket a DPM tárolókészlethez áthelyezése a régiek helyett majd futtassa a DPMSYNC - reallocatereplica parancsot

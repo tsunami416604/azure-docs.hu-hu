@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971266"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352325"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway (előzetes verzió) OpenVPN ügyfelek konfigurálása
 
@@ -72,6 +72,10 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
 7. Kattintson duplán a profil fájlt tunnelblik a profil létrehozásához.
 8. Indítsa el az alkalmazások mappából Tunnelblik.
 9. Kattintson a tálcán Tunnelblik ikonra, és válasszon csatlakozzon.
+
+> [!IMPORTANT]
+>Csak iOS 11.0-s vagy újabb verzió és a MacOS 10.13 és újabb OpenVPN protokoll használata támogatott.
+>
 
 ## <a name="linux"></a>Linux-ügyfelek
 

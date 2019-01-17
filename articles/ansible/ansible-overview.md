@@ -2,18 +2,18 @@
 title: Az Ansible-lel az Azure-ral
 description: Az Ansible segítségével automatizálja a felhőbeli üzembe helyezést, a konfigurációkezelést és az alkalmazások központi telepítésének bemutatása.
 ms.service: ansible
-keywords: az ansible, azure, devops, áttekintése, felhő üzembe helyezése, konfigurációkezelés, alkalmazástelepítés, az ansible-modulok, ansible-forgatókönyvek
+keywords: ansible, azure, devops, overview, cloud provision, configuration management, application deployment, ansible modules, ansible playbooks
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
-ms.topic: article
-ms.openlocfilehash: d684c4238a7550ca3ec34629fffdc9791db55954
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.topic: overview
+ms.openlocfilehash: 55dcda953454ce3eb4e19dabbf198f886d028180
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052700"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357930"
 ---
 # <a name="ansible-with-azure"></a>Ansible az Azure-ral
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 00c001b5c0c2c3dab86477fca798ec651f7b6c93
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5ce8217629cff702ecd3ec274d77918e54efacc6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189966"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359119"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box sorrend
 
@@ -22,7 +22,7 @@ Az Azure Data Box egy hibrid megoldás, amellyel gyorsan, könnyen és megbízha
 Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box szolgáltatást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Regisztráció a Data Box szolgáltatásra
+> * A Data Box üzembe helyezésének előfeltételei
 > * A Data Box megrendelése
 > * A megrendelés nyomon követése
 > * A rendelés lemondása
@@ -63,7 +63,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 4. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre. 
     |Beállítás  |Érték  |
     |---------|---------|
-    |Előfizetés     | Válasszon egy EA-, CSP- vagy használatalapú előfizetést a Data Box szolgáltatáshoz. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
+    |Előfizetés     | Válassza ki az EA, CSP vagy az Azure sponsorship-előfizetést a Data Box szolgáltatás. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
     |Átvitel típusa     | Válassza az **Importálás az Azure-ba** lehetőséget.        |
     |Forrásország     |   Válassza ki azt az országot, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.        |
@@ -79,7 +79,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |Name (Név)     |  Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.      |
     |Erőforráscsoport     |   Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója.         |
     |Azure-beli célrégió     | Válasszon ki egy régiót a tárfiókhoz. <br> További információt a [regionális elérhetőséget](data-box-overview.md#region-availability) tárgyaló témakörben talál.        |
-    |Tárfiók(ok)     | A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. <br> Létre hozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is.        |
+    |Tárfiók(ok)     | A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. <br> Létre hozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. Storage-fiókok, amelyek rendelkeznek a konfigurált szabályok nem használható. A storage-fiókok kell **engedélyezze a hozzáférést minden hálózatból elérhető** tűzijáték és és virtuális hálózatok.|
     
 7. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. Kattintson a **tovább**.
 
@@ -94,7 +94,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
-Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Keresse meg a megrendelést, és nyissa meg az **Áttekintés** területet az állapot megtekintéséhez. A portálon a megrendelés **Megrendelve** állapotban látható.
+Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Nyissa meg a Data Box-rendelés, és folytassa a **áttekintése** állapotának megtekintéséhez. A portálon a megrendelés **Megrendelve** állapotban látható.
 
 Ha nem áll rendelkezésre eszköz, értesítést fog kapni. Ha van elérhető eszköz, a Microsoft kiválaszt egyet a szállításhoz, és előkészíti a csomagot. Az eszköz előkészítése során a következő műveletek lesznek végrehajtva:
 

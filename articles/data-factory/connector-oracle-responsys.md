@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9510b26b56d1602787e35006379a40ce1cbd21d9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7440a08bd8ceb85cc569e1bb6d7c4ee1e52178a4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015169"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352155"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Responsys
 
@@ -47,7 +47,7 @@ Oracle Responsys társított szolgáltatás a következő tulajdonságok támoga
 | type | A type tulajdonságot kell beállítani: **Responsys** | Igen |
 | endpoint | A végpont a Respopnsys kiszolgáló  | Igen |
 | clientId | A Responsys alkalmazással társított ügyfél-azonosító.  | Igen |
-| clientSecret | Az ügyfél titkos kulcsát, az Responsys alkalmazáshoz kapcsolódó. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF acitivty lekéréses hajt végre az adatok másolása innen másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
+| clientSecret | Az ügyfél titkos kulcsát, az Responsys alkalmazáshoz kapcsolódó. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |

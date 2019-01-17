@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: ac5ad9d0067205411c56562264aed81f8a5751bc
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 9dc57876467deb24a763a3c3772209e3e2e0ca0d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267453"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360037"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Az Azure-beli általánosított virtuális gép felügyelt rendszerképének létrehozása
 
-Egy felügyelt rendszerképet erőforrás az általánosított virtuális gép (VM) tárolt felügyelt lemez vagy a storage-fiókban lévő nem felügyelt lemez hozható létre. A lemezkép ezután több virtuális gép létrehozására használható. 
+Egy felügyelt rendszerképet erőforrás az általánosított virtuális gép (VM) tárolt felügyelt lemez vagy a storage-fiókban lévő nem felügyelt lemez hozható létre. A lemezkép ezután több virtuális gép létrehozására használható. A felügyelt lemezképek bille információkért lásd: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 

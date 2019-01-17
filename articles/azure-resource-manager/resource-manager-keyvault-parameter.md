@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a885fda23bb76091705ebe388f40a6eae7b56416
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078070"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351509"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
 
@@ -84,14 +84,14 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-A Resource Manager-sablon használatával: lásd: [oktatóanyag: integrálása az Azure Key Vault Resource Manager-sablon központi telepítésben lévő](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+A Resource Manager-sablon használatával: Lásd: [oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
 
 > [!NOTE]
-> Egyes Azure-szolgáltatások meghatározott jelszót követelményekkel rendelkezik. Például az Azure virtuális gépekre vonatkozó követelmények fürtpéldány [Mik a jelszót a virtuális gép létrehozásakor?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+> Az egyes Azure-szolgáltatások különböző jelszókövetelményeket szabnak meg. Például az Azure virtuális gépekre vonatkozó követelmények fürtpéldány [Mik a jelszót a virtuális gép létrehozásakor?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="enable-access-to-the-secret"></a>A titkos kulcs hozzáférésének engedélyezése
 
-Más, a beállítás `enabledForTemplateDeployment` való `true`, helyezi üzembe a sablont a felhasználónak rendelkeznie kell a `Microsoft.KeyVault/vaults/deploy/action` hatókörhöz, amely tartalmazza a Key Vault, beleértve az erőforráscsoportot és a Key Vault engedély. A [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt a hozzáférés engedélyezéséhez. A Key Vault hoz létre, ha Ön a tulajdonosa, az engedéllyel rendelkezik. Ha a Key Vault egy másik előfizetésben, a Key Vault tulajdonosának kell grand a hozzáférést.
+Más, a beállítás `enabledForTemplateDeployment` való `true`, helyezi üzembe a sablont a felhasználónak rendelkeznie kell a `Microsoft.KeyVault/vaults/deploy/action` hatókörhöz, amely tartalmazza a Key Vault, beleértve az erőforráscsoportot és a Key Vault engedély. A [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt a hozzáférés engedélyezéséhez. A Key Vault hoz létre, ha Ön a tulajdonosa, az engedéllyel rendelkezik. Ha a Key Vault egy másik előfizetésben, a Key Vault tulajdonosának kell hozzáférést adni.
 
 A következő eljárás azt mutatja be, hogyan hozhat létre egy szerepkört a minimális permssion, és rendelje hozzá a felhasználót annak
 1. Hozzon létre egy egyéni szerepkör definíció JSON-fájlt:

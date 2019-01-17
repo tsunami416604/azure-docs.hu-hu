@@ -1,19 +1,19 @@
 ---
 title: Adatok másolása az NFS-n keresztül a Microsoft Azure Data Box |} A Microsoft Docs
-description: Megtudhatja, hogyan másolhat adatokat az Azure Data Boxra
+description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box NFS-n keresztül
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 646acca7eeb2e811f8683a1d35ff8c6efae130da
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 1cd88e24b945bc6ce627b25b0645bf961039037b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319011"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359816"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box NFS-n keresztül 
 
@@ -44,12 +44,13 @@ A kiválasztott tárfiók alapján a Data Box hoz létre, akár:
 
 A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, a második szintű entitások pedig blobok. Az Azure Files-megosztások alatti első szintű entitások megosztások, a második szintű entitások pedig fájlok.
 
-Lásd az alábbi példát. 
-
-- Tárfiók: *Mystoracct*
-- Megoszthatja a blokkblobok: *Mystoracct_BlockBlob/my-container/blob*
-- Megoszthatja a lapblob: *Mystoracct_PageBlob/my-container/blob*
-- Megoszthatja a fájlt: *Mystoracct_AzFile/my-share*
+Az alábbi táblázat az UNC elérési utat a megosztásokat, ahol az adatok feltöltése a Data Box és az Azure Storage elérési út URL. Az Azure Storage elérési út utolsó URL-cím származtatható megosztás UNC elérési útját.
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Az Azure Block blobs | <li>Megosztás UNC elérési útja: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Azure-lapblobok  | <li>Megosztás UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure Files       |<li>Megosztás UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
 Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigurálhatja a Data Boxot, hogy hozzáférést biztosítson az NFS-ügyelek számára.
 
@@ -71,14 +72,17 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
+    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *$root* mappát a storage-fiókban.
+
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
-A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adatok másolása. Ennek megkezdése előtt tekintse át az alábbi szempontokat:
+A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adatok másolása. Mielőtt elkezdené az adatok másolását, tekintse át az alábbiakat:
 
 - Győződjön meg arról, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
 -  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak. 
 - Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 - Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
+- **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *$root* mappát a storage-fiókban.
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -117,6 +121,10 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
      A j a párhuzamos folyamatok számát jelöli, X = párhuzamos példányok száma
 
      Azt javasoljuk, hogy kezdetben 16 párhuzamos példánnyal dolgozzon, és az elérhető erőforrásoknak megfelelően növelje a szálak számát.
+
+- Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
+    
+   ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="prepare-to-ship"></a>A szállítás előkészítése
 

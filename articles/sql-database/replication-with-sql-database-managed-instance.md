@@ -1,59 +1,33 @@
 ---
-title: Replikálás az Azure SQL Database felügyelt példány |} A Microsoft Docs
-description: További információ az SQL Server-replikáció használata Azure SQL Database felügyelt példánya
+title: A replikáció konfigurálása az Azure SQL Database felügyelt példányába |} A Microsoft Docs
+description: További információ az Azure SQL Database felügyelt példánya a tranzakciós replikáció konfigurálása
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/11/2019
-ms.openlocfilehash: e658eba29368530c4c221496de98823c002985fe
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/16/2019
+ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329464"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360088"
 ---
-# <a name="replication-with-sql-database-managed-instance"></a>A replikáció az SQL Database felügyelt példánya
+# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>A replikáció konfigurálása az Azure SQL Database felügyelt példánya
 
-Nyilvános előzetes verzióban érhető el replikációs [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md). Felügyelt példány közzétevő terjesztője és előfizető adatbázisok is üzemeltethet.
-
-## <a name="common-configurations"></a>Általános beállításai
-
-Általánosságban véve a közzétevő és a terjesztőn kell lennie a felhőben vagy a helyszínen. A következő konfigurációk támogatottak:
-
-- **A felügyelt példány helyi terjesztő közzétevő**
-
-   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
-
-   Gyártó és forgalmazó adatbázisok egyetlen felügyelt példány konfigurálása.
-
-- **A felügyelt példány a távoli terjesztőt közzétevő**
-
-   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
-
-   Gyártó és forgalmazó két felügyelt példány konfigurálása. Ebben a konfigurációban:
-
-  - Felügyelt példány is vannak egyazon virtuális hálózaton.
-
-  - Felügyelt példány is ugyanazon a helyen vannak.
-
-- **Gyártó és forgalmazó a helyszínen az előfizető a felügyelt példány**
-
-   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
-
-   Ebben a konfigurációban az Azure SQL database az előfizető. Ez a konfiguráció támogatja az áttelepítés a helyszínről az Azure-bA. Az előfizető szerepkör az SQL database nem igényel felügyelt példány, azonban, hogy a lépést az áttelepítés a helyszínről az Azure-ban is használhat egy SQL Database felügyelt példányain. Azure SQL Database-előfizetői kapcsolatos további információkért lásd: [SQL-adatbázis-replikáció](replication-to-sql-database.md).
+Tranzakciós replikáció lehetővé teszi, hogy replikálja az adatokat az SQL Server vagy az Azure SQL Database felügyelt példányába adatbázisok másolatát a felügyelt példányon, vagy küldje el a módosításokat végzett az adatbázisokban a felügyelt példány más SQL Server, egyetlen Azure-adatbázis vagy más Felügyelt példány. Replikáció a nyilvános előzetes verzióban van, a [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md). Felügyelt példány közzétevő terjesztője és előfizető adatbázisok is üzemeltethet. Lásd: [tranzakciós replikáció konfigurációk](sql-database-managed-instance-transactional-replication.md#common-configurations) elérhető konfigurációk esetén.
 
 ## <a name="requirements"></a>Követelmények
 
 Közzétevő és az Azure SQL Database terjesztő szükségesek:
 
-- Azure SQL Database Managed Instance.
+- Az Azure SQL Database felügyelt példánya, amely nem szerepel a Geo-DR-konfigurációt.
 
    >[!NOTE]
    >Az Azure SQL Database felügyelt példánya nem konfigurált előfizetők csak lehet.
@@ -74,7 +48,13 @@ A következőket támogatja:
 
 - Előfizetők lehetnek, a helyszínen, az Azure SQL Database önálló adatbázisok vagy készletezett adatbázisok az Azure SQL Database rugalmas készletei.
 
-- Egyirányú és kétirányú replikációt
+- Egyirányú és kétirányú replikációt.
+
+A következő funkciók nem támogatottak:
+
+- Frissíthető előfizetések.
+
+- Aktív georeplikáció.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Közzététel és terjesztés példa konfigurálása
 
@@ -188,15 +168,7 @@ A következőket támogatja:
                 @job_password = N'<PASSWORD>'
    GO
    ```
-
-## <a name="limitations"></a>Korlátozások
-
-A következő funkciók nem támogatottak:
-
-- Frissíthető előfizetések
-
-- Aktív georeplikáció
-
+   
 ## <a name="see-also"></a>Lásd még:
 
 - [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md)

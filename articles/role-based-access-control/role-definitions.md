@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 1c8af3e0d3d5d29531a2ba81abc745fcdca5fb08
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231903"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354315"
 ---
 # <a name="understand-role-definitions"></a>A szerepkör-definíciók ismertetése
 
@@ -173,7 +173,11 @@ Megtekintheti és az üzemeltetés, az eszközök és SDK-kkal megfelelő verzi�
 | [Pythonhoz készült Azure](/python/azure) | 0.40.0 vagy újabb |
 | [Rubyhoz készült Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 vagy újabb |
 
-Az Azure Portalon is lehetővé teszi a felhasználóknak megkeresheti és felügyelheti a várólisták és a Blob tartalmát felületének előzetese tárolók az Azure AD-n keresztül. Megjelenítheti és kezelheti a várakozási sorban vagy Blobban tároló tartalmának kattintson a hivatkozásra "Intéző adatok az Azure AD preview rendszert használó" a storage-fiók áttekintése.
+Megtekintheti, és a Adatműveletek használata a REST API-ban, be kell állítani a **api-version** paraméter a következő verziójú vagy újabb:
+
+- 2018-01-01-preview
+
+Az Azure Portalon is lehetővé teszi a felhasználóknak megkeresheti és felügyelheti a várólisták és a Blob tartalmát felületének előzetese tárolók az Azure AD-n keresztül. Megtekintheti és kezelheti a várakozási sorban vagy Blobban tároló kattintson a tartalmát a **feltárhatja az adatait az Azure AD preview rendszert használó** a storage-fiók áttekintése.
 
 ![Ismerkedés az üzenetsorok és a Blob-tárolók használatával az Azure AD-előzetes verzió](./media/role-definitions/rbac-dataactions-browsing.png)
 

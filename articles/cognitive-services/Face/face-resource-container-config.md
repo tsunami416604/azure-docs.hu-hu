@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725055"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359442"
 ---
 # <a name="configure-containers"></a>Tárolók konfigurálása
 
@@ -116,7 +116,7 @@ A Face tároló tárolja a blob, a gyorsítótár, a metaadatok és a sorban lé
   A Face tároló Azure Storage és az Azure Cosmos DB használatával ezek négy típusú adatok szét a tartós tároláshoz. Azure Storage BLOB és üzenetsor adatokat kezeli. Azure Cosmos DB kezeli az metaadatok és a gyorsítótár-adatokat. A Face tároló leállt, vagy eltávolítja, ha az adatok a tároló storage-ban tárolt, az Azure Storage és Azure Cosmos DB marad.  
   Az Azure storage-forgatókönyv által használt erőforrások az alábbi további követelményekkel rendelkezik.
   * Az Azure Storage-erőforrást kell használnia a StorageV2 fiók típusa
-  * Az Azure Cosmos DB-erőforrást kell használnia az Azure Cosmos DB MongoDB API-hoz
+  * Az Azure Cosmos DB erőforrás az Azure Cosmos DB API-t kell használnia a mongodb-hez
 
 A storage-forgatókönyvek és a kapcsolódó konfigurációs beállítások kezeli a `Storage` objektumot, a a `CloudAI` konfigurációs szakaszban. A következő beállítások érhetők el a `Storage` objektum:
 

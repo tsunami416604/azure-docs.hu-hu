@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2c035b7c6bbd687ca2922d5f52e2ddaa0c96e50c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002423"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351424"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati Szolgáltatásvégpontok az Azure Key Vault
 
@@ -74,6 +74,7 @@ A megbízható szolgáltatások, amelyek jogosultak egy kulcstartó eléréséhe
 |Azure SQL Database|[Transzparens adattitkosítás Bring Your Own Key-támogatással az Azure SQL Database és a Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Az Azure Data Lake Store az adatok titkosítása az](../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
+|Az Azure databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](../azure-databricks/what-is-azure-databricks.md)|
 
 
 

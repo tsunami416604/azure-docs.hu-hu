@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631434"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352138"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
@@ -21,7 +21,8 @@ ms.locfileid: "53631434"
 Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti. 
 
 > [!NOTE]
-> A tárolási szintek módosítása további díjakat vonhat maga után. További részleteket az [árakat és számlázást](#pricing-and-billing) ismertető szakaszban olvashat.
+> A tárfiók frissítése az általános célú v2 fiókra díjmentes.
+> A tároló hozzáférési szint módosítása vonhat maga után a módosítások a számla. További részleteket az [árakat és számlázást](#pricing-and-billing) ismertető szakaszban olvashat.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Frissítse az Azure portal használatával
 
@@ -62,8 +63,8 @@ Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költs
 
 Alapértelmezés szerint egy új storage-fiók jön létre a gyakran használt adatok tároláselérési rétegében és a egy általános célú v1 storage-fiók frissítése a gyakori elérésű hozzáférési szintre. Ha, a vizsgált milyen hozzáférési szint használata az adatok frissítése, fontolja meg a forgatókönyvnek. Egy általános célú v2 fiók való áttelepítés során két jellemző felhasználói forgatókönyv közül választhat:
 
-* Rendelkezik egy meglévő általános célú v1-tárfiókot, és szeretné kiértékelni egy általános célú v2 tárfiók blobadatokat a megfelelő tárolási szintjére való áttérést.
-* Egy általános célú v2-tárfiók használata vagy már rendelkezik ilyennel, és szeretné meghatározni, hogy blobadatokat kell használnia a gyakori vagy ritka elérésű tárolási szinten választotta.
+* Rendelkezik egy meglévő általános célú v1-tárfiókot, és a egy általános célú v2-tárfiók, és a megfelelő tárolási hozzáférési réteg a Blobadatok történő frissítéshez ki kell számítani.
+* Egy általános célú v2-tárfiók használata vagy már rendelkezik ilyennel, és szeretné meghatározni, hogy blobadatokat kell használnia a gyakori vagy ritka elérésű hozzáférési rétege választotta.
 
 Mindkét esetben az első érték tárolása, elérése és a egy általános célú v2-tárfiók-ban tárolt adatokkal kapcsolatos működtetése költségének és összehasonlítása az aktuális költségekkel.
 
@@ -71,9 +72,9 @@ Mindkét esetben az első érték tárolása, elérése és a egy általános c�
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 
-* **Tárolási költségek**: Tárolt adatok mennyisége mellett az adattárolás díja a tárolási réteg függvényében. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
+* **Tárolási költségek**: Tárolt adatok mennyisége mellett a az adattárolás díja a tárolás hozzáférési szintjétől függően változik. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
 
-* **Adathozzáférési költségek**: Az adathozzáférési költségek emelkednek, ha a szint ritkábban. A ritka elérésű és az archív tárolási szint esetében gigabájtonkénti adathozzáférési díjat kell fizetni az adatolvasásokért.
+* **Adathozzáférési költségek**: Az adathozzáférési költségek emelkednek, ha a szint ritkábban. A lassú elérésű és archív hozzáférési rétege adatok egy gigabájtonkénti adathozzáférési díjat az olvasásokhoz díjkötelesek.
 
 * **Tranzakciós költségek**: A tranzakciónkénti díjat kell fizetni minden szint esetében, amely növeli, ha a szint ritkábban van.
 
@@ -81,7 +82,7 @@ Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alk
 
 * **Kimenő adatátviteli költségek**: Kimenő adatforgalom (azaz az Azure-régióba adatok) sávszélesség-használat gigabájtonkénti történik, az általános célú tárfiókok esetében a számlázás számítunk fel.
 
-* **A tárolási réteg módosítása**: A díj megegyezik a tárfiókban lévő összes adat ritka elérésű szintről a fiók tárolási szintjének módosítása tekintetében. A fiók tárolási szintjének gyakori elérésűről ritka elérésűre való váltása esetében felmerülő díj viszont az összes adat ritka elérésű szintre írásának költségével egyezik meg (csak a GPv2-fiókok esetében).
+* **A tároló hozzáférési szint módosítása**: A fiók hozzáférési rétege ritkán használt adatok rétegére való díj költségével egyezik megegyezik a tárfiókban lévő összes adat. Azonban a fiók hozzáférési szintjének a ritka elérésűre való költségével díj írása az összes adat ritka elérésű szintre (csak GPv2 fiókok esetében).
 
 > [!NOTE]
 > A tárfiókok árképzési modelljével kapcsolatos további információért lásd [az Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
@@ -156,7 +157,7 @@ A Blob Storage-tárfiókok adathozzáférési költségeinek kiszámításához 
 A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén az írt adatok mennyiségének becslése alapján számítható ki GRS- vagy RA-GRS-tárfiókok használata esetében.
 
 > [!NOTE]
-> Ha részletesebb példát szeretne látni a gyakori és ritka elérésű tárolási szint használatához kapcsolódó költségek kiszámítására, tekintse át a *„What are Hot and Cool access tiers and how should I determine which one to use?”* (Mi a gyakori és a ritka elérésű tárolási szint, és hogyan határozhatom meg, hogy melyiket kell használnom?) című gyakori kérdéseket. az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
+> Részletes példa a gyors és lassú elérésű hozzáférési szint használatához kapcsolódó költségek kiszámítására, tekintse meg a gyakori kérdések című *"Mik azok a lassú és gyors elérési szint, és miként állapítható melyiket érdemes használni?"* az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>További lépések
 

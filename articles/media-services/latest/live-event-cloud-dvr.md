@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407966"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352359"
 ---
 # <a name="using-a-cloud-dvr"></a>Egy felhőalapú DVR használata
 
@@ -35,7 +35,10 @@ Minden egyes **LiveOutput** társítva van egy **eszköz**, amellyel a videó r�
 A **videókhoz** támogatja a legfeljebb három egyidejűleg zajló **LiveOutput**s, legfeljebb 3 felvételek/archívumok hozhat létre egy élő streamet. Ez lehetővé teszi az események különféle részeinek szükség szerinti közzétételét és archiválását. Tegyük fel, hogy szórási kell egy 24 x 7 élő lineáris hírcsatorna, és hozzon létre a különböző programok, igény szerinti tartalom utólagos megtekinthető az ügyfelek számára kínálnak a nap folyamán "oktatások". Ebben a forgatókönyvben, először hozzon létre egy elsődleges LiveOutput egy rövid archiválási ablak 1 óra vagy kevesebb mint – ez az, hogy a nézők lenne hangolása az elsődleges élő közvetítés. Akkor kell létrehoznia egy **StreamingLocator** ehhez **LiveOutput** , és tegye közzé az alkalmazás vagy webhely, a "Live" hírcsatorna. Bár a **videókhoz** van fut, programozott módon létrehozhat egy második párhuzamosan futó **LiveOutput** programot (vagy biztosít néhány leírók 5 perccel később trim) elején. Ebben a második **LiveOutput** 5 perc, a program befejezése után lehet törölni. Az ebben a második **eszköz**, létrehozhat egy új **StreamingLocator** közzétenni ezt a programot az alkalmazáskatalógusban igény szerinti eszközként. Ismételje meg a folyamat többször más program határok vagy emeli ki, akinél szeretné megosztani, igény szerinti videók, a "Live" eközben a hírcsatorna az első **LiveOutput** továbbra is a lineáris hírcsatorna szórási. 
 
 > [!NOTE]
-> **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben.  
+> **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben. 
+>
+> Miután közzétette **Streamelési lokátor**s tartozó objektum a **LiveOutput**, az esemény (akár a DVR időszak hossza) továbbra is meg szeretné jeleníteni a befejezési idő, amíg a **Streamelési lokátor**  vagy a mai napig tartó, amikor törli a lokátor, amelyik előbb bekövetkezik.   
+  
 
 ## <a name="next-steps"></a>További lépések
 

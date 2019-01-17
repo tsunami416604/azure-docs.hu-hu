@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434732"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359357"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -177,6 +177,11 @@ Kattintson duplán a kivételt a kivétel teljes üzenet jelenik meg a vörös s
 |`0x8024402C`     | Ha egy WSUS-kiszolgálót használ, ellenőrizze, hogy a beállításkulcs-értékeket `WUServer` és `WUStatusServer` a beállításkulcs alatt `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` megfelelő a WSUS-kiszolgálót.        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Győződjön meg arról, hogy a Windows Update szolgáltatás (wuauserv) fut-e, és nincs letiltva.        |
 |Bármely egyéb általános kivétel     | Keresés a lehetséges megoldásokat az interneten működnek és a helyi IT-támogatással.         |
+
+Emellett töltse le és futtassa a [Windows frissítési hibaelhárító](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) ellenőrizze, hogy vannak-e a gépen Windows Update szolgáltatással kapcsolatos problémák.
+
+> [!NOTE]
+> A [Windows frissítési hibaelhárító](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) állapotok a Windows-ügyfelek de is működik Windows Server rendszeren.
 
 ## <a name="linux"></a>Linux
 

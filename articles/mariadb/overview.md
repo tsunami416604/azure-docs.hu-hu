@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 12/03/2018
-ms.openlocfilehash: 507425a6cffc6f3b49e117ebf5a604bf0d252164
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7fecc280d4e92df88f5f8e9b9e571273328d2458
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542016"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352312"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Mi az Azure Database for MariaDB?
 
@@ -45,7 +45,7 @@ Az Azure Database for MariaDB szolgáltatás számos különböző szolgáltatá
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 
-Hogyan lehet megállapítani, hogy mikor van szükség vertikális fel- vagy leskálázásra? Használja az Azure Database for MariaDB virtuális magokon alapuló, teljesítményértékeléssel kombinált, beépített teljesítménymonitorozó és riasztási eszközeit. Ezekkel az eszközökkel gyorsan kiértékelheti, milyen hatásai vannak a virtuális magok aktuális vagy becsült teljesítményigényeken alapuló vertikális fel- vagy leskálázásának. <!--See [Alerts](howto-alert-on-metric.md) for details.-->
+Hogyan lehet megállapítani, hogy mikor van szükség vertikális fel- vagy leskálázásra? Használja az Azure Database for MariaDB virtuális magokon alapuló, teljesítményértékeléssel kombinált, beépített teljesítménymonitorozó és riasztási eszközeit. Ezekkel az eszközökkel gyorsan kiértékelheti, milyen hatásai vannak a virtuális magok aktuális vagy becsült teljesítményigényeken alapuló vertikális fel- vagy leskálázásának. A részleteket a [riasztások](howto-alert-metric.md) leírása tartalmazza.
 
 ## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
 
@@ -55,7 +55,7 @@ Az Azure-szolgáltatás piacvezető 99,99 %-os rendelkezésre állási SLA-t a M
 
 Az Azure-beli adatbázis-szolgáltatásokra jellemző adatvédelmet az Azure Database for MariaDB is biztosítja. Az Azure Database for MariaDB funkciói korlátozzák a hozzáférést, védik az inaktív és a mozgásban lévő adatokat, és segítenek a tevékenységek monitorozásában. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/trustcenter/security) talál információkat.
 
-Az Azure Database for MariaDB tárolótitkosítást használ az inaktív adatokhoz. Az adatok, beleértve a biztonsági másolatokat is, titkosítva kerülnek a lemezre. (A motor általi lekérdezések futtatásakor létrejövő ideiglenes fájlok nem lesznek titkosítva a lemezen.) A szolgáltatás AES 256 bites titkosítást használ, amely része az Azure Storage-titkosításnak. A kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
+Az Azure Database for MariaDB szolgáltatás tárolási titkosítást használ az inaktív adatok, és megfelel a FIPS 140-2 szabványnak. Az adatok, beleértve a biztonsági másolatokat is, titkosítva kerülnek a lemezre. (A motor általi lekérdezések futtatásakor létrejövő ideiglenes fájlok nem lesznek titkosítva a lemezen.) A szolgáltatás AES 256 bites titkosítást használ, amely része az Azure Storage-titkosításnak. A kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
 Alapértelmezés szerint az Azure Database for MariaDB úgy van konfigurálva, hogy [biztonságos SSL-kapcsolatot](./concepts-ssl-connection-security.md) követeljen meg a hálózatok között mozgó adatokhoz. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Megteheti, hogy eltekint az SSL megkövetelésétől, amikor az adatbázis-szolgáltatáshoz kapcsolódik, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aef88a4fbc7d71ee1438333afd9773d1aba3ed9c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582915"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359153"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
@@ -68,8 +68,8 @@ Ebben a szakaszban létre fog hozni egy build folyamatot, amely automatikusan fu
 1. A folyamat-szerkesztőben válassza ki az ügynökkészlet. 
     
     * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **üzemeltetett Ubuntu 1604**
-    * Ha szeretné a modulok Windows-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **Hosted VS2017** 
-    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 összeállítása, kell beállítása a saját build-ügynök telepítése funkcionáló a **kezelés** gombra.
+    * Ha szeretné a modulok Windows 1809 tárolókhoz platform amd64 hozhat létre, akkor [állítsa be a helyi Windows-ügynök](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 hozhat létre, akkor [Linux helyi ügynök beállítása](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
     ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
 

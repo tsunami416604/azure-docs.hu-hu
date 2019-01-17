@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3f13cb2626394d16a127b172bb69c4ab88121cdb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017701"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352529"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Az SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -76,7 +76,7 @@ A következő bemutató egy folyamatban a tárolt eljárási tevékenység haszn
 2. Hozza létre a következő **tárolt eljárás** , amely az adatok beszúrása a **sampletable**.
 
     ```SQL
-    CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+    CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
     AS
 
     BEGIN
@@ -108,7 +108,7 @@ A következő bemutató egy folyamatban a tárolt eljárási tevékenység haszn
    ![Data Factory kezdőlap](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Egy Azure SQL társított szolgáltatás létrehozása
-Miután létrehozta az adat-előállítót, létrehozhat egy Azure SQL társított szolgáltatást, amely az Azure SQL database, amely tartalmazza a sampletable tábla és sp_sample tárolt eljárást, az adat-előállítóhoz.
+Miután létrehozta az adat-előállítót, létrehozhat egy Azure SQL társított szolgáltatást, amely az Azure SQL database, amely tartalmazza a sampletable tábla és usp_sample tárolt eljárást, az adat-előállítóhoz.
 
 1. Kattintson a **Szerző és üzembe helyezése** a a **adat-előállító** paneljén **SProcDF** , indítsa el a Data Factory Editor.
 2. Kattintson a **új adattároló** a parancs sávot, és válassza **Azure SQL Database**. A szerkesztőben Azure SQL társított szolgáltatás létrehozására szolgáló JSON-parancsfájl kell megjelennie.
@@ -160,7 +160,7 @@ Most hozzunk létre egy tárolt eljárási tevékenység a folyamat.
 Figyelje meg a következő tulajdonságokkal: 
 
 - A **típus** tulajdonsága **SqlServerStoredProcedure**. 
-- A **storedProcedureName** típus tulajdonságainak értéke **sp_sample** (a tárolt eljárás neve).
+- A **storedProcedureName** típus tulajdonságainak értéke **usp_sample** (a tárolt eljárás neve).
 - A **storedProcedureParameters** szakasz tartalmaz egy paramétert nevű **DateTime**. Név és a kis-és a JSON-paraméter meg kell egyeznie a nevét és a kis-és a paraméter a tárolt eljárás-definícióban. Ha az egyik paraméter null értékű kell átadni, használja a szintaxist: `"param1": null` (csak kisbetűvel).
  
 1. Ha nem látja ezt a gombot, kattintson a három pontot  **További** a parancssávon, majd **új adatcsatorna**.
@@ -174,7 +174,7 @@ Figyelje meg a következő tulajdonságokkal:
                 {
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-                        "storedProcedureName": "sp_sample",
+                        "storedProcedureName": "usp_sample",
                         "storedProcedureParameters": {
                             "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                         }
@@ -340,7 +340,7 @@ CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
 **Tárolt eljárás:**
 
 ```SQL
-CREATE PROCEDURE sp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
+CREATE PROCEDURE usp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
 
 AS
 
@@ -355,7 +355,7 @@ Most adja át a **forgatókönyv** paraméter és a tárolt eljárási tevékeny
 ```JSON
 "typeProperties":
 {
-    "storedProcedureName": "sp_sample",
+    "storedProcedureName": "usp_sample",
     "storedProcedureParameters":
     {
         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
@@ -394,7 +394,7 @@ Most adja át a **forgatókönyv** paraméter és a tárolt eljárási tevékeny
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample2",
+                    "storedProcedureName": "usp_sample2",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
                         "Scenario": "Document sample"

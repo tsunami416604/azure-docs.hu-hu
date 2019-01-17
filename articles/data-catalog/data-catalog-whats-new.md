@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 86c8e8c10811b1478ae2c853f1efef5b6b5caa83
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406328"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353141"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Frissítések **Azure Data Catalog** rendszeresen jelennek meg. Nem minden kiadás új szolgáltatásokkal rendelkező felhasználó, néhány kiadásai háttérszolgáltatás képességek összpontosítanak. Ez az oldal az Azure Data Catalog szolgáltatásban hozzáadott új felhasználói képességek emeli ki.
@@ -45,7 +45,7 @@ Frissítések **Azure Data Catalog** rendszeresen jelennek meg. Nem minden kiad�
 
 ## <a name="whats-new-for-july-2017"></a>2017 júliusi újdonságai 
 2017 júliusától az Azure Data Cataloghoz az alábbi képességekkel bővült:
-*   Részletesebb vezérléshez keresztül többek között lehetővé metaadat-műveletek támogatása:
+*   Támogatás engedélyezett metaadat-műveletek, beleértve a több részletesen szabályozhatja:
     - Katalógus-rendszergazdák működhet közre a címkék és a kapcsolódó metaadatokat a katalógust, hogy a felhasználók korlátozhatja a csak olvasási hozzáférés a katalógus engedélyezése.
     - Katalógus-rendszergazdák az új adatforrások regisztrálása a katalógusban, hogy a felhasználók is korlátozhatja.
     - Katalógus-rendszergazdák korlátozhatja az adatok adategység metaadatainak szerezhetnek a katalógusban, hogy a felhasználók.
@@ -137,8 +137,8 @@ Az Azure Data Catalog 2016 augusztusában az alábbi képességekkel bővült:
 
 * Egy üzleti szószedetet, amely lehetővé teszi, hogy a katalógus-rendszergazdák üzleti kifejezéseket és hierarchiákat hozhat létre egy közös üzleti szószedet meghatározásához. Felhasználók címkékkel láthatják el, hogy könnyebben megtalálhatóvá és értelmezhetővé a katalógus tartalmának a szószedet kifejezéseivel jelölhetik regisztrált adategységeket. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása)  
 * A Data Catalog üzleti szószedet, amely lehetővé teszi a felhasználók frissíthetik a egyetlen művelettel több szószedet kifejezései fejlesztései. Felhasználók által választható több feltételek szerkesztése a következő mezőket:
-  * Szülőkifejezés: A felhasználó kiválaszthat egy új szülőkifejezés, és az összes kiválasztott feltételek frissítve lett, hogy a kiválasztott szülőkifejezés gyermeke lehet. A kijelölt feltételek összes azonos a szülővel rendelkezik, akkor a szülő látható a szövegmezőbe, ellenkező esetben a szülőkifejezés mező értéke üres.   
-  * A címkék és a közreműködők: felhasználók hozzáadhat és eltávolíthat a címkék és a közreműködők több szószedet feltételek használatával egyszerre több adategységet címkézés ugyanazt a felhasználói élményt.
+  * Parent Term: A felhasználó kiválaszthat egy új szülőkifejezés, és az összes kiválasztott feltételek frissítve lett, hogy a kiválasztott szülőkifejezés gyermeke lehet. A kijelölt feltételek összes azonos a szülővel rendelkezik, akkor a szülő látható a szövegmezőbe, ellenkező esetben a szülőkifejezés mező értéke üres.   
+  * A címkék és az érdekelt felekkel: Felhasználók hozzáadása és távolítsa el a címkék és a közreműködők több, ugyanazt a felhasználói élményt használatával egyszerre több adategységet címkézés szószedet feltételek.
 
 > [!NOTE]
 > Az üzleti szószedet csak a az Azure Data Catalog Standard kiadásában érhető el. Az ingyenes kiadás nem biztosít szabályozottabbá címkézés és a egy üzleti szószedetet képességeket.
@@ -153,7 +153,7 @@ Az Azure Data Catalog 2016 augusztusában az alábbi képességekkel bővült:
 
 * Egy újonnan áttervezett forrás kiválasztása az Azure Data Catalog adatforrás-regisztráló eszköz felületét. Az adatforrás-regisztráló eszköz frissült, hogy egyszerűbb legyen, hogy keresse meg és válassza ki az adatforrásokból az Azure Data Catalog által támogatott.
 * Az Azure Data Catalog-portál és az adatforrás-regisztráló eszköz 10 további nyelvek támogatásával. In Addition to English az Azure Data Catalog élmény már elérhető a német, spanyol, francia, olasz, japán, koreai, brazíliai portugál, orosz, egyszerűsített kínai és kínai (hagyományos). Az Azure Data Catalog felhasználói honosított megadott nyelvi beállítások a Windows vagy a felhasználó böngészőben.
-* Georeplikáció az Azure Data Catalog adatok az üzleti folytonossági és vészhelyreállítási helyreállítási támogatása. Azure Data Catalog teljes tartalmát, többek között az adatok forrása metaadatok és a Közösségtől származó jegyzetek, most replikálódnak az ügyfelek számára további költségek nélkül két Azure-régiók között. Az Azure-régiók előre van párosítva, legalább 500 mérföld távolságra, és kövesse a leképezés leírtak szerint [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure párosított régiói](../best-practices-availability-paired-regions.md).
+* Georeplikáció az Azure Data Catalog adatok az üzleti folytonossági és vészhelyreállítási helyreállítási támogatása. Azure Data Catalog teljes tartalmát, többek között az adatok forrása metaadatok és a Közösségtől származó jegyzetek, most replikálódnak az ügyfelek számára további költségek nélkül két Azure-régiók között. Az Azure-régiók előre van párosítva, legalább 500 mérföld távolságra, és kövesse a leképezés leírtak szerint [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure – párosított régiók](../best-practices-availability-paired-regions.md).
 * Támogatás az Azure Data Catalog által használt Azure-előfizetés módosítása. Azure Data Catalog-rendszergazdák használatával a beállítások lapon az Azure Data Catalog-portálon válassza a számlázás szempontjából egy másik Azure-előfizetést.
 
 ## <a name="whats-new-for-january-2016"></a>Újdonságok 2016. január
@@ -165,7 +165,7 @@ Az Azure Data Catalog 2016 augusztusában az alábbi képességekkel bővült:
   * Fájlrendszer - fájl
   * SharePoint - lista
   * FTP - fájl és könyvtár
-  * A Salesforce.com - objektum
+  * Salesforce.com - Object
   * DB2 - tábla, nézet és adatbázis
   * PostgreSQL - tábla, nézet és adatbázis
 * "Nyissa meg az SQL Server Data Tools" támogatása (például Azure SQL Database és az Azure SQL Data Warehouse) az SQL Server-adatforrásait.  

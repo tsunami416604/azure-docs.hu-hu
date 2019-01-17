@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033162"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359425"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Az Azure Cosmos DB-fiók egy IP-tűzfal konfigurálása
 
@@ -145,10 +145,10 @@ Az alábbi beállítások segítségével elháríthatja, IP hozzáférés-vezé
 Egy IP hozzáférés-vezérlési szabályzat az Azure Cosmos DB-fiók engedélyezésével letiltása összes kérelem a fiókjához a gépek kívül az engedélyezett IP-címtartományok listája. Ahhoz, hogy a portál adatsík műveletek, mint a böngészés tárolók és a dokumentumok lekérdezésére, explicit módon hozzáférést az Azure portál használatával kell a **tűzfal** panel a portálon.
 
 ### <a name="sdks"></a>SDK-k 
-Gépek, amelyek nem szerepelnek az engedélyezési listához, egy általános SDK-k használatával az Azure Cosmos DB-erőforrások elérésekor **404 nem található** válasz nincs további részletekkel. Ellenőrizze az engedélyezett IP-címlistáját a fiókjához, és győződjön meg arról, hogy a megfelelő házirend-konfigurációt az Azure Cosmos DB-fiók van hozzárendelve. 
+Gépek, amelyek nem szerepelnek az engedélyezési listához, egy általános SDK-k használatával az Azure Cosmos DB-erőforrások elérésekor **403 Tiltott** válasz nincs további részletekkel. Ellenőrizze az engedélyezett IP-címlistáját a fiókjához, és győződjön meg arról, hogy a megfelelő házirend-konfigurációt az Azure Cosmos DB-fiók van hozzárendelve. 
 
 ### <a name="source-ips-in-blocked-requests"></a>Forrás IP-címek a blokkolt kérelmek
-Az Azure Cosmos DB-fiók diagnosztikai naplózás engedélyezése. Ezek a naplók megjelenítése az egyes kérések és válaszok. A 403-as visszatérési kód belsőleg naplózza a tűzfallal kapcsolatos üzenetet. Ezek az üzenetek szűrése, láthatja a forrás IP-címek a blokkolt kérelmek számára. Lásd: [diagnosztikai naplózás az Azure Cosmos DB](logging.md).
+Az Azure Cosmos DB-fiók diagnosztikai naplózás engedélyezése. Ezek a naplók megjelenítése az egyes kérések és válaszok. A 403-as visszatérési kód a tűzfallal kapcsolatos üzenetek naplózása. Ezek az üzenetek szűrése, láthatja a forrás IP-címek a blokkolt kérelmek számára. Lásd: [diagnosztikai naplózás az Azure Cosmos DB](logging.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Az Azure Cosmos DB-szolgáltatásvégponttal alhálózatból származó kérelmek engedélyezve
 Egy alhálózatot a virtuális hálózatban, amely rendelkezik a szolgáltatásvégpont engedélyezve van az Azure Cosmos DB érkező kéréseket küld az Azure Cosmos DB-fiókok a virtuális hálózatot és alhálózatot identitás. Ezek a kérelmek nem rendelkezik a nyilvános IP-címét a forrás, így az IP-szűrők utasítsa el azokat. Engedélyezi a hozzáférést az adott alhálózatok a virtuális hálózatok, adjon hozzá egy hozzáférés-vezérlési lista leírt módon [konfigurálása virtuális hálózat és alhálózat-alapú hozzáférés az Azure Cosmos DB-fiók](how-to-configure-vnet-service-endpoint.md). A alkalmazni tűzfalszabályok esetében akár 15 percet is igénybe vehet.

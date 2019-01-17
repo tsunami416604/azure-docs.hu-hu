@@ -8,12 +8,12 @@ ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 07323f1b0541555ef71919e026ecaf2494056dad
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ec646ad1e9e1330a7e0b3f3f0576cee9d58c08e1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406498"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353260"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Az Azure Data Catalog bevezetésének módszere és folyamata
 Ez a cikk segít bevezetni az **Azure Data Catalog** szolgáltatást a szervezetében. Az **Azure Data Catalog** sikeres bevezetéséhez három kulcsfontosságú dologra kell összpontosítani: a stratégiai célok kitűzésére, a fő üzleti alkalmazási esetek azonosítására és egy kísérleti projekt kiválasztására.
@@ -66,7 +66,7 @@ Néhány tipp az alkalmazási helyzetek azonosításához:
 * **Határozza meg a csapat céljait** – Hogyan teljesíti a csapat a kitűzött célokat? Ekkor még ne a Data Catalog szolgáltatásra koncentráljon, hiszen ezen a ponton még objektívnek kell lennie. Ne feledje, az üzleti eredmények számítanak, nem a technológia.
 * **Határozza meg az üzleti problémát** – Milyen problémákkal néz szembe a csapat az adategységek megtalálását és megismerését illetően? Előfordulhat például, hogy a fontos adatforrásokra vonatkozó információk egy hálózati mappában vannak Excel-munkafüzetekben, amelyeket a csapat csak hosszas kereséssel talál meg.
 * **Vegye figyelembe, hogyan viszonyul a csapat a változásokhoz** – A bevezetés támasztotta kihívások sokszor nem egy új eszköz bevezetésében, hanem a változásnak való ellenállásban rejlenek. A csapat változásokhoz való hozzáállása fontos szerepet játszik a használati esetek azonosításában, mivel lehetséges, hogy a jelenlegi folyamat csak a „mindig így csináltuk” vagy a „ha nem romlott el, minek megjavítani?” indokok alapján van érvényben. Egy új eszköz vagy folyamat bevezetése mindig akkor a legegyszerűbb, ha az érintettek tisztában vannak a váltás nyújtotta előnyökkel, és elismerik a megoldandó problémák fontosságát.
-* **Összpontosítson az adategységekre** – A csapat előtt álló üzleti problémák ismertetésekor „át kell vágnia a bozóton”, és a vállalati adategységek hatékonyabb felhasználása szempontjából releváns dolgokra kell összpontosítania.
+* **Összpontosítson az adategységekre** – a csapat üzleti problémák ismertetésekor "vágnia a bozóton" kell, és mi az a vállalati adategységek hatékonyabb kihasználva.
 
 Néhány példa a Data Catalog alkalmazási helyzeteire:
 

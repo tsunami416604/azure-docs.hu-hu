@@ -1,11 +1,11 @@
 ---
-title: -Microsoft fenyegetések modellezése eszköz - Azure fenyegetések |} Microsoft Docs
-description: A Microsoft fenyegetések modellezése eszköz fenyegetés kategória lapján kategóriák tartalmazó összes elérhetővé tett jönnek létre, fenyegetéseket.
+title: Észlelt – Microsoft Threat Modeling Tool – Azure |} A Microsoft Docs
+description: A Microsoft Threat Modeling Tool Threat kategória lapon kategóriák tartalmazó összes elérhetővé tett jönnek létre a fenyegetéseket.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 704f9995828866d4d2e4969e3aa922ed1e23c4ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23867898"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359034"
 ---
-# <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft fenyegetések modellezése eszköz fenyegetések
+# <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool fenyegetések
 
-A fenyegetések modellezése eszköz a Microsoft biztonsági fejlesztési életciklus (SDL) alapeleme. Lehetővé teszi a szoftverek fejlesztők azonosítása és potenciális biztonsági problémákat korai, amelyek viszonylag egyszerű és költséghatékony megoldásához. Emiatt nagy mértékben csökkenti a fejlesztési költségek. Is azt használható az eszköz szakértőivel nem biztonsági szem előtt, könnyítve modellezni az összes létrehozására, illetve elemzése fenyegetés modellek világos útmutatást megadásával.
+A Threat Modeling Tool a Microsoft biztonsági fejlesztési életciklus (SDL) alapeleme. Azonosíthatja és korai, csökkentheti a potenciális biztonsági problémákat, amelyek viszonylag egyszerű és költséghatékony oldja meg a szoftver tervezők lehetővé teszi. Ennek eredményeképpen jelentősen csökkenti a fejlődés a teljes költség. Ezenkívül alakítottuk ki az eszköz nem biztonsági szakértői szem előtt, könnyíti threat modellezési minden fejlesztő számára világos útmutatóval szolgál azáltal, hogy létrehozásával és enyhítési elemzése.
 
-> Látogasson el a  **[fenyegetések modellezése eszköz](./azure-security-threat-modeling-tool.md)**  való kezdjen neki még ma!
+> Látogasson el a **[Threat Modeling Tool](./azure-security-threat-modeling-tool.md)** és vágjon bele most!
 
-A fenyegetések modellezése eszköz segít választ bizonyos kaphat, például az alábbi megfelelően:
+A Threat Modeling Tool segítségével bizonyos kérdésre, például az alábbiak egyikével:
 
-* Hogyan lehet módosítani egy támadó a hitelesítési adatok?
-* Mi az a hatás, ha egy támadó tudja olvasni a felhasználói profil adatait?
-* Mi történik, ha nincs hozzáférése a felhasználói profil adatbázis?
+* Hogyan módosíthatja a hitelesítési adatokat a támadó?
+* Mi a hatás, ha egy támadó tudja olvasni a felhasználói profil adatait?
+* Mi történik, ha a hozzáférés megtagadva a felhasználói profil adatbázis?
 
 ## <a name="stride-model"></a>Modell STRIDE
 
-Jobb súgót hegyes kérdéseket az ilyen típusú megfogalmazásához, Microsoft használja a STRIDE modell, amely különböző típusú fenyegetések kategorizálja és egyszerűbbé teszi az általános biztonsági beszélgetéseket.
+Jobb súgó az ilyen típusú hegyes kérdések megfogalmazása, a Microsoft a STRIDE modellt, amely kategorizálja a különböző típusú fenyegetéseket, és egyszerűbbé teszi az általános biztonsági-beszélgetések használja.
 
 | Kategória | Leírás |
 | -------- | ----------- |
-| **-Címek hamisítását** | Magában foglalja a érvénytelenül elérése és egy másik felhasználói hitelesítési adatok, például felhasználónév és jelszó használata |
-| **Illetéktelen módosítása** | Magában foglalja az adatok rosszindulatú módosítását. Ilyen például a jogosulatlan végzett módosításokat állandó, többek között, amelyek azt tranzakciós két számítógép között egy nyitott hálózatokon, például az interneten keresztül egy adatbázist, és vegye figyelembe a módosítást az adatok használatban |
-| **Megtagadás** | Felhasználók, akik megtagadja egy művelet végrehajtása nélkül más felek számára bármely olyan módon, ellenkező esetben igazolásához társított – például a felhasználó szabálytalan műveletet hajt egy rendszer, amely nem rendelkezik a képes nyomon követni a tiltott operatív. A nem megtagadás számláló repudiation fenyegetések rendszert jelenti. A felhasználó, aki egy elemet a későbbi szoftvervásárlások Előfordulhat például, a cikk megérkezésekor aláírásához. A szállító aláírt fogadását módon használhatja, hogy a felhasználó kapta meg a csomag tanúsítás |
-| **Információk felfedése** | Magában foglalja a elérhetővé tegyék az egyéni felhasználók számára, aki nem jogosult az elérésére elvileg információkat – például a felhasználók lehetőségét, amelyet nem kaptak hozzáférést a fájl olvasásához, vagy olvassa el az adatokat átvitel közben két számítógép között egy behatoló képességét |
-| **Szolgáltatásmegtagadás** | Szolgáltatásmegtagadási (DoS-) támadások szolgáltatás megtagadása érvényes felhasználók – például azáltal, hogy a webkiszolgáló, átmenetileg nem érhető el vagy nem használható. Meg kell védeni ellen DoS fenyegető veszélyek egyszerűen rendelkezésre állására, és a megbízhatóság javításához bizonyos típusú |
-| **Jogok kiterjesztése** | Egy nem rendszerjogosultságú felhasználói privilegizált hozzáférést kap, és ezáltal a megfelelő hozzáférési jogosultsággal hibát okoz, vagy szüntesse meg a teljes rendszer rendelkezik. Jogosultság fenyegetések illetéktelen közé tartoznak az ilyen helyzetek, amelyben a támadó rendelkezik hatékonyan követhessék minden rendszer védelmekkel és a megbízható rendszert illeti, valóban veszélyes helyzet részét képezik |
+| **Címek hamisítása** | Magában foglalja a jogosulatlan hozzáférés és a egy másik felhasználói hitelesítési adatok, például a felhasználónév és jelszó használata |
+| **Illetéktelen módosítása** | Magában foglalja az adatok rosszindulatú módosítását. Példák az illetéktelen módosítások állandó adatait, például, amely a nyílt hálózaton, például az interneten két számítógép között biztosítani egy adatbázis és az adatok az megváltoztatására tárolt |
+| **Repudiation** | Hozzárendelt felhasználók, akik a megtagadási művelet végrehajtása nélkül más felek kellene bármilyen módon igazolásához ellenkező esetben – például egy felhasználó végez, amely lehetővé teszi a tiltott műveletek nyomon követése nem rendelkezik rendszer szabálytalan műveletet. Letagadhatatlanság jelenti, hogy a számláló letagadhatóság fenyegetések. A felhasználó, aki vásárol egy elem Előfordulhat például, az elem megérkezésekor aláírásához. A szállító használhatja aláírt fogadását, hogy a felhasználó kapott-e a csomag bizonyítékaként |
+| **Információk felfedése** | Magában foglalja a kitettség feltételezhetően nem férhetnek hozzá, akik információit – például a felhasználók képessége beolvasni egy fájlt, amely nem adtak hozzá, vagy egy esetleges képességét olvassa el a két számítógép között átvitt adatok |
+| **Szolgáltatásmegtagadás** | Szolgáltatásmegtagadási (DoS-) támadásokat szolgáltatás letiltása érvényes felhasználóknak – például azáltal, hogy a webkiszolgáló, átmenetileg nem érhető el vagy használhatatlanná válik. Bizonyos típusú, egyszerűen a rendszer rendelkezésre állásának és megbízhatóságának javítása érdekében szolgáltatásmegtagadási fenyegetések elleni védelmét kell beállítani |
+| **Jogok kiterjesztése** | Egy nem rendszerjogosultságú felhasználói emelt szintű hozzáférést kap, és ezáltal a megfelelő hozzáférési jogosultsággal veszélyezteti, vagy szüntesse meg a teljes rendszer rendelkezik. Jogosultságszint-emelés jogosultság fenyegetések, amelyben a támadó rendelkezik hatékonyan követhessék összes rendszer védelem ilyen helyzetek közé tartozik, és megbízható magának a rendszernek, valóban egy vészhelyzetet részévé válik |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Folytassa a  **[fenyegetések modellezése eszköz azok mérséklési](./azure-security-threat-modeling-tool-mitigations.md)**  további Azure-ral ezek a fenyegetések mérséklésére vonatkozó különböző módszereit.
+Lépjen tovább a **[Threat Modeling eszköz megoldások](./azure-security-threat-modeling-tool-mitigations.md)** , csökkentheti a fenyegetéseket az Azure-ral különböző módjait.

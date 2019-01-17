@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1d977631b9975f717d60afff6f1b303fdd4039ff
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328817"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358694"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (Resource Manager)
 
@@ -37,6 +37,10 @@ A helyszíni gépek az SQL Server futtatja, van-e [lépések a helyszíni SQL Se
 Ez a funkció engedélyezve van, amikor szolgáltatás automatikusan telepíti az SQL Server-összekötő, konfigurálja az EKM-szolgáltató Azure Key Vault elérése érdekében, és létrehozza a hitelesítő adatokat, ezáltal lehetővé teszi a hozzáférést a tárolóhoz. A korábban említett helyszíni dokumentáció lépéseit nézett, láthatja, hogy ez a funkció automatizálja a 2. és 3. Továbbra is kell manuálisan egyedül, ha a key vaulttal és a kulcsokat. Itt az SQL virtuális gép teljes beállítása automatizált. Ez a funkció a telepítés befejezését követően megkezdheti az adatbázisok vagy a biztonsági mentések titkosításához, ahogy azt szokásosan tenné a T-SQL utasításokkal hajthat végre.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
+
+  >[!NOTE]
+  > EKM-szolgáltató 1.0.4.0 verziója telepítve van az SQL Server rendszerű virtuális gép keresztül a [SQL IaaS-bővítményt](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). Az SQL IaaS-bővítmény frissítése nem fogja frissíteni a szolgáltató verziója. Adjon figyelembe véve, manuálisan frissíti az EKM-szolgáltató verziója, szükség (Ha például egy SQL felügyelt példányába történő migrálás).
+
 
 ## <a name="enabling-and-configuring-akv-integration"></a>Engedélyezése és konfigurálása az AKV-integráció
 Üzembe helyezés során az AKV-integráció engedélyezése, vagy konfigurálja a meglévő virtuális gépekhez.

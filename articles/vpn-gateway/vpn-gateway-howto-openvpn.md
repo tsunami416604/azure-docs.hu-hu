@@ -1,18 +1,18 @@
 ---
-title: 'Azure VPN Gateway OpenVPN konfigurálása: PowerShell |} A Microsoft Docs'
+title: 'Hogyan OpenVPN konfigurálása Azure VPN Gateway átjárón: PowerShell| Microsoft Docs'
 description: Az Azure VPN Gateway OpenVPN konfigurálásának lépései
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 01/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 958f4f46ec6ba407df7c739b7c62aa1489458485
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1dad960b0877cddf3be9afc01e3e687ebe4702c0
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408276"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357827"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>OpenVPN konfigurálása az Azure pont – hely VPN Gateway (előzetes verzió)
 
@@ -21,7 +21,7 @@ Ez a cikk segít az Azure VPN Gateway OpenVPN beállítása. A cikk feltételezi
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register"></a>Ez a funkció regisztrálása
+## <a name="register"></a>A funkció regisztrálása
 
 Kattintson a **TryIt** az ezeket a lépéseket Azure Cloud Shell használatával könnyedén Ez a funkció regisztrálása.
 
@@ -29,7 +29,7 @@ Kattintson a **TryIt** az ezeket a lépéseket Azure Cloud Shell használatával
 >Ha ez a funkció nem regisztrál, nem kell tudni használni azt.
 >
 
-Kattintás után **TryIt** az Azure Cloud Shell megnyitásához másolja és illessze be a következő parancsokat:
+Miután a **Kipróbálás** gombra kattintva megnyílik az Azure Cloud Shell, másolja és illessze be a következő parancsokat:
 
 ```azurepowershell-interactive
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
@@ -39,7 +39,7 @@ Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureNam
 Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
-Miután regisztrált, regisztrálja újra az előfizetést a Microsoft.Network névtérbe állapota a szolgáltatást.
+Amikor a funkció már regisztráltként jelenik meg, regisztrálja újra az előfizetést a Microsoft.Network névtérben.
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
@@ -47,7 +47,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="vnet"></a>1. Pont – hely VPN létrehozása
 
-Ha még nem rendelkezik egy működő pont – hely környezetben, útmutatást követve hozzon létre egyet. Lásd: [hozzon létre egy pont – hely VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) létrehozása és pont – hely VPN-átjáró konfigurálása az Azure natív tanúsítványalapú hitelesítésének.
+Ha még nem rendelkezik egy működő pont – hely környezetben, útmutatást követve hozzon létre egyet. Lásd: [hozzon létre egy pont – hely VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) létrehozása és pont – hely VPN-átjáró konfigurálása az Azure natív tanúsítványalapú hitelesítésének. Vegye figyelembe, hogy az alapszintű Termékváltozat az IKEv2 pont – hely esetén nem támogatott.
 
 ## <a name="cmdlets"></a>2. PowerShell-parancsmagok telepítése
 

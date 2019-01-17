@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544583"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354450"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB tarifacsomagok
 
@@ -20,10 +20,10 @@ Létrehozhat egy Azure Database for MariaDB-kiszolgáló a másik három tarifac
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 5 |Gen 5 | Gen 5 |
-| Virtuális magok | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
+| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Memória / virtuális mag | 2 GB | 5 GB | 10 GB |
 | Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
-| Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági másolatainak megőrzési ideje | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
 Válasszon egy tarifacsomagot, használja az alábbi táblázat kiindulási pontként.
@@ -46,15 +46,14 @@ A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azu
 
 |    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
 | Növekmény tárméret | 1 GB | 1 GB | 1 GB |
-| IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Maximális 6000 iops-érték | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Maximális 6000 iops-érték |
+| IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Max 6000 IOPS |
 
 Hozzáadhat további tárolókapacitás alatt és a kiszolgáló létrehozása után. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 
-Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni olyan tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék.
-<!--[storage limit, storage percentage, storage used, and IO percent](concepts-monitoring.md)-->
+Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni vannak [tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 
@@ -64,7 +63,7 @@ Mialatt a szolgáltatás csak olvashatóvá próbálja tenni a kiszolgálót, mi
 
 Azt javasoljuk, hogy beállította egy riasztás arra az esetre, ha a kiszolgáló tárhelyét hamarosan eléri a küszöbértéket a csak olvasható állapotba első elkerülése érdekében. 
 
-<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+További információkért lásd a dokumentációt [riasztást beállítása](howto-alert-metric.md).
 
 ## <a name="backup"></a>Backup
 

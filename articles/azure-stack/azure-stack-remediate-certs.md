@@ -15,18 +15,18 @@ ms.topic: get-started-article
 ms.date: 11/19/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 854ac9d4441170dd3ba180437fcd80b573df9450
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2024c4d8a251ad2066332a403db3d7f8c3dce975
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244562"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354110"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványokkal kapcsolatos gyakori hibák javítása
 
 Ebben a cikkben található információk segítségével megismerheti és az Azure Stack PKI-tanúsítványokkal kapcsolatos gyakori hibák elhárításához. Problémák deríthet fel, az Azure Stack készültségi ellenőrző eszköz használatakor [ellenőrzése az Azure Stack PKI-tanúsítványokat](azure-stack-validate-pki-certs.md). Az eszköz ellenőrzi, hogy a tanúsítványok nyilvános kulcsokra épülő infrastruktúra egy Azure Stack üzemelő példányához és az Azure Stack titkos rotációja követelményeinek, és naplózza az eredményeket egy [report.json fájl](azure-stack-validation-report.md).  
 
-## <a name="pfx-encryption"></a>PFX-titkosítás
+## <a name="pfx-encryption"></a>PFX Encryption
 
 **Hiba** -PFX-titkosítás nem TripleDES-SHA1.   
 
@@ -117,7 +117,7 @@ A következő előfeltételeknek kell teljesülnie a számítógépen, amelyen a
 1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítéséhez:
   
    ```powershell
-   Install-Module Microsoft.AzureStack.ReadinessChecker- Force
+   Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
 2. A PowerShell parancssorában futtassa a következő parancsmagot a PFX-jelszó beállítása. Cserélje le *PFXpassword* tényleges jelszót:
@@ -131,7 +131,7 @@ A következő előfeltételeknek kell teljesülnie a számítógépen, amelyen a
    - A `-ExportPFXPath`, adja meg a helyét és nevét, a PFX-fájlt az exportálás. A következő példa az elérési út `.\certificates\ssl_new.pfx`:
 
    ```powershell
-   Repair-AzsPfxCertificate -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`
+   Repair-AzsPfxCertificate -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx
    ```  
 
 4. Az eszköz befejezése után tekintse át a kimenet sikeres végrehajtás esetén:

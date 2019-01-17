@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 413a69f31125c6c8f18401bb997a490c0f99f948
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833924"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352087"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés egy Android-alkalmazás használatával
+# <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Jelentkezzen be az Azure Active Directory B2C egy Android-alkalmazás használatával
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Ezeknek a szabványoknak való integrálása az Azure Active Directory B2C szeretné bármilyen típusú kódtárat teszi lehetővé. Segítséget a könyvtárak használatához, az alábbihoz hasonló bemutató segítségével bemutatják, hogyan lehet csatlakozni a Microsoft identity platform 3. fél szalagtárak konfigurálása. Használó legtöbb kódtár [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) csatlakozhat a Microsoft Identity platform.
 
@@ -30,7 +30,7 @@ Ha csak most ismerkedik az OAuth2 vagy az OpenID Connect használatával, előfo
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
 
-Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne.
+Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
@@ -42,13 +42,11 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 
 ## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
 
-Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md), azaz az Azure AD működését szabályozó házirendjei. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és regisztrációs felhasználói folyamata. Szeretne létrehozni a felhasználói folyamat leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md), azaz az Azure AD működését szabályozó házirendjei. Az alkalmazás használatához a bejelentkezési és regisztrációs felhasználói folyamata. Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
 * Válassza ki a **megjelenítendő név** a felhasználói folyamat előfizetési attribútumaként.
 * Válassza ki a **megjelenítendő név** és **Objektumazonosító** alkalmazásjogcímek minden felhasználó flow-ban. Kiválaszthat egyéb jogcímeket is.
 * Másolás a **neve** az egyes felhasználói folyamatok létrehozása után. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A felhasználói interakciósorozat neve később szüksége lesz.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 A felhasználói folyamatok létrehozását követően készen áll az alkalmazás elkészítésére.
 
@@ -115,7 +113,7 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyező
+### <a name="authorizing"></a>Engedélyezés folyamatban
 
 Miután konfigurálása, vagy egy engedélyezési szolgáltatás konfigurációjának lekérése, egy engedélyezési kérést lehet létrehozni. A kérelem létrehozásához szüksége lesz a következő információkat:
 
@@ -134,6 +132,4 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 ```
 
 Tekintse meg a [az AppAuth útmutató](https://openid.github.io/AppAuth-Android/) való fejezze be a folyamatot. Ha a használatának gyors megkezdése egy működő alkalmazást van szüksége, tekintse meg az [ebben a mintában](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Kövesse a [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) , adja meg a saját Azure AD B2C konfiguráció.
-
-Mindig tudjuk nyissa meg a vélemények és tanácsok! Ha ez a cikk a kérdése van, vagy javaslatai ezt a tartalmat, örömmel visszajelzését a lap alján. A szolgáltatással kapcsolatos kéréseit, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

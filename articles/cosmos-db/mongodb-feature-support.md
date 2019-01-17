@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7bf8258524b0b5e73c1a499fb6d3578098a0821e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08638f0b55c84a6b0e42d3782246ef5b2ce833f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039163"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359068"
 ---
 # <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Használja az Azure Cosmos DB API a MongoDB támogatására, a MongoDB funkcióihoz és szintaxisához
 
@@ -20,13 +20,13 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 API-val az Azure Cosmos DB MongoDB-hez, a MongoDB jártas, az összes, a nagyvállalati funkciókat, Cosmos DB által biztosított előnyöket élvezheti: [globális terjesztés](distribute-data-globally.md), [automatikus árnyalását](partition-data.md), rendelkezésre állás és a késés garanciákat, automatikus indexelése minden mező, a titkosítás a rest, a biztonsági mentések és még sok más.
 
-## <a name="mongodb-protocol-support"></a>A MongoDB protokoll támogatása
+## <a name="protocol-support"></a>Protokolltámogatás
 
-Az Azure Cosmos DB MongoDB API-kompatibilis MongoDB-kiszolgáló verziójával **3.2-es** alapértelmezés szerint. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. A MongoDB **3.4**-es verziójának új funkciói és lekérdezési operátorai jelenleg előzetes verzióként érhetők el. Lehet, hogy minden ügyfél-illesztőprogram, amely együttműködik a ezeket a protokollokat tud csatlakozni az Azure Cosmos DB API a mongodb-hez.
+Az Azure Cosmos DB MongoDB API a MongoDB-kiszolgáló verziója kompatibilis **3.2-es** alapértelmezés szerint. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. A MongoDB **3.4**-es verziójának új funkciói és lekérdezési operátorai jelenleg előzetes verzióként érhetők el. Lehet, hogy minden ügyfél-illesztőprogram, amely együttműködik a ezeket a protokollokat tud csatlakozni az Azure Cosmos DB API a mongodb-hez.
 
 A [MongoDB összesítési folyamata](#aggregation-pipeline) jelenleg szintén elérhető egy különálló előzetes verzióban.
 
-## <a name="mongodb-query-language-support"></a>A MongoDB lekérdezési nyelv támogatása
+## <a name="query-language-support"></a>Lekérdezési nyelvi támogatás
 
 Az Azure Cosmos DB MongoDB API-teljes körű támogatást nyújt a MongoDB lekérdezési nyelvi szerkezeteket. Alább egy részletes listát találhat a jelenleg támogatott műveletekről, operátorokról, fázisokról, parancsokról és beállításokról.
 

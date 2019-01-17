@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025453"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358711"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>A másolási tevékenység séma hozzárendelése
 Ez a cikk bemutatja, hogyan történik az Azure Data Factory másolási tevékenység a séma-hozzárendelés és a forrásadatok a fogadó-adatok adattípus-leképezés végrehajtása közben az adatok másolását.
@@ -142,7 +142,7 @@ Ha szintaxisát használja `"columnMappings": "UserId: MyUserId, Group: MyGroup,
 
 ## <a name="schema-mapping"></a>Séma-hozzárendelés
 
-Séma-hozzárendelés érvényes, ha a hierarchikus alakú adatok és az adatok táblázatos alakú között másolhatja az adatokat pl. másolása a mongodb-hez, illetve a REST szövegfájl és másolás az SQL Azure Cosmos DB MongoDB API. A következő tulajdonságokat a másolási tevékenység támogatott `translator` szakaszban:
+Séma-hozzárendelés érvényes, ha a hierarchikus alakú és táblázatos alakú adatait, például a Másolás szövegfájlt a mongodb-hez, illetve a REST és másolás az SQL Azure Cosmos DB MongoDB API-közötti másolást. A következő tulajdonságokat a másolási tevékenység támogatott `translator` szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

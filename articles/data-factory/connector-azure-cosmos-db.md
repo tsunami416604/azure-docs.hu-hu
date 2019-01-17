@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0d66c7d714aeac28a46adb31fdb73b4781ac81f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024722"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359255"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB (az SQL API-t) az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-azure-documentdb-connector.md)
 > * [Aktuális verzió](connector-azure-cosmos-db.md)
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban másolhat adatokat, és az Azure Cosmos DB (az SQL API-t). A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
 
 >[!NOTE]
->Az összekötő podporují másolja az adatokat és a Cosmos DB SQL API. MongoDB API-t, tekintse meg a [Cosmos DB MongoDB API-összekötő](connector-azure-cosmos-db-mongodb-api.md). Más API-típusok most már nem támogatottak.
+>Az összekötő podporují másolja az adatokat és a Cosmos DB SQL API. A mongodb-hez, tekintse meg [Azure Cosmos DB MongoDB API-összekötő](connector-azure-cosmos-db-mongodb-api.md). Más API-típusok most már nem támogatottak.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 

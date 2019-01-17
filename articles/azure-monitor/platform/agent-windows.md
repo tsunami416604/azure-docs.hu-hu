@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 1d4760eb6490ce458e699ad9bc59a57cb473ef6d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8ccd2bfe78ca7b0fabac2b8c9bfd6ba002782a41
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104122"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352806"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -100,7 +100,7 @@ Az alábbi táblázat a Log Analytics az ügynök, beleértve az Automation DSC 
 |OPINSIGHTS_PROXY_USERNAME               | Hitelesített proxyt hozzáféréséhez használt felhasználónév |
 |OPINSIGHTS_PROXY_PASSWORD               | Hitelesített proxyt elérésére szolgáló jelszó |
 
-1. Egy rendszergazda jogú parancssorból futtassa az ügynök telepítési fájljait, kibontásához `MMASetup-<platform>.exe /c` és a rendszer felkéri a elérési útján a fájlok kibontásához.  Másik lehetőségként megadhatja az elérési út az argumentumoknak `MMASetup-<platform>.exe /c /t:<Path>`.  
+1. Egy rendszergazda jogú parancssorból futtassa az ügynök telepítési fájljait, kibontásához `MMASetup-<platform>.exe /c` és a rendszer felkéri a elérési útján a fájlok kibontásához.  Másik lehetőségként megadhatja az elérési út az argumentumoknak `MMASetup-<platform>.exe /c /t:<Full Path>`.  
 2. Csendes telepítse az ügynököt, és konfigurálja azt, hogy az Azure kereskedelmi felhőben munkaterület mappájában kibontotta a telepítési fájlokat, írja be: 
    
      ```dos

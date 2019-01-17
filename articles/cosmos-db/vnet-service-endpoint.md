@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 148a83cb57675e2e8bda8147041987180df998f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037395"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358728"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Azure Cosmos DB-erőforrások eléréséhez a virtuális hálózatok
 
 Beállíthatja, hogy engedélyezze a hozzáférést csak a megadott alhálózat virtuális hálózat (VNET) az Azure Cosmos fiókot. Engedélyezésével [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) elérni az Azure Cosmos DB az alhálózat egy virtuális hálózaton belül, az adott alhálózatról származó forgalmat el kell küldeni Azure Cosmos DB és az alhálózat és virtuális hálózat azonosítóját. Az Azure Cosmos DB-szolgáltatásvégpont engedélyezése után az Azure Cosmos-fiók hozzáadásával korlátozhatja az alhálózathoz való hozzáférés.
 
-Alapértelmezés szerint az Azure Cosmos-fiók érhető el bármilyen forrásból származó ha érvényes engedélyezési jogkivonat a kérelemben. Amikor hozzáad egy vagy több Vnetek alhálózatainak, csak érkező kérések ezekhez az alhálózatokhoz érvényes választ fog kapni. Bármilyen más forrásból érkező kérelmek esetén 404-es (nem található) választ fog kapni. 
+Alapértelmezés szerint az Azure Cosmos-fiók érhető el bármilyen forrásból származó ha érvényes engedélyezési jogkivonat a kérelemben. Amikor hozzáad egy vagy több Vnetek alhálózatainak, csak érkező kérések ezekhez az alhálózatokhoz érvényes választ fog kapni. Bármilyen más forrásból érkező kérelmek esetén kapnak a 403-as (tiltott) választ. 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -34,7 +34,7 @@ Egy alhálózatról korlátozható az Azure Cosmos-fiókjához való hozzáfér�
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Elutasítják virtuális hálózati hozzáférés-vezérlési listák és IP-tűzfalon, kérések vagy a kapcsolatot? 
 
-IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok bővül, csak az engedélyezett források get adható érvényes válaszok érkező kérelmeket. Más kérelmek azért lettek elutasítva a 404-es (nem található). Fontos megkülönböztetni a tűzfal az Azure Cosmos-fiók egy kapcsolat adatbázisszintű tűzfalszabály. A forrás továbbra is lehet kapcsolódni a szolgáltatáshoz, és maguk a kapcsolatok nem elutasították.
+IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok bővül, csak az engedélyezett források get adható érvényes válaszok érkező kérelmeket. Más kérelmeket a rendszer elutasítja a 403 (tiltott). Fontos megkülönböztetni a tűzfal az Azure Cosmos-fiók egy kapcsolat adatbázisszintű tűzfalszabály. A forrás továbbra is lehet kapcsolódni a szolgáltatáshoz, és maguk a kapcsolatok nem elutasították.
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Saját kérések a blokkolja a I engedélyezésekor az alhálózaton az Azure Cosmos DB-service-végpont elindult. Mi történt?
 

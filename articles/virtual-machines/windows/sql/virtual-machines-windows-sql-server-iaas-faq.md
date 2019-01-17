@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339399"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358983"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
@@ -49,13 +49,19 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
    Igen. Az Azure csak egy kép / fő verziójú és kiadású tart fenn. Például amikor egy új SQL Server szervizcsomag megjelenik, az Azure ad hozzá egy új rendszerképet a katalógusban, hogy a service Pack. Az SQL Server-lemezképet az előző service Pack azonnal törlődik az Azure Portalról. Azonban továbbra is elérhető, a következő három hónapban a Powershellből kiépítéshez. Három hónap elteltével az előző képen a service pack már nem érhető el. Ez a házirend eltávolítása is alkalmazni, ha egy SQL Server-verzió nem támogatott válik, amikor az életciklusa végére ér.
 
+
+1. **Az is, amelyek nem láthatók az Azure Portalon az SQL Server régebbi lemezképének?**
+
+   Igen, a PowerShell használatával. SQL Server virtuális gépek PowerShell-lel központi telepítésével kapcsolatos további információkért lásd: [hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell-lel](virtual-machines-windows-ps-sql-create.md).
+
 1. **Lehetséges egy VHD-lemezképet készíteni egy SQL Server virtuális Gépet?**
 
    Igen, de van néhány szempontot. Ha a virtuális merevlemez telepít egy új virtuális géphez az Azure-ban, ezt megteheti ge nem az SQL Server-konfigurációs szakasz a portálon. Ezután a Powershellen keresztül az SQL Server-konfigurációs beállításokat kell kezelni. Emellett meg kell fizetni a díj az SQL virtuális gép a lemezkép eredetileg alapján. Ez igaz, akkor is, ha eltávolítja az SQL Server virtuális merevlemez üzembe helyezése előtt. 
 
 1. **Az állítható be a virtuálisgép-katalógus (a + az SQL Server 2012 például Windows 2008 R2) nem látható konfigurációk?**
 
-   Nem. A virtuális gép katalógus-lemezképek, amelyek tartalmazzák az SQL Server esetében jelöljön ki egy megadott rendszerképet.
+   Nem. A virtuális gép katalógus-lemezképek, amelyek tartalmazzák az SQL Server esetében jelöljön ki egy megadott rendszerképet az Azure Portalon keresztül, vagy keresztül [PowerShell](virtual-machines-windows-ps-sql-create.md). 
+
 
 ## <a name="creation"></a>Létrehozás
 
@@ -102,11 +108,11 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
  
    Igen. Minden ügyfél tudnak az új SQL virtuális gép erőforrás-szolgáltató regisztrálásához. Azonban csak a frissítési garancia-juttatás rendelkező ügyfelek is aktiválhatja a [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (vagy BYOL) SQL Server virtuális gépen. 
 
-1. **Mi történik az _\*Microsoft.SqlVirtualMachine_\* erőforrások áthelyezésekor a VM-erőforrás vagy kihagyott?** 
+1. **Mi történik az _* Microsoft.SqlVirtualMachine_* erőforrások áthelyezésekor a VM-erőforrás vagy kihagyott?** 
 
    Ha a Microsoft.Compute/VirtualMachine erőforrás eldobott vagy áthelyezték, akkor a társított Microsoft.SqlVirtualMachine erőforrás a művelet aszinkron módon replikálja értesítést kap.
 
-1. **Mi történik a virtuális géphez, ha az _\*Microsoft.SqlVirtualMachine_\* erőforrás már nincs használatban?**
+1. **Mi történik a virtuális géphez, ha az _* Microsoft.SqlVirtualMachine_* erőforrás már nincs használatban?**
 
    Amikor a rendszer eldobja a Microsoft.SqlVirtualMachine erőforrás Microsoft.Compute/VirtualMachine erőforrás nem változik. Azonban a licencelési módosítások alapértelmezés szerint a kép eredeti forrást. 
 

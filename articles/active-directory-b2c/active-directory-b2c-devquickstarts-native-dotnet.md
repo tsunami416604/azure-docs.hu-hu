@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fc32cf40266bdad1aa5365b30a27210ad735f299
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606182"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354382"
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: Windowsos asztali alkalmazás készítése
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Windowsos asztali alkalmazás készítése
 Az Azure Active Directory (Azure AD) B2C segítségével néhány egyszerű lépéssel az asztali alkalmazás hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ebből a cikkből megtudhatja, hogyan hozhat létre egy .NET Windows megjelenítési Alaprendszeri (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztrációt, bejelentkezést és profilkezelést. Az alkalmazás támogatni fogja a regisztrációs és bejelentkezési felhasználónév vagy e-mail használatával. Ez például a Facebook és a Google közösségi fiókok használatával is magában foglalja regisztráció és bejelentkezés támogatása.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
-Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és sok minden mást. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne ebben az útmutatóban.
+Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és sok minden mást. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne ebben az útmutatóban.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre. Ügyeljen arra, hogy:
@@ -31,16 +31,14 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre később még szüksége lesz.
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: regisztráció, bejelentkezés és profilszerkesztés. Kell hoznia egy szabályzatot az egyes típusok leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: regisztráció, bejelentkezés és profilszerkesztés. A szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * Az identitásszolgáltatók paneljén válassza a **User ID sign-up** (Regisztrálás felhasználói azonosítóval) vagy az **Email sign-up** (Regisztrálás e-mail címmel) lehetőséget.
 * A regisztrációs házirendben válassza ki a **megjelenítendő nevet** és az egyéb regisztrációs attribútumokat.
 * Alkalmazási jogcímnek minden házirend esetén válassza ki a **megjelenítendő nevet** és az **objektumazonosítót**. Kiválaszthat egyéb jogcímeket is.
 * Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`. A házirendek nevére később még szüksége lesz.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-A három házirend sikeres létrehozása után készen áll az alkalmazás elkészítésére.
+Miután sikeresen létrehozta a szabályzatokat, készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-code"></a>A kód letöltése
 Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet). A minta menet közbeni létrehozásához [letöltheti a projektvázát tartalmazó .zip-fájlt](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip). A vázprojektet klónozhatja is:

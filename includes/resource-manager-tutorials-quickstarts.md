@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/05/2018
+ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729339"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54334366"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Rövid útmutatók és oktatóanyagok
 
@@ -48,5 +48,6 @@ Az alábbi rövid útmutatók és oktatóanyagok segítségével megismerheti, h
     |[SQL-bővítmények telepítése](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|Üzembe helyezés utáni feladatok végrehajtása a bővítmények segítségével. Az oktatóanyagban egy ügyfél szkriptbővítmény webalkalmazás-kiszolgáló telepítése a virtuális gép üzembe helyezése. |
     |[Biztonságos összetevők](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|Tegye biztonságossá a telepítés befejezéséhez szükséges összetevőket. Az oktatóanyagban elsajátíthatja, hogyan védheti meg az SQL telepítése bővítmények az oktatóanyagban használt összetevő. |
     |[Biztonságos üzembehelyezési gyakorlatok](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Az Azure Deployment Manager használata. |
+    |[Oktatóanyag: Resource Manager-sablon üzembe helyezés hibaelhárítása](../articles/azure-resource-manager/resource-manager-tutorial-troubleshoot.md)|Sablon üzembe helyezés hibáinak elhárítása.|
 
 Ezekben az oktatóanyagokban használható önállóan, vagy egy Resource Manager sablon fejlesztési főbb fogalmakat további.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 84e56610cb0f9090d8cacc461a73bf41d05f2251
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033485"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358113"
 ---
 # <a name="ip-firewall-for-azure-cosmos-accounts"></a>IP-tűzfal az Azure Cosmos-fiókok
 
@@ -19,7 +19,7 @@ A fiókban tárolt adatok védelmében, az Azure Cosmos DB támogatja, amelyek m
 
 ## <a id="ip-access-control-overview"></a>IP hozzáférés-vezérlés áttekintése
 
-Alapértelmezés szerint az Azure Cosmos-fiók internetről érhető el, mindaddig, amíg a kérelem érvényes engedélyezési jogkivonat kíséri. IP csoportházirend-alapú hozzáférés-vezérlés konfigurálása, a felhasználónak meg kell adni a készlet IP-cím vagy IP-címtartományokat (Classless Inter-Domain Routing) CIDR formátumban része, mint az engedélyezett listára ügyfél IP-címek egy adott Azure Cosmos-fiók eléréséhez. Ez a konfiguráció alkalmazása után az engedélyezési listán szereplő gépekről származó kérelmeknél 404-es (nem található) választ kapnak. IP-tűzfal használata esetén ajánlott ahhoz, hogy az Azure portál hozzáférjen a fiókjához. Hozzáférés megadása kötelező való használatának engedélyezése az adatkezelőt, valamint lekérni a metrikák a fiók, amely az Azure Portalon a helyrendszerszerepkörökre.
+Alapértelmezés szerint az Azure Cosmos-fiók internetről érhető el, mindaddig, amíg a kérelem érvényes engedélyezési jogkivonat kíséri. IP csoportházirend-alapú hozzáférés-vezérlés konfigurálása, a felhasználónak meg kell adni a készlet IP-cím vagy IP-címtartományokat (Classless Inter-Domain Routing) CIDR formátumban része, mint az engedélyezett listára ügyfél IP-címek egy adott Azure Cosmos-fiók eléréséhez. Ez a konfiguráció alkalmazása után minden olyan engedélyezési listán szereplő gépekről származó kérelmek kapnak a 403-as (tiltott) választ. IP-tűzfal használata esetén ajánlott ahhoz, hogy az Azure portál hozzáférjen a fiókjához. Hozzáférés megadása kötelező való használatának engedélyezése az adatkezelőt, valamint lekérni a metrikák a fiók, amely az Azure Portalon a helyrendszerszerepkörökre.
 
 IP-alapú tűzfal-alhálózattal és virtuális hálózati hozzáférés-vezérlés kombinálhatók. Kombinálja őket, korlátozhatja a hozzáférést bármilyen forrásból, amely a nyilvános IP-címet és/vagy virtuális hálózaton belüli adott alhálózatokról. Ismerje meg az alhálózat és a VNET-alapú hozzáférés-vezérlés használatával kapcsolatos információkért tekintse meg a [hozzáférés az Azure Cosmos DB-erőforrások virtuális hálózatokról](vnet-service-endpoint.md).
 

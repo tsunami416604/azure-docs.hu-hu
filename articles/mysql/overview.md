@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.openlocfilehash: 9385ccf61f8cb8de0b3a459ac00c05b32d2630e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536882"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353328"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL-hez?
 Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft cloud alapján a [MySQL Community Edition](https://www.mysql.com/products/community/) adatbázismotor, 5.6-os és 5.7-es verziója. Azure Database for MySQL a következőket nyújtja:
@@ -47,7 +47,7 @@ Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 
 ## <a name="secure-your-data"></a>Az adatok védelme
 Az Azure adatbázis-szolgáltatások megbízható adatbiztonságát az adatok biztonságát, amelyek garantálják, Azure Database for MySQL, funkciókkal, amelyek korlátozzák a hozzáférést, inaktív adatok és a mozgásban lévő védheti meg és segítséget nyújtanak a tevékenység figyelése. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/trustcenter/security) talál információkat.
 
-Az Azure Database for MySQL-szolgáltatás tárolási titkosítást használ az inaktív adatok. Az adatok a biztonsági másolatokkal együtt titkosítva kerülnek a lemezekre (a motor által lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével). A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
+Az Azure Database for MySQL-szolgáltatás tárolási titkosítást használ az inaktív adatok, és megfelel a FIPS 140-2 szabványnak. Az adatok a biztonsági másolatokkal együtt titkosítva kerülnek a lemezekre (a motor által lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével). A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
 
 Alapértelmezés szerint az Azure Database for MySQL-szolgáltatás van konfigurálva, hogy kötelező legyen [SSL-kapcsolat biztonsága](./concepts-ssl-connection-security.md) az adatokat a mozgásban lévő a hálózaton keresztül. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
 

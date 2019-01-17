@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 42ed9091ff7ab8059ba253f62726b30899d6e697
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036054"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358558"
 ---
-# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Azure Data Box visszaküldése, majd az Azure-ba történő adatfeltöltés ellenőrzése
+# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box, és ellenőrizze az adatok feltöltése az Azure-bA
 
 Az oktatóanyagból megtudhatja, hogyan küldheti vissza az Azure Data Boxot, és ellenőrizheti az adatok az Azure-ba való feltöltését.
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt hozzákezd, győződjön meg arról, hogy elvégezte az [adatok az Azure Data Boxra történő másolását, majd azok ellenőrzését ismertető oktatóanyagot](data-box-deploy-copy-data.md).
+Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a [oktatóanyag: Adatok másolása az Azure Data Box, és ellenőrizze](data-box-deploy-copy-data.md).
 
 ## <a name="ship-data-box-back"></a>Data Box visszaküldése
 
@@ -37,9 +37,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy elvégezte az [adatok az Azur
 
     Ha az eszközt Európában postázza, az E-ink kijelző nem mutatja a fuvarlevélcímkét. Ehelyett a visszaküldési fuvarlevélcímkét a feladási fuvarlevélcímke alatti átlátszó zsebben találja. Távolítsa el a régi fuvarlevélcímkét, és győződjön meg arról, hogy a fuvarlevélcímke jól látható.
     
-3. Egyeztessen egy csomagfelvételi időpontot a UPS-szel, ha az eszközt az Egyesült Államokban szeretné visszaküldeni. Ha az eszközt Európán belül, DHL-lel szeretné visszaküldeni, látogasson el a DHL webhelyére, kérjen csomagfelvételt, és adja meg a légi fuvarlevél számát. Lépjen a DHL Express webhelyére, és válassza az **Online futárrendelés > Visszáru online megrendelése** lehetőséget. 
-
-    Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
+3. Ha az eszközök visszatérő, ütemezhet a UPS begyűjtést. Ütemezhet begyűjtést, hívja meg a helyi UPS (ország adott ingyenesen hívható telefonszám), vagy dobja el a Data Box, a legközelebbi gyűjtőhely ki.
 
 4. Miután a futár felvette és beolvasta a Data Boxot, a rendelés állapota a portálon **Szállítás alatt** állapotra módosul. A nyomkövetési azonosító is megjelenik.
 

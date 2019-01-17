@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 4a3c3f4b97da75d3e73f89866efe6f2fa4adeb65
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 127002dc59db6ab9940e4bc2a66678adecc33160
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043413"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354127"
 ---
 # <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Az Azure Cosmos DB: Hozhat létre egy teendőkezelő alkalmazás fejlesztése Xamarin használatával
 
@@ -200,7 +200,7 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
     }
     ```
 
-    Ismét felhívjuk figyelmét a létrehozott, és a `DocumentClient.DeleteDocumentAsync` függvénynek átadott egyedi dokumentum URI-ra.
+    Újra ne feledje, hogy az egyedi dokumentum URI létrehozott átadott a `DocumentClient.DeleteDocumentAsync` függvény.
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/14/2018
-ms.openlocfilehash: 775c9990c85feb3e9e180af6470e7c9a1aa124f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 318778a83c82b0ddb88f8bbd852442ab389fedb3
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808978"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352257"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
 
@@ -48,7 +48,7 @@ Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 
 ## <a name="secure-your-data"></a>Az adatok védelme
 Az Azure adatbázis-szolgáltatások megbízható adatbiztonságát az Azure Database for PostgreSQL olyan funkciói garantálják, amelyek korlátozzák a hozzáférést, védik a helyi és mozgó adatokat és hozzájárulnak a tevékenységek monitorozásához. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/overview/trusted-cloud/) talál információkat.
 
-Az Azure Database for PostgreSQL szolgáltatás tárolási titkosítást használ a helyi adatokhoz. Az adatok a biztonsági másolatokkal együtt titkosítva kerülnek a lemezekre (a motor által lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével). A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
+Az Azure Database for PostgreSQL szolgáltatás tárolási titkosítást használ az inaktív adatok, és megfelel a FIPS 140-2 szabványnak. Az adatok a biztonsági másolatokkal együtt titkosítva kerülnek a lemezekre (a motor által lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével). A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
 
 Alapértelmezés szerint az Azure Database for PostgreSQL szolgáltatás úgy van konfigurálva, hogy [SSL-kapcsolatbiztonságot](./concepts-ssl-connection-security.md) igényeljen a hálózatok között mozgó adatokhoz. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
 

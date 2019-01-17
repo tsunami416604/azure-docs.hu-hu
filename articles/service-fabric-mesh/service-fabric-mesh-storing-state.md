@@ -9,16 +9,16 @@ ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: ecdb36af786d96a5b343d11cd689642d59528445
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 81d9fc7babef7c1d14a0acc420d0c16c05b83215
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888529"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354331"
 ---
 # <a name="state-management-with-service-fabric"></a>A Service Fabric állapotkezelés
 
-A Service Fabric számos különböző lehetőség támogatja a állapot tárolásához. Az állapot minták és a Service Fabric fogalmi áttekintése: [Service Fabric fogalmak: állapot](/azure/service-fabric/service-fabric-concepts-state). Az összes ezek ugyanezek a fogalmak alkalmazhatók-e a szolgáltatások futnak, belül vagy kívül a Service Fabric-háló. 
+A Service Fabric számos különböző lehetőség támogatja a állapot tárolásához. Az állapot minták és a Service Fabric fogalmi áttekintése: [Service Fabric fogalmak: Állapot](/azure/service-fabric/service-fabric-concepts-state). Az összes ezek ugyanezek a fogalmak alkalmazhatók-e a szolgáltatások futnak, belül vagy kívül a Service Fabric-háló. 
 
 Service Fabric tervezhetők is egyszerűen üzembe helyezni egy új alkalmazást és csatlakoztathatja azt egy Azure-ban üzemeltetett meglévő adattár. Amellett, hogy minden olyan távoli adatbázis használata esetén többféle módon, attól függően, hogy a szolgáltatás kívánja-e a helyi vagy távoli tároló adatainak tárolásához. 
 
@@ -28,9 +28,9 @@ Tárolók gyakran győződjön meg arról, használja az ideiglenes lemezek. Ide
 
 ![Kötetek][image3]
 
-### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable kötet
+### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable kötet egy tárolóba helyi kötet csatlakoztatásához használt Docker kötet illesztőprogramot. Írások és olvasások: a helyi operations és gyors. Az adatok másodlagos csomópontot, magas rendelkezésre állásúvá tétele replikációja meg. Is a gyors feladatátvétel. Ha összeomlik, egy tároló, azt átadja a feladatokat egy csomópont, amely már rendelkezik egy másolatot az adatokról. Egy vonatkozó példáért lásd: [hogyan helyezhet üzembe egy alkalmazást a Service Fabric Reliable kötet.](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/counter)
+Service Fabric Reliable kötet egy tárolóba helyi kötet csatlakoztatásához használt Docker kötet illesztőprogramot. Írások és olvasások: a helyi operations és gyors. Az adatok másodlagos csomópontot, magas rendelkezésre állásúvá tétele replikációja meg. Is a gyors feladatátvétel. Ha összeomlik, egy tároló, azt átadja a feladatokat egy csomópont, amely már rendelkezik egy másolatot az adatokról. Egy vonatkozó példáért lásd: [hogyan helyezhet üzembe egy alkalmazást a Service Fabric Reliable kötet](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
 
 ### <a name="azure-files-volume"></a>Az Azure Files-kötet
 

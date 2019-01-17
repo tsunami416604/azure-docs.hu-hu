@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aaae119ec72a713adc2faa311dbcb6bd204035fd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a6e25bdbcec2a99e323ac7f426307dd49e50d76c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835089"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352427"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -84,7 +84,7 @@ A választható **RelyingParty** elem a következő elemeket tartalmazza:
 
 A `DefaultUserJourney` elem azt határozza meg egy hivatkozást, amely általában az alap- vagy bővítmények szabályzat van megadva a felhasználói interakciósorozat azonosítóját. Az alábbi példák bemutatják a megadott regisztrációs vagy bejelentkezési felhasználói interakciósorozat a **RelyingParty** elem:
 
-*B2C_1A_signup_signin* házirend:
+*B2C_1A_signup_signin* policy:
 
 ```XML
 <RelyingParty>
@@ -104,7 +104,7 @@ A **DefaultUserJourney** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| a referenceid megadása | Igen | A házirend a felhasználói út azonosítója. További információ megtekintéséhez [felhasználói utak](userjourneys.md) |
+| ReferenceId | Igen | A házirend a felhasználói út azonosítója. További információkért lásd: [felhasználói utak](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -112,13 +112,13 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Egyszeri bejelentkezés | 0:1 | Egyszeri bejelentkezés (SSO) munkamenet viselkedését egy felhasználói interakciósorozat hatókörét. |
+| SingleSignOn | 0:1 | Egyszeri bejelentkezés (SSO) munkamenet viselkedését egy felhasználói interakciósorozat hatókörét. |
 | SessionExpiryType |0:1 | A hitelesítési viselkedést, a munkamenet. A lehetséges értékek: `Rolling` vagy `Absolute`. A `Rolling` érték (alapértelmezett) azt jelzi, hogy a felhasználó bejelentkezve marad-e, amíg a felhasználó az alkalmazásban folyamatosan aktív. A `Absolute` érték azt jelzi, hogy hitelesítse magát újra, az alkalmazás munkamenet által megadott időszak után a felhasználónak kötelező élettartamát. |
 | SessionExpiryInSeconds | 0:1 | Az Azure AD B2C munkamenet cookie-k egész számként megadott élettartama tárolja a felhasználó böngészőjében a sikeres hitelesítést követően. |
 | JourneyInsights | 0:1 | Az Azure Application Insights kialakítási kulcsot használni. |
 | ContentDefinitionParameters | 0:1 | A kulcs-érték párral kell csatolni a tartalomdefiníció terhelés URI listája. |
 
-### <a name="singlesignon"></a>Egyszeri bejelentkezés
+### <a name="singlesignon"></a>SingleSignOn
 
 A **SingleSignOn** elem tartalmazza a következő attribútum:
 
@@ -153,7 +153,7 @@ A **ContentDefinitionParameters** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| ContentDefinitionParameter | 0: n | A kulcs-érték pár, amelyek számára a lekérdezési karakterlánc egy tartalomdefiníció terhelés URI-t tartalmazó karakterlánc. |
+| ContentDefinitionParameter | 0:n | A kulcs-érték pár, amelyek számára a lekérdezési karakterlánc egy tartalomdefiníció terhelés URI-t tartalmazó karakterlánc. |
 
 A **ContentDefinitionParameter** elem tartalmazza a következő attribútumot:
 
@@ -194,7 +194,7 @@ A **OutputClaims** elem tartalmazza a következő elemet:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| kimeneti jogcím | 0: n | A támogatott listán egy várt jogcímtípus, amelyhez a függő entitás feliratkozik a szabályzat neve. Ezt az igényt a kimenetként a technikai profil szolgálja ki. |
+| OutputClaim | 0:n | A támogatott listán egy várt jogcímtípus, amelyhez a függő entitás feliratkozik a szabályzat neve. Ezt az igényt a kimenetként a technikai profil szolgálja ki. |
 
 A **kimeneti jogcím** elem tartalmazza a következő attribútumokat:
 
@@ -214,7 +214,7 @@ A **SubjectNamingInfo** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Takar | Igen | Egy hivatkozást egy kimenő jogcímet **PartnerClaimType**. A kimeneti jogcímek definiálni kell a függő entitás házirend **OutputClaims** gyűjtemény. |
+| ClaimType | Igen | Egy hivatkozást egy kimenő jogcímet **PartnerClaimType**. A kimeneti jogcímek definiálni kell a függő entitás házirend **OutputClaims** gyűjtemény. |
 
 Az alábbi példa bemutatja, hogyan egy függő entitás OpenId Connect meghatározásához. A tulajdonos neve info van konfigurálva, a `objectId`:
 

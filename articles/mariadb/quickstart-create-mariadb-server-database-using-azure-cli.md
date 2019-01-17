@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190337"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359323"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -59,10 +59,10 @@ version | **10.2** | A MariaDB fő motorjának verziója.
 admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
 admin-password | *az Ön jelszava* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. Tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűk, angol kisbetűs karakterek, számok és nem alfanumerikus karakterek.
 
-Az **sku-name** paraméter értéke a *tarifacsomag*\_*számítási generáció*\_*virtuális magok* mintát követi, a következő példákban látható módon:
-+ Az `--sku-name B_Gen5_4` jelentése: Alapszintű tarifacsomag, 5. számítási generáció és 4 virtuális mag.
-+ Az `--sku-name GP_Gen5_32` jelentése: Általános célú tarifacsomag, 5. számítási generáció és 32 virtuális mag.
-+ Az `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált tarifacsomag, 5. számítási generáció és 2 virtuális mag.
+Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
++ `--sku-name B_Gen5_1` Alapszintű, a Gen 5 és 1 virtuális mag leképezések. Ez a lehetőség akkor a legkisebb Termékváltozat érhető el.
++ `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
++ `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
 A régiók és csomagok érvényes értékeivel kapcsolatos további információ: [Tarifacsomagok](./concepts-pricing-tiers.md).
 

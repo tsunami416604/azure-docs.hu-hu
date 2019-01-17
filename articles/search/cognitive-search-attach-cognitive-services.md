@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services-erőforrás társítani egy indexmezők – Azure Search
+title: Egy indexmezők – Azure Search a Cognitive Services-erőforrás csatolása
 description: A Cognitive Services teljes körű előfizetéssel csatolása az Azure Search cognitive Adatbővítés folyamat utasítások.
 manager: cgronlun
 author: LuisCabrer
@@ -7,36 +7,36 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/07/2018
+ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 315e050f9ff8768cfeb8ff5417834e8e163ce334
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231427"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351458"
 ---
-# <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Cognitive Services-erőforrás társítása az Azure Search egy indexmezők 
+# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
 
 Az AI-algoritmusokat vezetési [cognitive search folyamatok](cognitive-search-concept-intro.md) strukturálatlan adatok feldolgozására alapulnak [ **Cognitive Services-erőforrások**](https://azure.microsoft.com/services/cognitive-services/). Erőforrások, például a [ **Computer Vision** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) képelemzés és optikai karakterfelismerés (OCR) nyújt szöveg- és képfájlokat, kívül struktúra kibontása közben [ **szöveg Analytics** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) biztosít a természetes nyelvi feldolgozás, például az entitások felismerése és kulcskifejezések, hogy néhányat említsünk.
 
-Dokumentumok korlátozott számú ingyenes bővítését, vagy nagyobb és gyakoribb számítási feladatok Cognitive Services-számlázható erőforrás csatolása. Ebből a cikkből elsajátíthatja a Cognitive Services-erőforrás társítása az indexelés során adatokat feldúsítani a kognitív képességek alkalmazási lehetőségét.
+Dokumentumok korlátozott számú ingyenes bővítését, vagy nagyobb és gyakoribb számítási feladatok Cognitive Services-számlázható erőforrás csatolása. Ebből a cikkből megtudhatja, hogyan társítsa a Cognitive Services-erőforrás során adatokat feldúsítani a kognitív képességek alkalmazási lehetőségét [Azure Search-indexelő](search-what-is-an-index.md).
 
 Ha a folyamat kizárólag áll [egyéni képesség](cognitive-search-create-custom-skill-example.md), nem kell csatolni a Cognitive Services-erőforrás.
 
 > [!NOTE]
 > 2018. December 21. Cognitive Services-erőforrás is társíthat egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi számunkra, hogy indexmezők végrehajtási számítunk fel díjat. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
 >
-> Végrehajtásának [beépített kognitív képességeket](cognitive-search-predefined-skills.md) havidíjat számítunk fel a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/), ugyanaz, mintha a feladatot az Azure Search függetlenül végrehajtotta értékelésére. Kép kinyerési díjszabás díja az előzetes verzió díjszabása, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Végrehajtásának [beépített kognitív képességeket](cognitive-search-predefined-skills.md) havidíjat számítunk fel a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kivonás az Azure Search számlázható esemény, jelenleg az előzetes verzió áron érhető el. További információkért lásd: a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) vagy [számlázás módját works](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="use-free-resources"></a>Ingyenes erőforrások használata
 
-Használhat olyan, korlátozott gyűjtemény, ingyenes feldolgozási beállítás, amely példányra, 20, a dokumentum végrehajtott információbeolvasás alapján napokra lebontva, a kognitív keresés oktatóanyag és a rövid útmutató gyakorlatok elegendő. 
+A korlátozott, ingyenes feldolgozási beállítás segítségével végezze el a cognitive search oktatóanyag és a rövid útmutató gyakorlatok. 
 
 > [!Important]
-> 2019. február 1., kezdve a **(korlátozott végrehajtott Információbeolvasás) ingyenes** naponta 20 dokumentumok korlátozódik. 
+> 2019. február 1-től kezdődően a **(korlátozott végrehajtott Információbeolvasás) ingyenes** lesznek korlátozva a naponta 20 dokumentumokhoz. 
 
 1. Nyissa meg a **adatimportálás** varázsló.
 

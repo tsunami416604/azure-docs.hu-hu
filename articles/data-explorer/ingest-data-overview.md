@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6c7d4d8d4a16e0679722f9de007870a7ec7554b0
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 1/14/2019
+ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635999"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354620"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Az Azure Data Explorer adatbetöltés
 
@@ -23,17 +23,17 @@ Adatbetöltés betölteni az adatfelderítési rekordok létrehozásához vagy f
 
 Az Azure Data Explorer data management szolgáltatást, ami felelős az adatbetöltés, az alábbi funkciókat biztosítja:
 
-1. **Adatok lekéréses**: adatok lekérése külső forrásból (az Event Hubs), vagy olvassa el a feldolgozási kérelmek egy Azure-üzenetsorból.
+1. **Adatok lekéréses**: Adatok lekérése külső forrásból (az Event Hubs), vagy olvassa el a feldolgozási kérelmek egy Azure-üzenetsorból.
 
-1. **Kötegelés**: Batch-adatbázis és a tábla a betöltési teljesítmény optimalizálása adatforgalmát.
+1. **Kötegelés**: A Batch adatforgalmát ugyanazon adatbázis és tábla a betöltési teljesítmény optimalizálása.
 
-1. **Érvényesítési**: előzetes ellenőrzés és formátum átalakítására, szükség esetén.
+1. **Érvényesítési**: Előzetes ellenőrzési és formátum konvertálása szükség esetén.
 
-1. **Adatkezelés**: egyező séma, rendezése, az indexelés, kódolási és tömöríti az adatokat.
+1. **Adatkezelés**: Egyező séma, rendezése, az indexelés, kódolási és tömöríti az adatokat.
 
-1. **A betöltési folyamat adatmegőrzés pont**: átmeneti hibák motor és leíró megismétlését feldolgozási terhelés kezeléséhez.
+1. **A betöltési folyamat adatmegőrzés pont**: A motor a feldolgozási terhelés kezelése, és kezelheti az újrapróbálkozásokat átmeneti hibák esetén.
 
-1. **Az adatok betöltését véglegesítési**: lekérdezés elérhetővé teszi.
+1. **Az adatok betöltését véglegesítési**: Elérhetővé teszi a lekérdezéshez.
 
 ## <a name="ingestion-methods"></a>Adatbetöltési módszerek
 
@@ -41,10 +41,13 @@ Az Azure Data Explorer Adatbetöltési több módszert, mindegyiket a saját cé
 
 ### <a name="ingestion-using-pipelines"></a>Az adatfeldolgozási folyamatok használatával
 
-Az Azure Data Explorer jelenleg támogatja az Event Hubs folyamatot, amely a felügyeleti varázslója használatával az Azure Portalon lehet kezelni. További információkért lásd: [a rövid útmutató: betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md).
+Az Azure Data Explorer jelenleg támogatja az Event Hubs folyamatot, amely a felügyeleti varázslója használatával az Azure Portalon lehet kezelni. További információkért lásd: [a rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md).
 
 ### <a name="ingestion-using-connectors-and-plugins"></a>Az összekötők és beépülő modulok feldolgozási
-Az Azure Data Explorer jelenleg támogatja a Logstash beépülő modult. További információkért lásd: [Logstash kimeneti beépülő modul az Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md).
+
+* Az Azure Data Explorer támogatja a Logstash beépülő modult. További információkért lásd: [Logstash kimeneti beépülő modul az Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md).
+
+* Az adatkezelő az Azure támogatja a Kafka-összekötő. További információkért lásd: [a rövid útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer](ingest-data-kafka.md)
 
 ### <a name="programmatic-ingestion"></a>Programozott adatfeldolgozást
 
@@ -60,7 +63,7 @@ Kusto ügyféloldali SDK-val kell fogadni és kérdezhet le adatokat a felhaszn�
 
 * [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
-* [NODE SDK](/azure/kusto/api/node/kusto-node-client-library)
+* [Node SDK](/azure/kusto/api/node/kusto-node-client-library)
 
 * [REST API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
@@ -68,7 +71,7 @@ Kusto ügyféloldali SDK-val kell fogadni és kérdezhet le adatokat a felhaszn�
 
 * Tölt be adatot az Azure Data Explorer data management szolgáltatás (nagy átviteli sebességű és megbízható Adatbetöltési) keresztül:
 
-  * [**Batch-betöltési** ](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK által rendelkezésre bocsátott): az ügyfél feltölti az adatokat az Azure Blob storage (az Azure Data Explorer data management szolgáltatás által jelölt) és a egy Azure-üzenetsor értesítést küld bejegyzést. Ez a nagy mennyiségű, megbízható és költséghatékony Adatbetöltési a javasolt módszer.
+    [**Batch-betöltési** ](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK által rendelkezésre bocsátott): az ügyfél feltölti az adatokat az Azure Blob storage (az Azure Data Explorer data management szolgáltatás által jelölt) és a egy Azure-üzenetsor értesítést küld bejegyzést. Kötegelt feldolgozási, az ajánlott módszer a nagy mennyiségű, megbízható, és a költséghatékony adatbetöltés.
 
 * Adatok bevitele az Azure Data Explorer motor (leginkább megfelelő adatáttekintési és prototípus-készítéshez) közvetlenül be:
 
@@ -88,7 +91,7 @@ Kusto ügyféloldali SDK-val kell fogadni és kérdezhet le adatokat a felhaszn�
 | **Az aszinkron feldolgozási** | Kötegelés idő + feldolgozási idő |
 | |
 
-Feldolgozási idő attól függ, az adatok mérete általában kevesebb, mint néhány másodpercig. A kötegelés idő az alapértelmezett érték 5 perc.
+Az adatok mérete kisebb, mint néhány másodpercig függ feldolgozási ideje. A kötegelés idő az alapértelmezett érték 5 perc.
 
 ## <a name="choosing-the-most-appropriate-ingestion-method"></a>Az Adatbetöltési leginkább megfelelő módszer kiválasztása
 
@@ -105,11 +108,11 @@ Adatok betöltése előtt kérdezze meg magának az alábbi kérdésekre.
 * Mik a késési követelményei? 
 * A meglévő felügyelt streamfeldolgozási folyamatok egyik használható? 
 
-Egy üzenetkezelési szolgáltatást, például az Event Hubs alapján egy meglévő infrastruktúra szervezetekre vonatkozó összekötőjének használatával, valószínűleg a legmegfelelőbb megoldás. Az aszinkron feldolgozási alkalmas nagy méretű adatkötetek esetében.
+A szervezet számára a meglévő infrastruktúra, amely egy üzenetküldési szolgáltatást, például az Event Hubs alapuló összekötőjének használatával, valószínűleg a legmegfelelőbb megoldás. Az aszinkron feldolgozási alkalmas nagy méretű adatkötetek esetében.
 
 ## <a name="supported-data-formats"></a>Támogatott adatformátumok a célnyelven
 
-Metódusok nem betöltési lekérdezésből származó összes támogatunk az adatok formázni kell, a támogatott formátumok egyikében, hogy az Azure Data Explorer értelmezni tudja.
+Az összes támogatunk módszerek nem betöltési lekérdezésből formázza az adatokat, hogy az Azure Data Explorer értelmezni tudja. A támogatott formátumok a következők:
 
 * A CSV, TSV, PSV, SCSV ÉS RENDSZERÁLLAPOT-VISSZAJELZÉS:
 * JSON (sor elválasztott, többsoros), Avro
@@ -119,21 +122,30 @@ Metódusok nem betöltési lekérdezésből származó összes támogatunk az ad
 > Adatok betöltése folyamatban van, amikor az adattípusok vannak következtetni a céloldali tábla oszlopait alapján. Ha egy rekord nem fejeződött be, vagy egy mezőt a szükséges adatok típusa nem elemezhető, a megfelelő tábla oszlopait elkészül a null értékű.
 
 ## <a name="ingestion-recommendations-and-limitations"></a>Adatbetöltési javaslatok és korlátozások
+
 * A tényleges megőrzési házirend betöltött az adatbázis adatmegőrzési származik. Lásd: [adatmegőrzési](/azure/kusto/concepts/retentionpolicy) részleteiről. Adatok bevitele szükséges **tábla módon eredményesen dolgozható** vagy **adatbázis módon eredményesen dolgozható** engedélyeket.
-* Adatbetöltési 5 GB-os maximális fájlméret támogatja. A javaslat, hogy fájlokat 100 MB-os és 1GB között.
+* Adatbetöltési 5 GB-os maximális fájlméret támogatja. A javaslat, hogy fájlokat 100 MB-os és 1 GB között.
 
 ## <a name="schema-mapping"></a>Séma-hozzárendelés
 
-Séma-hozzárendelés segít a determinisztikus módon kötése forrás datová Pole céloldali tábla oszlopait.
+Séma-hozzárendelés segít a céloldali tábla oszlopait forrás datová Pole kötni.
 
-* [CSV-leképezés](/azure/kusto/management/mappings?branch=master#csv-mapping) (nem kötelező) együttműködik minden sorszámát alapú formátumok és a betöltés parancsparaméter argumentumként átadhatók vagy [előre létrehozni a következő táblán](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) és a betöltés parancsparaméter hivatkozott.
-* [JSON-leképezés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és [Avro leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltés parancsparaméter argumentumként átadhatók vagy [előre létrehozni a következő táblán](/azure/kusto/management/tables#create-ingestion-mapping) és a betöltés parancsparaméter hivatkozott.
+* [CSV-leképezés](/azure/kusto/management/mappings?branch=master#csv-mapping) sorszámát-alapú eljuttathatók (nem kötelező) együttműködik. A Betöltés parancs paraméter használatával elvégezhető vagy [előre létrehozni a következő táblán](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) és a betöltés parancsparaméter hivatkozott.
+* [JSON-leképezés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és [Avro leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltés parancssori paraméter segítségével hajtható végre, vagy [előre létrehozni a következő táblán](/azure/kusto/management/tables#create-ingestion-mapping) és a Betöltés parancs által hivatkozott a paraméter.
 
 ## <a name="next-steps"></a>További lépések
 
-[Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe](ingest-data-event-hub.md)
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
 
-[Rövid útmutató: Adatok betöltése az Azure Data Explorer Python-kódtárral](python-ingest-data.md)
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer](ingest-data-kafka.md)
 
-[Gyors útmutató: Kiolvasni az adatokat az Azure Data Explorer csomópontja library használatával](node-ingest-data.md)
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
 
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)

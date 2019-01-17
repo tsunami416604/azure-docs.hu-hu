@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 360cf92686682e65cf5348ee717bbb80cdc85cb4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016171"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353379"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával az ügyfél (C4C) SAP-felhő adatok másolása
 
@@ -91,7 +91,7 @@ Adatok másolása az SAP-felhő ügyfél, állítsa be a type tulajdonság, az a
     "name": "SAPC4CDataset",
     "properties": {
         "type": "SapCloudForCustomerResource",
-        "typePoperties": {
+        "typeProperties": {
             "path": "<path e.g. LeadCollection>"
         },
         "linkedServiceName": {
@@ -202,7 +202,7 @@ Adatok másolása az SAP Cloud ügyfél, állítsa be a fogadó típusa a másol
 
 Az adatok másolása az SAP Cloud ügyfél számára, amikor a következő hozzárendeléseket használják az SAP-felhő ügyfél adattípusok Azure Data Factory-közbenső adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-| SAP C4C OData-adatok típusa | Data factory közbenső adattípus |
+| SAP C4C OData Data Type | Data factory közbenső adattípus |
 |:--- |:--- |
 | Edm.Binary | Byte] |
 | Edm.Boolean | Logikai |

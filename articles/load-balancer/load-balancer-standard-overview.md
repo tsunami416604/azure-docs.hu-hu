@@ -5,6 +5,7 @@ description: Az Azure Standard Load Balancer funkcióinak áttekintése
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -13,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 15a67bb5d42028f945cc44a75a7210f132a434c3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2eb2fbb1d184bf58923748278d4989a271adf434
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245162"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352580"
 ---
-# <a name="azure-standard-balancer-overview"></a>Az Azure standard szintű Balancer áttekintése
+# <a name="azure-standard-load-balancer-overview"></a>Az Azure Standard Load Balancer áttekintése
 
 Az Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozása. Load Balancer bejövő, valamint a kimenő forgatókönyveket is használható, és alacsony késleltetésű, nagy átviteli sebességet, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető. 
 
 Ez a cikk a Standard Load Balancer összpontosít.  Az Azure Load Balancerhez általános áttekintést, tekintse át a [Load Balancer áttekintése](load-balancer-overview.md) is.
 
-## <a name="what-is-standard-load-balancer"></a>Mi a Standard Load Balancer?
+## <a name="what-is-standard-load-balancer"></a>Mi az a standard Load Balancer?
 
 A standard Load Balancer, amely egy új terheléselosztó-egy kibontott és részletesebb funkciókészlethez alapszintű terheléselosztóval szemben az összes TCP és UDP-alkalmazásokhoz.  Miközben sok Hasonlóságok, fontos ismerje meg az eltéréseket az ebben a cikkben ismertetett módon.
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: d238e5e7c129241fc599e3b656d785d750b330c7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332040"
+ms.locfileid: "54354467"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -2543,7 +2543,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Megadhatja, ha az egyezés-e a teljes vagy részleges. 
+Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Egy logikai kifejezés belül a parancs használatával ellenőrizheti az objektum teljes vagy részleges egyezést. 
 
  **Syntax**  
   
@@ -2563,7 +2563,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 -   `bool_expr`  
   
-     Van a logikai kifejezés.       
+     Van a logikai kifejezés. Ha a változó értéke "true'and, ha a megadott keresési érték egy olyan objektum, a parancs ellenőrzi egy részleges egyezéssel (Keresés Objekt egy objektum egy részét). Ha, "false" értékre van állítva, a parancs ellenőrzi a tömbön belüli összes objektum teljes megfelel. Ha nincs megadva az alapértelmezett érték a False (hamis). 
   
  **Návratové Typy**  
   

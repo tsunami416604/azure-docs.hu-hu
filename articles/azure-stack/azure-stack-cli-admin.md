@@ -6,36 +6,37 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: CLI
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/15/2019
 ms.author: mabrigg
-ms.openlocfilehash: ba8bed71d24c1b4ed71611b5cd2dfeb7800408b8
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1da23337b6a23f713eaadefbc4cee4aca07f56de
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304023"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351548"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure CLI-vel engedélyezése az Azure Stack-felhasználók számára
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A legfelső szintű hitelesítésszolgáltató tanúsítványát biztosíthat az Azure Stack felhasználói számára, így az Azure CLI-vel a fejlesztői gépen is használni. A felhasználóknak kell a tanúsítványt a CLI-n keresztül-erőforrások kezeléséhez.
+A legfelső szintű hitelesítésszolgáltató tanúsítványát biztosíthat az Azure Stack felhasználói számára, így az Azure CLI-vel a fejlesztői gépen is használni. A felhasználók a tanúsítványt a CLI-n keresztül-erőforrások kezeléséhez szükséges.
 
-* **Az Azure Stack hitelesítésszolgáltató főtanúsítványát** van szükség, ha a felhasználók parancssori felület használata az Azure Stack Development Kit kívül munkaállomásokon.  
+ - **Az Azure Stack hitelesítésszolgáltató főtanúsítványát** van szükség, ha a felhasználók parancssori felület használata az Azure Stack Development Kit kívül munkaállomásokon.  
 
-* **A virtuális gép aliasok végpontjának** alias, mint a "UbuntuLTS" vagy "Win2012Datacenter," által hivatkozott egy rendszerkép közzétevője, ajánlat, Termékváltozat és verzió egyetlen paramétert, ha a virtuális gépek üzembe helyezéséhez biztosít.  
+ - **A virtuális gép aliasok végpontjának** alias, mint a "UbuntuLTS" vagy "Win2012Datacenter," által hivatkozott egy rendszerkép közzétevője, ajánlat, Termékváltozat és verzió egyetlen paramétert, ha a virtuális gépek üzembe helyezéséhez biztosít.  
 
 A következő szakaszok ismertetik ezeket az értékeket beszerzése.
 
 ## <a name="export-the-azure-stack-ca-root-certificate"></a>Az Azure Stack hitelesítésszolgáltató legfelső szintű tanúsítványának exportálása
 
-Megtalálhatja az Azure Stack hitelesítésszolgáltató főtanúsítványát a csomag és a egy bérlői virtuális gép, amelyen fut a development kit környezeten belül. Szeretné exportálni az Azure Stack főtanúsítványának PEM formátumú, jelentkezzen be a fejlesztői készlet vagy a bérlő virtuális gépet, és futtassa a következő szkriptet:
+Ha egy integrált rendszer használ, nem kell a legfelső szintű hitelesítésszolgáltató tanúsítványának exportálása. Exportálja a hitelesítésszolgáltató főtanúsítványát a egy Azure Stack Development Kit (ASDK) kell.
+
+PEM-formátumú ASDK főtanúsítvány exportálása, jelentkezzen be, és futtassa a következő szkriptet:
 
 ```powershell
 $label = "<Your Azure Stack CA root certificate name>"
@@ -56,15 +57,15 @@ certutil -encode root.cer root.pem
 
 ## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>A virtuális gép aliasok végpontjának beállítása
 
-Az Azure Stack-operátorok egy nyilvánosan elérhető végponton, amelyen egy virtuális gép alias fájlt kell beállítania. A virtuális gép alias fájl nem egy JSON-fájl által biztosított rendszerképek köznapi neve. Azure CLI-vel paraméterként egy virtuális gép üzembe helyezésekor ezt követően megadva a neve.  
+Az Azure Stack-operátorok egy nyilvánosan elérhető végponton, amelyen egy virtuális gép alias fájlt kell beállítania. A virtuális gép alias fájl nem egy JSON-fájl által biztosított rendszerképek köznapi neve. A nevet fogja használni, ha telepít egy virtuális Gépet az Azure CLI-vel paraméterként.  
 
-Előtt egy bejegyzést ad hozzá egy alias fájl, győződjön meg arról, hogy Ön [töltse le a rendszerképeket az Azure Marketplace-ről](azure-stack-download-azure-marketplace-item.md), vagy rendelkezik [közzé saját egyéni rendszerképét](azure-stack-add-vm-image.md). Ha egy egyéni rendszerkép közzététele, jegyezze fel a közzétevő, ajánlat, Termékváltozat és verzió közzététele során megadott információk. Ha egy lemezképet a marketplace webhelyről, az információk használatával megtekintheti a ```Get-AzureVMImage``` parancsmagot.  
+Alias fájlt hozzá egy bejegyzést, előtt győződjön meg arról, hogy Ön [töltse le a rendszerképeket az Azure Marketplace-ről](azure-stack-download-azure-marketplace-item.md) vagy [közzé saját egyéni rendszerképét](azure-stack-add-vm-image.md). Ha egy egyéni rendszerkép közzététele, jegyezze fel a közzétevő, ajánlat, Termékváltozat és verzió közzététele során megadott információk. Ha egy lemezképet a marketplace webhelyről, az információk használatával megtekintheti a ```Get-AzureVMImage``` parancsmagot.  
 
 A [alias mintafájl](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) számos gyakori rendszerképpel aliasok érhető el. Kiindulási pontként használhatja azt. A gazdagép egy helyet, ahol a CLI-ügyfelek számára is elérhetővé válik a fájlhoz. Egyik módja a fájlt a blob storage-fiókot üzemeltethet, és az URL-cím megosztása a felhasználókkal:
 
 1. Töltse le a [mintafájl](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) a Githubról.
-2. Új tárfiók létrehozása az Azure Stackben. Ha ez megtörtént, hozzon létre egy új blobtárolót. A hozzáférési szabályzat a "nyilvános".  
-3. Töltse fel az új tároló a JSON-fájlt. Ha ez megtörtént, megtekintheti a blob URL-CÍMÉT, jelölje ki a blob nevét, és ezután jelölje ki az URL-címet a blob tulajdonságai.
+2. Hozzon létre egy tárfiókot az Azure Stackben. Ha ez megtörtént, hozzon létre egy blobtárolót. A hozzáférési szabályzat a "nyilvános".  
+3. Töltse fel az új tároló a JSON-fájlt. Ha ez megtörtént, megtekintheti a blob URL-CÍMÉT. Válassza ki a blob nevét, és válassza az URL-címet a blob tulajdonságai közül.
 
 ## <a name="next-steps"></a>További lépések
 

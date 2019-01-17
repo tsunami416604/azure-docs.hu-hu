@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 476e74a4d167fb3e9158f07cc5c073f129a74daa
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2ad641ae054f9542ec1ef42f5ebbe724ba4ecf87
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545892"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354025"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés az Azure Database for MariaDB
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MariaDB különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.
@@ -19,7 +19,7 @@ A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatj
 ## <a name="metrics"></a>Mérőszámok
 Az összes Azure-metrikagyűjtéshez rendelkezik egy egy perces gyakoriságot, és mindegyik metrikát biztosít előzmények 30 nap. A metrikákhoz riasztásokat is beállíthatja. Egyéb feladatok közé tartozik, automatizált műveletek, speciális analitikai végrehajtása és archiváláshoz előzmények. További információkért lásd az [Azure metrikák áttekintése] (.. /monitoring-and-Diagnostics/monitoring-Overview-Metrics.MD).
 
-<!--For step by step guidance, see [How to set up alerts](howto-alert-on-metric.md). -->
+Lépésenkénti útmutatásért lásd: [riasztások beállítása](howto-alert-metric.md).
 
 ### <a name="list-of-metrics"></a>Mérőszámok listája
 Ezek a metrikák az Azure Database for MariaDB érhetők el:
@@ -45,5 +45,4 @@ Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Naplózás
 
 ## <a name="next-steps"></a>További lépések
 - Elérése és exportálása a metrikák az Azure Portalon, a REST API vagy a parancssori felület használatával kapcsolatos további információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-
-<!-- - See [How to set up alerts](howto-alert-on-metric.md) for guidance on creating an alert on a metric.-->
+ - Lásd: [riasztások beállítása](howto-alert-metric.md) riasztás létrehozása a metrika az útmutatást.

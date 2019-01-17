@@ -1,6 +1,6 @@
 ---
 title: Az Application Insights élő Azure Service Fabric-alkalmazások profil |} A Microsoft Docs
-description: A Service Fabric-alkalmazás profiler engedélyezése
+description: Profiler engedélyezése a Service Fabric-alkalmazás
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,29 +12,31 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2513511326ff5574e8dcf3eedfde977cf9877efd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f816086293d663e141b2d6efe5791cc8e37eba36
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083069"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358592"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profil élő Azure Service Fabric-alkalmazásokat az Application insights segítségével
 
-Ezek a szolgáltatások az Application Insights profiler is telepítheti:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Felhőszolgáltatások](profiler-cloudservice.md ?toc=/azure/azure-monitor/toc.json)
-* [Virtuális gépek](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-
+Ezek a szolgáltatások az Application Insights Profiler is telepítheti:
+* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Állítsa be a környezet üzemelő példány definíciója
 
-Application Insights Profiler megtalálható a Windows Azure Diagnostics (WAD). A WAD-bővítmény a Service Fabric-fürt számára egy Azure erőforrás-kezelő sablon használatával is telepíthető. Van itt egy példa sablon: [**A sablon, amely WAD telepíti a Service Fabric-fürtön.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
+Application Insights Profiler az Azure Diagnostics részét képezi. Az Azure Diagnostics bővítmény is telepítheti a Service Fabric-fürthöz tartozó Azure Resource Manager-sablon használatával. Get- [sablont, amely telepíti a Service Fabric-fürt Azure Diagnostics](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json).
 
 Állítsa be a környezetet, hajtsa végre a következő műveleteket:
+
 1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb, elegendő ahhoz, hogy erősítse meg, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb.
 
-1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) kiterjesztése a központi telepítési sablont a fájlt, és ezután adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` tulajdonság értékét a saját Application Insights-kialakítási kulcsot:  
+1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) a Rendszertelepítési sablonfájl-bővítményt.
+
+1. Adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` tulajdonság értékét a saját Application Insights-kialakítási kulcsot:  
 
       ```json
       "SinksConfig": {
@@ -48,14 +50,19 @@ Application Insights Profiler megtalálható a Windows Azure Diagnostics (WAD). 
       ```
 
       A diagnosztikai bővítményt a központi telepítési sablont történő hozzáadásával kapcsolatos további információkért lásd: [használható monitorozási és diagnosztikai egy Windows virtuális gép és az Azure Resource Manager-sablonokkal](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-1. Telepítse a Service Fabric-fürtön az Azure Resource Manager-sablon használatával. Ha a beállítások helyesek, Application Insights Profiler telepítve van, és engedélyezve van, amikor a WAD-bővítmény telepítve van. 
-1. Az Application Insights hozzáadása a Service Fabric-alkalmazásokat. Az alkalmazás kell kell kérelem adatok küldését az application insights ahhoz, hogy a profiler a kérelmek profilok gyűjtéséhez. Talál útmutatást [itt.](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)
+
+1. A Service Fabric-fürt telepítése az Azure Resource Manager-sablon használatával.  
+  Ha a beállítások helyesek, Application Insights Profiler telepítve, és engedélyezve van az Azure Diagnostics bővítmény telepítésekor. 
+
+1. Az Application Insights hozzáadása a Service Fabric-alkalmazásokat.  
+  A Profiler gyűjtéséhez a kérelmek profilok, az alkalmazás kell kell kérelem adatok küldését az Application Insights. További információkért látogasson el a [Service Fabric-projektekkel készült Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-ServiceFabric) lapot.
+
 1. Az alkalmazás újbóli üzembe helyezése.
 
-> [TIPP] Virtuális gépek a fenti lépéseket a json-alapú alternatívát, hogy az Azure Portalon lépjen **virtuális gépek** > **diagnosztikai beállítások** >  **Fogadók** > beállítása diagnosztikai adatok küldése az Application Insights **engedélyezve** és a egy Application Insights-fiókot vagy egy adott rendszerállapotkulcsot jelölje ki.
+> [TIPP] Virtuális gépek, a fenti JSON-alapú lépések helyett, hogy az Azure Portalon lépjen **virtuális gépek** > **diagnosztikai beállítások** > **Fogadók** > **beállítása diagnosztikai adatok küldése az Application Insights engedélyezve** , és válassza ki az Application Insights-fiókot vagy egy adott rendszerállapotkulcsot.
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre a forgalmat az alkalmazásához (például indítása egy [rendelkezésre állási teszt](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)). Várjon 10 – 15 percet nyomok kell küldeni az Application Insights-példány elindításához.
-- Lásd: [Profiler nyomkövetések](https://docs.microsoft.com/azure/application-insights/app-insights-profiler-overview?toc=/azure/azure-monitor/toc.json) az Azure Portalon.
-- Segítség a profiler problémák elhárítása a [hibaelhárítási Profiler](profiler-troubleshooting.md ?toc=/azure/azure-monitor/toc.json).
+* Hozzon létre a forgalmat az alkalmazásához (például indítása egy [rendelkezésre állási teszt](https://docs.microsoft.com/azure/application-insights/monitor-web-app-availability)). Várjon 10 – 15 percet nyomok kell küldeni az Application Insights-példány elindításához.
+* Lásd: [Profiler nyomkövetések](https://docs.microsoft.com/azure/application-insights/profiler-overview?toc=/azure/azure-monitor/toc.json) az Azure Portalon.
+* Segítség a Profiler kapcsolatos hibák elhárítása: [hibaelhárítási Profiler](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).

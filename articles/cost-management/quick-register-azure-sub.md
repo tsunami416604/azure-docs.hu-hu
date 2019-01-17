@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: b5975f3d11a76d7713928ab008dbd9ec19b85738
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 54bb66d79979e68c55a671035fa2bc11d8220b17
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082578"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351594"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Egyéni Azure-előfizetés regisztrálása és a költségadatok megtekintése
 
@@ -29,7 +29,7 @@ Az Azure-előfizetésével regisztrálhat a Cloudynbe. A regisztráció hozzáf�
 
 1. Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján.
 2. Az **Áttekintés** területen kattintson a **Cloudyn** elemre.  
-    ![A Cloudyn lap jelenik meg az Azure-ban helyettük](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
+    ![A Cloudyn lap jelenik meg, az Azure Portalon](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. A **Cost Management** oldalon kattintson a **Go to Cloudyn** (Ugrás a Cloudynre) elemre a Cloudyn regisztrációs oldalának új ablakban való megnyitásához.
 4. A Cloudyn portálon a próbaverzióra való regisztrációhoz írja be a vállalata nevét, majd válassza az **Azure Individual Subscription Owner** (Egyéni Azure-előfizetés tulajdonosa) lehetőségre, és kattintson a **Next** (Tovább) gombra. A fiókneve és a bérlőazonosító automatikusan rákerül az űrlapra.  
     ![Regisztrálás a próbaverzióra lap, adja meg a regisztrációs adatait](./media/quick-register-azure-sub/trial-reg-ind.png)

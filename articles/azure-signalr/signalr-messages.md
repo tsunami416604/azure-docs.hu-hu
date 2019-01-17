@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 5a0430e9ad124319147342c49fc51e11472ac8ff
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c2348df7a1a55584807a03216e294486ddadfc52
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811869"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352597"
 ---
 # <a name="message-and-connection-in-azure-signalr-service"></a>Üzenet és az Azure SignalR Service-kapcsolat
 
-Az Azure SignalR Service rendelkezik számlázási modell, a kapcsolatok száma és az üzenetek száma alapján. Hogyan az üzenetek és a kapcsolatok meghatározott és számlázási célból számítanak kifejtett alatt.
+Az Azure SignalR Service rendelkezik számlázási modell, a kapcsolatok száma és az üzenetek száma alapján. Hogyan üzenetek és a kapcsolatok meghatározott és számlázási célból számítanak kifejtett alatt.
 
 ## <a name="message-formats-supported"></a>Támogatott üzenetformátumok
 
@@ -25,7 +25,7 @@ Az Azure SignalR Service, amely támogatja az ASP.NET Core SignalR ugyanazt a fo
 
 Az Azure SignalR Service rendelkezik az üzenet mérete nem korlátozott.
 
-A gyakorlatban, nagy méretű üzenetek van felosztva, amelyek kisebb üzenetekre, legfeljebb 2 KB-os, és külön üzenetekként továbbítani. SDK-k által kezelt felosztása és összeállításával készíthet átjárókat. Nincs fejlesztői erőfeszítésre van szükség.
+A gyakorlatban, nagy méretű üzenetek van felosztva, amelyek kisebb üzenetekre, legfeljebb 2 KB-os, és külön üzenetekként továbbítani. SDK-k kezelésére felosztása és összeállításával készíthet átjárókat. Nincs fejlesztői erőfeszítésre van szükség.
 
 De nagy méretű üzenetek negatív hatással van az üzenetkezelés teljesítményének. Használja a kisebb méretű üzenet mérete, amikor csak lehetséges, és ellenőrizze, hogy az egyes használati esetekhez optimális üzenet méretének kiválasztása.
 
@@ -33,22 +33,29 @@ De nagy méretű üzenetek negatív hatással van az üzenetkezelés teljesítm�
 
 A Microsoft csak SignalR Service kimenő üzeneteinek száma, és figyelmen kívül az ügyfelek és kiszolgálók közötti ping üzenetekre.
 
-Az üzenet 2 KB külön tranzakciónak minősül több üzeneteket az 2 KB-nál nagyobb. Üzenetek száma diagram az Azure Portalon minden 100 üzenet hub frissül.
+Az üzenet 2 KB külön tranzakciónak minősül több üzeneteket az 2 KB-nál nagyobb. Üzenetek száma diagram az Azure Portalon minden 100 hub üzenet frissíti.
 
-Például a felhasználó rendelkezik 3-ügyfelek és 1 alkalmazás kiszolgáló. Egy ügyfél egy 4 KB-os üzenetet küld, hogy a kiszolgáló összes szórási. Az üzenetek száma 8 lesz: Alkalmazáskiszolgáló, 3 üzenet szolgáltatásból az ügyfeleknek és minden üzenetet szolgáltatásból 1 üzenetnek számít 2 2 KB-os üzenet.
+Például hogy három ügyfelek és a egy alkalmazáskiszolgáló. Egy ügyfél egy 4 KB-os üzenetet küld, hogy a kiszolgáló összes szórási. Az üzenetek száma 8: Alkalmazáskiszolgáló, az ügyfeleknek a szolgáltatás három üzeneteit és minden üzenetet a szolgáltatásból egy üzenet két 2 KB-os üzenetet fog számítani.
 
 Az Azure Portalon látható üzenetek száma továbbra is 0, amíg azt kell gyűlnek több mint 100.
 
 ## <a name="how-to-count-connections"></a>Hogyan kapcsolatok száma?
 
-Nincsenek, kiszolgáló és az ügyfél-kapcsolatot. Alapértelmezés szerint minden kiszolgáló a SignalR Service hub 5 kapcsolata van, és minden egyes ügyfél rendelkezik SignalR Service 1 ügyfél-kapcsolattal.
+Nincsenek, kiszolgáló és az ügyfél-kapcsolatot. Alapértelmezés szerint minden kiszolgáló a SignalR Service hub öt kapcsolata van, és minden egyes ügyfél SignalR Service egy ügyfél-kapcsolattal rendelkezik.
 
 Kapcsolatok száma is látható, az Azure Portalon egyaránt kiszolgáló és az ügyfél-kapcsolatot tartalmaz.
 
-Például egy felhasználó alkalmazás két kiszolgáló található, és határozza meg, hogy 5 hubs kódokat. Az Azure Portalon látható Server-kapcsolatok száma 2 alkalmazás-kiszolgáló lesz * 5 hubs * 5 kapcsolatok/hub = 50 kiszolgálókapcsolatok.
+Ha például két alkalmazás kiszolgáló, és meghatározza, öt hubs kódok. Kiszolgáló kapcsolati szám: 50: 2 alkalmazás-kiszolgáló * 5 hubs * 5 kapcsolatok/hub.
+
+Az ASP.NET SignalR nem egyezik a kiszolgálói kapcsolatok kiszámítása. Felhasználó által definiált hubs mellett egy alapértelmezett hub rendelkezik. Minden egyes kiszolgáló alapértelmezés szerint 5 további kiszolgáló kapcsolatot kell. A kapcsolatok száma az alapértelmezett központ biztosítja, hogy más hubs összhangban.
+
+## <a name="how-to-count-inbound-traffic--outbound-traffic"></a>Hogyan számlálható a forgalmat bejövő / kimenő forgalom
+
+Bejövő / kimenő SignalR Service szemszögéből van. Az adatforgalmat számoljuk (bájt). Üzenetek száma, például a forgalmat a mintavételi ráta is tartalmaz. A bejövő / kimenő diagram az Azure Portalon minden 100 KB / hub frissíti.
 
 ## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
+- [Az Azure monitorban aggregáció típusa](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
 - [ASP.NET Core SignalR-konfiguráció](/aspnet/core/signalr/configuration)
 - [JSON](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/27/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 09d982c98e830b957be8db43974e3a44df505967
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321058"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359408"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -114,6 +114,9 @@ A. Ha a rendszerhibajelző LED világít, az azt jelzi, hogy a rendszer állapot
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>K. Nem férek hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon. Mi lehet ennek az oka?
 A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon, ellenőrizze az előfizetése és a tárfiókja jogosultságait. Győződjön meg arról, hogy közreműködői vagy tulajdonosi jogosultságokkal rendelkezik az erőforráscsoport szintjén. Ha nem, majd van szüksége, hogy legalább Data Box-operátor szerepkör engedély a hozzáférési hitelesítő adatok megtekintéséhez.
+
+### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>K. Port csatorna konfigurációja támogatott a Data Box? Mi a helyzet MPIO-t?
+A. A Data Box csatorna Portkonfiguráció, többutas I/O (MPIO) konfigurációs vagy vLAN-konfiguráció nem támogatott.
 
 ## <a name="track-status"></a>Állapot nyomon követése
 
@@ -223,17 +226,17 @@ A.  Az Azure Data Box szolgáltatás natív módon biztosít jelentéseket, amel
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>Milyen típusú jelentések érhetők el a felügyeleti láncokhoz?
 A.  A következő típusú jelentések érhetők el a felügyeleti láncokhoz:
 
-- A DHL és a UPS szállítási logisztikai jelentései.
+- A UPS logisztikai átviteli.
 - Bekapcsolási naplók és a felhasználói megosztások hozzáférési naplói.
 - Fájljegyzék a Data Boxon sikeresen feldolgozott minden fájlról, 64 bites ciklikus redundancia-ellenőrzéssel (CRC-64) vagy ellenőrzőösszegekkel.
 - Jelentések azon fájlokról, amelyeknek sikertelen volt a feltöltése az Azure-tárfiókba.
 - A Data Box (az NIST 800 88R1 szabvány szerinti) megtisztítása az adatok Azure-tárfiókba való átmásolását követően.
 
-### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>Elérhetők a futárszolgálatok (UPS/DHL) nyomkövetési naplói? 
+### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Azok a szállítmányozó nyomkövetési naplóinak (UPS) érhető el? 
 A.  A futárcégek nyomkövetési naplóit a Data Box rendelési előzményei tartalmazzák. Ez a jelentés azt követően érhető el, miután az eszköz visszatért az Azure-adatközpontba, és a lemezeken lévő adatok törölve lettek. Ha azonnali információra van szüksége, közvetlenül a futárcég webhelyén, a megrendelés nyomkövetési számát használva lekérheti a nyomkövetési információkat.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Elszállíthatom magam a Data Boxot az Azure-adatközpontba? 
-A.  Nem. Jelenleg az Azure-adatközpont nem tudja a Data Box ügyfelek vagy a UPS-en/DHL-en kívül bármely más szállítmányozó általi kézbesítését fogadni.
+A.  Nem. Azure-adatközpont jelenleg nem fogadja el a Data Box kézbesítési ügyfelek vagy a szállító Elvégzéséért eltérő.
 
 
 ## <a name="next-steps"></a>További lépések

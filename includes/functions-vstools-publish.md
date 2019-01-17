@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b290cada86401d91313939a7673998810cb82551
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 3ac7d8cc4705fe1b6e80f1e0c7e26d847d761cf6
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51028139"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54357019"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
@@ -21,7 +21,7 @@ ms.locfileid: "51028139"
 
     ![Közzétételi cél kiválasztása](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
-    Ha engedélyezi a **futtatást a zip-ből**, az Azure-beli függvényalkalmazás közvetlenül a telepítőcsomagból fut. További információért lásd [az Azure Functions csomagfájlból történő futtatásával](../articles/azure-functions/run-functions-from-deployment-package.md) foglalkozó cikket.
+    Amikor engedélyezi a **Zip futtassa**, a függvényalkalmazás Azure-ban csak olvasható módba kerül, és közvetlenül a központi telepítési csomagot futtatja. További információért lásd [az Azure Functions csomagfájlból történő futtatásával](../articles/azure-functions/run-functions-from-deployment-package.md) foglalkozó cikket.
      
     >[!CAUTION]
     >Ha a **Meglévő kiválasztása** elemet választja, az Azure-beli meglévő függvényalkalmazás összes fájlját felülírják a helyi projekt fájljai. Csak akkor használja ezt a lehetőséget, ha frissítéseket tesz újra közzé egy meglévő függvényalkalmazásba.

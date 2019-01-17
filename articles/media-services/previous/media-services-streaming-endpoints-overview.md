@@ -7,20 +7,19 @@ author: Juliako
 writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240222"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359987"
 ---
 # <a name="streaming-endpoints-overview"></a>Adatfolyam-Szolgáltatásvégpontok áttekintése 
 
@@ -28,20 +27,26 @@ ms.locfileid: "50240222"
 
 A Microsoft Azure Media Services (AMS), egy **folyamatos átviteli végponton** streamelési szolgáltatás, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy az egy Content Delivery Network (CDN) további terjesztés céljából. A Media Services emellett zökkenőmentes Azure CDN-integrációt. A kimenő adatfolyam a Streamvégpontok szolgáltatás az élő stream, igény szerint, vagy az eszköz a Media Services-fiók a progresszív letöltés videó is lehet. Minden egyes Azure Media Services-fiók egy alapértelmezett Streamvégpontok tartalmazza. További Streamvégpontok a fiók alatt hozható létre. Nincsenek két Streamvégpontok, 1.0-s és 2.0-s verziója. 2017 január 10 kezdve minden újonnan létrehozott AMS-fiókok tartalmazza 2.0-s verziójának **alapértelmezett** Streamvégpontok. Adja hozzá az ehhez a fiókhoz további streamvégpontok is 2.0-s verzióját. Ez a változás nem érinti a meglévő fiókokat; meglévő Streamvégpontok 1.0-s verziója és 2.0-s verziójának frissíthetők. Ezzel lesz viselkedés, a számlázásra és a funkció a módosítások (további információkért lásd: a **típusai és verziói Streamelési** szakasz leírása az alábbiakban található).
 
-Emellett kezdődően a 2.15 (2017 január jelent meg), az Azure Media Services hozzá a következő tulajdonságokat a folyamatos átviteli végponton entitás: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Ezeket a tulajdonságokat részletes ismertetőt talál [ez](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Az Azure Media Services a következő tulajdonságokat a folyamatos átviteli végponton entitás hozzáadva: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Ezeket a tulajdonságokat részletes ismertetőt talál [ez](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Amikor hoz létre az Azure Media Services-fiók egy standard szintű streamvégpont jön létre, az alapértelmezett a **leállítva** állapota. Az alapértelmezett streamvégpontot nem törölhető. Rendelkezésre állás a célzott régió az Azure CDN, az újonnan létrehozott alapértelmezett alapértelmezés szerint streamvégpontot is tartalmaz "StandardVerizon" CDN szolgáltató integrációja. 
-
->[!NOTE]
->Az Azure CDN-integrációnak letiltható a streamvégpont elindítása előtt.
+                
+> [!NOTE]
+> Az Azure CDN-integrációnak letiltható a streamvégpont elindítása előtt. A `hostname` és a streamelési URL-cím ugyanaz marad, engedélyezi a CDN-e.
 
 Ez a témakör a fő funkciókat streamvégpontok által nyújtott áttekintést.
+
+## <a name="naming-conventions"></a>Elnevezési konvenciók
+
+Az alapértelmezett végpont: `{AccountName}.streaming.mediaservices.windows.net`
+
+Minden további végpontok: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Streamelési típusai és verziói
 
 ### <a name="standardpremium-types-version-20"></a>Standard/prémium típusok (2.0-s verzió)
 
-A Media Services 2017 január kiadásával kezdődően, két folyamatos átviteli típusa van: **Standard** és **prémium**. Ezek a típusok "2.0-s" Streaming endpoint verziójának részét képezik.
+A Media Services 2017 január kiadásával kezdődően, két folyamatos átviteli típussal rendelkezik: **Standard szintű** és **prémium**. Ezek a típusok "2.0-s" Streaming endpoint verziójának részét képezik.
 
 Típus|Leírás
 ---|---
@@ -96,7 +101,7 @@ Ettől: | Művelet | Műveletek
 ---|---|---
 Klasszikus|Standard|Jóváhagyás szükséges
 Klasszikus|Prémium| Méretezési csoport (további streamelési egységek)
-Standard/prémium|Klasszikus|Nem érhető el (ha streaming endpoint verziója 1.0-t. Módosítsa a "0" scaleunits beállítása klasszikus engedélyezett)
+Standard/Premium|Klasszikus|Nem érhető el (ha streaming endpoint verziója 1.0-t. Módosítsa a "0" scaleunits beállítása klasszikus engedélyezett)
 Standard (a/a CDN nélkül)|Ugyanezzel a konfigurációval a prémium szintű|Engedélyezett a **lépések** állapota. (az Azure Portalon)
 Prémium szintű (a/a CDN nélkül)|Ugyanezzel a konfigurációval rendelkező standard|Engedélyezett a **lépések** state (Azure-portálon)
 Standard (a/a CDN nélkül)|Prémium szintű, a másik config|Engedélyezett a **leállt** state (Azure-portálon). Nem engedélyezett a futó állapotot.

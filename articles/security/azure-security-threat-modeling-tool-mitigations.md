@@ -1,11 +1,11 @@
 ---
-title: -Microsoft fenyegetés modellezési eszköz - megoldást Azure |} Microsoft Docs
-description: A Microsoft fenyegetés modellezési eszköz Kiemelés a leginkább kitett lehetséges megoldás megoldást lap fenyegetések jönnek létre.
+title: Megoldások – Microsoft Fenyegetésmodellezési eszköz – Azure |} A Microsoft Docs
+description: Megoldások oldal a Microsoft Threat Modeling Tool kiemelése a leginkább kitett lehetséges megoldása a fenyegetések jönnek létre.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 07ef1fd3d81d795c9164741d22b5a689f86bd720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23867982"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359136"
 ---
-# <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft fenyegetések modellezése eszköz megoldást
+# <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool megoldások
 
-A fenyegetések modellezése eszköz a Microsoft biztonsági fejlesztési életciklus (SDL) alapeleme. Lehetővé teszi a szoftverek fejlesztők azonosítása és potenciális biztonsági problémákat korai, amelyek viszonylag egyszerű és költséghatékony megoldásához. Emiatt nagy mértékben csökkenti a fejlesztési költségek. Is azt használható az eszköz szakértőivel nem biztonsági szem előtt, könnyítve modellezni az összes létrehozására, illetve elemzése fenyegetés modellek világos útmutatást megadásával.
+A Threat Modeling Tool a Microsoft biztonsági fejlesztési életciklus (SDL) alapeleme. Azonosíthatja és korai, csökkentheti a potenciális biztonsági problémákat, amelyek viszonylag egyszerű és költséghatékony oldja meg a szoftver tervezők lehetővé teszi. Ennek eredményeképpen jelentősen csökkenti a fejlődés a teljes költség. Ezenkívül alakítottuk ki az eszköz nem biztonsági szakértői szem előtt, könnyíti threat modellezési minden fejlesztő számára világos útmutatóval szolgál azáltal, hogy létrehozásával és enyhítési elemzése.
 
-Látogasson el a  **[fenyegetések modellezése eszköz](./azure-security-threat-modeling-tool.md)**  való kezdjen neki még ma!
+Látogasson el a **[Threat Modeling Tool](./azure-security-threat-modeling-tool.md)** és vágjon bele most!
 
-## <a name="mitigation-categories"></a>Megoldás kategóriák
+## <a name="mitigation-categories"></a>Kockázatcsökkentési kategóriák
 
-A fenyegetések modellezése eszköz azok mérséklési szerint vannak kategóriába megfelelően a webes alkalmazás biztonsági keretben, melyik a következőkből áll:
+A Threat Modeling Tool megoldások telefonokat megfelelően a webes alkalmazás biztonsági keret, amely a következőkből áll:
 
 | Kategória | Leírás |
 | -------- | ----------- |
-| **[A vizsgálati és naplózási](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Ki nem adott meg, mit és mikor? Vizsgálati és naplózási tekintse meg az alkalmazást hogyan rögzíti, biztonsággal kapcsolatos események |
-| **[Hitelesítés](./azure-security-threat-modeling-tool-authentication.md)** | hogy vagy? A hitelesítés az a folyamat, ahol egy entitás egy másik entitás, általában a hitelesítő adatokat, például egy felhasználónevet és jelszót keresztül identitását igazolja |
-| **[Engedélyezési](./azure-security-threat-modeling-tool-authorization.md)** | Mire szolgál? Engedélyezési, hogy az alkalmazás biztosítja az erőforrások és a műveletek hozzáférés-vezérlést |
-| **[A kommunikáció biztonsága](./azure-security-threat-modeling-tool-communication-security.md)** | Aki akkor beszélünk? Kommunikációs biztonsági biztosítja végzett összes kommunikáció megfelelő biztonsága |
-| **[Konfigurációkezelés](./azure-security-threat-modeling-tool-configuration-management.md)** | Aki futtató az alkalmazást? Mely adatbázisokat nem azt csatlakozni? Hogyan történik az az alkalmazás? Hogyan biztonságosak ezeket a beállításokat? Az alkalmazás a működési problémák kezelésének hivatkozik konfigurációkezelés |
-| **[Titkosítás](./azure-security-threat-modeling-tool-cryptography.md)** | Hogyan meg megakadályozzák titkos kulcsokat (bizalmas)? Hogyan esetleg illetéktelen ellenőrző az adatok és a szalagtárak (integritása)? Hogyan akkor ad magok meg lehet erős titkosítással véletlenszerű értéket? Titkosítás hivatkozik hogyan érvénybe lépteti az alkalmazás a titkosítás és integritás |
-| **[Kivételek kezelése](./azure-security-threat-modeling-tool-exception-management.md)** | Ha az alkalmazás metódus hívása nem sikerült, mire az alkalmazást? Milyen mértékű tegye meg felfedése? A végfelhasználók számára hajtsa végre ismét rövid hibainformációk? Vissza a hívók számára tegye át értékes kivételek adatai? Szabályosan elakad az alkalmazást? |
-| **[Bemenet-ellenőrzést](./azure-security-threat-modeling-tool-input-validation.md)** | Honnan tudhatja, hogy a bemeneti alkalmazás kap-e érvényes és biztonságos? Bemenet-ellenőrzéshez hogyan az alkalmazás-szűrők, scrubs vagy elutasítja a további feldolgozás előtt bevitel hivatkozik. Vegye figyelembe a korlátozási belépési ponton keresztül bemeneti és kimeneti kilépési ponton keresztül kódolás. Megbízik, például az adatbázisok és a fájlmegosztások forrásból származó adatokat? |
-| **[Bizalmas adatok](./azure-security-threat-modeling-tool-sensitive-data.md)** | Hogyan az alkalmazás bizalmas adatokat kezelni? Bizalmas adatok hivatkozik, amely védeni kell a memória, a hálózaton keresztül, vagy az állandó tároló adatokat az alkalmazás kezelésének |
-| **[Munkamenet-kezelés](./azure-security-threat-modeling-tool-session-management.md)** | Hogyan nem az alkalmazás kezelése és védelme a felhasználói munkamenetek? A munkamenet a felhasználó és a webes alkalmazás közötti kapcsolati kapcsolódó tevékenységek sorozata hivatkozik. |
+| **[A vizsgálati és naplózási](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Ki nem adott meg, mit és mikor? Naplózás és a naplózás tekintse meg, hogy az alkalmazás rögzíti a biztonsági események |
+| **[Hitelesítés](./azure-security-threat-modeling-tool-authentication.md)** | Ki Ön? Hitelesítés az a folyamat, ha egy entitás igazolja a hitelesítő adatokat, például egy felhasználónevet és jelszót keresztül általában egy másik entitás identitását |
+| **[Engedélyezési](./azure-security-threat-modeling-tool-authorization.md)** | Mire használható? Engedély, hogy az alkalmazás hozzáférés-vezérléseket biztosít az erőforrások és műveletek |
+| **[Kommunikációs biztonság](./azure-security-threat-modeling-tool-communication-security.md)** | Akik akkor beszélünk? Kommunikációs biztonság gondoskodik arról, hogy minden kommunikáció kész lehető legbiztonságosabb |
+| **[Konfigurációkezelés](./azure-security-threat-modeling-tool-configuration-management.md)** | Akik futtató alkalmazását? Adatbázisok nem, hogy kapcsolódni? Hogyan történik az alkalmazását? Hogyan biztonságosak ezeket a beállításokat? Konfigurációkezelés hivatkozik hogyan az alkalmazás kezelje-e ezek működési problémák |
+| **[Titkosítás](./azure-security-threat-modeling-tool-cryptography.md)** | Hogyan akadályozzák titkos kulcsokat (bizalmas)? Hogyan, hogy illetéktelen ellenőrző az adatok és a könyvtárakat (integritása)? Hogyan, ad magok számára, amelyet be kell kriptográfiai erős, véletlenszerű értékek? Titkosítás hivatkozik hogyan érvénybe lépteti az alkalmazás a bizalmas és -integritás |
+| **[Kivételek kezelése](./azure-security-threat-modeling-tool-exception-management.md)** | Ha nem sikerül egy metódus hívása az alkalmazásban, mire az alkalmazás? IP-címek fenntartási tegye meg felfedése? Tegye felhasználóbarát hibaüzenetet visszatér a végfelhasználók? Tegye meg információkat adnak át értékes kivétel vissza a hívónak? Nem az alkalmazás nem sikerült szabályosan? |
+| **[Bemenet-ellenőrzés](./azure-security-threat-modeling-tool-input-validation.md)** | Hogyan tudja, hogy az alkalmazás fogad a bemeneti-e érvényes és biztonságos? Bemenet-ellenőrzés módját az alkalmazás szűri, scrubs vagy elutasítja a további feldolgozás előtt bevitel hivatkozik. Fontolja meg a korlátozásra bemeneti keresztül belépési pontok és a kódolási kimeneti kilépési ponton keresztül. Megbízik, például adatbázisok és fájlmegosztások forrásokból származó adatokat? |
+| **[Bizalmas adatok](./azure-security-threat-modeling-tool-sensitive-data.md)** | Hogyan kezeli az alkalmazás bizalmas adatokat? Bizalmas adatok hivatkozik, amely védeni kell a memória, a hálózaton keresztül, vagy állandó tárolók adatokat az alkalmazás kezelésének |
+| **[Munkamenet-kezelés](./azure-security-threat-modeling-tool-session-management.md)** | Hogyan az alkalmazás kezelése és védelme a felhasználói munkamenetek? A munkamenet egy felhasználó és a webes alkalmazás közötti kapcsolódó interakciók sorozatát hivatkozik. |
 
-Ez segít azonosítani:
+Ennek segítségével azonosíthatja:
 
 * Ha végzett a leggyakoribb hibák
-* Hol találhatók a legtöbb végrehajthatóként fejlesztései
+* Hol találhatók a gyakorlatban leginkább hasznosítható fejlesztések
 
-Ennek eredményeképpen a fókusz ezen kategóriák használ, és munkánk biztonsági, így ha tudja, hogy a legjellemzőbb biztonsági problémákat tapasztal a bemeneti érvényesítési, hitelesítési és engedélyezési kategóriák, megkezdheti van. További információt  **[a szabadalmi hivatkozás](https://www.google.com/patents/US7818788)**
+Ennek eredményeképpen alkalmazkodó e kategóriák használ, és rangsorolja a biztonsági munkahelyi azt tudja, hogy a bemeneti érvényesítést, hitelesítési és engedélyezési kategóriák a leggyakrabban előforduló biztonsági problémák fordulnak elő, ha meg van. További információt  **[szabadalmi ide](https://www.google.com/patents/US7818788)**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Látogasson el  **[fenyegetések modellezése eszköz fenyegetések](./azure-security-threat-modeling-tool-threats.md)**  további információt az eszköz alapján hoz létre a lehetséges tervezési fenyegetések fenyegetés kategóriák.
+Látogasson el **[Threat Modeling eszköz fenyegetések](./azure-security-threat-modeling-tool-threats.md)** további információ a lehetséges tervezési fenyegetések létrehozásához használja az eszköz fenyegetés kategóriák.

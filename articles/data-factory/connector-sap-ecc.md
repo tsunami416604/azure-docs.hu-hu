@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: ab9d28212e471a9fe3d59ff30a8225b7440655d7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d6a6d9b352db61d98e85c840a3ebc5cb6a832a3f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022495"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352461"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP ECC
 
@@ -99,7 +99,7 @@ Adatok másolása az SAP ECC, állítsa be a type tulajdonság, az adatkészlet 
     "name": "SapEccDataset",
     "properties": {
         "type": "SapEccResource",
-        "typePoperties": {
+        "typeProperties": {
             "path": "<entity path e.g. dd04tentitySet>"
         },
         "linkedServiceName": {
@@ -121,7 +121,7 @@ Adatok másolása az SAP ECC, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SapEccSource** | Igen |
-| lekérdezés | Adatok szűrése OData-lekérdezés beállításai. Példa: "$select = név, leírás és $top = 10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2018
+ms.date: 01/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5b8247533a8bf51017767aac3a04e47ce6348a60
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 542993d803282bbf62e2e401cab1968a656a8971
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435293"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352274"
 ---
 # <a name="create-resource-groups-and-resources-for-an-azure-subscription"></a>Erőforráscsoportokat és erőforrásokat az Azure-előfizetés létrehozása
 
@@ -289,7 +289,7 @@ Az alábbi példa egy meglévő szabályzat-definíció rendel hozzá az előfiz
 }
 ```
 
-Beépített szabályzatot alkalmazza az Azure-előfizetésében, használja a következő Azure CLI-parancsokat. Ebben a példában a szabályzat nem rendelkezik paraméterekkel
+Beépített szabályzatot alkalmazza az Azure-előfizetésében, használja a következő Azure CLI-parancsokat:
 
 ```azurecli-interactive
 # Built-in policy that does not accept parameters
@@ -315,7 +315,7 @@ New-AzureRmDeployment `
   -policyName auditRGLocation
 ```
 
-Beépített szabályzatot alkalmazza az Azure-előfizetésében, használja a következő Azure CLI-parancsokat. Ebben a példában a szabályzat paraméterrel rendelkezik.
+Beépített szabályzatot alkalmazza az Azure-előfizetésében, használja a következő Azure CLI-parancsokat:
 
 ```azurecli-interactive
 # Built-in policy that accepts parameters
@@ -390,7 +390,7 @@ Is [definiálása](../azure-policy/policy-definition.md) és ugyanazt a sablont 
 }
 ```
 
-A szabályzat-definíció létrehozása az előfizetésében, és alkalmazza azt az előfizetést, használja a következő CLI-parancsot.
+A szabályzat-definíció létrehozása az előfizetésében, és alkalmazza azt az előfizetést, használja a következő CLI-parancsot:
 
 ```azurecli-interactive
 az deployment create \
@@ -408,9 +408,9 @@ New-AzureRmDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="assign-role"></a>Szerepkör hozzárendelése
+## <a name="assign-role-at-subscription"></a>Előfizetés szerepkör hozzárendelése
 
-Az alábbi példa egy szerepkört rendel egy felhasználóhoz vagy csoporthoz.
+Az alábbi példa egy szerepkört rendel egy felhasználóhoz vagy csoporthoz, az előfizetés. Ebben a példában nem adja meg a hozzárendelési hatókör, mert a hatókör értéke automatikusan ahhoz az előfizetéshez.
 
 ```json
 {
@@ -439,7 +439,7 @@ Az alábbi példa egy szerepkört rendel egy felhasználóhoz vagy csoporthoz.
 }
 ```
 
-Active Directory csoport hozzárendelése az előfizetéshez tartozó szerepkörhöz, használja a következő Azure CLI-parancsokat.
+Active Directory csoport hozzárendelése egy szerepkört az előfizetés, használja a következő Azure CLI-parancsokat:
 
 ```azurecli-interactive
 # Get ID of the role you want to assign
@@ -468,6 +468,94 @@ New-AzureRmDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
   -roleDefinitionId $role.Id `
   -principalId $adgroup.Id
+```
+
+## <a name="assign-role-at-scope"></a>Hatókörben szerepkör hozzárendelése
+
+A következő előfizetés-szintű sablon egy szerepkört rendel egy felhasználót vagy csoportot, ami egy erőforráscsoportot az előfizetésen belül. A hatókört kell lennie, vagy az alatti üzembe helyezési szintjét. Előfizetés üzembe, és adjon meg egy szerepkör-hozzárendelés hatóköre egy adott előfizetésen belüli erőforráscsoportot. Azonban nem üzembe helyezése egy erőforráscsoportot, és adjon meg egy szerepkör-hozzárendelés hatóköre az előfizetéshez.
+
+Rendelje hozzá a szerepkört egy hatókörben, egy beágyazott üzemelő példány használja. Figyelje meg, hogy az erőforráscsoport nevét a telepítési erőforrás tulajdonságai között, és a szerepkör-hozzárendelés hatóköre tulajdonságában van-e megadva.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "principalId": {
+            "type": "string"
+        },
+        "roleDefinitionId": {
+            "type": "string"
+        },
+        "rgName": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "assignRole",
+            "resourceGroup": "[parameters('rgName')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/roleAssignments",
+                            "name": "[guid(parameters('principalId'), deployment().name)]",
+                            "apiVersion": "2017-09-01",
+                            "properties": {
+                                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
+                                "principalId": "[parameters('principalId')]",
+                                "scope": "[concat(subscription().id, '/resourceGroups/', parameters('rgName'))]"
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Active Directory csoport hozzárendelése egy szerepkört az előfizetés, használja a következő Azure CLI-parancsokat:
+
+```azurecli-interactive
+# Get ID of the role you want to assign
+role=$(az role definition list --name Contributor --query [].name --output tsv)
+
+# Get ID of the AD group to assign the role to
+principalid=$(az ad group show --group demogroup --query objectId --output tsv)
+
+az deployment create \
+  -n demoRole \
+  -l southcentralus \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json \
+  --parameters principalId=$principalid roleDefinitionId=$role rgName demoRg
+```
+
+Ez a PowerShell használatával a sablon üzembe helyezéséhez használja:
+
+```azurepowershell-interactive
+$role = Get-AzureRmRoleDefinition -Name Contributor
+
+$adgroup = Get-AzureRmADGroup -DisplayName demogroup
+
+New-AzureRmDeployment `
+  -Name demoRole `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json `
+  -roleDefinitionId $role.Id `
+  -principalId $adgroup.Id `
+  -rgName demoRg
 ```
 
 ## <a name="next-steps"></a>További lépések

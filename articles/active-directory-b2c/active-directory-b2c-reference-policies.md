@@ -1,6 +1,6 @@
 ---
 title: Az Azure Active Directory B2C felhasználói folyamatok |} A Microsoft Docs
-description: A témakör az Azure Active Directory B2C bővíthető házirend-keretrendszer és az hogyan hozhat létre a különböző felhasználói folyamatok típusáról.
+description: További információ az Azure Active Directory B2C-vel és a különböző felhasználói folyamatok létrehozása a bővíthető házirend-keretrendszer.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,30 +10,32 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d4a93b04b8ad86a6a6d36a5bdaf3209b49e7a9dc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bcbd26c8e78e29daa78a7e50f2f49b095103f696
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877082"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351781"
 ---
-# <a name="azure-active-directory-b2c-user-flows"></a>Az Azure Active Directory B2C: Felhasználókövetési adatai
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói folyamatok
 
+Az Azure Active Directory (Azure AD) B2C bővíthető házirend-keretrendszer a szolgáltatás alapvető erősségét. Például csak a teljes leírása identitásélményt házirendek regisztráció, bejelentkezés vagy profil szerkesztéséhez. Segítséget a leggyakoribb feladatok identitás beállítása, az Azure AD B2C-portálon előre meghatározott, a konfigurálható szabályzatok nevű tartalmaz **felhasználókövetési adatai**. 
 
-Az Azure Active Directory (Azure AD) B2C bővíthető házirend-keretrendszer a szolgáltatás alapvető erősségét. Például csak a teljes leírása fogyasztói identitások jellemzőit házirendek regisztráció, bejelentkezés vagy profil szerkesztéséhez. Segítséget a leggyakoribb feladatok identitás beállítása, az Azure AD B2C-portálon előre meghatározott, a konfigurálható szabályzatok nevű tartalmaz **felhasználókövetési adatai**. Például egy regisztrációs felhasználói folyamata lehetővé teszi a viselkedés szabályozására, a következő beállítások konfigurálásához:
+## <a name="what-are-user-flows"></a>Mik azok a felhasználói folyamatok?
 
-* Fióktípus esetében (például a Facebookhoz közösségi fiókok) vagy a helyi fiókok, például az e-mail-címeket, amelyek a fogyasztók iratkozzon fel az alkalmazás használatával
-* Attribútumok (például utónév, postai irányítószám és cipőméreten) regisztráció során a felhasználóknak gyűjtendő
-* Az Azure multi-factor Authentication használata
-* Az összes bejelentkezési oldalak megjelenésének és
-* Információ (amely jegyzékfájlok egy jogkivonatban jogcímekként), hogy az alkalmazás fogad mikor a felhasználói folyamat befejeződik
+Felhasználói folyamat segítségével szabályozható a viselkedést az alkalmazások a úgy konfigurálja a következő beállításokat:
 
-Különböző típusú több felhasználói folyamatot létrehozni a bérlőben, és igény szerint használhatja őket az alkalmazásokban. Felhasználói folyamatok alkalmazásokhoz felhasználhatók. Ez rugalmasságot lehetővé teszi a fejlesztők és módosíthatja a fogyasztói identitások jellemzőit, minimális konfigurációval vagy a programkód módosítása nélkül.
+- Típusok használt a bejelentkezéshez, mint a közösségi fiókok fiók, mint a Facebook vagy a helyi fiókok
+- A felhasználóknak, például az első név, postai irányítószám, gyűjteni és cipő mérete attribútumok
+- Azure Multi-Factor Authentication
+- A felhasználói felület testreszabása
+- Az alkalmazás fogad a jogkivonatban jogcímekként információk 
 
-Felhasználói folyamatok használata egy egyszerű fejlesztői felületen keresztül érhetők el. Az alkalmazás felhasználói folyamat aktiválása egy szabványos HTTP-hitelesítési kérelmet (a felhasználói folyamat paraméter átadja a kérésben) használatával, és a egy testre szabott token válaszként megkapja. Például az egyetlen kérelmek, amelyek aktiválják az előfizetés-kezelő felhasználói folyamat és a kérelmek, amelyek aktiválják az felhasználói bejelentkezési folyamat közötti különbség a felhasználói interakciósorozat neve, amely a "p" lekérdezésisztring-paraméter szerepel:
+Különböző típusú számos felhasználói folyamatok létrehozása a bérlőben, és igény szerint használhatja őket az alkalmazásokban. Felhasználói folyamatok alkalmazásokhoz felhasználhatók. Ezt a rugalmasságot és identitással kapcsolatos műveletet, a minimális vagy a programkód módosítása nélkül teszi lehetővé. Az alkalmazás felhasználói folyamat aktiválása egy normál HTTP-hitelesítési kérelmet, amely tartalmazza a felhasználói folyamat paraméter használatával. A testre szabott [token](active-directory-b2c-reference-tokens.md) nem érkezett válasz. 
+
+Az alábbi példák bemutatják a "p" lekérdezésisztring-paraméter, amely meghatározza a használandó felhasználói folyamatot:
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -43,11 +45,9 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
 &p=b2c_1_siup                                       // Your sign-up user flow
-
 ```
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -57,50 +57,34 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
 &p=b2c_1_siin                                       // Your sign-in user flow
-
 ```
 
-## <a name="create-a-sign-up-or-sign-in-user-flow"></a>Regisztrálási vagy bejelentkezési felhasználói folyamat létrehozása
+## <a name="user-flow-versions"></a>Felhasználói folyamatok verziói
 
-Ez a felhasználói folyamat mindkét felhasználói regisztrációs és bejelentkezési élmény egyetlen konfigurációval rendelkező kezeli. A fogyasztók le a megfelelő elérési útját (regisztrálási vagy bejelentkezési) függően is vezetett. Bemutatja a jogkivonatokat, amelyeket az alkalmazás fogad sikeres regisztrálásokkor vagy bejelentkezések tartalmát is.  A kódminta a **regisztrálási vagy bejelentkezési** a felhasználói folyamat [elérhető itt](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Javasoljuk, hogy használja-e a felhasználói folyamat keresztül egy **előfizetési** felhasználói folyamat vagy egy **bejelentkezési** felhasználói folyamatot.  
+Az új Azure Portalon [felhasználói folyamatok verziói](user-flow-versions.md) folyamatosan bővül. Használatának megkezdése az Azure AD B2C-vel, ha vizsgálni a felhasználói folyamatok használata javasolt, hogy használja. Egy új felhasználói folyamatot hoz létre, ha úgy dönt, a felhasználói folyamatot, amely szükséges a **ajánlott** fülre.
 
-[!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
+Jelenleg ajánlott a következő felhasználói folyamatok:
 
-## <a name="create-a-sign-up-user-flow"></a>Regisztráció felhasználói folyamat létrehozása
+- **Regisztráljon, és jelentkezzen be a** – mind a regisztrációs és bejelentkezési élményt egyetlen konfigurációval rendelkező kezeli. Felhasználók vannak vezetett le a megfelelő elérési útját a környezettől függően. Javasoljuk, hogy használja-e a felhasználói folyamat keresztül egy **előfizetési** felhasználói folyamat vagy egy **bejelentkezési** felhasználói folyamatot.
+- **Profil szerkesztése** – lehetővé teszi a felhasználók szerkesztése azok profiladatait.
+- **Új jelszó kérésére vonatkozó** -e, és hogyan felhasználókat jelszavuk is konfigurálhatja.
 
-[!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
+## <a name="linking-user-flows"></a>Hivatkozási felhasználókövetési adatai
 
-## <a name="create-a-sign-in-user-flow"></a>Jelentkezzen be a felhasználói folyamat létrehozása
+A **regisztrálási vagy bejelentkezési** helyi fiókkal rendelkező felhasználói folyamat magában foglalja egy **elfelejtette jelszavát?** tapasztalatait az első lapon. Ez a hivatkozás nem automatikusan eseményindító jelszó alaphelyzetbe felhasználói folyamatot. 
 
-[!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
+Ehelyett a hibakódot `AADB2C90118` küld vissza az alkalmazást. Az alkalmazás által egy adott felhasználói folyamatot, amely alaphelyzetbe állítja a jelszót erről a hibakódról kezelnie kell. Lásd például, vessen egy pillantást egy [egyszerű ASP.NET-minta](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , amely bemutatja a felhasználói folyamatok csatolását.
 
-## <a name="create-a-profile-editing-user-flow"></a>Profilszerkesztési felhasználói folyamata létrehozása
+## <a name="email-address-storage"></a>E-mail cím storage
 
-[!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
-
-## <a name="create-a-password-reset-user-flow"></a>Jelszó alaphelyzetbe állítása felhasználói folyamat létrehozása
-
-[!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
-
-## <a name="preview-user-flows"></a>Előzetes verzió felhasználókövetési adatai
-
-Új szolgáltatásokat adunk, mivel ezek közül néhányat nem lehet áll rendelkezésre a meglévő szabályzatok, vagy a felhasználói folyamatok.  Tervezzük cserélje le a legújabb azonos típusú régebbi verziók után ezek a felhasználói folyamatok adja meg az általánosan elérhető  A meglévő szabályzatokat vagy a felhasználói folyamatok nem változik, és új funkciók előnyeinek kihasználásához lesz új felhasználói folyamatokat hozhat létre.
-
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-### <a name="how-do-i-link-a-sign-up-or-sign-in-user-flow-with-a-password-reset-user-flow"></a>Hogyan lehet hivatkozni a jelszó alaphelyzetbe állítása felhasználói folyamat regisztrálási vagy bejelentkezési felhasználói folyamat?
-Amikor hoz létre egy **regisztrálási vagy bejelentkezési** felhasználói folyamat (a helyi fiókok esetében), megjelenik egy **elfelejtette jelszavát?** tapasztalatait az első lapon. Ez a hivatkozás nem automatikusan eseményindító jelszó alaphelyzetbe felhasználói folyamatot. 
-
-Ehelyett a hibakódot **`AADB2C90118`** küld vissza az alkalmazást. Az alkalmazás egy adott jelszóvisszaállítási felhasználói folyamatot meghívásával erről a hibakódról kezelnie kell. További információkért lásd: egy [minta azt mutatja be a felhasználói folyamatok hivatkozást megközelítés](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
-
-### <a name="should-i-use-a-sign-up-or-sign-in-user-flow-or-a-sign-up-user-flow-and-a-sign-in-user-flow"></a>Regisztrálási vagy bejelentkezési felhasználói folyamat vagy a felhasználói regisztrációs folyamat és a egy bejelentkezési felhasználói folyamatot kell használnom?
-Javasoljuk, hogy használjon egy **regisztrálási vagy bejelentkezési** felhasználói folyamat során egy **előfizetési** felhasználói folyamat és a egy **bejelentkezési** felhasználói folyamat.  
-
-A **regisztrálási vagy bejelentkezési** felhasználói folyamat, mint további képességekkel rendelkezik a **bejelentkezési** felhasználói folyamatot. Emellett lehetővé teszi, hogy oldal-UI testreszabása és jobb támogatása érdekében a honosításra van. 
-
-A **bejelentkezési** felhasználói folyamat ajánlott, nem kell a felhasználói folyamatok honosítása, ha csak kisebb testreszabási lehetőségeket szükséges márkajelzési, és szeretné a jelszó alaphelyzetbe állítása, beépített.
+Lehet, hogy egy e-mail-cím részeként szükség van egy felhasználói folyamat. Ha a felhasználó hitelesíti magát egy közösségi identitásszolgáltatóval, az e-mail-cím tárolódik a **otherMails** tulajdonság. Ha egy helyi fiók felhasználói nevét alapul, az e-mail-cím tárolva van egy erős hitelesítés részletei tulajdonság. Ha egy e-mail-cím alapján egy helyi fiókot, akkor az e-mail-cím tárolja a **signInNames** tulajdonság.
+ 
+Az e-mail-cím nem garantált, hogy mindkét esetben ellenőrizhető. Bérlői rendszergazda letilthatja az e-mailes ellenőrzés azokban a házirendekben, amelyek alapvető helyi fiókok esetében. Akkor is, ha az e-mail cím ellenőrzése engedélyezve van, a címek nem ellenőrzött Ha egy közösségi identitásszolgáltatót származnak, és azok még nem lett módosítva.
+ 
+Csak a **otherMails** és **signInNames** tulajdonságait az Active Directory Graph API keresztül érhetők el. Az e-mail-címét az erős hitelesítés részletei tulajdonság nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
-* [Jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása](active-directory-b2c-token-session-sso.md)
-* [Során felhasználói regisztrációs e-mailes ellenőrzés letiltása](active-directory-b2c-reference-disable-ev.md)
+
+A javasolt felhasználói folyamatok létrehozásához kövesse a [oktatóanyag: Felhasználói folyamat létrehozása](tutorial-create-tenant.md).
+
 

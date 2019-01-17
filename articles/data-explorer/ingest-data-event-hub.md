@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064695"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352935"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
@@ -189,7 +189,7 @@ Most, hogy az alkalmazás adatokat állít elő, láthatja, ahogy ezek az adatok
     ![Üzenetek eredményhalmaza](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > ADX rendelkezik egy Adatbetöltési, optimalizálja a betöltési folyamat (kötegelés) összesítési házirend. A házirendet 5 perc van konfigurálva, a késés tapasztalható.
+    > Az adatkezelő az Azure-összesítési (kötegelés) szabályzat adatbetöltés, optimalizálja a betöltési folyamat rendelkezik. A házirendet 5 perc van konfigurálva, a késés tapasztalható.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -208,4 +208,4 @@ Ha nem tervezi, hogy továbbra is használja, a költségek elkerülése érdek�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

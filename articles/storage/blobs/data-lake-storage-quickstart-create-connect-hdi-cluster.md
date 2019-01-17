@@ -6,14 +6,14 @@ author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792889"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353855"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Gyors útmutató: A HDInsight-fürtök beállítása
 
@@ -25,6 +25,10 @@ Hadoop-fürt több virtuális gépek (csomópontok), elosztott feldolgozási fel
 >A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ismerje meg, hogyan [fürt törlése.](../../hdinsight/hdinsight-delete-cluster.md)
 
 Az adatok réteg ebben a rövid útmutatóban egy tárfiókot a Data Lake Storage Gen2 képességekkel rendelkező lesz. A hierarchikus névtér szolgáltatással és [Hadoop illesztőprogram](data-lake-storage-abfs-driver.md), Data Lake Storage Gen2 elosztott feldolgozásra és elemzésre van optimalizálva. Egy tárfiókot, amely a Data Lake Storage Gen2 engedélyezve van a tárolt adatok továbbra is fennáll, egy HDInsight-fürt törlése után is.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Felhasználó által hozzárendelt felügyelt identitás létrehozása, és rendelje hozzá kell a **Blob Storage-közreműködői szerepkör** identitásra. Lásd: [létrehozása, list, delete vagy egy az Azure portal használatával felügyelt felhasználó által hozzárendelt identitások szerepkör hozzárendelése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 ## <a name="cluster-setup-methods"></a>Fürt telepítési módszer
 
@@ -104,8 +108,7 @@ Konfigurálása során az alapértelmezett storage-végpont megadása Data Lake 
 
 ![Fürt-tárolási beállítások: HDFS-kompatibilis tárolási végpontok](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
-> [!IMPORTANT]
-> Ügyeljen arra, hogy **tiltsa le a Data Lake Store-hozzáférés**. Ez a beállítás hivatkozik a régi *Data Lake Store* funkciókat és igényeinek megfelelően le kell tiltani ahhoz, hogy *Data Lake Storage* szolgáltatások helytelenül fog működni.
+Az a **felhasználóhoz felügyelt identitás**, mindenképp válassza ki a felhasználó által felügyelt felhasználó által hozzárendelt felügyelt identitás létrehozott egy előfeltétel, ez a cikk.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -212,17 +215,17 @@ Néhány natív Java-összetevők, például a Mahout és kaszkádolás, a Java-
 Egyes esetekben szeretné a létrehozási folyamat során a következő konfigurációs fájlok konfigurálása:
 
 * clusterIdentity.xml
-* Core-site.xml
-* Gateway.XML
+* core-site.xml
+* gateway.xml
 * hbase-env.xml
 * hbase-site.xml
 * hdfs-site.xml
-* Hive-env.xml
-* Hive-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-hely
-* az oozie-site.xml
-* az oozie-env.xml
-* a Storm-site.xml
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
 * tez-site.xml
 * webhcat-site.xml
 * yarn-site.xml

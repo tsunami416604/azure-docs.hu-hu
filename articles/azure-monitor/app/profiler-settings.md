@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights Profiler beállítások panel |} A Microsoft Docs
-description: A profiler állapotának megtekintéséhez és a munkamenetek Profilkészítés indítása
+title: Az Azure Application Insights Profiler beállítások panelen |} A Microsoft Docs
+description: Profiler állapotának megtekintéséhez és a munkamenetek Profilkészítés indítása
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,109 +12,117 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b656fb521ad72256e91de63e96aa261f1e94bd13
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 16e855d8c9c5863339ec09b48d41d6f011b3e836
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083110"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358677"
 ---
 # <a name="configure-application-insights-profiler"></a>Az Application Insights Profiler konfigurálása
 
-## <a name="profiler-settings-page"></a>Profiler-beállítások lap
+## <a name="profiler-settings-pane"></a>Profiler beállítások panel
 
-A profiler beállításai lapon billentyűkombináció lenyomásával is megnyithatók az Application Insights teljesítmény oldalról a **Profiler** gombra.
+Az Azure Application Insights Profiler-beállítások panel megnyitásához nyissa meg az Application Insights teljesítménye paneljén, és válassza ki a **Profiler** gombra.
 
-![a profiler ablaktábla-bejegyzés konfigurálása][configure-profiler-entry]
+![A Profiler panel konfigurálása][configure-profiler-entry]
 
-Az Application Insights Profiler konfigurálása lap négy funkciókat tartalmazza: 
-1. **Most már profil** -profilkészítési munkamenetek kell elindítani a minden alkalmazás, amely kapcsolódik az Application Insights példányát erre a gombra kattintva okoz
-1. **Társított alkalmazások** -profiler küld az Application Insights-erőforrás alkalmazások listája
-1. **Folyamatban lévő munkamenet** – ha lenyomja **profil most**, a munkamenet állapota itt jelenik meg)
-1. **Legutóbbi előadások profilkészítés** – elmúlt profilkészítési munkamenetek vonatkozó információkat jeleníti meg.
+A **Application Insights Profiler konfigurálása** panelen négy funkciókat tartalmazza: 
+* **Most már profil**: Elindítja a profilkészítés minden olyan alkalmazás, amely kapcsolódik a példány az Application Insights-munkamenetet.
+* **Társított alkalmazások**: Profilkészítés küldő alkalmazás fel van sorolva az Application Insights-erőforrást az adatokat.
+* **Folyamatban lévő munkamenet**: Amikor kiválasztja a munkamenet állapotát jeleníti meg **profil most**. 
+* **Legutóbbi előadások profilkészítés**: Elmúlt profilkészítési munkamenetek információit jeleníti meg.
 
 ![Profiler igény szerinti][profiler-on-demand]
 
-## <a name="app-service-environments-ase"></a>App Service Environment (ASE)
-Attól függően, hogy az ASE van konfigurálva ellenőrizze az ügynök állapotát a hívás blokkolhatja. Ezen a lapon tudatja Önnel, hogy az ügynök nem fut, amikor éppen ténylegesen. A webjobs-feladatot, hogy is ellenőrizze az alkalmazás. De ha megfelelően vannak-e beállítva az alkalmazásbeállítások és az alkalmazás telepítve van az App Insights-webhelybővítményt, a profiler fog futni, és megjelenik legutóbbi profilkészítési előadások a listában, ha nincs a megfelelő forgalmat az alkalmazásához.
+## <a name="app-service-environment"></a>App Service-környezet
+Az Azure App Service-környezet konfigurációjától függően érdemes lehet blokkolni a hívást, ellenőrizze az ügynök állapotát. A panel, amely az ügynök nem fut, akkor is, ha az üzenetet jeleníthet meg. Győződjön meg arról, hogy, ellenőrizze az alkalmazás a webjobs-feladatot. Ha az alkalmazás beállítási értékei helyesek, és az alkalmazás telepítve van az Application Insights-webhelybővítményt, fut. a Profiler. Ha az alkalmazás elegendő forgalmat fogad, legutóbbi profilkészítési előadások üzenetnek kell megjelennie a listában.
 
 ## <a id="profileondemand"></a> Profiler aktiválása manuálisan
 
-Profiler manuálisan egy gombra kattintással is elindítható. Tegyük fel, hogy egy webes teljesítményt tesztet futtatja. Szüksége lesz a nyomkövetések segítségével megismerheti, hogyan működik a webes alkalmazás terhelés alatt. Szabályozhatja, mikor rögzítve lesznek a nyomkövetések kellene azért rendkívül fontos, mert a terhelési teszt fog futni, de a véletlenszerű mintavételi időköz előfordulhat, hogy hagyja ki tudja.
-A következő lépések bemutatják, hogyan működik a ebben a forgatókönyvben:
+Profiler manuálisan is aktiválhatja egyetlen kattintással. Tegyük fel, hogy a webes teljesítménytesztelési futtat. Nyomkövetési információk segítségével megismerheti, hogyan működik a webes alkalmazás terhelés alatt kell. Szabályozhatja, mikor rögzítve lesznek a nyomkövetések kellene elengedhetetlen, mivel a terhelési teszt futtatásakor. De a véletlenszerű mintavételi időköz előfordulhat, hogy hagyja ki.
 
-### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Nem kötelező) 1. lépés: A webes teljesítménytesztelési elindításával forgalmat a webes alkalmazás készítése
+A következő szakaszok bemutatják, hogyan működik a ebben a forgatókönyvben:
+
+### <a name="step-1-optional-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1. lépés: (Nem kötelező) A webes teljesítménytesztelési elindításával forgalmat a webes alkalmazás készítése
 
 Ha a webalkalmazás már van a bejövő forgalmat, vagy ha csak át szeretné manuálisan létrehozni a forgalmat, kihagyhatja ezt a szakaszt, és folytassa a 2. lépés.
 
-Application Insights portálon lépjen **konfigurálása > Teljesítménytesztelés**. Kattintson az új gombra egy új teljesítményteszt elindításához.
+1. Válassza ki az Application Insights portálon **konfigurálása** > **Teljesítménytesztelés**. 
 
-![Hozzon létre új teljesítményteszt][create-performance-test]
+1. Új teljesítményteszt elindításához válassza ki a **új** gombra.
 
-Az a **új teljesítményteszt** ablaktáblán, a teszt cél URL-cím konfigurálása. Fogadja el az összes alapértelmezett beállítást, és indítsa el a terhelési teszt.
+   ![Hozzon létre új teljesítményteszt][create-performance-test]
 
-![Terheléses teszt beállítása][configure-performance-test]
+1. Az a **új teljesítményteszt** ablaktáblán, a teszt cél URL-cím konfigurálása. Fogadja el az összes alapértelmezett beállítást, és válassza ki **Futtatás teszt** a terhelési teszt futtatni.
 
-Látni fogja az új vizsgálat a várólistára első, "folyamatban" állapotú követ.
+    ![Terheléses teszt beállítása][configure-performance-test]
 
-![terheléses teszt elküldve, és várólistára helyezve][load-test-queued]
+    Az új vizsgálat van először a várólistára, a állapotát követi *folyamatban*.
 
-![terheléses teszt folyamatban fut.][load-test-in-progress]
+    ![terheléses teszt elküldve, és várólistára helyezve][load-test-queued]
 
-### <a name="step-2-start-profiler-on-demand"></a>2. lépés: Indítsa el a profiler igény szerinti
+    ![terheléses teszt folyamatban fut.][load-test-in-progress]
 
-Ha a terhelési teszt már fut, a profiler rögzíthesse a hívásláncokat a webalkalmazásban fogadja betöltése közben is kezdődik.
-Keresse meg a Profiler konfigurálása panelen:
+### <a name="step-2-start-a-profiler-on-demand-session"></a>2. lépés: A Profiler igény szerinti munkamenet indítása
+
+1. A terhelési teszt fut, indítsa el az Profiler rögzíthesse a hívásláncokat a webalkalmazásban fogadja betöltése közben.
+
+1. Nyissa meg a **Profiler konfigurálása** ablaktáblán.
 
 
 ### <a name="step-3-view-traces"></a>3. lépés: Nyomok megtekintése
 
-A profiler a lejáratot követően újrainduljon, ha kövesse a teljesítmény-nyomkövetés oldal és a nézet értesítésben.
+Profiler végeztével kövesse a teljesítmény-nyomkövetés ablaktábla és a nézet értesítésben.
 
-## <a name="troubleshooting-on-demand-profiler"></a>Igény szerinti profiler hibaelhárítása
+## <a name="troubleshoot-the-profiler-on-demand-session"></a>A Profiler igény szerinti munkamenet hibaelhárítása
 
-Néha láthatja el egy igény szerinti munkamenet után Profiler időtúllépés hibaüzenet jelenik meg:
+Egy igény szerinti munkamenet után egy Profiler időtúllépés hibaüzenetet kaphat:
 
 ![Profiler időtúllépési hiba][profiler-timeout]
 
-Miért érdemes ezt a hibaüzenetet két oka lehet:
+A kettő közül a következő okok miatt előfordulhat, hogy ezt a hibaüzenetet kapja:
 
-1. A profiler igény szerinti munkamenet sikeres volt, de az Application Insights az összegyűjtött adatok feldolgozásához hosszabb időt vett igénybe. Adatok feldolgozása folyamatban 15 percben nem fejeződött be, ha a portálon egy időtúllépési üzenet jelenik meg. Bár idővel Profiler nyomkövetések jelennek meg. Ha ez történik, csak hagyja figyelmen kívül a hibaüzenetet most. Aktívan dolgozunk a javítást.
+* Az igény szerinti Profiler munkamenet sikeres volt, de az Application Insights az összegyűjtött adatok feldolgozása a vártnál hosszabb időt vett igénybe.  
 
-1. A webalkalmazás, amely nem rendelkezik az igény szerinti szolgáltatás Profiler-ügynök egy korábbi verziója van. Ha korábban engedélyezte az Application Insights-profilban, valószínűleg a Profiler-ügynök az igény szerinti funkció használatához frissítenie kell.
+  Ha az adatok feldolgozása a 15 percen belül nem, a portál megjeleníti egy időtúllépési üzenet. Idővel azonban Profiler nyomkövetések jelennek meg. Ha hibaüzenetet kap, prozatím ignorovat. Aktívan dolgozunk a javítást.
+
+* A webalkalmazás, amely nem rendelkezik az igény szerinti szolgáltatás Profiler-ügynök egy korábbi verziója van.  
+
+  Ha korábban engedélyezte az Application Insights Profiler, szüksége lehet frissíteni a Profiler-ügynök az igény szerinti szolgáltatás használatának megkezdéséhez.
   
-Kövesse az alábbi lépéseket, és telepítse a legújabb Profiler:
+Nyissa meg az App Services **Alkalmazásbeállítások** ablaktáblán, és keresse a következő beállításokat:
+* **ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY**: Cserélje le a megfelelő rendszerállapotkulcsot az Application Insights.
+* **APPINSIGHTS_PORTALINFO**: ASP.NET
+* **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-1. App Services alkalmazás beállításaiban, és ellenőrizze, hogy ha a következő beállítást:
-    * **ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY**: Cserélje le a megfelelő rendszerállapotkulcsot az Application Insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0-s, ha ezek a beállítások bármelyikét nincs megadva, nyissa meg az Application Insights engedélyezését ablaktábla a legújabb webhelybővítmény telepítése.
+Ha az előző értékeket nem, telepítse a legújabb webhelybővítmény az alábbiak szerint:
 
-1. Nyissa meg az Application Insights paneljén App Services portálon.
+1. Nyissa meg a **Application Insights** ablaktáblán az App Services portálon.
 
-    ![App Services portálon az Application Insights engedélyezése][enable-app-insights]
+    ![Az App Services-portálról az Application Insights engedélyezése][enable-app-insights]
 
-1. Ha egy "Frissítés" gombot a következő oldal jelenik meg, kattintson az Application Insights webhelybővítményt, amely telepíti a legújabb Profiler-ügynök frissítését.
+1. Ha a **Application Insights** ablaktáblán megjelennek azok az **frissítése** gombra, válassza ki azt az Application Insights-webhelybővítményt, amely telepíti a legújabb Profiler-ügynök frissítéséhez.
 
     ![Webhelybővítmény frissítése][update-site-extension]
 
-1. Kattintson a **módosítása** való gondoskodik róla, hogy a Profiler bekapcsolt, és válassza ki **OK** menti a módosításokat.
+1. Győződjön meg arról, hogy a Profiler van-e kapcsolva, jelölje be **módosítása**, majd válassza ki **OK** menti a módosításokat.
 
     ![Módosítsa és mentse az app insights][change-and-save-appinsights]
 
-1. Lépjen vissza a **Alkalmazásbeállítások** lapon ellenőrizze a következő alkalmazás beállítások elemeinek az App Service vannak beállítva:
+1. Lépjen vissza a **Alkalmazásbeállítások** panelje az App Service, győződjön meg arról, hogy vannak-e beállítva a következő értékeket:
     * **ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY**: Cserélje le a megfelelő rendszerállapotkulcsot az application insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET 
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-    ![a profiler App beállításai][app-settings-for-profiler]
+    ![Profiler App beállításai][app-settings-for-profiler]
 
-1. Szükség esetén ellenőrizze a bővítmény verziója, és gondoskodik róla, hogy nincs elérhető frissítés.
+1. Bejelölheti **bővítmények**, majd ellenőrizze a bővítmény verzióját, és határozza meg, hogy a frissítés érhető el.
 
     ![Ellenőrizze a bővítmény frissítése][check-for-extension-update]
 
 ## <a name="next-steps"></a>További lépések
-[Profiler engedélyezése és megtekintése a nyomkövetések](profiler-overview.md ?toc=/azure/azure-monitor/toc.json)
+[Profiler engedélyezése és nyomok megtekintése](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png
 [configure-profiler-entry]: ./media/profiler-settings/configure-profiler-entry.png

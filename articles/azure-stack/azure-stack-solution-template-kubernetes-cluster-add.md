@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e89575323b87ba28ef4f062da098fea4f0e27035
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264054"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352682"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -28,7 +28,7 @@ ms.locfileid: "54264054"
 > [!note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
 
-Elérhetővé teheti Kubernetes Piactéri elem, a felhasználók számára. A felhasználók egyetlen, koordinált műveletben telepítheti a Kubernetes.
+Elérhetővé teheti Kubernetes Piactéri elem, a felhasználók számára. A felhasználók számára, majd telepítheti Kubernetes egyetlen, koordinált műveletben.
 
 A következő cikkben tekintse meg telepítése és jogosultságok kiosztása az erőforrások különálló Kubernetes-fürthöz tartozó Azure Resource Manager-sablon használatával. A Kubernetes-fürt Piactéri elem 0.3.0 1808 Azure Stack-verzió szükséges. A Kezdés előtt ellenőrizze az Azure Stack és az Azure-bérlő globális beállításokat. Az Azure Stack a szükséges információkat gyűjt. Adja hozzá a szükséges erőforrásokat a bérlőn, és az Azure Stack piactéren. A fürt egy Ubuntu-kiszolgálót, egyéni szkript és a Kubernetes elemeket kell lennie a Marketplace-en függ.
 
@@ -48,7 +48,7 @@ Hozzon létre egy csomag, ajánlat és a Kubernetes Piactéri elem előfizetést
 
 1. Válassza ki **Állapotváltozáshoz**. Válassza ki **nyilvános**.
 
-1. Válassza ki **+ erőforrás létrehozása** > **ajánlatok és csomagok** > **előfizetés** , hozzon létre egy új előfizetést.
+1. Válassza ki **+ erőforrás létrehozása** > **ajánlatok és csomagok** > **előfizetés** -előfizetés létrehozása.
 
     a. Adjon meg egy **megjelenítendő név**.
 
@@ -59,6 +59,124 @@ Hozzon létre egy csomag, ajánlat és a Kubernetes Piactéri elem előfizetést
     d. Állítsa be a **címtárbérlő** az Azure stack az Azure AD-bérlőhöz. 
 
     e. Válassza ki **ajánlat**. Válassza ki a létrehozott ajánlat nevét. Jegyezze fel az előfizetés-azonosító.
+
+## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>Hozzon létre egy egyszerű szolgáltatásnév és a hitelesítő adatokat az AD FS-ben
+
+Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity management szolgáltatás használja, szüksége lesz egy Kubernetes-fürt üzembe helyezése felhasználók egyszerű szolgáltatásnév létrehozása.
+
+1. Hozzon létre, és az egyszerű szolgáltatásnév létrehozásához használt tanúsítvány exportálása. Az alábbi kódot az alábbi kódrészlet bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt. 
+
+    - Az alábbi adatokra lesz szüksége:
+
+       | Érték | Leírás |
+       | ---   | ---         |
+       | Jelszó | A tanúsítvány jelszavát. |
+       | Helyi tanúsítvány elérési útja | A tanúsítvány elérési útja és neve. Például:`path\certfilename.pfx` |
+       | Tanúsítvány neve | A tanúsítvány nevére. |
+       | Tanúsítványtár helye |  Például: `Cert:\LocalMachine\My` |
+
+    - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
+
+        ```PowerShell  
+        # Creates a new self signed certificate 
+        $passwordString = "<password>"
+        $certlocation = "<local certificate path>.pfx"
+        $certificateName = "<certificate name>"
+        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certStoreLocation="<certificate store location>"
+        
+        $params = @{
+        CertStoreLocation = $certStoreLocation
+        DnsName = $certificateName
+        FriendlyName = $certificateName
+        KeyLength = 2048
+        KeyUsageProperty = 'All'
+        KeyExportPolicy = 'Exportable'
+        Provider = 'Microsoft Enhanced Cryptographic Provider v1.0'
+        HashAlgorithm = 'SHA256'
+        }
+        
+        $cert = New-SelfSignedCertificate @params -ErrorAction Stop
+        Write-Verbose "Generated new certificate '$($cert.Subject)' ($($cert.Thumbprint))." -Verbose
+        
+        #Exports certificate with password in a .pfx format
+        $pwd = ConvertTo-SecureString -String $passwordString -Force -AsPlainText
+        Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
+        ```
+
+2. A tanúsítvány használatával egyszerű szolgáltatásnév létrehozása.
+
+    - Az alábbi adatokra lesz szüksége:
+
+       | Érték | Leírás                     |
+       | ---   | ---                             |
+       | ERCS IP | A ASDK a kiemelt végponthoz van általában `AzS-ERCS01`. |
+       | Alkalmazásnév | Az alkalmazás egyszerű szolgáltatásnév egyszerű nevét. |
+       | Tanúsítványtár helye | A számítógépen, a tanúsítványt tároló elérési útja. Például:`Cert:\LocalMachine\My\<someuid>` |
+
+    - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
+
+        ```PowerShell  
+        #Create service principle using the certificate
+        $privilegedendpoint="<ERCS IP>"
+        $applicationName="<application name>"
+        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certStoreLocation="<certificate store location>"
+        
+        # Get certificate information
+        $cert = Get-Item $certStoreLocation
+        
+        # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
+        $creds = Get-Credential
+
+        # Creating a PSSession to the ERCS PrivilegedEndpoint
+        $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+        # Get Service Principle Information
+        $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
+
+        # Get Stamp information
+        $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
+
+        # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
+        $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
+
+        # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. This is read from the AzureStackStampInformation output of the ERCS VM.
+        $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
+
+        # TenantID for the stamp. This is read from the AzureStackStampInformation output of the ERCS VM.
+        $TenantID = $AzureStackInfo.AADTenantID
+
+        # Register an AzureRM environment that targets your Azure Stack instance
+        Add-AzureRMEnvironment `
+        -Name "AzureStackUser" `
+        -ArmEndpoint $ArmEndpoint
+
+        # Set the GraphEndpointResourceId value
+        Set-AzureRmEnvironment `
+        -Name "AzureStackUser" `
+        -GraphAudience $GraphAudience `
+        -EnableAdfsAuthentication:$true
+        Add-AzureRmAccount -EnvironmentName "azurestackuser" `
+        -ServicePrincipal `
+        -CertificateThumbprint $ServicePrincipal.Thumbprint `
+        -ApplicationId $ServicePrincipal.ClientId `
+        -TenantId $TenantID
+
+        # Output the SPN details
+        $ServicePrincipal
+        ```
+
+    - A szolgáltatás egyszerű részletei keresse meg az alábbi kódrészlethez hasonló
+
+        ```Text  
+        ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
+        ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+        Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+        ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+        PSComputerName        : azs-ercs01
+        RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
+        ```
 
 ## <a name="add-an-ubuntu-server-image"></a>Egy Ubuntu server-rendszerkép hozzáadása
 
@@ -75,7 +193,7 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 1. Válassza ki a kiszolgálót a legújabb verziója. A teljes verziószám, és győződjön meg arról, hogy a legújabb verzióval rendelkezik:
     - **Közzétevő**: Canonical
     - **Ajánlat**: UbuntuServer
-    - **Verzió**: 16.04.201806120 (vagy újabb)
+    - **Verzió**: 16.04.201806120 (vagy a legújabb verzió)
     - **TERMÉKVÁLTOZAT**: 16.04-LTS
 
 1. Válassza ki **letöltése.**
@@ -94,11 +212,11 @@ Adja hozzá a Kubernetes a Marketplace-ről:
 
 1. Válassza ki a parancsprogramot, a következő profilhoz:
     - **Ajánlat**: Egyéni parancsfájl 2.0 linuxhoz
-    - **Verzió**: 2.0.6-os (vagy újabb)
+    - **Verzió**: 2.0.6-os (vagy a legújabb verzió)
     - **Közzétevő**: Microsoft Corp
 
     > [!Note]  
-    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a cikk a legújabb verzióra kell.
+    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a legfrissebb verziója, az elem kell.
 
 1. Válassza ki **letöltése.**
 
@@ -124,7 +242,7 @@ Adja hozzá a Kubernetes a Marketplace-ről:
 
 ## <a name="update-or-remove-the-kubernetes"></a>Frissítheti vagy eltávolíthatja a Kubernetes 
 
-A Kubernetes elem frissítésekor távolítsa el a cikket, amely a Marketplace-en kell. Ezután a utasítást ebben a cikkben a Kubernetes hozzáadása a Marketplace-en is követheti.
+Amikor frissíti a Kubernetes elem, akkor eltávolítja az előző elemet a Marketplace-en. Az útmutatást követve ebben a cikkben a Kubernetes frissítése a Marketplace-en való hozzáadásához.
 
 A Kubernetes-elem eltávolítása:
 

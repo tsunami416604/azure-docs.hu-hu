@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/26/2018
+ms.date: 01/15/2019
 ms.author: juliako
-ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788208"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354178"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -29,6 +29,22 @@ Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőbe
 - A Media Services szolgáltatásban, amelyek lehetővé teszik, hogy, összetevők előzetes verzió, csomag, jegyezze fel, titkosítása és az élő esemény szórási, az ügyfelek számára, vagy egy CDN későbbi terjesztés.
 
 Ez a cikk részletes nyújt útmutatást, és diagramokat, a fő összetevőkről az élő adások online közvetítése a Media Services részt tartalmaz.
+
+## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
+
+Az egy élő adatfolyam-továbbítási munkafolyamat lépései a következők:
+
+1. Hozzon létre egy **élő esemény**.
+2. Hozzon létre egy új **eszköz** objektum.
+3. Hozzon létre egy **élő kimeneti** , és használja az Ön által létrehozott objektum nevét.
+4. Hozzon létre egy **Streamelési házirend** és **tartalom kulcs** Ha DRM a tartalmak szeretne.
+5. Ha nem használ DRM, hozzon létre egy **Streamelési lokátor** a beépített **Streamelési házirend** típusokat.
+6. Az útvonalak listájában a **Streamelési házirend** visszatéréshez használandó URL-címek (ezek a determinisztikus).
+7. A gazdanevének beszerzése a **folyamatos átviteli végponton** érkező adatfolyam szeretné (Győződjön meg arról, hogy a folyamatos átviteli végponton fut). 
+8. Az URL-címet, a 6. lépés kombinálva a a teljes URL-Címének lekéréséhez 7. lépésben az állomásnevet.
+9. Ha szeretné állítani, így a **élő esemény** megtekinthető, le kell állítania az esemény streamelési törlésével a **Streamelési lokátor**.
+
+További információkért lásd: egy [élő streamelési oktatóanyag](stream-live-tutorial-with-api.md) , amely alapján a [élő .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) minta.
 
 ## <a name="overview-of-main-components"></a>Fő összetevőinek áttekintése
 
@@ -89,13 +105,14 @@ A következő cikkben egy táblát, amely összehasonlítja a két típusú vide
 
 A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) lehetővé teszi, hogy szabályozza a kimenő élő streamet, mekkora az adatfolyam rögzíti (például a kapacitás a felhőbeli DVR), és -e a nézők megkezdheti a élő streamet például tulajdonságait. Közötti kapcsolat egy **videókhoz** és a hozzá tartozó **LiveOutput**s kapcsolat hasonlít a hagyományos televíziós adás, amelynek során egy csatornát (**videókhoz**) egy videó és a egy felvételt állandó adatfolyam jelöli (**LiveOutput**) egy adott időpont szegmens (például esténként hírek a 18:30:00, 7:00 és 18) hatókörét. Rögzítheti a televízió digitális videót rögzítő (DVR) használatával – az egyenértékű LiveEvents szolgáltatással kezelt ArchiveWindowLength tulajdonságon keresztül. Egy ISO-8601 timespan időtartam (például PTHH:MM:SS), amely meghatározza a DVR kapacitását, és legfeljebb 25 óra legalább 3 percig állítható be.
 
-
 > [!NOTE]
-> **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben.  
+> **LiveOutput**s létrehozás indítása és leállítása, ha törli. Ha töröl a **LiveOutput**, nem törli az alapul szolgáló **eszköz** és a tartalom az eszközben. 
+>
+> Miután közzétette **Streamelési lokátor**s tartozó objektum a **LiveOutput**, az esemény (akár a DVR időszak hossza) továbbra is meg szeretné jeleníteni a befejezési idő, amíg a **Streamelési lokátor**  vagy a mai napig tartó, amikor törli a lokátor, amelyik előbb bekövetkezik.   
 
 További információkért lásd: [a felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md).
 
-## <a name="streamingendpoint"></a>Streamvégpontok
+## <a name="streamingendpoint"></a>StreamingEndpoint
 
 Miután a tárfiókba kerülnek adatfolyam a **videókhoz**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **LiveOutput**, és **StreamingLocator** . Ezzel archiválja a streamet, és tegye elérhetővé a nézők keresztül a [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
@@ -110,21 +127,6 @@ Részletes információkért lásd: [állapotok és számlázási](live-event-st
 ## <a name="latency"></a>Késés
 
 LiveEvents késéssel kapcsolatos részletes információkért lásd: [késés](live-event-latency.md).
-
-## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
-
-Az egy élő adatfolyam-továbbítási munkafolyamat lépései a következők:
-
-1. Hozzon létre egy videókhoz.
-2. Hozzon létre egy új eszköz objektumot.
-3. Hozzon létre egy LiveOutput és az Ön által létrehozott objektum nevét.
-4. Hozzon létre egy adatfolyam-szabályzat és a tartalom kulcsot, ha a tartalmak DRM szeretne.
-5. Ha nem használ DRM, egy Streamelési lokátor létrehozása a beépített, adatfolyam szabályzattípusok.
-6. Az elérési utat a Streamelési házirend visszatéréshez használandó URL-címek (ezek a determinisztikus).
-7. A folyamatos átviteli végponton, az adatfolyam kívánt gazdanevének beszerzése. 
-8. Az URL-címet, a 6. lépés kombinálva a a teljes URL-Címének lekéréséhez 7. lépésben az állomásnevet.
-
-További információkért lásd: egy [élő streamelési oktatóanyag](stream-live-tutorial-with-api.md) , amely alapján a [élő .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) minta.
 
 ## <a name="next-steps"></a>További lépések
 

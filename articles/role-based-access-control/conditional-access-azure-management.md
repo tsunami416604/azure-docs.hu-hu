@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274738"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354348"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>A feltételes hozzáférés az Azure-felügyelet elérésének kezelése
 
@@ -32,7 +32,7 @@ Az Azure felügyeleti szabályzat létrehozásához válassza **a Microsoft Azur
 
 ![Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-A szabályzatot hoz létre, és az Azure PowerShell Service Management API-k összes az Azure felügyeleti végpontok, beleértve a klasszikus Azure portál, az Azure portal, Azure Resource Manager-szolgáltató, klasszikus vonatkozik. Vegye figyelembe, hogy a szabályzat vonatkozik, az Azure PowerShell, amely az Azure Resource Manager API-hívások. Nem alkalmazható a [az Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
+Az összes az Azure felügyeleti végpontok, beleértve az Azure portal, az Azure Resource Manager-szolgáltató, a klasszikus Service Management API-k, az Azure PowerShell és a Visual Studio előfizetések adminisztrátori portál hoz létre a szabályzat vonatkozik. Vegye figyelembe, hogy a szabályzat vonatkozik, az Azure PowerShell, amely az Azure Resource Manager API-hívások. Nem alkalmazható a [az Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
 
 > [!CAUTION]
 > Győződjön meg arról, hogy megismerni a feltételes hozzáférési szabályzat beállítása az Azure felügyeleti való hozzáférés kezelése előtt működik. Ellenőrizze, hogy nem hoz létre, amelyek letilthatják a portálon a saját hozzáférési feltételek.

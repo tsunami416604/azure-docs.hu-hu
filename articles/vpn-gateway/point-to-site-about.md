@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: bf84ec16d5d13439796b386a8ab4f40840ca4eaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 682d1d123d3381a52c9d356cd1bf226d2a847df4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438417"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352869"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN
 
@@ -22,7 +22,7 @@ A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsol
 
 Pont – hely VPN a következő protokollok egyikét használhatja:
 
-* OpenVPN, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. Az Android, iOS-, Linux és Mac rendszerű eszközök csatlakoztatása OpenVPN használható (OSX verziói 10.11-es és újabb).
+* OpenVPN, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. OpenVPN használható csatlakozás Android, iOS-hez (11.0-s verzió vagy újabb verzió), Linux és Mac-eszközök (OSX verziói 10.13 és újabb).
 
 * Secure Socket Tunneling Protocol (SSTP), egy egyéni SSL-alapú VPN-protokollt. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. Az SSTP csak a Windows-eszközökön támogatott. Az Azure Windows SSTP (Windows 7 és újabb) rendelkező összes verziója támogatja.
 
@@ -57,7 +57,7 @@ Egy RADIUS-kiszolgáló is integrálhatók a más külső identitáskezelő rend
 >OpenVPN protokoll nem támogatott a RADIUS-hitelesítéssel.
 >
 
-![pont – hely](./media/point-to-site-about/p2s.png "pont – hely")
+![point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Mik azok az ügyfél-konfigurációs követelményei?
 

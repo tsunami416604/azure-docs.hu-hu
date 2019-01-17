@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e6e0904efdb86376688710a94920cdb44c2804ec
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842272"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353124"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Az Azure AD B2C: Bejelentkezés egy iOS-alkalmazás használatával
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Jelentkezzen be egy iOS-alkalmazás használatával
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. További fejlesztői választott kínál egy nyílt szabványú protokoll használatával, egy kódtárat integrálhatnak szolgáltatásainkkal kiválasztásakor. A fejlesztők vizsgálatot, amely csatlakozni a Microsoft Identity platform-alkalmazások írására, mint ez a forgatókönyv és egyéb mellékelt. Használó legtöbb kódtár [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) tudnak csatlakozni a Microsoft Identity platform.
 
@@ -29,7 +29,7 @@ A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t
 Ha most ismerkedik az OAuth2 vagy az OpenID Connect, a minta konfigurálási előfordulhat, hogy nem értelmezhető Önnek. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
-Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt. Egy könyvtár az összes felhasználó, alkalmazások, csoportok és további tárolója. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne.
+Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt. Egy könyvtár az összes felhasználó, alkalmazások, csoportok és további tárolója. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](tutorial-create-tenant.md), mielőtt továbblépne.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Az alkalmazás regisztrációját biztosítja az alkalmazás biztonságos kommunikációhoz szükséges információkat az Azure ad-ben. Mobilalkalmazás létrehozása, hajtsa végre a [ezek az utasítások](active-directory-b2c-app-registration.md). Ügyeljen arra, hogy:
@@ -39,13 +39,11 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Az al
 * Állítsa be a **átirányítási URI-t** egy egyéni sémával (például com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Később szüksége lesz az URI.
 
 ## <a name="create-your-user-flows"></a>A felhasználói folyamatok létrehozása
-Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Ez a felhasználói folyamat létrehozása a leírtak szerint a [felhasználói folyamat áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
+Az Azure AD B2C felhasználói élményeket által meghatározott egy [felhasználói folyamat](active-directory-b2c-reference-policies.md). Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Ha a felhasználói folyamatot hoz létre, ügyeljen arra, hogy:
 
 * A **regisztrálási attribútumok**, válassza ki az attribútumot **megjelenítendő név**.  Egyéb attribútumokat is választhat.
 * A **alkalmazásjogcímek**, válassza a jogcímek **megjelenítendő név** és **felhasználó Objektumazonosítója**. Kiválaszthat egyéb jogcímeket is.
 * Másolás a **neve** az egyes felhasználói folyamatok létrehozása után. A felhasználói interakciósorozat neve a következő előtaggal kezdődik `b2c_1_` a felhasználói folyamat mentésekor.  Később szüksége lesz a felhasználói interakciósorozat neve.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 A felhasználói folyamatok létrehozását követően készen áll az alkalmazás elkészítésére.
 
@@ -86,7 +84,7 @@ OIDServiceConfiguration *configuration =
 // now we are ready to perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyező
+### <a name="authorizing"></a>Engedélyezés folyamatban
 
 Miután konfigurálása, vagy egy engedélyezési szolgáltatás konfigurációjának lekérése, egy engedélyezési kérést lehet létrehozni. A kérelem létrehozásához szüksége van a következő információkat:  
 * Ügyfél-azonosító (például 00000000-0000-0000-0000-000000000000)

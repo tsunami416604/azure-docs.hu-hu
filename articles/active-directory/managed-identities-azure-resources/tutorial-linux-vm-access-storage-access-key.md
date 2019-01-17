@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f00de9095e45901f92fcf3004a5f51cfdd709da2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ee26db80e3219c170c77a2bd90f7d1416676333e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724773"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352750"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Az Azure Storage elérése hozzáférési kulcs használatával egy Linux rendszerű virtuális gép alapértelmezett felügyelt identitás használata
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -61,7 +61,7 @@ Később feltöltünk egy fájlt az új tárfiókba, majd letöltjük abból. Mi
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-storage-account-access-keys"></a>Hozzáférés biztosítása a VM rendszer által hozzárendelt felügyelt identitása számára a tárfiók hozzáférési kulcsainak használatához
 
-Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  Az Azure-erőforrások felügyelt identitásai használatával azonban lekérheti a tárfiók hozzáférési kulcsait a Resource Managerből, majd a kulcsokkal elérheti a tárolót.  Ebben a lépésben hozzáférést biztosít a VM rendszer által hozzárendelt felügyelt identitása számára a tárfiók kulcsaihoz.   
+Ebben a lépésben hozzáférést biztosít a VM rendszer által hozzárendelt felügyelt identitása számára a tárfiók kulcsaihoz.   
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.  
