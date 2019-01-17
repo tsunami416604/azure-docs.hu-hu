@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722074"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359867"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
 Az Azure Functions két különböző módban fut: Használatalapú csomag és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.
 
 > [!NOTE]  
-> [Linux rendszerű futtató](functions-create-first-azure-function-azure-cli-linux.md) jelenleg csak az App Service-csomag érhető el.
+> Használatalapú csomag Linux rendszer [jelenleg nyilvános előzetes verzióban](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/).
 
 Ha nem ismeri az Azure Functions, tekintse meg a [Azure Functions áttekintő](functions-overview.md).
 
