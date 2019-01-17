@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 1ae0be44be524e4cb4e8d446e2279a1bfd800a04
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231614"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320090"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -114,16 +114,13 @@ A [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/to
 ## <a name="device-identity"></a>Eszközidentitás
 Az eszközidentitást hozzárendelve minden regisztrált eszköz egyedi azonosítója a [eszközidentitás-jegyzék](#identity-registry).
 
-## <a name="module-identity"></a>A modul identitás
-A modul identitás minden eszközhöz tartozó modul rendelt egyedi azonosítója. Modul identitás is regisztrálva van a [eszközidentitás-jegyzék](#identity-registry).
-
 ## <a name="device-management"></a>Eszközfelügyelet
 Eszközfelügyelet magában foglalja a teljes életciklusát társított az IoT-megoldások, beleértve a tervezési, kiépítési, konfigurálását, figyelését és kivonása az eszközöknek a kezelésére.
 
 ## <a name="device-management-patterns"></a>Eszközfelügyeleti minták
 [Az IoT hub](#iot-hub) például újraindítás, gyári alaphelyzetbe végrehajtása és végrehajtott belsővezérlőprogram-frissítéseket az eszközök az általános eszközfelügyeleti minták lehetővé teszi.
 
-## <a name="device-rest-api"></a>Eszköz REST API
+## <a name="device-rest-api"></a>Device REST API
 Használhatja a [eszköz REST API-val](https://docs.microsoft.com/rest/api/iothub/device) eszköz – felhő üzeneteket küldhet egy IoT hubot, és a egy eszközről [felhőből az eszközre](#cloud-to-device) üzeneteket egy IoT-központból. Jellemzően kell használni a magasabb szintű egyik [eszközoldali SDK-k](#azure-iot-device-sdks) , ahogyan az az IoT Hub oktatóanyagok.
 
 ## <a name="device-provisioning"></a>Eszköz kiépítése
@@ -132,22 +129,13 @@ A kezdeti hozzáadása során a rendszer eszközkiépítési [eszközadatok](#de
 ## <a name="device-twin"></a>Ikereszközök
 A [ikereszköz](iot-hub-devguide-device-twins.md) JSON-dokumentum, amely tárolja az eszközök állapotinformációit, például a metaadatokat, konfigurációkat és állapotokat. [Az IoT Hub](#iot-hub) az IoT hubban kiosztott minden egyes eszközhöz egy ikereszközt. Ikereszközök engedélyezése való szinkronizálását, [eszköz feltételek](#device-condition) és a háttéralkalmazás az eszköz és a megoldás közötti konfigurációkat. Keresse meg az adott eszközöket és a hosszú ideig futó műveletek állapotának lekérdezése ikereszközök lekérdezheti.
 
-## <a name="module-twin"></a>Ikermodul
-Ikereszköz hasonlóan egy ikermodul is JSON-dokumentumot, például a metaadatokat, konfigurációkat és állapotokat modul állapot adatait tárolja. Az IoT Hub továbbra is fennáll, egy ikermodul alatt egy új eszközidentitást az IoT hubban kiosztott minden egyes modul-identitás. Ikermodulokkal lehetővé szinkronizálják a modul feltételeket és a konfigurációk a modul és a megoldás háttérrendszere között. Keresse meg a modulokról, és a hosszú ideig futó műveletek állapotának lekérdezése ikermodulokkal lekérdezheti.
-
-## <a name="twin-queries"></a>Ikereszköz-lekérdezések
-[Eszköz- és modul ikereszköz-lekérdezések](iot-hub-devguide-query-language.md) használja az SQL-szerű IoT Hub lekérdezési nyelv az ikereszközökhöz vagy ikermodulokkal lévő információk lekéréséhez. Az ugyanazon az IoT Hub lekérdezési nyelv használatával kapcsolatos információk lekéréséhez [](#job) futtatása az IoT hubban.
-
-## <a name="twin-synchronization"></a>Ikereszköz-szinkronizálás
-Ikereszköz szinkronizálást használ a [kívánt tulajdonságok](#desired-properties) az ikereszközök vagy ikermodulokkal az eszközök vagy a modulok beállítása és lekérése [jelentett tulajdonságokként](#reported-properties) ezekből az ikereszköz tárolja.
-
 ## <a name="direct-method"></a>Közvetlen módszer
 A [közvetlen metódus](iot-hub-devguide-direct-methods.md) megoldást nyújt, hogy egy metódus-trigger által az IoT hub API meghívása egy eszközön végrehajtani.
 
 ## <a name="endpoint"></a>Végpont
 Az IoT hub tesz több [végpontok](iot-hub-devguide-endpoints.md) , amely engedélyezi az alkalmazások, az IoT hubhoz való csatlakozáshoz. Nincsenek az eszköz felé néző végpontok, amelyek lehetővé teszik az eszközök, például a küldő műveletek végrehajtásához [eszközről a felhőbe](#device-to-cloud) üzenetek és a fogadó [felhőből az eszközre](#cloud-to-device) üzeneteket. Nincsenek a szolgáltatás által használt felügyeleti végpontok, amelyek lehetővé teszik [háttéralkalmazásokat](#back-end-app) műveletek végrehajtásához [eszközidentitás](#device-identity) felügyeleti és ikereszköz kezelése. Nincsenek a szolgáltatás által használt [beépített végpontokról](#built-in-endpoints) eszközt a felhőbe irányuló üzenetek olvasásához. Létrehozhat [egyéni végpontok](#custom-endpoints) által az eszköz a felhőbe irányuló üzenetek fogadása egy [útválasztási szabály](#routing-rules).
 
-## <a name="event-hubs-service"></a>Event Hubs szolgáltatás
+## <a name="event-hubs-service"></a>Event Hubs service
 [Az Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) van egy kiválóan méretezhető adatbefogadási szolgáltatás, amely több millió fogadására képes az események száma másodpercenként. A szolgáltatás lehetővé teszi, hogy a csatlakoztatott eszközök és alkalmazások által létrehozott hatalmas adatmennyiségek elemzését. Az IoT Hub szolgáltatással összehasonlításáért lásd: [összehasonlítása az Azure IoT Hub és az Azure Event Hubs](iot-hub-compare-event-hubs.md).
 
 ## <a name="event-hub-compatible-endpoint"></a>Event Hubs-kompatibilis végpont
@@ -173,13 +161,13 @@ Egy interaktív az üzenet egy [felhőből az eszközre](#cloud-to-device) üzen
 ## <a name="iot-hub"></a>IoT Hub
 Az IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió eszköz között, és a megoldás háttérrendszere. További információkért lásd: [Mi az Azure IoT Hub?](about-iot-hub.md) Használatával a [Azure-előfizetés](#subscription), IoT hub az üzenetküldési feladatokhoz IoT kezelésére is létrehozhat.
 
-## <a name="iot-hub-metrics"></a>Az IoT Hub-metrikák
+## <a name="iot-hub-metrics"></a>IoT Hub metrics
 [Az IoT Hub-metrikák](iot-hub-metrics.md) az IoT hubra állapotával kapcsolatos adatokat biztosítanak a [Azure-előfizetés](#subscription). Az IoT Hub-metrikák lehetővé teszi felmérheti a szolgáltatás és a hozzá csatlakozó eszközök általános állapotát. Az IoT Hub mérőszámok segítségével tekintse meg, mi történik az IoT hubbal és a kiváltó problémák kivizsgálásában anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub lekérdezési nyelv
 A [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szerű nyelv, amely lehetővé teszi, hogy lekérdezést a [](#job) és ikereszközök.
 
-## <a name="iot-hub-resource-rest-api"></a>Az IoT Hub erőforrás REST API-val
+## <a name="iot-hub-resource-rest-api"></a>IoT Hub Resource REST API
 Használhatja a [IoT Hub erőforrás REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) kezelheti az IoT hubra a [Azure-előfizetés](#subscription) például létrehozása, frissítése és törlése hubs műveleteket végez.
 
 ## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
@@ -190,6 +178,17 @@ Az Azure IoT-megoldásgyorsítók csomagot több Azure-szolgáltatások megoldá
 
 ## <a name="job"></a>Feladat
 A megoldás háttérrendszere [feladatok](iot-hub-devguide-jobs.md) ütemezéséhez és az eszközök regisztrálása az IoT hubbal a tevékenységek nyomon követésére. Tevékenységek közé tartozik az eszköz frissítését [kívánt tulajdonságok](#desired-properties), frissítési ikereszköz [címkék](#tags), és a program invoking [közvetlen metódusok](#direct-method). [Az IoT Hub](#iot-hub) is használ az [való importálása és exportálása](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) származó a [eszközidentitás-jegyzék](#identity-registry).
+
+## <a name="modules"></a>Modulok
+Az eszköz oldalán, az IoT Hub eszközoldali SDK-k engedélyezése, hogy hozzon létre [modulok](iot-hub-devguide-module-twins.md) ahol mindegyik megnyílik egy független az IoT Hub-kapcsolat. Ez a funkció lehetővé teszi, hogy az önálló névterek különböző összetevőket az eszközön.
+
+A modul identitás- és ikermodul adja meg ugyanazokat a lehetőségeket, mint [eszközidentitás](#device-identity) és [ikereszköz](#device-twin) , de nagyobb pontossággal. A kifinomultabb granularitási lehetővé teszi a kompatibilis eszközök, például az operációs rendszer-alapú eszközök vagy a belső vezérlőprogrammal rendelkező eszközök kezelése több összetevőből állnak, konfigurációja és az egyes összetevők feltételek elkülönítésére.
+
+## <a name="module-identity"></a>A modul identitás
+A modul identitás minden eszközhöz tartozó modul rendelt egyedi azonosítója. Modul identitás is regisztrálva van a [eszközidentitás-jegyzék](#identity-registry).
+
+## <a name="module-twin"></a>Ikermodul
+Ikereszköz hasonlóan egy ikermodul is JSON-dokumentumot, például a metaadatokat, konfigurációkat és állapotokat modul állapot adatait tárolja. Az IoT Hub továbbra is fennáll, egy ikermodul alatt egy új eszközidentitást az IoT hubban kiosztott minden egyes modul-identitás. Ikermodulokkal lehetővé szinkronizálják a modul feltételeket és a konfigurációk a modul és a megoldás háttérrendszere között. Keresse meg a modulokról, és a hosszú ideig futó műveletek állapotának lekérdezése ikermodulokkal lekérdezheti.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) van, amelyek közül az üzenetküldés van protokollokon [az IoT Hub](#iot-hub) támogatja a eszközökkel való kommunikációhoz. Az üzenetküldési protokollokat, amely az IoT Hub által támogatott kapcsolatos további információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
@@ -256,6 +255,12 @@ Eszközök telemetriai adatokat, például a szél sebessége vagy a hőmérsék
 
 ## <a name="token-service"></a>Jogkivonat-szolgáltatás
 Egy jogkivonat-szolgáltatás segítségével az eszközök hitelesítési mechanizmust. Használja az IoT Hub [megosztott hozzáférési szabályzat](#shared-access-policy) a **DeviceConnect** létrehozásához szükséges engedélyek *eszköz hatókörű* jogkivonatokat. Ezek a jogkivonatok csatlakozni az IoT hub eszköz engedélyezése. Egy eszköz egy egyéni hitelesítési mechanizmust használja a hitelesítéshez a jogkivonat-szolgáltatás. Ha az eszköz sikeresen hitelesíti magát, a jogkivonat-szolgáltatás kiad egy SAS-jogkivonatot az eszköz hozzáférhet az IoT hub.
+
+## <a name="twin-queries"></a>Ikereszköz-lekérdezések
+[Eszköz- és modul ikereszköz-lekérdezések](iot-hub-devguide-query-language.md) használja az SQL-szerű IoT Hub lekérdezési nyelv az ikereszközökhöz vagy ikermodulokkal lévő információk lekéréséhez. Az ugyanazon az IoT Hub lekérdezési nyelv használatával kapcsolatos információk lekéréséhez [](#job) futtatása az IoT hubban.
+
+## <a name="twin-synchronization"></a>Ikereszköz-szinkronizálás
+Ikereszköz szinkronizálást használ a [kívánt tulajdonságok](#desired-properties) az ikereszközök vagy ikermodulokkal az eszközök vagy a modulok beállítása és lekérése [jelentett tulajdonságokként](#reported-properties) ezekből az ikereszköz tárolja.
 
 ## <a name="x509-client-certificate"></a>X.509-ügyféltanúsítvány
 Egy eszköz is egy X.509 tanúsítvány-hitelesítésre használható [az IoT Hub](#iot-hub). Egy X.509 tanúsítvány használata helyett egy [SAS-jogkivonat](#shared-access-signature).
