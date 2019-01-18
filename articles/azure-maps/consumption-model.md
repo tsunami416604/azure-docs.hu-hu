@@ -18,8 +18,8 @@ ms.locfileid: "34600629"
 # <a name="consumption-model"></a>Használatalapú modell
 
 Online útválasztás paraméterek biztosít részletes leírása a vehicle-specifikus fogyasztás modell.
-Attól függően, hogy értékének **vehicleEngineType**, két fő felhasználási modellek támogatottak: _égésű_ és _elektromos_. Adja meg a paraméterek a kérésben különböző modell tartozó hiba.
-Felhasználás modell nem használható **travelMode** értékek _kerékpárgyártó_ és _gyalogosok_.
+Attól függően, hogy értékének **vehicleEngineType**, két fő felhasználási modellek támogatottak: _Combustion_ és _Electric_. Adja meg a paraméterek a kérésben különböző modell tartozó hiba.
+Felhasználás modell nem használható **travelMode** értékek _bicycle_ és _pedestrian_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Felhasználás modell paraméteréhez kielégíthetetlen korlátozások tartoznak
 
@@ -30,7 +30,7 @@ Mindkét fogyasztás modellek explicit megadása az egyes paraméterek meg kell 
 * Ha **accelerationEfficiency** és **decelerationEfficiency** van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (az perpetual mozgásérzékelési elkerülése érdekében).
 * **uphillEfficiency** és **downhillEfficiency** (azaz mind "vagy" none) párban mindig meg kell adni.
 * Ha **uphillEfficiency** és **downhillEfficiency** van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (az perpetual mozgásérzékelési elkerülése érdekében).
-* Ha \* **hatékonyságát** paraméterek vannak megadva a felhasználó, majd **vehicleWeight** is meg kell adni. Ha **vehicleEngineType** van _égésű_, **fuelEnergyDensityInMJoulesPerLiter** is meg kell adni.
+* Ha \* **hatékonyságát** paraméterek vannak megadva a felhasználó, majd **vehicleWeight** is meg kell adni. Ha **vehicleEngineType** van _combustion_, **fuelEnergyDensityInMJoulesPerLiter** is meg kell adni.
 * **maxChargeInkWh** és **currentChargeInkWh** (azaz mind "vagy" none) párban mindig meg kell adni.
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Mindkét fogyasztás modellek explicit megadása az egyes paraméterek meg kell 
 
 ## <a name="combustion-consumption-model"></a>Égésű fogyasztás modell
 
-A égésű felhasználás a modell amikor **vehicleEngineType** értéke _égésű_.
+A égésű felhasználás a modell amikor **vehicleEngineType** értéke _combustion_.
 Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Paraméterek szakaszban részletes leírását.
 
 * constantSpeedConsumptionInLitersPerHundredkm
@@ -53,7 +53,7 @@ Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Pa
 
 ## <a name="electric-consumption-model"></a>Elektromos fogyasztás modell
 
-Az elektromos felhasználás a modell amikor **vehicleEngineType** értéke _elektromos_.
+Az elektromos felhasználás a modell amikor **vehicleEngineType** értéke _electric_.
 Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Paraméterek szakaszban részletes leírását.
 
 * constantSpeedConsumptionInkWhPerHundredkm
