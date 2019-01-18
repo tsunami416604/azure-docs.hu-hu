@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 076ddbd722966709cbe386123acafb57f5def0be
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 194999ca7036e174e702d1f997f072da3e9a2dc5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318457"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382294"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Oktatóanyag: Egy fürtöt az Azure Service Fabric-alkalmazás üzembe helyezése
 
@@ -86,7 +86,7 @@ Az a **fürt** lapra, adja meg a **fürtnév** (például "mytestcluster"), vál
 
 ![Fürt létrehozása](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-Az a **tanúsítvány** lapra, adja meg a jelszót és a kimeneti elérési utat a fürttanúsítvány. Egy önaláírt tanúsítványt, a PFX-fájlok létrehozása és mentése a megadott kimeneti elérési utat.  A tanúsítvány-csomópontok és az ügyfél és a csomópont közötti biztonsághoz szolgál.  Önaláírt tanúsítványok nem használandó éles fürtök esetén.  Ezt a tanúsítványt használják a Visual Studio a fürtön a hitelesítéshez és az alkalmazás üzembe helyezését. Válassza ki **tanúsítvány importálása** , telepítse a PFX a CurrentUser\My a számítógép tanúsítványtárolójában.  Kattintson a **tovább**.
+Az a **tanúsítvány** lapra, adja meg a jelszót és a kimeneti elérési utat a fürttanúsítvány. Egy önaláírt tanúsítványt, a PFX-fájlok létrehozása és mentése a megadott kimeneti elérési utat.  A tanúsítvány-csomópontok és az ügyfél és a csomópont közötti biztonsághoz használható.  Önaláírt tanúsítványok nem használandó éles fürtök esetén.  Ezt a tanúsítványt használják a Visual Studio a fürtön a hitelesítéshez és az alkalmazás üzembe helyezését. Válassza ki **tanúsítvány importálása** , telepítse a PFX a CurrentUser\My a számítógép tanúsítványtárolójában.  Kattintson a **tovább**.
 
 ![Fürt létrehozása](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 

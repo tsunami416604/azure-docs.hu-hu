@@ -9,33 +9,35 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b07c71a9365fca3a2e5d7c837acf689af980afdd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 88f7135cea00b3e8c6cf30a1abd2b94297681c4c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075821"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391129"
 ---
 # <a name="ocr-cognitive-skill"></a>Optikai Karakterfelismerés cognitive szakértelem
 
+Optikai karakterfelismerés (OCR) szakértelem felismeri a képfájlok nyomtatott és kézzel írt szöveg. Ezen a képzettségi használja a gépi tanulási modellek által biztosított [számítógépes Látástechnológiai](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) a Cognitive Services. A **OCR** szakértelem képez le a következő funkciókat:
+
++ Ha textExtractionAlgorithm van állítva a "kézírásos", a ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) funkció használható.
++ Ha textExtractionAlgorithm van állítva a "nyomtatott", a ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkció angoltól eltérő nyelvű szolgál. Az angol nyelvű tájékoztatáshoz az új ["Szöveg felismerése"](../cognitive-services/computer-vision/concept-recognizing-text.md) funkcióinak, nyomtatott szöveg szolgál.
+
 A **OCR** szakértelem szöveges állomány kinyerésére képfájlok. Támogatott formátumok a következők:
 
-+ . JPEG
++ .JPEG
 + . JPG
-+ . PNG
-+ . BMP
-+ . GIF
++ .PNG
++ .BMP
++ .GIF
 
 > [!NOTE]
-> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
+> 2018. December 21., kezdési is [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) és a egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
 >
-> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
->
->  Az optikai Karakterfelismerés szakértelem felel meg a cognitive services funkciói: Ha textExtractionAlgorithm van állítva a "kézírásos", a ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) funkció használható.
->  Ha textExtractionAlgorithm van állítva a "nyomtatott", a ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkció angoltól eltérő nyelvű szolgál. Az angol nyelvű tájékoztatáshoz az új ["Szöveg felismerése"](../cognitive-services/computer-vision/concept-recognizing-text.md) funkcióinak, nyomtatott szöveg szolgál.
+> Beépített képességek végrehajtási, a Cognitive Services számítunk fel díjat, számoljuk fel a meglévő [használatalapú – mint-akkor lépjen ár](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás, egy Azure Search számítunk fel díjat, jelenleg előzetes verzió díjszabása leírt számlázása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). 
 
 ## <a name="skill-parameters"></a>Ismeretek paraméterek
 
@@ -44,7 +46,7 @@ A paraméterei a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | detectOrientation | Lehetővé teszi, hogy a kép tájolásának autodetection. <br/> Érvényes értékek: true / false (hamis).|
-|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódja. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (francia) <br/>  Németország (németországi) <br/>el (görög) <br/> hu (magyar) <br/> azt (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> csendes-óceáni idő (portugál) <br/>  a kérelemegység (orosz) <br/>  a gen (spanyol) <br/>  SV (svéd) <br/>  tr (török) <br/> ar (arab) <br/> ro (Románia) <br/> az SR-Cyrl (SerbianCyrillic) <br/> az SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  UNK (ismeretlen) <br/><br/> Ha a nyelvi kód nincs megadva vagy null értékű, a nyelv az angol nyelvű lesz beállítva. Ha a nyelv explicit módon "unk" értékre van állítva, a nyelv nem automatikusan észleli. </p> |
+|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódja. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (francia) <br/>  Németország (németországi) <br/>el (görög) <br/> hu (magyar) <br/> azt (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> csendes-óceáni idő (portugál) <br/>  a kérelemegység (orosz) <br/>  a gen (spanyol) <br/>  sv (Swedish) <br/>  tr (török) <br/> ar (arab) <br/> ro (Románia) <br/> sr-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  UNK (ismeretlen) <br/><br/> Ha a nyelvi kód nincs megadva vagy null értékű, a nyelv az angol nyelvű lesz beállítva. Ha a nyelv explicit módon "unk" értékre van állítva, a nyelv nem automatikusan észleli. </p> |
 | textExtractionAlgorithm | "nyomtatott" vagy "kézírásos". A "kézírásos" szöveg felismerése OCR algoritmus jelenleg előzetes verzióban érhető el, és csak angol nyelven. |
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
@@ -58,7 +60,7 @@ A paraméterei a kis-és nagybetűket.
 | Kimeneti név     | Leírás                   |
 |---------------|-------------------------------|
 | szöveg          | A kép kinyert egyszerű szöveget.   |
-| layoutText    | Komplex típus, amely leírja a kinyert szöveg, valamint a helyet, ahol a szöveg található.|
+| layoutText    | Komplex típus, amely ismerteti a kinyert szöveg és a hely, ahol a szöveg található.|
 
 
 ## <a name="sample-definition"></a>Minta-definíció
@@ -136,7 +138,7 @@ A paraméterei a kis-és nagybetűket.
 
 Egy közös Szövegegyesítő funkcióban lehetővé teszi a képek (-OCR szakértelem, vagy a kép felirata szöveg) értéket képviselő szöveges alak egyesítése egy dokumentumot content mezőjének be. 
 
-A következő példa indexmezők létrehoz egy *merged_text* a dokumentum a beágyazott szöveges tartalmát a dokumentumot, valamint a lemezképek mindegyike OCRed szöveget tartalmazó mezőbe. 
+A következő példa indexmezők létrehoz egy *merged_text* mező. Ez a mező szöveges tartalmát a dokumentumhoz, és a dokumentum a beágyazott képek mindegyike OCRed szöveget tartalmazza. 
 
 #### <a name="request-body-syntax"></a>Kéréstörzs szintaxisa
 ```json

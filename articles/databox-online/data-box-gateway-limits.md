@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49164433"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388423"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Az Azure Data Box Gateway korlátainak (előzetes verzió)
 
@@ -57,9 +57,9 @@ Az Azure storage szolgáltatási korlátai és gyakorlati tanácsok az elnevezé
 Alábbi korlátozásokkal adatokra vonatkoznak, ahogy azt az Azure-bA helyezi át.
 
 - Javasoljuk, hogy több eszköz nem kell írni ugyanazt a tárolót.
-- Ha egy meglévő Azure objektum (például egy blobba vagy egy fájlt) ezzel a névvel, az objektum, amely a másolásakor a felhőben, az eszköz felülírja a fájl a felhőben. 
+- Ha egy meglévő Azure objektum (például egy blobba vagy egy fájlt) ezzel a névvel, az objektum, amely a másolásakor a felhőben, az eszköz felülírja a fájl a felhőben.
 - Egy üres könyvtár-hierarchia (nélküli fájlokat) a megosztás mappák létrehozása a blob-tárolók nem van feltöltve.
-
+- Az eszköz méretnél nagyobb fájlok másolása, azt javasoljuk, hogy használjon *Robocopy* vagy *rsync* annak érdekében, hogy nincsenek hibák.
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Az Azure storage-fiók mérete és az objektum méretkorlátozások
 

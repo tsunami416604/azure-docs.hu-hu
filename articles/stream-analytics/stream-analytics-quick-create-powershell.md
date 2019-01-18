@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: c3392c3fd169ceed84368ed9e8b8d81cab7baea4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8d3dcd501fd0c4a9cc9f6cb5f7b27fa2e12004ad
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212929"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382595"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Gyors útmutató: Azure PowerShell-lel a Stream Analytics-feladat létrehozása
 
@@ -111,7 +111,7 @@ Az alábbi Azure CLI-kódblokkot hajtja végre a feladat bemeneti adatainak elő
 
 Az alábbi Azure PowerShell-kódblokkot parancsokat használja a feladat kimenetének használt blob-tároló létrehozása. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
-1. Hozzon létre egy szabványos, általános célú tárfiókot a [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsmaggal.  Ez a példa létrehoz egy nevű tárfiókot **myasaquickstartstorage** titkosítással helyileg redundáns és blobtitkosítással (alapértelmezés szerint engedélyezett.  
+1. Hozzon létre egy szabványos, általános célú tárfiókot a [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsmaggal.  Ez a példa létrehoz egy nevű tárfiókot **myasaquickstartstorage** titkosítással helyileg redundáns és blobtitkosítással (alapértelmezés szerint engedélyezve van).  
    
 2. Kérje le a `$storageAccount.Context` nevű tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókok használatával történő munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. 
 

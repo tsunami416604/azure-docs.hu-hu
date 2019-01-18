@@ -1,23 +1,23 @@
 ---
-title: 'Gyors útmutató: A beszédfelismerést a JavaScript a Speech Service SDK-t használó Node.js-ben'
+title: 'Gyors útmutató: Beszédfelismerést, node.js-szel – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan beszédfelismerést a JavaScript a Speech Service SDK-t használó Node.js-ben
+description: Ez az útmutató segítségével hozzon létre egy hang-szöveg transzformációs konzolalkalmazást az a Speech SDK for node.js használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: 35652b169067bc545fa0d1fcc977bbaee79ec3aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e0ae916687ca32835dd8daf6e5059b8f6eea0ff6
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724433"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382169"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-nodejs-using-the-speech-service-sdk"></a>Gyors útmutató: A beszédfelismerést a JavaScript a Speech Service SDK-t használó Node.js-ben
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Gyors útmutató: NODE.js-hez készült beszédfelismerést a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -29,9 +29,9 @@ Az alkalmazás a Microsoft alapján [Cognitive Services beszédfelismerő SDK](h
 * A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
 * Aktuális verziója [Node.js](https://nodejs.org).
 
-## <a name="create-a-new-project-folder"></a>Hozzon létre egy új projekt mappát
+## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-Hozzon létre egy új, üres mappát, és a egy új JavaScript és a Node.js-projektet, inicializálja.
+Hozzon létre egy új mappát, és a projekt inicializálása.
 
 ```sh
 npm init -f
@@ -39,13 +39,17 @@ npm init -f
 
 Ez a package.json fájlok, az alapértelmezett értékeket fogja init. Érdemes ezt a fájlt később szerkesztheti.
 
-## <a name="install-the-speech-sdk-for-javascript-into-that-folder"></a>A beszédfelismerés SDK telepítése JavaScript ebbe a mappába
+## <a name="install-the-speech-sdk"></a>A beszédfelismerés SDK telepítése
 
-Adja hozzá a Speech SDK-n keresztül `npm install microsoft-cognitiveservices-speech-sdk` , a Node.js-projektet.
+A beszédfelismerés SDK-t adhat a Node.js-projektet.
 
-Ez letölti és npmjs telepítse a legújabb verziót a Speech SDK és a szükséges előfeltételeket. Az SDK lesznek telepítve a `node_modules` könyvtárban, a projektmappa fájllistájának belül.
+```
+npm install microsoft-cognitiveservices-speech-sdk
+```
 
-## <a name="using-the-speech-sdk"></a>A beszédfelismerés SDK használatával
+Ez letölti és telepíti a legújabb verziót, a beszéd SDK és a szükséges előfeltételeket a npmjs. Az SDK lesznek telepítve a `node_modules` könyvtárban, a projektmappa fájllistájának belül.
+
+## <a name="use-the-speech-sdk"></a>A beszéd SDK használata
 
 Hozzon létre egy új fájlt a mappában `index.js` néven, és nyissa meg a fájlt egy szövegszerkesztőben.
 
@@ -58,7 +62,7 @@ Adja hozzá a következő JavaScript-kódot:
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
-## <a name="running-the-sample-from-command-line"></a>A minta futtatása a parancssorból
+## <a name="run-the-sample"></a>Minta futtatása
 
 Indítsa el az alkalmazást, hogy alkalmazkodjon `YourSubscriptionKey`, `YourServiceRegion`, és `YourAudioFile.wav` a konfigurációhoz. Ezután hajthat végre, a következő parancs meghívásával:
 
@@ -88,7 +92,7 @@ SpeechRecognitionResult {
 }
 ```
 
-## <a name="running-the-sample-from-visual-studio-code"></a>A minta futtatása a Visual Studio Code-ból
+## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Telepítse, és a Speech SDK használata a Visual Studio Code használatával
 
 Futtathatja a mintát a Visual Studio Code-ból is. Kövesse az alábbi lépéseket kell telepíteni, nyissa meg, és hajtsa végre a rövid útmutató:
 

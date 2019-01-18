@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2017
+ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: d0826d60d766874ddd186bcf406ea987134dab16
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 49c043853cede0a20e3d61011ded40e57d7a0303
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385866"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389428"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Az Azure Service Fabric biztonsági ellenőrzőlista
 Ez a cikk ismerteti egy könnyen használható ellenőrzőlista, amely segít megvédeni Azure Service Fabric-környezetét.
@@ -48,6 +48,8 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy kih
 
 
 ## <a name="next-steps"></a>További lépések
+
+- [A Service Fabric ajánlott biztonsági eljárások](azure-service-fabric-security-best-practices.md)
 - [Service Fabric-fürt frissítési folyamat és az Ön elvárásainak](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)
 - [A Visual Studióban a Service Fabric-alkalmazások kezelése](https://docs.microsoft.com/azure/service-fabric/service-fabric-manage-application-in-visual-studio).
 - [Bevezetés a Service Fabric Health modell](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction).

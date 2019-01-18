@@ -5,21 +5,21 @@ services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 10/29/2018
+ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: 900d75f826830ea7336044a892506d3bec546e30
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d4da1597ebed6c27cf6c12bab4a4e59be742c577
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283912"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383099"
 ---
 ## <a name="download-the-source-code"></a>Letöltheti a forráskódot
 
-A távoli figyelési forráskódtárházak kell futtatnia a mikroszolgáltatások Docker-rendszerképek Docker konfigurációs fájljait tartalmazza.
+A távoli figyelési forráskódtárházak forráskódját és a Docker konfigurációs fájlokat kell futtatnia a mikroszolgáltatások Docker-rendszerképeket tartalmazza.
 
-Klónozza, és hozza létre a tárház helyi verzióját, a parancssori környezetet használatával keresse meg a megfelelő mappát a helyi gépen. Ezután futtassa a következő eljárások egyikét parancsokat vagy klónozásához a .NET vagy Java-tárház:
+Klónozza, és hozza létre a tárház helyi verzióját, a parancssori környezetet használatával keresse meg a megfelelő mappát a helyi gépen. Ezután futtassa a következő eljárások egyikét parancsokat vagy klónozásához a .NET-adattárban:
 
 Töltse le a legújabb verzióját a .NET mikroszolgáltatás-megvalósítások, futtassa:
 
@@ -32,7 +32,7 @@ cd azure-iot-pcs-remote-monitoring-dotnet
 git submodule foreach git pull origin master
 ```
 
-Töltse le a legújabb verzióját a Java-mikroszolgáltatások megvalósításokhoz, futtassa:
+Ez a cikk feltételezi, hogy a .NET-mikroszolgáltatások használja. Nincsenek is Java-implementációk érhető el. Töltse le a legújabb verzióját a Java-mikroszolgáltatások megvalósításokhoz, futtassa:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
@@ -70,11 +70,13 @@ Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lép
 
     A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja. Ez az erőforráscsoport már nincs szüksége a megfelelő erőforrások után törölheti.
 
-    A parancsfájl is hozzáad egy előtaggal rendelkező környezeti változók készletét **számítógépek** a helyi gépen. Ha elindítja a Docker-tárolók helyileg, a konfigurációs értékeket, olvassa az ezeket a környezeti változókat.
+    A parancsfájl is hozzáad egy előtaggal rendelkező környezeti változók készletét **számítógépek** a helyi gépen. Ha elindítja a Docker-tárolók vagy helyileg mikroszolgáltatás-projektek, a konfigurációs értékeket, olvassa az ezeket a környezeti változókat.
 
-> [!TIP]
-> Miután a parancsfájl futása befejeződött, a környezeti változók listáját jeleníti meg. Ha ezekre az értékekre, menti a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájlt is használhatja őket jövőbeli megoldás megoldásgyorsító központi telepítésekhez. Vegye figyelembe, hogy a helyi gépen állítsa be a környezeti változók felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
+    > [!TIP]
+    > Miután a parancsfájl futása befejeződött, azt is menti a környezeti változók nevű fájlba  **\<a kezdőmappa\>\\.pcs\\\<megoldásnevet\>.env** . A jövőbeli megoldás megoldásgyorsító központi telepítések használhatja őket. Vegye figyelembe, hogy a helyi gépen állítsa be a környezeti változók felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
+
+1. Lépjen ki a parancssori környezetből.
 
 ### <a name="use-existing-azure-resources"></a>A meglévő Azure-erőforrások
 
-Ha már létrehozta a szükséges Azure-erőforrások, a helyi gépén hozzon létre a megfelelő környezeti változókat. Előfordulhat, hogy mentette-e ezeket az értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájlt a legutóbbi üzembe helyezés részeként. Vegye figyelembe, hogy a helyi gépen beállított környezeti változókat felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
+Ha már létrehozta a szükséges Azure-erőforrások, a helyi gépén hozzon létre a megfelelő környezeti változókat. Előfordulhat, hogy a menteni ezeket a  **\<a kezdőmappa\>\\.pcs\\\<megoldás neve\>.env** a központi telepítési fájlt. Vegye figyelembe, hogy a helyi gépen beállított környezeti változókat felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.

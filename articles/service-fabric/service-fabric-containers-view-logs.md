@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: twhitney
-ms.openlocfilehash: c4add1034e4b149cbe9d3c76c03987d45ca587c4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d66e27d860d18a37ffd9c6355b8d769116f26d73
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993784"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391250"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>A Service Fabric-tároló szolgáltatás naplók megtekintése
 Az Azure Service Fabric egy tárolóvezénylő, és mindkettő támogatja [Linux és Windows-tárolók](service-fabric-containers-overview.md).  Ez a cikk azt ismerteti, hogy a futó tároló szolgáltatás vagy a kézbesíthetetlen tároló tárolónaplók megtekintése, így diagnosztizálhatja és elháríthatja.
@@ -44,6 +44,8 @@ A tárolóindítási hibák diagnosztizálásának elősegítése céljából a 
 
 A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, nincs olyan tárolót megőriz. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. A funkció használatakor alkalmazzon elhelyezési korlátozásokat, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne kerüljön át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
 
+A beállítás **RunInteractive** felel meg a Docker `--interactive` és `tty` [jelzők](https://docs.docker.com/engine/reference/commandline/run/#options). Ha ez a beállítás értéke igaz a jegyzékfájlban, ezek a jelölők szolgálnak a tárolót.  
+
 ### <a name="rest"></a>REST
 Használja a [első tároló naplóinak üzembe helyezett a csomópont](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) művelet a naplók lekérése az összeomlott a tárolóhoz. Adja meg a tárolót futtató csomópont nevét, alkalmazásnevet, szolgáltatás jegyzékfájl neve és a kód csomag nevét.  Adja meg `&Previous=true`. A válasz tartalmazni fogja a tároló naplóit a kézbesíthetetlen tároló kód csomag-példány.
 
@@ -63,7 +65,7 @@ GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$
 {   "Content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" } 
 ```
 
-### <a name="service-fabric-sfctl"></a>A Service Fabric (SFCTL)
+### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
 Használja a [sfctl szolgáltatás get-tároló-naplók](service-fabric-sfctl-service.md) parancs beolvassa a naplókat összeomlott a tárolóhoz.  Adja meg a tárolót futtató csomópont nevét, alkalmazásnevet, szolgáltatás jegyzékfájl neve és a kód csomag nevét. Adja meg a `--previous` jelzőt.  A válasz tartalmazni fogja a tároló naplóit a kézbesíthetetlen tároló kód csomag-példány.
 
 ```

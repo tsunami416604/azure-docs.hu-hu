@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321891"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381954"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>A Log Analytics-rekordok szabványos tulajdonságai
 Az adatok [Log Analytics](../log-query/log-query-overview.md) rekordkészletet, amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik van tárolva. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
@@ -92,7 +92,7 @@ A  **\_IsBillable** tulajdonság határozza meg, hogy a feldolgozott adatok szá
 Számlázott adattípusok küldő számítógépek listájának lekéréséhez használja a következő lekérdezést:
 
 > [!NOTE]
-> A lekérdezések használata `union withsource = tt *` takarékosan vizsgálatok különböző adattípusok adatok drágák végrehajtásához. 
+> A lekérdezések használata `union withsource = tt *` takarékosan vizsgálatok különböző adattípusok drágák végrehajtásához. 
 
 ```Kusto
 union withsource = tt * 

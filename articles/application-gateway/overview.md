@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 21aac318542f9d30cb44d940392d05367f1f7b9f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9aab33eb4ba6a49d96bcacfc2151c3554fbebfaf
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246466"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382866"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -113,6 +113,22 @@ HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vag
 Az Application Gateway mostantól támogatja a bejövő HTTP-kéréseket, valamint a kimenő HTTP-válaszok fejlécek újraírási képessége. Lesz hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek, amíg a kérelem/válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Módosíthatja is a standard (meghatározott [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) valamint a nem szabványos üzenetfejlécének mezői.  
 
 Az nyilvános előzetes funkcióval kapcsolatos további információkért lásd: [Újraírási HTTP-fejlécek](rewrite-http-headers.md).
+
+## <a name="sizing"></a>Méretezés
+
+Az Application Gateway jelenleg három méretben érhető el: **Kis**, **Közepes**, és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+
+Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alkalmazásátjárókhoz tartozó átlagos átviteli sebességek szerepelnek:
+
+| Átlagos háttér-válasz mérete | Kicsi | Közepes | Nagy |
+| --- | --- | --- | --- |
+| 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
+| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+
+> [!NOTE]
+> Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
 
 ## <a name="next-steps"></a>További lépések
 

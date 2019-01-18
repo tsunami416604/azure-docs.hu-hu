@@ -6,14 +6,14 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604771"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382259"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio telepítése
 
@@ -48,16 +48,9 @@ A helyi telepítés befejezéséhez, szüksége van a helyi fejlesztői gépen t
 
 Ebben a szakaszban a távoli figyelési mikroszolgáltatások fogja futtatni. A webes felhasználói felület futtatása natív módon, az Eszközszimuláció service a Docker és a mikroszolgáltatások a Visual Studióban.
 
-### <a name="run-the-web-ui"></a>A webes felhasználói felület futtatása
-
-Ebben a lépésben indítsa el a webes felhasználói felületen. Keresse meg a **mire** mappát a helyi tárház másolja, és futtassa a következő parancsokat:
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>Eszköz szimulálása szolgáltatás futtatásához
+
+Nyisson meg egy új parancsablakot győződjön meg arról, hogy a által beállított környezeti változókat a hozzáférést a **start.cmd** parancsfájlt az előző szakaszban.
 
 Futtassa a következő parancsot a Docker-tárolót, az eszköz szimulálása szolgáltatás elindításához. A szolgáltatás a távoli figyelési megoldásban az eszközök szimulálja.
 
@@ -74,12 +67,12 @@ A következő lépések bemutatják, hogyan futtathatja a távoli figyelési mik
 1. A **Megoldáskezelőben**, kattintson a jobb gombbal a megoldásra, majd a kattintson **tulajdonságok**.
 1. Válassza ki **gyakori tulajdonságai > Kezdőprojekt**.
 1. Válassza ki **több kezdőprojekt** és **művelet** való **Start** a következő projektek:
-    * Webszolgáltatás (asa-manager\WebService)
+    * WebService (asa-manager\WebService)
     * Webszolgáltatás (auth\WebService)
-    * Webszolgáltatás (config\WebService)
+    * WebService (config\WebService)
     * Webszolgáltatás (eszköz-telemetry\WebService)
-    * Webszolgáltatás (iothub-manager\WebService)
-    * Webszolgáltatás (storage-adapter\WebService)
+    * WebService (iothub-manager\WebService)
+    * WebService (storage-adapter\WebService)
 1. Kattintson a **OK** menteni a beállításokat.
 1. Kattintson a **Debug > Start Debugging** létrehozását és futtatását a webes szolgáltatások a helyi gépen.
 
@@ -94,11 +87,22 @@ Kövesse az alábbi lépéseket a Stream Analytics-feladat indítása:
 1. Kattintson a **Stream Analytics-feladat** az erőforrások listájában.
 1. A Stream Analytics-feladat a **áttekintése** lap, kattintson a **Start** gombra. Kattintson a **Start** a feladat elindításához.
 
+### <a name="run-the-web-ui"></a>A webes felhasználói felület futtatása
+
+Ebben a lépésben indítsa el a webes felhasználói felületen. Nyisson meg egy új parancsablakot győződjön meg arról, hogy a által beállított környezeti változókat a hozzáférést a **start.cmd** parancsfájlt. Keresse meg a **mire** mappát a helyi tárház másolja, és futtassa a következő parancsokat:
+
+```cmd
+npm install
+npm start
+```
+
+A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http://localhost:3000/dashboard**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
+
 ### <a name="configure-and-run-nginx"></a>Konfigurálása és futtatása az nginx-et
 
 Állítsa be a fordított proxykiszolgáló mutató hivatkozást a webalkalmazás és a helyi gépen futó mikroszolgáltatásokat:
 
-* Másolás a **nginx.conf** fájlt a **webui\scripts\localhost** mappát a **nginx\conf** telepítési könyvtár.
+* Másolás a **nginx.conf** fájlt a **webui\scripts\localhost** a tárház helyi példányának mappájában a **nginx\conf** telepítési könyvtár.
 * Futtatás **nginx**.
 
 További információ a futó **nginx**, lásd: [nginx-et a Windows](https://nginx.org/en/docs/windows.html).

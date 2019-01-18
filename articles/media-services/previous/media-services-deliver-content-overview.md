@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3e968c71b87f7227dc4bd2e3f4ee486719b65e40
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240137"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388161"
 ---
 # <a name="deliver-content-to-customers"></a>Továbbítja a tartalmat az ügyfelek számára
 Amikor, tartalom jusson el a streamelési vagy igény szerinti videó az ügyfelek számára, célja, hogy a magas színvonalú videó továbbítása különböző eszközökre, különböző hálózati körülmények között.
@@ -61,7 +61,7 @@ Ahhoz, hogy a felhasználó a tartalmak streamelésére vagy letöltésére hasz
 * OnDemandOrigin keresők. Ezek a médiatartalmak (például MPEG-DASH, HLS vagy Smooth Streaming) segítségével, vagy fokozatosan letölteni a fájlokat.
 * Közös hozzáférésű jogosultságkód (SAS) URL-cím lokátorokat. Ezek használhatók a helyi számítógépen médiafájlok letöltéséhez.
 
-Egy *hozzáférési szabályzat* az engedélyek (például olvasási, írási és listája) meghatározására szolgál, és időtartama, amelyhez az ügyfél rendelkezik hozzáféréssel egy adott eszközre. Vegye figyelembe, hogy a lista engedéllyel (AccessPermissions.List) nem lehet létrehozni egy OrDemandOrigin lokátort.
+Egy *hozzáférési szabályzat* az engedélyek (például olvasási, írási és listája) meghatározására szolgál, és időtartama, amelyhez az ügyfél rendelkezik hozzáféréssel egy adott eszközre. Vegye figyelembe, hogy a lista engedéllyel (AccessPermissions.List) nem lehet létrehozni egy OnDemandOrigin lokátort.
 
 Lokátorok lejárati dátummal rendelkezik. Az Azure Portalon a jövőben 100 éves lejárati dátummal keresők állítja be.
 
@@ -107,7 +107,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>A csak hangfájlt tartalmazó szűrővel Apple HTTP Live Streaming (HLS) formátumban
 Alapértelmezés szerint csak számok szerepelnek a HLS jegyzékfájlt. Ez a kapcsolat mobilhálózati az Apple Store minősítésre szükséges. Ebben az esetben ha egy ügyfél nem rendelkezik elegendő sávszélesség, vagy 2G-kapcsolaton keresztül kapcsolódik, a lejátszás vált, amennyiben csak. Ez segít megőrizni a tartalomközvetítéshez pufferelés nélkül, de nincs videó van. Bizonyos esetekben pufferelés player lehet előnyben részesített csak keresztül. Ha el kívánja távolítani a csak hangfájlt tartalmazó nyomon követése, vegye fel **csak = false** az URL-címre.
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3csak = false)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 További információkért lásd: [dinamikus Manifest összeállítás támogatási és HLS kimeneti további funkciók](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 

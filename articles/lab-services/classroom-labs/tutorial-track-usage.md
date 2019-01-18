@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 49d5761e3e37e1265938d1f1b27324de667a13ca
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 9408ae20246d7a48340434c201c4568bc02719cd
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707095"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390490"
 ---
-# <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: Tesztkörnyezet használatának nyomon követése az Azure Lab Services szolgáltatásban
+# <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: A labor létrehozása az Azure Lab Service használatának nyomon követése
 Az oktatóanyag bemutatja, hogyan követheti nyomon a tesztkörnyezet létrehozója/tulajdonosa a tesztkörnyezet használatát.
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
@@ -37,7 +37,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). 
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is.
 3. A **Saját tesztkörnyezetek** lapon válassza ki azt a tesztkörnyezetet, amelynek a használatát nyomon szeretné követni. 
-4. Válassza a **Felhasználók** lapot. Megjelenik a tesztkörnyezetben regisztrált felhasználók listája. Válassza a **Regisztrációs hivatkozás** lehetőséget, másolja a hivatkozást a vágólapra, és küldje el minden új tanulónak, aki még nem regisztrált a tesztkörnyezetbe. 
+4. Válassza ki **felhasználók** a bal oldali menüben, vagy **felhasználók** csempére. Megjelenik a tesztkörnyezetben regisztrált felhasználók listája. Válassza a **Regisztrációs hivatkozás** lehetőséget, másolja a hivatkozást a vágólapra, és küldje el minden új tanulónak, aki még nem regisztrált a tesztkörnyezetbe. 
 
     ![Regisztrált felhasználók](../media/tutorial-track-usage/registered-users.png)
 
@@ -55,6 +55,8 @@ Virtuális gép egy sorra a listában, vigye az egérmutatót, mivel vezérlők 
 - Virtuális gép elindítása
 - Virtuális gép leállítása
 - Virtuális gép törlése
+
+Gombok segítségével indítása, leállítása vagy törlése egy virtuális Gépet. 
 
 
 

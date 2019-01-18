@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az elévülési emlékeztető |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció lejárati emlékeztetővel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a lejárati emlékeztető között.
 services: active-directory
 documentationCenter: na
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 04874eff4375ac57a8c8e15a11399ca650bd5c15
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76860fa1e98bfcef180c4a50452739dd26de18d5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019043"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390616"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Oktatóanyag: Azure Active Directory-integráció az elévülési emlékeztető
+# <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Oktatóanyag: Az Azure Active Directory integrációja az elévülési emlékeztető
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan lejárati emlékeztető integrálása az Azure Active Directory (Azure AD).
 Lejárati emlékeztető integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
@@ -78,8 +78,8 @@ Az Azure AD egyszeri bejelentkezés lejárati emlékeztetővel tesztelése és k
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Emlékeztető lejárati egyszeri bejelentkezés konfigurálása](#configure-expiration-reminder-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre lejárati emlékeztető tesztfelhasználót](#create-expiration-reminder-test-user)**  - a-megfelelője a Britta Simon szerepel lejárati emlékeztetőt, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre lejárati emlékeztető tesztfelhasználót](#create-expiration-reminder-test-user)**  - a-megfelelője a Britta Simon szerepel lejárati emlékeztetőt, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -104,7 +104,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés lejárati emlékezte
 
     ![Lejárati emlékeztető tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-cím: `https://app.expirationreminder.net/account/sso`.
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://app.expirationreminder.net/account/sso`
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **(Raw)tanúsítvány** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -116,7 +116,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés lejárati emlékezte
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d201669bf627cf9b591958f3372760c0c990db9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e5f569d5561050c9993ec48b096f60595d44b1b1
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808094"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391178"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -28,7 +28,7 @@ A munkafolyamat általában ez a sorozat következő:
 
 1. Fejlesztés a gépi tanulási parancsfájlok képzési **Python**.
 1. Létrehozhat és konfigurálhat egy **számítási célt**.
-1. **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a számítási célnak futtatási rekordok tárolja egy **adattárolója**. Hiba a rekordok kerülnek egy **kísérletezhet**.
+1. **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a parancsfájlok olvasni vagy írni **adattárolója**. És a rekordokat végrehajtás mentése másként **fut** a a **munkaterület**, amely particionálása keresztül **kísérletezhet**.
 1. **A kísérlet lekérdezése** a naplózott mérőszámok az aktuális és korábbi fut a. A metrikák nem szükséges teljesítendő jelzik, ha 1. lépés, és a parancsfájlok iterálása ikonjához.
 1. Miután megtalálta a megfelelő futtató, regisztrálja a megőrzött modellel a **modell beállításjegyzék**.
 1. A pontozó szkript fejleszthet.
@@ -228,5 +228,5 @@ Tevékenységek biztosíthat az SDK-t vagy a webes felhasználói felületen ker
 Ismerkedés az Azure Machine Learning szolgáltatással, tekintse meg:
 
 * [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
-* [Gyors útmutató: Hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
+* [Rövid útmutató: Hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
 * [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)

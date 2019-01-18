@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e5f1f2fe3745ae2817b73b2500ee90a59fc283e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607081"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382785"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Lekérdezések figyelése és a számítási feladatok teljesítményének javítása automatikus hangolás engedélyezése
 
@@ -87,6 +87,10 @@ Konfigurálja a T-SQL használatával az egyes automatikus hangolási lehetősé
    ```
    
 A beállítási lehetőségek állítja be, örökölt adatbázis-beállítások felülbírálása, valamint engedélyezi a hangolási beállítást. OFF értékre, is hatálytalanítja örökölt adatbázis-beállítások és a hangolási beállítás letiltása. Automatikus hangolási beállítás, amelynek alapértelmezett van megadva, a konfiguráció örökli az automatikus hangolási beállítás adatbázisszintű.  
+
+> [!IMPORTANT]
+> Az [aktív georeplikáció](sql-database-auto-failover-group.md), az automatikus hangolás csak az elsődleges adatbázis konfigurálni kell. Automatikusan alkalmazza a hangolási műveletek, például olyan példa index létrehozása vagy törlése a csak olvasható másodlagos automatikusan replikálja. Automatikus hangolás engedélyezése a T-SQL-n keresztül a csak olvasható másodlagos próbál azt eredményezi, hogy egy hiba, hogy egy másik hangolás konfigurációját a csak olvasható másodlagos nem támogatott.
+>
 
 Keresés szélesebb eredményez a T-SQL-beállítások konfigurálása az automatikus hangolás, lásd: [az ALTER DATABASE beállítások megadása (Transact-SQL) az SQL Database logikai kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cbf58f7e5553f10087c854428a6a369cbb8c3bf9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d5a8187394fba8c7718a8d056cb2063f37347832
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196576"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Oktatóanyag: Cisco összevonó az Azure Active Directory-integráció
 
@@ -78,8 +78,8 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] tesztelése és konfigu
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Cisco összevonó egyszeri bejelentkezés konfigurálása](#configure-cisco-umbrella-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre a Cisco összevonó tesztfelhasználót](#create-cisco-umbrella-test-user)**  – egy megfelelője a Britta Simon Cisco rendszerére, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre a Cisco összevonó tesztfelhasználót](#create-cisco-umbrella-test-user)**  – egy megfelelője a Britta Simon Cisco rendszerére, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     c. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: `https://login.umbrella.com/sso`
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **metaadatainak XML**a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **metaadatainak XML**a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
@@ -120,15 +120,15 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
-### <a name="configure-cisco-umbrella-single-sign-on"></a>Cisco összevonó egyszeri bejelentkezés konfigurálása
+### <a name="configure-cisco-umbrella-single-sign-on"></a>Configure Cisco Umbrella Single Sign-On
 
 1. Egy másik böngészőablakban bejelentkezést a Cisco összevonó vállalati webhelyre rendszergazdaként.
 
-2.  A menüt a bal oldali menüjében kattintson az **rendszergazdai** , és keresse meg **hitelesítési** majd kattintson a **SAML**.
+2. A menüt a bal oldali menüjében kattintson az **rendszergazdai** , és keresse meg **hitelesítési** majd kattintson a **SAML**.
 
     ![A rendszergazda](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
@@ -144,7 +144,6 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     ![A Tovább gombra](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-
 6. Az a **v: lehetőséget XML-fájl feltöltése**, töltse fel a **összevonási metaadatainak XML** , amely az Azure Portalról, és a metaadatok feltöltése után a letöltött fájl az alábbi értékek automatikusan kitölti a rendszer automatikusan lekérése, majd kattintson a **következő**.
 
     ![A choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
@@ -155,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
 8. Kattintson a **SAVE** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -206,7 +205,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-cisco-umbrella-test-user"></a>Cisco összevonó tesztfelhasználó létrehozása
+### <a name="create-cisco-umbrella-test-user"></a>Create Cisco Umbrella test user
 
 Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Cisco rendszerére, azok ki kell építeni, Cisco Szolgáltatáscsaládnak.  
 Cisco rendszerére, esetén kiépítése a manuális feladat.
@@ -215,7 +214,7 @@ Cisco rendszerére, esetén kiépítése a manuális feladat.
 
 1. Egy másik böngészőablakban bejelentkezést a Cisco összevonó vállalati webhelyre rendszergazdaként.
 
-2.  A menüt a bal oldali menüjében kattintson az **rendszergazdai** , és keresse meg **fiókok**.
+2. A menüt a bal oldali menüjében kattintson az **rendszergazdai** , és keresse meg **fiókok**.
 
     ![A fiók](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
@@ -237,7 +236,7 @@ Cisco rendszerére, esetén kiépítése a manuális feladat.
 
     g. Kattintson a **létrehozás**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -250,4 +249,3 @@ Ha a hozzáférési panelen a Cisco összevonó csempére kattint, meg kell lehe
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 2497793ce5d24ed2516636e76b8b947417dd9f74
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: afcf64b79b08ae76f56f57569905945489c2933e
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039945"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382879"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
@@ -119,7 +119,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 1. Új replikációs szabályzat létrehozásához kattintson a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** > **+Replikációs szabályzat** elemre.
 2. A **Replikációs szabályzat létrehozása** beállításnál adja meg a szabályzat nevét.
 3. Az **RPO küszöbértéke** beállításnál adja meg a helyreállítási időkorlátot (RPO). A rendszer riasztást ad, ha a replikációs RPO túllépi ezt a korlátot.
-4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
+4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált kiszolgálók ebben az ablakban bármely időpontra állíthatók helyre. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 5. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállításnál adja meg a **Ki** értéket. A szabályzat létrehozásához kattintson az **OK** gombra.
 
 A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
@@ -154,13 +154,13 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a kiszolgálót a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 4. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
-5. A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Ez a következőket teszi:
+5. A **replikált elemek**, kattintson a jobb gombbal a kiszolgáló > **az áttelepítés befejezése**. Ez a következőket teszi:
 
-    - Befejezi a migrálási folyamatot, az AWS virtuális gép replikálását, és leállítja a virtuális gép Site Recovery-számlázását.
+    - Befejezi a migrálási folyamatot, a kiszolgáló replikálását, és leállítja a szolgálnak a Site Recovery-számlázását.
     - Ezzel a lépéssel törli azokat a replikációs adatokat. Azzal nem törli az áttelepített virtuális gépeket.
 
    ![Az áttelepítés befejezése](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: Virtuális gép replikációja leáll a feladatátvétel indítása előtt. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: Feladatátvétel indítása előtt a replikáció le van állítva. Ha megszakítja a folyamatban, a feladatátvételt, az leáll, de a kiszolgálón nem folytatja a replikálást.

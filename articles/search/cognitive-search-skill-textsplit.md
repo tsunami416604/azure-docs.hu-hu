@@ -8,19 +8,22 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 376a5a2214c5f1d77439923d6a11aaad5e011e73
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 05134ff59f87aaac71588057f1ac50015a769672
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313853"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389844"
 ---
 #   <a name="text-split-cognitive-skill"></a>Szöveg felosztása cognitive szakértelem
 
 A **szöveg felosztása** szakértelem működésképtelenné válik a szöveg adattömbökbe szöveg. Megadhatja, hogy szeretné-e a szöveg kezdetét mondatokat vagy egy adott hosszúságú oldalak. Ez szakértelem, különösen hasznosak, ha olyan szöveg maximális aktiválásához megszerzett képességeit a hosszúsági követelményeknek. 
+
+> [!NOTE]
+> Szakértelem nincs kötve a Cognitive Services API-t, és nincsenek szakértelem nélkül díjak. Azonban meg kell [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) ennek ellenére a szabad erőforrás beállítás felülbírálása, amely korlátozza, hogy naponta végrehajtott információbeolvasás kis számú.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -32,7 +35,7 @@ A paraméterei a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textSplitMode      | "Lapok" vagy "mondatok" | 
-| maximumPageLength | Ha textSplitMode "lapok" értékre van állítva, ez vonatkozik a mért maximális hossza `String.Length`. A minimális érték 100.  Ha a textSplitMode "lapok" értékre van állítva, az algoritmus megpróbálja a szöveg felosztása adattömbökre, amelyek mérete legfeljebb "maximumPageLenth". Ebben az esetben az algoritmus fog tenni a lehető legjobb megáll a mondat mondat határok, így az adatrészlet méretének lehet valamivel kisebb, mint "maximumPageLength". | 
+| maximumPageLength | Ha textSplitMode "lapok" értékre van állítva, ez vonatkozik a mért maximális hossza `String.Length`. A minimális érték 100.  Ha a textSplitMode "lapok" értékre van állítva, az algoritmus megpróbálja a szöveg felosztása adattömbökre, amelyek mérete legfeljebb "maximumPageLength". Ebben az esetben az algoritmus fog tenni a lehető legjobb megáll a mondat mondat határok, így az adatrészlet méretének lehet valamivel kisebb, mint "maximumPageLength". | 
 | defaultLanguageCode   | (nem kötelező) A következő nyelvi kódok: `da, de, en, es, fi, fr, it, ko, pt`. Alapértelmezés szerint angol (en). Érdemes figyelembe venni néhány dolgot:<ul><li>Ha egy languagecode-countrycode formátum, a formátum csak a languagecode részét szolgál.</li><li>A nyelv nem szerepel a fenti listán, ha a felosztás szakértelem karakter határokat, működésképtelenné válik a szöveg.</li><li>Biztosít egy nyelvi kód hasznos darabolás szó nem terület nyelveken, például a kínai, japán és koreai megfelezése elkerülése érdekében.</li></ul>  |
 
 

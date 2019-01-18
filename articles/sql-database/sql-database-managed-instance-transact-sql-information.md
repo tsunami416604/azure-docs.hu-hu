@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: acedfab277199c2ada6af17584bab3f222fe1a13
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843206"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390027"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -124,7 +124,7 @@ A felügyelt példány nem fér hozzá a fájlmegosztásokhoz és a Windows-mapp
 
 ### <a name="compatibility-levels"></a>Kompatibilitási szintek
 
-- Támogatott kompatibilitási szintek a következők: 100, 110-es, 120, 130, 140  
+- Támogatott kompatibilitási szintek a következők: 100, 110, 120, 130, 140  
 - Nem támogatja a 100 alatti kompatibilitási szinteken.
 - Új adatbázis alapértelmezett kompatibilitási szintje 140. A visszaállított adatbázis kompatibilitási szintje változatlan marad, ha 100 volt, vagy újabb.
 
@@ -235,7 +235,7 @@ Sem az MSDTC sem [rugalmas tranzakciók](https://docs.microsoft.com/azure/sql-da
 Egyes Windows-specifikus céljainak xevent típusú eseményekhez nem támogatottak:
 
 - `etw_classic_sync target` nem támogatott. Store `.xel` fájlokat az Azure blob storage-ban. Lásd: [etw_classic_sync cél](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
-- `event_file target`nem támogatott. Store `.xel` fájlokat az Azure blob storage-ban. Lásd: [event_file cél](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target).
+- `event_file target`nem támogatott. Store `.xel` fájlokat az Azure blob storage-ban. Lásd: [event_file cél](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Külső kódtárak
 
@@ -264,7 +264,7 @@ További információkért lásd: [FILESTREAM](https://docs.microsoft.com/sql/re
 
 A felügyelt példányhoz csatolt kiszolgálók támogatják a korlátozott számú célok:
 
-- Támogatott célok: SQL Server és SQL Database
+- Támogatott célok: Az SQL Server és SQL Database
 - Nem támogatott tárolók: fájlok, Analysis Services és más relációsadatbázis-kezelő rendszer.
 
 Műveletek
@@ -367,7 +367,7 @@ Kereszt-példány service broker nem támogatott:
   - T-SQL-feladat lépései támogatottak.
   - A következő replikációs feladatok támogatottak:
     - Replikálásitranzakciónapló-olvasó.  
-    - Pillanatkép.
+    - Snapshot.
     - Terjesztő
   - Feladat lépései SSIS használata támogatott.
   - Feladat lépései más típusú jelenleg nem támogatottak, többek között:
@@ -465,7 +465,7 @@ Hibanaplókat a felügyelt példány nem rögzíti, és a méret nem szerepel a 
 
 Felügyelt példány hibanaplók helyezi részletes információkat, és nem vonatkoznak ezek közül számos. A jövőben a hibanaplók információ mennyisége csökkenni fog.
 
-**Megkerülő megoldás**: egyéni eljárással hibanaplókat, hogy néhány nem megfelelő bejegyzések szűrő kimenő olvasásához. További információkért lásd: [Azure SQL DB felügyelt példányainak – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+**Megkerülő megoldás**: Egy egyéni eljárással hibanaplókat, hogy néhány nem megfelelő bejegyzések szűrő kimenő olvasásához. További információkért lásd: [Azure SQL DB felügyelt példányainak – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>A két adatbázis belül ugyanazon tranzakció-hatókörben nem támogatott.
 
@@ -496,13 +496,13 @@ using (var scope = new TransactionScope())
 
 Bár ez a kód ugyanazon adatok együttműködik az MSDTC megadása kötelező.
 
-**Megkerülő megoldás**: használata [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) más database két kapcsolat használata helyett a kapcsolati környezet használata.
+**Megkerülő megoldás**: Használjon [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) más database két kapcsolat használata helyett a kapcsolati környezet használata.
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR-beli modulok és a egy ideig a csatolt kiszolgálók nem hivatkozhat helyi IP-cím
 
 CLR-beli modulok helyezi el a felügyelt példány és a egy ideig hivatkoznak a jelenlegi példány csatolt kiszolgálók/elosztott lekérdezések nem tudja feloldani az IP-címét a helyi példány. Ez a hiba átmeneti jellegű probléma.
 
-**Megkerülő megoldás**: Ha lehetséges használja a helyi kapcsolatok CLR-beli modulban.
+**Megkerülő megoldás**: Ha lehetséges használata helyi kapcsolatok CLR-beli modulban.
 
 ## <a name="next-steps"></a>További lépések
 

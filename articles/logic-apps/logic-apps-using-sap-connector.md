@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231338"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391282"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás az Azure Logic Apps a SAP-rendszerek
 
@@ -23,9 +23,9 @@ Ez a cikk azt ismerteti, hogyan férhet hozzá a helyszíni SAP erőforrásokat 
 
 Az SAP ECC-összekötőt használja a <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net (Ice) összekötő könyvtár</a> , és ezek a műveletek vagy műveleteket biztosít:
 
-- **SAP küldése**: küldése az idoc-hoz vagy a hívás BAPI funkciók az SAP-rendszereinket tRFC keresztül.
-- **SAP fogadjon**: fogadni az idoc-hoz vagy BAPI függvény meghívja az SAP-rendszereinket tRFC keresztül.
-- **Sémák készítése**: az idoc-hoz, BAPI vagy RFC sémákat az SAP-összetevők létrehozása.
+- **SAP küldése**: Küldjön az idoc-hoz, vagy hívja a BAPI-funkciók tRFC keresztül az SAP-rendszereinket.
+- **SAP fogadjon**: Az idoc-hoz vagy BAPI függvényhívások kapnak az SAP-rendszereinket tRFC keresztül.
+- **Sémák készítése**: Hozza létre az SAP-összetevők sémákat az idoc-hoz vagy BAPI vagy RFC.
 
 Az SAP-összekötő helyszíni SAP-rendszerek keresztül integrálódik a [a helyszíni adatátjáró](https://www.microsoft.com/download/details.aspx?id=53127). Küldési forgatókönyvekben, például, amikor a Logic Apps egy üzenetet küld egy SAP-rendszerrel az átjáró RFC-ügyfélként működik, és az SAP, a Logic Apps érkező kérelmeket továbbítja.
 Ehhez hasonlóan a Receive esetben az átjáró kiszolgálóként működik egy RFC, amely kéréseket fogad az SAP és a logikai alkalmazás továbbítja. 
@@ -38,7 +38,7 @@ Ez a cikk követni, ezek az elemek szükségesek:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>.
 
-* A logikai alkalmazás, ahonnan csak szeretné elérni az SAP-rendszerhez, és a egy eseményindítót, amely elindítja a logikai alkalmazás munkafolyamat. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* A logikai alkalmazás, ahonnan csak szeretné elérni az SAP-rendszerhez, és a egy eseményindítót, amely elindítja a logikai alkalmazás munkafolyamat. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP-alkalmazáskiszolgáló</a> vagy <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP Üzenetkiszolgáló</a>
 
@@ -71,7 +71,7 @@ Ebben a példában egy logikai alkalmazást fog létrehozni az Azure-ban a végp
 
 1. Az a [az Azure portal](https://portal.azure.com), hozzon létre egy üres logikai alkalmazást, amely megnyílik a Logikaialkalmazás-Tervező. 
 
-2. A Keresés mezőbe írja be a "http-kérelem" szűrőként. A eseményindítók listáról válassza ki a következő eseményindítót: **kérés – Ha egy HTTP-kérés fogadásakor.**
+2. A Keresés mezőbe írja be a "http-kérelem" szűrőként. Az eseményindítók listában jelölje ki az eseményindító: **Kérelem - HTTP-kérés fogadásakor.**
 
    ![HTTP-kérelem típusú trigger hozzáadása](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -92,13 +92,13 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
 
    ![Művelet hozzáadása](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. A Keresés mezőbe írja be szűrőként "sap". Válassza ezt a műveletet a műveletek listájának: **SAP üzenet küldése**
+2. A Keresés mezőbe írja be szűrőként "sap". A műveletek listából válassza a következő műveletet: **Üzenet küldése a SAP**
   
    ![Az SAP-küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
    Azt is megteheti, helyett, válassza ki a **vállalati** lapra, és válassza ki az SAP-műveletet.
 
-   ![Vállalati lapról SAP küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![Select SAP send action from Enterprise tab](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
 3. Ha a kapcsolat adatait kéri, hozzon létre most az SAP-kapcsolat. Ellenkező esetben, ha a kapcsolat már létezik, folytassa a következő lépés tehát beállíthatja az SAP-műveletet. 
 
@@ -159,7 +159,7 @@ Adja meg a logikai alkalmazás munkafolyamat egy válaszművelet és közé tart
 
 1. A Logic App Designerben az SAP művelet alatt válassza ki a **új lépés** > **művelet hozzáadása**.
 
-2. A Keresés mezőbe írja be a "response" szűrőként. Válassza ezt a műveletet a műveletek listájának: **kérelem - válasz**
+2. A Keresés mezőbe írja be a "response" szűrőként. A műveletek listából válassza a következő műveletet: **Kérés - válasz**
 
 3. Kattintson a **törzs** mezőre, hogy a dinamikus tartalmak listája jelenik meg. A listából a **küldeni az SAP**, jelölje be a **törzs** mező. 
 
@@ -197,13 +197,13 @@ Gratulálunk, sikeresen létrehozott egy logikai alkalmazást, amely képes komm
 
 Ez a példa egy logikai alkalmazást, amely, amikor egy üzenet fogadása az SAP-rendszer használja. 
 
-### <a name="add-sap-trigger"></a>Az SAP-eseményindító hozzáadása
+### <a name="add-sap-trigger"></a>Add SAP trigger
 
 1. Az Azure Portalon hozzon létre egy üres logikai alkalmazást, amely megnyílik a Logikaialkalmazás-Tervező. 
 
-2. A Keresés mezőbe írja be szűrőként "sap". A eseményindítók listáról válassza ki a következő eseményindítót: **SAP-üzenet érkezésekor**
+2. A Keresés mezőbe írja be szűrőként "sap". Az eseményindítók listában jelölje ki az eseményindító: **SAP-üzenet érkezésekor**
 
-   ![Az SAP-eseményindító hozzáadása](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
+   ![Add SAP trigger](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
 
    Azt is megteheti nyissa meg a vállalati lapot, és válassza az eseményindító
 
@@ -269,7 +269,7 @@ Ebben a példában egy HTTP-kérelem használ egy logikai alkalmazást, amely is
 
 1. Az Azure Portalon hozzon létre egy üres logikai alkalmazást, amely megnyílik a Logikaialkalmazás-Tervező. 
 
-2. A Keresés mezőbe írja be a "http-kérelem" szűrőként. A eseményindítók listáról válassza ki a következő eseményindítót: **kérés – Ha egy HTTP-kérés fogadásakor.**
+2. A Keresés mezőbe írja be a "http-kérelem" szűrőként. Az eseményindítók listában jelölje ki az eseményindító: **Kérelem - HTTP-kérés fogadásakor.**
 
    ![HTTP-kérelem típusú trigger hozzáadása](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -286,13 +286,13 @@ A tervező eszköztárán válassza a **Mentés** parancsot.
 
    ![Művelet hozzáadása](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. A Keresés mezőbe írja be szűrőként "sap". Válassza ezt a műveletet a műveletek listájának: **sémák készítése**
+2. A Keresés mezőbe írja be szűrőként "sap". A műveletek listából válassza a következő műveletet: **Sémák készítése**
   
    ![Az SAP-küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
    Azt is megteheti, azt is beállíthatja a **vállalati** lapra, és válassza ki az SAP-műveletet.
 
-   ![Vállalati lapról SAP küldési művelet kiválasztása](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
+   ![Select SAP send action from Enterprise tab](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
 
 3. Ha a kapcsolat adatait kéri, hozzon létre most az SAP-kapcsolat. Ellenkező esetben, ha a kapcsolat már létezik, folytassa a következő lépés tehát beállíthatja az SAP-műveletet. 
 
@@ -343,7 +343,7 @@ A tervező eszköztárán válassza a **Mentés** parancsot.
 
 Szükség esetén töltse le, vagy a létrehozott sémák tárolása adattárak, például blob, a storage vagy az integrációs fiók. Integrációs fiókok más XML műveletekkel fürtkezelési élményt biztosít, így a Ez a példa bemutatja, hogyan tölthet fel sémákat az integrációs fiók ugyanazon a logikai alkalmazáshoz az Azure Resource Manager-összekötő használatával.
 
-1. A Logic App Designerben az eseményindító területén válassza a **új lépés** > **művelet hozzáadása**. A keresőmezőbe írja be a "resource manager" szűrőként. Válassza a következő műveletet: **létrehozásának vagy frissítésének erőforrás**
+1. A Logic App Designerben az eseményindító területén válassza a **új lépés** > **művelet hozzáadása**. A keresőmezőbe írja be a "resource manager" szűrőként. Ez a művelet kiválasztása: **Hozzon létre vagy erőforrás frissítése**
 
    ![Válassza ki az Azure Resource Manager-műveletet](media/logic-apps-using-sap-connector/select-arm-action.png) 
 
@@ -379,7 +379,7 @@ Szükség esetén töltse le, vagy a létrehozott sémák tárolása adattárak,
 
 Az alábbiakban a jelenleg ismert problémák és korlátozások az SAP-összekötőhöz:
 
-* Az SAP-eseményindító does't támogatja a kötegelt Idoc fogadása SAP. Ez a művelet RFC kapcsolódási hiba az SAP-rendszerhez, és az átjáró közötti eredményezhet.
+* Az SAP-trigger nem támogatja a kötegelt Idoc fogadása SAP. Ez a művelet RFC kapcsolódási hiba az SAP-rendszerhez, és az átjáró közötti eredményezhet.
 
 * Az SAP-trigger nem támogatja az adatok átjárófürtök. Feladatátvételi esetenként az adatok átjárócsomópontnak, amely az SAP-rendszerrel kommunikál eltérhetnek az aktív csomópontra, nem várt viselkedést eredményez. Küldési forgatókönyvek esetén az adatok átjárófürtök támogatottak.
 

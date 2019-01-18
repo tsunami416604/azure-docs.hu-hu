@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 38b630b14a7425b4f8854ea88d6ba7e7a4335bea
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 48b9408a092b0e3a0fa6eb1b29822085ad8f8302
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54069873"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54363864"
 ---
 | Kategória | Adattár |
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
-| &nbsp; |[Az Azure Cosmos DB (MongoDB API-ban)](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |
+| &nbsp; |[Az Azure Cosmos DB MongoDB API-jaival](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |
 | &nbsp; |[1. generációs Azure Data Lake Storage](../articles/data-factory/connector-azure-data-lake-store.md) |
-| &nbsp; |[Az Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
@@ -60,7 +60,7 @@ ms.locfileid: "54069873"
 | **Fájl** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[Fájlrendszer](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
-| &nbsp; |[A Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
+| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |
 | **Általános védelem** |[Általános HTTP](../articles/data-factory/connector-http.md) |

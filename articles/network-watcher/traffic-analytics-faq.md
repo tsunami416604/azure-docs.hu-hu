@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582496"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383001"
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC analytics – gyakori kérdések
+# <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
 Ez a cikk összegyűjti a egy helyen számos, a traffic analytics az Azure Network Watcher leggyakrabban feltett kérdésekre.
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Mik a traffic analytics használatának előfeltételei?
 
-A TRAFFIC analytics a következő előfeltételek szükségesek:
+A TRAFFIC Analytics a következő előfeltételek szükségesek:
 
 - A Network Watcher előfizetés engedélyezve van.
 - Hálózati biztonsági csoport (NSG) folyamatnaplóit engedélyezve az NSG-t szeretné figyelni.
@@ -35,7 +35,6 @@ A TRAFFIC analytics a következő előfeltételek szükségesek:
 
 Felhasználói fiók megfelel a traffic analytics engedélyezéséhez a következők egyikét:
 
-- A fióknak rendelkeznie kell egy, az előfizetés szintjén a következő szerepkörök: a fiók rendszergazdája, szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként.
 - A fióknak rendelkeznie kell a következő szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök közül bármelyik, az előfizetések szintjén: tulajdonos, közreműködő, olvasó vagy hálózati közreműködő.
 - Ha a fiókjához nincs hozzárendelve egy a korábban felsorolt szerepkörbe, akkor hozzá kell rendelni egy egyéni biztonsági szerepkört, amely hozzá van rendelve a következő műveletek, az előfizetés szintjén.
             
@@ -61,7 +60,7 @@ A felhasználó előfizetéshez hozzárendelt szerepkörök ellenőrzése:
 Kimenetet nem jelennek meg, ha lépjen kapcsolatba a megfelelő előfizetés rendszergazdája hozzáférhet a parancsok futtatásához. További részletekért lásd: [szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
-## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Melyik Azure-ban régiók érhetők el a traffic analytics?
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Melyik Azure-régióban érhető el a Traffic Analytics?
 
 A traffic analytics használhat NSG-k, a következő támogatott régiók egyikében:
 - Közép-Kanada
@@ -133,7 +132,7 @@ A flow-naplózás helyes működéséhez regisztrálni kell a Microsoft.Insights
 
 Az irányítópult jelenik meg az első alkalommal akár 30 percet is igénybe vehet. A megoldás kell először ahhoz, hogy egy értelmes elemzéseket elegendő adatokat tudnak összesíteni. Majd állít elő jelentést. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Mi történik, ha ez az üzenet jelenik meg: "nem találtunk adatokat ezen a munkaterületen a kijelölt időintervallumban. Próbálja meg módosítani az időintervallum, vagy válasszon másik munkaterületet. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Mi történik, ha ez az üzenet jelenik meg: "Nem találtunk adatokat ezen a munkaterületen a kijelölt időintervallumban. Próbálja meg módosítani az időintervallum, vagy válasszon másik munkaterületet. "?
 
 Próbálja ki a következő beállításokat:
 - A felső sávon időintervallum módosításához.
@@ -142,15 +141,15 @@ Próbálja ki a következő beállításokat:
     
 Ha a probléma továbbra is fennáll, a aggályokat vethet a [User voice fórumán](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Mi történik, ha ez az üzenet jelenik meg: "elemzi az NSG flow naplók először. Ez a folyamat 20-30 percet is igénybe vehet. Ellenőrizze újra egy kis idő múlva. 2.) Ha a fenti lépés nem válik, és a munkaterület az ingyenes Termékváltozat alatt áll, majd ellenőrizze a munkaterület használati itt ellenőrzése túllépte a kvótát, más hivatkoznak – gyakori kérdések további információt. "?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Mi történik, ha ez az üzenet jelenik meg: "A hálózati biztonsági csoportok folyamatnaplói először. Ez a folyamat 20-30 percet is igénybe vehet. Ellenőrizze újra egy kis idő múlva. 2.) Ha a fenti lépés nem válik, és a munkaterület az ingyenes Termékváltozat alatt áll, majd ellenőrizze a munkaterület használati itt ellenőrzése túllépte a kvótát, más hivatkoznak – gyakori kérdések további információt. "?
 
 Mivel előfordulhat, hogy megjelenik ez az üzenet:
-- A TRAFFIC analytics nemrég lett engedélyezve, és előfordulhat, hogy nem még rendelkezik összesítve elegendő adat ahhoz, hogy egy értelmes elemzéseket.
+- A TRAFFIC Analytics nemrég lett engedélyezve, és előfordulhat, hogy nem még rendelkezik összesítve elegendő adat ahhoz, hogy egy értelmes elemzéseket.
 - A Log Analytics-munkaterület az ingyenes verzió használ, és túllépte a kvótát. Előfordulhat, hogy szeretné használni a munkaterület egy nagyobb kapacitással.
     
 Ha a probléma továbbra is fennáll, a aggályokat vethet a [User voice fórumán](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Mi történik, ha ez az üzenet jelenik meg: "erőforrásadatok (topológia érhetők) el, nem tranzakciós adatok megjelenését. Tekintse meg az erőforrások adatait, és további információkért tekintse meg – gyakori kérdések, ide. "?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Mi történik, ha ez az üzenet jelenik meg: "Erőforrásadatok (topológia érhetők) el, nem tranzakciós adatok megjelenését. Tekintse meg az erőforrások adatait, és további információkért tekintse meg – gyakori kérdések, ide. "?
 
 Az erőforrások információk jelennek meg az irányítópult; azonban nem flow-hoz kapcsolódó statisztikákat jelen. Adatok nem lehetnek jelen nincsenek az erőforrások közötti kommunikációs folyamatok miatt. 60 percig várjon, és újbóli ellenőrzése ennyi idő állapotát. Ha a probléma tartósan fennáll, és biztos benne, hogy létezik-e erőforrások közötti kommunikációs folyamatok, a aggályokat vethet a [User voice fórumán](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
@@ -223,18 +222,18 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 
 
-## <a name="how-is-traffic-analytics-priced"></a>Hogyan van a traffic analytics díjszabása?
+## <a name="how-is-traffic-analytics-priced"></a>Hogyan van a Traffic Analytics díjszabása?
 
-A TRAFFIC analytics forgalmi díjas. A mérési alapján flow naplózási adatok feldolgozása a szolgáltatás által, és a Log Analytics-munkaterület-naplók tárolásához, a létrejövő fokozott. 
+A TRAFFIC Analytics forgalmi díjas. A mérési alapján flow naplózási adatok feldolgozása a szolgáltatás által, és a Log Analytics-munkaterület-naplók tárolásához, a létrejövő fokozott. 
 
-Ha például forgalomért a [tarifacsomagjának](https://azure.microsoft.com/pricing/details/network-watcher/), USA nyugati középső régiójában, figyelembe véve, ha a Folyamatnaplók a Traffic Analytics által feldolgozott storage-fiókban tárolt adatok 10 GB-ot pedig a Log Analytics-munkaterület betöltött továbbfejlesztett naplók 1 GB-os, majd a alkalmazható díjak társulnak: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+Ha például forgalomért a [tarifacsomagjának](https://azure.microsoft.com/pricing/details/network-watcher/), USA nyugati középső régiójában, figyelembe véve, ha a Folyamatnaplók a Traffic Analytics által feldolgozott storage-fiókban tárolt adatok 10 GB-ot pedig a Log Analytics-munkaterület betöltött továbbfejlesztett naplók 1 GB-os, majd a alkalmazható díjak a következők: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan navigálhat a földrajzi nézet a billentyűzet használatával?
 
 A földrajzi térképen lap két fő szakaszokat tartalmazza:
     
-- **Szalagcím**: a földrajzi térkép felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például üzembe helyezés, országok érkező forgalmat, és rosszindulatú) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a térképen. Például ha az aktív gombot választja, a térkép kiemeli a központi telepítésben az aktív adatközpontokban.
-- **Térkép**: a szalagcím alatt a térkép szakasz bemutatja az Azure-adatközpontok és az országok közötti forgalomelosztás.
+- **Banner**: A földrajzi térkép felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például üzembe helyezés, országok érkező forgalmat, és rosszindulatú) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a térképen. Például ha az aktív gombot választja, a térkép kiemeli a központi telepítésben az aktív adatközpontokban.
+- **Térkép**: A szalagcím alatt a térkép szakasz bemutatja, az adatforgalom eloszlása az Azure-adatközpontok és az országok között.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>A szalagcím a billentyűzetnavigációt
     
@@ -263,8 +262,8 @@ A földrajzi térképen lap két fő szakaszokat tartalmazza:
 
 A virtuális hálózatok topológia lap két fő szakaszokat tartalmazza:
     
-- **Szalagcím**: a virtuális hálózatok topológia felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például a csatlakoztatott virtuális hálózatok, az leválasztott virtuális hálózatok és a nyilvános IP-címek) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a következő topológiaműveletek. Például ha az aktív gombot választja, a topológia kiemeli az aktív virtuális hálózatok a központi telepítésben.
-- **Topológia**: a szalagcím alatt a topológia című szakaszt a virtuális hálózatok közötti adatforgalom eloszlása jeleníti meg.
+- **Banner**: A virtuális hálózatok topológia felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például a csatlakoztatott virtuális hálózatok, az leválasztott virtuális hálózatok és a nyilvános IP-címek) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a következő topológiaműveletek. Például ha az aktív gombot választja, a topológia kiemeli az aktív virtuális hálózatok a központi telepítésben.
+- **Topológia**: A szalagcím alatt a topológia című szakaszt a virtuális hálózatok közötti adatforgalom eloszlása látható.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>A szalagcím a billentyűzetnavigációt
     
@@ -285,8 +284,8 @@ A virtuális hálózatok topológia lap két fő szakaszokat tartalmazza:
 
 A virtuális alhálózatok topológia lap két fő szakaszokat tartalmazza:
     
-- **Szalagcím**: a virtuális alhálózatok topológia felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például aktív, a közepes és az átjáró alhálózatok) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a következő topológiaműveletek. Például ha az aktív gombot választja, a topológia kiemeli az aktív virtuális alhálózat, a központi telepítésben.
-- **Topológia**: a szalagcím alatt a topológia című szakaszt a virtuális alhálózatok közötti adatforgalom eloszlása jeleníti meg.
+- **Banner**: A virtuális alhálózatok topológia felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például aktív, a közepes és az átjáró alhálózatok) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a következő topológiaműveletek. Például ha az aktív gombot választja, a topológia kiemeli az aktív virtuális alhálózat, a központi telepítésben.
+- **Topológia**: A szalagcím alatt a topológia című szakaszt a virtuális alhálózatok közötti adatforgalom eloszlása látható.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>A szalagcím a billentyűzetnavigációt
     

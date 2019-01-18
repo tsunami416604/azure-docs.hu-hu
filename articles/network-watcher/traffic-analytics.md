@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d339908b9347843da891dd1c7fa038c45cee1dcb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338583"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382834"
 ---
-# <a name="traffic-analytics"></a>Traffic Analytics
+# <a name="traffic-analytics"></a>Forgalmi elemzések
 
-A TRAFFIC analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok felhasználói és alkalmazástevékenységekbe rálátást biztosít a rendszer. A TRAFFIC analytics elemzi a Network Watcher hálózati biztonsági csoport (NSG) folyamatnaplóit, amelyek az Azure-felhőben adatforgalmat betekintést nyújtanak. A traffic analytics segítségével:
+A TRAFFIC Analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok felhasználói és alkalmazástevékenységekbe rálátást biztosít a rendszer. A TRAFFIC analytics elemzi a Network Watcher hálózati biztonsági csoport (NSG) folyamatnaplóit, amelyek az Azure-felhőben adatforgalmat betekintést nyújtanak. A traffic analytics segítségével:
 
 - Hálózati tevékenység vizualizációja az Azure-előfizetések között, és azonosíthatja a hotspotok.
 - Biztonsági kockázatok azonosítása, és tegye biztonságossá hálózatát, például a nyitott portok, internet-hozzáférés és a virtual machines (VM) hálózatok támadó csatlakozik megkísérlő alkalmazások adatokkal.
@@ -47,7 +47,7 @@ Azure virtuális hálózatokkal rendelkezik NSG-Folyamatnaplók, bejövő inform
 
 ## <a name="how-traffic-analytics-works"></a>Forgalmi elemzések működése
 
-A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett naplók rögzíti többek között a azonos forrás IP-címe, cél IP-cím, céloldali port és protokoll közös folyamatok összesítésével. Ha például a gazdagép 1 (IP-cím: 10.10.10.10) kommunikál a gazdagépen 2 (IP-cím: 10.10.20.10), 100-szor 1 óra (például 80-as) és protokollt (például http) használatával egy adott időszakban. A csökkentett napló rendelkezik, amelyek 100-szor egy adott időszakban 1 óra port használatával kommunikálni gazdagép 1. és 2 gazdagép egy bejegyzést *80-as* és protokoll *HTTP*, 100 bejegyzések nem. Csökkentett naplók javult a földrajzi hely, a biztonság és a topológiára vonatkozó információkkal, és tárolja a log analytics-munkaterület. Az alábbi képen látható, az adatfolyam:
+A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett naplók rögzíti többek között a azonos forrás IP-címe, cél IP-cím, céloldali port és protokoll közös folyamatok összesítésével. For example, Host 1 (IP address: 10.10.10.10) kommunikál a gazdagépen 2 (IP-cím: 10.10.20.10), 100-szor 1 óra (például 80-as) és protokollt (például http) használatával egy adott időszakban. A csökkentett napló rendelkezik, amelyek 100-szor egy adott időszakban 1 óra port használatával kommunikálni gazdagép 1. és 2 gazdagép egy bejegyzést *80-as* és protokoll *HTTP*, 100 bejegyzések nem. Csökkentett naplók javult a földrajzi hely, a biztonság és a topológiára vonatkozó információkkal, és tárolja a log analytics-munkaterület. Az alábbi képen látható, az adatfolyam:
 
 ![NSG-Folyamatnaplók feldolgozása folyamatábrája](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -99,9 +99,6 @@ A fióknak kell lennie, a következő Azure egyik tagjának [beépített szerepk
 |                   | Közreműködő            |
 |                   | Olvasó                 |
 |                   | Hálózati közreműködő    |
-|Klasszikus            | Fiókadminisztrátor  |
-|                   | Szolgáltatás-rendszergazda  |
-|                   | Társadminisztrátor       |
 
 Ha a fiók nincs hozzárendelve a beépített szerepkörök egyike, akkor hozzá kell rendelni egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendelt, az előfizetés szintjén a következő műveleteket:
 
@@ -317,7 +314,7 @@ Az Application gateway és a Load Balancer, a topológia forgalom megoszlása, f
  - Hogy mely alhálózat mely az Application gateway és a Load Balancer szolgáltatásprogram. Ha megfigyelte váratlan beszélgetések, kijavíthatja a konfigurációt.
  - Ha a támadó hálózatok vannak szolgáltatásprogram egy Application gateway, vagy a Load Balancer, is tudja javítsa ki az NSG-szabályok blokkolja a rosszindulatú hálózatok konfigurálásával. 
 
-    ![subnet-topology-showcasing-traffic-Distribution-to-a-Application-Gateway-subnet-with-regards-to-Flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Portok és az internetről forgalmat fogadó virtuális gépek megtekintése
 

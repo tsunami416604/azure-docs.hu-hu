@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2016
+ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: de68c59987a7ec1198c344cc22978ebed09c75e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271358"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390822"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment-környezetek egyéni konfigurációs beállításai
 ## <a name="overview"></a>Áttekintés
-Mivel az App Service Environment-környezetek egyetlen ügyfél számára elkülönített, vannak bizonyos konfigurációs beállítások, amelyek kizárólag az App Service Environmentet alkalmazhatók. Ez a cikk a különféle speciális egyéni beállításokra elérhető App Service Environment-környezetek dokumentumok.
+Mivel az App Service-(ASE) környezetek egyetlen ügyfél számára elkülönített, vannak bizonyos konfigurációs beállítások, amelyek kizárólag az App Service Environmentet alkalmazhatók. Ez a cikk a különféle speciális egyéni beállításokra elérhető App Service Environment-környezetek dokumentumok.
 
 Ha nem rendelkezik App Service-környezet, [App Service-környezet létrehozása](app-service-web-how-to-create-an-app-service-environment.md).
 
@@ -65,10 +65,11 @@ Másik megoldásként frissítheti az App Service-környezet használatával [Az
 A módosítás elküldése, azonban az App Service Environment, a módosítás érvénybe léptetéséhez az előtérrendszerek számával nagyjából 30 percet vesz igénybe.
 Például ha egy App Service Environment-környezet négy előtérrendszerek, eltarthat nagyjából két órát a konfigurációjának frissítése a Befejezés gombra. A konfiguráció módosításának tesszük elérhetővé, míg más a méretezési műveletek vagy konfiguráció-módosítási műveletek is igénybe vehet az App Service-környezet helyére.
 
-## <a name="disable-tls-10"></a>A TLS 1.0 letiltása
-Ismétlődő kérdés az ügyfelektől származó, különösen olyan ügyfelek, akik a PCI-megfelelőségi foglalkoznak naplózza, hogyan lehet explicit módon a TLS 1.0 letiltása az alkalmazásaikat.
+## <a name="disable-tls-10-and-tls-11"></a>Tiltsa le a TLS 1.0-s és a TLS 1.1-es
 
-A TLS 1.0 a következő keresztül letiltható **clusterSettings** bejegyzés:
+Ha szeretne kezelni egy alkalmazás által alapon TLS-beállítások, akkor használhatja a mellékelt útmutató a [kényszerítése a TLS-beállítások](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) dokumentáció. 
+
+Ha szeretné letiltani a bejövő a TLS 1.0 és a TLS 1.1 tartozó összes forgalmat az ASE környezetben az alkalmazások, állíthatja be a következő **clusterSettings** bejegyzés:
 
         "clusterSettings": [
             {
@@ -76,6 +77,8 @@ A TLS 1.0 a következő keresztül letiltható **clusterSettings** bejegyzés:
                 "value": "1"
             }
         ],
+
+A beállítás neve szerint 1.0-t, de konfigurálásakor letiltja a TLS 1.0 és a TLS 1.1.
 
 ## <a name="change-tls-cipher-suite-order"></a>Módosítsa a TLS titkosító csomag sorrendje
 Az ügyfelek egy másik kérdést akkor, ha azok módosíthatja a kiszolgáló által egyeztetett titkosítások listája, és ez módosításával érhető el a **clusterSettings** alább látható módon. Rendelkezésre álló titkosító csomagok listája lekérhetők [MSDN-cikkben](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).

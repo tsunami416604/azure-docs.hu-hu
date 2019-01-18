@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275550"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389233"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service-környezet sémákra
 
@@ -33,34 +33,60 @@ A megoldás a kimenő címek védelme érdekében adott tűzfal eszköz, amely a
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Az ASE Azure tűzfal konfigurálása 
 
-Az ASE az Azure-tűzfalon a kimenő forgalom zárolni a lépések a következők:
+A meglévő ASE az Azure-tűzfalon a kimenő forgalom zárolni a lépések a következők:
 
-1. Hozzon létre egy Azure-tűzfal a virtuális hálózathoz, ha az ASE-t, vagy lesz. [Az Azure tűzfal eszközplatformokon](https://docs.microsoft.com/azure/firewall/)
-2. Az Azure tűzfal felhasználói felületén válassza ki az App Service teljes Tartományneve Környezetcímke
-3. Hozzon létre egy útválasztási táblázatot, a kezelési címek [App Service Environment-környezet kezelési címeit]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) a következő ugrási típusú internettel. Az útvonal táblabejegyzéseket aszimmetrikus útválasztási problémák elkerülése érdekében van szükség.
-4. Adja hozzá a következő ugrási típusú internettel IP cím lekérdezésfüggőségek az alábbiak IP-cím függőségeinek útvonalakat.
-5. Adjon hozzá egy útvonalat a 0.0.0.0/0 útvonaltáblája a következő Ugrás az Azure-tűzfal folyamatban van.
-6. Hozzon létre Szolgáltatásvégpontok Azure SQL és az Azure Storage, az ASE-alhálózattal.
-7. Rendelje hozzá az útvonaltáblát az ASE-alhálózattal létrehozott.
+1. Engedélyezze a szolgáltatásvégpontokat SQL, a Storage és az Event Hub, az ASE-alhálózattal. Ehhez nyissa meg a hálózati portálon történő > alhálózatok és a select hátralékának, Microsoft.SQL és Microsoft.Storage a szolgáltatás-végpontok legördülő listából. Ha engedélyezve van az Azure SQL-szolgáltatásvégpontokat, minden olyan Azure SQL-függőségek, amelyek az alkalmazások, valamint a szolgáltatásvégpontokkal kell konfigurálni. 
+
+   ![Válassza ki a Szolgáltatásvégpontok][2]
+  
+1. Hozzon létre egy alhálózatot a virtuális hálózat, ahol az ASE létezik AzureFirewallSubnet nevű. Kövesse az utasításokat a [Azure tűzfal dokumentáció](https://docs.microsoft.com/azure/firewall/) létrehozása az Azure-tűzfal.
+1. Az Azure-tűzfal felhasználói felületen > szabályok > alkalmazás szabálygyűjtemény, Add-alkalmazás szabálygyűjtemény válassza. Adjon meg egy nevet, prioritás, és állítsa be a engedélyezése. A teljes Tartománynevet a címkék területen adjon meg egy nevet, a forrás-címek beállítása *, és válassza ki az App Service teljes Tartományneve Környezetcímke és a Windows Update. 
+   
+   ![Alkalmazás-szabály hozzáadása][1]
+   
+1. Az Azure-tűzfal felhasználói felületen > szabályok > Hozzáadás hálózati szabálygyűjtemény válassza ki a hálózati szabályok gyűjteményéhez. Adjon meg egy nevet, prioritás, és állítsa be a engedélyezése. Válassza ki a szabályok területen adjon meg egy nevet **bármely**állítsa be * forrás és cél-címekre, és a portok beállítása 123. Ez a szabály lehetővé teszi, hogy a rendszer használatával NTP óra szinkronizálás végrehajtásához. Hozzon létre egy másik szabály osztályozási segítségével portra 12000 ugyanúgy rendszer problémákat.
+
+   ![NTP hálózati szabály hozzáadása][3]
+
+1. Hozzon létre egy útválasztási táblázatot, a kezelési címek [App Service Environment-környezet kezelési címeit]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) a következő ugrási típusú internettel. Az útvonal táblabejegyzéseket aszimmetrikus útválasztási problémák elkerülése érdekében van szükség. Adja hozzá a következő ugrási típusú internettel IP cím lekérdezésfüggőségek az alábbiak IP-cím függőségeinek útvonalakat. Virtuális berendezés útvonal hozzáadása a 0.0.0.0/0 útválasztási táblázatot, a következő Ugrás az Azure-tűzfal magánhálózati IP-cím alatt. 
+
+   ![Útválasztási táblázat létrehozása][4]
+   
+1. Rendelje hozzá az útvonaltáblát az ASE-alhálózattal létrehozott.
+
+#### <a name="deploying-your-ase-behind-a-firewall"></a>Üzembe helyezi az ASE tűzfal mögött
+
+Az ASE tűzfal mögötti telepítése lépései is ugyanaz, mint a meglévő ASE konfigurálása az Azure-tűzfalak, kivéve a kell létrehozni az ASE-alhálózattal, és kövesse az előző lépésekben. Az ASE létrehozását egy már meglévő alhálózatban Resource Manager-sablont használja, lásd a dokumentum kell [az ASE létrehozása a Resource Manager-sablonnal](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
 
 ## <a name="application-traffic"></a>Alkalmazás-forgalom 
 
 A fenti lépések lehetővé teszi az ASE problémák nélkül. Továbbra is szeretné konfigurálni az alkalmazás igényeinek megfelelően az alábbiakkal. Az ASE Azure tűzfal konfigurált alkalmazások két problémák vannak.  
 
-- Alkalmazások függőségének teljes tartománynevek az Azure-tűzfal és az útvonaltábla hozzá kell adni
-- Útvonalak létre kell hozni a forgalmat az aszimmetrikus útválasztás problémák elkerülése érdekében származnak-címek
+- Az Azure-tűzfal és az útvonaltábla alkalmazásfüggőségek hozzá kell adni. 
+- Útvonalak létre kell hozni az alkalmazás forgalmának aszimmetrikus útválasztási problémák elkerülése érdekében
 
 Ha az alkalmazások függőségei, azokat hozzá kell adni az Azure-tűzfalhoz. Lehetővé teszi a HTTP/HTTPS-forgalmat, és a hálózati szabályok minden más alkalmazás szabályok létrehozásához. 
 
 Ha ismeri a címtartományt, amely az alkalmazás kérelem forgalmának származnak, adhat hozzá, hogy az útvonaltáblához rendelt az ASE-alhálózattal. Ha a címtartomány nagy vagy nincs megadva, majd használhatja például az Application Gateway egy hálózati berendezések, hogy az útvonaltábla hozzáadása egy címet. Az Application Gateway konfigurálása az ILB ASE részleteket [az ILB ASE integrálása egy Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
+![Az ASE az Azure-tűzfal csatlakozási folyamat][5]
 
+Ez az Application Gateway használata csak egy példa bemutatja, hogyan konfigurálható a rendszer. Ha ezt az elérési utat adott követi, majd kell útvonal hozzáadása az ASE alhálózat útvonaltáblájához, így a válasz az Application Gateway küldött forgalmat szeretné ott közvetlenül. 
+
+## <a name="logging"></a>Naplózás 
+
+Az Azure tűzfal a naplókat elküldheti az Azure Storage, az Event Hubs és a Log Analytics. Integrálhatja az alkalmazást bármely támogatott cél, nyissa meg a tűzfal az Azure portal > diagnosztikai naplók és a kívánt cél-naplók engedélyezésére. Ha integrálja a Log Analytics használatával, majd láthatja Azure tűzfal küldött összes forgalom naplózása. A forgalom megtagadásához megtekintéséhez nyissa meg a Log Analytics-portál > naplókat, és adja meg a lekérdezésben 
+
+    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+ 
+Az Azure-tűzfal integrálása a Log Analytics nagyon hasznos beolvasásakor először egy alkalmazás használata, ha Ön nem ismeri az összes alkalmazás függőségeit. További információ a Log Analytics [elemzése a Log Analytics-adatok az Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+ 
 ## <a name="dependencies"></a>Függőségek
 
-Az Azure App Service több külső függőséggel rendelkezik. Akkor is kell kategóriák szerinti bontásban több fő területtel:
+Az alábbi adatokat csak akkor szükséges, ha a nem Azure-tűzfalat készülékként egy tűzfalat konfigurálni szeretné. 
 
-- A szolgáltatásvégpont kompatibilis szolgáltatásokat kell beállítani a Szolgáltatásvégpontok ha zárolását, így a kimenő hálózati adatforgalmat szeretne.
-- IP-cím végpontok nem foglalkozik a tartomány nevét. Ez lehet egy probléma, tűzfal-eszközökhöz, amelyek hatással vannak az összes HTTPS-forgalmat tartománynevek. Az IP-cím végpontokat kell adni az útvonaltábla, amely az ASE-alhálózatra van beállítva.
+- A Szolgáltatásvégpontok szolgáltatásvégpont kompatibilis szolgáltatások kell konfigurálni.
+- IP-cím függőségei vannak nem HTTP/Https-forgalom
 - A tűzfal eszköz FQDN HTTP/HTTPS-végpontokat is kell elhelyezni.
 - Helyettesítő karaktert tartalmazó HTTP/HTTPS-végpontok függőségekkel rendelkező az ASE-t egy minősítők száma alapján változhat. 
 - Linux függőségek észrevétel csak olyan, az ASE-be helyez üzembe a Linux-alkalmazások. Ha Linux-alkalmazások, az ASE nem telepíti, majd ezek a címek nem kell hozzáadni a tűzfalhoz. 
@@ -72,21 +98,16 @@ Az Azure App Service több külső függőséggel rendelkezik. Akkor is kell kat
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Az Azure KeyVault |
+| Azure-eseményközpont |
 
+#### <a name="ip-address-dependencies"></a>IP-cím függőségek
 
-#### <a name="ip-address-dependencies"></a>IP-cím függőségek 
+| Végpont | Részletek |
+|----------| ----- |
+| \*:123 | NTP az óra ellenőrzése. Forgalom be van jelölve, a porton 123 több végpontot |
+| \*:12000 | Ezt a portot használja a rendszer figyeli. Ha ezután bizonyos problémák osztályozási nehezebben lesz, de az ASE-t továbbra is megfelelően működjenek blokkolva van |
 
-| Végpont |
-|----------|
-| 40.77.24.27:443 |
-| 13.82.184.151:443 |
-| 13.68.109.212:443 |
-| 13.90.249.229:443 |
-| 13.91.102.27:443 |
-| 104.45.230.69:443 |
-| 168.62.226.198:12000 |
-
+Az az Azure-tűzfalak automatikusan mindaz az alábbi konfigurálva a teljes tartománynév címkékkel. 
 
 #### <a name="fqdn-httphttps-dependencies"></a>Teljes tartománynév HTTP/HTTPS-függőségek 
 
@@ -94,10 +115,10 @@ Az Azure App Service több külső függőséggel rendelkezik. Akkor is kell kat
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
-|login.Windows.com:443 |
-|login.Windows.NET:443 |
+|login.windows.com:443 |
+|login.windows.net:443 |
 |login.microsoftonline.com:443 |
-|Client.wns.Windows.com:443 |
+|client.wns.windows.com:443 |
 |definitionupdates.microsoft.com:443 |
 |go.microsoft.com:80 |
 |go.microsoft.com:443 |
@@ -105,71 +126,79 @@ Az Azure App Service több külső függőséggel rendelkezik. Akkor is kell kat
 |www.microsoft.com:443 |
 |wdcpalt.microsoft.com:443 |
 |wdcp.microsoft.com:443 |
-|OCSP.msocsp.com:443 |
+|ocsp.msocsp.com:443 |
 |mscrl.microsoft.com:443 |
 |mscrl.microsoft.com:80 |
-|CRL.microsoft.com:443 |
+|crl.microsoft.com:443 |
 |crl.microsoft.com:80 |
-|www.Thawte.com:443 |
+|www.thawte.com:443 |
 |crl3.digicert.com:80 |
-|OCSP.digicert.com:80 |
-|csc3 – 2009-2.crl.verisign.com:80 |
-|CRL.VeriSign.com:80 |
-|OCSP.VeriSign.com:80 |
-|azperfcounters1.BLOB.Core.Windows .net: 443 |
+|ocsp.digicert.com:80 |
+|csc3-2009-2.crl.verisign.com:80 |
+|crl.verisign.com:80 |
+|ocsp.verisign.com:80 |
+|cacerts.digicert.com:80 |
+|azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
-|Global.Metrics.nsatc.NET:80   |
+|global.metrics.nsatc.net:80   |
 |az-prod.metrics.nsatc.net:443 |
 |antares.Metrics.nsatc.NET:443 |
 |azglobal-black.azglobal.metrics.nsatc.net:443 |
 |azglobal-red.azglobal.metrics.nsatc.net:443 |
 |antares-black.antares.metrics.nsatc.net:443 |
 |antares-red.antares.metrics.nsatc.net:443 |
-|maupdateaccount.BLOB.Core.Windows.NET:443 |
-|clientconfig.Passport.NET:443 |
-|Packages.microsoft.com:443 |
+|maupdateaccount.blob.core.windows.net:443 |
+|clientconfig.passport.net:443 |
+|packages.microsoft.com:443 |
 |schemas.microsoft.com:80 |
 |schemas.microsoft.com:443 |
-|Management.Core.Windows.NET:443 |
-|Management.Core.Windows.NET:80 |
+|management.core.windows.net:443 |
+|management.core.windows.net:80 |
+|management.azure.com:443 |
 |www.msftconnecttest.com:80 |
-|shavamanifestcdnprod1.azureedge .net: 443 |
-|ellenőrzés-v2.sls.microsoft.com:443 |
-|flighting.CP.WD.microsoft.com:443 |
-|DMD.metaservices.microsoft.com:80 |
-|Admin.Core.Windows.NET:443 |
-|azureprofileruploads.BLOB.Core.Windows.NET:443 |
-|azureprofileruploads2.BLOB.Core.Windows .net: 443 |
-|azureprofileruploads3.BLOB.Core.Windows .net: 443 |
-|azureprofileruploads4.BLOB.Core.Windows .net: 443 |
-|azureprofileruploads5.BLOB.Core.Windows .net: 443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|validation-v2.sls.microsoft.com:443 |
+|flighting.cp.wd.microsoft.com:443 |
+|dmd.metaservices.microsoft.com:80 |
+|admin.core.windows.net:443 |
+|azureprofileruploads.blob.core.windows.net:443 |
+|azureprofileruploads2.blob.core.windows.net:443 |
+|azureprofileruploads3.blob.core.windows.net:443 |
+|azureprofileruploads4.blob.core.windows.net:443 |
+|azureprofileruploads5.blob.core.windows.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>Helyettesítő karaktert tartalmazó HTTP/HTTPS-függőségek 
 
 | Végpont |
 |----------|
 |GR – éles -\*. cloudapp.net:443 |
-| \*. management.azure.com:443 |
+| \*.management.azure.com:443 |
 | \*. update.microsoft.com:443 |
-| \*. windowsupdate.microsoft.com:443 |
-|grmdsprod\*mini\*. servicebus.windows.net:443 |
-|grmdsprod\*lini\*. servicebus.windows.net:443 |
-|grsecprod\*mini\*. servicebus.windows.net:443 |
-|grsecprod\*lini\*. servicebus.windows.net:443 |
-|graudprod\*mini\*. servicebus.windows.net:443 |
-|graudprod\*lini\*. servicebus.windows.net:443 |
+| \*.windowsupdate.microsoft.com:443 |
+|grmdsprod\*mini\*.servicebus.windows.net:443 |
+|grmdsprod\*lini\*.servicebus.windows.net:443 |
+|grsecprod\*mini\*.servicebus.windows.net:443 |
+|grsecprod\*lini\*.servicebus.windows.net:443 |
+|graudprod\*mini\*.servicebus.windows.net:443 |
+|graudprod\*lini\*.servicebus.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux-függőségek 
 
 | Végpont |
 |----------|
-|wawsinfraprodbay063.BLOB.Core.Windows .net: 443 |
+|wawsinfraprodbay063.blob.core.windows.net:443 |
 |beállításjegyzék-1.docker.io:443 |
 |auth.docker.IO:443 |
-|Production.cloudflare.docker.com:443 |
+|production.cloudflare.docker.com:443 |
 |download.docker.com:443 |
-|US.Archive.ubuntu.com:80 |
+|us.archive.ubuntu.com:80 |
 |download.mono-project.com:80 |
-|Packages.treasuredata.com:80|
-|Security.ubuntu.com:80 |
+|packages.treasuredata.com:80|
+|security.ubuntu.com:80 |
 
+<!--Image references-->
+[1]: ./media/firewall-integration/firewall-apprule.png
+[2]: ./media/firewall-integration/firewall-serviceendpoints.png
+[3]: ./media/firewall-integration/firewall-ntprule.png
+[4]: ./media/firewall-integration/firewall-routetable.png
+[5]: ./media/firewall-integration/firewall-topology.png

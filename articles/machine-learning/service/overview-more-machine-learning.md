@@ -9,32 +9,54 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 12/04/2018
-ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 1/17/2019
+ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557886"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389130"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Mik azok a machine learning-termékek, a Microsoft?
 
 A Microsoft számos különféle terméket kínál, amelyekkel megalkothatja, üzembe helyezheti és kezelheti gépi tanuláson alapuló modelljeit. A termékek összehasonlításával kiválaszthatja, melyikkel lesz a leghatékonyabb a gépi tanuláson alapuló megoldásának fejlesztése.
 
-| Gépi tanuláson alapuló termék | Mi ez? | Mik a lehetőségei |
+
+**Felhőalapú beállításai**
+
+Az alábbi lehetőségek érhetők el a machine learning az Azure-felhőben.
+
+| Felhőalapú&nbsp;beállításai | Mi ez? | Mik a lehetőségei |
 |-|-|-|
-| ***A felhőben*** | | |
 | [Azure Machine Learning szolgáltatás](#azure-machine-learning-services) | Felügyelt felhőszolgáltatás Machine Learninghez  | Modellek betanítása, üzembe helyezése és kezelése Python és CLI használatával |
-| [Az Azure Machine Learning Studióban](#azure-machine-learning-studio) | A csomóponthúzási&ndash;és&ndash;dobja el a vizuális felhasználói felületet, a gépi tanulás | Modellek létrehozása és üzembe helyezése, illetve tanulási kísérletek futtatása előre konfigurált algoritmusok használatával |
+| [Az Azure Machine Learning Studióban](#azure-machine-learning-studio) | A csomóponthúzási&ndash;és&ndash;dobja el a vizuális felhasználói felületet, a gépi tanulás | Hozhat létre, kísérletezzen és -előre konfigurált algoritmusokkal (Python- és R-) modellek üzembe helyezése|
 | [Azure Databricks](#azure-databricks) | Spark-alapú elemzési platform | Modellek és adat-munkafolyamatok létrehozása és üzembe helyezése |
 | [Azure Cognitive Services](#azure-cognitive-services) | Azure szolgáltatás előre összeállított, mesterséges intelligencián és gépi tanuláson alapuló modellekkel | Intelligens funkciók egyszerű hozzáadása alkalmazásokhoz |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | Virtuális gép előre telepített adatelemzési eszközökkel | Gépi tanuláson alapuló megoldások fejlesztése előre konfigurált környezetben |
-| ***A helyszínen***<br>*(a helyszíni kiszolgálók is futtatható virtuális gépen a felhőben)* | | |
+
+**Helyszíni beállítások**
+
+Az alábbi lehetőségek érhetők el a machine learning a helyszínen. A helyszíni kiszolgálók egy virtuális gépen a felhőben is futtathatja.
+
+| A helyszíni&nbsp;beállításai | Mi ez? | Mik a lehetőségei |
+|-|-|-|
 | [SQL Server Machine Learning-szolgáltatások](#sql-server-machine-learning-services) | SQL-be ágyazott elemzési motor | Modellek létrehozása és üzembe helyezése SQL Serveren belül |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | Különálló nagyvállalati kiszolgáló prediktív elemzésekhez | Modellek építése és üzembe helyezése R és Python használatával |
-| ***Fejlesztői eszközök*** | | |
+
+**Fejlesztői eszközök**
+
+Machine Learning szolgáltatás a következő fejlesztői eszközök érhetők el.
+
+| Fejlesztési&nbsp;eszközök | Mi ez? | Mik a lehetőségei |
+|-|-|-|
 | [ML.NET](#mlnet) | Nyílt forráskódú, többplatformos Machine Learning SDK | Gépi tanuláson alapuló megoldások fejlesztése .NET-alkalmazásokhoz |
 | [Windows ML](#windows-ml) | Windows 10 Machine Learning platform | Betanított modellek értékelése Windows 10-es eszközökön |
+
+
+
+
+
+
 
 ## <a name="azure-machine-learning-service"></a>Azure Machine Learning szolgáltatás
 

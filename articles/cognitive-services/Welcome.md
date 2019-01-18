@@ -7,14 +7,14 @@ manager: cgronlund
 ms.service: cognitive-services
 ms.component: ''
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 4a398342382d21d9261c8f693b78f184876bfed3
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025395"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381932"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
 
@@ -89,6 +89,14 @@ Minden API-kkal rendelkezik egy ingyenes próbaverziós csomag.  Amint fizetős 
 A Cognitive Services API-k a Microsoft által felügyelt adatközpontok egyre növekvő hálózatában üzemel. A régiónkénti rendelkezésre állás találhat meg minden egyes API-t [az Azure-régió lista](https://azure.microsoft.com/regions).
 
 Keres egy régió nem támogatjuk a még? Ossza meg velünk az ügyfélszolgálatunknak küldött szolgáltatással kapcsolatos kéréseit az [UserVoice fórumot](https://cognitive.uservoice.com/).
+
+## <a name="supported-cultural-languages"></a>A támogatott kulturális nyelvek
+
+ A cognitive Services szolgáltatási szintű kulturális nyelvek széles skáláját támogatja. Minden API-hoz, a rendelkezésre állási nyelv is megtalálhatja a [támogatott nyelvek listája](language-support.md).
+
+ ## <a name="container-support"></a>Tárolótámogatás
+
+ A cognitive Services tárolók biztosít az Azure-felhőben vagy helyszíni üzemelő példány számára. Tudjon meg többet [Cognitive Service tárolók](cognitive-services-container-support.md).
 
 ## <a name="support"></a>Támogatás
 

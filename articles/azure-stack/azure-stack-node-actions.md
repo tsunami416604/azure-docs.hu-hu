@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 170cf458496d91a28260296e2aba803d76fbc06b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302680"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388826"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek az Azure Stackben
 
@@ -60,7 +60,7 @@ Egy adott skálázási egység állapotának megtekintéséhez:
 | Fut | A csomópont tevékenyen részt vesz a skálázási egység. |
 | Leállítva | A csomópont nem érhető el. |
 | Hozzáadás | A csomópont aktívan ad hozzá a skálázási egység. |
-| Javítása | A csomópont aktívan javítása folyamatban van. |
+| Javítás | A csomópont aktívan javítása folyamatban van. |
 | Karbantartás | A csomópont fel van függesztve, és nincsenek aktív felhasználói munkaterhelés fut-e. |
 | Szervizelés szükséges | Hibát észlelt, amely megköveteli, hogy a csomópont nem működik helyesen. |
 
@@ -154,4 +154,4 @@ Futtasson javítási műveletet, és nyisson meg egy rendszergazda jogú PowerSh
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Stack-Fabric rendszergazdai modul kapcsolatos további információkért lásd: [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.5.0).
+Az Azure Stack-Fabric rendszergazdai modul kapcsolatos további információkért lásd: [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).

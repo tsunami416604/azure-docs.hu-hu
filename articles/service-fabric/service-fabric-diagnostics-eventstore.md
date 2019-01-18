@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a23d8c1e72ec453724514e4d1638c5a223d1644
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727885"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389227"
 ---
 # <a name="eventstore-service-overview"></a>Az EventStore szolgáltatás áttekintése
 
@@ -34,6 +34,7 @@ ms.locfileid: "52727885"
 * Győződjön meg arról, hogy felügyeleti műveleteket a fürtön készítésének feldolgozott megfelelően
 * "Pillanatkép" hogyan Service Fabric egy adott entitás implementálására beolvasása
 
+![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Az EventStore elérhető események teljes listáját lásd: [Service Fabric-események](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -53,7 +54,7 @@ Az EventStore szolgáltatás eseményeket, amelyek elérhetők minden entitásho
 * Partícióreplikák: az összes replika események / példányok által azonosított adott partíción belül `partitionId`
 * Címtárpartíció replikájának: események egy meghatározott replikáról / példány által azonosított `replicaId` és `partitionId`
 
-További információért az API-val kapcsolatos látogasson el a [EventStore API-referencia] ((https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Ismerje meg, további információt az API-t tekintse át a [EventStore API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
 Az EventStore szolgáltatás is van lehetősége, a fürtben lévő események korrelációját. Megnézzük az eseményeket, amelyek egy időben a különböző entitások, amely hatással lehetett egymással készültek, az EventStore szolgáltatás nem tudja csatolni ezeket az eseményeket a fürtben lévő tevékenységek okainak azonosítása érdekében. Például ha egy, az alkalmazások a nem megfelelő állapotú, ez egy mesterségesen előidézett módosítása nélkül történik, az EventStore lesz az eseményeket is tekintse meg a platform által elérhetővé tett funkciót pedig hathatósabb sikerült Ez az egy `Error` vagy `Warning` esemény. Ez segít a gyorsabb, hibaészlelés, és az alapvető okok elemzése.
 

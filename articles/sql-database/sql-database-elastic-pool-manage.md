@@ -11,19 +11,19 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/17/2019
+ms.openlocfilehash: 93b7fb0cd303f34d4afadf461f8886aaac52e4c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865879"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388580"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
 A rugalmas készlet határozza meg a rugalmas készlet-adatbázisa a számítási feladatok kezeléséhez szükséges erőforrások mennyiségét, és minden készletezett adatbázis erőforrás-mennyiséget.
 
-## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Az Azure portal: rugalmas készletek és a készletezett adatbázisok kezelése
+## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Az Azure Portalon: Rugalmas készletek és a készletezett adatbázisok kezelése
 
 Egy helyen található összes tárolókészlet beállításainak: a **készlet beállítása** panelen. Itt lekéréséhez találja a portálon, majd kattintson a rugalmas készlet **készlet beállítása** vagy a panel tetején vagy az erőforrás a bal oldali menüben.
 
@@ -39,7 +39,7 @@ Itt választhat bármilyen kombinációja a következő módosításokat, és me
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Rugalmas készletek és a készletezett adatbázisok kezelése
 
-Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps). Hozhat létre, és a logikai kiszolgálók, rugalmas készletek kezelése, tekintse meg a [logikai kiszolgáló létrehozása és a felügyelt](sql-database-logical-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
+Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Hozhat létre, és a logikai kiszolgálók, rugalmas készletek kezelése, tekintse meg a [logikai kiszolgáló létrehozása és a felügyelt](sql-database-logical-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
 
 > [!TIP]
 > PowerShell-példa szkriptek, lásd: [rugalmas készletek létrehozása és adatbázisok áthelyezése a készletek között, és a egy PowerShell-lel készletből](scripts/sql-database-move-database-between-pools-powershell.md) és [a PowerShell szolgáltatás használatával az Azure SQL DatabaseegySQLrugalmaskészletmonitorozásaésskálázása](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -60,7 +60,7 @@ Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett
 > [!TIP]
 > A rugalmas készletek több adatbázis létrehozásának befejezése után a portál vagy az egyszerre csak egy önálló adatbázis létrehozása PowerShell-parancsmagok használatával időt vehet igénybe. Rugalmas készlet automatizálásához, lásd: [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
 
-## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Az Azure CLI: Rugalmas készletek és a készletezett adatbázisok kezelése
+## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI: Rugalmas készletek és a készletezett adatbázisok kezelése
 
 Létrehozásához és kezeléséhez az SQL Database rugalmas készletei az [Azure CLI-vel](/cli/azure), használja a következő [Azure CLI az SQL Database](/cli/azure/sql/db) parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren.
 
@@ -77,7 +77,7 @@ Létrehozásához és kezeléséhez az SQL Database rugalmas készletei az [Azur
 |[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Rugalmas készlet frissíti.|
 |[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|A rugalmas készlet törlése.|
 
-## <a name="transact-sql-manage-pooled-databases"></a>A Transact-SQL: Készletezett adatbázisok kezelése
+## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Készletezett adatbázisok kezelése
 
 Hozhat létre és adatbázisok áthelyezése a meglévő rugalmas készletekben, vagy a Transact-SQL az SQL Database rugalmas készlet információt ad vissza, használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely képes csatlakozni egy Azure SQL Database-kiszolgálóhoz, és adja át a Transact-SQL parancsok. Hozzon létre és kezelheti a tűzfalszabályok a T-SQL használatával: [tűzfalszabályok kezelése a Transact-SQL használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql).
 
@@ -87,13 +87,13 @@ Hozhat létre és adatbázisok áthelyezése a meglévő rugalmas készletekben,
 
 | Parancs | Leírás |
 | --- | --- |
-|[ADATBÁZIS (az Azure SQL Database) létrehozása](/sql/t-sql/statements/create-database-azure-sql-database)|Létrehoz egy új adatbázist egy meglévő készlet vagy önálló adatbázisként. Új adatbázis létrehozásához a master adatbázishoz internetkapcsolatra.|
-| [Az ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Vagy helyez át egy adatbázisban, összesen:, rugalmas készletek között.|
+|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Létrehoz egy új adatbázist egy meglévő készlet vagy önálló adatbázisként. Új adatbázis létrehozásához a master adatbázishoz internetkapcsolatra.|
+| [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Vagy helyez át egy adatbázisban, összesen:, rugalmas készletek között.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
 |[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Egy logikai kiszolgáló erőforrás-használati statisztikáit minden rugalmas adatbáziskészletek adja vissza. Az egyes rugalmas adatbáziskészletet, egy sor van jelentéskészítési (négy sorok száma percenként) ablakban 15 másodpercenként. A készletben található összes adatbázis által Ebbe beletartoznak CPU, i/o, Log, tárhelyhasználat és egyidejű kérelem/munkamenet kihasználtságát.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Adja vissza az edition (szolgáltatási réteg), a szolgáltatási cél (tarifacsomag) és a rugalmas készlet nevét, egy Azure SQL database vagy az Azure SQL Data Warehouse esetében. Ha be van jelentkezve a master adatbázishoz az Azure SQL Database kiszolgáló, információkat az összes adatbázis adja vissza. Az Azure SQL Data Warehouse akkor kapcsolódnia kell a master adatbázisban.|
 
-## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API-val: A rugalmas készletek és a készletezett adatbázisok kezelése
+## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API: Rugalmas készletek és a készletezett adatbázisok kezelése
 
 Hozhat létre és kezelheti az SQL Database rugalmas készletek és a készletezett adatbázisok, használja ezeket a REST API-kéréseket.
 

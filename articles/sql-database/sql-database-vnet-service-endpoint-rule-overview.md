@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 1/16/2019
-ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/17/2019
+ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359850"
+ms.locfileid: "54390397"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Az Azure SQL virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
@@ -173,7 +173,7 @@ Az Azure Storage ugyanazokat a funkciókat, amely lehetővé teszi, hogy korlát
 PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-fiókok gyakran használatos. Ha az Azure Storage-fiókot, amely adatokat tölt be korlátozza a hozzáférést csak a VNet-alhálózatok halmaza, kapcsolat és a fiók a PolyBase megszakadnak. Mindkét PolyBase engedélyezéséhez importálása és exportálása a forgatókönyvek az Azure SQL Data Warehouse legyen védett virtuális hálózat az Azure-tárolóhoz való kapcsolódás, kövesse az alábbi lépéseket:
 
 #### <a name="prerequisites"></a>Előfeltételek
-1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Ha rendelkezik egy általános célú v1- vagy blob storage-fiókot, először frissítenie kell, általános célú v2 ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Rendelkeznie kell **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** kapcsolva az Azure Storage-fiók **tűzfalak és virtuális hálózatok** beállítások menüjében. Ebben [útmutató](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) további információt.
  

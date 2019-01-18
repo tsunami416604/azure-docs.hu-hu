@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 0c819e4efb158baa2150b00368c618c5467a01e0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/17/2019
+ms.openlocfilehash: 60c7483e698a07fcf86438798f6bb5013a7417ce
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966773"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391141"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Az Azure SQL transzparens adattitkosítás: Bring Your Own Key-támogatás
 
@@ -52,7 +52,7 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
 - Győződjön meg arról, az Azure Key Vault és az Azure SQL Database/Managed Instance gazdakiszolgálói lesznek ugyanabban a bérlőben.  Több-bérlős key vault és a kiszolgáló kapcsolati **használata nem támogatott**.
 - Döntse el, melyik előfizetések fogják használni a szükséges erőforrásokhoz – a kiszolgáló áthelyezése előfizetések között később egy új TDE BYOKs-beállítást igényel. Tudjon meg többet [erőforrások áthelyezése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - TDE byok konfigurálásakor fontos figyelembe venni a terhelést a key vault helyezett ismétlődő újraindulás/kicsomagolása műveletek által. Például a logikai kiszolgálóhoz tartozó összes adatbázis használja ugyanazt a TDE-védőhöz, mivel az adott kiszolgáló feladatátvevő indítja, számos kulcsfontosságú műveletek a tárolókhoz is vannak olyan adatbázisok, a kiszolgálón. Tapasztalataink alapján és dokumentált [key vault szolgáltatáskorlátjai](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), javasoljuk, hogy legfeljebb 500 Standard társítása / általános célú vagy 200 prémium / üzletileg kritikus fontosságú adatbázisok egy Azure Key Vault egy előfizetés annak biztosítása érdekében folyamatosan magas rendelkezésre állás a TDE-védőhöz, a tároló elérésekor.
-- Ajánlott: Megőrzi a TDE-védőhöz, a helyszínen.  Ehhez egy HSM-eszköz létrehozása a TDE-Védőhöz helyileg és a egy kulcsletét rendszer tárolja a TDE-Védőhöz helyi másolatot.  Ismerje meg, [hogyan viheti át a kulcsát a helyi HSM-ből az Azure Key Vaultba](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- Ajánlott: A TDE-védőhöz, a helyszínen őrizze.  Ehhez egy HSM-eszköz létrehozása a TDE-Védőhöz helyileg és a egy kulcsletét rendszer tárolja a TDE-Védőhöz helyi másolatot.  Ismerje meg, [hogyan viheti át a kulcsát a helyi HSM-ből az Azure Key Vaultba](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Útmutató az Azure Key Vault beállítása
 
@@ -71,7 +71,7 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
  > [!NOTE]
  > Ha a TDE titkosított SQL-adatbázisok elveszti a hozzáférését a key vaultban, mert a tűzfal nem mellőzik, a rendszer elveti az adatbázisok 24 órán belül.
 
-- Naplózás és -jelentések az összes titkosítási kulcs engedélyezése: a Key Vault lehetővé egyszerűen más biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti eszközök behelyezése naplókat. Az Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) egy szolgáltatás, amely már integrálva van egy példát.
+- Naplózás és -jelentések az összes titkosítási kulcs engedélyezése: Key Vault lehetővé teszi a naplók egyszerűen behelyezése más biztonsági adatokat és az esemény (SIEM) eszközök. Az Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) egy szolgáltatás, amely már integrálva van egy példát.
 - Ahhoz, hogy a magas rendelkezésre állású titkosított adatbázisok, konfigurálja mindegyik logikai kiszolgáló két Azure Key vault-Kulcstartók, amelyek különböző régiókban találhatók.
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>A TDE-Védőhöz (az aszimmetrikus kulcs) konfigurálásával
@@ -116,11 +116,11 @@ A következő szakaszban fog haladnak át a beállítási és konfigurációs l�
 
 ### <a name="azure-key-vault-configuration-steps"></a>Az Azure Key Vault konfigurációs lépések
 
-- Telepítés [PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)
+- Telepítés [PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-5.6.0)
 - Hozzon létre két Azure Key vault-Kulcstartók használatával két különböző régióban [PowerShell-lel engedélyezze a "helyreállítható törlés" tulajdonságot](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) a a kulcstartók (Ez a beállítás még nem áll az AKV portálról érhető el – azonban szükséges az SQL).
 - Mind az Azure Key vault-Kulcstartók a két rendelkezésre ahhoz, hogy a biztonsági mentési és helyreállítási kulcsok működéséhez ugyanabban az Azure a földrajzi régióban kell elhelyezkednie.  Ha a Geo-Dr-beli SQL-követelményeinek, hajtsa végre a különböző helyeken található két fő tárolóra van szüksége a [BYOK folyamat](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) , amely lehetővé teszi, hogy a kulcsok importálni egy helyszíni HSM-ből.
 - Hozzon létre egy új kulcsot az első kulcstárolóját:  
-  - Az RSA/RSA-HSA 2048 bites kulcsot
+  - RSA/RSA-HSA 2048 key
   - Nincs lejárati dátuma
   - Kulcs engedélyezve van, és jogosult végrehajtani a get, wrap key és kulcsműveletek kicsomagolása
 - Az elsődleges kulcs biztonsági mentése, és állítsa vissza a kulcsot a második key vaulthoz.  Lásd: [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) és [Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
@@ -169,7 +169,7 @@ Ha egy adatbázist a TDE a Key Vaultból egy kulccsal titkosított, minden létr
 
 Visszaállítása titkosított együtt a TDE-Védőhöz a Key Vaultból, győződjön meg arról, hogy a megosztottkulcs-anyag továbbra is az eredeti nevű eredeti tárban. Ha a TDE-Védőhöz módosul, a régi biztonsági másolatok, az adatbázis egy adatbázis **nem** frissítve a legújabb TDE-Védőhöz használatára. Ezért azt javasoljuk, hogy őrizze meg az összes régi verziók a TDE-Védőhöz a Key Vaultban, így állíthatók az adatbázisok biztonsági mentése.
 
-Ha egy kulcsot, akkor lehet szükség, a biztonsági másolat visszaállítása már nem az eredeti a key vault, a rendszer visszaadja-e a következő hibaüzenetet kapja: "célkiszolgáló `<Servername>` nem rendelkezik hozzáféréssel az AKV URI-k minden létrehozott között < #1 időbélyeg > és < #2 időbélyege >. Ismételje meg a művelet minden AKV URI-k visszaállítását követően."
+Ha egy kulcsot, akkor lehet szükség, a biztonsági másolat visszaállítása már nem az eredeti a key vault, a következő hibaüzenetet ad vissza: "Célkiszolgáló `<Servername>` nem rendelkezik hozzáféréssel az összes AKV URI-k között < időbélyeg 1 > és < időbélyeg 2 >. Ismételje meg a művelet minden AKV URI-k visszaállítását követően."
 
 A hiba elhárítása érdekében futtassa a [Get-AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) parancsmag használatával adja vissza a listán szereplő kulcsokra a Key Vaultból, mint a kiszolgáló (kivéve, ha a felhasználó törölve lettek). Annak érdekében, hogy az összes biztonsági másolatok visszaállíthatók, győződjön meg arról, hogy a biztonsági mentés a célkiszolgáló hozzáfér az összes ezeket a kulcsokat.
 
@@ -181,4 +181,4 @@ Get-AzureRmSqlServerKeyVaultKey `
 
 További információ a biztonsági mentési helyreállítási SQL Database-hez, lásd: [egy Azure SQL database helyreállítása](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups). További információ a biztonsági mentési helyreállítási SQL Data warehouse-hoz, lásd: [helyreállítása az Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-overview).
 
-További szempontok a biztonsági másolatba mentett naplófájlok: biztonsági másolat fájljait az eredeti TDE Encryptor az titkosítva maradnak, még akkor is, ha a TDE-Védőhöz lett-e forgatni, és az adatbázis most új TDE-Védőhöz használatával log.  A visszaállításkor mindkét kulcsot az adatbázis visszaállítása szükség lesz.  Ha a naplófájlt használ az Azure Key Vaultban tárolt TDE-Védőhöz, ezt a kulcsot szükség lesz a visszaállításkor, még akkor is, ha az adatbázis addig használandó szolgáltatás által kezelt TDE módosítva lett.
+További szempontok a biztonsági mentés naplófájlokat: Mentett napló fájlokat az eredeti TDE Encryptor az titkosítva maradnak, még akkor is, ha a TDE-Védőhöz lett-e forgatni, és az adatbázis most új TDE-Védőhöz használatával.  A visszaállításkor mindkét kulcsot az adatbázis visszaállítása szükség lesz.  Ha a naplófájlt használ az Azure Key Vaultban tárolt TDE-Védőhöz, ezt a kulcsot szükség lesz a visszaállításkor, még akkor is, ha az adatbázis addig használandó szolgáltatás által kezelt TDE módosítva lett.

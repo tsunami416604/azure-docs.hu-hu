@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3aa986efd4986eb1d96c0f013d997486e6e8ae2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754203"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390927"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
 
 Az Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával adja meg a tároló rendszerképét `docker push` és `pull` hozzáférés a tárolóregisztrációs adatbázisba. Egyszerű szolgáltatás használatával megadhatja a "távfelügyelt" szolgáltatások és alkalmazások elérését.
 
-## <a name="what-is-a-service-principal"></a>Mi az egyszerű szolgáltatás?
+## <a name="what-is-a-service-principal"></a>Mi az a szolgáltatásnév?
 
 Az Azure AD *egyszerű szolgáltatások* az adott előfizetéshez tartozó Azure-erőforrásokhoz való hozzáférés biztosítása. Is felfoghatók szolgáltatás egyszerű, egy felhasználói identitás egy szolgáltatáshoz, ahol a "szolgáltatás" minden olyan alkalmazás, szolgáltatás vagy a platform, amely az erőforrásokat kell elérnie. A hozzáférési jogosultságok hatóköre csak azokhoz az erőforrásokhoz megad egy egyszerű szolgáltatás segítségével konfigurálhat. Ezután konfigurálja az alkalmazásnak vagy szolgáltatásnak a szolgáltatásnév hitelesítő adatainak használatával ezek az erőforrások eléréséhez.
 
@@ -43,13 +43,11 @@ Egyéni hozzáférési egy regisztrációs adatbázisba, mint ha manuálisan lek
 Jól verzióként az Azure PowerShell előző mintaszkriptek találja meg a Githubon, az Azure CLI-hez:
 
 * [Az Azure CLI][acr-scripts-cli]
-* [Azure PowerShell-lel][acr-scripts-psh]
+* [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>További lépések
 
-Ha már rendelkezik egy egyszerű szolgáltatást, hogy Ön már hozzáférést kap a tárolóregisztrációs adatbázisba, használhatja az alkalmazásokat és szolgáltatásokat a beállításjegyzék-interakció a saját hitelesítő adatait.
-
-Bár ez a cikk hatókörén kívül az egyes alkalmazások általi használatát a szolgáltatásnév hitelesítő adatainak konfigurálása, konkrét szolgáltatások és platformok itt találhat útmutatót:
+Ha már rendelkezik egy egyszerű szolgáltatást, hogy Ön már hozzáférést kap a tárolóregisztrációs adatbázisba, használhatja az alkalmazásokat és szolgáltatásokat a távfelügyelt beállításjegyzék interakció a saját hitelesítő adatait. Egyszerű szolgáltatás hitelesítő adatai az Azure bármely szolgáltatásában, amely hitelesíteni tudja az Azure container registry is használhatja. Példák erre vonatkozóan:
 
 * [Hitelesítés az Azure tároló-beállításjegyzéket az Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 * [Hitelesítés az Azure tároló-beállításjegyzéket az Azure Container Instances (aci Szolgáltatásban)](container-registry-auth-aci.md)

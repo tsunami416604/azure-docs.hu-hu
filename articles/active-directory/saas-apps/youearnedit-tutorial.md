@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fd65d6a5d210b4b0549236ec39844e36480b10c9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e910fc3c685f3ffb3e77308dafa9ec7e6ce6a950
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790258"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező YouEarnedIt
 
@@ -78,8 +78,8 @@ Az Azure AD egyszeri bejelentkezés az YouEarnedIt tesztelése és konfigurálá
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[YouEarnedIt egyszeri bejelentkezés konfigurálása](#configure-youearnedit-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre YouEarnedIt tesztfelhasználót](#create-youearnedit-test-user)**  – egy megfelelője a Britta Simon YouEarnedIt, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre YouEarnedIt tesztfelhasználót](#create-youearnedit-test-user)**  – egy megfelelője a Britta Simon YouEarnedIt, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -104,22 +104,24 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés YouEarnedIt, hajtsa 
 
     ![YouEarnedIt tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minták használatával URL-címe: 
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minták használatával URL-címe:
+
     | Környezet  | Mintázat  |
     |:--- |:--- |
     | Production | `https://<company name>.youearnedit.com/users/sign_in` |
     | Védőfal  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minták használatával URL-címe:
+
     | Környezet  | Mintázat  |
     |:--- |:--- |
     | Production | `<company name>.youearnedit.com` |
     | Védőfal  |`<company name>.sandbox.youearnedit.com` |
 
-    > [!NOTE] 
+    > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Támogatásért forduljon a hozzárendelt YouEarnedIt ügyfelek sikerességét beolvasni ezeket az értékeket.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
@@ -129,7 +131,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés YouEarnedIt, hajtsa 
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -192,11 +194,10 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű YouEarnedIt hoz létre. A felhasználók hozzáadása az YouEarnedIt platformon a hozzárendelt YouEarnedIt ügyfelek sikerességét Managerrel működnek.
 
->[!NOTE]
->YouEarnedIt várhatóan az identitásszolgáltató a NameID attribútum egy e-mail cím vagy felhasználónév fogja tartalmazni. Ha a megfelelő felhasználónév vagy e-mail cím nem található az adatbázisban, vagy nem felel meg pontosan a hitelesítés sikertelen lesz. Ezt a beállítást, hogy fiókok importálni a YouEarnedIt rendszeren, mielőtt az SSO-integráció (általában akár import API- vagy CSV-n keresztül).
+> [!NOTE]
+> YouEarnedIt várhatóan az identitásszolgáltató a NameID attribútum egy e-mail cím vagy felhasználónév fogja tartalmazni. Ha a megfelelő felhasználónév vagy e-mail cím nem található az adatbázisban, vagy nem felel meg pontosan a hitelesítés sikertelen lesz. Ezt a beállítást, hogy fiókok importálni a YouEarnedIt rendszeren, mielőtt az SSO-integráció (általában akár import API- vagy CSV-n keresztül).
 
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -209,4 +210,3 @@ Ha a hozzáférési panelen a YouEarnedIt csempére kattint, meg kell lehet auto
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

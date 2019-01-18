@@ -4,16 +4,16 @@ description: Ismerje meg, az Azure Automation-runbookokkal kapcsolatos problém�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/17/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 3968b05f119227552f88a50e96d3acbce6a19143
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 231dd3789a20b649efd99a6b88f6e429e2626bd3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199119"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391324"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -128,6 +128,46 @@ A multi-factor authentication szolgáltatás az Azure-fiókkal rendelkezik, ha e
 A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekintse meg [létrehozása és kezelése az Azure-szolgáltatások egy tanúsítvány hozzáadása.](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Egy egyszerű szolgáltatást az Azure Resource Manager parancsmagjainak használatához tekintse meg [az egyszerű szolgáltatásnév létrehozása az Azure portal használatával](../../active-directory/develop/howto-create-service-principal-portal.md) és [hitelesítése egy egyszerű szolgáltatást az Azure Resource Managerrel.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>A forgatókönyvek használata során előforduló gyakori hibák
+
+###<a name="child-runbook-object"></a>Gyermek runbook hibát ad vissza, ha a kimeneti adatfolyamba tartalmaz objektumokat, hanem az egyszerű adattípusok
+
+#### <a name="issue"></a>Probléma
+
+A következő hibaüzenetet kapja, amikor egy childrunbook való meghívása a `-Wait` kapcsoló és a kimeneti adatfolyamba és objektum:
+
+```
+Object reference not set to an instance of an object
+```
+
+#### <a name="cause"></a>Ok
+
+Egy ismert probléma, a [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) nem megfelelően kezeli a a kimeneti adatfolyamba Ha objektumokat tartalmaz.
+
+#### <a name="resolution"></a>Megoldás:
+
+A probléma megoldásához, javasoljuk, hogy inkább egy lekérdezési a logikát alkalmazzák, és használjon a [Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) parancsmag kimenetének lekéréséhez. A logikai mintát a következő példában definiálva van.
+
+```powershell
+$automationAccountName = "ContosoAutomationAccount"
+$runbookName = "ChildRunbookExample"
+$resourceGroupName = "ContosoRG"
+
+function IsJobTerminalState([string] $status) {
+    return $status -eq "Completed" -or $status -eq "Failed" -or $status -eq "Stopped" -or $status -eq "Suspended"
+}
+
+$job = Start-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName -Name $runbookName -ResourceGroupName $resourceGroupName
+$pollingSeconds = 5
+$maxTimeout = 10800
+$waitTime = 0
+while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
+   Start-Sleep -Seconds $pollingSeconds
+   $waitTime += $pollingSeconds
+   $job = $job | Get-AzureRmAutomationJob
+}
+
+$jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRecord | Select-Object -ExpandProperty Value
+```
 
 ### <a name="task-was-cancelled"></a>Forgatókönyv: A runbook a következő hibával meghiúsul: A feladatot törölték
 
@@ -361,7 +401,7 @@ A webhookot, amely a meghívni próbált vagy le van tiltva, vagy lejárt.
 
 A webhook le van tiltva, ha újból engedélyezheti a webhookot, az Azure Portalon keresztül. Amikor egy webhook lejárt, a webhook kell törölni kell, majd újra létre kell hozni. Csak [újítsa meg a webhook](../automation-webhooks.md#renew-webhook) Ha ezt még nem járt le.
 
-### <a name="429"></a>Forgatókönyv: 429-es: A kérések aránya jelenleg túl nagy. Próbálkozzon újra
+### <a name="429"></a>Forgatókönyv: 429: A kérések aránya jelenleg túl nagy. Próbálkozzon újra
 
 #### <a name="issue"></a>Probléma
 

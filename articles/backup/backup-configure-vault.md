@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788395"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382743"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Windows-kiszolgálóról vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával
 Ez a cikk azt ismerteti, hogyan készíthet biztonsági másolatot a Windows Server (vagy a Windows-ügyfél) fájljairól és mappáiról az Azure az Azure Backuppal a Resource Manager üzemi modell használatával.
@@ -48,9 +48,9 @@ Recovery Services-tároló olyan entitás, amely tárolja a biztonsági mentése
 
 6. Az **Erőforráscsoport** szakaszban:
 
-    * válassza az **Új létrehozása** lehetőséget, ha új erőforráscsoportot szeretne létrehozni.
+    * Kattintson a **meglévő kiválasztása...**  legördülő menüben az elérhető erőforráscsoportok listájának megtekintéséhez.
     Vagy
-    * válassza a **Meglévő használata** lehetőséget, és kattintson a legördülő menüben az elérhető erőforráscsoportok listájának megtekintéséhez.
+    * válassza az **Új létrehozása** lehetőséget, ha új erőforráscsoportot szeretne létrehozni.
 
   Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 
@@ -70,21 +70,21 @@ Amikor először hoz létre Recovery Services-tárolót, meghatározza a tárol�
 
 1. A **Recovery Services-tárolók** panelen kattintson az új tárolóra.
 
-    ![A Recovery Services-tárolók listájából válassza ki az új tárolót](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![A Recovery Services-tárolók listájából válassza ki az új tárolót](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    Ha kiválasztja a tárolót, a **Recovery Services-tároló** panel leszűkül, és a Beállítások panel (*amelynek tetején a tároló neve látható*), valamint a tároló részleteit tartalmazó panel nyílik meg.
+    Amikor kiválasztja a tárolót, a Recovery Services-tároló panel leszűkül, és a **áttekintése** panel (*az a tároló nevét, amelynek tetején*) a tároló részleteit nyitva a panelt.
 
-    ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+    ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 
-2. Használja a függőleges csúszkát az új tároló Beállítások paneljén a legörgetéshez a Kezelés szakaszhoz, és kattintson a **Biztonsági mentési infrastruktúra** lehetőségre.
+2. Az új tároló alatt található a **beállítások** nyissa meg a szakaszban **tulajdonságok**.
 
-  Megnyílik a Biztonsági mentési infrastruktúra panel.
+  A **tulajdonságok** panel nyílik meg.
 
-3. A Biztonsági mentési infrastruktúra panelen kattintson a **Biztonsági mentés konfigurációja** elemre a **Biztonsági mentés konfigurációja** panel megnyitásához.
+3. Az a **tulajdonságok** panelen kattintson a **frissítés** alatt **biztonsági mentés konfigurációja** panelen. A **biztonsági mentés konfigurációja** panel nyílik meg.
 
-  ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+  ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. Válassza ki a megfelelő tárolóreplikációs beállítást a tárolóhoz.
+4. Válassza ki a megfelelő tárolóreplikációs beállítást a tároló számára, és kattintson a **mentése**.
 
   ![a tároló konfigurálásának lehetőségei](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
@@ -183,7 +183,7 @@ A biztonsági mentési szabályzat, a helyreállítási pontok ütemezése, és 
 
 ### <a name="to-create-a-backup-schedule"></a>Biztonsági mentési ütemezés létrehozása
 
-A biztonsági mentési ütemezést beállítani. a gép biztonsági. Vegye figyelembe, hogy az idő a biztonsági mentés beállítása eltérhetnek a helyi számítógép idejét, mert az Azure Backup nem használ nyári időszámításra (cél) figyelembe. 
+A biztonsági mentési ütemezést beállítani. a gép biztonsági. Vegye figyelembe, hogy az idő a biztonsági mentés beállítása eltérhetnek a helyi számítógép idejét, mert az Azure Backup nem használ nyári időszámításra (cél) figyelembe.
 1. Nyissa meg a Microsoft Azure Backup ügynököt. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
 
     ![Indítsa el az Azure Backup-ügynök](./media/backup-configure-vault/snap-in-search.png)

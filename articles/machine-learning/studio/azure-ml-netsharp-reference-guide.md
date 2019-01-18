@@ -1,17 +1,17 @@
 ---
-Cím: Net# Neural Networks titleSuffix: Azure Machine Learning Studio description: Szintaxisa a Net # Neurális hálózatok specifikációs nyelv együtt példa bemutatja, hogyan hozhat létre egy egyéni Neurális hálózat modell Net # az Azure Machine Learning Studio használatával.
+Cím: Hozzon létre egyéni Neurális hálózatokra Net # titleSuffix: Azure Machine Learning Studio description: A Net # Neurális hálózati specifikációs nyelv szintaxisát útmutatója. Ismerje meg, hogyan hozhat létre egyéni Neurális hálózat modellek Azure Machine Learning studióban.
 szolgáltatások: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: referencia
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
-NET # nyelv, amely a Neurális hálózat architektúráinak definiálására használatos a Microsoft által kifejlesztett. Net # Neurális hálózat struktúráját használatával lehetővé teszi összetett többek között a Neurális hálózatokat vagy tetszőleges dimenziók, amelyekről ismert, hogy a adatok, például a kép, hang vagy videó learning javítása convolutions meghatározásához.
+NET # nyelv, amely például a Neurális hálózatokat vagy a tetszőleges méretű convolutions összetett Neurális hálózat architektúráinak definiálására használatos a Microsoft által kifejlesztett. Összetett struktúrák használhatja a adatok, például a kép, videó vagy hang learning javítása érdekében.
 
 Ezek a környezetek a Net # architektúra specifikációjának használhatja:
 
 + A Microsoft Azure Machine Learning Studióban az összes Neurális hálózati modulok: [Multiclass Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [két osztályú Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), és [Neurális hálózat regresszió](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML Neurális hálózat függvények: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) Pythonhoz készült.
++ A Microsoft ML Server Neurális hálózat funkciók: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) Pythonhoz készült.
 
 
 Ez a cikk ismerteti az alapvető fogalmait és a egy egyéni, használatával Net # Neurális hálózat kialakításához szükséges szintaxist: 
@@ -26,17 +26,17 @@ Ez a cikk ismerteti az alapvető fogalmait és a egy egyéni, használatával Ne
 
 A csomópontok közötti csomópontot, amely a rétegek, és a súlyozott kapcsolatok (és élek) vannak rendszerezve Neurális hálózat struktúra áll. A kapcsolatok irányt, és minden egyes kapcsolat rendelkezik a forráscsomóponton, és a célcsomópontra.  
 
-Minden egyes trainable réteg (a rejtett vagy egy kimenete rétegen) rendelkezik egy vagy több **kapcsolat csomagjaiból**. Egy kapcsolat a csomag forrás réteg és a egy adott forrás réteg kapcsolatot specifikace áll. A megadott csomagban lévő összes kapcsolatot ossza meg az azonos forrásból réteg és a azonos cél-réteg. A Net # kapcsolat csomag egyik gyermekszoftver a csomag cél réteghez tartozó tekintendők.
+Minden egyes trainable réteg (a rejtett vagy egy kimenete rétegen) rendelkezik egy vagy több **kapcsolat csomagjaiból**. Egy kapcsolat a csomag forrás réteg és a egy adott forrás réteg kapcsolatot specifikace áll. Az egy adott csomag összes kapcsolat megosztása forrás- és rétegek. A Net # kapcsolat csomag egyik gyermekszoftver a csomag cél réteghez tartozó tekintendők.
 
-NET # támogatja a különböző típusú kapcsolat segítségével módszert bemenetei testreszabhatja kötegbe vannak rejtett réteget hozzárendelve, és a kimenetek leképezve.
+NET # különféle típusú csomagok, amelyek segítségével testre szabható módon bemenetei rejtett réteget leképezve, és a kimenetek leképezve kapcsolatot támogat.
 
 Az alapértelmezett vagy a standard csomag van egy **teljes csomag**, amelyek a forrás-réteg minden egyes csomópont csatlakozik a cél-réteg minden csomópontján az.
 
 Ezenkívül Net # támogatja a következő négy típusú speciális kapcsolati csomagok:
 
-+ **A szűrt csomagjaiból**. A felhasználó egy predikátum adhatja meg a forráscsomóponton réteg és a réteg a célcsomóponton használatával. Csomópontok csatlakoznak, amikor a predikátum értéke igaz.
++ **A szűrt csomagjaiból**. A predikátum a forráscsomóponton réteg és a réteg a célcsomóponton használatával határozhatja meg. Csomópontok csatlakoznak, amikor a predikátum értéke igaz.
 
-+ **Konvolúciós csomagjaiból**. A felhasználó csomópontok kis környékeken definiálhat a forrás-rétegben. A cél-réteg minden egyes csomópontjának van csatlakoztatva, a forrás-réteget a csomópontok egy helyek.
++ **Konvolúciós csomagjaiból**. Csomópontok kis környékeken definiálhat a forrás-rétegben. A cél-réteg minden egyes csomópontjának van csatlakoztatva, a forrás-réteget a csomópontok egy helyek.
 
 + **Csomagok készletezési** és **válasz normalizálási csomagjaiból**. Ezek hasonlóak konvolúciós csomagjaiból, hogy a felhasználó határozza meg a kis környékeken csomópontok, a forrás-rétegben. A különbség az, hogy ezek a csomagok a élt súlyozását ne legyenek trainable. Ehelyett egy előre meghatározott függvény a cél csomópont érték meghatározásához a forrás-csomópont értékei vonatkozik.
 

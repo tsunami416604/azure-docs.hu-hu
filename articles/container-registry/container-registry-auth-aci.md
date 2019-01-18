@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 32b1788d73e1c323d93b40b778bc64a1ba45c4ad
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855833"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390659"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Az Azure tároló-beállításjegyzéket az Azure Container Instances a hitelesítéshez
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, létrehozni és konfigurálni egy Azure AD-szolg�
 
 Egy egyszerű szolgáltatást kell használnia az aci Szolgáltatásban történő hitelesítéshez **távfelügyelt forgatókönyvek**, például alkalmazások és szolgáltatások által létrehozott tárolópéldányok a felügyelet nélküli automatikus vagy egyéb módon.
 
-Ha például van egy automatizált szkript, amely nightly fut, és létrehoz egy [feladatalapú tárolópéldány](../container-instances/container-instances-restart-policy.md) bizonyos adatok feldolgozásához, ezáltal az egyszerű szolgáltatás lekéréses (olvasó) engedélyekkel a beállításjegyzék hitelesítéséhez. Ezután az egyszerű szolgáltatás hitelesítő adatok forgatása vagy teljesen vonni a hozzáférést a más szolgáltatások és alkalmazások befolyásolása nélkül.
+Ha például van egy automatizált szkript, amely nightly fut, és létrehoz egy [feladatalapú tárolópéldány](../container-instances/container-instances-restart-policy.md) bizonyos adatok feldolgozásához, ezáltal az egyszerű szolgáltatás lekéréses engedélyekkel a beállításjegyzék hitelesítéséhez. Ezután az egyszerű szolgáltatás hitelesítő adatok forgatása vagy teljesen vonni a hozzáférést a más szolgáltatások és alkalmazások befolyásolása nélkül.
 
 A szolgáltatásnevek is kell használni a beállításjegyzék [rendszergazdai felhasználó](container-registry-authentication.md#admin-account) le van tiltva.
 
@@ -49,7 +49,7 @@ az container create \
 Jól verzióként az Azure PowerShell előző mintaszkriptek találja meg a Githubon, az Azure CLI-hez:
 
 * [Az Azure CLI][acr-scripts-cli]
-* [Azure PowerShell-lel][acr-scripts-psh]
+* [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>További lépések
 

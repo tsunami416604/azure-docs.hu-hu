@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Folloze |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Folloze |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Folloze között.
 services: active-directory
 documentationCenter: na
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 121e5ec57dd8ec87c0b7156dc761e0d9bd7b76eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e9adb084da818f96eb892864d2f27a90fe62a646
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884128"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390073"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Oktatóanyag: Azure Active Directory-integráció az Folloze
+# <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Folloze
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Folloze integrálása az Azure Active Directory (Azure AD).
 Folloze integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés az Folloze tesztelése és konfigurálása, 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Folloze egyszeri bejelentkezés konfigurálása](#configure-folloze-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Folloze tesztfelhasználót](#create-folloze-test-user)**  – egy megfelelője a Britta Simon Folloze, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Folloze tesztfelhasználót](#create-folloze-test-user)**  – egy megfelelője a Britta Simon Folloze, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -113,8 +113,8 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Folloze, hajtsa vég
 
     | Name (Név) |  Adatforrás-attribútum|
     | ---------------| --------- |
-    | E-mail | User.othermail |
-    | Nameasemail | User.userPrincipalName |
+    | E-mail | user.othermail |
+    | Nameasemail | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -144,7 +144,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Folloze, hajtsa vég
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

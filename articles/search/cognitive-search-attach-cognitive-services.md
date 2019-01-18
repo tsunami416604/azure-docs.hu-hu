@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 776363278352ca3de365760d334e99ab43b14bb5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351458"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389561"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
 
@@ -23,7 +23,7 @@ Az AI-algoritmusokat vezetési [cognitive search folyamatok](cognitive-search-co
 
 Dokumentumok korlátozott számú ingyenes bővítését, vagy nagyobb és gyakoribb számítási feladatok Cognitive Services-számlázható erőforrás csatolása. Ebből a cikkből megtudhatja, hogyan társítsa a Cognitive Services-erőforrás során adatokat feldúsítani a kognitív képességek alkalmazási lehetőségét [Azure Search-indexelő](search-what-is-an-index.md).
 
-Ha a folyamat kizárólag áll [egyéni képesség](cognitive-search-create-custom-skill-example.md), nem kell csatolni a Cognitive Services-erőforrás.
+Ha a folyamat a Cognitive Services API-k egymástól független képességek áll, továbbra is kell megadni a Cognitive Services-erőforrás, de akkor nem kell fizetnie ezen képességek. Független a képességek közé tartozik: [egyéni képesség](cognitive-search-create-custom-skill-example.md), [szövegegyesítő](cognitive-search-skill-textmerger.md), [szöveg felosztó](cognitive-search-skill-textsplit.md), és [shaper](cognitive-search-skill-shaper.md).
 
 > [!NOTE]
 > 2018. December 21. Cognitive Services-erőforrás is társíthat egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi számunkra, hogy indexmezők végrehajtási számítunk fel díjat. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
@@ -52,7 +52,9 @@ A következő lépésben **végrehajtott információbeolvasás hozzáadása**. 
 
 ## <a name="use-billable-resources"></a>Számlázható erőforrások használata
 
-Számítási feladatok több mint 20 dokumentumok számozása naponta szüksége lesz egy számlázható Cognitive Services-erőforrás.
+A több mint 20 végrehajtott információbeolvasás naponta számozása számítási feladatokhoz kell csatolnia a Cognitive Services-számlázható erőforrás. 
+
+Képességek, amelyek a Cognitive Services API-k hívása csak díjkötelesek. Nem-API-alapú képességek, például [egyéni képesség](cognitive-search-create-custom-skill-example.md), [szövegegyesítő](cognitive-search-skill-textmerger.md), [szöveg felosztó](cognitive-search-skill-textsplit.md), és [shaper](cognitive-search-skill-shaper.md) képességek nem lesznek számlázva.
 
 1. Az a **adatimportálás** varázsló **csatolása a Cognitive Services**, válasszon egy meglévő erőforrást, vagy kattintson a **új Cognitive Services-erőforrás létrehozása**.
 

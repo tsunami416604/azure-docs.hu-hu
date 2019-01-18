@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 471232fee5245426afce89993d9faebccc6a8ea8
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265617"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389397"
 ---
 # <a name="azure-stack-telemetry"></a>Az Azure Stack-telemetria
 
@@ -40,7 +40,7 @@ A Windows Server 2016 csatlakoztatott felhasználói felület és a Telemetria �
 
 ## <a name="privacy-considerations"></a>Adatvédelmi szempontok
 
-Az ETW-szolgáltatás telemetriai adatokat vissza a védett tárolási irányítja. A legalacsonyabb jogosultsági szint elvének végigvezeti a hozzáférést a telemetriai adatokat. Csak a Microsoft munkatársainak az érvényes üzleti igények kapjanak hozzáférést a telemetriai adatokat. A Microsoft nem személyes vásárlói adatokat harmadik féllel kivételével az ügyfél belátása vagy megosztása leírt korlátozott céljából a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement). Üzleti az OEM-EK és megosztott jelentések közé tartozik a összesített, anonimizált adatok. Adatok megosztása döntések egy belső, többek között az adatok, jogi és adatvédelmi felügyeleti résztvevőket a Microsoft csapata által végzett.
+Az ETW-szolgáltatás telemetriai adatokat vissza a védett tárolási irányítja. A legalacsonyabb jogosultsági egyszerű hozzáférés végigvezeti a telemetriai adatokat. Csak a Microsoft munkatársainak az érvényes üzleti igények kapjanak hozzáférést a telemetriai adatokat. A Microsoft nem személyes vásárlói adatokat harmadik féllel kivételével az ügyfél belátása vagy megosztása leírt korlátozott céljából a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement). Üzleti az OEM-EK és megosztott jelentések közé tartozik a összesített, anonimizált adatok. Adatok megosztása döntések egy belső, többek között az adatok, jogi és adatvédelmi felügyeleti résztvevőket a Microsoft csapata által végzett.
 
 A Microsoft szerint a, és információkat minimalizálásával eljárásokat. Igyekszünk van szükség, és tárolja a csak addig, amíg szükség ahhoz, hogy egy szolgáltatás vagy az elemzési adatok összegyűjtéséhez. Hogyan működnek az Azure Stack rendszer és az Azure-szolgáltatásokkal kapcsolatos információk nagy részét hat hónapon belül törlődik. Összegezve, vagy hosszabb ideig összesített adatokat tárolni fogja.
 

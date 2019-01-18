@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 088fc2b7aeb318481a81387770f1dcef2883241d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: abc157e1eee393f05b23bd35239de8ba41f83603
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064100"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler internetes hozzáférés rendszergazdája
 
@@ -78,8 +78,8 @@ Az Azure AD egyszeri bejelentkezés a Zscaler internetes hozzáférés rendszerg
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Zscaler Internet Access rendszergazdai egyszeri bejelentkezés konfigurálása](#configure-zscaler-internet-access-administrator-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Zscaler Internet-hozzáférés rendszergazdája tesztfelhasználót](#create-zscaler-internet-access-administrator-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a Zscaler internetes hozzáférés rendszergazdája, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Zscaler Internet-hozzáférés rendszergazdája tesztfelhasználót](#create-zscaler-internet-access-administrator-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a Zscaler internetes hozzáférés rendszergazdája, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -105,25 +105,25 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler internetes hoz
     ![Zscaler Internet-hozzáférés rendszergazdai tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be egy URL-címet a követelmény alapján:
-    
+
     | |
     |--|
     | `https://admin.zscaler.net` |
-    | `https://admin.zscalerone.net` | 
+    | `https://admin.zscalerone.net` |
     | `https://admin.zscalertwo.net` |
     | `https://admin.zscalerthree.net` |
     | `https://admin.zscloud.net` |
     | `https://admin.zscalerbeta.net` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címet a követelmény alapján:
-    
+
     | |
     |--|
     | `https://admin.zscaler.net/adminsso.do` |
-    | `https://admin.zscalerone.net/adminsso.do` | 
-    | `https://admin.zscalertwo.net/adminsso.do` | 
-    | `https://admin.zscalerthree.net/adminsso.do` | 
-    | `https://admin.zscloud.net/adminsso.do` | 
+    | `https://admin.zscalerone.net/adminsso.do` |
+    | `https://admin.zscalertwo.net/adminsso.do` |
+    | `https://admin.zscalerthree.net/adminsso.do` |
+    | `https://admin.zscloud.net/adminsso.do` |
     | `https://admin.zscalerbeta.net/adminsso.do` |
 
 5. Zscaler Internet-hozzáférés rendszergazdája alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok & jogcímek** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML lap**, kattintson a **szerkesztése** gombra kattintva nyissa meg **felhasználói attribútumok & jogcímek** párbeszédpanel.
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler internetes hoz
 
     | Name (Név)  | Adatforrás-attribútum  |
     | ---------| ------------ |
-    | Szerepkör     | User.assignedroles |
+    | Szerepkör     | user.assignedroles |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -151,17 +151,17 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler internetes hoz
     > [!NOTE]
     > Kattintson a [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tudni, hogy az Azure AD-szerepkör konfigurálása
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **állítsa be Zscaler internetes hozzáférés rendszergazdája** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. Az a **állítsa be Zscaler internetes hozzáférés rendszergazdája** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -170,13 +170,13 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler internetes hoz
 1. Egy másik böngészőablakban jelentkezzen be a Zscaler Internet Access felügyeleti felhasználói Felületéhez.
 
 2. Lépjen a **Adminisztráció > rendszergazdai felügyelet** , és hajtsa végre az alábbi lépéseket, és kattintson a Mentés gombra:
-   
+
     ![Felügyeleti](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "felügyelete")
 
     a. Ellenőrizze **SAML-hitelesítés engedélyezése**.
 
     b. Kattintson a **feltöltése**töltheti fel az Azure SAML aláíró tanúsítvány az Azure Portalról letöltött a **nyilvános SSL-tanúsítvány**.
-    
+
     c. Opcionálisan a fokozott biztonság érdekében adja hozzá a **kibocsátó** részletei a kibocsátó az SAML-válasz ellenőrzéséhez.
 
 3. A rendszergazda felhasználói felületén hajtsa végre az alábbi lépéseket:
@@ -245,7 +245,7 @@ Bemutatjuk, hogyan hozhat létre egy rendszergazdai fiók tekintse meg Zscaler d
 
 https://help.zscaler.com/zia/adding-admins
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -258,4 +258,3 @@ Ha a hozzáférési panelen a Zscaler Internet-hozzáférés rendszergazdája cs
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

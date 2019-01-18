@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9aa03146608796f1a2d26d44b4e76b0331f8c5be
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: bb66dca9c68535c2ab36e9a7286570d34a7ea310
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063556"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Oktatóanyag: Antik ismerje meg az Azure Active Directory-integráció
 
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés az antik ismerje meg, tesztelése és konfig
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Antik ismerje meg, egyszeri bejelentkezés konfigurálása](#configure-blackboard-learn-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre további Antik tesztfelhasználót](#create-blackboard-learn-test-user)**  – egy megfelelője a Britta Simon Antik megtudhatja, hogy a felhasználó Azure ad-ben reprezentációja van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre további Antik tesztfelhasználót](#create-blackboard-learn-test-user)**  – egy megfelelője a Britta Simon Antik megtudhatja, hogy a felhasználó Azure ad-ben reprezentációja van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -117,10 +117,10 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Antik ismerje meg, hajtsa v�
     ![image](common/edit-attribute.png)
 
 6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútumai a képen látható módon, és hajtsa végre az alábbi lépéseket. Itt egyedi felhasználói attribútumként azt van leképezve a Userprincipalname, de a megfelelő értéket, amely egyértelműen azonosítja a felhasználó a szervezetben, és a felhasználónév mezője Antik ismerje meg, amely leképezi a térkép.
-    
+
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | User.userPrincipalName |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -140,17 +140,17 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Antik ismerje meg, hajtsa v�
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. Az a **Antik további beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. Az a **Antik további beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -226,4 +226,3 @@ Ha a hozzáférési panelen Antik további csempére kattint, akkor kell automat
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

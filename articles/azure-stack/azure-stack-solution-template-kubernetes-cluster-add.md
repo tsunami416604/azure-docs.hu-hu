@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352682"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388470"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -60,11 +60,11 @@ Hozzon létre egy csomag, ajánlat és a Kubernetes Piactéri elem előfizetést
 
     e. Válassza ki **ajánlat**. Válassza ki a létrehozott ajánlat nevét. Jegyezze fel az előfizetés-azonosító.
 
-## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>Hozzon létre egy egyszerű szolgáltatásnév és a hitelesítő adatokat az AD FS-ben
+## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>Hozzon létre egy egyszerű szolgáltatást, és a hitelesítő adatokat az AD FS-ben
 
-Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity management szolgáltatás használja, szüksége lesz egy Kubernetes-fürt üzembe helyezése felhasználók egyszerű szolgáltatásnév létrehozása.
+Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity management szolgáltatás használja, szüksége lesz a létre szolgáltatásnevet a Kubernetes-fürt üzembe helyezése felhasználók számára.
 
-1. Hozzon létre, és az egyszerű szolgáltatásnév létrehozásához használt tanúsítvány exportálása. Az alábbi kódot az alábbi kódrészlet bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt. 
+1. Hozzon létre, és a szolgáltatásnév létrehozásához használt tanúsítvány exportálása. Az alábbi kódot az alábbi kódrészlet bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt. 
 
     - Az alábbi adatokra lesz szüksége:
 
@@ -104,20 +104,20 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. A tanúsítvány használatával egyszerű szolgáltatásnév létrehozása.
+2. Szolgáltatásnév létrehozása a tanúsítvány használatával.
 
     - Az alábbi adatokra lesz szüksége:
 
        | Érték | Leírás                     |
        | ---   | ---                             |
        | ERCS IP | A ASDK a kiemelt végponthoz van általában `AzS-ERCS01`. |
-       | Alkalmazásnév | Az alkalmazás egyszerű szolgáltatásnév egyszerű nevét. |
+       | Alkalmazásnév | Az alkalmazás egyszerű szolgáltatás egyszerű neve. |
        | Tanúsítványtár helye | A számítógépen, a tanúsítványt tároló elérési útja. Például:`Cert:\LocalMachine\My\<someuid>` |
 
     - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
         ```PowerShell  
-        #Create service principle using the certificate
+        #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
         #certificate store location. Eg. Cert:\LocalMachine\My
@@ -132,7 +132,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
         # Creating a PSSession to the ERCS PrivilegedEndpoint
         $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-        # Get Service Principle Information
+        # Get Service principal Information
         $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
 
         # Get Stamp information
@@ -167,7 +167,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
         $ServicePrincipal
         ```
 
-    - A szolgáltatás egyszerű részletei keresse meg az alábbi kódrészlethez hasonló
+    - A szolgáltatás egyszerű részleteket tekintse meg az alábbi kódrészlethez hasonló
 
         ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356

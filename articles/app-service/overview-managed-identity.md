@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 5e09401c37d40c99d3f8bbb643d104c0105812f4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 413473b856d76f9ebeff9669eb1facc54d89b509
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731055"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382524"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
@@ -260,7 +260,7 @@ A .NET-alkalmazások és funkciók az a legegyszerűbb módja egy felügyelt ide
 
 1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a többi szükséges NuGet-csomagok az alkalmazáshoz. Az alábbi példában is használt [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-2.  Adja hozzá a következő kódot az alkalmazást, amelyre alkalmazza a megfelelő erőforrás módosítása. Ebben a példában az Azure Key Vault használata két módszert mutat be:
+2. Adja hozzá a következő kódot az alkalmazást, amelyre alkalmazza a megfelelő erőforrás módosítása. Ebben a példában az Azure Key Vault használata két módszert mutat be:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
@@ -277,12 +277,12 @@ Microsoft.Azure.Services.AppAuthentication és teszi elérhetővé a műveletek 
 ### <a name="using-the-rest-protocol"></a>A REST protokoll használatával
 
 Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti változó:
+
 - MSI_ENDPOINT
 - MSI_SECRET
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
-> [!div class="mx-tdBreakAll"]
 > |Paraméter neve|Eleme ennek|Leírás|
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése. Ez lehet egy a [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) vagy bármely egyéb erőforrás URI-t.|
@@ -290,10 +290,8 @@ A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat k
 > |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét.|
 > |ClientID|Lekérdezés|(Nem kötelező) A felhasználó által hozzárendelt identitás használt azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás szolgál.|
 
-
 Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokkal:
 
-> [!div class="mx-tdBreakAll"]
 > |Tulajdonság neve|Leírás|
 > |-------------|----------|
 > |access_token|A kért hozzáférési jogkivonatot. A hívó webszolgáltatás a jogkivonat használatával hitelesítik magukat a fogadó webszolgáltatás.|
@@ -301,24 +299,27 @@ Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokka
 > |erőforrás|Az Alkalmazásazonosító URI-t a fogadó webszolgáltatás.|
 > |token_type|Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [az OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-
 Ez a válasz megegyezik a [válasza az AAD-service-to-service hozzáférési jogkivonat kérése](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
-> [!NOTE] 
+> [!NOTE]
 > Környezeti változók úgy van beállítva a folyamat indításakor először, miután engedélyezte az alkalmazás egy felügyelt identitás, szükség lehet az alkalmazás újraindítása, vagy ismételt telepítése előtt a kódok `MSI_ENDPOINT` és `MSI_SECRET` érhetők el a kódhoz.
 
 ### <a name="rest-protocol-examples"></a>Példák a REST protokoll
+
 Egy kérelem (példa) a következőhöz hasonlóan nézhet ki:
+
 ```
 GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
 Host: localhost:4141
 Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
+
 És a egy mintaválasz előfordulhat, hogy a következőhöz hasonló:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
- 
+
 {
     "access_token": "eyJ0eXAi…",
     "expires_on": "09/14/2017 00:00:00 PM +00:00",
@@ -328,7 +329,9 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>Hitelesítésikód-példák
+
 <a name="token-csharp"></a>Az ilyen kérést a C#-ban:
+
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -336,10 +339,12 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
     return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
 }
 ```
+
 > [!TIP]
 > .NET nyelvekhez is használhatja [Microsoft.Azure.Services.AppAuthentication](#asal) ahelyett, hogy elvégezte a kérelem saját magának.
 
 <a name="token-js"></a>A node.js-ben:
+
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -355,6 +360,7 @@ const getToken = function(resource, apiver, cb) {
 ```
 
 <a name="token-powershell"></a>A PowerShellben:
+
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -370,12 +376,12 @@ A funkció a portal, PowerShell vagy parancssori felület használatával, hogy 
 ```json
 "identity": {
     "type": "None"
-}    
+}
 ```
 
 Ezzel a módszerrel a rendszer által hozzárendelt identitás eltávolítása is törli azt az aad-ből. Rendszer által hozzárendelt identitások is automatikusan törlődnek az aad-ből, ha az alkalmazás-erőforrást törölték.
 
-> [!NOTE] 
+> [!NOTE]
 > Nincs alkalmazás beállítást is be lehet állítani, WEBSITE_DISABLE_MSI, amely csak letiltja a jogkivonat-szolgáltatás. Azonban az identitás elhagyják a helyen, és az eszközök továbbra is megjeleníti a felügyelt identitást, "on" vagy "engedélyezve". Ennek eredményeképpen a beállítás használata nem ajánlott.
 
 ## <a name="next-steps"></a>További lépések

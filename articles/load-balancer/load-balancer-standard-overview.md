@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 2eb2fbb1d184bf58923748278d4989a271adf434
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352580"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382565"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure Standard Load Balancer áttekintése
 
@@ -213,7 +213,7 @@ Standard Load Balancer Terheléselosztók egy 99,99 %-os SLA-val érhetők el.  
 
 Standard Load Balancerhez használati díjat számítunk fel.
 
-- Száma beállított terheléselosztási és kimenő szabályok szabályok (bejövő NAT-szabályok nem számítanak bele a szabályok teljes száma)
+- A konfigurált terheléselosztási és a kimenő szabályok száma (bejövő NAT-szabályok nem számítanak bele a szabályok teljes száma)
 - Adatok mennyisége a bejövő és kimenő függetlenül szabály feldolgozása. 
 
 A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](https://azure.microsoft.com/pricing/details/load-balancer/) ismertető oldalon talál további információt.

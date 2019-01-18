@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cbd09f141128f9103af88b695baf717eaa3c99d5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038836"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389105"
 ---
 # <a name="database-transactions-and-optimistic-concurrency-control"></a>Adatbázis-tranzakciók és az optimista egyidejűség-vezérlés
 
@@ -49,7 +49,7 @@ A JavaScript végrehajtására közvetlenül az adatbázismotor belül biztosít
 
 ## <a name="optimistic-concurrency-control"></a>Az optimista egyidejűség-vezérlés 
 
-Az optimista egyidejűség-vezérlés lehetővé teszi, hogy megakadályozza az elveszett frissítések, és törli. A normál pesszimista zárolással az adatbázismotor, a logikai partíciót az elemet birtokló által üzemeltetett vetik egyidejű, ütköző művelet. Amikor legyőzi két egyidejű műveletet próbál meg frissíteni a logikai partíció, az egyiket található elem a legújabb verzióra, és a másik sikertelen lesz. Azonban próbál meg egyszerre az azonos elem frissítése egy vagy két művelet korábban rendelkezett olvasási egy régebbi elem értékét, az adatbázis nem tudja, ha korábban olvasott érték bármelyik vagy mindkettő az ütköző művelet volt valóban az elem a legújabb értékeket. Szerencsére a ebben a helyzetben észlelhető az optimista egyidejűségi vezérlő (OCC) rendelkező előtt, ami lehetővé teszi a két művelet, írja be a tranzakció határ az adatbázis motorjában. OCC felülírják a mások által elvégzett módosítások védi az adatokat. Azt is megakadályozza, hogy mások véletlenül a saját módosítások felülírása.
+Az optimista egyidejűség-vezérlés lehetővé teszi, hogy megakadályozza az elveszett frissítések, és törli. A normál pesszimista zárolással az adatbázismotor, a logikai partíciót az elemet birtokló által üzemeltetett vetik egyidejű, ütköző művelet. Amikor két egyidejű művelet próbálja meg frissíteni a logikai partíció található elem a legújabb verzióra, az egyiket legyőzi, és a másik sikertelenek lesznek. Azonban próbál meg egyszerre az azonos elem frissítése egy vagy két művelet korábban rendelkezett olvasási egy régebbi elem értékét, az adatbázis nem tudja, ha korábban olvasott érték bármelyik vagy mindkettő az ütköző művelet volt valóban az elem a legújabb értékeket. Szerencsére a ebben a helyzetben észlelhető az optimista egyidejűségi vezérlő (OCC) rendelkező előtt, ami lehetővé teszi a két művelet, írja be a tranzakció határ az adatbázis motorjában. OCC felülírják a mások által elvégzett módosítások védi az adatokat. Azt is megakadályozza, hogy mások véletlenül a saját módosítások felülírása.
 
 Egy elemet egyidejű frissítése az Azure Cosmos DB kommunikációs protokoll réteg által a OCC vannak kitéve. Az Azure Cosmos database biztosítja, hogy az elem frissítése (vagy törlése) ügyféloldali verziója ugyanaz, mint a verzió a cikk az Azure Cosmos-tárolóban. Ez garantálja, hogy az írási mások, és ez fordítva is igaz az írások véletlenül felülírásra védettek. Többfelhasználós környezetben az optimista egyidejűség-vezérlés megóvja a véletlen törlését, vagy helytelen verziójára figyelmeztet elem frissítése. Emiatt a elemek védve legyenek a infamous "elveszett update" vagy "elveszett törlés" problémákat.
 

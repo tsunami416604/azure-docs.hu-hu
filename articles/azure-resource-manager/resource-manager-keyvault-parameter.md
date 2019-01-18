@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: a885fda23bb76091705ebe388f40a6eae7b56416
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e04ee6b74be0bb7ec81166f43295a8a9377f8cf8
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351509"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381521"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
 
@@ -93,7 +93,7 @@ A Resource Manager-sablon használatával: Lásd: [oktatóanyag: Integrálhatja 
 
 Más, a beállítás `enabledForTemplateDeployment` való `true`, helyezi üzembe a sablont a felhasználónak rendelkeznie kell a `Microsoft.KeyVault/vaults/deploy/action` hatókörhöz, amely tartalmazza a Key Vault, beleértve az erőforráscsoportot és a Key Vault engedély. A [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt a hozzáférés engedélyezéséhez. A Key Vault hoz létre, ha Ön a tulajdonosa, az engedéllyel rendelkezik. Ha a Key Vault egy másik előfizetésben, a Key Vault tulajdonosának kell hozzáférést adni.
 
-A következő eljárás azt mutatja be, hogyan hozhat létre egy szerepkört a minimális permssion, és rendelje hozzá a felhasználót annak
+A következő eljárás azt mutatja be, a minimális hozzáférésű szerepkör létrehozása, és rendelje hozzá a felhasználót
 1. Hozzon létre egy egyéni szerepkör definíció JSON-fájlt:
 
     ```json

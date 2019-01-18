@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 622cdd36a1ecf582c4cdb883b12753ee2a75d50e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856008"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382436"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzleti folytonossági és vészhelyreállítási recovery az Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Egy AKS-fürtöt helyezünk üzembe egy adott régióban. Saját kezűleg régi�
 * [Az Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * A földrajzi területen válassza a két régióban, amely a rendszer megfeleltetni egymással. Ezekben a régiókban platform frissítéseket koordinálja, és priorizálhatja helyreállítási erőfeszítések ahol szükséges.
 * Rendelkezésre állási szolgáltatásszintet (forró/ritkáról gyakori elérésű, gyakori/meleg, forró/hideg)
-  * Egy időben, az egyik régió mindkét régióban futtatni kívánt *készen* elindítására szolgáló forgalmat, vagy egy adott területre időt igénylő Felkészülés a forgalmat.
+  * Egy időben, az egyik régió mindkét régióban futtatni kívánt *készen* forgalom, vagy egy régióban, amely kész forgalmat kell elindítani.
 
 AKS-régiók rendelkezésre állása és a társított két régió bármelyikén közös veszi figyelembe. A párosított régiók, amelyek együtt kezelheti a vészhelyreállítási régióban az AKS-fürtök üzembe helyezése. Ha például az AKS érhető el *USA keleti Régiójában* és *USA nyugati RÉGIÓJA*. Ezekben a régiókban is van párosítva. A két régióra szeretné azt javasolja, az AKS BC/Vészhelyreállítási stratégia létrehozásakor.
 

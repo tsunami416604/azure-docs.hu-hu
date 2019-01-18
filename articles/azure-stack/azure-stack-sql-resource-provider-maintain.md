@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fa2e834b142d5df4751b46f6dac2db9b3a10a463
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244987"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391309"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL erőforrás-szolgáltatói karbantartási műveletek
 
-Az erőforrás-szolgáltató SQL zárolt virtuális gépen fut. Ahhoz, hogy a karbantartási műveleteket, frissíteni szeretné a virtuális gép biztonsági. Ehhez használja a legalacsonyabb jogosultsági szint elvének használható [PowerShell csak Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) végpont *DBAdapterMaintenance*. Az erőforrás-szolgáltató telepítési csomag tartalmaz egy parancsfájlt, ehhez a művelethez.
+Az erőforrás-szolgáltató SQL zárolt virtuális gépen fut. Ahhoz, hogy a karbantartási műveleteket, frissíteni szeretné a virtuális gép biztonsági. Ehhez használja a legalacsonyabb jogosultsági egyszerű használható [PowerShell csak Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) végpont *DBAdapterMaintenance*. Az erőforrás-szolgáltató telepítési csomag tartalmaz egy parancsfájlt, ehhez a művelethez.
 
 ## <a name="patching-and-updating"></a>Javításait és frissítését
 
@@ -97,7 +97,7 @@ Ha az SQL- és MySQL erőforrás-szolgáltatók használata az Azure Stack integ
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
-### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 paraméterek
+### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 parameters
 
 |Paraméter|Leírás|
 |-----|-----|

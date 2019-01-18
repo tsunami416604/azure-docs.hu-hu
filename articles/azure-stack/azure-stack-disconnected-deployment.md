@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3262720f52bc75ba5d430e941da25568a105fe0d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276249"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391266"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure leválasztott telepítés tervezési megfontolások az Azure Stack integrált rendszerek
 Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
@@ -49,7 +49,7 @@ Az Azure Stack való csatlakozáskor az Azure-ba, ezért fontos megjegyezni, hog
 |Marketplace – válassza ki, és adja hozzá a katalógus-csomagokat közvetlenül az Azure Marketplace-ről|Sérült – Azure Stack (nélkül bármely internetkapcsolat) kapcsolat nélküli üzemmódban történő telepítésekor Piactéri elemek nem lehet letölteni az Azure Stack-portál használatával. Használhatja azonban a [marketplace tartalomtípus-gyűjtési eszköz](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) töltse le a marketplace-elemek olyan gépre, amely rendelkezik internetkapcsolattal, és utána az Azure Stack környezettel.|
 |Azure Active Directory összevonási fiókok használata kezelheti az Azure Stack üzemelő példányához|Nem érhető el – ez a funkció kapcsolódnia kell az Azure-bA. Ehelyett az AD FS egy helyi Active Directory-példányt kell használni.|
 |App Services|Sérült - WebApps kérhet Internet-hozzáférés frissített tartalom.|
-|Parancssori felület (CLI)|Sérült – parancssori felület csökkentette a funkciót, hitelesítési és a kiépítési szolgáltatás alapelvek tekintetében.|
+|Parancssori felület (CLI)|Sérült – parancssori felület csökkentette a funkciót, hitelesítési és az egyszerű szolgáltatások kiépítését.|
 |A Visual Studio – a Cloud discovery|Sérült – a Cloud Discovery vagy fogja felderíteni a különböző felhőkben, vagy egyáltalán nem működnek.|
 |A Visual Studio – Active Directory összevonási szolgáltatások|Sérült – csak a Visual Studio Enterprise támogatja az AD FS.
 Telemetria|Nem érhető el – Telemetriai adatokat az Azure Stack, és minden külső katalóguscsomagok, amely telemetriai adatokat függ.|
@@ -58,7 +58,7 @@ Telemetria|Nem érhető el – Telemetriai adatokat az Azure Stack, és minden k
 
 ## <a name="learn-more"></a>Részletek
 - További információ a használati esetek, vásárlás, partnerek és OEM hardverszállítók: a [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) termékoldalán.
-- Az ütemterv és a rendelkezésre állás földrajzi információ az Azure Stack integrált rendszerek, tekintse meg a: [Az Azure Stack: Azure-bővítmény](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Az ütemterv és a rendelkezésre állás földrajzi információ az Azure Stack integrált rendszerek, tekintse meg a: [Azure Stack: Azure-bővítmény](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - A Microsoft Azure Stack csomagolás és a díjszabással kapcsolatos további [töltse le a .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>További lépések

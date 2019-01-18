@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: e0a5d6180c7dfa94abf8dd738c8017a3b332dfd8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/17/2019
+ms.openlocfilehash: 9d7131c6ed1808725f59e53488bedb5ef81a77c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598804"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389411"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -80,7 +80,7 @@ Alapértelmezés szerint engedélyezve van a olvasási kibővített [felügyelt 
 
 ### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell: Engedélyezheti vagy letilthatja a horizontális Felskálázás olvasása
 
-A 2016. December kezelése olvasási horizontális Felskálázás az Azure PowerShell szükséges az Azure PowerShell kiadás vagy újabb. A legújabb PowerShell-verzió, lásd: [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+A 2016. December kezelése olvasási horizontális Felskálázás az Azure PowerShell szükséges az Azure PowerShell kiadás vagy újabb. A legújabb PowerShell-verzió, lásd: [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 Engedélyezi vagy letiltja az olvasási horizontális felskálázás az Azure PowerShell meghívásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) parancsmag és a kívánt értéket – a passzok `Enabled` vagy `Disabled` – az a `-ReadScale` paraméter. Másik lehetőségként használhatja a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmaggal hozzon létre egy új adatbázis olvassa el a horizontális felskálázás engedélyezve van.
 

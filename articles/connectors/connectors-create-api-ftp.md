@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: a14f045193c01b8c26019314ddde4c2116d8bad6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d57a80ec2a1ebfca173d7eaa165de4d344af2ccf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232817"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391112"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Létrehozása, figyelése és kezelése az FTP-fájlok Azure Logic Apps használatával
 
@@ -26,7 +26,7 @@ Az Azure Logic Apps és az FTP-összekötő automatikus feladatokkal és munkafo
 * Fájl tartalom és metaadatok beolvasása.
 * Mappák archívumok kibontása.
 
-Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgáló és a kimenetet más műveletek számára elérhetővé tenni. Műveleteket használhat a logic Apps-fájlokat az FTP-kiszolgáló a feladatok végrehajtásához. FTP-műveleteket a kimenetét használják más műveleteket is rendelkezhet. Például ha rendszeresen kérnek le fájlok az FTP-kiszolgálóról, elküldheti e-mailek ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgáló és a kimenetet más műveletek számára elérhetővé tenni. Futtatási műveleteket használhat a logic Apps az FTP-kiszolgálón található fájlok kezeléséhez. FTP-műveleteket a kimenetét használják más műveleteket is rendelkezhet. Például ha rendszeresen fájlok az FTP-kiszolgálóról, elküldheti ezeket a fájlokat és a tartalom kapcsolatos e-mailek az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
 > Az FTP-összekötő támogatja a csak olyan fájlok, amelyek 50 MB vagy kisebb, ha nem használ [nagy üzenetkezelő darabolás](../logic-apps/logic-apps-handle-large-messages.md). 
@@ -37,9 +37,9 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
-* Az FTP gazdagép címét és a fiók hitelesítő adatait
+* Your FTP host server address and account credentials
 
-  Az FTP-összekötő szükséges, hogy az FTP-kiszolgáló érhető el az interneten, és állítsa be a művelethez használandó *passzív* mód. A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot, és az FTP-fiók eléréséhez.
+  Az FTP-összekötő szükséges, hogy az FTP-kiszolgáló érhető el az interneten, és állítsa be a művelethez használandó *passzív* mód. A hitelesítő adatok lehetővé teszik, hogy a logikai alkalmazás, hozzon létre egy kapcsolatot, és az FTP-fiók eléréséhez.
 
 * Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -68,23 +68,26 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
 
 ## <a name="examples"></a>Példák
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-eseményindító: amikor felvesznek vagy módosítanak egy fájlt
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-eseményindító: Fájl hozzáadásakor és módosításakor
 
 Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító észleli, ha egy fájl hozzáadásakor vagy módosítani az FTP-kiszolgálón kezdődik. Így például hozzáadhat egy feltételt, amely ellenőrzi a fájl tartalmát, és úgy dönt, hogy kapják meg a tartalmat a e tartalom megfelel-e a megadott feltétel alapján. Végül adjon hozzá egy műveletet, amely a fájl tartalmának beolvasása, és helyezi a tartalmat egy mappába az SFTP-kiszolgáló. 
 
-**Példa vállalati**: a trigger használatával figyelheti a megrendelések képviselő új fájlok egy FTP-mappába. Ezután használhatja az FTP művelet például **fájl tartalmának beolvasása**, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, valamint egy rendelési adatbázisba sorrendben tárolja.
+**Példa vállalati**: Ez az eseményindító használatával figyelheti az FTP-mappába, új fájlok, amelyek ismertetik a vevői rendelések. Ezután használhatja az FTP művelet például **fájl tartalmának beolvasása**, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, valamint egy rendelési adatbázisba sorrendben tárolja.
 
 Egy érvényes és funkcionális logikai alkalmazásnak szüksége van, egy eseményindítót, és legalább egy műveletet. Ezért győződjön meg arról, hogy a művelet hozzáadása, miután hozzáadott egy eseményindítót.
 
-Íme egy példa, amely megjeleníti a következő eseményindítót: **amikor felvesznek vagy módosítanak egy fájlt**
+A következő példa bemutatja, ez az eseményindító: **Amikor felvesznek vagy módosítanak egy fájlt**
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-1. Üres logic Apps a keresőmezőbe írja be szűrőként "ftp". Eseményindítók listájában válassza a következő eseményindítót: **amikor egy iktatott hozzáadása vagy módosítása – FTP**
+1. Üres logic Apps a keresőmezőbe írja be szűrőként "ftp". Eseményindítók listájában válassza az eseményindító: **Ha egy iktatott hozzáadása vagy módosítása – FTP**
 
    ![Keresse meg és jelölje be az FTP-eseményindító](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
 1. Adja meg a szükséges adatokat a kapcsolatot, és válassza a **létrehozás**.
+
+   Alapértelmezés szerint ez az összekötő a szöveges formátumú fájlok átvitele. 
+   Átvitelhez bináris fájlok formátumú, például ha és kódolás használata esetén válassza ki a **bináris átvitelt**.
 
    ![FTP-kiszolgáló közötti kapcsolat létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -98,13 +101,13 @@ Egy érvényes és funkcionális logikai alkalmazásnak szüksége van, egy esem
 
 Most, hogy a logikai alkalmazás egy eseményindító tartozik, adja hozzá a műveleteket szeretné futtatni, amikor a logikai alkalmazás egy új vagy módosított fájl talál. Ebben a példában egy FTP-műveletet, amely a lekérdezi az új vagy frissített tartalmat is hozzáadhat.
 
-### <a name="ftp-action-get-content"></a>FTP-művelet: tartalom lekérése
+### <a name="ftp-action-get-content"></a>FTP-művelet: Tartalom lekérése
 
 Ez a művelet a tartalom egy fájlt egy FTP-kiszolgálón olvassa be, ha a fájl hozzáadásakor vagy frissítésekor. Így például az előző példában és a egy műveletet, amely a fájl tartalmának beolvasása után ezt a fájlt ad hozzá vagy szerkeszthetők az eseményindító is hozzáadhat. 
 
 1. Válassza az eseményindító vagy bármely más műveletek, **új lépés**. 
 
-1. A keresőmezőbe írja be szűrőként az "ftp". Műveletek listája alatt válassza a következő műveletet: **fájl tartalmának - FTP beolvasása**
+1. A keresőmezőbe írja be szűrőként az "ftp". Műveletek listája alatt válassza a következő műveletet: **Fájl tartalmának - FTP beolvasása**
 
    ![FTP-művelet kiválasztása](./media/connectors-create-api-ftp/select-ftp-action.png)  
 

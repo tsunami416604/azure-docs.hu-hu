@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 10e277618e9741cec4b4fbe88262b29c4f25e3c2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359408"
+ms.locfileid: "54383090"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -192,7 +192,9 @@ További információ [a Data Box biztonsági funkcióiról](data-box-security.m
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>K. Előkészítettem a szállításhoz, és leállítottam az eszközt. Hozzáadhatok még adatokat?
 A. Igen. Bekapcsolhatja az eszközt, és további adatokat adhat hozzá. A másolás végeztével újra futtatnia kell a **szállításra való előkészítés** műveletet.
-  
+
+### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>K. Az eszköz kapott, és a van nem másolatából? Hogyan szállíthat a vissza az eszközt?
+A. Ha az eszköz nem indul el, nyissa meg az ahhoz az Azure Portalon. Egy levélcímke letöltése, és elhelyezi, hogy az eszközön. További információ a [fuvarlevélcímke letöltéséről](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés
 

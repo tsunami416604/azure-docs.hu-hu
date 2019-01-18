@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c63e7d03c0fc17e9892617aaeca94803c671acea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1f7162e4be1392a8b5b3228a5338fd470fdcc525
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196561"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389305"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Oktatóanyag: Az Azure Active Directory-integráció InstaVR Viewer
 
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés InstaVR megjelenítővel tesztelése és kon
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[InstaVR megjelenítő egyszeri bejelentkezés konfigurálása](#configure-instavr-viewer-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre InstaVR megjelenítő tesztfelhasználót](#create-instavr-viewer-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon InstaVR megjelenítőjében, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre InstaVR megjelenítő tesztfelhasználót](#create-instavr-viewer-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon InstaVR megjelenítőjében, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -105,13 +105,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés InstaVR megjelenít�
 
     ![InstaVR megjelenítő tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be egy URL-címet a következő mintával: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`.
-    
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+
     > [!NOTE]
     > Nincs rögzített minta a bejelentkezési URL-címe van. Ha a InstaVR megjelenítő vevő webes csomagolási jön létre. Minden ügyfél és a csomag esetében egyedi legyen. Az első a pontos bejelentkezési URL-címet kell bejelentkezni a InstaVR megjelenítő példány, és webes csomagolási.
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címet a következő mintával: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`. 
-    
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+
     > [!NOTE]
     > Az azonosító értéke nem valódi. Az oktatóanyag későbbi részében ismertetett tényleges azonosító értékét frissítse ezt az értéket.
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés InstaVR megjelenít�
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037106"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382546"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 
@@ -47,9 +47,9 @@ Az alábbi ábrán az adatfolyam és a következő összetevők kapnak szerepet 
 
 4. **Azure-függvény:** Az Azure-függvény feldolgozza az új adatokat, és elküldi azt egy [Azure Event Hub](../event-hubs/event-hubs-about.md).  
 
-5. **Event Hubs:** Az Azure Event Hubs tárolja ezeket az eseményeket, és elküldi azokat [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) részletes elemzéseket végezhet.  
+5. **Event Hub:** Az Azure Event Hubs tárolja ezeket az eseményeket, és elküldi azokat [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) részletes elemzéseket végezhet.  
 
-6. **Az Azure Stream Analytics:** Az Azure Stream Analytics az események feldolgozását, és valós idejű adatelemzés végrehajtása a lekérdezések határozza meg. Ezeket az adatokat elküldi a [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Az Azure Stream Analytics az események feldolgozását, és valós idejű adatelemzés végrehajtása a lekérdezések határozza meg. Ezeket az adatokat elküldi a [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
 7. **A Power bi-ban:** A Power BI segítségével jelenítheti meg az Azure Stream Analytics által küldött adatokat. Tekintse meg, hogyan módosíthatja a a metrikák valós idejű irányítópultot hozhat létre.  
 
@@ -382,7 +382,7 @@ Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-ke
 
 8. Keresse meg és nyissa meg a **kivétele mappa** belül **EcommerceWebApp.sln.** Nyissa meg a **Web.config** fájlra a mappában.  
 
-9. Belül a `<appSettings>` letiltása, adja hozzá a **URI** és **elsődleges kulcs** , hogy korábban mentett felsoroltak közül. Majd adja hozzá a az **adatbázis neve** és **gyűjteménynév** jelöli. (Ezeket a neveket kell **changefeedlabdatabase** és **changefeedlabcollection** , kivéve, ha úgy döntött, hogy eltérő nevet.)  
+9. Belül a `<appSettings>` letiltása, adja hozzá a **URI** és **elsődleges kulcs** , hogy korábban mentett felsoroltak közül. Majd adja hozzá a az **adatbázisnév** és **gyűjteménynév** jelöli. (Ezeket a neveket kell **changefeedlabdatabase** és **changefeedlabcollection** , kivéve, ha úgy döntött, hogy eltérő nevet.)  
 
 10. Nyomja meg **Start** futtatni a programot a lap tetején.  
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Bing Spell Check SDK, C#'
+title: 'Gyors útmutató: Bing Spell Check SDK, C#'
 titlesuffix: Azure Cognitive Services
 description: A Spell Check SDK konzolalkalmazás beállítása
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ae21e66c178ceb9c6aab814c6528da032ce0b30
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311602"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382122"
 ---
-# <a name="quickstart-bing-spell-check-sdk-with-c"></a>Rövid útmutató: A Bing Spell Check SDK és a C# használata
+# <a name="quickstart-bing-spell-check-sdk-with-c"></a>Gyors útmutató: A Bing helyesírás-ellenőrzés SDK-valC#
 
 A Bing Spell Check SDK tartalmazza a REST API funkcióit a helyesírás-ellenőrzéshez.
 
@@ -46,10 +46,10 @@ Ezután példányosítsa az ügyfelet:
 var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
 
-Az ügyfél használatával ellenőrizze a helyesírást:
+Az ügyfél segítségével ellenőrizze a helyesírást, a szöveg. A `acceptLanguage` paramétert nem kötelező megadni:
 
 ```cs
-var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
+var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US", market: "en-US").Result;
 Console.WriteLine("Correction for Query# \"bill gatas\"");
 ```
 
@@ -95,7 +95,7 @@ A következő konzolalkalmazás végrehajtja az előző kódot:
 ```cs
 using System;
 using System.Linq;
-using Microsoft.Azure.CognitiveServices.SpellCheck;
+using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
 
 namespace SpellCheckSDK
 {
@@ -107,7 +107,7 @@ namespace SpellCheckSDK
 
             try
             {
-                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US").Result;
+                var result = client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof", acceptLanguage: "en-US", market:"en-US").Result;
                 Console.WriteLine("Correction for Query# \"bill gatas\"");
 
                 // SpellCheck Results

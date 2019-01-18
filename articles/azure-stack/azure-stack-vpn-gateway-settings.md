@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 05f198aa869bbff121d438688aaee89a292516c1
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d5538ce94428f189fc83cfa1107c52b9d57a3d13
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807970"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381559"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN gateway konfigurációs beállításairól az Azure Stackhez
 
@@ -51,9 +51,9 @@ Az Azure stackhez VPN-átjáró SKU-k az alábbi táblázatban látható.
 
 |   | VPN gateway teljesítménye |VPN-átjáró maximális IPsec-alagútjainak |
 |-------|-------|-------|
-|**Alapszintű Termékváltozat**  | 100 Mbps  | 10    |
-|**A standard Termékváltozat**           | 100 Mbps  | 10    |
-|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 5 |
+|**Alapszintű Termékváltozat**  | 100 Mbps  | 20    |
+|**A standard Termékváltozat**           | 100 Mbps  | 20    |
+|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 10    |
 
 ### <a name="resizing-gateway-skus"></a>Az átjárók Termékváltozatainak átméretezése
 
@@ -123,7 +123,7 @@ A következő táblázat felsorolja a VPN-átjárók követelményei.
 |--|--|--|--|--|
 | **Helyek közötti kapcsolat (S2S-kapcsolatokhoz)** | Nem támogatott | Útvonalalapú VPN-konfiguráció | Útvonalalapú VPN-konfiguráció | Útvonalalapú VPN-konfiguráció |
 | **Hitelesítési módszer**  | Nem támogatott | Előre megosztott kulcs S2S-kapcsolatokhoz  | Előre megosztott kulcs S2S-kapcsolatokhoz  | Előre megosztott kulcs S2S-kapcsolatokhoz  |   
-| **S2S-kapcsolatok maximális száma**  | Nem támogatott | 10 | 10| 5|
+| **S2S-kapcsolatok maximális száma**  | Nem támogatott | 20 | 20| 10|
 |**Aktív útválasztás-támogatás (BGP)** | Nem támogatott | Nem támogatott | Támogatott | Támogatott |
 
 ### <a name="gateway-subnet"></a>Átjáró alhálózata

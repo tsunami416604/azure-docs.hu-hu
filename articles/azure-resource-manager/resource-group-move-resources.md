@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 32298b78f3b98afb6754e07ad63467f4f995d84f
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158856"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382904"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
-Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-előfizetés és a egy előfizetésen belül egy másik erőforráscsoportot. Az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API használatával helyezhetők át erőforrások.
+Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-előfizetés és a egy előfizetésen belül egy másik erőforráscsoportot. Az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API használatával helyezhetők át erőforrások. Go-oktatóanyagot, tekintse meg [oktatóanyag: Azure-erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe](./resource-manager-tutorial-move-resources.md).
 
 Mind a forrás és a cél csoport írásvédett az áthelyezési művelet során. Írási és törlési műveletek az áthelyezés befejezéséig az erőforráscsoportok elakad. A zárolás azt jelenti, hogy a nem hozzáadása, frissítése vagy törlése az erőforráscsoportok erőforrásaihoz, de ez nem jelenti azt, az erőforrások szüneteltetve legyenek. Ha például egy SQL Server és az adatbázis áthelyezése egy új erőforráscsoportot, ha nem az adatbázist használó alkalmazások teljesen állásidő nélkül. Továbbra is olvasni és írni az adatbázisba.
 

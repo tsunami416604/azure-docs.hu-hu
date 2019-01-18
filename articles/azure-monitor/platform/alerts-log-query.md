@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
 ms.component: alerts
-ms.openlocfilehash: 9cd745cedd6d870262e412709e4e104c1406558e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c1bcbf1245ef3256ceb1db098d6bcb014c7cd155
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54234081"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382023"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Az Azure Monitor riasztási lekérdezések naplózása
 [Riasztási szabályok alapján az Azure Monitor naplóira](alerts-unified-log.md) futtatása rendszeres időközönként, ezért győződjön meg arról, hogy azok írt terhelést és a késés minimalizálása érdekében. Ez a cikk naplóriasztások hatékony lekérdezések és a egy folyamat alakítása a meglévő lekérdezések írásáról javaslatokat nyújt. 
@@ -27,7 +27,7 @@ Ha például a következő lekérdezés hatókörét a _SecurityEvent_ tábla- �
 SecurityEvent | where EventID == 4624 
 ```
 
-Lekérdezések kezdődő `search` vagy `union` lehetővé teszi több keresési több oszlop egy táblázat vagy még több tábla. Az alábbi példák bemutatják a kifejezés keresése több módszer _memória_:
+Lekérdezések kezdődő `search` vagy `union` lehetővé teszi, hogy egyszerre több oszlopra egy tábla vagy még több tábla kereshet. Az alábbi példák bemutatják a kifejezés keresése több módszer _memória_:
 
 ```Kusto
 search "Memory"

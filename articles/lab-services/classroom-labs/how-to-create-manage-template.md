@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706857"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391197"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-sablonból
 A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezt követően a sablont a Virtuálisgép-sablon példányainak a labor számára elérhetővé tehet közzé. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval.
@@ -85,14 +85,14 @@ Először állítsa be, és a sablon közzététele osztályterem-tesztkörnyeze
     
     ![Az osztályterem-tesztkörnyezet irányítópultja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 
-## <a name="set-up-a-template-after-creating-a-lab"></a>Labor létrehozása után a sablon beállítása 
-Sablon is beállítása, a labor létrehozása után.   
-
+ 
 ## <a name="set-or-update-template-title-and-description"></a>Állítsa be, vagy frissítse a sablon nevét és leírását
 Az alábbi lépéseket követve cím és leírás, először állítsa be, és később frissíteni. 
 
 1. Az a **sablon** részben, vigye az egérmutatót **neve** -sablon vagy **leírás** a sablon, és jelölje ki. 
 2. Adja meg a **új nevet** vagy **új leírást** a sablont, majd nyomja le az **ENTER**.
+
+    ![Templae neve és leírása](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="set-up-or-update-a-template-vm"></a>Állítsa be, vagy egy Virtuálisgép-sablon frissítéséhez
  A virtuálisgép-sablonhoz csatlakozva telepítse a szükséges szoftvereket, mielőtt elérhetővé tenné a sablont a diákok számára. Kövesse az alábbi lépéseket egy sablont, virtuális gép beállításához először, vagy frissítse a virtuális Gépet. 
@@ -100,30 +100,28 @@ Az alábbi lépéseket követve cím és leírás, először állítsa be, és k
 1. Várja meg, amíg elkészül a virtuálisgép-sablon. Ha elkészült, elérhetővé válik a **Start** gomb. A virtuális gép elindításához kattintson a **Start** gombra.
 
     ![A virtuálisgép-sablon elindítása](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. A virtuális géphez való csatlakozáshoz kattintson a **Csatlakozás** gombra, majd kövesse az utasításokat. 
+1. Tekintse át a figyelmeztető üzenetet, és válassza ki **Start**. 
 
-    ![Csatlakozás a virtuálisgép-sablonhoz](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+    ![Indítsa el a sablon – figyelmeztetés](../media/how-to-create-manage-template/start-template-warning.png)
+1. Miután elindul, a virtuális Géphez való csatlakozáshoz válassza **Connect**, és kövesse az utasításokat. 
 1. Telepítse a diákok számára a tesztkörnyezet használatához szükséges szoftvereket (például Visual Studio, Azure Storage Explorer stb). 
 2. Szakítsa meg a kapcsolatot a virtuálisgép-sablonnal (zárja be a távoli asztali munkamenetet). 
 3. **Állítsa le** a virtuálisgép-sablont a **Leállítás** kiválasztásával. 
 
-    ![A virtuálisgép-sablon leállítása](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
-
-
-## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele
+## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele  
 Ha a labor létrehozása közben nem tesz közzé a sablont, később is közzéteheti. A közzététel előtt érdemes a sablont, virtuális gép kapcsolódni, és frissítse olyan szoftvert. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. 
 
 1. A **Sablon** szakaszban válassza a **Közzététel** lehetőséget. 
 
     ![A virtuálisgép-sablon közzététele](../media/tutorial-setup-classroom-lab/public-access.png)
-1. Az a **a sablon közzététele** üzenetpanelen, tekintse át az üzenetet, és válassza ki **közzététel**. Ez a folyamat eltarthat egy ideig a létrehozandó virtuális gépek számától függően, amely a tesztkörnyezet felhasználóinak maximális számával egyezik meg.
+1. Az a **a sablon közzététele** üzenetpanelen, tekintse át az üzenetet, és válassza ki **közzététel**. Ez a folyamat eltarthat egy ideig, attól függően, hogy hány virtuális gépet hoznak létre.
     
     > [!IMPORTANT]
     > Miután a sablon közzé lett téve, a közzétételt nem lehet visszavonni. A sablon, ha újbóli. 
-4. Váltson a **Virtuális gépek** lapra, és ellenőrizze, hogy vannak-e ott **Nem hozzárendelt** állapotú virtuális gépek. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. 
+4. Várja meg, módosítsa a sablon állapota **közzétett**. 
 
-    ![Virtual machines (Virtuális gépek)](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Várja meg, amíg befejeződik a virtuális gépek létrehozása. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. Ezen a lapon elindíthatja őket, vagy lehetővé teszik a diákjai, indítsa el a virtuális gépeket. 
+    ![Közzétételi állapot](../media/how-to-create-manage-template/publish-status.png)
+1. Váltson a **Virtuális gépek** lapra, és ellenőrizze, hogy vannak-e ott **Nem hozzárendelt** állapotú virtuális gépek. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. Várja meg, amíg befejeződik a virtuális gépek létrehozása. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. Ezen a lapon elindíthatja őket, vagy lehetővé teszik a diákjai, indítsa el a virtuális gépeket. 
 
     ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

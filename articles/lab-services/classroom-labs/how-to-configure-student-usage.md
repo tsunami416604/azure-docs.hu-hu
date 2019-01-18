@@ -11,28 +11,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 30c033b487fe58d017080b02c257502f82338164
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710040"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388308"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
-Ez a cikk bemutatja, hogyan konfigurálhatja a labor létrehozása a felhasználók számát, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
+Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
 
 
-## <a name="specify-the-number-of-users-allowed-into-the-lab"></a>Adja meg a laborkörnyezetbe engedélyezett felhasználók száma
+## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a labor létrehozása
+Ha rendelkezik a **hozzáférés korlátozása** felhasználók (e-mail cím) beállítás engedélyezve van, adja hozzá a listához.
 
-1. Válassza a **Használati szabályzat** lehetőséget. 
-2. A **Használati szabályzat** terület beállításaiban adja meg, **hány felhasználó** használhatja a tesztkörnyezetet.
-3. Kattintson a **Mentés** gombra. 
+1. Válassza ki **felhasználók** a bal oldali menüben.
+2. Válassza ki **felhasználók hozzáadása** az eszköztáron. 
+3. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
 
-    ![Használati szabályzat](../media/how-to-manage-classroom-labs/usage-policy-settings.png)
+    ![Adja hozzá a felhasználó e-mail-címei](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Kattintson a **Mentés** gombra. Láthatja, hogy a felhasználók és azok állapotát (vagy nem regisztrált) a lista e-mail címét. 
+
+    ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="send-registration-link-to-students"></a>Regisztrációs hivatkozás küldése a diákoknak
+Az alábbi eljárás lépéseit egy regisztrációs hivatkozás küldése felhasználóknak rendelkezik. Ha a **hozzáférés korlátozása** a tesztkörnyezethez engedélyezve van, csak a felhasználók a listán szereplő felhasználók rögzítheti a regisztráció hivatkozásra a tesztkörnyezethez. 
 
 1. Váltson a **felhasználók** nézet kiválasztásával **felhasználók** a bal oldali menüben. 
 2. Válassza ki **Get-regisztrációs hivatkozást** csempére.
@@ -52,9 +57,10 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a labor létrehozása a felhasznál
 
 Válassza ki **felhasználók** a labor létrehozása a felhasználók listája a bal oldali menü regisztrálva. 
 
-![A labor regisztrált felhasználók listája](../media/how-to-configure-student-usage/users-list.png)
+![A labor regisztrált felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="set-quotas-per-user"></a>Felhasználónként kvóták beállítása
+Felhasználónként kvóták az alábbi lépéseket követve állíthatja be: 
 
 1. Válassza ki **felhasználók** a bal oldali menüben.
 2. Válassza ki **felhasználónként kvóta: korlátlan** az eszköztáron. 
@@ -62,21 +68,9 @@ Válassza ki **felhasználók** a labor létrehozása a felhasználók listája 
 4. A **hány órát kíván adni, az egyes felhasználók**, adja meg az órák számát, és válassza ki **mentése**. 
 
     ![Felhasználónként órák száma](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Most már az eszköztáron látja órák száma: **felhasználónként kvóta: &lt;órák száma&gt;**. 
+5. Láthatja azon órák számát az eszköztáron most: **Felhasználói kvóta: &lt;órák száma&gt;**. 
 
     ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/quota-per-user.png)
-
-## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a labor létrehozása
-Ha rendelkezik a **hozzáférés korlátozása** felhasználók (e-mail cím) beállítás engedélyezve van, adja hozzá a listához.
-
-1. Válassza ki **felhasználók** a bal oldali menüben.
-2. Válassza ki **felhasználók hozzáadása** az eszköztáron. 
-3. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
-
-    ![Adja hozzá a felhasználó e-mail-címei](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Kattintson a **Mentés** gombra. Láthatja, hogy a felhasználók és azok állapotát (vagy nem regisztrált) a lista e-mail címét. 
-
-    ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása egy CSV-fájl feltöltésével
 A felhasználók e-mail-címét tartalmazó CSV-fájl feltöltésével is hozzáadhat felhasználókat.
@@ -96,6 +90,16 @@ A következő feladatokat a virtuális gép tanuló teheti meg:
 - Csatlakozzon a virtuális géphez. 
 - Törölje a virtuális Gépet. 
 - Megtekintheti, hogy a felhasználók a virtuális gép felhasznált órák számát. 
+
+## <a name="update-number-of-virtual-machines-in-lab"></a>A lab-ben a virtuális gépek számának frissítése
+Ha frissíteni szeretné a laborkörnyezetben található virtuális gépek száma, az alábbi lépéseket a **virtuális gépek** lap:
+
+1. Válassza ki **virtuális gépek** a bal oldali menüben. 
+2. Válassza ki **labor kapacitás: &lt;szám&gt; gépet** az eszköztáron. 
+3. Adja meg a **szám** a virtuális gépek.
+4. Kattintson a **Mentés** gombra.
+
+    ![A lab-ben a virtuális gépek](../media/how-to-configure-student-usage/number-virtual-machines.png)
 
 
 ## <a name="next-steps"></a>További lépések

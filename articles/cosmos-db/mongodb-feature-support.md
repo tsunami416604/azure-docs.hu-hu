@@ -7,14 +7,14 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 08638f0b55c84a6b0e42d3782246ef5b2ce833f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ed440b5d4a95689c6b6d9f1986dfe35ea47e4298
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359068"
+ms.locfileid: "54390390"
 ---
-# <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Használja az Azure Cosmos DB API a MongoDB támogatására, a MongoDB funkcióihoz és szintaxisához
+# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Az Azure Cosmos DB MongoDB API-: támogatott funkcióihoz és szintaxisához
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB API a mongodb-hez a nyílt forráskódú MongoDB-ügyfél valamelyik használatával kommunikálhat [illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers). Az Azure Cosmos DB MongoDB API lehetővé teszi, hogy a meglévő ügyfélillesztők használatát a MongoDB ügyfélillesztők [protokoll fűznie](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 

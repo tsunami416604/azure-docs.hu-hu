@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3065a003dfe318aeffaee2ecd052fce97105f52a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437146"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390568"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -32,6 +32,7 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
    * [Azure AD-hez gép](../device-management-azure-portal.md) vagy
    * [Hibrid Azure AD-csatlakoztatott gép](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
+* Ha a Windows 10-es gépek egy proxy vagy tűzfal mögött található, a HTTPS (443) forgalmat a `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` forgalomként kell engedélyezni.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 
@@ -126,8 +127,6 @@ A következő házirend-beállításokat ismert zavarják a jelszavak alaphelyze
    * Az egyéni shell Explorer.exe váltja fel
 
 Ez a funkció nem működik a hálózatok üzembe helyezett 802.1 x hálózati hitelesítést és az "Azonnali végrehajtás a felhasználó bejelentkezése előtt végezze el" lehetőséget. 802.1 x hálózati hitelesítéssel üzembe helyezett hálózatok ajánlott számítógép-hitelesítés használatával engedélyezze ezt a funkciót.
-
-Ha a Windows 10-es gépek proxykiszolgáló vagy tűzfal mögött találhatók, a passwordreset.microsoftonline.com és ajax.aspnetcdn.com helyekre irányuló HTTPS-forgalmat (443) engedélyezni kell.
 
 Tartományhoz hibrid forgatókönyvek esetén ez a forgatókönyv létezik, ahol végezze el az SSPR munkafolyamat anélkül, hogy egy Active Directory-tartományvezérlőhöz. Kapcsolat egy tartományvezérlőhöz először az új jelszó használata szükséges.
 

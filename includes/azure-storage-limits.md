@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249619"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54392705"
 ---
 A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti. A *bejövő* korlát vonatkozik az összes adatot (kérést) küld egy tárfiókba. A *kimenő* korlát vonatkozik egy tárfiók felől fogadott összes adatot (választ).
 
@@ -29,12 +29,12 @@ A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti
 | Maximális kimenő forgalom, általános célú v1-tárfiókok (USA régióban) | Ha az RA-GRS/GRS engedélyezése esetén 30 GB/s az LRS és zrs esetén 20 GB/s <sup>2</sup> |
 | Maximális kimenő forgalom, általános célú v1-tárfiókok (Amerikai Egyesült régió) | Ha az RA-GRS/GRS engedélyezve van, 15 GB/s az LRS és zrs esetén 10 GB/s <sup>2</sup> |
 
-<sup>1</sup> kérés által az azure storage-fiókok támogatják az a bejövő és iops-érték magasabb korlátok. A korlátok növelését, lépjen kapcsolatba [Azure-támogatási](https://azure.microsoft.com/support/faq/).
+<sup>1</sup> azure standard szintű storage-fiókok támogatása magasabb korlátok bejövő kérelem által. A bejövő forgalom korlátok növelését, lépjen kapcsolatba a [Azure-támogatási](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> [azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy) lehetőségek a következők:
 * **RA-GRS**: Írásvédett georedundáns tárolás. RA-GRS engedélyezése esetén a másodlagos hely kimenő célok megegyeznek az elsődleges helyen.
 * **GRS**: Georedundáns tárolás. 
-* **A ZRS**: Zónaredundáns tárolás.
+* **ZRS**: Zónaredundáns tárolás.
 * **LRS**: Helyileg redundáns tárolás. 
 
 > [!NOTE]

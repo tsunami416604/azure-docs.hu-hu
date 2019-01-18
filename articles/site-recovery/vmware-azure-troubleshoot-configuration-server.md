@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a720b264c4283498604d1446283c5a2242fdb8b3
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050795"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381797"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
@@ -22,7 +22,7 @@ Ez a cikk segít a hibák elhárításához, ha telepíti és kezeli a [Azure Si
 
 A forrásgép a konfigurációs kiszolgálót regisztrálja a mobilitási ügynök telepítésekor. E lépés során hibákat is hibakeresési ezeket az irányelveket követve:
 
-1. Nyissa meg a C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log fájlt. (A ProgramData mappa rejtett mappa lehet. Ha nem látja a ProgramData mappa, a Fájlkezelőben, a a **nézet** lap a **megjelenítése/elrejtése** szakaszban jelölje be a **rejtett elemek** jelölőnégyzet jelölését.) Hibák több problémák oka lehet.
+1. Open the C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log file. (A ProgramData mappa rejtett mappa lehet. Ha nem látja a ProgramData mappa, a Fájlkezelőben, a a **nézet** lap a **megjelenítése/elrejtése** szakaszban jelölje be a **rejtett elemek** jelölőnégyzet jelölését.) Hibák több problémák oka lehet.
 
 2. Keresse meg benne **nem található érvényes IP-cím**. Ha a karakterlánc megtalálható:
     1. Ellenőrizze, hogy a kért állomás azonosítója megegyezik az állomás Azonosítóját a forrásgép.
@@ -58,9 +58,20 @@ A forrásgép a konfigurációs kiszolgálót regisztrálja a mobilitási ügyn�
 
 Ez a hiba akkor fordul elő, ha a szolgáltatás nem tudja olvasni az átviteli kapcsolatból származó adatokat, amikor a mobilitási ügynök telepítése, és regisztrálja a konfigurációs kiszolgálóval. A probléma megoldásához, győződjön meg arról, hogy a TLS 1.0 engedélyezve van-e a forrásgépen.
 
+## <a name="vcenter-discovery-failures"></a>vCenter-felderítési hibák
+
+Annak érdekében, hogy a vCenter-felderítési hibák elhárításához győződjön meg arról, hogy a vCenter-kiszolgáló bekerül a megkerülési lista proxybeállítások. Ez a tevékenység végrehajtásához.
+
+- Töltse le a PsExec eszköz [Itt](https://aka.ms/PsExec) rendszer felhasználói tartalomhoz való hozzáférést.
+- A rendszer felhasználói tartalom Internet Explorer megnyitásához futtassa a következő parancssori psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Proxybeállítások hozzáadása az Internet Explorer és tmanssvc szolgáltatást.
+- A DRA Proxybeállítások konfigurálása, futtassa a C:\Program Files\Microsoft Azure Site Recovery Provider cd
+- Ezután hajtsa végre a DRCONFIGURATOR. EXE / /AddBypassUrls konfigurálása [adja hozzá az IP-címet/FQDN a vCenter Server során megadott **vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló konfigurálása** lépésében [konfigurációs kiszolgáló telepítési](vmware-azure-deploy-configuration-server.md#configure-settings)]
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>A konfigurációs kiszolgáló IP-címének módosítása
 
 Javasoljuk, hogy nem módosítja a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt összes IP-cím statikus IP-címeket. Ne használja a DHCP IP-címeket.
+>>>>>>> c842cff5a0480caa5183dbb7afe5016a7061c7b9
 
 ## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML-jogkivonat érvénytelen
 
@@ -84,7 +95,7 @@ Futtassa a következő parancsot a forrásoldali virtuális gépen:
 Beállítás | Részletek
 --- | ---
 Használat | UnifiedAgentConfigurator.exe/csendpoint < konfigurációs kiszolgáló IP-cím \> /passphrasefilepath < jelszó fájl elérési útja\>
-Az ügynök konfigurációs naplók | A(z) % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log alatt található.
+Az ügynök konfigurációs naplók | Located under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | A paraméter megadása kötelező. Itt adhatja meg a konfigurációs kiszolgáló IP-címét. Bármilyen érvényes IP-címet használja.
 /PassphraseFilePath |  Kötelező. A hozzáférési kódot helye. Bármely érvényes UNC vagy helyi fájl elérési útját használja.
 
@@ -98,7 +109,7 @@ Futtassa a következő parancsot a forrásoldali virtuális gépen:
 
 Beállítás | Részletek
 --- | ---
-Használat | CD /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i < konfigurációs kiszolgáló IP-cím\> - P < jelszó fájl elérési útja\>
+Használat | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <configuration server IP address\> -P <passphrase file path\>
 -i | A paraméter megadása kötelező. Itt adhatja meg a konfigurációs kiszolgáló IP-címét. Bármilyen érvényes IP-címet használja.
 -P |  Kötelező. A fájl teljes elérési útját, amelyben a jelszót a rendszer menti a fájlt. Bármely érvényes mappát használja.
 

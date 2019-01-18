@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 890ca3abf08e280dcf0a48355ab1dea87331805b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f6fd560d6ecb9feaa3df14b288cee5d98ce55aee
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063459"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391097"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Az Azure Stack PowerShell API-verzióprofilok használata
 
@@ -42,7 +42,8 @@ A következő táblázat felsorolja az API-profil szükséges verzió és a hasz
 
 | Verzió nem. | API-verzióprofil | PS felügyeleti modul kézjegyet |
 | --- | --- | --- |
-| 1808 vagy újabb | a 2018-03-01-hibrid | 1.5.0 |
+| 1811 vagy újabb | 2018-03-01-hybrid | 1.6.0 |
+| 1808 vagy újabb | 2018-03-01-hybrid | 1.5.0 |
 | 1804 vagy újabb | 2017-03-09-profile | 1.4.0 |
 | Az 1804 előtti verziói | 2017-03-09-profile | 1.2.11 |
 

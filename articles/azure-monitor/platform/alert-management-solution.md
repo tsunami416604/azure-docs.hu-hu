@@ -13,16 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1dee53f633d8b5edf893e2f6c83430d7c1a69022
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341592"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382950"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
 
 ![Kezelési figyelmeztető ikon](media/alert-management-solution/icon.png)
+
+> [!NOTE]
+>  Az Azure Monitor most már támogatja a bővített képességet biztosít a [ipari méretekben a riasztások kezelése](https://aka.ms/azure-alerts-overview), beleértve a rendszer által létrehozott [monitorozási eszközökkel, például az SCOM, Zabbix vagy Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  
+
 
 A riasztási felügyeleti megoldás segít dolgozhatják fel a riasztások a Log Analytics-adattárban.  Ezek a riasztások előfordulhat, hogy többféle forrásból, többek között olyan forrásból kell származnia [Log Analytics által létrehozott](../../azure-monitor/platform/alerts-overview.md) vagy [Nagios vagy Zabbix importált](../../azure-monitor/learn/quick-collect-linux-computer.md). A megoldás is importálja a riasztások bármelyik [csatlakoztatott felügyeleti csoportok System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 

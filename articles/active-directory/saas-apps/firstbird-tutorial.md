@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Firstbird |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Firstbird |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Firstbird között.
 services: active-directory
 documentationCenter: na
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4de6323d3cf6c642ea7714eabf45200e1be0c269
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 355d5a00c9a2d8bb6930113b35b2ed68c4b970ae
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884109"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391302"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>Oktatóanyag: Azure Active Directory-integráció az Firstbird
+# <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Firstbird
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Firstbird integrálása az Azure Active Directory (Azure AD).
 Firstbird integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] tesztelése és konfigu
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Firstbird egyszeri bejelentkezés konfigurálása](#configure-firstbird-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Firstbird tesztfelhasználót](#create-firstbird-test-user)**  – egy megfelelője a Britta Simon Firstbird, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Firstbird tesztfelhasználót](#create-firstbird-test-user)**  – egy megfelelője a Britta Simon Firstbird, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -105,16 +105,16 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     ![Firstbird tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp_intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<company-domain>.auth.1brd.com/saml/sp`.
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company-domain>.auth.1brd.com/saml/sp`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<company-domain>.auth.1brd.com/saml/callback`.
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company-domain>.auth.1brd.com/saml/callback`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Firstbird tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata_upload_additional_signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<company-domain>.1brd.com/login`.
-    
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<company-domain>.1brd.com/login`
+
     > [!NOTE]
     > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Firstbird ügyfél-támogatási csapatának](mailto:support@firstbird.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 

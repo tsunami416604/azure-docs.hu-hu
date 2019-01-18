@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
-ms.translationtype: HT
+ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841627"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382797"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése
 
 > [!NOTE]
 > A cikkben ismertetett információ arra vonatkozik, ha a klasszikusból az Azure Resource Manager-alapú üzemi modellbe migrál.
@@ -153,6 +153,7 @@ Az összes már létrehozott automatizálás és szkript továbbra is működik 
 Az [Azure Resource Manager-gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) között találhat egy átfogó sablonkészletet a kezdéshez.
 
 ## <a name="next-steps"></a>További lépések
+
 * A virtuális gépet, a tárfiókot és a virtuális hálózatot definiáló sablon létrehozásának részletes lépéseiért lásd [a Resource Manager-sablonok útmutatóját](resource-manager-template-walkthrough.md).
 * A sablonok üzembe helyezésével kapcsolatos parancsokért lásd [az alkalmazások Azure Resource Manager-sablonnal történő üzembe helyezését](resource-group-template-deploy.md) ismertető szakaszt.
 

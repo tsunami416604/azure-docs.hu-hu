@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 292a9ecd012be030df8cf792f9991591d43c8db9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065494"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383073"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -186,11 +186,11 @@ Eredmények jelennek meg, amint azok elérhetők. Ha Contoso hibákat javít, ak
 
 1. Az a **kompatibilitási problémák** jelentésében a Contoso ellenőrzi az esetleges problémákat az egyes kompatibilitási szinten. A kompatibilitási szintek a következőképpen feleltethetők meg az SQL Server-verzióknak:
 
-    - 100: SQL Server 2008 vagy az Azure SQL Database
-    - 110: SQL Server 2012 vagy az Azure SQL Database
-    - 120: SQL Server 2014 vagy az Azure SQL Database
-    - 130: SQL Server 2016-ban vagy az Azure SQL Database
-    - 140: SQL Server 2017-ben vagy az Azure SQL Database
+    - 100: SQL Server 2008/Azure SQL Database
+    - 110: SQL Server 2012/Azure SQL Database
+    - 120: SQL Server 2014/Azure SQL Database
+    - 130: SQL Server 2016/Azure SQL Database
+    - 140: SQL Server 2017/Azure SQL Database
 
     ![Data Migration Assistant - kompatibilitási problémák jelentés](./media/contoso-migration-assessment/dma-assessment-5.png)
 

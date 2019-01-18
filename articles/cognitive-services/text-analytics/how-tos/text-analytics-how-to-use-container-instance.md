@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: 513067f09d8cac64ca747ff217c84667c5469d82
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9f9ae8bb3aa1da51d2a9b81cf7d50d75c5229c11
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248236"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382026"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>A nyelv észlelése tároló üzembe Azure Kubernetes Service-ben
 
@@ -38,7 +38,7 @@ Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása sz�
 
 Ez az eljárás betölt, és a Cognitive Services-tároló minta nyelvfelismerés futtat. A minta két tárolót, egy, az ügyfélalkalmazás számára, és egy, a Cognitive Services-tároló rendelkezik. Mindkét ezek a lemezképek leküldése a saját Azure Container Registry kell. Saját beállításjegyzék k, hozzon létre egy Azure Kubernetes Service ezeket a lemezképeket eléréséhez, és a tárolókat futtatják. A tárolók futnak, amikor a **kubectl** CLI tekintse meg a tárolók teljesítménye. Az ügyfélalkalmazás egy HTTP-kérelem a hozzáférést, és az eredmények megtekintéséhez. 
 
-
+![Futó tárolók minta fogalmi képet](../media/how-tos/container-instance-sample/containers.png)
 
 ## <a name="the-sample-containers"></a>A minta-tárolók
 

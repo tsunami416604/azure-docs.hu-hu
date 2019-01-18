@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: a4671d383c46bf0b932ce528f4eacb7255bad5e7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: dd555d5406988d1c87859ec697a0f84be0db6cc5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105406"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382655"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök
 
@@ -106,7 +106,7 @@ Az eszköz rendszergazdai szerepkör nem rendelhet hozzá csoportokat, csak az e
 
 Eszközadminisztrátorok minden Azure AD-csatlakoztatás eszközök vannak hozzárendelve. Azok az eszközök meghatározott nem illeszthetők.
 
-Felhasználók eltávolítása az eszközadminisztrátori szerepkörre, ha továbbra sem rendelkezik az eszközön a helyi rendszergazdai jogosultság mindaddig, amíg rá bejelentkezés. A jogosultság visszavonva során a következő bejelentkezést a, vagy amikor egy új elsődleges frissítési jogkivonat kiadott 4 óra elteltével.
+Felhasználók eltávolítása az eszközadminisztrátori szerepkörre, ha továbbra sem rendelkezik az eszközön a helyi rendszergazdai jogosultság mindaddig, amíg rá bejelentkezés. A következő bejelentkezés során, vagy ha egy új elsődleges frissítési jogkivonat kiadott 4 óra elteltével a jogosultság visszavonva.
 
 
 

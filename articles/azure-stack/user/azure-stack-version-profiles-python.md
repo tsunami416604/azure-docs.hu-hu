@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: cafae6d71401bc44813b2e366f8e72f7b806236b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 8049db848e34b0aa9bc23f08169a8c63f765791a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062775"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389752"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Pythonnal
 
@@ -29,11 +29,12 @@ ms.locfileid: "54062775"
 
 A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a globális Azure más felhőalapú platformot támogatja. Használhat API-t egy hibrid felhőalapú megoldások létrehozásához. A Python SDK támogatja a következő API-profilokat:
 
-1. **legfrissebb**  
-    A profil a legújabb API-verziók célozza meg benne az Azure platform minden szolgáltató számára.
-2. **2017-03-09-profile**  
-   **2017-03-09-profile**  
-   A profil célozza meg benne az Azure Stack által támogatott erőforrás-szolgáltatók API verzióját.
+- **latest**  
+    Ezt a profilt a legújabb API-verziók célozza meg benne az Azure platform minden szolgáltató számára.
+- **2018-03-01-hybrid**     
+    Ezt a profilt a legújabb API-verziók célozza meg benne az összes erőforrás-szolgáltató az Azure Stack-platformokon.
+- **2017-03-09-profile**  
+    Ez a profil célozza meg benne az Azure Stack által támogatott erőforrás-szolgáltatók a leginkább kompatibilis API-verziók.
 
    API-profilok és az Azure Stack kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](azure-stack-version-profiles.md).
 
@@ -56,10 +57,19 @@ Az Azure Stack az Azure Python SDK használatához adja meg a következő érté
 | Előfizetés azonosítója | AZURE_SUBSCRIPTION_ID | A [előfizetés-azonosító](../azure-stack-plan-offer-quota-overview.md#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
 | Titkos ügyfélkulcs | AZURE_CLIENT_SECRET | A szolgáltatás egyszerű alkalmazás titkos kulcs mentése az egyszerű szolgáltatás létrehozásakor. |
 | Resource Manager-végpont | ARM_ENDPOINT | Tekintse meg a [Azure Stack resource manager-végpont](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Resource Location (Erőforrás helye) | AZURE_RESOURCE_LOCATION | Az Azure Stack környezettel erőforrás helye.
 
 ## <a name="python-samples-for-azure-stack"></a>Python-minták az Azure Stackben
 
-A következő kódminták segítségével gyakori felügyeleti feladatok végrehajtása a virtuális gépek az Azure stack. A Kódminták megjelenítése, hogy:
+Az Azure stack-Python SDK-val érhető el Kódminták a következők:
+
+- [Erőforrások és -erőforráscsoportok kezelése](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/).
+- [Storage-fiók kezelése](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/).
+- [Virtuális gépek kezelése](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/).
+
+## <a name="python-manage-virtual-machine-sample"></a>Python virtuális gép minta kezelése
+
+A következő mintakód segítségével gyakori felügyeleti feladatok végrehajtása a virtuális gépek az Azure stack. A mintakód bemutatja, hogy:
 
 - Virtuális gépek létrehozása:
   - Linuxos virtuális gépek létrehozása
@@ -76,7 +86,7 @@ A következő kódminták segítségével gyakori felügyeleti feladatok végreh
 - Virtuális gépek listája
 - A virtuális gép törlése
 
-Tekintse át a kódot, amely végrehajtja ezeket a műveleteket, tekintse meg a **run_example()** függvény a Python-szkriptet a **Hybrid/unmanaged-disks/example.py** a GitHub-adattárat a [ virtuális gépek – python-kezelhető](https://github.com/Azure-Samples/virtual-machines-python-manage).
+Tekintse át a kódot, amely végrehajtja ezeket a műveleteket, tekintse meg a **run_example()** függvény a Python-szkriptet a **example.py** a GitHub-adattárat a [hibrid számítási Python-kezelése – virtuális gépek és](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM).
 
 Minden művelet egyértelműen célállapotba megjegyzést, és a egy nyomtatási funkció. A példák nem feltétlenül az itt látható a listában szereplő sorrendben.
 
@@ -99,13 +109,13 @@ Minden művelet egyértelműen célállapotba megjegyzést, és a egy nyomtatás
 4. A tárház klónozása:
 
     ```bash
-    git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
+    git clone https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
     ```
 
 5. A pip használatával függőségek telepítése:
 
     ```bash
-    cd virtual-machines-python-manage\Hybrid
+    cd Hybrid-Compute-Python-Manage-VM
     pip install -r requirements.txt
     ```
 
@@ -119,6 +129,7 @@ Minden művelet egyértelműen célállapotba megjegyzést, és a egy nyomtatás
     export AZURE_CLIENT_SECRET={your client secret}
     export AZURE_SUBSCRIPTION_ID={your subscription id}
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
+    export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
 8. Ez a minta futtatásához, Ubuntu 16.04-LTS és lemezképek WindowsServer-2012-R2-Datacenter jelen kell lennie az Azure Stack piactéren. Ezek lehetnek, vagy [az Azure-ból letöltött](../azure-stack-download-azure-marketplace-item.md), vagy hozzáadhatja a [Platformlemezképtárhoz](../azure-stack-add-vm-image.md).
@@ -126,21 +137,13 @@ Minden művelet egyértelműen célállapotba megjegyzést, és a egy nyomtatás
 9. Minta futtatása:
 
     ```python
-    python unmanaged-disks\example.py
+    python example.py
     ```
 
-## <a name="notes"></a>Megjegyzések
-
-Előfordulhat, hogy a gyermekeiről lekéréséhez a virtuális gép operációsrendszer-lemez használatával `virtual_machine.storage_profile.os_disk`. Bizonyos esetekben ez teheti meg, mit szeretne, de vegye figyelembe, hogy biztosít egy **OSDisk** objektum. Frissítéséhez az operációsrendszer-lemez mérete, mint `example.py` használható, hogy egy **lemez** objektumot, nem egy **OSDisk** objektum. `example.py` lekérdezi a **lemez** objektum a következő tulajdonságokkal:
-
-```python
-os_disk_name = virtual_machine.storage_profile.os_disk.name
-os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
-```
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
+- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
 - [Az Azure Virtual Machines – dokumentáció](https://azure.microsoft.com/services/virtual-machines/)
 - [Képzési terv a virtuális gépek](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
 - Ha nem rendelkezik Microsoft Azure-előfizetési, beszerezheti a egy ingyenes próbafiókot [Itt](https://go.microsoft.com/fwlink/?LinkId=330212).

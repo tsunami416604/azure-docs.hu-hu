@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/17/2019
 ms.author: alkohli
-ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791319"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391159"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Kábelek, és csatlakozzon az Azure Data Box
 
@@ -40,7 +40,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
 6. Szüksége lesz egy vízszintes felületre, ahová a Data Boxot helyezheti. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné helyezni, egy legalább 7U méretű helyre lesz szükség az adatközponti szekrényben. Az eszközt a talpán vagy az oldalán is elhelyezheti a szekrényben.
 7. A következő kábelekkel rendelkezik a Data Box a gazdagéphez való csatlakoztatásához.
-    - Két 10 GbE SFP+ Twinax-rézkábel (a DATA 1 és DATA 2 hálózati adapterhez)
+    - Két 10-GbE SFP + Twinax réz kábelek (használja az adatok 1, a DATA 2 hálózati adapter). Data Box a a Mellanox ConnectX®-3 Pro EN kétportos 10GBASE-T adapterek használatával a PCI Express 3.0-s hálózati adaptert, rendelkezik, így az adott csatolón kompatibilis kábelek működnie kell. A CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP + 3 M például kábel inhouse tesztelési lett megadva.
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 

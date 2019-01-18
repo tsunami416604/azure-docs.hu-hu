@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: a szűrés konfigurálása |} A Microsoft Docs'
+title: 'Az Azure AD Connect szinkronizálása: A szűrés konfigurálása |} A Microsoft Docs'
 description: Ismerteti az Azure AD Connect-szinkronizálás szűrőjének konfigurálása.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b4cb5975eb5be3236558d0b0b19551c6726f64de
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312283"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391041"
 ---
-# <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
+# <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: A szűrés konfigurálása
 Szűrés segítségével szabályozhatja, mely objektumai jelenjenek meg az Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció minden objektumot a konfigurált erdőben lévő minden tartományban vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók használják az Office 365 számítási feladatok, például az Exchange Online és Skype vállalati verzió, egy teljes globális címlista előnyös, így e-mailt, és mindenki hívja. Az alapértelmezett konfigurációnál, ugyanazt a felhasználói élményt, hogy azok egy a helyszíni Exchange-hez vagy a Lync végrehajtásának kellene.
 
 Bizonyos esetekben azonban Ön szükséges néhány módosítást az alapértelmezett konfigurációval. Néhány példa:
@@ -77,10 +77,10 @@ Miután végrehajtotta a szűrési módosításokat, ne felejtse el ismét elér
 ## <a name="filtering-options"></a>Szűrés beállításai
 Az alábbi szűrési konfigurációtípusai alkalmazhat a címtár-Szinkronizáló eszköz:
 
-* [**Csoport alapú**](#group-based-filtering): szűrés egyetlen csoport alapján csak konfigurálható a kezdeti telepítés a telepítési varázsló használatával.
+* [**Csoport alapú**](#group-based-filtering): Szűrés egyetlen csoport alapján csak konfigurálható a kezdeti telepítés a telepítési varázsló használatával.
 * [**Tartományalapú**](#domain-based-filtering): Ez a beállítás használatával kiválaszthatja, mely tartományokat az Azure AD szinkronizálása. Is hozzá és távolíthat el tartományokat abból a szinkronizálási motor konfiguráció, ha módosítja a helyszíni infrastruktúrát az Azure AD Connect-szinkronizálás telepítése után.
-* [**Szervezeti egység (OU) – alapú**](#organizational-unitbased-filtering): az ezt a beállítást, hogy kiválaszthatja a szervezeti egységek szinkronizálása az Azure ad-hez. Ez a beállítás akkor a kiválasztott szervezeti minden objektum esetében.
-* [**Attribútumalapú**](#attribute-based-filtering): Ez a beállítás segítségével objektumokat az objektumokat az attribútumértékek alapján szűrheti. Különböző objektumtípusokra vonatkozó különböző szűrőket is rendelkezhet.
+* [**Szervezeti egység (OU) – alapú**](#organizational-unitbased-filtering): Ez a beállítás használatával kiválaszthatja, amely szervezeti egységek szinkronizálása az Azure AD. Ez a beállítás akkor a kiválasztott szervezeti minden objektum esetében.
+* [**Attribútumalapú**](#attribute-based-filtering): Ez a beállítás használatával objektumokat az objektumokat az attribútumértékek alapján szűrhetők. Különböző objektumtípusokra vonatkozó különböző szűrőket is rendelkezhet.
 
 Egyszerre több szűrési beállítások is használhatja. Ha például segítségével szervezeti egység szerinti szűrés csak egy szervezeti egység objektumát tartalmazza. Egy időben használhatja attribútum szerinti szűrés objektumok további szűréséhez. Több szűrési módszerek, a szűrők használata logikai "és" a szűrők között.
 
@@ -186,6 +186,9 @@ Ezzel a konfigurációval ManagedObjects alatt létrehozott új szervezeti egys�
 ## <a name="attribute-based-filtering"></a>Attribútum szerinti szűrés
 Győződjön meg arról, hogy használ-e az 2015 November ([1.0.9125](reference-connect-version-history.md#1091250)), vagy később létrehozhatja a működéséhez ezeket a lépéseket.
 
+> [!IMPORTANT]
+>A Microsoft azt javasolja, nem módosíthatja az alapértelmezett szabályok által létrehozott **az Azure AD Connect**. Ha azt szeretné, a szabály módosításához, klónozza, és letiltja az eredeti szabályt. Ne módosítsa a klónozott szabály. Vegye figyelembe, hogy ezzel a módszerrel (eredeti szabály letiltása) fog kihagyná bármely hibajavításokat és a szolgáltatásokat, hogy a szabály engedélyezve van.
+
 Attribútum-alapú szűrés az objektumok szűrése a legrugalmasabb módszer. Használhatja a hatékonyságát [deklaratív kiépítés](concept-azure-ad-connect-sync-declarative-provisioning.md) szinte minden szempontból az objektum mikor van szinkronizálva az Azure AD szabályozásához.
 
 Alkalmazhat [bejövő](#inbound-filtering) szűrni az Active Directoryból a metaverzumba és [kimenő](#outbound-filtering) az Azure AD a metaverzumba szűrésére. Azt javasoljuk, hogy bejövő szűrése, mivel az a legegyszerűbb fenntartása a alkalmazni. Csak akkor ajánlott kimenő szűrést, ha ez szükséges egynél több erdőből származó objektumok csatlakozni, mielőtt értékelésére akkor kerül sor.
@@ -211,7 +214,7 @@ A következő példában a kiszűr (nem a szinkronizálás) minden felhasználó
 3. Győződjön meg arról, hogy **bejövő** van jelölve, és kattintson a **új szabály hozzáadása**.
 4. Adjon a szabálynak egy nevet, például "*a az AD-ből – felhasználói DoNotSyncFilter*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 50), és kattintson **tovább**.  
    ![Bejövő 1 leírása](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
-5. A **Scoping szűrő**, kattintson a **csoport hozzáadása**, és kattintson a **záradék hozzáadása**. A **attribútum**válassza **ExtensionAttribute15**. Győződjön meg arról, hogy **operátor** értékre van állítva **egyenlő**, és írja be az értéket **NoSync típusú** a a **érték** mezőbe. Kattintson a **Tovább** gombra.  
+5. A **Scoping szűrő**, kattintson a **csoport hozzáadása**, és kattintson a **záradék hozzáadása**. A **attribútum**válassza **ExtensionAttribute15**. Győződjön meg arról, hogy **operátor** értékre van állítva **egyenlő**, és írja be az értéket **NoSync típusú** a a **érték** mezőbe. Kattintson a **tovább**.  
    ![Bejövő 2 hatókör](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
 6. Hagyja a **csatlakozzon** szabályok üres, és kattintson a **tovább**.
 7. Kattintson a **átalakítás hozzáadása**, jelölje be a **FlowType** , **állandó**, és válassza ki **cloudFiltered** , a **cél Attribútum**. Az a **forrás** szövegmezőben **igaz**. Kattintson a **Hozzáadás** a szabály mentéséhez.  
@@ -230,13 +233,13 @@ A következő példában csak szinkronizálás felhasználói objektumok, ahol a
 3. Győződjön meg arról, hogy **bejövő** van jelölve, és kattintson a **új szabály hozzáadása**.
 4. Adjon a szabálynak egy nevet, például "*a az AD-ből – felhasználói értékesítési szinkronizálása*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 51), és kattintson **tovább**.  
    ![Bejövő 4 leírása](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
-5. A **Scoping szűrő**, kattintson a **csoport hozzáadása**, és kattintson a **záradék hozzáadása**. A **attribútum**válassza **részleg**. Győződjön meg arról, hogy az operátor értékre van állítva, **egyenlő**, és írja be az értéket **értékesítési** a a **érték** mezőbe. Kattintson a **Tovább** gombra.  
+5. A **Scoping szűrő**, kattintson a **csoport hozzáadása**, és kattintson a **záradék hozzáadása**. A **attribútum**válassza **részleg**. Győződjön meg arról, hogy az operátor értékre van állítva, **egyenlő**, és írja be az értéket **értékesítési** a a **érték** mezőbe. Kattintson a **tovább**.  
    ![Bejövő 5 hatókör](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
 6. Hagyja a **csatlakozzon** szabályok üres, és kattintson a **tovább**.
 7. Kattintson a **átalakítás hozzáadása**, jelölje be **állandó** , a **FlowType**, és válassza ki a **cloudFiltered** , a **cél Attribútum**. Az a **forrás** mezőbe írja be **hamis**. Kattintson a **Hozzáadás** a szabály mentéséhez.  
    ![Bejövő 6 átalakítása](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
    Ez az egy különleges esetben, ha explicit módon beállította cloudFiltered **hamis**.
-8. Most már rendelkezünk a kevésbé szinkronizálási szabály létrehozásához. Adjon a szabálynak egy nevet, például "*a az AD-ből – Catch – minden felhasználó szűrő*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 99). Magasabb (sorrendben) mint az előző szinkronizálási szabály elsőbbséget értéket választotta. De is, hogy elhagyta néhány hely, így további szűrési szinkronizálási szabályok később is hozzáadhat, ha el szeretné indítani a további szervezeti egységek szinkronizálása. Kattintson a **Tovább** gombra.  
+8. Most már rendelkezünk a kevésbé szinkronizálási szabály létrehozásához. Adjon a szabálynak egy nevet, például "*a az AD-ből – Catch – minden felhasználó szűrő*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 99). Magasabb (sorrendben) mint az előző szinkronizálási szabály elsőbbséget értéket választotta. De is, hogy elhagyta néhány hely, így további szűrési szinkronizálási szabályok később is hozzáadhat, ha el szeretné indítani a további szervezeti egységek szinkronizálása. Kattintson a **tovább**.  
    ![Bejövő 7 leírása](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
 9. Hagyja **Scoping szűrő** üres, és kattintson a **tovább**. Egy üres szűrő azt jelzi, hogy a szabály az összes objektum alkalmazható.
 10. Hagyja a **csatlakozzon** szabályok üres, és kattintson a **tovább**.

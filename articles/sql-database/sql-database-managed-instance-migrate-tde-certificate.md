@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 08/09/2018
-ms.openlocfilehash: 078a64bf625fad15b66a3c4e6e31e798f675fc33
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 01/17/2019
+ms.openlocfilehash: c6d0d2eec61375760ee3dc4e4b100b24cef2b405
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161777"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388778"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Tanúsítvány TDE védett adatbázis áttelepítése az Azure SQL Database felügyelt példánya
 
@@ -39,7 +39,7 @@ A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz 
 
 - Telepített [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) parancssori eszköz egy helyszíni kiszolgálón vagy egy olyan számítógépen, amely hozzáfér a fájlként exportált tanúsítványhoz. A Pvk2Pfx eszköz az [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) része, amely egy önálló parancssori környezet.
 - Telepített [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell), 5.0-s vagy újabb verzió.
-- [Telepített és frissített](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) AzureRM PowerShell-modul.
+- [Telepített és frissített](https://docs.microsoft.com/powershell/azure/install-az-ps) AzureRM PowerShell-modul.
 - Az [AzureRM.Sql-modul](https://www.powershellgallery.com/packages/AzureRM.Sql) 4.10.0-s vagy újabb verziója.
   A PowerShell modul telepítéséhez/frissítéséhez a következő parancsokat kell futtatni a PowerShellben:
 

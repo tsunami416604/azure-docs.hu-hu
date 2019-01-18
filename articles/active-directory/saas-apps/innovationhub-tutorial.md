@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 293c08a81ba675d42cd0e9f715e988b2186deb3d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cc0b97eb794389989071fc4dec1d81e909d53a54
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794073"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Innoverse
 
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés az Innoverse tesztelése és konfigurálása
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Innoverse egyszeri bejelentkezés konfigurálása](#configure-innoverse-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre Innoverse tesztfelhasználót](#create-innoverse-test-user)**  – egy megfelelője a Britta Simon Innoverse, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Innoverse tesztfelhasználót](#create-innoverse-test-user)**  – egy megfelelője a Britta Simon Innoverse, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -114,7 +114,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Innoverse, hajtsa v�
     ![Innoverse tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata_upload_additional_signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<domainname>.innover.se/auth/saml2/login`
-    
+
     > [!NOTE]
     > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Innoverse ügyfél-támogatási csapatának](mailto:support@readify.net) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: d68215359d50ac153d6df3bbcce5a9b6171698bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085439"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382359"
 ---
 # <a name="openshift-in-azure"></a>OpenShift az Azure-ban
 
@@ -35,12 +35,12 @@ OpenShift Kubernetes tartalmaz, a tárolóvezénylés és a felügyeleti. Fejles
 OpenShift több verziója érhető el:
 
 - OpenShift tárolóplatform
-- OpenShift az Azure-beli (teljes körűen felügyelt OpenShift korai CY2019 a hamarosan elérhető)
-- OKD (korábbi nevén az OpenShift Origin)
-- OpenShift dedikált
+- OpenShift az Azure-beli (teljes körűen felügyelt OpenShift körül Q1 CY2019 végén hamarosan elérhető)
+- OKD (Formerly OpenShift Origin)
+- OpenShift Dedicated
 - OpenShift Online
 
-Öt verzióinak kezelt ebben a cikkben, csak két érhetők el még ma az Azure-ban üzembe: OpenShift Tárolóplatform és OKD.
+Ebben a cikkben ismertetett öt verzióinak csak kettő érhető el még ma, az ügyfelek üzembe helyezése az Azure-ban: OpenShift Tárolóplatform és OKD.
 
 ## <a name="openshift-container-platform"></a>OpenShift tárolóplatform
 
@@ -48,15 +48,15 @@ Container Platform az olyan vállalati felhasználásra kész [kereskedelmi verz
 
 "Saját" a teljes platform, mert azok a helyi adatközpontban vagy a nyilvános felhőben (például Azure, az AWS vagy a Google) telepíthetik azt.
 
-## <a name="openshift-on-azure"></a>Az OpenShift Azure rendszeren
+## <a name="openshift-on-azure"></a>OpenShift On Azure
 
-OpenShift az Azure-ban egy teljes körűen felügyelt ajánlat az Azure-ban futó OpenShift. Ez a szolgáltatás közösen kezelt és a Microsoft és a Red Hat által támogatott. A fürt az ügyfél Azure-előfizetésben helyezi üzembe helyezni. A szolgáltatás jelenleg privát előzetes verzióban érhető el, és a korai CY 2019 általánosan elérhető a javítás. További információkat nyújtanak, az ajánlat beolvasása közelebb általánosan elérhető
+OpenShift az Azure-ban egy teljes körűen felügyelt ajánlat az Azure-ban futó OpenShift. Ez a szolgáltatás közösen kezelt és a Microsoft és a Red Hat által támogatott. A fürt az ügyfél Azure-előfizetésben helyezi üzembe helyezni. A szolgáltatás jelenleg privát előzetes verzióban érhető el, és körül Q1 CY2019 végén általánosan elérhető a javítás. Az ügyfelek részt venni benne a Private Preview verzióban, kérjük, töltse ki a [jelölési űrlapot](http://aka.ms/openshiftazureinterest).  További információkat nyújtanak, az ajánlat beolvasása közelebb általánosan elérhető
 
-## <a name="okd-formerly-openshift-origin"></a>OKD (korábbi nevén az OpenShift Origin)
+## <a name="okd-formerly-openshift-origin"></a>OKD (Formerly OpenShift Origin)
 
 OKD van egy [nyílt forráskódú](https://www.okd.io/) felsőbb rétegbeli projektje, amely támogatja a közösségi OpenShift. OKD a CentOS vagy a Red Hat Enterprise Linux (RHEL) is telepíthető.
 
-## <a name="openshift-dedicated"></a>OpenShift dedikált
+## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
 Red Hat által felügyelt dedikált van *egybérlős* OpenShift Tárolóplatform használó OpenShift. Red Hat kezeli az összes, az alapul szolgáló infrastruktúra (virtuális gépek, az OpenShift fürt, hálózatkezelési, tárolási, stb.). A fürt egy ügyfél és egy nyilvános felhőben (például az AWS vagy a Google). A kiindulási fürt alkalmazás négy csomópontot tartalmaz, és minden díjat éves és fizetős előre.
 

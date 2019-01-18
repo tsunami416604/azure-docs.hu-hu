@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 45751af66b1b050d4d36d1b8aee52dc6a5d8cc7b
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247503"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382413"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -59,7 +59,7 @@ Az Application Gateway az Azure globális minden régióban érhető el. Érhet�
 
 Application Gateway-példány dedikált központi telepítés a virtuális hálózaton.
 
-### <a name="is-http-https-redirection-supported"></a>A HTTP -> támogatott HTTPS-átirányítás?
+### <a name="is-http-https-redirection-supported"></a>Is HTTP->HTTPS redirection supported?
 
 Átirányítás használata támogatott. Lásd: [Application Gateway átirányítás áttekintése](application-gateway-redirect-overview.md) további.
 
@@ -213,22 +213,6 @@ Nem jár. Példányok frissítési és tartalék tartományok között oszlanak 
 ### <a name="does-application-gateway-support-connection-draining"></a>Az Application Gateway támogatja a kapcsolat kiürítése?
 
 Igen. -Kapcsolatának kiürítéséhez módosítása tagok találhatóak a háttérkészlet megszakítása nélkül is beállíthatja. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy egy konfigurálható időkorlát lejár. Aktuális szükségszerű kapcsolatok végrehajtásához megvárja, amíg a kapcsolat csak kiürítése. Az Application Gateway még nem ismeri az alkalmazás munkamenet-állapot.
-
-### <a name="what-are-application-gateway-sizes"></a>Mik azok az application gateway méretét?
-
-Az Application Gateway jelenleg három méretben érhető el: **Kis**, **Közepes**, és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
-
-Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
-
-Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alkalmazásátjárókhoz tartozó átlagos átviteli sebességek szerepelnek:
-
-| Átlagos háttér-válasz mérete | Kicsi | Közepes | Nagy |
-| --- | --- | --- | --- |
-| 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
-
-> [!NOTE]
-> Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Módosítható példány mérete a közepes és nagy megszakítása nélkül?
 

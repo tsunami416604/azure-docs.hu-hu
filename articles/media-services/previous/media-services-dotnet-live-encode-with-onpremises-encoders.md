@@ -1,6 +1,6 @@
 ---
-title: Élő Stream továbbítása helyszíni kódolókkal .NET használatával hogyan |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan lehet .NET segítségével élő kódolásra helyszíni kódolókkal.
+title: Hogyan hajthat végre élő Stream továbbítása helyszíni kódolókkal .NET használatával |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan lehet .NET segítségével valós idejű kódolás helyszíni kódolókkal történő továbbítását.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,32 +14,32 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 32d456aee83c6f7c6d5d242a1ce039e7e370c0fd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 493383583513f94689b30b5eca615005137da4a9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788654"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382702"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Élő Stream továbbítása helyszíni kódolókkal .NET használatával
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-live-passthrough-get-started.md)
+> * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
-Ez az oktatóanyag végigvezeti azokon a létrehozása az Azure Media Services .NET SDK használatával egy **csatorna** , amely átmenő közvetítésre van konfigurálva. 
+Ez az oktatóanyag végigvezeti azokon a az Azure Media Services .NET SDK használatával hozhat létre egy **csatorna** , amely átmenő közvetítésre van konfigurálva. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók.
 * Egy Media Services-fiók.    A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-* A fejlesztői környezet beállítása. További információkért lásd: [állítsa be a környezetet](media-services-set-up-computer.md).
+* A fejlesztési környezet beállítása. További információkért lásd: [állítsa be a környezetet](media-services-set-up-computer.md).
 * Egy webkamera. Például a [Telestream Wirecast kódoló](http://www.telestream.net/wirecast/overview.htm).
 
-Ajánlott, hogy olvassa el a következő cikkeket:
+Javasoljuk, hogy olvassa el a következő cikkeket:
 
 * [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) (Az Azure Media Services RTMP-támogatása és az élő kódolók)
 * [Live streaming with on-premises encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
@@ -49,18 +49,18 @@ Ajánlott, hogy olvassa el a következő cikkeket:
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
 ## <a name="example"></a>Példa
-Az alábbi példakód bemutatja, hogyan érhetők el a következő feladatokat:
+Az alábbi példakód bemutatja, hogyan érhet el a következő feladatokat:
 
 * Kapcsolódás a Media Services szolgáltatáshoz
 * Csatorna létrehozása
 * A csatorna frissítése
-* A csatorna bemeneti végpont beolvasása. A helyszíni élő kódoló a bemeneti végponton kell megadni. A csatorna bemeneti továbbítódnak a kamera konvertálja az élő kódoló jelek (betöltési) végpont.
+* A csatorna bemeneti végpontjára lekéréséhez. A helyszíni élő kódoló a bemeneti végponton kell megadni. A csatorna bemeneti küldött Streamek a kamera jeleit alakíthatók át egymásba élőadás-kódoló jelek (betöltését) végponthoz.
 * A csatorna előnézeti végpont lekérése
-* Hozzon létre, és egy programot elindítani
-* A program eléréséhez szükséges egy kereső létrehozása
-* Hozzon létre, és indítsa el a StreamingEndpoint
-* Az adatfolyam-továbbítási végpontjának frissítése
-* Erőforrások leállítása
+* Hozzon létre, és a program indítása
+* Hozzon létre egy keresőt a program eléréséhez szükséges
+* Hozzon létre és a egy Streamvégpontok elindítása
+* A streamvégpont frissítéséhez
+* Állítsa le az erőforrásokat
 
 >[!IMPORTANT]
 >Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
@@ -68,7 +68,7 @@ Az alábbi példakód bemutatja, hogyan érhetők el a következő feladatokat:
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
-Az élő kódolók konfigurálásával kapcsolatos további információkért lásd: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Az élő kódolók olyan konfigurálásának további információkért lásd: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -149,6 +149,7 @@ namespace AMSLiveTest
 
         private static ChannelInput CreateChannelInput()
         {
+        // When creating a Channel, you can specify allowed IP addresses in one of the following formats: IpV4 address with 4 numbers, CIDR address range.
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.RTMP,
@@ -171,6 +172,7 @@ namespace AMSLiveTest
 
         private static ChannelPreview CreateChannelPreview()
         {
+         // When creating a Channel, you can specify allowed IP addresses in one of the following formats: IpV4 address with 4 numbers, CIDR address range.
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl
@@ -391,7 +393,7 @@ namespace AMSLiveTest
 ```
 
 ## <a name="next-step"></a>Következő lépés
-Tekintse át a Media Services tanulási útvonalai
+Tekintse át a Media Services képzési tervek
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

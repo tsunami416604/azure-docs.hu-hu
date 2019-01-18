@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az szakembereket paletta |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az szakembereket paletta |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és szakembereket paletta között.
 services: active-directory
 documentationCenter: na
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/30/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 7362b3279afc365db2a303de1b450c4e35e48874
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 332531ab882b5087a706eed7f12b3468a533fe22
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884122"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390880"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Oktatóanyag: Azure Active Directory-integráció az szakembereket paletta
+# <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Oktatóanyag: Az Azure Active Directory integrációja az szakembereket paletta
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan szakembereket paletta integrálása az Azure Active Directory (Azure AD).
 Paletta szakembereket integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
@@ -79,8 +79,8 @@ Az Azure AD egyszeri bejelentkezés az szakembereket paletta tesztelése és kon
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Paletta szakembereket egyszeri bejelentkezés konfigurálása](#configure-talent-palette-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Hozzon létre szakembereket paletta tesztfelhasználót](#create-talent-palette-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása szakembereket palettán.
-5. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre szakembereket paletta tesztfelhasználót](#create-talent-palette-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása szakembereket palettán.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -105,13 +105,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés szakembereket palett
 
     ![Szakembereket paletta tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both_replyurl.png)
 
-    Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címet a következő mintával: `https://talent-p.net/saml/acs/<tenantID>`.
+    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://talent-p.net/saml/acs/<tenantID>`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Szakembereket paletta tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both_signonurl.png)
-   
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a következő mintával: `https://talent-p.net/saml/sso/<tenantID>`.
+
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://talent-p.net/saml/sso/<tenantID>`
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [szakembereket paletta ügyfél-támogatási csapatának](mailto:talent-support@pa-consul.co.jp) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -126,7 +126,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés szakembereket palett
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
