@@ -28,7 +28,7 @@ Tekintse meg a [Kusto nyelvi referencia](https://docs.microsoft.com/azure/kusto/
 ## <a name="events"></a>Események
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Alkalmazásszintű események keresése "Titkosítási" fürtkezelőben
-Ebben a példában keres a **események** tábla, amelyben a rekordok **EventLog** van _alkalmazás_ és **RenderedDescription** tartalmaz _titkosítási_. Az elmúlt 24 órából származó rekordokat tartalmazza.
+Ebben a példában keres a **események** tábla, amelyben a rekordok **EventLog** van _Application_ és **RenderedDescription** tartalmaz _cryptographic_. Az elmúlt 24 órából származó rekordokat tartalmazza.
 
 ```Kusto
 Event
@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>Védelmi állapot
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>A védelmi állapotának időtartama jelentéseket nem készítő számítógépek
-Ez a példa felsorolja a számítógépet, amely volt egy védelmi állapotát _jelentést nem küldő_ és az időtartamot, a jelen állapotjelzést.
+Ez a példa felsorolja a számítógépet, amely volt egy védelmi állapotát _Not Reporting_ és az időtartamot, a jelen állapotjelzést.
 
 ```Kusto
 ProtectionStatus
@@ -249,7 +249,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Engedélyekkel kapcsolatos biztonsági események száma
-Ebben a példában a számát jeleníti meg **securityEvent** rekordokat, ahol a **tevékenység** oszlop tartalmazza a teljes időszak _engedélyek_. A lekérdezés az elmúlt 30 percben létrehozott bejegyzések vonatkozik.
+Ebben a példában a számát jeleníti meg **securityEvent** rekordokat, ahol a **tevékenység** oszlop tartalmazza a teljes időszak _Permissions_. A lekérdezés az elmúlt 30 percben létrehozott bejegyzések vonatkozik.
 
 ```Kusto
 SecurityEvent
