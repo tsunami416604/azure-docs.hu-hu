@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
+ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 541d1473b21056e24c6b04b86414936a02b7d9d5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077250"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382579"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása egy ASP.NET Core Web API kezelőfelületi szolgáltatás a Kestrel használatával
 
@@ -158,7 +158,9 @@ serviceContext =>
         }))
 ```
 
-Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  Cserélje le "&lt;saját_cn_értéke&gt;" a "mytestcert", ha az előző PowerShell-paranccsal önaláírt tanúsítványt létrehozni, vagy a tanúsítványt használja.
+Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  
+
+Cserélje le "&lt;saját_cn_értéke&gt;" a "mytestcert", ha az előző PowerShell-paranccsal önaláírt tanúsítványt létrehozni, vagy a tanúsítványt használja.
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -347,7 +349,7 @@ Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatá
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Tanúsítvány telepítése fürtcsomópontokon
 
-Mielőtt üzembe helyezné az alkalmazást az Azure-ban, telepítse a tanúsítványt a távoli fürtcsomópontok `Cert:\LocalMachine\My` tárolójában.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
+Az Azure-ban az alkalmazás üzembe helyezése előtt telepítse a tanúsítványt a `Cert:\LocalMachine\My` tárolójában, a távoli fürt összes csomópontján.  Szolgáltatások áthelyezheti a fürt más csomópontjaira.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
 Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza **feladatok**>**exportálása**.
 
