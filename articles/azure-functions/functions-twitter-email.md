@@ -211,11 +211,11 @@ Most, hogy konfigurálta a hangulatfelismerést, kapcsolatot adhat a véleményp
 
     ![Pontszám](media/functions-twitter-email/17-function-input-score.png)
 
-Mostantól aktiválódik a függvény, amikor a logikai alkalmazás átküld egy véleménypontszámot. A függvény egy színkódolt kategóriát küld vissza a logikai alkalmazásnak. A következő lépés egy e-mail-értesítés megadása, amelyet a rendszer akkor küld el, ha a függvény **Piros** értékű véleményt küld vissza. 
+Mostantól aktiválódik a függvény, amikor a logikai alkalmazás átküld egy véleménypontszámot. A függvény egy színkódolt kategóriát küld vissza a logikai alkalmazásnak. A következő lépés egy e-mail-értesítés megadása, amelyet a rendszer akkor küld el, ha a függvény **RED** értékű véleményt küld vissza. 
 
 ## <a name="add-email-notifications"></a>E-mail-értesítések hozzáadása
 
-A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása, ha a vélemény a _Piros_ kategóriába sorolódik. Ez a témakör egy Outlook.com-összekötőt használ. Gmail- vagy Office 365 Outlook-összekötők esetén hasonló lépéseket kell elvégezni.   
+A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása, ha a vélemény a _RED_ kategóriába sorolódik. Ez a témakör egy Outlook.com-összekötőt használ. Gmail- vagy Office 365 Outlook-összekötők esetén hasonló lépéseket kell elvégezni.   
 
 1. A Logic Apps Designerben kattintson az **Új lépés** > **Feltétel hozzáadása** lehetőségre. 
 
