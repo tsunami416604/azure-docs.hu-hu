@@ -10,14 +10,14 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dbe853172c0f0e49408bd4a2dd630a69659421d3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 153ddcc1ba0da6171963ec91511fafe84023ecf8
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260601"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401967"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja egy referenciaimplementációt, egy ügyfél lemorzsolódásának elemzésére szolgáló projekt, amely az Azure Machine Learning segítségével. Ebben a cikkben bemutatjuk, azok alkalmazásfüggőségeit az iparági vásárlók lemorzsolódási problémájának megoldására szolgáló kapcsolódó általános modellekről. Azt is mérheti a Machine Learning segítségével létrehozott modellek pontossága, és felmérheti a további fejlesztésére vonatkozó utasításokat.  
 

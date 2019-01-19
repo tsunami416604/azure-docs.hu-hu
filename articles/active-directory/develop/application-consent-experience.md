@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: e3e333594b32cff018f02cd1d3b32eaf44c11a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904322"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413073"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD alkalmazás jóváhagyásának ismertetése során lép fel.
 
@@ -49,7 +49,7 @@ A következő ábra és táblázat a beleegyezést kérő építőelemeket infor
 | 2 | Beosztás | A cím módosításainak alapján, hogy a felhasználók a felhasználó vagy rendszergazda hozzájárulását flow szolgáltatáson keresztül fog. A felhasználói jóváhagyási folyamatot a cím lesz "Engedélyeket kért" pedig a rendszergazdai jóváhagyás folyamatban a cím lesz rendelkeznek egy további sort "A szervezet elfogadás". |
 | 3 | Alkalmazásembléma | Ez a rendszerkép segíthet a felhasználóknak egy vizuális köteg, hogy az alkalmazás az alkalmazás azokat kívánják elérni. Ez a rendszerkép az alkalmazásfejlesztők által biztosított, és a tulajdonjogát, a lemezkép nincs érvényesítve. |
 | 4 | App neve | Ezt az értéket kell tájékoztatják a felhasználókat, hogy mely alkalmazás férhetnek hozzá az adataikhoz. Megjegyzés: ezt a nevet a fejlesztők által biztosított és az alkalmazás neve a tulajdonjogát nem ellenőrzi. |
-| 5 | Közzétevő tartománya | Ezt az értéket kell biztosítania a felhasználók értékelhetik a megbízhatósága lehet egy tartomány. Ezt a tartományt a fejlesztők által biztosított, és a rendszer érvényesíti a közzétevő tartomány tulajdonjogát. |
+| 5 | Publisher domain | Ezt az értéket kell biztosítania a felhasználók értékelhetik a megbízhatósága lehet egy tartomány. Ezt a tartományt a fejlesztők által biztosított, és a rendszer érvényesíti a közzétevő tartomány tulajdonjogát. |
 | 6 | Engedélyek | Ez a lista tartalmazza az ügyfélalkalmazás által kért engedélyeket. Felhasználók mindig ki kell értékelni a típusú tudni, hogy milyen adatok eléréséhez a felhasználók nevében, ha elfogadja őket az ügyfélalkalmazás lesz jogosult a kért engedélyeket. Az alkalmazás fejlesztőjeként célszerű hozzáférés kéréséhez, a minimális jogosultságokkal rendelkező az engedélyeket. |
 | 7 | Engedély leírása | Ez az érték az engedélyeket a szolgáltatás által biztosított. Szeretné az engedély leírása, akkor mellett az engedélyt a sávnyílra kell váltani. |
 | 8 | Alkalmazás-feltételek | Ezeket a feltételeket az alkalmazás és az adatvédelmi nyilatkozat feltételeit hivatkozásokat tartalmaznak. A kiadó felelős szabályainak sbalování a a szolgáltatási feltételeket. Ezenkívül a kiadó felelős a módszert használja, és a felhasználói adatokat az adatvédelmi nyilatkozat a megosztás nyilvánosságra. Ha a közzétevő nem biztosítja ezeket az értékeket mutat, több-bérlős alkalmazásokhoz, félkövér figyelmeztetést a beleegyezést kérő üzenetet a lesz. |
@@ -84,4 +84,4 @@ Az alábbiakban a hozzájárulási megtapasztalhatják, hogy egy felhasználó j
 
 ## <a name="next-steps"></a>További lépések
 - Részletes áttekintést [hogyan valósítja meg az Azure ad-ben hozzájárulási keretrendszer az hozzájárulási](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework).
-- Ismerje meg részletesebben olvashat róluk, a [több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) megvalósítása a "user" és "rendszergazda" engedélyt, támogató további speciális többrétegű alkalmazásminták.
+- Ismerje meg részletesebben olvashat róluk, a [több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) megvalósítása a "user" és "rendszergazda" engedélyt, támogató további speciális többrétegű alkalmazásminták.

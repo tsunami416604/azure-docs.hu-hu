@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 43cec400a21671d47d1a6c390833a5e4c6517709
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 403d60232f6b22161031dd4eb1af062336c370ee
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975241"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401758"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Az Azure Data Lake Storage Gen2 teljesítmény hangolása
 
@@ -45,9 +45,9 @@ A forrás hardver foglalkoztak, és a hálózati kapcsolat szűk fenti, készen 
 
 | Eszköz               | Beállítások     | További részletek                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| A DistCp            | -m (eseményleképező)   | [Hivatkozás](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| DistCp            | -m (mapper)   | [Hivatkozás](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Hivatkozás](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS.Azure.Block.size, -m (eseményleképező)    |   [Hivatkozás](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | fs.azure.block.size, -m (mapper)    |   [Hivatkozás](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
 ## <a name="structure-your-data-set"></a>Az adatkészlet struktúra
 
@@ -133,9 +133,9 @@ Minden alkalmazás a fenti általános irányelveket, most finomhangolása az ad
 
 | Számítási feladat               | Paraméter segítségével állítsa be a feladatok                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
-| [A Spark on HDInisight](data-lake-storage-performance-tuning-spark.md)       | <ul><li>NUM-végrehajtóval</li><li>Végrehajtó – memória</li><li>Végrehajtó virtuális mag</li></ul> |
-| [A HDInsight Hive](data-lake-storage-performance-tuning-hive.md)    | <ul><li>Hive.tez.Container.size</li></ul>         |
-| [A HDInsight MapReduce](data-lake-storage-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.Map.Memory</li><li>Mapreduce.job.Maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [A Spark on HDInsight](data-lake-storage-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Végrehajtó – memória</li><li>Végrehajtó virtuális mag</li></ul> |
+| [A HDInsight Hive](data-lake-storage-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
+| [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.Maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [HDInsight alatt futó stormmal](data-lake-storage-performance-tuning-storm.md)|  | <ul><li>Munkavégző folyamatok száma</li><li>Spout végrehajtó példányok száma</li><li>Bolt végrehajtó példányok száma </li><li>Spout feladatok száma</li><li>Bolt feladatok száma</li></ul>|
 
 ## <a name="see-also"></a>Lásd még

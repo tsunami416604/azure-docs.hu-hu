@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96b0c44ff36dac3832e518deeed7f07b11e78c16
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cede896e9a2a4c92a495a502fb6cf69805d755ee
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160046"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402132"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
@@ -70,8 +70,8 @@ Az Azure virtuális gép Services révén teljes telepített SAP HANA-platform i
 ### <a name="choose-azure-storage-type"></a>Azure Storage típusának kiválasztása
 Az Azure storage két típusú az SAP HANA futtató Azure virtuális gépek kiválóan alkalmasak kínál:
 
-- [Az Azure standard szintű Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Az Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
+- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
 
 Az Azure két üzembe helyezési módszert kínál az Azure Standard és Premium Storage virtuális merevlemezek. Ha engedélyezi a teljes forgatókönyv, előnyeit [Azure felügyelt lemez](https://azure.microsoft.com/services/managed-disks/) központi telepítések.
 
@@ -127,9 +127,9 @@ Az Azure Írásgyorsító egy funkció, amely a kezdeti bevezetési az Azure M s
 
 Ajánlott konfigurációkat a következőhöz hasonló:
 
-| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | / hana/adatok | / hana/log | / hana/megosztott | / root kötet | / usr/sap | Hana/biztonsági mentés |
+| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | /hana/data | / hana/log | / hana/megosztott | / root kötet | /usr/sap | Hana/biztonsági mentés |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 giB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
 | M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
@@ -159,14 +159,14 @@ Az alábbi táblázat olyan konfigurációja, az ügyfelek által leggyakrabban 
 > A termelési forgatókönyvekhez e egy adott virtuális gép típusa az SAP az SAP Hana támogatott ellenőrizze a [IAAS SAP dokumentációjában](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
 
-| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | / hana/adat- és naplófájlok/hana /<br /> az LVM vagy MDADM csíkozott | / hana/megosztott | / root kötet | / usr/sap | Hana/biztonsági mentés |
+| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | / hana/adat- és naplófájlok/hana /<br /> az LVM vagy MDADM csíkozott | / hana/megosztott | / root kötet | /usr/sap | Hana/biztonsági mentés |
 | --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| E64v3 | 432 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
 | M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
@@ -271,7 +271,7 @@ Az alapkonfiguráció egy virtuális gép csomópont SAP HANA kibővített hason
 
 A csomópontok a kötetek méretezése a ugyanaz, mint a vertikális felskálázás kivételével **/hana/megosztott**. A virtuális gép M128s termékváltozat a javasolt méretek és -típusok kinéznie:
 
-| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | / hana/adatok | / hana/log | / root kötet | / usr/sap | Hana/biztonsági mentés |
+| A VM-TERMÉKVÁLTOZATOK | RAM | Legfeljebb VIRTUÁLIS GÉP I/O<br /> Teljesítmény | /hana/data | / hana/log | / root kötet | /usr/sap | Hana/biztonsági mentés |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
 
@@ -418,8 +418,8 @@ A M64-32ms virtuális gépen sok memóriát, ahogy az az i/o-terhelést nem elő
 
 | A VM-TERMÉKVÁLTOZATOK | Lemezkonfiguráció 1 | Lemezkonfiguráció 2 | Lemezkonfiguráció 3 | Lemez konfigurálása 4 | Lemezkonfiguráció 5 | 
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 -> 8 TB | 5 x P30 -> 5 TB-os | 7 x P20 -> 3,5 TB | 8 x P15 -> 2 TB-os | 
-| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 -> 6 TB | 4 x P30 -> 4 TB-ig | 5 x P20 -> 2,5 TB | 1,5 TB-os x 6 P15 -> | 
+| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 -> 8 TB | 5 x P30 -> 5 TB | 7 x P20 -> 3,5 TB | 8 x P15 -> 2 TB | 
+| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 -> 6 TB | 4 x P30 -> 4 TB | 5 x P20 -> 2,5 TB | 6 x P15 -> 1.5 TB | 
 
 
 Különösen abban az esetben a számítási feladatok olvasási-intenzív, IO-teljesítmény "csak olvasható" adatbázis szoftver adatmennyiség ajánlott Azure-beli gazdagéppel gyorsítótár bekapcsolása sikerült növelése. Mivel a tranzakció "none" log Azure-beli gazdagéppel lemezgyorsítótár kell lennie. 
@@ -432,7 +432,7 @@ A naplózási kötet méretének vonatkozó ajánlott kiindulási pontot a heuri
 | adatok kötet méretét és a lemez típusa | lemez és a naplózási kötet írja be a konfiguráció 1 | lemez és a naplózási kötet írja be a konfigurációs 2 |
 | --- | --- | --- |
 | 4 x P50 -> 16 TB | 5 x P20 -> 2,5 TB | 3 x P30 -> 3 TB |
-| 1,5 TB-os x 6 P15 -> | 4 x P6 -> 256 GB | 1 x-P15 -> 256 GB |
+| 6 x P15 -> 1.5 TB | 4 x P6 -> 256 GB | 1 x P15 -> 256 GB |
 
 
 Például az SAP HANA kibővíthető a /hana/shared címtár rendelkezik az SAP HANA virtuális gép és a DT 2.0-s virtuális gép közötti megosztását. Az azonos architektúra, mint az SAP HANA-t használó kibővített dedikált virtuális gépek, amely proxyként egy magas rendelkezésre állású NFS-kiszolgáló használata javasolt. Annak érdekében, hogy egy közös biztonsági mentési mennyiségi, az azonos tervezési is használható. De az ügyfél legfeljebb Ha magas rendelkezésre ÁLLÁSÚ lenne szükség, vagy ha elegendő csupán használata egy dedikált virtuális gép elegendő tárolókapacitással egy biztonsági mentési kiszolgálóként.

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: dfc1d2128e1cf3b4d6b4d9e5141116a2b2ff9c0d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 90608e95cee6b5b7231419c2c65c39741f106b0f
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000608"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412640"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(ELAVULT) Windows-tárolók Kubernetes-fürt üzembe helyezése
 
@@ -65,7 +65,7 @@ Pár perc alatt lefut a parancs, és megjeleníti az üzembe helyezésre vonatko
 
 Ha a csatlakozni kíván a Kubernetes-fürthöz az ügyfélszámítógépről, ehhez a Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelét használhatja. 
 
-Az Azure CloudShell használata esetén a `kubectl` már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) parancsot.
+Az Azure CloudShell használata esetén a `kubectl` már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) parancsot.
 
 Az Azure parancssori felületén használható alábbi példa telepíti a rendszeren a `kubectl` parancssori ügyfelet. Windows rendszerben rendszergazdaként futtassa ezt a parancsot.
 

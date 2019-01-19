@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199969"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412903"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
 
@@ -75,7 +75,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
 ## <a name="create-a-new-custom-device-template"></a>Új egyéni ügyfélsablon létrehozása
 
-Szerkesztőként létrehozhatja és szerkesztheti az alkalmazásban lévő eszközsablonokat. Egy eszközsablon létrehozásakor az Azure IoT Central létrehoz egy szimulált eszközt a sablonból. A szimulált eszköz olyan telemetriát készít, amely lehetővé teszi, hogy tesztelje az alkalmazás viselkedését egy fizikai eszköz csatlakoztatása előtt.
+Szerkesztőként létrehozhatja és szerkesztheti az alkalmazásban lévő eszközsablonokat. Egy eszközsablon létrehozásakor az Azure IoT Central létrehoz egy szimulált eszközt a sablonból. A szimulált eszköz, amely lehetővé teszi, hogy tesztelje az alkalmazás viselkedésének valós eszköz csatlakoztatása előtt telemetriát hoz létre.
 
 Ha az új eszközsablont az alkalmazáshoz szeretné adni, az **Alkalmazásszerkesztő** oldalra kell lépnie. Ehhez válassza a bal oldali navigációs menüben az **Alkalmazásszerkesztő** lehetőséget.
 
@@ -155,7 +155,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
 ## <a name="define-event-measurement"></a>Esemény mérésének meghatározása
 
-Események használatával határozhatja meg az eszköz által küldött, időponthoz kötött adatokat valamilyen fontos történés, például hiba vagy összetevőhiba jelzéséhez. A telemetriamérésekhez hasonlóan az Azure IoT Central képes eszközeseményeket szimulálni az alkalmazás tesztelése érdekében a fizikai eszköz csatlakoztatása előtt. A **Mérések** nézetben határozhatja meg az eszköztípus eseményméréseit.
+Események használatával határozhatja meg az eszköz által küldött, időponthoz kötött adatokat valamilyen fontos történés, például hiba vagy összetevőhiba jelzéséhez. Telemetria mérések, például az Azure IoT Central is eszköz események szimulálása ahhoz, hogy tesztelje az alkalmazás viselkedésének valós eszköz csatlakoztatása előtt. A **Mérések** nézetben határozhatja meg az eszköztípus eseményméréseit.
 
 1. A **Ventilátormotor-hiba** eseménymérés hozzáadásához válassza az **Új mérés** elemet. Ezután válassza az **Eseményt** a mérés típusaként:
 
@@ -191,7 +191,7 @@ Események használatával határozhatja meg az eszköz által küldött, időpo
 
 ## <a name="define-state-measurement"></a>Állapot mérésének meghatározása
 
-Az állapot használatával meghatározhatja és megjelenítheti az eszköz vagy összetevőinek állapotát egy meghatározott időtartamra vonatkozóan. A telemetriamérésekhez hasonlóan az Azure IoT Central képes eszközállapotot szimulálni az alkalmazás tesztelése érdekében a fizikai eszköz csatlakoztatása előtt. A **Mérések** nézetben határozhatja meg az eszköztípusa állapotméréseit.
+Az állapot használatával meghatározhatja és megjelenítheti az eszköz vagy összetevőinek állapotát egy meghatározott időtartamra vonatkozóan. Telemetria mérések, például az Azure IoT Central szimulálhatja ahhoz, hogy tesztelje az alkalmazás viselkedését, mielőtt valós eszköz csatlakoztatása az eszköz állapotát. A **Mérések** nézetben határozhatja meg az eszköztípusa állapotméréseit.
 
 1. A **Ventilátor mód** mérés hozzáadásához válassza az **Új mérés** elemet. Ezután válassza az **Állapotot** a mérés típusaként:
 

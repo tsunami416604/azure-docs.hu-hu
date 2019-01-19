@@ -1,5 +1,6 @@
 ---
-title: Hibaelhárítási útmutató Azure Machine Learning szolgáltatás a központi telepítés
+title: Üzembehelyezési hibaelhárítási útmutató
+titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan megkerülő megoldásként megoldásában, és a Docker telepítési kapcsolatos gyakori hibák elhárítása AKS és Azure Machine Learning szolgáltatás használatával ACI.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.author: haining
 author: hning86
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: ed6fed58aac236f143345a9504ece21aceae09d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 71b4cf5d44ec6cb3fb8b70975193320a4eabfc3f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865369"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401316"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Az Azure Machine Learning szolgáltatás AKS és az aci Szolgáltatásban üzemelő példányainak hibaelhárítása
 
@@ -91,10 +93,10 @@ Ha a rendszer nem lehet a Docker-rendszerkép létrehozásához a `image.wait_fo
 print(image.image_build_log_uri)
 
 # if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images()['myimg'].image_build_log_uri)
+print(ws.images['myimg'].image_build_log_uri)
 
 # list logs for all images in the workspace
-for name, img in ws.images().items():
+for name, img in ws.images.items():
     print (img.name, img.version, img.image_build_log_uri)
 ```
 A kép napló uri-ja egy SAS URL-t, az Azure blob storage szolgáltatásban tárolt naplófájl. Egyszerűen másolja be az URI-t egy böngészőablakban, és töltse le és a napló megtekintése.
@@ -113,7 +115,7 @@ Kinyomtathatja a részletes Docker engine naplóüzenetek a szolgáltatás-objek
 print(service.get_logs())
 
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices()['mysvc'].get_logs())
+print(ws.webservices['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>A Docker-rendszerkép helyi hibakeresése
@@ -216,16 +218,12 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**Megjegyzés:**: visszaadó hibaüzenetek a `run(input_data)` hibakeresési célú csak hívást kell elvégezni. Nem lehet célszerű, hogy ehhez a biztonsági okokból éles környezetben.
+**Megjegyzés**: Adatszolgáltató hibaüzenetek a `run(input_data)` hibakeresési célú csak hívást kell elvégezni. Nem lehet célszerű, hogy ehhez a biztonsági okokból éles környezetben.
 
 
 ## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről: 
-* [Az aci Szolgáltatásban üzembe helyezése](how-to-deploy-to-aci.md)
+* [Hogyan helyezhet üzembe, és ahol](how-to-deploy-and-where.md)
 
-* [Az aks üzembe helyezése](how-to-deploy-to-aks.md)
-
-* [Az oktatóanyag 1. rész: modell betanítása](tutorial-train-models-with-aml.md)
-
-* [Az oktatóanyag 2. rész: modell üzembe helyezése](tutorial-deploy-models-with-aml.md)
+* [Oktatóanyag: Be & modellek üzembe helyezése](tutorial-train-models-with-aml.md)

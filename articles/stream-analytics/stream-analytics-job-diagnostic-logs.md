@@ -7,61 +7,85 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: db3c9874676e3240f6896c1e1ff8f873360c20d5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e712dfd755082e6b36066b0058ec18545d5c8417
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090822"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412835"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Az Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók használatával
 
-Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos tudni az ilyen esemény hibaelhárítása. Az esemény-lekérdezés váratlan eredményt, az eszközök kapcsolat, vagy egy nem várt szolgáltatáskiesés okozhatta. A diagnosztikai naplók a Stream Analytics segítségével problémák okának azonosításához, amikor azok bekövetkeznek, és a helyreállítási idő csökkentése.
+Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos, hogy ilyen esetekben hibaelhárítást tudjon végezni. Egy váratlan lekérdezési eredmény, az eszközök kapcsolat, vagy egy nem várt szolgáltatáskiesés, hiba okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
 
 ## <a name="log-types"></a>Napló típusa
 
-Stream Analytics naplók két típusú kínálja: 
-* [A Tevékenységnaplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (mindig bekapcsolt). Tevékenységnaplók feladatok végrehajtott műveletek betekintést biztosítanak.
-* [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurálható). Diagnosztikai naplók mindent, ami fordul elő, ha egy feladat részletesebb betekintést nyújtson. Diagnosztikai naplók kezdje, ha a feladat jön létre, és a záró, a feladat törlése. Ha a feladat frissül és a futás közben események terjed ki.
+Stream Analytics naplók két típusú kínálja:
+
+* [A Tevékenységnaplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (mindig bekapcsolva), amely feladatok végrehajtott műveletek betekintést biztosítanak.
+
+* [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurálható), amely részletesebb betekintést nyújtson mindent, amely fordul elő, ha egy feladat. Diagnosztikai naplók a feladat létrehozásakor, a kezdő és záró, a feladat törlése. Ha a feladat frissül és a futás közben események terjed ki.
 
 > [!NOTE]
 > Szolgáltatások, például az Azure Storage, az Azure Event Hubs és az Azure Log Analytics segítségével elemezheti a nem megfelelő adatokat. Ezek a szolgáltatások díjszabási modellje alapján lesznek kiszámlázva.
->
 
-## <a name="turn-on-diagnostics-logs"></a>Kapcsolja be a diagnosztikai naplók
+## <a name="debugging-using-activity-logs"></a>Naplózza a hibakeresési tevékenység használatával
 
-Diagnosztikai naplók **ki** alapértelmezés szerint. Diagnosztikai naplók bekapcsolásához hajtsa végre ezeket a lépéseket:
+Alapértelmezés szerint a tevékenységnaplókat, és a Stream Analytics-feladat által végrehajtott műveletek magas szintű betekintést biztosítanak. Tevékenységnaplók található információk segíthetnek a negatív hatással a feladat a problémák kiváltó okának. Kövesse az alábbi lépéseket a Stream Analytics tevékenységeket tartalmazó naplók használata:
 
-1.  Jelentkezzen be az Azure Portalon, és nyissa meg a streamelési feladat panelen. A **figyelés**válassza **diagnosztikai naplók**.
+1. Jelentkezzen be az Azure Portalon, és válassza **tevékenységnapló** alatt **áttekintése**.
+
+   ![Stream Analytics tevékenységnapló](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
+
+2. Láthatja a végrehajtott műveletek listája. Minden műveletre, a feladat sikertelenségét okozó rendelkezik egy piros info buborékra.
+
+3. Kattintson egy műveletet az összefoglaló nézet megjelenítéséhez. Itt információkat gyakran korlátozódik. A művelettel kapcsolatos további részletekért kattintson a **JSON**.
+
+   ![Stream Analytics tevékenység log művelet összegzése](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
+
+4. Görgessen le a **tulajdonságok** a JSON-t, amely részletesen ismerteti a sikertelen műveletet okozó hibáról, szakaszában. Ebben a példában a hiba a kötött szélességi értékeknek from out of futásidejű hiba okozta.
+
+   ![JSON-hiba részletei](./media/stream-analytics-job-diagnostic-logs/error-details.png)
+
+5. A JSON-ban a hibaüzenet alapján korrekciós műveleteket hajthatja végre. Ebben a példában ellenőrzi annak biztosítása érdekében a szélességi értéknek-90 fok közé esik, és 90 fok hozzá kell adni a lekérdezéshez.
+
+6. Ha a hibaüzenet a Tevékenységnaplókban nem hasznos lehet az alapvető ok azonosítása, diagnosztikai naplók engedélyezése és a Log Analytics.
+
+## <a name="send-diagnostics-to-log-analytics"></a>Diagnosztika küldése a Log Analyticsbe
+
+Erősen ajánlott bekapcsolni a diagnosztikai naplók, és elküldi azokat a Log Analytics szolgáltatásba. Diagnosztikai naplók **ki** alapértelmezés szerint. Diagnosztikai naplók bekapcsolásához hajtsa végre ezeket a lépéseket:
+
+1.  Jelentkezzen be az Azure Portalon, és keresse meg a Stream Analytics-feladatot. A **figyelés**válassza **diagnosztikai naplók**. Válassza ki **diagnosztika bekapcsolása**.
 
     ![Panel Navigálás a diagnosztikai naplók](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Válassza ki **diagnosztika bekapcsolása**.
+2.  Hozzon létre egy **neve** a **diagnosztikai beállítások** melletti jelölőnégyzetet, és **Küldés a Log Analyticsnek**. Ezután adjon hozzá egy meglévő, vagy hozzon létre egy új **Log analytics-munkaterület**. Jelölje be a **végrehajtási** és **szerzői műveletek** alatt **LOG**, és **AllMetrics** alatt **METRIKA** . Kattintson a **Save** (Mentés) gombra.
 
-    ![Kapcsolja be a Stream Analytics-diagnosztikai naplók](./media/stream-analytics-job-diagnostic-logs/turn-on-diagnostic-logs.png)
+    ![Diagnosztikai naplók beállításai](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3.  Az a **diagnosztikai beállítások** lapon a **állapota**válassza **a**.
+3. A Stream Analytics-feladat indításakor a diagnosztikai naplók legyenek átirányítva a Log Analytics-munkaterületre. Nyissa meg a Log Analytics-munkaterületet, és válassza a **naplók** alatt a **általános** szakaszban.
 
-    ![A diagnosztikai naplókhoz állapotának módosítása](./media/stream-analytics-job-diagnostic-logs/save-diagnostic-log-settings.png)
+   ![A log Analytics naplózza az általános szakasz](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
-4.  Az archiválási target (storage-fiók, event hub, a Log Analytics), amelyeket szeretne beállítani. Ezután válassza ki a gyűjtendő naplók kategóriáit (a végrehajtási, a szerzői műveletek). 
+4. Is [saját lekérdezés](../azure-monitor/log-query/get-started-portal.md) feltételek keres, azonosíthatja a trendeket minták elemzése és az adatok alapján elemzéseket nyújtanak. Például írhat egy lekérdezést az üzenetet az csak a diagnosztikai naplók szűrése "a folyamatos átviteli feladat nem sikerült." Az Azure Stream Analytics diagnosztikai naplóinak vannak tárolva a **AzureDiagnostics** tábla.
 
-5.  Mentse az új diagnosztikai konfigurációt.
+   ![Diagnosztikai lekérdezési és eredmények](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
 
-Diagnosztikai konfigurációja nagyjából 10 percet vesz igénybe érvénybe léptetéséhez. Ezt követően a naplók start jelennek meg a beállított archiválási célzott (tekintheti meg ezeket a **diagnosztikai naplók** oldal):
+5. Ha egy lekérdezést, amely a megfelelő naplók keres, mentse kiválasztásával **mentése** , és adja meg egy nevet és egy kategóriát. Ezután létrehozhat egy riasztás kiválasztásával **Új riasztási szabály**. Ezután adja meg a riasztási feltételt. Válassza ki **feltétel** és adja meg a küszöbérték és a gyakoriság, amellyel az egyéni napló keresési értékeli ki.  
 
-![Panel Navigálás a diagnosztikai naplók - archiválási célok](./media/stream-analytics-job-diagnostic-logs/view-diagnostic-logs-page.png)
+   ![Diagnosztikai naplóbeli keresési lekérdezés](./media/stream-analytics-job-diagnostic-logs/search-query.png)
 
-Konfiguruje se diagnostika kapcsolatos további információkért lásd: [gyűjtése és a diagnosztika az Azure-erőforrások felhasználását](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+6. Válassza ki a műveletcsoport, és adja meg a riasztás részleteit, például a nevet és leírást, a riasztási szabály létrehozása előtt. A diagnosztikai naplók a különböző feladatok irányíthatja a Log Analytics munkaterületén. Ez lehetővé teszi, hogy a riasztások beállítása után, amely az összes feladat között működik.  
 
 ## <a name="diagnostics-log-categories"></a>Diagnosztikai naplója kategóriák
 
 Jelenleg a Microsoft két kategóriába diagnosztikai naplók rögzítése:
 
-* **Szerzői**. Rögzíti a szerzői műveletek feladathoz kapcsolódó eseményeket naplózása: a feladat létrehozása, hozzáadása és törlése bemenetként, és kiírja, hozzáadása és a lekérdezés frissítése elindítása és leállítása a feladatot.
-* **Végrehajtási**. Rögzíti a feladat végrehajtása során előforduló események:
+* **Szerzői**: A szerzői műveletek, például a hozzáadások és törlések bemeneteit és kimeneteit, hozzáadását és a lekérdezés frissítése és indítása vagy a feladat leállítása feladat létrehozásakor feladat kapcsolódó naplózási eseményeket rögzíti.
+
+* **Végrehajtási**: Rögzíti a feladat végrehajtása során előforduló eseményeket.
     * Kapcsolódási hibák
     * Hibák az adatfeldolgozási, többek között:
         * Eseményeket, amelyek nem felelnek meg a lekérdezés definíciója (eltérő mezőtípusok és értékek, hiányzó mezőket, és így tovább)
@@ -80,7 +104,7 @@ category | Kategória, vagy jelentkezzen **végrehajtási** vagy **szerzői műv
 operationName | A művelet, amelyet a rendszer neve. Ha például **események küldése: SQL kimeneti hiba írni mysqloutput**.
 status | A művelet állapotát. Ha például **sikertelen** vagy **sikeres**.
 szint | Naplózási szint. Ha például **hiba**, **figyelmeztetés**, vagy **tájékoztató**.
-properties | Napló bejegyzés-specifikus részletei, szerializált JSON-karakterláncot. További információkért tekintse meg a következő szakaszok.
+properties | Napló bejegyzés-specifikus részletei, szerializált JSON-karakterláncot. További információkért lásd: Ez a cikk következő szakaszaiban.
 
 ### <a name="execution-log-properties-schema"></a>Végrehajtási napló tulajdonságok séma
 
@@ -99,8 +123,8 @@ Adatok | Pontosan keresse meg a hiba okának hasznos adatokat tartalmaz. Alá cs
 
 Attól függően, a **operationName** érték adathibák sémája a következő:
 * **Események szerializálni**. Szerializálható események történnek események az olvasási műveletek során. Ezek fordulhat elő, amikor a bemeneti adatok nem felelnek meg a lekérdezés sémája az alábbi okok valamelyike:
-    * *Adattípus-eltérés (Németország) esemény során szerializálni*: a mező a hibát okozó azonosítja.
-    * *Nem olvasható egy esemény, érvénytelen szerializálási*: információt tartalmaz a bemeneti adatokat a hely, ahol a hiba történt. Blob bemeneti eltolás és a egy minta az adatok a blob nevét tartalmazza.
+    * *Adattípus-eltérés (Németország) esemény során szerializálni*: A mező a hibát okozó azonosítja.
+    * *Nem olvasható egy esemény, érvénytelen szerializálási*: Tartalmazza a bemeneti adatokat a hely, ahol a hiba történt. Blob bemeneti eltolás és a egy minta az adatok a blob nevét tartalmazza.
 * **Események küldése**. Írási műveletek során bekövetkező események küldése A streamelési eseményt a hibát okozó azonosítsa azokat.
 
 ### <a name="generic-events"></a>Általános események
@@ -109,7 +133,7 @@ Attól függően, a **operationName** érték adathibák sémája a következő:
 
 Name (Név) | Leírás
 -------- | --------
-Hiba | (nem kötelező) Hiba adatok. Általában Ha ez a kivétel információ érhető el.
+Hiba | (nem kötelező) Hiba adatok. Általában Ha ez a kivétel adatai érhető el.
 Üzenet| A fenti üzenet jelenik meg.
 Típus | Üzenet típusa. Hibák kategorizálása belső leképezések. Ha például **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , amely egyedileg azonosítja a feladat végrehajtása. Az összes végrehajtás naplóbejegyzések kezdve a feladat elindul mindaddig, amíg a feladat leáll rendelkezik azonos **korrelációs azonosító** értéket.

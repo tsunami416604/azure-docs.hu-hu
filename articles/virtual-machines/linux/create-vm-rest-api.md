@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433480"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412189"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Hozzon létre egy Linux virtuális gép SSH-hitelesítést használó REST API-val
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan a felügyelt lemezek és SSH-hitelesítést Ubuntu 1
 Hozzon létre, és küldje el a kérelmet, mielőtt lesz szüksége:
 
 * A `{subscription-id}` az előfizetéshez
-  * Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)
+  * Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 * A `{resourceGroupName}` előre létrehozott
 * A [virtuális hálózati adapter](../../virtual-network/virtual-network-network-interface.md) ugyanabban az erőforráscsoportban
 * Ssh-kulcs (is [hozzon létre egy új](mac-create-ssh-keys.md) Ha nem rendelkezik ilyennel)
@@ -67,7 +67,7 @@ A következő gyakori definíciókat hozhat létre a kéréstörzs használható
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True (Igaz)     | sztring                                                                              | Erőforrás helye. |
 | név                       |          | sztring                                                                              | A virtuális gép nevét. |
-| properties.hardwareProfile |          | [A HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Itt adhatja meg a hardverbeállításokat, a virtuális gép. |
+| properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Itt adhatja meg a hardverbeállításokat, a virtuális gép. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Itt adhatja meg a virtuális gépek lemezeinek tárolási beállításait. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Meghatározza a virtuális gép operációs rendszer beállításait. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Adja meg a hálózati adaptereket a virtuális gép. |

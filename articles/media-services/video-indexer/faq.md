@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: ff3aa86fee7fc30cfc18edc3b413a4378df69662
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307003"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402047"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -28,18 +28,17 @@ A video Indexer olyan mesterséges intelligenciát használó szolgáltatás, am
 
 ### <a name="what-can-i-do-with-video-indexer"></a>Mire használhatom a Video Indexer?
 
-A video Indexer hajthatja végre a következő típusú műveletek az adathordozó-fájlok:
+A Video Indexer médiafájlok hajthatnak végre műveleteket a következők:
 
-* Azonosíthatja és bontsa ki a beszéd, és azonosíthatja a beszélőket.
-* Azonosítsa, és bontsa ki a képernyőn látható szöveg egy videóban.
-* Azonosításához, és a egy videó-fájlban található objektumok címkézését.
-* Azonosítsa a márkákat, például a Microsoft a hangsáv és a képernyőn megjelenő szöveg egy videóban.
-* És arcokat hírességek, adatbázis és a egy felhasználói adatbázist az arcok felismerésére.
-* Kulcsszavak kinyerése a video- és audiotartalmak kimondott és egy Vizualizáció szöveg alapján.
-* Bontsa ki a külön nem feltétlenül az audio- és videotartalmakhoz kimondott és egy Vizualizáció szöveg alapján is említik, de tárgyalt témaköröket.
+* Azonosítása és kibontása speech, és azonosíthatja a beszélőket.
+* Azonosítására és a képernyőn látható kibontása egy videó szövegében.
+* Objektumok észlelése a videót.
+* Azonosíthatja a márka (például: A videó Microsoft) származó hangsáv és a képernyőn megjelenő szöveg.
+* Észlelése és a egy hírességek, és egy felhasználó által definiált adatbázis téglalapot arcokat felismerve.
+* Témakörök kibontása tárgyalt, de nem feltétlenül említett audio- és videotartalmakhoz.
 * Kódolt feliratok létrehozása a hangsávra.
 
-További információkért lásd az [Áttekintést](video-indexer-overview.md).
+További információ és a Video Indexer további funkciók: [áttekintése](video-indexer-overview.md).
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Hogyan kezdhetem a Video Indexer?
 

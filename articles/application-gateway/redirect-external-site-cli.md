@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 4483d71ba745cc5cbb49d22420d83c3b2ceae0ad
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bdbaa9154f12c8b66a4c1d801671e7b21756e0f7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157020"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412733"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Külső átirányítás, az Azure CLI használatával az application gateway létrehozása
 
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Figyelő és útválasztási szabály hozzáadása
 
-Egy figyelő szükséges ahhoz, hogy az application gateway megfelelően irányítja a forgalmat. Hozza létre a használatával [az network application-gateway http-listener létrehozása](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) a frontend-port használatával létrehozott [az network application-gateway frontend-port létrehozása](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create). A szabály a figyelőt, hogy tudja, hova küldhetők a bejövő forgalom szükség. Hozzon létre egy egyszerű szabályt nevű *redirectRule* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
+Egy figyelő szükséges ahhoz, hogy az application gateway megfelelően irányítja a forgalmat. Hozza létre a használatával [az network application-gateway http-listener létrehozása](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) a frontend-port használatával létrehozott [az network application-gateway frontend-port létrehozása](/cli/azure/network/application-gateway). A szabály a figyelőt, hogy tudja, hova küldhetők a bejövő forgalom szükség. Hozzon létre egy egyszerű szabályt nevű *redirectRule* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

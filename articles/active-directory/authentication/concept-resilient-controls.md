@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 34d60d82ff70ecf683b955b8b796b5d3269df53c
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101921"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401911"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -119,30 +119,48 @@ A készenléti feltételes hozzáférési szabályzat van egy **le van tiltva a 
 * Ezen szabályzatok, amelyek korlátozzák a hozzáférést az alkalmazásokon belüli, ha egy bizonyos hitelesítési szintje nem éri el helyett egyszerűen naplókimenetet teljes hozzáférést. Példa:
   * Konfigurálja a biztonsági mentési szabályzatot, amely az Exchange és SharePoint korlátozott munkamenet jogcímet küld.
   * Ha szervezete a Microsoft Cloud App Security, fontolja meg a Visszalépés az olyan szabályzatot, amely megkezdi az MCAS, majd az MCAS lehetővé teszi, hogy csak olvasási hozzáféréssel, de nem tölt fel.
+* Nevezze el a szabályzatokhoz, győződjön meg arról, hogy könnyen megtalálhassa azokat egy megszakítása során. A szabályzat neve a következő elemeket tartalmazza:
+  * A *szám címke* a szabályzathoz.
+  * Szöveg megjelenítése, ez a szabályzat csak vészhelyzetek szól. Példa: **VÉSZHELYZET ENGEDÉLYEZÉSE**
+  * A *megszakítás* vonatkozik. Példa: **MFA megszakítása során**
+  * A *sorszámú* az sorrend aktiválnia kell a házirendeket.
+  * A *alkalmazások* vonatkozik.
+  * A *vezérlők* érvényes lesz.
+  * A *feltételek* van szükség.
+  
+Az elnevezési szabványnak, a feltételes szabályzatokat a következő lesz: 
 
-Az alábbi példában: **A példában A - hozzáférés alapvető fontosságú csoportmunka-alkalmazás visszaállításához Contingency hitelesítésszolgáltató házirend**, a jellemző vállalati vészhelyzeti megoldásként alkalmazza. Ebben a forgatókönyvben a szervezet általában többtényezős Hitelesítést követel meg az összes Exchange online-hoz és a SharePoint online-hoz, és a megszakítások időtartamát ebben az esetben az MFA szolgáltatót, az ügyfél rendelkezik esetére (akár az Azure MFA, a helyszínen az MFA szolgáltatót, és a külső MFA). Ez a szabályzat csökkenti a szolgáltatáskimaradás azáltal, hogy adott megcélzott felhasználók hozzáférési ezekre az alkalmazásokra megbízható Windows-eszközök csak akkor, ha az alkalmazás megbízható vállalati hálózatról érnek el. Ezek a korlátozások a is vészelérési fiókok és a rendszergazdák core kizárja. Ebben a példában egy olyan nevesített hálózati helyre van szükség **CorpNetwork** és a egy biztonsági csoportot **ContingencyAccess** cél felhasználóival, a csoport neve **CoreAdmins** -a Core-rendszergazdák és a egy nevű csoport **EmergencyAccess** a vészelérési fiókok együtt. Az eseti, adja meg a kívánt hozzáférési négy szabályzatokra van szüksége.
+`
+EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
+`
+
+Az alábbi példában: **A példában A - hozzáférés alapvető fontosságú csoportmunka-alkalmazás visszaállításához Contingency hitelesítésszolgáltató házirend**, a jellemző vállalati vészhelyzeti megoldásként alkalmazza. Ebben a forgatókönyvben a szervezet általában többtényezős Hitelesítést követel meg az összes Exchange online-hoz és a SharePoint online-hoz, és a megszakítások időtartamát ebben az esetben az MFA szolgáltatót, az ügyfél rendelkezik esetére (akár az Azure MFA, a helyszínen az MFA szolgáltatót, és a külső MFA). Ez a szabályzat csökkenti a szolgáltatáskimaradás azáltal, hogy adott megcélzott felhasználók hozzáférési ezekre az alkalmazásokra megbízható Windows-eszközök csak akkor, ha az alkalmazás megbízható vállalati hálózatról érnek el. Ezek a korlátozások a is vészelérési fiókok és a rendszergazdák core kizárja. A megcélzott felhasználók lesz majd hozzáférni Exchange online-hoz és a SharePoint Online, amíg más felhasználók továbbra is nem hozzáférhetnek a leállás miatt az alkalmazásokra. Ebben a példában egy olyan nevesített hálózati helyre van szükség **CorpNetwork** és a egy biztonsági csoportot **ContingencyAccess** cél felhasználóival, a csoport neve **CoreAdmins** -a Core-rendszergazdák és a egy nevű csoport **EmergencyAccess** a vészelérési fiókok együtt. Az eseti, adja meg a kívánt hozzáférési négy szabályzatokra van szüksége. 
 
 **A - hitelesítésszolgáltató Contingency szabályzatok hozzáférés alapvető fontosságú csoportmunka-alkalmazás visszaállításához. példa:**
 
 * 1. szabályzat: Az Exchange és SharePoint megkövetelése a tartományhoz csatlakozott eszközökkel
+  * Név: EM001 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [1/4] – Exchange, SharePoint – hibrid Azure AD-csatlakozás megkövetelése
   * Felhasználók és csoportok: ContingencyAccess tartalmazza. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
   * Feltételek: Bármelyik
   * Hozzáférés megadása: Tartományhoz csatlakoztatott megkövetelése
   * Állapot: Letiltva
 * 2. szabályzat: A platformokat tiltsa le a nem Windows
+  * Név: EM002 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [2 vagy 4] hozzáférés – Exchange, SharePoint - letiltása Windows kivételével
   * Felhasználók és csoportok: Minden felhasználónak bele. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
   * Feltételek: Platform tartalmazza az összes platformot is, a Windows kizárása
   * Hozzáférés megadása: Blokk
   * Állapot: Letiltva
 * 3. szabályzat: CorpNetwork hálózatokra letiltása
+  * Név: EM003 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [3/4] hozzáférés – Exchange, SharePoint - letiltása vállalati hálózaton kívül
   * Felhasználók és csoportok: Minden felhasználónak bele. CoreAdmins és EmergencyAccess kizárása
   * Felhőalapú alkalmazások: Az Exchange Online és SharePoint Online
   * Feltételek: Helyek tartalmazza a bármilyen olyan helyre, CorpNetwork kizárása
   * Hozzáférés megadása: Blokk
   * Állapot: Letiltva
 * 4. szabályzat: EAS explicit módon letiltása
+  * Név: EM004 - VÉSZHELYZET ENGEDÉLYEZÉSE: MFA megszakítás [4/4] – az Exchange - blokk EAS az összes felhasználó számára
   * Felhasználók és csoportok: Minden felhasználónak bele
   * Felhőalapú alkalmazások: Az Exchange Online belefoglalása
   * Feltételek: Ügyfélalkalmazások: Az Exchange Active Sync szolgáltatással
@@ -163,12 +181,14 @@ A következő példában **példa B - Contingency feltételes hozzáférési sza
 **B - hitelesítésszolgáltató Contingency házirendek. példa:**
 
 * 1. szabályzat: Nem található a SalesContingency csapat mindenki letiltása
+  * Név: EM001 - VÉSZHELYZET ENGEDÉLYEZÉSE: Eszköz megfelelőségi megszakítás [1/2] – a Salesforce - kivételével SalesforceContingency letiltása minden felhasználó
   * Felhasználók és csoportok: Minden felhasználónak bele. SalesAdmins és SalesforceContingency kizárása
   * Felhőalapú alkalmazások: Salesforce-ban.
   * Feltételek: None
   * Hozzáférés megadása: Blokk
   * Állapot: Letiltva
 * 2. szabályzat: Az értékesítési csoportnak bármilyen platformon kívül (a támadási felületének csökkentése érdekében) mobile letiltása
+  * Név: EM002 - VÉSZHELYZET ENGEDÉLYEZÉSE: Eszköz megfelelőségi megszakítása: [2/2] - Salesforce - letiltása minden platformhoz, kivéve az iOS és Android rendszerhez
   * Felhasználók és csoportok: SalesforceContingency tartalmazza. SalesAdmins kizárása
   * Felhőalapú alkalmazások: Salesforce
   * Feltételek: Platform tartalmazza az összes platformot is, zárja ki az iOS és Android rendszerhez
@@ -215,14 +235,14 @@ Attól függően, melyik megoldások vagy ágakba egy megszakítása során hasz
 
 ## <a name="after-a-disruption"></a>A megszakítás után
 
-Vissza kell vonnia a végzett módosítások a aktivált válságtervet részeként után a szolgáltatás helyreáll, amely miatt a megszakítások időtartamát. 
+A módosítások a aktivált válságtervet részeként után a szolgáltatás helyreáll a zavart okozó visszavonása. 
 
 1. A normál szabályzatot
 2. Tiltsa le a feltételes szabályzatokat. 
 3. Állítsa vissza a további módosításokat végzett, és a dokumentált során a megszakítások időtartamát.
 4. A vészelérési fiókok használata esetén ne felejtse el generálja újra a hitelesítő adatokat, és a fizikailag is biztosítsa a vészelérési fiókhoz eljárások részeként az új hitelesítő adatait.
 5. Továbbra is [összes kockázati eseményt jelentett osztályozási](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) a megszakítás a gyanús tevékenység után.
-6. Az összes frissítési biztonsági jogkivonat kiadott visszavonása [PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) , amelyekre a felhasználók egy csoportja. Az összes frissítési biztonsági jogkivonat visszavonására fontos kifejezetten a kiemelt jogosultságú fiókok során a megszakítások időtartamát, és nagyon kényszeríti számukra, hogy hitelesítse magát újra, és megfelelnek a visszaállított házirendek felügyelete.
+6. Az összes frissítési biztonsági jogkivonat kiadott visszavonása [PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) , amelyekre a felhasználók egy csoportja. A megszakítások időtartamát során használt kiemelt jogosultságú fiókok számára fontos összes frissítési biztonsági jogkivonat visszavonására, és nagyon kényszeríti számukra, hogy hitelesítse magát újra, és megfelelnek a visszaállított házirendek felügyelete.
 
 ## <a name="emergency-options"></a>Vészhelyzeti beállításai
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1ca6f2a0f8246e730206ea2a431f7968273a6e8d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966503"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412342"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Töltse fel, és a egy Linux virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -35,13 +35,13 @@ Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azu
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` a a `WestUs` helye:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy `WestUs` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Hozzon létre egy tárfiókot, amely tárolja a virtuális lemezek [az tárfiók létrehozása](/cli/azure/storage/account#az_storage_account_create). Az alábbi példa létrehoz egy tárfiókot, nevű `mystorageaccount`:
+Hozzon létre egy tárfiókot, amely tárolja a virtuális lemezek [az tárfiók létrehozása](/cli/azure/storage/account). Az alábbi példa létrehoz egy tárfiókot, nevű `mystorageaccount`:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -124,7 +124,7 @@ Is megtekintheti a **[Linux telepítési jegyzetek](create-upload-generic.md#gen
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Erőforráscsoportok logikailag egyesítheti az összes Azure-erőforrások a virtuális gépekhez, például a virtuális hálózati és tárolási támogatásához. További információk erőforráscsoportok, lásd: [erőforráscsoportokat áttekintése](../../azure-resource-manager/resource-group-overview.md). Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create).
 
-A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` a a `westus` helye:
+A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -132,7 +132,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy tárfiókot, az egyéni lemez és a virtuális gépek [az tárfiók létrehozása](/cli/azure/storage/account#az_storage_account_create). Olyan virtuális gépek nem felügyelt lemezek, amelyek az egyéni lemezt kell lennie a lemezen, ugyanazt a tárfiókot hoz létre. 
+Hozzon létre egy tárfiókot, az egyéni lemez és a virtuális gépek [az tárfiók létrehozása](/cli/azure/storage/account). Olyan virtuális gépek nem felügyelt lemezek, amelyek az egyéni lemezt kell lennie a lemezen, ugyanazt a tárfiókot hoz létre. 
 
 Az alábbi példa létrehoz egy tárfiókot, nevű `mystorageaccount` a korábban létrehozott erőforráscsoportot:
 

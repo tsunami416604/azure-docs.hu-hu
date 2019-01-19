@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 76bfcd5e1b7e0215cfea7fbbfe1c51726d305fbc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 68691430621c0055b3465b9428a8206c6a544a97
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969839"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412529"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása  
 
@@ -41,8 +41,8 @@ A U-SQL projekt építhetők fel a Microsoft Build Engine (MSBuild) a megfelelő
 
 Ha nem, a projekt áttelepítése két lehetősége van:
 
-- 1. lehetőség: Módosítsa a régi importálás elem az előző egy.
-- 2. lehetőség: Nyissa meg a régi projekttel az Azure Data Lake Tools for Visual Studio. 2.3.3000.0 frissebb verzióját használja. A régi projektsablonnal automatikusan frissül a legújabb verzióra. 2.3.3000.0 frissebb verziójával létrehozott új projektek használja az új sablon.
+- Option 1: Módosítsa a régi importálás elem az előző egy.
+- Option 2: Nyissa meg a régi projekttel az Azure Data Lake Tools for Visual Studio. 2.3.3000.0 frissebb verzióját használja. A régi projektsablonnal automatikusan frissül a legújabb verzióra. 2.3.3000.0 frissebb verziójával létrehozott új projektek használja az új sablon.
 
 ### <a name="get-nuget"></a>NuGet beolvasása
 
@@ -246,7 +246,7 @@ Használja a [Azure PowerShell-lel feladat](https://docs.microsoft.com/azure/dev
 param(
     [Parameter(Mandatory=$true)][string]$ADLSName, # ADLS account name to upload U-SQL scripts
     [Parameter(Mandatory=$true)][string]$ArtifactsRoot, # Root folder of U-SQL project build output
-    [Parameter(Mandatory=$false)][string]$DesitinationFolder = "USQLScriptSource" # Desitination folder in ADLS
+    [Parameter(Mandatory=$false)][string]$DestinationFolder = "USQLScriptSource" # Destination folder in ADLS
 )
 
 Function UploadResources()
@@ -261,7 +261,7 @@ Function UploadResources()
     foreach($file in $files)
     {
         Write-Host "Uploading file: $($file.Name)"
-        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DesitinationFolder $file)" -Force
+        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DestinationFolder $file)" -Force
     }
 }
 
@@ -454,31 +454,31 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
 
 | Paraméter | Leírás | Alapértelmezett érték | Szükséges |
 |---------|-----------|-------------|--------|
-|Csomag|A U-SQL-adatbázis központi telepítési csomag telepítendő elérési útja.|NULL|true|
+|Csomag|A U-SQL-adatbázis központi telepítési csomag telepítendő elérési útja.|null|true|
 |Adatbázis|A telepített vagy létrehozott adatbázis neve.|master|false|
-|Naplófájl|A fájl elérési útját a naplózást. Alapértelmezés szerint ki (konzol) standard.|NULL|false|
-|LogLevel|Naplózási szintjének: részletes, normál, figyelmeztetés vagy hiba.|LogLevel.Normal|false|
+|LogFile|A fájl elérési útját a naplózást. Alapértelmezés szerint ki (konzol) standard.|null|false|
+|LogLevel|Naplózási szint: Részletes, normál, figyelmeztetés vagy hiba.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Helyi telepítés paraméter
 
 |Paraméter|Leírás|Alapértelmezett érték|Szükséges|
 |---------|-----------|-------------|--------|
-|DataRoot|A helyi adatok gyökérmappa elérési útja.|NULL|true|
+|DataRoot|A helyi adatok gyökérmappa elérési útja.|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Az Azure Data Lake Analytics üzembe helyezési paraméterek
 
 |Paraméter|Leírás|Alapértelmezett érték|Szükséges|
 |---------|-----------|-------------|--------|
-|Fiók|Itt adhatja meg, amely az Azure Data Lake Analytics-fiók telepíteni a fiók nevét.|NULL|true|
-|ResourceGroup|Az Azure erőforráscsoport nevét az Azure Data Lake Analytics-fiók.|NULL|true|
-|SubscriptionId|Az Azure Data Lake Analytics-fiók Azure-előfizetés azonosítója.|NULL|true|
-|Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartománynév. Az előfizetés-kezelési oldalán, az Azure Portalon keresse meg azt.|NULL|true|
-|AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|NULL|true|
+|Fiók|Itt adhatja meg, amely az Azure Data Lake Analytics-fiók telepíteni a fiók nevét.|null|true|
+|ResourceGroup|Az Azure erőforráscsoport nevét az Azure Data Lake Analytics-fiók.|null|true|
+|SubscriptionId|Az Azure Data Lake Analytics-fiók Azure-előfizetés azonosítója.|null|true|
+|Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartománynév. Az előfizetés-kezelési oldalán, az Azure Portalon keresse meg azt.|null|true|
+|AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|null|true|
 |Interaktív|E interaktív módban használja a hitelesítéshez.|false|false|
-|ClientID|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|NULL|Nem interaktív hitelesítés szükséges.|
-|Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|NULL|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
-|SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|NULL|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
-|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|NULL|false|
+|ClientID|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|null|Nem interaktív hitelesítés szükséges.|
+|Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|null|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
+|SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|null|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
+|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|null|false|
 | JobPrefix | Az előtag, az adatbázis DDL U-SQL feladatok üzembe helyezéséhez. | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>További lépések

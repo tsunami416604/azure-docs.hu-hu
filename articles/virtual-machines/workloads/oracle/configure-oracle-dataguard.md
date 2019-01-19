@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 08420be7171df78babf62b262fef84fd29fb34ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 37ecb314c5f09a51d9ce9d28534a4664b75069af
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495063"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412750"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard megvalósítása az Azure-beli Linuxos virtuális gépen 
 
@@ -48,9 +48,9 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot a használatával a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure erőforrások üzembe helyezése és felügyelt. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure erőforrások üzembe helyezése és felügyelt. 
 
-A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` a a `westus` helye:
+A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/8/2019
 ms.author: rajanaki
-ms.openlocfilehash: c267fc8a3a40d5e1a4f34b607762e1f79e5940b3
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: eecd409c0256c42646edfc99208e180a42f1cb5b
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383436"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401486"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
 Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.
@@ -48,7 +48,7 @@ Az Azure Site Recovery rendszeres időközönként – beleértve a új funkció
 2. Tekintse meg a [szolgáltatásfrissítések](https://azure.microsoft.com/updates/?product=site-recovery) ismerje meg, melyik verzióját a Site Recovery összetevők támogatja az adott versionn, hogy frissíteni szeretné.
 3. Először frissítsen a legújabb hely helyreállítása verzióra.
 4. A kívánt verziók, frissítse az operációs rendszer kernelén.
-5. Hajtsa végre egy újraindítás.
+5. Végezze el az újraindítást.
 6. Ez biztosítja, hogy az operációs rendszer/Kernel verziója a gépeken vannak frissítve a legújabb verzióra, és hogy a forrásoldali virtuális gépen is betöltött a Site Recovery változásokat, melyek szükségesek az új verzióját.
 
 

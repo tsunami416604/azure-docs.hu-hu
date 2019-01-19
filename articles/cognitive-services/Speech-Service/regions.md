@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e33bf7cd98cdd5862af6f4d68d3d73de1a07d229
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329507"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413158"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
 
@@ -71,12 +71,12 @@ A beszédfelismerési szolgáltatás is elérhetővé teszi a hang-szöveg és a
 
 ### <a name="speech-to-text"></a>Hang-szöveg
 
-Referencia a hang-szöveg transzformációs dokumentációjáért lásd: [REST API-k](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
+Referencia a hang-szöveg transzformációs dokumentációjáért lásd: [REST API-k](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 
-Szöveg-hang transzformációs dokumentációja, lásd: [REST API-k](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
+Szöveg-hang transzformációs dokumentációja, lásd: [REST API-k](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

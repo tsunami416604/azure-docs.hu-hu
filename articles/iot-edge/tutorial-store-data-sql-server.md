@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 01/18/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 426e4fe05890f1669859545db3d731943a12428a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260175"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412223"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Az SQL Server-adatbázisok a peremhálózaton data Store
 
@@ -36,7 +36,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Egy Azure IoT Edge-eszköz:
 
-* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [Linux-](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójának lépéseit követve. 
+* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [Linux-](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójának lépéseit követve.
+
+  > [!NOTE]
+  > Az SQL Server csak a Linux-tárolók támogatja. Ha azt szeretné, teszteléséhez, ebben az oktatóanyagban az Edge-eszközt egy Windows eszköz segítségével, konfigurálnia kell azt, hogy Linux-tárolók használja. Lásd: [telepítse az Azure IoT Edge-modul a Windows](how-to-install-iot-edge-windows-with-linux.md) az előfeltételeket és a Linux-tárolók esetén az IoT Edge-futtatókörnyezet konfigurálása a Windows telepítési lépéseit.
 
 Felhőerőforrások:
 
@@ -227,15 +230,9 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 1. A Visual Studio Code Explorerben nyissa meg a **deployment.template.json** fájlt. 
 
-2. Keresse meg a **modulok** szakaszban. A listában a következő két modulnak kell szerepelnie: a szimulált adatokat előállító **tempSensor** modulnak és a saját **sqlFunction** moduljának.
+1. Keresse meg a **modulok** szakaszban. A listában a következő két modulnak kell szerepelnie: a szimulált adatokat előállító **tempSensor** modulnak és a saját **sqlFunction** moduljának.
 
-3. Ha Windows-tárolókat használ, módosítsa az **sqlFunction.settings.image** szakaszt.
-
-   ```json
-   "image": "${MODULES.sqlFunction.windows-amd64}"
-   ```
-
-4. Adja hozzá a következő kódot egy harmadik modul deklarálásához. Adjon hozzá egy vesszőt az sqlFunction szakasz után, és szúrja be a következőt:
+1. Adja hozzá a következő kódot egy harmadik modul deklarálásához. Adjon hozzá egy vesszőt az sqlFunction szakasz után, és szúrja be a következőt:
 
    ```json
    "sql": {
@@ -253,29 +250,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
    ![A jegyzékfájl az SQL server modul hozzáadása](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. Az IoT Edge-eszközt a Docker-tárolók típusától függően frissíteni a **sql** modul paraméterei, az alábbi kódra:
-   * Windows-tárolók:
-
-      ```json
-      "env": {
-        "ACCEPT_EULA": {"value": "Y"},
-        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-      },
-      "settings": {
-        "image": "microsoft/mssql-server-windows-developer",
-        "createOptions": {
-          "HostConfig": {
-            "Mounts": [{"Target": "C:\\mssql","Source": "sqlVolume","Type": "volume"}],
-            "PortBindings": {
-              "1433/tcp": [{"HostPort": "1401"}]
-            }
-          }
-        }
-      }
-      ```
-
-   * Linux-tárolók:
-
+1. Frissítés a **sql** modul paraméterei, az alábbi kódra:
       ```json
       "env": {
         "ACCEPT_EULA": {"value": "Y"},
@@ -295,9 +270,9 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
       ```
 
    >[!Tip]
-   >Ha éles környezetben hoz létre SQL Server-tárolót, minden esetben [módosítsa az alapértelmezett rendszergazdai jelszót](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
+   >Ha éles környezetben hoz létre SQL Server-tárolót, minden esetben [módosítsa az alapértelmezett rendszergazdai jelszót](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
 
-6. Mentse a **deployment.template.json** fájlt.
+1. Mentse a **deployment.template.json** fájlt.
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
@@ -353,42 +328,16 @@ Ha alkalmazza az üzembehelyezési jegyzékfájlt az eszközön, akkor három fu
 Futtassa az alábbi parancsokat az IoT Edge-eszközön. Ezek a parancsok csatlakozni a **sql** modul fut az eszközön, és hozzon létre egy adatbázist és a hozzá küldött hőmérsékleti adatokat tároló tábla. 
 
 1. A parancssori eszköz az IoT Edge-eszközön csatlakozzon az adatbázishoz. 
-   * Windows-tárolók:
-   
-      ```cmd
-      docker exec -it sql cmd
-      ```
-    
-   * Linux-tárolók: 
-
       ```bash
       sudo docker exec -it sql bash
       ```
 
 2. Nyissa meg az SQL-parancssori eszközt.
-   * Windows-tárolók:
-
-      ```cmd
-      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
-      ```
-
-   * Linux-tárolók: 
-
       ```bash
       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. Adatbázis létrehozása: 
-
-   * Windows-tárolók
-      ```sql
-      CREATE DATABASE MeasurementsDB
-      ON
-      (NAME = MeasurementsDB, FILENAME = 'C:\mssql\measurementsdb.mdf')
-      GO
-      ```
-
-   * Linux-tárolók
       ```sql
       CREATE DATABASE MeasurementsDB
       ON

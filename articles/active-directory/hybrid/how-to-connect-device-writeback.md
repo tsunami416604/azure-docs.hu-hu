@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure AD Connect: Eszközvisszaírás engedélyezése |} A Microsoft Docs'
+title: 'Azure AD Connect: Eszközvisszaírás engedélyezése |} A Microsoft Docs'
 description: Ez a dokumentum részletesen bemutatja az Azure AD Connect használatával eszközvisszaírás engedélyezése
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361069"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412818"
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Az Azure AD Connect: Eszközvisszaírás engedélyezése
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Eszközvisszaírás engedélyezése
 > [!NOTE]
 > Prémium szintű Azure AD-előfizetés eszközvisszaírás szükség.
 > 
@@ -38,10 +38,10 @@ Ez biztosítja a további biztonsági és biztosítható, hogy csak a megbízhat
 > <li>Eszközök a felhasználók ugyanabban az erdőben kell működnie. Eszközök kell visszaírása az egyetlen erdővel, mivel ez a funkció jelenleg nem támogatja a több felhasználó erdő telepítésben.</li>
 > <li>Csak egy eszköz regisztrációs konfigurációs objektumot a helyi Active Directory-erdőben lehet hozzáadni. Ez a funkció szoftvere nem kompatibilis, ahol a helyszíni Active Directory több Azure AD-címtár szinkronizált topológiákkal.</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>1. lépés: Telepítse az Azure AD Connect
+## <a name="part-1-install-azure-ad-connect"></a>1. rész: Az Azure AD Connect telepítése
 Telepítse az Azure AD Connect használatával egyéni vagy Gyorsbeállítások. A Microsoft azt javasolja, a kezdéshez minden felhasználó és csoport szinkronizálása sikeres-eszközvisszaírás engedélyezése előtt.
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2. rész: Enable eszközvisszaírás az Azure AD Connectben
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2. rész: Az Azure AD Connectben eszközvisszaírás engedélyezése
 1. Futtassa újra a telepítővarázslót. Válassza ki **eszközbeállítások konfigurálása** további műveletek az oldalon, és kattintson **tovább**. 
 
     ![Eszközbeállítások konfigurálása](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -57,10 +57,10 @@ Telepítse az Azure AD Connect használatával egyéni vagy Gyorsbeállítások.
 
 4. **Eszköztároló** oldal nyújt lehetőséget az active directory előkészítése a két rendelkezésre álló lehetőségek egyikének használatával:
 
-    a. **Adja meg a vállalati rendszergazda hitelesítő adatait**: Ha a vállalati rendszergazdájának hitelesítő adatait az erdőben, ahol az eszközök visszaírása kell vannak megadva, az Azure AD Connect fogja az erdő előkészítésére automatikusan konfigurálása során eszközvisszaírás.
+    a. **Adja meg a vállalati rendszergazda hitelesítő adatait**: Ha a vállalati rendszergazdájának hitelesítő adatait az erdőben, ahol az eszközök visszaírása kell vannak megadva, az Azure AD Connect fogja az erdő előkészítésére automatikusan eszközvisszaírás konfigurálása során.
 
-    b. **PowerShell-szkript letöltése**: az Azure AD Connect automatikusan létrehozza egy eszközvisszaírás készítheti elő az active directory PowerShell-parancsfájlt. Abban az esetben a vállalati rendszergazdájának hitelesítő adatait az Azure AD Connect nem adható meg, javasolt a PowerShell-parancsprogram letöltése. Adja meg a letöltött PowerShell-parancsfájl **CreateDeviceContainer.psq** az erdőben, ahol eszközök visszaíródnak a vállalati rendszergazdájának.
-    ![Az active Directoryban erdő előkészítése](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    b. **PowerShell-szkript letöltése**: Az Azure AD Connect automatikusan létrehozza egy eszközvisszaírás készítheti elő az active directory PowerShell-parancsfájlt. Abban az esetben a vállalati rendszergazdájának hitelesítő adatait az Azure AD Connect nem adható meg, javasolt a PowerShell-parancsprogram letöltése. Adja meg a letöltött PowerShell-parancsfájl **CreateDeviceContainer.psq** az erdőben, ahol eszközök visszaíródnak a vállalati rendszergazdájának.
+    ![Active directory-erdő előkészítése](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     A következő műveleteket az active directory-erdő előkészítése:
     * Ha azok már nem létezik, hozza létre és konfigurálja az új tárolók és objektumok CN = Device Registration Configuration, CN = Services, CN = Configuration, [erdő-dn].
@@ -111,7 +111,7 @@ Az Active Directory konfigurációjának ellenőrzése:
 
 * Az Eszközregisztrációs szolgáltatás objektumon ellenőrizze, hogy, attribútum az msDS-DeviceLocation létezik, és egy értéket. Keresés a helyet, és ellenőrizze, hogy az az objectType msDS-DeviceContainer telepítve-e.
 
-![A hiba elhárításához msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
+![Troubleshoot, msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
 
 ![A hiba elhárításához RegisteredDevices objektum osztálya](./media/how-to-connect-device-writeback/troubleshoot4.png)
 
@@ -123,7 +123,7 @@ Az Active Directory konfigurációjának ellenőrzése:
 
 ![Hibaelhárítás, Eszközregisztráció konfigurációja az engedélyek ellenőrzése](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 * [Kockázatkezelés feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)
 * [A helyszíni feltételes hozzáférés használata az Azure Active Directory Eszközregisztráció beállítása](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 

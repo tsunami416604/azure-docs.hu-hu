@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9ed3ab89387afc78bd631416a683e11f4dc7054a
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287472"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402251"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Az Azure SQL Data warehouse erőforrásosztályok számítási feladatok kezelése
 Útmutató a erőforrásosztályok használata kezelheti a memória és a lekérdezések az Azure SQL Data Warehouse a CONCURRENCY paraméterének értékét.  
@@ -81,16 +81,16 @@ A **Gen2 csak**, dinamikus erőforrásosztályokkal dinamikusak valóban címzé
 
 | Erőforrásosztály | Memória százalékos aránya | Minimális egyidejű lekérdezések |
 |:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3 %                | 32                     |
+| smallrc        | 3%                | 32                     |
 | mediumrc       | 10%               | 10                     |
-| largerc        | 22 %               | 4                      |
+| largerc        | 22%               | 4                      |
 | xlargerc       | 70%               | 1                      |
 
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
 Alapértelmezés szerint minden felhasználó tagja, a dinamikus erőforrásosztályt **smallrc**. 
 
-A szolgáltatás-rendszergazdai erőforrás osztályát rögzített, és nem módosítható.  A szolgáltatás-rendszergazda a felhasználó a kiépítési folyamat során létrehozott.
+A szolgáltatás-rendszergazdai erőforrás osztályát smallrc van rögzítve, és nem módosítható.  A szolgáltatás-rendszergazda a felhasználó a kiépítési folyamat során létrehozott.  Ebben a környezetben a szolgáltatás-rendszergazda a bejelentkezés, ha a "kiszolgálói rendszergazdai bejelentkezéssel" megadott hozzon létre egy új SQL Data Warehouse-példányt az új kiszolgáló.
 
 > [!NOTE]
 > Felhasználók vagy csoportok definiálva, az Active Directory-rendszergazda egyben a szolgáltatás-rendszergazdák.
@@ -105,7 +105,7 @@ Erőforrásosztályok úgy tervezték, felügyeleti és adatmanipulációs tevé
 
 Ezek a műveletek erőforrásosztályok vonatkoznak rájuk:
 
-* INSERT SELECT, UPDATE, DELETE
+* INSERT-SELECT, UPDATE, DELETE
 * Válassza ki (Ha a felhasználó a táblákat kérdezi le)
 * Az ALTER INDEX - ÚJRAÉPÍTÉSI vagy REORGANIZE
 * ALTER TABLE REBUILD
@@ -132,7 +132,7 @@ A következő utasításokat mentesülnek az erőforrásosztályok, és a smallr
 * LÉTREHOZÁS, frissítés és a DROP STATISTICS
 * TÁBLA CSONKOLÁSA
 * AZ ALTER ENGEDÉLYEZÉSI
-* BEJELENTKEZÉS LÉTREHOZÁSA
+* CREATE LOGIN
 * CREATE, ALTER vagy DROP USER
 * CREATE, ALTER vagy DROP ELJÁRÁST
 * LÉTREHOZÁS vagy a DROP megtekintése

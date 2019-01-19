@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 31fe0ede202b72a3e71c8028543ef0677a44a335
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275669"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413022"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -71,7 +71,7 @@ A következő PowerShell-parancs futtatásakor kell a AzureStack\CloudAdmin adja
     Get-AzureStackRootCert.ps1
 ```
 
-#### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 szkriptparaméterek
+#### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 script parameters
 
 | Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
@@ -86,7 +86,7 @@ A *létrehozás-AppServiceCerts.ps1* parancsfájl együttműködik az Azure Stac
 | --- | --- |
 | _.appservice.local.azurestack.external.pfx | App Service API alapértelmezett SSL-tanúsítványa |
 | api.appservice.local.azurestack.external.pfx | App Service API SSL-tanúsítvány |
-| ftp.appservice.local.azurestack.external.pfx | Az App Service-közzétevő SSL-tanúsítvány |
+| ftp.appservice.local.azurestack.external.pfx | App Service publisher SSL certificate |
 | sso.appservice.local.azurestack.external.pfx | App Service-ben identitás alkalmazástanúsítványa |
 
 A tanúsítványok létrehozásához kövesse az alábbi lépéseket:
@@ -96,7 +96,7 @@ A tanúsítványok létrehozásához kövesse az alábbi lépéseket:
 3. Futtassa a *létrehozás-AppServiceCerts.ps1* parancsfájlt a mappát, amelyikbe kibontotta a segítő szkripteket. Ez a szkript létrehoz négy tanúsítványok ugyanabban a mappában, amelyet az App Service tanúsítványok létrehozására szolgáló szkriptet.
 4. Adjon meg egy jelszót a .pfx fájlok védelmét, és jegyezze fel azt. Adja meg az App Service az Azure Stack-telepítő a kell.
 
-#### <a name="create-appservicecertsps1-script-parameters"></a>Hozzon létre AppServiceCerts.ps1 szkriptparaméterek
+#### <a name="create-appservicecertsps1-script-parameters"></a>Create-AppServiceCerts.ps1 script parameters
 
 | Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
@@ -327,7 +327,7 @@ A rendszergazdák egyszeri Bejelentkezést, hogy kell konfigurálni:
 Kövesse az alábbi lépéseket:
 
 1. Nyisson meg egy PowerShell-példány azurestack\AzureStackAdmin.
-2. Lépjen arra a helyre, azokat a parancsprogramokat, letöltött és kibontott az a [előfeltétel-ellenőrzési lépés](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Lépjen arra a helyre, azokat a parancsprogramokat, letöltött és kibontott az a [előfeltétel-ellenőrzési lépés](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started).
 3. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 4. Futtassa a **létrehozás-AADIdentityApp.ps1** parancsfájlt. Ha kéri, adja meg az Azure AD-bérlő azonosítója, amely az Azure Stack üzemelő példány használja. Adja meg például **myazurestack.onmicrosoft.com**.
 5. Az a **Credential** ablakban adja meg az Azure AD szolgáltatás-rendszergazdai fiókot és jelszót. Kattintson az **OK** gombra.
@@ -353,7 +353,7 @@ Kövesse az alábbi lépéseket:
 | AzureStackAdminCredential | Szükséges | Null | Az Azure AD szolgáltatás rendszergazdai hitelesítő adataihoz. |
 | CertificateFilePath | Szükséges | Null | **Teljes elérési útja** , az identitás alkalmazástanúsítvány-fájlja korábban létrehozott. |
 | CertificatePassword | Szükséges | Null | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
-| Környezet | Optional | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: "AzureCloud", 'AzureChinaCloud', "AzureUSGovernment", "AzureGermanCloud".|
+| Környezet | Optional | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory összevonási szolgáltatások alkalmazás létrehozása
 
@@ -371,7 +371,7 @@ A rendszergazdák egyszeri Bejelentkezést, hogy kell konfigurálni:
 Kövesse az alábbi lépéseket:
 
 1. Nyisson meg egy PowerShell-példány azurestack\AzureStackAdmin.
-2. Lépjen arra a helyre, azokat a parancsprogramokat, letöltött és kibontott az a [előfeltétel-ellenőrzési lépés](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Lépjen arra a helyre, azokat a parancsprogramokat, letöltött és kibontott az a [előfeltétel-ellenőrzési lépés](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started).
 3. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 4. Futtassa a **létrehozás-ADFSIdentityApp.ps1** parancsfájlt.
 5. Az a **Credential** ablakban adja meg az AD FS felhőalapú rendszergazdai fiók és jelszó. Kattintson az **OK** gombra.

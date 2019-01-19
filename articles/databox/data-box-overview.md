@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955337"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411407"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -59,10 +59,11 @@ A Data Box eszköz jelen kiadása az alábbi funkciókkal rendelkezik.
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Tömeg                                                  | < 22,7 kg                |
-| Dimenziók                                              | Eszköz – szélesség: 309 mm; magasság: 430,4 mm; mélység: 502 mm |            
+| Dimenziók                                              | Eszköz - Width: Magasság 309.0 HH: 430.4 mm mélysége: 502.0 mm |            
 | Kiszolgálószekrény-terület                                              | 7 U a kiszolgálószekrénybe helyezve, az oldalára állítva (nem szerelhető rá az állványra)|
 | Szükséges kábelek                                         | 1 db tápkábel (a csomag tartalmazza) <br> 2 db RJ45-kábel <br> 2 db SFP+ Twinax-rézkábel|
 | Tárkapacitás                                        | A 100 TB-os eszköz 80 TB felhasználható kapacitással rendelkezik a RAID 5-védelem alkalmazása után|
+| Energiagazdálkodási minősítése                                            | A kiemelt ellátási egység besorolású 700. <br> Általában egység húz 375.|
 | Hálózati illesztők                                      | 2 db 1 GbE sávszélességű illesztő – MGMT, Data 3. <br> MGMT – a kezeléshez, felhasználó által nem konfigurálható, a kezdeti beállításhoz szükséges <br> DATA3 – az adatokhoz, felhasználó által konfigurálható, alapértelmezetten dinamikus <br> Az MGMT és a DATA 3 is működhet 10 GbE-ként <br> 2 db 10 GbE sávszélességű illesztő – DATA 1, DATA 2 <br> Mindkettő az adatokhoz, konfigurálhatók dinamikusra (alapértelmezés) vagy statikusra |
 | Adatátviteli felület                                     | RJ45, SFP + 10 GbE réz Ethernet  |
 | Biztonság                                                | Ütésálló eszköztok, az illetéktelen hozzáférést gátló, egyedi csavarokkal <br> Az illetéktelen hozzáférést jelző matricák az eszköz alján|

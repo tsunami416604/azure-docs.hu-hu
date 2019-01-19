@@ -1,30 +1,30 @@
 ---
-title: 'Hozzon létre, és telepítse a P2S VPN-ügyfélkonfigurációs fájlok Azure Tanúsítványalapú hitelesítés: Azure |} A Microsoft Docs'
+title: 'Hozzon létre és telepítse a P2S VPN-ügyfélkonfigurációs fájlok Azure tanúsítványalapú hitelesítéshez: Azure | Microsoft Docs'
 description: Hozzon létre és telepítse a Windows, Linux, (strongSwan) Linux és Mac OS X VPN ügyfél konfigurációs fájljainak a P2S-tanúsítvány hitelesítéséhez.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11d23102ca807ab1ddf41f1d0e72aed8a8513ac8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636645"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412065"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Hozzon létre és telepítse a VPN-ügyfélkonfigurációs fájlok az Azure natív Tanúsítványalapú hitelesítés P2S konfiguráció
 
-VPN-ügyfél konfigurációs fájljainak egy zip-fájlt tartalmazza. Konfigurációs fájlokat adja meg a natív Windows, az IKEv2 VPN Mac vagy Linux rendszerű ügyfelek Azure natív tanúsítványalapú hitelesítést használó pont – hely kapcsolaton keresztül egy virtuális hálózathoz való kapcsolódáshoz szükséges beállításokat. További információk a pont–hely kapcsolatokról: [Információk a pont–hely VPN-ről](point-to-site-about.md).
+VPN-ügyfél konfigurációs fájljainak egy zip-fájlt tartalmazza. Konfigurációs fájlokat adja meg a natív Windows, az IKEv2 VPN Mac vagy Linux rendszerű ügyfelek Azure natív tanúsítványalapú hitelesítést használó pont – hely kapcsolaton keresztül egy virtuális hálózathoz való kapcsolódáshoz szükséges beállításokat.
+
+Ügyfél-konfigurációs fájlok kapcsolódnak a virtuális hálózatok közötti VPN konfigurációját. Ha módosítania kellene a pont – hely VPN-konfiguráció után hozza létre a VPN-ügyfélkonfigurációs fájlok, például a VPN-protokoll típusa vagy a hitelesítési típus, ügyeljen arra, hozzon létre új VPN-ügyfél konfigurációs fájljainak a felhasználói eszközökön. 
+
+* További információk a pont–hely kapcsolatokról: [Információk a pont–hely VPN-ről](point-to-site-about.md).
+* OpenVPN útmutatásért lásd: [konfigurálása OpenVPN p2s](vpn-gateway-howto-openvpn.md) és [OpenVPN konfigurálása az ügyfelek](vpn-gateway-howto-openvpn-clients.md).
 
 >[!IMPORTANT]
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
->
-
->[!NOTE]
->Ügyfél-konfigurációs fájlok kapcsolódnak a virtuális hálózatok közötti VPN konfigurációját. Ha módosítania kellene a pont – hely VPN-konfiguráció után hozza létre a VPN-ügyfélkonfigurációs fájlok, például a VPN-protokoll típusa vagy a hitelesítési típus, ügyeljen arra, hozzon létre új VPN-ügyfél konfigurációs fájljainak a felhasználói eszközökön.
->
 >
 
 ## <a name="generate"></a>VPN-ügyfél konfigurációs fájlok létrehozása
@@ -111,7 +111,7 @@ Kattintson a **Hozzáadás** importálásához.
   ![alkalmaz](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Az a **hálózati** párbeszédpanelen kattintson a **alkalmaz** összes módosítások mentéséhez. Kattintson a **Connect** elindításához a P2S-kapcsolat az Azure vnetre.
 
-## <a name="linuxgui"></a>Linux (strongSwan grafikus felhasználói felület)
+## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
 ### <a name="extract-the-key-and-certificate"></a>Bontsa ki a kulcsot, és a tanúsítvány
 
@@ -158,7 +158,7 @@ Az alábbi utasítások alapján létrehozott strongSwan 5.5.1 Ubuntu 17.0.4 ren
   ![egy belső IP-cím kérése](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
 8. Kattintson a **hálózatkezelő** (up-nyíl/lefelé mutató nyilat) ikonra, és vigye a kurzort **VPN-kapcsolatok**. Megjelenik a létrehozott VPN-kapcsolatot. Kattintson a kapcsolat létrehozására.
 
-## <a name="linuxinstallcli"></a>Linux (strongSwan parancssori felület)
+## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
 ### <a name="install-strongswan"></a>StrongSwan telepítése
 

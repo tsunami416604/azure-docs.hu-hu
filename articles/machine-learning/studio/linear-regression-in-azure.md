@@ -1,45 +1,41 @@
 ---
-Cím: Using linear regression in Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Az Excel és a szolgáltatások az Azure Machine Learning Studio lineáris regressziós modellek összehasonlítása: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Az Excel analytics áttelepíteni az Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio description: Az Excel és a szolgáltatások az Azure Machine Learning Studio lineáris regressziós modellek összehasonlítása: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---
-# <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Lineáris regresszió használata az Azure Machine Learning Studióban
-> *Kate Baroni* és *Ben Boatman* vannak a vállalati Microsoft Data Insights kiváló Center a megoldástervezők. Ebben a cikkben bemutatják egy meglévő regressziós elemzési suite egy felhőalapú megoldás segítségével az Azure Machine Learning-ba való migrálás tapasztalataikról. 
-> 
-> 
+# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
 
-&nbsp; 
-
-
+> *Kate Baroni* és *Ben Boatman* vannak a vállalati Microsoft Data Insights kiváló Center a megoldástervezők. Ebben a cikkben bemutatják egy meglévő regressziós elemzési suite egy felhőalapú megoldás segítségével az Azure Machine Learning Studio-ba való migrálás tapasztalataikról.
 
 ## <a name="goal"></a>Cél
+
 A projekt lépések két célok elérésére: 
 
 1. Prediktív elemzés használatával a szervezet havi bevétel előrejelzése pontosságának javítása 
-2. Az Azure Machine Learning segítségével győződjön meg arról, optimalizálja, növelheti a sebességet, az eredmények hatékonyságát és méretét. 
+2. Az Azure Machine Learning Studio használatával győződjön meg arról, optimalizálja, növelheti a sebességet, az eredmények hatékonyságát és méretét. 
 
-Számos vállalat, például a szervezet számára végighalad egy havi bevétel előrejelzési folyamat. Az üzleti elemzők kis csoportja volt biztosítja az Azure Machine Learning segítségével a folyamat támogatásához, és az előrejelzési pontosság növeléséhez. A csapat néhány hónappal a különböző forrásokból származó adatok gyűjtése és azonosítása legfőbb attribútumai a szolgáltatások értékesítési előrejelzés statisztikai elemzés keresztül az adatok attribútumok futtató töltött. A következő lépés az adatok az Excelben a prototípus-készítés statisztikai regressziós modellek megkezdéséhez volt. Az Excel regressziós modellt, amely a jelenlegi és a folyamatok előrejelzés pénzügyi volt outperforming kellett néhány héten belül. Ez lett az alapvető előrejelzési eredményt. 
+Számos vállalat, például a szervezet számára végighalad egy havi bevétel előrejelzési folyamat. Az üzleti elemzők kis csoportja volt biztosítja az Azure Machine Learning Studio segítségével a folyamat támogatásához, és az előrejelzési pontosság növeléséhez. A csapat néhány hónappal a különböző forrásokból származó adatok gyűjtése és azonosítása legfőbb attribútumai a szolgáltatások értékesítési előrejelzés statisztikai elemzés keresztül az adatok attribútumok futtató töltött. A következő lépés az adatok az Excelben a prototípus-készítés statisztikai regressziós modellek megkezdéséhez volt. Az Excel regressziós modellt, amely a jelenlegi és a folyamatok előrejelzés pénzügyi volt outperforming kellett néhány héten belül. Ez lett az alapvető előrejelzési eredményt. 
 
-Ezután meggyőződtünk a következő lépéssel, ismerje meg, hogyan javíthatja a Machine Learning a prediktív teljesítményét az Azure Machine Learning a prediktív elemzési helyezi.
+Ezután meggyőződtünk a következő lépés a Studióban, hogy ismerje meg, hogyan javíthatja a Studio prediktív teljesítményét, a prediktív elemzési helyezi.
 
 ## <a name="achieving-predictive-performance-parity"></a>Prediktív teljesítmény paritásos elérése
-Az első elsőbbséget volt a Machine Learning és az Excel regressziós modellek paritása eléréséhez. Adja meg ugyanazokat az adatokat, és az adott felosztás betanítására és tesztelésére az adatokat, szerettünk volna túllépni az Excel és a Machine Learning prediktív teljesítmény paritása eléréséhez. Kezdetben nem sikerült. Az Excel-modell outperformed Machine Learning-modellhez. A hiba történt egy megértése a Machine Learning alapvető eszköz beállítás hiánya miatt. A Machine Learning termékért felelős csoport szinkronban után azt szerzett beállítása az adatkészletekhez szükséges alap jobban megértette, és a két modell közti paritásos érhető. 
+Az első elsőbbséget volt Studio és az Excel regressziós modellek paritása eléréséhez. Adja meg ugyanazokat az adatokat, és az adott felosztás betanítására és tesztelésére az adatokat, szerettünk volna túllépni az Excel és a Studio prediktív teljesítmény paritása eléréséhez. Kezdetben nem sikerült. Az Excel-modell outperformed a Studio modell. A hiba ismertetése a Studióban alap eszköz beállítás hiánya miatt történt. A Studio termékért felelős csoport szinkronban után azt szerzett beállítása az adatkészletekhez szükséges alap jobban megértette, és a két modell közti paritásos érhető. 
 
 ### <a name="create-regression-model-in-excel"></a>Regressziós modell létrehozásához az Excelben
 Az Excel regressziós az Excel Analysis ToolPak található standard lineáris regressziós modellt használja. 
 
-Azt a számított *átlagos abszolút % hiba* és a teljesítményadatok részeként használja, a modellt. Ahhoz, hogy eljusson az Excel használatával működő modell 3 hónap végrehajtásának. A Microsoft tudomására nagy része a Machine Learning Studio-kísérletet, amely végső soron a követelményeinek ismertetése a hasznos volt be a learning.
+Azt a számított *átlagos abszolút % hiba* és a teljesítményadatok részeként használja, a modellt. Ahhoz, hogy eljusson az Excel használatával működő modell 3 hónap végrehajtásának. A Microsoft tudomására nagy része a Studio-kísérletet, amely végső soron a követelményeinek ismertetése a hasznos volt be a learning.
 
-### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Az Azure Machine Learning összehasonlítható kísérlet létrehozása
-Hogy követni ezeket a lépéseket a kísérlet létrehozása a Machine Learning Studio: 
+### <a name="create-comparable-experiment-in-studio"></a>A Studio összehasonlítható kísérlet létrehozása
+Hogy követni ezeket a lépéseket a kísérlet létrehozása a Studióban: 
 
-1. Az adatkészlet feltöltött csv-fájlként Machine Learning Studio (igen kis méretű fájl)
+1. Az adatkészlet feltöltött csv-fájlként studióba (igen kis méretű fájl)
 2. Új kísérlet hoztunk létre, és a [Select Columns in Dataset] [ select-columns] modult, válassza ki a ugyanazon adatok szolgáltatásokat használt az Excelben 
 3. Használja a [Split Data] [ split] modul (az *relatív kifejezés* módban), az adatok ossza az azonos képzési adathalmazok alapján, mivel az Excelben 
 4. Végzett a kísérletezést a [lineáris regressziós] [ linear-regression] modul (alapértelmezett beállításai csak), dokumentált, és az eredményeket az Excelben regressziós modellt a képest
 
 ### <a name="review-initial-results"></a>Tekintse át a kezdeti eredményei
-Először az Excel-modell egyértelműen outperformed a Machine Learning Studio-modell: 
+Először az Excel-modell egyértelműen outperformed a Studio-modellek: 
 
 |  | Excel | Studio |
 | --- |:---:|:---:|
@@ -51,13 +47,13 @@ Először az Excel-modell egyértelműen outperformed a Machine Learning Studio-
 
 Problémába ütköztünk a folyamat és az eredmények és az adatelemzők által a Machine Learning-csapat, amikor azok gyorsan megadott néhány hasznos tippeket. 
 
-* Használatakor a [lineáris regressziós] [ linear-regression] modul a Machine Learning Studióban, a két módszer találhatók:
+* Használatakor a [lineáris regressziós] [ linear-regression] modul a Studióban, a két módszer találhatók:
   * Online gradiens módszeres: A nagyobb méretű problémákat megfelelőbb lehet
   * Szokásos legkisebb négyzetek: Ez a legtöbb ember úgy, ha azok hall, lineáris regresszió módszer. A kis adatkészletekhez a szokásos legkisebb négyzetek több optimális választás lehet.
 * Vegye figyelembe, hogy a teljesítmény javítása érdekében L2 Regularizációs súly paraméter finomhangolása. Alapértelmezés szerint 0,001 van beállítva, de a kisméretű adatkészlet esetében azt állítsa 0,005 teljesítmény javítása érdekében. 
 
 ### <a name="mystery-solved"></a>Megoldott titokzatos!
-A javaslatok alkalmazásakor azt ugyanazon alapteljesítményének a Machine Learning Studióban, az Excel használatával érhető el: 
+A javaslatok alkalmazásakor azt ugyanazon alapteljesítményének a Studióban, az Excel használatával érhető el: 
 
 |  | Excel | Studio (Initial) | Studio legkisebb négyzetek használatával |
 | --- |:---:|:---:|:---:|
@@ -85,7 +81,7 @@ Emellett az Excel együttható képest is a szolgáltatás súlyok az Azure beta
 ## <a name="next-steps"></a>További lépések
 Szerettünk volna a Machine Learning web service Excelből felhasználásához. Az üzleti elemzők támaszkodnak az Excel és a egy módszert hívja meg a Machine Learning webszolgáltatás egy Excel-adatok a sort, és azok az előre jelzett érték térjen vissza az Excel volt szükségünk ahhoz. 
 
-Is szerettünk volna a modell optimalizálása érdekében a beállításokat és a Machine Learning Studióban elérhető algoritmusok használatával.
+Is szerettünk volna a modell optimalizálása érdekében a beállításokat és a Studióban elérhető algoritmusok használatával.
 
 ### <a name="integration-with-excel"></a>Az Excel-integráció
 A megoldás volt, a Machine Learning regressziós modell üzembe helyezése a webszolgáltatás létrehozásával a betanított modellből. Néhány percen belül a web service lett létrehozva, és azt nevezzük közvetlenül az Excelből becsült bevétel értéket sikerült. 
@@ -103,7 +99,7 @@ Most, hogy az alapterv kellett az Excel-modell, költöztünk előre a Machine L
 
 Ezután tervezzük további algoritmusok például belefoglalása [Bayes] [ bayesian-linear-regression] vagy [súlyozott döntési fák] [ boosted-decision-tree-regression] a kísérletben összehasonlítása teljesítmény. 
 
-Ha azt szeretné, regressziós kísérletezhet, és próbálkozzon jó adathalmaz olyan numerikus attribútumok rengeteg energiát hatékonyság regressziós mintaadatkészlettel. Az adatkészlet a Machine Learning Studio mintaadatkészleteinek részeként van megadva. Tanulási modulok segítségével fűtés betöltése vagy hűtéssel terhelés előrejelzése. Az alábbi táblázatban a különböző regressziós teljesítményének összehasonlítását megtanulja az energiahatékonyságot adatkészlet előrejelzésére a cél változó Cooling terhelés alapján: 
+Ha azt szeretné, regressziós kísérletezhet, és próbálkozzon jó adathalmaz olyan numerikus attribútumok rengeteg energiát hatékonyság regressziós mintaadatkészlettel. Az adatkészlet a Studio mintaadatkészleteinek részeként van megadva. Tanulási modulok segítségével fűtés betöltése vagy hűtéssel terhelés előrejelzése. Az alábbi táblázatban a különböző regressziós teljesítményének összehasonlítását megtanulja az energiahatékonyságot adatkészlet előrejelzésére a cél változó Cooling terhelés alapján: 
 
 | Modell | Mean Absolute Error | Root mean-készlet négyzet hiba | Relatív abszolút hiba | Relatív négyzet hiba | Coefficient of Determination |
 | --- | --- | --- | --- | --- | --- |
@@ -113,11 +109,11 @@ Ha azt szeretné, regressziós kísérletezhet, és próbálkozzon jó adathalma
 | Lineáris regresszió (szokványos legkisebb négyzetek) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Kulcs Takeaways
-Már megtanultuk sokkal által a futó Excel regressziós, és az Azure Machine Learning-kísérleteket párhuzamosan. A modell létrehozása az Excel programban, és hasonlítsa össze a Machine Learning használatával [lineáris regressziós] [ linear-regression] USA megtudhatja, hogy az Azure Machine Learning, és hogy felderített fejlesztése érdekében adatokat segített Kijelölés és a modell teljesítményét. 
+Hogy sokat által futó Excel regressziós és Studio kísérletek párhuzamosan. A modell létrehozása az Excel programban, és hasonlítsa össze a Machine Learning használatával [lineáris regressziós] [ linear-regression] USA megtudhatja, hogy a Studio, és hogy felderített fejlesztése érdekében a kijelölt adatok és a modell segítségével teljesítmény. 
 
-Is találhatók, hogy tanácsos használandó [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] jövőbeli előrejelzési projektek felgyorsításához. Szolgáltatás kiválasztása hatására az adatok egy továbbfejlesztett modell létrehozhat a Machine Learning jobb általános teljesítményt. 
+Is találhatók, hogy tanácsos használandó [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] jövőbeli előrejelzési projektek felgyorsításához. Szolgáltatás kiválasztása alkalmaz az adatok, létrehozhat egy továbbfejlesztett modell Studio jobb általános teljesítményt. 
 
-Lehetővé teszi a prediktív elemzési előrejelzése a Machine Learning Excel elviselhető transfer jelentősen növelheti sikeresen biztosítani az eredményeket egy széles körű üzleti felhasználó közönség számára lehetővé teszi. 
+Lehetővé teszi a prediktív elemzési előrejelzés studióból Excel elviselhető transfer jelentősen növelheti sikeresen biztosítani az eredményeket egy széles körű üzleti felhasználó közönség számára lehetővé teszi. 
 
 ## <a name="resources"></a>További források
 Íme néhány forrás, hogy használatával a regressziós: 

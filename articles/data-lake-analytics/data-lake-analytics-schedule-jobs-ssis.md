@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1a0be03c278a152ea56fe0dac5277c39a0878057
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579233"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412509"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Az SQL Server Integration Services (SSIS) használatával U-SQL-feladatok ütemezése
 
@@ -40,13 +40,13 @@ Akkor képes a U-SQL parancsfájl különböző helyeken SSIS beépített függv
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>A forgatókönyv 1 használható beágyazott parancsprogram hívása tvfs és tárolt procs
 
-Az Azure Data Lake Analytics feladat Editor, konfigurálja **forrás típusa** , **DiretInput**, és a U-SQL-utasításokat injektálhatnak **USQLStatemnt**.
+Az Azure Data Lake Analytics feladat Editor, konfigurálja **forrás típusa** , **DirectInput**, és a U-SQL-utasításokat injektálhatnak **USQLStatemnt**.
 
-Egyszerű maintainence és kód felügyeleti, csak helyezzen rövid U-SQL-szkript, beágyazott parancsfájlokra például hívása meglévő táblázat értékű függvények és tárolt eljárások a U-SQL-adatbázisokban. 
+A könnyű karbantartás és a kód felügyeleti, csak helyezzen rövid U-SQL-szkript, beágyazott parancsfájlokra például hívása meglévő táblázat értékű függvények és tárolt eljárások a U-SQL-adatbázisokban. 
 
 ![Az SSIS-tevékenység beágyazott U-SQL parancsfájl szerkesztése](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Kapcsolódó cikk: [hogyan adhatók át a paramétert a tárolt eljárások](#scenario-6-pass-parameters-to-u-sql-script)
+Kapcsolódó cikk: [Hogyan lehet a paramétert átadhatja a tárolt eljárások](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>A forgatókönyv 2 használható U-SQL-fájlokat az Azure Data Lake Store
 
@@ -119,7 +119,7 @@ SSIS-csomag Tervező nézetben, adjon hozzá egy **Azure Data Lake Store rendsze
 
 Használhatja az Azure Blob Storage-U-SQL-fájlok használatával **Azure Blob letöltése feladat** az Azure Feature Pack. Ez a megközelítés lehetővé teszi a parancsfájlok használata a felhőben.
 
-A lépések hasonlóak az [Scnario 2: használjon U-SQL-fájlokat az Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Módosítsa a feladat az Azure Data Lake Store fájlt az Azure Blob letöltése feladat. [További információ az Azure Blob letöltése feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+A lépések hasonlóak az [2. forgatókönyv: Használjon U-SQL-fájlokat az Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Módosítsa a feladat az Azure Data Lake Store fájlt az Azure Blob letöltése feladat. [További információ az Azure Blob letöltése feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Átvitelvezérlés például nem éri el.
 

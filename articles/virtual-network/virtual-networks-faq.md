@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021033"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412869"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -52,7 +52,12 @@ A következő eszközök segítségével hozzon létre vagy a virtuális hálóz
 * A hálózat konfigurációs fájljában (a netcfg - csak a klasszikus virtuális hálózatok). Tekintse meg a [konfigurálása egy Vnethez a hálózati konfigurációs fájlt](virtual-networks-using-network-configuration-file.md) cikk.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Milyen címtartományok használható a saját virtuális hálózatokat?
-Minden IP-címtartomány meghatározott [RFC 1918](http://tools.ietf.org/html/rfc1918). Ha például a 10.0.0.0/16.
+Minden IP-címtartomány meghatározott [RFC 1918](http://tools.ietf.org/html/rfc1918). Ha például a 10.0.0.0/16. Nem adhat hozzá a következő-címtartományokat:
+* 224.0.0.0/4 (csoportos küldés)
+* 255.255.255.255/32 (közvetítés)
+* 127.0.0.0/8 (visszacsatolás)
+* 169.254.0.0/16 (kapcsolatszintű)
+* 168.63.129.16/32 (belső DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Használhatok nyilvános IP-címek a virtuális Hálózataimnak?
 Igen. További információ a nyilvános IP-címtartomány: [hozzon létre egy virtuális hálózatot](manage-virtual-network.md#create-a-virtual-network). Nyilvános IP-címek nem érhetők el közvetlenül az internetről.
@@ -367,7 +372,7 @@ A virtuális hálózati Szolgáltatásvégpontok a virtuális hálózat száma n
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Az Azure KeyVault|    127|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure-eseményközpont|   128|
 |Azure Service Bus| 128|

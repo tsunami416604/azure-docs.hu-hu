@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309450"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412568"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -57,7 +57,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Windows
 
 ### <a name="what-youll-need"></a>Az alábbiak szükségesek
 
-Egy fizikai Windows 10 IoT Core-eszköz beállításához kell rendelkeznie a Windows 10 IoT Core-es eszközök. Ismerje meg, hogyan állítható be a Windows 10 IoT Core-eszköz [Itt](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
+Egy valódi Windows 10 IoT Core-eszköz beállításához kell rendelkeznie a Windows 10 IoT Core-es eszközök. Ismerje meg, hogyan állítható be a Windows 10 IoT Core-eszköz [Itt](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 Egy ügyfélalkalmazás, amely képes kommunikálni az Azure IoT Central is szüksége lesz. Az Azure SDK-val saját egyéni alkalmazások készítése és üzembe helyezése a Visual Studio-eszközök az, vagy letöltheti egy [előre elkészített mintát](https://developer.microsoft.com/windows/iot/samples) és egyszerűen telepítheti és futtathatja az eszközt. 
 
@@ -105,7 +105,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 | Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
-| TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
+| TEMP           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Beállítások

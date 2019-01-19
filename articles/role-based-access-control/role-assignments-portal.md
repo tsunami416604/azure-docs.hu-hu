@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f5d48a074f8069e243af5644f86ad3c3d8f559b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634863"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412308"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Hozzáférés kezelése az RBAC és az Azure Portal használatával
 
@@ -165,7 +165,7 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Hozzáférést egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
-* [Oktatóanyag: Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
-* [Beépített szerepkörök](built-in-roles.md)
+* [Oktatóanyag: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
+* [Oktatóanyag: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+* [Az Azure-beli RBAC hibaelhárítása](troubleshooting.md)
 * [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md)

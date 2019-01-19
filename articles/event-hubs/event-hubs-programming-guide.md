@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138075"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401401"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -92,7 +92,7 @@ További információ és rendelkezésre állás és konzisztencia közötti sk�
 
 Események kötegekben való küldésével segíthet az átviteli sebesség növelése. Használhatja a [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) hozzon létre egy, amelyhez objektumok később hozzáadhatók a batch API-t egy [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) hívja.
 
-Az egy kötegben nem haladhatja meg az esemény 256 KB-os korlátot. Továbbá a kötegben lévő egyes üzenetek ugyanazzal a közzétevői identitással rendelkezik majd. A küldő felelőssége annak biztosítása, hogy a köteg mérete nem haladja meg az események maximális méretét. Ha mégis meghaladja, az ügyfél **Küldési** hibát jelez. Használhatja a segédmetódus [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) , győződjön meg arról, hogy a batch nem haladja meg a 256 KB. Megjelenik egy üres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) származó a [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API-t, majd [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) eseményeket létrehozásához a batch hozzáadásához. 
+Az egy kötegben nem haladhatja meg a 1 Megabájtos korlátot, ha az eseményeket. Továbbá a kötegben lévő egyes üzenetek ugyanazzal a közzétevői identitással rendelkezik majd. A küldő felelőssége annak biztosítása, hogy a köteg mérete nem haladja meg az események maximális méretét. Ha mégis meghaladja, az ügyfél **Küldési** hibát jelez. Használhatja a segédmetódus [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) , győződjön meg arról, hogy a batch nem haladja meg az 1 MB. Megjelenik egy üres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) származó a [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API-t, majd [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) eseményeket létrehozásához a batch hozzáadásához. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Aszinkron küldés és nagy léptékű küldés
 

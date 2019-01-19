@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
 ms.author: cynthn
-ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e283f21b65706860e198e2deca933f1986073cab
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932394"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413226"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linux virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Linux-disztribúció és operációsrendszer-verzió. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít rendszerek leggyakoribb disztribúciói és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -36,7 +36,7 @@ az group create -n myResourceGroup -l eastus
 ```
 
 
-## <a name="create-azure-credentials"></a>Az Azure hitelesítő adatok létrehozása
+## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 Csomagolói hitelesíti az Azure-ral egyszerű szolgáltatás használatával. Azure-beli szolgáltatásnév egy biztonsági identitás, az alkalmazások, szolgáltatások és automatizálási eszközökkel, mint például a Packer használható. Szabályozhatja és az egyszerű szolgáltatás az Azure-ban hajthat végre műveleteket helyrendszerszerepkörökre engedélyeinek megadásához.
 
 Az egyszerű szolgáltatás létrehozása [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) és csomagolói szükséges a hitelesítő adatokat:
@@ -201,7 +201,7 @@ A virtuális gép létrehozása, futtassa a provisioners és a központi telepí
 
 
 ## <a name="create-vm-from-azure-image"></a>Virtuális gép létrehozása az Azure-rendszerképből
-Most már létrehozhat egy virtuális Gépet a rendszerképből [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Adja meg a létrehozott lemezképet a `--image` paraméter. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* a *myPackerImage* és SSH-kulcsokat hoz létre, ha azok még nem léteznének:
+Most már létrehozhat egy virtuális Gépet a rendszerképből [az virtuális gép létrehozása](/cli/azure/vm). Adja meg a létrehozott lemezképet a `--image` paraméter. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* a *myPackerImage* és SSH-kulcsokat hoz létre, ha azok még nem léteznének:
 
 ```azurecli
 az vm create \

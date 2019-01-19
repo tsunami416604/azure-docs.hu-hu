@@ -15,22 +15,22 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f16bf06d03511223b54542ad7a389f78d37f3ea9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 06db540600be323b3129d64d18739582f6d9f2d0
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235071"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412652"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>A Service Fabric-alkalmazás hibakeresése a Visual Studio használatával
 > [!div class="op_single_selector"]
-> * [A Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Az eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
+> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 >
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Egy helyi Service Fabric-alkalmazás hibakeresése
-Időt és pénzt takaríthat üzembe helyezése és hibakeresése egy helyi számítógép fejlesztési fürtöt az Azure Service Fabric-alkalmazásokat. A Visual Studio 2017 vagy Visual Studio 2015 helyezze üzembe az alkalmazást a helyi fürthöz, és automatikusan csatlakoznak a hibakeresőt az alkalmazás összes példányáról.
+Időt és pénzt takaríthat üzembe helyezése és hibakeresése egy helyi számítógép fejlesztési fürtöt az Azure Service Fabric-alkalmazásokat. Visual Studio 2017 vagy Visual Studio 2015 is helyezze üzembe az alkalmazást a helyi fürthöz, és automatikusan csatlakoznak a hibakeresőt az alkalmazás összes példánya A Visual Studio csatlakozni a hibakeresőt rendszergazdaként kell futtatni.
 
 1. A lépéseket követve indítsa el a helyi fejlesztési fürt [a Service Fabric fejlesztési környezet beállítása](service-fabric-get-started.md).
 2. Nyomja meg **F5** , vagy kattintson **Debug** > **Start Debugging**.

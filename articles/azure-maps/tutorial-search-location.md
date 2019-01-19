@@ -3,18 +3,18 @@ title: Keresés az Azure Maps használatával | Microsoft Docs
 description: Közeli hasznos hely keresése az Azure Maps használatával
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/14/2018
+ms.date: 01/17/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1396260ef703ce22f8e0309bd2c8df691d0af86e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 04ab94d8b0b8f012707bb88a52c44b91063cbe39
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120461"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402183"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -153,11 +153,6 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
       });
       map.layers.add(resultLayer);
 
-      //Create a popup but leave it closed so we can update it and display it later.
-      popup = new atlas.Popup();
-
-      //Add a mouse over event to the result layer and display a popup when this event fires.
-      map.events.add('mouseover', resultLayer, showPopup);
    });
    ```
 

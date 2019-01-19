@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: b7a43135ef0aa0ecfe80000d2d0d73c57e138102
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8be8fa68b48257a8d94d3ba6364d47c522bbf3de
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975024"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401996"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Spark on HDInsight és az Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ A Spark teljesítményének hangolása, amikor kell figyelembe venni a fürtön 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md).
+* **Az Azure Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot](data-lake-storage-quickstart-create-account.md).
 * **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt. 
 * **Spark-fürtön futó Data Lake Storage Gen2**.  További információkért lásd: [használata a HDInsight Spark-fürt a Data Lake Storage Gen2 adatok elemzése](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
 * **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen2**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen2 teljesítményének hangolása útmutatója](data-lake-storage-performance-tuning-guidance.md) 
@@ -43,7 +43,7 @@ Amikor Spark futó feladatok, az alábbiakban a legfontosabb beállítások, ame
 
 **Végrehajtó virtuális mag** Ezzel beállítja, hogy a használt végrehajtó, amely megadja, hogy kiszolgálónként végrehajtó futtatható párhuzamos szálak száma / magok számát.  Például ha végrehajtó virtuális mag = 2, majd minden egyes végrehajtó 2 párhuzamos feladatokat futtathat a végrehajtó.  Az executor-magok szükség lesz a feladat függ.  Nagy i/o-feladatok nem igényelnek nagy mennyiségű memóriát biztosít a feladat, így minden végrehajtó további párhuzamos feladatok képes kezelni.
 
-Alapértelmezés szerint két virtuális YARN magok minden egyes fizikai maghoz vannak meghatározva a HDInsight Spark futtatásakor.  Ez a szám concurrecy és több szálon való váltás környezet mennyisége jó biztosít.  
+Alapértelmezés szerint két virtuális YARN magok minden egyes fizikai maghoz vannak meghatározva a HDInsight Spark futtatásakor.  Ez a szám egyidejűség és a környezet több szálon való váltás mennyisége jó biztosít.  
 
 ## <a name="guidance"></a>Útmutatás
 
@@ -60,11 +60,11 @@ Többféleképpen néhány általános i/o-igényes feladatok az egyidejűség m
     executor-cores = 4
 Executor-magok számának növelésével kap további párhuzamosság, kísérletezhet a különböző végrehajtó virtuális mag.  Összetettebb műveleteket rendelkező feladatok akkor csökkentse a végrehajtó / magok számát.  Ha végrehajtó virtuális mag nagyobb, mint 4, ezután szemétgyűjtés előfordulhat, hogy nem elég hatékony válnak, és ronthatja a teljesítményt.
 
-**4. lépés: A fürt YARN memória mennyiségét határozza meg** – Ez az információ érhető el az Ambari.  Keresse meg a YARN és a konfigurációkat lapon.  A YARN memória ebben az ablakban jelenik meg.  
+**4. lépés: Határozza meg a fürt YARN memória mennyisége** – Ez az információ érhető el az Ambari.  Keresse meg a YARN és a konfigurációkat lapon.  A YARN memória ebben az ablakban jelenik meg.  
 Megjegyzés: amíg a ablakban, láthatja az alapértelmezett YARN tárolóméret is.  A YARN-tároló mérete megegyezik a memória végrehajtó paraméterenként.
 
     Total YARN memory = nodes * YARN memory per node
-**5. lépés: A num-végrehajtóval kiszámítása**
+**5. lépés: Num-végrehajtóval kiszámítása**
 
 **Memória megkötés kiszámítása** -num-végrehajtóval paraméter által korlátozott, memória, vagy CPU.  A memória korlátozás az alkalmazás elérhető YARN memória mennyisége határozza meg.  YARN teljes memória igénybe kell, és, hogy nullával való osztás végrehajtó memóriában.  A korlátozás kell lennie megszüntetéséhez méretezett, az alkalmazások száma, ezért azt el kell osztani alkalmazások száma.
 
@@ -90,11 +90,11 @@ Tegyük fel, jelenleg rendelkezik 8 D4v2 csomópontokból álló fürttel 2 rend
 **3. lépés: Állítsa be az executor-magok** – mivel ez egy i/o-igényes feladat, azt az egyes végrehajtó 4 állíthatja a magok számát.  Magok száma végrehajtó beállítás nagyobb, mint 4 szemétgyűjtési gyűjtemény problémákat okozhat.  
 
     executor-cores = 4
-**4. lépés: A fürt YARN memória mennyiségét határozza meg** – azt keresse meg az Ambari tudja meg, hogy minden egyes D4v2 25 GB-nyi memóriát YARN rendelkezik-e.  Mivel ebben az esetben 8 csomópont, a rendszer megszorozza a rendelkezésre álló memória YARN 8.
+**4. lépés: Határozza meg a fürt YARN memória mennyisége** – azt keresse meg az Ambari tudja meg, hogy minden egyes D4v2 25 GB-nyi memóriát YARN rendelkezik-e.  Mivel ebben az esetben 8 csomópont, a rendszer megszorozza a rendelkezésre álló memória YARN 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**5. lépés: Kiszámítása num-végrehajtóval** – a num-végrehajtóval paraméter határozza meg a minimális, a memória megkötés véve, és a CPU-korlátozás a Sparkon futó alkalmazások száma osztva.    
+**5. lépés: Num-végrehajtóval kiszámítása** – a num-végrehajtóval paraméter határozza meg a minimális, a memória megkötés véve, és a CPU-korlátozás a Sparkon futó alkalmazások száma osztva.    
 
 **Memória megkötés kiszámítása** – a memória megkötés számítjuk ki, hogy elosztja az executor-memória memória összesen YARN.
 

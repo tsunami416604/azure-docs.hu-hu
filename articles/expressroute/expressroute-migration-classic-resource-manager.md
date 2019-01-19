@@ -1,19 +1,19 @@
 ---
-title: 'Virtuális hálózatok áttelepítése klasszikusról Resource Manager - ExpressRoute: Azure: PowerShell |} A Microsoft Docs'
+title: 'Virtuális hálózatok áttelepítése a klasszikusból a Resource Manager - ExpressRoute: Azure: PowerShell |} A Microsoft Docs'
 description: Ezen a lapon a kapcsolatcsoport áthelyezése után Resource Manager virtuális hálózatokat az ExpressRoute-kapcsolódó áttelepítését mutatja.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/17/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: c9f013a6af0b6d232eff32a9827006ce3247db3c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7b95c8b230714e1ba9306620e58628104cd676c9
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136407"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401641"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Az ExpressRoute-kapcsolódó virtuális hálózatok áttelepítése klasszikusról Resource Manager
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan migrálhat az ExpressRoute-kapcsolódó virtuális h
 
     * [A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [– Gyakori kérdések: Az IaaS-erőforrások klasszikusból Azure Resource Manager a Platform által támogatott áttelepítés](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [Gyakori kérdések: A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Tekintse át a leggyakoribb áttelepítési hibák és megoldások](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Támogatott és nem támogatott forgatókönyvek
@@ -38,6 +38,7 @@ Ez a cikk bemutatja, hogyan migrálhat az ExpressRoute-kapcsolódó virtuális h
 * Virtuális hálózatok, az átjárók és a kapcsolódó központi telepítések a virtuális hálózat ExpressRoute-kapcsolatcsoport ugyanahhoz az előfizetéshez kapcsolódó áttelepíthetők a Resource Manager-környezet állásidő nélkül. Követheti az erőforrásokat, például a virtuális hálózatok, az átjárók és a virtuális hálózaton belül üzembe helyezett virtuális gépek áttelepítése a később ismertetett lépéseket. Biztosítania kell, hogy a virtuális hálózatok vannak konfigurálva, mielőtt azokat áttelepítené. 
 * Virtuális hálózatok, az átjárók és a kapcsolódó központi telepítések a virtuális hálózaton belül, amelyek nem az ExpressRoute-kapcsolatcsoport az azonos előfizetésben kell némi állásidővel a migrálás befejezéséhez. A dokumentum utolsó szakasza ismerteti, hogyan migrálhat erőforrásokat kell követni.
 * Az ExpressRoute-átjáró és a VPN Gateway virtuális hálózat nem migrálható.
+* ExpressRoute-kapcsolatcsoport előfizetések közötti áttelepítés nem támogatott. További információkért lásd: [szolgáltatásokat, amelyek nem lehet áthelyezni](../azure-resource-manager/resource-group-move-resources.md#services-that-cannot-be-moved).
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>ExpressRoute-Kapcsolatcsoportok áthelyezése Kapcsolatcsoportok módosítása klasszikusról Resource Manager
 Át kell helyeznie egy ExpressRoute-kapcsolatcsoportot a klasszikusból a Resource Manager-környezetből az ExpressRoute-kapcsolatcsoporthoz csatlakoztatott erőforrások áttelepítése előtt. Ennek a feladatnak, tekintse meg a következő cikkeket:
@@ -81,5 +82,5 @@ Ez a szakasz ismerteti, hogyan kell áttelepíteni egy virtuális hálózati át
 ## <a name="next-steps"></a>További lépések
 * [A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [– Gyakori kérdések: Az IaaS-erőforrások klasszikusból Azure Resource Manager a Platform által támogatott áttelepítés](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [Gyakori kérdések: A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Tekintse át a leggyakoribb áttelepítési hibák és megoldások](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

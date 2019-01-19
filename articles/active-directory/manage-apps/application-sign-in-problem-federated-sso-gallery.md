@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8d910ffcf966e98def33a42a6452baea9f4b3998
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2794f45bf9d9d8d60f9be286fdf0e4d288a969fa
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357338"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412291"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezésre beállított katalógusából származó alkalmazásba történő bejelentkezésnél
 
@@ -34,7 +34,7 @@ A probléma elhárításához ellenőrizze az alkalmazás konfigurációját az 
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
-*Hiba AADSTS70001: Alkalmazás-azonosítójú "https://contoso.com" nem található a címtárban*.
+*Hiba AADSTS70001: Alkalmazás-azonosító "https://contoso.com" nem található a címtárban*.
 
 **Lehetséges ok**
 
@@ -66,7 +66,7 @@ Miután frissítette az Azure ad-ben az azonosító értékét, és azt van megf
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel.
 
-*AADSTS50011. hiba: A címet "https://contoso.com" nem felel meg a válasz címek konfigurálva az alkalmazáshoz*
+*Hiba AADSTS50011: A válaszcím https://contoso.com"nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel*
 
 **Lehetséges ok**
 
@@ -99,7 +99,7 @@ Miután frissítése az Azure ad-ben a válasz URL-Címének értékét, és azt
 
 ## <a name="user-not-assigned-a-role"></a>Felhasználói szerepkör nincs hozzárendelve
 
-*AADSTS50105. hiba: A bejelentkezett felhasználó "brian@contoso.com" nincs hozzárendelve egy szerepkörhöz az alkalmazás*.
+*Hiba AADSTS50105: A bejelentkezett felhasználó "brian@contoso.com" nincs hozzárendelve egy szerepkörhöz az alkalmazás*.
 
 **Lehetséges ok**
 
@@ -133,7 +133,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név alapján, vagy e-mail-cím** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
+12. **Nem kötelező:** Ha szeretné **egynél több felhasználó hozzáadása**, írjon be egy másik **teljes név** vagy **e-mail-cím** be a **Keresés név vagy e-mail cím alapján** keresőmezőbe, majd kattintson a jelölőnégyzet bejelölésével adja hozzá a felhasználót a **kijelölt** listája.
 
 13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 
@@ -145,7 +145,7 @@ Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeke
 
 ## <a name="not-a-valid-saml-request"></a>Nem egy érvényes SAML-kérelmet
 
-*AADSTS75005. hiba: A kérés nem érvényes egy Saml2 protokoll üzenetet.*
+*Hiba AADSTS75005: A kérés nem érvényes egy Saml2 protokoll üzenetet.*
 
 **Lehetséges ok**
 
@@ -228,7 +228,7 @@ Ha a fenti 1 beállítás nem működik az Ön számára, próbálkozzon az alka
 
 ## <a name="certificate-or-key-not-configured"></a>Tanúsítvány és kulcs nincs konfigurálva
 
-*AADSTS50003. hiba: Nincs aláíró kulcs beállítva.*
+*Hiba AADSTS50003: Nincs konfigurálva aláírási kulcsát.*
 
 **Lehetséges ok**
 
@@ -261,6 +261,19 @@ Törölje, és hozzon létre egy új tanúsítványt, kövesse az alábbi lépé
 10. Ellenőrizze **új tanúsítvány aktívvá** az aktív tanúsítvány felülbírálásához. Kattintson a **mentése** a panel tetején, és fogadja el a helyettesítő tanúsítvány aktiválását.
 
 11. Alatt a **SAML-aláíró tanúsítvány** területén kattintson **eltávolítása** eltávolítása a **nem használt** tanúsítványt.
+
+## <a name="saml-request-not-present-in-the-request"></a>SAML-kérelem nem szerepel a kérelemben
+
+*Hiba AADSTS750054: SAMLRequest vagy SAMLResponse, a lekérdezési karakterlánc paramétert az SAML-átirányítási kötés HTTP-kérelem elérhetőnek kell lennie.*
+
+**Lehetséges ok**
+
+Az Azure AD nem lehet azonosítani az SAML-kérelmet a HTTP-kérelem URL-cím paramétereket lévő. Ez akkor fordulhat elő, ha az alkalmazás nem használja a HTTP átirányítás kötés az Azure ad-ben az SAML-kérelmet küld.
+
+**Felbontás**
+
+A kérelmet kell küldenie az SAML-kérelmet a location fejlécet, HTTP átirányítás kötés használatával kódolja. A megvalósítása, további információt, olvassa el a HTTP átirányítás kötés szakaszt az a [SAML protokoll specifikáció szerinti dokumentum](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>A probléma, ha az alkalmazás küldött SAML-jogcímek testreszabása
 

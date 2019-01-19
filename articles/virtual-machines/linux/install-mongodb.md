@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: zarhoads
-ms.openlocfilehash: f1f8db985917b8eae6a5f301379af3c1bf09021f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 138435664222ff268069465aa98a53f0902a9f99
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465423"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412699"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Telepítése és konfigurálása a MongoDB egy Linux rendszerű virtuális gépen
 
@@ -31,9 +31,9 @@ ms.locfileid: "49465423"
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Kézi telepítését és konfigurálását a MongoDB egy virtuális gépen
-MongoDB [adja meg a telepítési utasításokat](https://docs.mongodb.com/manual/administration/install-on-linux/) többek között a Red Hat Linux-disztribúciók esetében / CentOS, SUSE, Ubuntu és a Debian. A következő példában létrehozunk egy *CentOS* virtuális Gépet. A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+MongoDB [adja meg a telepítési utasításokat](https://docs.mongodb.com/manual/administration/install-on-linux/) többek között a Red Hat Linux-disztribúciók esetében / CentOS, SUSE, Ubuntu és a Debian. A következő példában létrehozunk egy *CentOS* virtuális Gépet. A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -121,7 +121,7 @@ Egy alapszintű MongoDB-példányban githubból az alábbi Azure gyors üzembe h
 
 * [Alapszintű, a CentOS MongoDB-példányban](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -134,7 +134,7 @@ az group deployment create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-Jelentkezzen be a virtuális Gépet a virtuális gép nyilvános DNS-címének használatával. Megtekintheti a nyilvános DNS-cím [az vm show](/cli/azure/vm#az_vm_show):
+Jelentkezzen be a virtuális Gépet a virtuális gép nyilvános DNS-címének használatával. Megtekintheti a nyilvános DNS-cím [az vm show](/cli/azure/vm):
 
 ```azurecli
 az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
@@ -172,7 +172,7 @@ Létrehozhat egy összetett MongoDB horizontálisan skálázott fürtöt a köve
 > [!WARNING]
 > Ez összetett horizontálisan skálázott MongoDB-fürt üzembe helyezésekor kell lennie, több mint 20 mag, ami általában az előfizetéshez tartozó régiónkénti alapértelmezett-magok száma. Nyisson meg egy Azure-támogatási kérést, hogy növelje a magok száma.
 
-A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

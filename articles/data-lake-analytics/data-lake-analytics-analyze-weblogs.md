@@ -9,12 +9,12 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246463"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402285"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
 Ismerje meg, hogyan használja a Data Lake Analytics különösen tudni, mely hivatkozók hibába ütközött a hibákat, a webhelyén való hozzáféréskor webhelynaplók elemzése.
@@ -165,7 +165,7 @@ Emellett a felhasználó által definiált operátorok adhat hozzá az alkalmaz�
 
 1. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, bontsa ki a saját Data Lake Analytics-fiókjait, bontsa ki a **Storage Accounts** (Tárfiókok) elemet, kattintson a jobb gombbal az alapértelmezett Data Lake-tárfiókra, majd kattintson az **Explorer** elemre.
 2. Kattintson duplán a **minták** nyissa meg a mappát, majd kattintson duplán a **kimenetek**.
-3. Kattintson duplán a **UnsuccessfulResponsees.log**.
+3. Kattintson duplán a **UnsuccessfulResponses.log**.
 4. Annak érdekében, hogy közvetlenül a kimenetben keresse meg a kimeneti fájlt a diagram nézet a feladat is duplán.
 
 ## <a name="see-also"></a>Lásd még

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 39cb9f606e6829fe8265a40216de5312c3e7e60b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4278ec65dd21e998fa2f498435d7df143ea07d0a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075192"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412886"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -87,7 +87,7 @@ Mielőtt módosítja a társviszonyt, ismerje meg az a [-követelmények és kor
 
 **Parancsok**
 
-- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítési lista](/cli/azure/network/vnet/peering#az_network_vnet_peering_list) lista társviszonyok egy virtuális hálózathoz, hogy [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) egy adott társviszony-létesítéshez beállítások megjelenítéséhez és [az hálózati virtuális hálózatok közötti társviszony-létesítési frissítés](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) társviszony-létesítési beállítások módosításához. |}
+- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítési lista](/cli/azure/network/vnet/peering) lista társviszonyok egy virtuális hálózathoz, hogy [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) egy adott társviszony-létesítéshez beállítások megjelenítéséhez és [az hálózati virtuális hálózatok közötti társviszony-létesítési frissítés](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) társviszony-létesítési beállítások módosításához. |}
 - **PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) lekérdezni a társviszony-létesítési beállítások megtekintése és [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) beállítások módosításához.
 
 ## <a name="delete-a-peering"></a>A társviszony-létesítés törlése

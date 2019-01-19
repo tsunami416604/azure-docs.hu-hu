@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 91323ac904ee7a806283673a1f98c46c1c211f7f
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353226"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413124"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -68,13 +68,15 @@ Bevezetés az Azure-jegyzetfüzetek történő fejlesztésbe, lásd: [Ismerkedé
 
 A DSVM használata egy egyéni virtuális gépet (VM) lemezképet. Előre konfigurált data science munkahelyi készült:
 
-  - Csomagokat, például a TensorFlow, PyTorch, Scikit-ismerje meg, XGBoost és az Azure Machine Learning SDK-t.
-  - Népszerű adatelemzési eszközök, például a Spark önálló és a részletezés.
-  - Azure-eszközök például az Azure CLI-vel, az AzCopy és a Storage Explorerben.
-  - Integrált fejlesztői környezeteket (ide-ket), például a Visual Studio Code-ot, a PyCharm és az RStudio.
-  - Jupyter Notebook Server. 
+  - Csomagokat, például a TensorFlow, PyTorch, Scikit-ismerje meg, XGBoost és az Azure Machine Learning SDK
+  - Például a Spark önálló és a népszerű beépített adatelemzési eszközzel
+  - Az Azure eszközök, például a Storage Explorer, az AzCopy és az Azure CLI-vel
+  - Integrált fejlesztői környezeteket (ide-ket), például a Visual Studio Code és a PyCharm
+  - Jupyter Notebook Server
 
-Az Azure Machine Learning SDK-t a dsvm-hez, az Ubuntu vagy a Windows verziójával működik. A DSVM használata a fejlesztési környezetként, tegye a következőket:
+Az Azure Machine Learning SDK-t a dsvm-hez, az Ubuntu vagy a Windows verziójával működik. Azonban ha azt tervezi, használja a dsvm-hez, valamint egy számítási célnak, csak Ubuntu támogatott.
+
+A DSVM használata a fejlesztési környezetként, tegye a következőket:
 
 1. Hozzon létre egy adatelemző virtuális GÉPET a következő környezetekben valamelyikét:
 

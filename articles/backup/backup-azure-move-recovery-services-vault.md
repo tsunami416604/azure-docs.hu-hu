@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.author: sogup
-ms.openlocfilehash: ee61381eabed9dd7ead7deb23bc6f27c94031d3b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382317"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401928"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és erőforráscsoportok (korlátozott nyilvános előzetes verzió)
 
@@ -42,9 +42,9 @@ Recovery Services-tárolók használata konfigurált **Azure Site Recovery** nem
 >
 >
 
-## <a name="register-the-subscription-to-move-your-recovery-services-vault"></a>Regisztrálja az előfizetést a helyreállítási tár áthelyezése
+## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>A helyreállítási tár áthelyezése a forrás-előfizetés regisztrálása
 
-Regisztrálja az előfizetést a **áthelyezése** a Recovery Services-tárolót, a következő parancsmagok futtatásához a PowerShell terminálról:
+A forrás-előfizetés regisztrálása **áthelyezése** a Recovery Services-tárolót, a következő parancsmagok futtatásához a PowerShell terminálról:
 
 1. Jelentkezzen be az Azure-fiókjába
 

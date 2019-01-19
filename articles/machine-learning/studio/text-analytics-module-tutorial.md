@@ -1,9 +1,10 @@
 ---
-Cím: Hozza létre a text analytics modellek titleSuffix: Azure Machine Learning Studio description: Szövegelemzési modellek létrehozása az Azure Machine Learning Studióban modulok használata az előfeldolgozási, N-gramokat szöveg vagy kivonatoló szolgáltatások funkció: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
+Cím: Hozzon létre egy sentiment analysis modell titleSuffix: Azure Machine Learning Studio description: Szövegelemzési modellek létrehozása az Azure Machine Learning Studióban modulok használata az előfeldolgozási, N-gramokat szöveg vagy kivonatoló szolgáltatások funkció: gépi tanulási ms.service: gépi tanulási ms.component: studio ms.topic: cikk
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---
-# <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Szövegelemzési modellek létrehozása az Azure Machine Learning Studio használatával
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Vélemények elemzése modell létrehozása az Azure Machine Learning Studióban
+
 Az Azure Machine Learning segítségével hozhat létre és szövegelemzési modelleket. Ezek a modellek, például dokumentum besorolását vagy sentiment analysis problémák megoldásában is segítenek.
 
 A text analytics kísérletben ugyanúgy általában:

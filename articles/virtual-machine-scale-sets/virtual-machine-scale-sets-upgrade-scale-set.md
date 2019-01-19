@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 4ef611965382906e933f8d50b5dbdb3969d0b45f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: ce031b5c0dba96ab1a51532ad771eebeafb5d599
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979046"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413260"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuális gép méretezési csoportok módosítása
 Az alkalmazások életciklusa során szükség lehet módosítására vagy frissítésére a virtuálisgép-méretezési csoportot. Ezek a frissítések tartalmazhatnak frissítse a konfigurációt a méretezési, vagy módosítsa az alkalmazás konfigurációját. Ez a cikk ismerteti, hogyan módosíthatja egy meglévő méretezési csoportot a REST API-k, az Azure PowerShell vagy az Azure CLI.
@@ -86,7 +86,7 @@ Egy méretezési csoportot is megtalálható a "méretezési csoport példánya 
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
-- Az Azure CLI-t [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view):
+- Az Azure CLI-t [az vmss get-instance-view](/cli/azure/vmss):
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -180,7 +180,7 @@ Hogyan rendelkezik egy méretezési csoportot, egy példányait tartalmazó néz
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- Az Azure CLI-t [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)
+- Az Azure CLI-t [az vmss get-instance-view](/cli/azure/vmss)
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId

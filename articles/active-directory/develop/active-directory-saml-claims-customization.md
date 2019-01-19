@@ -17,14 +17,14 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: afcdb7c64f4431e920f1f1fbce1e1e6d3e4db79c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 11132426bb8adb6ede564e706e18f3eddd649bef
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424952"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401877"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 
 Még ma az Azure Active Directory (Azure AD) a legtöbb vállalati alkalmazásokat, beleértve az Azure AD-alkalmazásgyűjtemény, valamint a egyéni alkalmazásokat előre integrált alkalmazások támogatja a egyszeri bejelentkezéshez. Amikor egy felhasználó hitelesíti magát egy alkalmazást az SAML 2.0 protokoll használatával az Azure AD-n keresztül, az Azure AD egy tokent az alkalmazást (egy HTTP POST) küld. És ezt követően az alkalmazás ellenőrzi és használja a jogkivonatot a felhasználó nem kér a felhasználónévvel és jelszóval bejelentkezni. Ezek a SAML-jogkivonatok adatokra a "jogcímek" néven felhasználó tartalmaznak.
 
@@ -63,7 +63,7 @@ Válassza ki a kívánt forrása a `NameIdentifier` (vagy NameID) jogcím. Az al
 | E-mail | A felhasználó e-mail-címe |
 | userprincipalName | Az egyszerű felhasználónév (UPN) a felhasználó |
 | onpremisessamaccount | SAM-fiók neve, amely a helyszínről az Azure AD szinkronizálása megtörtént |
-| Objektumazonosító | Az ObjectId azonosítóját, a felhasználó Azure AD-ben |
+| objectID | Az ObjectId azonosítóját, a felhasználó Azure AD-ben |
 | EmployeeID | A felhasználó az EmployeeID |
 | Címtárbővítmények | Címtárbővítmények [az Azure AD Connect szinkronizálási szolgáltatás használata a helyszíni Active Directoryból szinkronizált](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | 1 – 15. Bővítményattribútumok | A helyszíni kiterjesztési attribútumot használja az Azure AD-séma kiterjesztése |
@@ -75,13 +75,13 @@ A speciális jogcímek átalakítások funkciók is használható.
 | Függvény | Leírás |
 |----------|-------------|
 | **ExtractMailPrefix()** | A tartományi utótag eltávolítja az e-mail-cím, SAM-fiók neve vagy a felhasználó egyszerű neve. Ez a felhasználónév átadott keresztül csak az első részt kinyeri (például "joe_smith" helyett joe_smith@contoso.com). |
-| **JOIN()** | Az attribútum egy ellenőrzött tartomány csatlakozik. Ha a kiválasztott felhasználói azonosító értékét egy tartománnyal rendelkezik, azt fogja bontsa ki a hozzáfűzni a kiválasztott ellenőrzött tartomány felhasználónév. Ha például az e-mailt választja (joe_smith@contoso.com), a felhasználói azonosító értékét, és válassza contoso.onmicrosoft.com ellenőrzött tartományának részeként, emiatt joe_smith@contoso.onmicrosoft.com. |
+| **join()** | Az attribútum egy ellenőrzött tartomány csatlakozik. Ha a kiválasztott felhasználói azonosító értékét egy tartománnyal rendelkezik, azt fogja bontsa ki a hozzáfűzni a kiválasztott ellenőrzött tartomány felhasználónév. Ha például az e-mailt választja (joe_smith@contoso.com), a felhasználói azonosító értékét, és válassza contoso.onmicrosoft.com ellenőrzött tartományának részeként, emiatt joe_smith@contoso.onmicrosoft.com. |
 | **ToLower()** | Konvertálja a karaktereket a kijelölt attribútum kisbetűs karaktert. |
 | **ToUpper()** | Konvertálja a karaktereket a kijelölt attribútum nagybetűket. |
 
 ## <a name="adding-claims"></a>Jogcím hozzáadása
 
-Amikor egy jogcímet ad hozzá, megadhatja azon attribútum nevét (ami nem feltétlenül kell az SAML-specifikáció alapján URI mintát követi). Bármely felhasználói attribútumot a könyvtárban tárolt állítsa az értékét.
+Amikor egy jogcímet ad hozzá, megadhatja azon attribútum nevét (ami nem feltétlenül kell az SAML-specifikáció alapján URI mintát követi). Bármely felhasználói attribútumot a könyvtárban tárolt állítsa az értékét, vagy statikus bejegyzésként stabilakká értéket használja a szervezet összes felhasználója.
 
 ![Felhasználói attribútum hozzáadása][7]
 

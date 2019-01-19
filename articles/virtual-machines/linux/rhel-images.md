@@ -11,19 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229574"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402149"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
 Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
 
 Red Hat támogatási irányelveik RHEL összes verziója információk találhatók a [Red Hat Enterprise Linux életciklusának](https://access.redhat.com/support/policy/updates/errata) lapot.
+
+>[!Important]
+> RHEL-lemezképekhez érhető el az Azure Marketplace-en Bring-Your-saját-előfizetés (saját) vagy a használatalapú fizetéssel szemben licencelési modellt támogatja. A [Azure Hybrid Use Benefit](../windows/hybrid-use-benefit-licensing.md) és dinamikus váltás saját és a Használatalapú között nem támogatott. Licencelési mód váltása szükséges újbóli üzembe helyezés a virtuális Gépet a megfelelő lemezképet.
+
+>[!Note]
+> Az RHEL-lemezképek az Azure marketplace-katalógusában kapcsolatos nyújtson be támogatási jegyet a Microsoft.
 
 ## <a name="images-available-in-the-ui"></a>A felhasználói felületen hozzáférhető lemezképeket
 Keressen a "Red Hat" a Marketplace-en, vagy az Azure portal felhasználói felületén hozzon létre egy erőforrást, amikor látni fogja a rendelkezésre álló RHEL-lemezképek és a kapcsolódó Red Hat-termékek egy része. Mindig az elérhető Virtuálisgép-rendszerképek használata az Azure CLI és PowerShell vagy az API teljes körű szerezheti be.
@@ -71,8 +77,8 @@ Az alábbi ajánlatok a következők általános felhasználású jelenleg rende
 Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
 RHEL | 7 – NYERS | RAW | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
-| | 7 – LVM | LVM | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
-| | 7-RAW-CI | NYERS CI | Cloud-init | RHEL 7 operációsrendszer-lemezképek
+| | 7-LVM | LVM | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
+| | 7-RAW-CI | RAW-CI | Cloud-init | RHEL 7 operációsrendszer-lemezképek
 | | 6.7 | RAW | Linux-ügynök | RHEL 6.7 lemezképek, a régi elnevezési egyezmény
 | | 6.8 | RAW | Linux-ügynök | Azonos RHEL 6.8, a fentiek szerint
 | | 6.9 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 6.9.
@@ -86,7 +92,7 @@ RHEL-SAP | 7.4 | LVM | Linux-ügynök | 7.4 RHEL for SAP HANA és az üzleti alk
 RHEL-SAP-HANA | 6.7 | RAW | Linux-ügynök | RHEL 6.7 az SAP Hana-hoz
 | | 7.2 | LVM | Linux-ügynök | Az RHEL 7.2 az SAP Hana-hoz
 | | 7.3 | LVM | Linux-ügynök | RHEL for SAP HANA 7.3.
-RHEL-SAP-ALKALMAZÁSOK | 6.8 | RAW | Linux-ügynök | 6.8 RHEL for SAP Business Applications
+RHEL-SAP-APPS | 6.8 | RAW | Linux-ügynök | 6.8 RHEL for SAP Business Applications
 | | 7.3 | LVM | Linux-ügynök | 7.3 RHEL for SAP Business Applications
 
 ### <a name="old-naming-convention"></a>Régi elnevezési egyezmény

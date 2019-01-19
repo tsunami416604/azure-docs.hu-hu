@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/27/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c0901f22e4941fdfaa21138153a06e97c2d6095f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c52c311f1e1cd1335ea5797eadacd0bc89e1b36c
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630376"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402115"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Oktatóanyag: Adatátalakítás az Azure Data Box Edge (előzetes verzió)
 
@@ -232,7 +232,7 @@ Győződjön meg arról, hogy a modul fut, tegye a következőket:
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-6.png)  
 
-    Az adatok a felhő megosztásból majd leküldve a storage-fiókhoz. Az adatok megtekintéséhez nyissa meg a Storage Explorer, az adatok megtekintéséhez.
+    Az adatok a felhő megosztásból majd leküldve a storage-fiókhoz. Az adatok megtekintéséhez nyissa meg a Storage Explorerben.
 
     ![Adatok átalakításának ellenőrzése](./media/data-box-edge-deploy-configure-compute/verify-data-transform-7.png) 
  
