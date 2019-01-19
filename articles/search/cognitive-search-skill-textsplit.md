@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 05134ff59f87aaac71588057f1ac50015a769672
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d5a8fa61307c278a77b33868a711970850a06f3e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389844"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410047"
 ---
 #   <a name="text-split-cognitive-skill"></a>Szöveg felosztása cognitive szakértelem
 
 A **szöveg felosztása** szakértelem működésképtelenné válik a szöveg adattömbökbe szöveg. Megadhatja, hogy szeretné-e a szöveg kezdetét mondatokat vagy egy adott hosszúságú oldalak. Ez szakértelem, különösen hasznosak, ha olyan szöveg maximális aktiválásához megszerzett képességeit a hosszúsági követelményeknek. 
 
 > [!NOTE]
-> Szakértelem nincs kötve a Cognitive Services API-t, és nincsenek szakértelem nélkül díjak. Azonban meg kell [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) ennek ellenére a szabad erőforrás beállítás felülbírálása, amely korlátozza, hogy naponta végrehajtott információbeolvasás kis számú.
+> Szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 

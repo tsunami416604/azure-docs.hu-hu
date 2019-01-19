@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9ff75cbd0a4915cdf7045be9a45d11075dda15bd
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045296"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402319"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programozhatósági útmutató
 
@@ -135,7 +135,7 @@ Minden egyes feltöltött szerelvény dll-fájl és erőforrás-fájl, például
 
 Végül vegye figyelembe, hogy minden U-SQL-adatbázist csak egy verzióját minden olyan adott szerelvény is tartalmazhatja. Például ha 7-es verzió és a 8-as verzió NewtonSoft Json.Net-függvénytár, meg kell két külön adatbázis regisztrálja őket. Továbbá minden parancsprogram csak hivatkozhatnak egy adott szerelvény DLL egyik verziójának. Ebben a tekintetben a U-SQL C# szerelvény felügyeleti és verziókezelését szemantikáját követi.
 
-## <a name="use-user-defined-functions-udf"></a>Felhasználó által definiált függvények használata: az UDF
+## <a name="use-user-defined-functions-udf"></a>Felhasználó által definiált függvények használata: UDF
 U-SQL-felhasználó által definiált függvények vagy UDF, vannak programozási rutinjait, amely fogad el paramétereket, egy műveletet (például egy összetett számítás) és egy értéket, a művelet eredményét adja vissza. Az UDF visszaadott értéke csak lehet egyetlen skaláris. U-SQL UDF a U-SQL alapvető szkriptet, mint bármely más C# skaláris függvény nem hívható meg.
 
 Azt javasoljuk, hogy a U-SQL-felhasználó által definiált függvények, mint inicializálása **nyilvános** és **statikus**.
@@ -504,7 +504,7 @@ Az osztály a konstruktort:
 
 * SqlUserDefinedTypeAttribute (típus formátovací modul)
 
-* Írja be a formázó: kötelező paraméter egy UDT formázó – pontosabban meghatározásához típusát a `IFormatter` felület itt kell átadni.
+* Formátovací modul írja be: Paraméterrel egy UDT formázó – pontosabban típusát kötelező a `IFormatter` felület itt kell átadni.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -529,17 +529,17 @@ A `IFormatter` felület szerializálja és megszüntetéséhez szerializálja a 
 
 \<típusparaméter name = "T" > a legfelső szintű típus az objektum gráf szerializálható és deszerializálható.
 
-* **Deszerializálni**: megszüntetéséhez szerializálja a megadott streamet az adatok és a graph-objektumok reconstitutes.
+* **Deszerializálni**: Vonja szerializálja a megadott streamet az adatok és a graph-objektumok reconstitutes.
 
 * **Szerializálható**: Szerializálja az objektumot, vagy objektumokat, a megadott legfelső szintű, a megadott adatfolyam-grafikon.
 
-`MyType` példány: a típus példányát.  
-`IColumnWriter` író / `IColumnReader` olvasó: az alapjául szolgáló oszlop adatfolyam.  
-`ISerializationContext` környezet:, határozza meg, amely meghatározza a forrás vagy cél környezet a Stream a szerializálás során fellépett jelzők enumerálása.
+`MyType` Példány: A típus példányát.  
+`IColumnWriter` író / `IColumnReader` olvasó: Az alapjául szolgáló oszlop adatfolyam.  
+`ISerializationContext` Környezet: Amely határozza meg, amely meghatározza a forrás vagy cél környezet a Stream a szerializálás során fellépett jelzők enumerálása.
 
 * **Köztes**: Itt adhatja meg, hogy a forrás vagy cél környezet ne legyen-e egy állandó tárolóban.
 
-* **Adatmegőrzés**: azt jelenti, hogy a forrás vagy cél környezet egy állandó tárolóban.
+* **Adatmegőrzés**: Megadja, hogy a forrás vagy cél környezet egy állandó tárolóban.
 
 Rendszeres C# típus, egy U-SQL UDT-definíció tartalmazhatnak felülbírálásokat adhatnak az operátoroknak például +/ == /! =. Statikus módszereit is tartalmazhat. Például a UDT használata a U-SQL minimális összesítő függvény paramétereként fogjuk, ha azt kell meghatároznia < operátor felülbírálás.
 
@@ -945,9 +945,9 @@ Deklarálja a megfelelő bemeneti és kimeneti adattípus, az alábbiak szerint 
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* A T1: Első paraméterként gyűlnek össze
+* T1: Első paraméterként gyűlnek össze
 * T2: Első paraméterként gyűlnek össze
-* TResult: Leállítás típusát adja vissza.
+* TResult: Typ vrácené hodnoty Leállítás
 
 Példa:
 
@@ -1055,7 +1055,7 @@ A következő egy U-SQL UDO listáját:
 
 UDO neve általában kifejezetten a U-SQL-szkript az alábbi U-SQL-utasítások részeként:
 
-* KINYERÉS
+* EXTRACT
 * KIMENET
 * FOLYAMAT
 * ÖSSZEVONÁS
@@ -1067,11 +1067,11 @@ UDO neve általában kifejezetten a U-SQL-szkript az alábbi U-SQL-utasítások 
 ## <a name="use-user-defined-extractors"></a>Felhasználó által definiált információkinyerők használata
 U-SQL lehetővé teszi, hogy a külső adatok importálása egy KIVONATOT utasítás használatával. Egy KIVONATOT utasítás beépített UDO információkinyerők használhatja:  
 
-* *Extractors.Text()*: elválasztójellel tagolt szöveges fájlok kivonása különböző kódolásokat biztosít.
+* *Extractors.Text()*: Itt eltérő kódolásokat kivonása elválasztójellel tagolt szöveges fájlok.
 
-* *Extractors.Csv()*: kinyerési vesszővel tagolt (CSV) fájljai különböző kódolást biztosít.
+* *Extractors.Csv()*: Kibontási vesszővel tagolt (CSV) fájljai különböző kódolást biztosít.
 
-* *Extractors.Tsv()*: kinyerési lapon tagolt (TSV) fájljai különböző kódolásokat biztosít.
+* *Extractors.Tsv()*: Kibontási lapon tagolt (TSV) fájljai különböző kódolásokat biztosít.
 
 Egyéni információkinyerőt fejleszthet hasznos lehet. Ez hasznos lehet adatok importálása során szeretnénk hajtsa végre a következő feladatok közül:
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Használja a felhasználó által definiált kiírókra
 Felhasználó által definiált outputter egy másik U-SQL UDO, amely lehetővé teszi, hogy terjessze ki a U-SQL beépített funkciókkal. A kivonatoló hasonlóan, több beépített kiírókra vannak.
 
-* *Outputters.Text()*: írja az adatokat a különböző kódolású, elválasztójellel tagolt szöveges fájlok.
-* *Outputters.Csv()*: írja az adatokat a különböző kódolásokat fájljai vesszővel tagolt (CSV).
-* *Outputters.Tsv()*: írja az adatokat a különböző kódolásokat érték tabulátorral tagolt (TSV) fájljait.
+* *Outputters.Text()*: Írja az adatokat a különböző kódolású, elválasztójellel tagolt szöveges fájlok.
+* *Outputters.Csv()*: Írja az adatokat a különböző kódolásokat fájljai vesszővel tagolt (CSV).
+* *Outputters.Tsv()*: Írja az adatokat a különböző kódolásokat érték tabulátorral tagolt (TSV) fájljait.
 
 Egyéni outputter lehetővé teszi az adatok írása a meghatározott formátumban. Ez lehet hasznos, ha a következő feladatokat:
 
@@ -1300,7 +1300,7 @@ string val = row.Get<string>(col.Name)
 
 Ez a megközelítés egy rugalmas outputter minden metaadat-séma létrehozását teszi lehetővé.
 
-A fájl használatával írja a kimeneti adatokat `System.IO.StreamWriter`. A stream paraméter értéke `output.BaseStrea` részeként `IUnstructuredWriter output`.
+A fájl használatával írja a kimeneti adatokat `System.IO.StreamWriter`. A stream paraméter értéke `output.BaseStream` részeként `IUnstructuredWriter output`.
 
 Vegye figyelembe, hogy fontos, hogy Ürítsen ki adatpuffer a fájl minden egyes sor ismétlés után. Emellett a `StreamWriter` attribútummal a rendelkezésre álló engedélyezve (alapértelmezett), és az objektum kell használni a **használatával** kulcsszó:
 
@@ -1775,7 +1775,7 @@ A használatieset-forgatókönyvek a felhasználó által definiált applier egy
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 

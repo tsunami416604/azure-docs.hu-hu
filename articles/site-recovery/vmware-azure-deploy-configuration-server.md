@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 41511b27a84731df203d37d70d20df40f85af4fb
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794354"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410761"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -67,13 +67,16 @@ Az OVA sablonnal megadott engedély egy értékelési engedély 180 napig érvé
 3. A **forrás kiválasztása**, adja meg a letöltött OVF helyét.
 4. A **részletek áttekintése**válassza **tovább**.
 5. A **név és mappa kiválasztása** és **válassza konfigurációs**, fogadja el az alapértelmezett beállításokat.
-6. A **Select storage** (Tároló kiválasztása) területen a legjobb teljesítmény érdekében válassza a **Thick Provision Eager Zeroed** formátumot a **Select virtual disk format** (Virtuális lemez formátumának kiválasztása) mezőben.
+6. A **Select storage** (Tároló kiválasztása) területen a legjobb teljesítmény érdekében válassza a **Thick Provision Eager Zeroed** formátumot a **Select virtual disk format** (Virtuális lemez formátumának kiválasztása) mezőben. Dinamikusan üzembe helyezési lehetőségek előnyeit használati hatással lehet a konfigurációs kiszolgáló teljesítményét.
 7. A varázsló többi lapján fogadja el az alapértelmezett beállításokat.
 8. A **Ready to complete** (Befejezésre kész) területen:
 
     * A virtuális gép alapértelmezett beállításokkal való telepítéséhez válassza a **Power on after deployment** > **Finish** (Bekapcsolás a telepítést követően > Befejezés) elemet.
 
     * Adjon hozzá további hálózati adaptereket, törölje a jelet **üzembe helyezés után a Power**, majd válassza ki **Befejezés**. Alapértelmezés szerint a konfigurációs kiszolgáló sablonját a rendszer egyetlen hálózati adapterre telepíti. Az üzembe helyezés után további hálózati adaptereket is hozzáadhat.
+
+> [!IMPORTANT]
+> Ne módosítsa erőforrás-konfigurációk (memória/magok/CPU-korlátozás), módosítására és törlésére telepített szolgáltatások vagy fájlokat a konfigurációs kiszolgáló telepítése után. Ez negatívan befolyásolja az Azure-szolgáltatásokkal a konfigurációs kiszolgáló regisztrálása és a konfigurációs kiszolgáló teljesítményét.
 
 ## <a name="add-an-additional-adapter"></a>További adapter hozzáadása
 
@@ -119,7 +122,7 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-A konfigurációs kiszolgáló frissítése a legújabb verzióra, kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+A konfigurációs kiszolgáló frissítése a legújabb verzióra, kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). A Site Recovery minden összetevőjét frissítése részletes utasításokért kattintson [Itt](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
 
 ## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
 
@@ -141,20 +144,26 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
     Tekintse meg [VMware-ből az Azure-bA architektúra](vmware-azure-architecture.md) tudhat meg többet a konfigurációs kiszolgáló és a számítást.
 5. Hol található a konfigurációs kiszolgáló legújabb verzióját?
 
-    A portálon keresztül a konfigurációs kiszolgáló frissítése lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Emellett közvetlenül is letöltheti a [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+    A portálon keresztül a konfigurációs kiszolgáló frissítése lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Emellett közvetlenül is letöltheti a [Microsoft Download Center](https://aka.ms/asrconfigurationserver). A Site Recovery minden összetevőjét frissítése részletes utasításokért tekintse meg a [Itt](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
 6. Honnan tölthetem le a konfigurációs kiszolgáló hozzáférési kódot?
 
     Tekintse meg [Ez a cikk](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) töltheti le a hozzáférési kódot.
-7. Honnan tölthetem le tároló regisztrációs kulcsokat?
+7. Módosíthatja a jelszavát?
+
+    **Nem**, Ön **erősen javasoljuk, hogy módosítsa a jelszót** konfigurációs kiszolgáló. A jelszó módosítása működésképtelenné válik a védett gépek replikálását, és a kritikus állapot vezet.
+8. Honnan tölthetem le tároló regisztrációs kulcsokat?
 
     Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációskiszolgálók**. Válassza ki a kiszolgálók **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
-8. Klónozza a meglévő konfigurációs kiszolgáló és replikálás előkészítését használni?
+9. Klónozza a meglévő konfigurációs kiszolgáló és replikálás előkészítését használni?
 
     **Nem**, klónozott konfigurációs kiszolgáló összetevő nem támogatott.
 
-9. Módosíthatom a konfigurációs kiszolgáló IP-cím?
+10. Módosíthatom a konfigurációs kiszolgáló IP-cím?
 
     **Nem**, erősen ajánlott ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg, hogy minden IP-címet, és a konfigurációs kiszolgáló hozzárendelt statikus IP-címek és a nem DHCP IP-címek.
+11. Állítható be a konfigurációs kiszolgáló, az Azure-ban?
+
+    A helyszíni környezetben, a közvetlen vonal-az-üzemel a Vcenter-kiszolgáló beállításához és adatok átvitel késések minimalizálása érdekében ajánlott. Konfigurációs kiszolgáló ütemezett biztonsági mentéseket elvégezhető [feladat-visszavétel célokra](vmware-azure-manage-configuration-server.md#failback-requirements).
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 

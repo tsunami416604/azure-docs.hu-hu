@@ -9,16 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 5d3e837cf644e0cb9b35a0cfc715a9dcace592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e69d03e2c45ee34723bd6aace3a2a26cead63e96
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082985"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411611"
 ---
-# <a name="manage-azure-endpoint-subscription-keys"></a>Azure-végpont előfizetési kulcsok kezelése
+# <a name="manage-azure-resource-keys-for-prediction-endpoint-queries"></a>Előrejelzési végpont lekérdezések az Azure-erőforrás kulcsok kezelése
+
+[!INCLUDE [Azure resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
 
 Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles rendszerek esetén használhatja a [fizetős](https://aka.ms/luis-price-tier) szint. 
 
@@ -57,7 +59,7 @@ Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles r
 5. Ne felejtse el [rendelje hozzá a végpont kulcs](luis-how-to-manage-keys.md#assign-endpoint-key) a a **közzététel** lapon, és használhatja az összes endpoint lekérdezés. 
 
 ## <a name="exceed-pricing-tier-usage"></a>Díjszabási szint használatához lehet
-Minden egyes csomaggal meghatározott arányban végpont kéréseket a LUIS-fiókjába. Ha a kérelmek száma nagyobb, mint a megengedett sebesség a díjköteles fiók percenként vagy havonta, a kérelmek, HTTP hibaüzenetet kap "429-es: túl sok kérelem."
+Minden egyes csomaggal meghatározott arányban végpont kéréseket a LUIS-fiókjába. Ha a kérelmek száma nagyobb, mint a megengedett sebesség a díjköteles fiók percenként vagy havonta, a kérelmek, HTTP hibaüzenetet kap "429-es: Túl sok kérelem."
 
 Minden egyes csomaggal halmozódnak kérés havonta. Ha az összes kérelmet magasabb, mint az engedélyezett sebességét, a kérelmek, HTTP hibaüzenetet kap "403-as: tiltott".  
 

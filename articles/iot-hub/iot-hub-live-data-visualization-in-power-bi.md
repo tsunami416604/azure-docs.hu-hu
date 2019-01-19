@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a533bd6ee447479f08add23833bf5acdde5c4d40
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155099"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411285"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub használata a Power BI valós idejű érzékelői adatainak megjelenítése
 
@@ -59,11 +59,11 @@ Először hozzon létre egy Stream Analytics-feladatot. Miután létrehozta a fe
 
    **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie.
 
-   **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot, amely az IoT hub használja.
+   **Erőforráscsoport**: Használja ugyanazt az erőforráscsoportot, amely az IoT hub használja.
 
-   **Hely**: ugyanazt a helyet használja, az erőforráscsoportot.
+   **Hely**: Használja ugyanazt a helyet az erőforráscsoportban.
 
-   **Rögzítés az irányítópulton**: Ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT Hubhoz az irányítópultról.
+   **Rögzítés az irányítópulton**: Ellenőrizze ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT hubhoz az irányítópultról.
 
    ![Stream Analytics-feladat létrehozása az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
@@ -75,13 +75,15 @@ Először hozzon létre egy Stream Analytics-feladatot. Miután létrehozta a fe
 
 2. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
 
-3. A a **bemenetek** ablaktáblán kattintson a **hozzáadása**, majd adja meg a következő információkat:
+3. Az a **bemenetek** ablaktáblán kattintson a **streambemenet hozzáadása**, majd adja meg a következő információkat:
 
-   **Bemeneti áljel**: a bemeneti az egyedi aliast.
+   **Bemeneti áljel**: A bemeneti, válassza ki az egyedi aliast **adja meg az IoT Hub beállításainak manuális** alatt.
 
-   **Forrás**: válasszon **az IoT hub**.
+   **forrás**: Válassza ki **az IoT hub**.
+   
+   **Végpont**: Kattintson a **üzenetkezelési**.
 
-   **Fogyasztói csoport**: válassza ki az imént létrehozott fogyasztói csoportot.
+   **Fogyasztói csoport**: Válassza ki az imént létrehozott fogyasztói csoportot.
 
 4. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -91,23 +93,19 @@ Először hozzon létre egy Stream Analytics-feladatot. Miután létrehozta a fe
 
 1. A **Feladattopológia** területen kattintson a **Kimenetek** elemre.
 
-2. Az a **kimenetek** ablaktáblán kattintson a **Hozzáadás**, majd adja meg a következő információkat:
+2. Az a **kimenetek** ablaktáblán kattintson a **Hozzáadás** és **Power BI**, majd írja be a következő információkat:
 
-   **Kimeneti áljel**: A kimenet egyedi áljele.
+   **Kimeneti alias**: A kimeneti egyedi aliast.
 
-   **Fogadó**: válasszon **Power bi-ban**.
-
-3. Kattintson a **engedélyezés**, majd jelentkezzen be a Power BI-fiók.
-
-4. Ha jogosult, adja meg a következőket:
-
-   **A csoport munkaterület**: válassza ki a cél csoportos munkaterületre.
+   **A csoport munkaterület**: Válassza ki a cél csoportos munkaterületre.
 
    **Adatkészlet neve**: Adja meg az adatkészlet nevét.
 
-   **Tábla neve**: Adja meg a tábla nevét.
+   **Tábla neve**: Adja meg egy tábla nevét.
 
-5. Kattintson a **Create** (Létrehozás) gombra.
+3. Kattintson a **engedélyezés**, majd jelentkezzen be a Power BI-fiók.
+
+4. Kattintson a **Create** (Létrehozás) gombra.
 
    ![Kimenet hozzáadása az Azure Stream Analytics-feladat](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -135,13 +133,13 @@ A Stream Analytics-feladat területen kattintson az **Indítás** > **Most** > *
 
 2. Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/en-us/)-fiókjába.
 
-3. Nyissa meg a csoportos munkaterület állíthat be a kimenet a Stream Analytics-feladat létrehozásakor.
+3. Kattintson a használt, a munkaterület **saját munkaterület**.
 
-4. Kattintson a **Streamelési adatkészletek**.
+4. Kattintson az **Adatkészletek** elemre.
 
-   Megjelenik az adatkészlet, amelyet a Stream Analytics-feladat kimenetének létrehozásakor adott meg.
+   Az adatkészlet, a kimenet a Stream Analytics-feladat létrehozásakor megadott kell megjelennie.
 
-5. A **MŰVELETEK** területen kattintson az első ikonra egy jelentés létrehozásához.
+5. Kattintson a létrehozott adatkészlethez, **adja hozzá a jelentés** (az első ikon a jobb oldalon az adathalmaz neve).
 
    ![A Microsoft Power BI-jelentés létrehozása](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
 
@@ -165,9 +163,11 @@ A Stream Analytics-feladat területen kattintson az **Indítás** > **Most** > *
 
 8. Kattintson a **Mentés** elemre a jelentés mentéséhez.
 
-9. Kattintson a **fájl** > **webes közzététel**.
+9. Kattintson a **jelentések** elemre a bal oldali panelen, majd kattintson a jelentésben, hogy nemrég létrehozott.
 
-10. Kattintson a **beágyazási kód létrehozása**, és kattintson a **közzététel**.
+10. Kattintson a **fájl** > **webes közzététel**.
+
+11. Kattintson a **beágyazási kód létrehozása**, és kattintson a **közzététel**.
 
 A jelentés hivatkozása már a megadott jelentés-hozzáférés és a egy kódrészletet a jelentés integrálása saját blogba vagy webhelyre bárkivel megoszthatja.
 

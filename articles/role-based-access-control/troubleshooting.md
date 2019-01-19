@@ -11,20 +11,44 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223296"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411237"
 ---
 # <a name="troubleshoot-rbac-in-azure"></a>Az Azure-beli RBAC hibaelhárítása
 
 Ez a cikk szerepköralapú hozzáférés-vezérlést (RBAC), kapcsolatos általános kérdéseket válaszol meg, hogy tudja, mire számítson, ha használja a szerepkörök az Azure portal és a hozzáférési problémák elhárítása.
+
+## <a name="problems-with-rbac-role-assignments"></a>Problémák az RBAC-beli szerepkör-hozzárendelésekkel
+
+- Ha nem tudja felvenni a szerepkör-hozzárendelés, mert a **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy mert engedélyekkel kapcsolatos hibát kap, ellenőrizze, hogy használja egy szerepkör, amely rendelkezik a `Microsoft.Authorization/roleAssignments/*` engedéllyel a kívánt hatókörben rendelje hozzá a szerepkört. Ha nem rendelkezik ezzel az engedéllyel, forduljon az előfizetés-rendszergazdához.
+- Ha engedélyekkel kapcsolatos hibát amikor megpróbál létrehozni egy erőforrást, ellenőrizze, hogy használja egy szerepkör, amely jogosult arra, hogy az erőforrások létrehozása a kijelölt hatókörben. Például előfordulhat, hogy szeretne közreműködő lenni. Ha nem rendelkezik engedéllyel, ellenőrizze az előfizetés-rendszergazdától.
+- Ha engedélyekkel kapcsolatos hibát létrehozni vagy frissíteni egy támogatási jegyet észlel, ellenőrizze, hogy használja egy szerepkör, amely rendelkezik a `Microsoft.Support/*` engedéllyel, mint például [támogatási kérelem közreműködői](built-in-roles.md#support-request-contributor).
+- Ha egy szerepkör hozzárendelésekor hibaüzenetet kap, amely szerint a szerepkör-hozzárendelések száma átlépte a határértéket, próbálja meg csökkenteni a szerepkör-hozzárendelések számát a szerepkörök csoportokhoz történő hozzárendelésével. Az Azure támogatja az akár **2000** szerepkör-hozzárendelések száma előfizetésenként.
+
+## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
+
+- Ha Ön nem lehet frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy rendelkezik-e a `Microsoft.Authorization/roleDefinition/write` engedéllyel.
+- Ha Ön nem lehet frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy legalább egy hozzárendelhető hatókörökkel törölve lett a bérlőben. A `AssignableScopes` tulajdonságot egy egyéni szerepkör vezérlők [akik létrehozása, törlése, módosítása vagy megtekintése az egyéni szerepkör](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
+- Ha a szerepkör-definíciók korlátját meghaladó új szerepkör létrehozása, törlése nem egyéni szerepköröket megkísérlésekor hibaüzenetet kap használható. Is megpróbálhatja konszolidálhatja vagy felhasználhatják a meglévő egyéni szerepköröket. Az Azure támogatja az akár **2000** egyéni szerepkörök a bérlőben.
+- Ha egy egyéni szerepkör törlése nem sikerült, ellenőrizze, hogy egy vagy több szerepkör-hozzárendeléseit továbbra is használja az egyéni szerepkör.
+
+## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Az RBAC helyreállítása az előfizetések bérlők közötti áthelyezésekor
+
+- Ha szeretné megismerni egy előfizetés másik bérlőre való áthelyezésének lépéseit, tekintse meg az [Azure-előfizetés tulajdonjogának másik fiókra történő átruházását](../billing/billing-subscription-transfer.md) bemutató cikket.
+- Előfizetését átadhatja egy másik bérlőben, ha minden szerepkör-hozzárendelések véglegesen törlődnek a forrás-bérlőből, és a célbérlőhöz nem települnek át. Újra létre kell hoznia a célbérlőhöz a szerepkör-hozzárendelések.
+- Ha egy globális felügyeleti és hozzáférési elvesztette előfizetésre, használja a **Access management az Azure-erőforrások** ideiglenes váltógomb [a hozzáférési szintjének emelése](elevate-access-global-admin.md) alapján visszaszerezhetik hozzáférésüket a az előfizetés.
+
+## <a name="rbac-changes-are-not-being-detected"></a>RBAC módosításait nem észleli a folyamatban
+
+Az Azure Resource Manager néha gyorsítótárazza a konfigurációkat és a teljesítmény javítása az adatokat. Létrehozásakor, vagy törlése a szerepkör-hozzárendeléseit, a módosítások érvénybe léptetéséhez akár 30 percet is igénybe vehet. Az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatakor kényszerítheti a szerepkör-hozzárendelési módosítások frissítését kijelentkezés és bejelentkezés. A REST API-hívások szerepkör-hozzárendelés módosításokat végez, ha egy frissítés kényszerítheti a hozzáférési jogkivonat frissítésével.
 
 ## <a name="web-app-features-that-require-write-access"></a>Webes alkalmazás írási hozzáférést igénylő szolgáltatások
 
@@ -37,7 +61,7 @@ Egyetlen webalkalmazásban; a felhasználó csak olvasható hozzáférést ad, h
 * Diagnosztikai naplók konfigurálása
 * Konzol (parancssor)
 * Aktív és a legutóbbi központi telepítéseket (helyi git folyamatos üzembe helyezés)
-* Becsült költés
+* Becsült költség
 * Webtesztek
 * Virtuális hálózat (egy olvasó, ha egy virtuális hálózat már be lett állítva egy írási hozzáféréssel rendelkező felhasználónak csak látható).
 
@@ -93,10 +117,6 @@ Az egyes funkciói [Azure Functions](../azure-functions/functions-overview.md) �
 ![Alkalmazások függvény nincs hozzáférés](./media/troubleshooting/functionapps-noaccess.png)
 
 Kattintson egy olvasót a **platformfunkciók** fülre, majd **minden beállítás** bizonyos beállítások megtekintéséhez (a webalkalmazás hasonlóan) függvényalkalmazás kapcsolódó, de nem módosíthatják a beállítások.
-
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC módosításait nem észleli a folyamatban
-
-Az Azure Resource Manager néha gyorsítótárazza a konfigurációkat és a teljesítmény javítása az adatokat. Létrehozásakor, vagy törlése a szerepkör-hozzárendeléseit, a módosítások érvénybe léptetéséhez akár 30 percet is igénybe vehet. Az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatakor kényszerítheti a szerepkör-hozzárendelési módosítások frissítését kijelentkezés és bejelentkezés. A REST API-hívások szerepkör-hozzárendelés módosításokat végez, ha egy frissítés kényszerítheti a hozzáférési jogkivonat frissítésével.
 
 ## <a name="next-steps"></a>További lépések
 * [Hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)

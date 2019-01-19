@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c921d9bed666e428779a125c17591c65ad690f1c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888936"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411254"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Vegyen fel egy szimbólum réteget a térkép
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan renderelni a pont adatokat egy adatforrásból egy s
 > [!TIP]
 > Symbol rétegek alapértelmezés szerint egy adatforrásban lévő összes geometriája koordinátáit jelenik meg. A réteg korlátozása úgy, hogy a vártak csak pont geometriai szolgáltatások beállítása az `filter` tulajdonság a réteg `['==', '$type', 'Point']`
 
-## <a name="add-a-symbol-layer"></a>Egy szimbólum réteg hozzáadása
+## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
 <iframe height='500' scrolling='no' title='Kapcsoló PIN-kód helyét' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>kapcsoló PIN-kód helyét</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -32,7 +32,7 @@ A fenti kód első kódblokkot egy térkép-objektumot hoz létre. Látható [t�
 
 A második kódblokkot, egy adatforrás-objektum létrejött, használja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztály. [A szolgáltatás], amely tartalmazza a [pont](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) geometriai van burkolt be, a [alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztály könnyebb frissíteni, majd létrehozott és az adatforrás hozzá.
 
-A harmadik kódblokkot létrehoz egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) és a frissítések, egér, a pont koordináták kattintson az alakzat osztállyal [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#setcoordinates) metódust.
+A harmadik kódblokkot létrehoz egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) és a frissítések, egér, a pont koordináták kattintson az alakzat osztállyal [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metódust.
 
 A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  Az adatforrás az kattintson eseményfigyelő és a szimbólum réteg létrehozása és belül a térképhez hozzáadni a [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosítására, hogy a pont után teljes betölti a térkép jelenik meg.
 

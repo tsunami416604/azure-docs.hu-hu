@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: e1257cbe14d8d0fe9dc6d9b0f2a48dbb8b3cc6e4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 81c33818733b2896f98e1f3a3648b4fe9b823211
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466557"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413855"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Azure-sablonnal egy virtuális gép méretezési csoport automatikus méretezése
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -164,7 +164,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 ## <a name="generate-cpu-load-on-scale-set"></a>Processzorterhelés létrehozása a méretezési csoportban
 Az automatikus skálázási szabályok teszteléséhez hozzon létre némi processzorterhelést a méretezési csoportban lévő virtuálisgép-példányokhoz. Ezen szimulált processzorterhelés hatására az automatikus méretezési szabályok horizontálisan felskáláznak, és megnövelik a virtuálisgép-példányok számát. A szimulált processzorterhelés ezt követő csökkentésével az automatikus méretezési szabály horizontálisan leskáláz, és csökkenti a virtuálisgép-példányok számát.
 
-Először listázza ki a méretezési csoportban lévő virtuálisgép-példányokhoz való csatlakozáshoz használható címet és portokat az [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) paranccsal:
+Először listázza ki a méretezési csoportban lévő virtuálisgép-példányokhoz való csatlakozáshoz használható címet és portokat az [az vmss list-instance-connection-info](/cli/azure/vmss) paranccsal:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -194,7 +194,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Ha a **stress** segédprogram a *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* kimenethez hasonló értékeket mutat, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
+Amikor **stress** hasonló eredményeket jelenít meg *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
 
 Annak megerősítéséhez, hogy a **stress** segédprogram processzorterhelést hoz létre, vizsgálja meg az aktív rendszerterhelést a **top** segédprogram segítségével:
 
@@ -209,7 +209,7 @@ Ctrl-c
 exit
 ```
 
-Csatlakozzon a másik virtuálisgép-példányhoz az előző [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) paranccsal listázott portszám segítségével:
+Csatlakozzon a másik virtuálisgép-példányhoz az előző [az vmss list-instance-connection-info](/cli/azure/vmss) paranccsal listázott portszám segítségével:
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003
@@ -222,7 +222,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Ismét, ha a **stress** segédprogram a *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* kimenethez hasonló értékeket mutat, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
+Újra, amikor **stress** hasonló eredményeket jelenít meg *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
 
 Zárja be a második virtuálisgép-példánnyal létesített kapcsolatot. A **stress** segédprogram továbbra is fut a virtuálisgép-példányon.
 

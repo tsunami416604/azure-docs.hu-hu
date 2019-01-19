@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c86ea4ca5353207d091d3e6edb13f1f3eba59175
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465659"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410659"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Állítsa be az Azure CLI-vel egy virtuálisgép-méretezési csoport kezelése
 A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk részletesen néhány gyakori Azure CLI-parancsok, amelyek lehetővé teszik, hogy ezeket a feladatokat.
@@ -37,7 +37,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
-Egy méretezési csoportban lévő Virtuálisgép-példányok listájának megtekintéséhez használja [az vmss list-instances](/cli/azure/vmss#list-instances). Az alábbi példa felsorolja az összes Virtuálisgép-példányt a méretezési elnevezett *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg ezeket a neveket a saját értékeit:
+Egy méretezési csoportban lévő Virtuálisgép-példányok listájának megtekintéséhez használja [az vmss list-instances](/cli/azure/vmss). Az alábbi példa felsorolja az összes Virtuálisgép-példányt a méretezési elnevezett *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg ezeket a neveket a saját értékeit:
 
 ```azurecli
 az vmss list-instances \
@@ -108,7 +108,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>Egy méretezési csoportban lévő virtuális gépek indítása
-Egy méretezési csoportban lévő egy vagy több virtuális gép indításához használja [az vmss start](/cli/azure/vmss#az_vmss_start). Az `--instance-ids` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. Több virtuális gép indításához külön mindegyik Példányazonosítója egy-egy szóközzel.
+Egy méretezési csoportban lévő egy vagy több virtuális gép indításához használja [az vmss start](/cli/azure/vmss). Az `--instance-ids` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. Több virtuális gép indításához külön mindegyik Példányazonosítója egy-egy szóközzel.
 
 A következő példa elindítja a példány *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. A saját értékeit adja meg a következőképpen:
 

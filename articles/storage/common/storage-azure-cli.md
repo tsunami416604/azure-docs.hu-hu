@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 977d40ba6fdb00f47f4ff32e60642ee3ab102da2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984382"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413634"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)
 
@@ -31,7 +31,7 @@ Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalma
 
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
-* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](storage-create-storage-account.md) cikk [Tárfiók létrehozása](storage-quickstart-create-account.md) szakaszát.
+* **Storage-fiók**: Lásd: [hozzon létre egy tárfiókot](storage-quickstart-create-account.md) a [tudnivalók az Azure storage-fiókok](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
@@ -183,9 +183,9 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location` [Kötelező]: hely. Például "West US".
-* `--name` [Kötelező]: A tárfiók nevét. A neve 3 – 24 karakter hosszúságú lehet, és csak kisbetűs alfanumerikus karaktereket használjon.
-* `--resource-group` [Kötelező]: erőforráscsoport nevét.
+* `--location` [Kötelező]: A hely. Például "West US".
+* `--name` [Kötelező]: A tárfiók neve. A neve 3 – 24 karakter hosszúságú lehet, és csak kisbetűs alfanumerikus karaktereket használjon.
+* `--resource-group` [Kötelező]: Erőforráscsoport neve.
 * `--sku` [Kötelező]: A tárfiók SKU-JÁNAK. Megengedett értékek:
   * `Premium_LRS`
   * `Standard_GRS`
@@ -197,7 +197,7 @@ az storage account create \
 
 Több tárfiók rendelkezhet az Azure-előfizetésében. Azokat az összes későbbi tárolási parancsra vonatkozó egyikét választhatja ki, ezeket a környezeti változókat állíthatja be:
 
-Elsőként jelenítse meg a tárfiókkulcsokat az [az storage account keys list](/cli/azure/storage/account/keys#list) parancs segítségével:
+Elsőként jelenítse meg a tárfiókkulcsokat az [az storage account keys list](/cli/azure/storage/account/keys) parancs segítségével:
 
 ```azurecli-interactive
 az storage account keys list \
@@ -242,8 +242,8 @@ az storage container create --name <container_name>
 
 Beállíthat egy három szintje olvasási hozzáférés egy új tárolót megadásával a választható `--public-access` argumentum:
 
-* `off` (alapértelmezett): tároló adatok csak a fiók tulajdonosától.
-* `blob`: A nyilvános olvasási hozzáférés blobok számára.
+* `off` (alapértelmezett): Tároló adatok csak a fiók tulajdonosától.
+* `blob`: Nyilvános olvasási hozzáférés blobok számára.
 * `container`: A teljes tárolót nyilvános olvasási és a lista hozzáférést.
 
 További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.

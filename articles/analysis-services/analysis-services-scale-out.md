@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190831"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411679"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -107,7 +107,7 @@ Az ssms-ben, az SSDT és kapcsolati karakterláncokat a PowerShell, Azure-függv
 
 **A probléma leírása:** Felhasználók hibaüzenet **-kiszolgáló nem található "\<a kiszolgáló nevét >" példány "ReadOnly" kapcsolati módban.**
 
-**Megoldás:** Amikor kiválasztja a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül: rw) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen csatlakozás tiltása, hogy nem szeretné a feldolgozó kiszolgáló, a lekérdezési készlettől külön addig, amíg a horizontális felskálázást és a szinkronizálási művelet befejeződött. A memória és a QPU mérőszámok segítségével szinkronizálási állapotának figyelése.
+**Megoldás:** Amikor kiválasztja a **a lekérdezési készlettől a feldolgozó kiszolgáló elkülönítése** beállítás, az alapértelmezett kapcsolati karakterlánc használatával Ügyfélkapcsolatok (nélkül: rw) lekérdezési készlet replikákat a rendszer átirányítja. A lekérdezési készlet replikák vannak nem még online hogy a szinkronizálás még nem fejeződtek be, ha az átirányított ügyfélkapcsolatok sikertelen lehet. Sikertelen kapcsolatok megelőzése érdekében kell lennie legalább két kiszolgálót a lekérdezési készletből szinkronizálás végrehajtása során. Minden kiszolgálón külön-külön szinkronizálása, míg mások is online maradnak. Ha nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készlet feldolgozása során, ha szeretné, távolítsa el a készletből feldolgozásra, és adja hozzá azt vissza a készletbe feldolgozás befejeződése után, de a szinkronizálás előtt. A memória és a QPU-metrikák használatával szinkronizálási állapotát figyeli.
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

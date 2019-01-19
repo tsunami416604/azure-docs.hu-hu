@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 2a54752f933b91265d0aa8add61ca0707615931b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0d58a384a6ca7c249a3b0e8b690095202fe373a2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526327"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413617"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Az Azure Import/Export-feladatok diagnosztizálása és hibajavítása
 Minden meghajtó feldolgozott az Azure Import/Export szolgáltatás hibanaplót a társított storage-fiókot hoz létre. Részletes naplózás engedélyezése beállításával a `LogLevel` tulajdonságot `Verbose` hívásakor a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) vagy [frissítési feladat tulajdonságai](/rest/api/storageimportexport/jobs#Jobs_Update) műveleteket.
 
  Alapértelmezés szerint a naplók nevű tárolóba írták `waimportexport`. Úgy is megadhat egy másik nevet a `DiagnosticsPath` tulajdonság hívásakor a `Put Job` vagy `Update Job Properties` műveleteket. Az alábbi elnevezési szabályt követik a blokkblobként tárolja a naplókat: `waies/jobname_driveid_timestamp_logtype.xml`.
 
- URI-ját a naplók egy feladat meghívásával lehet lekérdezni a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) művelet. A részletes napló URI Azonosítóját adja vissza a `VerboseLogUri` tulajdonság minden meghajtó, míg a hibanapló URI Azonosítóját adja vissza a `ErrorLogUri` tulajdonság.
+ URI-ját a naplók egy feladat meghívásával lehet lekérdezni a [Get Job](/rest/api/storageimportexport/jobs) művelet. A részletes napló URI Azonosítóját adja vissza a `VerboseLogUri` tulajdonság minden meghajtó, míg a hibanapló URI Azonosítóját adja vissza a `ErrorLogUri` tulajdonság.
 
 A naplózási adatok segítségével a következő problémák azonosításához.
 

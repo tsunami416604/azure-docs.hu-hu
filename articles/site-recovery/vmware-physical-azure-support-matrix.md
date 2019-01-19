@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/18/2019
 ms.author: raynew
-ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7c01c8ec8c4957900688fed7ca09830f792a7886
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107498"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413413"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -48,7 +48,7 @@ Lemez – szabad terület | Szükséges folyamatkiszolgálói gyorsítótár-ter
 Lemez – szabad terület | 600 GB lemezterület az adatmegőrzési meghajtó szükséges.
 Operációs rendszer  | A Windows Server 2012 R2 vagy Windows Server 2016-ban |
 Operációs rendszer területi beállítása | Angol (en-us)
-A PowerCLI | [A PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") telepítve kell lennie.
+PowerCLI | [A PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") telepítve kell lennie.
 Windows Server-szerepkörök | Ne legyen engedélyezve: <br/> - Active Directory tartományi szolgáltatások <br/>– Internet Information Services <br/> - Hyper-V |
 Csoportházirendek| Ne legyen engedélyezve: <br/> -Hozzáférés megakadályozása a parancssorba. <br/> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br/> -Megbízhatósági logika fájlmellékletekhez. <br/> – Kapcsolja be a parancsfájl végrehajtása. <br/> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Győződjön meg arról, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhelye <br/> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br/> -Nem rendelkezik a már létező webhely vagy alkalmazás 443-as porton<br/>
@@ -76,9 +76,9 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11<b>\*\*</b>, 6.
 14.04 LTS | [9.19][9.19 UR] | a 3.13.0-153-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-131-generic 4.4.0-21-Generic |
 14.04 LTS | [9.18][9.18 UR] | a 3.13.0-153-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-130-generic 4.4.0-21-Generic |
 |||
-16.04 LTS | [9.21][9.21 UR] | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-42-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure <br/>a 4.15.0-1035-azure 4.15.0-1012-Azure|
-16.04 LTS | [9.20][9.20 UR] | a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-38-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure <br/>a 4.15.0-1025-azure 4.15.0-1012-Azure|
-16.04 LTS | [9.19][9.19 UR] | a 4.4.0-131-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-30-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1018-azure 4.13.0-1005-Azure <br/>a 4.15.0-1019-azure 4.15.0-1012-Azure|
+16.04 LTS | [9.21][9.21 UR] | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-42-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1035-azure 4.15.0-1012-Azure|
+16.04 LTS | [9.20][9.20 UR] | a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-38-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1025-azure 4.15.0-1012-Azure|
+16.04 LTS | [9.19][9.19 UR] | a 4.4.0-131-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-30-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1019-azure 4.15.0-1012-Azure|
 16.04 LTS | [9.18][9.18 UR] | a 4.4.0-130-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic 4.13.0-16-Generic |
 
 ### <a name="debian-kernel-versions"></a>Debian kernel-verzióknál
@@ -86,21 +86,21 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11<b>\*\*</b>, 6.
 
 **Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás ezen verziója** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | [9.18][9.18 UR],[9.19][9.19 UR],[9.20][9.20 UR],[9.21][9.21 UR] | a 3.2.0-6-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.18][9.18 UR],[9.19][9.19 UR],[9.20][9.20 UR],[9.21][9.21 UR] | 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR] | a 3.16.0-7-amd64, hogy 4.9.0-0.bpo.8-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
-Debian 8 | [9.19][9.19 UR] | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.7-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
-Debian 8 | [9.18][9.18 UR] | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR] | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
+Debian 8 | [9.19][9.19 UR] | 3.16.0-4-amd64 to 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.7-amd64 |
+Debian 8 | [9.18][9.18 UR] | 3.16.0-4-amd64 to 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.6-amd64 |
 
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 támogatott kernel verziója
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.21][9.21 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.72-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.107-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.64-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.19][9.19 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.96-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.85-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.18][9.18 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> A 3.12.74-60.64.96-default SP1(LTSS) 3.12.74-60.64.45-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.85-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.138-94.39-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.21][9.21 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.72-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.64-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.19][9.19 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.85-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.18][9.18 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.85-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.138-94.39-default SP3 4.4.73-5-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux rendszerek/Vendég fájltárolás
 
@@ -112,7 +112,8 @@ A Paravirtualizált tárolóeszközök | A paravirtualizált illesztőprogramok 
 Több üzenetsor blokk i/o-eszközök | Nem támogatott.
 A HP CCISS tárolóvezérlő a fizikai kiszolgálók | Nem támogatott.
 Eszköz/csatlakoztatási pont az elnevezési konvenciót | Eszköznév vagy csatlakoztatási pont nevének egyedinek kell lennie. Győződjön meg arról, hogy nincs két eszközök/csatlakoztatási pont rendelkezik-e megkülönbözteti a kis-és nagybetűérzékeny neveket. </br> Példa: Ugyanahhoz a virtuális géphez, a két eszköz elnevezési *device1* és *Device1* nem engedélyezett.
-Könyvtárak | Mielőtt [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. A következő könyvtárak (ha csoportként külön partíciókat és-fájlrendszerek) összes kell lennie a forráskiszolgálón az azonos operációsrendszer-lemez: / (gyökér), gyökérpartíció, usr, /usr/local, /var, a/etc.</br>2. gyökérpartíció lemezpartíción kell és nem kell az LVM-kötet.<br/><br/> A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) és újabb verziók, fent korlátozásai nem vonatkoznak.
+Könyvtárak | Mielőtt [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. A következő könyvtárak (ha csoportként külön partíciókat és-fájlrendszerek) összes kell lennie a forráskiszolgálón az azonos operációsrendszer-lemez: / (gyökér), gyökérpartíció, usr, /usr/local, /var, a/etc.</br>2. gyökérpartíció lemezpartíción kell és nem kell az LVM-kötet.<br/><br/> A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) és újabb verziók, fent korlátozásai nem vonatkoznak. LVM köteten több lemezre kiterjedő gyökérpartíció nem támogatott.
+Rendszerindítási könyvtár | A virtuális gépen több rendszerindító lemez nem támogatott. <br/><br/> A rendszerindító lemez nélküli gép nem védhető.
 
 Szabad lemezterület-követelmények |} A/root partíción 2 GB <br/><br/> A telepítési mappa XFSv5 250 MB |} XFSv5 funkcióinak XFS fájlrendszereket, metaadatok ellenőrzőösszeg, például a mobilitási szolgáltatás verziójának 9.10 meghajtóbetűjeltől támogatottak. A xfs_info segédprogram használatával a partíció a XFS superblock ellenőrzése. Ha ftype 1 értékre van állítva, majd XFSv5 funkciók használatban vannak.
 
@@ -129,8 +130,8 @@ Lemez hozzáadása a replikált virtuális Gépen | Tiltsa le a replikációt a 
 --- | ---
 Gazdagép-hálózat hálózati adapterek összevonása | VMware virtuális gépek esetében támogatott. <br/><br/>Fizikai gép replikálása nem támogatott.
 Gazdagép hálózati VLAN | Igen.
-Gazdagép hálózati IPv4 | Igen.
-Gazdagép hálózati IPv6 | Nem.
+Host network IPv4 | Igen.
+Host network IPv6 | Nem.
 Vendég-kiszolgáló hálózati hálózati adapterek összevonása | Nem.
 Vendég-kiszolgáló hálózati IPv4 | Igen.
 Vendég-kiszolgáló hálózati IPv6 | Nem.
@@ -157,7 +158,8 @@ Gyorsított hálózatkezelés | Nem
 ## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
-Gazdagép NFS | Igen: VMware-ről<br/><br/> Nincs a fizikai kiszolgálók számára
+Dinamikus lemez | A művelet rendszerlemez alaplemeznek kell lennie. <br/><br/>Az adatlemezek dinamikus lemezeket is lehet.
+Host NFS | Igen: VMware-ről<br/><br/> Nincs a fizikai kiszolgálók számára
 Gazda (iSCSI/FC) TÁROLÓHÁLÓZAT | Igen
 Gazdagép vsan-hoz | Igen: VMware-ről<br/><br/> N/A fizikai kiszolgálókhoz
 Gazdagép többutas (MPIO) | Igen, teszteltük Microsoft DSM EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON számára

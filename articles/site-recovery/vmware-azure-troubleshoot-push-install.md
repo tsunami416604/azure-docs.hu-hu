@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 12/12/2018
-ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/18/2019
+ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789907"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411747"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
@@ -141,6 +141,14 @@ Az operációs rendszerek és az Azure Site Recovery által támogatott kernel-v
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Rendszerindító és a rendszerpartíciók / kötetek nem ugyanazon a lemezen (ErrorID: 95309)
 
 Mielőtt 9.20 verzió, rendszerindító és a rendszerpartíciók / eltérő lemezeken lévő kötetek volt konfigurációja nem támogatott. A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ez a konfiguráció támogatott. A támogatási használja a legújabb verziót.
+
+## <a name="boot-disk-not-found-errorid-95310"></a>Rendszerindító lemez nem található (ErrorID: 95310)
+
+A rendszerindító lemez nem rendelkező virtuális gép nem védhető. Ez a virtuális gép zavartalan helyreállítási biztosítására a feladatátvételi művelet során. Rendszerindító lemez hiányában nem sikerült a feladatátvétel után indítsa el a gépet eredményez. Győződjön meg arról, hogy a virtuális gép rendszerindító lemezt tartalmaz, és próbálja megismételni a műveletet. Vegye figyelembe azt is, hogy ugyanazon a gépen több rendszerindító lemez nem támogatott.
+
+## <a name="multiple-boot-disks-found-errorid-95311"></a>Több rendszerindító lemez található (ErrorID: 95311)
+
+Egy több rendszerindító lemezzel rendelkező virtuális gép nincs olyan [támogatott konfigurációs](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Több lemezen található rendszerpartíció (ErrorID: 95313)
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54242344"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404686"
 ---
 A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -60,13 +60,11 @@ A diagnosztikai naplók a lehetőségek a következők:
 
 - [Mentse azokat egy storage-fiók](../articles/azure-monitor/platform/archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) használata az erőforrás diagnosztikai beállításait.
 - [Az Event Hubs Stream őket](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
-- Elemezheti a [OMS Naplóelemzés](../articles/log-analytics/log-analytics-azure-storage.md).
+- Elemezheti a [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-- [Az Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/) monitorozási, riasztási és riasztási szervizelési képességeket biztosít a felhőben és helyszíni eszközökön. Egy bővítmény telepítheti egy [Linux rendszerű virtuális gép](../articles/virtual-machines/linux/extensions-oms.md) vagy egy [Windows virtuális gép](../articles/virtual-machines/windows/extensions-oms.md) , amely telepíti az OMS-ügynököt, és regisztrálja a virtuális gép egy meglévő OMS-munkaterülethez való.
-
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) egy szolgáltatás, az OMS-ben, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
+- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) egy szolgáltatás, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. Bővítmény telepítheti egy [Linux rendszerű virtuális gép](../articles/virtual-machines/linux/extensions-oms.md) vagy egy [Windows virtuális gép](../articles/virtual-machines/windows/extensions-oms.md) , amely a Log Analytics-ügynököt telepít, és regisztrálja a virtuális gép be egy meglévő Log Analytics-munkaterületet.
 
     A Windows és Linux rendszerű virtuális gépek esetében az ajánlott módszer a naplókat és mérőszámokat gyűjtése a Log Analytics-ügynök telepítésével van. A Log Analytics-ügynök telepítése a virtuális gép legegyszerűbben az [Virtuálisgép-bővítménnyel](../articles/log-analytics/log-analytics-azure-vm-extension.md). A bővítmény használata leegyszerűsíti a telepítés folyamatát és automatikusan konfigurálja az ügynököt, hogy elküldje az adatokat a megadott Log Analytics-munkaterületre. Az ügynök automatikusan frissül, hogy mindig a legújabb funkciókkal és javításokkal bővüljön.
 

@@ -11,15 +11,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7b27dbbf34f1c19efa0fc21af71339ce6cacd9d8
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621071"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410818"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Megjelölt felhasználók szóló jelentés az Azure Portalon
 
@@ -55,19 +55,16 @@ A kockázatosként megjelölt felhasználókról szóló jelentés az Azure ad i
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/03.png)
 
-Az egyes felhasználók kijelölésével megnyithatja a kapcsolódó felhasználói adatok paneljét. A veszélyeztetett felhasználók esetében áttekintheti a felhasználó bejelentkezési előzményeit, és szükség esetén alaphelyzetbe állíthatja a jelszót.
-
-![Kockázatos bejelentkezések](./media/concept-user-at-risk/46.png)
-
+Az egyes felhasználók kijelölésével biztosít a bejelentkezési adatokat. A veszélyeztetett felhasználók esetében áttekintheti a felhasználó bejelentkezési előzményeit, és szükség esetén alaphelyzetbe állíthatja a jelszót.
 
 Ez a párbeszédablak a következő lehetőségeket kínálja:
 
 - A jelentés letöltése
-
 - Felhasználók keresése
 
-![Kockázatos bejelentkezések](./media/concept-user-at-risk/16.png)
+    ![Kockázatos bejelentkezések](./media/concept-user-at-risk/16.png)
 
+Részletesebb információkért premium licenc szükséges.
 
 ## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Az Azure AD prémium szintű kiadásokban szóló jelentés a felhasználók
 

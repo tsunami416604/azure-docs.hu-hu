@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452054"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413838"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI-vel Linux rendszerű virtuális gépek lemezeinek
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ Két módon, hogy a VMAccess bővítmény a Linuxos virtuális gépeken használ
 * Az Azure CLI és a szükséges paramétereket használja.
 * [Használja a nyers JSON-fájlokat, és a VMAccess bővítmény feldolgozására](#use-json-files-and-the-vmaccess-extension) , és ezután reagálhat rájuk.
 
-A következő példákban [az a virtuális gép felhasználójának](/cli/azure/vm/user) parancsokat. Ezeket a lépéseket a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+A következő példákban [az a virtuális gép felhasználójának](/cli/azure/vm/user) parancsokat. Ezeket a lépéseket a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
 ## <a name="update-ssh-key"></a>SSH-kulcs frissítése
 Az alábbi példa frissíti az SSH-kulcsot a felhasználó `azureuser` nevű virtuális gépre `myVM`:
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Megjegyzés:** a `az vm user update` parancs hozzáfűzi az új nyilvános kulcs szövegét, a `~/.ssh/authorized_keys` a virtuális gépen a rendszergazda felhasználó fájlt. Ez nem cserélje le, vagy távolítsa el minden meglévő SSH-kulcsokat. Ez nem távolítja el korábbi kulcsok beállítása üzembe helyezési idő vagy a VMAccess bővítmény használatával ezt követő frissítésekben.
+> **MEGJEGYZÉS:** A `az vm user update` parancs hozzáfűzi az új nyilvános kulcs szövegét, a `~/.ssh/authorized_keys` a virtuális gépen a rendszergazda felhasználó fájlt. Ez nem cserélje le, vagy távolítsa el minden meglévő SSH-kulcsokat. Ez nem távolítja el korábbi kulcsok beállítása üzembe helyezési idő vagy a VMAccess bővítmény használatával ezt követő frissítésekben.
 
 ## <a name="reset-password"></a>Új jelszó létrehozása
 A következő példa alaphelyzetbe állítja a jelszót a felhasználó `azureuser` nevű virtuális gépre `myVM`:

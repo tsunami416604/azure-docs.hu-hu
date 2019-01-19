@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1916144ab2c8d5b5f0ae8f5ec87bfbf03cf4629d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023753"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413889"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -52,7 +52,7 @@ Az Azure portal használatával a virtuális gép létrehozásakor a portálon a
     |Magánhálózati IP-cím hozzárendelése|Igen| Ebben a beállításban a IPv4-cím a hozzárendelési módszer választhassa. A következő hozzárendelési módszer közül választhat: **Dinamikus:** Ezzel a beállítással az Azure automatikusan hozzárendeli a következő elérhető címe a kiválasztott alhálózat címterét. **Statikus:** Ezzel a beállítással manuálisan kell rendelnie egy elérhető IP-cím a kiválasztott alhálózat címterében. Statikus és dinamikus címek nem változtatja meg, amíg nem módosítja őket, vagy a hálózati adapter törlése. A hozzárendelési módszer a hálózati adapter létrehozása után módosíthatja. Az Azure DHCP-kiszolgáló ezt a címet a virtuális gép operációs rendszerén belül a hálózati adapterhez rendeli.|
     |Hálózati biztonsági csoport|Nem| Hagyja beállítása **nincs**, válasszon egy meglévő [hálózati biztonsági csoport](security-overview.md), vagy [hozzon létre egy hálózati biztonsági csoport](tutorial-filter-network-traffic.md). Hálózati biztonsági csoportok lehetővé teszik egy hálózati adapter kívüli hálózati forgalom szűrésére. Hálózati adapter nulla vagy egy hálózati biztonsági csoport alkalmazhat. Nulla vagy egy hálózati biztonsági csoportot az alhálózathoz, a hálózati adapterhez hozzárendelt is alkalmazható. Néha nem várt eredmények fordulhat elő, amikor egy hálózati adaptert, és az alhálózatot a hálózati adapterhez rendelt hálózati biztonsági csoport alkalmazza. Hálózati adapterek és alhálózatok alkalmazott hálózati biztonsági csoportok hibaelhárítása: [hálózati biztonsági csoportok hibaelhárítása](diagnose-network-traffic-filter-problem.md).|
     |Előfizetés|Igen|Válassza ki az Azure egyik [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). A virtuális gépet, csatlakoztassa a hálózati adaptert, és kösse össze a virtuális hálózat ugyanabban az előfizetésben léteznie kell.|
-    |Magánhálózati IP-cím (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, IPv6-címet a hálózati kapcsolat mellett a hálózati adapterhez rendelt IPv4-cím van hozzárendelve. Tekintse meg a [IPv6](#IPv6) fontos információkhoz juthat használata az IPv6 hálózati adapterrel rendelkező című szakaszban. Az IPv6-cím-hozzárendelési módszer nem választhatja ki. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
+    |Private IP address (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, IPv6-címet a hálózati kapcsolat mellett a hálózati adapterhez rendelt IPv4-cím van hozzárendelve. Tekintse meg a [IPv6](#IPv6) fontos információkhoz juthat használata az IPv6 hálózati adapterrel rendelkező című szakaszban. Az IPv6-cím-hozzárendelési módszer nem választhatja ki. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
     |IPv6-név (csak jelenik meg, amikor a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve) |Igen, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve.| Ez a név egy másodlagos IP-konfigurációt a hálózati adapter van hozzárendelve. IP-konfigurációval kapcsolatos további információkért lásd: [hálózatiadapter-beállítások megtekintése](#view-network-interface-settings).|
     |Erőforráscsoport|Igen|Válasszon egy meglévő [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) vagy hozzon létre egyet. Hálózati adapter az azonos vagy eltérő erőforráscsoportban, mint a virtuális gépet, csatlakoztassa is létezik, vagy a virtuális hálózathoz csatlakoztatja a.|
     |Hely|Igen|A hálózati adaptert a virtuális géphez csatolni, és kösse össze a virtuális hálózat léteznie kell az azonos [hely](https://azure.microsoft.com/regions), más néven egy régiót.|
@@ -112,7 +112,7 @@ A DNS-kiszolgáló által az Azure DHCP-kiszolgáló a virtuális gép operáci�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|parancssori felület|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Engedélyezi vagy letiltja az IP-továbbítás
@@ -133,7 +133,7 @@ A beállítást engedélyezni kell minden, amelyet a virtuális gép továbbítj
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|parancssori felület|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Alhálózat-hozzárendelés módosítása
@@ -167,7 +167,7 @@ Csak adja hozzá a hálózati adaptert, vagy egy hálózati adapter eltávolít�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|parancssori felület|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>A hálózati biztonsági csoport társításának megszüntetése vagy társítása
@@ -199,7 +199,7 @@ Ha töröl egy hálózati adapter, bármely hozzárendelt MAC vagy IP-címek jel
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
+|parancssori felület|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Kapcsolati problémák elhárításához

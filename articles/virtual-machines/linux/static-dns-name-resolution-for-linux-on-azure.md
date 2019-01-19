@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 621cc79c23fa21401f9ec11ee15b84ae3b9b1288
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961501"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411106"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Virtuális hálózati adapterek létrehozása és a belső DNS használata Azure-beli virtuális gépek névfeloldásához
 
@@ -34,7 +34,7 @@ Követelmények:
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha szeretne gyorsan elvégezni a feladatot, a következő szakasz ismerteti a szükséges parancsokat. Részletes információkat és a környezet a dokumentum többi részén találja lépéseinek [itt indítása](#detailed-walkthrough). Ezeket a lépéseket a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
-Előfeltételek: Erőforráscsoport, a virtuális hálózat és alhálózat, az ssh-val a hálózati biztonsági csoport bejövő.
+Előfeltételek: A bejövő erőforráscsoportot, virtuális hálózatot és alhálózatot, a hálózati biztonsági csoport az ssh-val.
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Hozzon létre egy virtuális hálózati adaptert statikus belső DNS-név
 Az a virtuális hálózati adapter létrehozása [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create). A `--internal-dns-name` Parancssorifelület-jelző van a DNS-címke, amely biztosítja a virtuális hálózati kártya (vNic) statikus DNS-nevét állítja. Az alábbi példa létrehoz egy virtuális hálózati adapter nevű `myNic`, csatlakoztatja a a `myVnet` a virtuális hálózathoz, és létrehoz egy belső DNS-név rekord nevű `jenkins`:
@@ -70,7 +70,7 @@ Belső DNS-nevük, csak egy Azure virtuális hálózaton belül feloldható. Miv
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők `myResourceGroup`, `myNic`, és `myVM`.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
-Először hozza létre az erőforráscsoportot [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy erőforráscsoportot, nevű `myResourceGroup` a a `westus` helye:
+Először hozza létre az erőforráscsoportot [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location westus
 
 A következő lépés, hogy alakíthat ki virtuális hálózatot, a virtuális gépek elindítására. A virtuális hálózat egy alhálózat ebben a bemutatóban tartalmazza. Azure virtuális hálózataiban működő további információkért lásd: [hozzon létre egy virtuális hálózatot](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-Hozzon létre a virtuális hálózatba a [az network vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). A következő példában létrehozunk egy nevű virtuális hálózatot `myVnet` és nevű alhálózatot `mySubnet`:
+Hozzon létre a virtuális hálózatba a [az network vnet létrehozása](/cli/azure/network/vnet). A következő példában létrehozunk egy nevű virtuális hálózatot `myVnet` és nevű alhálózatot `mySubnet`:
 
 ```azurecli
 az network vnet create \
@@ -103,7 +103,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>Adjon hozzá egy bejövő szabályt, amely engedélyezi az SSH
-Adjon hozzá egy bejövő szabályt a hálózati biztonsági csoport [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). A következő példában létrehozunk egy nevű szabályt `myRuleAllowSSH`:
+Adjon hozzá egy bejövő szabályt a hálózati biztonsági csoport [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule). A következő példában létrehozunk egy nevű szabályt `myRuleAllowSSH`:
 
 ```azurecli
 az network nsg rule create \

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d40e23a7cc113a9db297a7dbf00a2372063dfb52
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060564"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413396"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure biztonsági és megfelelőségi terv – a háromrétegű IaaS-webalkalmazás a UK-OFFICIAL
 
@@ -57,7 +57,7 @@ ms.locfileid: "39060564"
 (1) az application Gateway
 - WAF - kompatibilis
 - WAF mód – megelőzése
-- Set-szabály: OWASP 3.0
+- Szabálykészlet: OWASP 3.0
 - 80-as Port HTTP-figyelő
 - Kapcsolat/forgalom NSG keresztül szabályozott
 - Nyilvános IP-cím végponthoz meghatározott (Azure)
@@ -129,64 +129,64 @@ Storage
 
 ### <a name="deployment-architecture"></a>Üzembe helyezési architektúra:
 
-**A helyszíni hálózat**: egy helyi magánhálózat a szervezet implementálva.
+**A helyszíni hálózat**: Egy helyi magánhálózat a szervezet implementálva.
 
-**Éles VNet**: az éles [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (virtuális hálózat) futtatja az alkalmazást és egyéb Azure-ban futó operatív erőforrásokat. Minden egyes virtuális hálózatok közötti tartalmazhat több elkülönítése, és a hálózati forgalom kezelésére használt alhálózat.
+**Éles VNet**: Az üzemi [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (virtuális hálózat) futtatja az alkalmazást és egyéb Azure-ban futó operatív erőforrásokat. Minden egyes virtuális hálózatok közötti tartalmazhat több elkülönítése, és a hálózati forgalom kezelésére használt alhálózat.
 
-**Webalkalmazás-csomag**: bejövő HTTP-kéréseket. Válaszok a rendszer ezen a szinten keresztül adja vissza.
+**Webalkalmazás-csomag**: A bejövő HTTP-kérelmeket kezeli. Válaszok a rendszer ezen a szinten keresztül adja vissza.
 
-**Üzleti szint**: valósítja meg az üzleti folyamatokat és egyéb működési logika, a rendszer.
+**Üzleti szint**: Valósítja meg üzleti folyamatokat és egyéb működési logika, a rendszer.
 
-**Adatbázis-szintű**: állandó adattárolást, biztosít használatával [SQL Server Always On rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx) magas rendelkezésre állás érdekében. Vállalt [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) egy PaaS helyett.
+**Adatbázis-szintű**: Állandó adattárolást, biztosít használatával [SQL Server Always On rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx) magas rendelkezésre állás érdekében. Vállalt [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) egy PaaS helyett.
 
 **Átjáró**: A [VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) kapcsolatot biztosít a helyszíni hálózat útválasztói és az éles virtuális hálózat között.
 
-**Nyilvános IP-cím és az internetes Átjárónkhoz**: az internetes átjárónkhoz alkalmazásszolgáltatások felhasználók az interneten keresztül elérhetővé teszi. Ezek a szolgáltatások elérése forgalom védi egy [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) 7. rétegbeli útválasztási és terheléselosztási funkciók webes alkalmazásvédelemmel tűzfal (WAF).
+**Nyilvános IP-cím és az internetes Átjárónkhoz**: Az internetes átjárónkhoz alkalmazásszolgáltatások felhasználók az interneten keresztül elérhetővé teszi. Ezek a szolgáltatások elérése forgalom védi egy [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) 7. rétegbeli útválasztási és terheléselosztási funkciók webes alkalmazásvédelemmel tűzfal (WAF).
 
 **Felügyeleti virtuális hálózati**: Ez [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) olyan erőforrásokat tartalmaz, felügyeleti és monitorozási képességeket a VNet éles környezetben futó számítási feladatok végrehajtására.
 
-**Jumpbox**: más néven egy [bástyagazdagép](https://en.wikipedia.org/wiki/Bastion_host), azaz egy biztonságos virtuális gép, amely a rendszergazdák használhatják az éles virtuális hálózat virtuális gépekhez csatlakozhat a hálózaton. A jumpbox olyan NSG-vel rendelkezik, amely csak a biztonságos elemek listáján szereplő nyilvános IP-címekről érkező távoli forgalmat engedélyezi. Távoli asztali (RDP) forgalmat lehetővé teszik, hogy a forgalom forrását kell definiálni az NSG-ben. Éles erőforrásait használatával biztonságos Jumpbox virtuális gép RDP-n keresztül történik.
+**Jumpbox**: Más néven egy [bástyagazdagép](https://en.wikipedia.org/wiki/Bastion_host), azaz egy biztonságos virtuális gép, amely a rendszergazdák használhatják az éles virtuális hálózat virtuális gépekhez csatlakozhat a hálózaton. A jumpbox olyan NSG-vel rendelkezik, amely csak a biztonságos elemek listáján szereplő nyilvános IP-címekről érkező távoli forgalmat engedélyezi. Távoli asztali (RDP) forgalmat lehetővé teszik, hogy a forgalom forrását kell definiálni az NSG-ben. Éles erőforrásait használatával biztonságos Jumpbox virtuális gép RDP-n keresztül történik.
 
-**Felhasználó által megadott útvonalak**: [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) segítségével határozhatók meg az IP-forgalom Azure vnetekben.
+**Felhasználó által megadott útvonalak**: [Felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) segítségével határozhatók meg az IP-forgalom Azure vnetekben.
 
-**Társviszonyban álló virtuális hálózatok hálózati**: az éles és felügyeleti virtuális hálózatokhoz csatlakoznak, használatával [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+**Társviszonyban lévő virtuális hálózatok hálózati**: Éles üzemi pontjának és felügyeleti virtuális hálózatok segítségével csatlakozik [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 Ezek a virtuális hálózatok továbbra is külön erőforrásként történik, de ezek a virtuális gépek az összes csatlakozás szempontjából egyetlen hálózatnak látszik. Ezek a hálózatok magánhálózati IP-címek segítségével közvetlenül kommunikálnak egymással. Virtuális hálózatok közötti társviszony vonatkozik a virtuális hálózat között, hogy az azonos Azure-régióban van.
 
-**Hálózati biztonsági csoportok**: [NSG-k](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) tartalmazza a hozzáférés-vezérlési listák, amelyek engedélyezik vagy megtagadják a forgalmat a Vneten belül. Az NSG-ket egy alhálózatot vagy az egyes Virtuálisgép-szintű forgalom védelmére használható.
+**Hálózati biztonsági csoportok**: [Az NSG-k](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) tartalmazza a hozzáférés-vezérlési listák, amelyek engedélyezik vagy megtagadják a forgalmat a Vneten belül. Az NSG-ket egy alhálózatot vagy az egyes Virtuálisgép-szintű forgalom védelmére használható.
 
 **Az Active Directory Domain Services (AD DS)**: Ez az architektúra biztosít egy dedikált [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) központi telepítés.
 
-**Naplózás és a naplózási**: [Azure-tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) az előfizetésében, például, hogy ki kezdeményezte a műveletet, amikor a művelet végrehajtásának, a művelet állapotának és értékeit az erőforrásokon végrehajtott műveleteket rögzíti. egyéb tulajdonságok, amelyek segíthetnek vizsgálja meg a műveletet. Azure-tevékenységnapló egy Azure platformszolgáltatás, amely egy adott előfizetés összes műveleteket rögzíti. Naplók archiválhatók vagy exportált, ha szükséges.
+**Naplózás és a naplózási**: [Azure-tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) rögzíti műveletek végrehajtását az erőforrást az előfizetésében, mint például az kezdeményező a műveletet, amikor a művelet végrehajtásának, a művelet állapotának és más tulajdonságokat, amelyek segíthetnek a kutatási a a művelet. Azure-tevékenységnapló egy Azure platformszolgáltatás, amely egy adott előfizetés összes műveleteket rögzíti. Naplók archiválhatók vagy exportált, ha szükséges.
 
-**Hálózati figyelés és riasztás**: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) platformszolgáltatás biztosít a hálózat, csomagrögzítés, a csoportforgalom naplózása, a topológia eszközök és a diagnosztika belül a virtuális hálózatok hálózati traffics.
+**Hálózati figyelés és riasztás**: [Az Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) platformszolgáltatás biztosít a hálózat, csomagrögzítés, a csoportforgalom naplózása, a topológia eszközök és a diagnosztika belül a virtuális hálózatok hálózati traffics.
 
 ## <a name="guidance-and-recommendations"></a>Útmutatás és javaslatok
 
-### <a name="business-continuity"></a>Üzleti folyamatok fenntarthatósága
+### <a name="business-continuity"></a>Üzleti folytonosság
 
 **Magas rendelkezésre állású**: Server számítási feladatainak szerint vannak csoportosítva egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az Azure-beli virtuális gépek magas rendelkezésre állás biztosítása érdekében. Ez a konfiguráció biztosítja, hogy tervezett vagy nem tervezett karbantartási események legalább egy virtuális gép lesz elérhető, és megfeleljen a 99,95 %-os Azure SLA-t.
 
 ### <a name="logging-and-audit"></a>Naplózás és naplózása
 
-**Figyelés**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) a platformszolgáltatás, amely egyetlen adatforrás biztosít a tevékenységnapló, metrikák és diagnosztikai naplók az Azure-erőforrások figyeléséhez. Az Azure Monitor megjelenítése lekérdezésére, a irányítani, archív tárolási szint, és reagálhat rájuk, metrikákat és naplókat az Azure-erőforrások érkező konfigurálható. Javasoljuk, hogy a napló segítségével győződjön meg arról, hogy a felhasználók nem rendelkeznek a naplók módosítását biztonságos erőforráshoz szerepköralapú hozzáférés-vezérlés szolgál.
+**Figyelés**: [Az Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) a platformszolgáltatás, amely egyetlen adatforrás biztosít a tevékenységnapló, metrikák és diagnosztikai naplók az Azure-erőforrások figyeléséhez. Az Azure Monitor megjelenítése lekérdezésére, a irányítani, archív tárolási szint, és reagálhat rájuk, metrikákat és naplókat az Azure-erőforrások érkező konfigurálható. Javasoljuk, hogy a napló segítségével győződjön meg arról, hogy a felhasználók nem rendelkeznek a naplók módosítását biztonságos erőforráshoz szerepköralapú hozzáférés-vezérlés szolgál.
 
-**A Tevékenységnaplók**: konfigurálása [Azure-tevékenységnaplóinak](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) nyújt betekintést az előfizetésében erőforrásokon végrehajtott műveletek.
+**A Tevékenységnaplók**: Konfigurálása [Azure-tevékenységnaplóinak](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) nyújt betekintést az előfizetésében erőforrásokon végrehajtott műveletek.
 
-**Diagnosztikai naplók**: [diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) az összes napló, az erőforrás által kibocsátott. Ezek a naplók magukban foglalhatják a Windows rendszer-eseménynaplói, blob, tábla és üzenetsor-naplók.
+**Diagnosztikai naplók**: [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) az összes napló, az erőforrás által kibocsátott. Ezek a naplók magukban foglalhatják a Windows rendszer-eseménynaplói, blob, tábla és üzenetsor-naplók.
 
-**Tűzfal-naplók**: az Application Gateway teljes diagnosztikát és hozzáférési naplókat biztosít. A tűzfalnaplók olyan Application Gateway-erőforrásokhoz érhetők el, amelyekhez engedélyezve van a WAF.
+**Tűzfal-naplók**: Application Gateway teljes diagnosztikát és hozzáférési naplókat biztosít. A tűzfalnaplók olyan Application Gateway-erőforrásokhoz érhetők el, amelyekhez engedélyezve van a WAF.
 
-**Bejelentkezés archiváló**: Log adattárolás beállítható úgy, hogy írni egy központosított az Azure Storage-fiókra a archiválási és a egy meghatározott adatmegőrzési időszakot. Naplók az Azure Log Analytics feldolgozható, vagy harmadik féltől származó SIEM rendszerekbe.
+**Napló Archiválás**: Napló adattárolás írni egy központosított Azure storage-fiókját az archiválási és a egy meghatározott adatmegőrzési időszakot konfigurálható. Naplók az Azure Log Analytics feldolgozható, vagy harmadik féltől származó SIEM rendszerekbe.
 
 ### <a name="identity"></a>Identitás
 
-**Az Active Directory Domain Services**: Ez az architektúra egy Active Directory Domain Services telepítési biztosít az Azure-ban. Az Active Directory Azure-ban való megvalósítására vonatkozó konkrét ajánlásokért tekintse meg az alábbi cikkeket:
+**Active Directory Domain Services**: Ez az architektúra egy Active Directory Domain Services telepítési ennek az az Azure-ban. Az Active Directory Azure-ban való megvalósítására vonatkozó konkrét ajánlásokért tekintse meg az alábbi cikkeket:
 
 [Az Active Directory Domain Services (AD DS) kiterjesztése az Azure-bA](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain).
 
 [Telepítési útmutatója Windows Server Active Directory Azure-beli virtuális gépeken](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Active Directory-integráció**: egy dedikált AD DS-architektúra alternatívájaként ügyfelek Kezdésként használhatja [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) integrációs vagy [helyszíni Azure Active Directory-tartományhoz erdő](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest).
+**Active Directory-integráció**: Egy dedikált AD DS-architektúra alternatívájaként ügyfelek Kezdésként használhatja [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) integrációs vagy [az Azure Active Directoryhoz csatlakoztatott helyszíni erdőhöz](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest).
 
 ### <a name="security"></a>Biztonság
 
@@ -194,23 +194,23 @@ Ezek a virtuális hálózatok továbbra is külön erőforrásként történik, 
 
 Ügyfelek előfordulhat, hogy is érdemes egy [továbbfejlesztett biztonsági felügyeleti modell](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) a környezet biztonságos, amikor csatlakozik a felügyeleti virtuális hálózat és a Jumpboxhoz. Javasoljuk, hogy a fokozott biztonság használják, egy [Privileged Access Workstation](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) és RDGateway konfigurációját. A hálózati virtuális berendezések és a nyilvános/titkos használható DMZ-ket felajánlja a további biztonsági fejlesztések.
 
-**A hálózat biztonságának beállítása**: [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) minden alhálózatban szintet biztosítanak a bejövő forgalmat egy helytelenül konfigurált vagy letiltott átjáró kihagyásával elleni védelem (NSG-k) használata ajánlott. Példa – [Resource Manager-sablon üzembe helyezéséhez az NSG-KET](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
+**A hálózat biztonságának beállítása**: [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) minden alhálózatban szintet biztosítanak a bejövő forgalmat egy helytelenül konfigurált vagy letiltott átjáró kihagyásával elleni védelem (NSG-k) használata ajánlott. Példa – [Resource Manager-sablon üzembe helyezéséhez az NSG-KET](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
 
-**Nyilvános végpontok védelme**: az internetes átjárónkhoz alkalmazásszolgáltatások felhasználók az interneten keresztül elérhetővé teszi. Ezek a szolgáltatások elérése forgalom védi egy [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction), amely biztosítja a webalkalmazás-tűzfal és a HTTPS protokoll felügyeleti.
+**Nyilvános végpontok védelme**: Az internetes átjárónkhoz alkalmazásszolgáltatások felhasználók az interneten keresztül elérhetővé teszi. Ezek a szolgáltatások elérése forgalom védi egy [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction), amely biztosítja a webalkalmazás-tűzfal és a HTTPS protokoll felügyeleti.
 
-**IP-címtartományok**: az architektúra az IP-címtartományok javasolt tartományok. Ügyfelek javasolja, hogy fontolja meg a saját környezetben és megfelelő tartományok használata.
+**IP-címtartományok**: Az IP-címtartományok, az architektúra olyan javasolt tartományok. Ügyfelek javasolja, hogy fontolja meg a saját környezetben és megfelelő tartományok használata.
 
-**Hibrid kapcsolat**: A felhőalapú számítási feladatokhoz a helyszíni adatközpont használata az Azure VPN Gateway IPSEC VPN-kapcsolaton keresztül csatlakozik. Ügyfelek biztosítania kell, hogy a megfelelő VPN-átjáró csatlakozni az Azure-ban használják. Példa – [VPN Gateway Resource Manager-sablon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Ügyfelek, amellyel nagy méretű, alapvető fontosságú számítási feladataikat a big data-követelményekhez Kezdésként érdemes lehet egy hibrid hálózati architektúra az [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) magánhálózati kapcsolatot a Microsoft felhőszolgáltatások.
+**Hibrid kapcsolat**: A felhőalapú számítási feladatokat a helyszíni adatközpont használata az Azure VPN Gateway IPSEC VPN-kapcsolaton keresztül csatlakoznak. Ügyfelek biztosítania kell, hogy a megfelelő VPN-átjáró csatlakozni az Azure-ban használják. Példa – [VPN Gateway Resource Manager-sablon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Ügyfelek, amellyel nagy méretű, alapvető fontosságú számítási feladataikat a big data-követelményekhez Kezdésként érdemes lehet egy hibrid hálózati architektúra az [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) magánhálózati kapcsolatot a Microsoft felhőszolgáltatások.
 
-**Kockázatok elkülönítése**: Ez a referenciaarchitektúra elkülöníti a felügyeleti műveleteket és üzleti műveletek a virtuális hálózat között. Különálló virtuális hálózatok és alhálózatok lehetővé teszik a forgalom kezeléséhez, többek között a forgalmat bejövő és kimenő korlátozások, a következő hálózati szegmensek közötti NSG-k használatával [Microsoft cloud services és a hálózati biztonsági](https://docs.microsoft.com/azure/best-practices-network-security) ajánlott eljárások.
+**Kockázatok elkülönítése**: Ez a referenciaarchitektúra elkülöníti a felügyeleti műveleteket és üzleti műveletekhez a virtuális hálózat között. Különálló virtuális hálózatok és alhálózatok lehetővé teszik a forgalom kezeléséhez, többek között a forgalmat bejövő és kimenő korlátozások, a következő hálózati szegmensek közötti NSG-k használatával [Microsoft cloud services és a hálózati biztonsági](https://docs.microsoft.com/azure/best-practices-network-security) ajánlott eljárások.
 
 **Az erőforrás-kezelés**: Azure-erőforrások, például virtuális gépek, virtuális hálózatok és terheléselosztók által erőforráscsoportokba helyezi őket felügyelt [Azure-erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Erőforrásszerepkörök szerepköralapú hozzáférés-vezérlés aztán rendelhet az egyes erőforráscsoportokhoz a hozzáférés korlátozása csak a jogosult felhasználók.
 
-**Hozzáférés-vezérlési korlátozásoknak**: használata [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) felügyelheti az erőforrásokat az alkalmazást a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC segítségével korlátozható a műveletek, amelyek Fejlesztési és üzemeltetési az egyes rétegekben végrehajtható. Engedélyek megadása esetén használja a [elvét](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Naplózzon minden felügyeleti műveletet, és rendszeresen végezzen ellenőrzést. Így meggyőződhet arról, hogy minden konfigurációmódosítás tervezett volt.
+**Hozzáférés-vezérlési korlátozásoknak**: Használat [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) felügyelheti az erőforrásokat az alkalmazást a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC fejlesztési és üzemeltetési az egyes rétegekben végrehajtható műveletek korlátozására használható. Engedélyek megadása esetén használja a [elvét](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Naplózzon minden felügyeleti műveletet, és rendszeresen végezzen ellenőrzést. Így meggyőződhet arról, hogy minden konfigurációmódosítás tervezett volt.
 
 **Internet-hozzáférés**: Ez a referenciaarchitektúra használja fel a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , az internetkapcsolattal rendelkező átjáró és a load balancer. Egyes ügyfeleink is érdemes megfontolni, harmadik féltől származó hálózati virtuális berendezések használata a hálózati biztonsági alternatívájaként további rétegekre a [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 
-**Az Azure Security Center**: A [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) biztosít egy helyen jeleníti meg az előfizetés erőforrásainak biztonsági állapotát, és ajánlásokkal segíti a feltört erőforrásokat a megelőzése érdekében. Is használható részletesebb szabályzatok engedélyezéséhez. Ha például a szabályzatok alkalmazhatók adott erőforráscsoportokhoz, amely lehetővé teszi a vállalatok számára, hogy testre szabni a kockázat állapotáról. Javasoljuk, hogy az ügyfelek engedélyezik az Azure Security Center az Azure-előfizetés.
+**Azure Security Center**: A [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) biztosít egy helyen jeleníti meg az előfizetés erőforrásainak biztonsági állapotát, és ajánlásokkal segíti a feltört erőforrásokat a megelőzése érdekében. Is használható részletesebb szabályzatok engedélyezéséhez. Ha például a szabályzatok alkalmazhatók adott erőforráscsoportokhoz, amely lehetővé teszi a vállalatok számára, hogy testre szabni a kockázat állapotáról. Javasoljuk, hogy az ügyfelek engedélyezik az Azure Security Center az Azure-előfizetés.
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>NCSC Cloud biztonsági alapelveket megfelelőségi – dokumentáció
 

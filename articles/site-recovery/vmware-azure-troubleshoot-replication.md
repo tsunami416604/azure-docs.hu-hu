@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/18/2019
 ms.author: ramamill
-ms.openlocfilehash: c53dc81da9469c0628adbd3751dc818997fa4d05
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063678"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411475"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
@@ -109,14 +109,19 @@ A következő listában látható módon ellenőrizheti, hogy a folyamatkiszolg�
 
 Válassza ki a forrásoldali gép számára engedélyezze a replikációt a Site Recovery használatával megkísérlésekor a gép esetleg nem érhetők el a következő okok valamelyike:
 
-*  Ha a vcenter-kiszolgáló mellett két virtuális gépet ugyanazon UUID azonosító, az első virtuális gépen észlelt a konfigurációs kiszolgáló által az Azure Portalon látható. A probléma megoldásához, biztosíthatja a nincs két virtuális gépet ugyanazon UUID azonosítója.
-*  Győződjön meg arról, hogy hozzáadta a helyes vCenter hitelesítő adatok beállításakor a konfigurációs kiszolgáló OVF-sablon vagy egyesített telepítő használatával. A telepítés során hozzáadott hitelesítő adatok ellenőrzéséhez tekintse meg a [módosíthatják az automatikus felderítési hitelesítő adatait](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
-*  Ha a vCenter eléréséhez megadott engedélyek nem rendelkezik a szükséges engedélyekkel, virtuális gépek felderítése sikertelen történhet meg. Győződjön meg arról, hogy az engedélyek ismertetett [fiók előkészítése automatikus felderítéshez](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) hozzáadódnak a vCenter-felhasználói fiókot.
-*  Ha a virtuális gép Site Recovery már védett, a virtuális gép nem érhető el, válassza a védelemhez a portálon. Győződjön meg arról, hogy a virtuális gépet a portálon a keresett már nem védett, amelyet semmilyen más felhasználó vagy egy másik előfizetésben.
+* **Két virtuális gép egyező példány UUID**: Ha a vcenter-kiszolgáló mellett két virtuális gépet ugyanazon UUID azonosító, az első virtuális gépen észlelt a konfigurációs kiszolgáló által az Azure Portalon látható. A probléma megoldásához, biztosíthatja a nincs két virtuális gépet ugyanazon UUID azonosítója. Ebben a forgatókönyvben a közös látható a példányok, ahol a virtuális gép biztonsági mentési aktívvá válik, és az adatfelderítési rekordok be legyen jelentkezve. Tekintse meg [az Azure Site Recovery VMware – Azure: Eltávolítás az ismétlődő vagy elavult bejegyzés](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) megoldásához.
+* **Helytelen vCenter-felhasználó hitelesítő adatainak**: Győződjön meg arról, hogy hozzáadta a helyes vCenter hitelesítő adatok beállításakor a konfigurációs kiszolgáló OVF-sablon vagy egyesített telepítő használatával. A telepítés során hozzáadott hitelesítő adatok ellenőrzéséhez tekintse meg a [módosíthatják az automatikus felderítési hitelesítő adatait](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+* **Nincs megfelelő jogosultsága vCenter**: Ha a vCenter eléréséhez megadott engedélyek nem rendelkezik a szükséges engedélyekkel, virtuális gépek felderítése sikertelen történhet meg. Győződjön meg arról, hogy az engedélyek ismertetett [fiók előkészítése automatikus felderítéshez](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) hozzáadódnak a vCenter-felhasználói fiókot.
+* **Az Azure Site Recovery felügyeleti kiszolgálók**: Ha a virtuális gép egy vagy több, a következő szerepkör - felügyeleti kiszolgáló használják a folyamatkiszolgáló konfigurációs kiszolgáló /scale-out / fő célkiszolgáló, nem fog tudni válassza ki a virtuális gép portálról. Erőforráskészletben nem lehet replikálni.
+* **Védett/feladatátvétele már az Azure Site Recovery services használatával**: Ha a virtuális gép már védett, vagy átadta a feladatait a Site Recovery, a virtuális gép nem érhető el, válassza a védelemhez a portálon. Győződjön meg arról, hogy a virtuális gépet a portálon a keresett már nem védett, amelyet semmilyen más felhasználó vagy egy másik előfizetésben.
+* **nem csatlakozik a vCenter**: Ellenőrizze, hogy ha vCenter csatlakoztatott állapotban van-e. Győződjön meg arról, lépjen a Recovery Services-tároló > Site Recovery-infrastruktúra > konfigurációs kiszolgálók > kattintson a megfelelő konfigurációs kiszolgáló > a társított kiszolgálók részleteit tartalmazó a jobb oldalon megnyílik egy panel. Ellenőrizze, hogy a vCenter csatlakoztatva van. A "Nem csatlakoztatott" állapotba, ha a probléma megoldásához, majd [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép jelenik meg a portálon.
+* **ESXi ki van kapcsolva**: Ha ESXi-gazdagép, amely alatt a virtuális gép található a kikapcsolt állapotban, majd a virtuális gép nem lesznek felsorolva vagy nem lesz kiválasztható az Azure Portalon. Az ESXi-gazdagépen Power [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép jelenik meg a portálon.
+* **Függőben lévő újraindítás**: Ha a virtuális gép újraindítása függőben van, majd nem értéket választhatja ki a gépet az Azure Portalon. Győződjön meg arról, a függőben lévő újraindítás tevékenységek végrehajtásához [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Ezt követően a virtuális gép jelenik meg a portálon.
+* **Nem található IP**: Ha a virtuális gép nincs társítva érvényes IP-címet, akkor, nem fogja tudni válassza ki a gépet az Azure Portalon. Ellenőrizze, érvényes IP-cím hozzárendelése a virtuális gép [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Ezt követően a virtuális gép jelenik meg a portálon.
 
-## <a name="protected-virtual-machines-arent-available-in-the-portal"></a>Védett virtuális gépek nem állnak rendelkezésre a portálon
+## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Védett virtuális gépek itt kiszürkítve jelennek meg a portálon
 
-A Site Recovery replikált virtuális gépek nem érhetők el az Azure Portalon, ha a rendszer ismétlődő bejegyzéseket tartalmaz. Törli az elavult bejegyzések és a probléma megoldásához kapcsolatban lásd: [Azure Site Recovery VMware – Azure: Eltávolítás az ismétlődő vagy elavult bejegyzés](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
+A Site Recovery replikált virtuális gépek nem érhetők el az Azure Portalon, ha a rendszer ismétlődő bejegyzéseket tartalmaz. Ismerje meg, hogyan törli az elavult bejegyzések, és hárítsa el a problémát, tekintse meg [Azure Site Recovery VMware – Azure: Eltávolítás az ismétlődő vagy elavult bejegyzés](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198082"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410489"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
-Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők egy általános Node.js-alkalmazást képviselő egy fizikai eszköz a Microsoft Azure IoT Central alkalmazáshoz csatlakozhat.
+Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők egy általános Node.js-alkalmazást képviselő valós eszközöknek a Microsoft Azure IoT Central alkalmazáshoz csatlakozhat.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -97,7 +97,7 @@ Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sa
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja az az alkalmazáshoz hozzáadott valós eszköz ügyfélalkalmazás. Itt a Node.js-alkalmazás a tényleges fizikai eszközt jelenti. 
+A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja az az alkalmazáshoz hozzáadott valós eszköz ügyfélalkalmazás. Itt a Node.js-alkalmazás a valódi eszközt jelenti. 
 
 1. Hozzon létre egy `connected-air-conditioner-adv` nevű mappát a gépén. Keresse meg a mappát a parancssori környezetben.
 

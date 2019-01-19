@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8de052175d93abdb82390d12d601c29bf0d4d462
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215099"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411866"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Valós idejű hozzáférés az alkalmazásfigyelés konfigurálása a Microsoft Cloud App Security és az Azure Active Directory
 Konfigurálja a Microsoft Cloud App Security (MCAS) használata az Azure Active Directoryban (Azure AD) egy helyszíni alkalmazás valós idejű monitorozásra. MCAS használja a feltételes hozzáférést biztosító alkalmazás-vezérlő figyeléséhez, és valós idejű vezérlés munkamenetek feltételes hozzáférési szabályzatok alapján. Ezek a szabályzatok a helyszíni alkalmazások az Azure Active Directoryban (Azure AD) alkalmazásproxy használó alkalmazhat.
@@ -64,7 +64,7 @@ Az alkalmazás konfigurálása a feltételes hozzáférési alkalmazásvezérlé
 
 ## <a name="test-conditional-access-app-control"></a>Teszt feltételes hozzáférést biztosító alkalmazás-vezérlő
 
-Feltételes hozzáférési Alkalmazásvezérlés az Azure AD-alkalmazások központi telepítésének tesztelése, kövesse a [tesztelheti az üzembe helyezés az Azure AD-alkalmazásokhoz](/cloud-app-security/proxy-deployment-aad#test-the-deployment).
+Feltételes hozzáférési Alkalmazásvezérlés az Azure AD-alkalmazások központi telepítésének tesztelése, kövesse a [tesztelheti az üzembe helyezés az Azure AD-alkalmazásokhoz](/cloud-app-security/proxy-deployment-aad).
 
 
 

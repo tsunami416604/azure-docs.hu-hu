@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 716c6b67676bb3421fd5dbd0274ed41c7705c676
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b71b62d50f209c033597799dd26f579fcb200cc9
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133519"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413367"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és a kulcsok határok
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
@@ -60,14 +60,21 @@ A leképezés és az entitás neve ne használja a következő karaktereket:
 |`]`|Záró zárójel|
 |`\`|Fordított perjel|
 
+## <a name="key-usage"></a>Kulcshasználat
+
+Nyelv megismerése rendelkezik, külön kulcsokat, egy típust a létrehozásához és lekérdezéséhez az előrejelzési végpont egy típust. Kulcstípusok közti különbségekkel kapcsolatos további tudnivalókért lásd: [szerzői műveletek és a lekérdezés előrejelzési végpont kulcsok a LUIS](luis-concept-keys.md).
+
 ## <a name="key-limits"></a>Kulcs korlátok
+
 Az Authoring Tool kulcs létrehozási és -végpont eltérő korlátokkal rendelkeznek. A LUIS végponti kulcs je platná pouze Pro végpont lekérdezéseket.
+
 
 |Kulcs|Szerzői műveletek|Végpont|Cél|
 |--|--|--|--|
-|Szerzői/alapszintű|1 millió/hó, 5/s|1 ezer/hó, 5/s|A LUIS-alkalmazás készítése|
-|[Előfizetés] [ pricing] - F0 – ingyenes csomag |érvénytelen|10 ezer/hó, 5/s|A LUIS-végpontra lekérdezése|
-|[Előfizetés] [ pricing] - S0 - alapszintű csomag|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
+|Szerzői nyelv ismertetése/alapszintű|1 millió/hó, 5/s|1 ezer/hó, 5/s|A LUIS-alkalmazás készítése|
+|Language Understanding [előfizetés] [ pricing] - F0 – ingyenes csomag |érvénytelen|10 ezer/hó, 5/s|A LUIS-végpontra lekérdezése|
+|Language Understanding [előfizetés] [ pricing] - S0 - alapszintű csomag|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
+|A cognitive Services [előfizetés] [ pricing] - S0 -, Standard csomag|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
 |[Vélemények elemzése integráció](luis-how-to-publish-app.md#enable-sentiment-analysis)|érvénytelen|díjmentes|Vélemények információk, beleértve a kulcsszókeresés adatok hozzáadása |
 |Beszéd-integráció|érvénytelen|Ezer 5.50 USD/1 végpont kérelmek|Használja a beszélt utterance (kifejezés) konvertálása szöveges utterance (kifejezés) és a LUIS eredményeket adja vissza|
 

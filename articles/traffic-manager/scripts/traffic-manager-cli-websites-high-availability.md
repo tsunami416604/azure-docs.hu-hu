@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
-ms.openlocfilehash: 27e8d5c0c26f6932d98cfbfd5abd4a756c077383
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 6070c037138cfb0716c9a31d5923ecddb1a30790
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215150"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413566"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Forgalom irányítása az Azure CLI-vel használó alkalmazások magas rendelkezésre állás
 
@@ -54,7 +54,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy webal
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. Ez olyan, mint az Azure-alapú webes alkalmazás kiszolgálófarmot. |
 | [az webapp webalkalmazás létrehozása](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Létrehoz egy Azure-webalkalmazást az App Service-csomag belül. |
 | [az network traffic-manager-profil létrehozása](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Létrehoz egy Azure Traffic Manager-profilt. |
-| [az network traffic-manager-végpont létrehozása](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) | Hozzáad egy végpontot egy Azure Traffic Manager-profil. |
+| [az network traffic-manager-végpont létrehozása](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Hozzáad egy végpontot egy Azure Traffic Manager-profil. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,17 +10,17 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 36db91cd7c4dad3c28c0c110ee837ca6d1284959
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b272dd1c5b12c9f171c7e8c7c346f4d6cd4b777
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575382"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413872"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Útmutató az Azure SQL Data Warehouse elosztott táblák tervezése
 Javaslatok az Azure SQL Data Warehouse kivonatoló elosztott és a Ciklikus időszeleteléses elosztott tábla tervezéséhez.
 
-Ez a cikk feltételezi, hogy ismeri az adatok terjesztési és az SQL Data Warehouse mozgását – fogalmak.  További információkért lásd: [Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra](massively-parallel-processing-mpp-architecture.md). 
+Ez a cikk feltételezi, hogy ismeri az adatok terjesztési és az SQL Data Warehouse mozgását – fogalmak.  További információkért lásd: [Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
 Elosztott tábla egyetlen táblázatban jelennek meg, de a sorok között 60 elosztás ténylegesen tárolódnak. Kivonatoló vagy Ciklikus időszeleteléses algoritmus a sorok oszlanak meg.  
@@ -29,11 +29,11 @@ Elosztott tábla egyetlen táblázatban jelennek meg, de a sorok között 60 elo
 
 Egy másik tábla tárolási lehetőség, hogy a kis táblák replikálhatja a számítási csomópontokon. További információkért lásd: [tervezési útmutató a replikált táblák](design-guidance-for-replicated-tables.md). A következő három lehetőség közül választhat gyorsan, lásd: elosztott táblák a [táblák áttekintése](sql-data-warehouse-tables-overview.md). 
 
-Táblatervezés részeként megismerheti a lehető legnagyobb mértékben az adatokat, és hogyan van lekéri az adatokat.  Például érdemes lehet ezeket a kérdéseket:
+Táblatervezés részeként megismerheti a lehető legnagyobb mértékben az adatokat, és hogyan van lekéri az adatokat.  Például érdemes lehet ezeket a kérdéseket:
 
-- Milyen méretű legyen a táblázat?   
-- Milyen gyakran frissül a tábla?   
-- Vannak tény- és dimenziótáblákból az adattárház?   
+- Milyen méretű legyen a táblázat?   
+- Milyen gyakran frissül a tábla?   
+- Vannak tény- és dimenziótáblákból az adattárház?   
 
 
 ### <a name="hash-distributed"></a>Kivonatterjesztés
@@ -147,7 +147,7 @@ where two_part_name in
     from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
-    having min(row_count * 1.000)/max(row_count * 1.000) > .10
+    having (max(row_count * 1.000) - min(row_count * 1.000))/max(row_count * 1.000) >= .10
     )
 order by two_part_name, row_count
 ;

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e2b17ef790f47a9352e3c2b744bdbb4960fe616b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.openlocfilehash: 638aa3bf0e278ce00c124d8217a1bf9104e878fb
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579998"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413779"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Webes forgalom kezelése az Azure CLI-vel
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Az alkalmazásátjáró nyilvános IP-címét hozza létre. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Egy alkalmazásátjárót hoz létre. |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | Létrehoz egy virtuálisgép-méretezési csoportot. |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network_public_ip_show) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
+| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
 
 ## <a name="next-steps"></a>További lépések
 

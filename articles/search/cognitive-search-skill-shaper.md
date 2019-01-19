@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b8cc69c45332d0779c6e57b5d74145ee1f5140cd
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391008"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410115"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
 
@@ -29,7 +29,7 @@ Alapértelmezés szerint ez a módszer támogatja az objektumok, amely egy szint
 A válaszban a kimeneti név mindig "kimeneti". Belsőleg, a folyamat leképezhet egy másik nevet, például a "analyzedText" a "kimeneti", az alábbi példák, de a **Shaper** szakértelem magát a választ adja vissza "kimeneti". Ez lehet fontos Ha képi elemekben gazdag dokumentumok hibakeresést, és figyelje meg, hogy az elnevezési eltérés, vagy ha egyéni műveleteket hozhat létre, és vannak strukturálja a válasz saját magának.
 
 > [!NOTE]
-> Szakértelem nincs kötve a Cognitive Services API-t, és nincsenek szakértelem nélkül díjak. Azonban meg kell [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) ennek ellenére a szabad erőforrás beállítás felülbírálása, amely korlátozza, hogy naponta végrehajtott információbeolvasás kis számú.
+> Szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

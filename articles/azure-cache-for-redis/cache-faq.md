@@ -3,7 +3,7 @@ title: Az Azure Cache Redis – GYIK |} A Microsoft Docs
 description: Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: wesmc
-ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.author: yegu
+ms.openlocfilehash: 3a0fb06acd9fc798f1528a1487ae0682135187ca
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199918"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402393"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis.
@@ -210,7 +210,7 @@ Az alapértelmezett értékeket, az ügyfél általában elegendő. Finomhangolh
       * Ez az útmutató további eredményezhet hatékonyabbá műveletenként késést `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Milyen Azure Cache a Redis-ügyfelek használhatok?
-A Redis kapcsolatos nagyszerű dolog, hogy nincsenek-e számos különböző programozási nyelvet támogató ügyfelek számát. Az ügyfelek aktuális listáját lásd: [Redis ügyfelek](https://redis.io/clients). Mind a több különböző nyelv és az ügyfelek számára oktatóanyagokkal, lásd: [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) , és kattintson a kívánt nyelvet, a nyelv váltó a cikk elején.
+A Redis kapcsolatos nagyszerű dolog, hogy nincsenek-e számos különböző programozási nyelvet támogató ügyfelek számát. Az ügyfelek aktuális listáját lásd: [Redis ügyfelek](https://redis.io/clients). Mind a több különböző nyelv és az ügyfelek számára oktatóanyagokkal, lásd: [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) testvér cikkeket a tábla tartalmát, és.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -259,7 +259,7 @@ A webhelyen felsorolt parancsok bármelyikét használhatja [Redis parancsok](ht
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Miért nem rendelkezik Azure Cache redis-MSDN osztálytár-referenciát néhány a más Azure-szolgáltatásokhoz hasonlóan?
 A Microsoft Azure Cache a Redis alapul a népszerű nyílt forrás az Azure Cache redis és elérhetők, számos különböző [Redis ügyfelek](https://redis.io/clients) számos programozási nyelvet. Minden ügyfél rendelkezik a saját API-t, a Redis-példány használatával az Azure Cache-hívást hajt végre [Redis parancsok](https://redis.io/commands).
 
-Mivel az egyes ügyfelek különböző, az MSDN-en nem egy központosított osztályhivatkozása van, és minden egyes ügyfél kezeli a saját dokumentációjában. A segédanyagok kívül számos oktatóprogram: Ismerkedés az Azure Cache a Redis használatával különböző nyelvekhez és gyorsítótár-ügyfelek hogyan. Ezekben az oktatóanyagokban eléréséről, lásd a [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) , és kattintson a kívánt nyelvet, a nyelv váltó a cikk tetején.
+Mivel az egyes ügyfelek különböző, az MSDN-en nem egy központosított osztályhivatkozása van, és minden egyes ügyfél kezeli a saját dokumentációjában. A segédanyagok kívül számos oktatóprogram: Ismerkedés az Azure Cache a Redis használatával különböző nyelvekhez és gyorsítótár-ügyfelek hogyan. Ezekben az oktatóanyagokban eléréséről, lásd a [használata az Azure Cache redis](cache-dotnet-how-to-use-azure-redis-cache.md) testvér cikkeket a tábla tartalmát, és.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Használhatok Azure Cache redis PHP munkamenet gyorsítótárként?
 Igen, Azure Cache a Redis használata PHP munkamenet gyorsítótárként, adja meg a kapcsolati karakterláncot a Redis-példány az Azure gyorsítótárhoz `session.save_path`.
@@ -392,7 +392,7 @@ Hogyan konfigurálja ezt a beállítást:
   > Ez a konfigurációs elemben megadott érték egy *magonként* beállítás. Ha például egy 4 processzormagos számítógép, és szeretné a minIOThreads beállítása futási időben 200 kell, ha használja `<processModel minIoThreads="50"/>`.
   >
 
-* Kívül, az ASP.NET és az Azure-webhelyek global.asax, használja a [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API-T.
+* Kívül, az ASP.NET és az Azure-webhelyek global.asax, használja a [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
 
   > [!NOTE]
   > Az API által megadott érték egy globális beállítás, az egész AppDomain érintő. Ha rendelkezik egy 4 processzormagos számítógép, és szeretné beállítani minWorkerThreads és minIOThreads 50 CPU futási időben, akkor ThreadPool.SetMinThreads (200-as, 200-as) kell használnia.

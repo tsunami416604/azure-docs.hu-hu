@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 87c605feeab742ae589cf8d5d9a98c8e53ccf662
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090431"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410455"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások (előzetes verzió) használatával
 
@@ -21,9 +21,9 @@ Az Azure Stream Analytics felügyelt identitás hitelesítés az Azure Data Lake
 
 Látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) feliratkozás az előzetes verzió és tanulmányozza részletesen az új funkciók a blogbejegyzést.
 
-Ez a cikk bemutatja, két különböző módon az Azure Stream Analytics-feladat, amely egy Azure Data Lake Storage Gen1 a felügyelt identitás engedélyezése: az Azure portal és az Azure Resource Manager-sablon üzembe helyezése révén.
+Ez a cikk bemutatja, két módon lehet engedélyezni az Azure Stream Analytics-feladat, amely, egy Azure Data Lake Storage Gen1 keresztül az Azure Portalon, az Azure Resource Manager-sablon üzembe helyezése és az Azure Stream Analytics tools for Visual Studio-felügyelt identitást.
 
-## <a name="enable-managed-identity-with-azure-portal"></a>Felügyelt identitás engedélyezése az Azure Portalon
+## <a name="azure-portal"></a>Azure Portal
 
 1. Először hozzon létre egy új Stream Analytics-feladat vagy egy meglévő feladat nyissa meg az Azure Portalon. A képernyő bal oldalán található menüsávban válassza **felügyelt identitás (előzetes verzió)** alatt **konfigurálása**.
 
@@ -64,6 +64,28 @@ Ez a cikk bemutatja, két különböző módon az Azure Stream Analytics-feladat
    ![Stream Analytics lista a portál elérése](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Data Lake Storage Gen1 fájlrendszerre vonatkozó engedélyekkel kapcsolatos további információkért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
+
+## <a name="stream-analytics-tools-for-visual-studio"></a>Stream Analytics tools for Visual Studio
+
+1. JobConfig.json, állítsa be **használható rendszer által hozzárendelt identitás** való **igaz**.
+
+   ![Stream Analytics-feladat konfigurációjának felügyelt identitások](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
+
+2. Az ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakban kattintson a legördülő menüből, és válassza ki a hitelesítési mód **felügyelt identitás (előzetes verzió)**.
+
+   ![ADLS kimenete a felügyelt identitásokból](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
+
+3. Adja meg a további tulajdonságok, és kattintson a **mentése**.
+
+4. Kattintson a **elküldése az Azure-bA** a Lekérdezésszerkesztő.
+
+   A feladat elküldéséhez, amikor az eszközök két műveletet kell végrehajtania:
+
+   * Automatikusan létrehoz egy egyszerű szolgáltatást a Stream Analytics-feladat identitását az Azure Active Directoryban. Az újonnan létrehozott identitás életciklusának fogja felügyelni az Azure-ban. A Stream Analytics-feladat törlése esetén a rendszer automatikusan törli a társított identitás (azaz a szolgáltatásnév) az Azure-ban.
+
+   * Automatikusan **írási** és **Execute** az ADLS Gen1 engedélyeinek előtag elérési útja a feladat, és rendelje hozzá ezt a mappát, és az összes gyermekeleme.
+
+5. Az alábbi tulajdonság használata a Resource Manager-sablonokat is létrehozhat [Stream Analytics CI. CD Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) 1.5.0 verzió vagy újabb (kívül a Visual Studio) build gépen. Kövesse az erőforrás-kezelő a következő szakaszban, a szolgáltatás egyszerű, és hozzáférést biztosít a Powershellen keresztül szolgáltatásnévnek sablon üzembe helyezési lépésein.
 
 ## <a name="resource-manager-template-deployment"></a>Resource Manager-sablon üzembe helyezése
 
@@ -153,3 +175,5 @@ Ez a cikk bemutatja, két különböző módon az Azure Stream Analytics-feladat
 ## <a name="next-steps"></a>További lépések
 
 * [Hozzon létre egy Data lake Store-kimenetet a stream analytics használatával](../data-lake-store/data-lake-store-stream-analytics.md)
+* [Stream Analytics-lekérdezések Visual studióval helyileg tesztelése](stream-analytics-vs-tools-local-run.md)
+* [Teszt élő adatok helyileg az Azure Stream Analytics tools for Visual Studio használatával](stream-analytics-live-data-local-testing.md) 

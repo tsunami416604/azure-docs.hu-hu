@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f0ae48cadf2e90dc685a24aff54d89f86a11c287
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cb5ad6f351cdeadb999b1a62c225f23937c5b92e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494293"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413821"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása 
 
@@ -59,7 +59,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Azure-erőforráscsoport olyan logikai tároló, mely Azure-erőforrások vannak telepítve, és amelyek felügyelhetők a rendszer. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Azure-erőforráscsoport olyan logikai tároló, mely Azure-erőforrások vannak telepítve, és amelyek felügyelhetők a rendszer. 
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
@@ -316,7 +316,7 @@ $ sudo su - oracle
 $ lsnrctl start
 ```
 
-## <a name="configure-golden-gate"></a>Konfigurálja a Golden kapu 
+## <a name="configure-golden-gate"></a>Configure Golden Gate 
 Golden kapu konfigurálásához hajtsa végre a lépéseket ebben a szakaszban.
 
 ### <a name="enable-archive-log-mode-on-myvm1-primary"></a>A myVM1 (elsődleges) archív naplózási mód engedélyezése

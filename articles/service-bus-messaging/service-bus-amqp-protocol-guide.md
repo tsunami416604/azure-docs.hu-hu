@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2c0fd7bd811445cd6bda8315c9c90ff6646d2be0
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542509"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413907"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -146,61 +146,61 @@ Az alábbi táblázat a nyilak a performative folyamat iránya.
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| --> () csatolása<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>szerepkör =**fogadó**,<br/>forrás = {entitás neve},<br/>cél = {link Ügyfélazonosító}<br/>) |Entitás fogadóként csatolja ügyfél |
-| A Service Bus-válaszok csatolása a kapcsolat vége |<--csatolása ()<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>szerepkör =**küldő**,<br/>forrás = {entitás neve},<br/>cél = {link Ügyfélazonosító}<br/>) |
+| --> () csatolása<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>role=**receiver**,<br/>forrás = {entitás neve},<br/>cél = {link Ügyfélazonosító}<br/>) |Entitás fogadóként csatolja ügyfél |
+| A Service Bus-válaszok csatolása a kapcsolat vége |<--csatolása ()<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>role=**sender**,<br/>forrás = {entitás neve},<br/>cél = {link Ügyfélazonosító}<br/>) |
 
 #### <a name="create-message-sender"></a>Üzenet küldője létrehozása
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| --> () csatolása<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>szerepkör =**küldő**,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {entitás neve}<br/>) |Nincs művelet |
-| Nincs művelet |<--csatolása ()<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>szerepkör =**fogadó**,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {entitás neve}<br/>) |
+| --> () csatolása<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>role=**sender**,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {entitás neve}<br/>) |Nincs művelet |
+| Nincs művelet |<--csatolása ()<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>role=**receiver**,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {entitás neve}<br/>) |
 
 #### <a name="create-message-sender-error"></a>Hozzon létre az üzenet küldője (hiba)
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| --> () csatolása<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>szerepkör =**küldő**,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {entitás neve}<br/>) |Nincs művelet |
-| Nincs művelet |<--csatolása ()<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>szerepkör =**fogadó**,<br/>forrás = null,<br/>cél = null<br/>)<br/><br/><--leválasztása ()<br/>kezelni = {numerikus leíró},<br/>lezárt =**igaz**,<br/>Hiba = {hibainformáció}<br/>) |
+| --> () csatolása<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>role=**sender**,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {entitás neve}<br/>) |Nincs művelet |
+| Nincs művelet |<--csatolása ()<br/>név = {link name}.<br/>kezelni = {numerikus leíró},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><--leválasztása ()<br/>kezelni = {numerikus leíró},<br/>closed=**true**,<br/>Hiba = {hibainformáció}<br/>) |
 
 #### <a name="close-message-receiversender"></a>Üzenet bezárása címzett/feladó
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| --> () leválasztása<br/>kezelni = {numerikus leíró},<br/>lezárt =**igaz**<br/>) |Nincs művelet |
-| Nincs művelet |<--leválasztása ()<br/>kezelni = {numerikus leíró},<br/>lezárt =**igaz**<br/>) |
+| --> () leválasztása<br/>kezelni = {numerikus leíró},<br/>closed=**true**<br/>) |Nincs művelet |
+| Nincs művelet |<--leválasztása ()<br/>kezelni = {numerikus leíró},<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>Elküldése (sikeres)
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| --> átvitel)<br/>kézbesítési-id = {numerikus leíró},<br/>kézbesítési-címke = {bináris leíró},<br/>Kiegyenlített =**hamis**,, több =**hamis**,<br/>állapot =**null**,<br/>folytatása =**false (hamis)**<br/>) |Nincs művelet |
-| Nincs művelet |<--törlése ()<br/>szerepkör, fogadó =<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosítója},<br/>Kiegyenlített =**igaz**,<br/>állapot =**elfogadva**<br/>) |
+| --> átvitel)<br/>delivery-id={numeric handle},<br/>kézbesítési-címke = {bináris leíró},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Nincs művelet |
+| Nincs művelet |<--törlése ()<br/>role=receiver,<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosítója},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>Küldése (hiba)
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| --> átvitel)<br/>kézbesítési-id = {numerikus leíró},<br/>kézbesítési-címke = {bináris leíró},<br/>Kiegyenlített =**hamis**,, több =**hamis**,<br/>állapot =**null**,<br/>folytatása =**false (hamis)**<br/>) |Nincs művelet |
-| Nincs művelet |<--törlése ()<br/>szerepkör, fogadó =<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosítója},<br/>Kiegyenlített =**igaz**,<br/>állapot =**elutasított**()<br/>Hiba = {hibainformáció}<br/>)<br/>) |
+| --> átvitel)<br/>delivery-id={numeric handle},<br/>kézbesítési-címke = {bináris leíró},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Nincs művelet |
+| Nincs művelet |<--törlése ()<br/>role=receiver,<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosítója},<br/>settled=**true**,<br/>állapot =**elutasított**()<br/>Hiba = {hibainformáció}<br/>)<br/>) |
 
 #### <a name="receive"></a>Fogadás
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| a folyamat (--><br/>hivatkozás-kredit = 1<br/>) |Nincs művelet |
-| Nincs művelet |< transfer ()<br/>kézbesítési-id = {numerikus leíró},<br/>kézbesítési-címke = {bináris leíró},<br/>Kiegyenlített =**hamis**,<br/>több =**hamis**,<br/>állapot =**null**,<br/>folytatása =**false (hamis)**<br/>) |
-| --> () törlése<br/>szerepkör =**fogadó**,<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosítója},<br/>Kiegyenlített =**igaz**,<br/>állapot =**elfogadva**<br/>) |Nincs művelet |
+| a folyamat (--><br/>link-credit=1<br/>) |Nincs művelet |
+| Nincs művelet |< transfer ()<br/>delivery-id={numeric handle},<br/>kézbesítési-címke = {bináris leíró},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| --> () törlése<br/>role=**receiver**,<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosítója},<br/>settled=**true**,<br/>state=**accepted**<br/>) |Nincs művelet |
 
 #### <a name="multi-message-receive"></a>Több üzenet fogadása
 
 | Ügyfél | Service Bus |
 | --- | --- |
-| a folyamat (--><br/>hivatkozás-kredit = 3<br/>) |Nincs művelet |
-| Nincs művelet |< transfer ()<br/>kézbesítési-id = {numerikus leíró},<br/>kézbesítési-címke = {bináris leíró},<br/>Kiegyenlített =**hamis**,<br/>több =**hamis**,<br/>állapot =**null**,<br/>folytatása =**false (hamis)**<br/>) |
-| Nincs művelet |< transfer ()<br/>kézbesítési-id = {numerikus leíró + 1},<br/>kézbesítési-címke = {bináris leíró},<br/>Kiegyenlített =**hamis**,<br/>több =**hamis**,<br/>állapot =**null**,<br/>folytatása =**false (hamis)**<br/>) |
-| Nincs művelet |< transfer ()<br/>kézbesítési-id = {numerikus leíró + 2},<br/>kézbesítési-címke = {bináris leíró},<br/>Kiegyenlített =**hamis**,<br/>több =**hamis**,<br/>állapot =**null**,<br/>folytatása =**false (hamis)**<br/>) |
-| --> () törlése<br/>szerepkör, fogadó =<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosító + 2},<br/>Kiegyenlített =**igaz**,<br/>állapot =**elfogadva**<br/>) |Nincs művelet |
+| a folyamat (--><br/>link-credit=3<br/>) |Nincs művelet |
+| Nincs művelet |< transfer ()<br/>delivery-id={numeric handle},<br/>kézbesítési-címke = {bináris leíró},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| Nincs művelet |< transfer ()<br/>kézbesítési-id = {numerikus leíró + 1},<br/>kézbesítési-címke = {bináris leíró},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| Nincs művelet |< transfer ()<br/>kézbesítési-id = {numerikus leíró + 2},<br/>kézbesítési-címke = {bináris leíró},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
+| --> () törlése<br/>role=receiver,<br/>első = {kézbesítési azonosítója},<br/>utolsó = {kézbesítési azonosító + 2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |Nincs művelet |
 
 ### <a name="messages"></a>Üzenetek
 
@@ -222,19 +222,19 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 
 | Mezőnév | Használat | API neve |
 | --- | --- | --- |
-| üzenetazonosító |Ez az üzenet alkalmazás által meghatározott, a szabad formátumú azonosítója. Duplikáltelem-észlelési használja. |[Üzenetazonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| message-id |Ez az üzenet alkalmazás által meghatározott, a szabad formátumú azonosítója. Duplikáltelem-észlelési használja. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | felhasználói azonosító |Alkalmazás által meghatározott felhasználói azonosító, a Service Bus nem értelmezi. |Nem a Service Bus API-n keresztül érhető el. |
 | erre: |Alkalmazás által meghatározott cél azonosítója nem értelmezi a Service Bus. |[Címzett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | tárgy |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | Válasz címzettje |Alkalmazás által meghatározott válasz-elérési út mutató, a Service Bus nem értelmezi. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
-| korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[korrelációs azonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
-| a Content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
-| tartalom kódolása |Alkalmazás által meghatározott tartalom-kódolás mutató nem értelmezi a Service Bus, a szervezet számára. |Nem a Service Bus API-n keresztül érhető el. |
-| abszolút-lejárati-idő |Deklarálja, mely abszolút azonnali üzenet lejár. A bemeneti (fejléc meg TTL), figyelmen kívül hagyja a kimenetet mérvadó. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
+| korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
+| content-encoding |Alkalmazás által meghatározott tartalom-kódolás mutató nem értelmezi a Service Bus, a szervezet számára. |Nem a Service Bus API-n keresztül érhető el. |
+| absolute-expiry-time |Deklarálja, mely abszolút azonnali üzenet lejár. A bemeneti (fejléc meg TTL), figyelmen kívül hagyja a kimenetet mérvadó. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
 | létrehozás – ideje |Kijelenti, hogy mely az üzenet létrehozásának. A Service Bus által nem használt |Nem a Service Bus API-n keresztül érhető el. |
-| csoport-azonosítója |Egy kapcsolódó üzenetkészletet alkalmazás által meghatározott azonosítója. Service Bus-munkamenetekkel használja. |[munkamenet-azonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
-| csoport-sorozat |A számláló azonosítására az üzenet egy munkamenet belüli relatív sorszáma. A Service Bus figyelmen kívül hagyja. |Nem a Service Bus API-n keresztül érhető el. |
-| válasz a csoport azonosítója |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
+| group-id |Egy kapcsolódó üzenetkészletet alkalmazás által meghatározott azonosítója. Service Bus-munkamenetekkel használja. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
+| group-sequence |A számláló azonosítására az üzenet egy munkamenet belüli relatív sorszáma. A Service Bus figyelmen kívül hagyja. |Nem a Service Bus API-n keresztül érhető el. |
+| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
 #### <a name="message-annotations"></a>Üzenet jegyzetek
 
@@ -242,14 +242,14 @@ Van néhány service bus üzenet tulajdonságok is, amelyek nem részei az AMQP 
 
 | Jegyzet térkép kulcs | Használat | API neve |
 | --- | --- | --- |
-| x-jóváhagyás – ütemezett-sorba-idő | Deklarálja ekkor az üzenetnek meg kell jelennie az entitás |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-jóváhagyás – partíciós kulccsal | Alkalmazás által meghatározott kulcs, amely előírja, hogy melyik partíciót az üzenetet a megnyitja. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-jóváhagyás – keresztül-partíciós kulccsal | Alkalmazás által meghatározott partíciókulcs érték, amikor egy tranzakció átviteli keresztül üzenetek küldéséhez használt. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-jóváhagyás – várólistán lévő-idő | Szolgáltatás által definiált UTC idő a tényleges idő, az üzenet sorba jelző. Figyelmen kívül hagyja, a bemeneti. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-jóváhagyás –-sorozatszám | Szolgáltatás által definiált egyedi száma egy üzenetet. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x opt eltolása | Az üzenet sorba szolgáltatás által definiált sorszáma. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-jóváhagyás – zárolva-ig | Szolgáltatás által definiált. A dátum és idő, ameddig az üzenet zárolva lesz a várólista /-előfizetéséből. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-jóváhagyás – kézbesítetlen – forrás | Szolgáltatás által definiált. Ha az üzenetet a kézbesíthetetlen levelek sorában, a forrás az eredeti üzenet. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | Deklarálja ekkor az üzenetnek meg kell jelennie az entitás |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-partition-key | Alkalmazás által meghatározott kulcs, amely előírja, hogy melyik partíciót az üzenetet a megnyitja. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-via-partition-key | Alkalmazás által meghatározott partíciókulcs érték, amikor egy tranzakció átviteli keresztül üzenetek küldéséhez használt. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-enqueued-time | Szolgáltatás által definiált UTC idő a tényleges idő, az üzenet sorba jelző. Figyelmen kívül hagyja, a bemeneti. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-sequence-number | Szolgáltatás által definiált egyedi száma egy üzenetet. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x-opt-offset | Az üzenet sorba szolgáltatás által definiált sorszáma. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-jóváhagyás – zárolva-ig | Service-defined. A dátum és idő, ameddig az üzenet zárolva lesz a várólista /-előfizetéséből. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-deadletter-source | Service-Defined. Ha az üzenetet a kézbesíthetetlen levelek sorában, a forrás az eredeti üzenet. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
 
 ### <a name="transaction-capability"></a>Tranzakció képesség
 
@@ -268,10 +268,10 @@ Tranzakciós munka megkezdéséhez. a vezérlő be kell szereznie egy `txn-id` a
 
 | Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
 | --- | --- | --- |
-| Csatlakoztassa)<br/>név = {link name}.<br/>... ,<br/>szerepkör =**küldő**,<br/>cél =**koordinátora**<br/>) | ------> |  |
-|  | <------ | Csatlakoztassa)<br/>név = {link name}.<br/>... ,<br/>TARGET=Coordinator()<br/>) |
-| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
-|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot =**Declared**()<br/>**tranzakciók – azonosító**= {Tranzakcióazonosító}<br/>))|
+| attach(<br/>név = {link name}.<br/>... ,<br/>role=**sender**,<br/>cél =**koordinátora**<br/>) | ------> |  |
+|  | <------ | attach(<br/>név = {link name}.<br/>... ,<br/>target=Coordinator()<br/>) |
+| átvitel)<br/>delivery-id=0, ...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot =**Declared**()<br/>**txn-id**={transaction ID}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>Tranzakciók ellátása
 
@@ -281,11 +281,11 @@ A vezérlő arra a következtetésre jut a tranzakciós feladatainak küldésév
 
 | Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
 | --- | --- | --- |
-| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
-|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot deklarált () =<br/>tranzakciós-id = {Tranzakcióazonosító}<br/>))|
+| átvitel)<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | . . . <br/>Tranzakciós feladatainak<br/>egyéb hivatkozások<br/> . . . |
-| átvitel)<br/>kézbesítési-id = 57,...)<br/>{AmqpValue)<br/>**Ideje (tranzakciós-id = 0,<br/>sikertelen = false)**)}| ------> |  |
-| | <------ | törlése) <br/> első = 57, 57, utolsó = <br/>állapot =**az Accepted() művelet**)|
+| átvitel)<br/>kézbesítési-id = 57,...)<br/>{ AmqpValue (<br/>**Ideje (tranzakciós-id = 0,<br/>sikertelen = false)**)}| ------> |  |
+| | <------ | törlése) <br/> első = 57, 57, utolsó = <br/>state=**Accepted()**)|
 
 #### <a name="sending-a-message-in-a-transaction"></a>Üzenet küldése egy tranzakció
 
@@ -293,10 +293,10 @@ A vezérlő arra a következtetésre jut a tranzakciós feladatainak küldésév
 
 | Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
 | --- | --- | --- |
-| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
-|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot deklarált () =<br/>tranzakciós-id = {Tranzakcióazonosító}<br/>))|
-| átvitel)<br/>kezelni = 1,<br/>kézbesítési-id = 1, <br/>**állapot =<br/>TransactionalState (<br/>tranzakciók-id = 0)**)<br/>{adattartalom}| ------> |  |
-| | <------ | törlése) <br/> először = 1, legutóbbi = 1, <br/>állapot =**TransactionalState (<br/>tranzakciók-id = 0,<br/>outcome=Accepted()**))|
+| átvitel)<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
+| átvitel)<br/>kezelni = 1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{adattartalom}| ------> |  |
+| | <------ | törlése) <br/> először = 1, legutóbbi = 1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>Egy üzenet valamely tranzakcióban értékesítésére
 
@@ -304,10 +304,10 @@ A vezérlő arra a következtetésre jut a tranzakciós feladatainak küldésév
 
 | Ügyfél (vezérlő) | | A Service Bus (koordinátor) |
 | --- | --- | --- |
-| átvitel)<br/>kézbesítési-id = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
-|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>állapot deklarált () =<br/>tranzakciós-id = {Tranzakcióazonosító}<br/>))|
-| | <------ |átvitel)<br/>kezelni = 2,<br/>kézbesítési-id = 11, <br/>állapot = null)<br/>{adattartalom}|  
-| törlése) <br/> első = 11, 11, utolsó = <br/>állapot =**TransactionalState (<br/>tranzakciók-id = 0,<br/>outcome=Accepted()**))| ------> |
+| átvitel)<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | törlése) <br/> első = 0, 0, utolsó = <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
+| | <------ |átvitel)<br/>kezelni = 2,<br/>delivery-id=11, <br/>állapot = null)<br/>{adattartalom}|  
+| törlése) <br/> első = 11, 11, utolsó = <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>A Service Bus speciális képességek
@@ -327,10 +327,10 @@ Ezek hitelesítési módok szükséges egy kérés/válasz közötti interakció
 
 | Logikai művelet | Ügyfél | Service Bus |
 | --- | --- | --- |
-| Kérés-válasz elérési utat hoz létre |--> () csatolása<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>szerepkör =**küldő**,<br/>forrás =**null**,<br/>target = "kezelési myentity / $"<br/>) |Nincs művelet |
-| Kérés-válasz elérési utat hoz létre |Nincs művelet |\<--csatolása ()<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>szerepkör =**fogadó**,<br/>forrás = null,<br/>target = "myentity"<br/>) |
-| Kérés-válasz elérési utat hoz létre |--> () csatolása<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>szerepkör =**fogadó**,<br/>forrás = "kezelési myentity / $",<br/>target = "myclient$ id"<br/>) | |
-| Kérés-válasz elérési utat hoz létre |Nincs művelet |\<--csatolása ()<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>szerepkör =**küldő**,<br/>forrás = "myentity",<br/>target = "myclient$ id"<br/>) |
+| Kérés-válasz elérési utat hoz létre |--> () csatolása<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |Nincs művelet |
+| Kérés-válasz elérési utat hoz létre |Nincs művelet |\<--csatolása ()<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
+| Kérés-válasz elérési utat hoz létre |--> () csatolása<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>role=**receiver**,<br/>forrás = "kezelési myentity / $",<br/>target=”myclient$id”<br/>) | |
+| Kérés-válasz elérési utat hoz létre |Nincs művelet |\<--csatolása ()<br/>név = {*hivatkozásnév*},<br/>kezelni = {*numerikus leíró*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>) |
 
 A virtuálisgép-pár hivatkozásokat kellene helyen, a kérelem/válasz végrehajtására nagyon egyszerű: egy kérelme, mert egy entitás belül az üzenetküldési infrastruktúra, amely együttműködik a ezt a mintát egy üzenetet. A kérelem-üzenetet a *Válaszcím* mezőbe a *tulajdonságok* szakasz értékre van állítva a *cél* azonosítója a hivatkozás, amelyre a választ. A kezelési entitás feldolgozza a kérést, és ezután továbbítja a kapcsolaton keresztül a válasz amelynek *cél* azonosítója megegyezik a jelzett *Válaszcím* azonosítója.
 
@@ -361,7 +361,7 @@ A kérelemüzenet a következő alkalmazás tulajdonságokkal rendelkezik:
 
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |Nem |sztring |**PUT-token** |
+| művelet |Nem |sztring |**put-token** |
 | type |Nem |sztring |A token használatát típusa. |
 | név |Nem |sztring |A "célközönség", amely a token vonatkozik. |
 | lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
@@ -372,7 +372,7 @@ A *neve* tulajdonság azonosítja az entitást, amellyel a token társítva kell
 | --- | --- | --- | --- |
 | amqp:jwt |JSON webes jogkivonat (JWT) |Az AMQP-érték (karakterlánc) |Még nem érhető el. |
 | amqp:swt |Egyszerű webes jogkivonat (SWT) |Az AMQP-érték (karakterlánc) |Csak a támogatott AAD/ACS által kiállított SWT-jogkivonatok |
-| servicebus.Windows.NET:sastoken |Service Bus SAS-jogkivonat |Az AMQP-érték (karakterlánc) |- |
+| servicebus.windows.net:sastoken |Service Bus SAS Token |Az AMQP-érték (karakterlánc) |- |
 
 Jogkivonatok ruháznak jogokat. A Service Bus három alapvető jogokat ismer: "Küldés" küld, "Figyelés" lehetővé teszi, hogy fogad, lehetővé teszi, és "a felügyelet" lehetővé teszi a adatműveletekkel entitásokat. Aad-ben és az ACS által kiadott explicit módon SWT-jogkivonatok jogcímként szerepeljenek ezeket a jogokat. Service Bus SAS-tokeneket tekintse meg a névtér vagy entitás konfigurált szabályokat, és ezek a szabályok úgy vannak konfigurálva, jogosultságokkal. A jogkivonat aláírása, hogy a szabályhoz társított kulccsal így lehetővé teszi a token express a megfelelő jogosultságokat. A jogkivonat egy entitást a társított *put-token* lehetővé teszi a csatlakoztatott ügyfél kommunikálhat az entitás / token jogok. Egy hivatkozás, amennyiben az ügyfél fogja elvégezni a a *küldő* a szerepkör megköveteli a "Küldés" megfelelő; véve a *fogadó* a szerepkör megköveteli a "figyelés" jobb.
 
@@ -380,8 +380,8 @@ A válaszüzenet rendelkezik a következő *alkalmazástulajdonságok* értékek
 
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| állapotkód |Nem |int |HTTP-válaszkód **[RFC2616]**. |
-| állapot – leírás |Igen |sztring |Az állapot leírása. |
+| status-code |Nem |int |HTTP-válaszkód **[RFC2616]**. |
+| status-description |Igen |sztring |Az állapot leírása. |
 
 Az ügyfél meghívhat *put-token* ismételt és az üzenetkezelési infrastruktúra bármelyik entitáshoz. A jogkivonatok az aktuális ügyfél hatóköre és az aktuális kapcsolatot, ami azt jelenti, a kiszolgáló megszakítja a megőrzött jogkivonatokat, amikor a kapcsolat csökken a rögzített.
 
@@ -403,8 +403,8 @@ Ezzel a funkcióval, hozzon létre egy küldő és csatolást a `via-entity`. To
 
 | Ügyfél | | Service Bus |
 | --- | --- | --- |
-| Csatlakoztassa)<br/>név = {link name}.<br/>szerepkör küldő =<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél =**{keresztül-entitás}**,<br/>**Tulajdonságok térkép = [(<br/>com.microsoft:transfer célcím =<br/>{célentitás})]** ) | ------> | |
-| | <------ | Csatlakoztassa)<br/>név = {link name}.<br/>szerepkör, fogadó =<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>cél = {keresztül-entitás},<br/>Tulajdonságok térkép [() =<br/>célcím com.Microsoft:Transfer =<br/>{Célentitás})] ) |
+| attach(<br/>név = {link name}.<br/>role=sender,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>target=**{via-entity}**,<br/>**Tulajdonságok térkép = [(<br/>com.microsoft:transfer célcím =<br/>{célentitás})]** ) | ------> | |
+| | <------ | attach(<br/>név = {link name}.<br/>role=receiver,<br/>forrás = {ügyfél hivatkozás azonosítója},<br/>target={via-entity},<br/>Tulajdonságok térkép [() =<br/>com.microsoft:transfer-destination-address=<br/>{Célentitás})] ) |
 
 ## <a name="next-steps"></a>További lépések
 

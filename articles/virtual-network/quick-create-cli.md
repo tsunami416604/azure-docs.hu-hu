@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.openlocfilehash: 650c90ff5c193896806ded50e5b7c9ed22b3afde
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9a2272c61932fe4628a0c90101446b6105cab29e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013604"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413651"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Gyors útmutató: Hozzon létre egy virtuális hálózatot az Azure CLI használatával
 
@@ -117,7 +117,7 @@ Lépjen ki a *myVm2* virtuális géppel folytatott SSH-munkamenetből.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, használhat [az csoport törlése](/cli/azure/group#az_group_delete) , távolítsa el az erőforráscsoportot és az összes rendelkezik:
+Ha már nincs rá szükség, használhat [az csoport törlése](/cli/azure/group) , távolítsa el az erőforráscsoportot és az összes rendelkezik:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

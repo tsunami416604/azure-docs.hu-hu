@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1f2991b2e006c97087c6288d3ed3c20d2927e8c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788622"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413481"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric-háló-alkalmazás üzembe helyezése
 
@@ -106,7 +106,8 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure-ban futó webhelyet.
 
-## <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása 
+## <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
+
 A további lépésekhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Az Azure Service Fabric Mesh CLI-bővítmény moduljának telepítéséhez kövesse ezeket az [útmutatásokat](service-fabric-mesh-howto-setup-cli.md).
 
 ## <a name="check-application-deployment-status"></a>Az alkalmazás üzembe helyezésének ellenőrzése
@@ -117,6 +118,14 @@ Az oktatóanyagban használt alkalmazás neve: `todolistapp`. A következő para
 
 ```azurecli-interactive
 az mesh app show --resource-group $rg --name todolistapp
+```
+
+## <a name="get-the-ip-address-of-your-deployment"></a>Az üzemelő példány IP-címének lekéréséhez
+
+Ha azt szeretné, az alkalmazás IP-címének lekéréséhez használja a következő parancsot:
+  
+```azurecli-interactive
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>Az előfizetésben jelenleg üzembe helyezett összes alkalmazás megtekintése

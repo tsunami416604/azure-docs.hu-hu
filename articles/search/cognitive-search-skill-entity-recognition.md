@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4d37d8b3bb52853885ab406a49154f8e70f54b56
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: a2bf61c167211e1ff62abe1453ac62227a137d53
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388185"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411373"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitások felismerése cognitive szakértelem
 
@@ -25,7 +25,7 @@ A **entitások felismerése** szakértelem különböző típusú entitás kigy�
 > [!NOTE]
 > 2018. December 21., kezdési is [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) és a egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.
 >
-> Beépített képességek végrehajtási, a Cognitive Services számítunk fel díjat, számoljuk fel a meglévő [használatalapú – mint-akkor lépjen ár](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás, egy Azure Search számítunk fel díjat, jelenleg előzetes verzió díjszabása leírt számlázása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). 
+> [Beépített kognitív szakértelem](cognitive-search-predefined-skills.md) végrehajtás díja a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kinyerése nem egy Azure Search költségekkel, jelenleg az előzetes verzió áron érhető el. További információkért lásd: a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) vagy [számlázás módját works](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -43,7 +43,7 @@ Paraméterek kis-és nagybetűket, és minden megadása nem kötelező.
 | kategóriák    | Ki kell nyerni kategóriákat tömbje.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Ha nincs kategória áll rendelkezésre, a rendszer minden adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `de, en, es, fr, it`|
 |minimumPrecision | Nem használt. Jövőbeli használatra fenntartva. |
-|includeTypelessEntites | Ha a beállítás igaz értékre, ha a szöveg egy jól ismert entitást tartalmaz, de nem egy támogatott kategóriák osztályozhatók, akkor részeként adja vissza a `"entities"` összetett kimeneti mező. Alapértelmezett érték `false` |
+|includeTypelessEntites | Ha a beállítás igaz értékre, ha a szöveg egy jól ismert entitást tartalmaz, de nem egy támogatott kategóriák osztályozhatók, azt fogja visszaadni részeként a `"entities"` összetett kimeneti mező. Alapértelmezett érték `false` |
 
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
@@ -67,7 +67,7 @@ Csak _en_, _es_ kivonása támogatja `"Quantity"`, `"Datetime"`, `"URL"`, `"Emai
 | Időpontok  | Egy karakterlánctömb, ahol minden karakterláncot jelenti-e a dátum és idő (ahogyan az a szöveg látható) értéket. |
 | URL-címek | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy URL-cím |
 | e-mailek | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy e-mailt |
-| namedEntities | Komplexní typy tömbje, amely a következő mezőket tartalmazzák: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>megbízhatósági (egyelőre nem használt. A-1 értékre lesz beállítva)</li></ul> |
+| namedEntities | Egy tömb, összetett típusok, amely a következő mezőket tartalmazzák: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>megbízhatósági (egyelőre nem használt. A-1 értékre lesz beállítva)</li></ul> |
 | entitás | Egy tömb, amely a kinyert szöveget, a következő mezőkkel entitásokkal kapcsolatos részletes információkat tartalmaz, összetett típusok <ul><li> név (a tényleges entitás neve. Ez határozza meg a "normalized" űrlap)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Wikipédia-oldal az entitás mutató)</li><li>bingId</li><li>(az entitás elismert kategóriáját) típusa</li><li>altípusa (csak az adott kategóriába számára elérhető, ezáltal egy részletesebb nézet typu entity)</li><li> egyezések (összetett tartalmazó gyűjteményhez)<ul><li>szöveg (a nyers szöveg az entitás)</li><li>eltolás (a hely hol található)</li><li>hossza (a nyers entitás szöveg hossza)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Minta-definíció

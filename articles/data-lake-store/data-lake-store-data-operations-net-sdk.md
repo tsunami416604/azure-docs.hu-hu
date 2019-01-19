@@ -1,5 +1,5 @@
 ---
-title: '.NET SDK-VAL: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
+title: '.NET SDK: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
 description: Használja az Azure Data Lake Storage Gen1 .NET SDK fájlrendszer műveletek végrehajtása a Data Lake Storage Gen1 például mappák létrehozása.
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163233"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402302"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "53163233"
 >
 >
 
-Ebből a cikkből elsajátíthatja, hogyan fájlrendszerműveletek végrehajtása Data Lake Storage Gen1 .NET SDK használatával. Fájlrendszerművelet lehet például a mappák létrehozása a Data Lake Storage Gen1 fiókokban, fájlok feltöltése, a fájlok letöltése stb.
+Ebből a cikkből megismerheti, hogyan hajthat végre fájlrendszerműveleteket a Data Lake Storage Gen1 .NET SDK használatával. Fájlrendszerművelet lehet például a mappák létrehozása a Data Lake Storage Gen1 fiókokban, fájlok feltöltése, a fájlok letöltése stb.
 
 Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-val kapcsolatos utasításokért lásd: [fiókkezelési műveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md).
 

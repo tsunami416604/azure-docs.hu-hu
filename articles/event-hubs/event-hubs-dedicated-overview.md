@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091026"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402336"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Dedikált Event Hubs áttekintése
 
@@ -32,7 +32,7 @@ Az alábbi táblázat hasonlítja össze az elérhető az Event Hubs szolgáltat
 | --- |:---:|:---:|:---:|
 | Belépő események | / Millió esemény kell fizetnie | Tartalmazza |
 | Kapacitásegység (1 MB/s belépő, 2 MB/s kilépő) | Fizetés / óra | Tartalmazza |
-| Üzenet mérete | 256 KB | 1 MB |
+| Üzenet mérete | 1 MB | 1 MB |
 | Kiadói irányelvek | Igen | Igen |   
 | Felhasználói csoportok | 20 | 20 |
 | Üzenetek visszajátszása | Igen | Igen |
@@ -47,11 +47,10 @@ Az alábbi táblázat hasonlítja össze az elérhető az Event Hubs szolgáltat
 A következő előnyöket Event Hubs dedikált használatakor érhetők el:
 
 * Egyetlen bérlő nincs más bérlőktől származó zajok üzemeltet.
-* Üzenet mérete nő, szemben a Standard 256 KB-os 1 MB.
 * Minden alkalommal ismételhető teljesítménye.
 * Garantált kapacitás adatlöketek igényeinek.
 * Magában foglalja a [rögzítése](event-hubs-capture-overview.md) funkciója az Event Hubs irányuló mikrokötegelt és hosszú távú megőrzésre integrációt biztosít.
-* Karbantartási nulla: A szolgáltatás kezeli a terheléselosztást, az operációs rendszer frissítések, biztonsági javítások és a particionálás.
+* Zero maintenance: A szolgáltatás kezeli a terheléselosztást, az operációs rendszer frissítések, biztonsági javítások és a particionálás.
 * Rögzített óradíj.
 * Üzenetmegőrzés fel és 7 nap a külön díjfizetés nélkül.
 

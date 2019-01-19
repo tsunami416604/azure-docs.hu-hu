@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: 024cf099dd65db036ae0b68d7094a60427ffa69c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f16dbd743f7e5bb659d05325f85255223feb677d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119884"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411516"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan hozhat létre Linux rendszerű virtuális gép az Azure-ban több hálózati kártyák
 
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Létrehozhat és konfigurálhat több hálózati adapter
-Hozzon létre két hálózati adapterrel [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create). Az alábbi példa létrehoz két hálózati adapterrel, nevű *myNic1* és *myNic2*, a hálózati biztonsági csoport csatlakoztatott minden alhálózathoz csatlakozik, több hálózati Adapterrel rendelkező:
+Hozzon létre két hálózati adapterrel [az network nic létrehozása](/cli/azure/network/nic). Az alábbi példa létrehoz két hálózati adapterrel, nevű *myNic1* és *myNic2*, a hálózati biztonsági csoport csatlakoztatott minden alhálózathoz csatlakozik, több hálózati Adapterrel rendelkező:
 
 ```azurecli
 az network nic create \
@@ -105,7 +105,7 @@ az vm create \
 ## <a name="add-a-nic-to-a-vm"></a>A hálózati adapter hozzáadása egy virtuális Géphez
 Az előző lépésekben létrehozott egy virtuális Gépet több hálózati adapterrel. Hálózati adapter is hozzá egy meglévő virtuális Gépet az Azure CLI használatával. Különböző [Virtuálisgép-méretek](sizes.md) támogatja a hálózati adapterek különböző számú, tehát ennek megfelelően az a virtuális gép méretezéséhez. Ha szükséges, [virtuális gép átméretezése](change-vm-size.md).
 
-Hozzon létre egy másik hálózati Adaptert a [az network nic létrehozása](/cli/azure/network/nic#az_network_nic_create). A következő példában létrehozunk egy hálózati Adaptert *myNic3* a háttérbeli alhálózat és hálózati biztonsági csoport az előző lépésekben létrehozott csatlakozik:
+Hozzon létre egy másik hálózati Adaptert a [az network nic létrehozása](/cli/azure/network/nic). A következő példában létrehozunk egy hálózati Adaptert *myNic3* a háttérbeli alhálózat és hálózati biztonsági csoport az előző lépésekben létrehozott csatlakozik:
 
 ```azurecli
 az network nic create \

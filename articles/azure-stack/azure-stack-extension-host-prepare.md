@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: fcd5137792e573c3077a4b9d5e815b9bf20774f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ec7b1ad33ec80593b718bdf86a48269fb469e078
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155068"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413515"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure stack-bővítmény gazdagép előkészítése
 
@@ -27,10 +27,10 @@ A bővítmény gazdagép két új tartományok névterek egyedi állomásbejegyz
 
 A táblázat bemutatja az új névterek és a kapcsolódó tanúsítványok:
 
-| Telepítési mappa | Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN) | Hatókör (régiónként) | Altartomány névtér |
+| Telepítési mappa | Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN) | Hatókör (régiónként) | SubDomain namespace |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
-| Rendszergazdai kiterjesztés gazdagép | *.adminhosting. \<régió >. \<teljesen minősített tartományneve > (altartományokra is kibővített SSL-tanúsítványok) | Rendszergazdai kiterjesztés gazdagép | adminhosting. \<régió >. \<teljesen minősített tartományneve > |
-| A bővítmény nyilvános állomás | * .hosting. \<régió >. \<teljesen minősített tartományneve > (altartományokra is kibővített SSL-tanúsítványok) | A bővítmény nyilvános állomás | üzemeltetési. \<régió >. \<teljesen minősített tartományneve > |
+| Rendszergazdai kiterjesztés gazdagép | *.adminhosting. \<régió >. \<teljesen minősített tartományneve > (altartományokra is kibővített SSL-tanúsítványok) | Rendszergazdai kiterjesztés gazdagép | adminhosting.\<region>.\<fqdn> |
+| A bővítmény nyilvános állomás | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | A bővítmény nyilvános állomás | hosting.\<region>.\<fqdn> |
 
 Tekintheti meg a részletes tanúsítványokra vonatkozó követelményeket a [Azure Stack nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények](azure-stack-pki-certs.md) cikk.
 
@@ -129,8 +129,8 @@ Ha az egyéni gazdagépeken A rekordok közzététele az Azure Stack-végpontok 
 
 | IP | Gazdanév | Típus |
 |----|------------------------------|------|
-| \<IP &GT; | *. Adminhosting. \<Régió >. \<Teljesen minősített Tartományneve > | A |
-| \<IP &GT; | *. Üzemeltetési. \<Régió >. \<Teljesen minősített Tartományneve > | A |
+| \<IP> | *. Adminhosting. \<Régió >. \<Teljesen minősített Tartományneve > | A |
+| \<IP> | *. Üzemeltetési. \<Régió >. \<Teljesen minősített Tartományneve > | A |
 
 Lefoglalt IP-címek rendszerjogosultságú végpont használatával a parancsmag futtatásával kérhető **Get-AzureStackStampInformation**.
 
@@ -184,7 +184,7 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 > [!Note]  
 > Ezt a módosítást a bővítmény gazdagép engedélyezése előtt. Ez lehetővé teszi az Azure Stack-portálokkal, folyamatosan elérhetők legyenek.
 
-| Végpontot (VIP) | Protokoll | Portok |
+| Endpoint (VIP) | Protokoll | Portok |
 |----------------|----------|-------|
 | AdminHosting | HTTPS | 443 |
 | Üzemeltetés | HTTPS | 443 |
@@ -199,10 +199,10 @@ A következő meglévő endpoint portokat a meglévő tűzfalszabályok zártnak
 > [!Note]  
 > Javasoljuk, hogy ezeket a portokat bezárása után ellenőrzést.
 
-| Végpontot (VIP) | Protokoll | Portok |
+| Endpoint (VIP) | Protokoll | Portok |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Portál (rendszergazda) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015 |
-| Portál (felhasználó) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003 |
+| Portál (rendszergazda) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
+| Portál (felhasználó) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
 | Az Azure Resource Manager (rendszergazda) | HTTPS | 30024 |
 | Az Azure Resource Manager (felhasználó) | HTTPS | 30024 |
 

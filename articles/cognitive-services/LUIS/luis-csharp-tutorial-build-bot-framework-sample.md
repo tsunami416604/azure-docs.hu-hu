@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c3e142c65cdfe00fb26694063f7733d62882cc0c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5be96fc93a5a6636ccac6faf456458b3bcb8423a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267368"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413719"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A LUIS-robot C# a Bot keretrendszer 3.x és az Azure Web app bot
 
@@ -153,7 +153,7 @@ Az Azure Portalon kattintson a **tesztelni, webes csevegési** a robot tesztelé
 > A LUIS-alkalmazás a robot kód módosítás nélkül ténytábláknál. Lásd: [példa beszédmódok hozzáadása](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [taníthat vagy tesztelhet a LUIS-alkalmazás](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Töltse le a robot hibakeresése
-A robot nem működik, ha a helyi gépre töltse le a projektet, és továbbra is [hibakeresés](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
+A robot nem működik, ha a helyi gépre töltse le a projektet, és továbbra is [hibakeresés](https://docs.microsoft.com/bot-framework/bot-service-debug-bot). 
 
 ## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
 Tudjon meg többet [Bot Framework](https://dev.botframework.com/) és a [3.x](https://github.com/Microsoft/BotBuilder) és [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK-k.
