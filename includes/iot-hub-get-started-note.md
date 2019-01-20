@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 33d7a333c6c52db77cf0845eb0cb09cdcecb6d89
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b24ecd12965cece46ca6a58f10a25ddef723f8f6
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166199"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54415000"
 ---
 > [!NOTE]
-> Ez az oktatóanyag megkezdése előtt [az eszköz beállítása](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). A cikkben beállítása az Azure IoT-eszköz és az IoT hubot, és futtassa az eszközön egy mintaalkalmazást telepít. Az alkalmazás küld az IoT hub begyűjtött érzékelőadatokat.
+> Ez az oktatóanyag megkezdése előtt [az eszköz beállítása](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md). A cikkben beállítása az Azure IoT-eszköz és az IoT hubot, és futtassa az eszközön egy mintaalkalmazást telepít. Az alkalmazás küld az IoT hub begyűjtött érzékelőadatokat.
