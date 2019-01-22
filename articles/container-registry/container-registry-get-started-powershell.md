@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/08/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7dcdca594949a3b20000b31db681370ee4f9eac3
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: fa6b4de9282eec75747ca87b26058a47320f2fd3
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255285"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428137"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Gyors útmutató: Hozzon létre egy privát tárolójegyzékben Azure PowerShell-lel
 
@@ -21,7 +21,7 @@ Az Azure Container Registry egy felügyelt, privát Docker-tárolóregisztráci�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. Futtassa a `Get-Module -ListAvailable AzureRM` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. Futtassa a `Get-Module -ListAvailable AzureRM` parancsot a telepített verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
 
 A Dockert is telepítenie kell helyileg. A Docker [macOS][docker-mac], [Windows][docker-windows] és [Linux][docker-linux] operációs rendszerekhez biztosít csomagokat.
 

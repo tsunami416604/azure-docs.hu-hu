@@ -11,15 +11,15 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 6196364f5983d443519429363bb94bfd6a1203c5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ff7f25a9c1ac73c53587bb320ef3889a5bfa9dc5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411730"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439119"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Szerzői műveletek és a lekérdezés előrejelzési végpont kulcsok a LUIS
-A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [rendelje hozzá](luis-how-to-manage-keys.md#assign-endpoint-key) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 
+A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md), [rendelje hozzá](luis-how-to-azure-subscription.md) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 
 
 |Kulcs|Cél|
 |--|--|
@@ -47,7 +47,7 @@ Amikor kell **éles végpontot lekérdezések**, hozzon létre egy Azure-erőfor
 
 [!INCLUDE [Azure resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
 
-Ha elkészült a Azure-erőforrások létrehozását, [rendelje hozzá a kulcs](luis-how-to-manage-keys.md#assign-endpoint-key) az alkalmazáshoz. 
+Ha elkészült a Azure-erőforrások létrehozását, [rendelje hozzá a kulcs](luis-how-to-azure-subscription.md) az alkalmazáshoz. 
 
     * A végpont kulcs lehetővé teszi egy végpont a találatok alapján a használati terv a kulcs létrehozásakor megadott kvótát. Lásd: [a Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) a díjszabásról.
 
@@ -76,13 +76,13 @@ Lásd: [korlátok kulcs](luis-boundaries.md#key-limits) és [Azure-régiók](lui
 Közzétételi régiója nem ugyanaz a létrehozási régiók. Ellenőrizze, hogy az Authoring Tool régió régióhoz tartozó, a közzétételi szeretné az alkalmazást hoz létre.
 
 ## <a name="key-limit-errors"></a>Korlát hibák
-Ha túllépi a második kvótája per HTTP 429-es hibaüzenetet kap. Ha túllépi a havi kvóta, egy HTTP 403-as hibaüzenetet kap. Javítsa ki a hibákat a LUIS lekérésével [végpont](#endpoint-key) kulcs [hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a kulcsot az alkalmazás a **közzététel** lapján a [LUIS](luis-reference-regions.md#luis-website) webhely.
+Ha túllépi a második kvótája per HTTP 429-es hibaüzenetet kap. Ha túllépi a havi kvóta, egy HTTP 403-as hibaüzenetet kap. Javítsa ki a hibákat a LUIS lekérésével [végpont](#endpoint-key) kulcs [hozzárendelése](luis-how-to-azure-subscription.md) a kulcsot az alkalmazás a **közzététel** lapján a [LUIS](luis-reference-regions.md#luis-website) webhely.
 
 ## <a name="assignment-of-the-endpoint-key"></a>A végpont kulcs hozzárendelése
 
-Is [hozzárendelése](luis-how-to-manage-keys.md) a végponti kulcsot a [LUIS portál](https://www.luis.ai) vagy a megfelelő API-kon keresztül. 
+Is [hozzárendelése](luis-how-to-azure-subscription.md) a végponti kulcsot a [LUIS portál](https://www.luis.ai) vagy a megfelelő API-kon keresztül. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, [fogalmak](luis-how-to-manage-keys.md#assign-endpoint-key) létrehozási és -végpont kulcsokkal kapcsolatos.
+* Ismerje meg, [fogalmak](luis-how-to-azure-subscription.md) létrehozási és -végpont kulcsokkal kapcsolatos.

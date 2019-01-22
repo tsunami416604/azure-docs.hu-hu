@@ -10,14 +10,14 @@ ms.component: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 21baa89293c74ec49720bffc2506e20789fe9e55
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410995"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431741"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Mi az új Azure SQL Data warehouse? A 2018. december
+# <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Mi az új Azure SQL Data warehouse? 2018. december
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek 2018. December.
 
 ## <a name="virtual-network-service-endpoints-generally-available"></a>Virtuális hálózati Szolgáltatásvégpontok általánosan elérhető
@@ -53,6 +53,9 @@ A Query Store az Azure SQL Data Warehouse további információkért lásd: a ci
 Az Azure SQL Data Warehouse Gen2 mostantól támogatja az alacsonyabb számítási szinten. Ügyfelek tapasztalhatnak az Azure SQL Data Warehouse kiváló teljesítményt, rugalmasságot és biztonsági funkciókat 100 cDWU kezdve ([Adattárházegységek](https://docs.microsoft.com/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu)) és 30 000 cDWU percek alatt. 2018 decemberének közepétől kezdve ügyfeleink kihasználhatják a Gen2 teljesítményt és rugalmasságot biztosít az alsó számítási rétegben [régiók](https://docs.microsoft.com/azure/sql-data-warehouse/gen2-lower-tier-regions), a többi 2019 során rendelkezésre álló régiók.
 
 A belépési pont a következő generációs adatraktározási elvetésével Microsoft kitárja a kapukat a érték adatvezérelt ügyfelek számára anélkül, hogy melyik próbaverziós környezet a legjobb őket a találgatás egy biztonságos, nagy teljesítményű data warehouse minden előnyét ki kell számítani. Ügyfelek előfordulhat, hogy kezdhet akár 100 cDWU is le a jelenlegi 500 cDWU belépési pont. Az SQL Data Warehouse Gen2 szüneteltetése és folytatása műveletek és goes túl csak a rugalmasságot, a számítási továbbra is. Gen2 is támogatja az oszloptár korlátlan tárolási kapacitás 2,5-szer több memóriát lekérdezéseként, valamint akár 128 lekérdezést és [adaptív gyorsítótárazást](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/) funkciókat. Ezeket a funkciókat, átlagosan öt nagyobb teljesítményt képest a Gen1 ugyanazon Adattárházegység ugyanazon az áron használata. Georedundáns biztonsági mentés olyan Gen2 az beépített garantált adatvédelmi szabvány. Az Azure SQL Data Warehouse Gen2 készen áll a méretezhető, amikor áll.
+
+## <a name="columnstore-background-merge"></a>Oszlopcentrikus háttér egyesítése
+Alapértelmezés szerint az Azure SQL Data Warehouse (Azure SQL DW) adatokat tárol Oszlopalapú formátum nevű micro partícióval rendelkező [naplóbájtot](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression). Egyes esetekben memória miatt indexnél korlátozza a build vagy az adatok betöltési idő, előfordulhat, hogy tömöríti a naplóbájtot kevesebb mint 1 millió sor optimális mérete. Törlések miatt is válnak Naplóbájtot töredezett. Kis- és töredezett naplóbájtot a nagyobb memóriát, valamint a nem elég hatékony lekérdezés-végrehajtás eredményez. Ezzel a kiadással az Azure SQL DW a oszlopcentrikus háttér-karbantartási feladat egyesíti a kis tömörített naplóbájtot jobban memória, és a lekérdezés végrehajtása gyorsabb, nagyobb naplóbájtot létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy jobban megismerte az SQL Data warehouse, megtudhatja, hogyan lehet gyorsan [hozzon létre egy SQL Data Warehouse][create a SQL Data Warehouse]. Ha most ismerkedik az Azure-ba, hasznosnak találhatja a [Azure szószedet] [ Azure glossary] hasznos megtudhatja az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  

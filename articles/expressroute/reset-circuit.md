@@ -1,5 +1,5 @@
 ---
-title: 'Sikertelen kapcsolatcsoport - ExpressRoute alaphelyzetbe állítása: PowerShell: Azure |} A Microsoft Docs'
+title: 'Sikertelen kapcsolatcsoport - ExpressRoute visszaállítása: PowerShell: Azure | Microsoft Docs'
 description: Ez a cikk segít a sikertelen állapotú ExpressRoute-kapcsolatcsoport alaphelyzetbe állítása.
 services: expressroute
 author: anzaman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: 7b88ba6e00cbec05263fe5bc8e795cda95beee04
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e94ba2f7f6981355f4736683b891fbdced001d03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093672"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425339"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Sikertelen az ExpressRoute-kapcsolatcsoport alaphelyzetbe állítása
 
@@ -21,7 +21,7 @@ Egy ExpressRoute-kapcsolatcsoport művelet sikeres, ha a kapcsolatcsoport "siker
 
 ## <a name="reset-a-circuit"></a>Kapcsolatcsoport alaphelyzetbe állítása
 
-1. Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps).
+1. Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/install-azurerm-ps).
 
 2. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 

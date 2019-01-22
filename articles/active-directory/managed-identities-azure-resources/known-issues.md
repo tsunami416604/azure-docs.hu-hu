@@ -4,7 +4,7 @@ description: Felügyelt identitások az Azure-erőforrások ismert problémái.
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a23bd99b05184316ee1547ab0917547b5d0da18f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720184"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421929"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -94,8 +94,8 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 ```
 
 Az elemek magyarázata: 
-- Bővítmény neve és típusa, a Windows: ManagedIdentityExtensionForWindows
-- Bővítmény neve és a Linux-típus: ManagedIdentityExtensionForLinux
+- Bővítmény neve és típusa, a Windows a következő: ManagedIdentityExtensionForWindows
+- Bővítmény neve és a Linux rendszeren írja be a következő: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Ismert problémák
 

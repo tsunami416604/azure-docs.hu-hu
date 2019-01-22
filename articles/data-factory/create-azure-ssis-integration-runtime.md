@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b772aa314316906a4079e3d6b8b4e0aeb0f54fba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022988"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434240"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
 Ez a cikk lépéseit a kiépítési Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF). Ezt követően használhatja az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) üzembe helyezéséhez és futtatásához az SQL Server Integration Services (SSIS) csomagokat a ezt az integrációs modult az Azure-ban. 
@@ -50,7 +50,7 @@ Amikor üzembe helyezi az Azure-SSIS integrációs modul, a az Azure Feature Pac
     - A virtuális hálózati Szolgáltatásvégpontok Azure SQL Database-kiszolgáló vagy a felügyelt példányt, amely egy virtuális hálózatban lévő üzemeltetett SSISDB. 
     - Szeretné csatlakoztatni a helyszíni adatokat tárolja az SSIS-csomagokat futtat az Azure-SSIS integrációs modult. 
 
-- **Azure PowerShell**. Kövesse az [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/install-azurerm-ps), ha szeretne futtatni egy PowerShell-parancsprogram üzembe helyezni az Azure-SSIS integrációs modult. 
+- **Azure PowerShell**. Kövesse az [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/azurerm/install-azurerm-ps), ha szeretne futtatni egy PowerShell-parancsprogram üzembe helyezni az Azure-SSIS integrációs modult. 
 
 ### <a name="region-support"></a>Régió támogatása
 Az Azure-régióban, amelyben az ADF és Azure-SSIS integrációs modul jelenleg érhető el, lásd: [ADF + SSIS integrációs modul rendelkezésre állása régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
@@ -603,7 +603,7 @@ Most az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS)
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentációban a többi Azure-SSIS integrációs modul témakörök: 
 
-- [Az Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs modulok általában többek között az Azure-SSIS integrációs modult. 
+- [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs modulok általában többek között az Azure-SSIS integrációs modult. 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 

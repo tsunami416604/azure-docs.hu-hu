@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 90eb9177ec679fdf8007b734848a5bc3c72e5974
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249693"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430330"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -28,8 +28,8 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 |Hitelesítési módszer|Használat|
 | --- | --- |
 | Jelszó | Többtényezős hitelesítés és az SSPR |
-| Biztonsági kérdések | Csak az SSPR |
-| E-mail-cím | Csak az SSPR |
+| Biztonsági kérdések | SSPR Only |
+| E-mail-cím | SSPR Only |
 | A Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | OATH-token hardver | A többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | SMS | Többtényezős hitelesítés és az SSPR |
@@ -60,40 +60,40 @@ Biztonsági kérdések használatakor javasoljuk egy másik módszerrel együtt 
 ### <a name="predefined-questions"></a>Előre definiált kérdések
 
 * Melyik városban ismerkedett meg az első házastársával/párjával?
-* Melyik városban találkozak először a szülei?
+* Melyik településen találkoztak a szülei?
 * Melyik városban lakik a legközelebbi rokona?
 * Az édesapja melyik városban született?
 * Melyik városban volt az első munkahelye?
 * Melyik városban született az édesanyja?
-* Hol töltötte 1999 szilveszterét?
-* Mi volt a kedvenc középiskolai tanárának vezetékneve?
+* Hol töltötte a 2000. év újévét?
+* Mi a vezetékneve és az utóneve a kedvenc középiskolai tanárának?
 * Milyen felsőoktatási intézménybe jelentkezett, de nem vették fel?
 * Hogy hívták a helyet, ahol az első lakodalmát tartották?
-* Édesapja második keresztneve?
+* Mi az apja második utóneve?
 * Mi a kedvenc étele?
-* Anyai nagyapja vezeték- és keresztneve?
-* Mi az édesanyja második keresztneve?
+* Anyai nagyanyja vezeték- és keresztneve?
+* Mi az édesanyja második utóneve?
 * Mi a legidősebb testvérének születési éve és hónapja? (Példa: 1985. November)
-* Mi a legidősebb testvérének második keresztneve?
-* Apai nagyapja vezeték- és keresztneve?
-* Mi a legfiatalabb tesvérének második keresztneve?
+* Mi a második utóneve a legidősebb testvérének?
+* Mi a vezetékneve és az utóneve az apai nagyapjának?
+* Mi a második utóneve a legfiatalabb testvérének?
 * Melyik iskolában végezte el a hatodik osztályt?
-* Gyerekkori legjobb barátjának vezeték- és keresztneve?
-* Első társának vezeték- és keresztneve?
+* Mi volt a vezetékneve és az utóneve a legjobb gyerekkori barátjának?
+* Mi volt a vezetékneve és az utóneve az első szerelmének?
 * Mi volt a kedvenc általános iskolai tanárának vezetékneve?
 * Mi volt az első autója vagy motorkerékpárja márkája és típusa?
-* Mi volt az első iskolájának neve?
+* Hogy hívták az első iskoláját?
 * Mi a neve annak a kórháznak, ahol született?
-* Első gyerekkori otthonának utcaneve?
-* Ki volt a kedvenc gyerekkori hőse?
+* Milyen utcában lakott gyermekkorában?
+* Hogy hívják a gyermekkori példaképét?
 * Kedvenc plüssállatának neve?
 * Mi volt az első háziállatának neve?
-* Mi volt a gyerekkori beceneve?
+* Mi volt a beceneve gyerekkorában?
 * Mi volt a kedvenc sportja a középiskolában?
-* Mi volt az első munkahelye?
+* Mi volt az első munkaköre?
 * Mi volt a gyerekkori telefonszámának utolsó négy számjegye?
 * Gyerekkorában mi szeretett volna lenni, ha majd felnő?
-* Ki volt a leghíresebb ember, akivel valaha is találkozott?
+* Ki a leghíresebb ember, akivel életében találkozott?
 
 Az előre definiált biztonsági kérdések lefordított és a felhasználó a böngésző nyelve alapján Office 365 nyelveken a teljes körű honosítva.
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7cb1acace3dd8605d7506013a6f1c0273dafa32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739821"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421436"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Rossz jelszavak, a szervezet számára
 
@@ -30,7 +30,7 @@ Iparági vezetők mondja el, hogy nem összetett, és nem révén egyszerűen/Pa
 
 A Microsoft mindig azon dolgozik, hogy egy lépéssel a számítógépes bűnözők előtt járjon. Ezért az Azure AD Identity Protection csapata folyamatosan keresse meg a gyakran használt és a feltört jelszavakat. Ezután letiltják ezeket a jelszavakat, hogy mi a globális letiltott jelszavak lista neve túl gyakori beállításkulcsoknak. Bűnözők is hasonló stratégiákat használnak a saját támadások, ezért a Microsoft nem teszi közzé a lista tartalma nyilvánosan. Ezek a sebezhető jelszavak le vannak tiltva, mielőtt azok a valódi fenyegetést Microsoft ügyfeleire vonatkozik. Az aktuális biztonsági erőfeszítések kapcsolatos további információkért tekintse meg a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Előzetes verzió: Egyéni le van tiltva jelszó listája
+## <a name="preview-custom-banned-password-list"></a>Előzetes verzió: Letiltott jelszavak egyéni listája
 
 Egyes szervezetek biztonsági egy lépéssel tovább igénybe a Microsoft által a letiltott jelszavak egyéni lista a globális letiltott jelszavak lista fölött saját testreszabások hozzáadásával lehet. Vállalati felhasználók például Contoso Ezután dönthet blokkolása a márka nevüket, a vállalatra jellemző használati vagy más elemeket tartalmazza.
 
@@ -46,7 +46,7 @@ Kizárólag felhőalapú fiókok védelme akkor lehet hasznos, de számos szerve
 
 A letiltott jelszavak lista megegyezik a jelszavakat a listában való visszaváltás a karakterlánc kis- és a egy intelligens egyeztetésével 1 szerkesztési távolságon belül ismert letiltott jelszavakkal összehasonlítása.
 
-Példa: A word jelszó blokkolva van egy szervezet számára
+Példa: A word-jelszót a szervezet számára le van tiltva
    - A felhasználó megpróbál jelszó beállítása "P@ssword", amely alakítja át a "password", és a jelszó variant, mert le van tiltva.
    - A rendszergazda megkísérli "/ Password123!" új jelszó beállítása amely a "/!"password123 alakítani és mivel a jelszó variant le van tiltva.
 

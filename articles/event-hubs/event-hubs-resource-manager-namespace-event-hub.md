@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 992b27622328bab85fcfaf06ad5a941aceed446f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 39c92c870991ce2398b27efd189f1219777afdd7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051458"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425322"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure Resource Manager-sablon használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban létrehozhat egy eseményközpontba, egy Azure Reso
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
-Ha a használni kívánt **Azure PowerShell-lel** a Resource Manager-sablon üzembe helyezéséhez [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+Ha a használni kívánt **Azure PowerShell-lel** a Resource Manager-sablon üzembe helyezéséhez [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
 
 Ha a használni kívánt **Azure CLI-vel** a Resource Manager-sablon üzembe helyezéséhez [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 

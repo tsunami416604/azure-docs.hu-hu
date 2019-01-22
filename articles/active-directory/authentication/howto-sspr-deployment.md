@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9c728ba4c77cd22782adc9916da62cc309a8150b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622320"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431656"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -24,7 +24,7 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
 1. Fejezze be a szervezet egy szűk részhalmaza érhető el egy kísérleti összesítő.
-   * Próbaüzem információk megtalálhatók a [oktatóanyag: teljes egy Azure AD önkiszolgáló jelszó-visszaállítás próbaüzem bevezetése](tutorial-sspr-pilot.md).
+   * Próbaüzem információk megtalálhatók a [oktatóanyag: Befejeződött egy Azure AD önkiszolgáló jelszó-visszaállítás próbaüzem bevezetése](tutorial-sspr-pilot.md).
 1. Tájékoztassa a segélyszolgálathoz.
    * Hogyan fogja segítenek, hogy a felhasználók számára?
    * Kényszeríti a felhasználó használhatja az SSPR, és engedélyezi a felhasználók segítséget az ügyfélszolgálattól?
@@ -41,12 +41,12 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR
 
 Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-mailes kampánnyal lehet a legkönnyebben rávenni a felhasználókat az SSPR használatára. [Hoztunk létre egyszerű e-mailek és más, amely sablonként használhatja a bevezetés során biztosíték](https://www.microsoft.com/download/details.aspx?id=56768):
 
-* **Hamarosan elérhető**: Olyan e-mail-sablon, amelyet a bevezetést megelőző hetekben vagy napokban érdemes használni, hogy a felhasználók tisztában legyenek azzal, hogy hamarosan tenniük kell valamit.
-* **Már elérhető**: Olyan e-mail-sablon, amelyet a program indulásának napján érdemes használni, hogy a felhasználók regisztráljanak, és megerősítsék a hitelesítési adataikat. Ha a felhasználók ilyenkor regisztrálnak, szükség esetén már használatba tudják venni az SSPR-t.
-* **Regisztrációs emlékeztető**: Olyan e-mail-sablon, amelyet pár nappal vagy héttel az üzembe helyezés után érdemes használni, hogy a felhasználók emlékeztetőt kapjanak a regisztrációról és hitelesítési adataik megerősítéséről.
-* **SSPR poszterek**: poszterek testre szabhatja és a nap és a hét, akár kezdő, és a bevezetés után a szervezet köré megjelenítéséhez.
-* **SSPR tábla sátrak**: tábla kártyák elhelyezhet a helyiségben ebéd konferenciahívások, vagy az asztalok arra bátorítsák a felhasználókat, hogy a regisztráció befejezéséhez.
-* **SSPR matricákat**: matricát sablonok testreszabása és a nyomtatási laptopok, monitorok, billentyűzetek vagy mobiltelefonok, ne felejtse el az SSPR eléréséhez hogyan helyezhető el.
+* **Hamarosan**: Egy e-mail sablon, amelyekkel a megelőző hetekben vagy napokban a Bevezetés a felhasználóknak szükségük van valamit.
+* **Rendelkezésre álló most**: A program a nap használt e-mail sablont indítsa el a felhasználók regisztráljanak, és megerősítsék a hitelesítési adataikat. Ha a felhasználók ilyenkor regisztrálnak, szükség esetén már használatba tudják venni az SSPR-t.
+* **Regisztrációs emlékeztető**: Emlékeztesse a felhasználók regisztrálhatnak, és megerősítsék a hitelesítési adataikat az üzembe helyezés után néhány hét napig néhány e-mail sablont.
+* **SSPR poszterek**: Poszterek testre szabhatja és a nap és a hét, akár kezdő, és a bevezetés után a szervezet köré megjelenítéséhez.
+* **SSPR tábla sátrak**: Tábla kártyák elhelyezhet a helyiségben ebéd konferenciahívások, vagy arra bátorítsák a felhasználókat, hogy a regisztráció elvégzése asztalok.
+* **SSPR matricákat**: Matricát sablonokat testre szabhatja és nyomtatási laptopok, monitorok, billentyűzetek vagy mobiltelefonok, ne felejtse el az SSPR eléréséhez hogyan helyezhető el.
 
 ![SSPR E-mail minták][Email]
 

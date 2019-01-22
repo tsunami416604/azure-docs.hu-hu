@@ -4,18 +4,18 @@ description: A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-ve
 keywords: automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727902"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424319"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -35,8 +35,8 @@ Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szere
 |Az Automation-runbook operátora|A Runbook Automation-operátori szerepkör lehetővé teszi, hogy a runbook nevét és a tulajdonságok megtekintéséhez.|
 | Log Analytics közreműködő | A Log Analytics-közreműködő szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása és szerkesztése a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek, tudják naplógyűjtemény konfigurálása céljából az Azure storage-ból tárfiók kulcsainak beolvasását az létrehozása és konfigurálása az Automation-fiókok, megoldások hozzáadása és Azure diagnostics konfigurálása az ad hozzá a Virtuálisgép-bővítmény az összes Azure-erőforrások.|
 | Log Analytics olvasó | A Log Analytics olvasó szerepkör lehetővé teszi, hogy megtekintése és keresése az összes monitorozási adat, valamint megtekintheti a figyelési beállításokat. Ez magában foglalja az Azure diagnostics konfigurációjának megtekintését az összes Azure-erőforrások. |
-| Közreműködő figyelése | A figyelés közreműködői szerepkör lehetővé teszi, hogy olvassa el az összes olyan figyelési adathoz és figyelési beállításainak frissítése.|
-| Olvasó figyelése | A Monitoring Reader szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása. |
+| Figyelési közreműködő | A figyelés közreműködői szerepkör lehetővé teszi, hogy olvassa el az összes olyan figyelési adathoz és figyelési beállításainak frissítése.|
+| Figyelési olvasó | A Monitoring Reader szerepkör lehetővé teszi, hogy az összes monitorozási adat olvasása. |
 | Felhasználói hozzáférés rendszergazdája |A felhasználói hozzáférés rendszergazdájának szerepköre lehetővé teszi, hogy kezelje a felhasználói hozzáférést az Azure Automation-fiókokhoz. |
 
 ## <a name="role-permissions"></a>Szerepkör-engedélyek
@@ -135,7 +135,7 @@ A Log Analytics-közreműködő az összes monitorozási adat olvashatja és sze
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|* / olvasási|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
+|*/read|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
 |Microsoft.Automation/automationAccounts/*|Az automation-fiókok kezelése.|
 |Microsoft.ClassicCompute/virtualMachines/extensions/*|Létrehozhat és kezelhet virtuálisgép-bővítmények.|
 |Microsoft.ClassicStorage/storageAccounts/listKeys/action|Klasszikus tárfiók kulcsainak listázása.|
@@ -155,20 +155,20 @@ A Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|* / olvasási|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
+|*/read|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
 |Microsoft.OperationalInsights/workspaces/analytics/query/action|A Log Analytics lekérdezések kezelése.|
 |Microsoft.OperationalInsights/workspaces/search/action|Keressen rá a Log Analytics-adatok.|
 |Microsoft.Support/*|Hozzon létre, és kezelhetik a támogatási jegyeket.|
 |**Nincs művelet**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nem sikerült beolvasni a megosztott hozzáférési kulcsokat.|
 
-### <a name="monitoring-contributor"></a>Közreműködő figyelése
+### <a name="monitoring-contributor"></a>Figyelési közreműködő
 
 Közreműködő figyelése olvashatja az összes monitorozási adat, és frissítheti a figyelési beállításokat. Az alábbi táblázat a szerepkörhöz rendelt engedélyeket:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|* / olvasási|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
+|*/read|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
 |Microsoft.AlertsManagement/alerts/*|Riasztások kezelése.|
 |Microsoft.AlertsManagement/alertsSummary/*|A riasztási irányítópult kezelése.|
 |Microsoft.Insights/AlertRules/*|Riasztási szabályok kezelése.|
@@ -188,13 +188,13 @@ Közreműködő figyelése olvashatja az összes monitorozási adat, és frissí
 |Microsoft.Support/*|Hozzon létre, és kezelhetik a támogatási jegyeket.|
 |Microsoft.WorkloadMonitor/workloads/*|Feladatok felügyeletét.|
 
-### <a name="monitoring-reader"></a>Olvasó figyelése
+### <a name="monitoring-reader"></a>Figyelési olvasó
 
 A Monitoring Reader olvashatja az összes figyelési adatot. Az alábbi táblázat a szerepkörhöz rendelt engedélyeket:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|* / olvasási|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
+|*/read|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
 |Microsoft.OperationalInsights/workspaces/search/action|Keressen rá a Log Analytics-munkaterületeket.|
 |Microsoft.Support/*|Hozzon létre, és a támogatási jegyek kezelése|
 
@@ -204,7 +204,7 @@ A felhasználói hozzáférés rendszergazdája Azure-erőforrások felhasznál�
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
-|* / olvasási|Minden erőforrás olvasása|
+|*/read|Minden erőforrás olvasása|
 |Microsoft.Authorization/*|Hitelesítés|
 |Microsoft.Support/*|Hozzon létre, és a támogatási jegyek kezelése|
 
@@ -334,7 +334,7 @@ AssignableScopes : {/}
 ```
 
 [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) sorolja fel az Azure AD RBAC szerepkör-hozzárendelések a megadott hatókörben. Paraméterek nélkül ez a parancs az előfizetéshez tartozó összes szerepkör-hozzárendelést visszaadja. Az **ExpandPrincipalGroups** paraméter segítségével felsorolhatja egy adott felhasználó vagy a felhasználó csoportjának összes hozzáférés-hozzárendelését.
-    **Példa:** Az alábbi paranccsal felsorolhatja az összes felhasználót és azok szerepkörét egy Automation-fiókon belül.
+    **Példa** A következő paranccsal listázhatja az összes felhasználót és azok szerepkörét egy automation-fiókot.
 
 ```azurepowershell-interactive
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -355,7 +355,7 @@ ObjectType         : User
 ```
 
 [Új-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx) hozzáférés hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörhöz.
-    **Példa:** használja az alábbi parancsot az Automation-fiók tartományában lévő felhasználó számára az "Automation-operátor" szerepkör hozzárendelése.
+    **Példa** A következő paranccsal rendelje hozzá a "Automation-operátor" szerepkört az Automation-fiók tartományában lévő felhasználó számára.
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -376,7 +376,7 @@ ObjectType         : User
 ```
 
 Használat [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx) segítségével távolítsa el a megadott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
-    **Példa:** eltávolítja a felhasználót az Automation-fiók tartományában lévő "Automation-operátor" szerepkör az alábbi parancs segítségével.
+    **Példa** A következő paranccsal eltávolítja a felhasználót az Automation-fiók tartományában lévő "Automation-operátor" szerepkör.
 
 ```azurepowershell-interactive
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -428,3 +428,4 @@ Ha egy felhasználó, aki a Runbook nézetek hatókörének meghatározásához 
 * Az RBAC for Azure Automation konfigurálásának különböző módjaira vonatkozó további információért lásd [az RBAC Azure PowerShellel folytatott kezelésével](../role-based-access-control/role-assignments-powershell.md) foglalkozó témakört.
 * További információk a forgatókönyvek elindításának különböző módjairól: [Forgatókönyv elindítása](automation-starting-a-runbook.md).
 * További információk a különböző forgatókönyv-típusokról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
+

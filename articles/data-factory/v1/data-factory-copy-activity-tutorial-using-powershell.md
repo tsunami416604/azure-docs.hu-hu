@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ce2c3bffecd691acd5eb26b999c63fd2bb5dd510
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12c4241da2f4a65205d128d72f86ce2bc91a853c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015339"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435583"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Oktatóanyag: Hozzon létre egy Data Factory-folyamatot adatok áthelyezéséhez az Azure PowerShell-lel
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Hajtsa végre [Az oktatóanyag előfeltételei](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
-- Telepítse az **Azure PowerShellt**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
+- Telepítse az **Azure PowerShellt**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
 
 ## <a name="steps"></a>Lépések
 Az oktatóanyag során a következő lépéseket fogja elvégezni:

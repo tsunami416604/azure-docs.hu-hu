@@ -1,5 +1,5 @@
 ---
-title: 'A helyszíni hálózat csatlakoztatása egy Azure-beli virtuális hálózathoz: Helyek közötti VPN: PowerShell | Microsoft Docs'
+title: 'A helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz: Helyek közötti VPN: PowerShell |} A Microsoft Docs'
 description: A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a PowerShell segítségével.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4df7353016f33e4525c27536ba862f0412ebf82f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1501ebe2df1ff6fa3505bf637896f6f3e7c827aa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953569"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427729"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
 
@@ -44,7 +44,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 Ha helyben kívánja telepíteni és használni a PowerShellt, telepítse az Azure Resource Manager PowerShell-parancsmagok legújabb verzióját. A PowerShell-parancsmagok gyakran frissülnek, és általában frissítenie kell a PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez. Ha nem frissíti a PowerShell-parancsmagokat, a megadott értékek sikertelenek lehetnek. 
 
-A jelenleg használt verzió azonosításához futtassa a Get-Module -ListAvailable AzureRM parancsot. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-azurerm-ps) szakaszt. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+A jelenleg használt verzió azonosításához futtassa a Get-Module -ListAvailable AzureRM parancsot. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/azurerm/install-azurerm-ps) szakaszt. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
 Ha helyileg futtatja a PowerShellt, akkor emellett a Connect-AzureRmAccount parancs futtatásával kapcsolatot kell létesítenie az Azure-ral.
 
 
@@ -57,19 +57,19 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 
 VnetName                = VNet1
 ResourceGroup           = TestRG1
-Location                = East US 
-AddressSpace            = 10.1.0.0/16 
-SubnetName              = Frontend 
-Subnet                  = 10.1.0.0/24 
+Location                = East US 
+AddressSpace            = 10.1.0.0/16 
+SubnetName              = Frontend 
+Subnet                  = 10.1.0.0/24 
 GatewaySubnet           = 10.1.255.0/27
 LocalNetworkGatewayName = Site1
-LNG Public IP           = <On-premises VPN device IP address> 
+LNG Public IP           = <On-premises VPN device IP address> 
 Local Address Prefixes  = 10.101.0.0/24, 10.101.1.0/24
 Gateway Name            = VNet1GW
 PublicIP                = VNet1GWPIP
-Gateway IP Config       = gwipconfig1 
-VPNType                 = RouteBased 
-GatewayType             = Vpn 
+Gateway IP Config       = gwipconfig1 
+VPNType                 = RouteBased 
+GatewayType             = Vpn 
 ConnectionName          = VNet1toSite1
 
 ```

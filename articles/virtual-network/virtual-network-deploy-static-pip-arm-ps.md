@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: b59157b0f17380dbe4386fbd9ac75776e22f749e
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f5ddc4a85148cee3e8c8b4d2bf1955f233ebdbc1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713975"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426522"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Hozzon létre egy virtuális gépet PowerShell-lel statikus nyilvános IP-cím
 
@@ -28,7 +28,7 @@ Létrehozhat egy virtuális gépet egy statikus nyilvános IP-címmel. Nyilváno
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Az alábbi lépéseket is elvégezheti, a helyi számítógépről, vagy az Azure Cloud Shell használatával. Szeretné használni a helyi számítógépen, ellenőrizze, hogy a [telepített Azure PowerShell](/powershell/azure/install-azurerm-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Válassza ki az Azure Cloud Shell használatához **Kipróbálom** bármely a következő parancs mező jobb felső sarkában található. A Cloud Shellt az Azure-bA jelentkezik.
+Az alábbi lépéseket is elvégezheti, a helyi számítógépről, vagy az Azure Cloud Shell használatával. Szeretné használni a helyi számítógépen, ellenőrizze, hogy a [telepített Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Válassza ki az Azure Cloud Shell használatához **Kipróbálom** bármely a következő parancs mező jobb felső sarkában található. A Cloud Shellt az Azure-bA jelentkezik.
 
 1. Ha a Cloud Shellt használja, ugorjon a 2. Nyisson meg egy parancssori munkamenetet, és jelentkezzen az Azure-bA `Connect-AzureRmAccount`.
 2. Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. A következő példában létrehozunk egy erőforráscsoportot az East US Azure-régióban:

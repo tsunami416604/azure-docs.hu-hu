@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: a936626301c8e1a866817264342cc2c84130e158
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025005"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425910"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -63,10 +63,10 @@ Ha részvételével konvergens regisztráció a nyilvános előzetes verzióban,
 
 Az alábbi lista ismerteti részletesen ismertetjük az Azure Portalon jelentés oszlopokhoz:
 
-* **Felhasználói**: kísérlet egy jelszó alaphelyzetbe állítása a regisztrációs művelet.
+* **Felhasználói**: Kísérlet a jelszó alaphelyzetbe állítása a regisztrációs művelet.
 * **Szerepkör**: A szerepkör a felhasználó a címtárban.
 * **Dátum és idő**: A dátum és idő a kísérlet.
-* **Adatok regisztrált**: az, hogy a felhasználó által megadott során jelszó-átállítási regisztrációk hitelesítési adatokat.
+* **Regisztrált adatok**: A hitelesítési adatokat, hogy a felhasználó által megadott során jelszó alaphelyzetbe állításának regisztrációja.
 
 ## <a name="description-of-the-report-values-in-the-azure-portal"></a>A jelentés értékeket az Azure Portalon leírása
 
@@ -74,101 +74,101 @@ A következő táblázat ismerteti a különböző értékek, amelyek beállíth
 
 | Oszlop | Engedélyezett értékeket és jelentésüket |
 | --- | --- |
-| Regisztrált adatok |**Másodlagos e-mail cím**: A felhasználó egy másodlagos vagy hitelesítési e-mail hitelesítéséhez használandó.<p><p>**Irodai telefon**: A felhasználó hitelesítésére az irodai telefont használható.<p>**Mobiltelefon**: A felhasználó mobiltelefonon vagy hitelesítéshez használt telefon hitelesítéséhez használandó.<p>**Biztonsági kérdések**: A felhasználó hitelesítésére a biztonsági kérdések használható.<p>**A korábbi metódusok bármely kombinációja például alternatív e-mail + mobile phone**: akkor fordul elő, amikor egy két-kezdő szabályzat van megadva, és bemutatja, milyen két módszerek használt felhasználói hitelesítés a jelszó-visszaállítási kérés. |
+| Regisztrált adatok |**Másodlagos e-mail cím**: A felhasználó egy másodlagos vagy hitelesítési e-mail hitelesítésére használja.<p><p>**Irodai telefon**: A felhasználó hitelesítésére az irodai telefont használja.<p>**Mobiltelefon**: A felhasználó mobiltelefonon vagy hitelesítéshez használt telefon hitelesítésére használja.<p>**Biztonsági kérdések**: A felhasználó hitelesítésére használt biztonsági kérdéseket.<p>**A korábbi metódusok bármely kombinációja például alternatív e-mail + mobile phone**: Amikor egy két-kezdő szabályzat van megadva, és bemutatja, milyen két módszerek használt felhasználói hitelesítés a jelszó-visszaállítási kérés. |
 
 ## <a name="self-service-password-management-activity-types"></a>Önkiszolgáló jelszókezelési tevékenységtípusok
 
 A következő típusú tevékenységek szerepelnek a **önkiszolgáló jelszókezelés** naplózási esemény kategóriája:
 
-* [Új jelszó önkiszolgáló kérésének blokkolása](#activity-type-blocked-from-self-service-password-reset): azt jelzi, hogy egy rendszergazda felhasználó megpróbálta jelszó alaphelyzetbe állítása, használjon egy adott kapu vagy telefonszám ellenőrzése a több mint teljes ötször (24 óra).
-* [Módosítsa a jelszót (önkiszolgáló)](#activity-type-change-password-self-service): azt jelzi, hogy egy felhasználó végre önkéntes, vagy a kényszerített (miatt lejárati) jelszó módosítása.
-* [Jelszó alaphelyzetbe állítása (a rendszergazda által)](#activity-type-reset-password-by-admin): azt jelzi, hogy a rendszergazda végzett jelszó-visszaállításra, az Azure Portalról egy felhasználó nevében.
-* [Jelszó alaphelyzetbe állítása (önkiszolgáló)](#activity-type-reset-password-self-service): azt jelzi, hogy a felhasználó sikeresen visszaállítva jelszavukat a a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com).
-* [Új jelszó önkiszolgáló kérésének tevékenységállapota](#activity-type-self-serve-password-reset-flow-activity-progress): azt jelzi, hogy minden egyes adott lépésre, a felhasználó végighalad, például a hitelesítési kapu, átadja egy meghatározott jelszót alaphelyzetbe állítani, mivel az része a jelszó alaphelyzetbe állítása folyamatban.
-* [Felhasználói Fiókzárolás feloldása (önkiszolgáló)](#activity-type-unlock-user-account-self-service): azt jelzi, hogy a felhasználó sikeresen feloldotta a saját Active Directory-fiókot anélkül, hogy a jelszó alaphelyzetbe állítása a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com) az aktív használatával Címtár szolgáltatás fiók zárolásának feloldása beállítások visszaállítása nélkül.
-* [Felhasználó regisztrált az önkiszolgáló jelszó-visszaállítás](#activity-type-user-registered-for-self-service-password-reset): azt jelzi, hogy egy felhasználó regisztrálva van-e a szükséges információkat is visszaállíthatják a jelszavukat a jelenleg megadott tenant jelszó kérésére vonatkozó szabályzat megfelelően.
+* [Új jelszó önkiszolgáló kérésének blokkolása](#activity-type-blocked-from-self-service-password-reset): Azt jelzi, hogy egy rendszergazda felhasználó megpróbálta jelszó alaphelyzetbe állítása, használjon egy adott kapu vagy telefonszám ellenőrzése a több mint teljes ötször (24 óra).
+* [Jelszó módosítása (önkiszolgáló)](#activity-type-change-password-self-service): Azt jelzi, hogy egy felhasználó végre önkéntes, vagy a kényszerített (miatt lejárati) jelszó módosítása.
+* [Jelszó alaphelyzetbe állítása (a rendszergazda által)](#activity-type-reset-password-by-admin): Azt jelzi, hogy a rendszergazda végzett jelszó-visszaállításra, az Azure Portalról egy felhasználó nevében.
+* [Jelszó alaphelyzetbe állítása (önkiszolgáló)](#activity-type-reset-password-self-service): Azt jelzi, hogy a felhasználó sikeresen visszaállítva jelszavukat a a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com).
+* [Új jelszó önkiszolgáló kérésének tevékenységállapota](#activity-type-self-serve-password-reset-flow-activity-progress): Azt jelzi, minden egyes felhasználó halad keresztül, adott lépésre, mint például a hitelesítési kapu, átadja egy meghatározott jelszót alaphelyzetbe állítani, mivel az része a jelszó alaphelyzetbe állítása folyamatban.
+* [Felhasználói Fiókzárolás feloldása (önkiszolgáló)](#activity-type-unlock-user-account-self-service): Azt jelzi, hogy a felhasználó sikeresen feloldotta a saját Active Directory-fiókot anélkül, hogy a jelszó alaphelyzetbe állítása a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com) funkcióval az Active Directory-fiók zárolásának feloldása beállítások visszaállítása nélkül.
+* [Felhasználó regisztrált az önkiszolgáló jelszó-visszaállítás](#activity-type-user-registered-for-self-service-password-reset): Azt jelzi, hogy egy felhasználó regisztrálva van-e a szükséges információkat is visszaállíthatják a jelszavukat a jelenleg megadott tenant jelszó kérésére vonatkozó szabályzat megfelelően.
 
-### <a name="activity-type-blocked-from-self-service-password-reset"></a>Tevékenység típusa: új jelszó önkiszolgáló kérésének blokkolása
+### <a name="activity-type-blocked-from-self-service-password-reset"></a>Tevékenység típusa: Új jelszó önkiszolgáló kérésének blokkolása
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy egy rendszergazda felhasználó megpróbálta jelszó alaphelyzetbe állítása, használjon egy adott kapu vagy telefonszám ellenőrzése a több mint teljes ötször (24 óra).
+* **A tevékenység leírása**: Azt jelzi, hogy egy rendszergazda felhasználó megpróbálta jelszó alaphelyzetbe állítása, használjon egy adott kapu vagy telefonszám ellenőrzése a több mint teljes ötször (24 óra).
 * **Tevékenység aktor**: A felhasználó, aki végrehajtani további szabályozta visszaállítási műveletről. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység cél**: A felhasználó, aki végrehajtani további szabályozta visszaállítási műveletről. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **A tevékenység állapota**:
-  * _Sikeres_: azt jelzi, hogy egy felhasználó hajt végre semmilyen további alaphelyzetbe állítása, minden további hitelesítési módszerek kísérlet vagy bármilyen további telefonszámok érvényesítése a következő 24 órában szabályozta.
-* **Tevékenység állapota a hiba oka**: nem alkalmazható.
+  * _Sikeres_: Azt jelzi, hogy egy felhasználó hajt végre semmilyen további alaphelyzetbe állítása, minden további hitelesítési módszerek kísérlet vagy bármilyen további telefonszámok érvényesítése a következő 24 órában szabályozta.
+* **Tevékenység állapota a hiba oka**: Nem alkalmazható.
 
-### <a name="activity-type-change-password-self-service"></a>Tevékenységtípus: jelszó módosítása (önkiszolgáló)
+### <a name="activity-type-change-password-self-service"></a>Tevékenység típusa: Jelszó módosítása (önkiszolgáló)
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy egy felhasználó végre önkéntes, vagy a kényszerített (miatt lejárati) jelszó módosítása.
+* **A tevékenység leírása**: Azt jelzi, hogy egy felhasználó végre önkéntes, vagy a kényszerített (miatt lejárati) jelszó módosítása.
 * **Tevékenység aktor**: A felhasználó módosította a jelszavát. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység cél**: A felhasználó módosította a jelszavát. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység állapota**:
-  * _Sikeres_: azt jelzi, hogy a felhasználó sikeresen módosította a jelszavát.
-  * _Hiba_: azt jelzi, hogy a felhasználó nem sikerült módosítani a jelszavát. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
+  * _Sikeres_: Azt jelzi, hogy a felhasználó sikeresen módosította a jelszavát.
+  * _Hiba_: Azt jelzi, hogy a felhasználó nem sikerült módosítani a jelszavát. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
 * **Tevékenység állapota a hiba oka**: 
-  * _FuzzyPolicyViolationInvalidPassword_: A felhasználó kiválasztott egy jelszót, amelyet a rendszer automatikusan le van tiltva, mert a Microsoft le van tiltva jelszó észlelési képességek található, hogy túl gyakori vagy különösen gyenge lehet.
+  * _FuzzyPolicyViolationInvalidPassword_: A felhasználó kiválasztott, egy jelszót, amelyet a rendszer automatikusan le van tiltva, mert a Microsoft le van tiltva jelszó észlelési képességek található, hogy túl gyakori vagy különösen gyenge lehet.
 
-### <a name="activity-type-reset-password-by-admin"></a>Tevékenységtípus: a jelszó alaphelyzetbe állítása (a rendszergazda által)
+### <a name="activity-type-reset-password-by-admin"></a>Tevékenység típusa: Jelszó átállítása (a rendszergazda által)
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy a rendszergazda végzett jelszó-visszaállításra, az Azure Portalról egy felhasználó nevében.
-* **Tevékenység aktor**: Rendszergazdák, a jelszó-visszaállítást egy másik felhasználó vagy rendszergazda nevében végrehajtani. Kell lennie, vagy egy globális rendszergazdai, jelszókezelő, felhasználói rendszergazdája vagy ügyfélszolgálati adminisztrátor.
+* **A tevékenység leírása**: Azt jelzi, hogy a rendszergazda végzett jelszó-visszaállításra, az Azure Portalról egy felhasználó nevében.
+* **Tevékenység aktor**: A rendszergazda, aki a jelszó-visszaállítást egy másik felhasználó vagy rendszergazda nevében végrehajtani. Kell lennie, vagy egy globális rendszergazdai, jelszókezelő, felhasználói rendszergazdája vagy ügyfélszolgálati adminisztrátor.
 * **Tevékenység cél**: A felhasználó, akinek jelszó átállítása. A felhasználó lehet a felhasználó vagy egy másik rendszergazda.
 * **Tevékenység állapota**:
-  * _Sikeres_: azt jelzi, hogy egy rendszergazda felhasználó új jelszavának kérése sikerült.
-  * _Hiba_: azt jelzi, hogy egy rendszergazda a jelszó módosítása sikertelen volt. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
+  * _Sikeres_: Azt jelzi, hogy egy rendszergazda felhasználó új jelszavának kérése sikerült.
+  * _Hiba_: Azt jelzi, hogy egy rendszergazda a jelszó módosítása sikertelen volt. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
 
-### <a name="activity-type-reset-password-self-service"></a>Tevékenységtípus: a jelszó alaphelyzetbe állítása (önkiszolgáló)
+### <a name="activity-type-reset-password-self-service"></a>Tevékenység típusa: Új jelszó kérése (önkiszolgáló)
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy a felhasználó sikeresen visszaállítva jelszavukat a a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com).
-* **Tevékenység aktor**: A felhasználó, aki az új jelszót kérnek. A felhasználó lehet a felhasználó vagy rendszergazda.
-* **Tevékenység cél**: A felhasználó, aki az új jelszót kérnek. A felhasználó lehet a felhasználó vagy rendszergazda.
+* **A tevékenység leírása**: Azt jelzi, hogy a felhasználó sikeresen visszaállítva jelszavukat a a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com).
+* **Tevékenység aktor**: A felhasználó új jelszót kérnek. A felhasználó lehet a felhasználó vagy rendszergazda.
+* **Tevékenység cél**: A felhasználó új jelszót kérnek. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység állapota**:
-  * _Sikeres_: azt jelzi, hogy a felhasználó sikeresen visszaállítva jelszavukat.
-  * _Hiba_: azt jelzi, hogy a felhasználó a saját jelszó alaphelyzetbe állítása sikertelen volt. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
+  * _Sikeres_: Azt jelzi, hogy a felhasználó sikeresen visszaállítva jelszavukat.
+  * _Hiba_: Azt jelzi, hogy a felhasználó a saját jelszó alaphelyzetbe állítása sikertelen volt. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
 * **Tevékenység állapota a hiba oka**: 
-  * _FuzzyPolicyViolationInvalidPassword_: A rendszergazda kiválasztott egy jelszót, amelyet a rendszer automatikusan le van tiltva, mert a Microsoft le van tiltva jelszó észlelési képességek található, hogy túl gyakori vagy különösen gyenge lehet.
+  * _FuzzyPolicyViolationInvalidPassword_: A rendszergazda egy jelszót, amelyet a rendszer automatikusan le van tiltva, mert a Microsoft le van tiltva jelszó észlelési képességek található, hogy túl gyakori vagy különösen gyenge lehet kiválasztani.
 
-### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Tevékenységtípus: önkiszolgáló szolgálja ki a jelszó alaphelyzetbe állítása tevékenységállapota
+### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Tevékenység típusa: Önkiszolgáló működésre jelszó kérésének tevékenységállapota
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy minden egyes adott lépésre, a felhasználó végighalad (mint például a hitelesítési kapu átadása egy adott jelszó alaphelyzetbe állítása), része a jelszó alaphelyzetbe állítása folyamatban.
-* **Tevékenység aktor**: a jelszó részét végző felhasználó flow alaphelyzetbe állítása. A felhasználó lehet a felhasználó vagy rendszergazda.
-* **Tevékenység cél**: a jelszó részét végző felhasználó flow alaphelyzetbe állítása. A felhasználó lehet a felhasználó vagy rendszergazda.
+* **A tevékenység leírása**: Azt jelzi, minden egyes adott lépésre, a felhasználó végighalad (mint például a hitelesítési kapu átadása egy adott jelszó alaphelyzetbe állítása), része a jelszó alaphelyzetbe állítási eljárás szerint.
+* **Tevékenység aktor**: A jelszó részét végző felhasználó flow alaphelyzetbe állítása. A felhasználó lehet a felhasználó vagy rendszergazda.
+* **Tevékenység cél**: A jelszó részét végző felhasználó flow alaphelyzetbe állítása. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység állapota**:
-  * _Sikeres_: azt jelzi, hogy a felhasználó sikeresen befejeződött-e egy adott lépésre, a jelszóvisszaállítási folyamatot.
-  * _Hiba_: azt jelzi, hogy egy adott lépésre a jelszó alaphelyzetbe állítása nem sikerült a folyamat. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
-* **Tevékenység állapota okokból**: lásd az alábbi táblázat a [minden a megengedett alaphelyzetbe állítása tevékenység állapota okok](#allowed-values-for-details-column).
+  * _Sikeres_: Azt jelzi, hogy a felhasználó sikeresen befejeződött-e egy adott lépésre, a jelszóvisszaállítási folyamatot.
+  * _Hiba_: Azt jelzi, hogy egy adott lépésre a jelszó alaphelyzetbe állítása nem sikerült a folyamat. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
+* **Tevékenység állapota okokból**:   Az alábbi táblázat a [minden a megengedett alaphelyzetbe állítása tevékenység állapota okok](#allowed-values-for-details-column).
 
-### <a name="activity-type-unlock-a-user-account-self-service"></a>Tevékenységtípus: zárolásának feloldása (önkiszolgáló) felhasználói fiók
+### <a name="activity-type-unlock-a-user-account-self-service"></a>Tevékenység típusa: Zárolás feloldása egy felhasználói fiókot (önkiszolgáló)
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy a felhasználó sikeresen feloldotta a saját Active Directory-fiókot anélkül, hogy a jelszó alaphelyzetbe állítása a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com) az Active Directory szolgáltatásával fiók zárolásának feloldása beállítások visszaállítása nélkül.
+* **A tevékenység leírása**: Azt jelzi, hogy a felhasználó sikeresen feloldotta a saját Active Directory-fiókot anélkül, hogy a jelszó alaphelyzetbe állítása a [az Azure AD jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com) funkcióval az Active Directory-fiók zárolásának feloldása beállítások visszaállítása nélkül.
 * **Tevékenység aktor**: A felhasználó, aki a fiók zárolását új jelszó nélkül. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység cél**: A felhasználó, aki a fiók zárolását új jelszó nélkül. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység állapota engedélyezett**:
-  * _Sikeres_: azt jelzi, hogy a felhasználó sikeresen feloldotta a saját fiókjukat.
-  * _Hiba_: azt jelzi, hogy a felhasználó saját fiók feloldása sikertelen volt. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
+  * _Sikeres_: Azt jelzi, hogy a felhasználó sikeresen feloldotta a saját fiókjukat.
+  * _Hiba_: Azt jelzi, hogy a felhasználó saját fiók feloldása sikertelen volt. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát.
 
-### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Tevékenységtípus: felhasználó regisztrált az önkiszolgáló jelszó-visszaállítás
+### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Tevékenység típusa: A felhasználó új jelszó önkiszolgáló kérésére regisztrált
 
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
-* **A tevékenység leírása**: azt jelzi, hogy egy felhasználó regisztrálva van-e a szükséges információkat is visszaállíthatják a jelszavukat a jelenleg megadott tenant jelszó kérésére vonatkozó szabályzat megfelelően. 
-* **Tevékenység aktor**: új jelszó kérésére regisztráló felhasználó. A felhasználó lehet a felhasználó vagy rendszergazda.
-* **Tevékenység cél**: új jelszó kérésére regisztráló felhasználó. A felhasználó lehet a felhasználó vagy rendszergazda.
+* **A tevékenység leírása**: Azt jelzi, hogy egy felhasználó regisztrálva van-e a szükséges információkat is visszaállíthatják a jelszavukat a jelenleg megadott tenant jelszó kérésére vonatkozó szabályzat megfelelően. 
+* **Tevékenység aktor**: Új jelszó kérésére regisztráló felhasználó. A felhasználó lehet a felhasználó vagy rendszergazda.
+* **Tevékenység cél**: Új jelszó kérésére regisztráló felhasználó. A felhasználó lehet a felhasználó vagy rendszergazda.
 * **Tevékenység állapota engedélyezett**:
-  * _Sikeres_: azt jelzi, hogy egy felhasználó sikeresen regisztrálva a jelszó-visszaállítást a jelenlegi szabályzatának megfelelően. 
-  * _Hiba_: azt jelzi, hogy a felhasználó nem sikerült regisztrálni a jelszó-visszaállításhoz. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát. 
+  * _Sikeres_: Azt jelzi, hogy egy felhasználó sikeresen regisztrálva a jelszó-visszaállítást a jelenlegi szabályzatának megfelelően. 
+  * _Hiba_: Azt jelzi, hogy a felhasználó nem sikerült regisztrálni a jelszó-visszaállításhoz. Kiválaszthatja, hogy a sor megtekintéséhez a **tevékenység állapota OK** kategória tudhat meg többet a hibát. 
 
      >[!NOTE]
      >Hiba a felhasználó nem tudja saját jelszó visszaállítása nem jelenti azt. Ez azt jelenti, hogy azok a regisztrációs folyamat nem fejeződött be. Ha a fiókjuk helyességéről, például egy telefonszám, amely nincs érvényesítve, annak ellenére, hogy nem ellenőrizte, hogy ez a telefonszám nem ellenőrzött adatokat, azok továbbra is használhatja azt visszaállíthatják a jelszavukat. További információkért lásd: [mi történik, ha egy felhasználó regisztrál?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers).

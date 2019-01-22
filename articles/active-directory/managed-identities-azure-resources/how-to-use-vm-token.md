@@ -4,7 +4,7 @@ description: Részletes útmutatás és példák a felügyelt identitások az Az
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 10cc8007c4f54808b5d7eb41ad2caa008b5c7107
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079000"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422407"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése 
 
@@ -377,7 +377,7 @@ Ez a szakasz a lehetséges hibaválaszok dokumentumok. A "200 OK" állapota sike
 | 401-es nem engedélyezett | unknown_source | Ismeretlen forrásból származó  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérés URI formátuma helytelen. A `scheme:host/resource-path` részét kell megadni, `http://localhost:50342/oauth2/token`. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) példaként.|
 |           | invalid_request | A kérelem hiányzik egy kötelező paraméter, tartalmaz egy érvénytelen paraméterérték, egy paraméter egynél többször tartalmazza vagy egyéb helytelen formátumú. |  |
 |           | unauthorized_client | Az ügyfél nem jogosult ezzel a módszerrel hozzáférési jogkivonat kérése. | Oka egy kérelmet, amely nem a helyi visszacsatolási hívja a bővítményt, vagy egy virtuális gépen, amely nem rendelkezik felügyelt identitások az Azure-erőforrások megfelelően konfigurálva. Lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége. |
-|           | ACCESS_DENIED | Az erőforrás tulajdonosa vagy az engedélyezési kiszolgáló elutasította a kérést. |  |
+|           | access_denied | Az erőforrás tulajdonosa vagy az engedélyezési kiszolgáló elutasította a kérést. |  |
 |           | unsupported_response_type | Az engedélyezési kiszolgáló nem támogatja ezt a módszert használja hozzáférési jogkivonat beszerzése. |  |
 |           | invalid_scope | A kért hatóköre érvénytelen, ismeretlen vagy hibás formátumú. |  |
 | 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a jogkivonatot az Active Directoryból. További részletekért lásd: a naplók  *\<fájl elérési útja\>* | Győződjön meg arról, hogy a felügyelt identitások az Azure-erőforrások a virtuális gépen engedélyezve van-e. Lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.<br><br>Emellett győződjön meg arról, hogy a HTTP GET kérés URI azonosító formátuma megfelelő, különösen az erőforrás-URI-t a lekérdezési karakterláncban megadott. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) egy vonatkozó példáért vagy [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](services-support-msi.md) szolgáltatások és a megfelelő erőforrás-azonosítók listáját.

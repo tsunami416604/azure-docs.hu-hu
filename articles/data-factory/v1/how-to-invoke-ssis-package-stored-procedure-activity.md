@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: c7731de810dab8b252294d694ace5df3f5d0a185
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275581"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427559"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy tárolt eljárási tevékenység használatával az Azure Data Factory SSIS-csomagok meghívásához
 Ez a cikk bemutatja, hogyan kell elindítani az SSIS-csomag az Azure Data Factory-folyamatot egy tárolt eljárási tevékenység használatával. 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan kell elindítani az SSIS-csomag az Azure Data Factor
 Ebben a cikkben található útmutatások követéséhez használja az Azure SQL database, amelyen az SSIS-katalógus. Egy Azure SQL Database felügyelt példánya is használhatja.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
-Hozzon létre egy Azure-SSIS integrációs modult, ha még nincs fiókja, a részletes utasításokat a következő a [oktatóanyag: üzembe SSIS-csomagok](../tutorial-create-azure-ssis-runtime-portal.md). Az Azure-SSIS integrációs modul létrehozása a Data Factory 1. verzió nem használható. 
+Hozzon létre egy Azure-SSIS integrációs modult, ha még nincs fiókja, a részletes utasításokat a következő a [oktatóanyag: SSIS csomagok üzembe helyezése](../tutorial-create-azure-ssis-runtime-portal.md). Az Azure-SSIS integrációs modul létrehozása a Data Factory 1. verzió nem használható. 
 
 ## <a name="azure-portal"></a>Azure Portal
 Ebben a szakaszban, az Azure portal használatával hozzon létre egy Data Factory-folyamatot egy tárolt eljárási tevékenység, amely SSIS-csomag hív meg.
@@ -62,7 +62,7 @@ Első lépés az adat-előállító létrehozása az Azure portal használatáva
 5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
-8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -115,7 +115,7 @@ A kimeneti adatkészlet egy helyőrző adatkészletet, amely a folyamat ütemez�
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tárolt eljárási tevékenység rendelkező folyamat létrehozása 
 Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység a. A tevékenység futtatása az SSIS-csomag sp_executesql tárolt eljárást hív meg. 
 
-1. A bal oldali ablaktáblán kattintson a **... Továbbiak**, majd az **Új adatcsatorna elemre.
+1. A bal oldali ablaktáblán kattintson a **... Továbbiak**, majd az **Új adatcsatorna** elemre.
 2. Másolja a következő JSON-kódrészletre a JSON-szerkesztőbe: 
 
     > [!IMPORTANT]
@@ -165,7 +165,7 @@ Folyamatok figyelésével kapcsolatos további információkért lásd: [figyel�
 ## <a name="azure-powershell"></a>Azure PowerShell
 Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy tárolt eljárási tevékenység, amely SSIS-csomag hív meg.
 
-Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
+Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Egy tárolt eljárási tevékenység, a data factory-folyamatot hoz létre. A tárolt eljárási tevékenység végrehajt egy tárolt eljárást az SSISDB adatbázis futtatásához az SSIS-csomag.

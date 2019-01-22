@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 6d2ed7632223b5ded5c0306533d807e9b57f9d76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078524"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426182"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 

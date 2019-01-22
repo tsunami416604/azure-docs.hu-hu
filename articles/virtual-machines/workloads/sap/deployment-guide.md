@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 1332a06cf955be3fe2a77194f455c9315993998c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dc44394bda1208eb2dab0a02dd73152e51788d4c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159910"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424897"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 
@@ -120,8 +120,8 @@ ms.locfileid: "54159910"
 [deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (Egy a helyszíni tartomány – csak a Windows virtuális gépek csatlakoztatása)
 [deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux)
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Letöltése, telepítése és az Azure Virtuálisgép-ügynök engedélyezése)
-[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell-lel)
-[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Az Azure CLI)
+[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
+[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
 [deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Az SAP az Azure fejlett figyelési bővítmény konfigurálása)
 [deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Az Azure SAP Enhanced Monitoring készültség-ellenőrzés)
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Az Azure figyelési infrastruktúra állapotának ellenőrzése)
@@ -192,7 +192,7 @@ ms.locfileid: "54159910"
 [planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (Frissítési tartományok)
 [planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Az Azure rendelkezésre állási csoportok)
 [planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Virtuális gépek fogalma a Microsoft Azure)
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Az Azure Premium Storage)
+[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
 [planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Virtuális gép áthelyezése a helyszínről az Azure-ba nem általánosított lemezzel)
 [planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (Egy adott ügyfél-rendszerképet a virtuális gép üzembe helyezése)
 [planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Felkészülés a virtuális gép áthelyezése a helyszínről az Azure-ba nem általánosított lemezzel)
@@ -206,7 +206,7 @@ ms.locfileid: "54159910"
 [planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (SAP netweaver bemutató/képzési forgatókönyv egyetlen virtuális gép)
 [planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Az SAP-példányok csak felhőalapú üzembe helyezés fogalmak)
 [planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure Monitorozási megoldás az SAP)
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Az Azure Premium Storage)
+[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
 [planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (A felügyelt lemezek)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -234,7 +234,7 @@ ms.locfileid: "54159910"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (A Microsoft Azure-hálózatkezelés)
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Storage: A Microsoft Azure Storage és az adatlemezek)
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
@@ -492,7 +492,7 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
     Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. További információ a tárolási típusokat az alábbi forrásokban talál:
       * [SAP DBMS-példány használatát az Azure prémium szintű SSD-tárolóval][2367194]
       * [A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
+      * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
   * **Rendszergazdai felhasználónév** és **rendszergazdai jelszó**: Felhasználónév és jelszó.
     Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
@@ -628,7 +628,7 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
     Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. Tárolási típusaival kapcsolatos további információkért lásd a következőket:
       * [SAP DBMS-példány használatát az Azure prémium szintű SSD-tárolóval][2367194]
       * [A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
+      * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
   * **Felhasználói lemezkép VHD URI-ja** (csak a nem felügyelt lemez kép sablon esetében): Az URI-ját a saját operációs rendszerkép VHD-t, például a https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
   * **Felhasználói lemezkép tárfiókja** (csak a nem felügyelt lemez kép sablon esetében): A saját operációsrendszer-lemezkép tárolására, például a tárfiók nevére &lt;accountname > a https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
@@ -720,7 +720,7 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
     Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. Tárolási típusaival kapcsolatos további információkért lásd a következőket:
       * [SAP DBMS-példány használatát az Azure prémium szintű SSD-tárolóval][2367194]
       * [A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
+      * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
   * **Az operációs rendszer lemez VHD URI** (csak a sablon nem felügyelt lemez): A saját operációsrendszer-lemezről, például a https:// URI&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
   * **Felügyelt lemez azonosítója az operációs rendszer lemezén** (csak felügyelt lemez sablon): A felügyelt lemez operációsrendszer-lemezen azonosítója /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
@@ -1036,7 +1036,7 @@ Ez az ellenőrzés gondoskodik arról, hogy a metrikák jelennek meg az SAP alka
 
 1.  Jelentkezzen be az Azure virtuális gépen (egy rendszergazdai fiók használata nem szükséges).
 1.  Nyisson meg egy parancssori ablakot.
-1.  A parancssorban módosítsa a könyvtárat, az Azure Enhanced Monitoring bővítményt az SAP telepítési mappájában: C:\\csomagok\\beépülő modulok\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verzió >\\drop
+1.  A parancssorban módosítsa a könyvtárat, az Azure Enhanced Monitoring bővítményt az SAP telepítési mappájában: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
   A *verzió* elérési útját a figyelés típusú kiterjesztés változhat. Ha több verziója a monitorozási bővítményt az telepítési mappájában, mappák, ellenőrizze a AzureEnhancedMonitoring Windows-szolgáltatás konfigurációját, és ezután váltson arra a mappára jelzett *végrehajtható fájl elérési útja* .
 

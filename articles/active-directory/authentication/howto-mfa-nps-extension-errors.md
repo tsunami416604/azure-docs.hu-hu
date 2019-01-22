@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 861dfacb556b646a288ce7cf7c749cec858f8bd5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634226"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432659"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása
 
@@ -41,14 +41,14 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 | Hibakód | Hibaüzenet | Hibaelhárítási lépések |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: userObjectSid-címkeresés sikertelen volt | Győződjön meg arról, hogy a felhasználó létezik-e a helyszíni Active Directory-példányában. Erdők közötti bizalmi kapcsolatok, használatakor [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) további segítségért. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: Nem sikerült keresési alternatív LoginId | Győződjön meg arról, hogy LDAP_ALTERNATE_LOGINID_ATTRIBUTE értékre van állítva egy [érvényes active directory-attribútumot](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG True értékre van állítva, vagy LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy konfigurálta a globális katalógus és, hogy a AlternateLoginId attribútumot ad hozzá. <br><br> LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy helyesen szerepel-e az értéket. Ha egynél több erdő neve, a neveket pontosvesszővel elválasztva, szóközt nem kell elválasztva. <br><br> Ha ezek a lépések nem oldják meg a problémát, [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) további segítséget itt találhat. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Alternatív LoginId érték üres | Győződjön meg arról, hogy a felhasználó a AlternateLoginId attribútum van konfigurálva. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: Nem sikerült másik LoginId keresése | Győződjön meg arról, hogy LDAP_ALTERNATE_LOGINID_ATTRIBUTE értékre van állítva egy [érvényes active directory-attribútumot](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG True értékre van állítva, vagy LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy konfigurálta a globális katalógus és, hogy a AlternateLoginId attribútumot ad hozzá. <br><br> LDAP_LOOKUP_FORESTS egy nem üres érték van beállítva, győződjön meg arról, hogy helyesen szerepel-e az értéket. Ha egynél több erdő neve, a neveket pontosvesszővel elválasztva, szóközt nem kell elválasztva. <br><br> Ha ezek a lépések nem oldják meg a problémát, [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) további segítséget itt találhat. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: Alternatív LoginId érték üres | Győződjön meg arról, hogy a felhasználó a AlternateLoginId attribútum van konfigurálva. |
 
 ## <a name="errors-your-users-may-encounter"></a>A felhasználók előfordulhatnak hibák
 
 | Hibakód | Hibaüzenet | Hibaelhárítási lépések |
 | ---------- | ------------- | --------------------- |
-| **Hozzáférés megtagadva** | Hívó bérlő nem rendelkezik engedéllyel ehhez a felhasználóhoz hitelesítési | Ellenőrizze, hogy a bérlői és az egyszerű felhasználónév (UPN), a tartományban-e ugyanaz. Például győződjön meg arról, hogy user@contoso.com próbál a Contoso bérlő hitelesítéséhez. Az egyszerű felhasználónév a bérlő az Azure-ban érvényes felhasználót jelöl. |
+| **AccessDenied** | Hívó bérlő nem rendelkezik engedéllyel ehhez a felhasználóhoz hitelesítési | Ellenőrizze, hogy a bérlői és az egyszerű felhasználónév (UPN), a tartományban-e ugyanaz. Például győződjön meg arról, hogy user@contoso.com próbál a Contoso bérlő hitelesítéséhez. Az egyszerű felhasználónév a bérlő az Azure-ban érvényes felhasználót jelöl. |
 | **AuthenticationMethodNotConfigured** | A megadott hitelesítési módszer esetén a felhasználónak nem volt beállítva | A felhasználó hozzáadásához, vagy ellenőrizze a hitelesítési módszereket található utasítások szerint [felügyelheti a kétlépéses ellenőrzés](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
 | **AuthenticationMethodNotSupported** | Nem támogatott a megadott hitelesítési módszert. | A hibát tartalmazó naplók gyűjtése és [forduljon az ügyfélszolgálathoz](#contact-microsoft-support). Amikor a, forduljon az ügyfélszolgálathoz, adja meg a felhasználónevet és a másodlagos ellenőrzési módszert a hibát kiváltó. |
 | **BecAccessDenied** | MSODS Bec hívása adott vissza a hozzáférés megtagadva, valószínűleg a felhasználónév nincs definiálva a bérlőhöz | A felhasználó szerepel a helyszíni Active Directory, de nincs szinkronizálva az Azure AD által AD Connect. Vagy a felhasználó nem található a bérlő számára. Adja hozzá a felhasználót az Azure ad-hez, és azokat a hitelesítési módszereket található utasítások szerint hozzáadása [felügyelheti a kétlépéses ellenőrzés](../user-help/multi-factor-authentication-end-user-manage-settings.md). |

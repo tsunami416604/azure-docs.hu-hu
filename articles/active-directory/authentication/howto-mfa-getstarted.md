@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1a5a5dc04f9ac663fe2e29fd81df5201435c1bc1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167528"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430162"
 ---
-# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure multi-factor Authentication szolgáltatás üzembe helyezése
+# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure Multi-Factor Authentication üzembe helyezése
 
 Ismerkedés az Azure multi-factor Authentication (az Azure MFA) egy olyan egyszerű folyamat.
 
@@ -74,14 +74,14 @@ Mielőtt engedélyezné az Azure multi-factor Authentication szolgáltatás, a s
 1. Adjon meg egy kifejező nevet a szabályzathoz.
 1. A **felhasználók és csoportok**:
    * Az a **Belefoglalás** lapon jelölje be a **minden felhasználó** választógomb
-   * AJÁNLOTT: A a **kizárása** lapra, jelölje be a **felhasználók és csoportok** , és válasszon egy csoportot, amikor a felhasználók nem rendelkeznek hozzáféréssel a hitelesítési módszereket kizárások használandó.
+   * AJÁNLOTT: Az a **kizárása** lapra, jelölje be a **felhasználók és csoportok** , és válasszon egy csoportot, amikor a felhasználók nem rendelkeznek hozzáféréssel a hitelesítési módszereket kizárások használandó.
    * Kattintson a **Done** (Kész) gombra.
 1. A **Felhőalkalmazások**, jelölje be a **az összes felhőalapú alkalmazások** választógombot.
-   * Választható: A a **kizárása** adja meg, hogy a szervezetnek nincs szüksége MFA felhőalapú alkalmazásokat.
+   * IGÉNY SZERINT: Az a **kizárása** adja meg, hogy a szervezetnek nincs szüksége MFA felhőalapú alkalmazásokat.
    * Kattintson a **Done** (Kész) gombra.
 1. A **feltételek** szakaszban:
-   * Igény szerint: Ha engedélyezte az Azure Identity Protection, ha szeretné, bejelentkezési kockázat kiértékelése a szabályzat részeként.
-   * Szükség esetén: Ha megbízható helyekre konfigurált és nevesített helyek, megadhatja vagy kizárja a ezeken a helyeken a szabályzat alól.
+   * IGÉNY SZERINT: Ha engedélyezte az Azure Identity Protection, válassza ki a szabályzat részeként értékeli a bejelentkezési kockázat.
+   * IGÉNY SZERINT: Ha már konfigurálta a megbízható helyek vagy nevesített helyek, megadhat vagy kizárja a ezeken a helyeken a szabályzat alól.
 1. A **Grant**, győződjön meg arról, a **hozzáférést** választógomb van kiválasztva.
     * Jelölje be a **többtényezős hitelesítés megkövetelése**.
     * Kattintson a **Kiválasztás** gombra.

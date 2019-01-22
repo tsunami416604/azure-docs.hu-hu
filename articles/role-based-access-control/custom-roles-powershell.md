@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c8e5f34bb6b38a3f187d86a1ebc0c7019c7f1046
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 6020aa0a770075526d8d07c94b847b5933a26c2a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437018"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428120"
 ---
 # <a name="create-custom-roles-using-azure-powershell"></a>Azure PowerShell-lel egyéni szerepkörök létrehozása
 
-Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet, egyéni szerepkörök az Azure PowerShell használatával.
+Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet, egyéni szerepkörök az Azure PowerShell használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Egyéni szerepkörök létrehozása, az alábbiak szükségesek:
 
-- Egyéni szerepkörök, például a létrehozásához szükséges engedélyek [tulajdonosa](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
-- [Az Azure PowerShell](/powershell/azure/install-azurerm-ps) helyben telepítve
+- Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
+- Helyileg telepített [Azure PowerShellre](/powershell/azure/azurerm/install-azurerm-ps)
 
-## <a name="list-custom-roles"></a>Egyéni szerepkörök listája
+## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
 A szerepkörök, amelyek rendelhető hozzá hatókör listájában, használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) parancsot. Az alábbi példa felsorolja a hozzárendelés a kijelölt előfizetésben elérhető összes szerepkört.
 
@@ -166,7 +166,7 @@ Adja hozzá a szerepkört az előfizetéseket, futtassa a következő PowerShell
 New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
-## <a name="update-a-custom-role"></a>Egyéni szerepkör frissítése
+## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
 
 Egyéni szerepkörök létrehozása hasonló, módosíthatja egy meglévő egyéni szerepkör segítségével a `PSRoleDefinition` objektum vagy egy JSON-sablon.
 
@@ -263,7 +263,7 @@ A meglévő szerepkör-frissítéséhez futtassa a következő PowerShell-paranc
 Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
-## <a name="delete-a-custom-role"></a>Egyéni szerepkör törlése
+## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
 Egyéni szerepkör törléséhez használja a [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) parancsot.
 

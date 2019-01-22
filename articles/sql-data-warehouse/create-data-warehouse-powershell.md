@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Hozzon létre egy Azure SQL Data Warehouse – Azure PowerShell-lel |} A Microsoft Docs'
+title: 'Gyors útmutató: Hozzon létre egy Azure SQL Data Warehouse – Azure PowerShell-lel |} A Microsoft Docs'
 description: Gyorsan létrehozhat egy SQL Database logikai kiszolgálót, kiszolgálószintű tűzfalszabály és data warehouse-bA az Azure PowerShell használatával.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,20 +10,20 @@ ms.component: manage
 ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 60bd7cc2084ce64477cf89a5fd28d9a505fbfbfb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 22ccc11d1eb74fd868fd740f02311baeb5ac5987
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852639"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433611"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rövid útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
 
 Gyorsan létrehozhat egy Azure SQL data warehouse, Azure PowerShell-lel.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szükséges. A jelenleg rendelkezésére álló verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
+Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szükséges. A jelenleg rendelkezésére álló verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. 
 
 
 > [!NOTE]
@@ -122,16 +122,16 @@ New-AzureRmSqlDatabase `
 
 A szükséges paraméterek a következők:
 
-* **RequestedServiceObjectiveName**: mennyisége [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) , a kért. Ez a mennyiség növelése növeli a számítási költségeket. A támogatott értékek listáját lásd: [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
-* **DatabaseName**: az éppen létrehozandó SQL Data Warehouse neve.
-* **Kiszolgálónév**: a kiszolgáló, a létrehozásához használt nevét.
-* **ResourceGroupName**: erőforráscsoportot használ. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
-* **Edition**: Egy SQL Data Warehouse létrehozásához a „DataWarehouse” értéket kell megadni.
+* **RequestedServiceObjectiveName**: Mennyisége [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) , a kért. Ez a mennyiség növelése növeli a számítási költségeket. A támogatott értékek listáját lásd: [memória- és egyidejűségi korlátok](memory-and-concurrency-limits.md).
+* **DatabaseName**: A létrehozandó SQL Data Warehouse neve.
+* **Kiszolgálónév**: A létrehozásához használt kiszolgáló neve.
+* **ResourceGroupName**: Az erőforráscsoportot használja. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
+* **Kiadás**: "Datawarehouse értéket" kell lennie az SQL Data Warehouse létrehozása.
 
 A választható paraméterek a következők:
 
-- **CollationName**: Ha nincs megadva, az alapértelmezett rendezés: SQL_Latin1_General_CP1_CI_AS. Rendezés nem módosítható az adatbázisok.
-- **MaxSizeBytes**: Alapértelmezés szerint az adatbázisok maximális mérete 10 GB.
+- **CollationName**: Ha nincs megadva alapértelmezett rendezése az sql_latin1_general_cp1_ci_as rendezést alkalmazza. Rendezés nem módosítható az adatbázisok.
+- **MaxSizeBytes**: Egy adatbázis alapértelmezett maximális mérete 10 GB-os.
 
 A paraméterbeállításokkal további információkért lásd: [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
 

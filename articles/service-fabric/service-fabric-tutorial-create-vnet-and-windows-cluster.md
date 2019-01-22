@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a720bb906192731b8b636939e22b13a8e52bbe76
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 76281113c0d1e7b3943e137accf7aa93c2863fe6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632891"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435379"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 
@@ -51,7 +51,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Service Fabric SDK-t és PowerShell-modult](service-fabric-get-started.md).
-* Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 
 Az alábbi eljárások egy ötcsomópontos Service Fabric-fürtöt hoznak létre. A Service Fabric-fürtök Azure-ban történő futtatásával járó költségek kiszámításához használja az [Azure-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
 
@@ -92,24 +92,24 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban egy Windows-fürt az aláb
 
 * egyetlen csomóponttípus;
 * öt csomópont az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható);
-* operációs rendszer: Windows Server 2016 Datacenter tárolókkal (a sablon paramétereiben konfigurálható);
+* Operációs rendszer: A Windows Server 2016 Datacenter tárolókkal (a sablon paramétereiben konfigurálható)
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [fordított proxy](service-fabric-reverseproxy.md);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
 * bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
 * ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
-* ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható);
-* HTTP-átjáró végpontja: 19080 (a sablon paramétereiben konfigurálható).
+* ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható)
+* HTTP-átjáró végpontja: 19080-as (a sablon paramétereiben konfigurálható)
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 A **Microsoft.Network/loadBalancers** erőforrásban a rendszer egy terheléselosztót konfigurál, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
 
-* ügyfélkapcsolati végpont: 19000;
-* HTTP-átjáró végpontja: 19080;
-* alkalmazásport: 80;
-* alkalmazásport: 443;
-* Service Fabric fordított proxyja: 19081.
+* ügyfélkapcsolati végpont: 19000
+* HTTP-átjáró végpontja: 19080
+* alkalmazásport: 80
+* alkalmazásport: 443
+* A Service Fabric fordított proxy: 19081
 
 Ha további alkalmazásportokra van szükség, akkor módosítania kell a **Microsoft.Network/loadBalancers** és a **Microsoft.Network/networkSecurityGroups** erőforrást a forgalom beengedésére.
 
@@ -117,17 +117,17 @@ Ha további alkalmazásportokra van szükség, akkor módosítania kell a **Micr
 
 A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
-* virtuális hálózat címtere: 172.16.0.0/20,
-* Service Fabric-alhálózat címtere: 172.16.2.0/23.
+* virtuális hálózat címtere: 172.16.0.0/20
+* A Service Fabric-alhálózat címtere: 172.16.2.0/23
 
 Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Network/networkSecurityGroups** erőforrásban. A portok értékét a sablon változóinak módosításával módosíthatja.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB : 445
+* SMB: 445
 * Csomópontok közötti kommunikáció – 1025, 1026, 1027,
 * rövid élettartamú porttartomány – 49152–65534 (legalább 256 port szükséges),
-* alkalmazások által használható portok: 80 és 443,
+* Alkalmazások által használható portok: 80 és 443
 * alkalmazásportok tartománya – 49152–65534 (a szolgáltatások közötti kommunikációra szolgál, és nincs megnyitva a terheléselosztóban),
 * összes többi port letiltása.
 

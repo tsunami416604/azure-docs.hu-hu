@@ -1,5 +1,5 @@
 ---
-title: 'Globális elérhetőség – az ExpressRoute konfigurálása: Azure |} A Microsoft Docs'
+title: 'Globális elérhetőség – az ExpressRoute konfigurálása: Azure | Microsoft Docs'
 description: Ez a cikk az ExpressRoute-Kapcsolatcsoportok privát hálózati a helyszíni hálózat között, és engedélyezze a globális elérhetőségű teszik hivatkozásra.
 services: expressroute
 author: mialdrid
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383272"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431677"
 ---
 # <a name="configure-expressroute-global-reach-preview"></a>Konfigurálja az ExpressRoute globális elérhetőségű (előzetes verzió)
 Ez a cikk segít az ExpressRoute globális elérhetőségű PowerShell-lel konfigurálja. További információkért lásd: [ExpressRouteRoute globális elérhetőségű](expressroute-global-reach.md).
@@ -26,7 +26,7 @@ Ez a cikk segít az ExpressRoute globális elérhetőségű PowerShell-lel konfi
 
 Mielőtt elkezdené a konfigurációt, ellenőrizze az alábbiakat:
 
-* Hogy telepítette az Azure PowerShell legújabb verzióját. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps).
+* Hogy telepítette az Azure PowerShell legújabb verzióját. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/install-azurerm-ps).
 * Az ExpressRoute kapcsolatcsoport-kiépítési megértette [munkafolyamatok](expressroute-workflows.md).
 * Hogy az ExpressRoute-Kapcsolatcsoportok kiépített állapotban van.
 * Az ExpressRoute-Kapcsolatcsoportok, hogy az Azure privát társviszony-létesítés van konfigurálva.  

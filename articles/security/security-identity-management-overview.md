@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d1933e58cae522b03ced29183440e226d47dfdf9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255881"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435056"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure identity management biztonsági áttekintése
 
@@ -93,7 +93,7 @@ Az RBAC az Azure Resource Managerrel, amely az Azure-erőforrások, részletes h
 További információ:
 
 * [Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?](../role-based-access-control/overview.md)
-* [Az Azure-erőforrások beépített szerepkörök](../role-based-access-control/built-in-roles.md)
+* [Beépített szerepkörök Azure-erőforrásokhoz](../role-based-access-control/built-in-roles.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>A biztonság monitorozása, értesítések és gépi tanuláson alapuló jelentésekkel
 
@@ -101,11 +101,11 @@ A biztonság monitorozása, értesítések és gépi tanuláson alapuló jelent�
 
 Az Azure Portalon jelentések a következő kategóriákba sorolhatók:
 
-* **Anomáliadetektálási jelentések**: bejelentkezési eseményeket találtunk rendellenes kell tartalmaznia. Célunk, győződjön meg arról, hogy tisztában az ilyen tevékenység, és lehetővé teszi a gyanús esemény meghatározásához.
-* **Integrált alkalmazás jelentések**: hogyan használja a szervezet a felhőalapú alkalmazások betekintést nyújtson. Az Azure AD kínál több ezer felhőalapú alkalmazások integrációja.
-* **Hibajelentések**: a külső alkalmazások fiókok üzembe helyezésekor jelentkező hibákat jelölnek.
-* **Felhasználó-specifikus jelentések**: eszköz egy adott felhasználó bejelentkezési tevékenységek adatainak megjelenítéséhez.
-* **A Tevékenységnaplók**: az elmúlt 24 órában, legutóbbi 7 nap, vagy elmúlt 30 napban, és a tevékenység módosításainak és jelszó alaphelyzetbe állítása és regisztrációs tevékenység belül az összes naplózott esemény rekordot tartalmaz.
+* **Anomáliadetektálási jelentések**: Bejelentkezési események találtunk rendellenes kell tartalmaznia. Célunk, győződjön meg arról, hogy tisztában az ilyen tevékenység, és lehetővé teszi a gyanús esemény meghatározásához.
+* **Integrált alkalmazás jelentések**: Hogyan használja a szervezet a felhőalapú alkalmazások betekintést nyújtson. Az Azure AD kínál több ezer felhőalapú alkalmazások integrációja.
+* **Hibajelentések**: Adja meg a külső alkalmazások fiókok üzembe helyezésekor jelentkező hibák.
+* **Felhasználó-specifikus jelentések**: Megjelenítendő eszköz bejelentkezési tevékenységek adatok egy adott felhasználó.
+* **A Tevékenységnaplók**: Az elmúlt 24 órában, legutóbbi 7 nap, vagy elmúlt 30 napban, és a tevékenység módosításainak és jelszó alaphelyzetbe állítása és regisztrációs tevékenység belül az összes naplózott esemény rekordot tartalmaz.
 
 További információ:
 
@@ -124,7 +124,7 @@ Ha az Azure AD B2C-t használja, a felhasználók regisztrálhatnak az alkalmaz�
 További információ:
 
 * [Mi az az Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Az Azure Active Directory B2C előzetes verziója: Jelentkezzen be, és jelentkezzen be a fogyasztói alkalmazásokba](../active-directory-b2c/active-directory-b2c-overview.md)
+* [Az Azure Active Directory B2C előzetes verzió: Regisztráció és az alkalmazások felhasználói bejelentkezés](../active-directory-b2c/active-directory-b2c-overview.md)
 * [Az Azure Active Directory B2C előzetes verzió: Alkalmazástípusok](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>Eszközregisztráció
@@ -154,9 +154,8 @@ Az Azure AD Privileged Identity Management a következőket teheti:
 
 További információ:
 
-* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
-* [Szerepkörök az Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-roles.md)
-* [Az Azure AD Privileged Identity Management: Hogyan lehet egy felhasználói szerepkör hozzáadása vagy eltávolítása](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Mi az Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
+* [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Identitásvédelem
 
@@ -165,7 +164,7 @@ Az Azure AD Identity Protection egy biztonsági szolgáltatás, amely a kockáza
 További információ:
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Channel 9-on: Az Azure AD és az identitás: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9-on: Az Azure AD és az identitás megjelenítése: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hibrid identity management vagy az Azure AD connect
 

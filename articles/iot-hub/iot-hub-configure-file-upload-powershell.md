@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232293"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425611"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurálja az IoT Hub fájlfeltöltések PowerShell-lel
 
@@ -24,7 +24,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
 
-* [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 
 * Az Azure IoT hubra. Ha nem rendelkezik egy IoT hubot, használhatja a [New-AzureRmIoTHub parancsmag](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) hozzon létre egyet, vagy a portál használata [hozzon létre egy IoT hubot](iot-hub-create-through-portal.md).
 
@@ -96,15 +96,15 @@ Mostantól konfigurálhatja az IoT hub [fájlok feltöltése az IoT hub](iot-hub
 
 A konfigurációs van szükség a következő értékeket:
 
-* **A tároló**: az aktuális Azure-előfizetés társítása az IoT hub az Azure storage-fiókban lévő blobtárolóba. A szükséges tárolási fiók adatait az előző szakaszban lekért. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
+* **A tároló**: Az aktuális Azure-előfizetés társítása az IoT hub az Azure storage-fiókban lévő blobtárolóba. A szükséges tárolási fiók adatait az előző szakaszban lekért. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
 
-* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: fájl feltöltése értesítések engedélyezése vagy letiltása.
+* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: Értesítések engedélyezése vagy letiltása fájl feltöltése.
 
-* **SAS-élettartam**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva.
+* **SAS-ÉLETTARTAM**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva.
 
-* **Értesítési beállítások alapértelmezett TTL fájl**: A time-to-live-fájl feltöltése értesítési, mielőtt lejár. Alapértelmezés szerint egy nap beállítva.
+* **Értesítési beállítások alapértelmezett TTL fájl**: Értesítés a time-to-live-fájl feltöltése, mielőtt lejár. Alapértelmezés szerint egy nap beállítva.
 
-* **A fájl értesítési kézbesítések maximális száma**: hányszor az IoT Hub fájlt próbál meg feltölteni értesítés. Alapértelmezés szerint a 10-re állítva.
+* **A fájl értesítési kézbesítések maximális száma**: Az IoT Hub próbál fájlt hányszor értesítési töltse fel. Alapértelmezés szerint a 10-re állítva.
 
 Használja az alábbi PowerShell-parancsmagot a fájl konfigurálása töltse fel az IoT hub beállításai:
 

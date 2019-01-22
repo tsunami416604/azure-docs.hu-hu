@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a86547ad3eddb57328a2a0358ac453c979b84d37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 21f2081f5aae0bb93cb9066407140f5fd35dc06d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163363"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424033"
 ---
-# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Oktatóanyag: Új Azure AD-jelszó önkiszolgáló kérése próbaverziójának bevezetése
+# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Oktatóanyag: Egy Azure AD önkiszolgáló jelszó-visszaállítás kísérleti a bevezetés befejezése
 
 Ebben az oktatóanyagban engedélyezni fogjuk az új Azure AD-jelszó önkiszolgáló kérésének (SSPR) próbaverzióját a vállalatban, majd teszteljük egy nem rendszergazdai fiók használatával.
 

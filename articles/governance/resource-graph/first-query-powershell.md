@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5ffc93afdfff1a069d00b61868b5ae025121198c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: bf23dcdb212c1d7e052b12179084df9ccc941664
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310725"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434475"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
 
@@ -32,7 +32,7 @@ Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kel
 
 Az Azure Resource Graph modulhoz az alábbi szoftverek szükségesek:
 
-- Az Azure PowerShell 6.3.0 vagy újabb verziója. Ha még nincs telepítve, kövesse [ezeket az utasításokat](/powershell/azure/install-azurerm-ps).
+- Az Azure PowerShell 6.3.0 vagy újabb verziója. Ha még nincs telepítve, kövesse [ezeket az utasításokat](/powershell/azure/azurerm/install-azurerm-ps).
 
   - A PowerShell Core esetében használja az Azure PowerShell modul **Az** verzióját.
 

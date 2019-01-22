@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 84a6cdb5e91128bbade43ee9212cfa9658228964
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839041"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423292"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Az Azure DevTest Labs-tesztkörnyezet beállítása
 Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
@@ -49,24 +49,31 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
     6. Válassza a **Rögzítés az irányítópulton** lehetőséget. A létrehozott tesztkörnyezet megjelenik az irányítópulton. 
 
         ![A DevTest Labs labor szakaszának létrehozása](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
+2. Győződjön meg arról, hogy a labor létrehozása sikerült a notificaitons megtekintésével. Válassza ki **erőforrás megnyitása**.  
+
+    ![Értesítés](./media/tutorial-create-custom-lab/creation-notification.png)
+3. Győződjön meg arról, hogy a **fejlesztési és tesztelési labor** lap a tesztkörnyezethez. 
+
+    ![A labor kezdőlapja](./media/tutorial-create-custom-lab/lab-home-page.png)
 
 ## <a name="add-a-vm-to-the-lab"></a>Virtuális gép hozzáadása a tesztkörnyezethez
 
 1. A **DevTest Labs-tesztkörnyezet** lapon kattintson az eszköztár **+ Hozzáadás** elemére. 
 
     ![Hozzáadás gomb](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Az **Alap kiválasztása** lapon keressen egy kulcsszóra (például Windows vagy Ubuntu), majd válasszon ki egy alaprendszerképet a listából. 
+1. Az a **vyberte bázi** keressen rá a kulcsszóval (például: Windows, Ubuntu), és válassza ki az alaprendszerképek lekéréshez egyikét a listában. 
 1. A **Virtuális gép** oldalon tegye a következőket: 
     1. A **Virtuális gép neve** mezőbe írja be a virtuális gép nevét. 
     2. A **Felhasználónév** mezőbe írja be a felhasználó nevét, aki hozzáférhet a virtuális géphez. 
-    3. Az **Írjon be egy értéket** mezőbe írja be a felhasználó jelszavát. 
-    4. Válassza ki a **Speciális beállítások** elemet.
-    5. **A gép legyen lefoglalható** beállításnál válassza az **Igen** lehetőséget.
-    6. Győződjön meg arról, hogy a **példányszám** értéke **1**. Ha az érték **2**, két virtuális gép jön létre a következő nevekkel: `<base image name>00' and <base image name>01`. Például: `win10vm00` és `win10vm01`. 
-    7. A **Speciális** oldal bezárásához kattintson az **OK** gombra. 
-    8. Kattintson a **Létrehozás** gombra. 
+    3. A **jelszó**, adja meg a jelszót a felhasználó számára. 
 
         ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+1. Válassza ki **speciális beállítások** fülre.
+    1. **A gép legyen lefoglalható** beállításnál válassza az **Igen** lehetőséget.
+    2. Győződjön meg arról, hogy a **példányszám** értéke **1**. Ha az érték **2**, két virtuális gép jön létre a következő nevekkel: `<base image name>00' and <base image name>01`. Például: `win10vm00` és `win10vm01`.     
+    3. Válassza ki **elküldése**. 
+
+        ![Alap kiválasztása](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
     9. A **Lefoglalható virtuális gépek** listában megtekintheti a virtuális gépek állapotát. A virtuális gépek létrehozása körülbelül 25 percet vesz igénybe. A virtuális gép létrehozása egy különálló Azure-erőforráscsoportban történik, amelynek neve az aktuális erőforráscsoport nevével kezdődik, amelyben a tesztkörnyezet található. Egy példa: ha a tesztkörnyezet a `labrg` erőforráscsoportban található, a virtuális gép a `labrg3988722144002` nevű erőforráscsoportban jön létre. 
 
         ![Virtuális gép létrehozásának állapota](./media/tutorial-create-custom-lab/vm-creation-status.png)
@@ -81,23 +88,30 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 
     ![Konfigurálás és szabályzatok](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
 1. Válassza ki **hozzáférés-vezérlés (IAM)** a menüben, és válassza a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
+
+    ![Szerepkör-hozzárendelés hozzáadása – gomb](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
 1. Az **Engedélyek hozzáadása** oldalon tegye a következőket:
     1. A **Szerepkör** esetében válassza a **DevTest Labs-felhasználó** lehetőséget. 
     2. Válassza ki a hozzáadni kívánt **felhasználót**. 
     3. Kattintson a **Mentés** gombra.
-4. A **Konfigurálás és szabályzatok – Hozzáférés-vezérlés (IAM)** lap bezáráshoz kattintson a jobb felső sarokban található **X** gombra. 
 
-## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
+        ![Felhasználó hozzáadása](./media/tutorial-create-custom-lab/add-user.png)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A következő oktatóanyag azt mutatja be, hogyan foglalhatják le a tesztkörnyezet-felhasználók a tesztkörnyezet virtuális gépeit, és hogyan csatlakozhatnak azokhoz. Ha nem szeretné végrehajtani ezt az oktatóanyagot, és törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat, tegye a következőket: 
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** elemet. 
-2. Válassza ki azt az erőforráscsoportot, amelyben létrehozta a tesztkörnyezetet. 
-3. Az eszköztáron kattintson az **Erőforráscsoport törlése** gombra. Az erőforráscsoport törlése a csoportba tartozó összes erőforrást törli, beleértve a tesztkörnyezetet is. 
-4. Ismételje meg ezeket a lépéseket a `<your resource group name><random numbers>` nevű, az Ön számára létrehozott további erőforráscsoport esetében. Például: `splab3988722144001`. A virtuális gépek ebben az erőforráscsoportban jönnek létre, és nem abban, amelyben a tesztkörnyezet található. 
+
+    ![Erőforráscsoportok](./media/tutorial-create-custom-lab/resource-groups.png)
+1. Válassza ki azt az erőforráscsoportot, amelyben létrehozta a tesztkörnyezetet. 
+1. Az eszköztáron kattintson az **Erőforráscsoport törlése** gombra. Az erőforráscsoport törlése a csoportba tartozó összes erőforrást törli, beleértve a tesztkörnyezetet is. 
+
+    ![Tesztlabor-erőforráscsoport](./media/tutorial-create-custom-lab/lab-resource-group.png)
+1. Ismételje meg ezeket a lépéseket a `<your resource group name><random numbers>` nevű, az Ön számára létrehozott további erőforráscsoport esetében. Például: `splab3988722144001`. A virtuális gépek ebben az erőforráscsoportban jönnek létre, és nem abban, amelyben a tesztkörnyezet található. 
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy tesztkörnyezetet egy virtuális géppel, és egy felhasználónak hozzáférést biztosított a tesztkörnyezethez. Ha meg szeretné tudni, tesztkörnyezet-felhasználóként hogyan érheti el a tesztkörnyezetet, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Hozzáférés a tesztkörnyezethez](tutorial-use-custom-lab.md)
+> [Oktatóanyag: A tesztkörnyezet elérése](tutorial-use-custom-lab.md)
 

@@ -3,18 +3,18 @@ title: Azure Automation-runbook kezdve egy webhook
 description: Egy webhookot, amely lehetővé teszi, hogy az ügyfél az Azure Automation runbook indítása egy HTTP-hívással.  Ez a cikk bemutatja, hogyan hozhat létre egy webhook, és hogyan hívhat meg egy runbook indítása.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016691"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438847"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
@@ -226,3 +226,4 @@ Az alábbi képen látható a kérelmet küld a rendszer a Windows PowerShell é
 ## <a name="next-steps"></a>További lépések
 
 * Azure Automation műveletet végrehajthat az Azure Alerts használatával kapcsolatban lásd: [használjon olyan riasztást, egy Azure Automation-runbook elindítása](automation-create-alert-triggered-runbook.md).
+

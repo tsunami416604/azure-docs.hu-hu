@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185018"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439102"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -208,6 +208,7 @@ Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelke
 - A konfigurálható kimenő üresjárati időkorlát tartománya 4-66 perc (240 a 4000-es másodperc).
 - Terheléselosztó nem támogatja a ICMP kimenő helyezkedik el.
 - Portál konfigurálása, illetve megtekintheti a kimenő szabályok nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
+- Kimenő szabályok csak az elsődleges hálózati adapter és az elsődleges IP-konfiguráció alkalmazható.
 
 ## <a name="next-steps"></a>További lépések
 

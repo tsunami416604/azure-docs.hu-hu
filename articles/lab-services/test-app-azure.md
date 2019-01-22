@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 099bdc25c27e264c3c7732243068307856840409
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028360"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437792"
 ---
-# <a name="test-your-app-in-azure"></a>Tesztelje alkalmazását az Azure-ban 
+# <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
 Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs használatával. Először egy fájlmegosztást a tesztkörnyezet beállításához, és csatlakoztassa meghajtóként helyi fejlesztői gépen és a egy laborban lévő virtuális Gépet. Ezután használja a Visual Studio 2017 helyezze üzembe az alkalmazást a fájlmegosztáshoz, hogy a lab-ben a virtuális gépen futtathatja az alkalmazást.  
 
 ## <a name="prerequisites"></a>Előfeltételek 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs haszn
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Csatlakoztassa a fájlmegosztást a helyi gépen
 1. A parancsfájlt használja a helyi gépen [megőrzése Azure fájl megosztás hitelesítő adatai a Windows](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows) szakaszában [használata a Windows Azure-fájlmegosztások](../storage/files/storage-how-to-use-files-windows.md) cikk. 
-2. Ezután használja `net use` parancsot a fájlmegosztás csatlakoztatása a gépen. A mintául szolgáló parancs a következő: Adja meg az Azure storage-nevét és a fájlmegosztás neve a parancs futtatása előtt. 
+2. Ezután használja `net use` parancsot a fájlmegosztás csatlakoztatása a gépen. A mintául szolgáló parancs a következő: Az Azure storage nevét és a fájlmegosztás nevét adja meg a parancs futtatása előtt. 
 
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
 
@@ -56,7 +56,7 @@ Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs haszn
 
     ![Válassza ki a labor virtuális gép](media/test-app-in-azure/select-lab-vm.png)
 2. Válassza ki **Connect** az eszköztáron a virtuális Géphez való csatlakozáshoz. 
-3. [Azure PowerShell telepítése](https://azure.microsoft.com/downloads/) használatával a **Windows telepítése** hivatkozásra a **parancssori eszközök** szakaszban. Azure PowerShell telepítésének egyéb módjai, lásd: [Ez a cikk](/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1).
+3. [Azure PowerShell telepítése](https://azure.microsoft.com/downloads/) használatával a **Windows telepítése** hivatkozásra a **parancssori eszközök** szakaszban. Azure PowerShell telepítésének egyéb módjai, lásd: [Ez a cikk](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
 4. Kövesse az utasításokat a [csatlakoztassa a fájlmegosztást](#mount-the-file-share) szakaszban. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Tegye közzé az alkalmazást a Visual Studióból
