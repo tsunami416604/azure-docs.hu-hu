@@ -4,18 +4,18 @@ description: Ismerje meg, hogyan compose konfigurációk használatával összet
 keywords: PowerShell dsc, a kívánt állapot konfigurációs, a powershell dsc azure, összetett erőforrások
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a1297b6cd84a012ff54f7d902c92687b2e284fe2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b82457d8a7ce70ecfde32ba625ef610a3772213c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607779"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432191"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>DSC-konfigurációk az Azure Automation állapot Configuration (DSC) használatával összetett erőforrások összeállítása
 
